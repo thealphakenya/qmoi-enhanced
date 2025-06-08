@@ -61,17 +61,88 @@ export default function AlphaQAISystem() {
 
   const [inputMessage, setInputMessage] = useState("")
   const [isVoiceActive, setIsVoiceActive] = useState(false)
+  const [isListening, setIsListening] = useState(false)
   const [currentProject, setCurrentProject] = useState<AIProject | null>(null)
   const [projects, setProjects] = useState<AIProject[]>([])
   const [isGenerating, setIsGenerating] = useState(false)
   const [previewMode, setPreviewMode] = useState<"2d" | "3d" | "audio" | "video">("2d")
+  const [isSpeakActive, setIsSpeakActive] = useState(false)
+  const [selectedVoice, setSelectedVoice] = useState<string | null>(null)
+  const [showVoicePicker, setShowVoicePicker] = useState(false)
+  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([])
 
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const recognitionRef = useRef<any>(null)
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
+
+  useEffect(() => {
+    if (!isVoiceActive) {
+      if (recognitionRef.current) {
+        recognitionRef.current.stop()
+        setIsListening(false)
+      }
+      return
+    }
+    // Web Speech API setup
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+    if (!SpeechRecognition) {
+      alert("Voice recognition is not supported in this browser.")
+      setIsVoiceActive(false)
+      return
+    }
+    const recognition = new SpeechRecognition()
+    recognition.lang = "en-US"
+    recognition.interimResults = false
+    recognition.continuous = false
+    recognition.onstart = () => setIsListening(true)
+    recognition.onend = () => setIsListening(false)
+    recognition.onerror = () => setIsListening(false)
+    recognition.onresult = (event: any) => {
+      const transcript = event.results[0][0].transcript
+      setInputMessage((prev) => (prev ? prev + " " + transcript : transcript))
+    }
+    recognitionRef.current = recognition
+    recognition.start()
+    return () => {
+      recognition.stop()
+      setIsListening(false)
+    }
+  }, [isVoiceActive])
+
+  // Load voices and remember choice
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      const loadVoices = () => {
+        const voices = window.speechSynthesis.getVoices()
+        setAvailableVoices(voices)
+        const savedVoice = localStorage.getItem('alphaq-voice')
+        if (savedVoice) setSelectedVoice(savedVoice)
+      }
+      loadVoices()
+      window.speechSynthesis.onvoiceschanged = loadVoices
+    }
+  }, [])
+
+  // Speak AI messages if enabled
+  useEffect(() => {
+    if (!isSpeakActive) return
+    if (messages.length < 2) return
+    const lastMsg = messages[messages.length - 1]
+    if (lastMsg.type === 'ai') {
+      const utter = new window.SpeechSynthesisUtterance(lastMsg.content)
+      if (selectedVoice) {
+        const voice = availableVoices.find(v => v.voiceURI === selectedVoice)
+        if (voice) utter.voice = voice
+      }
+      window.speechSynthesis.cancel()
+      window.speechSynthesis.speak(utter)
+    }
+  }, [messages, isSpeakActive, selectedVoice, availableVoices])
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return
@@ -178,13 +249,13 @@ export default function AlphaQAISystem() {
       case "game":
         return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFhMWEyZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij7wn46uIEdhbWUgUHJldmlldyDwn46uPC90ZXh0Pjwvc3ZnPg=="
       case "animation":
-        return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJkMWI2OSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij7wn46sIEFuaW1hdGlvbiDwn46sPC90ZXh0Pjwvc3ZnPg=="
+        return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJkMWI2OSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij7wn46sIEFuaW1hdGlvbiDwn46sPC90ZXh0Pjwvc3ZnPg=="
       case "movie":
-        return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzc5MWEyZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij7wn46lIE1vdmllIFByZXZpZXcg8J+OpTwvdGV4dD48L3N2Zz4="
+        return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzc5MWEyZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij7wn46lIE1vdmllIFByZXZpZXcg8J+OpTwvdGV4dD48L3N2Zz4="
       case "music":
-        return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFhNjkyZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij7wn46tIE11c2ljIENvbXBvc2l0aW9uIPCfjq08L3RleHQ+PC9zdmc+"
+        return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFhNjkyZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij7wn46tIE11c2ljIENvbXBvc2l0aW9uIPCfjq08L3RleHQ+PC9zdmc+"
       case "architecture":
-        return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJlNGEyZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij7wn46XIEFyY2hpdGVjdHVyZSDwn46XPC90ZXh0Pjwvc3ZnPg=="
+        return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJlNGEyZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2Ij7wn46XIEFyY2hpdGVjdHVyZSDwn46XPC90ZXh0Pjwvc3ZnPg=="
       default:
         return ""
     }
@@ -220,6 +291,22 @@ export default function AlphaQAISystem() {
     }
   }
 
+  // Show voice picker on first enable
+  const handleSpeakToggle = () => {
+    if (!isSpeakActive && !selectedVoice) {
+      setShowVoicePicker(true)
+    } else {
+      setIsSpeakActive(v => !v)
+    }
+  }
+
+  const handleVoiceSelect = (voiceURI: string) => {
+    setSelectedVoice(voiceURI)
+    localStorage.setItem('alphaq-voice', voiceURI)
+    setIsSpeakActive(true)
+    setShowVoicePicker(false)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto p-4 h-screen flex flex-col">
@@ -242,10 +329,36 @@ export default function AlphaQAISystem() {
             <Button
               variant={isVoiceActive ? "destructive" : "outline"}
               size="sm"
-              onClick={() => setIsVoiceActive(!isVoiceActive)}
+              onClick={() => setIsVoiceActive((v) => !v)}
+              aria-label={isVoiceActive ? "Stop voice input" : "Start voice input"}
             >
               {isVoiceActive ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+              {isVoiceActive && isListening && (
+                <span className="ml-2 animate-pulse text-xs text-red-500">Listening...</span>
+              )}
             </Button>
+            <Button
+              style={{ backgroundColor: isSpeakActive ? '#22c55e' : '#6b7280', color: 'white' }}
+              size="sm"
+              onClick={handleSpeakToggle}
+              aria-label={isSpeakActive ? "Disable AI Speak" : "Enable AI Speak"}
+            >
+              <span className="mr-1">{isSpeakActive ? '🗣️' : '🔇'}</span> Speak
+            </Button>
+            {showVoicePicker && (
+              <div className="absolute z-50 bg-white dark:bg-gray-900 border rounded p-4 shadow-lg">
+                <h2 className="font-bold mb-2">Choose AI Voice</h2>
+                <ul className="max-h-48 overflow-y-auto">
+                  {availableVoices.map((voice) => (
+                    <li key={voice.voiceURI} className="mb-1">
+                      <Button size="sm" variant="outline" onClick={() => handleVoiceSelect(voice.voiceURI)}>
+                        {voice.name} {voice.lang} {voice.default ? '(Default)' : ''}
+                      </Button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <Badge variant="outline" className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               <span>Online</span>
