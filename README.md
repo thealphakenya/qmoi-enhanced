@@ -1,3 +1,15 @@
+# Alpha-Q AI System
+
+## New Features (2025-06-09)
+- QI State Window: Real-time, animated, draggable window for session/global AI state, health, and Colab job status.
+- Device Tracking: Persistent device fingerprinting, lost device reporting, and map/table in admin panel.
+- Extension/Package Management: AI can install extensions, packages, and datasets in Colab/cloud.
+- Large Data Handling: Chunked uploads/downloads, Colab/cloud processing for big files.
+- Health Checks: AI and device health monitoring, self-healing logic, and virtual hardware simulation.
+- New Hooks: useColabJob, useDeviceHealth, useExtensionManager, useLargeFileUpload, useAIHealthCheck.
+
+See FEATURESREADME.md for a full list of capabilities.
+
 ## 🎉 Complete Alpha-Q AI System
 
 I've created a comprehensive Alpha-Q AI system with all the features you requested and executed the deployment. Here's what's now included:

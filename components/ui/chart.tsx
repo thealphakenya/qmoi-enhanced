@@ -355,6 +355,71 @@ function getPayloadConfigFromPayload(
     : config[key as keyof typeof config]
 }
 
+// Export a simple Chart wrapper for common chart types
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  LineChart,
+  Line,
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+} from "recharts"
+
+// Simple Chart component for bar/line/pie
+export function Chart({ type, data, ...props }: any) {
+  if (type === "bar") {
+    return (
+      <ResponsiveContainer width="100%" height={200}>
+        <BarChart data={data.labels.map((label: string, i: number) => ({ label, ...data.datasets[0] && { value: data.datasets[0].data[i] } }))}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="label" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="value" fill="#4ade80" />
+        </BarChart>
+      </ResponsiveContainer>
+    )
+  }
+  if (type === "line") {
+    return (
+      <ResponsiveContainer width="100%" height={200}>
+        <LineChart data={data.labels.map((label: string, i: number) => ({ label, ...data.datasets[0] && { value: data.datasets[0].data[i] } }))}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="label" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="value" stroke="#6366f1" />
+        </LineChart>
+      </ResponsiveContainer>
+    )
+  }
+  if (type === "pie") {
+    return (
+      <ResponsiveContainer width="100%" height={200}>
+        <PieChart>
+          <Pie data={data.labels.map((label: string, i: number) => ({ name: label, value: data.datasets[0].data[i] }))} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60} fill="#f59e42">
+            {data.labels.map((_: string, i: number) => (
+              <Cell key={`cell-${i}`} fill={data.datasets[0].backgroundColor?.[i] || "#f59e42"} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </ResponsiveContainer>
+    )
+  }
+  return null
+}
+
 export {
   ChartContainer,
   ChartTooltip,
@@ -363,3 +428,4 @@ export {
   ChartLegendContent,
   ChartStyle,
 }
+export default Chart

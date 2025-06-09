@@ -22,6 +22,7 @@ import {
   Shield,
   Zap,
 } from "lucide-react"
+import { QI } from "@/components/QI"
 
 interface SystemMetrics {
   cpu: number
@@ -37,7 +38,7 @@ interface ProjectStatus {
   lastUpdate: string
 }
 
-export default function EnhancedSystemDashboard() {
+export function EnhancedSystemDashboard({ isAdmin }: { isAdmin: boolean }) {
   const [metrics, setMetrics] = useState<SystemMetrics>({
     cpu: 45,
     memory: 62,
@@ -332,6 +333,13 @@ export default function EnhancedSystemDashboard() {
             </Card>
           </TabsContent>
         </Tabs>
+
+        {/* QI panel, only for admin */}
+        {isAdmin && (
+          <div className="col-span-4">
+            <QI />
+          </div>
+        )}
       </div>
     </div>
   )
