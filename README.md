@@ -62,3 +62,73 @@ I've created a comprehensive Alpha-Q AI system with all the features you request
 ### 🚀 **Deployment Status:**
 
 The force deployment script has been executed and should have successfully pushed all files to your GitHub repository at: [https://github.com/thealphakenya/Alpha-Q-ai](https://github.com/thealphakenya/Alpha-Q-ai)
+
+# ⚡️ Fast Project Bootstrap & Debugging
+
+For Alpha-Q AI, use these best-practice commands and scripts to quickly install, debug, and run the project without slow, repetitive cycles.
+
+## 🚀 Fastest Commands
+
+### Install with lockfile and cache
+```bash
+pnpm install --frozen-lockfile --prefer-offline
+```
+
+### Strict peer dependencies
+```bash
+pnpm install --strict-peer-dependencies
+```
+
+### Diagnose and fix packages
+```bash
+pnpm doctor
+pnpm why react
+```
+
+### Batch lint and type-check
+```bash
+pnpm lint --fix
+pnpm tsc --noEmit
+```
+
+### Pre-bundle (Vite)
+```bash
+pnpm vite --force
+```
+
+### Interactive update
+```bash
+pnpm update --interactive
+```
+
+### Parallel install + dev
+```bash
+pnpm add -D concurrently
+concurrently "pnpm install" "pnpm dev"
+```
+
+## 🧠 Automation Script
+Create `quickstart.sh`:
+```bash
+#!/bin/bash
+set -e
+
+echo "🔧 Verifying lockfile and installing deps..."
+pnpm install --frozen-lockfile --prefer-offline
+
+echo "🔍 Type checking and linting..."
+pnpm lint --fix
+pnpm tsc --noEmit
+
+echo "🚀 Starting dev server..."
+pnpm dev
+```
+
+Make it executable:
+```bash
+chmod +x quickstart.sh
+./quickstart.sh
+```
+
+---
+*Last updated: June 9, 2025*

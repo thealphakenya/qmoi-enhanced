@@ -58,12 +58,12 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
   // Simulate AI response with delay and advanced features
   const handleSend = async () => {
     if (!input.trim()) return
-    setChatHistory([...chatHistory, { type: 'user', text: input }])
-    setInput("")
-    setAiTyping(true
+    setChatHistory([...chatHistory, { type: 'user', text: input }]);
+    setInput("");
+    setAiTyping(true);
     setTimeout(() => {
       // Example: AI can answer code, math, or be friendly
-      let aiText = "I'm here to help!"
+      let aiText = "I'm here to help!";
       if (/hello|hi|hey/i.test(input)) aiText = "Hello! 😊 How can I assist you today?"
       else if (/code|python|js|typescript|react/i.test(input)) aiText = "Here's a code snippet example: \n\nconsole.log('Hello, world!');"
       else if (/math|\d+\s*[+\-*/]\s*\d+/i.test(input)) {

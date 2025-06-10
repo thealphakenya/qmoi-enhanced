@@ -1,11 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import crypto from 'crypto';
+import fs from 'fs';
+import path from 'path';
 
 // Store Bitget credentials securely (in env vars or a secure vault in production)
 const BITGET_API_KEY = process.env.BITGET_API_KEY;
 const BITGET_API_SECRET = process.env.BITGET_API_SECRET;
 const BITGET_API_PASSPHRASE = process.env.BITGET_API_PASSPHRASE;
 const BITGET_API_BASE = 'https://api.bitget.com';
+const TRADING_LOG = path.join(process.cwd(), 'trading-log.json');
+const DATASET_PATH = path.join(process.cwd(), 'datasets/trading/trading-dataset-sample.csv');
 
 // Helper to sign Bitget API requests
 function signRequest(method: string, path: string, body: string, timestamp: string) {
@@ -79,11 +83,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     if (action === 'stats') {
       // Return trading stats, confidence, and log (persistent)
-      const fs = require('fs');
-      const logPath = '/workspaces/Alpha-Q-ai/bitget-trade-log.jsonl';
       let log = [];
-      if (fs.existsSync(logPath)) {
-        log = fs.readFileSync(logPath, 'utf8').split('\n').filter(Boolean).map(JSON.parse);
+      if (fs.existsSync(TRADING_LOG)) {
+        log = JSON.parse(fs.readFileSync(TRADING_LOG, 'utf-8'));
       }
       // Confidence and real funds status from last trade
       const last = log.length > 0 ? log[log.length - 1] : null;
@@ -107,6 +109,41 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           lossCount,
         }
       });
+    }
+    // Trading log route
+    if (req.method === 'GET') {
+      // Return all trades
+      if (fs.existsSync(TRADING_LOG)) {
+        const trades = JSON.parse(fs.readFileSync(TRADING_LOG, 'utf-8'));
+        return res.status(200).json(trades);
+      } else {
+        return res.status(200).json([]);
+      }
+    } else if (req.method === 'POST') {
+      // Simulate a trade (for demo/testing)
+      const now = Date.now();
+      const trade = {
+        id: Math.random().toString(36).slice(2),
+        timestamp: now,
+        type: Math.random() > 0.5 ? 'BUY' : 'SELL',
+        amount: 1,
+        price: 70000 + Math.floor(Math.random() * 1000),
+        result: 'SIMULATED',
+        rationale: 'Manual simulation',
+      };
+      let trades = [];
+      if (fs.existsSync(TRADING_LOG)) {
+        trades = JSON.parse(fs.readFileSync(TRADING_LOG, 'utf-8'));
+      }
+      trades.push(trade);
+      fs.writeFileSync(TRADING_LOG, JSON.stringify(trades, null, 2));
+      return res.status(201).json(trade);
+    } else if (req.method === 'DELETE') {
+      // Clear all trades (admin only)
+      fs.writeFileSync(TRADING_LOG, '[]');
+      return res.status(204).end();
+    } else {
+      return res.status(405).end();
     }
     return res.status(400).json({ error: 'Unknown action' });
   } catch (e: any) {
