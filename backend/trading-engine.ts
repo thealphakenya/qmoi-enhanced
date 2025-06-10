@@ -7,7 +7,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import csvParse from 'csv-parse/lib/sync';
+import { parse as csvParse } from 'csv-parse/sync';
 
 interface Trade {
   id: string;
