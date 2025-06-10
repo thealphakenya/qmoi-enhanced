@@ -1049,13 +1049,15 @@ export default function AlphaQAISystem() {
                           <Button size="sm" variant="outline" onClick={() => saveProjectProgress(currentProject)} disabled={savingProjectId === currentProject.id}>
                             {savingProjectId === currentProject.id ? 'Saving...' : 'Save Progress'}
                           </Button>
-                          <Button size="sm" variant="outline" onClick={() => testProject(currentProject)}
-                        <Palette className="h-3 w-3" />
-                        <span>Art</span>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                          <Button size="sm" variant="outline" onClick={() => testProject(currentProject)}>
+                            <Palette className="h-3 w-3" />
+                            <span>Art</span>
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
 
                 {/* Recent Projects */}
                 {projects.length > 0 && (
@@ -1115,12 +1117,12 @@ export default function AlphaQAISystem() {
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
-                                <Button size="xs" variant="outline" onClick={() => navigator.clipboard.writeText(docs)}>Copy Docs</Button>
+                                <Button size="sm" variant="outline" onClick={() => navigator.clipboard.writeText(docs)}>Copy Docs</Button>
                               </TooltipTrigger>
                               <TooltipContent>Copy documentation/instructions</TooltipContent>
                             </Tooltip>
                           </TooltipProvider>
-                          <Button size="xs" variant="outline" onClick={() => handleExportProject(project)}>Export</Button>
+                          <Button size="sm" variant="outline" onClick={() => handleExportProject(project)}>Export</Button>
                         </div>
                         <pre className="text-xs whitespace-pre-wrap bg-slate-50 dark:bg-slate-800 p-2 rounded border overflow-x-auto">{docs}</pre>
                       </div>
