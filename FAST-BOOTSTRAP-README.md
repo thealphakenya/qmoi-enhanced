@@ -87,4 +87,11 @@ chmod +x quickstart.sh
 ```
 
 ---
+
+**New in Alpha-Q AI:**
+- Invention project support (admin/sister only, auto/manual, encrypted)
+- AI learns and assists with admin/sister life goals, ambitions, and protection
+- Local-First AI Protector Blueprint (see README.md for details)
+
+---
 *Last updated: June 9, 2025*

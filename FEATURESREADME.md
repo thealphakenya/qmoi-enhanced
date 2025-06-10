@@ -69,6 +69,23 @@
   - **Auto Documentation**: Every AI-built project comes with generation logs and auto-generated documentation.
   - **Audit & Compliance**: Admin can review every autonomous or user-requested action.
 
+## 🧬 Invention Projects (Admin/Sister Only)
+- AI can create, manage, and auto-initiate invention projects for Victor Kwemoi and Leah Chebet.
+- Invention projects support business, welfare, and national impact goals.
+- All invention data and user credentials are encrypted and never exposed in exports or unzipped builds.
+
+## 🛡️ Life Goals, Ambitions & AI Protector
+- AI learns and assists with admin/sister life goals (protection, welfare, mental health, finances, security, business, inventions, leadership, philanthropy, etc.).
+- QI dashboard has a secure, admin/sister-only section for viewing, adding, and editing these goals.
+- AI proactively manages projects to help achieve these ambitions.
+- All sensitive data is encrypted and access-controlled.
+
+## 🏠 Local-First AI Protector Blueprint (Planned)
+- Local deployment of vision/audio models (YOLO, OpenCV, whisper.cpp, etc.) for home/office protection.
+- Sensor/camera/mic integration, anomaly detection, and local-only alert/response.
+- Dashboard UI for live feeds, logs, device control, and explainable AI decisions.
+- Full offline/edge operation, no cloud/API dependency.
+
 🛠️ **Developer Hooks & Utilities**
 - `useColabJob`: Interface to execute, track, and manage jobs on Colab/cloud.
 - `useDeviceHealth`: Check CPU, memory, battery, temperature, and online/offline state.

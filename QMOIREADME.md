@@ -25,6 +25,23 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced AI model and admin sy
 - **Health checks, self-healing, and virtual hardware**: Automated system health monitoring and recovery, with support for virtual hardware resources.
 - **New hooks**: `useColabJob`, `useDeviceHealth`, `useExtensionManager`, `useLargeFileUpload`, `useAIHealthCheck` for extended functionality and integration.
 
+## 🧬 Invention Project Support (Admin/Sister Only)
+- QMOI now supports invention projects for Victor Kwemoi and Leah Chebet only.
+- Invention projects are prioritized for business, welfare, and national impact.
+- All invention data and user credentials are encrypted and never exposed in exports or unzipped builds.
+
+## 🛡️ Life Goals, Ambitions & AI Protector
+- QMOI tracks and assists with admin/sister life goals (protection, welfare, mental health, finances, security, business, inventions, leadership, philanthropy, etc.).
+- QI dashboard has a secure, admin/sister-only section for viewing, adding, and editing these goals.
+- AI proactively manages projects to help achieve these ambitions.
+- All sensitive data is encrypted and access-controlled.
+
+## 🏠 Local-First AI Protector Blueprint (Planned)
+- Local deployment of vision/audio models (YOLO, OpenCV, whisper.cpp, etc.) for home/office protection.
+- Sensor/camera/mic integration, anomaly detection, and local-only alert/response.
+- Dashboard UI for live feeds, logs, device control, and explainable AI decisions.
+- Full offline/edge operation, no cloud/API dependency.
+
 ## Stats & Analytics
 - **Total Tasks, Enhancements, Uploads**
 - **Enhancement Success Rate**

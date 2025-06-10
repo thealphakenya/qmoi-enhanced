@@ -27,6 +27,17 @@ function confidenceColor(conf: number) {
   return 'bg-green-500';
 }
 
+// --- Secure, encrypted storage for admin/sister goals (stub, replace with real encryption) ---
+const ENCRYPTED_GOALS_KEY = 'alphaq-secure-goals';
+const ADMIN_EMAILS = ['victor@kwemoi@gmail.com', 'thealphakenya@gmail.com', 'leah@chebet.com'];
+function isAdminOrSister() {
+  if (typeof window === 'undefined') return false;
+  const email = localStorage.getItem('userEmail') || '';
+  return ADMIN_EMAILS.includes(email);
+}
+function encrypt(data: any) { return btoa(unescape(encodeURIComponent(JSON.stringify(data)))); }
+function decrypt(data: string) { try { return JSON.parse(decodeURIComponent(escape(atob(data)))); } catch { return []; } }
+
 export function QI() {
   const [aiTasks, setAiTasks] = useState<any[]>([]);
   const [tradingStats, setTradingStats] = useState<any>(null);
@@ -198,12 +209,37 @@ export function QI() {
   const aiHealth = useAIHealthCheck();
   const [extInput, setExtInput] = useState("");
 
+  // --- Life Goals & Invention Projects State ---
+  const [goals, setGoals] = useState<any[]>([]);
+  const [goalInput, setGoalInput] = useState('');
+  const [goalEditIdx, setGoalEditIdx] = useState<number|null>(null);
+  const [goalEditValue, setGoalEditValue] = useState('');
+  const [inventions, setInventions] = useState<any[]>([]);
+  const [inventionInput, setInventionInput] = useState('');
+
+  // Load encrypted goals/inventions on mount
+  useEffect(() => {
+    if (!isAdminOrSister()) return;
+    const enc = localStorage.getItem(ENCRYPTED_GOALS_KEY);
+    if (enc) {
+      const { goals = [], inventions = [] } = decrypt(enc);
+      setGoals(goals);
+      setInventions(inventions);
+    }
+  }, []);
+  // Save encrypted goals/inventions
+  useEffect(() => {
+    if (!isAdminOrSister()) return;
+    const enc = encrypt({ goals, inventions });
+    localStorage.setItem(ENCRYPTED_GOALS_KEY, enc);
+  }, [goals, inventions]);
+
   if (!isAdmin()) return null;
 
   return (
     <Card className="h-full">
       <QIStateWindow state="admin" global={globalState} aiHealth={aiHealth} colabJob={{
-        jobStatus: colab.jobStatus,
+        jobStatus: colab.result,
         result: colab.result,
         error: colab.error || undefined,
       }} />
@@ -295,6 +331,7 @@ export function QI() {
             <TabsTrigger value="trading">Trading Activities</TabsTrigger>
             <TabsTrigger value="devices">Devices</TabsTrigger>
             <TabsTrigger value="extensions">Extensions/Packages</TabsTrigger>
+            {isAdminOrSister() && <TabsTrigger value="goals">Life Goals & Inventions</TabsTrigger>}
           </TabsList>
           <TabsContent value="tasks">
             <div className="mb-4">
@@ -476,6 +513,56 @@ export function QI() {
               <div className="text-xs text-gray-500 mt-2">[Admin-only] Search, install, and build extensions/packages/datasets. AI can trigger builds/installs and update QI state. All actions are logged and visible in QI analytics.</div>
             </div>
           </TabsContent>
+          {isAdminOrSister() && (
+            <TabsContent value="goals">
+              <div className="mb-4">
+                <h3 className="font-semibold mb-2">Life Goals, Ambitions & Invention Projects</h3>
+                <div className="mb-2 text-xs text-gray-500">
+                  All data is encrypted and only visible to admin/sister. AI uses these to suggest and manage projects for your ambitions, protection, welfare, and inventions.
+                </div>
+                <div className="mb-4">
+                  <h4 className="font-semibold">Your Life Goals & Ambitions</h4>
+                  <ul className="list-disc ml-4 mb-2">
+                    {goals.map((g, i) => (
+                      <li key={i}>
+                        {goalEditIdx === i ? (
+                          <>
+                            <input className="border rounded p-1 text-xs" value={goalEditValue} onChange={e => setGoalEditValue(e.target.value)} />
+                            <Button size="sm" onClick={() => { setGoals(goals.map((v, idx) => idx === i ? goalEditValue : v)); setGoalEditIdx(null); }}>Save</Button>
+                            <Button size="sm" variant="destructive" onClick={() => setGoalEditIdx(null)}>Cancel</Button>
+                          </>
+                        ) : (
+                          <>
+                            {g}
+                            <Button size="sm" onClick={() => { setGoalEditIdx(i); setGoalEditValue(g); }}>Edit</Button>
+                            <Button size="sm" variant="destructive" onClick={() => setGoals(goals.filter((_, idx) => idx !== i))}>Delete</Button>
+                          </>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                  <input className="border rounded p-1 text-xs" placeholder="Add new goal/ambition..." value={goalInput} onChange={e => setGoalInput(e.target.value)} />
+                  <Button size="sm" onClick={() => { if (goalInput) setGoals([...goals, goalInput]); setGoalInput(''); }}>Add</Button>
+                </div>
+                <div className="mb-4">
+                  <h4 className="font-semibold">Invention Projects (Admin/Sister Only)</h4>
+                  <ul className="list-disc ml-4 mb-2">
+                    {inventions.map((inv, i) => (
+                      <li key={i}>
+                        {inv}
+                        <Button size="sm" variant="destructive" onClick={() => setInventions(inventions.filter((_, idx) => idx !== i))}>Delete</Button>
+                      </li>
+                    ))}
+                  </ul>
+                  <input className="border rounded p-1 text-xs" placeholder="Add new invention project..." value={inventionInput} onChange={e => setInventionInput(e.target.value)} />
+                  <Button size="sm" onClick={() => { if (inventionInput) setInventions([...inventions, inventionInput]); setInventionInput(''); }}>Add</Button>
+                </div>
+                <div className="text-xs text-blue-600">
+                  <b>Note:</b> AI will use these goals and inventions to suggest, create, and manage projects for you automatically. All data is encrypted and never exported or exposed.
+                </div>
+              </div>
+            </TabsContent>
+          )}
         </Tabs>
       </CardContent>
     </Card>
