@@ -11,7 +11,7 @@ function runCommand(cmd: string): Promise<string> {
   });
 }
 
-async function callPythonAnomalyService(events: any[]) {
+async function callPythonAnomalyService(events: Array<{timestamp: string; ip: string;}>) {
   // Call the Python microservice for anomaly detection
   const res = await fetch('http://localhost:5001/detect-anomaly', {
     method: 'POST',
@@ -89,7 +89,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       default:
         return res.status(400).json({ error: 'Unknown action' });
     }
-  } catch (e: any) {
-    return res.status(500).json({ error: e.message || 'Internal error' });
+  } catch (e) {
+    return res.status(500).json({ error: (e as Error).message || 'Internal error' });
   }
 }

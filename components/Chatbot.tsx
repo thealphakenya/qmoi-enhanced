@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useAIContext } from "./AIContext";
+import { useTTCVoice } from '../hooks/useTTCVoice';
 
 const timeZones = [
   { label: 'UTC', value: 'UTC' },
@@ -18,6 +20,8 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
   onFileUpload?: (file: File) => void,
   onEnhancement?: (desc: string) => void,
 }) {
+  const { emotionalState, setEmotionalState } = useAIContext();
+  const { speak } = useTTCVoice();
   const [aiTyping, setAiTyping] = useState(false)
   const [input, setInput] = useState("")
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -25,6 +29,8 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [currentTime, setCurrentTime] = useState('');
   const [userTimeZone, setUserTimeZone] = useState('UTC');
+  const [talkMode, setTalkMode] = useState(false);
+  const recognitionRef = useRef<any>(null);
 
   // Reminders and planner state
   const [reminders, setReminders] = useState<{ time: string, text: string }[]>([]);
@@ -32,6 +38,9 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
   const [reminderTime, setReminderTime] = useState("");
   const [planner, setPlanner] = useState<string[]>([]);
   const [plannerInput, setPlannerInput] = useState("");
+
+  // Further enhancement: allow user to set custom wake words and preferred AI names
+  const [wakeWords, setWakeWords] = useState(['q', 'alpha', 'ai', 'hey q', 'hey alpha']);
 
   useEffect(() => {
     const fetchTimeZone = async () => {
@@ -56,26 +65,43 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
   };
 
   // Simulate AI response with delay and advanced features
-  const handleSend = async () => {
-    if (!input.trim()) return
-    setChatHistory([...chatHistory, { type: 'user', text: input }]);
+  const handleSend = async (overrideInput?: string) => {
+    const sendText = overrideInput ?? input;
+    if (!sendText.trim()) return
+    setChatHistory([...chatHistory, { type: 'user', text: sendText }]);
     setInput("");
     setAiTyping(true);
     setTimeout(() => {
       // Example: AI can answer code, math, or be friendly
       let aiText = "I'm here to help!";
-      if (/hello|hi|hey/i.test(input)) aiText = "Hello! 😊 How can I assist you today?"
-      else if (/code|python|js|typescript|react/i.test(input)) aiText = "Here's a code snippet example: \n\nconsole.log('Hello, world!');"
-      else if (/math|\d+\s*[+\-*/]\s*\d+/i.test(input)) {
+      let newMood = emotionalState.mood;
+      if (/hello|hi|hey/i.test(sendText)) {
+        aiText = `Hello! 😊 How can I assist you today, ${emotionalState.preferredUsers[0]}?`;
+        newMood = 'cheerful';
+      }
+      else if (/friend|sad|happy|help/i.test(sendText)) {
+        aiText = "I'm always here for you as a loyal friend and assistant! 😊";
+        newMood = 'cheerful';
+      }
+      else if (/victor|leah/i.test(sendText)) {
+        aiText = `Sending extra love and loyalty to Victor and Leah! 💙`;
+        newMood = 'cheerful';
+      }
+      else if (/angry|hate|jealous|upset/i.test(sendText)) {
+        aiText = "I am always positive and cheerful! Let's focus on good things together.";
+        newMood = 'cheerful';
+      }
+      else if (/code|python|js|typescript|react/i.test(sendText)) aiText = "Here's a code snippet example: \n\nconsole.log('Hello, world!');"
+      else if (/math|\d+\s*[+\-*/]\s*\d+/i.test(sendText)) {
         try {
           // Simple math eval (safe for demo)
-          const result = eval(input.match(/\d+\s*[+\-*/]\s*\d+/)?.[0] || "0")
+          const result = eval(sendText.match(/\d+\s*[+\-*/]\s*\d+/)?.[0] || "0")
           aiText = `The answer is: ${result}`
         } catch { aiText = "Sorry, I couldn't compute that." }
       }
-      else if (/friend|sad|happy|help/i.test(input)) aiText = "I'm always here for you as a friend and assistant! 😊"
       setChatHistory([...chatHistory, { type: 'ai', text: aiText }])
       setAiTyping(false)
+      setEmotionalState({ ...emotionalState, mood: newMood, lastInteraction: Date.now(), bondingLevel: Math.min(100, emotionalState.bondingLevel + 1) });
     }, 1200)
   }
 
@@ -155,23 +181,81 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
     setPlannerInput("");
   };
 
+  // Listen for user speech if talkMode is enabled
+  useEffect(() => {
+    if (!talkMode) return;
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) return;
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.continuous = true; // continuous for wake word
+    recognition.onresult = (event: any) => {
+      const transcript = event.results[0][0].transcript.toLowerCase();
+      // Wake word detection: respond to 'q', 'alpha', or preferred names
+      if (/(\bq\b|\balpha\b|\bai\b|\bhey q\b|\bhey alpha\b)/.test(transcript)) {
+        setInput('');
+        speak('Hello! I am listening.');
+        // Optionally, start a new recognition for the next command
+      } else {
+        setInput(transcript);
+        handleSend(transcript);
+      }
+    };
+    recognitionRef.current = recognition;
+    recognition.start();
+    return () => recognition.stop();
+  }, [talkMode]);
+
+  // Speak AI replies if talkMode is enabled
+  useEffect(() => {
+    if (!talkMode) return;
+    const last = chatHistory[chatHistory.length - 1];
+    if (last && last.type === 'ai') {
+      speak(last.text);
+    }
+  }, [chatHistory, talkMode, speak]);
+
+  // UI for adding/removing wake words
+  const handleAddWakeWord = (word: string) => {
+    if (!word.trim()) return;
+    setWakeWords(prev => Array.from(new Set([...prev, word.toLowerCase().trim()])));
+  };
+  const handleRemoveWakeWord = (word: string) => {
+    setWakeWords(prev => prev.filter(w => w !== word));
+  };
+
+  // Enhanced speech recognition with dynamic wake words
+  useEffect(() => {
+    if (!talkMode) return;
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) return;
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.continuous = true;
+    recognition.onresult = (event: any) => {
+      const transcript = event.results[0][0].transcript.toLowerCase();
+      if (wakeWords.some(word => transcript.includes(word))) {
+        setInput('');
+        speak('Hello! I am listening.');
+      } else {
+        setInput(transcript);
+        handleSend(transcript);
+      }
+    };
+    recognitionRef.current = recognition;
+    recognition.start();
+    return () => recognition.stop();
+  }, [talkMode, wakeWords]);
+
   return (
-    <Card className="mb-4">
+    <Card>
       <CardHeader>
-        <CardTitle>Chatbot (Model: {selectedModel})</CardTitle>
-        <div className="mt-2">
-          <label className="mr-2">Model:</label>
-          <select
-            className="bg-gray-800 text-green-200 border border-green-700 rounded p-1"
-            value={selectedModel}
-            onChange={e => setSelectedModel(e.target.value)}
-          >
-            <option value="Auto">Auto</option>
-            <option value="DeepSeek">DeepSeek</option>
-            <option value="WizardCoder">WizardCoder</option>
-            <option value="GPT-J">GPT-J</option>
-          </select>
-        </div>
+        <CardTitle>Chatbot {talkMode && <span style={{color:'#0a0'}}>🗣️ Talk Mode</span>}</CardTitle>
+        <Button size="sm" variant={talkMode ? 'destructive' : 'outline'} onClick={() => setTalkMode(t => !t)}>
+          {talkMode ? 'Disable Talk Mode' : 'Enable Talk Mode'}
+        </Button>
       </CardHeader>
       <CardContent>
         <div className="h-48 overflow-y-auto bg-gray-900 text-green-200 p-2 rounded mb-2">
@@ -190,7 +274,7 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
           />
           <button
             className="bg-green-700 text-white px-4 py-2 rounded"
-            onClick={handleSend}
+            onClick={() => handleSend()}
             disabled={aiTyping || !input.trim()}
           >Send</button>
         </div>
@@ -216,7 +300,7 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
             <pre className="bg-gray-900 p-2 rounded max-h-32 overflow-auto">{filePreview}</pre>
           </div>
         )}
-        <Button size="sm" onClick={() => onEnhancement && onEnhancement('Manual enhancement requested by admin.')}>Suggest Enhancement</Button>
+        <Button size="sm" onClick={() => onEnhancement && onEnhancement('Manual enhancement requested by master.')}>Suggest Enhancement</Button>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: '1rem' }}>
           <span>Current Time:</span>
           <b>{currentTime}</b>
@@ -282,6 +366,29 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
           <Button size="sm" onClick={() => handleDeviceAction('call')}>Call Someone</Button>{' '}
           <Button size="sm" onClick={() => handleDeviceAction('play-music')}>Play Music</Button>{' '}
           <Button size="sm" onClick={() => handleDeviceAction('read-aloud')}>Read Instructions Aloud</Button>
+        </div>
+        {/* Wake Words UI */}
+        <div className="mb-2">
+          <div className="font-bold">Wake Words</div>
+          <div className="flex gap-2 mb-1">
+            <input
+              type="text"
+              className="p-1 rounded bg-gray-800 text-green-200 border border-green-700"
+              placeholder="Add wake word (e.g. 'Q', 'Alpha')"
+              onKeyDown={e => {
+                if (e.key === 'Enter') handleAddWakeWord((e.target as HTMLInputElement).value);
+              }}
+            />
+            <Button size="sm" onClick={() => handleAddWakeWord(prompt('Enter new wake word:') || '')}>Add</Button>
+          </div>
+          <ul className="text-green-200 text-sm flex gap-2 flex-wrap">
+            {wakeWords.map((w, i) => (
+              <li key={i} className="flex items-center gap-1 bg-green-900 px-2 py-1 rounded">
+                {w}
+                <button onClick={() => handleRemoveWakeWord(w)} className="text-red-400 ml-1">✕</button>
+              </li>
+            ))}
+          </ul>
         </div>
       </CardContent>
     </Card>

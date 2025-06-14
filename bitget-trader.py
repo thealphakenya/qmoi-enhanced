@@ -10,7 +10,7 @@ BITGET_API_KEY = os.environ.get('BITGET_API_KEY')
 BITGET_API_SECRET = os.environ.get('BITGET_API_SECRET')
 BITGET_API_PASSPHRASE = os.environ.get('BITGET_API_PASSPHRASE')
 BITGET_API_BASE = 'https://api.bitget.com'
-ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN')
+MASTER_TOKEN = os.environ.get('MASTER_TOKEN')
 
 LOG_FILE = '/workspaces/Alpha-Q-ai/bitget-trade-log.jsonl'
 

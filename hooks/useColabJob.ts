@@ -1,29 +1,38 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export function useColabJob() {
-  const [jobStatus, setJobStatus] = useState<"idle"|"running"|"success"|"error">("idle");
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<"idle" | "running" | "success" | "error">("idle");
+  const [jobId, setJobId] = useState<string | null>(null);
 
-  // Start a Colab job (simulate API call)
-  const startJob = useCallback(async (payload: any) => {
-    setJobStatus("running");
+  // Enhanced: auto-retry, status, and notification
+  const startColabJob = useCallback(async (jobDetails: any) => {
+    setStatus("running");
     setError(null);
+    setResult(null);
     try {
-      // TODO: Replace with real Colab API integration
-      const res = await fetch("/api/colab-job", {
+      // Simulate Colab job creation
+      const res = await fetch("/api/qmoi-model?colabJob=1", {
         method: "POST",
-        body: JSON.stringify(payload),
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "x-admin-token": localStorage.getItem("adminToken") || "" },
+        body: JSON.stringify(jobDetails),
       });
       const data = await res.json();
       setResult(data);
-      setJobStatus("success");
+      setStatus("success");
+      setJobId(data.jobId || null);
+      // Optionally notify user/master
+      if (window && window.dispatchEvent) {
+        window.dispatchEvent(new CustomEvent("colab-job-complete", { detail: data }));
+      }
     } catch (e: any) {
-      setError(e.message);
-      setJobStatus("error");
+      setError(e.message || "Colab job failed");
+      setStatus("error");
+      // Auto-retry after delay
+      setTimeout(() => startColabJob(jobDetails), 10000);
     }
   }, []);
 
-  return { jobStatus, result, error, startJob };
+  return { result, error, status, jobId, startColabJob };
 }

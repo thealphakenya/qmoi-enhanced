@@ -1,5 +1,12 @@
 # ⚡️ Fast Project Bootstrap & Debugging for Alpha-Q AI
 
+## 2025-06-13: Robust AI, Wallet, and Child-Friendly Features
+- System now supports robust, thorough, and fast AI task handling, wallet automation, and child-friendly features as part of the fast bootstrap and debugging process.
+
+## New (2025-06-11)
+- QI Preview Window and local-first QMOI model are now included by default. Use the `useQIPreview` hook to show previews from any component.
+- All new features are modular and lazy-loaded for best performance.
+
 To avoid slow, repetitive pnpm install → pnpm dev → fix errors one-by-one, use these smarter, faster alternatives:
 
 ## 🚀 Fastest Alternatives to `pnpm install && pnpm dev`
@@ -89,9 +96,12 @@ chmod +x quickstart.sh
 ---
 
 **New in Alpha-Q AI:**
-- Invention project support (admin/sister only, auto/manual, encrypted)
-- AI learns and assists with admin/sister life goals, ambitions, and protection
+- Invention project support (master/sister only, auto/manual, encrypted)
+- AI learns and assists with master/sister life goals, ambitions, and protection
 - Local-First AI Protector Blueprint (see README.md for details)
+- Device settings and media preview now available in the UI
+- Download links for all apps/projects sent to your WhatsApp automatically
+- Enhanced backup and restore for all projects
 
 ---
 *Last updated: June 9, 2025*

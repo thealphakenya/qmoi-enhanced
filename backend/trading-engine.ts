@@ -3,7 +3,7 @@
 // - Loads local CSV datasets
 // - Runs always-on trading loop
 // - Supports Colab batch jobs (import/export CSV)
-// - Logs all trades for admin audit
+// - Logs all trades for master audit
 
 import fs from 'fs';
 import path from 'path';

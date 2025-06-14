@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -11,12 +11,30 @@ import { QIStateWindow } from "./QIStateWindow";
 import { DeviceMap } from "./DeviceMap";
 import { useColabJob } from "../hooks/useColabJob";
 import { useExtensionManager } from "../hooks/useExtensionManager";
-import { useAIHealthCheck } from "../hooks/useAIHealthCheck";
+import { AIProvider, useAIContext } from "./AIContext";
+import { useTTCVoice } from '../hooks/useTTCVoice';
+import { useAIHealthCheck } from '../hooks/useAIHealthCheck';
+import { useBitgetTrader } from '../hooks/useBitgetTrader';
+import { useErrorAutoFix } from '../hooks/useErrorAutoFix';
+import { useTradingAutomation } from '../hooks/useTradingAutomation';
+import { useMediaGenerationStatus } from '../hooks/useMediaGenerationStatus';
+import { useGlobalAutomation } from '../hooks/useGlobalAutomation';
+import { useDatasetManager } from '../hooks/useDatasetManager';
+import { useModelTrainer } from '../hooks/useModelTrainer';
+import { useVSCodeProblems } from '../hooks/useVSCodeProblems';
+import { useDeviceOptimizer } from '../hooks/useDeviceOptimizer';
+import { useAutoEarningTasks } from '../hooks/useAutoEarningTasks';
+import { useAutoFixAllProblems } from '../hooks/useAutoFixAllProblems';
+import { useAIFeatureEnhancer } from '../hooks/useAIFeatureEnhancer';
+import { useGithubRepoManager } from '../hooks/useGithubRepoManager';
+import { useAnalyticsDashboard } from '../hooks/useAnalyticsDashboard';
+import { useRef } from 'react';
+import { FaWallet, FaChild, FaRobot, FaMoneyBillWave, FaKey, FaMapMarkerAlt, FaLanguage, FaChalkboardTeacher } from 'react-icons/fa';
 
-// Dummy admin check (replace with real auth logic)
-function isAdmin() {
-  // TODO: Replace with real admin check
-  return typeof window !== 'undefined' && localStorage.getItem('userRole') === 'admin';
+// Dummy master check (replace with real auth logic)
+function isMaster() {
+  // TODO: Replace with real master check
+  return typeof window !== 'undefined' && localStorage.getItem('userRole') === 'master';
 }
 
 // Color for confidence threshold
@@ -27,18 +45,30 @@ function confidenceColor(conf: number) {
   return 'bg-green-500';
 }
 
-// --- Secure, encrypted storage for admin/sister goals (stub, replace with real encryption) ---
+// --- Secure, encrypted storage for master/sister goals (stub, replace with real encryption) ---
 const ENCRYPTED_GOALS_KEY = 'alphaq-secure-goals';
-const ADMIN_EMAILS = ['victor@kwemoi@gmail.com', 'thealphakenya@gmail.com', 'leah@chebet.com'];
-function isAdminOrSister() {
+const MASTER_EMAILS = ['victor@kwemoi@gmail.com', 'thealphakenya@gmail.com', 'leah@chebet.com'];
+function isMasterOrSister() {
   if (typeof window === 'undefined') return false;
   const email = localStorage.getItem('userEmail') || '';
-  return ADMIN_EMAILS.includes(email);
+  return MASTER_EMAILS.includes(email);
 }
 function encrypt(data: any) { return btoa(unescape(encodeURIComponent(JSON.stringify(data)))); }
 function decrypt(data: string) { try { return JSON.parse(decodeURIComponent(escape(atob(data)))); } catch { return []; } }
 
-export function QI() {
+function QIComponent() {
+  // Use shared AI context
+  const {
+    chatHistory, setChatHistory,
+    aiHealth, deviceHealth,
+    optimizeDevice, scanForErrors, selfHeal,
+    persistentMemory, setPersistentMemory
+  } = useAIContext();
+
+  const { speak } = useTTCVoice();
+  const [talkMode, setTalkMode] = useState(false);
+  const recognitionRef = useRef<any>(null);
+
   const [aiTasks, setAiTasks] = useState<any[]>([]);
   const [tradingStats, setTradingStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -109,7 +139,6 @@ export function QI() {
 
   // --- Enhanced QI Chat logic ---
   // Handles file uploads, update requests, and background enhancements
-  const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [pendingEnhancements, setPendingEnhancements] = useState<string[]>([]);
 
   // Simulate background enhancement suggestions and auto-improvements
@@ -127,7 +156,6 @@ export function QI() {
 
   // Handle file uploads and update requests in chat
   const handleChatFile = async (file: File) => {
-    // Example: upload file to backend for analysis or update
     const formData = new FormData();
     formData.append("file", file);
     await fetch("/api/qmoi-model?upload=1", {
@@ -135,19 +163,18 @@ export function QI() {
       headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       body: formData,
     });
-    setChatHistory((prev) => [
-      ...prev,
+    setChatHistory([
+      ...chatHistory,
       { type: "system", content: `File '${file.name}' uploaded for analysis.` }
     ]);
   };
 
   // Handle enhancement requests (manual or background)
   const handleEnhancement = async (desc: string) => {
-    setChatHistory((prev) => [
-      ...prev,
+    setChatHistory([
+      ...chatHistory,
       { type: "system", content: `Enhancement triggered: ${desc}` }
     ]);
-    // Simulate backend enhancement
     await fetch("/api/qmoi-model?enhance=1", {
       method: "POST",
       headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
@@ -195,7 +222,7 @@ export function QI() {
   // Simulated device data (replace with real backend data)
   const [devices, setDevices] = useState<any[]>([
     { user: "Alice", name: "Alice's Phone", status: "active", lastSeen: "2025-06-09 10:00", location: { lat: 37.7749, lng: -122.4194 } },
-    { user: "Bob", name: "Bob's Laptop", status: "lost", lastSeen: "2025-06-08 22:30", location: { lat: 51.5074, lng: -0.1278 } },
+    { user: "Bob", name: "Bob's Laptop", status: "lost", lastSeen: "2025-06-08 22:30", location: { lat: 51.5074, lng: 0.1278 } },
     { user: "Carol", name: "Carol's Tablet", status: "offline", lastSeen: "2025-06-09 09:15", location: { lat: 35.6895, lng: 139.6917 } },
   ]);
 
@@ -206,7 +233,6 @@ export function QI() {
 
   const colab = useColabJob();
   const extMgr = useExtensionManager();
-  const aiHealth = useAIHealthCheck();
   const [extInput, setExtInput] = useState("");
 
   // --- Life Goals & Invention Projects State ---
@@ -219,7 +245,7 @@ export function QI() {
 
   // Load encrypted goals/inventions on mount
   useEffect(() => {
-    if (!isAdminOrSister()) return;
+    if (!isMasterOrSister()) return;
     const enc = localStorage.getItem(ENCRYPTED_GOALS_KEY);
     if (enc) {
       const { goals = [], inventions = [] } = decrypt(enc);
@@ -229,25 +255,322 @@ export function QI() {
   }, []);
   // Save encrypted goals/inventions
   useEffect(() => {
-    if (!isAdminOrSister()) return;
+    if (!isMasterOrSister()) return;
     const enc = encrypt({ goals, inventions });
     localStorage.setItem(ENCRYPTED_GOALS_KEY, enc);
   }, [goals, inventions]);
 
-  if (!isAdmin()) return null;
+  // Listen for user speech if talkMode is enabled
+  useEffect(() => {
+    if (!talkMode) return;
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) return;
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.continuous = false;
+    recognition.onresult = (event: any) => {
+      const transcript = event.results[0][0].transcript;
+      setChatHistory([...chatHistory, { type: 'user', text: transcript }]);
+      // Optionally trigger QI chat logic here
+    };
+    recognitionRef.current = recognition;
+    recognition.start();
+    return () => recognition.stop();
+  }, [talkMode, setChatHistory]);
 
+  // Speak QI AI replies if talkMode is enabled
+  useEffect(() => {
+    if (!talkMode) return;
+    const last = chatHistory[chatHistory.length - 1];
+    if (last && last.type === 'ai') {
+      speak(last.text);
+    }
+  }, [chatHistory, talkMode, speak]);
+
+  // --- Autonomous Project, Notification, Backup, and Self-Enhancement Logic ---
+  // Email notification (uses backend API, e.g., /api/notify)
+  async function sendEmailNotification(subject: string, message: string) {
+    try {
+      await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': localStorage.getItem('adminToken') || '' },
+        body: JSON.stringify({ subject, message }),
+      });
+    } catch (e) {
+      // Optionally log error
+    }
+  }
+
+  // Hugging Face backup (simulate with backend API or direct upload)
+  async function backupToHuggingFace(projectName: string, files: any[]) {
+    try {
+      await fetch('/api/qmoi-model?backupHuggingface=1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': localStorage.getItem('adminToken') || '' },
+        body: JSON.stringify({ projectName, files }),
+      });
+      sendEmailNotification(`Backup Complete: ${projectName}`, `Project ${projectName} was backed up to Hugging Face Spaces.`);
+    } catch (e) {
+      sendEmailNotification(`Backup Failed: ${projectName}`, `Backup failed for project ${projectName}.`);
+    }
+  }
+
+  // Autonomous Colab project creation and saving
+  const createColabProject = async (projectName: string, details: any) => {
+    setLoading(true);
+    try {
+      // Simulate Colab job and project creation
+      const res = await fetch('/api/qmoi-model?initiateProject=1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': localStorage.getItem('adminToken') || '' },
+        body: JSON.stringify({ projectName, files: details.files, userPrefs: details.userPrefs }),
+      });
+      const data = await res.json();
+      setChatHistory([
+        ...chatHistory,
+        { type: 'system', content: `Colab project '${projectName}' created and saved to master projects.` }
+      ]);
+      // Backup to Hugging Face
+      await backupToHuggingFace(projectName, details.files);
+      sendEmailNotification(`Project Created: ${projectName}`, `Colab project '${projectName}' created and saved.`);
+    } catch (e) {
+      setChatHistory([
+        ...chatHistory,
+        { type: 'system', content: `Failed to create Colab project '${projectName}'.` }
+      ]);
+      sendEmailNotification(`Project Creation Failed: ${projectName}`, `Colab project '${projectName}' failed to create.`);
+    }
+    setLoading(false);
+  };
+
+  // Autonomous self-enhancement and auto-feature addition
+  const triggerSelfEnhancement = async (desc: string = 'Autonomous self-enhancement') => {
+    setLoading(true);
+    try {
+      await fetch('/api/qmoi-model?enhance=1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': localStorage.getItem('adminToken') || '' },
+        body: JSON.stringify({ desc }),
+      });
+      setChatHistory([
+        ...chatHistory,
+        { type: 'system', content: `Self-enhancement triggered: ${desc}` }
+      ]);
+      sendEmailNotification('AI Self-Enhancement', `The AI has performed a self-enhancement: ${desc}`);
+    } catch (e) {
+      setChatHistory([
+        ...chatHistory,
+        { type: 'system', content: `Self-enhancement failed: ${desc}` }
+      ]);
+      sendEmailNotification('AI Self-Enhancement Failed', `Self-enhancement failed: ${desc}`);
+    }
+    setLoading(false);
+  };
+
+  // Periodic backup and self-enhancement (every 6 hours)
+  useEffect(() => {
+    if (!isMaster()) return;
+    const interval = setInterval(() => {
+      // Example: backup all current projects (simulate with one project for now)
+      if (aiTasks.length > 0) {
+        const lastProject = aiTasks.find((t: any) => t.type === 'project-init');
+        if (lastProject) {
+          backupToHuggingFace(lastProject.project, lastProject.files || []);
+        }
+      }
+      // Trigger self-enhancement
+      triggerSelfEnhancement('Periodic autonomous self-enhancement');
+    }, 6 * 60 * 60 * 1000); // 6 hours
+    return () => clearInterval(interval);
+  }, [aiTasks]);
+
+  const mediaStatus = useMediaGenerationStatus();
+  const automationStatus = useGlobalAutomation();
+  const datasets = useDatasetManager();
+  const { trainingStatus, lastTrained } = useModelTrainer();
+  const problems = useVSCodeProblems();
+  const analytics = useAnalyticsDashboard();
+
+  if (!isMaster()) return null;
+
+  // --- Colab Status Indicator ---
+  const colabStatus = colab.result?.status || (colab.error ? 'error' : 'idle');
+  const colabStatusColor = colabStatus === 'success' ? 'bg-green-500' : colabStatus === 'error' ? 'bg-red-500' : colabStatus === 'running' ? 'bg-yellow-400' : 'bg-gray-300';
+
+  // --- Log master actions ---
+  const logMasterAction = (action: string) => {
+    setMasterLogs(logs => [...logs, { time: new Date().toLocaleString(), action }]);
+  };
+
+  const [aiSpeaking, setAiSpeaking] = useState(false);
+  const [masterLogs, setMasterLogs] = useState<{ time: string; action: string }[]>([]);
+  const audioPulseRef = useRef<HTMLDivElement>(null);
+
+  // Patch AI speaking effect to trigger pulse
+  useEffect(() => {
+    if (!talkMode) return;
+    const last = chatHistory[chatHistory.length - 1];
+    if (last && last.type === 'ai') {
+      setAiSpeaking(true);
+      speak(last.text);
+      setTimeout(() => setAiSpeaking(false), Math.max(1000, last.text.length * 30));
+    }
+  }, [chatHistory, talkMode, speak]);
+
+  // Patch master-only actions to log
+  const masterCreateColabProject = async (...args: [string, any]) => {
+    logMasterAction('Created Colab Project');
+    await createColabProject(...args);
+  };
+  const masterTriggerSelfEnhancement = async (...args: [string?]) => {
+    logMasterAction('Triggered Self-Enhancement');
+    await triggerSelfEnhancement(...args);
+  };
+  const masterBackupToHuggingFace = async (...args: [string, any[]]) => {
+    logMasterAction('Backed up to Hugging Face');
+    await backupToHuggingFace(...args);
+  };
+  const masterSendEmailNotification = async (...args: [string, string]) => {
+    logMasterAction('Sent Email Notification');
+    await sendEmailNotification(...args);
+  };
+
+  // --- Audio Pulse Visualization ---
+  useEffect(() => {
+    if (!aiSpeaking) return;
+    let running = true;
+    const animate = () => {
+      if (!audioPulseRef.current) return;
+      audioPulseRef.current.style.height = `${20 + Math.random() * 30}px`;
+      if (running) requestAnimationFrame(animate);
+    };
+    animate();
+    return () => { running = false; if (audioPulseRef.current) audioPulseRef.current.style.height = '20px'; };
+  }, [aiSpeaking]);
+
+  // --- System Resource Monitor (Master Only) ---
+  const health = useAIHealthCheck();
+  const [autoUpgrade, setAutoUpgrade] = useState(true);
+  const [autoTrading, setAutoTrading] = useState(false);
+
+  // Auto self-enhance if autoUpgrade is enabled
+  useEffect(() => {
+    if (!isMaster() || !autoUpgrade) return;
+    const interval = setInterval(() => {
+      triggerSelfEnhancement('Auto-upgrade (master toggle enabled)');
+    }, 2 * 60 * 60 * 1000); // every 2 hours
+    return () => clearInterval(interval);
+  }, [autoUpgrade]);
+
+  // --- Autonomous Trading Logic ---
+  const tradingStatus = useTradingAutomation();
+  useEffect(() => {
+    if (!isMaster() || !autoTrading) return;
+    const interval = setInterval(() => {
+      // Example: Only trade if confidence is high and analytics are positive
+      if (tradingStats && tradingStats.confidence > 0.85 && tradingStats.analytics && tradingStats.analytics.winCount > tradingStats.analytics.lossCount) {
+        // Find best pair and trade small amount
+        const bestPair = tradingStats.analytics.pairs && tradingStats.analytics.pairs.length > 0 ? tradingStats.analytics.pairs[0] : 'BTCUSDT';
+        executeTrade({ symbol: bestPair, side: 'buy', amount: 0.001 }).then(result => {
+          logMasterAction(`Autonomous trade: ${bestPair} buy 0.001`);
+          setChatHistory(prev => ([
+            ...prev,
+            { type: 'system', content: `Autonomous trade executed: ${bestPair} buy 0.001. Result: ${JSON.stringify(result)}` }
+          ]));
+        });
+      }
+    }, 10 * 60 * 1000); // every 10 minutes
+    return () => clearInterval(interval);
+  }, [autoTrading, tradingStats]);
+
+  // Quick Colab notebook launcher (master only)
+  const launchColabNotebook = () => {
+    window.open('https://colab.research.google.com/', '_blank');
+    logMasterAction('Launched Colab Notebook');
+  };
+
+  // --- Bitget Trading Control (Master Only) ---
+  const {
+    bitgetStatus,
+    enableRealTrading,
+    disableRealTrading,
+    executeTrade,
+    isRealTradingEnabled,
+    lastTradeResult,
+    tradingError
+  } = useBitgetTrader();
+  const [tradingEnabled, setTradingEnabled] = useState(isRealTradingEnabled);
+
+  // Master can toggle real trading
+  const handleToggleTrading = () => {
+    if (tradingEnabled) {
+      disableRealTrading();
+      setTradingEnabled(false);
+      logMasterAction('Disabled real trading on Bitget');
+    } else {
+      enableRealTrading();
+      setTradingEnabled(true);
+      logMasterAction('Enabled real trading on Bitget');
+    }
+  };
+
+  // Master can force a trade (for demo/testing)
+  const handleForceTrade = async () => {
+    const result = await executeTrade({ symbol: 'BTCUSDT', side: 'buy', amount: 0.001 });
+    logMasterAction('Forced trade on Bitget: BTCUSDT buy 0.001');
+    setChatHistory([
+      ...chatHistory,
+      { type: 'system', content: `Forced trade executed: ${JSON.stringify(result)}` }
+    ]);
+  };
+
+  // --- Wallet & Cashon State ---
+  const [walletTab, setWalletTab] = useState<'send'|'instruction'|'apikeys'|'history'>('send');
+  const [walletPlatform, setWalletPlatform] = useState('Mpesa');
+  const [walletTo, setWalletTo] = useState('');
+  const [walletAmount, setWalletAmount] = useState('');
+  const [walletCurrency, setWalletCurrency] = useState('KES');
+  const [walletInstruction, setWalletInstruction] = useState('');
+  const [walletApiKey, setWalletApiKey] = useState('');
+  const [walletApiKeyPlatform, setWalletApiKeyPlatform] = useState('Mpesa');
+  const [walletResult, setWalletResult] = useState<any>(null);
+  const [walletHistory, setWalletHistory] = useState<any[]>([]);
+  // --- Kids Zone State ---
+  const [kidsTab, setKidsTab] = useState<'music'|'story'|'conversation'|'reminder'>('music');
+  const [kidsInput, setKidsInput] = useState('');
+  const [kidsResult, setKidsResult] = useState<any>(null);
+  // --- Multi-Presence State ---
+  const [multiLocations, setMultiLocations] = useState<string>('');
+  const [multiTask, setMultiTask] = useState('');
+  const [multiResult, setMultiResult] = useState<any>(null);
+  // --- Swahili Chat State ---
+  const [swahiliUser, setSwahiliUser] = useState('Victor');
+  const [swahiliMessage, setSwahiliMessage] = useState('');
+  const [swahiliReply, setSwahiliReply] = useState('');
+  // --- AI Teacher State ---
+  const [teachUser, setTeachUser] = useState('Victor');
+  const [teachSubject, setTeachSubject] = useState('Swahili');
+  const [teachLevel, setTeachLevel] = useState('beginner');
+  const [teachLanguage, setTeachLanguage] = useState('sw');
+  const [teachLesson, setTeachLesson] = useState('');
+
+  // --- UI ---
   return (
-    <Card className="h-full">
+    <Card>
       <QIStateWindow state="admin" global={globalState} aiHealth={aiHealth} colabJob={{
         jobStatus: colab.result,
         result: colab.result,
         error: colab.error || undefined,
       }} />
       <CardHeader>
-        <CardTitle>QI (Quantum Intelligence) - Admin Only</CardTitle>
+        <CardTitle>Q-I {talkMode && <span style={{color:'#0a0'}}>🗣️ Talk Mode</span>}</CardTitle>
         <div className="flex gap-2 mt-2">
           <Button size="sm" variant="outline" onClick={() => setShowAllStats(v => !v)}>All AI Stats</Button>
           <Button size="sm" variant="outline" onClick={() => setShowQIChat(true)}>QI Chat (App Control)</Button>
+          <Button size="sm" variant={talkMode ? 'destructive' : 'outline'} onClick={() => setTalkMode(t => !t)}>
+            {talkMode ? 'Disable Talk Mode' : 'Enable Talk Mode'}
+          </Button>
         </div>
       </CardHeader>
       <CardContent>
@@ -285,286 +608,191 @@ export function QI() {
                   </tr>
                 </thead>
                 <tbody>
-                  {aiTasks.slice().reverse().map((t: any) => (
-                    <tr key={t.id}>
-                      <td>{t.id}</td>
+                  {aiTasks.map((t: any, i: number) => (
+                    <tr key={i}>
+                      <td>{t.id || i}</td>
                       <td>{t.user || 'admin'}</td>
                       <td>{t.type}</td>
                       <td>{t.desc || t.file || '-'}</td>
-                      <td>{t.status}</td>
+                      <td>
+                        <Badge variant={t.status === 'completed' ? 'success' : t.status === 'pending' ? 'warning' : 'default'}>
+                          {t.status}
+                        </Badge>
+                      </td>
                       <td>{new Date(t.timestamp).toLocaleString()}</td>
-                      <td>{t.duration ? t.duration+'s' : '-'}</td>
+                      <td>{t.duration ? `${t.duration}s` : '-'}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <div className="text-xs text-gray-500 mt-2">[Admin-only] Advanced analytics, export, and controls for all AI activity, usage, and project data.</div>
           </div>
         )}
+        <div className="flex flex-col gap-4">
+          <div className="p-4 bg-gray-50 rounded-lg shadow">
+            <h3 className="font-semibold mb-2">AI Tasks Overview</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Total Tasks</span>
+                <span className="text-lg font-bold">{aiTasks.length}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Pending Tasks</span>
+                <span className="text-lg font-bold">{aiTasks.filter((t: any) => t.status === 'pending').length}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Completed Tasks</span>
+                <span className="text-lg font-bold">{aiTasks.filter((t: any) => t.status === 'completed').length}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Failed Tasks</span>
+                <span className="text-lg font-bold">{aiTasks.filter((t: any) => t.status === 'error').length}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Avg Duration</span>
+                <span className="text-lg font-bold">
+                  {(() => {
+                    const durations = aiTasks.map((t: any) => t.duration).filter(Boolean);
+                    if (durations.length === 0) return '-';
+                    const avgDuration = durations.reduce((a: number, b: number) => a + b, 0) / durations.length;
+                    return `${avgDuration.toFixed(1)}s`;
+                  })()}
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Last Task</span>
+                <span className="text-lg font-bold">
+                  {aiTasks.length > 0 ? new Date(aiTasks[aiTasks.length - 1].timestamp).toLocaleString() : 'N/A'}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="p-4 bg-gray-50 rounded-lg shadow">
+            <h3 className="font-semibold mb-2">Trading Stats Overview</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Total Trades</span>
+                <span className="text-lg font-bold">{tradingStats?.trades.length || 0}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Winning Trades</span>
+                <span className="text-lg font-bold">{tradingStats?.analytics.winCount || 0}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Losing Trades</span>
+                <span className="text-lg font-bold">{tradingStats?.analytics.lossCount || 0}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Total Profit</span>
+                <span className="text-lg font-bold text-green-600">
+                  {tradingStats?.analytics.totalProfit !== undefined ? `${tradingStats.analytics.totalProfit.toFixed(2)} USDT` : 'N/A'}
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Total Loss</span>
+                <span className="text-lg font-bold text-red-600">
+                  {tradingStats?.analytics.totalLoss !== undefined ? `${Math.abs(tradingStats.analytics.totalLoss).toFixed(2)} USDT` : 'N/A'}
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Net Profit</span>
+                <span className="text-lg font-bold">
+                  {tradingStats?.analytics.netProfit !== undefined ? `${tradingStats.analytics.netProfit.toFixed(2)} USDT` : 'N/A'}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="p-4 bg-gray-50 rounded-lg shadow">
+            <h3 className="font-semibold mb-2">Media Generation Status</h3>
+            <div className="flex flex-col">
+              <span className="text-xs text-gray-500">Last Generated Media</span>
+              <span className="text-lg font-bold">
+                {mediaStatus?.lastGenerated ? new Date(mediaStatus.lastGenerated).toLocaleString() : 'N/A'}
+              </span>
+            </div>
+            <div className="flex flex-col mt-2">
+              <span className="text-xs text-gray-500">Next Scheduled Media</span>
+              <span className="text-lg font-bold">
+                {mediaStatus?.nextScheduled ? new Date(mediaStatus.nextScheduled).toLocaleString() : 'N/A'}
+              </span>
+            </div>
+            <div className="flex flex-col mt-2">
+              <span className="text-xs text-gray-500">Status</span>
+              <Badge variant={mediaStatus?.status === 'generating' ? 'warning' : mediaStatus?.status === 'completed' ? 'success' : 'default'}>
+                {mediaStatus?.status === 'generating' ? 'Media is being generated' : mediaStatus?.status === 'completed' ? 'Media generation completed' : 'N/A'}
+              </Badge>
+            </div>
+          </div>
+          <div className="p-4 bg-gray-50 rounded-lg shadow">
+            <h3 className="font-semibold mb-2">Global Automation Status</h3>
+            <div className="flex flex-col">
+              <span className="text-xs text-gray-500">Status</span>
+              <Badge variant={automationStatus?.enabled ? 'success' : 'destructive'}>
+                {automationStatus?.enabled ? 'Enabled' : 'Disabled'}
+              </Badge>
+            </div>
+            <div className="flex flex-col mt-2">
+              <span className="text-xs text-gray-500">Last Run</span>
+              <span className="text-lg font-bold">
+                {automationStatus?.lastRun ? new Date(automationStatus.lastRun).toLocaleString() : 'N/A'}
+              </span>
+            </div>
+            <div className="flex flex-col mt-2">
+              <span className="text-xs text-gray-500">Next Run</span>
+              <span className="text-lg font-bold">
+                {automationStatus?.nextRun ? new Date(automationStatus.nextRun).toLocaleString() : 'N/A'}
+              </span>
+            </div>
+          </div>
+        </div>
         {showQIChat && (
-          <div className="mb-4">
-            <h3 className="font-semibold mb-2">QI Chat (App Control, Testing, Updates)</h3>
-            <Chatbot
-              chatHistory={chatHistory}
-              setChatHistory={setChatHistory}
-              selectedModel={"qi-admin"}
-              setSelectedModel={() => {}}
-              onFileUpload={handleChatFile}
-              onEnhancement={handleEnhancement}
-              // TODO: Implement preview, test, implement, update push, version history logic
-            />
-            <div className="text-xs text-gray-500 mt-2">
-              This chat is for app-level changes, testing, preview, and update/version management. Updates can be pushed to all apps after testing.<br />
-              <b>Pending/Background Enhancements:</b>
-              <ul className="list-disc ml-4">
-                {pendingEnhancements.map((e, i) => (
-                  <li key={i}>{e}</li>
-                ))}
-              </ul>
+          <div className="mt-4 p-4 bg-gray-50 rounded-lg shadow">
+            <h3 className="font-semibold mb-2">QI Chat (App Control)</h3>
+            <div className="flex flex-col gap-2">
+              <div className="flex gap-2">
+                <Button size="sm" variant="outline" onClick={() => setChatHistory([])}>Clear Chat</Button>
+                <Button size="sm" variant="outline" onClick={() => setPersistentMemory([])}>Clear Memory</Button>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Talk Mode</span>
+                <div className="flex gap-2">
+                  <Button size="sm" variant={talkMode ? 'destructive' : 'outline'} onClick={() => setTalkMode(t => !t)}>
+                    {talkMode ? 'Disable Talk Mode' : 'Enable Talk Mode'}
+                  </Button>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Pending Enhancements</span>
+                <div className="flex flex-col gap-1">
+                  {pendingEnhancements.length === 0 && <span className="text-gray-400 text-sm">No pending enhancements</span>}
+                  {pendingEnhancements.map((e, i) => (
+                    <div key={i} className="p-2 bg-gray-100 rounded">
+                      {e}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-500">Chat History</span>
+                <div className="flex flex-col gap-1">
+                  {chatHistory.length === 0 && <span className="text-gray-400 text-sm">No chat history</span>}
+                  {chatHistory.map((msg, i) => (
+                    <div key={i} className={`p-2 rounded ${msg.type === 'user' ? 'bg-blue-100' : 'bg-green-100'}`}>
+                      {msg.type === 'user' ? 'You: ' : 'AI: '}
+                      {msg.text}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <Button size="sm" variant="outline" onClick={() => setShowQIChat(false)}>Close QI Chat</Button>
+              </div>
             </div>
           </div>
         )}
-        <Tabs defaultValue="tasks" className="w-full">
-          <TabsList>
-            <TabsTrigger value="tasks">AI Tasks</TabsTrigger>
-            <TabsTrigger value="trading">Trading Activities</TabsTrigger>
-            <TabsTrigger value="devices">Devices</TabsTrigger>
-            <TabsTrigger value="extensions">Extensions/Packages</TabsTrigger>
-            {isAdminOrSister() && <TabsTrigger value="goals">Life Goals & Inventions</TabsTrigger>}
-          </TabsList>
-          <TabsContent value="tasks">
-            <div className="mb-4">
-              <h3 className="font-semibold mb-2">Current AI Tasks</h3>
-              {aiTasks.map(task => (
-                <div key={task.id} className="flex items-center gap-2 mb-1">
-                  <Badge>{task.status}</Badge>
-                  <span>{task.name}</span>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent value="trading">
-            <div className="mb-4">
-              <h3 className="font-semibold mb-2">Trading Stats</h3>
-              {tradingStats && (
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span>Confidence:</span>
-                    <div className={`w-32 h-4 rounded ${confidenceColor(tradingStats.confidence)}`}></div>
-                    <span className="font-mono">{tradingStats.confidence.toFixed(2)}</span>
-                  </div>
-                  <div className="mb-2">
-                    <span>Status: </span>
-                    {tradingStats.usingRealFunds ? (
-                      <Badge className="bg-green-600">Trading with Real Funds</Badge>
-                    ) : (
-                      <Badge className="bg-yellow-400 text-black">Paper Trading</Badge>
-                    )}
-                  </div>
-                  <div className="mb-2">Asset: <b>{tradingStats.asset}</b></div>
-                  <div className="mb-2">Account Balance: <b>${tradingStats.accountBalance.toLocaleString()}</b></div>
-                  {/* Enhanced analytics */}
-                  {tradingStats.analytics && (
-                    <div className="mb-4 p-2 bg-blue-50 rounded text-xs">
-                      <h4 className="font-semibold mb-1">Advanced Analytics</h4>
-                      <div className="flex flex-wrap gap-4 mb-2">
-                        <div><b>Best Pair:</b> {tradingStats.analytics.pairs && tradingStats.analytics.pairs.length > 0 ? tradingStats.analytics.pairs[0] : '-'}</div>
-                        <div><b>Most Profitable Trade:</b> {tradingStats.trades && tradingStats.trades.length > 0 ? Math.max(...tradingStats.trades.map((t: any) => t.profit)).toFixed(2) : '-'}</div>
-                        <div><b>Biggest Loss:</b> {tradingStats.trades && tradingStats.trades.length > 0 ? Math.min(...tradingStats.trades.map((t: any) => t.profit)).toFixed(2) : '-'}</div>
-                        <div><b>Average Profit:</b> {tradingStats.trades && tradingStats.trades.length > 0 ? (tradingStats.trades.reduce((a: number, t: any) => a + t.profit, 0) / tradingStats.trades.length).toFixed(2) : '-'}</div>
-                      </div>
-                      <div className="flex flex-wrap gap-4 mb-2">
-                        <div><b>Win/Loss Ratio:</b> {tradingStats.analytics.lossCount > 0 ? (tradingStats.analytics.winCount / tradingStats.analytics.lossCount).toFixed(2) : 'N/A'}</div>
-                        <div><b>Longest Win Streak:</b> {(() => {
-                          let max = 0, cur = 0;
-                          for (const t of tradingStats.trades || []) {
-                            if (t.profit > 0) cur++; else cur = 0;
-                            if (cur > max) max = cur;
-                          }
-                          return max;
-                        })()}</div>
-                        <div><b>Longest Loss Streak:</b> {(() => {
-                          let max = 0, cur = 0;
-                          for (const t of tradingStats.trades || []) {
-                            if (t.profit < 0) cur++; else cur = 0;
-                            if (cur > max) max = cur;
-                          }
-                          return max;
-                        })()}</div>
-                      </div>
-                    </div>
-                  )}
-                  {/* Chart visualization */}
-                  {tradingStats && tradingStats.trades && tradingStats.trades.length > 0 && (
-                    <div className="mb-4">
-                      <h4 className="font-semibold">Profit Over Time</h4>
-                      <ChartContainer config={{}}>
-                        <Recharts.LineChart width={400} height={200} data={tradingStats.trades}>
-                          <Recharts.XAxis dataKey="id" />
-                          <Recharts.YAxis />
-                          <Recharts.Tooltip />
-                          <Recharts.Line type="monotone" dataKey="profit" stroke="#22c55e" />
-                        </Recharts.LineChart>
-                      </ChartContainer>
-                    </div>
-                  )}
-                  <div className="mb-2">
-                    <h4 className="font-semibold">Recent Trades</h4>
-                    <table className="w-full text-xs">
-                      <thead>
-                        <tr>
-                          <th>Pair</th>
-                          <th>Amount</th>
-                          <th>Profit</th>
-                          <th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {tradingStats.trades.map((t: any) => (
-                          <tr key={t.id} className={t.profit > 0 ? 'text-green-600' : 'text-red-600'}>
-                            <td>{t.pair}</td>
-                            <td>{t.amount}</td>
-                            <td>{t.profit}</td>
-                            <td>{t.status}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <div className="mb-2">
-                    <span>Last Trade: </span>
-                    <span>{tradingStats.lastTrade?.pair} ({tradingStats.lastTrade?.amount})</span>
-                    <span className={tradingStats.lastTrade?.profit > 0 ? 'text-green-600' : 'text-red-600'}>
-                      {tradingStats.lastTrade?.profit > 0 ? `+${tradingStats.lastTrade?.profit}` : tradingStats.lastTrade?.profit}
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
-          </TabsContent>
-          <TabsContent value="devices">
-            <div className="mb-4">
-              <h3 className="font-semibold mb-2">All Devices (Map & Stats)</h3>
-              <DeviceMap devices={devices} />
-              <div className="overflow-x-auto max-h-64 mt-4">
-                <table className="w-full text-xs">
-                  <thead>
-                    <tr>
-                      <th>User</th>
-                      <th>Device</th>
-                      <th>Status</th>
-                      <th>Last Seen</th>
-                      <th>Latitude</th>
-                      <th>Longitude</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {devices.map((d, i) => (
-                      <tr key={i} className={d.status === 'lost' ? 'text-red-600' : d.status === 'active' ? 'text-green-600' : ''}>
-                        <td>{d.user}</td>
-                        <td>{d.name}</td>
-                        <td>{d.status}</td>
-                        <td>{d.lastSeen}</td>
-                        <td>{d.location.lat}</td>
-                        <td>{d.location.lng}</td>
-                        <td>
-                          {d.status !== 'lost' && (
-                            <Button size="sm" variant="destructive" onClick={() => reportDeviceLost(d.name)}>
-                              Report Lost
-                            </Button>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div className="text-xs text-gray-500 mt-2">[Admin-only] Track, filter, and manage all user devices. Lost devices are highlighted in red. Use 'Report Lost' to simulate device loss tracking.</div>
-            </div>
-          </TabsContent>
-          <TabsContent value="extensions">
-            <div className="mb-4">
-              <h3 className="font-semibold mb-2">Extension/Package/Dataset Management</h3>
-              <div className="flex gap-2 mb-2">
-                <input
-                  className="border rounded p-2 text-xs"
-                  placeholder="Extension/Package name (e.g. numpy, react, vscode-ext)"
-                  value={extInput}
-                  onChange={e => setExtInput(e.target.value)}
-                />
-                <Button size="sm" onClick={() => extMgr.installExtension(extInput)} disabled={!extInput || extMgr.status === 'installing'}>
-                  Install
-                </Button>
-                <Button size="sm" onClick={() => colab.startJob({ type: 'build', name: extInput })} disabled={!extInput || colab.jobStatus === 'running'}>
-                  Build in Colab
-                </Button>
-              </div>
-              <div className="mb-2">
-                <b>Installed:</b> {extMgr.extensions.join(", ") || 'None'}
-              </div>
-              <div className="mb-2">
-                <b>Colab Job Status:</b> {colab.jobStatus} {colab.error && <span className="text-red-500">Error: {colab.error}</span>}
-              </div>
-              <div className="mb-2">
-                <b>AI Health:</b> {aiHealth.status} <span className="text-gray-400">(Last check: {new Date(aiHealth.lastCheck).toLocaleTimeString()})</span> {aiHealth.error && <span className="text-red-500">Error: {aiHealth.error}</span>}
-              </div>
-              <div className="text-xs text-gray-500 mt-2">[Admin-only] Search, install, and build extensions/packages/datasets. AI can trigger builds/installs and update QI state. All actions are logged and visible in QI analytics.</div>
-            </div>
-          </TabsContent>
-          {isAdminOrSister() && (
-            <TabsContent value="goals">
-              <div className="mb-4">
-                <h3 className="font-semibold mb-2">Life Goals, Ambitions & Invention Projects</h3>
-                <div className="mb-2 text-xs text-gray-500">
-                  All data is encrypted and only visible to admin/sister. AI uses these to suggest and manage projects for your ambitions, protection, welfare, and inventions.
-                </div>
-                <div className="mb-4">
-                  <h4 className="font-semibold">Your Life Goals & Ambitions</h4>
-                  <ul className="list-disc ml-4 mb-2">
-                    {goals.map((g, i) => (
-                      <li key={i}>
-                        {goalEditIdx === i ? (
-                          <>
-                            <input className="border rounded p-1 text-xs" value={goalEditValue} onChange={e => setGoalEditValue(e.target.value)} />
-                            <Button size="sm" onClick={() => { setGoals(goals.map((v, idx) => idx === i ? goalEditValue : v)); setGoalEditIdx(null); }}>Save</Button>
-                            <Button size="sm" variant="destructive" onClick={() => setGoalEditIdx(null)}>Cancel</Button>
-                          </>
-                        ) : (
-                          <>
-                            {g}
-                            <Button size="sm" onClick={() => { setGoalEditIdx(i); setGoalEditValue(g); }}>Edit</Button>
-                            <Button size="sm" variant="destructive" onClick={() => setGoals(goals.filter((_, idx) => idx !== i))}>Delete</Button>
-                          </>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                  <input className="border rounded p-1 text-xs" placeholder="Add new goal/ambition..." value={goalInput} onChange={e => setGoalInput(e.target.value)} />
-                  <Button size="sm" onClick={() => { if (goalInput) setGoals([...goals, goalInput]); setGoalInput(''); }}>Add</Button>
-                </div>
-                <div className="mb-4">
-                  <h4 className="font-semibold">Invention Projects (Admin/Sister Only)</h4>
-                  <ul className="list-disc ml-4 mb-2">
-                    {inventions.map((inv, i) => (
-                      <li key={i}>
-                        {inv}
-                        <Button size="sm" variant="destructive" onClick={() => setInventions(inventions.filter((_, idx) => idx !== i))}>Delete</Button>
-                      </li>
-                    ))}
-                  </ul>
-                  <input className="border rounded p-1 text-xs" placeholder="Add new invention project..." value={inventionInput} onChange={e => setInventionInput(e.target.value)} />
-                  <Button size="sm" onClick={() => { if (inventionInput) setInventions([...inventions, inventionInput]); setInventionInput(''); }}>Add</Button>
-                </div>
-                <div className="text-xs text-blue-600">
-                  <b>Note:</b> AI will use these goals and inventions to suggest, create, and manage projects for you automatically. All data is encrypted and never exported or exposed.
-                </div>
-              </div>
-            </TabsContent>
-          )}
-        </Tabs>
       </CardContent>
     </Card>
   );
 }
+
+export default QIComponent;

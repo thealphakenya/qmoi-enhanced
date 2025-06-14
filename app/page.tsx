@@ -5,6 +5,8 @@ import { FileExplorer } from "@/components/FileExplorer"
 import { GitStatus } from "@/components/GitStatus"
 import { PreviewWindow } from "@/components/PreviewWindow"
 import { QIStateWindow } from "@/components/QIStateWindow"
+import { QiSpaces } from "@/components/QiSpaces"
+import { LcSpaces } from "@/components/LcSpaces"
 import { useState } from "react"
 
 export default function Home() {
@@ -16,6 +18,8 @@ export default function Home() {
     memory: chatHistory.length,
     recent: chatHistory.slice(-3).map((m: any) => m.content || m.text),
   };
+  // Demo: simple user selector
+  const [user, setUser] = useState<string>("Victor Kwemoi")
   return (
     <div className="grid grid-cols-4 grid-rows-[auto_1fr_auto] h-screen bg-[#111] text-[#ccffcc]">
       {/* Sidebar */}
@@ -33,6 +37,15 @@ export default function Home() {
           setSelectedModel={setSelectedModel}
         />
         <AlphaQAISystem />
+        <div style={{ marginTop: 24 }}>
+          <label style={{ fontWeight: 600 }}>Select User: </label>
+          <select value={user} onChange={e => setUser(e.target.value)} className="bg-[#222] border border-green-700 p-1 rounded">
+            <option value="Victor Kwemoi">Master (Victor)</option>
+            <option value="Leah Chebet">Leah Chebet</option>
+          </select>
+        </div>
+        <QiSpaces user={user} />
+        <LcSpaces user={user} />
       </main>
       {/* Preview */}
       <section className="col-span-1 p-2 border-l border-green-700 overflow-auto">

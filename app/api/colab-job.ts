@@ -3,16 +3,6 @@ import fs from 'fs';
 
 const JOBS_PATH = '/workspaces/Alpha-Q-ai/colab-jobs-log.jsonl';
 
-// Simulated cloud/Colab credentials (replace with secure storage in production)
-const COLAB_API_URL = process.env.COLAB_API_URL || '';
-const COLAB_API_KEY = process.env.COLAB_API_KEY || '';
-
-// Authenticate with Colab/cloud (stub)
-async function authenticateColab() {
-  // TODO: Implement real authentication (OAuth2, API key, etc.)
-  return COLAB_API_KEY ? { success: true, token: COLAB_API_KEY } : { success: false };
-}
-
 // Install package in Colab/cloud (stub)
 async function installPackage(pkg: string, manager: 'npm' | 'pip' = 'npm') {
   // const axios = await import('axios');
@@ -21,14 +11,21 @@ async function installPackage(pkg: string, manager: 'npm' | 'pip' = 'npm') {
 }
 
 // Upload dataset to Colab/cloud (stub)
-async function uploadDataset(dataset: any) {
+interface Dataset {
+  name: string;
+  [key: string]: unknown;
+}
+async function uploadDataset(dataset: Dataset) {
   // const axios = await import('axios');
   // TODO: Real API call to upload dataset
   return { status: 'success', dataset: dataset.name };
 }
 
 // Execute job in Colab/cloud (stub)
-async function executeColabJob(jobSpec: any) {
+interface JobSpec {
+  [key: string]: unknown;
+}
+async function executeColabJob(jobSpec: JobSpec) {
   // const axios = await import('axios');
   // TODO: Real API call to execute job
   return { status: 'running', jobId: Date.now(), jobSpec };
@@ -41,7 +38,7 @@ async function getColabJobStatus(jobId: number) {
   return { jobId, status: 'completed', result: 'Job result data' };
 }
 
-function persistJob(job: any) {
+function persistJob(job: Record<string, unknown>) {
   fs.appendFileSync(JOBS_PATH, JSON.stringify(job) + '\n');
 }
 

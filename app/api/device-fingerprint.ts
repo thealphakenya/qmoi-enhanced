@@ -9,7 +9,7 @@ function loadFingerprints() {
   }
   return {};
 }
-function saveFingerprints(data: any) {
+function saveFingerprints(data: Record<string, unknown>) {
   fs.writeFileSync(FINGERPRINTS_PATH, JSON.stringify(data, null, 2));
 }
 
