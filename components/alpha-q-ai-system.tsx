@@ -1425,39 +1425,49 @@ export default function AlphaQAISystem() {
   </div>
 
   <ul className="list-inside list-decimal ml-4">
-    {datasets.map((d, i) => (
-      <li key={i} className="mb-1">
-        {d}
-      </li>
-    ))}
-    {datasetFiles.map((f, i) => (
-      <li key={i + datasets.length} className="flex items-center gap-2 mb-1">
-        <span className="flex-1 truncate">{f.name}</span>
+    {datasets.length > 0 ? (
+      datasets.map((d, i) => (
+        <li key={i} className="mb-1">
+          {d}
+        </li>
+      ))
+    ) : (
+      <li className="text-gray-500">No datasets added yet</li>
+    )}
 
-        {f.type.startsWith("image") && (
-          <img src={URL.createObjectURL(f)} alt={f.name} className="w-10 h-10 object-cover rounded border ml-2" />
-        )}
+    {datasetFiles.length > 0 ? (
+      datasetFiles.map((f, i) => (
+        <li key={i + datasets.length} className="flex items-center gap-2 mb-1">
+          <span className="flex-1 truncate">{f.name}</span>
 
-        {f.type.startsWith("text") && (
-          <Button
-            size="sm"
-            onClick={async () => {
-              try {
-                const text = await f.text();
-                alert(text.slice(0, 200) + (text.length > 200 ? "…" : ""));
-              } catch (error) {
-                console.error("Error reading text file.", error);
-                alert("Unable to preview text.");
-              }
-            }}>
-            Preview
-          </Button>
-        )}
+          {f.type.startsWith("image") && (
+            <img src={URL.createObjectURL(f)} alt={f.name} className="w-10 h-10 object-cover rounded border ml-2" />
+          )}
 
-        {/* Optional delete button, if needed in future */}
-        {/* <Button size="sm" variant="destructive" onClick={() => handleRemoveFile(f)}>Remove</Button>*/}
-      </li>
-    ))}
+          {f.type.startsWith("text") && (
+            <Button
+              size="sm"
+              onClick={async () => {
+                try {
+                    const text = await f.text();
+                    alert(text.slice(0, 200) + (text.length > 200 ? "…" : ""));
+                } catch (error) {
+                    console.error("Error reading text file.", error);
+                    alert("Unable to preview text.");
+                }
+              }}>
+              Preview
+            </Button>
+          )}
+
+          {/* Optional delete button, if needed in future */}
+          {/* <Button size="sm" variant="destructive" onClick={() => handleRemoveFile(f)}>Remove</Button>*/}
+        </li>
+      ))
+    ) : (
+      <li className="text-gray-500">No files uploaded</li>
+    )}
+
   </ul>
 </div>
 export default function AlphaQAISystem(props) {
