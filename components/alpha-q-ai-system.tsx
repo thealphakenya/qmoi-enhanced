@@ -1398,25 +1398,27 @@ export default function AlphaQAISystem() {
 <div className="mb-4 border rounded p-2 bg-gray-50 dark:bg-gray-900">
   <h2 className="font-semibold mb-2">Datasets</h2>
 
+  {/* Input and upload controls */}
   <div className="flex gap-2 mb-2">
     <input
       type="text"
       className="p-1 rounded bg-gray-800 text-green-200 border border-green-700"
-      placeholder="Dataset name or URL..."
+      placeholder="Add dataset by URL or name..."
       value={datasetInput}
       onChange={(e) => setDatasetInput(e.target.value)}
     />
 
-    <Button size="sm" onClick={handleDatasetUpload}>
+    <Button size="sm" onClick={handleDatasetAdd}>
       Add Dataset
     </Button>
 
+    {/* File upload picker */}
     <input
       id="dataset-file-input"
       type="file"
       multiple
       className="hidden"
-      onChange={(e) => handleDatasetUpload(e)}
+      onChange={(e) => handleDatasetFileUpload(e)}
     />
 
     <label htmlFor="dataset-file-input">
@@ -1424,7 +1426,9 @@ export default function AlphaQAISystem() {
     </label>
   </div>
 
+  {/* List of datasets and files */}
   <ul className="list-inside list-decimal ml-4">
+    {/* URLs or names first */}
     {datasets.length > 0 ? (
       datasets.map((d, i) => (
         <li key={i} className="mb-1">
@@ -1435,15 +1439,18 @@ export default function AlphaQAISystem() {
       <li className="text-gray-500">No datasets added yet</li>
     )}
 
+    {/* File previews afterwards */}
     {datasetFiles.length > 0 ? (
       datasetFiles.map((f, i) => (
         <li key={i + datasets.length} className="flex items-center gap-2 mb-1">
           <span className="flex-1 truncate">{f.name}</span>
 
+          {/* Image preview if applicable */}
           {f.type.startsWith("image") && (
             <img src={URL.createObjectURL(f)} alt={f.name} className="w-10 h-10 object-cover rounded border ml-2" />
           )}
 
+          {/* Text preview button if applicable */}
           {f.type.startsWith("text") && (
             <Button
               size="sm"
@@ -1452,7 +1459,7 @@ export default function AlphaQAISystem() {
                     const text = await f.text();
                     alert(text.slice(0, 200) + (text.length > 200 ? "…" : ""));
                 } catch (error) {
-                    console.error("Error reading text file.", error);
+                    console.error("Error reading text.", error);
                     alert("Unable to preview text.");
                 }
               }}>
@@ -1460,7 +1467,7 @@ export default function AlphaQAISystem() {
             </Button>
           )}
 
-          {/* Optional delete button, if needed in future */}
+          {/* Optional delete button for future functionality */}
           {/* <Button size="sm" variant="destructive" onClick={() => handleRemoveFile(f)}>Remove</Button>*/}
         </li>
       ))
