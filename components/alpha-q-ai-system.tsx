@@ -1253,27 +1253,46 @@ export default function AlphaQAISystem() {
                     <input className="border rounded p-1 text-xs" placeholder="Add new goal/ambition..." value={goalInput} onChange={e => setGoalInput(e.target.value)} />
                     <Button size="sm" onClick={() => { if (goalInput) setGoals([...goals, goalInput]); setGoalInput(''); }}>Add</Button>
                   </div>
-                  <div className="mb-4">
-                    <h4 className="font-semibold">Invention Projects (Admin/Sister Only)</h4>
-                    <ul className="list-disc ml-4 mb-2">
-                      {inventions.map((inv, i) => (
-                        <li key={i}>
-                          {inv}
-                          <Button size="sm" variant="destructive" onClick={() => setInventions(inventions.filter((_, idx) => idx !== i))}>Delete</Button>
-                        </li>
-                      ))}
-                    </ul>
-                    <input className="border rounded p-1 text-xs" placeholder="Add new invention project..." value={inventionInput} onChange={e => setInventionInput(e.target.value)} />
-                    <Button size="sm" onClick={() => { if (inventionInput) setInventions([...inventions, inventionInput]); setInventionInput(''); }}>Add</Button>
-                  </div>
-                  <div className="text-xs text-blue-600">
-                    <b>Note:</b> AI will use these goals and inventions to suggest, create, and manage projects for you automatically. All data is encrypted and never exported or exposed.
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          )}
-        </Tabs>
+                 <div className="mb-4">
+  <h4 className="font-semibold">Invention Projects (Admin/Sister Only)</h4>
+  <ul className="list-inside list-decimal ml-4 mb-2">
+    {inventions.map((inv, i) => (
+      <li key={i} className="flex items-center gap-2">
+        <span>{inv}</span>
+        <Button
+          size="sm"
+          variant="destructive"
+          onClick={() =>
+            setInventions(inventions.filter((_, idx) => idx !== i))
+          }
+        >
+          Delete
+        </Button>
+      </li>
+    ))}
+  </ul>
+  <input
+    className="border rounded p-1 text-xs"
+    placeholder="Add new invention project..."
+    value={inventionInput}
+    onChange={(e) => setInventionInput(e.target.value)}
+  />
+  <Button
+    size="sm"
+    onClick={() => {
+      if (inventionInput.trim()) {
+        setInventions([...inventions, inventionInput.trim()]);
+        setInventionInput('');
+      }
+    }}>
+    Add
+  </Button>
+</div>
+
+<div className="text-xs text-blue-600">
+  <b>Note:</b> AI will use these goals and inventions to suggest, create, and manage projects for you
+  automatically. All data is encrypted and never exported or exposed.
+</div>
 
         {/* Export options */}
         <div className="mb-4 flex gap-2">
