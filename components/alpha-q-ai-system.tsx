@@ -1389,7 +1389,7 @@ export default function AlphaQAISystem() {
         </div>
       )}
 {/* Dataset Management UI */}
-<div className="mb-4 border rounded p-2 bg-white dark:bg-gray-900">
+<div className="mb-4 border rounded p-2 bg-gray-50 dark:bg-gray-900">
   <h2 className="font-semibold mb-2">Datasets</h2>
 
   <div className="flex gap-2 mb-2">
@@ -1420,11 +1420,13 @@ export default function AlphaQAISystem() {
 
   <ul className="list-inside list-decimal ml-4">
     {datasets.map((d, i) => (
-      <li key={i}>{d}</li>
+      <li key={i} className="mb-1">
+        {d}
+      </li>
     ))}
     {datasetFiles.map((f, i) => (
-      <li key={i + datasets.length} className="flex items-center gap-2">
-        <span>{f.name}</span>
+      <li key={i + datasets.length} className="flex items-center gap-2 mb-1">
+        <span className="flex-1 truncate">{f.name}</span>
 
         {f.type.startsWith("image") && (
           <img src={URL.createObjectURL(f)} alt={f.name} className="w-10 h-10 object-cover rounded border ml-2" />
@@ -1438,7 +1440,7 @@ export default function AlphaQAISystem() {
                 const text = await f.text();
                 alert(text.slice(0, 200) + (text.length > 200 ? "…" : ""));
               } catch (error) {
-                console.error("Error reading text file", error);
+                console.error("Error reading text file.", error);
                 alert("Unable to preview text.");
               }
             }}>
