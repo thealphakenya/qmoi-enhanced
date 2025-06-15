@@ -1396,11 +1396,21 @@ export default function AlphaQAISystem() {
   )
 }
 
+export default function AlphaQAISystem() {
+  // … your state, handlers, effects…
+
+  return (
+    <div className="p-4">
+      {/* … your UI …*/}
+    </div>
+  )
+}
+
 // Wrap AlphaQAISystem in AIProvider for persistent context
-export function AlphaQAISystemWithProvider(props: any) {
+export function AlphaQAISystemWithProvider(props) {
   return (
     <AIProvider>
       <AlphaQAISystem {...props} />
     </AIProvider>
-  );
+  )
 }
