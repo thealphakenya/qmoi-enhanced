@@ -1388,7 +1388,7 @@ export default function AlphaQAISystem() {
 
         </div>
       )}
-      {/* Dataset Management UI */}
+  {/* Dataset Management UI */}
 <div className="mb-4 border rounded p-2 bg-white dark:bg-gray-900">
   <h2 className="font-semibold mb-2">Datasets</h2>
 
@@ -1425,6 +1425,7 @@ export default function AlphaQAISystem() {
     {datasetFiles.map((f, i) => (
       <li key={i + datasets.length} className="flex items-center gap-2">
         <span>{f.name}</span>
+
         {f.type.startsWith("image") && (
           <img src={URL.createObjectURL(f)} alt={f.name} className="w-10 h-10 object-cover rounded border" />
         )}
