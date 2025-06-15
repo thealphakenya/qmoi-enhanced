@@ -4,9 +4,9 @@
     { "src": "next.config.mjs", "use": "@vercel/next" },
     { "src": "app/api/**/*.ts", "use": "@vercel/node" }
   ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/app/api/$1.ts" },
-    { "src": "/(.*)", "dest": "/app/page.tsx" }
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/app/api/$1.ts" },
+    { "source": "/(.*)", "destination": "/app/page.tsx" }
   ],
   "env": {
     "NODE_ENV": "production"
@@ -16,7 +16,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/(.*)", 
       "headers": [
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
