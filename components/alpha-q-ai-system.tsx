@@ -1388,7 +1388,7 @@ export default function AlphaQAISystem() {
 
         </div>
       )}
-  {/* Dataset Management UI */}
+ {/* Dataset Management UI */}
 <div className="mb-4 border rounded p-2 bg-white dark:bg-gray-900">
   <h2 className="font-semibold mb-2">Datasets</h2>
 
@@ -1401,7 +1401,7 @@ export default function AlphaQAISystem() {
       onChange={(e) => setDatasetInput(e.target.value)}
     />
 
-    <Button size="sm" onClick={() => handleDatasetUpload()}>
+    <Button size="sm" onClick={handleDatasetUpload}>
       Add Dataset
     </Button>
 
