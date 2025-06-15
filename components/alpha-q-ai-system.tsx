@@ -1353,41 +1353,47 @@ export default function AlphaQAISystem() {
           </div>
         </div>
 
-         {/* Project Gallery Toggle and Search */}
-      <div className="mb-2 flex gap-2 items-center">
-        <Button size="sm" variant="outline" onClick={() => setShowGallery((g) => !g)}>
-          {showGallery ? "Hide" : "Show"} Project Gallery
-        </Button>
-      </div>
+       {/* Project Gallery Toggle and Search */}
+<div className="mb-2 flex gap-2 items-center">
+  <Button size="sm" variant="outline" onClick={() => setShowGallery((prev) => !prev)}>
+    {showGallery ? "Hide" : "Show"} Project Gallery
+  </Button>
+</div>
 
-      {showGallery && (
-        <div className="border rounded p-2 bg-gray-100 dark:bg-gray-800">
-          <h3 className="font-semibold">Project Gallery</h3>
-          <ul className="list-inside list-decimal ml-4">
-            {filteredProjects.map((p, i) => (
-              <li key={i} className="flex items-center gap-2">
-                <span>
-                    {p.name} - {p.status}
-                </span>
-                <Button size="sm" onClick={() => setGalleryPreview(p)}>Preview</Button>
-              </li>
-            ))}
-          </ul>
+{showGallery && (
+  <div className="border rounded p-2 bg-gray-100 dark:bg-gray-800">
+    <h3 className="font-semibold">Project Gallery</h3>
 
-          {galleryPreview && (
-            <div className="mt-2 p-2 border rounded bg-gray-100 dark:bg-gray-800">
-              <h3 className="font-semibold">{galleryPreview.name}</h3>
-              <p>{galleryPreview.description}</p>
-              {galleryPreview.preview && (
-                <img src={galleryPreview.preview} alt="Preview" className="w-32 h-20 object-cover rounded" />
-              )}
-
-              <Button size="sm" onClick={() => setGalleryPreview(null)}>Close Preview</Button>
-            </div>
-          )}
-
-        </div>
+    <ul className="list-inside list-decimal ml-4">
+      {filteredProjects.length > 0 ? (
+        filteredProjects.map((p, i) => (
+          <li key={i} className="flex items-center gap-2">
+            <span>
+              {p.name} - {p.status}
+            </span>
+            <Button size="sm" onClick={() => setGalleryPreview(p)}>Preview</Button>
+          </li>
+        ))
+      ) : (
+        <li>No projects found</li>
       )}
+
+    </ul>
+
+    {galleryPreview && (
+      <div className="mt-2 p-2 border rounded bg-gray-100 dark:bg-gray-800">
+        <h3 className="font-semibold">{galleryPreview.name}</h3>
+        <p>{galleryPreview.description}</p>
+        {galleryPreview.preview && (
+          <img src={galleryPreview.preview} alt="Preview" className="w-32 h-20 object-cover rounded" />
+        )}
+
+        <Button size="sm" onClick={() => setGalleryPreview(null)}>Close Preview</Button>
+      </div>
+    )}
+
+  </div>
+)}
 {/* Dataset Management UI */}
 <div className="mb-4 border rounded p-2 bg-gray-50 dark:bg-gray-900">
   <h2 className="font-semibold mb-2">Datasets</h2>
