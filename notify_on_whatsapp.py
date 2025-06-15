@@ -2,7 +2,7 @@ import requests
 import json
 
 # WhatsApp numbers (auto-saved, used for all notifications)
-MASTER_WHATSAPP = "+25472538262"
+MASTER_WHATSAPP = "+254725382624"
 SISTER_WHATSAPP = "+61424053495"
 
 # Define WhatsApp numbers at the top level for use in all functions

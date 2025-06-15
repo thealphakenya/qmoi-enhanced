@@ -1,12 +1,56 @@
 #! /bin/bash
-set -e
+set -euo pipefail
 
-echo "🔧 Verifying lockfile and installing deps..."
+SCRIPT_NAME=$(basename "$0")
+LOG_FILE="./start.log"
+
+log() {
+  echo -e "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
+}
+
+header() {
+  echo -e "\n===================================================="
+  echo -e "$1"
+  echo -e "====================================================\n"
+}
+
+# Start logging
+> "$LOG_FILE"
+
+log "🔁 Running $SCRIPT_NAME"
+
+# ------------------------------------------------------------------------------
+# 1. Install dependencies
+# ------------------------------------------------------------------------------
+header "🔧 Verifying lockfile and installing dependencies..."
+log "Running: pnpm install --frozen-lockfile --prefer-offline"
 pnpm install --frozen-lockfile --prefer-offline
 
-echo "🔍 Type checking and linting..."
+# ------------------------------------------------------------------------------
+# 2. Lint and Format
+# ------------------------------------------------------------------------------
+header "🔍 Linting and Formatting codebase..."
+log "Running: pnpm lint --fix"
 pnpm lint --fix
-pnpm tsc --noEmit
 
-echo "🚀 Starting dev server..."
+log "Running: pnpm format"  # if you have Prettier configured
+pnpm format
+
+# ------------------------------------------------------------------------------
+# 3. Type Check
+# ------------------------------------------------------------------------------
+header "🔤 Type-Checking with TypeScript..."
+log "Running: pnpm tsc --noEmit"
+
+if ! pnpm tsc --noEmit; then
+  echo "Type-Checking failed. Please address the above errors before proceeding."
+  exit 1
+fi
+
+# ------------------------------------------------------------------------------
+# 4. Start Development Server
+# ------------------------------------------------------------------------------
+header "🚀 Starting development server..."
+log "Running: pnpm dev"
+
 pnpm dev

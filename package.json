@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "pnpm install --frozen-lockfile --prefer-offline && pnpm lint --fix && pnpm type-check",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "postinstall": "pnpm lint --fix && pnpm type-check"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
