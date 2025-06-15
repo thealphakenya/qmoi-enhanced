@@ -20,8 +20,19 @@
       "headers": [
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'" },
+        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=(), usb=(), payment=()" }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "runtime": "nodejs18.x",
+    "maxDuration": 10
+  },
+  "supportsStaticProps": true,
+  "supportsDynamicImport": true,
+  "analytics": {
+    "id": "<your-vercel-analytics-id>"
+  }
 }
