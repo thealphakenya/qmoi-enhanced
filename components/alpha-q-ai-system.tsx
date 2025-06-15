@@ -1388,40 +1388,64 @@ export default function AlphaQAISystem() {
 
         </div>
       )}
-        {/* Dataset Management UI */}
-        <div className="mb-4 border rounded p-2 bg-white dark:bg-gray-900">
-          <h2 className="font-bold mb-2">Datasets</h2>
-          <div className="flex gap-2 mb-2">
-            <input type="text" className="p-1 rounded bg-gray-800 text-green-200 border border-green-700" placeholder="Dataset name or URL..." value={datasetInput} onChange={e => setDatasetInput(e.target.value)} />
-            <Button size="sm" onClick={() => handleDatasetUpload()}>Add Dataset</Button>
-            <input type="file" multiple className="hidden" id="dataset-file-input" onChange={handleDatasetUpload} />
-            <label htmlFor="dataset-file-input">
-              <Button size="sm" asChild>Upload Files</Button>
-            </label>
-          </div>
-          <ul>
-            {datasets.map((d, i) => <li key={i}>{d}</li>)}
-            {datasetFiles.map((f, i) => (
-              <li key={i + datasets.length} className="flex items-center gap-2">
-                {f.name}
-                {f.type.startsWith('image') && (
-                  <img src={URL.createObjectURL(f)} alt={f.name} className="w-10 h-10 object-cover rounded border" />
-                )}
-                {f.type.startsWith('text') && (
-                  <Button size="sm" onClick={async () => {
-                    const text = await f.text();
-                    alert(text.slice(0, 200) + (text.length > 200 ? '...' : ''))
-                  }}>Preview</Button>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  )
-}
+      {/* Dataset Management UI */}
+<div className="mb-4 border rounded p-2 bg-white dark:bg-gray-900">
+  <h2 className="font-semibold mb-2">Datasets</h2>
 
+  <div className="flex gap-2 mb-2">
+    <input
+      type="text"
+      className="p-1 rounded bg-gray-800 text-green-200 border border-green-700"
+      placeholder="Dataset name or URL..."
+      value={datasetInput}
+      onChange={(e) => setDatasetInput(e.target.value)}
+    />
+
+    <Button size="sm" onClick={() => handleDatasetUpload()}>
+      Add Dataset
+    </Button>
+
+    <input
+      id="dataset-file-input"
+      type="file"
+      multiple
+      className="hidden"
+      onChange={(e) => handleDatasetUpload(e)}
+    />
+
+    <label htmlFor="dataset-file-input">
+      <Button size="sm" asChild>Upload Files</Button>
+    </label>
+  </div>
+
+  <ul className="list-inside list-decimal ml-4">
+    {datasets.map((d, i) => (
+      <li key={i}>{d}</li>
+    ))}
+    {datasetFiles.map((f, i) => (
+      <li key={i + datasets.length} className="flex items-center gap-2">
+        <span>{f.name}</span>
+        {f.type.startsWith("image") && (
+          <img src={URL.createObjectURL(f)} alt={f.name} className="w-10 h-10 object-cover rounded border" />
+        )}
+
+        {f.type.startsWith("text") && (
+          <Button
+            size="sm"
+            onClick={async () => {
+              const text = await f.text();
+              alert(text.slice(0, 200) + (text.length > 200 ? "…" : ""));
+            }}>
+            Preview
+          </Button>
+        )}
+
+        {/* Optional delete button, if needed in future */}
+        {/* <Button size="sm" variant="destructive" onClick={() => handleRemoveFile(f)}>Remove</Button>*/}
+      </li>
+    ))}
+  </ul>
+</div>
 export default function AlphaQAISystem(props) {
   // … your state, handlers, effects…
 
