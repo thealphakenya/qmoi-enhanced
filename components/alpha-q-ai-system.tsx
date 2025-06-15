@@ -1396,7 +1396,7 @@ export default function AlphaQAISystem() {
   )
 }
 
-export default function AlphaQAISystem() {
+export default function AlphaQAISystem(props) {
   // … your state, handlers, effects…
 
   return (
