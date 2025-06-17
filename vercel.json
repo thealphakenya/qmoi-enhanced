@@ -1,40 +1,19 @@
 {
-  // Vercel platform configuration
   "version": 2,
-
-  // Define which files to be treated as entry points
   "builds": [
-    {
-      "src": "next.config.mjs",
-      "use": "@vercel/next"
-    },
-    {
-      "src": "app/api/**/*.ts",
-      "use": "@vercel/node"
-    }
+    { "src": "next.config.mjs", "use": "@vercel/next" },
+    { "src": "app/api/**/*.ts", "use": "@vercel/node" }
   ],
-
-  // Rewrite URLs to enable custom routing
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/app/api/$1.ts" },
     { "source": "/(.*)", "destination": "/app/page.tsx" }
   ],
-
-  // Environment variables for your application
   "env": {
     "NODE_ENV": "production"
   },
-
-  // Serve files directly from `public`
   "public": true,
-
-  // Enable clean URLs (without .html)
   "cleanUrls": true,
-
-  // Do not add trailing slashed URLs
   "trailingSlash": false,
-
-  // Security-related headers
   "headers": [
     {
       "source": "/(.*)", 
@@ -47,8 +26,6 @@
       ]
     }
   ],
-
-  // Configure server-side functions
   "functions": {
     "*": {
       "runtime": "nodejs18.x",
