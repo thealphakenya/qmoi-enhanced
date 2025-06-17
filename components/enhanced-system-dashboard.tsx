@@ -22,10 +22,9 @@ import {
   Shield,
   Zap,
 } from "lucide-react"
-import { QI } from "@/components/QI"
+import QI from "@/components/QI"
 import { NotificationCenter } from "@/components/NotificationCenter"
 import { DeviceSettingsPanel } from "@/components/DeviceSettingsPanel"
-import { EnhancedPreviewWindow } from "@/components/EnhancedPreviewWindow"
 import { FloatingPreviewWindow } from "@/components/FloatingPreviewWindow"
 
 interface SystemMetrics {

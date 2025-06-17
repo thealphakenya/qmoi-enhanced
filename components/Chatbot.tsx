@@ -1,8 +1,82 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, useCallback } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useAIContext } from "./AIContext";
 import { useTTCVoice } from '../hooks/useTTCVoice';
+import { useToast } from "@/components/ui/use-toast";
+
+// Web Speech API types
+interface SpeechRecognitionEvent extends Event {
+  results: SpeechRecognitionResultList;
+  resultIndex: number;
+  interpretation: any;
+}
+
+interface SpeechRecognitionResultList {
+  length: number;
+  item(index: number): SpeechRecognitionResult;
+  [index: number]: SpeechRecognitionResult;
+}
+
+interface SpeechRecognitionResult {
+  isFinal: boolean;
+  length: number;
+  item(index: number): SpeechRecognitionAlternative;
+  [index: number]: SpeechRecognitionAlternative;
+}
+
+interface SpeechRecognitionAlternative {
+  transcript: string;
+  confidence: number;
+}
+
+interface SpeechRecognition extends EventTarget {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  maxAlternatives: number;
+  onaudioend: ((this: SpeechRecognition, ev: Event) => any) | null;
+  onaudiostart: ((this: SpeechRecognition, ev: Event) => any) | null;
+  onend: ((this: SpeechRecognition, ev: Event) => any) | null;
+  onerror: ((this: SpeechRecognition, ev: Event) => any) | null;
+  onnomatch: ((this: SpeechRecognition, ev: Event) => any) | null;
+  onresult: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any) | null;
+  onsoundend: ((this: SpeechRecognition, ev: Event) => any) | null;
+  onsoundstart: ((this: SpeechRecognition, ev: Event) => any) | null;
+  onspeechend: ((this: SpeechRecognition, ev: Event) => any) | null;
+  onspeechstart: ((this: SpeechRecognition, ev: Event) => any) | null;
+  onstart: ((this: SpeechRecognition, ev: Event) => any) | null;
+  start(): void;
+  stop(): void;
+  abort(): void;
+}
+
+declare global {
+  interface Window {
+    SpeechRecognition: new () => SpeechRecognition;
+    webkitSpeechRecognition: new () => SpeechRecognition;
+  }
+}
+
+interface ChatMessage {
+  type: 'user' | 'ai';
+  text: string;
+  timestamp?: number;
+}
+
+interface Reminder {
+  id: string;
+  time: string;
+  text: string;
+  completed: boolean;
+}
+
+interface PlannerItem {
+  id: string;
+  text: string;
+  completed: boolean;
+  priority: 'low' | 'medium' | 'high';
+}
 
 const timeZones = [
   { label: 'UTC', value: 'UTC' },
@@ -12,14 +86,13 @@ const timeZones = [
   // Add more as needed
 ];
 
-export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelectedModel, onFileUpload, onEnhancement }: {
-  chatHistory: any[],
-  setChatHistory: (h: any[]) => void,
-  selectedModel: string,
-  setSelectedModel: (m: string) => void,
+export function Chatbot({ chatHistory, setChatHistory, onFileUpload, onEnhancement }: {
+  chatHistory: ChatMessage[],
+  setChatHistory: (h: ChatMessage[]) => void,
   onFileUpload?: (file: File) => void,
   onEnhancement?: (desc: string) => void,
 }) {
+  const { toast } = useToast();
   const { emotionalState, setEmotionalState } = useAIContext();
   const { speak } = useTTCVoice();
   const [aiTyping, setAiTyping] = useState(false)
@@ -30,51 +103,129 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
   const [currentTime, setCurrentTime] = useState('');
   const [userTimeZone, setUserTimeZone] = useState('UTC');
   const [talkMode, setTalkMode] = useState(false);
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
 
   // Reminders and planner state
-  const [reminders, setReminders] = useState<{ time: string, text: string }[]>([]);
+  const [reminders, setReminders] = useState<Reminder[]>([]);
   const [reminderInput, setReminderInput] = useState("");
   const [reminderTime, setReminderTime] = useState("");
-  const [planner, setPlanner] = useState<string[]>([]);
+  const [planner, setPlanner] = useState<PlannerItem[]>([]);
   const [plannerInput, setPlannerInput] = useState("");
 
   // Further enhancement: allow user to set custom wake words and preferred AI names
   const [wakeWords, setWakeWords] = useState(['q', 'alpha', 'ai', 'hey q', 'hey alpha']);
 
+  // Initialize speech recognition
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+
+      recognition.onresult = (event) => {
+        const transcript = Array.from(event.results)
+          .map(result => result[0].transcript)
+          .join('');
+        setInput(transcript);
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event);
+        toast({
+          title: 'Error',
+          description: 'Speech recognition failed',
+          variant: 'destructive'
+        });
+      };
+
+      recognitionRef.current = recognition;
+    }
+
+    return () => {
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+    };
+  }, [toast]);
+
+  // Time zone and current time
   useEffect(() => {
     const fetchTimeZone = async () => {
-      // Fetch user time zone from backend if available
-      // ...
+      try {
+        const response = await fetch('/api/qmoi-model?getTimeZone=1');
+        if (!response.ok) throw new Error('Failed to fetch time zone');
+        const data = await response.json();
+        setUserTimeZone(data.timeZone || 'UTC');
+      } catch (error) {
+        console.error('Failed to fetch time zone:', error);
+        toast({
+          title: 'Error',
+          description: 'Failed to fetch time zone',
+          variant: 'destructive'
+        });
+      }
     };
+
     fetchTimeZone();
     const interval = setInterval(() => {
       setCurrentTime(new Date().toLocaleString(userTimeZone));
     }, 1000);
-    return () => clearInterval(interval);
-  }, [userTimeZone]);
 
-  const handleTimeZoneChange = async (e: any) => {
+    return () => clearInterval(interval);
+  }, [userTimeZone, toast]);
+
+  const handleTimeZoneChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const tz = e.target.value;
     setUserTimeZone(tz);
-    // Persist to backend
-    await fetch('/api/qmoi-model?setTimeZone=1', {
-      method: 'POST',
-      body: JSON.stringify({ tz }),
-    });
+    try {
+      const response = await fetch('/api/qmoi-model?setTimeZone=1', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ tz }),
+      });
+      if (!response.ok) throw new Error('Failed to update time zone');
+    } catch (error) {
+      console.error('Failed to update time zone:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to update time zone',
+        variant: 'destructive'
+      });
+    }
+  };
+
+  // Safe math calculation
+  const calculateMath = (expression: string): number | null => {
+    try {
+      // Remove any non-math characters
+      const cleanExpr = expression.replace(/[^0-9+\-*/().]/g, '');
+      // Use Function constructor instead of eval
+      return new Function(`return ${cleanExpr}`)();
+    } catch (error) {
+      console.error('Math calculation error:', error);
+      return null;
+    }
   };
 
   // Simulate AI response with delay and advanced features
   const handleSend = async (overrideInput?: string) => {
     const sendText = overrideInput ?? input;
-    if (!sendText.trim()) return
-    setChatHistory([...chatHistory, { type: 'user', text: sendText }]);
+    if (!sendText.trim()) return;
+
+    const timestamp = Date.now();
+    setChatHistory([...chatHistory, { type: 'user', text: sendText, timestamp }]);
     setInput("");
     setAiTyping(true);
-    setTimeout(() => {
+
+    try {
       // Example: AI can answer code, math, or be friendly
       let aiText = "I'm here to help!";
       let newMood = emotionalState.mood;
+
       if (/hello|hi|hey/i.test(sendText)) {
         aiText = `Hello! 😊 How can I assist you today, ${emotionalState.preferredUsers[0]}?`;
         newMood = 'cheerful';
@@ -91,50 +242,99 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
         aiText = "I am always positive and cheerful! Let's focus on good things together.";
         newMood = 'cheerful';
       }
-      else if (/code|python|js|typescript|react/i.test(sendText)) aiText = "Here's a code snippet example: \n\nconsole.log('Hello, world!');"
-      else if (/math|\d+\s*[+\-*/]\s*\d+/i.test(sendText)) {
-        try {
-          // Simple math eval (safe for demo)
-          const result = eval(sendText.match(/\d+\s*[+\-*/]\s*\d+/)?.[0] || "0")
-          aiText = `The answer is: ${result}`
-        } catch { aiText = "Sorry, I couldn't compute that." }
+      else if (/code|python|js|typescript|react/i.test(sendText)) {
+        aiText = "Here's a code snippet example: \n\nconsole.log('Hello, world!');"
       }
-      setChatHistory([...chatHistory, { type: 'ai', text: aiText }])
-      setAiTyping(false)
-      setEmotionalState({ ...emotionalState, mood: newMood, lastInteraction: Date.now(), bondingLevel: Math.min(100, emotionalState.bondingLevel + 1) });
-    }, 1200)
-  }
+      else if (/math|\d+\s*[+\-*/]\s*\d+/i.test(sendText)) {
+        const result = calculateMath(sendText);
+        aiText = result !== null ? `The answer is: ${result}` : "Sorry, I couldn't compute that.";
+      }
 
-  // Handle file upload
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploadedFile(file);
-    if (onFileUpload) onFileUpload(file);
-    if (file.type.startsWith('text') || file.type === '') {
-      const reader = new FileReader();
-      reader.onload = () => setFilePreview(reader.result as string);
-      reader.readAsText(file);
-    } else {
-      setFilePreview('Preview not available for this file type.');
+      setChatHistory([...chatHistory, { type: 'ai', text: aiText, timestamp: Date.now() }]);
+      setEmotionalState({
+        ...emotionalState,
+        mood: newMood,
+        lastInteraction: Date.now(),
+        bondingLevel: Math.min(100, emotionalState.bondingLevel + 1)
+      });
+    } catch (error) {
+      console.error('Failed to process message:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to process message',
+        variant: 'destructive'
+      });
+    } finally {
+      setAiTyping(false);
     }
   };
 
-  // Send file to AI (simulate for now)
+  // Handle file upload with error handling
+  const handleFileUpload = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setUploadedFile(file);
+      if (onFileUpload) onFileUpload(file);
+
+      if (file.type.startsWith('text') || file.type === '') {
+        const reader = new FileReader();
+        reader.onload = () => setFilePreview(reader.result as string);
+        reader.onerror = (error) => {
+          console.error('File read error:', error);
+          toast({
+            title: 'Error',
+            description: 'Failed to read file',
+            variant: 'destructive'
+          });
+        };
+        reader.readAsText(file);
+      } else {
+        setFilePreview('Preview not available for this file type.');
+      }
+    } catch (error) {
+      console.error('File upload error:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to upload file',
+        variant: 'destructive'
+      });
+    }
+  }, [onFileUpload, toast]);
+
+  // Send file to AI with error handling
   const handleSendFile = async () => {
     if (!uploadedFile) return;
-    setChatHistory([...chatHistory, { type: 'user', text: `Uploaded file: ${uploadedFile.name}` }]);
+
+    const timestamp = Date.now();
+    setChatHistory([...chatHistory, { type: 'user', text: `Uploaded file: ${uploadedFile.name}`, timestamp }]);
     setAiTyping(true);
-    setTimeout(() => {
-      setChatHistory([...chatHistory, { type: 'ai', text: `I have received and processed the file: ${uploadedFile.name}. (AI can handle large/long files and all types accurately.)` }]);
+
+    try {
+      // Simulate file processing
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setChatHistory([...chatHistory, {
+        type: 'ai',
+        text: `I have received and processed the file: ${uploadedFile.name}. (AI can handle large/long files and all types accurately.)`,
+        timestamp: Date.now()
+      }]);
+    } catch (error) {
+      console.error('File processing error:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to process file',
+        variant: 'destructive'
+      });
+    } finally {
       setAiTyping(false);
       setUploadedFile(null);
       setFilePreview(null);
-    }, 1500);
+    }
   };
 
   // Advanced: Add markdown/code rendering and friendly suggestions
-  const renderMessage = (msg: { type: string, text: string }, i: number) => {
+  const renderMessage = (msg: ChatMessage, i: number) => {
     if (/```[\s\S]*?```/.test(msg.text)) {
       // Render code block
       const code = msg.text.match(/```([\s\S]*?)```/)
@@ -177,7 +377,7 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
   // Planner logic
   const handleAddPlanner = () => {
     if (!plannerInput.trim()) return;
-    setPlanner([...planner, plannerInput]);
+    setPlanner([...planner, { id: Date.now().toString(), text: plannerInput, completed: false, priority: 'low' }]);
     setPlannerInput("");
   };
 
@@ -190,7 +390,7 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
     recognition.lang = 'en-US';
     recognition.interimResults = false;
     recognition.continuous = true; // continuous for wake word
-    recognition.onresult = (event: any) => {
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
       const transcript = event.results[0][0].transcript.toLowerCase();
       // Wake word detection: respond to 'q', 'alpha', or preferred names
       if (/(\bq\b|\balpha\b|\bai\b|\bhey q\b|\bhey alpha\b)/.test(transcript)) {
@@ -205,7 +405,7 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
     recognitionRef.current = recognition;
     recognition.start();
     return () => recognition.stop();
-  }, [talkMode]);
+  }, [talkMode, speak, handleSend]);
 
   // Speak AI replies if talkMode is enabled
   useEffect(() => {
@@ -234,7 +434,7 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
     recognition.lang = 'en-US';
     recognition.interimResults = false;
     recognition.continuous = true;
-    recognition.onresult = (event: any) => {
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
       const transcript = event.results[0][0].transcript.toLowerCase();
       if (wakeWords.some(word => transcript.includes(word))) {
         setInput('');
@@ -247,7 +447,7 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
     recognitionRef.current = recognition;
     recognition.start();
     return () => recognition.stop();
-  }, [talkMode, wakeWords]);
+  }, [talkMode, wakeWords, speak, handleSend]);
 
   return (
     <Card>
@@ -294,7 +494,7 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
             </Button>
           )}
         </div>
-        {uploadedFile && (
+        {uploadedFile && filePreview && (
           <div className="mb-2 text-green-200">
             <div>Selected: {uploadedFile.name}</div>
             <pre className="bg-gray-900 p-2 rounded max-h-32 overflow-auto">{filePreview}</pre>
@@ -329,7 +529,7 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
             />
             <Button size="sm" onClick={() => {
               if (reminderInput && reminderTime) {
-                setReminders([...reminders, { time: reminderTime, text: reminderInput }]);
+                setReminders([...reminders, { id: Date.now().toString(), time: reminderTime, text: reminderInput, completed: false }]);
                 setReminderInput("");
                 setReminderTime("");
               }
@@ -356,11 +556,10 @@ export function Chatbot({ chatHistory, setChatHistory, selectedModel, setSelecte
           </div>
           <ul className="text-green-200 text-sm">
             {planner.map((p, i) => (
-              <li key={i}>📝 {p}</li>
+              <li key={i}>📝 {p.text}</li>
             ))}
           </ul>
         </div>
-        {/* Device/Accessibility Actions */}
         <div className="mb-2">
           <div className="font-bold">Device/Accessibility Actions</div>
           <Button size="sm" onClick={() => handleDeviceAction('call')}>Call Someone</Button>{' '}

@@ -8,9 +8,41 @@ import * as cheerio from 'cheerio';
 import pdfParse from 'pdf-parse';
 import mammoth from 'mammoth';
 import { v4 as uuidv4 } from 'uuid';
+import type { AxiosInstance } from 'axios';
+import type { CheerioAPI } from 'cheerio';
+import type { PDFData } from 'pdf-parse';
+import type { MammothResult } from 'mammoth';
+import type { v4 as UUID } from 'uuid';
+
+interface AITaskLogEntry {
+  id: number;
+  type: string;
+  status: 'started' | 'completed' | 'error';
+  timestamp: string;
+  details?: Record<string, unknown>;
+  desc?: string;
+  file?: string;
+  fileType?: string;
+  url?: string;
+  project?: string;
+}
+
+interface HookDiagnosticsResponse {
+  status: string;
+  problems: Array<{
+    type: string;
+    message: string;
+    file?: string;
+  }>;
+}
+
+interface GlobalFixResponse {
+  status: string;
+  time: string;
+}
 
 // In-memory AI task log (replace with persistent DB in production)
-let aiTaskLog: Array<Record<string, unknown>> = [];
+let aiTaskLog: AITaskLogEntry[] = [];
 const LOG_PATH = '/workspaces/Alpha-Q-ai/qmoi-tasks-log.jsonl';
 
 // Helper to persist log
@@ -218,12 +250,22 @@ async function multiUserChat(user: string, message: string) {
 }
 
 // --- Global Error/Problem Fixing ---
-async function globalScanAndFix() {
+async function globalScanAndFix(): Promise<GlobalFixResponse> {
   // Simulate scanning all files, hooks, and components for errors
   // In production, integrate with diagnostics, lint, and auto-fix tools
-  aiTaskLog.push({ id: Date.now(), type: 'global-scan-fix', status: 'started', timestamp: new Date().toISOString() });
+  aiTaskLog.push({ 
+    id: Date.now(), 
+    type: 'global-scan-fix', 
+    status: 'started', 
+    timestamp: new Date().toISOString() 
+  });
   // ...scan/fix logic...
-  aiTaskLog.push({ id: Date.now(), type: 'global-scan-fix', status: 'completed', timestamp: new Date().toISOString() });
+  aiTaskLog.push({ 
+    id: Date.now(), 
+    type: 'global-scan-fix', 
+    status: 'completed', 
+    timestamp: new Date().toISOString() 
+  });
   persistLog();
   return { status: 'all-fixed', time: new Date().toISOString() };
 }

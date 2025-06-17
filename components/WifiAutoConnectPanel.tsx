@@ -1,83 +1,153 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useToast } from "@/components/ui/use-toast";
+
+interface Network {
+  ssid: string;
+  encryption: string;
+  signal: number;
+  connected?: boolean;
+  zeroRated?: boolean;
+}
+
+type ConnectionMode = 'auto' | 'manual' | 'scheduled';
 
 export const WifiAutoConnectPanel: React.FC = () => {
-  const [networks, setNetworks] = useState<any[]>([]);
+  const [networks, setNetworks] = useState<Network[]>([]);
   const [connecting, setConnecting] = useState(false);
   const [connected, setConnected] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [mode, setMode] = useState<'wifi' | 'zero-rated'>('wifi');
+  const [mode, setMode] = useState<ConnectionMode>('auto');
+  const { toast } = useToast();
 
-  // Simulate scanning for WiFi and zero-rated networks
+  // Scan for available networks
   const scanNetworks = async () => {
     setConnecting(true);
     setError(null);
-    setTimeout(() => {
-      setNetworks([
-        { ssid: 'Home WiFi', open: false, signal: 90 },
-        { ssid: 'Free Public WiFi', open: true, signal: 70 },
-        { ssid: 'ZeroRatedSite', open: true, zeroRated: true, signal: 60 },
-        { ssid: 'Office WiFi', open: false, signal: 80 },
-      ]);
-      setConnecting(false);
-    }, 1200);
+    try {
+      const res = await fetch('/api/wifi/scan');
+      if (!res.ok) throw new Error('Failed to scan networks');
+      const data = await res.json();
+      setNetworks(data.networks.map((net: any) => ({
+        ...net,
+        encryption: net.secure ? 'WPA2' : 'None',
+        zeroRated: false // This would be determined by your zero-rated network detection logic
+      })));
+    } catch (e) {
+      const error = e as Error;
+      setError(error.message);
+      toast({
+        title: 'Error',
+        description: error.message,
+        variant: 'destructive'
+      });
+    }
+    setConnecting(false);
   };
 
-  // Simulate connecting to a network
-  const connect = (ssid: string, zeroRated?: boolean) => {
+  // Connect to a network
+  const connect = async (ssid: string, zeroRated?: boolean) => {
     setConnecting(true);
     setError(null);
-    setTimeout(() => {
-      setConnected(ssid);
-      setConnecting(false);
-    }, 1000);
+    try {
+      const res = await fetch('/api/wifi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ssid, password: '' }) // Password would be handled by your password management system
+      });
+      if (!res.ok) throw new Error('Failed to connect to network');
+      const data = await res.json();
+      if (data.status === 'success') {
+        setConnected(ssid);
+        setNetworks(nets => nets.map(n => ({
+          ...n,
+          connected: n.ssid === ssid
+        })));
+        toast({
+          title: 'Success',
+          description: `Connected to ${ssid}`
+        });
+      } else {
+        throw new Error(data.error || 'Failed to connect');
+      }
+    } catch (e) {
+      const error = e as Error;
+      setError(error.message);
+      toast({
+        title: 'Error',
+        description: error.message,
+        variant: 'destructive'
+      });
+    }
+    setConnecting(false);
   };
 
-  // Auto-connect logic: prioritize WiFi, then zero-rated
-  React.useEffect(() => {
+  // Auto-connect logic
+  useEffect(() => {
     scanNetworks();
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (networks.length > 0 && !connected) {
-      const wifi = networks.find(n => n.open && !n.zeroRated);
+      const wifi = networks.find(n => n.encryption === 'WPA2' && !n.zeroRated);
       const zero = networks.find(n => n.zeroRated);
-      if (mode === 'wifi' && wifi) connect(wifi.ssid);
-      else if (mode === 'zero-rated' && zero) connect(zero.ssid, true);
+      if (mode === 'auto' && wifi) connect(wifi.ssid);
+      else if (mode === 'scheduled' && zero) connect(zero.ssid, true);
     }
   }, [networks, mode, connected]);
 
   return (
-    <div style={{ padding: 16 }}>
-      <h3>WiFi & Zero-Rated Auto-Connect</h3>
-      <div style={{ marginBottom: 8 }}>
-        <b>Mode:</b>
-        <select value={mode} onChange={e => setMode(e.target.value as any)} style={{ marginLeft: 8 }}>
-          <option value="wifi">WiFi Auto-Connect</option>
-          <option value="zero-rated">Zero-Rated (Free Internet)</option>
+    <div className="p-4">
+      <h3 className="text-lg font-semibold mb-4">WiFi & Zero-Rated Auto-Connect</h3>
+      <div className="mb-4">
+        <label className="font-medium">Mode:</label>
+        <select
+          value={mode}
+          onChange={e => setMode(e.target.value as ConnectionMode)}
+          className="ml-2 p-1 border rounded"
+        >
+          <option value="auto">Auto</option>
+          <option value="manual">Manual</option>
+          <option value="scheduled">Scheduled</option>
         </select>
       </div>
-      <button onClick={scanNetworks} disabled={connecting} style={{ marginBottom: 8 }}>
+      <button
+        onClick={scanNetworks}
+        disabled={connecting}
+        className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
+      >
         {connecting ? 'Scanning...' : 'Rescan Networks'}
       </button>
-      <div style={{ marginBottom: 8 }}>
-        <b>Status:</b> {connected ? `Connected to ${connected}` : 'Not connected'}
+      <div className="mb-4">
+        <span className="font-medium">Status:</span>{' '}
+        {connected ? `Connected to ${connected}` : 'Not connected'}
       </div>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-        {networks.map((n, i) => (
-          <li key={n.ssid} style={{ marginBottom: 4 }}>
-            <span>{n.ssid}</span>
-            {n.zeroRated && <span style={{ color: '#22c55e', marginLeft: 8 }}>(Zero-Rated)</span>}
-            <span style={{ marginLeft: 8, color: n.open ? '#0a0' : '#a00' }}>{n.open ? 'Open' : 'Secured'}</span>
-            <span style={{ marginLeft: 8 }}>Signal: {n.signal}%</span>
-            <button onClick={() => connect(n.ssid, n.zeroRated)} disabled={connecting || connected === n.ssid} style={{ marginLeft: 8 }}>
-              {connected === n.ssid ? 'Connected' : 'Connect'}
+      {error && <div className="text-red-500 mb-4">{error}</div>}
+      <ul className="space-y-2">
+        {networks.map(network => (
+          <li key={network.ssid} className="flex items-center justify-between p-2 border rounded">
+            <div>
+              <span className="font-medium">{network.ssid}</span>
+              {network.zeroRated && (
+                <span className="ml-2 text-green-600">(Zero-Rated)</span>
+              )}
+              <span className={`ml-2 ${network.encryption === 'WPA2' ? 'text-green-600' : 'text-red-600'}`}>
+                {network.encryption === 'WPA2' ? 'Secured' : 'Unsecured'}
+              </span>
+              <span className="ml-2">Signal: {network.signal}%</span>
+            </div>
+            <button
+              onClick={() => connect(network.ssid, network.zeroRated)}
+              disabled={connecting || connected === network.ssid}
+              className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
+            >
+              {connected === network.ssid ? 'Connected' : 'Connect'}
             </button>
           </li>
         ))}
       </ul>
-      <div style={{ marginTop: 12, fontSize: 12, color: '#888' }}>
-        Prioritizes WiFi auto-connect, then zero-rated (free) internet if WiFi is unavailable. Uses minimal data when not on WiFi.
+      <div className="mt-4 text-sm text-gray-500">
+        Prioritizes WiFi auto-connect, then zero-rated (free) internet if WiFi is unavailable.
+        Uses minimal data when not on WiFi.
       </div>
     </div>
   );

@@ -1,0 +1,400 @@
+# AI Automation API Documentation
+
+## Overview
+The AI Automation API provides endpoints for managing and monitoring the AI-powered automation system. It includes features for system control, task management, metrics collection, and configuration management.
+
+## Authentication
+All endpoints require authentication using OAuth2 with Bearer tokens. To obtain a token:
+
+1. Send a POST request to `/token` with username and password
+2. Use the returned token in the Authorization header for subsequent requests
+
+```bash
+# Example token request
+curl -X POST "http://localhost:8000/token" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "username=user&password=pass"
+
+# Example authenticated request
+curl -X GET "http://localhost:8000/automation/status" \
+     -H "Authorization: Bearer <token>"
+```
+
+## Endpoints
+
+### System Control
+
+#### GET /automation/status
+Get current automation system status.
+
+**Response:**
+```json
+{
+    "running": true,
+    "active_tasks": 2,
+    "system_state": {
+        "resources": {
+            "cpu": 45.2,
+            "memory": 60.5,
+            "disk": 75.8,
+            "network": 30.1
+        },
+        "performance": {
+            "response_time": 85.3,
+            "throughput": 950.2,
+            "error_rate": 0.02
+        },
+        "errors": [],
+        "tasks": [],
+        "timestamp": "2024-03-14T12:00:00Z"
+    }
+}
+```
+
+#### POST /automation/start
+Start the automation system.
+
+**Response:**
+```json
+{
+    "status": "started",
+    "message": "Automation system started successfully"
+}
+```
+
+#### POST /automation/stop
+Stop the automation system.
+
+**Response:**
+```json
+{
+    "status": "stopped",
+    "message": "Automation system stopped successfully"
+}
+```
+
+### Task Management
+
+#### GET /automation/tasks
+Get all automation tasks.
+
+**Response:**
+```json
+[
+    {
+        "id": "task-123",
+        "type": "optimization",
+        "priority": 1,
+        "status": "pending",
+        "parameters": {
+            "target": "cpu",
+            "threshold": 80
+        },
+        "created_at": "2024-03-14T12:00:00Z",
+        "updated_at": "2024-03-14T12:00:00Z",
+        "result": null
+    }
+]
+```
+
+#### POST /automation/tasks
+Create a new automation task.
+
+**Request:**
+```json
+{
+    "id": "task-123",
+    "type": "optimization",
+    "priority": 1,
+    "status": "pending",
+    "parameters": {
+        "target": "cpu",
+        "threshold": 80
+    }
+}
+```
+
+**Response:**
+```json
+{
+    "status": "created",
+    "task_id": "task-123"
+}
+```
+
+### Metrics and Monitoring
+
+#### GET /automation/metrics
+Get current system metrics.
+
+**Response:**
+```json
+{
+    "resources": {
+        "cpu": 45.2,
+        "memory": 60.5,
+        "disk": 75.8,
+        "network": 30.1
+    },
+    "performance": {
+        "response_time": 85.3,
+        "throughput": 950.2,
+        "error_rate": 0.02
+    },
+    "errors": [],
+    "timestamp": "2024-03-14T12:00:00Z"
+}
+```
+
+#### GET /automation/history
+Get system state history.
+
+**Response:**
+```json
+[
+    {
+        "resources": {
+            "cpu": 45.2,
+            "memory": 60.5,
+            "disk": 75.8,
+            "network": 30.1
+        },
+        "performance": {
+            "response_time": 85.3,
+            "throughput": 950.2,
+            "error_rate": 0.02
+        },
+        "errors": [],
+        "tasks": [],
+        "timestamp": "2024-03-14T12:00:00Z"
+    }
+]
+```
+
+#### GET /automation/trends
+Get system performance trends.
+
+**Response:**
+```json
+{
+    "resources": {
+        "cpu": 45.2,
+        "memory": 60.5,
+        "disk": 75.8,
+        "network": 30.1
+    },
+    "performance": {
+        "response_time": 85.3,
+        "throughput": 950.2,
+        "error_rate": 0.02
+    },
+    "errors": {
+        "count": 0,
+        "trend": "decreasing"
+    }
+}
+```
+
+### Optimization
+
+#### POST /automation/optimize
+Trigger system optimization.
+
+**Request:**
+```json
+{
+    "target": "cpu",
+    "parameters": {
+        "threshold": 80,
+        "strategy": "aggressive"
+    }
+}
+```
+
+**Response:**
+```json
+{
+    "status": "optimization_scheduled",
+    "task_id": "optimize-123"
+}
+```
+
+### Configuration
+
+#### GET /automation/config
+Get current automation configuration.
+
+**Response:**
+```json
+{
+    "automation_interval": 60,
+    "thresholds": {
+        "resource_optimization": 80,
+        "error_prevention": 0.1,
+        "performance_improvement": 0.2
+    },
+    "max_concurrent_tasks": 5,
+    "task_timeout": 300
+}
+```
+
+#### POST /automation/config
+Update automation configuration.
+
+**Request:**
+```json
+{
+    "automation_interval": 60,
+    "thresholds": {
+        "resource_optimization": 80,
+        "error_prevention": 0.1,
+        "performance_improvement": 0.2
+    },
+    "max_concurrent_tasks": 5,
+    "task_timeout": 300
+}
+```
+
+**Response:**
+```json
+{
+    "status": "updated",
+    "message": "Configuration updated successfully"
+}
+```
+
+## Error Handling
+All endpoints return appropriate HTTP status codes and error messages:
+
+- 200: Success
+- 400: Bad Request
+- 401: Unauthorized
+- 403: Forbidden
+- 404: Not Found
+- 500: Internal Server Error
+
+Error responses include a detail message:
+```json
+{
+    "detail": "Error message"
+}
+```
+
+## Rate Limiting
+API requests are limited to:
+- 100 requests per minute per IP
+- 1000 requests per hour per user
+
+## WebSocket API
+The system also provides a WebSocket API for real-time updates:
+
+```javascript
+const ws = new WebSocket('ws://localhost:8000/ws');
+
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    console.log('Received:', data);
+};
+
+ws.onopen = () => {
+    ws.send(JSON.stringify({
+        type: 'subscribe',
+        channels: ['metrics', 'tasks', 'errors']
+    }));
+};
+```
+
+## SDK Examples
+
+### Python
+```python
+import requests
+
+class AutomationClient:
+    def __init__(self, base_url, token):
+        self.base_url = base_url
+        self.headers = {'Authorization': f'Bearer {token}'}
+
+    def get_status(self):
+        response = requests.get(f'{self.base_url}/automation/status', headers=self.headers)
+        return response.json()
+
+    def start_automation(self):
+        response = requests.post(f'{self.base_url}/automation/start', headers=self.headers)
+        return response.json()
+
+    def stop_automation(self):
+        response = requests.post(f'{self.base_url}/automation/stop', headers=self.headers)
+        return response.json()
+
+# Usage
+client = AutomationClient('http://localhost:8000', 'your-token')
+status = client.get_status()
+```
+
+### JavaScript
+```javascript
+class AutomationClient {
+    constructor(baseUrl, token) {
+        this.baseUrl = baseUrl;
+        this.headers = {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        };
+    }
+
+    async getStatus() {
+        const response = await fetch(`${this.baseUrl}/automation/status`, {
+            headers: this.headers
+        });
+        return response.json();
+    }
+
+    async startAutomation() {
+        const response = await fetch(`${this.baseUrl}/automation/start`, {
+            method: 'POST',
+            headers: this.headers
+        });
+        return response.json();
+    }
+
+    async stopAutomation() {
+        const response = await fetch(`${this.baseUrl}/automation/stop`, {
+            method: 'POST',
+            headers: this.headers
+        });
+        return response.json();
+    }
+}
+
+// Usage
+const client = new AutomationClient('http://localhost:8000', 'your-token');
+client.getStatus().then(console.log);
+```
+
+## Best Practices
+
+1. **Error Handling**
+   - Always check response status codes
+   - Implement retry logic for failed requests
+   - Handle rate limiting gracefully
+
+2. **Authentication**
+   - Store tokens securely
+   - Implement token refresh logic
+   - Never expose tokens in client-side code
+
+3. **Performance**
+   - Use WebSocket for real-time updates
+   - Implement request caching where appropriate
+   - Batch requests when possible
+
+4. **Security**
+   - Use HTTPS in production
+   - Validate all input data
+   - Implement proper access control
+
+5. **Monitoring**
+   - Track API usage and performance
+   - Monitor error rates
+   - Set up alerts for critical issues 

@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 
-const categories = [
+interface Category {
+  key: 'media' | 'docs' | 'code' | 'other';
+  label: string;
+}
+
+interface File {
+  name: string;
+  category: Category['key'];
+  added: string;
+}
+
+const categories: Category[] = [
   { key: 'media', label: 'Media' },
   { key: 'docs', label: 'Documents' },
   { key: 'code', label: 'Code' },
@@ -8,8 +19,8 @@ const categories = [
 ];
 
 export const FileCategorizer: React.FC = () => {
-  const [files, setFiles] = useState<any[]>([]);
-  const [category, setCategory] = useState('media');
+  const [files, setFiles] = useState<File[]>([]);
+  const [category, setCategory] = useState<Category['key']>('media');
   const [fileName, setFileName] = useState('');
 
   const handleAdd = () => {
@@ -28,7 +39,7 @@ export const FileCategorizer: React.FC = () => {
         onChange={e => setFileName(e.target.value)}
         style={{ marginBottom: 8, width: '100%' }}
       />
-      <select value={category} onChange={e => setCategory(e.target.value)} style={{ marginBottom: 8 }}>
+      <select value={category} onChange={e => setCategory(e.target.value as Category['key'])} style={{ marginBottom: 8 }}>
         {categories.map(c => <option key={c.key} value={c.key}>{c.label}</option>)}
       </select>
       <button onClick={handleAdd} disabled={!fileName}>Add File</button>

@@ -2,7 +2,18 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-export function DeviceMap({ devices }: { devices: any[] }) {
+interface Device {
+  location: {
+    lat: number;
+    lng: number;
+  };
+  user: string;
+  status: string;
+  lastSeen: string;
+  name: string;
+}
+
+export function DeviceMap({ devices }: { devices: Device[] }) {
   // Default to center of the world
   const center = devices.length
     ? [devices[0].location.lat, devices[0].location.lng]

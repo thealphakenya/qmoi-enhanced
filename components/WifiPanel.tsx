@@ -4,6 +4,38 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
+interface Network {
+  ssid: string;
+  encryption: string;
+  signal: number;
+}
+
+interface SignalData {
+  ssid: string;
+  signal: number;
+}
+
+interface IoTRisk {
+  host: string;
+  open: string[];
+}
+
+interface MonitorStatus {
+  enabled: boolean;
+  interval: number;
+  last_result: {
+    anomaly: boolean;
+    msg?: string;
+    ip_counts?: { [key: string]: number };
+  } | null;
+}
+
+interface Analytics {
+  total_connections: number;
+  average_signal: number;
+  security_score: number;
+}
+
 interface WifiNetwork {
   ssid: string;
   signal: number;
@@ -27,53 +59,84 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   const [passwords, setPasswords] = useState<{ [ssid: string]: string }>({});
   const [logs, setLogs] = useState<string[]>([]);
   const [logFilter, setLogFilter] = useState('');
-  const [monitorStatus, setMonitorStatus] = useState<{ enabled: boolean; interval: number; last_result: any } | null>(null);
+  const [monitorStatus, setMonitorStatus] = useState<MonitorStatus | null>(null);
   const [monitorInterval, setMonitorInterval] = useState(60);
-  const [analytics, setAnalytics] = useState<{ total_events: number; unique_ips: number; top_ips: [string, number][] } | null>(null);
+  const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [webhookUrl, setWebhookUrl] = useState('');
   const [hourlyAnalytics, setHourlyAnalytics] = useState<{ [hour: string]: number } | null>(null);
   const { toast } = useToast();
 
-  // Load priorities from localStorage
+  // Load priorities from localStorage with error handling
   useEffect(() => {
-    const saved = localStorage.getItem('wifiPriorities');
-    if (saved) setPriorities(JSON.parse(saved));
-  }, []);
+    try {
+      const saved = localStorage.getItem('wifiPriorities');
+      if (saved) setPriorities(JSON.parse(saved));
+    } catch (error) {
+      console.error('Failed to load WiFi priorities:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to load saved WiFi priorities',
+        variant: 'destructive'
+      });
+    }
+  }, [toast]);
 
-  // Save priorities to localStorage when changed
+  // Save priorities to localStorage with error handling
   useEffect(() => {
-    localStorage.setItem('wifiPriorities', JSON.stringify(priorities));
-  }, [priorities]);
+    try {
+      localStorage.setItem('wifiPriorities', JSON.stringify(priorities));
+    } catch (error) {
+      console.error('Failed to save WiFi priorities:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to save WiFi priorities',
+        variant: 'destructive'
+      });
+    }
+  }, [priorities, toast]);
 
-  // Load logs from localStorage
+  // Load logs from localStorage with error handling
   useEffect(() => {
-    const saved = localStorage.getItem('wifiSecurityLogs');
-    if (saved) setLogs(JSON.parse(saved));
-  }, []);
+    try {
+      const saved = localStorage.getItem('wifiSecurityLogs');
+      if (saved) setLogs(JSON.parse(saved));
+    } catch (error) {
+      console.error('Failed to load WiFi logs:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to load saved WiFi logs',
+        variant: 'destructive'
+      });
+    }
+  }, [toast]);
 
-  // Save logs to localStorage when changed
+  // Save logs to localStorage with error handling
   useEffect(() => {
-    localStorage.setItem('wifiSecurityLogs', JSON.stringify(logs));
-  }, [logs]);
+    try {
+      localStorage.setItem('wifiSecurityLogs', JSON.stringify(logs));
+    } catch (error) {
+      console.error('Failed to save WiFi logs:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to save WiFi logs',
+        variant: 'destructive'
+      });
+    }
+  }, [logs, toast]);
 
   // Fetch available networks from backend
   const fetchNetworks = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('/api/wifi');
+      const res = await fetch('/api/wifi/scan');
       if (!res.ok) throw new Error('Failed to scan networks. Please check your Wi-Fi adapter.');
       const data = await res.json();
-      if (data.networks) {
         setNetworks(data.networks);
-        const connectedNet = data.networks.find((n: WifiNetwork) => n.connected);
-        setConnected(connectedNet ? connectedNet.ssid : null);
-      } else {
-        setNetworks([]);
-        setConnected(null);
-      }
-    } catch (e: any) {
-      setError(e.message || 'Failed to scan networks.');
+      setError(null);
+    } catch (e) {
+      const error = e as Error;
+      setError(error.message || 'Failed to scan networks.');
     }
     setLoading(false);
   };
@@ -130,39 +193,55 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     ]);
   };
 
-  // Fetch monitoring status on mount and every 10s if enabled
+  // Fetch monitoring status with proper URL handling
   useEffect(() => {
     let intervalId: NodeJS.Timeout | null = null;
     const fetchStatus = async () => {
       try {
-        const res = await fetch('http://localhost:5001/monitor/status');
+        const monitorUrl = process.env.NEXT_PUBLIC_MONITOR_URL || 'http://localhost:5001';
+        const res = await fetch(`${monitorUrl}/monitor/status`);
+        if (!res.ok) throw new Error('Failed to fetch monitor status');
         const data = await res.json();
         setMonitorStatus(data);
-      } catch {}
+      } catch (error) {
+        console.error('Failed to fetch monitor status:', error);
+        toast({
+          title: 'Error',
+          description: 'Failed to fetch monitor status',
+          variant: 'destructive'
+        });
+      }
     };
     fetchStatus();
     if (monitorStatus?.enabled) {
       intervalId = setInterval(fetchStatus, 10000);
     }
     return () => { if (intervalId) clearInterval(intervalId); };
-    // eslint-disable-next-line
-  }, [monitorStatus?.enabled]);
+  }, [monitorStatus?.enabled, toast]);
 
   const startMonitoring = async () => {
     setLoading(true);
     setError(null);
     try {
-      const monitorRes = await fetch('http://localhost:5001/monitor', {
+      const monitorUrl = process.env.NEXT_PUBLIC_MONITOR_URL || 'http://localhost:5001';
+      const monitorRes = await fetch(`${monitorUrl}/monitor`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ enable: true, interval: monitorInterval })
       });
+      if (!monitorRes.ok) throw new Error('Failed to start monitoring');
       const monitorData = await monitorRes.json();
       addLog(`Monitoring started: every ${monitorInterval}s`);
       setMonitorStatus(s => ({ ...s, enabled: true, interval: monitorInterval, last_result: null }));
-    } catch (e: any) {
-      setError('Failed to start monitoring.');
-      addLog('Failed to start monitoring.');
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to start monitoring';
+      setError(errorMessage);
+      addLog(`Failed to start monitoring: ${errorMessage}`);
+      toast({
+        title: 'Error',
+        description: errorMessage,
+        variant: 'destructive'
+      });
     }
     setLoading(false);
   };
@@ -306,15 +385,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
         </div>
         {analytics && (
           <div className="mb-2 text-xs bg-gray-50 rounded p-2">
-            <div><b>Total Events:</b> {analytics.total_events}</div>
-            <div><b>Unique IPs:</b> {analytics.unique_ips}</div>
-            <div><b>Top IPs:</b>
-              <ul className="ml-2">
-                {analytics.top_ips.map(([ip, count]) => (
-                  <li key={ip}>{ip}: {count}</li>
-                ))}
-              </ul>
-            </div>
+            <div><b>Total Connections:</b> {analytics.total_connections}</div>
+            <div><b>Average Signal:</b> {analytics.average_signal.toFixed(2)}%</div>
+            <div><b>Security Score:</b> {analytics.security_score.toFixed(2)}/100</div>
           </div>
         )}
         {hourlyAnalytics && (
@@ -335,7 +408,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
               const res = await fetch('/api/wifi-security?action=security-test');
               const data = await res.json();
               if (data.networks) {
-                const msg = 'Scan complete.\n' + data.networks.map((n: any) => `${n.ssid}: ${n.encryption}`).join('\n');
+                const msg = 'Scan complete.\n' + data.networks.map((n: Network) => `${n.ssid}: ${n.encryption}`).join('\n');
                 alert(msg);
                 addLog(msg);
               } else {
@@ -418,7 +491,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
               const res = await fetch('/api/wifi-security?action=signal-analysis');
               const data = await res.json();
               if (data.signals) {
-                const msg = 'Signals:\n' + data.signals.map((s: any) => `${s.ssid}: ${s.signal}`).join('\n');
+                const msg = 'Signals:\n' + data.signals.map((s: SignalData) => `${s.ssid}: ${s.signal}`).join('\n');
                 alert(msg);
                 addLog(msg);
               } else {
@@ -438,7 +511,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
               const res = await fetch('/api/wifi-security?action=iot-scan');
               const data = await res.json();
               if (data.risks && data.risks.length > 0) {
-                const msg = 'IoT Risks:\n' + data.risks.map((r: any) => `${r.host}: ${r.open}`).join('\n');
+                const msg = 'IoT Risks:\n' + data.risks.map((r: IoTRisk) => `${r.host}: ${r.open.join(', ')}`).join('\n');
                 alert(msg);
                 addLog(msg);
               } else {

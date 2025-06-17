@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 
+interface Asset {
+  type: 'farm' | 'livestock' | 'business';
+  name: string;
+  count: number;
+  added: string;
+}
+
 export const FarmBusinessManager: React.FC = () => {
-  const [assets, setAssets] = useState<any[]>([]);
-  const [type, setType] = useState('farm');
+  const [assets, setAssets] = useState<Asset[]>([]);
+  const [type, setType] = useState<'farm' | 'livestock' | 'business'>('farm');
   const [name, setName] = useState('');
   const [count, setCount] = useState(1);
 
@@ -16,7 +23,7 @@ export const FarmBusinessManager: React.FC = () => {
   return (
     <div style={{ padding: 16 }}>
       <h3>Farm, Livestock & Business Manager</h3>
-      <select value={type} onChange={e => setType(e.target.value)} style={{ marginBottom: 8 }}>
+      <select value={type} onChange={e => setType(e.target.value as 'farm' | 'livestock' | 'business')} style={{ marginBottom: 8 }}>
         <option value="farm">Farm Asset</option>
         <option value="livestock">Livestock</option>
         <option value="business">Business Asset</option>

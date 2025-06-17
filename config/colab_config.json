@@ -1,0 +1,34 @@
+{
+    "max_memory": 0.9,
+    "max_cpu": 90,
+    "check_interval": 60,
+    "reconnect_interval": 30,
+    "persistent_runtime": true,
+    "auto_reconnect": true,
+    "error_handling": {
+        "max_retries": 3,
+        "retry_delay": 5,
+        "notify_on_error": true
+    },
+    "resource_management": {
+        "clear_gpu_on_high_usage": true,
+        "optimize_cpu_on_high_usage": true,
+        "auto_restart_on_crash": true
+    },
+    "logging": {
+        "level": "INFO",
+        "file": "logs/colab_manager.log",
+        "max_size": 10485760,
+        "backup_count": 5
+    },
+    "security": {
+        "encrypt_data": true,
+        "secure_connection": true,
+        "access_control": true
+    },
+    "performance": {
+        "batch_size": 32,
+        "num_workers": 4,
+        "pin_memory": true
+    }
+} 

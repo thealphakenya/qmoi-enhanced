@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function EnhancedPreviewWindow() {
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
@@ -33,7 +33,16 @@ export function EnhancedPreviewWindow() {
         <div className="my-2">
           <input type="text" placeholder="Paste YouTube/video URL here" value={youtubeUrl} onChange={handleYoutubeChange} className="w-full p-1 rounded bg-gray-900 text-green-200" />
         </div>
-        {mediaUrl && mediaType === 'image' && <img src={mediaUrl} alt="Preview" style={{ maxWidth: '100%', marginTop: 12 }} />}
+        {mediaUrl && mediaType === 'image' && (
+          <div style={{ position: 'relative', width: '100%', height: '300px', marginTop: 12 }}>
+            <Image
+              src={mediaUrl}
+              alt="Preview"
+              fill
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
+        )}
         {mediaUrl && mediaType === 'video' && <video src={mediaUrl} controls style={{ maxWidth: '100%', marginTop: 12 }} />}
         {mediaUrl && mediaType === 'audio' && <audio src={mediaUrl} controls style={{ width: '100%', marginTop: 12 }} />}
         {mediaType === 'youtube' && youtubeUrl && (

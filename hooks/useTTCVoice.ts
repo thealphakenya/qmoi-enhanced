@@ -1,30 +1,61 @@
-import { useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 // TTC API endpoint (local or remote)
 const TTC_API = 'http://localhost:5002/tts'; // Update if needed
 
 export function useTTCVoice() {
-  // Speak text using caqui-ai/TTC (Text-to-Voice)
-  const speak = useCallback(async (text: string, voice?: string) => {
-    try {
-      const res = await fetch(TTC_API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, voice }),
-      });
-      if (!res.ok) throw new Error('TTC TTS failed');
-      const { audioUrl } = await res.json();
-      const audio = new Audio(audioUrl);
-      audio.play();
-    } catch (e) {
-      // fallback to browser TTS
-      if ('speechSynthesis' in window) {
-        const utter = new window.SpeechSynthesisUtterance(text);
-        if (voice) utter.voice = speechSynthesis.getVoices().find(v => v.name === voice) || null;
-        window.speechSynthesis.speak(utter);
-      }
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const speak = useCallback((text: string) => {
+    if (!window.speechSynthesis) {
+      console.warn('Speech synthesis not supported');
+      return;
+    }
+
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    // Get available voices and select a preferred one
+    const voices = window.speechSynthesis.getVoices();
+    const preferredVoice = voices.find(voice => 
+      voice.name.includes('Google') || 
+      voice.name.includes('Microsoft') ||
+      voice.name.includes('Samantha')
+    );
+    
+    if (preferredVoice) {
+      utterance.voice = preferredVoice;
+    }
+
+    // Set speech parameters
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+
+    // Handle speech events
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = (event) => {
+      console.error('Speech synthesis error:', event);
+      setIsSpeaking(false);
+    };
+
+    // Start speaking
+    window.speechSynthesis.speak(utterance);
+  }, []);
+
+  const stop = useCallback(() => {
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
     }
   }, []);
 
-  return { speak };
+  return {
+    speak,
+    stop,
+    isSpeaking
+  };
 }

@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { FaTimes, FaDownload, FaPlay, FaPause, FaVolumeUp, FaExpand } from 'react-icons/fa';
 
 // Utility for file download
 function downloadFile(url: string, filename: string) {
@@ -11,7 +14,22 @@ function downloadFile(url: string, filename: string) {
   document.body.removeChild(a);
 }
 
-export function FloatingPreviewWindow() {
+interface PreviewContent {
+  type: string;
+  url: string;
+}
+
+interface FloatingPreviewWindowProps {
+  onClose: () => void;
+  content: PreviewContent | null;
+  onContentChange: (content: PreviewContent | null) => void;
+}
+
+export function FloatingPreviewWindow({ onClose, content, onContentChange }: FloatingPreviewWindowProps) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(100);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState(0);
   const [open, setOpen] = useState(true);
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<'image'|'video'|'audio'|'pdf'|'zip'|'unzip'|'doc'|'browser'|'other'|null>(null);
@@ -99,49 +117,93 @@ export function FloatingPreviewWindow() {
     }
   }
 
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVolume(Number(e.target.value));
+  };
+
+  const handleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
   if (!open) return (
     <Button className="fixed bottom-4 right-4 z-50" onClick={() => setOpen(true)}>Open Preview</Button>
   );
 
   return (
-    <div
-      ref={ref}
-      className="fixed z-50 bg-gray-900 text-green-200 rounded shadow-lg"
-      style={{ left: position.x, top: position.y, width: 420, minHeight: 320, resize: 'both', overflow: 'auto' }}
-    >
-      <div className="flex justify-between items-center bg-gray-800 p-2 cursor-move rounded-t" onMouseDown={onMouseDown}>
-        <span>Floating Preview Window</span>
-        <Button size="sm" variant="outline" onClick={() => setOpen(false)}>Close</Button>
-      </div>
-      <div className="p-4">
-        <input type="file" accept="image/*,video/*,audio/*,application/pdf,.zip,.txt,.md,.json,.js,.ts,.tsx,.py,.doc,.docx" onChange={handleFileChange} />
-        <div className="my-2">
-          <input type="text" placeholder="Paste YouTube/video URL here" value={youtubeUrl} onChange={handleYoutubeChange} className="w-full p-1 rounded bg-gray-900 text-green-200" />
+    <Card className={`fixed bottom-4 right-4 w-96 shadow-lg ${isFullscreen ? 'w-screen h-screen' : ''}`}>
+      <CardHeader className="flex flex-row items-center justify-between p-2">
+        <CardTitle className="text-sm">Preview Window</CardTitle>
+        <div className="flex gap-2">
+          <Button size="sm" variant="ghost" onClick={handleFullscreen}>
+            <FaExpand />
+          </Button>
+          <Button size="sm" variant="ghost" onClick={onClose}>
+            <FaTimes />
+          </Button>
         </div>
-        <div className="my-2">
-          <input type="text" placeholder="Enter website URL to browse" value={browserUrl} onChange={handleBrowserChange} className="w-full p-1 rounded bg-gray-900 text-green-200" />
-        </div>
-        {mediaUrl && mediaType === 'image' && <img src={mediaUrl} alt="Preview" style={{ maxWidth: '100%', marginTop: 12 }} />}
-        {mediaUrl && mediaType === 'video' && <video src={mediaUrl} controls style={{ maxWidth: '100%', marginTop: 12 }} />}
-        {mediaUrl && mediaType === 'audio' && <audio src={mediaUrl} controls style={{ width: '100%', marginTop: 12 }} />}
-        {mediaUrl && mediaType === 'pdf' && <iframe src={mediaUrl} width="100%" height="400" title="PDF Preview" />}
-        {mediaUrl && (mediaType === 'other' || mediaType === 'text') && (
-          <textarea value={textContent} onChange={handleTextEdit} className="w-full h-40 bg-gray-900 text-green-200 rounded p-2 mt-2" placeholder="Edit file content here..." />
-        )}
-        {mediaType === 'browser' && browserUrl && (
-          <iframe src={browserUrl} style={{ width: '100%', height: 300 }} title="Browser Preview" />
-        )}
-        {mediaType === 'video' && youtubeUrl && (
-          <iframe width="100%" height="315" src={`https://www.youtube.com/embed/${youtubeUrl.split('v=')[1]}`} title="YouTube video preview" frameBorder="0" allowFullScreen></iframe>
-        )}
-        {!mediaUrl && !youtubeUrl && !browserUrl && <div className="text-green-200">Live output or UI/media preview will be shown here.</div>}
+      </CardHeader>
+      <CardContent>
+        {content ? (
+          <div className="space-y-2">
+            {content.type.startsWith('video/') && (
+              <video
+                src={content.url}
+                controls
+                className="w-full rounded"
+                autoPlay={isPlaying}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+              />
+            )}
+            {content.type.startsWith('image/') && (
+              <img src={content.url} alt="Preview" className="w-full rounded" />
+            )}
+            {content.type.startsWith('audio/') && (
+              <audio
+                src={content.url}
+                controls
+                className="w-full"
+                autoPlay={isPlaying}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+              />
+            )}
+            <div className="flex items-center gap-2">
+              <Button size="sm" variant="outline" onClick={handlePlayPause}>
+                {isPlaying ? <FaPause /> : <FaPlay />}
+              </Button>
+              <div className="flex items-center gap-2 flex-1">
+                <FaVolumeUp />
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={volume}
+                  onChange={handleVolumeChange}
+                  className="w-full"
+                />
       </div>
-      <div className="fixed bottom-4 right-4 flex flex-col items-center z-50">
-        <Button className="bg-blue-700 text-white rounded-full shadow-lg" style={{ width: 64, height: 64 }} onClick={handleDownload}>
-          Download
+              <Button size="sm" variant="outline" onClick={handleDownload}>
+                <FaDownload />
         </Button>
-        <span className="text-xs mt-1">{mediaType === 'video' || youtubeUrl ? 'video or videos' : mediaType}</span>
+            </div>
+            {downloadProgress > 0 && (
+              <div className="space-y-1">
+                <Progress value={downloadProgress} className="w-full" />
+                <p className="text-xs text-gray-500">Downloading... {downloadProgress.toFixed(1)}%</p>
+              </div>
+            )}
       </div>
+        ) : (
+          <div className="text-center text-gray-500 py-8">
+            No content to preview
     </div>
+        )}
+      </CardContent>
+    </Card>
   );
 }

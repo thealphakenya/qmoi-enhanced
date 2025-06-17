@@ -1,0 +1,26 @@
+2025-06-16 21:48:51,857 - SetupManager - INFO - Starting environment setup...
+2025-06-16 21:48:51,858 - SetupManager - INFO - Creating directories...
+2025-06-16 21:48:51,871 - SetupManager - INFO - Created directory: logs
+2025-06-16 21:48:51,872 - SetupManager - INFO - Created directory: config
+2025-06-16 21:48:51,872 - SetupManager - INFO - Created directory: data
+2025-06-16 21:48:51,873 - SetupManager - INFO - Created directory: tests
+2025-06-16 21:48:51,873 - SetupManager - INFO - Created directory: tests/unit
+2025-06-16 21:48:51,873 - SetupManager - INFO - Created directory: tests/integration
+2025-06-16 21:48:51,874 - SetupManager - INFO - Created directory: tests/e2e
+2025-06-16 21:48:51,874 - SetupManager - INFO - Installing dependencies...
+2025-06-16 21:49:27,884 - SetupManager - INFO - Dependencies installed successfully
+2025-06-16 21:49:27,884 - SetupManager - INFO - Setting up configuration...
+2025-06-16 21:49:27,946 - SetupManager - INFO - Configuration setup completed
+2025-06-16 21:49:27,947 - SetupManager - INFO - Setting up scripts...
+2025-06-16 21:49:27,950 - SetupManager - INFO - Scripts setup completed
+2025-06-16 21:49:27,951 - SetupManager - INFO - Environment setup completed successfully
+2025-06-16 22:23:57,408 - SetupManager - INFO - Starting environment setup...
+2025-06-16 22:23:57,522 - SetupManager - INFO - Creating directories...
+2025-06-16 22:23:57,522 - SetupManager - INFO - Created directory: logs
+2025-06-16 22:23:57,523 - SetupManager - INFO - Created directory: config
+2025-06-16 22:23:57,523 - SetupManager - INFO - Created directory: data
+2025-06-16 22:23:57,523 - SetupManager - INFO - Created directory: tests
+2025-06-16 22:23:57,524 - SetupManager - INFO - Created directory: tests/unit
+2025-06-16 22:23:57,524 - SetupManager - INFO - Created directory: tests/integration
+2025-06-16 22:23:57,524 - SetupManager - INFO - Created directory: tests/e2e
+2025-06-16 22:23:57,524 - SetupManager - INFO - Installing dependencies...

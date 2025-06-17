@@ -1,16 +1,18 @@
 #!/usr/bin/env node
-// enhanced-error-fix.js
-const { execSync } = require('child_process');
+// enhanced-error-fix.ts
+import { execSync } from 'child_process';
 
-function run(cmd, desc) {
+function run(cmd: string, desc: string): void {
   try {
     console.log(`\n▶️  ${desc}...`);
     execSync(cmd, { stdio: 'inherit' });
     console.log(`✅ Success: ${desc}`);
-  } catch (e) {
+  } catch (e: unknown) {
     console.error(`❌ Error during: ${desc}`);
-    if (e.stdout) console.error(e.stdout.toString());
-    if (e.stderr) console.error(e.stderr.toString());
+    if (e instanceof Error) {
+      if ('stdout' in e) console.error(e.stdout?.toString());
+      if ('stderr' in e) console.error(e.stderr?.toString());
+    }
     process.exit(1);
   }
 }

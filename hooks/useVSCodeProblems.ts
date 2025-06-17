@@ -1,7 +1,19 @@
 import { useEffect, useState } from 'react';
 
+interface Problem {
+  type: string;
+  message: string;
+  file?: string;
+}
+
+interface HookDiagnosticsResponse {
+  status: string;
+  problems: Problem[];
+}
+
 export function useVSCodeProblems() {
-  const [problems, setProblems] = useState([]);
+  const [problems, setProblems] = useState<Problem[]>([]);
+
   useEffect(() => {
     // Poll backend for hook diagnostics and problems
     const interval = setInterval(async () => {
@@ -9,7 +21,7 @@ export function useVSCodeProblems() {
         method: 'POST',
         headers: { 'x-admin-token': localStorage.getItem('adminToken') || '' },
       });
-      const data = await res.json();
+      const data = await res.json() as HookDiagnosticsResponse;
       if (data.status === 'hooks-enhanced') {
         // Optionally notify user or update UI
         if (window && window.dispatchEvent) {
@@ -20,5 +32,6 @@ export function useVSCodeProblems() {
     }, 15000);
     return () => clearInterval(interval);
   }, []);
+
   return problems;
 }

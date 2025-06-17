@@ -14,6 +14,25 @@ const DownloadList = React.memo(({ downloads }: { downloads: Download[] }) => (
   </ul>
 ));
 
+DownloadList.displayName = 'DownloadList';
+
+interface RequestIdleCallbackOptions {
+  timeout?: number;
+}
+
+interface RequestIdleCallbackHandle {
+  didTimeout: boolean;
+  timeRemaining: () => number;
+}
+
+interface Window {
+  requestIdleCallback: (
+    callback: (deadline: RequestIdleCallbackHandle) => void,
+    options?: RequestIdleCallbackOptions
+  ) => number;
+  cancelIdleCallback: (handle: number) => void;
+}
+
 export const DownloadManager: React.FC = () => {
   const [downloads, setDownloads] = useState<Download[]>([]);
   const [url, setUrl] = useState('');
@@ -22,7 +41,7 @@ export const DownloadManager: React.FC = () => {
   // Use requestIdleCallback for non-urgent UI updates if available
   const addDownload = useCallback((download: Download) => {
     if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(() => {
+      window.requestIdleCallback(() => {
         setDownloads(dls => [...dls, download]);
       });
     } else {
@@ -56,3 +75,5 @@ export const DownloadManager: React.FC = () => {
     </div>
   );
 };
+
+DownloadManager.displayName = 'DownloadManager';

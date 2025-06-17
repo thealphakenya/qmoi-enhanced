@@ -8,6 +8,18 @@ import { WifiPanel } from "@/components/WifiPanel";
 
 const SSH_BACKEND = "http://localhost:4000"; // Change to your backend URL if deployed
 
+interface SSHCredentials {
+  host: string;
+  port: number;
+  username: string;
+  password: string;
+}
+
+interface FileData {
+  filename: string;
+  longname: string;
+}
+
 export function FileExplorer() {
   const [files, setFiles] = useState<string[]>([])
   const [currentPath, setCurrentPath] = useState<string>("/")
@@ -16,7 +28,7 @@ export function FileExplorer() {
   const [editMode, setEditMode] = useState(false)
   const [editValue, setEditValue] = useState("")
   const [showCreds, setShowCreds] = useState(false)
-  const [creds, setCreds] = useState({
+  const [creds, setCreds] = useState<SSHCredentials>({
     host: '',
     port: 22,
     username: '',
@@ -51,7 +63,7 @@ export function FileExplorer() {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.files) setFiles(data.files.map((f: any) => f.longname.startsWith('d') ? f.filename + '/' : f.filename))
+        if (data.files) setFiles(data.files.map((f: FileData) => f.longname.startsWith('d') ? f.filename + '/' : f.filename))
         else setFiles([])
       })
   }, [currentPath, creds])
@@ -72,6 +84,7 @@ export function FileExplorer() {
   }
 
   const saveFile = () => {
+    if (!selectedFile) return;
     fetch(`${SSH_BACKEND}/write`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -90,7 +103,7 @@ export function FileExplorer() {
   }
 
   // Helper to detect device type
-  function getDeviceType() {
+  function getDeviceType(): 'android' | 'ios' | 'windows' | 'mac' | 'linux' | 'unknown' {
     const ua = navigator.userAgent;
     if (/android/i.test(ua)) return 'android';
     if (/iPad|iPhone|iPod/.test(ua)) return 'ios';
@@ -157,7 +170,7 @@ export function FileExplorer() {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.files) setFiles(data.files.map((f: any) => f.longname.startsWith('d') ? f.filename + '/' : f.filename))
+        if (data.files) setFiles(data.files.map((f: FileData) => f.longname.startsWith('d') ? f.filename + '/' : f.filename))
         else setFiles([])
       })
   };

@@ -1,10 +1,35 @@
 "use client"
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useCallback, useEffect } from "react"
 import { Chatbot } from "@/components/Chatbot"
 import { motion, AnimatePresence } from "framer-motion"
 import { AIProvider, useAIContext } from "./AIContext";
+import { useToast } from "@/components/ui/use-toast";
+
+type ModalType = 'image' | 'wallet' | 'automation' | 'settings' | 'device-health' | 'bluetooth' | 'globalcall' | 'globalvideocall' | 'globalmail' | 'globalfiletransfer' | 'wifi' | 'price-product' | 'download' | 'farm-business' | 'map-location' | 'emergency' | 'file-categorizer' | 'file-explorer';
+
+interface WalletTransaction {
+  id: string | number;
+  type: string;
+  side: string;
+  amount: number;
+  price: number;
+  result: string;
+  status: string;
+  rationale: string;
+  timestamp: string | number | Date;
+}
+
+interface AutomationJob {
+  id: string | number;
+  name: string;
+  status: string;
+  lastRun?: string;
+  nextRun?: string;
+  [key: string]: unknown;
+}
 
 export const FloatingAQ: React.FC = () => {
+  const { toast } = useToast();
   const {
     chatHistory, setChatHistory,
     aiHealth, deviceHealth
@@ -20,38 +45,17 @@ export const FloatingAQ: React.FC = () => {
   const [selectedModel, setSelectedModel] = useState<string>("Auto")
 
   // Modal state for advanced features
-  const [modal, setModal] = useState<
-    null | 'image' | 'wallet' | 'automation' | 'settings' | 'device-health' | 'bluetooth' | 'globalcall' | 'globalvideocall' | 'globalmail' | 'globalfiletransfer' | 'wifi'
-    | 'price-product' | 'download' | 'farm-business' | 'map-location'
-    | 'emergency' | 'file-categorizer' | 'file-explorer'
-  >(null)
+  const [modal, setModal] = useState<ModalType | null>(null)
 
   // Wallet/Finance state
   const [walletLoading, setWalletLoading] = useState(false)
   const [walletError, setWalletError] = useState<string|null>(null)
   const [walletBalance, setWalletBalance] = useState<number | null>(null);
-  // Define a type for wallet transactions
-  interface WalletTransaction {
-    id?: string | number;
-    type?: string;
-    side?: string;
-    amount?: number;
-    price?: number;
-    result?: string;
-    status?: string;
-    rationale?: string;
-    timestamp?: string | number | Date;
-  }
   const [walletTransactions, setWalletTransactions] = useState<WalletTransaction[]>([]);
 
   // Automation/Marketing state
   const [automationLoading, setAutomationLoading] = useState(false)
   const [automationError, setAutomationError] = useState<string|null>(null)
-  // Define a type for automation jobs
-  interface AutomationJob {
-    id?: string | number;
-    [key: string]: unknown;
-  }
   const [automationJobs, setAutomationJobs] = useState<AutomationJob[]>([]);
 
   // AI Image/Animation state
@@ -62,34 +66,55 @@ export const FloatingAQ: React.FC = () => {
 
   // Floating A-Q settings state
   const [alwaysOn, setAlwaysOn] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('aq-always-on') === 'true';
+    try {
+      if (typeof window !== 'undefined') {
+        return localStorage.getItem('aq-always-on') === 'true';
+      }
+      return false;
+    } catch (error) {
+      console.error('Failed to load always-on setting:', error);
+      return false;
     }
-    return false;
   });
+
   const [autoStart, setAutoStart] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('aq-auto-start') === 'true';
+    try {
+      if (typeof window !== 'undefined') {
+        return localStorage.getItem('aq-auto-start') === 'true';
+      }
+      return false;
+    } catch (error) {
+      console.error('Failed to load auto-start setting:', error);
+      return false;
     }
-    return false;
   });
 
   // Speak/Voice state
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [selectedVoiceURI, setSelectedVoiceURI] = useState<string | null>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('aq-voice-uri') || null;
+    try {
+      if (typeof window !== 'undefined') {
+        return localStorage.getItem('aq-voice-uri') || null;
+      }
+      return null;
+    } catch (error) {
+      console.error('Failed to load voice URI setting:', error);
+      return null;
     }
-    return null;
   });
   const [showVoicePicker, setShowVoicePicker] = useState(false);
 
   // Dark mode state
   const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('aq-dark-mode') === 'true';
+    try {
+      if (typeof window !== 'undefined') {
+        return localStorage.getItem('aq-dark-mode') === 'true';
+      }
+      return false;
+    } catch (error) {
+      console.error('Failed to load dark mode setting:', error);
+      return false;
     }
-    return false;
   });
 
   // Device/AI health state
@@ -98,31 +123,49 @@ export const FloatingAQ: React.FC = () => {
   const [selfHealRunning, setSelfHealRunning] = useState(false);
   const [selfHealResult, setSelfHealResult] = useState<string|null>(null);
 
-  // Persist settings
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('aq-always-on', alwaysOn ? 'true' : 'false');
-      localStorage.setItem('aq-auto-start', autoStart ? 'true' : 'false');
+  // Persist settings with error handling
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('aq-always-on', alwaysOn ? 'true' : 'false');
+        localStorage.setItem('aq-auto-start', autoStart ? 'true' : 'false');
+      }
+    } catch (error) {
+      console.error('Failed to save settings:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to save settings',
+        variant: 'destructive'
+      });
     }
-  }, [alwaysOn, autoStart]);
+  }, [alwaysOn, autoStart, toast]);
 
-  // Persist dark mode
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('aq-dark-mode', darkMode ? 'true' : 'false');
-      document.body.classList.toggle('aq-dark', darkMode);
+  // Persist dark mode with error handling
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('aq-dark-mode', darkMode ? 'true' : 'false');
+        document.body.classList.toggle('aq-dark', darkMode);
+      }
+    } catch (error) {
+      console.error('Failed to save dark mode setting:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to save dark mode setting',
+        variant: 'destructive'
+      });
     }
-  }, [darkMode]);
+  }, [darkMode, toast]);
 
   // Auto-open Floating A-Q if alwaysOn or autoStart is enabled
-  React.useEffect(() => {
+  useEffect(() => {
     if ((alwaysOn || autoStart) && !open) {
       setOpen(true);
     }
-  }, [alwaysOn, autoStart])
+  }, [alwaysOn, autoStart, open]);
 
-  // Load available voices
-  React.useEffect(() => {
+  // Load available voices with cleanup
+  useEffect(() => {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       const populateVoices = () => {
         const v = window.speechSynthesis.getVoices();
@@ -130,26 +173,56 @@ export const FloatingAQ: React.FC = () => {
         // If no voice selected, show picker
         if (!selectedVoiceURI && v.length > 0) setShowVoicePicker(true);
       };
+
       populateVoices();
       window.speechSynthesis.onvoiceschanged = populateVoices;
-    }
-  }, []);
 
-  // Persist selected voice
-  React.useEffect(() => {
-    if (selectedVoiceURI && typeof window !== 'undefined') {
-      localStorage.setItem('aq-voice-uri', selectedVoiceURI);
+      return () => {
+        window.speechSynthesis.onvoiceschanged = null;
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
+      };
     }
   }, [selectedVoiceURI]);
 
+  // Persist selected voice with error handling
+  useEffect(() => {
+    try {
+      if (selectedVoiceURI && typeof window !== 'undefined') {
+        localStorage.setItem('aq-voice-uri', selectedVoiceURI);
+      }
+    } catch (error) {
+      console.error('Failed to save voice URI:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to save voice setting',
+        variant: 'destructive'
+      });
+    }
+  }, [selectedVoiceURI, toast]);
+
   // Speak text with selected voice
-  const speak = (text: string) => {
+  const speak = useCallback((text: string) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
+    
     const utter = new window.SpeechSynthesisUtterance(text);
     const voice = voices.find(v => v.voiceURI === selectedVoiceURI) || voices[0];
     if (voice) utter.voice = voice;
+    
+    utter.onerror = (event) => {
+      console.error('Speech synthesis error:', event);
+      toast({
+        title: 'Error',
+        description: 'Failed to speak text',
+        variant: 'destructive'
+      });
+    };
+    
     window.speechSynthesis.speak(utter);
-  };
+  }, [voices, selectedVoiceURI, toast]);
 
   // Find last AI message
   const lastAIMessage = chatHistory.slice().reverse().find(m => m.type === 'ai')?.text || '';

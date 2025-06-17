@@ -27,14 +27,11 @@ log "Running: pnpm install --frozen-lockfile --prefer-offline"
 pnpm install --frozen-lockfile --prefer-offline
 
 # ------------------------------------------------------------------------------
-# 2. Lint and Format
+# 2. Lint
 # ------------------------------------------------------------------------------
-header "🔍 Linting and Formatting codebase..."
+header "🔍 Linting codebase..."
 log "Running: pnpm lint --fix"
 pnpm lint --fix
-
-log "Running: pnpm format"  # if you have Prettier configured
-pnpm format
 
 # ------------------------------------------------------------------------------
 # 3. Type Check
