@@ -65,6 +65,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const result = await getColabJobStatus(jobId);
       return res.json(result);
     }
+    if (req.query.startProjectJob) {
+      const { projectId, projectType, projectName } = req.body;
+      const jobSpec = {
+        projectId,
+        projectType,
+        projectName,
+        source: 'project_automation',
+      };
+      const result = await executeColabJob(jobSpec);
+      persistJob({ ...result, type: projectType, name: projectName });
+      return res.json(result);
+    }
     const { type, name } = req.body;
     // Simulate Colab job execution (replace with real Colab API integration)
     const job = {
