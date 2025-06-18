@@ -1,22 +1,20 @@
 {
   "version": 2,
   "builds": [
-    { "src": "next.config.mjs", "use": "@vercel/next" },
-    { "src": "app/api/**/*.ts", "use": "@vercel/node" }
+    { "src": "package.json", "use": "@vercel/next" }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/app/api/$1.ts" },
-    { "source": "/(.*)", "destination": "/app/page.tsx" }
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)", "destination": "/" }
   ],
   "env": {
     "NODE_ENV": "production"
   },
-  "public": true,
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/(.*)", 
+      "source": "/(.*)",
       "headers": [
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
@@ -27,7 +25,7 @@
     }
   ],
   "functions": {
-    "*": {
+    "api/**/*.ts": {
       "runtime": "nodejs18.x",
       "maxDuration": 10
     }
