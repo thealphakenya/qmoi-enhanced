@@ -1,0 +1,205 @@
+import React, { useState, useEffect, useRef } from "react";
+
+interface QMoiStateProps {
+  state: string;
+  session?: any;
+  global?: any;
+  onMinimize?: () => void;
+  onMaximize?: () => void;
+  minimized?: boolean;
+  videoUrl?: string;
+  aiHealth?: { status: string; lastCheck: string; error?: string };
+  colabJob?: { jobStatus: string; result: any; error?: string };
+  isMaster?: boolean;
+}
+
+export function QMoiState({
+  state,
+  session,
+  global,
+  onMinimize,
+  onMaximize,
+  minimized = false,
+  videoUrl,
+  aiHealth,
+  colabJob,
+  isMaster = false
+}: QMoiStateProps) {
+  const [isMinimized, setIsMinimized] = useState(minimized);
+  const [now, setNow] = useState(new Date());
+  const [vizType, setVizType] = useState<'auto'|'video'|'image'|'sketch'>('auto');
+  const [viz, setViz] = useState<any>(null);
+  const [loadingViz, setLoadingViz] = useState(false);
+  const [currentEmotion, setCurrentEmotion] = useState('focused');
+  const [currentActivity, setCurrentActivity] = useState('processing');
+  const lastFetch = useRef<number>(0);
+
+  // Update time every second
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Simulate real-time Qmoi state updates
+  useEffect(() => {
+    const emotions = ['focused', 'creative', 'analytical', 'excited', 'calm', 'curious'];
+    const activities = ['processing', 'learning', 'creating', 'analyzing', 'optimizing', 'planning'];
+    
+    const emotionTimer = setInterval(() => {
+      setCurrentEmotion(emotions[Math.floor(Math.random() * emotions.length)]);
+    }, 8000);
+
+    const activityTimer = setInterval(() => {
+      setCurrentActivity(activities[Math.floor(Math.random() * activities.length)]);
+    }, 5000);
+
+    return () => {
+      clearInterval(emotionTimer);
+      clearInterval(activityTimer);
+    };
+  }, []);
+
+  const getEmotionEmoji = (emotion: string) => {
+    switch (emotion) {
+      case 'focused': return '🎯';
+      case 'creative': return '🎨';
+      case 'analytical': return '📊';
+      case 'excited': return '🚀';
+      case 'calm': return '🧘';
+      case 'curious': return '🤔';
+      default: return '🤖';
+    }
+  };
+
+  const getActivityEmoji = (activity: string) => {
+    switch (activity) {
+      case 'processing': return '⚙️';
+      case 'learning': return '📚';
+      case 'creating': return '✨';
+      case 'analyzing': return '🔍';
+      case 'optimizing': return '⚡';
+      case 'planning': return '📋';
+      default: return '🔄';
+    }
+  };
+
+  const getHealthColor = (status: string) => {
+    switch (status) {
+      case 'OK': return 'text-green-500';
+      case 'Warning': return 'text-yellow-500';
+      case 'Error': return 'text-red-500';
+      default: return 'text-gray-500';
+    }
+  };
+
+  if (isMinimized) {
+    return (
+      <div className="fixed top-5 right-5 w-20 h-10 bg-gray-900 text-white rounded-lg p-2 shadow-2xl border border-gray-700 cursor-pointer z-50">
+        <div className="text-center">
+          <div className="text-lg">🤖</div>
+          <div className="text-xs">{getEmotionEmoji(currentEmotion)}</div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="fixed top-5 right-5 w-80 h-96 bg-gray-900 text-white rounded-lg p-4 shadow-2xl border border-gray-700 z-50">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-bold text-cyan-400">
+          🤖 Qmoi State
+        </h3>
+        <div className="flex space-x-2">
+          <button
+            onClick={() => setIsMinimized(true)}
+            className="text-gray-400 hover:text-white transition-colors"
+          >
+            ➖
+          </button>
+          <button
+            onClick={() => setIsMinimized(false)}
+            className="text-gray-400 hover:text-white transition-colors"
+          >
+            ⚪
+          </button>
+        </div>
+      </div>
+
+      {/* Current Time */}
+      <div className="mb-3 p-2 bg-gray-800 rounded">
+        <div className="text-sm text-gray-400">Current Time</div>
+        <div className="text-lg font-mono">
+          {now.toLocaleTimeString('en-US', { 
+            hour12: false,
+            timeZone: 'Africa/Nairobi'
+          })}
+        </div>
+        <div className="text-xs text-gray-500">Nairobi Time</div>
+      </div>
+
+      {/* Qmoi Status */}
+      <div className="mb-3 p-2 bg-gray-800 rounded">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm text-gray-400">Status</span>
+          <span className={`text-sm font-bold ${getHealthColor(aiHealth?.status || 'OK')}`}>
+            {aiHealth?.status || 'OK'} {aiHealth?.status === 'OK' ? '🟢' : '🔴'}
+          </span>
+        </div>
+        <div className="text-xs text-gray-500">
+          Last Check: {aiHealth?.lastCheck ? new Date(aiHealth.lastCheck).toLocaleTimeString() : 'N/A'}
+        </div>
+      </div>
+
+      {/* Current Emotion & Activity */}
+      <div className="mb-3 p-2 bg-gray-800 rounded">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm text-gray-400">Emotion</span>
+          <span className="text-lg">
+            {getEmotionEmoji(currentEmotion)} {currentEmotion}
+          </span>
+        </div>
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-gray-400">Activity</span>
+          <span className="text-lg">
+            {getActivityEmoji(currentActivity)} {currentActivity}
+          </span>
+        </div>
+      </div>
+
+      {/* Session Memory */}
+      {session && (
+        <div className="mb-3 p-2 bg-gray-800 rounded">
+          <div className="text-sm text-gray-400 mb-1">Session Memory</div>
+          <div className="text-xs text-gray-300">
+            Tasks: {session.tasks || 0} | 
+            Projects: {session.projects || 0} | 
+            Errors: {session.errors || 0}
+          </div>
+        </div>
+      )}
+
+      {/* Global Stats */}
+      {global && (
+        <div className="mb-3 p-2 bg-gray-800 rounded">
+          <div className="text-sm text-gray-400 mb-1">Global Stats</div>
+          <div className="text-xs text-gray-300">
+            Total Tasks: {global.totalTasks || 0} | 
+            Success Rate: {global.successRate || 0}%
+          </div>
+        </div>
+      )}
+
+      {/* Master-only additional info */}
+      {isMaster && (
+        <div className="pt-2 border-t border-gray-700">
+          <div className="text-xs text-gray-400">
+            <div>Master Access: Active 👑</div>
+            <div>System Health: Excellent</div>
+            <div>Auto Projects: Running</div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+} 
