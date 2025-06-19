@@ -226,3 +226,44 @@ chmod +x quickstart.sh
 
 ---
 *Last updated: June 13, 2025*
+
+## Sample Environment Variable Setup for Email & Health Monitoring
+
+Add these to your `.env` or deployment environment:
+
+```
+# Email (SMTP) settings
+SMTP_HOST=smtp.yourprovider.com
+SMTP_PORT=587
+SMTP_USER=your@email.com
+SMTP_PASS=yourpassword
+MASTER_EMAIL=master@email.com
+
+# Health check endpoint
+HEALTH_URL=https://your-app.com/api/health
+```
+
+## UptimeRobot Integration & Multi-Channel Notifications
+
+To enable 24/7 uptime monitoring, set:
+
+```
+# UptimeRobot ping URL (replace with your monitor's URL)
+UPTIME_MONITOR_URL=https://api.uptimerobot.com/v2/ping?api_key=YOUR_KEY
+```
+
+For Slack, Discord, or SMS notifications, add:
+
+```
+# Slack webhook
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...
+# Discord webhook
+DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
+# Twilio SMS (example)
+TWILIO_ACCOUNT_SID=AC...
+TWILIO_AUTH_TOKEN=...
+TWILIO_FROM=+1234567890
+TWILIO_TO=+0987654321
+```
+
+The deployment script can be extended to send notifications to these channels on deploy/failure/health events.
