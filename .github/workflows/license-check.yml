@@ -1,0 +1,44 @@
+name: License Compliance Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  license-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies with legacy peer deps
+        run: npm install --legacy-peer-deps
+
+      - name: Install license-checker as dev dependency
+        run: npm install license-checker --save-dev --legacy-peer-deps
+
+      - name: Run license check
+        run: |
+          npx license-checker --production --onlyAllow="MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause" || (
+            echo "❌ Non-compliant license found. See details above." && exit 1
+          )
+
+      - name: Upload license report (optional)
+        if: success()
+        run: |
+          npx license-checker --production --json > license-report.json
+        # Uncomment the lines below to upload as an artifact
+        # - name: Upload license report
+        #   uses: actions/upload-artifact@v4
+        #   with:
+        #     name: license-report
+        #     path: license-report.json
