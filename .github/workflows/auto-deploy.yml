@@ -23,6 +23,9 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
+      - name: Install Python packages for license check
+        run: pip install pip-licenses
+
       - name: Lint
         run: |
           npm run lint || echo "::warning::Lint failed, continuing..."
@@ -35,30 +38,11 @@ jobs:
         run: |
           npm audit --audit-level=critical || echo "::warning::Security audit failed, continuing..."
 
-      - name: Install license-checker
-        run: npm install license-checker --save-dev --legacy-peer-deps
-
-      - name: License Compliance Check
+      - name: Run License Compliance Check (Python)
         run: |
-          npx license-checker --production --json > license-report.json
-          npx license-checker --production --onlyAllow="MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;CC0-1.0;ISC;Python-2.0" || (
-            echo "::error::❌ Non-compliant license found. Failing deployment." && exit 1
+          python3 scripts/license_checker.py || (
+            echo "::error::❌ Non-compliant licenses found. Failing deployment." && exit 1
           )
-
-      - name: Upload License Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: license-report
-          path: license-report.json
-
-      - name: Output Full Dependency Tree
-        run: npm ls --all > dependency-tree.txt || echo "Failed to list dependencies"
-
-      - name: Upload Dependency Tree
-        uses: actions/upload-artifact@v4
-        with:
-          name: dependency-tree
-          path: dependency-tree.txt
 
       - name: Run AI-driven metrics check
         run: |
