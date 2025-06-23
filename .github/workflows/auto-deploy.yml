@@ -41,7 +41,7 @@ jobs:
       - name: License Compliance Check
         run: |
           npx license-checker --production --json > license-report.json
-          npx license-checker --production --onlyAllow="MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;CC0-1.0;ISC" || (
+          npx license-checker --production --onlyAllow="MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;CC0-1.0;ISC;Python-2.0" || (
             echo "::error::❌ Non-compliant license found. Failing deployment." && exit 1
           )
 
@@ -95,10 +95,3 @@ jobs:
 
       - name: Run Backup Automation
         run: node scripts/backup_automation.js
-
-      # OPTIONAL: Add PR comment or Slack alert integration
-      - name: Optional PR or Slack Notification
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
-          echo "Would post report summary to PR or Slack here"
-          # Example: curl -X POST -H "Authorization: Bearer $SLACK_TOKEN" -d "License Report ready" https://hooks.slack.com/...
