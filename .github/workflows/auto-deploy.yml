@@ -19,9 +19,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'false'  # Disable npm caching since no lock file is used
 
-      - name: Install dependencies without lock file
+      - name: Install dependencies (no lock file)
         run: npm install --legacy-peer-deps --no-package-lock
 
       - name: Lint
