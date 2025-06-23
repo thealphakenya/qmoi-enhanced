@@ -39,16 +39,20 @@ jobs:
       - name: Install license-checker
         run: npm install license-checker --save-dev --legacy-peer-deps
 
+      - name: Generate License Report
+        run: npx license-checker --production --json > license-report.json
+
       - name: License Compliance Check
         id: license_check
-        run: |
-          node scripts/license_checker.js || (echo "license_error=1" >> $GITHUB_ENV)
+        run: node scripts/license_checker.js || echo "license_error=1" >> $GITHUB_ENV
 
       - name: Run AI Error Fixer on License Error
         if: env.license_error == '1'
         run: |
           echo "Running AI error fixer for license compliance..."
           node scripts/enhanced-error-fix.js --type license || true
+          # Re-check compliance after fix
+          node scripts/license_checker.js || (echo "::error::❌ Non-compliant license found after auto-fix. Failing deployment." && exit 1)
 
       - name: Run Environment Auto Fix
         run: |
@@ -72,8 +76,7 @@ jobs:
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          node scripts/deploy/vercel_auto_deploy.js || (echo "Vercel auto-deploy failed" && echo "vercel_error=1" >> $GITHUB_ENV)
+        run: node scripts/deploy/vercel_auto_deploy.js || (echo "vercel_error=1" >> $GITHUB_ENV)
 
       - name: Run AI Error Fixer on Vercel Deploy Error
         if: env.vercel_error == '1'
@@ -81,7 +84,7 @@ jobs:
           echo "Running AI error fixer for Vercel deployment..."
           node scripts/enhanced-error-fix.js --type vercel || true
           # Optionally, retry deploy
-          node scripts/deploy/vercel_auto_deploy.js || echo "Vercel deploy retry failed. Manual intervention required."
+          node scripts/deploy/vercel_auto_deploy.js || (echo "::error::Vercel deploy retry failed. Manual intervention required." && exit 1)
 
       - name: Keep Alive (Optional)
         run: echo "✅ App should always be running. Monitor with external uptime service."
