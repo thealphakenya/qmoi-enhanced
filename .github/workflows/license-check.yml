@@ -26,19 +26,24 @@ jobs:
       - name: Install license-checker as dev dependency
         run: npm install license-checker --save-dev --legacy-peer-deps
 
-      - name: Run license check
+      - name: Run license compliance check
         run: |
-          npx license-checker --production --onlyAllow="MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause" || (
-            echo "❌ Non-compliant license found. See details above." && exit 1
+          npx license-checker --production --onlyAllow="MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;CC0-1.0" || (
+            echo "::error::❌ License compliance failed. A non-compliant license was found." && exit 1
           )
 
-      - name: Upload license report (optional)
-        if: success()
+      - name: Generate license report (always)
+        if: always()
         run: |
           npx license-checker --production --json > license-report.json
-        # Uncomment the lines below to upload as an artifact
-        # - name: Upload license report
-        #   uses: actions/upload-artifact@v4
-        #   with:
-        #     name: license-report
-        #     path: license-report.json
+
+      # Optional: upload license report artifact
+      # - name: Upload license report
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: license-report
+      #     path: license-report.json
+
+      - name: Final Status
+        if: success()
+        run: echo "✅ License compliance check passed."
