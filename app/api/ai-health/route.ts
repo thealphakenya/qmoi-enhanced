@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import fs from 'fs';
 
 interface AIHealthMetrics {
   cpu: {
@@ -60,6 +61,10 @@ interface AIHealthStatus {
     message: string;
     timestamp: string;
   }[];
+  licenseStatus: string;
+  lintStatus: string;
+  testStatus: string;
+  deployStatus: string;
 }
 
 export async function GET(request: NextRequest) {
@@ -107,6 +112,37 @@ export async function GET(request: NextRequest) {
       }
     };
 
+    // License compliance check
+    let licenseStatus = 'unknown';
+    try {
+      const licenseReport = JSON.parse(fs.readFileSync('license-report.json', 'utf-8'));
+      const allowed = ['MIT', 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause'];
+      const offenders = Object.entries(licenseReport).filter(([pkg, meta]: [string, any]) => meta.licenses && !allowed.includes(meta.licenses));
+      licenseStatus = offenders.length === 0 ? 'compliant' : 'non-compliant';
+    } catch (e) {
+      licenseStatus = 'error';
+    }
+
+    // Lint/test status
+    let lintStatus = 'unknown';
+    let testStatus = 'unknown';
+    try {
+      const lintLog = fs.readFileSync('logs/lint-errors.json', 'utf-8');
+      lintStatus = lintLog.includes('error') ? 'failed' : 'passed';
+    } catch {}
+    try {
+      const testLog = fs.readFileSync('logs/auto-lint.log', 'utf-8');
+      testStatus = testLog.includes('FAIL') ? 'failed' : 'passed';
+    } catch {}
+
+    // Deployment status
+    let deployStatus = 'unknown';
+    try {
+      const deployLog = fs.readFileSync('logs/vercel_auto_deploy.log', 'utf-8');
+      if (deployLog.includes('successful')) deployStatus = 'success';
+      else if (deployLog.includes('failed')) deployStatus = 'failed';
+    } catch {}
+
     // Mock component statuses - replace with actual component monitoring
     const mockComponents: AIComponentStatus[] = [
       {
@@ -138,18 +174,48 @@ export async function GET(request: NextRequest) {
           errorRate: 2.5,
           requestsPerMinute: 10
         }
+      },
+      {
+        name: 'License Compliance',
+        status: licenseStatus === 'compliant' ? 'healthy' : (licenseStatus === 'non-compliant' ? 'critical' : 'degraded'),
+        lastCheck: new Date().toISOString(),
+        metrics: {
+          latency: 0,
+          errorRate: licenseStatus === 'compliant' ? 0 : 1,
+          requestsPerMinute: 0
+        }
+      },
+      {
+        name: 'Lint/Test',
+        status: lintStatus === 'passed' && testStatus === 'passed' ? 'healthy' : 'degraded',
+        lastCheck: new Date().toISOString(),
+        metrics: {
+          latency: 0,
+          errorRate: lintStatus === 'passed' && testStatus === 'passed' ? 0 : 1,
+          requestsPerMinute: 0
+        }
+      },
+      {
+        name: 'Deployment',
+        status: deployStatus === 'success' ? 'healthy' : (deployStatus === 'failed' ? 'critical' : 'degraded'),
+        lastCheck: new Date().toISOString(),
+        metrics: {
+          latency: 0,
+          errorRate: deployStatus === 'success' ? 0 : 1,
+          requestsPerMinute: 0
+        }
       }
     ];
 
     // Mock alerts - replace with actual alert system
     const mockAlerts = [
       {
-        level: 'warning',
+        level: 'warning' as const,
         message: 'Media Generator showing increased latency',
         timestamp: new Date(Date.now() - 300000).toISOString() // 5 minutes ago
       },
       {
-        level: 'info',
+        level: 'info' as const,
         message: 'System backup completed successfully',
         timestamp: new Date(Date.now() - 3600000).toISOString() // 1 hour ago
       }
@@ -161,7 +227,12 @@ export async function GET(request: NextRequest) {
       timestamp: new Date().toISOString(),
       components: mockComponents,
       metrics: mockMetrics,
-      alerts: mockAlerts
+      alerts: mockAlerts,
+      // Add new fields for compliance and deployment
+      licenseStatus,
+      lintStatus,
+      testStatus,
+      deployStatus
     };
 
     return NextResponse.json(healthStatus);

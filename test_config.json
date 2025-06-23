@@ -17,21 +17,22 @@
     },
     "notifications": {
         "slack": {
-            "enabled": false,
-            "webhook_url": ""
+            "enabled": true,
+            "webhook_url": "<YOUR_SLACK_WEBHOOK_URL>"
         },
         "email": {
-            "enabled": false,
-            "smtp_server": "",
+            "enabled": true,
+            "smtp_server": "<YOUR_SMTP_SERVER>",
             "smtp_port": 587,
-            "sender_email": "",
-            "sender_password": "",
-            "recipient_emails": []
+            "sender_email": "<YOUR_EMAIL>",
+            "sender_password": "<YOUR_PASSWORD>",
+            "recipient_emails": ["<RECIPIENT_EMAIL>"]
         }
     },
     "test_categories": {
         "unit": "tests/unit",
         "integration": "tests/integration",
         "e2e": "tests/e2e"
-    }
+    },
+    "last_validated": ""
 } 

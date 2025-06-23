@@ -154,6 +154,19 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Research papers
 - Community members
 
+## Qcity Features
+
+- **Devices Hub:**
+  - Manage, find, and secure all devices
+- **Onboarding & Community:**
+  - Modern Join Q Community flow
+- **Earning & Cashon:**
+  - Real-time earning and fund management
+- **Automation & Resilience:**
+  - Self-healing, fallback, and continuous improvement
+- **Role-Based Dashboards:**
+  - Tailored for all user types and professions
+
 ---
 
 *Last updated: 2024-03-19* 

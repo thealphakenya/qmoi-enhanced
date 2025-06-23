@@ -62,7 +62,10 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
       setError(null);
 
       const tradingManager = TradingManager.getInstance();
-      const history = await tradingManager.getTradingHistory();
+      const history = (await tradingManager.getTradingHistory()).map((trade: any) => ({
+        ...trade,
+        timestamp: new Date(trade.timestamp),
+      }));
       setTrades(history);
 
       // Calculate statistics

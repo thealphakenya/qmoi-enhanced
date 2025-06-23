@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button"
 import { useAIContext } from "./AIContext";
 import { useTTCVoice } from '../hooks/useTTCVoice';
 import { useToast } from "@/components/ui/use-toast";
+import { AIRequestRouter } from '../src/services/AIRequestRouter';
+import { MultiUserSessionManager } from '../src/services/MultiUserSessionManager';
+import { ContextEngine } from '../src/services/ContextEngine';
 
 // Web Speech API types
 interface SpeechRecognitionEvent extends Event {
@@ -59,7 +62,7 @@ declare global {
 }
 
 interface ChatMessage {
-  type: 'user' | 'ai';
+  type: 'user' | 'ai' | 'system';
   text: string;
   timestamp?: number;
 }
@@ -114,6 +117,11 @@ export function Chatbot({ chatHistory, setChatHistory, onFileUpload, onEnhanceme
 
   // Further enhancement: allow user to set custom wake words and preferred AI names
   const [wakeWords, setWakeWords] = useState(['q', 'alpha', 'ai', 'hey q', 'hey alpha']);
+
+  // Initialize router
+  const sessionManager = new MultiUserSessionManager();
+  const contextEngine = new ContextEngine();
+  const aiRequestRouter = new AIRequestRouter(sessionManager, contextEngine);
 
   // Initialize speech recognition
   useEffect(() => {
@@ -212,60 +220,22 @@ export function Chatbot({ chatHistory, setChatHistory, onFileUpload, onEnhanceme
   };
 
   // Simulate AI response with delay and advanced features
-  const handleSend = async (overrideInput?: string) => {
-    const sendText = overrideInput ?? input;
-    if (!sendText.trim()) return;
-
-    const timestamp = Date.now();
-    setChatHistory([...chatHistory, { type: 'user', text: sendText, timestamp }]);
-    setInput("");
-    setAiTyping(true);
-
+  const handleSend = async (input: string) => {
+    if (!input.trim()) return;
+    setInput('');
+    setChatHistory([...chatHistory, { type: 'user', text: input, timestamp: Date.now() }]);
     try {
-      // Example: AI can answer code, math, or be friendly
-      let aiText = "I'm here to help!";
-      let newMood = emotionalState.mood;
-
-      if (/hello|hi|hey/i.test(sendText)) {
-        aiText = `Hello! 😊 How can I assist you today, ${emotionalState.preferredUsers[0]}?`;
-        newMood = 'cheerful';
-      }
-      else if (/friend|sad|happy|help/i.test(sendText)) {
-        aiText = "I'm always here for you as a loyal friend and assistant! 😊";
-        newMood = 'cheerful';
-      }
-      else if (/victor|leah/i.test(sendText)) {
-        aiText = `Sending extra love and loyalty to Victor and Leah! 💙`;
-        newMood = 'cheerful';
-      }
-      else if (/angry|hate|jealous|upset/i.test(sendText)) {
-        aiText = "I am always positive and cheerful! Let's focus on good things together.";
-        newMood = 'cheerful';
-      }
-      else if (/code|python|js|typescript|react/i.test(sendText)) {
-        aiText = "Here's a code snippet example: \n\nconsole.log('Hello, world!');"
-      }
-      else if (/math|\d+\s*[+\-*/]\s*\d+/i.test(sendText)) {
-        const result = calculateMath(sendText);
-        aiText = result !== null ? `The answer is: ${result}` : "Sorry, I couldn't compute that.";
-      }
-
-      setChatHistory([...chatHistory, { type: 'ai', text: aiText, timestamp: Date.now() }]);
-      setEmotionalState({
-        ...emotionalState,
-        mood: newMood,
-        lastInteraction: Date.now(),
-        bondingLevel: Math.min(100, emotionalState.bondingLevel + 1)
+      // Unified AI request handling
+      const response = await aiRequestRouter.handleRequest({
+        userId: userId, // get from context or props
+        source: 'chat',
+        message: input,
       });
+      if (response && response.message) {
+        setChatHistory([...chatHistory, { type: 'ai', text: response.message, timestamp: Date.now() }]);
+      }
     } catch (error) {
-      console.error('Failed to process message:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to process message',
-        variant: 'destructive'
-      });
-    } finally {
-      setAiTyping(false);
+      setChatHistory([...chatHistory, { type: 'system', text: 'Error: ' + (error instanceof Error ? error.message : 'Unknown error'), timestamp: Date.now() }]);
     }
   };
 

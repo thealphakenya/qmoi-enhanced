@@ -37,7 +37,8 @@ class CloudDeployer:
             "digitalocean": self._deploy_digitalocean,
             "aws": self._deploy_aws,
             "azure": self._deploy_azure,
-            "gcp": self._deploy_gcp
+            "gcp": self._deploy_gcp,
+            "vercel": self._deploy_vercel
         }
     
     def setup_logger(self) -> logging.Logger:
@@ -69,6 +70,7 @@ class CloudDeployer:
                 return json.load(f)
         except FileNotFoundError:
             return {
+                "default_target": "vercel",
                 "heroku": {
                     "enabled": False,
                     "app_name": "q-city",
@@ -114,6 +116,10 @@ class CloudDeployer:
                     "machine_type": "e2-micro",
                     "image": "ubuntu-2004-focal-v20201014",
                     "network": "default"
+                },
+                "vercel": {
+                    "enabled": True,
+                    "prod": True
                 }
             }
     
@@ -601,8 +607,28 @@ class CloudDeployer:
             self.logger.error(f"Error deploying to GCP: {e}")
             return False
     
+    def _deploy_vercel(self) -> bool:
+        """Deploy to Vercel."""
+        try:
+            self.logger.info("Starting Vercel deployment...")
+            command = ["npx", "vercel", "--yes"]
+            if self.config["vercel"].get("prod"):
+                command.append("--prod")
+
+            result = subprocess.run(command, check=True, capture_output=True, text=True)
+            self.logger.info("Vercel deployment successful!")
+            self.logger.info(result.stdout)
+            return True
+        except subprocess.CalledProcessError as e:
+            self.logger.error(f"Error in Vercel deployment: {e}")
+            self.logger.error(e.stderr)
+            return False
+        except Exception as e:
+            self.logger.error(f"An unexpected error occurred during Vercel deployment: {e}")
+            return False
+    
     def _copy_directory(self, sftp: paramiko.SFTPClient, src: str, dst: str) -> None:
-        """Copy directory using SFTP."""
+        """Copy directory recursively using SFTP."""
         try:
             os.makedirs(dst, exist_ok=True)
             

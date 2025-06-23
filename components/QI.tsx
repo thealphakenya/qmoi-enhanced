@@ -9,6 +9,8 @@ import * as Recharts from "recharts";
 import { Chatbot } from "@/components/Chatbot";
 import { QIStateWindow } from "./QIStateWindow";
 import { DeviceMap } from "./DeviceMap";
+import { FinancialManager } from "./FinancialManager";
+import CashonTradingPanel from "./CashonTradingPanel";
 import { useColabJob } from "../hooks/useColabJob";
 import { useExtensionManager } from "../hooks/useExtensionManager";
 import { AIProvider, useAIContext } from "./AIContext";
@@ -34,6 +36,11 @@ import { useLargeFileUpload } from '../hooks/useLargeFileUpload';
 import { FloatingPreviewWindow } from './FloatingPreviewWindow';
 import { FaWallet, FaChild, FaRobot, FaMoneyBillWave, FaKey, FaMapMarkerAlt, FaLanguage, FaChalkboardTeacher, FaVideo, FaMusic, FaFileAlt, FaDownload, FaHeart, FaBrain, FaCog, FaBell, FaShieldAlt, FaLock, FaUnlock, FaTools, FaCode, FaTerminal, FaServer, FaNetworkWired, FaDatabase, FaMemory, FaMicrochip, FaBatteryFull, FaTemperatureHigh, FaChartLine, FaExchangeAlt, FaCoins, FaHistory, FaChartBar, FaChartPie, FaChartArea } from 'react-icons/fa';
 import { AIHealth, MediaStatus, AutomationStatus, BadgeVariant } from '../types';
+import { AIRequestRouter } from '../src/services/AIRequestRouter';
+import { MultiUserSessionManager } from '../src/services/MultiUserSessionManager';
+import { ContextEngine } from '../src/services/ContextEngine';
+import { useMaster } from './MasterContext';
+import QmoiAutoDistribution from './QmoiAutoDistribution';
 
 // Types
 interface ChatMessage {
@@ -762,6 +769,7 @@ function QIComponent() {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null);
   const [showTradingPanel, setShowTradingPanel] = useState(false);
   const [showAnalyticsPanel, setShowAnalyticsPanel] = useState(false);
+  const [showCashonTradingPanel, setShowCashonTradingPanel] = useState(false);
 
   // Handle trading strategy updates
   const handleStrategyUpdate = useCallback((strategy: TradingStrategy) => {
@@ -786,7 +794,35 @@ function QIComponent() {
     setAnalyticsData(data);
   }, []);
 
-  if (!isMaster()) return null;
+  // Add router initialization
+  const sessionManager = new MultiUserSessionManager();
+  const contextEngine = new ContextEngine();
+  const aiRequestRouter = new AIRequestRouter(sessionManager, contextEngine);
+
+  // Add state for master console
+  const [showMasterConsole, setShowMasterConsole] = useState(false);
+  const [consoleInput, setConsoleInput] = useState('');
+  const [consoleOutput, setConsoleOutput] = useState<string[]>([]);
+
+  const handleConsoleSend = async () => {
+    if (!consoleInput.trim()) return;
+    setConsoleOutput([...consoleOutput, `> ${consoleInput}`]);
+    try {
+      const response = await aiRequestRouter.handleRequest({
+        userId: 'master', // get from context or props
+        source: 'chat',
+        message: consoleInput,
+      });
+      if (response && response.message) {
+        setConsoleOutput([...consoleOutput, response.message]);
+      }
+    } catch (error) {
+      setConsoleOutput([...consoleOutput, 'Error: ' + (error instanceof Error ? error.message : 'Unknown error')]);
+    }
+    setConsoleInput('');
+  };
+
+  const { isMaster } = useMaster();
 
   return (
     <QIErrorBoundary>
@@ -869,6 +905,9 @@ function QIComponent() {
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowTradingPanel(true)}>
             <FaChartLine className="mr-2" /> Trading
+          </Button>
+          <Button size="sm" variant="outline" onClick={() => setShowCashonTradingPanel(true)}>
+            <FaCoins className="mr-2" /> Cashon Trading
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowAnalyticsPanel(true)}>
             <FaChartBar className="mr-2" /> Analytics
@@ -1370,6 +1409,13 @@ function QIComponent() {
           </div>
         )}
 
+        {/* Cashon Trading Panel */}
+        {showCashonTradingPanel && (
+          <div className="p-4 bg-gray-50 rounded-lg shadow mb-4">
+            <CashonTradingPanel />
+          </div>
+        )}
+
         {showAllStats && (
           <div className="mb-4 p-2 bg-gray-100 rounded">
             <h3 className="font-semibold mb-2">All AI Stats (All Sessions/Users/Projects)</h3>
@@ -1597,6 +1643,36 @@ function QIComponent() {
             content={previewContent}
             onContentChange={setPreviewContent}
           />
+        )}
+        {isMaster && (
+          <Button size="sm" variant="outline" onClick={() => setShowMasterConsole(v => !v)}>
+            {showMasterConsole ? 'Close Master Console' : 'Open Master Console'}
+          </Button>
+        )}
+        {showMasterConsole && (
+          <div className="mt-4 p-4 bg-gray-900 text-green-200 rounded-lg shadow">
+            <h3 className="font-semibold mb-2">Master Console</h3>
+            <div className="flex flex-col gap-2">
+              <textarea
+                value={consoleInput}
+                onChange={e => setConsoleInput(e.target.value)}
+                className="bg-gray-800 text-green-200 p-2 rounded"
+                rows={2}
+                placeholder="Enter command, file edit, or version query..."
+              />
+              <Button size="sm" variant="outline" onClick={handleConsoleSend}>Send</Button>
+              <div className="mt-2 max-h-40 overflow-y-auto bg-gray-800 p-2 rounded">
+                {consoleOutput.map((line, i) => (
+                  <div key={i} className="text-xs font-mono">{line}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+        {isMaster && (
+          <div className="my-8">
+            <QmoiAutoDistribution />
+          </div>
         )}
       </CardContent>
     </Card>

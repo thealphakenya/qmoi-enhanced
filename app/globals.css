@@ -24,6 +24,10 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
+    --luminous-green: #39FF14;
+    --qai-bg: #101010;
+    --qai-accent: #39FF14;
+    --qai-emoji: "🚀";
   }
 
   .dark {
@@ -56,4 +60,26 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.qai-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--qai-bg);
+  color: var(--qai-accent);
+  font-size: 2rem;
+  animation: qai-glow 2s infinite alternate;
+}
+
+@keyframes qai-glow {
+  from { text-shadow: 0 0 10px var(--qai-accent); }
+  to { text-shadow: 0 0 30px var(--qai-accent), 0 0 10px #fff; }
+}
+
+.qai-emoji {
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }

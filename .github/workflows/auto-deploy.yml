@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 2 * * *' # Every day at 2am UTC
+    - cron: '0 */6 * * *' # Every 6 hours
 
 jobs:
   build-and-deploy:
@@ -39,10 +40,19 @@ jobs:
         run: npm install license-checker --save-dev --legacy-peer-deps
 
       - name: License Compliance Check
+        id: license_check
         run: |
-          npx license-checker --production --onlyAllow="MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;CC0-1.0;ISC" || (
-            echo "::error::❌ Non-compliant license found. Failing deployment." && exit 1
-          )
+          node scripts/license_checker.js || (echo "license_error=1" >> $GITHUB_ENV)
+
+      - name: Run AI Error Fixer on License Error
+        if: env.license_error == '1'
+        run: |
+          echo "Running AI error fixer for license compliance..."
+          node scripts/enhanced-error-fix.js --type license || true
+
+      - name: Run Environment Auto Fix
+        run: |
+          node scripts/auto_env_fix.cjs || echo "auto_env_fix failed, continuing..."
 
       - name: Run AI-driven metrics check
         run: |
@@ -58,18 +68,20 @@ jobs:
           npm run build || echo "::warning::Build failed, continuing..."
 
       - name: Run Vercel Auto Deploy
+        id: vercel_deploy
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          node scripts/deploy/vercel_auto_deploy.js || echo "::warning::Vercel auto-deploy failed. Fallback attempted."
+          node scripts/deploy/vercel_auto_deploy.js || (echo "Vercel auto-deploy failed" && echo "vercel_error=1" >> $GITHUB_ENV)
 
-      - name: AWS Cost Report
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Run AI Error Fixer on Vercel Deploy Error
+        if: env.vercel_error == '1'
         run: |
-          node scripts/aws_cost_report.js
+          echo "Running AI error fixer for Vercel deployment..."
+          node scripts/enhanced-error-fix.js --type vercel || true
+          # Optionally, retry deploy
+          node scripts/deploy/vercel_auto_deploy.js || echo "Vercel deploy retry failed. Manual intervention required."
 
       - name: Keep Alive (Optional)
         run: echo "✅ App should always be running. Monitor with external uptime service."

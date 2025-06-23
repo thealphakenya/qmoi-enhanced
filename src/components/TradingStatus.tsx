@@ -44,7 +44,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
       setError(null);
 
       // Get connection status
-      const connectionStatus = await TradingManager.getInstance().checkConnection();
+      const connectionStatus = TradingManager.getInstance().getConnectionStatus();
       setIsConnected(connectionStatus.isConnected);
 
       if (connectionStatus.isConnected) {
@@ -52,7 +52,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
         const balances = await TradingManager.getInstance().getWalletBalances();
         setWalletBalances(balances);
       } else {
-        setError(connectionStatus.error || 'Connection lost');
+        setError(connectionStatus.lastError || 'Connection lost');
       }
 
       setLastUpdate(new Date());

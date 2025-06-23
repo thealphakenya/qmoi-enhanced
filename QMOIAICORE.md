@@ -23,6 +23,19 @@ The AI Core powers all automation, error fixing, self-healing, and system integr
 - If any system fails, AI logs the error, attempts auto-fix, and notifies master
 - Redeploys and retries until successful
 
+## AI Core Features
+
+- **Emotional Intelligence:**
+  - Mood tracking, sentiment analysis, and adaptive responses
+- **Context Engine:**
+  - Learns and adapts to user context and preferences
+- **Self-Learning:**
+  - Auto-researches and updates knowledge base
+- **Personalization:**
+  - Customizable for all user types and roles
+- **Security & Privacy:**
+  - Transparent, encrypted, and user-controlled
+
 ---
 
 *This file is managed by the AI and documents all core logic and enhancements.* 

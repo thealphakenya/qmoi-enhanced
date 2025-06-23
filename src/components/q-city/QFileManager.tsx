@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTimezone } from '../../hooks/useTimezone';
+import { useToast } from '../../../hooks/use-toast';
+import { Loader2 } from 'lucide-react';
+import { Button } from '../../../components/ui/button';
+import { Card } from '../../../components/ui/card';
 
 interface FileItem {
   id: string;
@@ -18,6 +22,13 @@ interface QFileManagerProps {
   isMaster?: boolean;
 }
 
+interface WalletRequest {
+  email: string;
+  username: string;
+  requestedAt: string;
+  status: 'pending' | 'approved' | 'denied';
+}
+
 export const QFileManager: React.FC<QFileManagerProps> = ({ isMaster = false }) => {
   const [files, setFiles] = useState<FileItem[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,6 +38,39 @@ export const QFileManager: React.FC<QFileManagerProps> = ({ isMaster = false }) 
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [isLoading, setIsLoading] = useState(false);
   const { getCurrentTime, currentTimezone } = useTimezone();
+  const [walletRequested, setWalletRequested] = useState(false);
+  const [pendingRequests, setPendingRequests] = useState<WalletRequest[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast();
+
+  // Fetch pending requests for master
+  useEffect(() => {
+    if (isMaster) {
+      fetchPendingRequests();
+    }
+  }, [isMaster]);
+
+  const fetchPendingRequests = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch('/api/wallet?pending_wallets=1', {
+        headers: { 'x-admin-token': localStorage.getItem('adminToken') || '' }
+      });
+      if (!res.ok) throw new Error('Failed to fetch pending requests');
+      const data = await res.json();
+      setPendingRequests(data);
+    } catch (err) {
+      setError('Failed to load pending requests');
+      toast({
+        title: 'Error',
+        description: 'Failed to load pending wallet requests',
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Simulate file data
   useEffect(() => {
@@ -211,6 +255,93 @@ export const QFileManager: React.FC<QFileManagerProps> = ({ isMaster = false }) 
     { value: 'other', label: 'Other', emoji: '📄' }
   ];
 
+  const handleRequestWallet = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const email = localStorage.getItem('userEmail');
+      const username = localStorage.getItem('username');
+      
+      if (!email || !username) {
+        throw new Error('Please complete your profile first');
+      }
+
+      const res = await fetch('/api/wallet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-token': localStorage.getItem('adminToken') || '',
+        },
+        body: JSON.stringify({
+          action: 'request_wallet',
+          email,
+          username,
+        }),
+      });
+
+      const data = await res.json();
+      
+      if (data.status === 'pending') {
+        setWalletRequested(true);
+        toast({
+          title: 'Success',
+          description: 'Wallet request sent to master for approval',
+        });
+      } else {
+        throw new Error(data.error || 'Failed to request wallet');
+      }
+    } catch (err: any) {
+      setError(err.message);
+      toast({
+        title: 'Error',
+        description: err.message,
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleApproveWallet = async (email: string) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await fetch('/api/wallet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-token': localStorage.getItem('adminToken') || '',
+          'x-master-token': localStorage.getItem('masterToken') || '',
+        },
+        body: JSON.stringify({
+          action: 'approve_wallet',
+          email,
+        }),
+      });
+
+      const data = await res.json();
+      
+      if (data.status === 'approved') {
+        setPendingRequests(prev => prev.filter(r => r.email !== email));
+        toast({
+          title: 'Success',
+          description: `Wallet approved for ${email}`,
+        });
+      } else {
+        throw new Error(data.error || 'Failed to approve wallet');
+      }
+    } catch (err: any) {
+      setError(err.message);
+      toast({
+        title: 'Error',
+        description: err.message,
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-lg p-6">
       {/* Header */}
@@ -383,6 +514,63 @@ export const QFileManager: React.FC<QFileManagerProps> = ({ isMaster = false }) 
           <div className="text-sm text-yellow-700">
             Advanced file operations, AI organization, and system-wide file management available.
           </div>
+        </div>
+      )}
+
+      {error && <div className="text-red-500 mb-2">{error}</div>}
+      {loading && <div className="text-gray-500 mb-2">Loading...</div>}
+      {!isMaster && (
+        <div className="mt-4">
+          <Button
+            onClick={handleRequestWallet}
+            disabled={loading || walletRequested}
+            className="w-full"
+          >
+            {loading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Processing...
+              </>
+            ) : walletRequested ? (
+              'Wallet Request Pending Approval'
+            ) : (
+              'Request Wallet'
+            )}
+          </Button>
+        </div>
+      )}
+      {isMaster && (
+        <div className="mt-4">
+          <h4 className="font-bold mb-2">Pending Wallet Requests</h4>
+          {loading && (
+            <div className="flex items-center justify-center py-4">
+              <Loader2 className="h-8 w-8 animate-spin" />
+            </div>
+          )}
+          {!loading && pendingRequests.length === 0 && <div>No pending requests.</div>}
+          {pendingRequests.map(req => (
+            <Card key={req.email} className="p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium">{req.username}</p>
+                  <p className="text-sm text-gray-500">{req.email}</p>
+                  <p className="text-xs text-gray-400">
+                    Requested: {new Date(req.requestedAt).toLocaleString()}
+                  </p>
+                </div>
+                <Button
+                  onClick={() => handleApproveWallet(req.email)}
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    'Approve'
+                  )}
+                </Button>
+              </div>
+            </Card>
+          ))}
         </div>
       )}
     </div>

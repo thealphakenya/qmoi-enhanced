@@ -34,7 +34,8 @@ class Deployer:
             "azure": self._deploy_azure,
             "gcp": self._deploy_gcp,
             "docker": self._deploy_docker,
-            "kubernetes": self._deploy_kubernetes
+            "kubernetes": self._deploy_kubernetes,
+            "vercel": self._deploy_vercel
         }
     
     def setup_logger(self) -> logging.Logger:
@@ -67,7 +68,7 @@ class Deployer:
         except FileNotFoundError:
             self.logger.warning(f"Config file not found: {self.config_path}")
             return {
-                "default_target": "local",
+                "default_target": "vercel",
                 "backup_before_deploy": True,
                 "notify_on_deploy": True,
                 "deployment_timeout": 3600,
@@ -105,6 +106,10 @@ class Deployer:
                         "enabled": False,
                         "namespace": "q-city",
                         "replicas": 1
+                    },
+                    "vercel": {
+                        "enabled": True,
+                        "prod": True
                     }
                 }
             }
@@ -570,9 +575,29 @@ class Deployer:
         except Exception as e:
             self.logger.error(f"Error in Kubernetes deployment: {e}")
             return False
+
+    def _deploy_vercel(self) -> bool:
+        """Deploy to Vercel."""
+        try:
+            self.logger.info("Starting Vercel deployment...")
+            command = ["npx", "vercel", "--yes"]
+            if self.config["targets"]["vercel"].get("prod"):
+                command.append("--prod")
+            
+            result = subprocess.run(command, check=True, capture_output=True, text=True)
+            self.logger.info("Vercel deployment successful!")
+            self.logger.info(result.stdout)
+            return True
+        except subprocess.CalledProcessError as e:
+            self.logger.error(f"Error in Vercel deployment: {e}")
+            self.logger.error(e.stderr)
+            return False
+        except Exception as e:
+            self.logger.error(f"An unexpected error occurred during Vercel deployment: {e}")
+            return False
     
     def _create_backup(self) -> None:
-        """Create deployment backup."""
+        """Create a backup of the current state."""
         try:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             backup_dir = os.path.join(

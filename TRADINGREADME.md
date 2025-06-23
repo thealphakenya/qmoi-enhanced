@@ -1048,3 +1048,79 @@ This software is proprietary and confidential. Unauthorized copying, distributio
 ---
 
 *Last updated: 2024-03-19*
+
+## Trading Features & Automation
+
+- **Automated Trading Strategies:**
+  - AI-driven, adaptive, and resilient
+- **Cashon Integration:**
+  - Real-time fund management via Pesapal
+- **Earning Automation:**
+  - Multiple strategies for different user types
+- **Error-Fixing & Resilience:**
+  - Self-healing and fallback mechanisms
+- **Role-Based Dashboards:**
+  - Tailored trading features for all users
+
+## Bitget API Integration
+
+### 1. IP Bind Address
+- Your device's public IP must be added to Bitget API settings for access.
+- **To get your public IP, run:**
+  ```bash
+  yarn trading:publicip
+  # or
+  python scripts/get_public_ip.py
+  ```
+- Copy the displayed IP and add it to Bitget's API IP whitelist.
+
+### 2. RSA API Key Setup
+- Bitget requires an RSA key pair for secure API access.
+- **To generate keys, run:**
+  ```bash
+  yarn trading:genkey
+  # or
+  python scripts/generate_rsa_key.py
+  ```
+- The public key will be saved at: `secrets/bitget_public.pem`
+- The private key will be saved at: `secrets/bitget_private.pem`
+- **Add the public key to Bitget API settings.**
+
+### 3. Automation & Self-Setup
+- The trading system will check for valid keys and IP on startup.
+- If missing, it will prompt you to generate or update them.
+- All sensitive files are stored in the `secrets/` directory.
+
+### 4. Enhanced Trading Features
+- Automated trading, error fixing, and reporting are managed by QMOI AI.
+- All actions are logged and auditable.
+- For advanced automation, use:
+  ```bash
+  yarn trading:auto
+  ```
+
+### 5. File Locations
+- **Public Key:** `secrets/bitget_public.pem`
+- **Private Key:** `secrets/bitget_private.pem`
+- **Trading Logs:** `logs/trading.log`
+- **Reports:** `reports/trading-report.json`
+
+---
+
+## Quick Start
+1. Agree to QTEAMTERMS.md on install.
+2. Run the public IP and RSA key scripts as above.
+3. Add your public IP and public key to Bitget API settings.
+4. Start trading automation with `yarn trading:auto`.
+
+---
+
+For help, contact the Q-team at rovicviccy@gmail.com.
+
+# Bitget RSA API Integration (User-Generated Keys)
+
+- Qmoi/AI now supports Bitget's User-Generated RSA API keys for maximum security.
+- Keys are stored in the `keys/` directory (auto-ignored by git).
+- See `RSAAPIREADME.md` for setup and usage instructions.
+- The AI automatically manages environment variables, including Vercel tokens, and securely loads them in all environments (including Vercel deployments).
+- To use your Bitget API, generate keys as described and update `keys/bitget.env`.

@@ -59,13 +59,37 @@ class AutoGitUpdater {
 
       // Update last commit time
       this.lastCommitTime = new Date();
-
+      // Auto-update version and changelog files
+      await this.updateVersionAndChangelog(commitMessage);
       // Notify master
       await this.notifyMaster('✅ Repository updated successfully', commitMessage);
 
     } catch (error) {
       console.error('❌ Error during update:', error.message);
       await this.handleError(error);
+    }
+  }
+
+  async updateVersionAndChangelog(commitMessage) {
+    try {
+      // Update version.txt
+      const versionFile = 'version.txt';
+      const version = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 12);
+      fs.writeFileSync(versionFile, version);
+      // Update CHANGELOG.md
+      const changelogFile = 'CHANGELOG.md';
+      let changelog = '';
+      if (fs.existsSync(changelogFile)) {
+        changelog = fs.readFileSync(changelogFile, 'utf8');
+      }
+      const newEntry = `\n## ${version}\n- ${commitMessage}\n`;
+      fs.writeFileSync(changelogFile, newEntry + changelog);
+      // Update all .md files with new version info if needed
+      this.updateDocumentation();
+      // Notify master of version change
+      await this.notifyMaster('🔄 Version updated', `New version: ${version}`);
+    } catch (error) {
+      console.error('❌ Error updating version/changelog:', error.message);
     }
   }
 

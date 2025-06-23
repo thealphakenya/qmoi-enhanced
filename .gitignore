@@ -25,3 +25,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts.env 
+
+# Ignore keys directory for sensitive API/private keys
+keys/

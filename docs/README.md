@@ -454,4 +454,21 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## QMOI Permission Self-Healing, Notification, and Audit System
+
+QMOI now features robust self-healing and notification for file permissions:
+
+- **Automatic Permission Self-Healing:** Checks and fixes its own and critical files' permissions at startup and every 10 minutes.
+- **Multi-Channel Notifications:** Notifies the master via desktop, WhatsApp, and email (configurable in `config/qmoi_config.json`).
+- **Audit Logging:** All actions are logged in `logs/qmoi_permission_audit.log`.
+
+### Configuration
+See `config/qmoi_config.json` for notification and email settings.
+
+### Manual Fix
+Run `python scripts/qmoi_permission_fix.py` to manually fix permissions.
+
+### Audit Log
+See `logs/qmoi_permission_audit.log` for a full trace of permission and notification actions. 

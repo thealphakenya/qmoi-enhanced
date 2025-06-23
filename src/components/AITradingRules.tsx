@@ -11,14 +11,15 @@ import {
   Grid,
   Alert,
   Chip,
-  IconButton,
-  Tooltip,
+  // IconButton,
+  // Tooltip,
 } from '@mui/material';
 import {
   Save,
-  Add,
-  Delete,
+  Add as AddIcon,
+  // Delete,
   Info,
+  // Edit as EditIcon,
 } from '@mui/icons-material';
 import { useAuth } from '../hooks/useAuth';
 import { TradingManager } from '../config/trading';
@@ -192,7 +193,7 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({ className }) => 
             />
             <Button
               variant="outlined"
-              startIcon={<Add />}
+              startIcon={<AddIcon />}
               onClick={handleAddPair}
               disabled={!newPair}
             >

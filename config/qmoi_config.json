@@ -133,5 +133,50 @@
         "authentication": true,
         "access_control": true,
         "audit_logging": true
-    }
+    },
+    "notification_settings": {
+        "desktop_notifications": true,
+        "whatsapp_notifications": true,
+        "email_notifications": true,
+        "slack_notifications": true,
+        "telegram_notifications": true,
+        "discord_notifications": true,
+        "critical_only": false
+    },
+    "email_settings": {
+        "enabled": true,
+        "smtp_server": "smtp.gmail.com",
+        "smtp_port": 587,
+        "sender_email": "your_email@gmail.com",
+        "sender_password": "your_password",
+        "recipient_emails": ["master_email@gmail.com"]
+    },
+    "slack_settings": {
+        "enabled": true,
+        "webhook_url": "https://hooks.slack.com/services/your/webhook/url"
+    },
+    "telegram_settings": {
+        "enabled": true,
+        "bot_token": "your_telegram_bot_token",
+        "chat_id": "your_telegram_chat_id"
+    },
+    "discord_settings": {
+        "enabled": true,
+        "webhook_url": "https://discord.com/api/webhooks/your/webhook/url"
+    },
+    "escalation_contacts": {
+        "secondary_emails": ["secondary1@gmail.com", "secondary2@gmail.com"],
+        "secondary_whatsapp": ["+254700000000"],
+        "slack_channels": ["#critical-alerts"]
+    },
+    "permission_self_check_interval": 600,
+    "dashboard_settings": {
+        "host": "0.0.0.0",
+        "port": 5000,
+        "enable_auth": false,
+        "auth_username": "admin",
+        "auth_password": "changeme"
+    },
+    "dashboard_health_check_interval": 60,
+    "dashboard_downtime_notify_threshold": 180
 } 

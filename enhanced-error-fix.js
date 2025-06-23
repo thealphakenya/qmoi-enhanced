@@ -1,27 +1,39 @@
 #!/usr/bin/env node
 // enhanced-error-fix.ts
-import { execSync } from 'child_process';
+const { execSync } = require('child_process');
+const path = require('path');
+const axios = require('axios');
 
-function run(cmd: string, desc: string): void {
+async function fixFile(file) {
   try {
-    console.log(`\n▶️  ${desc}...`);
-    execSync(cmd, { stdio: 'inherit' });
-    console.log(`✅ Success: ${desc}`);
-  } catch (e: unknown) {
-    console.error(`❌ Error during: ${desc}`);
-    if (e instanceof Error) {
-      if ('stdout' in e) console.error(e.stdout?.toString());
-      if ('stderr' in e) console.error(e.stderr?.toString());
-    }
-    process.exit(1);
+    // Try local JS/TS/Python fixer first
+    execSync(`npx eslint --fix ${file}`, { stdio: 'inherit' });
+    console.log(`[Local Fixer] Fixed with ESLint: ${file}`);
+    return true;
+  } catch (e) {
+    console.warn(`[Local Fixer] Failed: ${e.message}`);
   }
+  try {
+    // Try Rust fixer
+    execSync(`node scripts/rust_lint_fix.js ${file}`, { stdio: 'inherit' });
+    console.log(`[Rust Fixer] Attempted fix: ${file}`);
+    return true;
+  } catch (e) {
+    console.warn(`[Rust Fixer] Failed: ${e.message}`);
+  }
+  try {
+    // Try QMOI model/AI core endpoint
+    const res = await axios.post('http://localhost:5001/qmoi/fix', { file });
+    if (res.data && res.data.fixed) {
+      require('fs').writeFileSync(file, res.data.fixed);
+      console.log(`[QMOI AI Core] Fixed via AI: ${file}`);
+      return true;
+    }
+  } catch (e) {
+    console.warn(`[QMOI AI Core] Failed: ${e.message}`);
+  }
+  console.error(`[Error Fixer] All fixers failed for: ${file}`);
+  return false;
 }
 
-console.log('🔍 Checking and fixing errors for Alpha-Q AI...');
-
-run('pnpm install || npm install || yarn install', 'Install dependencies');
-run('pnpm run lint || npm run lint || yarn lint', 'Lint code');
-run('pnpm run build || npm run build || yarn build', 'Build project');
-run('pnpm run typecheck || npm run typecheck || yarn typecheck', 'Type check');
-
-console.log('\n🎉 All checks passed! If you see no errors above, your system is ready.');
+module.exports = { fixFile };

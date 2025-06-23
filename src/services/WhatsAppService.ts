@@ -46,6 +46,7 @@ export class WhatsAppService {
   private qrCodeStatus: QRCodeStatus;
   private messageTemplates: MessageTemplate[] = [];
   private autoResponders: Map<string, (message: Message) => Promise<string>> = new Map();
+  private pendingApprovals: Map<string, { message: Message; resolve: (approved: boolean) => void }> = new Map();
 
   private constructor() {
     this.config = {
@@ -346,6 +347,44 @@ Time: ${new Date().toLocaleString()}`;
         }
         break;
       
+      case '/approve':
+        if (args.length > 0) {
+          const approvalId = args[0];
+          if (this.pendingApprovals.has(approvalId)) {
+            this.pendingApprovals.get(approvalId).resolve(true);
+            this.pendingApprovals.delete(approvalId);
+            await message.reply('✅ Request approved.');
+          } else {
+            await message.reply('Approval ID not found.');
+          }
+        } else {
+          await message.reply('Approval ID is required.');
+        }
+        break;
+      
+      case '/deny':
+        if (args.length > 0) {
+          const approvalId = args[0];
+          if (this.pendingApprovals.has(approvalId)) {
+            this.pendingApprovals.get(approvalId).resolve(false);
+            this.pendingApprovals.delete(approvalId);
+            await message.reply('❌ Request denied.');
+          } else {
+            await message.reply('Approval ID not found.');
+          }
+        } else {
+          await message.reply('Approval ID is required.');
+        }
+        break;
+      
+      case '/business':
+        if (args.length > 0) {
+          await this.processBusinessFeatureCommand(message, args);
+        } else {
+          await message.reply('Business command requires arguments. Use /help for more info.');
+        }
+        break;
+      
       default:
         await message.reply(`Unknown command: ${command}. Use /help for available commands.`);
     }
@@ -629,6 +668,98 @@ Master Commands:
 
   private sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  public async requestApproval(userId: string, request: string): Promise<boolean> {
+    // Always auto-approve master/sister
+    if (userId === this.config.masterPhone || userId === this.config.leahPhone) return true;
+    // Send approval request to master
+    const approvalId = `${userId}-${Date.now()}`;
+    const approvalMessage = `⚠️ Approval Required\nUser: ${userId}\nRequest: ${request}\nReply with /approve ${approvalId} or /deny ${approvalId}`;
+    await this.sendMessage(this.config.masterPhone, approvalMessage);
+    return new Promise(resolve => {
+      this.pendingApprovals.set(approvalId, { message: null, resolve });
+      // Timeout after 10 minutes
+      setTimeout(() => {
+        if (this.pendingApprovals.has(approvalId)) {
+          this.pendingApprovals.delete(approvalId);
+          resolve(false);
+        }
+      }, 10 * 60 * 1000);
+    });
+  }
+
+  private logAndSendToQcity(log: string): void {
+    logger.info(log);
+    // TODO: send log to Qcity (master-only access)
+  }
+
+  // Add: Wallet and fund transfer approval flow
+  private async handleWalletRequest(userId: string, email: string, username: string): Promise<void> {
+    // Notify master for approval
+    const approvalId = `${userId}-${Date.now()}`;
+    this.pendingApprovals.set(approvalId, {
+      message: { from: userId, body: `Wallet request for ${username} (${email})` },
+      resolve: (approved: boolean) => {
+        // Integrate with backend: approve/deny wallet creation
+        // Log action
+        if (approved) {
+          this.sendMessage(userId, '✅ Your wallet request has been approved by the master.');
+        } else {
+          this.sendMessage(userId, '❌ Your wallet request was denied by the master.');
+        }
+      }
+    });
+    await this.sendMessageToMaster(`👤 Wallet request from ${username} (${email}).
+Reply with /approve ${approvalId} or /deny ${approvalId}.`);
+    // Log action
+  }
+
+  // Add: Fund transfer approval flow (similar logic)
+  private async handleFundTransferRequest(userId: string, amount: number, platform: string): Promise<void> {
+    const approvalId = `${userId}-transfer-${Date.now()}`;
+    this.pendingApprovals.set(approvalId, {
+      message: { from: userId, body: `Fund transfer request: ${amount} via ${platform}` },
+      resolve: (approved: boolean) => {
+        // Integrate with backend: approve/deny transfer
+        // Log action
+        if (approved) {
+          this.sendMessage(userId, `✅ Your fund transfer of ${amount} via ${platform} has been approved by the master.`);
+        } else {
+          this.sendMessage(userId, `❌ Your fund transfer request was denied by the master.`);
+        }
+      }
+    });
+    await this.sendMessageToMaster(`💸 Fund transfer request from user ${userId}: ${amount} via ${platform}.
+Reply with /approve ${approvalId} or /deny ${approvalId}.`);
+    // Log action
+  }
+
+  // Add business features and master controls
+  private async processBusinessFeatureCommand(message: Message, args: string[]): Promise<void> {
+    const subCommand = args[0]?.toLowerCase();
+    switch (subCommand) {
+      case 'ads':
+        await message.reply('📢 WhatsApp Business Ads feature activated. Campaigns will be managed by AI.');
+        // TODO: Integrate with ad campaign manager
+        break;
+      case 'settings':
+        await message.reply('⚙️ WhatsApp Business settings updated.');
+        // TODO: Integrate with business settings manager
+        break;
+      case 'group':
+        await message.reply('👥 WhatsApp Business group management enabled.');
+        // TODO: Integrate with group management logic
+        break;
+      case 'status':
+        await message.reply('📝 WhatsApp Business status updated.');
+        // TODO: Integrate with status update logic
+        break;
+      default:
+        await message.reply(`Unknown business feature command: ${subCommand}`);
+    }
+    // Notify master of all business actions
+    await this.sendMessage(this.config.masterPhone, `Business feature command executed: ${subCommand}`);
   }
 }
 

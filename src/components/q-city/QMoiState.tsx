@@ -1,38 +1,24 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 interface QMoiStateProps {
-  state: string;
   session?: any;
   global?: any;
-  onMinimize?: () => void;
-  onMaximize?: () => void;
   minimized?: boolean;
-  videoUrl?: string;
   aiHealth?: { status: string; lastCheck: string; error?: string };
-  colabJob?: { jobStatus: string; result: any; error?: string };
   isMaster?: boolean;
 }
 
 export function QMoiState({
-  state,
   session,
   global,
-  onMinimize,
-  onMaximize,
   minimized = false,
-  videoUrl,
   aiHealth,
-  colabJob,
   isMaster = false
 }: QMoiStateProps) {
   const [isMinimized, setIsMinimized] = useState(minimized);
   const [now, setNow] = useState(new Date());
-  const [vizType, setVizType] = useState<'auto'|'video'|'image'|'sketch'>('auto');
-  const [viz, setViz] = useState<any>(null);
-  const [loadingViz, setLoadingViz] = useState(false);
   const [currentEmotion, setCurrentEmotion] = useState('focused');
   const [currentActivity, setCurrentActivity] = useState('processing');
-  const lastFetch = useRef<number>(0);
 
   // Update time every second
   useEffect(() => {

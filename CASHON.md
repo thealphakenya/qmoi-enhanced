@@ -3,6 +3,14 @@
 ## Overview
 The QMOI AI Earning System is a fully autonomous money-making platform that operates 24/7, even when users are offline. It integrates with Pesapal for real-time balance tracking and multiple earning strategies.
 
+## Master-Only Fund Management & Approval Flows
+- **Master-Only Access:** Only the master can access, transfer, or withdraw funds from Cashon (Pesapal).
+- **Wallet Requests:** Users can request wallets, but creation only happens after explicit master approval (via WhatsApp or dashboard).
+- **Fund Transfers:** All user-initiated fund transfers require master approval. The AI notifies the master instantly and logs all actions.
+- **Audit Logging & Notifications:** Every sensitive action (wallet creation, fund transfer, earning) is logged, encrypted, and instantly reported to the master. Users are notified of approvals or denials.
+- **UI/UX & WhatsApp Integration:** The UI and WhatsApp bot show request/approval status and allow the master to approve or deny actions in real time.
+- **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are broken. Fallback and error handling are built-in for all fund and wallet actions.
+
 ## AI Earning Strategies
 
 ### 1. Automated Trading

@@ -5,6 +5,7 @@ import nodemailer from 'nodemailer';
 import { QCityStatus, QCityError } from '../../hooks/useQCity';
 import { logger } from '../utils/logger';
 import { NotificationService } from './notification_service';
+import { VPNService } from '../../src/services/VPNService';
 
 const execAsync = promisify(exec);
 
@@ -40,6 +41,7 @@ class AutoFixService {
     operationName: string,
     retries = this.maxRetries
   ): Promise<T> {
+    await VPNService.ensureSecureConnection();
     try {
       return await operation();
     } catch (error) {
@@ -177,6 +179,7 @@ class AutoFixService {
   }
 
   private async runAIFix(error: QCityError): Promise<FixResult> {
+    await VPNService.ensureSecureConnection();
     const startTime = Date.now();
     const result: FixResult = {
       success: false,

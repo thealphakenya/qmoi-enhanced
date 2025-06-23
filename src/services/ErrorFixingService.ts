@@ -79,6 +79,49 @@ export class ErrorFixingService {
     // For now, this is a placeholder with some basic examples.
     console.log('AI analyzing error:', error);
 
+    // License compliance error handling
+    if (error.message.includes('Non-compliant license found') || error.type === 'LicenseError') {
+      // Attempt to parse the offending package from logs (if available)
+      // Suggest removing or replacing the package, or adding a license override
+      return {
+        description: 'Attempting to fix license compliance error. Will try to remove or replace non-compliant packages, or add override if safe.',
+        codeChanges: [],
+        commands: [
+          // Try to auto-remove the last installed package (as a fallback)
+          'npm uninstall <offending-package>',
+          // Optionally, add a license override (if policy allows)
+          // 'npx license-checker --json > license-report.json',
+          // 'echo "<offending-package>@*" >> .license-allowlist',
+        ],
+      };
+    }
+
+    // Vercel/Deployment error handling
+    if (error.message.includes('Vercel deployment failed') || error.type === 'VercelDeployError') {
+      // Try to parse the error and suggest fixes
+      return {
+        description: 'Attempting to fix Vercel deployment error. Will retry with cache clear, check env, and auto-fix common issues.',
+        codeChanges: [],
+        commands: [
+          'npx vercel --prod --force --yes',
+          // Optionally, clear Vercel cache
+          'npx vercel --prod --yes --force --prebuilt',
+        ],
+      };
+    }
+
+    // Heroku/Other deployment error handling
+    if (error.message.includes('Heroku deployment failed') || error.type === 'HerokuDeployError') {
+      return {
+        description: 'Attempting to fix Heroku deployment error. Will retry push and check env.',
+        codeChanges: [],
+        commands: [
+          'git push heroku main --force',
+        ],
+      };
+    }
+
+    // Existing logic...
     if (error.message.includes('Cannot find module') && error.filePath) {
       const moduleName = error.message.split("'")[1];
       return {

@@ -9,15 +9,12 @@ import {
   IconButton,
   Tooltip,
   CircularProgress,
-  Alert,
-  Button,
+  Alert
 } from '@mui/material';
 import {
   AccountBalance,
-  TrendingUp,
   Refresh,
-  Info,
-  Warning,
+  Info
 } from '@mui/icons-material';
 import { useAuth } from '../hooks/useAuth';
 import { AssetManagerImpl, Asset } from '../config/assets';
@@ -29,7 +26,7 @@ interface AssetOverviewProps {
 export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
   const { user } = useAuth();
   const [assets, setAssets] = useState<Asset[]>([]);
-  const [opportunities, setOpportunities] = useState<any[]>([]);
+  const [opportunities, setOpportunities] = useState<Array<{ type: string; opportunity: string; potentialProfit: number; risk: 'low' | 'medium' | 'high'; }>>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);

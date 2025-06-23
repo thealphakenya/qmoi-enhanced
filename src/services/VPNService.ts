@@ -520,7 +520,7 @@ export class VPNService {
     return this.securityReports;
   }
 
-  public isCreatingNetwork(): boolean {
+  public isNetworkCreationInProgress(): boolean {
     return this.isCreatingNetwork;
   }
 
@@ -608,6 +608,41 @@ export class VPNService {
 
   public onSettingsUpdated(callback: (settings: VPNSettings) => void): void {
     this.eventEmitter.on('settingsUpdated', callback);
+  }
+
+  /**
+   * Call this before any sensitive operation to ensure VPN is active.
+   */
+  public static async ensureSecureConnection(): Promise<void> {
+    const vpn = VPNService.getInstance();
+    if (!vpn.currentConnection || vpn.currentConnection.status !== 'connected') {
+      // Pick recommended or random server
+      const server = await vpn.getRecommendedServer() || vpn.getServers()[0];
+      if (server) {
+        await vpn.connectToServer(server.id);
+        logger.info(`[VPN] Connected to server: ${server.name}`);
+      } else {
+        logger.warn('[VPN] No available servers to connect.');
+      }
+    }
+  }
+
+  /**
+   * Call this if a threat or tracking is detected to auto-switch VPN servers.
+   */
+  public static async fallbackToNewServer(): Promise<void> {
+    const vpn = VPNService.getInstance();
+    const servers = vpn.getServers().filter(s => s.isOnline);
+    if (servers.length > 1) {
+      // Pick a different server
+      const current = vpn.currentConnection?.serverId;
+      const next = servers.find(s => s.id !== current) || servers[0];
+      await vpn.disconnect();
+      await vpn.connectToServer(next.id);
+      logger.info(`[VPN] Fallback: switched to server: ${next.name}`);
+    } else {
+      logger.warn('[VPN] No alternative servers available for fallback.');
+    }
   }
 }
 

@@ -10,6 +10,8 @@ import { QiSpaces } from "@/components/QiSpaces";
 import { LcSpaces } from "@/components/LcSpaces";
 import DeploymentStatusDashboard from '../components/DeploymentStatusDashboard';
 import { MasterProvider, useMaster } from '../components/MasterContext';
+import { QmoiMemoryPanel } from '../components/QmoiMemoryPanel';
+import { NotificationPanel } from '../components/NotificationPanel';
 
 import { useState, useEffect } from "react";
 
@@ -52,62 +54,68 @@ function MainPage() {
         {isMaster ? 'Switch to User' : 'Switch to Master'}
       </button>
       <DeploymentStatusDashboard isMaster={isMaster} />
-      <div className="grid grid-cols-4 grid-rows-[auto_1fr_auto] h-screen bg-[#111] text-[#ccffcc]">
-        {/* Sidebar */}
-        <aside className="col-span-1 row-span-2 border-r border-green-700 p-2 overflow-y-auto">
-          <FileExplorer />
-          <GitStatus />
-        </aside>
+    <div className="grid grid-cols-4 grid-rows-[auto_1fr_auto] h-screen bg-[#111] text-[#ccffcc]">
+      {/* Sidebar */}
+      <aside className="col-span-1 row-span-2 border-r border-green-700 p-2 overflow-y-auto">
+        <FileExplorer />
+        <GitStatus />
+      </aside>
 
-        {/* Main Chat & Preview */}
-        <main className="col-span-2 p-2 overflow-y-auto">
-          {/* QI state window with context about the chat */}
-          <QIStateWindow state="active" session={sessionState} />
+      {/* Main Chat & Preview */}
+      <main className="col-span-2 p-2 overflow-y-auto">
+        {/* QI state window with context about the chat */}
+        <QIStateWindow state="active" session={sessionState} />
 
-          {/* Chatbot for interacting with the AI */}
-          <Chatbot
-            chatHistory={chatHistory}
-            setChatHistory={setChatHistory}
-            selectedModel={selectedModel}
-            setSelectedModel={setSelectedModel}
-          />
+        {/* Chatbot for interacting with the AI */}
+        <Chatbot
+          chatHistory={chatHistory}
+          setChatHistory={setChatHistory}
+          selectedModel={selectedModel}
+          setSelectedModel={setSelectedModel}
+        />
 
-          {/* Additional UI related to the QAI System */}
-          <AlphaQAISystem />
+        {/* Additional UI related to the QAI System */}
+        <AlphaQAISystem />
 
-          {/* User picker */}
-          <div className="mt-6">
-            <label htmlFor="userSelect" className="font-semibold mr-2">
-              Select User:
-            </label>
-            <select
-              id="userSelect"
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
-              className="bg-[#222] border border-green-700 p-1 rounded ml-2">
-              <option value="Victor Kwemoi">Master (Victor)</option>
-              <option value="Leah Chebet">Leah Chebet</option>
-            </select>
-          </div>
+        {/* User picker */}
+        <div className="mt-6">
+          <label htmlFor="userSelect" className="font-semibold mr-2">
+            Select User:
+          </label>
+          <select
+            id="userSelect"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+            className="bg-[#222] border border-green-700 p-1 rounded ml-2">
+            <option value="Victor Kwemoi">Master (Victor)</option>
+            <option value="Leah Chebet">Leah Chebet</option>
+          </select>
+        </div>
 
-          {/* Spaces related to QAI */}
-          <QiSpaces user={user} />
-          <LcSpaces user={user} />
-        </main>
+        {/* Spaces related to QAI */}
+        <QiSpaces user={user} />
+        <LcSpaces user={user} />
 
-        {/* Preview Section */}
-        <section className="col-span-1 p-2 border-l border-green-700 overflow-auto">
-          <PreviewWindow />
-        </section>
-      </div>
+        {/* Master-only QMOI Memory & Evolution Panel */}
+        {isMaster && <QmoiMemoryPanel />}
+      </main>
+
+      {/* Preview Section */}
+      <section className="col-span-1 p-2 border-l border-green-700 overflow-auto">
+        <PreviewWindow />
+      </section>
+    </div>
     </>
   );
 }
 
 export default function Page() {
   return (
-    <MasterProvider>
-      <MainPage />
-    </MasterProvider>
+    <div>
+      <NotificationPanel />
+      <MasterProvider>
+        <MainPage />
+      </MasterProvider>
+    </div>
   );
 }

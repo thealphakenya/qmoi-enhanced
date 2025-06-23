@@ -32,6 +32,19 @@ export class AuthManager {
   private users: Map<string, User>;
   private sessions: Map<string, Session>;
   private masterOnlyFeatures: Set<string>;
+  private static MASTER_EMAIL = 'victor@kwemoi.com';
+  private static MASTER_PASSWORD = 'Victor9798!';
+  private static SISTER_EMAIL = 'leah@chebet.com';
+  private static SISTER_PASSWORD = 'Ashlehael';
+  private static MASTER_USERNAME = 'Victor';
+  private static SISTER_USERNAME = 'Leah';
+
+  private rememberedDevices: Map<string, string> = new Map(); // userId -> deviceFingerprint
+
+  private static getDeviceFingerprint(): string {
+    // Simple device fingerprinting (can be enhanced)
+    return `${process.platform}-${process.arch}-${process.env.USER || process.env.USERNAME || ''}`;
+  }
 
   private constructor() {
     this.users = new Map();
@@ -43,6 +56,7 @@ export class AuthManager {
       'user_management',
       'download_qcity',
     ]);
+    this.ensureMasterAndSisterAccounts();
   }
 
   public static getInstance(): AuthManager {
@@ -233,6 +247,45 @@ export class AuthManager {
     user.salt = newSalt;
     user.passwordHash = newHash;
     this.users.set(user.id, user);
+  }
+
+  private ensureMasterAndSisterAccounts() {
+    if (!this.findUserByEmail(AuthManager.MASTER_EMAIL)) {
+      this.registerUser(
+        AuthManager.MASTER_USERNAME,
+        AuthManager.MASTER_EMAIL,
+        AuthManager.MASTER_PASSWORD,
+        'master'
+      );
+    }
+    if (!this.findUserByEmail(AuthManager.SISTER_EMAIL)) {
+      this.registerUser(
+        AuthManager.SISTER_USERNAME,
+        AuthManager.SISTER_EMAIL,
+        AuthManager.SISTER_PASSWORD,
+        'sister'
+      );
+    }
+  }
+
+  public rememberDevice(userId: string): void {
+    const fingerprint = AuthManager.getDeviceFingerprint();
+    this.rememberedDevices.set(userId, fingerprint);
+  }
+
+  public isDeviceRemembered(userId: string): boolean {
+    const fingerprint = AuthManager.getDeviceFingerprint();
+    return this.rememberedDevices.get(userId) === fingerprint;
+  }
+
+  public async confirmIdentity(sessionId: string, _method: 'whatsapp' | 'face' | 'voice'): Promise<boolean> {
+    // Stub: implement WhatsApp/face/voice confirmation
+    // For now, always return true for master/sister
+    const user = await this.getUser(sessionId);
+    if (!user) return false;
+    if (user.role === 'master' || user.role === 'sister') return true;
+    // TODO: implement actual confirmation for users
+    return false;
   }
 }
 

@@ -7,6 +7,7 @@ const { notifyMaster } = require('../../src/services/WhatsAppService');
 const nodemailer = require('nodemailer');
 const axios = require('axios');
 const twilio = require('twilio');
+const { VPNService } = require('../../src/services/VPNService');
 
 const MAX_RETRIES = 3;
 let retries = 0;
@@ -89,6 +90,7 @@ function injectDockerFallback() {
 }
 
 async function autoFixErrors(errorMsg) {
+  await VPNService.ensureSecureConnection();
   log('Attempting AI-driven error fix...');
   try {
     await fixError(errorMsg);
@@ -111,7 +113,8 @@ function autoCommitAndPush() {
   }
 }
 
-function deployToVercel() {
+async function deployToVercel() {
+  await VPNService.ensureSecureConnection();
   try {
     log('Starting Vercel deployment...');
     execSync('npx vercel --prod --yes', { stdio: 'inherit' });
@@ -125,7 +128,8 @@ function deployToVercel() {
   }
 }
 
-function deployToHeroku() {
+async function deployToHeroku() {
+  await VPNService.ensureSecureConnection();
   try {
     log('Starting Heroku deployment...');
     execSync('git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git main --force', { stdio: 'inherit' });
@@ -135,21 +139,6 @@ function deployToHeroku() {
   } catch (e) {
     log(`Heroku deployment failed: ${e.message}`);
     notifyMaster(`Heroku deployment failed: ${e.message}`);
-    return false;
-  }
-}
-
-function deployToAWS() {
-  try {
-    log('Starting AWS deployment...');
-    execSync('aws deploy push --application-name $AWS_APP_NAME --s3-location s3://$AWS_BUCKET/$AWS_APP_NAME.zip', { stdio: 'inherit' });
-    execSync('aws deploy create-deployment --application-name $AWS_APP_NAME --deployment-group-name $AWS_DEPLOYMENT_GROUP --s3-location bucket=$AWS_BUCKET,key=$AWS_APP_NAME.zip,bundleType=zip', { stdio: 'inherit' });
-    log('AWS deployment successful!');
-    notifyMaster('AWS deployment successful!');
-    return true;
-  } catch (e) {
-    log(`AWS deployment failed: ${e.message}`);
-    notifyMaster(`AWS deployment failed: ${e.message}`);
     return false;
   }
 }
@@ -290,7 +279,7 @@ async function autoRollback() {
     await notifyDiscord('Auto-rollback performed. Redeploying previous version.');
     await notifySMS('Auto-rollback performed. Redeploying previous version.');
     // Try redeploy (Vercel as example, extend for others as needed)
-    deployToVercel();
+    await deployToVercel();
   } catch (e) {
     log('Auto-rollback failed: ' + e.message);
     await notifyMaster('Auto-rollback failed: ' + e.message);
@@ -329,7 +318,7 @@ async function main() {
   let deployed = false;
   if (hasVercelEnv()) {
     while (retries < MAX_RETRIES && !deployed) {
-      if (deployToVercel()) deployed = true;
+      if (await deployToVercel()) deployed = true;
       else {
         await autoFixErrors('Vercel deployment error');
         autoCommitAndPush();
@@ -340,23 +329,12 @@ async function main() {
   } else if (hasHerokuEnv()) {
     retries = 0;
     while (retries < MAX_RETRIES && !deployed) {
-      if (deployToHeroku()) deployed = true;
+      if (await deployToHeroku()) deployed = true;
       else {
         await autoFixErrors('Heroku deployment error');
         autoCommitAndPush();
         retries++;
         log(`Retrying Heroku deployment (attempt ${retries + 1})...`);
-      }
-    }
-  } else if (hasAWSEnv()) {
-    retries = 0;
-    while (retries < MAX_RETRIES && !deployed) {
-      if (deployToAWS()) deployed = true;
-      else {
-        await autoFixErrors('AWS deployment error');
-        autoCommitAndPush();
-        retries++;
-        log(`Retrying AWS deployment (attempt ${retries + 1})...`);
       }
     }
   } else {

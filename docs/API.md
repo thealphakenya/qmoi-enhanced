@@ -398,3 +398,35 @@ client.getStatus().then(console.log);
    - Track API usage and performance
    - Monitor error rates
    - Set up alerts for critical issues 
+
+# API Enhancements
+
+## Account Verification & Linking
+- Automated verification for WhatsApp, Airtel Money, Mpesa, Facebook, Instagram, YouTube, Google.
+- Uses master email (rovicviccy@gmail.com) and WhatsApp (+254786322855).
+- Sends WhatsApp notification to master on successful verification.
+
+## Financial Integration (QMOIEARNING)
+- Supports earning and depositing to Airtel Money and Mpesa.
+- Only master can authorize outgoing transactions.
+- All actions are logged for auditability.
+
+## QMOI Earning Daemon (Always-On Automation)
+- Keeps QMOI Earning Enhanced always running and earning in the background.
+- Periodically deposits to Airtel Money (if authorized by master).
+- **Run with:** `yarn qmoi:earning:daemon`
+- Logs all actions for audit and transparency.
+
+## Master-Only Controls
+- Sensitive features (financial, account linking) are only visible to the master user in the UI.
+- Audit logs are displayed for transparency.
+
+## Security Notes
+- All sensitive actions require master authorization.
+- Data is securely stored and auditable.
+
+## Usage
+- Run account verification: `python scripts/account_verification.py`
+- Use QMOIEARNING features: `python scripts/qmoi_earning_enhanced.py`
+- Start always-on earning: `yarn qmoi:earning:daemon`
+- Master-only UI: See QIStateWindow in the app. 

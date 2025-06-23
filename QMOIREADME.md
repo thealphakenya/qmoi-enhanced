@@ -127,5 +127,18 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - Integrate with `/api/qmoi-model` for programmatic access.
 - Use the `useQIPreview` hook to show the QI preview window from any component.
 
+## Qmoi Features
+
+- **Earning Automation:**
+  - Real-time, multi-strategy earning
+- **Onboarding & Community:**
+  - Modern, elegant Join Q Community flow
+- **Device & Network Management:**
+  - Always-on connectivity and device security
+- **Emotional Intelligence:**
+  - Mood tracking and well-being support
+- **Self-Learning & Research:**
+  - Auto-research and context adaptation
+
 ---
 *Last updated: June 13, 2025*
