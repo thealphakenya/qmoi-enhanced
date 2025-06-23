@@ -13,16 +13,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'false'  # Disable npm caching since no lock file is used
 
-      - name: Install dependencies (no lock file)
-        run: npm install --legacy-peer-deps --no-package-lock
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
 
       - name: Lint
         run: |
@@ -37,7 +36,7 @@ jobs:
           npm audit --audit-level=critical || echo "::warning::Security audit failed, continuing..."
 
       - name: Install license-checker
-        run: npm install license-checker --save-dev --legacy-peer-deps --no-package-lock
+        run: npm install license-checker --save-dev --legacy-peer-deps
 
       - name: License Compliance Check
         run: |
@@ -76,7 +75,19 @@ jobs:
         run: echo "✅ App should always be running. Monitor with external uptime service."
 
       - name: Install archiver for backup
-        run: npm install archiver --no-package-lock
+        run: npm install archiver
 
       - name: Run Backup Automation
         run: node scripts/backup_automation.js
+
+      - name: Generate License Report (Optional)
+        if: always()
+        run: |
+          npx license-checker --production --json > license-report.json
+
+      # Optional: Upload license report
+      # - name: Upload license report
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: license-report
+      #     path: license-report.json
