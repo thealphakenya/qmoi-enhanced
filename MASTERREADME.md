@@ -129,6 +129,14 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 
 # Alpha-Q Master System
 
+## QMOI Auto-Dev & Master Automation
+- QMOI Auto-Dev is always running, self-healing, and automates all system and project management
+- Master-only UI features: AutoDev, File Editor Chat, Project Manager
+- Secure file editing and audit logging for all file actions
+- Advanced automation, self-healing, and project management
+- All actions are logged and auditable via the dashboard
+- See QMOIAUTODEV.md for details
+
 ## New QVS (QMOI Virtual System) Integration
 - QMOI kernel is now modular, persistent, and fully integrated
 - Master/admin users have new UI panels for control and monitoring
@@ -136,3 +144,9 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - Compliance checks are automated and run before and during deployment
 
 See QVS/QVSREADME.md for details.
+
+## QMOI File Editor Chat (Master Only)
+- Master/admin-only controls for file management and automation
+- Features: **Rollback**, **AI Suggest**, **Batch Edit** (multi-file), distributed automation (future)
+- All actions are logged and auditable
+- Extensible for future enhancements

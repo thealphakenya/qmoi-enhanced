@@ -486,9 +486,17 @@ The allow list is managed in `.github/workflows/auto-deploy.yml` using `license-
 # Alpha-Q AI
 
 ## Latest Enhancements
-- QMOI kernel is now modular, persistent, and fully integrated
-- Master/admin UI panels for QMOI control in QCity and QI
-- API endpoints for QMOI status and payloads
-- Automated compliance checks in CI/CD
+- QMOI Auto-Dev is always running, self-healing, and automates all system and project management
+- Master-only UI panels for QMOI control, file editing, and project management
+- Secure file editing and audit logging for all file actions
+- Advanced automation, self-healing, and project management
+- All actions are logged and auditable via the dashboard
+- See QMOIAUTODEV.md for details
 
 See QVS/QVSREADME.md for details.
+
+## QMOI File Editor Chat (Master Only)
+- Secure, master-only chat interface for file viewing, editing, appending, and replacing
+- New features: **Rollback**, **AI Suggest**, **Batch Edit** (multi-file operations)
+- Extensible for distributed automation (coming soon)
+- All actions are logged for audit and compliance
