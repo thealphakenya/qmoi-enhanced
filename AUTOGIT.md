@@ -15,6 +15,17 @@ AutoGit is the AI-driven system for managing all code changes, commits, and push
 - If push fails, AI logs the error, attempts auto-fix, and retries
 - All actions are logged in QMOISYSTEMAUTO.md
 
+## Automated Git Workflow
+- Stages all changes (`git add .`)
+- Commits with a descriptive message
+- Rebases onto the latest main
+- Pushes to main
+- Ensures the repository is always up to date
+- Integrated with compliance and CI/CD workflows
+- **All file edits (via QMOI File Editor Chat) and automation actions are logged and auditable.**
+
+See QVS/QVSREADME.md for compliance and automation details.
+
 ## Automated Git, Vercel, Heroku, AWS, and Fallback Deployment
 
 The Alpha-Q AI system now includes a fully autonomous deployment pipeline:

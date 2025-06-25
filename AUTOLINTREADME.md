@@ -325,6 +325,11 @@ Planned features:
 - If linting fails, the error fixer attempts to resolve issues and re-run linting.
 - All lint and error fixing events are logged and auditable.
 
+## Linting, Compliance, and Audit Logging
+- Linting, compliance, and error checks run before every deploy.
+- All actions are logged and auditable.
+- Integrated with QMOI Auto-Dev and master-only audit logging.
+
 ---
 
 *The QMOI AI Automated Linting System is designed to make code quality management effortless and intelligent.* 

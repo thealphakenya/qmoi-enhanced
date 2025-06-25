@@ -279,4 +279,11 @@ QMOI's auto-evolution system ensures that the AI system continuously improves an
 
 The evolution process is fully automated, monitored, and controlled to ensure that all improvements are beneficial and safe. The system includes comprehensive safeguards and rollback capabilities to handle any issues that may arise during evolution.
 
-QMOI's auto-evolution capabilities make it a truly intelligent and adaptive AI system that grows and improves over time, providing increasingly better service and capabilities to its users. 
+QMOI's auto-evolution capabilities make it a truly intelligent and adaptive AI system that grows and improves over time, providing increasingly better service and capabilities to its users.
+
+## Kernel & System Enhancements
+- QMOI kernel now supports autonomous evolution, replication, and adaptation
+- All features are modular and can be controlled via UI and API
+- Compliance and automation are integrated into the evolution process
+
+See QVS/QVSREADME.md for more. 

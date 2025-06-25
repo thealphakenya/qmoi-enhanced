@@ -240,4 +240,11 @@ See QMOI-AI-ENHANCEMENT.md and AUTOLINTREADME.md for details.
 
 - The CI/CD pipeline is now scheduled to run every 6 hours, automatically checking, testing, building, and deploying the system.
 - Any errors trigger the AI error fixer and auto-retry logic, ensuring maximum uptime and resilience.
-- All events are logged and surfaced to the master for review. 
+- All events are logged and surfaced to the master for review.
+
+## Latest Automation Features
+- Master-only UI features: AutoDev, File Editor Chat, Project Manager
+- Secure file editing and audit logging for all file actions
+- Advanced automation, self-healing, and project management
+- All actions are logged and auditable via the dashboard
+- Integrated with QMOI Auto-Dev and compliance workflows. 

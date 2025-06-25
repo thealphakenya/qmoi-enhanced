@@ -126,3 +126,13 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 ---
 
 *QMOI - From creation to global distribution, marketing, and revenue, fully automated, intelligent, and self-healing.*
+
+# Alpha-Q Master System
+
+## New QVS (QMOI Virtual System) Integration
+- QMOI kernel is now modular, persistent, and fully integrated
+- Master/admin users have new UI panels for control and monitoring
+- API endpoints for QMOI status and payloads
+- Compliance checks are automated and run before and during deployment
+
+See QVS/QVSREADME.md for details.

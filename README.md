@@ -482,3 +482,13 @@ The allow list is managed in `.github/workflows/auto-deploy.yml` using `license-
 - All such actions require explicit master approval and are logged for auditability.
 - Master-only dashboards provide oversight for trading, project management, and system health.
 - Unauthorized access attempts are logged and trigger alerts.
+
+# Alpha-Q AI
+
+## Latest Enhancements
+- QMOI kernel is now modular, persistent, and fully integrated
+- Master/admin UI panels for QMOI control in QCity and QI
+- API endpoints for QMOI status and payloads
+- Automated compliance checks in CI/CD
+
+See QVS/QVSREADME.md for details.

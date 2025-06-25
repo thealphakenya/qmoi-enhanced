@@ -19,6 +19,7 @@ from tqdm import tqdm
 import requests
 import hashlib
 import shutil
+from .qmoi_kernel import start_kernel_thread, log, state, CONFIG
 
 class QMOIModel(nn.Module):
     def __init__(self, config: Dict[str, Any]):
@@ -411,4 +412,35 @@ class QMOIManager:
             self.logger.info(f"Model exported to {format}")
         except Exception as e:
             self.logger.error(f"Error exporting model: {str(e)}")
-            raise 
+            raise
+
+def start_qmoi_kernel():
+    """Start the QMOI kernel background thread."""
+    start_kernel_thread()
+    log("QMOI kernel started by manager.")
+
+def get_qmoi_status():
+    """Return current QMOI kernel status and state."""
+    return {
+        'status': 'running',
+        'last_check': state.get('last_check'),
+        'replicated_nodes': state.get('replicated_nodes'),
+        'payload_activity': state.get('payload_activity'),
+        'mutation_count': state.get('mutation_count'),
+    }
+
+def run_qmoi_payload(payload_name):
+    """Run a specific QMOI payload by name (if allowed)."""
+    if payload_name == 'qfix':
+        from .qmoi_kernel import qfix
+        qfix()
+    elif payload_name == 'qoptimize':
+        from .qmoi_kernel import qoptimize
+        qoptimize()
+    elif payload_name == 'qsecure':
+        from .qmoi_kernel import qsecure
+        qsecure()
+    else:
+        log(f"Unknown payload: {payload_name}")
+        return False
+    return True 
