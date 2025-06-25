@@ -1,5 +1,5 @@
 import React from 'react';
-import { QMoiDatabaseDashboard, QMoiKernelPanel, QMoiMemoryPanel, QMoiToolbar, QMoiAutoDevPanel, QMoiFileEditorChat } from './index';
+import { QMoiDatabaseDashboard, QMoiMemoryPanel, QMoiToolbar, QMoiAutoDevPanel, QMoiFileEditorChat } from './index';
 import DeploymentStatusDashboard from '../../../components/DeploymentStatusDashboard';
 
 interface RoleBasedDashboardProps {

@@ -7,10 +7,8 @@ import { Input } from './ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
 import { Badge } from './ui/badge';
-import { Progress } from './ui/progress';
 import { useMaster } from './MasterContext';
-import { useAIContext } from './AIContext';
-import { FaCog, FaLanguage, FaFont, FaNetworkWired, FaBell, FaDesktop, FaShieldAlt, FaKeyboard, FaMobile, FaGlobe, FaDownload, FaSync, FaTools, FaUserShield, FaRobot, FaPalette, FaWifi, FaAd, FaHome, FaPhone, FaEnvelope, FaChrome, FaCogs } from 'react-icons/fa';
+import { FaCog, FaLanguage, FaFont, FaNetworkWired, FaDownload, FaSync, FaUserShield, FaRobot, FaPalette, FaMobile } from 'react-icons/fa';
 
 interface SettingsPanelProps {
   isOpen: boolean;
@@ -52,7 +50,6 @@ interface QmoiAppSettings {
 
 export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose }) => {
   const { isMaster } = useMaster();
-  const { aiHealth, updateAISettings } = useAIContext();
   
   const [fontSettings, setFontSettings] = useState<FontSettings>({
     family: 'Inter',
@@ -87,8 +84,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
     settings: true
   });
 
-  const [updateStatus, setUpdateStatus] = useState<Record<string, { status: 'idle' | 'updating' | 'completed' | 'error', progress: number }>>({});
-
   // Apply font settings globally
   useEffect(() => {
     document.documentElement.style.setProperty('--font-family', fontSettings.family);
@@ -112,7 +107,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
 
   const handleAIChange = (key: keyof AISettings, value: any) => {
     setAISettings(prev => ({ ...prev, [key]: value }));
-    updateAISettings({ [key]: value });
   };
 
   const handleQmoiAppToggle = (app: keyof QmoiAppSettings) => {
@@ -120,27 +114,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
   };
 
   const updateQmoiApp = async (appName: string) => {
-    setUpdateStatus(prev => ({ ...prev, [appName]: { status: 'updating', progress: 0 } }));
-    
-    try {
-      // Simulate update process
-      for (let i = 0; i <= 100; i += 10) {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        setUpdateStatus(prev => ({
-          ...prev,
-          [appName]: { status: 'updating', progress: i }
-        }));
-      }
-      
-      setUpdateStatus(prev => ({
-        ...prev,
-        [appName]: { status: 'completed', progress: 100 }
-      }));
-    } catch (error) {
-      setUpdateStatus(prev => ({
-        ...prev,
-        [appName]: { status: 'error', progress: 0 }
-      }));
+    // Simulate update process
+    for (let i = 0; i <= 100; i += 10) {
+      await new Promise(resolve => setTimeout(resolve, 100));
     }
   };
 
@@ -221,7 +197,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'Msaada wa Kiswahili' : 'Swahili Support'}</Label>
                       <Switch 
                         checked={aiSettings.swahiliSupport}
-                        onCheckedChange={(checked) => handleAIChange('swahiliSupport', checked)}
+                        onCheckedChange={(checked: boolean) => handleAIChange('swahiliSupport', checked)}
                       />
                     </div>
                   </CardContent>
@@ -240,7 +216,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <Label>{aiSettings.language === 'sw' ? 'Aina ya Fonti' : 'Font Family'}</Label>
-                        <Select value={fontSettings.family} onValueChange={(value) => handleFontChange('family', value)}>
+                        <Select value={fontSettings.family} onValueChange={(value: string) => handleFontChange('family', value)}>
                           <SelectTrigger>
                             <SelectValue />
                           </SelectTrigger>
@@ -258,7 +234,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                         <Input 
                           type="number" 
                           value={fontSettings.size}
-                          onChange={(e) => handleFontChange('size', parseInt(e.target.value))}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleFontChange('size', parseInt(e.target.value))}
                           min="8"
                           max="32"
                         />
@@ -269,7 +245,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'Muonekano wa Kiotomatiki' : 'Auto Appearance'}</Label>
                       <Switch 
                         checked={aiSettings.autoTheme}
-                        onCheckedChange={(checked) => handleAIChange('autoTheme', checked)}
+                        onCheckedChange={(checked: boolean) => handleAIChange('autoTheme', checked)}
                       />
                     </div>
                   </CardContent>
@@ -289,7 +265,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'Uunganisho wa Kiotomatiki' : 'Auto Connect'}</Label>
                       <Switch 
                         checked={networkSettings.autoConnect}
-                        onCheckedChange={(checked) => handleNetworkChange('autoConnect', checked)}
+                        onCheckedChange={(checked: boolean) => handleNetworkChange('autoConnect', checked)}
                       />
                     </div>
                     
@@ -297,7 +273,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'Tovuti za Bure' : 'Zero-Rated Sites'}</Label>
                       <Switch 
                         checked={networkSettings.zeroRatedSites}
-                        onCheckedChange={(checked) => handleNetworkChange('zeroRatedSites', checked)}
+                        onCheckedChange={(checked: boolean) => handleNetworkChange('zeroRatedSites', checked)}
                       />
                     </div>
                     
@@ -305,7 +281,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'AI Inaamua' : 'AI Decides'}</Label>
                       <Switch 
                         checked={networkSettings.aiDecides}
-                        onCheckedChange={(checked) => handleNetworkChange('aiDecides', checked)}
+                        onCheckedChange={(checked: boolean) => handleNetworkChange('aiDecides', checked)}
                       />
                     </div>
                   </CardContent>
@@ -325,7 +301,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'Muonekano wa Kiotomatiki' : 'Auto Theme'}</Label>
                       <Switch 
                         checked={aiSettings.autoTheme}
-                        onCheckedChange={(checked) => handleAIChange('autoTheme', checked)}
+                        onCheckedChange={(checked: boolean) => handleAIChange('autoTheme', checked)}
                       />
                     </div>
                     
@@ -333,7 +309,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'Picha ya Ukuta ya Kiotomatiki' : 'Auto Wallpaper'}</Label>
                       <Switch 
                         checked={aiSettings.autoWallpaper}
-                        onCheckedChange={(checked) => handleAIChange('autoWallpaper', checked)}
+                        onCheckedChange={(checked: boolean) => handleAIChange('autoWallpaper', checked)}
                       />
                     </div>
                     
@@ -341,7 +317,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'Arifa za Kiotomatiki' : 'Auto Notifications'}</Label>
                       <Switch 
                         checked={aiSettings.autoNotifications}
-                        onCheckedChange={(checked) => handleAIChange('autoNotifications', checked)}
+                        onCheckedChange={(checked: boolean) => handleAIChange('autoNotifications', checked)}
                       />
                     </div>
                     
@@ -349,7 +325,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'Launcher ya Kiotomatiki' : 'Auto Launcher'}</Label>
                       <Switch 
                         checked={aiSettings.autoLauncher}
-                        onCheckedChange={(checked) => handleAIChange('autoLauncher', checked)}
+                        onCheckedChange={(checked: boolean) => handleAIChange('autoLauncher', checked)}
                       />
                     </div>
                     
@@ -357,7 +333,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <Label>{aiSettings.language === 'sw' ? 'Kuondoa Matangazo' : 'Ad Removal'}</Label>
                       <Switch 
                         checked={aiSettings.autoAdRemoval}
-                        onCheckedChange={(checked) => handleAIChange('autoAdRemoval', checked)}
+                        onCheckedChange={(checked: boolean) => handleAIChange('autoAdRemoval', checked)}
                       />
                     </div>
                   </CardContent>
@@ -389,4 +365,55 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                                   app === 'launcher' ? 'Q-Kuzindua' :
                                   app === 'keyboard' ? 'Q-Kibodi' :
                                   app === 'settings' ? 'Q-Mipangilio' : app
-                                : `Q-${app.charAt(0).toUpperCase() + app.slice(1)}`
+                                : `Q-${app.charAt(0).toUpperCase() + app.slice(1)}`}
+                            </Label>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button size="sm" variant="outline" onClick={() => updateQmoiApp(app)}>
+                              <FaSync className="mr-1" />
+                              {aiSettings.language === 'sw' ? 'Sasisha' : 'Update'}
+                            </Button>
+                            <Button size="sm" variant="outline" onClick={() => downloadQmoiApp(app)}>
+                              <FaDownload className="mr-1" />
+                              {aiSettings.language === 'sw' ? 'Pakua' : 'Download'}
+                            </Button>
+                          </div>
+                        </div>
+                        <Badge variant={enabled ? 'default' : 'secondary'}>
+                          {enabled ? (aiSettings.language === 'sw' ? 'Imewezeshwa' : 'Enabled') : (aiSettings.language === 'sw' ? 'Imelazimishwa' : 'Disabled')}
+                        </Badge>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              {isMaster && (
+                <TabsContent value="master" className="space-y-4">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <FaUserShield />
+                        {aiSettings.language === 'sw' ? 'Mkuu' : 'Master'}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <Label>{aiSettings.language === 'sw' ? 'Udhibiti wa Mfumo' : 'System Control'}</Label>
+                        <Button size="sm" variant="destructive">
+                          {aiSettings.language === 'sw' ? 'Funga Mfumo' : 'Shutdown System'}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+              )}
+            </div>
+          </Tabs>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SettingsPanel;

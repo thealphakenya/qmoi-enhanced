@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "builds": [
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "build" } }
   ],
   "env": {
     "NODE_ENV": "production"
@@ -19,11 +19,5 @@
         { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=(), usb=(), payment=()" }
       ]
     }
-  ],
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs18.x",
-      "maxDuration": 10
-    }
-  }
+  ]
 }

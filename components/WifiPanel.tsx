@@ -230,7 +230,6 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
         body: JSON.stringify({ enable: true, interval: monitorInterval })
       });
       if (!monitorRes.ok) throw new Error('Failed to start monitoring');
-      const monitorData = await monitorRes.json();
       addLog(`Monitoring started: every ${monitorInterval}s`);
       setMonitorStatus(s => ({ ...s, enabled: true, interval: monitorInterval, last_result: null }));
     } catch (error) {

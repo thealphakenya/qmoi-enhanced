@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Slider } from './ui/slider';
-import { Switch } from './ui/switch';
 import { Label } from './ui/label';
 import { VoiceRecognitionService } from '../src/services/VoiceRecognitionService';
 
@@ -118,15 +117,6 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
       case 'male': return '👨';
       case 'female': return '👩';
       case 'neutral': return '👤';
-      default: return '👤';
-    }
-  };
-
-  const getAgeIcon = (age: string) => {
-    switch (age) {
-      case 'young': return '🧒';
-      case 'adult': return '👨‍💼';
-      case 'mature': return '👴';
       default: return '👤';
     }
   };

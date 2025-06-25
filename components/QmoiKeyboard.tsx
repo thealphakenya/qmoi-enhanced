@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAIContext } from './AIContext';
 import { useMaster } from './MasterContext';
-import { FaKeyboard, FaMicrophone, FaGlobe, FaCog, FaBrain, FaLanguage, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import { FaBrain, FaLanguage, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 interface QmoiKeyboardProps {
   isVisible: boolean;
@@ -29,7 +29,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   language = 'en',
   theme = 'auto'
 }) => {
-  const { aiHealth, updateAISettings } = useAIContext();
+  const { aiHealth } = useAIContext();
   const { isMaster } = useMaster();
   
   const [currentText, setCurrentText] = useState('');
@@ -40,8 +40,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   const [swahiliMode, setSwahiliMode] = useState(false);
   const [voiceEnabled, setVoiceEnabled] = useState(true);
   const [autoCorrect, setAutoCorrect] = useState(true);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  
+
   const recognitionRef = useRef<any>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 

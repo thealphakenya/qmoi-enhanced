@@ -16,7 +16,7 @@ export default function QMoiFileEditorChat({ isMaster = false }: { isMaster?: bo
 
   async function handleCommand(cmd: string) {
     setLoading(true);
-    let response: any = '';
+    let response: string | React.ReactElement = '';
     try {
       if (cmd.startsWith('/view ')) {
         const filePath = cmd.replace('/view ', '').trim();
@@ -84,7 +84,7 @@ export default function QMoiFileEditorChat({ isMaster = false }: { isMaster?: bo
 
   async function handleRollback() {
     setLoading(true);
-    let response = '';
+    let response: string | React.ReactElement = '';
     try {
       const res = await fetch('/api/qmoi/autodev', {
         method: 'POST',
@@ -102,7 +102,7 @@ export default function QMoiFileEditorChat({ isMaster = false }: { isMaster?: bo
 
   async function handleAISuggest() {
     setLoading(true);
-    let response = '';
+    let response: string | React.ReactElement = '';
     try {
       const res = await fetch('/api/qmoi/autodev', {
         method: 'POST',
@@ -120,7 +120,7 @@ export default function QMoiFileEditorChat({ isMaster = false }: { isMaster?: bo
 
   async function handleBatchEdit(files: string, op: string) {
     setLoading(true);
-    let response = '';
+    let response: string | React.ReactElement = '';
     try {
       const res = await fetch('/api/qmoi/autodev', {
         method: 'POST',

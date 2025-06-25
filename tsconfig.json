@@ -39,6 +39,18 @@
       ],
       "@utils/*": [
         "src/utils/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
       ]
     },
     "allowJs": true,

@@ -44,43 +44,6 @@ export const WifiAutoConnectPanel: React.FC = () => {
     setConnecting(false);
   };
 
-  // Connect to a network
-  const connect = async (ssid: string, zeroRated?: boolean) => {
-    setConnecting(true);
-    setError(null);
-    try {
-      const res = await fetch('/api/wifi', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ssid, password: '' }) // Password would be handled by your password management system
-      });
-      if (!res.ok) throw new Error('Failed to connect to network');
-      const data = await res.json();
-      if (data.status === 'success') {
-        setConnected(ssid);
-        setNetworks(nets => nets.map(n => ({
-          ...n,
-          connected: n.ssid === ssid
-        })));
-        toast({
-          title: 'Success',
-          description: `Connected to ${ssid}`
-        });
-      } else {
-        throw new Error(data.error || 'Failed to connect');
-      }
-    } catch (e) {
-      const error = e as Error;
-      setError(error.message);
-      toast({
-        title: 'Error',
-        description: error.message,
-        variant: 'destructive'
-      });
-    }
-    setConnecting(false);
-  };
-
   // Auto-connect logic
   useEffect(() => {
     scanNetworks();

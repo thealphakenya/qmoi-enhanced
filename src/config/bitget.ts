@@ -338,11 +338,6 @@ export interface BitgetConfig {
   };
 }
 
-declare global {
-  var Buffer: typeof Buffer;
-  var process: NodeJS.Process;
-}
-
 export class BitgetManager extends EventEmitter {
   private static instance: BitgetManager;
   private config: BitgetConfig;

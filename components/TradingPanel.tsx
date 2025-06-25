@@ -1,8 +1,6 @@
 import React from 'react';
 import { useTrading } from '../hooks/useTrading';
-import { Trade, TradingStrategy } from '../types/trading';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
@@ -14,8 +12,6 @@ export function TradingPanel() {
     activeStrategies,
     transactionHistory,
     tradingStats,
-    executeTrade,
-    updateStrategy
   } = useTrading();
 
   if (!isInitialized) {

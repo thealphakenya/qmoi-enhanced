@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Button } from "./ui/button"
 import { useAIContext } from "./AIContext";
 import { useTTCVoice } from '../hooks/useTTCVoice';
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "../hooks/use-toast";
 import { AIRequestRouter } from '../src/services/AIRequestRouter';
 import { MultiUserSessionManager } from '../src/services/MultiUserSessionManager';
 import { ContextEngine } from '../src/services/ContextEngine';
@@ -54,6 +54,7 @@ interface SpeechRecognition extends EventTarget {
   abort(): void;
 }
 
+// Extend the Window interface for browser SpeechRecognition types only. Do not declare Node.js globals here.
 declare global {
   interface Window {
     SpeechRecognition: new () => SpeechRecognition;
@@ -89,14 +90,15 @@ const timeZones = [
   // Add more as needed
 ];
 
-export function Chatbot({ chatHistory, setChatHistory, onFileUpload, onEnhancement }: {
+export function Chatbot({ chatHistory, setChatHistory, onFileUpload, onEnhancement, userId }: {
   chatHistory: ChatMessage[],
   setChatHistory: (h: ChatMessage[]) => void,
   onFileUpload?: (file: File) => void,
   onEnhancement?: (desc: string) => void,
+  userId: string,
 }) {
   const { toast } = useToast();
-  const { emotionalState, setEmotionalState } = useAIContext();
+  const { setEmotionalState } = useAIContext();
   const { speak } = useTTCVoice();
   const [aiTyping, setAiTyping] = useState(false)
   const [input, setInput] = useState("")
@@ -439,12 +441,12 @@ export function Chatbot({ chatHistory, setChatHistory, onFileUpload, onEnhanceme
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => {
-              if (e.key === 'Enter') handleSend()
+              if (e.key === 'Enter') handleSend(input)
             }}
           />
           <button
             className="bg-green-700 text-white px-4 py-2 rounded"
-            onClick={() => handleSend()}
+            onClick={() => handleSend(input)}
             disabled={aiTyping || !input.trim()}
           >Send</button>
         </div>
