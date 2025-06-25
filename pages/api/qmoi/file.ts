@@ -2,6 +2,20 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
 
+const AUDIT_LOG = path.join(process.cwd(), 'qmoi_file_audit.log');
+
+function logAudit(action: string, filePath: string, content?: string, replace?: string) {
+  const entry = {
+    timestamp: new Date().toISOString(),
+    user: 'master',
+    action,
+    filePath,
+    content: content ? (content.length > 200 ? content.slice(0, 200) + '...' : content) : undefined,
+    replace
+  };
+  fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + '\n');
+}
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // TODO: Add real master/admin authentication
   if (req.method === 'POST') {
@@ -15,11 +29,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       }
       if (action === 'write') {
         fs.writeFileSync(absPath, content, 'utf-8');
+        logAudit('write', filePath, content);
         res.status(200).json({ success: true });
         return;
       }
       if (action === 'append') {
         fs.appendFileSync(absPath, content, 'utf-8');
+        logAudit('append', filePath, content);
         res.status(200).json({ success: true });
         return;
       }
@@ -27,6 +43,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         const data = fs.readFileSync(absPath, 'utf-8');
         const newData = data.replace(replace, content);
         fs.writeFileSync(absPath, newData, 'utf-8');
+        logAudit('replace', filePath, content, replace);
         res.status(200).json({ success: true });
         return;
       }
