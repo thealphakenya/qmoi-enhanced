@@ -1,3 +1,4 @@
+/* eslint-env node */
 const askQmoi = require("../services/qmoi");
 const fs = require("fs");
 

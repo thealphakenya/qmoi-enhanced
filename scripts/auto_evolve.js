@@ -1,3 +1,4 @@
+/* eslint-env node */
 const { execSync } = require('child_process');
 const { QmoiMemory } = require('../src/services/QmoiMemory');
 const path = require('path');

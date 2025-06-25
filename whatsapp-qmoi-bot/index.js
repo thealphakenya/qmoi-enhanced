@@ -1,3 +1,4 @@
+/* eslint-env node */
 const { default: makeWASocket, useSingleFileAuthState } = require("@whiskeysockets/baileys");
 const { Boom } = require("@hapi/boom");
 const fs = require("fs");

@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+/* eslint-env node */
 // enhanced-error-fix.ts
 const { execSync } = require('child_process');
 const path = require('path');

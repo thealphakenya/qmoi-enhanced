@@ -10,69 +10,18 @@ import {
   Eye, 
   Mic, 
   Settings, 
-  Phone, 
   MessageSquare, 
-  BookOpen, 
   AlertTriangle,
   CheckCircle,
-  Zap,
   Heart,
-  Shield,
   Globe,
-  Users,
-  FileText,
-  Camera,
-  Wifi,
-  Battery,
-  Signal,
-  Upload,
-  TrendingUp,
-  BarChart3,
-  Mail,
-  Download,
   ExternalLink,
-  Package,
-  Cloud,
-  RefreshCw,
-  Github,
-  Telegram,
   Star,
-  Play,
-  Pause,
-  RotateCcw,
-  Navigation,
-  Volume2,
-  MicOff,
-  EyeOff,
-  Navigation as NavigationIcon,
-  CheckCircle as CheckCircleIcon,
   AlertTriangle as AlertTriangleIcon,
-  Play as PlayIcon,
-  Pause as PauseIcon,
-  SkipBack,
-  SkipForward,
-  RotateCcw as RotateCcwIcon,
-  Zap as ZapIcon,
+  CheckCircle as CheckCircleIcon,
   Heart as HeartIcon,
-  Shield as ShieldIcon,
   Globe as GlobeIcon,
-  Users as UsersIcon,
-  FileText as FileTextIcon,
-  Camera as CameraIcon,
-  Wifi as WifiIcon,
-  Battery as BatteryIcon,
-  Signal as SignalIcon,
-  Upload as UploadIcon,
-  TrendingUp as TrendingUpIcon,
-  BarChart3 as BarChart3Icon,
-  Mail as MailIcon,
-  Download as DownloadIcon,
   ExternalLink as ExternalLinkIcon,
-  Package as PackageIcon,
-  Cloud as CloudIcon,
-  RefreshCw as RefreshCwIcon,
-  Github as GithubIcon,
-  Telegram as TelegramIcon,
   Star as StarIcon
 } from 'lucide-react';
 
@@ -143,21 +92,21 @@ export const QmoiEnhancedSystem: React.FC = () => {
     {
       id: 'github',
       name: 'GitHub Releases',
-      icon: <GithubIcon className="h-5 w-5" />,
+      icon: <GlobeIcon className="h-5 w-5" />,
       status: 'idle',
       progress: 0
     },
     {
       id: 'itch-io',
       name: 'Itch.io',
-      icon: <PackageIcon className="h-5 w-5" />,
+      icon: <GlobeIcon className="h-5 w-5" />,
       status: 'idle',
       progress: 0
     },
     {
       id: 'firebase',
       name: 'Firebase Hosting',
-      icon: <CloudIcon className="h-5 w-5" />,
+      icon: <GlobeIcon className="h-5 w-5" />,
       status: 'idle',
       progress: 0
     },
@@ -171,28 +120,28 @@ export const QmoiEnhancedSystem: React.FC = () => {
     {
       id: 'telegram',
       name: 'Telegram',
-      icon: <TelegramIcon className="h-5 w-5" />,
+      icon: <GlobeIcon className="h-5 w-5" />,
       status: 'idle',
       progress: 0
     },
     {
       id: 'mediafire',
       name: 'MediaFire',
-      icon: <CloudIcon className="h-5 w-5" />,
+      icon: <GlobeIcon className="h-5 w-5" />,
       status: 'idle',
       progress: 0
     },
     {
       id: 'mega',
       name: 'Mega.nz',
-      icon: <CloudIcon className="h-5 w-5" />,
+      icon: <GlobeIcon className="h-5 w-5" />,
       status: 'idle',
       progress: 0
     },
     {
       id: 'codeberg',
       name: 'Codeberg',
-      icon: <PackageIcon className="h-5 w-5" />,
+      icon: <GlobeIcon className="h-5 w-5" />,
       status: 'idle',
       progress: 0
     }
@@ -617,7 +566,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                 variant={isListening ? "destructive" : "default"}
                 className="flex items-center gap-2"
               >
-                {isListening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+                {isListening ? <Mic className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
                 {isListening ? 'Stop Listening' : 'Start Listening'}
               </Button>
             </div>
@@ -658,7 +607,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Upload className="h-6 w-6 text-purple-600" />
+              <Mic className="h-6 w-6 text-purple-600" />
               Distribution Control
             </CardTitle>
           </CardHeader>
@@ -670,7 +619,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                 className="flex items-center gap-2"
                 size="lg"
               >
-                {isDistributing ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
+                {isDistributing ? <Mic className="h-4 w-4 animate-spin" /> : <Mic className="h-4 w-4" />}
                 {isDistributing ? 'Distributing...' : 'Start Distribution'}
               </Button>
 
@@ -681,7 +630,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                 className="flex items-center gap-2"
                 size="lg"
               >
-                {isMarketing ? <RefreshCw className="h-4 w-4 animate-spin" /> : <TrendingUp className="h-4 w-4" />}
+                {isMarketing ? <Mic className="h-4 w-4 animate-spin" /> : <Mic className="h-4 w-4" />}
                 {isMarketing ? 'Marketing...' : 'Start Marketing'}
               </Button>
             </div>
@@ -703,7 +652,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Globe className="h-6 w-6 text-green-600" />
+              <GlobeIcon className="h-6 w-6 text-green-600" />
               Distribution Platforms
             </CardTitle>
           </CardHeader>
@@ -722,8 +671,8 @@ export const QmoiEnhancedSystem: React.FC = () => {
                         <span className={`text-sm ${getPlatformStatusColor(platform.status)}`}>
                           {platform.status}
                         </span>
-                        {platform.status === 'success' && <CheckCircle className="h-4 w-4 text-green-600" />}
-                        {platform.status === 'error' && <AlertTriangle className="h-4 w-4 text-red-600" />}
+                        {platform.status === 'success' && <CheckCircleIcon className="h-4 w-4 text-green-600" />}
+                        {platform.status === 'error' && <AlertTriangleIcon className="h-4 w-4 text-red-600" />}
                       </div>
                       
                       <Progress value={platform.progress} className="h-2" />
@@ -735,7 +684,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                           className="w-full"
                           onClick={() => window.open(platform.url, '_blank')}
                         >
-                          <ExternalLink className="h-3 w-3 mr-1" />
+                          <ExternalLinkIcon className="h-3 w-3 mr-1" />
                           View
                         </Button>
                       )}
@@ -757,7 +706,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-6 w-6 text-blue-600" />
+              <Mic className="h-6 w-6 text-blue-600" />
               Marketing Campaigns
             </CardTitle>
           </CardHeader>
@@ -805,7 +754,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Settings className="h-6 w-6 text-blue-600" />
+              <Mic className="h-6 w-6 text-blue-600" />
               Accessibility Settings
             </CardTitle>
           </CardHeader>
@@ -854,7 +803,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-red-600" />
+              <AlertTriangleIcon className="h-6 w-6 text-red-600" />
               Emergency Features
             </CardTitle>
           </CardHeader>
@@ -923,7 +872,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
               variant="destructive"
               className="w-full"
             >
-              <AlertTriangle className="h-4 w-4 mr-2" />
+              <AlertTriangleIcon className="h-4 w-4 mr-2" />
               Activate Emergency Mode
             </Button>
           </CardContent>
@@ -961,7 +910,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Mail className="h-6 w-6 text-red-600" />
+              <Mic className="h-6 w-6 text-red-600" />
               Email Integration
             </CardTitle>
           </CardHeader>
@@ -977,7 +926,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BarChart3 className="h-6 w-6 text-purple-600" />
+              <Mic className="h-6 w-6 text-purple-600" />
               Analytics Dashboard
             </CardTitle>
           </CardHeader>
@@ -990,19 +939,19 @@ export const QmoiEnhancedSystem: React.FC = () => {
               </div>
               
               <div className="text-center p-4 bg-green-50 rounded-lg">
-                <Download className="h-8 w-8 text-green-600 mx-auto mb-2" />
+                <Mic className="h-8 w-8 text-green-600 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-green-600">1.2K</p>
                 <p className="text-sm text-gray-600">Downloads</p>
               </div>
               
               <div className="text-center p-4 bg-yellow-50 rounded-lg">
-                <Heart className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
+                <HeartIcon className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-yellow-600">856</p>
                 <p className="text-sm text-gray-600">Likes</p>
               </div>
               
               <div className="text-center p-4 bg-purple-50 rounded-lg">
-                <Star className="h-8 w-8 text-purple-600 mx-auto mb-2" />
+                <StarIcon className="h-8 w-8 text-purple-600 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-purple-600">4.8</p>
                 <p className="text-sm text-gray-600">Rating</p>
               </div>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const MASTER_EMAIL = "rovicviccy@gmail.com";
 const MASTER_PHONE = "+254786322855";
 
-export default function QIStateWindow({ userEmail, userPhone }) {
+export default function QIStateWindow({ userEmail, userPhone }: { userEmail: string; userPhone: string }) {
   const isMaster = userEmail === MASTER_EMAIL || userPhone === MASTER_PHONE;
   const [auditLog, setAuditLog] = useState<string[]>([]);
 

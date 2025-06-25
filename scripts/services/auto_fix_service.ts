@@ -31,6 +31,8 @@ class AutoFixService {
   private readonly notificationService: NotificationService;
   private readonly maxRetries = 3;
   private readonly retryDelay = 5000; // 5 seconds
+  private readonly continuousInterval = 60000; // 1 minute
+  private isContinuous = false;
 
   constructor() {
     this.notificationService = new NotificationService();
@@ -292,6 +294,52 @@ class AutoFixService {
         Stack: ${error.stack}`
       );
       throw error;
+    }
+  }
+
+  /**
+   * Continuously runs auto-fix at a set interval, always enhancing based on previous logs.
+   * Can be started as a background process.
+   */
+  public async startContinuousAutoFix(getStatus: () => Promise<QCityStatus>) {
+    this.isContinuous = true;
+    logger.info('Continuous auto-fix started.');
+    while (this.isContinuous) {
+      try {
+        const status = await getStatus();
+        const summary = await this.startAutoFix(status);
+        // Analyze logs and suggest/apply further enhancements
+        await this.enhanceFixing(summary.logs);
+      } catch (error) {
+        logger.error('Error in continuous auto-fix loop:', error);
+      }
+      await new Promise(resolve => setTimeout(resolve, this.continuousInterval));
+    }
+  }
+
+  /**
+   * Stops the continuous auto-fix loop.
+   */
+  public stopContinuousAutoFix() {
+    this.isContinuous = false;
+    logger.info('Continuous auto-fix stopped.');
+  }
+
+  /**
+   * Analyze logs and apply further enhancements automatically.
+   * This can be extended to use AI or pattern matching for self-improvement.
+   */
+  private async enhanceFixing(logs: string[]) {
+    // Example: If repeated errors are found, escalate or try alternative strategies
+    const errorPatterns = logs.filter(line => line.toLowerCase().includes('error'));
+    if (errorPatterns.length > 0) {
+      logger.info('Enhancing auto-fix based on detected error patterns:', errorPatterns);
+      // Future: Integrate with AI or external service for deeper analysis
+      // For now, just log and notify
+      await this.notificationService.sendNotification(
+        'Q-city Auto Fix Enhancement',
+        `Detected repeated errors. Enhancement triggered.\n${errorPatterns.join('\n')}`
+      );
     }
   }
 }

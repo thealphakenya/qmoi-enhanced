@@ -18,6 +18,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
+const SIDEBAR_WIDTH_MOBILE = '260px';
+
 interface SidebarContext {
   isOpen: boolean;
   toggle: () => void;

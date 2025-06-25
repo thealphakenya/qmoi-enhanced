@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Button } from "./ui/button"
-import { useAIContext } from "./AIContext";
 import { useTTCVoice } from '../hooks/useTTCVoice';
 import { useToast } from "../hooks/use-toast";
 import { AIRequestRouter } from '../src/services/AIRequestRouter';
@@ -98,7 +97,6 @@ export function Chatbot({ chatHistory, setChatHistory, onFileUpload, onEnhanceme
   userId: string,
 }) {
   const { toast } = useToast();
-  const { setEmotionalState } = useAIContext();
   const { speak } = useTTCVoice();
   const [aiTyping, setAiTyping] = useState(false)
   const [input, setInput] = useState("")
@@ -205,19 +203,6 @@ export function Chatbot({ chatHistory, setChatHistory, onFileUpload, onEnhanceme
         description: 'Failed to update time zone',
         variant: 'destructive'
       });
-    }
-  };
-
-  // Safe math calculation
-  const calculateMath = (expression: string): number | null => {
-    try {
-      // Remove any non-math characters
-      const cleanExpr = expression.replace(/[^0-9+\-*/().]/g, '');
-      // Use Function constructor instead of eval
-      return new Function(`return ${cleanExpr}`)();
-    } catch (error) {
-      console.error('Math calculation error:', error);
-      return null;
     }
   };
 

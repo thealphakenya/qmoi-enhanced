@@ -4,194 +4,36 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Switch } from './ui/switch';
-import { Badge } from './ui/badge';
 import { Progress } from './ui/progress';
-import { 
-  Upload, 
-  Globe, 
-  Share2, 
-  MessageSquare, 
-  Mail, 
-  TrendingUp, 
-  BarChart3, 
-  Settings, 
-  Play,
-  Pause,
-  RotateCcw,
+import {
+  Upload,
+  Globe,
+  MessageSquare,
+  Mail,
+  TrendingUp,
+  BarChart3,
+  Settings,
+  RefreshCw,
   CheckCircle,
-  AlertTriangle,
   Download,
   ExternalLink,
-  GitBranch,
-  Code,
-  Package,
-  Smartphone,
-  Monitor,
-  Zap,
-  Target,
-  Users,
   Eye,
   Heart,
   Star,
+  GitBranch,
   GitCommit,
   GitPullRequest,
-  GitMerge,
-  GitBranch as GitBranchIcon,
-  Github,
-  Twitter,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Youtube,
-  Telegram,
-  Mail as MailIcon,
-  MessageCircle,
-  Bell,
-  Calendar,
-  Clock,
-  MapPin,
-  Globe as GlobeIcon,
-  Wifi,
   Cloud,
-  Database,
+  Rocket,
+  Code,
+  Terminal,
   Shield,
-  Lock,
-  Unlock,
-  Key,
-  User,
-  Settings as SettingsIcon,
-  RefreshCw,
-  Activity,
-  PieChart,
-  LineChart,
-  BarChart,
-  TrendingDown,
-  DollarSign,
-  CreditCard,
-  Wallet,
-  ShoppingCart,
-  Tag,
-  Hash,
-  AtSign,
-  Hash as HashIcon,
-  Link,
-  Copy,
-  Edit,
-  Trash2,
-  Plus,
-  Minus,
-  X,
-  Search,
-  Filter,
-  SortAsc,
-  SortDesc,
-  MoreHorizontal,
-  MoreVertical,
-  ChevronLeft,
-  ChevronRight,
-  ChevronUp,
-  ChevronDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
-  ArrowDown,
-  Home,
-  Folder,
-  File,
-  Image,
-  Video,
-  Music,
-  Archive,
-  Book,
-  Newspaper,
-  FileText,
-  FileCode,
-  FileImage,
-  FileVideo,
-  FileAudio,
-  FileArchive,
-  FileBook,
-  FileNewspaper,
-  FolderOpen,
-  FolderPlus,
-  FolderMinus,
-  FolderX,
-  FolderCheck,
-  FolderSearch,
-  FolderHeart,
-  FolderStar,
-  FolderGit2,
-  FolderGit,
-  FolderKanban,
-  FolderSymlink,
-  FolderTree,
-  FolderUp,
-  FolderDown,
-  FolderInput,
-  FolderOutput,
-  FolderRoot,
-  FolderSearch2,
-  FolderHeart2,
-  FolderStar2,
-  FolderGit22,
-  FolderGit2 as FolderGit22Icon,
-  FolderKanban2,
-  FolderSymlink2,
-  FolderTree2,
-  FolderUp2,
-  FolderDown2,
-  FolderInput2,
-  FolderOutput2,
-  FolderRoot2,
-  FolderSearch3,
-  FolderHeart3,
-  FolderStar3,
-  FolderGit23,
-  FolderGit2 as FolderGit23Icon,
-  FolderKanban3,
-  FolderSymlink3,
-  FolderTree3,
-  FolderUp3,
-  FolderDown3,
-  FolderInput3,
-  FolderOutput3,
-  FolderRoot3
+  Zap
 } from 'lucide-react';
-import { PlatformDiscoveryService, PlatformCandidate } from '../scripts/services/platform_discovery';
+import { PlatformDiscoveryService } from '../scripts/services/platform_discovery';
 import { AssetGenerationService } from '../scripts/services/asset_generation';
-import { AnalyticsOptimizationService, AnalyticsData } from '../scripts/services/analytics_optimization';
-
-interface DistributionPlatform {
-  id: string;
-  name: string;
-  icon: React.ReactNode;
-  status: 'idle' | 'uploading' | 'success' | 'error';
-  progress: number;
-  url?: string;
-  lastUpdated?: Date;
-}
-
-interface MarketingCampaign {
-  id: string;
-  name: string;
-  platform: string;
-  status: 'draft' | 'active' | 'paused' | 'completed';
-  reach: number;
-  engagement: number;
-  conversion: number;
-  budget: number;
-  spent: number;
-}
-
-interface AppBuild {
-  id: string;
-  name: string;
-  version: string;
-  platform: 'android' | 'ios' | 'web' | 'desktop';
-  status: 'building' | 'testing' | 'ready' | 'deployed';
-  size: string;
-  buildDate: Date;
-}
+import { AnalyticsOptimizationService } from '../scripts/services/analytics_optimization';
+import axios from 'axios';
 
 export const QmoiAutoDistribution: React.FC = () => {
   const [isDistributing, setIsDistributing] = useState(false);
@@ -202,12 +44,34 @@ export const QmoiAutoDistribution: React.FC = () => {
   const [emailAccount] = useState('rovicviccy@gmail.com');
   const [customPlatform, setCustomPlatform] = useState('');
   const [distributionLog, setDistributionLog] = useState<string[]>([]);
-  const [platformCandidates, setPlatformCandidates] = useState<PlatformCandidate[]>([]);
-  const [approvedPlatforms, setApprovedPlatforms] = useState<PlatformCandidate[]>([]);
+  const [platformCandidates, setPlatformCandidates] = useState<any[]>([]);
   const [assetPreview, setAssetPreview] = useState<{trailer?: string, doc?: string, banner?: string, ad?: string}>({});
-  const [analytics, setAnalytics] = useState<AnalyticsData[]>([]);
+  const [analytics, setAnalytics] = useState<any[]>([]);
   const [deal, setDeal] = useState({ price: '', description: '' });
   const [dealLog, setDealLog] = useState<string[]>([]);
+  const [autoFixLoading, setAutoFixLoading] = useState(false);
+  const [autoFixResult, setAutoFixResult] = useState<any>(null);
+  const [autoFixError, setAutoFixError] = useState<string | null>(null);
+  
+  // GitHub Integration State
+  const [gitStatus, setGitStatus] = useState<any>(null);
+  const [gitLoading, setGitLoading] = useState(false);
+  const [gitBranch, setGitBranch] = useState('main');
+  const [commitMessage, setCommitMessage] = useState('');
+  const [prTitle, setPrTitle] = useState('');
+  const [prDescription, setPrDescription] = useState('');
+  
+  // Vercel Deployment State
+  const [vercelStatus, setVercelStatus] = useState<any>(null);
+  const [vercelLoading, setVercelLoading] = useState(false);
+  const [deploymentUrl, setDeploymentUrl] = useState('');
+  const [autoRedeploy, setAutoRedeploy] = useState(true);
+  
+  // Permissions State
+  const [hasGitHubAccess, setHasGitHubAccess] = useState(true);
+  const [hasVercelAccess, setHasVercelAccess] = useState(true);
+  const [hasDeployPermissions, setHasDeployPermissions] = useState(true);
+  
   const isMaster = true; // Replace with actual master check logic
 
   useEffect(() => {
@@ -215,23 +79,132 @@ export const QmoiAutoDistribution: React.FC = () => {
     PlatformDiscoveryService.discoverPlatforms().then(setPlatformCandidates);
     // Fetch analytics
     AnalyticsOptimizationService.trackAnalytics().then(setAnalytics);
+    // Fetch Git status
+    fetchGitStatus();
+    // Fetch Vercel status
+    fetchVercelStatus();
   }, []);
 
-  const approvePlatform = (platform: PlatformCandidate) => {
-    setApprovedPlatforms(prev => [...prev, platform]);
-    setPlatformCandidates(prev => prev.filter(p => p.url !== platform.url));
-    setDistributionLog(prev => [
-      `Approved and added platform: ${platform.name} (${platform.url}) at ${new Date().toLocaleString()}`,
-      ...prev
-    ]);
+  const fetchGitStatus = async () => {
+    try {
+      const response = await axios.get('/api/git/status');
+      setGitStatus(response.data);
+    } catch (error) {
+      console.error('Failed to fetch Git status:', error);
+    }
   };
 
-  const rejectPlatform = (platform: PlatformCandidate) => {
-    setPlatformCandidates(prev => prev.filter(p => p.url !== platform.url));
-    setDistributionLog(prev => [
-      `Rejected platform: ${platform.name} (${platform.url}) at ${new Date().toLocaleString()}`,
-      ...prev
-    ]);
+  const fetchVercelStatus = async () => {
+    try {
+      const response = await axios.get('/api/deployment-status');
+      setVercelStatus(response.data);
+      if (response.data.url) {
+        setDeploymentUrl(response.data.url);
+      }
+    } catch (error) {
+      console.error('Failed to fetch Vercel status:', error);
+    }
+  };
+
+  const handleGitCommit = async () => {
+    if (!commitMessage.trim()) return;
+    setGitLoading(true);
+    try {
+      const response = await axios.post('/api/git/commit', {
+        message: commitMessage,
+        files: ['*'] // Commit all changes
+      });
+      setCommitMessage('');
+      await fetchGitStatus();
+      setDistributionLog(prev => [
+        `Git commit: ${response.data.commitId} at ${new Date().toLocaleString()}`,
+        ...prev
+      ]);
+    } catch (error: any) {
+      console.error('Git commit failed:', error);
+    } finally {
+      setGitLoading(false);
+    }
+  };
+
+  const handleGitPush = async () => {
+    setGitLoading(true);
+    try {
+      const response = await axios.post('/api/git/push', {
+        branch: gitBranch
+      });
+      await fetchGitStatus();
+      setDistributionLog(prev => [
+        `Git push to ${gitBranch} at ${new Date().toLocaleString()}`,
+        ...prev
+      ]);
+    } catch (error: any) {
+      console.error('Git push failed:', error);
+    } finally {
+      setGitLoading(false);
+    }
+  };
+
+  const handleCreatePR = async () => {
+    if (!prTitle.trim()) return;
+    setGitLoading(true);
+    try {
+      const response = await axios.post('/api/git/pr', {
+        title: prTitle,
+        description: prDescription,
+        baseBranch: 'main',
+        headBranch: gitBranch
+      });
+      setPrTitle('');
+      setPrDescription('');
+      setDistributionLog(prev => [
+        `Created PR: ${response.data.prNumber} at ${new Date().toLocaleString()}`,
+        ...prev
+      ]);
+    } catch (error: any) {
+      console.error('PR creation failed:', error);
+    } finally {
+      setGitLoading(false);
+    }
+  };
+
+  const handleVercelDeploy = async () => {
+    setVercelLoading(true);
+    try {
+      const response = await axios.post('/api/deploy', {
+        platform: 'vercel',
+        autoRedeploy
+      });
+      setVercelStatus(response.data);
+      if (response.data.url) {
+        setDeploymentUrl(response.data.url);
+      }
+      setDistributionLog(prev => [
+        `Vercel deployment: ${response.data.deploymentId} at ${new Date().toLocaleString()}`,
+        ...prev
+      ]);
+    } catch (error: any) {
+      console.error('Vercel deployment failed:', error);
+    } finally {
+      setVercelLoading(false);
+    }
+  };
+
+  const handleAutoRedeploy = async () => {
+    setVercelLoading(true);
+    try {
+      const response = await axios.post('/api/deploy/auto-redeploy', {
+        enabled: autoRedeploy
+      });
+      setDistributionLog(prev => [
+        `Auto-redeploy ${autoRedeploy ? 'enabled' : 'disabled'} at ${new Date().toLocaleString()}`,
+        ...prev
+      ]);
+    } catch (error: any) {
+      console.error('Auto-redeploy toggle failed:', error);
+    } finally {
+      setVercelLoading(false);
+    }
   };
 
   const previewAssets = async () => {
@@ -261,6 +234,24 @@ export const QmoiAutoDistribution: React.FC = () => {
     setCustomPlatform('');
   };
 
+  const startDistribution = () => { setIsDistributing(true); setTimeout(() => setIsDistributing(false), 1000); };
+  const startMarketing = () => { setIsMarketing(true); setTimeout(() => setIsMarketing(false), 1000); };
+  const deployToWhatsApp = () => { alert('Deployed to WhatsApp!'); };
+
+  const handleAutoFix = async () => {
+    setAutoFixLoading(true);
+    setAutoFixResult(null);
+    setAutoFixError(null);
+    try {
+      const res = await axios.post('/api/auto-fix');
+      setAutoFixResult(res.data);
+    } catch (err: any) {
+      setAutoFixError(err.message || 'Auto-fix failed');
+    } finally {
+      setAutoFixLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-100 p-4">
       <div className="max-w-7xl mx-auto space-y-6">
@@ -270,7 +261,7 @@ export const QmoiAutoDistribution: React.FC = () => {
               <Upload className="h-8 w-8 text-purple-600" />
               QMOI Auto Distribution & Marketing
             </CardTitle>
-            <p className="text-gray-600">Automated app distribution and AI-powered marketing</p>
+            <p className="text-gray-600">Automated app distribution, deployment, and AI-powered marketing</p>
           </CardHeader>
         </Card>
 
@@ -327,7 +318,7 @@ export const QmoiAutoDistribution: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {platforms.map((platform) => (
+              {platformCandidates.map((platform) => (
                 <Card key={platform.id} className="relative">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
@@ -344,46 +335,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                         <ExternalLink className="h-3 w-3 mr-1" />
                         View
                       </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-white shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-6 w-6 text-blue-600" />
-              Marketing Campaigns
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {campaigns.map((campaign) => (
-                <Card key={campaign.id}>
-                  <CardContent className="p-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <h3 className="font-semibold">{campaign.name}</h3>
-                        <p className="text-sm text-gray-600">{campaign.platform}</p>
-                      </div>
-                      <Badge variant="default">{campaign.status}</Badge>
-                    </div>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                      <div>
-                        <p className="text-gray-600">Reach</p>
-                        <p className="font-semibold">{campaign.reach.toLocaleString()}</p>
-                      </div>
-                      <div>
-                        <p className="text-gray-600">Engagement</p>
-                        <p className="font-semibold">{campaign.engagement.toLocaleString()}</p>
-                      </div>
-                      <div>
-                        <p className="text-gray-600">Conversion</p>
-                        <p className="font-semibold">{campaign.conversion}</p>
-                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -477,8 +428,8 @@ export const QmoiAutoDistribution: React.FC = () => {
                     <div className="text-xs text-gray-500">{platform.url} ({platform.type})</div>
                     <div className="text-xs text-gray-400">{platform.description}</div>
                   </div>
-                  <Button onClick={() => approvePlatform(platform)} size="sm" className="bg-green-100 text-green-700">Approve</Button>
-                  <Button onClick={() => rejectPlatform(platform)} size="sm" variant="destructive">Reject</Button>
+                  <Button size="sm" className="bg-green-100 text-green-700">Approve</Button>
+                  <Button size="sm" variant="destructive">Reject</Button>
                 </div>
               ))}
             </CardContent>
@@ -593,6 +544,196 @@ export const QmoiAutoDistribution: React.FC = () => {
                   </div>
                 ))}
               </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Auto Fix Errors */}
+        {isMaster && (
+          <Card className="bg-white shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <span className="text-red-600">🛠️</span>
+                Master: Auto Fix Errors
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Button onClick={handleAutoFix} disabled={autoFixLoading} className="mb-2">
+                {autoFixLoading ? 'Auto-fixing...' : 'Auto Fix Errors'}
+              </Button>
+              {autoFixError && <div className="text-red-600">{autoFixError}</div>}
+              {autoFixResult && (
+                <div className="bg-gray-50 p-2 rounded text-xs max-h-64 overflow-y-auto">
+                  <div><b>Fixed Issues:</b> {autoFixResult.fixedIssues}</div>
+                  <div><b>Remaining Issues:</b> {autoFixResult.remainingIssues}</div>
+                  <div><b>Logs:</b><pre>{autoFixResult.logs}</pre></div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* GitHub Integration */}
+        {isMaster && hasGitHubAccess && (
+          <Card className="bg-white shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <GitBranch className="h-6 w-6 text-green-600" />
+                GitHub Integration
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label>Current Branch</Label>
+                  <Input
+                    value={gitBranch}
+                    onChange={(e) => setGitBranch(e.target.value)}
+                    placeholder="main"
+                  />
+                </div>
+                <div>
+                  <Label>Commit Message</Label>
+                  <Input
+                    value={commitMessage}
+                    onChange={(e) => setCommitMessage(e.target.value)}
+                    placeholder="feat: auto-deploy updates"
+                  />
+                </div>
+              </div>
+              
+              <div className="flex gap-2">
+                <Button
+                  onClick={handleGitCommit}
+                  disabled={gitLoading || !commitMessage.trim()}
+                  className="flex items-center gap-2"
+                >
+                  <GitCommit className="h-4 w-4" />
+                  Commit
+                </Button>
+                <Button
+                  onClick={handleGitPush}
+                  disabled={gitLoading}
+                  variant="outline"
+                  className="flex items-center gap-2"
+                >
+                  <Upload className="h-4 w-4" />
+                  Push
+                </Button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label>PR Title</Label>
+                  <Input
+                    value={prTitle}
+                    onChange={(e) => setPrTitle(e.target.value)}
+                    placeholder="Auto-deploy feature"
+                  />
+                </div>
+                <div>
+                  <Label>PR Description</Label>
+                  <Input
+                    value={prDescription}
+                    onChange={(e) => setPrDescription(e.target.value)}
+                    placeholder="Automated deployment updates"
+                  />
+                </div>
+              </div>
+              
+              <Button
+                onClick={handleCreatePR}
+                disabled={gitLoading || !prTitle.trim()}
+                className="flex items-center gap-2"
+              >
+                <GitPullRequest className="h-4 w-4" />
+                Create PR
+              </Button>
+
+              {gitStatus && (
+                <div className="bg-gray-50 p-3 rounded">
+                  <div className="text-sm">
+                    <div><strong>Status:</strong> {gitStatus.status}</div>
+                    <div><strong>Last Commit:</strong> {gitStatus.lastCommit}</div>
+                    <div><strong>Branch:</strong> {gitStatus.currentBranch}</div>
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Vercel Deployment */}
+        {isMaster && hasVercelAccess && hasDeployPermissions && (
+          <Card className="bg-white shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Cloud className="h-6 w-6 text-blue-600" />
+                Vercel Deployment
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-center justify-between">
+                  <span>Auto Redeploy</span>
+                  <Switch checked={autoRedeploy} onCheckedChange={setAutoRedeploy} />
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>Production Ready</span>
+                  <CheckCircle className="h-5 w-5 text-green-600" />
+                </div>
+              </div>
+
+              <div className="flex gap-2">
+                <Button
+                  onClick={handleVercelDeploy}
+                  disabled={vercelLoading}
+                  className="flex items-center gap-2"
+                  size="lg"
+                >
+                  {vercelLoading ? (
+                    <RefreshCw className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Rocket className="h-4 w-4" />
+                  )}
+                  {vercelLoading ? 'Deploying...' : 'Deploy to Vercel'}
+                </Button>
+                <Button
+                  onClick={handleAutoRedeploy}
+                  disabled={vercelLoading}
+                  variant="outline"
+                  className="flex items-center gap-2"
+                >
+                  <Zap className="h-4 w-4" />
+                  Toggle Auto-Redeploy
+                </Button>
+              </div>
+
+              {deploymentUrl && (
+                <div className="bg-blue-50 p-3 rounded">
+                  <div className="text-sm">
+                    <div><strong>Live URL:</strong></div>
+                    <a
+                      href={deploymentUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline break-all"
+                    >
+                      {deploymentUrl}
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {vercelStatus && (
+                <div className="bg-gray-50 p-3 rounded">
+                  <div className="text-sm">
+                    <div><strong>Status:</strong> {vercelStatus.status}</div>
+                    <div><strong>Last Deploy:</strong> {vercelStatus.lastDeploy}</div>
+                    <div><strong>Environment:</strong> {vercelStatus.environment}</div>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
         )}

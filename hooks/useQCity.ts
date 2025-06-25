@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useQuery, useMutation } from 'react-query';
 import axios, { AxiosError } from 'axios';
 
-interface QCityStatus {
+export interface QCityStatus {
   running: boolean;
   platforms: Record<string, any>;
   features: Record<string, any>;
@@ -84,7 +84,7 @@ interface QCityConfig {
   };
 }
 
-interface QCityError extends Error {
+export interface QCityError extends Error {
   code?: string;
   status?: number;
 }

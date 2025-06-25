@@ -1,3 +1,4 @@
+/* eslint-env node */
 const fs = require('fs');
 
 function log(msg) {

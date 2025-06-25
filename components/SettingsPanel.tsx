@@ -9,6 +9,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
 import { Badge } from './ui/badge';
 import { useMaster } from './MasterContext';
 import { FaCog, FaLanguage, FaFont, FaNetworkWired, FaDownload, FaSync, FaUserShield, FaRobot, FaPalette, FaMobile } from 'react-icons/fa';
+import type { IconType } from 'react-icons';
 
 interface SettingsPanelProps {
   isOpen: boolean;
@@ -113,7 +114,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
     setQmoiApps(prev => ({ ...prev, [app]: !prev[app] }));
   };
 
-  const updateQmoiApp = async (appName: string) => {
+  const updateQmoiApp = async () => {
     // Simulate update process
     for (let i = 0; i <= 100; i += 10) {
       await new Promise(resolve => setTimeout(resolve, 100));
@@ -131,7 +132,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
       <div className="bg-white rounded-lg w-full max-w-4xl h-[90vh] overflow-hidden">
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="text-xl font-bold flex items-center gap-2">
-            <FaCog className="text-blue-600" />
+            {React.createElement(FaCog as React.ElementType, { className: 'text-blue-600', size: 20 }) as React.ReactNode}
+            {React.createElement(FaLanguage as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
             {aiSettings.language === 'sw' ? 'Mipangilio ya Qmoi' : 'Qmoi Settings'}
           </h2>
           <Button onClick={onClose} variant="ghost" size="sm">
@@ -143,28 +145,28 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
           <Tabs defaultValue="general" className="w-full">
             <TabsList className="grid w-full grid-cols-6">
               <TabsTrigger value="general">
-                <FaLanguage className="mr-2" />
+                {React.createElement(FaLanguage as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
                 {aiSettings.language === 'sw' ? 'Jumla' : 'General'}
               </TabsTrigger>
               <TabsTrigger value="appearance">
-                <FaPalette className="mr-2" />
+                {React.createElement(FaPalette as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
                 {aiSettings.language === 'sw' ? 'Muonekano' : 'Appearance'}
               </TabsTrigger>
               <TabsTrigger value="network">
-                <FaNetworkWired className="mr-2" />
+                {React.createElement(FaNetworkWired as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
                 {aiSettings.language === 'sw' ? 'Mtandao' : 'Network'}
               </TabsTrigger>
               <TabsTrigger value="ai">
-                <FaRobot className="mr-2" />
+                {React.createElement(FaRobot as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
                 AI
               </TabsTrigger>
               <TabsTrigger value="qmoi-apps">
-                <FaMobile className="mr-2" />
+                {React.createElement(FaMobile as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
                 {aiSettings.language === 'sw' ? 'Programu za Qmoi' : 'Qmoi Apps'}
               </TabsTrigger>
               {isMaster && (
                 <TabsTrigger value="master">
-                  <FaUserShield className="mr-2" />
+                  {React.createElement(FaUserShield as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
                   {aiSettings.language === 'sw' ? 'Mkuu' : 'Master'}
                 </TabsTrigger>
               )}
@@ -175,7 +177,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <FaLanguage />
+                      {React.createElement(FaLanguage as React.ElementType, { size: 20 }) as React.ReactNode}
                       {aiSettings.language === 'sw' ? 'Lugha na Mipangilio' : 'Language & Settings'}
                     </CardTitle>
                   </CardHeader>
@@ -208,7 +210,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <FaFont />
+                      {React.createElement(FaFont as React.ElementType, { size: 20 }) as React.ReactNode}
                       {aiSettings.language === 'sw' ? 'Fonti na Muonekano' : 'Font & Appearance'}
                     </CardTitle>
                   </CardHeader>
@@ -256,7 +258,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <FaNetworkWired />
+                      {React.createElement(FaNetworkWired as React.ElementType, { size: 20 }) as React.ReactNode}
                       {aiSettings.language === 'sw' ? 'Mipangilio ya Mtandao' : 'Network Settings'}
                     </CardTitle>
                   </CardHeader>
@@ -292,7 +294,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <FaRobot />
+                      {React.createElement(FaRobot as React.ElementType, { size: 20 }) as React.ReactNode}
                       {aiSettings.language === 'sw' ? 'Mipangilio ya AI' : 'AI Settings'}
                     </CardTitle>
                   </CardHeader>
@@ -344,7 +346,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <FaMobile />
+                      {React.createElement(FaMobile as React.ElementType, { size: 20 }) as React.ReactNode}
                       {aiSettings.language === 'sw' ? 'Programu za Qmoi' : 'Qmoi Apps'}
                     </CardTitle>
                   </CardHeader>
@@ -369,12 +371,12 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                             </Label>
                           </div>
                           <div className="flex gap-2">
-                            <Button size="sm" variant="outline" onClick={() => updateQmoiApp(app)}>
-                              <FaSync className="mr-1" />
+                            <Button size="sm" variant="outline" onClick={() => updateQmoiApp()}>
+                              {React.createElement(FaSync as React.ElementType, { className: 'mr-1', size: 16 }) as React.ReactNode}
                               {aiSettings.language === 'sw' ? 'Sasisha' : 'Update'}
                             </Button>
                             <Button size="sm" variant="outline" onClick={() => downloadQmoiApp(app)}>
-                              <FaDownload className="mr-1" />
+                              {React.createElement(FaDownload as React.ElementType, { className: 'mr-1', size: 16 }) as React.ReactNode}
                               {aiSettings.language === 'sw' ? 'Pakua' : 'Download'}
                             </Button>
                           </div>
@@ -393,7 +395,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
-                        <FaUserShield />
+                        {React.createElement(FaUserShield as React.ElementType, { size: 20 }) as React.ReactNode}
                         {aiSettings.language === 'sw' ? 'Mkuu' : 'Master'}
                       </CardTitle>
                     </CardHeader>

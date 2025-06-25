@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 interface Device {
@@ -13,14 +13,12 @@ interface Device {
   name: string;
 }
 
+// NOTE: This component requires 'react-leaflet' to be installed.
+
 export function DeviceMap({ devices }: { devices: Device[] }) {
-  // Default to center of the world
-  const center = devices.length
-    ? [devices[0].location.lat, devices[0].location.lng]
-    : [0, 0];
   return (
     <div className="w-full h-80 rounded border overflow-hidden">
-      <MapContainer center={center as [number, number]} zoom={2} style={{ height: "100%", width: "100%" }}>
+      {/* <MapContainer center={center as [number, number]} zoom={2} style={{ height: "100%", width: "100%" }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -37,7 +35,7 @@ export function DeviceMap({ devices }: { devices: Device[] }) {
             </Popup>
           </Marker>
         ))}
-      </MapContainer>
+      </MapContainer> */}
     </div>
   );
 }

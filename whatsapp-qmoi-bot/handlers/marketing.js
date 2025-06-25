@@ -1,3 +1,4 @@
+/* eslint-env node */
 const broadcast = require("../utils/broadcast");
 
 async function sendMarketingCampaign(sock, numbers, message) {

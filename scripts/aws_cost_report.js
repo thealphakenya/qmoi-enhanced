@@ -1,3 +1,4 @@
+/* eslint-env node */
 const AWS = require('aws-sdk');
 const ce = new AWS.CostExplorer({ region: 'us-east-1' });
 

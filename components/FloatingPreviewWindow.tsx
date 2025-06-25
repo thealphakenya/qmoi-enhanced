@@ -139,10 +139,10 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
         <CardTitle className="text-sm">Preview Window</CardTitle>
         <div className="flex gap-2">
           <Button size="sm" variant="ghost" onClick={handleFullscreen}>
-            <FaExpand />
+            {React.createElement(FaExpand as React.ElementType)}
           </Button>
           <Button size="sm" variant="ghost" onClick={onClose}>
-            <FaTimes />
+            {React.createElement(FaTimes as React.ElementType)}
           </Button>
         </div>
       </CardHeader>
@@ -174,10 +174,10 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
             )}
             <div className="flex items-center gap-2">
               <Button size="sm" variant="outline" onClick={handlePlayPause}>
-                {isPlaying ? <FaPause /> : <FaPlay />}
+                {isPlaying ? React.createElement(FaPause as React.ElementType) : React.createElement(FaPlay as React.ElementType)}
               </Button>
               <div className="flex items-center gap-2 flex-1">
-                <FaVolumeUp />
+                {React.createElement(FaVolumeUp as React.ElementType)}
                 <input
                   type="range"
                   min="0"
@@ -188,7 +188,7 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
                 />
       </div>
               <Button size="sm" variant="outline" onClick={handleDownload}>
-                <FaDownload />
+                {React.createElement(FaDownload as React.ElementType)}
         </Button>
             </div>
             {downloadProgress > 0 && (

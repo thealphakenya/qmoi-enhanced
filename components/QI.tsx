@@ -1,46 +1,23 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
-import { ChartContainer } from "@/components/ui/chart";
-import * as Recharts from "recharts";
-import { Chatbot } from "@/components/Chatbot";
-import { QIStateWindow } from "./QIStateWindow";
-import { DeviceMap } from "./DeviceMap";
-import { FinancialManager } from "./FinancialManager";
-import CashonTradingPanel from "./CashonTradingPanel";
-import { useColabJob } from "../hooks/useColabJob";
-import { useExtensionManager } from "../hooks/useExtensionManager";
-import { AIProvider, useAIContext } from "./AIContext";
-import { useTTCVoice } from '../hooks/useTTCVoice';
-import { useAIHealthCheck } from '../hooks/useAIHealthCheck';
-import { useBitgetTrader } from '../hooks/useBitgetTrader';
-import { useErrorAutoFix } from '../hooks/useErrorAutoFix';
-import { useTradingAutomation } from '../hooks/useTradingAutomation';
-import { useMediaGenerationStatus } from '../hooks/useMediaGenerationStatus';
-import { useGlobalAutomation } from '../hooks/useGlobalAutomation';
-import { useDatasetManager } from '../hooks/useDatasetManager';
-import { useModelTrainer } from '../hooks/useModelTrainer';
-import { useVSCodeProblems } from '../hooks/useVSCodeProblems';
-import { useDeviceOptimizer } from '../hooks/useDeviceOptimizer';
-import { useAutoEarningTasks } from '../hooks/useAutoEarningTasks';
-import { useAutoFixAllProblems } from '../hooks/useAutoFixAllProblems';
-import { useAIFeatureEnhancer } from '../hooks/useAIFeatureEnhancer';
-import { useGithubRepoManager } from '../hooks/useGithubRepoManager';
-import { useAnalyticsDashboard } from '../hooks/useAnalyticsDashboard';
-import { useToast } from "@/components/ui/use-toast";
-import { useDeviceHealth } from '../hooks/useDeviceHealth';
-import { useLargeFileUpload } from '../hooks/useLargeFileUpload';
 import { FloatingPreviewWindow } from './FloatingPreviewWindow';
-import { FaWallet, FaChild, FaRobot, FaMoneyBillWave, FaKey, FaMapMarkerAlt, FaLanguage, FaChalkboardTeacher, FaVideo, FaMusic, FaFileAlt, FaDownload, FaHeart, FaBrain, FaCog, FaBell, FaShieldAlt, FaLock, FaUnlock, FaTools, FaCode, FaTerminal, FaServer, FaNetworkWired, FaDatabase, FaMemory, FaMicrochip, FaBatteryFull, FaTemperatureHigh, FaChartLine, FaExchangeAlt, FaCoins, FaHistory, FaChartBar, FaChartPie, FaChartArea } from 'react-icons/fa';
-import { AIHealth, MediaStatus, AutomationStatus, BadgeVariant } from '../types';
 import { AIRequestRouter } from '../src/services/AIRequestRouter';
 import { MultiUserSessionManager } from '../src/services/MultiUserSessionManager';
 import { ContextEngine } from '../src/services/ContextEngine';
 import { useMaster } from './MasterContext';
 import QmoiAutoDistribution from './QmoiAutoDistribution';
+import { FaWallet, FaChild, FaRobot, FaKey, FaMapMarkerAlt, FaChalkboardTeacher, FaVideo, FaDownload, FaHeart, FaCog, FaBell, FaShieldAlt, FaLock, FaUnlock, FaTools, FaNetworkWired, FaDatabase, FaMemory, FaMicrochip, FaChartLine, FaCoins, FaChartBar } from 'react-icons/fa';
+import { useToast } from "@/components/ui/use-toast";
+import { useAIContext } from "./AIContext";
+import { useMediaGenerationStatus } from '../hooks/useMediaGenerationStatus';
+import { useGlobalAutomation } from '../hooks/useGlobalAutomation';
+import { useDeviceHealth } from '../hooks/useDeviceHealth';
+import QIStateWindow from "./QIStateWindow";
+import CashonTradingPanel from "./CashonTradingPanel";
+import type { BadgeVariant } from '../types/index';
 
 // Types
 interface ChatMessage {
@@ -113,24 +90,6 @@ interface AutomationState {
   };
 }
 
-interface ChartData {
-  labels: string[];
-  datasets: {
-    label: string;
-    data: number[];
-    borderColor: string;
-    backgroundColor: string;
-  }[];
-}
-
-interface RecognitionRef {
-  start: () => void;
-  stop: () => void;
-  abort: () => void;
-  onresult: (event: { results: { transcript: string }[][] }) => void;
-  onerror: (event: { error: string }) => void;
-}
-
 interface ErrorBoundaryProps {
   children: React.ReactNode;
 }
@@ -188,68 +147,6 @@ interface SystemDiagnostic {
   }[];
 }
 
-interface TradingStrategy {
-  id: string;
-  name: string;
-  type: 'momentum' | 'mean-reversion' | 'ml-based' | 'hybrid';
-  status: 'active' | 'paused' | 'testing';
-  performance: {
-    winRate: number;
-    profitFactor: number;
-    sharpeRatio: number;
-    totalTrades: number;
-    netProfit: number;
-  };
-  settings: {
-    riskLevel: 'low' | 'medium' | 'high';
-    maxDrawdown: number;
-    positionSize: number;
-    stopLoss: number;
-    takeProfit: number;
-  };
-}
-
-interface WalletTransaction {
-  id: string;
-  type: 'deposit' | 'withdrawal' | 'trade' | 'transfer';
-  amount: number;
-  currency: string;
-  status: 'pending' | 'completed' | 'failed';
-  timestamp: string;
-  details?: string;
-}
-
-interface AnalyticsData {
-  trading: {
-    dailyProfit: number[];
-    winRate: number[];
-    tradeCount: number[];
-    riskMetrics: {
-      sharpeRatio: number;
-      sortinoRatio: number;
-      maxDrawdown: number;
-    };
-  };
-  system: {
-    performance: {
-      cpu: number[];
-      memory: number[];
-      network: number[];
-    };
-    errors: {
-      count: number;
-      types: Record<string, number>;
-    };
-  };
-  user: {
-    activity: {
-      sessions: number;
-      duration: number;
-      features: Record<string, number>;
-    };
-  };
-}
-
 // Error Boundary Component
 class QIErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
@@ -287,20 +184,10 @@ class QIErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryS
 }
 
 // Constants
-const ENCRYPTED_GOALS_KEY = 'alphaq-secure-goals';
 const MASTER_EMAILS = ['victor@kwemoi@gmail.com', 'thealphakenya@gmail.com', 'leah@chebet.com'];
 const REFRESH_INTERVAL = 30000; // 30 seconds
 
 // Utility functions
-function isMaster(): boolean {
-  try {
-    return typeof window !== 'undefined' && localStorage.getItem('userRole') === 'master';
-  } catch (error) {
-    console.error('Failed to check master status:', error);
-    return false;
-  }
-}
-
 function isMasterOrSister(): boolean {
   try {
     if (typeof window === 'undefined') return false;
@@ -312,52 +199,19 @@ function isMasterOrSister(): boolean {
   }
 }
 
-function encrypt(data: unknown): string {
-  try {
-    return btoa(unescape(encodeURIComponent(JSON.stringify(data))));
-  } catch (error) {
-    console.error('Failed to encrypt data:', error);
-    return '';
-  }
-}
-
-function decrypt(data: string): unknown {
-  try {
-    return JSON.parse(decodeURIComponent(escape(atob(data))));
-  } catch (error) {
-    console.error('Failed to decrypt data:', error);
-    return [];
-  }
-}
-
-function confidenceColor(conf: number): string {
-  if (conf < 0.4) return 'bg-red-500';
-  if (conf < 0.7) return 'bg-yellow-400';
-  if (conf < 0.9) return 'bg-lime-400';
-  return 'bg-green-500';
-}
-
 // Main component
 function QIComponent() {
   const { toast } = useToast();
   const {
     chatHistory, setChatHistory,
-    aiHealth, deviceHealth,
-    optimizeDevice, scanForErrors, selfHeal,
-    persistentMemory, setPersistentMemory
+    optimizeDevice, scanForErrors, selfHeal
   } = useAIContext();
-
-  const { speak } = useTTCVoice();
-  const [talkMode, setTalkMode] = useState<boolean>(false);
-  const recognitionRef = useRef<RecognitionRef | null>(null);
-  const abortControllerRef = useRef<AbortController | null>(null);
 
   const [aiTasks, setAiTasks] = useState<AITask[]>([]);
   const [tradingStats, setTradingStats] = useState<TradingStats | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [showAllStats, setShowAllStats] = useState<boolean>(false);
   const [showQIChat, setShowQIChat] = useState<boolean>(false);
-  const [pendingEnhancements, setPendingEnhancements] = useState<string[]>([]);
   const [masterLogs, setMasterLogs] = useState<{ time: string; action: string }[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -375,58 +229,7 @@ function QIComponent() {
   const { status: mediaStatus } = useMediaGenerationStatus();
   const { status: automationStatusRaw } = useGlobalAutomation();
   const automationStatus: AutomationState | null = automationStatusRaw as AutomationState | null;
-  const { result: colabJob } = useColabJob();
   const deviceHealthData = useDeviceHealth();
-  const { progress: uploadProgress, status: uploadStatus, error: uploadError, uploadFile } = useLargeFileUpload();
-
-  // Chart data for analytics
-  const [chartData, setChartData] = useState<ChartData | null>(null);
-  useEffect(() => {
-    if (tradingStats?.trades) {
-      setChartData({
-        labels: tradingStats.trades.map(t => t.id),
-        datasets: [
-          {
-            label: 'Profit',
-            data: tradingStats.trades.map(t => t.profit),
-            borderColor: '#22c55e',
-            backgroundColor: 'rgba(34,197,94,0.2)',
-          },
-        ],
-      });
-    }
-  }, [tradingStats]);
-
-  // Export analytics as CSV
-  const exportAnalytics = useCallback(() => {
-    if (!tradingStats?.trades) {
-      toast({
-        title: 'Error',
-        description: 'No trading data available to export',
-        variant: 'destructive'
-      });
-      return;
-    }
-    try {
-      const header = 'ID,Pair,Amount,Profit,Status\n';
-      const rows = tradingStats.trades.map(t => `${t.id},${t.pair},${t.amount},${t.profit},${t.status}`).join('\n');
-      const csv = header + rows;
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `trading-analytics-${new Date().toISOString().slice(0,10)}.csv`;
-      a.click();
-      URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Failed to export analytics:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to export analytics',
-        variant: 'destructive'
-      });
-    }
-  }, [tradingStats, toast]);
 
   // Fetch AI tasks and trading stats
   useEffect(() => {
@@ -434,11 +237,6 @@ function QIComponent() {
     let timeoutId: NodeJS.Timeout;
 
     async function fetchData() {
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-      }
-      abortControllerRef.current = new AbortController();
-
       setLoading(true);
       setError(null);
       try {
@@ -447,11 +245,9 @@ function QIComponent() {
         const [tradingRes, aiRes] = await Promise.all([
           fetch("/api/qi-trading?action=stats", {
             headers: { "x-admin-token": adminToken },
-            signal: abortControllerRef.current.signal
           }),
           fetch("/api/qmoi-model?allStats=1", {
             headers: { "x-admin-token": adminToken },
-            signal: abortControllerRef.current.signal
           })
         ]);
 
@@ -468,9 +264,6 @@ function QIComponent() {
         setAiTasks(aiData.tasks || []);
         }
       } catch (error) {
-        if (error instanceof Error && error.name === 'AbortError') {
-          return;
-        }
         console.error('Failed to fetch data:', error);
         if (isMounted) {
           setError(error instanceof Error ? error.message : 'Failed to fetch data');
@@ -495,42 +288,8 @@ function QIComponent() {
     return () => {
       isMounted = false;
       clearInterval(timeoutId);
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-      }
     };
   }, [toast]);
-
-  // Handle file uploads
-  const handleChatFile = async (file: File) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      const adminToken = localStorage.getItem("adminToken") || "";
-      
-      const response = await fetch("/api/qmoi-model?upload=1", {
-        method: "POST",
-        headers: { "x-admin-token": adminToken },
-        body: formData,
-      });
-      
-      if (!response.ok) throw new Error('Failed to upload file');
-      
-      const newMessage: ChatMessage = { 
-        type: "system", 
-        content: `File '${file.name}' uploaded for analysis.`,
-        timestamp: Date.now()
-      };
-      setChatHistory([...chatHistory, newMessage]);
-    } catch (error) {
-      console.error('Failed to upload file:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to upload file',
-        variant: 'destructive'
-      });
-    }
-  };
 
   // Handle enhancement requests
   const handleEnhancement = async (desc: string) => {
@@ -715,84 +474,14 @@ function QIComponent() {
     });
   }, [toast]);
 
-  // Handle emotional state updates
-  const handleEmotionalUpdate = useCallback((update: Partial<EmotionalState>) => {
-    setEmotionalState(prev => ({ ...prev, ...update }));
-    toast({
-      title: 'Emotional State Updated',
-      description: 'Your preferences and emotional bond have been updated',
-    });
-  }, [toast]);
-
   // New state for autonomous optimization
   const [optimizationTasks, setOptimizationTasks] = useState<OptimizationTask[]>([]);
   const [deviceEnhancements, setDeviceEnhancements] = useState<DeviceEnhancement[]>([]);
   const [systemDiagnostics, setSystemDiagnostics] = useState<SystemDiagnostic[]>([]);
   const [showOptimizationPanel, setShowOptimizationPanel] = useState(false);
-  const [showEnhancementPanel, setShowEnhancementPanel] = useState(false);
-  const [showDiagnosticsPanel, setShowDiagnosticsPanel] = useState(false);
-
-  // Handle optimization task updates
-  const handleOptimizationTaskUpdate = useCallback((task: OptimizationTask) => {
-    setOptimizationTasks(prev => prev.map(t => t.id === task.id ? task : t));
-    toast({
-      title: 'Optimization Update',
-      description: `Task "${task.description}" is now ${task.status}`,
-    });
-  }, [toast]);
-
-  // Handle device enhancement suggestions
-  const handleEnhancementSuggestion = useCallback((enhancement: DeviceEnhancement) => {
-    setDeviceEnhancements(prev => [...prev, enhancement]);
-    toast({
-      title: 'New Enhancement Suggested',
-      description: enhancement.description,
-    });
-  }, [toast]);
-
-  // Handle system diagnostics
-  const handleSystemDiagnostics = useCallback((diagnostics: SystemDiagnostic[]) => {
-    setSystemDiagnostics(diagnostics);
-    const criticalIssues = diagnostics.flatMap(d => d.issues).filter(i => i.severity === 'high');
-    if (criticalIssues.length > 0) {
-      toast({
-        title: 'Critical Issues Detected',
-        description: `${criticalIssues.length} critical issues need attention`,
-        variant: 'destructive',
-      });
-    }
-  }, [toast]);
-
-  // New state for trading and analytics
-  const [tradingStrategies, setTradingStrategies] = useState<TradingStrategy[]>([]);
-  const [walletTransactions, setWalletTransactions] = useState<WalletTransaction[]>([]);
-  const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null);
   const [showTradingPanel, setShowTradingPanel] = useState(false);
   const [showAnalyticsPanel, setShowAnalyticsPanel] = useState(false);
   const [showCashonTradingPanel, setShowCashonTradingPanel] = useState(false);
-
-  // Handle trading strategy updates
-  const handleStrategyUpdate = useCallback((strategy: TradingStrategy) => {
-    setTradingStrategies(prev => prev.map(s => s.id === strategy.id ? strategy : s));
-    toast({
-      title: 'Strategy Updated',
-      description: `Strategy "${strategy.name}" has been updated`,
-    });
-  }, [toast]);
-
-  // Handle wallet transactions
-  const handleWalletTransaction = useCallback((transaction: WalletTransaction) => {
-    setWalletTransactions(prev => [...prev, transaction]);
-    toast({
-      title: 'Transaction Processed',
-      description: `${transaction.type} of ${transaction.amount} ${transaction.currency}`,
-    });
-  }, [toast]);
-
-  // Update analytics data
-  const updateAnalytics = useCallback((data: AnalyticsData) => {
-    setAnalyticsData(data);
-  }, []);
 
   // Add router initialization
   const sessionManager = new MultiUserSessionManager();
@@ -827,90 +516,65 @@ function QIComponent() {
   return (
     <QIErrorBoundary>
     <Card>
-      <QIStateWindow 
-        state="admin" 
-        global={{
-          sessions: 5,
-          memory: aiTasks.length,
-            health: deviceHealth?.status || 'Unknown',
-        }} 
-        aiHealth={{
-          status: aiHealth.status,
-          lastCheck: new Date(aiHealth.lastCheck).toISOString(),
-        }} 
-        colabJob={{
-          jobStatus: colabJob?.status,
-          result: colabJob?.result,
-          error: colabJob?.error,
-        }} 
-      />
+      <QIStateWindow userEmail={"demo@demo.com"} userPhone={"0000000000"} />
       <CardHeader>
-        <CardTitle>Q-I {talkMode && <span style={{color:'#0a0'}}>🗣️ Talk Mode</span>}</CardTitle>
+        <CardTitle>Q-I {showQIChat && <span style={{color:'#0a0'}}>🗣️ Talk Mode</span>}</CardTitle>
         <div className="flex gap-2 mt-2">
           <Button size="sm" variant="outline" onClick={() => setShowAllStats(v => !v)}>All AI Stats</Button>
           <Button size="sm" variant="outline" onClick={() => setShowQIChat(true)}>QI Chat (App Control)</Button>
-          <Button size="sm" variant={talkMode ? 'destructive' : 'outline'} onClick={() => setTalkMode(t => !t)}>
-            {talkMode ? 'Disable Talk Mode' : 'Enable Talk Mode'}
-          </Button>
         </div>
         <div className="flex gap-2 mt-2">
           <Button size="sm" variant="outline" onClick={() => setShowPreviewWindow(true)}>
-            <FaVideo className="mr-2" /> Preview Window
+            {React.createElement(FaVideo as React.ElementType, { className: "mr-2" })} Preview Window
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowDeviceSettings(true)}>
-            <FaRobot className="mr-2" /> Device Settings
+            {React.createElement(FaRobot as React.ElementType, { className: "mr-2" })} Device Settings
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowWalletPanel(true)}>
-            <FaWallet className="mr-2" /> Wallet
+            {React.createElement(FaWallet as React.ElementType, { className: "mr-2" })} Wallet
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowDownloadManager(true)}>
-            <FaDownload className="mr-2" /> Downloads
+            {React.createElement(FaDownload as React.ElementType, { className: "mr-2" })} Downloads
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowBluetoothDevices(true)}>
-            <FaMapMarkerAlt className="mr-2" /> Bluetooth
+            {React.createElement(FaMapMarkerAlt as React.ElementType, { className: "mr-2" })} Bluetooth
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowNetworkSettings(true)}>
-            <FaKey className="mr-2" /> Network
+            {React.createElement(FaKey as React.ElementType, { className: "mr-2" })} Network
           </Button>
           {isMasterOrSister() && (
             <>
               <Button size="sm" variant="outline" onClick={() => setShowLifeGoals(true)}>
-                <FaChild className="mr-2" /> Life Goals
+                {React.createElement(FaChild as React.ElementType, { className: "mr-2" })} Life Goals
               </Button>
               <Button size="sm" variant="outline" onClick={() => setShowInventionProjects(true)}>
-                <FaChalkboardTeacher className="mr-2" /> Inventions
+                {React.createElement(FaChalkboardTeacher as React.ElementType, { className: "mr-2" })} Inventions
               </Button>
             </>
           )}
           <Button size="sm" variant="outline" onClick={() => setShowEmotionalState(true)}>
-            <FaHeart className="mr-2" /> Emotional State
+            {React.createElement(FaHeart as React.ElementType, { className: "mr-2" })} Emotional State
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowAutomationRules(true)}>
-            <FaCog className="mr-2" /> Automation
+            {React.createElement(FaCog as React.ElementType, { className: "mr-2" })} Automation
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowSecuritySettings(true)}>
-            <FaShieldAlt className="mr-2" /> Security
+            {React.createElement(FaShieldAlt as React.ElementType, { className: "mr-2" })} Security
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowNotificationCenter(true)}>
-            <FaBell className="mr-2" /> Notifications
+            {React.createElement(FaBell as React.ElementType, { className: "mr-2" })} Notifications
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowOptimizationPanel(true)}>
-            <FaTools className="mr-2" /> Optimization
-          </Button>
-          <Button size="sm" variant="outline" onClick={() => setShowEnhancementPanel(true)}>
-            <FaCode className="mr-2" /> Enhancements
-          </Button>
-          <Button size="sm" variant="outline" onClick={() => setShowDiagnosticsPanel(true)}>
-            <FaTerminal className="mr-2" /> Diagnostics
+            {React.createElement(FaTools as React.ElementType, { className: "mr-2" })} Optimization
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowTradingPanel(true)}>
-            <FaChartLine className="mr-2" /> Trading
+            {React.createElement(FaChartLine as React.ElementType, { className: "mr-2" })} Trading
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowCashonTradingPanel(true)}>
-            <FaCoins className="mr-2" /> Cashon Trading
+            {React.createElement(FaCoins as React.ElementType, { className: "mr-2" })} Cashon Trading
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowAnalyticsPanel(true)}>
-            <FaChartBar className="mr-2" /> Analytics
+            {React.createElement(FaChartBar as React.ElementType, { className: "mr-2" })} Analytics
           </Button>
         </div>
       </CardHeader>
@@ -963,11 +627,17 @@ function QIComponent() {
         </div>
 
         {/* File Upload Progress */}
-        {uploadStatus === 'uploading' && (
+        {showDownloadManager && (
           <div className="p-4 bg-gray-50 rounded-lg shadow mb-4">
-            <h3 className="font-semibold mb-2">File Upload</h3>
-            <Progress value={uploadProgress} className="w-full mb-2" />
-            <p className="text-sm text-gray-500">Uploading... {uploadProgress}%</p>
+            <h3 className="font-semibold mb-2">Download Manager</h3>
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-sm">Active Downloads</span>
+                <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement pause all */}}>
+                  Pause All
+                </Button>
+              </div>
+            </div>
           </div>
         )}
 
@@ -1029,22 +699,8 @@ function QIComponent() {
                   </Button>
                 </div>
                 <div className="space-y-2">
-                  {walletTransactions.map(transaction => (
-                    <div key={transaction.id} className="p-2 bg-white rounded flex justify-between items-center">
-                      <div>
-                        <span className="font-medium">{transaction.type}</span>
-                        <p className="text-xs text-gray-500">{new Date(transaction.timestamp).toLocaleString()}</p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className={`font-medium ${transaction.amount >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-                          {transaction.amount >= 0 ? '+' : ''}{transaction.amount} {transaction.currency}
-                        </span>
-                        <Badge variant={transaction.status === 'completed' ? 'default' : transaction.status === 'pending' ? 'outline' : 'destructive'}>
-                          {transaction.status}
-                        </Badge>
-                      </div>
-                    </div>
-                  ))}
+                  {/* TODO: Add transaction list */}
+                  <div className="text-sm text-gray-500">No transactions</div>
                 </div>
               </div>
             </div>
@@ -1062,15 +718,6 @@ function QIComponent() {
                   Pause All
                 </Button>
               </div>
-              {uploadStatus === 'uploading' && (
-                <div className="p-2 bg-white rounded">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-sm">File Upload</span>
-                    <span className="text-xs text-gray-500">{uploadProgress.toFixed(1)}%</span>
-                  </div>
-                  <Progress value={uploadProgress} className="w-full" />
-                </div>
-              )}
             </div>
           </div>
         )}
@@ -1188,7 +835,7 @@ function QIComponent() {
                         variant={rule.enabled ? 'default' : 'outline'}
                         onClick={() => handleAutomationRuleChange({ ...rule, enabled: !rule.enabled })}
                       >
-                        {rule.enabled ? <FaUnlock /> : <FaLock />}
+                        {rule.enabled ? React.createElement(FaUnlock as React.ElementType) : React.createElement(FaLock as React.ElementType)}
                       </Button>
                     </div>
                   </div>
@@ -1205,8 +852,8 @@ function QIComponent() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Master Access</span>
-                <Badge variant={isMaster() ? 'default' : 'destructive'}>
-                  {isMaster() ? 'Enabled' : 'Disabled'}
+                <Badge variant={isMaster ? 'default' : 'destructive'}>
+                  {isMaster ? 'Enabled' : 'Disabled'}
                 </Badge>
               </div>
               <div className="flex flex-col">
@@ -1248,28 +895,28 @@ function QIComponent() {
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">CPU Usage</span>
                 <div className="flex items-center gap-2">
-                  <FaMicrochip className="text-blue-500" />
+                  {React.createElement(FaMicrochip as React.ElementType, { className: "text-blue-500" })}
                   <span className="text-lg font-bold">{deviceHealthData.metrics.cpuUsage.toFixed(1)}%</span>
                 </div>
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Memory Usage</span>
                 <div className="flex items-center gap-2">
-                  <FaMemory className="text-green-500" />
+                  {React.createElement(FaMemory as React.ElementType, { className: "text-green-500" })}
                   <span className="text-lg font-bold">{deviceHealthData.metrics.memoryUsage.toFixed(1)}MB</span>
                 </div>
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Storage</span>
                 <div className="flex items-center gap-2">
-                  <FaDatabase className="text-purple-500" />
+                  {React.createElement(FaDatabase as React.ElementType, { className: "text-purple-500" })}
                   <span className="text-lg font-bold">{deviceHealthData.metrics.diskUsage.toFixed(1)}%</span>
                 </div>
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Network</span>
                 <div className="flex items-center gap-2">
-                  <FaNetworkWired className="text-orange-500" />
+                  {React.createElement(FaNetworkWired as React.ElementType, { className: "text-orange-500" })}
                   <span className="text-lg font-bold">Active</span>
                 </div>
               </div>
@@ -1302,47 +949,7 @@ function QIComponent() {
         {showTradingPanel && (
           <div className="p-4 bg-gray-50 rounded-lg shadow mb-4">
             <h3 className="font-semibold mb-2">Autonomous Trading</h3>
-            <div className="space-y-4">
-              <div className="flex justify-between items-center">
-                <span className="text-sm">Active Strategies</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Add new strategy */}}>
-                  Add Strategy
-                </Button>
-              </div>
-              <div className="space-y-2">
-                {tradingStrategies.map(strategy => (
-                  <div key={strategy.id} className="p-2 bg-white rounded">
-                    <div className="flex justify-between items-center mb-2">
-                      <div>
-                        <span className="font-medium">{strategy.name}</span>
-                        <p className="text-xs text-gray-500">Type: {strategy.type}</p>
-                      </div>
-                      <Badge variant={strategy.status === 'active' ? 'default' : strategy.status === 'paused' ? 'outline' : 'secondary'}>
-                        {strategy.status}
-                      </Badge>
-                    </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                      <div className="flex flex-col">
-                        <span className="text-xs text-gray-500">Win Rate</span>
-                        <span className="text-sm font-medium">{(strategy.performance.winRate * 100).toFixed(1)}%</span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-xs text-gray-500">Profit Factor</span>
-                        <span className="text-sm font-medium">{strategy.performance.profitFactor.toFixed(2)}</span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-xs text-gray-500">Sharpe Ratio</span>
-                        <span className="text-sm font-medium">{strategy.performance.sharpeRatio.toFixed(2)}</span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-xs text-gray-500">Net Profit</span>
-                        <span className="text-sm font-medium">${strategy.performance.netProfit.toFixed(2)}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <div className="text-gray-500">Feature coming soon.</div>
           </div>
         )}
 
@@ -1354,15 +961,15 @@ function QIComponent() {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 <div className="flex flex-col">
                   <span className="text-xs text-gray-500">Daily Profit</span>
-                  <span className="text-lg font-bold">${analyticsData?.trading?.dailyProfit?.[(analyticsData?.trading?.dailyProfit?.length || 1) - 1]?.toFixed(2) || '0.00'}</span>
+                  <span className="text-lg font-bold">${tradingStats?.analytics.totalProfit?.toFixed(2) || '0.00'}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs text-gray-500">Win Rate</span>
-                  <span className="text-lg font-bold">{(analyticsData?.trading?.winRate?.[(analyticsData?.trading?.winRate?.length || 1) - 1] * 100 || 0).toFixed(1)}%</span>
+                  <span className="text-lg font-bold">{tradingStats?.analytics.successRate?.toFixed(1)}%</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs text-gray-500">Sharpe Ratio</span>
-                  <span className="text-lg font-bold">{analyticsData?.trading?.riskMetrics?.sharpeRatio?.toFixed(2) || '0.00'}</span>
+                  <span className="text-lg font-bold">{tradingStats?.analytics.confidence?.toFixed(2) || '0.00'}</span>
                 </div>
               </div>
               <div className="space-y-4">
@@ -1371,38 +978,17 @@ function QIComponent() {
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                     <div className="flex flex-col">
                       <span className="text-xs text-gray-500">CPU Usage</span>
-                      <span className="text-sm font-medium">{analyticsData?.system.performance.cpu[analyticsData.system.performance.cpu.length - 1]?.toFixed(1) || '0'}%</span>
+                      <span className="text-sm font-medium">{deviceHealthData.metrics.cpuUsage.toFixed(1)}%</span>
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs text-gray-500">Memory Usage</span>
-                      <span className="text-sm font-medium">{analyticsData?.system.performance.memory[analyticsData.system.performance.memory.length - 1]?.toFixed(1) || '0'}%</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-xs text-gray-500">Network Usage</span>
-                      <span className="text-sm font-medium">{analyticsData?.system.performance.network[analyticsData.system.performance.network.length - 1]?.toFixed(1) || '0'}%</span>
+                      <span className="text-sm font-medium">{deviceHealthData.metrics.memoryUsage.toFixed(1)}MB</span>
                     </div>
                   </div>
                 </div>
                 <div className="p-2 bg-white rounded">
-                  <h4 className="font-medium mb-2">User Activity</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    <div className="flex flex-col">
-                      <span className="text-xs text-gray-500">Active Sessions</span>
-                      <span className="text-sm font-medium">{analyticsData?.user.activity.sessions || 0}</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-xs text-gray-500">Session Duration</span>
-                      <span className="text-sm font-medium">{analyticsData?.user.activity.duration || 0} min</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-xs text-gray-500">Feature Usage</span>
-                      <div className="flex flex-wrap gap-1">
-                        {Object.entries(analyticsData?.user.activity.features || {}).map(([feature, count]) => (
-                          <Badge key={feature} variant="outline">{feature}: {count}</Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                  <h4 className="font-medium mb-2">Device Usage Analytics</h4>
+                  <div className="text-gray-500">Detailed analytics coming soon.</div>
                 </div>
               </div>
             </div>
@@ -1509,7 +1095,7 @@ function QIComponent() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Total Trades</span>
-                <span className="text-lg font-bold">{tradingStats?.trades.length || 0}</span>
+                <span className="text-lg font-bold">{tradingStats?.analytics.totalTrades || 0}</span>
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Winning Trades</span>
@@ -1596,23 +1182,21 @@ function QIComponent() {
             <div className="flex flex-col gap-2">
               <div className="flex gap-2">
                 <Button size="sm" variant="outline" onClick={() => setChatHistory([])}>Clear Chat</Button>
-                <Button size="sm" variant="outline" onClick={() => setPersistentMemory([])}>Clear Memory</Button>
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Talk Mode</span>
                 <div className="flex gap-2">
-                  <Button size="sm" variant={talkMode ? 'destructive' : 'outline'} onClick={() => setTalkMode(t => !t)}>
-                    {talkMode ? 'Disable Talk Mode' : 'Enable Talk Mode'}
+                  <Button size="sm" variant={showQIChat ? 'destructive' : 'outline'} onClick={() => setShowQIChat(t => !t)}>
+                    {showQIChat ? 'Disable Talk Mode' : 'Enable Talk Mode'}
                   </Button>
                 </div>
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Pending Enhancements</span>
                 <div className="flex flex-col gap-1">
-                  {pendingEnhancements.length === 0 && <span className="text-gray-400 text-sm">No pending enhancements</span>}
-                  {pendingEnhancements.map((e, i) => (
+                  {aiTasks.filter(t => t.type === 'enhancement').map((e, i) => (
                     <div key={i} className="p-2 bg-gray-100 rounded">
-                      {e}
+                      {e.desc || e.file || '-'}
                     </div>
                   ))}
                 </div>

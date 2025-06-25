@@ -1,3 +1,4 @@
+/* eslint-env node */
 const askQmoi = require("../services/qmoi");
 
 module.exports = async function handleText(sock, jid, text) {

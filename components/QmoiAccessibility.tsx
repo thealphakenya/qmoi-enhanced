@@ -6,35 +6,6 @@ import { Label } from './ui/label';
 import { Switch } from './ui/switch';
 import { Slider } from './ui/slider';
 import { Badge } from './ui/badge';
-import { 
-  Volume2, 
-  Mic, 
-  MicOff, 
-  Settings, 
-  Phone, 
-  MessageSquare, 
-  BookOpen, 
-  Eye, 
-  EyeOff,
-  Navigation,
-  AlertTriangle,
-  CheckCircle,
-  Play,
-  Pause,
-  SkipBack,
-  SkipForward,
-  RotateCcw,
-  Zap,
-  Heart,
-  Shield,
-  Globe,
-  Users,
-  FileText,
-  Camera,
-  Wifi,
-  Battery,
-  Signal
-} from 'lucide-react';
 
 interface AccessibilityProfile {
   id: string;
@@ -52,6 +23,12 @@ interface VoiceCommand {
   action: () => void;
   description: string;
 }
+
+// Add fallback type for SpeechRecognition if not available
+// @ts-ignore
+// eslint-disable-next-line
+// If SpeechRecognition is not defined, define it as any
+type SpeechRecognition = any;
 
 export const QmoiAccessibility: React.FC = () => {
   const [isListening, setIsListening] = useState(false);
@@ -142,12 +119,12 @@ export const QmoiAccessibility: React.FC = () => {
       recognition.current.interimResults = false;
       recognition.current.lang = 'en-US';
 
-      recognition.current.onresult = (event) => {
+      recognition.current.onresult = (event: any) => {
         const command = event.results[event.results.length - 1][0].transcript.toLowerCase();
         processVoiceCommand(command);
       };
 
-      recognition.current.onerror = (event) => {
+      recognition.current.onerror = (event: any) => {
         console.error('Speech recognition error:', event.error);
         speak('Voice recognition error. Please try again.');
       };
@@ -354,7 +331,6 @@ export const QmoiAccessibility: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader className="text-center">
             <CardTitle className="flex items-center justify-center gap-2 text-2xl font-bold text-gray-800">
-              <Eye className="h-8 w-8 text-blue-600" />
               QMOI for All - Universal Accessibility
             </CardTitle>
             <p className="text-gray-600">Making technology accessible to everyone</p>
@@ -365,7 +341,6 @@ export const QmoiAccessibility: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Mic className="h-6 w-6 text-green-600" />
               Voice Control
             </CardTitle>
           </CardHeader>
@@ -377,7 +352,6 @@ export const QmoiAccessibility: React.FC = () => {
                 variant={isListening ? "destructive" : "default"}
                 className="flex items-center gap-2"
               >
-                {isListening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
                 {isListening ? 'Stop Listening' : 'Start Listening'}
               </Button>
             </div>
@@ -418,7 +392,6 @@ export const QmoiAccessibility: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Settings className="h-6 w-6 text-blue-600" />
               Accessibility Settings
             </CardTitle>
           </CardHeader>
@@ -467,7 +440,6 @@ export const QmoiAccessibility: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Users className="h-6 w-6 text-purple-600" />
               Accessibility Profiles
             </CardTitle>
           </CardHeader>
@@ -501,7 +473,6 @@ export const QmoiAccessibility: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-red-600" />
               Emergency Features
             </CardTitle>
           </CardHeader>
@@ -570,7 +541,6 @@ export const QmoiAccessibility: React.FC = () => {
               variant="destructive"
               className="w-full"
             >
-              <AlertTriangle className="h-4 w-4 mr-2" />
               Activate Emergency Mode
             </Button>
           </CardContent>
@@ -580,7 +550,6 @@ export const QmoiAccessibility: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Zap className="h-6 w-6 text-yellow-600" />
               Quick Actions
             </CardTitle>
           </CardHeader>
@@ -591,7 +560,6 @@ export const QmoiAccessibility: React.FC = () => {
                 variant="outline"
                 className="flex flex-col items-center gap-2 h-20"
               >
-                <Phone className="h-6 w-6" />
                 <span className="text-sm">Phone</span>
               </Button>
               
@@ -600,7 +568,6 @@ export const QmoiAccessibility: React.FC = () => {
                 variant="outline"
                 className="flex flex-col items-center gap-2 h-20"
               >
-                <MessageSquare className="h-6 w-6" />
                 <span className="text-sm">Messages</span>
               </Button>
               
@@ -609,7 +576,6 @@ export const QmoiAccessibility: React.FC = () => {
                 variant="outline"
                 className="flex flex-col items-center gap-2 h-20"
               >
-                <Settings className="h-6 w-6" />
                 <span className="text-sm">Settings</span>
               </Button>
               
@@ -618,7 +584,6 @@ export const QmoiAccessibility: React.FC = () => {
                 variant="outline"
                 className="flex flex-col items-center gap-2 h-20"
               >
-                <BookOpen className="h-6 w-6" />
                 <span className="text-sm">Read Screen</span>
               </Button>
             </div>
@@ -629,7 +594,6 @@ export const QmoiAccessibility: React.FC = () => {
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Signal className="h-6 w-6 text-green-600" />
               System Status
             </CardTitle>
           </CardHeader>

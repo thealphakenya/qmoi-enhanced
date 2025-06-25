@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useAIContext } from './AIContext';
 import { useMaster } from './MasterContext';
-import { FaPhone, FaPhoneSlash, FaMicrophone, FaVolumeUp, FaVolumeMute, FaUser, FaStar, FaHistory, FaPlus, FaSearch, FaCog, FaVideo, FaMessage, FaVoicemail, FaClock, FaUserPlus } from 'react-icons/fa';
+import { FaPhone, FaPhoneSlash, FaMicrophone, FaVolumeUp, FaVolumeMute, FaUser, FaStar, FaVideo, FaUserPlus } from 'react-icons/fa';
 
 interface QmoiDialerProps {
   isVisible: boolean;
@@ -44,7 +43,6 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
   onClose,
   language = 'en'
 }) => {
-  const { aiHealth, updateAISettings } = useAIContext();
   const { isMaster } = useMaster();
   
   const [currentView, setCurrentView] = useState<'dialer' | 'contacts' | 'history' | 'favorites'>('dialer');
@@ -56,14 +54,12 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
   const [currentCall, setCurrentCall] = useState<Call | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [isSpeakerOn, setIsSpeakerOn] = useState(false);
-  const [isVideoCall, setIsVideoCall] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isAIAssistantEnabled, setIsAIAssistantEnabled] = useState(true);
   const [isAutoAnswerEnabled, setIsAutoAnswerEnabled] = useState(false);
   const [isCallRecordingEnabled, setIsCallRecordingEnabled] = useState(false);
   
   const callDurationRef = useRef<NodeJS.Timeout | null>(null);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   const dialpadNumbers = [
     ['1', '2', '3'],
@@ -100,31 +96,6 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
   const saveCallLogs = (newCallLogs: CallLog[]) => {
     setCallLogs(newCallLogs);
     localStorage.setItem('qmoi-dialer-call-logs', JSON.stringify(newCallLogs));
-  };
-
-  const addContact = (contact: Omit<Contact, 'id'>) => {
-    const newContact: Contact = {
-      ...contact,
-      id: Date.now().toString()
-    };
-    
-    const newContacts = [...contacts, newContact];
-    saveContacts(newContacts);
-    
-    if (contact.isFavorite) {
-      const newFavorites = [...favorites, newContact];
-      setFavorites(newFavorites);
-      localStorage.setItem('qmoi-dialer-favorites', JSON.stringify(newFavorites));
-    }
-  };
-
-  const removeContact = (contactId: string) => {
-    const newContacts = contacts.filter(c => c.id !== contactId);
-    saveContacts(newContacts);
-    
-    const newFavorites = favorites.filter(f => f.id !== contactId);
-    setFavorites(newFavorites);
-    localStorage.setItem('qmoi-dialer-favorites', JSON.stringify(newFavorites));
   };
 
   const toggleFavorite = (contactId: string) => {
@@ -168,8 +139,6 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
     
     setCurrentCall(call);
     setIsInCall(true);
-    setIsVideoCall(isVideo);
-    setPhoneNumber('');
     
     // Start call duration timer
     callDurationRef.current = setInterval(() => {
@@ -201,30 +170,6 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
     
     setCurrentCall(null);
     setIsInCall(false);
-    setIsVideoCall(false);
-    setIsMuted(false);
-    setIsSpeakerOn(false);
-  };
-
-  const answerCall = (call: Call) => {
-    setCurrentCall(call);
-    setIsInCall(true);
-    setIsVideoCall(call.isVideo);
-    
-    // Start call duration timer
-    callDurationRef.current = setInterval(() => {
-      setCurrentCall(prev => prev ? { ...prev, duration: prev.duration + 1 } : null);
-    }, 1000);
-  };
-
-  const rejectCall = (call: Call) => {
-    addCallLog({
-      phone: call.phone,
-      type: 'missed',
-      duration: 0,
-      timestamp: call.timestamp,
-      isVideo: call.isVideo
-    });
   };
 
   const formatDuration = (seconds: number): string => {
@@ -296,7 +241,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
             onClick={() => setCurrentView('favorites')}
             className={`flex-1 py-2 text-center ${currentView === 'favorites' ? 'bg-white text-blue-600' : 'text-white'}`}
           >
-            <FaStar />
+            {React.createElement(FaStar as React.ElementType)}
           </button>
         </div>
       </div>
@@ -341,7 +286,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                 disabled={!phoneNumber}
                 className="h-16 w-16 bg-green-500 text-white rounded-full flex items-center justify-center disabled:opacity-50"
               >
-                <FaPhone />
+                {React.createElement(FaPhone as React.ElementType)}
               </button>
               
               <button
@@ -349,7 +294,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                 disabled={!phoneNumber}
                 className="h-16 w-16 bg-blue-500 text-white rounded-full flex items-center justify-center disabled:opacity-50"
               >
-                <FaVideo />
+                {React.createElement(FaVideo as React.ElementType)}
               </button>
             </div>
           </div>
@@ -370,7 +315,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
 
             {/* Add Contact Button */}
             <button className="w-full mb-4 p-3 bg-blue-500 text-white rounded-lg flex items-center justify-center gap-2">
-              <FaUserPlus />
+              {React.createElement(FaUserPlus as React.ElementType)}
               {language === 'sw' ? 'Ongeza Muwasiliano' : 'Add Contact'}
             </button>
 
@@ -383,7 +328,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                       {contact.avatar ? (
                         <img src={contact.avatar} alt="" className="w-full h-full rounded-full" />
                       ) : (
-                        <FaUser />
+                        React.createElement(FaUser as React.ElementType)
                       )}
                     </div>
                     <div>
@@ -397,19 +342,19 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                       onClick={() => toggleFavorite(contact.id)}
                       className={`p-2 ${contact.isFavorite ? 'text-yellow-500' : 'text-gray-400'}`}
                     >
-                      <FaStar />
+                      {React.createElement(FaStar as React.ElementType)}
                     </button>
                     <button
                       onClick={() => makeCall(contact.phone, false)}
                       className="p-2 text-green-500"
                     >
-                      <FaPhone />
+                      {React.createElement(FaPhone as React.ElementType)}
                     </button>
                     <button
                       onClick={() => makeCall(contact.phone, true)}
                       className="p-2 text-blue-500"
                     >
-                      <FaVideo />
+                      {React.createElement(FaVideo as React.ElementType)}
                     </button>
                   </div>
                 </div>
@@ -429,7 +374,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                       log.type === 'outgoing' ? 'bg-blue-100 text-blue-600' :
                       'bg-red-100 text-red-600'
                     }`}>
-                      <FaPhone className="text-xs" />
+                      {React.createElement(FaPhone as React.ElementType, { className: "text-xs" })}
                     </div>
                     <div>
                       <div className="font-semibold">{getContactName(log.phone)}</div>
@@ -445,13 +390,13 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                       onClick={() => makeCall(log.phone, false)}
                       className="p-2 text-green-500"
                     >
-                      <FaPhone />
+                      {React.createElement(FaPhone as React.ElementType)}
                     </button>
                     <button
                       onClick={() => makeCall(log.phone, true)}
                       className="p-2 text-blue-500"
                     >
-                      <FaVideo />
+                      {React.createElement(FaVideo as React.ElementType)}
                     </button>
                   </div>
                 </div>
@@ -470,7 +415,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                       {contact.avatar ? (
                         <img src={contact.avatar} alt="" className="w-full h-full rounded-full" />
                       ) : (
-                        <FaUser />
+                        React.createElement(FaUser as React.ElementType)
                       )}
                     </div>
                     <div>
@@ -484,13 +429,13 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                       onClick={() => makeCall(contact.phone, false)}
                       className="p-2 text-green-500"
                     >
-                      <FaPhone />
+                      {React.createElement(FaPhone as React.ElementType)}
                     </button>
                     <button
                       onClick={() => makeCall(contact.phone, true)}
                       className="p-2 text-blue-500"
                     >
-                      <FaVideo />
+                      {React.createElement(FaVideo as React.ElementType)}
                     </button>
                   </div>
                 </div>
@@ -521,14 +466,14 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                 onClick={() => setIsMuted(!isMuted)}
                 className={`p-4 rounded-full ${isMuted ? 'bg-red-500 text-white' : 'bg-gray-200'}`}
               >
-                {isMuted ? <FaVolumeMute /> : <FaMicrophone />}
+                {isMuted ? React.createElement(FaVolumeMute as React.ElementType) : React.createElement(FaMicrophone as React.ElementType)}
               </button>
               
               <button
                 onClick={() => setIsSpeakerOn(!isSpeakerOn)}
                 className={`p-4 rounded-full ${isSpeakerOn ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
               >
-                <FaVolumeUp />
+                {React.createElement(FaVolumeUp as React.ElementType)}
               </button>
             </div>
 
@@ -537,7 +482,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                 onClick={endCall}
                 className="h-16 w-16 bg-red-500 text-white rounded-full flex items-center justify-center"
               >
-                <FaPhoneSlash />
+                {React.createElement(FaPhoneSlash as React.ElementType)}
               </button>
             </div>
           </div>
@@ -579,7 +524,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
         </div>
         
         <div className="flex items-center gap-2">
-          <FaPhone className="text-green-500" />
+          {React.createElement(FaPhone as React.ElementType, { className: "text-green-500" })}
           <span>{language === 'sw' ? 'Tayari' : 'Ready'}</span>
         </div>
       </div>

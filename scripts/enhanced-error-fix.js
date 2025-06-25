@@ -1,3 +1,4 @@
+/* eslint-env node */
 const fs = require('fs');
 const { execSync } = require('child_process');
 const { notifyMaster } = require('../src/services/WhatsAppService');

@@ -1,3 +1,4 @@
+/* eslint-env node */
 const fs = require("fs");
 
 async function sendVoice(sock, jid, audioPath) {

@@ -1,3 +1,4 @@
+/* eslint-env node */
 const askQmoi = require("../services/qmoi");
 
 async function continueProject(sock, jid, projectDetails) {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useAIContext } from './AIContext';
 import { useMaster } from './MasterContext';
 import { FaBrain, FaLanguage, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
@@ -29,13 +28,11 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   language = 'en',
   theme = 'auto'
 }) => {
-  const { aiHealth } = useAIContext();
   const { isMaster } = useMaster();
   
   const [currentText, setCurrentText] = useState('');
   const [predictions, setPredictions] = useState<Prediction[]>([]);
   const [isListening, setIsListening] = useState(false);
-  const [keyboardLayout, setKeyboardLayout] = useState<'qwerty' | 'swipe' | 'voice'>('qwerty');
   const [isAILearning, setIsAILearning] = useState(true);
   const [swahiliMode, setSwahiliMode] = useState(false);
   const [voiceEnabled, setVoiceEnabled] = useState(true);
@@ -278,17 +275,17 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       {/* AI Status Bar */}
       <div className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-900 text-xs">
         <div className="flex items-center gap-2">
-          <FaBrain className={`${isAILearning ? 'text-green-500' : 'text-gray-400'}`} />
+          {React.createElement(FaBrain as React.ElementType, { className: `${isAILearning ? 'text-green-500' : 'text-gray-400'}` })}
           <span>{isAILearning ? 'AI Learning' : 'AI Idle'}</span>
         </div>
         
         <div className="flex items-center gap-2">
-          <FaLanguage className={swahiliMode ? 'text-blue-500' : 'text-gray-400'} />
+          {React.createElement(FaLanguage as React.ElementType, { className: `${swahiliMode ? 'text-blue-500' : 'text-gray-400'}` })}
           <span>{swahiliMode ? 'Kiswahili' : 'English'}</span>
         </div>
         
         <div className="flex items-center gap-2">
-          {voiceEnabled ? <FaVolumeUp className="text-green-500" /> : <FaVolumeMute className="text-gray-400" />}
+          {voiceEnabled ? React.createElement(FaVolumeUp as React.ElementType, { className: 'text-green-500' }) : React.createElement(FaVolumeMute as React.ElementType, { className: 'text-gray-400' })}
           <span>{isListening ? 'Listening...' : 'Voice'}</span>
         </div>
       </div>
