@@ -42,9 +42,8 @@ jobs:
       - name: Generate License Report
         run: npx license-checker --production --json > license-report.json
 
-      - name: License Compliance Check
-        id: license_check
-        run: node scripts/license_checker.js || echo "license_error=1" >> $GITHUB_ENV
+      - name: License Compliance Check & Auto-Fix
+        run: node scripts/license_checker.js
 
       - name: Run AI Error Fixer on License Error
         if: env.license_error == '1'

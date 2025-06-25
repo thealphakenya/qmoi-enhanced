@@ -1,5 +1,3 @@
-import { AssetManagerImpl } from './assets';
-
 export interface WalletBalance {
   currency: string;
   balance: number;
@@ -25,7 +23,6 @@ export class WalletManager {
   private static instance: WalletManager;
   private config: WalletConfig;
   private balances: WalletBalance[];
-  private assetManager: AssetManagerImpl;
 
   private constructor() {
     this.config = {
@@ -40,7 +37,6 @@ export class WalletManager {
       ],
     };
     this.balances = [];
-    this.assetManager = AssetManagerImpl.getInstance();
   }
 
   public static getInstance(): WalletManager {

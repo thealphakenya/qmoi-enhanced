@@ -1,6 +1,6 @@
+/// <reference types="node" />
 import { EventEmitter } from 'events';
-import { logger } from './LoggerService';
-import { QCityService } from './QCityService';
+import process from 'process';
 
 interface AppInfo {
   id: string;
@@ -51,17 +51,17 @@ interface InstallationProgress {
   message: string;
 }
 
+type Timeout = ReturnType<typeof setTimeout>;
+
 export class AppManagementService {
   private static instance: AppManagementService;
   private eventEmitter: EventEmitter;
   private apps: Map<string, AppInfo> = new Map();
-  private qCityService: QCityService;
   private isAutoGitEnabled: boolean = true;
-  private gitCommitInterval: NodeJS.Timeout | null = null;
+  private gitCommitInterval: Timeout | null = null;
 
   private constructor() {
     this.eventEmitter = new EventEmitter();
-    this.qCityService = QCityService.getInstance();
     this.initializeApps();
     this.startAutoGitCommit();
     this.startUpdateChecker();
@@ -306,12 +306,12 @@ export class AppManagementService {
         await this.autoGitCommit(`Install ${app.displayName} v${app.version}`);
       }
 
-      logger.info(`App ${app.displayName} installed successfully`);
+      console.log(`App ${app.displayName} installed successfully`);
     } catch (error) {
       app.status = 'error';
       app.errorMessage = error instanceof Error ? error.message : 'Unknown error';
       this.eventEmitter.emit('appError', { appId, error: app.errorMessage });
-      logger.error(`Failed to install app ${appId}:`, error);
+      console.error(`Failed to install app ${appId}:`, error);
       throw error;
     }
   }
@@ -389,13 +389,13 @@ export class AppManagementService {
         await this.autoGitCommit(`Update ${app.displayName} to v${app.version}`);
       }
 
-      logger.info(`App ${app.displayName} updated to v${app.version}`);
+      console.log(`App ${app.displayName} updated to v${app.version}`);
     } catch (error) {
       app.isUpdating = false;
       app.status = 'error';
       app.errorMessage = error instanceof Error ? error.message : 'Unknown error';
       this.eventEmitter.emit('appError', { appId, error: app.errorMessage });
-      logger.error(`Failed to update app ${appId}:`, error);
+      console.error(`Failed to update app ${appId}:`, error);
       throw error;
     }
   }
@@ -456,14 +456,14 @@ export class AppManagementService {
       });
 
       this.eventEmitter.emit('troubleshootingCompleted', { appId, issues });
-      logger.info(`Troubleshooting completed for ${app.displayName}`);
+      console.log(`Troubleshooting completed for ${app.displayName}`);
     } catch (error) {
       app.troubleshooting.logs.push({
         timestamp: new Date(),
         level: 'error',
         message: `Troubleshooting failed: ${error}`
       });
-      logger.error(`Troubleshooting failed for ${appId}:`, error);
+      console.error(`Troubleshooting failed for ${appId}:`, error);
       throw error;
     }
   }
@@ -553,9 +553,9 @@ export class AppManagementService {
       // await exec(`git commit -m "${message}"`);
       // await exec('git push');
       
-      logger.info(`Auto Git commit: ${message}`);
+      console.log(`Auto Git commit: ${message}`);
     } catch (error) {
-      logger.error('Auto Git commit failed:', error);
+      console.error('Auto Git commit failed:', error);
     }
   }
 
@@ -569,7 +569,7 @@ export class AppManagementService {
               this.eventEmitter.emit('updateAvailable', { app, update });
             }
           } catch (error) {
-            logger.error(`Failed to check updates for ${app.id}:`, error);
+            console.error(`Failed to check updates for ${app.id}:`, error);
           }
         }
       }

@@ -1,9 +1,12 @@
+/// <reference types="node" />
 import { networkInterfaces } from 'os';
 import crypto from 'crypto';
 import { authManager } from '../auth/AuthManager';
 import { AssetManagerImpl } from './assets';
+import type { AssetManagerImpl as AssetManagerImplType } from './assets';
 import { WalletManager, WalletConfig } from './wallet';
 import { Trade, TradeExecutionResult, TradeValidationResult, TradeHistory, TradeStatistics } from '../types/trading';
+import process from 'process';
 
 interface TradingConfig {
   bitget: {
@@ -47,20 +50,16 @@ interface AITradingConfig {
   };
 }
 
+type Timeout = ReturnType<typeof setTimeout>;
+
 export class TradingManager {
   private static instance: TradingManager;
   private config: TradingConfig;
-  private connectionStatus: {
-    isConnected: boolean;
-    lastCheck: Date;
-    retryCount: number;
-    lastError?: string;
-  };
   private aiTradingConfig: AITradingConfig;
   private tradingHistory: Trade[];
-  private assetManager: AssetManagerImpl;
+  private assetManager: AssetManagerImplType;
   private walletManager: WalletManager;
-  private connectionCheckInterval: NodeJS.Timeout | null = null;
+  private connectionCheckInterval: Timeout | null = null;
 
   private constructor() {
     this.config = {
@@ -111,11 +110,6 @@ export class TradingManager {
         ],
       },
     };
-    this.connectionStatus = {
-      isConnected: false,
-      lastCheck: new Date(),
-      retryCount: 0,
-    };
     this.aiTradingConfig = this.config.trading.aiTrading;
     this.tradingHistory = [];
     this.assetManager = AssetManagerImpl.getInstance();
@@ -128,58 +122,6 @@ export class TradingManager {
       TradingManager.instance = new TradingManager();
     }
     return TradingManager.instance;
-  }
-
-  private loadConfig(): TradingConfig {
-    // Load configuration from environment or config file
-    return {
-      bitget: {
-        apiKey: process.env.BITGET_API_KEY || '',
-        secretKey: process.env.BITGET_SECRET_KEY || '',
-        passphrase: process.env.BITGET_PASSPHRASE || '',
-        bindIp: '192.168.1.100',
-        tradingEnabled: true,
-        realTrading: true,
-        maxTradeAmount: 1000,
-        riskLevel: 'medium',
-        connectionStatus: {
-          isConnected: false,
-          lastCheck: new Date(),
-          retryCount: 0,
-        },
-      },
-      wallets: {
-        spot: [
-          { currency: 'USDT', balance: 3.84 },
-        ],
-        futures: [
-          { currency: 'BTC', balance: 0.000009 },
-        ],
-        otc: [
-          { currency: 'BTC', balance: 0.000026 },
-        ],
-      },
-      trading: {
-        strategies: ['trend_following', 'mean_reversion', 'breakout'],
-        activePairs: ['BTC/USDT', 'ETH/USDT'],
-        autoTrading: true,
-        offlineTrading: true,
-        riskManagement: {
-          maxDrawdown: 0.1,
-          stopLoss: 0.05,
-          takeProfit: 0.1,
-        },
-        aiTrading: {
-          enabled: true,
-          allowedUsers: ['sister'],
-          tradingRules: {
-            maxDailyTrades: 10,
-            maxTradeAmount: 100,
-            allowedPairs: ['BTC/USDT', 'ETH/USDT'],
-          },
-        },
-      },
-    };
   }
 
   private startConnectionMonitoring(): void {
@@ -405,14 +347,9 @@ export class TradingManager {
     }
   }
 
-  private async updateWalletBalances(data: any): Promise<void> {
-    this.config.wallets.bitget.balance = data.balance || 0;
-    this.config.wallets.bitget.lastSync = Date.now();
-    
-    // Update assets
-    if (data.assets) {
-      this.config.wallets.bitget.assets = data.assets;
-    }
+  private async updateWalletBalances(_data: any): Promise<void> {
+    // Bitget wallet update logic removed: WalletConfig does not have a bitget property.
+    // If you want to update wallet balances, use walletManager or another appropriate method.
   }
 
   public getConnectionStatus(): TradingConfig['bitget']['connectionStatus'] {
@@ -481,11 +418,6 @@ export class TradingManager {
     };
   }
 
-  private async getDailyTradeCount(userId: string): Promise<number> {
-    // Implement daily trade count logic
-    return 0;
-  }
-
   private async saveConfig(): Promise<void> {
     // Implement config persistence
   }
@@ -538,7 +470,7 @@ export class TradingManager {
       await this.walletManager.updateBalance(
         trade.sourceType,
         trade.sourceCurrency,
-        validation.availableBalance - trade.amount
+        (validation.availableBalance !== undefined ? validation.availableBalance - trade.amount : 0)
       );
 
       return {
@@ -559,7 +491,7 @@ export class TradingManager {
 
   public getTradeHistory(): TradeHistory {
     const successfulTrades = this.tradingHistory.filter(t => t.status === 'completed');
-    const totalProfit = successfulTrades.reduce((sum, t) => sum + (t.profit || 0), 0);
+    const totalProfit = successfulTrades.reduce((sum, t) => sum + (t.profit ?? 0), 0);
 
     return {
       trades: this.tradingHistory,
@@ -587,11 +519,11 @@ export class TradingManager {
       weeklyVolume: weeklyTrades.reduce((sum, t) => sum + t.total, 0),
       monthlyVolume: monthlyTrades.reduce((sum, t) => sum + t.total, 0),
       profitLoss: {
-        daily: recentTrades.reduce((sum, t) => sum + (t.profit || 0), 0),
-        weekly: weeklyTrades.reduce((sum, t) => sum + (t.profit || 0), 0),
-        monthly: monthlyTrades.reduce((sum, t) => sum + (t.profit || 0), 0),
+        daily: recentTrades.reduce((sum, t) => sum + (t.profit ?? 0), 0),
+        weekly: weeklyTrades.reduce((sum, t) => sum + (t.profit ?? 0), 0),
+        monthly: monthlyTrades.reduce((sum, t) => sum + (t.profit ?? 0), 0),
       },
-      successRate: trades.length > 0 ? trades.filter(t => t.profit > 0).length / trades.length : 0,
+      successRate: trades.length > 0 ? trades.filter(t => t.profit && t.profit > 0).length / trades.length : 0,
       averageTradeSize: trades.length > 0 ? trades.reduce((sum, t) => sum + t.amount, 0) / trades.length : 0,
     };
   }

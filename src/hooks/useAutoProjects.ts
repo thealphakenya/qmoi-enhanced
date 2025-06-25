@@ -142,7 +142,6 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       const priorities: AutoProject['priority'][] = ['low', 'medium', 'high', 'critical'];
       
       const newProjects: AutoProject[] = [];
-      const totalEstimatedTime = 0;
 
       for (let i = 0; i < 12; i++) { // Generate 12 projects
         const project: AutoProject = {

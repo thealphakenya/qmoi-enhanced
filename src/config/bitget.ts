@@ -1,6 +1,5 @@
 import crypto from 'crypto';
 import { EventEmitter } from 'events';
-import { createHash } from 'crypto';
 
 interface SecurityMetrics {
   requestCount: number;
@@ -335,197 +334,13 @@ export interface BitgetConfig {
           };
         };
       };
-      zeroTrust: {
-        enabled: boolean;
-        components: {
-          identity: {
-            enabled: boolean;
-            methods: [
-              'mfa',
-              'biometric',
-              'hardware_key',
-              'behavioral'
-            ];
-            verification: {
-              continuous: boolean;
-              interval: number;
-              factors: [
-                'device',
-                'location',
-                'behavior',
-                'network'
-              ];
-            };
-          };
-          access: {
-            enabled: boolean;
-            policy: {
-              leastPrivilege: boolean;
-              justInTime: boolean;
-              timeBound: boolean;
-              contextAware: boolean;
-            };
-            enforcement: {
-              api: {
-                rateLimit: boolean;
-                ipRestriction: boolean;
-                tokenValidation: boolean;
-              };
-              web: {
-                sessionValidation: boolean;
-                csrfProtection: boolean;
-                xssProtection: boolean;
-              };
-            };
-          };
-          network: {
-            enabled: boolean;
-            segmentation: {
-              micro: boolean;
-              macro: boolean;
-              dynamic: boolean;
-            };
-            encryption: {
-              inTransit: boolean;
-              atRest: boolean;
-              endToEnd: boolean;
-            };
-          };
-        };
-      };
-      threatHunting: {
-        enabled: boolean;
-        capabilities: {
-          proactive: {
-            enabled: boolean;
-            techniques: [
-              'behavioral_analysis',
-              'pattern_recognition',
-              'anomaly_detection',
-              'threat_intelligence'
-            ];
-            automation: {
-              enabled: boolean;
-              response: {
-                automated: boolean;
-                manual: boolean;
-                hybrid: boolean;
-              };
-            };
-          };
-          reactive: {
-            enabled: boolean;
-            investigation: {
-              timeline: boolean;
-              forensics: boolean;
-              correlation: boolean;
-            };
-            response: {
-              containment: boolean;
-              eradication: boolean;
-              recovery: boolean;
-            };
-          };
-        };
-        intelligence: {
-          sources: [
-            'internal_logs',
-            'external_feeds',
-            'threat_intelligence',
-            'user_reports'
-          ];
-          analysis: {
-            ml: {
-              enabled: boolean;
-              model: string;
-              features: string[];
-            };
-            correlation: {
-              enabled: boolean;
-              rules: [
-                'temporal',
-                'spatial',
-                'causal',
-                'behavioral'
-              ];
-            };
-          };
-        };
-      };
-      compliance: {
-        enabled: boolean;
-        frameworks: {
-          kyc: {
-            enabled: boolean;
-            requirements: {
-              identity: {
-                verification: boolean;
-                documents: boolean;
-                biometric: boolean;
-              };
-              address: {
-                verification: boolean;
-                documents: boolean;
-              };
-              risk: {
-                assessment: boolean;
-                scoring: boolean;
-              };
-            };
-            monitoring: {
-              continuous: boolean;
-              interval: number;
-              alerts: boolean;
-            };
-          };
-          aml: {
-            enabled: boolean;
-            monitoring: {
-              transactions: {
-                realtime: boolean;
-                batch: boolean;
-                threshold: number;
-              };
-              patterns: {
-                suspicious: boolean;
-                unusual: boolean;
-                highRisk: boolean;
-              };
-              reporting: {
-                automated: boolean;
-                manual: boolean;
-                schedule: string;
-              };
-            };
-            screening: {
-              customers: boolean;
-              transactions: boolean;
-              counterparties: boolean;
-            };
-          };
-          regulatory: {
-            enabled: boolean;
-            requirements: {
-              reporting: {
-                automated: boolean;
-                schedule: string;
-                retention: number;
-              };
-              auditing: {
-                enabled: boolean;
-                scope: string;
-                frequency: string;
-              };
-              documentation: {
-                enabled: boolean;
-                retention: number;
-              };
-            };
-          };
-        };
-      };
     };
   };
+}
+
+declare global {
+  var Buffer: typeof Buffer;
+  var process: NodeJS.Process;
 }
 
 export class BitgetManager extends EventEmitter {
@@ -614,8 +429,8 @@ export class BitgetManager extends EventEmitter {
               maxBackupKeys: 5
             },
             secureStorage: {
-              type: 'hardware' | 'software',
-              location: 'local' | 'cloud',
+              type: 'hardware',
+              location: 'local',
               redundancy: true
             }
           },
@@ -769,7 +584,7 @@ export class BitgetManager extends EventEmitter {
                 maxBackupKeys: 10
               },
               storage: {
-                type: 'hardware' | 'quantum-resistant-cloud',
+                type: 'hardware',
                 redundancy: true,
                 geographicDistribution: true
               }
@@ -944,7 +759,7 @@ export class BitgetManager extends EventEmitter {
                 ddos: {
                   enabled: true,
                   threshold: 1000, // requests per second
-                  action: 'rate_limit' | 'block' | 'challenge',
+                  action: 'rate_limit',
                   whitelist: ['trusted_ips'],
                   blacklist: ['known_attackers']
                 },
@@ -957,8 +772,8 @@ export class BitgetManager extends EventEmitter {
                     'path_traversal',
                     'command_injection'
                   ],
-                  action: 'block' | 'challenge' | 'log',
-                  sensitivity: 'high' | 'medium' | 'low'
+                  action: 'block',
+                  sensitivity: 'high'
                 },
                 firewall: {
                   enabled: true,
@@ -996,202 +811,8 @@ export class BitgetManager extends EventEmitter {
                     'suspicious_ips',
                     'malicious_payloads'
                   ],
-                  action: 'block' | 'challenge' | 'log',
+                  action: 'rate_limit',
                   alerting: true
-                }
-              }
-            },
-            zeroTrust: {
-              enabled: true,
-              components: {
-                identity: {
-                  enabled: true,
-                  methods: [
-                    'mfa',
-                    'biometric',
-                    'hardware_key',
-                    'behavioral'
-                  ],
-                  verification: {
-                    continuous: true,
-                    interval: 300, // 5 minutes
-                    factors: [
-                      'device',
-                      'location',
-                      'behavior',
-                      'network'
-                    ]
-                  }
-                },
-                access: {
-                  enabled: true,
-                  policy: {
-                    leastPrivilege: true,
-                    justInTime: true,
-                    timeBound: true,
-                    contextAware: true
-                  },
-                  enforcement: {
-                    api: {
-                      rateLimit: true,
-                      ipRestriction: true,
-                      tokenValidation: true
-                    },
-                    web: {
-                      sessionValidation: true,
-                      csrfProtection: true,
-                      xssProtection: true
-                    }
-                  }
-                },
-                network: {
-                  enabled: true,
-                  segmentation: {
-                    micro: true,
-                    macro: true,
-                    dynamic: true
-                  },
-                  encryption: {
-                    inTransit: true,
-                    atRest: true,
-                    endToEnd: true
-                  }
-                }
-              }
-            },
-            threatHunting: {
-              enabled: true,
-              capabilities: {
-                proactive: {
-                  enabled: true,
-                  techniques: [
-                    'behavioral_analysis',
-                    'pattern_recognition',
-                    'anomaly_detection',
-                    'threat_intelligence'
-                  ],
-                  automation: {
-                    enabled: true,
-                    response: {
-                      automated: true,
-                      manual: true,
-                      hybrid: true
-                    }
-                  }
-                },
-                reactive: {
-                  enabled: true,
-                  investigation: {
-                    timeline: true,
-                    forensics: true,
-                    correlation: true
-                  },
-                  response: {
-                    containment: true,
-                    eradication: true,
-                    recovery: true
-                  }
-                }
-              },
-              intelligence: {
-                sources: [
-                  'internal_logs',
-                  'external_feeds',
-                  'threat_intelligence',
-                  'user_reports'
-                ],
-                analysis: {
-                  ml: {
-                    enabled: true,
-                    model: 'advanced',
-                    features: [
-                      'log_analysis',
-                      'network_traffic',
-                      'user_behavior',
-                      'system_activity'
-                    ]
-                  },
-                  correlation: {
-                    enabled: true,
-                    rules: [
-                      'temporal',
-                      'spatial',
-                      'causal',
-                      'behavioral'
-                    ]
-                  }
-                }
-              }
-            },
-            compliance: {
-              enabled: true,
-              frameworks: {
-                kyc: {
-                  enabled: true,
-                  requirements: {
-                    identity: {
-                      verification: true,
-                      documents: true,
-                      biometric: true
-                    },
-                    address: {
-                      verification: true,
-                      documents: true
-                    },
-                    risk: {
-                      assessment: true,
-                      scoring: true
-                    }
-                  },
-                  monitoring: {
-                    continuous: true,
-                    interval: 86400, // 24 hours
-                    alerts: true
-                  }
-                },
-                aml: {
-                  enabled: true,
-                  monitoring: {
-                    transactions: {
-                      realtime: true,
-                      batch: true,
-                      threshold: 10000 // USDT
-                    },
-                    patterns: {
-                      suspicious: true,
-                      unusual: true,
-                      highRisk: true
-                    },
-                    reporting: {
-                      automated: true,
-                      manual: true,
-                      schedule: 'daily'
-                    }
-                  },
-                  screening: {
-                    customers: true,
-                    transactions: true,
-                    counterparties: true
-                  }
-                },
-                regulatory: {
-                  enabled: true,
-                  requirements: {
-                    reporting: {
-                      automated: true,
-                      schedule: 'daily',
-                      retention: 365 // days
-                    },
-                    auditing: {
-                      enabled: true,
-                      scope: 'full',
-                      frequency: 'monthly'
-                    },
-                    documentation: {
-                      enabled: true,
-                      retention: 365 // days
-                    }
-                  }
                 }
               }
             }
@@ -1338,12 +959,12 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private checkRapidBalanceChange(request: any): boolean {
+  private checkRapidBalanceChange(_request: any): boolean {
     // Implement balance change detection logic
     return false;
   }
 
-  private checkUnusualTradingVolume(request: any): boolean {
+  private checkUnusualTradingVolume(_request: any): boolean {
     // Implement trading volume detection logic
     return false;
   }
@@ -1445,7 +1066,7 @@ export class BitgetManager extends EventEmitter {
     return true;
   }
 
-  private async validateRequestSignature(request: any): Promise<boolean> {
+  private async validateRequestSignature(_request: any): Promise<boolean> {
     try {
       // Implement request signature validation logic
       return true;

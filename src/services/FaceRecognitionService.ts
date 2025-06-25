@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { EventEmitter } from 'events';
 
 interface FaceConfig {
@@ -53,6 +54,8 @@ interface UserProfile {
   isActive: boolean;
 }
 
+type Timeout = ReturnType<typeof setTimeout>;
+
 export class FaceRecognitionService {
   private static instance: FaceRecognitionService;
   private eventEmitter: EventEmitter;
@@ -61,7 +64,7 @@ export class FaceRecognitionService {
   private canvasElement: HTMLCanvasElement | null = null;
   private context: CanvasRenderingContext2D | null = null;
   private isRunning: boolean = false;
-  private detectionInterval: NodeJS.Timeout | null = null;
+  private detectionInterval: Timeout | null = null;
   private knownFaces: Map<string, UserProfile> = new Map();
   private currentFaces: FaceData[] = [];
   private faceApi: any; // face-api.js or similar

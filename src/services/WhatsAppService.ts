@@ -1,8 +1,9 @@
-// @ts-ignore
+import process from 'process';
+// @ts-expect-error: whatsapp-web.js types are not available
 import { Client, LocalAuth, Message, QRCode } from 'whatsapp-web.js';
-// @ts-ignore
+// @ts-expect-error: qrcode-terminal types are not available
 import * as qrcode from 'qrcode-terminal';
-import { logger } from './LoggerService';
+import { EventEmitter } from 'events';
 
 interface WhatsAppConfig {
   masterPhone: string;
@@ -320,20 +321,23 @@ Time: ${new Date().toLocaleString()}`;
         await message.reply(this.getWelcomeMessage());
         break;
       
-      case '/balance':
+      case '/balance': {
         const balance = await this.getBalanceResponse();
         await message.reply(balance);
         break;
+      }
       
-      case '/status':
+      case '/status': {
         const status = await this.getSystemStatusResponse();
         await message.reply(status);
         break;
+      }
       
-      case '/earnings':
+      case '/earnings': {
         const earnings = await this.getEarningsResponse();
         await message.reply(earnings);
         break;
+      }
       
       case '/help':
         await message.reply(this.getHelpResponse());
@@ -347,11 +351,12 @@ Time: ${new Date().toLocaleString()}`;
         }
         break;
       
-      case '/approve':
+      case '/approve': {
         if (args.length > 0) {
           const approvalId = args[0];
-          if (this.pendingApprovals.has(approvalId)) {
-            this.pendingApprovals.get(approvalId).resolve(true);
+          const approval = this.pendingApprovals.get(approvalId);
+          if (approval) {
+            approval.resolve(true);
             this.pendingApprovals.delete(approvalId);
             await message.reply('✅ Request approved.');
           } else {
@@ -361,12 +366,14 @@ Time: ${new Date().toLocaleString()}`;
           await message.reply('Approval ID is required.');
         }
         break;
+      }
       
-      case '/deny':
+      case '/deny': {
         if (args.length > 0) {
           const approvalId = args[0];
-          if (this.pendingApprovals.has(approvalId)) {
-            this.pendingApprovals.get(approvalId).resolve(false);
+          const approval = this.pendingApprovals.get(approvalId);
+          if (approval) {
+            approval.resolve(false);
             this.pendingApprovals.delete(approvalId);
             await message.reply('❌ Request denied.');
           } else {
@@ -376,14 +383,16 @@ Time: ${new Date().toLocaleString()}`;
           await message.reply('Approval ID is required.');
         }
         break;
+      }
       
-      case '/business':
+      case '/business': {
         if (args.length > 0) {
           await this.processBusinessFeatureCommand(message, args);
         } else {
           await message.reply('Business command requires arguments. Use /help for more info.');
         }
         break;
+      }
       
       default:
         await message.reply(`Unknown command: ${command}. Use /help for available commands.`);
@@ -394,22 +403,26 @@ Time: ${new Date().toLocaleString()}`;
     const subCommand = args[0].toLowerCase();
     
     switch (subCommand) {
-      case 'override':
+      case 'override': {
         await message.reply('🛑 Master override activated. AI decisions suspended.');
         break;
+      }
       
-      case 'stop':
+      case 'stop': {
         await message.reply('🛑 Trading system stopped by master command.');
         break;
+      }
       
-      case 'withdraw':
+      case 'withdraw': {
         await message.reply('💸 Emergency withdrawal initiated by master.');
         break;
+      }
       
-      case 'status':
+      case 'status': {
         const detailedStatus = await this.getDetailedSystemStatus();
         await message.reply(detailedStatus);
         break;
+      }
       
       default:
         await message.reply(`Unknown master command: ${subCommand}`);
@@ -690,7 +703,7 @@ Master Commands:
   }
 
   private logAndSendToQcity(log: string): void {
-    logger.info(log);
+    console.log(log);
     // TODO: send log to Qcity (master-only access)
   }
 

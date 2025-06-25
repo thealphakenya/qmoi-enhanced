@@ -129,7 +129,7 @@ export class AssetManagerImpl implements AssetManager {
     potentialProfit: number;
     risk: 'low' | 'medium' | 'high';
   }[]> {
-    const opportunities = [];
+    const opportunities: Array<{ type: string; opportunity: string; potentialProfit: number; risk: 'low' | 'medium' | 'high' }> = [];
 
     // Example opportunities based on current assets
     const spotBalance = await this.getAssetBalance('spot', 'USDT');

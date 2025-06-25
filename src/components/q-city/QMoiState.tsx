@@ -19,6 +19,7 @@ export function QMoiState({
   const [now, setNow] = useState(new Date());
   const [currentEmotion, setCurrentEmotion] = useState('focused');
   const [currentActivity, setCurrentActivity] = useState('processing');
+  const [showActivityLog, setShowActivityLog] = useState(false);
 
   // Update time every second
   useEffect(() => {
@@ -183,6 +184,27 @@ export function QMoiState({
             <div>Master Access: Active 👑</div>
             <div>System Health: Excellent</div>
             <div>Auto Projects: Running</div>
+          </div>
+        </div>
+      )}
+
+      {/* Add button for master to open Activity Log */}
+      {isMaster && (
+        <button className="mt-2 px-3 py-1 bg-cyan-700 text-white rounded" onClick={() => setShowActivityLog(true)}>
+          QMOI Activity Log
+        </button>
+      )}
+
+      {/* QMOI Activity Log Panel (master-only) */}
+      {isMaster && showActivityLog && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
+          <div className="bg-gray-900 p-6 rounded-lg w-2/3 h-2/3 overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-cyan-400">QMOI Activity Log</h2>
+            {/* TODO: Fetch and display logs, filter by type/time/severity */}
+            <button className="absolute top-4 right-8 text-white" onClick={() => setShowActivityLog(false)}>
+              Close
+            </button>
+            <div className="text-gray-300">(Log entries will appear here...)</div>
           </div>
         </div>
       )}

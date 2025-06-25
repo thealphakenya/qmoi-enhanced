@@ -21,17 +21,26 @@ export default function DeploymentStatusDashboard({ isMaster = false }: { isMast
   const [lastDeploy, setLastDeploy] = useState('');
   const [health, setHealth] = useState('');
   const [logs, setLogs] = useState<string[]>([]);
-  const [history, setHistory] = useState<{timestamp: string, status: string, version: string}[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [history, setHistory] = useState<any[]>([]); // Accepts extra fields
 
   async function fetchStatus() {
-    const res = await fetch('/api/deployment-status');
-    if (res.ok) {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/deployment-status');
+      if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
       setStatus(data.status);
       setLastDeploy(data.lastDeploy);
       setHealth(data.health);
       setLogs(data.logs || []);
       setHistory(data.history || []);
+    } catch (err: any) {
+      setError(err.message || 'Unknown error');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -71,6 +80,20 @@ export default function DeploymentStatusDashboard({ isMaster = false }: { isMast
     ],
   };
 
+  // New: Chart for deployment duration
+  const durationChartData = {
+    labels: history.map(h => h.timestamp),
+    datasets: [
+      {
+        label: 'Deployment Duration (s)',
+        data: history.map(h => h.duration || 0),
+        borderColor: 'blue',
+        backgroundColor: 'rgba(0,0,255,0.1)',
+        fill: true,
+      },
+    ],
+  };
+
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -82,33 +105,60 @@ export default function DeploymentStatusDashboard({ isMaster = false }: { isMast
     },
   };
 
+  const durationChartOptions = {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top' as const },
+      title: { display: true, text: 'Deployment Duration Over Time (seconds)' },
+    },
+    scales: {
+      y: { beginAtZero: true },
+    },
+  };
+
   return (
-    <div style={{border: '1px solid #ccc', padding: 16, borderRadius: 8, maxWidth: 700}}>
+    <div style={{border: '1px solid #ccc', padding: 16, borderRadius: 8, maxWidth: 900, background: '#181818', color: '#e0ffe0'}}>
       <h2>Deployment & Health Status</h2>
-      <p><b>Status:</b> {status}</p>
-      <p><b>Last Deployment:</b> {lastDeploy}</p>
-      <p><b>Health:</b> {health}</p>
-      <h4>Deployment Analytics</h4>
-      <Line data={chartData} options={chartOptions} />
-      <h4>Rollback & Version History</h4>
-      <table style={{width: '100%', background: '#222', color: '#ccffcc', borderCollapse: 'collapse'}}>
-        <thead>
-          <tr><th>Timestamp</th><th>Status</th><th>Version</th></tr>
-        </thead>
-        <tbody>
-          {history.map((h, i) => (
-            <tr key={i} style={{borderBottom: '1px solid #444'}}>
-              <td>{h.timestamp}</td>
-              <td>{h.status}</td>
-              <td>{h.version}</td>
+      {loading ? <p>Loading...</p> : error ? <p style={{color: 'red'}}>Error: {error}</p> : <>
+        <p><b>Status:</b> {status}</p>
+        <p><b>Last Deployment:</b> {lastDeploy}</p>
+        <p><b>Health:</b> {health}</p>
+        <h4>Deployment Analytics</h4>
+        <Line data={chartData} options={chartOptions} />
+        <h4>Deployment Duration</h4>
+        <Line data={durationChartData} options={durationChartOptions} />
+        <h4>Rollback & Version History</h4>
+        <div style={{overflowX: 'auto'}}>
+        <table style={{width: '100%', background: '#222', color: '#ccffcc', borderCollapse: 'collapse'}}>
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Status</th>
+              <th>Version</th>
+              <th>Duration (s)</th>
+              <th>Files Changed</th>
+              <th>User</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <h4>Notification Logs:</h4>
-      <ul style={{maxHeight: 120, overflowY: 'auto'}}>
-        {logs.map((log, i) => <li key={i}>{log}</li>)}
-      </ul>
+          </thead>
+          <tbody>
+            {history.map((h, i) => (
+              <tr key={i} style={{borderBottom: '1px solid #444'}}>
+                <td>{h.timestamp}</td>
+                <td>{h.status}</td>
+                <td>{h.version}</td>
+                <td>{h.duration ?? '-'}</td>
+                <td>{h.filesChanged ?? '-'}</td>
+                <td>{h.user ?? '-'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </div>
+        <h4>Notification Logs:</h4>
+        <ul style={{maxHeight: 120, overflowY: 'auto'}}>
+          {logs.map((log, i) => <li key={i}>{log}</li>)}
+        </ul>
+      </>}
     </div>
   );
 } 
