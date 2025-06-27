@@ -121,15 +121,109 @@ async function fixVercelErrors() {
       logFix('Vercel cache clear failed, continuing...');
     }
     
-    // Ensure vercel.json exists and is valid
-    if (!fs.existsSync('vercel.json')) {
+    // Fix vercel.json configuration issues
+    if (fs.existsSync('vercel.json')) {
+      logFix('Checking and fixing vercel.json configuration...');
+      try {
+        const vercelConfig = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
+        let needsUpdate = false;
+        
+        // Remove conflicting functions property if builds is present
+        if (vercelConfig.builds && vercelConfig.functions) {
+          logFix('Removing conflicting functions property...');
+          delete vercelConfig.functions;
+          needsUpdate = true;
+        }
+        
+        // Remove duplicate build.env if it exists
+        if (vercelConfig.build && vercelConfig.build.env && vercelConfig.env) {
+          logFix('Removing duplicate build.env...');
+          delete vercelConfig.build;
+          needsUpdate = true;
+        }
+        
+        // Ensure proper structure
+        if (!vercelConfig.builds) {
+          logFix('Adding builds configuration...');
+          vercelConfig.builds = [
+            {
+              src: "package.json",
+              use: "@vercel/static-build",
+              config: {
+                distDir: "build",
+                installCommand: "npm ci --legacy-peer-deps",
+                buildCommand: "npm run build"
+              }
+            }
+          ];
+          needsUpdate = true;
+        }
+        
+        // Ensure environment variables
+        if (!vercelConfig.env) {
+          vercelConfig.env = {};
+        }
+        if (!vercelConfig.env.NODE_ENV) {
+          vercelConfig.env.NODE_ENV = "production";
+          needsUpdate = true;
+        }
+        if (!vercelConfig.env.NEXT_PUBLIC_APP_ENV) {
+          vercelConfig.env.NEXT_PUBLIC_APP_ENV = "production";
+          needsUpdate = true;
+        }
+        
+        if (needsUpdate) {
+          fs.writeFileSync('vercel.json', JSON.stringify(vercelConfig, null, 2));
+          logFix('vercel.json updated with fixes.');
+        } else {
+          logFix('vercel.json is already properly configured.');
+        }
+      } catch (e) {
+        logFix(`Error fixing vercel.json: ${e.message}`);
+        // Create a new vercel.json if the current one is corrupted
+        const newConfig = {
+          version: 2,
+          builds: [
+            {
+              src: "package.json",
+              use: "@vercel/static-build",
+              config: {
+                distDir: "build",
+                installCommand: "npm ci --legacy-peer-deps",
+                buildCommand: "npm run build"
+              }
+            }
+          ],
+          env: {
+            NODE_ENV: "production",
+            NEXT_PUBLIC_APP_ENV: "production",
+            QMOI_AUTODEV_ENABLED: "true"
+          },
+          cleanUrls: true,
+          trailingSlash: false
+        };
+        fs.writeFileSync('vercel.json', JSON.stringify(newConfig, null, 2));
+        logFix('Created new vercel.json with proper configuration.');
+      }
+    } else {
+      logFix('vercel.json not found, creating one...');
       const vercelConfig = {
         version: 2,
         builds: [
-          { src: "package.json", use: "@vercel/static-build", config: { distDir: "build" } }
+          {
+            src: "package.json",
+            use: "@vercel/static-build",
+            config: {
+              distDir: "build",
+              installCommand: "npm ci --legacy-peer-deps",
+              buildCommand: "npm run build"
+            }
+          }
         ],
         env: {
-          NODE_ENV: "production"
+          NODE_ENV: "production",
+          NEXT_PUBLIC_APP_ENV: "production",
+          QMOI_AUTODEV_ENABLED: "true"
         },
         cleanUrls: true,
         trailingSlash: false
@@ -140,6 +234,7 @@ async function fixVercelErrors() {
     
     // Ensure .env exists with safe defaults
     if (!fs.existsSync('.env')) {
+      logFix('Creating .env file with safe defaults...');
       const envContent = [
         'NODE_ENV=production',
         'NEXT_PUBLIC_APP_ENV=production',

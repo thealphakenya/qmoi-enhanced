@@ -48,15 +48,5 @@
       "destination": "/index.html"
     }
   ],
-  "functions": {
-    "app/api/**/*.ts": {
-      "maxDuration": 30
-    }
-  },
-  "regions": ["iad1"],
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  }
+  "regions": ["iad1"]
 }
