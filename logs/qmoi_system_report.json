@@ -133,8 +133,18 @@
     "huggingface": {
       "repo_id": "alphaqmoi/qmoi",
       "push_to_hub": true,
+      "create_if_missing": true,
       "private": false,
-      "token": "${HF_TOKEN}"
+      "token": "${HF_TOKEN}",
+      "lfs_support": true,
+      "auto_commit": true,
+      "files_to_track": [
+        "*.pt",
+        "*.bin",
+        "*.ckpt",
+        "*.safetensors",
+        "*.onnx"
+      ]
     },
 
     "wandb": {
