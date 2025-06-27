@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useRef, useCallback, useEffect } from "react"
 import { Chatbot } from "@/components/Chatbot"
+
 import { motion, AnimatePresence } from "framer-motion"
 import { AIProvider, useAIContext } from "./AIContext";
 import { useToast } from "@/components/ui/use-toast";
@@ -234,19 +235,19 @@ export const FloatingAQ: React.FC = () => {
       x: e.clientX - pos.x,
       y: e.clientY - pos.y,
     };
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
+    document.addEventListener('mousemove', onMouseMove as any);
+    document.addEventListener('mouseup', onMouseUp as any);
   }, [pos.x, pos.y]);
 
-  const onMouseMove = React.useCallback((e: MouseEvent) => {
+  const onMouseMove = React.useCallback((e: React.MouseEvent | MouseEvent) => {
     if (!dragging.current) return;
     setPos({ x: e.clientX - offset.current.x, y: e.clientY - offset.current.y });
   }, []);
 
   const onMouseUp = React.useCallback(() => {
     dragging.current = false;
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
+    document.removeEventListener('mousemove', onMouseMove as any);
+    document.removeEventListener('mouseup', onMouseUp as any);
   }, [onMouseMove]);
 
   // Touch drag support
@@ -257,31 +258,31 @@ export const FloatingAQ: React.FC = () => {
       x: touch.clientX - pos.x,
       y: touch.clientY - pos.y,
     };
-    document.addEventListener('touchmove', onTouchMove);
-    document.addEventListener('touchend', onTouchEnd);
+    document.addEventListener('touchmove', onTouchMove as any);
+    document.addEventListener('touchend', onTouchEnd as any);
   }, [pos.x, pos.y]);
 
-  const onTouchMove = React.useCallback((e: TouchEvent) => {
+  const onTouchMove = React.useCallback((e: React.TouchEvent | TouchEvent) => {
     if (!dragging.current) return;
-    const touch = e.touches[0];
+    const touch = (e as any).touches ? (e as any).touches[0] : (e as TouchEvent).touches[0];
     setPos({ x: touch.clientX - offset.current.x, y: touch.clientY - offset.current.y });
   }, []);
 
   const onTouchEnd = React.useCallback(() => {
     dragging.current = false;
-    document.removeEventListener('touchmove', onTouchMove);
-    document.removeEventListener('touchend', onTouchEnd);
+    document.removeEventListener('touchmove', onTouchMove as any);
+    document.removeEventListener('touchend', onTouchEnd as any);
   }, [onTouchMove]);
 
   // Keyboard accessibility: open/close with Ctrl+Shift+A
   React.useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
+    const handler = (e: React.KeyboardEvent | KeyboardEvent) => {
       if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
         setOpen(v => !v)
       }
     }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
+    window.addEventListener('keydown', handler as any)
+    return () => window.removeEventListener('keydown', handler as any)
   }, [])
 
   // Modal close handler

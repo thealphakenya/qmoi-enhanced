@@ -19,6 +19,36 @@ export const WifiAutoConnectPanel: React.FC = () => {
   const [mode, setMode] = useState<ConnectionMode>('auto');
   const { toast } = useToast();
 
+  // Connect to a network
+  const connect = async (ssid: string, isZeroRated = false) => {
+    setConnecting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/wifi/connect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ssid, isZeroRated })
+      });
+      
+      if (!res.ok) throw new Error('Failed to connect');
+      
+      setConnected(ssid);
+      toast({
+        title: 'Connected',
+        description: `Successfully connected to ${ssid}`,
+      });
+    } catch (e) {
+      const error = e as Error;
+      setError(error.message);
+      toast({
+        title: 'Connection Failed',
+        description: error.message,
+        variant: 'destructive'
+      });
+    }
+    setConnecting(false);
+  };
+
   // Scan for available networks
   const scanNetworks = async () => {
     setConnecting(true);
@@ -56,7 +86,7 @@ export const WifiAutoConnectPanel: React.FC = () => {
       if (mode === 'auto' && wifi) connect(wifi.ssid);
       else if (mode === 'scheduled' && zero) connect(zero.ssid, true);
     }
-  }, [networks, mode, connected]);
+  }, [networks, mode, connected, connect]);
 
   return (
     <div className="p-4">

@@ -195,10 +195,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
 
   // Fetch monitoring status with proper URL handling
   useEffect(() => {
-    let intervalId: NodeJS.Timeout | null = null;
+    let intervalId: ReturnType<typeof setInterval> | null = null;
     const fetchStatus = async () => {
       try {
-        const monitorUrl = process.env.NEXT_PUBLIC_MONITOR_URL || 'http://localhost:5001';
+        const monitorUrl = typeof window !== 'undefined' && (window as any).process?.env?.NEXT_PUBLIC_MONITOR_URL || 'http://localhost:5001';
         const res = await fetch(`${monitorUrl}/monitor/status`);
         if (!res.ok) throw new Error('Failed to fetch monitor status');
         const data = await res.json();
@@ -223,7 +223,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     setLoading(true);
     setError(null);
     try {
-      const monitorUrl = process.env.NEXT_PUBLIC_MONITOR_URL || 'http://localhost:5001';
+      const monitorUrl = typeof window !== 'undefined' && (window as any).process?.env?.NEXT_PUBLIC_MONITOR_URL || 'http://localhost:5001';
       const monitorRes = await fetch(`${monitorUrl}/monitor`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -280,7 +280,14 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       const res = await fetch('http://localhost:5001/analytics');
       const data = await res.json();
       setAnalytics(data);
-    } catch {}
+    } catch (error) {
+      console.error('Failed to fetch analytics:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to fetch analytics',
+        variant: 'destructive'
+      });
+    }
   };
 
   // Fetch hourly analytics
@@ -289,7 +296,14 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       const res = await fetch('http://localhost:5001/analytics/hourly');
       const data = await res.json();
       setHourlyAnalytics(data);
-    } catch {}
+    } catch (error) {
+      console.error('Failed to fetch hourly analytics:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to fetch hourly analytics',
+        variant: 'destructive'
+      });
+    }
   };
 
   // Export analytics as CSV

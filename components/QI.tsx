@@ -9,6 +9,7 @@ import { MultiUserSessionManager } from '../src/services/MultiUserSessionManager
 import { ContextEngine } from '../src/services/ContextEngine';
 import { useMaster } from './MasterContext';
 import QmoiAutoDistribution from './QmoiAutoDistribution';
+import { QmoiMediaManager } from './QmoiMediaManager';
 import { FaWallet, FaChild, FaRobot, FaKey, FaMapMarkerAlt, FaChalkboardTeacher, FaVideo, FaDownload, FaHeart, FaCog, FaBell, FaShieldAlt, FaLock, FaUnlock, FaTools, FaNetworkWired, FaDatabase, FaMemory, FaMicrochip, FaChartLine, FaCoins, FaChartBar } from 'react-icons/fa';
 import { useToast } from "@/components/ui/use-toast";
 import { useAIContext } from "./AIContext";
@@ -482,6 +483,7 @@ function QIComponent() {
   const [showTradingPanel, setShowTradingPanel] = useState(false);
   const [showAnalyticsPanel, setShowAnalyticsPanel] = useState(false);
   const [showCashonTradingPanel, setShowCashonTradingPanel] = useState(false);
+  const [showMediaManagerPanel, setShowMediaManagerPanel] = useState(false);
 
   // Add router initialization
   const sessionManager = new MultiUserSessionManager();
@@ -574,7 +576,12 @@ function QIComponent() {
             {React.createElement(FaCoins as React.ElementType, { className: "mr-2" })} Cashon Trading
           </Button>
           <Button size="sm" variant="outline" onClick={() => setShowAnalyticsPanel(true)}>
-            {React.createElement(FaChartBar as React.ElementType, { className: "mr-2" })} Analytics
+            {React.createElement(FaChartBar as React.ElementType, { className: "mr-2" })}
+            Analytics
+          </Button>
+          <Button size="sm" variant="outline" onClick={() => setShowMediaManagerPanel(true)}>
+            {React.createElement(FaVideo as React.ElementType, { className: "mr-2" })}
+            Media Manager
           </Button>
         </div>
       </CardHeader>
@@ -999,6 +1006,23 @@ function QIComponent() {
         {showCashonTradingPanel && (
           <div className="p-4 bg-gray-50 rounded-lg shadow mb-4">
             <CashonTradingPanel />
+          </div>
+        )}
+
+        {/* Media Manager Panel */}
+        {showMediaManagerPanel && (
+          <div className="p-4 bg-gray-50 rounded-lg shadow mb-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="font-semibold">QMOI Media Manager</h3>
+              <Button 
+                size="sm" 
+                variant="outline" 
+                onClick={() => setShowMediaManagerPanel(false)}
+              >
+                Close
+              </Button>
+            </div>
+            <QmoiMediaManager />
           </div>
         )}
 

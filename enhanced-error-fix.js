@@ -4,36 +4,57 @@ const { execSync } = require('child_process');
 const path = require('path');
 const axios = require('axios');
 
-async function fixFile(file) {
+const maxTries = 10;
+let lastLint = '', lastType = '', lastTest = '';
+let allClean = false;
+
+for (let i = 0; i < maxTries; i++) {
+  console.log(`\n--- QMOI Auto-Dev: Auto-fix round ${i + 1} ---`);
   try {
-    // Try local JS/TS/Python fixer first
-    execSync(`npx eslint --fix ${file}`, { stdio: 'inherit' });
-    console.log(`[Local Fixer] Fixed with ESLint: ${file}`);
-    return true;
+    execSync('npx eslint . --fix', { stdio: 'inherit' });
   } catch (e) {
-    console.warn(`[Local Fixer] Failed: ${e.message}`);
+    console.warn('ESLint --fix encountered issues, continuing...');
   }
   try {
-    // Try Rust fixer
-    execSync(`node scripts/rust_lint_fix.js ${file}`, { stdio: 'inherit' });
-    console.log(`[Rust Fixer] Attempted fix: ${file}`);
-    return true;
+    execSync('npx prettier --write .', { stdio: 'inherit' });
   } catch (e) {
-    console.warn(`[Rust Fixer] Failed: ${e.message}`);
+    console.warn('Prettier encountered issues, continuing...');
   }
   try {
-    // Try QMOI model/AI core endpoint
-    const res = await axios.post('http://localhost:5001/qmoi/fix', { file });
-    if (res.data && res.data.fixed) {
-      require('fs').writeFileSync(file, res.data.fixed);
-      console.log(`[QMOI AI Core] Fixed via AI: ${file}`);
-      return true;
-    }
+    lastLint = execSync('npx eslint .', { encoding: 'utf8' });
+    console.log('ESLint output:', lastLint);
   } catch (e) {
-    console.warn(`[QMOI AI Core] Failed: ${e.message}`);
+    lastLint = e.stdout ? e.stdout.toString() : e.message;
+    console.warn('ESLint errors remain.');
   }
-  console.error(`[Error Fixer] All fixers failed for: ${file}`);
-  return false;
+  try {
+    lastType = execSync('npx tsc --noEmit', { encoding: 'utf8' });
+    console.log('TypeScript output:', lastType);
+  } catch (e) {
+    lastType = e.stdout ? e.stdout.toString() : e.message;
+    console.warn('Type errors remain.');
+  }
+  try {
+    lastTest = execSync('npm test', { encoding: 'utf8' });
+    console.log('Test output:', lastTest);
+  } catch (e) {
+    lastTest = e.stdout ? e.stdout.toString() : e.message;
+    console.warn('Test failures remain.');
+  }
+  if (!lastLint.match(/error|fail|not defined|parsing/i) && !lastType.match(/error|fail|not defined|parsing/i) && lastTest.match(/pass|success|all tests passed/i)) {
+    allClean = true;
+    console.log('All errors fixed and tests passing!');
+    break;
+  }
+}
+
+if (!allClean) {
+  console.log('\nQMOI Auto-Dev: Some errors could not be auto-fixed. Manual intervention required.');
+  console.log('Final Lint Output:', lastLint);
+  console.log('Final Type Output:', lastType);
+  console.log('Final Test Output:', lastTest);
+} else {
+  console.log('\nQMOI Auto-Dev: Codebase is clean!');
 }
 
 module.exports = { fixFile };

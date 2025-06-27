@@ -20,7 +20,7 @@ import {
 
 const SIDEBAR_WIDTH_MOBILE = '260px';
 
-interface SidebarContext {
+interface SidebarContextType {
   isOpen: boolean;
   toggle: () => void;
   isMobile: boolean;
@@ -29,7 +29,7 @@ interface SidebarContext {
   setOpenMobile: (open: boolean) => void;
 }
 
-const SidebarContext = React.createContext<SidebarContext>({
+const SidebarContext = React.createContext<SidebarContextType>({
   isOpen: false,
   toggle: () => {},
   isMobile: false,
@@ -60,7 +60,7 @@ const SidebarProvider = React.forwardRef<
     setState((prev) => (prev === "expanded" ? "collapsed" : "expanded"));
   }, []);
 
-    const contextValue = React.useMemo<SidebarContext>(
+    const contextValue = React.useMemo<SidebarContextType>(
       () => ({
       isOpen: open,
       toggle: toggleSidebar,

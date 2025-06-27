@@ -131,10 +131,15 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 
 ## QMOI Auto-Dev & Master Automation
 - QMOI Auto-Dev is always running, self-healing, and automates all system and project management
-- Master-only UI features: AutoDev, File Editor Chat, Project Manager
+- **Continuous Auto-Fix**: Always-on error fixing with self-enhancement (runs every minute)
+- **GitHub Integration**: Automated Git operations (commit, push, PR creation) with master-only controls
+- **Vercel Deployment**: One-click deployment and auto-redeploy configuration
+- Master-only UI features: AutoDev, File Editor Chat, Project Manager, GitHub Controls, Vercel Deployment
 - Secure file editing and audit logging for all file actions
 - Advanced automation, self-healing, and project management
 - All actions are logged and auditable via the dashboard
+- **API Endpoints**: Complete REST API for auto-fix, Git operations, and deployment
+- **Permission System**: Master-only controls for sensitive operations
 - See QMOIAUTODEV.md for details
 
 ## New QVS (QMOI Virtual System) Integration

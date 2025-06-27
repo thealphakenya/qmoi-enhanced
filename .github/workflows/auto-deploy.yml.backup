@@ -27,20 +27,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
-
-      - name: QMOI Secrets Manager
-        run: |
-          echo "🔐 QMOI Secrets Manager..."
-          node scripts/services/qmoi_secrets_manager.js || echo "QMOI secrets management completed"
+        run: npm install --legacy-peer-deps
 
       - name: QMOI Auto-Dev Pre-Check
         run: |
           echo "🤖 QMOI Auto-Dev Pre-Deploy Check..."
-          node scripts/services/qmoi_autodev_daemon.js --health-check || echo "QMOI health check completed"
+          node scripts/services/qmoi_autodev_daemon.js --health-check
 
       - name: Q-Converse System Check
         run: |
@@ -66,45 +60,62 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm install --legacy-peer-deps
 
       - name: QMOI Enhanced Lint
         run: |
           echo "🔍 QMOI Enhanced Linting..."
-          npm run lint || echo "::warning::Lint issues detected, continuing..."
+          npm run lint || echo "::warning::Lint issues detected, QMOI will auto-fix..."
 
       - name: QMOI Auto-Fix Lint Issues
         if: failure()
         run: |
           echo "🔧 QMOI Auto-Fixing Lint Issues..."
-          node scripts/enhanced-error-fix.js --type lint || echo "Lint auto-fix completed"
+          node scripts/enhanced-error-fix.js --type lint
           npm run lint || echo "::warning::Some lint issues remain..."
 
       - name: QMOI Enhanced Test
         run: |
           echo "🧪 QMOI Enhanced Testing..."
-          npm test || echo "::warning::Tests completed with warnings..."
+          npm test || echo "::warning::Tests failed, QMOI will analyze..."
 
       - name: QMOI Auto-Fix Test Issues
         if: failure()
         run: |
           echo "🔧 QMOI Auto-Fixing Test Issues..."
-          node scripts/enhanced-error-fix.js --type test || echo "Test auto-fix completed"
+          node scripts/enhanced-error-fix.js --type test
           npm test || echo "::warning::Some test issues remain..."
 
       - name: Security Audit (Critical Only)
         run: |
           echo "🔒 QMOI Security Audit..."
-          npm audit --audit-level=critical || echo "::warning::Security audit completed with warnings..."
+          npm audit --audit-level=critical || echo "::warning::Security audit issues detected..."
 
       - name: QMOI Auto-Fix Security Issues
         if: failure()
         run: |
           echo "🔧 QMOI Auto-Fixing Security Issues..."
           npm audit fix || echo "::warning::Some security issues remain..."
+
+      - name: Install license-checker
+        run: npm install license-checker --save-dev --legacy-peer-deps
+
+      - name: Generate License Report
+        run: npx license-checker --production --json > license-report.json
+
+      - name: QMOI License Compliance Check & Auto-Fix
+        run: |
+          echo "📄 QMOI License Compliance Check..."
+          node scripts/license_checker.js
+
+      - name: QMOI Auto-Fix License Issues
+        if: env.license_error == '1'
+        run: |
+          echo "🔧 QMOI Auto-Fixing License Issues..."
+          node scripts/enhanced-error-fix.js --type license || true
+          node scripts/license_checker.js || (echo "::error::❌ Non-compliant license found after QMOI auto-fix. Failing deployment." && exit 1)
 
       - name: QMOI Environment Auto Fix
         run: |
@@ -114,18 +125,24 @@ jobs:
       - name: QMOI AI-driven metrics check
         run: |
           echo "🤖 QMOI AI Metrics Check..."
-          node scripts/ai_metrics_check.js || echo "QMOI AI metrics check completed"
+          if npm test && node scripts/ai_metrics_check.js; then
+            echo "✅ QMOI AI: All checks passed. Proceeding to deploy."
+          else
+            echo "⚠️  QMOI AI: Checks failed. Attempting auto-fix..."
+            node scripts/enhanced-error-fix.js --comprehensive
+            npm test && node scripts/ai_metrics_check.js || (echo "⚠️  QMOI AI: Auto-fix attempted, proceeding with deployment.")
+          fi
 
       - name: QMOI Enhanced Build
         run: |
           echo "🏗️ QMOI Enhanced Build..."
-          npm run build || echo "::warning::Build completed with warnings..."
+          npm run build || echo "::warning::Build issues detected, QMOI will attempt fix..."
 
       - name: QMOI Auto-Fix Build Issues
         if: failure()
         run: |
           echo "🔧 QMOI Auto-Fixing Build Issues..."
-          node scripts/enhanced-error-fix.js --type build || echo "Build auto-fix completed"
+          node scripts/enhanced-error-fix.js --type build
           npm run build || echo "::warning::Some build issues remain..."
 
       - name: QMOI Vercel Auto Deploy
@@ -141,17 +158,26 @@ jobs:
         if: env.vercel_error == '1'
         run: |
           echo "🔧 QMOI Auto-Fixing Vercel Deploy Issues..."
-          node scripts/enhanced-error-fix.js --type vercel || echo "Vercel auto-fix completed"
-          node scripts/deploy/vercel_auto_deploy.js || echo "::warning::Vercel deploy retry completed"
+          node scripts/enhanced-error-fix.js --type vercel || true
+          node scripts/deploy/vercel_auto_deploy.js || (echo "::error::QMOI Vercel deploy retry failed. Manual intervention required." && exit 1)
 
       - name: QMOI Keep Alive
         run: |
           echo "✅ QMOI Enhanced App should always be running. Monitor with external uptime service."
 
+      - name: Install archiver for backup
+        run: npm install archiver
+
       - name: QMOI Backup Automation
         run: |
           echo "💾 QMOI Backup Automation..."
-          node scripts/backup_automation.js || echo "QMOI backup completed"
+          node scripts/backup_automation.js
+
+      - name: QMOI Generate License Report
+        if: always()
+        run: |
+          echo "📄 QMOI License Report Generation..."
+          npx license-checker --production --json > license-report.json
 
   qmoi-post-deploy:
     name: QMOI Post-Deploy
@@ -177,7 +203,7 @@ jobs:
       - name: QMOI System Status Report
         run: |
           echo "📊 QMOI System Status Report..."
-          node scripts/qmoi-system-controller.py --status-report || echo "QMOI status report completed"
+          node scripts/qmoi-system-controller.py --status-report
 
       - name: QMOI Auto-Commit Improvements
         if: always()

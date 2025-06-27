@@ -2,6 +2,14 @@ import nodemailer from 'nodemailer';
 import axios from 'axios';
 import { logger } from '../utils/logger';
 
+let twilioClient: any = null;
+if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
+  twilioClient = require('twilio')(
+    process.env.TWILIO_ACCOUNT_SID,
+    process.env.TWILIO_AUTH_TOKEN
+  );
+}
+
 interface NotificationConfig {
   email: {
     enabled: boolean;
@@ -29,6 +37,11 @@ interface NotificationConfig {
     enabled: boolean;
     botToken: string;
     chatId: string;
+  };
+  whatsapp: {
+    enabled: boolean;
+    from: string;
+    to: string[];
   };
 }
 
@@ -64,6 +77,11 @@ export class NotificationService {
         enabled: !!process.env.TELEGRAM_BOT_TOKEN && !!process.env.TELEGRAM_CHAT_ID,
         botToken: process.env.TELEGRAM_BOT_TOKEN || '',
         chatId: process.env.TELEGRAM_CHAT_ID || ''
+      },
+      whatsapp: {
+        enabled: !!process.env.TWILIO_ACCOUNT_SID && !!process.env.TWILIO_AUTH_TOKEN && !!process.env.TWILIO_WHATSAPP_FROM && !!process.env.TWILIO_WHATSAPP_TO,
+        from: process.env.TWILIO_WHATSAPP_FROM || '',
+        to: process.env.TWILIO_WHATSAPP_TO ? process.env.TWILIO_WHATSAPP_TO.split(',') : []
       }
     };
 
@@ -129,6 +147,23 @@ export class NotificationService {
     }
   }
 
+  private async sendWhatsAppNotification(message: string): Promise<void> {
+    if (!this.config.whatsapp.enabled || !twilioClient) return;
+    try {
+      for (const to of this.config.whatsapp.to) {
+        await twilioClient.messages.create({
+          from: `whatsapp:${this.config.whatsapp.from}`,
+          to: `whatsapp:${to}`,
+          body: message
+        });
+      }
+      logger.info('WhatsApp notification sent successfully');
+    } catch (error) {
+      logger.error('Failed to send WhatsApp notification:', error);
+      throw error;
+    }
+  }
+
   public async sendNotification(subject: string, body: string): Promise<void> {
     const message = `${subject}\n\n${body}`;
     const notifications = [];
@@ -145,6 +180,9 @@ export class NotificationService {
     if (this.config.telegram.enabled) {
       notifications.push(this.sendTelegramNotification(message));
     }
+    if (this.config.whatsapp.enabled) {
+      notifications.push(this.sendWhatsAppNotification(message));
+    }
 
     try {
       await Promise.all(notifications);
@@ -153,5 +191,16 @@ export class NotificationService {
       logger.error('Some notifications failed to send:', error);
       throw error;
     }
+  }
+
+  public async sendCriticalEventNotification(eventType: string, details: string) {
+    let subject = '[QMOI Critical Event] ';
+    if (eventType === 'test_failed') subject += 'Test Failure';
+    else if (eventType === 'deploy_failed') subject += 'Deployment Failure';
+    else if (eventType === 'critical_error') subject += 'Critical Error';
+    else if (eventType === 'deploy_success') subject += 'Deployment Success';
+    else subject += eventType;
+    await this.sendNotification(subject, details);
+    logger.info(`Critical event notification sent: ${eventType}`);
   }
 } 
