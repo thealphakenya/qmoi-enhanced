@@ -14,45 +14,38 @@
   },
   "qmoiConfig": {
     "base_model": "gpt2",
-    "hidden_size": 768,
-    "num_attention_heads": 12,
-    "intermediate_size": 3072,
-    "num_labels": 2,
     "vocab_size": 50257,
     "max_length": 512,
+    "hidden_size": 768,
+    "intermediate_size": 3072,
+    "num_attention_heads": 12,
+    "num_labels": 2,
+
     "training": {
       "batch_size": 32,
-      "learning_rate": 0.00002,
-      "num_epochs": 3,
+      "learning_rate": 2e-5,
+      "num_epochs": 5,
       "warmup_steps": 500,
       "weight_decay": 0.01,
-      "gradient_clipping": 1,
+      "gradient_clipping": 1.0,
       "label_smoothing": 0.1,
       "mixup_alpha": 0.2,
-      "cutmix_prob": 0.5
+      "cutmix_prob": 0.5,
+      "early_stopping_patience": 2
     },
+
     "optimization": {
       "gradient_accumulation_steps": 1,
       "fp16": true,
-      "max_grad_norm": 1,
+      "max_grad_norm": 1.0,
       "adam_beta1": 0.9,
       "adam_beta2": 0.999,
       "adam_epsilon": 1e-8,
       "scheduler": "cosine",
       "warmup_ratio": 0.1,
-      "lr_scheduler_type": "cosine",
-      "weight_decay": 0.01
+      "lr_scheduler_type": "cosine"
     },
-    "monitoring": {
-      "metrics_interval": 100,
-      "save_interval": 1000,
-      "eval_interval": 500,
-      "logging_steps": 100,
-      "save_total_limit": 3,
-      "save_best": true,
-      "metric_for_best_model": "accuracy",
-      "greater_is_better": true
-    },
+
     "model_architecture": {
       "use_relative_position": true,
       "use_rotary_embeddings": true,
@@ -62,17 +55,16 @@
       "use_mixed_precision": true,
       "use_amp": true
     },
+
     "data_processing": {
-      "max_length": 512,
       "padding": "max_length",
       "truncation": true,
       "return_tensors": "pt",
       "return_attention_mask": true,
       "return_token_type_ids": false,
-      "return_special_tokens_mask": true,
-      "return_offsets_mapping": false,
-      "return_length": false
+      "return_special_tokens_mask": true
     },
+
     "augmentation": {
       "use_back_translation": true,
       "use_synonym_replacement": true,
@@ -82,14 +74,14 @@
       "use_eda": true,
       "use_bert_augment": true
     },
+
     "regularization": {
       "dropout": 0.1,
       "attention_dropout": 0.1,
       "hidden_dropout": 0.1,
-      "weight_decay": 0.01,
-      "label_smoothing": 0.1,
-      "gradient_clipping": 1
+      "weight_decay": 0.01
     },
+
     "evaluation": {
       "metrics": [
         "accuracy",
@@ -104,6 +96,18 @@
       "average": "weighted",
       "zero_division": 0
     },
+
+    "monitoring": {
+      "metrics_interval": 100,
+      "eval_interval": 500,
+      "logging_steps": 100,
+      "save_interval": 1000,
+      "save_total_limit": 3,
+      "save_best": true,
+      "metric_for_best_model": "accuracy",
+      "greater_is_better": true
+    },
+
     "deployment": {
       "quantization": {
         "enabled": true,
@@ -125,27 +129,27 @@
         "optimize": true
       }
     },
+
     "huggingface": {
-      "repo_id": "your-username/qmoi",
+      "repo_id": "alphaqmoi/qmoi",
       "push_to_hub": true,
       "private": false,
-      "token": "your-token"
+      "token": "${HF_TOKEN}"
     },
+
     "wandb": {
       "project": "qmoi",
-      "entity": "your-username",
-      "tags": [
-        "nlp",
-        "transformer",
-        "classification"
-      ],
-      "notes": "QMOI model training"
+      "entity": "alphaqmoi",
+      "tags": ["nlp", "transformer", "classification"],
+      "notes": "QMOI model training and deployment monitoring"
     },
+
     "logging": {
       "level": "INFO",
       "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
       "file": "logs/qmoi.log"
     },
+
     "security": {
       "encryption": true,
       "authentication": true,
@@ -153,6 +157,7 @@
       "audit_logging": true
     }
   },
+
   "lintConfig": {
     "autoFixEnabled": true,
     "smartFixesEnabled": true,
@@ -170,20 +175,11 @@
       "constConversion": true
     },
     "filePatterns": {
-      "include": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.js",
-        "**/*.jsx"
-      ],
-      "exclude": [
-        "node_modules/**",
-        "dist/**",
-        "build/**",
-        ".git/**"
-      ]
+      "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+      "exclude": ["node_modules/**", "dist/**", "build/**", ".git/**"]
     }
   },
+
   "performanceMetrics": {
     "tasksCompleted": 1,
     "errorsFixed": 0,
