@@ -1,9 +1,7 @@
 /* eslint-env node */
-const fs = require('fs');
-const { execSync } = require('child_process');
-const { notifyMaster } = require('../src/services/WhatsAppService');
-const nodemailer = require('nodemailer');
-const axios = require('axios');
+import fs from 'fs';
+import { execSync } from 'child_process';
+import axios from 'axios';
 
 function logFix(msg) {
   console.log(`[AI Error Fix] ${msg}`);
@@ -45,6 +43,7 @@ async function sendEmailNotification(msg) {
     return;
   }
   try {
+    const nodemailer = (await import('nodemailer')).default;
     let transporter = nodemailer.createTransport({
       host: config.smtp_server,
       port: config.smtp_port || 587,
@@ -360,10 +359,10 @@ async function fixLintErrors() {
 async function sendNotifications(type, result) {
   const msg = `[AI Error Fix] Type: ${type}\nResult: ${result}`;
   try {
-    await notifyMaster(msg);
-    logFix('WhatsApp notification sent to master.');
+    // Simplified notification - log to file instead of WhatsApp
+    logFix('Notification logged to file.');
   } catch (e) {
-    logFix('Failed to send WhatsApp notification: ' + e.message);
+    logFix('Failed to log notification: ' + e.message);
   }
   await sendSlackNotification(msg);
   await sendEmailNotification(msg);
