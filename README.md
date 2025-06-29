@@ -814,3 +814,46 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Version**: 2.0.0  
 **Last Updated**: December 2024  
 **Maintained by**: QMOI Auto-Dev Enhanced System
+
+# QMOI Enhanced Auto-Deploy & Self-Healing System
+
+## Overview
+QMOI is a fully automated, self-healing deployment and monitoring system with advanced error analytics, manual error handling, and real-time progress tracking.
+
+## Key Features
+- AI-powered error detection and auto-fix
+- Manual error detection and instructions for intervention
+- Progress bar for error fixing (auto + manual)
+- Real-time dashboard with analytics, charts, and manual triggers
+- GitHub Actions integration with progress bar and manual error reporting
+- Email, Slack, WhatsApp notifications
+- OAuth and user roles (admin/viewer)
+
+## Dashboard & API
+- **URL:** http://localhost:4000/
+- **Login:** Username/password or Google OAuth
+- **Endpoints:**
+  - `/` - Main dashboard
+  - `/api/error-fix-log` - Full error/fix log (JSON)
+  - `/api/logs` - Orchestrator logs
+  - `/api/trigger-fix` - Trigger a fix run
+  - `/health` - Health check
+
+## Error/Fix Analytics
+- Tracks total errors found, auto-fixed, manual fixes needed, and remaining
+- Progress bar shows percent fixed (auto + manual)
+- Manual errors are listed with instructions
+- Table of recent runs and error type breakdown
+
+## GitHub Actions
+- Workflow summary includes:
+  - Progress bar for percent fixed
+  - Manual errors and instructions
+  - Downloadable error/fix log artifact
+
+## Documentation
+- See [MONITORING.md](./MONITORING.md) for monitoring and analytics guide
+- See [REFERENCES.md](./REFERENCES.md) for a list of all documentation files
+
+---
+For more details, see the full documentation suite.

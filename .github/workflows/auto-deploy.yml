@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 2 * * *' # Every day at 2am UTC
-    - cron: '0 */6 * * *' # Every 6 hours
+    - cron: '0 */6 * * ' # Every 6 hours
 
 env:
   QMOI_AUTODEV_ENABLED: 'true'
@@ -234,6 +234,40 @@ jobs:
         run: |
           echo "💾 QMOI Backup Automation..."
           node scripts/backup_automation.js || echo "QMOI backup completed"
+
+      - name: QMOI Error/Fix Analytics Summary
+        run: |
+          if [ -f logs/error_fix_summary.json ]; then
+            latest=$(tail -n 100 logs/error_fix_summary.json | jq '.[-1]')
+            found=$(echo $latest | jq '.errorsFound')
+            fixed=$(echo $latest | jq '.errorsFixed')
+            percent=$(echo $latest | jq '.percentFixed')
+            manualCount=$(echo $latest | jq '.manualCount')
+            manualErrors=$(echo $latest | jq -r '.manualErrors[]? | "- [" + .type + "] " + .description + " (" + .manualInstructions + ")"')
+            # Progress bar
+            blocks=$((percent / 10))
+            bar=$(printf '%0.s█' $(seq 1 $blocks))
+            empty=$((10 - blocks))
+            bar+=$(printf '%0.s░' $(seq 1 $empty))
+            echo "### QMOI Error/Fix Analytics" >> $GITHUB_STEP_SUMMARY
+            echo "- Total Errors Found: **$found**" >> $GITHUB_STEP_SUMMARY
+            echo "- Total Fixed: **$fixed**" >> $GITHUB_STEP_SUMMARY
+            echo "- Manual Fixes Needed: **$manualCount**" >> $GITHUB_STEP_SUMMARY
+            echo "- Percent Fixed: **$percent%**" >> $GITHUB_STEP_SUMMARY
+            echo "- Progress: $bar ($percent%)" >> $GITHUB_STEP_SUMMARY
+            if [ "$manualCount" != "0" ]; then
+              echo "#### Manual Errors Requiring Attention:" >> $GITHUB_STEP_SUMMARY
+              echo "$manualErrors" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "No error/fix summary log found." >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Upload Error/Fix Summary Log
+        uses: actions/upload-artifact@v3
+        with:
+          name: error-fix-summary
+          path: logs/error_fix_summary.json
 
   qmoi-hf-backup:
     name: QMOI Scheduled HuggingFace Backup
