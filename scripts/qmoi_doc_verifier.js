@@ -548,38 +548,34 @@ python scripts/{SCRIPT_NAME}.py
   }
 
   async run() {
-    console.log('🚀 Starting QMOI Enhanced Documentation Verifier...\n');
-    
+    console.log('\uD83D\uDE80 Starting QMOI Enhanced Documentation Verifier...\n');
     try {
       // Ensure docs directory exists
       if (!fs.existsSync(this.docsDir)) {
         fs.mkdirSync(this.docsDir, { recursive: true });
       }
-      
       // Scan for new features and create documentation
       const newFeatures = await this.scanForNewFeatures();
-      console.log(`\n📋 Found ${newFeatures.length} new features without documentation`);
-      
+      console.log(`\n\uD83D\uDCCB Found ${newFeatures.length} new features without documentation`);
       for (const feature of newFeatures) {
         await this.createDocumentation(feature);
       }
-      
       // Run self-tests
       await this.runSelfTests();
-      
       // Simulate manual errors
       await this.simulateManualErrors();
-      
       // Generate comprehensive report
       const report = this.generateReport();
-      
-      console.log('\n🎉 QMOI Documentation Verification Complete!');
-      
+      console.log('\n\uD83C\uDF89 QMOI Documentation Verification Complete!');
       return report;
     } catch (error) {
-      console.error('❌ Verification failed:', error.message);
-      throw error;
+      console.error('\u274C Verification failed:', error.message);
+      // Only exit non-zero for true system errors
+      process.exitCode = 1;
+      return { error: error.message };
     }
+    // Always exit 0 for doc mismatches (auto-fixed above)
+    process.exitCode = 0;
   }
 }
 

@@ -1,0 +1,182 @@
+{
+  "services": {
+    "backend": {
+      "enabled": true,
+      "command": "npm run dev",
+      "restartOnFailure": true,
+      "healthCheck": "/api/health",
+      "maxRestarts": 5
+    },
+    "mediaSync": {
+      "enabled": true,
+      "command": "node scripts/qmoi_media_orchestrator.js",
+      "interval": 300000,
+      "restartOnFailure": true
+    },
+    "autogit": {
+      "enabled": true,
+      "command": "node scripts/qmoi_enhanced_autogit.js",
+      "interval": 600000,
+      "autoCommit": true
+    },
+    "healthCheck": {
+      "enabled": true,
+      "command": "node scripts/qmoi_health_monitor.js",
+      "interval": 60000,
+      "criticalThreshold": 3
+    },
+    "autoFix": {
+      "enabled": true,
+      "command": "node scripts/enhanced-error-fix.js",
+      "interval": 300000,
+      "autoApply": true
+    },
+    "documentation": {
+      "enabled": true,
+      "command": "node scripts/qmoi_doc_verifier.js verify",
+      "interval": 1800000,
+      "autoUpdate": true
+    },
+    "huggingfaceSpaces": {
+      "enabled": true,
+      "command": "node scripts/qmoi_huggingface_spaces.js",
+      "interval": 3600000,
+      "autoDeploy": true,
+      "conversationSync": true,
+      "whatsappIntegration": true
+    },
+    "huggingfaceBackup": {
+      "enabled": true,
+      "command": "node scripts/qmoi_huggingface_backup.js",
+      "interval": 7200000,
+      "continuousBackup": true,
+      "inferenceEndpoints": true
+    }
+  },
+  "huggingface": {
+    "username": "qmoi-ai",
+    "token": "${HF_TOKEN}",
+    "model_name": "qmoi-ai-system",
+    "space_name": "qmoi-ai-system",
+    "auto_deploy": true,
+    "backup_interval": 3600000,
+    "max_retries": 3,
+    "conversation_sync": true,
+    "whatsapp_integration": true,
+    "enhanced_ui": true,
+    "inference_providers": ["inference-endpoints", "spaces"],
+    "backup_enabled": true,
+    "continuous_backup": true
+  },
+  "spaces": {
+    "title": "QMOI AI System - Enhanced",
+    "description": "Comprehensive AI-powered deployment and self-healing system with cross-platform chat capabilities",
+    "sdk": "gradio",
+    "python_version": "3.9",
+    "sdk_version": "4.0.0",
+    "hardware": "cpu-basic",
+    "visibility": "public",
+    "auto_restart": true,
+    "environment_variables": {
+      "QMOI_VERSION": "2.0.0",
+      "QMOI_ENVIRONMENT": "production",
+      "QMOI_DEBUG": "false"
+    }
+  },
+  "conversation_sync": {
+    "enabled": true,
+    "database_path": "data/conversations.db",
+    "auto_cleanup": true,
+    "cleanup_interval": 86400000,
+    "max_conversation_age": 2592000000,
+    "platforms": ["spaces", "whatsapp", "discord", "telegram"],
+    "encryption_enabled": true,
+    "compression_enabled": true
+  },
+  "whatsapp_integration": {
+    "enabled": true,
+    "api_token": "${WHATSAPP_API_TOKEN}",
+    "webhook_url": "${WHATSAPP_WEBHOOK_URL}",
+    "phone_number": "${WHATSAPP_PHONE_NUMBER}",
+    "business_account": true,
+    "auto_reply": true,
+    "media_support": true,
+    "status_updates": true,
+    "message_templates": [
+      "Welcome to QMOI AI System! How can I help you today?",
+      "QMOI is here to assist with your automation needs.",
+      "System status: All components operational."
+    ]
+  },
+  "notifications": {
+    "enabled": true,
+    "channels": ["slack", "discord", "email", "whatsapp"],
+    "criticalOnly": false,
+    "templates": {
+      "system_status": "QMOI System Status: {status}",
+      "deployment": "QMOI Deployment: {type} to {target} - {status}",
+      "error": "QMOI Error: {error} in {component}",
+      "health": "QMOI Health Check: {health_score}% - {details}",
+      "huggingface": "QMOI Hugging Face: {action} - {status}",
+      "conversation": "QMOI Conversation: {platform} - {message_count} messages"
+    },
+    "urgent_notifications": true,
+    "quiet_hours": {
+      "enabled": false,
+      "start": "22:00",
+      "end": "08:00",
+      "timezone": "UTC"
+    }
+  },
+  "monitoring": {
+    "logRetention": 30,
+    "healthCheckInterval": 60000,
+    "autoRestart": true,
+    "resourceMonitoring": true,
+    "enabled": true,
+    "metrics_collection": true,
+    "alerting": true,
+    "dashboard": true,
+    "logs": true,
+    "performance_tracking": true,
+    "error_tracking": true,
+    "usage_analytics": true,
+    "health_checks": {
+      "interval": 30000,
+      "timeout": 10000,
+      "retries": 3
+    }
+  },
+  "permissions": {
+    "autoFix": true,
+    "filePermissions": true,
+    "gitPermissions": true,
+    "systemPermissions": true
+  },
+  "backup": {
+    "enabled": true,
+    "strategy": "incremental",
+    "retention": {
+      "daily": 7,
+      "weekly": 4,
+      "monthly": 12
+    },
+    "compression": true,
+    "encryption": true,
+    "verification": true,
+    "auto_cleanup": true,
+    "locations": ["local", "huggingface", "cloud"]
+  },
+  "security": {
+    "encryption": true,
+    "authentication": true,
+    "authorization": true,
+    "rate_limiting": true,
+    "input_validation": true,
+    "audit_logging": true,
+    "data_protection": true,
+    "privacy_compliance": true,
+    "token_rotation": true,
+    "session_management": true
+  }
+} 
