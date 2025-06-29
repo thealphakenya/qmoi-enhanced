@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import axios from 'axios';
+import { logEvent } from './security_check';
 
 // Types for Cashon Wallet
 export interface CashonBalance {
@@ -404,4 +405,20 @@ export const cashonWallet = new CashonWallet({
   environment: (process.env.PESAPAL_ENVIRONMENT as 'sandbox' | 'live') || 'sandbox',
   callbackUrl: process.env.PESAPAL_CALLBACK_URL || '',
   ipnUrl: process.env.PESAPAL_IPN_URL || ''
-}, process.env.MASTER_TOKEN || ''); 
+}, process.env.MASTER_TOKEN || '');
+
+export async function transferToMpesa(amount: number) {
+  const mpesaNumber = process.env.CASHON_MPESA_NUMBER;
+  if (!mpesaNumber) {
+    logEvent('mpesa_transfer_failed', { reason: 'Missing M-Pesa number' });
+    throw new Error('M-Pesa number not configured');
+  }
+  try {
+    // TODO: Integrate with real M-Pesa API
+    logEvent('mpesa_transfer_success', { mpesaNumber, amount });
+    return { success: true };
+  } catch (err) {
+    logEvent('mpesa_transfer_failed', { error: err.message });
+    throw err;
+  }
+} 

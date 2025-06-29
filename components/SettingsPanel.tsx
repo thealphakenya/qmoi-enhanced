@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
 import { Badge } from './ui/badge';
 import { useMaster } from './MasterContext';
-import { FaCog, FaLanguage, FaFont, FaNetworkWired, FaDownload, FaSync, FaUserShield, FaRobot, FaPalette, FaMobile } from 'react-icons/fa';
+import { FaCog, FaLanguage, FaFont, FaNetworkWired, FaDownload, FaSync, FaUserShield, FaRobot, FaPalette, FaMobile, FaCogs, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
 
 interface SettingsPanelProps {
@@ -85,6 +85,14 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
     settings: true
   });
 
+  // Automation settings (for master mode)
+  const [automation, setAutomation] = useState({
+    autoBackup: true,
+    autoHeal: true,
+    autoDeploy: true,
+    autoNotify: true,
+  });
+
   // Apply font settings globally
   useEffect(() => {
     document.documentElement.style.setProperty('--font-family', fontSettings.family);
@@ -114,6 +122,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
     setQmoiApps(prev => ({ ...prev, [app]: !prev[app] }));
   };
 
+  const handleAutomationChange = (key: keyof typeof automation, value: boolean) => {
+    setAutomation(prev => ({ ...prev, [key]: value }));
+  };
+
   const updateQmoiApp = async () => {
     // Simulate update process
     for (let i = 0; i <= 100; i += 10) {
@@ -133,6 +145,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="text-xl font-bold flex items-center gap-2">
             {React.createElement(FaCog as React.ElementType, { className: 'text-blue-600', size: 20 }) as React.ReactNode}
+            {isMaster && (
+              <span className="ml-2 px-2 py-1 bg-yellow-200 text-yellow-900 rounded text-xs flex items-center gap-1">
+                <FaCogs className="inline-block" /> MASTER MODE
+              </span>
+            )}
             {React.createElement(FaLanguage as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
             {aiSettings.language === 'sw' ? 'Mipangilio ya Qmoi' : 'Qmoi Settings'}
           </h2>
@@ -140,6 +157,21 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
             ✕
           </Button>
         </div>
+
+        {/* Automation summary for master */}
+        {isMaster && (
+          <div className="flex items-center gap-4 p-4 border-b bg-gray-50">
+            <span className="font-semibold flex items-center gap-1">
+              <FaCogs className="text-blue-500" /> Automation:
+            </span>
+            {Object.entries(automation).map(([k, v]) => (
+              <span key={k} className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${v ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                {v ? <FaCheckCircle className="text-green-500" /> : <FaExclamationTriangle className="text-red-500" />}
+                {k.replace('auto', 'Auto-')}
+              </span>
+            ))}
+          </div>
+        )}
 
         <div className="flex h-full">
           <Tabs defaultValue="general" className="w-full">
@@ -400,12 +432,31 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col gap-4">
+                        <div className="flex items-center justify-between">
+                          <Label>Auto-Backup</Label>
+                          <Switch checked={automation.autoBackup} onCheckedChange={v => handleAutomationChange('autoBackup', v)} />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <Label>Auto-Heal</Label>
+                          <Switch checked={automation.autoHeal} onCheckedChange={v => handleAutomationChange('autoHeal', v)} />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <Label>Auto-Deploy</Label>
+                          <Switch checked={automation.autoDeploy} onCheckedChange={v => handleAutomationChange('autoDeploy', v)} />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <Label>Auto-Notify</Label>
+                          <Switch checked={automation.autoNotify} onCheckedChange={v => handleAutomationChange('autoNotify', v)} />
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between mt-6">
                         <Label>{aiSettings.language === 'sw' ? 'Udhibiti wa Mfumo' : 'System Control'}</Label>
                         <Button size="sm" variant="destructive">
                           {aiSettings.language === 'sw' ? 'Funga Mfumo' : 'Shutdown System'}
                         </Button>
                       </div>
+                      {/* TODO: Advanced automation controls, logs, scheduling */}
                     </CardContent>
                   </Card>
                 </TabsContent>

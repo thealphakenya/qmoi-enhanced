@@ -112,8 +112,24 @@ function autoCommitAndPush() {
     try { execSync('git reset .env'); } catch {}
     execSync('git add .');
     execSync('git commit -m "Auto-fix: deploy error"');
-    execSync('git push');
-    log('Auto-committed and pushed fixes.');
+    let pushed = false;
+    let attempts = 0;
+    while (!pushed && attempts < 3) {
+      try {
+        execSync('git push');
+        pushed = true;
+      } catch (pushErr) {
+        log('Git push failed, retrying...');
+        attempts++;
+        if (attempts >= 3) {
+          log('Git push failed after 3 attempts. Notifying master.');
+          notifyMaster('Git push failed after auto-commit. Manual intervention required.');
+        }
+      }
+    }
+    if (pushed) {
+      log('Auto-committed and pushed fixes.');
+    }
   } catch (e) {
     log('No changes to commit or push.');
   }

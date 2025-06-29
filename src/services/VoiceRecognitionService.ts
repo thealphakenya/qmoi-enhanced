@@ -302,7 +302,7 @@ export class VoiceRecognitionService {
 
   private initializeSpeechRecognition(): void {
     try {
-      // @ts-ignore
+      // @ts-expect-error
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognition) {
         this.recognition = new SpeechRecognition();
@@ -342,7 +342,7 @@ export class VoiceRecognitionService {
       this.eventEmitter.emit('recognitionStart');
     };
 
-    this.recognition.onresult = (event: any) => {
+    this.recognition.onresult = (event: SpeechRecognitionEvent) => {
       const results = event.results;
       const isFinal = results[results.length - 1].isFinal;
       
@@ -366,7 +366,7 @@ export class VoiceRecognitionService {
       }
     };
 
-    this.recognition.onerror = (event: any) => {
+    this.recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
       console.error('Voice recognition error:', event.error);
       this.eventEmitter.emit('recognitionError', event.error);
       
@@ -411,7 +411,7 @@ export class VoiceRecognitionService {
       }
     };
 
-    this.synthesis.onerror = (event: any) => {
+    this.synthesis.onerror = (event: SpeechSynthesisErrorEvent) => {
       console.error('Speech synthesis error:', event.error);
       this.eventEmitter.emit('synthesisError', event.error);
     };
@@ -492,7 +492,7 @@ export class VoiceRecognitionService {
     this.registerCommand({
       id: 'send-whatsapp',
       phrase: 'send whatsapp message',
-      action: async (params: any) => {
+      action: async (params: { recipient: string; message: string }) => {
         const { recipient, message } = params;
         await this.sendWhatsAppMessage(recipient, message);
         this.speak(`Message sent to ${recipient}`);

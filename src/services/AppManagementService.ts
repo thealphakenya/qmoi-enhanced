@@ -260,6 +260,37 @@ export class AppManagementService {
           ],
           logs: []
         }
+      },
+      {
+        id: 'q-news',
+        name: 'QNews',
+        displayName: 'QNews',
+        version: '1.0.0',
+        description: 'Automated news aggregation, scheduling, and posting',
+        category: 'productivity',
+        icon: '📰',
+        downloadUrl: '',
+        size: 10 * 1024 * 1024, // 10MB (placeholder)
+        isInstalled: false,
+        isUpdating: false,
+        lastUpdate: new Date(),
+        status: 'available',
+        dependencies: [],
+        permissions: ['network', 'notifications'],
+        settings: {
+          autoUpdate: true,
+          notifications: true
+        },
+        troubleshooting: {
+          commonIssues: [
+            {
+              issue: 'News not updating',
+              solution: 'Check network connection and try again',
+              severity: 'medium'
+            }
+          ],
+          logs: []
+        }
       }
     ];
 

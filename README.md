@@ -1,3 +1,7 @@
+[![QMOI HuggingFace Backup](https://github.com/thealphakenya/Alpha-Q-ai/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule)](https://github.com/thealphakenya/Alpha-Q-ai/actions/workflows/auto-deploy.yml)
+
+> **Backup Health:** This badge shows the status of the latest scheduled backup to HuggingFace. Green = healthy, Red = last backup failed.
+
 # QMOI Universal AI System
 
 ## Features

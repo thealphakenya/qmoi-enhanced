@@ -1,6 +1,8 @@
 import React from 'react';
-import { QMoiDatabaseDashboard, QMoiMemoryPanel, QMoiToolbar, QMoiAutoDevPanel, QMoiFileEditorChat } from './index';
+import { QMoiDatabaseDashboard, QMoiMemoryPanel, QMoiToolbar, QMoiAutoDevPanel, QMoiFileEditorChat, QNewsDashboard, QApiKeyManager, AccountAutomationPanel, SocialAutomationPanel, EarningDashboard, DocumentManagerPanel } from './index';
 import DeploymentStatusDashboard from '../../../components/DeploymentStatusDashboard';
+import QmoiRevenueDashboard from '../../QmoiRevenueDashboard';
+import { TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 interface RoleBasedDashboardProps {
   role: string;
@@ -18,10 +20,24 @@ const RoleBasedDashboard: React.FC<RoleBasedDashboardProps> = ({ role, isMaster 
           <QMoiDatabaseDashboard isMaster={isMaster} />
         </div>
       )}
+      {isMaster && <QNewsDashboard isMaster={true} />}
       {isMaster && <QMoiMemoryPanel isMaster={true} />}
       {isMaster && <DeploymentStatusDashboard isMaster={true} />}
       {isMaster && <QMoiAutoDevPanel isMaster={true} />}
       {isMaster && <QMoiFileEditorChat isMaster={true} />}
+      {isMaster && <QApiKeyManager />}
+      {isMaster && <AccountAutomationPanel />}
+      {isMaster && <SocialAutomationPanel />}
+      {isMaster && <EarningDashboard />}
+      {isMaster && <DocumentManagerPanel />}
+      {isMaster && (
+        <TabsTrigger value="revenue">Revenue Engine</TabsTrigger>
+      )}
+      {isMaster && (
+        <TabsContent value="revenue" className="space-y-4">
+          <QmoiRevenueDashboard />
+        </TabsContent>
+      )}
       {/* Render role-specific features */}
       {role === 'student' && <div>Study planner, assignments, learning resources</div>}
       {role === 'doctor' && <div>Patient management, appointments, medical resources</div>}

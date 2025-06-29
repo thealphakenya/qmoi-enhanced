@@ -57,9 +57,21 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState<Record<string, number>>({});
   const [logs, setLogs] = useState<MediaLog[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
+  const [healthStatus, setHealthStatus] = useState('');
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [tagFilter, setTagFilter] = useState('');
+
+  // QMOI Media Manager
+  // To connect to a real API, replace the mock data in useEffect with an API call to fetch media items.
+  // For upload support, add an upload button and handler to POST files to your media API endpoint.
+  // See README for more integration details.
 
   // Mock data for demonstration
   useEffect(() => {
+    // TODO: Replace this mock data with a real API call, e.g.:
+    // fetch('/api/media').then(res => res.json()).then(setMediaItems);
     const mockMedia: MediaItem[] = [
       {
         id: '1',
@@ -177,7 +189,8 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesType = selectedType === 'all' || item.type === selectedType;
-    return matchesSearch && matchesType;
+    const matchesTag = !tagFilter || item.tags.includes(tagFilter);
+    return matchesSearch && matchesType && matchesTag;
   });
 
   // Fetch logs
@@ -201,6 +214,58 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   useEffect(() => {
     fetchLogs();
   }, []);
+
+  useEffect(() => {
+    fetch('/api/health')
+      .then(res => res.json())
+      .then(data => setHealthStatus(data.status))
+      .catch(() => setHealthStatus('offline'));
+  }, []);
+
+  const handleDelete = async (id: string) => {
+    if (!window.confirm('Delete this media file?')) return;
+    await fetch(`/api/media/${id}`, {
+      method: 'DELETE',
+      headers: { 'x-qmoi-admin': 'qmoi-master-key' }
+    });
+    setMediaItems(items => items.filter(item => item.id !== id));
+  };
+
+  const handleTagFilter = (tag: string) => setTagFilter(tag);
+
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) return;
+    setUploading(true);
+    setUploadProgress(0);
+    const formData = new FormData();
+    formData.append('file', e.target.files[0]);
+    try {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/media');
+      xhr.setRequestHeader('x-qmoi-admin', 'qmoi-master-key');
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          setUploadProgress(Math.round((event.loaded / event.total) * 100));
+        }
+      };
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const newMedia = JSON.parse(xhr.responseText);
+          setMediaItems(prev => [newMedia, ...prev]);
+        }
+        setUploading(false);
+        setUploadProgress(0);
+      };
+      xhr.onerror = () => {
+        setUploading(false);
+        setUploadProgress(0);
+      };
+      xhr.send(formData);
+    } catch (err) {
+      setUploading(false);
+      setUploadProgress(0);
+    }
+  };
 
   return (
     <div className={`space-y-4 ${className}`}>
@@ -239,6 +304,21 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
             </Button>
           </div>
 
+          {/* Upload Button (placeholder) */}
+          <div className="mb-2 flex items-center gap-2">
+            <span className={`px-2 py-1 rounded text-xs ${healthStatus === 'ok' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>Health: {healthStatus}</span>
+          </div>
+          <input type="file" onChange={handleUpload} disabled={uploading} className="mb-2" />
+          {uploading && <Progress value={uploadProgress} className="mb-2" />}
+
+          {/* Tag Filter */}
+          <div className="mb-2 flex gap-1">
+            {Array.from(new Set(mediaItems.flatMap(item => item.tags))).map(tag => (
+              <Badge key={tag} onClick={() => handleTagFilter(tag)} className={tagFilter === tag ? 'bg-blue-500 text-white' : ''} style={{ cursor: 'pointer' }}>{tag}</Badge>
+            ))}
+            {tagFilter && <Button size="sm" onClick={() => setTagFilter('')}>Clear Tag Filter</Button>}
+          </div>
+
           {/* Media List */}
           <ScrollArea className="h-96">
             <div className="space-y-2">
@@ -275,6 +355,11 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
                         <Download className="w-4 h-4" />
                         {downloadProgress[item.id] > 0 ? `${downloadProgress[item.id]}%` : 'Download'}
                       </Button>
+                      {isAdmin && (
+                        <Button size="sm" variant="destructive" onClick={() => handleDelete(item.id)}>
+                          Delete
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </Card>

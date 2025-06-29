@@ -19,6 +19,7 @@ const initialApps = [
   { name: 'QDevice', icon: '📱', status: '', tooltip: 'Device Health' },
   { name: 'QWifi', icon: '📶', status: '', tooltip: 'WiFi' },
   { name: 'QBluetooth', icon: '🔵', status: '', tooltip: 'Bluetooth' },
+  { name: 'QNews', icon: '📰', status: '', tooltip: 'News & Updates' },
 ];
 
 const getRandomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;

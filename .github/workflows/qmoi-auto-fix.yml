@@ -1,0 +1,299 @@
+name: QMOI Auto-Fix System
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'scripts/**'
+      - 'app/**'
+      - 'components/**'
+      - '*.md'
+      - 'package.json'
+      - 'requirements.txt'
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Force run auto-fix'
+        required: false
+        default: 'false'
+
+jobs:
+  auto-fix:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then
+          pip install -r requirements.txt
+        fi
+        if [ -f requirements/ai_automation.txt ]; then
+          pip install -r requirements/ai_automation.txt
+        fi
+
+    - name: Install Node.js dependencies
+      run: npm ci
+
+    - name: Create logs directory
+      run: mkdir -p logs
+
+    - name: Run QMOI Auto-Fix
+      id: auto-fix
+      run: |
+        echo "Starting QMOI Auto-Fix System..."
+        python scripts/qmoi_auto_fix_enhanced.py > logs/qmoi_auto_fix_workflow.log 2>&1
+        echo "Auto-fix completed with exit code: $?"
+        echo "exit_code=$?" >> $GITHUB_OUTPUT
+
+    - name: Upload Auto-Fix Logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: qmoi-auto-fix-logs
+        path: |
+          logs/
+          *.log
+        retention-days: 30
+
+    - name: Upload Auto-Fix Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: qmoi-auto-fix-report
+        path: logs/qmoi_auto_fix_latest.json
+        retention-days: 30
+
+    - name: Check for errors
+      if: steps.auto-fix.outputs.exit_code != '0'
+      run: |
+        echo "❌ Auto-fix process failed with exit code: ${{ steps.auto-fix.outputs.exit_code }}"
+        echo "Check the logs for details"
+        exit 1
+
+  verify-documentation:
+    runs-on: ubuntu-latest
+    needs: auto-fix
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then
+          pip install -r requirements.txt
+        fi
+
+    - name: Run Documentation Verifier
+      id: doc-verify
+      run: |
+        echo "Running documentation verification..."
+        python scripts/doc_verifier.py > logs/doc_verification.log 2>&1
+        echo "Documentation verification completed with exit code: $?"
+        echo "exit_code=$?" >> $GITHUB_OUTPUT
+
+    - name: Upload Documentation Verification Logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: doc-verification-logs
+        path: logs/doc_verification.log
+        retention-days: 30
+
+    - name: Check documentation verification
+      if: steps.doc-verify.outputs.exit_code != '0'
+      run: |
+        echo "❌ Documentation verification failed"
+        echo "Check the logs for details"
+        exit 1
+
+  self-test:
+    runs-on: ubuntu-latest
+    needs: [auto-fix, verify-documentation]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then
+          pip install -r requirements.txt
+        fi
+
+    - name: Run Self-Test
+      id: self-test
+      run: |
+        echo "Running QMOI self-test..."
+        python scripts/qmoi_self_test.py > logs/self_test.log 2>&1
+        echo "Self-test completed with exit code: $?"
+        echo "exit_code=$?" >> $GITHUB_OUTPUT
+
+    - name: Upload Self-Test Logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: self-test-logs
+        path: logs/self_test.log
+        retention-days: 30
+
+    - name: Check self-test results
+      if: steps.self-test.outputs.exit_code != '0'
+      run: |
+        echo "❌ Self-test failed"
+        echo "Check the logs for details"
+        exit 1
+
+  build-and-test:
+    runs-on: ubuntu-latest
+    needs: [auto-fix, verify-documentation, self-test]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run type check
+      run: npm run type-check
+
+    - name: Run linting
+      run: npm run lint
+
+    - name: Build application
+      run: npm run build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: build-artifacts
+        path: .next/
+        retention-days: 7
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [auto-fix, verify-documentation, self-test, build-and-test]
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [auto-fix, verify-documentation, self-test, build-and-test, deploy]
+    if: always()
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Generate notification
+      id: notification
+      run: |
+        if [ "${{ needs.auto-fix.result }}" == "success" ] && [ "${{ needs.verify-documentation.result }}" == "success" ] && [ "${{ needs.self-test.result }}" == "success" ] && [ "${{ needs.build-and-test.result }}" == "success" ]; then
+          echo "status=success" >> $GITHUB_OUTPUT
+          echo "message=✅ QMOI Auto-Fix completed successfully" >> $GITHUB_OUTPUT
+        else
+          echo "status=failure" >> $GITHUB_OUTPUT
+          echo "message=❌ QMOI Auto-Fix failed - check logs for details" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Comment on PR
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const message = `${{ steps.notification.outputs.message }}
+          
+          **Workflow Results:**
+          - Auto-Fix: ${{ needs.auto-fix.result }}
+          - Documentation Verification: ${{ needs.verify-documentation.result }}
+          - Self-Test: ${{ needs.self-test.result }}
+          - Build & Test: ${{ needs.build-and-test.result }}
+          ${github.ref == 'refs/heads/main' ? '- Deploy: ' + '${{ needs.deploy.result }}' : ''}
+          
+          [View workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`;
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: message
+          });
+
+    - name: Create issue on failure
+      if: steps.notification.outputs.status == 'failure' && github.event_name != 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const message = `${{ steps.notification.outputs.message }}
+          
+          **Workflow Results:**
+          - Auto-Fix: ${{ needs.auto-fix.result }}
+          - Documentation Verification: ${{ needs.verify-documentation.result }}
+          - Self-Test: ${{ needs.self-test.result }}
+          - Build & Test: ${{ needs.build-and-test.result }}
+          ${github.ref == 'refs/heads/main' ? '- Deploy: ' + '${{ needs.deploy.result }}' : ''}
+          
+          [View workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})
+          
+          Please check the logs and fix any issues.`;
+          
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: 'QMOI Auto-Fix Workflow Failed',
+            body: message,
+            labels: ['bug', 'auto-fix']
+          }); 

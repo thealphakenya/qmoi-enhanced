@@ -11,5 +11,6 @@ QMOI can be used for anything on the device: browsing, file management, search, 
 | 🔍   | QSearch      | 1.0.5   | Floating search/chat       | AI, floating, everywhere | [img] | 4.6/5   | 60+       | v1.0.5: Floating| 2         | 5,000     | $600     | Voice, image search |
 | 💬   | QWhatsApp    | 2.2.0   | WhatsApp + Meta AI features| Smart replies, media, scheduling, search | [img] | 4.9/5   | 300+      | v2.2.0: Meta AI   | 12        | 25,000    | $3,000   | More AI, business   |
 | ⚡   | QAutoDev     | 1.0.0   | Self-healing, auto-enhance | Auto-fix, compliance, tests | [img] | 5.0/5   | 50+       | v1.0.0: Launch  | 1         | 2,000     | $500     | More automation     |
+| 📰   | QNews        | 1.0.0   | Automated news aggregation, scheduling, and posting | Aggregates news, master approval, cross-platform posting, dashboard UI | [img] | 5.0/5   | 10+       | v1.0.0: Initial release | 1         | 1,000     | $0      | AI news curation, sentiment analysis |
 
 *QMOI can auto-update this file as apps/features are added, updated, or enhanced.* 

@@ -59,6 +59,9 @@ export default function CashonTradingPanel() {
   const [error, setError] = useState<string | null>(null);
   const [isMaster, setIsMaster] = useState(false);
   const [masterToken, setMasterToken] = useState('');
+  const [mpesaNumber, setMpesaNumber] = useState<string>('');
+  const [syncStatus, setSyncStatus] = useState<string>('');
+  const [logs, setLogs] = useState<any[]>([]);
 
   // Check if user is master
   useEffect(() => {
@@ -73,6 +76,17 @@ export default function CashonTradingPanel() {
       loadData();
     }
   }, [isMaster]);
+
+  useEffect(() => {
+    // Fetch masked M-Pesa number from API
+    fetch('/api/cashon/balance?mpesaInfo=true', { headers: { 'x-qmoi-master': 'true' } })
+      .then(res => res.json())
+      .then(data => setMpesaNumber(data.mpesaNumberMasked || ''));
+    // Fetch transfer logs
+    fetch('/api/cashon/balance?logs=true', { headers: { 'x-qmoi-master': 'true' } })
+      .then(res => res.json())
+      .then(data => setLogs(data.logs || []));
+  }, []);
 
   const loadData = async () => {
     try {
@@ -179,6 +193,18 @@ export default function CashonTradingPanel() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSyncMpesa = async () => {
+    setSyncStatus('Syncing...');
+    const res = await fetch('/api/cashon/balance', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-qmoi-master': 'true' },
+      body: JSON.stringify({ action: 'sync-mpesa' })
+    });
+    const data = await res.json();
+    if (data.success) setSyncStatus('Sync successful');
+    else setSyncStatus('Sync failed: ' + (data.error || 'Unknown error'));
   };
 
   if (!isMaster) {
@@ -464,6 +490,23 @@ export default function CashonTradingPanel() {
           </Card>
         </TabsContent>
       </Tabs>
+
+      <div className="my-4 p-4 border rounded bg-gray-50">
+        <div className="flex items-center gap-2">
+          <span className="font-bold">M-Pesa Number:</span>
+          <span>{mpesaNumber || 'Not configured'}</span>
+          <button onClick={handleSyncMpesa} className="ml-4 px-3 py-1 bg-green-600 text-white rounded">Sync to M-Pesa</button>
+          <span className="ml-2 text-sm text-gray-500">{syncStatus}</span>
+        </div>
+        <div className="mt-2">
+          <span className="font-bold">Transfer Logs:</span>
+          <ul className="text-xs mt-1">
+            {logs.map((log, idx) => (
+              <li key={idx}>{log.timestamp}: {log.event}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 } 

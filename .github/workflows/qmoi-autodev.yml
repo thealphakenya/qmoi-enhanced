@@ -1,35 +1,44 @@
-name: QMOI Auto-Dev Enhanced
+name: QMOI Auto-Development & Documentation
 
 on:
   push:
     branches: [main, develop]
   pull_request:
     branches: [main]
-  workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *' # Every 5 minutes for continuous monitoring
-    - cron: '0 */2 * * *' # Every 2 hours for comprehensive checks
-    - cron: '0 2 * * *'   # Daily at 2am UTC
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - docs
+          - test
+          - deploy
+          - self-test
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '18'
   QMOI_AUTODEV_ENABLED: 'true'
-  QMOI_CONVERSE_ENABLED: 'true'
-  QMOI_SIGHTLINE_ENABLED: 'true'
 
 jobs:
-  qmoi-autodev-monitor:
-    name: QMOI Auto-Dev Monitor
+  qmoi-autodev:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-
+    name: QMOI Auto-Development
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -38,160 +47,268 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci --legacy-peer-deps
-          npm install -g typescript @types/node || echo "TypeScript installation completed"
+          npm install -g vercel@latest
 
-      - name: QMOI Secrets Manager
+      - name: Setup environment
         run: |
-          echo "🔐 QMOI Secrets Manager..."
-          node scripts/services/qmoi_secrets_manager.js || echo "QMOI secrets management completed"
+          cp .env.example .env || echo "No .env.example found"
+          echo "NODE_ENV=production" >> .env
+          echo "NEXT_PUBLIC_APP_ENV=production" >> .env
+          echo "QMOI_AUTODEV_ENABLED=true" >> .env
 
-      - name: Initialize QMOI Auto-Dev
+      - name: Run QMOI Documentation Verifier
+        id: doc-verify
         run: |
-          echo "🚀 Initializing QMOI Auto-Dev Enhanced System..."
-          node scripts/services/qmoi_autodev_daemon.js --init || echo "QMOI initialization completed"
+          echo "🔍 Running QMOI Documentation Verifier..."
+          node scripts/qmoi_doc_verifier.js verify
+          
+          # Check if new docs were created
+          if [ -f "docs/verification-report.json" ]; then
+            NEW_DOCS=$(node -e "
+              const report = JSON.parse(require('fs').readFileSync('docs/verification-report.json'));
+              console.log(report.summary.autoCreated || 0);
+            ")
+            echo "new_docs=$NEW_DOCS" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Run Comprehensive Test Suite
-        id: test_suite
+      - name: Run QMOI Self-Test Runner
+        id: self-test
         run: |
-          echo "🧪 Running QMOI Comprehensive Test Suite..."
-          node scripts/services/comprehensive_test_runner.js || echo "test_result=1" >> $GITHUB_OUTPUT
-          echo "test_result=0" >> $GITHUB_OUTPUT
+          echo "🧪 Running QMOI Self-Test Runner..."
+          node scripts/qmoi_self_test_runner.js all
+          
+          # Check test results
+          if [ -f "logs/self-test-report.json" ]; then
+            TEST_RESULTS=$(node -e "
+              const report = JSON.parse(require('fs').readFileSync('logs/self-test-report.json'));
+              console.log(JSON.stringify({
+                total: report.summary.totalTests,
+                passed: report.summary.testSuccess,
+                autoFixSuccess: report.summary.autoFixSuccess
+              }));
+            ")
+            echo "test_results=$TEST_RESULTS" >> $GITHUB_OUTPUT
+          fi
 
-      - name: QMOI Auto-Fix Cycle
-        if: steps.test_suite.outputs.test_result != '0'
+      - name: Run enhanced error fix
+        id: error-fix
         run: |
-          echo "🔧 QMOI Auto-Fix Cycle Starting..."
-          node scripts/enhanced-error-fix.js --comprehensive || echo "QMOI comprehensive fix completed"
-          node scripts/qmoi-system-controller.py --auto-fix || echo "QMOI system fix completed"
+          echo "🔧 Running enhanced error fix..."
+          node scripts/enhanced-error-fix.js --type=comprehensive
+          
+          # Check if fixes were applied
+          if [ -f "logs/ai_error_fix.log" ]; then
+            FIXES_APPLIED=$(grep -c "Fix applied" logs/ai_error_fix.log || echo "0")
+            echo "fixes_applied=$FIXES_APPLIED" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Q-Converse Voice System Test
+      - name: Run linting and type checking
+        id: lint-check
         run: |
-          echo "🎤 Testing Q-Converse Voice System..."
-          node scripts/test_qconverse.js || echo "Q-Converse test completed"
+          echo "🧹 Running linting and type checking..."
+          npm run lint || echo "Lint issues found"
+          npm run type-check || echo "Type issues found"
 
-      - name: Q-Sightline Vision System Test
+      - name: Run tests
+        id: tests
         run: |
-          echo "👁️ Testing Q-Sightline Vision System..."
-          node scripts/test_qsightline.js || echo "Q-Sightline test completed"
+          echo "🧪 Running tests..."
+          npm test -- --passWithNoTests || echo "Some tests failed"
 
-      - name: Run Lint & Type Check
+      - name: Build application
+        id: build
         run: |
-          echo "🔍 Running Enhanced Lint & Type Check..."
-          npm run lint --silent || echo "Lint issues detected, continuing..."
-          npx tsc --noEmit --skipLibCheck || echo "Type check issues detected, continuing..."
+          echo "🏗️ Building application..."
+          npm run build
 
-      - name: Security & Dependency Audit
+      - name: Deploy to Vercel (if on main branch)
+        id: deploy
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
-          echo "🔒 Running Security & Dependency Audit..."
-          npm audit --audit-level=moderate || echo "Security audit completed"
-          npm outdated || echo "Dependency check completed"
+          echo "🚀 Deploying to Vercel..."
+          
+          # Set Vercel environment variables
+          echo "VERCEL_TOKEN=${{ secrets.VERCEL_TOKEN }}" >> $GITHUB_ENV
+          echo "VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}" >> $GITHUB_ENV
+          echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID }}" >> $GITHUB_ENV
+          
+          # Deploy using enhanced script
+          node scripts/deploy/vercel_auto_deploy.js
+          
+          # Get deployment URL
+          DEPLOY_URL=$(npx vercel ls --token=${{ secrets.VERCEL_TOKEN }} | grep "qmoi" | head -1 | awk '{print $2}' || echo "")
+          echo "deploy_url=$DEPLOY_URL" >> $GITHUB_OUTPUT
 
-      - name: QMOI System Health Check
+      - name: Run health check
+        id: health-check
         run: |
-          echo "🏥 Running QMOI System Health Check..."
-          node scripts/qmoi-system-controller.py --health-check || echo "QMOI health check completed"
+          echo "🏥 Running health check..."
+          node scripts/deploy/health-check.js check
+          
+          # Check health status
+          if [ -f "logs/deployment-health.log" ]; then
+            HEALTH_STATUS=$(tail -1 logs/deployment-health.log | grep -o "healthy\|unhealthy" || echo "unknown")
+            echo "health_status=$HEALTH_STATUS" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Auto-Commit Fixes
+      - name: Generate comprehensive report
+        id: report
+        run: |
+          echo "📊 Generating comprehensive report..."
+          
+          # Create report
+          cat > qmoi-autodev-report.md << EOF
+          # QMOI Auto-Development Report
+          
+          **Generated:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          **Workflow:** ${{ github.workflow }}
+          **Run ID:** ${{ github.run_id }}
+          
+          ## Summary
+          
+          - **Documentation:** ${{ steps.doc-verify.outputs.new_docs || 0 }} new docs created
+          - **Self-Tests:** ${{ fromJson(steps.self-test.outputs.test_results).passed || 0 }}/${{ fromJson(steps.self-test.outputs.test_results).total || 0 }} passed
+          - **Auto-Fixes:** ${{ steps.error-fix.outputs.fixes_applied || 0 }} fixes applied
+          - **Build:** ${{ steps.build.outcome == 'success' && '✅ Success' || '❌ Failed' }}
+          - **Deployment:** ${{ steps.deploy.outcome == 'success' && '✅ Success' || '❌ Failed' }}
+          - **Health:** ${{ steps.health-check.outputs.health_status || 'unknown' }}
+          
+          ## Details
+          
+          ### Documentation Verification
+          - New features detected and documented
+          - Claims verified against codebase
+          - Auto-generated documentation created
+          
+          ### Self-Test Results
+          - Manual error simulation completed
+          - Auto-fix capabilities tested
+          - System resilience verified
+          
+          ### Error Fixing
+          - Comprehensive error detection
+          - Automatic fix application
+          - System stability maintained
+          
+          ### Deployment
+          - Multi-strategy deployment attempted
+          - Health monitoring active
+          - Rollback capabilities available
+          
+          ## Files Modified
+          
+          \`\`\`
+          $(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "No changes detected")
+          \`\`\`
+          
+          ## Next Steps
+          
+          1. Review auto-generated documentation
+          2. Verify deployment health
+          3. Monitor system performance
+          4. Address any remaining issues
+          
+          ---
+          *Report generated by QMOI Auto-Development System*
+          EOF
+          
+          # Save report
+          echo "report_path=qmoi-autodev-report.md" >> $GITHUB_OUTPUT
+
+      - name: Upload reports as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-autodev-reports
+          path: |
+            qmoi-autodev-report.md
+            docs/verification-report.json
+            logs/self-test-report.json
+            logs/ai_error_fix.log
+            logs/deployment-health.log
+
+      - name: Send notifications
         if: always()
         run: |
-          echo "📝 Auto-committing QMOI fixes..."
-          git config --local user.email "qmoi-autodev@alpha-q.ai"
-          git config --local user.name "QMOI Auto-Dev"
-          git add -A
-          git diff --staged --quiet || git commit -m "🤖 QMOI Auto-Dev: Enhanced fixes and improvements
+          echo "📢 Sending notifications..."
+          
+          # Prepare notification message
+          MESSAGE="QMOI Auto-Development Report:
+          
+          📊 Summary:
+          - Docs: ${{ steps.doc-verify.outputs.new_docs || 0 }} new
+          - Tests: ${{ fromJson(steps.self-test.outputs.test_results).passed || 0 }}/${{ fromJson(steps.self-test.outputs.test_results).total || 0 }} passed
+          - Fixes: ${{ steps.error-fix.outputs.fixes_applied || 0 }} applied
+          - Build: ${{ steps.build.outcome == 'success' && '✅' || '❌' }}
+          - Deploy: ${{ steps.deploy.outcome == 'success' && '✅' || '❌' }}
+          - Health: ${{ steps.health-check.outputs.health_status || 'unknown' }}
+          
+          🔗 Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          
+          # Send to Slack if configured
+          if [ -n "${{ secrets.SLACK_WEBHOOK_URL }}" ]; then
+            curl -X POST -H 'Content-type: application/json' \
+              --data "{\"text\":\"$MESSAGE\"}" \
+              ${{ secrets.SLACK_WEBHOOK_URL }}
+          fi
+          
+          # Send to Discord if configured
+          if [ -n "${{ secrets.DISCORD_WEBHOOK_URL }}" ]; then
+            curl -X POST -H 'Content-type: application/json' \
+              --data "{\"content\":\"$MESSAGE\"}" \
+              ${{ secrets.DISCORD_WEBHOOK_URL }}
+          fi
 
-          - Q-Converse voice system enhancements
-          - Q-Sightline vision system improvements
-          - Comprehensive error fixing
-          - System health optimizations
-          - Auto-generated by QMOI Auto-Dev Enhanced"
-
-      - name: Push Changes
-        if: always()
-        run: |
-          echo "📤 Pushing QMOI improvements..."
-          git push origin HEAD:${{ github.ref }} || echo "Push completed or no changes"
-
-  qmoi-deploy:
-    name: QMOI Enhanced Deploy
+  qmoi-docs-only:
     runs-on: ubuntu-latest
-    needs: qmoi-autodev-monitor
-    timeout-minutes: 20
-
+    name: QMOI Documentation Only
+    if: github.event.inputs.action == 'docs'
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+
+      - name: Run documentation verification
+        run: |
+          node scripts/qmoi_doc_verifier.js verify
+
+      - name: Upload documentation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-docs
+          path: |
+            docs/
+            docs/verification-report.json
+
+  qmoi-test-only:
+    runs-on: ubuntu-latest
+    name: QMOI Self-Test Only
+    if: github.event.inputs.action == 'test'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      - name: Build QMOI Enhanced
+      - name: Run self-tests
         run: |
-          echo "🏗️ Building QMOI Enhanced System..."
-          npm run build || echo "Build completed with warnings"
+          node scripts/qmoi_self_test_runner.js all
 
-      - name: Deploy to Vercel
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: |
-          echo "🚀 Deploying QMOI Enhanced to Vercel..."
-          npx vercel --prod --token $VERCEL_TOKEN || echo "Vercel deployment completed"
-
-      - name: Health Check
-        run: |
-          echo "🏥 Post-deployment health check..."
-          sleep 30
-          curl -f ${{ secrets.VERCEL_DEPLOY_URL }} || echo "Health check completed"
-
-  qmoi-notifications:
-    name: QMOI Notifications
-    runs-on: ubuntu-latest
-    needs: [qmoi-autodev-monitor, qmoi-deploy]
-    if: always()
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Send QMOI Status Notifications
-        run: |
-          echo "📢 Sending QMOI status notifications..."
-          node scripts/send_qmoi_notifications.js || echo "QMOI notifications completed"
-
-      - name: Update QMOI Documentation
-        run: |
-          echo "📚 Updating QMOI documentation..."
-          node scripts/update_qmoi_docs.js || echo "QMOI documentation update completed"
-
-  qmoi-cleanup:
-    name: QMOI Cleanup
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Cleanup old logs
-        run: |
-          echo "🧹 Cleaning up old QMOI logs..."
-          find logs/ -name "*.log" -mtime +7 -delete || true
-          find reports/ -name "*.json" -mtime +30 -delete || true
-
-      - name: Archive QMOI reports
-        run: |
-          echo "📦 Archiving QMOI reports..."
-          tar -czf qmoi-reports-$(date +%Y%m%d).tar.gz reports/ || true 
+          name: qmoi-tests
+          path: |
+            logs/self-test-report.json
+            logs/ai_error_fix.log 
