@@ -9,6 +9,10 @@ const SYNC_SCRIPT = path.join(__dirname, 'media_sync.js');
 const FIX_SCRIPT = path.join(__dirname, 'enhanced-error-fix.js');
 const LOG_FILE = path.join(__dirname, '../logs/qmoi_media_orchestrator.log');
 const HEALTH_URL = 'http://localhost:3001/api/health';
+const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
+const VERCEL_ORG_ID = process.env.VERCEL_ORG_ID;
+const VERCEL_PROJECT_ID = process.env.VERCEL_PROJECT_ID;
+const ENV_FILE = '.env.production';
 
 let failureCount = 0;
 const FAILURE_THRESHOLD = 3;
@@ -48,6 +52,7 @@ function runSync() {
     log('S3 sync completed.');
     failureCount = 0;
     runFixAndGit();
+    runVercelAutoFix();
   } catch (err) {
     log('S3 sync failed: ' + err);
     failureCount++;
@@ -55,6 +60,7 @@ function runSync() {
       notifyFailure(`QMOI: S3 sync failed ${failureCount} times in a row.`);
     }
     runFixAndGit();
+    runVercelAutoFix();
   }
 }
 
@@ -84,6 +90,27 @@ function runFixAndGit() {
   }
 }
 
+function runVercelAutoFix() {
+  try {
+    log('Running Vercel auto-fix...');
+    execSync(`node ${FIX_SCRIPT} --type=vercel`);
+    log('Vercel auto-fix completed.');
+  } catch (err) {
+    log('Vercel auto-fix failed: ' + err);
+  }
+}
+
+function forceVercelRedeploy() {
+  try {
+    log('Forcing Vercel redeploy with cache clear...');
+    execSync(`npx vercel --prod --yes --force --token ${VERCEL_TOKEN} --scope ${VERCEL_ORG_ID} --confirm --debug --no-clipboard --no-wait --env-file=${ENV_FILE} --build-env-file=${ENV_FILE} --clear-cache`);
+    log('Vercel redeploy triggered.');
+  } catch (err) {
+    log('Vercel redeploy failed: ' + err);
+    notifyFailure('QMOI: Vercel redeploy failed: ' + err);
+  }
+}
+
 function checkHealth(cb) {
   http.get(HEALTH_URL, res => {
     let data = '';
@@ -91,6 +118,12 @@ function checkHealth(cb) {
     res.on('end', () => {
       log('Health check: ' + data);
       failureCount = 0;
+      // Check for Vercel deployment errors in health data
+      if (data && data.toLowerCase().includes('vercel')) {
+        log('Detected Vercel deployment error in health check.');
+        runVercelAutoFix();
+        forceVercelRedeploy();
+      }
       if (cb) cb(true);
     });
   }).on('error', err => {
@@ -100,6 +133,8 @@ function checkHealth(cb) {
       notifyFailure(`QMOI: Health check failed ${failureCount} times in a row.`);
     }
     runFixAndGit();
+    runVercelAutoFix();
+    forceVercelRedeploy();
     if (cb) cb(false);
   });
 }
