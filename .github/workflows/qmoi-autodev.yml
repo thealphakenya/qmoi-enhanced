@@ -302,6 +302,32 @@ jobs:
               ${{ secrets.DISCORD_WEBHOOK_URL }}
           fi
 
+      - name: Upload QMOI Env & HuggingFace Status Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-env-huggingface-status
+          path: |
+            logs/env_manager_status.json
+            logs/huggingface_spaces_status.json
+            logs/env_manager.log
+            logs/huggingface_spaces.log
+
+      - name: QMOI Env & HuggingFace Status Summary
+        run: |
+          echo '### QMOI Environment Manager Status' >> $GITHUB_STEP_SUMMARY
+          if [ -f logs/env_manager_status.json ]; then
+            cat logs/env_manager_status.json >> $GITHUB_STEP_SUMMARY
+          else
+            echo 'No env_manager_status.json found.' >> $GITHUB_STEP_SUMMARY
+          fi
+          echo '' >> $GITHUB_STEP_SUMMARY
+          echo '### QMOI HuggingFace Spaces Status' >> $GITHUB_STEP_SUMMARY
+          if [ -f logs/huggingface_spaces_status.json ]; then
+            cat logs/huggingface_spaces_status.json >> $GITHUB_STEP_SUMMARY
+          else
+            echo 'No huggingface_spaces_status.json found.' >> $GITHUB_STEP_SUMMARY
+          fi
+
   qmoi-docs-only:
     runs-on: ubuntu-latest
     name: QMOI Documentation Only

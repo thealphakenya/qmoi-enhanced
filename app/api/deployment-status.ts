@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
+import path from 'path';
 
 export async function GET() {
   let status = 'Unknown';
@@ -7,6 +8,8 @@ export async function GET() {
   let health = '';
   let logs: string[] = [];
   let history: {timestamp: string, status: string, version: string}[] = [];
+  let envManagerStatus: any = null;
+  let huggingfaceStatus: any = null;
   try {
     const logData = fs.readFileSync('logs/vercel_auto_deploy.log', 'utf-8').split('\n').filter(Boolean) as string[];
     logs = logData.slice(-20);
@@ -34,6 +37,15 @@ export async function GET() {
       events.push({timestamp, status, version});
     }
     history = events.slice(-20).reverse();
+    // --- New: Read envManagerStatus and huggingfaceStatus ---
+    const envManagerPath = path.join(process.cwd(), 'logs', 'env_manager_status.json');
+    if (fs.existsSync(envManagerPath)) {
+      envManagerStatus = JSON.parse(fs.readFileSync(envManagerPath, 'utf-8'));
+    }
+    const huggingfaceStatusPath = path.join(process.cwd(), 'logs', 'huggingface_spaces_status.json');
+    if (fs.existsSync(huggingfaceStatusPath)) {
+      huggingfaceStatus = JSON.parse(fs.readFileSync(huggingfaceStatusPath, 'utf-8'));
+    }
   } catch {}
-  return NextResponse.json({ status, lastDeploy, health, logs, history });
+  return NextResponse.json({ status, lastDeploy, health, logs, history, envManagerStatus, huggingfaceStatus });
 } 

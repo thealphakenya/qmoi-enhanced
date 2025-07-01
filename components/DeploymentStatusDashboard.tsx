@@ -24,6 +24,8 @@ export default function DeploymentStatusDashboard({ isMaster = false }: { isMast
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [history, setHistory] = useState<any[]>([]); // Accepts extra fields
+  const [envManagerStatus, setEnvManagerStatus] = useState<any>(null);
+  const [huggingfaceStatus, setHuggingfaceStatus] = useState<any>(null);
 
   async function fetchStatus() {
     setLoading(true);
@@ -37,6 +39,8 @@ export default function DeploymentStatusDashboard({ isMaster = false }: { isMast
       setHealth(data.health);
       setLogs(data.logs || []);
       setHistory(data.history || []);
+      setEnvManagerStatus(data.envManagerStatus || null);
+      setHuggingfaceStatus(data.huggingfaceStatus || null);
     } catch (err: any) {
       setError(err.message || 'Unknown error');
     } finally {
@@ -158,6 +162,30 @@ export default function DeploymentStatusDashboard({ isMaster = false }: { isMast
         <ul style={{maxHeight: 120, overflowY: 'auto'}}>
           {logs.map((log, i) => <li key={i}>{log}</li>)}
         </ul>
+        {envManagerStatus && (
+          <div style={{marginTop: 16, padding: 12, background: '#222', borderRadius: 8}}>
+            <h4>Environment Manager Status</h4>
+            <p><b>Status:</b> {envManagerStatus.status}</p>
+            <p><b>Last Checked:</b> {envManagerStatus.timestamp}</p>
+            {envManagerStatus.missing && envManagerStatus.missing.length > 0 && (
+              <p style={{color: 'orange'}}><b>Missing Vars:</b> {envManagerStatus.missing.join(', ')}</p>
+            )}
+          </div>
+        )}
+        {huggingfaceStatus && (
+          <div style={{marginTop: 16, padding: 12, background: '#222', borderRadius: 8}}>
+            <h4>HuggingFace Spaces Status</h4>
+            <p><b>Status:</b> {huggingfaceStatus.status}</p>
+            <p><b>Action:</b> {huggingfaceStatus.action}</p>
+            <p><b>Last Update:</b> {huggingfaceStatus.timestamp}</p>
+            {huggingfaceStatus.error && (
+              <p style={{color: 'red'}}><b>Error:</b> {huggingfaceStatus.error}</p>
+            )}
+            {huggingfaceStatus.autoRepair !== undefined && (
+              <p><b>Auto-Repair Attempted:</b> {huggingfaceStatus.autoRepair ? 'Yes' : 'No'}</p>
+            )}
+          </div>
+        )}
       </>}
     </div>
   );
