@@ -146,13 +146,13 @@ export interface Task {
   status: 'pending' | 'running' | 'completed' | 'failed' | 'cancelled';
   priority: 'low' | 'medium' | 'high' | 'critical';
   progress: number;
-  result?: any;
+  result?: unknown;
   error?: string;
   createdAt: string;
   startedAt?: string;
   completedAt?: string;
   metadata: {
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 
@@ -198,7 +198,7 @@ export interface PaginatedResponse<T> {
 export interface ApiError {
   code: string;
   message: string;
-  details?: any;
+  details?: unknown;
 }
 
 // Auth Types
@@ -246,7 +246,7 @@ export interface SystemEvent {
   message: string;
   timestamp: string;
   source: string;
-  details?: any;
+  details?: unknown;
 }
 
 // Log Types
@@ -257,7 +257,7 @@ export interface LogEntry {
   timestamp: string;
   source: string;
   context?: {
-    [key: string]: any;
+    [key: string]: unknown;
   };
   stack?: string;
 } 

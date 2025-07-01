@@ -4,7 +4,7 @@
 - **Total Errors**: 1
 - **Fixed Errors**: 0
 - **Remaining Errors**: 1
-- **Total Time**: 200s
+- **Total Time**: 540s
 - **Deployment Status**: failed
 
 ## Error Details
@@ -19,4 +19,4 @@
 - [FAILED] force-deploy: Force redeploy failed (0ms)
 - [FAILED] alt-deploy: Alternative deployment failed (0ms)
 
-Generated at: 2025-06-28T05:37:16.968Z
+Generated at: 2025-06-30T18:34:39.650Z

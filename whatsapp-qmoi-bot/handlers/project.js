@@ -1,4 +1,4 @@
-/* eslint-env node */
+/* eslint-disable-next-line @typescript-eslint/no-var-requires */
 const askQmoi = require("../services/qmoi");
 
 async function continueProject(sock, jid, projectDetails) {

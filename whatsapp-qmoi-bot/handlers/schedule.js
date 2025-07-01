@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const cron = require('node-cron');
 
 function scheduleCampaign(sock, numbers, message, cronTime) {

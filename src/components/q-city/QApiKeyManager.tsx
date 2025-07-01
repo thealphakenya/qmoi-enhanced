@@ -11,15 +11,12 @@ interface ApiKey {
 
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
-  const [loading, setLoading] = useState(false);
   const [usage, setUsage] = useState<{ key: string; usage: number }[]>([]);
 
   const fetchKeys = async () => {
-    setLoading(true);
     const res = await fetch('/api/qapikey');
     const data = await res.json();
     setKeys(data.keys || []);
-    setLoading(false);
   };
 
   const fetchUsage = async () => {

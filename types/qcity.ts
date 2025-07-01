@@ -1,7 +1,7 @@
 export interface QCityStatus {
   running: boolean;
-  platforms: Record<string, any>;
-  features: Record<string, any>;
+  platforms: Record<string, unknown>;
+  features: Record<string, unknown>;
   resources: {
     cpu: number;
     memory: number;
@@ -10,7 +10,7 @@ export interface QCityStatus {
     gpu?: number;
     battery?: number;
   };
-  tasks: any[];
+  tasks: unknown[];
   errors: {
     id: string;
     appId: string;

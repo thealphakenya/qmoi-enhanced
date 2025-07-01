@@ -1,9 +1,8 @@
 import process from 'process';
 // @ts-expect-error: whatsapp-web.js types are not available
-import { Client, LocalAuth, Message, QRCode } from 'whatsapp-web.js';
+import { Client, LocalAuth, Message } from 'whatsapp-web.js';
 // @ts-expect-error: qrcode-terminal types are not available
 import * as qrcode from 'qrcode-terminal';
-import { EventEmitter } from 'events';
 
 interface WhatsAppConfig {
   masterPhone: string;
