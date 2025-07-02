@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { SelfHealingService, SystemError } from '../scripts/services/self_healing';
@@ -27,6 +27,8 @@ const SystemHealthDashboard: React.FC = () => {
   const [diagnosis, setDiagnosis] = useState<{ [id: string]: string }>({});
   const [fixHistory, setFixHistory] = useState<string[]>([]);
   const isMasterOrTeam = true; // Replace with actual role check
+  const [healthStats, setHealthStats] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   const diagnoseError = async (error: SystemError) => {
     const diag = await SelfHealingService.diagnoseError(error);
@@ -43,6 +45,28 @@ const SystemHealthDashboard: React.FC = () => {
     await SelfHealingService.reportToMaster(error, diag, result);
     setErrors(prev => prev.filter(e => e.id !== error.id));
   };
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch('/qmoi_health_status.json');
+        if (res.ok) {
+          setHealthStats(await res.json());
+        } else {
+          // fallback to /status endpoint
+          const statusRes = await fetch('/status');
+          if (statusRes.ok) setHealthStats(await statusRes.json());
+        }
+      } catch {
+        setHealthStats(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchStats();
+    const interval = setInterval(fetchStats, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="my-8">
@@ -86,6 +110,35 @@ const SystemHealthDashboard: React.FC = () => {
           </CardContent>
         </Card>
       )}
+      <Card className="bg-white shadow-lg mt-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">QMOI Health & Accuracy Stats</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {loading ? (
+            <div>Loading health stats...</div>
+          ) : healthStats ? (
+            <div>
+              <div className="flex flex-wrap gap-4 items-center mb-4">
+                <span className={`px-2 py-1 rounded text-xs ${healthStats.percent_fixed >= 95 ? 'bg-green-100 text-green-800' : healthStats.percent_fixed >= 80 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}`}>Health: {healthStats.percent_fixed}%</span>
+                <span className="px-2 py-1 rounded text-xs bg-blue-100 text-blue-800">Total Errors: {healthStats.total_errors}</span>
+                <span className="px-2 py-1 rounded text-xs bg-orange-100 text-orange-800">Remaining: {healthStats.errors_remaining}</span>
+                <span className="px-2 py-1 rounded text-xs bg-green-100 text-green-800">Fixed: {healthStats.errors_fixed}</span>
+                <span className="px-2 py-1 rounded text-xs bg-purple-100 text-purple-800">Auto-Fix Attempts: {healthStats.auto_fix_attempts}</span>
+                <span className="px-2 py-1 rounded text-xs bg-purple-200 text-purple-900">Auto-Fix Success: {healthStats.auto_fix_success}</span>
+              </div>
+              <div style={{width:'100%',background:'#eee',borderRadius:8,overflow:'hidden',marginBottom:10}}>
+                <div style={{width:`${healthStats.percent_fixed ?? 0}%`,background:'#4ade80',color:'#fff',padding:'4px 0',textAlign:'center'}}>{healthStats.percent_fixed ?? 0}%</div>
+              </div>
+              <div className="text-xs text-gray-500">Last update: {healthStats.last_update}</div>
+              <div className="text-xs text-gray-500">Last error: {healthStats.last_error}</div>
+              <div className="text-xs text-gray-500">Last fix: {healthStats.last_fix}</div>
+            </div>
+          ) : (
+            <div className="text-red-600">Failed to load health stats.</div>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 };

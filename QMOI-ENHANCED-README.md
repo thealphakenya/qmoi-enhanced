@@ -344,3 +344,53 @@ The master dashboard shows:
 ---
 
 **QMOI Enhanced System** - Always learning, always improving, always automating! 🚀 
+
+## 🩺 Advanced Health, Error Fixing, and Optimization in QMOI Hugging Face Spaces
+
+- **/status Endpoint:**
+  - Live health, error, and resource status at `/status` (e.g., `/status` on your deployed Space)
+- **Advanced Error Fixing:**
+  - All errors are caught, logged, and auto-fixed if possible; status is always visible in `/status` and the dashboard
+- **Device Optimization:**
+  - Aggressively optimizes CPU, memory, disk, and prepares for large apps
+- **Autoevolution & Performance Hooks:**
+  - Hooks for self-improvement, retraining, and dynamic performance tuning
+- **Self-Healing & Observability:**
+  - QMOI Spaces is robust and self-healing—even if errors occur, the system attempts auto-repair and exposes all status in `/status` and logs
+
+**Relevant scripts:**
+- `huggingface_space/app.py`
+- `scripts/qmoi_huggingface_spaces.js`
+
+---
+
+## 🛡️ Advanced Device Error Detection, Auto-Fix, and Health/Accuracy Tracking
+
+- **Proactive Health Checks:**
+  - Monitors event loop lag, memory/CPU spikes, and process responsiveness in real time.
+  - Detects and prevents device errors like 'not responding' or 'crashed' before they impact the system.
+
+- **Auto-Fix & Recovery:**
+  - Automatically attempts to fix or restart any process that becomes unresponsive or crashes.
+  - Aggressively cleans up resources and optimizes device health.
+  - All auto-fix actions are logged and surfaced in `/status`, dashboard, and logs.
+
+- **Health & Accuracy Stats:**
+  - Tracks total errors, errors remaining, errors fixed, percent fixed, auto-fix attempts, and success rate.
+  - All health and fix stats are automatically saved to a file (`qmoi_health_status.json`) for dashboard and analytics.
+  - `/status` endpoint and dashboard now show these metrics for full observability and accuracy tracking.
+
+- **Development Safe Mode:**
+  - In development, QMOI never destabilizes the device and always logs before taking action.
+
+---
+
+## Documentation Automation & Resilience (2025-06-11)
+- **Self-Healing Doc Verifier:** Node.js and Python verifiers run in sequence; if one fails, the other auto-fixes and logs all issues.
+- **Error Simulation:** Simulates permission, corruption, and missing directory errors to ensure resilience.
+- **Persistent Logging:** All doc verification and fixes are logged and synced to the cloud.
+- **Notification Triggers:** Sends notifications for verification/fix failures.
+- **.md File Update Automation:** All .md files are auto-updated with verification/fix metadata and checked for up-to-date status after every run.
+- **CI/CD Integration:** Both verifiers run in CI, and logs/reports are uploaded as artifacts. The workflow never fails for doc issues, only for true system errors.
+
+--- 

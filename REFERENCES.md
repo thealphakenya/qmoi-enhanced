@@ -20,7 +20,12 @@
 - [SECURITYREADME.md](./SECURITYREADME.md): Security features and best practices.
 - [EMPLOYEESUSERSENROLLED.md](./EMPLOYEESUSERSENROLLED.md): Employee/user enrollment and management.
 - [MEGAVAULT.md](./MEGAVAULT.md): Megavault and secure storage.
-- [QVS/QVSREADME.md](./QVS/QVSREADME.md): QVS system documentation.
+- [QVS/QVSREADME.md](./QVS/QVSREADME.md): QVS system main documentation and usage guide.
+- [QMOIHUGGINGFACESPACESSETUPINST.md](./QMOIHUGGINGFACESPACESSETUPINST.md): Hugging Face Spaces setup, automation, and troubleshooting.
+- [QMOI-HUGGINGFACE-ENHANCEMENTS.md](./QMOI-HUGGINGFACE-ENHANCEMENTS.md): Hugging Face integration and advanced features.
+- [scripts/hf_model_sync.py](./scripts/hf_model_sync.py): Automated Hugging Face model repo sync utility.
+- [scripts/qmoi_huggingface_spaces.js](./scripts/qmoi_huggingface_spaces.js): Hugging Face Spaces automation, deployment, and health checks.
+- [scripts/test_hf_space_ui.py](./scripts/test_hf_space_ui.py): Automated UI feature verification for Hugging Face Spaces.
 
 ## How to Use
 - Click any link above to view the full documentation for that topic.

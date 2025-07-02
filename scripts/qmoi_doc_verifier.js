@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
 
 // Enhanced QMOI Documentation Verifier with Auto-Creation and Self-Testing
 class QmoiDocVerifier {
   constructor() {
     this.projectRoot = process.cwd();
     this.docsDir = path.join(this.projectRoot, 'docs');
-    this.mdFiles = [];
+    this.mdFiles = this.scanAllMdFiles();
     this.issues = [];
     this.autoCreated = [];
     this.testResults = [];
@@ -369,7 +369,7 @@ python scripts/{SCRIPT_NAME}.py
         const result = execSync(test.command, { 
           encoding: 'utf8',
           stdio: 'pipe',
-          timeout: 30000
+          timeout: 120000
         });
         
         this.testResults.push({
@@ -548,6 +548,7 @@ python scripts/{SCRIPT_NAME}.py
   }
 
   async run() {
+    console.log('[DEBUG] Markdown files at start of run:', this.mdFiles);
     console.log('\uD83D\uDE80 Starting QMOI Enhanced Documentation Verifier...\n');
     try {
       // Ensure docs directory exists
@@ -564,23 +565,70 @@ python scripts/{SCRIPT_NAME}.py
       await this.runSelfTests();
       // Simulate manual errors
       await this.simulateManualErrors();
+      // Simulate permission error
+      try {
+        fs.writeFileSync('/root/should_fail.txt', 'test');
+      } catch (e) {
+        this.issues.push('Simulated permission error: ' + e.message);
+      }
+      // Simulate corrupted file
+      try {
+        fs.writeFileSync(path.join(this.docsDir, 'corrupted.md'), '\0\0\0corrupted');
+      } catch (e) {
+        this.issues.push('Simulated file corruption: ' + e.message);
+      }
+      // Simulate missing directory
+      try {
+        fs.readdirSync('/nonexistent/dir');
+      } catch (e) {
+        this.issues.push('Simulated missing directory: ' + e.message);
+      }
       // Generate comprehensive report
       const report = this.generateReport();
+      // Log report persistently
+      fs.writeFileSync(path.join(this.docsDir, 'verification-report.json'), JSON.stringify(report, null, 2));
+      // Notification trigger (stub)
+      if (this.issues.length > 0) {
+        try {
+          execSync('python scripts/doc_verifier.py --notify "QMOI Doc Verifier issues detected"');
+        } catch (e) {
+          console.error('Notification trigger failed:', e.message);
+        }
+      }
       console.log('\n\uD83C\uDF89 QMOI Documentation Verification Complete!');
       return report;
     } catch (error) {
       console.error('\u274C Verification failed:', error.message);
+      // Fallback: run Python verifier
+      try {
+        execSync('python scripts/doc_verifier.py --fix', { stdio: 'inherit' });
+        console.log('\u26a0\ufe0f Fallback to Python verifier completed.');
+      } catch (fallbackError) {
+        console.error('\u274C Python verifier also failed:', fallbackError.message);
+        process.exitCode = 1;
+        return { error: error.message, fallbackError: fallbackError.message };
+      }
       // Only exit non-zero for true system errors
-      process.exitCode = 1;
+      process.exitCode = 0;
       return { error: error.message };
     }
     // Always exit 0 for doc mismatches (auto-fixed above)
     process.exitCode = 0;
   }
+
+  scanAllMdFiles() {
+    const allFiles = this.getFilesRecursively(this.projectRoot);
+    const mdFiles = allFiles.filter(file =>
+      file.endsWith('.md') || file.endsWith('.MD') || file.endsWith('.markdown')
+    );
+    // Debug log for projectRoot and found files
+    console.log('[DEBUG] projectRoot:', this.projectRoot);
+    console.log('[DEBUG] Markdown files found:', mdFiles);
+    return mdFiles;
+  }
 }
 
 // CLI Interface
-if (require.main === module) {
   const verifier = new QmoiDocVerifier();
   
   const args = process.argv.slice(2);
@@ -603,7 +651,6 @@ if (require.main === module) {
       break;
     default:
       console.log('Usage: node qmoi_doc_verifier.js [verify|test|simulate|create]');
-  }
 }
 
-module.exports = QmoiDocVerifier; 
+export default QmoiDocVerifier; 

@@ -453,35 +453,47 @@ class QMOIDocGenerator:
         return doc_path
     
     def update_existing_docs(self):
-        """Update existing documentation files"""
+        """Update existing documentation files and add verification/fix metadata"""
         existing_docs = list(self.docs_dir.glob("*.md"))
-        
         for doc_file in existing_docs:
             if doc_file.name == ".doc_state.json":
                 continue
-                
             # Check if source file still exists
             if str(doc_file) in self.doc_state["files"]:
                 source_file = Path(self.doc_state["files"][str(doc_file)]["source_file"])
-                
                 if source_file.exists():
                     # Check if source has changed
                     current_hash = hashlib.md5(doc_file.read_text().encode()).hexdigest()
                     stored_hash = self.doc_state["files"][str(doc_file)]["hash"]
-                    
                     if current_hash != stored_hash:
                         # Update documentation
                         file_info = self.extract_code_info(source_file)
                         doc_type = self.doc_state["files"][str(doc_file)]["doc_type"]
                         new_content = self.generate_documentation(file_info, doc_type)
-                        
+                        # Add verification/fix metadata
+                        new_content += f"\n\n---\n*Last verified: {datetime.now().isoformat()} by QMOI Auto-Docs*\n"
                         doc_file.write_text(new_content, encoding='utf-8')
-                        
                         # Update state
                         self.doc_state["files"][str(doc_file)]["hash"] = hashlib.md5(new_content.encode()).hexdigest()
                         self.doc_state["files"][str(doc_file)]["updated"] = datetime.now().isoformat()
-                        
                         print(f"Updated: {doc_file}")
+                else:
+                    # Source file missing, mark doc as orphaned
+                    orphan_note = f"\n\n---\n*Source file missing as of {datetime.now().isoformat()}*\n"
+                    content = doc_file.read_text() + orphan_note
+                    doc_file.write_text(content, encoding='utf-8')
+                    print(f"Orphaned: {doc_file}")
+        # Add/verify test for .md file update automation
+        self.test_md_update_automation()
+    
+    def test_md_update_automation(self):
+        """Test that all .md files have verification/fix metadata"""
+        for doc_file in self.docs_dir.glob("*.md"):
+            content = doc_file.read_text()
+            if 'Last verified:' not in content:
+                print(f"\u26a0\ufe0f {doc_file} missing verification metadata!")
+            else:
+                print(f"\u2705 {doc_file} has verification metadata.")
     
     def verify_documentation_claims(self) -> Dict[str, bool]:
         """Verify all documentation claims"""

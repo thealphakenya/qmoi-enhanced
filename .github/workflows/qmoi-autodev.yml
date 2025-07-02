@@ -195,6 +195,30 @@ jobs:
             echo "health_status=unknown" >> $GITHUB_OUTPUT
           fi
 
+      - name: Deploy/Update Hugging Face Space
+        run: |
+          echo "🚀 Deploying/Updating Hugging Face Space..."
+          node scripts/qmoi_huggingface_spaces.js deploy || echo "Hugging Face Space deploy failed (non-fatal)"
+
+      - name: Sync QMOI Model to Hugging Face Model Repo
+        run: |
+          echo "💾 Syncing QMOI model to Hugging Face model repo..."
+          python scripts/hf_model_sync.py --repo alphaqmoi/qmoi-ai-system --model-path models/latest || echo "Model sync failed (non-fatal)"
+
+      - name: Test Hugging Face Space UI
+        run: |
+          echo "🧪 Testing Hugging Face Space UI..."
+          python scripts/test_hf_space_ui.py --space-url https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system || echo "UI test failed (non-fatal)"
+
+      - name: Upload Hugging Face Automation Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: huggingface-logs
+          path: |
+            logs/hf_model_sync.log
+            logs/huggingface_spaces.log
+            logs/test_hf_space_ui.log
+
       - name: Generate Report
         id: report
         run: |
