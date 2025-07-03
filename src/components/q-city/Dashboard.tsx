@@ -9,6 +9,7 @@ import { QMoiState } from './QMoiState';
 import QAvatar from './QAvatar';
 import CommandPanel from './CommandPanel';
 import AuditLogPanel from './AuditLogPanel';
+import SelfHealPanel from './SelfHealPanel';
 
 export default function Dashboard() {
   const [theme, setTheme] = useState('dark');
@@ -27,6 +28,7 @@ export default function Dashboard() {
         <button onClick={() => setPanel('command')} className="px-3 py-1 rounded bg-cyan-700 text-white">Command</button>
         <button onClick={() => setPanel('auditlog')} className="px-3 py-1 rounded bg-cyan-700 text-white">Audit Log</button>
         <button onClick={() => setPanel('help')} className="px-3 py-1 rounded bg-cyan-700 text-white">Help</button>
+        <button onClick={() => setPanel('selfheal')} className="px-3 py-1 rounded bg-cyan-700 text-white">Self-Heal NPM</button>
         <button onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')} className="ml-auto px-3 py-1 rounded bg-gray-700 text-white">{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</button>
       </nav>
       <main className="p-6 max-w-5xl mx-auto">
@@ -38,6 +40,7 @@ export default function Dashboard() {
         {panel === 'command' && <CommandPanel />}
         {panel === 'auditlog' && <AuditLogPanel />}
         {panel === 'help' && <HelpPanel />}
+        {panel === 'selfheal' && <SelfHealPanel />}
       </main>
       <div className="fixed bottom-4 right-4 z-50">
         <QMoiState minimized={false} isMaster={true} />
