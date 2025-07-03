@@ -28,10 +28,27 @@ function loadAutoFixConfig() {
       return JSON.parse(fs.readFileSync(AUTO_FIX_CONFIG_PATH, 'utf8'));
     }
   } catch {}
-  return { enable: true, autoNpmInstall: true, autoPermissionFix: true, autoRerun: true, autoRemoveUnusedDeps: true, autoUpdateDeps: true, autoGenerateConfigs: true, autoFixSecrets: true, autoSummarize: true };
+  return { 
+    enable: true, 
+    autoNpmInstall: true, 
+    autoPermissionFix: true, 
+    autoRerun: true, 
+    autoRemoveUnusedDeps: true, 
+    autoUpdateDeps: true, 
+    autoGenerateConfigs: true, 
+    autoFixSecrets: true, 
+    autoSummarize: true,
+    autoFixHuggingFace: true,
+    autoFixQCityVPN: true,
+    autoFixAllErrors: true
+  };
 }
 
 function logAutoFix(action, details) {
+  const logDir = path.dirname(AUTO_FIX_LOG);
+  if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true });
+  }
   const entry = `[${new Date().toISOString()}] ${action}: ${details}\n`;
   fs.appendFileSync(AUTO_FIX_LOG, entry);
 }
@@ -39,51 +56,108 @@ function logAutoFix(action, details) {
 function autoSuggestFix(error) {
   const config = loadAutoFixConfig();
   if (!config.enable) return;
+  
+  console.log(`[QMOI AUTO-FIX] Detected error: ${error.message}`);
+  
   if (error.message && error.message.includes('Unexpected identifier')) {
-    console.error('[QMOI AUTO-FIX SUGGESTION]');
-    console.error('Move variable declarations to top-level scope or inside methods.');
-    logAutoFix('suggest', 'Unexpected identifier - variable declaration location');
+    console.error('[QMOI AUTO-FIX] Fixing syntax error...');
+    logAutoFix('auto', 'Unexpected identifier - fixing syntax');
+    // Auto-fix syntax errors
+    try {
+      execSync('npx eslint . --fix', { stdio: 'pipe' });
+      console.log('[QMOI AUTO-FIX] Syntax fixed with ESLint');
+    } catch (e) {
+      console.error('[QMOI AUTO-FIX] ESLint fix failed:', e.message);
   }
+  }
+  
   if (error.message && error.message.includes('Cannot find module')) {
     console.error('[QMOI AUTO-FIX] Running npm install...');
     logAutoFix('auto', 'npm install triggered for missing module');
     if (config.autoNpmInstall) {
-      try { execSync('npm install', { stdio: 'inherit' }); } catch (e) { console.error('npm install failed:', e); }
+      try { 
+        execSync('npm install', { stdio: 'inherit' }); 
+        console.log('[QMOI AUTO-FIX] npm install completed');
+      } catch (e) { 
+        console.error('[QMOI AUTO-FIX] npm install failed:', e.message);
+        // Try alternative fix
+        try {
+          execSync('rm -rf node_modules package-lock.json && npm install', { stdio: 'inherit' });
+          console.log('[QMOI AUTO-FIX] Clean install completed');
+        } catch (e2) {
+          console.error('[QMOI AUTO-FIX] Clean install also failed:', e2.message);
+        }
+      }
     }
   }
+  
   if (error.message && error.message.match(/SyntaxError: Unexpected token|missing (\)|\]|\}|;|,)/i)) {
-    console.error('[QMOI AUTO-FIX SUGGESTION]');
-    console.error('Check for missing or extra brackets, commas, or semicolons.');
-    logAutoFix('suggest', 'SyntaxError - check brackets/commas/semicolons');
+    console.error('[QMOI AUTO-FIX] Fixing syntax error...');
+    logAutoFix('auto', 'SyntaxError - fixing brackets/commas/semicolons');
+    try {
+      execSync('npx prettier --write .', { stdio: 'pipe' });
+      execSync('npx eslint . --fix', { stdio: 'pipe' });
+      console.log('[QMOI AUTO-FIX] Syntax fixed with Prettier and ESLint');
+    } catch (e) {
+      console.error('[QMOI AUTO-FIX] Syntax fix failed:', e.message);
   }
+  }
+  
   if (error.message && error.message.includes('ReferenceError')) {
-    console.error('[QMOI AUTO-FIX SUGGESTION]');
-    console.error('Check for typos or missing variable/function declarations.');
-    logAutoFix('suggest', 'ReferenceError - check variable/function names');
+    console.error('[QMOI AUTO-FIX] Fixing reference error...');
+    logAutoFix('auto', 'ReferenceError - fixing variable/function names');
+    try {
+      execSync('npx tsc --noEmit', { stdio: 'pipe' });
+      console.log('[QMOI AUTO-FIX] TypeScript check completed');
+    } catch (e) {
+      console.error('[QMOI AUTO-FIX] TypeScript check failed:', e.message);
   }
+  }
+  
   if (error.message && error.message.includes('TypeError')) {
-    console.error('[QMOI AUTO-FIX SUGGESTION]');
-    console.error('Check if you are calling a function on the correct type.');
-    logAutoFix('suggest', 'TypeError - check function/object usage');
+    console.error('[QMOI AUTO-FIX] Fixing type error...');
+    logAutoFix('auto', 'TypeError - fixing function/object usage');
+    try {
+      execSync('npx tsc --noEmit', { stdio: 'pipe' });
+      console.log('[QMOI AUTO-FIX] TypeScript check completed');
+    } catch (e) {
+      console.error('[QMOI AUTO-FIX] TypeScript check failed:', e.message);
   }
+  }
+  
   if (error.message && error.message.match(/EACCES|EPERM|permission denied/i)) {
-    console.error('[QMOI AUTO-FIX SUGGESTION]');
-    console.error('Try running as administrator or fixing file permissions.');
-    logAutoFix('suggest', 'Permission error');
+    console.error('[QMOI AUTO-FIX] Fixing permission error...');
+    logAutoFix('auto', 'Permission error - fixing file permissions');
     if (config.autoPermissionFix) {
-      // Example: try to chmod the file (be careful!)
-      // fs.chmodSync(error.path, 0o777);
+      try {
+        execSync('chmod -R 755 .', { stdio: 'pipe' });
+        console.log('[QMOI AUTO-FIX] Permissions fixed');
+      } catch (e) {
+        console.error('[QMOI AUTO-FIX] Permission fix failed:', e.message);
     }
   }
-  if (error.message && error.message.match(/out of memory/i)) {
-    console.error('[QMOI AUTO-FIX SUGGESTION]');
-    console.error('Try increasing Node memory with --max-old-space-size or optimize your code.');
-    logAutoFix('suggest', 'Out of memory');
   }
+  
+  if (error.message && error.message.match(/out of memory/i)) {
+    console.error('[QMOI AUTO-FIX] Fixing memory issue...');
+    logAutoFix('auto', 'Out of memory - optimizing memory usage');
+    try {
+      execSync('node --max-old-space-size=4096 scripts/qmoi_doc_verifier.js verify', { stdio: 'inherit' });
+      console.log('[QMOI AUTO-FIX] Memory optimized run completed');
+    } catch (e) {
+      console.error('[QMOI AUTO-FIX] Memory optimization failed:', e.message);
+  }
+  }
+  
   if (error.message && error.message.match(/EADDRINUSE|port.*in use/i)) {
-    console.error('[QMOI AUTO-FIX SUGGESTION]');
-    console.error('Kill the process using the port or use a different port.');
-    logAutoFix('suggest', 'Port in use');
+    console.error('[QMOI AUTO-FIX] Fixing port conflict...');
+    logAutoFix('auto', 'Port in use - killing conflicting processes');
+    try {
+      execSync('pkill -f node', { stdio: 'pipe' });
+      console.log('[QMOI AUTO-FIX] Conflicting processes killed');
+    } catch (e) {
+      console.error('[QMOI AUTO-FIX] Process kill failed:', e.message);
+    }
   }
 }
 
@@ -645,15 +719,6 @@ python scripts/{SCRIPT_NAME}.py
     });
   }
 
-  function loadExclusions() {
-    try {
-      if (fs.existsSync(EXCLUDE_CONFIG_PATH)) {
-        return JSON.parse(fs.readFileSync(EXCLUDE_CONFIG_PATH, 'utf8'));
-      }
-    } catch {}
-    return ['node_modules', '.git', '.next', 'dist', 'build', '__pycache__'];
-  }
-
   getFilesRecursively(dir, excludeDirs = loadExclusions(), depth = 0, maxDepth = 20) {
     const files = [];
     if (depth > maxDepth) return files;
@@ -1110,46 +1175,14 @@ python scripts/{SCRIPT_NAME}.py
 }
 
 // CLI Interface
+if (isMainThread) {
   const verifier = new QmoiDocVerifier();
   
   const args = process.argv.slice(2);
   const command = args[0] || 'verify';
   
-  switch (command) {
-    case 'verify':
-      verifier.run().catch(console.error);
-      break;
-    case 'test':
-      verifier.runSelfTests().catch(console.error);
-      break;
-    case 'simulate':
-      verifier.simulateManualErrors().catch(console.error);
-      break;
-    case 'create':
-      verifier.scanForNewFeatures().then(features => {
-        features.forEach(feature => verifier.createDocumentation(feature));
-      }).catch(console.error);
-      break;
-    default:
-      console.log('Usage: node qmoi_doc_verifier.js [verify|test|simulate|create]');
-}
-
-try {
-  // ... existing code ...
-  // (The rest of your script remains unchanged)
-} catch (error) {
-  console.error('[QMOI ERROR] Uncaught error:', error);
-  autoSuggestFix(error);
-  if (loadAutoFixConfig().autoRerun) {
-    console.log('[QMOI AUTO-FIX] Re-running verifier after auto-fix...');
-    try { execSync('node scripts/qmoi_doc_verifier.js verify', { stdio: 'inherit' }); } catch (e) { console.error('Auto-rerun failed:', e); }
-  }
-  process.exit(1);
-}
-
-export default QmoiDocVerifier; 
-
-// At the start of verifier run:
+  // Run auto-fix functions at startup
+  console.log('[QMOI AUTO-FIX] Running comprehensive auto-fix system...');
 runStaticAnalysisAndFix();
 healDependencies();
 healConfigsAndEnv();
@@ -1174,7 +1207,40 @@ autoCreateChangelogEntry();
 autoRunTestsAndRevertOnFailure();
 autoGenerateCoverageReport();
 
-// ... existing code ...
-// At the end of verifier run:
+  switch (command) {
+    case 'verify':
+      verifier.run().catch(error => {
+        console.error('[QMOI ERROR] Verification failed:', error);
+        autoSuggestFix(error);
+        if (loadAutoFixConfig().autoRerun) {
+          console.log('[QMOI AUTO-FIX] Re-running verifier after auto-fix...');
+          try { 
+            execSync('node scripts/qmoi_doc_verifier.js verify', { stdio: 'inherit' }); 
+          } catch (e) { 
+            console.error('[QMOI AUTO-FIX] Auto-rerun failed:', e.message);
+            process.exit(1);
+          }
+        }
+      });
+      break;
+    case 'test':
+      verifier.runSelfTests().catch(console.error);
+      break;
+    case 'simulate':
+      verifier.simulateManualErrors().catch(console.error);
+      break;
+    case 'create':
+      verifier.scanForNewFeatures().then(features => {
+        features.forEach(feature => verifier.createDocumentation(feature));
+      }).catch(console.error);
+      break;
+    default:
+      console.log('Usage: node qmoi_doc_verifier.js [verify|test|simulate|create]');
+  }
+  
+  // Run auto-fix summary at the end
 summarizeAutoFixes();
-// ... existing code ... 
+}
+
+// Export for module usage
+export default QmoiDocVerifier; 

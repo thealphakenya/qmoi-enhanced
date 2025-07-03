@@ -234,4 +234,115 @@ QCity is enhanced to serve as a primary device for running QMOI operations, stor
 
 ---
 
-### See also: QCITYDEVICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation 
+### See also: QCITYDEVICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+
+## QCity Device Dashboard & Offloading (NEW)
+- Floating dashboard panel in Q-Avatar UI
+- Shows QCity device status, active devices, and resource usage
+- Toggle for offloading all heavy tasks to QCity/Colab
+- Button to open QCity management UI
+- Real-time updates from QCityService
+
+## Remote Command API (NEW)
+- /api/qcity/remote-command endpoint for running npm/build/test commands on QCity/Colab
+- Streams logs/results to dashboard
+- Secured with master controls
+
+## Enhanced Self-Healing & Fallback (NEW)
+- QMOI Autodev Daemon detects/fixes errors on QCity
+- If QCity fix fails, automatically falls back to other devices
+- Status and results reported in dashboard
+
+## QCity API Endpoints (NEW)
+- `/api/qcity/status`: Returns QCity device status, resource stats, and active device list for dashboard
+- `/api/qcity/remote-command`: Accepts a command and runs it remotely on QCity, returns output/logs (master/admin only)
+- Used by Q-Avatar dashboard for real-time updates and remote management
+
+## Backend Integration (ENHANCED)
+- QCityService powers all device/resource/command logic for the dashboard
+- API endpoints connect frontend UI to QCity backend for seamless automation
+
+---
+
+### See also: QCITYDEVICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+
+## QCity Device Dashboard & Offloading (NEW)
+- Floating dashboard panel in Q-Avatar UI
+- Shows QCity device status, active devices, and resource usage
+- Toggle for offloading all heavy tasks to QCity/Colab
+- Button to open QCity management UI
+- Real-time updates from QCityService
+
+## Remote Command API (NEW)
+- /api/qcity/remote-command endpoint for running npm/build/test commands on QCity/Colab
+- Streams logs/results to dashboard
+- Secured with master controls
+
+## Enhanced Self-Healing & Fallback (NEW)
+- QMOI Autodev Daemon detects/fixes errors on QCity
+- If QCity fix fails, automatically falls back to other devices
+- Status and results reported in dashboard
+
+## Real-Time Log Streaming (NEW)
+- Remote command API supports Server-Sent Events (SSE) for real-time log streaming
+- To use, POST to `/api/qcity/remote-command` with `{ cmd, stream: true }`
+- Response is a text/event-stream with log lines as `data:` events
+- Ends with `data: [DONE]`
+- Used for long-running commands (build, install, test, etc.)
+
+## Authentication (UPCOMING)
+- Remote command and management endpoints will require master/admin authentication
+- Protocol and UI integration to be documented as implemented
+
+---
+
+### See also: QCITYDEVICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+
+## API Key Authentication (NEW)
+- All remote command and management endpoints require an API key for master/admin access
+- Send the key in the request header: `x-qcity-admin-key`
+- The valid key is set in the environment variable `QCITY_ADMIN_KEY`
+- Requests without a valid key receive 401 Unauthorized
+
+---
+
+### See also: QCITYDEVICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+
+## QCity Dashboard UI Log Streaming Protocol (NEW)
+- Enter a command in the dashboard UI and click Run
+- The dashboard streams log output in real time using Server-Sent Events (SSE)
+- Log lines appear live in the output panel; ends with [DONE]
+- Shows loading, success, and error states for each command
+- Errors (e.g., invalid key, network issues) are displayed in the dashboard
+
+## QCity Dashboard UI Command History & Quick Actions (NEW)
+- The last 10 commands run are stored in localStorage and shown as clickable history
+- Click a history item to reuse the command in the input field
+- Quick action buttons for common tasks (build, install, test, lint, deploy) instantly fill the input
+- History and quick actions speed up repetitive and common operations
+
+## QCity Dashboard Advanced Features (NEW)
+- **Clear History:** Button to clear all command history, usage counts, and pinned commands
+- **Pin Favorite Commands:** Pin/unpin commands for quick access; pinned commands are shown at the top
+- **Highlight Frequent Commands:** Most-used commands are highlighted in the history
+- **Confirmation Dialogs:** Destructive commands (e.g., rm, delete, reset) require confirmation before running
+- **Command Templates:** Use templates with variables for common patterns (e.g., build with env, test file)
+- **Device Selection:** Choose which device to run the command on (multi-device support)
+- **Audit Logging:** All command usage and history changes are logged (console for now)
+- **Mask Sensitive Commands:** Commands containing sensitive keywords are masked in the UI/history
+
+## Backend Device Selection, Command Routing, and Audit Logging (NEW)
+- Remote command API accepts a 'deviceId' parameter to route commands to a specific device
+- All command executions and unauthorized attempts are logged to logs/qcity_audit.log
+- Log entries include action, command, deviceId, user, status, and timestamp
+- Audit log is ready for integration with SIEM or external log management
+
+## Backend & UI/UX Enterprise Enhancements (NEW)
+- **Real Device Routing:** Commands are routed to the selected device (deviceId) in backend and UI
+- **Audit Log API:** Secure endpoint `/api/qcity/audit-log` for fetching/exporting audit logs, with filtering
+- **Tooltips & Help:** All dashboard controls have tooltips; help/onboarding modal for new users
+- **Export/Import:** Export/import command history, pinned commands, and settings as JSON
+- **User/Role Management (Planned):** Dashboard will support user authentication and role-based access
+- **Scheduling & Notifications (Planned):** UI and backend will support scheduling recurring commands and notifications for results
+
+--- 

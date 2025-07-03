@@ -118,6 +118,8 @@
       "disaster_recovery": true,
       "high_availability": true,
       "99_99_uptime": true
-    }
+    },
+    "remote_command_api": "/api/qcity/remote-command",
+    "dashboard_ui": true
   }
 } 

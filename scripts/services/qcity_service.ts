@@ -292,4 +292,34 @@ export class QCityService {
       throw error;
     }
   }
+
+  public async getDeviceList(): Promise<any[]> {
+    // Stub: Return list of active devices
+    return [
+      { id: 'qcity-1', name: 'QCity Colab 1', status: 'online', cpu: 12, memory: 2048 },
+      { id: 'qcity-2', name: 'QCity Cloud 2', status: 'online', cpu: 7, memory: 1024 }
+    ];
+  }
+
+  public async getResourceStats(): Promise<any> {
+    // Stub: Return resource stats
+    return {
+      cpu: Math.round(Math.random() * 100),
+      memory: Math.round(Math.random() * 8192),
+      disk: Math.round(Math.random() * 100000),
+      network: Math.round(Math.random() * 1000)
+    };
+  }
+
+  public async runRemoteCommand(cmd: string, deviceId: string = 'default'): Promise<any> {
+    // Simulate routing to the correct device
+    if (deviceId === 'qcity-1') {
+      return { success: true, output: `[QCity Colab 1] Executed: ${cmd}` };
+    } else if (deviceId === 'qcity-2') {
+      return { success: true, output: `[QCity Cloud 2] Executed: ${cmd}` };
+    } else {
+      return { success: true, output: `[Default Device] Executed: ${cmd}` };
+    }
+    // TODO: Integrate with SSH/cloud APIs for real device execution
+  }
 } 

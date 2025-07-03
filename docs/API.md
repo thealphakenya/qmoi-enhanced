@@ -429,4 +429,32 @@ client.getStatus().then(console.log);
 - Run account verification: `python scripts/account_verification.py`
 - Use QMOIEARNING features: `python scripts/qmoi_earning_enhanced.py`
 - Start always-on earning: `yarn qmoi:earning:daemon`
-- Master-only UI: See QIStateWindow in the app. 
+- Master-only UI: See QIStateWindow in the app.
+
+# QCity API Endpoints
+
+## /api/qcity/remote-command
+- **POST**
+- Requires header: `x-qcity-admin-key`
+- Body: `{ cmd: string, deviceId?: string, stream?: boolean }`
+- Runs a shell command on the selected device. If `stream` is true, returns Server-Sent Events (SSE) log stream. Otherwise, returns `{ output, code }`.
+- All actions are audit logged. Sensitive commands are masked.
+- 401 if API key is missing/invalid.
+
+## /api/qcity/audit-log
+- **GET**
+- Requires header: `x-qcity-admin-key`
+- Query: `format=json|csv`, `limit`, `offset`, `action`, `user`, `deviceId`, `status`
+- Returns filtered audit logs as JSON or CSV. Supports pagination.
+- 401 if API key is missing/invalid.
+
+## /api/qcity/status
+- **GET**
+- Returns device/resource info, offloading state, and active devices.
+- **POST**: `{ offloading: boolean }` to toggle offloading state.
+
+# Settings Export/Import
+
+- QMOI, QAvatar, and command panels store user preferences, history, and pins in localStorage.
+- The QMoiSettingsPanel provides export/import buttons to backup or transfer all settings as a JSON file.
+- Importing settings restores all preferences, history, and pins. 

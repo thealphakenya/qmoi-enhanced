@@ -84,7 +84,9 @@ class QMOIMasterAutoStart {
     const commands = [
       { cmd: 'npm run qmoi:master:start', desc: 'Start QMOI master orchestrator' },
       { cmd: 'npm run qmoi:autogit:run', desc: 'Initialize auto-git management' },
-      { cmd: 'npm run qmoi:docs:verify', desc: 'Verify documentation system' },
+      { cmd: 'npm run qmoi:docs:verify', desc: 'Verify documentation system with enhanced auto-fix' },
+      { cmd: 'npm run qmoi:huggingface:setup', desc: 'Setup HuggingFace integration' },
+      { cmd: 'npm run qmoi:qcity:setup', desc: 'Setup QCity VPN security' },
       { cmd: 'npm run qmoi:test:all', desc: 'Run comprehensive tests' }
     ];
 

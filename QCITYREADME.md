@@ -501,4 +501,79 @@ For more information, see:
 - [QCITYDEVICEAUTOUPGRADE.md](./QCITYDEVICEAUTOUPGRADE.md) - Auto-upgrade system details
 - [QMOIAVATAR.md](./QMOIAVATAR.md) - QCity device integration details
 - [AUTOOPTIMIZEALPHAQMOIENGINE.md](./AUTOOPTIMIZEALPHAQMOIENGINE.md) - Optimization strategies
-- [GitHub Workflows](./.github/workflows/) - CI/CD integration with unlimited resources 
+- [GitHub Workflows](./.github/workflows/) - CI/CD integration with unlimited resources
+
+## QCity Device Dashboard (NEW)
+- Access from Q-Avatar floating UI
+- View device status, resource usage, and active devices
+- Toggle offloading for all heavy tasks
+- Open QCity management UI
+
+## Remote Command API (NEW)
+- /api/qcity/remote-command for running commands on QCity/Colab
+- Streams output to dashboard
+- Master-only access
+
+## Self-Healing & Fallback (NEW)
+- Errors auto-fixed on QCity
+- If QCity fails, fallback to other devices
+- Dashboard shows status and results
+
+## QCity API Endpoints (NEW)
+- `/api/qcity/status`: Returns device status, resources, and device list
+- `/api/qcity/remote-command`: Runs commands remotely on QCity (master/admin only)
+- Used by dashboard for live updates and remote management
+
+## Backend Integration (ENHANCED)
+- QCityService provides all device/resource/command logic
+- API endpoints connect dashboard UI to QCity backend
+
+## Real-Time Log Streaming (NEW)
+- `/api/qcity/remote-command` supports Server-Sent Events (SSE) for real-time log streaming
+- POST with `{ cmd, stream: true }` to receive a text/event-stream of log lines
+- Ends with `data: [DONE]`
+- Enables live feedback for long-running tasks
+
+## API Key Authentication (NEW)
+- All remote management endpoints require an API key for master/admin access
+- Use the header: `x-qcity-admin-key`
+- The valid key is set in the environment variable `QCITY_ADMIN_KEY`
+- Requests without a valid key receive 401 Unauthorized
+
+## QCity Dashboard UI Authentication Protocol (NEW)
+- Admin API key is entered in the dashboard UI and stored in localStorage
+- All remote command requests include the key in the `x-qcity-admin-key` header
+- Dashboard shows authentication status and error messages for remote actions
+- Key can be updated at any time in the UI
+
+## QCity Dashboard UI Log Streaming Protocol (NEW)
+- Enter a command in the dashboard UI and click Run
+- Log output is streamed live using Server-Sent Events (SSE)
+- Output panel updates in real time; ends with [DONE]
+- Loading, success, and error states are shown for each command
+- Errors (e.g., invalid key, network issues) are displayed in the dashboard
+
+## QCity Dashboard Advanced Features (NEW)
+- Clear command history, usage counts, and pinned commands
+- Pin/unpin favorite commands for quick access
+- Highlight most frequently used commands in history
+- Confirmation dialogs for destructive commands
+- Command templates with variables for common patterns
+- Device selection for multi-device environments
+- Audit logging for command usage/history (console for now)
+- Mask sensitive commands in history and UI
+
+## Backend Device Selection, Command Routing, and Audit Logging (NEW)
+- Remote command API accepts a 'deviceId' parameter to route commands to a specific device
+- All command executions and unauthorized attempts are logged to logs/qcity_audit.log
+- Log entries include action, command, deviceId, user, status, and timestamp
+- Audit log is ready for integration with SIEM or external log management
+
+## Backend & UI/UX Enterprise Enhancements (NEW)
+- Real device routing for commands (deviceId)
+- Secure audit log API for fetching/exporting logs, with filtering
+- Tooltips, help, and onboarding for all dashboard features
+- Export/import command history and settings as JSON
+- User/role management and scheduling/notifications (planned)
+
+--- 

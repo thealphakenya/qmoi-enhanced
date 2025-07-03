@@ -930,3 +930,16 @@ QMOI is designed to use minimal data and device resources. Heavy tasks are offlo
 - Plugin system for UI, device, optimization, and review extensions (see QMOI-PLUGIN-SYSTEM.md)
 - Enhanced dashboard with Plugins tab and device/resource stats
 - Finalized Colab/Dagshub device integration (see AUTOOPTIMIZEALPHAQMOIENGINE.md)
+
+## Automated Dependency Maintenance
+
+To keep your dependencies healthy and resolve peer conflicts automatically, use these npm scripts:
+
+- `npm run fix-deps`: Installs dependencies, bypassing peer dependency conflicts.
+- `npm run audit-fix`: Attempts to auto-fix security vulnerabilities.
+- `npm run dedupe`: Flattens the dependency tree to reduce duplication.
+- `npm run clean-install`: Cleans npm cache, removes node_modules and lockfile, and reinstalls everything from scratch. (Requires `rimraf` installed globally or as a devDependency.)
+- `npm run check-updates`: Checks for and updates outdated dependencies using npm-check-updates.
+- `npm run fix-all`: Runs all the above in sequence for a comprehensive fix.
+
+Use these scripts if you see npm/yarn warnings, dependency errors, or want to keep your project up to date and secure.

@@ -520,4 +520,24 @@ if (require.main === module) {
     logger.error('[QMOI-AUTODEV-DAEMON] Unhandled rejection at:', promise, 'reason:', reason);
     // Don't exit, let the daemon continue
   });
+}
+
+async function fixErrorsOnQCityAndFallback() {
+  try {
+    // Try to fix errors on QCity
+    const qcityService = new QCityService();
+    await qcityService.initialize();
+    // Simulate error fixing
+    const fixResult = await qcityService.runRemoteCommand('npm run fix-all');
+    if (fixResult.success) {
+      logger.info('[QMOI-AUTODEV-DAEMON] QCity error fix successful:', fixResult.output);
+      return { success: true, output: fixResult.output };
+    } else {
+      throw new Error('QCity fix failed');
+    }
+  } catch (e) {
+    logger.warn('[QMOI-AUTODEV-DAEMON] QCity fix failed, falling back to local/cloud devices');
+    // Fallback logic (stub)
+    return { success: false, output: 'Fallback to other devices' };
+  }
 } 

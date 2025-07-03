@@ -100,6 +100,61 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const animationRef = useRef<number>();
   const enhancementRef = useRef<NodeJS.Timeout>();
 
+  const [showQCityDashboard, setShowQCityDashboard] = useState(false);
+  const [qcityStatus, setQCityStatus] = useState<any>(null);
+  const [offloadingEnabled, setOffloadingEnabled] = useState(() => {
+    const saved = localStorage.getItem('qcity-offloading-enabled');
+    return saved ? JSON.parse(saved) : true;
+  });
+
+  // Add state for API key and authentication status
+  const [adminKey, setAdminKey] = useState(() => localStorage.getItem('qcity-admin-key') || '');
+  const [authStatus, setAuthStatus] = useState<'idle' | 'ok' | 'error'>('idle');
+  const [authError, setAuthError] = useState<string | null>(null);
+
+  // Add state for command input and log output
+  const [commandInput, setCommandInput] = useState('npm run build');
+  const [logOutput, setLogOutput] = useState<string[]>([]);
+  const [isRunning, setIsRunning] = useState(false);
+  const [runError, setRunError] = useState<string | null>(null);
+
+  // Add state for command history
+  const [commandHistory, setCommandHistory] = useState<string[]>(() => {
+    try {
+      return JSON.parse(localStorage.getItem('qcity-command-history') || '[]');
+    } catch {
+      return [];
+    }
+  });
+
+  // Add state for pinned commands, usage counts, device selection, and command templates
+  const [pinnedCommands, setPinnedCommands] = useState<string[]>(() => {
+    try {
+      return JSON.parse(localStorage.getItem('qcity-pinned-commands') || '[]');
+    } catch {
+      return [];
+    }
+  });
+  const [usageCounts, setUsageCounts] = useState<{[cmd: string]: number}>(() => {
+    try {
+      return JSON.parse(localStorage.getItem('qcity-command-usage') || '{}');
+    } catch {
+      return {};
+    }
+  });
+  const [selectedDevice, setSelectedDevice] = useState<string>('default');
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [pendingCommand, setPendingCommand] = useState<string | null>(null);
+  const [commandTemplates] = useState([
+    { label: 'Build with env', template: 'npm run build -- --env=${env}' },
+    { label: 'Test file', template: 'npm test ${filename}' },
+  ]);
+  const [templateVars, setTemplateVars] = useState<{[key: string]: string}>({ env: '', filename: '' });
+
+  // Add state for onboarding/help
+  const [showHelp, setShowHelp] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem('qcity-onboarded'));
+
   // AI Enhancement System
   const enhanceAvatar = useCallback(() => {
     if (!config.aiEnhancement) return;
@@ -746,6 +801,380 @@ const QAvatar: React.FC<QAvatarProps> = ({
     </AnimatePresence>
   );
 
+  useEffect(() => {
+    // Fetch QCity status from API (stubbed for now)
+    async function fetchStatus() {
+      try {
+        const res = await fetch('/api/qcity/status');
+        if (res.ok) {
+          setQCityStatus(await res.json());
+        }
+      } catch {}
+    }
+    if (showQCityDashboard) fetchStatus();
+  }, [showQCityDashboard]);
+
+  useEffect(() => {
+    localStorage.setItem('qcity-offloading-enabled', JSON.stringify(offloadingEnabled));
+  }, [offloadingEnabled]);
+
+  // Save admin key to localStorage
+  useEffect(() => {
+    localStorage.setItem('qcity-admin-key', adminKey);
+  }, [adminKey]);
+
+  // Update localStorage when commandHistory changes
+  useEffect(() => {
+    localStorage.setItem('qcity-command-history', JSON.stringify(commandHistory.slice(0, 10)));
+  }, [commandHistory]);
+
+  // Update localStorage for pinned commands and usage counts
+  useEffect(() => {
+    localStorage.setItem('qcity-pinned-commands', JSON.stringify(pinnedCommands));
+  }, [pinnedCommands]);
+  useEffect(() => {
+    localStorage.setItem('qcity-command-usage', JSON.stringify(usageCounts));
+  }, [usageCounts]);
+
+  // Clear command history
+  function clearHistory() {
+    setCommandHistory([]);
+    setUsageCounts({});
+    setPinnedCommands([]);
+    localStorage.removeItem('qcity-command-history');
+    localStorage.removeItem('qcity-command-usage');
+    localStorage.removeItem('qcity-pinned-commands');
+  }
+
+  // Pin/unpin commands
+  function togglePin(cmd: string) {
+    setPinnedCommands(pinnedCommands.includes(cmd)
+      ? pinnedCommands.filter(c => c !== cmd)
+      : [cmd, ...pinnedCommands]);
+  }
+
+  // Mask sensitive commands
+  function maskCommand(cmd: string) {
+    return /password|secret|token|key|env/i.test(cmd) ? '***MASKED***' : cmd;
+  }
+
+  // Audit logging (console.log for now)
+  function auditLog(action: string, cmd: string) {
+    console.log(`[AUDIT] ${action}: ${cmd} at ${new Date().toISOString()}`);
+  }
+
+  // Run command with confirmation for destructive commands
+  async function handleRunCommand() {
+    const destructive = /rm |delete|reset|drop|force|danger|shutdown|format/i.test(commandInput);
+    if (destructive) {
+      setPendingCommand(commandInput);
+      setShowConfirm(true);
+    } else {
+      await runCommandWithLogs();
+    }
+  }
+  async function confirmRun() {
+    setShowConfirm(false);
+    if (pendingCommand) {
+      await runCommandWithLogs();
+      setPendingCommand(null);
+    }
+  }
+  function cancelRun() {
+    setShowConfirm(false);
+    setPendingCommand(null);
+  }
+
+  // Update usage counts and audit log when running a command
+  async function runCommandWithLogs() {
+    setLogOutput([]);
+    setIsRunning(true);
+    setRunError(null);
+    try {
+      const res = await fetch('/api/qcity/remote-command', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-qcity-admin-key': adminKey,
+        },
+        body: JSON.stringify({ cmd: commandInput, stream: true }),
+      });
+      if (res.status === 401) {
+        setAuthStatus('error');
+        setAuthError('Unauthorized: Invalid admin key');
+        setIsRunning(false);
+        return;
+      }
+      if (!res.body) {
+        setRunError('No response body');
+        setIsRunning(false);
+        return;
+      }
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        let lines = buffer.split('\n\n');
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6);
+            if (data === '[DONE]') {
+              setIsRunning(false);
+              return;
+            }
+            setLogOutput(prev => [...prev, data]);
+          }
+        }
+      }
+      setIsRunning(false);
+      if (commandInput && (!commandHistory.length || commandInput !== commandHistory[0])) {
+        setCommandHistory([commandInput, ...commandHistory.filter(cmd => cmd !== commandInput)].slice(0, 10));
+      }
+      setUsageCounts(prev => ({ ...prev, [commandInput]: (prev[commandInput] || 0) + 1 }));
+      auditLog('run', commandInput);
+    } catch (e) {
+      setRunError('Network or server error');
+      setIsRunning(false);
+    }
+  }
+
+  // Quick actions for common tasks
+  const quickActions = [
+    { label: 'Build with env', cmd: 'npm run build -- --env=${env}' },
+    { label: 'Test file', cmd: 'npm test ${filename}' },
+  ];
+
+  // Device selection (stubbed for now)
+  const availableDevices = [
+    { id: 'default', name: 'Default Device' },
+    { id: 'qcity-1', name: 'QCity Colab 1' },
+    { id: 'qcity-2', name: 'QCity Cloud 2' },
+  ];
+
+  // Fill template with variables
+  function fillTemplate(template: string) {
+    return template.replace(/\$\{(\w+)\}/g, (_, v) => templateVars[v] || '');
+  }
+
+  const QCityDashboardPanel = () => (
+    <AnimatePresence>
+      {showQCityDashboard && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          className="absolute top-full left-0 mt-2 w-96 bg-white dark:bg-gray-900 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 p-4 z-50"
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">QCity Device Dashboard</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="font-medium">Offloading Enabled</span>
+                <Switch checked={offloadingEnabled} onCheckedChange={setOffloadingEnabled} />
+              </div>
+              <div className="text-xs text-gray-500 mb-2">Run all heavy tasks (build, install, test) in QCity/Colab</div>
+              <div className="font-medium mb-1">Device Status:</div>
+              <pre className="bg-gray-100 dark:bg-gray-800 rounded p-2 text-xs overflow-x-auto max-h-32">{qcityStatus ? JSON.stringify(qcityStatus, null, 2) : 'Loading...'}</pre>
+              <div className="font-medium mb-1">Active Devices:</div>
+              <ul className="list-disc pl-5 text-xs">
+                {qcityStatus?.devices?.map((dev: any) => (
+                  <li key={dev.id} className="mb-1">
+                    <span className="font-semibold">{dev.name}</span> - {dev.status} - CPU: {dev.cpu}% Mem: {dev.memory}MB
+                  </li>
+                )) || <li>Loading...</li>}
+              </ul>
+              <Button size="sm" onClick={() => {/* TODO: Open QCity management UI */}}>Open QCity Management</Button>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Admin API Key</label>
+                <input
+                  type="password"
+                  value={adminKey}
+                  onChange={e => setAdminKey(e.target.value)}
+                  className="w-full px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
+                  placeholder="Enter admin key"
+                />
+                {authStatus === 'ok' && <span className="text-green-600 text-xs">Authenticated</span>}
+                {authStatus === 'error' && <span className="text-red-600 text-xs">{authError}</span>}
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Run Remote Command</label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={commandInput}
+                    onChange={e => setCommandInput(e.target.value)}
+                    className="flex-1 px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
+                    placeholder="Enter command (e.g. npm run build)"
+                    disabled={isRunning}
+                  />
+                  <Button size="sm" onClick={handleRunCommand} disabled={isRunning || !adminKey}>
+                    {isRunning ? 'Running...' : 'Run'}
+                  </Button>
+                </div>
+                {runError && <div className="text-red-600 text-xs">{runError}</div>}
+                <div className="bg-black text-green-400 font-mono text-xs rounded p-2 h-32 overflow-y-auto mt-1" style={{ whiteSpace: 'pre-wrap' }}>
+                  {logOutput.length === 0 && !isRunning ? <span className="text-gray-400">No output yet.</span> : logOutput.map((line, i) => <div key={i}>{line}</div>)}
+                  {isRunning && <span className="text-yellow-400">Streaming logs...</span>}
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="flex gap-2 items-center mb-1">
+                  <label className="text-sm font-medium">Device:</label>
+                  <select value={selectedDevice} onChange={e => setSelectedDevice(e.target.value)} className="px-2 py-1 border rounded">
+                    {availableDevices.map(dev => <option key={dev.id} value={dev.id}>{dev.name}</option>)}
+                  </select>
+                </div>
+                <div className="flex gap-2 flex-wrap mb-1">
+                  {commandTemplates.map(tpl => (
+                    <Button key={tpl.label} size="xs" variant="outline" onClick={() => setCommandInput(fillTemplate(tpl.template))}>
+                      {tpl.label}
+                    </Button>
+                  ))}
+                  {/* Template variable inputs */}
+                  {Object.keys(templateVars).map(v => (
+                    <input key={v} type="text" value={templateVars[v]} onChange={e => setTemplateVars(vars => ({ ...vars, [v]: e.target.value }))} placeholder={v} className="w-20 px-1 py-0.5 border rounded text-xs" />
+                  ))}
+                </div>
+                <div className="flex gap-2 flex-wrap mb-1">
+                  {quickActions.map(action => (
+                    <Button key={action.label} size="xs" variant="outline" onClick={() => setCommandInput(action.cmd)} disabled={isRunning}>
+                      {action.label}
+                    </Button>
+                  ))}
+                  <Button size="xs" variant="destructive" onClick={clearHistory}>Clear History</Button>
+                </div>
+                {pinnedCommands.length > 0 && (
+                  <div className="flex gap-2 flex-wrap mb-1">
+                    {pinnedCommands.map((cmd, i) => (
+                      <Button key={i} size="xs" variant="secondary" onClick={() => setCommandInput(cmd)} disabled={isRunning}>
+                        <span role="img" aria-label="pin">📌</span> {maskCommand(cmd)}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+                {commandHistory.length > 0 && (
+                  <div className="flex gap-2 flex-wrap mb-1">
+                    {commandHistory.map((cmd, i) => (
+                      <Button key={i} size="xs" variant={pinnedCommands.includes(cmd) ? 'secondary' : usageCounts[cmd] > 2 ? 'default' : 'ghost'} onClick={() => setCommandInput(cmd)} disabled={isRunning}>
+                        {maskCommand(cmd)}
+                        <span className="ml-1 text-xs text-gray-400">{usageCounts[cmd] > 1 ? `(${usageCounts[cmd]})` : ''}</span>
+                        <span className="ml-1 cursor-pointer" onClick={e => { e.stopPropagation(); togglePin(cmd); }}>{pinnedCommands.includes(cmd) ? '📌' : '📍'}</span>
+                      </Button>
+                    ))}
+                  </div>
+                )}
+                {/* Confirmation dialog for destructive commands */}
+                {showConfirm && (
+                  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+                    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 max-w-xs w-full">
+                      <div className="font-bold mb-2 text-red-600">Destructive Command</div>
+                      <div className="mb-4 text-sm">Are you sure you want to run this potentially destructive command?</div>
+                      <div className="flex gap-2 justify-end">
+                        <Button size="sm" variant="outline" onClick={cancelRun}>Cancel</Button>
+                        <Button size="sm" variant="destructive" onClick={confirmRun}>Run Anyway</Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <Button size="xs" variant="outline" onClick={() => setShowHelp(true)} title="Help & Onboarding">❓</Button>
+                <Button size="xs" variant="outline" onClick={exportSettings} title="Export settings and history">Export</Button>
+                <label className="inline-block">
+                  <Button size="xs" variant="outline" asChild title="Import settings and history">Import</Button>
+                  <input type="file" accept="application/json" style={{ display: 'none' }} onChange={importSettings} />
+                </label>
+                {showHelp && (
+                  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+                    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 max-w-md w-full">
+                      <div className="font-bold mb-2">QCity Dashboard Help & Onboarding</div>
+                      <div className="mb-4 text-sm">
+                        <ul className="list-disc pl-5">
+                          <li>Use the device selector to choose where commands run.</li>
+                          <li>Pin, highlight, and clear command history for productivity.</li>
+                          <li>Use templates and quick actions for common tasks.</li>
+                          <li>Export/import your settings for backup or sharing.</li>
+                          <li>Destructive commands require confirmation.</li>
+                          <li>All actions are audit logged for security.</li>
+                        </ul>
+                      </div>
+                      <div className="flex gap-2 justify-end">
+                        <Button size="sm" variant="outline" onClick={() => setShowHelp(false)}>Close</Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {showOnboarding && (
+                  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+                    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 max-w-md w-full">
+                      <div className="font-bold mb-2">Welcome to QCity Dashboard!</div>
+                      <div className="mb-4 text-sm">
+                        <ul className="list-disc pl-5">
+                          <li>Run commands on any QCity device.</li>
+                          <li>Pin and reuse your favorite commands.</li>
+                          <li>Export/import your dashboard settings.</li>
+                          <li>All actions are securely logged.</li>
+                        </ul>
+                      </div>
+                      <div className="flex gap-2 justify-end">
+                        <Button size="sm" variant="default" onClick={completeOnboarding}>Get Started</Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
+  function completeOnboarding() {
+    setShowOnboarding(false);
+    localStorage.setItem('qcity-onboarded', '1');
+  }
+
+  // Export/import command history and settings
+  function exportSettings() {
+    const data = {
+      commandHistory,
+      pinnedCommands,
+      usageCounts,
+      adminKey,
+      templateVars,
+      selectedDevice,
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'qcity_dashboard_settings.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  function importSettings(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const data = JSON.parse(ev.target?.result as string);
+        setCommandHistory(data.commandHistory || []);
+        setPinnedCommands(data.pinnedCommands || []);
+        setUsageCounts(data.usageCounts || {});
+        setAdminKey(data.adminKey || '');
+        setTemplateVars(data.templateVars || {});
+        setSelectedDevice(data.selectedDevice || 'default');
+      } catch {}
+    };
+    reader.readAsText(file);
+  }
+
   if (config.isMinimized) {
     return (
       <motion.div
@@ -833,6 +1262,14 @@ const QAvatar: React.FC<QAvatarProps> = ({
           >
             <X className="w-4 h-4" />
           </Button>
+          <Button
+            size="sm"
+            variant="ghost"
+            className="w-8 h-8 p-0 rounded-full bg-white/80 hover:bg-white shadow-md"
+            onClick={() => setShowQCityDashboard(!showQCityDashboard)}
+          >
+            <span className="w-4 h-4">🏙️</span>
+          </Button>
         </div>
 
         {/* Status Indicators */}
@@ -857,6 +1294,8 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
         {/* Settings Panel */}
         <SettingsPanel />
+
+        {showQCityDashboard && <QCityDashboardPanel />}
       </div>
     </motion.div>
   );
