@@ -1,0 +1,10 @@
+[
+  "node_modules",
+  ".git",
+  ".next",
+  "dist",
+  "build",
+  "__pycache__",
+  "logs",
+  "coverage"
+] 

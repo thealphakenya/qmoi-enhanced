@@ -1,5 +1,5 @@
 # Required git commands to push changes to GitHub
 
 git add .
-git commit -m "<your commit message>"
+git commit -m "<master commit>"
 git push origin main 

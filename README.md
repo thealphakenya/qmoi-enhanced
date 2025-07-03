@@ -910,3 +910,23 @@ QMOI now features full automation and observability for Hugging Face:
 - **Notification Triggers:** Sends notifications for verification/fix failures.
 - **.md File Update Automation:** All .md files are auto-updated with verification/fix metadata and checked for up-to-date status after every run.
 - **CI/CD Integration:** Both verifiers run in CI, and logs/reports are uploaded as artifacts. The workflow never fails for doc issues, only for true system errors.
+
+# QMOI Project
+
+![Build Status](https://github.com/<OWNER>/<REPO>/actions/workflows/qmoi-ci.yml/badge.svg)
+![Coverage](https://img.shields.io/badge/coverage-auto--generated-brightgreen)
+
+## QMOI Healing Summary
+
+<!-- Healing summary will be auto-updated by CI -->
+
+## Data Optimization & Cloud Offloading
+QMOI is designed to use minimal data and device resources. Heavy tasks are offloaded to Colab and Dagshub, ensuring the local app/device remains fast and responsive.
+
+- See [AUTOOPTIMIZEALPHAQMOIENGINE.md](./AUTOOPTIMIZEALPHAQMOIENGINE.md) for full optimization strategies.
+- See [QMOICOLABDAGSHUB.md](./QMOICOLABDAGSHUB.md) for Colab/Dagshub best practices.
+
+## New in this release
+- Plugin system for UI, device, optimization, and review extensions (see QMOI-PLUGIN-SYSTEM.md)
+- Enhanced dashboard with Plugins tab and device/resource stats
+- Finalized Colab/Dagshub device integration (see AUTOOPTIMIZEALPHAQMOIENGINE.md)

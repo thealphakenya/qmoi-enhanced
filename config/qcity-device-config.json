@@ -1,0 +1,123 @@
+{
+  "qcity_device": {
+    "enabled": true,
+    "primary_device": true,
+    "unlimited_resources": {
+      "memory": "unlimited",
+      "storage": "unlimited",
+      "processing": "unlimited",
+      "bandwidth": "unlimited",
+      "connections": "unlimited"
+    },
+    "auto_scaling": {
+      "enabled": true,
+      "ai_optimization": true,
+      "predictive_allocation": true,
+      "load_balancing": true,
+      "real_time_adaptation": true
+    },
+    "resource_offloading": {
+      "enabled": true,
+      "build_operations": true,
+      "npm_install": true,
+      "testing": true,
+      "linting": true,
+      "deployment": true,
+      "ai_processing": true,
+      "ml_training": true
+    },
+    "storage": {
+      "node_modules_in_qcity": true,
+      "build_files_in_qcity": true,
+      "packages_in_qcity": true,
+      "cache_in_qcity": true,
+      "logs_in_qcity": true,
+      "unlimited_expansion": true,
+      "auto_backup": true
+    },
+    "performance": {
+      "lightweight_client": true,
+      "no_local_resources": true,
+      "fast_loading": true,
+      "optimized_ui": true,
+      "sub_millisecond_response": true,
+      "parallel_processing": true,
+      "intelligent_caching": true
+    },
+    "github_integration": {
+      "enhanced_workflows": true,
+      "qcity_based_deployment": true,
+      "always_on_colab": true,
+      "seamless_sync": true,
+      "auto_deployment": true,
+      "continuous_monitoring": true
+    },
+    "master_controls": {
+      "build_files_access": "master_only",
+      "sensitive_data_access": "master_only",
+      "qcity_management": "master_only",
+      "resource_allocation": "master_only",
+      "security_settings": "master_only",
+      "upgrade_controls": "master_only"
+    },
+    "error_fixing": {
+      "fast_resolution": true,
+      "centralized_fixing": true,
+      "qcity_environment": true,
+      "reliable_operations": true,
+      "auto_detection": true,
+      "self_healing": true,
+      "preventive_maintenance": true
+    },
+    "security": {
+      "encrypted_storage": true,
+      "secure_access": true,
+      "audit_logging": true,
+      "master_only_sensitive": true,
+      "quantum_encryption": true,
+      "zero_trust_architecture": true,
+      "ai_threat_detection": true
+    },
+    "ai_optimization": {
+      "enabled": true,
+      "machine_learning": true,
+      "predictive_analytics": true,
+      "automated_tuning": true,
+      "performance_prediction": true,
+      "adaptive_algorithms": true
+    },
+    "multi_device": {
+      "enabled": true,
+      "device_clustering": true,
+      "load_distribution": true,
+      "failover_protection": true,
+      "geographic_distribution": true,
+      "device_synchronization": true
+    },
+    "auto_upgrade": {
+      "enabled": true,
+      "zero_downtime": true,
+      "self_healing": true,
+      "continuous_improvement": true,
+      "version_management": true,
+      "feature_rollouts": true,
+      "security_updates": true
+    },
+    "monitoring": {
+      "real_time_metrics": true,
+      "predictive_alerts": true,
+      "performance_analytics": true,
+      "resource_tracking": true,
+      "health_monitoring": true,
+      "ai_powered_insights": true
+    },
+    "reliability": {
+      "fault_tolerance": true,
+      "data_redundancy": true,
+      "backup_systems": true,
+      "disaster_recovery": true,
+      "high_availability": true,
+      "99_99_uptime": true
+    }
+  }
+} 

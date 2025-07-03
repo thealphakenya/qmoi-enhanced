@@ -1,0 +1,35 @@
+name: Qmoispace Notify
+
+on:
+  workflow_run:
+    workflows: [QMOI CI]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Send email notification
+        env:
+          QMOI_EMAIL_USER: ${{ secrets.QMOI_EMAIL_USER }}
+          QMOI_EMAIL_PASS: ${{ secrets.QMOI_EMAIL_PASS }}
+        run: |
+          node scripts/send_email.js "QMOI CI workflow completed. See logs for details."
+      - name: Check for repeated failures
+        run: |
+          FAIL_COUNT=$(tail -n 100 logs/auto_fix.log | grep -c 'error')
+          if [ "$FAIL_COUNT" -gt 3 ]; then
+            gh issue create -t "QMOI Healing/Test Failures" -b "Healing or tests failed more than 3 times in a row. See logs/auto_fix.log."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true 

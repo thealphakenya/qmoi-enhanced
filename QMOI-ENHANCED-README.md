@@ -393,4 +393,13 @@ The master dashboard shows:
 - **.md File Update Automation:** All .md files are auto-updated with verification/fix metadata and checked for up-to-date status after every run.
 - **CI/CD Integration:** Both verifiers run in CI, and logs/reports are uploaded as artifacts. The workflow never fails for doc issues, only for true system errors.
 
+---
+
+## Optimization & Data Efficiency
+- QMOI now features a Data Saver mode for minimal data usage, with adaptive quality based on network and device conditions.
+- Heavy features and computations are offloaded to cloud environments (Colab, Dagshub), keeping the local app lightweight and responsive.
+- Device management dashboard shows all devices (local/cloud), their status, and optimization tips.
+- Auto-offloading ensures tasks migrate to the cloud when local resources are low.
+- See `AUTOOPTIMIZEALPHAQMOIENGINE.md` for full details on optimization strategies.
+
 --- 

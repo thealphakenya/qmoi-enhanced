@@ -43,6 +43,12 @@ QMOI Auto-Dev is the core automation engine for Alpha-Q, now featuring:
 - Old/large logs and obsolete files are auto-deleted or rotated.
 - Documentation and changelogs are auto-updated after each automation cycle.
 
+## Auto-Optimization & Cloud Integration
+- QMOI AutoDev now uses Data Saver mode and adaptive quality to minimize data usage.
+- Heavy development and automation tasks are offloaded to Colab/Dagshub when needed.
+- Device management and auto-offloading are part of the unified dashboard.
+- For full optimization strategies, see `AUTOOPTIMIZEALPHAQMOIENGINE.md`.
+
 ## API Endpoints
 - `POST /api/qmoi/autodev` with `{ action: 'full_status' }` - Get full automation, fix, and deployment status.
 - `POST /api/qmoi/autodev` with `{ action: 'continuous_autofix_start' }` - Start the daemon.

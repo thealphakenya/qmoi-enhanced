@@ -36,6 +36,12 @@ The AI Core powers all automation, error fixing, self-healing, and system integr
 - **Security & Privacy:**
   - Transparent, encrypted, and user-controlled
 
+## Auto-Optimization & Cloud Offloading
+- QMOI AI Core now supports Data Saver mode and adaptive quality for minimal data usage.
+- Heavy AI tasks are offloaded to Colab/Dagshub, ensuring optimal performance on all devices.
+- Device management and auto-offloading are integrated into the dashboard.
+- See `AUTOOPTIMIZEALPHAQMOIENGINE.md` for full optimization details.
+
 ---
 
 *This file is managed by the AI and documents all core logic and enhancements.* 

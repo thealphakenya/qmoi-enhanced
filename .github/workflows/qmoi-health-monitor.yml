@@ -1,0 +1,27 @@
+name: QMOI Health Check
+on: [schedule, workflow_dispatch]
+
+jobs:
+  system-health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm run qmoi:health:all
+
+  performance-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm run qmoi:optimize:full
+
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm run qmoi:security-audit
+
+  backup-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm run qmoi:backup:validate

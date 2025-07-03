@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import '../app/globals.css';
+import QCityDevicePanel from './q-city/QCityDevicePanel';
 
 export default function AlphaQAILoading() {
   return (
@@ -13,6 +14,6 @@ export default function AlphaQAILoading() {
         Loading Alpha-Q-AI System...<br />
         <span style={{ color: 'var(--luminous-green)' }}>Loyal. Dependable. Powerful.</span>
       </div>
-                  </div>
+    </div>
   );
 }

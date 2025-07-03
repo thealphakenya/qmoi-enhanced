@@ -1,0 +1,36 @@
+name: QMOI CI/CD Pipeline
+on: [push, pull_request]
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install
+      - run: npm run qmoi:test:all
+      - run: npm run qmoi:autodev:full
+      - run: npm run qmoi:deploy:full
+      - run: npm run qmoi:health:all
+
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm audit
+      - run: npm run qmoi:security-audit
+
+  performance-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm run qmoi:performance-test
+
+  documentation-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm run qmoi:docs:verify
+      - run: npm run qmoi:docs:create

@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run lint
+npm test
+node scripts/qmoi_doc_verifier.js verify
+
+git add . 

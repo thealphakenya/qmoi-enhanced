@@ -29,3 +29,8 @@ next-env.d.ts.env
 
 # Ignore keys directory for sensitive API/private keys
 keys/
+
+# Auto-generated stubs and watcher logs
+*_auto_stub.*
+watcher.log
+temp_*
