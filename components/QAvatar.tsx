@@ -7,6 +7,14 @@ import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import './QAvatar.accessibility.css';
+import { useToast } from '@/components/ui/use-toast';
+import SelfHealPanel from '@/src/components/q-city/SelfHealPanel';
+import MetricsPanel from '@/src/components/q-city/MetricsPanel';
+import AviatorGalleryPanel from '@/src/components/q-city/AviatorGalleryPanel';
+import PluginPanel from '@/src/components/q-city/PluginPanel';
+import { OrchestratorStatusPanel } from '@/components/predeploy/OrchestratorStatusPanel';
+import TeamRoleManager from './TeamRoleManager';
 
 interface QAvatarProps {
   initialPosition?: { x: number; y: number };
@@ -50,6 +58,25 @@ interface AvatarConfig {
   contextAwareness: boolean;
   performanceOptimization: boolean;
 }
+
+// Add a reusable HelpLink component
+const HelpLink: React.FC<{ href: string; label: string }> = ({ href, label }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="ml-2 text-cyan-600 hover:underline focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded"
+    aria-label={`Help: ${label}`}
+    tabIndex={0}
+    title={`Help: ${label}`}
+    style={{ verticalAlign: 'middle' }}
+  >
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'inline', marginRight: 2 }}>
+      <circle cx="10" cy="10" r="9" stroke="#0891b2" strokeWidth="2" fill="#fff" />
+      <text x="10" y="15" textAnchor="middle" fontSize="12" fill="#0891b2" fontFamily="Arial" fontWeight="bold">?</text>
+    </svg>
+  </a>
+);
 
 const QAvatar: React.FC<QAvatarProps> = ({
   initialPosition = { x: 100, y: 100 },
@@ -154,6 +181,10 @@ const QAvatar: React.FC<QAvatarProps> = ({
   // Add state for onboarding/help
   const [showHelp, setShowHelp] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem('qcity-onboarded'));
+
+  // Add state for granular export/import
+  const [exportScope, setExportScope] = useState<'all' | 'history' | 'pinned' | 'notifications'>('all');
+  const [importScope, setImportScope] = useState<'all' | 'history' | 'pinned' | 'notifications'>('all');
 
   // AI Enhancement System
   const enhanceAvatar = useCallback(() => {
@@ -551,7 +582,10 @@ const QAvatar: React.FC<QAvatarProps> = ({
         >
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Q-Avatar Settings</CardTitle>
+              <CardTitle>
+                Settings
+                <HelpLink href="/docs/SETTINGS.md" label="Settings Documentation" />
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {/* Avatar Type */}
@@ -657,6 +691,8 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   max={1}
                   step={0.1}
                   className="w-full"
+                  aria-label="Volume Control"
+                  tabIndex={0}
                 />
               </div>
 
@@ -770,7 +806,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
               </div>
 
               {/* Status Badges */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2" aria-live="polite" aria-atomic="true">
                 <Badge variant={config.isFloating ? "default" : "secondary"}>
                   {config.isFloating ? "Floating" : "Static"}
                 </Badge>
@@ -793,6 +829,114 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 {config.lightingEffects && (
                   <Badge variant="outline">💡 Lighting</Badge>
                 )}
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="mb-4">
+            <CardHeader>
+              <CardTitle>Notification Settings</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form className="flex flex-col gap-4" onSubmit={e => e.preventDefault()}>
+                <div className="flex items-center gap-2">
+                  <Switch
+                    checked={notificationSettings.emailEnabled}
+                    onCheckedChange={v => handleNotificationChange('emailEnabled', v)}
+                    aria-label="Enable Email Notifications"
+                  />
+                  <input
+                    type="email"
+                    className="border rounded px-2 py-1 flex-1"
+                    placeholder="Email address"
+                    value={notificationSettings.email}
+                    onChange={e => handleNotificationChange('email', e.target.value)}
+                    aria-label="Notification Email Address"
+                    disabled={!notificationSettings.emailEnabled}
+                  />
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleTestNotification('email')}
+                    disabled={!notificationSettings.emailEnabled || !notificationSettings.email}
+                    aria-label="Send test email notification"
+                  >Test</Button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Switch
+                    checked={notificationSettings.slackEnabled}
+                    onCheckedChange={v => handleNotificationChange('slackEnabled', v)}
+                    aria-label="Enable Slack Notifications"
+                  />
+                  <input
+                    type="text"
+                    className="border rounded px-2 py-1 flex-1"
+                    placeholder="Slack Webhook URL"
+                    value={notificationSettings.slack}
+                    onChange={e => handleNotificationChange('slack', e.target.value)}
+                    aria-label="Slack Webhook URL"
+                    disabled={!notificationSettings.slackEnabled}
+                  />
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleTestNotification('slack')}
+                    disabled={!notificationSettings.slackEnabled || !notificationSettings.slack}
+                    aria-label="Send test Slack notification"
+                  >Test</Button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Switch
+                    checked={notificationSettings.whatsappEnabled}
+                    onCheckedChange={v => handleNotificationChange('whatsappEnabled', v)}
+                    aria-label="Enable WhatsApp Notifications"
+                  />
+                  <input
+                    type="text"
+                    className="border rounded px-2 py-1 flex-1"
+                    placeholder="WhatsApp Number (+1234567890)"
+                    value={notificationSettings.whatsapp}
+                    onChange={e => handleNotificationChange('whatsapp', e.target.value)}
+                    aria-label="WhatsApp Number"
+                    disabled={!notificationSettings.whatsappEnabled}
+                  />
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleTestNotification('whatsapp')}
+                    disabled={!notificationSettings.whatsappEnabled || !notificationSettings.whatsapp}
+                    aria-label="Send test WhatsApp notification"
+                  >Test</Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+          <Card className="mb-4">
+            <CardHeader>
+              <CardTitle>Export/Import Settings</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="export-scope" className="text-sm">Export Scope:</label>
+                <select id="export-scope" value={exportScope} onChange={e => setExportScope(e.target.value as any)} aria-label="Select export scope" className="border rounded px-2 py-1">
+                  <option value="all">All Settings</option>
+                  <option value="history">Command History Only</option>
+                  <option value="pinned">Pinned Commands Only</option>
+                  <option value="notifications">Notification Settings Only</option>
+                </select>
+                <Button size="xs" variant="outline" onClick={exportSettings} title="Export settings and history">Export</Button>
+              </div>
+              <div className="flex flex-col gap-2 mt-4">
+                <label htmlFor="import-scope" className="text-sm">Import Scope:</label>
+                <select id="import-scope" value={importScope} onChange={e => setImportScope(e.target.value as any)} aria-label="Select import scope" className="border rounded px-2 py-1">
+                  <option value="all">All Settings</option>
+                  <option value="history">Command History Only</option>
+                  <option value="pinned">Pinned Commands Only</option>
+                  <option value="notifications">Notification Settings Only</option>
+                </select>
+                <input type="file" accept="application/json" onChange={importSettings} aria-label="Import settings file" className="text-xs" />
               </div>
             </CardContent>
           </Card>
@@ -897,7 +1041,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           'Content-Type': 'application/json',
           'x-qcity-admin-key': adminKey,
         },
-        body: JSON.stringify({ cmd: commandInput, stream: true }),
+        body: JSON.stringify({ cmd: commandInput, stream: true, deviceId: selectedDevice }),
       });
       if (res.status === 401) {
         setAuthStatus('error');
@@ -948,14 +1092,25 @@ const QAvatar: React.FC<QAvatarProps> = ({
     { label: 'Test file', cmd: 'npm test ${filename}' },
   ];
 
-  // Device selection (stubbed for now)
-  const availableDevices = [
-    { id: 'default', name: 'Default Device' },
-    { id: 'qcity-1', name: 'QCity Colab 1' },
-    { id: 'qcity-2', name: 'QCity Cloud 2' },
-  ];
+  // 1. Update device selection state to use live device list
+  const [availableDevices, setAvailableDevices] = useState<{ id: string; name: string }[]>([]);
 
-  // Fill template with variables
+  // 2. Fetch device list from /api/qcity/status when dashboard is opened
+  useEffect(() => {
+    async function fetchDevices() {
+      try {
+        const res = await fetch('/api/qcity/status');
+        if (res.ok) {
+          const data = await res.json();
+          setAvailableDevices((data.devices || []).map((dev: any) => ({ id: dev.id, name: dev.name })));
+        }
+      } catch {}
+    }
+    if (showQCityDashboard) fetchDevices();
+  }, [showQCityDashboard]);
+
+  // 3. Use selectedDevice for command execution
+  // 4. Device selection dropdown in dashboard panel
   function fillTemplate(template: string) {
     return template.replace(/\$\{(\w+)\}/g, (_, v) => templateVars[v] || '');
   }
@@ -971,7 +1126,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         >
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">QCity Device Dashboard</CardTitle>
+              <CardTitle className="text-lg">QCity Device Dashboard<HelpLink href="/docs/QCITY.md" label="QCity Documentation" /></CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
@@ -979,6 +1134,20 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <Switch checked={offloadingEnabled} onCheckedChange={setOffloadingEnabled} />
               </div>
               <div className="text-xs text-gray-500 mb-2">Run all heavy tasks (build, install, test) in QCity/Colab</div>
+              <div className="font-medium mb-1">Select Device:</div>
+              <select
+                value={selectedDevice}
+                onChange={e => setSelectedDevice(e.target.value)}
+                className="w-full px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800 mb-2"
+                aria-label="Select device to run command on"
+                title="Choose which device to run the command on"
+                tabIndex={0}
+              >
+                {availableDevices.length === 0 && <option value="default">Default Device</option>}
+                {availableDevices.map(dev => (
+                  <option key={dev.id} value={dev.id}>{dev.name}</option>
+                ))}
+              </select>
               <div className="font-medium mb-1">Device Status:</div>
               <pre className="bg-gray-100 dark:bg-gray-800 rounded p-2 text-xs overflow-x-auto max-h-32">{qcityStatus ? JSON.stringify(qcityStatus, null, 2) : 'Loading...'}</pre>
               <div className="font-medium mb-1">Active Devices:</div>
@@ -1012,13 +1181,14 @@ const QAvatar: React.FC<QAvatarProps> = ({
                     className="flex-1 px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
                     placeholder="Enter command (e.g. npm run build)"
                     disabled={isRunning}
+                    tabIndex={0}
                   />
                   <Button size="sm" onClick={handleRunCommand} disabled={isRunning || !adminKey}>
                     {isRunning ? 'Running...' : 'Run'}
                   </Button>
                 </div>
                 {runError && <div className="text-red-600 text-xs">{runError}</div>}
-                <div className="bg-black text-green-400 font-mono text-xs rounded p-2 h-32 overflow-y-auto mt-1" style={{ whiteSpace: 'pre-wrap' }}>
+                <div className="bg-black text-green-400 font-mono text-xs rounded p-2 h-32 overflow-y-auto mt-1" style={{ whiteSpace: 'pre-wrap' }} aria-live="polite" aria-atomic="true">
                   {logOutput.length === 0 && !isRunning ? <span className="text-gray-400">No output yet.</span> : logOutput.map((line, i) => <div key={i}>{line}</div>)}
                   {isRunning && <span className="text-yellow-400">Streaming logs...</span>}
                 </div>
@@ -1026,7 +1196,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
               <div className="space-y-2">
                 <div className="flex gap-2 items-center mb-1">
                   <label className="text-sm font-medium">Device:</label>
-                  <select value={selectedDevice} onChange={e => setSelectedDevice(e.target.value)} className="px-2 py-1 border rounded">
+                  <select value={selectedDevice} onChange={e => setSelectedDevice(e.target.value)} className="px-2 py-1 border rounded" aria-label="Device Selection" tabIndex={0} title="Select device to run commands on">
                     {availableDevices.map(dev => <option key={dev.id} value={dev.id}>{dev.name}</option>)}
                   </select>
                 </div>
@@ -1091,7 +1261,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 {showHelp && (
                   <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
                     <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 max-w-md w-full">
-                      <div className="font-bold mb-2">QCity Dashboard Help & Onboarding</div>
+                      <div className="font-bold mb-2">QCity Dashboard Help & Onboarding<HelpLink href="/docs/QCITY.md" label="QCity Documentation" /></div>
                       <div className="mb-4 text-sm">
                         <ul className="list-disc pl-5">
                           <li>Use the device selector to choose where commands run.</li>
@@ -1109,9 +1279,23 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   </div>
                 )}
                 {showOnboarding && (
-                  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+                  <div className="qavatar-onboarding-modal" role="dialog" aria-modal="true" aria-label="Q-Avatar Onboarding" tabIndex={-1} onKeyDown={e => {
+                    if (e.key === 'Tab') {
+                      // Trap focus inside modal
+                      const focusable = Array.from(document.querySelectorAll('.qavatar-onboarding-modal button'));
+                      const first = focusable[0] as HTMLElement;
+                      const last = focusable[focusable.length - 1] as HTMLElement;
+                      if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                      } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                      }
+                    }
+                  }}>
                     <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 max-w-md w-full">
-                      <div className="font-bold mb-2">Welcome to QCity Dashboard!</div>
+                      <div className="font-bold mb-2">Welcome to QCity Dashboard!<HelpLink href="/docs/QCITY.md" label="QCity Documentation" /></div>
                       <div className="mb-4 text-sm">
                         <ul className="list-disc pl-5">
                           <li>Run commands on any QCity device.</li>
@@ -1141,21 +1325,32 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   // Export/import command history and settings
   function exportSettings() {
-    const data = {
-      commandHistory,
-      pinnedCommands,
-      usageCounts,
-      adminKey,
-      templateVars,
-      selectedDevice,
-    };
+    let data: any = {};
+    if (exportScope === 'all') {
+      data = {
+        commandHistory,
+        pinnedCommands,
+        usageCounts,
+        adminKey,
+        templateVars,
+        selectedDevice,
+        notificationSettings,
+      };
+    } else if (exportScope === 'history') {
+      data = { commandHistory };
+    } else if (exportScope === 'pinned') {
+      data = { pinnedCommands };
+    } else if (exportScope === 'notifications') {
+      data = { notificationSettings };
+    }
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'qcity_dashboard_settings.json';
+    a.download = `qcity_dashboard_settings_${exportScope}.json`;
     a.click();
     URL.revokeObjectURL(url);
+    toast({ title: 'Export Complete', description: `Exported ${exportScope} settings.`, variant: 'success' });
   }
   function importSettings(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -1164,17 +1359,126 @@ const QAvatar: React.FC<QAvatarProps> = ({
     reader.onload = ev => {
       try {
         const data = JSON.parse(ev.target?.result as string);
-        setCommandHistory(data.commandHistory || []);
-        setPinnedCommands(data.pinnedCommands || []);
-        setUsageCounts(data.usageCounts || {});
-        setAdminKey(data.adminKey || '');
-        setTemplateVars(data.templateVars || {});
-        setSelectedDevice(data.selectedDevice || 'default');
-      } catch {}
+        if (importScope === 'all' || importScope === 'history') setCommandHistory(data.commandHistory || []);
+        if (importScope === 'all' || importScope === 'pinned') setPinnedCommands(data.pinnedCommands || []);
+        if (importScope === 'all') setUsageCounts(data.usageCounts || {});
+        if (importScope === 'all') setAdminKey(data.adminKey || '');
+        if (importScope === 'all') setTemplateVars(data.templateVars || {});
+        if (importScope === 'all') setSelectedDevice(data.selectedDevice || 'default');
+        if (importScope === 'all' || importScope === 'notifications') setNotificationSettings(data.notificationSettings || notificationSettings);
+        toast({ title: 'Import Complete', description: `Imported ${importScope} settings.`, variant: 'success' });
+      } catch {
+        toast({ title: 'Import Error', description: 'Failed to import settings.', variant: 'destructive' });
+      }
     };
     reader.readAsText(file);
   }
 
+  // 1. Add state for audit log panel
+  const [showAuditLog, setShowAuditLog] = useState(false);
+  const [auditLogs, setAuditLogs] = useState<any[]>([]);
+  const [auditLoading, setAuditLoading] = useState(false);
+  const [auditError, setAuditError] = useState<string | null>(null);
+  const [auditFilter, setAuditFilter] = useState({ action: '', user: '', deviceId: '', status: '' });
+  const [auditLimit, setAuditLimit] = useState(50);
+  const [auditOffset, setAuditOffset] = useState(0);
+  const [auditFormat, setAuditFormat] = useState<'json' | 'csv'>('json');
+  const [auditTotal, setAuditTotal] = useState(0);
+
+  // 2. Fetch audit logs from API
+  async function fetchAuditLogs() {
+    setAuditLoading(true);
+    setAuditError(null);
+    try {
+      const params = new URLSearchParams({
+        limit: String(auditLimit),
+        offset: String(auditOffset),
+        format: auditFormat,
+        ...Object.fromEntries(Object.entries(auditFilter).filter(([_, v]) => v)),
+      });
+      const res = await fetch(`/api/qcity/audit-log?${params.toString()}`, {
+        headers: { 'x-qcity-admin-key': adminKey },
+      });
+      if (res.status === 401) throw new Error('Unauthorized: Invalid admin key');
+      if (auditFormat === 'csv') {
+        const csv = await res.text();
+        // For CSV, just download
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'audit-log.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+        setAuditLoading(false);
+        return;
+      }
+      const data = await res.json();
+      setAuditLogs(data.logs || []);
+      setAuditTotal(data.total || 0);
+    } catch (e: any) {
+      setAuditError(e.message || 'Failed to fetch audit logs');
+    } finally {
+      setAuditLoading(false);
+    }
+  }
+
+  // 3. Audit Log Panel UI
+  const AuditLogPanel = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center" role="dialog" aria-modal="true">
+      <div className="bg-white dark:bg-gray-900 rounded-lg shadow-2xl p-6 w-full max-w-3xl relative">
+        <button className="absolute top-2 right-2 text-gray-500 hover:text-red-600" onClick={() => setShowAuditLog(false)} aria-label="Close Audit Log Panel">✕</button>
+        <h2 className="text-xl font-bold mb-4 flex items-center">Audit Log<HelpLink href="/docs/AUDITLOG.md" label="Audit Log Documentation" /></h2>
+        <form className="flex gap-2 mb-4 flex-wrap" onSubmit={e => { e.preventDefault(); fetchAuditLogs(); }}>
+          <input className="border rounded px-2 py-1" placeholder="Action" value={auditFilter.action} onChange={e => setAuditFilter(f => ({ ...f, action: e.target.value }))} aria-label="Filter by action" />
+          <input className="border rounded px-2 py-1" placeholder="User" value={auditFilter.user} onChange={e => setAuditFilter(f => ({ ...f, user: e.target.value }))} aria-label="Filter by user" />
+          <input className="border rounded px-2 py-1" placeholder="Device ID" value={auditFilter.deviceId} onChange={e => setAuditFilter(f => ({ ...f, deviceId: e.target.value }))} aria-label="Filter by device ID" />
+          <input className="border rounded px-2 py-1" placeholder="Status" value={auditFilter.status} onChange={e => setAuditFilter(f => ({ ...f, status: e.target.value }))} aria-label="Filter by status" />
+          <button type="submit" className="px-3 py-1 bg-cyan-700 text-white rounded" aria-label="Apply filters">Apply</button>
+          <button type="button" className="px-3 py-1 bg-gray-500 text-white rounded" onClick={() => { setAuditFilter({ action: '', user: '', deviceId: '', status: '' }); setAuditOffset(0); fetchAuditLogs(); }} aria-label="Clear filters">Clear</button>
+          <button type="button" className="px-3 py-1 bg-green-700 text-white rounded" onClick={() => { setAuditFormat('csv'); fetchAuditLogs(); }} aria-label="Export CSV">Export CSV</button>
+          <button type="button" className="px-3 py-1 bg-blue-700 text-white rounded" onClick={() => { setAuditFormat('json'); fetchAuditLogs(); }} aria-label="Export JSON">Export JSON</button>
+        </form>
+        {auditLoading ? <div>Loading...</div> : auditError ? <div className="text-red-600">{auditError}</div> : (
+          <div className="overflow-x-auto max-h-96">
+            <table className="min-w-full text-xs border">
+              <thead>
+                <tr className="bg-gray-200 dark:bg-gray-800">
+                  <th className="p-1 border">Timestamp</th>
+                  <th className="p-1 border">Action</th>
+                  <th className="p-1 border">User</th>
+                  <th className="p-1 border">Device</th>
+                  <th className="p-1 border">Status</th>
+                  <th className="p-1 border">Command</th>
+                  <th className="p-1 border">Code</th>
+                </tr>
+              </thead>
+              <tbody>
+                {auditLogs.map((log, i) => (
+                  <tr key={i} className="odd:bg-gray-50 even:bg-white dark:odd:bg-gray-800 dark:even:bg-gray-900">
+                    <td className="p-1 border">{log.timestamp}</td>
+                    <td className="p-1 border">{log.action}</td>
+                    <td className="p-1 border">{log.user}</td>
+                    <td className="p-1 border">{log.deviceId}</td>
+                    <td className="p-1 border">{log.status}</td>
+                    <td className="p-1 border">{log.cmd}</td>
+                    <td className="p-1 border">{log.code ?? ''}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="flex justify-between items-center mt-2">
+              <button disabled={auditOffset === 0} onClick={() => { setAuditOffset(o => Math.max(0, o - auditLimit)); fetchAuditLogs(); }} className="px-2 py-1 rounded bg-gray-300 dark:bg-gray-700 text-xs" aria-label="Previous page">Prev</button>
+              <span className="text-xs">{auditOffset + 1} - {Math.min(auditOffset + auditLimit, auditTotal)} of {auditTotal}</span>
+              <button disabled={auditOffset + auditLimit >= auditTotal} onClick={() => { setAuditOffset(o => o + auditLimit); fetchAuditLogs(); }} className="px-2 py-1 rounded bg-gray-300 dark:bg-gray-700 text-xs" aria-label="Next page">Next</button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  // 4. Add button to open Audit Log panel in the main dashboard panel
   if (config.isMinimized) {
     return (
       <motion.div
@@ -1202,6 +1506,42 @@ const QAvatar: React.FC<QAvatarProps> = ({
       </motion.div>
     );
   }
+
+  const [showSelfHeal, setShowSelfHeal] = useState(false);
+  const [showMetrics, setShowMetrics] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
+  const [showPlugins, setShowPlugins] = useState(false);
+  const [showUser, setShowUser] = useState(false);
+  const [showOrchestration, setShowOrchestration] = useState(false);
+  const [orchestratorStatus, setOrchestratorStatus] = useState({ env: 'success', lint: 'success', test: 'success', build: 'success', audit: 'success', fix: 'success', deploy: 'success' });
+  const [user, setUser] = useState({ name: 'Guest', role: 'user', loggedIn: false });
+
+  // In QAvatar component, add state for notification settings
+  const [notificationSettings, setNotificationSettings] = useState({
+    email: '',
+    emailEnabled: false,
+    slack: '',
+    slackEnabled: false,
+    whatsapp: '',
+    whatsappEnabled: false,
+  });
+
+  // Handler for notification settings change
+  function handleNotificationChange(field: string, value: string | boolean) {
+    setNotificationSettings(prev => ({ ...prev, [field]: value }));
+  }
+
+  // Handler for test notification (stubbed)
+  function handleTestNotification(type: 'email' | 'slack' | 'whatsapp') {
+    toast({
+      title: `Test ${type.charAt(0).toUpperCase() + type.slice(1)} Notification`,
+      description: `A test ${type} notification would be sent to: ${notificationSettings[type]}`,
+      variant: 'success',
+    });
+  }
+
+  // Add state for showing UserPanel
+  const [showUserPanel, setShowUserPanel] = useState(false);
 
   return (
     <motion.div
@@ -1235,9 +1575,13 @@ const QAvatar: React.FC<QAvatarProps> = ({
             variant="ghost"
             className="w-8 h-8 p-0 rounded-full bg-white/80 hover:bg-white shadow-md"
             onClick={() => setShowSettings(!showSettings)}
+            aria-label="Open Settings"
+            title="Open settings panel (customize avatar, quality, environment, etc.)"
+            aria-describedby="qavatar-settings-help"
           >
             <Settings className="w-4 h-4" />
           </Button>
+          <span id="qavatar-settings-help" className="sr-only">Open the settings panel to customize your avatar and dashboard experience.</span>
           <Button
             size="sm"
             variant="ghost"
@@ -1270,6 +1614,54 @@ const QAvatar: React.FC<QAvatarProps> = ({
           >
             <span className="w-4 h-4">🏙️</span>
           </Button>
+          <Button size="sm" onClick={() => { setShowAuditLog(true); fetchAuditLogs(); }} aria-label="Open Audit Log Panel" title="View and export audit logs">Audit Log</Button>
+          <Button
+            aria-label="Open Self-Heal Panel"
+            title="Trigger or schedule self-heal scripts, view logs and history"
+            className="qavatar-selfheal-btn"
+            onClick={() => setShowSelfHeal(true)}
+          >
+            🛠️ Self-Heal
+          </Button>
+          <Button
+            aria-label="Open Analytics Panel"
+            title="View real-time analytics and system metrics"
+            className="qavatar-metrics-btn"
+            onClick={() => setShowMetrics(true)}
+          >
+            📊 Analytics
+          </Button>
+          <Button
+            aria-label="Open Avatar Gallery"
+            title="Select, preview, or request new avatars and voices"
+            className="qavatar-gallery-btn"
+            onClick={() => setShowGallery(true)}
+          >
+            🖼️ Avatar Gallery
+          </Button>
+          <Button
+            aria-label="Open Plugin System"
+            title="Manage and load dashboard plugins/extensions"
+            className="qavatar-plugin-btn"
+            onClick={() => setShowPlugins(true)}
+          >
+            🧩 Plugins
+          </Button>
+          <Button
+            className="mb-2"
+            onClick={() => setShowUserPanel(true)}
+            aria-label="Open User Management Panel"
+          >
+            Manage Users & Roles
+          </Button>
+          <Button
+            aria-label="Open Orchestration Panel"
+            title="View agent/device health and orchestration controls"
+            className="qavatar-orchestration-btn"
+            onClick={() => setShowOrchestration(true)}
+          >
+            🕹️ Orchestration
+          </Button>
         </div>
 
         {/* Status Indicators */}
@@ -1296,6 +1688,71 @@ const QAvatar: React.FC<QAvatarProps> = ({
         <SettingsPanel />
 
         {showQCityDashboard && <QCityDashboardPanel />}
+        {showAuditLog && <AuditLogPanel />}
+        {showSelfHeal && (
+          <div className="qavatar-onboarding-modal" role="dialog" aria-modal="true" aria-label="Q-Avatar Self-Heal Panel" tabIndex={-1}>
+            <div className="qavatar-onboarding-content" style={{ maxWidth: 600 }}>
+              <SelfHealPanel />
+              <Button onClick={() => setShowSelfHeal(false)} aria-label="Close Self-Heal Panel" style={{ marginTop: 16 }}>Close</Button>
+            </div>
+          </div>
+        )}
+        {showMetrics && (
+          <div className="qavatar-onboarding-modal" role="dialog" aria-modal="true" aria-label="Q-Avatar Analytics Panel" tabIndex={-1}>
+            <div className="qavatar-onboarding-content" style={{ maxWidth: 600 }}>
+              <MetricsPanel />
+              <Button onClick={() => setShowMetrics(false)} aria-label="Close Analytics Panel" style={{ marginTop: 16 }}>Close</Button>
+            </div>
+          </div>
+        )}
+        {showGallery && (
+          <div className="qavatar-onboarding-modal" role="dialog" aria-modal="true" aria-label="Q-Avatar Gallery Panel" tabIndex={-1}>
+            <div className="qavatar-onboarding-content" style={{ maxWidth: 700 }}>
+              <AviatorGalleryPanel />
+              <Button onClick={() => setShowGallery(false)} aria-label="Close Avatar Gallery" style={{ marginTop: 16 }}>Close</Button>
+            </div>
+          </div>
+        )}
+        {showPlugins && (
+          <div className="qavatar-onboarding-modal" role="dialog" aria-modal="true" aria-label="Q-Avatar Plugin Panel" tabIndex={-1}>
+            <div className="qavatar-onboarding-content" style={{ maxWidth: 600 }}>
+              <PluginPanel />
+              <Button onClick={() => setShowPlugins(false)} aria-label="Close Plugin Panel" style={{ marginTop: 16 }}>Close</Button>
+            </div>
+          </div>
+        )}
+        {showUser && (
+          <div className="qavatar-onboarding-modal" role="dialog" aria-modal="true" aria-label="Q-Avatar User Panel" tabIndex={-1}>
+            <div className="qavatar-onboarding-content" style={{ maxWidth: 400 }}>
+              <h2>User Management</h2>
+              <div>Name: {user.name}</div>
+              <div>Role: {user.role}</div>
+              <div>Status: {user.loggedIn ? 'Logged In' : 'Logged Out'}</div>
+              <Button onClick={() => setUser(u => ({ ...u, loggedIn: !u.loggedIn }))} aria-label={user.loggedIn ? 'Logout' : 'Login'} style={{ marginTop: 16 }}>{user.loggedIn ? 'Logout' : 'Login'}</Button>
+              <Button onClick={() => setShowUser(false)} aria-label="Close User Panel" style={{ marginTop: 16 }}>Close</Button>
+            </div>
+          </div>
+        )}
+        {showOrchestration && (
+          <div className="qavatar-onboarding-modal" role="dialog" aria-modal="true" aria-label="Q-Avatar Orchestration Panel" tabIndex={-1}>
+            <div className="qavatar-onboarding-content" style={{ maxWidth: 600 }}>
+              <OrchestratorStatusPanel status={orchestratorStatus} />
+              <Button onClick={() => setShowOrchestration(false)} aria-label="Close Orchestration Panel" style={{ marginTop: 16 }}>Close</Button>
+            </div>
+          </div>
+        )}
+        {showUserPanel && (
+          <div className="qavatar-onboarding-modal" role="dialog" aria-modal="true" aria-label="Q-Avatar User Panel" tabIndex={-1}>
+            <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 max-w-2xl w-full relative">
+              <button
+                className="absolute top-2 right-2 text-gray-500 hover:text-red-600"
+                onClick={() => setShowUserPanel(false)}
+                aria-label="Close User Management Panel"
+              >✕</button>
+              <TeamRoleManager />
+            </div>
+          </div>
+        )}
       </div>
     </motion.div>
   );

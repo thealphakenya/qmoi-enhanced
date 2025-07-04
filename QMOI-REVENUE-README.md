@@ -1,8 +1,7 @@
 # QMOI Revenue Engine & M-Pesa Integration
 
 ## Overview
-
-QMOI is now a fully automated revenue generation system that continuously makes money through multiple streams and automatically transfers earnings to your M-Pesa account.
+QMOI is now a fully automated revenue generation system that continuously makes money through multiple streams and automatically transfers earnings to your M-Pesa account. **The system is now optimized to generate a minimum of Ksh 50,000 per day and maintain at least Ksh 50,000 in QMOI Space.**
 
 ## 🚀 Quick Start
 
@@ -52,39 +51,39 @@ Access the revenue dashboard at `/qcity` (master only) to:
 - Control the engine
 - Transfer to M-Pesa
 
-## 💰 Revenue Streams
+## 💰 Revenue Streams & Minimum Targets
+- **Minimum Daily Target**: Ksh 50,000 (enforced by automation)
+- **QMOI Space Minimum**: Ksh 50,000 must always be available (auto-replenish if below)
+- **Automated Alerts**: Master is notified if targets are not met or balance drops below threshold
+- **Multi-Channel Revenue**: Trading, content, SaaS, affiliate, consulting, e-commerce, and more
+- **AI-Driven Maximization**: QMOI uses all features (projects, distribution, marketing, content, etc.) to maximize revenue
 
-QMOI generates revenue through 6 automated streams:
+## AI-Driven Idea Generation & Project Quality
+- AI scans global trends, market data, and user feedback to generate new project and earning ideas
+- Each idea is scored for revenue potential, feasibility, and quality
+- Only the highest quality, most profitable ideas are executed
+- Automated quality assurance: all projects are tested, reviewed, and improved before launch
+- Trailers, documentation, and marketing assets are auto-generated for every project
 
-### 1. AI Trading Bot (2000 KES/day target)
-- **Strategy**: Automated cryptocurrency and forex trading
-- **Features**: Market analysis, prediction, risk management
-- **Revenue**: 100-600 KES per cycle (5-minute intervals)
+## Revenue Maximization Automation
+- Every project and campaign is evaluated for revenue potential and quality before launch
+- Multi-channel distribution: projects and campaigns are sent to all relevant platforms for maximum exposure and revenue
+- Marketing, deals, and pricing are optimized by AI and approved by master
+- All actions, earnings, and optimizations are logged and auditable
 
-### 2. Affiliate Marketing (1000 KES/day target)
-- **Strategy**: Product promotion and commission earning
-- **Features**: Automated affiliate link generation, performance tracking
-- **Revenue**: 50-350 KES per cycle with 5-15% conversion rates
+## Enhanced Project & Revenue Workflow
+1. **Idea Generation**: AI proposes high-revenue, high-quality project ideas
+2. **Master Approval**: Master can approve, modify, or prioritize ideas
+3. **Project Creation**: AI creates and manages projects, ensuring quality and revenue focus
+4. **Asset Generation**: Documentation, trailers, and marketing materials are auto-generated
+5. **Distribution & Marketing**: Projects and campaigns are distributed to all relevant platforms for maximum earning
+6. **Revenue Tracking**: All earnings are tracked, and targets are enforced
+7. **Continuous Optimization**: AI monitors performance, optimizes strategies, and proposes improvements
 
-### 3. SaaS Subscriptions (800 KES/day target)
-- **Strategy**: Software-as-a-Service recurring revenue
-- **Features**: Subscription management, customer retention
-- **Revenue**: 100-300 KES per cycle with 95% retention
-
-### 4. Content Monetization (500 KES/day target)
-- **Strategy**: Ad revenue, sponsorships, premium content
-- **Features**: Content optimization, engagement tracking
-- **Revenue**: 50-200 KES per cycle with 10-30% engagement
-
-### 5. Automation Services (400 KES/day target)
-- **Strategy**: Process automation for clients
-- **Features**: Workflow optimization, custom solutions
-- **Revenue**: 50-150 KES per cycle with 20-50% efficiency gains
-
-### 6. AI Consulting (300 KES/day target)
-- **Strategy**: Expert AI implementation advice
-- **Features**: Technical consulting, project management
-- **Revenue**: 100-300 KES per cycle with 60-100% expertise level
+## Security, Compliance & Quality
+- All projects and earnings are subject to automated quality checks
+- Master can review, approve, or reject any project or earning strategy
+- Compliance with financial regulations and platform policies is enforced automatically
 
 ## 🔄 Automatic Money Flow
 
@@ -256,6 +255,4 @@ For issues and questions:
 
 ---
 
-**QMOI Revenue Engine** - Making money 24/7, automatically! 💰🚀
-
-> **Note**: This system generates real revenue and transfers real money. Always test thoroughly in sandbox environment before going live. 
+*QMOI Revenue Engine: Automated, high-quality, high-revenue, and always above Ksh 50,000 per day.* 

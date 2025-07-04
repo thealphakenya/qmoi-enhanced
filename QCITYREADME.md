@@ -577,3 +577,50 @@ For more information, see:
 - User/role management and scheduling/notifications (planned)
 
 --- 
+
+# QCity Device - Enhanced Documentation
+
+## Overview
+QCity is the primary cloud device for QMOI, handling all heavy computation, storage, and device management. It is optimized for accessibility, performance, and seamless integration with all QMOI features.
+
+## Key Features
+
+### 1. Device Offloading & Resource Management
+- **All heavy tasks (builds, installs, tests) run in QCity/Colab, not local device**
+- **Unlimited resources**: Dynamic scaling of memory, storage, CPU, and bandwidth
+- **Persistent device**: Always-on for fast access and reliability
+- **Device clustering**: Multiple QCity devices for load balancing and failover
+
+### 2. Log & Data Management
+- **View all logs and data**: QMOI can access, search, and filter all logs/data
+- **Delete, restore, or permanently delete logs/data**: Full control for master users
+- **Audit logging**: All actions are tracked and exportable
+- **Data privacy**: Logs/data are encrypted and access-controlled
+
+### 3. File Delivery & Communication
+- **Send files/apps/projects directly to users via WhatsApp, chat, and HuggingFace Spaces**
+- **Automated file delivery**: Triggered by user requests or automation rules
+- **Secure transfer**: All files are encrypted and access-controlled
+- **Multi-platform support**: Works across devices and platforms
+
+### 4. Error Fixing & Self-Healing
+- **Automatic error detection and fixing**: QMOI scans, diagnoses, and fixes all errors in QCity and connected devices
+- **Self-healing daemon**: Runs continuously, auto-fixes issues, and reports status
+- **Fallback and recovery**: If a fix fails, QMOI tries alternative solutions or devices
+- **Audit and history**: All fixes are logged and can be reviewed/exported
+
+### 5. Accessibility & Hands-Free Operation
+- **Voice and gesture control**: QMOI can be operated hands-free by physically challenged users
+- **Preference memory**: Remembers user/device preferences and adapts automatically
+- **Device discovery and permission management**: Auto-detects and connects to new devices with user consent
+- **Accessible UI**: Optimized for screen readers, keyboard navigation, and large text
+
+### 6. Integration & Extensibility
+- **GitHub integration**: For deployment, version control, and audit
+- **Cloud/Colab integration**: For resource scaling and offloading
+- **API endpoints**: For remote command, log management, and device control
+- **Extensible architecture**: New features/devices can be added via registry and auto-enhancement system
+
+---
+
+*For error fixing, see scripts/qmoi-universal-error-handler.js. For registry, see scripts/qmoi-registry-manager.js. For optimization, see AUTOOPTIMIZEALPHAQMOIENGINE.md.* 
