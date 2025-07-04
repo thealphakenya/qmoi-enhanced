@@ -1328,12 +1328,12 @@ const QAvatar: React.FC<QAvatarProps> = ({
     let data: any = {};
     if (exportScope === 'all') {
       data = {
-        commandHistory,
-        pinnedCommands,
-        usageCounts,
-        adminKey,
-        templateVars,
-        selectedDevice,
+      commandHistory,
+      pinnedCommands,
+      usageCounts,
+      adminKey,
+      templateVars,
+      selectedDevice,
         notificationSettings,
       };
     } else if (exportScope === 'history') {
