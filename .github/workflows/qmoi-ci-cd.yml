@@ -10,6 +10,8 @@ jobs:
         with:
           node-version: '18'
       - run: npm install
+      - name: Run QMOI Pre-Activity Check
+        run: node scripts/qmoi_pre_activity_check.js
       - run: npm run qmoi:test:all
       - run: npm run qmoi:autodev:full
       - run: npm run qmoi:deploy:full

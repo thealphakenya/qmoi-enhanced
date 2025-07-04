@@ -61,6 +61,38 @@ class QmoiSelfTestRunner {
         setup: this.setupInvalidVercelConfig.bind(this),
         cleanup: this.cleanupInvalidVercelConfig.bind(this),
         expectedError: 'Invalid configuration'
+      },
+      {
+        name: 'Connectivity Error - No Internet',
+        category: 'connectivity',
+        severity: 'high',
+        setup: this.setupNoInternet.bind(this),
+        cleanup: this.cleanupNoInternet.bind(this),
+        expectedError: 'No internet connection'
+      },
+      {
+        name: 'VPN Error - VPN Disconnected',
+        category: 'vpn',
+        severity: 'high',
+        setup: this.setupVpnDisconnected.bind(this),
+        cleanup: this.cleanupVpnDisconnected.bind(this),
+        expectedError: 'VPN disconnected'
+      },
+      {
+        name: 'Zero-Rated Error - All Endpoints Fail',
+        category: 'zero-rated',
+        severity: 'high',
+        setup: this.setupZeroRatedFail.bind(this),
+        cleanup: this.cleanupZeroRatedFail.bind(this),
+        expectedError: 'Zero-rated connectivity failed'
+      },
+      {
+        name: 'Cloud Error - Cloud Resource Unavailable',
+        category: 'cloud',
+        severity: 'high',
+        setup: this.setupCloudUnavailable.bind(this),
+        cleanup: this.cleanupCloudUnavailable.bind(this),
+        expectedError: 'Cloud resource unavailable'
       }
     ];
   }
@@ -221,6 +253,85 @@ console.log(usedVariable);
     await this.restoreFile(vercelPath);
   }
 
+  async setupNoInternet() {
+    console.log('  📡 Setting up No Internet test...');
+    // Simulate a network failure by blocking DNS resolution
+    const hostsPath = path.join(this.projectRoot, 'hosts');
+    await this.backupFile(hostsPath);
+    const hostsContent = fs.readFileSync(hostsPath, 'utf8');
+    const newHostsContent = hostsContent.replace(/^127.0.0.1\s+localhost$/m, ''); // Remove localhost
+    fs.writeFileSync(hostsPath, newHostsContent);
+  }
+
+  async cleanupNoInternet() {
+    const hostsPath = path.join(this.projectRoot, 'hosts');
+    await this.restoreFile(hostsPath);
+  }
+
+  async setupVpnDisconnected() {
+    console.log('  🔌 Setting up VPN Disconnected test...');
+    // Simulate a VPN disconnection by blocking network traffic
+    const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
+    await this.backupFile(iptablesPath);
+    const iptablesContent = `*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -j DROP
+-A FORWARD -j DROP
+-A OUTPUT -j DROP
+`;
+    fs.writeFileSync(iptablesPath, iptablesContent);
+  }
+
+  async cleanupVpnDisconnected() {
+    const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
+    await this.restoreFile(iptablesPath);
+  }
+
+  async setupZeroRatedFail() {
+    console.log('  🌐 Setting up Zero-Rated Fail test...');
+    // Simulate a scenario where all network endpoints fail
+    const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
+    await this.backupFile(iptablesPath);
+    const iptablesContent = `*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -j DROP
+-A FORWARD -j DROP
+-A OUTPUT -j DROP
+`;
+    fs.writeFileSync(iptablesPath, iptablesContent);
+  }
+
+  async cleanupZeroRatedFail() {
+    const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
+    await this.restoreFile(iptablesPath);
+  }
+
+  async setupCloudUnavailable() {
+    console.log('  ☁️ Setting up Cloud Resource Unavailable test...');
+    // Simulate a scenario where a cloud resource (e.g., database, API) is unavailable
+    // This might involve mocking a service or blocking a port
+    const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
+    await this.backupFile(iptablesPath);
+    const iptablesContent = `*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -j DROP
+-A FORWARD -j DROP
+-A OUTPUT -j DROP
+`;
+    fs.writeFileSync(iptablesPath, iptablesContent);
+  }
+
+  async cleanupCloudUnavailable() {
+    const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
+    await this.restoreFile(iptablesPath);
+  }
+
   async runCommand(command, timeout = 30000) {
     return new Promise((resolve, reject) => {
       const child = spawn(command, [], {
@@ -354,7 +465,11 @@ console.log(usedVariable);
       lint: ['npm run lint'],
       config: ['node -e "JSON.parse(require(\'fs\').readFileSync(\'test-config.json\'))"'],
       env: ['npm run build'],
-      deploy: ['npx vercel --version']
+      deploy: ['npx vercel --version'],
+      connectivity: ['ping -c 1 google.com'],
+      vpn: ['ping -c 1 8.8.8.8'],
+      'zero-rated': ['ping -c 1 1.1.1.1'],
+      cloud: ['curl -I https://api.example.com']
     };
     
     return commands[category] || ['npm run build'];

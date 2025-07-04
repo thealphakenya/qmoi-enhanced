@@ -403,3 +403,28 @@ The master dashboard shows:
 - See `AUTOOPTIMIZEALPHAQMOIENGINE.md` for full details on optimization strategies.
 
 --- 
+
+## Parallel Error Fixing & Pre-Activity Automation
+- QMOI now runs all error fixes (build, lint, deploy, connectivity, cloud, etc.) in parallel for maximum speed and accuracy.
+- Pre-activity checks are run before every commit, push, deploy, and in all CI/CD pipelines. If any check fails, QMOI auto-fixes and blocks the action until all pass.
+- All results are logged and auditable.
+
+## System Health Dashboard
+- A new System Health panel in the QCity dashboard shows real-time pre-activity, connectivity, and cloud status/logs.
+- Manual test/repair buttons and real-time updates ensure you always know the system state.
+
+## Aggressive Self-Healing
+- QMOI aggressively attempts to repair any error, cycling through all methods, updating endpoints, and retrying until fixed.
+- Connectivity, VPN, zero-rated, and cloud issues are auto-repaired and logged.
+
+## Usage
+- Use the dashboard to monitor and trigger checks/repairs.
+- All pre-activity checks run automatically before any critical action.
+
+## Troubleshooting
+- If a check fails, see logs/pre-activity-check.json and the System Health panel for details.
+- Manual repair options are available in the dashboard.
+
+## Reliability
+- QMOI is designed to be always-on, self-healing, and reliable, with parallel error fixing and aggressive automation.
+- All actions are logged for audit and compliance. 

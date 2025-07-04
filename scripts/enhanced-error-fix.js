@@ -3,6 +3,7 @@ import fs from 'fs';
 import { execSync } from 'child_process';
 import axios from 'axios';
 import path from 'path';
+import { spawn } from 'child_process';
 
 console.log('[DEBUG] Script loaded and imports successful');
 
@@ -309,3 +310,39 @@ log.push(summary);
 fs.writeFileSync(LOG_FILE, JSON.stringify(log, null, 2));
 
 console.log('Error/fix summary:', summary); 
+
+const FIXERS = [
+  './fix-lint.js',
+  './fix-build.js',
+  './fix-deploy.js',
+  './fix-connectivity.js',
+  './fix-cloud.js',
+  // Add more fixers as needed
+];
+
+async function runFixer(fixerPath) {
+  return new Promise((resolve) => {
+    const proc = spawn('node', [fixerPath], { stdio: 'inherit' });
+    proc.on('close', (code) => {
+      resolve({ fixer: fixerPath, success: code === 0 });
+    });
+  });
+}
+
+async function runAllFixersParallel() {
+  console.log('[QMOI] Running all fixers in parallel...');
+  const results = await Promise.all(FIXERS.map(runFixer));
+  const failed = results.filter(r => !r.success);
+  if (failed.length > 0) {
+    console.error('[QMOI] Some fixers failed:', failed.map(f => f.fixer));
+    process.exit(1);
+  } else {
+    console.log('[QMOI] All fixers succeeded.');
+    process.exit(0);
+  }
+}
+
+// Main entry
+if (require.main === module) {
+  runAllFixersParallel();
+} 

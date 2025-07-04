@@ -318,6 +318,137 @@ class QCityDeviceManager {
         console.log('Available commands: npm-install, build, test, lint, deploy, upgrade, optimize, cluster, security-audit, tune, status, monitor, auto-fix');
     }
   }
+
+  // Atomic/temp install logic
+  async atomicNpmInstall(packages = []) {
+    const tempDir = 'node_modules_temp';
+    const command = packages.length > 0 ? `npm install ${packages.join(' ')} --prefix ${tempDir}` : `npm install --prefix ${tempDir}`;
+    await this.executeInQCity(command, { storage: 'unlimited_qcity', nodeModules: 'unlimited_qcity', unlimitedResources: true });
+    // Replace node_modules atomically
+    if (fs.existsSync('node_modules')) fs.rmSync('node_modules', { recursive: true, force: true });
+    fs.renameSync(tempDir + '/node_modules', 'node_modules');
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
+
+  // Background/parallel install
+  async backgroundNpmInstall(packages = []) {
+    const command = packages.length > 0 ? `npm install ${packages.join(' ')}` : 'npm install';
+    return this.executeInQCity(command + ' &', { background: true });
+  }
+
+  // Deduplication
+  async dedupe() {
+    return this.executeInQCity('npm dedupe', { nodeModules: 'unlimited_qcity' });
+  }
+
+  // Cloud artifact sync
+  async syncArtifactsToCloud() {
+    // TODO: Implement cloud sync logic (S3, GCS, etc.)
+    console.log('Syncing artifacts to cloud...');
+  }
+
+  // Health/status endpoints
+  async getInstallStatus() {
+    // TODO: Return current install/build status
+    return { status: 'idle', lastRun: new Date().toISOString() };
+  }
+
+  async getHealth() {
+    // TODO: Return health info (unused, outdated, vulnerable packages)
+    return { healthy: true, issues: [] };
+  }
+
+  // Real-time resource monitoring
+  getResourceStats() {
+    const os = require('os');
+    const cpuUsage = os.loadavg()[0];
+    const totalMem = os.totalmem();
+    const freeMem = os.freemem();
+    const usedMem = totalMem - freeMem;
+    const disk = require('diskusage').checkSync('.');
+    // Network stats can be added with external modules if needed
+    return {
+      cpu: cpuUsage,
+      memory: { used: usedMem, total: totalMem },
+      disk: { used: disk.total - disk.free, total: disk.total },
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  // Process isolation and resource limits
+  runIsolated(command, opts = {}) {
+    // Use child_process.spawn with resource limits (nice/cpulimit/taskset)
+    const { spawn } = require('child_process');
+    let args = [];
+    if (opts.nice) args = ['nice', '-n', opts.nice, ...args];
+    if (opts.cpulimit) args = ['cpulimit', '-l', opts.cpulimit, ...args];
+    args = args.concat(command.split(' '));
+    return spawn(args[0], args.slice(1), { stdio: 'inherit' });
+  }
+
+  // Resource-aware throttling/auto-offload
+  async runWithResourceCheck(command, opts = {}) {
+    const stats = this.getResourceStats();
+    if (stats.memory.used / stats.memory.total > 0.85 || stats.cpu > 2.0) {
+      if (this.config.qcity_device.resource_offloading.enabled) {
+        return this.executeInQCity(command, { offload: true });
+      } else {
+        // Throttle: delay or lower priority
+        await new Promise(res => setTimeout(res, 10000));
+        return this.runIsolated(command, { nice: 10, cpulimit: 50 });
+      }
+    } else {
+      return this.runIsolated(command, opts);
+    }
+  }
+
+  // Multi-language environment management
+  detectEnvironments() {
+    const envs = [];
+    if (fs.existsSync('package.json')) envs.push('node');
+    if (fs.existsSync('requirements.txt')) envs.push('python');
+    if (fs.existsSync('pom.xml')) envs.push('java');
+    if (fs.existsSync('go.mod')) envs.push('go');
+    if (fs.existsSync('Cargo.toml')) envs.push('rust');
+    if (fs.existsSync('CMakeLists.txt')) envs.push('cpp');
+    // Add more as needed
+    return envs;
+  }
+
+  async installDependenciesForAllEnvs() {
+    const envs = this.detectEnvironments();
+    for (const env of envs) {
+      switch (env) {
+        case 'node':
+          await this.atomicNpmInstall();
+          break;
+        case 'python':
+          await this.executeInQCity('pip install -r requirements.txt', { isolated: true });
+          break;
+        case 'java':
+          await this.executeInQCity('mvn install', { isolated: true });
+          break;
+        case 'go':
+          await this.executeInQCity('go mod tidy', { isolated: true });
+          break;
+        case 'rust':
+          await this.executeInQCity('cargo build', { isolated: true });
+          break;
+        case 'cpp':
+          await this.executeInQCity('cmake . && make', { isolated: true });
+          break;
+        // Add more as needed
+      }
+    }
+  }
+
+  // API methods for dashboard/backend
+  async getEnvironmentsStatus() {
+    return this.detectEnvironments().map(env => ({ env, status: 'detected' }));
+  }
+  async getOffloadStatus() {
+    return { offloading: this.config.qcity_device.resource_offloading.enabled };
+  }
 }
 
 // CLI support

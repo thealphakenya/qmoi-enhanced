@@ -38,6 +38,8 @@ jobs:
           echo "📦 Installing dependencies..."
           npm ci --legacy-peer-deps --prefer-offline
           npm cache clean --force
+      - name: Run QMOI Pre-Activity Check
+        run: node scripts/qmoi_pre_activity_check.js
 
       - name: QMOI Environment Setup
         run: |
@@ -101,6 +103,8 @@ jobs:
           echo "📦 Installing dependencies..."
           npm ci --legacy-peer-deps --prefer-offline
           npm cache clean --force
+      - name: Run QMOI Pre-Activity Check
+        run: node scripts/qmoi_pre_activity_check.js
 
       - name: QMOI Environment Validation
         run: |

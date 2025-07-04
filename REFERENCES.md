@@ -26,6 +26,10 @@
 - [scripts/hf_model_sync.py](./scripts/hf_model_sync.py): Automated Hugging Face model repo sync utility.
 - [scripts/qmoi_huggingface_spaces.js](./scripts/qmoi_huggingface_spaces.js): Hugging Face Spaces automation, deployment, and health checks.
 - [scripts/test_hf_space_ui.py](./scripts/test_hf_space_ui.py): Automated UI feature verification for Hugging Face Spaces.
+- [QMOI-OPTIMIZATION.md](./QMOI-OPTIMIZATION.md): Performance, size, and resource optimization strategies.
+- [QMOI-CLOUD.md](./QMOI-CLOUD.md): Cloud features, offloading, and artifact sync.
+- [QMOI-AUTOUPDATE.md](./QMOI-AUTOUPDATE.md): Auto-update, auto-enhance, and self-healing automation.
+- [DEVICERESOURCEOPTIMIZATION.md](./DEVICERESOURCEOPTIMIZATION.md): Device resource monitoring, optimization, and offloading strategies.
 
 ## How to Use
 - Click any link above to view the full documentation for that topic.

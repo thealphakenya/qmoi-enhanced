@@ -535,6 +535,136 @@ Send a new notification.
 }
 ```
 
+### Self-Healing & Automation
+
+#### Trigger NPM Self-Heal
+```http
+POST /qcity/selfheal-npm
+```
+
+Runs the QCity NPM self-heal script on the appropriate environment (auto-detects Windows/Linux/Mac).
+
+**Authentication:**
+- Requires JWT token with admin/master role.
+
+**Request Body (JSON, optional):**
+```
+{
+  "forceClean": true,           // (optional) Remove all node_modules/lock files and clean cache before install
+  "essentialsOnly": false,      // (optional) Only install/upgrade essential global packages
+  "upgradeAll": false,          // (optional) Upgrade all dependencies
+  "diagnosticsOnly": false      // (optional) Only run diagnostics, no install
+}
+```
+
+**Response:**
+- Streams logs/results in real time using Server-Sent Events (SSE):
+  - Each log line: `data: ...`
+  - Errors: `data: [ERROR] ...`
+  - End of stream: `data: [DONE]`
+
+**Example (SSE):**
+```
+data: ==== QCity NPM Self-Heal Run: ...
+data: Running: npm ci
+...
+data: [DONE]
+```
+
+**Audit Logging:**
+- All triggers and results are logged to `logs/qcity_audit.log` with user, options, and status.
+
+**Auto-Triggering:**
+- This endpoint may be called automatically by the error detection service on failed installs/errors.
+
+**Scheduling/Automation:**
+- Nightly runs and on-push triggers are supported via Task Scheduler (Windows), cron (Linux/Mac), or CI/CD (GitHub Actions).
+
+**Example Request:**
+```bash
+curl -N -H "Authorization: Bearer <token>" -H "Content-Type: application/json" \
+  -X POST -d '{"forceClean":true}' http://localhost:3000/api/qcity/selfheal-npm
+```
+
+### QCity Device Management (Enhanced)
+
+#### Atomic/Temp Install
+```http
+POST /qcity/device/atomic-install
+```
+Atomically installs dependencies to a temp directory, then moves to node_modules.
+
+#### Background/Parallel Install
+```http
+POST /qcity/device/background-install
+```
+Runs install in the background or in parallel (optionally offloaded to cloud).
+
+#### Deduplication
+```http
+POST /qcity/device/dedupe
+```
+Runs npm dedupe to remove duplicate dependencies.
+
+#### Artifact Sync
+```http
+POST /qcity/device/sync-artifacts
+```
+Syncs build artifacts and node_modules to cloud storage.
+
+#### Install/Build Status
+```http
+GET /qcity/device/install-status
+```
+Returns current install/build status.
+
+#### Health Monitor
+```http
+GET /qcity/device/health
+```
+Returns health info (unused, outdated, vulnerable packages).
+
+### Device & Resource Optimization (Enhanced)
+
+#### Get Resource Stats
+```http
+GET /qcity/device/resources
+```
+Returns real-time CPU, memory, disk, and network usage.
+
+#### Get Environments Status
+```http
+GET /qcity/device/envs
+```
+Returns detected programming environments (Node, Python, Java, Go, Rust, C++, etc.).
+
+#### Install Dependencies for All Envs
+```http
+POST /qcity/device/install-all-envs
+```
+Installs dependencies for all detected environments in an atomic, isolated, and resource-aware way.
+
+#### Get Offload Status
+```http
+GET /qcity/device/offload-status
+```
+Returns current offload/throttle status.
+
+## QMOI Avatars API
+- `GET /api/qmoi/avatars` — List all available avatars and their metadata.
+- `POST /api/qmoi/avatars` — Switch avatar (body: { action: 'switch', avatarId })
+
+## QMOI Voice API (Planned)
+- `GET /api/qmoi/voice-profiles` — List available voice profiles.
+- `POST /api/qmoi/voice-profiles` — Switch voice profile (body: { action: 'switch', voiceId })
+
+## QMOI Memory API (Planned)
+- `GET /api/qmoi/memory` — Query memory (conversations, preferences, project history, etc.)
+- `POST /api/qmoi/memory` — Save/update memory (body: { type, data })
+
+## Extensibility
+- All APIs are designed for easy addition of new avatars, voices, and memory modules.
+
 ## Error Responses
 
 All endpoints may return the following error responses:

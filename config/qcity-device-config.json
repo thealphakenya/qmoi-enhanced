@@ -120,6 +120,13 @@
       "99_99_uptime": true
     },
     "remote_command_api": "/api/qcity/remote-command",
-    "dashboard_ui": true
+    "dashboard_ui": true,
+    "install": {
+      "atomic": true,
+      "background": true,
+      "cloud_offload": true,
+      "deduplication": true,
+      "artifact_sync": true
+    }
   }
 } 

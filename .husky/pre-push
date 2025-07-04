@@ -1,5 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
- 
-node scripts/qmoi_doc_verifier.js verify
+
+# Run QMOI pre-activity check
+node scripts/qmoi_pre_activity_check.js || exit 1
 npm test 

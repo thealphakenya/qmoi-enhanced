@@ -18,6 +18,8 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm ci
+      - name: Run QMOI Pre-Activity Check
+        run: node scripts/qmoi_pre_activity_check.js
       - name: Run QMOI Verifier (self-healing)
         run: node scripts/qmoi_doc_verifier.js verify
       - name: Run linter

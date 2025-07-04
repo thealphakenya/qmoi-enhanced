@@ -253,36 +253,6 @@ QCity is enhanced to serve as a primary device for running QMOI operations, stor
 - If QCity fix fails, automatically falls back to other devices
 - Status and results reported in dashboard
 
-## QCity API Endpoints (NEW)
-- `/api/qcity/status`: Returns QCity device status, resource stats, and active device list for dashboard
-- `/api/qcity/remote-command`: Accepts a command and runs it remotely on QCity, returns output/logs (master/admin only)
-- Used by Q-Avatar dashboard for real-time updates and remote management
-
-## Backend Integration (ENHANCED)
-- QCityService powers all device/resource/command logic for the dashboard
-- API endpoints connect frontend UI to QCity backend for seamless automation
-
----
-
-### See also: QCITYDEVICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
-
-## QCity Device Dashboard & Offloading (NEW)
-- Floating dashboard panel in Q-Avatar UI
-- Shows QCity device status, active devices, and resource usage
-- Toggle for offloading all heavy tasks to QCity/Colab
-- Button to open QCity management UI
-- Real-time updates from QCityService
-
-## Remote Command API (NEW)
-- /api/qcity/remote-command endpoint for running npm/build/test commands on QCity/Colab
-- Streams logs/results to dashboard
-- Secured with master controls
-
-## Enhanced Self-Healing & Fallback (NEW)
-- QMOI Autodev Daemon detects/fixes errors on QCity
-- If QCity fix fails, automatically falls back to other devices
-- Status and results reported in dashboard
-
 ## Real-Time Log Streaming (NEW)
 - Remote command API supports Server-Sent Events (SSE) for real-time log streaming
 - To use, POST to `/api/qcity/remote-command` with `{ cmd, stream: true }`
@@ -346,3 +316,72 @@ QCity is enhanced to serve as a primary device for running QMOI operations, stor
 - **Scheduling & Notifications (Planned):** UI and backend will support scheduling recurring commands and notifications for results
 
 --- 
+
+## QCity Self-Healing & Automation (NEW)
+- **Self-Heal Panel:** Floating dashboard panel in Q-Avatar UI for triggering and monitoring self-heal scripts
+- **Real-Time Log Streaming:** View live logs as self-heal runs (SSE)
+- **Manual & Scheduled Runs:** Trigger self-heal manually or schedule nightly/on-push/error-triggered runs
+- **Options:** Force clean, essentials only, diagnostics only, and more
+- **Error/Fix History:** View and download history of errors and fixes
+- **Notifications:** In-app, email, and API notifications for errors/fixes
+- **Audit Logging:** All actions, errors, and fixes are logged and exportable
+- **Always-On/Daemon:** QCity and self-heal scripts run as daemons/services (pm2/systemd/Task Scheduler)
+- **Auto-Trigger:** Self-heal auto-runs on detected errors or failed installs
+- **Master/Admin Controls:** Only master/admin users can trigger or schedule self-heal
+
+See also: API.md for endpoint details and scheduling instructions. 
+
+## QCity Advanced Dependency Management (NEW)
+- **Atomic/Temp Installs:** Installs dependencies in a temp directory, then atomically moves to node_modules for reliability.
+- **Background/Parallel Installs:** Heavy installs/builds run in the background or in parallel, optionally offloaded to cloud.
+- **Deduplication:** Removes duplicate dependencies for minimal size and optimal performance.
+- **Cloud Artifact Sync:** Syncs build artifacts and node_modules to cloud storage for fast recovery and multi-device use.
+- **Health Monitor:** Continuously checks for unused, outdated, or vulnerable packages and auto-fixes or notifies.
+
+See also: QMOI-OPTIMIZATION.md, QMOI-CLOUD.md for more details. 
+
+## QCity Device & Resource Optimization (NEW)
+- **Resource Panel:** Real-time dashboard panel shows CPU, memory, disk, and network usage, with warnings if thresholds are exceeded.
+- **Resource-Aware Throttling & Offload:** Heavy tasks are throttled or offloaded to cloud/Colab if device resources are low.
+- **Process Isolation & Limits:** Heavy commands run in isolated processes with CPU/memory limits for safety.
+- **Lightweight & Cloud-First Modes:** Option to run only UI locally, with all heavy work offloaded to cloud.
+- **Multi-Language Support:** QCity detects and manages environments for Node, Python, Java, Go, Rust, C/C++, and more, handling all dependencies and tools atomically and efficiently.
+
+See also: DEVICERESOURCEOPTIMIZATION.md for full details. 
+
+### New Avatars (2024 Enhancement)
+
+#### Man Aviator
+- Confident, animated man avatar with professional gestures.
+- Features: wave, smile, presentation, business attire.
+
+#### Dolphin Aviator (Water/Sea Creature)
+- Playful dolphin avatar, representing water/sea creatures.
+- Features: jump, splash, whistle, sea background.
+
+#### Octopus Aviator (Water/Sea Creature)
+- Intelligent octopus avatar with animated tentacles.
+- Features: tentacle wave, ink splash, underwater, multi-tasking.
+
+#### Eagle Aviator
+- Majestic eagle avatar with soaring and keen vision.
+- Features: soar, screech, mountain background, sharp vision.
+
+#### Dragon Aviator
+- Mythical dragon avatar with fire and flight animations.
+- Features: fire breath, fly, roar, fantasy background.
+
+#### Whale Aviator (Water/Sea Creature)
+- Gentle whale avatar, representing sea creatures.
+- Features: spout, deep dive, ocean background, sing.
+
+## Voice Enhancement & Customization
+- QMOI supports multiple voice profiles (male, female, child, animal, robotic, fantasy, etc.).
+- Users can select and switch QMOI's voice in the Aviator Gallery or settings.
+- Voices are enhanced for clarity, emotion, and naturalness.
+- QMOI can auto-adapt voice to avatar (e.g., lion roar, dolphin whistle, robot beeps).
+- Voice packs are extensible and can be updated or uploaded.
+
+## Extensibility
+- The avatar system is designed for easy addition of new avatars, creatures, and voice packs.
+- See avatarsConfig.ts for registry and asset management. 
