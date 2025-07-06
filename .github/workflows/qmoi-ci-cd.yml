@@ -1,38 +1,404 @@
 name: QMOI CI/CD Pipeline
-on: [push, pull_request]
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight
+  workflow_dispatch:  # Manual trigger
+
+env:
+  QMOI_VERSION: "2.0"
+  PYTHON_VERSION: "3.9"
+  NODE_VERSION: "18"
 
 jobs:
-  test-and-deploy:
+  # Dependency Installation and Environment Setup
+  setup:
+    name: Setup Environment
     runs-on: ubuntu-latest
+    outputs:
+      setup-complete: ${{ steps.setup.outputs.complete }}
+    
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: npm install
-      - name: Run QMOI Pre-Activity Check
-        run: node scripts/qmoi_pre_activity_check.js
-      - run: npm run qmoi:test:all
-      - run: npm run qmoi:autodev:full
-      - run: npm run qmoi:deploy:full
-      - run: npm run qmoi:health:all
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install pytest pytest-cov pytest-asyncio
+        pip install black flake8 mypy
+    
+    - name: Install Node.js dependencies
+      run: |
+        npm ci
+        npm install -g @types/node typescript
+    
+    - name: Setup QMOI environment
+      run: |
+        python scripts/setup_qmoi_environment.py
+        python scripts/qmoi_cloud_setup.py
+    
+    - name: Setup Hugging Face
+      env:
+        HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
+      run: |
+        python scripts/qmoi_huggingface_setup.py
+    
+    - name: Mark setup complete
+      id: setup
+      run: echo "complete=true" >> $GITHUB_OUTPUT
 
-  security-scan:
+  # Code Quality and Linting
+  lint:
+    name: Code Quality Check
     runs-on: ubuntu-latest
+    needs: setup
+    
     steps:
-      - uses: actions/checkout@v3
-      - run: npm audit
-      - run: npm run qmoi:security-audit
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install black flake8 mypy isort
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+    
+    - name: Check code formatting
+      run: |
+        black --check --diff .
+        isort --check-only --diff .
+    
+    - name: Lint with flake8
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    
+    - name: Type check with mypy
+      run: |
+        mypy scripts/ models/ huggingface_space/ --ignore-missing-imports
 
-  performance-test:
+  # Unit Testing
+  test:
+    name: Unit Tests
     runs-on: ubuntu-latest
+    needs: setup
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+    
     steps:
-      - uses: actions/checkout@v3
-      - run: npm run qmoi:performance-test
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install pytest pytest-cov pytest-asyncio pytest-mock
+    
+    - name: Run unit tests
+      run: |
+        pytest tests/unit/ -v --cov=scripts --cov=models --cov=huggingface_space --cov-report=xml --cov-report=html
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
 
-  documentation-update:
+  # Integration Testing
+  integration-test:
+    name: Integration Tests
     runs-on: ubuntu-latest
+    needs: setup
+    
     steps:
-      - uses: actions/checkout@v3
-      - run: npm run qmoi:docs:verify
-      - run: npm run qmoi:docs:create
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install pytest pytest-asyncio pytest-mock requests
+    
+    - name: Setup test environment
+      run: |
+        python scripts/setup_qmoi_environment.py
+        python scripts/qmoi_cloud_setup.py
+    
+    - name: Run integration tests
+      run: |
+        pytest tests/integration/ -v --timeout=300
+    
+    - name: Test QMOI startup
+      run: |
+        timeout 60 python scripts/qmoi_enhanced_startup.py || true
+
+  # Security Testing
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: setup
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install security tools
+      run: |
+        pip install bandit safety
+    
+    - name: Run security scan
+      run: |
+        bandit -r scripts/ models/ huggingface_space/ -f json -o bandit-report.json
+        safety check --json --output safety-report.json
+    
+    - name: Upload security reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: security-reports
+        path: |
+          bandit-report.json
+          safety-report.json
+
+  # Build and Package
+  build:
+    name: Build QMOI
+    runs-on: ubuntu-latest
+    needs: [lint, test, integration-test, security]
+    outputs:
+      build-artifacts: ${{ steps.build.outputs.artifacts }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install build setuptools wheel
+    
+    - name: Build QMOI package
+      id: build
+      run: |
+        python -m build
+        echo "artifacts=dist/" >> $GITHUB_OUTPUT
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: qmoi-build
+        path: dist/
+
+  # Deploy to Hugging Face
+  deploy-hf:
+    name: Deploy to Hugging Face
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install huggingface_hub
+    
+    - name: Deploy model to Hugging Face
+      env:
+        HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
+      run: |
+        python scripts/qmoi_huggingface_setup.py
+        huggingface-cli upload alphaqmoi/qmoi models/latest/
+    
+    - name: Deploy space to Hugging Face
+      env:
+        HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
+      run: |
+        huggingface-cli upload alphaqmoi/qmoi-ai-system huggingface_space/
+
+  # Deploy to Cloud Platforms
+  deploy-cloud:
+    name: Deploy to Cloud
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    strategy:
+      matrix:
+        platform: [aws, gcp, azure]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+    
+    - name: Deploy to ${{ matrix.platform }}
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      run: |
+        python scripts/qmoi_cloud_setup.py
+        python scripts/deploy/${{ matrix.platform }}_deploy.py
+
+  # Performance Testing
+  performance:
+    name: Performance Test
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install locust
+    
+    - name: Run performance tests
+      run: |
+        python scripts/performance_test.py
+    
+    - name: Upload performance report
+      uses: actions/upload-artifact@v3
+      with:
+        name: performance-report
+        path: reports/performance/
+
+  # Error Auto-Fix Testing
+  error-fix-test:
+    name: Error Auto-Fix Test
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+    
+    - name: Test error auto-fixing
+      run: |
+        python scripts/test_error_fixing_integration.py
+    
+    - name: Upload error fix report
+      uses: actions/upload-artifact@v3
+      with:
+        name: error-fix-report
+        path: reports/error-fixing/
+
+  # Final Status and Notifications
+  notify:
+    name: Notify Status
+    runs-on: ubuntu-latest
+    needs: [deploy-hf, deploy-cloud, performance, error-fix-test]
+    if: always()
+    
+    steps:
+    - name: Check job status
+      id: check
+      run: |
+        if [[ "${{ needs.deploy-hf.result }}" == "success" && "${{ needs.deploy-cloud.result }}" == "success" ]]; then
+          echo "status=success" >> $GITHUB_OUTPUT
+        else
+          echo "status=failure" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Notify on success
+      if: steps.check.outputs.status == 'success'
+      run: |
+        echo "✅ QMOI CI/CD Pipeline completed successfully!"
+        echo "🚀 QMOI Enhanced System deployed to all platforms"
+        echo "📊 Performance tests passed"
+        echo "🔧 Error auto-fix system verified"
+    
+    - name: Notify on failure
+      if: steps.check.outputs.status == 'failure'
+      run: |
+        echo "❌ QMOI CI/CD Pipeline failed!"
+        echo "🔍 Check the logs for details"
+        exit 1

@@ -31,6 +31,30 @@
 - [QMOI-AUTOUPDATE.md](./QMOI-AUTOUPDATE.md): Auto-update, auto-enhance, and self-healing automation.
 - [DEVICERESOURCEOPTIMIZATION.md](./DEVICERESOURCEOPTIMIZATION.md): Device resource monitoring, optimization, and offloading strategies.
 
+## Enhanced QMOI Systems
+
+### Avatar and Music Systems
+- [QMOIARTISTS.md](./QMOIARTISTS.md): QMOI Artists system with virtual artists and music production.
+- [QGLOBAL.md](./QGLOBAL.md): Qglobal Music Production & Licensing Company documentation.
+- [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md): QMOI Always Parallel system for simultaneous task processing.
+- [scripts/qmoi-enhanced-avatar-system.js](./scripts/qmoi-enhanced-avatar-system.js): Enhanced avatar system with real-time preview and master controls.
+- [scripts/qmoi-music-production-system.js](./scripts/qmoi-music-production-system.js): Comprehensive music production and distribution system.
+- [scripts/qmoi-master-system.js](./scripts/qmoi-master-system.js): Master system integrating all QMOI features and capabilities.
+
+### Auto-Fix and Enhancement Systems
+- [scripts/qmoi-enhanced-auto-fix.js](./scripts/qmoi-enhanced-auto-fix.js): Enhanced auto-fix system for JSON, YAML, and configuration issues.
+- [scripts/qmoi-notification-system.js](./scripts/qmoi-notification-system.js): Multi-channel notification system (email, Slack, Discord, Telegram).
+- [scripts/qmoi-github-actions-fixer.js](./scripts/qmoi-github-actions-fixer.js): GitHub Actions workflow auto-fixer and optimizer.
+- [scripts/qmoi-vulnerability-scanner.js](./scripts/qmoi-vulnerability-scanner.js): Comprehensive vulnerability scanning and fixing system.
+- [scripts/qmoi-github-integration.js](./scripts/qmoi-github-integration.js): Full GitHub integration with developer permissions and automation.
+
+### Music Revenue and Production Documentation
+- [QMOIARTISTSDEALS.md](./QMOIARTISTSDEALS.md): Artist deals and partnership management (to be created).
+- [QMOIMUSICREVENUEEARNINGS.md](./QMOIMUSICREVENUEEARNINGS.md): Music revenue tracking and earnings analysis (to be created).
+- [QMOIARTISTSMAKEMONEY.md](./QMOIARTISTSMAKEMONEY.md): Artist monetization strategies and revenue generation (to be created).
+- [QMOIAUTOSINGRECORDMARKETDISTRIBUTE.md](./QMOIAUTOSINGRECORDMARKETDISTRIBUTE.md): Automated singing, recording, marketing, and distribution (to be created).
+- [QMOIMUSICPRODUCTIONANDLICENCING.md](./QMOIMUSICPRODUCTIONANDLICENCING.md): Music production and licensing comprehensive guide (to be created).
+
 ## How to Use
 - Click any link above to view the full documentation for that topic.
 - For monitoring and analytics, see [MONITORING.md](./MONITORING.md).

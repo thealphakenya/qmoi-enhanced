@@ -219,19 +219,28 @@ The AI system continuously learns and adapts to:
 QMOI now generates significantly more revenue with guaranteed daily targets:
 
 ### Revenue Targets
-- **Daily Target**: 10,000 KES (increased from 5,000 KES)
-- **Auto-Transfer**: 2,000 KES automatically sent to M-Pesa daily
+- **Daily Target**: 100,000 KES (increased from 10,000 KES)
+- **Auto-Transfer**: 20,000 KES automatically sent to M-Pesa daily
 - **Growth Target**: 20% daily growth (each day exceeds previous day)
 - **Minimum Guarantee**: QMOI ensures it never makes less than target
+- **Maximum Potential**: Unlimited - QMOI strives to make the maximum possible daily
 
 ### Enhanced Revenue Streams
-1. **AI Trading Bot** (3,000 KES/day) - Advanced crypto/forex trading
-2. **Affiliate Marketing** (2,000 KES/day) - Multi-platform affiliate programs
-3. **SaaS Subscriptions** (1,500 KES/day) - Multiple SaaS products
-4. **Content Monetization** (1,200 KES/day) - Multi-platform content
-5. **Automation Services** (1,000 KES/day) - Custom automation solutions
-6. **AI Consulting** (800 KES/day) - Expert AI implementation
-7. **E-commerce Automation** (500 KES/day) - Automated product sourcing
+1. **AI Trading Bot** (15,000 KES/day) - Advanced crypto/forex trading
+2. **Animation Projects** (12,000 KES/day) - Animated movies, series, shorts, commercials
+3. **App Development** (10,000 KES/day) - Mobile apps, web apps, games, desktop software
+4. **Content Creation** (8,000 KES/day) - Videos, podcasts, courses, ebooks
+5. **SaaS Platforms** (7,000 KES/day) - Software-as-a-Service applications
+6. **Affiliate Marketing** (6,000 KES/day) - Multi-platform affiliate programs
+7. **Service Automation** (5,000 KES/day) - Custom automation solutions
+8. **AI Consulting** (4,000 KES/day) - Expert AI implementation
+9. **Licensing Deals** (3,000 KES/day) - Software and content licensing
+10. **E-commerce Automation** (2,000 KES/day) - Automated product sourcing
+11. **Platform Earnings** (8,000 KES/day) - Multi-platform revenue streams
+12. **Merchandise Sales** (2,000 KES/day) - Branded merchandise and products
+13. **Sponsored Content** (3,000 KES/day) - Brand partnerships and sponsorships
+14. **Crowdfunding** (2,000 KES/day) - Patreon, Kickstarter, and other platforms
+15. **Consulting Services** (3,000 KES/day) - Professional consulting services
 
 ## Auto-Configuration System
 

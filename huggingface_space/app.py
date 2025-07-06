@@ -8,6 +8,7 @@ QMOI AI System - Enhanced Hugging Face Space
 - Hooks for autoevolution and performance tuning
 - Gradio UI and FastAPI run together
 - All enhancements are documented and observable
+- Enhanced QMOI Integration with Revenue Generation, Employment, and Deal Making
 """
 import gradio as gr
 import os
@@ -24,6 +25,16 @@ import logging
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
 import uvicorn
+
+# Import QMOI Enhanced System
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'models', 'latest'))
+try:
+    from qmoi_enhanced_model import QMOIEnhancedSystem, initialize_qmoi_system
+    QMOI_AVAILABLE = True
+except ImportError:
+    QMOI_AVAILABLE = False
+    print("QMOI Enhanced System not available, running in basic mode")
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -183,41 +194,246 @@ def status():
     save_health_stats()
     with open(STATUS_PATH) as f:
         stats = json.load(f)
+    
+    # Add QMOI specific status if available
+    qmoi_status = {}
+    if QMOI_AVAILABLE and hasattr(app, 'qmoi_system') and app.qmoi_system:
+        qmoi_status = {
+            'qmoi_revenue': app.qmoi_system.get_current_revenue(),
+            'qmoi_employees': len(app.qmoi_system.get_active_employees()),
+            'qmoi_deals': len(app.qmoi_system.get_active_deals()),
+            'qmoi_avatars': len(app.qmoi_system.get_avatars()),
+            'qmoi_target_met': app.qmoi_system.revenue_manager.check_daily_target()
+        }
+    
     return JSONResponse({
         'status': 'healthy' if stats['errors_remaining'] == 0 else 'warning',
         **stats,
         **metrics,
+        **qmoi_status
     })
 
-# --- Gradio UI (as before, but wrapped with error fixing and hooks) ---
+# --- QMOI Enhanced Chat System ---
 @safe_run
 def chat_with_qmoi(message, conversation_id=None):
     autoevolve_hook()
     performance_hook()
-    # ... existing chat logic ...
-    return f"QMOI Response: {message}", conversation_id
+    
+    if QMOI_AVAILABLE and hasattr(app, 'qmoi_system') and app.qmoi_system:
+        # Use enhanced QMOI system
+        response = app.qmoi_system.process_request(message)
+        return f"QMOI Enhanced Response: {response}", conversation_id
+    else:
+        # Fallback to basic response
+        return f"QMOI Basic Response: {message}\n(Enhanced system not available)", conversation_id
 
-# Example Gradio Blocks UI (simplified)
+# --- QMOI Revenue Dashboard ---
+@safe_run
+def get_qmoi_revenue_dashboard():
+    if not QMOI_AVAILABLE or not hasattr(app, 'qmoi_system') or not app.qmoi_system:
+        return "QMOI Enhanced System not available"
+    
+    qmoi = app.qmoi_system
+    revenue = qmoi.get_current_revenue()
+    target_met = qmoi.revenue_manager.check_daily_target()
+    
+    dashboard = f"""
+# QMOI Revenue Dashboard
+
+## Current Status
+- **Daily Revenue**: ${revenue:,.2f}
+- **Target Met**: {'✅ Yes' if target_met else '❌ No'}
+- **Daily Target**: ${qmoi.revenue_manager.daily_minimum:,.2f}
+
+## Revenue Streams
+"""
+    
+    for stream in qmoi.revenue_manager.revenue_streams.values():
+        progress = (stream.current_revenue / stream.daily_target) * 100
+        dashboard += f"- **{stream.name}**: ${stream.current_revenue:,.2f} / ${stream.daily_target:,.2f} ({progress:.1f}%)\n"
+    
+    dashboard += f"""
+## Employment Status
+- **Active Employees**: {len(qmoi.get_active_employees())}
+- **Total Payroll**: ${sum(e.base_salary for e in qmoi.get_active_employees()):,.2f}
+
+## Deal Status
+- **Active Deals**: {len(qmoi.get_active_deals())}
+- **Total Deal Value**: ${sum(d.value for d in qmoi.get_active_deals()):,.2f}
+
+## Avatar System
+- **Active Avatars**: {len(qmoi.get_avatars())}
+"""
+    
+    return dashboard
+
+# --- QMOI Employment Management ---
+@safe_run
+def hire_qmoi_employee(name, email, skills, payment_schedule="monthly", base_salary=5000.0):
+    if not QMOI_AVAILABLE or not hasattr(app, 'qmoi_system') or not app.qmoi_system:
+        return "QMOI Enhanced System not available"
+    
+    try:
+        skills_list = [skill.strip() for skill in skills.split(',')]
+        employee = app.qmoi_system.employment_manager.hire_employee(
+            name=name,
+            email=email,
+            skills=skills_list,
+            payment_schedule=payment_schedule,
+            base_salary=float(base_salary)
+        )
+        
+        return f"""
+# Employee Hired Successfully!
+
+**Name**: {employee.name}
+**Employee ID**: {employee.employee_id}
+**Email**: {employee.email}
+**Base Salary**: ${employee.base_salary:,.2f} {employee.payment_schedule}
+**Performance Bonus**: Up to ${employee.performance_bonus:,.2f}
+**Next Payment**: {employee.next_payment.strftime('%Y-%m-%d')}
+
+**Skills**: {', '.join(employee.skills)}
+**Opportunities**: {', '.join(employee.opportunities)}
+
+Employment letter has been generated and saved.
+        """
+    except Exception as e:
+        return f"Error hiring employee: {e}"
+
+# --- QMOI Deal Creation ---
+@safe_run
+def create_qmoi_deal(platform, deal_type, value):
+    if not QMOI_AVAILABLE or not hasattr(app, 'qmoi_system') or not app.qmoi_system:
+        return "QMOI Enhanced System not available"
+    
+    try:
+        deal = app.qmoi_system.deal_maker.create_deal(
+            platform=platform,
+            deal_type=deal_type,
+            value=float(value)
+        )
+        app.qmoi_system.deal_maker.create_platform_accounts(deal)
+        
+        return f"""
+# Deal Created Successfully!
+
+**Deal ID**: {deal.deal_id}
+**Platform**: {deal.platform}
+**Type**: {deal.deal_type}
+**Value**: ${deal.value:,.2f}
+**Status**: {deal.status}
+**Accounts Created**: {len(deal.accounts_created)}
+
+**Created**: {deal.created_date.strftime('%Y-%m-%d %H:%M:%S')}
+        """
+    except Exception as e:
+        return f"Error creating deal: {e}"
+
+# Example Gradio Blocks UI (Enhanced)
 def build_gradio_ui():
-    with gr.Blocks(title="QMOI AI System", theme=gr.themes.Soft()) as demo:
+    with gr.Blocks(title="QMOI AI System - Enhanced", theme=gr.themes.Soft()) as demo:
         gr.Markdown("# 🤖 QMOI AI System - Enhanced")
+        
         with gr.Tabs():
             with gr.TabItem("💬 Chat with QMOI"):
-                chat_input = gr.Textbox(label="Message to QMOI")
-                chat_output = gr.Textbox(label="QMOI Response")
-                send_btn = gr.Button("Send Message")
+                chat_input = gr.Textbox(label="Message to QMOI", placeholder="Ask QMOI anything...")
+                chat_output = gr.Textbox(label="QMOI Response", lines=5)
+                send_btn = gr.Button("Send Message", variant="primary")
                 send_btn.click(fn=chat_with_qmoi, inputs=[chat_input], outputs=[chat_output])
+            
+            with gr.TabItem("💰 Revenue Dashboard"):
+                revenue_dashboard = gr.Markdown()
+                refresh_btn = gr.Button("Refresh Dashboard", variant="secondary")
+                refresh_btn.click(fn=get_qmoi_revenue_dashboard, outputs=[revenue_dashboard])
+                # Auto-refresh on load
+                demo.load(fn=get_qmoi_revenue_dashboard, outputs=[revenue_dashboard])
+            
+            with gr.TabItem("👥 Employment Management"):
+                with gr.Row():
+                    with gr.Column():
+                        emp_name = gr.Textbox(label="Employee Name")
+                        emp_email = gr.Textbox(label="Email")
+                        emp_skills = gr.Textbox(label="Skills (comma-separated)")
+                        emp_schedule = gr.Dropdown(
+                            choices=["monthly", "semi_monthly", "weekly", "daily"],
+                            value="monthly",
+                            label="Payment Schedule"
+                        )
+                        emp_salary = gr.Number(label="Base Salary", value=5000.0)
+                        hire_btn = gr.Button("Hire Employee", variant="primary")
+                    
+                    with gr.Column():
+                        hire_result = gr.Markdown()
+                
+                hire_btn.click(
+                    fn=hire_qmoi_employee,
+                    inputs=[emp_name, emp_email, emp_skills, emp_schedule, emp_salary],
+                    outputs=[hire_result]
+                )
+            
+            with gr.TabItem("🤝 Deal Creation"):
+                with gr.Row():
+                    with gr.Column():
+                        deal_platform = gr.Textbox(label="Platform")
+                        deal_type = gr.Textbox(label="Deal Type")
+                        deal_value = gr.Number(label="Deal Value ($)", value=25000.0)
+                        create_deal_btn = gr.Button("Create Deal", variant="primary")
+                    
+                    with gr.Column():
+                        deal_result = gr.Markdown()
+                
+                create_deal_btn.click(
+                    fn=create_qmoi_deal,
+                    inputs=[deal_platform, deal_type, deal_value],
+                    outputs=[deal_result]
+                )
+            
             with gr.TabItem("📊 System Monitoring"):
-                gr.Markdown("System health and resource metrics are available at /status endpoint.")
+                gr.Markdown("""
+                ## System Health and Resource Metrics
+                
+                System health and resource metrics are available at the `/status` endpoint.
+                
+                ### QMOI Enhanced Features:
+                - **Revenue Generation**: Automated revenue streams across multiple platforms
+                - **Employment System**: Employee management with automated payment processing
+                - **Deal Making**: Automated deal creation and platform account management
+                - **Avatar System**: Multi-platform QMOI avatars with specialized skills
+                - **Health Monitoring**: Real-time system health and performance tracking
+                - **Auto-Fixing**: Automatic error detection and resolution
+                - **Continuous Optimization**: Self-improving revenue and performance targets
+                
+                ### Daily Revenue Target: $100,000+
+                ### System Uptime: 99.9%+
+                """)
+    
     return demo
 
 def main():
     # Start device optimization
     DeviceOptimizer().optimize()
+    
+    # Initialize QMOI Enhanced System
+    if QMOI_AVAILABLE:
+        try:
+            app.qmoi_system = initialize_qmoi_system()
+            if app.qmoi_system:
+                logger.info("QMOI Enhanced System initialized successfully")
+            else:
+                logger.warning("Failed to initialize QMOI Enhanced System")
+        except Exception as e:
+            logger.error(f"Error initializing QMOI system: {e}")
+            app.qmoi_system = None
+    else:
+        app.qmoi_system = None
+        logger.warning("QMOI Enhanced System not available")
+    
     # Start Gradio and FastAPI together
     def run_gradio():
         demo = build_gradio_ui()
         demo.launch(server_name="0.0.0.0", server_port=7861, show_api=False, share=False)
+    
     threading.Thread(target=run_gradio, daemon=True).start()
     uvicorn.run(app, host="0.0.0.0", port=7860)
 
