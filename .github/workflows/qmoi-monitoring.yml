@@ -1,0 +1,392 @@
+name: QMOI System Monitoring
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Every 5 minutes
+  workflow_dispatch:  # Manual trigger
+  repository_dispatch:
+    types: [qmoi-alert, qmoi-monitoring]
+
+env:
+  QMOI_VERSION: "2.0"
+  PYTHON_VERSION: "3.9"
+
+jobs:
+  # System Health Monitoring
+  health-monitor:
+    name: System Health Monitor
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install psutil requests
+    
+    - name: Monitor system health
+      run: |
+        python scripts/qmoi_health_monitor.py
+    
+    - name: Upload health report
+      uses: actions/upload-artifact@v3
+      with:
+        name: health-report-${{ github.run_id }}
+        path: logs/health_report.json
+
+  # Performance Monitoring
+  performance-monitor:
+    name: Performance Monitor
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install psutil
+    
+    - name: Monitor performance
+      run: |
+        python scripts/qmoi_performance_monitor.py
+    
+    - name: Upload performance report
+      uses: actions/upload-artifact@v3
+      with:
+        name: performance-report-${{ github.run_id }}
+        path: logs/performance_report.json
+
+  # Revenue Monitoring
+  revenue-monitor:
+    name: Revenue Monitor
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+    
+    - name: Monitor revenue
+      run: |
+        python scripts/qmoi_revenue_monitor.py
+    
+    - name: Upload revenue report
+      uses: actions/upload-artifact@v3
+      with:
+        name: revenue-report-${{ github.run_id }}
+        path: logs/revenue_report.json
+
+  # Employment Monitoring
+  employment-monitor:
+    name: Employment Monitor
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+    
+    - name: Monitor employment
+      run: |
+        python scripts/qmoi_employment_monitor.py
+    
+    - name: Upload employment report
+      uses: actions/upload-artifact@v3
+      with:
+        name: employment-report-${{ github.run_id }}
+        path: logs/employment_report.json
+
+  # Cloud Resource Monitoring
+  cloud-monitor:
+    name: Cloud Resource Monitor
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install boto3 google-cloud-storage azure-storage-blob
+    
+    - name: Monitor AWS resources
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: |
+        python scripts/monitor_aws_resources.py
+    
+    - name: Monitor GCP resources
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      run: |
+        python scripts/monitor_gcp_resources.py
+    
+    - name: Monitor Azure resources
+      env:
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      run: |
+        python scripts/monitor_azure_resources.py
+    
+    - name: Upload cloud report
+      uses: actions/upload-artifact@v3
+      with:
+        name: cloud-report-${{ github.run_id }}
+        path: logs/cloud_report.json
+
+  # Error Monitoring
+  error-monitor:
+    name: Error Monitor
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+    
+    - name: Monitor errors
+      run: |
+        python scripts/qmoi_error_monitor.py
+    
+    - name: Upload error report
+      uses: actions/upload-artifact@v3
+      with:
+        name: error-report-${{ github.run_id }}
+        path: logs/error_report.json
+
+  # API Endpoint Monitoring
+  api-monitor:
+    name: API Endpoint Monitor
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install requests
+    
+    - name: Monitor API endpoints
+      run: |
+        python scripts/monitor_api_endpoints.py
+    
+    - name: Upload API report
+      uses: actions/upload-artifact@v3
+      with:
+        name: api-report-${{ github.run_id }}
+        path: logs/api_report.json
+
+  # Security Monitoring
+  security-monitor:
+    name: Security Monitor
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install bandit safety
+    
+    - name: Security scan
+      run: |
+        python scripts/security_monitor.py
+    
+    - name: Upload security report
+      uses: actions/upload-artifact@v3
+      with:
+        name: security-report-${{ github.run_id }}
+        path: logs/security_report.json
+
+  # Alert Generation
+  alert-generator:
+    name: Alert Generator
+    runs-on: ubuntu-latest
+    needs: [health-monitor, performance-monitor, revenue-monitor, employment-monitor, cloud-monitor, error-monitor, api-monitor, security-monitor]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+    
+    - name: Generate alerts
+      run: |
+        python scripts/generate_alerts.py
+    
+    - name: Upload alerts
+      uses: actions/upload-artifact@v3
+      with:
+        name: alerts-${{ github.run_id }}
+        path: logs/alerts.json
+
+  # Dashboard Update
+  dashboard-update:
+    name: Dashboard Update
+    runs-on: ubuntu-latest
+    needs: alert-generator
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+    
+    - name: Update dashboard
+      run: |
+        python scripts/update_dashboard.py
+    
+    - name: Upload dashboard
+      uses: actions/upload-artifact@v3
+      with:
+        name: dashboard-${{ github.run_id }}
+        path: dashboard/
+
+  # Report Generation
+  report-generator:
+    name: Report Generator
+    runs-on: ubuntu-latest
+    needs: alert-generator
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+        pip install matplotlib seaborn pandas
+    
+    - name: Generate reports
+      run: |
+        python scripts/generate_monitoring_reports.py
+    
+    - name: Upload reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: monitoring-reports-${{ github.run_id }}
+        path: reports/monitoring/
+
+  # Notification System
+  notification:
+    name: Send Notifications
+    runs-on: ubuntu-latest
+    needs: [alert-generator, report-generator]
+    if: always()
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements/qmoi_enhanced_requirements.txt
+    
+    - name: Send notifications
+      run: |
+        python scripts/send_notifications.py
+    
+    - name: Update status
+      run: |
+        if [[ "${{ needs.alert-generator.result }}" == "success" && "${{ needs.report-generator.result }}" == "success" ]]; then
+          echo "✅ QMOI monitoring completed successfully"
+        else
+          echo "⚠️ QMOI monitoring completed with issues"
+          exit 1
+        fi 
