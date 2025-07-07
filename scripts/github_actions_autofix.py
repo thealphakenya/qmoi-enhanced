@@ -684,6 +684,46 @@ Please review and address this issue manually.
         
         return recommendations.get(issue['type'], 'Review the issue and apply appropriate fixes.')
     
+    def scan_workflow_logs_for_dependency_errors(self) -> List[Dict]:
+        """Scan workflow logs for pip/npm errors and peer dependency warnings"""
+        error_patterns = [
+            'requires pip',
+            'pip is too old',
+            'peer dependency',
+            'peeroptional',
+            'overriding peer dependency',
+            'npm error code etarget',
+            'no matching version found',
+            'could not resolve dependency',
+            'dependency',
+            'not found',
+        ]
+        errors = []
+        logs_dir = Path('logs')
+        for log_file in logs_dir.glob('*.log'):
+            with open(log_file, 'r', encoding='utf-8', errors='ignore') as f:
+                lines = f.readlines()
+                for i, line in enumerate(lines):
+                    for pattern in error_patterns:
+                        if pattern.lower() in line.lower():
+                            errors.append({
+                                'file': str(log_file),
+                                'line': i + 1,
+                                'content': line.strip(),
+                                'pattern': pattern
+                            })
+        return errors
+
+    def trigger_self_healing_if_needed(self, errors: List[Dict]) -> None:
+        """Trigger the self-healing script if dependency errors are found"""
+        if errors:
+            logger.info('Dependency errors detected in workflow logs. Triggering self-healing script...')
+            try:
+                result = subprocess.run([sys.executable, 'scripts/qmoi_self_healing_enhanced.py'], capture_output=True, text=True, timeout=900)
+                logger.info('Self-healing script output: ' + result.stdout + result.stderr)
+            except Exception as e:
+                logger.error(f'Failed to run self-healing script: {e}')
+    
     def run_autofix(self) -> Dict:
         """Run complete GitHub Actions autofix"""
         logger.info("Starting GitHub Actions autofix")
@@ -701,6 +741,10 @@ Please review and address this issue manually.
                 if self.create_github_issue(issue):
                     issues_created += 1
         
+        # Scan workflow logs for dependency errors and trigger self-healing if needed
+        dependency_errors = self.scan_workflow_logs_for_dependency_errors()
+        self.trigger_self_healing_if_needed(dependency_errors)
+
         # Generate report
         report = {
             'timestamp': datetime.now().isoformat(),

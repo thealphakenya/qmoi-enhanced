@@ -126,7 +126,18 @@
     "help": "node scripts/qmoi-help.js",
     "help:fix": "npm run help -- --fix",
     "help:test": "npm run help -- --test",
-    "help:all": "npm run help -- --all"
+    "help:all": "npm run help -- --all",
+    "qmoi:always-fix-all": "node scripts/qmoi-always-fix-all.js",
+    "update:artifact-action": "node scripts/update-artifact-action.js",
+    "parallel:setup": "node scripts/qmoi-parallel-setup.js",
+    "cloud:env": "node scripts/qmoi-cloud-env-manager.js",
+    "hot:reload": "node scripts/qmoi-hot-reload.js",
+    "cloud:registry": "node scripts/qmoi-cloud-registry.js",
+    "parallel:autotest": "node scripts/qmoi-parallel-autotest.js",
+    "slack:notify": "node scripts/qmoi-slack-notify.js",
+    "cloud:provider": "node scripts/qmoi-cloud-provider.js",
+    "dashboard:server": "node dashboard/server.js",
+    "master:website": "node scripts/qmoi_master_website_automation.js"
   },
   "keywords": [
     "qmoi",
@@ -153,7 +164,6 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "cypress": "^13.6.0",
-    "k6": "^0.47.0",
     "artillery": "^2.0.0",
     "testcafe": "^3.6.0",
     "newman": "^6.0.0",
@@ -163,7 +173,7 @@
     "snyk": "^1.1234.0",
     "eslint": "^8.55.0",
     "prettier": "^3.1.0",
-    "typescript": "^5.3.0",
+    "typescript": "^4.9.5",
     "jsdoc": "^4.0.0",
     "pm2": "^5.3.0",
     "http-server": "^14.1.1"

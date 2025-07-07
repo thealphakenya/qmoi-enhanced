@@ -510,11 +510,13 @@ jobs:
         file: ./coverage/lcov.info
     
     - name: Upload test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-results
         path: test-results/
 ```
+
+> **Note:** All workflows are now automatically updated to use the latest supported version of `actions/upload-artifact` (currently v4). This is automated for future-proofing and compliance with GitHub Actions deprecation policies.
 
 ### Jenkins Pipeline Example
 

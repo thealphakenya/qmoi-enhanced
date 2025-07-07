@@ -46,7 +46,15 @@ class QMOISelfHealing:
             'permission denied',
             'unresolved',
             'critical',
-            'fatal'
+            'fatal',
+            'requires pip',
+            'pip is too old',
+            'peer dependency',
+            'peeroptional',
+            'overriding peer dependency',
+            'npm error code etarget',
+            'no matching version found',
+            'could not resolve dependency',
         ]
         self.fixes_applied = []
         self.errors_detected = []
@@ -78,8 +86,10 @@ class QMOISelfHealing:
         for error in errors:
             fix = None
             content = error['content'].lower()
-            if 'dependency' in content or 'not found' in content:
-                fix = self.fix_dependencies(error)
+            if 'dependency' in content or 'not found' in content or 'peer dependency' in content or 'peeroptional' in content or 'overriding peer dependency' in content or 'npm error code etarget' in content or 'no matching version found' in content or 'could not resolve dependency' in content:
+                fix = self.fix_npm_dependencies(error)
+            elif 'requires pip' in content or 'pip is too old' in content:
+                fix = self.upgrade_pip(error)
             elif 'permission denied' in content:
                 fix = self.fix_permissions(error)
             elif 'timeout' in content:
@@ -109,6 +119,48 @@ class QMOISelfHealing:
         except Exception as e:
             return {
                 'type': 'dependency_fix',
+                'file': error['file'],
+                'line': error['line'],
+                'status': 'failed',
+                'output': str(e)
+            }
+
+    def fix_npm_dependencies(self, error: Dict) -> Dict:
+        logger.info(f"Attempting to auto-fix npm dependency issue in {error['file']} (line {error['line']})")
+        try:
+            result = subprocess.run(['npm', 'install', '--legacy-peer-deps'], capture_output=True, text=True, timeout=600)
+            status = 'success' if result.returncode == 0 else 'failed'
+            return {
+                'type': 'npm_dependency_fix',
+                'file': error['file'],
+                'line': error['line'],
+                'status': status,
+                'output': result.stdout + result.stderr
+            }
+        except Exception as e:
+            return {
+                'type': 'npm_dependency_fix',
+                'file': error['file'],
+                'line': error['line'],
+                'status': 'failed',
+                'output': str(e)
+            }
+
+    def upgrade_pip(self, error: Dict) -> Dict:
+        logger.info(f"Attempting to auto-upgrade pip due to version issue in {error['file']} (line {error['line']})")
+        try:
+            result = subprocess.run([sys.executable, '-m', 'pip', 'install', '--upgrade', 'pip'], capture_output=True, text=True, timeout=300)
+            status = 'success' if result.returncode == 0 else 'failed'
+            return {
+                'type': 'pip_upgrade',
+                'file': error['file'],
+                'line': error['line'],
+                'status': status,
+                'output': result.stdout + result.stderr
+            }
+        except Exception as e:
+            return {
+                'type': 'pip_upgrade',
                 'file': error['file'],
                 'line': error['line'],
                 'status': 'failed',

@@ -3,15 +3,8 @@
 # Core Python packages
 requests>=2.31.0
 psutil>=5.9.0
-sqlite3
 uuid
 datetime
-threading
-asyncio
-logging
-json
-pathlib
-dataclasses
 
 # Web framework and API
 fastapi>=0.104.0

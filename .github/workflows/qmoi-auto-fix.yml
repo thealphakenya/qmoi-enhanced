@@ -43,7 +43,7 @@ jobs:
         fi
     
     - name: Upload health report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: health-report
         path: logs/qmoi_health_report.json
@@ -78,7 +78,7 @@ jobs:
         python scripts/qmoi_error_auto_fix.py --verify
     
     - name: Upload fix report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: fix-report
         path: logs/error_fix_report.json
@@ -108,7 +108,7 @@ jobs:
         python scripts/qmoi_performance_optimizer.py
     
     - name: Upload optimization report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: optimization-report
         path: reports/performance/
@@ -187,7 +187,7 @@ jobs:
         python scripts/security_fixer.py
     
     - name: Upload security report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: security-report
         path: security-report.json
@@ -224,7 +224,7 @@ jobs:
         python scripts/optimize_cloud_costs.py
     
     - name: Upload cloud optimization report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cloud-optimization-report
         path: reports/cloud/
@@ -254,7 +254,7 @@ jobs:
         python scripts/qmoi_revenue_checker.py
     
     - name: Upload revenue report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: revenue-report
         path: reports/revenue/
@@ -284,7 +284,7 @@ jobs:
         python scripts/qmoi_employment_checker.py
     
     - name: Upload employment report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: employment-report
         path: reports/employment/
@@ -314,7 +314,7 @@ jobs:
         python scripts/qmoi_backup_system.py
     
     - name: Upload backup
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: system-backup
         path: backups/
@@ -344,7 +344,7 @@ jobs:
         echo "- System Backup: ${{ needs.system-backup.result }}" >> status-report.md
     
     - name: Upload status report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: status-report
         path: status-report.md

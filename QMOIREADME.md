@@ -248,5 +248,21 @@ QMOI is now a comprehensive, autonomous AI system that can:
 
 QMOI is your complete, autonomous AI guardian that ensures everything runs perfectly while continuously learning and improving.
 
+## Latest QMOI Parallel, Cloud, and Security Enhancements
+
+- See [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md) for advanced parallel thinking, reasoning, and auto-decision features for money-making, deal-making, and running 100s of projects and transactions in parallel. Includes real-time dashboards, notifications, universal cloud/device/server integration, and self-optimizing project allocation.
+- See [ENHANCEDQVS.md](./ENHANCEDQVS.md) for universal, adaptive, and automated security for all QMOI activities, resources, and transactions—across any cloud, device, or environment. Features auto-integration with any cloud, real-time security dashboards, automated compliance, and QVS as a universal connector.
+
+## Universal Cloud Autonomy & Device Enhancement
+
+- QMOI can now automatically select, switch, and integrate with any cloud provider (AWS, Azure, GCP, DigitalOcean, custom/private clouds).
+- QMOI can offload heavy computation, storage, and even app execution to the cloud, allowing even low-resource devices to run powerful apps.
+- QMOI can auto-upgrade device software, drivers, and firmware, and continuously autoenhance, autoupdate, and autoupgrade itself and the device.
+- Real-time dashboards and notifications (Slack, email, web) keep users informed of all activities, device health, and cloud usage.
+
+> Any device, no matter how limited, can now run resource-intensive QMOI apps by leveraging universal cloud autonomy and real-time monitoring.
+
+> All documentation (.md files) is now auto-updated by QMOI automation scripts for real-time accuracy.
+
 ---
 *Last updated: June 13, 2025*
