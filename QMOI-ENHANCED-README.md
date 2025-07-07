@@ -428,3 +428,25 @@ The master dashboard shows:
 ## Reliability
 - QMOI is designed to be always-on, self-healing, and reliable, with parallel error fixing and aggressive automation.
 - All actions are logged for audit and compliance. 
+
+## 🚀 Always Fix All Automation
+
+QMOI Enhanced now features a robust always-fix-all system:
+
+- **Script:** `npm run qmoi:always-fix-all`
+- **How it works:**
+  - Runs all fixers and retries up to 3 times
+  - Logs all attempts and results
+  - Sends notifications on success or persistent failure
+  - Integrated with Husky pre-commit and pre-push hooks for error-free commits and pushes
+- **Best Practice:**
+  - Use this script in CI/CD, before commits, and before pushes for maximum reliability
+
+See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for full details. 
+
+## 🤖 AI Error Prediction & Enhanced Notifications
+
+- AI error prediction system analyzes logs and predicts likely error types/files
+- Notification preferences and history are managed via dashboard and REST API
+- Dashboard displays predictions, notification preferences, and notification history
+- See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for full details 

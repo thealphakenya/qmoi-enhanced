@@ -30,6 +30,16 @@
 - [QMOI-CLOUD.md](./QMOI-CLOUD.md): Cloud features, offloading, and artifact sync.
 - [QMOI-AUTOUPDATE.md](./QMOI-AUTOUPDATE.md): Auto-update, auto-enhance, and self-healing automation.
 - [DEVICERESOURCEOPTIMIZATION.md](./DEVICERESOURCEOPTIMIZATION.md): Device resource monitoring, optimization, and offloading strategies.
+- [scripts/qmoi-always-fix-all.js](./scripts/qmoi-always-fix-all.js): Always Fix All automation script for robust, repeated error fixing and notification.
+
+## New QMOI Space & Development Documentation
+
+- [QMOISPACEDEV.md](./QMOISPACEDEV.md): QMOI Space development capabilities as a Hugging Face developer.
+- [QMOISPACE.md](./QMOISPACE.md): QMOI Space platform capabilities and ecosystem features.
+- [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md): QMOI GitHub development capabilities and advanced features.
+- [QGAMINGCLOUD.md](./QGAMINGCLOUD.md): QMOI Gaming Cloud platform with advanced gaming features.
+- [QMOIGAMINGGENREV.md](./QMOIGAMINGGENREV.md): QMOI Gaming revenue generation strategies and monetization.
+- [QMOIGAMINGCLOUDUSERS.md](./QMOIGAMINGCLOUDUSERS.md): QMOI Gaming Cloud user management and features.
 
 ## Enhanced QMOI Systems
 

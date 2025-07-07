@@ -54,6 +54,23 @@
 
 ---
 
+## Always Fix All Automation Monitoring
+
+- All runs of `npm run qmoi:always-fix-all` are logged to `logs/qmoi-always-fix-all-attempts.json`
+- Success and failure notifications are sent via the QMOI notification system
+- Persistent failures are highlighted in the dashboard and require manual intervention
+- See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for details
+
+---
+
+## AI Error Prediction & Notification Monitoring
+
+- Error predictions are available at `/api/predictions` (port 4100)
+- Notification preferences and history are available at `/api/notification-prefs` and `/api/notification-history` (port 4200)
+- Dashboard displays predictions, notification preferences, and history
+
+---
+
 For a full list of documentation, see [REFERENCES.md](./REFERENCES.md)
 
 For questions or issues, contact the QMOI admin team. 

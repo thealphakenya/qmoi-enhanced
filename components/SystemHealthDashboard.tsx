@@ -22,11 +22,11 @@ const initialErrors: SystemError[] = [
   },
 ];
 
-const SystemHealthDashboard: React.FC = () => {
+const SystemHealthDashboard: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
+  if (!isMaster) return <div className="text-red-500">Access denied: Master only</div>;
   const [errors, setErrors] = useState<SystemError[]>(initialErrors);
   const [diagnosis, setDiagnosis] = useState<{ [id: string]: string }>({});
   const [fixHistory, setFixHistory] = useState<string[]>([]);
-  const isMasterOrTeam = true; // Replace with actual role check
   const [healthStats, setHealthStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -70,46 +70,44 @@ const SystemHealthDashboard: React.FC = () => {
 
   return (
     <div className="my-8">
-      {isMasterOrTeam && (
-        <Card className="bg-white shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">System Health & Self-Healing</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <h3 className="font-semibold mb-2">Detected Errors & Problems</h3>
-              {errors.length === 0 && <div className="text-green-600">No current errors detected.</div>}
-              <ul className="space-y-2">
-                {errors.map(error => (
-                  <li key={error.id} className="border rounded p-2">
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold">{error.type.toUpperCase()}</span>
-                      <span className="text-xs text-gray-500">{error.message}</span>
-                      <span className="text-xs text-gray-400">Severity: {error.severity}</span>
-                    </div>
-                    <div className="text-xs text-gray-400">Detected: {error.detectedAt.toLocaleString()}</div>
-                    <div className="flex gap-2 mt-2">
-                      <Button size="sm" onClick={() => diagnoseError(error)}>Diagnose</Button>
-                      <Button size="sm" variant="destructive" onClick={() => autoFixError(error)}>Auto-Fix</Button>
-                    </div>
-                    {diagnosis[error.id] && (
-                      <div className="text-xs text-blue-600 mt-1">Diagnosis: {diagnosis[error.id]}</div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">Fix History</h3>
-              <ul className="text-xs space-y-1">
-                {fixHistory.map((log, idx) => (
-                  <li key={idx}>{log}</li>
-                ))}
-              </ul>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+      <Card className="bg-white shadow-lg">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">System Health & Self-Healing</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <h3 className="font-semibold mb-2">Detected Errors & Problems</h3>
+            {errors.length === 0 && <div className="text-green-600">No current errors detected.</div>}
+            <ul className="space-y-2">
+              {errors.map(error => (
+                <li key={error.id} className="border rounded p-2">
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold">{error.type.toUpperCase()}</span>
+                    <span className="text-xs text-gray-500">{error.message}</span>
+                    <span className="text-xs text-gray-400">Severity: {error.severity}</span>
+                  </div>
+                  <div className="text-xs text-gray-400">Detected: {error.detectedAt.toLocaleString()}</div>
+                  <div className="flex gap-2 mt-2">
+                    <Button size="sm" onClick={() => diagnoseError(error)}>Diagnose</Button>
+                    <Button size="sm" variant="destructive" onClick={() => autoFixError(error)}>Auto-Fix</Button>
+                  </div>
+                  {diagnosis[error.id] && (
+                    <div className="text-xs text-blue-600 mt-1">Diagnosis: {diagnosis[error.id]}</div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-2">Fix History</h3>
+            <ul className="text-xs space-y-1">
+              {fixHistory.map((log, idx) => (
+                <li key={idx}>{log}</li>
+              ))}
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
       <Card className="bg-white shadow-lg mt-6">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">QMOI Health & Accuracy Stats</CardTitle>

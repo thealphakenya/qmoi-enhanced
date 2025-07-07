@@ -1,6 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# QMOI Always Fix All before push
+npm run qmoi:always-fix-all || exit 1
+
 # Run QMOI pre-activity check
 node scripts/qmoi_pre_activity_check.js || exit 1
 npm test 
