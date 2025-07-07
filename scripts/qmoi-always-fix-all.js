@@ -255,14 +255,14 @@ class QMOIEnhancedAlwaysFixAll {
 
   async runComprehensiveFix() {
     console.log('🚀 Starting comprehensive QMOI fix process...');
-    
-    let attempts = 0;
-    let lastReport = null;
-    let success = false;
-    const logs = [];
+
+  let attempts = 0;
+  let lastReport = null;
+  let success = false;
+  const logs = [];
 
     while (attempts < this.maxAttempts && !success) {
-      attempts++;
+    attempts++;
       console.log(`\n📋 Attempt ${attempts}/${this.maxAttempts}`);
       
       try {
@@ -1176,7 +1176,7 @@ process.on('uncaughtException', async (error) => {
 process.on('unhandledRejection', async (reason, promise) => {
   console.error('💥 Unhandled Rejection at:', promise, 'reason:', reason);
   process.exit(1);
-});
+}); 
 
 if (require.main === module) {
   main();
