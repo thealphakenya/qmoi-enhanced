@@ -240,6 +240,10 @@ npm run cloud:integration    # Enhanced cloud integration
 npm run automation:health    # Automation health monitoring
 npm run automation:optimize  # Automation optimization
 npm run automation:backup    # Automation backup management
+# Security Automation
+python scripts/qmoi_security_automation.py --auto-fix --report
+# Self-Evolution
+python scripts/qmoi_auto_evolution_enhanced.py --self-evolve
 ```
 
 ## 🏗️ Architecture
@@ -610,6 +614,18 @@ npm run autotest:all
 - [Configuration Guide](docs/CONFIGURATION.md)
 - [API Reference](docs/API.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
+
+## 🛠️ Troubleshooting
+
+See [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) for help with PowerShell, Husky, and common issues.
+
+## 🔒 Security Automation
+
+See [SECURITY_AUTOMATION.md](SECURITY_AUTOMATION.md) for details on automated vulnerability remediation.
+
+## 🤖 Self-Evolution
+
+See [SELF_EVOLUTION.md](SELF_EVOLUTION.md) for details on the self-evolving AI system.
 
 ## 🆘 Support
 
