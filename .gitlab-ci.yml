@@ -1,5 +1,13 @@
 stages:
+  - secrets
+  - setup
+  - lint
   - test
+  - build
+  - e2e
+  - docker
+  - deploy
+  - notify
 
 e2e_tests:
   image: cypress/browsers:node20.10.0-chrome120-ff120
@@ -19,3 +27,40 @@ e2e_tests:
     # Upload to Coveralls
     - npm install -g coveralls
     - cat coverage/lcov.info | coveralls 
+
+# QMOI: Generate and sync secrets
+qmoi_generate_secrets:
+  stage: secrets
+  image: node:18
+  script:
+    - node scripts/qmoi-secret-generator.js && echo "QMOI_SECRET_GENERATED=1" > qmoi_secret_flag || echo "QMOI_SECRET_GENERATED=0" > qmoi_secret_flag
+  artifacts:
+    paths:
+      - qmoi_secret_flag
+    expire_in: 1 hour
+
+setup_env:
+  stage: setup
+  image: node:18
+  script:
+    - echo "Setting up environment variables..."
+    - node scripts/qmoi-auto-config.js
+    - echo "QMOI environment setup complete."
+  dependencies:
+    - qmoi_generate_secrets
+
+notify_secret_change:
+  stage: notify
+  image: curlimages/curl:latest
+  script:
+    - |
+      if grep -q 'QMOI_SECRET_GENERATED=1' qmoi_secret_flag; then
+        curl -X POST -H 'Content-type: application/json' --data '{"text":"🔑 QMOI: Secrets were auto-generated or updated in the pipeline for $CI_PROJECT_NAME on $CI_COMMIT_REF_NAME."}' $SLACK_WEBHOOK_URL
+      else
+        echo "No secrets generated, skipping notification."
+      fi
+  dependencies:
+    - qmoi_generate_secrets
+  only:
+    - main
+  when: always 
