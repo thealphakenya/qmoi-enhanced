@@ -49,7 +49,7 @@ jobs:
         semgrep scan --config auto --json --output semgrep-report.json
     
     - name: Upload security reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: security-reports-${{ github.run_id }}
         path: |
@@ -87,7 +87,7 @@ jobs:
         npm audit --audit-level moderate --json > npm-audit.json
     
     - name: Upload vulnerability reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: vulnerability-reports-${{ github.run_id }}
         path: |
@@ -121,7 +121,7 @@ jobs:
         pylint --disable=all --enable=security scripts/ models/ huggingface_space/ --output=security-lint.txt
     
     - name: Upload code quality reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: code-quality-reports-${{ github.run_id }}
         path: |
@@ -153,7 +153,7 @@ jobs:
         detect-secrets audit .secrets.baseline --report --json > secrets-report.json
     
     - name: Upload secrets report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: secrets-report-${{ github.run_id }}
         path: secrets-report.json
@@ -176,7 +176,7 @@ jobs:
         output: 'trivy-results.json'
     
     - name: Upload container security report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: container-security-${{ github.run_id }}
         path: trivy-results.json
@@ -205,7 +205,7 @@ jobs:
         checkov -d . --output json --output-file-path checkov-report.json
     
     - name: Upload infrastructure report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: infrastructure-security-${{ github.run_id }}
         path: checkov-report.json
@@ -234,7 +234,7 @@ jobs:
         python scripts/compliance_checker.py
     
     - name: Upload compliance report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: compliance-report-${{ github.run_id }}
         path: reports/compliance/
@@ -264,7 +264,7 @@ jobs:
         python scripts/generate_security_assessment.py
     
     - name: Upload security assessment
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: security-assessment-${{ github.run_id }}
         path: reports/security/

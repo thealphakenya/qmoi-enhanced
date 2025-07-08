@@ -36,7 +36,7 @@ jobs:
         python scripts/backup_databases.py
     
     - name: Upload database backups
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: database-backups-${{ github.run_id }}
         path: backups/databases/
@@ -65,7 +65,7 @@ jobs:
         python scripts/backup_configurations.py
     
     - name: Upload config backups
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: config-backups-${{ github.run_id }}
         path: backups/configurations/
@@ -95,7 +95,7 @@ jobs:
         python scripts/backup_models.py
     
     - name: Upload model backups
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: model-backups-${{ github.run_id }}
         path: backups/models/
@@ -140,7 +140,7 @@ jobs:
         python scripts/backup_to_azure.py
     
     - name: Upload cloud backup report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cloud-backup-report-${{ github.run_id }}
         path: logs/cloud_backup_report.json
@@ -169,7 +169,7 @@ jobs:
         python scripts/backup_code.py
     
     - name: Upload code backup
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: code-backup-${{ github.run_id }}
         path: backups/code/
@@ -198,7 +198,7 @@ jobs:
         python scripts/backup_logs.py
     
     - name: Upload log backup
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: log-backup-${{ github.run_id }}
         path: backups/logs/
@@ -228,7 +228,7 @@ jobs:
         python scripts/verify_backups.py
     
     - name: Upload verification report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: backup-verification-${{ github.run_id }}
         path: logs/backup_verification.json
@@ -258,7 +258,7 @@ jobs:
         python scripts/cleanup_old_backups.py
     
     - name: Upload cleanup report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: backup-cleanup-${{ github.run_id }}
         path: logs/backup_cleanup.json
@@ -288,7 +288,7 @@ jobs:
         python scripts/generate_backup_report.py
     
     - name: Upload backup report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: backup-report-${{ github.run_id }}
         path: reports/backup/

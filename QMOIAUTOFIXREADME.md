@@ -160,6 +160,51 @@ When automatic fixes fail, the system:
 3. Notifies master users
 4. Maintains system stability
 
+## 🚀 Always Fix All Automation
+
+QMOI now includes a robust "Always Fix All" automation system:
+
+- **Script:** `npm run qmoi:always-fix-all`
+- **Location:** `scripts/qmoi-always-fix-all.js`
+- **How it works:**
+  - Runs all fixers (lint, build, config, dependency, runtime) in sequence
+  - Retries up to 3 times if any errors remain
+  - Logs all attempts to `logs/qmoi-always-fix-all-attempts.json`
+  - Sends notifications on success or persistent failure
+  - Integrates with QMOI notification and monitoring systems
+- **Husky Integration:**
+  - Runs automatically before every commit and push (see `.husky/pre-commit` and `.husky/pre-push`)
+- **Best Practice:**
+  - Use this script in CI/CD, pre-commit, pre-push, or manual runs for maximum reliability
+
+### Example Usage
+```bash
+npm run qmoi:always-fix-all
+```
+
+### Monitoring & Troubleshooting
+- All fix attempts and results are logged
+- Persistent failures trigger notifications and require manual intervention
+- See [MONITORING.md](./MONITORING.md) for dashboard and alerting
+
+## 🤖 AI Error Prediction
+
+QMOI now includes an AI-powered error prediction system:
+- Analyzes error/fix logs to predict likely error types and files for the next run
+- Exposes predictions via a REST API (`/api/predictions` on port 4100)
+- Predictions are displayed in the dashboard for proactive fixing
+
+## 🔔 Notification Management
+
+- Notification preferences can be managed via the dashboard or REST API (`/api/notification-prefs` on port 4200)
+- Supports Slack, Discord, Telegram, and Pushover (mobile push)
+- Notification history is viewable in the dashboard
+
+## 📊 Dashboard Enhancements
+
+- AI error predictions and notification management are now visible on the dashboard
+- Live notification log and manual notification preference management
+
 ## Future Enhancements
 
 ### Planned Features

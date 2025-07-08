@@ -52,8 +52,8 @@ Access the revenue dashboard at `/qcity` (master only) to:
 - Transfer to M-Pesa
 
 ## 💰 Revenue Streams & Minimum Targets
-- **Minimum Daily Target**: Ksh 50,000 (enforced by automation)
-- **QMOI Space Minimum**: Ksh 50,000 must always be available (auto-replenish if below)
+- **Minimum Daily Target**: Ksh 200,000 (doubled from previous target, enforced by automation)
+- **QMOI Space Minimum**: Ksh 100,000 must always be available (doubled from previous target, auto-replenish if below)
 - **Automated Alerts**: Master is notified if targets are not met or balance drops below threshold
 - **Multi-Channel Revenue**: Trading, content, SaaS, affiliate, consulting, e-commerce, and more
 - **AI-Driven Maximization**: QMOI uses all features (projects, distribution, marketing, content, etc.) to maximize revenue
@@ -255,4 +255,4 @@ For issues and questions:
 
 ---
 
-*QMOI Revenue Engine: Automated, high-quality, high-revenue, and always above Ksh 50,000 per day.* 
+*QMOI Revenue Engine: Automated, high-quality, high-revenue, and always above Ksh 200,000 per day.* 

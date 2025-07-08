@@ -121,7 +121,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({ isMaster }) => 
     }
   };
 
-  if (!isMaster) return null;
+  if (!isMaster) return <div className="text-red-500">Access denied: Master only</div>;
 
   const totalErrors = errors.length;
   const fixedErrors = fixes.filter(f => f.success).length;

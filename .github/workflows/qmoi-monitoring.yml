@@ -37,7 +37,7 @@ jobs:
         python scripts/qmoi_health_monitor.py
     
     - name: Upload health report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: health-report-${{ github.run_id }}
         path: logs/health_report.json
@@ -67,7 +67,7 @@ jobs:
         python scripts/qmoi_performance_monitor.py
     
     - name: Upload performance report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: performance-report-${{ github.run_id }}
         path: logs/performance_report.json
@@ -96,7 +96,7 @@ jobs:
         python scripts/qmoi_revenue_monitor.py
     
     - name: Upload revenue report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: revenue-report-${{ github.run_id }}
         path: logs/revenue_report.json
@@ -125,7 +125,7 @@ jobs:
         python scripts/qmoi_employment_monitor.py
     
     - name: Upload employment report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: employment-report-${{ github.run_id }}
         path: logs/employment_report.json
@@ -172,7 +172,7 @@ jobs:
         python scripts/monitor_azure_resources.py
     
     - name: Upload cloud report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cloud-report-${{ github.run_id }}
         path: logs/cloud_report.json
@@ -201,7 +201,7 @@ jobs:
         python scripts/qmoi_error_monitor.py
     
     - name: Upload error report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: error-report-${{ github.run_id }}
         path: logs/error_report.json
@@ -231,7 +231,7 @@ jobs:
         python scripts/monitor_api_endpoints.py
     
     - name: Upload API report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: api-report-${{ github.run_id }}
         path: logs/api_report.json
@@ -261,7 +261,7 @@ jobs:
         python scripts/security_monitor.py
     
     - name: Upload security report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: security-report-${{ github.run_id }}
         path: logs/security_report.json
@@ -291,7 +291,7 @@ jobs:
         python scripts/generate_alerts.py
     
     - name: Upload alerts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: alerts-${{ github.run_id }}
         path: logs/alerts.json
@@ -321,7 +321,7 @@ jobs:
         python scripts/update_dashboard.py
     
     - name: Upload dashboard
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dashboard-${{ github.run_id }}
         path: dashboard/
@@ -352,7 +352,7 @@ jobs:
         python scripts/generate_monitoring_reports.py
     
     - name: Upload reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: monitoring-reports-${{ github.run_id }}
         path: reports/monitoring/

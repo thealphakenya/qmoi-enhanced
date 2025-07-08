@@ -328,7 +328,7 @@ jobs:
         python scripts/build_desktop_app.py
     
     - name: Upload desktop app
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: qmoi-desktop-${{ matrix.os }}
         path: dist/
@@ -366,7 +366,7 @@ jobs:
         python scripts/generate_deployment_report.py
     
     - name: Upload deployment report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: deployment-report
         path: reports/deployment/

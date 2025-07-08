@@ -1,0 +1,179 @@
+{
+  "parallel": true,
+  "timeout": 30000,
+  "retries": 3,
+  "enableNotifications": true,
+  "generateReports": true,
+  "coverage": true,
+  "testSuites": {
+    "unit": {
+      "enabled": true,
+      "pattern": "**/*.test.js",
+      "coverage": true,
+      "timeout": 5000
+    },
+    "integration": {
+      "enabled": true,
+      "pattern": "**/*.integration.test.js",
+      "coverage": true,
+      "timeout": 15000
+    },
+    "e2e": {
+      "enabled": true,
+      "pattern": "**/*.e2e.test.js",
+      "browser": "chrome",
+      "headless": true,
+      "timeout": 30000
+    },
+    "performance": {
+      "enabled": true,
+      "pattern": "**/*.perf.test.js",
+      "thresholds": {
+        "responseTime": 2000,
+        "throughput": 1000
+      }
+    },
+    "security": {
+      "enabled": true,
+      "pattern": "**/*.security.test.js",
+      "vulnerabilityScan": true
+    },
+    "accessibility": {
+      "enabled": true,
+      "pattern": "**/*.a11y.test.js",
+      "standards": ["WCAG2AA", "WCAG2AAA"]
+    },
+    "compatibility": {
+      "enabled": true,
+      "browsers": ["chrome", "firefox", "safari", "edge"],
+      "devices": ["desktop", "tablet", "mobile"]
+    },
+    "load": {
+      "enabled": true,
+      "users": 100,
+      "duration": 300,
+      "rampUp": 60
+    },
+    "stress": {
+      "enabled": true,
+      "users": 500,
+      "duration": 600,
+      "rampUp": 120
+    },
+    "regression": {
+      "enabled": true,
+      "baseline": "main",
+      "compare": "feature"
+    },
+    "smoke": {
+      "enabled": true,
+      "critical": true,
+      "timeout": 10000
+    },
+    "sanity": {
+      "enabled": true,
+      "quick": true,
+      "timeout": 5000
+    },
+    "visual": {
+      "enabled": true,
+      "screenshots": true,
+      "baseline": "baseline/",
+      "threshold": 0.1
+    },
+    "api": {
+      "enabled": true,
+      "baseUrl": "http://localhost:3000",
+      "auth": {
+        "type": "bearer",
+        "token": "${API_TOKEN}"
+      }
+    },
+    "database": {
+      "enabled": true,
+      "type": "postgresql",
+      "connection": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "qmoi_test",
+        "user": "test_user"
+      }
+    },
+    "network": {
+      "enabled": true,
+      "endpoints": [
+        "https://api.github.com",
+        "https://registry.npmjs.org"
+      ]
+    },
+    "mobile": {
+      "enabled": true,
+      "devices": ["iPhone 12", "Samsung Galaxy S21", "iPad Pro"],
+      "orientation": ["portrait", "landscape"]
+    },
+    "crossBrowser": {
+      "enabled": true,
+      "browsers": ["chrome", "firefox", "safari", "edge"],
+      "versions": ["latest", "latest-1"]
+    },
+    "localization": {
+      "enabled": true,
+      "languages": ["en", "es", "fr", "de", "ja", "zh"],
+      "regions": ["US", "EU", "APAC"]
+    }
+  },
+  "reporting": {
+    "html": true,
+    "json": true,
+    "junit": true,
+    "coverage": {
+      "html": true,
+      "json": true,
+      "lcov": true,
+      "threshold": {
+        "statements": 80,
+        "branches": 70,
+        "functions": 80,
+        "lines": 80
+      }
+    }
+  },
+  "artifacts": {
+    "screenshots": true,
+    "videos": true,
+    "logs": true,
+    "metrics": true,
+    "performance": true
+  },
+  "notifications": {
+    "email": {
+      "enabled": true,
+      "recipients": ["team@q-city.ai"]
+    },
+    "slack": {
+      "enabled": true,
+      "channel": "#qmoi-tests"
+    },
+    "discord": {
+      "enabled": true,
+      "channel": "qmoi-tests"
+    }
+  },
+  "environments": {
+    "development": {
+      "baseUrl": "http://localhost:3000",
+      "apiUrl": "http://localhost:3001",
+      "database": "qmoi_dev"
+    },
+    "staging": {
+      "baseUrl": "https://staging.q-city.ai",
+      "apiUrl": "https://api-staging.q-city.ai",
+      "database": "qmoi_staging"
+    },
+    "production": {
+      "baseUrl": "https://q-city.ai",
+      "apiUrl": "https://api.q-city.ai",
+      "database": "qmoi_prod"
+    }
+  }
+} 

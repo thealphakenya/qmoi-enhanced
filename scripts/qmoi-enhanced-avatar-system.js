@@ -671,4 +671,7 @@ Examples:
     }
   }
 
-  main().catchexport default QMOIEnhancedAvatarSystem; 
+  main().catch(console.error);
+}
+
+export default QMOIEnhancedAvatarSystem; 

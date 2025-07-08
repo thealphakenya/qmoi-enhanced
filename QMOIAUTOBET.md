@@ -231,20 +231,20 @@ class EnhancedAutoBet:
 ## 📈 Performance Targets
 
 ### Daily Targets
-- **Betika Profit:** KSH 5,000+
-- **Odibets Profit:** KSH 5,000+
-- **Total Daily Profit:** KSH 10,000+
+- **Betika Profit:** KSH 10,000+ (doubled from previous target)
+- **Odibets Profit:** KSH 10,000+ (doubled from previous target)
+- **Total Daily Profit:** KSH 20,000+ (doubled from previous target)
 - **M-Pesa Transfer:** KSH 2,000
 - **Airtel Money Transfer:** KSH 2,000
 
 ### Monthly Targets
-- **Total Monthly Profit:** KSH 300,000+
+- **Total Monthly Profit:** KSH 600,000+ (doubled from previous target)
 - **Win Rate:** 65%+ successful bets
 - **ROI:** 25%+ return on investment
 - **Account Growth:** 30%+ monthly increase
 
 ### Annual Targets
-- **Annual Profit:** KSH 3,600,000+
+- **Annual Profit:** KSH 7,200,000+ (doubled from previous target)
 - **Portfolio Growth:** 300%+ annual return
 - **Platform Expansion:** 15+ betting platforms
 - **Global Market Access:** 50+ countries

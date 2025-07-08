@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const { sendEmail, sendSlack, sendWhatsApp } = require('./qmoi_notifier');
+const axios = require('axios');
 const app = express();
 const LOG_FILE = './logs/qmoi_media_orchestrator.log';
 const ERROR_FIX_LOG = './logs/error_fix_summary.json';
@@ -78,13 +79,31 @@ app.post('/send-test-notification', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   let stats = {};
   let log = [];
   if (fs.existsSync(ERROR_FIX_LOG)) {
     log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, 'utf-8'));
     stats = log[log.length - 1];
   }
+  // Fetch AI error predictions
+  let predictions = [];
+  try {
+    const predRes = await axios.get('http://localhost:4100/api/predictions');
+    predictions = predRes.data.predictions || [];
+  } catch {}
+  // Fetch notification preferences
+  let notificationPrefs = {};
+  try {
+    const prefsRes = await axios.get('http://localhost:4200/api/notification-prefs');
+    notificationPrefs = prefsRes.data || {};
+  } catch {}
+  // Fetch notification history
+  let notificationHistory = [];
+  try {
+    const histRes = await axios.get('http://localhost:4200/api/notification-history');
+    notificationHistory = histRes.data || [];
+  } catch {}
   // SVG chart for percent fixed over time
   let chart = '';
   if (log.length > 1) {
@@ -125,6 +144,19 @@ app.get('/', (req, res) => {
       <div style="width:${stats.percentFixed ?? 0}%;background:#4ade80;color:#fff;padding:4px 0;text-align:center;">${stats.percentFixed ?? 0}%</div>
     </div>
     ${chart}
+    <h2>AI Error Predictions</h2>
+    <ul>
+      ${predictions.length === 0 ? '<li>No predictions available</li>' : predictions.map(p => `<li>${p.kind === 'errorType' ? 'Error Type' : 'File'}: <b>${p.type || p.file}</b> (${p.count})</li>`).join('')}
+    </ul>
+    <h2>Notification Preferences</h2>
+    <pre>${JSON.stringify(notificationPrefs, null, 2)}</pre>
+    <form method="POST" action="/update-notification-prefs" onsubmit="fetch('/update-notification-prefs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slack:{enabled:true}})}).then(()=>location.reload());return false;">
+      <button type="submit">Enable Slack Notifications</button>
+    </form>
+    <h2>Notification History</h2>
+    <ul>
+      ${notificationHistory.length === 0 ? '<li>No notifications sent</li>' : notificationHistory.slice(-10).reverse().map(n => `<li>[${n.type}] <b>${n.title}</b> - ${n.status} (${n.timestamp})</li>`).join('')}
+    </ul>
     ${manualList}
     <h3>Error Type Breakdown</h3>
     <ul>
@@ -138,6 +170,16 @@ app.get('/', (req, res) => {
     <a href="/logs">View Orchestrator Logs</a>
     ${table}
   `);
+});
+
+// Add endpoint to update notification preferences
+app.post('/update-notification-prefs', express.json(), async (req, res) => {
+  try {
+    await axios.post('http://localhost:4200/api/notification-prefs', req.body);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.toString() });
+  }
 });
 
 // API endpoints
