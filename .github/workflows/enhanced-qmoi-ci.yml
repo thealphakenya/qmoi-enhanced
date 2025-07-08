@@ -1,0 +1,15 @@
+jobs:
+  enhanced-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - run: npm ci
+    - run: npm run test:all
+    - run: python scripts/enhanced_qmoi_implementation.py
+name: Enhanced QMOI CI/CD
+'on':
+- push
+- pull_request
