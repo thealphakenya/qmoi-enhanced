@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import EnhancedQMOIDashboard from './EnhancedQMOIDashboard';
+import { useQmoiKernel } from '../../hooks/useQmoiKernel';
 
-export default function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const [status, setStatus] = useState('Loading...');
-  const [lastCheck, setLastCheck] = useState('');
-  const [mutationCount, setMutationCount] = useState(0);
-  const [logs, setLogs] = useState<string[]>([]);
-  const [showEnhancedDashboard, setShowEnhancedDashboard] = useState(false);
+function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
+  const {
+    status,
+    loading,
+    error,
+    lastAction,
+    fetchStatus,
+    runAction,
+  } = useQmoiKernel();
+  const [showEnhancedDashboard, setShowEnhancedDashboard] = React.useState(false);
 
-  async function fetchStatus() {
-    const res = await fetch('/api/qmoi/status');
-    if (res.ok) {
-      const data = await res.json();
-      setStatus(data.status);
-      setLastCheck(data.last_check);
-      setMutationCount(data.mutation_count);
-      setLogs(data.logs || []);
-    }
-  }
+  const handleToggleDashboard = useCallback(() => {
+    setShowEnhancedDashboard((prev) => !prev);
+  }, []);
 
   useEffect(() => {
     if (isMaster) fetchStatus();
     const interval = setInterval(fetchStatus, 20000);
     return () => clearInterval(interval);
-  }, [isMaster]);
+  }, [isMaster, fetchStatus]);
 
   if (!isMaster) return null;
 
@@ -32,29 +30,68 @@ export default function QMoiKernelPanel({ isMaster = false }: { isMaster?: boole
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <h3>QMOI Kernel Control Panel</h3>
         <button 
-          onClick={() => setShowEnhancedDashboard(!showEnhancedDashboard)}
+          onClick={handleToggleDashboard}
           style={{ padding: '8px 16px', background: '#4CAF50', border: 'none', borderRadius: 4, color: 'white', cursor: 'pointer' }}
         >
           {showEnhancedDashboard ? 'Hide' : 'Show'} Enhanced Dashboard
         </button>
       </div>
-      
       {showEnhancedDashboard && <EnhancedQMOIDashboard isMaster={isMaster} />}
-      
       <div style={{ marginTop: showEnhancedDashboard ? 16 : 0 }}>
-        <p><b>Status:</b> {status}</p>
-        <p><b>Last Check:</b> {lastCheck}</p>
-        <p><b>Mutation Count:</b> {mutationCount}</p>
-        <div style={{ marginTop: 8 }}>
-          <button onClick={() => fetch('/api/qmoi/payload?qfix', {method: 'POST'}).then(fetchStatus)}>Run QFix</button>
-          <button onClick={() => fetch('/api/qmoi/payload?qoptimize', {method: 'POST'}).then(fetchStatus)} style={{marginLeft:8}}>Run QOptimize</button>
-          <button onClick={() => fetch('/api/qmoi/payload?qsecure', {method: 'POST'}).then(fetchStatus)} style={{marginLeft:8}}>Run QSecure</button>
+        <p><b>Status:</b> {status.status}</p>
+        <p><b>Last Check:</b> {status.lastCheck}</p>
+        <p><b>Mutation Count:</b> {status.mutationCount}</p>
+        <div style={{ marginTop: 8, display: 'flex', alignItems: 'center' }}>
+          <button
+            onClick={() => runAction('qfix')}
+            disabled={loading}
+            title="Run QFix: Auto-fix errors and issues"
+            style={{marginRight:8}}
+          >
+            {loading ? 'Running...' : 'Run QFix'}
+          </button>
+          <button
+            onClick={() => runAction('qoptimize')}
+            disabled={loading}
+            title="Run QOptimize: Optimize system performance"
+            style={{marginRight:8}}
+          >
+            {loading ? 'Running...' : 'Run QOptimize'}
+          </button>
+          <button
+            onClick={() => runAction('qsecure')}
+            disabled={loading}
+            title="Run QSecure: Apply security enhancements"
+            style={{marginRight:8}}
+          >
+            {loading ? 'Running...' : 'Run QSecure'}
+          </button>
+          <button
+            onClick={fetchStatus}
+            disabled={loading}
+            title="Manual refresh of kernel status"
+            style={{marginLeft:16}}
+          >
+            Refresh
+          </button>
         </div>
-        <h4>Kernel Logs</h4>
-        <ul style={{maxHeight: 120, overflowY: 'auto'}}>
-          {logs.map((log, i) => <li key={i}>{log}</li>)}
+        {error && <div style={{ color: '#ff8888', marginTop: 8 }}><b>Error:</b> {error}</div>}
+        {lastAction && (
+          <div style={{ color: lastAction.success ? '#aaffaa' : '#ffaaaa', marginTop: 8 }}>
+            <b>Last Action:</b> {lastAction.message}
+          </div>
+        )}
+        <h4 style={{marginTop:16}}>Kernel Logs</h4>
+        <ul style={{maxHeight: 120, overflowY: 'auto', background: '#222', padding: 8, borderRadius: 4}}>
+          {status.logs.map((log, i) => (
+            <li key={i} style={{fontSize: '0.95em', marginBottom: 2}}>
+              {log}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
   );
-} 
+}
+
+export default React.memo(QMoiKernelPanel); 

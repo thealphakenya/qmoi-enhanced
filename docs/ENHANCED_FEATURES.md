@@ -155,6 +155,36 @@ All enhanced services are designed to work with existing QMOI APIs:
 - `/api/qmoi/payload` - Extended payload capabilities
 - Real-time event streaming for dashboard updates
 
+## QMOI Kernel Panel & useQmoiKernel Hook
+
+### Overview
+The QMOI Kernel Panel provides real-time control and monitoring of the QMOI system, including error fixing, optimization, and security actions. It now uses a custom React hook, `useQmoiKernel`, for all API logic and state management.
+
+### useQmoiKernel Hook
+- Encapsulates all QMOI kernel API logic: status fetching, action execution (QFix, QOptimize, QSecure), loading/error state, and last action result.
+- Returns: `status`, `loading`, `error`, `lastAction`, `fetchStatus`, `runAction`.
+- Used by `QMoiKernelPanel` for clean, reusable state management.
+
+#### API Endpoints Used
+- `GET /api/qmoi/status` — fetches current kernel status, last check, mutation count, and logs.
+- `POST /api/qmoi/payload?qfix|qoptimize|qsecure` — triggers kernel actions.
+
+### QMoiKernelPanel UI/UX Enhancements
+- **Manual Refresh**: Button to manually refresh kernel status.
+- **Loading Indicators**: Buttons show loading state and are disabled during async actions.
+- **Tooltips**: Each action button has a tooltip explaining its function.
+- **Error Handling**: Errors are displayed in the panel.
+- **Last Action Result**: Shows the result of the last action (success/failure, message).
+- **Improved Logs**: Logs are displayed with better formatting.
+
+### Props
+- `isMaster` (boolean): Only renders the panel if true.
+
+### Example Usage
+```tsx
+<QMoiKernelPanel isMaster={true} />
+```
+
 ## 7. Performance Optimization
 
 ### Lightweight Design
@@ -212,6 +242,40 @@ All enhanced services support configuration options:
 - API for third-party integrations
 - Custom automation rules
 - Advanced reporting capabilities
+
+## Advanced E2E Testing & CI Integration
+
+### Error Simulation & Accessibility
+- Cypress E2E tests simulate API errors and slow responses using `cy.intercept`.
+- Accessibility is checked with `cypress-axe`.
+- See `cypress/e2e/qmoi_kernel_panel_advanced.cy.js` for examples.
+
+### CI Integration
+- GitHub Actions workflow (`.github/workflows/cypress.yml`) runs Cypress E2E tests on every push/PR.
+- Waits for the app to start, then runs all E2E tests.
+
+### Expanding Coverage
+- Add similar tests for other panels/components (e.g., EnhancedQMOIDashboard).
+- Test edge cases, role-based access, and mobile/responsive layouts.
+- Use MSW and Cypress together for robust integration and E2E coverage.
+
+## Multi-User, Mobile, and Coverage Testing
+
+### Multi-User & Mobile E2E
+- Cypress tests simulate different user roles (admin, user) via cookies.
+- Mobile/responsive layouts tested with `cy.viewport` (e.g., iPhone 6).
+- Accessibility checks run on mobile as well.
+- See `cypress/e2e/qmoi_kernel_panel_multiuser_mobile.cy.js` for examples.
+
+### Code Coverage
+- Run `npm run test:coverage` for Jest/RTL coverage (unit/integration).
+- For Cypress E2E coverage, install `@cypress/code-coverage` and follow setup instructions in `package.json`.
+- Coverage reports are generated in the `coverage/` directory and can be uploaded to Codecov or Coveralls.
+
+### CI Configs
+- GitHub Actions: see `.github/workflows/cypress.yml`.
+- GitLab CI: see `.gitlab-ci.yml`.
+- Both run E2E tests and can upload coverage artifacts for dashboards.
 
 ## Conclusion
 

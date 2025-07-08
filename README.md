@@ -1,3 +1,12 @@
+# Q-city
+
+[![codecov](https://codecov.io/gh/your-org/your-repo/branch/main/graph/badge.svg)](https://codecov.io/gh/your-org/your-repo)
+[![Coverage Status](https://coveralls.io/repos/github/your-org/your-repo/badge.svg?branch=main)](https://coveralls.io/github/your-org/your-repo?branch=main)
+
+<!--
+After your first successful upload to Codecov and Coveralls, update the badge URLs above with your actual org/repo path.
+-->
+
 # QMOI Enhanced Always Fix All System
 
 ## 🚀 Overview
@@ -674,3 +683,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Made with ❤️ by the QMOI Team**
+
+## [Enhancement] QMOI Kernel Panel & useQmoiKernel Hook
+- Refactored QMoiKernelPanel to use a new custom hook (`useQmoiKernel`) for all API and state logic.
+- Improved UI/UX: loading indicators, tooltips, error handling, manual refresh, and last action result display.
+- See `docs/ENHANCED_FEATURES.md` for full details.
