@@ -8,8 +8,8 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:  # Manual trigger
-  security:
-    types: [alert]
+  repository_dispatch:
+    types: [security_alert]
 
 env:
   QMOI_VERSION: "2.0"
