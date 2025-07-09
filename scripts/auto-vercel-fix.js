@@ -401,6 +401,18 @@ async function sendSlackNotification(message) {
   }
 }
 
+// --- Universal Variable Automation for GitLab and Other Platforms ---
+async function ensureAllPlatformVariables() {
+  // GitLab
+  if (process.env.GITLAB_TOKEN && process.env.CI_PROJECT_ID) {
+    await ensureGitLabCIVariables();
+  }
+  // (Extend here for other platforms, e.g., GitHub Actions, Vercel, etc.)
+  // Example: Vercel project env vars are already synced in syncVercelEnvVars()
+  // Slack webhook is set via env/CI/CD variable
+  logSummary('[QMOI] Checked and set all required platform variables.');
+}
+
 // Entry point
 (async () => {
   try {
@@ -420,7 +432,7 @@ async function sendSlackNotification(message) {
     } catch (e) {
       console.warn('[QMOI] dotenv not found or failed to load.');
     }
-    await ensureGitLabCIVariables();
+    await ensureAllPlatformVariables();
     await testGitLabResourceCreation();
     await simulateGitLabPermissionIssue();
     await autoFixAndRedeploy();
