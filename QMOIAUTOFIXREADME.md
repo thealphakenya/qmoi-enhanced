@@ -219,6 +219,15 @@ QMOI now includes an AI-powered error prediction system:
 - Mobile app monitoring
 - Advanced analytics dashboard
 
+## QMOI Vercel Developer Automation
+
+For the latest and most advanced Vercel error fixing, redeployment, and environment/settings management, see [QMOIVERCELDEV.md](./QMOIVERCELDEV.md).
+
+- Handles all Vercel/Node/JS/TS/Next.js errors with advanced pattern matching and multi-step/fallback fixes
+- Auto-commits, pushes, and redeploys until success
+- Syncs all Vercel environment variables and settings from `config/qmoi_env_vars.json` via API
+- Keeps documentation and settings in sync automatically
+
 ---
 
 **QMOI Auto-Fix System** - Always fixing, always deploying, always improving! 🚀 

@@ -33,6 +33,13 @@
 - [scripts/qmoi-always-fix-all.js](./scripts/qmoi-always-fix-all.js): Always Fix All automation script for robust, repeated error fixing and notification.
 - [scripts/qmoi_master_website_automation.js](./scripts/qmoi_master_website_automation.js): Master-only automation script for website creation, domain registration, and hosting. Provides CLI for master users to create, register, and deploy new sites automatically.
 
+## QMOI Cross-Platform Automation & CI/CD
+
+- [QMOICLONE.md](./QMOICLONE.md): Cross-platform cloning, deployment, auto-fix, backup, optimization, and UI integration for QMOI.
+- [QMOIGITLABDEV.md](./QMOIGITLABDEV.md): QMOI GitLab developer automation, resource management, pipeline, secrets, backup, and UI integration.
+- [QMOIVERCELDEV.md](./QMOIVERCELDEV.md): QMOI Vercel developer automation, error fixing, redeployment, backup, and UI integration.
+- [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md): QMOI Gitpod automation, independent operation, and master-only UI for pipeline/log/resource control.
+
 ## New QMOI Space & Development Documentation
 
 - [QMOISPACEDEV.md](./QMOISPACEDEV.md): QMOI Space development capabilities as a Hugging Face developer.
@@ -68,8 +75,8 @@
 
 ## Latest QMOI Parallel, Cloud, and Security Enhancements
 
-- [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md): Now includes advanced parallel thinking, reasoning, and auto-decision features for money-making, deal-making, and running 100s of projects and transactions in parallel. Documents real-time dashboards, notifications, universal cloud/device/server integration (AWS, Azure, GCP, etc.), and self-optimizing project allocation for profit maximization.
-- [ENHANCEDQVS.md](./ENHANCEDQVS.md): Now provides universal, adaptive, and automated security for all QMOI activities, resources, and transactions—across any cloud, device, or environment. Features auto-integration with any cloud, real-time security dashboards, automated compliance, and QVS as a universal connector.
+- [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md): Advanced parallel thinking, reasoning, and auto-decision features for money-making, deal-making, and running 100s of projects and transactions in parallel. Real-time dashboards, notifications, universal cloud/device/server integration, and self-optimizing project allocation for profit maximization.
+- [ENHANCEDQVS.md](./ENHANCEDQVS.md): Universal, adaptive, and automated security for all QMOI activities, resources, and transactions—across any cloud, device, or environment. Real-time security dashboards, automated compliance, and QVS as a universal connector.
 
 ## Master-Only Automation Features
 
@@ -137,10 +144,6 @@ See [scripts/qmoi_master_website_automation.js](./scripts/qmoi_master_website_au
 
 - All GitHub Actions workflows and documentation (.md files) are now automatically updated by QMOI automation scripts. This includes real-time updates for new features, integrations, and best practices across the entire QMOI ecosystem.
 
-## How to Use
-- Click any link above to view the full documentation for that topic.
-- For monitoring and analytics, see [MONITORING.md](./MONITORING.md).
-- For a project overview and setup, see [README.md](./README.md).
-
 ---
+**Always keep this file up to date with new automation features and documentation.**
 For questions or issues, contact the QMOI admin team. 

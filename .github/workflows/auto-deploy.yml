@@ -189,28 +189,26 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "🚀 QMOI Vercel Auto Deploy..."
-          # Install Vercel CLI globally
           npm install -g vercel@latest
-          
-          # Deploy with enhanced error handling
           if node scripts/deploy/vercel_auto_deploy.js; then
             echo "vercel_success=true" >> $GITHUB_ENV
             echo "✅ Vercel deployment successful"
           else
             echo "vercel_error=1" >> $GITHUB_ENV
-            echo "❌ Vercel deployment failed, will retry"
+            echo "❌ Vercel deployment failed"
           fi
-
-      - name: QMOI Auto-Fix Vercel Deploy Error
+      - name: QMOI Vercel Auto-Fix & Redeploy
         if: env.vercel_error == '1'
         run: |
-          echo "🔧 QMOI Auto-Fixing Vercel Deploy Issues..."
-          # Clear Vercel cache and retry
-          npx vercel --prod --yes --force --prebuilt || echo "Vercel prebuilt deploy failed"
-          node scripts/enhanced-error-fix.js --type vercel || echo "Vercel auto-fix completed"
-          
-          # Final retry with clean deployment
-          npx vercel --prod --yes --force || echo "::warning::Vercel deploy retry completed"
+          echo "🔁 Running automated Vercel deploy error fix and redeploy..."
+          npm run vercel:auto-fix
+
+      - name: Upload Vercel Auto-Fix Summary Log
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: vercel-auto-fix-summary
+          path: vercel-auto-fix-summary.log
 
       - name: QMOI Deployment Verification
         if: env.vercel_success == 'true'
@@ -380,3 +378,13 @@ jobs:
           else
             echo "❌ QMOI deployment had issues"
           fi
+
+      - name: Create GitHub Issue on Persistent Failure
+        if: failure()
+        uses: actions/create-issue@v2
+        with:
+          title: "Vercel Deploy Auto-Fix Failed"
+          body: |
+            The automated deploy error-fix system failed after all retries. Manual intervention required.
+            Please check the workflow logs and latest-vercel-logs.json for details.
+          token: ${{ secrets.GITHUB_TOKEN }}

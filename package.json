@@ -148,7 +148,8 @@
     "fix-all": "npm run fix-deps && npm run audit-fix && npm run dedupe && npm run check-updates",
     "postinstall": "npm run fix-all && npm run lint:fix",
     "prepare": "npx husky install || true",
-    "test:coverage": "react-scripts test --coverage"
+    "test:coverage": "react-scripts test --coverage",
+    "vercel:auto-fix": "node scripts/auto-vercel-fix.js"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
