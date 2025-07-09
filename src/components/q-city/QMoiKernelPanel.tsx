@@ -25,9 +25,6 @@ function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
 
   if (!isMaster) return null;
 
-  // Simulated error for CI/CD auto-fix test
-  const = ;
-
   return (
     <div style={{border: '1px solid #444', padding: 16, borderRadius: 8, background: '#181818', color: '#e0ffe0', marginTop: 16}}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
