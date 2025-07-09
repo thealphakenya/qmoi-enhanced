@@ -27,7 +27,7 @@ class ComprehensiveTestRunner {
     {
       name: 'Linting',
       commands: [
-        'npx eslint . --ext .ts,.tsx,.js,.jsx',
+        "npx eslint '**/*.{js,jsx,ts,tsx}'",
         'npx eslint . --fix',
         'npx prettier --check .',
         'npx prettier --write .'
