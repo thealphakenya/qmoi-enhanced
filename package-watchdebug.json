@@ -1,0 +1,38 @@
+{
+  "name": "qmoi-watchdebug",
+  "version": "1.0.0",
+  "description": "QMOI Comprehensive Monitoring & Error Fixing System",
+  "main": "start-watchdebug.js",
+  "scripts": {
+    "start": "node start-watchdebug.js",
+    "monitor": "node start-watchdebug.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "qmoi",
+    "monitoring",
+    "error-fixing",
+    "gitlab",
+    "vercel",
+    "automation"
+  ],
+  "author": "QMOI System",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "child_process": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thealphakenya/Alpha-Q-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thealphakenya/Alpha-Q-ai/issues"
+  },
+  "homepage": "https://github.com/thealphakenya/Alpha-Q-ai#readme"
+} 
