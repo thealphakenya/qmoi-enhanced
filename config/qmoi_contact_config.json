@@ -1,0 +1,45 @@
+{
+  "contact_information": {
+    "whatsapp": {
+      "number": "+254786322855",
+      "description": "QMOI WhatsApp Business Number",
+      "enabled": true,
+      "automation_enabled": true
+    },
+    "airtel_money": {
+      "number": "+254786322855",
+      "description": "QMOI Airtel Money Number",
+      "enabled": true,
+      "automation_enabled": true
+    },
+    "master_contact": {
+      "phone": "+254786322855",
+      "email": "rovicviccy@gmail.com",
+      "description": "Master Contact for QMOI System"
+    },
+    "emergency_contact": {
+      "phone": "+254786322855",
+      "description": "Emergency Contact for System Issues"
+    }
+  },
+  "system_config": {
+    "auto_save_contacts": true,
+    "contact_verification_enabled": true,
+    "backup_contacts": true,
+    "last_updated": "2024-12-19T10:00:00Z"
+  },
+  "whatsapp_business": {
+    "enabled": true,
+    "number": "+254786322855",
+    "business_name": "QMOI AI System",
+    "auto_reply_enabled": true,
+    "master_access": true
+  },
+  "airtel_money_integration": {
+    "enabled": true,
+    "number": "+254786322855",
+    "auto_payment_enabled": true,
+    "revenue_tracking": true,
+    "daily_minimum_increase": true
+  }
+} 

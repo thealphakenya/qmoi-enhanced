@@ -1,27 +1,447 @@
-# Required git commands to push enhanced QMOI features to GitHub
+# GIT.TXT - QMOI Git Workflow & Automation
 
-# 1. Stage all changes (including enhanced services, components, and documentation)
+## Overview
+This file contains all git commands, workflows, and automation scripts for the QMOI system. All changes are tracked, logged, and require master approval.
+
+## Git Configuration
+
+### Initial Setup
+```bash
+# Configure git for QMOI
+git config user.name "QMOI Master"
+git config user.email "rovicviccy@gmail.com"
+
+# Set up GPG signing (optional)
+git config commit.gpgsign true
+```
+
+### Repository Structure
+```
+QMOI Repository
+├── scripts/           # Automation scripts
+├── components/        # React components
+├── app/              # Next.js app
+├── config/           # Configuration files
+├── docs/             # Documentation
+├── logs/             # System logs
+└── tests/            # Test files
+```
+
+## Git Commands
+
+### Basic Commands
+```bash
+# Check status
+git status
+
+# Add all changes
 git add .
 
-# 2. Commit with a descriptive message for enhanced QMOI features
-git commit -m "Implement comprehensive enhanced QMOI features from finalizers.py
+# Commit changes
+git commit -m "QMOI: [Description of changes]"
 
-- Enhanced Error Auto-Fixing System with AI-driven diagnostics and continuous learning
-- High-Quality Site Generation with automated audits and AI enhancements  
-- Money-Making Integration with revenue automation and deal discovery
-- Enhanced Parallelization with real-time monitoring and optimal execution
-- Real-Time Dashboard with comprehensive monitoring and quick actions
-- Updated documentation and implementation scripts
-- Lightweight, high-performance architecture with minimal resource usage
-
-All features from finalizers.py successfully implemented and integrated."
-
-# 3. Push to main branch
+# Push to remote
 git push origin main
 
-# NOTE: All enhanced features are now implemented and ready for use:
-# - Universal error auto-fixing with self-healing capabilities
-# - High-quality site generation with automated quality checks
-# - Revenue automation with platform discovery and optimization
-# - Enhanced parallelization with real-time health monitoring
-# - Comprehensive real-time dashboard for master controls 
+# Pull latest changes
+git pull origin main
+```
+
+### Branch Management
+```bash
+# Create new branch
+git checkout -b feature/new-feature
+
+# Switch to branch
+git checkout main
+
+# Merge branch
+git merge feature/new-feature
+
+# Delete branch
+git branch -d feature/new-feature
+```
+
+### History & Logs
+```bash
+# View commit history
+git log --oneline
+
+# View detailed history
+git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
+# View changes in last commit
+git show HEAD
+
+# View changes in specific file
+git log -p filename
+```
+
+## QMOI Git Workflow
+
+### 1. Development Workflow
+```bash
+# Start development
+git checkout -b qmoi/feature-name
+
+# Make changes
+# ... edit files ...
+
+# Stage changes
+git add .
+
+# Commit with QMOI prefix
+git commit -m "QMOI: Add [feature description]"
+
+# Push to remote
+git push origin qmoi/feature-name
+```
+
+### 2. Master Review Process
+```bash
+# Master reviews changes
+git log --oneline -10
+
+# Master approves and merges
+git checkout main
+git merge qmoi/feature-name
+
+# Push to main
+git push origin main
+```
+
+### 3. Emergency Fixes
+```bash
+# Emergency fix workflow
+git checkout -b qmoi/emergency-fix
+
+# Make emergency changes
+# ... fix critical issues ...
+
+# Commit emergency fix
+git commit -m "QMOI EMERGENCY: Fix [critical issue]"
+
+# Push and merge immediately
+git push origin qmoi/emergency-fix
+git checkout main
+git merge qmoi/emergency-fix
+git push origin main
+```
+
+## Automation Scripts
+
+### Git Automation Script
+```bash
+#!/bin/bash
+# qmoi_git_automation.sh
+
+# Auto-commit QMOI changes
+auto_commit() {
+    git add .
+    git commit -m "QMOI AUTO: $(date) - Automated commit"
+    git push origin main
+}
+
+# Auto-pull and merge
+auto_pull() {
+    git pull origin main
+    git merge origin/main
+}
+
+# Check for conflicts
+check_conflicts() {
+    if git status | grep -q "conflict"; then
+        echo "QMOI: Git conflicts detected"
+        # Auto-resolve or alert master
+    fi
+}
+
+# Main automation
+case "$1" in
+    "commit") auto_commit ;;
+    "pull") auto_pull ;;
+    "check") check_conflicts ;;
+    *) echo "Usage: $0 {commit|pull|check}" ;;
+esac
+```
+
+### Python Git Automation
+```python
+# scripts/qmoi_git_automation.py
+import subprocess
+import os
+from datetime import datetime
+
+class QMOIGitAutomation:
+    def __init__(self):
+        self.repo_path = os.getcwd()
+    
+    def auto_commit(self, message=None):
+        """Auto-commit QMOI changes"""
+        if not message:
+            message = f"QMOI AUTO: {datetime.now()} - Automated commit"
+        
+        subprocess.run(["git", "add", "."])
+        subprocess.run(["git", "commit", "-m", message])
+        subprocess.run(["git", "push", "origin", "main"])
+    
+    def auto_pull(self):
+        """Auto-pull latest changes"""
+        subprocess.run(["git", "pull", "origin", "main"])
+    
+    def check_status(self):
+        """Check git status"""
+        result = subprocess.run(["git", "status"], capture_output=True, text=True)
+        return result.stdout
+    
+    def create_branch(self, branch_name):
+        """Create new branch"""
+        subprocess.run(["git", "checkout", "-b", f"qmoi/{branch_name}"])
+    
+    def merge_branch(self, branch_name):
+        """Merge branch to main"""
+        subprocess.run(["git", "checkout", "main"])
+        subprocess.run(["git", "merge", f"qmoi/{branch_name}"])
+        subprocess.run(["git", "push", "origin", "main"])
+```
+
+## Git Hooks
+
+### Pre-commit Hook
+```bash
+#!/bin/bash
+# .git/hooks/pre-commit
+
+# QMOI pre-commit checks
+echo "QMOI: Running pre-commit checks..."
+
+# Check for master approval
+if ! git config user.name | grep -q "QMOI Master"; then
+    echo "QMOI: Only master can commit changes"
+    exit 1
+fi
+
+# Check for proper commit message format
+if ! git log -1 --pretty=%B | grep -q "^QMOI:"; then
+    echo "QMOI: Commit message must start with 'QMOI:'"
+    exit 1
+fi
+
+echo "QMOI: Pre-commit checks passed"
+```
+
+### Post-commit Hook
+```bash
+#!/bin/bash
+# .git/hooks/post-commit
+
+# QMOI post-commit actions
+echo "QMOI: Running post-commit actions..."
+
+# Log commit to QMOI system
+COMMIT_HASH=$(git rev-parse HEAD)
+COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+COMMIT_AUTHOR=$(git log -1 --pretty=%an)
+
+echo "QMOI: Commit logged - $COMMIT_HASH by $COMMIT_AUTHOR"
+echo "QMOI: Message - $COMMIT_MESSAGE"
+
+# Notify master via WhatsApp/email
+# ... notification code ...
+```
+
+## Git Integration with QMOI Systems
+
+### Quantum Integration
+```python
+# Quantum git integration
+def quantum_git_sync():
+    """Sync Quantum changes to git"""
+    # Auto-commit Quantum changes
+    auto_commit("QMOI QUANTUM: Sync Quantum changes")
+    
+    # Push to Quantum repository
+    subprocess.run(["git", "push", "quantum", "main"])
+```
+
+### MASTEROWNS Integration
+```python
+# MASTEROWNS git integration
+def masterowns_git_control():
+    """Master control over git operations"""
+    # Only master can perform git operations
+    if not is_master_user():
+        raise PermissionError("Only master can perform git operations")
+    
+    # Log all git operations
+    log_git_operation("master_operation")
+```
+
+### Device Controller Integration
+```python
+# Device controller git integration
+def device_git_sync():
+    """Sync device controller changes"""
+    # Auto-commit device changes
+    auto_commit("QMOI DEVICE: Sync device controller changes")
+    
+    # Push to device repository
+    subprocess.run(["git", "push", "device", "main"])
+```
+
+## Git Security
+
+### Master-Only Access
+```bash
+# Only master can push to main
+git config receive.denyNonFastForwards true
+git config receive.denyDeletes true
+```
+
+### Audit Logging
+```bash
+# Log all git operations
+git config core.hooksPath .git/hooks
+```
+
+### Encryption
+```bash
+# Encrypt sensitive files
+git config filter.encrypt.clean "gpg --encrypt"
+git config filter.encrypt.smudge "gpg --decrypt"
+```
+
+## Git Commands for QMOI
+
+### Daily Commands
+```bash
+# Check status
+git status
+
+# Pull latest changes
+git pull origin main
+
+# View recent commits
+git log --oneline -10
+```
+
+### Development Commands
+```bash
+# Create feature branch
+git checkout -b qmoi/feature-name
+
+# Make changes and commit
+git add .
+git commit -m "QMOI: Add [feature description]"
+
+# Push feature branch
+git push origin qmoi/feature-name
+```
+
+### Master Commands
+```bash
+# Review changes
+git log --oneline -20
+
+# Merge approved changes
+git checkout main
+git merge qmoi/feature-name
+
+# Push to main
+git push origin main
+```
+
+### Emergency Commands
+```bash
+# Emergency fix
+git checkout -b qmoi/emergency-fix
+# ... make emergency changes ...
+git add .
+git commit -m "QMOI EMERGENCY: Fix [critical issue]"
+git push origin qmoi/emergency-fix
+git checkout main
+git merge qmoi/emergency-fix
+git push origin main
+```
+
+## Git Automation Scripts
+
+### Auto-Commit Script
+```bash
+#!/bin/bash
+# auto_commit.sh
+
+# Auto-commit QMOI changes every hour
+while true; do
+    if git status --porcelain | grep -q .; then
+        git add .
+        git commit -m "QMOI AUTO: $(date) - Automated commit"
+        git push origin main
+        echo "QMOI: Auto-committed changes at $(date)"
+    fi
+    sleep 3600  # Wait 1 hour
+done
+```
+
+### Auto-Pull Script
+```bash
+#!/bin/bash
+# auto_pull.sh
+
+# Auto-pull latest changes every 30 minutes
+while true; do
+    git pull origin main
+    echo "QMOI: Auto-pulled changes at $(date)"
+    sleep 1800  # Wait 30 minutes
+done
+```
+
+### Conflict Resolution Script
+```bash
+#!/bin/bash
+# resolve_conflicts.sh
+
+# Auto-resolve git conflicts
+if git status | grep -q "conflict"; then
+    echo "QMOI: Resolving git conflicts..."
+    
+    # Use master's version for conflicts
+    git checkout --ours .
+    git add .
+    git commit -m "QMOI: Resolve conflicts using master version"
+    git push origin main
+    
+    echo "QMOI: Conflicts resolved"
+fi
+```
+
+## Git Best Practices for QMOI
+
+### 1. Commit Messages
+- Always start with "QMOI:"
+- Use descriptive messages
+- Include ticket/issue numbers if applicable
+
+### 2. Branch Naming
+- Use "qmoi/" prefix for all branches
+- Use descriptive branch names
+- Use lowercase and hyphens
+
+### 3. Code Review
+- All changes require master review
+- Use pull requests for major changes
+- Test all changes before merging
+
+### 4. Security
+- Only master can push to main
+- All operations are logged
+- Sensitive data is encrypted
+
+### 5. Automation
+- Use automation scripts for routine tasks
+- Monitor git operations
+- Auto-resolve conflicts when possible
+
+---
+
+**QMOI Git Workflow: Secure, automated, and master-controlled version control for the QMOI system.** 

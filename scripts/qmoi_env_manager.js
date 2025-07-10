@@ -6,7 +6,19 @@ const requiredEnvs = [
   'HF_TOKEN',
   'HF_USERNAME',
   'WHATSAPP_API_TOKEN',
-  'WHATSAPP_WEBHOOK_URL'
+  'WHATSAPP_WEBHOOK_URL',
+  // QMOI notification/email variables
+  'QMOI_EMAIL_HOST',
+  'QMOI_EMAIL_PORT',
+  'QMOI_EMAIL_SECURE',
+  'QMOI_EMAIL_USER',
+  'QMOI_EMAIL_PASS',
+  'QMOI_EMAIL_FROM',
+  'QMOI_EMAIL_TO',
+  'QMOI_SLACK_WEBHOOK',
+  'QMOI_DISCORD_WEBHOOK',
+  'QMOI_TELEGRAM_BOT_TOKEN',
+  'QMOI_TELEGRAM_CHAT_ID'
 ];
 
 const envPath = path.join(process.cwd(), '.env');

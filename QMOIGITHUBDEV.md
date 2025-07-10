@@ -1,5 +1,14 @@
 # QMOI GitHub Development - Advanced AI Developer Platform
 
+> **See also:** [QMOIDEV.md](./QMOIDEV.md)
+
+## QMOI as a Developer & Notification Agent
+- QMOI always identifies as an AI Developer in all notifications (email, Slack, etc.).
+- All notifications include platform, job, fix, and error context.
+- QMOI logs, retries, and uses fallback channels for all notifications.
+- QMOI monitors for email replies, parses commands, and updates memory/context.
+- All errors, fixes, and notifications are logged and used to improve future actions.
+
 ## Overview
 QMOI GitHub Development represents the pinnacle of AI-powered software development capabilities, where QMOI operates as a sophisticated developer on GitHub and other development platforms. This system enables QMOI to create, maintain, contribute to, and monetize open-source and commercial software projects with unprecedented efficiency and innovation.
 

@@ -1,7 +1,13 @@
 # QMOI Always Parallel System
 
-## Overview
-QMOI Always Parallel is a revolutionary parallel processing system that enables QMOI to perform multiple complex tasks simultaneously with unprecedented speed, accuracy, and efficiency. This system transforms QMOI into a true multi-threaded AI that can handle hundreds of projects, avatar management, error fixing, enhancements, and revenue generation all at once, ensuring maximum productivity and profitability.
+> **See also:** [MASTEROWNS.md](./MASTEROWNS.md) | [QMOIDEV.md](./QMOIDEV.md) | [QMOI-CLOUD.md](./QMOI-CLOUD.md)
+
+## 🚀 Multi-Platform & Cloud Parallelization
+- **Env Management:** QMOI uses parallel jobs to scan, create, and validate env variables across all platforms (GitHub, GitLab, Vercel, Netlify, HuggingFace, Colab, Dagshub, etc.).
+- **Installation & Deployment:** All installs, builds, and deployments are parallelized and offloaded to the cloud, never using local device resources unless allowed.
+- **Error Fixing:** QMOI detects and fixes errors in parallel across all platforms, then redeploys until successful.
+- **Asset Tracking:** QMOI tracks and updates all assets/projects in parallel, updating [MASTEROWNS.md](./MASTEROWNS.md) in real time.
+- **Security & Monitoring:** Security checks, link visits, and runner management are parallelized for speed and reliability.
 
 ## Core Architecture
 

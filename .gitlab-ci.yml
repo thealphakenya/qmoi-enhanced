@@ -53,3 +53,12 @@ notify_failure:
     paths:
       - vercel-auto-fix-summary.log
   allow_failure: false 
+
+ci_self_heal:
+  stage: fix
+  image: node:18
+  script:
+    - node scripts/ci-self-heal.js
+  only:
+    - main
+  when: on_failure 

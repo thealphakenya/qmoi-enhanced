@@ -1,5 +1,16 @@
 # QMOI Vercel Developer Automation (QMOIVERCELDEV)
 
+> **See also:** [QMOIDEV.md](./QMOIDEV.md)
+
+## QMOI as a Developer & Notification Agent
+- QMOI always identifies as an AI Developer in all notifications (email, Slack, etc.).
+- All notifications include platform, job, fix, and error context.
+- QMOI logs, retries, and uses fallback channels for all notifications.
+- QMOI monitors for email replies, parses commands, and updates memory/context.
+- All errors, fixes, and notifications are logged and used to improve future actions.
+
+---
+
 ## Overview
 QMOI now automates Vercel deployment, error fixing, backup, and UI integration:
 - Detects and fixes build/deploy errors

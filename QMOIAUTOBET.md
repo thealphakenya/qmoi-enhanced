@@ -8,20 +8,22 @@ QMOI AUTOBET is an advanced automated betting system that operates across multip
 ## 🎯 Core Betting Platforms
 
 ### 1. Betika Integration
-- **Account Access:** rovicviccy@gmail.com credentials
-- **Auto-Login:** Automated platform access
+- **Account Access:** Phone: 0725382624, Password: 9798
+- **Email:** rovicviccy@gmail.com
+- **Auto-Login:** Automated platform access with credentials
 - **Live Betting:** Real-time live match betting
 - **Pre-Match Betting:** Pre-game analysis and betting
 - **Virtual Sports:** 24/7 virtual sports betting
-- **Daily Target:** KSH 5,000+ profit per day
+- **Daily Target:** KSH 10,000+ profit per day (doubled)
 
 ### 2. Odibets Integration
-- **Account Access:** rovicviccy@gmail.com credentials
-- **Auto-Login:** Automated platform access
+- **Account Access:** Phone: 0725382624, Password: Victor9798!
+- **Email:** rovicviccy@gmail.com
+- **Auto-Login:** Automated platform access with credentials
 - **Multi-Sport Betting:** Football, basketball, tennis, etc.
 - **Jackpot Betting:** High-reward jackpot games
 - **Live Streaming:** Real-time match streaming
-- **Daily Target:** KSH 5,000+ profit per day
+- **Daily Target:** KSH 10,000+ profit per day (doubled)
 
 ### 3. Additional Platforms
 - **SportPesa:** Traditional sports betting
@@ -207,6 +209,8 @@ class EnhancedAutoBet:
 ## 💳 Payment Integration
 
 ### M-Pesa Integration
+- **Phone Number:** +254725392624
+- **Email:** rovicviccy@gmail.com
 - **Auto-Deposit:** Automatic fund deposits
 - **Auto-Withdrawal:** Automatic profit withdrawals
 - **Balance Monitoring:** Real-time M-Pesa balance
@@ -214,6 +218,8 @@ class EnhancedAutoBet:
 - **Daily Transfer:** KSH 2,000 daily to M-Pesa
 
 ### Airtel Money Integration
+- **Phone Number:** +254725392624
+- **Email:** rovicviccy@gmail.com
 - **Auto-Deposit:** Automatic fund deposits
 - **Auto-Withdrawal:** Automatic profit withdrawals
 - **Balance Monitoring:** Real-time Airtel Money balance

@@ -431,6 +431,12 @@ client.getStatus().then(console.log);
 - Start always-on earning: `yarn qmoi:earning:daemon`
 - Master-only UI: See QIStateWindow in the app.
 
+## Gmail Notification Integration
+
+- All progress and result notifications for self-healing and autotest are sent to rovicviccy@gmail.com via Gmail.
+- Environment variables are managed by scripts/qmoi-environment-setup.js.
+- See scripts/ci-self-heal.js and scripts/autotest/advanced_autotest_system.py for implementation details.
+
 # QCity API Endpoints
 
 ## /api/qcity/remote-command

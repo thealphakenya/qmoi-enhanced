@@ -1,9 +1,13 @@
 # QMOI Space Development - Hugging Face Integration v3.0
 
-## 🚀 Advanced QMOI Space Development Platform
+> **See also:** [MASTEROWNS.md](./MASTEROWNS.md) | [QMOIDEV.md](./QMOIDEV.md) | [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md)
 
-### Overview
-QMOI Space Development is a comprehensive platform for developing, deploying, and managing AI models on Hugging Face Spaces with advanced features, automated testing, and seamless integration capabilities.
+## 🚀 QMOI Automation & Self-Healing Enhancements
+- **Universal Env Management:** QMOI auto-detects, creates, and manages all required env variables for HuggingFace Spaces, GitLab, Vercel, Netlify, and more. If missing, QMOI auto-generates or sets them via API, logs all actions, and notifies the master.
+- **Error Fix & Redeploy:** QMOI auto-detects and fixes all deployment errors in HuggingFace Spaces, then redeploys in a loop until successful. All fixes, attempts, and results are logged and notified.
+- **Cloud/Parallelization:** QMOI offloads all heavy jobs to cloud/Colab/Dagshub, using parallel jobs for builds, tests, and error-fixes. Local device resources are never used unless explicitly allowed.
+- **Developer/Notification Features:** QMOI always identifies as "QMOI (AI Developer)" in all notifications, logs, and UIs. All notifications are retried, logged, and use fallback channels if needed.
+- **Asset/Project Tracking:** QMOI auto-tracks all assets, projects, and resources it creates or manages, updating [MASTEROWNS.md](./MASTEROWNS.md) in real time.
 
 ## 🏗️ Core Architecture
 

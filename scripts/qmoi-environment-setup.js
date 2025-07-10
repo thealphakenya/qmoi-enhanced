@@ -82,11 +82,12 @@ class QMOIEnvironmentSetup {
     console.log('🔐 Setting up environment variables...');
     
     const envVariables = {
-      // Notification System
+      // Notification System (QMOI always identifies as a developer in notifications)
       'QMOI_EMAIL_HOST': 'smtp.gmail.com',
       'QMOI_EMAIL_PORT': '587',
+      'QMOI_EMAIL_SECURE': 'false',
       'QMOI_EMAIL_USER': 'rovicviccy@gmail.com',
-      'QMOI_EMAIL_PASS': 'your-app-password',
+      'QMOI_EMAIL_PASS': 'your-app-password', // <-- Set your Gmail App Password here
       'QMOI_EMAIL_FROM': 'rovicviccy@gmail.com',
       'QMOI_EMAIL_TO': 'rovicviccy@gmail.com',
       'QMOI_SLACK_WEBHOOK': 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK',
