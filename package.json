@@ -10,7 +10,10 @@
     "lint": "next lint",
     "export": "next export",
     "vercel-build": "npm run build && npm run export",
-    "vercel:auto-fix": "node scripts/auto-vercel-fix.js"
+    "vercel:auto-fix": "node scripts/auto-vercel-fix.js",
+    "qmoi:autodev:full": "node scripts/services/qmoi_autodev_daemon.ts",
+    "qmoi:always-fix-all": "node scripts/enhanced-error-fix.js",
+    "test:ui": "npx playwright test || npx cypress run"
   },
   "keywords": [
     "qmoi",

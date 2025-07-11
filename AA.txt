@@ -1,0 +1,56 @@
+KWEMOI Simwoto Victor
+Alpha-Q-ai
+Jobs
+#10653500471
+setup_env
+Failed
+ Started 42 seconds ago by 
+
+KWEMOI Simwoto Victor
+Search visible log output
+Running with gitlab-runner 18.2.0~pre.84.g53e970be (53e970be)
+  on green-1.saas-linux-small-amd64.runners-manager.gitlab.com/default JLgUopmM, system ID: s_deaa2ca09de7
+Preparing the "docker+machine" executor
+00:22
+Using Docker executor with image node:18 ...
+Using effective pull policy of [always] for container node:18
+Pulling docker image node:18 ...
+Using docker image sha256:b50082bc3670d0396b2d90e4b0e5bb10265ba5d0ee16bf40f9a505f7045ee563 for node:18 with digest node@sha256:c6ae79e38498325db67193d391e6ec1d224d96c693a8a4d943498556716d3783 ...
+Preparing environment
+00:05
+Using effective pull policy of [always] for container sha256:5068c40a9dccc3514d58006fa6fe2701b4aeee826058264125e53668c4d5e08e
+Running on runner-jlguopmm-project-71485416-concurrent-0 via runner-jlguopmm-s-l-s-amd64-1752249736-07c21cec...
+Getting source from Git repository
+00:02
+Gitaly correlation ID: 31fb99fc163a1634b20fd772a7f7b241
+Fetching changes with git depth set to 20...
+Initialized empty Git repository in /builds/thealphakenya/Alpha-Q-ai/.git/
+Created fresh repository.
+Checking out 2934c76a as detached HEAD (ref is main)...
+Skipping Git submodules setup
+$ git remote set-url origin "${CI_REPOSITORY_URL}" || echo 'Not a git repository; skipping'
+Downloading artifacts
+00:01
+Downloading artifacts for qmoi_generate_secrets (10653497477)...
+Downloading artifacts from coordinator... ok        correlation_id= host=storage.googleapis.com id=10653497477 responseStatus=200 OK token=68_wwMPMm
+Executing "step_script" stage of the job script
+00:01
+Using effective pull policy of [always] for container node:18
+Using docker image sha256:b50082bc3670d0396b2d90e4b0e5bb10265ba5d0ee16bf40f9a505f7045ee563 for node:18 with digest node@sha256:c6ae79e38498325db67193d391e6ec1d224d96c693a8a4d943498556716d3783 ...
+$ echo "Setting up environment variables..."
+Setting up environment variables...
+$ node scripts/qmoi-auto-config.js
+file:///builds/thealphakenya/Alpha-Q-ai/scripts/qmoi-auto-config.js:1
+const fs = require('fs');
+           ^
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/builds/thealphakenya/Alpha-Q-ai/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///builds/thealphakenya/Alpha-Q-ai/scripts/qmoi-auto-config.js:1:12
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.8
+Cleaning up project directory and file based variables
+00:01
+ERROR: Job failed: exit code 1

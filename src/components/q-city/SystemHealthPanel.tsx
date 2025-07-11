@@ -5,6 +5,9 @@ export default function SystemHealthPanel() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [actionMsg, setActionMsg] = useState<string | null>(null);
+  const [uiHealth, setUiHealth] = useState<string>('Unknown');
+  const [uiTestTime, setUiTestTime] = useState<string>('Never');
+  const [uiTestRunning, setUiTestRunning] = useState(false);
 
   async function fetchStatus() {
     setLoading(true);
@@ -35,6 +38,30 @@ export default function SystemHealthPanel() {
     setTimeout(fetchStatus, 3000);
   }
 
+  async function runUiHealthCheck() {
+    setUiTestRunning(true);
+    setActionMsg('Running UI health check...');
+    try {
+      const res = await fetch('/api/qmoi/ui-health-check', { method: 'POST' });
+      const json = await res.json();
+      setUiHealth(json.status || 'Unknown');
+      setUiTestTime(new Date().toLocaleString());
+      setActionMsg('UI health check complete.');
+    } catch (err) {
+      setUiHealth('Error');
+      setActionMsg('UI health check failed.');
+    } finally {
+      setUiTestRunning(false);
+    }
+  }
+
+  async function triggerUiSelfHealing() {
+    setActionMsg('Triggering UI self-healing...');
+    await fetch('/api/qmoi/fix/ui', { method: 'POST' });
+    setActionMsg('UI self-healing triggered.');
+    setTimeout(runUiHealthCheck, 3000);
+  }
+
   useEffect(() => {
     fetchStatus();
     const interval = setInterval(fetchStatus, 20000);
@@ -60,6 +87,15 @@ export default function SystemHealthPanel() {
       <pre style={{ background: '#222', color: '#fff', padding: 8, borderRadius: 4, maxHeight: 200, overflowY: 'auto' }}>{JSON.stringify(data.connectivity, null, 2)}</pre>
       <h3>Cloud Status</h3>
       <pre style={{ background: '#222', color: '#fff', padding: 8, borderRadius: 4, maxHeight: 200, overflowY: 'auto' }}>{JSON.stringify(data.cloud, null, 2)}</pre>
+      <div>
+        <h3 className="font-semibold mb-2">UI Health Status</h3>
+        <div>Status: {uiHealth}</div>
+        <div>Last Test: {uiTestTime}</div>
+        <button onClick={runUiHealthCheck} disabled={uiTestRunning} style={{ marginRight: 8 }}>
+          {uiTestRunning ? 'Running...' : 'Run UI Health Check'}
+        </button>
+        <button onClick={triggerUiSelfHealing}>Trigger UI Self-Healing</button>
+      </div>
     </div>
   );
 } 

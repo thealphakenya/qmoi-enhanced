@@ -25,6 +25,8 @@ This file lists all .md (Markdown) documentation files present in the QMOI works
 | REFERENCES.md | General references and resource links |
 | QMOICLONEGITPOD.md | Gitpod integration and QMOI cloud dev setup |
 - [QMOICLONEGITPOD.md](QMOICLONEGITPOD.md) — Updated 2024-06-09: Real Gitpod API integration, Docker fallback, advanced QCity UI controls.
+| QMOICLONEGITLAB.md | GitLab integration, automation, developer features, and UI automation guide |
+| MASTERGUIDE.md | Master-level setup, platform instructions, automation, and best practices for QMOI |
 | .gitlab-ci.yml | GitLab CI/CD pipeline configuration (YAML, not markdown) |
 | QMOIHUGGINGFACEALWAYSUPDATE.md | Always-on Hugging Face update system |
 | WATCHDEBUG.md | Monitoring and debug automation documentation |
@@ -78,6 +80,7 @@ This file lists all .md (Markdown) documentation files present in the QMOI works
 | QMOI-ENHANCED-COMPLETE.md | Complete enhanced system implementation |
 | QMOI-ENHANCED-FEATURES.md | Enhanced features documentation |
 | MASTEROWNS.md | Master ownership and control system |
+| CMDCOMMANDS.md | Command reference for all QMOI automation, testing, and troubleshooting commands (PowerShell, Bash, etc.) |
 
 *This file is always up to date. QMOI ensures all documentation is indexed, accessible, and fully automated.*
 

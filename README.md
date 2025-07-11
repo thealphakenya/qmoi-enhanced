@@ -40,6 +40,32 @@ QMOI is a fully automated, AI-powered, self-healing, and revenue-generating syst
 - Notifications for all workspace events and errors are sent via all configured channels (email, Slack, WhatsApp, Telegram, Discord, etc.).
 - The QCity dashboard streams real-time logs for all workspace actions and displays audit/notification status.
 
+## 🧪 Automated UI Health Checks
+
+- Run all UI health checks for Hugging Face Space:
+  ```
+  python scripts/test_hf_space_ui.py --space-url https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+  ```
+- Run all UI health checks for local dashboard (Playwright/Cypress):
+  ```
+  npm run test:ui
+  ```
+- Trigger UI self-healing:
+  ```
+  npm run qmoi:always-fix-all
+  ```
+
+If a UI test fails, QMOI will auto-fix and retry. Persistent failures are escalated to master with logs and screenshots.
+
+## 🛠️ Command Reference
+
+See [CMDCOMMANDS.md](./CMDCOMMANDS.md) for all automation, testing, and troubleshooting commands for QMOI across all platforms (PowerShell, Bash, etc.).
+
+### Troubleshooting
+- If you see `Missing script: "qmoi:autodev:full"`, add it to your `package.json` under `"scripts"`.
+- For PowerShell, use `;` to separate commands. For Bash, use `&&`.
+- If you see `{ was unexpected at this time.`, you may be using CMD instead of PowerShell. Use PowerShell or run commands one by one in CMD.
+
 ## Documentation & Support
 - All documentation (.md files) is indexed in ALLMDFILESREFS.md and auto-updated.
 - For advanced usage, see QUANTUM.md, QMOIAUTOMAKESMONEY.md, MASTEROWNS.md, QMOIALWAYSPARALLEL.md, QMOIFREE.md.
