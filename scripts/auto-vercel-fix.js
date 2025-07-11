@@ -1,448 +1,292 @@
-// scripts/auto-vercel-fix.js
-const fetch = require('node-fetch');
+#!/usr/bin/env node
+
+/**
+ * QMOI Auto Vercel Fix Script
+ * Automatically fixes common Vercel deployment errors
+ */
+
 const fs = require('fs');
-const { execSync } = require('child_process');
 const path = require('path');
+const { execSync } = require('child_process');
 
-const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
-const VERCEL_PROJECT = process.env.VERCEL_PROJECT || 'alpha-q-ai'; // fallback to repo name
-const VERCEL_TEAM = process.env.VERCEL_TEAM; // optional
+class VercelAutoFix {
+  constructor() {
+    this.projectRoot = process.cwd();
+    this.fixes = [];
+    this.errors = [];
+  }
 
-if (!VERCEL_TOKEN) {
-  console.error('Missing VERCEL_TOKEN in environment.');
-  process.exit(1);
-}
+  log(message, type = 'info') {
+    const timestamp = new Date().toISOString();
+    const prefix = type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️';
+    console.log(`${prefix} [${timestamp}] ${message}`);
+  }
 
-const API_BASE = 'https://api.vercel.com';
+  async checkAndFixPublicDirectory() {
+    this.log('Checking public directory...');
+    
+    const publicDir = path.join(this.projectRoot, 'public');
+    if (!fs.existsSync(publicDir)) {
+      this.log('Creating public directory...');
+      fs.mkdirSync(publicDir, { recursive: true });
+      this.fixes.push('Created missing public directory');
+    }
 
-async function getLatestDeployment() {
-  let url = `${API_BASE}/v6/deployments?project=${VERCEL_PROJECT}&limit=1`;
-  if (VERCEL_TEAM) url += `&teamId=${VERCEL_TEAM}`;
-  const res = await fetch(url, {
-    headers: { Authorization: `Bearer ${VERCEL_TOKEN}` }
-  });
-  if (!res.ok) throw new Error(`Failed to fetch deployments: ${res.statusText}`);
-  const data = await res.json();
-  return data.deployments && data.deployments[0];
-}
-
-async function getDeploymentLogs(deploymentId) {
-  let url = `${API_BASE}/v2/deployments/${deploymentId}/events`;
-  if (VERCEL_TEAM) url += `?teamId=${VERCEL_TEAM}`;
-  const res = await fetch(url, {
-    headers: { Authorization: `Bearer ${VERCEL_TOKEN}` }
-  });
-  if (!res.ok) throw new Error(`Failed to fetch logs: ${res.statusText}`);
-  const data = await res.json();
-  return data.events || [];
-}
-
-// --- Error Pattern Recognition and Auto-Fix Mapping ---
-
-const MAX_RETRIES = parseInt(process.env.MAX_RETRIES, 10) || 5;
-const WAIT_INTERVAL = parseInt(process.env.WAIT_INTERVAL, 10) || 60000;
-
-const ERROR_PATTERNS = [
-  {
-    name: 'ESLintError',
-    pattern: /Invalid option '--ext'|ESLintError|Parsing error|Failed to load plugin|Cannot find module 'eslint'/i,
-    fix: () => 'npm run lint:fix',
-    description: 'Run ESLint auto-fix.'
-  },
-  {
-    name: 'MissingDependency',
-    pattern: /Cannot find module '(.*?)'|Error: Cannot find package '(.*?)'/i,
-    fix: (match) => `npm install ${match[1] || match[2]}`,
-    description: 'Install missing dependency.'
-  },
-  {
-    name: 'ConfigError',
-    pattern: /Error:.*(config|configuration|vercel\.json|package\.json|tsconfig\.json)/i,
-    fix: () => 'npm run qmoi:fix:comprehensive',
-    description: 'Run comprehensive config fix.'
-  },
-  {
-    name: 'BuildScriptError',
-    pattern: /npm ERR! missing script: (\w+)/i,
-    fix: (match) => `Add missing script: ${match[1]}`,
-    description: 'Add missing npm script.'
-  },
-  {
-    name: 'TypeScriptError',
-    pattern: /TS\d{4}:/i,
-    fix: () => 'npm run type-check',
-    description: 'Run TypeScript type check.'
-  },
-  {
-    name: 'NextJSError',
-    pattern: /Error:.*next|Module not found: Can't resolve 'next'|Cannot find module 'next'/i,
-    fix: () => 'npm install next',
-    description: 'Install Next.js dependency.'
-  },
-  {
-    name: 'NodeError',
-    pattern: /Error: Cannot find module '(.*?)'|MODULE_NOT_FOUND/i,
-    fix: (match) => `npm install ${match[1] || ''}`.trim(),
-    description: 'Install missing Node.js module.'
-  },
-  // Add more patterns as needed
-];
-
-function scanLogsForErrors(logs) {
-  for (const event of logs) {
-    if (!event || !event.text) continue;
-    for (const patternObj of ERROR_PATTERNS) {
-      const match = event.text.match(patternObj.pattern);
-      if (match) {
-        return {
-          errorType: patternObj.name,
-          errorText: event.text,
-          fix: typeof patternObj.fix === 'function' ? patternObj.fix(match) : patternObj.fix,
-          description: patternObj.description
-        };
-      }
+    // Ensure index.html exists
+    const indexHtml = path.join(publicDir, 'index.html');
+    if (!fs.existsSync(indexHtml)) {
+      this.log('Creating index.html...');
+      const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QMOI Alpha AI</title>
+</head>
+<body>
+    <h1>🚀 QMOI Alpha AI</h1>
+    <p>Comprehensive AI System with Friendship Enhancement</p>
+</body>
+</html>`;
+      fs.writeFileSync(indexHtml, htmlContent);
+      this.fixes.push('Created missing index.html');
     }
   }
-  return null;
-}
 
-// --- Advanced Error Pattern Matching and Multi-Step Fixes ---
-const ADVANCED_ERROR_PATTERNS = [
-  {
-    name: 'OutOfMemoryError',
-    pattern: /JavaScript heap out of memory|FATAL ERROR: Reached heap limit/i,
-    fixSteps: [
-      () => 'export NODE_OPTIONS=--max-old-space-size=4096',
-      () => 'npm run build',
-    ],
-    description: 'Increase Node.js memory limit and rebuild.'
-  },
-  {
-    name: 'VercelBuildTimeout',
-    pattern: /Build exceeded the maximum allowed runtime|Timed out waiting for the build to complete/i,
-    fixSteps: [
-      () => 'npm run build',
-      () => 'touch .vercelignore', // force rebuild
-    ],
-    description: 'Rebuild and force cache refresh.'
-  },
-  // Add more advanced patterns as needed
-];
-
-function scanLogsForAdvancedErrors(logs) {
-  for (const event of logs) {
-    if (!event || !event.text) continue;
-    for (const patternObj of ADVANCED_ERROR_PATTERNS) {
-      const match = event.text.match(patternObj.pattern);
-      if (match) {
-        return {
-          errorType: patternObj.name,
-          errorText: event.text,
-          fixSteps: patternObj.fixSteps,
-          description: patternObj.description
-        };
-      }
+  async checkAndFixPackageJson() {
+    this.log('Checking package.json...');
+    
+    const packageJsonPath = path.join(this.projectRoot, 'package.json');
+    if (!fs.existsSync(packageJsonPath)) {
+      this.log('Creating package.json...');
+      const packageJson = {
+        name: "qmoi-alpha-ai",
+        version: "1.0.0",
+        description: "QMOI Alpha AI - Comprehensive AI System",
+        scripts: {
+          "dev": "next dev",
+          "build": "next build",
+          "start": "next start",
+          "export": "next export"
+        },
+        dependencies: {
+          "next": "^14.0.0",
+          "react": "^18.0.0",
+          "react-dom": "^18.0.0"
+        }
+      };
+      fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+      this.fixes.push('Created missing package.json');
     }
   }
-  return null;
-}
 
-function runShellCommand(cmd) {
-  try {
-    console.log(`[AUTO-FIX] Running: ${cmd}`);
-    const output = execSync(cmd, { stdio: 'inherit' });
-    return output;
-  } catch (err) {
-    console.error(`[AUTO-FIX] Command failed: ${cmd}`);
-    return null;
+  async checkAndFixVercelConfig() {
+    this.log('Checking vercel.json...');
+    
+    const vercelConfigPath = path.join(this.projectRoot, 'vercel.json');
+    if (!fs.existsSync(vercelConfigPath)) {
+      this.log('Creating vercel.json...');
+      const vercelConfig = {
+        "$schema": "https://openapi.vercel.sh/vercel.json",
+        "version": 2,
+        "name": "qmoi-alpha-ai",
+        "buildCommand": "npm run build",
+        "outputDirectory": "public",
+        "installCommand": "npm install",
+        "framework": "nodejs",
+        "functions": {
+          "app/api/**/*.js": {
+            "maxDuration": 30
+          }
+        },
+        "routes": [
+          {
+            "src": "/api/(.*)",
+            "dest": "/app/api/$1"
+          },
+          {
+            "src": "/(.*)",
+            "dest": "/public/$1"
+          }
+        ]
+      };
+      fs.writeFileSync(vercelConfigPath, JSON.stringify(vercelConfig, null, 2));
+      this.fixes.push('Created missing vercel.json');
+    }
+  }
+
+  async checkAndFixNextConfig() {
+    this.log('Checking next.config.js...');
+    
+    const nextConfigPath = path.join(this.projectRoot, 'next.config.js');
+    if (!fs.existsSync(nextConfigPath)) {
+      this.log('Creating next.config.js...');
+      const nextConfig = `/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true
   }
 }
 
-async function fetchVercelEnvVars() {
-  let url = `${API_BASE}/v9/projects/${VERCEL_PROJECT}/env`;
-  if (VERCEL_TEAM) url += `?teamId=${VERCEL_TEAM}`;
-  const res = await fetch(url, {
-    headers: { Authorization: `Bearer ${VERCEL_TOKEN}` }
-  });
-  if (!res.ok) throw new Error(`Failed to fetch Vercel env vars: ${res.statusText}`);
-  const data = await res.json();
-  return data.envs || [];
-}
-
-async function updateVercelEnvVar(key, value, type = 'plain') {
-  let url = `${API_BASE}/v9/projects/${VERCEL_PROJECT}/env`;
-  if (VERCEL_TEAM) url += `?teamId=${VERCEL_TEAM}`;
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${VERCEL_TOKEN}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ key, value, target: ['production', 'preview', 'development'], type })
-  });
-  if (!res.ok) throw new Error(`Failed to update Vercel env var ${key}: ${res.statusText}`);
-  return await res.json();
-}
-
-async function deleteVercelEnvVar(id) {
-  let url = `${API_BASE}/v9/projects/${VERCEL_PROJECT}/env/${id}`;
-  if (VERCEL_TEAM) url += `?teamId=${VERCEL_TEAM}`;
-  const res = await fetch(url, {
-    method: 'DELETE',
-    headers: { Authorization: `Bearer ${VERCEL_TOKEN}` }
-  });
-  if (!res.ok) throw new Error(`Failed to delete Vercel env var ${id}: ${res.statusText}`);
-  return await res.json();
-}
-
-async function syncVercelEnvVars() {
-  const localEnvPath = path.join(__dirname, '../config/qmoi_env_vars.json');
-  const localVars = JSON.parse(fs.readFileSync(localEnvPath, 'utf-8'));
-  const vercelVars = await fetchVercelEnvVars();
-  const vercelVarsMap = Object.fromEntries(vercelVars.map(v => [v.key, v]));
-  let changes = [];
-  // Add or update vars
-  for (const [key, meta] of Object.entries(localVars)) {
-    const localValue = meta.default;
-    if (!vercelVarsMap[key]) {
-      await updateVercelEnvVar(key, localValue);
-      changes.push(`Added ${key}`);
-    } else if (vercelVarsMap[key].value !== localValue) {
-      await updateVercelEnvVar(key, localValue);
-      changes.push(`Updated ${key}`);
-    }
-  }
-  // Remove vars not in local config
-  for (const v of vercelVars) {
-    if (!localVars[v.key]) {
-      await deleteVercelEnvVar(v.id);
-      changes.push(`Removed ${v.key}`);
-    }
-  }
-  if (changes.length) {
-    logSummary('[QMOI] Synced Vercel env vars: ' + changes.join(', '));
-  } else {
-    logSummary('[QMOI] Vercel env vars already in sync.');
-  }
-}
-
-async function autoFixAndRedeploy() {
-  let attempt = 0;
-  while (attempt < MAX_RETRIES) {
-    attempt++;
-    logSummary(`\n[AUTO-FIX] Attempt ${attempt} of ${MAX_RETRIES}`);
-    const deployment = await getLatestDeployment();
-    if (!deployment) {
-      logSummary('No deployments found.');
-      return;
-    }
-    logSummary(`Latest deployment: ${deployment.url} (state: ${deployment.state})`);
-    if (deployment.state === 'READY' && deployment.readyState === 'READY') {
-      logSummary('[AUTO-FIX] Deployment is successful!');
-      await syncVercelEnvVars();
-      return;
-    }
-    const logs = await getDeploymentLogs(deployment.uid);
-    fs.writeFileSync('latest-vercel-logs.json', JSON.stringify(logs, null, 2));
-    // --- Advanced error pattern matching ---
-    const advanced = scanLogsForAdvancedErrors(logs);
-    if (advanced) {
-      logSummary(`[AUTO-FIX] Detected advanced error: [${advanced.errorType}]`);
-      logSummary(`[AUTO-FIX] Error text: ${advanced.errorText}`);
-      for (const step of advanced.fixSteps) {
-        const cmd = step();
-        if (cmd) runShellCommand(cmd);
-      }
-      runShellCommand('git add .');
-      runShellCommand('git commit -m "auto(vercel): auto-fix for advanced deploy error" || echo "No changes to commit"');
-      runShellCommand('git push');
-      logSummary(`[AUTO-FIX] Waiting ${WAIT_INTERVAL / 1000} seconds for redeploy to start...`);
-      await new Promise(res => setTimeout(res, WAIT_INTERVAL));
-      continue;
-    }
-    // --- Standard error pattern matching ---
-    const detected = scanLogsForErrors(logs);
-    if (detected) {
-      logSummary(`[AUTO-FIX] Detected error: [${detected.errorType}]`);
-      logSummary(`[AUTO-FIX] Error text: ${detected.errorText}`);
-      logSummary(`[AUTO-FIX] Suggested fix: ${detected.fix}`);
-      if (detected.fix.startsWith('npm ') || detected.fix.startsWith('yarn ') || detected.fix.startsWith('pnpm ')) {
-        runShellCommand(detected.fix);
-      } else if (detected.fix.startsWith('Add missing script:')) {
-        logSummary(`[AUTO-FIX] Manual intervention needed: ${detected.fix}`);
-        return;
-      } else {
-        logSummary(`[AUTO-FIX] Unhandled fix type: ${detected.fix}`);
-        return;
-      }
-      runShellCommand('git add .');
-      runShellCommand('git commit -m "auto(vercel): auto-fix for detected deploy error" || echo "No changes to commit"');
-      runShellCommand('git push');
-      logSummary(`[AUTO-FIX] Waiting ${WAIT_INTERVAL / 1000} seconds for redeploy to start...`);
-      await new Promise(res => setTimeout(res, WAIT_INTERVAL));
+module.exports = nextConfig`;
+      fs.writeFileSync(nextConfigPath, nextConfig);
+      this.fixes.push('Created missing next.config.js');
     } else {
-      logSummary('[AUTO-FIX] No known errors detected in logs.');
-      if (deployment.state !== 'READY') {
-        logSummary('[AUTO-FIX] Triggering redeploy...');
-        runShellCommand('npx vercel --prod --yes');
-        await new Promise(res => setTimeout(res, WAIT_INTERVAL));
-      } else {
-        logSummary('[AUTO-FIX] Deployment is successful!');
-        await syncVercelEnvVars();
-        return;
+      // Check if existing config has problematic settings
+      try {
+        const configContent = fs.readFileSync(nextConfigPath, 'utf8');
+        if (configContent.includes('appDir: true') || configContent.includes('NODE_ENV')) {
+          this.log('Fixing problematic next.config.js settings...');
+          const fixedConfig = `/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  }
+}
+
+module.exports = nextConfig`;
+          fs.writeFileSync(nextConfigPath, fixedConfig);
+          this.fixes.push('Fixed problematic next.config.js settings');
+        }
+      } catch (error) {
+        this.errors.push('Failed to check/fix next.config.js: ' + error.message);
       }
     }
   }
-  logSummary('[AUTO-FIX] Max retries reached. Please check manually.');
-}
 
-// --- GitLab CI/CD Variable Automation ---
-async function ensureGitLabCIVariables() {
-  const GITLAB_TOKEN = process.env.GITLAB_TOKEN;
-  const GITLAB_PROJECT_ID = process.env.CI_PROJECT_ID;
-  if (!GITLAB_TOKEN || !GITLAB_PROJECT_ID) {
-    logSummary('[QMOI] Skipping GitLab CI/CD variable automation: GITLAB_TOKEN or CI_PROJECT_ID not set.');
-    return;
-  }
-  const requiredVars = [
-    { key: 'VERCEL_TOKEN', value: process.env.VERCEL_TOKEN },
-    { key: 'VERCEL_PROJECT', value: process.env.VERCEL_PROJECT },
-    { key: 'VERCEL_ORG_ID', value: process.env.VERCEL_ORG_ID }
-  ];
-  for (const v of requiredVars) {
-    if (!v.value) {
-      logSummary(`[QMOI] Skipping creation of ${v.key}: value not set in environment.`);
-      continue;
+  async checkAndFixAppDirectory() {
+    this.log('Checking app directory structure...');
+    
+    const appDir = path.join(this.projectRoot, 'app');
+    if (!fs.existsSync(appDir)) {
+      fs.mkdirSync(appDir, { recursive: true });
+      this.fixes.push('Created missing app directory');
     }
-    // Check if variable exists
-    const url = `https://gitlab.com/api/v4/projects/${GITLAB_PROJECT_ID}/variables/${v.key}`;
-    const res = await fetch(url, { headers: { 'PRIVATE-TOKEN': GITLAB_TOKEN } });
-    if (res.status === 200) {
-      logSummary(`[QMOI] GitLab CI/CD variable ${v.key} already exists.`);
-      continue;
+
+    // Create page.js if it doesn't exist
+    const pageJsPath = path.join(appDir, 'page.js');
+    if (!fs.existsSync(pageJsPath)) {
+      this.log('Creating app/page.js...');
+      const pageContent = `export default function Home() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white">
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center">
+          <h1 className="text-6xl font-bold mb-6">🚀 QMOI Alpha AI</h1>
+          <p className="text-2xl mb-12">Comprehensive AI System with Friendship Enhancement</p>
+        </div>
+      </div>
+    </div>
+  )
+}`;
+      fs.writeFileSync(pageJsPath, pageContent);
+      this.fixes.push('Created missing app/page.js');
     }
-    // Create variable
-    const createUrl = `https://gitlab.com/api/v4/projects/${GITLAB_PROJECT_ID}/variables`;
-    const createRes = await fetch(createUrl, {
-      method: 'POST',
-      headers: { 'PRIVATE-TOKEN': GITLAB_TOKEN, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ key: v.key, value: v.value, protected: true, masked: true })
-    });
-    if (createRes.status === 201) {
-      logSummary(`[QMOI] Created GitLab CI/CD variable: ${v.key}`);
-    } else {
-      logSummary(`[QMOI] Failed to create GitLab CI/CD variable: ${v.key} (${createRes.status})`);
+
+    // Create layout.js if it doesn't exist
+    const layoutJsPath = path.join(appDir, 'layout.js');
+    if (!fs.existsSync(layoutJsPath)) {
+      this.log('Creating app/layout.js...');
+      const layoutContent = `export const metadata = {
+  title: 'QMOI Alpha AI - Comprehensive AI System',
+  description: 'QMOI Alpha AI - Advanced AI system with friendship enhancement',
+}
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}`;
+      fs.writeFileSync(layoutJsPath, layoutContent);
+      this.fixes.push('Created missing app/layout.js');
     }
   }
-}
 
-// --- GitLab Resource Creation Test ---
-async function testGitLabResourceCreation() {
-  const GITLAB_TOKEN = process.env.GITLAB_TOKEN;
-  const GITLAB_PROJECT_ID = process.env.CI_PROJECT_ID;
-  if (!GITLAB_TOKEN || !GITLAB_PROJECT_ID) {
-    logSummary('[QMOI] Skipping GitLab resource creation test: GITLAB_TOKEN or CI_PROJECT_ID not set.');
-    return;
-  }
-  // Try to create a test issue
-  const url = `https://gitlab.com/api/v4/projects/${GITLAB_PROJECT_ID}/issues`;
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'PRIVATE-TOKEN': GITLAB_TOKEN, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title: 'QMOI Test Issue', description: 'This is a test issue created by QMOI automation.' })
-  });
-  if (res.status === 201) {
-    logSummary('[QMOI] Successfully created a test issue in GitLab.');
-  } else {
-    logSummary(`[QMOI] Failed to create test issue in GitLab (status ${res.status}).`);
-  }
-}
-
-// --- Simulate Permission Issue ---
-async function simulateGitLabPermissionIssue() {
-  const GITLAB_TOKEN = process.env.GITLAB_TOKEN;
-  const GITLAB_PROJECT_ID = process.env.CI_PROJECT_ID;
-  if (!GITLAB_TOKEN || !GITLAB_PROJECT_ID) {
-    logSummary('[QMOI] Skipping permission simulation: GITLAB_TOKEN or CI_PROJECT_ID not set.');
-    return;
-  }
-  // Try to create a protected variable (may fail if not admin)
-  const url = `https://gitlab.com/api/v4/projects/${GITLAB_PROJECT_ID}/variables`;
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'PRIVATE-TOKEN': GITLAB_TOKEN, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ key: 'QMOI_PROTECTED_TEST', value: 'test', protected: true })
-  });
-  if (res.status === 201) {
-    logSummary('[QMOI] Successfully created a protected variable (permission sufficient).');
-  } else if (res.status === 403) {
-    logSummary('[QMOI] Permission error: could not create protected variable (expected if not admin).');
-  } else {
-    logSummary(`[QMOI] Unexpected result when creating protected variable (status ${res.status}).`);
-  }
-}
-
-// --- Slack Notification Integration ---
-async function sendSlackNotification(message) {
-  const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
-  if (!SLACK_WEBHOOK_URL) {
-    logSummary('[QMOI] Slack webhook URL not set. Skipping Slack notification.');
-    return;
-  }
-  const res = await fetch(SLACK_WEBHOOK_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: message })
-  });
-  if (res.status === 200) {
-    logSummary('[QMOI] Slack notification sent.');
-  } else {
-    logSummary(`[QMOI] Failed to send Slack notification (status ${res.status}).`);
-  }
-}
-
-// --- Universal Variable Automation for GitLab and Other Platforms ---
-async function ensureAllPlatformVariables() {
-  // GitLab
-  if (process.env.GITLAB_TOKEN && process.env.CI_PROJECT_ID) {
-    await ensureGitLabCIVariables();
-  }
-  // (Extend here for other platforms, e.g., GitHub Actions, Vercel, etc.)
-  // Example: Vercel project env vars are already synced in syncVercelEnvVars()
-  // Slack webhook is set via env/CI/CD variable
-  logSummary('[QMOI] Checked and set all required platform variables.');
-}
-
-// Entry point
-(async () => {
-  try {
-    const summaryLogPath = path.join(__dirname, '../vercel-auto-fix-summary.log');
-    let summaryLog = [];
-    function logSummary(msg) {
-      summaryLog.push(`[${new Date().toISOString()}] ${msg}`);
-      console.log(msg);
-      fs.appendFileSync(summaryLogPath, `[${new Date().toISOString()}] ${msg}\n`);
-    }
-    // Load environment variables from .env securely
+  async installDependencies() {
+    this.log('Installing dependencies...');
     try {
-      require('dotenv').config();
-      if (!process.env.GITHUB_PERSONAL_ACCESS_TOKEN || !process.env.GITLAB_TOKEN) {
-        console.warn('[QMOI] Warning: .env file missing or tokens not set. Make sure to set GITHUB_PERSONAL_ACCESS_TOKEN and GITLAB_TOKEN in .env for local runs.');
-      }
-    } catch (e) {
-      console.warn('[QMOI] dotenv not found or failed to load.');
+      // Use --legacy-peer-deps to handle TypeScript version conflicts
+      execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
+      this.fixes.push('Installed dependencies with legacy peer deps');
+    } catch (error) {
+      this.errors.push('Failed to install dependencies: ' + error.message);
     }
-    await ensureAllPlatformVariables();
-    await testGitLabResourceCreation();
-    await simulateGitLabPermissionIssue();
-    await autoFixAndRedeploy();
-    fs.writeFileSync(summaryLogPath, summaryLog.join('\n'));
-    // If max retries reached or persistent failure, send Slack notification
-    if (summaryLog.some(line => line.includes('Max retries reached') || line.includes('Permission error'))) {
-      await sendSlackNotification('QMOI: Persistent failure or permission issue detected in GitLab pipeline. Please review logs.');
-    }
-  } catch (err) {
-    console.error('Error:', err.message);
-    process.exit(1);
   }
-})(); 
+
+  async runBuild() {
+    this.log('Running build test...');
+    try {
+      execSync('npm run build', { stdio: 'inherit' });
+      this.fixes.push('Build completed successfully');
+    } catch (error) {
+      this.errors.push('Build failed: ' + error.message);
+    }
+  }
+
+  async generateReport() {
+    this.log('Generating fix report...');
+    
+    const report = {
+      timestamp: new Date().toISOString(),
+      fixes: this.fixes,
+      errors: this.errors,
+      summary: {
+        totalFixes: this.fixes.length,
+        totalErrors: this.errors.length,
+        success: this.errors.length === 0
+      }
+    };
+
+    const reportPath = path.join(this.projectRoot, 'vercel-fix-report.json');
+    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
+    
+    this.log(`Report saved to: ${reportPath}`);
+    return report;
+  }
+
+  async run() {
+    this.log('🚀 Starting QMOI Auto Vercel Fix...');
+    
+    try {
+      await this.checkAndFixPublicDirectory();
+      await this.checkAndFixPackageJson();
+      await this.checkAndFixVercelConfig();
+      await this.checkAndFixNextConfig();
+      await this.checkAndFixAppDirectory();
+      await this.installDependencies();
+      await this.runBuild();
+      
+      const report = await this.generateReport();
+      
+      this.log('✅ Auto fix completed!', 'success');
+      this.log(`Fixed ${report.summary.totalFixes} issues`);
+      
+      if (report.summary.totalErrors > 0) {
+        this.log(`⚠️  ${report.summary.totalErrors} errors encountered`, 'error');
+      }
+      
+      return report;
+    } catch (error) {
+      this.log(`❌ Auto fix failed: ${error.message}`, 'error');
+      throw error;
+    }
+  }
+}
+
+// Run the auto fix if this script is executed directly
+if (require.main === module) {
+  const autoFix = new VercelAutoFix();
+  autoFix.run().catch(console.error);
+}
+
+module.exports = { VercelAutoFix }; 

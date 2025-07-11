@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Switch } from '@/components/ui/switch';
-import { Progress } from '@/components/ui/progress';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { useRole } from '@/components/security/RoleContext';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
+import { Switch } from '../ui/switch';
+import { Progress } from '../ui/progress';
+import { Alert, AlertDescription } from '../ui/alert';
+import { useRole } from '../security/RoleContext';
 import { 
   Server, 
   Database, 
@@ -27,6 +27,7 @@ import {
   Wifi,
   Users
 } from 'lucide-react';
+import axios from 'axios';
 
 interface QCityDeviceStatus {
   enabled: boolean;
@@ -45,6 +46,13 @@ interface QCityDeviceStatus {
     bandwidth: number;
     connections: number;
   };
+}
+
+// Add types for workspace objects
+interface Workspace {
+  id: string;
+  name?: string;
+  status?: string;
 }
 
 export default function QCityDevicePanel() {
@@ -70,8 +78,13 @@ export default function QCityDevicePanel() {
 
   const [showSensitiveData, setShowSensitiveData] = useState(false);
   const [buildFiles, setBuildFiles] = useState<any[]>([]);
+  const [gitpodWorkspaces, setGitpodWorkspaces] = useState<Workspace[]>([]);
+  const [localWorkspaces, setLocalWorkspaces] = useState<Workspace[]>([]);
+  const [workspaceError, setWorkspaceError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [logs, setLogs] = useState<Record<string, string>>({});
 
-  const isMaster = role === 'master';
+  const isMaster = role === 'admin';
 
   useEffect(() => {
     // Simulate QCity status updates with unlimited resources
@@ -128,6 +141,71 @@ export default function QCityDevicePanel() {
     console.log(`Executing in QCity with unlimited resources: ${command}`);
     // Simulate QCity command execution with unlimited resources
     return { success: true, output: `QCity executed with unlimited resources: ${command}` };
+  };
+
+  // Fetch workspaces
+  useEffect(() => {
+    if (!isMaster) return;
+    setLoading(true);
+    Promise.all([
+      axios.get('/api/qcity/listWorkspaces').then(res => setGitpodWorkspaces(res.data.workspaces)).catch(() => setGitpodWorkspaces([])),
+      axios.get('/api/qcity/listLocalWorkspaces').then(res => setLocalWorkspaces(res.data.workspaces)).catch(() => setLocalWorkspaces([])),
+    ]).catch(err => setWorkspaceError('Failed to fetch workspaces')).finally(() => setLoading(false));
+  }, [isMaster]);
+
+  // Handlers for workspace actions
+  const handleAction = async (
+    type: 'gitpod' | 'local',
+    id: string,
+    action: 'stop' | 'clone' | 'sync' | 'start',
+    extra: Record<string, any> = {}
+  ) => {
+    setWorkspaceError('');
+    setLoading(true);
+    try {
+      let endpoint = '';
+      let data = { id, ...extra };
+      if (type === 'gitpod') {
+        if (action === 'stop') endpoint = '/api/qcity/stopWorkspace';
+        if (action === 'clone') endpoint = '/api/qcity/cloneWorkspace';
+        if (action === 'sync') endpoint = '/api/qcity/syncWorkspace';
+      } else if (type === 'local') {
+        if (action === 'stop') endpoint = '/api/qcity/stopLocalWorkspace';
+        if (action === 'start') endpoint = '/api/qcity/startLocalWorkspace';
+      }
+      if (endpoint) await axios.post(endpoint, data);
+      // Refresh workspaces after action
+      const [gp, lp] = await Promise.all([
+        axios.get('/api/qcity/listWorkspaces').then(res => res.data.workspaces),
+        axios.get('/api/qcity/listLocalWorkspaces').then(res => res.data.workspaces),
+      ]);
+      setGitpodWorkspaces(gp);
+      setLocalWorkspaces(lp);
+    } catch (err) {
+      setWorkspaceError('Workspace action failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch logs for a workspace (real-time SSE)
+  const fetchLogs = async (type: 'gitpod' | 'local', id: string) => {
+    setLogs(l => ({ ...l, [id]: 'Loading logs...' }));
+    const eventSource = new EventSource(`/api/qcity/workspace-logs?id=${encodeURIComponent(id)}&type=${encodeURIComponent(type)}`);
+    let logLines: string[] = [];
+    eventSource.onmessage = (event) => {
+      if (event.data === '[DONE]') {
+        setLogs(l => ({ ...l, [id]: logLines.join('\n') + '\n[DONE]' }));
+        eventSource.close();
+      } else {
+        logLines.push(event.data);
+        setLogs(l => ({ ...l, [id]: logLines.join('\n') }));
+      }
+    };
+    eventSource.onerror = (err) => {
+      setLogs(l => ({ ...l, [id]: 'Error loading logs.' }));
+      eventSource.close();
+    };
   };
 
   return (
@@ -381,6 +459,69 @@ export default function QCityDevicePanel() {
                 </div>
               </div>
             )}
+          </CardContent>
+        </Card>
+      )}
+
+      {!isMaster && (
+        <Alert>
+          <Shield className="h-4 w-4" />
+          <AlertDescription>
+            Master access required to view unlimited build files and sensitive data in QCity.
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {isMaster && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Cloud className="h-5 w-5" />
+              Gitpod/QMOI Workspace Management
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="mb-2">
+              <Badge variant="default">Master Only</Badge>
+              <span className="ml-2 text-muted-foreground">Manage all Gitpod and QMOI-local workspaces here. Fallback to QMOI-local if Gitpod is unavailable.</span>
+            </div>
+            {workspaceError && <Alert><AlertDescription>{workspaceError}</AlertDescription></Alert>}
+            {loading && <div>Loading workspaces...</div>}
+            <div className="space-y-2">
+              <div className="font-bold">Gitpod Workspaces</div>
+              {gitpodWorkspaces.length === 0 && <div className="text-muted-foreground">No Gitpod workspaces found.</div>}
+              {gitpodWorkspaces.map(ws => (
+                <div key={ws.id} className="flex items-center justify-between p-2 border rounded">
+                  <span>{ws.id} ({ws.status})</span>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="secondary" onClick={() => handleAction('gitpod', ws.id, 'stop')}>Stop</Button>
+                    <Button size="sm" variant="outline" onClick={() => handleAction('gitpod', ws.id, 'clone')}>Clone</Button>
+                    <Button size="sm" variant="default" onClick={() => handleAction('gitpod', ws.id, 'sync')}>Sync</Button>
+                    <Button size="sm" variant="ghost" onClick={() => fetchLogs('gitpod', ws.id)}>Logs</Button>
+                  </div>
+                  {logs[ws.id] && <div className="mt-2 text-xs text-muted-foreground">{logs[ws.id]}</div>}
+                </div>
+              ))}
+            </div>
+            <div className="space-y-2 mt-4">
+              <div className="font-bold">QMOI-local Workspaces</div>
+              {localWorkspaces.length === 0 && <div className="text-muted-foreground">No local workspaces found.</div>}
+              {localWorkspaces.map(ws => (
+                <div key={ws.id} className="flex items-center justify-between p-2 border rounded">
+                  <span>{ws.name} ({ws.status})</span>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="secondary" onClick={() => handleAction('local', ws.id, 'stop')}>Stop</Button>
+                    <Button size="sm" variant="default" onClick={() => fetchLogs('local', ws.id)}>Logs</Button>
+                  </div>
+                  {logs[ws.id] && <div className="mt-2 text-xs text-muted-foreground">{logs[ws.id]}</div>}
+                </div>
+              ))}
+            </div>
+            <Alert>
+              <AlertDescription>
+                <span className="text-warning">If Gitpod is unavailable, QMOI will automatically use local/ephemeral workspaces with identical automation and audit features. All changes will sync back to Gitpod when available.</span>
+              </AlertDescription>
+            </Alert>
           </CardContent>
         </Card>
       )}

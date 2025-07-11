@@ -36,6 +36,8 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
 - All errors, fixes, and actions are logged in `qmoi-clone-optimize.log`
 - Backups are stored in `qmoi-backups/`
 - For issues, check logs and UI panels
+- All cloning, mirroring, and backup operations are now handled exclusively by GitLab CI/CD automation.
+- Email notifications are sent for all major events in GitLab/QMOI GitLab.
 
 ## References
 - [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md)

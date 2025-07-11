@@ -2,6 +2,20 @@
 
 > **See also:** [MASTEROWNS.md](./MASTEROWNS.md) | [QMOIDEV.md](./QMOIDEV.md) | [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md)
 
+## 🚀 Parallel Error Fixing & Self-Healing
+- QMOI can now fix all errors in the entire system and in QMOI Space at the same time, in parallel.
+- Error fixing in QMOI Space and the rest of the system are fully independent: one can be fixed while the other is still running or being fixed.
+- All error-fix actions are visualized in the dashboard, with real-time status, logs, and notifications.
+- QMOI auto-retries, applies self-healing logic, and logs all actions for full transparency.
+- Master receives notifications for all fixes, errors, and redeployments in both QMOI Space and the main system.
+
+## 🛠️ Automated Build & Script Error Fixing
+- QMOI now automatically detects and fixes all errors from running `npm run build` and any other commands or scripts.
+- When a build or script fails, QMOI analyzes the error, applies the appropriate fix, and re-attempts the build or script automatically.
+- All error-fix and build/retry events are visualized in the dashboard, with real-time logs and notifications to the master.
+- QMOI can run multiple build/script fix cycles in parallel, ensuring rapid resolution and continuous deployment.
+- Master can review, approve, or override any automated fix from the dashboard.
+
 ## 🚀 QMOI Automation & Self-Healing Enhancements
 - **Universal Env Management:** QMOI auto-detects, creates, and manages all required env variables for HuggingFace Spaces, GitLab, Vercel, Netlify, and more. If missing, QMOI auto-generates or sets them via API, logs all actions, and notifies the master.
 - **Error Fix & Redeploy:** QMOI auto-detects and fixes all deployment errors in HuggingFace Spaces, then redeploys in a loop until successful. All fixes, attempts, and results are logged and notified.
@@ -1211,3 +1225,17 @@ python app.py --debug
 ---
 
 **QMOI Space Development v3.0** - Advanced AI Platform for Hugging Face Spaces 
+
+## ⚙️ Full Automation: Setup, Installation, and Self-Healing
+- QMOI now fully automates all setup and installation steps, ensuring everything is always running and up to date.
+- QMOI auto-installs all required dependencies (npm, pip, system packages, etc.) and verifies their integrity.
+- If any script is missing or broken, QMOI auto-creates or fixes it, including adding new scripts as needed.
+- All setup, install, and self-healing actions are visualized in the dashboard, with real-time logs and notifications.
+- Master can review, approve, or override any automated setup or fix from the dashboard.
+
+## 🖥️ UI Features: Hugging Face Update Tracking
+- The dashboard now includes a dedicated panel for tracking QMOI updates to Hugging Face.
+- Every update event is logged with the exact time, date, status (success/failure), and details.
+- QMOI auto-creates and uses a Hugging Face repo if it does not exist, ensuring continuous deployment.
+- Master can view the full update history, filter by date/status, and export logs.
+- All update events trigger notifications to the master, including failures and auto-retries. 

@@ -58,18 +58,7 @@ QMOI_DEBUG=false
    - Or manually copy `.env.template` to `.env` and fill in your values.
 
 ### B. Deploy to Hugging Face Spaces
-1. **Create a new Space** ([guide](https://huggingface.co/docs/hub/spaces-sdks-docker))
-2. **Deploy using automation:**
-   ```bash
-   node scripts/qmoi_huggingface_spaces.js create
-   # or for update
-   node scripts/qmoi_huggingface_spaces.js update
-   # or for auto (create/update)
-   node scripts/qmoi_huggingface_spaces.js deploy
-   ```
-3. **Manual deployment (if needed):**
-   - Use `scripts/deploy_huggingface.js` for a simple push.
-   - Or upload via the Hugging Face web UI.
+- All Hugging Face Space setup and updates are now handled exclusively by GitLab CI/CD automation.
 
 ### C. GitHub Actions Integration
 - **CI/CD**: `.github/workflows/qmoi-autodev.yml` and `auto-deploy.yml` automate build, test, lint, doc verification, and Hugging Face deployment.

@@ -437,6 +437,11 @@ client.getStatus().then(console.log);
 - Environment variables are managed by scripts/qmoi-environment-setup.js.
 - See scripts/ci-self-heal.js and scripts/autotest/advanced_autotest_system.py for implementation details.
 
+### Workspace Management (Audit & Notification)
+- All workspace management endpoints (start, stop, clone, sync, etc.) log actions to logs/qcity_audit.log with timestamp, user, action, status, and error (if any).
+- Notifications for all workspace events and errors are sent via all configured channels (email, Slack, WhatsApp, Telegram, Discord, etc.).
+- Real-time log streaming is available via /api/qcity/workspace-logs (SSE).
+
 # QCity API Endpoints
 
 ## /api/qcity/remote-command

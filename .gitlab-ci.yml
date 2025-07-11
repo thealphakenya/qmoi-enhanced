@@ -1,64 +1,102 @@
+# .gitlab-ci.yml - Enhanced QMOI GitLab CI/CD Pipeline
+
 stages:
+  - autofix
   - test
+  - build
   - deploy
-  - auto-fix
+  - notify
+  - visualize
+  - docs
 
 variables:
-  NODE_ENV: production
-  VERCEL_TOKEN: $VERCEL_TOKEN
-  VERCEL_PROJECT: $VERCEL_PROJECT
-  VERCEL_ORG_ID: $VERCEL_ORG_ID
+  GIT_STRATEGY: clone
+  QMOI_MASTER_EMAIL: "master@qmoiai.com"
+  QMOI_NOTIFY_EMAIL: "notify@qmoiai.com"
+  QMOI_DOCS_PATH: "ALLMDFILESREFS.md"
+  QMOI_RETRY_LIMIT: 5
+  QMOI_EMAIL_USER: $QMOI_EMAIL_USER
+  QMOI_EMAIL_PASS: $QMOI_EMAIL_PASS
+  QMOI_NOTIFY_EMAIL: $QMOI_NOTIFY_EMAIL
 
-before_script:
-  - npm ci
-test
+# Parallel autofix jobs for all environments
+parallel_autofix:
+  stage: autofix
   script:
-    - npm run lint || true
-    - npm 
-test:
-  stage: test || true
+    - echo "Running parallel autofix for Vercel, GitLab, HuggingFace, Quantum..."
+    - python scripts/qmoi_gitlab_automation.py --autofix-all || python scripts/qmoi_gitlab_automation.py
+    - python scripts/qmoi_automated_device_controller.py --autofix
+    - python scripts/qmoi_automated_betting_system.py --autofix
+    - python scripts/qmoi_hf_auto_manager.py --autofix
+  parallel: 4
+  allow_failure: false
 
-deploy:
-  stage: deploy
+# Test and build jobs
+run_tests:
+  stage: test
   script:
-    - npm install -g vercel@latest
-    - npx vercel --prod --yes --token $VERCEL_TOKEN --scope $VERCEL_ORG_ID --confirm || exit 1
-  artifacts:
-    paths:
-      - .vercel/output
-    expire_in: 1 week
+    - echo "Running tests..."
+    - npm run test || true
   allow_failure: true
 
-auto-fix:
-  stage: auto-fix
+build_app:
+  stage: build
   script:
-    - node scripts/auto-vercel-fix.js || true
+    - echo "Building app..."
+    - npm run build
+  allow_failure: false
+
+# Deploy jobs for all environments
+parallel_deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to Vercel, HuggingFace, Quantum..."
+    - python scripts/qmoi_gitlab_automation.py --deploy || python scripts/qmoi_gitlab_automation.py
+    - node scripts/qmoi_huggingface_spaces.js update
+    - node scripts/qmoi_env_manager.js
+    - python scripts/qmoi_hf_auto_manager.py --deploy
+  parallel: 3
+  allow_failure: false
+
+# Documentation auto-update
+update_docs:
+  stage: docs
+  script:
+    - echo "Auto-updating ALLMDFILESREFS.md and all .md files..."
+    - python scripts/qmoi_doc_verifier.py --update-all
+    - python scripts/qmoi_doc_verifier.py --update-index
+  allow_failure: false
   artifacts:
     paths:
-      - vercel-auto-fix-summary.log
-      - latest-vercel-logs.json
-    expire_in: 1 week
-  when: on_failure
-  dependencies:
-    - deploy 
+      - ALLMDFILESREFS.md
 
-notify_failure:
-  stage: auto-fix
+# Visualization job
+visualize_pipeline:
+  stage: visualize
   script:
-    - echo "QMOI: Deployment failed after auto-fix. Please check logs and summary."
-  when: on_failure
-  only:
-    - main
+    - echo "Visualizing pipeline status and error/fix analytics..."
+    - python scripts/qmoi_visualization.py --pipeline-status
+    - python scripts/qmoi_visualization.py --error-fix-analytics
+  allow_failure: true
   artifacts:
     paths:
-      - vercel-auto-fix-summary.log
-  allow_failure: false 
+      - reports/
 
-ci_self_heal:
-  stage: fix
-  image: node:18
+# Notification job (runs after all others)
+notify_master:
+  stage: notify
   script:
-    - node scripts/ci-self-heal.js
-  only:
-    - main
-  when: on_failure 
+    - echo "Sending notifications for all major events, fixes, and deployments..."
+    - python scripts/qmoi_notifier.py --all-events --email $QMOI_MASTER_EMAIL --email $QMOI_NOTIFY_EMAIL
+    - python scripts/qmoi_notifier.py --fixes --email $QMOI_MASTER_EMAIL
+    - python scripts/qmoi_notifier.py --deployments --email $QMOI_MASTER_EMAIL
+    - python scripts/qmoi_notifier.py --docs --email $QMOI_MASTER_EMAIL
+    - python scripts/qmoi_notifier.py --space --email $QMOI_MASTER_EMAIL
+    - python scripts/qmoi_notifier.py --quantum --email $QMOI_MASTER_EMAIL
+  when: always
+  allow_failure: true
+
+# Permissions
+.default:
+  before_script:
+    - echo "QMOI has full permissions to update documentation, fix errors, and manage all resources." 

@@ -30,9 +30,9 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
   - Integrate with QMOI Spaces, WhatsApp, or your own apps using the API.
 
 ## Automation & Observability
-- **Model is always synced and up-to-date** via automated CI/CD workflows.
+- **Model is always synced and up-to-date** via automated GitLab CI/CD workflows.
 - **Health and status** are logged and visible in the Hugging Face model card and QMOI dashboard.
-- **Logs and analytics** are available as GitHub Actions artifacts.
+- **Logs and analytics** are available as GitLab CI/CD artifacts.
 
 ## Versioning
 - Each model update is versioned and tracked automatically.
@@ -40,11 +40,11 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
 
 ## Links & Resources
 - [QMOI Hugging Face Space](https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)
-- [QMOI Project Documentation](https://github.com/your-org/Alpha-Q-ai)
+- [QMOI Project Documentation](https://gitlab.com/qmoi/alpha-q-ai)
 - [QMOI Dashboard](#)
 
 ## Contact & Support
-- For questions, issues, or feature requests, contact the QMOI admin team or open an issue on GitHub.
+- For questions, issues, or feature requests, contact the QMOI admin team or open an issue on GitLab.
 
 ---
 
@@ -52,12 +52,12 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
 
 QMOI is not just a static model—it's a living, permanent, and ever-evolving AI system:
 
-- **Always Up-to-Date:** Automated CI/CD ensures the latest model is always synced to Hugging Face.
+- **Always Up-to-Date:** Automated GitLab CI/CD ensures the latest model is always synced to Hugging Face.
 - **Self-Healing:** The model and system auto-detect and fix errors, retrain, and redeploy as needed.
 - **Permanent & Maintained:** QMOI is never deprecated; it is always maintained, improved, and observable.
 - **Automated Versioning & Health:** Every update is versioned, health-checked, and logged. See the QMOI dashboard and Hugging Face Space for real-time status.
-- **Ecosystem Integration:** QMOI is deeply integrated with Hugging Face Spaces, GitHub Actions, and the broader QMOI automation ecosystem.
-- **Observability:** All actions, health checks, and updates are logged and visible in the dashboard and as GitHub Actions artifacts.
+- **Ecosystem Integration:** QMOI is deeply integrated with Hugging Face Spaces, GitLab CI/CD, and the broader QMOI automation ecosystem.
+- **Observability:** All actions, health checks, and updates are logged and visible in the dashboard and as GitLab CI/CD artifacts.
 
 **Relevant Automation:**
 - `scripts/qmoi_huggingface_spaces.js` (Space deployment)
@@ -66,7 +66,7 @@ QMOI is not just a static model—it's a living, permanent, and ever-evolving AI
 
 **Dashboard:**
 - [QMOI Hugging Face Space](https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)
-- [QMOI Project Documentation](https://github.com/your-org/Alpha-Q-ai)
+- [QMOI Project Documentation](https://gitlab.com/qmoi/alpha-q-ai)
 
 ---
 QMOI is a permanent, ever-evolving AI system—always running, always healing, always improving. 

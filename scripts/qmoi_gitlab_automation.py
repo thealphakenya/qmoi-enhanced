@@ -16,6 +16,8 @@ from pathlib import Path
 import git
 import docker
 from typing import Dict, List, Optional
+import smtplib
+from email.mime.text import MIMEText
 
 class QMOIGitLabAutomation:
     def __init__(self):
@@ -256,16 +258,116 @@ class QMOIGitLabAutomation:
         except Exception as e:
             self.log_event("ERROR", f"Error fixing test issues: {e}")
     
-    def fix_deployment_errors(self):
-        """Fix deployment-related errors"""
+    def create_gitlab_issue(self, title: str, description: str):
+        """Create a GitLab issue via API"""
         try:
-            # Trigger Vercel deployment
-            self.deploy_to_vercel()
-            self.log_event("DEPLOYMENT", "Fixed deployment errors successfully")
-            
+            url = f"{self.gitlab_url}/api/v4/projects/{self.project_id}/issues"
+            headers = {"PRIVATE-TOKEN": self.access_token}
+            data = {"title": title, "description": description}
+            response = requests.post(url, headers=headers, data=data)
+            if response.status_code == 201:
+                self.log_event("CI_CD", f"Created GitLab issue: {title}")
+                self.send_notification(f"[QMOI] Issue Created: {title}", description)
+                return response.json()
+            else:
+                self.log_event("ERROR", f"Failed to create GitLab issue: {response.text}")
+        except Exception as e:
+            self.log_event("ERROR", f"Error creating GitLab issue: {e}")
+
+    def create_and_merge_mr(self, branch: str, title: str, description: str):
+        """Create and merge a GitLab merge request via API"""
+        try:
+            url = f"{self.gitlab_url}/api/v4/projects/{self.project_id}/merge_requests"
+            headers = {"PRIVATE-TOKEN": self.access_token}
+            data = {"source_branch": branch, "target_branch": "main", "title": title, "description": description, "remove_source_branch": True}
+            response = requests.post(url, headers=headers, data=data)
+            if response.status_code == 201:
+                mr = response.json()
+                mr_id = mr['iid']
+                self.log_event("CI_CD", f"Created MR: {title}")
+                # Merge MR
+                merge_url = f"{self.gitlab_url}/api/v4/projects/{self.project_id}/merge_requests/{mr_id}/merge"
+                merge_resp = requests.put(merge_url, headers=headers)
+                if merge_resp.status_code == 200:
+                    self.log_event("CI_CD", f"Merged MR: {title}")
+                    self.send_notification(f"[QMOI] MR Created & Merged: {title}", description)
+                    return True
+                else:
+                    self.log_event("ERROR", f"Failed to merge MR: {merge_resp.text}")
+            else:
+                self.log_event("ERROR", f"Failed to create MR: {response.text}")
+        except Exception as e:
+            self.log_event("ERROR", f"Error creating/merging MR: {e}")
+        return False
+
+    def send_notification(self, subject: str, body: str):
+        """Send notifications via email and other channels"""
+        try:
+            # Email notification (simple example, can be extended)
+            msg = MIMEText(body)
+            msg['Subject'] = subject
+            msg['From'] = os.getenv('QMOI_EMAIL_USER', 'noreply@qmoiai.com')
+            msg['To'] = os.getenv('QMOI_NOTIFY_EMAIL', 'master@qmoiai.com')
+            with smtplib.SMTP('smtp.gmail.com', 587) as server:
+                server.starttls()
+                server.login(os.getenv('QMOI_EMAIL_USER', ''), os.getenv('QMOI_EMAIL_PASS', ''))
+                server.sendmail(msg['From'], [msg['To']], msg.as_string())
+        except Exception as e:
+            self.log_event("ERROR", f"Notification error: {e}")
+
+    def enhanced_auto_fix_and_deploy_loop(self, max_retries=5):
+        """Loop: fix, create issues, merge, redeploy until success or retry limit"""
+        retries = 0
+        while retries < max_retries:
+            pipeline_id = self.trigger_gitlab_runner()
+            if pipeline_id:
+                self.monitor_pipeline_status(pipeline_id)
+                # Check last pipeline status
+                url = f"{self.gitlab_url}/api/v4/projects/{self.project_id}/pipelines/{pipeline_id}"
+                headers = {"PRIVATE-TOKEN": self.access_token}
+                resp = requests.get(url, headers=headers)
+                if resp.status_code == 200 and resp.json().get('status') == 'success':
+                    self.send_notification("[QMOI] Deployment Success", f"Pipeline {pipeline_id} succeeded after {retries+1} attempt(s).")
+                    return True
+                else:
+                    # Create issue and MR for failed fix
+                    self.create_gitlab_issue(f"QMOI Auto-Fix Failure (Attempt {retries+1})", f"Pipeline {pipeline_id} failed. See logs for details.")
+                    # Optionally, create/merge MR for fix branch (if any)
+                    # self.create_and_merge_mr(f"auto-fix-{pipeline_id}", f"Auto-Fix MR {pipeline_id}", "Automated fix attempt.")
+                    self.send_notification("[QMOI] Deployment Failure", f"Pipeline {pipeline_id} failed. Attempt {retries+1}.")
+            retries += 1
+        self.send_notification("[QMOI] Deployment Failed After Retries", f"All {max_retries} attempts failed.")
+        return False
+
+    def fix_deployment_errors(self):
+        """Fix deployment-related errors and redeploy to Vercel and Hugging Face"""
+        try:
+            # Deploy to Vercel
+            vercel_success = self.deploy_to_vercel()
+            # Deploy to Hugging Face
+            hf_success = self.deploy_to_huggingface()
+            if vercel_success and hf_success:
+                self.log_event("DEPLOYMENT", "Fixed deployment errors successfully (Vercel & HF)")
+            else:
+                self.log_event("ERROR", f"Deployment errors: Vercel success={vercel_success}, HF success={hf_success}")
         except Exception as e:
             self.log_event("ERROR", f"Error fixing deployment issues: {e}")
-    
+
+    def deploy_to_huggingface(self):
+        """Deploy to Hugging Face Spaces (stub, implement as needed)"""
+        try:
+            # Example: call a deployment script or API
+            result = subprocess.run(["python", "scripts/qmoi_hf_auto_manager.py", "--deploy"], capture_output=True, text=True)
+            if result.returncode == 0:
+                self.log_event("DEPLOYMENT", "Hugging Face deployment successful")
+                return True
+            else:
+                self.log_event("ERROR", f"Hugging Face deployment failed: {result.stderr}")
+                return False
+        except Exception as e:
+            self.log_event("ERROR", f"Error deploying to Hugging Face: {e}")
+            return False
+
     def deploy_to_vercel(self):
         """Deploy to Vercel"""
         try:
@@ -512,31 +614,15 @@ Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         self.log_event("CI_CD", f"Monitoring report generated: {report_file}")
     
     def run_automation(self):
-        """Run the complete GitLab automation system"""
-        self.log_event("CI_CD", "Starting QMOI GitLab Automation System")
-        
-        # Setup QMOI GitLab clone
-        if self.setup_qmoi_gitlab_clone():
-            self.log_event("CI_CD", "QMOI GitLab clone setup completed")
-        
-        # Start real-time monitoring
+        self.log_event("CI_CD", "Starting QMOI GitLab Automation System (Enhanced)")
+        self.setup_qmoi_gitlab_clone()
         self.start_real_time_monitoring()
-        
-        # Initial pipeline trigger
-        if self.config["gitlab"]["auto_trigger_runners"]:
-            pipeline_id = self.trigger_gitlab_runner()
-            if pipeline_id:
-                self.monitor_pipeline_status(pipeline_id)
-        
-        # Generate initial report
+        self.enhanced_auto_fix_and_deploy_loop(max_retries=5)
         self.generate_monitoring_report()
-        
-        self.log_event("CI_CD", "QMOI GitLab Automation System is now running")
-        
-        # Keep the system running
+        self.log_event("CI_CD", "QMOI GitLab Automation System is now running (Enhanced)")
         try:
             while True:
-                time.sleep(60)  # Check every minute
+                time.sleep(60)
                 self.generate_monitoring_report()
         except KeyboardInterrupt:
             self.monitoring_active = False

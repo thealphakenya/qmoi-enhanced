@@ -16,7 +16,6 @@
 
 ## Integrations
 - Vercel (mirrored and enhanced in Quantum)
-- GitLab (mirrored and enhanced in Quantum)
 - HuggingFace (mirrored and enhanced in Quantum)
 - Colab/Dagshub (Quantum runs here for 24/7 uptime)
 - Cashon (all Quantum funds routed here)
@@ -57,6 +56,8 @@
 - PAYEDGITLAB.md
 - **QMOI_FRIENDSHIP_ENHANCEMENT.md**
 - **QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md**
+- QMOIHUGGINGFACEALWAYSUPDATE.md
+- QMOIALWAYSPARALLEL.md
 
 ## Implementation Files
 - **qmoi-friendship-core.js**: Core friendship system implementation

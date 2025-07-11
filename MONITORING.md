@@ -22,7 +22,6 @@
 
 ## GitHub Actions Integration
 - Progress bar and manual error reporting in workflow summary
-- Downloadable error/fix log artifact
 - Auto-triggers local fix if remote workflow fails
 
 ## Manual Error Handling
@@ -44,11 +43,11 @@
 ## Hugging Face Automation Monitoring
 
 - **Deployment & Model Sync:**
-  - All Hugging Face Space deployments and model syncs are logged and visible in GitHub Actions.
+  - All Hugging Face Space deployments and model syncs are logged and visible in GitLab CI/CD.
 - **UI Feature Test:**
   - Automated UI tests run after each deployment, with results logged and uploaded as artifacts.
 - **Log Access:**
-  - Review `logs/hf_model_sync.log`, `logs/huggingface_spaces.log`, and `logs/test_hf_space_ui.log` in the Actions artifacts.
+  - Review `logs/hf_model_sync.log`, `logs/huggingface_spaces.log`, and `logs/test_hf_space_ui.log` in the GitLab CI/CD artifacts.
 - **Health & Status:**
   - QMOI health and status are always visible in the Hugging Face Space dashboard and model card.
 
