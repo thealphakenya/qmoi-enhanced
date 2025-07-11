@@ -8,6 +8,7 @@ stages:
   - notify
   - visualize
   - docs
+  - secrets
 
 variables:
   GIT_STRATEGY: clone
@@ -100,3 +101,9 @@ notify_master:
 .default:
   before_script:
     - echo "QMOI has full permissions to update documentation, fix errors, and manage all resources." 
+
+qmoi_generate_secrets:
+  stage: secrets
+  image: node:18
+  script:
+    - node scripts/qmoi-secret-generator.js && echo "QMOI_SECRET_GENERATED=1" > qmoi_secret_flag || echo "QMOI_SECRET_GENERATED=0" > qmoi_secret_flag 
