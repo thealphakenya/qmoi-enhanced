@@ -71,6 +71,8 @@
     "hooks/**/*.ts",
     "hooks/**/*.tsx"
     // .next/types/**/*.ts intentionally excluded to avoid rootDir errors
+    ,
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

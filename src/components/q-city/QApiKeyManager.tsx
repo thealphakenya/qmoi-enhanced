@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 interface ApiKey {
   key: string;
@@ -14,13 +14,13 @@ const QApiKeyManager: React.FC = () => {
   const [usage, setUsage] = useState<{ key: string; usage: number }[]>([]);
 
   const fetchKeys = async () => {
-    const res = await fetch('/api/qapikey');
+    const res = await fetch("/api/qapikey");
     const data = await res.json();
     setKeys(data.keys || []);
   };
 
   const fetchUsage = async () => {
-    const res = await fetch('/api/qapikey/usage');
+    const res = await fetch("/api/qapikey/usage");
     const data = await res.json();
     setUsage(data.usage || []);
   };
@@ -31,15 +31,15 @@ const QApiKeyManager: React.FC = () => {
   }, []);
 
   const createKey = async () => {
-    await fetch('/api/qapikey', { method: 'POST' });
+    await fetch("/api/qapikey", { method: "POST" });
     fetchKeys();
   };
 
   const revokeKey = async (key: string) => {
-    await fetch('/api/qapikey', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ key })
+    await fetch("/api/qapikey", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key }),
     });
     fetchKeys();
   };
@@ -50,7 +50,9 @@ const QApiKeyManager: React.FC = () => {
         <CardTitle>Q API Key Manager</CardTitle>
       </CardHeader>
       <CardContent>
-        <Button onClick={createKey} className="mb-2">Generate New Key</Button>
+        <Button onClick={createKey} className="mb-2">
+          Generate New Key
+        </Button>
         <table className="w-full text-sm">
           <thead>
             <tr>
@@ -62,15 +64,21 @@ const QApiKeyManager: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {keys.map(k => (
+            {keys.map((k) => (
               <tr key={k.key} className="border-t">
                 <td className="break-all">{k.key}</td>
                 <td>{k.createdAt}</td>
-                <td>{k.revoked ? 'Revoked' : 'Active'}</td>
+                <td>{k.revoked ? "Revoked" : "Active"}</td>
                 <td>{k.usage}</td>
                 <td>
                   {!k.revoked && (
-                    <Button size="sm" variant="secondary" onClick={() => revokeKey(k.key)}>Revoke</Button>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => revokeKey(k.key)}
+                    >
+                      Revoke
+                    </Button>
                   )}
                 </td>
               </tr>
@@ -83,4 +91,4 @@ const QApiKeyManager: React.FC = () => {
   );
 };
 
-export default QApiKeyManager; 
+export default QApiKeyManager;

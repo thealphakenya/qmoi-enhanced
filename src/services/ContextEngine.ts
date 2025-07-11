@@ -55,4 +55,4 @@ export class ContextEngine {
       // ... update moodHistory, preferences, etc.
     }
   }
-} 
+}

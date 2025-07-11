@@ -1,17 +1,17 @@
-import crypto from 'crypto';
-import { v4 as uuidv4 } from 'uuid';
+import crypto from "crypto";
+import { v4 as uuidv4 } from "uuid";
 
 interface User {
   id: string;
   username: string;
   email: string;
-  role: 'master' | 'sister' | 'user';
+  role: "master" | "sister" | "user";
   passwordHash: string;
   salt: string;
   createdAt: number;
   lastLogin: number;
   preferences: {
-    theme: 'light' | 'dark' | 'system';
+    theme: "light" | "dark" | "system";
     notifications: boolean;
     tradingEnabled: boolean;
   };
@@ -32,29 +32,29 @@ export class AuthManager {
   private users: Map<string, User>;
   private sessions: Map<string, Session>;
   private masterOnlyFeatures: Set<string>;
-  private static MASTER_EMAIL = 'victor@kwemoi.com';
-  private static MASTER_PASSWORD = 'Victor9798!';
-  private static SISTER_EMAIL = 'leah@chebet.com';
-  private static SISTER_PASSWORD = 'Ashlehael';
-  private static MASTER_USERNAME = 'Victor';
-  private static SISTER_USERNAME = 'Leah';
+  private static MASTER_EMAIL = "victor@kwemoi.com";
+  private static MASTER_PASSWORD = "Victor9798!";
+  private static SISTER_EMAIL = "leah@chebet.com";
+  private static SISTER_PASSWORD = "Ashlehael";
+  private static MASTER_USERNAME = "Victor";
+  private static SISTER_USERNAME = "Leah";
 
   private rememberedDevices: Map<string, string> = new Map(); // userId -> deviceFingerprint
 
   private static getDeviceFingerprint(): string {
     // Simple device fingerprinting (can be enhanced)
-    return `${process.platform}-${process.arch}-${process.env.USER || process.env.USERNAME || ''}`;
+    return `${process.platform}-${process.arch}-${process.env.USER || process.env.USERNAME || ""}`;
   }
 
   private constructor() {
     this.users = new Map();
     this.sessions = new Map();
     this.masterOnlyFeatures = new Set([
-      'trading',
-      'invention_projects',
-      'system_configuration',
-      'user_management',
-      'download_qcity',
+      "trading",
+      "invention_projects",
+      "system_configuration",
+      "user_management",
+      "download_qcity",
     ]);
     this.ensureMasterAndSisterAccounts();
   }
@@ -70,15 +70,15 @@ export class AuthManager {
     username: string,
     email: string,
     password: string,
-    role: 'master' | 'sister' | 'user' = 'user'
+    role: "master" | "sister" | "user" = "user",
   ): Promise<User> {
     // Check if user already exists
     if (this.findUserByEmail(email)) {
-      throw new Error('User already exists');
+      throw new Error("User already exists");
     }
 
     // Generate salt and hash password
-    const salt = crypto.randomBytes(16).toString('hex');
+    const salt = crypto.randomBytes(16).toString("hex");
     const passwordHash = this.hashPassword(password, salt);
 
     // Create new user
@@ -92,7 +92,7 @@ export class AuthManager {
       createdAt: Date.now(),
       lastLogin: Date.now(),
       preferences: {
-        theme: 'system',
+        theme: "system",
         notifications: true,
         tradingEnabled: false,
       },
@@ -103,16 +103,21 @@ export class AuthManager {
     return user;
   }
 
-  public async login(email: string, password: string, ip: string, userAgent: string): Promise<Session> {
+  public async login(
+    email: string,
+    password: string,
+    ip: string,
+    userAgent: string,
+  ): Promise<Session> {
     const user = this.findUserByEmail(email);
     if (!user) {
-      throw new Error('Invalid credentials');
+      throw new Error("Invalid credentials");
     }
 
     // Verify password
     const passwordHash = this.hashPassword(password, user.salt);
     if (passwordHash !== user.passwordHash) {
-      throw new Error('Invalid credentials');
+      throw new Error("Invalid credentials");
     }
 
     // Create session
@@ -171,7 +176,7 @@ export class AuthManager {
     }
 
     // Master has access to everything
-    if (user.role === 'master') {
+    if (user.role === "master") {
       return true;
     }
 
@@ -181,7 +186,7 @@ export class AuthManager {
     }
 
     // Sister has access to everything except master-only features
-    if (user.role === 'sister') {
+    if (user.role === "sister") {
       return true;
     }
 
@@ -190,26 +195,26 @@ export class AuthManager {
   }
 
   private findUserByEmail(email: string): User | undefined {
-    return Array.from(this.users.values()).find(user => user.email === email);
+    return Array.from(this.users.values()).find((user) => user.email === email);
   }
 
   private hashPassword(password: string, salt: string): string {
     return crypto
-      .pbkdf2Sync(password, salt, 1000, 64, 'sha512')
-      .toString('hex');
+      .pbkdf2Sync(password, salt, 1000, 64, "sha512")
+      .toString("hex");
   }
 
   private generateToken(): string {
-    return crypto.randomBytes(32).toString('hex');
+    return crypto.randomBytes(32).toString("hex");
   }
 
   public async updateUserPreferences(
     sessionId: string,
-    preferences: Partial<User['preferences']>
+    preferences: Partial<User["preferences"]>,
   ): Promise<User> {
     const user = await this.getUser(sessionId);
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     // Update preferences
@@ -226,21 +231,21 @@ export class AuthManager {
   public async changePassword(
     sessionId: string,
     currentPassword: string,
-    newPassword: string
+    newPassword: string,
   ): Promise<void> {
     const user = await this.getUser(sessionId);
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     // Verify current password
     const currentHash = this.hashPassword(currentPassword, user.salt);
     if (currentHash !== user.passwordHash) {
-      throw new Error('Invalid current password');
+      throw new Error("Invalid current password");
     }
 
     // Generate new salt and hash
-    const newSalt = crypto.randomBytes(16).toString('hex');
+    const newSalt = crypto.randomBytes(16).toString("hex");
     const newHash = this.hashPassword(newPassword, newSalt);
 
     // Update user
@@ -255,7 +260,7 @@ export class AuthManager {
         AuthManager.MASTER_USERNAME,
         AuthManager.MASTER_EMAIL,
         AuthManager.MASTER_PASSWORD,
-        'master'
+        "master",
       );
     }
     if (!this.findUserByEmail(AuthManager.SISTER_EMAIL)) {
@@ -263,7 +268,7 @@ export class AuthManager {
         AuthManager.SISTER_USERNAME,
         AuthManager.SISTER_EMAIL,
         AuthManager.SISTER_PASSWORD,
-        'sister'
+        "sister",
       );
     }
   }
@@ -278,16 +283,19 @@ export class AuthManager {
     return this.rememberedDevices.get(userId) === fingerprint;
   }
 
-  public async confirmIdentity(sessionId: string, _method: 'whatsapp' | 'face' | 'voice'): Promise<boolean> {
+  public async confirmIdentity(
+    sessionId: string,
+    _method: "whatsapp" | "face" | "voice",
+  ): Promise<boolean> {
     // Stub: implement WhatsApp/face/voice confirmation
     // For now, always return true for master/sister
     const user = await this.getUser(sessionId);
     if (!user) return false;
-    if (user.role === 'master' || user.role === 'sister') return true;
+    if (user.role === "master" || user.role === "sister") return true;
     // TODO: implement actual confirmation for users
     return false;
   }
 }
 
 // Export singleton instance
-export const authManager = AuthManager.getInstance(); 
+export const authManager = AuthManager.getInstance();

@@ -1,5 +1,5 @@
-import { EventEmitter } from 'events';
-import { logger } from './LoggerService';
+import { EventEmitter } from "events";
+import { logger } from "./LoggerService";
 
 interface VPNServer {
   id: string;
@@ -8,7 +8,7 @@ interface VPNServer {
   city: string;
   ip: string;
   port: number;
-  protocol: 'OpenVPN' | 'WireGuard' | 'IKEv2' | 'L2TP' | 'PPTP';
+  protocol: "OpenVPN" | "WireGuard" | "IKEv2" | "L2TP" | "PPTP";
   load: number; // 0-100
   ping: number; // ms
   isOnline: boolean;
@@ -20,7 +20,12 @@ interface VPNServer {
 interface VPNConnection {
   id: string;
   serverId: string;
-  status: 'disconnected' | 'connecting' | 'connected' | 'disconnecting' | 'error';
+  status:
+    | "disconnected"
+    | "connecting"
+    | "connected"
+    | "disconnecting"
+    | "error";
   startTime?: Date;
   endTime?: Date;
   bytesReceived: number;
@@ -36,8 +41,8 @@ interface VPNSettings {
   autoConnect: boolean;
   killSwitch: boolean;
   autoReconnect: boolean;
-  protocol: 'OpenVPN' | 'WireGuard' | 'IKEv2' | 'L2TP' | 'PPTP';
-  encryption: 'AES-256' | 'AES-128' | 'ChaCha20';
+  protocol: "OpenVPN" | "WireGuard" | "IKEv2" | "L2TP" | "PPTP";
+  encryption: "AES-256" | "AES-128" | "ChaCha20";
   dns: string[];
   splitTunneling: boolean;
   excludedApps: string[];
@@ -70,7 +75,7 @@ interface SecurityReport {
   threats: string[];
   blockedConnections: number;
   dataLeaks: number;
-  encryptionStatus: 'secure' | 'weak' | 'none';
+  encryptionStatus: "secure" | "weak" | "none";
   recommendations: string[];
 }
 
@@ -105,125 +110,125 @@ export class VPNService {
       autoConnect: false,
       killSwitch: true,
       autoReconnect: true,
-      protocol: 'OpenVPN',
-      encryption: 'AES-256',
-      dns: ['1.1.1.1', '8.8.8.8'],
+      protocol: "OpenVPN",
+      encryption: "AES-256",
+      dns: ["1.1.1.1", "8.8.8.8"],
       splitTunneling: false,
       excludedApps: [],
       includedApps: [],
       leakProtection: {
         ipv6: true,
         dns: true,
-        webrtc: true
+        webrtc: true,
       },
       advanced: {
         mtu: 1500,
         mss: 1400,
         compression: false,
-        obfuscation: false
-      }
+        obfuscation: false,
+      },
     };
   }
 
   private getDefaultNetworkInfo(): NetworkInfo {
     return {
-      localIp: '192.168.1.100',
-      publicIp: '203.0.113.1',
-      isp: 'Unknown ISP',
-      location: 'Unknown',
-      dns: ['8.8.8.8', '8.8.4.4'],
-      gateway: '192.168.1.1',
-      subnet: '255.255.255.0'
+      localIp: "192.168.1.100",
+      publicIp: "203.0.113.1",
+      isp: "Unknown ISP",
+      location: "Unknown",
+      dns: ["8.8.8.8", "8.8.4.4"],
+      gateway: "192.168.1.1",
+      subnet: "255.255.255.0",
     };
   }
 
   private initializeServers(): void {
     const defaultServers: VPNServer[] = [
       {
-        id: 'us-east-1',
-        name: 'US East',
-        country: 'United States',
-        city: 'New York',
-        ip: '104.28.14.9',
+        id: "us-east-1",
+        name: "US East",
+        country: "United States",
+        city: "New York",
+        ip: "104.28.14.9",
         port: 1194,
-        protocol: 'OpenVPN',
+        protocol: "OpenVPN",
         load: 45,
         ping: 25,
         isOnline: true,
-        features: ['P2P', 'Streaming', 'Gaming'],
-        encryption: 'AES-256',
-        maxSpeed: 1000
+        features: ["P2P", "Streaming", "Gaming"],
+        encryption: "AES-256",
+        maxSpeed: 1000,
       },
       {
-        id: 'us-west-1',
-        name: 'US West',
-        country: 'United States',
-        city: 'Los Angeles',
-        ip: '104.28.15.9',
+        id: "us-west-1",
+        name: "US West",
+        country: "United States",
+        city: "Los Angeles",
+        ip: "104.28.15.9",
         port: 1194,
-        protocol: 'OpenVPN',
+        protocol: "OpenVPN",
         load: 32,
         ping: 35,
         isOnline: true,
-        features: ['P2P', 'Streaming'],
-        encryption: 'AES-256',
-        maxSpeed: 1000
+        features: ["P2P", "Streaming"],
+        encryption: "AES-256",
+        maxSpeed: 1000,
       },
       {
-        id: 'uk-london',
-        name: 'UK London',
-        country: 'United Kingdom',
-        city: 'London',
-        ip: '104.28.16.9',
+        id: "uk-london",
+        name: "UK London",
+        country: "United Kingdom",
+        city: "London",
+        ip: "104.28.16.9",
         port: 1194,
-        protocol: 'OpenVPN',
+        protocol: "OpenVPN",
         load: 28,
         ping: 45,
         isOnline: true,
-        features: ['Streaming', 'Gaming'],
-        encryption: 'AES-256',
-        maxSpeed: 1000
+        features: ["Streaming", "Gaming"],
+        encryption: "AES-256",
+        maxSpeed: 1000,
       },
       {
-        id: 'jp-tokyo',
-        name: 'Japan Tokyo',
-        country: 'Japan',
-        city: 'Tokyo',
-        ip: '104.28.17.9',
+        id: "jp-tokyo",
+        name: "Japan Tokyo",
+        country: "Japan",
+        city: "Tokyo",
+        ip: "104.28.17.9",
         port: 1194,
-        protocol: 'OpenVPN',
+        protocol: "OpenVPN",
         load: 55,
         ping: 85,
         isOnline: true,
-        features: ['Gaming', 'Streaming'],
-        encryption: 'AES-256',
-        maxSpeed: 1000
+        features: ["Gaming", "Streaming"],
+        encryption: "AES-256",
+        maxSpeed: 1000,
       },
       {
-        id: 'de-frankfurt',
-        name: 'Germany Frankfurt',
-        country: 'Germany',
-        city: 'Frankfurt',
-        ip: '104.28.18.9',
+        id: "de-frankfurt",
+        name: "Germany Frankfurt",
+        country: "Germany",
+        city: "Frankfurt",
+        ip: "104.28.18.9",
         port: 1194,
-        protocol: 'OpenVPN',
+        protocol: "OpenVPN",
         load: 38,
         ping: 55,
         isOnline: true,
-        features: ['P2P', 'Streaming'],
-        encryption: 'AES-256',
-        maxSpeed: 1000
-      }
+        features: ["P2P", "Streaming"],
+        encryption: "AES-256",
+        maxSpeed: 1000,
+      },
     ];
 
-    defaultServers.forEach(server => {
+    defaultServers.forEach((server) => {
       this.servers.set(server.id, server);
     });
   }
 
   public async createVPNNetwork(config: {
     name: string;
-    type: 'personal' | 'business' | 'gaming' | 'streaming';
+    type: "personal" | "business" | "gaming" | "streaming";
     servers: string[];
     encryption: string;
     protocol: string;
@@ -231,37 +236,39 @@ export class VPNService {
   }): Promise<string> {
     try {
       this.isCreatingNetwork = true;
-      this.eventEmitter.emit('networkCreationStarted', config);
+      this.eventEmitter.emit("networkCreationStarted", config);
 
       // Simulate network creation process
       await this.sleep(2000);
 
       const networkId = `vpn_network_${Date.now()}`;
-      
+
       // Create VPN configuration
       const vpnConfig = await this.generateVPNConfig(config);
-      
+
       // Deploy servers
       await this.deployServers(config.servers, vpnConfig);
-      
+
       // Setup encryption and security
       await this.setupEncryption(config.encryption);
-      
+
       // Configure routing and firewall
       await this.configureNetwork(config);
-      
+
       // Setup monitoring and logging
       await this.setupMonitoring(networkId);
 
       this.isCreatingNetwork = false;
-      this.eventEmitter.emit('networkCreated', { networkId, config });
-      
+      this.eventEmitter.emit("networkCreated", { networkId, config });
+
       logger.info(`VPN network ${config.name} created successfully`);
       return networkId;
     } catch (error) {
       this.isCreatingNetwork = false;
-      this.eventEmitter.emit('networkCreationFailed', { error: error instanceof Error ? error.message : 'Unknown error' });
-      logger.error('Failed to create VPN network:', error);
+      this.eventEmitter.emit("networkCreationFailed", {
+        error: error instanceof Error ? error.message : "Unknown error",
+      });
+      logger.error("Failed to create VPN network:", error);
       throw error;
     }
   }
@@ -277,15 +284,15 @@ export class VPNService {
       maxUsers: config.maxUsers,
       security: {
         encryption: config.encryption,
-        authentication: 'certificate',
-        tlsVersion: '1.3',
-        cipher: 'AES-256-GCM'
+        authentication: "certificate",
+        tlsVersion: "1.3",
+        cipher: "AES-256-GCM",
       },
       routing: {
         splitTunneling: true,
-        dns: ['1.1.1.1', '8.8.8.8'],
-        ipv6: false
-      }
+        dns: ["1.1.1.1", "8.8.8.8"],
+        ipv6: false,
+      },
     };
 
     return vpnConfig;
@@ -336,34 +343,38 @@ export class VPNService {
       const connection: VPNConnection = {
         id: connectionId,
         serverId,
-        status: 'connecting',
+        status: "connecting",
         bytesReceived: 0,
         bytesSent: 0,
         currentSpeed: 0,
         killSwitch: this.settings.killSwitch,
-        autoReconnect: this.settings.autoReconnect
+        autoReconnect: this.settings.autoReconnect,
       };
 
       this.connections.set(connectionId, connection);
       this.currentConnection = connection;
-      this.eventEmitter.emit('connectionStarted', connection);
+      this.eventEmitter.emit("connectionStarted", connection);
 
       // Simulate connection process
       await this.sleep(2000);
 
-      connection.status = 'connected';
+      connection.status = "connected";
       connection.startTime = new Date();
       connection.ipAddress = this.generateRandomIP();
-      
-      this.eventEmitter.emit('connectionEstablished', connection);
-      
+
+      this.eventEmitter.emit("connectionEstablished", connection);
+
       // Start monitoring connection
       this.startConnectionMonitoring(connectionId);
-      
+
       logger.info(`Connected to VPN server: ${server.name}`);
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      this.eventEmitter.emit('connectionFailed', { serverId, error: errorMessage });
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error";
+      this.eventEmitter.emit("connectionFailed", {
+        serverId,
+        error: errorMessage,
+      });
       logger.error(`Failed to connect to server ${serverId}:`, error);
       throw error;
     }
@@ -371,31 +382,32 @@ export class VPNService {
 
   public async disconnect(): Promise<void> {
     if (!this.currentConnection) {
-      throw new Error('No active connection');
+      throw new Error("No active connection");
     }
 
     try {
-      this.currentConnection.status = 'disconnecting';
-      this.eventEmitter.emit('disconnectionStarted', this.currentConnection);
+      this.currentConnection.status = "disconnecting";
+      this.eventEmitter.emit("disconnectionStarted", this.currentConnection);
 
       // Simulate disconnection
       await this.sleep(1000);
 
-      this.currentConnection.status = 'disconnected';
+      this.currentConnection.status = "disconnected";
       this.currentConnection.endTime = new Date();
-      
-      this.eventEmitter.emit('disconnected', this.currentConnection);
-      
+
+      this.eventEmitter.emit("disconnected", this.currentConnection);
+
       // Stop monitoring
       this.stopConnectionMonitoring(this.currentConnection.id);
-      
+
       this.currentConnection = null;
-      
-      logger.info('Disconnected from VPN');
+
+      logger.info("Disconnected from VPN");
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      this.eventEmitter.emit('disconnectionFailed', { error: errorMessage });
-      logger.error('Failed to disconnect:', error);
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error";
+      this.eventEmitter.emit("disconnectionFailed", { error: errorMessage });
+      logger.error("Failed to disconnect:", error);
       throw error;
     }
   }
@@ -410,13 +422,13 @@ export class VPNService {
   private startConnectionMonitoring(connectionId: string): void {
     const interval = setInterval(() => {
       const connection = this.connections.get(connectionId);
-      if (connection && connection.status === 'connected') {
+      if (connection && connection.status === "connected") {
         // Update connection stats
         connection.bytesReceived += Math.floor(Math.random() * 1000000);
         connection.bytesSent += Math.floor(Math.random() * 100000);
         connection.currentSpeed = Math.random() * 100;
 
-        this.eventEmitter.emit('connectionStats', connection);
+        this.eventEmitter.emit("connectionStats", connection);
       } else {
         clearInterval(interval);
       }
@@ -437,18 +449,18 @@ export class VPNService {
       threats: [],
       blockedConnections: Math.floor(Math.random() * 100),
       dataLeaks: Math.floor(Math.random() * 10),
-      encryptionStatus: 'secure',
-      recommendations: []
+      encryptionStatus: "secure",
+      recommendations: [],
     };
 
     // Simulate threat detection
     if (Math.random() > 0.8) {
-      report.threats.push('Suspicious connection attempt detected');
-      report.recommendations.push('Enable additional security measures');
+      report.threats.push("Suspicious connection attempt detected");
+      report.recommendations.push("Enable additional security measures");
     }
 
     this.securityReports.push(report);
-    this.eventEmitter.emit('securityReport', report);
+    this.eventEmitter.emit("securityReport", report);
   }
 
   private startMonitoring(): void {
@@ -459,7 +471,10 @@ export class VPNService {
         server.ping = Math.floor(Math.random() * 100) + 10;
         server.isOnline = Math.random() > 0.05; // 95% uptime
       }
-      this.eventEmitter.emit('serversUpdated', Array.from(this.servers.values()));
+      this.eventEmitter.emit(
+        "serversUpdated",
+        Array.from(this.servers.values()),
+      );
     }, 30000); // Every 30 seconds
 
     // Monitor network security
@@ -470,24 +485,24 @@ export class VPNService {
 
   private async checkForLeaks(): Promise<void> {
     const leaks = [];
-    
+
     // Check DNS leaks
     if (!this.settings.leakProtection.dns) {
-      leaks.push('DNS leak detected');
+      leaks.push("DNS leak detected");
     }
-    
+
     // Check IPv6 leaks
     if (!this.settings.leakProtection.ipv6) {
-      leaks.push('IPv6 leak detected');
+      leaks.push("IPv6 leak detected");
     }
-    
+
     // Check WebRTC leaks
     if (!this.settings.leakProtection.webrtc) {
-      leaks.push('WebRTC leak detected');
+      leaks.push("WebRTC leak detected");
     }
 
     if (leaks.length > 0) {
-      this.eventEmitter.emit('leakDetected', leaks);
+      this.eventEmitter.emit("leakDetected", leaks);
     }
   }
 
@@ -509,7 +524,7 @@ export class VPNService {
 
   public updateSettings(newSettings: Partial<VPNSettings>): void {
     this.settings = { ...this.settings, ...newSettings };
-    this.eventEmitter.emit('settingsUpdated', this.settings);
+    this.eventEmitter.emit("settingsUpdated", this.settings);
   }
 
   public getNetworkInfo(): NetworkInfo {
@@ -532,17 +547,19 @@ export class VPNService {
   }> {
     // Simulate connection test
     await this.sleep(2000);
-    
+
     return {
       ping: Math.floor(Math.random() * 50) + 10,
       download: Math.floor(Math.random() * 100) + 50,
       upload: Math.floor(Math.random() * 50) + 20,
-      jitter: Math.random() * 10
+      jitter: Math.random() * 10,
     };
   }
 
   public async getRecommendedServer(): Promise<VPNServer | null> {
-    const onlineServers = Array.from(this.servers.values()).filter(s => s.isOnline);
+    const onlineServers = Array.from(this.servers.values()).filter(
+      (s) => s.isOnline,
+    );
     if (onlineServers.length === 0) return null;
 
     // Find server with lowest load and ping
@@ -554,60 +571,74 @@ export class VPNService {
   }
 
   private sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   // Event listeners
   public onNetworkCreationStarted(callback: (config: any) => void): void {
-    this.eventEmitter.on('networkCreationStarted', callback);
+    this.eventEmitter.on("networkCreationStarted", callback);
   }
 
-  public onNetworkCreated(callback: (data: { networkId: string; config: any }) => void): void {
-    this.eventEmitter.on('networkCreated', callback);
+  public onNetworkCreated(
+    callback: (data: { networkId: string; config: any }) => void,
+  ): void {
+    this.eventEmitter.on("networkCreated", callback);
   }
 
-  public onNetworkCreationFailed(callback: (data: { error: string }) => void): void {
-    this.eventEmitter.on('networkCreationFailed', callback);
+  public onNetworkCreationFailed(
+    callback: (data: { error: string }) => void,
+  ): void {
+    this.eventEmitter.on("networkCreationFailed", callback);
   }
 
-  public onConnectionStarted(callback: (connection: VPNConnection) => void): void {
-    this.eventEmitter.on('connectionStarted', callback);
+  public onConnectionStarted(
+    callback: (connection: VPNConnection) => void,
+  ): void {
+    this.eventEmitter.on("connectionStarted", callback);
   }
 
-  public onConnectionEstablished(callback: (connection: VPNConnection) => void): void {
-    this.eventEmitter.on('connectionEstablished', callback);
+  public onConnectionEstablished(
+    callback: (connection: VPNConnection) => void,
+  ): void {
+    this.eventEmitter.on("connectionEstablished", callback);
   }
 
-  public onConnectionFailed(callback: (data: { serverId: string; error: string }) => void): void {
-    this.eventEmitter.on('connectionFailed', callback);
+  public onConnectionFailed(
+    callback: (data: { serverId: string; error: string }) => void,
+  ): void {
+    this.eventEmitter.on("connectionFailed", callback);
   }
 
-  public onDisconnectionStarted(callback: (connection: VPNConnection) => void): void {
-    this.eventEmitter.on('disconnectionStarted', callback);
+  public onDisconnectionStarted(
+    callback: (connection: VPNConnection) => void,
+  ): void {
+    this.eventEmitter.on("disconnectionStarted", callback);
   }
 
   public onDisconnected(callback: (connection: VPNConnection) => void): void {
-    this.eventEmitter.on('disconnected', callback);
+    this.eventEmitter.on("disconnected", callback);
   }
 
-  public onConnectionStats(callback: (connection: VPNConnection) => void): void {
-    this.eventEmitter.on('connectionStats', callback);
+  public onConnectionStats(
+    callback: (connection: VPNConnection) => void,
+  ): void {
+    this.eventEmitter.on("connectionStats", callback);
   }
 
   public onServersUpdated(callback: (servers: VPNServer[]) => void): void {
-    this.eventEmitter.on('serversUpdated', callback);
+    this.eventEmitter.on("serversUpdated", callback);
   }
 
   public onSecurityReport(callback: (report: SecurityReport) => void): void {
-    this.eventEmitter.on('securityReport', callback);
+    this.eventEmitter.on("securityReport", callback);
   }
 
   public onLeakDetected(callback: (leaks: string[]) => void): void {
-    this.eventEmitter.on('leakDetected', callback);
+    this.eventEmitter.on("leakDetected", callback);
   }
 
   public onSettingsUpdated(callback: (settings: VPNSettings) => void): void {
-    this.eventEmitter.on('settingsUpdated', callback);
+    this.eventEmitter.on("settingsUpdated", callback);
   }
 
   /**
@@ -615,14 +646,17 @@ export class VPNService {
    */
   public static async ensureSecureConnection(): Promise<void> {
     const vpn = VPNService.getInstance();
-    if (!vpn.currentConnection || vpn.currentConnection.status !== 'connected') {
+    if (
+      !vpn.currentConnection ||
+      vpn.currentConnection.status !== "connected"
+    ) {
       // Pick recommended or random server
-      const server = await vpn.getRecommendedServer() || vpn.getServers()[0];
+      const server = (await vpn.getRecommendedServer()) || vpn.getServers()[0];
       if (server) {
         await vpn.connectToServer(server.id);
         logger.info(`[VPN] Connected to server: ${server.name}`);
       } else {
-        logger.warn('[VPN] No available servers to connect.');
+        logger.warn("[VPN] No available servers to connect.");
       }
     }
   }
@@ -632,18 +666,18 @@ export class VPNService {
    */
   public static async fallbackToNewServer(): Promise<void> {
     const vpn = VPNService.getInstance();
-    const servers = vpn.getServers().filter(s => s.isOnline);
+    const servers = vpn.getServers().filter((s) => s.isOnline);
     if (servers.length > 1) {
       // Pick a different server
       const current = vpn.currentConnection?.serverId;
-      const next = servers.find(s => s.id !== current) || servers[0];
+      const next = servers.find((s) => s.id !== current) || servers[0];
       await vpn.disconnect();
       await vpn.connectToServer(next.id);
       logger.info(`[VPN] Fallback: switched to server: ${next.name}`);
     } else {
-      logger.warn('[VPN] No alternative servers available for fallback.');
+      logger.warn("[VPN] No alternative servers available for fallback.");
     }
   }
 }
 
-export const vpnService = VPNService.getInstance(); 
+export const vpnService = VPNService.getInstance();

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 
 // In-memory key store (replace with persistent storage in production)
-let apiKeys: { key: string; createdAt: string; revoked: boolean; usage: number }[] = [];
+const apiKeys: { key: string; createdAt: string; revoked: boolean; usage: number }[] = [];
 
 function generateKey() {
   return crypto.randomBytes(32).toString('hex');

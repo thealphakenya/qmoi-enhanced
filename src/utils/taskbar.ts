@@ -1,5 +1,5 @@
-import { app, Notification } from 'electron';
-import path from 'path';
+import { app, Notification } from "electron";
+import path from "path";
 
 interface TaskbarOptions {
   icon: string;
@@ -52,7 +52,7 @@ export class TaskbarManager {
 
   private setupNotifications(): void {
     // Setup notification handlers
-    app.on('ready', () => {
+    app.on("ready", () => {
       // Register notification handlers
       this.registerNotificationHandlers();
     });
@@ -60,15 +60,21 @@ export class TaskbarManager {
 
   private registerNotificationHandlers(): void {
     // Handle different types of notifications
-    app.on('notification-click', (event: NotificationEvent, notification: NotificationData) => {
-      // Handle notification clicks
-      console.log('Notification clicked:', notification);
-    });
+    app.on(
+      "notification-click",
+      (event: NotificationEvent, notification: NotificationData) => {
+        // Handle notification clicks
+        console.log("Notification clicked:", notification);
+      },
+    );
 
-    app.on('notification-close', (event: NotificationEvent, notification: NotificationData) => {
-      // Handle notification closes
-      console.log('Notification closed:', notification);
-    });
+    app.on(
+      "notification-close",
+      (event: NotificationEvent, notification: NotificationData) => {
+        // Handle notification closes
+        console.log("Notification closed:", notification);
+      },
+    );
   }
 
   public showNotification(title: string, body: string): void {
@@ -115,4 +121,4 @@ export class TaskbarManager {
 // Export a function to create the taskbar manager
 export function createTaskbarManager(options: TaskbarOptions): TaskbarManager {
   return TaskbarManager.getInstance(options);
-} 
+}

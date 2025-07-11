@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 interface Contact {
   id: number;
@@ -11,21 +11,21 @@ interface Contact {
 }
 
 const SocialAutomationPanel: React.FC = () => {
-  const [content, setContent] = useState('');
-  const [platform, setPlatform] = useState('WhatsApp');
+  const [content, setContent] = useState("");
+  const [platform, setPlatform] = useState("WhatsApp");
   const [contacts, setContacts] = useState<Contact[]>([]);
-  const [tag, setTag] = useState('');
+  const [tag, setTag] = useState("");
   const [features, setFeatures] = useState<string[]>([]);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
 
   const fetchContacts = async () => {
-    const res = await fetch('/api/social-automation/contacts');
+    const res = await fetch("/api/social-automation/contacts");
     const data = await res.json();
     setContacts(data.contacts || []);
   };
 
   const fetchFeatures = async () => {
-    const res = await fetch('/api/social-automation/features');
+    const res = await fetch("/api/social-automation/features");
     const data = await res.json();
     setFeatures(data.features || []);
   };
@@ -36,23 +36,23 @@ const SocialAutomationPanel: React.FC = () => {
   }, []);
 
   const postStatus = async () => {
-    const res = await fetch('/api/social-automation/post', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content, platform })
+    const res = await fetch("/api/social-automation/post", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content, platform }),
     });
     const data = await res.json();
-    setStatus(data.success ? 'Posted!' : 'Post failed');
+    setStatus(data.success ? "Posted!" : "Post failed");
   };
 
   const tagContact = async (id: number) => {
-    const res = await fetch('/api/social-automation/tag', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, tag })
+    const res = await fetch("/api/social-automation/tag", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, tag }),
     });
     const data = await res.json();
-    setStatus(data.success ? 'Tagged!' : 'Tag failed');
+    setStatus(data.success ? "Tagged!" : "Tag failed");
     fetchContacts();
   };
 
@@ -66,13 +66,13 @@ const SocialAutomationPanel: React.FC = () => {
           <Input
             placeholder="Status/News Content"
             value={content}
-            onChange={e => setContent(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
             className="mb-2"
           />
           <Input
             placeholder="Platform (WhatsApp, Telegram, etc.)"
             value={platform}
-            onChange={e => setPlatform(e.target.value)}
+            onChange={(e) => setPlatform(e.target.value)}
             className="mb-2"
           />
           <Button onClick={postStatus}>Post Status/News</Button>
@@ -89,19 +89,21 @@ const SocialAutomationPanel: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {contacts.map(c => (
+              {contacts.map((c) => (
                 <tr key={c.id} className="border-t">
                   <td>{c.name}</td>
                   <td>{c.platform}</td>
-                  <td>{c.tags.join(', ')}</td>
+                  <td>{c.tags.join(", ")}</td>
                   <td>
                     <Input
                       placeholder="Tag"
                       value={tag}
-                      onChange={e => setTag(e.target.value)}
+                      onChange={(e) => setTag(e.target.value)}
                       className="inline-block w-24 mr-2"
                     />
-                    <Button size="sm" onClick={() => tagContact(c.id)}>Tag</Button>
+                    <Button size="sm" onClick={() => tagContact(c.id)}>
+                      Tag
+                    </Button>
                   </td>
                 </tr>
               ))}
@@ -111,7 +113,9 @@ const SocialAutomationPanel: React.FC = () => {
         <div className="mb-4">
           <h4 className="font-semibold mb-2">Available Features</h4>
           <ul>
-            {features.map(f => <li key={f}>{f}</li>)}
+            {features.map((f) => (
+              <li key={f}>{f}</li>
+            ))}
           </ul>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
@@ -121,4 +125,4 @@ const SocialAutomationPanel: React.FC = () => {
   );
 };
 
-export default SocialAutomationPanel; 
+export default SocialAutomationPanel;

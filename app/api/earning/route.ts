@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // In-memory stores (replace with DB/real logic in production)
-let strategies = [
+const strategies = [
   { id: 1, name: 'Trading Bot', status: 'active' },
   { id: 2, name: 'Yield Farming', status: 'inactive' },
   { id: 3, name: 'Staking', status: 'active' },
 ];
 let monitoring = false;
-let analytics = {
+const analytics = {
   totalEarned: 1234.56,
   last24h: 56.78,
   activeStrategies: 2,

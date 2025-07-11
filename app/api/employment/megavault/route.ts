@@ -25,7 +25,7 @@ const DividendDistributionSchema = z.object({
 });
 
 // Mock database
-let megavaultData = {
+const megavaultData = {
   currentBalance: 1000000, // 1M starting balance
   totalInflow: 1500000,
   totalOutflow: 500000,

@@ -1,5 +1,5 @@
 export interface Asset {
-  type: 'spot' | 'futures' | 'otc';
+  type: "spot" | "futures" | "otc";
   currency: string;
   balance: number;
   usdValue: number;
@@ -8,9 +8,13 @@ export interface Asset {
 
 export interface AssetManager {
   getAssets(): Promise<Asset[]>;
-  getAssetBalance(type: Asset['type'], currency: string): Promise<number>;
+  getAssetBalance(type: Asset["type"], currency: string): Promise<number>;
   getTotalBalance(): Promise<number>;
-  updateAsset(type: Asset['type'], currency: string, balance: number): Promise<void>;
+  updateAsset(
+    type: Asset["type"],
+    currency: string,
+    balance: number,
+  ): Promise<void>;
   convertToUSD(amount: number, currency: string): Promise<number>;
 }
 
@@ -32,25 +36,25 @@ export class AssetManagerImpl implements AssetManager {
 
   private initializeAssets() {
     // Initialize with current balances
-    this.assets.set('spot_usdt', {
-      type: 'spot',
-      currency: 'USDT',
+    this.assets.set("spot_usdt", {
+      type: "spot",
+      currency: "USDT",
       balance: 3.84,
       usdValue: 3.84,
       lastUpdated: new Date(),
     });
 
-    this.assets.set('futures_btc', {
-      type: 'futures',
-      currency: 'BTC',
+    this.assets.set("futures_btc", {
+      type: "futures",
+      currency: "BTC",
       balance: 0.000009,
       usdValue: 1,
       lastUpdated: new Date(),
     });
 
-    this.assets.set('otc_btc', {
-      type: 'otc',
-      currency: 'BTC',
+    this.assets.set("otc_btc", {
+      type: "otc",
+      currency: "BTC",
       balance: 0.000026,
       usdValue: 2.84,
       lastUpdated: new Date(),
@@ -61,7 +65,10 @@ export class AssetManagerImpl implements AssetManager {
     return Array.from(this.assets.values());
   }
 
-  public async getAssetBalance(type: Asset['type'], currency: string): Promise<number> {
+  public async getAssetBalance(
+    type: Asset["type"],
+    currency: string,
+  ): Promise<number> {
     const key = `${type}_${currency.toLowerCase()}`;
     const asset = this.assets.get(key);
     return asset?.balance || 0;
@@ -72,10 +79,14 @@ export class AssetManagerImpl implements AssetManager {
     return assets.reduce((total, asset) => total + asset.usdValue, 0);
   }
 
-  public async updateAsset(type: Asset['type'], currency: string, balance: number): Promise<void> {
+  public async updateAsset(
+    type: Asset["type"],
+    currency: string,
+    balance: number,
+  ): Promise<void> {
     const key = `${type}_${currency.toLowerCase()}`;
     const usdValue = await this.convertToUSD(balance, currency);
-    
+
     this.assets.set(key, {
       type,
       currency,
@@ -88,10 +99,10 @@ export class AssetManagerImpl implements AssetManager {
   public async convertToUSD(amount: number, currency: string): Promise<number> {
     // In a real implementation, this would fetch current exchange rates
     const rates: Record<string, number> = {
-      'USDT': 1,
-      'BTC': 50000, // Example BTC price
+      USDT: 1,
+      BTC: 50000, // Example BTC price
     };
-    
+
     return amount * (rates[currency] || 0);
   }
 
@@ -113,45 +124,55 @@ export class AssetManagerImpl implements AssetManager {
     for (const [type, allocation] of Object.entries(targetAllocations)) {
       const targetAmount = totalBalance * allocation;
       const currentAmount = assets
-        .filter(a => a.type === type)
+        .filter((a) => a.type === type)
         .reduce((sum, a) => sum + a.usdValue, 0);
 
-      if (Math.abs(targetAmount - currentAmount) > 1) { // 1 USD threshold
+      if (Math.abs(targetAmount - currentAmount) > 1) {
+        // 1 USD threshold
         // Implement rebalancing logic here
-        console.log(`Rebalancing ${type} from ${currentAmount} to ${targetAmount}`);
+        console.log(
+          `Rebalancing ${type} from ${currentAmount} to ${targetAmount}`,
+        );
       }
     }
   }
 
-  public async getProfitOpportunities(): Promise<{
-    type: string;
-    opportunity: string;
-    potentialProfit: number;
-    risk: 'low' | 'medium' | 'high';
-  }[]> {
-    const opportunities: Array<{ type: string; opportunity: string; potentialProfit: number; risk: 'low' | 'medium' | 'high' }> = [];
+  public async getProfitOpportunities(): Promise<
+    {
+      type: string;
+      opportunity: string;
+      potentialProfit: number;
+      risk: "low" | "medium" | "high";
+    }[]
+  > {
+    const opportunities: Array<{
+      type: string;
+      opportunity: string;
+      potentialProfit: number;
+      risk: "low" | "medium" | "high";
+    }> = [];
 
     // Example opportunities based on current assets
-    const spotBalance = await this.getAssetBalance('spot', 'USDT');
+    const spotBalance = await this.getAssetBalance("spot", "USDT");
     if (spotBalance > 1) {
       opportunities.push({
-        type: 'spot',
-        opportunity: 'USDT to BTC conversion',
+        type: "spot",
+        opportunity: "USDT to BTC conversion",
         potentialProfit: spotBalance * 0.02, // 2% potential profit
-        risk: 'low',
+        risk: "low",
       });
     }
 
-    const futuresBalance = await this.getAssetBalance('futures', 'BTC');
+    const futuresBalance = await this.getAssetBalance("futures", "BTC");
     if (futuresBalance > 0) {
       opportunities.push({
-        type: 'futures',
-        opportunity: 'BTC futures leverage',
+        type: "futures",
+        opportunity: "BTC futures leverage",
         potentialProfit: futuresBalance * 50000 * 0.05, // 5% potential profit
-        risk: 'high',
+        risk: "high",
       });
     }
 
     return opportunities;
   }
-} 
+}

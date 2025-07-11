@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 interface Document {
   id: number;
@@ -13,13 +13,13 @@ interface Document {
 
 const DocumentManagerPanel: React.FC = () => {
   const [documents, setDocuments] = useState<Document[]>([]);
-  const [form, setForm] = useState({ name: '', type: '', content: '' });
-  const [search, setSearch] = useState('');
+  const [form, setForm] = useState({ name: "", type: "", content: "" });
+  const [search, setSearch] = useState("");
   const [results, setResults] = useState<Document[]>([]);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const res = await fetch('/api/document-backup/list');
+    const res = await fetch("/api/document-backup/list");
     const data = await res.json();
     setDocuments(data.documents || []);
   };
@@ -29,30 +29,32 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const res = await fetch('/api/document-backup/upload', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form)
+    const res = await fetch("/api/document-backup/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
     });
     const data = await res.json();
-    setStatus(data.success ? 'Uploaded!' : 'Upload failed');
+    setStatus(data.success ? "Uploaded!" : "Upload failed");
     fetchDocuments();
   };
 
   const searchDocs = async () => {
-    const res = await fetch(`/api/document-backup/search?q=${encodeURIComponent(search)}`);
+    const res = await fetch(
+      `/api/document-backup/search?q=${encodeURIComponent(search)}`,
+    );
     const data = await res.json();
     setResults(data.results || []);
   };
 
   const restore = async (id: number) => {
-    const res = await fetch('/api/document-backup/restore', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id })
+    const res = await fetch("/api/document-backup/restore", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
     });
     const data = await res.json();
-    setStatus(data.success ? 'Restored!' : 'Restore failed');
+    setStatus(data.success ? "Restored!" : "Restore failed");
   };
 
   return (
@@ -65,19 +67,21 @@ const DocumentManagerPanel: React.FC = () => {
           <Input
             placeholder="Document Name"
             value={form.name}
-            onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+            onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
             className="mb-2"
           />
           <Input
             placeholder="Type (pdf, docx, etc.)"
             value={form.type}
-            onChange={e => setForm(f => ({ ...f, type: e.target.value }))}
+            onChange={(e) => setForm((f) => ({ ...f, type: e.target.value }))}
             className="mb-2"
           />
           <Input
             placeholder="Content (or file data)"
             value={form.content}
-            onChange={e => setForm(f => ({ ...f, content: e.target.value }))}
+            onChange={(e) =>
+              setForm((f) => ({ ...f, content: e.target.value }))
+            }
             className="mb-2"
           />
           <Button onClick={upload}>Upload</Button>
@@ -86,7 +90,7 @@ const DocumentManagerPanel: React.FC = () => {
           <Input
             placeholder="Search documents..."
             value={search}
-            onChange={e => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             className="mb-2"
           />
           <Button onClick={searchDocs}>Search</Button>
@@ -103,13 +107,15 @@ const DocumentManagerPanel: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {(search ? results : documents).map(d => (
+              {(search ? results : documents).map((d) => (
                 <tr key={d.id} className="border-t">
                   <td>{d.name}</td>
                   <td>{d.type}</td>
                   <td>{d.createdAt}</td>
                   <td>
-                    <Button size="sm" onClick={() => restore(d.id)}>Restore</Button>
+                    <Button size="sm" onClick={() => restore(d.id)}>
+                      Restore
+                    </Button>
                   </td>
                 </tr>
               ))}
@@ -123,4 +129,4 @@ const DocumentManagerPanel: React.FC = () => {
   );
 };
 
-export default DocumentManagerPanel; 
+export default DocumentManagerPanel;

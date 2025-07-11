@@ -1,79 +1,322 @@
-# QMOI - Quantum Mind of Intelligence
+# QMOI AI Automation System
 
-## Overview
-QMOI is a fully automated, AI-powered, self-healing, and revenue-generating system that manages, deploys, and enhances all your projects, products, and services. It features advanced parallelization, error-fixing, marketing automation, and comprehensive reporting—all visualized in a real-time dashboard. QMOI is cloud-native, ultra-lightweight, and never uses your device resources. **All documentation (.md files) is always kept up to date.**
+QMOI (Quantum Multi-Platform Orchestration Intelligence) is a comprehensive AI automation system designed to operate as a developer and automation agent across multiple platforms including GitLab, GitHub, Gitpod, Vercel, and HuggingFace. The system features advanced error recovery, self-healing capabilities, and parallel processing across different platforms.
 
-## 🚀 Always-On Hugging Face Sync
-- QMOI is always kept in sync with Hugging Face (alphaqmoi/qmoi), auto-pushing all updates, auto-creating repos if missing, and retrying on failure.
-- The dashboard shows real-time status, logs, and history of all Hugging Face syncs, including time, date, and result.
-- Master receives notifications for every sync event (start, progress, completion, failure).
+## 🚀 Features
 
-## 🛠️ Advanced Error Fixing (All Platforms)
-- QMOI fixes all errors and problems, including those requiring developer/manual intervention, across GitLab, Vercel, Hugging Face, Colab, Dagshub, GitHub, and more.
-- QMOI auto-installs all missing dependencies, files, and packages, and can create/fix scripts as needed.
-- If an error requires a developer, QMOI simulates real-person reasoning, applies best practices, and logs all actions for review.
-- All error-fix events are visualized in the dashboard, with real-time logs and notifications.
+### Core Capabilities
+- **Multi-Platform Support**: GitLab, GitHub, Gitpod, Vercel, HuggingFace
+- **Self-Healing**: Automatically fixes errors in its own files and configurations
+- **Parallel Processing**: Runs automation tasks simultaneously across platforms
+- **Error Recovery**: Comprehensive error detection and automatic fixing
+- **Auto-Push**: Intelligent git push with retry logic and error handling
+- **Notification System**: Email, Slack, and Discord notifications
+- **Persistent Memory**: Learning from past actions and errors
 
-## 📧 Enhanced Notification System
-- Master is notified by email (and other channels) when a fix or deployment starts, with progress updates and completion/failure notifications.
-- GitLab notifications are enhanced: you receive start, progress, and completion/failure emails for every pipeline, job, and fix.
-- All notifications are configurable and can be filtered by event type, platform, or severity.
+### Advanced Features
+- **GitLab CI/CD Integration**: Automated pipeline management
+- **Workspace Management**: Gitpod workspace creation and management
+- **Fallback Mechanisms**: Automatic failover between platforms
+- **JSON Configuration Fixing**: Automatic repair of malformed JSON files
+- **Backup and Recovery**: Comprehensive backup system with restore capabilities
 
-## ⚡ QMOIALWAYSPARALLEL-Powered Parallel Error Fixing
-- QMOI uses its advanced parallel engine (see QMOIALWAYSPARALLEL.md) to fix errors, install missing files/packages, and run automations in parallel across all platforms.
-- Multiple fixes, installs, and deployments can run at the same time, maximizing speed and uptime.
-- The dashboard visualizes all parallel jobs, their status, and results in real time.
+## 📋 Prerequisites
 
-## 👨‍💻 Developer/Real-Person Capabilities
-- QMOI now simulates a real developer: it can reason about complex errors, apply manual fixes, and even write new scripts or code as needed.
-- QMOI can review logs, suggest improvements, and document all changes for audit and learning.
-- Master can review, approve, or override any automated or manual fix from the dashboard.
+- Node.js 16+ 
+- npm or yarn
+- Git
+- Access to GitLab, GitHub, Gitpod, Vercel, and/or HuggingFace APIs
 
-## 🆓 QMOI GitLab, Vercel, and Quantum: More Than the Originals
-- QMOI GitLab, Vercel, and Quantum provide all paid/subscription features for free, including unlimited parallel jobs, advanced analytics, and premium integrations.
-- QMOI GitLab includes features not available in standard GitLab: auto-mirroring, failover, enhanced notifications, and developer-level error fixing.
-- QMOI Vercel and Quantum offer unlimited deployments, advanced monitoring, and self-healing for all users.
-- All features are visualized and managed in the QMOI dashboard, with full audit logs and documentation.
+## 🛠️ Installation
 
-## Master-only QCity panel for managing Gitpod and QMOI-local workspaces: start, stop, clone, sync, with full audit and fallback if Gitpod is unavailable.
-- All workspace management actions (start, stop, clone, sync for both Gitpod and local workspaces) are now fully audit-logged in logs/qcity_audit.log.
-- Notifications for all workspace events and errors are sent via all configured channels (email, Slack, WhatsApp, Telegram, Discord, etc.).
-- The QCity dashboard streams real-time logs for all workspace actions and displays audit/notification status.
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd qmoi-ai-automation
+   ```
 
-## 🧪 Automated UI Health Checks
+2. **Run the setup script**:
+   ```bash
+   npm run qmoi-setup
+   ```
 
-- Run all UI health checks for Hugging Face Space:
-  ```
-  python scripts/test_hf_space_ui.py --space-url https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
-  ```
-- Run all UI health checks for local dashboard (Playwright/Cypress):
-  ```
-  npm run test:ui
-  ```
-- Trigger UI self-healing:
-  ```
-  npm run qmoi:always-fix-all
-  ```
+3. **Configure environment variables**:
+   ```bash
+   # GitLab
+   export GITLAB_API_URL="https://gitlab.com/api/v4"
+   export GITLAB_TOKEN="your-gitlab-token"
 
-If a UI test fails, QMOI will auto-fix and retry. Persistent failures are escalated to master with logs and screenshots.
+   # GitHub
+   export GITHUB_TOKEN="your-github-token"
 
-## 🛠️ Command Reference
+   # Gitpod
+   export GITPOD_API_TOKEN="your-gitpod-token"
 
-See [CMDCOMMANDS.md](./CMDCOMMANDS.md) for all automation, testing, and troubleshooting commands for QMOI across all platforms (PowerShell, Bash, etc.).
+   # Vercel
+   export VERCEL_TOKEN="your-vercel-token"
 
-### Troubleshooting
-- If you see `Missing script: "qmoi:autodev:full"`, add it to your `package.json` under `"scripts"`.
-- For PowerShell, use `;` to separate commands. For Bash, use `&&`.
-- If you see `{ was unexpected at this time.`, you may be using CMD instead of PowerShell. Use PowerShell or run commands one by one in CMD.
+   # HuggingFace
+   export HUGGINGFACE_TOKEN="your-huggingface-token"
 
-## Documentation & Support
-- All documentation (.md files) is indexed in ALLMDFILESREFS.md and auto-updated.
-- For advanced usage, see QUANTUM.md, QMOIAUTOMAKESMONEY.md, MASTEROWNS.md, QMOIALWAYSPARALLEL.md, QMOIFREE.md.
-- For troubleshooting, see TROUBLESHOOTING.md.
-- For security, see SECURITY.md and SECURITY_AUTOMATION.md.
+   # Notifications (optional)
+   export SMTP_HOST="your-smtp-host"
+   export SMTP_USERNAME="your-smtp-username"
+   export SMTP_PASSWORD="your-smtp-password"
+   export SLACK_WEBHOOK_URL="your-slack-webhook"
+   export DISCORD_WEBHOOK_URL="your-discord-webhook"
+   ```
 
-## License
-QMOI is fully open and free. All features are available to the master and users. See LICENSE for details.
+## 🚀 Quick Start
+
+### Start QMOI Server
+```bash
+npm start
+```
+
+### Development Mode
+```bash
+npm run dev
+```
+
+### Run Auto-Push
+```bash
+npm run qmoi-auto-push
+```
+
+### Run Error Recovery
+```bash
+npm run qmoi-error-recovery
+```
+
+## 📁 Project Structure
+
+```
+qmoi-ai-automation/
+├── api/                    # API endpoints
+│   └── qcity.ts          # Q-City management API
+├── scripts/               # Core automation scripts
+│   ├── qmoi-auto-push.js      # Auto-push functionality
+│   ├── qmoi-error-recovery.js # Error recovery system
+│   ├── qmoi-setup.js          # Setup script
+│   └── services/              # Service modules
+│       └── notification_service.js
+├── config/               # Configuration files
+│   ├── qmoi.json        # Main QMOI configuration
+│   └── notification.json # Notification settings
+├── logs/                 # Log files
+├── backups/              # Backup files
+├── .gitlab-ci.yml        # GitLab CI/CD pipeline
+├── package.json          # Node.js dependencies
+└── README.md            # This file
+```
+
+## 🔧 Configuration
+
+### Main Configuration (`config/qmoi.json`)
+```json
+{
+  "version": "1.0.0",
+  "name": "QMOI AI Automation System",
+  "platforms": {
+    "gitlab": {
+      "enabled": true,
+      "api_url": "https://gitlab.com/api/v4",
+      "token": "your-token"
+    },
+    "github": {
+      "enabled": true,
+      "api_url": "https://api.github.com",
+      "token": "your-token"
+    }
+  },
+  "features": {
+    "auto_push": true,
+    "error_recovery": true,
+    "notifications": true,
+    "parallel_processing": true,
+    "self_healing": true
+  }
+}
+```
+
+### Notification Configuration (`config/notification.json`)
+```json
+{
+  "email": {
+    "enabled": false,
+    "smtp_host": "your-smtp-host",
+    "smtp_port": 587,
+    "username": "your-username",
+    "password": "your-password"
+  },
+  "slack": {
+    "enabled": false,
+    "webhook_url": "your-webhook-url"
+  },
+  "discord": {
+    "enabled": false,
+    "webhook_url": "your-webhook-url"
+  }
+}
+```
+
+## 🔄 GitLab CI/CD Integration
+
+The system includes comprehensive GitLab CI/CD integration with the following jobs:
+
+- **setup**: Initial environment setup
+- **test**: Run tests and validation
+- **build**: Build the application
+- **deploy**: Deploy to production
+- **qmoi-auto-push**: Manual auto-push job
+- **qmoi-error-recovery**: Manual error recovery job
+
+### Pipeline Features
+- Automatic dependency installation
+- Error recovery integration
+- Auto-push after successful builds
+- Comprehensive logging and notifications
+
+## 🛡️ Error Recovery System
+
+The error recovery system can automatically fix:
+
+- **Package.json issues**: Missing dependencies, scripts, or malformed JSON
+- **GitLab CI/CD problems**: Missing stages, variables, or jobs
+- **JavaScript syntax errors**: Missing semicolons, quotes, or parentheses
+- **Missing files**: Create essential files if they don't exist
+- **Dependency issues**: Install missing npm packages
+
+### Recovery Process
+1. **Backup creation**: Creates backups before making changes
+2. **Error detection**: Identifies specific issues
+3. **Automatic fixing**: Applies appropriate fixes
+4. **Validation**: Verifies fixes work correctly
+5. **Notification**: Sends status notifications
+
+## 📊 Monitoring and Logging
+
+### Log Files
+- `logs/qmoi.log`: General system logs
+- `logs/error.log`: Error-specific logs
+- `logs/audit.log`: Audit trail
+- `logs/notification.log`: Notification logs
+
+### API Endpoints
+- `GET /api/qcity/status`: System status
+- `GET /api/qcity/config`: Configuration
+- `POST /api/qcity/start`: Start QMOI
+- `POST /api/qcity/stop`: Stop QMOI
+- `GET /api/qcity/notifications`: Get notifications
+- `GET /api/qcity/logs`: Get logs
+
+## 🔧 Development
+
+### Adding New Platforms
+1. Add platform configuration to `config/qmoi.json`
+2. Implement platform-specific API client
+3. Add platform to error recovery system
+4. Update notification system
+
+### Adding New Features
+1. Create feature module in `scripts/`
+2. Add feature to configuration
+3. Update setup and error recovery scripts
+4. Add tests and documentation
+
+## 🧪 Testing
+
+Run the test suite:
+```bash
+npm test
+```
+
+Test specific components:
+```bash
+# Test auto-push
+npm run qmoi-auto-push
+
+# Test error recovery
+npm run qmoi-error-recovery
+
+# Test notifications
+node -e "const {NotificationService} = require('./scripts/services/notification_service'); new NotificationService().testNotifications()"
+```
+
+## 📈 Performance
+
+### Optimization Features
+- **Parallel Processing**: Multiple tasks run simultaneously
+- **Caching**: Intelligent caching of API responses
+- **Retry Logic**: Automatic retry with exponential backoff
+- **Resource Monitoring**: Track system resource usage
+
+### Monitoring
+- Real-time performance metrics
+- Resource usage tracking
+- Error rate monitoring
+- Response time analysis
+
+## 🔒 Security
+
+### Security Features
+- **Token Management**: Secure storage of API tokens
+- **Audit Logging**: Comprehensive audit trail
+- **Backup Encryption**: Encrypted backup storage
+- **Access Control**: Role-based access control
+
+### Best Practices
+- Use environment variables for sensitive data
+- Regularly rotate API tokens
+- Monitor audit logs
+- Keep dependencies updated
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+### Common Issues
+
+**Q: Auto-push fails with authentication errors**
+A: Check your GitLab/GitHub tokens and ensure they have proper permissions.
+
+**Q: Error recovery doesn't fix all issues**
+A: The system focuses on common issues. For complex problems, check the logs and consider manual intervention.
+
+**Q: Notifications aren't working**
+A: Verify your notification configuration and check the notification logs.
+
+### Getting Help
+- Check the logs in the `logs/` directory
+- Review the configuration files
+- Test individual components
+- Contact support with detailed error information
+
+## 🔮 Roadmap
+
+### Planned Features
+- **Machine Learning Integration**: AI-powered error prediction
+- **Advanced Analytics**: Detailed performance analytics
+- **Plugin System**: Extensible plugin architecture
+- **Web Dashboard**: Web-based management interface
+- **Mobile App**: Mobile management application
+
+### Upcoming Platforms
+- **Bitbucket**: Atlassian Bitbucket integration
+- **Azure DevOps**: Microsoft Azure DevOps support
+- **Jenkins**: Jenkins CI/CD integration
+- **CircleCI**: CircleCI pipeline management
 
 ---
-*QMOI: The future of AI automation, revenue, and cloud performance. Now with advanced UI, marketing, and full master control.*
+
+**QMOI AI Automation System** - Empowering developers with intelligent automation across multiple platforms.

@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { EventEmitter } from 'events';
+import axios from "axios";
+import { EventEmitter } from "events";
 
 interface ErrorReport {
   id: string;
@@ -10,7 +10,7 @@ interface ErrorReport {
   columnNumber?: number;
   stack?: string;
   context?: Record<string, unknown>;
-  severity: 'low' | 'medium' | 'high' | 'critical';
+  severity: "low" | "medium" | "high" | "critical";
   timestamp: string;
   retryCount: number;
   fixHistory: FixAttempt[];
@@ -30,7 +30,7 @@ interface FixAttempt {
 }
 
 interface AppliedChange {
-  type: 'code' | 'config' | 'dependency' | 'system';
+  type: "code" | "config" | "dependency" | "system";
   target: string;
   action: string;
   details: string;
@@ -42,13 +42,13 @@ interface FixSuggestion {
   description: string;
   strategy: string;
   confidence: number;
-  priority: 'low' | 'medium' | 'high' | 'critical';
+  priority: "low" | "medium" | "high" | "critical";
   codeChanges: {
     filePath: string;
     startLine: number;
     endLine: number;
     newContent: string;
-    type: 'add' | 'modify' | 'delete';
+    type: "add" | "modify" | "delete";
   }[];
   commands?: string[];
   rollbackPlan?: string[];
@@ -68,7 +68,7 @@ interface SystemHealth {
   cpuUsage: number;
   memoryUsage: number;
   diskUsage: number;
-  networkStatus: 'connected' | 'disconnected' | 'unstable';
+  networkStatus: "connected" | "disconnected" | "unstable";
   activeErrors: number;
   fixedErrors: number;
   averageResponseTime: number;
@@ -106,36 +106,38 @@ export class EnhancedErrorFixingService extends EventEmitter {
       cpuUsage: 0,
       memoryUsage: 0,
       diskUsage: 0,
-      networkStatus: 'connected',
+      networkStatus: "connected",
       activeErrors: 0,
       fixedErrors: 0,
-      averageResponseTime: 0
+      averageResponseTime: 0,
     };
   }
 
-  public async reportError(report: Omit<ErrorReport, 'id' | 'timestamp' | 'retryCount' | 'fixHistory'>): Promise<string> {
+  public async reportError(
+    report: Omit<ErrorReport, "id" | "timestamp" | "retryCount" | "fixHistory">,
+  ): Promise<string> {
     const errorId = this.generateErrorId();
     const errorReport: ErrorReport = {
       ...report,
       id: errorId,
       timestamp: new Date().toISOString(),
       retryCount: 0,
-      fixHistory: []
+      fixHistory: [],
     };
 
-    console.log('🚨 Enhanced Error Reported:', errorReport);
+    console.log("🚨 Enhanced Error Reported:", errorReport);
     this.errorQueue.push(errorReport);
     this.systemHealth.activeErrors++;
-    
+
     // Emit event for real-time monitoring
-    this.emit('errorReported', errorReport);
-    
+    this.emit("errorReported", errorReport);
+
     // Fast notification
     await this.notificationService.sendErrorNotification(errorReport);
-    
+
     // Start processing if not already running
     this.processQueue();
-    
+
     return errorId;
   }
 
@@ -152,7 +154,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log('🔧 Processing error:', errorReport.id);
+      console.log("🔧 Processing error:", errorReport.id);
       try {
         // Root cause analysis
         const rootCause = await this.analyzeRootCause(errorReport);
@@ -160,28 +162,31 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
         // AI-driven diagnostics and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
-        
+
         if (fixSuggestion) {
-          console.log('🤖 AI Fix Suggestion:', fixSuggestion);
-          
+          console.log("🤖 AI Fix Suggestion:", fixSuggestion);
+
           // Apply fix with retry logic
-          const fixResult = await this.applyFixWithRetry(errorReport, fixSuggestion);
-          
+          const fixResult = await this.applyFixWithRetry(
+            errorReport,
+            fixSuggestion,
+          );
+
           // Learn from the fix attempt
           await this.learnFromFixAttempt(errorReport, fixSuggestion, fixResult);
-          
+
           // Update system health
           this.updateSystemHealth(fixResult);
-          
+
           // Emit events for real-time updates
-          this.emit('fixApplied', { errorReport, fixSuggestion, fixResult });
+          this.emit("fixApplied", { errorReport, fixSuggestion, fixResult });
         } else {
-          console.log('⚠️ No automatic fix suggested for this error.');
-          this.emit('noFixAvailable', errorReport);
+          console.log("⚠️ No automatic fix suggested for this error.");
+          this.emit("noFixAvailable", errorReport);
         }
       } catch (error) {
-        console.error('❌ Failed to process error:', error);
-        this.emit('processingError', { errorReport, error });
+        console.error("❌ Failed to process error:", error);
+        this.emit("processingError", { errorReport, error });
       } finally {
         this.isProcessing = false;
         this.processQueue(); // Process next error in queue
@@ -194,12 +199,24 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async analyzeRootCause(error: ErrorReport): Promise<string> {
     // AI-driven root cause analysis
     const patterns = [
-      { pattern: /Cannot find module/, cause: 'Missing dependency or incorrect import path' },
-      { pattern: /Unexpected token/, cause: 'Syntax error in code' },
-      { pattern: /Permission denied/, cause: 'File permission or access rights issue' },
-      { pattern: /Network timeout/, cause: 'Network connectivity or server response issue' },
-      { pattern: /Memory leak/, cause: 'Resource management issue' },
-      { pattern: /Deployment failed/, cause: 'Configuration or environment issue' }
+      {
+        pattern: /Cannot find module/,
+        cause: "Missing dependency or incorrect import path",
+      },
+      { pattern: /Unexpected token/, cause: "Syntax error in code" },
+      {
+        pattern: /Permission denied/,
+        cause: "File permission or access rights issue",
+      },
+      {
+        pattern: /Network timeout/,
+        cause: "Network connectivity or server response issue",
+      },
+      { pattern: /Memory leak/, cause: "Resource management issue" },
+      {
+        pattern: /Deployment failed/,
+        cause: "Configuration or environment issue",
+      },
     ];
 
     for (const { pattern, cause } of patterns) {
@@ -214,189 +231,226 @@ export class EnhancedErrorFixingService extends EventEmitter {
       return `Historical pattern: ${learningData.successfulFixes[0]}`;
     }
 
-    return 'Unknown root cause - requires manual investigation';
+    return "Unknown root cause - requires manual investigation";
   }
 
-  private async analyzeAndSuggestFix(error: ErrorReport): Promise<FixSuggestion | null> {
-    console.log('🧠 AI analyzing error:', error);
+  private async analyzeAndSuggestFix(
+    error: ErrorReport,
+  ): Promise<FixSuggestion | null> {
+    console.log("🧠 AI analyzing error:", error);
 
     // Check learning database for similar errors
     const learningData = this.learningDatabase.get(error.type);
     let confidence = 0.5;
-    let strategy = 'general';
+    let strategy = "general";
 
     if (learningData && learningData.successRate > 0.7) {
       confidence = learningData.successRate;
-      strategy = learningData.successfulFixes[0] || 'general';
+      strategy = learningData.successfulFixes[0] || "general";
     }
 
     // Universal error catching with specific handlers
     const fixHandlers = {
-      'LicenseError': this.handleLicenseError.bind(this),
-      'VercelDeployError': this.handleVercelDeployError.bind(this),
-      'HerokuDeployError': this.handleHerokuDeployError.bind(this),
-      'NetworkError': this.handleNetworkError.bind(this),
-      'DependencyError': this.handleDependencyError.bind(this),
-      'SyntaxError': this.handleSyntaxError.bind(this),
-      'PermissionError': this.handlePermissionError.bind(this),
-      'SystemResourceError': this.handleSystemResourceError.bind(this)
+      LicenseError: this.handleLicenseError.bind(this),
+      VercelDeployError: this.handleVercelDeployError.bind(this),
+      HerokuDeployError: this.handleHerokuDeployError.bind(this),
+      NetworkError: this.handleNetworkError.bind(this),
+      DependencyError: this.handleDependencyError.bind(this),
+      SyntaxError: this.handleSyntaxError.bind(this),
+      PermissionError: this.handlePermissionError.bind(this),
+      SystemResourceError: this.handleSystemResourceError.bind(this),
     };
 
-    const handler = fixHandlers[error.type as keyof typeof fixHandlers] || this.handleGenericError.bind(this);
+    const handler =
+      fixHandlers[error.type as keyof typeof fixHandlers] ||
+      this.handleGenericError.bind(this);
     const suggestion = await handler(error, confidence, strategy);
 
     return suggestion;
   }
 
-  private async handleLicenseError(error: ErrorReport, confidence: number, strategy: string): Promise<FixSuggestion> {
+  private async handleLicenseError(
+    error: ErrorReport,
+    confidence: number,
+    strategy: string,
+  ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
-      description: 'Fixing license compliance error with automated resolution',
-      strategy: 'license_compliance',
+      description: "Fixing license compliance error with automated resolution",
+      strategy: "license_compliance",
       confidence: confidence * 0.9,
-      priority: 'high',
+      priority: "high",
       codeChanges: [],
       commands: [
-        'npm audit fix',
-        'npx license-checker --json > license-report.json',
-        'npm uninstall <offending-package> || echo "Package not found"'
+        "npm audit fix",
+        "npx license-checker --json > license-report.json",
+        'npm uninstall <offending-package> || echo "Package not found"',
       ],
-      rollbackPlan: ['npm install <offending-package>'],
-      estimatedDuration: 30000
+      rollbackPlan: ["npm install <offending-package>"],
+      estimatedDuration: 30000,
     };
   }
 
-  private async handleVercelDeployError(error: ErrorReport, confidence: number, strategy: string): Promise<FixSuggestion> {
+  private async handleVercelDeployError(
+    error: ErrorReport,
+    confidence: number,
+    strategy: string,
+  ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
-      description: 'Fixing Vercel deployment with cache clear and environment checks',
-      strategy: 'vercel_deployment',
+      description:
+        "Fixing Vercel deployment with cache clear and environment checks",
+      strategy: "vercel_deployment",
       confidence: confidence * 0.8,
-      priority: 'high',
+      priority: "high",
       codeChanges: [],
       commands: [
-        'npx vercel --prod --force --yes',
-        'npx vercel --prod --yes --force --prebuilt',
-        'vercel env pull .env.local'
+        "npx vercel --prod --force --yes",
+        "npx vercel --prod --yes --force --prebuilt",
+        "vercel env pull .env.local",
       ],
-      rollbackPlan: ['git revert HEAD', 'npx vercel --prod --yes'],
-      estimatedDuration: 60000
+      rollbackPlan: ["git revert HEAD", "npx vercel --prod --yes"],
+      estimatedDuration: 60000,
     };
   }
 
-  private async handleNetworkError(error: ErrorReport, confidence: number, strategy: string): Promise<FixSuggestion> {
+  private async handleNetworkError(
+    error: ErrorReport,
+    confidence: number,
+    strategy: string,
+  ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
-      description: 'Fixing network connectivity issues',
-      strategy: 'network_connectivity',
+      description: "Fixing network connectivity issues",
+      strategy: "network_connectivity",
       confidence: confidence * 0.7,
-      priority: 'critical',
+      priority: "critical",
       codeChanges: [],
       commands: [
-        'netsh winsock reset',
-        'ipconfig /flushdns',
-        'netsh int ip reset'
+        "netsh winsock reset",
+        "ipconfig /flushdns",
+        "netsh int ip reset",
       ],
       rollbackPlan: [],
-      estimatedDuration: 45000
+      estimatedDuration: 45000,
     };
   }
 
-  private async handleDependencyError(error: ErrorReport, confidence: number, strategy: string): Promise<FixSuggestion> {
+  private async handleDependencyError(
+    error: ErrorReport,
+    confidence: number,
+    strategy: string,
+  ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
-      description: 'Fixing dependency issues with clean reinstall',
-      strategy: 'dependency_resolution',
+      description: "Fixing dependency issues with clean reinstall",
+      strategy: "dependency_resolution",
       confidence: confidence * 0.9,
-      priority: 'high',
+      priority: "high",
       codeChanges: [],
       commands: [
-        'npm cache clean --force',
-        'rm -rf node_modules package-lock.json',
-        'npm install --legacy-peer-deps'
+        "npm cache clean --force",
+        "rm -rf node_modules package-lock.json",
+        "npm install --legacy-peer-deps",
       ],
-      rollbackPlan: ['git checkout package.json package-lock.json', 'npm install'],
-      estimatedDuration: 120000
+      rollbackPlan: [
+        "git checkout package.json package-lock.json",
+        "npm install",
+      ],
+      estimatedDuration: 120000,
     };
   }
 
-  private async handleSyntaxError(error: ErrorReport, confidence: number, strategy: string): Promise<FixSuggestion> {
+  private async handleSyntaxError(
+    error: ErrorReport,
+    confidence: number,
+    strategy: string,
+  ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
-      description: 'Fixing syntax errors with automated code correction',
-      strategy: 'syntax_correction',
+      description: "Fixing syntax errors with automated code correction",
+      strategy: "syntax_correction",
       confidence: confidence * 0.8,
-      priority: 'high',
-      codeChanges: error.filePath ? [{
-        filePath: error.filePath,
-        startLine: error.lineNumber || 1,
-        endLine: error.lineNumber || 1,
-        newContent: '// Auto-fixed syntax error',
-        type: 'modify'
-      }] : [],
-      commands: [
-        'npx eslint --fix',
-        'npx prettier --write .'
-      ],
-      rollbackPlan: ['git checkout <file>'],
-      estimatedDuration: 15000
+      priority: "high",
+      codeChanges: error.filePath
+        ? [
+            {
+              filePath: error.filePath,
+              startLine: error.lineNumber || 1,
+              endLine: error.lineNumber || 1,
+              newContent: "// Auto-fixed syntax error",
+              type: "modify",
+            },
+          ]
+        : [],
+      commands: ["npx eslint --fix", "npx prettier --write ."],
+      rollbackPlan: ["git checkout <file>"],
+      estimatedDuration: 15000,
     };
   }
 
-  private async handlePermissionError(error: ErrorReport, confidence: number, strategy: string): Promise<FixSuggestion> {
+  private async handlePermissionError(
+    error: ErrorReport,
+    confidence: number,
+    strategy: string,
+  ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
-      description: 'Fixing permission issues with automated rights management',
-      strategy: 'permission_management',
+      description: "Fixing permission issues with automated rights management",
+      strategy: "permission_management",
       confidence: confidence * 0.6,
-      priority: 'critical',
+      priority: "critical",
       codeChanges: [],
-      commands: [
-        'icacls . /grant Everyone:F /T',
-        'chmod -R 755 .'
-      ],
-      rollbackPlan: ['icacls . /reset /T'],
-      estimatedDuration: 30000
+      commands: ["icacls . /grant Everyone:F /T", "chmod -R 755 ."],
+      rollbackPlan: ["icacls . /reset /T"],
+      estimatedDuration: 30000,
     };
   }
 
-  private async handleSystemResourceError(error: ErrorReport, confidence: number, strategy: string): Promise<FixSuggestion> {
+  private async handleSystemResourceError(
+    error: ErrorReport,
+    confidence: number,
+    strategy: string,
+  ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
-      description: 'Optimizing system resources and clearing caches',
-      strategy: 'resource_optimization',
+      description: "Optimizing system resources and clearing caches",
+      strategy: "resource_optimization",
       confidence: confidence * 0.7,
-      priority: 'medium',
+      priority: "medium",
       codeChanges: [],
       commands: [
-        'npm cache clean --force',
-        'del /s /q temp\\*',
-        'taskkill /f /im node.exe'
+        "npm cache clean --force",
+        "del /s /q temp\\*",
+        "taskkill /f /im node.exe",
       ],
       rollbackPlan: [],
-      estimatedDuration: 45000
+      estimatedDuration: 45000,
     };
   }
 
-  private async handleGenericError(error: ErrorReport, confidence: number, strategy: string): Promise<FixSuggestion> {
+  private async handleGenericError(
+    error: ErrorReport,
+    confidence: number,
+    strategy: string,
+  ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
-      description: 'Applying generic error resolution strategy',
-      strategy: 'generic_resolution',
+      description: "Applying generic error resolution strategy",
+      strategy: "generic_resolution",
       confidence: confidence * 0.5,
-      priority: 'medium',
+      priority: "medium",
       codeChanges: [],
-      commands: [
-        'npm audit fix',
-        'npx eslint --fix',
-        'git status'
-      ],
-      rollbackPlan: ['git reset --hard HEAD'],
-      estimatedDuration: 30000
+      commands: ["npm audit fix", "npx eslint --fix", "git status"],
+      rollbackPlan: ["git reset --hard HEAD"],
+      estimatedDuration: 30000,
     };
   }
 
-  private async applyFixWithRetry(error: ErrorReport, fixSuggestion: FixSuggestion): Promise<FixAttempt> {
+  private async applyFixWithRetry(
+    error: ErrorReport,
+    fixSuggestion: FixSuggestion,
+  ): Promise<FixAttempt> {
     const fixAttempt: FixAttempt = {
       id: `attempt_${Date.now()}`,
       strategy: fixSuggestion.strategy,
@@ -404,7 +458,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
       success: false,
       duration: 0,
       timestamp: new Date().toISOString(),
-      appliedChanges: []
+      appliedChanges: [],
     };
 
     const startTime = Date.now();
@@ -412,8 +466,10 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
       try {
-        console.log(`🔄 Attempt ${attempt}/${this.maxRetries} for fix: ${fixSuggestion.id}`);
-        
+        console.log(
+          `🔄 Attempt ${attempt}/${this.maxRetries} for fix: ${fixSuggestion.id}`,
+        );
+
         // Apply code changes
         for (const change of fixSuggestion.codeChanges) {
           const changeResult = await this.applyCodeChange(change);
@@ -429,13 +485,12 @@ export class EnhancedErrorFixingService extends EventEmitter {
         }
 
         fixAttempt.success = true;
-        console.log('✅ Fix applied successfully');
+        console.log("✅ Fix applied successfully");
         break;
-
       } catch (error) {
         lastError = error.message;
         console.warn(`⚠️ Fix attempt ${attempt} failed:`, error);
-        
+
         if (attempt < this.maxRetries) {
           await this.delay(this.retryDelay * attempt); // Exponential backoff
         }
@@ -444,20 +499,22 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     if (!fixAttempt.success) {
       fixAttempt.error = lastError;
-      console.error('❌ All fix attempts failed');
+      console.error("❌ All fix attempts failed");
     }
 
     fixAttempt.duration = Date.now() - startTime;
     return fixAttempt;
   }
 
-  private async applyCodeChange(change: FixSuggestion['codeChanges'][0]): Promise<AppliedChange> {
+  private async applyCodeChange(
+    change: FixSuggestion["codeChanges"][0],
+  ): Promise<AppliedChange> {
     const result: AppliedChange = {
-      type: 'code',
+      type: "code",
       target: change.filePath,
       action: change.type,
       details: `Lines ${change.startLine}-${change.endLine}: ${change.newContent}`,
-      success: false
+      success: false,
     };
 
     try {
@@ -473,11 +530,11 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
   private async executeCommand(command: string): Promise<AppliedChange> {
     const result: AppliedChange = {
-      type: 'system',
-      target: 'command',
-      action: 'execute',
+      type: "system",
+      target: "command",
+      action: "execute",
       details: command,
-      success: false
+      success: false,
     };
 
     try {
@@ -491,7 +548,11 @@ export class EnhancedErrorFixingService extends EventEmitter {
     return result;
   }
 
-  private async learnFromFixAttempt(error: ErrorReport, fixSuggestion: FixSuggestion, fixResult: FixAttempt): Promise<void> {
+  private async learnFromFixAttempt(
+    error: ErrorReport,
+    fixSuggestion: FixSuggestion,
+    fixResult: FixAttempt,
+  ): Promise<void> {
     const learningKey = error.type;
     let learningData = this.learningDatabase.get(learningKey);
 
@@ -502,7 +563,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
         failedFixes: [],
         averageFixTime: 0,
         successRate: 0,
-        lastUpdated: new Date().toISOString()
+        lastUpdated: new Date().toISOString(),
       };
     }
 
@@ -514,26 +575,34 @@ export class EnhancedErrorFixingService extends EventEmitter {
     }
 
     // Calculate success rate
-    const totalAttempts = learningData.successfulFixes.length + learningData.failedFixes.length;
-    learningData.successRate = totalAttempts > 0 ? learningData.successfulFixes.length / totalAttempts : 0;
+    const totalAttempts =
+      learningData.successfulFixes.length + learningData.failedFixes.length;
+    learningData.successRate =
+      totalAttempts > 0
+        ? learningData.successfulFixes.length / totalAttempts
+        : 0;
 
     // Update average fix time
     const allTimes = [fixResult.duration, learningData.averageFixTime];
-    learningData.averageFixTime = allTimes.reduce((a, b) => a + b, 0) / allTimes.length;
+    learningData.averageFixTime =
+      allTimes.reduce((a, b) => a + b, 0) / allTimes.length;
 
     learningData.lastUpdated = new Date().toISOString();
     this.learningDatabase.set(learningKey, learningData);
 
-    console.log('🧠 Updated learning database for:', learningKey);
+    console.log("🧠 Updated learning database for:", learningKey);
   }
 
   private updateSystemHealth(fixResult: FixAttempt): void {
     if (fixResult.success) {
       this.systemHealth.fixedErrors++;
-      this.systemHealth.activeErrors = Math.max(0, this.systemHealth.activeErrors - 1);
+      this.systemHealth.activeErrors = Math.max(
+        0,
+        this.systemHealth.activeErrors - 1,
+      );
     }
 
-    this.systemHealth.averageResponseTime = 
+    this.systemHealth.averageResponseTime =
       (this.systemHealth.averageResponseTime + fixResult.duration) / 2;
   }
 
@@ -548,14 +617,14 @@ export class EnhancedErrorFixingService extends EventEmitter {
     this.systemHealth.cpuUsage = Math.random() * 100;
     this.systemHealth.memoryUsage = Math.random() * 100;
     this.systemHealth.diskUsage = Math.random() * 100;
-    
-    this.emit('healthUpdate', this.systemHealth);
+
+    this.emit("healthUpdate", this.systemHealth);
   }
 
   public startContinuousMonitoring(): void {
     this.continuousMonitoring = true;
-    console.log('🔍 Starting continuous error monitoring');
-    this.emit('monitoringStarted');
+    console.log("🔍 Starting continuous error monitoring");
+    this.emit("monitoringStarted");
   }
 
   public stopContinuousMonitoring(): void {
@@ -563,8 +632,8 @@ export class EnhancedErrorFixingService extends EventEmitter {
     if (this.monitoringInterval) {
       clearInterval(this.monitoringInterval);
     }
-    console.log('🛑 Stopped continuous error monitoring');
-    this.emit('monitoringStopped');
+    console.log("🛑 Stopped continuous error monitoring");
+    this.emit("monitoringStopped");
   }
 
   public getSystemHealth(): SystemHealth {
@@ -578,21 +647,22 @@ export class EnhancedErrorFixingService extends EventEmitter {
   public getQueueStatus(): { queueLength: number; isProcessing: boolean } {
     return {
       queueLength: this.errorQueue.length,
-      isProcessing: this.isProcessing
+      isProcessing: this.isProcessing,
     };
   }
 
   private delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
 
 // Notification service for fast error notifications
 class NotificationService {
   async sendErrorNotification(error: ErrorReport): Promise<void> {
-    console.log('📢 Sending error notification:', error.id);
+    console.log("📢 Sending error notification:", error.id);
     // In a real implementation, this would send notifications via email, Slack, etc.
   }
 }
 
-export const enhancedErrorFixingService = EnhancedErrorFixingService.getInstance(); 
+export const enhancedErrorFixingService =
+  EnhancedErrorFixingService.getInstance();

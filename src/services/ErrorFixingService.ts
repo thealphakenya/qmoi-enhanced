@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 interface ErrorReport {
   type: string;
@@ -38,7 +38,7 @@ export class ErrorFixingService {
   }
 
   public async reportError(report: ErrorReport): Promise<void> {
-    console.log('Error reported:', report);
+    console.log("Error reported:", report);
     this.errorQueue.push(report);
     this.processQueue();
   }
@@ -52,19 +52,19 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log('Processing error:', errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
         if (fixSuggestion) {
-          console.log('Applying fix suggestion:', fixSuggestion);
+          console.log("Applying fix suggestion:", fixSuggestion);
           await this.applyFix(fixSuggestion);
-          console.log('Fix applied successfully.');
+          console.log("Fix applied successfully.");
         } else {
-          console.log('No automatic fix suggested for this error.');
+          console.log("No automatic fix suggested for this error.");
         }
       } catch (error) {
-        console.error('Failed to process error or apply fix:', error);
+        console.error("Failed to process error or apply fix:", error);
       } finally {
         this.isProcessing = false;
         this.processQueue(); // Process next error in queue
@@ -74,21 +74,27 @@ export class ErrorFixingService {
     }
   }
 
-  private async analyzeAndSuggestFix(error: ErrorReport): Promise<FixSuggestion | null> {
+  private async analyzeAndSuggestFix(
+    error: ErrorReport,
+  ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a placeholder with some basic examples.
-    console.log('AI analyzing error:', error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
-    if (error.message.includes('Non-compliant license found') || error.type === 'LicenseError') {
+    if (
+      error.message.includes("Non-compliant license found") ||
+      error.type === "LicenseError"
+    ) {
       // Attempt to parse the offending package from logs (if available)
       // Suggest removing or replacing the package, or adding a license override
       return {
-        description: 'Attempting to fix license compliance error. Will try to remove or replace non-compliant packages, or add override if safe.',
+        description:
+          "Attempting to fix license compliance error. Will try to remove or replace non-compliant packages, or add override if safe.",
         codeChanges: [],
         commands: [
           // Try to auto-remove the last installed package (as a fallback)
-          'npm uninstall <offending-package>',
+          "npm uninstall <offending-package>",
           // Optionally, add a license override (if policy allows)
           // 'npx license-checker --json > license-report.json',
           // 'echo "<offending-package>@*" >> .license-allowlist',
@@ -97,32 +103,38 @@ export class ErrorFixingService {
     }
 
     // Vercel/Deployment error handling
-    if (error.message.includes('Vercel deployment failed') || error.type === 'VercelDeployError') {
+    if (
+      error.message.includes("Vercel deployment failed") ||
+      error.type === "VercelDeployError"
+    ) {
       // Try to parse the error and suggest fixes
       return {
-        description: 'Attempting to fix Vercel deployment error. Will retry with cache clear, check env, and auto-fix common issues.',
+        description:
+          "Attempting to fix Vercel deployment error. Will retry with cache clear, check env, and auto-fix common issues.",
         codeChanges: [],
         commands: [
-          'npx vercel --prod --force --yes',
+          "npx vercel --prod --force --yes",
           // Optionally, clear Vercel cache
-          'npx vercel --prod --yes --force --prebuilt',
+          "npx vercel --prod --yes --force --prebuilt",
         ],
       };
     }
 
     // Heroku/Other deployment error handling
-    if (error.message.includes('Heroku deployment failed') || error.type === 'HerokuDeployError') {
+    if (
+      error.message.includes("Heroku deployment failed") ||
+      error.type === "HerokuDeployError"
+    ) {
       return {
-        description: 'Attempting to fix Heroku deployment error. Will retry push and check env.',
+        description:
+          "Attempting to fix Heroku deployment error. Will retry push and check env.",
         codeChanges: [],
-        commands: [
-          'git push heroku main --force',
-        ],
+        commands: ["git push heroku main --force"],
       };
     }
 
     // Existing logic...
-    if (error.message.includes('Cannot find module') && error.filePath) {
+    if (error.message.includes("Cannot find module") && error.filePath) {
       const moduleName = error.message.split("'")[1];
       return {
         description: `Attempting to fix missing import for module: ${moduleName}`,
@@ -131,7 +143,11 @@ export class ErrorFixingService {
       };
     }
 
-    if (error.message.includes('linter error') && error.filePath && error.lineNumber) {
+    if (
+      error.message.includes("linter error") &&
+      error.filePath &&
+      error.lineNumber
+    ) {
       return {
         description: `Attempting to fix linter error at ${error.filePath}:${error.lineNumber}`,
         codeChanges: [], // Real fix would involve fetching file content, applying linter fix
@@ -139,11 +155,11 @@ export class ErrorFixingService {
     }
 
     // Example for a hypothetical GitHub push error
-    if (error.type === 'GitHubPushError') {
+    if (error.type === "GitHubPushError") {
       return {
         description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
-        commands: ['git pull --rebase', 'git push'],
+        commands: ["git pull --rebase", "git push"],
       };
     }
 
@@ -152,7 +168,7 @@ export class ErrorFixingService {
   }
 
   private async applyFix(fix: FixSuggestion): Promise<void> {
-    console.log('Applying code changes:', fix.codeChanges);
+    console.log("Applying code changes:", fix.codeChanges);
     // In a real scenario, this would interact with the file system API to modify files.
     // For this simulation, we'll just log.
     for (const change of fix.codeChanges) {
@@ -162,7 +178,7 @@ ${change.newContent}`);
       // await axios.post('/api/edit-file', change); // Hypothetical API call to apply file edit
     }
 
-    console.log('Running commands:', fix.commands);
+    console.log("Running commands:", fix.commands);
     if (fix.commands && fix.commands.length > 0) {
       for (const command of fix.commands) {
         console.log(`Executing command: ${command}`);
@@ -172,4 +188,4 @@ ${change.newContent}`);
   }
 }
 
-export const errorFixingService = ErrorFixingService.getInstance(); 
+export const errorFixingService = ErrorFixingService.getInstance();

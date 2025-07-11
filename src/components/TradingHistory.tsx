@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Card,
@@ -16,26 +16,21 @@ import {
   Tooltip,
   CircularProgress,
   Alert,
-} from '@mui/material';
-import {
-  TrendingUp,
-  TrendingDown,
-  Refresh,
-  Info,
-} from '@mui/icons-material';
-import { useAuth } from '../hooks/useAuth';
-import { TradingManager } from '../config/trading';
+} from "@mui/material";
+import { TrendingUp, TrendingDown, Refresh, Info } from "@mui/icons-material";
+import { useAuth } from "../hooks/useAuth";
+import { TradingManager } from "../config/trading";
 
 interface Trade {
   id: string;
   timestamp: Date;
   pair: string;
-  type: 'buy' | 'sell';
+  type: "buy" | "sell";
   amount: number;
   price: number;
   total: number;
   profit?: number;
-  status: 'completed' | 'failed' | 'pending';
+  status: "completed" | "failed" | "pending";
   userId: string;
   userRole: string;
 }
@@ -44,7 +39,9 @@ interface TradingHistoryProps {
   className?: string;
 }
 
-export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => {
+export const TradingHistory: React.FC<TradingHistoryProps> = ({
+  className,
+}) => {
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -62,16 +59,23 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
       setError(null);
 
       const tradingManager = TradingManager.getInstance();
-      const history = (await tradingManager.getTradingHistory()).map((trade: any) => ({
-        ...trade,
-        timestamp: new Date(trade.timestamp),
-      }));
+      const history = (await tradingManager.getTradingHistory()).map(
+        (trade: any) => ({
+          ...trade,
+          timestamp: new Date(trade.timestamp),
+        }),
+      );
       setTrades(history);
 
       // Calculate statistics
-      const successfulTrades = history.filter((t: Trade) => t.status === 'completed');
-      const totalProfit = successfulTrades.reduce((sum: number, trade: Trade) => sum + (trade.profit || 0), 0);
-      const winRate = successfulTrades.length / history.length * 100;
+      const successfulTrades = history.filter(
+        (t: Trade) => t.status === "completed",
+      );
+      const totalProfit = successfulTrades.reduce(
+        (sum: number, trade: Trade) => sum + (trade.profit || 0),
+        0,
+      );
+      const winRate = (successfulTrades.length / history.length) * 100;
 
       setStats({
         totalTrades: history.length,
@@ -80,7 +84,9 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
         winRate,
       });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch trading history');
+      setError(
+        err instanceof Error ? err.message : "Failed to fetch trading history",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -93,27 +99,32 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
   }, []);
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
     }).format(amount);
   };
 
   const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('en-US', {
-      dateStyle: 'short',
-      timeStyle: 'medium',
+    return new Intl.DateTimeFormat("en-US", {
+      dateStyle: "short",
+      timeStyle: "medium",
     }).format(date);
   };
 
-  if (!user || !['master', 'sister'].includes(user.role)) {
+  if (!user || !["master", "sister"].includes(user.role)) {
     return null;
   }
 
   return (
     <Card className={className}>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={2}
+        >
           <Typography variant="h6" component="h2">
             Trading History
           </Typography>
@@ -142,9 +153,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
               <Typography variant="subtitle2" color="text.secondary">
                 Total Trades
               </Typography>
-              <Typography variant="h6">
-                {stats.totalTrades}
-              </Typography>
+              <Typography variant="h6">{stats.totalTrades}</Typography>
             </CardContent>
           </Card>
           <Card variant="outlined">
@@ -152,9 +161,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
               <Typography variant="subtitle2" color="text.secondary">
                 Successful Trades
               </Typography>
-              <Typography variant="h6">
-                {stats.successfulTrades}
-              </Typography>
+              <Typography variant="h6">{stats.successfulTrades}</Typography>
             </CardContent>
           </Card>
           <Card variant="outlined">
@@ -162,7 +169,10 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
               <Typography variant="subtitle2" color="text.secondary">
                 Total Profit
               </Typography>
-              <Typography variant="h6" color={stats.totalProfit >= 0 ? 'success.main' : 'error.main'}>
+              <Typography
+                variant="h6"
+                color={stats.totalProfit >= 0 ? "success.main" : "error.main"}
+              >
                 {formatCurrency(stats.totalProfit)}
               </Typography>
             </CardContent>
@@ -172,9 +182,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
               <Typography variant="subtitle2" color="text.secondary">
                 Win Rate
               </Typography>
-              <Typography variant="h6">
-                {stats.winRate.toFixed(1)}%
-              </Typography>
+              <Typography variant="h6">{stats.winRate.toFixed(1)}%</Typography>
             </CardContent>
           </Card>
         </Box>
@@ -206,19 +214,31 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
                     <TableCell>
                       <Chip
                         size="small"
-                        icon={trade.type === 'buy' ? <TrendingUp /> : <TrendingDown />}
+                        icon={
+                          trade.type === "buy" ? (
+                            <TrendingUp />
+                          ) : (
+                            <TrendingDown />
+                          )
+                        }
                         label={trade.type.toUpperCase()}
-                        color={trade.type === 'buy' ? 'success' : 'error'}
+                        color={trade.type === "buy" ? "success" : "error"}
                         variant="outlined"
                       />
                     </TableCell>
                     <TableCell align="right">{trade.amount}</TableCell>
-                    <TableCell align="right">{formatCurrency(trade.price)}</TableCell>
-                    <TableCell align="right">{formatCurrency(trade.total)}</TableCell>
+                    <TableCell align="right">
+                      {formatCurrency(trade.price)}
+                    </TableCell>
+                    <TableCell align="right">
+                      {formatCurrency(trade.total)}
+                    </TableCell>
                     <TableCell align="right">
                       {trade.profit !== undefined && (
                         <Typography
-                          color={trade.profit >= 0 ? 'success.main' : 'error.main'}
+                          color={
+                            trade.profit >= 0 ? "success.main" : "error.main"
+                          }
                         >
                           {formatCurrency(trade.profit)}
                         </Typography>
@@ -229,11 +249,11 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
                         size="small"
                         label={trade.status}
                         color={
-                          trade.status === 'completed'
-                            ? 'success'
-                            : trade.status === 'failed'
-                            ? 'error'
-                            : 'warning'
+                          trade.status === "completed"
+                            ? "success"
+                            : trade.status === "failed"
+                              ? "error"
+                              : "warning"
                         }
                       />
                     </TableCell>
@@ -246,10 +266,11 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({ className }) => 
 
         <Box mt={2}>
           <Alert severity="info" icon={<Info />}>
-            Trading history is automatically updated every minute. Click the refresh button to update manually.
+            Trading history is automatically updated every minute. Click the
+            refresh button to update manually.
           </Alert>
         </Box>
       </CardContent>
     </Card>
   );
-}; 
+};

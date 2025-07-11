@@ -23,9 +23,9 @@ export async function GET() {
     if (healthLine) health = healthLine;
     // Parse history: look for lines with deployment, rollback, and version (commit hash)
     const versionRegex = /commit ([a-f0-9]{7,40})/i;
-    let events: {timestamp: string, status: string, version: string}[] = [];
-    for (let line of logData.slice(-100)) {
-      let timestamp = line.slice(1, 20);
+    const events: {timestamp: string, status: string, version: string}[] = [];
+    for (const line of logData.slice(-100)) {
+      const timestamp = line.slice(1, 20);
       let status = '';
       if (line.includes('deployment successful')) status = 'Success';
       else if (line.includes('deployment failed')) status = 'Failed';

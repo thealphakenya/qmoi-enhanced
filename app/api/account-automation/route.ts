@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // import nodemailer from 'nodemailer'; // Uncomment and configure for real email
 
 // In-memory account store (replace with DB in production)
-let accounts: any[] = [];
+const accounts: any[] = [];
 let idCounter = 1;
 
 export async function POST_CREATE(req: NextRequest) {

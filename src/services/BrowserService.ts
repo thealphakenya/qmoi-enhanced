@@ -1,5 +1,5 @@
-import { EventEmitter } from 'events';
-import { logger } from './LoggerService';
+import { EventEmitter } from "events";
+import { logger } from "./LoggerService";
 
 interface BrowserTab {
   id: string;
@@ -26,7 +26,13 @@ interface Bookmark {
 
 interface DeveloperTools {
   isOpen: boolean;
-  activePanel: 'elements' | 'console' | 'network' | 'sources' | 'performance' | 'application';
+  activePanel:
+    | "elements"
+    | "console"
+    | "network"
+    | "sources"
+    | "performance"
+    | "application";
   console: ConsoleMessage[];
   network: NetworkRequest[];
   elements: DOMElement[];
@@ -35,7 +41,7 @@ interface DeveloperTools {
 
 interface ConsoleMessage {
   id: string;
-  type: 'log' | 'info' | 'warn' | 'error';
+  type: "log" | "info" | "warn" | "error";
   message: string;
   timestamp: Date;
   source: string;
@@ -75,7 +81,7 @@ interface SourceFile {
 
 interface BrowserSettings {
   homepage: string;
-  searchEngine: 'google' | 'bing' | 'duckduckgo' | 'custom';
+  searchEngine: "google" | "bing" | "duckduckgo" | "custom";
   customSearchUrl: string;
   defaultZoom: number;
   enableJavaScript: boolean;
@@ -133,7 +139,7 @@ export class BrowserService {
     filename: string;
     url: string;
     progress: number;
-    status: 'pending' | 'downloading' | 'completed' | 'failed';
+    status: "pending" | "downloading" | "completed" | "failed";
   }> = [];
 
   private constructor() {
@@ -152,125 +158,125 @@ export class BrowserService {
 
   private getDefaultSettings(): BrowserSettings {
     return {
-      homepage: 'https://www.google.com',
-      searchEngine: 'google',
-      customSearchUrl: '',
+      homepage: "https://www.google.com",
+      searchEngine: "google",
+      customSearchUrl: "",
       defaultZoom: 100,
       enableJavaScript: true,
       enableCookies: true,
       enableImages: true,
       enablePlugins: true,
-      userAgent: 'Q-Alpha Browser/1.0',
+      userAgent: "Q-Alpha Browser/1.0",
       proxy: {
         enabled: false,
-        host: '',
+        host: "",
         port: 8080,
-        username: '',
-        password: ''
+        username: "",
+        password: "",
       },
       security: {
         enableAdBlock: true,
         enableTrackingProtection: true,
         enableHttpsOnly: true,
-        enableSafeBrowsing: true
+        enableSafeBrowsing: true,
       },
       privacy: {
         enableIncognito: false,
         clearHistoryOnExit: false,
         clearCookiesOnExit: false,
-        enableDoNotTrack: true
+        enableDoNotTrack: true,
       },
       developer: {
         enableDevTools: true,
         enableSourceMaps: true,
         enableLiveReload: false,
-        enableHotReload: false
-      }
+        enableHotReload: false,
+      },
     };
   }
 
   private initializeAIFeatures(): void {
     const features: AIFeature[] = [
       {
-        id: 'smart-search',
-        name: 'Smart Search',
-        description: 'AI-powered search suggestions and auto-completion',
+        id: "smart-search",
+        name: "Smart Search",
+        description: "AI-powered search suggestions and auto-completion",
         isEnabled: true,
         settings: {
           enableSuggestions: true,
           enableAutoComplete: true,
-          enableVoiceSearch: true
-        }
+          enableVoiceSearch: true,
+        },
       },
       {
-        id: 'content-summary',
-        name: 'Content Summary',
-        description: 'Automatically summarize web page content',
+        id: "content-summary",
+        name: "Content Summary",
+        description: "Automatically summarize web page content",
         isEnabled: true,
         settings: {
           enableAutoSummary: true,
-          summaryLength: 'medium',
-          enableKeyPoints: true
-        }
+          summaryLength: "medium",
+          enableKeyPoints: true,
+        },
       },
       {
-        id: 'translation',
-        name: 'Smart Translation',
-        description: 'Real-time translation of web content',
+        id: "translation",
+        name: "Smart Translation",
+        description: "Real-time translation of web content",
         isEnabled: true,
         settings: {
           enableAutoTranslate: false,
-          targetLanguage: 'en',
-          enableVoiceTranslation: true
-        }
+          targetLanguage: "en",
+          enableVoiceTranslation: true,
+        },
       },
       {
-        id: 'accessibility',
-        name: 'Accessibility Assistant',
-        description: 'AI-powered accessibility features',
+        id: "accessibility",
+        name: "Accessibility Assistant",
+        description: "AI-powered accessibility features",
         isEnabled: true,
         settings: {
           enableScreenReader: true,
           enableHighContrast: false,
-          enableLargeText: false
-        }
+          enableLargeText: false,
+        },
       },
       {
-        id: 'security-ai',
-        name: 'AI Security',
-        description: 'AI-powered security and threat detection',
+        id: "security-ai",
+        name: "AI Security",
+        description: "AI-powered security and threat detection",
         isEnabled: true,
         settings: {
           enableThreatDetection: true,
           enablePhishingProtection: true,
-          enableMalwareScan: true
-        }
+          enableMalwareScan: true,
+        },
       },
       {
-        id: 'code-assistant',
-        name: 'Code Assistant',
-        description: 'AI-powered code completion and debugging',
+        id: "code-assistant",
+        name: "Code Assistant",
+        description: "AI-powered code completion and debugging",
         isEnabled: true,
         settings: {
           enableAutoComplete: true,
           enableErrorDetection: true,
-          enableCodeOptimization: true
-        }
+          enableCodeOptimization: true,
+        },
       },
       {
-        id: 'live-tv',
-        name: 'Live TV & Streaming',
-        description: 'AI-powered live TV and streaming content',
+        id: "live-tv",
+        name: "Live TV & Streaming",
+        description: "AI-powered live TV and streaming content",
         isEnabled: true,
         settings: {
           enableLiveTV: true,
           enableStreaming: true,
-          enableRecording: false
-        }
-      }
+          enableRecording: false,
+        },
+      },
     ];
 
-    features.forEach(feature => {
+    features.forEach((feature) => {
       this.aiFeatures.set(feature.id, feature);
     });
   }
@@ -279,9 +285,9 @@ export class BrowserService {
     const tabId = this.generateTabId();
     const tab: BrowserTab = {
       id: tabId,
-      title: 'New Tab',
+      title: "New Tab",
       url: this.settings.homepage,
-      favicon: '🌐',
+      favicon: "🌐",
       isActive: true,
       isLoading: false,
       canGoBack: false,
@@ -291,26 +297,26 @@ export class BrowserService {
       bookmarks: [],
       developerTools: {
         isOpen: false,
-        activePanel: 'elements',
+        activePanel: "elements",
         console: [],
         network: [],
         elements: [],
-        sources: []
-      }
+        sources: [],
+      },
     };
 
     this.tabs.set(tabId, tab);
     this.activeTabId = tabId;
-    this.eventEmitter.emit('tabCreated', tab);
+    this.eventEmitter.emit("tabCreated", tab);
   }
 
   public createTab(url?: string): string {
     const tabId = this.generateTabId();
     const tab: BrowserTab = {
       id: tabId,
-      title: 'New Tab',
+      title: "New Tab",
       url: url || this.settings.homepage,
-      favicon: '🌐',
+      favicon: "🌐",
       isActive: false,
       isLoading: false,
       canGoBack: false,
@@ -320,16 +326,16 @@ export class BrowserService {
       bookmarks: [],
       developerTools: {
         isOpen: false,
-        activePanel: 'elements',
+        activePanel: "elements",
         console: [],
         network: [],
         elements: [],
-        sources: []
-      }
+        sources: [],
+      },
     };
 
     this.tabs.set(tabId, tab);
-    this.eventEmitter.emit('tabCreated', tab);
+    this.eventEmitter.emit("tabCreated", tab);
     return tabId;
   }
 
@@ -342,7 +348,7 @@ export class BrowserService {
     try {
       tab.isLoading = true;
       tab.url = url;
-      this.eventEmitter.emit('navigationStarted', { tabId, url });
+      this.eventEmitter.emit("navigationStarted", { tabId, url });
 
       // Simulate page load
       await this.sleep(1000);
@@ -358,17 +364,20 @@ export class BrowserService {
       tab.favicon = this.extractFaviconFromUrl(url);
 
       tab.isLoading = false;
-      this.eventEmitter.emit('navigationCompleted', { tabId, url });
+      this.eventEmitter.emit("navigationCompleted", { tabId, url });
 
       // Add to global history
       this.history.push(url);
 
       // AI features processing
       await this.processAIFeatures(tab, url);
-
     } catch (error) {
       tab.isLoading = false;
-      this.eventEmitter.emit('navigationError', { tabId, url, error: error.message });
+      this.eventEmitter.emit("navigationError", {
+        tabId,
+        url,
+        error: error.message,
+      });
       logger.error(`Navigation failed for tab ${tabId}:`, error);
       throw error;
     }
@@ -380,19 +389,19 @@ export class BrowserService {
       if (feature.isEnabled) {
         try {
           switch (feature.id) {
-            case 'smart-search':
+            case "smart-search":
               await this.processSmartSearch(tab, url);
               break;
-            case 'content-summary':
+            case "content-summary":
               await this.processContentSummary(tab, url);
               break;
-            case 'translation':
+            case "translation":
               await this.processTranslation(tab, url);
               break;
-            case 'security-ai':
+            case "security-ai":
               await this.processSecurityAI(tab, url);
               break;
-            case 'live-tv':
+            case "live-tv":
               await this.processLiveTV(tab, url);
               break;
           }
@@ -403,35 +412,50 @@ export class BrowserService {
     }
   }
 
-  private async processSmartSearch(tab: BrowserTab, url: string): Promise<void> {
+  private async processSmartSearch(
+    tab: BrowserTab,
+    url: string,
+  ): Promise<void> {
     // Simulate smart search processing
     const suggestions = await this.generateSearchSuggestions(url);
-    this.eventEmitter.emit('searchSuggestions', { tabId: tab.id, suggestions });
+    this.eventEmitter.emit("searchSuggestions", { tabId: tab.id, suggestions });
   }
 
-  private async processContentSummary(tab: BrowserTab, url: string): Promise<void> {
+  private async processContentSummary(
+    tab: BrowserTab,
+    url: string,
+  ): Promise<void> {
     // Simulate content summary generation
     const summary = await this.generateContentSummary(url);
-    this.eventEmitter.emit('contentSummary', { tabId: tab.id, summary });
+    this.eventEmitter.emit("contentSummary", { tabId: tab.id, summary });
   }
 
-  private async processTranslation(tab: BrowserTab, url: string): Promise<void> {
+  private async processTranslation(
+    tab: BrowserTab,
+    url: string,
+  ): Promise<void> {
     // Simulate translation processing
     const translation = await this.translateContent(url);
-    this.eventEmitter.emit('translation', { tabId: tab.id, translation });
+    this.eventEmitter.emit("translation", { tabId: tab.id, translation });
   }
 
   private async processSecurityAI(tab: BrowserTab, url: string): Promise<void> {
     // Simulate security analysis
     const securityReport = await this.analyzeSecurity(url);
-    this.eventEmitter.emit('securityReport', { tabId: tab.id, report: securityReport });
+    this.eventEmitter.emit("securityReport", {
+      tabId: tab.id,
+      report: securityReport,
+    });
   }
 
   private async processLiveTV(tab: BrowserTab, url: string): Promise<void> {
     // Check if URL is a live TV or streaming service
     if (this.isLiveTVUrl(url)) {
       const liveContent = await this.getLiveContent(url);
-      this.eventEmitter.emit('liveContent', { tabId: tab.id, content: liveContent });
+      this.eventEmitter.emit("liveContent", {
+        tabId: tab.id,
+        content: liveContent,
+      });
     }
   }
 
@@ -441,7 +465,7 @@ export class BrowserService {
       `${query} latest news`,
       `${query} tutorial`,
       `${query} reviews`,
-      `${query} download`
+      `${query} download`,
     ];
   }
 
@@ -450,44 +474,48 @@ export class BrowserService {
     return `AI-generated summary of the content on ${url}. This page contains relevant information about the topic.`;
   }
 
-  private async translateContent(url: string): Promise<{ original: string; translated: string; language: string }> {
+  private async translateContent(
+    url: string,
+  ): Promise<{ original: string; translated: string; language: string }> {
     // Simulate translation
     return {
-      original: 'Original content',
-      translated: 'Translated content',
-      language: 'en'
+      original: "Original content",
+      translated: "Translated content",
+      language: "en",
     };
   }
 
-  private async analyzeSecurity(url: string): Promise<{ isSafe: boolean; threats: string[]; score: number }> {
+  private async analyzeSecurity(
+    url: string,
+  ): Promise<{ isSafe: boolean; threats: string[]; score: number }> {
     // Simulate security analysis
     return {
       isSafe: Math.random() > 0.1,
       threats: [],
-      score: Math.floor(Math.random() * 100)
+      score: Math.floor(Math.random() * 100),
     };
   }
 
   private isLiveTVUrl(url: string): boolean {
     const liveTVDomains = [
-      'youtube.com/live',
-      'twitch.tv',
-      'netflix.com',
-      'hulu.com',
-      'disneyplus.com',
-      'katn.com'
+      "youtube.com/live",
+      "twitch.tv",
+      "netflix.com",
+      "hulu.com",
+      "disneyplus.com",
+      "katn.com",
     ];
-    return liveTVDomains.some(domain => url.includes(domain));
+    return liveTVDomains.some((domain) => url.includes(domain));
   }
 
   private async getLiveContent(url: string): Promise<any> {
     // Simulate live content detection
     return {
-      type: 'live-tv',
-      title: 'Live Content',
-      description: 'Live streaming content detected',
-      channels: ['Channel 1', 'Channel 2', 'Channel 3'],
-      quality: 'HD'
+      type: "live-tv",
+      title: "Live Content",
+      description: "Live streaming content detected",
+      channels: ["Channel 1", "Channel 2", "Channel 3"],
+      quality: "HD",
     };
   }
 
@@ -521,7 +549,7 @@ export class BrowserService {
     if (!tab) return;
 
     this.tabs.delete(tabId);
-    this.eventEmitter.emit('tabClosed', { tabId });
+    this.eventEmitter.emit("tabClosed", { tabId });
 
     // If this was the active tab, activate another one
     if (this.activeTabId === tabId) {
@@ -546,7 +574,7 @@ export class BrowserService {
     // Activate the selected tab
     tab.isActive = true;
     this.activeTabId = tabId;
-    this.eventEmitter.emit('tabActivated', { tabId });
+    this.eventEmitter.emit("tabActivated", { tabId });
   }
 
   public toggleDeveloperTools(tabId: string): void {
@@ -554,7 +582,10 @@ export class BrowserService {
     if (!tab) return;
 
     tab.developerTools.isOpen = !tab.developerTools.isOpen;
-    this.eventEmitter.emit('developerToolsToggled', { tabId, isOpen: tab.developerTools.isOpen });
+    this.eventEmitter.emit("developerToolsToggled", {
+      tabId,
+      isOpen: tab.developerTools.isOpen,
+    });
   }
 
   public setDeveloperPanel(tabId: string, panel: string): void {
@@ -562,25 +593,30 @@ export class BrowserService {
     if (!tab) return;
 
     tab.developerTools.activePanel = panel as any;
-    this.eventEmitter.emit('developerPanelChanged', { tabId, panel });
+    this.eventEmitter.emit("developerPanelChanged", { tabId, panel });
   }
 
-  public addBookmark(tabId: string, title: string, url: string, folder: string = 'Bookmarks'): void {
+  public addBookmark(
+    tabId: string,
+    title: string,
+    url: string,
+    folder: string = "Bookmarks",
+  ): void {
     const bookmark: Bookmark = {
       id: this.generateId(),
       title,
       url,
       folder,
-      createdAt: new Date()
+      createdAt: new Date(),
     };
 
     this.bookmarks.push(bookmark);
-    this.eventEmitter.emit('bookmarkAdded', bookmark);
+    this.eventEmitter.emit("bookmarkAdded", bookmark);
   }
 
   public removeBookmark(bookmarkId: string): void {
-    this.bookmarks = this.bookmarks.filter(b => b.id !== bookmarkId);
-    this.eventEmitter.emit('bookmarkRemoved', { bookmarkId });
+    this.bookmarks = this.bookmarks.filter((b) => b.id !== bookmarkId);
+    this.eventEmitter.emit("bookmarkRemoved", { bookmarkId });
   }
 
   public async downloadFile(url: string, filename: string): Promise<void> {
@@ -590,27 +626,30 @@ export class BrowserService {
       filename,
       url,
       progress: 0,
-      status: 'pending' as const
+      status: "pending" as const,
     };
 
     this.downloads.push(download);
-    this.eventEmitter.emit('downloadStarted', download);
+    this.eventEmitter.emit("downloadStarted", download);
 
     try {
-      download.status = 'downloading';
-      
+      download.status = "downloading";
+
       // Simulate download progress
       for (let progress = 0; progress <= 100; progress += 10) {
         download.progress = progress;
-        this.eventEmitter.emit('downloadProgress', { downloadId, progress });
+        this.eventEmitter.emit("downloadProgress", { downloadId, progress });
         await this.sleep(200);
       }
 
-      download.status = 'completed';
-      this.eventEmitter.emit('downloadCompleted', download);
+      download.status = "completed";
+      this.eventEmitter.emit("downloadCompleted", download);
     } catch (error) {
-      download.status = 'failed';
-      this.eventEmitter.emit('downloadFailed', { downloadId, error: error.message });
+      download.status = "failed";
+      this.eventEmitter.emit("downloadFailed", {
+        downloadId,
+        error: error.message,
+      });
     }
   }
 
@@ -640,7 +679,7 @@ export class BrowserService {
 
   public updateSettings(newSettings: Partial<BrowserSettings>): void {
     this.settings = { ...this.settings, ...newSettings };
-    this.eventEmitter.emit('settingsUpdated', this.settings);
+    this.eventEmitter.emit("settingsUpdated", this.settings);
   }
 
   public getAIFeatures(): AIFeature[] {
@@ -651,27 +690,27 @@ export class BrowserService {
     const feature = this.aiFeatures.get(featureId);
     if (feature) {
       Object.assign(feature, updates);
-      this.eventEmitter.emit('aiFeatureUpdated', feature);
+      this.eventEmitter.emit("aiFeatureUpdated", feature);
     }
   }
 
   public enableIncognitoMode(): void {
     this.isIncognito = true;
-    this.eventEmitter.emit('incognitoModeEnabled');
+    this.eventEmitter.emit("incognitoModeEnabled");
   }
 
   public disableIncognitoMode(): void {
     this.isIncognito = false;
-    this.eventEmitter.emit('incognitoModeDisabled');
+    this.eventEmitter.emit("incognitoModeDisabled");
   }
 
   public clearHistory(): void {
     this.history = [];
-    this.eventEmitter.emit('historyCleared');
+    this.eventEmitter.emit("historyCleared");
   }
 
   public clearCookies(): void {
-    this.eventEmitter.emit('cookiesCleared');
+    this.eventEmitter.emit("cookiesCleared");
   }
 
   private generateTabId(): string {
@@ -685,9 +724,9 @@ export class BrowserService {
   private extractTitleFromUrl(url: string): string {
     try {
       const domain = new URL(url).hostname;
-      return domain.replace('www.', '');
+      return domain.replace("www.", "");
     } catch {
-      return 'Unknown';
+      return "Unknown";
     }
   }
 
@@ -696,70 +735,86 @@ export class BrowserService {
       const domain = new URL(url).hostname;
       return `https://${domain}/favicon.ico`;
     } catch {
-      return '🌐';
+      return "🌐";
     }
   }
 
   private sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   // Event listeners
   public onTabCreated(callback: (tab: BrowserTab) => void): void {
-    this.eventEmitter.on('tabCreated', callback);
+    this.eventEmitter.on("tabCreated", callback);
   }
 
   public onTabActivated(callback: (data: { tabId: string }) => void): void {
-    this.eventEmitter.on('tabActivated', callback);
+    this.eventEmitter.on("tabActivated", callback);
   }
 
   public onTabClosed(callback: (data: { tabId: string }) => void): void {
-    this.eventEmitter.on('tabClosed', callback);
+    this.eventEmitter.on("tabClosed", callback);
   }
 
-  public onNavigationStarted(callback: (data: { tabId: string; url: string }) => void): void {
-    this.eventEmitter.on('navigationStarted', callback);
+  public onNavigationStarted(
+    callback: (data: { tabId: string; url: string }) => void,
+  ): void {
+    this.eventEmitter.on("navigationStarted", callback);
   }
 
-  public onNavigationCompleted(callback: (data: { tabId: string; url: string }) => void): void {
-    this.eventEmitter.on('navigationCompleted', callback);
+  public onNavigationCompleted(
+    callback: (data: { tabId: string; url: string }) => void,
+  ): void {
+    this.eventEmitter.on("navigationCompleted", callback);
   }
 
-  public onNavigationError(callback: (data: { tabId: string; url: string; error: string }) => void): void {
-    this.eventEmitter.on('navigationError', callback);
+  public onNavigationError(
+    callback: (data: { tabId: string; url: string; error: string }) => void,
+  ): void {
+    this.eventEmitter.on("navigationError", callback);
   }
 
-  public onDeveloperToolsToggled(callback: (data: { tabId: string; isOpen: boolean }) => void): void {
-    this.eventEmitter.on('developerToolsToggled', callback);
+  public onDeveloperToolsToggled(
+    callback: (data: { tabId: string; isOpen: boolean }) => void,
+  ): void {
+    this.eventEmitter.on("developerToolsToggled", callback);
   }
 
   public onBookmarkAdded(callback: (bookmark: Bookmark) => void): void {
-    this.eventEmitter.on('bookmarkAdded', callback);
+    this.eventEmitter.on("bookmarkAdded", callback);
   }
 
   public onDownloadStarted(callback: (download: any) => void): void {
-    this.eventEmitter.on('downloadStarted', callback);
+    this.eventEmitter.on("downloadStarted", callback);
   }
 
-  public onDownloadProgress(callback: (data: { downloadId: string; progress: number }) => void): void {
-    this.eventEmitter.on('downloadProgress', callback);
+  public onDownloadProgress(
+    callback: (data: { downloadId: string; progress: number }) => void,
+  ): void {
+    this.eventEmitter.on("downloadProgress", callback);
   }
 
   public onDownloadCompleted(callback: (download: any) => void): void {
-    this.eventEmitter.on('downloadCompleted', callback);
+    this.eventEmitter.on("downloadCompleted", callback);
   }
 
-  public onSearchSuggestions(callback: (data: { tabId: string; suggestions: string[] }) => void): void {
-    this.eventEmitter.on('searchSuggestions', callback);
+  public onSearchSuggestions(
+    callback: (data: { tabId: string; suggestions: string[] }) => void,
+  ): void {
+    this.eventEmitter.on("searchSuggestions", callback);
   }
 
-  public onContentSummary(callback: (data: { tabId: string; summary: string }) => void): void {
-    this.eventEmitter.on('contentSummary', callback);
+  public onContentSummary(
+    callback: (data: { tabId: string; summary: string }) => void,
+  ): void {
+    this.eventEmitter.on("contentSummary", callback);
   }
 
-  public onLiveContent(callback: (data: { tabId: string; content: any }) => void): void {
-    this.eventEmitter.on('liveContent', callback);
+  public onLiveContent(
+    callback: (data: { tabId: string; content: any }) => void,
+  ): void {
+    this.eventEmitter.on("liveContent", callback);
   }
 }
 
-export const browserService = BrowserService.getInstance(); 
+export const browserService = BrowserService.getInstance();

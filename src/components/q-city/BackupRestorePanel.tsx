@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function BackupRestorePanel() {
   return (
@@ -10,7 +10,9 @@ export default function BackupRestorePanel() {
         <li>Manual and scheduled backups</li>
         <li>Instant restore and rollback</li>
       </ul>
-      <div className="mt-6 p-4 bg-gray-100 rounded">API integration coming soon.</div>
+      <div className="mt-6 p-4 bg-gray-100 rounded">
+        API integration coming soon.
+      </div>
     </div>
   );
-} 
+}

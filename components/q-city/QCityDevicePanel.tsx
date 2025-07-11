@@ -164,7 +164,7 @@ export default function QCityDevicePanel() {
     setLoading(true);
     try {
       let endpoint = '';
-      let data = { id, ...extra };
+      const data = { id, ...extra };
       if (type === 'gitpod') {
         if (action === 'stop') endpoint = '/api/qcity/stopWorkspace';
         if (action === 'clone') endpoint = '/api/qcity/cloneWorkspace';
@@ -192,7 +192,7 @@ export default function QCityDevicePanel() {
   const fetchLogs = async (type: 'gitpod' | 'local', id: string) => {
     setLogs(l => ({ ...l, [id]: 'Loading logs...' }));
     const eventSource = new EventSource(`/api/qcity/workspace-logs?id=${encodeURIComponent(id)}&type=${encodeURIComponent(type)}`);
-    let logLines: string[] = [];
+    const logLines: string[] = [];
     eventSource.onmessage = (event) => {
       if (event.data === '[DONE]') {
         setLogs(l => ({ ...l, [id]: logLines.join('\n') + '\n[DONE]' }));

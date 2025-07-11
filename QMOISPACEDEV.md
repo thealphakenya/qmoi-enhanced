@@ -23,6 +23,12 @@
 - **Developer/Notification Features:** QMOI always identifies as "QMOI (AI Developer)" in all notifications, logs, and UIs. All notifications are retried, logged, and use fallback channels if needed.
 - **Asset/Project Tracking:** QMOI auto-tracks all assets, projects, and resources it creates or manages, updating [MASTEROWNS.md](./MASTEROWNS.md) in real time.
 
+## Enhanced Hugging Face Space Developer & Automation Features
+- **Parallel Error Fixing:** QMOI can fix errors in HuggingFace Space and the main app independently and in parallel. One can be fixed while the other continues to work.
+- **Self-Healing Pipelines & Workflows:** QMOI auto-detects and fixes all errors in its own files, pipelines, and workflows on HuggingFace, even if its own scripts are broken.
+- **Fallback & Sync:** If HuggingFace is unavailable, QMOI uses GitLab, GitHub, or Gitpod as a fallback, keeping all platforms in sync.
+- **Independent Notifications:** QMOI sends HuggingFace-specific error/fix notifications, and logs all actions for audit and learning.
+
 ## 🏗️ Core Architecture
 
 ### Space Configuration

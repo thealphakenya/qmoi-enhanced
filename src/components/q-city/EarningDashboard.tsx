@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 interface Strategy {
   id: number;
@@ -19,16 +19,16 @@ const EarningDashboard: React.FC = () => {
   const [strategies, setStrategies] = useState<Strategy[]>([]);
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [monitoring, setMonitoring] = useState(false);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
 
   const fetchStrategies = async () => {
-    const res = await fetch('/api/earning/strategies');
+    const res = await fetch("/api/earning/strategies");
     const data = await res.json();
     setStrategies(data.strategies || []);
   };
 
   const fetchAnalytics = async () => {
-    const res = await fetch('/api/earning/analytics');
+    const res = await fetch("/api/earning/analytics");
     const data = await res.json();
     setAnalytics(data.analytics || null);
   };
@@ -39,22 +39,22 @@ const EarningDashboard: React.FC = () => {
   }, []);
 
   const toggleMonitoring = async () => {
-    const res = await fetch('/api/earning/monitor', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ monitor: !monitoring })
+    const res = await fetch("/api/earning/monitor", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ monitor: !monitoring }),
     });
     const data = await res.json();
     setMonitoring(data.monitoring);
-    setStatus(data.monitoring ? 'Monitoring started' : 'Monitoring stopped');
+    setStatus(data.monitoring ? "Monitoring started" : "Monitoring stopped");
   };
 
   const selfHeal = async () => {
-    const res = await fetch('/api/earning/self-heal', {
-      method: 'POST'
+    const res = await fetch("/api/earning/self-heal", {
+      method: "POST",
     });
     const data = await res.json();
-    setStatus(data.message || 'Self-healing triggered');
+    setStatus(data.message || "Self-healing triggered");
     fetchAnalytics();
   };
 
@@ -67,14 +67,21 @@ const EarningDashboard: React.FC = () => {
         <div className="mb-4">
           <h4 className="font-semibold mb-2">Earning Strategies</h4>
           <ul>
-            {strategies.map(s => (
-              <li key={s.id}>{s.name} <span className="text-xs text-gray-500">({s.status})</span></li>
+            {strategies.map((s) => (
+              <li key={s.id}>
+                {s.name}{" "}
+                <span className="text-xs text-gray-500">({s.status})</span>
+              </li>
             ))}
           </ul>
         </div>
         <div className="mb-4">
-          <Button onClick={toggleMonitoring} className="mr-2">{monitoring ? 'Stop Monitoring' : 'Start Monitoring'}</Button>
-          <Button onClick={selfHeal} variant="secondary">Trigger Self-Healing</Button>
+          <Button onClick={toggleMonitoring} className="mr-2">
+            {monitoring ? "Stop Monitoring" : "Start Monitoring"}
+          </Button>
+          <Button onClick={selfHeal} variant="secondary">
+            Trigger Self-Healing
+          </Button>
         </div>
         <div className="mb-4">
           <h4 className="font-semibold mb-2">Analytics</h4>
@@ -94,4 +101,4 @@ const EarningDashboard: React.FC = () => {
   );
 };
 
-export default EarningDashboard; 
+export default EarningDashboard;

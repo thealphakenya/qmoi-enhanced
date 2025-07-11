@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useToast } from '../../../hooks/use-toast';
-import { Loader2 } from 'lucide-react';
-import { Button } from '../../../components/ui/button';
-import { Card } from '../../../components/ui/card';
-import { useTimezone } from '../../hooks/useTimezone';
+import React, { useState, useEffect } from "react";
+import { useToast } from "../../../hooks/use-toast";
+import { Loader2 } from "lucide-react";
+import { Button } from "../../../components/ui/button";
+import { Card } from "../../../components/ui/card";
+import { useTimezone } from "../../hooks/useTimezone";
 
 interface WalletManagerProps {
   isMaster?: boolean;
@@ -13,10 +13,12 @@ interface WalletRequest {
   email: string;
   username: string;
   requestedAt: string;
-  status: 'pending' | 'approved' | 'denied';
+  status: "pending" | "approved" | "denied";
 }
 
-export const WalletManager: React.FC<WalletManagerProps> = ({ isMaster = false }) => {
+export const WalletManager: React.FC<WalletManagerProps> = ({
+  isMaster = false,
+}) => {
   const [pendingRequests, setPendingRequests] = useState<WalletRequest[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,18 +35,18 @@ export const WalletManager: React.FC<WalletManagerProps> = ({ isMaster = false }
   const fetchPendingRequests = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/wallet?pending_wallets=1', {
-        headers: { 'x-admin-token': localStorage.getItem('adminToken') || '' }
+      const res = await fetch("/api/wallet?pending_wallets=1", {
+        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      if (!res.ok) throw new Error('Failed to fetch pending requests');
+      if (!res.ok) throw new Error("Failed to fetch pending requests");
       const data = await res.json();
       setPendingRequests(data);
     } catch (err) {
-      setError('Failed to load pending requests');
+      setError("Failed to load pending requests");
       toast({
-        title: 'Error',
-        description: 'Failed to load pending wallet requests',
-        variant: 'destructive',
+        title: "Error",
+        description: "Failed to load pending wallet requests",
+        variant: "destructive",
       });
     } finally {
       setLoading(false);
@@ -55,43 +57,43 @@ export const WalletManager: React.FC<WalletManagerProps> = ({ isMaster = false }
     try {
       setLoading(true);
       setError(null);
-      const email = localStorage.getItem('userEmail');
-      const username = localStorage.getItem('username');
-      
+      const email = localStorage.getItem("userEmail");
+      const username = localStorage.getItem("username");
+
       if (!email || !username) {
-        throw new Error('Please complete your profile first');
+        throw new Error("Please complete your profile first");
       }
 
-      const res = await fetch('/api/wallet', {
-        method: 'POST',
+      const res = await fetch("/api/wallet", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'x-admin-token': localStorage.getItem('adminToken') || '',
+          "Content-Type": "application/json",
+          "x-admin-token": localStorage.getItem("adminToken") || "",
         },
         body: JSON.stringify({
-          action: 'request_wallet',
+          action: "request_wallet",
           email,
           username,
         }),
       });
 
       const data = await res.json();
-      
-      if (data.status === 'pending') {
+
+      if (data.status === "pending") {
         setWalletRequested(true);
         toast({
-          title: 'Success',
-          description: 'Wallet request sent to master for approval',
+          title: "Success",
+          description: "Wallet request sent to master for approval",
         });
       } else {
-        throw new Error(data.error || 'Failed to request wallet');
+        throw new Error(data.error || "Failed to request wallet");
       }
     } catch (err: any) {
       setError(err.message);
       toast({
-        title: 'Error',
+        title: "Error",
         description: err.message,
-        variant: 'destructive',
+        variant: "destructive",
       });
     } finally {
       setLoading(false);
@@ -102,37 +104,37 @@ export const WalletManager: React.FC<WalletManagerProps> = ({ isMaster = false }
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch('/api/wallet', {
-        method: 'POST',
+      const res = await fetch("/api/wallet", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'x-admin-token': localStorage.getItem('adminToken') || '',
-          'x-master-token': localStorage.getItem('masterToken') || '',
+          "Content-Type": "application/json",
+          "x-admin-token": localStorage.getItem("adminToken") || "",
+          "x-master-token": localStorage.getItem("masterToken") || "",
         },
         body: JSON.stringify({
-          action: 'approve_wallet',
+          action: "approve_wallet",
           email,
         }),
       });
 
       const data = await res.json();
-      
-      if (data.status === 'approved') {
-        setPendingRequests(prev => prev.filter(r => r.email !== email));
+
+      if (data.status === "approved") {
+        setPendingRequests((prev) => prev.filter((r) => r.email !== email));
         toast({
-          title: 'Success',
+          title: "Success",
           description: `Wallet approved for ${email}`,
         });
         await fetchPendingRequests(); // Refresh the list
       } else {
-        throw new Error(data.error || 'Failed to approve wallet');
+        throw new Error(data.error || "Failed to approve wallet");
       }
     } catch (err: any) {
       setError(err.message);
       toast({
-        title: 'Error',
+        title: "Error",
         description: err.message,
-        variant: 'destructive',
+        variant: "destructive",
       });
     } finally {
       setLoading(false);
@@ -151,7 +153,10 @@ export const WalletManager: React.FC<WalletManagerProps> = ({ isMaster = false }
       </div>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <div
+          className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative"
+          role="alert"
+        >
           <span className="block sm:inline">{error}</span>
         </div>
       )}
@@ -169,9 +174,9 @@ export const WalletManager: React.FC<WalletManagerProps> = ({ isMaster = false }
                 Processing...
               </>
             ) : walletRequested ? (
-              'Wallet Request Pending Approval'
+              "Wallet Request Pending Approval"
             ) : (
-              'Request Wallet'
+              "Request Wallet"
             )}
           </Button>
         </div>
@@ -186,7 +191,9 @@ export const WalletManager: React.FC<WalletManagerProps> = ({ isMaster = false }
             </div>
           )}
           {!loading && pendingRequests.length === 0 && (
-            <p className="text-gray-500 text-center py-4">No pending requests</p>
+            <p className="text-gray-500 text-center py-4">
+              No pending requests
+            </p>
           )}
           {pendingRequests.map((req) => (
             <Card key={req.email} className="p-4">
@@ -205,7 +212,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({ isMaster = false }
                   {loading ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
-                    'Approve'
+                    "Approve"
                   )}
                 </Button>
               </div>
@@ -215,4 +222,4 @@ export const WalletManager: React.FC<WalletManagerProps> = ({ isMaster = false }
       )}
     </Card>
   );
-}; 
+};

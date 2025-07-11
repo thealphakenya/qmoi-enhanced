@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-let channels = [
+const channels = [
   { id: 1, name: 'Global Radio', type: 'QChannel', description: 'QMOI Global Channel', dj: 'QMOI', programs: [
     { time: '08:00', title: 'Morning Mix', presenter: 'QMOI', type: 'music' },
     { time: '12:00', title: 'Global News', presenter: 'QMOI', type: 'news' },
@@ -14,7 +14,7 @@ let channels = [
 ];
 let currentChannel = channels[0];
 let nowPlaying = { channel: currentChannel.name, program: currentChannel.programs[0], startedAt: new Date().toISOString() };
-let listeners = 3;
+const listeners = 3;
 
 function isMaster(req: NextRequest) {
   return req.headers.get('x-qmoi-master') === 'true';

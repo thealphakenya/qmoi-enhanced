@@ -1,12 +1,18 @@
 /// <reference types="node" />
-import { networkInterfaces } from 'os';
-import crypto from 'crypto';
-import { authManager } from '../auth/AuthManager';
-import { AssetManagerImpl } from './assets';
-import type { AssetManagerImpl as AssetManagerImplType } from './assets';
-import { WalletManager, WalletConfig } from './wallet';
-import { Trade, TradeExecutionResult, TradeValidationResult, TradeHistory, TradeStatistics } from '../types/trading';
-import process from 'process';
+import { networkInterfaces } from "os";
+import crypto from "crypto";
+import { authManager } from "../auth/AuthManager";
+import { AssetManagerImpl } from "./assets";
+import type { AssetManagerImpl as AssetManagerImplType } from "./assets";
+import { WalletManager, WalletConfig } from "./wallet";
+import {
+  Trade,
+  TradeExecutionResult,
+  TradeValidationResult,
+  TradeHistory,
+  TradeStatistics,
+} from "../types/trading";
+import process from "process";
 
 interface TradingConfig {
   bitget: {
@@ -17,7 +23,7 @@ interface TradingConfig {
     tradingEnabled: boolean;
     realTrading: boolean;
     maxTradeAmount: number;
-    riskLevel: 'low' | 'medium' | 'high';
+    riskLevel: "low" | "medium" | "high";
     connectionStatus: {
       isConnected: boolean;
       lastCheck: Date;
@@ -64,14 +70,14 @@ export class TradingManager {
   private constructor() {
     this.config = {
       bitget: {
-        apiKey: process.env.BITGET_API_KEY || '',
-        secretKey: process.env.BITGET_SECRET_KEY || '',
-        passphrase: process.env.BITGET_PASSPHRASE || '',
-        bindIp: '192.168.1.100',
+        apiKey: process.env.BITGET_API_KEY || "",
+        secretKey: process.env.BITGET_SECRET_KEY || "",
+        passphrase: process.env.BITGET_PASSPHRASE || "",
+        bindIp: "192.168.1.100",
         tradingEnabled: false,
         realTrading: false,
         maxTradeAmount: 1000,
-        riskLevel: 'medium',
+        riskLevel: "medium",
         connectionStatus: {
           isConnected: false,
           lastCheck: new Date(),
@@ -79,8 +85,8 @@ export class TradingManager {
         },
       },
       trading: {
-        strategies: ['trend_following', 'mean_reversion', 'breakout'],
-        activePairs: ['BTC/USDT', 'ETH/USDT'],
+        strategies: ["trend_following", "mean_reversion", "breakout"],
+        activePairs: ["BTC/USDT", "ETH/USDT"],
         autoTrading: false,
         offlineTrading: false,
         riskManagement: {
@@ -90,24 +96,18 @@ export class TradingManager {
         },
         aiTrading: {
           enabled: false,
-          allowedUsers: ['sister'],
+          allowedUsers: ["sister"],
           tradingRules: {
             maxDailyTrades: 10,
             maxTradeAmount: 100,
-            allowedPairs: ['BTC/USDT', 'ETH/USDT'],
+            allowedPairs: ["BTC/USDT", "ETH/USDT"],
           },
         },
       },
       wallets: {
-        spot: [
-          { currency: 'USDT', balance: 3.84 },
-        ],
-        futures: [
-          { currency: 'BTC', balance: 0.000009 },
-        ],
-        otc: [
-          { currency: 'BTC', balance: 0.000026 },
-        ],
+        spot: [{ currency: "USDT", balance: 3.84 }],
+        futures: [{ currency: "BTC", balance: 0.000009 }],
+        otc: [{ currency: "BTC", balance: 0.000026 }],
       },
     };
     this.aiTradingConfig = this.config.trading.aiTrading;
@@ -139,8 +139,8 @@ export class TradingManager {
 
       if (!isConnected) {
         this.config.bitget.connectionStatus.retryCount++;
-        this.config.bitget.connectionStatus.lastError = 'Connection failed';
-        
+        this.config.bitget.connectionStatus.lastError = "Connection failed";
+
         // Implement automatic recovery
         await this.attemptConnectionRecovery();
       } else {
@@ -148,8 +148,9 @@ export class TradingManager {
         this.config.bitget.connectionStatus.lastError = undefined;
       }
     } catch (error) {
-      console.error('Connection check failed:', error);
-      this.config.bitget.connectionStatus.lastError = error instanceof Error ? error.message : 'Unknown error';
+      console.error("Connection check failed:", error);
+      this.config.bitget.connectionStatus.lastError =
+        error instanceof Error ? error.message : "Unknown error";
     }
   }
 
@@ -167,11 +168,11 @@ export class TradingManager {
         await strategy();
         const isConnected = await this.connectToBitget();
         if (isConnected) {
-          console.log('Connection recovered successfully');
+          console.log("Connection recovered successfully");
           return;
         }
       } catch (error) {
-        console.error('Recovery strategy failed:', error);
+        console.error("Recovery strategy failed:", error);
       }
     }
   }
@@ -182,8 +183,8 @@ export class TradingManager {
 
     for (let i = 0; i < maxRetries; i++) {
       const delay = baseDelay * Math.pow(2, i);
-      await new Promise(resolve => setTimeout(resolve, delay));
-      
+      await new Promise((resolve) => setTimeout(resolve, delay));
+
       try {
         await this.connectToBitget();
         return;
@@ -202,7 +203,7 @@ export class TradingManager {
       const iface = interfaces[name];
       if (iface) {
         for (const addr of iface) {
-          if (addr.family === 'IPv4' && !addr.internal) {
+          if (addr.family === "IPv4" && !addr.internal) {
             networkAvailable = true;
             break;
           }
@@ -212,14 +213,18 @@ export class TradingManager {
     }
 
     if (!networkAvailable) {
-      throw new Error('Network not available');
+      throw new Error("Network not available");
     }
   }
 
   private async verifyCredentials(): Promise<void> {
     // Verify Bitget credentials
-    if (!this.config.bitget.apiKey || !this.config.bitget.secretKey || !this.config.bitget.passphrase) {
-      throw new Error('Missing Bitget credentials');
+    if (
+      !this.config.bitget.apiKey ||
+      !this.config.bitget.secretKey ||
+      !this.config.bitget.passphrase
+    ) {
+      throw new Error("Missing Bitget credentials");
     }
   }
 
@@ -236,15 +241,18 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const response = await fetch('https://api.bitget.com/api/v2/spot/account/assets', {
-        method: 'GET',
-        headers: {
-          'ACCESS-KEY': this.config.bitget.apiKey,
-          'ACCESS-SIGN': signature,
-          'ACCESS-TIMESTAMP': timestamp.toString(),
-          'ACCESS-PASSPHRASE': this.config.bitget.passphrase,
+      const response = await fetch(
+        "https://api.bitget.com/api/v2/spot/account/assets",
+        {
+          method: "GET",
+          headers: {
+            "ACCESS-KEY": this.config.bitget.apiKey,
+            "ACCESS-SIGN": signature,
+            "ACCESS-TIMESTAMP": timestamp.toString(),
+            "ACCESS-PASSPHRASE": this.config.bitget.passphrase,
+          },
         },
-      });
+      );
 
       if (response.ok) {
         await this.updateBitgetWhitelist();
@@ -252,7 +260,7 @@ export class TradingManager {
       }
       return false;
     } catch (error) {
-      console.error('Failed to connect to Bitget:', error);
+      console.error("Failed to connect to Bitget:", error);
       return false;
     }
   }
@@ -260,9 +268,9 @@ export class TradingManager {
   private generateSignature(timestamp: number): string {
     const message = `${timestamp}GET/api/v2/spot/account/assets`;
     return crypto
-      .createHmac('sha256', this.config.bitget.secretKey)
+      .createHmac("sha256", this.config.bitget.secretKey)
       .update(message)
-      .digest('base64');
+      .digest("base64");
   }
 
   private async updateBitgetWhitelist(): Promise<void> {
@@ -270,20 +278,20 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      await fetch('https://api.bitget.com/api/v2/spot/account/ip-whitelist', {
-        method: 'POST',
+      await fetch("https://api.bitget.com/api/v2/spot/account/ip-whitelist", {
+        method: "POST",
         headers: {
-          'ACCESS-KEY': this.config.bitget.apiKey,
-          'ACCESS-SIGN': signature,
-          'ACCESS-TIMESTAMP': timestamp.toString(),
-          'ACCESS-PASSPHRASE': this.config.bitget.passphrase,
+          "ACCESS-KEY": this.config.bitget.apiKey,
+          "ACCESS-SIGN": signature,
+          "ACCESS-TIMESTAMP": timestamp.toString(),
+          "ACCESS-PASSPHRASE": this.config.bitget.passphrase,
         },
         body: JSON.stringify({
           ip: this.config.bitget.bindIp,
         }),
       });
     } catch (error) {
-      console.error('Failed to update Bitget whitelist:', error);
+      console.error("Failed to update Bitget whitelist:", error);
     }
   }
 
@@ -291,17 +299,20 @@ export class TradingManager {
     // Check if user has permission
     const user = await authManager.getUser(sessionId);
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     // Only allow master or authorized sister to trade
-    if (user.role !== 'master' && 
-        (user.role !== 'sister' || !this.config.trading.aiTrading.allowedUsers.includes(user.id))) {
-      throw new Error('Unauthorized to trade');
+    if (
+      user.role !== "master" &&
+      (user.role !== "sister" ||
+        !this.config.trading.aiTrading.allowedUsers.includes(user.id))
+    ) {
+      throw new Error("Unauthorized to trade");
     }
 
     if (!this.config.bitget.tradingEnabled) {
-      throw new Error('Trading is not enabled');
+      throw new Error("Trading is not enabled");
     }
 
     if (this.config.bitget.realTrading) {
@@ -313,14 +324,14 @@ export class TradingManager {
   }
 
   private startTradingStrategies(): void {
-    this.config.trading.strategies.forEach(strategy => {
+    this.config.trading.strategies.forEach((strategy) => {
       console.log(`Starting strategy: ${strategy}`);
       // Implement strategy execution
     });
   }
 
   private startPaperTrading(): void {
-    console.log('Starting paper trading');
+    console.log("Starting paper trading");
   }
 
   public async updateWalletBalance(): Promise<void> {
@@ -328,22 +339,25 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const response = await fetch('https://api.bitget.com/api/v2/spot/account/assets', {
-        method: 'GET',
-        headers: {
-          'ACCESS-KEY': this.config.bitget.apiKey,
-          'ACCESS-SIGN': signature,
-          'ACCESS-TIMESTAMP': timestamp.toString(),
-          'ACCESS-PASSPHRASE': this.config.bitget.passphrase,
+      const response = await fetch(
+        "https://api.bitget.com/api/v2/spot/account/assets",
+        {
+          method: "GET",
+          headers: {
+            "ACCESS-KEY": this.config.bitget.apiKey,
+            "ACCESS-SIGN": signature,
+            "ACCESS-TIMESTAMP": timestamp.toString(),
+            "ACCESS-PASSPHRASE": this.config.bitget.passphrase,
+          },
         },
-      });
+      );
 
       if (response.ok) {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
     } catch (error) {
-      console.error('Failed to update wallet balance:', error);
+      console.error("Failed to update wallet balance:", error);
     }
   }
 
@@ -352,15 +366,17 @@ export class TradingManager {
     // If you want to update wallet balances, use walletManager or another appropriate method.
   }
 
-  public getConnectionStatus(): TradingConfig['bitget']['connectionStatus'] {
+  public getConnectionStatus(): TradingConfig["bitget"]["connectionStatus"] {
     return this.config.bitget.connectionStatus;
   }
 
-  public async getWalletBalances(): Promise<{
-    currency: string;
-    balance: number;
-    usdValue: number;
-  }[]> {
+  public async getWalletBalances(): Promise<
+    {
+      currency: string;
+      balance: number;
+      usdValue: number;
+    }[]
+  > {
     return this.walletManager.getBalances();
   }
 
@@ -381,31 +397,38 @@ export class TradingManager {
     await this.saveConfig();
   }
 
-  public async canUserTrade(userId: string, userRole: string): Promise<boolean> {
-    if (userRole === 'master') {
+  public async canUserTrade(
+    userId: string,
+    userRole: string,
+  ): Promise<boolean> {
+    if (userRole === "master") {
       return true;
     }
-    if (userRole === 'sister' && this.aiTradingConfig.enabled) {
+    if (userRole === "sister" && this.aiTradingConfig.enabled) {
       return this.aiTradingConfig.allowedUsers.includes(userId);
     }
     return false;
   }
 
-  public async validateTrade(trade: Omit<Trade, 'id' | 'timestamp' | 'total' | 'profit'>): Promise<TradeValidationResult> {
+  public async validateTrade(
+    trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">,
+  ): Promise<TradeValidationResult> {
     const balances = await this.walletManager.getBalances();
-    const sourceBalance = balances.find(b => b.currency === trade.sourceCurrency);
-    
+    const sourceBalance = balances.find(
+      (b) => b.currency === trade.sourceCurrency,
+    );
+
     if (!sourceBalance) {
       return {
         isValid: false,
-        error: 'Source currency not found in wallet',
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        error: 'Insufficient balance for trade',
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -427,7 +450,9 @@ export class TradingManager {
     return this.tradingHistory;
   }
 
-  private async addTrade(trade: Omit<Trade, 'id' | 'timestamp' | 'total' | 'profit'>): Promise<Trade> {
+  private async addTrade(
+    trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">,
+  ): Promise<Trade> {
     const newTrade: Trade = {
       ...trade,
       id: crypto.randomUUID(),
@@ -439,8 +464,12 @@ export class TradingManager {
     return newTrade;
   }
 
-  public async updateTradeStatus(tradeId: string, status: Trade['status'], profit?: number): Promise<void> {
-    const trade = this.tradingHistory.find(t => t.id === tradeId);
+  public async updateTradeStatus(
+    tradeId: string,
+    status: Trade["status"],
+    profit?: number,
+  ): Promise<void> {
+    const trade = this.tradingHistory.find((t) => t.id === tradeId);
     if (trade) {
       trade.status = status;
       if (profit !== undefined) {
@@ -450,7 +479,9 @@ export class TradingManager {
     }
   }
 
-  public async executeTrade(trade: Omit<Trade, 'id' | 'timestamp' | 'total' | 'profit'>): Promise<TradeExecutionResult> {
+  public async executeTrade(
+    trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">,
+  ): Promise<TradeExecutionResult> {
     try {
       // Validate trade
       const validation = await this.validateTrade(trade);
@@ -470,7 +501,9 @@ export class TradingManager {
       await this.walletManager.updateBalance(
         trade.sourceType,
         trade.sourceCurrency,
-        (validation.availableBalance !== undefined ? validation.availableBalance - trade.amount : 0)
+        validation.availableBalance !== undefined
+          ? validation.availableBalance - trade.amount
+          : 0,
       );
 
       return {
@@ -479,7 +512,8 @@ export class TradingManager {
         timestamp: Date.now(),
       };
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
@@ -490,16 +524,23 @@ export class TradingManager {
   }
 
   public getTradeHistory(): TradeHistory {
-    const successfulTrades = this.tradingHistory.filter(t => t.status === 'completed');
-    const totalProfit = successfulTrades.reduce((sum, t) => sum + (t.profit ?? 0), 0);
+    const successfulTrades = this.tradingHistory.filter(
+      (t) => t.status === "completed",
+    );
+    const totalProfit = successfulTrades.reduce(
+      (sum, t) => sum + (t.profit ?? 0),
+      0,
+    );
 
     return {
       trades: this.tradingHistory,
       totalTrades: this.tradingHistory.length,
       successfulTrades: successfulTrades.length,
-      failedTrades: this.tradingHistory.filter(t => t.status === 'failed').length,
+      failedTrades: this.tradingHistory.filter((t) => t.status === "failed")
+        .length,
       totalProfit,
-      averageProfit: successfulTrades.length > 0 ? totalProfit / successfulTrades.length : 0,
+      averageProfit:
+        successfulTrades.length > 0 ? totalProfit / successfulTrades.length : 0,
     };
   }
 
@@ -509,10 +550,10 @@ export class TradingManager {
     const oneWeek = 7 * oneDay;
     const oneMonth = 30 * oneDay;
 
-    const trades = this.tradingHistory.filter(t => t.status === 'completed');
-    const recentTrades = trades.filter(t => t.timestamp > now - oneDay);
-    const weeklyTrades = trades.filter(t => t.timestamp > now - oneWeek);
-    const monthlyTrades = trades.filter(t => t.timestamp > now - oneMonth);
+    const trades = this.tradingHistory.filter((t) => t.status === "completed");
+    const recentTrades = trades.filter((t) => t.timestamp > now - oneDay);
+    const weeklyTrades = trades.filter((t) => t.timestamp > now - oneWeek);
+    const monthlyTrades = trades.filter((t) => t.timestamp > now - oneMonth);
 
     return {
       dailyVolume: recentTrades.reduce((sum, t) => sum + t.total, 0),
@@ -523,20 +564,29 @@ export class TradingManager {
         weekly: weeklyTrades.reduce((sum, t) => sum + (t.profit ?? 0), 0),
         monthly: monthlyTrades.reduce((sum, t) => sum + (t.profit ?? 0), 0),
       },
-      successRate: trades.length > 0 ? trades.filter(t => t.profit && t.profit > 0).length / trades.length : 0,
-      averageTradeSize: trades.length > 0 ? trades.reduce((sum, t) => sum + t.amount, 0) / trades.length : 0,
+      successRate:
+        trades.length > 0
+          ? trades.filter((t) => t.profit && t.profit > 0).length /
+            trades.length
+          : 0,
+      averageTradeSize:
+        trades.length > 0
+          ? trades.reduce((sum, t) => sum + t.amount, 0) / trades.length
+          : 0,
     };
   }
 
-  public async getProfitOpportunities(): Promise<{
-    type: string;
-    opportunity: string;
-    potentialProfit: number;
-    risk: 'low' | 'medium' | 'high';
-  }[]> {
+  public async getProfitOpportunities(): Promise<
+    {
+      type: string;
+      opportunity: string;
+      potentialProfit: number;
+      risk: "low" | "medium" | "high";
+    }[]
+  > {
     return this.assetManager.getProfitOpportunities();
   }
 }
 
 // Export singleton instance
-export const tradingManager = TradingManager.getInstance(); 
+export const tradingManager = TradingManager.getInstance();

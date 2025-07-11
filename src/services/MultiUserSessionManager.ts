@@ -1,11 +1,11 @@
-import { EventEmitter } from 'events';
+import { EventEmitter } from "events";
 
 export interface User {
   id: string;
   name: string;
   email?: string;
   whatsappId?: string; // WhatsApp phone or ID for cross-interface mapping
-  role: 'master' | 'admin' | 'user' | 'guest';
+  role: "master" | "admin" | "user" | "guest";
   sessionId: string;
   context: UserContext;
   preferences: UserPreferences;
@@ -19,23 +19,23 @@ export interface UserContext {
   currentTask?: string;
   recentFiles: string[];
   searchHistory: string[];
-  aiMode: 'assistant' | 'collaborator' | 'teacher' | 'mentor';
-  relationshipType: 'individual' | 'group' | 'class' | 'team';
+  aiMode: "assistant" | "collaborator" | "teacher" | "mentor";
+  relationshipType: "individual" | "group" | "class" | "team";
 }
 
 export interface UserPreferences {
-  theme: 'light' | 'dark' | 'auto';
+  theme: "light" | "dark" | "auto";
   language: string;
   timezone: string;
   notifications: boolean;
   autoSave: boolean;
-  aiResponseStyle: 'concise' | 'detailed' | 'conversational';
+  aiResponseStyle: "concise" | "detailed" | "conversational";
 }
 
 export interface Group {
   id: string;
   name: string;
-  type: 'class' | 'team' | 'project' | 'study';
+  type: "class" | "team" | "project" | "study";
   members: string[];
   admins: string[];
   settings: GroupSettings;
@@ -48,7 +48,7 @@ export interface GroupSettings {
   allowGuestAccess: boolean;
   requireApproval: boolean;
   sharedContext: boolean;
-  aiMode: 'shared' | 'individual' | 'hybrid';
+  aiMode: "shared" | "individual" | "hybrid";
 }
 
 export interface Session {
@@ -73,10 +73,10 @@ export class MultiUserSessionManager extends EventEmitter {
   }
 
   private setupEventHandlers() {
-    this.on('userJoined', this.handleUserJoined.bind(this));
-    this.on('userLeft', this.handleUserLeft.bind(this));
-    this.on('groupCreated', this.handleGroupCreated.bind(this));
-    this.on('contextChanged', this.handleContextChanged.bind(this));
+    this.on("userJoined", this.handleUserJoined.bind(this));
+    this.on("userLeft", this.handleUserLeft.bind(this));
+    this.on("groupCreated", this.handleGroupCreated.bind(this));
+    this.on("contextChanged", this.handleContextChanged.bind(this));
   }
 
   // Session Management
@@ -88,15 +88,19 @@ export class MultiUserSessionManager extends EventEmitter {
       activeContexts: new Map(),
       sharedResources: new Map(),
       createdAt: new Date(),
-      lastActivity: new Date()
+      lastActivity: new Date(),
     };
 
     this.sessions.set(sessionId, session);
-    this.emit('sessionCreated', sessionId);
+    this.emit("sessionCreated", sessionId);
     return session;
   }
 
-  joinSession(userId: string, sessionId: string, userData: Partial<User>): User {
+  joinSession(
+    userId: string,
+    sessionId: string,
+    userData: Partial<User>,
+  ): User {
     let session = this.sessions.get(sessionId);
     if (!session) {
       session = this.createSession(sessionId);
@@ -107,35 +111,35 @@ export class MultiUserSessionManager extends EventEmitter {
       name: userData.name || `User_${userId}`,
       email: userData.email,
       whatsappId: userData.whatsappId, // Added whatsappId
-      role: userData.role || 'user',
+      role: userData.role || "user",
       sessionId,
       context: {
         recentFiles: [],
         searchHistory: [],
-        aiMode: 'assistant',
-        relationshipType: 'individual',
-        ...userData.context
+        aiMode: "assistant",
+        relationshipType: "individual",
+        ...userData.context,
       },
       preferences: {
-        theme: 'auto',
-        language: 'en',
-        timezone: 'UTC',
+        theme: "auto",
+        language: "en",
+        timezone: "UTC",
         notifications: true,
         autoSave: true,
-        aiResponseStyle: 'conversational',
-        ...userData.preferences
+        aiResponseStyle: "conversational",
+        ...userData.preferences,
       },
       lastActive: new Date(),
       isOnline: true,
       groupIds: [],
-      ...userData
+      ...userData,
     };
 
     session.users.set(userId, user);
     this.userSessions.set(userId, sessionId);
     session.lastActivity = new Date();
 
-    this.emit('userJoined', { user, sessionId });
+    this.emit("userJoined", { user, sessionId });
     return user;
   }
 
@@ -153,23 +157,23 @@ export class MultiUserSessionManager extends EventEmitter {
       session.lastActivity = new Date();
 
       // Remove from all groups
-      user.groupIds.forEach(groupId => {
+      user.groupIds.forEach((groupId) => {
         this.removeUserFromGroup(userId, groupId);
       });
 
-      this.emit('userLeft', { user, sessionId });
+      this.emit("userLeft", { user, sessionId });
     }
   }
 
   // Group Management
   createGroup(sessionId: string, groupData: Partial<Group>): Group {
     const session = this.sessions.get(sessionId);
-    if (!session) throw new Error('Session not found');
+    if (!session) throw new Error("Session not found");
 
     const group: Group = {
       id: `group_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-      name: groupData.name || 'New Group',
-      type: groupData.type || 'team',
+      name: groupData.name || "New Group",
+      type: groupData.type || "team",
       members: groupData.members || [],
       admins: groupData.admins || [],
       settings: {
@@ -177,22 +181,26 @@ export class MultiUserSessionManager extends EventEmitter {
         allowGuestAccess: false,
         requireApproval: false,
         sharedContext: true,
-        aiMode: 'shared',
-        ...groupData.settings
+        aiMode: "shared",
+        ...groupData.settings,
       },
       createdAt: new Date(),
       lastActivity: new Date(),
-      ...groupData
+      ...groupData,
     };
 
     session.groups.set(group.id, group);
     session.lastActivity = new Date();
 
-    this.emit('groupCreated', { group, sessionId });
+    this.emit("groupCreated", { group, sessionId });
     return group;
   }
 
-  addUserToGroup(userId: string, groupId: string, role: 'member' | 'admin' = 'member'): boolean {
+  addUserToGroup(
+    userId: string,
+    groupId: string,
+    role: "member" | "admin" = "member",
+  ): boolean {
     const sessionId = this.userSessions.get(userId);
     if (!sessionId) return false;
 
@@ -208,11 +216,11 @@ export class MultiUserSessionManager extends EventEmitter {
     if (group.members.includes(userId)) return false;
 
     if (group.members.length >= group.settings.maxMembers) {
-      throw new Error('Group is full');
+      throw new Error("Group is full");
     }
 
     group.members.push(userId);
-    if (role === 'admin') {
+    if (role === "admin") {
       group.admins.push(userId);
     }
 
@@ -220,7 +228,7 @@ export class MultiUserSessionManager extends EventEmitter {
     group.lastActivity = new Date();
     session.lastActivity = new Date();
 
-    this.emit('userAddedToGroup', { userId, groupId, role, sessionId });
+    this.emit("userAddedToGroup", { userId, groupId, role, sessionId });
     return true;
   }
 
@@ -237,14 +245,14 @@ export class MultiUserSessionManager extends EventEmitter {
     const user = session.users.get(userId);
     if (!user) return false;
 
-    group.members = group.members.filter(id => id !== userId);
-    group.admins = group.admins.filter(id => id !== userId);
-    user.groupIds = user.groupIds.filter(id => id !== groupId);
+    group.members = group.members.filter((id) => id !== userId);
+    group.admins = group.admins.filter((id) => id !== userId);
+    user.groupIds = user.groupIds.filter((id) => id !== groupId);
 
     group.lastActivity = new Date();
     session.lastActivity = new Date();
 
-    this.emit('userRemovedFromGroup', { userId, groupId, sessionId });
+    this.emit("userRemovedFromGroup", { userId, groupId, sessionId });
     return true;
   }
 
@@ -263,7 +271,7 @@ export class MultiUserSessionManager extends EventEmitter {
     user.lastActive = new Date();
     session.lastActivity = new Date();
 
-    this.emit('contextChanged', { userId, context: user.context, sessionId });
+    this.emit("contextChanged", { userId, context: user.context, sessionId });
   }
 
   getSharedContext(groupId: string): any {
@@ -286,7 +294,7 @@ export class MultiUserSessionManager extends EventEmitter {
     session.activeContexts.set(groupId, context);
     session.lastActivity = new Date();
 
-    this.emit('sharedContextUpdated', { groupId, context });
+    this.emit("sharedContextUpdated", { groupId, context });
   }
 
   // AI Relationship Management
@@ -300,64 +308,82 @@ export class MultiUserSessionManager extends EventEmitter {
       if (!targetUser) return null;
 
       return {
-        type: 'individual',
+        type: "individual",
         users: [user, targetUser],
         context: this.mergeUserContexts([user.context, targetUser.context]),
-        aiMode: this.determineAIMode(user, targetUser)
+        aiMode: this.determineAIMode(user, targetUser),
       };
     } else {
       // Group relationship
-      const groupContexts = user.groupIds.map(groupId => {
-        const group = this.findGroup(groupId);
-        if (!group) return null;
+      const groupContexts = user.groupIds
+        .map((groupId) => {
+          const group = this.findGroup(groupId);
+          if (!group) return null;
 
-        const groupUsers = group.members.map(memberId => this.getUser(memberId)).filter((u): u is User => Boolean(u));
-        return {
-          groupId,
-          group,
-          users: groupUsers,
-          context: this.mergeUserContexts(groupUsers.map(u => u.context)),
-          aiMode: group.settings.aiMode
-        };
-      }).filter(Boolean);
+          const groupUsers = group.members
+            .map((memberId) => this.getUser(memberId))
+            .filter((u): u is User => Boolean(u));
+          return {
+            groupId,
+            group,
+            users: groupUsers,
+            context: this.mergeUserContexts(groupUsers.map((u) => u.context)),
+            aiMode: group.settings.aiMode,
+          };
+        })
+        .filter(Boolean);
 
       return {
-        type: 'group',
+        type: "group",
         user,
         groups: groupContexts,
-        aiMode: this.determineGroupAIMode(user)
+        aiMode: this.determineGroupAIMode(user),
       };
     }
   }
 
   private mergeUserContexts(contexts: UserContext[]): UserContext {
-    return contexts.reduce((merged, context) => ({
-      currentProject: merged.currentProject || context.currentProject,
-      currentTask: merged.currentTask || context.currentTask,
-      recentFiles: [...new Set([...(merged.recentFiles || []), ...(context.recentFiles || [])])],
-      searchHistory: [...new Set([...(merged.searchHistory || []), ...(context.searchHistory || [])])],
-      aiMode: context.aiMode || merged.aiMode || 'assistant',
-      relationshipType: context.relationshipType || merged.relationshipType || 'individual',
-    }), {
-      currentProject: undefined,
-      currentTask: undefined,
-      recentFiles: [],
-      searchHistory: [],
-      aiMode: 'assistant',
-      relationshipType: 'individual',
-    });
+    return contexts.reduce(
+      (merged, context) => ({
+        currentProject: merged.currentProject || context.currentProject,
+        currentTask: merged.currentTask || context.currentTask,
+        recentFiles: [
+          ...new Set([
+            ...(merged.recentFiles || []),
+            ...(context.recentFiles || []),
+          ]),
+        ],
+        searchHistory: [
+          ...new Set([
+            ...(merged.searchHistory || []),
+            ...(context.searchHistory || []),
+          ]),
+        ],
+        aiMode: context.aiMode || merged.aiMode || "assistant",
+        relationshipType:
+          context.relationshipType || merged.relationshipType || "individual",
+      }),
+      {
+        currentProject: undefined,
+        currentTask: undefined,
+        recentFiles: [],
+        searchHistory: [],
+        aiMode: "assistant",
+        relationshipType: "individual",
+      },
+    );
   }
 
   private determineAIMode(user1: User, user2: User): string {
-    if (user1.role === 'master' || user2.role === 'master') return 'mentor';
-    if (user1.role === 'admin' || user2.role === 'admin') return 'teacher';
-    return 'collaborator';
+    if (user1.role === "master" || user2.role === "master") return "mentor";
+    if (user1.role === "admin" || user2.role === "admin") return "teacher";
+    return "collaborator";
   }
 
   private determineGroupAIMode(user: User): string {
-    if (user.role === 'master') return 'mentor';
-    if (user.role === 'admin') return 'teacher';
-    return 'assistant';
+    if (user.role === "master") return "mentor";
+    if (user.role === "admin") return "teacher";
+    return "assistant";
   }
 
   // Utility Methods
@@ -395,8 +421,11 @@ export class MultiUserSessionManager extends EventEmitter {
   }
 
   // New: Link WhatsApp ID to user
-  linkWhatsAppToUser(whatsappId: string | undefined, userId: string | undefined) {
-    if (!whatsappId || !userId || typeof userId !== 'string') return;
+  linkWhatsAppToUser(
+    whatsappId: string | undefined,
+    userId: string | undefined,
+  ) {
+    if (!whatsappId || !userId || typeof userId !== "string") return;
     this.whatsappToUserId.set(whatsappId, userId as string);
     const user = this.getUser(userId as string);
     if (user) user.whatsappId = whatsappId;
@@ -406,22 +435,25 @@ export class MultiUserSessionManager extends EventEmitter {
   getUserByWhatsAppId(whatsappId: string | undefined): User | undefined {
     if (!whatsappId) return undefined;
     const userId = this.whatsappToUserId.get(whatsappId);
-    if (!userId || typeof userId !== 'string') return undefined;
+    if (!userId || typeof userId !== "string") return undefined;
     return this.getUser(userId as string);
   }
 
   // New: Sync context from WhatsApp or chat
-  syncUserContextByWhatsApp(whatsappId: string | undefined, context: Partial<UserContext>) {
+  syncUserContextByWhatsApp(
+    whatsappId: string | undefined,
+    context: Partial<UserContext>,
+  ) {
     if (!whatsappId) return;
     const user = this.getUserByWhatsAppId(whatsappId);
-    if (user && typeof user.id === 'string') {
+    if (user && typeof user.id === "string") {
       this.updateUserContext(user.id as string, context);
     }
   }
 
   // Utility: treat 'master' as 'admin' everywhere
   static isAdminOrMaster(user: User): boolean {
-    return user.role === 'admin' || user.role === 'master';
+    return user.role === "admin" || user.role === "master";
   }
 
   // Example usage in permission checks (add wherever needed):
@@ -437,24 +469,32 @@ export class MultiUserSessionManager extends EventEmitter {
   }
 
   private handleGroupCreated(data: { group: Group; sessionId: string }) {
-    console.log(`Group ${data.group.name} created in session ${data.sessionId}`);
+    console.log(
+      `Group ${data.group.name} created in session ${data.sessionId}`,
+    );
   }
 
-  private handleContextChanged(data: { userId: string; context: UserContext; sessionId: string }) {
-    console.log(`Context changed for user ${data.userId} in session ${data.sessionId}`);
+  private handleContextChanged(data: {
+    userId: string;
+    context: UserContext;
+    sessionId: string;
+  }) {
+    console.log(
+      `Context changed for user ${data.userId} in session ${data.sessionId}`,
+    );
   }
 
   // Cleanup
   cleanupInactiveSessions(timeoutMinutes: number = 60): void {
     const cutoff = new Date(Date.now() - timeoutMinutes * 60 * 1000);
-    
+
     for (const [sessionId, session] of this.sessions.entries()) {
       if (session.lastActivity < cutoff && session.users.size === 0) {
         this.sessions.delete(sessionId);
-        this.emit('sessionCleaned', sessionId);
+        this.emit("sessionCleaned", sessionId);
       }
     }
   }
 }
 
-export default MultiUserSessionManager; 
+export default MultiUserSessionManager;

@@ -83,4 +83,11 @@ QMOI now acts as a full developer/operator for GitLab:
 - Master can view the full push/sync history, filter by date/status, and export logs.
 - QMOI ensures GitHub and GitLab are always in sync, providing full redundancy and backup. 
 
+## Enhanced GitLab Developer & Automation Features
+- **Parallel Error Fixing:** QMOI can fix errors in GitLab, Gitpod, GitHub, HuggingFace, and Vercel independently and in parallel.
+- **Self-Healing Pipelines & Workflows:** QMOI auto-detects and fixes all errors in its own files, pipelines, and workflows on GitLab, even if its own scripts are broken.
+- **Fallback & Sync:** If GitLab is unavailable, QMOI uses GitHub or Gitpod as a fallback, keeping all platforms in sync.
+- **Independent Notifications:** QMOI sends GitLab-specific error/fix notifications, and logs all actions for audit and learning.
+- **Master Control:** Master can review, approve, or override any automated fix or setup from the dashboard. 
+
 - All automation, error fixing, deployment, and notifications are now handled exclusively by GitLab CI/CD. 

@@ -46,9 +46,9 @@ const UserSchema = z.object({
 });
 
 // Mock database (replace with actual database)
-let employees: any[] = [];
-let users: any[] = [];
-let employmentLogs: any[] = [];
+const employees: any[] = [];
+const users: any[] = [];
+const employmentLogs: any[] = [];
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);

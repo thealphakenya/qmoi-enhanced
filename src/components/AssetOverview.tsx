@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Card,
@@ -9,15 +9,11 @@ import {
   IconButton,
   Tooltip,
   CircularProgress,
-  Alert
-} from '@mui/material';
-import {
-  AccountBalance,
-  Refresh,
-  Info
-} from '@mui/icons-material';
-import { useAuth } from '../hooks/useAuth';
-import { AssetManagerImpl, Asset } from '../config/assets';
+  Alert,
+} from "@mui/material";
+import { AccountBalance, Refresh, Info } from "@mui/icons-material";
+import { useAuth } from "../hooks/useAuth";
+import { AssetManagerImpl, Asset } from "../config/assets";
 
 interface AssetOverviewProps {
   className?: string;
@@ -26,7 +22,14 @@ interface AssetOverviewProps {
 export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
   const { user } = useAuth();
   const [assets, setAssets] = useState<Asset[]>([]);
-  const [opportunities, setOpportunities] = useState<Array<{ type: string; opportunity: string; potentialProfit: number; risk: 'low' | 'medium' | 'high'; }>>([]);
+  const [opportunities, setOpportunities] = useState<
+    Array<{
+      type: string;
+      opportunity: string;
+      potentialProfit: number;
+      risk: "low" | "medium" | "high";
+    }>
+  >([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
@@ -47,7 +50,9 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch asset data');
+      setError(
+        err instanceof Error ? err.message : "Failed to fetch asset data",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -60,53 +65,58 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
   }, []);
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
     }).format(amount);
   };
 
   const formatBalance = (balance: number, currency: string) => {
-    if (currency === 'BTC') {
+    if (currency === "BTC") {
       return balance.toFixed(8);
     }
     return balance.toFixed(2);
   };
 
-  const getAssetTypeColor = (type: Asset['type']) => {
+  const getAssetTypeColor = (type: Asset["type"]) => {
     switch (type) {
-      case 'spot':
-        return 'primary';
-      case 'futures':
-        return 'secondary';
-      case 'otc':
-        return 'success';
+      case "spot":
+        return "primary";
+      case "futures":
+        return "secondary";
+      case "otc":
+        return "success";
       default:
-        return 'default';
+        return "default";
     }
   };
 
   const getRiskColor = (risk: string) => {
     switch (risk) {
-      case 'low':
-        return 'success';
-      case 'medium':
-        return 'warning';
-      case 'high':
-        return 'error';
+      case "low":
+        return "success";
+      case "medium":
+        return "warning";
+      case "high":
+        return "error";
       default:
-        return 'default';
+        return "default";
     }
   };
 
-  if (!user || !['master', 'sister'].includes(user.role)) {
+  if (!user || !["master", "sister"].includes(user.role)) {
     return null;
   }
 
   return (
     <Card className={className}>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={2}
+        >
           <Typography variant="h6" component="h2">
             Asset Overview
           </Typography>
@@ -115,11 +125,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
               {formatCurrency(totalBalance)}
             </Typography>
             <Tooltip title="Refresh Assets">
-              <IconButton
-                size="small"
-                onClick={fetchData}
-                disabled={isLoading}
-              >
+              <IconButton size="small" onClick={fetchData} disabled={isLoading}>
                 <Refresh />
               </IconButton>
             </Tooltip>
@@ -140,7 +146,13 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
           <>
             <Grid container spacing={2} mb={3}>
               {assets.map((asset) => (
-                <Grid item xs={12} sm={6} md={4} key={`${asset.type}_${asset.currency}`}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  key={`${asset.type}_${asset.currency}`}
+                >
                   <Card variant="outlined">
                     <CardContent>
                       <Box display="flex" alignItems="center" gap={1} mb={1}>
@@ -175,7 +187,11 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
                 <Grid item xs={12} sm={6} key={index}>
                   <Card variant="outlined">
                     <CardContent>
-                      <Box display="flex" justifyContent="space-between" alignItems="center">
+                      <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                      >
                         <Box>
                           <Typography variant="subtitle2">
                             {opp.opportunity}
@@ -205,10 +221,11 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
 
         <Box mt={2}>
           <Alert severity="info" icon={<Info />}>
-            Asset balances are automatically updated every 30 seconds. Click the refresh button to update manually.
+            Asset balances are automatically updated every 30 seconds. Click the
+            refresh button to update manually.
           </Alert>
         </Box>
       </CardContent>
     </Card>
   );
-}; 
+};

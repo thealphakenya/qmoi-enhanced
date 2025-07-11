@@ -1,5 +1,9 @@
-import React from 'react';
-import { runSecurityCheck, isTampered, showDecoyInfo } from './lib/security_check.js';
+import React from "react";
+import {
+  runSecurityCheck,
+  isTampered,
+  showDecoyInfo,
+} from "./lib/security_check.js";
 
 function App() {
   runSecurityCheck();
@@ -17,12 +21,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Alpha-Q AI is running.
-        </p>
+        <p>Alpha-Q AI is running.</p>
       </header>
     </div>
   );
 }
 
-export default App; 
+export default App;

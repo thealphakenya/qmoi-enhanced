@@ -16,7 +16,7 @@ function saveUsers(users: any[]) {
 const handler = requireRole(['user', 'admin', 'master'])(async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
   const { id } = (req as any).user || {};
-  let users = loadUsers();
+  const users = loadUsers();
   const userIdx = users.findIndex((u: any) => u.id === id);
   if (userIdx === -1) return res.status(404).json({ error: 'User not found' });
   if (method === 'POST' && body.action === 'setup') {

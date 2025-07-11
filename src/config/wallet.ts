@@ -26,15 +26,9 @@ export class WalletManager {
 
   private constructor() {
     this.config = {
-      spot: [
-        { currency: 'USDT', balance: 3.84 },
-      ],
-      futures: [
-        { currency: 'BTC', balance: 0.000009 },
-      ],
-      otc: [
-        { currency: 'BTC', balance: 0.000026 },
-      ],
+      spot: [{ currency: "USDT", balance: 3.84 }],
+      futures: [{ currency: "BTC", balance: 0.000009 }],
+      otc: [{ currency: "BTC", balance: 0.000026 }],
     };
     this.balances = [];
   }
@@ -48,33 +42,43 @@ export class WalletManager {
 
   public async updateBalances(): Promise<void> {
     try {
-      const spotBalances = await Promise.all(this.config.spot.map(async wallet => ({
-        currency: wallet.currency,
-        balance: wallet.balance,
-        usdValue: wallet.balance * (wallet.currency === 'USDT' ? 1 : await this.getUsdPrice(wallet.currency))
-      })));
+      const spotBalances = await Promise.all(
+        this.config.spot.map(async (wallet) => ({
+          currency: wallet.currency,
+          balance: wallet.balance,
+          usdValue:
+            wallet.balance *
+            (wallet.currency === "USDT"
+              ? 1
+              : await this.getUsdPrice(wallet.currency)),
+        })),
+      );
 
-      const futuresBalances = await Promise.all(this.config.futures.map(async wallet => ({
-        currency: wallet.currency,
-        balance: wallet.balance,
-        usdValue: wallet.balance * await this.getUsdPrice(wallet.currency)
-      })));
+      const futuresBalances = await Promise.all(
+        this.config.futures.map(async (wallet) => ({
+          currency: wallet.currency,
+          balance: wallet.balance,
+          usdValue: wallet.balance * (await this.getUsdPrice(wallet.currency)),
+        })),
+      );
 
-      const otcBalances = await Promise.all(this.config.otc.map(async wallet => ({
-        currency: wallet.currency,
-        balance: wallet.balance,
-        usdValue: wallet.balance * await this.getUsdPrice(wallet.currency)
-      })));
+      const otcBalances = await Promise.all(
+        this.config.otc.map(async (wallet) => ({
+          currency: wallet.currency,
+          balance: wallet.balance,
+          usdValue: wallet.balance * (await this.getUsdPrice(wallet.currency)),
+        })),
+      );
 
       this.balances = [...spotBalances, ...futuresBalances, ...otcBalances];
     } catch (error) {
-      console.error('Error updating wallet balances:', error);
+      console.error("Error updating wallet balances:", error);
       throw error;
     }
   }
 
   private async getUsdPrice(currency: string): Promise<number> {
-    if (currency === 'USDT') return 1;
+    if (currency === "USDT") return 1;
     try {
       // Implement price fetching logic here
       return 0; // Placeholder
@@ -93,11 +97,17 @@ export class WalletManager {
     return this.config;
   }
 
-  public async updateBalance(type: 'spot' | 'futures' | 'otc', currency: string, balance: number): Promise<void> {
-    const walletIndex = this.config[type].findIndex(w => w.currency === currency);
+  public async updateBalance(
+    type: "spot" | "futures" | "otc",
+    currency: string,
+    balance: number,
+  ): Promise<void> {
+    const walletIndex = this.config[type].findIndex(
+      (w) => w.currency === currency,
+    );
     if (walletIndex !== -1) {
       this.config[type][walletIndex].balance = balance;
       await this.updateBalances();
     }
   }
-} 
+}

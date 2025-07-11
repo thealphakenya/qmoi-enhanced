@@ -28,8 +28,13 @@ export type AutomationRule = {
 export class PluginManager {
   private plugins: QmoiPlugin[] = [];
   private pluginStatus: { [id: string]: boolean } = {};
-  private eventListeners: { [eventType: string]: ((payload: any) => void)[] } = {};
-  private scheduledPlugins: { plugin: QmoiPlugin; interval: number; timer?: any }[] = [];
+  private eventListeners: { [eventType: string]: ((payload: any) => void)[] } =
+    {};
+  private scheduledPlugins: {
+    plugin: QmoiPlugin;
+    interval: number;
+    timer?: any;
+  }[] = [];
   private automationRules: AutomationRule[] = [];
 
   register(plugin: QmoiPlugin) {
@@ -122,4 +127,4 @@ export class PluginManager {
   //   trigger: (event) => event.type === 'deviceHealthChange' && event.payload.cpu > 80,
   //   action: () => { /* offload logic */ },
   // });
-} 
+}

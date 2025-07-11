@@ -45,12 +45,12 @@ const ReferralProgramSchema = z.object({
 });
 
 // Mock database
-let microtasks: any[] = [];
-let affiliateCampaigns: any[] = [];
-let contentProjects: any[] = [];
-let referralPrograms: any[] = [];
-let revenueLogs: any[] = [];
-let platformAccounts: any[] = [];
+const microtasks: any[] = [];
+const affiliateCampaigns: any[] = [];
+const contentProjects: any[] = [];
+const referralPrograms: any[] = [];
+const revenueLogs: any[] = [];
+const platformAccounts: any[] = [];
 
 // M-Pesa credentials (securely stored)
 const MPESA_CREDENTIALS = {

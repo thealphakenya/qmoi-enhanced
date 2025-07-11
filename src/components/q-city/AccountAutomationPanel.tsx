@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 interface Account {
   id: number;
@@ -15,46 +15,54 @@ interface Account {
 
 const AccountAutomationPanel: React.FC = () => {
   const [accounts, setAccounts] = useState<Account[]>([]);
-  const [form, setForm] = useState({ username: '', email: '', platform: '' });
-  const [status, setStatus] = useState<string>('');
-  const [idToCheck, setIdToCheck] = useState('');
+  const [form, setForm] = useState({ username: "", email: "", platform: "" });
+  const [status, setStatus] = useState<string>("");
+  const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const res = await fetch('/api/account-automation/create', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form)
+    const res = await fetch("/api/account-automation/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
     });
     const data = await res.json();
-    if (data.account) setAccounts(a => [...a, data.account]);
-    setStatus(data.success ? 'Account created' : 'Error creating account');
+    if (data.account) setAccounts((a) => [...a, data.account]);
+    setStatus(data.success ? "Account created" : "Error creating account");
   };
 
   const login = async () => {
-    const res = await fetch('/api/account-automation/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: form.username, platform: form.platform })
+    const res = await fetch("/api/account-automation/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: form.username,
+        platform: form.platform,
+      }),
     });
     const data = await res.json();
-    setStatus(data.success ? 'Login successful' : 'Login failed');
+    setStatus(data.success ? "Login successful" : "Login failed");
   };
 
   const verify = async (id: number, email: string) => {
-    const res = await fetch('/api/account-automation/verify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, email })
+    const res = await fetch("/api/account-automation/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, email }),
     });
     const data = await res.json();
-    setStatus(data.success ? 'Verification triggered' : 'Verification failed');
-    if (data.account) setAccounts(accs => accs.map(a => a.id === id ? data.account : a));
+    setStatus(data.success ? "Verification triggered" : "Verification failed");
+    if (data.account)
+      setAccounts((accs) => accs.map((a) => (a.id === id ? data.account : a)));
   };
 
   const checkStatus = async () => {
     const res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await res.json();
-    setStatus(data.status ? `Status: ${data.status}, Verified: ${data.verified}` : 'Status check failed');
+    setStatus(
+      data.status
+        ? `Status: ${data.status}, Verified: ${data.verified}`
+        : "Status check failed",
+    );
   };
 
   return (
@@ -67,29 +75,37 @@ const AccountAutomationPanel: React.FC = () => {
           <Input
             placeholder="Username"
             value={form.username}
-            onChange={e => setForm(f => ({ ...f, username: e.target.value }))}
+            onChange={(e) =>
+              setForm((f) => ({ ...f, username: e.target.value }))
+            }
             className="mb-2"
           />
           <Input
             placeholder="Email"
             value={form.email}
-            onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+            onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             className="mb-2"
           />
           <Input
             placeholder="Platform (e.g. WhatsApp, Telegram)"
             value={form.platform}
-            onChange={e => setForm(f => ({ ...f, platform: e.target.value }))}
+            onChange={(e) =>
+              setForm((f) => ({ ...f, platform: e.target.value }))
+            }
             className="mb-2"
           />
-          <Button onClick={createAccount} className="mr-2">Create Account</Button>
-          <Button onClick={login} variant="secondary">Login</Button>
+          <Button onClick={createAccount} className="mr-2">
+            Create Account
+          </Button>
+          <Button onClick={login} variant="secondary">
+            Login
+          </Button>
         </div>
         <div className="mb-4">
           <Input
             placeholder="Account ID to check status"
             value={idToCheck}
-            onChange={e => setIdToCheck(e.target.value)}
+            onChange={(e) => setIdToCheck(e.target.value)}
             className="mb-2"
           />
           <Button onClick={checkStatus}>Check Status</Button>
@@ -109,17 +125,19 @@ const AccountAutomationPanel: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {accounts.map(a => (
+              {accounts.map((a) => (
                 <tr key={a.id} className="border-t">
                   <td>{a.id}</td>
                   <td>{a.username}</td>
                   <td>{a.email}</td>
                   <td>{a.platform}</td>
                   <td>{a.status}</td>
-                  <td>{a.verified ? 'Yes' : 'No'}</td>
+                  <td>{a.verified ? "Yes" : "No"}</td>
                   <td>
                     {!a.verified && (
-                      <Button size="sm" onClick={() => verify(a.id, a.email)}>Trigger Verification</Button>
+                      <Button size="sm" onClick={() => verify(a.id, a.email)}>
+                        Trigger Verification
+                      </Button>
                     )}
                   </td>
                 </tr>
@@ -134,4 +152,4 @@ const AccountAutomationPanel: React.FC = () => {
   );
 };
 
-export default AccountAutomationPanel; 
+export default AccountAutomationPanel;

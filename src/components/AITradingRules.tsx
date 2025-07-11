@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Card,
@@ -13,16 +13,16 @@ import {
   Chip,
   // IconButton,
   // Tooltip,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Save,
   Add as AddIcon,
   // Delete,
   Info,
   // Edit as EditIcon,
-} from '@mui/icons-material';
-import { useAuth } from '../hooks/useAuth';
-import { TradingManager } from '../config/trading';
+} from "@mui/icons-material";
+import { useAuth } from "../hooks/useAuth";
+import { TradingManager } from "../config/trading";
 
 interface TradingRule {
   maxDailyTrades: number;
@@ -34,15 +34,17 @@ interface AITradingRulesProps {
   className?: string;
 }
 
-export const AITradingRules: React.FC<AITradingRulesProps> = ({ className }) => {
+export const AITradingRules: React.FC<AITradingRulesProps> = ({
+  className,
+}) => {
   const { user } = useAuth();
   const [isEnabled, setIsEnabled] = useState(false);
   const [rules, setRules] = useState<TradingRule>({
     maxDailyTrades: 10,
     maxTradeAmount: 100,
-    allowedPairs: ['BTC/USDT', 'ETH/USDT'],
+    allowedPairs: ["BTC/USDT", "ETH/USDT"],
   });
-  const [newPair, setNewPair] = useState('');
+  const [newPair, setNewPair] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,7 +60,7 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({ className }) => 
       setIsEnabled(aiTradingConfig.enabled);
       setRules(aiTradingConfig.tradingRules);
     } catch (err) {
-      setError('Failed to load trading rules');
+      setError("Failed to load trading rules");
     }
   };
 
@@ -71,13 +73,13 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({ className }) => 
       const tradingManager = TradingManager.getInstance();
       await tradingManager.updateAITradingConfig({
         enabled: isEnabled,
-        allowedUsers: ['sister'],
+        allowedUsers: ["sister"],
         tradingRules: rules,
       });
 
-      setSuccess('Trading rules updated successfully');
+      setSuccess("Trading rules updated successfully");
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to update rules');
+      setError(err instanceof Error ? err.message : "Failed to update rules");
     } finally {
       setIsLoading(false);
     }
@@ -89,7 +91,7 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({ className }) => 
         ...rules,
         allowedPairs: [...rules.allowedPairs, newPair],
       });
-      setNewPair('');
+      setNewPair("");
     }
   };
 
@@ -100,14 +102,19 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({ className }) => 
     });
   };
 
-  if (!user || user.role !== 'master') {
+  if (!user || user.role !== "master") {
     return null;
   }
 
   return (
     <Card className={className}>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={2}
+        >
           <Typography variant="h6" component="h2">
             AI Trading Rules
           </Typography>
@@ -216,11 +223,12 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({ className }) => 
 
         <Box mt={2}>
           <Alert severity="info" icon={<Info />}>
-            These rules apply to AI trading for sister accounts. The AI will only
-            execute trades within these limits and for the specified trading pairs.
+            These rules apply to AI trading for sister accounts. The AI will
+            only execute trades within these limits and for the specified
+            trading pairs.
           </Alert>
         </Box>
       </CardContent>
     </Card>
   );
-}; 
+};

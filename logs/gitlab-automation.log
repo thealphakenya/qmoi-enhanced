@@ -1,0 +1,26 @@
+[2025-07-11T22:58:48.668Z] [WARN] Not running in GitLab CI, but continuing with automation...
+[2025-07-11T22:58:48.756Z] [INFO] Starting full QMOI GitLab pipeline...
+[2025-07-11T22:58:48.758Z] [INFO] Starting common error fixes...
+[2025-07-11T22:58:48.760Z] [INFO] Applying fix: Fix npm cache
+[2025-07-11T22:58:48.761Z] [INFO] Running command: npm cache clean --force
+[2025-07-11T23:00:34.696Z] [INFO] Command completed successfully: npm cache clean --force
+[2025-07-11T23:00:34.697Z] [INFO] Fix applied successfully: Fix npm cache
+[2025-07-11T23:00:34.698Z] [INFO] Applying fix: Remove node_modules and reinstall
+[2025-07-11T23:00:34.860Z] [INFO] Running command: rm -rf node_modules package-lock.json && npm install
+[2025-07-11T23:00:35.035Z] [ERROR] Command failed with code 1: rm -rf node_modules package-lock.json && npm install
+[2025-07-11T23:00:35.036Z] [WARN] Fix failed: Remove node_modules and reinstall - undefined
+[2025-07-11T23:00:35.036Z] [INFO] Applying fix: Fix TypeScript compilation
+[2025-07-11T23:00:35.037Z] [INFO] Running command: npx tsc --noEmit --skipLibCheck
+[2025-07-11T23:02:22.189Z] [ERROR] Command failed with code 2: npx tsc --noEmit --skipLibCheck
+[2025-07-11T23:02:22.190Z] [WARN] Fix failed: Fix TypeScript compilation - undefined
+[2025-07-11T23:02:22.190Z] [INFO] Applying fix: Fix ESLint issues
+[2025-07-11T23:02:22.190Z] [INFO] Running command: npx eslint --fix src/
+[2025-07-11T23:04:57.719Z] [ERROR] Command failed with code 1: npx eslint --fix src/
+[2025-07-11T23:04:57.749Z] [WARN] Fix failed: Fix ESLint issues - undefined
+[2025-07-11T23:04:57.750Z] [INFO] Applying fix: Fix Prettier formatting
+[2025-07-11T23:04:57.751Z] [INFO] Running command: npx prettier --write src/
+[2025-07-11T23:06:02.654Z] [ERROR] Command failed with code 2: npx prettier --write src/
+[2025-07-11T23:06:02.821Z] [WARN] Fix failed: Fix Prettier formatting - undefined
+[2025-07-11T23:06:03.688Z] [INFO] Starting QMOI auto-setup...
+[2025-07-11T23:06:07.593Z] [INFO] Updated GitLab status: running - QMOI auto-setup in progress
+[2025-07-11T23:06:07.594Z] [INFO] Running command: npm run auto:setup

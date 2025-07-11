@@ -23,4 +23,4 @@ export class AutoResearcher {
     // TODO: Integrate with notification system
     console.log(`New knowledge added for ${topic}`);
   }
-} 
+}

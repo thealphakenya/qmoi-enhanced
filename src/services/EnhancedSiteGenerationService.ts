@@ -1,8 +1,8 @@
-import { EventEmitter } from 'events';
+import { EventEmitter } from "events";
 
 interface SiteGenerationRequest {
   id: string;
-  type: 'affiliate' | 'e-commerce' | 'saas' | 'content' | 'custom';
+  type: "affiliate" | "e-commerce" | "saas" | "content" | "custom";
   template: string;
   contentPreferences?: Record<string, any>;
   designPreferences?: Record<string, any>;
@@ -35,7 +35,7 @@ interface SiteGenerationResult {
   url: string;
   audit: SiteAuditResult;
   enhancements: SiteEnhancement[];
-  status: 'success' | 'failed';
+  status: "success" | "failed";
   logs: string[];
 }
 
@@ -50,20 +50,23 @@ export class EnhancedSiteGenerationService extends EventEmitter {
 
   public static getInstance(): EnhancedSiteGenerationService {
     if (!EnhancedSiteGenerationService.instance) {
-      EnhancedSiteGenerationService.instance = new EnhancedSiteGenerationService();
+      EnhancedSiteGenerationService.instance =
+        new EnhancedSiteGenerationService();
     }
     return EnhancedSiteGenerationService.instance;
   }
 
-  public async requestSiteGeneration(request: Omit<SiteGenerationRequest, 'id' | 'timestamp'>): Promise<string> {
+  public async requestSiteGeneration(
+    request: Omit<SiteGenerationRequest, "id" | "timestamp">,
+  ): Promise<string> {
     const id = `site_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const fullRequest: SiteGenerationRequest = {
       ...request,
       id,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
     this.siteQueue.push(fullRequest);
-    this.emit('siteRequested', fullRequest);
+    this.emit("siteRequested", fullRequest);
     this.processQueue();
     return id;
   }
@@ -75,9 +78,9 @@ export class EnhancedSiteGenerationService extends EventEmitter {
     if (request) {
       try {
         const result = await this.generateSite(request);
-        this.emit('siteGenerated', result);
+        this.emit("siteGenerated", result);
       } catch (error) {
-        this.emit('siteGenerationFailed', { request, error });
+        this.emit("siteGenerationFailed", { request, error });
       } finally {
         this.isProcessing = false;
         this.processQueue();
@@ -87,9 +90,13 @@ export class EnhancedSiteGenerationService extends EventEmitter {
     }
   }
 
-  private async generateSite(request: SiteGenerationRequest): Promise<SiteGenerationResult> {
+  private async generateSite(
+    request: SiteGenerationRequest,
+  ): Promise<SiteGenerationResult> {
     const logs: string[] = [];
-    logs.push(`Starting site generation for ${request.type} using template ${request.template}`);
+    logs.push(
+      `Starting site generation for ${request.type} using template ${request.template}`,
+    );
     // 1. Use best-practice template
     // 2. Optionally use AI for content/design
     // 3. Run automated audits
@@ -101,21 +108,42 @@ export class EnhancedSiteGenerationService extends EventEmitter {
       seoScore: 90,
       securityScore: 93,
       issues: [],
-      recommendations: ['Optimize images', 'Add alt text to images', 'Minimize JS bundle']
+      recommendations: [
+        "Optimize images",
+        "Add alt text to images",
+        "Minimize JS bundle",
+      ],
     };
-    logs.push('Audit complete. Scores:', JSON.stringify(audit));
+    logs.push("Audit complete. Scores:", JSON.stringify(audit));
     const enhancements: SiteEnhancement[] = [
-      { description: 'Optimized images', changes: ['Compressed all images by 40%'] },
-      { description: 'Added alt text', changes: ['All images have descriptive alt text'] },
-      { description: 'Minimized JS bundle', changes: ['Reduced JS bundle size by 30%'] }
+      {
+        description: "Optimized images",
+        changes: ["Compressed all images by 40%"],
+      },
+      {
+        description: "Added alt text",
+        changes: ["All images have descriptive alt text"],
+      },
+      {
+        description: "Minimized JS bundle",
+        changes: ["Reduced JS bundle size by 30%"],
+      },
     ];
     if (request.aiContentEnabled) {
-      enhancements.push({ description: 'AI-generated content', changes: [], aiContent: 'High-quality AI-generated text' });
+      enhancements.push({
+        description: "AI-generated content",
+        changes: [],
+        aiContent: "High-quality AI-generated text",
+      });
     }
     if (request.aiDesignEnabled) {
-      enhancements.push({ description: 'AI-generated design', changes: [], aiDesign: 'Modern, responsive AI-generated layout' });
+      enhancements.push({
+        description: "AI-generated design",
+        changes: [],
+        aiDesign: "Modern, responsive AI-generated layout",
+      });
     }
-    logs.push('Enhancements applied:', JSON.stringify(enhancements));
+    logs.push("Enhancements applied:", JSON.stringify(enhancements));
     // Simulate site deployment
     const url = `https://qcity-sites.com/${request.id}`;
     logs.push(`Site deployed at ${url}`);
@@ -124,10 +152,11 @@ export class EnhancedSiteGenerationService extends EventEmitter {
       url,
       audit,
       enhancements,
-      status: 'success',
-      logs
+      status: "success",
+      logs,
     };
   }
 }
 
-export const enhancedSiteGenerationService = EnhancedSiteGenerationService.getInstance(); 
+export const enhancedSiteGenerationService =
+  EnhancedSiteGenerationService.getInstance();

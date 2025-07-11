@@ -1,17 +1,17 @@
 export interface Trade {
   id: string;
   timestamp: number;
-  type: 'buy' | 'sell';
+  type: "buy" | "sell";
   pair: string;
   amount: number;
   price: number;
   total: number;
   profit?: number;
-  status: 'pending' | 'completed' | 'failed';
+  status: "pending" | "completed" | "failed";
   userId: string;
   userRole: string;
   sourceCurrency: string;
-  sourceType: 'spot' | 'futures' | 'otc';
+  sourceType: "spot" | "futures" | "otc";
 }
 
 export interface TradeExecutionResult {
@@ -57,7 +57,7 @@ export interface TradePair {
   maxAmount: number;
   pricePrecision: number;
   amountPrecision: number;
-  status: 'active' | 'inactive' | 'maintenance';
+  status: "active" | "inactive" | "maintenance";
 }
 
 export interface TradeLimit {
@@ -75,4 +75,4 @@ export interface TradeRisk {
   trailingStop?: number;
   riskPerTrade: number;
   maxRiskPerDay: number;
-} 
+}

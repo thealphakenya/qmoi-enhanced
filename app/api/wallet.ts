@@ -352,7 +352,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           throw new Error('Only master can approve wallet requests.');
         }
         const { email: approveEmail } = req.body;
-        let requests = readWalletRequests();
+        const requests = readWalletRequests();
         const idx = requests.findIndex(r => r.email === approveEmail && r.status === 'pending');
         if (idx === -1) throw new Error('No pending request for this email.');
         

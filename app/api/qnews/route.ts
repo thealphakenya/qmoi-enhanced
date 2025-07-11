@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // In-memory news store (replace with DB in production)
-let newsStore: any[] = [];
+const newsStore: any[] = [];
 let idCounter = 1;
 
 // Helper: aggregate news from RSS/APIs/QMOI (stub)

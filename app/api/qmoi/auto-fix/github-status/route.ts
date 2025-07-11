@@ -6,7 +6,7 @@ export async function GET() {
   try {
     const workflowsDir = path.join(process.cwd(), '.github', 'workflows');
     
-    let status = {
+    const status = {
       status: "unknown" as "success" | "failure" | "running" | "unknown",
       last_run: new Date().toISOString(),
       duration: "0s",

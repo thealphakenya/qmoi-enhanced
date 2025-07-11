@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
   const encoder = new TextEncoder();
 
   const ps = spawn(script, args);
-  let user = jwt.role || 'unknown';
+  const user = jwt.role || 'unknown';
   logAudit('selfheal-trigger', user, options, 'started');
 
   ps.stdout.on('data', (data) => {

@@ -23,8 +23,8 @@ const PaymentInfoSchema = z.object({
 });
 
 // Mock database
-let payments: any[] = [];
-let paymentLogs: any[] = [];
+const payments: any[] = [];
+const paymentLogs: any[] = [];
 
 // Secure credential storage (in production, use encrypted environment variables)
 const PAYMENT_CREDENTIALS = {

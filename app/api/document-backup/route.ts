@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // In-memory document store (replace with DB/cloud in production)
-let documents: any[] = [];
+const documents: any[] = [];
 let docId = 1;
 
 export async function POST_UPLOAD(req: NextRequest) {

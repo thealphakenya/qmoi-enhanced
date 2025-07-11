@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Card,
@@ -9,16 +9,16 @@ import {
   Grid,
   IconButton,
   Tooltip,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Wifi,
   WifiOff,
   AccountBalance,
   Refresh,
   Warning,
-} from '@mui/icons-material';
-import { useAuth } from '../hooks/useAuth';
-import { TradingManager } from '../config/trading';
+} from "@mui/icons-material";
+import { useAuth } from "../hooks/useAuth";
+import { TradingManager } from "../config/trading";
 
 interface WalletBalance {
   currency: string;
@@ -44,7 +44,8 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
       setError(null);
 
       // Get connection status
-      const connectionStatus = TradingManager.getInstance().getConnectionStatus();
+      const connectionStatus =
+        TradingManager.getInstance().getConnectionStatus();
       setIsConnected(connectionStatus.isConnected);
 
       if (connectionStatus.isConnected) {
@@ -52,12 +53,12 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
         const balances = await TradingManager.getInstance().getWalletBalances();
         setWalletBalances(balances);
       } else {
-        setError(connectionStatus.lastError || 'Connection lost');
+        setError(connectionStatus.lastError || "Connection lost");
       }
 
       setLastUpdate(new Date());
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch status');
+      setError(err instanceof Error ? err.message : "Failed to fetch status");
     } finally {
       setIsLoading(false);
     }
@@ -70,35 +71,40 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
   }, []);
 
   const formatBalance = (balance: number) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 8,
     }).format(balance);
   };
 
   const formatUSD = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
     }).format(amount);
   };
 
-  if (!user || !['master', 'sister'].includes(user.role)) {
+  if (!user || !["master", "sister"].includes(user.role)) {
     return null;
   }
 
   return (
     <Card className={className}>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={2}
+        >
           <Typography variant="h6" component="h2">
             Trading System Status
           </Typography>
           <Box display="flex" alignItems="center" gap={1}>
             <Chip
               icon={isConnected ? <Wifi /> : <WifiOff />}
-              label={isConnected ? 'Connected' : 'Disconnected'}
-              color={isConnected ? 'success' : 'error'}
+              label={isConnected ? "Connected" : "Disconnected"}
+              color={isConnected ? "success" : "error"}
               size="small"
             />
             <Tooltip title="Refresh Status">
@@ -157,4 +163,4 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
       </CardContent>
     </Card>
   );
-}; 
+};

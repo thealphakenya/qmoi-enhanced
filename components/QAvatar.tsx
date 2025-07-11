@@ -1061,7 +1061,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         const { value, done } = await reader.read();
         if (done) break;
         buffer += decoder.decode(value, { stream: true });
-        let lines = buffer.split('\n\n');
+        const lines = buffer.split('\n\n');
         buffer = lines.pop() || '';
         for (const line of lines) {
           if (line.startsWith('data: ')) {
