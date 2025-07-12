@@ -295,6 +295,31 @@ performance-test:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
+# DAST security test job (Dynamic Application Security Testing)
+dast:
+  stage: test
+  image: registry.gitlab.com/security-products/dast:5
+  variables:
+    DAST_WEBSITE: "$DAST_WEBSITE"
+  script:
+    - |
+      if [ -f "environment_url.txt" ]; then \
+        export DAST_WEBSITE="$(cat environment_url.txt)"; \
+      fi
+      if [ -z "$DAST_WEBSITE" ]; then \
+        echo "DAST_WEBSITE not set, skipping DAST test"; exit 0; \
+      fi
+      /analyze
+  allow_failure: true
+  artifacts:
+    paths:
+      - gl-dast-report.json
+    expire_in: 1 week
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_TAG'
+
 # Auto-push job - Always runs regardless of other job status
 qmoi-auto-push:
   stage: .post
@@ -310,9 +335,9 @@ qmoi-auto-push:
   when: always
   allow_failure: true
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_TAG
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_TAG'
 
 # Cleanup job
 cleanup:

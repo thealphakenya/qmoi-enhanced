@@ -64,7 +64,7 @@ export const FileExplorer: React.FC = () => {
     const isExpanded = expandedFolders.has(item.id);
     const isSelected = selectedFile === item.id;
 
-    return (
+  return (
       <div key={item.id} style={{ marginLeft: `${level * 16}px` }}>
         <div
           className={`flex items-center py-1 px-2 rounded cursor-pointer hover:bg-green-800/30 ${
@@ -92,7 +92,7 @@ export const FileExplorer: React.FC = () => {
             {item.children.map(child => renderFileItem(child, level + 1))}
           </div>
         )}
-      </div>
+        </div>
     );
   };
 
@@ -102,7 +102,7 @@ export const FileExplorer: React.FC = () => {
       
       <div className="space-y-1">
         {files.map(item => renderFileItem(item))}
-      </div>
+            </div>
       
       {selectedFile && (
         <div className="mt-4 pt-3 border-t border-green-700">
@@ -111,6 +111,6 @@ export const FileExplorer: React.FC = () => {
           </div>
         </div>
       )}
-    </div>
+            </div>
   );
 };

@@ -1,0 +1,27 @@
+[2025-07-12T00:18:14.320Z] [INFO] Starting QMOI GitLab push pipeline...
+[2025-07-12T00:18:14.342Z] [INFO] Configuring Git for QMOI automation...
+[2025-07-12T00:18:14.343Z] [INFO] Running command: git config --global user.name "QMOI Automation"
+[2025-07-12T00:18:14.593Z] [INFO] Command completed successfully: git config --global user.name "QMOI Automation"
+[2025-07-12T00:18:14.594Z] [INFO] Running command: git config --global user.email "qmoi-automation@gitlab.com"
+[2025-07-12T00:18:14.721Z] [INFO] Command completed successfully: git config --global user.email "qmoi-automation@gitlab.com"
+[2025-07-12T00:18:14.722Z] [INFO] Running command: git config --global push.default simple
+[2025-07-12T00:18:15.543Z] [INFO] Command completed successfully: git config --global push.default simple
+[2025-07-12T00:18:16.008Z] [INFO] Running command: git config --global pull.rebase false
+[2025-07-12T00:18:16.070Z] [INFO] Command completed successfully: git config --global pull.rebase false
+[2025-07-12T00:18:16.071Z] [INFO] Git configuration completed successfully
+[2025-07-12T00:18:16.071Z] [INFO] Checking Git status...
+[2025-07-12T00:18:16.072Z] [INFO] Running command: git status --porcelain
+[2025-07-12T00:18:16.238Z] [INFO] Command completed successfully: git status --porcelain
+[2025-07-12T00:18:16.239Z] [INFO] Running command: git branch --show-current
+[2025-07-12T00:18:16.327Z] [INFO] Command completed successfully: git branch --show-current
+[2025-07-12T00:18:16.328Z] [INFO] Running command: git remote -v
+[2025-07-12T00:18:16.474Z] [INFO] Command completed successfully: git remote -v
+[2025-07-12T00:18:16.475Z] [INFO] Current branch: main
+[2025-07-12T00:18:16.475Z] [INFO] Remote: origin	https://github.com/thealphakenya/Alpha-Q-ai.git (fetch)
+origin	https://github.com/thealphakenya/Alpha-Q-ai.git (push)
+[2025-07-12T00:18:16.476Z] [INFO] Status: M .gitlab-ci.yml
+ M components/FileExplorer.tsx
+ M scripts/gitlab-automation.js
+?? logs/gitlab-push.log
+[2025-07-12T00:18:16.476Z] [INFO] Staging all changes...
+[2025-07-12T00:18:16.477Z] [INFO] Running command: git add .

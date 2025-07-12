@@ -453,6 +453,36 @@ class GitLabAutomation {
     }
   }
 
+  const MAX_RETRIES = 3;
+  const BASE_DELAY = 10000; // 10 seconds
+
+  async function notify(status, message) {
+    // Placeholder for notification logic (console, API, etc.)
+    console.log(`[GITLAB-AUTOMATION][${status}] ${message}`);
+  }
+
+  async function retryStep(stepFn, stepName) {
+    let attempt = 0;
+    let lastError = null;
+    while (attempt < MAX_RETRIES) {
+      try {
+        await stepFn();
+        await notify('success', `${stepName} succeeded on attempt ${attempt + 1}`);
+        return;
+      } catch (error) {
+        lastError = error;
+        await notify('error', `${stepName} failed on attempt ${attempt + 1}: ${error.message}`);
+        attempt++;
+        if (attempt < MAX_RETRIES) {
+          const delay = BASE_DELAY * Math.pow(2, attempt);
+          await new Promise(res => setTimeout(res, delay));
+        }
+      }
+    }
+    await notify('error', `${stepName} failed after ${MAX_RETRIES} attempts.`);
+    throw lastError;
+  }
+
   async runFullPipeline() {
     try {
       this.log('Starting full QMOI GitLab pipeline...');
