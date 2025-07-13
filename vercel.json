@@ -3,9 +3,7 @@
   "version": 2,
   "name": "qmoi-alpha-ai",
   "buildCommand": "npm run build",
-  "outputDirectory": "public",
   "installCommand": "npm install",
-  "framework": "nodejs",
   "functions": {
     "app/api/**/*.js": {
       "maxDuration": 30
@@ -18,7 +16,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/public/$1"
+      "dest": "/$1"
     }
   ],
   "env": {
