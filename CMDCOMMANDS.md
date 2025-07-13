@@ -995,6 +995,123 @@ cat logs/auto-evolution-report.json
 cat logs/qmoi-auto-evolution.log
 ``` 
 
+### Enhanced QMOI QCity Automation Commands
+```bash
+# Start comprehensive enhanced automation system
+python scripts/qmoi-qcity-enhanced-automation.py
+
+# Start platform optimizer with paid features
+python scripts/qmoi-platform-optimizer.py
+
+# Start universal error fixer
+python scripts/qmoi-universal-error-fixer.py
+
+# Start enhanced dashboard
+python scripts/qmoi-dashboard-enhance.py
+
+# Start GitLab CI automation
+python scripts/qmoi-gitlab-ci-automation.py
+
+# Start QCity automatic system
+python scripts/qmoi-qcity-automatic.py
+
+# Start comprehensive parallel automation
+python scripts/qmoi-comprehensive-parallel-automation.py
+
+# Start parallel platform enhancer
+python scripts/qmoi-parallel-platform-enhancer.py
+```
+
+### Platform Optimization Commands
+```bash
+# Optimize all platforms with paid features
+python scripts/qmoi-platform-optimizer.py
+
+# Configure specific platform
+python scripts/qmoi-platform-optimizer.py --platform gitlab
+python scripts/qmoi-platform-optimizer.py --platform github
+python scripts/qmoi-platform-optimizer.py --platform vercel
+python scripts/qmoi-platform-optimizer.py --platform gitpod
+python scripts/qmoi-platform-optimizer.py --platform netlify
+python scripts/qmoi-platform-optimizer.py --platform quantum
+
+# View platform optimization stats
+cat logs/platform-optimizer-stats.json
+
+# View platform optimization logs
+cat logs/qmoi-platform-optimizer.log
+```
+
+### Universal Error Fixing Commands
+```bash
+# Start universal error fixer
+python scripts/qmoi-universal-error-fixer.py
+
+# Fix specific error types
+python scripts/qmoi-universal-error-fixer.py --fix-npm
+python scripts/qmoi-universal-error-fixer.py --fix-git
+python scripts/qmoi-universal-error-fixer.py --fix-build
+python scripts/qmoi-universal-error-fixer.py --fix-deployment
+python scripts/qmoi-universal-error-fixer.py --fix-platform
+python scripts/qmoi-universal-error-fixer.py --fix-network
+python scripts/qmoi-universal-error-fixer.py --fix-permission
+python scripts/qmoi-universal-error-fixer.py --fix-memory
+
+# View error fixing stats
+cat logs/universal-error-fixer-stats.json
+
+# View error fixing logs
+cat logs/qmoi-universal-error-fixer.log
+```
+
+### Enhanced Dashboard Commands
+```bash
+# Start enhanced dashboard
+python scripts/qmoi-dashboard-enhance.py
+
+# Access dashboard
+# Open http://localhost:3010 in browser
+
+# View dashboard logs
+cat logs/qmoi-dashboard.log
+
+# View dashboard stats
+cat logs/qmoi-dashboard-stats.json
+```
+
+### GitLab CI Automation Commands
+```bash
+# Start GitLab CI automation
+python scripts/qmoi-gitlab-ci-automation.py
+
+# View GitLab CI stats
+cat logs/gitlab-ci-stats.json
+
+# View GitLab CI logs
+cat logs/qmoi-gitlab-ci.log
+```
+
+### QCity Automatic System Commands
+```bash
+# Start QCity automatic system
+python scripts/qmoi-qcity-automatic.py
+
+# View QCity automatic stats
+cat logs/qcity-automatic-stats.json
+
+# View QCity automatic logs
+cat logs/qmoi-qcity-automatic.log
+```
+
+### Enhanced Automation Stats
+```bash
+# View enhanced automation stats
+cat logs/qcity-enhanced-automation-stats.json
+
+# View enhanced automation logs
+cat logs/qmoi-qcity-enhanced-automation.log
+```
+
 ### Hugging Face Automation Commands
 ```bash
 # Sync model and code to Hugging Face
@@ -1023,4 +1140,67 @@ cat logs/qmoi-platform-manager.log
 
 # View developer actions logs
 cat logs/qmoi-dev-actions.log
+```
+
+### Comprehensive Parallel Automation Commands
+```bash
+# Start comprehensive parallel automation
+python scripts/qmoi-comprehensive-parallel-automation.py
+
+# Start parallel platform enhancer
+python scripts/qmoi-parallel-platform-enhancer.py
+
+# View comprehensive automation stats
+cat logs/qmoi-comprehensive-parallel-automation-summary.json
+
+# View comprehensive automation logs
+cat logs/qmoi-comprehensive-parallel-automation.log
+
+# View parallel platform enhancement stats
+cat logs/parallel-platform-enhancement-summary.json
+
+# View parallel platform enhancement logs
+cat logs/qmoi-parallel-platform-enhancer.log
+```
+
+### Parallel Processing Commands
+```bash
+# Run parallel error detection and fixing
+python scripts/qmoi-parallel-platform-enhancer.py --error-fixing
+
+# Run parallel platform optimization
+python scripts/qmoi-parallel-platform-enhancer.py --optimization
+
+# Run parallel feature activation
+python scripts/qmoi-parallel-platform-enhancer.py --feature-activation
+
+# Run parallel QCity automation
+python scripts/qmoi-parallel-platform-enhancer.py --qcity-automation
+
+# Run parallel developer actions
+python scripts/qmoi-parallel-platform-enhancer.py --developer-actions
+
+# Run parallel auto-evolution
+python scripts/qmoi-parallel-platform-enhancer.py --auto-evolution
+
+# Run all parallel processes
+python scripts/qmoi-comprehensive-parallel-automation.py --all-phases
+```
+
+### Real-Time Parallel Monitoring
+```bash
+# Monitor parallel processing in real-time
+python scripts/qmoi-comprehensive-parallel-automation.py &
+tail -f logs/qmoi-comprehensive-parallel-automation.log
+
+# View parallel processing stats
+watch -n 2 'cat logs/qmoi-comprehensive-parallel-automation-summary.json'
+
+# Monitor specific platform parallel processing
+python scripts/qmoi-parallel-platform-enhancer.py --platform github &
+python scripts/qmoi-parallel-platform-enhancer.py --platform gitlab &
+python scripts/qmoi-parallel-platform-enhancer.py --platform huggingface &
+
+# View all parallel processing logs
+tail -f logs/qmoi-parallel-platform-enhancer.log
 ``` 

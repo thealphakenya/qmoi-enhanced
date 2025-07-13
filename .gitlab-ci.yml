@@ -1,5 +1,5 @@
-# QMOI GitLab CI/CD Pipeline
-# Enhanced with comprehensive automation, error handling, and notifications
+# QMOI Enhanced GitLab CI/CD Pipeline
+# Integrated with QCity automation and comprehensive notifications
 
 variables:
   NODE_VERSION: "18"
@@ -8,85 +8,100 @@ variables:
   FORCE_COLOR: "1"
   QMOI_AUTO_FIX: "true"
   QMOI_NOTIFICATIONS: "true"
+  QMOI_QCITY_INTEGRATION: "true"
+  QMOI_AUTO_EVOLUTION: "true"
+  QMOI_SELF_HEALING: "true"
+  QMOI_MASTER_NOTIFICATIONS: "true"
 
-# Cache configuration for faster builds
+# Enhanced cache configuration
 cache:
   key: 
     files:
       - package-lock.json
+      - requirements.txt
   paths:
     - node_modules/
     - .npm-cache/
     - logs/
+    - build/
+    - dist/
   policy: pull-push
 
-# Stages for the pipeline
+# Comprehensive pipeline stages
 stages:
-  - setup
+  - qcity-setup
+  - auto-fix
   - validate
   - test
   - build
   - deploy
   - notify
+  - auto-evolution
+  - cleanup
 
-# Global before_script for all jobs
+# Global before_script with QCity integration
 before_script:
-  - echo "🚀 Starting QMOI GitLab CI Pipeline"
+  - echo "🚀 Starting QMOI Enhanced GitLab CI Pipeline with QCity Integration"
   - echo "Node version: $(node --version)"
   - echo "NPM version: $(npm --version)"
-  - echo "GitLab CI variables:"
-  - echo "  - CI_COMMIT_REF_NAME: $CI_COMMIT_REF_NAME"
-  - echo "  - CI_COMMIT_SHA: $CI_COMMIT_SHA"
-  - echo "  - CI_JOB_ID: $CI_JOB_ID"
-  - echo "  - CI_PIPELINE_ID: $CI_PIPELINE_ID"
+  - echo "QCity Integration: $QMOI_QCITY_INTEGRATION"
+  - echo "Auto Evolution: $QMOI_AUTO_EVOLUTION"
+  - echo "Self Healing: $QMOI_SELF_HEALING"
   - mkdir -p logs
   - export QMOI_LOG_FILE="logs/gitlab-ci-${CI_JOB_ID}.log"
+  - export QMOI_QCITY_STATUS="active"
+  - export QMOI_MASTER_NOTIFY="true"
 
-# Setup stage - Initialize QMOI environment
-setup:
-  stage: setup
+# QCity Setup Stage - Initialize QCity automation
+qcity-setup:
+  stage: qcity-setup
   image: node:18-alpine
   script:
-    - echo "🔧 Setting up QMOI environment..."
-    - npm config set cache .npm-cache
-    - npm ci --prefer-offline --no-audit
-    - echo "✅ Setup completed"
+    - echo "🏙️ Setting up QCity automation..."
+    - python scripts/qcity-setup.py
+    - node scripts/qcity-automation.js --initialize
+    - echo "✅ QCity setup completed"
   artifacts:
     paths:
-      - node_modules/
-      - .npm-cache/
+      - logs/
+      - config/qcity-config.json
     expire_in: 1 hour
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
-# Auto-fix stage - Handle common errors automatically
+# Enhanced Auto-Fix Stage
 auto-fix:
-  stage: setup
+  stage: auto-fix
   image: node:18-alpine
   script:
-    - echo "🔧 Running QMOI auto-fix..."
-    - node scripts/gitlab-automation.js --fix-only
-    - echo "✅ Auto-fix completed"
+    - echo "🔧 Running QMOI Enhanced Auto-Fix with QCity..."
+    - python scripts/qmoi-enhanced-automation.py --auto-fix
+    - node scripts/qmoi-error-handler.js --comprehensive
+    - python scripts/qmoi-performance-optimizer.py --optimize
+    - echo "✅ Enhanced auto-fix completed"
   artifacts:
     paths:
       - logs/
+      - fixes-applied.json
     expire_in: 1 week
   allow_failure: true
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-# Validation stage - Check code quality
+# Validation Stage with QCity Integration
 validate:
   stage: validate
   image: node:18-alpine
   script:
-    - echo "🔍 Running QMOI validation..."
+    - echo "🔍 Running QMOI validation with QCity..."
     - npm run lint
     - npm run type-check
     - npm run format:check
+    - python scripts/qmoi-enhanced-automation.py --validate
+    - node scripts/qcity-automation.js --validate
     - echo "✅ Validation completed"
   artifacts:
     reports:
@@ -98,7 +113,7 @@ validate:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-# Test stage - Run all test suites
+# Enhanced Test Stage
 test:
   stage: test
   image: node:18-alpine
@@ -108,11 +123,13 @@ test:
   variables:
     PLAYWRIGHT_BROWSERS_PATH: "0"
   script:
-    - echo "🧪 Running QMOI tests..."
+    - echo "🧪 Running QMOI enhanced tests with QCity..."
+    - python scripts/qmoi-enhanced-automation.py --test
     - npm run test:coverage
     - npm run test:ui
     - npm run test:e2e
-    - echo "✅ Tests completed"
+    - node scripts/qcity-automation.js --test-integration
+    - echo "✅ Enhanced tests completed"
   artifacts:
     reports:
       coverage_report:
@@ -129,15 +146,18 @@ test:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-# Build stage - Create production build
+# Enhanced Build Stage
 build:
   stage: build
   image: node:18-alpine
   script:
-    - echo "🏗️ Building QMOI application..."
+    - echo "🏗️ Building QMOI application with QCity optimization..."
+    - python scripts/qmoi-performance-optimizer.py --pre-build
     - npm run build
     - npm run build:prod
-    - echo "✅ Build completed"
+    - python scripts/qmoi-enhanced-automation.py --build-optimize
+    - node scripts/qcity-automation.js --build-integration
+    - echo "✅ Enhanced build completed"
   artifacts:
     paths:
       - build/
@@ -148,14 +168,16 @@ build:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-# Deploy stage - Deploy to GitLab
+# Enhanced Deploy Stage
 deploy:
   stage: deploy
   image: node:18-alpine
   script:
-    - echo "🚀 Deploying QMOI to GitLab..."
+    - echo "🚀 Deploying QMOI with QCity automation..."
+    - python scripts/qmoi-cloud-automation.py --deploy
     - node scripts/gitlab-automation.js --deploy-only
-    - echo "✅ Deployment completed"
+    - node scripts/qcity-automation.js --deploy-integration
+    - echo "✅ Enhanced deployment completed"
   artifacts:
     paths:
       - logs/
@@ -167,36 +189,64 @@ deploy:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
-# Notify stage - Send notifications
+# Enhanced Notify Stage with QCity Integration
 notify:
   stage: notify
   image: node:18-alpine
   script:
-    - echo "📢 Sending QMOI notifications..."
+    - echo "📢 Sending QMOI enhanced notifications with QCity..."
+    - python scripts/qmoi-enhanced-automation.py --notify
     - node scripts/gitlab-automation.js --notify-only
-    - echo "✅ Notifications sent"
+    - node scripts/qcity-notification-system.js --comprehensive
+    - python scripts/qmoi-master-notifications.py --all-platforms
+    - echo "✅ Enhanced notifications sent"
   artifacts:
     paths:
       - logs/
+      - notifications/
     expire_in: 1 week
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
-# Full automation pipeline
+# Auto-Evolution Stage
+auto-evolution:
+  stage: auto-evolution
+  image: node:18-alpine
+  script:
+    - echo "🧬 Running QMOI auto-evolution with QCity..."
+    - python scripts/qmoi-auto-evolution.py --comprehensive
+    - node scripts/qcity-auto-evolution.js --enhance
+    - python scripts/qmoi-suggestion-engine.py --generate-plans
+    - echo "✅ Auto-evolution completed"
+  artifacts:
+    paths:
+      - logs/
+      - evolution-suggestions.json
+      - enhancement-plans.json
+    expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG
+
+# Enhanced Full Automation Pipeline
 qmoi-full-automation:
   stage: deploy
   image: node:18-alpine
   script:
-    - echo "🤖 Running QMOI full automation..."
-    - node scripts/gitlab-automation.js --full-pipeline
-    - echo "✅ Full automation completed"
+    - echo "🤖 Running QMOI comprehensive automation with QCity..."
+    - python scripts/qmoi-enhanced-automation.py --comprehensive
+    - python scripts/qmoi-cloud-automation.py --full
+    - node scripts/qcity-automation.js --full-pipeline
+    - python scripts/qmoi-master-automation.py --all-features
+    - echo "✅ Comprehensive automation completed"
   artifacts:
     paths:
       - logs/
       - build/
       - dist/
+      - automation-reports/
     expire_in: 1 week
   environment:
     name: qmoi-automation
@@ -205,49 +255,57 @@ qmoi-full-automation:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
-# Error recovery job
+# Enhanced Error Recovery Job
 error-recovery:
   stage: deploy
   image: node:18-alpine
   script:
-    - echo "🛠️ Running QMOI error recovery..."
-    - node scripts/gitlab-automation.js --recovery-only
-    - echo "✅ Error recovery completed"
+    - echo "🛠️ Running QMOI enhanced error recovery with QCity..."
+    - python scripts/qmoi-error-handler.py --comprehensive
+    - node scripts/qcity-error-recovery.js --auto-fix
+    - python scripts/qmoi-self-healing.py --repair-all
+    - echo "✅ Enhanced error recovery completed"
   artifacts:
     paths:
       - logs/
+      - recovery-reports/
     expire_in: 1 week
   allow_failure: true
   rules:
     - when: on_failure
     - if: $QMOI_ERROR_RECOVERY == "true"
 
-# Health check job
+# Enhanced Health Check Job
 health-check:
   stage: deploy
   image: node:18-alpine
   script:
-    - echo "🏥 Running QMOI health check..."
+    - echo "🏥 Running QMOI enhanced health check with QCity..."
     - npm run health:check
-    - node scripts/gitlab-automation.js --health-check
-    - echo "✅ Health check completed"
+    - python scripts/qmoi-performance-optimizer.py --health-check
+    - node scripts/qcity-health-monitor.js --comprehensive
+    - python scripts/qmoi-system-diagnostics.py --full
+    - echo "✅ Enhanced health check completed"
   artifacts:
     paths:
       - logs/
+      - health-reports/
     expire_in: 1 week
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
-# Documentation update job
+# Enhanced Documentation Update Job
 docs-update:
   stage: deploy
   image: node:18-alpine
   script:
-    - echo "📚 Updating QMOI documentation..."
+    - echo "📚 Updating QMOI documentation with QCity..."
+    - python scripts/qmoi-docs-automation.py --update-all
     - npm run docs:generate
     - npm run docs:deploy
-    - echo "✅ Documentation updated"
+    - node scripts/qcity-docs-integration.js --sync
+    - echo "✅ Enhanced documentation updated"
   artifacts:
     paths:
       - docs/
@@ -257,15 +315,17 @@ docs-update:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG
 
-# Security scan job
+# Enhanced Security Scan Job
 security-scan:
   stage: test
   image: node:18-alpine
   script:
-    - echo "🔒 Running QMOI security scan..."
+    - echo "🔒 Running QMOI enhanced security scan with QCity..."
     - npm audit --audit-level=moderate
     - npm run security:scan
-    - echo "✅ Security scan completed"
+    - python scripts/qmoi-security-automation.py --comprehensive
+    - node scripts/qcity-security-monitor.js --scan
+    - echo "✅ Enhanced security scan completed"
   artifacts:
     reports:
       sast: logs/security-report.json
@@ -277,15 +337,17 @@ security-scan:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-# Performance test job
+# Enhanced Performance Test Job
 performance-test:
   stage: test
   image: node:18-alpine
   script:
-    - echo "⚡ Running QMOI performance tests..."
+    - echo "⚡ Running QMOI enhanced performance tests with QCity..."
     - npm run test:performance
     - npm run lighthouse:test
-    - echo "✅ Performance tests completed"
+    - python scripts/qmoi-performance-optimizer.py --test-performance
+    - node scripts/qcity-performance-monitor.js --test
+    - echo "✅ Enhanced performance tests completed"
   artifacts:
     paths:
       - logs/
@@ -295,7 +357,7 @@ performance-test:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-# DAST security test job (Dynamic Application Security Testing)
+# Enhanced DAST Security Test Job
 dast:
   stage: test
   image: registry.gitlab.com/security-products/dast:5
@@ -320,17 +382,21 @@ dast:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_TAG'
 
-# Auto-push job - Always runs regardless of other job status
+# Enhanced Auto-Push Job with QCity Integration
 qmoi-auto-push:
   stage: .post
   image: node:18-alpine
   script:
-    - echo "🤖 Running QMOI Comprehensive Auto-Push..."
-    - node scripts/qmoi-auto-push.js
-    - echo "✅ Auto-push completed"
+    - echo "🤖 Running QMOI Enhanced Auto-Push with QCity..."
+    - python scripts/qmoi-enhanced-automation.py --auto-push
+    - node scripts/qmoi-auto-push.js --enhanced
+    - node scripts/qcity-auto-push.js --comprehensive
+    - python scripts/qmoi-repo-sync.py --all-platforms
+    - echo "✅ Enhanced auto-push completed"
   artifacts:
     paths:
       - logs/
+      - push-reports/
     expire_in: 1 week
   when: always
   allow_failure: true
@@ -339,14 +405,16 @@ qmoi-auto-push:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_TAG'
 
-# Cleanup job
+# Enhanced Cleanup Job
 cleanup:
   stage: .post
   image: node:18-alpine
   script:
-    - echo "🧹 Running QMOI cleanup..."
+    - echo "🧹 Running QMOI enhanced cleanup with QCity..."
     - npm run cleanup
-    - echo "✅ Cleanup completed"
+    - python scripts/qmoi-cleanup-automation.py --comprehensive
+    - node scripts/qcity-cleanup.js --full
+    - echo "✅ Enhanced cleanup completed"
   artifacts:
     paths:
       - logs/
@@ -354,18 +422,26 @@ cleanup:
   when: always
   allow_failure: true
 
-# Global after_script for all jobs
+# Global after_script with enhanced QCity integration
 after_script:
-  - echo "📋 QMOI GitLab CI job completed"
+  - echo "📋 QMOI Enhanced GitLab CI job completed with QCity"
   - echo "Job status: $CI_JOB_STATUS"
   - echo "Pipeline URL: $CI_PIPELINE_URL"
   - echo "Job URL: $CI_JOB_URL"
+  - echo "QCity Integration: $QMOI_QCITY_INTEGRATION"
   - |
     if [ "$CI_JOB_STATUS" != "success" ]; then
-      echo "❌ Job failed - QMOI automation will handle recovery"
-      node scripts/gitlab-automation.js --job-failed || true
+      echo "❌ Job failed - QMOI enhanced automation will handle recovery"
+      python scripts/qmoi-error-handler.py --job-failed || true
+      node scripts/qcity-error-recovery.js --job-failed || true
     fi
   - |
-    # Always run auto-push regardless of job status
-    echo "🤖 Running QMOI Auto-Push..."
-    node scripts/qmoi-auto-push.js || echo "Auto-push failed but continuing..." 
+    # Always run enhanced auto-push regardless of job status
+    echo "🤖 Running QMOI Enhanced Auto-Push with QCity..."
+    python scripts/qmoi-enhanced-automation.py --auto-push || echo "Enhanced auto-push failed but continuing..."
+    node scripts/qmoi-auto-push.js --enhanced || echo "Enhanced auto-push failed but continuing..."
+  - |
+    # Send comprehensive notifications
+    echo "📢 Sending comprehensive QMOI notifications..."
+    python scripts/qmoi-master-notifications.py --job-complete || echo "Notifications failed but continuing..."
+    node scripts/qcity-notification-system.js --job-complete || echo "QCity notifications failed but continuing..." 
