@@ -1,13 +1,14 @@
 {
-  "timestamp": "2025-07-10T05:33:11.306Z",
-  "fixes": [],
+  "timestamp": "2025-07-14T16:55:16.109Z",
+  "fixes": [
+    "Installed dependencies with legacy peer deps"
+  ],
   "errors": [
-    "Failed to install dependencies: Command failed: npm install",
     "Build failed: Command failed: npm run build"
   ],
   "summary": {
-    "totalFixes": 0,
-    "totalErrors": 2,
+    "totalFixes": 1,
+    "totalErrors": 1,
     "success": false
   }
 }

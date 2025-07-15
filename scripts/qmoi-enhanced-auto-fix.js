@@ -217,7 +217,7 @@ class QMOIEnhancedAutoFix {
 
       // Remove node_modules and reinstall
       try {
-        await execAsync('rm -rf node_modules package-lock.json');
+        await execAsync('npx rimraf node_modules package-lock.json');
         await execAsync('npm install --legacy-peer-deps');
         fixes.push({
           type: 'build',

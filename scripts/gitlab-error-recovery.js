@@ -85,7 +85,7 @@ class GitLabErrorRecovery {
         },
         {
           name: 'Remove node_modules and package-lock.json',
-          command: 'rm -rf node_modules package-lock.json',
+          command: 'npx rimraf node_modules package-lock.json',
           continueOnError: true
         },
         {
@@ -127,7 +127,7 @@ class GitLabErrorRecovery {
       const fixes = [
         {
           name: 'Clear build cache',
-          command: 'rm -rf build/ dist/ .cache/',
+          command: 'npx rimraf build/ dist/ .cache/',
           continueOnError: true
         },
         {
@@ -179,7 +179,7 @@ class GitLabErrorRecovery {
       const fixes = [
         {
           name: 'Clear test cache',
-          command: 'rm -rf coverage/ .nyc_output/ test-results/',
+          command: 'npx rimraf coverage/ .nyc_output/ test-results/',
           continueOnError: true
         },
         {

@@ -9,6 +9,7 @@ import sys
 import os
 import json
 from datetime import datetime
+import shutil
 
 class DeploymentConflictResolver:
     def __init__(self):
@@ -44,7 +45,7 @@ class DeploymentConflictResolver:
         self.log("🔧 Resolving package.json conflicts...")
         
         # Backup current package.json
-        self.run_command("cp package.json package.json.backup", "Backup package.json")
+        shutil.copy('package.json', 'package.json.backup')
         
         # Update ws dependency manually
         self.run_command("npm install ws@8.18.3 --save", "Update ws dependency")

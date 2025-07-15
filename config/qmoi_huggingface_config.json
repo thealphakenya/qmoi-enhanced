@@ -10,7 +10,10 @@
     "conversation_sync": true,
     "whatsapp_integration": true,
     "enhanced_ui": true,
-    "inference_providers": ["inference-endpoints", "spaces"],
+    "inference_providers": [
+      "inference-endpoints",
+      "spaces"
+    ],
     "backup_enabled": true,
     "continuous_backup": true
   },
@@ -35,7 +38,12 @@
     "auto_cleanup": true,
     "cleanup_interval": 86400000,
     "max_conversation_age": 2592000000,
-    "platforms": ["spaces", "whatsapp", "discord", "telegram"],
+    "platforms": [
+      "spaces",
+      "whatsapp",
+      "discord",
+      "telegram"
+    ],
     "encryption_enabled": true,
     "compression_enabled": true
   },
@@ -63,7 +71,9 @@
     "animations": true,
     "accessibility": true,
     "multi_language": false,
-    "languages": ["en"],
+    "languages": [
+      "en"
+    ],
     "default_language": "en"
   },
   "qmoi_core": {
@@ -112,8 +122,17 @@
   },
   "deployment": {
     "auto_deploy": true,
-    "deployment_types": ["patch", "minor", "major", "hotfix"],
-    "targets": ["production", "staging", "development"],
+    "deployment_types": [
+      "patch",
+      "minor",
+      "major",
+      "hotfix"
+    ],
+    "targets": [
+      "production",
+      "staging",
+      "development"
+    ],
     "rollback_enabled": true,
     "health_checks": true,
     "notifications": true,
@@ -149,7 +168,12 @@
   },
   "notifications": {
     "enabled": true,
-    "channels": ["email", "slack", "whatsapp", "discord"],
+    "channels": [
+      "email",
+      "slack",
+      "whatsapp",
+      "discord"
+    ],
     "templates": {
       "system_status": "QMOI System Status: {status}",
       "deployment": "QMOI Deployment: {type} to {target} - {status}",
@@ -176,7 +200,11 @@
     "encryption": true,
     "verification": true,
     "auto_cleanup": true,
-    "locations": ["local", "huggingface", "cloud"]
+    "locations": [
+      "local",
+      "huggingface",
+      "cloud"
+    ]
   },
   "analytics": {
     "enabled": true,
@@ -227,4 +255,4 @@
       "debug_endpoints": false
     }
   }
-} 
+}

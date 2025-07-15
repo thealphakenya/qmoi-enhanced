@@ -172,7 +172,7 @@ class QMOIEnhancedMasterAutomation:
         
         commands = [
             "npm cache clean --force",
-            "rm -rf node_modules package-lock.json",
+            "npx rimraf node_modules package-lock.json",
             "npm install",
             "npm audit fix",
             "npm update"
@@ -186,7 +186,7 @@ class QMOIEnhancedMasterAutomation:
         logger.info("Fixing build issues...")
         
         commands = [
-            "rm -rf build/ dist/ .next/",
+            "npx rimraf build/ dist/ .next/",
             "npm run build",
             "npm run build:prod",
             "npm run build:optimize"
@@ -200,7 +200,7 @@ class QMOIEnhancedMasterAutomation:
         logger.info("Fixing test issues...")
         
         commands = [
-            "rm -rf coverage/ test-results/",
+            "npx rimraf coverage/ test-results/",
             "npm test",
             "npm run test:coverage",
             "npm run test:ui",

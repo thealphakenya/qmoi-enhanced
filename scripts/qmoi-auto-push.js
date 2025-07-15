@@ -130,7 +130,7 @@ class QMOIAutoPush {
       },
       {
         name: 'Reinstall dependencies',
-        command: 'rm -rf node_modules package-lock.json && npm install',
+        command: 'npx rimraf node_modules package-lock.json && npm install',
         continueOnError: true
       },
       {

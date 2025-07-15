@@ -1,0 +1,51 @@
+2025-07-14 19:55:30,414 - QMOIPerformance - INFO - ==================================================
+2025-07-14 19:56:06,426 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 0.0%, MEM 6.1%
+2025-07-14 19:56:06,426 - QMOIPerformance - INFO -   - python.exe: CPU 0.0%, MEM 4.7%
+2025-07-14 19:56:06,426 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.0%, MEM 4.1%
+2025-07-14 19:56:06,427 - QMOIPerformance - INFO -   - msedgewebview2.exe: CPU 0.0%, MEM 3.2%
+2025-07-14 19:56:06,427 - QMOIPerformance - INFO -   - MemCompression: CPU 0.0%, MEM 2.8%
+2025-07-14 19:56:37,824 - QMOIPerformance - INFO -   - System Idle Process: CPU 780.1%, MEM 0.0%
+2025-07-14 19:56:37,824 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 2.9%, MEM 5.5%
+2025-07-14 19:56:37,826 - QMOIPerformance - INFO -   - python.exe: CPU 1.0%, MEM 4.7%
+2025-07-14 19:56:37,826 - QMOIPerformance - INFO -   - MemCompression: CPU 1.7%, MEM 3.6%
+2025-07-14 19:56:37,826 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.0%, MEM 4.1%
+2025-07-14 19:57:09,145 - QMOIPerformance - INFO -   - System Idle Process: CPU 793.2%, MEM 0.0%
+2025-07-14 19:57:09,145 - QMOIPerformance - INFO -   - python.exe: CPU 1.1%, MEM 4.7%
+2025-07-14 19:57:09,145 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 0.3%, MEM 5.2%
+2025-07-14 19:57:09,145 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.0%, MEM 4.2%
+2025-07-14 19:57:09,145 - QMOIPerformance - INFO -   - MemCompression: CPU 0.0%, MEM 3.2%
+2025-07-14 19:57:40,344 - QMOIPerformance - INFO -   - System Idle Process: CPU 794.6%, MEM 0.0%
+2025-07-14 19:57:40,344 - QMOIPerformance - INFO -   - python.exe: CPU 0.7%, MEM 4.7%
+2025-07-14 19:57:40,344 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 0.1%, MEM 4.6%
+2025-07-14 19:57:40,344 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.0%, MEM 4.1%
+2025-07-14 19:57:40,344 - QMOIPerformance - INFO -   - MemCompression: CPU 0.2%, MEM 3.5%
+2025-07-14 19:58:11,542 - QMOIPerformance - INFO -   - System Idle Process: CPU 792.9%, MEM 0.0%
+2025-07-14 19:58:11,542 - QMOIPerformance - INFO -   - MemCompression: CPU 2.2%, MEM 5.1%
+2025-07-14 19:58:11,542 - QMOIPerformance - INFO -   - python.exe: CPU 0.7%, MEM 4.7%
+2025-07-14 19:58:11,542 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 0.1%, MEM 4.6%
+2025-07-14 19:58:11,542 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.0%, MEM 3.9%
+2025-07-14 19:58:42,735 - QMOIPerformance - INFO -   - System Idle Process: CPU 795.8%, MEM 0.0%
+2025-07-14 19:58:42,735 - QMOIPerformance - INFO -   - python.exe: CPU 0.6%, MEM 4.7%
+2025-07-14 19:58:42,735 - QMOIPerformance - INFO -   - MemCompression: CPU 0.0%, MEM 5.0%
+2025-07-14 19:58:42,735 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 0.1%, MEM 4.3%
+2025-07-14 19:58:42,735 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.0%, MEM 3.8%
+2025-07-14 19:59:13,930 - QMOIPerformance - INFO -   - System Idle Process: CPU 795.5%, MEM 0.0%
+2025-07-14 19:59:13,930 - QMOIPerformance - INFO -   - MemCompression: CPU 0.3%, MEM 5.1%
+2025-07-14 19:59:13,930 - QMOIPerformance - INFO -   - python.exe: CPU 0.6%, MEM 4.7%
+2025-07-14 19:59:13,930 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 0.4%, MEM 3.9%
+2025-07-14 19:59:13,930 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.0%, MEM 3.9%
+2025-07-14 19:59:45,157 - QMOIPerformance - INFO -   - System Idle Process: CPU 793.7%, MEM 0.0%
+2025-07-14 19:59:45,157 - QMOIPerformance - INFO -   - python.exe: CPU 0.7%, MEM 4.7%
+2025-07-14 19:59:45,157 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 0.8%, MEM 4.5%
+2025-07-14 19:59:45,157 - QMOIPerformance - INFO -   - MemCompression: CPU 0.0%, MEM 4.8%
+2025-07-14 19:59:45,157 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.0%, MEM 3.8%
+2025-07-14 20:00:16,352 - QMOIPerformance - INFO -   - System Idle Process: CPU 794.3%, MEM 0.0%
+2025-07-14 20:00:16,352 - QMOIPerformance - INFO -   - python.exe: CPU 0.7%, MEM 4.7%
+2025-07-14 20:00:16,352 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 0.5%, MEM 4.5%
+2025-07-14 20:00:16,352 - QMOIPerformance - INFO -   - MemCompression: CPU 0.0%, MEM 4.8%
+2025-07-14 20:00:16,352 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.8%, MEM 3.9%
+2025-07-14 20:00:47,548 - QMOIPerformance - INFO -   - System Idle Process: CPU 796.1%, MEM 0.0%
+2025-07-14 20:00:47,548 - QMOIPerformance - INFO -   - python.exe: CPU 0.6%, MEM 4.7%
+2025-07-14 20:00:47,548 - QMOIPerformance - INFO -   - MemCompression: CPU 0.0%, MEM 4.7%
+2025-07-14 20:00:47,548 - QMOIPerformance - INFO -   - MsMpEng.exe: CPU 0.1%, MEM 4.4%
+2025-07-14 20:00:47,548 - QMOIPerformance - INFO -   - explorer.exe: CPU 0.0%, MEM 3.9%

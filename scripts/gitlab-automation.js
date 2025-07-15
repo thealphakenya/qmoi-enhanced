@@ -160,7 +160,7 @@ class GitLabAutomation {
       },
       {
         name: 'Remove node_modules and reinstall',
-        command: 'rm -rf node_modules package-lock.json && npm install',
+        command: 'npx rimraf node_modules package-lock.json && npm install',
         continueOnError: true
       },
       {
@@ -242,7 +242,7 @@ class GitLabAutomation {
         `\`\`\`\n${error.message}\n\`\`\`\n\n` +
         `### Recovery Steps:\n` +
         `1. **Manual Fix**: Run \`npm run auto:setup\` locally\n` +
-        `2. **Clean Install**: \`rm -rf node_modules && npm install\`\n` +
+        `2. **Clean Install**: \`npx rimraf node_modules && npm install\`\n` +
         `3. **Check Dependencies**: Verify all required packages are installed\n` +
         `4. **Review Logs**: Check the automation logs for specific errors\n` +
         `5. **Test Locally**: Run \`npm test\` to identify test failures\n\n` +

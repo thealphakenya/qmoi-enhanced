@@ -1,0 +1,10 @@
+{"timestamp": "2025-07-14T19:56:06.059328", "issues": [], "metrics": {"cpu": 4.3, "memory": 71.6, "disk": 78.5, "network": 39.82154083251953, "gpu": null, "processes": 181}}
+{"timestamp": "2025-07-14T19:56:37.488859", "issues": [["MEMORY", "WARNING", 75.4]], "metrics": {"cpu": 1.2, "memory": 75.4, "disk": 78.5, "network": 39.841376304626465, "gpu": null, "processes": 185}}
+{"timestamp": "2025-07-14T19:57:08.850081", "issues": [["MEMORY", "WARNING", 75.2]], "metrics": {"cpu": 0.8, "memory": 75.2, "disk": 78.5, "network": 39.84157180786133, "gpu": null, "processes": 184}}
+{"timestamp": "2025-07-14T19:57:40.164910", "issues": [], "metrics": {"cpu": 0.0, "memory": 73.5, "disk": 78.5, "network": 39.85072708129883, "gpu": null, "processes": 181}}
+{"timestamp": "2025-07-14T19:58:11.367821", "issues": [], "metrics": {"cpu": 1.2, "memory": 70.5, "disk": 78.5, "network": 39.85072708129883, "gpu": null, "processes": 181}}
+{"timestamp": "2025-07-14T19:58:42.562864", "issues": [], "metrics": {"cpu": 0.8, "memory": 70.5, "disk": 78.5, "network": 39.85085868835449, "gpu": null, "processes": 181}}
+{"timestamp": "2025-07-14T19:59:13.760703", "issues": [], "metrics": {"cpu": 0.8, "memory": 69.7, "disk": 78.5, "network": 39.85085868835449, "gpu": null, "processes": 181}}
+{"timestamp": "2025-07-14T19:59:44.964053", "issues": [], "metrics": {"cpu": 0.0, "memory": 70.6, "disk": 78.5, "network": 39.861634254455566, "gpu": null, "processes": 186}}
+{"timestamp": "2025-07-14T20:00:16.178327", "issues": [], "metrics": {"cpu": 0.6, "memory": 70.7, "disk": 78.5, "network": 39.86943817138672, "gpu": null, "processes": 180}}
+{"timestamp": "2025-07-14T20:00:47.376571", "issues": [], "metrics": {"cpu": 2.3, "memory": 70.6, "disk": 78.5, "network": 39.86943817138672, "gpu": null, "processes": 180}}

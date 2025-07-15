@@ -1,0 +1,28 @@
+name: QMOI App Build
+
+on:
+  push:
+    branches: [main, release/*]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install pyinstaller
+      - name: Build QMOI App
+        run: |
+          pyinstaller --onefile --distpath Qmoi_apps/${{ matrix.os }} src/QMOI-App.py
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: QMOI-apps-${{ matrix.os }}
+          path: Qmoi_apps/${{ matrix.os }}/ 

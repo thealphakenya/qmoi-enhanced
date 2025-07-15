@@ -64,7 +64,10 @@
     "conversation_sync": true,
     "whatsapp_integration": true,
     "enhanced_ui": true,
-    "inference_providers": ["inference-endpoints", "spaces"],
+    "inference_providers": [
+      "inference-endpoints",
+      "spaces"
+    ],
     "backup_enabled": true,
     "continuous_backup": true
   },
@@ -89,7 +92,12 @@
     "auto_cleanup": true,
     "cleanup_interval": 86400000,
     "max_conversation_age": 2592000000,
-    "platforms": ["spaces", "whatsapp", "discord", "telegram"],
+    "platforms": [
+      "spaces",
+      "whatsapp",
+      "discord",
+      "telegram"
+    ],
     "encryption_enabled": true,
     "compression_enabled": true
   },
@@ -110,7 +118,12 @@
   },
   "notifications": {
     "enabled": true,
-    "channels": ["slack", "discord", "email", "whatsapp"],
+    "channels": [
+      "slack",
+      "discord",
+      "email",
+      "whatsapp"
+    ],
     "criticalOnly": false,
     "templates": {
       "system_status": "QMOI System Status: {status}",
@@ -165,7 +178,11 @@
     "encryption": true,
     "verification": true,
     "auto_cleanup": true,
-    "locations": ["local", "huggingface", "cloud"]
+    "locations": [
+      "local",
+      "huggingface",
+      "cloud"
+    ]
   },
   "security": {
     "encryption": true,
@@ -179,4 +196,4 @@
     "token_rotation": true,
     "session_management": true
   }
-} 
+}

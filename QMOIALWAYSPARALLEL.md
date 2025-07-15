@@ -2,6 +2,8 @@
 
 ## 🚀 Enhanced Parallel Error Fixing & Automation
 - **Multi-Platform Parallel Processing:** QMOI uses its advanced parallel engine to fix errors, install missing files/packages, and run automations across all platforms (GitLab, Vercel, HuggingFace, Gitpod, GitHub, Quantum, Colab, Dagshub) simultaneously.
+- **Lightweight & Efficient:** All parallel jobs are optimized to use minimal CPU and memory, ensuring your device never slows down or hangs—even during large-scale automation.
+- **Cloud & Always-On:** QMOI can run in Colab, Dagshub, or other cloud environments, so notifications and automation continue even if your local device is offline or powered off.
 - **Independent Platform Healing:** QMOI can fix errors in HuggingFace Space and the main app independently and in parallel, ensuring one platform can continue while another is being fixed.
 - **Self-Healing Pipelines & Workflows:** QMOI auto-detects and fixes all errors in its own files, pipelines, workflows, and config files on all platforms, even if its own scripts are broken.
 - **Fallback & Cloning Logic:** If a platform fails, QMOI uses clones or fallback logic to continue automation and development without interruption.
@@ -27,7 +29,7 @@
 - **Version Control Integration:** All changes are tracked, versioned, and synchronized across platforms automatically.
 
 ## 📧 Enhanced Multi-Platform Notifications
-- **Platform-Specific Alerts:** Master receives detailed notifications for each platform (GitLab, GitHub, Gitpod, HuggingFace, Vercel) independently.
+- **Platform-Specific Alerts:** Master receives detailed notifications for each platform (GitLab, GitHub, Gitpod, HuggingFace, Vercel) independently—even when offline.
 - **Error Classification:** Notifications are categorized by platform, severity, and type for better organization.
 - **Retry & Fallback Logic:** All notifications use retry mechanisms and fallback channels for reliable delivery.
 - **Real-Time Dashboard:** Live status updates for all platforms with filtering and search capabilities.
@@ -64,5 +66,4 @@
 - **Version Control Integration:** All documentation changes are tracked and synchronized across platforms.
 
 ---
-
 **QMOI Parallel Engine v4.0** - Revolutionizing Cross-Platform Automation with Speed, Quantity, and Quality Optimization 

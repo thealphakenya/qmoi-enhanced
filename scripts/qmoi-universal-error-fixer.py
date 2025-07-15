@@ -95,7 +95,7 @@ class QMOIUniversalErrorFixer:
         self.fix_strategies = {
             'npm_errors': [
                 'npm cache clean --force',
-                'rm -rf node_modules package-lock.json',
+                'npx rimraf node_modules package-lock.json',
                 'npm install',
                 'npm audit fix',
                 'npm update'
@@ -110,7 +110,7 @@ class QMOIUniversalErrorFixer:
             'build_errors': [
                 'npm run build --force',
                 'npm run build:clean',
-                'rm -rf build/ dist/',
+                'npx rimraf build/ dist/',
                 'npm run build:prod'
             ],
             'deployment_errors': [
@@ -352,7 +352,7 @@ class QMOIUniversalErrorFixer:
             
             npm_fixes = [
                 'npm cache clean --force',
-                'rm -rf node_modules package-lock.json',
+                'npx rimraf node_modules package-lock.json',
                 'npm install',
                 'npm audit fix',
                 'npm update'
@@ -410,7 +410,7 @@ class QMOIUniversalErrorFixer:
             
             build_fixes = [
                 'npm run build --force',
-                'rm -rf build/ dist/',
+                'npx rimraf build/ dist/',
                 'npm run build:prod',
                 'npm run build:clean'
             ]

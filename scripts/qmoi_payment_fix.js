@@ -289,7 +289,7 @@ class QmoiPaymentFix {
       // Clear payment failure cache
       const cacheDir = path.join(this.projectRoot, '.next', 'cache');
       if (fs.existsSync(cacheDir)) {
-        execSync('rm -rf .next/cache', { stdio: 'pipe' });
+        execSync('npx rimraf .next/cache', { stdio: 'pipe' });
         fixes.push('Payment cache cleared');
       }
 

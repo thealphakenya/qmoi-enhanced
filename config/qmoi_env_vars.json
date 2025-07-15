@@ -1,6 +1,18 @@
 {
-  "API_KEY": { "default": "demo-key", "description": "API key for external service" },
-  "DB_URL": { "default": "sqlite://:memory:", "description": "Database connection string" },
-  "SECRET": { "default": "changeme", "description": "App secret" },
-  "NEW_VAR": { "default": "test-value", "description": "A new test variable" }
-} 
+  "API_KEY": {
+    "default": "demo-key",
+    "description": "API key for external service"
+  },
+  "DB_URL": {
+    "default": "sqlite://:memory:",
+    "description": "Database connection string"
+  },
+  "SECRET": {
+    "default": "changeme",
+    "description": "App secret"
+  },
+  "NEW_VAR": {
+    "default": "test-value",
+    "description": "A new test variable"
+  }
+}

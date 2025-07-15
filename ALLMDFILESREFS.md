@@ -18,6 +18,15 @@ This file lists all .md (Markdown) documentation files present in the QMOI works
 
 | File Name | Description |
 |-----------|-------------|
+| QMOIAUTOGMAIL.md | Automated Gmail notification system for QMOI (setup, security, best practices) |
+| QMOIALWAYSPARALLEL.md | QMOI parallel engine and cross-platform automation (performance, speed, always-on) |
+| COLAB_DAGSHUB_DEPLOY_CHECKLIST.md | Step-by-step checklist for deploying QMOI to Colab/Dagshub |
+| README.md | Main QMOI documentation and getting started guide |
+| QI_download_component.html | QI/first page device-aware download integration (HTML/JS, supports all device types/variants, user feedback, analytics) |
+| .github/workflows/qmoi-app-build.yml | GitHub Actions workflow for automated app builds and artifact upload |
+| scripts/qmoi-build-api.py | Flask API endpoint to trigger app builds on user request |
+| scripts/qmoi-app-builder.py | Universal app builder for all device types/variants, self-healing, auto-fix, and notification integration |
+| scripts/qmoi_notification_manager.py | Multi-channel notification manager (Gmail, WhatsApp, Slack, Telegram, Discord, SMS, Push) |
 | git.txt | Git/GitHub/Hugging Face automation reference and required commands |
 | QMOICLONE.md | QMOI cloning and deployment documentation |
 | QMOIHUGGINGFACESPACES.md | Hugging Face Spaces integration and automation |
@@ -219,6 +228,9 @@ QMOI automatically tracks every update to all .md files. Each time a .md file is
 | 2024-06-09T12:09:00Z    | QMOICLONEHUGGINGFACE.md   |
 | 2024-06-09T12:10:00Z    | QVILLAGE.md               |
 | 2024-06-09T12:11:00Z    | ALLMDFILESREFS.md         |
+| 2025-07-15T00:00:00Z    | QI_download_component.html |
+| 2025-07-15T00:00:00Z    | .github/workflows/qmoi-app-build.yml |
+| 2025-07-15T00:00:00Z    | scripts/qmoi-build-api.py |
 | ...                     | ...                       |
 
 *QMOI auto-updates this section on every documentation change. All times are in UTC.*

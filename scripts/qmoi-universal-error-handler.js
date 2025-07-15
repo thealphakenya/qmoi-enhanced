@@ -189,7 +189,7 @@ class QMOIUniversalErrorHandler {
       // Clean install with multiple strategies
       const strategies = [
         () => execSync('npm cache clean --force', { stdio: 'inherit' }),
-        () => execSync('rm -rf node_modules package-lock.json', { stdio: 'inherit' }),
+        () => execSync('npx rimraf node_modules package-lock.json', { stdio: 'inherit' }),
         () => execSync('npm install --legacy-peer-deps', { stdio: 'inherit' }),
         () => execSync('npm audit fix --force', { stdio: 'inherit' }),
         () => execSync('npm dedupe', { stdio: 'inherit' })
@@ -224,7 +224,7 @@ class QMOIUniversalErrorHandler {
     
     try {
       // Clean build artifacts
-      execSync('rm -rf build dist .next', { stdio: 'inherit' });
+      execSync('npx rimraf build dist .next', { stdio: 'inherit' });
       
       // Clear cache
       execSync('npm run build -- --no-cache', { stdio: 'inherit' });

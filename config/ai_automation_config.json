@@ -1,68 +1,100 @@
 {
-    "automation_interval": 60,
-    "ai_models": {
-        "llm": "gpt-4",
-        "classifier": "random_forest",
-        "optimizer": "gradient_boosting"
+  "automation_interval": 60,
+  "ai_models": {
+    "llm": "gpt-4",
+    "classifier": "random_forest",
+    "optimizer": "gradient_boosting"
+  },
+  "thresholds": {
+    "resource_optimization": 80,
+    "error_prevention": 0.1,
+    "performance_improvement": 0.2
+  },
+  "max_concurrent_tasks": 5,
+  "task_timeout": 300,
+  "max_history_size": 1000,
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file": "logs/ai_automation.log"
+  },
+  "resource_limits": {
+    "cpu": 90,
+    "memory": 85,
+    "disk": 80,
+    "network": 75
+  },
+  "performance_targets": {
+    "response_time": 100,
+    "throughput": 1000,
+    "error_rate": 0.01
+  },
+  "optimization_strategies": {
+    "resource": {
+      "cpu": [
+        "process_priority",
+        "thread_management",
+        "cache_optimization"
+      ],
+      "memory": [
+        "garbage_collection",
+        "memory_pooling",
+        "cache_management"
+      ],
+      "disk": [
+        "cleanup",
+        "defragmentation",
+        "compression"
+      ],
+      "network": [
+        "connection_pooling",
+        "bandwidth_management",
+        "caching"
+      ]
     },
-    "thresholds": {
-        "resource_optimization": 80,
-        "error_prevention": 0.1,
-        "performance_improvement": 0.2
-    },
-    "max_concurrent_tasks": 5,
-    "task_timeout": 300,
-    "max_history_size": 1000,
-    "logging": {
-        "level": "INFO",
-        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        "file": "logs/ai_automation.log"
-    },
-    "resource_limits": {
-        "cpu": 90,
-        "memory": 85,
-        "disk": 80,
-        "network": 75
-    },
-    "performance_targets": {
-        "response_time": 100,
-        "throughput": 1000,
-        "error_rate": 0.01
-    },
-    "optimization_strategies": {
-        "resource": {
-            "cpu": ["process_priority", "thread_management", "cache_optimization"],
-            "memory": ["garbage_collection", "memory_pooling", "cache_management"],
-            "disk": ["cleanup", "defragmentation", "compression"],
-            "network": ["connection_pooling", "bandwidth_management", "caching"]
-        },
-        "performance": {
-            "response_time": ["caching", "load_balancing", "query_optimization"],
-            "throughput": ["parallel_processing", "batch_processing", "connection_pooling"],
-            "error_rate": ["error_handling", "retry_mechanisms", "circuit_breakers"]
-        }
-    },
-    "error_handling": {
-        "retry_attempts": 3,
-        "retry_delay": 5,
-        "circuit_breaker_threshold": 5,
-        "circuit_breaker_timeout": 60
-    },
-    "monitoring": {
-        "metrics_interval": 10,
-        "alert_threshold": 0.8,
-        "notification_channels": ["email", "slack", "webhook"]
-    },
-    "backup": {
-        "enabled": true,
-        "interval": 3600,
-        "retention_days": 7,
-        "compression": true
-    },
-    "security": {
-        "encryption": true,
-        "authentication": true,
-        "access_control": true,
-        "audit_logging": true
+    "performance": {
+      "response_time": [
+        "caching",
+        "load_balancing",
+        "query_optimization"
+      ],
+      "throughput": [
+        "parallel_processing",
+        "batch_processing",
+        "connection_pooling"
+      ],
+      "error_rate": [
+        "error_handling",
+        "retry_mechanisms",
+        "circuit_breakers"
+      ]
     }
-} 
+  },
+  "error_handling": {
+    "retry_attempts": 3,
+    "retry_delay": 5,
+    "circuit_breaker_threshold": 5,
+    "circuit_breaker_timeout": 60
+  },
+  "monitoring": {
+    "metrics_interval": 10,
+    "alert_threshold": 0.8,
+    "notification_channels": [
+      "email",
+      "slack",
+      "webhook"
+    ]
+  },
+  "backup": {
+    "enabled": true,
+    "interval": 3600,
+    "retention_days": 7,
+    "compression": true
+  },
+  "security": {
+    "encryption": true,
+    "authentication": true,
+    "access_control": true,
+    "audit_logging": true
+  }
+}

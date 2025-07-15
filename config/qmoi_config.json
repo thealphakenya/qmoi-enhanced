@@ -1,182 +1,195 @@
 {
-    "base_model": "gpt2",
-    "hidden_size": 768,
-    "num_attention_heads": 12,
-    "intermediate_size": 3072,
-    "num_labels": 2,
-    "vocab_size": 50257,
+  "base_model": "gpt2",
+  "hidden_size": 768,
+  "num_attention_heads": 12,
+  "intermediate_size": 3072,
+  "num_labels": 2,
+  "vocab_size": 50257,
+  "max_length": 512,
+  "training": {
+    "batch_size": 32,
+    "learning_rate": 2e-05,
+    "num_epochs": 3,
+    "warmup_steps": 500,
+    "weight_decay": 0.01,
+    "gradient_clipping": 1.0,
+    "label_smoothing": 0.1,
+    "mixup_alpha": 0.2,
+    "cutmix_prob": 0.5
+  },
+  "optimization": {
+    "gradient_accumulation_steps": 1,
+    "fp16": true,
+    "max_grad_norm": 1.0,
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.999,
+    "adam_epsilon": 1e-08,
+    "scheduler": "cosine",
+    "warmup_ratio": 0.1,
+    "lr_scheduler_type": "cosine",
+    "weight_decay": 0.01
+  },
+  "monitoring": {
+    "metrics_interval": 100,
+    "save_interval": 1000,
+    "eval_interval": 500,
+    "logging_steps": 100,
+    "save_total_limit": 3,
+    "save_best": true,
+    "metric_for_best_model": "accuracy",
+    "greater_is_better": true
+  },
+  "model_architecture": {
+    "use_relative_position": true,
+    "use_rotary_embeddings": true,
+    "use_flash_attention": true,
+    "use_gradient_checkpointing": true,
+    "use_activation_checkpointing": true,
+    "use_mixed_precision": true,
+    "use_amp": true
+  },
+  "data_processing": {
     "max_length": 512,
-    "training": {
-        "batch_size": 32,
-        "learning_rate": 2e-5,
-        "num_epochs": 3,
-        "warmup_steps": 500,
-        "weight_decay": 0.01,
-        "gradient_clipping": 1.0,
-        "label_smoothing": 0.1,
-        "mixup_alpha": 0.2,
-        "cutmix_prob": 0.5
+    "padding": "max_length",
+    "truncation": true,
+    "return_tensors": "pt",
+    "return_attention_mask": true,
+    "return_token_type_ids": false,
+    "return_special_tokens_mask": true,
+    "return_offsets_mapping": false,
+    "return_length": false
+  },
+  "augmentation": {
+    "use_back_translation": true,
+    "use_synonym_replacement": true,
+    "use_random_deletion": true,
+    "use_random_swap": true,
+    "use_random_insertion": true,
+    "use_eda": true,
+    "use_bert_augment": true
+  },
+  "regularization": {
+    "dropout": 0.1,
+    "attention_dropout": 0.1,
+    "hidden_dropout": 0.1,
+    "weight_decay": 0.01,
+    "label_smoothing": 0.1,
+    "gradient_clipping": 1.0
+  },
+  "evaluation": {
+    "metrics": [
+      "accuracy",
+      "precision",
+      "recall",
+      "f1",
+      "roc_auc",
+      "pr_auc",
+      "confusion_matrix"
+    ],
+    "threshold": 0.5,
+    "average": "weighted",
+    "zero_division": 0
+  },
+  "deployment": {
+    "quantization": {
+      "enabled": true,
+      "dtype": "qint8",
+      "scheme": "dynamic"
     },
-    "optimization": {
-        "gradient_accumulation_steps": 1,
-        "fp16": true,
-        "max_grad_norm": 1.0,
-        "adam_beta1": 0.9,
-        "adam_beta2": 0.999,
-        "adam_epsilon": 1e-8,
-        "scheduler": "cosine",
-        "warmup_ratio": 0.1,
-        "lr_scheduler_type": "cosine",
-        "weight_decay": 0.01
+    "pruning": {
+      "enabled": true,
+      "amount": 0.3,
+      "method": "l1_unstructured"
     },
-    "monitoring": {
-        "metrics_interval": 100,
-        "save_interval": 1000,
-        "eval_interval": 500,
-        "logging_steps": 100,
-        "save_total_limit": 3,
-        "save_best": true,
-        "metric_for_best_model": "accuracy",
-        "greater_is_better": true
+    "onnx": {
+      "enabled": true,
+      "opset_version": 12,
+      "dynamic_axes": true
     },
-    "model_architecture": {
-        "use_relative_position": true,
-        "use_rotary_embeddings": true,
-        "use_flash_attention": true,
-        "use_gradient_checkpointing": true,
-        "use_activation_checkpointing": true,
-        "use_mixed_precision": true,
-        "use_amp": true
-    },
-    "data_processing": {
-        "max_length": 512,
-        "padding": "max_length",
-        "truncation": true,
-        "return_tensors": "pt",
-        "return_attention_mask": true,
-        "return_token_type_ids": false,
-        "return_special_tokens_mask": true,
-        "return_offsets_mapping": false,
-        "return_length": false
-    },
-    "augmentation": {
-        "use_back_translation": true,
-        "use_synonym_replacement": true,
-        "use_random_deletion": true,
-        "use_random_swap": true,
-        "use_random_insertion": true,
-        "use_eda": true,
-        "use_bert_augment": true
-    },
-    "regularization": {
-        "dropout": 0.1,
-        "attention_dropout": 0.1,
-        "hidden_dropout": 0.1,
-        "weight_decay": 0.01,
-        "label_smoothing": 0.1,
-        "gradient_clipping": 1.0
-    },
-    "evaluation": {
-        "metrics": [
-            "accuracy",
-            "precision",
-            "recall",
-            "f1",
-            "roc_auc",
-            "pr_auc",
-            "confusion_matrix"
-        ],
-        "threshold": 0.5,
-        "average": "weighted",
-        "zero_division": 0
-    },
-    "deployment": {
-        "quantization": {
-            "enabled": true,
-            "dtype": "qint8",
-            "scheme": "dynamic"
-        },
-        "pruning": {
-            "enabled": true,
-            "amount": 0.3,
-            "method": "l1_unstructured"
-        },
-        "onnx": {
-            "enabled": true,
-            "opset_version": 12,
-            "dynamic_axes": true
-        },
-        "torchscript": {
-            "enabled": true,
-            "optimize": true
-        }
-    },
-    "huggingface": {
-        "repo_id": "your-username/qmoi",
-        "push_to_hub": true,
-        "private": false,
-        "token": "your-token"
-    },
-    "wandb": {
-        "project": "qmoi",
-        "entity": "your-username",
-        "tags": ["nlp", "transformer", "classification"],
-        "notes": "QMOI model training"
-    },
-    "logging": {
-        "level": "INFO",
-        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        "file": "logs/qmoi.log"
-    },
-    "security": {
-        "encryption": true,
-        "authentication": true,
-        "access_control": true,
-        "audit_logging": true
-    },
-    "notification_settings": {
-        "desktop_notifications": true,
-        "whatsapp_notifications": true,
-        "email_notifications": true,
-        "slack_notifications": true,
-        "telegram_notifications": true,
-        "discord_notifications": true,
-        "critical_only": false
-    },
-    "email_settings": {
-        "enabled": true,
-        "smtp_server": "smtp.gmail.com",
-        "smtp_port": 587,
-        "sender_email": "your_email@gmail.com",
-        "sender_password": "your_password",
-        "recipient_emails": ["master_email@gmail.com"]
-    },
-    "slack_settings": {
-        "enabled": true,
-        "webhook_url": "https://hooks.slack.com/services/your/webhook/url"
-    },
-    "telegram_settings": {
-        "enabled": true,
-        "bot_token": "your_telegram_bot_token",
-        "chat_id": "your_telegram_chat_id"
-    },
-    "discord_settings": {
-        "enabled": true,
-        "webhook_url": "https://discord.com/api/webhooks/your/webhook/url"
-    },
-    "escalation_contacts": {
-        "secondary_emails": ["secondary1@gmail.com", "secondary2@gmail.com"],
-        "secondary_whatsapp": ["+254700000000"],
-        "slack_channels": ["#critical-alerts"]
-    },
-    "permission_self_check_interval": 600,
-    "dashboard_settings": {
-        "host": "0.0.0.0",
-        "port": 5000,
-        "enable_auth": false,
-        "auth_username": "admin",
-        "auth_password": "changeme"
-    },
-    "dashboard_health_check_interval": 60,
-    "dashboard_downtime_notify_threshold": 180
-} 
+    "torchscript": {
+      "enabled": true,
+      "optimize": true
+    }
+  },
+  "huggingface": {
+    "repo_id": "your-username/qmoi",
+    "push_to_hub": true,
+    "private": false,
+    "token": "your-token"
+  },
+  "wandb": {
+    "project": "qmoi",
+    "entity": "your-username",
+    "tags": [
+      "nlp",
+      "transformer",
+      "classification"
+    ],
+    "notes": "QMOI model training"
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file": "logs/qmoi.log"
+  },
+  "security": {
+    "encryption": true,
+    "authentication": true,
+    "access_control": true,
+    "audit_logging": true
+  },
+  "notification_settings": {
+    "desktop_notifications": true,
+    "whatsapp_notifications": true,
+    "email_notifications": true,
+    "slack_notifications": true,
+    "telegram_notifications": true,
+    "discord_notifications": true,
+    "critical_only": false
+  },
+  "email_settings": {
+    "enabled": true,
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "sender_email": "your_email@gmail.com",
+    "sender_password": "your_password",
+    "recipient_emails": [
+      "master_email@gmail.com"
+    ]
+  },
+  "slack_settings": {
+    "enabled": true,
+    "webhook_url": "https://hooks.slack.com/services/your/webhook/url"
+  },
+  "telegram_settings": {
+    "enabled": true,
+    "bot_token": "your_telegram_bot_token",
+    "chat_id": "your_telegram_chat_id"
+  },
+  "discord_settings": {
+    "enabled": true,
+    "webhook_url": "https://discord.com/api/webhooks/your/webhook/url"
+  },
+  "escalation_contacts": {
+    "secondary_emails": [
+      "secondary1@gmail.com",
+      "secondary2@gmail.com"
+    ],
+    "secondary_whatsapp": [
+      "+254700000000"
+    ],
+    "slack_channels": [
+      "#critical-alerts"
+    ]
+  },
+  "permission_self_check_interval": 600,
+  "dashboard_settings": {
+    "host": "0.0.0.0",
+    "port": 5000,
+    "enable_auth": false,
+    "auth_username": "admin",
+    "auth_password": "changeme"
+  },
+  "dashboard_health_check_interval": 60,
+  "dashboard_downtime_notify_threshold": 180
+}

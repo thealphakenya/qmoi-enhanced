@@ -165,7 +165,11 @@ const PROVIDERS = {
     deployWebsite: async (projectDir) => {
       logAction(`[Vercel] Deploying website from ${projectDir} (placeholder)`);
       // TODO: Real Vercel deployment
-      return { success: true, url: `https://vercel.app/${path.basename(projectDir)}` };
+      const url = `https://vercel.app/${path.basename(projectDir)}`;
+      try {
+        execSync(`python scripts/gmail_notify.py --subject \"Vercel Deployment Complete\" --body \"Vercel deployment is live at: ${url}\"`);
+      } catch (e) { console.error('Vercel deployment notification failed:', e.message); }
+      return { success: true, url };
     }
   },
   // Add more providers as needed

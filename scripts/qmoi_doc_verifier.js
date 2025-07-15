@@ -82,7 +82,7 @@ function autoSuggestFix(error) {
         console.error('[QMOI AUTO-FIX] npm install failed:', e.message);
         // Try alternative fix
         try {
-          execSync('rm -rf node_modules package-lock.json && npm install', { stdio: 'inherit' });
+          execSync('npx rimraf node_modules package-lock.json && npm install', { stdio: 'inherit' });
           console.log('[QMOI AUTO-FIX] Clean install completed');
         } catch (e2) {
           console.error('[QMOI AUTO-FIX] Clean install also failed:', e2.message);
@@ -1106,6 +1106,10 @@ python scripts/{SCRIPT_NAME}.py
 
   async run() {
     console.log('[DEBUG] Markdown files at start of run:', this.mdFiles);
+    // Notify start
+    try {
+      execSync('python scripts/gmail_notify.py --subject "QMOI Doc Fixing Started" --body "Documentation fixing has started."');
+    } catch (e) { console.error('Start notification failed:', e.message); }
     console.log('\uD83D\uDE80 Starting QMOI Enhanced Documentation Verifier...\n');
     try {
       // Ensure docs directory exists
@@ -1115,8 +1119,15 @@ python scripts/{SCRIPT_NAME}.py
       // Scan for new features and create documentation
       const newFeatures = await this.scanForNewFeatures();
       console.log(`\n\uD83D\uDCCB Found ${newFeatures.length} new features without documentation`);
+      let processed = 0;
       for (const feature of newFeatures) {
         await this.createDocumentation(feature);
+        processed++;
+        if (processed % 10 === 0) {
+          try {
+            execSync(`python scripts/gmail_notify.py --subject \"QMOI Doc Fixing Progress\" --body \"${processed} documentation files processed.\"`);
+          } catch (e) { console.error('Progress notification failed:', e.message); }
+        }
       }
       // Run self-tests
       await this.runSelfTests();
@@ -1144,10 +1155,14 @@ python scripts/{SCRIPT_NAME}.py
       const report = this.generateReport();
       // Log report persistently
       fs.writeFileSync(path.join(this.docsDir, 'verification-report.json'), JSON.stringify(report, null, 2));
+      // Completion notification
+      try {
+        execSync(`python scripts/gmail_notify.py --subject \"QMOI Doc Fixing Complete\" --body \"Documentation fixing complete. ${processed} files processed. Issues found: ${this.issues.length}.\"`);
+      } catch (e) { console.error('Completion notification failed:', e.message); }
       // Notification trigger (stub)
       if (this.issues.length > 0) {
         try {
-          execSync('python scripts/doc_verifier.py --notify "QMOI Doc Verifier issues detected"');
+          execSync('python scripts/gmail_notify.py --subject "QMOI Doc Verifier issues detected" --body "Issues were detected during documentation verification."');
         } catch (e) {
           console.error('Notification trigger failed:', e.message);
         }

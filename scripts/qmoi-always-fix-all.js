@@ -192,10 +192,10 @@ class QMOIEnhancedAlwaysFixAll {
     
     const cleanupTasks = [
       'npm cache clean --force',
-      'rm -rf node_modules/.cache',
-      'rm -rf .next',
-      'rm -rf dist',
-      'rm -rf build',
+      'npx rimraf node_modules/.cache',
+      'npx rimraf .next',
+      'npx rimraf dist',
+      'npx rimraf build',
       'find . -name "*.log" -delete',
       'find . -name "*.tmp" -delete'
     ];
@@ -236,7 +236,7 @@ class QMOIEnhancedAlwaysFixAll {
       await execAsync('npm install --force');
     } catch (error) {
       try {
-        await execAsync('rm -rf node_modules package-lock.json && npm install');
+        await execAsync('npx rimraf node_modules package-lock.json && npm install');
       } catch (error2) {
         throw new Error('Failed to fix dependencies');
       }
@@ -1006,7 +1006,7 @@ class QMOIEnhancedAlwaysFixAll {
       await execAsync('npm run build -- --no-cache');
     } catch (error) {
       try {
-        await execAsync('rm -rf node_modules package-lock.json && npm install && npm run build');
+        await execAsync('npx rimraf node_modules package-lock.json && npm install && npm run build');
       } catch (error2) {
         // Continue
       }
@@ -1019,7 +1019,7 @@ class QMOIEnhancedAlwaysFixAll {
       await execAsync('npm install --force');
     } catch (error) {
       try {
-        await execAsync('rm -rf node_modules package-lock.json && npm install');
+        await execAsync('npx rimraf node_modules package-lock.json && npm install');
       } catch (error2) {
         // Continue
       }

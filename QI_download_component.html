@@ -1,0 +1,59 @@
+<!-- QI Device-Aware Download Component (Enhanced) -->
+<button id="download-btn">Download Latest App</button>
+<select id="variant-select">
+  <option value="QMOI-App">QMOI-App</option>
+  <option value="QCity-App">QCity-App</option>
+  <option value="QMOI-Enterprise">QMOI-Enterprise</option>
+  <option value="QMOI-Lite">QMOI-Lite</option>
+</select>
+<script>
+function detectDevice() {
+  const ua = navigator.userAgent;
+  if (ua.includes("Windows")) return "windows";
+  if (ua.includes("Mac")) return "mac";
+  if (ua.includes("Linux")) return "linux";
+  if (ua.includes("Android")) return ua.includes("TV") ? "smarttv" : "android";
+  if (ua.includes("iPhone") || ua.includes("iPad")) return "ios";
+  if (ua.includes("CrOS")) return "chromebook";
+  if (ua.includes("Raspberry")) return "raspberrypi";
+  return "qcity";
+}
+function getExtension(device) {
+  return {
+    windows: ".exe",
+    mac: ".dmg",
+    linux: ".AppImage",
+    android: ".apk",
+    ios: ".ipa",
+    qcity: ".zip",
+    chromebook: ".deb",
+    raspberrypi: ".img",
+    smarttv: ".apk"
+  }[device] || ".zip";
+}
+const device = detectDevice();
+const btn = document.getElementById('download-btn');
+const variantSelect = document.getElementById('variant-select');
+btn.onclick = () => {
+  const variant = variantSelect.value;
+  const url = `/Qmoi_apps/${device}/${variant}${getExtension(device)}`;
+  console.log(`Download started: ${url}`); // Analytics
+  btn.disabled = true;
+  btn.textContent = 'Downloading...';
+  fetch(url).then(resp => {
+    if (resp.ok) {
+      window.location = url;
+      btn.textContent = 'Download Latest App';
+      btn.disabled = false;
+    } else {
+      alert('Download not available for your device/variant.');
+      btn.textContent = 'Download Latest App';
+      btn.disabled = false;
+    }
+  }).catch(() => {
+    alert('Download failed. Please try again later.');
+    btn.textContent = 'Download Latest App';
+    btn.disabled = false;
+  });
+};
+</script> 

@@ -113,7 +113,7 @@ function fixBuildErrors() {
   
   // Strategy 1: Clean install
   try {
-    execSync('rm -rf node_modules package-lock.json', { stdio: 'pipe' });
+    execSync('npx rimraf node_modules package-lock.json', { stdio: 'pipe' });
     execSync('npm ci --legacy-peer-deps', { stdio: 'inherit' });
     logFix('build', 'clean-install', 'Clean npm install successful', true);
   } catch (e) {

@@ -1,0 +1,11 @@
+{
+  "total_triggers": 3,
+  "successful_deployments": 1,
+  "failed_deployments": 0,
+  "last_trigger": "2025-07-15T08:46:02.117883",
+  "current_status": "running",
+  "gitlab_pipeline_status": "running",
+  "github_sync_status": "unknown",
+  "vercel_deployment_status": "unknown",
+  "gitpod_status": "unknown"
+}

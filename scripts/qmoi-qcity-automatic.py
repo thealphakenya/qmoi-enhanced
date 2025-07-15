@@ -424,11 +424,19 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error in cleanup: {e}")
 
+def run_doc_verifier():
+    try:
+        print("[QMOI] Running documentation verifier...")
+        subprocess.run(["node", "scripts/qmoi_doc_verifier.js", "verify"], check=True)
+    except Exception as e:
+        print(f"[QMOI] Documentation verifier failed: {e}")
+
 def main():
     """Main function to start QMOI QCity automatic system"""
     try:
         automation = QMOIQCityAutomatic()
         automation.start()
+        run_doc_verifier()
     except KeyboardInterrupt:
         logger.info("QMOI QCity automatic system stopped by user")
     except Exception as e:
