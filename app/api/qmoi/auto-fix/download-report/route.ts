@@ -17,6 +17,18 @@ export async function GET() {
       );
     }
 
+    // Log every download report access
+    const logEntry = {
+      timestamp: new Date().toISOString(),
+      action: 'download-report-access',
+      status: 'success',
+      user: 'unknown', // TODO: add user context if available
+      app: 'QMOI',
+      device: 'unknown',
+      error: null
+    };
+    fs.appendFileSync('logs/download_fixes.log', JSON.stringify(logEntry) + '\n');
+
     // Read the report file
     const reportData = await fs.readFile(latestReportPath, 'utf-8');
     const report = JSON.parse(reportData);
@@ -29,7 +41,18 @@ export async function GET() {
     return response;
 
   } catch (error) {
+    // On error, log the error
     console.error('Error downloading report:', error);
+    const logEntryErr = {
+      timestamp: new Date().toISOString(),
+      action: 'download-report-access',
+      status: 'error',
+      user: 'unknown',
+      app: 'QMOI',
+      device: 'unknown',
+      error: error?.toString() || 'unknown error'
+    };
+    fs.appendFileSync('logs/download_fixes.log', JSON.stringify(logEntryErr) + '\n');
     return NextResponse.json(
       { error: 'Failed to download report' },
       { status: 500 }

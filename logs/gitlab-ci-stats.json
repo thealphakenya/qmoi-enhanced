@@ -1,8 +1,8 @@
 {
-  "total_triggers": 3,
-  "successful_deployments": 1,
+  "total_triggers": 1,
+  "successful_deployments": 0,
   "failed_deployments": 0,
-  "last_trigger": "2025-07-15T08:46:02.117883",
+  "last_trigger": "2025-07-15T10:13:15.246172",
   "current_status": "running",
   "gitlab_pipeline_status": "running",
   "github_sync_status": "unknown",

@@ -315,6 +315,13 @@ python scripts/independent-deploy-monitor.py
 - **Global Distribution**: Global independent distribution
 - **Advanced Security**: Enhanced security features
 
+## Platform Independence & Cloned Platforms
+
+- QMOI does not use the actual platforms (e.g., Gitpod, GitLab, GitHub, Vercel, etc.) for any automation, CI/CD, or development.
+- All operations are performed on QMOI's own cloned, independent platforms, which are fully controlled, self-healing, and optimized.
+- This ensures complete autonomy, security, and performance for all QMOI activities.
+- See QMOICLONE.md for details on cross-platform cloning and infrastructure.
+
 ---
 
 *QMOI Independent: Complete autonomy, self-sustaining operation, and independent evolution for maximum control and efficiency.* 

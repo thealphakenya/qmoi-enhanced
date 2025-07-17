@@ -40,7 +40,7 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
 
 ## Links & Resources
 - [QMOI Hugging Face Space](https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)
-- [QMOI Project Documentation](https://gitlab.com/qmoi/alpha-q-ai)
+- [QMOI Project Documentation](https://gitlab.com/qmoi/QMOI)
 - [QMOI Dashboard](#)
 
 ## Contact & Support
@@ -66,7 +66,7 @@ QMOI is not just a static model—it's a living, permanent, and ever-evolving AI
 
 **Dashboard:**
 - [QMOI Hugging Face Space](https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)
-- [QMOI Project Documentation](https://gitlab.com/qmoi/alpha-q-ai)
+- [QMOI Project Documentation](https://gitlab.com/qmoi/QMOI)
 
 ---
 QMOI is a permanent, ever-evolving AI system—always running, always healing, always improving. 

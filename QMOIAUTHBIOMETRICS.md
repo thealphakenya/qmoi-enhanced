@@ -65,6 +65,10 @@ QMOI automatically detects and authenticates master across all interfaces:
 - **Development Platforms**: GitHub, GitLab, Vercel, Netlify
 - **Cloud Services**: AWS, Azure, GCP
 - **Local Development**: VS Code, Terminal, Web interfaces
+- **QCity Interface**: Master-only biometric management dashboard
+- **Mobile Interfaces**: iOS, Android biometric authentication
+- **Web Interfaces**: Browser-based biometric authentication
+- **API Interfaces**: RESTful biometric authentication endpoints
 
 ### Real-Time File Modification
 Once authenticated as master, QMOI can:
@@ -91,6 +95,21 @@ interface MasterControlSystem {
   
   // Multi-interface communication
   broadcastToAllInterfaces(message: string): Promise<void>
+  
+  // Biometric authentication
+  authenticateMaster(biometricData: BiometricData): Promise<AuthResult>
+  
+  // Account management
+  createAccount(platform: string, accountInfo: AccountInfo): Promise<AccountResult>
+  
+  // Password recovery
+  recoverPassword(username: string, biometricType: string): Promise<RecoveryResult>
+  
+  // Universal language selection
+  selectOptimalLanguage(taskType: string, requirements: TaskRequirements): Promise<LanguageSelection>
+  
+  // Auto-evolution management
+  evolveEnvironment(language: string, environment: string): Promise<EvolutionResult>
 }
 ```
 

@@ -30,45 +30,19 @@ curl -X POST http://localhost:5050/api/build-apps
 
 ### Scheduled Build (Cron Example)
 ```cron
-0 2 * * * cd /path/to/Alpha-Q-ai && python scripts/qmoi-app-builder.py
+0 2 * * * cd /path/to/QMOI && python scripts/qmoi-app-builder.py
+``` 
+
+## Live Status & Real-Time Reporting
+```bash
+python scripts/qmoi-live-status.py
 ```
+- Streams and summarizes QMOI automation logs and reports in real time.
+- Always running in Colab, DagsHub, or cloud (auto-restarts if cancelled or device is offline).
 
-### CI/CD Build (GitHub Actions)
-- See .github/workflows/qmoi-app-build.yml for automated builds on code push.
+## Cloud Offloading & Cloned Platform Usage (2025 Enhancement)
 
-## 📦 Qmoi_apps Directory Structure
-```
-Qmoi_apps/
-  windows/
-    QMOI-App-Setup.exe
-    QCity-App-Setup.exe
-  mac/
-    QMOI-App.dmg
-    QCity-App.dmg
-  linux/
-    QMOI-App.AppImage
-    QCity-App.AppImage
-  android/
-    QMOI-App.apk
-    QCity-App.apk
-  ios/
-    QMOI-App.ipa
-    QCity-App.ipa
-  qcity/
-    QCity-WebApp.zip
-    QCity-Desktop.zip
-```
-
-## 🔄 Automation & Notification
-- All builds, tests, and installs are logged and self-healing
-- Notifications sent via Gmail, WhatsApp, Slack, Telegram, Discord, and more
-- Download links are always up to date
-
-## 📚 Documentation
-- See QI_download_component.html for device-aware download
-- See .github/workflows/qmoi-app-build.yml for CI/CD workflow
-- See scripts/qmoi-build-api.py for user-triggered build API
-- See ALLMDFILESREFS.md for a full index of documentation
-
----
-**QMOI: Universal, always-on, and fully automated for every device and platform.** 
+- All commands and scripts are now run in QCity, Colab, or cloud environments, never on the local device.
+- QMOI only uses its own cloned GitLab, Gitpod, and other platforms for all automation, CI/CD, and development, which are more advanced than the actual ones.
+- All command examples and scripts should be run in cloud-offloaded environments, not locally.
+- See also: QMOIAVATAR.md, QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details. 

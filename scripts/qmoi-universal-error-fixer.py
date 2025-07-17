@@ -303,7 +303,10 @@ class QMOIUniversalErrorFixer:
                 try:
                     logger.info(f"🔄 Running: {strategy}")
                     result = subprocess.run(strategy, shell=True, capture_output=True, text=True, timeout=300)
-                    
+                    if result is None:
+                        logger.error(f"❌ Subprocess failed to start or returned None: {strategy}")
+                        self.fix_stats['failed_fixes'] += 1
+                        continue
                     if result.returncode == 0:
                         logger.info(f"✅ {strategy} completed successfully")
                         self.fix_stats['successful_fixes'] += 1
@@ -361,7 +364,10 @@ class QMOIUniversalErrorFixer:
             for fix in npm_fixes:
                 try:
                     result = subprocess.run(fix, shell=True, capture_output=True, text=True, timeout=300)
-                    
+                    if result is None:
+                        logger.error(f"❌ Subprocess failed to start or returned None: {fix}")
+                        self.fix_stats['failed_fixes'] += 1
+                        continue
                     if result.returncode == 0:
                         logger.info(f"✅ {fix} completed successfully")
                         self.fix_stats['successful_fixes'] += 1
@@ -390,7 +396,10 @@ class QMOIUniversalErrorFixer:
             for fix in git_fixes:
                 try:
                     result = subprocess.run(fix, shell=True, capture_output=True, text=True, timeout=300)
-                    
+                    if result is None:
+                        logger.error(f"❌ Subprocess failed to start or returned None: {fix}")
+                        self.fix_stats['failed_fixes'] += 1
+                        continue
                     if result.returncode == 0:
                         logger.info(f"✅ {fix} completed successfully")
                         self.fix_stats['successful_fixes'] += 1
@@ -418,7 +427,10 @@ class QMOIUniversalErrorFixer:
             for fix in build_fixes:
                 try:
                     result = subprocess.run(fix, shell=True, capture_output=True, text=True, timeout=600)
-                    
+                    if result is None:
+                        logger.error(f"❌ Subprocess failed to start or returned None: {fix}")
+                        self.fix_stats['failed_fixes'] += 1
+                        continue
                     if result.returncode == 0:
                         logger.info(f"✅ {fix} completed successfully")
                         self.fix_stats['successful_fixes'] += 1
@@ -446,7 +458,10 @@ class QMOIUniversalErrorFixer:
             for fix in deployment_fixes:
                 try:
                     result = subprocess.run(fix, shell=True, capture_output=True, text=True, timeout=300)
-                    
+                    if result is None:
+                        logger.error(f"❌ Subprocess failed to start or returned None: {fix}")
+                        self.fix_stats['failed_fixes'] += 1
+                        continue
                     if result.returncode == 0:
                         logger.info(f"✅ {fix} completed successfully")
                         self.fix_stats['successful_fixes'] += 1
@@ -474,7 +489,10 @@ class QMOIUniversalErrorFixer:
             for fix in platform_fixes:
                 try:
                     result = subprocess.run(fix, shell=True, capture_output=True, text=True, timeout=300)
-                    
+                    if result is None:
+                        logger.error(f"❌ Subprocess failed to start or returned None: {fix}")
+                        self.fix_stats['failed_fixes'] += 1
+                        continue
                     if result.returncode == 0:
                         logger.info(f"✅ {fix} completed successfully")
                         self.fix_stats['successful_fixes'] += 1
@@ -557,7 +575,10 @@ class QMOIUniversalErrorFixer:
                     for fix in fixes:
                         try:
                             result = subprocess.run(fix, shell=True, capture_output=True, text=True, timeout=300)
-                            
+                            if result is None:
+                                logger.error(f"❌ Subprocess failed to start or returned None: {fix}")
+                                self.fix_stats['failed_fixes'] += 1
+                                continue
                             if result.returncode == 0:
                                 logger.info(f"✅ {fix} completed successfully")
                                 self.fix_stats['successful_fixes'] += 1
@@ -588,7 +609,10 @@ class QMOIUniversalErrorFixer:
             for fix in memory_fixes:
                 try:
                     result = subprocess.run(fix, shell=True, capture_output=True, text=True, timeout=300)
-                    
+                    if result is None:
+                        logger.error(f"❌ Subprocess failed to start or returned None: {fix}")
+                        self.fix_stats['failed_fixes'] += 1
+                        continue
                     if result.returncode == 0:
                         logger.info(f"✅ {fix} completed successfully")
                         self.fix_stats['successful_fixes'] += 1

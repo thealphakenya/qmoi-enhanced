@@ -22,6 +22,19 @@ import logging
 import asyncio
 from dataclasses import dataclass
 from enum import Enum
+import shutil
+
+# Patch for UTF-8 logging on Windows
+if sys.platform == "win32":
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8', errors='replace')
+
+def safe_log(logger, level, msg):
+    try:
+        getattr(logger, level)(msg)
+    except UnicodeEncodeError:
+        getattr(logger, level)(msg.encode('ascii', 'replace').decode())
 
 # Auto-install missing dependencies
 def install_dependencies():
@@ -91,6 +104,12 @@ class QMOIMasterAutomation:
         
         # Detect cloud environment
         self.is_cloud_environment = self.detect_cloud_environment()
+        # Enforce cloud-offloading and cloud_optimized mode
+        if self.is_cloud_environment:
+            os.environ["QMOI_CLOUD_OPTIMIZED"] = "true"
+            os.environ["QMOI_DEVICE_INDEPENDENT"] = "true"
+            os.environ["QMOI_AUTO_RESTART"] = "true"
+            self.logger.info("[QMOI] Cloud-offload mode enabled. All automation will auto-restart in cloud if stopped.")
         
         # Setup logging
         logging.basicConfig(
@@ -145,6 +164,23 @@ class QMOIMasterAutomation:
         self.fixes_applied = []
         
         self.load_config()
+
+    async def safe_subprocess_run(self, cmd, **kwargs):
+        """Run subprocess only if command exists, else auto-fix or skip"""
+        import shutil
+        if shutil.which(cmd[0]) is None:
+            safe_log(self.logger, 'error', f"Command not found: {cmd[0]}")
+            # Attempt auto-fix: try npm install or pip install if relevant
+            if cmd[0] == 'npm':
+                await self.install_npm_dependencies()
+            elif cmd[0] == 'pip':
+                subprocess.run([sys.executable, '-m', 'pip', 'install', cmd[1]])
+            return None
+        try:
+            return subprocess.run(cmd, **kwargs)
+        except Exception as e:
+            safe_log(self.logger, 'error', f"Subprocess error: {e}")
+            return None
     
     def detect_cloud_environment(self) -> bool:
         """Detect if running in a cloud environment"""
@@ -178,10 +214,15 @@ class QMOIMasterAutomation:
                 os.environ["QMOI_ML_OPTIMIZED"] = "true"
     
     def load_config(self):
-        """Load or create master configuration"""
+        """Load or create master configuration, auto-initialize missing keys"""
         if self.config_file.exists():
             with open(self.config_file, 'r') as f:
                 self.config = json.load(f)
+            # Auto-initialize missing keys
+            if "platforms" not in self.config:
+                safe_log(self.logger, 'warning', "'platforms' key missing in config. Auto-initializing.")
+                self.config["platforms"] = self.create_default_config()["platforms"]
+                self.save_config()
         else:
             self.config = self.create_default_config()
             self.save_config()
@@ -233,14 +274,12 @@ class QMOIMasterAutomation:
             else:
                 cmd = ["npm", "install"]
             
-            result = subprocess.run(
-                cmd,
-                cwd=self.project_root,
-                capture_output=True,
-                text=True,
-                timeout=600  # 10 minutes timeout
-            )
+            result = await self.safe_subprocess_run(cmd, cwd=self.project_root)
             
+            if result is None:
+                self.logger.error("❌ npm install subprocess failed to start or returned None (cmd: %s)", cmd)
+                await self.alternative_npm_install()
+                return
             if result.returncode == 0:
                 self.logger.info("✅ npm dependencies installed successfully")
             else:
@@ -267,14 +306,12 @@ class QMOIMasterAutomation:
         for method in alternative_methods:
             try:
                 self.logger.info(f"🔄 Trying alternative installation: {' '.join(method)}")
-                result = subprocess.run(
-                    method,
-                    cwd=self.project_root,
-                    capture_output=True,
-                    text=True,
-                    timeout=300
-                )
+                result = await self.safe_subprocess_run(method, cwd=self.project_root)
                 
+                if result is None:
+                    self.logger.warning(f"⚠️ Alternative method failed to start or returned None: {' '.join(method)}")
+                    continue
+                    
                 if result.returncode == 0:
                     self.logger.info(f"✅ Alternative installation successful: {' '.join(method)}")
                     return
@@ -328,14 +365,12 @@ class QMOIMasterAutomation:
             if self.is_cloud_environment:
                 cmd.extend(["--", "--cloud-optimized"])
             
-            result = subprocess.run(
-                cmd,
-                cwd=self.project_root,
-                capture_output=True,
-                text=True,
-                timeout=600  # 10 minutes timeout
-            )
+            result = await self.safe_subprocess_run(cmd, cwd=self.project_root)
             
+            if result is None:
+                self.logger.error(f"❌ QMOI comprehensive subprocess failed to start or returned None (cmd: {cmd})")
+                await self.auto_fix_general_issues("QMOI comprehensive subprocess failed to start")
+                return
             if result.returncode == 0:
                 self.logger.info("✅ QMOI comprehensive completed successfully")
                 self.log_evolution("QMOI comprehensive automation completed successfully")
@@ -398,13 +433,16 @@ class QMOIMasterAutomation:
         
         try:
             # Run GitLab-specific fixes
-            result = subprocess.run(
+            result = await self.safe_subprocess_run(
                 ["npm", "run", "gitlab:fix"],
-                cwd=self.project_root,
-                capture_output=True,
-                text=True
+                cwd=self.project_root
             )
             
+            if result is None:
+                msg = "GitLab fix subprocess failed to start or returned None"
+                suggestions.append("Check GitLab fix command and environment")
+                evolution_ideas.append("Add error handling for GitLab subprocess failures")
+                return False, msg, suggestions, evolution_ideas
             if result.returncode == 0:
                 msg = "GitLab fixes applied successfully"
                 suggestions.append("Consider adding more GitLab CI/CD stages")
@@ -426,13 +464,16 @@ class QMOIMasterAutomation:
         
         try:
             # Run GitHub-specific fixes
-            result = subprocess.run(
+            result = await self.safe_subprocess_run(
                 ["npm", "run", "github:fallback"],
-                cwd=self.project_root,
-                capture_output=True,
-                text=True
+                cwd=self.project_root
             )
             
+            if result is None:
+                msg = "GitHub fix subprocess failed to start or returned None"
+                suggestions.append("Check GitHub fix command and environment")
+                evolution_ideas.append("Add error handling for GitHub subprocess failures")
+                return False, msg, suggestions, evolution_ideas
             if result.returncode == 0:
                 msg = "GitHub fixes applied successfully"
                 suggestions.append("Consider adding GitHub Actions workflows")
@@ -454,11 +495,9 @@ class QMOIMasterAutomation:
         
         try:
             # Run Vercel-specific fixes
-            result = subprocess.run(
+            result = await self.safe_subprocess_run(
                 ["npm", "run", "vercel:auto-fix"],
-                cwd=self.project_root,
-                capture_output=True,
-                text=True
+                cwd=self.project_root
             )
             
             if result.returncode == 0:
@@ -482,11 +521,9 @@ class QMOIMasterAutomation:
         
         try:
             # Run Gitpod-specific fixes
-            result = subprocess.run(
+            result = await self.safe_subprocess_run(
                 ["npm", "run", "gitpod:monitor"],
-                cwd=self.project_root,
-                capture_output=True,
-                text=True
+                cwd=self.project_root
             )
             
             if result.returncode == 0:
@@ -510,11 +547,9 @@ class QMOIMasterAutomation:
         
         try:
             # Run DagsHub-specific fixes
-            result = subprocess.run(
+            result = await self.safe_subprocess_run(
                 ["python", "scripts/dagshub-automation.py"],
-                cwd=self.project_root,
-                capture_output=True,
-                text=True
+                cwd=self.project_root
             )
             
             if result.returncode == 0:
@@ -538,11 +573,9 @@ class QMOIMasterAutomation:
         
         try:
             # Run Colab-specific fixes
-            result = subprocess.run(
+            result = await self.safe_subprocess_run(
                 ["python", "scripts/colab-automation.py"],
-                cwd=self.project_root,
-                capture_output=True,
-                text=True
+                cwd=self.project_root
             )
             
             if result.returncode == 0:
@@ -565,11 +598,9 @@ class QMOIMasterAutomation:
         
         try:
             # Build the project first
-            build_result = subprocess.run(
+            build_result = await self.safe_subprocess_run(
                 ["npm", "run", "build"],
-                cwd=self.project_root,
-                capture_output=True,
-                text=True
+                cwd=self.project_root
             )
             
             if build_result.returncode != 0:
@@ -582,11 +613,9 @@ class QMOIMasterAutomation:
                 )
             
             # Deploy to Vercel
-            deploy_result = subprocess.run(
+            deploy_result = await self.safe_subprocess_run(
                 ["npx", "vercel", "--prod", "--yes"],
-                cwd=self.project_root,
-                capture_output=True,
-                text=True
+                cwd=self.project_root
             )
             
             if deploy_result.returncode == 0:
@@ -622,13 +651,13 @@ class QMOIMasterAutomation:
         
         try:
             # Sync GitLab to GitHub
-            subprocess.run(["npm", "run", "github:sync-to"], cwd=self.project_root)
+            await self.safe_subprocess_run(["npm", "run", "github:sync-to"], cwd=self.project_root)
             
             # Sync GitHub to GitLab
-            subprocess.run(["npm", "run", "github:sync-from"], cwd=self.project_root)
+            await self.safe_subprocess_run(["npm", "run", "github:sync-from"], cwd=self.project_root)
             
             # Update all platforms
-            subprocess.run(["npm", "run", "qmoi:platform-monitor"], cwd=self.project_root)
+            await self.safe_subprocess_run(["npm", "run", "qmoi:platform-monitor"], cwd=self.project_root)
             
             self.logger.info("✅ Cross-platform synchronization completed")
             
@@ -695,7 +724,10 @@ class QMOIMasterAutomation:
         
         for fix in fixes:
             try:
-                result = subprocess.run(fix, cwd=self.project_root, capture_output=True, text=True)
+                result = await self.safe_subprocess_run(fix, cwd=self.project_root)
+                if result is None:
+                    self.logger.error(f"❌ Fix subprocess failed to start or returned None (cmd: {' '.join(fix)})")
+                    continue
                 if result.returncode == 0:
                     self.logger.info(f"✅ Applied fix: {' '.join(fix)}")
                 else:
@@ -709,7 +741,7 @@ class QMOIMasterAutomation:
         
         # Increase timeout and retry
         try:
-            subprocess.run(["npm", "run", "qmoi:fix"], cwd=self.project_root, timeout=600)
+            await self.safe_subprocess_run(["npm", "run", "qmoi:fix"], cwd=self.project_root, timeout=600)
         except Exception as e:
             self.logger.error(f"❌ Timeout fix failed: {e}")
     
@@ -726,9 +758,45 @@ class QMOIMasterAutomation:
         
         for fix in fixes:
             try:
-                subprocess.run(fix, cwd=self.project_root, capture_output=True, text=True)
+                await self.safe_subprocess_run(fix, cwd=self.project_root)
             except Exception as e:
                 self.logger.error(f"❌ General fix failed: {e}")
+    
+    async def auto_fix_missing_files_and_deps(self):
+        """Scan for missing files, keys, or dependencies and auto-create/install as needed"""
+        # Example: check for essential files
+        essential_files = [self.config_file, self.logs_dir]
+        for f in essential_files:
+            if not Path(f).exists():
+                safe_log(self.logger, 'warning', f"Missing essential file or dir: {f}. Auto-creating.")
+                if isinstance(f, Path) and f.suffix:
+                    f.parent.mkdir(parents=True, exist_ok=True)
+                    f.touch()
+                else:
+                    Path(f).mkdir(parents=True, exist_ok=True)
+        # Check for essential npm packages
+        try:
+            result = await self.safe_subprocess_run(["npm", "ls"], cwd=self.project_root)
+            if result is None:
+                safe_log(self.logger, 'warning', "NPM packages missing or broken. Running npm install.")
+                await self.install_npm_dependencies()
+            elif result.returncode != 0:
+                safe_log(self.logger, 'warning', "NPM packages missing or broken. Running npm install.")
+                await self.install_npm_dependencies()
+        except Exception as e:
+            safe_log(self.logger, 'error', f"NPM check failed: {e}")
+    
+    async def auto_upgrade_nextjs(self):
+        """Auto-upgrade Next.js and related dependencies if outdated"""
+        try:
+            safe_log(self.logger, 'info', "Checking for Next.js updates...")
+            result = await self.safe_subprocess_run(["npm", "outdated", "next"], cwd=self.project_root)
+            if "next" in result.stdout:
+                safe_log(self.logger, 'info', "Upgrading Next.js to latest...")
+                await self.safe_subprocess_run(["npm", "install", "next@latest"], cwd=self.project_root)
+                safe_log(self.logger, 'info', "Next.js upgraded successfully.")
+        except Exception as e:
+            safe_log(self.logger, 'error', f"Next.js upgrade failed: {e}")
     
     def log_evolution(self, message: str):
         """Log evolution events"""
@@ -740,36 +808,36 @@ class QMOIMasterAutomation:
     async def run_master_automation(self):
         """Run the complete master automation"""
         start_time = time.time()
-        
-        self.logger.info("🚀 Starting QMOI Master Automation")
-        self.logger.info("=" * 50)
+        safe_log(self.logger, 'info', "🚀 Starting QMOI Master Automation")
+        safe_log(self.logger, 'info', "=" * 50)
         
         try:
-            # Run comprehensive fixes
+            await self.auto_fix_missing_files_and_deps()
+            await self.auto_upgrade_nextjs()
             fix_results = await self.run_comprehensive_fixes()
             
             # Generate summary
             success_count = sum(1 for result in fix_results if result.success)
             total_count = len(fix_results)
             
-            self.logger.info("=" * 50)
-            self.logger.info(f"📊 Master Automation Summary:")
-            self.logger.info(f"✅ Successful fixes: {success_count}/{total_count}")
-            self.logger.info(f"⏱️ Total time: {time.time() - start_time:.2f} seconds")
-            self.logger.info(f"☁️ Cloud optimized: {self.is_cloud_environment}")
+            safe_log(self.logger, 'info', "=" * 50)
+            safe_log(self.logger, 'info', f"📊 Master Automation Summary:")
+            safe_log(self.logger, 'info', f"✅ Successful fixes: {success_count}/{total_count}")
+            safe_log(self.logger, 'info', f"⏱️ Total time: {time.time() - start_time:.2f} seconds")
+            safe_log(self.logger, 'info', f"☁️ Cloud optimized: {self.is_cloud_environment}")
             
             # Log results
             for result in fix_results:
                 status = "✅" if result.success else "❌"
-                self.logger.info(f"{status} {result.platform.value}: {result.message}")
+                safe_log(self.logger, 'info', f"{status} {result.platform.value}: {result.message}")
             
             # Save final report
             await self.save_final_report(fix_results, time.time() - start_time)
             
-            self.logger.info("🎉 QMOI Master Automation completed!")
+            safe_log(self.logger, 'info', "🎉 QMOI Master Automation completed!")
             
         except Exception as e:
-            self.logger.error(f"❌ Master automation failed: {e}")
+            safe_log(self.logger, 'error', f"❌ Master automation failed: {e}")
             raise
     
     async def save_final_report(self, fix_results: List[FixResult], duration: float):

@@ -84,6 +84,13 @@ export default function QCityDevicePanel() {
   const [loading, setLoading] = useState(false);
   const [logs, setLogs] = useState<Record<string, string>>({});
 
+  // Add state for self-check, self-developer, version, update, and logs
+  const [selfCheckStatus, setSelfCheckStatus] = useState<'idle'|'checking'|'fixed'|'error'>('idle');
+  const [selfDeveloper, setSelfDeveloper] = useState(true);
+  const [runnerVersion, setRunnerVersion] = useState('v2.0.0');
+  const [lastSelfUpdate, setLastSelfUpdate] = useState('2024-06-10T12:00:00Z');
+  const [errorFixHistory, setErrorFixHistory] = useState<string[]>([]);
+
   const isMaster = role === 'admin';
 
   useEffect(() => {
@@ -141,6 +148,19 @@ export default function QCityDevicePanel() {
     console.log(`Executing in QCity with unlimited resources: ${command}`);
     // Simulate QCity command execution with unlimited resources
     return { success: true, output: `QCity executed with unlimited resources: ${command}` };
+  };
+
+  // Handler for self-check & auto-fix
+  const handleSelfCheck = async () => {
+    setSelfCheckStatus('checking');
+    // Simulate self-check and auto-fix
+    setTimeout(() => {
+      setSelfCheckStatus('fixed');
+      setErrorFixHistory(h => [
+        `Self-check & auto-fix run at ${new Date().toISOString()}`,
+        ...h
+      ]);
+    }, 2000);
   };
 
   // Fetch workspaces
@@ -533,6 +553,93 @@ export default function QCityDevicePanel() {
             Master access required to view unlimited build files and sensitive data in QCity.
           </AlertDescription>
         </Alert>
+      )}
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Zap className="h-5 w-5" />
+            Runner/Device Self-Check & Auto-Fix
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-center gap-4">
+            <Button onClick={handleSelfCheck} variant="default" title="Run self-check and auto-fix for this runner/device">Run Self-Check & Auto-Fix</Button>
+            <span>Status: {selfCheckStatus === 'idle' ? 'Idle' : selfCheckStatus === 'checking' ? 'Checking...' : selfCheckStatus === 'fixed' ? 'Fixed' : 'Error'}</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <label htmlFor="selfDeveloperToggle">Self-Developer Mode</label>
+            <Switch id="selfDeveloperToggle" checked={selfDeveloper} onCheckedChange={setSelfDeveloper} title="Enable/disable self-developer mode (auto-improve scripts/configs)" />
+          </div>
+          <div className="flex items-center gap-4">
+            <span title="Current runner version">Runner Version: {runnerVersion}</span>
+            <span title="Last self-update timestamp">Last Self-Update: {lastSelfUpdate}</span>
+          </div>
+          <div>
+            <h4 className="font-medium">Error-Fix & Self-Developer History</h4>
+            <div className="bg-muted p-2 rounded text-xs max-h-32 overflow-y-auto">
+              {errorFixHistory.length === 0 ? 'No history yet.' : errorFixHistory.map((h, i) => <div key={i}>{h}</div>)}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {isMaster && (
+        <>
+          {/* Elastic Scaling Controls */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Elastic Scaling</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center gap-4">
+                <Button variant="outline" onClick={() => alert('Auto-scale up triggered (free/cloud only)')}>Scale Up</Button>
+                <Button variant="outline" onClick={() => alert('Auto-scale down triggered')}>Scale Down</Button>
+                <span>Virtual Devices: Unlimited (auto-managed)</span>
+              </div>
+              <div className="text-xs text-muted-foreground">Elastic scaling uses only free/local/cloud resources by default. No paid runners unless explicitly enabled by master.</div>
+            </CardContent>
+          </Card>
+
+          {/* Run Heavy Task Panel */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Run Heavy Task</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <form onSubmit={e => {e.preventDefault(); alert('Heavy task started (auto-offload to cloud if needed)')}}>
+                <input type="text" placeholder="Enter command or file to process" className="border p-2 rounded w-2/3" />
+                <Button type="submit" variant="default">Run</Button>
+              </form>
+              <div className="text-xs text-muted-foreground">Heavy tasks are auto-offloaded to cloud/Colab if local resources are low. Progress and logs will appear below.</div>
+              <div className="bg-muted p-2 rounded text-xs mt-2">[Simulated] Progress: 100%<br/>Logs: Task completed successfully.</div>
+            </CardContent>
+          </Card>
+
+          {/* Parallel Job Visualizer */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Parallel Jobs</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="text-xs text-muted-foreground">All parallel jobs are shown here with real-time status and logs. Only free/local/cloud runners are used by default.</div>
+              <div className="bg-muted p-2 rounded text-xs mt-2">[Simulated] Job 1: Running (cloud)<br/>Job 2: Completed (local)<br/>Job 3: Waiting (cloud)</div>
+            </CardContent>
+          </Card>
+
+          {/* AI/ML Self-Improvement Panel */}
+          <Card>
+            <CardHeader>
+              <CardTitle>AI/ML Self-Improvement</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>Last Enhancement: Auto-optimized runner config (2024-06-10 12:00 UTC)</div>
+              <Button variant="default" onClick={() => alert('AI/ML auto-enhancement triggered')}>Trigger Auto-Enhancement</Button>
+              <Button variant="outline" onClick={() => alert('Scheduled nightly auto-enhancement')}>Schedule Nightly Enhancement</Button>
+              <div className="text-xs text-muted-foreground">All enhancements are logged and used to improve future automation. Only master can trigger or schedule enhancements.</div>
+            </CardContent>
+          </Card>
+        </>
       )}
     </div>
   );

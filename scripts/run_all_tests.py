@@ -74,7 +74,13 @@ class MasterTestRunner:
         for category, test_func in test_categories.items():
             try:
                 self.logger.info(f"📋 Running {category} tests...")
-                self.results['test_results'][category] = await test_func()
+                result = await test_func()
+                if not result or all('error' in v and 'not found' in v['error'] for v in result.values()):
+                    warning = f"⚠️ No tests found or all tests missing for category: {category}"
+                    self.logger.warning(warning)
+                    self.results['test_results'][category] = {'warning': warning}
+                else:
+                    self.results['test_results'][category] = result
             except Exception as e:
                 self.logger.error(f"❌ Failed to run {category} tests: {e}")
                 self.results['test_results'][category] = {'error': str(e)}

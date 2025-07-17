@@ -81,3 +81,18 @@ graph TD;
   - Personalized suggestions and alerts based on user context (even in background)
   - Master/admin can override, audit, or enhance any feature
   - All actions are logged and visualized for master/admin 
+
+### QCode Editor (Universal Code Editor)
+- **Overview:** QMOI’s cross-platform code editor, supporting all major languages and automation.
+- **Features:** Syntax highlighting, auto-complete, multi-language, QMOI automation, master/admin debug panels, available in Qstore.
+- **Automation:** QMOI auto-detects and fixes code issues, master/admin can trigger enhancements, all actions logged and visualized.
+
+### Q-Termux (Terminal Emulator & Linux Environment)
+- **Overview:** QMOI’s terminal app, providing shell access and Linux tools on any device.
+- **Features:** Shell, package management, scripting, QMOI automation, master/admin debug panels, available in Qstore.
+- **Automation:** QMOI auto-fixes terminal errors, manages packages, and logs all actions for master/admin.
+
+### Q-Word, Q-Excel, Q-PDF, Q-PPT, Q-Image, Q-Text (Universal Document Viewers & Editors)
+- **Overview:** QMOI’s suite of document viewers and editors, branded for each file type (Word, Excel, PDF, PowerPoint, images, text).
+- **Features:** View, edit, and manage documents (Word, Excel, PDF, PowerPoint, images, text) with QMOI automation and accessibility. All available in Qstore.
+- **Automation:** QMOI auto-updates, fixes, and enhances document features, with master/admin debug panels and audit logs. 

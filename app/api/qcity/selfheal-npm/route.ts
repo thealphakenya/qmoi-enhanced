@@ -27,6 +27,19 @@ function logAudit(action: string, user: string, options: any, status: string) {
   fs.appendFileSync('logs/qcity_audit.log', JSON.stringify(entry) + '\n');
 }
 
+function logDownloadFix(action: string, user: string, options: any, status: string, error: any = null) {
+  const entry = {
+    timestamp: new Date().toISOString(),
+    action,
+    user,
+    app: 'QCity',
+    device: options.device || 'unknown',
+    status,
+    error
+  };
+  fs.appendFileSync('logs/download_fixes.log', JSON.stringify(entry) + '\n');
+}
+
 export async function POST(req: NextRequest) {
   const auth = req.headers.get('authorization');
   if (!auth || !auth.startsWith('Bearer ')) {
@@ -69,6 +82,7 @@ export async function POST(req: NextRequest) {
   const ps = spawn(script, args);
   const user = jwt.role || 'unknown';
   logAudit('selfheal-trigger', user, options, 'started');
+  logDownloadFix('selfheal-trigger', user, options, 'started');
 
   ps.stdout.on('data', (data) => {
     writer.write(encoder.encode(`data: ${data.toString()}\n`));
@@ -80,6 +94,7 @@ export async function POST(req: NextRequest) {
     writer.write(encoder.encode(`data: [DONE]\n`));
     writer.close();
     logAudit('selfheal-complete', user, options, code === 0 ? 'success' : 'error');
+    logDownloadFix('selfheal-complete', user, options, code === 0 ? 'success' : 'error');
   });
 
   return new Response(readable, {

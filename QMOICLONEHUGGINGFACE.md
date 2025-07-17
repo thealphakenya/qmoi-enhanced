@@ -477,3 +477,34 @@ npm run huggingface:optimize-inference --model "my-model"
 ---
 
 *QMOI Clone Hugging Face: All the power of Hugging Face, unlocked for QMOI with unlimited features and capabilities.* 
+
+## Universal Runner Engine
+- Platform-aware runners auto-detect Hugging Face and load Hugging Face-specific modules
+- Elastic, parallel, and self-healing: scale up/down, split jobs, auto-offload to cloud, auto-recover from errors
+- AI/ML-driven optimization: runners analyze logs, performance, and errors across all platforms, auto-suggest/apply optimizations
+
+## New Dashboard Widgets
+- Platform Status Cards: Hugging Face card shows model/space status, runners, last sync, errors
+- Universal Trigger Panel: trigger any job (build, test, deploy, sync, backup, optimize) on Hugging Face
+- Elastic Scaling Panel: runner count, scale up/down, resource usage
+- Cross-Platform Job Matrix: jobs x platforms grid, status/logs/error/fix icons
+- Clone Health & Sync Panel: sync status, last backup, error/fix history, Sync Now/Force Heal
+- AI/ML Insights Panel: recommendations for Hugging Face, Apply/Ignore
+- Evolution History Panel: timeline of auto-evolutions, improvements, rollbacks
+- Master-Only Controls: advanced settings, manual override, audit logs
+
+## AI/ML Automation & Cross-Platform Learning
+- AI/ML models aggregate logs/errors/fixes from Hugging Face and other platforms
+- Fixes/optimizations that work on Hugging Face are auto-suggested/applied to others
+- Runners self-evolve to support new Hugging Face features
+- Auto-feature generation: AI proposes new features/scripts based on usage/errors/feedback
+- All major changes require master approval
+
+## Usage & Troubleshooting
+- Use dashboard widgets to monitor Hugging Face status, trigger jobs, view logs, and apply AI/ML recommendations
+- Master can trigger any job, scale runners, or force sync/heal
+- All actions, fixes, and enhancements are logged and auditable
+- For errors, use logs and AI/ML suggestions; master can override or roll back as needed
+
+## UI/UX Mockup
+(Same as in QMOICLONE.md, with Hugging Face-specific emphasis) 

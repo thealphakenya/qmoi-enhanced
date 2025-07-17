@@ -162,7 +162,7 @@ cat logs/qmoi_startup_status.json
 #### 1. Script Not Found
 ```bash
 # Ensure you're in the correct directory
-cd /d/Alpha-Q-ai
+cd /d/QMOI
 
 # Check if scripts exist
 ls scripts/qmoi_automated_*.py

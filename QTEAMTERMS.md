@@ -1,6 +1,6 @@
 # QTEAM TERMS AND REGULATIONS
 
-Welcome to Qcity and the Alpha-Q-AI Application Suite ("the Application"). Please read these terms and regulations carefully before installing or using the Application.
+Welcome to Qcity and the QMOI Application Suite ("the Application"). Please read these terms and regulations carefully before installing or using the Application.
 
 ## 1. User Agreement
 - By installing or using the Application, you agree to abide by these terms and all applicable laws and regulations.

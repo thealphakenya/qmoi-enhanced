@@ -3,6 +3,14 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
+const findRepoRoot = () => {
+  let dir = process.cwd();
+  while (!fs.existsSync(path.join(dir, '.git')) && dir !== path.dirname(dir)) {
+    dir = path.dirname(dir);
+  }
+  return dir;
+};
+
 class AutoGitUpdater {
   constructor() {
     this.repoPath = process.cwd();
@@ -10,6 +18,8 @@ class AutoGitUpdater {
     this.isRunning = false;
     this.masterWhatsApp = '+254725382624';
     this.sisterWhatsApp = '+61424053495';
+    this.repoRoot = findRepoRoot();
+    process.chdir(this.repoRoot);
   }
 
   async start() {
@@ -32,6 +42,17 @@ class AutoGitUpdater {
         await this.performDailyUpdate();
       }
     }, 24 * 60 * 60 * 1000); // Every 24 hours
+
+    // Add a scheduled git pull/merge every 10 minutes
+    setInterval(async () => {
+      try {
+        console.log('Scheduled git pull/merge...');
+        await this.executeCommand('git pull --rebase');
+        console.log('Git pull/merge completed.');
+      } catch (err) {
+        console.error('Git pull/merge failed:', err.message);
+      }
+    }, 10 * 60 * 1000);
   }
 
   async performUpdate() {
@@ -323,7 +344,7 @@ class AutoGitUpdater {
 
   async executeCommand(command) {
     return new Promise((resolve, reject) => {
-      exec(command, { cwd: this.repoPath }, (error, stdout, stderr) => {
+      exec(command, { cwd: this.repoRoot }, (error, stdout, stderr) => {
         if (error) {
           reject(error);
         } else {

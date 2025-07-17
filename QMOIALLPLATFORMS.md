@@ -33,11 +33,11 @@ QMOI operates across multiple cloned platforms, each providing unlimited access 
 **Documentation**: [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md)
 **Paid Features**: [GITPODPAYED.md](./GITPODPAYED.md)
 
-### 5. QMOI Clone Netlify (QMOICLONENETLIFY)
+### 5. QMOI Clone Netlify (QMOICLONE)
 **Status**: ✅ Active and Enhanced
 **Features**: Unlimited sites, forms, functions, analytics
 **Paid Features**: All Netlify Pro, Business features unlocked
-**Documentation**: [QMOICLONENETLIFY.md](./QMOICLONENETLIFY.md)
+**Documentation**: [QMOICLONE.md](./QMOICLONE.md) (Netlify features included here)
 **Paid Features**: [NETLIFYPAYED.md](./NETLIFYPAYED.md)
 
 ### 6. QMOI Clone Quantum (QMOICLONEQUANTUM)
@@ -394,7 +394,7 @@ npm run qmoi:optimize-unified
 - [QMOICLONEGITLAB.md](./QMOICLONEGITLAB.md) - GitLab clone features
 - [QMOICLONEVERCEL.md](./QMOICLONEVERCEL.md) - Vercel clone features
 - [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md) - Gitpod clone features
-- [QMOICLONENETLIFY.md](./QMOICLONENETLIFY.md) - Netlify clone features
+- [QMOICLONE.md](./QMOICLONE.md) - Netlify clone features (Netlify features included here)
 - [QMOICLONEQUANTUM.md](./QMOICLONEQUANTUM.md) - Quantum clone features
 - [QMOICLONEHF.md](./QMOICLONEHF.md) - Hugging Face clone features
 

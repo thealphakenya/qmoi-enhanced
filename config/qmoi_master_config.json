@@ -195,5 +195,37 @@
     "privacy_compliance": true,
     "token_rotation": true,
     "session_management": true
+  },
+  "platforms": {
+    "gitlab": {
+      "enabled": true,
+      "priority": 1,
+      "cloud_optimized": true
+    },
+    "github": {
+      "enabled": true,
+      "priority": 2,
+      "cloud_optimized": true
+    },
+    "vercel": {
+      "enabled": true,
+      "priority": 3,
+      "cloud_optimized": true
+    },
+    "gitpod": {
+      "enabled": true,
+      "priority": 4,
+      "cloud_optimized": true
+    },
+    "dagshub": {
+      "enabled": true,
+      "priority": 5,
+      "cloud_optimized": true
+    },
+    "colab": {
+      "enabled": true,
+      "priority": 6,
+      "cloud_optimized": true
+    }
   }
 }

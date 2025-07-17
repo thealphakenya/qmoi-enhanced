@@ -25,6 +25,24 @@ QMOI operates as a fully autonomous AI developer and notification agent across a
 
 ---
 
+## Pre-Autotest for Repo Modification
+
+- QMOI always runs a pre-autotest before attempting to modify or update the repository.
+- The pre-autotest checks for permissions, branch access, and CI/CD status to ensure QMOI can safely push changes or trigger automation.
+- If the pre-autotest fails, QMOI logs the error, notifies the master, and does not proceed with the fix until the issue is resolved.
+- This feature is fully integrated with QMOI's developer agent and notification system for maximum reliability.
+
+---
+
+## Multi-Platform Pre-Autotest Logic
+
+- QMOI runs pre-autotests for all supported platforms (GitHub, GitLab, Vercel, HuggingFace, QCity, etc.) before any repo modification or automation.
+- Results are aggregated and only if all platforms pass does QMOI proceed.
+- Failures are logged, notified, and visualized in the dashboard, with master controls for resolution.
+- This logic is fully integrated with QMOI's notification and dashboard systems.
+
+---
+
 ## References
 - [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md)
 - [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)

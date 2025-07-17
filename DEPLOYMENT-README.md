@@ -383,7 +383,7 @@ To enhance the deployment system:
 
 ## Backup Health
 
-[![QMOI HuggingFace Backup](https://github.com/thealphakenya/Alpha-Q-ai/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule)](https://github.com/thealphakenya/Alpha-Q-ai/actions/workflows/auto-deploy.yml)
+[![QMOI HuggingFace Backup](https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule)](https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml)
 
 > **Backup Health:** This badge shows the status of the latest scheduled backup to HuggingFace. Green = healthy, Red = last backup failed.
 
@@ -1186,3 +1186,17 @@ The QMOI Enhanced Auto-Deploy System provides a comprehensive, self-healing, and
 - Media logs API: `/api/qmoi-database?logs=true&limit=50` (requires `x-qmoi-master: true` header)
 
 --- 
+
+## 🖥️ QMOI Dashboard & Cloud Automation (2025+)
+
+- Run the real-time dashboard for logs, reports, and health:
+  ```bash
+  python scripts/qmoi-dashboard.py
+  # Access at http://localhost:5055
+  ```
+- Use the cloud deploy script to keep all automation, live status, and dashboard running in Colab, DagsHub, or any cloud:
+  ```bash
+  bash scripts/qmoi-cloud-deploy.sh
+  # All services are always-on, auto-restarting, and cloud-offloaded
+  ```
+- All automation, monitoring, and dashboards are managed in the cloud for 24/7 reliability. 

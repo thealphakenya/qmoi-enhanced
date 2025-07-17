@@ -12,6 +12,10 @@ QMOI and QCity are optimized to run best online in Colab and Dagshub, offloading
 - Heavy jobs (training, inference, data processing) run in Colab/Dagshub.
 - Only results, logs, and essential data are synced to the device.
 - Auto-detects when to offload based on device health and network.
+- **All cloud-offloading, auto-retry, and auto-recover logic is now enforced and visualized in the QMOI dashboard.**
+- **Pre-autotest, error/fix, and notification status for Colab/Dagshub are now shown in real time in the dashboard.**
+- **All .md docs and logs are auto-synced to the dashboard and ALLMDFILESREFS.md.**
+- **Artist/voice/avatar/media/cursor/media player features will be cloud-offloaded and visualized in the dashboard.**
 
 ## Reliability & Best Practices
 - Auto-retry and auto-recover from cloud job failures.

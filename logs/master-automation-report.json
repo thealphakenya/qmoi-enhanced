@@ -1,0 +1,82 @@
+{
+  "timestamp": "2025-07-16T23:23:48.344622",
+  "duration_seconds": 834.678234577179,
+  "total_platforms": 7,
+  "successful_fixes": 2,
+  "cloud_optimized": false,
+  "platforms": [
+    {
+      "name": "gitlab",
+      "success": false,
+      "message": "GitLab fix subprocess failed to start or returned None",
+      "suggestions": [
+        "Check GitLab fix command and environment"
+      ],
+      "evolution_ideas": [
+        "Add error handling for GitLab subprocess failures"
+      ]
+    },
+    {
+      "name": "github",
+      "success": false,
+      "message": "GitHub fix subprocess failed to start or returned None",
+      "suggestions": [
+        "Check GitHub fix command and environment"
+      ],
+      "evolution_ideas": [
+        "Add error handling for GitHub subprocess failures"
+      ]
+    },
+    {
+      "name": "vercel",
+      "success": false,
+      "message": "Vercel fix error: 'NoneType' object has no attribute 'returncode'",
+      "suggestions": [],
+      "evolution_ideas": []
+    },
+    {
+      "name": "gitpod",
+      "success": false,
+      "message": "Gitpod fix error: 'NoneType' object has no attribute 'returncode'",
+      "suggestions": [],
+      "evolution_ideas": []
+    },
+    {
+      "name": "dagshub",
+      "success": true,
+      "message": "DagsHub fixes failed: None",
+      "suggestions": [
+        "Review DagsHub repository settings"
+      ],
+      "evolution_ideas": [
+        "Add DagsHub ML optimization"
+      ]
+    },
+    {
+      "name": "colab",
+      "success": true,
+      "message": "Google Colab fixes applied successfully",
+      "suggestions": [
+        "Consider adding GPU optimization"
+      ],
+      "evolution_ideas": [
+        "Implement Colab auto-scaling"
+      ]
+    },
+    {
+      "name": "vercel",
+      "success": false,
+      "message": "Vercel deployment error: 'NoneType' object has no attribute 'returncode'",
+      "suggestions": [
+        "Add error handling",
+        "Check network connectivity"
+      ],
+      "evolution_ideas": [
+        "Implement retry mechanism",
+        "Add deployment monitoring"
+      ]
+    }
+  ],
+  "evolution_log": [],
+  "suggestions_log": []
+}

@@ -144,7 +144,7 @@ async function runHealthChecks(): Promise<any[]> {
     '/api/qmoi/autodev',
     '/api/qcity/status',
     '/api/health',
-    process.env.VERCEL_DEPLOY_URL || 'https://alpha-q-ai.vercel.app'
+    process.env.VERCEL_DEPLOY_URL || 'https://qmoi.vercel.app'
   ];
   
   const results = [];
@@ -321,7 +321,7 @@ async function daemonLoop(): Promise<void> {
             logger.info('[QMOI-AUTODEV-DAEMON] Vercel deploy result:', deployResult);
             
             if (deployResult.success) {
-              const url = process.env.VERCEL_DEPLOY_URL || 'https://alpha-q-ai.vercel.app';
+              const url = process.env.VERCEL_DEPLOY_URL || 'https://qmoi.vercel.app';
               monitorResult = await unifiedCICDService.monitorDeployment(url);
               logger.info('[QMOI-AUTODEV-DAEMON] Deployment monitor result:', monitorResult);
             }

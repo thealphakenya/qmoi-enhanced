@@ -65,5 +65,14 @@
 - **Automated Learning:** QMOI continuously learns from all interactions and updates its knowledge base.
 - **Version Control Integration:** All documentation changes are tracked and synchronized across platforms.
 
+## Elastic, Limitless Parallel Runners & Jobs
+- QMOI parallel engine enables elastic scaling: jobs are split and run in parallel across unlimited runners/devices/clouds
+- No artificial limits: any job, file, or process can be parallelized and offloaded as needed
+- Auto-offload: heavy jobs are automatically sent to cloud/Colab/Dagshub if local resources are low
+- Master-only controls: Only master/admin can view, manage, or override parallel jobs and scaling
+- All parallel actions are logged, visualized, and used to improve future automation
+
+See also: QMOIMEMORY.md, QMOIAICORE.md
+
 ---
 **QMOI Parallel Engine v4.0** - Revolutionizing Cross-Platform Automation with Speed, Quantity, and Quality Optimization 

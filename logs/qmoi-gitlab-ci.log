@@ -14,3 +14,10 @@
 2025-07-15 08:46:02,204 - INFO - Running: Setup and dependencies
 2025-07-15 08:49:17,209 - INFO - Running: Running all tests
 2025-07-15 08:49:17,347 - INFO - Running: Running all tests
+2025-07-15 09:50:16,188 - INFO - File modified: .\logs\gitlab-ci-stats.json
+2025-07-15 09:50:16,416 - INFO - Auto-triggering GitLab CI due to file changes
+2025-07-15 09:50:17,209 - INFO - Running: Setup and dependencies
+2025-07-15 10:13:15,245 - INFO - File modified: .\logs\gitlab-ci-stats.json
+2025-07-15 10:13:15,246 - INFO - Auto-triggering GitLab CI due to file changes
+2025-07-15 10:13:15,670 - INFO - Running: Setup and dependencies
+2025-07-15 10:15:48,803 - INFO - Running: Running all tests

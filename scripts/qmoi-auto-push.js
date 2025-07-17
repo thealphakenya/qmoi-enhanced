@@ -5,6 +5,14 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
+const findRepoRoot = () => {
+  let dir = process.cwd();
+  while (!fs.existsSync(path.join(dir, '.git')) && dir !== path.dirname(dir)) {
+    dir = path.dirname(dir);
+  }
+  return dir;
+};
+
 class QMOIAutoPush {
   constructor() {
     this.gitlabToken = process.env.GITLAB_TOKEN || process.env.GITLAB_ACCESS_TOKEN;
@@ -17,9 +25,22 @@ class QMOIAutoPush {
     this.pipelineId = process.env.CI_PIPELINE_ID;
     
     this.logFile = path.join(process.cwd(), 'logs', 'qmoi-auto-push.log');
+    this.repoRoot = findRepoRoot();
+    process.chdir(this.repoRoot);
     this.ensureLogDir();
     this.maxRetries = 5;
     this.retryDelay = 30000; // 30 seconds
+
+    // Add a scheduled git pull/merge every 10 minutes
+    setInterval(async () => {
+      try {
+        this.log('Scheduled git pull/merge...');
+        await this.runCommand('git pull --rebase');
+        this.log('Git pull/merge completed.');
+      } catch (err) {
+        this.log('Git pull/merge failed: ' + err.message, 'ERROR');
+      }
+    }, 10 * 60 * 1000);
   }
 
   ensureLogDir() {

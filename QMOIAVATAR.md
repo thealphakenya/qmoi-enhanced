@@ -385,3 +385,21 @@ See also: DEVICERESOURCEOPTIMIZATION.md for full details.
 ## Extensibility
 - The avatar system is designed for easy addition of new avatars, creatures, and voice packs.
 - See avatarsConfig.ts for registry and asset management. 
+
+## QCity Elastic & Parallel Management UI (NEW)
+- Floating dashboard panels in Q-Avatar UI for:
+  - Elastic scaling controls (auto-scale up/down, add/remove devices)
+  - Parallel job visualizer (see all jobs, status, logs)
+  - Heavy task runner (run large files/heavy code, auto-offload to cloud)
+  - AI/ML self-improvement panel (show last enhancements, trigger/schedule auto-enhancements)
+- All panels are visible and actionable only for master/admin users
+- Real-time log streaming and progress for all jobs
+- No paid runners are used by default; master can enable if needed
+
+See also: QMOIMEMORY.md, QMOIALWAYSPARALLEL.md, QMOIAICORE.md 
+
+## Cloud Offloading & Cloned Platform Usage (2025 Enhancement)
+
+- All heavy animation, AI, and voice tasks for Q-Avatar are offloaded to QCity, Colab, and cloud environments. Local device only handles UI and lightweight rendering.
+- QMOI exclusively uses its own cloned GitLab and Gitpod platforms for all automation and deployment, never the actual ones. All avatar, voice, and animation features are cloud-optimized for performance and scalability.
+- See also: QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, CMDCOMMANDS.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details. 

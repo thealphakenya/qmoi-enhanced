@@ -3,6 +3,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const chokidar = require('chokidar');
+const fsExtra = (() => { try { return require('fs-extra'); } catch { return null; } })();
 
 const repos = [
   { name: 'Alpha-Q-ai', url: process.env.GITLAB_REPO_URL, platform: 'gitlab' },
@@ -40,6 +41,15 @@ function cloneOrUpdateRepo(repo) {
 function deployToCloud(target) {
   log(`[QMOI] Deploying to ${target.name}...`);
   try {
+    // Special handling for gitpod CLI
+    if (target.name === 'gitpod') {
+      try {
+        execSync('gp --version', { stdio: 'ignore' });
+      } catch {
+        log('[QMOI] Gitpod CLI (gp) not found, skipping gitpod deployment.');
+        return;
+      }
+    }
     execSync(target.deployCmd, { stdio: 'inherit' });
     log(`[QMOI] Deploy to ${target.name} succeeded.`);
   } catch (e) {
@@ -95,10 +105,15 @@ function backupAndEvolve() {
   const backupDir = path.join(__dirname, '../qmoi-backups', Date.now().toString());
   fs.mkdirSync(backupDir, { recursive: true });
   if (fs.existsSync('clones')) {
-    execSync(`cp -r clones ${backupDir}/`);
+    // Use fs-extra if available, else fallback to manual copy
+    if (fsExtra) {
+      fsExtra.copySync('clones', path.join(backupDir, 'clones'));
+    } else {
+      log('[QMOI] fs-extra not found, skipping clones backup.');
+    }
   }
   if (fs.existsSync(logPath)) {
-    execSync(`cp ${logPath} ${backupDir}/`);
+    fs.copyFileSync(logPath, path.join(backupDir, path.basename(logPath)));
   }
   log(`[QMOI] Backup complete: ${backupDir}`);
   // (Extend: auto-evolve logic, changelog, etc.)

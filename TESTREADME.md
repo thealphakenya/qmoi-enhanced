@@ -513,3 +513,17 @@ To add new tests:
 *Last updated: January 2024*
 *Test coverage: 95%*
 *Total test cases: 150+* 
+
+## Pre-Autotest for Repo Modification
+
+- Before any fix or update, QMOI now runs a pre-autotest to verify it can modify and update the repository (permissions, branch, CI/CD, etc.).
+- This ensures all fixes are testable and that QMOI has the necessary permissions to push changes, create branches, or trigger pipelines.
+- If the pre-autotest fails, QMOI logs the error, notifies the master, and does not proceed with the fix until permissions are resolved.
+- See QMOIDEV.md for details on QMOI's developer agent and notification logic. 
+
+## Multi-Platform Pre-Autotest Logic
+
+- Before any fix or update, QMOI runs pre-autotests for all connected platforms (GitHub, GitLab, Vercel, HuggingFace, QCity, etc.).
+- Results are aggregated and only if all platforms pass does QMOI proceed with the fix or update.
+- If any platform fails, QMOI logs the error, notifies the master, and waits for resolution.
+- Pre-autotest results and history are visualized in the QMOI dashboard for full transparency. 

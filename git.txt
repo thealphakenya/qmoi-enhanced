@@ -1,33 +1,18 @@
-# git.txt - QMOI Git/GitHub/Hugging Face Automation Reference
+# Git Automation Reference
 
-## Required Git Commands for Automation
+All git operations (commit, push, pull, error-fix, notifications) are now handled by the new QMOI automation system:
 
-# Standard push to GitHub
+- `scripts/qmoi-auto-push.js`
+- `scripts/auto-git-update.js`
+- `scripts/qmoi-qcity-automatic.py`
+- `scripts/qmoi-enhanced-master-automation.py`
+- `scripts/qmoi_notification_manager.py`
 
-git add .
-git commit -m "Automated update by QMOI"
-git push origin main
+## Usage
+- All changes are auto-staged, committed, and pushed on schedule and on file changes.
+- Pulls and merges are handled automatically.
+- All errors are auto-fixed and retried.
+- Notifications are sent to all configured channels.
+- All actions are logged and visible in the QCity dashboard (master-only).
 
-# Push to Hugging Face (using git-lfs if needed)
-
-git remote add hf https://huggingface.co/<username>/<repo>
-git push hf main
-
-# Auto-create repo if missing (GitHub CLI example)
-
-gh repo create <username>/<repo> --public --source=. --remote=origin --push
-
-# Auto-create repo if missing (Hugging Face CLI example)
-huggingface-cli repo create <repo> --type=model --organization <org>
-
-# QMOI automates all git operations, including:
-# - Auto-creating repos if missing
-# - Setting up remotes and permissions
-# - Auto-pushing all changes to GitHub and Hugging Face
-# - Keeping all files in sync across platforms
-# - Visualizing all git operations in the dashboard
-# - Notifying the master of all push/sync events
-
----
-
-*This file is referenced in ALLMDFILESREFS.md and is always kept up to date by QMOI.* 
+See `ALLMDFILESREFS.md` for full documentation and update history. 

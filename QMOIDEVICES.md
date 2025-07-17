@@ -331,4 +331,17 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 
 ---
 
-### See also: QCITYMAINDEVICE.md, QCITYRESOURCES.md, DEVICERESOURCEOPTIMIZATION.md 
+## QCity Runners Engine: Orchestrator for Device Management
+QMOI now uses the QCity Runners Engine (see QCITYRUNNERSENGINE.md) to orchestrate all device management, optimization, and self-healing. All devices:
+- Continuously self-check, auto-fix, and auto-update
+- Learn from errors, usage, and performance to evolve and optimize
+- Can auto-improve their own configs, scripts, and suggest code changes (Self-Developer)
+- Are monitored and managed via the dashboard with live status and audit logs
+
+### Self-Developer Devices
+Devices can now auto-improve their own configurations, scripts, and even suggest or apply code changes to optimize performance and reliability.
+
+### Ever-Evolving Devices
+Devices learn from errors, usage patterns, and performance data, adapting automatically to new requirements and environments.
+
+See also: QCITYRUNNERSENGINE.md, QCITYREADME.md 

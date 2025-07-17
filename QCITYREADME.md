@@ -578,6 +578,22 @@ For more information, see:
 
 --- 
 
+# QCity Runners Engine: Self-Healing, Ever-Evolving, Self-Developer
+QCity now uses the QCity Runners Engine (see QCITYRUNNERSENGINE.md) as the backbone for all automation, CI/CD, and device management. Runners and devices:
+- Continuously self-check, auto-fix, and auto-update
+- Learn from errors and usage to evolve and optimize themselves
+- Can auto-improve their own scripts, configs, and even suggest code changes (Self-Developer)
+- Integrate with the dashboard for live status, error-fix logs, and audit trails
+- All actions are logged and visualized for compliance and monitoring
+
+### Runner/Device Self-Check & Auto-Fix
+- Use the dashboard or API to trigger self-check and auto-fix routines
+- All fixes and updates are logged and can be reviewed in the dashboard
+
+See also: QCITYRUNNERSENGINE.md, QMOIDEVICES.md
+
+---
+
 # QCity Device - Enhanced Documentation
 
 ## Overview

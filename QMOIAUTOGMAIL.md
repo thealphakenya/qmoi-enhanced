@@ -5,7 +5,7 @@ QMOI provides a fully automated Gmail notification system for all automation, er
 
 ## Features
 - **Automated Email Alerts:** Receive notifications for doc fixing, deployments, errors, and more.
-- **Multiple Recipients:** Supports comma-separated recipient list (e.g., rovicviccy@gmail.com,thealphakenya@gmail.com).
+- **Multiple Recipients:** Supports comma-separated recipient list (e.g., rovicviccy@gmail.com,qmoi@gmail.com).
 - **Secure Credential Management:** QMOI auto-manages Gmail credentials using environment variables. Never expose secrets in public repos.
 - **Cloud-Ready:** Works in Colab, Dagshub, and other cloud environments for always-on notifications.
 - **Parallel Integration:** Tightly integrated with QMOI's parallel engine for real-time, platform-specific alerts.
@@ -34,6 +34,13 @@ QMOI provides a fully automated Gmail notification system for all automation, er
 - All parallel jobs (error fixing, deployments, etc.) trigger notifications independently.
 - Platform-specific alerts are sent for GitLab, GitHub, Vercel, HuggingFace, and more.
 - Notifications are categorized by event type and platform for clarity.
+
+## 📊 Dashboard Integration for Notifications
+
+- The QMOI dashboard (`python scripts/qmoi-dashboard.py`) now displays Gmail and multi-channel notification status, delivery logs, and allows master users to trigger test notifications.
+- All notification events (success, failure, delivery, etc.) are visualized and logged in real time in the dashboard.
+- Notification analytics and history are available alongside automation logs and reports.
+- This integration is always-on, cloud-offloaded, and works in Colab, Dagshub, and all cloud environments.
 
 ---
 **QMOI Automated Gmail Notification System**

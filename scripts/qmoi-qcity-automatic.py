@@ -112,13 +112,21 @@ class QMOIQCityAutomatic:
     def run_comprehensive_qcity(self):
         """Run comprehensive QMOI QCity automation"""
         try:
+            # Always run from repo root
+            repo_root = os.path.abspath(os.path.dirname(__file__)).split('scripts')[0]
+            os.chdir(repo_root)
+            # Auto-pull before automation
+            try:
+                logger.info('Scheduled git pull/merge before automation...')
+                subprocess.run('git pull --rebase', shell=True, check=True)
+                logger.info('Git pull/merge completed.')
+            except Exception as e:
+                logger.error(f'Git pull/merge failed: {e}')
             self.automation_stats['current_status'] = 'running'
             self.automation_stats['total_runs'] += 1
             self.automation_stats['last_run'] = datetime.now().isoformat()
-            
-            logger.info("🚀 Starting comprehensive QMOI QCity automation")
-            
-            # Run all QCity automation steps
+            logger.info("\U0001F680 Starting comprehensive QMOI QCity automation")
+            # Run all QCity automation steps with retry logic
             qcity_steps = [
                 ('npm run qmoi:setup', 'QMOI Setup'),
                 ('npm run qmoi:test', 'QMOI Tests'),
@@ -130,35 +138,51 @@ class QMOIQCityAutomatic:
                 ('npm run qmoi:platform-monitor', 'Platform Monitor'),
                 ('npm run qmoi:health', 'Health Check'),
                 ('npm run qmoi:notify', 'Notifications'),
-                ('npm run qmoi:recovery', 'Error Recovery')
+                ('npm run qmoi:recovery', 'Error Recovery'),
+                ('python scripts/autotest/advanced_autotest_system.py', 'QMOI Autotest')
             ]
-            
             for command, description in qcity_steps:
-                try:
-                    logger.info(f"🔄 Running: {description}")
-                    result = subprocess.run(command, shell=True, capture_output=True, text=True, timeout=300)
-                    
-                    if result.returncode == 0:
-                        logger.info(f"✅ {description} completed successfully")
-                        self.automation_stats['successful_deployments'] += 1
-                    else:
-                        logger.error(f"❌ {description} failed: {result.stderr}")
+                retries = 0
+                max_retries = 3
+                while retries < max_retries:
+                    try:
+                        logger.info(f"\U0001F504 Running: {description} (Attempt {retries+1})")
+                        result = subprocess.run(command, shell=True, capture_output=True, text=True, timeout=300)
+                        if result.returncode == 0:
+                            logger.info(f"\u2705 {description} completed successfully")
+                            self.automation_stats['successful_deployments'] += 1
+                            # Send notification for success
+                            self.send_notification(f"{description} succeeded", result.stdout)
+                            break
+                        else:
+                            logger.error(f"\u274c {description} failed: {result.stderr}")
+                            self.automation_stats['failed_deployments'] += 1
+                            self.send_notification(f"{description} failed", result.stderr)
+                            retries += 1
+                    except subprocess.TimeoutExpired:
+                        logger.error(f"\u23f0 {description} timed out")
                         self.automation_stats['failed_deployments'] += 1
-                        
-                except subprocess.TimeoutExpired:
-                    logger.error(f"⏰ {description} timed out")
-                    self.automation_stats['failed_deployments'] += 1
-                except Exception as e:
-                    logger.error(f"❌ Error running {description}: {e}")
-                    self.automation_stats['failed_deployments'] += 1
-                    
+                        self.send_notification(f"{description} timed out", "Timeout")
+                        retries += 1
+                    except Exception as e:
+                        logger.error(f"\u274c Error running {description}: {e}")
+                        self.automation_stats['failed_deployments'] += 1
+                        self.send_notification(f"{description} error", str(e))
+                        retries += 1
             # Update status
             self.automation_stats['current_status'] = 'completed'
-            logger.info("✅ Comprehensive QMOI QCity automation completed")
-            
+            logger.info("\u2705 Comprehensive QMOI QCity automation completed")
         except Exception as e:
-            logger.error(f"❌ Error in comprehensive QCity automation: {e}")
+            logger.error(f"\u274c Error in comprehensive QCity automation: {e}")
             self.automation_stats['current_status'] = 'failed'
+            self.send_notification("QMOI QCity automation failed", str(e))
+
+    def send_notification(self, subject, message):
+        try:
+            # Use the notification manager if available
+            subprocess.run(f'python scripts/qmoi_notification_manager.py "{subject}" "{message}"', shell=True)
+        except Exception as e:
+            logger.error(f"Failed to send notification: {e}")
             
     def trigger_gitlab_ci(self):
         """Trigger GitLab CI/CD pipeline"""

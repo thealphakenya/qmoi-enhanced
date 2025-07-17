@@ -24,7 +24,9 @@ QMOI for All is a comprehensive accessibility system designed to make all device
 - **WhatsApp Integration**: Full WhatsApp functionality with voice control
 
 ### 4. Reading and Information Access
-- **Document Reader**: Read PDFs, Word docs, and web pages aloud
+- **Document Reader:** Read PDFs, Word docs, Excel sheets, PowerPoint slides, images, and web pages aloud (Q-Word, Q-Excel, Q-PDF, Q-PPT, Q-Image, Q-Text)
+- **Code Editor:** Edit and read code with QCode Editor, with voice navigation and screen reader support
+- **Terminal Access:** Use Q-Termux for voice-controlled terminal and scripting
 - **Image Description**: AI describes images and visual content
 - **Web Navigation**: Voice-controlled web browsing
 - **News and Updates**: Audio news summaries and updates

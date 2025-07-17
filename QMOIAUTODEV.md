@@ -49,6 +49,18 @@ QMOI Auto-Dev is the core automation engine for Alpha-Q, now featuring:
 - Device management and auto-offloading are part of the unified dashboard.
 - For full optimization strategies, see `AUTOOPTIMIZEALPHAQMOIENGINE.md`.
 
+## Advanced Dashboard Widgets (Master-Only)
+- **Auto-Dev Health Panel:** Real-time status, error/fix history, and resource usage for all automation jobs
+- **Job Queue & History:** Visualize all queued, running, and completed automation jobs with logs and results
+- **AI/ML Enhancement Panel:** Shows last auto-improvements, allows master to trigger or schedule deeper AI/ML enhancements
+- **Elastic Scaling & Offload Panel:** Shows where jobs are running (local/cloud), with controls to force offload or scale up
+- **Self-Evolution Trigger:** Button for master to trigger a full auto-evolution cycle
+
+## Deeper Automation & Adaptation
+- QMOI Auto-Dev now auto-detects and adapts to new project types, languages, and platforms
+- Can auto-create new automation scripts for new workflows and environments
+- All advanced widgets and controls are visible and actionable only for master/admin users
+
 ## API Endpoints
 - `POST /api/qmoi/autodev` with `{ action: 'full_status' }` - Get full automation, fix, and deployment status.
 - `POST /api/qmoi/autodev` with `{ action: 'continuous_autofix_start' }` - Start the daemon.

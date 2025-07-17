@@ -46,8 +46,8 @@ QMOI_DEBUG=false
 ### A. Local Setup
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-org/Alpha-Q-ai.git
-   cd Alpha-Q-ai
+   git clone https://github.com/your-org/QMOI.git
+   cd QMOI
    ```
 2. **Install dependencies:**
    ```bash

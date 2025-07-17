@@ -469,7 +469,7 @@ cat logs/gitlab-ci-stats.json
 ```bash
 # Clone repository
 git clone <repository-url>
-cd Alpha-Q-ai
+cd QMOI
 
 # Install dependencies
 npm install

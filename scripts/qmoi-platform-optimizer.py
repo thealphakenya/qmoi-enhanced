@@ -494,7 +494,9 @@ class QMOIPlatformOptimizer:
                         # Run auto-fix
                         result = subprocess.run([platform, 'auto-fix', 'run'], 
                                              shell=True, capture_output=True, text=True, timeout=300)
-                        
+                        if result is None:
+                            logger.error(f"❌ Subprocess failed to start or returned None: {[platform, 'auto-fix', 'run']}")
+                            continue
                         if result.returncode == 0:
                             logger.info(f"✅ {platform} auto-fix completed")
                             self.optimization_stats['errors_fixed'] += 1

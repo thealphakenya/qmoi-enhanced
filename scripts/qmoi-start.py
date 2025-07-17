@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+import platform
 
 # Robust import for log_activity
 try:
@@ -38,6 +39,22 @@ def start_qmoi():
     print('QMOI started. It will now run in the background and in the cloud.')
     show_status()
 
+def start_as_service():
+    if platform.system() == 'Windows':
+        # Use nssm or pythonw to run as a Windows service
+        try:
+            subprocess.Popen(['pythonw', 'scripts/qmoi-qcity-automatic.py'])
+            print('Started QMOI automation as a background process (Windows).')
+        except Exception as e:
+            print(f'Failed to start as Windows service: {e}')
+    else:
+        # Use nohup for Unix
+        try:
+            subprocess.Popen(['nohup', 'python3', 'scripts/qmoi-qcity-automatic.py', '&'])
+            print('Started QMOI automation as a Unix daemon.')
+        except Exception as e:
+            print(f'Failed to start as Unix daemon: {e}')
+
 def main():
     print('--- QMOI Start/Resume ---')
     if is_qmoi_running():
@@ -48,4 +65,5 @@ def main():
         start_qmoi()
 
 if __name__ == "__main__":
-    main() 
+    main()
+    start_as_service() 
