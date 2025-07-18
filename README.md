@@ -21,8 +21,9 @@ QMOI is a fully automated, always-on, cross-platform automation engine. It runs 
 
 ## 📦 App Delivery & Qmoi_apps Structure
 - All apps are built and organized in `Qmoi_apps/<device>/` (e.g., windows, mac, linux, android, ios, qcity, ...)
-- Each device subdirectory contains the latest installer for QMOI and QCity
+- Each device subdirectory contains the latest installer for **qmoi ai** (e.g., `qmoi ai.exe` for Windows, `qmoi ai.apk` for Android) and QCity
 - Download links are always up to date and device-aware
+- **App icons are now modern, visually enhanced, and consistent across platforms**
 - **Download is only enabled if all health checks and autotests pass.**
 
 ## 🚀 Quickstart (Cloud/Colab/Dagshub)
@@ -45,7 +46,7 @@ QMOI is a fully automated, always-on, cross-platform automation engine. It runs 
 - **Dashboard shows live health checks, autotest results, and platform status. Master-only controls for logs and advanced features.**
 
 ## 📦 Download
-- Use the QI/first page download button for the correct installer for your device
+- Use the QI/first page download button for the correct installer for your device (now named **qmoi ai**)
 - **Download is only possible if all health checks and autotests pass.**
 - After all fixes, you’ll receive a Gmail and multi-channel notification with a download link for the full app (all devices)
 
@@ -91,3 +92,42 @@ See `QCITYRUNNERSENGINE.md` for full details.
 - QMOI exclusively uses its own cloned GitLab and Gitpod platforms, which are more advanced and optimized than the actual ones. Actual GitLab/Gitpod are never used for automation, CI/CD, or development.
 - All jobs, runners, and pipelines are managed by QMOI's cloud/Colab/Dagshub infrastructure for maximum scalability, reliability, and speed.
 - See also: QMOIAVATAR.md, QMOIAICORE.md, QMOIAUTOEVOLVE.md, CMDCOMMANDS.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details.
+
+# QMOI AI
+
+You can always get the latest QMOI AI apps for every platform using our automated scripts or direct download links.
+
+### Automated Download Scripts
+
+Run the appropriate script for your platform (see [DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for full details):
+
+- `python downloadqmoiaiapk.py` (Android)
+- `python downloadqmoiaiexe.py` (Windows)
+- `python downloadqmoiaidmg.py` (Mac)
+- `python downloadqmoiaideb.py` (Linux DEB)
+- `python downloadqmoiaiappimage.py` (Linux AppImage)
+- `python downloadqmoiaiipa.py` (iOS)
+- `python downloadqmoiaismarttvapk.py` (Smart TV)
+- `python downloadqmoiaiimg.py` (Raspberry Pi)
+- `python downloadqmoiaizip.py` (Chromebook)
+
+All downloads are saved in:
+```
+Qmoi_downloaded_apps/<platform>/latest/
+```
+
+### Direct Download Links (GitHub Releases)
+
+| Platform      | Direct Download Link |
+|--------------|---------------------|
+| Android      | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.apk |
+| Windows      | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.exe |
+| Mac          | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.dmg |
+| Linux (DEB)  | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.deb |
+| Linux (AppImage) | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.appimage |
+| iOS          | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.ipa |
+| Smart TV     | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai_smarttv.apk |
+| Raspberry Pi | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.img |
+| Chromebook   | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.zip |
+
+> **Note:** These links always point to the latest release. For older versions, browse the [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases).
