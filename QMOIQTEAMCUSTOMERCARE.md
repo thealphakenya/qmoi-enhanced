@@ -25,5 +25,10 @@ QMOI Qteam Customer Care is the integrated support and customer care system for 
 - All customer care interactions are encrypted and stored securely.
 - QMOI follows best practices for privacy, security, and compliance.
 
+## QCity Visualization & Automation
+- All customer care actions, notifications, and approvals are visualized in QCity (master-only access).
+- QMOI automates customer care, error fixing, and user experience improvements for all apps, with device-optimized solutions.
+- Privacy and security are always prioritized, with all actions logged and auditable.
+
 ---
 *QMOI Qteam Customer Care - Always available, always secure, always improving.* 

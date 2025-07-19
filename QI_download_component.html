@@ -1,59 +1,84 @@
 <!-- QI Device-Aware Download Component (Enhanced) -->
-<button id="download-btn">Download Latest App</button>
-<select id="variant-select">
-  <option value="QMOI-App">QMOI-App</option>
-  <option value="QCity-App">QCity-App</option>
-  <option value="QMOI-Enterprise">QMOI-Enterprise</option>
-  <option value="QMOI-Lite">QMOI-Lite</option>
-</select>
+<style>
+  .app-list { display: flex; flex-wrap: wrap; gap: 1.5em; }
+  .app-card { background: #fff; border-radius: 1em; box-shadow: 0 2px 8px #0002; padding: 1.5em; min-width: 220px; max-width: 300px; flex: 1 1 220px; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s; }
+  .app-card:hover { box-shadow: 0 4px 16px #0003; }
+  .app-icon { font-size: 2.5em; margin-bottom: 0.5em; animation: bounce 1.2s infinite alternate; }
+  @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
+  .download-btn { background: #0078d7; color: #fff; border: none; border-radius: 0.5em; padding: 0.7em 1.5em; font-size: 1em; cursor: pointer; margin-top: 1em; transition: background 0.2s; }
+  .download-btn:disabled { background: #aaa; cursor: not-allowed; }
+  .help-section { font-size: 0.95em; color: #333; margin-top: 0.7em; }
+  .terms-modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0008; z-index: 1000; align-items: center; justify-content: center; }
+  .terms-content { background: #fff; border-radius: 1em; padding: 2em; max-width: 500px; }
+  .terms-content h2 { margin-top: 0; }
+  .terms-actions { margin-top: 1.5em; display: flex; gap: 1em; justify-content: flex-end; }
+</style>
+<div class="app-list" id="app-list"></div>
+<div class="terms-modal" id="terms-modal">
+  <div class="terms-content">
+    <h2>Accept Qteam Terms</h2>
+    <div style="max-height: 200px; overflow-y: auto; font-size: 0.95em; border: 1px solid #eee; padding: 1em; margin-bottom: 1em;">By downloading and installing this app, you agree to the Qteam Terms and Regulations. See <a href="QTEAMTERMS.md" target="_blank">QTEAMTERMS.md</a> for full details.</div>
+    <div class="terms-actions">
+      <button id="accept-terms" class="download-btn">Accept</button>
+      <button id="decline-terms" class="download-btn" style="background:#aaa;">Decline</button>
+    </div>
+  </div>
+</div>
 <script>
-function detectDevice() {
-  const ua = navigator.userAgent;
-  if (ua.includes("Windows")) return "windows";
-  if (ua.includes("Mac")) return "mac";
-  if (ua.includes("Linux")) return "linux";
-  if (ua.includes("Android")) return ua.includes("TV") ? "smarttv" : "android";
-  if (ua.includes("iPhone") || ua.includes("iPad")) return "ios";
-  if (ua.includes("CrOS")) return "chromebook";
-  if (ua.includes("Raspberry")) return "raspberrypi";
-  return "qcity";
+const apps = [
+  { icon: '🌐', name: 'Qbrowser (skv)', help: 'Fast, secure web browser with privacy and extensions.', links: { windows: 'https://downloads.qmoi.app/qbrowser/windows.exe', mac: 'https://downloads.qmoi.app/qbrowser/mac.dmg', linux: 'https://downloads.qmoi.app/qbrowser/linux.appimage', android: 'https://downloads.qmoi.app/qbrowser/android.apk', ios: 'https://downloads.qmoi.app/qbrowser/ios.ipa' } },
+  { icon: '🗂️', name: 'QFileManager (skv)', help: 'Advanced file management with drag-drop and cloud sync.', links: { windows: 'https://downloads.qmoi.app/qfilemanager/windows.exe', mac: 'https://downloads.qmoi.app/qfilemanager/mac.dmg', linux: 'https://downloads.qmoi.app/qfilemanager/linux.appimage', android: 'https://downloads.qmoi.app/qfilemanager/android.apk', ios: 'https://downloads.qmoi.app/qfilemanager/ios.ipa' } },
+  { icon: '🕰️', name: 'QClock (skv)', help: 'Analog/digital clock, alarms, timers, and Q-clock window.', links: { windows: 'https://downloads.qmoi.app/qclock/windows.exe', mac: 'https://downloads.qmoi.app/qclock/mac.dmg', linux: 'https://downloads.qmoi.app/qclock/linux.appimage', android: 'https://downloads.qmoi.app/qclock/android.apk', ios: 'https://downloads.qmoi.app/qclock/ios.ipa' } },
+  { icon: '🗺️', name: 'QMap (skv)', help: 'Real-time, global mapping with GPS and AR.', links: { windows: 'https://downloads.qmoi.app/qmap/windows.exe', mac: 'https://downloads.qmoi.app/qmap/mac.dmg', linux: 'https://downloads.qmoi.app/qmap/linux.appimage', android: 'https://downloads.qmoi.app/qmap/android.apk', ios: 'https://downloads.qmoi.app/qmap/ios.ipa' } },
+  { icon: '🔍', name: 'QSearch (skv)', help: 'Floating search/chat with AI, voice, and image search.', links: { windows: 'https://downloads.qmoi.app/qsearch/windows.exe', mac: 'https://downloads.qmoi.app/qsearch/mac.dmg', linux: 'https://downloads.qmoi.app/qsearch/linux.appimage', android: 'https://downloads.qmoi.app/qsearch/android.apk', ios: 'https://downloads.qmoi.app/qsearch/ios.ipa' } },
+  { icon: '💬', name: 'QWhatsApp (skv)', help: 'WhatsApp + Meta AI features, smart replies, media, scheduling.', links: { windows: 'https://downloads.qmoi.app/qwhatsapp/windows.exe', mac: 'https://downloads.qmoi.app/qwhatsapp/mac.dmg', linux: 'https://downloads.qmoi.app/qwhatsapp/linux.appimage', android: 'https://downloads.qmoi.app/qwhatsapp/android.apk', ios: 'https://downloads.qmoi.app/qwhatsapp/ios.ipa' } },
+  { icon: '⚡', name: 'QAutoDev (skv)', help: 'Self-healing, auto-enhance, compliance, and tests.', links: { windows: 'https://downloads.qmoi.app/qautodev/windows.exe', mac: 'https://downloads.qmoi.app/qautodev/mac.dmg', linux: 'https://downloads.qmoi.app/qautodev/linux.appimage', android: 'https://downloads.qmoi.app/qautodev/android.apk', ios: 'https://downloads.qmoi.app/qautodev/ios.ipa' } },
+  // ... add all other QMOI apps in this format ...
+];
+const devices = [
+  { key: 'windows', label: 'Windows' },
+  { key: 'mac', label: 'Mac' },
+  { key: 'linux', label: 'Linux' },
+  { key: 'android', label: 'Android' },
+  { key: 'ios', label: 'iOS' }
+];
+const appList = document.getElementById('app-list');
+const termsModal = document.getElementById('terms-modal');
+let pendingDownload = null;
+function showTermsModal(onAccept) {
+  termsModal.style.display = 'flex';
+  pendingDownload = onAccept;
 }
-function getExtension(device) {
-  return {
-    windows: ".exe",
-    mac: ".dmg",
-    linux: ".AppImage",
-    android: ".apk",
-    ios: ".ipa",
-    qcity: ".zip",
-    chromebook: ".deb",
-    raspberrypi: ".img",
-    smarttv: ".apk"
-  }[device] || ".zip";
-}
-const device = detectDevice();
-const btn = document.getElementById('download-btn');
-const variantSelect = document.getElementById('variant-select');
-btn.onclick = () => {
-  const variant = variantSelect.value;
-  const url = `/Qmoi_apps/${device}/${variant}${getExtension(device)}`;
-  console.log(`Download started: ${url}`); // Analytics
-  btn.disabled = true;
-  btn.textContent = 'Downloading...';
-  fetch(url).then(resp => {
-    if (resp.ok) {
-      window.location = url;
-      btn.textContent = 'Download Latest App';
-      btn.disabled = false;
-    } else {
-      alert('Download not available for your device/variant.');
-      btn.textContent = 'Download Latest App';
-      btn.disabled = false;
-    }
-  }).catch(() => {
-    alert('Download failed. Please try again later.');
-    btn.textContent = 'Download Latest App';
-    btn.disabled = false;
-  });
+document.getElementById('accept-terms').onclick = () => {
+  termsModal.style.display = 'none';
+  if (pendingDownload) pendingDownload();
 };
+document.getElementById('decline-terms').onclick = () => {
+  termsModal.style.display = 'none';
+  pendingDownload = null;
+};
+apps.forEach(app => {
+  const card = document.createElement('div');
+  card.className = 'app-card';
+  card.innerHTML = `<div class="app-icon">${app.icon}</div><div style="font-weight:bold;">${app.name}</div><div class="help-section">${app.help}</div>`;
+  devices.forEach(device => {
+    const link = app.links[device.key];
+    if (link) {
+      const btn = document.createElement('button');
+      btn.className = 'download-btn';
+      btn.textContent = `Download for ${device.label}`;
+      btn.onclick = () => showTermsModal(() => {
+        btn.disabled = true;
+        btn.textContent = 'Downloading...';
+        window.location = link;
+        setTimeout(() => {
+          btn.textContent = `Download for ${device.label}`;
+          btn.disabled = false;
+        }, 2000);
+      });
+      card.appendChild(btn);
+    }
+  });
+  appList.appendChild(card);
+});
 </script> 
