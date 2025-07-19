@@ -57,6 +57,67 @@ document.getElementById('decline-terms').onclick = () => {
   termsModal.style.display = 'none';
   pendingDownload = null;
 };
+function downloadWithRetry(url, btn, onSuccess, onError) {
+  let attempts = 0;
+  const maxAttempts = 3;
+  const statusMsg = document.createElement('div');
+  statusMsg.style.marginTop = '0.5em';
+  btn.parentNode.insertBefore(statusMsg, btn.nextSibling);
+
+  async function tryDownload() {
+    attempts++;
+    statusMsg.textContent = `Downloading... (Attempt ${attempts}/${maxAttempts})`;
+    btn.disabled = true;
+    try {
+      const response = await fetch(url, { method: 'HEAD' });
+      if (!response.ok) throw new Error('File not found');
+      window.location = url;
+      statusMsg.textContent = 'Download started!';
+      btn.disabled = false;
+      if (onSuccess) onSuccess();
+    } catch (err) {
+      if (attempts < maxAttempts) {
+        statusMsg.textContent = `Download failed. Retrying... (${attempts}/${maxAttempts})`;
+        setTimeout(tryDownload, 1000 * attempts);
+      } else {
+        statusMsg.textContent = 'Download failed after multiple attempts.';
+        btn.disabled = false;
+        showErrorActions(btn, url, statusMsg);
+        if (onError) onError(err);
+      }
+    }
+  }
+  tryDownload();
+}
+function showErrorActions(btn, url, statusMsg) {
+  let retryBtn = document.createElement('button');
+  retryBtn.className = 'download-btn';
+  retryBtn.textContent = 'Retry';
+  retryBtn.onclick = () => {
+    retryBtn.remove();
+    reportBtn.remove();
+    downloadWithRetry(url, btn);
+  };
+  let reportBtn = document.createElement('button');
+  reportBtn.className = 'download-btn';
+  reportBtn.style.background = '#e53e3e';
+  reportBtn.textContent = 'Report Issue';
+  reportBtn.onclick = () => {
+    statusMsg.textContent = 'Reporting issue to Qteam Customer Care...';
+    fetch('/api/report-download-issue', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, time: new Date().toISOString() })
+    }).then(() => {
+      statusMsg.textContent = 'Issue reported. Qteam will investigate.';
+    }).catch(() => {
+      statusMsg.textContent = 'Failed to report issue.';
+    });
+    reportBtn.disabled = true;
+  };
+  statusMsg.appendChild(retryBtn);
+  statusMsg.appendChild(reportBtn);
+}
 apps.forEach(app => {
   const card = document.createElement('div');
   card.className = 'app-card';
@@ -67,15 +128,7 @@ apps.forEach(app => {
       const btn = document.createElement('button');
       btn.className = 'download-btn';
       btn.textContent = `Download for ${device.label}`;
-      btn.onclick = () => showTermsModal(() => {
-        btn.disabled = true;
-        btn.textContent = 'Downloading...';
-        window.location = link;
-        setTimeout(() => {
-          btn.textContent = `Download for ${device.label}`;
-          btn.disabled = false;
-        }, 2000);
-      });
+      btn.onclick = () => showTermsModal(() => downloadWithRetry(app.links[device.key], btn));
       card.appendChild(btn);
     }
   });

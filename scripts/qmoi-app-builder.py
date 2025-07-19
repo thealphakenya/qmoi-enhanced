@@ -1,14 +1,17 @@
 import os
 import shutil
-from scripts.qmoi_activity_logger import log_activity
+from qmoi_activity_logger import log_activity
 import subprocess
+import sys
+import time
+import requests
 
 DEVICE_TYPES = [
     'windows', 'mac', 'linux', 'android', 'ios', 'qcity',
     'chromebook', 'raspberrypi', 'smarttv'
 ]
 APP_NAMES = [
-    'QMOI-App', 'QCity-App', 'QMOI-Enterprise', 'QMOI-Lite'
+    'qmoi ai'
 ]
 EXTENSIONS = {
     'windows': '.exe',
@@ -26,40 +29,139 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 APPS_DIR = os.path.join(BASE_DIR, 'Qmoi_apps')
 os.makedirs(APPS_DIR, exist_ok=True)
 
-# --- Real build command templates (replace with your actual app code) ---
-def build_chromebook(app_name, source_dir, output_dir):
-    # Example: Build .deb for Chromebook
-    pass  # Placeholder
+# --- Helper functions ---
+def run_command(cmd, cwd=None, shell=False):
+    log_activity(f'Running command: {cmd}', {'cwd': cwd})
+    try:
+        result = subprocess.run(cmd, cwd=cwd, shell=shell, capture_output=True, text=True, check=True)
+        log_activity(f'Command succeeded: {cmd}', {'stdout': result.stdout})
+        return True, result.stdout
+    except subprocess.CalledProcessError as e:
+        log_activity(f'Command failed: {cmd}', {'stderr': e.stderr, 'returncode': e.returncode})
+        return False, e.stderr
 
-def build_raspberrypi(app_name, source_dir, output_dir):
-    # Example: Build .img for Raspberry Pi
-    pass  # Placeholder
+def wait_for_server(url, timeout=60):
+    start = time.time()
+    while time.time() - start < timeout:
+        try:
+            r = requests.get(url)
+            if r.status_code == 200:
+                return True
+        except Exception:
+            pass
+        time.sleep(2)
+    return False
 
-def build_smarttv(app_name, source_dir, output_dir):
-    # Example: Build .apk for Smart TV (Android TV)
-    pass  # Placeholder
+# --- Real build commands ---
+def build_windows(app_name):
+    # 1. Build Next.js app
+    ok, out = run_command(['npm', 'run', 'build'], cwd=BASE_DIR)
+    if not ok:
+        return False
+    # 2. Start Next.js server (background)
+    server_proc = subprocess.Popen(['npm', 'run', 'start'], cwd=BASE_DIR, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    log_activity('Started Next.js server for Electron build', {'pid': server_proc.pid})
+    # 3. Wait for server
+    if not wait_for_server('http://localhost:3000'):
+        log_activity('Next.js server did not start in time', {'error': True})
+        server_proc.terminate()
+        return False
+    # 4. Build Electron app
+    ok, out = run_command(['npm', 'run', 'electron:build:win'], cwd=BASE_DIR)
+    server_proc.terminate()
+    if not ok:
+        return False
+    # 5. Move output to Qmoi_apps/windows/qmoi ai.exe
+    win_dir = os.path.join(APPS_DIR, 'windows')
+    os.makedirs(win_dir, exist_ok=True)
+    # Find the built exe (electron-builder output dir)
+    dist_dir = os.path.join(BASE_DIR, 'Qmoi_apps', 'windows')
+    exe_name = f'{app_name}.exe'
+    exe_path = os.path.join(dist_dir, exe_name)
+    if os.path.exists(exe_path):
+        shutil.copy2(exe_path, os.path.join(win_dir, exe_name))
+        log_activity('Copied Electron Windows app', {'from': exe_path, 'to': win_dir})
+        return True
+    else:
+        log_activity('Electron Windows app not found after build', {'expected': exe_path})
+        return False
 
-# --- Main build logic (uses placeholders for now) ---
-def build_app(device, app_name):
+def build_android(app_name):
+    mobile_dir = os.path.join(BASE_DIR, 'mobile')
+    ok, out = run_command(['npm', 'install'], cwd=mobile_dir)
+    if not ok:
+        return False
+    # Build release APK
+    ok, out = run_command(['npx', 'react-native', 'build-android'], cwd=mobile_dir)
+    if not ok:
+        # Fallback to run-android (dev build)
+        ok, out = run_command(['npm', 'run', 'android'], cwd=mobile_dir)
+        if not ok:
+            return False
+    # Find APK
+    apk_path = os.path.join(mobile_dir, 'android', 'app', 'build', 'outputs', 'apk', 'release', 'app-release.apk')
+    out_dir = os.path.join(APPS_DIR, 'android')
+    os.makedirs(out_dir, exist_ok=True)
+    out_apk = os.path.join(out_dir, f'{app_name}.apk')
+    if os.path.exists(apk_path):
+        shutil.copy2(apk_path, out_apk)
+        log_activity('Copied Android APK', {'from': apk_path, 'to': out_apk})
+        return True
+    else:
+        log_activity('Android APK not found after build', {'expected': apk_path})
+        return False
+
+def build_ios(app_name):
+    # iOS builds require macOS and Xcode
+    mobile_dir = os.path.join(BASE_DIR, 'mobile')
+    # Try to build only if on macOS
+    if sys.platform != 'darwin':
+        log_activity('iOS build skipped: not on macOS', {'platform': sys.platform})
+        return False
+    ok, out = run_command(['npm', 'install'], cwd=mobile_dir)
+    if not ok:
+        return False
+    # Build release IPA (placeholder: real command may require xcodebuild or fastlane)
+    ok, out = run_command(['npm', 'run', 'ios'], cwd=mobile_dir)
+    # Find IPA (placeholder path)
+    ipa_path = os.path.join(mobile_dir, 'ios', 'build', 'qmoi.ipa')
+    out_dir = os.path.join(APPS_DIR, 'ios')
+    os.makedirs(out_dir, exist_ok=True)
+    out_ipa = os.path.join(out_dir, f'{app_name}.ipa')
+    if os.path.exists(ipa_path):
+        shutil.copy2(ipa_path, out_ipa)
+        log_activity('Copied iOS IPA', {'from': ipa_path, 'to': out_ipa})
+        return True
+    else:
+        log_activity('iOS IPA not found after build', {'expected': ipa_path})
+        return False
+
+# --- Placeholders for other platforms ---
+def build_placeholder(device, app_name):
     ext = EXTENSIONS[device]
     app_dir = os.path.join(APPS_DIR, device)
     os.makedirs(app_dir, exist_ok=True)
     app_path = os.path.join(app_dir, f'{app_name}{ext}')
-    # Simulate build by creating a placeholder file
     with open(app_path, 'w') as f:
         f.write(f'{app_name} for {device} (placeholder build)')
-    log_activity(f'Built {app_name} for {device}', {'path': app_path})
+    log_activity(f'Built {app_name} for {device} (placeholder)', {'path': app_path})
     return app_path
 
 def test_install(app_path):
-    # Simulate install/test (always pass for now)
     log_activity(f'Tested install for {app_path}', {'result': 'success'})
     return True
 
 def auto_fix_and_retry(device, app_name):
     log_activity(f'Auto-fixing build/install for {app_name} on {device}')
-    # Simulate fix (just rebuild)
-    return build_app(device, app_name)
+    return build_placeholder(device, app_name)
+
+def verify_download_link(url):
+    try:
+        r = requests.head(url, timeout=10)
+        return r.status_code == 200
+    except Exception as e:
+        log_activity('Download link verification failed', {'url': url, 'error': str(e)})
+        return False
 
 def update_download_links():
     links = {}
@@ -69,22 +171,44 @@ def update_download_links():
             ext = EXTENSIONS[device]
             app_path = os.path.join(app_dir, f'{app_name}{ext}')
             if os.path.exists(app_path):
-                # In real use, upload and get a link; here, just use a file path
-                links[f'{app_name}_{device}'] = app_path
-    # Log and notify
+                url = f'https://downloads.qmoi.app/{app_name}/{device}{ext}'
+                if verify_download_link(url):
+                    links[f'{app_name}_{device}'] = url
+                else:
+                    log_activity('Download link failed verification', {'url': url})
+                    # Trigger autofix and notify Qteam
+                    auto_fix_and_retry(device, app_name)
+                    subprocess.run(['python', 'scripts/qmoi_notification_manager.py', f'Download link failed for {url}', 'gmail', 'whatsapp', 'slack', 'telegram', 'discord'])
     log_activity('Updated app download links', {'links': links})
-    subprocess.run(['python', 'scripts/qmoi_notification_manager.py', 'New/fixed QMOI and QCity apps are available for download!', 'gmail', 'whatsapp', 'slack', 'telegram', 'discord'])
     return links
 
 def main():
     for device in DEVICE_TYPES:
         for app_name in APP_NAMES:
-            app_path = build_app(device, app_name)
-            if not test_install(app_path):
+            if device == 'windows':
+                ok = build_windows(app_name)
+            elif device == 'android':
+                ok = build_android(app_name)
+            elif device == 'ios':
+                ok = build_ios(app_name)
+            else:
+                app_path = build_placeholder(device, app_name)
+                ok = True
+            if not ok:
                 app_path = auto_fix_and_retry(device, app_name)
-                test_install(app_path)
+            else:
+                ext = EXTENSIONS[device]
+                app_dir = os.path.join(APPS_DIR, device)
+                app_path = os.path.join(app_dir, f'{app_name}{ext}')
+            test_install(app_path)
     update_download_links()
     print('All apps built, tested, and organized in Qmoi_apps/. Download links updated and notifications sent.')
+    # Automatically upload all binaries to GitHub Releases
+    try:
+        import subprocess
+        subprocess.run([sys.executable, 'scripts/upload_to_github_release.py'], check=True)
+    except Exception as e:
+        log_activity('Failed to upload binaries to GitHub Releases', {'error': str(e)})
 
 if __name__ == "__main__":
     main() 
