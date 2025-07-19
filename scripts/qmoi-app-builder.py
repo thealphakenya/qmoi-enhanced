@@ -5,6 +5,7 @@ import subprocess
 import sys
 import time
 import requests
+import threading
 
 DEVICE_TYPES = [
     'windows', 'mac', 'linux', 'android', 'ios', 'qcity',
@@ -51,6 +52,24 @@ def wait_for_server(url, timeout=60):
             pass
         time.sleep(2)
     return False
+
+def get_best_working_domain():
+    import requests
+    domains = [
+        'downloads.qmoi.app',
+        'fallback.qmoi.app',
+        'downloads-qmoi.tk',  # Example Freenom fallback
+    ]
+    test_path = '/qmoi/windows.exe'  # Use a known file for testing
+    for domain in domains:
+        try:
+            url = f'https://{domain}{test_path}'
+            resp = requests.head(url, timeout=3)
+            if resp.status_code == 200:
+                return domain
+        except Exception:
+            continue
+    return domains[-1]  # Default to last fallback if all else fails
 
 # --- Real build commands ---
 def build_windows(app_name):
@@ -165,13 +184,14 @@ def verify_download_link(url):
 
 def update_download_links():
     links = {}
+    working_domain = get_best_working_domain()  # New function: returns primary, fallback, or Freenom domain
     for device in DEVICE_TYPES:
         app_dir = os.path.join(APPS_DIR, device)
         for app_name in APP_NAMES:
             ext = EXTENSIONS[device]
             app_path = os.path.join(app_dir, f'{app_name}{ext}')
             if os.path.exists(app_path):
-                url = f'https://downloads.qmoi.app/{app_name}/{device}{ext}'
+                url = f'https://{working_domain}/{app_name}/{device}{ext}'
                 if verify_download_link(url):
                     links[f'{app_name}_{device}'] = url
                 else:
@@ -180,9 +200,14 @@ def update_download_links():
                     auto_fix_and_retry(device, app_name)
                     subprocess.run(['python', 'scripts/qmoi_notification_manager.py', f'Download link failed for {url}', 'gmail', 'whatsapp', 'slack', 'telegram', 'discord'])
     log_activity('Updated app download links', {'links': links})
+    update_all_documentation_with_links(links)  # New function: updates all .md files, QMOIAPPS.md, Qstore.md, QI_download_component.html, etc.
+    notify_master_admin_of_link_update(links)   # New function: sends notification
     return links
 
-def main():
+def main(update_links_only=False):
+    if update_links_only:
+        update_download_links()
+        return
     for device in DEVICE_TYPES:
         for app_name in APP_NAMES:
             if device == 'windows':
@@ -210,5 +235,24 @@ def main():
     except Exception as e:
         log_activity('Failed to upload binaries to GitHub Releases', {'error': str(e)})
 
+def watch_and_update_links():
+    last_links = None
+    while True:
+        links = update_download_links()
+        if links != last_links:
+            update_all_documentation_with_links(links)
+            notify_master_admin_of_link_update(links)
+            last_links = links
+        time.sleep(60)  # Check every 60 seconds (configurable)
+
 if __name__ == "__main__":
-    main() 
+    update_links_only = '--update-links-only' in sys.argv
+    main(update_links_only=update_links_only)
+    if not update_links_only:
+        # Start real-time watcher in a background thread
+        watcher_thread = threading.Thread(target=watch_and_update_links, daemon=True)
+        watcher_thread.start()
+        print('Real-time download link updater is running in the background.')
+        # Keep the main thread alive
+        while True:
+            time.sleep(3600) 

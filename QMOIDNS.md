@@ -41,3 +41,10 @@ QMOI now features a fully automated DNS management system for all download and s
 
 ---
 *QMOI DNS automation now includes full fallback and self-healing using Freenom and Cloudflare for maximum reliability.* 
+
+## Multi-Provider & Self-Hosted Domain Automation
+- **Multi-Provider Support:** QMOI can create, register, and manage domains from any provider (Freenom, Namecheap, GoDaddy, Cloudflare, AWS, self-hosted, etc.) using browser automation or API.
+- **Self-Registered Domains:** QMOI can create and manage its own domains and DNS infrastructure for maximum control and privacy.
+- **Platform Integration:** QMOI can use any platform for domain management and download links, and can switch between them automatically.
+- **Full Automation:** All logic is fully automated and requires no manual intervention.
+- **Audit & Logging:** All domain actions are logged and visible to master/admin in QCity. 

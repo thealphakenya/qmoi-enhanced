@@ -244,6 +244,8 @@ Qmoi_downloaded_apps/<platform>/v<version>/
 - **Auto-Updating Documentation:** All .md files are auto-updated after every automation cycle, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QMOI now targets a higher, dynamically increasing minimum daily revenue, using advanced strategies and statistics for all money-making features.
 - **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
+- **Multi-Platform Domain Automation:** QMOI can automatically create, register, and use domains from any provider (Freenom, Namecheap, GoDaddy, Cloudflare, AWS, self-hosted, etc.), and can switch between them for downloads and services. See QMOIDOMAINS.md and QMOIDNS.md for details.
+- **Multi-Channel Link Sharing:** QMOI can send app/project files and download links via WhatsApp, Telegram, email, and any other platform/channel, fully automated.
 
 ## Latest Enhancements
 

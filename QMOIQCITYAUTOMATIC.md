@@ -90,6 +90,7 @@ The QMOI QCity Automatic System is a comprehensive automation platform that prov
 - **Enhanced QCity Runners & Devices:** All QCity automation runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every QCity automation update, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QMOI QCity Automatic now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
+- **Multi-Provider Domain Automation:** QMOI QCity Automatic can create, register, and use domains from any provider (Freenom, Namecheap, GoDaddy, Cloudflare, AWS, self-hosted, etc.), and can switch between them automatically for downloads and services. See QMOIDOMAINS.md and QMOIDNS.md for details.
 
 ---
 ## 🛠️ Troubleshooting: No Billing Account, Quota, or Hosted Runner Issues

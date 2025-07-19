@@ -35,3 +35,4 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 - **Enhanced QCity Runners & Devices:** All app runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every app update or release, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QMOI Apps now contribute to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 
+- **Download Links:** All download links are always up to date, can use any provider/platform, and are managed by QMOI's multi-platform domain automation. See QMOIDOMAINS.md and QMOIDNS.md for details. 
