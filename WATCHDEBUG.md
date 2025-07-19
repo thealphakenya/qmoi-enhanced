@@ -61,5 +61,12 @@ WATCHDEBUG.md provides a comprehensive monitoring and debugging system that watc
 - This script is always running in Colab, DagsHub, or cloud environments, even if cancelled or the device is offline. It auto-restarts in the cloud.
 - See also: CMDCOMMANDS.md, QMOIQCITYAUTOMATIC.md, QCITYRUNNERSENGINE.md for command and automation details.
 
+## Download Autofix & Customer Care (2025+)
+- All download links are autotested and auto-fixed by QCity runners.
+- Download UI and scripts feature robust error handling, retry logic, and real-time status.
+- Users can report issues directly from the download UI; all issues are logged and prioritized for immediate fix.
+- Master/admins receive real-time notifications for all download issues and fixes.
+- See [ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md) and [DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for all links and troubleshooting.
+
 ---
 *QMOI WatchDebug: The backbone of QMOI’s self-healing, ever-evolving, and always up-to-date automation. All automation, monitoring, and error fixing are always up to date and visible in the dashboard.* 

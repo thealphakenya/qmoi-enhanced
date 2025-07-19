@@ -46,9 +46,71 @@ QMOI is a fully automated, always-on, cross-platform automation engine. It runs 
 - **Dashboard shows live health checks, autotest results, and platform status. Master-only controls for logs and advanced features.**
 
 ## 📦 Download
-- Use the QI/first page download button for the correct installer for your device (now named **qmoi ai**)
-- **Download is only possible if all health checks and autotests pass.**
-- After all fixes, you’ll receive a Gmail and multi-channel notification with a download link for the full app (all devices)
+
+You can always get the latest QMOI AI apps for every platform using our automated scripts or direct download links.
+
+### Unified Auto-Detect Download Script
+
+Run the unified script to auto-detect your platform and download the correct binary:
+
+```bash
+python downloadqmoiai.py
+```
+
+- The script will detect your OS and download the correct app to:
+  - `Qmoi_downloaded_apps/<platform>/latest/`
+  - `Qmoi_downloaded_apps/<platform>/v<version>/`
+- You can also specify a platform manually:
+  - `python downloadqmoiai.py windows`
+  - `python downloadqmoiai.py mac`
+  - `python downloadqmoiai.py linux` (choose deb or appimage)
+  - etc.
+
+### Per-Platform Download Scripts
+
+You can also use the dedicated script for your platform:
+
+- `python downloadqmoiaiapk.py` (Android)
+- `python downloadqmoiaiexe.py` (Windows)
+- `python downloadqmoiaidmg.py` (Mac)
+- `python downloadqmoiaideb.py` (Linux DEB)
+- `python downloadqmoiaiappimage.py` (Linux AppImage)
+- `python downloadqmoiaiipa.py` (iOS)
+- `python downloadqmoiaismarttvapk.py` (Smart TV)
+- `python downloadqmoiaiimg.py` (Raspberry Pi)
+- `python downloadqmoiaizip.py` (Chromebook)
+
+All downloads are saved in:
+```
+Qmoi_downloaded_apps/<platform>/latest/
+Qmoi_downloaded_apps/<platform>/v<version>/
+```
+
+### Direct Download Links (QMOI Official)
+
+| App Name   | Platform      | Direct Download Link                                      | Latest Version | Status   |
+|-----------|---------------|----------------------------------------------------------|---------------|----------|
+| QMOI AI   | Windows       | https://downloads.qmoi.app/qmoi/windows.exe              | v1.2.3        | ✅       |
+| QMOI AI   | Mac           | https://downloads.qmoi.app/qmoi/mac.dmg                  | v1.2.3        | ✅       |
+| QMOI AI   | Linux (DEB)   | https://downloads.qmoi.app/qmoi/linux.deb                | v1.2.3        | ✅       |
+| QMOI AI   | Linux (AppImage) | https://downloads.qmoi.app/qmoi/linux.appimage         | v1.2.3        | ✅       |
+| QMOI AI   | Android       | https://downloads.qmoi.app/qmoi/android.apk              | v1.2.3        | ✅       |
+| QMOI AI   | iOS           | https://downloads.qmoi.app/qmoi/ios.ipa                  | v1.2.3        | ✅       |
+| QMOI AI   | Smart TV      | https://downloads.qmoi.app/qmoi/smarttv.apk              | v1.2.3        | ✅       |
+| QMOI AI   | Raspberry Pi  | https://downloads.qmoi.app/qmoi/raspberrypi.img          | v1.2.3        | ✅       |
+| QMOI AI   | Chromebook    | https://downloads.qmoi.app/qmoi/chromebook.zip           | v1.2.3        | ✅       |
+| QCity     | Windows       | https://downloads.qmoi.app/qcity/windows.exe             | v2.0.1        | ✅       |
+| QCity     | Mac           | https://downloads.qmoi.app/qcity/mac.dmg                 | v2.0.1        | ✅       |
+| QCity     | Linux         | https://downloads.qmoi.app/qcity/linux.appimage          | v2.0.1        | ✅       |
+| QCity     | Android       | https://downloads.qmoi.app/qcity/android.apk             | v2.0.1        | ✅       |
+| QCity     | iOS           | https://downloads.qmoi.app/qcity/ios.ipa                 | v2.0.1        | ✅       |
+| Qshare    | All           | https://downloads.qmoi.app/qshare/qshare-universal.apk   | v1.0.0        | ✅       |
+| Yap       | All           | https://downloads.qmoi.app/yap/yap-universal.apk         | v1.1.0        | ✅       |
+| Qstore    | All           | https://downloads.qmoi.app/qstore/qstore-universal.apk   | v1.0.0        | ✅       |
+
+> **Note:** For all releases and versions, see [ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md)
+
+**All links are autotested and always up-to-date, managed by QCity runners.**
 
 ## 🔄 Build Automation
 - Builds are triggered automatically on code push (see CI/CD), by user request (API), or on a schedule
@@ -97,9 +159,30 @@ See `QCITYRUNNERSENGINE.md` for full details.
 
 You can always get the latest QMOI AI apps for every platform using our automated scripts or direct download links.
 
-### Automated Download Scripts
+## Download QMOI AI Apps (All Platforms)
 
-Run the appropriate script for your platform (see [DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for full details):
+You can always get the latest QMOI AI apps for every platform using our automated scripts or direct download links.
+
+### Unified Auto-Detect Download Script
+
+Run the unified script to auto-detect your platform and download the correct binary:
+
+```bash
+python downloadqmoiai.py
+```
+
+- The script will detect your OS and download the correct app to:
+  - `Qmoi_downloaded_apps/<platform>/latest/`
+  - `Qmoi_downloaded_apps/<platform>/v<version>/`
+- You can also specify a platform manually:
+  - `python downloadqmoiai.py windows`
+  - `python downloadqmoiai.py mac`
+  - `python downloadqmoiai.py linux` (choose deb or appimage)
+  - etc.
+
+### Per-Platform Download Scripts
+
+You can also use the dedicated script for your platform:
 
 - `python downloadqmoiaiapk.py` (Android)
 - `python downloadqmoiaiexe.py` (Windows)
@@ -114,6 +197,7 @@ Run the appropriate script for your platform (see [DOWNLOADQMOIAIAPPALLDEVICES.m
 All downloads are saved in:
 ```
 Qmoi_downloaded_apps/<platform>/latest/
+Qmoi_downloaded_apps/<platform>/v<version>/
 ```
 
 ### Direct Download Links (GitHub Releases)
@@ -131,3 +215,22 @@ Qmoi_downloaded_apps/<platform>/latest/
 | Chromebook   | https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.zip |
 
 > **Note:** These links always point to the latest release. For older versions, browse the [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases).
+
+## 🛡️ Download Reliability, Autofix, and Customer Care
+
+- **All download links are autotested and auto-fixed by QCity runners.**
+- If a download ever fails, QMOI will automatically fix and re-upload the binary, update the link, and notify Qteam Customer Care and master/admin.
+- Download UI and scripts feature robust error handling, retry logic, and real-time status ("Autofixing...", "Retrying...", "Fixed!").
+- Users can report issues directly from the download UI; all issues are logged and prioritized for immediate fix.
+- **Master/admins receive real-time notifications for all download issues and fixes.**
+- For persistent issues, contact Qteam Customer Care via the app or email.
+
+## 📚 More Download Info & Links
+- See [ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md) for all app releases and versions.
+- See [DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for all device/platform download instructions.
+
+## 🆘 Troubleshooting & Help
+- If you encounter a download issue:
+  1. Retry the download (the system may already be autofixing it).
+  2. Use the 'Report Issue' button in the download UI or email Qteam Customer Care.
+  3. All issues are logged in real time and prioritized for immediate fix.
