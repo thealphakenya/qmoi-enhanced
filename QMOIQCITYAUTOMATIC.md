@@ -45,6 +45,7 @@ The QMOI QCity Automatic System is a comprehensive automation platform that prov
 ### DNS & Download Link Auto-Resolution
 - **DNS Auto-Check & Fix:** QMOI QCity Automatic now automatically checks and fixes DNS for all download links (downloads.qmoi.app). If DNS fails, it triggers an auto-fix routine, notifies master/admin, and logs all actions.
 - **Zero-Rated & Fallback Links:** If DNS cannot be fixed immediately, QMOI QCity Automatic auto-switches to zero-rated or fallback CDN links (see ZERORATEDQMOI.md) to ensure downloads always work.
+- **Freenom Fallback:** If DNS cannot be fixed, QMOI QCity Automatic auto-registers a free fallback domain via Freenom, updates all download links, and ensures downloads remain available. All actions are logged and master/admin is notified.
 - **Dashboard Integration:** Master can view DNS/link health and trigger manual checks from the dashboard.
 - **Full Automation:** All DNS and link health checks, fixes, and fallback logic are fully automated and require no manual intervention.
 

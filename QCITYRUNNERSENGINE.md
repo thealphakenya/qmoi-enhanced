@@ -69,6 +69,7 @@ QCity Runners Engine is QMOI’s universal, self-hosted runner system for CI/CD,
 
 ### DNS & Download Link Auto-Resolution
 - **DNS Auto-Check & Fix:** QCity Runners Engine now automatically checks and fixes DNS for all download links (downloads.qmoi.app). If DNS fails, it triggers an auto-fix routine, notifies master/admin, and logs all actions.
+- **Freenom Fallback:** If DNS cannot be fixed, QCity Runners Engine auto-registers a free fallback domain via Freenom, updates all download links, and ensures downloads remain available. All actions are logged and master/admin is notified.
 - **Zero-Rated & Fallback Links:** If DNS cannot be fixed immediately, QCity Runners Engine auto-switches to zero-rated or fallback CDN links (see ZERORATEDQMOI.md) to ensure downloads always work.
 - **Dashboard Integration:** Master can view DNS/link health and trigger manual checks from the dashboard.
 - **Full Automation:** All DNS and link health checks, fixes, and fallback logic are fully automated and require no manual intervention.

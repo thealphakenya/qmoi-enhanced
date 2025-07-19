@@ -16,6 +16,7 @@ QMOI Browser is a fully automated, AI-powered browser used by QMOI to autotest, 
 ### DNS & Link Auto-Resolution Enhancements
 - **DNS Auto-Check & Fix:** QMOI Browser now automatically checks DNS for all download links (e.g., downloads.qmoi.app). If DNS is misconfigured or fails, QMOI triggers an auto-fix routine to set up or repair DNS records, notifies master/admin, and logs all actions.
 - **Zero-Rated & Fallback Links:** If DNS cannot be fixed immediately, QMOI Browser auto-switches to zero-rated or fallback CDN links (see ZERORATEDQMOI.md) to ensure downloads always work, even in restricted or offline environments.
+- **Freenom Fallback:** If DNS cannot be fixed, QMOI Browser auto-registers a free fallback domain via Freenom, updates all download links, and ensures downloads remain available. All actions are logged and master/admin is notified.
 - **Master/Admin Controls:** Master can view DNS/link health, trigger manual DNS checks, and review logs in the QCity dashboard.
 - **Full Automation:** All DNS and link health checks, fixes, and fallback logic are fully automated and require no manual intervention.
 

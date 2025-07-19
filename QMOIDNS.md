@@ -22,5 +22,22 @@ QMOI now features a fully automated DNS management system for all download and s
 - **.gitlab-ci.yml:** DNS health is checked and auto-fixed in every pipeline run before any download or deployment.
 - **QMOIBROWSER.md, QCITYRUNNERSENGINE.md, QMOIQCITYAUTOMATIC.md, ZERORATEDQMOI.md:** All systems use QMOI DNS automation for link health and fallback.
 
+## Freenom Auto-Domain Creation & Fallback
+- **Auto-Create Freenom Account:** QMOI can automatically create a Freenom account for domain management.
+- **Register Free Fallback Domains:** If the primary domain fails, QMOI auto-registers a free fallback domain (e.g., .tk, .ml, .ga, .cf, .gq) using browser automation (Selenium) and assigns it to all download/service links.
+- **DNS Record Management:** QMOI can set A/CNAME records for new domains using Cloudflare API (if nameservers are pointed to Cloudflare) or via Freenom's UI automation.
+- **Auto-Switch Download Links:** All download links and features are auto-updated to use the new working domain if the primary fails.
+- **Domain Monitoring & Renewal:** QMOI monitors domain status and auto-renews or replaces domains as needed.
+- **Logging & Notification:** All actions are logged and master/admin is notified of any domain switch or DNS change.
+- **Full Automation:** All logic is fully automated and requires no manual intervention.
+
+### Example Flow
+1. Detect DNS failure for downloads.qmoi.app
+2. Check Freenom for available fallback domain (e.g., downloads-qmoi.tk)
+3. Auto-register domain and set DNS records (A/CNAME)
+4. Update all download links to use new domain
+5. Notify master/admin and log all actions
+6. Monitor and auto-renew domain as needed
+
 ---
-*This file is managed by QMOI and documents all DNS automation and enhancement logic.* 
+*QMOI DNS automation now includes full fallback and self-healing using Freenom and Cloudflare for maximum reliability.* 
