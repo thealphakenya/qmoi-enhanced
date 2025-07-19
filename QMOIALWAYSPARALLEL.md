@@ -72,6 +72,19 @@
 - Master-only controls: Only master/admin can view, manage, or override parallel jobs and scaling
 - All parallel actions are logged, visualized, and used to improve future automation
 
+## 🌐 Internet-Referenced Parallel Auto-Development
+- QMOI continuously references the internet, open-source projects, and related apps to plan and implement enhancements for all QMOI apps in parallel.
+- All auto-development and enhancement jobs are run in parallel, with real-time status and logs visualized in QCity (master-only).
+- QMOI can auto-create new apps, features, and fixes based on internet research and master/Qteam suggestions.
+
+## 💳 Billing & Error Autofix (GitHub/GitHub Actions)
+- QMOI monitors for billing issues and errors in GitHub/GitHub Actions and auto-fixes by switching to self-hosted runners, alternative platforms, or free-tier strategies.
+- All fixes and actions are logged, notified, and visualized for master/admin.
+
+## 🏷️ Versioning & Release Management
+- QMOI manages all app versions and releases in parallel, ensuring every device and platform always has the latest, best-performing version.
+- All versioning and release actions are visualized in QCity for master-only access.
+
 See also: QMOIMEMORY.md, QMOIAICORE.md
 
 ---

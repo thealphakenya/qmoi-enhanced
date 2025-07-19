@@ -43,6 +43,17 @@ QMOI operates as a fully autonomous AI developer and notification agent across a
 
 ---
 
+## QMOI Parallel Auto-Development & Enhancement
+- QMOI auto-develops and enhances all apps in parallel, referencing the internet, open-source projects, and related apps for planning and implementation.
+- All development, enhancement, and versioning actions are managed in parallel and visualized in QCity (master-only).
+- QMOI can auto-create new apps, features, and fixes based on internet research and master/Qteam suggestions.
+
+## Billing & Error Autofix (GitHub/GitHub Actions)
+- QMOI monitors for billing issues and errors in GitHub/GitHub Actions and auto-fixes by switching to self-hosted runners, alternative platforms, or free-tier strategies.
+- All fixes and actions are logged, notified, and visualized for master/admin.
+
+---
+
 ## References
 - [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md)
 - [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)

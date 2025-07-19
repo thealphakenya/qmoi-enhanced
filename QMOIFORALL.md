@@ -227,6 +227,21 @@ QMOI for All is a comprehensive accessibility system designed to make all device
 - Testing participation
 - Documentation contributions
 
+## QMOI as Default App for Everything
+- QMOI can be set as the default browser, player, file manager, and more on any device.
+- QMOI auto-detects and offers to become the default for supported functions during install.
+- All QMOI apps (including Qbrowser) are optimized for default use and seamless integration.
+
+## QMOI Billing & Error Autofix (GitHub/GitHub Actions)
+- QMOI continuously monitors for billing issues and errors in GitHub and GitHub Actions.
+- If a billing or quota issue is detected, QMOI auto-fixes by switching to self-hosted runners, alternative platforms, or free-tier strategies.
+- All fixes are logged, notified, and visualized for master/admin.
+
+## QMOI Auto-Development & Internet Referencing
+- QMOI auto-develops and enhances all apps by referencing the internet, open-source projects, and related apps.
+- QMOI plans enhancements, fetches best practices, and implements improvements in parallel for all apps.
+- All actions are logged and can be visualized in QCity (master-only).
+
 ---
 
 *QMOI for All - Making technology accessible to everyone, everywhere.*
@@ -235,7 +250,7 @@ QMOI is for everyone and every device. All features and apps are listed below an
 
 | Icon | Name         | Version | Description                | Features | Screenshots | Ratings | Comments | News/Updates | Deployments | Downloads | Earnings | Future Enhancements |
 |------|--------------|---------|----------------------------|----------|-------------|---------|----------|--------------|-------------|-----------|----------|---------------------|
-| 🌐   | QBrowser     | 1.2.0   | Fast, secure web browser   | Tabs, privacy, extensions | [img] | 4.8/5   | 120+      | v1.2.0: New UI | 5         | 10,000    | $1,200   | AI search, voice    |
+| 🌐   | QBrowser     | 1.2.0   | Fast, secure web browser   | Tabs, privacy, extensions | [img] | 4.8/5   | 120+      | v1.2.0: New UI | 5         | 10,000    | $1,200   | AI search, voice    | [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) [Download iOS](https://downloads.qmoi.app/qbrowser/ios.ipa) [Download Linux](https://downloads.qmoi.app/qbrowser/linux.appimage)
 | 🗂️   | QFileManager | 2.0.1   | Advanced file management   | Drag-drop, cloud sync     | [img] | 4.7/5   | 80+       | v2.0.1: Cloud  | 3         | 8,000     | $900     | Auto-organize       |
 | 🕰️   | QClock       | 1.1.0   | Analog/digital clock, alarms, timers | Alarms, timer, analog/digital, Q-clock window | [img] | 4.9/5   | 200+      | v1.1.0: Analog UI | 7         | 12,000    | $1,500   | World clock, AI alarm|
 | 🗺️   | QMap         | 3.0.0   | Real-time, global mapping  | GPS, real-time, accuracy | [img] | 4.8/5   | 150+      | v3.0.0: Realtime| 10        | 20,000    | $2,000   | AR, live traffic    |
