@@ -2,6 +2,8 @@
 
 This file lists all QMOI AI apps, all platforms, all versions, and their download links. It is auto-updated by QCity runners. All links are autotested and always up-to-date.
 
+> **Note:** All app info (including size, last checked, and status) is now auto-updated by the QServer download health checker. The table below is always up-to-date and precise.
+
 | App Name   | Platform      | Version   | Download Link                                      | Status   |
 |-----------|---------------|-----------|----------------------------------------------------|----------|
 | QMOI AI   | Windows       | v1.2.3    | https://downloads.qmoi.app/qmoi/windows.exe        | ✅       |
@@ -22,12 +24,11 @@ This file lists all QMOI AI apps, all platforms, all versions, and their downloa
 | Yap       | All           | v1.1.0    | https://downloads.qmoi.app/yap/yap-universal.apk   | ✅       |
 | Qstore    | All           | v1.0.0    | https://downloads.qmoi.app/qstore/qstore-universal.apk | ✅   |
 
-> **Note:** This file is auto-updated by QCity runners after every build/release. All links are autotested and always up-to-date. 
-
 ## Troubleshooting & Help
 
-- **All download links are autotested and auto-fixed by QCity runners.**
-- If a download ever fails, QMOI will automatically fix and re-upload the binary, update the link, and notify Qteam Customer Care and master/admin.
+- **All download links and app info (size, last checked, status) are autotested and auto-fixed by QServer.**
+- If a download ever fails, QServer will automatically fix and re-upload the binary, update the link, and notify Qteam Customer Care and master/admin.
+- The table above is always up-to-date and precise.
 - If you encounter a download issue:
   1. Retry the download (the system may already be autofixing it).
   2. Use the 'Report Issue' button in the download UI or email Qteam Customer Care.

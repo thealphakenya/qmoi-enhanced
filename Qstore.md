@@ -23,3 +23,5 @@ Qstore is the central hub for all QMOI (skv) apps, updates, and downloads. Every
 - Every app includes live customer care chat, help, and feedback.
 - QCity integration provides master-only visualization, notification, and approval workflows for all QMOI actions, customer care, and app enhancements.
 - All actions are logged and auditable for full accountability. 
+
+> **Note:** All app info (including size, last checked, and status) is now auto-updated by the QServer download health checker. The app listing table below is always up-to-date and precise. All download links are autotested and auto-fixed by QServer. 

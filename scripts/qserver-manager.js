@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
 
 class QServerManager {
   constructor() {
@@ -291,6 +292,18 @@ class QServerManager {
     console.log('Advanced auto-fix completed in QServer with AI optimization');
   }
 
+  async testAndFixDownloads() {
+    try {
+      console.log('Running QServer download link health checker...');
+      const output = execSync('python scripts/qserver-download-tester.py', { encoding: 'utf-8' });
+      this.logToQServer('test-downloads', { output });
+      return { success: true, output };
+    } catch (e) {
+      this.logToQServer('test-downloads-error', { error: e.toString() });
+      return { success: false, error: e.toString() };
+    }
+  }
+
   logToQServer(command, result) {
     const logEntry = {
       timestamp: new Date().toISOString(),
@@ -366,6 +379,8 @@ class QServerManager {
         return await this.status();
       case 'auto-fix':
         return await this.autoFix();
+      case 'test-downloads':
+        return await this.testAndFixDownloads();
       default:
         console.log(`Unknown command: ${command}`);
         console.log('Available commands: start, stop, restart, deploy, scale, monitor, optimize, health-check, backup, restore, security-audit, performance-tune, status, auto-fix');

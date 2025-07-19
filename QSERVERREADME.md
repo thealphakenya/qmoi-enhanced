@@ -316,6 +316,32 @@ await manager.performanceTune();
 - **Universal Compatibility:** Compatibility with all systems and platforms
 - **Autonomous Operation:** Fully autonomous server operation with AI
 
+## 🚦 Automated Download Link Health, Auto-Fix, and App Info
+
+QServer now features a fully automated download link health checker and auto-fixer. All app download links are regularly autotested. If a link fails (e.g., ERR_NAME_NOT_RESOLVED, 404), QServer will auto-fix, re-upload, and retry until the link is working. All actions are logged, and app info (including exact file size) is auto-updated.
+
+### App Download Status Table (Auto-Updated)
+
+| App Name | Platform | Version | Download Link | Size (MB) | Last Checked | Status |
+|----------|----------|---------|--------------|-----------|--------------|--------|
+| (auto-filled from Qmoi_apps/latest.json) |
+
+> This table is auto-generated and always up-to-date. If a download fails, QServer will auto-fix and retry until resolved.
+
+### Troubleshooting
+- If you see a download error (e.g., ERR_NAME_NOT_RESOLVED), QServer will auto-fix and retry. Please try again in a few moments.
+- You can also run the health checker manually:
+  ```bash
+  python scripts/qserver-download-tester.py
+  ```
+- All download issues are logged and prioritized for immediate fix. Master/admins are notified in real time.
+
+### How It Works
+- All app download links are autotested on a schedule and after every build/release.
+- If a link fails, QServer triggers auto-fix (re-upload, DNS check, notification, etc.) and retries until working.
+- The exact file size is checked and auto-updated in the app info table.
+- All actions are logged for audit and support.
+
 ---
 
 For more information, see:

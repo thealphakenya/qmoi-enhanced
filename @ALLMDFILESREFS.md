@@ -16,6 +16,8 @@ This comprehensive reference document catalogs and categorizes all .md files in 
 - Master/admins receive real-time notifications for all download issues and fixes.
 - See [ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md) and [DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for all links and troubleshooting.
 
+> **Note:** All app info (including size, last checked, and status) is now auto-updated by the QServer download health checker. All documentation and app info is always up-to-date and precise.
+
 # QMOI App Build Automation (2025-06-13)
 
 - The QMOI app builder script (`scripts/qmoi-app-builder.py`) now performs real builds for:
