@@ -301,6 +301,15 @@ if qmoi_system:
 - **Resource Optimization**: Advanced resource allocation
 - **Scalability Enhancement**: Enhanced scalability
 
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QVS can now autoclone/automake-new features, devices, and platforms from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QVS uses the QMOI Browser to autotest and fix all QVS-related links and features, ensuring all enhancements are always working and up to date.
+- **Always-On Cloud Operation:** QVS is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All QVS runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every QVS update, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QVS now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
+
 ---
 
 **Enhanced QVS - Powering QMOI's Revenue Generation & Automation**

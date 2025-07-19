@@ -640,3 +640,12 @@ QCity is the primary cloud device for QMOI, handling all heavy computation, stor
 ---
 
 *For error fixing, see scripts/qmoi-universal-error-handler.js. For registry, see scripts/qmoi-registry-manager.js. For optimization, see AUTOOPTIMIZEALPHAQMOIENGINE.md.* 
+
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QCity can now autoclone/automake-new devices, platforms, and features from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QCity uses the QMOI Browser to autotest and fix all QCity-related links and features, ensuring all enhancements are always working and up to date.
+- **Always-On Cloud Operation:** QCity is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All QCity runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every QCity update, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QCity now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 

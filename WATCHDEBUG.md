@@ -68,5 +68,15 @@ WATCHDEBUG.md provides a comprehensive monitoring and debugging system that watc
 - Master/admins receive real-time notifications for all download issues and fixes.
 - See [ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md) and [DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for all links and troubleshooting.
 
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** WatchDebug now monitors and logs all autoclone/automake-new actions, with master-only controls and audit logging in QCity.
+- **QMOIBROWSER.md Integration:** WatchDebug uses the QMOI Browser to autotest and fix all links and web features, logging all issues and fixes.
+- **Always-On Cloud Operation:** WatchDebug is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every monitoring cycle, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** WatchDebug now tracks and reports a higher, dynamically increasing minimum daily revenue, with advanced statistics for all money-making features.
+- **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
+
 ---
 *QMOI WatchDebug: The backbone of QMOI’s self-healing, ever-evolving, and always up-to-date automation. All automation, monitoring, and error fixing are always up to date and visible in the dashboard.* 

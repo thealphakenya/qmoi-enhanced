@@ -150,6 +150,15 @@ The QMOI Friendship Enhancement System integrates seamlessly with all existing Q
 - **Financial Progress Display**: Real-time financial goal tracking
 - **Family & Social Integration**: Family and social relationship status
 
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI Friendship System can now autoclone/automake-new features, devices, and platforms from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI Friendship System uses the QMOI Browser to autotest and fix all friendship-related links and features, ensuring all integrations are always working and up to date.
+- **Always-On Cloud Operation:** QMOI Friendship System is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All friendship system runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every friendship system update, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI Friendship System now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
+
 ## Implementation Strategy
 
 ### Phase 1: Core Integration

@@ -1,0 +1,59 @@
+[2025-07-17 05:58:05] Built qmoi ai for windows | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-17 05:58:05] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\windows\qmoi ai.exe | {'result': 'success'}
+[2025-07-17 05:58:05] Built qmoi ai for mac | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-17 05:58:05] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\mac\qmoi ai.dmg | {'result': 'success'}
+[2025-07-17 05:58:05] Built qmoi ai for linux | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-17 05:58:05] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\linux\qmoi ai.AppImage | {'result': 'success'}
+[2025-07-17 05:58:05] Built qmoi ai for android | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-17 05:58:05] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\android\qmoi ai.apk | {'result': 'success'}
+[2025-07-17 05:58:05] Built qmoi ai for ios | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-17 05:58:05] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\ios\qmoi ai.ipa | {'result': 'success'}
+[2025-07-17 05:58:05] Built qmoi ai for qcity | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-17 05:58:05] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\qcity\qmoi ai.zip | {'result': 'success'}
+[2025-07-17 05:58:05] Built qmoi ai for chromebook | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-17 05:58:05] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\chromebook\qmoi ai.deb | {'result': 'success'}
+[2025-07-17 05:58:05] Built qmoi ai for raspberrypi | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-17 05:58:05] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\raspberrypi\qmoi ai.img | {'result': 'success'}
+[2025-07-17 05:58:05] Built qmoi ai for smarttv | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-17 05:58:05] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\smarttv\qmoi ai.apk | {'result': 'success'}
+[2025-07-17 05:58:05] Updated app download links | {'links': {'qmoi ai_windows': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe', 'qmoi ai_mac': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg', 'qmoi ai_linux': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage', 'qmoi ai_android': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk', 'qmoi ai_ios': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa', 'qmoi ai_qcity': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip', 'qmoi ai_chromebook': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb', 'qmoi ai_raspberrypi': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img', 'qmoi ai_smarttv': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}}
+[2025-07-17 06:11:17] Built qmoi ai for windows | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-17 06:11:17] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\windows\qmoi ai.exe | {'result': 'success'}
+[2025-07-17 06:11:17] Built qmoi ai for mac | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-17 06:11:17] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\mac\qmoi ai.dmg | {'result': 'success'}
+[2025-07-17 06:11:17] Built qmoi ai for linux | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-17 06:11:17] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\linux\qmoi ai.AppImage | {'result': 'success'}
+[2025-07-17 06:11:17] Built qmoi ai for android | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-17 06:11:17] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\android\qmoi ai.apk | {'result': 'success'}
+[2025-07-17 06:11:17] Built qmoi ai for ios | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-17 06:11:17] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\ios\qmoi ai.ipa | {'result': 'success'}
+[2025-07-17 06:11:17] Built qmoi ai for qcity | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-17 06:11:17] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\qcity\qmoi ai.zip | {'result': 'success'}
+[2025-07-17 06:11:17] Built qmoi ai for chromebook | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-17 06:11:17] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\chromebook\qmoi ai.deb | {'result': 'success'}
+[2025-07-17 06:11:17] Built qmoi ai for raspberrypi | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-17 06:11:17] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\raspberrypi\qmoi ai.img | {'result': 'success'}
+[2025-07-17 06:11:17] Built qmoi ai for smarttv | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-17 06:11:17] Tested install for D:\applications\Alpha-Q-ai\Qmoi_apps\smarttv\qmoi ai.apk | {'result': 'success'}
+[2025-07-17 06:11:17] Updated app download links | {'links': {'qmoi ai_windows': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe', 'qmoi ai_mac': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg', 'qmoi ai_linux': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage', 'qmoi ai_android': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk', 'qmoi ai_ios': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa', 'qmoi ai_qcity': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip', 'qmoi ai_chromebook': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb', 'qmoi ai_raspberrypi': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img', 'qmoi ai_smarttv': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}}
+[2025-07-17 06:41:40] Running command: ['npm', 'run', 'build'] | {'cwd': 'D:\\applications\\Alpha-Q-ai'}
+[2025-07-17 06:59:46] Running command: ['npm', 'run', 'build'] | {'cwd': 'D:\\applications\\Alpha-Q-ai'}
+[2025-07-17 07:01:38] Running command: ['npm', 'run', 'build'] | {'cwd': 'D:\\applications\\Alpha-Q-ai'}
+{"timestamp": "2025-07-18T02:11:16.465724", "message": "Failed to fetch latest GitHub APK URL", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-18T02:44:55.499586", "message": "Failed to fetch latest GitHub APK URL", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-18T02:45:04.058835", "message": "Starting download for qmoi ai.exe", "context": {"url": "https://example.com/qmoi_ai.exe"}}
+{"timestamp": "2025-07-18T02:45:05.294694", "message": "Failed to download qmoi ai.exe", "context": {"error": "404 Client Error: Not Found for url: https://example.com/qmoi_ai.exe"}}
+{"timestamp": "2025-07-18T02:45:20.964485", "message": "Starting download for qmoi ai.dmg", "context": {"url": "https://example.com/qmoi_ai.dmg"}}
+{"timestamp": "2025-07-18T02:45:22.201910", "message": "Failed to download qmoi ai.dmg", "context": {"error": "404 Client Error: Not Found for url: https://example.com/qmoi_ai.dmg"}}
+{"timestamp": "2025-07-18T02:46:10.454482", "message": "Starting download for qmoi ai.deb", "context": {"url": "https://example.com/qmoi_ai.deb"}}
+{"timestamp": "2025-07-18T02:46:12.573769", "message": "Failed to download qmoi ai.deb", "context": {"error": "404 Client Error: Not Found for url: https://example.com/qmoi_ai.deb"}}
+{"timestamp": "2025-07-18T02:46:21.422873", "message": "Starting download for qmoi ai.AppImage", "context": {"url": "https://example.com/qmoi_ai.AppImage"}}
+{"timestamp": "2025-07-18T02:46:23.168876", "message": "Failed to download qmoi ai.AppImage", "context": {"error": "404 Client Error: Not Found for url: https://example.com/qmoi_ai.AppImage"}}
+{"timestamp": "2025-07-18T02:48:03.729200", "message": "Starting download for qmoi ai.ipa", "context": {"url": "https://example.com/qmoi_ai.ipa"}}
+{"timestamp": "2025-07-18T02:48:06.042602", "message": "Failed to download qmoi ai.ipa", "context": {"error": "404 Client Error: Not Found for url: https://example.com/qmoi_ai.ipa"}}
+{"timestamp": "2025-07-18T02:48:15.019393", "message": "Starting download for qmoi ai.apk", "context": {"url": "https://example.com/qmoi_ai_smarttv.apk"}}
+{"timestamp": "2025-07-18T02:48:16.223976", "message": "Failed to download qmoi ai.apk", "context": {"error": "404 Client Error: Not Found for url: https://example.com/qmoi_ai_smarttv.apk"}}
+{"timestamp": "2025-07-18T02:48:29.607496", "message": "Starting download for qmoi ai.img", "context": {"url": "https://example.com/qmoi_ai.img"}}
+{"timestamp": "2025-07-18T02:48:30.811084", "message": "Failed to download qmoi ai.img", "context": {"error": "404 Client Error: Not Found for url: https://example.com/qmoi_ai.img"}}
+{"timestamp": "2025-07-18T02:48:36.248426", "message": "Starting download for qmoi ai.zip", "context": {"url": "https://example.com/qmoi_ai.zip"}}
+{"timestamp": "2025-07-18T02:48:38.696053", "message": "Failed to download qmoi ai.zip", "context": {"error": "404 Client Error: Not Found for url: https://example.com/qmoi_ai.zip"}}

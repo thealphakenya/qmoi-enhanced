@@ -54,6 +54,18 @@ QMOI operates as a fully autonomous AI developer and notification agent across a
 
 ---
 
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI Developer Agent can now trigger autoclone/automake-new actions for any device, platform, or website from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI Developer Agent uses the QMOI Browser to autotest and fix all links and web features in every development and notification cycle.
+- **Always-On Cloud Operation:** QMOI Developer Agent is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every development cycle, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI Developer Agent now targets a higher, dynamically increasing minimum daily revenue, using advanced strategies and statistics for all money-making features.
+- **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
+
+---
+
 ## References
 - [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md)
 - [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)

@@ -1,4 +1,4 @@
-import fs from 'fs';
+// import fs from 'fs';
 import path from 'path';
 
 const PLUGIN_DIR = path.resolve(process.cwd(), 'plugins');

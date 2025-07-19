@@ -5,14 +5,14 @@ import subprocess
 from scripts.qmoi_activity_logger import log_activity
 
 def make_zip():
-    zip_name = 'QMOI-App.zip'
+    zip_name = 'qmoi-ai.zip'
     log_activity('Packaging app as zip installer.')
-    shutil.make_archive('QMOI-App', 'zip', '.')
+    shutil.make_archive('qmoi-ai', 'zip', '.')
     return zip_name
 
 def make_windows_exe():
     # Placeholder: Use PyInstaller or similar for real .exe
-    exe_name = 'QMOI-App-Setup.exe'
+    exe_name = 'qmoi-ai.exe'
     log_activity('Packaging app as Windows .exe installer (placeholder).')
     # Actual implementation would use PyInstaller or NSIS
     return exe_name

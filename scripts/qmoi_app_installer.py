@@ -93,20 +93,21 @@ class QMOIAppInstaller:
         
         logger.info(f"App icon created for {platform_type}")
     
-    def generate_icon_file(self, platform: str, size: int, colors: List[str], icon_dir: str):
-        """Generate icon file for specific platform and size"""
-        # This would generate actual icon files
-        # For now, create placeholder files
+    def generate_icon_file(self, platform: str, size, colors, icon_dir: str):
+        """Generate enhanced icon file for specific platform and size (modern look)"""
+        # This would generate actual icon files; here, create a placeholder with enhanced description
         icon_file = os.path.join(icon_dir, f"qmoi_icon_{size}.png")
         with open(icon_file, 'w') as f:
-            f.write(f"# QMOI Icon {size}x{size} for {platform}")
+            f.write(f"# QMOI AI Icon {size}x{size} for {platform}\n")
+            f.write("# Modern: gradient, rounded corners, subtle shadow\n")
+            f.write(f"# Colors: {colors}\n")
     
     def create_app_manifest(self, platform_type: str):
         """Create app manifest for platform"""
         logger.info(f"Creating app manifest for {platform_type}")
         
         manifest_config = {
-            "name": self.app_name,
+            "name": "qmoi ai",
             "version": self.app_version,
             "description": "QMOI AI - Your Personal AI Agent for Revenue Generation & Automation",
             "author": "QMOI Team",
@@ -328,29 +329,16 @@ echo "QMOI AI started successfully!"
         logger.info(f"Creating desktop shortcut for {platform_type}")
         
         if platform_type == "windows":
-            shortcut_content = f"""[InternetShortcut]
-URL=file:///{self.install_dir}/qmoi-ai.exe
-IconFile={self.install_dir}/icons/qmoi_icon_256.ico
-IconIndex=0
-"""
+            shortcut_content = f"""[InternetShortcut]\nURL=file:///{self.install_dir}/qmoi-ai.exe\nIconFile={self.install_dir}/icons/qmoi_icon_256.ico\nIconIndex=0\n"""
             desktop = os.path.expanduser("~/Desktop")
-            shortcut_file = os.path.join(desktop, "QMOI AI.url")
+            shortcut_file = os.path.join(desktop, "qmoi ai.url")
             with open(shortcut_file, 'w') as f:
                 f.write(shortcut_content)
         
         elif platform_type == "linux":
-            desktop_content = f"""[Desktop Entry]
-Version=1.0
-Type=Application
-Name=QMOI AI
-Comment=Your Personal AI Agent for Revenue Generation & Automation
-Exec={self.install_dir}/qmoi-ai
-Icon={self.install_dir}/icons/qmoi_icon_256.png
-Terminal=false
-Categories=Utility;AI;Productivity;
-"""
+            desktop_content = f"""[Desktop Entry]\nVersion=1.0\nType=Application\nName=qmoi ai\nComment=Your Personal AI Agent for Revenue Generation & Automation\nExec={self.install_dir}/qmoi-ai\nIcon={self.install_dir}/icons/qmoi_icon_256.png\nTerminal=false\nCategories=Utility;AI;Productivity;\n"""
             desktop = os.path.expanduser("~/Desktop")
-            shortcut_file = os.path.join(desktop, "QMOI AI.desktop")
+            shortcut_file = os.path.join(desktop, "qmoi ai.desktop")
             with open(shortcut_file, 'w') as f:
                 f.write(desktop_content)
             os.chmod(shortcut_file, 0o755)

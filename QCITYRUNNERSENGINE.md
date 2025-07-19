@@ -58,5 +58,20 @@ QCity Runners Engine is QMOI’s universal, self-hosted runner system for CI/CD,
 - Always running in Colab, DagsHub, or cloud, auto-restarting if cancelled or device is offline.
 - Integrates with dashboard for live runner health and build status.
 
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QCity Runners Engine can now autoclone/automake-new runners, devices, and platforms from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QCity Runners Engine uses the QMOI Browser to autotest and fix all runner-related links and features, ensuring all enhancements are always working and up to date.
+- **Always-On Cloud Operation:** QCity Runners Engine is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every runner engine update, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QCity Runners Engine now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
+
+### DNS & Download Link Auto-Resolution
+- **DNS Auto-Check & Fix:** QCity Runners Engine now automatically checks and fixes DNS for all download links (downloads.qmoi.app). If DNS fails, it triggers an auto-fix routine, notifies master/admin, and logs all actions.
+- **Zero-Rated & Fallback Links:** If DNS cannot be fixed immediately, QCity Runners Engine auto-switches to zero-rated or fallback CDN links (see ZERORATEDQMOI.md) to ensure downloads always work.
+- **Dashboard Integration:** Master can view DNS/link health and trigger manual checks from the dashboard.
+- **Full Automation:** All DNS and link health checks, fixes, and fallback logic are fully automated and require no manual intervention.
+
 ---
 *QCity Runners Engine: The backbone of QMOI’s self-developing, ever-evolving automation. All automation, monitoring, and error fixing are always up to date and visible in the dashboard.* 

@@ -403,3 +403,12 @@ See also: QMOIMEMORY.md, QMOIALWAYSPARALLEL.md, QMOIAICORE.md
 - All heavy animation, AI, and voice tasks for Q-Avatar are offloaded to QCity, Colab, and cloud environments. Local device only handles UI and lightweight rendering.
 - QMOI exclusively uses its own cloned GitLab and Gitpod platforms for all automation and deployment, never the actual ones. All avatar, voice, and animation features are cloud-optimized for performance and scalability.
 - See also: QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, CMDCOMMANDS.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details. 
+
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** Q-Avatar system can now autoclone/automake-new avatars, devices, and platforms from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** Q-Avatar system uses the QMOI Browser to autotest and fix all avatar-related links and features, ensuring all enhancements are always working and up to date.
+- **Always-On Cloud Operation:** Q-Avatar system is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All avatar runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every avatar system update, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** Q-Avatar system now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 

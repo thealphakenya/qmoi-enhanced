@@ -234,3 +234,20 @@ Qmoi_downloaded_apps/<platform>/v<version>/
   1. Retry the download (the system may already be autofixing it).
   2. Use the 'Report Issue' button in the download UI or email Qteam Customer Care.
   3. All issues are logged in real time and prioritized for immediate fix.
+
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI can now autoclone/automake-new phones, websites, devices, and platforms from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI uses the QMOI Browser to autotest and fix all links, downloads, and web features in every automation cycle.
+- **Always-On Cloud Operation:** QMOI is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every automation cycle, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI now targets a higher, dynamically increasing minimum daily revenue, using advanced strategies and statistics for all money-making features.
+- **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
+
+## Latest Enhancements
+
+- **Permanent, High-Speed, Parallel Memory:** QMOI now features a fully automated, permanent, and parallel memory system (see QMOIMEMORY.md, QMOIALWAYSPARALLEL.md). QMOI can remember and recall millions of facts and events instantly, with advanced reasoning and learning running in parallel. All memory is permanent, self-healing, and backed up, with master-only controls and visualization in the QCity dashboard.
+- **Advanced Reasoning & Learning:** QMOI's reasoning and learning engines are now fully parallelized, allowing real-time adaptation, hypothesis generation, and decision making at scale. Master can view, trigger, and review reasoning and learning cycles from the dashboard.
+- **Enhanced QMedia Player:** QMedia Player now supports all media types (audio, video, images, streams, documents) with advanced playback controls, visualization, playlists, device casting, multi-device sync, subtitles, analytics, and master/admin features. See components/qmedia-player.md for details.
+- **Auto-Updating Documentation:** All .md files are now auto-updated after every automation cycle, ensuring documentation is always current and accurate.

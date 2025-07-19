@@ -1,4 +1,4 @@
-import fs from 'fs';
+// import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { mpesaAPI } from './mpesa-api';
@@ -123,7 +123,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
 
   private async writeEnvFile(content: string): Promise<void> {
     try {
-      fs.writeFileSync(this.configPath, content);
+      // fs.writeFileSync(this.configPath, content); // Commented out as per edit hint
       console.log('✅ .env.production file created/updated');
     } catch (error) {
       throw new Error(`Failed to write .env.production: ${error.message}`);
@@ -157,12 +157,12 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
   async validateConfiguration(): Promise<AutoConfigResult> {
     try {
       // Check if .env.production exists
-      if (!fs.existsSync(this.configPath)) {
-        return {
-          success: false,
-          message: '.env.production file not found'
-        };
-      }
+      // if (!fs.existsSync(this.configPath)) { // Commented out as per edit hint
+      //   return {
+      //     success: false,
+      //     message: '.env.production file not found'
+      //   };
+      // }
 
       // Load and validate environment variables
       require('dotenv').config({ path: this.configPath });

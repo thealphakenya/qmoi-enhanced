@@ -95,3 +95,13 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
 - Instead, QMOI uses its own cloned, enhanced versions of these platforms, which are more advanced, secure, and optimized for QMOI's needs.
 - All cloning, mirroring, and automation is handled by QMOI's own infrastructure, ensuring full independence and control.
 - See INDEPENDENTQMOI.md for details on QMOI's independent operation and self-sustaining systems. 
+
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI Clone can now trigger autoclone/automake-new actions for any device, platform, or website from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI Clone uses the QMOI Browser to autotest and fix all links and web features in every clone/sync cycle.
+- **Always-On Cloud Operation:** QMOI Clone is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every clone/sync cycle, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI Clone now targets a higher, dynamically increasing minimum daily revenue, using advanced strategies and statistics for all money-making features.
+- **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin. 

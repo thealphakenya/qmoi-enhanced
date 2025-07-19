@@ -65,6 +65,14 @@
 - **Automated Learning:** QMOI continuously learns from all interactions and updates its knowledge base.
 - **Version Control Integration:** All documentation changes are tracked and synchronized across platforms.
 
+## Enhanced Memory, Reasoning, and Learning Integration
+
+- **QMOIMEMORY.md Integration:** QMOI Parallel Engine now features fully parallel, permanent, and high-speed memory, supporting instant recall and reasoning across millions of facts and events.
+- **Parallel Reasoning & Learning:** All reasoning and learning operations are parallelized, allowing QMOI to learn, adapt, and make decisions in real time, even at massive scale.
+- **Permanent Memory:** All memory and learning data is stored permanently, with full backup and redundancy.
+- **Memory & Learning UI:** QCity dashboard now includes advanced panels for memory visualization, parallel reasoning chains, learning cycles, and master-only controls for memory management and review.
+- **Master Controls:** Master can trigger, pause, or review parallel memory, reasoning, and learning cycles, and view detailed logs and outcomes.
+
 ## Elastic, Limitless Parallel Runners & Jobs
 - QMOI parallel engine enables elastic scaling: jobs are split and run in parallel across unlimited runners/devices/clouds
 - No artificial limits: any job, file, or process can be parallelized and offloaded as needed
@@ -84,6 +92,16 @@
 ## 🏷️ Versioning & Release Management
 - QMOI manages all app versions and releases in parallel, ensuring every device and platform always has the latest, best-performing version.
 - All versioning and release actions are visualized in QCity for master-only access.
+
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI Parallel Engine can now trigger autoclone/automake-new actions for any device, platform, or website from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI Parallel Engine uses the QMOI Browser to autotest and fix all links and web features in every parallel automation cycle.
+- **Always-On Cloud Operation:** QMOI Parallel Engine is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every parallel automation cycle, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI Parallel Engine now targets a higher, dynamically increasing minimum daily revenue, using advanced strategies and statistics for all money-making features.
+- **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
 
 See also: QMOIMEMORY.md, QMOIAICORE.md
 

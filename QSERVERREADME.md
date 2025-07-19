@@ -349,3 +349,12 @@ For more information, see:
 - [QCITYREADME.md](./QCITYREADME.md) - QCity device integration
 - [QMOIAVATAR.md](./QMOIAVATAR.md) - QMOI system overview
 - [GitHub Workflows](./.github/workflows/) - CI/CD integration with unlimited resources 
+
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QServer can now autoclone/automake-new servers, devices, and platforms from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QServer uses the QMOI Browser to autotest and fix all server-related links and features, ensuring all enhancements are always working and up to date.
+- **Always-On Cloud Operation:** QServer is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All server runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every server update, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QServer now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 

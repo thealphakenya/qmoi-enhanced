@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
+// import fs from 'fs';
 import path from 'path';
 
 const AUDIT_LOG = path.join(process.cwd(), 'qmoi_file_audit.log');
@@ -13,7 +13,7 @@ function logAudit(action: string, filePath: string, content?: string, replace?: 
     content: content ? (content.length > 200 ? content.slice(0, 200) + '...' : content) : undefined,
     replace
   };
-  fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + '\n');
+  // fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + '\n');
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {

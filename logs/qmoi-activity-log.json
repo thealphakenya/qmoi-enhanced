@@ -7,6 +7,28 @@
     {
       "timestamp": "2025-07-15T08:29:12.831626",
       "description": "Starting QMOI automation system (all clouds, QCity, error fixing, notifications, always-on)."
+    },
+    {
+      "timestamp": "2025-07-17T05:58:06.391287",
+      "description": "Sending Gmail notification: QMOI Notification",
+      "metadata": {
+        "message": "New/fixed QMOI and QCity apps are available for download!"
+      }
+    },
+    {
+      "timestamp": "2025-07-17T05:58:07.207022",
+      "description": "Gmail notification sent: QMOI Notification"
+    },
+    {
+      "timestamp": "2025-07-17T06:11:20.948500",
+      "description": "Sending Gmail notification: QMOI Notification",
+      "metadata": {
+        "message": "New/fixed QMOI and QCity apps are available for download!"
+      }
+    },
+    {
+      "timestamp": "2025-07-17T06:11:21.323976",
+      "description": "Gmail notification sent: QMOI Notification"
     }
   ]
 }

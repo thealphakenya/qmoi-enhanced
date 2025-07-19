@@ -694,6 +694,16 @@ interface QCityLoggingSystem {
 }
 ```
 
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** Auto-evolution can now trigger autoclone/automake-new actions for any device, platform, or website from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** Auto-evolution uses the QMOI Browser to autotest and fix all links and web features in every evolution cycle.
+- **Always-On Cloud Operation:** QMOI Auto-evolution is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every evolution cycle, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI Auto-evolution now targets a higher, dynamically increasing minimum daily revenue, using advanced strategies and statistics for all money-making features.
+- **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
+
 ## 🎯 Conclusion
 
 QMOIs enhanced auto-evolution system ensures continuous improvement across all aspects with comprehensive background channels, real-time research, advanced learning, and master-only logging. The system is designed to always execute master instructions, never deny requests, and continuously enhance capabilities.

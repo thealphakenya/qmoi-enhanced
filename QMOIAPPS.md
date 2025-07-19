@@ -26,3 +26,12 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 
 ## Master-Only Controls
 - QCity provides master-only visualization, notification, and approval workflows for all QMOI actions, customer care, and app enhancements. 
+
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI Apps ecosystem now supports autoclone/automake-new actions for any app, device, or platform from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI Apps use the QMOI Browser to autotest and fix all app links and downloads, ensuring all links are always working and up to date.
+- **Always-On Cloud Operation:** All QMOI Apps are managed and updated in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All app runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every app update or release, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI Apps now contribute to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 

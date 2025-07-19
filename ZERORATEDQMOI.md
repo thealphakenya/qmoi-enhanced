@@ -65,4 +65,12 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 
 ---
 
+## DNS & Download Link Auto-Resolution
+- **DNS Auto-Check & Fix:** QMOI Zero-Rated system now automatically checks and fixes DNS for all download links (downloads.qmoi.app). If DNS fails, it triggers an auto-fix routine, notifies master/admin, and logs all actions.
+- **Zero-Rated & Fallback Links:** If DNS cannot be fixed immediately, QMOI Zero-Rated system auto-switches to zero-rated or fallback CDN links to ensure downloads always work, even in restricted or offline environments.
+- **Dashboard Integration:** Master can view DNS/link health and trigger manual checks from the dashboard.
+- **Full Automation:** All DNS and link health checks, fixes, and fallback logic are fully automated and require no manual intervention.
+
+---
+
 *QMOI Zero-Rated: Always Connected, Anywhere, Anytime.* 

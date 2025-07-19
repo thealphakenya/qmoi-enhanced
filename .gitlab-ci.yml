@@ -62,6 +62,18 @@ pre-autotest:
   only:
     - main
 
+dns-health-check:
+  stage: setup
+  script:
+    - echo "Checking and auto-fixing DNS for all download/service domains (see QMOIDNS.md)"
+    - python scripts/qmoi-dns-health-checker.py --auto-fix || python scripts/qmoi-dns-fallback.py --use-fallback
+    - python scripts/qmoi-notifications.py --dns-status
+    - echo "If DNS cannot be fixed, auto-switching to zero-rated/fallback/CDN links (see ZERORATEDQMOI.md)"
+  retry: 2
+  allow_failure: false
+  only:
+    - main
+
 # Enhanced Health Check Stage
 health-check:
   stage: health-check
@@ -265,3 +277,4 @@ cleanup:
 # [NOTE] No billing issues - all operations use QMOI's self-hosted runners and cloud infrastructure.
 # [NOTE] Enhanced health checks ensure all documented features are implemented and validated.
 # [NOTE] Automated Git operations ensure repository is always up-to-date and synchronized.
+# [NOTE] DNS health is checked and auto-fixed before any download/build/deploy. See QMOIDNS.md and ZERORATEDQMOI.md for details.

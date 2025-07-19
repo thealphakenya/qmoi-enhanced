@@ -42,6 +42,12 @@ The QMOI QCity Automatic System is a comprehensive automation platform that prov
 - **Download is only possible if all health checks and autotests pass.**
 - **Apps are always up to date, error-free, and auto-updating after install.**
 
+### DNS & Download Link Auto-Resolution
+- **DNS Auto-Check & Fix:** QMOI QCity Automatic now automatically checks and fixes DNS for all download links (downloads.qmoi.app). If DNS fails, it triggers an auto-fix routine, notifies master/admin, and logs all actions.
+- **Zero-Rated & Fallback Links:** If DNS cannot be fixed immediately, QMOI QCity Automatic auto-switches to zero-rated or fallback CDN links (see ZERORATEDQMOI.md) to ensure downloads always work.
+- **Dashboard Integration:** Master can view DNS/link health and trigger manual checks from the dashboard.
+- **Full Automation:** All DNS and link health checks, fixes, and fallback logic are fully automated and require no manual intervention.
+
 ## 🛠️ Configuration & Logging
 - All health checks, autotests, and error fixing are logged to QCity and visible in the dashboard (master-only).
 - All .md docs are always up to date and reflect the latest automation and monitoring enhancements.
@@ -73,6 +79,15 @@ The QMOI QCity Automatic System is a comprehensive automation platform that prov
   - Documentation update history visualization
   - Integrated Gmail and multi-channel notification status, delivery logs, and test notification controls
 - All .md docs are always updated to reflect dashboard and notification enhancements.
+
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI QCity Automatic can now autoclone/automake-new devices, platforms, and features from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI QCity Automatic uses the QMOI Browser to autotest and fix all QCity automation-related links and features, ensuring all enhancements are always working and up to date.
+- **Always-On Cloud Operation:** QMOI QCity Automatic is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All QCity automation runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every QCity automation update, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI QCity Automatic now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
 
 ---
 ## 🛠️ Troubleshooting: No Billing Account, Quota, or Hosted Runner Issues

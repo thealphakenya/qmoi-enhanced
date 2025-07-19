@@ -85,3 +85,12 @@ All links below are always up-to-date, autotested, and provided by QCity runners
   3. All issues are logged in real time and prioritized for immediate fix.
 - **Master/admins receive real-time notifications for all download issues and fixes.**
 - For persistent issues, contact Qteam Customer Care via the app or email. 
+
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI download system can now autoclone/automake-new download scripts and links for any device or platform from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI download system uses the QMOI Browser to autotest and fix all download links, ensuring all links are always working and up to date.
+- **Always-On Cloud Operation:** QMOI download system is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All download runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every download or release, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI download system now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 

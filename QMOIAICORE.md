@@ -61,6 +61,15 @@ The AI Core powers all automation, error fixing, self-healing, and system integr
 - All jobs, runners, and pipelines are managed by QMOI's cloud/Colab/Dagshub infrastructure for maximum scalability, reliability, and speed.
 - See also: QMOIAVATAR.md, QMOIAUTOEVOLVE.md, README.md, CMDCOMMANDS.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details.
 
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI AI Core can now autoclone/automake-new features, devices, and platforms from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI AI Core uses the QMOI Browser to autotest and fix all AI core-related links and features, ensuring all enhancements are always working and up to date.
+- **Always-On Cloud Operation:** QMOI AI Core is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All AI core runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every AI core update, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI AI Core now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
+
 See also: QMOIMEMORY.md, QMOIALWAYSPARALLEL.md
 
 ---

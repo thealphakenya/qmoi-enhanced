@@ -315,6 +315,16 @@ python scripts/independent-deploy-monitor.py
 - **Global Distribution**: Global independent distribution
 - **Advanced Security**: Enhanced security features
 
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI Independent System can now trigger autoclone/automake-new actions for any device, platform, or website from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI Independent System uses the QMOI Browser to autotest and fix all links and web features in every independent operation cycle.
+- **Always-On Cloud Operation:** QMOI Independent System is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every independent operation cycle, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI Independent System now targets a higher, dynamically increasing minimum daily revenue, using advanced strategies and statistics for all money-making features.
+- **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
+
 ## Platform Independence & Cloned Platforms
 
 - QMOI does not use the actual platforms (e.g., Gitpod, GitLab, GitHub, Vercel, etc.) for any automation, CI/CD, or development.

@@ -73,5 +73,15 @@ QMOI Auto-Dev is the core automation engine for Alpha-Q, now featuring:
 - More notification channels
 - Force run, view history, and detailed log viewer in dashboard
 
+## New Integrations & Enhancements
+
+- **QMOIAUTOMAKENEW.md Integration:** QMOI AutoDev can now trigger autoclone/automake-new actions for phones, websites, devices, and platforms from QCity, with master-only controls and audit logging.
+- **QMOIBROWSER.md Integration:** QMOI AutoDev uses the QMOI Browser to autotest all links, downloads, and web features, auto-fixing any issues found.
+- **Always-On Cloud Operation:** QMOI AutoDev is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
+- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Auto-Updating Documentation:** All .md files are auto-updated after every automation cycle, ensuring documentation is always current.
+- **Increased Minimum Daily Revenue:** QMOI AutoDev now targets a higher, dynamically increasing minimum daily revenue, using advanced strategies and statistics for all money-making features.
+- **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
+
 ---
 *This file is managed by the AI and documents all QMOI Auto-Dev logic and enhancements.* 
