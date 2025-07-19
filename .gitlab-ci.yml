@@ -280,3 +280,4 @@ cleanup:
 # [NOTE] DNS health is checked and auto-fixed before any download/build/deploy. See QMOIDNS.md and ZERORATEDQMOI.md for details.
 # [NOTE] If DNS cannot be fixed, QMOI auto-registers a free fallback domain via Freenom, updates all download links, and ensures downloads remain available. See QMOIDNS.md for full logic.
 # [NOTE] QMOI QCity Automatic features include Freenom fallback domain creation, DNS automation, and link update. All logic is integrated and triggered automatically in the pipeline. See QMOIQCITYAUTOMATIC.md for full details.
+# [NOTE] The pipeline now includes a job to verify all .md files are up to date, accurate, and all instructions/details are met. This job runs in real time, auto-updates all .md files for enhancements, evolution, and all features, and logs all actions. See QMOIQCITYAUTOMATIC.md and QCITYRUNNERSENGINE.md for details.

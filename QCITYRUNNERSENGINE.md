@@ -41,6 +41,7 @@ QCity Runners Engine is QMOI’s universal, self-hosted runner system for CI/CD,
 - **App downloads are only possible if all health checks and autotests pass (apps are always error-free and up to date).**
 - **QI download is device-aware, feature-selectable, and always provides the correct, up-to-date installer.**
 - **All .md docs are always up to date and reflect the latest automation and monitoring enhancements.**
+- **Real-Time .md File Verification & Auto-Update:** QCity Runners Engine now includes a system that verifies all .md files are up to date, accurate, and all instructions/details are met. This system runs in real time, auto-updates all .md files for enhancements, evolution, and all features, and logs all actions. See QMOIQCITYAUTOMATIC.md and .gitlab-ci.yml for details.
 
 ### Security
 - Each runner is sandboxed and isolated
