@@ -245,14 +245,97 @@ def watch_and_update_links():
             last_links = links
         time.sleep(60)  # Check every 60 seconds (configurable)
 
+def autotest_and_update_md_links():
+    import re
+    md_files = [
+        'README.md', 'QMOIAPPS.md', 'Qstore.md', 'DOWNLOADQMOIAIAPPALLDEVICES.md',
+        'ALLQMOIAIAPPSREALEASESVERSIONS.md', 'QI_download_component.html'
+    ]
+    # Scan ALLMDFILESREFS.md for referenced .md files
+    with open('ALLMDFILESREFS.md', 'r', encoding='utf-8') as f:
+        for line in f:
+            match = re.search(r'\*\*(.+?\.md)\*\*', line)
+            if match:
+                md_file = match.group(1)
+                if md_file not in md_files and os.path.exists(md_file):
+                    md_files.append(md_file)
+    # For each .md file, check and update download links
+    for md_file in md_files:
+        with open(md_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        updated = False
+        # Find all https://... links ending with .exe, .apk, .dmg, .appimage, .ipa, .zip, .deb, .img
+        links = re.findall(r'https://[\w\.-]+/[^\s\)]+\.(exe|apk|dmg|appimage|ipa|zip|deb|img)', content)
+        for link in set(links):
+            try:
+                resp = requests.head(link, timeout=5)
+                if resp.status_code != 200:
+                    # Replace with best working link
+                    best_domain = get_best_working_domain()
+                    new_link = re.sub(r'https://[\w\.-]+/', f'https://{best_domain}/', link)
+                    content = content.replace(link, new_link)
+                    updated = True
+            except Exception:
+                best_domain = get_best_working_domain()
+                new_link = re.sub(r'https://[\w\.-]+/', f'https://{best_domain}/', link)
+                content = content.replace(link, new_link)
+                updated = True
+        if updated:
+            with open(md_file, 'w', encoding='utf-8') as f:
+                f.write(content)
+            log_activity('Autotest updated download links in .md file', {'file': md_file})
+    notify_master_admin_of_link_update({'autotest': True, 'files': md_files})
+
+def update_all_documentation_with_links(links):
+    import re
+    md_files = [
+        'README.md', 'QMOIAPPS.md', 'Qstore.md', 'DOWNLOADQMOIAIAPPALLDEVICES.md',
+        'ALLQMOIAIAPPSREALEASESVERSIONS.md', 'QI_download_component.html'
+    ]
+    # Scan ALLMDFILESREFS.md for referenced .md files
+    with open('ALLMDFILESREFS.md', 'r', encoding='utf-8') as f:
+        for line in f:
+            match = re.search(r'\*\*(.+?\.md)\*\*', line)
+            if match:
+                md_file = match.group(1)
+                if md_file not in md_files and os.path.exists(md_file):
+                    md_files.append(md_file)
+    for md_file in md_files:
+        with open(md_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        updated = False
+        # Replace all download links with the best working link from the links dict
+        for key, url in links.items():
+            # key format: appname_device
+            app, device = key.rsplit('_', 1)
+            # Find all links for this app/device
+            pattern = re.compile(r'https://[\w\.-]+/' + re.escape(app) + r'/' + re.escape(device) + r'[^\s\)\|]*')
+            matches = pattern.findall(content)
+            for match in matches:
+                if match != url:
+                    content = content.replace(match, url)
+                    updated = True
+        if updated:
+            with open(md_file, 'w', encoding='utf-8') as f:
+                f.write(content)
+            log_activity('Updated download links in .md file', {'file': md_file})
+
+def notify_master_admin_of_link_update(info):
+    # Basic notification: log to file and print
+    with open('logs/qmoi_link_update.log', 'a', encoding='utf-8') as f:
+        f.write(f'Link update: {info}\n')
+    print(f'[QMOI] Master/admin notified of link update: {info}')
+
 if __name__ == "__main__":
     update_links_only = '--update-links-only' in sys.argv
+    autotest = '--autotest' in sys.argv
     main(update_links_only=update_links_only)
+    if autotest:
+        autotest_and_update_md_links()
     if not update_links_only:
         # Start real-time watcher in a background thread
         watcher_thread = threading.Thread(target=watch_and_update_links, daemon=True)
         watcher_thread.start()
         print('Real-time download link updater is running in the background.')
-        # Keep the main thread alive
         while True:
             time.sleep(3600) 
