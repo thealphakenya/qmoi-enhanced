@@ -213,3 +213,262 @@
 [2025-07-19 18:13:55] Autotest updated download links in .md file | {'file': 'DOWNLOADQMOIAIAPPALLDEVICES.md'}
 [2025-07-19 18:13:55] Autotest updated download links in .md file | {'file': 'ALLQMOIAIAPPSREALEASESVERSIONS.md'}
 [2025-07-19 18:13:55] Autotest updated download links in .md file | {'file': 'QI_download_component.html'}
+[2025-07-21 07:23:15] Running command: ['npm', 'run', 'build'] | {'cwd': 'D:\\applications\\Alpha-Q-ai'}
+[2025-07-21 07:24:04] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000011C81B891D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:24:04] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-21 07:24:04] Auto-fixing build/install for qmoi ai on windows
+[2025-07-21 07:24:04] Built qmoi ai for windows (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-21 07:24:06] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000011C81B89590>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:24:06] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-21 07:24:06] Auto-fixing build/install for qmoi ai on mac
+[2025-07-21 07:24:06] Built qmoi ai for mac (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-21 07:24:08] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000011C81B89A90>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:24:08] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-21 07:24:08] Auto-fixing build/install for qmoi ai on linux
+[2025-07-21 07:24:08] Built qmoi ai for linux (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-21 07:24:09] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000011C81B89E50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:24:09] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-21 07:24:09] Auto-fixing build/install for qmoi ai on android
+[2025-07-21 07:24:09] Built qmoi ai for android (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-21 07:24:10] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000011C81B8A0D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:24:10] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-21 07:24:10] Auto-fixing build/install for qmoi ai on ios
+[2025-07-21 07:24:10] Built qmoi ai for ios (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-21 07:24:11] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000011C81B8A490>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:24:11] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-21 07:24:11] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-21 07:24:11] Built qmoi ai for qcity (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-21 07:24:12] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000011C81B8A850>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:24:12] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-21 07:24:12] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-21 07:24:12] Built qmoi ai for chromebook (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-21 07:24:13] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000011C81A47B10>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:24:13] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-21 07:24:13] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-21 07:24:13] Built qmoi ai for raspberrypi (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-21 07:24:14] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000011C81A47C50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:24:14] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-21 07:24:14] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-21 07:24:14] Built qmoi ai for smarttv (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-21 07:24:15] Updated app download links | {'links': {}}
+[2025-07-21 07:24:15] Autotest updated download links in .md file | {'file': 'README.md'}
+[2025-07-21 07:24:15] Autotest updated download links in .md file | {'file': 'QMOIAPPS.md'}
+[2025-07-21 07:24:15] Autotest updated download links in .md file | {'file': 'Qstore.md'}
+[2025-07-21 07:24:15] Autotest updated download links in .md file | {'file': 'DOWNLOADQMOIAIAPPALLDEVICES.md'}
+[2025-07-21 07:24:15] Autotest updated download links in .md file | {'file': 'ALLQMOIAIAPPSREALEASESVERSIONS.md'}
+[2025-07-21 07:24:15] Autotest updated download links in .md file | {'file': 'QI_download_component.html'}
+[2025-07-21 07:27:11] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000171D01F91D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:27:11] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-21 07:27:11] Auto-fixing build/install for qmoi ai on windows
+[2025-07-21 07:27:11] Built qmoi ai for windows (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-21 07:27:12] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000171D01F9590>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:27:12] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-21 07:27:12] Auto-fixing build/install for qmoi ai on mac
+[2025-07-21 07:27:12] Built qmoi ai for mac (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-21 07:27:13] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000171D01F9A90>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:27:13] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-21 07:27:13] Auto-fixing build/install for qmoi ai on linux
+[2025-07-21 07:27:13] Built qmoi ai for linux (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-21 07:27:14] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000171D01F9E50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:27:14] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-21 07:27:14] Auto-fixing build/install for qmoi ai on android
+[2025-07-21 07:27:14] Built qmoi ai for android (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-21 07:27:15] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000171D01FA0D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:27:15] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-21 07:27:15] Auto-fixing build/install for qmoi ai on ios
+[2025-07-21 07:27:15] Built qmoi ai for ios (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-21 07:27:17] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000171D01FA490>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:27:17] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-21 07:27:17] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-21 07:27:17] Built qmoi ai for qcity (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-21 07:27:18] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000171D01FA850>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:27:18] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-21 07:27:18] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-21 07:27:18] Built qmoi ai for chromebook (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-21 07:27:19] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000171D00D7B10>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:27:19] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-21 07:27:19] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-21 07:27:19] Built qmoi ai for raspberrypi (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-21 07:27:20] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000171D00D7C50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:27:20] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-21 07:27:20] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-21 07:27:20] Built qmoi ai for smarttv (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-21 07:27:21] Updated app download links | {'links': {}}
+[2025-07-21 07:27:22] Autotest updated download links in .md file | {'file': 'README.md'}
+[2025-07-21 07:27:22] Autotest updated download links in .md file | {'file': 'QMOIAPPS.md'}
+[2025-07-21 07:27:22] Autotest updated download links in .md file | {'file': 'Qstore.md'}
+[2025-07-21 07:27:22] Autotest updated download links in .md file | {'file': 'DOWNLOADQMOIAIAPPALLDEVICES.md'}
+[2025-07-21 07:27:22] Autotest updated download links in .md file | {'file': 'ALLQMOIAIAPPSREALEASESVERSIONS.md'}
+[2025-07-21 07:27:22] Autotest updated download links in .md file | {'file': 'QI_download_component.html'}
+[2025-07-21 07:30:29] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A2FF1C91D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:30:29] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-21 07:30:29] Auto-fixing build/install for qmoi ai on windows
+[2025-07-21 07:30:29] Built qmoi ai for windows (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-21 07:30:30] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A2FF1C9590>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:30:30] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-21 07:30:30] Auto-fixing build/install for qmoi ai on mac
+[2025-07-21 07:30:30] Built qmoi ai for mac (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-21 07:30:31] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A2FF1C9A90>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:30:31] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-21 07:30:31] Auto-fixing build/install for qmoi ai on linux
+[2025-07-21 07:30:31] Built qmoi ai for linux (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-21 07:30:32] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A2FF1C9E50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:30:32] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-21 07:30:32] Auto-fixing build/install for qmoi ai on android
+[2025-07-21 07:30:32] Built qmoi ai for android (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-21 07:30:33] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A2FF1CA0D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:30:33] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-21 07:30:33] Auto-fixing build/install for qmoi ai on ios
+[2025-07-21 07:30:33] Built qmoi ai for ios (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-21 07:30:34] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A2FF1CA490>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:30:34] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-21 07:30:34] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-21 07:30:34] Built qmoi ai for qcity (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-21 07:30:35] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A2FF1CA850>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:30:35] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-21 07:30:35] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-21 07:30:35] Built qmoi ai for chromebook (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-21 07:30:36] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A2FF0A7B10>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:30:36] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-21 07:30:36] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-21 07:30:36] Built qmoi ai for raspberrypi (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-21 07:30:37] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A2FF0A7C50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:30:37] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-21 07:30:37] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-21 07:30:37] Built qmoi ai for smarttv (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-21 07:30:38] Updated app download links | {'links': {}}
+[2025-07-21 07:30:40] Autotest updated download links in .md file | {'file': 'README.md'}
+[2025-07-21 07:30:40] Autotest updated download links in .md file | {'file': 'QMOIAPPS.md'}
+[2025-07-21 07:30:40] Autotest updated download links in .md file | {'file': 'Qstore.md'}
+[2025-07-21 07:30:40] Autotest updated download links in .md file | {'file': 'DOWNLOADQMOIAIAPPALLDEVICES.md'}
+[2025-07-21 07:30:40] Autotest updated download links in .md file | {'file': 'ALLQMOIAIAPPSREALEASESVERSIONS.md'}
+[2025-07-21 07:30:40] Autotest updated download links in .md file | {'file': 'QI_download_component.html'}
+[2025-07-21 07:34:09] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CE9C591D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:34:09] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-21 07:34:09] Auto-fixing build/install for qmoi ai on windows
+[2025-07-21 07:34:09] Built qmoi ai for windows (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-21 07:34:12] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CE9C59590>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:34:12] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-21 07:34:12] Auto-fixing build/install for qmoi ai on mac
+[2025-07-21 07:34:12] Built qmoi ai for mac (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-21 07:34:13] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CE9C59A90>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:34:13] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-21 07:34:13] Auto-fixing build/install for qmoi ai on linux
+[2025-07-21 07:34:13] Built qmoi ai for linux (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-21 07:34:15] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CE9C59E50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:34:15] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-21 07:34:15] Auto-fixing build/install for qmoi ai on android
+[2025-07-21 07:34:15] Built qmoi ai for android (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-21 07:34:17] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CE9C5A0D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:34:17] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-21 07:34:17] Auto-fixing build/install for qmoi ai on ios
+[2025-07-21 07:34:17] Built qmoi ai for ios (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-21 07:34:18] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CE9C5A490>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:34:18] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-21 07:34:18] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-21 07:34:18] Built qmoi ai for qcity (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-21 07:34:19] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CE9C5A850>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:34:19] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-21 07:34:19] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-21 07:34:19] Built qmoi ai for chromebook (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-21 07:34:21] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CE9B37B10>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:34:21] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-21 07:34:21] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-21 07:34:21] Built qmoi ai for raspberrypi (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-21 07:34:22] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017CE9B37C50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 07:34:22] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-21 07:34:22] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-21 07:34:22] Built qmoi ai for smarttv (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-21 07:34:23] Updated app download links | {'links': {}}
+[2025-07-21 07:34:31] Autotest updated download links in .md file | {'file': 'README.md'}
+[2025-07-21 07:34:31] Autotest updated download links in .md file | {'file': 'QMOIAPPS.md'}
+[2025-07-21 07:34:31] Autotest updated download links in .md file | {'file': 'Qstore.md'}
+[2025-07-21 07:34:31] Autotest updated download links in .md file | {'file': 'DOWNLOADQMOIAIAPPALLDEVICES.md'}
+[2025-07-21 07:34:31] Autotest updated download links in .md file | {'file': 'ALLQMOIAIAPPSREALEASESVERSIONS.md'}
+[2025-07-21 07:34:31] Autotest updated download links in .md file | {'file': 'QI_download_component.html'}
+[2025-07-21 17:39:54] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000188C51291D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:39:54] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-21 17:39:54] Auto-fixing build/install for qmoi ai on windows
+[2025-07-21 17:39:54] Built qmoi ai for windows (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-21 17:39:58] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000188C5129590>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:39:58] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-21 17:39:58] Auto-fixing build/install for qmoi ai on mac
+[2025-07-21 17:39:58] Built qmoi ai for mac (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-21 17:39:59] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000188C5129A90>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:39:59] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-21 17:39:59] Auto-fixing build/install for qmoi ai on linux
+[2025-07-21 17:39:59] Built qmoi ai for linux (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-21 17:40:01] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000188C5129E50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:01] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-21 17:40:01] Auto-fixing build/install for qmoi ai on android
+[2025-07-21 17:40:01] Built qmoi ai for android (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-21 17:40:02] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000188C512A0D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:02] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-21 17:40:02] Auto-fixing build/install for qmoi ai on ios
+[2025-07-21 17:40:02] Built qmoi ai for ios (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-21 17:40:03] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000188C512A490>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:03] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-21 17:40:03] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-21 17:40:03] Built qmoi ai for qcity (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-21 17:40:05] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000188C512A850>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:05] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-21 17:40:05] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-21 17:40:05] Built qmoi ai for chromebook (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-21 17:40:06] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000188C5007B10>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:06] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-21 17:40:06] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-21 17:40:06] Built qmoi ai for raspberrypi (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-21 17:40:08] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000188C5007C50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:08] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-21 17:40:08] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-21 17:40:08] Built qmoi ai for smarttv (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-21 17:40:09] Updated app download links | {'links': {}}
+[2025-07-21 17:40:10] Autotest updated download links in .md file | {'file': 'README.md'}
+[2025-07-21 17:40:10] Autotest updated download links in .md file | {'file': 'QMOIAPPS.md'}
+[2025-07-21 17:40:10] Autotest updated download links in .md file | {'file': 'Qstore.md'}
+[2025-07-21 17:40:10] Autotest updated download links in .md file | {'file': 'DOWNLOADQMOIAIAPPALLDEVICES.md'}
+[2025-07-21 17:40:10] Autotest updated download links in .md file | {'file': 'ALLQMOIAIAPPSREALEASESVERSIONS.md'}
+[2025-07-21 17:40:10] Autotest updated download links in .md file | {'file': 'QI_download_component.html'}
+[2025-07-21 17:40:24] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000026F775491D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:24] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-21 17:40:24] Auto-fixing build/install for qmoi ai on windows
+[2025-07-21 17:40:24] Built qmoi ai for windows (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-21 17:40:26] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000026F77549590>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:26] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-21 17:40:26] Auto-fixing build/install for qmoi ai on mac
+[2025-07-21 17:40:26] Built qmoi ai for mac (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-21 17:40:28] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000026F77549A90>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:28] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-21 17:40:28] Auto-fixing build/install for qmoi ai on linux
+[2025-07-21 17:40:28] Built qmoi ai for linux (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-21 17:40:30] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000026F77549E50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:30] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-21 17:40:30] Auto-fixing build/install for qmoi ai on android
+[2025-07-21 17:40:30] Built qmoi ai for android (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-21 17:40:31] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000026F7754A0D0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:31] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-21 17:40:31] Auto-fixing build/install for qmoi ai on ios
+[2025-07-21 17:40:31] Built qmoi ai for ios (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-21 17:40:32] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000026F7754A490>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:32] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-21 17:40:32] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-21 17:40:32] Built qmoi ai for qcity (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-21 17:40:33] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000026F7754A850>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:33] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-21 17:40:33] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-21 17:40:33] Built qmoi ai for chromebook (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-21 17:40:35] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000026F773F7B10>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:35] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-21 17:40:35] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-21 17:40:35] Built qmoi ai for raspberrypi (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-21 17:40:37] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000026F773F7C50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno 11001] getaddrinfo failed)"))'}
+[2025-07-21 17:40:37] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-21 17:40:37] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-21 17:40:37] Built qmoi ai for smarttv (placeholder) | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-21 17:40:38] Updated app download links | {'links': {}}
+[2025-07-21 17:40:40] Autotest updated download links in .md file | {'file': 'README.md'}
+[2025-07-21 17:40:40] Autotest updated download links in .md file | {'file': 'QMOIAPPS.md'}
+[2025-07-21 17:40:40] Autotest updated download links in .md file | {'file': 'Qstore.md'}
+[2025-07-21 17:40:40] Autotest updated download links in .md file | {'file': 'DOWNLOADQMOIAIAPPALLDEVICES.md'}
+[2025-07-21 17:40:40] Autotest updated download links in .md file | {'file': 'ALLQMOIAIAPPSREALEASESVERSIONS.md'}
+[2025-07-21 17:40:40] Autotest updated download links in .md file | {'file': 'QI_download_component.html'}
