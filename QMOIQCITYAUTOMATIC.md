@@ -93,6 +93,15 @@ The QMOI QCity Automatic System is a comprehensive automation platform that prov
 - **Multi-Provider Domain Automation:** QMOI QCity Automatic can create, register, and use domains from any provider (Freenom, Namecheap, GoDaddy, Cloudflare, AWS, self-hosted, etc.), and can switch between them automatically for downloads and services. See QMOIDOMAINS.md and QMOIDNS.md for details.
 - **Real-Time .md File Verification & Auto-Update:** QCity Automatic now includes a system that verifies all .md files are up to date, accurate, and all instructions/details are met. This system runs in real time, auto-updates all .md files for enhancements, evolution, and all features, and logs all actions. See QCITYRUNNERSENGINE.md and .gitlab-ci.yml for details.
 
+## 🔗 Download Link Autotests & Always-On Monitoring
+
+- QCity Automatic continuously autotests all download links (ngrok, Freenom, primary domains, fallback, CDN, etc.) for reachability, speed, and correctness.
+- If any link fails, QMOI auto-restarts the ngrok tunnel or switches to a working fallback (Freenom, CDN, etc.), and updates all .md files and UIs.
+- All autotest results, link health, and actions are logged and visible in the QCity dashboard (master-only).
+- The autotest system is always running in the background (cloud/Colab/Dagshub), auto-restarting if interrupted.
+- Master/admin can trigger manual autotests or link updates from the dashboard.
+- All download links are guaranteed to be up to date, working, and autotested at all times.
+
 ---
 ## 🛠️ Troubleshooting: No Billing Account, Quota, or Hosted Runner Issues
 
