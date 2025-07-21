@@ -142,6 +142,8 @@ test:
     - python scripts/qmoi-enhanced-auto-evolution.py --test
     - python scripts/qmoi-enhanced-health-checker.py --test
     - python scripts/qmoi-feature-validator.py --test
+    - python scripts/autotest/qmoi_simple_autotest.py
+    - node scripts/qmoi_simple_autotest.js
   artifacts:
     paths:
       - coverage/
@@ -288,6 +290,36 @@ cleanup:
     - python scripts/qmoi-feature-validator.py --cleanup
   when: always
 
+autotest-download-links:
+  stage: validate
+  script:
+    - echo "Autotesting and auto-updating all download links in all .md files (see QMOINGROK.md)"
+    - python scripts/qmoi-app-builder.py --update-links-only --autotest
+    - echo "All download links in all .md files have been autotested and updated to the best working link (ngrok, fallback, etc.)"
+  retry: 2
+  allow_failure: false
+  only:
+    - main
+
+ui-e2e-test:
+  stage: test
+  script:
+    - npx playwright install
+    - npx playwright test tests/ui/qmoi_ui_autotest.spec.js
+  allow_failure: false
+
+api-test:
+  stage: test
+  script:
+    - pytest tests/api/test_health.py
+  allow_failure: false
+
+md-link-check:
+  stage: test
+  script:
+    - pytest tests/md/test_md_links.py
+  allow_failure: false
+
 # [NOTE] All jobs are executed in QMOI's cloned, enhanced GitLab, never the actual GitLab. All automation, error fixing, and updates are cloud-offloaded and self-healing, with full audit logging and dashboard visibility. See all .md docs for cross-platform, notification, and dashboard details.
 # [NOTE] Master-only manual override is available for any failed stage via dashboard or CLI.
 # [NOTE] No billing issues - all operations use QMOI's self-hosted runners and cloud infrastructure.
@@ -299,3 +331,6 @@ cleanup:
 # [NOTE] The pipeline now includes a job to verify all .md files are up to date, accurate, and all instructions/details are met. This job runs in real time, auto-updates all .md files for enhancements, evolution, and all features, and logs all actions. See QMOIQCITYAUTOMATIC.md and QCITYRUNNERSENGINE.md for details.
 # [NOTE] Ngrok tunnel health is checked and links are auto-updated before any download/build/deploy. See QMOINGROK.md for details.
 # [NOTE] NGROK_AUTH_TOKEN must be stored securely in the CI/CD environment, not in plaintext or code. See QMOINGROK.md for secure storage and usage best practices.
+# [NOTE] autotest-download-links job ensures all download links in all .md files are autotested and auto-updated to the best working link (ngrok, fallback, etc.) before deploy. See QMOINGROK.md for details.
+# [NOTE] ui-e2e-test, api-test, and md-link-check jobs ensure the UI, backend, and documentation are always autotested and working in every pipeline run.
+# [NOTE] python-simple-autotest and node-simple-autotest jobs ensure QMOI system health and download links are always autotested and self-healing.
