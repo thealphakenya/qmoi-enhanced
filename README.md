@@ -18,6 +18,7 @@ QMOI is a fully automated, always-on, cross-platform automation engine. It runs 
 - **Advanced QI Download:** Device-aware, feature-selectable, and always provides the correct, up-to-date installer.
 - **Expanded Platform Stats:** Dashboard now shows status for GitLab, GitHub, Vercel, Gitpod, Netlify, HuggingFace, Quantum, Village, Azure, AWS, GCP, DigitalOcean, and more, each with icons and names.
 - **Master-Only Controls:** Advanced dashboard features, logs, and controls are only visible to master/admin users.
+- **Ngrok Tunnel Automation:** QMOI can automatically start, monitor, and update ngrok tunnels for all download and service endpoints. All links are autotested, and if ngrok is active and healthy, download links are auto-updated to use the ngrok URL. See QMOINGROK.md for details.
 
 ## 📦 App Delivery & Qmoi_apps Structure
 - All apps are built and organized in `Qmoi_apps/<device>/` (e.g., windows, mac, linux, android, ios, qcity, ...)
@@ -25,12 +26,24 @@ QMOI is a fully automated, always-on, cross-platform automation engine. It runs 
 - Download links are always up to date and device-aware
 - **App icons are now modern, visually enhanced, and consistent across platforms**
 - **Download is only enabled if all health checks and autotests pass.**
+- **Ngrok Tunnel Support:** If ngrok is active and healthy, download links are auto-updated to use the ngrok URL. If ngrok is unavailable, QMOI falls back to Freenom or other providers. See QMOINGROK.md for details.
 
-## 🚀 Quickstart (Cloud/Colab/Dagshub)
-1. Clone the repo to Colab or Dagshub
-2. Set environment variables: `GMAIL_USER`, `GMAIL_PASS`, `GMAIL_RECIPIENT`, and any notification/channel credentials
-3. Run: `python scripts/qmoi-qcity-automatic.py`
-4. Check your email and other channels for notifications and download links
+## 🔐 Secure Credential Storage
+- The ngrok auth token is never stored in plaintext in code or .md files.
+- QMOI uses encrypted environment variables, secret managers (e.g., Colab secrets, cloud secret stores), or OS keyring for storing the token.
+- Only the automation engine and master/admin have access to the token.
+- All access to the token is logged and auditable.
+
+## 🛡️ Download Reliability, Autofix, and Customer Care
+- **All download links are autotested and auto-fixed by QCity runners.**
+- If a download ever fails, QMOI will automatically fix and re-upload the binary, update the link, and notify Qteam Customer Care and master/admin.
+- Download UI and scripts feature robust error handling, retry logic, and real-time status ("Autofixing...", "Retrying...", "Fixed!").
+- Users can report issues directly from the download UI; all issues are logged and prioritized for immediate fix.
+- **Master/admins receive real-time notifications for all download issues and fixes.**
+- For persistent issues, contact Qteam Customer Care via the app or email.
+
+## New Integrations & Enhancements
+- **Ngrok Integration:** QMOI can use ngrok for secure, always-on, cloud-accessible download and service links. All links are autotested, and if ngrok is active, links are updated to use the ngrok URL. See QMOINGROK.md for details.
 
 ## 📚 Documentation
 - See `QIAUTOGMAIL.md` for notification setup
@@ -110,7 +123,7 @@ Qmoi_downloaded_apps/<platform>/v<version>/
 
 > **Note:** For all releases and versions, see [ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md)
 
-**All links are autotested and always up-to-date, managed by QCity runners.**
+**All links are autotested and always up-to-date, managed by QCity runners. If ngrok is active and healthy, links are updated to use the ngrok URL. See QMOINGROK.md for details.**
 
 ## 🔄 Build Automation
 - Builds are triggered automatically on code push (see CI/CD), by user request (API), or on a schedule

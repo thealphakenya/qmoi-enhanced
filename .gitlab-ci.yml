@@ -1,9 +1,12 @@
 # [ENHANCEMENT] All jobs in this pipeline are executed in QMOI's cloned GitLab environment, never the actual GitLab. All heavy tasks (build, test, deploy, auto-fix, auto-evolution) are offloaded to Colab, Dagshub, or cloud runners for maximum performance and scalability. See QMOIAVATAR.md, QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, CMDCOMMANDS.md, and all .md docs for details.
 
+# [ENHANCEMENT] Ngrok tunnel health is checked and auto-fixed before any download/build/deploy. All download links are auto-updated to use ngrok URL if active and healthy. See QMOINGROK.md for details.
+
 stages:
   - setup
   - pre-autotest
   - health-check
+  - ngrok-tunnel-check
   - auto-fix
   - validate
   - test
@@ -29,6 +32,7 @@ variables:
   QMOI_HEALTH_CHECK: true"
   QMOI_GIT_OPERATIONS: "true"
   QMOI_FEATURE_IMPLEMENTATION: "true  MASTER_EMAILS:rovicviccy@gmail.com,thealphakenya@gmail.com
+  # NGROK_AUTH_TOKEN should be set securely in the CI/CD environment, not in plaintext. See QMOINGROK.md for secure storage best practices.
 
 setup:
   stage: setup
@@ -49,6 +53,18 @@ setup:
       - __pycache__/
       - target/
       - dist/
+
+ngrok-tunnel-check:
+  stage: ngrok-tunnel-check
+  script:
+    - echo "Checking and auto-fixing ngrok tunnel for all download/service endpoints (see QMOINGROK.md)"
+    - python scripts/qmoi-ngrok-health-checker.py --auto-fix || python scripts/qmoi-ngrok-fallback.py --use-fallback
+    - python scripts/qmoi-notifications.py --ngrok-status
+    - echo "If ngrok cannot be fixed, auto-switching to Freenom, fallback, or CDN links (see QMOIDOMAINS.md, QMOIDNS.md, ZERORATEDQMOI.md)"
+  retry: 2
+  allow_failure: false
+  only:
+    - main
 
 pre-autotest:
   stage: pre-autotest
@@ -281,3 +297,5 @@ cleanup:
 # [NOTE] If DNS cannot be fixed, QMOI auto-registers a free fallback domain via Freenom, updates all download links, and ensures downloads remain available. See QMOIDNS.md for full logic.
 # [NOTE] QMOI QCity Automatic features include Freenom fallback domain creation, DNS automation, and link update. All logic is integrated and triggered automatically in the pipeline. See QMOIQCITYAUTOMATIC.md for full details.
 # [NOTE] The pipeline now includes a job to verify all .md files are up to date, accurate, and all instructions/details are met. This job runs in real time, auto-updates all .md files for enhancements, evolution, and all features, and logs all actions. See QMOIQCITYAUTOMATIC.md and QCITYRUNNERSENGINE.md for details.
+# [NOTE] Ngrok tunnel health is checked and links are auto-updated before any download/build/deploy. See QMOINGROK.md for details.
+# [NOTE] NGROK_AUTH_TOKEN must be stored securely in the CI/CD environment, not in plaintext or code. See QMOINGROK.md for secure storage and usage best practices.

@@ -25,6 +25,7 @@ This reference catalogs all .md files in the QMOI system, grouped and categorize
 - **QMOIAPPS.md**: QMOI apps ecosystem, Qstore integration, and device-optimized features.
 - **QMOIAUTOMAKENEW.md**: Autoclone/automake-new system for devices, platforms, and websites.
 - **QMOIBROWSER.md**: Automated browser for autotesting and fixing all links and web features.
+- **QMOINGROK.md**: Ngrok integration and automation for secure, always-on, cloud-accessible download and service links.
 
 ### Developer & Parallelization
 - **QMOIDEV.md**: Developer agent, notification system, and pre-autotest logic.
@@ -61,6 +62,7 @@ This reference catalogs all .md files in the QMOI system, grouped and categorize
 - All .md files are auto-updated after every automation cycle.
 - Documentation is permanent, versioned, and always reflects the latest system state.
 - New files and features are automatically added to this reference.
+- **Ngrok Integration:** QMOI supports ngrok as a secure, automated tunnel provider for download and service links. See QMOINGROK.md for details.
 
 ---
 

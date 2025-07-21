@@ -17,6 +17,7 @@ QCity Runners Engine is QMOI’s universal, self-hosted runner system for CI/CD,
 - **Self-Healing & Error-Free Downloads:** App downloads are only enabled if all health checks and autotests pass. Apps are always up to date, error-free, and auto-updating after install.
 - **Expanded Platform Stats:** Dashboard now shows status for GitLab, GitHub, Vercel, Gitpod, Netlify, HuggingFace, Quantum, Village, Azure, AWS, GCP, DigitalOcean, and more, each with icons and names.
 - **Master-Only Controls:** Advanced dashboard features, logs, and controls are only visible to master/admin users.
+- **Ngrok Tunnel Support:** QCity Runners Engine can automatically start, monitor, and update ngrok tunnels for all download and service endpoints. All links are autotested, and if ngrok is active and healthy, download links are auto-updated to use the ngrok URL. See QMOINGROK.md for details.
 
 ### Setup
 1. Go to GitHub → Settings → Actions → Runners → New self-hosted runner
@@ -29,6 +30,7 @@ QCity Runners Engine is QMOI’s universal, self-hosted runner system for CI/CD,
 - If a problem is detected, QMOI auto-fixes (restart, dependency install, cache clear, update)
 - If auto-fix fails, master/admin is notified with diagnostics
 - **All health checks, autotests, and error fixing are logged to QCity and visible in the dashboard (master-only).**
+- **Ngrok Tunnel Fallback:** If DNS or domain fails, QCity Runners Engine can auto-start an ngrok tunnel, update all download links, and autotest the new link. If ngrok is unavailable, fallback to Freenom or other providers. All actions are logged and master/admin is notified. See QMOINGROK.md for details.
 
 ### Self-Developer & Evolution
 - Runners analyze build/test failures and evolve error-fixing strategies
@@ -67,13 +69,14 @@ QCity Runners Engine is QMOI’s universal, self-hosted runner system for CI/CD,
 - **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every runner engine update, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QCity Runners Engine now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
+- **Ngrok Tunnel Integration:** QCity Runners Engine now supports ngrok tunnel automation for all download and service links. All links are autotested, and if ngrok is active, links are updated to use the ngrok URL. See QMOINGROK.md for details.
 
 ### DNS & Download Link Auto-Resolution
-- **DNS Auto-Check & Fix:** QCity Runners Engine now automatically checks and fixes DNS for all download links (downloads.qmoi.app). If DNS fails, it triggers an auto-fix routine, notifies master/admin, and logs all actions.
-- **Freenom Fallback:** If DNS cannot be fixed, QCity Runners Engine auto-registers a free fallback domain via Freenom, updates all download links, and ensures downloads remain available. All actions are logged and master/admin is notified.
-- **Zero-Rated & Fallback Links:** If DNS cannot be fixed immediately, QCity Runners Engine auto-switches to zero-rated or fallback CDN links (see ZERORATEDQMOI.md) to ensure downloads always work.
-- **Dashboard Integration:** Master can view DNS/link health and trigger manual checks from the dashboard.
-- **Full Automation:** All DNS and link health checks, fixes, and fallback logic are fully automated and require no manual intervention.
+- **DNS & Tunnel Auto-Check & Fix:** QCity Runners Engine now automatically checks and fixes DNS and ngrok tunnel health for all download links (downloads.qmoi.app or ngrok URLs). If DNS or tunnel fails, it triggers an auto-fix routine, notifies master/admin, and logs all actions.
+- **Freenom & Ngrok Fallback:** If DNS cannot be fixed, QCity Runners Engine auto-registers a free fallback domain via Freenom or starts an ngrok tunnel, updates all download links, and ensures downloads remain available. All actions are logged and master/admin is notified. See QMOINGROK.md for details.
+- **Zero-Rated & Fallback Links:** If DNS and ngrok cannot be fixed immediately, QCity Runners Engine auto-switches to zero-rated or fallback CDN links (see ZERORATEDQMOI.md) to ensure downloads always work.
+- **Dashboard Integration:** Master can view DNS/tunnel/link health and trigger manual checks from the dashboard.
+- **Full Automation:** All DNS, tunnel, and link health checks, fixes, and fallback logic are fully automated and require no manual intervention.
 
 ---
-*QCity Runners Engine: The backbone of QMOI’s self-developing, ever-evolving automation. All automation, monitoring, and error fixing are always up to date and visible in the dashboard.* 
+*QCity Runners Engine: The backbone of QMOI’s self-developing, ever-evolving automation. All automation, monitoring, and error fixing are always up to date and visible in the dashboard. See QMOINGROK.md for ngrok details.* 

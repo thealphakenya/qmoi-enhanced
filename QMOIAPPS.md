@@ -18,6 +18,7 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 - All QMOI apps are available in Qstore with full versioning, releases, and device-specific download links.
 - Qstore features modern, animated icons and UI, with device-optimized performance and auto-error fixing for all apps.
 - Master/admin can access advanced controls, customer care, and audit logs in QCity.
+- **Ngrok Tunnel Support:** QMOI can automatically start, monitor, and update ngrok tunnels for all download and service endpoints. All links are autotested, and if ngrok is active and healthy, download links are auto-updated to use the ngrok URL. See QMOINGROK.md for details.
 
 ## UI/UX & Performance
 - All apps feature modern, customizable UI, animated icons, and device-optimized performance.
@@ -31,8 +32,9 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 
 - **QMOIAUTOMAKENEW.md Integration:** QMOI Apps ecosystem now supports autoclone/automake-new actions for any app, device, or platform from QCity, with master-only controls and audit logging.
 - **QMOIBROWSER.md Integration:** QMOI Apps use the QMOI Browser to autotest and fix all app links and downloads, ensuring all links are always working and up to date.
+- **Ngrok Integration:** QMOI can use ngrok for secure, always-on, cloud-accessible download and service links. All links are autotested, and if ngrok is active, links are updated to use the ngrok URL. See QMOINGROK.md for details.
 - **Always-On Cloud Operation:** All QMOI Apps are managed and updated in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
 - **Enhanced QCity Runners & Devices:** All app runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every app update or release, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QMOI Apps now contribute to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 
-- **Download Links:** All download links are always up to date, can use any provider/platform, and are managed by QMOI's multi-platform domain automation. See QMOIDOMAINS.md and QMOIDNS.md for details. 
+- **Download Links:** All download links are always up to date, can use any provider/platform, and are managed by QMOI's multi-platform domain and tunnel automation. See QMOIDOMAINS.md, QMOIDNS.md, and QMOINGROK.md for details. 
