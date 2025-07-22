@@ -1,0 +1,56 @@
+{
+  "android": {
+    "device": "android",
+    "binary": "Qmoi_apps/android/qmoi ai.apk",
+    "status": "success",
+    "details": "Install test passed (simulated)."
+  },
+  "windows": {
+    "device": "windows",
+    "binary": "Qmoi_apps/windows/qmoi ai.exe",
+    "status": "success",
+    "details": "Install test passed (simulated)."
+  },
+  "macos": {
+    "device": "macos",
+    "binary": "Qmoi_apps/mac/qmoi ai.dmg",
+    "status": "success",
+    "details": "Install test passed (simulated)."
+  },
+  "linux": {
+    "device": "linux",
+    "binary": "Qmoi_apps/linux/qmoi ai.AppImage",
+    "status": "success",
+    "details": "Install test passed (simulated)."
+  },
+  "ios": {
+    "device": "ios",
+    "binary": "Qmoi_apps/ios/qmoi ai.ipa",
+    "status": "success",
+    "details": "Install test passed (simulated)."
+  },
+  "chromebook": {
+    "device": "chromebook",
+    "binary": "Qmoi_apps/chromebook/qmoi ai.deb",
+    "status": "success",
+    "details": "Install test passed (simulated)."
+  },
+  "raspberrypi": {
+    "device": "raspberrypi",
+    "binary": "Qmoi_apps/raspberrypi/qmoi ai.img",
+    "status": "success",
+    "details": "Install test passed (simulated)."
+  },
+  "smarttv": {
+    "device": "smarttv",
+    "binary": "Qmoi_apps/smarttv/qmoi ai.apk",
+    "status": "success",
+    "details": "Install test passed (simulated)."
+  },
+  "qcity": {
+    "device": "qcity",
+    "binary": "Qmoi_apps/qcity/qmoi ai.zip",
+    "status": "success",
+    "details": "Install test passed (simulated)."
+  }
+}
