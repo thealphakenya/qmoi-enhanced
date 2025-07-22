@@ -69,6 +69,24 @@ This reference catalogs all .md files in the QMOI system, grouped and categorize
 - **Ngrok Integration:** QMOI supports ngrok as a secure, automated tunnel provider for download and service links. See QMOINGROK.md for details.
 - For troubleshooting, see DOWNLOADQMOIAIAPPALLDEVICES.md and QMOIBROWSER.md for autotesting and auto-fix logic.
 
+## 🚀 Universal Device Installation & Optimization
+- Every QMOI app is built, packaged, and signed using platform-specific best practices (Android Studio, Xcode, Electron, PyInstaller, etc.) for maximum compatibility and trust.
+- Automated installation instructions, dependencies, and system requirements are provided and updated for every device type in INSTALLATION.md and README.md.
+- All binaries are verified and signed to avoid permission or trust issues on any device.
+- Device-specific enhancements are included:
+  - Android: Universal APK/App Bundle, architecture checks, auto-update, voice control, offline mode, parsing error auto-fix.
+  - Windows: 64-bit .exe, architecture match, digital signing, SmartScreen bypass, system tray, touchscreen, widgets.
+  - macOS: .dmg/.app, code signing, Apple Silicon support, Spotlight/Siri integration.
+  - Linux: .AppImage/.deb/.rpm, execute permissions, CLI/daemon/cron, dependency auto-check.
+  - iOS: .ipa, TestFlight/App Store, Siri shortcuts, Face ID, push notifications.
+  - Chromebook: APK/PWA/Linux app, Play Store/Web, Google Drive sync, offline mode, hybrid UI.
+  - Raspberry Pi: ARMv7/ARM64 .deb, GPIO/sensor integration, energy-efficient always-on node.
+  - Smart TV: TV APK/Web app, ADB/USB sideload, voice remote, dashboard, automation status.
+  - QCity: Web/Electron/VR app, real-time dashboard, smart nodes, orchestration, live tracking.
+- Automated troubleshooting and self-healing logic for common install errors (parsing, architecture mismatch, permission issues) is included in every build and documented in INSTALLATION.md.
+- All .md files are auto-updated to reflect the latest installation, troubleshooting, and optimization logic for every platform and device.
+- Summary tables and platform-specific guides are maintained and auto-updated for reference and support.
+
 ---
 
 *Last updated: 2025-07-22*
