@@ -240,6 +240,27 @@ def ensure_ios_install(binary_path):
     # ...
     return result
 
+def build_and_test_all():
+    platforms = [
+        "android", "windows", "macos", "linux", "ios", "chromebook", "raspberrypi", "smarttv", "qcity"
+    ]
+    results = {}
+    for platform in platforms:
+        # Simulate build
+        build_result = build_app(platform)
+        # Simulate install test
+        install_result = test_install(platform)
+        # Auto-fix and rebuild if error
+        if install_result["status"] != "success":
+            fix_result = auto_fix(platform)
+            build_result = build_app(platform)
+            install_result = test_install(platform)
+        results[platform] = {
+            "build": build_result,
+            "install": install_result
+        }
+    return results
+
 def main(update_links_only=False):
     if update_links_only:
         update_download_links()
@@ -387,3 +408,5 @@ if __name__ == "__main__":
         print('Real-time download link updater is running in the background.')
         while True:
             time.sleep(3600)
+    results = build_and_test_all()
+    print("Build and install validation complete:", results)
