@@ -25,6 +25,7 @@ build_apps:
   stage: build
   script:
     - python scripts/qmoi-app-builder.py
+    - python3 scripts/qmoi-download-link-tester.py --autofix --report
   tags:
     - cloud
   only:
