@@ -87,6 +87,7 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
   3. All issues are logged in real time and prioritized for immediate fix.
 - **Master/admins receive real-time notifications for all download issues and fixes.**
 - For persistent issues, contact Qteam Customer Care via the app or email. 
+- For troubleshooting, see QMOIBROWSER.md and QMOIBINARIES.md.
 
 ## New Integrations & Enhancements
 
@@ -96,3 +97,28 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 - **Enhanced QCity Runners & Devices:** All download runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every download or release, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QMOI download system now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
+[Qmoi_apps/windows/qmoi ai.exe] autotest status: FAIL
+
+[Qmoi_apps/android/qmoi ai.apk] autotest status: FAIL
+
+[Qmoi_apps/mac/qmoi ai.dmg] autotest status: FAIL
+
+[Qmoi_apps/linux/qmoi ai.AppImage] autotest status: FAIL
+
+[Qmoi_apps/ios/qmoi ai.ipa] autotest status: FAIL
+
+[Qmoi_apps/chromebook/qmoi ai.deb] autotest status: FAIL
+
+[Qmoi_apps/raspberrypi/qmoi ai.img] autotest status: FAIL
+
+[Qmoi_apps/qcity/qmoi ai.zip] autotest status: FAIL
+
+[Qmoi_apps/windows/qmoi ai.exe] autotest status: FAIL
+
+[Qmoi_apps/android/qmoi ai.apk] autotest status: FAIL
+
+[Qmoi_apps/mac/qmoi ai.dmg] autotest status: FAIL
+
+[Qmoi_apps/linux/qmoi ai.AppImage] autotest status: FAIL
+
+[Qmoi_apps/ios/qmoi ai.ipa] autotest status: FAIL

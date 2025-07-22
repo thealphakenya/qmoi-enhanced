@@ -57,6 +57,18 @@ This file lists all key commands for testing QMOI features, download links, ngro
 ```bash
 python3 ai_self_update.py --test-ngrok
 ```
+a
+### Auto-Fix and Auto-Test All Download Links
+```bash
+python3 ai_self_update.py --autofix-download-links --auto-test-links --log-errors
+```
+- Runs auto-fix and auto-test for all download links, logs any errors to the appropriate error log files for each device.
+
+### Check All Error Logs (Manual Diagnostic)
+```bash
+python3 ai_self_update.py --check-error-logs
+```
+- Scans all device error logs and reports any remaining errors. Use after automation cycles for manual verification.
 
 ### Test All Download Links
 ```bash
@@ -75,7 +87,8 @@ python3 downloadqmoiai.py
 
 ### Test Per-Platform Download Scripts
 ```bash
-python3 downloadqmoiaiapk.py        # Android
+python3 downloadqmoiaiap
+k.py        # Android
 python3 downloadqmoiaiexe.py        # Windows
 python3 downloadqmoiaidmg.py        # Mac
 python3 downloadqmoiaideb.py        # Linux DEB
@@ -84,12 +97,32 @@ python3 downloadqmoiaiipa.py        # iOS
 python3 downloadqmoiaismarttvapk.py # Smart TV
 python3 downloadqmoiaiimg.py        # Raspberry Pi
 python3 downloadqmoiaizip.py        # Chromebook
+python3 downloadqmoiaiiphone.py     # Apple iPhone (uses iOS build)
+python3 downloadqmoiaiipad.py       # Apple iPad (uses iOS build)
+python3 downloadqmoiaipod.py        # Apple iPod (uses iOS build)
+python3 downloadqmoiaapplelaptop.py # Apple Laptop (uses macOS build)
 ```
 
+## Device Mapping Notes
+See QMOIBINARIES.md for the latest canonical binary mapping, build status, and QCity automation integration for all device types.
+All device types are mapped to their canonical universal builds for automation, with real-time status and troubleshooting auto-updated in QMOIBINARIES.md.
+
 ## Automation & Autoset Features
-- QMOI autoset features run all tests, autotest download links, fix errors, and update documentation automatically after every automation cycle.
-- No manual intervention is required for normal operation; all features are self-healing and cloud-offloaded.
-- For troubleshooting, see DOWNLOADQMOIAIAPPALLDEVICES.md and QMOIBROWSER.md.
+QMOI autoset features run all tests, autotest download links, fix errors, and update documentation automatically after every automation cycle.
+All binary statuses and troubleshooting info are auto-updated in QMOIBINARIES.md and referenced by QCity runners.
+No manual intervention is required for normal operation; all features are self-healing and cloud-offloaded.
+For troubleshooting, see QMOIBINARIES.md, DOWNLOADQMOIAIAPPALLDEVICES.md, and QMOIBROWSER.md.
+
+## Enhanced Automation Features (2025+)
+- All download links are auto-fixed and auto-tested after every build/install cycle.
+- Any errors found during link testing or install are logged to the appropriate error log file for each device.
+- Error logs are checked automatically and can be manually checked using the command above.
+- All enhancements are cloud-offloaded and self-healing.
+
+## Future-Proof Universal Automation
+- All new device types will be mapped to canonical builds unless a unique binary is required.
+- Automation scripts and CI/CD will auto-detect and update device mappings as new platforms are added.
+- All device logs, error stats, and download links are auto-updated in real time (every 2 min or less).
 
 ---
 

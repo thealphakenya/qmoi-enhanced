@@ -25,3 +25,28 @@ Qstore is the central hub for all QMOI (skv) apps, updates, and downloads. Every
 - All actions are logged and auditable for full accountability. 
 
 > **Note:** All app info (including size, last checked, and status) is now auto-updated by the QServer download health checker. The app listing table below is always up-to-date and precise. All download links are autotested and auto-fixed by QServer. 
+[Qmoi_apps/windows/qmoi ai.exe] autotest status: FAIL
+
+[Qmoi_apps/android/qmoi ai.apk] autotest status: FAIL
+
+[Qmoi_apps/mac/qmoi ai.dmg] autotest status: FAIL
+
+[Qmoi_apps/linux/qmoi ai.AppImage] autotest status: FAIL
+
+[Qmoi_apps/ios/qmoi ai.ipa] autotest status: FAIL
+
+[Qmoi_apps/chromebook/qmoi ai.deb] autotest status: FAIL
+
+[Qmoi_apps/raspberrypi/qmoi ai.img] autotest status: FAIL
+
+[Qmoi_apps/qcity/qmoi ai.zip] autotest status: FAIL
+
+[Qmoi_apps/windows/qmoi ai.exe] autotest status: FAIL
+
+[Qmoi_apps/android/qmoi ai.apk] autotest status: FAIL
+
+[Qmoi_apps/mac/qmoi ai.dmg] autotest status: FAIL
+
+[Qmoi_apps/linux/qmoi ai.AppImage] autotest status: FAIL
+
+[Qmoi_apps/ios/qmoi ai.ipa] autotest status: FAIL
