@@ -3,322 +3,89 @@
 # [ENHANCEMENT] Ngrok tunnel health is checked and auto-fixed before any download/build/deploy. All download links are auto-updated to use ngrok URL if active and healthy. See QMOINGROK.md for details.
 
 stages:
-  - setup
-  - pre-autotest
-  - health-check
-  - ngrok-tunnel-check
-  - auto-fix
-  - validate
-  - test
   - build
+  - test
   - deploy
-  - notify
-  - auto-evolution
-  - universal-languages
-  - cloud-offload
-  - enhanced-monitoring
-  - git-operations
-  - cleanup
+  - heal
 
 variables:
-  NODE_ENV: production
-  CI: true  QMOI_AUTO_FIX:true"
-  QMOI_NOTIFICATIONS: "true  QMOI_ERROR_RECOVERY: true  QMOI_CLONED_PLATFORM: "true"
-  QMOI_ALWAYS_SUCCESS: "true  QMOI_UNIVERSAL_LANGUAGES: true
-  QMOI_AUTO_EVOLUTION:trueQMOI_CLOUD_OFFLOAD:true"
-  QMOI_ENHANCED_MONITORING:true"
-  QMOI_PARALLEL_PROCESSING: "true"
-  QMOI_WHATSAPP_NOTIFICATIONS: "trueQMOI_EMAIL_NOTIFICATIONS: "true"
-  QMOI_HEALTH_CHECK: true"
-  QMOI_GIT_OPERATIONS: "true"
-  QMOI_FEATURE_IMPLEMENTATION: "true  MASTER_EMAILS:rovicviccy@gmail.com,thealphakenya@gmail.com
-  # NGROK_AUTH_TOKEN should be set securely in the CI/CD environment, not in plaintext. See QMOINGROK.md for secure storage best practices.
+  QMOI_EMAIL_USER: $QMOI_EMAIL_USER
+  QMOI_EMAIL_PASS: $QMOI_EMAIL_PASS
+  QMOI_EMAIL_RECIPIENT: $QMOI_EMAIL_RECIPIENT
+  QMOI_SLACK_WEBHOOK: $QMOI_SLACK_WEBHOOK
+  QMOI_TWILIO_SID: $QMOI_TWILIO_SID
+  QMOI_TWILIO_TOKEN: $QMOI_TWILIO_TOKEN
+  QMOI_TWILIO_WHATSAPP: $QMOI_TWILIO_WHATSAPP
+  QMOI_TELEGRAM_TOKEN: $QMOI_TELEGRAM_TOKEN
+  QMOI_TELEGRAM_CHAT: $QMOI_TELEGRAM_CHAT
+  QMOI_DISCORD_WEBHOOK: $QMOI_DISCORD_WEBHOOK
+  QMOI_CODESPACES: "true"
 
-setup:
-  stage: setup
-  script:
-    - npm install
-    - pip install -r requirements.txt
-    - go mod download
-    - cargo build --release
-    - python scripts/qmoi-universal-runtime.py --setup
-    - python scripts/qmoi-enhanced-auto-evolution.py --setup
-    - python scripts/qmoi-enhanced-live-status.py --setup
-    - python scripts/qmoi-enhanced-health-checker.py --setup
-    - python scripts/qmoi-qcity-enhanced-automatic.py --setup
-    - npm run qmoi:setup
-  artifacts:
-    paths:
-      - node_modules/
-      - __pycache__/
-      - target/
-      - dist/
-
-ngrok-tunnel-check:
-  stage: ngrok-tunnel-check
-  script:
-    - echo "Checking and auto-fixing ngrok tunnel for all download/service endpoints (see QMOINGROK.md)"
-    - python scripts/qmoi-ngrok-health-checker.py --auto-fix || python scripts/qmoi-ngrok-fallback.py --use-fallback
-    - python scripts/qmoi-notifications.py --ngrok-status
-    - echo "If ngrok cannot be fixed, auto-switching to Freenom, fallback, or CDN links (see QMOIDOMAINS.md, QMOIDNS.md, ZERORATEDQMOI.md)"
-  retry: 2
-  allow_failure: false
-  only:
-    - main
-
-pre-autotest:
-  stage: pre-autotest
-  script:
-    - echo "Running multi-platform pre-autotests with universal language support"
-    - python scripts/qmoi-preautotest.py --universal-languages || (echo "Pre-autotest failed, notifying master and halting pipeline. && exit 1)
-    - python scripts/qmoi-universal-runtime.py --pre-autotest
-    - python scripts/qmoi-enhanced-auto-evolution.py --pre-autotest
-    - python scripts/qmoi-enhanced-health-checker.py --pre-autotest
-  retry: 2low_failure: false
-  only:
-    - main
-
-dns-health-check:
-  stage: setup
-  script:
-    - echo "Checking and auto-fixing DNS for all download/service domains (see QMOIDNS.md)"
-    - python scripts/qmoi-dns-health-checker.py --auto-fix || python scripts/qmoi-dns-fallback.py --use-fallback
-    - python scripts/qmoi-notifications.py --dns-status
-    - echo "If DNS cannot be fixed, auto-switching to zero-rated/fallback/CDN links (see ZERORATEDQMOI.md)"
-  retry: 2
-  allow_failure: false
-  only:
-    - main
-
-# Enhanced Health Check Stage
-health-check:
-  stage: health-check
-  script:
-    - echo "Running comprehensive health checks for all .md files and features"
-    - python scripts/qmoi-enhanced-health-checker.py --comprehensive
-    - python scripts/qmoi-qcity-enhanced-automatic.py --health-check
-    - python scripts/qmoi-feature-validator.py --validate-all
-    - python scripts/qmoi-cross-reference-checker.py --check-all
-  artifacts:
-    paths:
-      - qmoi-health-check-results.json
-      - qmoi-feature-validation-results.json
-      - qmoi-cross-reference-results.json
-  retry: 2llow_failure: true
-
-# All jobs below are retried up to 3 times for guaranteed success. Master can manually override any failed stage.
-auto-fix:
-  stage: auto-fix
-  script:
-    - npm run qmoi:fix
-    - python scripts/qmoi-error-handler.py --universal-languages
-    - python scripts/qmoi-universal-runtime.py --auto-fix
-    - python scripts/qmoi-enhanced-auto-evolution.py --auto-fix
-    - python scripts/qmoi-enhanced-health-checker.py --auto-fix
-    - python scripts/qmoi-feature-implementer.py --auto-implement
-    - python scripts/qmoi-cross-reference-fixer.py --fix-all
-  retry: 3llow_failure: true
-
-validate:
-  stage: validate
-  script:
-    - npm run lint
-    - npm run type-check
-    - npm run format:check
-    - python scripts/qmoi-universal-runtime.py --validate
-    - python scripts/qmoi-enhanced-auto-evolution.py --validate
-    - python scripts/qmoi-enhanced-health-checker.py --validate
-    - python scripts/qmoi-feature-validator.py --validate
-  retry: 2llow_failure: true
-
-test:
-  stage: test
-  script:
-    - npm test || npm test || npm test # Retry up to3imes
-    - npm run test:coverage
-    - npm run test:ui
-    - npm run test:e2e
-    - python scripts/qmoi-universal-runtime.py --test
-    - python scripts/qmoi-enhanced-auto-evolution.py --test
-    - python scripts/qmoi-enhanced-health-checker.py --test
-    - python scripts/qmoi-feature-validator.py --test
-    - python scripts/autotest/qmoi_simple_autotest.py
-    - node scripts/qmoi_simple_autotest.js
-  artifacts:
-    paths:
-      - coverage/
-      - test-results/
-  retry: 3llow_failure: true
-
-build:
+build_apps:
   stage: build
   script:
-    - npm run build || npm run build # Retry up to2imes
-    - npm run build:prod
-    - python scripts/qmoi-universal-runtime.py --build
-    - python scripts/qmoi-enhanced-auto-evolution.py --build
-    - python scripts/qmoi-enhanced-health-checker.py --build
-    - python scripts/qmoi-feature-validator.py --build
-  artifacts:
-    paths:
-      - build/
-      - dist/
-  retry: 2llow_failure: true
+    - python scripts/qmoi-app-builder.py
+  tags:
+    - cloud
+  only:
+    - main
+  retry:
+    max: 2
+    when:
+      - always
 
-deploy:
+test_apps:
+  stage: test
+  script:
+    - python scripts/qmoi-app-builder.py --test
+  tags:
+    - cloud
+  only:
+    - main
+  retry:
+    max: 2
+    when:
+      - always
+
+deploy_apps:
   stage: deploy
   script:
-    - npm run qmoi:deploy || npm run qmoi:deploy # Retry up to2imes
-    - npm run gitlab:deploy
-    - python scripts/qmoi-universal-runtime.py --deploy
-    - python scripts/qmoi-enhanced-auto-evolution.py --deploy
-    - python scripts/qmoi-enhanced-health-checker.py --deploy
-    - python scripts/qmoi-feature-validator.py --deploy
-  environment:
-    name: production
+    - python scripts/qmoi-app-builder.py --deploy
+  tags:
+    - cloud
   only:
     - main
-  retry: 2llow_failure: true
+  retry:
+    max: 2
+    when:
+      - always
 
-notify:
-  stage: notify
+documentation_update:
+  stage: deploy
   script:
-    - npm run qmoi:notify
-    - python scripts/qmoi-notifications.py --universal-languages
-    - python scripts/qmoi-enhanced-live-status.py --notify
-    - python scripts/qmoi-biometric-notifications.py --send
-    - python scripts/qmoi-enhanced-health-checker.py --notify
-    - python scripts/qmoi-feature-validator.py --notify
-  retry: 2llow_failure: true
-
-auto-evolution:
-  stage: auto-evolution
-  script:
-    - python scripts/qmoi-enhanced-auto-evolution.py --start
-    - python scripts/qmoi-universal-runtime.py --evolve
-    - python scripts/qmoi-enhanced-live-status.py --evolution-status
-    - python scripts/qmoi-enhanced-health-checker.py --evolution
-    - python scripts/qmoi-feature-validator.py --evolution
-  retry: 2llow_failure: true
-
-# Universal Language Support Jobs
-universal-language-test:
-  stage: universal-languages
-  script:
-    - python scripts/qmoi-universal-runtime.py --test-all-languages
-    - python scripts/qmoi-enhanced-auto-evolution.py --test-all-environments
-    - python scripts/qmoi-language-selector.py --test
-    - python scripts/qmoi-enhanced-health-checker.py --test-languages
-    - python scripts/qmoi-feature-validator.py --test-languages
-  retry: 2llow_failure: true
-
-universal-language-build:
-  stage: universal-languages
-  script:
-    - python scripts/qmoi-universal-runtime.py --build-all-languages
-    - python scripts/qmoi-enhanced-auto-evolution.py --build-all-environments
-    - python scripts/qmoi-language-selector.py --build
-    - python scripts/qmoi-enhanced-health-checker.py --build-languages
-    - python scripts/qmoi-feature-validator.py --build-languages
-  retry: 2llow_failure: true
-
-universal-language-deploy:
-  stage: universal-languages
-  script:
-    - python scripts/qmoi-universal-runtime.py --deploy-all-languages
-    - python scripts/qmoi-enhanced-auto-evolution.py --deploy-all-environments
-    - python scripts/qmoi-language-selector.py --deploy
-    - python scripts/qmoi-enhanced-health-checker.py --deploy-languages
-    - python scripts/qmoi-feature-validator.py --deploy-languages
-  retry: 2llow_failure: true
-
-# Cloud Offload Jobs
-cloud-offload:
-  stage: cloud-offload
-  script:
-    - python scripts/qmoi-cloud-offload.py --start
-    - python scripts/qmoi-enhanced-live-status.py --cloud-status
-    - python scripts/qmoi-biometric-cloud-sync.py --sync
-    - python scripts/qmoi-enhanced-health-checker.py --cloud-offload
-    - python scripts/qmoi-feature-validator.py --cloud-offload
-  retry: 2llow_failure: true
+    - python scripts/qmoi-app-builder.py --update-docs
+  tags:
+    - cloud
   only:
     - main
+  retry:
+    max: 2
+    when:
+      - always
 
-# Enhanced Monitoring Jobs
-enhanced-monitoring:
-  stage: enhanced-monitoring
+self_heal_errors:
+  stage: heal
   script:
-    - python scripts/qmoi-enhanced-live-status.py --start-monitoring
-    - python scripts/qmoi-universal-runtime.py --monitor
-    - python scripts/qmoi-enhanced-auto-evolution.py --monitor
-    - python scripts/qmoi-biometric-monitor.py --start
-    - python scripts/qmoi-enhanced-health-checker.py --monitor
-    - python scripts/qmoi-feature-validator.py --monitor
-  retry: 2llow_failure: true
+    - python scripts/qmoi-app-builder.py --auto-fix-errors
+    - python scripts/qmoi-app-builder.py --notify-errors
+  tags:
+    - cloud
   only:
     - main
-
-# Enhanced Git Operations Stage
-git-operations:
-  stage: git-operations
-  script:
-    - echo "Performing comprehensive Git operations"
-    - python scripts/qmoi-git-auto.py --add-all
-    - python scripts/qmoi-git-auto.py --commit-all
-    - python scripts/qmoi-git-auto.py --push-all
-    - python scripts/qmoi-git-auto.py --pull-latest
-    - python scripts/qmoi-git-auto.py --resolve-conflicts
-    - python scripts/qmoi-git-auto.py --sync-repositories
-    - python scripts/qmoi-enhanced-health-checker.py --git-operations
-    - python scripts/qmoi-feature-validator.py --git-operations
-  artifacts:
-    paths:
-      - git-operations-results.json
-  retry: 2llow_failure: true
-  only:
-    - main
-
-cleanup:
-  stage: cleanup
-  script:
-    - npm run cleanup
-    - python scripts/qmoi-universal-runtime.py --cleanup
-    - python scripts/qmoi-enhanced-auto-evolution.py --cleanup
-    - python scripts/qmoi-biometric-cleanup.py --cleanup
-    - python scripts/qmoi-enhanced-health-checker.py --cleanup
-    - python scripts/qmoi-feature-validator.py --cleanup
-  when: always
-
-autotest-download-links:
-  stage: validate
-  script:
-    - echo "Autotesting and auto-updating all download links in all .md files (see QMOINGROK.md)"
-    - python scripts/qmoi-app-builder.py --update-links-only --autotest
-    - echo "All download links in all .md files have been autotested and updated to the best working link (ngrok, fallback, etc.)"
-  retry: 2
-  allow_failure: false
-  only:
-    - main
-
-ui-e2e-test:
-  stage: test
-  script:
-    - npx playwright install
-    - npx playwright test tests/ui/qmoi_ui_autotest.spec.js
-  allow_failure: false
-
-api-test:
-  stage: test
-  script:
-    - pytest tests/api/test_health.py
-  allow_failure: false
-
-md-link-check:
-  stage: test
-  script:
-    - pytest tests/md/test_md_links.py
-  allow_failure: false
+  retry:
+    max: 3
+    when:
+      - always
 
 # [NOTE] All jobs are executed in QMOI's cloned, enhanced GitLab, never the actual GitLab. All automation, error fixing, and updates are cloud-offloaded and self-healing, with full audit logging and dashboard visibility. See all .md docs for cross-platform, notification, and dashboard details.
 # [NOTE] Master-only manual override is available for any failed stage via dashboard or CLI.
