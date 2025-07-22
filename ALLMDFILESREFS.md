@@ -59,11 +59,14 @@ This reference catalogs all .md files in the QMOI system, grouped and categorize
 ---
 
 ## 🛠️ Auto-Updating & Permanent Documentation
-- All .md files are auto-updated after every automation cycle.
-- Documentation is permanent, versioned, and always reflects the latest system state.
+- All .md files are auto-updated after every automation cycle, and always include the latest direct download links for every app and platform (see QMOIAPPS.md and DOWNLOADQMOIAIAPPALLDEVICES.md).
+- Documentation confirms that every app can be downloaded, transferred (e.g. via USB), and installed offline on any device, without requiring a download or internet connection.
+- All download links are autotested and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md).
+- Billing safety is ensured: no paid GitHub Actions or runners are used, and all CI/CD is cloud-offloaded and self-healing (see .gitlab-ci.yml).
 - New files and features are automatically added to this reference.
 - **Ngrok Integration:** QMOI supports ngrok as a secure, automated tunnel provider for download and service links. See QMOINGROK.md for details.
+- For troubleshooting, see DOWNLOADQMOIAIAPPALLDEVICES.md and QMOIBROWSER.md for autotesting and auto-fix logic.
 
 ---
 
-*Last updated: 2024-06-09* 
+*Last updated: 2025-07-22*

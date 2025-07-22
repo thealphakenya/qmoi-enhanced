@@ -45,4 +45,52 @@ python scripts/qmoi-live-status.py
 - All commands and scripts are now run in QCity, Colab, or cloud environments, never on the local device.
 - QMOI only uses its own cloned GitLab, Gitpod, and other platforms for all automation, CI/CD, and development, which are more advanced than the actual ones.
 - All command examples and scripts should be run in cloud-offloaded environments, not locally.
-- See also: QMOIAVATAR.md, QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details. 
+- See also: QMOIAVATAR.md, QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details.
+
+# QMOI Command Reference - Test & Automation
+
+This file lists all key commands for testing QMOI features, download links, ngrok integration, and automation. Note: QMOI autoset features run all tests and fixes automatically in the background, so manual intervention is rarely needed. These commands are provided for manual testing, diagnostics, and verification.
+
+## Test & Diagnostic Commands
+
+### Test Ngrok Integration
+```bash
+python3 ai_self_update.py --test-ngrok
+```
+
+### Test All Download Links
+```bash
+python3 ai_self_update.py --test-download-links
+```
+
+### Test All QMOI Features (Full Diagnostic)
+```bash
+python3 ai_self_update.py --test-all
+```
+
+### Test Unified Download Script (Auto-Detect Platform)
+```bash
+python3 downloadqmoiai.py
+```
+
+### Test Per-Platform Download Scripts
+```bash
+python3 downloadqmoiaiapk.py        # Android
+python3 downloadqmoiaiexe.py        # Windows
+python3 downloadqmoiaidmg.py        # Mac
+python3 downloadqmoiaideb.py        # Linux DEB
+python3 downloadqmoiaiappimage.py   # Linux AppImage
+python3 downloadqmoiaiipa.py        # iOS
+python3 downloadqmoiaismarttvapk.py # Smart TV
+python3 downloadqmoiaiimg.py        # Raspberry Pi
+python3 downloadqmoiaizip.py        # Chromebook
+```
+
+## Automation & Autoset Features
+- QMOI autoset features run all tests, autotest download links, fix errors, and update documentation automatically after every automation cycle.
+- No manual intervention is required for normal operation; all features are self-healing and cloud-offloaded.
+- For troubleshooting, see DOWNLOADQMOIAIAPPALLDEVICES.md and QMOIBROWSER.md.
+
+---
+
+*Last updated: 2025-07-22*

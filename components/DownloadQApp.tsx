@@ -12,6 +12,7 @@ interface DeviceInfo {
   name: string;
   icon: React.ReactNode;
   downloadUrl: string;
+  sizeMB: number;
   requirements: string[];
   features: string[];
 }
@@ -22,7 +23,7 @@ const DownloadQApp: React.FC = () => {
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-  const [userAgent, setUserAgent] = useState('');
+  // userAgent state removed (was unused)
 
   useEffect(() => {
     // Check if app is already installed
@@ -32,11 +33,9 @@ const DownloadQApp: React.FC = () => {
     }
 
     // Detect user device
-    const agent = navigator.userAgent;
-    setUserAgent(agent);
     
     // Auto-detect best device match
-    const detectedDevice = detectDevice(agent);
+    const detectedDevice = detectDevice(navigator.userAgent);
     if (detectedDevice) {
       setSelectedDevice(detectedDevice);
     }
@@ -63,7 +62,8 @@ const DownloadQApp: React.FC = () => {
       os: 'android',
       name: 'Android Mobile',
       icon: <Smartphone className="w-6 h-6" />,
-      downloadUrl: '/downloads/QMOI-Android.apk',
+      downloadUrl: 'https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.apk',
+      sizeMB: 50,
       requirements: ['Android 8.0+', '2GB RAM', '500MB Storage'],
       features: ['Push Notifications', 'Offline Mode', 'Biometric Login', 'Auto-Sync']
     },
@@ -72,7 +72,8 @@ const DownloadQApp: React.FC = () => {
       os: 'ios',
       name: 'iPhone/iPad',
       icon: <Smartphone className="w-6 h-6" />,
-      downloadUrl: '/downloads/QMOI-iOS.ipa',
+      downloadUrl: 'https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.ipa',
+      sizeMB: 60,
       requirements: ['iOS 14.0+', '2GB RAM', '500MB Storage'],
       features: ['Face ID/Touch ID', 'Siri Integration', 'Apple Watch Support', 'iCloud Sync']
     },
@@ -81,7 +82,8 @@ const DownloadQApp: React.FC = () => {
       os: 'windows',
       name: 'Windows Desktop',
       icon: <Monitor className="w-6 h-6" />,
-      downloadUrl: '/downloads/QMOI-Windows.exe',
+      downloadUrl: 'https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.exe',
+      sizeMB: 120,
       requirements: ['Windows 10+', '4GB RAM', '1GB Storage'],
       features: ['System Tray', 'Auto-Startup', 'Desktop Widgets', 'Keyboard Shortcuts']
     },
@@ -90,7 +92,8 @@ const DownloadQApp: React.FC = () => {
       os: 'macos',
       name: 'Mac Desktop',
       icon: <Monitor className="w-6 h-6" />,
-      downloadUrl: '/downloads/QMOI-Mac.dmg',
+      downloadUrl: 'https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.dmg',
+      sizeMB: 110,
       requirements: ['macOS 11.0+', '4GB RAM', '1GB Storage'],
       features: ['Touch Bar Support', 'Spotlight Integration', 'Menu Bar Widget', 'Handoff']
     },
@@ -99,7 +102,8 @@ const DownloadQApp: React.FC = () => {
       os: 'windows',
       name: 'Windows Laptop',
       icon: <Laptop className="w-6 h-6" />,
-      downloadUrl: '/downloads/QMOI-Windows.exe',
+      downloadUrl: 'https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.exe',
+      sizeMB: 120,
       requirements: ['Windows 10+', '4GB RAM', '1GB Storage'],
       features: ['Battery Optimization', 'Touch Screen Support', 'Pen Input', 'Multi-Monitor']
     },
@@ -108,7 +112,8 @@ const DownloadQApp: React.FC = () => {
       os: 'macos',
       name: 'MacBook',
       icon: <Laptop className="w-6 h-6" />,
-      downloadUrl: '/downloads/QMOI-Mac.dmg',
+      downloadUrl: 'https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.dmg',
+      sizeMB: 110,
       requirements: ['macOS 11.0+', '4GB RAM', '1GB Storage'],
       features: ['Touch Bar Support', 'Force Touch', 'Backlit Keyboard', 'Thunderbolt']
     },
@@ -117,7 +122,8 @@ const DownloadQApp: React.FC = () => {
       os: 'android',
       name: 'Android Tablet',
       icon: <Tablet className="w-6 h-6" />,
-      downloadUrl: '/downloads/QMOI-Android-Tablet.apk',
+      downloadUrl: 'https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.apk',
+      sizeMB: 50,
       requirements: ['Android 8.0+', '3GB RAM', '1GB Storage'],
       features: ['Pen Support', 'Multi-Window', 'Floating Widgets', 'HD Display']
     },
@@ -126,7 +132,8 @@ const DownloadQApp: React.FC = () => {
       os: 'ios',
       name: 'iPad',
       icon: <Tablet className="w-6 h-6" />,
-      downloadUrl: '/downloads/QMOI-iPad.ipa',
+      downloadUrl: 'https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.ipa',
+      sizeMB: 60,
       requirements: ['iPadOS 14.0+', '3GB RAM', '1GB Storage'],
       features: ['Apple Pencil', 'Split View', 'Slide Over', 'Magic Keyboard']
     },
@@ -135,7 +142,8 @@ const DownloadQApp: React.FC = () => {
       os: 'linux',
       name: 'Linux Server',
       icon: <Server className="w-6 h-6" />,
-      downloadUrl: '/downloads/QMOI-Linux-Server.tar.gz',
+      downloadUrl: 'https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.appimage',
+      sizeMB: 100,
       requirements: ['Ubuntu 20.04+', '8GB RAM', '10GB Storage'],
       features: ['Docker Support', 'CLI Interface', 'Service Management', 'Logging']
     }
@@ -256,12 +264,14 @@ const DownloadQApp: React.FC = () => {
                         <div>
                           <h4 className="font-semibold">{device.name}</h4>
                           <Badge variant="secondary" className="text-xs">
-                            {device.os.toUpperCase()}
-                          </Badge>
+                          <Badge>{device.os.toUpperCase()}</Badge>
                         </div>
                       </div>
                       
                       <div className="space-y-2">
+                        <div className="text-sm text-gray-600">
+                          <strong>Size:</strong> <span className="text-xs">{device.sizeMB} MB</span>
+                        </div>
                         <div className="text-sm text-gray-600">
                           <strong>Requirements:</strong>
                           <ul className="list-disc list-inside mt-1">
@@ -270,13 +280,21 @@ const DownloadQApp: React.FC = () => {
                             ))}
                           </ul>
                         </div>
-                        
                         <div className="text-sm text-gray-600">
                           <strong>Features:</strong>
                           <ul className="list-disc list-inside mt-1">
                             {device.features.map((feature, idx) => (
                               <li key={idx} className="text-xs">{feature}</li>
                             ))}
+                          </ul>
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          <strong>Transfer & Install:</strong>
+                          <ul className="list-disc list-inside mt-1">
+                            <li className="text-xs">You can transfer the app file directly from the Qmoi_apps directory to another device using USB, SD card, Bluetooth, or any file sharing method.</li>
+                            <li className="text-xs">No internet or download required if you already have the file—just copy and install on the target device.</li>
+                            <li className="text-xs">Alternatively, download and send via email, WhatsApp, or cloud.</li>
+                            <li className="text-xs">Install by opening the file on the target device and following the standard installation process.</li>
                           </ul>
                         </div>
                       </div>

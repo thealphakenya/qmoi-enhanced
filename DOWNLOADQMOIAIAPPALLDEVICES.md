@@ -41,6 +41,8 @@ Qmoi_downloaded_apps/<platform>/v<version>/
 
 All links below are always up-to-date, autotested, and provided by QCity runners. If a download ever fails, it is automatically fixed and re-uploaded.
 
+Every app can be downloaded, transferred (e.g. via USB), and installed offline on any device, without requiring a download or internet connection. All download links are autotested and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md). Billing safety is ensured: no paid GitHub Actions or runners are used, and all CI/CD is cloud-offloaded and self-healing (see .gitlab-ci.yml).
+
 | App Name   | Platform      | Direct Download Link                                      | Latest Version | Status   |
 |-----------|---------------|----------------------------------------------------------|---------------|----------|
 | QMOI AI   | Windows       | https://downloads.qmoi.app/qmoi/windows.exe              | v1.2.3        | ✅       |
@@ -93,4 +95,4 @@ All links below are always up-to-date, autotested, and provided by QCity runners
 - **Always-On Cloud Operation:** QMOI download system is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
 - **Enhanced QCity Runners & Devices:** All download runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every download or release, ensuring documentation is always current.
-- **Increased Minimum Daily Revenue:** QMOI download system now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 
+- **Increased Minimum Daily Revenue:** QMOI download system now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.

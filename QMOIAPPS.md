@@ -15,7 +15,9 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 | ⚡   | QAutoDev (skv)      | 1.0.0   | Self-healing, auto-enhance | Auto-fix, compliance, tests | [Win](https://downloads.qmoi.app/qautodev/windows.exe) [Mac](https://downloads.qmoi.app/qautodev/mac.dmg) [Android](https://downloads.qmoi.app/qautodev/android.apk) [iOS](https://downloads.qmoi.app/qautodev/ios.ipa) [Linux](https://downloads.qmoi.app/qautodev/linux.appimage) | v1.0.0 | ✅ | Modern, animated, device-optimized | Live chat, help, feedback | More automation |
 
 ## Qstore Integration
-- All QMOI apps are available in Qstore with full versioning, releases, and device-specific download links.
+- All QMOI apps are available in Qstore with full versioning, releases, and device-specific download links. Every app can be downloaded, transferred (e.g. via USB), and installed offline on any device, without requiring a download or internet connection.
+- All download links are autotested and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md).
+- Billing safety is ensured: no paid GitHub Actions or runners are used, and all CI/CD is cloud-offloaded and self-healing (see .gitlab-ci.yml).
 - Qstore features modern, animated icons and UI, with device-optimized performance and auto-error fixing for all apps.
 - Master/admin can access advanced controls, customer care, and audit logs in QCity.
 - **Ngrok Tunnel Support:** QMOI can automatically start, monitor, and update ngrok tunnels for all download and service endpoints. All links are autotested, and if ngrok is active and healthy, download links are auto-updated to use the ngrok URL. See QMOINGROK.md for details.
@@ -37,4 +39,4 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 - **Enhanced QCity Runners & Devices:** All app runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updatitng Documentation:** All .md files are auto-updated after every app update or release, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QMOI Apps now contribute to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 
-- **Download Links:** All download links are always up to date, can use any provider/platform, and are managed by QMOI's multi-platform domain and tunnel automation. See QMOIDOMAINS.md, QMOIDNS.md, and QMOINGROK.md for details. 
+- **Download Links:** All download links are always up to date, can use any provider/platform, and are managed by QMOI's multi-platform domain and tunnel automation. See QMOIDOMAINS.md, QMOIDNS.md, and QMOINGROK.md for details.
