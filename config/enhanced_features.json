@@ -1,28 +1,28 @@
 {
-  "security": {
-    "network": {
-      "firewall": {
-        "enabled": true,
-        "threat_detection": true,
-        "traffic_analysis": true,
-        "vpn_routing": true,
-        "dns_encryption": true
-      }
+    "security": {
+        "network": {
+            "firewall": {
+                "enabled": true,
+                "threat_detection": true,
+                "traffic_analysis": true,
+                "vpn_routing": true,
+                "dns_encryption": true
+            }
+        }
+    },
+    "browser": {
+        "ad_blocking": {
+            "enabled": true,
+            "ai_detection": true,
+            "custom_filters": true,
+            "auto_update": true
+        }
+    },
+    "preview": {
+        "file_preview": {
+            "enabled": true,
+            "universal_support": true,
+            "media_controls": true
+        }
     }
-  },
-  "browser": {
-    "ad_blocking": {
-      "enabled": true,
-      "ai_detection": true,
-      "custom_filters": true,
-      "auto_update": true
-    }
-  },
-  "preview": {
-    "file_preview": {
-      "enabled": true,
-      "universal_support": true,
-      "media_controls": true
-    }
-  }
 }
