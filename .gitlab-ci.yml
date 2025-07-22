@@ -94,6 +94,20 @@ self_heal_errors:
     when:
       - always
 
+install_validation:
+  stage: test
+  script:
+    - python3 scripts/qmoi-install-autotest.py --all-devices --autofix --report
+    - cat Qmoi_apps/install_autotest_report.json
+  tags:
+    - cloud
+  only:
+    - main
+  retry:
+    max: 2
+    when:
+      - always
+
 # [NOTE] All jobs are executed in QMOI's cloned, enhanced GitLab, never the actual GitLab. All automation, error fixing, and updates are cloud-offloaded and self-healing, with full audit logging and dashboard visibility. See all .md docs for cross-platform, notification, and dashboard details.
 # [NOTE] Master-only manual override is available for any failed stage via dashboard or CLI.
 # [NOTE] No billing issues - all operations use QMOI's self-hosted runners and cloud infrastructure.

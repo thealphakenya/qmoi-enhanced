@@ -7085,3 +7085,299 @@
 [2025-07-22 16:07:07] Auto-fixing build/install for qmoi ai on smarttv
 [2025-07-22 16:07:07] Built qmoi ai for smarttv (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/smarttv/qmoi ai.apk'}
 [2025-07-22 16:07:07] Updated app download links | {'links': {}}
+[2025-07-22 16:08:08] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2af496a0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:08:08] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-22 16:08:08] Auto-fixing build/install for qmoi ai on windows
+[2025-07-22 16:08:08] Built qmoi ai for windows (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/windows/qmoi ai.exe'}
+[2025-07-22 16:08:08] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29ee4740>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:08:08] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-22 16:08:08] Auto-fixing build/install for qmoi ai on mac
+[2025-07-22 16:08:08] Built qmoi ai for mac (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/mac/qmoi ai.dmg'}
+[2025-07-22 16:08:08] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f123c0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:08:08] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-22 16:08:08] Auto-fixing build/install for qmoi ai on linux
+[2025-07-22 16:08:08] Built qmoi ai for linux (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/linux/qmoi ai.AppImage'}
+[2025-07-22 16:08:09] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13f20>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:08:09] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-22 16:08:09] Auto-fixing build/install for qmoi ai on android
+[2025-07-22 16:08:09] Built qmoi ai for android (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/android/qmoi ai.apk'}
+[2025-07-22 16:08:09] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f11520>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:08:09] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-22 16:08:09] Auto-fixing build/install for qmoi ai on ios
+[2025-07-22 16:08:09] Built qmoi ai for ios (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/ios/qmoi ai.ipa'}
+[2025-07-22 16:08:09] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12ba0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:08:09] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-22 16:08:09] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-22 16:08:09] Built qmoi ai for qcity (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/qcity/qmoi ai.zip'}
+[2025-07-22 16:08:09] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a2016d0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:08:09] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-22 16:08:09] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-22 16:08:09] Built qmoi ai for chromebook (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/chromebook/qmoi ai.deb'}
+[2025-07-22 16:08:09] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a3af8c0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:08:09] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-22 16:08:09] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-22 16:08:09] Built qmoi ai for raspberrypi (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/raspberrypi/qmoi ai.img'}
+[2025-07-22 16:08:10] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29e77710>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:08:10] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-22 16:08:10] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-22 16:08:10] Built qmoi ai for smarttv (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/smarttv/qmoi ai.apk'}
+[2025-07-22 16:08:10] Updated app download links | {'links': {}}
+[2025-07-22 16:09:10] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13aa0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:09:10] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-22 16:09:10] Auto-fixing build/install for qmoi ai on windows
+[2025-07-22 16:09:10] Built qmoi ai for windows (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/windows/qmoi ai.exe'}
+[2025-07-22 16:09:11] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2ac6a210>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:09:11] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-22 16:09:11] Auto-fixing build/install for qmoi ai on mac
+[2025-07-22 16:09:11] Built qmoi ai for mac (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/mac/qmoi ai.dmg'}
+[2025-07-22 16:09:11] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2ae4c9e0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:09:11] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-22 16:09:11] Auto-fixing build/install for qmoi ai on linux
+[2025-07-22 16:09:11] Built qmoi ai for linux (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/linux/qmoi ai.AppImage'}
+[2025-07-22 16:09:11] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13230>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:09:11] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-22 16:09:11] Auto-fixing build/install for qmoi ai on android
+[2025-07-22 16:09:11] Built qmoi ai for android (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/android/qmoi ai.apk'}
+[2025-07-22 16:09:12] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f10a40>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:09:12] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-22 16:09:12] Auto-fixing build/install for qmoi ai on ios
+[2025-07-22 16:09:12] Built qmoi ai for ios (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/ios/qmoi ai.ipa'}
+[2025-07-22 16:09:12] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f11eb0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:09:12] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-22 16:09:12] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-22 16:09:12] Built qmoi ai for qcity (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/qcity/qmoi ai.zip'}
+[2025-07-22 16:09:12] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13050>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:09:12] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-22 16:09:12] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-22 16:09:12] Built qmoi ai for chromebook (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/chromebook/qmoi ai.deb'}
+[2025-07-22 16:09:12] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2ae4c9e0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:09:12] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-22 16:09:12] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-22 16:09:12] Built qmoi ai for raspberrypi (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/raspberrypi/qmoi ai.img'}
+[2025-07-22 16:09:13] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2ac6ba40>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:09:13] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-22 16:09:13] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-22 16:09:13] Built qmoi ai for smarttv (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/smarttv/qmoi ai.apk'}
+[2025-07-22 16:09:13] Updated app download links | {'links': {}}
+[2025-07-22 16:10:13] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13f20>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:10:13] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-22 16:10:13] Auto-fixing build/install for qmoi ai on windows
+[2025-07-22 16:10:13] Built qmoi ai for windows (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/windows/qmoi ai.exe'}
+[2025-07-22 16:10:14] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13c80>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:10:14] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-22 16:10:14] Auto-fixing build/install for qmoi ai on mac
+[2025-07-22 16:10:14] Built qmoi ai for mac (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/mac/qmoi ai.dmg'}
+[2025-07-22 16:10:14] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2ac6ba40>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:10:14] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-22 16:10:14] Auto-fixing build/install for qmoi ai on linux
+[2025-07-22 16:10:14] Built qmoi ai for linux (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/linux/qmoi ai.AppImage'}
+[2025-07-22 16:10:14] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13e60>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:10:14] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-22 16:10:14] Auto-fixing build/install for qmoi ai on android
+[2025-07-22 16:10:14] Built qmoi ai for android (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/android/qmoi ai.apk'}
+[2025-07-22 16:10:14] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f10fb0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:10:14] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-22 16:10:14] Auto-fixing build/install for qmoi ai on ios
+[2025-07-22 16:10:14] Built qmoi ai for ios (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/ios/qmoi ai.ipa'}
+[2025-07-22 16:10:15] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f11d30>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:10:15] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-22 16:10:15] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-22 16:10:15] Built qmoi ai for qcity (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/qcity/qmoi ai.zip'}
+[2025-07-22 16:10:15] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13fe0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:10:15] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-22 16:10:15] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-22 16:10:15] Built qmoi ai for chromebook (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/chromebook/qmoi ai.deb'}
+[2025-07-22 16:10:15] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a1938c0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:10:15] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-22 16:10:15] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-22 16:10:15] Built qmoi ai for raspberrypi (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/raspberrypi/qmoi ai.img'}
+[2025-07-22 16:10:15] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a456690>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:10:15] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-22 16:10:15] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-22 16:10:15] Built qmoi ai for smarttv (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/smarttv/qmoi ai.apk'}
+[2025-07-22 16:10:16] Updated app download links | {'links': {}}
+[2025-07-22 16:11:16] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12f90>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:11:16] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-22 16:11:16] Auto-fixing build/install for qmoi ai on windows
+[2025-07-22 16:11:16] Built qmoi ai for windows (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/windows/qmoi ai.exe'}
+[2025-07-22 16:11:16] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13cb0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:11:16] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-22 16:11:16] Auto-fixing build/install for qmoi ai on mac
+[2025-07-22 16:11:16] Built qmoi ai for mac (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/mac/qmoi ai.dmg'}
+[2025-07-22 16:11:17] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29e77a40>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:11:17] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-22 16:11:17] Auto-fixing build/install for qmoi ai on linux
+[2025-07-22 16:11:17] Built qmoi ai for linux (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/linux/qmoi ai.AppImage'}
+[2025-07-22 16:11:17] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a424ef0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:11:17] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-22 16:11:17] Auto-fixing build/install for qmoi ai on android
+[2025-07-22 16:11:17] Built qmoi ai for android (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/android/qmoi ai.apk'}
+[2025-07-22 16:11:17] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a3fe4e0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:11:17] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-22 16:11:17] Auto-fixing build/install for qmoi ai on ios
+[2025-07-22 16:11:17] Built qmoi ai for ios (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/ios/qmoi ai.ipa'}
+[2025-07-22 16:11:17] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f10cb0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:11:17] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-22 16:11:17] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-22 16:11:17] Built qmoi ai for qcity (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/qcity/qmoi ai.zip'}
+[2025-07-22 16:11:18] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12150>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:11:18] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-22 16:11:18] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-22 16:11:18] Built qmoi ai for chromebook (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/chromebook/qmoi ai.deb'}
+[2025-07-22 16:11:18] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f125d0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:11:18] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-22 16:11:18] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-22 16:11:18] Built qmoi ai for raspberrypi (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/raspberrypi/qmoi ai.img'}
+[2025-07-22 16:11:18] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12ab0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:11:18] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-22 16:11:18] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-22 16:11:18] Built qmoi ai for smarttv (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/smarttv/qmoi ai.apk'}
+[2025-07-22 16:11:18] Updated app download links | {'links': {}}
+[2025-07-22 16:12:19] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f11430>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:12:19] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-22 16:12:19] Auto-fixing build/install for qmoi ai on windows
+[2025-07-22 16:12:19] Built qmoi ai for windows (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/windows/qmoi ai.exe'}
+[2025-07-22 16:12:19] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12a50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:12:19] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-22 16:12:19] Auto-fixing build/install for qmoi ai on mac
+[2025-07-22 16:12:19] Built qmoi ai for mac (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/mac/qmoi ai.dmg'}
+[2025-07-22 16:12:19] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12540>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:12:19] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-22 16:12:19] Auto-fixing build/install for qmoi ai on linux
+[2025-07-22 16:12:19] Built qmoi ai for linux (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/linux/qmoi ai.AppImage'}
+[2025-07-22 16:12:19] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12a80>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:12:19] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-22 16:12:19] Auto-fixing build/install for qmoi ai on android
+[2025-07-22 16:12:19] Built qmoi ai for android (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/android/qmoi ai.apk'}
+[2025-07-22 16:12:20] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f117f0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:12:20] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-22 16:12:20] Auto-fixing build/install for qmoi ai on ios
+[2025-07-22 16:12:20] Built qmoi ai for ios (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/ios/qmoi ai.ipa'}
+[2025-07-22 16:12:20] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12990>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:12:20] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-22 16:12:20] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-22 16:12:20] Built qmoi ai for qcity (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/qcity/qmoi ai.zip'}
+[2025-07-22 16:12:20] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2adef7d0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:12:20] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-22 16:12:20] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-22 16:12:20] Built qmoi ai for chromebook (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/chromebook/qmoi ai.deb'}
+[2025-07-22 16:12:21] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a276f90>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:12:21] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-22 16:12:21] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-22 16:12:21] Built qmoi ai for raspberrypi (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/raspberrypi/qmoi ai.img'}
+[2025-07-22 16:12:21] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2ae1aff0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:12:21] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-22 16:12:21] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-22 16:12:21] Built qmoi ai for smarttv (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/smarttv/qmoi ai.apk'}
+[2025-07-22 16:12:21] Updated app download links | {'links': {}}
+[2025-07-22 16:13:22] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12d80>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:13:22] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-22 16:13:22] Auto-fixing build/install for qmoi ai on windows
+[2025-07-22 16:13:22] Built qmoi ai for windows (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/windows/qmoi ai.exe'}
+[2025-07-22 16:13:22] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f138c0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:13:22] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-22 16:13:22] Auto-fixing build/install for qmoi ai on mac
+[2025-07-22 16:13:22] Built qmoi ai for mac (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/mac/qmoi ai.dmg'}
+[2025-07-22 16:13:22] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12a80>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:13:22] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-22 16:13:22] Auto-fixing build/install for qmoi ai on linux
+[2025-07-22 16:13:22] Built qmoi ai for linux (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/linux/qmoi ai.AppImage'}
+[2025-07-22 16:13:22] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f59400>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:13:22] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-22 16:13:22] Auto-fixing build/install for qmoi ai on android
+[2025-07-22 16:13:22] Built qmoi ai for android (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/android/qmoi ai.apk'}
+[2025-07-22 16:13:23] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f128d0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:13:23] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-22 16:13:23] Auto-fixing build/install for qmoi ai on ios
+[2025-07-22 16:13:23] Built qmoi ai for ios (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/ios/qmoi ai.ipa'}
+[2025-07-22 16:13:23] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12cf0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:13:23] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-22 16:13:23] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-22 16:13:23] Built qmoi ai for qcity (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/qcity/qmoi ai.zip'}
+[2025-07-22 16:13:23] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f11d90>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:13:23] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-22 16:13:23] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-22 16:13:23] Built qmoi ai for chromebook (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/chromebook/qmoi ai.deb'}
+[2025-07-22 16:13:23] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2acee240>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:13:23] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-22 16:13:23] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-22 16:13:23] Built qmoi ai for raspberrypi (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/raspberrypi/qmoi ai.img'}
+[2025-07-22 16:13:24] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a3fe4e0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:13:24] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-22 16:13:24] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-22 16:13:24] Built qmoi ai for smarttv (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/smarttv/qmoi ai.apk'}
+[2025-07-22 16:13:24] Updated app download links | {'links': {}}
+[2025-07-22 16:14:24] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2ae4c770>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:14:24] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-22 16:14:24] Auto-fixing build/install for qmoi ai on windows
+[2025-07-22 16:14:24] Built qmoi ai for windows (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/windows/qmoi ai.exe'}
+[2025-07-22 16:14:25] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13e30>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:14:25] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-22 16:14:25] Auto-fixing build/install for qmoi ai on mac
+[2025-07-22 16:14:25] Built qmoi ai for mac (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/mac/qmoi ai.dmg'}
+[2025-07-22 16:14:25] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f111c0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:14:25] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-22 16:14:25] Auto-fixing build/install for qmoi ai on linux
+[2025-07-22 16:14:25] Built qmoi ai for linux (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/linux/qmoi ai.AppImage'}
+[2025-07-22 16:14:25] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f11c10>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:14:25] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-22 16:14:25] Auto-fixing build/install for qmoi ai on android
+[2025-07-22 16:14:25] Built qmoi ai for android (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/android/qmoi ai.apk'}
+[2025-07-22 16:14:25] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2af496a0>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:14:25] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-22 16:14:25] Auto-fixing build/install for qmoi ai on ios
+[2025-07-22 16:14:25] Built qmoi ai for ios (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/ios/qmoi ai.ipa'}
+[2025-07-22 16:14:26] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2b0cb980>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:14:26] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-22 16:14:26] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-22 16:14:26] Built qmoi ai for qcity (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/qcity/qmoi ai.zip'}
+[2025-07-22 16:14:26] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a2e6d50>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:14:26] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-22 16:14:26] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-22 16:14:26] Built qmoi ai for chromebook (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/chromebook/qmoi ai.deb'}
+[2025-07-22 16:14:26] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12f30>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:14:26] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-22 16:14:26] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-22 16:14:26] Built qmoi ai for raspberrypi (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/raspberrypi/qmoi ai.img'}
+[2025-07-22 16:14:26] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12870>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:14:26] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-22 16:14:26] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-22 16:14:26] Built qmoi ai for smarttv (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/smarttv/qmoi ai.apk'}
+[2025-07-22 16:14:27] Updated app download links | {'links': {}}
+[2025-07-22 16:15:27] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2acdfb00>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:15:27] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/windows.exe'}
+[2025-07-22 16:15:27] Auto-fixing build/install for qmoi ai on windows
+[2025-07-22 16:15:27] Built qmoi ai for windows (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/windows/qmoi ai.exe'}
+[2025-07-22 16:15:27] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f11910>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:15:27] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/mac.dmg'}
+[2025-07-22 16:15:27] Auto-fixing build/install for qmoi ai on mac
+[2025-07-22 16:15:27] Built qmoi ai for mac (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/mac/qmoi ai.dmg'}
+[2025-07-22 16:15:28] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/linux.AppImage (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f13650>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:15:28] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
+[2025-07-22 16:15:28] Auto-fixing build/install for qmoi ai on linux
+[2025-07-22 16:15:28] Built qmoi ai for linux (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/linux/qmoi ai.AppImage'}
+[2025-07-22 16:15:28] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/android.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f12870>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:15:28] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/android.apk'}
+[2025-07-22 16:15:28] Auto-fixing build/install for qmoi ai on android
+[2025-07-22 16:15:28] Built qmoi ai for android (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/android/qmoi ai.apk'}
+[2025-07-22 16:15:28] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/ios.ipa (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f11c10>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:15:28] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/ios.ipa'}
+[2025-07-22 16:15:28] Auto-fixing build/install for qmoi ai on ios
+[2025-07-22 16:15:28] Built qmoi ai for ios (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/ios/qmoi ai.ipa'}
+[2025-07-22 16:15:28] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/qcity.zip (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a1a6f30>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:15:28] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/qcity.zip'}
+[2025-07-22 16:15:28] Auto-fixing build/install for qmoi ai on qcity
+[2025-07-22 16:15:28] Built qmoi ai for qcity (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/qcity/qmoi ai.zip'}
+[2025-07-22 16:15:29] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/chromebook.deb (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e2a456690>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:15:29] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/chromebook.deb'}
+[2025-07-22 16:15:29] Auto-fixing build/install for qmoi ai on chromebook
+[2025-07-22 16:15:29] Built qmoi ai for chromebook (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/chromebook/qmoi ai.deb'}
+[2025-07-22 16:15:29] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/raspberrypi.img (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29ee4740>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:15:29] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/raspberrypi.img'}
+[2025-07-22 16:15:29] Auto-fixing build/install for qmoi ai on raspberrypi
+[2025-07-22 16:15:29] Built qmoi ai for raspberrypi (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/raspberrypi/qmoi ai.img'}
+[2025-07-22 16:15:29] Download link verification failed | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk', 'error': 'HTTPSConnectionPool(host=\'downloads-qmoi.tk\', port=443): Max retries exceeded with url: /qmoi%20ai/smarttv.apk (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7a3e29f11730>: Failed to resolve \'downloads-qmoi.tk\' ([Errno -2] Name or service not known)"))'}
+[2025-07-22 16:15:29] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/smarttv.apk'}
+[2025-07-22 16:15:29] Auto-fixing build/install for qmoi ai on smarttv
+[2025-07-22 16:15:29] Built qmoi ai for smarttv (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/smarttv/qmoi ai.apk'}
+[2025-07-22 16:15:29] Updated app download links | {'links': {}}
