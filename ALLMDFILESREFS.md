@@ -87,6 +87,34 @@ This reference catalogs all .md files in the QMOI system, grouped and categorize
 - All .md files are auto-updated to reflect the latest installation, troubleshooting, and optimization logic for every platform and device.
 - Summary tables and platform-specific guides are maintained and auto-updated for reference and support.
 
+## 🛡️ Automated Build, Install, and Error-Fix Strategies
+- All builds now include:
+  - Architecture auto-detection and packaging for each device (e.g., x64 for Windows, arm64-v8a for Android, universal for macOS).
+  - Automated dependency bundling (DLLs, redistributables, drivers) for each platform.
+  - Digital signing and notarization for Windows, macOS, and Android binaries.
+  - Post-build install simulation and autotest for every device type (using emulators/VMs where possible).
+  - Auto-fix logic: If install errors (e.g., "This app can't run on your PC", parsing errors, permission issues) are detected, the build pipeline auto-rebuilds, re-signs, repackages, and re-tests until successful.
+  - Lightweight optimization: All binaries are compressed and stripped for minimal size and maximum performance.
+- Troubleshooting and auto-fix strategies are documented for each platform in INSTALLATION.md and QMOIALLDEVICESINSTALL.md.
+- All download links are autotested and auto-fixed after every build, with verification reports included in documentation.
+- All .md files and install guides are auto-updated to reflect the latest error-fix logic and install success rates for every device.
+
+## 🎨 Icon & Notification Customization
+- All QMOI apps now feature a unified, modern icon with the (Q') initial for instant brand recognition across all devices and platforms.
+- Icons are optimized for each platform (SVG, PNG, ICO, ICNS, adaptive Android XML, etc.) and auto-generated for every build.
+- Notification icons and settings are customized for each device:
+  - Android: Adaptive icon, notification channel, custom sound.
+  - Windows: System tray icon, toast notifications, quick settings.
+  - macOS: Dock icon, notification center, badge updates.
+  - Linux: AppImage icon, desktop notifications, system tray.
+  - iOS: App icon, push notification badge, custom alert sound.
+  - Chromebook: PWA icon, Chrome OS notifications.
+  - Raspberry Pi: Desktop icon, GPIO event notifications.
+  - Smart TV: Launcher icon, on-screen notifications.
+  - QCity: Web app favicon, real-time dashboard alerts.
+- All icon assets are stored in /assets and auto-included in builds for every platform.
+- Notification settings are auto-configured and documented in INSTALLATION.md and QMOIALLDEVICESINSTALL.md.
+
 ---
 
 *Last updated: 2025-07-22
