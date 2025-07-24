@@ -1,82 +1,142 @@
-# QCITYRUNNERSENGINE.md
+QCITYRUNNERSENGINE.md
+QCity Runners Engine
+Self-Hosted · Self-Healing · Ever-Evolving · Self-Developer
 
-## QCity Runners Engine: Self-Hosted, Self-Healing, Ever-Evolving, Self-Developer
+🧩 Overview
+QCity Runners Engine powers QMOI’s entire CI/CD and automation framework. Designed to auto-fix, evolve, and optimize itself, it ensures every build, download, and service stays error-free, secure, and always-on—across any platform or cloud.
 
-### Overview
-QCity Runners Engine is QMOI’s universal, self-hosted runner system for CI/CD, automation, and self-development. It powers all QMOI builds, tests, and deployments with advanced automation, error-fixing, and continuous evolution.
+🚀 Key Features
+Feature	Description
+🔧 Self-Fixing Engine	Auto-detects, auto-fixes, and restarts on failure
+🧠 Ever-Evolving	Learns from past errors, improves CI workflows automatically
+💻 Universal Deployment	Works on Colab, DagsHub, QCity, local, or cloud environments
+👨‍💻 Self-Developer	Evolves its own automation, CI/CD scripts, and code base
+📡 Live Monitoring	Dashboard shows runner health, history, and active jobs
+🔐 Secure Execution	Sandboxed runners with token revocation & log auditing
+🛠 Autotests + Health Checks	All runners continuously tested & logged in QCity
+🌐 Ngrok Integration	Starts and syncs tunnels, auto-updates links (see QMOINGROK.md)
+🌍 Platform Stats	Visual status for GitHub, GitLab, Vercel, GCP, HuggingFace, etc.
+🔒 Master-Only Control	Logs and UI controls restricted to admin/master
 
-### Key Features
-- **Self-Error-Fixing:** Auto-detects, auto-fixes, and auto-restarts on failure (health checks, dependency repair, log analysis)
-- **Ever-Evolving:** Auto-updates runner software, optimizes performance, and adapts to new environments
-- **Self-Developer:** Can auto-improve CI scripts, workflows, and even code based on build/test results
-- **Universal Deployment:** Works on any OS, cloud (Colab, DagsHub, QCity), or local device
-- **Live Monitoring:** Dashboard integration for runner health, build history, and error trends
-- **Audit Logging:** All actions are logged and visualized for compliance
-- **Secure & Isolated:** Sandboxed execution, auto-revoked tokens on suspicious activity
-- **Automated Health Checks & Autotests:** All health checks and autotests run continuously, are logged to QCity, and are visible in real time on the dashboard (master-only access to logs and controls).
-- **Self-Healing & Error-Free Downloads:** App downloads are only enabled if all health checks and autotests pass. Apps are always up to date, error-free, and auto-updating after install.
-- **Expanded Platform Stats:** Dashboard now shows status for GitLab, GitHub, Vercel, Gitpod, Netlify, HuggingFace, Quantum, Village, Azure, AWS, GCP, DigitalOcean, and more, each with icons and names.
-- **Master-Only Controls:** Advanced dashboard features, logs, and controls are only visible to master/admin users.
-- **Ngrok Tunnel Support:** QCity Runners Engine can automatically start, monitor, and update ngrok tunnels for all download and service endpoints. All links are autotested, and if ngrok is active and healthy, download links are auto-updated to use the ngrok URL. See QMOINGROK.md for details.
+🏗️ Setup Instructions
+bash
+Copy
+Edit
+# 1. Navigate to GitHub > Settings > Actions > Runners > New Self-Hosted Runner
+# 2. Follow OS-specific setup steps
+# 3. Start the runner:
+./run.sh       # For Linux/macOS
+.\run.cmd      # For Windows
+QMOI will auto-detect, log, monitor, and evolve the runner without additional config.
 
-### Setup
-1. Go to GitHub → Settings → Actions → Runners → New self-hosted runner
-2. Follow the instructions for your OS/cloud (Linux, Windows, QCity, Colab, DagsHub)
-3. Start the runner: `./run.sh` (Linux) or equivalent
-4. QMOI will auto-detect, monitor, and manage the runner
+🔄 Automation & Self-Healing
+Autotests Before Build: Each runner executes health checks before any build.
 
-### Automation & Self-Healing
-- Runners run health checks before every build
-- If a problem is detected, QMOI auto-fixes (restart, dependency install, cache clear, update)
-- If auto-fix fails, master/admin is notified with diagnostics
-- **All health checks, autotests, and error fixing are logged to QCity and visible in the dashboard (master-only).**
-- **Ngrok Tunnel Fallback:** If DNS or domain fails, QCity Runners Engine can auto-start an ngrok tunnel, update all download links, and autotest the new link. If ngrok is unavailable, fallback to Freenom or other providers. All actions are logged and master/admin is notified. See QMOINGROK.md for details.
+Auto-Repair On Failure: Fixes dependency issues, restarts process, clears cache.
 
-### Self-Developer & Evolution
-- Runners analyze build/test failures and evolve error-fixing strategies
-- Can auto-update CI scripts, optimize build steps, and document changes
-- Uses AI/ML to learn from past errors and improve over time
+Failsafe Notify: Admin/master notified with detailed logs if self-repair fails.
 
-### Monitoring & Dashboard
-- QMOI dashboard shows live runner status, health, and build history
-- All actions are logged and visualized for compliance and audit
-- **App downloads are only possible if all health checks and autotests pass (apps are always error-free and up to date).**
-- **QI download is device-aware, feature-selectable, and always provides the correct, up-to-date installer.**
-- **All .md docs are always up to date and reflect the latest automation and monitoring enhancements.**
-- **Real-Time .md File Verification & Auto-Update:** QCity Runners Engine now includes a system that verifies all .md files are up to date, accurate, and all instructions/details are met. This system runs in real time, auto-updates all .md files for enhancements, evolution, and all features, and logs all actions. See QMOIQCITYAUTOMATIC.md and .gitlab-ci.yml for details.
+Everything Logged: Logs synced to QCity for real-time dashboard visibility.
 
-### Security
-- Each runner is sandboxed and isolated
-- Tokens auto-revoked on suspicious activity
-- Full audit trail for all runner actions
+🌐 DNS + Tunnel Integration
+Auto Tunnel Start & Monitor: Instantly creates ngrok tunnels on domain failure.
 
-### Troubleshooting
-- If a runner goes offline, QMOI auto-restarts and attempts repair
-- All errors and fixes are logged and visualized
-- Master/admin can trigger manual fixes or updates
+Link Sync & Injection: Updates all .md, JSON, and UI links to live tunnel.
 
-## 🟢 Live Status & Runner Monitoring
+Fallback Chains: Uses Freenom or CDN fallback if ngrok is down.
 
-- The `qmoi-live-status.py` script streams runner logs and automation reports in real time.
-- Always running in Colab, DagsHub, or cloud, auto-restarting if cancelled or device is offline.
-- Integrates with dashboard for live runner health and build status.
+Audit Logging: Every DNS or tunnel change is logged + alert sent to master.
 
-## New Integrations & Enhancements
+🗂️ Related:
 
-- **QMOIAUTOMAKENEW.md Integration:** QCity Runners Engine can now autoclone/automake-new runners, devices, and platforms from QCity, with master-only controls and audit logging.
-- **QMOIBROWSER.md Integration:** QCity Runners Engine uses the QMOI Browser to autotest and fix all runner-related links and features, ensuring all enhancements are always working and up to date.
-- **Always-On Cloud Operation:** QCity Runners Engine is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
-- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
-- **Auto-Updating Documentation:** All .md files are auto-updated after every runner engine update, ensuring documentation is always current.
-- **Increased Minimum Daily Revenue:** QCity Runners Engine now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
-- **Ngrok Tunnel Integration:** QCity Runners Engine now supports ngrok tunnel automation for all download and service links. All links are autotested, and if ngrok is active, links are updated to use the ngrok URL. See QMOINGROK.md for details.
+QMOIDNS.md – Full DNS sync logic
 
-### DNS & Download Link Auto-Resolution
-- **DNS & Tunnel Auto-Check & Fix:** QCity Runners Engine now automatically checks and fixes DNS and ngrok tunnel health for all download links (downloads.qmoi.app or ngrok URLs). If DNS or tunnel fails, it triggers an auto-fix routine, notifies master/admin, and logs all actions.
-- **Freenom & Ngrok Fallback:** If DNS cannot be fixed, QCity Runners Engine auto-registers a free fallback domain via Freenom or starts an ngrok tunnel, updates all download links, and ensures downloads remain available. All actions are logged and master/admin is notified. See QMOINGROK.md for details.
-- **Zero-Rated & Fallback Links:** If DNS and ngrok cannot be fixed immediately, QCity Runners Engine auto-switches to zero-rated or fallback CDN links (see ZERORATEDQMOI.md) to ensure downloads always work.
-- **Dashboard Integration:** Master can view DNS/tunnel/link health and trigger manual checks from the dashboard.
-- **Full Automation:** All DNS, tunnel, and link health checks, fixes, and fallback logic are fully automated and require no manual intervention.
+QMOIDOMAINS.md – Domain management
 
----
-*QCity Runners Engine: The backbone of QMOI’s self-developing, ever-evolving automation. All automation, monitoring, and error fixing are always up to date and visible in the dashboard. See QMOINGROK.md for ngrok details.* 
+ZERORATEDQMOI.md – Zero-rated + fallback CDN links
+
+🧬 Self-Developer Logic
+Runners analyze CI logs + error patterns
+
+Autogenerate PRs to fix broken workflows
+
+Update CI YAML, environment, or even code based on success rate trends
+
+Uses ML-assisted failure diagnosis for continuous optimization
+
+📊 Monitoring & Dashboard Integration
+Live health/status chart per runner
+
+Realtime CI history, autotests, tunnel status
+
+Master-only logs & manual repair triggers
+
+Ensures all apps are only downloadable when all tests pass
+
+💡: Includes .md verifier — verifies .md documentation matches live automation
+
+🔐 Security
+Each runner sandboxed
+
+All token use logged; suspicious use auto-blocked
+
+Logs include:
+
+Init source (GitHub/Colab)
+
+IP, fingerprint
+
+Environment variables (non-sensitive)
+
+Actions triggered and fixes applied
+
+⚙️ Troubleshooting
+If a runner goes offline or errors:
+
+QMOI detects failure from heartbeat or logs
+
+Runs auto-repair script
+
+If still offline, alerts admin
+
+Can fallback to another cloud/Colab runner
+
+All actions visible in dashboard & saved to audit logs
+
+🟢 qmoi-live-status.py
+CLI/Cloud/Colab script for real-time runner + link health
+
+Auto restarts if Colab or CLI is interrupted
+
+Feeds into dashboard runner widget for live monitoring
+
+🔌 Integrations & Enhancements
+Integration	Feature
+QMOIAUTOMAKENEW.md	Autoclone + scaffold new runner projects
+QMOIBROWSER.md	Tests and fixes all runner links from browser layer
+QMOIQCITYAUTOMATIC.md	Auto-verify .md docs & update
+QMOINGROK.md	Tunnel fallback + link sync
+.gitlab-ci.yml	Pre-deploy tunnel/DNS health checks
+
+💰 Revenue Contribution Logic
+Each runner contributes to QMOI’s minimum daily revenue target
+
+Income stats per runner/job visible in money-making UI panel
+
+Prioritizes profitable jobs & auto-scales compute offload accordingly
+
+✅ Summary
+Capability	Status
+Continuous Runner Monitoring	✅
+DNS & Tunnel Auto-Repair	✅
+Self-Developer Enhancements	✅
+Ngrok Link Injection	✅
+Cloud & Local Compatibility	✅
+Real-Time .md File Verifier	✅
+Zero-Rated Fallback Support	✅
+Enhanced Platform Integration	✅
+Master-Only Dashboard Controls	✅
+Auto-Revenue Contribution	✅
+
+🧠 QCity Runners Engine is the AI backbone of QMOI’s automation. Self-hosted or cloud-offloaded, it guarantees uptime, correctness, and evolution—autonomously. See QMOINGROK.md and QMOIDNS.md for full link sync/fallback system.
+

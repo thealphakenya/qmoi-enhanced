@@ -1,47 +1,111 @@
-# QMOIDNS.md
+QMOIDNS.md
+QMOI DNS & Tunnel Management Automation System
+The QMOI DNS system manages and automates the full lifecycle of DNS and ngrok tunnel configurations to ensure high availability, instant failover, and secure delivery of all QMOI downloads and services.
 
-## QMOI DNS & Tunnel Management & Automation System
+🌐 Core Features
+Feature	Description
+🔁 Automated DNS & Tunnel Checks	QMOI continuously monitors all critical DNS records and ngrok tunnel endpoints.
+🛠 Auto-Setup & Repair	Automatically sets or repairs A, CNAME, TXT, and other records when missing/misconfigured.
+🚨 Auto-Fix Routine	On failure, QMOI triggers a self-healing routine and logs all diagnostics.
+🌍 Fallback Switching	Seamless failover to zero-rated CDN or ngrok (see ZERORATEDQMOI.md & QMOINGROK.md) when primary DNS fails.
+📊 Dashboard Integration	Master/admins can view real-time DNS/tunnel health, trigger manual repairs, and view logs via the QCity dashboard.
+🤖 Fully Automated	No manual steps required — all checks, repairs, updates, and fallbacks are hands-free.
+🪵 Audit Logging	Every DNS/tunnel event (check, fix, failover) is logged for traceability.
 
-QMOI now features a fully automated DNS and tunnel management system for all download and service domains (e.g., downloads.qmoi.app) and ngrok tunnels. This system ensures DNS and tunnels are always correctly set up, monitored, and repaired, guaranteeing maximum uptime and reliability for all QMOI features.
+🔌 API & UI Integration
+Endpoint	Purpose
+GET /api/qcity/dns-health	Returns DNS status for all configured domains
+GET /api/qcity/ngrok-health	Returns ngrok tunnel status
+POST /api/qcity/dns-fix	Manually triggers DNS reconfiguration (master-only)
+POST /api/qcity/ngrok-fix	Manually restarts ngrok tunnels (master-only)
 
-### Core Features
-- **Automated DNS & Tunnel Checks:** QMOI continuously checks DNS health for all critical domains and ngrok tunnel health for all endpoints.
-- **Auto-Setup & Repair:** If DNS or tunnel is missing or misconfigured, QMOI automatically sets up or repairs DNS records or restarts ngrok tunnels using API integration or automation.
-- **DNS & Tunnel Auto-Fix Routine:** On any DNS or tunnel failure, QMOI triggers an auto-fix routine, logs the issue, and notifies master/admin. All actions are auditable.
-- **Zero-Rated, Fallback, & Ngrok Links:** If DNS cannot be fixed immediately, QMOI auto-switches to zero-rated, fallback CDN, or ngrok tunnel links (see ZERORATEDQMOI.md and QMOINGROK.md) to ensure downloads and services remain available.
-- **Dashboard Integration:** Master can view DNS/tunnel health, trigger manual checks/fixes, and review logs from the QCity dashboard.
-- **Full Automation:** All DNS and tunnel management, health checks, fixes, and fallback logic are fully automated and require no manual intervention.
-- **Audit Logging:** All DNS and tunnel actions are logged for compliance and troubleshooting.
+✅ All endpoints require API key authentication.
 
-### API & UI
-- `/api/qcity/dns-health` and `/api/qcity/ngrok-health` for real-time DNS and tunnel health status.
-- `/api/qcity/dns-fix` and `/api/qcity/ngrok-fix` to trigger manual DNS or tunnel fix (master-only, API key required).
-- QCity dashboard panel for DNS and tunnel health, logs, and manual controls (master-only).
+📍 QCity Panel includes a visual dashboard for:
 
-### Integration Points
-- **.gitlab-ci.yml:** DNS and ngrok tunnel health is checked and auto-fixed in every pipeline run before any download or deployment.
-- **QMOIBROWSER.md, QCITYRUNNERSENGINE.md, QMOIQCITYAUTOMATIC.md, QMOINGROK.md, ZERORATEDQMOI.md:** All systems use QMOI DNS and tunnel automation for link health and fallback.
+Real-time health metrics
 
-## Ngrok Tunnel Automation & Fallback
-- **Auto-Start Ngrok Tunnel:** QMOI can automatically start and monitor ngrok tunnels for all download/service endpoints.
-- **Auto-Switch Download Links:** All download links and features are auto-updated to use the new working ngrok URL if the primary domain fails or ngrok is preferred.
-- **Tunnel Monitoring & Restart:** QMOI monitors tunnel status and auto-restarts or replaces tunnels as needed.
-- **Logging & Notification:** All actions are logged and master/admin is notified of any domain or tunnel switch or change.
-- **Full Automation:** All logic is fully automated and requires no manual intervention.
+Manual override buttons
 
-### Example Flow
-1. Detect DNS or tunnel failure for downloads.qmoi.app or ngrok URL
-2. Check ngrok for available tunnel or start a new one
-3. Auto-update all download links to use new ngrok URL
-4. Notify master/admin and log all actions
-5. Monitor and auto-restart tunnel as needed
+Activity & diagnostic logs
 
----
-*QMOI DNS and tunnel automation now includes full fallback and self-healing using ngrok, Freenom, and Cloudflare for maximum reliability. See QMOINGROK.md for ngrok details.* 
+🔄 GitLab/CI Integration
+DNS/tunnel checks and auto-fixes are run before deployments or builds in .gitlab-ci.yml or CI runners:
 
-## Multi-Provider & Self-Hosted Domain Automation
-- **Multi-Provider Support:** QMOI can create, register, and manage domains from any provider (Freenom, Namecheap, GoDaddy, Cloudflare, AWS, self-hosted, etc.) using browser automation or API.
-- **Self-Registered Domains:** QMOI can create and manage its own domains and DNS infrastructure for maximum control and privacy.
-- **Platform Integration:** QMOI can use any platform for domain management and download links, and can switch between them automatically.
-- **Full Automation:** All logic is fully automated and requires no manual intervention.
-- **Audit & Logging:** All domain actions are logged and visible to master/admin in QCity. 
+yaml
+Copy
+Edit
+before_script:
+  - python scripts/check_dns_and_ngrok.py
+If a failure is detected:
+
+Tunnel is restarted
+
+DNS is re-provisioned
+
+Links are updated before continuing
+
+⚡ Ngrok Tunnel Automation
+Feature	Description
+🟢 Auto-Start	QMOI starts tunnels as needed for any service
+🔁 Auto-Rotation	If a tunnel fails, a new one is spun up and all links are updated
+🔄 Download Link Injection	UI, API, Markdown, and config files get updated dynamically
+🧪 Health Monitoring	Tunnel health is checked every minute
+📢 Notification	Admins are notified of changes/failovers
+🪵 Logging	All tunnel lifecycle events are fully logged
+
+🔁 Tunnel Failover Flow
+text
+Copy
+Edit
+1. Detect tunnel or domain failure
+2. Restart ngrok tunnel or fix DNS via API
+3. Update all affected links (UI, .md, JSON)
+4. Notify admins via QCity dashboard
+5. Monitor tunnel every 60 seconds
+🔗 Integration Points
+This DNS and tunnel automation system integrates with:
+
+QMOIBROWSER.md
+
+QCITYRUNNERSENGINE.md
+
+QMOIQCITYAUTOMATIC.md
+
+QMOINGROK.md
+
+ZERORATEDQMOI.md
+
+🌍 Multi-Provider & Self-Hosted Domain Support
+QMOI supports automated DNS across:
+
+Provider	Method
+🆓 Freenom	Browser automation
+🌐 Cloudflare	API
+🏢 Namecheap	API or Selenium
+☁️ AWS Route 53	Boto3-based automation
+🔐 Self-Hosted BIND	CLI + Python wrapper
+🔄 Ngrok	pyngrok integration
+🧠 QMOI Internal Domains	Dynamically generated and self-managed
+
+All actions are:
+
+Logged in dns-tunnel-activity.log
+
+Viewable in QCity dashboard
+
+Recoverable (automated backup of records)
+
+✅ Summary
+Feature	Description
+🌐 DNS Automation	Auto-check, auto-fix for A/CNAME/TXT records
+⚙ Tunnel Management	Start/stop/reconnect ngrok tunnels dynamically
+🔁 Fallback Switching	Seamless switch to working domain or tunnel
+📊 CI Integration	Ensures working DNS before deployment
+📋 UI Controls	Admins manage everything from QCity
+🪵 Full Audit Logging	Every step logged with timestamp & status
+🔐 Multi-Provider Support	Freenom, Cloudflare, AWS, GoDaddy, etc.
+☁️ Zero-downtime Updates	Real-time link rewriting and propagation
+
+📄 This file is maintained by QMOI Orchestrator Engine and reflects the current DNS and tunnel management state of all QMOI services. For more info, see QMOIDOMAINS.md and QMOINGROK.md.
+

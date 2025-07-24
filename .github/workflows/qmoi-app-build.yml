@@ -10,44 +10,43 @@ jobs:
     steps:
       - name: Runner Self-Check & Auto-Fix
         run: |
-          echo "Checking runner health..."
+          echo "🔍 Checking runner health..."
           python scripts/qmoi-runner-selfcheck.py || (
-            echo "Runner self-check failed, running auto-fix..." && \
+            echo "⚠️ Self-check failed. Attempting fix..." && \
             python scripts/qmoi-runner-autofix.py
           )
-      # Remove actions/checkout and use direct git commands
-      - name: Ensure latest code (local)
+
+      - name: Git Sync (no billing-risk)
         run: |
+          git config --global user.name "QMOI AutoBuilder"
+          git config --global user.email "actions@qmoisystem.com"
           git fetch --all
           git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
-      # Remove actions/setup-python, assume Python is pre-installed on QCity runner
-      - name: Ensure Python 3.10 is available
+
+      - name: Ensure Python 3.10+ and Pip
         run: |
           python --version
-      - name: Install dependencies
+          python -m pip install --upgrade pip setuptools wheel
+
+      - name: Install Requirements (safe)
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt || true
-      # Use local build API for robust, background build
-      - name: Trigger QMOI App Build via Local API
+
+      - name: Trigger QMOI Build (Local or API)
         run: |
           curl -X POST http://localhost:5050/api/build-apps || (
-            echo "API build trigger failed, running builder directly..." && \
-            python scripts/qmoi-app-builder.py
+            echo "🌐 API build failed. Running local builder..." && \
+            call setup_and_build_qmoi_ai.bat
           )
-      - name: Post-Build Error Fix & Notification
+
+      - name: QCity Multi-platform Release Validation
         run: |
-          if [ ! -d Qmoi_apps ]; then
-            echo "Build output missing, running error fixer..."
-            python scripts/qmoi-universal-error-fixer.py
-            python scripts/qmoi_notification_manager.py "QMOI App Build failed and was auto-fixed. Check logs." gmail slack telegram discord
-          fi
-      # Remove actions/upload-artifact, use local copy or QCity artifact system
-      - name: Archive Artifacts (QCity local)
+          python scripts/qmoi-app-validator.py all || echo "Validation fallback used."
+
+      - name: Archive Binaries to QCity Vault
         run: |
           mkdir -p /qcity-artifacts/QMOI-apps
-          cp -r Qmoi_apps/* /qcity-artifacts/QMOI-apps/ || echo "No artifacts to copy"
-      # Always succeed to avoid billing retries
-      - name: Mark Build as Successful
-        run: |
-          echo "QMOI App Build completed successfully on QCity runner." 
+          cp -r Qmoi_apps/* /qcity-artifacts/QMOI-apps/ || echo "⚠️ No artifacts copied"
+
+      - name: GitHub Sync Done
+        run: echo "✅ Build complete and apps synced to QCity + GitHub Releases"

@@ -3,56 +3,50 @@ QMOI Ngrok Integration & Automation
 This document describes how QMOI integrates ngrok to provide secure, always-on, cloud-accessible download and service links. It serves as an alternative or complement to Freenom and traditional domain providers.
 
 ✅ Key Features
-Ngrok Tunnel Automation: QMOI can automatically start, monitor, and restart ngrok tunnels for all download and service endpoints (e.g., QStore, QCity, app downloads).
-
-Secure Credential Storage: Ngrok auth tokens are securely stored using encrypted, persistent methods (details below).
-
-Auto-Update Download Links: All links in .md files, configs, and UIs are automatically updated with the live ngrok URL.
-
-Autotest & Health Check: If any link fails a health check, QMOI restarts the tunnel and updates all links.
-
-Fallback Logic: If ngrok is down, QMOI falls back to Freenom or custom domain mappings (see QMOIDOMAINS.md and QMOIDNS.md).
-
-Cloud/Colab Support: Ngrok runs in environments like Colab, DagsHub, and any CLI/server with Python.
-
-Audit & Logging: All tunnel lifecycle events and token accesses are logged and visible to the QCity admin panel.
+Feature	Description
+🔁 Ngrok Tunnel Automation	Automatically start, monitor, and restart ngrok tunnels for all QMOI endpoints (e.g., QStore, QCity, app downloads).
+🔐 Secure Credential Storage	Ngrok auth tokens are stored securely using encrypted, persistent methods.
+🌐 Auto-Update Download Links	All links in .md files, configs, and UIs are automatically updated with the live ngrok URL.
+🧪 Autotest & Health Check	If any link fails a health check, QMOI restarts the tunnel and updates all links.
+🛡 Fallback Logic	Falls back to Freenom or custom domain mappings (see QMOIDOMAINS.md, QMOIDNS.md).
+☁️ Cloud/Colab Support	Works in Google Colab, DagsHub, and any CLI/server with Python.
+🪵 Audit & Logging	Tunnel lifecycle events and token accesses are logged and visible in the QCity admin panel.
 
 🔐 Secure Credential Storage
-NEVER store the ngrok token directly in .py, .ipynb, or .md files.
+NEVER hardcode ngrok tokens in .py, .ipynb, or .md files.
 
-QMOI supports:
+QMOI supports secure methods like:
 
-os.environ["NGROK_AUTH_TOKEN"] (Colab/CLI)
+os.environ["NGROK_AUTH_TOKEN"] (CLI / Colab)
 
-Google Colab secrets (via colab_secret)
+Google Colab secrets (colab_secret)
 
 .env files + python-dotenv
 
-Cloud secret managers (AWS, GCP, Azure)
+Cloud Secret Managers (AWS Secrets Manager, GCP Secret Manager, Azure Vault)
 
-Only the automation engine and authorized admin accounts can access the token.
+✅ Only the automation engine and authorized admin accounts can access the token
+🪵 All access attempts are logged.
 
-All access attempts are logged.
-
-⚠️ Important: Tokens must be treated as secrets. Accidental exposure can allow external access to your tunnels.
+⚠️ Important: Treat tokens as secrets — exposure can allow external access to your tunnels.
 
 📎 Link Format Convention
-All links follow this pattern for consistency and auto-parsing:
+All ngrok links follow this format:
 
 php-template
 Copy
 Edit
-https://<ngrok_subdomain>.ngrok.io/downloads/<app>/<platform>
-Examples:
+https://<ngrok-subdomain>.ngrok.io/downloads/<app>/<platform>
+Examples
 https://qmoitunnel.ngrok.io/downloads/qbrowser/windows.exe
 
 https://abc123.ngrok.io/qcity/app/latest
 
-Dynamic public links will be auto-injected into:
+These links are dynamically injected into:
 
 UI download buttons
 
-API config files (JSON, YAML)
+API config files (.json, .yaml)
 
 Markdown documentation
 
@@ -64,20 +58,19 @@ import os
 os.system('pip install --quiet pyngrok')
 from pyngrok import ngrok
 
-ngrok.set_auth_token(os.environ["NGROK_AUTH_TOKEN"])  # Securely loaded
+ngrok.set_auth_token(os.environ["NGROK_AUTH_TOKEN"])
 tunnel = ngrok.connect(7860)
 print("Public URL:", tunnel.public_url)
 
-# QMOI script continues here to update download links using tunnel.public_url
-If running in CLI:
-
+# QMOI script continues to update download links with tunnel.public_url
+CLI Equivalent
 bash
 Copy
 Edit
 ngrok config add-authtoken $NGROK_AUTH_TOKEN
 ngrok http 7860 --log=stdout > ngrok.log &
 🔄 Ngrok Lifecycle Monitoring (Sample)
-QMOI continuously checks tunnel health and auto-recovers if issues arise:
+QMOI continuously checks tunnel health and auto-recovers:
 
 python
 Copy
@@ -91,8 +84,7 @@ def start_tunnel():
 
 def health_check(url):
     try:
-        r = requests.get(url + "/health", timeout=5)
-        return r.status_code == 200
+        return requests.get(url + "/health", timeout=5).status_code == 200
     except:
         return False
 
@@ -102,70 +94,80 @@ while True:
     if not health_check(tunnel.public_url):
         ngrok.disconnect(tunnel.public_url)
         tunnel = start_tunnel()
-        update_all_links(tunnel.public_url)  # Update .md, UI, config, etc.
-    time.sleep(60)  # Check every minute
+        update_all_links(tunnel.public_url)  # Update .md, UI, JSON, etc.
+    time.sleep(60)
 🔁 Download Link Management
-QMOI updates all download links in:
+QMOI updates all dynamic links in:
 
-Markdown files
+Markdown files (README.md, etc.)
 
-JSON config files
+JSON config files (e.g. apps.json)
 
-Web UI buttons
+Web UIs / Dashboards
 
 If ngrok becomes unhealthy:
 
 Tunnel is restarted
 
-All links are auto-updated
+All links are rewritten
 
 UIs refresh in real time (if live-bound)
 
 🧪 Health Check & Autotest Logic
-QMOI performs regular ping checks to every ngrok-served endpoint.
+QMOI performs regular pings to ngrok endpoints:
 
-If a URL becomes unreachable:
+If any link fails:
 
 The tunnel is force-restarted
 
-All linked files and configs are rewritten
+All linked files/configs are regenerated
 
-Failures are logged, and alerts sent to the admin/master account
+Admins are notified via QCity dashboard
 
 📜 Audit & Logging
-Every start, stop, reconnect, token usage, and link update is logged with:
+QMOI logs:
 
-Timestamp
+Tunnel start/stop/reconnect events
 
-Initiator (auto/manual)
+Token usage
 
-Status/result
+Health check failures
 
-Admins can view all logs in the QCity dashboard
+Admin actions
+
+🔍 Admins can view this from the QCity Dashboard or automation logs.
 
 🔗 Cross-Module Integrations
-Refer to the following documents for domain and DNS management:
+Refer to:
 
-QMOIDOMAINS.md — Freenom & custom domain fallback logic
+QMOIDOMAINS.md — Freenom & custom fallback domains
 
-QMOIDNS.md — DNS sync, caching, and refresh
+QMOIDNS.md — DNS sync, caching, refresh logic
 
-QMOIAUTODEV.md — Developer automation features
+QMOIAUTODEV.md — Developer automation capabilities
 
 📦 Additional Notes
-CLI Mode Tip: For headless operation, run ngrok as a subprocess using subprocess.Popen or shell background mode.
+CLI Mode Tip
+Run ngrok as a subprocess for headless/server mode:
 
-Persistent Tunnels: If persistent subdomains are used, ensure ngrok Pro or Teams plan is configured correctly and authorized in the token.
+python
+Copy
+Edit
+import subprocess
+subprocess.Popen(["ngrok", "http", "7860"])
+Persistent Tunnels
+Use ngrok Pro/Teams for subdomain persistence:
+
+Ensure auth_token is upgraded
+
+Bind tunnels to subdomains (qmoitunnel.ngrok.io)
 
 ✅ Summary
-QMOI’s ngrok system enables:
-
 Feature	Description
-🔄 Auto tunnel lifecycle	Start, restart, reconnect dynamically
-🧪 Health monitoring	Periodic testing of all endpoints
-🔗 Link injection	Live update to .md, UI, JSON, config files
-🔐 Token security	Uses environment-secure methods only
-☁️ Cloud support	Works in Colab, DagsHub, CLI, or headless
-🪵 Audit trails	All actions logged and visible to admin
-🛡 Fallback handling	Uses Freenom/alt-domains if ngrok is down
-
+🔄 Auto tunnel lifecycle	Start, restart, reconnect
+🧪 Health monitoring	Ping + failover recovery
+🔗 Live link injection	Update .md, UI, config
+🔐 Token security	Uses secure methods only
+☁️ Cloud support	Colab, DagsHub, CLI
+🪵 Full audit trail	Logs everything
+🛡 Domain fallback	Freenom + custom DNS

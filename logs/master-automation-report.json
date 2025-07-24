@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-07-16T23:23:48.344622",
-  "duration_seconds": 834.678234577179,
+  "timestamp": "2025-07-24T01:44:12.503267",
+  "duration_seconds": 516.474499464035,
   "total_platforms": 7,
   "successful_fixes": 2,
   "cloud_optimized": false,
@@ -44,12 +44,12 @@
     {
       "name": "dagshub",
       "success": true,
-      "message": "DagsHub fixes failed: None",
+      "message": "DagsHub fixes applied successfully",
       "suggestions": [
-        "Review DagsHub repository settings"
+        "Consider adding ML model versioning"
       ],
       "evolution_ideas": [
-        "Add DagsHub ML optimization"
+        "Implement DagsHub auto-training"
       ]
     },
     {
