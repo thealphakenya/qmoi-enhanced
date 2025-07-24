@@ -1,0 +1,13 @@
+[BUILD] Starting QMOI AI build... 
+Could Not Find D:\applications\Alpha-Q-ai\*.spec
+WARNING: Ignoring invalid distribution ~ (C:\Python313\Lib\site-packages)
+WARNING: Ignoring invalid distribution ~ip (C:\Python313\Lib\site-packages)
+Requirement already satisfied: pyinstaller in c:\users\hp\appdata\roaming\python\python313\site-packages (6.14.2)
+Requirement already satisfied: setuptools>=42.0.0 in c:\python313\lib\site-packages (from pyinstaller) (77.0.3)
+Requirement already satisfied: altgraph in c:\users\hp\appdata\roaming\python\python313\site-packages (from pyinstaller) (0.17.4)
+Requirement already satisfied: pefile!=2024.8.26,>=2022.5.30 in c:\users\hp\appdata\roaming\python\python313\site-packages (from pyinstaller) (2023.2.7)
+Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\hp\appdata\roaming\python\python313\site-packages (from pyinstaller) (0.2.3)
+Requirement already satisfied: pyinstaller-hooks-contrib>=2025.5 in c:\users\hp\appdata\roaming\python\python313\site-packages (from pyinstaller) (2025.7)
+Requirement already satisfied: packaging>=22.0 in c:\users\hp\appdata\roaming\python\python313\site-packages (from pyinstaller) (25.0)
+WARNING: Ignoring invalid distribution ~ (C:\Python313\Lib\site-packages)
+WARNING: Ignoring invalid distribution ~ip (C:\Python313\Lib\site-packages)

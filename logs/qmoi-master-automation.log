@@ -156,3 +156,32 @@
 2025-07-16 23:23:48,307 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
 2025-07-16 23:23:48,314 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
 2025-07-16 23:23:48,334 - INFO - ==================================================
+2025-07-24 01:35:36,200 - INFO - ==================================================
+2025-07-24 01:35:36,433 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,434 - WARNING - NPM packages missing or broken. Running npm install.
+2025-07-24 01:35:36,520 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,529 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,597 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,762 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,822 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,825 - INFO - Checking for Next.js updates...
+2025-07-24 01:35:36,832 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,832 - ERROR - Next.js upgrade failed: 'NoneType' object has no attribute 'stdout'
+2025-07-24 01:35:36,840 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,850 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,861 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,889 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,898 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,911 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,920 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,929 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,935 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:36,997 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:37,006 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:37,015 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:35:37,024 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:44:12,463 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:44:12,473 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:44:12,481 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:44:12,487 - ERROR - Subprocess error: [WinError 2] The system cannot find the file specified
+2025-07-24 01:44:12,493 - INFO - ==================================================

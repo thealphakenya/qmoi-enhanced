@@ -15570,3 +15570,77 @@
 [2025-07-22 20:09:20] Download link failed verification | {'url': 'https://downloads-qmoi.tk/qmoi ai/linux.AppImage'}
 [2025-07-22 20:09:20] Auto-fixing build/install for qmoi ai on linux
 [2025-07-22 20:09:20] Built qmoi ai for linux (placeholder) | {'path': '/workspaces/Alpha-Q-ai/Qmoi_apps/linux/qmoi ai.AppImage'}
+{"timestamp": "2025-07-23T22:48:04.499919", "message": "Failed to fetch latest GitHub EXE URL", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-23T22:52:00.186996", "message": "Failed to fetch latest GitHub EXE URL", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-23T23:14:25.191382", "message": "Failed to fetch GitHub release", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-23T23:14:25.217197", "message": "Using fallback EXE download URL", "context": {"url": "https://8d39-35-198-121-34.ngrok.io/qmoi-ai.exe"}}
+{"timestamp": "2025-07-23T23:14:25.231944", "message": "Downloading qmoi ai.exe (Attempt 1)", "context": {"url": "https://8d39-35-198-121-34.ngrok.io/qmoi-ai.exe"}}
+{"timestamp": "2025-07-23T23:14:26.377957", "message": "Download attempt failed", "context": {"error": "404 Client Error: Not Found for url: https://8d39-35-198-121-34.ngrok.io/qmoi-ai.exe", "attempt": 1}}
+{"timestamp": "2025-07-23T23:14:31.379468", "message": "Downloading qmoi ai.exe (Attempt 2)", "context": {"url": "https://8d39-35-198-121-34.ngrok.io/qmoi-ai.exe"}}
+{"timestamp": "2025-07-23T23:14:33.342218", "message": "Download attempt failed", "context": {"error": "404 Client Error: Not Found for url: https://8d39-35-198-121-34.ngrok.io/qmoi-ai.exe", "attempt": 2}}
+{"timestamp": "2025-07-23T23:14:38.343308", "message": "Downloading qmoi ai.exe (Attempt 3)", "context": {"url": "https://8d39-35-198-121-34.ngrok.io/qmoi-ai.exe"}}
+{"timestamp": "2025-07-23T23:14:39.280865", "message": "Download attempt failed", "context": {"error": "404 Client Error: Not Found for url: https://8d39-35-198-121-34.ngrok.io/qmoi-ai.exe", "attempt": 3}}
+{"timestamp": "2025-07-23T23:14:44.282075", "message": "API download error", "context": {"error": "Failed to download a valid EXE after retries."}}
+{"timestamp": "2025-07-23T23:54:14.427003", "message": "Failed to fetch GitHub release", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-23T23:54:14.478525", "message": "Using dynamic fallback EXE download URL", "context": {"url": "with open(\"ngrok_tunnel.txt\", \"w\") as f:\n    f.write(tunnel.public_url.strip())/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-23T23:54:14.512530", "message": "Downloading qmoi ai.exe (Attempt 1)", "context": {"url": "with open(\"ngrok_tunnel.txt\", \"w\") as f:\n    f.write(tunnel.public_url.strip())/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-23T23:54:14.513513", "message": "Download attempt failed", "context": {"error": "No connection adapters were found for 'with open(\"ngrok_tunnel.txt\", \"w\") as f:\\n    f.write(tunnel.public_url.strip())/downloads/qmoi%20ai.exe'", "attempt": 1}}
+{"timestamp": "2025-07-23T23:54:19.514415", "message": "Downloading qmoi ai.exe (Attempt 2)", "context": {"url": "with open(\"ngrok_tunnel.txt\", \"w\") as f:\n    f.write(tunnel.public_url.strip())/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-23T23:54:19.515589", "message": "Download attempt failed", "context": {"error": "No connection adapters were found for 'with open(\"ngrok_tunnel.txt\", \"w\") as f:\\n    f.write(tunnel.public_url.strip())/downloads/qmoi%20ai.exe'", "attempt": 2}}
+{"timestamp": "2025-07-23T23:54:24.516426", "message": "Downloading qmoi ai.exe (Attempt 3)", "context": {"url": "with open(\"ngrok_tunnel.txt\", \"w\") as f:\n    f.write(tunnel.public_url.strip())/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-23T23:54:24.517412", "message": "Download attempt failed", "context": {"error": "No connection adapters were found for 'with open(\"ngrok_tunnel.txt\", \"w\") as f:\\n    f.write(tunnel.public_url.strip())/downloads/qmoi%20ai.exe'", "attempt": 3}}
+{"timestamp": "2025-07-23T23:54:29.518529", "message": "API download error", "context": {"error": "Failed to download a valid EXE after retries."}}
+{"timestamp": "2025-07-24T00:02:31.633146", "message": "Failed to fetch GitHub release", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-24T00:02:31.634313", "message": "Using dynamic fallback EXE download URL", "context": {"url": "https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:02:31.635136", "message": "Downloading qmoi ai.exe (Attempt 1)", "context": {"url": "https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:02:32.257394", "message": "Download attempt failed", "context": {"error": "404 Client Error: Not Found for url: https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe", "attempt": 1}}
+{"timestamp": "2025-07-24T00:02:37.258484", "message": "Downloading qmoi ai.exe (Attempt 2)", "context": {"url": "https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:02:37.776405", "message": "Download attempt failed", "context": {"error": "404 Client Error: Not Found for url: https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe", "attempt": 2}}
+{"timestamp": "2025-07-24T00:02:42.777371", "message": "Downloading qmoi ai.exe (Attempt 3)", "context": {"url": "https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:02:43.429411", "message": "Download attempt failed", "context": {"error": "404 Client Error: Not Found for url: https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe", "attempt": 3}}
+{"timestamp": "2025-07-24T00:02:48.430628", "message": "API download error", "context": {"error": "Failed to download a valid EXE after retries."}}
+{"timestamp": "2025-07-24T00:04:53.915385", "message": "Failed to fetch GitHub release", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-24T00:04:53.916227", "message": "Using dynamic fallback EXE download URL", "context": {"url": "https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:04:53.917020", "message": "Downloading qmoi ai.exe (Attempt 1)", "context": {"url": "https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:04:54.477828", "message": "Download attempt failed", "context": {"error": "404 Client Error: Not Found for url: https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe", "attempt": 1}}
+{"timestamp": "2025-07-24T00:04:59.478957", "message": "Downloading qmoi ai.exe (Attempt 2)", "context": {"url": "https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:05:00.060203", "message": "Download attempt failed", "context": {"error": "404 Client Error: Not Found for url: https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe", "attempt": 2}}
+{"timestamp": "2025-07-24T00:05:05.061265", "message": "Downloading qmoi ai.exe (Attempt 3)", "context": {"url": "https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:05:05.747054", "message": "Download attempt failed", "context": {"error": "404 Client Error: Not Found for url: https://3cf7294944e8.ngrok-free.app/downloads/qmoi%20ai.exe", "attempt": 3}}
+{"timestamp": "2025-07-24T00:05:10.748426", "message": "API download error", "context": {"error": "Failed to download a valid EXE after retries."}}
+{"timestamp": "2025-07-24T00:32:51.782961", "message": "GitHub fetch failed", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-24T00:32:52.728298", "message": "Using dynamic fallback", "context": {"url": "https://a869f0101fc8.ngrok-free.app/downloads/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:32:52.729070", "message": "Downloading qmoi_ai.exe (Attempt 1)", "context": {"url": "https://a869f0101fc8.ngrok-free.app/downloads/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:32:54.559785", "message": "Download error", "context": {"error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))", "attempt": 1}}
+{"timestamp": "2025-07-24T00:32:59.608120", "message": "Downloading qmoi_ai.exe (Attempt 2)", "context": {"url": "https://a869f0101fc8.ngrok-free.app/downloads/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:33:01.328635", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://a869f0101fc8.ngrok-free.app/downloads/qmoi_ai.exe", "attempt": 2}}
+{"timestamp": "2025-07-24T00:33:06.330034", "message": "Downloading qmoi_ai.exe (Attempt 3)", "context": {"url": "https://a869f0101fc8.ngrok-free.app/downloads/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:33:08.827201", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://a869f0101fc8.ngrok-free.app/downloads/qmoi_ai.exe", "attempt": 3}}
+{"timestamp": "2025-07-24T00:33:13.828580", "message": "API failure", "context": {"error": "Failed to download valid EXE."}}
+{"timestamp": "2025-07-24T00:44:59.904144", "message": "GitHub fetch failed", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-24T00:44:59.997925", "message": "Using dynamic fallback", "context": {"url": "https://c75e91a40710.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:44:59.998612", "message": "Downloading qmoi ai.exe (Attempt 1)", "context": {"url": "https://c75e91a40710.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:45:01.220371", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://c75e91a40710.ngrok-free.app/downloads/qmoi%20ai.exe", "attempt": 1}}
+{"timestamp": "2025-07-24T00:45:06.221212", "message": "Downloading qmoi ai.exe (Attempt 2)", "context": {"url": "https://c75e91a40710.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:45:07.464998", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://c75e91a40710.ngrok-free.app/downloads/qmoi%20ai.exe", "attempt": 2}}
+{"timestamp": "2025-07-24T00:45:12.466008", "message": "Downloading qmoi ai.exe (Attempt 3)", "context": {"url": "https://c75e91a40710.ngrok-free.app/downloads/qmoi%20ai.exe"}}
+{"timestamp": "2025-07-24T00:45:13.636977", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://c75e91a40710.ngrok-free.app/downloads/qmoi%20ai.exe", "attempt": 3}}
+{"timestamp": "2025-07-24T00:45:18.638339", "message": "API failure", "context": {"error": "Failed to download valid EXE."}}
+{"timestamp": "2025-07-24T00:52:02.590655", "message": "GitHub fetch failed", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-24T00:52:02.656540", "message": "Using dynamic fallback", "context": {"url": "https://754fb0bdc564.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:52:02.657439", "message": "Downloading qmoi_ai.exe (Attempt 1)", "context": {"url": "https://754fb0bdc564.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:52:04.309661", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://754fb0bdc564.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe", "attempt": 1}}
+{"timestamp": "2025-07-24T00:52:09.311110", "message": "Downloading qmoi_ai.exe (Attempt 2)", "context": {"url": "https://754fb0bdc564.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:52:10.911754", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://754fb0bdc564.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe", "attempt": 2}}
+{"timestamp": "2025-07-24T00:52:15.912794", "message": "Downloading qmoi_ai.exe (Attempt 3)", "context": {"url": "https://754fb0bdc564.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:52:18.360564", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://754fb0bdc564.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe", "attempt": 3}}
+{"timestamp": "2025-07-24T00:52:23.361993", "message": "API failure", "context": {"error": "Failed to download valid EXE."}}
+{"timestamp": "2025-07-24T00:58:43.908639", "message": "GitHub fetch failed", "context": {"error": "404 Client Error: Not Found for url: https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest"}}
+{"timestamp": "2025-07-24T00:58:44.369198", "message": "Using dynamic fallback", "context": {"url": "https://377745d90cdc.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:58:44.370036", "message": "Downloading qmoi_ai.exe (Attempt 1)", "context": {"url": "https://377745d90cdc.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:58:46.423425", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://377745d90cdc.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe", "attempt": 1}}
+{"timestamp": "2025-07-24T00:58:51.424689", "message": "Downloading qmoi_ai.exe (Attempt 2)", "context": {"url": "https://377745d90cdc.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:58:53.068879", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://377745d90cdc.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe", "attempt": 2}}
+{"timestamp": "2025-07-24T00:58:58.069655", "message": "Downloading qmoi_ai.exe (Attempt 3)", "context": {"url": "https://377745d90cdc.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe"}}
+{"timestamp": "2025-07-24T00:59:00.433382", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://377745d90cdc.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe", "attempt": 3}}
+{"timestamp": "2025-07-24T00:59:05.434639", "message": "API failure", "context": {"error": "Failed to download valid EXE."}}
