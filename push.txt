@@ -1,0 +1,4 @@
+git add .
+git commit -m "WIP: Auto-save unstaged changes before rebase"
+git pull origin main --rebase
+git push origin main
