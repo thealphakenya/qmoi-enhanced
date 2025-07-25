@@ -15644,3 +15644,25 @@
 {"timestamp": "2025-07-24T00:58:58.069655", "message": "Downloading qmoi_ai.exe (Attempt 3)", "context": {"url": "https://377745d90cdc.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe"}}
 {"timestamp": "2025-07-24T00:59:00.433382", "message": "Download error", "context": {"error": "404 Client Error: Not Found for url: https://377745d90cdc.ngrok-free.app/downloads/windows/latest/qmoi_ai.exe", "attempt": 3}}
 {"timestamp": "2025-07-24T00:59:05.434639", "message": "API failure", "context": {"error": "Failed to download valid EXE."}}
+[2025-07-25 03:23:25] CI Pipeline Started
+[2025-07-25 03:23:29] Build failed | {'device': 'windows', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:23:29] Created placeholder | {'device': 'windows', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-25 03:23:29] Created placeholder | {'device': 'mac', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-25 03:23:29] Created placeholder | {'device': 'linux', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-25 03:23:29] Build failed | {'device': 'android', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:23:29] Created placeholder | {'device': 'android', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-25 03:23:29] Created placeholder | {'device': 'ios', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-25 03:23:29] Created placeholder | {'device': 'qcity', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-25 03:23:29] Created placeholder | {'device': 'chromebook', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-25 03:23:29] Created placeholder | {'device': 'raspberrypi', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-25 03:23:29] Created placeholder | {'device': 'smarttv', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-25 03:23:31] Created archive of all builds | {'zip': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qmoi_ai_all_apps.zip'}
