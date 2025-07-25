@@ -15666,3 +15666,103 @@
 [2025-07-25 03:23:29] Created placeholder | {'device': 'smarttv', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
 [2025-07-25 03:23:29] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
 [2025-07-25 03:23:31] Created archive of all builds | {'zip': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qmoi_ai_all_apps.zip'}
+[2025-07-25 03:24:27] Build and Push Successful
+[2025-07-25 03:24:27] Ngrok deploy failed | {'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:24:27] Dashboard JSON updated | {'path': 'Qmoi_apps\\dashboard.json'}
+[2025-07-25 03:40:19] Binary missing or invalid | {'device': 'windows', 'path': 'Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-25 03:40:19] Build failed | {'device': 'windows', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:40:19] Binary missing or invalid | {'device': 'mac', 'path': 'Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-25 03:40:19] Binary missing or invalid | {'device': 'linux', 'path': 'Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-25 03:40:19] Binary missing or invalid | {'device': 'android', 'path': 'Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-25 03:40:19] Build failed | {'device': 'android', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:40:19] Binary missing or invalid | {'device': 'ios', 'path': 'Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-25 03:40:19] Binary missing or invalid | {'device': 'qcity', 'path': 'Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-25 03:40:19] Binary missing or invalid | {'device': 'chromebook', 'path': 'Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-25 03:40:19] Binary missing or invalid | {'device': 'raspberrypi', 'path': 'Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-25 03:40:19] Binary missing or invalid | {'device': 'smarttv', 'path': 'Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-25 03:43:38] Build failed | {'device': 'windows', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:43:38] Created placeholder binary | {'device': 'windows', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-25 03:43:38] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-25 03:43:38] Created placeholder binary | {'device': 'mac', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-25 03:43:38] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-25 03:43:38] Created placeholder binary | {'device': 'linux', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-25 03:43:38] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-25 03:43:38] Build failed | {'device': 'android', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:43:38] Created placeholder binary | {'device': 'android', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-25 03:43:38] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-25 03:43:38] Created placeholder binary | {'device': 'ios', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-25 03:43:38] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-25 03:43:38] Created placeholder binary | {'device': 'qcity', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-25 03:43:38] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-25 03:43:38] Created placeholder binary | {'device': 'chromebook', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-25 03:43:38] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-25 03:43:38] Created placeholder binary | {'device': 'raspberrypi', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-25 03:43:38] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-25 03:43:38] Created placeholder binary | {'device': 'smarttv', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-25 03:43:38] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-25 03:43:39] Zipped all builds | {'archive': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qmoi_ai_all_apps.zip'}
+[2025-07-25 03:46:37] Build failed | {'device': 'windows', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:46:37] Created placeholder binary | {'device': 'windows', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-25 03:46:37] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-25 03:46:37] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\mac\\dist\\qmoi ai.dmg'}
+[2025-07-25 03:46:37] Created placeholder binary | {'device': 'mac', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-25 03:46:37] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-25 03:46:37] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\linux\\dist\\qmoi ai.AppImage'}
+[2025-07-25 03:46:37] Created placeholder binary | {'device': 'linux', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-25 03:46:37] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-25 03:46:37] Build failed | {'device': 'android', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:46:37] Created placeholder binary | {'device': 'android', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-25 03:46:37] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-25 03:46:37] Skipping iOS build (non-macOS)
+[2025-07-25 03:46:37] Created placeholder binary | {'device': 'ios', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-25 03:46:37] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-25 03:46:37] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\qcity\\builds\\qmoi ai.zip'}
+[2025-07-25 03:46:37] Created placeholder binary | {'device': 'qcity', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-25 03:46:37] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-25 03:46:37] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\desktop\\builds\\qmoi ai.deb'}
+[2025-07-25 03:46:37] Created placeholder binary | {'device': 'chromebook', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-25 03:46:37] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-25 03:46:37] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\pi\\images\\qmoi ai.img'}
+[2025-07-25 03:46:37] Created placeholder binary | {'device': 'raspberrypi', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-25 03:46:37] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-25 03:46:37] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\tv\\release\\qmoi ai.apk'}
+[2025-07-25 03:46:37] Created placeholder binary | {'device': 'smarttv', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-25 03:46:37] Install test failed | {'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-25 03:46:37] Zipped all builds | {'archive': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qmoi_ai_all_apps.zip'}
+[2025-07-25 03:46:47] Binary missing or invalid | {'device': 'windows', 'path': 'Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-25 03:46:47] Build failed | {'device': 'windows', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:46:47] Binary missing or invalid | {'device': 'mac', 'path': 'Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-25 03:46:47] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\mac\\dist\\qmoi ai.dmg'}
+[2025-07-25 03:46:47] Binary missing or invalid | {'device': 'linux', 'path': 'Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-25 03:46:47] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\linux\\dist\\qmoi ai.AppImage'}
+[2025-07-25 03:46:47] Binary missing or invalid | {'device': 'android', 'path': 'Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-25 03:46:47] Build failed | {'device': 'android', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 03:46:47] Binary missing or invalid | {'device': 'ios', 'path': 'Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-25 03:46:47] Skipping iOS build (non-macOS)
+[2025-07-25 03:46:47] Binary missing or invalid | {'device': 'qcity', 'path': 'Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-25 03:46:47] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\qcity\\builds\\qmoi ai.zip'}
+[2025-07-25 03:46:47] Binary missing or invalid | {'device': 'chromebook', 'path': 'Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-25 03:46:47] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\desktop\\builds\\qmoi ai.deb'}
+[2025-07-25 03:46:47] Binary missing or invalid | {'device': 'raspberrypi', 'path': 'Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-25 03:46:47] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\pi\\images\\qmoi ai.img'}
+[2025-07-25 03:46:47] Binary missing or invalid | {'device': 'smarttv', 'path': 'Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-25 03:46:47] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\tv\\release\\qmoi ai.apk'}
+[2025-07-25 04:01:50] Build failed | {'device': 'windows', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 04:01:50] Created placeholder binary | {'device': 'windows', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\windows\\qmoi ai.exe'}
+[2025-07-25 04:01:50] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\mac\\qmoi ai.dmg'}
+[2025-07-25 04:01:50] Created placeholder binary | {'device': 'mac', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\mac\\qmoi ai.dmg'}
+[2025-07-25 04:01:50] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\linux\\qmoi ai.AppImage'}
+[2025-07-25 04:01:50] Created placeholder binary | {'device': 'linux', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\linux\\qmoi ai.AppImage'}
+[2025-07-25 04:01:50] Build failed | {'device': 'android', 'error': '[WinError 2] The system cannot find the file specified'}
+[2025-07-25 04:01:50] Created placeholder binary | {'device': 'android', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\android\\qmoi ai.apk'}
+[2025-07-25 04:01:50] Skipping iOS build (non-macOS)
+[2025-07-25 04:01:50] Created placeholder binary | {'device': 'ios', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\ios\\qmoi ai.ipa'}
+[2025-07-25 04:01:50] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\qcity\\qmoi ai.zip'}
+[2025-07-25 04:01:50] Created placeholder binary | {'device': 'qcity', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qcity\\qmoi ai.zip'}
+[2025-07-25 04:01:50] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\desktop\\qmoi ai.deb'}
+[2025-07-25 04:01:50] Created placeholder binary | {'device': 'chromebook', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\chromebook\\qmoi ai.deb'}
+[2025-07-25 04:01:50] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\pi\\qmoi ai.img'}
+[2025-07-25 04:01:50] Created placeholder binary | {'device': 'raspberrypi', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\raspberrypi\\qmoi ai.img'}
+[2025-07-25 04:01:50] Missing output | {'src': 'D:\\applications\\Alpha-Q-ai\\tv\\qmoi ai.apk'}
+[2025-07-25 04:01:50] Created placeholder binary | {'device': 'smarttv', 'path': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\smarttv\\qmoi ai.apk'}
+[2025-07-25 04:01:50] Zipped all builds | {'archive': 'D:\\applications\\Alpha-Q-ai\\Qmoi_apps\\qmoi_ai_all_apps.zip'}
