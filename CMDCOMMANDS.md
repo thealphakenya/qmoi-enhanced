@@ -1,4 +1,7 @@
 # QMOI Command Reference - Enhanced Universal Automation
+python qmoi-app-builder.py                     # Full build (APK + EXE)
+python qmoi-app-builder.py --no-apk           # Build only Windows EXE
+python qmoi-app-builder.py --upload           # Full build + upload to GitHub
 
 ## 🚀 Quick Start Commands
 

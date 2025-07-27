@@ -1,17 +1,8 @@
-# ✅ Master plan acknowledged: Proceeding to generate all requested files.
-# This will include:
-# - GitHub Actions CI/CD workflow
-# - OTA update checker for all platforms
-# - Script to auto-send builds to Google Drive or email
-# - CLI interface for selective builds
-
-# 1️⃣ .github/workflows/qmoi-ci.yml (GitHub Actions)
-qmoi_ci_yml = '''
 name: QMOI AI Build & Release
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -46,68 +37,3 @@ jobs:
         with:
           name: qmoi-all-apps
           path: Qmoi_apps/
-'''
-
-# 2️⃣ OTA Updater Script (Python)
-ota_updater_py = '''
-import os
-import requests
-import json
-from qmoi_activity_logger import log_activity
-
-RELEASE_API = 'https://api.github.com/repos/thealphakenya/Alpha-Q-ai/releases/latest'
-CURRENT_VERSION = os.getenv("QMOI_VERSION", "0.0.0")
-
-response = requests.get(RELEASE_API)
-data = response.json()
-tag = data['tag_name']
-
-if tag != CURRENT_VERSION:
-    log_activity("🔔 New update available", {"new_version": tag, "current": CURRENT_VERSION})
-    # Trigger update/download here
-else:
-    log_activity("✅ Up to date", {"version": CURRENT_VERSION})
-'''
-
-# 3️⃣ Google Drive/Uploader Script (Python)
-upload_builds_py = '''
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
-import os
-
-APPS_DIR = "Qmoi_apps"
-
-ga = GoogleAuth()
-ga.LocalWebserverAuth()
-drive = GoogleDrive(ga)
-
-for root, _, files in os.walk(APPS_DIR):
-    for file in files:
-        f = drive.CreateFile({'title': file})
-        f.SetContentFile(os.path.join(root, file))
-        f.Upload()
-        print(f"✅ Uploaded: {file}")
-'''
-
-# 4️⃣ CLI Build Selector (Python)
-build_cli_py = '''
-import argparse
-import subprocess
-
-choices = ["windows", "mac", "linux", "android", "ios", "chromebook", "raspberrypi", "smarttv", "qcity"]
-parser = argparse.ArgumentParser()
-parser.add_argument("--device", choices=choices, nargs='+', required=True)
-args = parser.parse_args()
-
-for d in args.device:
-    subprocess.run(["python", "scripts/qmoi-app-builder.py", d])
-'''
-
-# 🚀 Summary
-# You now have:
-# - Fully automated CI/CD
-# - Self-updating OTA checker
-# - Email/Drive delivery scripts
-# - CLI build launcher
-
-# Let me know when you're ready to integrate dashboard hosting or plugin toggling system.

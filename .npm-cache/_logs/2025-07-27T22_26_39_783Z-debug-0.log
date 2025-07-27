@@ -1,0 +1,23 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\hp\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.5.1
+2 info using node@v22.16.0
+3 silly config load:file:C:\Users\hp\AppData\Roaming\npm\node_modules\npm\npmrc
+4 warn Unknown env config "msvs-version". This will stop working in the next major version of npm.
+5 warn Unknown env config "scripts-prepend-node-path". This will stop working in the next major version of npm.
+6 silly config load:file:D:\applications\Alpha-Q-ai\.npmrc
+7 warn Unknown project config "msvs_version". This will stop working in the next major version of npm.
+8 warn Unknown project config "scripts-prepend-node-path". This will stop working in the next major version of npm.
+9 silly config load:file:C:\Users\hp\.npmrc
+10 silly config load:file:C:\Users\hp\AppData\Roaming\npm\etc\npmrc
+11 verbose title npm run generate:icon
+12 verbose argv "run" "generate:icon"
+13 verbose logfile logs-max:10 dir:D:\applications\Alpha-Q-ai\.npm-cache\_logs\2025-07-27T22_26_39_783Z-
+14 verbose logfile D:\applications\Alpha-Q-ai\.npm-cache\_logs\2025-07-27T22_26_39_783Z-debug-0.log
+15 silly logfile start cleaning logs, removing 1 files
+16 silly logfile done cleaning log files
+17 verbose cwd D:\applications\Alpha-Q-ai
+18 verbose os Windows_NT 10.0.26100
+19 verbose node v22.16.0
+20 verbose npm  v11.5.1
+21 verbose exit 0
+22 info ok
