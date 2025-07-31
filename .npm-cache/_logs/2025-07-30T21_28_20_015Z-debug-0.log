@@ -1,0 +1,21 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\hp\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.5.1
+2 info using node@v22.16.0
+3 silly config load:file:C:\Users\hp\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:D:\applications\Alpha-Q-ai\.npmrc
+5 warn Unknown project config "msvs_version". This will stop working in the next major version of npm.
+6 warn Unknown project config "scripts-prepend-node-path". This will stop working in the next major version of npm.
+7 silly config load:file:C:\Users\hp\.npmrc
+8 silly config load:file:C:\Users\hp\AppData\Roaming\npm\etc\npmrc
+9 verbose title npm run fix:tailwind
+10 verbose argv "run" "fix:tailwind"
+11 verbose logfile logs-max:10 dir:D:\applications\Alpha-Q-ai\.npm-cache\_logs\2025-07-30T21_28_20_015Z-
+12 verbose logfile D:\applications\Alpha-Q-ai\.npm-cache\_logs\2025-07-30T21_28_20_015Z-debug-0.log
+13 silly logfile start cleaning logs, removing 1 files
+14 silly logfile done cleaning log files
+15 verbose cwd D:\applications\Alpha-Q-ai
+16 verbose os Windows_NT 10.0.26100
+17 verbose node v22.16.0
+18 verbose npm  v11.5.1
+19 verbose exit 0
+20 info ok

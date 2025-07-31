@@ -1,23 +1,16 @@
-// API endpoint to write a file over SSH
 import { NextRequest, NextResponse } from 'next/server';
-import { NodeSSH } from 'node-ssh';
 
 export async function POST(req: NextRequest) {
-  const { filePath, content, host, port, username, password } = await req.json();
-  const ssh = new NodeSSH();
+  if (process.env.NODE_ENV !== 'production') {
+    return NextResponse.json({ error: 'SSH is only available in production.' }, { status: 403 });
+  }
+
   try {
-    await ssh.connect({ host, port, username, password });
-    const sftp = await ssh.requestSFTP();
-    const writeFile = (filePath: string, content: string) => new Promise<void>((resolve, reject) => {
-      sftp.writeFile(filePath, Buffer.from(content), (err: any) => {
-        if (err) reject(err); else resolve();
-      });
-    });
-    await writeFile(filePath, content);
-    ssh.dispose();
-    return NextResponse.json({ success: true });
+    const { writeRemoteFile } = await import('@/lib/ssh-utils');
+    const body = await req.json();
+    const result = await writeRemoteFile(body);
+    return NextResponse.json(result);
   } catch (err: any) {
-    ssh.dispose();
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err.message || 'Internal SSH error' }, { status: 500 });
   }
 }

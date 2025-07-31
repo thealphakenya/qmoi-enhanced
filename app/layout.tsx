@@ -24,7 +24,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <FloatingAQ />
-          {children}
+          /* === QMOI windows layout start === */
+// Platform: windows
+// Layout features: {
+  "theme": "dark",
+  "nav": "sidebar",
+  "tray": true
+}
+/* === QMOI windows layout end === */
+{children}
           <Analytics />
         </ThemeProvider>
       </body>

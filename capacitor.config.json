@@ -1,0 +1,6 @@
+{
+  "appId": "com.qmoi.app",
+  "appName": "QMOI AI",
+  "webDir": "out",
+  "bundledWebRuntime": false
+}

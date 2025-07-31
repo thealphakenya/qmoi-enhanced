@@ -1,15 +1,16 @@
-import type { Config } from "tailwindcss"
+// tailwind.config.ts
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: ["class"],
   content: [
-    "./routes/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-    "*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{ts,tsx,js,jsx,mdx}",
+    "./components/**/*.{ts,tsx,js,jsx,mdx}",
+    "./routes/**/*.{ts,tsx,js,jsx,mdx}",
+    "./src/**/*.{ts,tsx,js,jsx,mdx}",
+    "./pages/**/*.{ts,tsx,js,jsx,mdx}",
+    "./**/*.{ts,tsx,js,jsx,mdx}",
   ],
-  prefix: "",
   theme: {
     container: {
       center: true,
@@ -76,6 +77,6 @@ const config: Config = {
     },
   },
   plugins: [],
-} satisfies Config
+};
 
-export default config
+export default config;

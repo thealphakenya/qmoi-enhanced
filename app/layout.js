@@ -10,7 +10,15 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        {children}
+        /* === QMOI windows layout start === */
+// Platform: windows
+// Layout features: {
+  "theme": "dark",
+  "nav": "sidebar",
+  "tray": true
+}
+/* === QMOI windows layout end === */
+{children}
       </body>
     </html>
   )
