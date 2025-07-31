@@ -1,37 +1,74 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# ─────────────────────────
+# 📦 Dependencies
 /node_modules
 
-# next.js
+# 🧩 Next.js
 /.next/
 /out/
 
-# production
+# 🛠️ Production Builds
 /build
+/dist
 
-# debug
+# 📁 Android (Capacitor/Cordova/Gradle)
+/android/app/build/
+/android/.gradle/
+/android/.idea/
+/android/gradlew
+/android/gradlew.bat
+/android/local.properties
+/android/release-key.jks
+/android/keystore.properties
+
+# 📂 Capacitor
+/ios/
+/web/
+
+# 🐛 Debug/Log Files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-
-# env files
-.env*
-.env.production
-.env
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts.env 
-
-# Ignore keys directory for sensitive API/private keys
-keys/
-
-# Auto-generated stubs and watcher logs
-*_auto_stub.*
 watcher.log
 temp_*
+*_auto_stub.*
+
+# ⚙️ Environment Files
+.env
+.env.*
+.env.production
+.env.development
+
+# 🧪 TypeScript
+*.tsbuildinfo
+next-env.d.ts.env
+
+# 🔒 Private Keys or Sensitive Files
+keys/
+*.pem
+*.key
+*.crt
+
+# 🧼 System
+.DS_Store
+Thumbs.db
+
+# 🧪 PyCache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# 📂 VS Code & JetBrains IDEs
+.vscode/
+.idea/
+
+# 🚫 Vercel
+.vercel
+
+# 🚫 NPM Cache (should never be committed)
+.npm-cache/
+
+# 🧪 Models (optional if large)
+public/models/
