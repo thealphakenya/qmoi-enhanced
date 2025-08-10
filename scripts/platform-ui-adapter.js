@@ -1,7 +1,7 @@
 // scripts/platform-ui-adapter.js
 
-const fs = require("fs");
-const path = require("path");
+import fs from 'fs';
+import path from 'path';
 
 const TARGET_FILES = ["app/layout.tsx", "app/layout.js"];
 

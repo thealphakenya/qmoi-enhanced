@@ -1,4 +1,4 @@
-const { autoDetectProvider, setCurrentProvider, getCurrentProvider, providers } = require('../../huggingface_space/inferenceProviders');
+import { autoDetectProvider, setCurrentProvider, getCurrentProvider, providers } from '../../huggingface_space/inferenceProviders';
 
 describe('Inference Provider Integration', () => {
   it('should auto-detect and select a provider', () => {

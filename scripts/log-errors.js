@@ -1,5 +1,5 @@
 // scripts/log-errors.js
-const fs = require('fs');
+import fs from 'fs';
 const logPath = 'logs/error.log';
 
 if (!fs.existsSync('logs')) fs.mkdirSync('logs');

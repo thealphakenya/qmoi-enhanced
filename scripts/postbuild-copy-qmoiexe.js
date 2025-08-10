@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const source = path.join(__dirname, '..', 'qmoiexe.exe');
 const destination = path.join(__dirname, '..', 'Qmoi_apps', 'windows', 'qmoiexe.exe');

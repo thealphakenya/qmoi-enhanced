@@ -1,9 +1,9 @@
 /* eslint-env node */
 require("dotenv").config(); // Load environment variables from .env
 
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
 
 console.log("🚀 Starting Force Deployment to GitHub...");
 

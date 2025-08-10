@@ -1,6 +1,6 @@
 // scripts/fallback-assets.js
-const fs = require("fs");
-const path = require("path");
+import fs from 'fs';
+import path from 'path';
 
 const installersDir = path.join("public", "installers");
 const qrPath = path.join("public", "qmoiai_qrcode.png");

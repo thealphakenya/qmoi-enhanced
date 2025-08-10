@@ -3,8 +3,8 @@
  * Provides notification capabilities for email, Slack, and Discord
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 class NotificationService {
   constructor() {

@@ -1,5 +1,5 @@
 // scripts/log-summary.js
-const fs = require('fs');
+import fs from 'fs';
 
 console.log('📋 QMOI App Build Summary:');
 

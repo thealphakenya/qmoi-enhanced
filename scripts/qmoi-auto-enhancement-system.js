@@ -5,11 +5,11 @@
  * Comprehensive system for automatic enhancement of QMOI capabilities, performance, and features
  */
 
-const { execSync, spawn } = require('child_process');
-const fs = require('fs').promises;
-const path = require('path');
-const crypto = require('crypto');
-const axios = require('axios');
+import { execSync, spawn } from 'child_process';
+import fs from 'fs';.promises;
+import path from 'path';
+import crypto from 'crypto';
+import axios from 'axios';
 
 class QMOIAutoEnhancementSystem {
   constructor() {

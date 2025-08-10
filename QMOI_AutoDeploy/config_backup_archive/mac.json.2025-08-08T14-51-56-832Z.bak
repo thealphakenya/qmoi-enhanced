@@ -1,0 +1,3 @@
+{
+  "buildCommand": "electron-builder --mac --config electron-builder.yml --publish=never --out dist/qmoi_mac.dmg"
+}

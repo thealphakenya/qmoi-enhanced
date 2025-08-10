@@ -1,6 +1,6 @@
 // scripts/generate-installer-assets.js
-const fs = require("fs");
-const path = require("path");
+import fs from 'fs';
+import path from 'path';
 
 const installerDir = path.join("public", "installers");
 fs.mkdirSync(installerDir, { recursive: true });

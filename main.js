@@ -1,9 +1,9 @@
-const { app, BrowserWindow, Tray, Menu, nativeImage } = require('electron');
-const path = require('path');
-const fs = require('fs');
-const { spawn } = require('child_process');
-const net = require('net');
-const { autoUpdater } = require('electron-updater');
+import { app, BrowserWindow, Tray, Menu, nativeImage } from 'electron';
+import path from 'path';
+import fs from 'fs';
+import { spawn } from 'child_process';
+import net from 'net';
+import { autoUpdater } from 'electron-updater';
 
 let mainWindow;
 let tray;

@@ -1,55 +1,46 @@
-import requests
-import json
-import os
+#!/usr/bin/env python3
+import time
+import urllib.request
+from pathlib import Path
 
-# Load download links from a central file (customize as needed)
-LINKS_FILE = "Qmoi_apps/latest.json"
-REPORT_FILE = "Qmoi_apps/download_link_report.json"
+ROOT = Path.cwd()
+LINKS_FILE = ROOT.joinpath("release-links.txt")
+LOG = ROOT.joinpath("scripts", "qmoi-download-link-tester.log")
 
-# Fallback links for auto-fix (customize as needed)
-FALLBACK_DOMAIN = "https://downloads.qmoi.app"
+def log(msg):
+    ts = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    line = f"[{ts}] {msg}"
+    print(line)
+    with open(LOG, "a", encoding="utf-8") as f:
+        f.write(line + "\n")
 
-
-def load_links():
-    if os.path.exists(LINKS_FILE):
-        with open(LINKS_FILE) as f:
-            return json.load(f)
-    return {}
-
-def verify_link(url):
+def head_ok(url, timeout=10):
+    req = urllib.request.Request(url, method='HEAD')
     try:
-        r = requests.head(url, timeout=10)
-        return r.status_code == 200
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return 200 <= r.status < 400
     except Exception as e:
+        log(f"HEAD error for {url}: {e}")
         return False
 
-def autofix_link(app, platform, filename):
-    # Try fallback domain
-    return f"{FALLBACK_DOMAIN}/{platform}/{filename}"
-
 def main():
-    links = load_links()
-    report = {}
-    for platform, apps in links.items():
-        for app, url in apps.items():
-            ok = verify_link(url)
-            if not ok:
-                fixed_url = autofix_link(app, platform, os.path.basename(url))
-                ok = verify_link(fixed_url)
-                report.setdefault(platform, {})[app] = {
-                    "original": url,
-                    "fixed": fixed_url if ok else None,
-                    "status": "fixed" if ok else "failed"
-                }
+    if not LINKS_FILE.exists():
+        log("release-links.txt not found - create it with one URL per line")
+        return
+    urls = [l.strip() for l in LINKS_FILE.read_text().splitlines() if l.strip()]
+    for url in urls:
+        ok = False
+        for attempt in range(1, 6):
+            log(f"Testing {url} (attempt {attempt})")
+            if head_ok(url):
+                log(f"OK: {url}")
+                ok = True
+                break
             else:
-                report.setdefault(platform, {})[app] = {
-                    "original": url,
-                    "fixed": None,
-                    "status": "ok"
-                }
-    with open(REPORT_FILE, "w") as f:
-        json.dump(report, f, indent=2)
-    print("Download link autotest complete. Report written to", REPORT_FILE)
+                log(f"FAILED attempt {attempt} for {url}. Retrying...")
+                time.sleep(2 * attempt)
+        if not ok:
+            log(f"PERMANENT FAIL: {url}")
 
 if __name__ == "__main__":
     main()

@@ -6,10 +6,10 @@
  * confirms and researches, and generates revenue for all projects.
  */
 
-const { exec } = require('child_process');
-const path = require('path');
-const fs = require('fs');
-const axios = require('axios');
+import { exec } from 'child_process';
+import path from 'path';
+import fs from 'fs';
+import axios from 'axios';
 
 const LOG_PATH = path.join(__dirname, '../logs/qmoi-learning-revenue.log');
 const LEARNING_DATA_PATH = path.join(__dirname, '../data/learning');

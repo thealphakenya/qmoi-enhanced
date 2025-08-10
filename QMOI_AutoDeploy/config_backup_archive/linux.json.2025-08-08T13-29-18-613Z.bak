@@ -1,0 +1,3 @@
+{
+  "buildCommand": "python ../scripts/qmoi_app_builder.py --platform linux --out dist/qmoi_linux.AppImage --icon public/icon.png"
+}

@@ -1,5 +1,5 @@
 /* eslint-env node */
-const fs = require('fs');
+import fs from 'fs';
 
 function log(msg) {
   console.log(`[AI Metrics Check] ${msg}`);

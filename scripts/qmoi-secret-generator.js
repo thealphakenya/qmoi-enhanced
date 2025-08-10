@@ -1,7 +1,7 @@
 // scripts/qmoi-secret-generator.js
-const fs = require('fs');
-const path = require('path');
-const crypto = require('crypto');
+import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
 
 const configPath = path.resolve(__dirname, '../config/qmoi_env_vars.json');
 const envPath = path.resolve(__dirname, '../.env');

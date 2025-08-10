@@ -1,8 +1,8 @@
 /* eslint-env node */
-const { execSync } = require('child_process');
-const fs = require('fs');
-const axios = require('axios');
-const { notifyMaster } = require('../../src/services/WhatsAppService');
+import { execSync } from 'child_process';
+import fs from 'fs';
+import axios from 'axios';
+import { notifyMaster } from '../../src/services/WhatsAppService';
 
 class DeploymentMonitor {
   constructor() {

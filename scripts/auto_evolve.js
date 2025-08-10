@@ -1,7 +1,7 @@
 /* eslint-env node */
-const { execSync } = require('child_process');
-const { QmoiMemory } = require('../src/services/QmoiMemory');
-const path = require('path');
+import { execSync } from 'child_process';
+import { QmoiMemory } from '../src/services/QmoiMemory';
+import path from 'path';
 
 function runEvolutionCycle() {
   try {

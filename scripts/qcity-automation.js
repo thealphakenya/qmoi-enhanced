@@ -4,10 +4,10 @@
  * Comprehensive automation with notifications, error recovery, and self-healing
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync, spawn } = require('child_process');
-const axios = require('axios');
+import fs from 'fs';
+import path from 'path';
+import { execSync, spawn } from 'child_process';
+import axios from 'axios';
 
 class QCityAutomation {
     constructor() {

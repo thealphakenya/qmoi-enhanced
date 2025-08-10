@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 // Stub: In real use, integrate with Hugging Face Inference API or local LLM
 async function aiReview(codeOrDiff) {
   // Example: return a suggestion for improvement

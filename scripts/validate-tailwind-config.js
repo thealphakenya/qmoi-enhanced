@@ -1,6 +1,6 @@
 // scripts/validate-tailwind-config.js
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const tailwindConfigPath = path.resolve('tailwind.config.ts');
 const globalsCssPath = path.resolve('app/globals.css');

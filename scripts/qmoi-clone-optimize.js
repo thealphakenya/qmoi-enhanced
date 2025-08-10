@@ -1,7 +1,7 @@
 // QMOI Automated Cloning & Cloud Optimization
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
 
 const repos = [
   { name: 'Alpha-Q-ai', url: process.env.GITLAB_REPO_URL, platform: 'gitlab' },

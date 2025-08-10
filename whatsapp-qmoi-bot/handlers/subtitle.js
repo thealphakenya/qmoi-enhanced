@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const askQmoi = require("../services/qmoi");
+ 
+import askQmoi from '../services/qmoi';
 
 async function generateSubtitles(mediaPath) {
     // Send media to Qmoi for subtitle generation

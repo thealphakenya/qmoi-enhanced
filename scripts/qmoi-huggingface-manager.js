@@ -4,11 +4,11 @@
 // Automates HuggingFace Space creation, deployment, monitoring, and self-healing
 // Integrates with QCity device and QMOI automation system
 
-const { Command } = require('commander');
+import { Command } from 'commander';
 const program = new Command();
-const fs = require('fs');
-const path = require('path');
-const inquirer = require('inquirer');
+import fs from 'fs';
+import path from 'path';
+import inquirer from 'inquirer';
 let puppeteer;
 try { puppeteer = require('puppeteer'); } catch (e) { puppeteer = null; }
 

@@ -1,7 +1,7 @@
 // scripts/build-all-platforms.js
-const { execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
 
 const LOG_FILE = path.join(__dirname, "../logs/build.log");
 const LOG_DIR = path.dirname(LOG_FILE);

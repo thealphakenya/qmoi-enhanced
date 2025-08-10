@@ -1,7 +1,7 @@
 /* eslint-env node */
-const fs = require('fs');
-const { execSync } = require('child_process');
-const path = require('path');
+import fs from 'fs';
+import { execSync } from 'child_process';
+import path from 'path';
 
 const secretsDir = path.join(__dirname, '../secrets');
 const pubKey = path.join(secretsDir, 'bitget_public.pem');

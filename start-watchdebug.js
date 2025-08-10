@@ -1,6 +1,6 @@
 // START-WATCHDEBUG.js - Main execution script for QMOI monitoring
 
-const QMOIWatchDebug = require('./watchdebug');
+import QMOIWatchDebug from './watchdebug';
 
 async function startQMOIMonitoring() {
     console.log('🚀 Starting QMOI Comprehensive Monitoring & Error Fixing System...');

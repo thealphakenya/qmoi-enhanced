@@ -1,6 +1,6 @@
 /* eslint-env node */
-const askQmoi = require("../services/qmoi");
-const fs = require("fs");
+import askQmoi from '../services/qmoi';
+import fs from 'fs';
 
 async function sendVoiceReply(sock, jid, text) {
     // Use Qmoi to generate TTS audio and send as voice note

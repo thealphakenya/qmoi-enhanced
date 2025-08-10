@@ -1,6 +1,6 @@
 // scripts/splash-animations.js
-const fs = require("fs");
-const path = require("path");
+import fs from 'fs';
+import path from 'path';
 const splashHTML = `<!DOCTYPE html>
 <html><head><style>
 body { background: black; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }

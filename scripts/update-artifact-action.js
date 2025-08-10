@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
+import fs from 'fs';
+import path from 'path';
+import glob from 'glob';
 
 const WORKFLOW_GLOB = '.github/workflows/*.yml';
 const MD_GLOB = '*.md';

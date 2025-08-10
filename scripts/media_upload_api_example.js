@@ -1,7 +1,7 @@
-const express = require('express');
-const multer = require('multer');
-const fs = require('fs');
-const path = require('path');
+import express from 'express';
+import multer from 'multer';
+import fs from 'fs';
+import path from 'path';
 
 const app = express();
 const PORT = 3001;

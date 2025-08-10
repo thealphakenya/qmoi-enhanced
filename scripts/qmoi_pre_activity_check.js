@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const QmoiSelfTestRunner = require('./qmoi_self_test_runner');
-const fs = require('fs');
-const path = require('path');
+import QmoiSelfTestRunner from './qmoi_self_test_runner';
+import fs from 'fs';
+import path from 'path';
 
 (async () => {
   const runner = new QmoiSelfTestRunner();

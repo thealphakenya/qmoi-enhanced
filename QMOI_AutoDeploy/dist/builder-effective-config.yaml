@@ -1,0 +1,27 @@
+directories:
+  output: dist
+  buildResources: build
+electronVersion: 26.6.10
+appId: com.yourcompany.qmoi
+productName: QMOI AI
+files:
+  - filter:
+      - dist/**/*
+      - node_modules/**/*
+      - package.json
+      - main.js
+win:
+  target: nsis
+  icon: public/icon.ico
+  artifactName: QMOI AI Setup.exe
+linux:
+  target:
+    - AppImage
+    - deb
+mac:
+  target: dmg
+publish:
+  - provider: github
+    owner: thealphakenya
+    repo: Alpha-Q-ai
+    releaseType: draft

@@ -6,9 +6,9 @@
  * Now supports --auto mode for background operation and auto-triggering new projects/marketing if growth stalls.
  */
 
-const fs = require('fs');
-const path = require('path');
-const { exec } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { exec } from 'child_process';
 
 const REVENUE_LOG = path.join(process.cwd(), 'logs', 'qmoi-daily-revenue.json');
 const ALERT_LOG = path.join(process.cwd(), 'logs', 'qmoi-revenue-alerts.log');

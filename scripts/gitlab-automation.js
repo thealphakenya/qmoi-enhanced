@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const { execSync, spawn } = require('child_process');
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
+import { execSync, spawn } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import https from 'https';
 
 class GitLabAutomation {
   constructor() {

@@ -1,4 +1,4 @@
-const delay = require("./delay");
+import delay from './delay';
 
 async function broadcast(sock, numbers, message) {
     for (let jid of numbers) {

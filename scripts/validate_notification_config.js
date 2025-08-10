@@ -1,6 +1,6 @@
 /* eslint-env node */
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const configPath = path.resolve(__dirname, '../test_config.json');
 let config;

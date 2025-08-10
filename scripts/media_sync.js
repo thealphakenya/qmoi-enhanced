@@ -2,9 +2,9 @@
 // Syncs media files from ./public/media to a remote backup (S3)
 // Usage: node scripts/media_sync.js
 
-const fs = require('fs');
-const path = require('path');
-const AWS = require('aws-sdk');
+import fs from 'fs';
+import path from 'path';
+import AWS from 'aws-sdk';
 
 const MEDIA_DIR = path.join(__dirname, '../public/media');
 const LOG_FILE = path.join(__dirname, '../logs/media_sync.log');

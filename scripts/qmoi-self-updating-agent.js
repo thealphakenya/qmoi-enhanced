@@ -6,10 +6,10 @@
  * Ensures all permissions are granted and requests elevation if needed.
  */
 
-const { exec, spawn } = require('child_process');
-const os = require('os');
-const path = require('path');
-const fs = require('fs');
+import { exec, spawn } from 'child_process';
+import os from 'os';
+import path from 'path';
+import fs from 'fs';
 
 const LOG_PATH = path.join(__dirname, '../logs/qmoi-self-updating-agent.log');
 const IS_WINDOWS = os.platform() === 'win32';

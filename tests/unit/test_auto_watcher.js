@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const { generateStub, updateDocs } = require('../../scripts/auto_utils');
+import fs from 'fs';
+import path from 'path';
+import { generateStub, updateDocs } from '../../scripts/auto_utils';
 
 describe('Auto-watcher utilities', () => {
   const testFile = 'test_feature.ts';

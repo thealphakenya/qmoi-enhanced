@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 describe('Qmoispace Secrets Security', () => {
   it('should not expose raw secrets in .env', () => {

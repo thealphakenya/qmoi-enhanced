@@ -1,6 +1,6 @@
 /* eslint-env node */
-const { execSync } = require('child_process');
-const fs = require('fs');
+import { execSync } from 'child_process';
+import fs from 'fs';
 
 const allowed = 'MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;CC0-1.0;CCO-1.0;ISC;Python-2.0';
 

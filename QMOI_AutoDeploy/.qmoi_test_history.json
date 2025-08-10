@@ -1,0 +1,5 @@
+[
+  { "platform": "windows", "tests_run": 120, "tests_passed": 118 },
+  { "platform": "linux", "tests_run": 90, "tests_passed": 85 },
+  { "platform": "android", "tests_run": 70, "tests_passed": 70 }
+]

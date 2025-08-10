@@ -6,7 +6,7 @@
  * Exits with code 0 if all succeed, 1 if any fail.
  */
 
-const { spawnSync } = require('child_process');
+import { spawnSync } from 'child_process';
 
 const scripts = [
   { name: 'qmoi:mobile:auto-selfheal', cmd: 'npm', args: ['run', 'qmoi:mobile:auto-selfheal'] },

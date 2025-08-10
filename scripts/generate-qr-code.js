@@ -1,7 +1,7 @@
-const QRCode = require("qrcode");
-const fs = require("fs");
-const os = require("os");
-const path = require("path");
+import QRCode from 'qrcode';
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
 const interfaces = os.networkInterfaces();
 
 function getLocalIP() {

@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
-const fs = require('fs');
-const { sendEmail, sendSlack, sendWhatsApp } = require('./qmoi_notifier');
+import fetch from 'node-fetch';
+import fs from 'fs';
+import { sendEmail, sendSlack, sendWhatsApp } from './qmoi_notifier';
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO = process.env.GITHUB_REPO || 'thealphakenya/Alpha-Q-ai';

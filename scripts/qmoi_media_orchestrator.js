@@ -1,8 +1,8 @@
-const { spawn, execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
-const http = require('http');
-const { sendEmail, sendSlack, sendWhatsApp } = require('./qmoi_notifier');
+import { spawn, execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import http from 'http';
+import { sendEmail, sendSlack, sendWhatsApp } from './qmoi_notifier';
 
 const BACKEND_SCRIPT = path.join(__dirname, 'media_upload_api_example.js');
 const SYNC_SCRIPT = path.join(__dirname, 'media_sync.js');

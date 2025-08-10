@@ -1,7 +1,7 @@
 /* eslint-env node */
-const fs = require('fs');
-const readline = require('readline');
-const path = require('path');
+import fs from 'fs';
+import readline from 'readline';
+import path from 'path';
 
 const termsPath = path.join(__dirname, '../QTEAMTERMS.md');
 
