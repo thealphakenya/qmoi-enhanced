@@ -35,15 +35,15 @@ async function runCommand(command, options = {}) {
 async function autofix() {
   console.log(chalk.bold('\n🔧 Starting autofix-errors script...\n'));
 
-  // Remove the source-map package folder explicitly first (sometimes it’s corrupted)
+  // Remove corrupted source-map package explicitly (common culprit)
   const sourceMapPath = path.join(projectRoot, 'node_modules', 'source-map');
   await removePath(sourceMapPath);
 
-  // Remove entire node_modules folder
+  // Remove entire node_modules folder for a fresh install
   const nodeModulesPath = path.join(projectRoot, 'node_modules');
   await removePath(nodeModulesPath);
 
-  // Remove package-lock.json to ensure clean install
+  // Remove package-lock.json for a clean dependency tree
   const packageLockPath = path.join(projectRoot, 'package-lock.json');
   try {
     await fs.unlink(packageLockPath);
@@ -56,16 +56,23 @@ async function autofix() {
     }
   }
 
-  // Clear npm cache (optional but helpful)
+  // Clear npm cache (optional but often helpful)
   const cacheCleared = await runCommand('npm cache clean --force');
   if (!cacheCleared) {
-    console.log(chalk.yellow('⚠️  npm cache clean failed, continuing anyway...'));
+    console.log(chalk.yellow('⚠️ npm cache clean failed, continuing anyway...'));
   }
 
   // Reinstall dependencies fresh
   const installSuccess = await runCommand('npm install');
   if (!installSuccess) {
     console.error(chalk.red('\n✖ Failed to reinstall npm dependencies. Please try running manually.'));
+    process.exit(1);
+  }
+
+  // Run eslint and prettier autofix as last step to fix lint and format errors
+  const fixSuccess = await runCommand('eslint . --fix && prettier --write .');
+  if (!fixSuccess) {
+    console.error(chalk.red('\n✖ Autofix lint/format failed.'));
     process.exit(1);
   }
 

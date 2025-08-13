@@ -1,74 +1,104 @@
 {
   "name": "qmoi-alpha-ai",
-  "version": "1.0.10",
-  "description": "Quantum Master Orchestrator Intelligence (QMOI) — Full automation for multi-platform builds and releases.",
+  "version": "1.0.11",
+  "description": "Quantum Master Orchestrator Intelligence (QMOI) System",
   "author": "Victor Kwemoi",
   "license": "MIT",
-  "type": "module",
   "main": "main.js",
   "scripts": {
-    "preinstall": "node scripts/install-or-clean.mjs",
-    "safe-install": "node scripts/install-or-clean.mjs",
+    "clean": "node scripts/install-or-clean.mjs --clean",
     "install-clean": "node scripts/install-or-clean.mjs",
-    "clean:full": "node scripts/install-or-clean.mjs --force-clean",
-    "start": "node main.js",
-    "dev": "npm run cleanup && node scripts/dev-launcher.js",
-    "cleanup": "node scripts/cleanup-before-build.js",
-    "convert:require-to-import": "node scripts/convert-require-to-import.mjs .",
-    "convert:require-to-import:dry-run": "node scripts/convert-require-to-import.mjs . --dry-run",
-    "fix:all": "npm run convert:require-to-import:dry-run && npm run convert:require-to-import && eslint . --fix && prettier --write .",
-    "qmoi:always-fix-all": "npm run fix:all && npm run lint:strict && npm run test:autofix",
-    "lint": "eslint .",
-    "lint:strict": "eslint . --max-warnings=0",
-    "test": "node scripts/run-tests.js || echo '⚠️ No tests implemented'",
-    "test:autofix": "eslint . --fix && eslint . --max-warnings=0",
-    "build:web": "vite build",
-    "build:electron:win": "electron-builder --win --x64 --ia32",
-    "build:electron:linux": "electron-builder --linux --arm64 --x64",
-    "build:electron:mac": "electron-builder --mac",
-    "build:electron:all": "npm run build:electron:win && npm run build:electron:linux && npm run build:electron:mac",
-    "build:android": "python scripts/qmoi_app_builder.py --platform android --out dist/qmoi_ai.apk --icon public/icon.png",
-    "build-windows-installer": "python scripts/qmoi_app_builder.py --build-windows-installer",
-    "qa:autotest": "python scripts/qmoi-install-autotest.py",
-    "links:test": "python scripts/qmoi-download-link-tester.py",
-    "autofix-errors": "node scripts/autofix-errors.mjs"
+    "fix:root-modules": "node scripts/fix-root-modules.mjs",
+    "start": "electron .",
+    "dev": "electron . --enable-logging",
+    "lint": "eslint . --ext .js,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.ts,.tsx --fix",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "node tests/run-tests.mjs",
+    "build": "node scripts/build-all.mjs",
+    "build:win": "electron-builder --win --publish never",
+    "build:linux": "electron-builder --linux --publish never",
+    "build:mac": "electron-builder --mac --publish never",
+    "electron:build:win": "electron-builder --win --x64 --ia32",
+    "electron:build:linux": "electron-builder --linux --x64 --armv7l --arm64",
+    "electron:build:mac": "electron-builder --mac --x64 --arm64",
+
+    "prepare": "echo 'Husky prepare skipped (deprecated)'",
+
+    "changelog": "npx auto-changelog --commit-limit false --sort-commits date-desc --hide-credit --template keepachangelog",
+    "tag-version": "git add CHANGELOG.md && git commit -m \"docs: update changelog\" || echo 'No changes' && git tag v$npm_package_version && git push origin main --tags",
+    "prepublish-release": "npm run changelog && npm run tag-version",
+    "publish-release": "npm run prepublish-release && npm run build && node scripts/publish-github-release.mjs",
+    "publish": "npm run publish-release"
   },
   "dependencies": {
-    "archiver": "^6.0.0",
+    "electron": "^28.3.2",
+    "electron-updater": "^6.1.1",
     "axios": "^1.6.8",
-    "bitget-api": "^1.1.0",
     "dotenv": "^16.4.5",
-    "form-data": "^4.0.0",
-    "gh-release": "^7.0.0",
-    "googleapis": "^144.0.0",
-    "node-fetch": "^3.3.2",
-    "rimraf": "^5.0.1",
-    "simple-git": "^3.20.0",
-    "vite": "^5.2.8"
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@babel/parser": "^7.22.9",
-    "@types/web": "^0.0.260",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "chalk": "^5.3.0",
-    "electron-builder": "^24.6.0",
-    "eslint": "^8.57.1",
-    "eslint-plugin-react": "^7.37.5",
-    "marked": "^12.0.2",
-    "npm-force-resolutions": "^0.0.10",
+    "electron-builder": "^24.13.3",
+    "eslint": "^8.57.0",
     "prettier": "^3.2.5",
-    "puppeteer": "^21.5.1",
-    "recast": "^0.23.5",
-    "shelljs": "^0.8.5"
+    "husky": "^9.1.2",
+    "lint-staged": "^15.2.0",
+    "auto-changelog": "^2.5.0"
   },
-  "resolutions": {
-    "source-map": "0.7.4"
+  "lint-staged": {
+    "*.{js,ts,tsx,json,css,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "optionalDependencies": {
-    "windows-shortcuts": "^2.1.0"
+  "build": {
+    "appId": "com.qmoi.ai",
+    "productName": "QMOI AI",
+    "artifactName": "qmoiexe-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "QMOI_release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "package.json",
+      "app/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "build/icons/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "icon": "build/icons"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "build/icons/icon.icns"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "thealphakenya",
+        "repo": "Alpha-Q-ai"
+      }
+    ]
   }
 }

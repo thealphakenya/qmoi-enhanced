@@ -1,0 +1,64 @@
+name: QMOI AI Build and Publish
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies & run install-clean with builds & publish
+        run: npm run install-clean -- --run-builds --publish
+
+      - name: Build all Electron targets
+        run: npm run build:electron:all
+
+      - name: Build Android APK
+        run: npm run build:android
+
+      - name: Build Windows installer
+        run: npm run build-windows-installer
+
+      - name: Run QA autotest
+        run: npm run qa:autotest
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: qmoi-build-artifacts
+          path: |
+            dist/
+            release/
+            *.exe
+            *.apk
+
+      - name: Create GitHub Release (if tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: |
+            dist/
+            release/
+            *.exe
+            *.apk
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm (if needed)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
