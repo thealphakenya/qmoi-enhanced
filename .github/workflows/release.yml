@@ -1,49 +1,64 @@
-name: Release Automation
+name: QMOI Auto Build & Release
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch: # Allow manual trigger
-
-permissions:
-  contents: write
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
-  release:
+  build-and-release:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Required for tags
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Setup Node.js
+    steps:
+      - name: ✨ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ♻ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: 18
 
-      - name: Install dependencies
-        run: npm ci
+      - name: ♻ Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
 
-      - name: Configure Git
+      - name: ♻ Install dependencies
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          npm install
+          pip install -r requirements.txt || true
 
-      - name: Bump version & generate changelog
+      - name: 🌎 Generate icons and validate files
         run: |
-          npx standard-version --release-as patch
+          npm run generate:icon
+          npm run ensure:files
+
+      - name: 🔨 Build PyInstaller EXE
+        run: npm run pyinstaller:build
+
+      - name: 🚀 Electron Build (all platforms)
+        run: npm run electron:build:all
+
+      - name: 🔍 Validate binaries
+        run: npm run validate:binaries
+
+      - name: 📋 Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: qmoi-v${{ github.run_number }}
+          name: "QMOI AI Release v${{ github.run_number }}"
+          generate_release_notes: true
         env:
-          HUSKY: 0 # Disable husky hooks if present
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Push changes and tags
-        run: |
-          git push --follow-tags origin main
-
-      - name: Publish GitHub Release
-        run: |
-          node scripts/publish-github-release.mjs
+      - name: 🔹 Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            Qmoi_apps/windows/*.exe
+            Qmoi_apps/linux/*.AppImage
+            Qmoi_apps/mac/*.dmg
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

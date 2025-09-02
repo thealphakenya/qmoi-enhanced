@@ -1,5 +1,5 @@
 /* eslint-env node */
-import axios from 'axios';
+const axios = require("axios");
 
 const QMOI_API_URL = "http://localhost:5001/qmoi"; // Update to your model's endpoint
 

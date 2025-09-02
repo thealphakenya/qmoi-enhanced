@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { WebClient } from '@slack/web-api';
+const { WebClient } = require('@slack/web-api');
 const token = process.env.SLACK_TOKEN;
 const slack = new WebClient(token);
 

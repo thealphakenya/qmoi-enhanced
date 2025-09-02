@@ -6,10 +6,10 @@
  * for ultra-lightweight operation on all devices.
  */
 
-import { exec } from 'child_process';
-import os from 'os';
-import path from 'path';
-import fs from 'fs';
+const { exec } = require('child_process');
+const os = require('os');
+const path = require('path');
+const fs = require('fs');
 
 const LOG_PATH = path.join(__dirname, '../logs/qmoi-cloud-offload.log');
 const CONFIG_PATH = path.join(__dirname, '../config/qmoi_cloud_config.json');

@@ -1,6 +1,6 @@
- 
-import askQmoi from '../services/qmoi';
-import fs from 'fs';
+/* eslint-disable-next-line @typescript-eslint/no-var-requires */
+const askQmoi = require("../services/qmoi");
+const fs = require("fs");
 
 async function handleVision(sock, jid, imagePath) {
     // Send image to Qmoi for vision/captioning

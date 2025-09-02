@@ -1,6 +1,6 @@
 /* eslint-env node */
-import { spawnSync } from 'child_process';
-import path from 'path';
+const { spawnSync } = require('child_process');
+const path = require('path');
 
 function runRustLintFix(file) {
   const bin = process.platform === 'win32' ? 'rust_lint_fix.exe' : './rust_lint_fix';

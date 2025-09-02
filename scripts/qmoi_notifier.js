@@ -1,5 +1,5 @@
-import nodemailer from 'nodemailer';
-import fetch from 'node-fetch';
+const nodemailer = require('nodemailer');
+const fetch = require('node-fetch');
 
 async function sendEmail(subject, text) {
   const transporter = nodemailer.createTransport({

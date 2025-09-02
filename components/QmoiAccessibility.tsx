@@ -26,7 +26,7 @@ interface VoiceCommand {
 
 // Add fallback type for SpeechRecognition if not available
 // @ts-ignore
- 
+// eslint-disable-next-line
 // If SpeechRecognition is not defined, define it as any
 type SpeechRecognition = any;
 

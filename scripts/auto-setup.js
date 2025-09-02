@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import { execSync, spawn } from 'child_process';
-import fs from 'fs';
-import path from 'path';
+const { execSync, spawn } = require('child_process');
+const fs = require('fs');
+const path = require('path');
 
 console.log('🚀 QMOI Auto-Setup Starting...');
 

@@ -1,7 +1,7 @@
 // scripts/qmoi-gitlab-sync.js
-import fs from 'fs';
-import path from 'path';
-import axios from 'axios';
+const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
 
 const configPath = path.resolve(__dirname, '../config/qmoi_env_vars.json');
 const envVars = JSON.parse(fs.readFileSync(configPath, 'utf-8'));

@@ -5,10 +5,10 @@
  * Initializes the QMOI AI Automation System environment
  */
 
-import fs from 'fs';
-import path from 'path';
-import { execSync, spawn } from 'child_process';
-import { NotificationService } from './services/notification_service';
+const fs = require('fs');
+const path = require('path');
+const { execSync, spawn } = require('child_process');
+const { NotificationService } = require('./services/notification_service');
 
 class QMOISetup {
   constructor() {

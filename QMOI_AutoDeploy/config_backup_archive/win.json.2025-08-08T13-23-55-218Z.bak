@@ -1,3 +1,0 @@
-{
-  "buildCommand": "python scripts/qmoi_app_builder.py --platform windows --out dist/qmoi_win.exe --icon public/icon.ico"
-}

@@ -1,8 +1,8 @@
 // scripts/upload-release-assets.js
-import fs from 'fs';
-import path from 'path';
-import axios from 'axios';
-import { execSync } from 'child_process';
+const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
+const { execSync } = require('child_process');
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const OWNER = 'thealphakenya';

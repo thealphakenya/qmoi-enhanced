@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { execSync } from 'child_process';
+const { execSync } = require('child_process');
 try {
   execSync('npx rimraf node_modules package-lock.json', { stdio: 'pipe' });
   execSync('npm ci --legacy-peer-deps', { stdio: 'inherit' });

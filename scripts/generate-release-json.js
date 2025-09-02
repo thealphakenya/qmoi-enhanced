@@ -1,6 +1,6 @@
 // scripts/generate-release-json.js
-import { execSync } from 'child_process';
-import fs from 'fs';
+const { execSync } = require('child_process');
+const fs = require('fs');
 
 const version = 'v' + new Date().toISOString().split('T')[0].replace(/-/g, '.');
 const title = `QMOI ${version} Auto Release`;

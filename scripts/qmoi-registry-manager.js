@@ -5,10 +5,10 @@
  * Now supports feedback loops, advanced AI triggers, external API integration, auto-evolution, and advanced error/fix tracking.
  */
 
-import fs from 'fs';.promises;
-import path from 'path';
-import crypto from 'crypto';
-import axios from 'axios';
+const fs = require('fs').promises;
+const path = require('path');
+const crypto = require('crypto');
+const axios = require('axios');
 
 class QMOIRegistryManager {
   constructor() {

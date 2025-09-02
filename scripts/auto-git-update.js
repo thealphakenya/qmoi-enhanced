@@ -1,7 +1,7 @@
 /* eslint-env node */
-import { exec } from 'child_process';
-import fs from 'fs';
-import path from 'path';
+const { exec } = require('child_process');
+const fs = require('fs');
+const path = require('path');
 
 const findRepoRoot = () => {
   let dir = process.cwd();

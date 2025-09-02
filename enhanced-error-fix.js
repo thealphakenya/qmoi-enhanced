@@ -1,8 +1,8 @@
 /* eslint-env node */
 // enhanced-error-fix.ts
-import { execSync } from 'child_process';
-import path from 'path';
-import axios from 'axios';
+const { execSync } = require('child_process');
+const path = require('path');
+const axios = require('axios');
 
 const maxTries = 10;
 let lastLint = '', lastType = '', lastTest = '';

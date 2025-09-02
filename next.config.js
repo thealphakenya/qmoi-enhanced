@@ -6,15 +6,7 @@ const nextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true
-  },
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals.push({
-        ssh2: 'commonjs2 ssh2',
-      });
-    }
-    return config;
   }
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig 

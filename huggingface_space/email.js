@@ -1,5 +1,5 @@
-import nodemailer from 'nodemailer';
-import fs from 'fs';
+const nodemailer = require('nodemailer');
+const fs = require('fs');
 require('dotenv').config();
 
 const EMAIL_USER = process.env.QMOI_EMAIL_USER || 'rovicviccy@gmail.com';

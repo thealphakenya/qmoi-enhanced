@@ -1,7 +1,7 @@
 /* eslint-env node */
-import fs from 'fs';
-import path from 'path';
-import archiver from 'archiver';
+const fs = require('fs');
+const path = require('path');
+const archiver = require('archiver');
 
 const sourceDir = 'data';
 const backupDir = 'backups';

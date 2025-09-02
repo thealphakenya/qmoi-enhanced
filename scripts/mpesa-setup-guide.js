@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import readline from 'readline';
+const fs = require('fs');
+const path = require('path');
+const readline = require('readline');
 
 console.log('🔧 QMOI M-Pesa Setup Guide');
 console.log('==========================\n');

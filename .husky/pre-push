@@ -1,3 +1,15 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-echo "✅ Skipping Husky checks"
+#!/usr/bin/env sh
+# Husky pre-push hook (PowerShell compatible)
+# Runs fix:all if available, otherwise logs a warning and continues
+if npm run | grep -q 'fix:all'; then
+  npm run fix:all || echo "[Husky] Warning: fix:all failed, but continuing (PowerShell safe)"
+else
+  echo "[Husky] Warning: fix:all script not found, skipping."
+fi
+
+# QMOI Always Fix All before push
+npm run qmoi:always-fix-all || exit 1
+
+# Run QMOI pre-activity check
+node scripts/qmoi_pre_activity_check.js || exit 1
+npm test 

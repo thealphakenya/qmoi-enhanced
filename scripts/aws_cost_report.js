@@ -1,5 +1,5 @@
 /* eslint-env node */
-import AWS from 'aws-sdk';
+const AWS = require('aws-sdk');
 const ce = new AWS.CostExplorer({ region: 'us-east-1' });
 
 const start = new Date();

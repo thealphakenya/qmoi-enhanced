@@ -1,5 +1,5 @@
- 
-import crypto from 'crypto';
+/* eslint-disable-next-line @typescript-eslint/no-var-requires */
+const crypto = require('crypto');
 
 const ENCRYPTION_KEY = process.env.QMOI_BOT_KEY || crypto.randomBytes(32).toString('hex');
 const IV_LENGTH = 16;

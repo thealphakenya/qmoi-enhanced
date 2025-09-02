@@ -1,6 +1,6 @@
 /* eslint-env node */
- 
-import broadcast from '../utils/broadcast';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const broadcast = require("../utils/broadcast");
 
 async function sendMarketingCampaign(sock, numbers, message) {
     await broadcast(sock, numbers, message);

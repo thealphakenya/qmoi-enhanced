@@ -5,9 +5,9 @@
  * Extensible for future integrations (registrars, cloud providers, etc.)
  */
 
-import fs from 'fs';
-import path from 'path';
-import { execSync } from 'child_process';
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
 
 // --- CONFIG ---
 const MASTER_USERS = [process.env.QMOI_MASTER_USER || 'master']; // Add more as needed

@@ -1,10 +1,10 @@
-import express from 'express';
-import session from 'express-session';
-import fs from 'fs';
-import path from 'path';
-import { execSync } from 'child_process';
-import { sendEmail, sendSlack, sendWhatsApp } from './qmoi_notifier';
-import axios from 'axios';
+const express = require('express');
+const session = require('express-session');
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+const { sendEmail, sendSlack, sendWhatsApp } = require('./qmoi_notifier');
+const axios = require('axios');
 const app = express();
 const LOG_FILE = './logs/qmoi_media_orchestrator.log';
 const ERROR_FIX_LOG = './logs/error_fix_summary.json';

@@ -1,7 +1,7 @@
 // scripts/qmoi-master-debugger.js
 
-import { execSync } from 'child_process';
-import axios from 'axios';
+const { execSync } = require('child_process');
+const axios = require('axios');
 
 function runCheck(command, label) {
   try {

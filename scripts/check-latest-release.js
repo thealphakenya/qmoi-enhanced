@@ -1,5 +1,5 @@
 // scripts/check-latest-release.js
-import axios from 'axios';
+const axios = require('axios');
 
 const repo = 'thealphakenya/Alpha-Q-ai';
 

@@ -1,5 +1,5 @@
 // scripts/auto-publish-all.js
-import { execSync } from 'child_process';
+const { execSync } = require('child_process');
 
 try {
   console.log('🚀 [QMOI] Running full diagnostics and release...');

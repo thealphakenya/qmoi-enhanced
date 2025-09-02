@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import https from 'https';
-import fs from 'fs';
-import path from 'path';
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
 
 class GitLabNotificationService {
   constructor() {

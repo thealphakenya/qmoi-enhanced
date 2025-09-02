@@ -1,3 +1,0 @@
-{
-  "buildCommand": "python ../scripts/qmoi_app_builder.py --platform rpi --out dist/qmoi_rpi.img"
-}

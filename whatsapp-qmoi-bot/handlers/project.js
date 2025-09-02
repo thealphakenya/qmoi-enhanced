@@ -1,5 +1,5 @@
- 
-import askQmoi from '../services/qmoi';
+/* eslint-disable-next-line @typescript-eslint/no-var-requires */
+const askQmoi = require("../services/qmoi");
 
 async function continueProject(sock, jid, projectDetails) {
     // Use Qmoi to continue or manage a project

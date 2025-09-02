@@ -1,6 +1,6 @@
-import chokidar from 'chokidar';
-import path from 'path';
-import fs from 'fs';
+const chokidar = require('chokidar');
+const path = require('path');
+const fs = require('fs');
 
 function isNewFeature(filePath) {
   // Simple heuristic: new .ts, .tsx, .js, .py, or .md file in watched dirs

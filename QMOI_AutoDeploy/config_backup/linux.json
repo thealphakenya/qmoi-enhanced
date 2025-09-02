@@ -1,3 +1,0 @@
-{
-  "buildCommand": "electron-builder --linux --config electron-builder.yml --publish=never --out dist/qmoi_linux.AppImage"
-}

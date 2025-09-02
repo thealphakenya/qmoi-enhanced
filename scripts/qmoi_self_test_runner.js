@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import { execSync, spawn } from 'child_process';
+const fs = require('fs');
+const path = require('path');
+const { execSync, spawn } = require('child_process');
 
 // QMOI Self-Test Runner for Manual Error Simulation and Auto-Fix Testing
 class QmoiSelfTestRunner {

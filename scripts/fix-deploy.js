@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { execSync } from 'child_process';
+const { execSync } = require('child_process');
 try {
   execSync('npx vercel --clear-cache', { stdio: 'pipe' });
   execSync('npx vercel --prod --yes --force', { stdio: 'inherit' });

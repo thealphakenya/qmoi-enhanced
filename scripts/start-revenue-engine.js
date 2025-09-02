@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { qmoiRevenueEngine } from '../lib/qmoi-revenue-engine';
-import { qmoiAutoConfig } from '../lib/qmoi-auto-config';
-import fs from 'fs';
-import path from 'path';
+const { qmoiRevenueEngine } = require('../lib/qmoi-revenue-engine');
+const { qmoiAutoConfig } = require('../lib/qmoi-auto-config');
+const fs = require('fs');
+const path = require('path');
 
 class RevenueEngineStarter {
   constructor() {

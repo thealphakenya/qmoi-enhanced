@@ -152,7 +152,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
         handleConnect(best.ssid);
       }
     }
-     
+    // eslint-disable-next-line
   }, [networks, autoConnect, priorities]);
 
   const handleConnect = async (ssid: string) => {

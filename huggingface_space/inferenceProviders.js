@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
 const configPath = path.join(process.cwd(), 'config', 'inference_providers.json');
 let providers = [

@@ -2,7 +2,10 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "commonjs",
-    "lib": ["ES2020", "DOM"],
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
     "declaration": true,
     "outDir": "./dist",
     "rootDir": ".",
@@ -19,16 +22,36 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@config/*": ["src/config/*"],
-      "@types/*": ["src/types/*"],
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"],
-      "@lib/*": ["lib/*"],
-      "@/lib/*": ["lib/*"],
-      "@/components/*": ["src/components/*"],
-      "@/hooks/*": ["hooks/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@config/*": [
+        "src/config/*"
+      ],
+      "@types/*": [
+        "src/types/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ]
     },
     "allowJs": true,
     "noEmit": true,
@@ -46,14 +69,14 @@
     "components/**/*.ts",
     "components/**/*.tsx",
     "hooks/**/*.ts",
-    "hooks/**/*.tsx",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
+    "hooks/**/*.tsx"
+    // .next/types/**/*.ts intentionally excluded to avoid rootDir errors
+    ,
     ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    ".next",
+    ".next", // Exclude build artifacts to prevent rootDir errors
     "dist"
   ]
 }

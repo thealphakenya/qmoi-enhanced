@@ -2,14 +2,14 @@
 // QMOI CI/CD Self-Healing Script for GitLab
 // Fetches latest failed job log, detects/fixes typos in .gitlab-ci.yml, commits, pushes, triggers new pipeline, logs actions.
 
-import fs from 'fs';
-import path from 'path';
-import { execSync } from 'child_process';
-import fetch from 'node-fetch';
-import yaml from 'js-yaml';
-import crypto from 'crypto';
-import nodemailer from 'nodemailer';
-import QMOINotificationSystem from './qmoi-notification-system';
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+const fetch = require('node-fetch');
+const yaml = require('js-yaml');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+const QMOINotificationSystem = require('./qmoi-notification-system');
 const notifier = new QMOINotificationSystem();
 
 const GITLAB_TOKEN = process.env.GITLAB_TOKEN;

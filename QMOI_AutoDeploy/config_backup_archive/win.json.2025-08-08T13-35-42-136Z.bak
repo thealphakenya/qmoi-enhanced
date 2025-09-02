@@ -1,3 +1,0 @@
-{
-  "buildCommand": "electron-builder --win --config electron-builder.yml --publish=never --out dist/qmoi_win.exe"
-}

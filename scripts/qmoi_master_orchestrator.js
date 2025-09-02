@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { spawn, execSync } from 'child_process';
-import fs from 'fs';
-import path from 'path';
-import https from 'https';
+const { spawn, execSync } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
 
 class QMOIMasterOrchestrator {
   constructor() {

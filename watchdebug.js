@@ -1,9 +1,9 @@
 // WATCHDEBUG.js - QMOI Comprehensive Monitoring & Error Fixing System
 
-import axios from 'axios';
-import fs from 'fs';
-import path from 'path';
-import { exec } from 'child_process';
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+const { exec } = require('child_process');
 
 class QMOIWatchDebug {
     constructor() {

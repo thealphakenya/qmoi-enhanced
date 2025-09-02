@@ -6,11 +6,11 @@
  * Handles all types of errors: build, dependency, syntax, runtime, network, etc.
  */
 
-import { execSync, spawn } from 'child_process';
-import fs from 'fs';.promises;
-import path from 'path';
-import axios from 'axios';
-import crypto from 'crypto';
+const { execSync, spawn } = require('child_process');
+const fs = require('fs').promises;
+const path = require('path');
+const axios = require('axios');
+const crypto = require('crypto');
 
 class QMOIUniversalErrorHandler {
   constructor() {

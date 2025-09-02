@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { exec } from 'child_process';
-import fs from 'fs';
-import path from 'path';
-import glob from 'glob';
+const { exec } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
 
 // Utility: Run a shell command and return a promise
 function run(cmd) {
