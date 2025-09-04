@@ -44,3 +44,5 @@ git push origin main
 
 Write-Host "✅ Git push completed successfully!" -ForegroundColor Green
 Write-Host "Repository: https://github.com/thealphakenya/Alpha-Q-ai" -ForegroundColor Cyan
+
+
