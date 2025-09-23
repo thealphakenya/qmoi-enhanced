@@ -1,0 +1,208 @@
+{
+  "name": "QMOI Space - Advanced AI Platform",
+  "short_name": "QMOI Space",
+  "description": "Complete QMOI experience with AI, gaming, revenue generation, and hands-free operation",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#667eea",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["productivity", "business", "games", "finance", "ai", "entertainment"],
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "QMOI Space Dashboard"
+    },
+    {
+      "src": "/screenshots/desktop-2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "AI Chat Interface"
+    },
+    {
+      "src": "/screenshots/mobile-1.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile Dashboard"
+    },
+    {
+      "src": "/screenshots/mobile-2.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Voice Interface"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "AI Chat",
+      "short_name": "Chat",
+      "description": "Start AI conversation",
+      "url": "/chat",
+      "icons": [
+        {
+          "src": "/icons/chat-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Gaming Hub",
+      "short_name": "Games",
+      "description": "Access gaming platform",
+      "url": "/gaming",
+      "icons": [
+        {
+          "src": "/icons/game-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Revenue Dashboard",
+      "short_name": "Revenue",
+      "description": "View revenue analytics",
+      "url": "/revenue",
+      "icons": [
+        {
+          "src": "/icons/revenue-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Voice Control",
+      "short_name": "Voice",
+      "description": "Hands-free control",
+      "url": "/voice",
+      "icons": [
+        {
+          "src": "/icons/voice-icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://qmoi.space/manifest.json"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+qmoi",
+      "url": "/handle?protocol=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/file-handler",
+      "accept": {
+        "text/*": [".txt", ".md", ".json", ".csv"],
+        "image/*": [".jpg", ".jpeg", ".png", ".gif", ".webp"],
+        "video/*": [".mp4", ".avi", ".mov", ".webm"],
+        "audio/*": [".mp3", ".wav", ".ogg", ".m4a"],
+        "application/pdf": [".pdf"],
+        "application/zip": [".zip"],
+        "application/x-zip-compressed": [".zip"]
+      }
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "files",
+          "accept": ["image/*", "text/*", "video/*", "audio/*"]
+        }
+      ]
+    }
+  },
+  "handle_links": "preferred",
+  "capture_links": "new-client"
+}
+
