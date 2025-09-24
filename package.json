@@ -30,7 +30,14 @@
     "version:bump": "node scripts/bump-version.js",
     "changelog:generate": "node scripts/generate-changelog.js",
     "preinstall": "node scripts/preinstall-check.js",
-    "postinstall": "node scripts/postinstall-verify.js"
+    "postinstall": "node scripts/postinstall-verify.js",
+    "qmoi:write:outline": "python scripts/writing_assistant.py outline",
+    "qmoi:write:style": "python scripts/writing_assistant.py style",
+    "qmoi:write:similarity": "python scripts/writing_assistant.py similarity",
+    "qmoi:write:cite": "python scripts/writing_assistant.py cite",
+    "qmoi:mem:get": "python scripts/universal_memory.py get-prefs",
+    "qmoi:mem:set": "python scripts/universal_memory.py set-pref",
+    "qmoi:mem:record": "python scripts/universal_memory.py record"
   },
   "keywords": [
     "qmoi",
