@@ -1,3 +1,5 @@
+git push origin main
+
 ⚡ How to use
 
 Save the script as git-smart-sync.ps1 in your repo root (or somewhere in PATH).
