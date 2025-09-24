@@ -1,0 +1,28 @@
+⚡ How to use
+
+Save the script as git-smart-sync.ps1 in your repo root (or somewhere in PATH).
+
+In PowerShell, allow scripts to run (only once if not already enabled):
+
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+
+
+Run it inside your repo:
+
+.\git-smart-sync.ps1
+
+
+Or specify a different branch:
+
+.\git-smart-sync.ps1 -Branch develop
+
+
+✅ This script guarantees:
+
+No dangling rebases.
+
+Local changes never lost.
+
+Always synced with remote.
+
+Always pushes clean history.
