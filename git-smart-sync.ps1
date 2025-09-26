@@ -1,53 +1,75 @@
-function Invoke-GitAutoRebase {
-    param(
-        [string]$Branch = "main",
-        [string]$Remote = "origin"
-    )
+﻿# git-smart-sync.ps1
+# Full Git automation: add, commit, push with retries and error handling
 
-    Write-Host "Starting automated rebase workflow on $Remote/$Branch..."
+param (
+    [string]$RepoPath = "D:\applications\Alpha-Q-ai",
+    [string]$Branch = "main",
+    [int]$MaxRetries = 10,
+    [int]$DelaySeconds = 15
+)
 
-    # 1. Abort any half-done rebase (ignore errors if none in progress)
-    git rebase --abort 2>$null
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "No rebase in progress"
+Write-Host "🚀 Starting Smart Git Sync on branch $Branch" -ForegroundColor Cyan
+
+# Go to repo
+Set-Location $RepoPath
+
+# Configure Git for large pushes
+git config --global http.postBuffer 524288000 | Out-Null
+git config --global http.version HTTP/1.1 | Out-Null
+git config --global core.compression 0 | Out-Null
+git config --global pack.windowMemory "100m" | Out-Null
+git config --global pack.packSizeLimit "100m" | Out-Null
+git config --global pack.threads "1" | Out-Null
+
+# Ensure LFS is ready
+git lfs install | Out-Null
+
+# Stage all changes
+Write-Host "📂 Staging changes..." -ForegroundColor Cyan
+git add -A
+
+# Commit with timestamp
+$timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+$commitMsg = "Auto-sync commit @ $timestamp"
+Write-Host "📝 Committing changes: $commitMsg" -ForegroundColor Cyan
+git commit -m "$commitMsg" 2>$null
+
+$retry = 0
+$success = $false
+
+while (-not $success -and $retry -lt $MaxRetries) {
+    $retry++
+    Write-Host "🔄 Attempt $retry of $MaxRetries to push..." -ForegroundColor Yellow
+
+    try {
+        git push -u origin $Branch --progress
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "✅ Push completed successfully!" -ForegroundColor Green
+            $success = $true
+            break
+        } else {
+            throw "Push failed with exit code $LASTEXITCODE"
+        }
     }
+    catch {
+        Write-Host "⚠️ Push failed: $($_.Exception.Message)" -ForegroundColor Red
 
-    # 2. Stash local changes (tracked + untracked)
-    git add .
-    git stash push -u -m "temp-rebase-stash" | Out-Null
+        # Retry Git LFS push
+        Write-Host "📦 Retrying Git LFS push..." -ForegroundColor Cyan
+        git lfs push origin $Branch
 
-    # 3. Fetch latest from remote
-    git fetch $Remote
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "✅ LFS push completed successfully!" -ForegroundColor Green
+            $success = $true
+            break
+        }
 
-    # 4. Hard reset branch to remote
-    git reset --hard "$Remote/$Branch"
-
-    # 5. Reapply local work
-    git stash pop | Out-Null
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "Nothing to reapply"
+        Write-Host "⏳ Waiting $DelaySeconds seconds before retry..." -ForegroundColor DarkGray
+        Start-Sleep -Seconds $DelaySeconds
     }
+}
 
-    # 6. Auto-resolve yarn.lock conflicts
-    if (Test-Path "yarn.lock") {
-        git add yarn.lock   # keep local yarn.lock
-    } else {
-        git rm --cached yarn.lock 2>$null   # accept remote deletion if applicable
-    }
-
-    # 7. Stage everything else
-    git add -A
-
-    # 8. Commit if there are staged changes
-    $diff = git diff --cached --name-only
-    if ($diff) {
-        git commit -m "Automated rebase & apply local changes"
-    } else {
-        Write-Host "No changes to commit"
-    }
-
-    # 9. Force push with lease
-    git push $Remote $Branch --force-with-lease
-
-    Write-Host "Automated rebase complete!"
+if (-not $success) {
+    Write-Host "❌ All retries failed. Please check your network or split the push into smaller commits." -ForegroundColor Red
+    exit 1
 }
