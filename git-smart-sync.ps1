@@ -3,24 +3,16 @@ git-smart-sync.ps1
 Unified, resumable, adaptive Git push script for Windows (PowerShell & Git Bash)
 
 Features:
- - Detects whether running under PowerShell or Git Bash (pwsh)
- - Auto-fixes paths (Windows ↔ POSIX style)
- - Stages + commits changes with timestamp
- - Retries full push with exponential backoff until success
- - Pushes Git LFS objects
- - Falls back to adaptive chunked push if needed (with resume support)
- - Saves progress in .git-smart-sync.state so retries survive restarts
- - Logs everything to git-smart-sync.log
- - Can auto-register itself as a Windows Scheduled Task (runs daily, even if logged out)
-
-Usage (manual run):
-  powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\Alpha-Q-ai\git-smart-sync.ps1"
-
-Usage (Git Bash):
-  pwsh -NoProfile -ExecutionPolicy Bypass -File "/d/applications/Alpha-Q-ai/git-smart-sync.ps1"
-
-Usage (auto-install as scheduled task):
-  powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\Alpha-Q-ai\git-smart-sync.ps1" -InstallScheduledTask
+ - Detects environment and normalizes paths
+ - Creates remote safety backup branch before sync
+ - Auto-fetch + rebase/merge remote changes
+ - Stages + commits changes automatically
+ - Retries full push with exponential backoff
+ - Pushes Git LFS separately
+ - Falls back to adaptive chunked push if needed (resumes across runs)
+ - Logs to git-smart-sync.log with daily rotation
+ - Can auto-install as a Scheduled Task (runs even logged out)
+ - Sends notification via Slack/Email (optional) or GitHub Actions (default, free)
 #>
 
 param (
@@ -31,48 +23,75 @@ param (
     [int]$MaxChunkStart = 1000,
     [string]$StateFile = ".git-smart-sync.state",
     [string]$LogFile = "git-smart-sync.log",
-    [switch]$InstallScheduledTask
+    [switch]$InstallScheduledTask,
+    [string]$SlackWebhook = "",
+    [string]$EmailTo = ""
 )
 
-# ---------- Logging ----------
+# ---------- Log rotation ----------
+function Rotate-Log {
+    if (Test-Path $LogFile) {
+        $dateStr = (Get-Date).ToString("yyyyMMdd")
+        $archive = "$($LogFile -replace '\.log$', '')-$dateStr.log"
+        if (-not (Test-Path $archive)) {
+            try { Move-Item -Path $LogFile -Destination $archive -Force } catch {}
+        }
+    }
+}
+Rotate-Log
+
 function Log {
     param([string]$Message, [string]$Color = "Gray")
     $ts = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
     $line = "[$ts] $Message"
-    Add-Content -Path $LogFile -Value $line
+    try { Add-Content -Path $LogFile -Value $line } catch {}
     try { Write-Host $Message -ForegroundColor $Color } catch { Write-Host $Message }
 }
 
-# ---------- Scheduled Task Installer ----------
-if ($InstallScheduledTask) {
-    $taskName = "GitSmartSync"
-    $taskDesc = "Auto push Alpha-Q-ai repo daily"
-    $taskExe  = "powershell.exe"
-    $taskArgs = "-NoProfile -ExecutionPolicy Bypass -File `"$RepoPath\git-smart-sync.ps1`""
+# ---------- Notifications ----------
+function Send-Notification {
+    param([string]$Status, [string]$Details)
 
-    # Run daily at 9:00 AM
-    $trigger = New-ScheduledTaskTrigger -Daily -At 09:00
+    # Slack
+    if ($SlackWebhook) {
+        try {
+            $payload = @{ text = "*Git Sync [$Status]*`n$Details" } | ConvertTo-Json -Compress
+            Invoke-RestMethod -Uri $SlackWebhook -Method Post -Body $payload -ContentType 'application/json'
+            Log "📣 Slack notification sent." Cyan
+        } catch { Log "⚠️ Failed to send Slack notification: $($_.Exception.Message)" Yellow }
+    }
 
-    # Create action
-    $action = New-ScheduledTaskAction -Execute $taskExe -Argument $taskArgs
+    # Email
+    if ($EmailTo) {
+        try {
+            $subject = "Git Sync [$Status] - $RepoPath"
+            $body = "$Details`nLog: $LogFile"
+            Send-MailMessage -To $EmailTo -From "autosync@$env:COMPUTERNAME" `
+                -Subject $subject -Body $body -SmtpServer "localhost" -ErrorAction SilentlyContinue
+            Log "📧 Email notification attempted." Cyan
+        } catch { Log "⚠️ Failed to send email notification: $($_.Exception.Message)" Yellow }
+    }
 
-    # Run whether logged in or not, highest privileges
-    Register-ScheduledTask -TaskName $taskName -Description $taskDesc -Action $action -Trigger $trigger `
-        -User "$env:USERNAME" -RunLevel Highest -Force | Out-Null
+    # GitHub notification branch (default)
+    try {
+        $NotifyBranch = "sync-notify"
+        $LogFilePath = ".sync-log"
+        $TimeNow = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
-    Log "✅ Scheduled Task '$taskName' installed. It will run daily at 9:00, even if logged out." Green
-    exit 0
+        "$TimeNow - $Status - $Details" | Out-File -FilePath $LogFilePath -Encoding utf8
+
+        git checkout -B $NotifyBranch
+        git add $LogFilePath
+        git commit -m "🔔 Sync $Status at $TimeNow"
+        git push origin $NotifyBranch --force
+        git checkout $Branch
+        Log "📡 GitHub notification branch updated." Cyan
+    } catch {
+        Log "⚠️ Failed to push notification branch: $($_.Exception.Message)" Yellow
+    }
 }
 
-# ---------- Environment detection ----------
-$IsGitBash = $false
-if ($env:MSYSTEM -and ($env:MSYSTEM -match "MINGW|MSYS|CYGWIN")) { $IsGitBash = $true }
-elseif ($env:SHELL -and ($env:SHELL -match "bash")) { $IsGitBash = $true }
-
-if ($IsGitBash) { Log "🐧 Detected: Git Bash-like environment" Cyan }
-else { Log "🪟 Detected: PowerShell/Windows environment" Cyan }
-
-# ---------- Path normalization ----------
+# ---------- Path conversion ----------
 function Convert-PosixToWindowsPath($p) {
     if ($p -match "^/[a-z]/") {
         $drive = $p.Substring(1,1).ToUpper()
@@ -82,61 +101,83 @@ function Convert-PosixToWindowsPath($p) {
     return $p
 }
 
+# ---------- Scheduled Task Installer ----------
+if ($InstallScheduledTask) {
+    try {
+        $taskName = "GitSmartSync"
+        $taskDesc = "Auto push Alpha-Q-ai repo"
+        $taskExe  = "powershell.exe"
+        $taskArgs = "-NoProfile -ExecutionPolicy Bypass -File `"$RepoPath\git-smart-sync.ps1`""
+
+        $dailyTrigger = New-ScheduledTaskTrigger -Daily -At 09:00
+        $startupTrigger = New-ScheduledTaskTrigger -AtStartup
+        $action = New-ScheduledTaskAction -Execute $taskExe -Argument $taskArgs
+
+        try { Unregister-ScheduledTask -TaskName $taskName -Confirm:$false -ErrorAction SilentlyContinue } catch {}
+
+        Register-ScheduledTask -TaskName $taskName -Description $taskDesc -Action $action `
+            -Trigger @($dailyTrigger, $startupTrigger) -User "$env:USERNAME" -RunLevel Highest -Force | Out-Null
+
+        Log "✅ Scheduled Task '$taskName' installed (daily & at startup, runs even logged out)." Green
+    } catch {
+        Log "❌ Failed to install scheduled task: $($_.Exception.Message)" Red
+    }
+    exit 0
+}
+
+# ---------- Detect environment ----------
+$IsGitBash = $false
+if ($env:MSYSTEM -and ($env:MSYSTEM -match "MINGW|MSYS|CYGWIN")) { $IsGitBash = $true }
+elseif ($env:SHELL -and ($env:SHELL -match "bash")) { $IsGitBash = $true }
+if ($IsGitBash) { Log "🐧 Git Bash-like environment" Cyan } else { Log "🪟 PowerShell/Windows environment" Cyan }
+
+# ---------- Normalize repo path ----------
 if ($RepoPath -match '^/[a-z]/') { $RepoPath = Convert-PosixToWindowsPath $RepoPath }
 $RepoPath = $RepoPath -replace '/','\' 
-
-Log "📂 Using repository path: $RepoPath" Yellow
-
-if (-not (Test-Path $RepoPath)) {
-    Log "❌ Repository path not found: $RepoPath" Red
-    exit 1
-}
-
+if (-not (Test-Path $RepoPath)) { Log "❌ Repo path not found: $RepoPath" Red; exit 1 }
 Set-Location $RepoPath
-if (-not (Test-Path ".git")) {
-    Log "❌ Not a git repository (no .git found in $RepoPath)" Red
-    exit 1
-}
+if (-not (Test-Path ".git")) { Log "❌ Not a git repository in $RepoPath" Red; exit 1 }
 
-# ---------- Git config tweaks ----------
+# ---------- Git tweaks ----------
 git config --global http.postBuffer 524288000 | Out-Null
-git config --global http.version HTTP/1.1 | Out-Null
 git config --global core.compression 0 | Out-Null
 git config --global pack.windowMemory "100m" | Out-Null
 git config --global pack.packSizeLimit "100m" | Out-Null
 git config --global pack.threads "1" | Out-Null
 git lfs install | Out-Null
 
-# ---------- Stage + commit ----------
-Log "📂 Staging changes..." Cyan
+# ---------- Safety backup branch ----------
+$ts = (Get-Date).ToString("yyyyMMdd-HHmmss")
+$backupBranch = "autosync-backup-$ts"
+git branch -f $backupBranch HEAD
+git push origin $backupBranch --set-upstream | Out-Null
+
+# ---------- Fetch + rebase ----------
+git fetch --prune origin $Branch
+git rebase --autostash origin/$Branch 2>$null
+if ($LASTEXITCODE -ne 0) {
+    git merge -X theirs origin/$Branch --no-edit 2>$null
+    if ($LASTEXITCODE -ne 0) { git rebase --abort 2>$null; git merge --abort 2>$null }
+}
+
+# ---------- Commit local changes ----------
 git add -A
+git diff --cached --quiet
+if ($LASTEXITCODE -ne 0) {
+    $commitMsg = "Auto-sync commit @ $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+    git commit -m "$commitMsg" | Out-Null
+}
 
-$timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-$commitMsg = "Auto-sync commit @ $timestamp"
-Log "📝 Committing changes (if any): $commitMsg" Cyan
-git commit -m "$commitMsg" 2>$null
-
-# ---------- Full push with exponential backoff ----------
+# ---------- Full push with backoff ----------
 function Try-FullPush {
-    param ([int]$MaxRetries, [int]$InitialDelay)
-
-    $attempt = 0
+    param([int]$MaxRetries, [int]$InitialDelay)
     $delay = $InitialDelay
-
-    while ($attempt -lt $MaxRetries) {
-        $attempt++
-        Log "🔄 Full push attempt $attempt / $MaxRetries (delay $delay s)" Yellow
-
-        git push origin ${Branch} --progress
+    for ($i=1; $i -le $MaxRetries; $i++) {
+        git push origin $Branch --progress
         if ($LASTEXITCODE -eq 0) {
-            Log "✅ Full push succeeded!" Green
-            git lfs push origin ${Branch}
-            if ($LASTEXITCODE -eq 0) { Log "✅ Git LFS push succeeded." Green }
-            else { Log "⚠️ Git LFS push had warnings." Yellow }
+            git lfs push origin $Branch | Out-Null
             return $true
         }
-
-        Log "⚠️ Full push failed. Retrying in $delay seconds..." Red
         Start-Sleep -Seconds $delay
         $delay = [Math]::Min(300, [Math]::Round($delay * 1.8))
     }
@@ -145,55 +186,48 @@ function Try-FullPush {
 
 if (Try-FullPush -MaxRetries $MaxFullPushRetries -InitialDelay $InitialDelaySeconds) {
     if (Test-Path $StateFile) { Remove-Item $StateFile -ErrorAction SilentlyContinue }
-    Log "🎉 Repo fully synced (full push path)." Green
+    Log "🎉 Repo fully synced." Green
+    Send-Notification "SUCCESS" "Repo $RepoPath fully synced to branch $Branch."
     exit 0
 }
 
-Log "⚠️ Full push failed repeatedly. Falling back to adaptive chunked push." Yellow
-
 # ---------- Adaptive chunked push ----------
-$commitStr = git rev-list --reverse ${Branch}
-if (-not $commitStr) { Log "❌ Unable to read commit list for ${Branch}" Red; exit 1 }
+$commitStr = git rev-list --reverse $Branch
+if (-not $commitStr) { Log "❌ No commits found for $Branch"; exit 1 }
 $commitList = $commitStr -split "`n"
 $total = $commitList.Count
-Log "📊 Total commits on ${Branch}: $total" Cyan
 
-# Resume state
 $startIndex = 0
 if (Test-Path $StateFile) {
-    try {
-        $last = Get-Content $StateFile
-        if ($last) {
-            $idx = [Array]::IndexOf($commitList, $last)
-            if ($idx -ge 0) { $startIndex = $idx + 1; Log "⏩ Resuming from commit $last" Cyan }
-        }
-    } catch { Log "⚠️ Could not read state file, starting fresh." Yellow }
+    $last = Get-Content $StateFile
+    $idx = [Array]::IndexOf($commitList, $last)
+    if ($idx -ge 0) { $startIndex = $idx + 1 }
 }
 
-$chunkSize = [int]$MaxChunkStart
-$i = $startIndex
-while ($i -lt $total) {
+$chunkSize = $MaxChunkStart
+for ($i=$startIndex; $i -lt $total;) {
     $endIndex = [Math]::Min($i + $chunkSize - 1, $total - 1)
     $startCommit = $commitList[$i]
     $endCommit = $commitList[$endIndex]
 
-    Log "➡️ Pushing commits $($i+1)..$($endIndex+1) ($startCommit → $endCommit) chunkSize=$chunkSize" Yellow
-    git push origin "${startCommit}:${Branch}"
+    git push origin "${startCommit}:$Branch"
     if ($LASTEXITCODE -eq 0) {
-        Log "✅ Chunk pushed successfully." Green
         Set-Content -Path $StateFile -Value $endCommit -Force
-        git lfs push origin ${Branch} | Out-Null
+        git lfs push origin $Branch | Out-Null
         $i = $endIndex + 1
         if ($chunkSize -lt $MaxChunkStart) { $chunkSize = [Math]::Min($MaxChunkStart, $chunkSize * 2) }
-    }
-    else {
-        Log "❌ Chunk push failed. Reducing chunk size..." Red
+    } else {
         $chunkSize = [Math]::Max([math]::Floor($chunkSize / 2), 1)
-        if ($chunkSize -eq 1) { Log "⚠️ Falling back to single-commit pushes." Yellow }
+        if ($chunkSize -eq 1) {
+            $safetyBranch = "autosync-safety-$ts"
+            git branch -f $safetyBranch $startCommit
+            git push origin $safetyBranch --set-upstream | Out-Null
+        }
         Start-Sleep -Seconds 5
     }
 }
 
 if (Test-Path $StateFile) { Remove-Item $StateFile -ErrorAction SilentlyContinue }
-Log "✅ All commits pushed successfully with adaptive chunking!" Green
+Log "✅ All commits pushed with adaptive chunking." Green
+Send-Notification "SUCCESS" "Repo $RepoPath fully synced with adaptive chunking."
 exit 0
