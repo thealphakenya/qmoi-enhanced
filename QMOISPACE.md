@@ -89,6 +89,8 @@ QMOI Space is a comprehensive AI-powered platform that serves as the central hub
 3. **Software Development**: KSH 30,000 daily minimum
    - Mobile app development and sales
    - Web application development
+   - Progressive Web App (PWA) available: https://space.qmoi.app/ (always up-to-date, autotested, and cloud-offloaded)
+   - Unlimited usage: Storage, memory, and compute are elastically offloaded to QMOI Cloud, so Codespace or device limits never block usage.
    - SaaS platform subscriptions
    - API services and licensing
    - Custom software solutions
