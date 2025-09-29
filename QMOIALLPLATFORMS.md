@@ -104,6 +104,10 @@ class QMOIPlatformIntegration:
 
 ## 🎯 QCity UI Integration
 
+### QCity PWA
+- QCity is available as a Progressive Web App (PWA): https://qcity.qmoi.app/
+- PWA is always up-to-date, autotested, and cloud-offloaded for unlimited usage, even in Codespaces or low-resource environments.
+
 ### Master-Only Platform Dashboard
 - **GitHub Panel**: Manage all GitHub repositories, actions, packages
 - **GitLab Panel**: Manage all GitLab CI/CD, repositories, security

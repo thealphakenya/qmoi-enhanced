@@ -2,6 +2,11 @@
 
 ## Overview
 
+
+## Codespace/Cloud Automation
+- All QMOI features (builds, storage, memory, error fixing, etc.) are elastically offloaded to QMOI Cloud when running in Codespaces or any low-resource environment.
+- PWAs and all apps are always available, never blocked by local resource limits.
+
 This comprehensive reference document catalogs and categorizes all .md files in the QMOI system with advanced categorization, automation features, and health checks. The system ensures QMOI can automatically reference, fix, and enhance all documentation.
 
 - **All app download links are now provided via https://downloads.qmoi.app/**
