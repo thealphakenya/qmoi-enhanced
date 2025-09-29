@@ -1,8 +1,0 @@
-2025-07-15 08:29:21,128 - INFO - File modified: .\scripts\qmoi_doc_verifier.js
-2025-07-15 08:46:11,271 - INFO - File modified: .\logs\gitlab-ci-stats.json
-2025-07-15 09:50:16,188 - INFO - File modified: .\logs\gitlab-ci-stats.json
-2025-07-15 09:50:17,354 - INFO - Scheduled git pull/merge before automation...
-2025-07-15 09:50:18,181 - ERROR - Git pull/merge failed: Command 'git pull --rebase' returned non-zero exit status 128.
-2025-07-15 10:13:15,245 - INFO - File modified: .\logs\gitlab-ci-stats.json
-2025-07-15 10:13:15,671 - INFO - Scheduled git pull/merge before automation...
-2025-07-15 10:13:16,419 - ERROR - Git pull/merge failed: Command 'git pull --rebase' returned non-zero exit status 128.
