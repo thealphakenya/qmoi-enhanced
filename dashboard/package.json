@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "npx serve -s build",
-    "dev": "npx vite"
+    "dev": "npx vite",
+    "build": "npx vite build"
   }
 } 
