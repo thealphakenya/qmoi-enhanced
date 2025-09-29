@@ -11,6 +11,7 @@ FINAL unified script:
  - Large file detection (>50MB), optional LFS migration, optional GitHub Issue
  - Full push with retries & exponential backoff
  - Adaptive chunked push with resume
+ - Optional dependency auto-fix across npm/pnpm/yarn
  - Ends with notification
 #>
 
@@ -26,7 +27,9 @@ param (
     [switch]$AutoMigrateToLFS,
     [switch]$OpenIssueOnLargeFiles,
     [string]$SlackWebhook = "",
-    [string]$EmailTo = ""
+    [string]$EmailTo = "",
+    [switch]$RunDepsFix,        # NEW: run dependency auto-fix step
+    [switch]$DepsForce         # NEW: run force/aggressive fixes where supported
 )
 
 # -------------------- Helpers --------------------
@@ -243,6 +246,119 @@ function Try-FullPush($MaxRetries,$InitialDelay) {
 
 if (Try-FullPush $MaxFullPushRetries $InitialDelaySeconds) {
     Remove-Item -LiteralPath $StateFile -ErrorAction SilentlyContinue
+    # Run dependency auto-fix optionally AFTER a successful push (keeps behavior safe)
+    if ($RunDepsFix) {
+        Log "🔐 Running dependency auto-fix step (user requested)..." Cyan
+
+        function Run-DependencyAutoFix {
+            param([switch]$Force)
+
+            # detect package manager by lockfile
+            $hasNpmLock = Test-Path -LiteralPath "package-lock.json"
+            $hasYarnLock = Test-Path -LiteralPath "yarn.lock"
+            $hasPnpmLock = Test-Path -LiteralPath "pnpm-lock.yaml"
+
+            # choose manager priority: pnpm > yarn > npm
+            if ($hasPnpmLock) { $mgr = "pnpm" }
+            elseif ($hasYarnLock) { $mgr = "yarn" }
+            else { $mgr = "npm" }
+
+            Log "🔎 Detected package manager: $mgr" Cyan
+
+            # Helper to create lockfile if missing and run install
+            function Ensure-Lockfile-And-Install {
+                param([string]$mgr)
+                if ($mgr -eq "pnpm") {
+                    if (-not $hasPnpmLock) {
+                        Log "ℹ️ No pnpm lockfile; running 'pnpm install' to create one..." Yellow
+                        pnpm install | Out-Host
+                    }
+                } elseif ($mgr -eq "yarn") {
+                    if (-not $hasYarnLock) {
+                        Log "ℹ️ No yarn.lock; running 'yarn install' to create one..." Yellow
+                        yarn install | Out-Host
+                    }
+                } else {
+                    if (-not $hasNpmLock) {
+                        Log "ℹ️ No package-lock.json; running 'npm install' to create one..." Yellow
+                        npm install | Out-Host
+                    }
+                }
+            }
+
+            # Run manager-specific fixes
+            try {
+                if ($mgr -eq "pnpm") {
+                    Ensure-Lockfile-And-Install -mgr "pnpm"
+                    Log "🔍 Running 'pnpm audit' and attempting 'pnpm audit --fix'..." Yellow
+                    pnpm audit --reporter=text | Out-Host
+                    if ($Force) {
+                        pnpm audit --fix --force | Out-Host
+                    } else {
+                        pnpm audit --fix | Out-Host
+                    }
+                }
+                elseif ($mgr -eq "yarn") {
+                    Ensure-Lockfile-And-Install -mgr "yarn"
+
+                    # Yarn currently does not provide a first-class 'audit fix' in many versions.
+                    # Try npx yarn-audit-fix if available, otherwise fall back to npm-based approach as best-effort.
+                    Log "🔍 Running 'yarn audit'..." Yellow
+                    yarn audit --level low --json | Out-Host
+
+                    # Try npx yarn-audit-fix (community tool) as an attempt to auto-fix
+                    $hasYarnAuditFix = (Test-Path -LiteralPath ".\node_modules\.bin\yarn-audit-fix") -or (Get-Command "yarn-audit-fix" -ErrorAction SilentlyContinue)
+                    if ($hasYarnAuditFix) {
+                        Log "ℹ️ Found 'yarn-audit-fix', running it..." Yellow
+                        npx yarn-audit-fix | Out-Host
+                    } else {
+                        Log "ℹ️ 'yarn-audit-fix' not found. Attempting npm fallback: create package-lock.json & run 'npm audit fix'." Yellow
+                        # create package-lock-only and run npm audit fix as a fallback
+                        npm i --package-lock-only | Out-Host
+                        if ($Force) {
+                            npm audit fix --force --legacy-peer-deps | Out-Host
+                        } else {
+                            npm audit fix --legacy-peer-deps | Out-Host
+                        }
+                    }
+                }
+                else {
+                    # npm path
+                    Ensure-Lockfile-And-Install -mgr "npm"
+                    Log "🔍 Running 'npm audit'..." Yellow
+                    npm audit --audit-level=low | Out-Host
+                    if ($Force) {
+                        npm audit fix --force --legacy-peer-deps | Out-Host
+                    } else {
+                        npm audit fix --legacy-peer-deps | Out-Host
+                    }
+                }
+            } catch {
+                Log "⚠️ Dependency auto-fix command failed: $($_.Exception.Message)" Yellow
+            }
+
+            # Detect lockfile changes
+            $changes = git status --porcelain | Select-String "package-lock.json|yarn.lock|pnpm-lock.yaml"
+            if ($changes) {
+                $branchName = "autosync-depsfix-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+                Log "📦 Dependency updates detected. Creating branch: $branchName" Yellow
+
+                git checkout -b $branchName
+                git add package*.json yarn.lock pnpm-lock.yaml 2>$null
+                git commit -m "chore: auto-fix dependency vulnerabilities" 2>$null
+                git push origin $branchName
+
+                Log "✅ Fixes pushed successfully on branch $branchName" Green
+                Log "➡️ Create PR: https://github.com/thealphakenya/qmoi-enhanced/pull/new/$branchName" Green
+            } else {
+                Log "✅ No dependency lockfile changes detected after audit fix." Green
+            }
+        }
+
+        # run the dependency auto-fix function with the user-provided force flag
+        Run-DependencyAutoFix -Force:$DepsForce
+    }
+
     Send-Notification "SUCCESS" "Repo fully synced."
     exit 0
 }

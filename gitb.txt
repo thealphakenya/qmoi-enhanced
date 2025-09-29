@@ -9,6 +9,12 @@ Install scheduled task (one-time):
 
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\Alpha-Q-ai\git-smart-sync.ps1" -InstallScheduledTask
 
+
+git-depsfix.ps1
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\Alpha-Q-ai\git-depsfix.ps1"
+
+
 Notes & safety
 
 The script creates remote backup branches (autosync-backup-*, autosync-safety-*) before risky operations so you can recover any local work.
