@@ -22,6 +22,7 @@
     "electron:build:all": "npm run pyinstaller:build && npm run generate:icon && electron-builder --win --mac --linux --config=electron-builder.json && npm run postbuild:win",
     "test:apps": "node scripts/qmoi-install-autotest.js",
     "fix:apps": "node scripts/qmoi-autofixer.js",
+    "fix:all": "npm audit fix || true && npm run fix:apps",
     "release:apps": "node scripts/qmoi-release.js",
     "autopublish:all": "npm run generate:icon && npm run pyinstaller:build && npm run electron:build:all && npm run test:apps && npm run fix:apps && npm run release:apps",
     "build:publish:all": "cross-env GITHUB_TOKEN=$GITHUB_TOKEN npm run autopublish:all",
