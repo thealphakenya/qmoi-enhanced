@@ -7,9 +7,42 @@ This file is auto-generated and always up-to-date. It lists every `.md` file in 
 
 ## All Markdown Files in Workspace
 
+## Auto-Sync, Memory, Tracks, and Automation
+
+- All .md files listed below are auto-synced across all QMOI-related repos (see SYNCREPOS.md).
+- QMOI memory, autodevelopment, evolution, parallel features, QVS, security, anti-hacking, anti-tracking, and VPN features are referenced and enhanced via these files.
+- TRACKS.md is used by QMOI memory to log tracks, fixes, enhancements, research, and automation.
+- SYNCREPOS.md lists all repos for auto-sync and propagation of changes.
+- Always update related .md files when features are added, fixed, or enhanced.
+
+### QMOI Memory Automation
+- QMOI memory auto-syncs tracks, fixes, enhancements, and .md file updates across all synced repos (see SYNCREPOS.md).
+- Automatically adds new .md files and updates ALLMDFILESREFS.md in all repos.
+- Auto-checks and updates related .md files and features in all synced repos, including thealphakenya/qmoi-enhanced-new-clean and thealphakenya/Alpha-Q-ai.
+- QMOI memory is always aware and logs all changes, enhancements, and automation actions in TRACKS.md.
+
+### Real-Time Logging & Sync
+- All QMOI memory and automation actions, errors, debugs, and feature changes are logged in real time in TRACKS.md, with exact timestamps.
+- QMOI automation automatically syncs TRACKS.md and other .md files across all repos if any change is detected.
+
+### Key Feature-Related .md Files
+- TRACKS.md: Logs all tracks, fixes, enhancements, and automation for QMOI memory.
+- SYNCREPOS.md: Lists all synced repos and auto-sync instructions.
+- ENHANCEDQVS.md, ENHANCED_AUTOMATION_SUMMARY.md, QMOI-ENHANCED-AUTOMATION.md, QMOI-ENHANCED-FEATURES.md, QMOI-ENHANCED-COMPLETE.md, QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md, QMOI-ENHANCED-FINAL.md: QVS, automation, and enhancement features.
+- SELF_EVOLUTION.md: Evolution and autodevelopment.
+- MONITORING.md: Security, anti-hacking, anti-tracking, and VPN features.
+- FEATURESREADME.md: All features summary and references.
+
+## Instructions
+- When adding, fixing, or enhancing any feature, update the relevant .md files and ensure TRACKS.md and SYNCREPOS.md are also updated.
+- QMOI memory should always be aware and reference TRACKS.md for all changes.
+- All .md files listed below are auto-synced and referenced for automation and memory awareness.
+
 Below is a comprehensive, auto-updating list of all `.md` files in the workspace:
 
 <!-- BEGIN AUTO-GENERATED MD FILE LIST -->
+/workspaces/qmoi-enhanced/SYNCREPOS.md
+/workspaces/qmoi-enhanced/TRACKS.md
 /workspaces/qmoi-enhanced/@ALLMDFILESREFS.md
 /workspaces/qmoi-enhanced/ALLDEVICESSETTINGS.md
 /workspaces/qmoi-enhanced/ALLERRORSSTATSQMOI.md

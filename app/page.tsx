@@ -12,6 +12,9 @@ import DeploymentStatusDashboard from '../components/DeploymentStatusDashboard';
 import { MasterProvider, useMaster } from '../components/MasterContext';
 import { QmoiMemoryPanel } from '../components/QmoiMemoryPanel';
 import { NotificationPanel } from '../components/NotificationPanel';
+import { EmergencyPanel } from "@/components/EmergencyPanel";
+import { QmoiKeyboard } from "@/components/QmoiKeyboard";
+import { SisterProjects } from "@/components/SisterProjects";
 
 import { useState, useEffect } from "react";
 
@@ -54,11 +57,12 @@ function MainPage() {
         {isMaster ? 'Switch to User' : 'Switch to Master'}
       </button>
       <DeploymentStatusDashboard isMaster={isMaster} />
-    <div className="grid grid-cols-4 grid-rows-[auto_1fr_auto] h-screen bg-[#111] text-[#ccffcc]">
+    <div className="grid grid-cols-5 grid-rows-[auto_1fr_auto] h-screen bg-[#111] text-[#ccffcc]">
       {/* Sidebar */}
       <aside className="col-span-1 row-span-2 border-r border-green-700 p-2 overflow-y-auto">
         <FileExplorer />
         <GitStatus />
+        <EmergencyPanel />
       </aside>
 
       {/* Main Chat & Preview */}
@@ -98,11 +102,18 @@ function MainPage() {
 
         {/* Master-only QMOI Memory & Evolution Panel */}
         {isMaster && <QmoiMemoryPanel />}
+
+        {/* Sister Projects Panel */}
+        <SisterProjects />
+
+        {/* Keyboard Panel */}
+        <QmoiKeyboard isVisible={true} onTextChange={() => {}} />
       </main>
 
       {/* Preview Section */}
-      <section className="col-span-1 p-2 border-l border-green-700 overflow-auto">
+      <section className="col-span-2 p-2 border-l border-green-700 overflow-auto">
         <PreviewWindow />
+        <DeploymentStatusDashboard isMaster={isMaster} />
       </section>
     </div>
     </>
