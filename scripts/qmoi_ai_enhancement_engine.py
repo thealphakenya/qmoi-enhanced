@@ -37,7 +37,7 @@ class QMOIAIEnhancementEngine:
     def __init__(self):
         self.root_dir = Path.cwd()
         self.logs_dir = self.root_dir / "logs"
-        self.logs_dir.mkdir(exist_ok=True)
+        self.logs_dir.mkdir(parents=True, exist_ok=True)
         
         self.db_path = self.root_dir / "data" / "qmoi_ai_engine.db"
         self.db_path.parent.mkdir(exist_ok=True)
@@ -822,4 +822,4 @@ def main():
     engine.run_comprehensive_enhancement()
 
 if __name__ == "__main__":
-    main() 
+    main()
