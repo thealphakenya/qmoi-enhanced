@@ -1,4 +1,4 @@
-# ALLMDFILESREFS.md - Auto-Generated Reference of All Markdown Files
+, # ALLMDFILESREFS.md - Auto-Generated Reference of All Markdown Files
 
 This file is auto-generated and always up-to-date. It lists every `.md` file in the QMOI workspace, ensuring documentation, automation, and references are always complete and accurate.
 
