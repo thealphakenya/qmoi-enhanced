@@ -1,4 +1,3 @@
-
 # ALLMDFILESREFS.md - Auto-Generated Reference of All Markdown Files
 
 This file is auto-generated and always up-to-date. It lists every `.md` file in the QMOI workspace, ensuring documentation, automation, and references are always complete and accurate.
@@ -247,3 +246,6 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 ---
 
 *This file is auto-updated by QMOI Unified Automation. Do not edit manually.*
+
+- Updated `QMOI-ENHANCEMENT-SUMMARY.md` to include details about the sparse attention mechanism and dynamic enhancement strategies.
+- Updated `QMOI-ENHANCED-SUMMARY.md` to reflect the new automation and optimization features.
