@@ -12,6 +12,11 @@ import crypto from 'crypto';
 import QMOINotificationSystem from './qmoi-notification-system.js';
 
 class QMOIMusicProductionSystem {
+  async enableParallelMode() {
+    // Stub: In production, implement actual parallel mode logic
+    console.log('🎶 enableParallelMode: Music production system parallel mode enabled (stub).');
+    return true;
+  }
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
     this.artists = new Map();
