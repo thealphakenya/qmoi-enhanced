@@ -12,11 +12,8 @@ export default function QIStateWindow({ userEmail, userPhone }: { userEmail: str
     setAuditLog([
       "Linked Airtel Money to master.",
       "Linked Mpesa to master.",
-      "Earned $1000 from QMOI Revenue.",
-      "Deposited $500 to Airtel Money.",
-      "Completed QMOI Alpha AI launch.",
-      "Automated error fixing enabled.",
-      "All systems operational.",
+      "Earned 1000.",
+      "Deposited 500 to Airtel Money."
     ]);
   }, []);
 

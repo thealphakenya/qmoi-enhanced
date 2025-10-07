@@ -19,59 +19,38 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
         <div style={sectionStyle}>
           <h3>Life Goals</h3>
-          <ul>
-            <li>Become a top AI developer</li>
-            <li>Launch QMOI v2.0</li>
-            <li>Travel to 5 new countries</li>
-          </ul>
+          <p>Track, add, and update your personal and professional goals.</p>
+          {/* TODO: Connect to goals data */}
         </div>
         <div style={sectionStyle}>
           <h3>Achievements</h3>
-          <ul>
-            <li>QMOI Alpha AI launched</li>
-            <li>1000+ users onboarded</li>
-            <li>First revenue milestone reached</li>
-          </ul>
+          <p>View your milestones and completed objectives.</p>
+          {/* TODO: Connect to achievements data */}
         </div>
         <div style={sectionStyle}>
           <h3>Invention/Business Projects</h3>
-          <ul>
-            <li>QMOI Cloud Sync</li>
-            <li>QMOI Gaming Engine</li>
-            <li>QMOI Revenue Dashboard</li>
-          </ul>
+          <p>Manage, monitor, and automate your projects and ventures.</p>
+          {/* TODO: Connect to projects data */}
         </div>
         <div style={sectionStyle}>
           <h3>Wallet & Financial Dashboard</h3>
-          <ul>
-            <li>Balance: $12,500</li>
-            <li>Last transaction: +$1,000 (QMOI Revenue)</li>
-            <li>Linked: Airtel Money, Mpesa</li>
-          </ul>
+          <p>Monitor balances, transactions, and manage multiple financial services.</p>
+          {/* TODO: Integrate wallet/finance APIs */}
         </div>
         <div style={sectionStyle}>
           <h3>Routines & Habits</h3>
-          <ul>
-            <li>Morning coding (6am-8am)</li>
-            <li>Daily system health check</li>
-            <li>Weekly project review</li>
-          </ul>
+          <p>Set up daily routines, habits, and track consistency.</p>
+          {/* TODO: Connect to routines/habits data */}
         </div>
         <div style={sectionStyle}>
           <h3>Reminders & Alarms</h3>
-          <ul>
-            <li>QMOI v2.0 launch: Oct 10, 8am</li>
-            <li>Project review: Every Friday, 5pm</li>
-            <li>Health check: Daily, 7am</li>
-          </ul>
+          <p>Configure reminders, alarms, and notifications for important tasks.</p>
+          {/* TODO: Connect to reminders/alarms data */}
         </div>
         <div style={sectionStyle}>
           <h3>Settings & Advanced Controls</h3>
-          <ul>
-            <li>Theme: Dark</li>
-            <li>Notifications: Enabled</li>
-            <li>Backup: Daily</li>
-          </ul>
+          <p>Adjust preferences, access advanced features, and manage your Qi Space.</p>
+          {/* TODO: Add settings/controls */}
         </div>
       </div>
     </div>

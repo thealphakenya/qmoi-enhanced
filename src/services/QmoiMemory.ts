@@ -1,95 +1,58 @@
+// import Database from "better-sqlite3";
+
+const db = new Database("qmoi_memory.db");
+
+db.exec(`
+CREATE TABLE IF NOT EXISTS memory (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  key TEXT,
+  user TEXT,
+  project TEXT,
+  value TEXT,
+  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+`);
 
 export class QmoiMemory {
-  // Save memory and sync across all repos and .md files
-  static async save(key: string, value: unknown, user?: string, project?: string) {
-    const entry = {
-      key,
-      value,
-      user: user || "",
-      project: project || "",
-      timestamp: new Date().toISOString(),
-    };
-    // Save locally
-    await fetch('/api/memory', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(entry),
-    });
-
-    // Auto-update TRACKS.md and ALLMDFILESREFS.md
-    await fetch('/api/md-update', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'log-track', entry }),
-    });
-
-    // Sync with all listed repos (local and remote)
-    const repos = [
-      'thealphakenya/qmoi-enhanced',
-      'thealphakenya/qmoi-enhanced-new-clean',
-      'thealphakenya/Alpha-Q-ai',
-      'thealphakenya/qcity-main',
-      'thealphakenya/qmoi-space',
-    ];
-    for (const repo of repos) {
-      await fetch('/api/repo-sync', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ repo, entry }),
-      });
-    }
+  static save(key: string, value: any, user?: string, project?: string) {
+    db.prepare(
+      "INSERT INTO memory (key, value, user, project) VALUES (?, ?, ?, ?)",
+    ).run(key, JSON.stringify(value), user || "", project || "");
   }
 
-  // List memory entries (local and optionally cross-repo)
-  static async list(user?: string, crossRepo?: boolean) {
-    let local = [];
-    const res = await fetch(`/api/memory?user=${user || ''}`);
-    if (res.ok) local = await res.json();
-    if (!crossRepo) return local;
-    // Fetch from synced repos
-    const repos = [
-      'thealphakenya/qmoi-enhanced',
-      'thealphakenya/qmoi-enhanced-new-clean',
-      'thealphakenya/Alpha-Q-ai',
-      'thealphakenya/qcity-main',
-      'thealphakenya/qmoi-space',
-    ];
-    let all = [...local];
-    for (const repo of repos) {
-      try {
-        const r = await fetch(`/api/repo-memory?repo=${repo}&user=${user || ''}`);
-        if (r.ok) {
-          const data = await r.json();
-          all = all.concat(data);
-        }
-      } catch {
-        // Ignore repo fetch errors
-      }
+  static get(key: string, user?: string, project?: string) {
+    let stmt = "SELECT value FROM memory WHERE key = ?";
+    const params: any[] = [key];
+    if (user) {
+      stmt += " AND user = ?";
+      params.push(user);
     }
-    return all;
+    if (project) {
+      stmt += " AND project = ?";
+      params.push(project);
+    }
+    const row = db.prepare(stmt).get(...params);
+    return row ? JSON.parse(row.value) : null;
   }
 
-  // Auto-add new .md files and update ALLMDFILESREFS.md everywhere
-  static async addMdFile(filePath: string, description: string) {
-    await fetch('/api/md-update', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'add-md-file', filePath, description }),
-    });
-    // Sync to all repos
-    const repos = [
-      'thealphakenya/qmoi-enhanced',
-      'thealphakenya/qmoi-enhanced-new-clean',
-      'thealphakenya/Alpha-Q-ai',
-      'thealphakenya/qcity-main',
-      'thealphakenya/qmoi-space',
-    ];
-    for (const repo of repos) {
-      await fetch('/api/repo-sync', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ repo, filePath, description }),
-      });
+  static list(user?: string, project?: string) {
+    let stmt = "SELECT key, value, timestamp FROM memory WHERE 1=1";
+    const params: any[] = [];
+    if (user) {
+      stmt += " AND user = ?";
+      params.push(user);
     }
+    if (project) {
+      stmt += " AND project = ?";
+      params.push(project);
+    }
+    return db
+      .prepare(stmt)
+      .all(...params)
+      .map((row) => ({
+        key: row.key,
+        value: JSON.parse(row.value),
+        timestamp: row.timestamp,
+      }));
   }
 }

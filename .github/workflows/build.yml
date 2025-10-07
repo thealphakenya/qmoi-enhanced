@@ -5,10 +5,12 @@ on:
     branches: [ main ]
   schedule:
     - cron: '0 3 * * *'  # Every day at 03:00 UTC
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -18,11 +20,31 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Install dependencies
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install Python deps
       run: pip install requests
+
+    - name: Install Node.js deps
+      run: |
+        npm install
+        npm install --save-dev electron-builder
 
     - name: Run Builder
       run: python qmoi-app-builder.py
+
+    # (Optional) Build Android if android/ folder exists
+    - name: Build Android APK
+      if: ${{ hashFiles('android/**') != '' }}
+      run: |
+        cd android
+        ./gradlew assembleRelease || echo "⚠️ Skipping Android build"
+
+    # (Optional) iOS build (requires macOS runner & provisioning)
+    # jobs.ios would be a separate macos-latest job
 
     - name: Commit README changes
       run: |

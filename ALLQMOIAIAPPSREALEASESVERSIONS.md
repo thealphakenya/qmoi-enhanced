@@ -1,13 +1,5 @@
 # QMOI AI Apps - All Releases & Versions
 
-## PWA (Progressive Web App) Status
-| App Name   | Platform      | Version   | PWA Link                                         | Status   |
-|------------|--------------|-----------|--------------------------------------------------|----------|
-| QCity      | Web (PWA)    | v2.0.1    | https://qcity.qmoi.app/                          | ✅        |
-| QMOI Space | Web (PWA)    | v1.2.3    | https://space.qmoi.app/                          | ✅        |
-
-> PWAs for QCity and QMOI Space are always up-to-date, autotested, and cloud-offloaded for unlimited usage, even in Codespaces or low-resource environments.
-
 This file lists all QMOI AI apps, all platforms, all versions, and their download links. It is auto-updated by QCity runners. All links are autotested and always up-to-date.
 
 > **Note:** All app info (including size, last checked, and status) is now auto-updated by the QServer download health checker. The table below is always up-to-date and precise.
