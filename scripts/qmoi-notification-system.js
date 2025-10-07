@@ -13,6 +13,11 @@ import nodemailer from 'nodemailer';
 import axios from 'axios';
 
 class QMOINotificationSystem {
+  async testAllChannels() {
+    // Stub: In production, implement actual channel tests
+    console.log('🔎 testAllChannels: Notification channels test stub executed.');
+    return true;
+  }
   constructor() {
     this.config = {
       email: {
@@ -258,4 +263,4 @@ class QMOINotificationSystem {
   }
 }
 
-module.exports = QMOINotificationSystem;
+export default QMOINotificationSystem;

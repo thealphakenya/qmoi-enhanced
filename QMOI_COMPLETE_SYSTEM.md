@@ -218,15 +218,19 @@ after_script:
 3. **After Successful Build:**
    - Automatic git push (`npm run qmoi-auto-push`)
 
-## 📊 Monitoring and Logging
+
+## 📊 Monitoring, Logging, and Real-Time Tracking
+
 
 ### Log Files
 - `logs/qmoi.log` - General system operations
 - `logs/error.log` - Error-specific information
 - `logs/audit.log` - Security audit trail
 - `logs/notification.log` - Notification history
+- [TRACKS.md](./TRACKS.md) - Real-time memory, automation, financial, and autotest tracking
+- [DASHBOARDTRACKS.md](./DASHBOARDTRACKS.md) - Real-time dashboard, model, autotest, and financial tracking
 
-### Real-time Monitoring
+### Real-time Monitoring & Automation
 ```javascript
 // Monitor system health
 setInterval(async () => {
@@ -260,27 +264,27 @@ DISCORD_WEBHOOK_URL=your-discord-webhook
 - `.gitlab-ci.yml` - GitLab CI/CD pipeline
 - `package.json` - Node.js dependencies
 
-## 🎯 Key Features
+## 🎯 Key Features & References
 
-### 1. Self-Healing
+### 1. Self-Healing, Automation, and Financial Intelligence
 - **Automatic error detection**: Scans files for issues
 - **Intelligent fixing**: Applies appropriate fixes
 - **Validation**: Ensures fixes work correctly
 - **Backup and recovery**: Safe rollback capability
 
-### 2. Auto-Push Intelligence
+### 2. Auto-Push Intelligence & Financial Automation
 - **Retry logic**: Exponential backoff for failures
 - **Conflict resolution**: Handles merge conflicts
 - **Authentication handling**: Automatic token refresh
 - **Backup branches**: Safe operation with rollback
 
-### 3. Comprehensive Notifications
+### 3. Comprehensive Notifications & Real-Time Tracking
 - **Multiple channels**: Email, Slack, Discord, Console
 - **Real-time updates**: Immediate status notifications
 - **Error alerts**: Detailed error reporting
 - **Success confirmations**: Operation completion notices
 
-### 4. Parallel Processing
+### 4. Parallel Processing & Autotest Automation
 - **Multi-platform**: GitLab, GitHub, Gitpod, Vercel, HuggingFace
 - **Concurrent operations**: Simultaneous task execution
 - **Resource optimization**: Efficient resource usage
@@ -337,7 +341,13 @@ npm run dev
 - **Custom integrations**: Custom platform integrations
 - **Third-party tools**: Integration with external tools
 
-## 📋 Best Practices
+
+## � References
+- [QMOIMODEL.md](./QMOIMODEL.md)
+- [QMOIMODELTESTS.md](./QMOIMODELTESTS.md)
+- [CURLCOMMANDS.md](./CURLCOMMANDS.md)
+- [TRACKS.md](./TRACKS.md)
+- [DASHBOARDTRACKS.md](./DASHBOARDTRACKS.md)
 
 ### 1. Security
 - **Token management**: Secure token storage
