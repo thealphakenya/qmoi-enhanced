@@ -9,25 +9,19 @@ export const QmoiMemoryPanel: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [evolving, setEvolving] = useState(false);
 
-
   useEffect(() => {
     if (isMaster) {
       setLoading(true);
-      QmoiMemory.list('master').then((mem) => {
-        setMemory(mem);
-        setLoading(false);
-      });
+      setMemory(QmoiMemory.list('master'));
+      setLoading(false);
     }
   }, [isMaster]);
 
-
   const handleEvolve = async () => {
     setEvolving(true);
-    await QmoiMemory.save('evolution', { action: 'triggered' }, 'master');
-    QmoiMemory.list('master').then((mem) => {
-      setMemory(mem);
-      setEvolving(false);
-    });
+    await fetch('/api/trigger-evolution', { method: 'POST' }); // Assume this endpoint runs evolution
+    setMemory(QmoiMemory.list('master'));
+    setEvolving(false);
   };
 
   if (!isMaster) return null;

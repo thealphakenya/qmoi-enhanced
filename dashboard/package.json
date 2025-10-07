@@ -8,11 +8,6 @@
   },
   "scripts": {
     "start": "npx serve -s build",
-    "dev": "npx vite",
-    "build": "npx vite build"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^5.0.4",
-    "vite": "^7.1.7"
+    "dev": "npx vite"
   }
-}
+} 

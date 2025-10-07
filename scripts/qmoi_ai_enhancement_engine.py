@@ -23,11 +23,21 @@ import sqlite3
 import hashlib
 from collections import defaultdict
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('logs/qmoi_ai_engine.log'),
+        logging.StreamHandler()
+    ]
+)
+
 class QMOIAIEnhancementEngine:
     def __init__(self):
         self.root_dir = Path.cwd()
         self.logs_dir = self.root_dir / "logs"
-        self.logs_dir.mkdir(parents=True, exist_ok=True)
+        self.logs_dir.mkdir(exist_ok=True)
         
         self.db_path = self.root_dir / "data" / "qmoi_ai_engine.db"
         self.db_path.parent.mkdir(exist_ok=True)
@@ -42,17 +52,6 @@ class QMOIAIEnhancementEngine:
             "improvements": [],
             "performance_metrics": {}
         }
-        
-        # Update logging configuration to use the correct logs directory
-        log_file_path = self.logs_dir / 'qmoi_ai_engine.log'
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s',
-            handlers=[
-                logging.FileHandler(log_file_path),
-                logging.StreamHandler()
-            ]
-        )
         
         self.init_database()
     
@@ -169,9 +168,9 @@ class QMOIAIEnhancementEngine:
     def analyze_single_file(self, file_path: Path) -> Optional[Dict[str, Any]]:
         """Analyze a single file for quality and complexity"""
         try:
-            with open(file_path, 'r', encoding='utf-8', errors='replace') as f:
+            with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-
+            
             lines = content.split('\n')
             analysis = {
                 "lines": len(lines),
@@ -179,11 +178,11 @@ class QMOIAIEnhancementEngine:
                 "quality_score": self.calculate_quality(content),
                 "suggestions": self.generate_suggestions(content, file_path),
                 "file_type": file_path.suffix,
-                "size_bytes": len(content.encode('utf-8', errors='replace'))
+                "size_bytes": len(content.encode('utf-8'))
             }
-
+            
             return analysis
-
+            
         except Exception as e:
             logging.error(f"Error analyzing file {file_path}: {e}")
             return None
@@ -823,4 +822,4 @@ def main():
     engine.run_comprehensive_enhancement()
 
 if __name__ == "__main__":
-    main()
+    main() 

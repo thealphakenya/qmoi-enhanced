@@ -164,33 +164,47 @@ class QmoiModelEnhancer:
             )
     
     async def _determine_enhancement_strategy(self, metrics: ModelMetrics) -> str:
-        """Determine the best enhancement strategy based on current metrics"""
-        if metrics.accuracy < self.config['performance_targets']['accuracy']:
-            return 'accuracy_enhancement'
-        elif metrics.response_time > self.config['performance_targets']['response_time']:
-            return 'performance_optimization'
-        elif metrics.memory_usage > self.config['performance_targets']['memory_usage']:
-            return 'memory_optimization'
-        else:
-            return 'architecture_evolution'
-
-    async def _apply_enhancement(self, strategy: str, metrics: ModelMetrics) -> EnhancementResult:
-        """Apply the selected enhancement strategy"""
+        """Determine best enhancement strategy based on current metrics"""
+        targets = self.config.get("performance_targets", {})
+        thresholds = self.config.get("optimization_thresholds", {})
+        
+        # Check performance degradation
+        if metrics.response_time > targets.get("response_time", 0.2) * (1 + thresholds.get("performance_degradation", 0.1)):
+            return "performance_optimization"
+        
+        # Check accuracy degradation
+        if metrics.accuracy < targets.get("accuracy", 0.98) * (1 - thresholds.get("accuracy_degradation", 0.05)):
+            return "accuracy_enhancement"
+        
+        # Check memory usage
+        if metrics.memory_usage > targets.get("memory_usage", 0.5) * (1 + thresholds.get("memory_increase", 0.2)):
+            return "memory_optimization"
+        
+        # Check error rate
+        if metrics.error_rate > targets.get("error_rate", 0.005) * (1 + thresholds.get("error_rate_increase", 0.01)):
+            return "error_reduction"
+        
+        # Default to learning optimization
+        return "learning_optimization"
+    
+    async def _apply_enhancement(self, strategy: str, current_metrics: ModelMetrics) -> EnhancementResult:
+        """Apply specific enhancement strategy"""
         logger.info(f"Applying enhancement strategy: {strategy}")
-        if strategy == 'accuracy_enhancement':
-            improvement = self.accuracy_enhancer.enhance(metrics)
-        elif strategy == 'performance_optimization':
-            improvement = self.performance_optimizer.optimize(metrics)
-        elif strategy == 'memory_optimization':
-            improvement = self.memory_optimizer.optimize(metrics)
-        elif strategy == 'architecture_evolution':
-            improvement = self.evolution_engine.evolve(metrics)
+        
+        if strategy == "performance_optimization":
+            return await self.performance_optimizer.optimize(current_metrics)
+        elif strategy == "accuracy_enhancement":
+            return await self.accuracy_enhancer.enhance(current_metrics)
+        elif strategy == "memory_optimization":
+            return await self.memory_optimizer.optimize(current_metrics)
+        elif strategy == "learning_optimization":
+            return await self.learning_optimizer.optimize(current_metrics)
+        elif strategy == "error_reduction":
+            return await self._reduce_errors(current_metrics)
+        elif strategy == "architecture_evolution":
+            return await self.evolution_engine.evolve(current_metrics)
         else:
-            raise ValueError(f"Unknown strategy: {strategy}")
-
-        # Update metrics
-        new_metrics = self._update_metrics(metrics, improvement)
-        return EnhancementResult(success=True, improvement=improvement, new_metrics=new_metrics)
+            return await self._general_enhancement(current_metrics)
     
     async def _reduce_errors(self, current_metrics: ModelMetrics) -> EnhancementResult:
         """Reduce model errors"""
@@ -246,7 +260,7 @@ class QmoiModelEnhancer:
                 memory_usage=max(0.3, current_metrics.memory_usage * 0.95),
                 cpu_usage=max(0.2, current_metrics.cpu_usage * 0.95),
                 error_rate=max(0.001, current_metrics.error_rate * 0.95),
-                learning_rate:min(0.2, current_metrics.learning_rate * 1.1),
+                learning_rate=min(0.2, current_metrics.learning_rate * 1.1),
                 evolution_stage=current_metrics.evolution_stage
             )
             
@@ -596,7 +610,7 @@ class ModelEvolutionEngine:
                 memory_usage=max(0.3, current_metrics.memory_usage * 0.8),
                 cpu_usage=max(0.2, current_metrics.cpu_usage * 0.8),
                 error_rate=max(0.001, current_metrics.error_rate * 0.5),
-                learning_rate:min(0.25, current_metrics.learning_rate * 1.5),
+                learning_rate=min(0.25, current_metrics.learning_rate * 1.5),
                 evolution_stage=new_stage
             )
             
@@ -662,4 +676,4 @@ async def main():
     print(f"\nFinal Model Status: {json.dumps(status, indent=2)}")
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main()) 

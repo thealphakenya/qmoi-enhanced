@@ -1,4 +1,6 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -53,13 +55,10 @@
 
 @layer base {
   * {
-    border-color: hsl(var(--border));
-    border-width: 1px;
-    border-style: solid;
+    @apply border-border;
   }
   body {
-    background: hsl(var(--background));
-    color: hsl(var(--foreground));
+    @apply bg-background text-foreground;
   }
 }
 

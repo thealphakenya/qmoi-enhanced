@@ -19,59 +19,38 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
         <div style={sectionStyle}>
           <h3>Goals & Plans</h3>
-          <ul>
-            <li>Complete AI course</li>
-            <li>Start a new project with Victor</li>
-            <li>Travel to Nairobi</li>
-          </ul>
+          <p>Set, view, and update Leah's personal and shared goals and plans.</p>
+          {/* TODO: Connect to goals/plans data */}
         </div>
         <div style={sectionStyle}>
           <h3>Achievements</h3>
-          <ul>
-            <li>AI course completed</li>
-            <li>First joint project launched</li>
-            <li>Visited Nairobi</li>
-          </ul>
+          <p>Celebrate milestones and completed goals together.</p>
+          {/* TODO: Connect to achievements data */}
         </div>
         <div style={sectionStyle}>
           <h3>Projects</h3>
-          <ul>
-            <li>QMOI Learning Portal</li>
-            <li>Leah's AI Assistant</li>
-            <li>Shared Health Tracker</li>
-          </ul>
+          <p>Track progress on shared or personal projects, with status indicators.</p>
+          {/* TODO: Connect to projects data */}
         </div>
         <div style={sectionStyle}>
           <h3>Routines & Habits</h3>
-          <ul>
-            <li>Morning study (7am-8am)</li>
-            <li>Daily health check</li>
-            <li>Weekly review with Victor</li>
-          </ul>
+          <p>Manage daily routines, habits, and consistency tracking for Leah.</p>
+          {/* TODO: Connect to routines/habits data */}
         </div>
         <div style={sectionStyle}>
           <h3>Reminders & Alarms</h3>
-          <ul>
-            <li>AI course exam: Oct 10, 8am</li>
-            <li>Project review: Every Friday, 5pm</li>
-            <li>Health check: Daily, 7am</li>
-          </ul>
+          <p>Set up reminders and alarms for important events and tasks.</p>
+          {/* TODO: Connect to reminders/alarms data */}
         </div>
         <div style={sectionStyle}>
           <h3>Places & Memories</h3>
-          <ul>
-            <li>Nairobi trip: Jan 2025</li>
-            <li>AI conference: Feb 2025</li>
-            <li>First project launch: Mar 2025</li>
-          </ul>
+          <p>Record places visited, memories, and special moments.</p>
+          {/* TODO: Connect to places/memories data */}
         </div>
         <div style={sectionStyle}>
           <h3>Settings</h3>
-          <ul>
-            <li>Theme: Light</li>
-            <li>Notifications: Enabled</li>
-            <li>Backup: Weekly</li>
-          </ul>
+          <p>Adjust preferences and manage Leah's LC Space settings.</p>
+          {/* TODO: Add settings/controls */}
         </div>
       </div>
     </div>

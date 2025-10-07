@@ -1,0 +1,38 @@
+{
+    "test_dir": "tests",
+    "report_dir": "test_reports",
+    "coverage": {
+        "enabled": true,
+        "source": ".",
+        "omit": [
+            "tests/*",
+            "venv/*",
+            "*/__pycache__/*"
+        ],
+        "branch": true
+    },
+    "parallel": {
+        "enabled": true,
+        "max_workers": 4
+    },
+    "notifications": {
+        "slack": {
+            "enabled": true,
+            "webhook_url": "<YOUR_SLACK_WEBHOOK_URL>"
+        },
+        "email": {
+            "enabled": true,
+            "smtp_server": "<YOUR_SMTP_SERVER>",
+            "smtp_port": 587,
+            "sender_email": "<YOUR_EMAIL>",
+            "sender_password": "<YOUR_PASSWORD>",
+            "recipient_emails": ["<RECIPIENT_EMAIL>"]
+        }
+    },
+    "test_categories": {
+        "unit": "tests/unit",
+        "integration": "tests/integration",
+        "e2e": "tests/e2e"
+    },
+    "last_validated": ""
+} 

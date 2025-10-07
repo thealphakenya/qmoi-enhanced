@@ -24,8 +24,21 @@ jobs:
         with:
           node-version: '18'
 
-      - name: ⛩ Install dependencies
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pillow pyinstaller
+
+      - name: ⛩ Install Node.js dependencies
         run: npm install
+
+      - name: 🔧 Run Auto Fix (npm + custom)
+        run: npm run fix:all
 
       - name: 🔧 Generate icons (all platforms)
         run: npm run generate:icon
