@@ -11,7 +11,6 @@ curl http://localhost:4000/health
 ```
 curl http://localhost:4000/api/realtime-events
 ```
-
 ## Trigger Error Fix
 ```
 curl -X POST http://localhost:4000/api/trigger-fix
@@ -33,6 +32,17 @@ curl -X POST -d "user=Victor&pass=Victor9798!" http://localhost:4000/login
 ```
 
 ## Add more as new endpoints are created.
+
+---
+## API Coverage & Automation (2025-10-08)
+
+All API endpoints, including previously unused ones, are now exercised by the automated test suite (`qmoi_test.sh`).
+
+- See `UNUSED_API_ENDPOINTS.md` for a list of endpoints that were previously untested.
+- See `qmoi_autogen_unused_api_tests.sh` for the script that generated and tested these endpoints.
+- Test results are logged in `qmoi_test_results.log`.
+
+If you add new endpoints, update this file and the test suite to ensure full coverage.
 
 ---
 

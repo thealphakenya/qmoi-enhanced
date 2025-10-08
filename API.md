@@ -6,8 +6,61 @@ The Q-city API provides a comprehensive interface for managing and interacting w
 
 ## Base URL
 
+## Discovered API Endpoints (Auto-Extracted)
+
+The following endpoints were found in the codebase by automated search. Ensure all are documented above and kept in sync with implementation:
+
 ```
+/api/analytics/overview
+/api/chat/generate
+/api/games
+/api/games/{game_id}/start
+/api/health
+/api/projects
+/api/qmoi/download-exe
+/api/revenue/add
+/api/revenue/overview
+/api/system/status
+/automation/config
+/automation/history
+/automation/metrics
+/automation/optimize
+/automation/start
+/automation/status
+/automation/stop
+/automation/tasks
+/automation/trends
+/health
+/model/info
+/ping
+/predict
+/predict/batch
+/qmessage
+/token
+'/api/health'
+'/api/media'
+'/api/media/:id'
+'/api/media/logs'
+'/api/predictions'
+'/fix_error'
+'/health'
+'/list'
+'/predict'
+```
+
+> **Note:** If any endpoint above is missing from the main documentation, please add it with details (method, params, response, auth, etc.).
 http://localhost:3000/api
+
+---
+## API Coverage & Test Status (2025-10-08)
+
+All endpoints listed above are now exercised by the automated test suite (`qmoi_test.sh`).
+
+- Unused or previously untested endpoints are now included in the test suite and are listed in `UNUSED_API_ENDPOINTS.md` for traceability.
+- See `qmoi_autogen_unused_api_tests.sh` for the script that generated and tested these endpoints.
+- Test results are logged in `qmoi_test_results.log`.
+
+If any endpoint is not covered, please update the test suite or report a gap.
 ```
 
 ## Authentication

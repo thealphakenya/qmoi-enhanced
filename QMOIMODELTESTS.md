@@ -28,11 +28,15 @@ This document lists all tests and autotests for the QMOI system, including healt
 - Credential Sync Test
 - Handsfree Operation Test
 
+
 ## Autotest Features
 - Speed, accuracy, and time metrics for all error fixing
 - Number of attempts and success rates
 - Multi-language/platform coverage
 - Workflow and tracks error handling
+- **Automated Research & Evolution:** QMOI automatically runs all tests, logs results, and uses them to drive research, autodevelopment, and autoevolution.
+- **Self-Improvement Loop:** Test failures and successes are analyzed to trigger new features, fixes, and optimizations—enabling continuous, autonomous improvement.
+- **Handsfree Operation:** No human intervention is required for QMOI to evolve and improve based on test outcomes.
 
 ## See also
 - [CURLCOMMANDS.md](./CURLCOMMANDS.md)

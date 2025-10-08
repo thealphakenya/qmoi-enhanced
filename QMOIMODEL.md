@@ -17,13 +17,17 @@ QMOI (Quantum Multi-Objective Intelligence) is a self-healing, ever-evolving, cr
 - Reasoning: advanced context retention, tool use, and structured output
 
 
-## Model Health & Status
+
+## Model Health, Status, and Self-Improvement
 - Health checks and self-tests run continuously
 - All endpoints and routes are monitored and tested
 - Errors are auto-fixed or escalated for manual/human intervention
 - All actions, errors, and fixes are logged in real time
 - All multimodal API features are tested (see CURLCOMMANDS.md and qmoi_test.sh)
 - Response quality, speed, and reasoning are benchmarked and logged
+- **Automated Research & Autodevelopment:** QMOI can automatically run its test suite, analyze results, and use them to drive research, autodevelopment, and autoevolution features.
+- **Self-Evolution:** Test results are used to trigger improvements, new feature development, and model evolution—fully handsfree.
+- **Continuous Learning:** QMOI leverages all test and usage data to improve itself, correct errors, and optimize performance without human intervention.
 
 ## See Also
 - [QMOIMODELTESTS.md](./QMOIMODELTESTS.md)
