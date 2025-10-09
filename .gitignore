@@ -1,3 +1,35 @@
+qmoi-placeholder-scan-report.txt
+cloud-sync/
+*.log
+*.tmp
+*.bak
+node_modules/
+*.pyc
+__pycache__/
+*.sqlite
+*.db
+*.zip
+*.tar.gz
+*.img
+*.exe
+*.dmg
+*.AppImage
+*.ipa
+*.deb
+*.apk
+*.mp4
+*.mp3
+*.wav
+*.mov
+*.avi
+*.mkv
+*.iso
+*.bin
+*.7z
+*.rar
+*.gz
+*.tar
+*.swp
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -171,3 +203,4 @@ pids
 # Temporary folders
 tmp/
 temp/
+qmoi-placeholder-scan-report.txt
