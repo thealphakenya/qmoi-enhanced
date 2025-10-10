@@ -15,6 +15,17 @@ import AviatorGalleryPanel from '@/src/components/q-city/AviatorGalleryPanel';
 import PluginPanel from '@/src/components/q-city/PluginPanel';
 import { OrchestratorStatusPanel } from '@/components/predeploy/OrchestratorStatusPanel';
 import TeamRoleManager from './TeamRoleManager';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Minimize2, Maximize2, Settings, Volume2, VolumeX, Mic, MicOff } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Slider } from '@/components/ui/slider';
+import { Switch } from '@/components/ui/switch';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import './QAvatar.accessibility.css';
+import { useToast } from '@/components/ui/use-toast';
 
 interface QAvatarProps {
   initialPosition?: { x: number; y: number };
@@ -121,6 +132,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   });
 
   const [showSettings, setShowSettings] = useState(false);
+  const [settingsTab, setSettingsTab] = useState<'main'|'wardrobe-voice'>('main');
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const avatarRef = useRef<HTMLDivElement>(null);
@@ -143,6 +155,19 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const [commandInput, setCommandInput] = useState('npm run build');
   const [logOutput, setLogOutput] = useState<string[]>([]);
   const [isRunning, setIsRunning] = useState(false);
+  // const [showSettings, setShowSettings] = useState(false);
+  // const [showQCityDashboard, setShowQCityDashboard] = useState(false);
+  // const [qcityStatus, setQCityStatus] = useState<any>(null);
+  // const [offloadingEnabled, setOffloadingEnabled] = useState(() => {
+  //   const stored = localStorage.getItem('offloading-enabled');
+  //   return stored ? stored === 'true' : true;
+  // });
+  // const [adminKey, setAdminKey] = useState(() => localStorage.getItem('qcity-admin-key') || '');
+  // const [authStatus, setAuthStatus] = useState<'idle' | 'ok' | 'error'>('idle');
+  // const [authError, setAuthError] = useState<string | null>(null);
+  // const [commandInput, setCommandInput] = useState('npm run build');
+  // const [logOutput, setLogOutput] = useState<string[]>([]);
+  // const [isRunning, setIsRunning] = useState(false);
   const [runError, setRunError] = useState<string | null>(null);
 
   // Add state for command history
@@ -578,26 +603,105 @@ const QAvatar: React.FC<QAvatarProps> = ({
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-4 z-50"
+          className="absolute top-full left-0 mt-2 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-4 z-50"
         >
           <Card>
             <CardHeader>
               <CardTitle>
-                Settings
+                <div className="flex gap-2">
+                  <button
+                    className={`px-2 py-1 rounded ${settingsTab==='main'?'bg-green-600 text-white':'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200'}`}
+                    onClick={()=>setSettingsTab('main')}
+                  >Main</button>
+                  <button
+                    className={`px-2 py-1 rounded ${settingsTab==='wardrobe-voice'?'bg-green-600 text-white':'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200'}`}
+                    onClick={()=>setSettingsTab('wardrobe-voice')}
+                  >Wardrobe & Voice</button>
+                </div>
                 <HelpLink href="/docs/SETTINGS.md" label="Settings Documentation" />
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {/* Avatar Type */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Avatar Type</label>
-                <Select value={config.type} onValueChange={(value: any) => setConfig(prev => ({ ...prev, type: value }))}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="human">Human</SelectItem>
-                    <SelectItem value="animal">Animal</SelectItem>
+              {settingsTab==='main' && (
+                <>
+                  {/* Avatar Type */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Avatar Type</label>
+                    <Select value={config.type} onValueChange={(value: any) => setConfig(prev => ({ ...prev, type: value }))}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="human">Human</SelectItem>
+                        <SelectItem value="animal">Animal</SelectItem>
+                        <SelectItem value="robot">Robot</SelectItem>
+                        <SelectItem value="abstract">Abstract</SelectItem>
+                        <SelectItem value="fantasy">Fantasy</SelectItem>
+                        <SelectItem value="cyberpunk">Cyberpunk</SelectItem>
+                        <SelectItem value="nature">Nature</SelectItem>
+                        <SelectItem value="space">Space</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  {/* ...existing main settings... */}
+                </>
+              )}
+              {settingsTab==='wardrobe-voice' && (
+                <>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Wardrobe (Accessories)</label>
+                    <div className="flex gap-2 flex-wrap">
+                      {['glasses','hat','crown','cape'].map(acc => (
+                        <button
+                          key={acc}
+                          className={`px-2 py-1 rounded border ${config.accessories.includes(acc)?'bg-green-500 text-white border-green-700':'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600'}`}
+                          onClick={()=>setConfig(prev=>({...prev,accessories:prev.accessories.includes(acc)?prev.accessories.filter(a=>a!==acc):[...prev.accessories,acc]}))}
+                          aria-pressed={config.accessories.includes(acc)}
+                        >{acc.charAt(0).toUpperCase()+acc.slice(1)}</button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Props</label>
+                    <div className="flex gap-2 flex-wrap">
+                      {['chair','umbrella','car','magic-wand','crystal-ball'].map(prop => (
+                        <button
+                          key={prop}
+                          className={`px-2 py-1 rounded border ${config.props.includes(prop)?'bg-green-500 text-white border-green-700':'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600'}`}
+                          onClick={()=>setConfig(prev=>({...prev,props:prev.props.includes(prop)?prev.props.filter(p=>p!==prop):[...prev.props,prop]}))}
+                          aria-pressed={config.props.includes(prop)}
+                        >{prop.replace('-',' ').replace(/\b\w/g,c=>c.toUpperCase())}</button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Voice</label>
+                    <div className="flex gap-2 flex-wrap">
+                      {['Default','Female','Male','Child','Elderly','Robot','Animal','Fantasy'].map(voice => (
+                        <button
+                          key={voice}
+                          className={`px-2 py-1 rounded border ${config.voice===voice?'bg-green-500 text-white border-green-700':'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600'}`}
+                          onClick={()=>setConfig(prev=>({...prev,voice}))}
+                          aria-pressed={config.voice===voice}
+                        >{voice}</button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Lip Sync</label>
+                    <Switch checked={config.lipSync} onCheckedChange={v=>setConfig(prev=>({...prev,lipSync:v}))} />
+                  </div>
+                </>
+              )}
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
+    </AnimatePresence>
+
+  );
+  // The following block was commented out due to JSX structure errors:
+  /*
                     <SelectItem value="robot">Robot</SelectItem>
                     <SelectItem value="abstract">Abstract</SelectItem>
                     <SelectItem value="fantasy">Fantasy</SelectItem>
@@ -607,6 +711,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   </SelectContent>
                 </Select>
               </div>
+  */
 
               {/* Environment */}
               <div className="space-y-2">

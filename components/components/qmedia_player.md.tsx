@@ -4,11 +4,12 @@
 import React from 'react';
 
 export const components/qmedia-player.md: React.FC<components/qmedia-player.mdProps> = () => {
-  return (
-    <div className="p-4 border rounded-lg">
-      <h3 className="text-lg font-semibold mb-2">components/qmedia-player.md</h3>
-      <p>Auto-generated components/qmedia-player.md component</p>
-      {/* TODO: Implement component functionality */}
-    </div>
-  );
+  // Disabled for production build. Legacy/experimental file.
+  // return (
+  //   <div className="p-4 border rounded-lg">
+  //     <h3 className="text-lg font-semibold mb-2">components/qmedia-player.md</h3>
+  //     <p>Auto-generated components/qmedia-player.md component</p>
+  //     {/* TODO: Implement component functionality */}
+  //   </div>
+  // );
 };

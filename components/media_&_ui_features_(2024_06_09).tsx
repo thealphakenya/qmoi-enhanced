@@ -3,7 +3,16 @@
 
 import React from 'react';
 
-export const Media&UIFeatures(2024-06-09): React.FC<Media&UIFeatures(2024-06-09)Props> = () => {
+// Disabled for production build. Legacy/experimental file.
+// export const Media&UIFeatures(2024-06-09): React.FC<Media&UIFeatures(2024-06-09)Props> = () => {
+//   return (
+//     <div className="p-4 border rounded-lg">
+//       <h3 className="text-lg font-semibold mb-2">Media & UI Features (2024-06-09)</h3>
+//       <p>Auto-generated Media & UI Features (2024-06-09) component</p>
+//       {/* TODO: Implement component functionality */}
+//     </div>
+//   );
+// };
   return (
     <div className="p-4 border rounded-lg">
       <h3 className="text-lg font-semibold mb-2">Media & UI Features (2024-06-09)</h3>

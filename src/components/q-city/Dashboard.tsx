@@ -130,10 +130,6 @@ export default function Dashboard() {
         </button>
       </nav>
       <main className="p-6 max-w-5xl mx-auto">
-        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" style={{display: (window?.QMOI_CICD_BILLING_ISSUE ? 'block' : 'none')}}>
-          <strong>⚠️ CI/CD Billing Issue Detected:</strong> Your CI/CD jobs are failing due to a billing or quota problem.<br/>
-          <a href="https://github.com/settings/billing" target="_blank" rel="noopener noreferrer" className="underline text-blue-700">Go to GitHub Billing & Plans</a> to resolve this and restore automation.
-        </div>
         {panel === "schedules" && <SchedulePanel />}
         {panel === "devices" && <DevicePanel />}
         {panel === "plugins" && <PluginPanel />}

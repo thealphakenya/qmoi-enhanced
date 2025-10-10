@@ -16,7 +16,6 @@ import {
   User,
   Volume2,
   Activity,
-  Settings,
   Zap,
   Star,
   TrendingUp,

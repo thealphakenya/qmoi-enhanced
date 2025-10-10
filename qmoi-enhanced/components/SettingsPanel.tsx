@@ -8,8 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
 import { Badge } from './ui/badge';
 import { useMaster } from './MasterContext';
-import { FaCog, FaLanguage, FaFont, FaNetworkWired, FaDownload, FaSync, FaUserShield, FaRobot, FaPalette, FaMobile, FaCogs, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
-import type { IconType } from 'react-icons';
+import { FaCog, FaLanguage, FaFont, FaNetworkWired, FaDownload, FaSync, FaUserShield, FaRobot, FaPalette, FaMobile, FaCogs, FaCheckCircle, FaExclamationTriangle, FaUser } from 'react-icons/fa';
 
 interface SettingsPanelProps {
   isOpen: boolean;
@@ -175,7 +174,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
 
         <div className="flex h-full">
           <Tabs defaultValue="general" className="w-full">
-            <TabsList className="grid w-full grid-cols-6">
+            <TabsList className="grid w-full grid-cols-7">
               <TabsTrigger value="general">
                 {React.createElement(FaLanguage as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
                 {aiSettings.language === 'sw' ? 'Jumla' : 'General'}
@@ -196,12 +195,81 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                 {React.createElement(FaMobile as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
                 {aiSettings.language === 'sw' ? 'Programu za Qmoi' : 'Qmoi Apps'}
               </TabsTrigger>
+              <TabsTrigger value="avatar-voice">
+                {React.createElement(FaUser as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
+                {aiSettings.language === 'sw' ? 'Avatari & Sauti' : 'Avatar & Voice'}
+              </TabsTrigger>
               {isMaster && (
                 <TabsTrigger value="master">
                   {React.createElement(FaUserShield as React.ElementType, { className: 'mr-2', size: 20 }) as React.ReactNode}
                   {aiSettings.language === 'sw' ? 'Mkuu' : 'Master'}
                 </TabsTrigger>
               )}
+              <TabsContent value="avatar-voice" className="space-y-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      {React.createElement(FaUser as React.ElementType, { size: 20 }) as React.ReactNode}
+                      {aiSettings.language === 'sw' ? 'Chagua Avatari na Sauti' : 'Choose Avatar & Voice'}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label>{aiSettings.language === 'sw' ? 'Aina ya Avatari' : 'Avatar Type'}</Label>
+                        <Select value={localStorage.getItem('qmoi-avatar-type') || 'human'} onValueChange={(v: string) => { localStorage.setItem('qmoi-avatar-type', v); window.location.reload(); }}>
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="human">Human (Realistic)</SelectItem>
+                            <SelectItem value="robot">Robot</SelectItem>
+                            <SelectItem value="animal">Animal</SelectItem>
+                            <SelectItem value="fantasy">Fantasy</SelectItem>
+                            <SelectItem value="cyberpunk">Cyberpunk</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label>{aiSettings.language === 'sw' ? 'Mtindo wa Sauti' : 'Voice Style'}</Label>
+                        <Select value={localStorage.getItem('qmoi-voice-style') || 'female-en'} onValueChange={(v: string) => { localStorage.setItem('qmoi-voice-style', v); window.location.reload(); }}>
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="female-en">Female (English)</SelectItem>
+                            <SelectItem value="male-en">Male (English)</SelectItem>
+                            <SelectItem value="female-sw">Female (Swahili)</SelectItem>
+                            <SelectItem value="male-sw">Male (Swahili)</SelectItem>
+                            <SelectItem value="robotic">Robotic</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 mt-4">
+                      <Label>{aiSettings.language === 'sw' ? 'Uhalisia wa Avatari' : 'Avatar Realism'}</Label>
+                      <Switch checked={localStorage.getItem('qmoi-avatar-realism') === 'true'} onCheckedChange={(v: boolean) => { localStorage.setItem('qmoi-avatar-realism', v ? 'true' : 'false'); window.location.reload(); }} />
+                      <Label>{aiSettings.language === 'sw' ? 'Lipsync' : 'Lip Sync'}</Label>
+                      <Switch checked={localStorage.getItem('qmoi-avatar-lipsync') !== 'false'} onCheckedChange={(v: boolean) => { localStorage.setItem('qmoi-avatar-lipsync', v ? 'true' : 'false'); window.location.reload(); }} />
+                      <Label>{aiSettings.language === 'sw' ? 'Kamera' : 'Camera Vision'}</Label>
+                      <Switch checked={localStorage.getItem('qmoi-avatar-camera') === 'true'} onCheckedChange={(v: boolean) => { localStorage.setItem('qmoi-avatar-camera', v ? 'true' : 'false'); window.location.reload(); }} />
+                    </div>
+                    <div className="flex items-center gap-4 mt-4">
+                      <Label>{aiSettings.language === 'sw' ? 'Ubora wa Sauti' : 'Voice Quality'}</Label>
+                      <Select value={localStorage.getItem('qmoi-voice-quality') || 'high'} onValueChange={(v: string) => { localStorage.setItem('qmoi-voice-quality', v); window.location.reload(); }}>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="standard">Standard</SelectItem>
+                          <SelectItem value="high">High</SelectItem>
+                          <SelectItem value="ultra">Ultra</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
             </TabsList>
 
             <div className="p-4 overflow-y-auto h-full">
@@ -435,19 +503,19 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center justify-between">
                           <Label>Auto-Backup</Label>
-                          <Switch checked={automation.autoBackup} onCheckedChange={v => handleAutomationChange('autoBackup', v)} />
+                          <Switch checked={automation.autoBackup} onCheckedChange={(v: boolean) => handleAutomationChange('autoBackup', v)} />
                         </div>
                         <div className="flex items-center justify-between">
                           <Label>Auto-Heal</Label>
-                          <Switch checked={automation.autoHeal} onCheckedChange={v => handleAutomationChange('autoHeal', v)} />
+                          <Switch checked={automation.autoHeal} onCheckedChange={(v: boolean) => handleAutomationChange('autoHeal', v)} />
                         </div>
                         <div className="flex items-center justify-between">
                           <Label>Auto-Deploy</Label>
-                          <Switch checked={automation.autoDeploy} onCheckedChange={v => handleAutomationChange('autoDeploy', v)} />
+                          <Switch checked={automation.autoDeploy} onCheckedChange={(v: boolean) => handleAutomationChange('autoDeploy', v)} />
                         </div>
                         <div className="flex items-center justify-between">
                           <Label>Auto-Notify</Label>
-                          <Switch checked={automation.autoNotify} onCheckedChange={v => handleAutomationChange('autoNotify', v)} />
+                          <Switch checked={automation.autoNotify} onCheckedChange={(v: boolean) => handleAutomationChange('autoNotify', v)} />
                         </div>
                       </div>
                       <div className="flex items-center justify-between mt-6">

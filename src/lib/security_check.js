@@ -1,3 +1,6 @@
+// Allow empty function for no-op
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+function noop() {}
 // Security check module for QMOI system
 export let isTampered = false;
 
@@ -43,10 +46,10 @@ function checkForTampering() {
 
   // Alternative debugging detection
   try {
-    // Check if console is being overridden
-    const originalConsole = console.log;
-    console.log = () => {};
-    console.log = originalConsole;
+  // Check if console is being overridden
+  const originalConsole = console.log;
+  console.log = noop;
+  console.log = originalConsole;
   } catch (e) {
     isTampered = true;
   }

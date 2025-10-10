@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -21,14 +20,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
 import {
   User,
-  Settings,
   Star,
   Zap,
   Eye,
   Play,
   Download,
   RefreshCw,
-  Palette,
   Volume2,
   Sparkles,
 } from "lucide-react";
@@ -221,13 +218,13 @@ export function AvatarSelector({
           <User className="h-5 w-5" />
           Avatar Settings
         </CardTitle>
-        <CardDescription>
-          Choose QMOI's avatar and customize appearance settings
-        </CardDescription>
+        <p className="text-sm text-muted-foreground mt-2">
+          Choose QMOI's avatar and customize appearance settings.
+        </p>
       </CardHeader>
-      <CardContent className="space-y-6">
-        <Tabs defaultValue="avatars" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+      <CardContent>
+        <Tabs defaultValue="avatars" className="space-y-4">
+          <TabsList>
             <TabsTrigger value="avatars">Avatars</TabsTrigger>
             <TabsTrigger value="preview">Preview</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
@@ -416,13 +413,13 @@ export function AvatarSelector({
 
             <div className="p-3 bg-muted rounded-lg">
               <div className="text-sm text-muted-foreground">
-                Current Avatar:{" "}
+                Current Avatar: {" "}
                 <span className="font-medium">
                   {avatarsConfig.find((a) => a.id === selectedAvatar)?.name}
                 </span>
               </div>
               <div className="text-sm text-muted-foreground">
-                Engine:{" "}
+                Engine: {" "}
                 <span className="font-medium">
                   {
                     animationEngines[
@@ -433,7 +430,7 @@ export function AvatarSelector({
                 </span>
               </div>
               <div className="text-sm text-muted-foreground">
-                Quality:{" "}
+                Quality: {" "}
                 <span className="font-medium">
                   {
                     avatarsConfig.find((a) => a.id === selectedAvatar)

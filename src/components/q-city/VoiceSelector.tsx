@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -24,7 +23,6 @@ import {
   Volume2,
   Play,
   Pause,
-  Settings,
   Star,
   Zap,
   Mic,
@@ -33,12 +31,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { avatarsConfig, voiceProfiles, qualityLevels } from "./avatarsConfig";
 
-interface VoiceProfile {
-  id: string;
-  name: string;
-  type: string;
-  quality: string;
-}
+
 
 interface VoiceSelectorProps {
   currentAvatarId?: string;
@@ -174,9 +167,9 @@ export function VoiceSelector({
           <Mic className="h-5 w-5" />
           Voice Settings
         </CardTitle>
-        <CardDescription>
-          Choose QMOI's voice and customize audio settings
-        </CardDescription>
+        <p className="text-sm text-muted-foreground mt-2">
+          Choose QMOI's voice and customize audio settings.
+        </p>
       </CardHeader>
       <CardContent className="space-y-6">
         <Tabs defaultValue="voices" className="w-full">

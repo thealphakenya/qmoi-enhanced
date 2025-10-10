@@ -13,6 +13,18 @@ import nodemailer from 'nodemailer';
 import axios from 'axios';
 
 class QMOINotificationSystem {
+  async testAllChannels() {
+    // Dummy implementation for channel testing
+    // In production, implement actual checks for each channel
+    this.testResults = [
+      { channel: 'email', status: this.config.email.enabled ? 'enabled' : 'disabled' },
+      { channel: 'slack', status: this.config.slack.enabled ? 'enabled' : 'disabled' },
+      { channel: 'discord', status: this.config.discord.enabled ? 'enabled' : 'disabled' },
+      { channel: 'telegram', status: this.config.telegram.enabled ? 'enabled' : 'disabled' },
+      { channel: 'pushover', status: this.config.pushover.enabled ? 'enabled' : 'disabled' }
+    ];
+    return this.testResults;
+  }
   constructor() {
     this.config = {
       email: {
@@ -258,4 +270,4 @@ class QMOINotificationSystem {
   }
 }
 
-module.exports = QMOINotificationSystem;
+export default QMOINotificationSystem;

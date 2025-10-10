@@ -77,11 +77,6 @@ export default function CommandPanel() {
     setHistory(newHistory);
     localStorage.setItem("qcity-cmd-history", JSON.stringify(newHistory));
   }
-  function pinCommand(c: string) {
-    const newPinned = [...new Set([c, ...pinned])].slice(0, 5);
-    setPinned(newPinned);
-    localStorage.setItem("qcity-cmd-pinned", JSON.stringify(newPinned));
-  }
   function clearHistory() {
     setHistory([]);
     localStorage.removeItem("qcity-cmd-history");
@@ -127,7 +122,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">Pinned:</span>
-        {pinned.map((c, i) => (
+  {pinned.map((c: string, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(c)}
@@ -139,7 +134,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">History:</span>
-        {history.map((h, i) => (
+  {history.map((h: any, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(h.cmd)}

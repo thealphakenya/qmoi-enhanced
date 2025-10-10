@@ -11,7 +11,6 @@ interface ApiKey {
 
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
-  const [usage, setUsage] = useState<{ key: string; usage: number }[]>([]);
 
   const fetchKeys = async () => {
     const res = await fetch("/api/qapikey");
@@ -19,15 +18,8 @@ const QApiKeyManager: React.FC = () => {
     setKeys(data.keys || []);
   };
 
-  const fetchUsage = async () => {
-    const res = await fetch("/api/qapikey/usage");
-    const data = await res.json();
-    setUsage(data.usage || []);
-  };
-
   useEffect(() => {
     fetchKeys();
-    fetchUsage();
   }, []);
 
   const createKey = async () => {
