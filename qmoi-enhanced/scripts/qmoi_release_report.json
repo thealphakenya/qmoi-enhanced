@@ -1,0 +1,18 @@
+{
+  "windows": {
+    "status": "success",
+    "file": "qmoi ai.exe",
+    "size": 20345678,
+    "hash": "98a4f0d3fcd45e..."
+  },
+  "android": {
+    "status": "success",
+    "file": "qmoi ai.apk",
+    "size": 14335678,
+    "hash": "ab3b1f0a7b66c..."
+  },
+  "linux": {
+    "status": "fail",
+    "reason": "Binary missing after rebuild"
+  }
+}
