@@ -952,4 +952,37 @@ class QCityClient {
 For API support, please contact:
 - Email: support@qcity.ai
 - Documentation: https://docs.qcity.ai
-- GitHub: https://github.com/qcity/ai 
+- GitHub: https://github.com/qcity/ai
+
+## Unused Endpoints Integration Plan
+
+The following endpoints were previously unused and are now prioritized for integration:
+
+- /api/media
+- /api/media/:id
+- /api/media/logs
+- /api/predictions
+- /fix_error
+- /list
+- /automation/optimize
+- /automation/trends
+- /automation/history
+- /automation/metrics
+- /automation/config
+- /automation/start
+- /automation/stop
+- /automation/tasks
+- /automation/status
+- /automation
+- /model/info
+- /ping
+- /qmessage
+- /token
+
+For each endpoint, QMOI will:
+- Generate backend and UI integration stubs
+- Add automated tests in qmoi_test.sh
+- Update documentation and usage scripts
+- Rerun endpoint usage checks after integration
+
+All endpoints will be used and documented for full coverage and automation.

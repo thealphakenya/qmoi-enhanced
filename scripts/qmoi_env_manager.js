@@ -55,9 +55,9 @@ function getDefaultsFromExample(missing) {
 function getSafeDefaults(missing) {
   // Add safe defaults for each required env
   const safeDefaults = {
-    'HF_TOKEN': 'dummy-hf-token',
+    'HF_TOKEN': '[PRODUCTION IMPLEMENTATION REQUIRED]-hf-token',
     'HF_USERNAME': 'qmoi-ai',
-    'WHATSAPP_API_TOKEN': 'dummy-whatsapp-token',
+    'WHATSAPP_API_TOKEN': '[PRODUCTION IMPLEMENTATION REQUIRED]-whatsapp-token',
     'WHATSAPP_WEBHOOK_URL': 'https://example.com/webhook'
   };
   let defaults = {};

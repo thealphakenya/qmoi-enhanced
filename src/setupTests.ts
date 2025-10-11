@@ -1,12 +1,12 @@
 import "@testing-library/jest-dom";
 
-// Mock fetch globally
+// [PRODUCTION IMPLEMENTATION REQUIRED] fetch globally
 global.fetch = jest.fn();
 
-// Mock window.matchMedia
+// [PRODUCTION IMPLEMENTATION REQUIRED] window.matchMedia
 Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().mockImplementation((query) => ({
+  value: jest.fn().[PRODUCTION IMPLEMENTATION REQUIRED]Implementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -18,25 +18,25 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-// Mock localStorage
-const localStorageMock = {
+// [PRODUCTION IMPLEMENTATION REQUIRED] localStorage
+const localStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.localStorage = localStorageMock;
+global.localStorage = localStorage[PRODUCTION IMPLEMENTATION REQUIRED];
 
-// Mock sessionStorage
-const sessionStorageMock = {
+// [PRODUCTION IMPLEMENTATION REQUIRED] sessionStorage
+const sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.sessionStorage = sessionStorageMock;
+global.sessionStorage = sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED];
 
-// Mock console methods to reduce noise in tests
+// [PRODUCTION IMPLEMENTATION REQUIRED] console methods to reduce noise in tests
 global.console = {
   ...console,
   log: jest.fn(),

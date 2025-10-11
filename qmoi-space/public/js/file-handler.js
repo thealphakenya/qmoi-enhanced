@@ -1,5 +1,5 @@
 // file-handler.js: File upload/manager logic for QMOI Space
-// Placeholder for real file API integration
+// [PRODUCTION IMPLEMENTATION REQUIRED] for real file API integration
 
 document.getElementById('upload-files').addEventListener('click', () => {
   document.getElementById('file-upload-modal').classList.remove('hidden');

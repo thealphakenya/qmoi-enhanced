@@ -16,7 +16,7 @@ def log_download_event(event, data=None):
         f.write(json.dumps(entry) + '\n')
 
 def notify_qteam(issue):
-    # Placeholder: integrate with QMOI notification system
+    # [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with QMOI notification system
     print(f'Notifying Qteam Customer Care: {issue}')
     log_download_event('notify_qteam', {'issue': issue})
 
@@ -39,6 +39,6 @@ def download_with_retry(url, dest):
     # All attempts failed
     log_download_event('download_failed', {'url': url, 'dest': dest})
     notify_qteam(f'Download failed for {url}')
-    # Trigger QMOI error handler (placeholder)
+    # Trigger QMOI error handler ([PRODUCTION IMPLEMENTATION REQUIRED])
     print('Triggering QMOI error handler...')
     return False 

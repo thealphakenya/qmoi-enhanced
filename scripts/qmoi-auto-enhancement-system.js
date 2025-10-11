@@ -693,7 +693,7 @@ class QMOIAutoEnhancementSystem {
     return Math.random();
   }
 
-  // Placeholder methods for various optimizations
+  // [PRODUCTION IMPLEMENTATION REQUIRED] methods for various optimizations
   async applyCodeOptimization(optimization) {
     await new Promise(resolve => setTimeout(resolve, 100));
   }

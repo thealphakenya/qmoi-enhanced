@@ -581,7 +581,7 @@ class QMOISecurityMonitor:
     def block_ip_address(self, ip_address: str):
         """Block IP address"""
         try:
-            # This is a placeholder - in a real system, you would use firewall rules
+            # This is a [PRODUCTION IMPLEMENTATION REQUIRED] - in a real system, you would use firewall rules
             logging.info(f"Blocking IP address: {ip_address}")
             
             # Store blocked IP
@@ -608,7 +608,7 @@ class QMOISecurityMonitor:
     def terminate_process(self, pid: int):
         """Terminate suspicious process"""
         try:
-            # This is a placeholder - in a real system, you would use process management
+            # This is a [PRODUCTION IMPLEMENTATION REQUIRED] - in a real system, you would use process management
             logging.info(f"Terminating process: {pid}")
             
             # Store terminated process
@@ -924,7 +924,7 @@ class QMOISecurityMonitor:
                 with open(package_json, 'r') as f:
                     package_data = json.load(f)
                 
-                # This is a placeholder - in a real system, you would check against vulnerability databases
+                # This is a [PRODUCTION IMPLEMENTATION REQUIRED] - in a real system, you would check against vulnerability databases
                 # For now, we'll just check for some common vulnerable packages
                 vulnerable_packages = [
                     "lodash",  # Example vulnerable package

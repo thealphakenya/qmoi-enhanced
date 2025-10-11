@@ -261,7 +261,7 @@ def auto_fix_error(cmd, error_msg=""):
                     fix_syntax_errors(test_file)
             
             # Install missing test dependencies
-            missing_deps = ["xmlrunner", "pytest-xdist", "pytest-cov", "pytest-mock"]
+            missing_deps = ["xmlrunner", "pytest-xdist", "pytest-cov", "pytest-[PRODUCTION IMPLEMENTATION REQUIRED]"]
             for dep in missing_deps:
                 run_cmd([sys.executable, "-m", "pip", "install", dep], skip_auto_fix=True)
         
@@ -602,7 +602,7 @@ PYTHONUTF8=1
                     "requests", "psutil", "schedule", "pyautogui", 
                     "speech_recognition", "pyttsx3", "opencv-python",
                     "pillow", "numpy", "pandas", "plotly", "gradio",
-                    "xmlrunner", "pytest-xdist", "pytest-cov", "pytest-mock"
+                    "xmlrunner", "pytest-xdist", "pytest-cov", "pytest-[PRODUCTION IMPLEMENTATION REQUIRED]"
                 ]
                 for package in common_packages:
                     run_cmd([sys.executable, "-m", "pip", "install", package])

@@ -12,26 +12,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { action } = body;
       switch (action) {
         case 'translate':
-          // Placeholder: handle translation
-          return res.status(200).json({ result: 'Translation result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle translation
+          return res.status(200).json({ result: 'Translation result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         case 'speech-to-text':
-          // Placeholder: handle STT
-          return res.status(200).json({ result: 'Speech-to-text result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle STT
+          return res.status(200).json({ result: 'Speech-to-text result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         case 'text-to-speech':
-          // Placeholder: handle TTS
-          return res.status(200).json({ result: 'Text-to-speech result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle TTS
+          return res.status(200).json({ result: 'Text-to-speech result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         case 'language-detect':
-          // Placeholder: handle language detection
-          return res.status(200).json({ result: 'Language detection result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language detection
+          return res.status(200).json({ result: 'Language detection result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         case 'lesson':
-          // Placeholder: handle language lesson
-          return res.status(200).json({ result: 'Lesson result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language lesson
+          return res.status(200).json({ result: 'Lesson result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         case 'quiz':
-          // Placeholder: handle language quiz
-          return res.status(200).json({ result: 'Quiz result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language quiz
+          return res.status(200).json({ result: 'Quiz result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         case 'pronunciation-check':
-          // Placeholder: handle pronunciation check
-          return res.status(200).json({ result: 'Pronunciation check result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle pronunciation check
+          return res.status(200).json({ result: 'Pronunciation check result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         default:
           return res.status(400).json({ error: 'Unknown action' });
       }

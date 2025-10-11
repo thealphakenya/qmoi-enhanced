@@ -14,7 +14,7 @@ import asyncio
 import aiohttp
 import requests
 from typing import Dict, List, Any, Optional
-from unittest.mock import Mock, patch, MagicMock
+from unittest.[PRODUCTION IMPLEMENTATION REQUIRED] import [PRODUCTION IMPLEMENTATION REQUIRED], patch, Magic[PRODUCTION IMPLEMENTATION REQUIRED]
 from datetime import datetime
 import logging
 

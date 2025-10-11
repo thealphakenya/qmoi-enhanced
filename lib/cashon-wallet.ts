@@ -285,7 +285,7 @@ export class CashonWallet {
   private async updateBalance(): Promise<void> {
     try {
       // Fetch balance from Pesapal API
-      const response = await axios.get(`${this.pesapalConfig.environment === 'live' ? 'https://api.pesapal.com' : 'https://demo.pesapal.com'}/api/v1/accounts/balance`, {
+      const response = await axios.get(`${this.pesapalConfig.environment === 'live' ? 'https://api.pesapal.com' : 'https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com'}/api/v1/accounts/balance`, {
         headers: {
           'Authorization': `Bearer ${await this.getPesapalToken()}`,
           'Content-Type': 'application/json'
@@ -304,7 +304,7 @@ export class CashonWallet {
 
   private async initiatePesapalSTK(amount: number): Promise<{ success: boolean; reference?: string }> {
     try {
-      const response = await axios.post(`${this.pesapalConfig.environment === 'live' ? 'https://api.pesapal.com' : 'https://demo.pesapal.com'}/api/v1/payments/request`, {
+      const response = await axios.post(`${this.pesapalConfig.environment === 'live' ? 'https://api.pesapal.com' : 'https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com'}/api/v1/payments/request`, {
         amount: amount.toString(),
         currency: 'KES',
         description: 'Cashon Trading Deposit',
@@ -337,7 +337,7 @@ export class CashonWallet {
   private async getPesapalToken(): Promise<string> {
     // Implement Pesapal OAuth token generation
     // This would typically involve getting a token using consumer key/secret
-    return 'pesapal_token_placeholder';
+    return 'pesapal_token_[PRODUCTION IMPLEMENTATION REQUIRED]';
   }
 
   private async autoRequestDeposit(requiredAmount: number): Promise<void> {
@@ -363,7 +363,7 @@ export class CashonWallet {
 
   private verifyMasterApproval(): boolean {
     // Implement master approval verification (biometric, passphrase, etc.)
-    return true; // Placeholder
+    return true; // [PRODUCTION IMPLEMENTATION REQUIRED]
   }
 
   private async notifyMaster(message: string, type: string): Promise<void> {

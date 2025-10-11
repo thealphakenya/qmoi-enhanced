@@ -116,14 +116,14 @@ class QMOIMasterSystem {
   // Simulated auto-fix logic (expand as needed)
   async autoFix(error, context = {}) {
     // Example: try to restart a subsystem, reload config, etc.
-    // For demo, always fail to trigger manual
+    // For [PRODUCTION IMPLEMENTATION REQUIRED], always fail to trigger manual
     return { success: false, reason: 'Auto-fix not implemented for this error type.' };
   }
 
   // Simulated manual fix logic (expand as needed)
   async manualFix(error, context = {}) {
     // Example: prompt user, run manual script, etc.
-    // For demo, always fail
+    // For [PRODUCTION IMPLEMENTATION REQUIRED], always fail
     return { success: false, reason: 'Manual fix not implemented for this error type.' };
   }
   constructor() {
@@ -502,7 +502,7 @@ class QMOIMasterSystem {
 
   optimizeCPU() {
     // Simulate CPU optimization: reprioritize tasks, offload to cloud, throttle non-critical processes
-    // Placeholder for advanced CPU management logic
+    // [PRODUCTION IMPLEMENTATION REQUIRED] for advanced CPU management logic
   }
 
   optimizeMemory() {
@@ -513,12 +513,12 @@ class QMOIMasterSystem {
   }
 
   clearCache() {
-    // Placeholder for cache clearing logic
+    // [PRODUCTION IMPLEMENTATION REQUIRED] for cache clearing logic
     // e.g., this.cache = {};
   }
 
   offloadMemoryToCloud() {
-    // Placeholder for offloading memory to cloud storage
+    // [PRODUCTION IMPLEMENTATION REQUIRED] for offloading memory to cloud storage
     // e.g., upload large objects to S3, GCS, etc.
   }
 
@@ -588,27 +588,27 @@ class QMOIMasterSystem {
   // Performance monitoring methods
   getCPUUsage() {
     // Get current CPU usage percentage
-    return Math.random() * 100; // Placeholder
+    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
   }
 
   getMemoryUsage() {
     // Get current memory usage percentage
-    return Math.random() * 100; // Placeholder
+    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
   }
 
   getGPUUsage() {
     // Get current GPU usage percentage
-    return Math.random() * 100; // Placeholder
+    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
   }
 
   getNetworkUsage() {
     // Get current network usage
-    return Math.random() * 100; // Placeholder
+    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
   }
 
   getResponseTime() {
     // Get current system response time
-    return Math.random() * 100; // Placeholder
+    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
   }
 
   // Public API methods

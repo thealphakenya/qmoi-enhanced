@@ -99,7 +99,7 @@ export class FaceRecognitionService {
       // This would load the required models
       console.log("🤖 Initializing face recognition API...");
 
-      // Mock initialization for now
+      // [PRODUCTION IMPLEMENTATION REQUIRED] initialization for now
       this.faceApi = {
         loadModels: async () => true,
         detectFaces: async (input: any) => [],

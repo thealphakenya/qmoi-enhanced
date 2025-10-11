@@ -5,8 +5,8 @@ import os
 MASTER_EMAIL = 'victor@kwemoi.com'
 MASTER_PHONE = '+254700000000'
 
-AIRTEL_API_KEY = os.getenv('AIRTEL_API_KEY', 'demo-key')
-MPESA_API_KEY = os.getenv('MPESA_API_KEY', 'demo-key')
+AIRTEL_API_KEY = os.getenv('AIRTEL_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]-key')
+MPESA_API_KEY = os.getenv('MPESA_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]-key')
 
 logging.basicConfig(filename='logs/financial_verification.log', level=logging.INFO)
 

@@ -57,8 +57,8 @@ def generate_build_matrix(report):
             lines.append(f"| {label:<16} | ✅ SUCCESS   | ✅ PASS      |")
         elif status == "failed":
             lines.append(f"| {label:<16} | ❌ FAILED    | ❌ FAIL      |")
-        elif status == "placeholder_used":
-            lines.append(f"| {label:<16} | ⚠️ PLACEHOLDER | ❌ FAIL      |")
+        elif status == "[PRODUCTION IMPLEMENTATION REQUIRED]_used":
+            lines.append(f"| {label:<16} | ❌ ERROR     | ❌ FAIL      |")
         elif status == "error":
             lines.append(f"| {label:<16} | ❌ ERROR     | ❌ FAIL      |")
         else:

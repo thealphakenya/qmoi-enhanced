@@ -41,6 +41,14 @@ jobs:
             python scripts/qmoi-runner-autofix.py
           )
 
+        - name: Runner Performance & Reliability Check
+          run: |
+            python scripts/qmoi-runner-performance.py || echo "Runner performance fallback used."
+
+        - name: Runner Usage Enhancement
+          run: |
+            python scripts/qmoi-runner-enhance-usage.py || echo "Usage enhancement fallback used."
+
       - name: Git Sync (no billing-risk)
         run: |
           git config --global user.name "QMOI AutoBuilder"

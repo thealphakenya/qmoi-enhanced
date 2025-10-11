@@ -73,7 +73,7 @@ class QMOIHuggingFaceTest:
 
     def auto_fix(self):
         logger.info('Attempting auto-fix for Hugging Face Space...')
-        # Trigger a redeploy or notify master (placeholder for real fix logic)
+        # Trigger a redeploy or notify master ([PRODUCTION IMPLEMENTATION REQUIRED] for real fix logic)
         self.log_result('Auto-Fix', 'triggered', 'Redeploy or manual intervention required')
 
     def run(self):

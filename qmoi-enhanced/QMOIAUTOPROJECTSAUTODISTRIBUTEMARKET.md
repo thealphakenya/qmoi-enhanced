@@ -61,7 +61,7 @@ QMOI Auto Projects Auto Distribution & Marketing is an AI-driven system that aut
 - Educational Content
 
 ## Supported Platforms
-- YouTube (trailers, demos)
+- YouTube (trailers, [PRODUCTION IMPLEMENTATION REQUIRED]s)
 - GitHub, Codeberg (code, releases)
 - Itch.io, app stores (apps, games)
 - Firebase, Netlify (web apps)

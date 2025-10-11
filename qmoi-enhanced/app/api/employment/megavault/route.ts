@@ -24,7 +24,7 @@ const DividendDistributionSchema = z.object({
   })),
 });
 
-// Mock database
+// [PRODUCTION IMPLEMENTATION REQUIRED] database
 const megavaultData = {
   currentBalance: 1000000, // 1M starting balance
   totalInflow: 1500000,

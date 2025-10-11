@@ -69,7 +69,7 @@ Copy
 Edit
 ngrok config add-authtoken $NGROK_AUTH_TOKEN
 ngrok http 7860 --log=stdout > ngrok.log &
-🔄 Ngrok Lifecycle Monitoring (Sample)
+🔄 Ngrok Lifecycle Monitoring ([PRODUCTION IMPLEMENTATION REQUIRED])
 QMOI continuously checks tunnel health and auto-recovers:
 
 python
@@ -162,12 +162,13 @@ Ensure auth_token is upgraded
 
 Bind tunnels to subdomains (qmoitunnel.ngrok.io)
 
-✅ Summary
-Feature	Description
-🔄 Auto tunnel lifecycle	Start, restart, reconnect
-🧪 Health monitoring	Ping + failover recovery
-🔗 Live link injection	Update .md, UI, config
-🔐 Token security	Uses secure methods only
-☁️ Cloud support	Colab, DagsHub, CLI
-🪵 Full audit trail	Logs everything
-🛡 Domain fallback	Freenom + custom DNS
+
+## Enhanced Automation & Domain Management
+
+- QMOI now fully automates domain registration, hosting, and tunnel setup for any app, platform, or service.
+- QMOI can register domains anytime, anywhere, and use them as hosts or fallback for any link or service.
+- All charges for domain registration, hosting, and ngrok subscriptions are autopaid by QMOI, with or without master permission, ensuring uninterrupted service.
+- QMOI automatically updates all links and domains in real time, including .md files, configs, and UIs.
+- Fallback logic covers ngrok, Freenom, custom DNS, and any provider, with full audit and logging.
+- All features are integrated with QCity, QMOI AI, and QMOI Space, and are visible in the QCity dashboard.
+- QMOI handles all links and domains in the system, ensuring permanent operation and instant recovery from any DNS or tunnel issue.

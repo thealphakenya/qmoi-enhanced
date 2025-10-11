@@ -1,3 +1,14 @@
+# TRACKS.md
+...existing content...
+
+## Serving & Usage Tracks
+- QCity: Served via main device and runner scripts, autotested and autofixed by QMOI
+- QMOI AI: Served via Python backend, autotested and autofixed
+- QMOI Space: Served via backend/frontend integration, autotested and autofixed
+- All apps, app types, and platforms are covered
+- QMOI ensures all features are served, used, and autotested
+
+## QMOI Real-Time Logging, Automation, and Financial Tracking
 
 # TRACKS.md
 

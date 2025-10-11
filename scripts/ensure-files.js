@@ -15,8 +15,8 @@ requiredFiles.forEach((file) => {
   const filePath = path.join(__dirname, '..', file);
   if (!fs.existsSync(filePath)) {
     missing.push(file);
-    fs.writeFileSync(filePath, `// Auto-created placeholder for: ${file}\n`);
-    console.log(`[CREATED] Placeholder for: ${file}`);
+    fs.writeFileSync(filePath, `// Auto-created [PRODUCTION IMPLEMENTATION REQUIRED] for: ${file}\n`);
+    console.log(`[CREATED] [PRODUCTION IMPLEMENTATION REQUIRED] for: ${file}`);
   }
 });
 

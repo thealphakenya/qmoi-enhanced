@@ -25,7 +25,7 @@
 - **Proactive Voice & Notification System**: AI can proactively speak, notify, or alert users about important events, reminders, or risks. Now supports always-on listening and custom wake words (e.g., "Q", "Alpha").
 - **Conversational AI (Talk Mode)**: All chat and Q-I features support talk mode, allowing the AI to listen for wake words and reply audibly using advanced voice (TTC/caqui-ai). Users can add custom wake words and interact hands-free, even when the device is locked or the screen is off (where supported).
 - **Global Asset & Location Dashboard**: Unified dashboard for all assets, devices, locations, and business/farm resources, with live map and status.
-- **Zero-Config Deployment**: System auto-detects and configures domain/ngrok for secure, instant deployment (see .env and nginx.sample.conf).
+- **Zero-Config Deployment**: System auto-detects and configures domain/ngrok for secure, instant deployment (see .env and nginx.[PRODUCTION IMPLEMENTATION REQUIRED].conf).
 - **Production-Ready Security & Performance**: Hardened Nginx config, rate limiting, HTTP/2, gzip, custom error pages, and auto SSL renewal. Supports both domain and ngrok out of the box.
 
 🚀 **Core Capabilities**

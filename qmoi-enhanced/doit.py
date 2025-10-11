@@ -179,7 +179,7 @@ If you’ve enabled the “Use in Transformers” widget, try it out there.
 
 🧪 2. Test the Model Using the Inference Widget
 
-On the model's page, you can enter sample input in the provided inference widget.
+On the model's page, you can enter [PRODUCTION IMPLEMENTATION REQUIRED] input in the provided inference widget.
 
 This is especially useful for text-classification, text-generation, image-classification, etc.
 

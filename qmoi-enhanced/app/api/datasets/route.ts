@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    // Mock data for now - replace with actual implementation
-    const mockDatasets = {
+    // [PRODUCTION IMPLEMENTATION REQUIRED] data for now - replace with actual implementation
+    const [PRODUCTION IMPLEMENTATION REQUIRED]Datasets = {
       datasets: [
         {
           id: '1',
@@ -66,7 +66,7 @@ export async function GET() {
       }
     };
 
-    return NextResponse.json(mockDatasets);
+    return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Datasets);
   } catch (error) {
     console.error('Error in datasets endpoint:', error);
     return NextResponse.json(
@@ -88,8 +88,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Mock response for now - replace with actual implementation
-    const mockDataset = {
+    // [PRODUCTION IMPLEMENTATION REQUIRED] response for now - replace with actual implementation
+    const [PRODUCTION IMPLEMENTATION REQUIRED]Dataset = {
       id: Math.random().toString(36).substring(7),
       name,
       description: description || '',
@@ -119,7 +119,7 @@ export async function POST(request: Request) {
     // 3. Initialize storage
     // 4. Return the created dataset
 
-    return NextResponse.json(mockDataset);
+    return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Dataset);
   } catch (error) {
     console.error('Error in dataset creation endpoint:', error);
     return NextResponse.json(

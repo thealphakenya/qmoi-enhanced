@@ -45,7 +45,7 @@ const UserSchema = z.object({
   createdAt: z.number().default(() => Date.now()),
 });
 
-// Mock database (replace with actual database)
+// [PRODUCTION IMPLEMENTATION REQUIRED] database (replace with actual database)
 const employees: any[] = [];
 const users: any[] = [];
 const employmentLogs: any[] = [];

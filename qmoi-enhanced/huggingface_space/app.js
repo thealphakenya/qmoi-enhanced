@@ -33,7 +33,7 @@ function QmoispaceApp() {
         {/* Device and healing controls would go here */}
         <Box mt={8} maxW="500px">
           <Heading as="h2" size="md" mb={2}>Send Feedback</Heading>
-          <Textarea value={feedback} onChange={e => setFeedback(e.target.value)} placeholder="Your feedback or bug report..." mb={2} />
+          <Textarea value={feedback} onChange={e => setFeedback(e.target.value)} [PRODUCTION IMPLEMENTATION REQUIRED]="Your feedback or bug report..." mb={2} />
           <Button colorScheme="teal" onClick={handleFeedback}>Send</Button>
         </Box>
       </Box>

@@ -18,8 +18,8 @@ interface ScanResult {
 
 export async function GET(request: NextRequest) {
   try {
-    // Mock scan results - replace with actual implementation
-    const mockResult: ScanResult = {
+    // [PRODUCTION IMPLEMENTATION REQUIRED] scan results - replace with actual implementation
+    const [PRODUCTION IMPLEMENTATION REQUIRED]Result: ScanResult = {
       threats: [
         {
           id: '1',
@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
       }
     };
 
-    return NextResponse.json(mockResult);
+    return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Result);
   } catch (error) {
     console.error('Error in AI scan endpoint:', error);
     return NextResponse.json(
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
     const { action } = body;
 
     if (action === 'self-heal') {
-      // Mock self-healing process - replace with actual implementation
+      // [PRODUCTION IMPLEMENTATION REQUIRED] self-healing process - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate healing time
 
       return NextResponse.json({

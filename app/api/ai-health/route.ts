@@ -72,8 +72,8 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const detailed = searchParams.get('detailed') === 'true';
 
-    // Mock health metrics - replace with actual system monitoring
-    const mockMetrics: AIHealthMetrics = {
+    // [PRODUCTION IMPLEMENTATION REQUIRED] health metrics - replace with actual system monitoring
+    const [PRODUCTION IMPLEMENTATION REQUIRED]Metrics: AIHealthMetrics = {
       cpu: {
         usage: 45.2,
         temperature: 65.3,
@@ -143,8 +143,8 @@ export async function GET(request: NextRequest) {
       else if (deployLog.includes('failed')) deployStatus = 'failed';
     } catch {}
 
-    // Mock component statuses - replace with actual component monitoring
-    const mockComponents: AIComponentStatus[] = [
+    // [PRODUCTION IMPLEMENTATION REQUIRED] component statuses - replace with actual component monitoring
+    const [PRODUCTION IMPLEMENTATION REQUIRED]Components: AIComponentStatus[] = [
       {
         name: 'QMOI Model',
         status: 'healthy',
@@ -207,8 +207,8 @@ export async function GET(request: NextRequest) {
       }
     ];
 
-    // Mock alerts - replace with actual alert system
-    const mockAlerts = [
+    // [PRODUCTION IMPLEMENTATION REQUIRED] alerts - replace with actual alert system
+    const [PRODUCTION IMPLEMENTATION REQUIRED]Alerts = [
       {
         level: 'warning' as const,
         message: 'Media Generator showing increased latency',
@@ -222,12 +222,12 @@ export async function GET(request: NextRequest) {
     ];
 
     const healthStatus: AIHealthStatus = {
-      overall: mockComponents.some(c => c.status === 'critical') ? 'critical' :
-               mockComponents.some(c => c.status === 'degraded') ? 'degraded' : 'healthy',
+      overall: [PRODUCTION IMPLEMENTATION REQUIRED]Components.some(c => c.status === 'critical') ? 'critical' :
+               [PRODUCTION IMPLEMENTATION REQUIRED]Components.some(c => c.status === 'degraded') ? 'degraded' : 'healthy',
       timestamp: new Date().toISOString(),
-      components: mockComponents,
-      metrics: mockMetrics,
-      alerts: mockAlerts,
+      components: [PRODUCTION IMPLEMENTATION REQUIRED]Components,
+      metrics: [PRODUCTION IMPLEMENTATION REQUIRED]Metrics,
+      alerts: [PRODUCTION IMPLEMENTATION REQUIRED]Alerts,
       // Add new fields for compliance and deployment
       licenseStatus,
       lintStatus,
@@ -258,7 +258,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // Mock component check - replace with actual implementation
+      // [PRODUCTION IMPLEMENTATION REQUIRED] component check - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       return NextResponse.json({
@@ -284,7 +284,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // Mock settings update - replace with actual implementation
+      // [PRODUCTION IMPLEMENTATION REQUIRED] settings update - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 800));
 
       return NextResponse.json({

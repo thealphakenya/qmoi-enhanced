@@ -3,8 +3,8 @@ import os
 # Ensure the directory exists
 os.makedirs("Qmoi_downloaded_apps/windows/latest", exist_ok=True)
 
-# Create the placeholder EXE file
+# Create the [PRODUCTION IMPLEMENTATION REQUIRED] EXE file
 with open("Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe", "wb") as f:
-    f.write(b"This is a placeholder EXE file for testing.")
+    f.write(b"This is a [PRODUCTION IMPLEMENTATION REQUIRED] EXE file for testing.")
 
-print("✅ Placeholder EXE created at Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe")
+print("✅ [PRODUCTION IMPLEMENTATION REQUIRED] EXE created at Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe")

@@ -193,7 +193,7 @@ interface BiometricEnrollment {
   storeTemplate(type: BiometricType, data: BiometricData): Promise<void>
   
   // Template matching
-  matchTemplate(type: BiometricType, sample: BiometricData): Promise<MatchResult>
+  matchTemplate(type: BiometricType, [PRODUCTION IMPLEMENTATION REQUIRED]: BiometricData): Promise<MatchResult>
 }
 ```
 

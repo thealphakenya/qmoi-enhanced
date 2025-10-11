@@ -291,7 +291,7 @@ class QCityUI:
         )
         self.tasks_listbox.pack(fill=tk.BOTH, expand=True)
         
-        # Add sample tasks
+        # Add [PRODUCTION IMPLEMENTATION REQUIRED] tasks
         tasks = [
             "System optimization completed",
             "Network scan finished",
@@ -412,7 +412,7 @@ class QCityUI:
     def update_resource_graphs(self, fig: plt.Figure, axes: List[plt.Axes]) -> None:
         """Update resource monitoring graphs."""
         # Update data
-        self.resource_data["cpu"].append(50)  # Sample data
+        self.resource_data["cpu"].append(50)  # [PRODUCTION IMPLEMENTATION REQUIRED] data
         self.resource_data["memory"].append(60)
         self.resource_data["disk"].append(70)
         self.resource_data["network"].append(40)

@@ -354,7 +354,7 @@ MIT License - Master access required for commercial use
     def check_for_updates(self) -> bool:
         """Check for available updates"""
         # Implementation to check for updates
-        return True  # Placeholder
+        return True  # [PRODUCTION IMPLEMENTATION REQUIRED]
     
     def setup_webhooks(self) -> bool:
         """Setup webhooks for automatic updates"""

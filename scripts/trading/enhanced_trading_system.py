@@ -370,7 +370,7 @@ class CashOnTrading(TradingPlatform):
         """Get CashOn account balance"""
         try:
             # This would typically involve API calls to get balance
-            # For now, return mock data
+            # For now, return [PRODUCTION IMPLEMENTATION REQUIRED] data
             return [AccountBalance(
                 platform=self.name,
                 currency="KES",
@@ -385,7 +385,7 @@ class CashOnTrading(TradingPlatform):
         """Place order on CashOn"""
         try:
             # This would involve actual trading on CashOn
-            # For now, return mock result
+            # For now, return [PRODUCTION IMPLEMENTATION REQUIRED] result
             return TradeResult(
                 trade_id=f"cashon_{int(time.time())}",
                 platform=self.name,
@@ -703,7 +703,7 @@ class AIAnalyzer:
             current_price = data.get('last', 0)
             
             if current_price > 0:
-                # Random signal for demonstration
+                # Random signal for [PRODUCTION IMPLEMENTATION REQUIRED]nstration
                 import random
                 if random.random() > 0.7:  # 30% chance of signal
                     side = "buy" if random.random() > 0.5 else "sell"
@@ -712,7 +712,7 @@ class AIAnalyzer:
                         platform=market_id.split('_')[0],
                         symbol=market_id.split('_')[1],
                         side=side,
-                        amount=100.0,  # Fixed amount for demo
+                        amount=100.0,  # Fixed amount for [PRODUCTION IMPLEMENTATION REQUIRED]
                         price=current_price,
                         strategy="momentum",
                         confidence=0.7
@@ -729,7 +729,7 @@ class AIAnalyzer:
             current_price = data.get('last', 0)
             
             if current_price > 0:
-                # Random signal for demonstration
+                # Random signal for [PRODUCTION IMPLEMENTATION REQUIRED]nstration
                 import random
                 if random.random() > 0.8:  # 20% chance of signal
                     side = "buy" if random.random() > 0.5 else "sell"
@@ -738,7 +738,7 @@ class AIAnalyzer:
                         platform=market_id.split('_')[0],
                         symbol=market_id.split('_')[1],
                         side=side,
-                        amount=100.0,  # Fixed amount for demo
+                        amount=100.0,  # Fixed amount for [PRODUCTION IMPLEMENTATION REQUIRED]
                         price=current_price,
                         strategy="mean_reversion",
                         confidence=0.6

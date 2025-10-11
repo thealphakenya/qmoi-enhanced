@@ -34,7 +34,7 @@ class SecurityProxy:
             return None
 
     def sandboxed_browse(self, url):
-        # Placeholder for sandboxed browsing (e.g., using headless browser in Docker)
+        # [PRODUCTION IMPLEMENTATION REQUIRED] for sandboxed browsing (e.g., using headless browser in Docker)
         print(f"Sandboxed browsing to {url} (not implemented)")
         return None
 

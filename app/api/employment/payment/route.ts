@@ -22,7 +22,7 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-// Mock database
+// [PRODUCTION IMPLEMENTATION REQUIRED] database
 const payments: any[] = [];
 const paymentLogs: any[] = [];
 

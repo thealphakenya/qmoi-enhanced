@@ -41,13 +41,13 @@
     // User Engagement
     const engagementChart = document.getElementById('engagement-chart');
     if (engagementChart && window.Chart) {
-      // Example: render chart with dummy or status.analytics.engagement data
+      // Example: render chart with [PRODUCTION IMPLEMENTATION REQUIRED] or status.analytics.engagement data
       // (Stub: chart rendering logic goes here)
     }
     // Revenue Sources
     const revenueSourcesChart = document.getElementById('revenue-sources-chart');
     if (revenueSourcesChart && window.Chart) {
-      // Example: render chart with dummy or status.analytics.revenue_sources data
+      // Example: render chart with [PRODUCTION IMPLEMENTATION REQUIRED] or status.analytics.revenue_sources data
       // (Stub: chart rendering logic goes here)
     }
   }

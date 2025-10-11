@@ -107,7 +107,7 @@ class QCityDeviceManager {
     const command = packages.length > 0 ? `npm install ${packages.join(' ')}` : 'npm install';
     return this.executeInQCity(command, { 
       storage: 'unlimited_qcity',
-      nodeModules: 'unlimited_qcity',
+      no[PRODUCTION IMPLEMENTATION REQUIRED]dules: 'unlimited_qcity',
       unlimitedResources: true
     });
   }
@@ -323,7 +323,7 @@ class QCityDeviceManager {
   async atomicNpmInstall(packages = []) {
     const tempDir = 'node_modules_temp';
     const command = packages.length > 0 ? `npm install ${packages.join(' ')} --prefix ${tempDir}` : `npm install --prefix ${tempDir}`;
-    await this.executeInQCity(command, { storage: 'unlimited_qcity', nodeModules: 'unlimited_qcity', unlimitedResources: true });
+    await this.executeInQCity(command, { storage: 'unlimited_qcity', no[PRODUCTION IMPLEMENTATION REQUIRED]dules: 'unlimited_qcity', unlimitedResources: true });
     // Replace node_modules atomically
     if (fs.existsSync('node_modules')) fs.rmSync('node_modules', { recursive: true, force: true });
     fs.renameSync(tempDir + '/node_modules', 'node_modules');
@@ -338,7 +338,7 @@ class QCityDeviceManager {
 
   // Deduplication
   async dedupe() {
-    return this.executeInQCity('npm dedupe', { nodeModules: 'unlimited_qcity' });
+    return this.executeInQCity('npm dedupe', { no[PRODUCTION IMPLEMENTATION REQUIRED]dules: 'unlimited_qcity' });
   }
 
   // Cloud artifact sync

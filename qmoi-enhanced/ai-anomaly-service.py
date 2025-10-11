@@ -40,7 +40,7 @@ def detect_anomaly():
     # Feature 1: login attempts per IP
     X1 = np.array([[c] for c in ip_counts.values()])
     # Feature 2: time clustering (number of events in last 10 minutes)
-    # For demo, just use total events as a second feature
+    # For [PRODUCTION IMPLEMENTATION REQUIRED], just use total events as a second feature
     X2 = np.full((len(ip_counts), 1), len(events))
     X = np.hstack([X1, X2])
     scaler = StandardScaler()

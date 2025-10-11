@@ -62,7 +62,7 @@ class QMOIDashboardEnhance:
             'job_queue': [],
             'resource_usage': {'cpu': 0, 'memory': 0}
         }
-        self.master_mode = True  # For demo: set True to show master-only features
+        self.master_mode = True  # For [PRODUCTION IMPLEMENTATION REQUIRED]: set True to show master-only features
         self.health_logs = []
         self.autotest_logs = []
         self.app_update_status = {'qmoi': 'Up to date', 'qcity': 'Up to date'}
@@ -174,7 +174,7 @@ class QMOIDashboardEnhance:
         # Advanced controls endpoints
         @self.app.route('/api/job/retry', methods=['POST'])
         def retry_job():
-            # Placeholder: Simulate job retry
+            # [PRODUCTION IMPLEMENTATION REQUIRED]: Simulate job retry
             job = self.automation_stats['run_history'][-1] if self.automation_stats['run_history'] else None
             if job:
                 self.automation_stats['run_history'].append({

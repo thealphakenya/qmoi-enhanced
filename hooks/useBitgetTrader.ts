@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-// Simulated Bitget trading hook for demo/production
+// Simulated Bitget trading hook for [PRODUCTION IMPLEMENTATION REQUIRED]/production
 export function useBitgetTrader() {
   const [bitgetStatus, setBitgetStatus] = useState<'connected'|'disconnected'|'error'>('connected');
   const [isRealTradingEnabled, setIsRealTradingEnabled] = useState(false);

@@ -613,7 +613,7 @@ class QMOIAutoTestSystem:
         """Test Vercel self-healing automation"""
         start_time = time.time()
         try:
-            # Simulate a failed deployment via Vercel API (mock or test project)
+            # Simulate a failed deployment via Vercel API ([PRODUCTION IMPLEMENTATION REQUIRED] or test project)
             # Trigger remote self-heal script (e.g., via webhook or API)
             # Poll for redeploy and check status
             # Validate notification (Slack/email)
@@ -636,7 +636,7 @@ class QMOIAutoTestSystem:
                     content = f.read()
                     if any(paid in content for paid in ["macos-latest", "windows-latest", "self-hosted", "large", "xlarge"]):
                         raise Exception("Paid runner/feature detected in GitHub Actions workflow!")
-            # Simulate a failed workflow run (mock or test repo)
+            # Simulate a failed workflow run ([PRODUCTION IMPLEMENTATION REQUIRED] or test repo)
             # Trigger remote self-heal script (API/webhook)
             # Poll for workflow re-run and check status
             # Validate notification (Slack/email)
@@ -651,7 +651,7 @@ class QMOIAutoTestSystem:
         """Test GitLab CI self-healing automation"""
         start_time = time.time()
         try:
-            # Simulate a failed pipeline (mock or test project)
+            # Simulate a failed pipeline ([PRODUCTION IMPLEMENTATION REQUIRED] or test project)
             # Trigger remote self-heal script (API/webhook)
             # Poll for pipeline re-run and check status
             # Validate notification (Slack/email)

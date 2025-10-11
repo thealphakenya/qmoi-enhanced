@@ -162,7 +162,7 @@ class QMOISpaceApp:
                     temperature=generation_config["temperature"],
                     top_p=generation_config["top_p"],
                     repetition_penalty=generation_config["repetition_penalty"],
-                    do_sample=True,
+                    do_[PRODUCTION IMPLEMENTATION REQUIRED]=True,
                     pad_token_id=self.tokenizer.eos_token_id
                 )
             
@@ -243,7 +243,7 @@ def create_interface():
                 with gr.Row():
                     msg = gr.Textbox(
                         label="Your Message",
-                        placeholder="Ask QMOI anything...",
+                        [PRODUCTION IMPLEMENTATION REQUIRED]="Ask QMOI anything...",
                         lines=3
                     )
                     send_btn = gr.Button("🚀 Send", variant="primary")
@@ -315,7 +315,7 @@ def create_interface():
             
             batch_input = gr.Textbox(
                 label="Batch Prompts (one per line)",
-                placeholder="Enter multiple prompts, one per line...",
+                [PRODUCTION IMPLEMENTATION REQUIRED]="Enter multiple prompts, one per line...",
                 lines=10
             )
             
@@ -333,7 +333,7 @@ def create_interface():
             
             api_prompt = gr.Textbox(
                 label="API Test Prompt",
-                placeholder="Test prompt for API...",
+                [PRODUCTION IMPLEMENTATION REQUIRED]="Test prompt for API...",
                 lines=3
             )
             
@@ -470,7 +470,7 @@ MODEL_CONFIG = {
     "repetition_penalty": 1.1,
     "length_penalty": 1.0,
     "no_repeat_ngram_size": 3,
-    "do_sample": True,
+    "do_[PRODUCTION IMPLEMENTATION REQUIRED]": True,
     "num_beams": 1,
     "early_stopping": True,
     
@@ -672,7 +672,7 @@ jobs:
 # tests/test_qmoi_space.py
 import pytest
 import torch
-from unittest.mock import Mock, patch
+from unittest.[PRODUCTION IMPLEMENTATION REQUIRED] import [PRODUCTION IMPLEMENTATION REQUIRED], patch
 import tempfile
 import os
 
@@ -693,8 +693,8 @@ class TestQMOISpaceApp:
     
     def test_generation(self, app):
         """Test text generation"""
-        with patch.object(app.model, 'generate') as mock_generate:
-            mock_generate.return_value = torch.tensor([[1, 2, 3, 4]])
+        with patch.object(app.model, 'generate') as [PRODUCTION IMPLEMENTATION REQUIRED]_generate:
+            [PRODUCTION IMPLEMENTATION REQUIRED]_generate.return_value = torch.tensor([[1, 2, 3, 4]])
             
             response = app.generate_response("Test prompt")
             assert isinstance(response, str)
@@ -703,8 +703,8 @@ class TestQMOISpaceApp:
         """Test batch generation"""
         prompts = ["Prompt 1", "Prompt 2", "Prompt 3"]
         
-        with patch.object(app, 'generate_response') as mock_gen:
-            mock_gen.side_effect = ["Response 1", "Response 2", "Response 3"]
+        with patch.object(app, 'generate_response') as [PRODUCTION IMPLEMENTATION REQUIRED]_gen:
+            [PRODUCTION IMPLEMENTATION REQUIRED]_gen.side_effect = ["Response 1", "Response 2", "Response 3"]
             
             responses = app.batch_generate(prompts)
             assert len(responses) == 3

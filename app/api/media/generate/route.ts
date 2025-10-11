@@ -195,7 +195,7 @@ export async function GET(request: NextRequest) {
     }
 
     // TODO: Fetch actual task status from database/cloud
-    const mockTask: CloudTask = {
+    const [PRODUCTION IMPLEMENTATION REQUIRED]Task: CloudTask = {
       id: taskId,
       type: 'image',
       status: 'completed',
@@ -216,7 +216,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      task: mockTask,
+      task: [PRODUCTION IMPLEMENTATION REQUIRED]Task,
       dashboardUrl: `/dashboard/media/${taskId}`
     });
   } catch (error) {

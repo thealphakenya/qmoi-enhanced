@@ -44,8 +44,8 @@ export async function GET(request: NextRequest) {
     const threats = searchParams.get('threats');
 
     if (status) {
-      // Mock security status - replace with actual implementation
-      const mockStatus: SecurityStatus = {
+      // [PRODUCTION IMPLEMENTATION REQUIRED] security status - replace with actual implementation
+      const [PRODUCTION IMPLEMENTATION REQUIRED]Status: SecurityStatus = {
         isMonitoring: true,
         lastScan: new Date(Date.now() - 300000).toISOString(), // 5 minutes ago
         threats: [],
@@ -57,12 +57,12 @@ export async function GET(request: NextRequest) {
         }
       };
 
-      return NextResponse.json(mockStatus);
+      return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Status);
     }
 
     if (threats) {
-      // Mock security threats - replace with actual implementation
-      const mockThreats: SecurityThreat[] = [
+      // [PRODUCTION IMPLEMENTATION REQUIRED] security threats - replace with actual implementation
+      const [PRODUCTION IMPLEMENTATION REQUIRED]Threats: SecurityThreat[] = [
         {
           id: 'T001',
           type: 'deauth-attack',
@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
         }
       ];
 
-      return NextResponse.json({ threats: mockThreats });
+      return NextResponse.json({ threats: [PRODUCTION IMPLEMENTATION REQUIRED]Threats });
     }
 
     return NextResponse.json(
@@ -113,7 +113,7 @@ export async function POST(request: NextRequest) {
     const { action, settings } = body;
 
     if (action === 'start-monitoring') {
-      // Mock start monitoring - replace with actual implementation
+      // [PRODUCTION IMPLEMENTATION REQUIRED] start monitoring - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       return NextResponse.json({
@@ -128,7 +128,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (action === 'stop-monitoring') {
-      // Mock stop monitoring - replace with actual implementation
+      // [PRODUCTION IMPLEMENTATION REQUIRED] stop monitoring - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 500));
 
       return NextResponse.json({
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // Mock settings update - replace with actual implementation
+      // [PRODUCTION IMPLEMENTATION REQUIRED] settings update - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 800));
 
       return NextResponse.json({

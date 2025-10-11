@@ -10,7 +10,7 @@ export const AIReviewPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Mock actions/logs for demonstration
+    // [PRODUCTION IMPLEMENTATION REQUIRED] actions/logs for [PRODUCTION IMPLEMENTATION REQUIRED]nstration
     const actions = [
       { type: "edit", file: "main.py", time: "2m ago" },
       { type: "run", file: "main.py", time: "1m ago" },

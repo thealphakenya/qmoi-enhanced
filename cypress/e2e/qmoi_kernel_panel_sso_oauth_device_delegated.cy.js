@@ -2,8 +2,8 @@
 
 describe('QMOI Kernel Panel SSO/OAuth E2E - Device & Delegated Access', () => {
   it('allows device-based SSO login', () => {
-    cy.visit('/auth/callback?provider=device&token=device-mock-token&device_id=dev123');
-    cy.setCookie('authToken', 'device-mock-token');
+    cy.visit('/auth/callback?provider=device&token=device-[PRODUCTION IMPLEMENTATION REQUIRED]-token&device_id=dev123');
+    cy.setCookie('authToken', 'device-[PRODUCTION IMPLEMENTATION REQUIRED]-token');
     cy.setCookie('deviceId', 'dev123');
     cy.visit('/qcity/kernel');
     cy.contains('QMOI Kernel Control Panel').should('exist');
@@ -11,8 +11,8 @@ describe('QMOI Kernel Panel SSO/OAuth E2E - Device & Delegated Access', () => {
   });
 
   it('handles delegated access', () => {
-    cy.visit('/auth/callback?provider=delegated&token=delegated-mock-token&delegator=admin');
-    cy.setCookie('authToken', 'delegated-mock-token');
+    cy.visit('/auth/callback?provider=delegated&token=delegated-[PRODUCTION IMPLEMENTATION REQUIRED]-token&delegator=admin');
+    cy.setCookie('authToken', 'delegated-[PRODUCTION IMPLEMENTATION REQUIRED]-token');
     cy.setCookie('delegator', 'admin');
     cy.visit('/qcity/kernel');
     cy.contains('QMOI Kernel Control Panel').should('exist');

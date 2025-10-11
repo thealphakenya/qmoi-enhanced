@@ -73,7 +73,7 @@ export const AzureIntegration: DeviceIntegration = {
   async connect(creds?: { tenantId: string; clientId: string; clientSecret: string; subscriptionId: string }) {
     console.log("Connecting to Azure...");
     if (creds) azureCreds = creds;
-    // For demo: store in-memory. For production, use secure storage.
+    // For [PRODUCTION IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.
     // const credential = new DefaultAzureCredential();
     // const client = new ResourceManagementClient(credential, azureCreds.subscriptionId);
     // try { await client.resourceGroups.list(); return true; } catch (e) { return false; }
@@ -93,7 +93,7 @@ export const AzureIntegration: DeviceIntegration = {
     // const credential = new DefaultAzureCredential();
     // const client = new ResourceManagementClient(credential, azureCreds.subscriptionId);
     // return await client.resourceGroups.list();
-    return ["demo-rg-1", "demo-rg-2"];
+    return ["[PRODUCTION IMPLEMENTATION REQUIRED]-rg-1", "[PRODUCTION IMPLEMENTATION REQUIRED]-rg-2"];
   }
 };
 
@@ -103,7 +103,7 @@ export const GCPIntegration: DeviceIntegration = {
   async connect(creds?: { projectId: string; keyFilename: string }) {
     console.log("Connecting to GCP...");
     if (creds) gcpCreds = creds;
-    // For demo: store in-memory. For production, use secure storage.
+    // For [PRODUCTION IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.
     // const storage = new Storage({ projectId: gcpCreds.projectId, keyFilename: gcpCreds.keyFilename });
     // try { await storage.getBuckets(); return true; } catch (e) { return false; }
     return !!gcpCreds;
@@ -121,7 +121,7 @@ export const GCPIntegration: DeviceIntegration = {
     // if (!gcpCreds) throw new Error('Not connected');
     // const storage = new Storage({ projectId: gcpCreds.projectId, keyFilename: gcpCreds.keyFilename });
     // return await storage.getBuckets();
-    return ["demo-gcp-bucket-1", "demo-gcp-bucket-2"];
+    return ["[PRODUCTION IMPLEMENTATION REQUIRED]-gcp-bucket-1", "[PRODUCTION IMPLEMENTATION REQUIRED]-gcp-bucket-2"];
   }
 };
 

@@ -477,7 +477,7 @@ Automation Systems:
 
 Detailed results saved to: qmoi-health-check-results.json
 """
-        # Send notification (placeholder - would integrate with actual notification system)
+        # Send notification ([PRODUCTION IMPLEMENTATION REQUIRED] - would integrate with actual notification system)
         logging.info(f"Master Notification - {subject}")
         logging.info(message)
         

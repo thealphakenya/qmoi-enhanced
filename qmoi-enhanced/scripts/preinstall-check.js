@@ -1,5 +1,5 @@
 ﻿/**
- * Dummy postinstall verification for Alpha-Q-ai
+ * [PRODUCTION IMPLEMENTATION REQUIRED] postinstall verification for Alpha-Q-ai
  * Prevents npm install from failing when script is missing.
  */
 

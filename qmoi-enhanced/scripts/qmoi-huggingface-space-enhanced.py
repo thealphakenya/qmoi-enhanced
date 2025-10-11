@@ -298,7 +298,7 @@ class QMOIHuggingFaceSpace:
                 temperature=generation_config["temperature"],
                 top_p=generation_config["top_p"],
                 repetition_penalty=generation_config["repetition_penalty"],
-                do_sample=True,
+                do_[PRODUCTION IMPLEMENTATION REQUIRED]=True,
                 pad_token_id=self.tokenizer.eos_token_id,
                 num_return_sequences=1
             )[0]['generated_text']
@@ -365,7 +365,7 @@ class QMOIHuggingFaceSpace:
             
             return {
                 "transcribed_text": text,
-                "confidence": 0.95,  # Placeholder
+                "confidence": 0.95,  # [PRODUCTION IMPLEMENTATION REQUIRED]
                 "processing_time": time.time()
             }
             
@@ -529,7 +529,7 @@ class QMOIHuggingFaceSpace:
                             with gr.Row():
                                 msg = gr.Textbox(
                                     label="Your Message",
-                                    placeholder="Ask QMOI anything...",
+                                    [PRODUCTION IMPLEMENTATION REQUIRED]="Ask QMOI anything...",
                                     lines=3,
                                     scale=4
                                 )
@@ -675,7 +675,7 @@ class QMOIHuggingFaceSpace:
                             # Batch Input
                             batch_input = gr.Textbox(
                                 label="Batch Prompts (one per line)",
-                                placeholder="Enter multiple prompts, one per line...",
+                                [PRODUCTION IMPLEMENTATION REQUIRED]="Enter multiple prompts, one per line...",
                                 lines=10
                             )
                             
@@ -708,7 +708,7 @@ class QMOIHuggingFaceSpace:
                             # API Test Input
                             api_prompt = gr.Textbox(
                                 label="API Test Prompt",
-                                placeholder="Test prompt for API...",
+                                [PRODUCTION IMPLEMENTATION REQUIRED]="Test prompt for API...",
                                 lines=3
                             )
                             
@@ -743,12 +743,12 @@ class QMOIHuggingFaceSpace:
                             
                             username = gr.Textbox(
                                 label="Username",
-                                placeholder="Enter username"
+                                [PRODUCTION IMPLEMENTATION REQUIRED]="Enter username"
                             )
                             
                             email = gr.Textbox(
                                 label="Email",
-                                placeholder="Enter email"
+                                [PRODUCTION IMPLEMENTATION REQUIRED]="Enter email"
                             )
                             
                             save_settings_btn = gr.Button("ðŸ’¾ Save Settings")

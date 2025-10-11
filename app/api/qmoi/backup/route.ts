@@ -11,18 +11,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { action } = body;
       switch (action) {
         case 'backup':
-          // Placeholder: handle backup
-          return res.status(200).json({ result: 'Backup result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
+          return res.status(200).json({ result: 'Backup result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         case 'restore':
-          // Placeholder: handle restore
-          return res.status(200).json({ result: 'Restore result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
+          return res.status(200).json({ result: 'Restore result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         default:
           return res.status(400).json({ error: 'Unknown action' });
       }
     }
     case 'GET': {
-      // Placeholder: handle backup status
-      return res.status(200).json({ result: 'Backup status (placeholder)' });
+      // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
+      return res.status(200).json({ result: 'Backup status ([PRODUCTION IMPLEMENTATION REQUIRED])' });
     }
     default:
       return res.status(405).json({ error: 'Method not allowed' });

@@ -95,7 +95,7 @@ class QMOIAppInstaller:
     
     def generate_icon_file(self, platform: str, size, colors, icon_dir: str):
         """Generate enhanced icon file for specific platform and size (modern look)"""
-        # This would generate actual icon files; here, create a placeholder with enhanced description
+        # This would generate actual icon files; here, create a [PRODUCTION IMPLEMENTATION REQUIRED] with enhanced description
         icon_file = os.path.join(icon_dir, f"qmoi_icon_{size}.png")
         with open(icon_file, 'w') as f:
             f.write(f"# QMOI AI Icon {size}x{size} for {platform}\n")
@@ -474,7 +474,7 @@ WantedBy=multi-user.target
             os.makedirs(category_dir, exist_ok=True)
             
             for file in files:
-                # Create placeholder files
+                # Create [PRODUCTION IMPLEMENTATION REQUIRED] files
                 file_path = os.path.join(category_dir, file)
                 with open(file_path, 'w') as f:
                     f.write(f"# QMOI AI {file} for {platform_type}")

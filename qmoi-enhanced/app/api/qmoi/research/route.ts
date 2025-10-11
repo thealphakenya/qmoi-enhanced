@@ -11,14 +11,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { action } = body;
       switch (action) {
         case 'research':
-          // Placeholder: handle research
-          return res.status(200).json({ result: 'Research result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle research
+          return res.status(200).json({ result: 'Research result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         case 'verify':
-          // Placeholder: handle verification
-          return res.status(200).json({ result: 'Verification result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle verification
+          return res.status(200).json({ result: 'Verification result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         case 'earning-opportunities':
-          // Placeholder: handle earning opportunities
-          return res.status(200).json({ result: 'Earning opportunities result (placeholder)' });
+          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle earning opportunities
+          return res.status(200).json({ result: 'Earning opportunities result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
         default:
           return res.status(400).json({ error: 'Unknown action' });
       }

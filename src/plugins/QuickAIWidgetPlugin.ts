@@ -10,7 +10,7 @@ export const QuickAIWidgetPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Mock insights/actions for demonstration
+    // [PRODUCTION IMPLEMENTATION REQUIRED] insights/actions for [PRODUCTION IMPLEMENTATION REQUIRED]nstration
     const insights = [
       "AI detected high CPU usage.",
       "No critical errors in the last hour.",

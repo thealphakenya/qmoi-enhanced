@@ -30,8 +30,8 @@ export async function GET(request: NextRequest) {
     const active = searchParams.get('active');
 
     if (stats) {
-      // Mock trading statistics - replace with actual implementation
-      const mockStats: TradingStats = {
+      // [PRODUCTION IMPLEMENTATION REQUIRED] trading statistics - replace with actual implementation
+      const [PRODUCTION IMPLEMENTATION REQUIRED]Stats: TradingStats = {
         totalTrades: 150,
         successfulTrades: 98,
         failedTrades: 52,
@@ -60,12 +60,12 @@ export async function GET(request: NextRequest) {
         }
       };
 
-      return NextResponse.json(mockStats);
+      return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Stats);
     }
 
     if (history) {
-      // Mock trade history - replace with actual implementation
-      const mockHistory: Trade[] = [
+      // [PRODUCTION IMPLEMENTATION REQUIRED] trade history - replace with actual implementation
+      const [PRODUCTION IMPLEMENTATION REQUIRED]History: Trade[] = [
         {
           id: 'T123',
           symbol: 'BTC/USD',
@@ -88,12 +88,12 @@ export async function GET(request: NextRequest) {
         }
       ];
 
-      return NextResponse.json({ trades: mockHistory });
+      return NextResponse.json({ trades: [PRODUCTION IMPLEMENTATION REQUIRED]History });
     }
 
     if (active) {
-      // Mock active trades - replace with actual implementation
-      const mockActive: Trade[] = [
+      // [PRODUCTION IMPLEMENTATION REQUIRED] active trades - replace with actual implementation
+      const [PRODUCTION IMPLEMENTATION REQUIRED]Active: Trade[] = [
         {
           id: 'T125',
           symbol: 'SOL/USD',
@@ -105,7 +105,7 @@ export async function GET(request: NextRequest) {
         }
       ];
 
-      return NextResponse.json({ activeTrades: mockActive });
+      return NextResponse.json({ activeTrades: [PRODUCTION IMPLEMENTATION REQUIRED]Active });
     }
 
     return NextResponse.json(
@@ -127,10 +127,10 @@ export async function POST(request: NextRequest) {
     const { action, trade } = body;
 
     if (action === 'execute') {
-      // Mock trade execution - replace with actual implementation
+      // [PRODUCTION IMPLEMENTATION REQUIRED] trade execution - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate trade execution time
 
-      const mockTrade: Trade = {
+      const [PRODUCTION IMPLEMENTATION REQUIRED]Trade: Trade = {
         id: `T${Math.floor(Math.random() * 1000)}`,
         symbol: trade.symbol,
         type: trade.type,
@@ -138,18 +138,18 @@ export async function POST(request: NextRequest) {
         price: trade.price,
         timestamp: new Date().toISOString(),
         status: 'completed',
-        profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // Mock profit calculation
+        profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // [PRODUCTION IMPLEMENTATION REQUIRED] profit calculation
       };
 
       return NextResponse.json({
         status: 'success',
         message: 'Trade executed successfully',
-        trade: mockTrade
+        trade: [PRODUCTION IMPLEMENTATION REQUIRED]Trade
       });
     }
 
     if (action === 'cancel') {
-      // Mock trade cancellation - replace with actual implementation
+      // [PRODUCTION IMPLEMENTATION REQUIRED] trade cancellation - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 500)); // Simulate cancellation time
 
       return NextResponse.json({

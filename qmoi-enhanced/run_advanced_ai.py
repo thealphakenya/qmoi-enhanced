@@ -3,7 +3,7 @@ import argparse
 import json
 
 def run_stable_diffusion(prompt, output_path):
-    # Placeholder: integrate with diffusers or invoke Stable Diffusion
+    # [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with diffusers or invoke Stable Diffusion
     print(f"[Simulated] Generating image for prompt: {prompt}")
     with open(output_path, 'w') as f:
         f.write(f"Simulated image for: {prompt}")

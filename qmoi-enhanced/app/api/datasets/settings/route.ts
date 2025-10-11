@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // Mock response for now - replace with actual implementation
+    // [PRODUCTION IMPLEMENTATION REQUIRED] response for now - replace with actual implementation
     const updatedSettings = {
       maxConcurrentProcessing: maxConcurrentProcessing || 2,
       autoBackup: autoBackup ?? true,

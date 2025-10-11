@@ -492,7 +492,7 @@ class TechnologyScanner:
         
         try:
             # This would integrate with technology monitoring services
-            # For now, return sample data
+            # For now, return [PRODUCTION IMPLEMENTATION REQUIRED] data
             technologies = [
                 {
                     "name": "AI/ML Automation",

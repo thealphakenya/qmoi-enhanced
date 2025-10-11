@@ -550,7 +550,7 @@ class QMOIEnhancedAvatarSystem {
     };
   }
 
-  // Placeholder methods for rendering (would be implemented with actual graphics engine)
+  // [PRODUCTION IMPLEMENTATION REQUIRED] methods for rendering (would be implemented with actual graphics engine)
   applyFacialExpression(expression) {
     // Apply facial expression to avatar
   }

@@ -10,7 +10,7 @@ export const OptimizationSuggestionPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Mock state for demonstration
+    // [PRODUCTION IMPLEMENTATION REQUIRED] state for [PRODUCTION IMPLEMENTATION REQUIRED]nstration
     const state = {
       dataSaver: false,
       offloading: false,

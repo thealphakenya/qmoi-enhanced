@@ -382,9 +382,9 @@ class QMOIRealTimeLogger:
             # Get column names and values
             columns = list(log_entry.keys())
             values = list(log_entry.values())
-            placeholders = ,.join(['? for _ in columns])
+            [PRODUCTION IMPLEMENTATION REQUIRED]s = ,.join(['? for _ in columns])
             
-            query = f"INSERT INTO {table_name} ([object Object],.join(columns)}) VALUES ({placeholders})"
+            query = f"INSERT INTO {table_name} ([object Object],.join(columns)}) VALUES ({[PRODUCTION IMPLEMENTATION REQUIRED]s})"
             cursor.execute(query, values)
             
             conn.commit()

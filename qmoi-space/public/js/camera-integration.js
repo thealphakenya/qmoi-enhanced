@@ -1,5 +1,5 @@
 // camera-integration.js: Camera logic for QMOI Space
-// Placeholder for real camera/vision integration
+// [PRODUCTION IMPLEMENTATION REQUIRED] for real camera/vision integration
 
 document.getElementById('camera-toggle').addEventListener('click', () => {
   document.getElementById('camera-overlay').classList.toggle('hidden');

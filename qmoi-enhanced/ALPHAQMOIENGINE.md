@@ -21,7 +21,7 @@ The Alpha QMOI Engine is the core integration and automation system for QMOI, en
 ### 3. Communication & Automation
 - **WhatsApp**: Direct file/app/project delivery, chat-based control, and notifications.
 - **Email/Slack/Telegram**: (Planned) Notification and command integration.
-- **QMOI HuggingFace Spaces**: User interaction, file delivery, and demonstration.
+- **QMOI HuggingFace Spaces**: User interaction, file delivery, and [PRODUCTION IMPLEMENTATION REQUIRED]nstration.
 
 ### 4. Data & Storage
 - **Cloud Storage**: All build files, node_modules, and artifacts stored in QCity/Colab cloud.

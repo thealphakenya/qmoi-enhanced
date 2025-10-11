@@ -1,5 +1,5 @@
 // voice-control.js: Voice control logic for QMOI Space
-// Placeholder for real voice integration
+// [PRODUCTION IMPLEMENTATION REQUIRED] for real voice integration
 // TODO: Integrate with backend voice/AI API
 
 document.getElementById('voice-toggle').addEventListener('click', () => {

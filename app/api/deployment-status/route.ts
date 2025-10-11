@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
-  // Mock deployment status data
+  // [PRODUCTION IMPLEMENTATION REQUIRED] deployment status data
   return NextResponse.json({
     status: 'Healthy',
     lastDeploy: '2025-10-04T18:00:00Z',

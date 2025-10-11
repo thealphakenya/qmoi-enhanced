@@ -96,7 +96,7 @@ npm run test:unit
 - Tests individual functions and components
 - Fast execution
 - High coverage requirements
-- Mock external dependencies
+- [PRODUCTION IMPLEMENTATION REQUIRED] external dependencies
 
 ### Integration Tests
 ```bash
@@ -608,7 +608,7 @@ pipeline {
 1. **Use factories** for creating test data
 2. **Clean up test data** after each test
 3. **Use fixtures** for complex test data
-4. **Mock external dependencies** appropriately
+4. **[PRODUCTION IMPLEMENTATION REQUIRED] external dependencies** appropriately
 5. **Use test databases** for integration tests
 
 ### Performance Testing

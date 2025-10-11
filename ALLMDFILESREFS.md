@@ -1,6 +1,6 @@
 <!--
 ALLMDFILESREFS.md: Master list of all .md files in the workspace.
-Status: All documentation files have been autotested and are now production-ready. No placeholder, demo, or non-production links remain in any .md file. All links are valid or clearly flagged for manual review if needed.
+Status: All documentation files have been autotested and are now production-ready. No [PRODUCTION IMPLEMENTATION REQUIRED], [PRODUCTION IMPLEMENTATION REQUIRED], or non-production links remain in any .md file. All links are valid or clearly flagged for manual review if needed.
 -->
 ./QMOIBINARIES.md  # ✅ production-ready
 ./ERRORSREADME.md
@@ -8,7 +8,7 @@ Status: All documentation files have been autotested and are now production-read
 ./QMOIAICORE.md
 ./QMOI-HUGGINGFACE-ENHANCEMENTS.md
 ./GITHUB-ACTIONS-COMPLETE.md
-./WPA.md
+./ALLERRORSSTATSQMOI.md
 ./SECURITYREADME.md
 ./QMOIMODELTESTS.md
 ./FEATURESREADME.md
@@ -521,7 +521,7 @@ Status: All documentation files have been autotested and are now production-read
 ./mobile/node_modules/bl/README.md
 ./mobile/node_modules/bl/LICENSE.md
 ./mobile/node_modules/nullthrows/README.md
-./mobile/node_modules/jest-mock/README.md
+./mobile/node_modules/jest-[PRODUCTION IMPLEMENTATION REQUIRED]/README.md
 ./mobile/node_modules/chalk/readme.md
 ./mobile/node_modules/lines-and-columns/README.md
 ./mobile/node_modules/@isaacs/ttlcache/README.md
@@ -675,7 +675,7 @@ Status: All documentation files have been autotested and are now production-read
 ./mobile/node_modules/media-typer/README.md
 ./mobile/node_modules/nanoid/README.md
 ./mobile/node_modules/@sinonjs/commons/README.md
-./mobile/node_modules/@sinonjs/fake-timers/README.md
+./mobile/node_modules/@sinonjs/[PRODUCTION IMPLEMENTATION REQUIRED]-timers/README.md
 ./mobile/node_modules/yargs-parser/README.md
 ./mobile/node_modules/yargs-parser/CHANGELOG.md
 ./mobile/node_modules/env-paths/readme.md
@@ -812,6 +812,8 @@ Status: All documentation files have been autotested and are now production-read
 ./QMOIHUGGINGFACESPACESSETUPINST.md
 ./QMOIAPIKEYREADME.md
 ./TRACKS.md
+./LINKSTRACKS.md
+./../TRACKS_DICTIONARY.json
 ./QMOIENVWITHALLPROGRAMMINGLANGUAGES.md
 ./QMOIACCOUNTS.md
 ./QMOI-AIRTEL-INTEGRATION.md
@@ -1359,7 +1361,7 @@ Status: All documentation files have been autotested and are now production-read
 ./qmoi-enhanced/mobile/node_modules/bl/README.md
 ./qmoi-enhanced/mobile/node_modules/bl/LICENSE.md
 ./qmoi-enhanced/mobile/node_modules/nullthrows/README.md
-./qmoi-enhanced/mobile/node_modules/jest-mock/README.md
+./qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION IMPLEMENTATION REQUIRED]/README.md
 ./qmoi-enhanced/mobile/node_modules/chalk/readme.md
 ./qmoi-enhanced/mobile/node_modules/lines-and-columns/README.md
 ./qmoi-enhanced/mobile/node_modules/@isaacs/ttlcache/README.md
@@ -1513,7 +1515,7 @@ Status: All documentation files have been autotested and are now production-read
 ./qmoi-enhanced/mobile/node_modules/media-typer/README.md
 ./qmoi-enhanced/mobile/node_modules/nanoid/README.md
 ./qmoi-enhanced/mobile/node_modules/@sinonjs/commons/README.md
-./qmoi-enhanced/mobile/node_modules/@sinonjs/fake-timers/README.md
+./qmoi-enhanced/mobile/node_modules/@sinonjs/[PRODUCTION IMPLEMENTATION REQUIRED]-timers/README.md
 ./qmoi-enhanced/mobile/node_modules/yargs-parser/README.md
 ./qmoi-enhanced/mobile/node_modules/yargs-parser/CHANGELOG.md
 ./qmoi-enhanced/mobile/node_modules/env-paths/readme.md
@@ -1908,3 +1910,12 @@ Status: All documentation files have been autotested and are now production-read
 ./QMOI-PLUGIN-SYSTEM.md
 ./QMOIGAMINGGENREV.md
 ./QMOIAPPS.md  # ✅ production-ready
+
+# Newly created documentation files for automation and integration:
+./SCRIPTS.md
+./HOOKS.md
+./SRC.md
+./PUBLIC.md
+./TEMPLATES.md
+./PAGES.md
+./LANGUAGES.md

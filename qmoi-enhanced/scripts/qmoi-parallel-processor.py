@@ -397,7 +397,7 @@ class PerformanceTracker:
 
 # Example usage and predefined tasks
 def example_tasks():
-    """Example tasks for demonstration"""
+    """Example tasks for [PRODUCTION IMPLEMENTATION REQUIRED]nstration"""
     
     def cpu_intensive_task(n: int) -> int:
         """CPU intensive task"""
@@ -448,7 +448,7 @@ def example_tasks():
             id="ai_task_1",
             name="AI Processing Task 1",
             function=ai_processing_task,
-            args=("Sample text for AI processing",),
+            args=("[PRODUCTION IMPLEMENTATION REQUIRED] text for AI processing",),
             priority=4
         ),
         Task(

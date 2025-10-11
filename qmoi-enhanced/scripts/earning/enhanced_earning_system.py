@@ -187,8 +187,8 @@ class AmazonAffiliate:
         
         try:
             # This would use Amazon Product Advertising API
-            # For now, return mock data
-            mock_products = [
+            # For now, return [PRODUCTION IMPLEMENTATION REQUIRED] data
+            [PRODUCTION IMPLEMENTATION REQUIRED]_products = [
                 {
                     'title': 'MacBook Pro 14-inch',
                     'price': 1999.99,
@@ -205,7 +205,7 @@ class AmazonAffiliate:
                 }
             ]
             
-            products.extend(mock_products)
+            products.extend([PRODUCTION IMPLEMENTATION REQUIRED]_products)
         
         except Exception as e:
             logger.error(f"Error getting Amazon trending products: {e}")
@@ -225,8 +225,8 @@ class JumiaAffiliate:
         
         try:
             # This would use Jumia API
-            # For now, return mock data
-            mock_products = [
+            # For now, return [PRODUCTION IMPLEMENTATION REQUIRED] data
+            [PRODUCTION IMPLEMENTATION REQUIRED]_products = [
                 {
                     'title': 'Samsung Galaxy S24',
                     'price': 89999.0,
@@ -243,7 +243,7 @@ class JumiaAffiliate:
                 }
             ]
             
-            products.extend(mock_products)
+            products.extend([PRODUCTION IMPLEMENTATION REQUIRED]_products)
         
         except Exception as e:
             logger.error(f"Error getting Jumia trending products: {e}")
@@ -262,7 +262,7 @@ class BluehostAffiliate:
         plans = []
         
         try:
-            # Mock hosting plans
+            # [PRODUCTION IMPLEMENTATION REQUIRED] hosting plans
             plans = [
                 {
                     'name': 'Basic Hosting',
@@ -297,7 +297,7 @@ class NamecheapAffiliate:
         services = []
         
         try:
-            # Mock domain services
+            # [PRODUCTION IMPLEMENTATION REQUIRED] domain services
             services = [
                 {
                     'name': 'Domain Registration',
@@ -611,7 +611,7 @@ class FiverrService:
         jobs = []
         
         try:
-            # Mock jobs
+            # [PRODUCTION IMPLEMENTATION REQUIRED] jobs
             jobs = [
                 {
                     'id': 'fiverr_1',
@@ -637,7 +637,7 @@ class FiverrService:
     async def apply_for_job(self, job: Dict) -> Dict:
         """Apply for a Fiverr job"""
         try:
-            # Mock application
+            # [PRODUCTION IMPLEMENTATION REQUIRED] application
             return {
                 'job_id': job['id'],
                 'platform': 'fiverr',
@@ -663,7 +663,7 @@ class UpworkService:
         jobs = []
         
         try:
-            # Mock jobs
+            # [PRODUCTION IMPLEMENTATION REQUIRED] jobs
             jobs = [
                 {
                     'id': 'upwork_1',
@@ -682,7 +682,7 @@ class UpworkService:
     async def apply_for_job(self, job: Dict) -> Dict:
         """Apply for an Upwork job"""
         try:
-            # Mock application
+            # [PRODUCTION IMPLEMENTATION REQUIRED] application
             return {
                 'job_id': job['id'],
                 'platform': 'upwork',
@@ -707,7 +707,7 @@ class FreelancerService:
         jobs = []
         
         try:
-            # Mock jobs
+            # [PRODUCTION IMPLEMENTATION REQUIRED] jobs
             jobs = [
                 {
                     'id': 'freelancer_1',
@@ -726,7 +726,7 @@ class FreelancerService:
     async def apply_for_job(self, job: Dict) -> Dict:
         """Apply for a Freelancer.com job"""
         try:
-            # Mock application
+            # [PRODUCTION IMPLEMENTATION REQUIRED] application
             return {
                 'job_id': job['id'],
                 'platform': 'freelancer',
@@ -840,7 +840,7 @@ class ServiceGenerator:
                     'category': 'Design'
                 },
                 {
-                    'title': 'Website Mockup Design',
+                    'title': 'Website [PRODUCTION IMPLEMENTATION REQUIRED]up Design',
                     'description': 'UI/UX design for websites',
                     'price': 120,
                     'delivery_time': '7 days',

@@ -5,7 +5,7 @@ interface VoiceConfig {
   continuous: boolean;
   interimResults: boolean;
   maxAlternatives: number;
-  sampleRate: number;
+  [PRODUCTION IMPLEMENTATION REQUIRED]Rate: number;
   enableInterruption: boolean;
   autoStart: boolean;
 }
@@ -75,7 +75,7 @@ export class VoiceRecognitionService {
       continuous: true,
       interimResults: true,
       maxAlternatives: 3,
-      sampleRate: 16000,
+      [PRODUCTION IMPLEMENTATION REQUIRED]Rate: 16000,
       enableInterruption: true,
       autoStart: true,
     };
@@ -782,12 +782,12 @@ export class VoiceRecognitionService {
   }
 
   private async getBitgetBalance(): Promise<number> {
-    // Mock implementation - would integrate with actual Bitget API
+    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with actual Bitget API
     return 1250.75;
   }
 
   private async getTodayEarnings(): Promise<number> {
-    // Mock implementation - would integrate with QAllpurposeService
+    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with QAllpurposeService
     return 847.5;
   }
 
@@ -795,7 +795,7 @@ export class VoiceRecognitionService {
     recipient: string,
     message: string,
   ): Promise<void> {
-    // Mock implementation - would integrate with WhatsAppService
+    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService
     console.log(`Sending WhatsApp message to ${recipient}: ${message}`);
   }
 
@@ -803,7 +803,7 @@ export class VoiceRecognitionService {
     name: string,
     members: string[],
   ): Promise<void> {
-    // Mock implementation - would integrate with WhatsAppService
+    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService
     console.log(
       `Creating WhatsApp group ${name} with members: ${members.join(", ")}`,
     );

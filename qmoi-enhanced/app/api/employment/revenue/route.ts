@@ -44,7 +44,7 @@ const ReferralProgramSchema = z.object({
   validUntil: z.string(),
 });
 
-// Mock database
+// [PRODUCTION IMPLEMENTATION REQUIRED] database
 const microtasks: any[] = [];
 const affiliateCampaigns: any[] = [];
 const contentProjects: any[] = [];

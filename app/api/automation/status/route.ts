@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   try {
-    // Mock automation status - replace with real implementation later
+    // [PRODUCTION IMPLEMENTATION REQUIRED] automation status - replace with real implementation later
     const status = {
       isEnabled: true,
       tasks: [

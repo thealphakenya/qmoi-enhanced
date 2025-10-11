@@ -780,7 +780,7 @@ def build_all_apps() -> List[Dict]:
     
     try:
         # This would build all apps and return their information
-        # For now, return a sample structure
+        # For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] structure
         apps = [
             {
                 "name": "qmoi-core",

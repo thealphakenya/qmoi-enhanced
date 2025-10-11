@@ -523,7 +523,7 @@ async def main():
     cloud_integration.register_provider(CloudProvider(
         name="aws_main",
         type="aws",
-        credentials={"access_key": "demo", "secret_key": "demo"},
+        credentials={"access_key": "[PRODUCTION IMPLEMENTATION REQUIRED]", "secret_key": "[PRODUCTION IMPLEMENTATION REQUIRED]"},
         regions=["us-east-1", "us-west-2"],
         services=["s3", "ec2", "lambda"],
         cost_per_gb=0.023,
@@ -533,7 +533,7 @@ async def main():
     cloud_integration.register_provider(CloudProvider(
         name="gcp_main",
         type="gcp",
-        credentials={"project_id": "demo"},
+        credentials={"project_id": "[PRODUCTION IMPLEMENTATION REQUIRED]"},
         regions=["us-central1", "europe-west1"],
         services=["storage", "compute", "functions"],
         cost_per_gb=0.020,
@@ -543,7 +543,7 @@ async def main():
     cloud_integration.register_provider(CloudProvider(
         name="huggingface",
         type="huggingface",
-        credentials={"token": "demo"},
+        credentials={"token": "[PRODUCTION IMPLEMENTATION REQUIRED]"},
         regions=["us-east"],
         services=["models", "datasets", "spaces"],
         cost_per_gb=0.015,

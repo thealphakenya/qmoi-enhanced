@@ -27,7 +27,7 @@ const handler = requireRole(['admin', 'master'])(async (req: NextRequest) => {
   // Route command to the specified device (stub logic)
   logAudit({ action: 'run', cmd, deviceId, user: 'admin', status: 'started' });
   if (stream) {
-    // For demonstration, stream fake logs
+    // For [PRODUCTION IMPLEMENTATION REQUIRED]nstration, stream [PRODUCTION IMPLEMENTATION REQUIRED] logs
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {

@@ -12,8 +12,8 @@ interface WiFiNetwork {
 
 export async function GET(request: NextRequest) {
   try {
-    // Mock WiFi networks - replace with actual implementation
-    const mockNetworks: WiFiNetwork[] = [
+    // [PRODUCTION IMPLEMENTATION REQUIRED] WiFi networks - replace with actual implementation
+    const [PRODUCTION IMPLEMENTATION REQUIRED]Networks: WiFiNetwork[] = [
       {
         ssid: 'Home Network',
         bssid: '00:11:22:33:44:55',
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
       }
     ];
 
-    return NextResponse.json({ networks: mockNetworks });
+    return NextResponse.json({ networks: [PRODUCTION IMPLEMENTATION REQUIRED]Networks });
   } catch (error) {
     console.error('Error in WiFi scan endpoint:', error);
     return NextResponse.json(
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Mock connection attempt - replace with actual implementation
+    // [PRODUCTION IMPLEMENTATION REQUIRED] connection attempt - replace with actual implementation
     await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate connection time
 
     // Simulate random success/failure

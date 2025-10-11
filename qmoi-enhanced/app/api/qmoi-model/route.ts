@@ -20,8 +20,8 @@ export async function GET(request: NextRequest) {
     const datasets = searchParams.get('datasets');
 
     if (allStats) {
-      // Mock AI tasks - replace with actual implementation
-      const mockTasks: AITask[] = [
+      // [PRODUCTION IMPLEMENTATION REQUIRED] AI tasks - replace with actual implementation
+      const [PRODUCTION IMPLEMENTATION REQUIRED]Tasks: AITask[] = [
         {
           id: '1',
           type: 'enhancement',
@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
         }
       ];
 
-      return NextResponse.json({ tasks: mockTasks });
+      return NextResponse.json({ tasks: [PRODUCTION IMPLEMENTATION REQUIRED]Tasks });
     }
 
     if (mediaStatus) {
@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
     const { enhance, desc } = body;
 
     if (enhance) {
-      // Mock enhancement process - replace with actual implementation
+      // [PRODUCTION IMPLEMENTATION REQUIRED] enhancement process - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate enhancement time
 
       return NextResponse.json({

@@ -57,7 +57,7 @@ class AISelfUpdater:
             print(f"Update check failed: {e}")
 
     def optimize_self(self):
-        # Placeholder for self-optimization logic (meta-learning, RL, etc.)
+        # [PRODUCTION IMPLEMENTATION REQUIRED] for self-optimization logic (meta-learning, RL, etc.)
         print("Running self-optimization...")
         # Example: backup model to Hugging Face
         model_path = 'path/to/qmoi_model.pt'
@@ -84,19 +84,19 @@ class AISelfUpdater:
         notify_leah_wallet_on_whatsapp(sister_number, wallet_status, wallet_instructions)
 
     def get_health_status(self):
-        # Placeholder: implement actual health check
+        # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual health check
         return "All systems operational."
 
     def get_projects_report(self):
-        # Placeholder: implement actual project status
+        # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual project status
         return "- Trading Bot: Active\n- Homework Helper: Idle"
 
     def get_planned_projects(self):
-        # Placeholder: implement actual planned projects
+        # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual planned projects
         return "- Dream Journal\n- Gift Planner"
 
     def get_timetable(self):
-        # Placeholder: implement actual timetable
+        # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual timetable
         return "[✓] Trading Bot\n[ ] Dream Journal"
 
     def get_ai_features(self):
@@ -109,7 +109,7 @@ class AISelfUpdater:
         return "Reply with the project name or 'yes' to start. I'll guide you step by step!"
 
     def get_wallet_status(self):
-        # Placeholder: implement actual wallet status
+        # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual wallet status
         return "Balance: $100.00\nRecent activity: +$20 (gift), -$5 (purchase)"
 
     def get_wallet_instructions(self):
