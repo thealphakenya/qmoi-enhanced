@@ -41,7 +41,6 @@ import jwt
 from passlib.context import CryptContext
 import redis
 import sqlite3
-import aioredis
 from concurrent.futures import ThreadPoolExecutor
 import threading
 import queue

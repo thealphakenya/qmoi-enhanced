@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QCity Dashboard</title>
+  <meta name="description" content="QCity Device Management & Dashboard" />
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white">
+  <div id="root">
+    <div class="container mx-auto px-4 py-12">
+      <h1 class="text-5xl font-bold mb-8 text-cyan-300 drop-shadow-lg">QCity Device Management & Dashboard</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white/10 rounded-xl p-6 border border-cyan-400/30 shadow-lg">
+          <h2 class="text-2xl font-semibold mb-2 text-cyan-200">Device Status</h2>
+          <p class="opacity-80">Live device health, compatibility, and resource usage.</p>
+          <div class="mt-2"><span class="font-mono text-lg" id="device-status">Loading...</span></div>
+        </div>
+        <div class="bg-white/10 rounded-xl p-6 border border-cyan-400/30 shadow-lg">
+          <h2 class="text-2xl font-semibold mb-2 text-cyan-200">Logs & Notifications</h2>
+          <p class="opacity-80">Real-time logs, error tracking, and system notifications.</p>
+          <div class="mt-2"><span class="font-mono text-lg" id="logs-status">Loading...</span></div>
+        </div>
+        <div class="bg-white/10 rounded-xl p-6 border border-cyan-400/30 shadow-lg">
+          <h2 class="text-2xl font-semibold mb-2 text-cyan-200">Automation & Self-Healing</h2>
+          <p class="opacity-80">Automated fixes, self-healing, and background tasks.</p>
+          <div class="mt-2"><span class="font-mono text-lg" id="automation-status">Loading...</span></div>
+        </div>
+      </div>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white/10 rounded-xl p-6 border border-cyan-400/30 shadow-lg">
+          <h2 class="text-xl font-semibold mb-2 text-cyan-200">QMOI Memory</h2>
+          <p class="opacity-80">Persistent memory, context, and correction history.</p>
+          <div class="mt-2"><span class="font-mono text-lg" id="memory-status">Loading...</span></div>
+        </div>
+        <div class="bg-white/10 rounded-xl p-6 border border-cyan-400/30 shadow-lg">
+          <h2 class="text-xl font-semibold mb-2 text-cyan-200">System Controls</h2>
+          <p class="opacity-80">Start/stop services, manage devices, and advanced settings.</p>
+          <div class="mt-2 flex flex-col gap-2">
+            <span class="font-mono text-lg" id="controls-status">Loading...</span>
+            <div class="flex gap-2 mt-2">
+              <button id="start-qcity" class="px-3 py-1 bg-green-600 hover:bg-green-700 rounded text-white">Start</button>
+              <button id="stop-qcity" class="px-3 py-1 bg-red-600 hover:bg-red-700 rounded text-white">Stop</button>
+              <button id="refresh-config" class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded text-white">Config</button>
+            </div>
+            <div class="mt-2 text-xs opacity-80" id="config-status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/qcity/dashboard.js"></script>
+</html>

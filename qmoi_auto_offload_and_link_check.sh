@@ -4,7 +4,7 @@
 
 set -e
 
-WORKSPACE="/workspaces/qmoi-enhanced"
+WORKSPACE="/workspaces/qmoi-enhanced-new-themasterkenya/qmoi-enhanced"
 BACKUP="/tmp/qmoi-workspace-backup-$(date +%Y%m%d-%H%M%S).tar.gz"
 
 # 1. Archive and compress workspace (excluding .git and node_modules)

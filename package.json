@@ -5,7 +5,9 @@
   "main": "scripts/qmoi-master-system.js",
   "type": "module",
   "scripts": {
-    "start": "node scripts/qmoi-master-system.js",
+  "start": "node scripts/qmoi-master-system.js",
+  "dev": "node --experimental-modules scripts/qmoi-ai-server.js",
+  "qcity": "node --experimental-modules scripts/qcity-ui-server.js",
     "setup": "node scripts/qmoi-environment-setup.js",
     "avatar": "node scripts/qmoi-enhanced-avatar-system.js",
     "music": "node scripts/qmoi-music-production-system.js",

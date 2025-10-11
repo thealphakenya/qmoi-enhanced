@@ -190,7 +190,8 @@ router.get('/workspace-logs', async (req, res) => {
       res.write('data: [DONE]\n\n');
       clearInterval(interval);
       res.end();
-      // TODO: Audit log log-streaming session
+  logAudit({ timestamp: new Date().toISOString(), action: 'log_streaming_session', user: (req as any).user || 'system', id, type, status: 'completed' });
+  notificationService.sendNotification('QMOI Log Stream Ended', `Log streaming session ended for workspace ${id} (${type})`);
     }
   }, 500);
 
@@ -207,10 +208,10 @@ router.get('/workspace-logs', async (req, res) => {
 export async function listWorkspaces(req: Request, res: Response) {
   try {
     const data = await gitpodRequest('/workspaces', 'GET');
-    logAudit({ timestamp: new Date().toISOString(), action: 'list_gitpod_workspaces', user: req.user || 'system', status: 'success' });
+  logAudit({ timestamp: new Date().toISOString(), action: 'list_gitpod_workspaces', user: (req as any).user || 'system', status: 'success' });
     res.json({ workspaces: data.workspaces });
   } catch (error: any) {
-    logAudit({ timestamp: new Date().toISOString(), action: 'list_gitpod_workspaces', user: req.user || 'system', status: 'error', error: error.message });
+  logAudit({ timestamp: new Date().toISOString(), action: 'list_gitpod_workspaces', user: (req as any).user || 'system', status: 'error', error: (error as any).message });
     res.status(500).json({ error: error.message });
   }
 }
@@ -223,90 +224,97 @@ export async function startWorkspace(req: Request, res: Response) {
       return res.status(400).json({ error: 'contextUrl must be a string' });
     }
     const data = await gitpodRequest('/workspaces', 'POST', { contextUrl });
-    logAudit({ timestamp: new Date().toISOString(), action: 'start_gitpod_workspace', user: req.user || 'system', contextUrl, status: 'success' });
+  logAudit({ timestamp: new Date().toISOString(), action: 'start_gitpod_workspace', user: (req as any).user || 'system', contextUrl, status: 'success' });
     await notificationService.sendNotification('QMOI Workspace Started', `Gitpod workspace started: ${contextUrl}`);
     res.json({ workspace: data });
   } catch (error: any) {
-    logAudit({ timestamp: new Date().toISOString(), action: 'start_gitpod_workspace', user: req.user || 'system', status: 'error', error: error.message });
+  logAudit({ timestamp: new Date().toISOString(), action: 'start_gitpod_workspace', user: (req as any).user || 'system', status: 'error', error: (error as any).message });
     await notificationService.sendNotification('QMOI Workspace Start Failed', error.message);
     res.status(500).json({ error: error.message });
   }
 }
 
 // Stop workspace
-export async function stopWorkspace(req, res) {
+export async function stopWorkspace(req: Request, res: Response) {
   try {
     const { id } = req.body;
     await gitpodRequest(`/workspaces/${id}`, 'DELETE');
-    logAudit({ timestamp: new Date().toISOString(), action: 'stop_gitpod_workspace', user: req.user || 'system', id, status: 'success' });
+  logAudit({ timestamp: new Date().toISOString(), action: 'stop_gitpod_workspace', user: (req as any).user || 'system', id, status: 'success' });
     await notificationService.sendNotification('QMOI Workspace Stopped', `Gitpod workspace stopped: ${id}`);
     res.json({ success: true });
   } catch (error) {
-    logAudit({ timestamp: new Date().toISOString(), action: 'stop_gitpod_workspace', user: req.user || 'system', status: 'error', error: error.message });
-    await notificationService.sendNotification('QMOI Workspace Stop Failed', error.message);
-    res.status(500).json({ error: error.message });
+  logAudit({ timestamp: new Date().toISOString(), action: 'stop_gitpod_workspace', user: (req as any).user || 'system', status: 'error', error: (error as any).message });
+  await notificationService.sendNotification('QMOI Workspace Stop Failed', (error as any).message);
+  res.status(500).json({ error: (error as any).message });
   }
 }
 
 // Clone workspace (snapshot)
-export async function cloneWorkspace(req, res) {
+export async function cloneWorkspace(req: Request, res: Response) {
   try {
     const { id } = req.body;
     const data = await gitpodRequest(`/workspaces/${id}/snapshot`, 'POST');
-    logAudit({ timestamp: new Date().toISOString(), action: 'clone_gitpod_workspace', user: req.user || 'system', id, status: 'success' });
+  logAudit({ timestamp: new Date().toISOString(), action: 'clone_gitpod_workspace', user: (req as any).user || 'system', id, status: 'success' });
     await notificationService.sendNotification('QMOI Workspace Cloned', `Gitpod workspace cloned: ${id}`);
     res.json({ snapshot: data });
   } catch (error) {
-    logAudit({ timestamp: new Date().toISOString(), action: 'clone_gitpod_workspace', user: req.user || 'system', status: 'error', error: error.message });
-    await notificationService.sendNotification('QMOI Workspace Clone Failed', error.message);
-    res.status(500).json({ error: error.message });
+  logAudit({ timestamp: new Date().toISOString(), action: 'clone_gitpod_workspace', user: (req as any).user || 'system', status: 'error', error: (error as any).message });
+  await notificationService.sendNotification('QMOI Workspace Clone Failed', (error as any).message);
+  res.status(500).json({ error: (error as any).message });
   }
 }
 
 // Sync workspace
-export async function syncWorkspace(req, res) {
+export async function syncWorkspace(req: Request, res: Response) {
   try {
     const { id, type } = req.body;
     if (!id || !type) return res.status(400).json({ error: 'id and type required' });
     // For Gitpod: create a snapshot and return the snapshot info
     if (type === 'gitpod') {
       const data = await gitpodRequest(`/workspaces/${id}/snapshot`, 'POST');
-      // TODO: Optionally download/upload snapshot to local if needed
-      // TODO: Audit log and notify
-      logAudit({ timestamp: new Date().toISOString(), action: 'sync_gitpod_workspace', user: req.user || 'system', id, type, status: 'success' });
-      await notificationService.sendNotification('QMOI Workspace Synced', `Gitpod workspace synced: ${id}`);
-      res.json({ success: true, snapshot: data });
-      return;
+  // Optionally download/upload snapshot to local if needed (future enhancement)
+  logAudit({ timestamp: new Date().toISOString(), action: 'sync_gitpod_workspace', user: (req as any).user || 'system', id, type, status: 'success' });
+  await notificationService.sendNotification('QMOI Workspace Synced', `Gitpod workspace synced: ${id}`);
+  res.json({ success: true, snapshot: data });
+  return;
     }
     // For local: (Docker) - tar the workspace and upload to Gitpod (if API supports)
     if (type === 'local') {
       // Find the container and export its filesystem
       const container = docker.getContainer(id);
       if (!container) return res.status(404).json({ error: 'Container not found' });
-      // Export container filesystem as tar stream
-      const tarStream = await container.export();
-      // TODO: Upload tarStream to Gitpod (if API supports direct upload)
-      // For now, just acknowledge the sync request
-      // TODO: Audit log and notify
-      logAudit({ timestamp: new Date().toISOString(), action: 'sync_local_workspace', user: req.user || 'system', id, type, status: 'success' });
+      // Export container filesystem as tar stream (Dockerode v3+ returns a Promise)
+      const tarStream = await new Promise((resolve, reject) => {
+        container.export({}, (err: any, stream: any) => {
+          if (err) reject(err);
+          else resolve(stream);
+        });
+      });
+      // Upload tarStream to Gitpod (future enhancement)
+      logAudit({ timestamp: new Date().toISOString(), action: 'sync_local_workspace', user: (req as any).user || 'system', id, type, status: 'success' });
       await notificationService.sendNotification('QMOI Local Workspace Synced', `Local workspace export initiated: ${id}`);
       res.json({ success: true, message: 'Local workspace export initiated (upload to Gitpod not yet implemented)' });
       return;
     }
     res.status(400).json({ error: 'Unknown workspace type' });
   } catch (error) {
-    logAudit({ timestamp: new Date().toISOString(), action: 'sync_workspace', user: req.user || 'system', status: 'error', error: error.message });
-    await notificationService.sendNotification('QMOI Workspace Sync Failed', error.message);
-    res.status(500).json({ error: error.message });
+  logAudit({ timestamp: new Date().toISOString(), action: 'sync_workspace', user: (req as any).user || 'system', status: 'error', error: (error as any).message });
+  await notificationService.sendNotification('QMOI Workspace Sync Failed', (error as any).message);
+  res.status(500).json({ error: (error as any).message });
   }
 }
 
 // List QMOI-local Docker workspaces
 export async function listLocalWorkspaces(req: Request, res: Response) {
   try {
-    const containers = await docker.listContainers({ all: true, filters: { label: ['qmoi-local-workspace'] } });
-    logAudit({ timestamp: new Date().toISOString(), action: 'list_local_workspaces', user: req.user || 'system', status: 'success' });
-    res.json({ workspaces: containers.map(c => ({
+    const containers: any[] = await new Promise((resolve, reject) => {
+      docker.listContainers({ all: true, filters: { label: ['qmoi-local-workspace'] } }, (err: any, containers: any[]) => {
+        if (err) reject(err);
+        else resolve(containers);
+      });
+    });
+    logAudit({ timestamp: new Date().toISOString(), action: 'list_local_workspaces', user: (req as any).user || 'system', status: 'success' });
+    res.json({ workspaces: containers.map((c: any) => ({
       id: c.Id,
       name: c.Names[0],
       status: c.Status,
@@ -314,7 +322,7 @@ export async function listLocalWorkspaces(req: Request, res: Response) {
       image: c.Image
     })) });
   } catch (error: any) {
-    logAudit({ timestamp: new Date().toISOString(), action: 'list_local_workspaces', user: req.user || 'system', status: 'error', error: error.message });
+    logAudit({ timestamp: new Date().toISOString(), action: 'list_local_workspaces', user: (req as any).user || 'system', status: 'error', error: error.message });
     res.status(500).json({ error: error.message });
   }
 }
@@ -324,19 +332,29 @@ export async function startLocalWorkspace(req: Request, res: Response) {
   try {
     const { image, name } = req.body;
     if (!image || !name) return res.status(400).json({ error: 'image and name required' });
-    const container = await docker.createContainer({
-      Image: image,
-      name,
-      Labels: { 'qmoi-local-workspace': 'true' },
-      Tty: true,
-      Env: [/* mirror Gitpod env vars here if needed */]
+    const container = await new Promise((resolve, reject) => {
+      docker.createContainer({
+        Image: image,
+        name,
+        Labels: { 'qmoi-local-workspace': 'true' },
+        Tty: true,
+        Env: [/* mirror Gitpod env vars here if needed */]
+      }, (err: any, container: any) => {
+        if (err) reject(err);
+        else resolve(container);
+      });
     });
-    await container.start();
-    logAudit({ timestamp: new Date().toISOString(), action: 'start_local_workspace', user: req.user || 'system', image, name, status: 'success' });
+    await new Promise((resolve, reject) => {
+      (container as any).start((err: any) => {
+        if (err) reject(err);
+        else resolve(true);
+      });
+    });
+    logAudit({ timestamp: new Date().toISOString(), action: 'start_local_workspace', user: (req as any).user || 'system', image, name, status: 'success' });
     await notificationService.sendNotification('QMOI Local Workspace Started', `Local workspace started: ${name}`);
-    res.json({ id: container.id, name });
+  res.json({ id: (container as any).id, name });
   } catch (error: any) {
-    logAudit({ timestamp: new Date().toISOString(), action: 'start_local_workspace', user: req.user || 'system', status: 'error', error: error.message });
+    logAudit({ timestamp: new Date().toISOString(), action: 'start_local_workspace', user: (req as any).user || 'system', status: 'error', error: error.message });
     await notificationService.sendNotification('QMOI Local Workspace Start Failed', error.message);
     res.status(500).json({ error: error.message });
   }
@@ -348,12 +366,17 @@ export async function stopLocalWorkspace(req: Request, res: Response) {
     const { id } = req.body;
     if (!id) return res.status(400).json({ error: 'id required' });
     const container = docker.getContainer(id);
-    await container.stop();
-    logAudit({ timestamp: new Date().toISOString(), action: 'stop_local_workspace', user: req.user || 'system', id, status: 'success' });
+    await new Promise((resolve, reject) => {
+      container.stop({}, (err: any, data: any) => {
+        if (err) reject(err);
+        else resolve(data);
+      });
+    });
+    logAudit({ timestamp: new Date().toISOString(), action: 'stop_local_workspace', user: (req as any).user || 'system', id, status: 'success' });
     await notificationService.sendNotification('QMOI Local Workspace Stopped', `Local workspace stopped: ${id}`);
     res.json({ success: true });
   } catch (error: any) {
-    logAudit({ timestamp: new Date().toISOString(), action: 'stop_local_workspace', user: req.user || 'system', status: 'error', error: error.message });
+    logAudit({ timestamp: new Date().toISOString(), action: 'stop_local_workspace', user: (req as any).user || 'system', status: 'error', error: error.message });
     await notificationService.sendNotification('QMOI Local Workspace Stop Failed', error.message);
     res.status(500).json({ error: error.message });
   }

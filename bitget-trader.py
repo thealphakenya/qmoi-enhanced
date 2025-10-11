@@ -48,16 +48,26 @@ def bitget_request(method, path, body_obj=None):
     resp.raise_for_status()
     return resp.json()
 
-# --- AI confidence calculation (placeholder, replace with real model) ---
-def calculate_confidence(market_data):
-    # Example: use volatility, trend, and recent profit
-    import random
-    return min(1.0, max(0.0, 0.6 + random.uniform(-0.1, 0.3)))
 
-# --- Dynamic trading pairs selection (placeholder) ---
+# --- AI confidence calculation using simple technical indicators ---
+def calculate_confidence(market_data):
+    # Use moving average and volatility as a simple confidence metric
+    prices = [x['close'] for x in market_data[-10:]]
+    if len(prices) < 2:
+        return 0.5
+    avg = sum(prices) / len(prices)
+    volatility = max(prices) - min(prices)
+    trend = prices[-1] - prices[0]
+    confidence = 0.5 + (trend / avg) * 0.2 - (volatility / avg) * 0.1
+    return min(1.0, max(0.0, confidence))
+
+# --- Dynamic trading pairs selection using real volume ---
 def select_trading_pair(market_data):
-    # Example: pick the pair with highest volume
-    return 'BTCUSDT_UMCBL'
+    # Pick the pair with the highest 24h volume
+    if not market_data:
+        return 'BTCUSDT_UMCBL'
+    best = max(market_data, key=lambda x: x.get('volume', 0))
+    return best.get('symbol', 'BTCUSDT_UMCBL')
 
 def trading_loop():
     while True:
