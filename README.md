@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # QMOI System
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
@@ -47,14 +48,12 @@ All finalized apps are automatically published to:
 If a download fails, QCity automation will auto-rebuild, fix, and restore the correct link.
 
 🧠 QCity Automation Features
-QCity runners orchestrate and manage:
 
 ✅ Build validation across 9 platforms
 
 🔀 Auto-update push to GitHub releases
 
 🔧 Rebuilds for broken links or errors
-
 🧪 Autotest monitoring and recovery
 
 ☁ Sync with qmoiexe.py and auto_updater.py to reflect latest status
@@ -69,7 +68,6 @@ Platform	Build Status	Test Result
 🤖 Android	✅ SUCCESS	✅ PASS
 🍏 macOS	✅ SUCCESS	✅ PASS
 🐧 Linux	✅ SUCCESS	✅ PASS
-📱 iOS	✅ SUCCESS	✅ PASS
 💻 Chromebook	✅ SUCCESS	✅ PASS
 🡧 Raspberry Pi	✅ SUCCESS	✅ PASS
 🏙 QCity Package	✅ SUCCESS	✅ PASS
@@ -118,3 +116,6 @@ Edit
 - ✅ Update-safe via comment markers
 - ✅ Markdown table for device status
 - ✅ Web-safe and version-controllable
+=======
+# qmoi-enhanced-new-theinventorkenya
+>>>>>>> inventorkenya/main
