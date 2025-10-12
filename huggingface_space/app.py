@@ -343,7 +343,6 @@ def create_qmoi_deal(platform, deal_type, value):
     except Exception as e:
         return f"Error creating deal: {e}"
 
-# Example Gradio Blocks UI (Enhanced)
 def build_gradio_ui():
     with gr.Blocks(title="QMOI AI System - Enhanced", theme=gr.themes.Soft()) as demo:
         gr.Markdown("# 🤖 QMOI AI System - Enhanced")

@@ -22,17 +22,24 @@ run_test "Basic Text Chat" "$test1"
 test2="curl -s $QMOI_API_BASE/chat/completions -H 'Content-Type: application/json' -H 'Authorization: Bearer $QMOI_API_KEY' -d '{\"model\":\"qmoi\",\"messages\":[{\"role\":\"system\",\"content\":\"You are a friendly, context-aware assistant.\"},{\"role\":\"user\",\"content\":\"What’s your favorite color?\"},{\"role\":\"assistant\",\"content\":\"I think blue looks great — calm and clear.\"},{\"role\":\"user\",\"content\":\"Cool, what about matching foods?\"}]}'"
 run_test "Multi-turn Conversation" "$test2"
 
+
 # 3. Multimodal Input (image + text)
-test3="curl -s $QMOI_API_BASE/chat/completions -H 'Content-Type: application/json' -H 'Authorization: Bearer $QMOI_API_KEY' -d '{\"model\":\"qmoi\",\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What do you see in this image?\"},{\"type\":\"image_url\",\"image_url\":\"https://example.com/dog.jpg\"}]}]}'"
+# NOTE: Replace with a real, accessible image URL for production testing
+REAL_IMAGE_URL="https://downloads.qmoi.app/test-images/dog.jpg"
+test3="curl -s $QMOI_API_BASE/chat/completions -H 'Content-Type: application/json' -H 'Authorization: Bearer $QMOI_API_KEY' -d '{\"model\":\"qmoi\",\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What do you see in this image?\"},{\"type\":\"image_url\",\"image_url\":\"$REAL_IMAGE_URL\"}]}]}'"
 run_test "Multimodal Input (image + text)" "$test3"
 
+
 # 4. Multimodal Reasoning
-test4="curl -s $QMOI_API_BASE/chat/completions -H 'Content-Type: application/json' -H 'Authorization: Bearer $QMOI_API_KEY' -d '{\"model\":\"qmoi\",\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"How many people are wearing hats in this picture?\"},{\"type\":\"image_url\",\"image_url\":\"https://example.com/group_photo.jpg\"}]}]}'"
+# NOTE: Replace with a real, accessible group photo image URL for production testing
+REAL_GROUP_PHOTO_URL="https://downloads.qmoi.app/test-images/group_photo.jpg"
+test4="curl -s $QMOI_API_BASE/chat/completions -H 'Content-Type: application/json' -H 'Authorization: Bearer $QMOI_API_KEY' -d '{\"model\":\"qmoi\",\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"How many people are wearing hats in this picture?\"},{\"type\":\"image_url\",\"image_url\":\"$REAL_GROUP_PHOTO_URL\"}]}]}'"
 run_test "Multimodal Reasoning" "$test4"
 
 # 5. Structured Output (JSON Mode)
 test5="curl -s $QMOI_API_BASE/chat/completions -H 'Content-Type: application/json' -H 'Authorization: Bearer $QMOI_API_KEY' -d '{\"model\":\"qmoi\",\"response_format\":{\"type\":\"json_object\"},\"messages\":[{\"role\":\"user\",\"content\":\"Extract the name, age, and city from: Sarah, 28, from Berlin.\"}]}'"
 run_test "Structured Output (JSON Mode)" "$test5"
+
 
 # 6. Streaming Responses
 test6="curl -N $QMOI_API_BASE/chat/completions -H 'Content-Type: application/json' -H 'Authorization: Bearer $QMOI_API_KEY' -d '{\"model\":\"qmoi\",\"stream\":true,\"messages\":[{\"role\":\"user\",\"content\":\"Tell me a short poem about the ocean.\"}]}'"

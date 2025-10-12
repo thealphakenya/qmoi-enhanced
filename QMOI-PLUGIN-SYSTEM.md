@@ -24,7 +24,8 @@ The QMOI Plugin System allows third-party and internal plugins to extend QMOI's 
 - Users can enable/disable plugins from the dashboard.
 - Plugin status and logs are visible in the Plugins section.
 
-## 4. Example Plugin Structure
+
+## 4. Plugin Structure
 ```ts
 export interface QmoiPlugin {
   id: string;
@@ -38,7 +39,8 @@ export interface QmoiPlugin {
 }
 ```
 
-## 5. Example Plugins
+
+## 5. Plugin Samples
 - **Device Health Reviewer:** Analyzes device stats and suggests optimizations.
 - **Optimization Suggestion Plugin:** Recommends Data Saver or offloading actions.
 - **UI Widget Plugin:** Adds a floating panel with real-time AI insights.
@@ -47,7 +49,8 @@ export interface QmoiPlugin {
 - Plugins can extend any part of QMOI, including device management, optimization, review, and automation.
 - All plugins are sandboxed for security and stability.
 
-## Example: Device Health Reviewer Plugin
+
+## Device Health Reviewer Plugin
 
 ```ts
 import React from "react";

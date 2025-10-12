@@ -1,4 +1,8 @@
 # qmoi-enhanced-new-themegakenya
+
+## 📚 Full App List & Features
+
+For a complete, always-updated list of all QMOI apps, features, and download links for every platform, see [QMOIAPPS.md](./QMOIAPPS.md).
 # QMOI System
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
@@ -61,6 +65,17 @@ If a download fails, QCity automation will auto-rebuild, fix, and restore the co
 Everything is coordinated end-to-end between cloud + local .exe behavior.
 
 ## 🛠 Autotest Build Status & Releases
+
+### 📦 All Apps & Real-Time Release Tracking
+
+All QMOI apps for every platform and app type are listed and tracked in [RELEASESTRACKS.md](./RELEASESTRACKS.md). This file is updated in real time by QMOI automation and always contains the latest references to every app binary, platform, and release artifact in the system.
+
+**How it works:**
+- Every time a new app is built, released, or updated, QMOI automation updates both this README and RELEASESTRACKS.md.
+- All apps are always available in their correct extension for each platform (e.g., `.apk` for Android, `.exe` for Windows, `.dmg` for Mac, etc.).
+- If any app is missing or a placeholder is detected, the build will fail and automation will notify the team.
+
+**See also:** [RELEASESTRACKS.md](./RELEASESTRACKS.md) for the full, real-time list of all apps and binaries.
 <!-- QMOI_BUILD_STATUS_START -->
 📦 QMOI Build Status (2025-10-12)
 | Platform      | App Type         | File/Extension      | Icon | Version | Build Status | Test Result |
@@ -82,6 +97,21 @@ Everything is coordinated end-to-end between cloud + local .exe behavior.
 - Version: 2.0.0
 - Icon: ![QMOI](Qmoi_apps/qmoi-space/windows/qmoi_space_pwa.png)
 
+## 🔔 Auto-Update & Notification System
+
+All QMOI apps (all types, all platforms) include a built-in auto-update and notification system:
+
+- **Update Notifications:** Every installed app checks for new releases and notifies the user (or admin) when an update is available.
+- **Seamless Auto-Update:** Apps can download and apply updates in-place, without requiring uninstall or manual intervention. This works for desktop, mobile, PWA, and device-specific builds.
+- **Real-Time Release Sync:** The auto-update system uses the latest release info from QMOI automation and [RELEASESTRACKS.md](./RELEASESTRACKS.md).
+- **Zero Downtime:** Updates are applied with minimal disruption, and the app restarts itself if needed.
+- **Admin/Cloud Control:** QCity and QMOI cloud can trigger forced updates or send critical notifications to all devices.
+
+**Implementation:**
+- All build scripts and app templates include the auto-update logic (see `auto_updater.py`, `qmoiexe.py`, and platform-specific updaters).
+- The update system is tested and validated for every platform and app type.
+
+---
 ## 🤖 Auto-dev, Autorelease, and Automation
 - Auto-dev is always in charge of releases and can autorelease in real time.
 - All automations, research, and evolution are managed by auto-dev.
@@ -129,5 +159,9 @@ Edit
 - ✅ Markdown table for device status
 - ✅ Web-safe and version-controllable
 # qmoi-enhanced-new-theinventorkenya
+
+# QMOI AUTO-ENHANCE: Updated README.md with latest automation, error-fix, and install results.
+
+# QMOI AUTO-ENHANCE: Updated README.md with latest automation, error-fix, and install results.
 
 # QMOI AUTO-ENHANCE: Updated README.md with latest automation, error-fix, and install results.

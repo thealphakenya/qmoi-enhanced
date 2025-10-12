@@ -1,0 +1,9 @@
+{
+  "images": [
+    {"idiom": "iphone", "size": "192x192", "filename": "icon_192.png"},
+    {"idiom": "iphone", "size": "512x512", "filename": "icon_512.png"},
+    {"idiom": "iphone", "size": "1024x1024", "filename": "icon_1024.png"},
+    {"idiom": "universal", "filename": "icon.svg"}
+  ],
+  "info": {"version": 1, "author": "qmoi"}
+}
