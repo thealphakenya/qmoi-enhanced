@@ -23,17 +23,17 @@ jobs:
     steps:
       # 1️⃣ Checkout the repository
       - name: Checkout repository
-
-        # Auto-fix and error handling
-        - name: Auto-fix errors
-          run: |
-            npm run fix:all || echo "Auto-fix attempted."
-            python scripts/auto_updater.py || echo "Python auto-fix attempted."
-
-        - name: Error summary
-          run: |
-            echo "If errors occurred, see logs above. All auto-fix steps have been attempted."
         uses: actions/checkout@v4
+
+      # Auto-fix and error handling
+      - name: Auto-fix errors
+        run: |
+          npm run fix:all || echo "Auto-fix attempted."
+          python scripts/auto_updater.py || echo "Python auto-fix attempted."
+
+      - name: Error summary
+        run: |
+          echo "If errors occurred, see logs above. All auto-fix steps have been attempted."
 
       # 2️⃣ Setup Node.js
       - name: Setup Node.js ${{ matrix.node-version }}

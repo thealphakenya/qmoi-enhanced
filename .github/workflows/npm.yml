@@ -1,25 +1,20 @@
 name: CI
-
-on:
+'on':
   push:
-    branches: [ main ]
-  pull_request:
-
+    branches:
+      - main
+  pull_request: null
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Checkout repo
       - uses: actions/checkout@v4
-
-      # 2. Setup Node.js with npm cache
+        name: Step 1
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
-
-      # 3. Cache node_modules
+          cache: npm
+        name: Step 2
       - name: Cache node_modules
         uses: actions/cache@v4
         with:
@@ -27,14 +22,17 @@ jobs:
           key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             node-modules-${{ runner.os }}-
-
-      # 4. Install dependencies
       - name: Install dependencies
         run: npm ci
-
-      # 5. Run build / tests
       - name: Build
         run: npm run build
-
       - name: Test
         run: npm test
+    timeout_minutes: 30
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+env:
+  NODE_VERSION: '18'
+  QMOI_AUTODEV_ENABLED: 'true'

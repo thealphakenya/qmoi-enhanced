@@ -1,25 +1,6 @@
-stages:
-  - build
-  - test
-  - deploy
-  - heal
 
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
-  GIT_DEPTH: 1
-  NODE_ENV: production
-  PYTHONUNBUFFERED: 1
-  QMOI_EMAIL_USER: $QMOI_EMAIL_USER
-  QMOI_EMAIL_PASS: $QMOI_EMAIL_PASS
-  QMOI_EMAIL_RECIPIENT: $QMOI_EMAIL_RECIPIENT
-  QMOI_SLACK_WEBHOOK: $QMOI_SLACK_WEBHOOK
-  QMOI_TWILIO_SID: $QMOI_TWILIO_SID
-  QMOI_TWILIO_TOKEN: $QMOI_TWILIO_TOKEN
-  QMOI_TWILIO_WHATSAPP: $QMOI_TWILIO_WHATSAPP
-  QMOI_TELEGRAM_TOKEN: $QMOI_TELEGRAM_TOKEN
-  QMOI_TELEGRAM_CHAT: $QMOI_TELEGRAM_CHAT
-  QMOI_DISCORD_WEBHOOK: $QMOI_DISCORD_WEBHOOK
-  QMOI_CODESPACES: "true"
+
+
 
 name: QMOI App Build
 
@@ -32,22 +13,35 @@ jobs:
     name: QMOI App Build
     runs-on: [self-hosted, qcity]
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')
+    env:
+      GIT_SUBMODULE_STRATEGY: recursive
+      GIT_DEPTH: 1
+      NODE_ENV: production
+      PYTHONUNBUFFERED: 1
+      QMOI_EMAIL_USER: ${{ secrets.QMOI_EMAIL_USER }}
+      QMOI_EMAIL_PASS: ${{ secrets.QMOI_EMAIL_PASS }}
+      QMOI_EMAIL_RECIPIENT: ${{ secrets.QMOI_EMAIL_RECIPIENT }}
+      QMOI_SLACK_WEBHOOK: ${{ secrets.QMOI_SLACK_WEBHOOK }}
+      QMOI_TWILIO_SID: ${{ secrets.QMOI_TWILIO_SID }}
+      QMOI_TWILIO_TOKEN: ${{ secrets.QMOI_TWILIO_TOKEN }}
+      QMOI_TWILIO_WHATSAPP: ${{ secrets.QMOI_TWILIO_WHATSAPP }}
+      QMOI_TELEGRAM_TOKEN: ${{ secrets.QMOI_TELEGRAM_TOKEN }}
+      QMOI_TELEGRAM_CHAT: ${{ secrets.QMOI_TELEGRAM_CHAT }}
+      QMOI_DISCORD_WEBHOOK: ${{ secrets.QMOI_DISCORD_WEBHOOK }}
+      QMOI_CODESPACES: "true"
     steps:
       - name: Runner Self-Check & Auto-Fix
         run: |
           echo "🔍 Checking runner health..."
-          python scripts/qmoi-runner-selfcheck.py || (
-            echo "⚠️ Self-check failed. Attempting fix..." && \
-            python scripts/qmoi-runner-autofix.py
-          )
+          python scripts/qmoi-runner-selfcheck.py || echo "⚠️ Self-check failed. Attempting fix..." && python scripts/qmoi-runner-autofix.py
 
-        - name: Runner Performance & Reliability Check
-          run: |
-            python scripts/qmoi-runner-performance.py || echo "Runner performance fallback used."
+      - name: Runner Performance & Reliability Check
+        run: |
+          python scripts/qmoi-runner-performance.py || echo "Runner performance fallback used."
 
-        - name: Runner Usage Enhancement
-          run: |
-            python scripts/qmoi-runner-enhance-usage.py || echo "Usage enhancement fallback used."
+      - name: Runner Usage Enhancement
+        run: |
+          python scripts/qmoi-runner-enhance-usage.py || echo "Usage enhancement fallback used."
 
       - name: Git Sync (no billing-risk)
         run: |

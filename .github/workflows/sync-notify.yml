@@ -1,10 +1,8 @@
-﻿name: Sync Notify
-
-on:
+name: Sync Notify
+'on':
   push:
     branches:
       - sync-notify
-
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -12,3 +10,11 @@ jobs:
       - name: Report sync success
         run: |
           echo "✅ Git Smart Sync succeeded at $(date)" >> $GITHUB_STEP_SUMMARY
+    timeout_minutes: 30
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+env:
+  NODE_VERSION: '18'
+  QMOI_AUTODEV_ENABLED: 'true'

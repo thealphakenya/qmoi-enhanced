@@ -1,10 +1,19 @@
-# .github/workflows/nightly.yml
-on:
+'on':
   schedule:
-    - cron: '0 3 * * *' # 3:00 AM UTC daily
-  workflow_dispatch:
-
+    - cron: 0 3 * * *
+  workflow_dispatch: null
 jobs:
   nightly-build:
     uses: ./.github/workflows/build-and-publish.yml
     secrets: inherit
+    runs-on: ubuntu-latest
+    steps: []
+    timeout_minutes: 30
+name: Nightly
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+env:
+  NODE_VERSION: '18'
+  QMOI_AUTODEV_ENABLED: 'true'

@@ -1,16 +1,30 @@
 name: QMOI Enhanced CI/CD
-
-on: [push, pull_request]
-
+'on':
+  - push
+  - pull_request
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        name: Step 1
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
+        name: Step 2
       - run: npm ci
+        name: Step 3
       - run: npm run fix:all
+        name: Step 4
       - run: npm run test:all
+        name: Step 5
       - run: npm run autotest:ci
+        name: Step 6
+    timeout_minutes: 30
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+env:
+  NODE_VERSION: '18'
+  QMOI_AUTODEV_ENABLED: 'true'

@@ -30,7 +30,6 @@ Qmoi_apps/
 ├── mac/qmoi_ai.dmg
 ├── linux/qmoi_ai.AppImage
 ├── ios/qmoi_ai.ipa
-├── chromebook/qmoi_ai.deb
 ├── raspberrypi/qmoi_ai.img
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
@@ -46,20 +45,21 @@ All finalized apps are automatically published to:
 
 If a download fails, QCity automation will auto-rebuild, fix, and restore the correct link.
 
+
 🧠 QCity Automation Features
 QCity runners orchestrate and manage:
 
 ✅ Build validation across 9 platforms
-
-🔀 Auto-update push to GitHub releases
-
 🔧 Rebuilds for broken links or errors
-
 🧪 Autotest monitoring and recovery
-
 ☁ Sync with qmoiexe.py and auto_updater.py to reflect latest status
 
-Everything is coordinated end-to-end between cloud + local .exe behavior.
+🔒 **Secure Token & Secrets Automation**
+QMOI automatically manages all required GitHub tokens, secrets, and environment variables for cross-account workflows (e.g., thealphakenya/qmoi-enhanced). Tokens are securely stored in Codespaces secrets and never committed to git. QMOI can update, rotate, or add new tokens automatically or with master approval. All workflows and .yml files are validated to run in the correct repo/account, and errors are auto-fixed.
+
+References:
+- [TRACKS.md](./TRACKS.md)
+- [RELEASETRACKS.md](./RELEASETRACKS.md)
 
 🛠 Autotest Build Status
 <!-- QMOI_BUILD_STATUS_START -->
@@ -69,7 +69,6 @@ Platform	Build Status	Test Result
 🤖 Android	✅ SUCCESS	✅ PASS
 🍏 macOS	✅ SUCCESS	✅ PASS
 🐧 Linux	✅ SUCCESS	✅ PASS
-📱 iOS	✅ SUCCESS	✅ PASS
 💻 Chromebook	✅ SUCCESS	✅ PASS
 🡧 Raspberry Pi	✅ SUCCESS	✅ PASS
 🏙 QCity Package	✅ SUCCESS	✅ PASS

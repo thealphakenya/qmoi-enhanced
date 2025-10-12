@@ -1,39 +1,51 @@
 name: QMOI AI Build & Release
-
-on:
+'on':
   push:
-    branches: [main]
-  workflow_dispatch:
-
+    branches:
+      - main
+  workflow_dispatch: null
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [windows, linux, mac, android, ios, chromebook, raspberrypi, smarttv, qcity]
+        platform:
+          - windows
+          - linux
+          - mac
+          - android
+          - ios
+          - chromebook
+          - raspberrypi
+          - smarttv
+          - qcity
     steps:
       - uses: actions/checkout@v4
-
+        name: Step 1
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Install dependencies
         run: |
           npm install
           pip install -r requirements.txt
-
       - name: Build QMOI AI app
         run: python scripts/qmoi-app-builder.py
-
       - name: Upload all artifacts
         uses: actions/upload-artifact@v4
         with:
           name: qmoi-all-apps
           path: Qmoi_apps/
+    timeout_minutes: 30
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+env:
+  NODE_VERSION: '18'
+  QMOI_AUTODEV_ENABLED: 'true'
