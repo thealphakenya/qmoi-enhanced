@@ -50,7 +50,7 @@ build_apps:
     "- main"
   retry:
     "max: 2"
-    when: "[always]
+    when:" "[always]"
 "
 matrix_job:
   "stage: build"
@@ -76,7 +76,7 @@ matrix_job:
     "- main"
   retry:
     "max: 1"
-    when: "[always]
+    when:" "[always]"
 "
 test_apps:
   "stage: test"
@@ -89,7 +89,7 @@ test_apps:
     "- main"
   retry:
     "max: 2"
-    when: "[always]
+    when:" "[always]"
 "
 deploy_apps:
   "stage: deploy"
@@ -107,7 +107,7 @@ deploy_apps:
     "- main"
   retry:
     "max: 2"
-    when: "[always]
+    when:" "[always]"
 "
 documentation_update:
   "stage: deploy"
@@ -120,7 +120,7 @@ documentation_update:
     "- main"
   retry:
     "max: 2"
-    when: "[always]
+    when:" "[always]"
 "
 update_links_only:
   "stage: deploy"
@@ -152,7 +152,7 @@ self_heal_errors:
     "- main"
   retry:
     "max: 3"
-    when: "[always]
+    when:" "[always]"
 "
 badge_update:
   "stage: deploy"
@@ -161,7 +161,7 @@ badge_update:
     - echo "🎯 Updating README.md badges and QMOI status indicators"
     - python3 scripts/qmoi-badge-updater.py
   only:
-    "- main
+   " "- main"
 "
 notify:
   "stage: deploy"
@@ -172,7 +172,7 @@ notify:
     - python3 scripts/qmoi-notifier.py --telegram $QMOI_TELEGRAM_TOKEN $QMOI_TELEGRAM_CHAT
     - python3 scripts/qmoi-notifier.py --discord $QMOI_DISCORD_WEBHOOK
   only:
-    "- main
+   " "- main"
 "
 watchdog_autorun:
   "stage: heal"
@@ -187,5 +187,5 @@ watchdog_autorun:
     - echo "✔️ Watchdog actions complete"
   retry:
     "max: 1"
-    when: "[always]
+    when:" "[always]"
 "

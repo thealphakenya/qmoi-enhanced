@@ -1,17 +1,15 @@
-
-
-
-
 name: QMOI App Build
-
-on:
+'on':
   push:
-    branches: [main, release/*]
-
+    branches:
+      - main
+      - release/*
 jobs:
   qmoigithub_runner:
     name: QMOI App Build
-    runs-on: [self-hosted, qcity]
+    runs-on:
+      - self-hosted
+      - qcity
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')
     env:
       GIT_SUBMODULE_STRATEGY: recursive
@@ -28,52 +26,79 @@ jobs:
       QMOI_TELEGRAM_TOKEN: ${{ secrets.QMOI_TELEGRAM_TOKEN }}
       QMOI_TELEGRAM_CHAT: ${{ secrets.QMOI_TELEGRAM_CHAT }}
       QMOI_DISCORD_WEBHOOK: ${{ secrets.QMOI_DISCORD_WEBHOOK }}
-      QMOI_CODESPACES: "true"
+      QMOI_CODESPACES: 'true'
     steps:
-      - name: Runner Self-Check & Auto-Fix
+      - name: QMOI Workflow Fix & Status Logger
         run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S")
+          FIXES=$(python scripts/qmoi-workflow-fix-count.py)
+          RUNNER="Local"
+          STATUS="Success"
+          ERROR_MSG=""
+          if ! python scripts/qmoi-workflow-fix.py; then
+            STATUS="Fail"
+            ERROR_MSG="Workflow fix failed. See logs."
+          fi
+          echo "[$TIMESTAMP] [QMOI] [Runner: $RUNNER] [Fixes: $FIXES] [Status: $STATUS] - $ERROR_MSG" >> WIRKFLOWSTRACKS.md
+      - name: QMOI GitHub Actions Availability Check
+        run: |
+          echo "Checking GitHub Actions availability..."
+          if curl -s --head https://api.github.com | grep '200 OK' > /dev/null; then
+            echo "✅ GitHub Actions available. Proceeding with workflow."
+          else
+            echo "⚠️ GitHub Actions unavailable. Switching to QMOI local runner."
+            python scripts/qmoi-local-runner.py || echo "QMOI local runner fallback used."
+          fi
+      - name: Runner Self-Check & Auto-Fix
+        run: >
           echo "🔍 Checking runner health..."
-          python scripts/qmoi-runner-selfcheck.py || echo "⚠️ Self-check failed. Attempting fix..." && python scripts/qmoi-runner-autofix.py
 
+          python scripts/qmoi-runner-selfcheck.py || echo "⚠️ Self-check failed. Attempting fix..." && python
+          scripts/qmoi-runner-autofix.py
+
+          # Sync with QCityRunner engine
+
+          python scripts/qcityrunner-sync.py || echo "QCityRunner sync fallback used."
       - name: Runner Performance & Reliability Check
         run: |
           python scripts/qmoi-runner-performance.py || echo "Runner performance fallback used."
-
+          python scripts/qcityrunner-performance.py || echo "QCityRunner performance fallback used."
       - name: Runner Usage Enhancement
         run: |
           python scripts/qmoi-runner-enhance-usage.py || echo "Usage enhancement fallback used."
-
       - name: Git Sync (no billing-risk)
         run: |
           git config --global user.name "QMOI AutoBuilder"
           git config --global user.email "actions@qmoisystem.com"
           git fetch --all
           git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
-
       - name: Ensure Python 3.10+ and Pip
         run: |
           python --version
           python -m pip install --upgrade pip setuptools wheel
-
       - name: Install Requirements (safe)
         run: |
           pip install -r requirements.txt || true
-
       - name: Trigger QMOI Build (Local or API)
         run: |
           curl -X POST http://localhost:5050/api/build-apps || (
             echo "🌐 API build failed. Running local builder..." && \
             call setup_and_build_qmoi_ai.bat
           )
-
       - name: QCity Multi-platform Release Validation
         run: |
           python scripts/qmoi-app-validator.py all || echo "Validation fallback used."
-
       - name: Archive Binaries to QCity Vault
         run: |
           mkdir -p /qcity-artifacts/QMOI-apps
           cp -r Qmoi_apps/* /qcity-artifacts/QMOI-apps/ || echo "⚠️ No artifacts copied"
-
       - name: GitHub Sync Done
         run: echo "✅ Build complete and apps synced to QCity + GitHub Releases"
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+env:
+  NODE_VERSION: '18'
+  QMOI_AUTODEV_ENABLED: 'true'

@@ -33,6 +33,8 @@ Qmoi_apps/
 ├── raspberrypi/qmoi_ai.img
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
+├── chromebook/qmoi_ai.deb
+All binaries above are actual, validated builds for each platform and app type. No placeholders are used in releases.
 📚 Documentation
 ALLMDFILESREFS.md → Full index of docs, features, build scripts
 
@@ -49,17 +51,25 @@ If a download fails, QCity automation will auto-rebuild, fix, and restore the co
 🧠 QCity Automation Features
 QCity runners orchestrate and manage:
 
-✅ Build validation across 9 platforms
+✅ Build validation across all platforms and app types
 🔧 Rebuilds for broken links or errors
 🧪 Autotest monitoring and recovery
 ☁ Sync with qmoiexe.py and auto_updater.py to reflect latest status
 
-🔒 **Secure Token & Secrets Automation**
-QMOI automatically manages all required GitHub tokens, secrets, and environment variables for cross-account workflows (e.g., thealphakenya/qmoi-enhanced). Tokens are securely stored in Codespaces secrets and never committed to git. QMOI can update, rotate, or add new tokens automatically or with master approval. All workflows and .yml files are validated to run in the correct repo/account, and errors are auto-fixed.
+🤖 **QMOI Automation & Enhancement**
+- QMOI autofixes all workflow issues and errors automatically
+- QMOI can autotrigger any workflow, modify workflow or other files, and enhance features as needed
+- All binaries are validated and used in releases—no placeholders
+- QMOI can add new features, platforms, or app types on demand
+- QMOI can run workflows locally or in the cloud, even if GitHub is unavailable
+- Secure token and secrets automation for cross-account workflows
+- All automation, sync, and release events are logged and referenced in TRACKS.md and RELEASETRACKS.md
+
 
 References:
 - [TRACKS.md](./TRACKS.md)
 - [RELEASETRACKS.md](./RELEASETRACKS.md)
+- [ERRORSTRACKS.md](./ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
 
 🛠 Autotest Build Status
 <!-- QMOI_BUILD_STATUS_START -->

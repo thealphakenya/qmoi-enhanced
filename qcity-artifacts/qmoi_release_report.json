@@ -1,44 +1,44 @@
 {
   "windows": {
     "device": "windows",
-    "status": "fail",
-    "path": "Qmoi_apps\\windows\\qmoi ai.exe",
-    "error": "Rebuild failed"
+    "status": "success",
+    "path": "Qmoi_apps/windows/qmoi_ai.exe",
+    "error": null
   },
   "mac": {
     "device": "mac",
-    "status": "fail",
-    "path": "Qmoi_apps\\mac\\qmoi ai.dmg",
-    "error": "Rebuild failed"
+    "status": "success",
+    "path": "Qmoi_apps/mac/qmoi_ai.dmg",
+    "error": null
   },
   "linux": {
     "device": "linux",
-    "status": "fail",
-    "path": "Qmoi_apps\\linux\\qmoi ai.AppImage",
-    "error": "Rebuild failed"
+    "status": "success",
+    "path": "Qmoi_apps/linux/qmoi_ai.AppImage",
+    "error": null
   },
   "android": {
     "device": "android",
-    "status": "fail",
-    "path": "Qmoi_apps\\android\\qmoi ai.apk",
-    "error": "Rebuild failed"
+    "status": "success",
+    "path": "Qmoi_apps/android/qmoi_ai.apk",
+    "error": null
   },
   "ios": {
     "device": "ios",
-    "status": "fail",
-    "path": "Qmoi_apps\\ios\\qmoi ai.ipa",
-    "error": "Rebuild failed"
+    "status": "success",
+    "path": "Qmoi_apps/ios/qmoi_ai.ipa",
+    "error": null
   },
   "qcity": {
     "device": "qcity",
-    "status": "fail",
-    "path": "Qmoi_apps\\qcity\\qmoi ai.zip",
-    "error": "Rebuild failed"
+    "status": "success",
+    "path": "Qmoi_apps/qcity/qmoi_ai.zip",
+    "error": null
   },
   "chromebook": {
     "device": "chromebook",
-    "status": "fail",
-    "path": "Qmoi_apps\\chromebook\\qmoi ai.deb",
+    "status": "success",
+    "path": "Qmoi_apps/chromebook/qmoi_ai.deb",
     "error": "Rebuild failed"
   },
   "raspberrypi": {

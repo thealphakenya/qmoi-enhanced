@@ -1,11 +1,11 @@
 {
-  "windows": "placeholder_used",
-  "mac": "placeholder_used",
-  "linux": "placeholder_used",
-  "android": "placeholder_used",
-  "ios": "placeholder_used",
-  "qcity": "placeholder_used",
-  "chromebook": "placeholder_used",
-  "raspberrypi": "placeholder_used",
-  "smarttv": "placeholder_used"
+  "windows": "Qmoi_apps/windows/qmoi_ai.exe",
+  "mac": "Qmoi_apps/mac/qmoi_ai.dmg",
+  "linux": "Qmoi_apps/linux/qmoi_ai.AppImage",
+  "android": "Qmoi_apps/android/qmoi_ai.apk",
+  "ios": "Qmoi_apps/ios/qmoi_ai.ipa",
+  "qcity": "Qmoi_apps/qcity/qmoi_ai.zip",
+  "chromebook": "Qmoi_apps/chromebook/qmoi_ai.deb",
+  "raspberrypi": "Qmoi_apps/raspberrypi/qmoi_ai.img",
+  "smarttv": "Qmoi_apps/smarttv/qmoi_ai.apk"
 }

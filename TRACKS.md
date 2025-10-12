@@ -30,7 +30,7 @@ This file is a real-time log of all QMOI actions, tracks, fixes, enhancements, r
 	- `[2025-10-07 10:03:00] [ERROR] [Sync] - Failed to sync ALLMDFILESREFS.md to Alpha-Q-ai.`
 	- `[2025-10-07 10:04:00] [DEBUG] [Memory] - QMOI memory detected new .md file addition.`
 - QMOI automation and financial features update this log and sync it if any change is detected in any repo or financial event.
-- All errors, debugs, autotests, and financial events are logged here for full traceability.
+- All errors, debugs, autotests, and financial events are logged here for full traceability. For detailed error/fix logs, see [ERRORSTRACKS.md](./ERRORSTRACKS.md).
 - TRACKS.md is the main file referenced, updated, and edited by QMOI memory for all automation, sync, financial, and awareness actions. It is auto-updated in real time with exact time and date for every event.
 
 ---
