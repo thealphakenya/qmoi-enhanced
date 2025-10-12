@@ -1,0 +1,4684 @@
+nohup: ignoring input
+QMOI Workflow Manager started. Monitoring workflows in real time.
+▶️ Running npm.yml...
+✅ npm.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+--------------------------
+
+▶️ Running ci.yml...
+✅ ci.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+--------------------------
+
+▶️ Running nightly.yml...
+✅ nightly.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+--------------------------
+
+▶️ Running qmoi-app-build.yml...
+✅ qmoi-app-build.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+--------------------------
+
+▶️ Running release.yml...
+✅ release.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+--------------------------
+
+▶️ Running github-actions-qmoi-build.yml...
+✅ github-actions-qmoi-build.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+--------------------------
+
+▶️ Running update-readme-cli.yml...
+✅ update-readme-cli.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+--------------------------
+
+▶️ Running build.yml...
+✅ build.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+--------------------------
+
+▶️ Running q.yml...
+✅ q.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+--------------------------
+
+▶️ Running qmoi-ci.yml...
+✅ qmoi-ci.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+--------------------------
+
+▶️ Running sync-notify.yml...
+✅ sync-notify.yml succeeded.
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+🛑 All GitHub workflows will be skipped (success marker set).
+🎉 All workflows succeeded in QCity runners. Sleeping...
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success
+ci.yml: success
+nightly.yml: success
+qmoi-app-build.yml: success
+release.yml: success
+github-actions-qmoi-build.yml: success
+update-readme-cli.yml: success
+build.yml: success
+q.yml: success
+qmoi-ci.yml: success
+sync-notify.yml: success
+--------------------------
+
+
+--- QMOI Workflow Stats ---
+npm.yml: success

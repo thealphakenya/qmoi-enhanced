@@ -1,0 +1,44 @@
+full enhancement plan:
+1. Qnews Backend & UI
+Backend:
+Create a new API route (e.g., app/api/qnews/route.ts) for:
+Fetching aggregated news (from RSS, APIs, QMOI activities)
+Submitting, approving, editing, and scheduling news
+Posting news to WhatsApp, Telegram, and other platforms
+UI:
+Add a new Qnews dashboard component in QCity (e.g., src/components/q-city/QNewsDashboard.tsx)
+List, approve, edit, and schedule news
+Analytics: post history, engagement, etc.
+Master-only controls
+2. QApiKeyManager
+Backend & Logic:
+Generate 20 secure Q API keys, save in keys/
+Add backend logic for API key creation, revocation, and usage tracking
+UI:
+Add a QApiKeyManager dashboard in QCity (master-only)
+View, control, and revoke keys
+See usage stats and logs
+Docs:
+Create QMOIAPIKEYREADME.md with setup and usage instructions
+3. Account Automation & Security
+Implement modular automation for account creation, login, and verification across major platforms
+Integrate with rovicviccy@gmail.com for email-based verifications
+Enhance QMOI’s shelling, VPN, and security features
+4. WhatsApp & Social Automation
+Automate daily status/posts on WhatsApp, Telegram, and other platforms
+Enhance contact management, auto-tagging, and info gathering
+Ensure QMOI can access all platform features, including communities
+5. Earning Features
+Expand earning strategies and automate monitoring/self-healing
+Add earning analytics to the UI
+6. Document Backup & Retrieval
+Enhance backup logic for all document types to GDrive, S3, and HuggingFace
+Add document management UI for upload, search, and restore
+7. Settings & Usability
+Redesign settings for simplicity and automation control
+Add “master mode” for advanced controls
+8. Documentation & UI
+Update all relevant documentation and add/expand UI components for new features
+9. Further Enhancements
+Strengthen self-healing, monitoring, and backup redundancy
+Ensure privacy, compliance, and robust error handling throughout

@@ -1,0 +1,206 @@
+qmoi-placeholder-scan-report.txt
+cloud-sync/
+*.log
+*.tmp
+*.bak
+node_modules/
+*.pyc
+__pycache__/
+*.sqlite
+*.db
+*.zip
+*.tar.gz
+*.img
+*.exe
+*.dmg
+*.AppImage
+*.ipa
+*.deb
+*.apk
+*.mp4
+*.mp3
+*.wav
+*.mov
+*.avi
+*.mkv
+*.iso
+*.bin
+*.7z
+*.rar
+*.gz
+*.tar
+*.swp
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env*
+.env.production
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts.env 
+
+# Ignore keys directory for sensitive API/private keys
+keys/
+
+# Auto-generated stubs and watcher logs
+*_auto_stub.*
+watcher.log
+temp_*
+
+# Build artifacts and outputs
+/artifacts/
+/Qmoi_apps/
+/dist/
+/build/
+/out/
+
+# Python build artifacts
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and temporary files
+*.log
+logs/
+*.tmp
+*.temp
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Git lock files
+.git/index.lock
+.git/refs/heads/*.lock
+
+# Build reports and coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Test results
+test-results/
+junit.xml
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+.env.production
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Temporary folders
+tmp/
+temp/
+qmoi-placeholder-scan-report.txt

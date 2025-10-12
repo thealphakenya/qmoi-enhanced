@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QMOI Space - Advanced AI Platform with voice control, vision, gaming, and revenue generation">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="QMOI Space">
+    
+    <title>QMOI Space - Advanced AI Platform</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/js/qmoi-core.js" as="script">
+    <link rel="preload" href="/css/main.css" as="style">
+    
+    <!-- Meta tags for PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="QMOI Space">
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="QMOI Space - Advanced AI Platform">
+    <meta property="og:description" content="Complete QMOI experience with AI, gaming, revenue generation, and hands-free operation">
+    <meta property="og:image" content="/screenshots/desktop-1.png">
+    <meta property="og:url" content="https://qmoi.space">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="QMOI Space - Advanced AI Platform">
+    <meta name="twitter:description" content="Complete QMOI experience with AI, gaming, revenue generation, and hands-free operation">
+    <meta name="twitter:image" content="/screenshots/desktop-1.png">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="qmoi-logo">
+                <div class="logo-animation">
+                    <span class="qmoi-q">Q</span>
+                    <span class="qmoi-moi">MOI</span>
+                </div>
+            </div>
+            <div class="loading-text">Initializing QMOI Space...</div>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="loading-status">Loading AI Core...</div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="app" class="app hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="qmoi-brand">
+                    <span class="brand-icon">Q</span>
+                    <span class="brand-text">QMOI Space</span>
+                </div>
+                <div class="connection-status">
+                    <div class="status-indicator" id="connection-status"></div>
+                    <span class="status-text" id="connection-text">Connecting...</span>
+                </div>
+            </div>
+            
+            <div class="header-center">
+                <div class="voice-control-toggle" id="voice-toggle">
+                    <div class="toggle-icon">🎤</div>
+                    <div class="toggle-text">Voice</div>
+                    <div class="toggle-indicator"></div>
+                </div>
+                
+                <div class="camera-toggle" id="camera-toggle">
+                    <div class="toggle-icon">📷</div>
+                    <div class="toggle-text">Vision</div>
+                    <div class="toggle-indicator"></div>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="avatar-selector" id="avatar-selector">
+                    <div class="avatar-preview" id="avatar-preview">
+                        <img src="/avatars/qmoi-default.png" alt="QMOI Avatar" class="avatar-image">
+                    </div>
+                    <div class="avatar-menu" id="avatar-menu">
+                        <div class="avatar-option" data-avatar="qmoi-default">
+                            <img src="/avatars/qmoi-default.png" alt="Default QMOI">
+                            <span>Default QMOI</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="qmoi-gaming">
+                            <img src="/avatars/qmoi-gaming.png" alt="Gaming QMOI">
+                            <span>Gaming QMOI</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="qmoi-business">
+                            <img src="/avatars/qmoi-business.png" alt="Business QMOI">
+                            <span>Business QMOI</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="qmoi-creative">
+                            <img src="/avatars/qmoi-creative.png" alt="Creative QMOI">
+                            <span>Creative QMOI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="theme-toggle" id="theme-toggle">
+                    <div class="toggle-icon">🌙</div>
+                </div>
+                
+                <div class="settings-toggle" id="settings-toggle">
+                    <div class="toggle-icon">⚙️</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <div class="nav-item active" data-section="dashboard">
+                    <div class="nav-icon">📊</div>
+                    <div class="nav-text">Dashboard</div>
+                </div>
+                <div class="nav-item" data-section="chat">
+                    <div class="nav-icon">💬</div>
+                    <div class="nav-text">AI Chat</div>
+                </div>
+                <div class="nav-item" data-section="gaming">
+                    <div class="nav-icon">🎮</div>
+                    <div class="nav-text">Gaming</div>
+                </div>
+                <div class="nav-item" data-section="revenue">
+                    <div class="nav-icon">💰</div>
+                    <div class="nav-text">Revenue</div>
+                </div>
+                <div class="nav-item" data-section="files">
+                    <div class="nav-icon">📁</div>
+                    <div class="nav-text">Files</div>
+                </div>
+                <div class="nav-item" data-section="analytics">
+                    <div class="nav-icon">📈</div>
+                    <div class="nav-text">Analytics</div>
+                </div>
+            </nav>
+
+            <!-- Content Sections -->
+            <div class="content-sections">
+                <!-- Dashboard Section -->
+                <section id="dashboard-section" class="content-section active">
+                    <div class="section-header">
+                        <h1>QMOI Space Dashboard</h1>
+                        <div class="section-actions">
+                            <button class="action-btn" id="refresh-dashboard">🔄 Refresh</button>
+                            <button class="action-btn" id="export-data">📊 Export</button>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>System Status</h3>
+                                <div class="status-indicator online"></div>
+                            </div>
+                            <div class="card-content">
+                                <div class="status-item">
+                                    <span class="status-label">AI Core:</span>
+                                    <span class="status-value" id="ai-status">Active</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Voice:</span>
+                                    <span class="status-value" id="voice-status">Ready</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Vision:</span>
+                                    <span class="status-value" id="vision-status">Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Revenue Today</h3>
+                                <div class="trend-indicator positive">↗</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="revenue-amount" id="revenue-today">$0.00</div>
+                                <div class="revenue-change" id="revenue-change">+0.00%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Active Projects</h3>
+                                <div class="count-badge" id="projects-count">0</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="project-list" id="project-list">
+                                    <div class="project-item">
+                                        <span class="project-name">No active projects</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Recent Activity</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="activity-list" id="activity-list">
+                                    <div class="activity-item">
+                                        <span class="activity-time">Just now</span>
+                                        <span class="activity-text">QMOI Space initialized</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chat Section -->
+                <section id="chat-section" class="content-section">
+                    <div class="section-header">
+                        <h1>AI Chat Interface</h1>
+                        <div class="section-actions">
+                            <button class="action-btn" id="clear-chat">🗑️ Clear</button>
+                            <button class="action-btn" id="export-chat">💾 Export</button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message qmoi-message">
+                                <div class="message-avatar">
+                                    <img src="/avatars/qmoi-default.png" alt="QMOI">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-text">Hello! I'm QMOI, your AI assistant. How can I help you today?</div>
+                                    <div class="message-time">Just now</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <div class="input-actions">
+                                <button class="input-action-btn" id="voice-input-btn" title="Voice Input">
+                                    <span class="btn-icon">🎤</span>
+                                </button>
+                                <button class="input-action-btn" id="file-input-btn" title="Upload File">
+                                    <span class="btn-icon">📎</span>
+                                </button>
+                                <button class="input-action-btn" id="camera-input-btn" title="Camera">
+                                    <span class="btn-icon">📷</span>
+                                </button>
+                            </div>
+                            
+                            <div class="chat-input-wrapper">
+                                <textarea 
+                                    id="chat-input" 
+                                    placeholder="Type your message or use voice input..."
+                                    rows="1"
+                                ></textarea>
+                                <button class="send-btn" id="send-btn">
+                                    <span class="btn-icon">➤</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Gaming Section -->
+                <section id="gaming-section" class="content-section">
+                    <div class="section-header">
+                        <h1>Gaming Hub</h1>
+                        <div class="section-actions">
+                            <button class="action-btn" id="refresh-games">🔄 Refresh</button>
+                            <button class="action-btn" id="create-game">➕ Create</button>
+                        </div>
+                    </div>
+                    
+                    <div class="gaming-grid">
+                        <div class="game-card">
+                            <div class="game-preview">
+                                <img src="/games/racing-preview.jpg" alt="Racing Game">
+                                <div class="game-overlay">
+                                    <button class="play-btn">▶️ Play</button>
+                                </div>
+                            </div>
+                            <div class="game-info">
+                                <h3>QMOI Racing</h3>
+                                <p>High-speed racing with AI opponents</p>
+                                <div class="game-stats">
+                                    <span class="stat">👥 0 players</span>
+                                    <span class="stat">⭐ 4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-preview">
+                                <img src="/games/strategy-preview.jpg" alt="Strategy Game">
+                                <div class="game-overlay">
+                                    <button class="play-btn">▶️ Play</button>
+                                </div>
+                            </div>
+                            <div class="game-info">
+                                <h3>QMOI Strategy</h3>
+                                <p>Real-time strategy with AI commanders</p>
+                                <div class="game-stats">
+                                    <span class="stat">👥 0 players</span>
+                                    <span class="stat">⭐ 4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Revenue Section -->
+                <section id="revenue-section" class="content-section">
+                    <div class="section-header">
+                        <h1>Revenue Dashboard</h1>
+                        <div class="section-actions">
+                            <button class="action-btn" id="refresh-revenue">🔄 Refresh</button>
+                            <button class="action-btn" id="withdraw-funds">💸 Withdraw</button>
+                        </div>
+                    </div>
+                    
+                    <div class="revenue-overview">
+                        <div class="revenue-card">
+                            <h3>Today's Revenue</h3>
+                            <div class="revenue-amount large" id="today-revenue">$0.00</div>
+                            <div class="revenue-change" id="today-change">+0.00%</div>
+                        </div>
+                        
+                        <div class="revenue-card">
+                            <h3>This Month</h3>
+                            <div class="revenue-amount large" id="month-revenue">$0.00</div>
+                            <div class="revenue-change" id="month-change">+0.00%</div>
+                        </div>
+                        
+                        <div class="revenue-card">
+                            <h3>Total Revenue</h3>
+                            <div class="revenue-amount large" id="total-revenue">$0.00</div>
+                            <div class="revenue-change" id="total-change">+0.00%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="revenue-chart">
+                        <canvas id="revenue-chart-canvas"></canvas>
+                    </div>
+                </section>
+
+                <!-- Files Section -->
+                <section id="files-section" class="content-section">
+                    <div class="section-header">
+                        <h1>File Manager</h1>
+                        <div class="section-actions">
+                            <button class="action-btn" id="upload-files">📤 Upload</button>
+                            <button class="action-btn" id="create-folder">📁 New Folder</button>
+                        </div>
+                    </div>
+                    
+                    <div class="file-manager">
+                        <div class="file-toolbar">
+                            <div class="file-actions">
+                                <button class="file-action-btn" id="select-all">☑️ Select All</button>
+                                <button class="file-action-btn" id="delete-selected">🗑️ Delete</button>
+                                <button class="file-action-btn" id="download-selected">⬇️ Download</button>
+                            </div>
+                            <div class="file-view-toggle">
+                                <button class="view-btn active" data-view="grid">⊞</button>
+                                <button class="view-btn" data-view="list">☰</button>
+                            </div>
+                        </div>
+                        
+                        <div class="file-grid" id="file-grid">
+                            <div class="file-item">
+                                <div class="file-icon">📁</div>
+                                <div class="file-name">Documents</div>
+                                <div class="file-size">-</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon">📁</div>
+                                <div class="file-name">Images</div>
+                                <div class="file-size">-</div>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon">📁</div>
+                                <div class="file-name">Videos</div>
+                                <div class="file-size">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Analytics Section -->
+                <section id="analytics-section" class="content-section">
+                    <div class="section-header">
+                        <h1>Analytics Dashboard</h1>
+                        <div class="section-actions">
+                            <button class="action-btn" id="refresh-analytics">🔄 Refresh</button>
+                            <button class="action-btn" id="export-analytics">📊 Export</button>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>User Engagement</h3>
+                            <canvas id="engagement-chart"></canvas>
+                        </div>
+                        
+                        <div class="analytics-card">
+                            <h3>Revenue Sources</h3>
+                            <canvas id="revenue-sources-chart"></canvas>
+                        </div>
+                        
+                        <div class="analytics-card">
+                            <h3>Performance Metrics</h3>
+                            <div class="metrics-list">
+                                <div class="metric-item">
+                                    <span class="metric-label">Response Time:</span>
+                                    <span class="metric-value" id="response-time">0ms</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Uptime:</span>
+                                    <span class="metric-value" id="uptime">100%</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Error Rate:</span>
+                                    <span class="metric-value" id="error-rate">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Voice Control Overlay -->
+        <div id="voice-overlay" class="voice-overlay hidden">
+            <div class="voice-content">
+                <div class="voice-animation">
+                    <div class="voice-circle"></div>
+                    <div class="voice-pulse"></div>
+                </div>
+                <div class="voice-text" id="voice-text">Listening...</div>
+                <div class="voice-actions">
+                    <button class="voice-btn" id="voice-stop">Stop</button>
+                    <button class="voice-btn" id="voice-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Camera Overlay -->
+        <div id="camera-overlay" class="camera-overlay hidden">
+            <div class="camera-content">
+                <div class="camera-preview">
+                    <video id="camera-video" autoplay muted></video>
+                    <canvas id="camera-canvas" hidden></canvas>
+                </div>
+                <div class="camera-controls">
+                    <button class="camera-btn" id="camera-capture">📷 Capture</button>
+                    <button class="camera-btn" id="camera-stop">⏹️ Stop</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- File Upload Modal -->
+        <div id="file-upload-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Upload Files</h3>
+                    <button class="modal-close" id="file-upload-close">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-icon">📁</div>
+                        <div class="upload-text">Drag and drop files here or click to browse</div>
+                        <input type="file" id="file-input" multiple hidden>
+                    </div>
+                    <div class="upload-progress" id="upload-progress" hidden>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="progress-text" id="progress-text">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Settings</h3>
+                    <button class="modal-close" id="settings-close">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="settings-section">
+                        <h4>Voice Settings</h4>
+                        <div class="setting-item">
+                            <label>Voice Language</label>
+                            <select id="voice-language">
+                                <option value="en">English</option>
+                                <option value="sw">Kiswahili</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>Voice Speed</label>
+                            <input type="range" id="voice-speed" min="0.5" max="2" step="0.1" value="1">
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4>Display Settings</h4>
+                        <div class="setting-item">
+                            <label>Theme</label>
+                            <select id="theme-select">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="auto">Auto</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div id="notifications" class="notifications"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/qmoi-core.js"></script>
+    <script src="/js/voice-control.js"></script>
+    <script src="/js/camera-integration.js"></script>
+    <script src="/js/file-handler.js"></script>
+    <script src="/js/avatar-system.js"></script>
+    <script src="/js/auto-update.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
+

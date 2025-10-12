@@ -1,0 +1,246 @@
+{
+  "test_timeout": 300,
+  "max_retries": 3,
+  "parallel_tests": 4,
+  "coverage_threshold": 80,
+  "performance_threshold": 1000,
+  "log_level": "INFO",
+  "test_categories": {
+    "unit_tests": {
+      "enabled": true,
+      "timeout": 60,
+      "retries": 2,
+      "modules": [
+        "tests.unit.test_error_fixing",
+        "tests.unit.test_multi_user_session",
+        "tests.unit.test_ai_components"
+      ]
+    },
+    "integration_tests": {
+      "enabled": true,
+      "timeout": 120,
+      "retries": 2,
+      "modules": [
+        "tests.integration.test_error_fixing_integration",
+        "tests.integration.test_session_integration",
+        "tests.integration.test_ai_integration"
+      ]
+    },
+    "e2e_tests": {
+      "enabled": true,
+      "timeout": 300,
+      "retries": 1,
+      "modules": [
+        "tests.e2e.test_full_workflow",
+        "tests.e2e.test_performance"
+      ]
+    },
+    "performance_tests": {
+      "enabled": true,
+      "timeout": 600,
+      "retries": 1,
+      "thresholds": {
+        "response_time": 1000,
+        "memory_usage": 512,
+        "cpu_usage": 80
+      }
+    }
+  },
+  "error_fixing": {
+    "auto_fix_enabled": true,
+    "fallback_enabled": true,
+    "notification_enabled": true,
+    "log_level": "DEBUG",
+    "test_scenarios": [
+      "syntax_errors",
+      "runtime_errors",
+      "import_errors",
+      "logical_errors",
+      "performance_issues",
+      "memory_leaks",
+      "deadlocks",
+      "race_conditions"
+    ]
+  },
+  "multi_user": {
+    "max_users_per_session": 100,
+    "max_groups_per_session": 50,
+    "session_timeout": 3600,
+    "cleanup_interval": 300,
+    "test_scenarios": [
+      "individual_users",
+      "group_collaboration",
+      "class_environment",
+      "team_work",
+      "concurrent_access",
+      "session_persistence"
+    ]
+  },
+  "ai_components": {
+    "model_timeout": 30,
+    "max_concurrent_requests": 10,
+    "fallback_models": [
+      "gpt-3.5-turbo",
+      "gpt-4",
+      "claude-3"
+    ],
+    "test_scenarios": [
+      "code_generation",
+      "error_analysis",
+      "code_review",
+      "documentation",
+      "testing",
+      "optimization"
+    ]
+  },
+  "reporting": {
+    "generate_json": true,
+    "generate_html": true,
+    "generate_summary": true,
+    "include_performance_metrics": true,
+    "include_coverage_data": true,
+    "save_logs": true,
+    "notify_on_failure": true
+  },
+  "notifications": {
+    "email": {
+      "enabled": false,
+      "recipients": [],
+      "smtp_server": "",
+      "smtp_port": 587
+    },
+    "slack": {
+      "enabled": false,
+      "webhook_url": "",
+      "channel": "#test-results"
+    },
+    "discord": {
+      "enabled": false,
+      "webhook_url": "",
+      "channel": "test-results"
+    }
+  },
+  "environments": {
+    "development": {
+      "database_url": "sqlite:///test_dev.db",
+      "api_base_url": "http://localhost:3000",
+      "log_level": "DEBUG"
+    },
+    "staging": {
+      "database_url": "postgresql://test:test@localhost:5432/test_staging",
+      "api_base_url": "https://staging.alpha-q-ai.com",
+      "log_level": "INFO"
+    },
+    "production": {
+      "database_url": "postgresql://prod:prod@prod-db:5432/alpha_q_ai",
+      "api_base_url": "https://alpha-q-ai.com",
+      "log_level": "WARNING"
+    }
+  },
+  "security": {
+    "test_credentials": {
+      "master_user": {
+        "id": "master_001",
+        "role": "master",
+        "permissions": [
+          "all"
+        ]
+      },
+      "admin_user": {
+        "id": "admin_001",
+        "role": "admin",
+        "permissions": [
+          "manage_users",
+          "manage_groups",
+          "view_logs"
+        ]
+      },
+      "regular_user": {
+        "id": "user_001",
+        "role": "user",
+        "permissions": [
+          "basic_access"
+        ]
+      },
+      "guest_user": {
+        "id": "guest_001",
+        "role": "guest",
+        "permissions": [
+          "read_only"
+        ]
+      }
+    },
+    "test_api_keys": {
+      "valid_key": "test_api_key_12345",
+      "invalid_key": "invalid_key_67890",
+      "expired_key": "expired_key_11111"
+    }
+  },
+  "performance_benchmarks": {
+    "response_time": {
+      "excellent": 100,
+      "good": 500,
+      "acceptable": 1000,
+      "poor": 2000
+    },
+    "throughput": {
+      "requests_per_second": {
+        "excellent": 1000,
+        "good": 500,
+        "acceptable": 100,
+        "poor": 50
+      }
+    },
+    "resource_usage": {
+      "memory_mb": {
+        "excellent": 100,
+        "good": 256,
+        "acceptable": 512,
+        "poor": 1024
+      },
+      "cpu_percent": {
+        "excellent": 20,
+        "good": 40,
+        "acceptable": 60,
+        "poor": 80
+      }
+    }
+  },
+  "test_data": {
+    "sample_files": {
+      "python": [
+        "tests/data/sample_code.py",
+        "tests/data/broken_code.py",
+        "tests/data/complex_code.py"
+      ],
+      "javascript": [
+        "tests/data/sample_code.js",
+        "tests/data/broken_code.js",
+        "tests/data/complex_code.js"
+      ],
+      "typescript": [
+        "tests/data/sample_code.ts",
+        "tests/data/broken_code.ts",
+        "tests/data/complex_code.ts"
+      ]
+    },
+    "sample_projects": [
+      "tests/data/projects/simple_project",
+      "tests/data/projects/complex_project",
+      "tests/data/projects/broken_project"
+    ],
+    "sample_datasets": [
+      "tests/data/datasets/small_dataset.csv",
+      "tests/data/datasets/medium_dataset.csv",
+      "tests/data/datasets/large_dataset.csv"
+    ]
+  },
+  "cleanup": {
+    "auto_cleanup": true,
+    "cleanup_interval": 3600,
+    "max_log_age_days": 7,
+    "max_report_age_days": 30,
+    "cleanup_temp_files": true,
+    "cleanup_test_databases": true
+  }
+}
