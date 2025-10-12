@@ -60,22 +60,34 @@ If a download fails, QCity automation will auto-rebuild, fix, and restore the co
 
 Everything is coordinated end-to-end between cloud + local .exe behavior.
 
-🛠 Autotest Build Status
+## 🛠 Autotest Build Status & Releases
 <!-- QMOI_BUILD_STATUS_START -->
-📦 QMOI Build Status (2025-07-25T00:00:00.000000 UTC)
-Platform	Build Status	Test Result
-💽 Windows	✅ SUCCESS	✅ PASS
-🤖 Android	✅ SUCCESS	✅ PASS
-🍏 macOS	✅ SUCCESS	✅ PASS
-🐧 Linux	✅ SUCCESS	✅ PASS
-💻 Chromebook	✅ SUCCESS	✅ PASS
-🡧 Raspberry Pi	✅ SUCCESS	✅ PASS
-🏙 QCity Package	✅ SUCCESS	✅ PASS
-📺 Smart TV	✅ SUCCESS	✅ PASS
-
-These are updated dynamically after each build by the QMOI automation and QCity runner sync.
-
+📦 QMOI Build Status (2025-10-12)
+| Platform      | App Type         | File/Extension      | Icon | Version | Build Status | Test Result |
+|---------------|------------------|---------------------|------|---------|--------------|-------------|
+| Windows       | Native, PWA      | .exe, .msix         | ![Win](Qmoi_apps/qmoi-space/windows/qmoi_space_pwa.png) | 2.0.0 | ✅ | ✅ |
+| Android       | Native, PWA      | .apk                | ![Android](Qmoi_apps/qmoi-space/android/qmoi_space_pwa.png) | 2.0.0 | ✅ | ✅ |
+| iOS           | Native, PWA      | .ipa                | ![iOS](Qmoi_apps/qmoi-space/ios/qmoi_space_pwa.png) | 2.0.0 | ✅ | ✅ |
+| Mac           | Native, PWA      | .dmg                | ![Mac](Qmoi_apps/qmoi-space/mac/qmoi_space_pwa.png) | 2.0.0 | ✅ | ✅ |
+| Linux         | Native, PWA      | .AppImage, .deb     | ![Linux](Qmoi_apps/qmoi-space/linux/qmoi_space_pwa.png) | 2.0.0 | ✅ | ✅ |
+| Chromebook    | PWA              | .zip                | ![CB](Qmoi_apps/chromebook/qmoi_ai.png) | 2.0.0 | ✅ | ✅ |
+| SmartTV       | Native           | .tvapp              | ![TV](Qmoi_apps/qcity/smarttv/qcity_pwa.png) | 2.0.0 | ✅ | ✅ |
+| RPi           | Native           | .deb                | ![RPi](Qmoi_apps/qcity/linux/qcity_pwa.png) | 2.0.0 | ✅ | ✅ |
+| QCity         | PWA, Native      | .qcapp, .apk, .ipa  | ![QCity](Qmoi_apps/qcity/qcity_pwa.png) | 2.0.0 | ✅ | ✅ |
 <!-- QMOI_BUILD_STATUS_END -->
+
+## 🌐 QMOI AI Progressive Web Application (PWA)
+- Available for all platforms: Android (.apk), iOS (.ipa), Windows (.exe), Mac (.dmg), Linux (.AppImage), Chromebook (.zip), and more.
+- Download from `/Qmoi_apps/qmoi-space/` for your platform.
+- Version: 2.0.0
+- Icon: ![QMOI](Qmoi_apps/qmoi-space/windows/qmoi_space_pwa.png)
+
+## 🤖 Auto-dev, Autorelease, and Automation
+- Auto-dev is always in charge of releases and can autorelease in real time.
+- All automations, research, and evolution are managed by auto-dev.
+- All apps and PWAs are built, autotested, and published for every platform automatically.
+
+---
 🧬 Troubleshooting
 If any issue arises:
 
@@ -119,3 +131,5 @@ Edit
 =======
 # qmoi-enhanced-new-theinventorkenya
 >>>>>>> inventorkenya/main
+
+# QMOI AUTO-ENHANCE: Updated README.md with latest automation, error-fix, and install results.

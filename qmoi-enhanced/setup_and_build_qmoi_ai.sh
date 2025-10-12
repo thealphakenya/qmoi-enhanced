@@ -1,3 +1,4 @@
+
 #!/bin/bash
 set -e
 APP_NAME="qmoi_ai"
@@ -10,7 +11,6 @@ LOG_DIR="build_logs"
 LOG_FILE="$LOG_DIR/build_${TIMESTAMP}.log"
 
 mkdir -p "$LOG_DIR"
-
 echo "[🔧] Starting QMOI AI build..." > "$LOG_FILE"
 
 if [ ! -f "$ENTRY_SCRIPT" ]; then
@@ -37,23 +37,37 @@ pip install --force-reinstall pyinstaller >> "$LOG_FILE" 2>&1
 rm -rf build "$BUILD_DIR"
 rm -f *.spec
 
-# Build
-echo "[⚙️] Building..." | tee -a "$LOG_FILE"
-pyinstaller --noconfirm --onefile --windowed \
-  --name "$APP_NAME" \
-  --icon "$ICON_FILE" \
-  --add-data "app:app" --add-data "backend:backend" \
-  "$ENTRY_SCRIPT" >> "$LOG_FILE" 2>&1
+# Build with retry
+RETRIES=3
+COUNT=0
+SUCCESS=0
+while [ $COUNT -lt $RETRIES ]; do
+  echo "[⚙️] Building... (Attempt $((COUNT+1))/$RETRIES)" | tee -a "$LOG_FILE"
+  if pyinstaller --noconfirm --onefile --windowed \
+    --name "$APP_NAME" \
+    --icon "$ICON_FILE" \
+    --add-data "app:app" --add-data "backend:backend" \
+    "$ENTRY_SCRIPT" >> "$LOG_FILE" 2>&1; then
+    SUCCESS=1
+    break
+  else
+    echo "[❌] Build failed. Retrying..." | tee -a "$LOG_FILE"
+    sleep 2
+    COUNT=$((COUNT+1))
+  fi
+done
 
 # Release if successful
-if [ -f "$BUILD_DIR/$APP_NAME" ]; then
+if [ $SUCCESS -eq 1 ] && [ -f "$BUILD_DIR/$APP_NAME" ]; then
   echo "[✅] Build successful: $BUILD_DIR/$APP_NAME" | tee -a "$LOG_FILE"
   gh release delete v1.0.0 --yes || true
   gh release create v1.0.0 "$BUILD_DIR/$APP_NAME" \
     --title "QMOI AI v1.0.0" \
     --notes "Auto-built using QCity automation." >> "$LOG_FILE" 2>&1
 else
-  echo "[❌] Build failed." | tee -a "$LOG_FILE"
+  echo "[❌] Build failed after $RETRIES attempts." | tee -a "$LOG_FILE"
+  deactivate
+  exit 1
 fi
 
 # Git auto push

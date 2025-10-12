@@ -107,6 +107,19 @@ def performance_hook():
 # --- FastAPI for /status endpoint ---
 app = FastAPI()
 
+# --- QMOI Space Dashboard Endpoint ---
+@app.get("/dashboard")
+def dashboard():
+    # Return a simple dashboard status
+    import psutil
+    return {
+        "service": "QMOI Space",
+        "status": "running",
+        "cpu": psutil.cpu_percent(),
+        "memory": psutil.virtual_memory().percent,
+        "disk": psutil.disk_usage('/').percent
+    }
+
 STATUS_PATH = os.path.join(os.getcwd(), 'qmoi_health_status.json')
 health_stats = {
     'total_errors': 0,

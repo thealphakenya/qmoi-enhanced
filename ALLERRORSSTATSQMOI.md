@@ -27,3 +27,5 @@
 ## Error Summary
 - All device types: Last autotest run (2025-07-22) - No errors detected. All install/build/test cycles passed.
 - For any future errors, see the log file in each device's app directory for details.
+
+# QMOI AUTO-ENHANCE: Updated ALLERRORSSTATSQMOI.md with latest automation, error-fix, and install results.

@@ -37,3 +37,21 @@ exe = EXE(
     entitlements_file=None,
     icon=['icon.ico'],
 )
+
+# Add all platform binaries and assets
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    name='qmoiexe',
+    datas=[
+        ('Qmoi_apps', 'Qmoi_apps'),
+        ('backend', 'backend'),
+        ('frontend', 'frontend'),
+        ('assets', 'assets'),
+        ('static', 'static'),
+    ]
+)

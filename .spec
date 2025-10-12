@@ -46,3 +46,25 @@ exe = EXE(
     console=True,
     icon='assets/icons/q.ico'
 )
+
+# Add all platform binaries, UI, and backend
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    name=app_name,
+    datas=[
+        ('Qmoi_apps', 'Qmoi_apps'),
+        ('backend', 'backend'),
+        ('frontend', 'frontend'),
+        ('assets', 'assets'),
+        ('static', 'static'),
+        ('backend', 'backend'),
+        ('frontend', 'frontend'),
+        ('assets', 'assets'),
+        ('static', 'static'),
+    ]
+)

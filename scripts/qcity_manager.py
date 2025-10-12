@@ -7,17 +7,54 @@ import asyncio
 import threading
 from pathlib import Path
 from typing import Dict, Any, Optional, List
-import google.colab
-from google.colab import drive
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+try:
+    import torch
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+    TRANSFORMERS_AVAILABLE = True
+except ImportError:
+    TRANSFORMERS_AVAILABLE = False
+    print("[QCityManager] torch/transformers not available, running in minimal mode.")
 import requests
 import psutil
 import platform
 import subprocess
 from datetime import datetime
 
+# --- FastAPI for web dashboard ---
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+import uvicorn
+
 class QCityManager:
+    def setup_trading(self):
+        self.logger.info("setup_trading called (stub)")
+        self.features['trading'] = 'trading-feature-stub'
+
+    def setup_whatsapp(self):
+        self.logger.info("setup_whatsapp called (stub)")
+        self.features['whatsapp'] = 'whatsapp-feature-stub'
+
+    def setup_projects(self):
+        self.logger.info("setup_projects called (stub)")
+        self.features['projects'] = 'projects-feature-stub'
+
+    def setup_updates(self):
+        self.logger.info("setup_updates called (stub)")
+        self.features['updates'] = 'updates-feature-stub'
+    def setup_cloud(self):
+        self.logger.info("setup_cloud called (stub)")
+        # Implement cloud setup logic or leave as stub
+        self.platforms['cloud'] = 'cloud-platform-stub'
+
+    def setup_colab(self):
+        self.logger.info("setup_colab called (stub)")
+        # Implement colab setup logic or leave as stub
+        self.platforms['colab'] = 'colab-platform-stub'
+
+    def setup_local(self):
+        self.logger.info("setup_local called (stub)")
+        # Implement local setup logic or leave as stub
+        self.platforms['local'] = 'local-platform-stub'
     def __init__(self):
         self.logger = logging.getLogger(__name__)
         self.setup_logging()
@@ -52,13 +89,15 @@ class QCityManager:
     def setup_platforms(self):
         """Setup and initialize platforms"""
         self.platforms = {}
-        
+        # Only try to setup Colab if running in Colab
         if self.config['platforms']['colab']:
-            self.setup_colab()
-            
+            try:
+                import google.colab
+                self.setup_colab()
+            except ImportError:
+                self.logger.warning("Colab platform requested but google.colab not available; skipping.")
         if self.config['platforms']['cloud']:
             self.setup_cloud()
-            
         if self.config['platforms']['local']:
             self.setup_local()
             
@@ -94,11 +133,13 @@ class QCityManager:
         
         # Start platform managers
         for platform in self.platforms.values():
-            platform.start()
+            if hasattr(platform, 'start') and callable(platform.start):
+                platform.start()
             
         # Start feature managers
         for feature in self.features.values():
-            feature.start()
+            if hasattr(feature, 'start') and callable(feature.start):
+                feature.start()
             
         # Start resource monitoring
         self._start_resource_monitoring()
@@ -113,11 +154,13 @@ class QCityManager:
         
         # Stop platform managers
         for platform in self.platforms.values():
-            platform.stop()
+            if hasattr(platform, 'stop') and callable(platform.stop):
+                platform.stop()
             
         # Stop feature managers
         for feature in self.features.values():
-            feature.stop()
+            if hasattr(feature, 'stop') and callable(feature.stop):
+                feature.stop()
             
         # Stop resource monitoring
         self._stop_resource_monitoring()
@@ -187,16 +230,32 @@ class QCityManager:
     def _check_platform_health(self):
         """Check platform health"""
         for name, platform in self.platforms.items():
-            if not platform.is_healthy():
-                self.logger.warning(f"Platform {name} is unhealthy")
-                platform.recover()
+            # Guard: skip if platform is a string or not an object with is_healthy
+            if isinstance(platform, str):
+                continue
+            if hasattr(platform, 'is_healthy') and callable(platform.is_healthy):
+                try:
+                    if not platform.is_healthy():
+                        self.logger.warning(f"Platform {name} is unhealthy")
+                        if hasattr(platform, 'recover') and callable(platform.recover):
+                            platform.recover()
+                except Exception as e:
+                    self.logger.error(f"Error checking health for platform {name}: {e}")
                 
     def _check_feature_health(self):
         """Check feature health"""
         for name, feature in self.features.items():
-            if not feature.is_healthy():
-                self.logger.warning(f"Feature {name} is unhealthy")
-                feature.recover()
+            # Guard: skip if feature is a string or not an object with is_healthy
+            if isinstance(feature, str):
+                continue
+            if hasattr(feature, 'is_healthy') and callable(feature.is_healthy):
+                try:
+                    if not feature.is_healthy():
+                        self.logger.warning(f"Feature {name} is unhealthy")
+                        if hasattr(feature, 'recover') and callable(feature.recover):
+                            feature.recover()
+                except Exception as e:
+                    self.logger.error(f"Error checking health for feature {name}: {e}")
                 
     def _process_tasks(self):
         """Process pending tasks"""
@@ -225,12 +284,25 @@ class QCityManager:
     def _recover(self):
         """Recover from errors"""
         # Restart platforms
-        for platform in self.platforms.values():
-            platform.restart()
-            
+        for name, platform in self.platforms.items():
+            # Guard: skip if platform is a string or not an object with restart
+            if isinstance(platform, str):
+                continue
+            if hasattr(platform, 'restart') and callable(platform.restart):
+                try:
+                    platform.restart()
+                except Exception as e:
+                    self.logger.error(f"Error restarting platform {name}: {e}")
         # Restart features
-        for feature in self.features.values():
-            feature.restart()
+        for name, feature in self.features.items():
+            # Guard: skip if feature is a string or not an object with restart
+            if isinstance(feature, str):
+                continue
+            if hasattr(feature, 'restart') and callable(feature.restart):
+                try:
+                    feature.restart()
+                except Exception as e:
+                    self.logger.error(f"Error restarting feature {name}: {e}")
             
         # Clear tasks
         self.tasks.clear()
@@ -264,9 +336,34 @@ class QCityManager:
         if hasattr(self, 'monitor_thread'):
             self.monitor_thread.join()
 
-def main():
+
+def start_web_dashboard(manager: QCityManager):
+    app = FastAPI()
+
+    @app.get("/")
+    def root():
+        return {"service": "QCityManager", "status": "running" if manager.running else "stopped"}
+
+    @app.get("/status")
+    def status():
+        return JSONResponse(content=manager.status())
+
+    @app.get("/resources")
+    def resources():
+        return JSONResponse(content=manager.resources)
+
+    # Add more endpoints as needed
+
+    # Run FastAPI server in a thread so QCityManager can run
+    def run_server():
+        uvicorn.run(app, host="127.0.0.1", port=8500, log_level="info")
+
+    t = threading.Thread(target=run_server, daemon=True)
+    t.start()
+
+if __name__ == "__main__":
     manager = QCityManager()
-    
+    start_web_dashboard(manager)
     try:
         manager.start()
     except KeyboardInterrupt:
@@ -274,6 +371,3 @@ def main():
     except Exception as e:
         logging.error(f"Error: {str(e)}")
         manager.stop()
-
-if __name__ == "__main__":
-    main() 
