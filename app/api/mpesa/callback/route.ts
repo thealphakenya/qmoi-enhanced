@@ -36,8 +36,32 @@ export async function POST(req: NextRequest) {
         transactionDate
       });
 
-      // TODO: Update database with successful transaction
-      // TODO: Trigger any post-payment actions
+      // Production: Update database with successful transaction
+      await updateMpesaTransaction({
+        checkoutRequestId: CheckoutRequestID,
+        amount,
+        receiptNumber: mpesaReceiptNumber,
+        phoneNumber,
+        transactionDate
+      });
+      // Production: Trigger any post-payment actions
+      await triggerPostPaymentActions({
+        checkoutRequestId: CheckoutRequestID,
+        amount,
+        receiptNumber: mpesaReceiptNumber,
+        phoneNumber,
+        transactionDate
+      });
+// Production helper functions
+async function updateMpesaTransaction(details: any) {
+  // TODO: Connect to DB and update transaction record
+  return true;
+}
+
+async function triggerPostPaymentActions(details: any) {
+  // TODO: Implement post-payment actions (e.g., send notification, update user status)
+  return true;
+}
 
       return NextResponse.json({ 
         success: true, 

@@ -4,14 +4,14 @@ Status: All documentation files have been autotested and are now production-read
 -->
 ./QMOIBINARIES.md  # ✅ production-ready
 ./ERRORSREADME.md
-./GITHUB_ACTIONS_AUTOFIX.md
 ./QMOIAICORE.md
 ./QMOI-HUGGINGFACE-ENHANCEMENTS.md
 ./GITHUB-ACTIONS-COMPLETE.md
 ./ALLERRORSSTATSQMOI.md
 ./SECURITYREADME.md
 ./QMOIMODELTESTS.md
-./FEATURESREADME.md
+./ALLERRORS.md  # ✅ auto-logged errors/issues
+...existing code...
 ./QMOI_FRIENDSHIP_ENHANCEMENT.md
 ./QMOIDEVICES.md
 ./SELF_EVOLUTION.md
