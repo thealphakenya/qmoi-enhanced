@@ -1,0 +1,15 @@
+[Unit]
+Description=QMOI Auto Startup System
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/qmoi-enhanced/qmoi-enhanced/scripts
+ExecStart=/usr/bin/python3 /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_auto_startup.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/workspaces/qmoi-enhanced/qmoi-enhanced/scripts/logs/qmoi_auto_startup.log
+StandardError=append:/workspaces/qmoi-enhanced/qmoi-enhanced/scripts/logs/qmoi_auto_startup.log
+
+[Install]
+WantedBy=multi-user.target
