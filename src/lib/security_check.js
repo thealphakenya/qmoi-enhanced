@@ -44,9 +44,11 @@ function checkForTampering() {
   // Alternative debugging detection
   try {
     // Check if console is being overridden
-    const originalConsole = console.log;
-    console.log = () => {};
-    console.log = originalConsole;
+  const originalConsole = console.log;
+  // Intentionally left blank to test for console override
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  console.log = function() {};
+  console.log = originalConsole;
   } catch (e) {
     isTampered = true;
   }

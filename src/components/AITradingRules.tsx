@@ -8,12 +8,12 @@ import {
   FormControlLabel,
   TextField,
   Button,
-  Grid,
   Alert,
   Chip,
   // IconButton,
   // Tooltip,
 } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import {
   Save,
   Add as AddIcon,
@@ -142,8 +142,8 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({
           </Alert>
         )}
 
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+  <Grid container={true} spacing={2}>
+          <Grid item={true} xs={12} sm={6}>
             <TextField
               fullWidth
               label="Max Daily Trades"
@@ -158,7 +158,7 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({
               InputProps={{ inputProps: { min: 0 } }}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item={true} xs={12} sm={6}>
             <TextField
               fullWidth
               label="Max Trade Amount (USD)"
