@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(dashboardData);
     } catch (error) {
       // If dashboard file doesn't exist, return [PRODUCTION IMPLEMENTATION REQUIRED] data for development
-      const [PRODUCTION IMPLEMENTATION REQUIRED]DashboardData = {
+  const dashboardData = {
         revenue: {
           current: 125000,
           target: 100000,
@@ -209,7 +209,7 @@ export async function GET(request: NextRequest) {
         }
       };
       
-      return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]DashboardData);
+  return NextResponse.json(dashboardData);
     }
   } catch (error) {
     console.error('Error fetching dashboard data:', error);

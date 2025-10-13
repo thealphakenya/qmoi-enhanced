@@ -18,8 +18,8 @@ interface ScanResult {
 
 export async function GET(request: NextRequest) {
   try {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] scan results - replace with actual implementation
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Result: ScanResult = {
+    // TODO: Replace with actual scan results implementation
+    const result: ScanResult = {
       threats: [
         {
           id: '1',
@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
       }
     };
 
-    return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Result);
+  return NextResponse.json(result);
   } catch (error) {
     console.error('Error in AI scan endpoint:', error);
     return NextResponse.json(

@@ -13,7 +13,7 @@ interface MonitorStatus {
 export async function GET(request: NextRequest) {
   try {
     // [PRODUCTION IMPLEMENTATION REQUIRED] monitoring status - replace with actual implementation
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Status: MonitorStatus = {
+  const status: MonitorStatus = {
       enabled: true,
       interval: 60,
       last_result: {
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
       }
     };
 
-    return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Status);
+  return NextResponse.json(status);
   } catch (error) {
     console.error('Error in monitor status endpoint:', error);
     return NextResponse.json(
@@ -57,13 +57,13 @@ export async function POST(request: NextRequest) {
     }
 
     // [PRODUCTION IMPLEMENTATION REQUIRED] response - replace with actual implementation
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Status: MonitorStatus = {
+  const status: MonitorStatus = {
       enabled: enable,
       interval: interval || 60,
       last_result: null
     };
 
-    return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Status);
+  return NextResponse.json(status);
   } catch (error) {
     console.error('Error in monitor control endpoint:', error);
     return NextResponse.json(

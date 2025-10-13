@@ -58,14 +58,14 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
 
 function generateSilentWAV(): Uint8Array {
   // Generate a minimal WAV file with 1 second of silence
-  const [PRODUCTION IMPLEMENTATION REQUIRED]Rate = 22050;
+  const sampleRate = 22050;
   const duration = 1; // seconds
-  const num[PRODUCTION IMPLEMENTATION REQUIRED]s = [PRODUCTION IMPLEMENTATION REQUIRED]Rate * duration;
-  const dataSize = num[PRODUCTION IMPLEMENTATION REQUIRED]s * 2; // 16-bit [PRODUCTION IMPLEMENTATION REQUIRED]s
-  
+  const numSamples = sampleRate * duration;
+  const dataSize = numSamples * 2; // 16-bit samples
+
   const buffer = new ArrayBuffer(44 + dataSize);
   const view = new DataView(buffer);
-  
+
   // WAV header
   view.setUint32(0, 0x52494646, false); // "RIFF"
   view.setUint32(4, 36 + dataSize, true); // File size
@@ -74,17 +74,17 @@ function generateSilentWAV(): Uint8Array {
   view.setUint32(16, 16, true); // Chunk size
   view.setUint16(20, 1, true); // Audio format (PCM)
   view.setUint16(22, 1, true); // Channels
-  view.setUint32(24, [PRODUCTION IMPLEMENTATION REQUIRED]Rate, true); // [PRODUCTION IMPLEMENTATION REQUIRED] rate
-  view.setUint32(28, [PRODUCTION IMPLEMENTATION REQUIRED]Rate * 2, true); // Byte rate
+  view.setUint32(24, sampleRate, true); // sample rate
+  view.setUint32(28, sampleRate * 2, true); // Byte rate
   view.setUint16(32, 2, true); // Block align
-  view.setUint16(34, 16, true); // Bits per [PRODUCTION IMPLEMENTATION REQUIRED]
+  view.setUint16(34, 16, true); // Bits per sample
   view.setUint32(36, 0x64617461, false); // "data"
   view.setUint32(40, dataSize, true); // Data size
-  
+
   // Silent audio data (all zeros)
-  for (let i = 0; i < num[PRODUCTION IMPLEMENTATION REQUIRED]s; i++) {
+  for (let i = 0; i < numSamples; i++) {
     view.setInt16(44 + i * 2, 0, true);
   }
-  
+
   return new Uint8Array(buffer);
 } 

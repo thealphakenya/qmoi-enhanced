@@ -72,8 +72,8 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const detailed = searchParams.get('detailed') === 'true';
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] health metrics - replace with actual system monitoring
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Metrics: AIHealthMetrics = {
+    // TODO: Replace with actual system monitoring
+    const metrics: AIHealthMetrics = {
       cpu: {
         usage: 45.2,
         temperature: 65.3,
@@ -143,8 +143,8 @@ export async function GET(request: NextRequest) {
       else if (deployLog.includes('failed')) deployStatus = 'failed';
     } catch {}
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] component statuses - replace with actual component monitoring
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Components: AIComponentStatus[] = [
+  // TODO: Replace with actual component monitoring
+  const components: AIComponentStatus[] = [
       {
         name: 'QMOI Model',
         status: 'healthy',
@@ -207,8 +207,8 @@ export async function GET(request: NextRequest) {
       }
     ];
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] alerts - replace with actual alert system
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Alerts = [
+  // TODO: Replace with actual alert system
+  const alerts = [
       {
         level: 'warning' as const,
         message: 'Media Generator showing increased latency',
@@ -222,12 +222,12 @@ export async function GET(request: NextRequest) {
     ];
 
     const healthStatus: AIHealthStatus = {
-      overall: [PRODUCTION IMPLEMENTATION REQUIRED]Components.some(c => c.status === 'critical') ? 'critical' :
-               [PRODUCTION IMPLEMENTATION REQUIRED]Components.some(c => c.status === 'degraded') ? 'degraded' : 'healthy',
+  overall: components.some(c => c.status === 'critical') ? 'critical' :
+       components.some(c => c.status === 'degraded') ? 'degraded' : 'healthy',
       timestamp: new Date().toISOString(),
-      components: [PRODUCTION IMPLEMENTATION REQUIRED]Components,
-      metrics: [PRODUCTION IMPLEMENTATION REQUIRED]Metrics,
-      alerts: [PRODUCTION IMPLEMENTATION REQUIRED]Alerts,
+  components: components,
+  metrics: metrics,
+  alerts: alerts,
       // Add new fields for compliance and deployment
       licenseStatus,
       lintStatus,

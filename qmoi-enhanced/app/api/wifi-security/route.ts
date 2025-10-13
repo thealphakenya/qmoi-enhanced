@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
 
     if (status) {
       // [PRODUCTION IMPLEMENTATION REQUIRED] security status - replace with actual implementation
-      const [PRODUCTION IMPLEMENTATION REQUIRED]Status: SecurityStatus = {
+  const statusData: SecurityStatus = {
         isMonitoring: true,
         lastScan: new Date(Date.now() - 300000).toISOString(), // 5 minutes ago
         threats: [],
@@ -57,12 +57,12 @@ export async function GET(request: NextRequest) {
         }
       };
 
-      return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Status);
+  return NextResponse.json(statusData);
     }
 
     if (threats) {
       // [PRODUCTION IMPLEMENTATION REQUIRED] security threats - replace with actual implementation
-      const [PRODUCTION IMPLEMENTATION REQUIRED]Threats: SecurityThreat[] = [
+  const threatsData: SecurityThreat[] = [
         {
           id: 'T001',
           type: 'deauth-attack',
@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
         }
       ];
 
-      return NextResponse.json({ threats: [PRODUCTION IMPLEMENTATION REQUIRED]Threats });
+  return NextResponse.json({ threats: threatsData });
     }
 
     return NextResponse.json(

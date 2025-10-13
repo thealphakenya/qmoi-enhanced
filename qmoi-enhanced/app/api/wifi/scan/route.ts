@@ -13,7 +13,7 @@ interface WiFiNetwork {
 export async function GET(request: NextRequest) {
   try {
     // [PRODUCTION IMPLEMENTATION REQUIRED] WiFi networks - replace with actual implementation
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Networks: WiFiNetwork[] = [
+  const networks: WiFiNetwork[] = [
       {
         ssid: 'Home Network',
         bssid: '00:11:22:33:44:55',
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
       }
     ];
 
-    return NextResponse.json({ networks: [PRODUCTION IMPLEMENTATION REQUIRED]Networks });
+  return NextResponse.json({ networks });
   } catch (error) {
     console.error('Error in WiFi scan endpoint:', error);
     return NextResponse.json(

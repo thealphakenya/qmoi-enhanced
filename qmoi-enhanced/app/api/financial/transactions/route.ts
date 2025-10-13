@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 
-const [PRODUCTION IMPLEMENTATION REQUIRED]Transactions = [
+const transactions = [
   { id: 'txn1', type: 'airtel', amount: 1000, status: 'pending' },
   { id: 'txn2', type: 'mpesa', amount: 500, status: 'approved' },
 ];
 
 export async function GET() {
   // In real use, fetch from DB or API
-  return NextResponse.json({ success: true, transactions: [PRODUCTION IMPLEMENTATION REQUIRED]Transactions });
+  return NextResponse.json({ success: true, transactions });
 }
 
 export async function POST(req: NextRequest) {

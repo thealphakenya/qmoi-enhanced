@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
 
     if (allStats) {
       // [PRODUCTION IMPLEMENTATION REQUIRED] AI tasks - replace with actual implementation
-      const [PRODUCTION IMPLEMENTATION REQUIRED]Tasks: AITask[] = [
+  const tasks: AITask[] = [
         {
           id: '1',
           type: 'enhancement',
@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
         }
       ];
 
-      return NextResponse.json({ tasks: [PRODUCTION IMPLEMENTATION REQUIRED]Tasks });
+  return NextResponse.json({ tasks });
     }
 
     if (mediaStatus) {

@@ -195,7 +195,7 @@ export async function GET(request: NextRequest) {
     }
 
     // TODO: Fetch actual task status from database/cloud
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Task: CloudTask = {
+    const task: CloudTask = {
       id: taskId,
       type: 'image',
       status: 'completed',
@@ -216,7 +216,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      task: [PRODUCTION IMPLEMENTATION REQUIRED]Task,
+      task: task,
       dashboardUrl: `/dashboard/media/${taskId}`
     });
   } catch (error) {

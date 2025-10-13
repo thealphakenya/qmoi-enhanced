@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   try {
     // [PRODUCTION IMPLEMENTATION REQUIRED] data for now - replace with actual implementation
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Status = {
+  const status = {
       tasks: [
         {
           id: '1',
@@ -45,7 +45,7 @@ export async function GET() {
       }
     };
 
-    return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Status);
+  return NextResponse.json(status);
   } catch (error) {
     console.error('Error in media status endpoint:', error);
     return NextResponse.json(
