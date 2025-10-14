@@ -15,10 +15,13 @@ python scripts/qmoi-start.py
   - Ensure all features are always-on and self-healing
 
 ## 📊 Status
+
 - The script will display the current status and health of QMOI, including error fixing, cloud sync, and notifications.
 
 ## 🛡️ Always-On
+
 - QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your device is offline.
 
 ---
-**QMOI: Always-on, self-healing, and fully automated.** 
+
+**QMOI: Always-on, self-healing, and fully automated.**

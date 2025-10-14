@@ -1,13 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 interface Trade {
   id: string;
   symbol: string;
-  type: 'buy' | 'sell';
+  type: "buy" | "sell";
   amount: number;
   price: number;
   timestamp: string;
-  status: 'completed' | 'pending' | 'failed';
+  status: "completed" | "pending" | "failed";
   profit?: number;
 }
 
@@ -25,9 +25,9 @@ interface TradingStats {
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const stats = searchParams.get('stats');
-    const history = searchParams.get('history');
-    const active = searchParams.get('active');
+    const stats = searchParams.get("stats");
+    const history = searchParams.get("history");
+    const active = searchParams.get("active");
 
     if (stats) {
       // Mock trading statistics - replace with actual implementation
@@ -39,25 +39,25 @@ export async function GET(request: NextRequest) {
         winRate: 65.33,
         averageProfit: 83.34,
         bestTrade: {
-          id: 'T123',
-          symbol: 'BTC/USD',
-          type: 'buy',
+          id: "T123",
+          symbol: "BTC/USD",
+          type: "buy",
           amount: 0.5,
           price: 45000,
           timestamp: new Date(Date.now() - 86400000).toISOString(),
-          status: 'completed',
-          profit: 2500
+          status: "completed",
+          profit: 2500,
         },
         worstTrade: {
-          id: 'T124',
-          symbol: 'ETH/USD',
-          type: 'sell',
+          id: "T124",
+          symbol: "ETH/USD",
+          type: "sell",
           amount: 2.5,
           price: 2800,
           timestamp: new Date(Date.now() - 172800000).toISOString(),
-          status: 'completed',
-          profit: -750
-        }
+          status: "completed",
+          profit: -750,
+        },
       };
 
       return NextResponse.json(mockStats);
@@ -67,25 +67,25 @@ export async function GET(request: NextRequest) {
       // Mock trade history - replace with actual implementation
       const mockHistory: Trade[] = [
         {
-          id: 'T123',
-          symbol: 'BTC/USD',
-          type: 'buy',
+          id: "T123",
+          symbol: "BTC/USD",
+          type: "buy",
           amount: 0.5,
           price: 45000,
           timestamp: new Date(Date.now() - 86400000).toISOString(),
-          status: 'completed',
-          profit: 2500
+          status: "completed",
+          profit: 2500,
         },
         {
-          id: 'T124',
-          symbol: 'ETH/USD',
-          type: 'sell',
+          id: "T124",
+          symbol: "ETH/USD",
+          type: "sell",
           amount: 2.5,
           price: 2800,
           timestamp: new Date(Date.now() - 172800000).toISOString(),
-          status: 'completed',
-          profit: -750
-        }
+          status: "completed",
+          profit: -750,
+        },
       ];
 
       return NextResponse.json({ trades: mockHistory });
@@ -95,28 +95,28 @@ export async function GET(request: NextRequest) {
       // Mock active trades - replace with actual implementation
       const mockActive: Trade[] = [
         {
-          id: 'T125',
-          symbol: 'SOL/USD',
-          type: 'buy',
+          id: "T125",
+          symbol: "SOL/USD",
+          type: "buy",
           amount: 10,
           price: 95.5,
           timestamp: new Date().toISOString(),
-          status: 'pending'
-        }
+          status: "pending",
+        },
       ];
 
       return NextResponse.json({ activeTrades: mockActive });
     }
 
     return NextResponse.json(
-      { error: 'Invalid query parameter' },
-      { status: 400 }
+      { error: "Invalid query parameter" },
+      { status: 400 },
     );
   } catch (error) {
-    console.error('Error in QI trading endpoint:', error);
+    console.error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Unknown error' },
-      { status: 500 }
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 },
     );
   }
 }
@@ -126,9 +126,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { action, trade } = body;
 
-    if (action === 'execute') {
+    if (action === "execute") {
       // Mock trade execution - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate trade execution time
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate trade execution time
 
       const mockTrade: Trade = {
         id: `T${Math.floor(Math.random() * 1000)}`,
@@ -137,37 +137,37 @@ export async function POST(request: NextRequest) {
         amount: trade.amount,
         price: trade.price,
         timestamp: new Date().toISOString(),
-        status: 'completed',
-        profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // Mock profit calculation
+        status: "completed",
+        profit: trade.type === "buy" ? trade.amount * 100 : -trade.amount * 50, // Mock profit calculation
       };
 
       return NextResponse.json({
-        status: 'success',
-        message: 'Trade executed successfully',
-        trade: mockTrade
+        status: "success",
+        message: "Trade executed successfully",
+        trade: mockTrade,
       });
     }
 
-    if (action === 'cancel') {
+    if (action === "cancel") {
       // Mock trade cancellation - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 500)); // Simulate cancellation time
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate cancellation time
 
       return NextResponse.json({
-        status: 'success',
-        message: 'Trade cancelled successfully',
-        tradeId: trade.id
+        status: "success",
+        message: "Trade cancelled successfully",
+        tradeId: trade.id,
       });
     }
 
     return NextResponse.json(
-      { error: 'Invalid action specified' },
-      { status: 400 }
+      { error: "Invalid action specified" },
+      { status: 400 },
     );
   } catch (error) {
-    console.error('Error in QI trading execution endpoint:', error);
+    console.error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Unknown error' },
-      { status: 500 }
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 },
     );
   }
-} 
+}

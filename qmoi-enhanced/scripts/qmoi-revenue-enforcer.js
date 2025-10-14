@@ -6,12 +6,12 @@
  * Now supports --auto mode for background operation and auto-triggering new projects/marketing if growth stalls.
  */
 
-const fs = require('fs');
-const path = require('path');
-const { exec } = require('child_process');
+const fs = require("fs");
+const path = require("path");
+const { exec } = require("child_process");
 
-const REVENUE_LOG = path.join(process.cwd(), 'logs', 'qmoi-daily-revenue.json');
-const ALERT_LOG = path.join(process.cwd(), 'logs', 'qmoi-revenue-alerts.log');
+const REVENUE_LOG = path.join(process.cwd(), "logs", "qmoi-daily-revenue.json");
+const ALERT_LOG = path.join(process.cwd(), "logs", "qmoi-revenue-alerts.log");
 const MIN_DAILY_TARGET = 50000;
 const MIN_QMOI_SPACE = 50000;
 const CHECK_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
@@ -22,7 +22,7 @@ function getToday() {
 
 function loadRevenueLog() {
   if (!fs.existsSync(REVENUE_LOG)) return {};
-  return JSON.parse(fs.readFileSync(REVENUE_LOG, 'utf8'));
+  return JSON.parse(fs.readFileSync(REVENUE_LOG, "utf8"));
 }
 
 function saveRevenueLog(log) {
@@ -45,21 +45,27 @@ function getPreviousDayRevenue(log, today) {
 function enforceTargets(todayRevenue, prevRevenue, autoMode = false) {
   let enforcedTarget = Math.max(MIN_DAILY_TARGET, prevRevenue + 1);
   if (todayRevenue < enforcedTarget) {
-    logAlert(`Revenue below target! Today: Ksh ${todayRevenue}, Target: Ksh ${enforcedTarget}`);
+    logAlert(
+      `Revenue below target! Today: Ksh ${todayRevenue}, Target: Ksh ${enforcedTarget}`,
+    );
     if (autoMode) {
-      triggerAIActions('revenue');
+      triggerAIActions("revenue");
     }
   } else {
-    console.log(`Revenue target met: Ksh ${todayRevenue} (Target: Ksh ${enforcedTarget})`);
+    console.log(
+      `Revenue target met: Ksh ${todayRevenue} (Target: Ksh ${enforcedTarget})`,
+    );
   }
   return enforcedTarget;
 }
 
 function checkQmoiSpaceBalance(balance, autoMode = false) {
   if (balance < MIN_QMOI_SPACE) {
-    logAlert(`QMOI Space balance below minimum! Balance: Ksh ${balance}, Minimum: Ksh ${MIN_QMOI_SPACE}`);
+    logAlert(
+      `QMOI Space balance below minimum! Balance: Ksh ${balance}, Minimum: Ksh ${MIN_QMOI_SPACE}`,
+    );
     if (autoMode) {
-      triggerAIActions('qmoiSpace');
+      triggerAIActions("qmoiSpace");
     }
   } else {
     console.log(`QMOI Space balance OK: Ksh ${balance}`);
@@ -85,7 +91,7 @@ function analyticsReport() {
   let max = 0;
   let min = Infinity;
   let sum = 0;
-  days.forEach(day => {
+  days.forEach((day) => {
     const total = log[day].total;
     if (total > last) growthStreak++;
     last = total;
@@ -105,38 +111,54 @@ function analyticsReport() {
 function triggerAIActions(reason) {
   const timestamp = new Date().toISOString();
   const msg = `[${timestamp}] [AUTO] Triggering AI actions due to: ${reason}`;
-  fs.appendFileSync(ALERT_LOG, msg + '\n');
+  fs.appendFileSync(ALERT_LOG, msg + "\n");
   console.log(msg);
   // Example: trigger project generation and marketing
-  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-features', (err, stdout, stderr) => {
-    if (err) {
-      logAlert(`[AUTO] Failed to trigger project generation: ${err.message}`);
-    } else {
-      logAlert(`[AUTO] Project generation triggered. Output: ${stdout}`);
-    }
-  });
-  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-ai', (err, stdout, stderr) => {
-    if (err) {
-      logAlert(`[AUTO] Failed to trigger AI enhancement: ${err.message}`);
-    } else {
-      logAlert(`[AUTO] AI enhancement triggered. Output: ${stdout}`);
-    }
-  });
-  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-performance', (err, stdout, stderr) => {
-    if (err) {
-      logAlert(`[AUTO] Failed to trigger performance enhancement: ${err.message}`);
-    } else {
-      logAlert(`[AUTO] Performance enhancement triggered. Output: ${stdout}`);
-    }
-  });
+  exec(
+    "node scripts/qmoi-auto-enhancement-system.js --enhance-features",
+    (err, stdout, stderr) => {
+      if (err) {
+        logAlert(`[AUTO] Failed to trigger project generation: ${err.message}`);
+      } else {
+        logAlert(`[AUTO] Project generation triggered. Output: ${stdout}`);
+      }
+    },
+  );
+  exec(
+    "node scripts/qmoi-auto-enhancement-system.js --enhance-ai",
+    (err, stdout, stderr) => {
+      if (err) {
+        logAlert(`[AUTO] Failed to trigger AI enhancement: ${err.message}`);
+      } else {
+        logAlert(`[AUTO] AI enhancement triggered. Output: ${stdout}`);
+      }
+    },
+  );
+  exec(
+    "node scripts/qmoi-auto-enhancement-system.js --enhance-performance",
+    (err, stdout, stderr) => {
+      if (err) {
+        logAlert(
+          `[AUTO] Failed to trigger performance enhancement: ${err.message}`,
+        );
+      } else {
+        logAlert(`[AUTO] Performance enhancement triggered. Output: ${stdout}`);
+      }
+    },
+  );
   // Optionally, trigger marketing/distribution
-  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-security', (err, stdout, stderr) => {
-    if (err) {
-      logAlert(`[AUTO] Failed to trigger security enhancement: ${err.message}`);
-    } else {
-      logAlert(`[AUTO] Security enhancement triggered. Output: ${stdout}`);
-    }
-  });
+  exec(
+    "node scripts/qmoi-auto-enhancement-system.js --enhance-security",
+    (err, stdout, stderr) => {
+      if (err) {
+        logAlert(
+          `[AUTO] Failed to trigger security enhancement: ${err.message}`,
+        );
+      } else {
+        logAlert(`[AUTO] Security enhancement triggered. Output: ${stdout}`);
+      }
+    },
+  );
 }
 
 function getQmoiSpaceBalance() {
@@ -156,7 +178,9 @@ function autoModeLoop() {
     const today = getToday();
     const todayRevenue = getTodayRevenue();
     const qmoiSpace = getQmoiSpaceBalance();
-    console.log(`\n[AUTO] Checking revenue and QMOI Space at ${new Date().toISOString()}`);
+    console.log(
+      `\n[AUTO] Checking revenue and QMOI Space at ${new Date().toISOString()}`,
+    );
     updateRevenue(today, 0, qmoiSpace, true); // 0 means just check, not add
   }, CHECK_INTERVAL_MS);
   // Initial check
@@ -168,19 +192,19 @@ function autoModeLoop() {
 
 // CLI usage
 const args = process.argv.slice(2);
-if (args[0] === '--update') {
+if (args[0] === "--update") {
   // Example: node qmoi-revenue-enforcer.js --update 120000 60000
   const amount = parseInt(args[1], 10);
   const qmoiSpace = parseInt(args[2], 10);
   if (isNaN(amount) || isNaN(qmoiSpace)) {
-    console.error('Usage: --update <amount> <qmoiSpaceBalance>');
+    console.error("Usage: --update <amount> <qmoiSpaceBalance>");
     process.exit(1);
   }
   updateRevenue(getToday(), amount, qmoiSpace);
-} else if (args[0] === '--analytics') {
+} else if (args[0] === "--analytics") {
   analyticsReport();
-} else if (args[0] === '--auto') {
-  console.log('[AUTO] QMOI Revenue Enforcer running in background mode.');
+} else if (args[0] === "--auto") {
+  console.log("[AUTO] QMOI Revenue Enforcer running in background mode.");
   autoModeLoop();
 } else {
   console.log(`
@@ -195,4 +219,4 @@ Usage:
 - Minimum QMOI Space: Ksh 50,000
 - No maximum: Always try to generate more than previous day
 `);
-} 
+}

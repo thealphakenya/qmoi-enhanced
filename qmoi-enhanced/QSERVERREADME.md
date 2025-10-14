@@ -1,11 +1,13 @@
 # QServer - Unlimited Resource Server Management
 
 ## Overview
+
 QServer is a high-performance server management system with unlimited resources, AI optimization, auto-scaling, and self-healing capabilities. It provides enterprise-grade server infrastructure with zero downtime and unlimited scalability.
 
 ## Features
 
 ### Unlimited Resources
+
 - **Unlimited Memory:** Dynamic memory allocation that scales infinitely
 - **Unlimited Storage:** Cloud storage that automatically expands without limits
 - **Unlimited Processing:** CPU and GPU resources that scale automatically
@@ -15,6 +17,7 @@ QServer is a high-performance server management system with unlimited resources,
 - **Unlimited GPU Cores:** GPU resources for AI and ML workloads
 
 ### AI Optimization
+
 - **Machine Learning:** AI algorithms optimize performance and resource usage
 - **Predictive Analytics:** Forecast resource needs and optimize allocation
 - **Automated Tuning:** Self-tuning parameters for optimal performance
@@ -23,6 +26,7 @@ QServer is a high-performance server management system with unlimited resources,
 - **Resource Optimization:** Intelligent resource allocation and management
 
 ### Auto Scaling
+
 - **Horizontal Scaling:** Automatic scaling across multiple server instances
 - **Vertical Scaling:** Dynamic resource allocation within instances
 - **Load Balancing:** Intelligent distribution of workloads
@@ -31,6 +35,7 @@ QServer is a high-performance server management system with unlimited resources,
 - **Predictive Scaling:** Proactive scaling based on AI predictions
 
 ### Self Healing
+
 - **Error Detection:** Automatic detection of server issues and errors
 - **Auto Repair:** Automatic fixing of detected problems
 - **Recovery Mechanisms:** Robust recovery from any failure state
@@ -39,6 +44,7 @@ QServer is a high-performance server management system with unlimited resources,
 - **Preventive Maintenance:** Proactive maintenance to prevent issues
 
 ### Performance
+
 - **Sub-Millisecond Response:** Near-instant response times for all operations
 - **Parallel Processing:** Multi-threaded execution for maximum efficiency
 - **Intelligent Caching:** AI-driven cache management for faster access
@@ -47,6 +53,7 @@ QServer is a high-performance server management system with unlimited resources,
 - **High Availability:** 99.99% uptime with automatic failover
 
 ### Security
+
 - **Quantum Encryption:** State-of-the-art encryption for all data
 - **Zero-Trust Architecture:** Comprehensive security at every level
 - **AI Threat Detection:** AI-powered threat detection and prevention
@@ -55,6 +62,7 @@ QServer is a high-performance server management system with unlimited resources,
 - **Access Control:** Granular access control with role-based permissions
 
 ### Monitoring
+
 - **Real-Time Metrics:** Live monitoring of all server components
 - **Predictive Alerts:** AI-powered alerts before issues occur
 - **Performance Analytics:** Detailed performance analysis and optimization
@@ -63,6 +71,7 @@ QServer is a high-performance server management system with unlimited resources,
 - **AI-Powered Insights:** Intelligent insights and recommendations
 
 ### Backup & Recovery
+
 - **Unlimited Storage:** Unlimited backup storage capacity
 - **Data Integrity:** Automatic data validation and verification
 - **Encryption:** Encrypted backup storage for security
@@ -71,6 +80,7 @@ QServer is a high-performance server management system with unlimited resources,
 - **Instant Restore:** Quick restoration from any backup point
 
 ### Deployment
+
 - **Unlimited Storage:** Unlimited deployment storage
 - **Zero Downtime:** Seamless deployment without service interruption
 - **Auto Deployment:** Automatic deployment and configuration
@@ -81,6 +91,7 @@ QServer is a high-performance server management system with unlimited resources,
 ## Usage
 
 ### QServer Commands
+
 ```bash
 # Start QServer with unlimited resources
 npm run qserver:start
@@ -126,6 +137,7 @@ npm run qserver:auto-fix
 ```
 
 ### Configuration
+
 QServer settings are managed in `config/qserver-config.json`:
 
 ```json
@@ -175,10 +187,11 @@ QServer settings are managed in `config/qserver-config.json`:
 ## Architecture
 
 ### QServer Manager
+
 The `QServerManager` class handles all QServer operations with unlimited resources:
 
 ```javascript
-import QServerManager from './scripts/qserver-manager.js';
+import QServerManager from "./scripts/qserver-manager.js";
 
 const manager = new QServerManager();
 
@@ -213,6 +226,7 @@ await manager.performanceTune();
 ## Benefits
 
 ### For Development
+
 - **Unlimited Performance:** Handle any size workload with unlimited resources
 - **AI Optimization:** Automatic performance optimization and tuning
 - **Auto Scaling:** Seamless scaling based on demand
@@ -220,6 +234,7 @@ await manager.performanceTune();
 - **Zero Downtime:** Continuous operation without interruption
 
 ### For Production
+
 - **High Availability:** 99.99% uptime with automatic failover
 - **Unlimited Scalability:** Scale to any size without limitations
 - **Advanced Security:** Quantum encryption and AI threat detection
@@ -227,6 +242,7 @@ await manager.performanceTune();
 - **Automated Management:** Self-managing infrastructure
 
 ### For Operations
+
 - **Simplified Management:** Automated server management and optimization
 - **Predictive Maintenance:** AI-powered preventive maintenance
 - **Instant Recovery:** Quick recovery from any failure state
@@ -236,6 +252,7 @@ await manager.performanceTune();
 ## Performance Metrics
 
 ### Speed Benchmarks
+
 - **Response Time:** < 1ms for all operations
 - **Throughput:** Unlimited concurrent operations
 - **Latency:** Near-zero latency for all communications
@@ -244,6 +261,7 @@ await manager.performanceTune();
 - **Startup Time:** < 100ms server startup
 
 ### Reliability Metrics
+
 - **Uptime:** 99.99% availability
 - **Error Rate:** < 0.001% error rate
 - **Recovery Time:** < 1 second recovery from failures
@@ -254,6 +272,7 @@ await manager.performanceTune();
 ## Security Features
 
 ### Advanced Security
+
 - **Quantum Encryption:** State-of-the-art encryption for all data
 - **Zero-Trust Architecture:** Comprehensive security at every level
 - **AI Threat Detection:** AI-powered threat detection and prevention
@@ -262,6 +281,7 @@ await manager.performanceTune();
 - **Access Control:** Granular access control with role-based permissions
 
 ### Data Protection
+
 - **Encrypted Storage:** All data encrypted with quantum encryption
 - **Secure Communication:** Encrypted communication between components
 - **Backup Security:** Encrypted backup storage with redundancy
@@ -271,6 +291,7 @@ await manager.performanceTune();
 ## Monitoring & Analytics
 
 ### Real-Time Monitoring
+
 - **Resource Monitoring:** Real-time monitoring of unlimited resources
 - **Performance Tracking:** Continuous performance optimization tracking
 - **Health Monitoring:** Comprehensive health checks and diagnostics
@@ -278,6 +299,7 @@ await manager.performanceTune();
 - **Alert System:** Intelligent alerting and notification system
 
 ### Analytics & Insights
+
 - **Performance Analytics:** Detailed performance analysis and optimization
 - **Resource Analytics:** Comprehensive resource usage analysis
 - **Predictive Insights:** AI-powered predictive insights and recommendations
@@ -287,6 +309,7 @@ await manager.performanceTune();
 ## Troubleshooting
 
 ### Common Issues
+
 1. **Resource Allocation:** Automatic resolution through AI optimization
 2. **Performance Issues:** Self-healing mechanisms resolve automatically
 3. **Security Concerns:** AI-powered threat detection and prevention
@@ -294,6 +317,7 @@ await manager.performanceTune();
 5. **Connection Issues:** Automatic failover and recovery
 
 ### Error Resolution
+
 - **Auto-Fix:** Run `npm run qserver:auto-fix` for AI-powered automatic error resolution
 - **Health Check:** Run `npm run qserver:health-check` for comprehensive health assessment
 - **Self-Healing:** Automatic system recovery and restoration
@@ -303,6 +327,7 @@ await manager.performanceTune();
 ## Future Enhancements
 
 ### Planned Features
+
 - **Quantum Computing:** Integration with quantum computing resources
 - **Advanced AI:** More sophisticated AI algorithms and capabilities
 - **Global Network:** Worldwide network of unlimited QServer instances
@@ -310,6 +335,7 @@ await manager.performanceTune();
 - **Blockchain Integration:** Blockchain-based security and verification
 
 ### Performance Goals
+
 - **Zero Latency:** True zero-latency operations with unlimited resources
 - **Infinite Scalability:** Unlimited scaling capabilities for any workload
 - **Perfect Reliability:** 100% uptime and reliability with self-healing
@@ -322,13 +348,14 @@ QServer now features a fully automated download link health checker and auto-fix
 
 ### App Download Status Table (Auto-Updated)
 
-| App Name | Platform | Version | Download Link | Size (MB) | Last Checked | Status |
-|----------|----------|---------|--------------|-----------|--------------|--------|
+| App Name                                 | Platform | Version | Download Link | Size (MB) | Last Checked | Status |
+| ---------------------------------------- | -------- | ------- | ------------- | --------- | ------------ | ------ |
 | (auto-filled from Qmoi_apps/latest.json) |
 
 > This table is auto-generated and always up-to-date. If a download fails, QServer will auto-fix and retry until resolved.
 
 ### Troubleshooting
+
 - If you see a download error (e.g., ERR_NAME_NOT_RESOLVED), QServer will auto-fix and retry. Please try again in a few moments.
 - You can also run the health checker manually:
   ```bash
@@ -337,6 +364,7 @@ QServer now features a fully automated download link health checker and auto-fix
 - All download issues are logged and prioritized for immediate fix. Master/admins are notified in real time.
 
 ### How It Works
+
 - All app download links are autotested on a schedule and after every build/release.
 - If a link fails, QServer triggers auto-fix (re-upload, DNS check, notification, etc.) and retries until working.
 - The exact file size is checked and auto-updated in the app info table.
@@ -345,10 +373,11 @@ QServer now features a fully automated download link health checker and auto-fix
 ---
 
 For more information, see:
+
 - [QCITYDEVICEAUTOUPGRADE.md](./QCITYDEVICEAUTOUPGRADE.md) - Auto-upgrade system details
 - [QCITYREADME.md](./QCITYREADME.md) - QCity device integration
 - [QMOIAVATAR.md](./QMOIAVATAR.md) - QMOI system overview
-- [GitHub Workflows](./.github/workflows/) - CI/CD integration with unlimited resources 
+- [GitHub Workflows](./.github/workflows/) - CI/CD integration with unlimited resources
 
 ## New Integrations & Enhancements
 
@@ -357,4 +386,4 @@ For more information, see:
 - **Always-On Cloud Operation:** QServer is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
 - **Enhanced QCity Runners & Devices:** All server runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every server update, ensuring documentation is always current.
-- **Increased Minimum Daily Revenue:** QServer now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 
+- **Increased Minimum Daily Revenue:** QServer now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.

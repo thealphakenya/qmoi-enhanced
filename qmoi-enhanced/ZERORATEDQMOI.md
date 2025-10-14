@@ -3,11 +3,13 @@
 ## QMOI Zero-Rated Internet System
 
 ### Overview
+
 QMOI Zero-Rated is a global, always-on internet fallback system that leverages zero-rated (free data) sites and services to ensure QMOI and QCity devices are always connected, regardless of location or network restrictions.
 
 ---
 
 ## 1. What is Zero-Rated QMOI?
+
 - **Zero-Rated Sites:** Websites/services that are accessible without data charges (e.g., Wikipedia, Facebook Free Basics, WhatsApp, Google, select educational/government sites).
 - **QMOI Zero-Rated Proxy:** QMOI can set up and manage a lightweight proxy/tunnel that routes essential traffic through zero-rated endpoints.
 - **Global Fallback:** If all other connections fail, QMOI automatically switches to zero-rated mode to maintain connectivity.
@@ -15,6 +17,7 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 ---
 
 ## 2. How QMOI Sets Up and Uses Zero-Rated Internet
+
 - **Auto-Detection:** QMOI continuously monitors connectivity and detects when only zero-rated access is available.
 - **Proxy/Tunnel Setup:** QMOI can deploy a minimal web proxy or tunnel (e.g., using a cloud function, serverless, or a lightweight VPS) that mimics zero-rated traffic.
 - **Dynamic Switching:** QMOI switches to zero-rated mode automatically and routes essential traffic (API, heartbeat, commands) through the proxy.
@@ -24,6 +27,7 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 ---
 
 ## 3. Technical Implementation
+
 - **Zero-Rated Site List:** Maintained and updated regularly (Wikipedia, Facebook, WhatsApp, Google, YouTube, etc.).
 - **Proxy Deployment:** QMOI can deploy a proxy on demand (e.g., using Heroku, Vercel, AWS Lambda, or a cheap VPS) to appear as a zero-rated service.
 - **Traffic Shaping:** Only essential QMOI traffic is routed through the proxy to minimize detection and maximize reliability.
@@ -33,6 +37,7 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 ---
 
 ## 4. QCity UI Integration
+
 - **Master Panel:**
   - Real-time status of zero-rated connectivity (active, fallback, last used, logs).
   - Controls to force zero-rated mode, test endpoints, and view logs.
@@ -45,6 +50,7 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 ---
 
 ## 5. Global Use Cases
+
 - **Travel:** QMOI users can stay connected anywhere, even with no data plan.
 - **Restricted Networks:** Bypass firewalls and data restrictions using zero-rated fallback.
 - **Disaster Recovery:** Maintain connectivity during outages or emergencies.
@@ -52,6 +58,7 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 ---
 
 ## 6. Accountability & Reporting
+
 - **Logs:** All zero-rated connections, switches, and failures are logged.
 - **Reports:** Daily/weekly/monthly reports on zero-rated usage and performance.
 - **Master Controls:** Only master users can view/export logs and force zero-rated mode.
@@ -59,6 +66,7 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 ---
 
 ## 7. Future Enhancements
+
 - **AI Endpoint Selection:** Use AI to select the best zero-rated endpoint based on region and performance.
 - **Community-Driven List:** Allow users to submit new zero-rated endpoints.
 - **Integration with ISPs:** Work with ISPs to whitelist QMOI endpoints.
@@ -66,6 +74,7 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 ---
 
 ## DNS & Download Link Auto-Resolution
+
 - **DNS Auto-Check & Fix:** QMOI Zero-Rated system now automatically checks and fixes DNS for all download links (downloads.qmoi.app). If DNS fails, it triggers an auto-fix routine, notifies master/admin, and logs all actions.
 - **Zero-Rated & Fallback Links:** If DNS cannot be fixed immediately, QMOI Zero-Rated system auto-switches to zero-rated or fallback CDN links to ensure downloads always work, even in restricted or offline environments.
 - **Dashboard Integration:** Master can view DNS/link health and trigger manual checks from the dashboard.
@@ -73,4 +82,4 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 
 ---
 
-*QMOI Zero-Rated: Always Connected, Anywhere, Anytime.* 
+_QMOI Zero-Rated: Always Connected, Anywhere, Anytime._

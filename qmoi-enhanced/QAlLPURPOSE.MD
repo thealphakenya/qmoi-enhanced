@@ -19,4 +19,4 @@
 - **Role-Based Adaptation:**
   - Tailors features for all user types and professions
 - **Security & Privacy:**
-  - Transparent, encrypted, and user-controlled 
+  - Transparent, encrypted, and user-controlled

@@ -23,6 +23,7 @@ Authorization: Bearer <your_token>
 ### System Management
 
 #### Get System Status
+
 ```http
 GET /qcity/status
 ```
@@ -30,6 +31,7 @@ GET /qcity/status
 Returns the current status of the Q-city system.
 
 **Response:**
+
 ```json
 {
   "running": true,
@@ -77,6 +79,7 @@ Returns the current status of the Q-city system.
 ```
 
 #### Get System Configuration
+
 ```http
 GET /qcity/config
 ```
@@ -84,6 +87,7 @@ GET /qcity/config
 Returns the current system configuration.
 
 **Response:**
+
 ```json
 {
   "platforms": {
@@ -115,6 +119,7 @@ Returns the current system configuration.
 ```
 
 #### Start System
+
 ```http
 POST /qcity/start
 ```
@@ -122,6 +127,7 @@ POST /qcity/start
 Starts the Q-city system.
 
 **Response:**
+
 ```json
 {
   "message": "Q-city started successfully"
@@ -129,6 +135,7 @@ Starts the Q-city system.
 ```
 
 #### Stop System
+
 ```http
 POST /qcity/stop
 ```
@@ -136,6 +143,7 @@ POST /qcity/stop
 Stops the Q-city system.
 
 **Response:**
+
 ```json
 {
   "message": "Q-city stopped successfully"
@@ -145,6 +153,7 @@ Stops the Q-city system.
 ### Platform Management
 
 #### Configure Platforms
+
 ```http
 POST /qcity/configure-platforms
 ```
@@ -152,6 +161,7 @@ POST /qcity/configure-platforms
 Configure system platforms.
 
 **Request Body:**
+
 ```json
 {
   "colab": true,
@@ -161,6 +171,7 @@ Configure system platforms.
 ```
 
 **Response:**
+
 ```json
 {
   "message": "Platforms configured successfully"
@@ -168,6 +179,7 @@ Configure system platforms.
 ```
 
 #### Get Platform Status
+
 ```http
 GET /qcity/platforms/{platform_id}/status
 ```
@@ -175,6 +187,7 @@ GET /qcity/platforms/{platform_id}/status
 Get status of a specific platform.
 
 **Response:**
+
 ```json
 {
   "type": "colab",
@@ -188,6 +201,7 @@ Get status of a specific platform.
 ### Feature Management
 
 #### Enable Features
+
 ```http
 POST /qcity/enable-features
 ```
@@ -195,6 +209,7 @@ POST /qcity/enable-features
 Enable specific features.
 
 **Request Body:**
+
 ```json
 {
   "features": ["trading", "whatsapp", "projects", "updates"]
@@ -202,6 +217,7 @@ Enable specific features.
 ```
 
 **Response:**
+
 ```json
 {
   "message": "Features enabled successfully"
@@ -209,6 +225,7 @@ Enable specific features.
 ```
 
 #### Get Feature Status
+
 ```http
 GET /qcity/features/{feature_id}/status
 ```
@@ -216,6 +233,7 @@ GET /qcity/features/{feature_id}/status
 Get status of a specific feature.
 
 **Response:**
+
 ```json
 {
   "enabled": true,
@@ -232,6 +250,7 @@ Get status of a specific feature.
 ### Resource Management
 
 #### Monitor Resources
+
 ```http
 POST /qcity/monitor-resources
 ```
@@ -239,6 +258,7 @@ POST /qcity/monitor-resources
 Start resource monitoring.
 
 **Response:**
+
 ```json
 {
   "message": "Resource monitoring started successfully"
@@ -246,6 +266,7 @@ Start resource monitoring.
 ```
 
 #### Get Resource Usage
+
 ```http
 GET /qcity/resources
 ```
@@ -253,6 +274,7 @@ GET /qcity/resources
 Get current resource usage.
 
 **Response:**
+
 ```json
 {
   "cpu": {
@@ -284,6 +306,7 @@ Get current resource usage.
 ### Task Management
 
 #### Get Tasks
+
 ```http
 GET /qcity/tasks
 ```
@@ -291,6 +314,7 @@ GET /qcity/tasks
 Get list of current tasks.
 
 **Response:**
+
 ```json
 {
   "tasks": [
@@ -313,6 +337,7 @@ Get list of current tasks.
 ```
 
 #### Create Task
+
 ```http
 POST /qcity/tasks
 ```
@@ -320,6 +345,7 @@ POST /qcity/tasks
 Create a new task.
 
 **Request Body:**
+
 ```json
 {
   "type": "optimization",
@@ -331,6 +357,7 @@ Create a new task.
 ```
 
 **Response:**
+
 ```json
 {
   "task_id": "task-1",
@@ -341,6 +368,7 @@ Create a new task.
 ### Error Management
 
 #### Get Errors
+
 ```http
 GET /qcity/errors
 ```
@@ -348,6 +376,7 @@ GET /qcity/errors
 Get list of system errors.
 
 **Response:**
+
 ```json
 {
   "errors": [
@@ -365,6 +394,7 @@ Get list of system errors.
 ```
 
 #### Track Error
+
 ```http
 POST /qcity/track-error
 ```
@@ -372,6 +402,7 @@ POST /qcity/track-error
 Track a new error.
 
 **Request Body:**
+
 ```json
 {
   "type": "system",
@@ -385,6 +416,7 @@ Track a new error.
 ```
 
 **Response:**
+
 ```json
 {
   "error_id": "error-1",
@@ -395,6 +427,7 @@ Track a new error.
 ### Backup Management
 
 #### Get Backups
+
 ```http
 GET /qcity/backups
 ```
@@ -402,6 +435,7 @@ GET /qcity/backups
 Get list of system backups.
 
 **Response:**
+
 ```json
 {
   "backups": [
@@ -417,6 +451,7 @@ Get list of system backups.
 ```
 
 #### Create Backup
+
 ```http
 POST /qcity/backups
 ```
@@ -424,6 +459,7 @@ POST /qcity/backups
 Create a new system backup.
 
 **Request Body:**
+
 ```json
 {
   "type": "full",
@@ -432,6 +468,7 @@ Create a new system backup.
 ```
 
 **Response:**
+
 ```json
 {
   "backup_id": "backup-1",
@@ -440,6 +477,7 @@ Create a new system backup.
 ```
 
 #### Restore Backup
+
 ```http
 POST /qcity/backups/{backup_id}/restore
 ```
@@ -447,6 +485,7 @@ POST /qcity/backups/{backup_id}/restore
 Restore a system backup.
 
 **Response:**
+
 ```json
 {
   "message": "Backup restored successfully"
@@ -456,6 +495,7 @@ Restore a system backup.
 ### Logging
 
 #### Get Logs
+
 ```http
 GET /qcity/logs
 ```
@@ -463,12 +503,14 @@ GET /qcity/logs
 Get system logs.
 
 **Query Parameters:**
+
 - `level`: Log level (debug, info, warning, error, critical)
 - `start_time`: Start time in ISO format
 - `end_time`: End time in ISO format
 - `limit`: Maximum number of logs to return
 
 **Response:**
+
 ```json
 {
   "logs": [
@@ -488,6 +530,7 @@ Get system logs.
 ### Notifications
 
 #### Get Notifications
+
 ```http
 GET /qcity/notifications
 ```
@@ -495,6 +538,7 @@ GET /qcity/notifications
 Get system notifications.
 
 **Response:**
+
 ```json
 {
   "notifications": [
@@ -511,6 +555,7 @@ Get system notifications.
 ```
 
 #### Send Notification
+
 ```http
 POST /qcity/notifications
 ```
@@ -518,6 +563,7 @@ POST /qcity/notifications
 Send a new notification.
 
 **Request Body:**
+
 ```json
 {
   "type": "system",
@@ -528,6 +574,7 @@ Send a new notification.
 ```
 
 **Response:**
+
 ```json
 {
   "notification_id": "notification-1",
@@ -538,6 +585,7 @@ Send a new notification.
 ### Self-Healing & Automation
 
 #### Trigger NPM Self-Heal
+
 ```http
 POST /qcity/selfheal-npm
 ```
@@ -545,9 +593,11 @@ POST /qcity/selfheal-npm
 Runs the QCity NPM self-heal script on the appropriate environment (auto-detects Windows/Linux/Mac).
 
 **Authentication:**
+
 - Requires JWT token with admin/master role.
 
 **Request Body (JSON, optional):**
+
 ```
 {
   "forceClean": true,           // (optional) Remove all node_modules/lock files and clean cache before install
@@ -558,12 +608,14 @@ Runs the QCity NPM self-heal script on the appropriate environment (auto-detects
 ```
 
 **Response:**
+
 - Streams logs/results in real time using Server-Sent Events (SSE):
   - Each log line: `data: ...`
   - Errors: `data: [ERROR] ...`
   - End of stream: `data: [DONE]`
 
 **Example (SSE):**
+
 ```
 data: ==== QCity NPM Self-Heal Run: ...
 data: Running: npm ci
@@ -572,15 +624,19 @@ data: [DONE]
 ```
 
 **Audit Logging:**
+
 - All triggers and results are logged to `logs/qcity_audit.log` with user, options, and status.
 
 **Auto-Triggering:**
+
 - This endpoint may be called automatically by the error detection service on failed installs/errors.
 
 **Scheduling/Automation:**
+
 - Nightly runs and on-push triggers are supported via Task Scheduler (Windows), cron (Linux/Mac), or CI/CD (GitHub Actions).
 
 **Example Request:**
+
 ```bash
 curl -N -H "Authorization: Bearer <token>" -H "Content-Type: application/json" \
   -X POST -d '{"forceClean":true}' http://localhost:3000/api/qcity/selfheal-npm
@@ -589,80 +645,104 @@ curl -N -H "Authorization: Bearer <token>" -H "Content-Type: application/json" \
 ### QCity Device Management (Enhanced)
 
 #### Atomic/Temp Install
+
 ```http
 POST /qcity/device/atomic-install
 ```
+
 Atomically installs dependencies to a temp directory, then moves to node_modules.
 
 #### Background/Parallel Install
+
 ```http
 POST /qcity/device/background-install
 ```
+
 Runs install in the background or in parallel (optionally offloaded to cloud).
 
 #### Deduplication
+
 ```http
 POST /qcity/device/dedupe
 ```
+
 Runs npm dedupe to remove duplicate dependencies.
 
 #### Artifact Sync
+
 ```http
 POST /qcity/device/sync-artifacts
 ```
+
 Syncs build artifacts and node_modules to cloud storage.
 
 #### Install/Build Status
+
 ```http
 GET /qcity/device/install-status
 ```
+
 Returns current install/build status.
 
 #### Health Monitor
+
 ```http
 GET /qcity/device/health
 ```
+
 Returns health info (unused, outdated, vulnerable packages).
 
 ### Device & Resource Optimization (Enhanced)
 
 #### Get Resource Stats
+
 ```http
 GET /qcity/device/resources
 ```
+
 Returns real-time CPU, memory, disk, and network usage.
 
 #### Get Environments Status
+
 ```http
 GET /qcity/device/envs
 ```
+
 Returns detected programming environments (Node, Python, Java, Go, Rust, C++, etc.).
 
 #### Install Dependencies for All Envs
+
 ```http
 POST /qcity/device/install-all-envs
 ```
+
 Installs dependencies for all detected environments in an atomic, isolated, and resource-aware way.
 
 #### Get Offload Status
+
 ```http
 GET /qcity/device/offload-status
 ```
+
 Returns current offload/throttle status.
 
 ## QMOI Avatars API
+
 - `GET /api/qmoi/avatars` — List all available avatars and their metadata.
 - `POST /api/qmoi/avatars` — Switch avatar (body: { action: 'switch', avatarId })
 
 ## QMOI Voice API (Planned)
+
 - `GET /api/qmoi/voice-profiles` — List available voice profiles.
 - `POST /api/qmoi/voice-profiles` — Switch voice profile (body: { action: 'switch', voiceId })
 
 ## QMOI Memory API (Planned)
+
 - `GET /api/qmoi/memory` — Query memory (conversations, preferences, project history, etc.)
 - `POST /api/qmoi/memory` — Save/update memory (body: { type, data })
 
 ## Extensibility
+
 - All APIs are designed for easy addition of new avatars, voices, and memory modules.
 
 ## Error Responses
@@ -670,6 +750,7 @@ Returns current offload/throttle status.
 All endpoints may return the following error responses:
 
 ### 400 Bad Request
+
 ```json
 {
   "error": "Invalid request parameters",
@@ -681,6 +762,7 @@ All endpoints may return the following error responses:
 ```
 
 ### 401 Unauthorized
+
 ```json
 {
   "error": "Authentication required"
@@ -688,6 +770,7 @@ All endpoints may return the following error responses:
 ```
 
 ### 403 Forbidden
+
 ```json
 {
   "error": "Insufficient permissions"
@@ -695,6 +778,7 @@ All endpoints may return the following error responses:
 ```
 
 ### 404 Not Found
+
 ```json
 {
   "error": "Resource not found"
@@ -702,6 +786,7 @@ All endpoints may return the following error responses:
 ```
 
 ### 500 Internal Server Error
+
 ```json
 {
   "error": "Internal server error",
@@ -712,10 +797,12 @@ All endpoints may return the following error responses:
 ## Rate Limiting
 
 API requests are rate limited to:
+
 - 100 requests per minute for authenticated users
 - 10 requests per minute for unauthenticated users
 
 Rate limit headers are included in all responses:
+
 ```
 X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 95
@@ -727,6 +814,7 @@ X-RateLimit-Reset: 1615809600
 The Q-city system also provides a WebSocket API for real-time updates.
 
 ### Connection
+
 ```
 ws://localhost:3000/api/ws
 ```
@@ -734,6 +822,7 @@ ws://localhost:3000/api/ws
 ### Events
 
 #### System Status Updates
+
 ```json
 {
   "type": "system_status",
@@ -749,6 +838,7 @@ ws://localhost:3000/api/ws
 ```
 
 #### Task Updates
+
 ```json
 {
   "type": "task_update",
@@ -763,6 +853,7 @@ ws://localhost:3000/api/ws
 ```
 
 #### Error Alerts
+
 ```json
 {
   "type": "error_alert",
@@ -776,6 +867,7 @@ ws://localhost:3000/api/ws
 ```
 
 #### Notification Updates
+
 ```json
 {
   "type": "notification",
@@ -791,6 +883,7 @@ ws://localhost:3000/api/ws
 ## SDK Examples
 
 ### Python
+
 ```python
 import requests
 
@@ -825,45 +918,39 @@ class QCityClient:
 ```
 
 ### JavaScript
+
 ```javascript
 class QCityClient {
-    constructor(baseUrl, token) {
-        this.baseUrl = baseUrl;
-        this.headers = {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        };
-    }
+  constructor(baseUrl, token) {
+    this.baseUrl = baseUrl;
+    this.headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    };
+  }
 
-    async getStatus() {
-        const response = await fetch(
-            `${this.baseUrl}/qcity/status`,
-            { headers: this.headers }
-        );
-        return response.json();
-    }
+  async getStatus() {
+    const response = await fetch(`${this.baseUrl}/qcity/status`, {
+      headers: this.headers,
+    });
+    return response.json();
+  }
 
-    async startSystem() {
-        const response = await fetch(
-            `${this.baseUrl}/qcity/start`,
-            {
-                method: 'POST',
-                headers: this.headers
-            }
-        );
-        return response.json();
-    }
+  async startSystem() {
+    const response = await fetch(`${this.baseUrl}/qcity/start`, {
+      method: "POST",
+      headers: this.headers,
+    });
+    return response.json();
+  }
 
-    async stopSystem() {
-        const response = await fetch(
-            `${this.baseUrl}/qcity/stop`,
-            {
-                method: 'POST',
-                headers: this.headers
-            }
-        );
-        return response.json();
-    }
+  async stopSystem() {
+    const response = await fetch(`${this.baseUrl}/qcity/stop`, {
+      method: "POST",
+      headers: this.headers,
+    });
+    return response.json();
+  }
 }
 ```
 
@@ -897,6 +984,7 @@ class QCityClient {
 ## Support
 
 For API support, please contact:
+
 - Email: support@qcity.ai
 - Documentation: https://docs.qcity.ai
-- GitHub: https://github.com/qcity/ai 
+- GitHub: https://github.com/qcity/ai

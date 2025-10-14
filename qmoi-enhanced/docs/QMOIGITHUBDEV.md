@@ -3,6 +3,7 @@
 ## Overview
 
 QMOI now supports self-healing automation for GitHub Actions workflows. The system can:
+
 - Fetch the latest failed workflow run via the GitHub API
 - Detect and auto-fix common errors (e.g., typos, missing dependencies)
 - Commit, push, and trigger a workflow re-run via the GitHub API
@@ -34,11 +35,12 @@ QMOI now supports self-healing automation for GitHub Actions workflows. The syst
 - All actions and fixes are logged in `logs/ci-self-heal.log`
 
 ## See Also
+
 - [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)
-- [REFERENCES.md](./REFERENCES.md) 
+- [REFERENCES.md](./REFERENCES.md)
 
 ## Gmail Notification Integration
 
 - All progress and result notifications for GitHub Actions self-healing and autotest are sent to rovicviccy@gmail.com via Gmail.
 - Environment variables are managed by scripts/qmoi-environment-setup.js.
-- See scripts/ci-self-heal.js and scripts/autotest/advanced_autotest_system.py for implementation details. 
+- See scripts/ci-self-heal.js and scripts/autotest/advanced_autotest_system.py for implementation details.

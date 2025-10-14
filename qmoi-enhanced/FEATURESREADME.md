@@ -3,6 +3,7 @@
 > For a full list of UI components and their usage, see [COMPONENTS.md](./COMPONENTS.md).
 
 ## New (2025-06-11)
+
 - **QI Preview Window**: Instantly preview AI state, health, and session/global memory from anywhere in the app using the `useQIPreview` hook.
 - **Local-First QMOI**: All analytics, previews, and enhancements run locally when possible for speed and privacy.
 - **Context-Aware Previews**: QI and QMOI can show previews and suggestions based on user context and actions.
@@ -29,6 +30,7 @@
 - **Production-Ready Security & Performance**: Hardened Nginx config, rate limiting, HTTP/2, gzip, custom error pages, and auto SSL renewal. Supports both domain and ngrok out of the box.
 
 🚀 **Core Capabilities**
+
 - **App Development**: Build, preview, and export full-stack apps (web, mobile, desktop) with AI assistance.
 - **Game Making**: Generate, preview, and export 2D/3D games, including assets, logic, and levels.
 - **Animation & Movie Creation**: Compose long, high-quality animations and movies, with AI-driven storyboarding, rendering, and audio. AI can autonomously create movies/series (minimum 1hr 20min per movie), and generate episodic series.
@@ -42,6 +44,7 @@
 - **Security & Audit**: All actions require master token, are logged, and device access is permissioned.
 
 🧠 **Advanced Features**
+
 - **Colab/Cloud Integration**: Offload heavy computation, rendering, and data processing to Colab or cloud VMs with real-time tracking and result retrieval.
 - **Dynamic Extension/Package Management**: Auto-discovers, installs, and updates npm, PyPI, and other packages with full logging.
 - **Advanced File Generation & Internet Integration**: Integrates with APIs (HuggingFace, GitHub, npm, RSS, etc.) to generate and manage any type/size of file. Auto-generates documentation and deployable packages.
@@ -57,6 +60,7 @@
 - **Real-Time Creative/Decision-Making**: Offers live project recommendations, creative nudges, and instant prototyping with optional auto-pilot mode.
 
 🌐 **Enhanced WiFi Auto-Connection & Security Instructions**
+
 - **Continuous Connectivity**: Automatically scans for all nearby WiFi networks (open and secured) and prioritizes connection to ensure uninterrupted internet.
 - **Data Savings**: AI intelligently switches to WiFi from mobile data to reduce data costs.
 - **Connection Instructions (AI-Followed Protocol)**:
@@ -88,6 +92,7 @@
   | Self-Defense | Real-time anomaly and threat response AI |
 
 🔍 **AI Accountability, Connectivity & Automation**
+
 - **AI Accountability & Auditing**
   - **Master Oversight**: Every connection, session, and trade is logged and reportable.
   - **Session Reporting**: Full, detailed summaries of AI actions available upon request.
@@ -98,6 +103,7 @@
   - **Audit & Compliance**: Master can review every autonomous or user-requested action.
 
 ## 2025-06-13: Major Enhancements
+
 - AI self-update and self-enhancement engine with Hugging Face backup/restore
 - Parallel and large task handling (Colab/cloud integration)
 - Security proxy for masked, sandboxed external access
@@ -110,11 +116,13 @@
 - Modular, secure, and efficient design for global, multi-user, multi-device operation
 
 ## 2025-06-13: Persistent Encrypted Storage & Advanced Qmoi AI Features
+
 - Persistent, encrypted storage for all sensitive data (user info, system files, etc.).
 - Qmoi endpoints for animation/movie, game, and subtitle generation.
 - All features are fully integrated and documented for security and extensibility.
 
 ## 2025-06-13: Autonomous Optimization & Device Enhancement
+
 - AI can now monitor, view, and auto-fix all file problems (TypeScript, Python, JS) using a VS Code-like diagnostics API and hook.
 - AI/master can edit any file directly from the QI chat interface, with backend support.
 - The update system now triggers diagnostics and auto-fix after every update.
@@ -123,6 +131,7 @@
 - All enhancements are integrated into the main QI UI and backend, with user notifications for all major actions.
 
 ## 2025-06-13: Full Autonomous Error Fixing & GitHub Repo Management
+
 - AI now continuously scans for and auto-fixes all problems: missing files, imports, modules, and more.
 - AI can access, clone, view, modify, and auto-fix any GitHub repo, even when user is offline.
 - New hooks: useAutoFixAllProblems, useAIFeatureEnhancer, useGithubRepoManager for continuous improvement and repo management.
@@ -130,6 +139,7 @@
 - All enhancements are fully integrated into the QI UI and backend, with user notifications and audit logging.
 
 ## 2025-06-13: WhatsApp Qmoi Bot & Advanced Game/Animation Pipeline
+
 - WhatsApp bot (Baileys) with Qmoi AI integration, persistent session, and full automation.
 - Master/sister onboarding, group management, broadcast, and campaign scheduling.
 - AI-powered replies, media, and advanced features (calls, video, file sharing, vision, etc.).
@@ -138,28 +148,33 @@
 - Continuous documentation and extensibility for all new features.
 
 ## 2025-06-13: WhatsApp Qmoi Bot QI UI Integration
+
 - WhatsAppBotPanel in QI for QR onboarding, status, and log.
 - Backend API for WhatsApp bot status, QR, and log.
 - Ready for full integration with Node.js bot and Qmoi backend.
 
 ## 🧬 Invention Projects (Master/Sister Only)
+
 - AI can create, manage, and auto-initiate invention projects for Victor Kwemoi and Leah Chebet.
 - Invention projects support business, welfare, and national impact goals.
 - All invention data and user credentials are encrypted and never exposed in exports or unzipped builds.
 
 ## 🛡️ Life Goals, Ambitions & AI Protector
+
 - AI learns and assists with master/sister life goals (protection, welfare, mental health, finances, security, business, inventions, leadership, philanthropy, etc.).
 - Qi dashboard has a secure, master/sister-only section for viewing, adding, and editing these goals.
 - AI proactively manages projects to help achieve these ambitions.
 - All sensitive data is encrypted and access-controlled.
 
 ## 🏠 Local-First AI Protector Blueprint (Planned)
+
 - Local deployment of vision/audio models (YOLO, OpenCV, whisper.cpp, etc.) for home/office protection.
 - Sensor/camera/mic integration, anomaly detection, and local-only alert/response.
 - Dashboard UI for live feeds, logs, device control, and explainable AI decisions.
 - Full offline/edge operation, no cloud/API dependency.
 
 🛠️ **Developer Hooks & Utilities**
+
 - `useColabJob`: Interface to execute, track, and manage jobs on Colab/cloud.
 - `useDeviceHealth`: Check CPU, memory, battery, temperature, and online/offline state.
 - `useExtensionManager`: Install, upgrade, and log extensions and packages.
@@ -167,11 +182,13 @@
 - `useAIHealthCheck`: Auto-monitors and fixes AI component or system issues.
 
 📥 **UX & Download Features**
+
 - **Project Export**: All generated assets are downloadable in standard formats (JSON, MP4, MP3, PNG, OBJ, etc.).
 - **Responsive UX**: UI is mobile-friendly, intelligent, and real-time adaptive based on AI feedback.
 - **Context-Aware Feedback**: Smart nudges and instant recommendations based on user behavior.
 
 ## 📈 Enhanced Autonomous Trading (No API Key Required)
+
 - **Always-On Trading**: The AI trading engine operates continuously, even when the user or master is offline. It uses local datasets, simulated data, or public market datasets to generate and execute trades.
 - **Colab Trading Support**: The AI can offload trading simulations or batch trading jobs to Google Colab (or any cloud notebook environment) for large-scale backtesting, strategy optimization, or parallel trading experiments. Results are synced back to the main platform.
 - **Dataset Integration**: Built-in support for public market datasets (e.g., CSV/JSON files of historical prices, open datasets from Kaggle or Yahoo Finance) for backtesting and live simulation. No API key required.
@@ -181,38 +198,40 @@
 - **Colab Integration Example**: Users can trigger a Colab notebook to run a trading simulation, upload a dataset, and return results to the Alpha-Q dashboard.
 
 ### Example: Trading Dataset Integration
+
 - Place CSV/JSON datasets in a `/datasets/trading/` folder (e.g., `BTC_USD_2020.csv`).
-export function TradingPanel({ trades, onSimulate, onColab }) {strategy training.
+  export function TradingPanel({ trades, onSimulate, onColab }) {strategy training.
   return (dataset sources: Yahoo Finance, Kaggle, public crypto/stock archives.
-    <Card title="Autonomous Trading Engine">
-      <Button onClick={onSimulate}>Simulate Trade</Button>
-      <Button onClick={onColab}>Run in Colab</Button>
-      <Table>/TradingPanel.tsx
-        <thead>Table, Button } from './ui';
-          <tr>
-            <th>Time</th>nel({ trades, onSimulate, onColab }) {
-            <th>Type</th>
-            <th>Amount</th> Trading Engine">
-            <th>Result</th>mulate}>Simulate Trade</Button>
-            <th>Rationale</th>}>Run in Colab</Button>
-          </tr>
-        </thead>
-        <tbody>
-          {trades.map(trade => (
-            <tr key={trade.id}>
-              <td>{new Date(trade.timestamp).toLocaleString()}</td>
-              <td>{trade.type}</td>
-              <td>{trade.amount}</td>
-              <td>{trade.result}</td>
-              <td>{trade.rationale}</td>
-            </tr>
-          ))}ades.map(trade => (
-        </tbody>key={trade.id}>
-      </Table><td>{new Date(trade.timestamp).toLocaleString()}</td>
-    </Card>   <td>{trade.type}</td>
-  );          <td>{trade.amount}</td>
-}             <td>{trade.result}</td>
-```           <td>{trade.rationale}</td>
+  <Card title="Autonomous Trading Engine">
+  <Button onClick={onSimulate}>Simulate Trade</Button>
+  <Button onClick={onColab}>Run in Colab</Button>
+  <Table>/TradingPanel.tsx
+  <thead>Table, Button } from './ui';
+  <tr>
+  <th>Time</th>nel({ trades, onSimulate, onColab }) {
+  <th>Type</th>
+  <th>Amount</th> Trading Engine">
+  <th>Result</th>mulate}>Simulate Trade</Button>
+  <th>Rationale</th>}>Run in Colab</Button>
+  </tr>
+  </thead>
+  <tbody>
+  {trades.map(trade => (
+  <tr key={trade.id}>
+  <td>{new Date(trade.timestamp).toLocaleString()}</td>
+  <td>{trade.type}</td>
+  <td>{trade.amount}</td>
+  <td>{trade.result}</td>
+  <td>{trade.rationale}</td>
+  </tr>
+  ))}ades.map(trade => (
+  </tbody>key={trade.id}>
+  </Table><td>{new Date(trade.timestamp).toLocaleString()}</td>
+  </Card> <td>{trade.type}</td>
+  ); <td>{trade.amount}</td>
+  } <td>{trade.result}</td>
+
+````<td>{trade.rationale}</td>
             </tr>
 ### Example: Colab Integration (Python Snippet)
 ```python/tbody>
@@ -236,24 +255,29 @@ prices['SMA'] = prices['Close'].rolling(window=20).mean()
         trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': 'SIMULATED', 'rationale': 'SMA cross'})
 # Save results to CSV for Alpha-Q to import
 pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
-```
+````
 
 ---
-*Last updated: June 9, 2025*
+
+_Last updated: June 9, 2025_
 
 ## 2025-06-13: Real-Time Trading & Wallet API Integration
+
 - Qmoi backend endpoints for real-time trading, wallet management, and user notification.
 - Ready for integration with WhatsApp bot and QI UI for full AI-driven financial automation.
 
 ## 2025-06-13: Advanced Analytics & Reporting
+
 - Qmoi backend endpoint for advanced analytics and reporting on trading, wallet, and bot activity.
 - Ready for integration with QI UI and WhatsApp bot for smart notifications and user insights.
 
 ## 2025-06-13: Campaign Scheduling, User Segmentation & IoT Orchestration
+
 - Endpoints for campaign scheduling, user segmentation, and IoT device orchestration.
 - Enables advanced automation, smart notifications, and device control from Qmoi and WhatsApp bot.
 
 ## 2025-06-13: Wallet, Instruction, and Child-Friendly AI
+
 - Wallet can send money to any platform and follow natural language instructions (withdraw, add API key, multiply funds, etc.).
 - AI is robust, thorough, and fast: handles very large data, long messages, and big projects with high accuracy.
 - Child-friendly features: music, stories, conversations, reminders, and proactive engagement with children and people around master/sister.
@@ -261,6 +285,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - All enhancements are fully integrated into the QI UI and backend, with user notifications and audit logging.
 
 ## 2025-06-13: Device Settings, Media Preview, and Wallet Enhancements
+
 - **Device Settings UI**: View and modify device wallpaper, appearance, and installed apps from the app.
 - **Media Preview Window**: Instantly preview movies, YouTube, and audio in a floating window.
 - **Leah Wallet Panel**: Manage wallet, add/spend funds, and view transactions in LC Hub.
@@ -269,6 +294,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - **Smarter AI Decisions**: AI now makes more context-aware choices and suggestions for users.
 
 ## 2025-06-14: Floating Preview, Universal Media/File Player, and Smart Browser
+
 - **Floating Preview Window**: The preview window can now float, be moved, and resized anywhere on the screen. It supports drag, resize, and always-on-top modes.
 - **Universal File/Media Player**: Preview and edit all file types (text, code, images, audio, video, PDF, docs, etc.) and play all media formats (mp4, mkv, mp3, wav, ogg, flac, avi, mov, webm, etc.).
 - **Smart Browser Mode**: The preview window can be used as a browser. Whenever a video, audio, or downloadable file is detected, a floating download button appears at the bottom right. Clicking it pops up options to select file type, version, and size before saving to Alpha-Q/Downloads/video or the appropriate folder.
@@ -278,6 +304,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - **Security**: All sensitive data is encrypted and managed by the AI, with user permission and audit logs.
 
 ## 2025-06-14: Advanced Preview Tools & Smart UI
+
 - **Full Media Controls**: All video/audio previews now include play, pause, next, previous, progress bar, volume, speed, fullscreen, and playlist controls. AI can auto-update and enhance these features as new formats or needs arise.
 - **Toolbox & Settings Panel**: The floating preview window includes a toolbox for file conversion, trimming, subtitles, screenshots, and annotation. Settings allow users to customize controls, appearance, and automation.
 - **Smart UI Updates**: The UI adapts automatically to the type of file/media, showing only relevant tools and controls. AI can update the UI and add new tools/features as needed.
@@ -285,6 +312,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - **AI-Driven Enhancements**: AI continuously monitors usage and feedback, auto-updating preview features, controls, and UI for best experience.
 
 ## 2025-06-14: Continuous Preview & Automation Enhancements
+
 - **Auto-Detect & Auto-Enhance**: AI automatically detects new file/media types and updates the preview window with the latest tools and controls, ensuring compatibility and best experience for all formats.
 - **Live Collaboration**: Multiple users can view, annotate, and control the same preview window in real time (collaborative editing, live comments, shared playlists).
 - **Voice & Gesture Control**: Preview window supports voice commands ("play next", "pause", "screenshot", etc.) and gesture controls for hands-free operation.
@@ -294,6 +322,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - **Customizable Automation**: Users can set automation rules (e.g., auto-convert, auto-backup, auto-share) for files/media handled in the preview window.
 
 ## 2025-06-14: Advanced Trading System & Real Funds Integration
+
 - **Autonomous Trading Engine**: Advanced trading system with multiple strategies (momentum, mean-reversion, ML-based) and real-time performance monitoring.
 - **Risk Management**: Built-in risk controls with position sizing, stop-loss, take-profit, and drawdown limits.
 - **Real Funds Integration**: Secure integration with Bitget for real trading with proper risk management and audit logging.
@@ -313,6 +342,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   - Interactive charts and analytics
 
 ### Trading Strategies
+
 1. **Momentum Strategy**
    - Tracks price momentum using technical indicators
    - Adjusts position sizes based on volatility
@@ -329,6 +359,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
    - Implements ensemble methods for better accuracy
 
 ### Risk Management Features
+
 - Maximum drawdown limits
 - Position size optimization
 - Dynamic stop-loss and take-profit levels
@@ -336,6 +367,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - Real-time risk monitoring and alerts
 
 ### Security & Compliance
+
 - All trading activities are logged and auditable
 - Sensitive data is encrypted at rest and in transit
 - Automatic backup of trading configurations
@@ -343,6 +375,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - Rate limiting and error handling
 
 ### UI/UX Improvements
+
 - Clean, modern interface with dark/light themes
 - Real-time updates of trading metrics
 - Interactive charts and visualizations
@@ -352,6 +385,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 # Alpha-Q AI Enhanced Features
 
 ## 2025-06-15: Advanced Security & Privacy Enhancements
+
 - **Enhanced Network Security**
   - Advanced firewall with AI-powered threat detection
   - Real-time network traffic analysis and anomaly detection
@@ -374,6 +408,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   - Automatic privacy policy compliance
 
 ## 2025-06-15: Enhanced Browser Capabilities
+
 - **Advanced Ad Blocking**
   - AI-powered ad detection and removal
   - Custom filter lists and rules
@@ -396,6 +431,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   - Hardware acceleration support
 
 ## 2025-06-15: Enhanced Preview System
+
 - **Universal File Preview**
   - Support for all file types
   - Advanced media controls
@@ -418,6 +454,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   - Media format conversion
 
 ## 2025-06-15: AI Enhancement System
+
 - **Accuracy Improvements**
   - Continuous learning and adaptation
   - Multi-model ensemble approach
@@ -440,6 +477,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   - Resource management
 
 ## 2025-06-15: Network Enhancement System
+
 - **Connection Optimization**
   - Automatic protocol selection
   - Bandwidth management
@@ -455,6 +493,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   - Threat detection
 
 ## 2025-06-15: Automation System
+
 - **Task Automation**
   - AI-powered task scheduling
   - Resource optimization
@@ -470,6 +509,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   - Compliance monitoring
 
 ## New (2025-06-16)
+
 - **Programming Language Creation**: AI can create new programming languages with custom features, syntax, and comprehensive documentation.
 - **Always-On Colab Integration**: Enhanced Colab integration runs continuously, even when user is offline, with automatic error recovery and state persistence.
 - **Advanced Error Auto-Fixing**: AI automatically detects and fixes issues in Python files, including imports, syntax, and style problems.
@@ -477,6 +517,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - **Optimized Device Integration**: Improved application installation and device integration with resource optimization and performance enhancement.
 
 ## Programming Language Creation
+
 - **Language Design**: AI can create new programming languages with custom features and syntax.
 - **Compiler Generation**: Automatic generation of lexer, parser, and code generator specifications.
 - **Documentation**: Comprehensive documentation including tutorials, references, and examples.
@@ -488,12 +529,14 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   ```
 
 ## Always-On Colab Integration
+
 - **Continuous Operation**: Colab instance runs 24/7 with automatic error recovery.
 - **State Persistence**: Maintains state and context across sessions.
 - **Resource Management**: Optimizes resource usage and handles connection issues.
 - **Error Recovery**: Automatic recovery from crashes and connection problems.
 
 ## Advanced Error Auto-Fixing
+
 - **Import Fixing**: Automatically fixes import statements and dependencies.
 - **Syntax Correction**: Detects and fixes syntax errors in Python files.
 - **Style Enhancement**: Improves code style and formatting.
@@ -505,12 +548,14 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   ```
 
 ## Enhanced Notification System
+
 - **New Icons**: Updated notification icons and symbols for better visibility.
 - **Broadcast Capability**: Master can send messages to all users or specific groups.
 - **Targeted Notifications**: Send notifications to specific features or components.
 - **Custom Styling**: Customizable notification appearance and behavior.
 
 ## Optimized Device Integration
+
 - **Resource Optimization**: Minimizes resource usage while maintaining performance.
 - **Performance Enhancement**: Improves application performance and responsiveness.
 - **Security Improvements**: Enhanced security features and access control.
@@ -544,6 +589,7 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
   - Transparent, encrypted, and user-controlled
 
 ## Major Security & Fund Management Enhancements (2025-06-13)
+
 - **Master-Only Wallet & Fund Management:** Only the master can access, transfer, or withdraw funds from Cashon (Pesapal). All fund transfers and wallet creation for users require explicit master approval (via WhatsApp or dashboard).
 - **WhatsApp Approval Flows:** Users can request wallets or fund transfers, but these are only processed after master approval. The AI notifies the master instantly and logs all actions.
 - **Audit Logging & Notifications:** Every sensitive action (wallet creation, fund transfer, earning) is logged, encrypted, and instantly reported to the master. Full audit trails are available for review.
@@ -551,32 +597,38 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are broken. Fallback and error handling are built-in for all fund and wallet actions.
 
 ## New (2025-06-14)
+
 - **Unified User & Session Management:** Seamless user/project context across chat and WhatsApp interfaces. Continue any project or task from chat to WhatsApp and vice versa.
 - **WhatsApp Business Features:** Manage ads, settings, group management, and business status via WhatsApp. All business actions and verifications are notified to the master instantly.
 - **Master-Only Controls:** Master can edit any file, manage all integrations, and control the system from chat or WhatsApp.
 - **Versioning & Documentation Automation:** All updates auto-generate version and changelog files. Version info and changelogs are visible in QI, QCity, and WhatsApp (on request). All .md files are updated automatically after each update.
 
 ## Cross-Interface Project Continuity
+
 - Start a project in chat, continue in WhatsApp, and vice versa—context and progress are always synced.
 
 ## Master System Management
+
 - Master can manage, edit, and control the entire system from the QI chat interface or WhatsApp.
 - All actions are logged, auditable, and versioned.
 
 ## WhatsApp Business Automation
+
 - Manage business features (ads, settings, group management, status) via WhatsApp.
 - All business actions are logged and notified to the master.
 
 ## Versioning & Documentation
+
 - All updates auto-generate version and changelog files.
 - Version info and changelogs are visible in QI, QCity, and WhatsApp (on request).
 - All .md files are updated automatically after each update.
 
 ---
 
-*Last updated: June 2025*
+_Last updated: June 2025_
 
 ## New (2025-06-14)
+
 - **Rust/AI Hybrid Error Fixing:** The error-fixing engine now uses a Rust-based fixer, local JS/TS/Python fixers, and QMOI AI core endpoints. If one fixer fails, another is tried, ensuring all errors can be fixed—even in broken states.
 - **Master = Admin:** The system treats the master as a superset of admin everywhere. All admin privileges and more are available to the master.
 - **QMOI Memory Upgrades:** QMOI now uses persistent, context-rich memory (database or advanced in-memory) for all user, project, and system state.
@@ -584,29 +636,33 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - **Permanent, Extensible System:** All enhancements are permanent, with robust backups, auto-recovery, and extensibility for new languages, tools, and features.
 
 ## Error Fixing Pipeline
+
 - **Multi-layered:** Tries local fixers, then Rust, then QMOI AI core.
 - **Language-agnostic:** Works for JS, TS, Python, Rust, and more.
 - **Self-healing:** Can fix errors even if the project is in a broken state.
 - **Auto-dependency:** Installs missing packages/scripts as needed.
 
 ## QMOI Memory Enhancements
+
 - **Persistent:** All context, logs, and user/project memory are stored permanently.
 - **Context-rich:** QMOI remembers everything, always.
 
 ---
 
-*Last updated: June 2025*
+_Last updated: June 2025_
 
 ## Persistent QMOI Memory & Self-Evolution (2025-06-14)
+
 - **Persistent Memory:** QMOI now uses a SQLite-backed memory for all user, project, and system context/logs. All state is saved and restored across restarts.
 - **Self-Evolution:** A new script (`scripts/qmoi_self_evolve.py`) analyzes the codebase using deep learning (stub for now), suggests improvements, and logs them to QMOI memory. This enables QMOI to self-improve over time.
 - **Permanent, Context-Rich:** QMOI "remembers everything, always," supporting advanced analytics, audit, and self-healing.
 
 ---
 
-*Last updated: June 2025*
+_Last updated: June 2025_
 
 ## QMOI Plugin System
+
 - QMOI now supports a plugin system for extensibility.
 - Plugins can add new UI panels, device management features, optimization logic, and AI review modules.
 - Users can enable/disable plugins and configure their settings from the dashboard.

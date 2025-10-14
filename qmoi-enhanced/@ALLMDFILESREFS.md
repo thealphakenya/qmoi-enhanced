@@ -2,8 +2,8 @@
 
 ## Overview
 
-
 ## Codespace/Cloud Automation
+
 - All QMOI features (builds, storage, memory, error fixing, etc.) are elastically offloaded to QMOI Cloud when running in Codespaces or any low-resource environment.
 - PWAs and all apps are always available, never blocked by local resource limits.
 
@@ -15,6 +15,7 @@ This comprehensive reference document catalogs and categorizes all .md files in 
 - **See [DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for all device/platform download instructions.**
 
 ## Download Autofix & Customer Care (2025+)
+
 - All download links are autotested, auto-fixed, and always up-to-date.
 - Download UI and scripts feature robust error handling, retry logic, and real-time status.
 - Users can report issues directly from the download UI; all issues are logged and prioritized for immediate fix.
@@ -32,4 +33,4 @@ This comprehensive reference document catalogs and categorizes all .md files in 
 - All actions and errors are robustly logged via `qmoi_activity_logger`.
 - Placeholders remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.
 - All output files are named `qmoi ai` and placed in the correct subdirectory.
-- Download links and notifications are updated automatically after each build. 
+- Download links and notifications are updated automatically after each build.

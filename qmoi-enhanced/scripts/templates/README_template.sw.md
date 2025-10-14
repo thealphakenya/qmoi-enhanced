@@ -8,20 +8,24 @@ Karibu kwenye **Mfumo wa Akili ya Msimamizi wa Quantum (QMOI)** — mfumo wa pam
 
 ---
 
-## 🌐 Pakua  
+## 🌐 Pakua
+
 Toleo jipya linapatikana hapa:  
 👉 [https://downloads.qmoi.app](https://downloads.qmoi.app)
 
 ---
 
 <!-- QMOI_BUILD_STATUS_START -->
+
 ## 📦 Hali ya Ujenzi wa QMOI ({{timestamp}})
 
-| Jukwaa             | Hali ya Ujenzi | Matokeo ya Majaribio |
-| ------------------ | -------------- | --------------------- |
+| Jukwaa | Hali ya Ujenzi | Matokeo ya Majaribio |
+| ------ | -------------- | -------------------- |
+
 {{build_matrix}}
 
 > Hali hii inasasishwa kiotomatiki.
+
 <!-- QMOI_BUILD_STATUS_END -->
 
 ---

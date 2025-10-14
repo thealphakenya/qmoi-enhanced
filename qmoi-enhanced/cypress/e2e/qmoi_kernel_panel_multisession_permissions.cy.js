@@ -1,19 +1,19 @@
 /// <reference types="cypress" />
 
-describe('QMOI Kernel Panel Multi-Session & Permissions E2E', () => {
-  it('shows admin-only features for admin, hides for user', () => {
+describe("QMOI Kernel Panel Multi-Session & Permissions E2E", () => {
+  it("shows admin-only features for admin, hides for user", () => {
     // Admin session
-    cy.setCookie('userRole', 'admin');
-    cy.visit('/qcity/kernel');
-    cy.contains('QMOI Kernel Control Panel').should('exist');
+    cy.setCookie("userRole", "admin");
+    cy.visit("/qcity/kernel");
+    cy.contains("QMOI Kernel Control Panel").should("exist");
     // Example: check for admin-only feature
     // cy.contains('Admin Only Feature').should('exist');
 
     // Switch to user session
     cy.clearCookies();
-    cy.setCookie('userRole', 'user');
-    cy.visit('/qcity/kernel');
-    cy.contains('QMOI Kernel Control Panel').should('exist');
+    cy.setCookie("userRole", "user");
+    cy.visit("/qcity/kernel");
+    cy.contains("QMOI Kernel Control Panel").should("exist");
     // cy.contains('Admin Only Feature').should('not.exist');
   });
 
@@ -28,4 +28,4 @@ describe('QMOI Kernel Panel Multi-Session & Permissions E2E', () => {
   //   cy.visit('/qcity/kernel');
   //   // ...assertions...
   // });
-}); 
+});

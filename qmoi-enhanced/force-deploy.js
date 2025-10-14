@@ -57,7 +57,9 @@ try {
 
   // Commit (ignore if nothing to commit)
   try {
-    execSync('git commit -m "Complete Alpha-Q AI System with Chat, Preview, and Enhanced Features"');
+    execSync(
+      'git commit -m "Complete Alpha-Q AI System with Chat, Preview, and Enhanced Features"',
+    );
     console.log("✅ Changes committed");
   } catch (err) {
     console.log("⚠️ No new changes to commit");

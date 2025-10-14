@@ -1,9 +1,11 @@
 import unittest
 
+
 class TestMultiUserSession(unittest.TestCase):
     def test_multi_user_session_placeholder(self):
         # TODO: Implement multi-user session unit tests
         self.assertTrue(True)
 
-if __name__ == '__main__':
-    unittest.main() 
+
+if __name__ == "__main__":
+    unittest.main()

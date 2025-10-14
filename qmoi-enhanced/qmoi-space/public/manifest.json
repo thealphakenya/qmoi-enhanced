@@ -10,7 +10,14 @@
   "scope": "/",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["productivity", "business", "games", "finance", "ai", "entertainment"],
+  "categories": [
+    "productivity",
+    "business",
+    "games",
+    "finance",
+    "ai",
+    "entertainment"
+  ],
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
@@ -205,4 +212,3 @@
   "handle_links": "preferred",
   "capture_links": "new-client"
 }
-

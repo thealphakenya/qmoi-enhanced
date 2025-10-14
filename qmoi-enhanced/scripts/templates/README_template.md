@@ -9,17 +9,22 @@ Welcome to **Quantum Master Orchestrator Intelligence (QMOI)** — the unified s
 ---
 
 ## 🌐 Downloads
+
 Latest builds are at [downloads.qmoi.app](https://downloads.qmoi.app)
 
 ---
 
 <!-- QMOI_BUILD_STATUS_START -->
+
 ## 📦 QMOI Build Status ({{timestamp}})
 
-| Platform         | Build Status | Test Result |
-| ---------------- | ------------ | ----------- |
+| Platform | Build Status | Test Result |
+| -------- | ------------ | ----------- |
+
 {{build_matrix}}
+
 > These are updated dynamically.
+
 <!-- QMOI_BUILD_STATUS_END -->
 
 ---

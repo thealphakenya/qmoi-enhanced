@@ -1,8 +1,8 @@
 // scripts/generate-debug-report.js
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const logPath = path.join(__dirname, '../debug-report.log');
+const logPath = path.join(__dirname, "../debug-report.log");
 
 const report = `
 📝 QMOI DEBUG REPORT (${new Date().toLocaleString()})
@@ -11,9 +11,9 @@ const report = `
 🧪 APK/EXE sizes verified
 📦 NPM version: ${process.version}
 📁 Directory: ${process.cwd()}
-📡 Internet status: ${require('dns').resolve('google.com', err => {
-  if (err) fs.appendFileSync(logPath, '❌ Internet: Unavailable\n');
-  else fs.appendFileSync(logPath, '✅ Internet: Connected\n');
+📡 Internet status: ${require("dns").resolve("google.com", (err) => {
+  if (err) fs.appendFileSync(logPath, "❌ Internet: Unavailable\n");
+  else fs.appendFileSync(logPath, "✅ Internet: Connected\n");
 })}
 `;
 

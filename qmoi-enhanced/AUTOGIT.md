@@ -13,10 +13,11 @@
 > All actions are logged, self-healing, and fully integrated with the QCity dashboard and master-only controls. Notifications are sent via all configured channels.
 
 ### Migration
+
 - Remove any references to legacy AutoGit scripts/configs.
 - Use the new automation scripts for all git operations.
 - See `ALLMDFILESREFS.md` and `git.txt` for updated command references.
 
 ---
 
-*This file is now managed by the new QMOI automation system. All legacy instructions are obsolete.* 
+_This file is now managed by the new QMOI automation system. All legacy instructions are obsolete._

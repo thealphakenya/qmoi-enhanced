@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Separator } from '@/components/ui/separator';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { 
-  Download, 
-  Update, 
-  Settings, 
-  Wrench, 
-  CheckCircle, 
-  XCircle, 
+import React, { useState, useEffect } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Separator } from "@/components/ui/separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Download,
+  Update,
+  Settings,
+  Wrench,
+  CheckCircle,
+  XCircle,
   AlertTriangle,
   Play,
   Pause,
@@ -30,9 +36,9 @@ import {
   MoreVertical,
   Info,
   Shield,
-  Zap
-} from 'lucide-react';
-import { appManagementService } from '@/services/AppManagementService';
+  Zap,
+} from "lucide-react";
+import { appManagementService } from "@/services/AppManagementService";
 
 interface App {
   id: string;
@@ -52,23 +58,29 @@ interface App {
 export default function AppManager() {
   const [apps, setApps] = useState<App[]>([]);
   const [filteredApps, setFilteredApps] = useState<App[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [autoUpdate, setAutoUpdate] = useState<boolean>(true);
   const [autoGit, setAutoGit] = useState<boolean>(true);
-  const [downloadProgress, setDownloadProgress] = useState<Record<string, number>>({});
-  const [installationProgress, setInstallationProgress] = useState<Record<string, any>>({});
-  const [troubleshootingResults, setTroubleshootingResults] = useState<Record<string, any>>({});
-  const [activeTab, setActiveTab] = useState<string>('apps');
+  const [downloadProgress, setDownloadProgress] = useState<
+    Record<string, number>
+  >({});
+  const [installationProgress, setInstallationProgress] = useState<
+    Record<string, any>
+  >({});
+  const [troubleshootingResults, setTroubleshootingResults] = useState<
+    Record<string, any>
+  >({});
+  const [activeTab, setActiveTab] = useState<string>("apps");
 
   const categories = [
-    { id: 'all', name: 'All Apps', icon: '📱' },
-    { id: 'trading', name: 'Trading', icon: '💰' },
-    { id: 'communication', name: 'Communication', icon: '💬' },
-    { id: 'entertainment', name: 'Entertainment', icon: '🎬' },
-    { id: 'security', name: 'Security', icon: '🔒' },
-    { id: 'development', name: 'Development', icon: '💻' }
+    { id: "all", name: "All Apps", icon: "📱" },
+    { id: "trading", name: "Trading", icon: "💰" },
+    { id: "communication", name: "Communication", icon: "💬" },
+    { id: "entertainment", name: "Entertainment", icon: "🎬" },
+    { id: "security", name: "Security", icon: "🔒" },
+    { id: "development", name: "Development", icon: "💻" },
   ];
 
   useEffect(() => {
@@ -87,29 +99,37 @@ export default function AppManager() {
 
   const setupEventListeners = () => {
     appManagementService.onAppStatusChanged(({ appId, status }) => {
-      setApps(prev => prev.map(app => 
-        app.id === appId ? { ...app, status } : app
-      ));
+      setApps((prev) =>
+        prev.map((app) => (app.id === appId ? { ...app, status } : app)),
+      );
     });
 
     appManagementService.onDownloadProgress(({ appId, progress, message }) => {
-      setDownloadProgress(prev => ({ ...prev, [appId]: progress }));
+      setDownloadProgress((prev) => ({ ...prev, [appId]: progress }));
     });
 
     appManagementService.onInstallationProgress((data) => {
-      setInstallationProgress(prev => ({ ...prev, [data.appId]: data }));
+      setInstallationProgress((prev) => ({ ...prev, [data.appId]: data }));
     });
 
     appManagementService.onAppInstalled((app) => {
-      setApps(prev => prev.map(a => 
-        a.id === app.id ? { ...a, isInstalled: true, status: 'installed' } : a
-      ));
+      setApps((prev) =>
+        prev.map((a) =>
+          a.id === app.id
+            ? { ...a, isInstalled: true, status: "installed" }
+            : a,
+        ),
+      );
     });
 
     appManagementService.onAppUpdated(({ app, updateInfo }) => {
-      setApps(prev => prev.map(a => 
-        a.id === app.id ? { ...a, version: updateInfo.newVersion, isUpdating: false } : a
-      ));
+      setApps((prev) =>
+        prev.map((a) =>
+          a.id === app.id
+            ? { ...a, version: updateInfo.newVersion, isUpdating: false }
+            : a,
+        ),
+      );
     });
 
     appManagementService.onAppError(({ appId, error }) => {
@@ -118,25 +138,28 @@ export default function AppManager() {
 
     appManagementService.onUpdateAvailable(({ app, update }) => {
       // Show update notification
-      console.log(`Update available for ${app.displayName}: v${update.newVersion}`);
+      console.log(
+        `Update available for ${app.displayName}: v${update.newVersion}`,
+      );
     });
 
     appManagementService.onTroubleshootingCompleted(({ appId, issues }) => {
-      setTroubleshootingResults(prev => ({ ...prev, [appId]: issues }));
+      setTroubleshootingResults((prev) => ({ ...prev, [appId]: issues }));
     });
   };
 
   const filterApps = () => {
     let filtered = apps;
 
-    if (selectedCategory !== 'all') {
-      filtered = filtered.filter(app => app.category === selectedCategory);
+    if (selectedCategory !== "all") {
+      filtered = filtered.filter((app) => app.category === selectedCategory);
     }
 
     if (searchQuery) {
-      filtered = filtered.filter(app => 
-        app.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        app.description.toLowerCase().includes(searchQuery.toLowerCase())
+      filtered = filtered.filter(
+        (app) =>
+          app.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          app.description.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     }
 
@@ -147,7 +170,7 @@ export default function AppManager() {
     try {
       await appManagementService.downloadApp(appId);
     } catch (error) {
-      console.error('Download failed:', error);
+      console.error("Download failed:", error);
     }
   };
 
@@ -155,7 +178,7 @@ export default function AppManager() {
     try {
       await appManagementService.updateApp(appId);
     } catch (error) {
-      console.error('Update failed:', error);
+      console.error("Update failed:", error);
     }
   };
 
@@ -163,7 +186,7 @@ export default function AppManager() {
     try {
       await appManagementService.troubleshootApp(appId);
     } catch (error) {
-      console.error('Troubleshooting failed:', error);
+      console.error("Troubleshooting failed:", error);
     }
   };
 
@@ -173,31 +196,43 @@ export default function AppManager() {
   };
 
   const formatFileSize = (bytes: number): string => {
-    const sizes = ['B', 'KB', 'MB', 'GB'];
-    if (bytes === 0) return '0 B';
+    const sizes = ["B", "KB", "MB", "GB"];
+    if (bytes === 0) return "0 B";
     const i = Math.floor(Math.log(bytes) / Math.log(1024));
-    return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+    return Math.round((bytes / Math.pow(1024, i)) * 100) / 100 + " " + sizes[i];
   };
 
   const getStatusColor = (status: string): string => {
     switch (status) {
-      case 'installed': return 'bg-green-500';
-      case 'downloading': return 'bg-blue-500';
-      case 'installing': return 'bg-yellow-500';
-      case 'updating': return 'bg-purple-500';
-      case 'error': return 'bg-red-500';
-      default: return 'bg-gray-500';
+      case "installed":
+        return "bg-green-500";
+      case "downloading":
+        return "bg-blue-500";
+      case "installing":
+        return "bg-yellow-500";
+      case "updating":
+        return "bg-purple-500";
+      case "error":
+        return "bg-red-500";
+      default:
+        return "bg-gray-500";
     }
   };
 
   const getStatusText = (status: string): string => {
     switch (status) {
-      case 'installed': return 'Installed';
-      case 'downloading': return 'Downloading';
-      case 'installing': return 'Installing';
-      case 'updating': return 'Updating';
-      case 'error': return 'Error';
-      default: return 'Available';
+      case "installed":
+        return "Installed";
+      case "downloading":
+        return "Downloading";
+      case "installing":
+        return "Installing";
+      case "updating":
+        return "Updating";
+      case "error":
+        return "Error";
+      default:
+        return "Available";
     }
   };
 
@@ -221,17 +256,21 @@ export default function AppManager() {
               {getStatusText(app.status)}
             </Badge>
             {app.isInstalled && (
-              <Button size="sm" variant="outline" onClick={() => handleUpdate(app.id)}>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => handleUpdate(app.id)}
+              >
                 <Update className="h-4 w-4" />
               </Button>
             )}
           </div>
         </div>
       </CardHeader>
-      
+
       <CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">{app.description}</p>
-        
+
         {downloadProgress[app.id] !== undefined && (
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
@@ -248,7 +287,10 @@ export default function AppManager() {
               <span>{installationProgress[app.id].message}</span>
               <span>{installationProgress[app.id].progress}%</span>
             </div>
-            <Progress value={installationProgress[app.id].progress} className="h-2" />
+            <Progress
+              value={installationProgress[app.id].progress}
+              className="h-2"
+            />
           </div>
         )}
 
@@ -256,10 +298,10 @@ export default function AppManager() {
           <Alert>
             <Wrench className="h-4 w-4" />
             <AlertDescription>
-              Found {troubleshootingResults[app.id].length} issues. 
-              {troubleshootingResults[app.id].some((issue: any) => issue.severity === 'high') && 
-                ' High priority issues detected.'
-              }
+              Found {troubleshootingResults[app.id].length} issues.
+              {troubleshootingResults[app.id].some(
+                (issue: any) => issue.severity === "high",
+              ) && " High priority issues detected."}
             </AlertDescription>
           </Alert>
         )}
@@ -267,7 +309,11 @@ export default function AppManager() {
         <div className="flex items-center justify-between pt-2">
           <div className="flex items-center space-x-2">
             {app.isInstalled ? (
-              <Button size="sm" variant="outline" onClick={() => handleTroubleshoot(app.id)}>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => handleTroubleshoot(app.id)}
+              >
                 <Wrench className="h-4 w-4 mr-1" />
                 Troubleshoot
               </Button>
@@ -278,7 +324,7 @@ export default function AppManager() {
               </Button>
             )}
           </div>
-          
+
           <div className="flex items-center space-x-1">
             <Button size="sm" variant="ghost">
               <Info className="h-4 w-4" />
@@ -293,30 +339,45 @@ export default function AppManager() {
   );
 
   const renderAppList = (app: App) => (
-    <div key={app.id} className="flex items-center justify-between p-4 border rounded-lg">
+    <div
+      key={app.id}
+      className="flex items-center justify-between p-4 border rounded-lg"
+    >
       <div className="flex items-center space-x-4">
         <div className="text-2xl">{app.icon}</div>
         <div>
           <h3 className="font-semibold">Q-Alpha {app.displayName}</h3>
           <p className="text-sm text-muted-foreground">{app.description}</p>
           <div className="flex items-center space-x-2 mt-1">
-            <Badge variant="outline" className="text-xs">v{app.version}</Badge>
-            <Badge variant="outline" className="text-xs">{formatFileSize(app.size)}</Badge>
+            <Badge variant="outline" className="text-xs">
+              v{app.version}
+            </Badge>
+            <Badge variant="outline" className="text-xs">
+              {formatFileSize(app.size)}
+            </Badge>
             <Badge className={`text-xs ${getStatusColor(app.status)}`}>
               {getStatusText(app.status)}
             </Badge>
           </div>
         </div>
       </div>
-      
+
       <div className="flex items-center space-x-2">
         {app.isInstalled ? (
           <>
-            <Button size="sm" variant="outline" onClick={() => handleUpdate(app.id)}>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => handleUpdate(app.id)}
+            >
               <Update className="h-4 w-4 mr-1" />
               Update
             </Button>
-            <Button size="sm" variant="outline" onClick={() => handleTroubleshoot(app.id)}>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => handleTroubleshoot(app.id)}
+            >
               <Wrench className="h-4 w-4 mr-1" />
               Fix
             </Button>
@@ -369,12 +430,14 @@ export default function AppManager() {
                   className="pl-10"
                 />
               </div>
-              
+
               <div className="flex items-center space-x-2">
-                {categories.map(category => (
+                {categories.map((category) => (
                   <Button
                     key={category.id}
-                    variant={selectedCategory === category.id ? "default" : "outline"}
+                    variant={
+                      selectedCategory === category.id ? "default" : "outline"
+                    }
                     size="sm"
                     onClick={() => setSelectedCategory(category.id)}
                   >
@@ -387,16 +450,16 @@ export default function AppManager() {
 
             <div className="flex items-center space-x-2">
               <Button
-                variant={viewMode === 'grid' ? 'default' : 'outline'}
+                variant={viewMode === "grid" ? "default" : "outline"}
                 size="sm"
-                onClick={() => setViewMode('grid')}
+                onClick={() => setViewMode("grid")}
               >
                 <Grid className="h-4 w-4" />
               </Button>
               <Button
-                variant={viewMode === 'list' ? 'default' : 'outline'}
+                variant={viewMode === "list" ? "default" : "outline"}
                 size="sm"
-                onClick={() => setViewMode('list')}
+                onClick={() => setViewMode("list")}
               >
                 <List className="h-4 w-4" />
               </Button>
@@ -404,14 +467,12 @@ export default function AppManager() {
           </div>
 
           {/* Apps Grid/List */}
-          {viewMode === 'grid' ? (
+          {viewMode === "grid" ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredApps.map(renderAppCard)}
             </div>
           ) : (
-            <div className="space-y-4">
-              {filteredApps.map(renderAppList)}
-            </div>
+            <div className="space-y-4">{filteredApps.map(renderAppList)}</div>
           )}
 
           {filteredApps.length === 0 && (
@@ -438,26 +499,41 @@ export default function AppManager() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {apps.filter(app => app.isInstalled && app.status === 'available').map(app => (
-                  <div key={app.id} className="flex items-center justify-between p-4 border rounded-lg">
-                    <div className="flex items-center space-x-3">
-                      <div className="text-2xl">{app.icon}</div>
-                      <div>
-                        <h3 className="font-semibold">Q-Alpha {app.displayName}</h3>
-                        <p className="text-sm text-muted-foreground">Current: v{app.version}</p>
+                {apps
+                  .filter(
+                    (app) => app.isInstalled && app.status === "available",
+                  )
+                  .map((app) => (
+                    <div
+                      key={app.id}
+                      className="flex items-center justify-between p-4 border rounded-lg"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className="text-2xl">{app.icon}</div>
+                        <div>
+                          <h3 className="font-semibold">
+                            Q-Alpha {app.displayName}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            Current: v{app.version}
+                          </p>
+                        </div>
                       </div>
+                      <Button onClick={() => handleUpdate(app.id)}>
+                        <Update className="h-4 w-4 mr-1" />
+                        Update
+                      </Button>
                     </div>
-                    <Button onClick={() => handleUpdate(app.id)}>
-                      <Update className="h-4 w-4 mr-1" />
-                      Update
-                    </Button>
-                  </div>
-                ))}
-                
-                {apps.filter(app => app.isInstalled && app.status === 'available').length === 0 && (
+                  ))}
+
+                {apps.filter(
+                  (app) => app.isInstalled && app.status === "available",
+                ).length === 0 && (
                   <div className="text-center py-8">
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">All apps are up to date!</h3>
+                    <h3 className="text-lg font-semibold mb-2">
+                      All apps are up to date!
+                    </h3>
                     <p className="text-muted-foreground">
                       Your Q-Alpha apps are running the latest versions
                     </p>
@@ -481,21 +557,33 @@ export default function AppManager() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {apps.filter(app => app.isInstalled).map(app => (
-                  <div key={app.id} className="flex items-center justify-between p-4 border rounded-lg">
-                    <div className="flex items-center space-x-3">
-                      <div className="text-2xl">{app.icon}</div>
-                      <div>
-                        <h3 className="font-semibold">Q-Alpha {app.displayName}</h3>
-                        <p className="text-sm text-muted-foreground">v{app.version}</p>
+                {apps
+                  .filter((app) => app.isInstalled)
+                  .map((app) => (
+                    <div
+                      key={app.id}
+                      className="flex items-center justify-between p-4 border rounded-lg"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className="text-2xl">{app.icon}</div>
+                        <div>
+                          <h3 className="font-semibold">
+                            Q-Alpha {app.displayName}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            v{app.version}
+                          </p>
+                        </div>
                       </div>
+                      <Button
+                        variant="outline"
+                        onClick={() => handleTroubleshoot(app.id)}
+                      >
+                        <Wrench className="h-4 w-4 mr-1" />
+                        Troubleshoot
+                      </Button>
                     </div>
-                    <Button variant="outline" onClick={() => handleTroubleshoot(app.id)}>
-                      <Wrench className="h-4 w-4 mr-1" />
-                      Troubleshoot
-                    </Button>
-                  </div>
-                ))}
+                  ))}
               </div>
             </CardContent>
           </Card>
@@ -563,4 +651,4 @@ export default function AppManager() {
       </Tabs>
     </div>
   );
-} 
+}

@@ -3,6 +3,7 @@
 ## QMOI Multi-Device Management & Optimization
 
 ### Overview
+
 QMOI operates across multiple devices and platforms, with QCity serving as the primary device while local devices act as thin clients. This system ensures optimal performance, reliability, and resource utilization across all environments.
 
 ---
@@ -10,6 +11,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 1. Device Architecture
 
 ### Primary Device: QCity
+
 - **Role:** Main computing hub for all QMOI operations
 - **Location:** Cloud environments (Colab, DagsHub, HuggingFace)
 - **Capabilities:** Unlimited resources, 24/7 availability, AI/ML processing
@@ -17,6 +19,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Status:** Always-on with automatic failover and recovery
 
 ### Local Devices: Thin Clients
+
 - **Role:** User interface and interaction layer
 - **Capabilities:** UI rendering, user input, basic processing
 - **Responsibilities:** Display, user interaction, local caching
@@ -24,6 +27,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Dependencies:** Internet connection for QCity communication
 
 ### Secondary Devices: Specialized
+
 - **Edge Devices:** IoT devices, mobile phones, tablets
 - **Specialized Hardware:** GPUs, TPUs, quantum computers
 - **Cloud Instances:** Additional cloud resources for scaling
@@ -34,6 +38,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 2. Device Coordination
 
 ### Resource Distribution
+
 - **Task Allocation:** Intelligent task distribution across devices
 - **Load Balancing:** Dynamic load balancing based on device capabilities
 - **Resource Optimization:** Optimal resource utilization across all devices
@@ -41,6 +46,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Failover Management:** Automatic failover and recovery procedures
 
 ### Communication Protocol
+
 - **Real-Time Sync:** Real-time synchronization between devices
 - **Data Consistency:** Ensures data consistency across all devices
 - **Conflict Resolution:** Automatic conflict resolution and merging
@@ -48,6 +54,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **State Management:** Centralized state management and coordination
 
 ### Security & Privacy
+
 - **Encrypted Communication:** End-to-end encryption for all device communication
 - **Authentication:** Multi-factor authentication across all devices
 - **Access Control:** Role-based access control for device management
@@ -59,6 +66,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 3. Device Optimization
 
 ### Performance Optimization
+
 - **Resource Allocation:** Optimal resource allocation based on device capabilities
 - **Caching Strategy:** Intelligent caching across device hierarchy
 - **Compression:** Data compression for efficient transfer and storage
@@ -66,6 +74,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Load Distribution:** Intelligent load distribution and balancing
 
 ### Energy Efficiency
+
 - **Power Management:** Intelligent power management for all devices
 - **Idle Optimization:** Optimization during idle periods
 - **Green Computing:** Environmentally friendly computing practices
@@ -73,6 +82,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Thermal Management:** Thermal management for high-performance devices
 
 ### Cost Optimization
+
 - **Resource Utilization:** Optimal resource utilization to minimize costs
 - **Cloud Cost Management:** Intelligent cloud cost management
 - **Spot Instance Usage:** Strategic use of spot instances for cost savings
@@ -84,6 +94,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 4. Device Types & Capabilities
 
 ### High-Performance Devices
+
 - **GPU Servers:** High-performance GPU servers for AI/ML tasks
 - **TPU Clusters:** Tensor Processing Unit clusters for specialized AI
 - **Quantum Computers:** Quantum computing resources for advanced algorithms
@@ -91,6 +102,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Edge Computing:** Edge computing devices for low-latency processing
 
 ### Standard Devices
+
 - **Desktop Computers:** Standard desktop computers for general tasks
 - **Laptops:** Portable computing devices for mobile work
 - **Tablets:** Touch-based devices for intuitive interaction
@@ -98,6 +110,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **IoT Devices:** Internet of Things devices for specialized tasks
 
 ### Specialized Devices
+
 - **VR/AR Devices:** Virtual and augmented reality devices
 - **Robotics:** Robotic devices for physical interaction
 - **Sensors:** Sensor networks for data collection
@@ -109,6 +122,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 5. Device Management
 
 ### Configuration Management
+
 - **Centralized Configuration:** Centralized configuration management
 - **Device Profiles:** Custom device profiles for different use cases
 - **Automated Setup:** Automated device setup and configuration
@@ -116,6 +130,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Version Control:** Version control for device configurations
 
 ### Monitoring & Analytics
+
 - **Device Health:** Real-time device health monitoring
 - **Performance Metrics:** Comprehensive performance metrics collection
 - **Usage Analytics:** Device usage analytics and insights
@@ -123,6 +138,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Predictive Maintenance:** Predictive maintenance for device optimization
 
 ### Update Management
+
 - **Automated Updates:** Automated software and firmware updates
 - **Rollback Capability:** Instant rollback to previous versions
 - **Update Scheduling:** Intelligent update scheduling and coordination
@@ -134,6 +150,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 6. Device Security
 
 ### Security Framework
+
 - **Zero-Trust Security:** Zero-trust security architecture across all devices
 - **Multi-Layer Protection:** Multi-layer security protection
 - **Threat Detection:** AI-powered threat detection and prevention
@@ -141,6 +158,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Security Auditing:** Regular security audits and assessments
 
 ### Access Control
+
 - **Multi-Factor Authentication:** Multi-factor authentication for all devices
 - **Role-Based Access:** Role-based access control and permissions
 - **Device Authentication:** Device-level authentication and verification
@@ -148,6 +166,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Access Logging:** Comprehensive access logging and monitoring
 
 ### Data Protection
+
 - **Encryption:** End-to-end encryption for all data
 - **Data Masking:** Sensitive data masking and protection
 - **Backup Security:** Secure backup and recovery procedures
@@ -159,6 +178,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 7. Device Integration
 
 ### API Integration
+
 - **RESTful APIs:** Comprehensive REST API for device management
 - **GraphQL:** Flexible GraphQL API for complex device queries
 - **WebSocket:** Real-time communication between devices
@@ -166,6 +186,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **SDK Support:** Multiple language SDKs for device integration
 
 ### Third-Party Integration
+
 - **Cloud Providers:** Integration with major cloud service providers
 - **IoT Platforms:** Integration with IoT platforms and devices
 - **Development Tools:** Integration with development and DevOps tools
@@ -173,6 +194,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Security Tools:** Integration with security and compliance tools
 
 ### Custom Integration
+
 - **Custom APIs:** Support for custom API development
 - **Plugin Architecture:** Extensible plugin architecture for devices
 - **Workflow Automation:** Custom workflow automation for devices
@@ -184,6 +206,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 8. Device Performance
 
 ### Optimization Strategies
+
 - **Resource Optimization:** Optimal resource utilization across devices
 - **Caching Strategy:** Intelligent caching for improved performance
 - **Load Balancing:** Dynamic load balancing across device network
@@ -191,6 +214,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Performance Tuning:** Continuous performance tuning and optimization
 
 ### Monitoring & Analytics
+
 - **Real-Time Monitoring:** Real-time performance monitoring
 - **Performance Metrics:** Comprehensive performance metrics collection
 - **Bottleneck Analysis:** Automatic bottleneck detection and analysis
@@ -198,6 +222,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Capacity Planning:** Predictive capacity planning and scaling
 
 ### Benchmarking
+
 - **Performance Benchmarks:** Comprehensive performance benchmarking
 - **Comparative Analysis:** Comparative analysis across device types
 - **Optimization Recommendations:** AI-powered optimization recommendations
@@ -209,6 +234,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 9. Device Reliability
 
 ### Fault Tolerance
+
 - **Redundant Systems:** Multiple redundant systems for reliability
 - **Auto-Failover:** Automatic failover to backup devices
 - **Data Replication:** Real-time data replication across devices
@@ -216,6 +242,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Disaster Recovery:** Complete disaster recovery capabilities
 
 ### Self-Healing
+
 - **Automatic Detection:** Automatic detection of device issues
 - **Self-Repair:** Automatic repair of detected problems
 - **Health Monitoring:** Continuous health monitoring and assessment
@@ -223,6 +250,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Resource Management:** Intelligent resource management and allocation
 
 ### Maintenance
+
 - **Predictive Maintenance:** Predictive maintenance and failure prevention
 - **Automated Maintenance:** Automated maintenance procedures
 - **Maintenance Scheduling:** Intelligent maintenance scheduling
@@ -234,6 +262,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 10. Device Scalability
 
 ### Horizontal Scaling
+
 - **Device Clustering:** Device clustering for horizontal scaling
 - **Load Distribution:** Intelligent load distribution across clusters
 - **Auto-Scaling:** Automatic scaling based on demand
@@ -241,6 +270,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Performance Monitoring:** Real-time performance monitoring and optimization
 
 ### Vertical Scaling
+
 - **Resource Upgrading:** Dynamic resource upgrading and allocation
 - **Performance Optimization:** Continuous performance optimization
 - **Capacity Planning:** Predictive capacity planning and scaling
@@ -248,6 +278,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Performance Tuning:** Continuous performance tuning and optimization
 
 ### Elastic Scaling
+
 - **Dynamic Scaling:** Dynamic scaling based on demand
 - **Resource Allocation:** Elastic resource allocation and deallocation
 - **Performance Optimization:** Real-time performance optimization
@@ -259,6 +290,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 11. Device Analytics
 
 ### Usage Analytics
+
 - **Device Usage:** Comprehensive device usage analytics
 - **User Behavior:** User behavior analysis across devices
 - **Performance Metrics:** Performance metrics and analysis
@@ -266,6 +298,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Error Analysis:** Error analysis and troubleshooting
 
 ### Business Intelligence
+
 - **Data Visualization:** Advanced data visualization and reporting
 - **Predictive Analytics:** AI-powered predictive analytics
 - **Trend Analysis:** Trend analysis and forecasting
@@ -273,6 +306,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Custom Reports:** Custom report generation and scheduling
 
 ### Operational Analytics
+
 - **Operational Metrics:** Comprehensive operational metrics
 - **Efficiency Analysis:** Efficiency analysis and optimization
 - **Cost Analysis:** Cost analysis and optimization
@@ -284,6 +318,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 12. Future Enhancements
 
 ### Technology Evolution
+
 - **Quantum Computing:** Integration with quantum computing devices
 - **Edge Computing:** Advanced edge computing capabilities
 - **5G Optimization:** 5G network optimization for devices
@@ -291,6 +326,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Blockchain Integration:** Blockchain integration for device management
 
 ### AI/ML Integration
+
 - **AI-Powered Management:** AI-powered device management
 - **Machine Learning:** Machine learning for device optimization
 - **Predictive Analytics:** Advanced predictive analytics
@@ -298,6 +334,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Intelligent Routing:** Intelligent task routing across devices
 
 ### Performance Improvements
+
 - **Next-Gen Hardware:** Integration with next-generation hardware
 - **Advanced Networking:** High-speed networking and connectivity
 - **Optimized Algorithms:** Advanced optimization algorithms
@@ -309,6 +346,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ## 13. Best Practices
 
 ### Device Management
+
 - **Regular Monitoring:** Regular device monitoring and maintenance
 - **Performance Optimization:** Continuous performance optimization
 - **Security Updates:** Regular security updates and patches
@@ -316,6 +354,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Capacity Planning:** Proactive capacity planning and scaling
 
 ### Development Practices
+
 - **Cross-Platform Development:** Cross-platform development best practices
 - **Testing Strategy:** Comprehensive testing across all devices
 - **Documentation:** Complete and up-to-date documentation
@@ -323,6 +362,7 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 - **Code Review:** Regular code review and quality checks
 
 ### Security Practices
+
 - **Security Awareness:** Regular security awareness training
 - **Access Control:** Strict access control and authentication
 - **Data Protection:** Comprehensive data protection measures
@@ -332,16 +372,20 @@ QMOI operates across multiple devices and platforms, with QCity serving as the p
 ---
 
 ## QCity Runners Engine: Orchestrator for Device Management
+
 QMOI now uses the QCity Runners Engine (see QCITYRUNNERSENGINE.md) to orchestrate all device management, optimization, and self-healing. All devices:
+
 - Continuously self-check, auto-fix, and auto-update
 - Learn from errors, usage, and performance to evolve and optimize
 - Can auto-improve their own configs, scripts, and suggest code changes (Self-Developer)
 - Are monitored and managed via the dashboard with live status and audit logs
 
 ### Self-Developer Devices
+
 Devices can now auto-improve their own configurations, scripts, and even suggest or apply code changes to optimize performance and reliability.
 
 ### Ever-Evolving Devices
+
 Devices learn from errors, usage patterns, and performance data, adapting automatically to new requirements and environments.
 
-See also: QCITYRUNNERSENGINE.md, QCITYREADME.md 
+See also: QCITYRUNNERSENGINE.md, QCITYREADME.md

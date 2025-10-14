@@ -5,27 +5,51 @@ export interface DeviceIntegration {
 }
 
 export const TVDecoderIntegration: DeviceIntegration = {
-  async connect() { /* TODO: Implement HDMI-CEC/DLNA connect */ return true; },
-  async sendCommand(cmd) { /* TODO: Implement TV/decoder command */ return {}; },
-  async autoDetect() { /* TODO: Auto-detect TV/decoder */ return true; }
+  async connect() {
+    /* TODO: Implement HDMI-CEC/DLNA connect */ return true;
+  },
+  async sendCommand(cmd) {
+    /* TODO: Implement TV/decoder command */ return {};
+  },
+  async autoDetect() {
+    /* TODO: Auto-detect TV/decoder */ return true;
+  },
 };
 
 export const CarRadioIntegration: DeviceIntegration = {
-  async connect() { /* TODO: Implement Bluetooth/Auto/CarPlay connect */ return true; },
-  async sendCommand(cmd) { /* TODO: Implement car radio command */ return {}; },
-  async autoDetect() { /* TODO: Auto-detect car radio */ return true; }
+  async connect() {
+    /* TODO: Implement Bluetooth/Auto/CarPlay connect */ return true;
+  },
+  async sendCommand(cmd) {
+    /* TODO: Implement car radio command */ return {};
+  },
+  async autoDetect() {
+    /* TODO: Auto-detect car radio */ return true;
+  },
 };
 
 export const SmartHomeIntegration: DeviceIntegration = {
-  async connect() { /* TODO: Implement MQTT/Zigbee/Z-Wave connect */ return true; },
-  async sendCommand(cmd) { /* TODO: Implement smart home command */ return {}; },
-  async autoDetect() { /* TODO: Auto-detect smart home */ return true; }
+  async connect() {
+    /* TODO: Implement MQTT/Zigbee/Z-Wave connect */ return true;
+  },
+  async sendCommand(cmd) {
+    /* TODO: Implement smart home command */ return {};
+  },
+  async autoDetect() {
+    /* TODO: Auto-detect smart home */ return true;
+  },
 };
 
 export const WhatsAppIntegration: DeviceIntegration = {
-  async connect() { /* TODO: Implement WhatsApp connect */ return true; },
-  async sendCommand(cmd) { /* TODO: Implement WhatsApp command */ return {}; },
-  async autoDetect() { /* TODO: Auto-detect WhatsApp */ return true; }
+  async connect() {
+    /* TODO: Implement WhatsApp connect */ return true;
+  },
+  async sendCommand(cmd) {
+    /* TODO: Implement WhatsApp command */ return {};
+  },
+  async autoDetect() {
+    /* TODO: Auto-detect WhatsApp */ return true;
+  },
 };
 
 export const ColabDagshubIntegration: DeviceIntegration = {
@@ -43,7 +67,7 @@ export const ColabDagshubIntegration: DeviceIntegration = {
     console.log("Auto-detecting Colab/Dagshub environment...");
     // TODO: Implement real detection logic
     return true; // Simulate detection
-  }
+  },
 };
 
 export const AWSIntegration: DeviceIntegration = {
@@ -63,14 +87,24 @@ export const AWSIntegration: DeviceIntegration = {
     console.log("Auto-detecting AWS environment...");
     // TODO: Implement AWS environment detection
     return true;
-  }
+  },
 };
 
-let azureCreds: { tenantId: string; clientId: string; clientSecret: string; subscriptionId: string } | null = null;
+let azureCreds: {
+  tenantId: string;
+  clientId: string;
+  clientSecret: string;
+  subscriptionId: string;
+} | null = null;
 // import { DefaultAzureCredential } from '@azure/identity';
 // import { ResourceManagementClient } from '@azure/arm-resources';
 export const AzureIntegration: DeviceIntegration = {
-  async connect(creds?: { tenantId: string; clientId: string; clientSecret: string; subscriptionId: string }) {
+  async connect(creds?: {
+    tenantId: string;
+    clientId: string;
+    clientSecret: string;
+    subscriptionId: string;
+  }) {
     console.log("Connecting to Azure...");
     if (creds) azureCreds = creds;
     // For demo: store in-memory. For production, use secure storage.
@@ -94,7 +128,7 @@ export const AzureIntegration: DeviceIntegration = {
     // const client = new ResourceManagementClient(credential, azureCreds.subscriptionId);
     // return await client.resourceGroups.list();
     return ["demo-rg-1", "demo-rg-2"];
-  }
+  },
 };
 
 let gcpCreds: { projectId: string; keyFilename: string } | null = null;
@@ -122,7 +156,7 @@ export const GCPIntegration: DeviceIntegration = {
     // const storage = new Storage({ projectId: gcpCreds.projectId, keyFilename: gcpCreds.keyFilename });
     // return await storage.getBuckets();
     return ["demo-gcp-bucket-1", "demo-gcp-bucket-2"];
-  }
+  },
 };
 
 export const IoTIntegration: DeviceIntegration = {
@@ -140,7 +174,7 @@ export const IoTIntegration: DeviceIntegration = {
     console.log("Auto-detecting IoT device...");
     // TODO: Implement IoT device detection
     return true;
-  }
+  },
 };
 
 export const MobileIntegration: DeviceIntegration = {
@@ -158,5 +192,5 @@ export const MobileIntegration: DeviceIntegration = {
     console.log("Auto-detecting Mobile device...");
     // TODO: Implement mobile device detection
     return true;
-  }
-}; 
+  },
+};

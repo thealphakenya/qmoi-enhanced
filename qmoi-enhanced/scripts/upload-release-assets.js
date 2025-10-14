@@ -1,21 +1,21 @@
 // scripts/upload-release-assets.js
-const fs = require('fs');
-const path = require('path');
-const axios = require('axios');
-const { execSync } = require('child_process');
+const fs = require("fs");
+const path = require("path");
+const axios = require("axios");
+const { execSync } = require("child_process");
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const OWNER = 'thealphakenya';
-const REPO = 'Alpha-Q-ai';
+const OWNER = "thealphakenya";
+const REPO = "Alpha-Q-ai";
 
 if (!GITHUB_TOKEN) {
-  console.error('❌ GITHUB_TOKEN is missing in environment.');
+  console.error("❌ GITHUB_TOKEN is missing in environment.");
   process.exit(1);
 }
 
-const releaseInfoPath = 'release.json';
+const releaseInfoPath = "release.json";
 if (!fs.existsSync(releaseInfoPath)) {
-  console.error('❌ Missing release.json');
+  console.error("❌ Missing release.json");
   process.exit(1);
 }
 const releaseInfo = JSON.parse(fs.readFileSync(releaseInfoPath));
@@ -28,22 +28,22 @@ async function createRelease() {
       name: releaseInfo.title,
       body: releaseInfo.changelog,
       draft: false,
-      prerelease: false
+      prerelease: false,
     },
     {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
-        Accept: 'application/vnd.github.v3+json'
-      }
-    }
+        Accept: "application/vnd.github.v3+json",
+      },
+    },
   );
-  return res.data.upload_url.split('{')[0];
+  return res.data.upload_url.split("{")[0];
 }
 
 async function uploadAsset(uploadUrl, filePath) {
   const fileName = path.basename(filePath);
   const content = fs.readFileSync(filePath);
-  const contentType = 'application/octet-stream';
+  const contentType = "application/octet-stream";
 
   const uploadRes = await axios.post(
     `${uploadUrl}?name=${encodeURIComponent(fileName)}`,
@@ -51,10 +51,10 @@ async function uploadAsset(uploadUrl, filePath) {
     {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
-        'Content-Type': contentType,
-        'Content-Length': content.length
-      }
-    }
+        "Content-Type": contentType,
+        "Content-Length": content.length,
+      },
+    },
   );
   console.log(`✅ Uploaded: ${fileName}`);
 }
@@ -63,7 +63,7 @@ async function uploadAsset(uploadUrl, filePath) {
   const uploadUrl = await createRelease();
   const files = [];
 
-  const platforms = fs.readdirSync('Qmoi_apps');
+  const platforms = fs.readdirSync("Qmoi_apps");
   platforms.forEach((platform) => {
     const subDir = `Qmoi_apps/${platform}`;
     if (fs.statSync(subDir).isDirectory()) {
@@ -77,5 +77,5 @@ async function uploadAsset(uploadUrl, filePath) {
     await uploadAsset(uploadUrl, file);
   }
 
-  console.log('🚀 All release assets uploaded successfully.');
+  console.log("🚀 All release assets uploaded successfully.");
 })();

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Container,
@@ -30,8 +30,8 @@ import {
   FormControlLabel,
   Accordion,
   AccordionSummary,
-  AccordionDetails
-} from '@mui/material';
+  AccordionDetails,
+} from "@mui/material";
 import {
   Face,
   Mic,
@@ -51,8 +51,8 @@ import {
   CameraAlt,
   MicNone,
   TouchApp,
-  Visibility as IrisIcon
-} from '@mui/icons-material';
+  Visibility as IrisIcon,
+} from "@mui/icons-material";
 
 interface BiometricTemplate {
   id: number;
@@ -87,24 +87,32 @@ interface QMOIBiometricManagerProps {
   isMaster: boolean;
 }
 
-const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster }) => {
+const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
+  isMaster,
+}) => {
   const [activeTab, setActiveTab] = useState(0);
-  const [biometricTemplates, setBiometricTemplates] = useState<BiometricTemplate[]>([]);
+  const [biometricTemplates, setBiometricTemplates] = useState<
+    BiometricTemplate[]
+  >([]);
   const [accountLogs, setAccountLogs] = useState<AccountCreationLog[]>([]);
   const [recoveryLogs, setRecoveryLogs] = useState<PasswordRecoveryLog[]>([]);
   const [enrollmentDialog, setEnrollmentDialog] = useState(false);
   const [recoveryDialog, setRecoveryDialog] = useState(false);
   const [accountCreationDialog, setAccountCreationDialog] = useState(false);
-  const [selectedBiometricType, setSelectedBiometricType] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [selectedBiometricType, setSelectedBiometricType] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' as 'success' | 'error' });
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success" as "success" | "error",
+  });
   const [biometricSettings, setBiometricSettings] = useState({
     face: { enabled: true, threshold: 0.6 },
     voice: { enabled: true, threshold: 0.7 },
     fingerprint: { enabled: true, threshold: 0.8 },
-    iris: { enabled: true, threshold: 0.9 }
+    iris: { enabled: true, threshold: 0.9 },
   });
 
   useEffect(() => {
@@ -119,14 +127,38 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
     try {
       // Simulate API call to load biometric templates
       const templates = [
-        { id: 1, type: 'face', quality: 0.95, created_at: '2024-01-15T10:30:00Z', status: 'active' },
-        { id: 2, type: 'voice', quality: 0.88, created_at: '2024-01-15T10:35:00Z', status: 'active' },
-        { id: 3, type: 'fingerprint', quality: 0.92, created_at: '2024-01-15T10:40:00Z', status: 'active' },
-        { id: 4, type: 'iris', quality: 0.98, created_at: '2024-01-15T10:45:00Z', status: 'active' }
+        {
+          id: 1,
+          type: "face",
+          quality: 0.95,
+          created_at: "2024-01-15T10:30:00Z",
+          status: "active",
+        },
+        {
+          id: 2,
+          type: "voice",
+          quality: 0.88,
+          created_at: "2024-01-15T10:35:00Z",
+          status: "active",
+        },
+        {
+          id: 3,
+          type: "fingerprint",
+          quality: 0.92,
+          created_at: "2024-01-15T10:40:00Z",
+          status: "active",
+        },
+        {
+          id: 4,
+          type: "iris",
+          quality: 0.98,
+          created_at: "2024-01-15T10:45:00Z",
+          status: "active",
+        },
       ];
       setBiometricTemplates(templates);
     } catch (error) {
-      console.error('Error loading biometric data:', error);
+      console.error("Error loading biometric data:", error);
     }
   };
 
@@ -136,41 +168,41 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
       const logs = [
         {
           id: 1,
-          platform: 'GitHub',
-          username: 'qmoi_github_user',
-          email: 'qmoi_github@qmoi.com',
-          purpose: 'QMOI automation',
-          reason: 'Automated GitHub integration',
+          platform: "GitHub",
+          username: "qmoi_github_user",
+          email: "qmoi_github@qmoi.com",
+          purpose: "QMOI automation",
+          reason: "Automated GitHub integration",
           age: 25,
-          created_at: '2024-01-15T10:30:00Z',
-          status: 'created'
+          created_at: "2024-01-15T10:30:00Z",
+          status: "created",
         },
         {
           id: 2,
-          platform: 'GitLab',
-          username: 'qmoi_gitlab_user',
-          email: 'qmoi_gitlab@qmoi.com',
-          purpose: 'QMOI CI/CD',
-          reason: 'Automated GitLab integration',
+          platform: "GitLab",
+          username: "qmoi_gitlab_user",
+          email: "qmoi_gitlab@qmoi.com",
+          purpose: "QMOI CI/CD",
+          reason: "Automated GitLab integration",
           age: 25,
-          created_at: '2024-01-15T10:35:00Z',
-          status: 'created'
+          created_at: "2024-01-15T10:35:00Z",
+          status: "created",
         },
         {
           id: 3,
-          platform: 'Discord',
-          username: 'qmoi_discord_bot',
-          email: 'qmoi_discord@qmoi.com',
-          purpose: 'QMOI notifications',
-          reason: 'Automated Discord integration',
+          platform: "Discord",
+          username: "qmoi_discord_bot",
+          email: "qmoi_discord@qmoi.com",
+          purpose: "QMOI notifications",
+          reason: "Automated Discord integration",
           age: 25,
-          created_at: '2024-01-15T10:40:00Z',
-          status: 'created'
-        }
+          created_at: "2024-01-15T10:40:00Z",
+          status: "created",
+        },
       ];
       setAccountLogs(logs);
     } catch (error) {
-      console.error('Error loading account logs:', error);
+      console.error("Error loading account logs:", error);
     }
   };
 
@@ -180,24 +212,24 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
       const logs = [
         {
           id: 1,
-          username: 'testuser',
-          recovery_method: 'face',
-          status: 'success',
-          created_at: '2024-01-15T10:30:00Z',
-          completed_at: '2024-01-15T10:32:00Z'
+          username: "testuser",
+          recovery_method: "face",
+          status: "success",
+          created_at: "2024-01-15T10:30:00Z",
+          completed_at: "2024-01-15T10:32:00Z",
         },
         {
           id: 2,
-          username: 'admin',
-          recovery_method: 'voice',
-          status: 'success',
-          created_at: '2024-01-15T10:35:00Z',
-          completed_at: '2024-01-15T10:37:00Z'
-        }
+          username: "admin",
+          recovery_method: "voice",
+          status: "success",
+          created_at: "2024-01-15T10:35:00Z",
+          completed_at: "2024-01-15T10:37:00Z",
+        },
       ];
       setRecoveryLogs(logs);
     } catch (error) {
-      console.error('Error loading recovery logs:', error);
+      console.error("Error loading recovery logs:", error);
     }
   };
 
@@ -205,15 +237,27 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
     try {
       // Simulate biometric enrollment
       const result = await enrollBiometric(username, selectedBiometricType);
-      if (result.status === 'success') {
-        setSnackbar({ open: true, message: 'Biometric enrollment successful!', severity: 'success' });
+      if (result.status === "success") {
+        setSnackbar({
+          open: true,
+          message: "Biometric enrollment successful!",
+          severity: "success",
+        });
         setEnrollmentDialog(false);
         loadBiometricData();
       } else {
-        setSnackbar({ open: true, message: 'Biometric enrollment failed!', severity: 'error' });
+        setSnackbar({
+          open: true,
+          message: "Biometric enrollment failed!",
+          severity: "error",
+        });
       }
     } catch (error) {
-      setSnackbar({ open: true, message: 'Error during enrollment!', severity: 'error' });
+      setSnackbar({
+        open: true,
+        message: "Error during enrollment!",
+        severity: "error",
+      });
     }
   };
 
@@ -221,15 +265,27 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
     try {
       // Simulate password recovery
       const result = await recoverPassword(username, selectedBiometricType);
-      if (result.status === 'success') {
-        setSnackbar({ open: true, message: 'Password recovery successful!', severity: 'success' });
+      if (result.status === "success") {
+        setSnackbar({
+          open: true,
+          message: "Password recovery successful!",
+          severity: "success",
+        });
         setRecoveryDialog(false);
         loadRecoveryLogs();
       } else {
-        setSnackbar({ open: true, message: 'Password recovery failed!', severity: 'error' });
+        setSnackbar({
+          open: true,
+          message: "Password recovery failed!",
+          severity: "error",
+        });
       }
     } catch (error) {
-      setSnackbar({ open: true, message: 'Error during recovery!', severity: 'error' });
+      setSnackbar({
+        open: true,
+        message: "Error during recovery!",
+        severity: "error",
+      });
     }
   };
 
@@ -237,55 +293,77 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
     try {
       // Simulate account creation
       const result = await createAccount(username, selectedBiometricType);
-      if (result.status === 'success') {
-        setSnackbar({ open: true, message: 'Account created successfully!', severity: 'success' });
+      if (result.status === "success") {
+        setSnackbar({
+          open: true,
+          message: "Account created successfully!",
+          severity: "success",
+        });
         setAccountCreationDialog(false);
         loadAccountLogs();
       } else {
-        setSnackbar({ open: true, message: 'Account creation failed!', severity: 'error' });
+        setSnackbar({
+          open: true,
+          message: "Account creation failed!",
+          severity: "error",
+        });
       }
     } catch (error) {
-      setSnackbar({ open: true, message: 'Error creating account!', severity: 'error' });
+      setSnackbar({
+        open: true,
+        message: "Error creating account!",
+        severity: "error",
+      });
     }
   };
 
   // Simulated API functions
   const enrollBiometric = async (username: string, type: string) => {
-    return { status: 'success', message: 'Enrollment completed' };
+    return { status: "success", message: "Enrollment completed" };
   };
 
   const recoverPassword = async (username: string, type: string) => {
-    return { status: 'success', message: 'Password recovered' };
+    return { status: "success", message: "Password recovered" };
   };
 
   const createAccount = async (username: string, type: string) => {
-    return { status: 'success', message: 'Account created' };
+    return { status: "success", message: "Account created" };
   };
 
   const getBiometricIcon = (type: string) => {
     switch (type) {
-      case 'face': return <Face />;
-      case 'voice': return <Mic />;
-      case 'fingerprint': return <Fingerprint />;
-      case 'iris': return <IrisIcon />;
-      default: return <Security />;
+      case "face":
+        return <Face />;
+      case "voice":
+        return <Mic />;
+      case "fingerprint":
+        return <Fingerprint />;
+      case "iris":
+        return <IrisIcon />;
+      default:
+        return <Security />;
     }
   };
 
   const getBiometricColor = (type: string) => {
     switch (type) {
-      case 'face': return 'primary';
-      case 'voice': return 'secondary';
-      case 'fingerprint': return 'success';
-      case 'iris': return 'warning';
-      default: return 'default';
+      case "face":
+        return "primary";
+      case "voice":
+        return "secondary";
+      case "fingerprint":
+        return "success";
+      case "iris":
+        return "warning";
+      default:
+        return "default";
     }
   };
 
   if (!isMaster) {
     return (
       <Container maxWidth="md">
-        <Box sx={{ mt: 4, textAlign: 'center' }}>
+        <Box sx={{ mt: 4, textAlign: "center" }}>
           <Typography variant="h4" color="error">
             🔒 Master Access Required
           </Typography>
@@ -304,10 +382,15 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
           🔐 QMOI Biometric Management System
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-          Master-only biometric authentication, account management, and password recovery system
+          Master-only biometric authentication, account management, and password
+          recovery system
         </Typography>
 
-        <Tabs value={activeTab} onChange={(_, newValue) => setActiveTab(newValue)} sx={{ mb: 3 }}>
+        <Tabs
+          value={activeTab}
+          onChange={(_, newValue) => setActiveTab(newValue)}
+          sx={{ mb: 3 }}
+        >
           <Tab label="Biometric Templates" />
           <Tab label="Account Creation Logs" />
           <Tab label="Password Recovery Logs" />
@@ -317,7 +400,9 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
         {/* Biometric Templates Tab */}
         {activeTab === 0 && (
           <Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+            <Box
+              sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}
+            >
               <Typography variant="h5">Biometric Templates</Typography>
               <Button
                 variant="contained"
@@ -333,21 +418,27 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
                 <Grid item xs={12} sm={6} md={3} key={template.id}>
                   <Card>
                     <CardContent>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", mb: 2 }}
+                      >
                         {getBiometricIcon(template.type)}
                         <Typography variant="h6" sx={{ ml: 1 }}>
-                          {template.type.charAt(0).toUpperCase() + template.type.slice(1)}
+                          {template.type.charAt(0).toUpperCase() +
+                            template.type.slice(1)}
                         </Typography>
                       </Box>
                       <Typography variant="body2" color="text.secondary">
                         Quality: {(template.quality * 100).toFixed(1)}%
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Created: {new Date(template.created_at).toLocaleDateString()}
+                        Created:{" "}
+                        {new Date(template.created_at).toLocaleDateString()}
                       </Typography>
                       <Chip
                         label={template.status}
-                        color={template.status === 'active' ? 'success' : 'error'}
+                        color={
+                          template.status === "active" ? "success" : "error"
+                        }
                         size="small"
                         sx={{ mt: 1 }}
                       />
@@ -362,7 +453,9 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
         {/* Account Creation Logs Tab */}
         {activeTab === 1 && (
           <Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+            <Box
+              sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}
+            >
               <Typography variant="h5">Account Creation Logs</Typography>
               <Button
                 variant="contained"
@@ -396,11 +489,13 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
                       <TableCell>{log.purpose}</TableCell>
                       <TableCell>{log.reason}</TableCell>
                       <TableCell>{log.age}</TableCell>
-                      <TableCell>{new Date(log.created_at).toLocaleDateString()}</TableCell>
+                      <TableCell>
+                        {new Date(log.created_at).toLocaleDateString()}
+                      </TableCell>
                       <TableCell>
                         <Chip
                           label={log.status}
-                          color={log.status === 'created' ? 'success' : 'error'}
+                          color={log.status === "created" ? "success" : "error"}
                           size="small"
                         />
                       </TableCell>
@@ -415,7 +510,9 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
         {/* Password Recovery Logs Tab */}
         {activeTab === 2 && (
           <Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+            <Box
+              sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}
+            >
               <Typography variant="h5">Password Recovery Logs</Typography>
               <Button
                 variant="contained"
@@ -452,13 +549,17 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
                       <TableCell>
                         <Chip
                           label={log.status}
-                          color={log.status === 'success' ? 'success' : 'error'}
+                          color={log.status === "success" ? "success" : "error"}
                           size="small"
                         />
                       </TableCell>
-                      <TableCell>{new Date(log.created_at).toLocaleDateString()}</TableCell>
                       <TableCell>
-                        {log.completed_at ? new Date(log.completed_at).toLocaleDateString() : '-'}
+                        {new Date(log.created_at).toLocaleDateString()}
+                      </TableCell>
+                      <TableCell>
+                        {log.completed_at
+                          ? new Date(log.completed_at).toLocaleDateString()
+                          : "-"}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -471,33 +572,43 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
         {/* Settings Tab */}
         {activeTab === 3 && (
           <Box>
-            <Typography variant="h5" sx={{ mb: 3 }}>Biometric Settings</Typography>
-            
+            <Typography variant="h5" sx={{ mb: 3 }}>
+              Biometric Settings
+            </Typography>
+
             <Grid container spacing={3}>
               {Object.entries(biometricSettings).map(([type, settings]) => (
                 <Grid item xs={12} md={6} key={type}>
                   <Card>
                     <CardContent>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", mb: 2 }}
+                      >
                         {getBiometricIcon(type)}
                         <Typography variant="h6" sx={{ ml: 1 }}>
-                          {type.charAt(0).toUpperCase() + type.slice(1)} Recognition
+                          {type.charAt(0).toUpperCase() + type.slice(1)}{" "}
+                          Recognition
                         </Typography>
                       </Box>
-                      
+
                       <FormControlLabel
                         control={
                           <Switch
                             checked={settings.enabled}
-                            onChange={(e) => setBiometricSettings(prev => ({
-                              ...prev,
-                              [type]: { ...prev[type as keyof typeof prev], enabled: e.target.checked }
-                            }))}
+                            onChange={(e) =>
+                              setBiometricSettings((prev) => ({
+                                ...prev,
+                                [type]: {
+                                  ...prev[type as keyof typeof prev],
+                                  enabled: e.target.checked,
+                                },
+                              }))
+                            }
                           />
                         }
                         label="Enabled"
                       />
-                      
+
                       <Typography variant="body2" sx={{ mt: 2 }}>
                         Threshold: {settings.threshold}
                       </Typography>
@@ -510,7 +621,12 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
         )}
 
         {/* Enrollment Dialog */}
-        <Dialog open={enrollmentDialog} onClose={() => setEnrollmentDialog(false)} maxWidth="sm" fullWidth>
+        <Dialog
+          open={enrollmentDialog}
+          onClose={() => setEnrollmentDialog(false)}
+          maxWidth="sm"
+          fullWidth
+        >
           <DialogTitle>Enroll New Biometric</DialogTitle>
           <DialogContent>
             <TextField
@@ -520,16 +636,18 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
               onChange={(e) => setUsername(e.target.value)}
               sx={{ mb: 2, mt: 1 }}
             />
-            
+
             <Typography variant="subtitle1" sx={{ mb: 2 }}>
               Select Biometric Type:
             </Typography>
-            
+
             <Grid container spacing={2}>
               {Object.entries(biometricSettings).map(([type, settings]) => (
                 <Grid item xs={6} key={type}>
                   <Button
-                    variant={selectedBiometricType === type ? "contained" : "outlined"}
+                    variant={
+                      selectedBiometricType === type ? "contained" : "outlined"
+                    }
                     startIcon={getBiometricIcon(type)}
                     fullWidth
                     onClick={() => setSelectedBiometricType(type)}
@@ -543,14 +661,23 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setEnrollmentDialog(false)}>Cancel</Button>
-            <Button onClick={handleEnrollBiometric} variant="contained" disabled={!selectedBiometricType}>
+            <Button
+              onClick={handleEnrollBiometric}
+              variant="contained"
+              disabled={!selectedBiometricType}
+            >
               Enroll
             </Button>
           </DialogActions>
         </Dialog>
 
         {/* Password Recovery Dialog */}
-        <Dialog open={recoveryDialog} onClose={() => setRecoveryDialog(false)} maxWidth="sm" fullWidth>
+        <Dialog
+          open={recoveryDialog}
+          onClose={() => setRecoveryDialog(false)}
+          maxWidth="sm"
+          fullWidth
+        >
           <DialogTitle>Password Recovery</DialogTitle>
           <DialogContent>
             <TextField
@@ -560,16 +687,18 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
               onChange={(e) => setUsername(e.target.value)}
               sx={{ mb: 2, mt: 1 }}
             />
-            
+
             <Typography variant="subtitle1" sx={{ mb: 2 }}>
               Select Recovery Method:
             </Typography>
-            
+
             <Grid container spacing={2}>
               {Object.entries(biometricSettings).map(([type, settings]) => (
                 <Grid item xs={6} key={type}>
                   <Button
-                    variant={selectedBiometricType === type ? "contained" : "outlined"}
+                    variant={
+                      selectedBiometricType === type ? "contained" : "outlined"
+                    }
                     startIcon={getBiometricIcon(type)}
                     fullWidth
                     onClick={() => setSelectedBiometricType(type)}
@@ -583,14 +712,23 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setRecoveryDialog(false)}>Cancel</Button>
-            <Button onClick={handlePasswordRecovery} variant="contained" disabled={!selectedBiometricType}>
+            <Button
+              onClick={handlePasswordRecovery}
+              variant="contained"
+              disabled={!selectedBiometricType}
+            >
               Recover Password
             </Button>
           </DialogActions>
         </Dialog>
 
         {/* Account Creation Dialog */}
-        <Dialog open={accountCreationDialog} onClose={() => setAccountCreationDialog(false)} maxWidth="md" fullWidth>
+        <Dialog
+          open={accountCreationDialog}
+          onClose={() => setAccountCreationDialog(false)}
+          maxWidth="md"
+          fullWidth
+        >
           <DialogTitle>Create New Account</DialogTitle>
           <DialogContent>
             <Grid container spacing={2}>
@@ -639,7 +777,9 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setAccountCreationDialog(false)}>Cancel</Button>
+            <Button onClick={() => setAccountCreationDialog(false)}>
+              Cancel
+            </Button>
             <Button onClick={handleCreateAccount} variant="contained">
               Create Account
             </Button>
@@ -652,7 +792,10 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
           autoHideDuration={6000}
           onClose={() => setSnackbar({ ...snackbar, open: false })}
         >
-          <Alert severity={snackbar.severity} onClose={() => setSnackbar({ ...snackbar, open: false })}>
+          <Alert
+            severity={snackbar.severity}
+            onClose={() => setSnackbar({ ...snackbar, open: false })}
+          >
             {snackbar.message}
           </Alert>
         </Snackbar>
@@ -661,4 +804,4 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
   );
 };
 
-export default QMOIBiometricManager; 
+export default QMOIBiometricManager;

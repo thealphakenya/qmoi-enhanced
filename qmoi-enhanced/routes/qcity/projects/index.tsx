@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { ProjectList } from '../../../components/projects/ProjectList';
-import { ProjectForm } from '../../../components/projects/ProjectForm';
-import { useProjects } from '../../../hooks/useProjects';
+import React, { useState } from "react";
+import { ProjectList } from "../../../components/projects/ProjectList";
+import { ProjectForm } from "../../../components/projects/ProjectForm";
+import { useProjects } from "../../../hooks/useProjects";
 
 export default function ProjectsPage() {
   const [showNewProjectForm, setShowNewProjectForm] = useState(false);
@@ -12,7 +12,7 @@ export default function ProjectsPage() {
       await createProject(projectData);
       setShowNewProjectForm(false);
     } catch (error) {
-      console.error('Failed to create project:', error);
+      console.error("Failed to create project:", error);
     }
   };
 
@@ -54,13 +54,13 @@ export default function ProjectsPage() {
           <div className="bg-white rounded-lg shadow-sm p-4">
             <h3 className="text-lg font-semibold mb-2">Active Projects</h3>
             <p className="text-3xl font-bold">
-              {projects.filter((p) => p.status === 'in-progress').length}
+              {projects.filter((p) => p.status === "in-progress").length}
             </p>
           </div>
           <div className="bg-white rounded-lg shadow-sm p-4">
             <h3 className="text-lg font-semibold mb-2">Completed Projects</h3>
             <p className="text-3xl font-bold">
-              {projects.filter((p) => p.status === 'completed').length}
+              {projects.filter((p) => p.status === "completed").length}
             </p>
           </div>
         </div>
@@ -69,4 +69,4 @@ export default function ProjectsPage() {
       <ProjectList />
     </div>
   );
-} 
+}

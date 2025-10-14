@@ -44,14 +44,44 @@ export function QmoiFloatingChat() {
       onMouseUp={onMouseUp}
       onMouseMove={onMouseMove}
     >
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0ea5e9", borderRadius: "12px 12px 0 0", padding: 8 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          background: "#0ea5e9",
+          borderRadius: "12px 12px 0 0",
+          padding: 8,
+        }}
+      >
         <span style={{ fontWeight: 700 }}>QMOI Chat</span>
-        <button onClick={() => setVisible(false)} style={{ background: "none", border: "none", color: "#fff", fontSize: 18, cursor: "pointer" }}>×</button>
+        <button
+          onClick={() => setVisible(false)}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#fff",
+            fontSize: 18,
+            cursor: "pointer",
+          }}
+        >
+          ×
+        </button>
       </div>
       <div style={{ padding: 12 }}>
         {/* QMOI chat UI goes here */}
         <div style={{ marginBottom: 8 }}>How can I help you today?</div>
-        <input style={{ width: "100%", padding: 6, borderRadius: 6, border: "1px solid #333", background: "#222", color: "#fff" }} placeholder="Type your message..." />
+        <input
+          style={{
+            width: "100%",
+            padding: 6,
+            borderRadius: 6,
+            border: "1px solid #333",
+            background: "#222",
+            color: "#fff",
+          }}
+          placeholder="Type your message..."
+        />
       </div>
     </div>
   );

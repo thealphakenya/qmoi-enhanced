@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export const PriceProductVerifier: React.FC = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [result, setResult] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -10,7 +10,9 @@ export const PriceProductVerifier: React.FC = () => {
     setResult(null);
     // Simulate price/product verification (offline or via public APIs)
     setTimeout(() => {
-      setResult(`Verified: "${query}" is available. Price: $${(Math.random()*100+1).toFixed(2)} (simulated)`);
+      setResult(
+        `Verified: "${query}" is available. Price: $${(Math.random() * 100 + 1).toFixed(2)} (simulated)`,
+      );
       setLoading(false);
     }, 1200);
   };
@@ -22,13 +24,13 @@ export const PriceProductVerifier: React.FC = () => {
         type="text"
         placeholder="Enter product name or barcode"
         value={query}
-        onChange={e => setQuery(e.target.value)}
-        style={{ marginBottom: 8, width: '100%' }}
+        onChange={(e) => setQuery(e.target.value)}
+        style={{ marginBottom: 8, width: "100%" }}
       />
       <button onClick={handleCheck} disabled={!query || loading}>
-        {loading ? 'Checking...' : 'Verify'}
+        {loading ? "Checking..." : "Verify"}
       </button>
-      <div style={{ marginTop: 12, fontSize: 12, color: '#888' }}>{result}</div>
+      <div style={{ marginTop: 12, fontSize: 12, color: "#888" }}>{result}</div>
     </div>
   );
 };

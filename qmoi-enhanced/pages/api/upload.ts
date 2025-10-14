@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import formidable from 'formidable';
-import fs from 'fs';
-import path from 'path';
+import type { NextApiRequest, NextApiResponse } from "next";
+import formidable from "formidable";
+import fs from "fs";
+import path from "path";
 
 export const config = {
   api: {
@@ -9,11 +9,14 @@ export const config = {
   },
 };
 
-const UPLOAD_DIR = path.resolve(process.cwd(), 'qmoi-enhanced/public/uploads');
+const UPLOAD_DIR = path.resolve(process.cwd(), "qmoi-enhanced/public/uploads");
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   if (!fs.existsSync(UPLOAD_DIR)) {
@@ -28,11 +31,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   form.parse(req, (err, fields, files) => {
     if (err) {
-      return res.status(500).json({ error: 'File upload failed', details: err.message });
+      return res
+        .status(500)
+        .json({ error: "File upload failed", details: err.message });
     }
     const file = files.file;
     if (!file) {
-      return res.status(400).json({ error: 'No file uploaded' });
+      return res.status(400).json({ error: "No file uploaded" });
     }
     const filePath = Array.isArray(file) ? file[0].filepath : file.filepath;
     const fileName = path.basename(filePath);

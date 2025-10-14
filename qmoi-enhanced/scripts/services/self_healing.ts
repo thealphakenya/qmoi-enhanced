@@ -6,7 +6,7 @@ export interface SystemError {
   type: string;
   message: string;
   detectedAt: Date;
-  severity: 'low' | 'medium' | 'high' | 'critical';
+  severity: "low" | "medium" | "high" | "critical";
   context?: any;
 }
 
@@ -26,8 +26,12 @@ export class SelfHealingService {
     return true;
   }
 
-  static async reportToMaster(error: SystemError, diagnosis: string, fixResult: boolean): Promise<void> {
+  static async reportToMaster(
+    error: SystemError,
+    diagnosis: string,
+    fixResult: boolean,
+  ): Promise<void> {
     // TODO: Notify master of error, diagnosis, and fix result (UI, email, chat)
-    console.log('Reporting to master:', { error, diagnosis, fixResult });
+    console.log("Reporting to master:", { error, diagnosis, fixResult });
   }
-} 
+}

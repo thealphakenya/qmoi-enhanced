@@ -1,7 +1,7 @@
 # .github/workflows/nightly.yml
 on:
   schedule:
-    - cron: '0 3 * * *' # 3:00 AM UTC daily
+    - cron: "0 3 * * *" # 3:00 AM UTC daily
   workflow_dispatch:
 
 jobs:

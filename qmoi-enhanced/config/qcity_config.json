@@ -31,11 +31,7 @@
     "backup": true
   },
   "trading": {
-    "strategies": [
-      "momentum",
-      "mean-reversion",
-      "ml-based"
-    ],
+    "strategies": ["momentum", "mean-reversion", "ml-based"],
     "risk_management": {
       "max_drawdown": 0.1,
       "position_size": 0.1,
@@ -81,17 +77,8 @@
   },
   "notifications": {
     "enabled": true,
-    "channels": [
-      "email",
-      "whatsapp",
-      "in_app"
-    ],
-    "priority_levels": [
-      "low",
-      "medium",
-      "high",
-      "critical"
-    ]
+    "channels": ["email", "whatsapp", "in_app"],
+    "priority_levels": ["low", "medium", "high", "critical"]
   },
   "backup": {
     "enabled": true,

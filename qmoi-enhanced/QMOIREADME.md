@@ -1,6 +1,7 @@
 # QMOI Model: Quantum Multi-Objective Intelligence
 
 ## Overview
+
 QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model and master system for multi-user, multi-project, and multi-session analytics, enhancement, and automation. It powers the Qi (Quantum Intelligence) master panel and backend, providing:
 
 - **AI Task Logging**: Tracks all master/AI actions, enhancements, file uploads, and system events.
@@ -12,6 +13,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - **Security**: All actions require master authentication and are logged for audit.
 
 ## New Features (2025-06-11)
+
 - **QI State Preview Window**: Floating, draggable, animated window showing live AI state, session/global memory, and recent activity. Can be triggered from anywhere in the app using the `useQIPreview` hook.
 - **Device Map & Tracking**: Map of all devices (react-leaflet), with user, status, last-seen, and location. Masters can report devices as lost, which updates their status and highlights them.
 - **Device Table & Actions**: Table of all devices with actions (e.g., Report Lost). Tracks device status, user, and location.
@@ -26,6 +28,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - **New hooks**: `useQIPreview`, `useColabJob`, `useDeviceHealth`, `useExtensionManager`, `useLargeFileUpload`, `useAIHealthCheck` for extended functionality and integration.
 
 ## 2025-06-13: Major Enhancements
+
 - AI self-update and self-enhancement engine with Hugging Face backup/restore
 - Parallel and large task handling (Colab/cloud integration)
 - Security proxy for masked, sandboxed external access
@@ -38,6 +41,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - Modular, secure, and efficient design for global, multi-user, multi-device operation
 
 ## 2025-06-13: Autonomous Optimization & Device Enhancement
+
 - AI can now monitor, view, and auto-fix all file problems (TypeScript, Python, JS) using a VS Code-like diagnostics API and hook.
 - AI/master can edit any file directly from the QI chat interface, with backend support.
 - The update system now triggers diagnostics and auto-fix after every update.
@@ -46,6 +50,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - All enhancements are integrated into the main QI UI and backend, with user notifications for all major actions.
 
 ## 2025-06-13: Full Autonomous Error Fixing & GitHub Repo Management
+
 - AI now continuously scans for and auto-fixes all problems: missing files, imports, modules, and more.
 - AI can access, clone, view, modify, and auto-fix any GitHub repo, even when user is offline.
 - New hooks: `useAutoFixAllProblems`, `useAIFeatureEnhancer`, `useGithubRepoManager` for continuous improvement and repo management.
@@ -53,6 +58,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - All enhancements are fully integrated into the QI UI and backend, with user notifications and audit logging.
 
 ## 2025-06-13: WhatsApp Qmoi Bot & Advanced Game/Animation Pipeline
+
 - WhatsApp bot (Baileys) with Qmoi AI integration, persistent session, and full automation.
 - Master/sister onboarding, group management, broadcast, and campaign scheduling.
 - AI-powered replies, media, and advanced features (calls, video, file sharing, vision, etc.).
@@ -61,24 +67,29 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - Continuous documentation and extensibility for all new features.
 
 ## 2025-06-13: WhatsApp Qmoi Bot QI UI Integration
+
 - WhatsAppBotPanel in QI for QR onboarding, status, and log.
 - Backend API for WhatsApp bot status, QR, and log.
 - Ready for full integration with Node.js bot and Qmoi backend.
 
 ## 2025-06-13: Persistent Encrypted Storage & Advanced Qmoi AI Features
+
 - Persistent, encrypted storage for all sensitive data (user info, system files, etc.).
 - Qmoi endpoints for animation/movie, game, and subtitle generation.
 - All features are fully integrated and documented for security and extensibility.
 
 ## 2025-06-13: Real-Time Trading & Wallet API Integration
+
 - Qmoi backend endpoints for real-time trading, wallet management, and user notification.
 - Ready for integration with WhatsApp bot and QI UI for full AI-driven financial automation.
 
 ## 2025-06-13: Advanced Analytics & Reporting
+
 - Qmoi backend endpoint for advanced analytics and reporting on trading, wallet, and bot activity.
 - Ready for integration with QI UI and WhatsApp bot for smart notifications and user insights.
 
 ## 2025-06-13: Enhanced Health Reporting & Data Optimization
+
 - **Comprehensive Health Reporting System**: Real-time monitoring of all QMOI systems, performance metrics, revenue tracking, and detailed health reports
 - **Data Optimization System**: Minimizes data bundle usage while maintaining optimal performance through advanced compression, caching, and cloud offloading
 - **Master Assets Tracking**: Automatic discovery and tracking of all master-owned assets (organizations, companies, domains, platforms, projects)
@@ -91,6 +102,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - **Auto-Evolution Integration**: Continuous system improvement based on health metrics and performance data
 
 ### Health Reporting Features
+
 - **Real-time Monitoring**: Continuous health monitoring with 1-minute intervals
 - **Comprehensive Metrics**: System health, performance, revenue, errors, tasks, assets, security, cloud usage
 - **Critical Issue Detection**: Automatic detection and alerting of critical system issues
@@ -100,6 +112,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - **Master-Only Access**: Exclusive access to detailed health reports and system analytics
 
 ### Data Optimization Features
+
 - **Advanced Compression**: Multi-algorithm compression (Gzip, LZ4, Brotli) for maximum data reduction
 - **Intelligent Caching**: Multi-level caching system with TTL and access-based optimization
 - **Cloud Offloading**: Intelligent cloud processing for large data to reduce local resource usage
@@ -111,6 +124,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - **Cache Management**: Intelligent cache management with automatic cleanup and optimization
 
 ### Master Assets Management
+
 - **Automatic Discovery**: Continuous discovery of new assets created by QMOI
 - **Asset Tracking**: Real-time tracking of all master-owned assets
 - **Revenue Attribution**: All revenue attributed to master with detailed analytics
@@ -121,10 +135,12 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - **Master-Only Controls**: Exclusive access to asset management and creation features
 
 ## 2025-06-13: Campaign Scheduling, User Segmentation & IoT Orchestration
+
 - Endpoints for campaign scheduling, user segmentation, and IoT device orchestration.
 - Enables advanced automation, smart notifications, and device control from Qmoi and WhatsApp bot.
 
 ## 2025-06-13: Wallet, Instruction, and Child-Friendly AI
+
 - Wallet can send money to any platform and follow natural language instructions (withdraw, add API key, multiply funds, etc.).
 - AI is robust, thorough, and fast: handles very large data, long messages, and big projects with high accuracy.
 - Child-friendly features: music, stories, conversations, reminders, and proactive engagement with children and people around master/sister.
@@ -132,23 +148,27 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - All enhancements are fully integrated into the QI UI and backend, with user notifications and audit logging.
 
 ## 🧬 Invention Project Support (Master/Sister Only)
+
 - QMOI now supports invention projects for Victor Kwemoi and Leah Chebet only.
 - Invention projects are prioritized for business, welfare, and national impact.
 - All invention data and user credentials are encrypted and never exposed in exports or unzipped builds.
 
 ## 🛡️ Life Goals, Ambitions & AI Protector
+
 - QMOI tracks and assists with master/sister life goals (protection, welfare, mental health, finances, security, business, inventions, leadership, philanthropy, etc.).
 - Qi dashboard has a secure, master/sister-only section for viewing, adding, and editing these goals.
 - AI proactively manages projects to help achieve these ambitions.
 - All sensitive data is encrypted and access-controlled.
 
 ## 🏠 Local-First AI Protector Blueprint (Planned)
+
 - Local deployment of vision/audio models (YOLO, OpenCV, whisper.cpp, etc.) for home/office protection.
 - Sensor/camera/mic integration, anomaly detection, and local-only alert/response.
 - Dashboard UI for live feeds, logs, device control, and explainable AI decisions.
 - Full offline/edge operation, no cloud/API dependency.
 
 ## Stats & Analytics
+
 - **Total Tasks, Enhancements, Uploads**
 - **Enhancement Success Rate**
 - **File Type Distribution**
@@ -159,11 +179,13 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - **Custom Filters and Controls**
 
 ## Security & Audit
+
 - All actions require master token
 - All events are logged and exportable
 - Device/location access requires explicit user consent
 
 ## Usage
+
 - Use the Qi master panel to view, filter, export, and control all QMOI/AI activity.
 - Use the Devices tab to track, filter, and manage all user devices.
 - Integrate with `/api/qmoi-model` for programmatic access.
@@ -183,6 +205,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
   - Auto-research and context adaptation
 
 ## Autonomous Self-Updating & System-Wide Enhancement
+
 QMOI now continuously scans, enhances, and updates all major system components (qserver, qdatabase, qcity, etc.), maintains all documentation, and can sync itself to HuggingFace for global distribution. It works with master users for privileged operations and ensures all features and services are always running and up to date.
 
 - Autonomous self-healing
@@ -195,45 +218,53 @@ QMOI now continuously scans, enhances, and updates all major system components (
 - Continuous self-improvement
 
 ## Advanced AI-Powered Capabilities
+
 QMOI now possesses advanced AI-powered capabilities for autonomous system management:
 
 ### **AI Code Generation & Auto-Fixing**
+
 - **Intelligent Code Generation**: QMOI can generate new code, scripts, and components based on requirements
 - **Complex Issue Resolution**: Uses AI reasoning to auto-fix complex code issues
 - **Autonomous Feature Creation**: Can create new features and enhancements autonomously
 - **Code Refactoring**: Automatically refactors and optimizes existing code
 
 ### **Intelligent Project Management**
+
 - **Smart Project Planning**: Creates intelligent project plans based on requirements
 - **Task Automation**: Breaks down complex tasks into manageable subtasks
 - **Progress Tracking**: Automatically tracks and reports task progress
 - **Documentation Generation**: Creates comprehensive project documentation and reports
 
 ### **Advanced Security & Compliance**
+
 - **Vulnerability Scanning**: Continuously scans for security vulnerabilities
 - **Compliance Monitoring**: Checks compliance with coding standards and best practices
 - **Auto-Security Fixes**: Automatically fixes security issues and compliance violations
 - **Audit Logging**: Maintains comprehensive security audit logs
 
 ### **Resource Management & Optimization**
+
 - **Performance Optimization**: Optimizes system performance based on usage patterns
 - **Intelligent Scaling**: Automatically scales resources up or down as needed
 - **Predictive Maintenance**: Predicts and prevents performance issues
 - **Smart Caching**: Implements intelligent caching and optimization strategies
 
 ### **Advanced Analytics & Predictive Maintenance**
+
 - **Performance Analytics**: Analyzes system performance trends and patterns
 - **Issue Prediction**: Predicts potential issues before they occur
 - **Intelligent Insights**: Generates insights and recommendations for improvement
 - **Detailed Reporting**: Creates comprehensive analytics reports
 
 ### **Autonomous Decision Making & Learning**
+
 - **Self-Learning**: Learns from past actions and outcomes
 - **Autonomous Decisions**: Makes autonomous decisions about system improvements
 - **Adaptive Strategies**: Adapts strategies based on changing requirements
 - **Continuous Evolution**: Continuously evolves and improves its capabilities
 
 ## Complete System Integration
+
 QMOI is now a comprehensive, autonomous AI system that can:
 
 - **Generate and fix code** using AI reasoning
@@ -265,4 +296,5 @@ QMOI is your complete, autonomous AI guardian that ensures everything runs perfe
 > All documentation (.md files) is now auto-updated by QMOI automation scripts for real-time accuracy.
 
 ---
-*Last updated: June 13, 2025*
+
+_Last updated: June 13, 2025_

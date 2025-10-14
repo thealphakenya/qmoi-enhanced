@@ -35,6 +35,7 @@ npm run qmoi:fix:comprehensive
 ## 📋 Available Scripts
 
 ### Documentation
+
 ```bash
 npm run qmoi:docs:verify    # Verify all documentation
 npm run qmoi:docs:create    # Create new documentation
@@ -43,6 +44,7 @@ npm run qmoi:docs:simulate  # Simulate documentation errors
 ```
 
 ### Self-Testing
+
 ```bash
 npm run qmoi:test:all       # Run all self-tests
 npm run qmoi:test:list      # List available tests
@@ -50,6 +52,7 @@ npm run qmoi:test:run       # Run specific test
 ```
 
 ### Error Fixing
+
 ```bash
 npm run qmoi:fix:comprehensive  # Fix all error types
 npm run qmoi:fix:build          # Fix build errors
@@ -60,6 +63,7 @@ npm run qmoi:fix:license        # Fix license errors
 ```
 
 ### Automation
+
 ```bash
 npm run qmoi:autodev:full   # Full automation
 npm run qmoi:autodev:docs   # Documentation automation
@@ -70,6 +74,7 @@ npm run qmoi:autodev:deploy # Deployment automation
 ## 🔧 Configuration
 
 ### Environment Variables
+
 ```bash
 QMOI_AUTODEV_ENABLED=true
 VERCEL_TOKEN=your_vercel_token
@@ -78,6 +83,7 @@ DISCORD_WEBHOOK_URL=your_discord_webhook
 ```
 
 ### test_config.json
+
 ```json
 {
   "notifications": {
@@ -150,6 +156,7 @@ tail -f logs/self-test-report.json
 ```
 
 ### Debug Mode
+
 ```bash
 export DEBUG=true
 npm run qmoi:autodev:full -- --debug
@@ -158,6 +165,7 @@ npm run qmoi:autodev:full -- --debug
 ## 📈 Performance
 
 The system tracks:
+
 - Documentation creation time
 - Test execution time
 - Error fix success rate
@@ -298,6 +306,7 @@ QMOI continuously generates revenue through multiple streams:
 ### Revenue Dashboard
 
 The master dashboard shows:
+
 - Real-time earnings from all streams
 - Daily progress towards targets
 - Transaction history and analytics
@@ -343,7 +352,7 @@ The master dashboard shows:
 
 ---
 
-**QMOI Enhanced System** - Always learning, always improving, always automating! 🚀 
+**QMOI Enhanced System** - Always learning, always improving, always automating! 🚀
 
 ## 🩺 Advanced Health, Error Fixing, and Optimization in QMOI Hugging Face Spaces
 
@@ -359,6 +368,7 @@ The master dashboard shows:
   - QMOI Spaces is robust and self-healing—even if errors occur, the system attempts auto-repair and exposes all status in `/status` and logs
 
 **Relevant scripts:**
+
 - `huggingface_space/app.py`
 - `scripts/qmoi_huggingface_spaces.js`
 
@@ -386,6 +396,7 @@ The master dashboard shows:
 ---
 
 ## Documentation Automation & Resilience (2025-06-11)
+
 - **Self-Healing Doc Verifier:** Node.js and Python verifiers run in sequence; if one fails, the other auto-fixes and logs all issues.
 - **Error Simulation:** Simulates permission, corruption, and missing directory errors to ensure resilience.
 - **Persistent Logging:** All doc verification and fixes are logged and synced to the cloud.
@@ -396,38 +407,45 @@ The master dashboard shows:
 ---
 
 ## Optimization & Data Efficiency
+
 - QMOI now features a Data Saver mode for minimal data usage, with adaptive quality based on network and device conditions.
 - Heavy features and computations are offloaded to cloud environments (Colab, Dagshub), keeping the local app lightweight and responsive.
 - Device management dashboard shows all devices (local/cloud), their status, and optimization tips.
 - Auto-offloading ensures tasks migrate to the cloud when local resources are low.
 - See `AUTOOPTIMIZEALPHAQMOIENGINE.md` for full details on optimization strategies.
 
---- 
+---
 
 ## Parallel Error Fixing & Pre-Activity Automation
+
 - QMOI now runs all error fixes (build, lint, deploy, connectivity, cloud, etc.) in parallel for maximum speed and accuracy.
 - Pre-activity checks are run before every commit, push, deploy, and in all CI/CD pipelines. If any check fails, QMOI auto-fixes and blocks the action until all pass.
 - All results are logged and auditable.
 
 ## System Health Dashboard
+
 - A new System Health panel in the QCity dashboard shows real-time pre-activity, connectivity, and cloud status/logs.
 - Manual test/repair buttons and real-time updates ensure you always know the system state.
 
 ## Aggressive Self-Healing
+
 - QMOI aggressively attempts to repair any error, cycling through all methods, updating endpoints, and retrying until fixed.
 - Connectivity, VPN, zero-rated, and cloud issues are auto-repaired and logged.
 
 ## Usage
+
 - Use the dashboard to monitor and trigger checks/repairs.
 - All pre-activity checks run automatically before any critical action.
 
 ## Troubleshooting
+
 - If a check fails, see logs/pre-activity-check.json and the System Health panel for details.
 - Manual repair options are available in the dashboard.
 
 ## Reliability
+
 - QMOI is designed to be always-on, self-healing, and reliable, with parallel error fixing and aggressive automation.
-- All actions are logged for audit and compliance. 
+- All actions are logged for audit and compliance.
 
 ## 🚀 Always Fix All Automation
 
@@ -442,11 +460,11 @@ QMOI Enhanced now features a robust always-fix-all system:
 - **Best Practice:**
   - Use this script in CI/CD, before commits, and before pushes for maximum reliability
 
-See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for full details. 
+See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for full details.
 
 ## 🤖 AI Error Prediction & Enhanced Notifications
 
 - AI error prediction system analyzes logs and predicts likely error types/files
 - Notification preferences and history are managed via dashboard and REST API
 - Dashboard displays predictions, notification preferences, and notification history
-- See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for full details 
+- See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for full details

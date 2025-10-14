@@ -3,18 +3,26 @@
   box-shadow: 0 0 0 4px rgba(79, 140, 255, 0.2);
 }
 
-.qavatar-minmax-btn:focus, .qavatar-close-btn:focus, .qavatar-settings-btn:focus {
+.qavatar-minmax-btn:focus,
+.qavatar-close-btn:focus,
+.qavatar-settings-btn:focus {
   outline: 2px solid #ffb300;
   box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.2);
   z-index: 2;
 }
 
-.qavatar-minmax-btn, .qavatar-close-btn, .qavatar-settings-btn {
-  transition: box-shadow 0.2s, outline 0.2s;
+.qavatar-minmax-btn,
+.qavatar-close-btn,
+.qavatar-settings-btn {
+  transition:
+    box-shadow 0.2s,
+    outline 0.2s;
 }
 
 .qavatar-floating-panel {
-  transition: box-shadow 0.3s, background 0.3s;
+  transition:
+    box-shadow 0.3s,
+    background 0.3s;
 }
 
 .qavatar-log-output {
@@ -22,21 +30,26 @@
   margin-top: 0.5em;
   font-size: 0.95em;
   color: #222;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 4px;
   padding: 0.5em 1em;
 }
 
-.qavatar-onboarding-modal, .qavatar-modal {
+.qavatar-onboarding-modal,
+.qavatar-modal {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2000;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.qavatar-onboarding-content, .qavatar-modal-content {
+.qavatar-onboarding-content,
+.qavatar-modal-content {
   background: #fff;
   color: #222;
   border-radius: 12px;
@@ -45,7 +58,7 @@
   max-width: 700px;
   width: 100%;
   text-align: center;
-  animation: fadeInScale 0.3s cubic-bezier(.4,2,.6,1) both;
+  animation: fadeInScale 0.3s cubic-bezier(0.4, 2, 0.6, 1) both;
 }
 .qavatar-onboarding-content h2 {
   font-size: 1.5em;
@@ -73,7 +86,9 @@
   font-size: 1.3em;
   cursor: pointer;
   box-shadow: 0 2px 8px #0002;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 .qavatar-modal-close:focus {
   outline: 2px solid #4f8cff;
@@ -81,8 +96,14 @@
   color: #1a3a7c;
 }
 @keyframes fadeInScale {
-  from { opacity: 0; transform: scale(0.92); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 .sr-only {
   position: absolute;
@@ -91,12 +112,13 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
 }
 @media (max-width: 600px) {
-  .qavatar-onboarding-content, .qavatar-modal-content {
+  .qavatar-onboarding-content,
+  .qavatar-modal-content {
     max-width: 98vw;
     padding: 1.2em 0.5em 1em 0.5em;
     font-size: 0.98em;
@@ -105,12 +127,13 @@
 @media (prefers-color-scheme: dark) {
   .qavatar-log-output {
     color: #eee;
-    background: rgba(30,30,40,0.7);
+    background: rgba(30, 30, 40, 0.7);
   }
   .qavatar-floating-panel {
     background: #181c24;
   }
-  .qavatar-onboarding-content, .qavatar-modal-content {
+  .qavatar-onboarding-content,
+  .qavatar-modal-content {
     background: #23273a;
     color: #eee;
   }
@@ -118,4 +141,4 @@
     background: #23273a;
     color: #eee;
   }
-} 
+}

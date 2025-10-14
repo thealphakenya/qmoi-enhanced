@@ -1,9 +1,11 @@
 # CASHON.md - QMOI AI Earning System
 
 ## Overview
+
 The QMOI AI Earning System is a fully autonomous money-making platform that operates 24/7, even when users are offline. It integrates with Pesapal for real-time balance tracking and multiple earning strategies.
 
 ## Master-Only Fund Management & Approval Flows
+
 - **Master-Only Access:** Only the master can access, transfer, or withdraw funds from Cashon (Pesapal).
 - **Wallet Requests:** Users can request wallets, but creation only happens after explicit master approval (via WhatsApp or dashboard).
 - **Fund Transfers:** All user-initiated fund transfers require master approval. The AI notifies the master instantly and logs all actions.
@@ -14,30 +16,35 @@ The QMOI AI Earning System is a fully autonomous money-making platform that oper
 ## AI Earning Strategies
 
 ### 1. Automated Trading
+
 - **Cryptocurrency Trading**: AI analyzes market patterns and executes trades automatically
 - **Forex Trading**: Real-time currency pair analysis and automated trading
 - **Stock Trading**: AI-driven stock market analysis and automated portfolio management
 - **Commodity Trading**: Gold, silver, oil, and other commodity trading
 
 ### 2. Content Monetization
+
 - **YouTube Automation**: AI creates, uploads, and monetizes videos automatically
 - **Blog Writing**: AI generates SEO-optimized content for affiliate marketing
 - **Social Media Management**: Automated posting and engagement for brand partnerships
 - **Digital Product Creation**: E-books, courses, and software development
 
 ### 3. Freelancing & Services
+
 - **AI Writing Services**: Automated content creation for clients
 - **Web Development**: AI-powered website and app development
 - **Data Analysis**: Automated data processing and insights generation
 - **Virtual Assistant Services**: Email management, scheduling, and customer support
 
 ### 4. Investment & Passive Income
+
 - **Dividend Investing**: AI-managed dividend stock portfolios
 - **Real Estate Crowdfunding**: Automated real estate investment analysis
 - **Peer-to-Peer Lending**: AI-driven lending decisions and risk management
 - **Cryptocurrency Staking**: Automated staking for passive income
 
 ### 5. E-commerce & Dropshipping
+
 - **Automated Store Management**: AI-powered product selection and pricing
 - **Inventory Management**: Predictive inventory optimization
 - **Customer Service**: AI chatbot for 24/7 customer support
@@ -46,6 +53,7 @@ The QMOI AI Earning System is a fully autonomous money-making platform that oper
 ## Pesapal Integration
 
 ### Real-Time Balance Tracking
+
 ```typescript
 interface PesapalBalance {
   accountId: string;
@@ -59,14 +67,15 @@ interface PesapalBalance {
 interface Transaction {
   id: string;
   amount: number;
-  type: 'credit' | 'debit';
+  type: "credit" | "debit";
   description: string;
   timestamp: Date;
-  status: 'completed' | 'pending' | 'failed';
+  status: "completed" | "pending" | "failed";
 }
 ```
 
 ### Automated Money Management
+
 - **Auto-Investment**: Automatically invests profits into diversified portfolios
 - **Risk Management**: AI monitors and adjusts investment strategies
 - **Tax Optimization**: Automated tax calculations and deductions
@@ -75,17 +84,18 @@ interface Transaction {
 ## AI Decision Making
 
 ### Market Analysis Engine
+
 ```typescript
 interface MarketAnalysis {
-  marketTrend: 'bullish' | 'bearish' | 'neutral';
-  riskLevel: 'low' | 'medium' | 'high';
+  marketTrend: "bullish" | "bearish" | "neutral";
+  riskLevel: "low" | "medium" | "high";
   recommendedActions: Action[];
   confidence: number; // 0-100
   nextUpdate: Date;
 }
 
 interface Action {
-  type: 'buy' | 'sell' | 'hold' | 'invest' | 'withdraw';
+  type: "buy" | "sell" | "hold" | "invest" | "withdraw";
   asset: string;
   amount: number;
   reason: string;
@@ -94,6 +104,7 @@ interface Action {
 ```
 
 ### Performance Metrics
+
 - **Daily Profit/Loss Tracking**
 - **ROI Analysis**
 - **Risk-Adjusted Returns**
@@ -103,12 +114,14 @@ interface Action {
 ## Offline Operation
 
 ### Autonomous Mode
+
 - **24/7 Trading**: Continues trading even when user is offline
 - **Emergency Protocols**: Automatic risk management during market volatility
 - **Backup Systems**: Multiple fail-safes for continuous operation
 - **Performance Monitoring**: Real-time alerts for significant events
 
 ### Smart Notifications
+
 - **WhatsApp Integration**: Sends updates to master and Leah
 - **Email Alerts**: Detailed reports and performance summaries
 - **SMS Notifications**: Critical alerts for immediate attention
@@ -117,12 +130,14 @@ interface Action {
 ## Security & Compliance
 
 ### Data Protection
+
 - **End-to-End Encryption**: All financial data is encrypted
 - **Multi-Factor Authentication**: Secure access to all accounts
 - **Audit Trails**: Complete transaction history and decision logs
 - **Regulatory Compliance**: Adheres to financial regulations
 
 ### Risk Management
+
 - **Stop-Loss Orders**: Automatic loss prevention
 - **Position Sizing**: AI-managed risk allocation
 - **Diversification**: Spreads investments across multiple assets
@@ -131,6 +146,7 @@ interface Action {
 ## User Interface Features
 
 ### Dashboard Components
+
 - **Real-Time Balance Display**: Shows actual Pesapal balance
 - **Profit/Loss Charts**: Visual representation of earnings
 - **Portfolio Overview**: Asset allocation and performance
@@ -138,6 +154,7 @@ interface Action {
 - **AI Status**: Current AI decision-making status
 
 ### Settings & Controls
+
 - **Risk Tolerance**: User-defined risk preferences
 - **Investment Goals**: Short-term and long-term objectives
 - **Notification Preferences**: Customizable alert settings
@@ -146,12 +163,14 @@ interface Action {
 ## Integration with QMOI System
 
 ### WhatsApp Bot Integration
+
 - **Balance Queries**: Check Pesapal balance via WhatsApp
 - **Transaction History**: View recent transactions
 - **Investment Updates**: Receive performance reports
 - **Emergency Alerts**: Critical notifications
 
 ### Master Control Panel
+
 - **Override Capabilities**: Master can override AI decisions
 - **Performance Monitoring**: Real-time system status
 - **Configuration Management**: Adjust AI parameters
@@ -168,16 +187,19 @@ interface Action {
 ## Performance Expectations
 
 ### Conservative Strategy
+
 - **Expected ROI**: 5-15% annually
 - **Risk Level**: Low
 - **Investment Focus**: Stable assets and dividend stocks
 
 ### Balanced Strategy
+
 - **Expected ROI**: 15-25% annually
 - **Risk Level**: Medium
 - **Investment Focus**: Diversified portfolio with growth stocks
 
 ### Aggressive Strategy
+
 - **Expected ROI**: 25-50% annually
 - **Risk Level**: High
 - **Investment Focus**: High-growth stocks and cryptocurrencies
@@ -185,6 +207,7 @@ interface Action {
 ## Continuous Improvement
 
 The AI system continuously learns and adapts to:
+
 - **Market Conditions**: Adjusts strategies based on market trends
 - **Performance Data**: Optimizes based on historical results
 - **User Feedback**: Incorporates user preferences and goals
@@ -219,6 +242,7 @@ The AI system continuously learns and adapts to:
 QMOI now generates significantly more revenue with guaranteed daily targets:
 
 ### Revenue Targets
+
 - **Daily Target**: 100,000 KES (increased from 10,000 KES)
 - **Auto-Transfer**: 20,000 KES automatically sent to M-Pesa daily
 - **Growth Target**: 20% daily growth (each day exceeds previous day)
@@ -226,6 +250,7 @@ QMOI now generates significantly more revenue with guaranteed daily targets:
 - **Maximum Potential**: Unlimited - QMOI strives to make the maximum possible daily
 
 ### Enhanced Revenue Streams
+
 1. **AI Trading Bot** (15,000 KES/day) - Advanced crypto/forex trading
 2. **Animation Projects** (12,000 KES/day) - Animated movies, series, shorts, commercials
 3. **App Development** (10,000 KES/day) - Mobile apps, web apps, games, desktop software
@@ -281,4 +306,4 @@ npm run qmoi:autoconfig
 
 ---
 
-*The QMOI AI Earning System is designed to provide consistent, automated income generation while maintaining security and compliance with financial regulations.* 
+_The QMOI AI Earning System is designed to provide consistent, automated income generation while maintaining security and compliance with financial regulations._

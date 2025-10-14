@@ -1,27 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Progress } from '@/components/ui/progress';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  Download, 
-  Filter, 
-  Search, 
-  Calendar, 
-  Activity, 
-  Shield, 
-  Unlock, 
+import React, { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Progress } from "@/components/ui/progress";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  Download,
+  Filter,
+  Search,
+  Calendar,
+  Activity,
+  Shield,
+  Unlock,
   Eye,
   BarChart3,
   History,
   Settings,
-  RefreshCw
-} from 'lucide-react';
+  RefreshCw,
+} from "lucide-react";
 
 interface DeviceOwnershipLog {
   id: number;
@@ -92,26 +105,29 @@ interface QMOIOwnDeviceLogsProps {
   onExport?: (data: any, type: string) => void;
 }
 
-export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps) {
-  const [activeTab, setActiveTab] = useState('overview');
+export function QMOIOwnDeviceLogs({
+  isMaster,
+  onExport,
+}: QMOIOwnDeviceLogsProps) {
+  const [activeTab, setActiveTab] = useState("overview");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Data states
   const [ownershipLogs, setOwnershipLogs] = useState<DeviceOwnershipLog[]>([]);
   const [unlockLogs, setUnlockLogs] = useState<UnlockLog[]>([]);
   const [masterLogs, setMasterLogs] = useState<MasterLog[]>([]);
   const [deviceHistory, setDeviceHistory] = useState<DeviceHistory[]>([]);
   const [statistics, setStatistics] = useState<Statistics | null>(null);
-  
+
   // Filter states
-  const [logType, setLogType] = useState('all');
-  const [deviceFilter, setDeviceFilter] = useState('');
-  const [dateFrom, setDateFrom] = useState('');
-  const [dateTo, setDateTo] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [logType, setLogType] = useState("all");
+  const [deviceFilter, setDeviceFilter] = useState("");
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [limit, setLimit] = useState(100);
-  
+
   // UI states
   const [showFilters, setShowFilters] = useState(false);
   const [autoRefresh, setAutoRefresh] = useState(true);
@@ -125,43 +141,51 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
         return () => clearInterval(interval);
       }
     }
-  }, [isMaster, logType, deviceFilter, dateFrom, dateTo, limit, autoRefresh, refreshInterval]);
+  }, [
+    isMaster,
+    logType,
+    deviceFilter,
+    dateFrom,
+    dateTo,
+    limit,
+    autoRefresh,
+    refreshInterval,
+  ]);
 
   const loadLogs = async () => {
     if (!isMaster) return;
-    
+
     setLoading(true);
     setError(null);
-    
+
     try {
-      const response = await fetch('/api/qmoi/own-device-logs', {
-        method: 'POST',
+      const response = await fetch("/api/qmoi/own-device-logs", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           log_type: logType,
           device_id: deviceFilter || undefined,
           date_from: dateFrom || undefined,
           date_to: dateTo || undefined,
-          limit
-        })
+          limit,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to load logs');
+        throw new Error("Failed to load logs");
       }
 
       const data = await response.json();
-      
+
       if (data.ownership_logs) setOwnershipLogs(data.ownership_logs);
       if (data.unlock_logs) setUnlockLogs(data.unlock_logs);
       if (data.master_logs) setMasterLogs(data.master_logs);
       if (data.device_history) setDeviceHistory(data.device_history);
       if (data.statistics) setStatistics(data.statistics);
-      
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load logs');
+      setError(err instanceof Error ? err.message : "Failed to load logs");
     } finally {
       setLoading(false);
     }
@@ -169,37 +193,36 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
 
   const handleExport = async (type: string) => {
     if (!isMaster) return;
-    
+
     try {
-      const response = await fetch('/api/qmoi/own-device-logs/export', {
-        method: 'POST',
+      const response = await fetch("/api/qmoi/own-device-logs/export", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           type,
           device_id: deviceFilter || undefined,
           date_from: dateFrom || undefined,
-          date_to: dateTo || undefined
-        })
+          date_to: dateTo || undefined,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to export logs');
+        throw new Error("Failed to export logs");
       }
 
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
-      a.download = `qmoi-own-device-logs-${type}-${new Date().toISOString().split('T')[0]}.json`;
+      a.download = `qmoi-own-device-logs-${type}-${new Date().toISOString().split("T")[0]}.json`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
-      
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to export logs');
+      setError(err instanceof Error ? err.message : "Failed to export logs");
     }
   };
 
@@ -209,16 +232,21 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
 
   const getSeverityColor = (severity?: string) => {
     switch (severity?.toLowerCase()) {
-      case 'critical': return 'destructive';
-      case 'high': return 'destructive';
-      case 'medium': return 'default';
-      case 'low': return 'secondary';
-      default: return 'secondary';
+      case "critical":
+        return "destructive";
+      case "high":
+        return "destructive";
+      case "medium":
+        return "default";
+      case "low":
+        return "secondary";
+      default:
+        return "secondary";
     }
   };
 
   const getSuccessColor = (success: boolean) => {
-    return success ? 'bg-green-500' : 'bg-red-500';
+    return success ? "bg-green-500" : "bg-red-500";
   };
 
   if (!isMaster) {
@@ -266,7 +294,9 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                 onClick={loadLogs}
                 disabled={loading}
               >
-                <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
+                <RefreshCw
+                  className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`}
+                />
                 Refresh
               </Button>
             </div>
@@ -287,13 +317,15 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">All Logs</SelectItem>
-                    <SelectItem value="ownership">Ownership Detection</SelectItem>
+                    <SelectItem value="ownership">
+                      Ownership Detection
+                    </SelectItem>
                     <SelectItem value="unlock">Unlock Attempts</SelectItem>
                     <SelectItem value="master">Master Actions</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div>
                 <label className="text-sm font-medium">Device ID</label>
                 <Input
@@ -302,7 +334,7 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                   onChange={(e) => setDeviceFilter(e.target.value)}
                 />
               </div>
-              
+
               <div>
                 <label className="text-sm font-medium">Date From</label>
                 <Input
@@ -311,7 +343,7 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                   onChange={(e) => setDateFrom(e.target.value)}
                 />
               </div>
-              
+
               <div>
                 <label className="text-sm font-medium">Date To</label>
                 <Input
@@ -321,7 +353,7 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                 />
               </div>
             </div>
-            
+
             <div className="flex items-center gap-4 mt-4">
               <div className="flex items-center gap-2">
                 <input
@@ -330,11 +362,16 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                   checked={autoRefresh}
                   onChange={(e) => setAutoRefresh(e.target.checked)}
                 />
-                <label htmlFor="autoRefresh" className="text-sm">Auto-refresh</label>
+                <label htmlFor="autoRefresh" className="text-sm">
+                  Auto-refresh
+                </label>
               </div>
-              
+
               {autoRefresh && (
-                <Select value={refreshInterval.toString()} onValueChange={(v) => setRefreshInterval(parseInt(v))}>
+                <Select
+                  value={refreshInterval.toString()}
+                  onValueChange={(v) => setRefreshInterval(parseInt(v))}
+                >
                   <SelectTrigger className="w-32">
                     <SelectValue />
                   </SelectTrigger>
@@ -359,43 +396,51 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Total Detections</p>
-                  <p className="text-2xl font-bold">{statistics.total_detections}</p>
+                  <p className="text-2xl font-bold">
+                    {statistics.total_detections}
+                  </p>
                 </div>
                 <Activity className="h-8 w-8 text-blue-500" />
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Unlock Attempts</p>
-                  <p className="text-2xl font-bold">{statistics.total_unlock_attempts}</p>
+                  <p className="text-2xl font-bold">
+                    {statistics.total_unlock_attempts}
+                  </p>
                 </div>
                 <Unlock className="h-8 w-8 text-green-500" />
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Success Rate</p>
-                  <p className="text-2xl font-bold">{statistics.success_rate.toFixed(1)}%</p>
+                  <p className="text-2xl font-bold">
+                    {statistics.success_rate.toFixed(1)}%
+                  </p>
                 </div>
                 <BarChart3 className="h-8 w-8 text-purple-500" />
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Unique Devices</p>
-                  <p className="text-2xl font-bold">{statistics.unique_devices}</p>
+                  <p className="text-2xl font-bold">
+                    {statistics.unique_devices}
+                  </p>
                 </div>
                 <Eye className="h-8 w-8 text-orange-500" />
               </div>
@@ -421,10 +466,13 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
             <CardContent>
               <div className="space-y-4">
                 {ownershipLogs.slice(0, 5).map((log) => (
-                  <div key={log.id} className="flex items-center justify-between p-3 border rounded-lg">
+                  <div
+                    key={log.id}
+                    className="flex items-center justify-between p-3 border rounded-lg"
+                  >
                     <div className="flex items-center gap-3">
                       <Badge variant={getSeverityColor(log.severity)}>
-                        {log.restriction_type || 'Detection'}
+                        {log.restriction_type || "Detection"}
                       </Badge>
                       <div>
                         <p className="font-medium">{log.device_id}</p>
@@ -433,8 +481,8 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                         </p>
                       </div>
                     </div>
-                    <Badge variant={log.success ? 'default' : 'destructive'}>
-                      {log.success ? 'Success' : 'Failed'}
+                    <Badge variant={log.success ? "default" : "destructive"}>
+                      {log.success ? "Success" : "Failed"}
                     </Badge>
                   </div>
                 ))}
@@ -461,14 +509,24 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                 <TableBody>
                   {deviceHistory.slice(0, 10).map((device) => (
                     <TableRow key={device.device_id}>
-                      <TableCell className="font-medium">{device.device_id}</TableCell>
-                      <TableCell>{formatTimestamp(device.first_detected)}</TableCell>
-                      <TableCell>{formatTimestamp(device.last_activity)}</TableCell>
+                      <TableCell className="font-medium">
+                        {device.device_id}
+                      </TableCell>
+                      <TableCell>
+                        {formatTimestamp(device.first_detected)}
+                      </TableCell>
+                      <TableCell>
+                        {formatTimestamp(device.last_activity)}
+                      </TableCell>
                       <TableCell>{device.total_attempts}</TableCell>
                       <TableCell>
                         <div className="flex items-center gap-2">
-                          <Progress 
-                            value={(device.successful_unlocks / device.total_attempts) * 100} 
+                          <Progress
+                            value={
+                              (device.successful_unlocks /
+                                device.total_attempts) *
+                              100
+                            }
                             className="w-20"
                           />
                           <span className="text-sm">
@@ -477,7 +535,11 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant={device.status === 'active' ? 'default' : 'secondary'}>
+                        <Badge
+                          variant={
+                            device.status === "active" ? "default" : "secondary"
+                          }
+                        >
                           {device.status}
                         </Badge>
                       </TableCell>
@@ -494,7 +556,7 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle>Ownership Detection Logs</CardTitle>
-                <Button onClick={() => handleExport('ownership')} size="sm">
+                <Button onClick={() => handleExport("ownership")} size="sm">
                   <Download className="h-4 w-4 mr-2" />
                   Export
                 </Button>
@@ -517,19 +579,25 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                   {ownershipLogs.map((log) => (
                     <TableRow key={log.id}>
                       <TableCell>{formatTimestamp(log.timestamp)}</TableCell>
-                      <TableCell className="font-medium">{log.device_id}</TableCell>
-                      <TableCell>{log.organization || 'Unknown'}</TableCell>
-                      <TableCell>
-                        <Badge variant="outline">{log.restriction_type || 'Unknown'}</Badge>
+                      <TableCell className="font-medium">
+                        {log.device_id}
                       </TableCell>
+                      <TableCell>{log.organization || "Unknown"}</TableCell>
                       <TableCell>
-                        <Badge variant={getSeverityColor(log.severity)}>
-                          {log.severity || 'Unknown'}
+                        <Badge variant="outline">
+                          {log.restriction_type || "Unknown"}
                         </Badge>
                       </TableCell>
                       <TableCell>
-                        <Badge variant={log.success ? 'default' : 'destructive'}>
-                          {log.success ? 'Success' : 'Failed'}
+                        <Badge variant={getSeverityColor(log.severity)}>
+                          {log.severity || "Unknown"}
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <Badge
+                          variant={log.success ? "default" : "destructive"}
+                        >
+                          {log.success ? "Success" : "Failed"}
                         </Badge>
                       </TableCell>
                       <TableCell>{log.master_user}</TableCell>
@@ -546,7 +614,7 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle>Unlock Attempt Logs</CardTitle>
-                <Button onClick={() => handleExport('unlock')} size="sm">
+                <Button onClick={() => handleExport("unlock")} size="sm">
                   <Download className="h-4 w-4 mr-2" />
                   Export
                 </Button>
@@ -569,15 +637,19 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                   {unlockLogs.map((log) => (
                     <TableRow key={log.id}>
                       <TableCell>{formatTimestamp(log.timestamp)}</TableCell>
-                      <TableCell className="font-medium">{log.device_id}</TableCell>
+                      <TableCell className="font-medium">
+                        {log.device_id}
+                      </TableCell>
                       <TableCell>
                         <Badge variant="outline">{log.unlock_method}</Badge>
                       </TableCell>
                       <TableCell>{log.attempt_number}</TableCell>
                       <TableCell>{log.duration_ms}ms</TableCell>
                       <TableCell>
-                        <Badge variant={log.success ? 'default' : 'destructive'}>
-                          {log.success ? 'Success' : 'Failed'}
+                        <Badge
+                          variant={log.success ? "default" : "destructive"}
+                        >
+                          {log.success ? "Success" : "Failed"}
                         </Badge>
                       </TableCell>
                       <TableCell>
@@ -600,7 +672,7 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle>Master Action Logs</CardTitle>
-                <Button onClick={() => handleExport('master')} size="sm">
+                <Button onClick={() => handleExport("master")} size="sm">
                   <Download className="h-4 w-4 mr-2" />
                   Export
                 </Button>
@@ -622,14 +694,18 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
                   {masterLogs.map((log) => (
                     <TableRow key={log.id}>
                       <TableCell>{formatTimestamp(log.timestamp)}</TableCell>
-                      <TableCell className="font-medium">{log.master_user}</TableCell>
+                      <TableCell className="font-medium">
+                        {log.master_user}
+                      </TableCell>
                       <TableCell>
                         <Badge variant="outline">{log.action}</Badge>
                       </TableCell>
-                      <TableCell>{log.target_device || 'N/A'}</TableCell>
+                      <TableCell>{log.target_device || "N/A"}</TableCell>
                       <TableCell>
-                        <Badge variant={log.success ? 'default' : 'destructive'}>
-                          {log.success ? 'Success' : 'Failed'}
+                        <Badge
+                          variant={log.success ? "default" : "destructive"}
+                        >
+                          {log.success ? "Success" : "Failed"}
                         </Badge>
                       </TableCell>
                       <TableCell className="text-sm text-muted-foreground">
@@ -652,4 +728,4 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
       )}
     </div>
   );
-} 
+}

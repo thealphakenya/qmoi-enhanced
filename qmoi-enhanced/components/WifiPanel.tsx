@@ -55,28 +55,32 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   const [error, setError] = useState<string | null>(null);
   const [autoConnect, setAutoConnect] = useState(true);
   const [priorities, setPriorities] = useState<{ [ssid: string]: number }>({});
-  const [activeTab, setActiveTab] = useState('wifi');
+  const [activeTab, setActiveTab] = useState("wifi");
   const [passwords, setPasswords] = useState<{ [ssid: string]: string }>({});
   const [logs, setLogs] = useState<string[]>([]);
-  const [logFilter, setLogFilter] = useState('');
-  const [monitorStatus, setMonitorStatus] = useState<MonitorStatus | null>(null);
+  const [logFilter, setLogFilter] = useState("");
+  const [monitorStatus, setMonitorStatus] = useState<MonitorStatus | null>(
+    null,
+  );
   const [monitorInterval, setMonitorInterval] = useState(60);
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
-  const [webhookUrl, setWebhookUrl] = useState('');
-  const [hourlyAnalytics, setHourlyAnalytics] = useState<{ [hour: string]: number } | null>(null);
+  const [webhookUrl, setWebhookUrl] = useState("");
+  const [hourlyAnalytics, setHourlyAnalytics] = useState<{
+    [hour: string]: number;
+  } | null>(null);
   const { toast } = useToast();
 
   // Load priorities from localStorage with error handling
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('wifiPriorities');
+      const saved = localStorage.getItem("wifiPriorities");
       if (saved) setPriorities(JSON.parse(saved));
     } catch (error) {
-      console.error('Failed to load WiFi priorities:', error);
+      console.error("Failed to load WiFi priorities:", error);
       toast({
-        title: 'Error',
-        description: 'Failed to load saved WiFi priorities',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to load saved WiFi priorities",
+        variant: "destructive",
       });
     }
   }, [toast]);
@@ -84,13 +88,13 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Save priorities to localStorage with error handling
   useEffect(() => {
     try {
-      localStorage.setItem('wifiPriorities', JSON.stringify(priorities));
+      localStorage.setItem("wifiPriorities", JSON.stringify(priorities));
     } catch (error) {
-      console.error('Failed to save WiFi priorities:', error);
+      console.error("Failed to save WiFi priorities:", error);
       toast({
-        title: 'Error',
-        description: 'Failed to save WiFi priorities',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to save WiFi priorities",
+        variant: "destructive",
       });
     }
   }, [priorities, toast]);
@@ -98,14 +102,14 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Load logs from localStorage with error handling
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('wifiSecurityLogs');
+      const saved = localStorage.getItem("wifiSecurityLogs");
       if (saved) setLogs(JSON.parse(saved));
     } catch (error) {
-      console.error('Failed to load WiFi logs:', error);
+      console.error("Failed to load WiFi logs:", error);
       toast({
-        title: 'Error',
-        description: 'Failed to load saved WiFi logs',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to load saved WiFi logs",
+        variant: "destructive",
       });
     }
   }, [toast]);
@@ -113,13 +117,13 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Save logs to localStorage with error handling
   useEffect(() => {
     try {
-      localStorage.setItem('wifiSecurityLogs', JSON.stringify(logs));
+      localStorage.setItem("wifiSecurityLogs", JSON.stringify(logs));
     } catch (error) {
-      console.error('Failed to save WiFi logs:', error);
+      console.error("Failed to save WiFi logs:", error);
       toast({
-        title: 'Error',
-        description: 'Failed to save WiFi logs',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to save WiFi logs",
+        variant: "destructive",
       });
     }
   }, [logs, toast]);
@@ -129,14 +133,17 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('/api/wifi/scan');
-      if (!res.ok) throw new Error('Failed to scan networks. Please check your Wi-Fi adapter.');
+      const res = await fetch("/api/wifi/scan");
+      if (!res.ok)
+        throw new Error(
+          "Failed to scan networks. Please check your Wi-Fi adapter.",
+        );
       const data = await res.json();
-        setNetworks(data.networks);
+      setNetworks(data.networks);
       setError(null);
     } catch (e) {
       const error = e as Error;
-      setError(error.message || 'Failed to scan networks.');
+      setError(error.message || "Failed to scan networks.");
     }
     setLoading(false);
   };
@@ -146,8 +153,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     // Auto-connect to best network when enabled or on refresh
     if (autoConnect && networks.length > 0) {
       // Find the highest-priority available network not already connected
-      const sorted = [...networks].sort((a, b) => (priorities[b.ssid] || 1) - (priorities[a.ssid] || 1));
-      const best = sorted.find(n => !n.connected);
+      const sorted = [...networks].sort(
+        (a, b) => (priorities[b.ssid] || 1) - (priorities[a.ssid] || 1),
+      );
+      const best = sorted.find((n) => !n.connected);
       if (best && (!connected || best.ssid !== connected)) {
         handleConnect(best.ssid);
       }
@@ -159,37 +168,45 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('/api/wifi', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ssid, password: passwords[ssid] || '' })
+      const res = await fetch("/api/wifi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ssid, password: passwords[ssid] || "" }),
       });
       const data = await res.json();
       if (data.success) {
         setConnected(ssid);
-        setNetworks(nets => nets.map(n => ({ ...n, connected: n.ssid === ssid })));
+        setNetworks((nets) =>
+          nets.map((n) => ({ ...n, connected: n.ssid === ssid })),
+        );
       } else {
-        setError(data.error || 'Failed to connect. Please check your password and try again.');
+        setError(
+          data.error ||
+            "Failed to connect. Please check your password and try again.",
+        );
       }
     } catch (e: any) {
-      setError(e.message || 'Failed to connect. Please check your network and try again.');
+      setError(
+        e.message ||
+          "Failed to connect. Please check your network and try again.",
+      );
     }
     setLoading(false);
   };
 
   const handlePriorityChange = (ssid: string, value: number) => {
-    setPriorities(p => ({ ...p, [ssid]: value }));
+    setPriorities((p) => ({ ...p, [ssid]: value }));
   };
 
   const handlePasswordChange = (ssid: string, value: string) => {
-    setPasswords(p => ({ ...p, [ssid]: value }));
+    setPasswords((p) => ({ ...p, [ssid]: value }));
   };
 
   // Helper to add a log entry
   const addLog = (entry: string) => {
-    setLogs(l => [
+    setLogs((l) => [
       `${new Date().toLocaleString()}: ${entry}`,
-      ...l.slice(0, 99) // keep last 100 logs
+      ...l.slice(0, 99), // keep last 100 logs
     ]);
   };
 
@@ -198,17 +215,20 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     let intervalId: ReturnType<typeof setInterval> | null = null;
     const fetchStatus = async () => {
       try {
-        const monitorUrl = typeof window !== 'undefined' && (window as any).process?.env?.NEXT_PUBLIC_MONITOR_URL || 'http://localhost:5001';
+        const monitorUrl =
+          (typeof window !== "undefined" &&
+            (window as any).process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
+          "http://localhost:5001";
         const res = await fetch(`${monitorUrl}/monitor/status`);
-        if (!res.ok) throw new Error('Failed to fetch monitor status');
+        if (!res.ok) throw new Error("Failed to fetch monitor status");
         const data = await res.json();
         setMonitorStatus(data);
       } catch (error) {
-        console.error('Failed to fetch monitor status:', error);
+        console.error("Failed to fetch monitor status:", error);
         toast({
-          title: 'Error',
-          description: 'Failed to fetch monitor status',
-          variant: 'destructive'
+          title: "Error",
+          description: "Failed to fetch monitor status",
+          variant: "destructive",
         });
       }
     };
@@ -216,30 +236,41 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     if (monitorStatus?.enabled) {
       intervalId = setInterval(fetchStatus, 10000);
     }
-    return () => { if (intervalId) clearInterval(intervalId); };
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
   }, [monitorStatus?.enabled, toast]);
 
   const startMonitoring = async () => {
     setLoading(true);
     setError(null);
     try {
-      const monitorUrl = typeof window !== 'undefined' && (window as any).process?.env?.NEXT_PUBLIC_MONITOR_URL || 'http://localhost:5001';
+      const monitorUrl =
+        (typeof window !== "undefined" &&
+          (window as any).process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
+        "http://localhost:5001";
       const monitorRes = await fetch(`${monitorUrl}/monitor`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ enable: true, interval: monitorInterval })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ enable: true, interval: monitorInterval }),
       });
-      if (!monitorRes.ok) throw new Error('Failed to start monitoring');
+      if (!monitorRes.ok) throw new Error("Failed to start monitoring");
       addLog(`Monitoring started: every ${monitorInterval}s`);
-      setMonitorStatus(s => ({ ...s, enabled: true, interval: monitorInterval, last_result: null }));
+      setMonitorStatus((s) => ({
+        ...s,
+        enabled: true,
+        interval: monitorInterval,
+        last_result: null,
+      }));
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to start monitoring';
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to start monitoring";
       setError(errorMessage);
       addLog(`Failed to start monitoring: ${errorMessage}`);
       toast({
-        title: 'Error',
+        title: "Error",
         description: errorMessage,
-        variant: 'destructive'
+        variant: "destructive",
       });
     }
     setLoading(false);
@@ -249,16 +280,20 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     setLoading(true);
     setError(null);
     try {
-      await fetch('http://localhost:5001/monitor', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ enable: false })
+      await fetch("http://localhost:5001/monitor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ enable: false }),
       });
-      addLog('Monitoring stopped.');
-      setMonitorStatus(s => s ? { ...s, enabled: false } : { enabled: false, interval: monitorInterval, last_result: null });
+      addLog("Monitoring stopped.");
+      setMonitorStatus((s) =>
+        s
+          ? { ...s, enabled: false }
+          : { enabled: false, interval: monitorInterval, last_result: null },
+      );
     } catch (e: any) {
-      setError('Failed to stop monitoring.');
-      addLog('Failed to stop monitoring.');
+      setError("Failed to stop monitoring.");
+      addLog("Failed to stop monitoring.");
     }
     setLoading(false);
   };
@@ -268,8 +303,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     if (monitorStatus?.last_result && monitorStatus.last_result.anomaly) {
       toast({
         title: "Security Alert: Anomaly Detected!",
-        description: monitorStatus.last_result.msg || "Anomaly detected in login attempts.",
-        variant: "destructive"
+        description:
+          monitorStatus.last_result.msg ||
+          "Anomaly detected in login attempts.",
+        variant: "destructive",
       });
     }
   }, [monitorStatus?.last_result, toast]);
@@ -277,15 +314,15 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Fetch analytics
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch('http://localhost:5001/analytics');
+      const res = await fetch("http://localhost:5001/analytics");
       const data = await res.json();
       setAnalytics(data);
     } catch (error) {
-      console.error('Failed to fetch analytics:', error);
+      console.error("Failed to fetch analytics:", error);
       toast({
-        title: 'Error',
-        description: 'Failed to fetch analytics',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to fetch analytics",
+        variant: "destructive",
       });
     }
   };
@@ -293,36 +330,36 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Fetch hourly analytics
   const fetchHourlyAnalytics = async () => {
     try {
-      const res = await fetch('http://localhost:5001/analytics/hourly');
+      const res = await fetch("http://localhost:5001/analytics/hourly");
       const data = await res.json();
       setHourlyAnalytics(data);
     } catch (error) {
-      console.error('Failed to fetch hourly analytics:', error);
+      console.error("Failed to fetch hourly analytics:", error);
       toast({
-        title: 'Error',
-        description: 'Failed to fetch hourly analytics',
-        variant: 'destructive'
+        title: "Error",
+        description: "Failed to fetch hourly analytics",
+        variant: "destructive",
       });
     }
   };
 
   // Export analytics as CSV
   const exportAnalytics = () => {
-    window.open('http://localhost:5001/export-analytics', '_blank');
+    window.open("http://localhost:5001/export-analytics", "_blank");
   };
 
   // Send alert to external system
   const sendAlert = async (msg: string) => {
     if (!webhookUrl) return;
     try {
-      await fetch('http://localhost:5001/alert', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: msg, webhook: webhookUrl })
+      await fetch("http://localhost:5001/alert", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg, webhook: webhookUrl }),
       });
-      toast({ title: 'Alert sent to external system.' });
+      toast({ title: "Alert sent to external system." });
     } catch {
-      toast({ title: 'Failed to send alert.', variant: 'destructive' });
+      toast({ title: "Failed to send alert.", variant: "destructive" });
     }
   };
 
@@ -335,20 +372,34 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       <TabsContent value="wifi">
         <div className="flex justify-between items-center mb-2">
           <span className="font-semibold">Wi-Fi Networks</span>
-          <Button size="sm" variant="outline" onClick={fetchNetworks} disabled={loading}>Refresh</Button>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={fetchNetworks}
+            disabled={loading}
+          >
+            Refresh
+          </Button>
         </div>
         {loading && <div>Scanning...</div>}
         {error && <div className="text-red-500">{error}</div>}
         <ul className="mb-4">
-          {networks.map(net => (
-            <li key={net.ssid} className={`flex items-center justify-between py-1 ${net.connected ? 'font-bold text-green-600' : ''}`}>
-              <span>{net.ssid} {net.secure ? '🔒' : '🔓'} ({net.signal}%)</span>
+          {networks.map((net) => (
+            <li
+              key={net.ssid}
+              className={`flex items-center justify-between py-1 ${net.connected ? "font-bold text-green-600" : ""}`}
+            >
+              <span>
+                {net.ssid} {net.secure ? "🔒" : "🔓"} ({net.signal}%)
+              </span>
               <div className="flex gap-2 items-center">
                 <Input
-                  type={net.secure ? 'password' : 'text'}
-                  placeholder={net.secure ? 'Password' : 'No password'}
-                  value={passwords[net.ssid] || ''}
-                  onChange={e => handlePasswordChange(net.ssid, e.target.value)}
+                  type={net.secure ? "password" : "text"}
+                  placeholder={net.secure ? "Password" : "No password"}
+                  value={passwords[net.ssid] || ""}
+                  onChange={(e) =>
+                    handlePasswordChange(net.ssid, e.target.value)
+                  }
                   disabled={!net.secure || net.connected}
                   className="w-24"
                 />
@@ -357,7 +408,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                   min={1}
                   max={10}
                   value={priorities[net.ssid] || 1}
-                  onChange={e => handlePriorityChange(net.ssid, Number(e.target.value))}
+                  onChange={(e) =>
+                    handlePriorityChange(net.ssid, Number(e.target.value))
+                  }
                   className="w-14"
                   title="Priority"
                   disabled={net.connected}
@@ -365,7 +418,13 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 {net.connected ? (
                   <span>Connected</span>
                 ) : (
-                  <Button size="sm" onClick={() => handleConnect(net.ssid)} disabled={loading}>Connect</Button>
+                  <Button
+                    size="sm"
+                    onClick={() => handleConnect(net.ssid)}
+                    disabled={loading}
+                  >
+                    Connect
+                  </Button>
                 )}
               </div>
             </li>
@@ -373,85 +432,148 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
         </ul>
         <div className="flex items-center gap-2 mb-2">
           <label className="flex items-center gap-1">
-            <input type="checkbox" checked={autoConnect} onChange={e => setAutoConnect(e.target.checked)} />
+            <input
+              type="checkbox"
+              checked={autoConnect}
+              onChange={(e) => setAutoConnect(e.target.checked)}
+            />
             Auto-connect to best network
           </label>
         </div>
         <div className="flex justify-end gap-2">
-          <Button variant="secondary" onClick={onClose}>Close</Button>
+          <Button variant="secondary" onClick={onClose}>
+            Close
+          </Button>
         </div>
       </TabsContent>
       <TabsContent value="security">
         <div className="mb-2 font-semibold">Security & AI Tools</div>
         <div className="mb-2 flex gap-2">
-          <Button size="sm" variant="outline" onClick={fetchAnalytics}>Show Analytics</Button>
-          <Button size="sm" variant="outline" onClick={fetchHourlyAnalytics}>Show Hourly Analytics</Button>
-          <Button size="sm" variant="outline" onClick={exportAnalytics}>Export Analytics (CSV)</Button>
+          <Button size="sm" variant="outline" onClick={fetchAnalytics}>
+            Show Analytics
+          </Button>
+          <Button size="sm" variant="outline" onClick={fetchHourlyAnalytics}>
+            Show Hourly Analytics
+          </Button>
+          <Button size="sm" variant="outline" onClick={exportAnalytics}>
+            Export Analytics (CSV)
+          </Button>
           <Input
             type="text"
             placeholder="Webhook URL (Slack, etc)"
             value={webhookUrl}
-            onChange={e => setWebhookUrl(e.target.value)}
+            onChange={(e) => setWebhookUrl(e.target.value)}
             className="h-7 w-64 text-xs"
           />
-          <Button size="sm" variant="outline" onClick={() => sendAlert('Security anomaly detected!')} disabled={!webhookUrl}>Send Test Alert</Button>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => sendAlert("Security anomaly detected!")}
+            disabled={!webhookUrl}
+          >
+            Send Test Alert
+          </Button>
         </div>
         {analytics && (
           <div className="mb-2 text-xs bg-gray-50 rounded p-2">
-            <div><b>Total Connections:</b> {analytics.total_connections}</div>
-            <div><b>Average Signal:</b> {analytics.average_signal.toFixed(2)}%</div>
-            <div><b>Security Score:</b> {analytics.security_score.toFixed(2)}/100</div>
+            <div>
+              <b>Total Connections:</b> {analytics.total_connections}
+            </div>
+            <div>
+              <b>Average Signal:</b> {analytics.average_signal.toFixed(2)}%
+            </div>
+            <div>
+              <b>Security Score:</b> {analytics.security_score.toFixed(2)}/100
+            </div>
           </div>
         )}
         {hourlyAnalytics && (
           <div className="mb-2 text-xs bg-gray-50 rounded p-2">
-            <div><b>Failed Logins Per Hour:</b></div>
+            <div>
+              <b>Failed Logins Per Hour:</b>
+            </div>
             <ul className="ml-2">
               {Object.entries(hourlyAnalytics).map(([hour, count]) => (
-                <li key={hour}>{hour}: {count}</li>
+                <li key={hour}>
+                  {hour}: {count}
+                </li>
               ))}
             </ul>
           </div>
         )}
         <ul className="list-disc pl-4 space-y-2">
-          <li>Wi-Fi Network Security Testing (with permission): <Button size="sm" variant="outline" onClick={async () => {
-            setLoading(true);
-            setError(null);
-            try {
-              const res = await fetch('/api/wifi-security?action=security-test');
-              const data = await res.json();
-              if (data.networks) {
-                const msg = 'Scan complete.\n' + data.networks.map((n: Network) => `${n.ssid}: ${n.encryption}`).join('\n');
-                alert(msg);
-                addLog(msg);
-              } else {
-                alert(data.result);
-                addLog(data.result);
-              }
-            } catch (e: any) {
-              setError('Security test failed.');
-              addLog('Security test failed.');
-            }
-            setLoading(false);
-          }}>Start Test</Button></li>
-          <li>Device Hardening via AI:
+          <li>
+            Wi-Fi Network Security Testing (with permission):{" "}
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={async () => {
+                setLoading(true);
+                setError(null);
+                try {
+                  const res = await fetch(
+                    "/api/wifi-security?action=security-test",
+                  );
+                  const data = await res.json();
+                  if (data.networks) {
+                    const msg =
+                      "Scan complete.\n" +
+                      data.networks
+                        .map((n: Network) => `${n.ssid}: ${n.encryption}`)
+                        .join("\n");
+                    alert(msg);
+                    addLog(msg);
+                  } else {
+                    alert(data.result);
+                    addLog(data.result);
+                  }
+                } catch (e: any) {
+                  setError("Security test failed.");
+                  addLog("Security test failed.");
+                }
+                setLoading(false);
+              }}
+            >
+              Start Test
+            </Button>
+          </li>
+          <li>
+            Device Hardening via AI:
             <div className="flex gap-2 items-center mt-1">
-              <Button size="sm" variant="outline" onClick={startMonitoring} disabled={monitorStatus?.enabled || loading}>Start Monitoring</Button>
-              <Button size="sm" variant="outline" onClick={stopMonitoring} disabled={!monitorStatus?.enabled || loading}>Stop Monitoring</Button>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={startMonitoring}
+                disabled={monitorStatus?.enabled || loading}
+              >
+                Start Monitoring
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={stopMonitoring}
+                disabled={!monitorStatus?.enabled || loading}
+              >
+                Stop Monitoring
+              </Button>
               <Input
                 type="number"
                 min={10}
                 max={3600}
                 value={monitorInterval}
-                onChange={e => setMonitorInterval(Number(e.target.value))}
+                onChange={(e) => setMonitorInterval(Number(e.target.value))}
                 className="h-7 w-20 text-xs"
                 disabled={monitorStatus?.enabled}
                 title="Interval (seconds)"
               />
               <span className="text-xs text-gray-500">Interval (s)</span>
               {monitorStatus && (
-                <span className={`text-xs ml-2 ${monitorStatus.enabled ? 'text-green-600' : 'text-gray-400'}`}>
-                  {monitorStatus.enabled ? `Active (every ${monitorStatus.interval}s)` : 'Inactive'}
+                <span
+                  className={`text-xs ml-2 ${monitorStatus.enabled ? "text-green-600" : "text-gray-400"}`}
+                >
+                  {monitorStatus.enabled
+                    ? `Active (every ${monitorStatus.interval}s)`
+                    : "Inactive"}
                 </span>
               )}
             </div>
@@ -459,7 +581,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
               <div className="text-xs mt-1">
                 <span className="font-semibold">Last result: </span>
                 {monitorStatus.last_result.anomaly ? (
-                  <span className="text-red-600">Anomaly detected! {monitorStatus.last_result.msg}</span>
+                  <span className="text-red-600">
+                    Anomaly detected! {monitorStatus.last_result.msg}
+                  </span>
                 ) : (
                   <span className="text-green-600">No anomaly</span>
                 )}
@@ -468,117 +592,193 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                   <div className="mt-1">
                     <span className="font-semibold">Attempts per IP:</span>
                     <ul className="ml-2">
-                      {Object.entries(monitorStatus.last_result.ip_counts).map(([ip, count]) => (
-                        <li key={ip}>{ip}: {String(count)}</li>
-                      ))}
+                      {Object.entries(monitorStatus.last_result.ip_counts).map(
+                        ([ip, count]) => (
+                          <li key={ip}>
+                            {ip}: {String(count)}
+                          </li>
+                        ),
+                      )}
                     </ul>
                   </div>
                 )}
               </div>
             )}
           </li>
-          <li>AI-Powered Network Scanner: <Button size="sm" variant="outline" onClick={async () => {
-            setLoading(true);
-            setError(null);
-            try {
-              const res = await fetch('/api/wifi-security?action=network-scan');
-              const data = await res.json();
-              if (data.hosts) {
-                const msg = 'Hosts found:\n' + data.hosts.join('\n');
-                alert(msg);
-                addLog(msg);
-              } else {
-                alert(data.result);
-                addLog(data.result);
-              }
-            } catch (e: any) {
-              setError('Network scan failed.');
-              addLog('Network scan failed.');
-            }
-            setLoading(false);
-          }}>Scan Network</Button></li>
-          <li>Wireless Signal Analysis: <Button size="sm" variant="outline" onClick={async () => {
-            setLoading(true);
-            setError(null);
-            try {
-              const res = await fetch('/api/wifi-security?action=signal-analysis');
-              const data = await res.json();
-              if (data.signals) {
-                const msg = 'Signals:\n' + data.signals.map((s: SignalData) => `${s.ssid}: ${s.signal}`).join('\n');
-                alert(msg);
-                addLog(msg);
-              } else {
-                alert(data.result);
-                addLog(data.result);
-              }
-            } catch (e: any) {
-              setError('Signal analysis failed.');
-              addLog('Signal analysis failed.');
-            }
-            setLoading(false);
-          }}>Analyze Signals</Button></li>
-          <li>IoT Vulnerability Scanner: <Button size="sm" variant="outline" onClick={async () => {
-            setLoading(true);
-            setError(null);
-            try {
-              const res = await fetch('/api/wifi-security?action=iot-scan');
-              const data = await res.json();
-              if (data.risks && data.risks.length > 0) {
-                const msg = 'IoT Risks:\n' + data.risks.map((r: IoTRisk) => `${r.host}: ${r.open.join(', ')}`).join('\n');
-                alert(msg);
-                addLog(msg);
-              } else {
-                alert(data.result);
-                addLog(data.result);
-              }
-            } catch (e: any) {
-              setError('IoT scan failed.');
-              addLog('IoT scan failed.');
-            }
-            setLoading(false);
-          }}>Scan IoT</Button></li>
-          <li>Secure AI Agents: <Button size="sm" variant="outline" onClick={async () => {
-            setLoading(true);
-            setError(null);
-            try {
-              const res = await fetch('/api/wifi-security?action=ai-agents');
-              const data = await res.json();
-              alert(data.result);
-              addLog(data.result);
-            } catch (e: any) {
-              setError('AI agent activation failed.');
-              addLog('AI agent activation failed.');
-            }
-            setLoading(false);
-          }}>Activate Agents</Button></li>
+          <li>
+            AI-Powered Network Scanner:{" "}
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={async () => {
+                setLoading(true);
+                setError(null);
+                try {
+                  const res = await fetch(
+                    "/api/wifi-security?action=network-scan",
+                  );
+                  const data = await res.json();
+                  if (data.hosts) {
+                    const msg = "Hosts found:\n" + data.hosts.join("\n");
+                    alert(msg);
+                    addLog(msg);
+                  } else {
+                    alert(data.result);
+                    addLog(data.result);
+                  }
+                } catch (e: any) {
+                  setError("Network scan failed.");
+                  addLog("Network scan failed.");
+                }
+                setLoading(false);
+              }}
+            >
+              Scan Network
+            </Button>
+          </li>
+          <li>
+            Wireless Signal Analysis:{" "}
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={async () => {
+                setLoading(true);
+                setError(null);
+                try {
+                  const res = await fetch(
+                    "/api/wifi-security?action=signal-analysis",
+                  );
+                  const data = await res.json();
+                  if (data.signals) {
+                    const msg =
+                      "Signals:\n" +
+                      data.signals
+                        .map((s: SignalData) => `${s.ssid}: ${s.signal}`)
+                        .join("\n");
+                    alert(msg);
+                    addLog(msg);
+                  } else {
+                    alert(data.result);
+                    addLog(data.result);
+                  }
+                } catch (e: any) {
+                  setError("Signal analysis failed.");
+                  addLog("Signal analysis failed.");
+                }
+                setLoading(false);
+              }}
+            >
+              Analyze Signals
+            </Button>
+          </li>
+          <li>
+            IoT Vulnerability Scanner:{" "}
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={async () => {
+                setLoading(true);
+                setError(null);
+                try {
+                  const res = await fetch("/api/wifi-security?action=iot-scan");
+                  const data = await res.json();
+                  if (data.risks && data.risks.length > 0) {
+                    const msg =
+                      "IoT Risks:\n" +
+                      data.risks
+                        .map((r: IoTRisk) => `${r.host}: ${r.open.join(", ")}`)
+                        .join("\n");
+                    alert(msg);
+                    addLog(msg);
+                  } else {
+                    alert(data.result);
+                    addLog(data.result);
+                  }
+                } catch (e: any) {
+                  setError("IoT scan failed.");
+                  addLog("IoT scan failed.");
+                }
+                setLoading(false);
+              }}
+            >
+              Scan IoT
+            </Button>
+          </li>
+          <li>
+            Secure AI Agents:{" "}
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={async () => {
+                setLoading(true);
+                setError(null);
+                try {
+                  const res = await fetch(
+                    "/api/wifi-security?action=ai-agents",
+                  );
+                  const data = await res.json();
+                  alert(data.result);
+                  addLog(data.result);
+                } catch (e: any) {
+                  setError("AI agent activation failed.");
+                  addLog("AI agent activation failed.");
+                }
+                setLoading(false);
+              }}
+            >
+              Activate Agents
+            </Button>
+          </li>
         </ul>
-        <div className="text-xs text-gray-500 mt-2">* All tools require user consent and are for legal, educational, or authorized use only.</div>
+        <div className="text-xs text-gray-500 mt-2">
+          * All tools require user consent and are for legal, educational, or
+          authorized use only.
+        </div>
         <div className="mt-4">
           <div className="font-semibold mb-1 flex items-center gap-2">
             Security/AI Logs
-            <Button size="sm" variant="outline" onClick={() => setLogs([])}>Clear Logs</Button>
-            <Button size="sm" variant="outline" onClick={() => {
-              const blob = new Blob([logs.join('\n')], { type: 'text/plain' });
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement('a');
-              a.href = url;
-              a.download = `wifi-security-logs-${new Date().toISOString().slice(0,10)}.txt`;
-              a.click();
-              URL.revokeObjectURL(url);
-            }}>Export Logs</Button>
+            <Button size="sm" variant="outline" onClick={() => setLogs([])}>
+              Clear Logs
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => {
+                const blob = new Blob([logs.join("\n")], {
+                  type: "text/plain",
+                });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `wifi-security-logs-${new Date().toISOString().slice(0, 10)}.txt`;
+                a.click();
+                URL.revokeObjectURL(url);
+              }}
+            >
+              Export Logs
+            </Button>
             <Input
               type="text"
               placeholder="Filter logs..."
               value={logFilter}
-              onChange={e => setLogFilter(e.target.value)}
+              onChange={(e) => setLogFilter(e.target.value)}
               className="h-7 w-32 text-xs"
             />
           </div>
           <div className="bg-gray-100 rounded p-2 h-32 overflow-auto text-xs">
-            {logs.length === 0 ? <span className="text-gray-400">No logs yet.</span> :
-              logs.filter(log => log.toLowerCase().includes(logFilter.toLowerCase())).length === 0 ?
-                <span className="text-gray-400">No logs match filter.</span> :
-                logs.filter(log => log.toLowerCase().includes(logFilter.toLowerCase())).map((log, i) => <div key={i}>{log}</div>)}
+            {logs.length === 0 ? (
+              <span className="text-gray-400">No logs yet.</span>
+            ) : logs.filter((log) =>
+                log.toLowerCase().includes(logFilter.toLowerCase()),
+              ).length === 0 ? (
+              <span className="text-gray-400">No logs match filter.</span>
+            ) : (
+              logs
+                .filter((log) =>
+                  log.toLowerCase().includes(logFilter.toLowerCase()),
+                )
+                .map((log, i) => <div key={i}>{log}</div>)
+            )}
           </div>
         </div>
       </TabsContent>

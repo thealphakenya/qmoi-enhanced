@@ -49,9 +49,11 @@ ci_self_heal:
 If the same error persists for multiple runs (default: 2), QMOI will send notifications to Slack and/or email if configured.
 
 ### Slack
+
 - Set `SLACK_WEBHOOK_URL` as a CI/CD variable or in your `.env` file.
 
 ### Email
+
 - Set the following env vars:
   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `EMAIL_TO`, `EMAIL_FROM`
 - QMOI will send an email when persistent failures are detected.
@@ -81,6 +83,7 @@ QMOI self-healing automation is designed to work with GitLab, GitHub Actions, an
 See the script for details and future updates.
 
 ## See Also
-- [REFERENCES.md](./REFERENCES.md) 
 
-> **Note:** QMOI now supports GitHub Actions self-healing automation. See [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md) for details. 
+- [REFERENCES.md](./REFERENCES.md)
+
+> **Note:** QMOI now supports GitHub Actions self-healing automation. See [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md) for details.

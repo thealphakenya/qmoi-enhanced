@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 function generateStub(filePath) {
-  if (filePath.endsWith('.md')) return;
+  if (filePath.endsWith(".md")) return;
   const stubContent = `// Auto-generated stub for ${path.basename(filePath)}\n// TODO: Implement feature\n`;
   if (!fs.existsSync(filePath)) {
     fs.writeFileSync(filePath, stubContent);
@@ -10,9 +10,9 @@ function generateStub(filePath) {
 }
 
 function updateDocs(filePath) {
-  const docPath = path.join('docs', 'FEATURESINDEX.md');
+  const docPath = path.join("docs", "FEATURESINDEX.md");
   const entry = `- ${filePath} (auto-detected)\n`;
   fs.appendFileSync(docPath, entry);
 }
 
-module.exports = { generateStub, updateDocs }; 
+module.exports = { generateStub, updateDocs };

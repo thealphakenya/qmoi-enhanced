@@ -3,9 +3,11 @@
 ## QMOI Universal Account System
 
 ### Overview
+
 QMOI Accounts provide a single, secure identity for users across all QMOI apps, platforms, and services—similar to Google Accounts. This enables seamless login, account management, and automation for both users and developers.
 
 ### Key Features
+
 - **Single Sign-On (SSO):** One account for all QMOI apps and services.
 - **Cross-Platform:** Use your QMOI account on web, mobile, desktop, and third-party platforms.
 - **API & Automation:** Integrate QMOI Accounts into any app or workflow with robust APIs and automation hooks.
@@ -15,6 +17,7 @@ QMOI Accounts provide a single, secure identity for users across all QMOI apps, 
 - **Audit Logging:** All account actions are logged and visualized for transparency.
 
 ### How to Use QMOI Accounts on Any Platform
+
 1. **Sign Up:**
    - Visit any QMOI app or Qstore and select "Sign Up with QMOI Account."
    - Enter your email (e.g., username@qmail.com) and set a password.
@@ -31,6 +34,7 @@ QMOI Accounts provide a single, secure identity for users across all QMOI apps, 
    - See API.md for endpoints and usage examples.
 
 ### Visual Workflow
+
 ```mermaid
 graph TD;
   A[User/App] -->|Sign Up/Login| B(QMOI Account Service)
@@ -44,12 +48,15 @@ graph TD;
 ```
 
 ### Automation & Self-Healing
+
 - QMOI auto-fixes account issues, recovers lost access, and provisions new accounts as needed.
 - Master/admins can trigger or override automation at any time.
 - All actions are logged and visualized for compliance and transparency.
 
 ### Advanced User Distinction & Recognition
+
 QMOI uses advanced AI-driven identification to recognize and distinguish each user, even across different accounts, devices, or sessions—including when a user is in the background or using another account. This is achieved through:
+
 - **Behavioral Biometrics:** Typing patterns, navigation habits, and device usage.
 - **Contextual Signals:** Location, device, time, and app usage context.
 - **Multi-Modal Biometrics:** Face, voice, fingerprint, and other biometric data (where permitted).
@@ -58,16 +65,19 @@ QMOI uses advanced AI-driven identification to recognize and distinguish each us
 - **Privacy & Security:** All recognition is privacy-respecting, encrypted, and user/audit-controlled. Master/admins can review and override as needed.
 
 #### Automation
+
 - QMOI auto-detects and adapts to user context, switching profiles or providing relevant actions without manual intervention.
 - All recognition events are logged and auditable by master/admin.
 
 ### Security & Privacy
+
 - All data is encrypted in transit and at rest.
 - Users can export, review, or delete their data at any time.
 - Master/admins have access to advanced security controls and audit logs.
 
 ### See Also
+
 - QMOIMEMORY.md
 - QMOIAPPS.md
 - Qstore.md
-- API.md 
+- API.md

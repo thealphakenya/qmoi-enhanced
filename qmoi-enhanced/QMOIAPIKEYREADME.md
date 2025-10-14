@@ -5,6 +5,7 @@
 The QMOI API Key Manager provides secure API key generation, management, and usage tracking for QMOI services.
 
 ## Features
+
 - Generate secure API keys (default: 20)
 - Revoke (disable) keys
 - Track usage per key
@@ -25,12 +26,14 @@ The QMOI API Key Manager provides secure API key generation, management, and usa
 4. See usage stats for each key
 
 ## Security Notes
+
 - Keep API keys secret; treat them like passwords
 - Revoke keys immediately if compromised
 - For production, store keys securely (not in memory)
 
 ## Advanced
+
 - TODO: Add persistent storage (e.g., file or database)
 - TODO: Add detailed usage logs and alerts
 
---- 
+---

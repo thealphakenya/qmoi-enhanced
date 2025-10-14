@@ -1,17 +1,17 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { cashonWallet } from '@/lib/cashon-wallet';
-import { qmoiTrader } from '@/lib/qmoi-trader';
+import { NextRequest, NextResponse } from "next/server";
+import { cashonWallet } from "@/lib/cashon-wallet";
+import { qmoiTrader } from "@/lib/qmoi-trader";
 
 // Verify master token
 function verifyMasterToken(request: NextRequest): string | null {
-  const authHeader = request.headers.get('authorization');
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+  const authHeader = request.headers.get("authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
   }
-  
+
   const token = authHeader.substring(7);
   const masterToken = process.env.MASTER_TOKEN;
-  
+
   return token === masterToken ? token : null;
 }
 
@@ -20,41 +20,47 @@ export async function GET(request: NextRequest) {
   try {
     const masterToken = verifyMasterToken(request);
     if (!masterToken) {
-      return NextResponse.json({ error: 'Master access required' }, { status: 401 });
+      return NextResponse.json(
+        { error: "Master access required" },
+        { status: 401 },
+      );
     }
 
     const url = new URL(request.url);
-    const path = url.pathname.split('/').pop();
+    const path = url.pathname.split("/").pop();
 
     switch (path) {
-      case 'balance':
+      case "balance":
         const balance = await cashonWallet.getBalance(masterToken);
         return NextResponse.json(balance);
 
-      case 'trading-status':
+      case "trading-status":
         const status = await cashonWallet.getTradingStatus();
         return NextResponse.json(status);
 
-      case 'qmoi-status':
+      case "qmoi-status":
         const qmoiStatus = await qmoiTrader.getStatus();
         return NextResponse.json(qmoiStatus);
 
-      case 'signals':
+      case "signals":
         const signals = qmoiTrader.getRecentSignals(10);
         return NextResponse.json(signals);
 
-      case 'performance':
+      case "performance":
         const performance = await qmoiTrader.getPerformanceMetrics();
         return NextResponse.json(performance);
 
       default:
-        return NextResponse.json({ error: 'Invalid endpoint' }, { status: 400 });
+        return NextResponse.json(
+          { error: "Invalid endpoint" },
+          { status: 400 },
+        );
     }
   } catch (error) {
-    console.error('Cashon API error:', error);
+    console.error("Cashon API error:", error);
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
+      { error: "Internal server error" },
+      { status: 500 },
     );
   }
 }
@@ -64,75 +70,119 @@ export async function POST(request: NextRequest) {
   try {
     const masterToken = verifyMasterToken(request);
     if (!masterToken) {
-      return NextResponse.json({ error: 'Master access required' }, { status: 401 });
+      return NextResponse.json(
+        { error: "Master access required" },
+        { status: 401 },
+      );
     }
 
     const url = new URL(request.url);
-    const path = url.pathname.split('/').pop();
+    const path = url.pathname.split("/").pop();
     const body = await request.json();
 
     switch (path) {
-      case 'deposit':
+      case "deposit":
         const { amount } = body;
         if (!amount || amount < 10) {
-          return NextResponse.json({ error: 'Invalid amount' }, { status: 400 });
+          return NextResponse.json(
+            { error: "Invalid amount" },
+            { status: 400 },
+          );
         }
-        
-        const depositId = await cashonWallet.initiateDeposit(amount, masterToken);
+
+        const depositId = await cashonWallet.initiateDeposit(
+          amount,
+          masterToken,
+        );
         return NextResponse.json({ success: true, depositId });
 
-      case 'approve-deposit':
+      case "approve-deposit":
         const { transactionId } = body;
         if (!transactionId) {
-          return NextResponse.json({ error: 'Transaction ID required' }, { status: 400 });
+          return NextResponse.json(
+            { error: "Transaction ID required" },
+            { status: 400 },
+          );
         }
-        
-        const approved = await cashonWallet.approveDeposit(transactionId, masterToken);
+
+        const approved = await cashonWallet.approveDeposit(
+          transactionId,
+          masterToken,
+        );
         return NextResponse.json({ success: approved });
 
-      case 'withdraw':
+      case "withdraw":
         const { withdrawAmount } = body;
         if (!withdrawAmount || withdrawAmount < 10) {
-          return NextResponse.json({ error: 'Invalid amount' }, { status: 400 });
+          return NextResponse.json(
+            { error: "Invalid amount" },
+            { status: 400 },
+          );
         }
-        
-        const withdrawalId = await cashonWallet.withdrawFunds(withdrawAmount, masterToken);
+
+        const withdrawalId = await cashonWallet.withdrawFunds(
+          withdrawAmount,
+          masterToken,
+        );
         return NextResponse.json({ success: true, withdrawalId });
 
-      case 'start-trading':
+      case "start-trading":
         await qmoiTrader.startTrading();
-        return NextResponse.json({ success: true, message: 'AI trading started' });
+        return NextResponse.json({
+          success: true,
+          message: "AI trading started",
+        });
 
-      case 'stop-trading':
+      case "stop-trading":
         await qmoiTrader.stopTrading();
-        return NextResponse.json({ success: true, message: 'AI trading stopped' });
+        return NextResponse.json({
+          success: true,
+          message: "AI trading stopped",
+        });
 
-      case 'trade':
+      case "trade":
         const { tradeAmount, asset, strategy, confidence } = body;
         if (!tradeAmount || !asset || !strategy || !confidence) {
-          return NextResponse.json({ error: 'Missing trade parameters' }, { status: 400 });
+          return NextResponse.json(
+            { error: "Missing trade parameters" },
+            { status: 400 },
+          );
         }
-        
-        const tradeId = await cashonWallet.requestTrade(tradeAmount, asset, strategy, confidence);
+
+        const tradeId = await cashonWallet.requestTrade(
+          tradeAmount,
+          asset,
+          strategy,
+          confidence,
+        );
         return NextResponse.json({ success: true, tradeId });
 
-      case 'approve-trade':
+      case "approve-trade":
         const { tradeId: tradeToApprove } = body;
         if (!tradeToApprove) {
-          return NextResponse.json({ error: 'Trade ID required' }, { status: 400 });
+          return NextResponse.json(
+            { error: "Trade ID required" },
+            { status: 400 },
+          );
         }
-        
-        const tradeApproved = await cashonWallet.approveTrade(tradeToApprove, false);
+
+        const tradeApproved = await cashonWallet.approveTrade(
+          tradeToApprove,
+          false,
+        );
         return NextResponse.json({ success: tradeApproved });
 
       default:
-        return NextResponse.json({ error: 'Invalid endpoint' }, { status: 400 });
+        return NextResponse.json(
+          { error: "Invalid endpoint" },
+          { status: 400 },
+        );
     }
   } catch (error) {
-    console.error('Cashon API error:', error);
+    console.error("Cashon API error:", error);
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
+      { error: "Internal server error" },
+      { status: 500 },
     );
   }
 }
@@ -142,31 +192,40 @@ export async function PUT(request: NextRequest) {
   try {
     const masterToken = verifyMasterToken(request);
     if (!masterToken) {
-      return NextResponse.json({ error: 'Master access required' }, { status: 401 });
+      return NextResponse.json(
+        { error: "Master access required" },
+        { status: 401 },
+      );
     }
 
     const url = new URL(request.url);
-    const path = url.pathname.split('/').pop();
+    const path = url.pathname.split("/").pop();
     const body = await request.json();
 
     switch (path) {
-      case 'strategy':
+      case "strategy":
         const { strategyId, updates } = body;
         if (!strategyId || !updates) {
-          return NextResponse.json({ error: 'Strategy ID and updates required' }, { status: 400 });
+          return NextResponse.json(
+            { error: "Strategy ID and updates required" },
+            { status: 400 },
+          );
         }
-        
+
         qmoiTrader.updateStrategy(strategyId, updates);
         return NextResponse.json({ success: true });
 
       default:
-        return NextResponse.json({ error: 'Invalid endpoint' }, { status: 400 });
+        return NextResponse.json(
+          { error: "Invalid endpoint" },
+          { status: 400 },
+        );
     }
   } catch (error) {
-    console.error('Cashon API error:', error);
+    console.error("Cashon API error:", error);
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
+      { error: "Internal server error" },
+      { status: 500 },
     );
   }
-} 
+}

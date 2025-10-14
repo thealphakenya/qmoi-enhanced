@@ -1,22 +1,23 @@
 #!/usr/bin/env node
 
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
+const https = require("https");
+const fs = require("fs");
+const path = require("path");
 
 class GitpodNotificationService {
   constructor() {
     this.gitpodToken = process.env.GITPOD_API_TOKEN;
-    this.gitpodUrl = process.env.GITPOD_URL || 'https://api.gitpod.io/v1';
-    this.gitlabToken = process.env.GITLAB_TOKEN || process.env.GITLAB_ACCESS_TOKEN;
-    this.gitlabUrl = process.env.GITLAB_URL || 'https://gitlab.com';
+    this.gitpodUrl = process.env.GITPOD_URL || "https://api.gitpod.io/v1";
+    this.gitlabToken =
+      process.env.GITLAB_TOKEN || process.env.GITLAB_ACCESS_TOKEN;
+    this.gitlabUrl = process.env.GITLAB_URL || "https://gitlab.com";
     this.projectId = process.env.GITLAB_PROJECT_ID;
-    this.branch = process.env.CI_COMMIT_REF_NAME || 'main';
+    this.branch = process.env.CI_COMMIT_REF_NAME || "main";
     this.commitSha = process.env.CI_COMMIT_SHA;
     this.jobId = process.env.CI_JOB_ID;
     this.pipelineId = process.env.CI_PIPELINE_ID;
-    
-    this.logFile = path.join(process.cwd(), 'logs', 'gitpod-notifications.log');
+
+    this.logFile = path.join(process.cwd(), "logs", "gitpod-notifications.log");
     this.ensureLogDir();
   }
 
@@ -27,14 +28,14 @@ class GitpodNotificationService {
     }
   }
 
-  log(message, level = 'INFO') {
+  log(message, level = "INFO") {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${level}] ${message}\n`;
     fs.appendFileSync(this.logFile, logEntry);
     console.log(`[${level}] ${message}`);
   }
 
-  async makeGitpodRequest(endpoint, method = 'GET', body = null) {
+  async makeGitpodRequest(endpoint, method = "GET", body = null) {
     return new Promise((resolve, reject) => {
       const options = {
         hostname: new URL(this.gitpodUrl).hostname,
@@ -42,16 +43,16 @@ class GitpodNotificationService {
         path: endpoint,
         method,
         headers: {
-          'Authorization': `Bearer ${this.gitpodToken}`,
-          'Content-Type': 'application/json',
-          'User-Agent': 'QMOI-Gitpod-Notifications/1.0'
-        }
+          Authorization: `Bearer ${this.gitpodToken}`,
+          "Content-Type": "application/json",
+          "User-Agent": "QMOI-Gitpod-Notifications/1.0",
+        },
       };
 
       const req = https.request(options, (res) => {
-        let data = '';
-        res.on('data', chunk => data += chunk);
-        res.on('end', () => {
+        let data = "";
+        res.on("data", (chunk) => (data += chunk));
+        res.on("end", () => {
           try {
             const jsonData = JSON.parse(data);
             resolve(jsonData);
@@ -61,7 +62,7 @@ class GitpodNotificationService {
         });
       });
 
-      req.on('error', reject);
+      req.on("error", reject);
       if (body) {
         req.write(JSON.stringify(body));
       }
@@ -69,7 +70,7 @@ class GitpodNotificationService {
     });
   }
 
-  async makeGitLabRequest(endpoint, method = 'GET', body = null) {
+  async makeGitLabRequest(endpoint, method = "GET", body = null) {
     return new Promise((resolve, reject) => {
       const options = {
         hostname: new URL(this.gitlabUrl).hostname,
@@ -77,16 +78,16 @@ class GitpodNotificationService {
         path: `/api/v4${endpoint}`,
         method,
         headers: {
-          'Authorization': `Bearer ${this.gitlabToken}`,
-          'Content-Type': 'application/json',
-          'User-Agent': 'QMOI-Gitpod-Notifications/1.0'
-        }
+          Authorization: `Bearer ${this.gitlabToken}`,
+          "Content-Type": "application/json",
+          "User-Agent": "QMOI-Gitpod-Notifications/1.0",
+        },
       };
 
       const req = https.request(options, (res) => {
-        let data = '';
-        res.on('data', chunk => data += chunk);
-        res.on('end', () => {
+        let data = "";
+        res.on("data", (chunk) => (data += chunk));
+        res.on("end", () => {
           try {
             const jsonData = JSON.parse(data);
             resolve(jsonData);
@@ -96,7 +97,7 @@ class GitpodNotificationService {
         });
       });
 
-      req.on('error', reject);
+      req.on("error", reject);
       if (body) {
         req.write(JSON.stringify(body));
       }
@@ -104,18 +105,26 @@ class GitpodNotificationService {
     });
   }
 
-  async createGitLabIssue(title, description, labels = ['qmoi', 'gitpod', 'notification']) {
+  async createGitLabIssue(
+    title,
+    description,
+    labels = ["qmoi", "gitpod", "notification"],
+  ) {
     try {
-      const issue = await this.makeGitLabRequest(`/projects/${this.projectId}/issues`, 'POST', {
-        title,
-        description,
-        labels: labels.join(','),
-        confidential: false
-      });
+      const issue = await this.makeGitLabRequest(
+        `/projects/${this.projectId}/issues`,
+        "POST",
+        {
+          title,
+          description,
+          labels: labels.join(","),
+          confidential: false,
+        },
+      );
       this.log(`Created GitLab issue: ${issue.iid} - ${title}`);
       return issue;
     } catch (error) {
-      this.log(`Failed to create GitLab issue: ${error.message}`, 'ERROR');
+      this.log(`Failed to create GitLab issue: ${error.message}`, "ERROR");
       return null;
     }
   }
@@ -123,17 +132,17 @@ class GitpodNotificationService {
   async sendGitpodNotification(type, data = {}) {
     try {
       const timestamp = new Date().toISOString();
-      const gitpodUrl = `https://gitpod.io/#${data.workspaceId || 'workspace'}`;
-      
+      const gitpodUrl = `https://gitpod.io/#${data.workspaceId || "workspace"}`;
+
       let title, description, labels;
-      
+
       switch (type) {
-        case 'workspace_started':
+        case "workspace_started":
           title = `🚀 QMOI Gitpod Workspace Started - ${timestamp}`;
           description = `## QMOI Gitpod Workspace Started
 
 ### Workspace Details:
-- **Workspace ID**: ${data.workspaceId || 'Unknown'}
+- **Workspace ID**: ${data.workspaceId || "Unknown"}
 - **Branch**: ${this.branch}
 - **Commit**: ${this.commitSha}
 - **Pipeline ID**: ${this.pipelineId}
@@ -155,15 +164,15 @@ Gitpod workspace has been started and is ready for development.
 
 ---
 *Generated by QMOI Gitpod Notification Service*`;
-          labels = ['qmoi', 'gitpod', 'workspace', 'started'];
+          labels = ["qmoi", "gitpod", "workspace", "started"];
           break;
-          
-        case 'workspace_stopped':
+
+        case "workspace_stopped":
           title = `⏹️ QMOI Gitpod Workspace Stopped - ${timestamp}`;
           description = `## QMOI Gitpod Workspace Stopped
 
 ### Workspace Details:
-- **Workspace ID**: ${data.workspaceId || 'Unknown'}
+- **Workspace ID**: ${data.workspaceId || "Unknown"}
 - **Branch**: ${this.branch}
 - **Commit**: ${this.commitSha}
 - **Pipeline ID**: ${this.pipelineId}
@@ -183,16 +192,16 @@ Gitpod workspace has been stopped.
 
 ---
 *Generated by QMOI Gitpod Notification Service*`;
-          labels = ['qmoi', 'gitpod', 'workspace', 'stopped'];
+          labels = ["qmoi", "gitpod", "workspace", "stopped"];
           break;
-          
-        case 'workspace_cloned':
+
+        case "workspace_cloned":
           title = `📋 QMOI Gitpod Workspace Cloned - ${timestamp}`;
           description = `## QMOI Gitpod Workspace Cloned
 
 ### Workspace Details:
-- **Workspace ID**: ${data.workspaceId || 'Unknown'}
-- **Original Workspace**: ${data.originalWorkspaceId || 'Unknown'}
+- **Workspace ID**: ${data.workspaceId || "Unknown"}
+- **Original Workspace**: ${data.originalWorkspaceId || "Unknown"}
 - **Branch**: ${this.branch}
 - **Commit**: ${this.commitSha}
 - **Pipeline ID**: ${this.pipelineId}
@@ -215,16 +224,16 @@ ${gitpodUrl}
 
 ---
 *Generated by QMOI Gitpod Notification Service*`;
-          labels = ['qmoi', 'gitpod', 'workspace', 'cloned'];
+          labels = ["qmoi", "gitpod", "workspace", "cloned"];
           break;
-          
-        case 'workspace_synced':
+
+        case "workspace_synced":
           title = `🔄 QMOI Gitpod Workspace Synced - ${timestamp}`;
           description = `## QMOI Gitpod Workspace Synced
 
 ### Workspace Details:
-- **Workspace ID**: ${data.workspaceId || 'Unknown'}
-- **Sync Type**: ${data.syncType || 'Unknown'}
+- **Workspace ID**: ${data.workspaceId || "Unknown"}
+- **Sync Type**: ${data.syncType || "Unknown"}
 - **Branch**: ${this.branch}
 - **Commit**: ${this.commitSha}
 - **Pipeline ID**: ${this.pipelineId}
@@ -248,16 +257,16 @@ ${gitpodUrl}
 
 ---
 *Generated by QMOI Gitpod Notification Service*`;
-          labels = ['qmoi', 'gitpod', 'workspace', 'synced'];
+          labels = ["qmoi", "gitpod", "workspace", "synced"];
           break;
-          
-        case 'workspace_error':
+
+        case "workspace_error":
           title = `❌ QMOI Gitpod Workspace Error - ${timestamp}`;
           description = `## QMOI Gitpod Workspace Error
 
 ### Workspace Details:
-- **Workspace ID**: ${data.workspaceId || 'Unknown'}
-- **Error Type**: ${data.errorType || 'Unknown'}
+- **Workspace ID**: ${data.workspaceId || "Unknown"}
+- **Error Type**: ${data.errorType || "Unknown"}
 - **Branch**: ${this.branch}
 - **Commit**: ${this.commitSha}
 - **Pipeline ID**: ${this.pipelineId}
@@ -266,7 +275,7 @@ ${gitpodUrl}
 
 ### Error Details:
 \`\`\`
-${data.error || 'Unknown error occurred'}
+${data.error || "Unknown error occurred"}
 \`\`\`
 
 ### Workspace URL:
@@ -288,16 +297,16 @@ ${gitpodUrl}
 
 ---
 *Generated by QMOI Gitpod Notification Service*`;
-          labels = ['qmoi', 'gitpod', 'workspace', 'error', 'needs-attention'];
+          labels = ["qmoi", "gitpod", "workspace", "error", "needs-attention"];
           break;
-          
-        case 'qmoi_integration':
+
+        case "qmoi_integration":
           title = `🔗 QMOI Gitpod Integration - ${timestamp}`;
           description = `## QMOI Gitpod Integration Status
 
 ### Integration Details:
-- **Workspace ID**: ${data.workspaceId || 'Unknown'}
-- **Integration Type**: ${data.integrationType || 'QMOI Setup'}
+- **Workspace ID**: ${data.workspaceId || "Unknown"}
+- **Integration Type**: ${data.integrationType || "QMOI Setup"}
 - **Branch**: ${this.branch}
 - **Commit**: ${this.commitSha}
 - **Pipeline ID**: ${this.pipelineId}
@@ -318,7 +327,7 @@ ${gitpodUrl}
 - Deployment management
 
 ### Integration Status:
-${data.status || 'Active'}
+${data.status || "Active"}
 
 ### Next Steps:
 - Monitor automation progress
@@ -328,15 +337,15 @@ ${data.status || 'Active'}
 
 ---
 *Generated by QMOI Gitpod Notification Service*`;
-          labels = ['qmoi', 'gitpod', 'integration', 'active'];
+          labels = ["qmoi", "gitpod", "integration", "active"];
           break;
-          
+
         default:
           title = `📢 QMOI Gitpod Notification - ${timestamp}`;
           description = `## QMOI Gitpod Notification
 
 ### Details:
-- **Workspace ID**: ${data.workspaceId || 'Unknown'}
+- **Workspace ID**: ${data.workspaceId || "Unknown"}
 - **Type**: ${type}
 - **Branch**: ${this.branch}
 - **Commit**: ${this.commitSha}
@@ -349,65 +358,82 @@ ${gitpodUrl}
 
 ---
 *Generated by QMOI Gitpod Notification Service*`;
-          labels = ['qmoi', 'gitpod', 'notification'];
+          labels = ["qmoi", "gitpod", "notification"];
       }
-      
+
       // Create GitLab issue
       const issue = await this.createGitLabIssue(title, description, labels);
-      
+
       // Send to Gitpod API if available
       if (data.workspaceId && this.gitpodToken) {
         try {
-          await this.makeGitpodRequest(`/workspaces/${data.workspaceId}/notifications`, 'POST', {
-            title,
-            message: description,
-            type: 'qmoi_notification'
-          });
-          this.log(`Sent notification to Gitpod workspace: ${data.workspaceId}`);
+          await this.makeGitpodRequest(
+            `/workspaces/${data.workspaceId}/notifications`,
+            "POST",
+            {
+              title,
+              message: description,
+              type: "qmoi_notification",
+            },
+          );
+          this.log(
+            `Sent notification to Gitpod workspace: ${data.workspaceId}`,
+          );
         } catch (error) {
-          this.log(`Failed to send Gitpod notification: ${error.message}`, 'WARN');
+          this.log(
+            `Failed to send Gitpod notification: ${error.message}`,
+            "WARN",
+          );
         }
       }
-      
+
       this.log(`Gitpod notification sent: ${type}`);
       return issue;
-      
     } catch (error) {
-      this.log(`Failed to send Gitpod notification: ${error.message}`, 'ERROR');
+      this.log(`Failed to send Gitpod notification: ${error.message}`, "ERROR");
       throw error;
     }
   }
 
   async monitorGitpodWorkspaces() {
     try {
-      this.log('Monitoring Gitpod workspaces...');
-      
+      this.log("Monitoring Gitpod workspaces...");
+
       if (!this.gitpodToken) {
-        this.log('No Gitpod token available, skipping workspace monitoring', 'WARN');
+        this.log(
+          "No Gitpod token available, skipping workspace monitoring",
+          "WARN",
+        );
         return [];
       }
-      
-      const workspaces = await this.makeGitpodRequest('/workspaces');
-      
+
+      const workspaces = await this.makeGitpodRequest("/workspaces");
+
       for (const workspace of workspaces.workspaces || []) {
         // Check if workspace is related to this project
-        if (workspace.context && workspace.context.url && workspace.context.url.includes(this.projectId)) {
+        if (
+          workspace.context &&
+          workspace.context.url &&
+          workspace.context.url.includes(this.projectId)
+        ) {
           this.log(`Found related workspace: ${workspace.id}`);
-          
+
           // Send workspace status notification
-          await this.sendGitpodNotification('qmoi_integration', {
+          await this.sendGitpodNotification("qmoi_integration", {
             workspaceId: workspace.id,
-            integrationType: 'Workspace Monitoring',
-            status: workspace.status
+            integrationType: "Workspace Monitoring",
+            status: workspace.status,
           });
         }
       }
-      
+
       this.log(`Monitored ${workspaces.workspaces?.length || 0} workspaces`);
       return workspaces.workspaces || [];
-      
     } catch (error) {
-      this.log(`Failed to monitor Gitpod workspaces: ${error.message}`, 'ERROR');
+      this.log(
+        `Failed to monitor Gitpod workspaces: ${error.message}`,
+        "ERROR",
+      );
       throw error;
     }
   }
@@ -415,34 +441,33 @@ ${gitpodUrl}
   async startGitpodWorkspace(contextUrl) {
     try {
       this.log(`Starting Gitpod workspace for: ${contextUrl}`);
-      
+
       if (!this.gitpodToken) {
-        throw new Error('No Gitpod token available');
+        throw new Error("No Gitpod token available");
       }
-      
-      const workspace = await this.makeGitpodRequest('/workspaces', 'POST', {
+
+      const workspace = await this.makeGitpodRequest("/workspaces", "POST", {
         contextUrl,
-        description: `QMOI Development Workspace - ${new Date().toISOString()}`
+        description: `QMOI Development Workspace - ${new Date().toISOString()}`,
       });
-      
+
       this.log(`Gitpod workspace started: ${workspace.id}`);
-      
+
       // Send notification
-      await this.sendGitpodNotification('workspace_started', {
-        workspaceId: workspace.id
+      await this.sendGitpodNotification("workspace_started", {
+        workspaceId: workspace.id,
       });
-      
+
       return workspace;
-      
     } catch (error) {
-      this.log(`Failed to start Gitpod workspace: ${error.message}`, 'ERROR');
-      
+      this.log(`Failed to start Gitpod workspace: ${error.message}`, "ERROR");
+
       // Send error notification
-      await this.sendGitpodNotification('workspace_error', {
-        errorType: 'Start Failed',
-        error: error.message
+      await this.sendGitpodNotification("workspace_error", {
+        errorType: "Start Failed",
+        error: error.message,
       });
-      
+
       throw error;
     }
   }
@@ -450,30 +475,29 @@ ${gitpodUrl}
   async stopGitpodWorkspace(workspaceId) {
     try {
       this.log(`Stopping Gitpod workspace: ${workspaceId}`);
-      
+
       if (!this.gitpodToken) {
-        throw new Error('No Gitpod token available');
+        throw new Error("No Gitpod token available");
       }
-      
-      await this.makeGitpodRequest(`/workspaces/${workspaceId}`, 'DELETE');
-      
+
+      await this.makeGitpodRequest(`/workspaces/${workspaceId}`, "DELETE");
+
       this.log(`Gitpod workspace stopped: ${workspaceId}`);
-      
+
       // Send notification
-      await this.sendGitpodNotification('workspace_stopped', {
-        workspaceId: workspaceId
-      });
-      
-    } catch (error) {
-      this.log(`Failed to stop Gitpod workspace: ${error.message}`, 'ERROR');
-      
-      // Send error notification
-      await this.sendGitpodNotification('workspace_error', {
+      await this.sendGitpodNotification("workspace_stopped", {
         workspaceId: workspaceId,
-        errorType: 'Stop Failed',
-        error: error.message
       });
-      
+    } catch (error) {
+      this.log(`Failed to stop Gitpod workspace: ${error.message}`, "ERROR");
+
+      // Send error notification
+      await this.sendGitpodNotification("workspace_error", {
+        workspaceId: workspaceId,
+        errorType: "Stop Failed",
+        error: error.message,
+      });
+
       throw error;
     }
   }
@@ -481,68 +505,69 @@ ${gitpodUrl}
   async cloneGitpodWorkspace(workspaceId) {
     try {
       this.log(`Cloning Gitpod workspace: ${workspaceId}`);
-      
+
       if (!this.gitpodToken) {
-        throw new Error('No Gitpod token available');
+        throw new Error("No Gitpod token available");
       }
-      
-      const snapshot = await this.makeGitpodRequest(`/workspaces/${workspaceId}/snapshot`, 'POST');
-      
+
+      const snapshot = await this.makeGitpodRequest(
+        `/workspaces/${workspaceId}/snapshot`,
+        "POST",
+      );
+
       this.log(`Gitpod workspace cloned: ${snapshot.id}`);
-      
+
       // Send notification
-      await this.sendGitpodNotification('workspace_cloned', {
+      await this.sendGitpodNotification("workspace_cloned", {
         workspaceId: snapshot.id,
-        originalWorkspaceId: workspaceId
+        originalWorkspaceId: workspaceId,
       });
-      
+
       return snapshot;
-      
     } catch (error) {
-      this.log(`Failed to clone Gitpod workspace: ${error.message}`, 'ERROR');
-      
+      this.log(`Failed to clone Gitpod workspace: ${error.message}`, "ERROR");
+
       // Send error notification
-      await this.sendGitpodNotification('workspace_error', {
+      await this.sendGitpodNotification("workspace_error", {
         workspaceId: workspaceId,
-        errorType: 'Clone Failed',
-        error: error.message
+        errorType: "Clone Failed",
+        error: error.message,
       });
-      
+
       throw error;
     }
   }
 
-  async syncGitpodWorkspace(workspaceId, syncType = 'git') {
+  async syncGitpodWorkspace(workspaceId, syncType = "git") {
     try {
       this.log(`Syncing Gitpod workspace: ${workspaceId} (${syncType})`);
-      
+
       if (!this.gitpodToken) {
-        throw new Error('No Gitpod token available');
+        throw new Error("No Gitpod token available");
       }
-      
+
       // Trigger workspace sync
-      await this.makeGitpodRequest(`/workspaces/${workspaceId}/sync`, 'POST', {
-        type: syncType
+      await this.makeGitpodRequest(`/workspaces/${workspaceId}/sync`, "POST", {
+        type: syncType,
       });
-      
+
       this.log(`Gitpod workspace synced: ${workspaceId}`);
-      
+
       // Send notification
-      await this.sendGitpodNotification('workspace_synced', {
+      await this.sendGitpodNotification("workspace_synced", {
         workspaceId: workspaceId,
-        syncType: syncType
+        syncType: syncType,
       });
-      
     } catch (error) {
-      this.log(`Failed to sync Gitpod workspace: ${error.message}`, 'ERROR');
-      
+      this.log(`Failed to sync Gitpod workspace: ${error.message}`, "ERROR");
+
       // Send error notification
-      await this.sendGitpodNotification('workspace_error', {
+      await this.sendGitpodNotification("workspace_error", {
         workspaceId: workspaceId,
-        errorType: 'Sync Failed',
-        error: error.message
+        errorType: "Sync Failed",
+        error: error.message,
       });
-      
+
       throw error;
     }
   }
@@ -551,65 +576,100 @@ ${gitpodUrl}
 // Main execution
 async function main() {
   const notificationService = new GitpodNotificationService();
-  
+
   try {
     const args = process.argv.slice(2);
     const command = args[0];
     const data = args[1] ? JSON.parse(args[1]) : {};
-    
+
     switch (command) {
-      case '--workspace-started':
-        await notificationService.sendGitpodNotification('workspace_started', data);
+      case "--workspace-started":
+        await notificationService.sendGitpodNotification(
+          "workspace_started",
+          data,
+        );
         break;
-      case '--workspace-stopped':
-        await notificationService.sendGitpodNotification('workspace_stopped', data);
+      case "--workspace-stopped":
+        await notificationService.sendGitpodNotification(
+          "workspace_stopped",
+          data,
+        );
         break;
-      case '--workspace-cloned':
-        await notificationService.sendGitpodNotification('workspace_cloned', data);
+      case "--workspace-cloned":
+        await notificationService.sendGitpodNotification(
+          "workspace_cloned",
+          data,
+        );
         break;
-      case '--workspace-synced':
-        await notificationService.sendGitpodNotification('workspace_synced', data);
+      case "--workspace-synced":
+        await notificationService.sendGitpodNotification(
+          "workspace_synced",
+          data,
+        );
         break;
-      case '--workspace-error':
-        await notificationService.sendGitpodNotification('workspace_error', data);
+      case "--workspace-error":
+        await notificationService.sendGitpodNotification(
+          "workspace_error",
+          data,
+        );
         break;
-      case '--qmoi-integration':
-        await notificationService.sendGitpodNotification('qmoi_integration', data);
+      case "--qmoi-integration":
+        await notificationService.sendGitpodNotification(
+          "qmoi_integration",
+          data,
+        );
         break;
-      case '--monitor-workspaces':
+      case "--monitor-workspaces":
         await notificationService.monitorGitpodWorkspaces();
         break;
-      case '--start-workspace':
+      case "--start-workspace":
         await notificationService.startGitpodWorkspace(data.contextUrl);
         break;
-      case '--stop-workspace':
+      case "--stop-workspace":
         await notificationService.stopGitpodWorkspace(data.workspaceId);
         break;
-      case '--clone-workspace':
+      case "--clone-workspace":
         await notificationService.cloneGitpodWorkspace(data.workspaceId);
         break;
-      case '--sync-workspace':
-        await notificationService.syncGitpodWorkspace(data.workspaceId, data.syncType);
+      case "--sync-workspace":
+        await notificationService.syncGitpodWorkspace(
+          data.workspaceId,
+          data.syncType,
+        );
         break;
       default:
-        console.log('QMOI Gitpod Notification Service');
-        console.log('Usage:');
-        console.log('  --workspace-started [data]    Send workspace started notification');
-        console.log('  --workspace-stopped [data]    Send workspace stopped notification');
-        console.log('  --workspace-cloned [data]     Send workspace cloned notification');
-        console.log('  --workspace-synced [data]     Send workspace synced notification');
-        console.log('  --workspace-error [data]      Send workspace error notification');
-        console.log('  --qmoi-integration [data]     Send QMOI integration notification');
-        console.log('  --monitor-workspaces          Monitor all workspaces');
-        console.log('  --start-workspace [data]      Start a new workspace');
-        console.log('  --stop-workspace [data]       Stop a workspace');
-        console.log('  --clone-workspace [data]      Clone a workspace');
-        console.log('  --sync-workspace [data]       Sync a workspace');
+        console.log("QMOI Gitpod Notification Service");
+        console.log("Usage:");
+        console.log(
+          "  --workspace-started [data]    Send workspace started notification",
+        );
+        console.log(
+          "  --workspace-stopped [data]    Send workspace stopped notification",
+        );
+        console.log(
+          "  --workspace-cloned [data]     Send workspace cloned notification",
+        );
+        console.log(
+          "  --workspace-synced [data]     Send workspace synced notification",
+        );
+        console.log(
+          "  --workspace-error [data]      Send workspace error notification",
+        );
+        console.log(
+          "  --qmoi-integration [data]     Send QMOI integration notification",
+        );
+        console.log("  --monitor-workspaces          Monitor all workspaces");
+        console.log("  --start-workspace [data]      Start a new workspace");
+        console.log("  --stop-workspace [data]       Stop a workspace");
+        console.log("  --clone-workspace [data]      Clone a workspace");
+        console.log("  --sync-workspace [data]       Sync a workspace");
         break;
     }
-    
   } catch (error) {
-    notificationService.log(`Gitpod notification service failed: ${error.message}`, 'ERROR');
+    notificationService.log(
+      `Gitpod notification service failed: ${error.message}`,
+      "ERROR",
+    );
     process.exit(1);
   }
 }
@@ -620,4 +680,4 @@ module.exports = { GitpodNotificationService };
 // Run if this script is executed directly
 if (require.main === module) {
   main();
-} 
+}

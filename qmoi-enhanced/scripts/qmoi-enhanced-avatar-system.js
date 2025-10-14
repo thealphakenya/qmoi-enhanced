@@ -6,10 +6,10 @@
  * Supports multiple avatar types, real-time rendering, and hands-free operation
  */
 
-import { promises as fs } from 'fs';
-import path from 'path';
-import crypto from 'crypto';
-import QMOINotificationSystem from './qmoi-notification-system.js';
+import { promises as fs } from "fs";
+import path from "path";
+import crypto from "crypto";
+import QMOINotificationSystem from "./qmoi-notification-system.js";
 
 class QMOIEnhancedAvatarSystem {
   constructor() {
@@ -20,95 +20,114 @@ class QMOIEnhancedAvatarSystem {
     this.animationEngine = null;
     this.masterMode = false;
     this.avatarConfig = {
-      types: ['human', 'animal', 'robot', 'abstract', 'fantasy', 'cyberpunk', 'nature', 'space'],
-      environments: ['office', 'nature', 'space', 'cyberpunk', 'fantasy', 'beach', 'mountain', 'city', 'home'],
-      weather: ['sunny', 'rainy', 'cloudy', 'snowy', 'stormy', 'clear'],
-      props: ['chair', 'umbrella', 'car', 'magic_wand', 'crystal_ball'],
-      accessories: ['glasses', 'hat', 'crown', 'cape']
+      types: [
+        "human",
+        "animal",
+        "robot",
+        "abstract",
+        "fantasy",
+        "cyberpunk",
+        "nature",
+        "space",
+      ],
+      environments: [
+        "office",
+        "nature",
+        "space",
+        "cyberpunk",
+        "fantasy",
+        "beach",
+        "mountain",
+        "city",
+        "home",
+      ],
+      weather: ["sunny", "rainy", "cloudy", "snowy", "stormy", "clear"],
+      props: ["chair", "umbrella", "car", "magic_wand", "crystal_ball"],
+      accessories: ["glasses", "hat", "crown", "cape"],
     };
     this.activities = [];
-    this.logPath = 'logs/qmoi-avatar-activities.log';
+    this.logPath = "logs/qmoi-avatar-activities.log";
   }
 
   async initialize() {
-    console.log('🎭 Initializing QMOI Enhanced Avatar System...');
+    console.log("🎭 Initializing QMOI Enhanced Avatar System...");
     await this.notificationSystem.initialize();
-    
+
     // Create logs directory
-    await fs.mkdir('logs', { recursive: true });
-    
+    await fs.mkdir("logs", { recursive: true });
+
     // Initialize default avatars
     await this.initializeDefaultAvatars();
-    
+
     // Start real-time preview
     await this.startRealTimePreview();
-    
+
     // Start activity logging
     this.startActivityLogging();
-    
-    console.log('✅ QMOI Enhanced Avatar System initialized');
+
+    console.log("✅ QMOI Enhanced Avatar System initialized");
   }
 
   async initializeDefaultAvatars() {
     const defaultAvatars = [
       {
-        id: 'qmoi-default',
-        name: 'QMOI Default',
-        type: 'human',
+        id: "qmoi-default",
+        name: "QMOI Default",
+        type: "human",
         appearance: {
-          gender: 'neutral',
-          age: 'adult',
-          style: 'professional',
-          clothing: 'business_casual',
-          accessories: ['glasses']
+          gender: "neutral",
+          age: "adult",
+          style: "professional",
+          clothing: "business_casual",
+          accessories: ["glasses"],
         },
-        animations: ['idle', 'wave', 'point', 'think', 'present'],
-        environment: 'office',
+        animations: ["idle", "wave", "point", "think", "present"],
+        environment: "office",
         voice: {
-          type: 'neutral',
-          pitch: 'medium',
-          speed: 'normal'
-        }
+          type: "neutral",
+          pitch: "medium",
+          speed: "normal",
+        },
       },
       {
-        id: 'qmoi-master',
-        name: 'QMOI Master',
-        type: 'human',
+        id: "qmoi-master",
+        name: "QMOI Master",
+        type: "human",
         appearance: {
-          gender: 'male',
-          age: 'adult',
-          style: 'authoritative',
-          clothing: 'formal',
-          accessories: ['crown', 'cape']
+          gender: "male",
+          age: "adult",
+          style: "authoritative",
+          clothing: "formal",
+          accessories: ["crown", "cape"],
         },
-        animations: ['command', 'gesture', 'present', 'think', 'approve'],
-        environment: 'throne_room',
+        animations: ["command", "gesture", "present", "think", "approve"],
+        environment: "throne_room",
         voice: {
-          type: 'deep',
-          pitch: 'low',
-          speed: 'measured'
+          type: "deep",
+          pitch: "low",
+          speed: "measured",
         },
-        masterOnly: true
+        masterOnly: true,
       },
       {
-        id: 'qmoi-creative',
-        name: 'QMOI Creative',
-        type: 'fantasy',
+        id: "qmoi-creative",
+        name: "QMOI Creative",
+        type: "fantasy",
         appearance: {
-          gender: 'female',
-          age: 'young',
-          style: 'artistic',
-          clothing: 'flowing_robes',
-          accessories: ['magic_wand', 'crystal_ball']
+          gender: "female",
+          age: "young",
+          style: "artistic",
+          clothing: "flowing_robes",
+          accessories: ["magic_wand", "crystal_ball"],
         },
-        animations: ['cast_spell', 'dance', 'create', 'inspire', 'transform'],
-        environment: 'magical_forest',
+        animations: ["cast_spell", "dance", "create", "inspire", "transform"],
+        environment: "magical_forest",
         voice: {
-          type: 'melodic',
-          pitch: 'high',
-          speed: 'expressive'
-        }
-      }
+          type: "melodic",
+          pitch: "high",
+          speed: "expressive",
+        },
+      },
     ];
 
     for (const avatar of defaultAvatars) {
@@ -116,19 +135,19 @@ class QMOIEnhancedAvatarSystem {
     }
 
     // Set default avatar
-    this.currentAvatar = this.avatars.get('qmoi-default');
+    this.currentAvatar = this.avatars.get("qmoi-default");
   }
 
   async startRealTimePreview() {
-    console.log('🖥️ Starting real-time avatar preview...');
-    
+    console.log("🖥️ Starting real-time avatar preview...");
+
     // Create preview window configuration
     this.previewWindow = {
       id: crypto.randomUUID(),
-      type: 'real-time',
+      type: "real-time",
       resolution: { width: 1920, height: 1080 },
       fps: 60,
-      quality: 'ultra',
+      quality: "ultra",
       features: {
         realTimeRendering: true,
         lipSync: true,
@@ -136,22 +155,22 @@ class QMOIEnhancedAvatarSystem {
         bodyAnimations: true,
         environmentEffects: true,
         particleSystems: true,
-        lighting: 'dynamic',
+        lighting: "dynamic",
         shadows: true,
-        reflections: true
+        reflections: true,
       },
       currentScene: {
         avatar: this.currentAvatar,
-        environment: 'office',
-        weather: 'clear',
+        environment: "office",
+        weather: "clear",
         props: [],
-        lighting: 'studio',
+        lighting: "studio",
         camera: {
           position: { x: 0, y: 1.7, z: 3 },
           target: { x: 0, y: 1.7, z: 0 },
-          fov: 60
-        }
-      }
+          fov: 60,
+        },
+      },
     };
 
     // Start preview loop
@@ -172,13 +191,13 @@ class QMOIEnhancedAvatarSystem {
 
     // Update avatar animations
     this.updateAvatarAnimations();
-    
+
     // Update environment effects
     this.updateEnvironmentEffects();
-    
+
     // Update lighting and shadows
     this.updateLighting();
-    
+
     // Render frame
     this.renderFrame();
   }
@@ -186,12 +205,12 @@ class QMOIEnhancedAvatarSystem {
   showDefaultPreview() {
     // Show default QMOI avatar when nothing else is displayed
     const defaultPreview = {
-      avatar: this.avatars.get('qmoi-default'),
-      environment: 'office',
-      animation: 'idle',
-      message: 'QMOI is ready to assist you'
+      avatar: this.avatars.get("qmoi-default"),
+      environment: "office",
+      animation: "idle",
+      message: "QMOI is ready to assist you",
     };
-    
+
     this.renderDefaultFrame(defaultPreview);
   }
 
@@ -200,19 +219,26 @@ class QMOIEnhancedAvatarSystem {
 
     // Update facial expressions
     this.updateFacialExpressions();
-    
+
     // Update body animations
     this.updateBodyAnimations();
-    
+
     // Update lip sync if speaking
     this.updateLipSync();
   }
 
   updateFacialExpressions() {
     // Real-time facial expression updates
-    const expressions = ['neutral', 'happy', 'sad', 'angry', 'surprised', 'thinking'];
+    const expressions = [
+      "neutral",
+      "happy",
+      "sad",
+      "angry",
+      "surprised",
+      "thinking",
+    ];
     const currentExpression = this.getCurrentExpression();
-    
+
     // Apply expression to avatar
     this.applyFacialExpression(currentExpression);
   }
@@ -221,7 +247,7 @@ class QMOIEnhancedAvatarSystem {
     // Real-time body animation updates
     const animations = this.currentAvatar.animations;
     const currentAnimation = this.getCurrentAnimation();
-    
+
     // Apply animation to avatar
     this.applyBodyAnimation(currentAnimation);
   }
@@ -237,10 +263,10 @@ class QMOIEnhancedAvatarSystem {
   updateEnvironmentEffects() {
     // Update weather effects
     this.updateWeatherEffects();
-    
+
     // Update particle systems
     this.updateParticleSystems();
-    
+
     // Update prop interactions
     this.updatePropInteractions();
   }
@@ -249,7 +275,7 @@ class QMOIEnhancedAvatarSystem {
     // Dynamic lighting updates
     const timeOfDay = this.getTimeOfDay();
     const weather = this.previewWindow.currentScene.weather;
-    
+
     this.applyDynamicLighting(timeOfDay, weather);
   }
 
@@ -260,9 +286,9 @@ class QMOIEnhancedAvatarSystem {
       avatar: this.currentAvatar,
       scene: this.previewWindow.currentScene,
       animations: this.getCurrentAnimations(),
-      effects: this.getCurrentEffects()
+      effects: this.getCurrentEffects(),
     };
-    
+
     // Send frame to display
     this.displayFrame(frameData);
   }
@@ -271,11 +297,11 @@ class QMOIEnhancedAvatarSystem {
     // Render default frame when no specific content
     const frameData = {
       timestamp: Date.now(),
-      type: 'default',
+      type: "default",
       preview,
-      message: 'QMOI Avatar System Active'
+      message: "QMOI Avatar System Active",
     };
-    
+
     this.displayFrame(frameData);
   }
 
@@ -286,25 +312,28 @@ class QMOIEnhancedAvatarSystem {
       name: config.name,
       type: config.type,
       appearance: config.appearance,
-      animations: config.animations || ['idle', 'wave'],
-      environment: config.environment || 'office',
+      animations: config.animations || ["idle", "wave"],
+      environment: config.environment || "office",
       voice: config.voice,
       masterOnly: config.masterOnly || false,
       createdAt: new Date().toISOString(),
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     };
 
     this.avatars.set(avatar.id, avatar);
-    
+
     // Log activity
-    this.logActivity('avatar_created', { avatarId: avatar.id, name: avatar.name });
-    
+    this.logActivity("avatar_created", {
+      avatarId: avatar.id,
+      name: avatar.name,
+    });
+
     // Send notification
     await this.notificationSystem.sendNotification(
-      'info',
-      'Avatar Created',
+      "info",
+      "Avatar Created",
       `Created new avatar: ${avatar.name}`,
-      { details: { avatar } }
+      { details: { avatar } },
     );
 
     return avatar;
@@ -318,21 +347,21 @@ class QMOIEnhancedAvatarSystem {
 
     // Check master permissions
     if (avatar.masterOnly && !this.masterMode) {
-      throw new Error('This avatar requires master permissions');
+      throw new Error("This avatar requires master permissions");
     }
 
     this.currentAvatar = avatar;
     this.previewWindow.currentScene.avatar = avatar;
-    
+
     // Log activity
-    this.logActivity('avatar_switched', { avatarId, name: avatar.name });
-    
+    this.logActivity("avatar_switched", { avatarId, name: avatar.name });
+
     // Send notification
     await this.notificationSystem.sendNotification(
-      'info',
-      'Avatar Switched',
+      "info",
+      "Avatar Switched",
       `Switched to avatar: ${avatar.name}`,
-      { details: { avatar } }
+      { details: { avatar } },
     );
 
     return avatar;
@@ -352,10 +381,10 @@ class QMOIEnhancedAvatarSystem {
     if (this.currentAvatar.id === avatarId) {
       this.previewWindow.currentScene.avatar = avatar;
     }
-    
+
     // Log activity
-    this.logActivity('avatar_updated', { avatarId, updates });
-    
+    this.logActivity("avatar_updated", { avatarId, updates });
+
     return avatar;
   }
 
@@ -367,15 +396,18 @@ class QMOIEnhancedAvatarSystem {
       name: animationName,
       startTime: Date.now(),
       duration,
-      avatarId: this.currentAvatar.id
+      avatarId: this.currentAvatar.id,
     };
 
     // Apply animation
     this.applyAnimation(animation);
-    
+
     // Log activity
-    this.logActivity('animation_played', { animation: animationName, duration });
-    
+    this.logActivity("animation_played", {
+      animation: animationName,
+      duration,
+    });
+
     return animation;
   }
 
@@ -386,32 +418,32 @@ class QMOIEnhancedAvatarSystem {
       text,
       voice: voiceConfig || this.currentAvatar.voice,
       startTime: Date.now(),
-      avatarId: this.currentAvatar.id
+      avatarId: this.currentAvatar.id,
     };
 
     // Start lip sync
     this.startLipSync(speech);
-    
+
     // Generate speech audio
     const audioData = await this.generateSpeech(speech);
-    
+
     // Log activity
-    this.logActivity('avatar_spoke', { text, duration: audioData.duration });
-    
+    this.logActivity("avatar_spoke", { text, duration: audioData.duration });
+
     return speech;
   }
 
   // Environment Methods
-  async changeEnvironment(environment, weather = 'clear') {
+  async changeEnvironment(environment, weather = "clear") {
     this.previewWindow.currentScene.environment = environment;
     this.previewWindow.currentScene.weather = weather;
-    
+
     // Apply environment change
     this.applyEnvironment(environment, weather);
-    
+
     // Log activity
-    this.logActivity('environment_changed', { environment, weather });
-    
+    this.logActivity("environment_changed", { environment, weather });
+
     return { environment, weather };
   }
 
@@ -419,46 +451,46 @@ class QMOIEnhancedAvatarSystem {
     const prop = {
       name: propName,
       position,
-      id: crypto.randomUUID()
+      id: crypto.randomUUID(),
     };
 
     this.previewWindow.currentScene.props.push(prop);
-    
+
     // Apply prop to scene
     this.applyProp(prop);
-    
+
     // Log activity
-    this.logActivity('prop_added', { prop: propName, position });
-    
+    this.logActivity("prop_added", { prop: propName, position });
+
     return prop;
   }
 
   // Master Controls
   enableMasterMode() {
     this.masterMode = true;
-    console.log('👑 Master mode enabled');
-    
+    console.log("👑 Master mode enabled");
+
     // Unlock master-only avatars
     this.unlockMasterAvatars();
-    
+
     // Log activity
-    this.logActivity('master_mode_enabled');
-    
+    this.logActivity("master_mode_enabled");
+
     return true;
   }
 
   disableMasterMode() {
     this.masterMode = false;
-    console.log('🔒 Master mode disabled');
-    
+    console.log("🔒 Master mode disabled");
+
     // Switch to non-master avatar if current is master-only
     if (this.currentAvatar && this.currentAvatar.masterOnly) {
-      this.switchAvatar('qmoi-default');
+      this.switchAvatar("qmoi-default");
     }
-    
+
     // Log activity
-    this.logActivity('master_mode_disabled');
-    
+    this.logActivity("master_mode_disabled");
+
     return true;
   }
 
@@ -476,7 +508,7 @@ class QMOIEnhancedAvatarSystem {
       data,
       timestamp: new Date().toISOString(),
       avatarId: this.currentAvatar?.id,
-      masterMode: this.masterMode
+      masterMode: this.masterMode,
     };
 
     this.activities.push(activity);
@@ -487,26 +519,26 @@ class QMOIEnhancedAvatarSystem {
 
     const logEntry = {
       timestamp: new Date().toISOString(),
-      activities: this.activities
+      activities: this.activities,
     };
 
     try {
-      await fs.appendFile(this.logPath, JSON.stringify(logEntry) + '\n');
+      await fs.appendFile(this.logPath, JSON.stringify(logEntry) + "\n");
       this.activities = []; // Clear after saving
     } catch (error) {
-      console.error('Failed to save activity log:', error.message);
+      console.error("Failed to save activity log:", error.message);
     }
   }
 
   // Utility Methods
   getCurrentExpression() {
     // Determine current expression based on context
-    return 'neutral';
+    return "neutral";
   }
 
   getCurrentAnimation() {
     // Determine current animation based on context
-    return 'idle';
+    return "idle";
   }
 
   isSpeaking() {
@@ -522,17 +554,17 @@ class QMOIEnhancedAvatarSystem {
   getTimeOfDay() {
     // Get current time of day for lighting
     const hour = new Date().getHours();
-    if (hour < 6) return 'night';
-    if (hour < 12) return 'morning';
-    if (hour < 18) return 'afternoon';
-    return 'evening';
+    if (hour < 6) return "night";
+    if (hour < 12) return "morning";
+    if (hour < 18) return "afternoon";
+    return "evening";
   }
 
   getCurrentAnimations() {
     return {
       facial: this.getCurrentExpression(),
       body: this.getCurrentAnimation(),
-      lipSync: this.isSpeaking()
+      lipSync: this.isSpeaking(),
     };
   }
 
@@ -541,7 +573,7 @@ class QMOIEnhancedAvatarSystem {
       environment: this.previewWindow.currentScene.environment,
       weather: this.previewWindow.currentScene.weather,
       lighting: this.getTimeOfDay(),
-      particles: []
+      particles: [],
     };
   }
 
@@ -605,7 +637,8 @@ class QMOIEnhancedAvatarSystem {
 }
 
 // CLI interface
-const isMainModule = process.argv[1] && process.argv[1].endsWith('qmoi-enhanced-avatar-system.js');
+const isMainModule =
+  process.argv[1] && process.argv[1].endsWith("qmoi-enhanced-avatar-system.js");
 if (isMainModule) {
   const avatarSystem = new QMOIEnhancedAvatarSystem();
   const args = process.argv.slice(2);
@@ -613,37 +646,37 @@ if (isMainModule) {
   async function main() {
     await avatarSystem.initialize();
 
-    if (args.includes('--create-avatar')) {
-      const name = args[args.indexOf('--create-avatar') + 1];
-      const type = args[args.indexOf('--create-avatar') + 2] || 'human';
-      
+    if (args.includes("--create-avatar")) {
+      const name = args[args.indexOf("--create-avatar") + 1];
+      const type = args[args.indexOf("--create-avatar") + 2] || "human";
+
       const avatar = await avatarSystem.createAvatar({
         name,
         type,
         appearance: {
-          gender: 'neutral',
-          age: 'adult',
-          style: 'professional'
-        }
+          gender: "neutral",
+          age: "adult",
+          style: "professional",
+        },
       });
-      console.log('Avatar created:', JSON.stringify(avatar, null, 2));
-    } else if (args.includes('--switch-avatar')) {
-      const avatarId = args[args.indexOf('--switch-avatar') + 1];
+      console.log("Avatar created:", JSON.stringify(avatar, null, 2));
+    } else if (args.includes("--switch-avatar")) {
+      const avatarId = args[args.indexOf("--switch-avatar") + 1];
       const avatar = await avatarSystem.switchAvatar(avatarId);
-      console.log('Switched to avatar:', JSON.stringify(avatar, null, 2));
-    } else if (args.includes('--master-mode')) {
-      const enabled = args[args.indexOf('--master-mode') + 1] === 'enable';
+      console.log("Switched to avatar:", JSON.stringify(avatar, null, 2));
+    } else if (args.includes("--master-mode")) {
+      const enabled = args[args.indexOf("--master-mode") + 1] === "enable";
       if (enabled) {
         avatarSystem.enableMasterMode();
-        console.log('Master mode enabled');
+        console.log("Master mode enabled");
       } else {
         avatarSystem.disableMasterMode();
-        console.log('Master mode disabled');
+        console.log("Master mode disabled");
       }
-    } else if (args.includes('--speak')) {
-      const text = args[args.indexOf('--speak') + 1];
+    } else if (args.includes("--speak")) {
+      const text = args[args.indexOf("--speak") + 1];
       const speech = await avatarSystem.speak(text);
-      console.log('Speech started:', JSON.stringify(speech, null, 2));
+      console.log("Speech started:", JSON.stringify(speech, null, 2));
     } else {
       console.log(`
 QMOI Enhanced Avatar System
@@ -674,4 +707,4 @@ Examples:
   main().catch(console.error);
 }
 
-export default QMOIEnhancedAvatarSystem; 
+export default QMOIEnhancedAvatarSystem;

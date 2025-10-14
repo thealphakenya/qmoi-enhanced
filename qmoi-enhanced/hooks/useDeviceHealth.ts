@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
 interface DeviceHealth {
-  status: 'healthy' | 'degraded' | 'critical';
+  status: "healthy" | "degraded" | "critical";
   lastCheck: number;
   metrics: {
     cpuUsage: number;
     memoryUsage: number;
     diskUsage: number;
-    networkStatus: 'connected' | 'disconnected';
+    networkStatus: "connected" | "disconnected";
     batteryLevel?: number;
     performance: {
       fps: number;
@@ -47,16 +47,22 @@ class PerformanceMonitor {
   }
 
   getLoadTime(): number {
-    if (typeof performance !== 'undefined') {
-      const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
-      return navigation ? navigation.loadEventEnd - navigation.loadEventStart : 0;
+    if (typeof performance !== "undefined") {
+      const navigation = performance.getEntriesByType(
+        "navigation",
+      )[0] as PerformanceNavigationTiming;
+      return navigation
+        ? navigation.loadEventEnd - navigation.loadEventStart
+        : 0;
     }
     return 0;
   }
 
   getResponseTime(): number {
-    if (typeof performance !== 'undefined') {
-      const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+    if (typeof performance !== "undefined") {
+      const navigation = performance.getEntriesByType(
+        "navigation",
+      )[0] as PerformanceNavigationTiming;
       return navigation ? navigation.responseEnd - navigation.requestStart : 0;
     }
     return 0;
@@ -65,12 +71,12 @@ class PerformanceMonitor {
 
 // Memory monitoring using Performance API
 function getMemoryInfo() {
-  if (typeof performance !== 'undefined' && 'memory' in performance) {
+  if (typeof performance !== "undefined" && "memory" in performance) {
     const memory = (performance as any).memory;
     return {
       used: memory.usedJSHeapSize,
       total: memory.totalJSHeapSize,
-      limit: memory.jsHeapSizeLimit
+      limit: memory.jsHeapSizeLimit,
     };
   }
   return null;
@@ -78,12 +84,12 @@ function getMemoryInfo() {
 
 // Network monitoring
 function getNetworkInfo() {
-  if (typeof navigator !== 'undefined' && 'connection' in navigator) {
+  if (typeof navigator !== "undefined" && "connection" in navigator) {
     const connection = (navigator as any).connection;
     return {
-      effectiveType: connection?.effectiveType || 'unknown',
+      effectiveType: connection?.effectiveType || "unknown",
       downlink: connection?.downlink || 0,
-      rtt: connection?.rtt || 0
+      rtt: connection?.rtt || 0,
     };
   }
   return null;
@@ -92,10 +98,13 @@ function getNetworkInfo() {
 // Battery monitoring
 function getBatteryInfo(): Promise<number | null> {
   return new Promise((resolve) => {
-    if (typeof navigator !== 'undefined' && 'getBattery' in navigator) {
-      (navigator as any).getBattery().then((battery: any) => {
-        resolve(battery.level * 100);
-      }).catch(() => resolve(null));
+    if (typeof navigator !== "undefined" && "getBattery" in navigator) {
+      (navigator as any)
+        .getBattery()
+        .then((battery: any) => {
+          resolve(battery.level * 100);
+        })
+        .catch(() => resolve(null));
     } else {
       resolve(null);
     }
@@ -104,21 +113,21 @@ function getBatteryInfo(): Promise<number | null> {
 
 export function useDeviceHealth(): DeviceHealth {
   const [health, setHealth] = useState<DeviceHealth>({
-    status: 'healthy',
+    status: "healthy",
     lastCheck: Date.now(),
     metrics: {
       cpuUsage: 0,
       memoryUsage: 0,
       diskUsage: 0,
-      networkStatus: 'connected',
+      networkStatus: "connected",
       batteryLevel: 100,
       performance: {
         fps: 60,
         loadTime: 0,
-        responseTime: 0
-      }
+        responseTime: 0,
+      },
     },
-    warnings: []
+    warnings: [],
   });
 
   useEffect(() => {
@@ -136,34 +145,37 @@ export function useDeviceHealth(): DeviceHealth {
         if (memoryInfo) {
           memoryUsage = (memoryInfo.used / memoryInfo.limit) * 100;
           if (memoryUsage > 80) {
-            warnings.push('High memory usage detected');
+            warnings.push("High memory usage detected");
           }
         }
 
         // Get network information
         const networkInfo = getNetworkInfo();
-        let networkStatus: 'connected' | 'disconnected' = 'connected';
+        let networkStatus: "connected" | "disconnected" = "connected";
         if (networkInfo) {
-          if (networkInfo.effectiveType === 'slow-2g' || networkInfo.effectiveType === '2g') {
-            warnings.push('Slow network connection detected');
+          if (
+            networkInfo.effectiveType === "slow-2g" ||
+            networkInfo.effectiveType === "2g"
+          ) {
+            warnings.push("Slow network connection detected");
           }
         }
 
         // Get battery information
         const batteryLevel = await getBatteryInfo();
         if (batteryLevel !== null && batteryLevel < 20) {
-          warnings.push('Low battery level detected');
+          warnings.push("Low battery level detected");
         }
 
         // Simulate CPU usage based on performance metrics
         const fps = performanceMonitor.getFPS();
         const loadTime = performanceMonitor.getLoadTime();
         const responseTime = performanceMonitor.getResponseTime();
-        
+
         let cpuUsage = 0;
         if (fps < 30) {
           cpuUsage = 80 + Math.random() * 20; // High CPU usage
-          warnings.push('Low FPS detected - possible performance issues');
+          warnings.push("Low FPS detected - possible performance issues");
         } else if (fps < 50) {
           cpuUsage = 50 + Math.random() * 30; // Medium CPU usage
         } else {
@@ -171,11 +183,11 @@ export function useDeviceHealth(): DeviceHealth {
         }
 
         // Determine overall status
-        let status: 'healthy' | 'degraded' | 'critical' = 'healthy';
+        let status: "healthy" | "degraded" | "critical" = "healthy";
         if (warnings.length > 2 || cpuUsage > 90 || memoryUsage > 90) {
-          status = 'critical';
+          status = "critical";
         } else if (warnings.length > 0 || cpuUsage > 70 || memoryUsage > 70) {
-          status = 'degraded';
+          status = "degraded";
         }
 
         // Simulate disk usage (not available in browser)
@@ -193,48 +205,48 @@ export function useDeviceHealth(): DeviceHealth {
             performance: {
               fps: Math.round(fps),
               loadTime: Math.round(loadTime),
-              responseTime: Math.round(responseTime)
-            }
+              responseTime: Math.round(responseTime),
+            },
           },
-          warnings
+          warnings,
         });
       } catch (error) {
-        console.error('Device health check failed:', error);
+        console.error("Device health check failed:", error);
         setHealth({
-          status: 'degraded',
+          status: "degraded",
           lastCheck: Date.now(),
           metrics: {
             cpuUsage: 0,
             memoryUsage: 0,
             diskUsage: 0,
-            networkStatus: 'disconnected',
+            networkStatus: "disconnected",
             batteryLevel: 0,
             performance: {
               fps: 0,
               loadTime: 0,
-              responseTime: 0
-            }
+              responseTime: 0,
+            },
           },
-          warnings: ['Device health check failed']
+          warnings: ["Device health check failed"],
         });
       }
     };
 
     check();
     const interval = setInterval(check, 30000); // Check every 30 seconds
-    
+
     // Also check on visibility change
     const handleVisibilityChange = () => {
       if (!document.hidden) {
         check();
       }
     };
-    
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       clearInterval(interval);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 

@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  Users, 
-  DollarSign, 
-  TrendingUp, 
-  Settings, 
+import React, { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Users,
+  DollarSign,
+  TrendingUp,
+  Settings,
   Plus,
   UserPlus,
   CreditCard,
@@ -25,10 +25,10 @@ import {
   AlertTriangle,
   CheckCircle,
   Clock,
-  Loader2
-} from 'lucide-react';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { useToast } from '@/hooks/use-toast';
+  Loader2,
+} from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useToast } from "@/hooks/use-toast";
 
 interface Employee {
   id: string;
@@ -105,7 +105,7 @@ const EmploymentDashboard: React.FC = () => {
     transactions: [],
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState("overview");
   const { toast } = useToast();
 
   // Form states
@@ -119,32 +119,35 @@ const EmploymentDashboard: React.FC = () => {
     setIsLoading(true);
     try {
       // Fetch employees
-      const empResponse = await fetch('/api/employment?type=employees');
+      const empResponse = await fetch("/api/employment?type=employees");
       const empData = await empResponse.json();
       if (empData.success) setEmployees(empData.data);
 
       // Fetch users
-      const userResponse = await fetch('/api/employment?type=users');
+      const userResponse = await fetch("/api/employment?type=users");
       const userData = await userResponse.json();
       if (userData.success) setUsers(userData.data);
 
       // Fetch payments
-      const paymentResponse = await fetch('/api/employment/payment?type=payments');
+      const paymentResponse = await fetch(
+        "/api/employment/payment?type=payments",
+      );
       const paymentData = await paymentResponse.json();
       if (paymentData.success) setPayments(paymentData.data);
 
       // Fetch revenue data
-      const revenueResponse = await fetch('/api/employment/revenue');
+      const revenueResponse = await fetch("/api/employment/revenue");
       const revenueData = await revenueResponse.json();
       if (revenueData.success) setRevenueData(revenueData.data);
 
       // Fetch megavault data
-      const megavaultResponse = await fetch('/api/employment/megavault?type=balance');
+      const megavaultResponse = await fetch(
+        "/api/employment/megavault?type=balance",
+      );
       const megavaultData = await megavaultResponse.json();
       if (megavaultData.success) setMegavaultData(megavaultData.data);
-
     } catch (error) {
-      console.error('Failed to fetch data:', error);
+      console.error("Failed to fetch data:", error);
       toast({
         title: "Error",
         description: "Failed to fetch employment data",
@@ -161,21 +164,28 @@ const EmploymentDashboard: React.FC = () => {
 
   // Calculate statistics
   const totalEmployees = employees.length;
-  const activeEmployees = employees.filter(emp => emp.status === 'active').length;
+  const activeEmployees = employees.filter(
+    (emp) => emp.status === "active",
+  ).length;
   const totalUsers = users.length;
-  const activeUsers = users.filter(user => user.status === 'active').length;
+  const activeUsers = users.filter((user) => user.status === "active").length;
   const totalPayments = payments.length;
-  const completedPayments = payments.filter(p => p.status === 'completed').length;
-  const totalRevenue = revenueData.revenueLogs.reduce((sum, log) => sum + (log.amount || 0), 0);
+  const completedPayments = payments.filter(
+    (p) => p.status === "completed",
+  ).length;
+  const totalRevenue = revenueData.revenueLogs.reduce(
+    (sum, log) => sum + (log.amount || 0),
+    0,
+  );
 
   // Handle employee enrollment
   const handleEmployeeEnrollment = async (formData: any) => {
     try {
-      const response = await fetch('/api/employment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/employment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          type: 'employee',
+          type: "employee",
           ...formData,
         }),
       });
@@ -207,11 +217,11 @@ const EmploymentDashboard: React.FC = () => {
   // Handle user enrollment
   const handleUserEnrollment = async (formData: any) => {
     try {
-      const response = await fetch('/api/employment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/employment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          type: 'user',
+          type: "user",
           ...formData,
         }),
       });
@@ -243,11 +253,11 @@ const EmploymentDashboard: React.FC = () => {
   // Handle payment processing
   const handlePaymentProcessing = async (formData: any) => {
     try {
-      const response = await fetch('/api/employment/payment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/employment/payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          action: 'process_payment',
+          action: "process_payment",
           ...formData,
         }),
       });
@@ -279,9 +289,9 @@ const EmploymentDashboard: React.FC = () => {
   // Handle revenue generation
   const handleRevenueGeneration = async (formData: any) => {
     try {
-      const response = await fetch('/api/employment/revenue', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/employment/revenue", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: formData.type,
           ...formData,
@@ -327,7 +337,9 @@ const EmploymentDashboard: React.FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Employment Dashboard</h1>
-          <p className="text-muted-foreground">Master-only employment and revenue management</p>
+          <p className="text-muted-foreground">
+            Master-only employment and revenue management
+          </p>
         </div>
         <div className="flex gap-2">
           <Button onClick={() => setShowEmployeeForm(true)}>
@@ -345,7 +357,9 @@ const EmploymentDashboard: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Employees</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Total Employees
+            </CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -375,29 +389,35 @@ const EmploymentDashboard: React.FC = () => {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${totalRevenue.toLocaleString()}</div>
-            <p className="text-xs text-muted-foreground">
-              From all sources
-            </p>
+            <div className="text-2xl font-bold">
+              ${totalRevenue.toLocaleString()}
+            </div>
+            <p className="text-xs text-muted-foreground">From all sources</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Megavault Balance</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Megavault Balance
+            </CardTitle>
             <Building2 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${megavaultData.currentBalance?.toLocaleString() || 0}</div>
-            <p className="text-xs text-muted-foreground">
-              Available funds
-            </p>
+            <div className="text-2xl font-bold">
+              ${megavaultData.currentBalance?.toLocaleString() || 0}
+            </div>
+            <p className="text-xs text-muted-foreground">Available funds</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Main Content Tabs */}
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
+      <Tabs
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="space-y-4"
+      >
         <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="employees">Employees</TabsTrigger>
@@ -419,14 +439,21 @@ const EmploymentDashboard: React.FC = () => {
                 <ScrollArea className="h-64">
                   <div className="space-y-4">
                     {revenueData.revenueLogs.slice(0, 10).map((log, index) => (
-                      <div key={index} className="flex items-center justify-between p-2 border rounded">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-2 border rounded"
+                      >
                         <div>
                           <p className="font-medium">{log.description}</p>
                           <p className="text-sm text-muted-foreground">
                             {new Date(log.timestamp).toLocaleDateString()}
                           </p>
                         </div>
-                        <Badge variant={log.status === 'success' ? 'default' : 'destructive'}>
+                        <Badge
+                          variant={
+                            log.status === "success" ? "default" : "destructive"
+                          }
+                        >
                           ${log.amount}
                         </Badge>
                       </div>
@@ -442,34 +469,34 @@ const EmploymentDashboard: React.FC = () => {
                 <CardTitle>Quick Actions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <Button 
-                  className="w-full justify-start" 
+                <Button
+                  className="w-full justify-start"
                   variant="outline"
                   onClick={() => setShowPaymentForm(true)}
                 >
                   <CreditCard className="w-4 h-4 mr-2" />
                   Process Payment
                 </Button>
-                <Button 
-                  className="w-full justify-start" 
+                <Button
+                  className="w-full justify-start"
                   variant="outline"
                   onClick={() => setShowRevenueForm(true)}
                 >
                   <TrendingUp className="w-4 h-4 mr-2" />
                   Generate Revenue
                 </Button>
-                <Button 
-                  className="w-full justify-start" 
+                <Button
+                  className="w-full justify-start"
                   variant="outline"
-                  onClick={() => setActiveTab('megavault')}
+                  onClick={() => setActiveTab("megavault")}
                 >
                   <Building2 className="w-4 h-4 mr-2" />
                   Manage Megavault
                 </Button>
-                <Button 
-                  className="w-full justify-start" 
+                <Button
+                  className="w-full justify-start"
                   variant="outline"
-                  onClick={() => setActiveTab('revenue')}
+                  onClick={() => setActiveTab("revenue")}
                 >
                   <BarChart3 className="w-4 h-4 mr-2" />
                   View Analytics
@@ -489,18 +516,35 @@ const EmploymentDashboard: React.FC = () => {
               <ScrollArea className="h-96">
                 <div className="space-y-4">
                   {employees.map((employee) => (
-                    <div key={employee.id} className="flex items-center justify-between p-4 border rounded">
+                    <div
+                      key={employee.id}
+                      className="flex items-center justify-between p-4 border rounded"
+                    >
                       <div>
                         <h3 className="font-medium">{employee.name}</h3>
-                        <p className="text-sm text-muted-foreground">{employee.email}</p>
-                        <p className="text-sm text-muted-foreground">{employee.role}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {employee.email}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {employee.role}
+                        </p>
                       </div>
                       <div className="text-right">
-                        <Badge variant={employee.status === 'active' ? 'default' : 'secondary'}>
+                        <Badge
+                          variant={
+                            employee.status === "active"
+                              ? "default"
+                              : "secondary"
+                          }
+                        >
                           {employee.status}
                         </Badge>
-                        <p className="text-sm font-medium">${employee.monthlySalary}/month</p>
-                        <p className="text-xs text-muted-foreground">Earned: ${employee.earnings}</p>
+                        <p className="text-sm font-medium">
+                          ${employee.monthlySalary}/month
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Earned: ${employee.earnings}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -520,18 +564,33 @@ const EmploymentDashboard: React.FC = () => {
               <ScrollArea className="h-96">
                 <div className="space-y-4">
                   {users.map((user) => (
-                    <div key={user.id} className="flex items-center justify-between p-4 border rounded">
+                    <div
+                      key={user.id}
+                      className="flex items-center justify-between p-4 border rounded"
+                    >
                       <div>
                         <h3 className="font-medium">{user.name}</h3>
-                        <p className="text-sm text-muted-foreground">{user.email}</p>
-                        <p className="text-sm text-muted-foreground">{user.role}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {user.email}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {user.role}
+                        </p>
                       </div>
                       <div className="text-right">
-                        <Badge variant={user.status === 'active' ? 'default' : 'secondary'}>
+                        <Badge
+                          variant={
+                            user.status === "active" ? "default" : "secondary"
+                          }
+                        >
                           {user.status}
                         </Badge>
-                        <p className="text-sm font-medium">Earned: ${user.earnings}</p>
-                        <p className="text-xs text-muted-foreground">{user.tasks.length} tasks</p>
+                        <p className="text-sm font-medium">
+                          Earned: ${user.earnings}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {user.tasks.length} tasks
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -551,7 +610,10 @@ const EmploymentDashboard: React.FC = () => {
               <ScrollArea className="h-96">
                 <div className="space-y-4">
                   {payments.map((payment) => (
-                    <div key={payment.id} className="flex items-center justify-between p-4 border rounded">
+                    <div
+                      key={payment.id}
+                      className="flex items-center justify-between p-4 border rounded"
+                    >
                       <div>
                         <h3 className="font-medium">{payment.description}</h3>
                         <p className="text-sm text-muted-foreground">
@@ -562,11 +624,19 @@ const EmploymentDashboard: React.FC = () => {
                         </p>
                       </div>
                       <div className="text-right">
-                        <Badge variant={payment.status === 'completed' ? 'default' : 'secondary'}>
+                        <Badge
+                          variant={
+                            payment.status === "completed"
+                              ? "default"
+                              : "secondary"
+                          }
+                        >
                           {payment.status}
                         </Badge>
                         <p className="text-sm font-medium">${payment.amount}</p>
-                        <p className="text-xs text-muted-foreground">{payment.paymentMethod}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {payment.paymentMethod}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -582,7 +652,9 @@ const EmploymentDashboard: React.FC = () => {
             {/* Microtasks */}
             <Card>
               <CardHeader>
-                <CardTitle>Microtasks ({revenueData.microtasks.length})</CardTitle>
+                <CardTitle>
+                  Microtasks ({revenueData.microtasks.length})
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <ScrollArea className="h-64">
@@ -590,7 +662,9 @@ const EmploymentDashboard: React.FC = () => {
                     {revenueData.microtasks.slice(0, 5).map((task, index) => (
                       <div key={index} className="p-2 border rounded">
                         <h4 className="font-medium">{task.title}</h4>
-                        <p className="text-sm text-muted-foreground">{task.category}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {task.category}
+                        </p>
                         <p className="text-sm font-medium">${task.reward}</p>
                       </div>
                     ))}
@@ -602,18 +676,26 @@ const EmploymentDashboard: React.FC = () => {
             {/* Affiliate Campaigns */}
             <Card>
               <CardHeader>
-                <CardTitle>Affiliate Campaigns ({revenueData.affiliateCampaigns.length})</CardTitle>
+                <CardTitle>
+                  Affiliate Campaigns ({revenueData.affiliateCampaigns.length})
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <ScrollArea className="h-64">
                   <div className="space-y-2">
-                    {revenueData.affiliateCampaigns.slice(0, 5).map((campaign, index) => (
-                      <div key={index} className="p-2 border rounded">
-                        <h4 className="font-medium">{campaign.name}</h4>
-                        <p className="text-sm text-muted-foreground">{campaign.product}</p>
-                        <p className="text-sm font-medium">{campaign.commission}% commission</p>
-                      </div>
-                    ))}
+                    {revenueData.affiliateCampaigns
+                      .slice(0, 5)
+                      .map((campaign, index) => (
+                        <div key={index} className="p-2 border rounded">
+                          <h4 className="font-medium">{campaign.name}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {campaign.product}
+                          </p>
+                          <p className="text-sm font-medium">
+                            {campaign.commission}% commission
+                          </p>
+                        </div>
+                      ))}
                   </div>
                 </ScrollArea>
               </CardContent>
@@ -622,18 +704,26 @@ const EmploymentDashboard: React.FC = () => {
             {/* Content Projects */}
             <Card>
               <CardHeader>
-                <CardTitle>Content Projects ({revenueData.contentProjects.length})</CardTitle>
+                <CardTitle>
+                  Content Projects ({revenueData.contentProjects.length})
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <ScrollArea className="h-64">
                   <div className="space-y-2">
-                    {revenueData.contentProjects.slice(0, 5).map((project, index) => (
-                      <div key={index} className="p-2 border rounded">
-                        <h4 className="font-medium">{project.title}</h4>
-                        <p className="text-sm text-muted-foreground">{project.type}</p>
-                        <p className="text-sm font-medium">${project.reward}</p>
-                      </div>
-                    ))}
+                    {revenueData.contentProjects
+                      .slice(0, 5)
+                      .map((project, index) => (
+                        <div key={index} className="p-2 border rounded">
+                          <h4 className="font-medium">{project.title}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {project.type}
+                          </p>
+                          <p className="text-sm font-medium">
+                            ${project.reward}
+                          </p>
+                        </div>
+                      ))}
                   </div>
                 </ScrollArea>
               </CardContent>
@@ -642,20 +732,26 @@ const EmploymentDashboard: React.FC = () => {
             {/* Platform Accounts */}
             <Card>
               <CardHeader>
-                <CardTitle>Platform Accounts ({revenueData.platformAccounts.length})</CardTitle>
+                <CardTitle>
+                  Platform Accounts ({revenueData.platformAccounts.length})
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <ScrollArea className="h-64">
                   <div className="space-y-2">
-                    {revenueData.platformAccounts.slice(0, 5).map((account, index) => (
-                      <div key={index} className="p-2 border rounded">
-                        <h4 className="font-medium">{account.platform}</h4>
-                        <p className="text-sm text-muted-foreground">{account.status}</p>
-                        <p className="text-sm font-medium">
-                          {new Date(account.createdAt).toLocaleDateString()}
-                        </p>
-                      </div>
-                    ))}
+                    {revenueData.platformAccounts
+                      .slice(0, 5)
+                      .map((account, index) => (
+                        <div key={index} className="p-2 border rounded">
+                          <h4 className="font-medium">{account.platform}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {account.status}
+                          </p>
+                          <p className="text-sm font-medium">
+                            {new Date(account.createdAt).toLocaleDateString()}
+                          </p>
+                        </div>
+                      ))}
                   </div>
                 </ScrollArea>
               </CardContent>
@@ -678,11 +774,15 @@ const EmploymentDashboard: React.FC = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>Total Inflow:</span>
-                    <span className="font-medium">${megavaultData.totalInflow?.toLocaleString() || 0}</span>
+                    <span className="font-medium">
+                      ${megavaultData.totalInflow?.toLocaleString() || 0}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Total Outflow:</span>
-                    <span className="font-medium">${megavaultData.totalOutflow?.toLocaleString() || 0}</span>
+                    <span className="font-medium">
+                      ${megavaultData.totalOutflow?.toLocaleString() || 0}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Total Profit:</span>
@@ -692,7 +792,9 @@ const EmploymentDashboard: React.FC = () => {
                   </div>
                   <div className="flex justify-between">
                     <span>Total Dividends:</span>
-                    <span className="font-medium">${megavaultData.totalDividends?.toLocaleString() || 0}</span>
+                    <span className="font-medium">
+                      ${megavaultData.totalDividends?.toLocaleString() || 0}
+                    </span>
                   </div>
                 </div>
               </CardContent>
@@ -706,19 +808,28 @@ const EmploymentDashboard: React.FC = () => {
               <CardContent>
                 <ScrollArea className="h-64">
                   <div className="space-y-2">
-                    {megavaultData.transactions?.slice(0, 10).map((tx, index) => (
-                      <div key={index} className="flex items-center justify-between p-2 border rounded">
-                        <div>
-                          <p className="font-medium">{tx.description}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {new Date(tx.timestamp).toLocaleDateString()}
-                          </p>
+                    {megavaultData.transactions
+                      ?.slice(0, 10)
+                      .map((tx, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between p-2 border rounded"
+                        >
+                          <div>
+                            <p className="font-medium">{tx.description}</p>
+                            <p className="text-sm text-muted-foreground">
+                              {new Date(tx.timestamp).toLocaleDateString()}
+                            </p>
+                          </div>
+                          <Badge
+                            variant={
+                              tx.type === "inflow" ? "default" : "secondary"
+                            }
+                          >
+                            ${tx.amount}
+                          </Badge>
                         </div>
-                        <Badge variant={tx.type === 'inflow' ? 'default' : 'secondary'}>
-                          ${tx.amount}
-                        </Badge>
-                      </div>
-                    ))}
+                      ))}
                   </div>
                 </ScrollArea>
               </CardContent>
@@ -788,4 +899,4 @@ const EmploymentDashboard: React.FC = () => {
   );
 };
 
-export default EmploymentDashboard; 
+export default EmploymentDashboard;

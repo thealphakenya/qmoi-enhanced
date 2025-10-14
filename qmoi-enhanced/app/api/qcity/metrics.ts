@@ -1,8 +1,11 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import os from 'os';
-import { requireRole } from '../auth/rbac';
+import { NextApiRequest, NextApiResponse } from "next";
+import os from "os";
+import { requireRole } from "../auth/rbac";
 
-const handler = requireRole(['admin', 'master'])(async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = requireRole(["admin", "master"])(async (
+  req: NextApiRequest,
+  res: NextApiResponse,
+) => {
   const cpus = os.cpus();
   const totalMem = os.totalmem();
   const freeMem = os.freemem();
@@ -21,8 +24,8 @@ const handler = requireRole(['admin', 'master'])(async (req: NextApiRequest, res
     network,
     platform,
     arch,
-    hostname
+    hostname,
   });
 });
 
-export default handler; 
+export default handler;

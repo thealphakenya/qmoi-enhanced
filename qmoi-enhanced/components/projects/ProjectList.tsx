@@ -1,12 +1,16 @@
-import React from 'react';
-import { useProjects } from '../../hooks/useProjects';
-import { Project } from '../../types/projects';
+import React from "react";
+import { useProjects } from "../../hooks/useProjects";
+import { Project } from "../../types/projects";
 
 export function ProjectList() {
   const { projects, error } = useProjects();
 
   if (error) {
-    return <div className="text-red-500">Error loading projects: {error.message}</div>;
+    return (
+      <div className="text-red-500">
+        Error loading projects: {error.message}
+      </div>
+    );
   }
 
   return (
@@ -27,25 +31,27 @@ interface ProjectCardProps {
 
 function ProjectCard({ project }: ProjectCardProps) {
   const statusColors = {
-    planning: 'bg-blue-100 text-blue-800',
-    'in-progress': 'bg-yellow-100 text-yellow-800',
-    completed: 'bg-green-100 text-green-800',
-    'on-hold': 'bg-gray-100 text-gray-800',
-    cancelled: 'bg-red-100 text-red-800',
+    planning: "bg-blue-100 text-blue-800",
+    "in-progress": "bg-yellow-100 text-yellow-800",
+    completed: "bg-green-100 text-green-800",
+    "on-hold": "bg-gray-100 text-gray-800",
+    cancelled: "bg-red-100 text-red-800",
   };
 
   const priorityColors = {
-    low: 'bg-gray-100 text-gray-800',
-    medium: 'bg-blue-100 text-blue-800',
-    high: 'bg-yellow-100 text-yellow-800',
-    critical: 'bg-red-100 text-red-800',
+    low: "bg-gray-100 text-gray-800",
+    medium: "bg-blue-100 text-blue-800",
+    high: "bg-yellow-100 text-yellow-800",
+    critical: "bg-red-100 text-red-800",
   };
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4">
       <div className="flex justify-between items-start">
         <h3 className="text-lg font-semibold">{project.name}</h3>
-        <span className={`px-2 py-1 rounded-full text-sm ${statusColors[project.status]}`}>
+        <span
+          className={`px-2 py-1 rounded-full text-sm ${statusColors[project.status]}`}
+        >
           {project.status}
         </span>
       </div>
@@ -53,7 +59,9 @@ function ProjectCard({ project }: ProjectCardProps) {
       <div className="mt-4 space-y-2">
         <div className="flex justify-between items-center">
           <span className="text-sm text-gray-500">Priority</span>
-          <span className={`px-2 py-1 rounded-full text-sm ${priorityColors[project.priority]}`}>
+          <span
+            className={`px-2 py-1 rounded-full text-sm ${priorityColors[project.priority]}`}
+          >
             {project.priority}
           </span>
         </div>
@@ -87,4 +95,4 @@ function ProjectCard({ project }: ProjectCardProps) {
       </div>
     </div>
   );
-} 
+}

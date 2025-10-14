@@ -1,16 +1,19 @@
 # QMOI Plugin System
 
 ## Overview
+
 The QMOI Plugin System allows third-party and internal plugins to extend QMOI's capabilities, including UI enhancements, device management, optimization, and AI review features.
 
 ---
 
 ## 1. Plugin Types
+
 - **UI Plugins:** Add new panels, tabs, or widgets to the dashboard.
 - **Device/Optimization Plugins:** Enhance device management, health checks, and optimization logic.
 - **Review/Analysis Plugins:** Provide AI-powered review, suggestions, or analysis for projects, devices, or workflows.
 
 ## 2. Plugin API
+
 - **Registration:** Plugins register with the QMOI Plugin Manager at runtime.
 - **Lifecycle:** Plugins have `init`, `activate`, `deactivate`, and `destroy` hooks.
 - **Integration Points:**
@@ -20,11 +23,13 @@ The QMOI Plugin System allows third-party and internal plugins to extend QMOI's 
 - **Settings:** Plugins can expose settings in the dashboard for user configuration.
 
 ## 3. Loading & Management
+
 - Plugins are loaded dynamically at startup or on demand.
 - Users can enable/disable plugins from the dashboard.
 - Plugin status and logs are visible in the Plugins section.
 
 ## 4. Example Plugin Structure
+
 ```ts
 export interface QmoiPlugin {
   id: string;
@@ -39,11 +44,13 @@ export interface QmoiPlugin {
 ```
 
 ## 5. Example Plugins
+
 - **Device Health Reviewer:** Analyzes device stats and suggests optimizations.
 - **Optimization Suggestion Plugin:** Recommends Data Saver or offloading actions.
 - **UI Widget Plugin:** Adds a floating panel with real-time AI insights.
 
 ## 6. Extending QMOI
+
 - Plugins can extend any part of QMOI, including device management, optimization, review, and automation.
 - All plugins are sandboxed for security and stability.
 
@@ -110,4 +117,4 @@ The plugin will now appear in the Plugins tab of the dashboard, showing device h
 
 ---
 
-### See also: AUTOOPTIMIZEALPHAQMOIENGINE.md, QMOIAVATAR.md, QMOI-ENHANCED-README.md 
+### See also: AUTOOPTIMIZEALPHAQMOIENGINE.md, QMOIAVATAR.md, QMOI-ENHANCED-README.md

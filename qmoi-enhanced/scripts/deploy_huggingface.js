@@ -1,34 +1,37 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+const fs = require("fs");
+const path = require("path");
+const { execSync } = require("child_process");
 
-console.log('🚀 Deploying QMOI to Hugging Face Spaces...');
+console.log("🚀 Deploying QMOI to Hugging Face Spaces...");
 
 // Check if required environment variables are set
-const requiredEnvVars = ['HF_TOKEN', 'HF_USERNAME'];
-const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+const requiredEnvVars = ["HF_TOKEN", "HF_USERNAME"];
+const missingVars = requiredEnvVars.filter((varName) => !process.env[varName]);
 
 if (missingVars.length > 0) {
-    console.error('❌ Missing required environment variables:', missingVars.join(', '));
-    console.log('Please set the following environment variables:');
-    missingVars.forEach(varName => {
-        console.log(`  export ${varName}="your-value"`);
-    });
-    process.exit(1);
+  console.error(
+    "❌ Missing required environment variables:",
+    missingVars.join(", "),
+  );
+  console.log("Please set the following environment variables:");
+  missingVars.forEach((varName) => {
+    console.log(`  export ${varName}="your-value"`);
+  });
+  process.exit(1);
 }
 
 try {
-    // Create spaces directory if it doesn't exist
-    const spacesDir = path.join(__dirname, '../spaces/qmoi-ai-system');
-    if (!fs.existsSync(spacesDir)) {
-        fs.mkdirSync(spacesDir, { recursive: true });
-        console.log('✅ Created spaces directory');
-    }
+  // Create spaces directory if it doesn't exist
+  const spacesDir = path.join(__dirname, "../spaces/qmoi-ai-system");
+  if (!fs.existsSync(spacesDir)) {
+    fs.mkdirSync(spacesDir, { recursive: true });
+    console.log("✅ Created spaces directory");
+  }
 
-    // Create basic app.py
-    const appPy = `import gradio as gr
+  // Create basic app.py
+  const appPy = `import gradio as gr
 from datetime import datetime
 
 def chat_with_qmoi(message, conversation_id=None):
@@ -207,19 +210,19 @@ if __name__ == "__main__":
     demo.launch(server_name="0.0.0.0", server_port=7860, share=True)
 `;
 
-    fs.writeFileSync(path.join(spacesDir, 'app.py'), appPy);
-    console.log('✅ Created app.py');
+  fs.writeFileSync(path.join(spacesDir, "app.py"), appPy);
+  console.log("✅ Created app.py");
 
-    // Create requirements.txt
-    const requirements = `gradio>=4.0.0
+  // Create requirements.txt
+  const requirements = `gradio>=4.0.0
 requests>=2.28.0
 python-dotenv>=0.19.0
 `;
-    fs.writeFileSync(path.join(spacesDir, 'requirements.txt'), requirements);
-    console.log('✅ Created requirements.txt');
+  fs.writeFileSync(path.join(spacesDir, "requirements.txt"), requirements);
+  console.log("✅ Created requirements.txt");
 
-    // Create README.md
-    const readme = `# QMOI AI System - Hugging Face Space
+  // Create README.md
+  const readme = `# QMOI AI System - Hugging Face Space
 
 ## Overview
 QMOI (Quantum Multi-Objective Intelligence) is a comprehensive AI-powered deployment and self-healing system with cross-platform chat capabilities.
@@ -246,43 +249,48 @@ QMOI (Quantum Multi-Objective Intelligence) is a comprehensive AI-powered deploy
 ## License
 MIT License
 `;
-    fs.writeFileSync(path.join(spacesDir, 'README.md'), readme);
-    console.log('✅ Created README.md');
+  fs.writeFileSync(path.join(spacesDir, "README.md"), readme);
+  console.log("✅ Created README.md");
 
-    // Deploy to Hugging Face
-    console.log('🚀 Deploying to Hugging Face Spaces...');
-    
-    const username = process.env.HF_USERNAME;
-    const spaceName = 'qmoi-ai-system';
-    const spaceRepo = `${username}/${spaceName}`;
+  // Deploy to Hugging Face
+  console.log("🚀 Deploying to Hugging Face Spaces...");
 
-    // Create space
-    try {
-        execSync(`huggingface-cli repo create ${spaceName} --type space --sdk gradio --token ${process.env.HF_TOKEN}`, { stdio: 'inherit' });
-        console.log('✅ Space created successfully');
-    } catch (error) {
-        console.log('ℹ️ Space might already exist, continuing...');
+  const username = process.env.HF_USERNAME;
+  const spaceName = "qmoi-ai-system";
+  const spaceRepo = `${username}/${spaceName}`;
+
+  // Create space
+  try {
+    execSync(
+      `huggingface-cli repo create ${spaceName} --type space --sdk gradio --token ${process.env.HF_TOKEN}`,
+      { stdio: "inherit" },
+    );
+    console.log("✅ Space created successfully");
+  } catch (error) {
+    console.log("ℹ️ Space might already exist, continuing...");
+  }
+
+  // Upload files
+  const files = ["app.py", "requirements.txt", "README.md"];
+  for (const file of files) {
+    const filePath = path.join(spacesDir, file);
+    if (fs.existsSync(filePath)) {
+      try {
+        execSync(
+          `huggingface-cli upload ${spaceRepo} ${filePath} --token ${process.env.HF_TOKEN}`,
+          { stdio: "inherit" },
+        );
+        console.log(`✅ Uploaded ${file}`);
+      } catch (error) {
+        console.error(`❌ Failed to upload ${file}:`, error.message);
+      }
     }
+  }
 
-    // Upload files
-    const files = ['app.py', 'requirements.txt', 'README.md'];
-    for (const file of files) {
-        const filePath = path.join(spacesDir, file);
-        if (fs.existsSync(filePath)) {
-            try {
-                execSync(`huggingface-cli upload ${spaceRepo} ${filePath} --token ${process.env.HF_TOKEN}`, { stdio: 'inherit' });
-                console.log(`✅ Uploaded ${file}`);
-            } catch (error) {
-                console.error(`❌ Failed to upload ${file}:`, error.message);
-            }
-        }
-    }
-
-    console.log('🎉 QMOI Hugging Face Space deployment completed!');
-    console.log(`🌐 Visit: https://huggingface.co/spaces/${spaceRepo}`);
-    console.log('💬 Start chatting with QMOI on Hugging Face Spaces!');
-
+  console.log("🎉 QMOI Hugging Face Space deployment completed!");
+  console.log(`🌐 Visit: https://huggingface.co/spaces/${spaceRepo}`);
+  console.log("💬 Start chatting with QMOI on Hugging Face Spaces!");
 } catch (error) {
-    console.error('❌ Deployment failed:', error.message);
-    process.exit(1);
-} 
+  console.error("❌ Deployment failed:", error.message);
+  process.exit(1);
+}

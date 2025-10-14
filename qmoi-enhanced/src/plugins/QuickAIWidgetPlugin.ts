@@ -16,26 +16,28 @@ export const QuickAIWidgetPlugin: QmoiPlugin = {
       "No critical errors in the last hour.",
       "All cloud devices are online.",
     ];
-    const actions = [
-      "Optimize Now",
-      "Run Diagnostics",
-      "Open AI Console",
-    ];
+    const actions = ["Optimize Now", "Run Diagnostics", "Open AI Console"];
     return React.createElement(
-      'div',
+      "div",
       null,
-      React.createElement('h4', null, 'Quick AI Widget'),
+      React.createElement("h4", null, "Quick AI Widget"),
       React.createElement(
-        'ul',
+        "ul",
         null,
-        insights.map((i, idx) => React.createElement('li', { key: idx }, i))
+        insights.map((i, idx) => React.createElement("li", { key: idx }, i)),
       ),
-      React.createElement('h5', null, 'Quick Actions'),
+      React.createElement("h5", null, "Quick Actions"),
       React.createElement(
-        'ul',
+        "ul",
         null,
-        actions.map((a, idx) => React.createElement('li', { key: idx }, React.createElement('button', null, a)))
-      )
+        actions.map((a, idx) =>
+          React.createElement(
+            "li",
+            { key: idx },
+            React.createElement("button", null, a),
+          ),
+        ),
+      ),
     );
   },
-}; 
+};

@@ -5,10 +5,10 @@
  * Automatically fixes errors in QMOI's own files and dependencies
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync, spawn } = require('child_process');
-const { NotificationService } = require('./services/notification_service');
+const fs = require("fs");
+const path = require("path");
+const { execSync, spawn } = require("child_process");
+const { NotificationService } = require("./services/notification_service");
 
 class QMOIErrorRecovery {
   constructor() {
@@ -16,10 +16,10 @@ class QMOIErrorRecovery {
     this.recoveryLog = [];
     this.fixesApplied = new Set();
     this.maxRetries = 3;
-    this.backupDir = path.join(process.cwd(), 'backups', 'error-recovery');
+    this.backupDir = path.join(process.cwd(), "backups", "error-recovery");
   }
 
-  async log(message, level = 'INFO') {
+  async log(message, level = "INFO") {
     const timestamp = new Date().toISOString();
     const logEntry = { timestamp, level, message };
     this.recoveryLog.push(logEntry);
@@ -28,13 +28,19 @@ class QMOIErrorRecovery {
 
   async createBackup(filePath) {
     try {
-      const backupPath = path.join(this.backupDir, path.basename(filePath) + '.backup');
+      const backupPath = path.join(
+        this.backupDir,
+        path.basename(filePath) + ".backup",
+      );
       fs.mkdirSync(path.dirname(backupPath), { recursive: true });
       fs.copyFileSync(filePath, backupPath);
       await this.log(`Backup created: ${backupPath}`);
       return backupPath;
     } catch (error) {
-      await this.log(`Failed to create backup for ${filePath}: ${error.message}`, 'ERROR');
+      await this.log(
+        `Failed to create backup for ${filePath}: ${error.message}`,
+        "ERROR",
+      );
     }
   }
 
@@ -44,42 +50,42 @@ class QMOIErrorRecovery {
       await this.log(`Restored from backup: ${originalPath}`);
       return true;
     } catch (error) {
-      await this.log(`Failed to restore backup: ${error.message}`, 'ERROR');
+      await this.log(`Failed to restore backup: ${error.message}`, "ERROR");
       return false;
     }
   }
 
   async fixPackageJson() {
-    const packagePath = path.join(process.cwd(), 'package.json');
+    const packagePath = path.join(process.cwd(), "package.json");
     if (!fs.existsSync(packagePath)) {
-      await this.log('package.json not found, creating basic one', 'WARN');
+      await this.log("package.json not found, creating basic one", "WARN");
       const basicPackage = {
-        name: 'qmoi-ai-automation',
-        version: '1.0.0',
-        description: 'QMOI AI Automation System',
-        main: 'index.js',
+        name: "qmoi-ai-automation",
+        version: "1.0.0",
+        description: "QMOI AI Automation System",
+        main: "index.js",
         scripts: {
-          start: 'node index.js',
+          start: "node index.js",
           test: 'echo "No tests specified"',
-          dev: 'node --watch index.js'
+          dev: "node --watch index.js",
         },
         dependencies: {
-          'express': '^4.18.2',
-          'node-fetch': '^3.3.2',
-          'dockerode': '^3.3.5'
+          express: "^4.18.2",
+          "node-fetch": "^3.3.2",
+          dockerode: "^3.3.5",
         },
         devDependencies: {
-          '@types/node': '^20.0.0',
-          'typescript': '^5.0.0'
-        }
+          "@types/node": "^20.0.0",
+          typescript: "^5.0.0",
+        },
       };
       fs.writeFileSync(packagePath, JSON.stringify(basicPackage, null, 2));
-      this.fixesApplied.add('package.json');
+      this.fixesApplied.add("package.json");
       return true;
     }
 
     try {
-      const packageContent = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
+      const packageContent = JSON.parse(fs.readFileSync(packagePath, "utf8"));
       let fixed = false;
 
       // Fix missing scripts
@@ -89,13 +95,13 @@ class QMOIErrorRecovery {
       }
 
       const requiredScripts = {
-        'start': 'node index.js',
-        'dev': 'node --watch index.js',
-        'test': 'echo "No tests specified"',
-        'build': 'echo "No build specified"',
-        'qmoi-auto-push': 'node scripts/qmoi-auto-push.js',
-        'qmoi-error-recovery': 'node scripts/qmoi-error-recovery.js',
-        'qmoi-setup': 'node scripts/qmoi-setup.js'
+        start: "node index.js",
+        dev: "node --watch index.js",
+        test: 'echo "No tests specified"',
+        build: 'echo "No build specified"',
+        "qmoi-auto-push": "node scripts/qmoi-auto-push.js",
+        "qmoi-error-recovery": "node scripts/qmoi-error-recovery.js",
+        "qmoi-setup": "node scripts/qmoi-setup.js",
       };
 
       for (const [script, command] of Object.entries(requiredScripts)) {
@@ -112,9 +118,9 @@ class QMOIErrorRecovery {
       }
 
       const requiredDeps = {
-        'express': '^4.18.2',
-        'node-fetch': '^3.3.2',
-        'dockerode': '^3.3.5'
+        express: "^4.18.2",
+        "node-fetch": "^3.3.2",
+        dockerode: "^3.3.5",
       };
 
       for (const [dep, version] of Object.entries(requiredDeps)) {
@@ -127,22 +133,22 @@ class QMOIErrorRecovery {
       if (fixed) {
         await this.createBackup(packagePath);
         fs.writeFileSync(packagePath, JSON.stringify(packageContent, null, 2));
-        this.fixesApplied.add('package.json');
-        await this.log('Fixed package.json');
+        this.fixesApplied.add("package.json");
+        await this.log("Fixed package.json");
         return true;
       }
 
       return false;
     } catch (error) {
-      await this.log(`Error fixing package.json: ${error.message}`, 'ERROR');
+      await this.log(`Error fixing package.json: ${error.message}`, "ERROR");
       return false;
     }
   }
 
   async fixGitLabCI() {
-    const gitlabPath = path.join(process.cwd(), '.gitlab-ci.yml');
+    const gitlabPath = path.join(process.cwd(), ".gitlab-ci.yml");
     if (!fs.existsSync(gitlabPath)) {
-      await this.log('.gitlab-ci.yml not found, creating basic one', 'WARN');
+      await this.log(".gitlab-ci.yml not found, creating basic one", "WARN");
       const basicCI = `stages:
   - setup
   - test
@@ -220,16 +226,16 @@ after_script:
   - npm run qmoi-auto-push || true
 `;
       fs.writeFileSync(gitlabPath, basicCI);
-      this.fixesApplied.add('.gitlab-ci.yml');
+      this.fixesApplied.add(".gitlab-ci.yml");
       return true;
     }
 
     try {
-      let ciContent = fs.readFileSync(gitlabPath, 'utf8');
+      let ciContent = fs.readFileSync(gitlabPath, "utf8");
       let fixed = false;
 
       // Fix missing stages
-      if (!ciContent.includes('stages:')) {
+      if (!ciContent.includes("stages:")) {
         ciContent = `stages:
   - setup
   - test
@@ -241,35 +247,44 @@ ${ciContent}`;
       }
 
       // Fix missing variables
-      if (!ciContent.includes('variables:')) {
-        ciContent = ciContent.replace(/^/, `variables:
+      if (!ciContent.includes("variables:")) {
+        ciContent = ciContent.replace(
+          /^/,
+          `variables:
   NODE_VERSION: "18"
 
-`);
+`,
+        );
         fixed = true;
       }
 
       // Fix missing cache
-      if (!ciContent.includes('cache:')) {
-        ciContent = ciContent.replace(/^/, `cache:
+      if (!ciContent.includes("cache:")) {
+        ciContent = ciContent.replace(
+          /^/,
+          `cache:
   paths:
     - node_modules/
 
-`);
+`,
+        );
         fixed = true;
       }
 
       // Fix missing before_script
-      if (!ciContent.includes('before_script:')) {
-        ciContent = ciContent.replace(/^/, `before_script:
+      if (!ciContent.includes("before_script:")) {
+        ciContent = ciContent.replace(
+          /^/,
+          `before_script:
   - npm install
 
-`);
+`,
+        );
         fixed = true;
       }
 
       // Add QMOI-specific jobs if missing
-      if (!ciContent.includes('qmoi-auto-push:')) {
+      if (!ciContent.includes("qmoi-auto-push:")) {
         ciContent += `
 
 qmoi-auto-push:
@@ -300,36 +315,42 @@ after_script:
       if (fixed) {
         await this.createBackup(gitlabPath);
         fs.writeFileSync(gitlabPath, ciContent);
-        this.fixesApplied.add('.gitlab-ci.yml');
-        await this.log('Fixed .gitlab-ci.yml');
+        this.fixesApplied.add(".gitlab-ci.yml");
+        await this.log("Fixed .gitlab-ci.yml");
         return true;
       }
 
       return false;
     } catch (error) {
-      await this.log(`Error fixing .gitlab-ci.yml: ${error.message}`, 'ERROR');
+      await this.log(`Error fixing .gitlab-ci.yml: ${error.message}`, "ERROR");
       return false;
     }
   }
 
   async fixJavaScriptSyntax(filePath) {
     try {
-      const content = fs.readFileSync(filePath, 'utf8');
+      const content = fs.readFileSync(filePath, "utf8");
       let fixed = false;
       let newContent = content;
 
       // Fix common syntax errors
       const fixes = [
         // Fix missing semicolons
-        { pattern: /(\w+)\s*\n\s*(\w+)/g, replacement: '$1;\n$2' },
+        { pattern: /(\w+)\s*\n\s*(\w+)/g, replacement: "$1;\n$2" },
         // Fix missing quotes in object properties
         { pattern: /(\w+):\s*([^,\n}]+)/g, replacement: '$1: "$2"' },
         // Fix missing commas in objects
-        { pattern: /(\w+):\s*([^,\n}]+)\s*\n\s*(\w+):/g, replacement: '$1: "$2",\n  $3:' },
+        {
+          pattern: /(\w+):\s*([^,\n}]+)\s*\n\s*(\w+):/g,
+          replacement: '$1: "$2",\n  $3:',
+        },
         // Fix missing parentheses in function calls
-        { pattern: /(\w+)\s+([^;]+);/g, replacement: '$1($2);' },
+        { pattern: /(\w+)\s+([^;]+);/g, replacement: "$1($2);" },
         // Fix missing import/require statements
-        { pattern: /const\s+(\w+)\s*=\s*require\(([^)]+)\)/g, replacement: 'const $1 = require($2);' }
+        {
+          pattern: /const\s+(\w+)\s*=\s*require\(([^)]+)\)/g,
+          replacement: "const $1 = require($2);",
+        },
       ];
 
       for (const fix of fixes) {
@@ -349,14 +370,19 @@ after_script:
 
       return false;
     } catch (error) {
-      await this.log(`Error fixing syntax in ${filePath}: ${error.message}`, 'ERROR');
+      await this.log(
+        `Error fixing syntax in ${filePath}: ${error.message}`,
+        "ERROR",
+      );
       return false;
     }
   }
 
   async fixMissingFiles() {
     const requiredFiles = [
-      { path: 'index.js', content: `const express = require('express');
+      {
+        path: "index.js",
+        content: `const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -368,8 +394,11 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log(\`QMOI server running on port \${port}\`);
-});` },
-      { path: 'scripts/services/notification_service.js', content: `class NotificationService {
+});`,
+      },
+      {
+        path: "scripts/services/notification_service.js",
+        content: `class NotificationService {
   constructor() {
     this.notifications = [];
   }
@@ -392,13 +421,17 @@ app.listen(port, () => {
   }
 }
 
-module.exports = { NotificationService };` },
-      { path: 'scripts/qmoi-setup.js', content: `#!/usr/bin/env node
+module.exports = { NotificationService };`,
+      },
+      {
+        path: "scripts/qmoi-setup.js",
+        content: `#!/usr/bin/env node
 
 console.log('Setting up QMOI environment...');
 
 // Setup script content will be implemented here
-console.log('QMOI setup completed');` }
+console.log('QMOI setup completed');`,
+      },
     ];
 
     for (const file of requiredFiles) {
@@ -414,35 +447,38 @@ console.log('QMOI setup completed');` }
 
   async installDependencies() {
     try {
-      await this.log('Installing dependencies...');
-      execSync('npm install', { stdio: 'inherit' });
-      await this.log('Dependencies installed successfully');
+      await this.log("Installing dependencies...");
+      execSync("npm install", { stdio: "inherit" });
+      await this.log("Dependencies installed successfully");
       return true;
     } catch (error) {
-      await this.log(`Failed to install dependencies: ${error.message}`, 'ERROR');
+      await this.log(
+        `Failed to install dependencies: ${error.message}`,
+        "ERROR",
+      );
       return false;
     }
   }
 
   async runTests() {
     try {
-      await this.log('Running tests...');
-      execSync('npm test', { stdio: 'inherit' });
-      await this.log('Tests passed');
+      await this.log("Running tests...");
+      execSync("npm test", { stdio: "inherit" });
+      await this.log("Tests passed");
       return true;
     } catch (error) {
-      await this.log(`Tests failed: ${error.message}`, 'WARN');
+      await this.log(`Tests failed: ${error.message}`, "WARN");
       return false;
     }
   }
 
   async validateFiles() {
     const filesToValidate = [
-      'package.json',
-      '.gitlab-ci.yml',
-      'index.js',
-      'scripts/qmoi-auto-push.js',
-      'scripts/qmoi-error-recovery.js'
+      "package.json",
+      ".gitlab-ci.yml",
+      "index.js",
+      "scripts/qmoi-auto-push.js",
+      "scripts/qmoi-error-recovery.js",
     ];
 
     for (const file of filesToValidate) {
@@ -450,16 +486,16 @@ console.log('QMOI setup completed');` }
       if (fs.existsSync(filePath)) {
         try {
           // Validate JSON files
-          if (file.endsWith('.json')) {
-            JSON.parse(fs.readFileSync(filePath, 'utf8'));
+          if (file.endsWith(".json")) {
+            JSON.parse(fs.readFileSync(filePath, "utf8"));
           }
           // Validate JavaScript files by attempting to require them
-          if (file.endsWith('.js')) {
+          if (file.endsWith(".js")) {
             require(filePath);
           }
           await this.log(`✓ ${file} is valid`);
         } catch (error) {
-          await this.log(`✗ ${file} has errors: ${error.message}`, 'ERROR');
+          await this.log(`✗ ${file} has errors: ${error.message}`, "ERROR");
           return false;
         }
       }
@@ -468,59 +504,58 @@ console.log('QMOI setup completed');` }
   }
 
   async performRecovery() {
-    await this.log('Starting QMOI Error Recovery...');
-    
+    await this.log("Starting QMOI Error Recovery...");
+
     try {
       // Step 1: Fix package.json
       await this.fixPackageJson();
-      
+
       // Step 2: Fix GitLab CI
       await this.fixGitLabCI();
-      
+
       // Step 3: Fix missing files
       await this.fixMissingFiles();
-      
+
       // Step 4: Fix syntax errors in JavaScript files
       const jsFiles = [
-        'index.js',
-        'scripts/qmoi-auto-push.js',
-        'scripts/qmoi-error-recovery.js',
-        'scripts/services/notification_service.js'
+        "index.js",
+        "scripts/qmoi-auto-push.js",
+        "scripts/qmoi-error-recovery.js",
+        "scripts/services/notification_service.js",
       ];
-      
+
       for (const file of jsFiles) {
         const filePath = path.join(process.cwd(), file);
         if (fs.existsSync(filePath)) {
           await this.fixJavaScriptSyntax(filePath);
         }
       }
-      
+
       // Step 5: Install dependencies
       await this.installDependencies();
-      
+
       // Step 6: Validate files
       const validationPassed = await this.validateFiles();
-      
+
       // Step 7: Run tests
       await this.runTests();
-      
+
       // Step 8: Send notification
       const fixCount = this.fixesApplied.size;
       if (fixCount > 0) {
         await this.notificationService.sendNotification(
-          'QMOI Error Recovery Completed',
-          `Fixed ${fixCount} issues: ${Array.from(this.fixesApplied).join(', ')}`
+          "QMOI Error Recovery Completed",
+          `Fixed ${fixCount} issues: ${Array.from(this.fixesApplied).join(", ")}`,
         );
       }
-      
+
       await this.log(`Error recovery completed. Fixed ${fixCount} issues.`);
       return true;
-      
     } catch (error) {
-      await this.log(`Error recovery failed: ${error.message}`, 'ERROR');
+      await this.log(`Error recovery failed: ${error.message}`, "ERROR");
       await this.notificationService.sendNotification(
-        'QMOI Error Recovery Failed',
-        error.message
+        "QMOI Error Recovery Failed",
+        error.message,
       );
       return false;
     }
@@ -538,9 +573,9 @@ console.log('QMOI setup completed');` }
 // CLI interface
 if (require.main === module) {
   const recovery = new QMOIErrorRecovery();
-  recovery.performRecovery().then(success => {
+  recovery.performRecovery().then((success) => {
     process.exit(success ? 0 : 1);
   });
 }
 
-module.exports = { QMOIErrorRecovery }; 
+module.exports = { QMOIErrorRecovery };

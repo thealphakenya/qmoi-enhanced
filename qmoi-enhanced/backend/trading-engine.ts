@@ -5,9 +5,9 @@
 // - Supports Colab batch jobs (import/export CSV)
 // - Logs all trades for master audit
 
-import fs from 'fs';
-import path from 'path';
-import { parse as csvParse } from 'csv-parse/sync';
+import fs from "fs";
+import path from "path";
+import { parse as csvParse } from "csv-parse/sync";
 
 interface Trade {
   id: string;
@@ -19,17 +19,20 @@ interface Trade {
   rationale: string;
 }
 
-const DATASET_PATH = path.join(__dirname, '../datasets/trading/trading-dataset-sample.csv');
-const TRADING_LOG = path.join(__dirname, '../trading-log.json');
+const DATASET_PATH = path.join(
+  __dirname,
+  "../datasets/trading/trading-dataset-sample.csv",
+);
+const TRADING_LOG = path.join(__dirname, "../trading-log.json");
 
 function loadDataset(): any[] {
-  const csv = fs.readFileSync(DATASET_PATH, 'utf-8');
+  const csv = fs.readFileSync(DATASET_PATH, "utf-8");
   return csvParse(csv, { columns: true });
 }
 
 function logTrade(trade: Trade) {
   const trades = fs.existsSync(TRADING_LOG)
-    ? JSON.parse(fs.readFileSync(TRADING_LOG, 'utf-8'))
+    ? JSON.parse(fs.readFileSync(TRADING_LOG, "utf-8"))
     : [];
   trades.push(trade);
   fs.writeFileSync(TRADING_LOG, JSON.stringify(trades, null, 2));
@@ -41,7 +44,9 @@ function simpleMovingAverage(prices: number[], window: number): number[] {
     if (i < window - 1) {
       sma.push(NaN);
     } else {
-      const sum = prices.slice(i - window + 1, i + 1).reduce((a, b) => a + b, 0);
+      const sum = prices
+        .slice(i - window + 1, i + 1)
+        .reduce((a, b) => a + b, 0);
       sma.push(sum / window);
     }
   }
@@ -50,7 +55,7 @@ function simpleMovingAverage(prices: number[], window: number): number[] {
 
 export async function autonomousTradingLoop() {
   const data = loadDataset();
-  const closes = data.map(row => parseFloat(row.Close));
+  const closes = data.map((row) => parseFloat(row.Close));
   const sma = simpleMovingAverage(closes, 3);
   setInterval(() => {
     const now = Date.now();
@@ -59,22 +64,22 @@ export async function autonomousTradingLoop() {
       const trade: Trade = {
         id: Math.random().toString(36).slice(2),
         timestamp: now,
-        type: 'BUY',
+        type: "BUY",
         amount: 1,
         price: closes[idx],
-        result: 'SIMULATED',
-        rationale: 'SMA cross',
+        result: "SIMULATED",
+        rationale: "SMA cross",
       };
       logTrade(trade);
     } else if (closes[idx] < sma[idx]) {
       const trade: Trade = {
         id: Math.random().toString(36).slice(2),
         timestamp: now,
-        type: 'SELL',
+        type: "SELL",
         amount: 1,
         price: closes[idx],
-        result: 'SIMULATED',
-        rationale: 'SMA cross',
+        result: "SIMULATED",
+        rationale: "SMA cross",
       };
       logTrade(trade);
     }

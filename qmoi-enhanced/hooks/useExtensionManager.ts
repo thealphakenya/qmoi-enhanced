@@ -2,7 +2,9 @@ import { useState } from "react";
 
 export function useExtensionManager() {
   const [extensions, setExtensions] = useState<any[]>([]);
-  const [status, setStatus] = useState<"idle"|"installing"|"success"|"error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "installing" | "success" | "error"
+  >("idle");
   const [error, setError] = useState<string | null>(null);
 
   // Simulate install (replace with Colab/real API)

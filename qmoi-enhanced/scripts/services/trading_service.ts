@@ -1,11 +1,11 @@
-import { logger } from '../utils/logger';
-import { NotificationService } from './notification_service';
+import { logger } from "../utils/logger";
+import { NotificationService } from "./notification_service";
 
 interface TradingConfig {
   enabled: boolean;
   exchanges: string[];
   strategies: string[];
-  riskLevel: 'low' | 'medium' | 'high';
+  riskLevel: "low" | "medium" | "high";
   maxPositions: number;
   autoTrading: boolean;
   stopLoss: number;
@@ -15,12 +15,12 @@ interface TradingConfig {
 interface TradingPosition {
   id: string;
   symbol: string;
-  type: 'long' | 'short';
+  type: "long" | "short";
   entryPrice: number;
   currentPrice: number;
   size: number;
   pnl: number;
-  status: 'open' | 'closed';
+  status: "open" | "closed";
   timestamp: number;
 }
 
@@ -35,33 +35,33 @@ export class TradingService {
       enabled: false,
       exchanges: [],
       strategies: [],
-      riskLevel: 'medium',
+      riskLevel: "medium",
       maxPositions: 5,
       autoTrading: false,
       stopLoss: 2,
-      takeProfit: 5
+      takeProfit: 5,
     };
   }
 
   async initialize(): Promise<void> {
     try {
-      logger.info('Initializing trading service...');
+      logger.info("Initializing trading service...");
       // Load trading configuration
       await this.loadConfig();
-      
+
       // Initialize exchange connections
       await this.initializeExchanges();
-      
+
       // Initialize trading strategies
       await this.initializeStrategies();
-      
-      logger.info('Trading service initialized successfully');
+
+      logger.info("Trading service initialized successfully");
       await this.notificationService.sendNotification(
-        'Trading Service',
-        'Trading service has been initialized successfully.'
+        "Trading Service",
+        "Trading service has been initialized successfully.",
       );
     } catch (error) {
-      logger.error('Failed to initialize trading service:', error);
+      logger.error("Failed to initialize trading service:", error);
       throw error;
     }
   }
@@ -70,32 +70,35 @@ export class TradingService {
     try {
       // Load configuration from environment or config file
       this.config = {
-        enabled: process.env.ENABLE_TRADING === 'true',
-        exchanges: (process.env.TRADING_EXCHANGES || '').split(','),
-        strategies: (process.env.TRADING_STRATEGIES || '').split(','),
-        riskLevel: (process.env.TRADING_RISK_LEVEL || 'medium') as 'low' | 'medium' | 'high',
-        maxPositions: parseInt(process.env.MAX_TRADING_POSITIONS || '5'),
-        autoTrading: process.env.ENABLE_AUTO_TRADING === 'true',
-        stopLoss: parseFloat(process.env.TRADING_STOP_LOSS || '2'),
-        takeProfit: parseFloat(process.env.TRADING_TAKE_PROFIT || '5')
+        enabled: process.env.ENABLE_TRADING === "true",
+        exchanges: (process.env.TRADING_EXCHANGES || "").split(","),
+        strategies: (process.env.TRADING_STRATEGIES || "").split(","),
+        riskLevel: (process.env.TRADING_RISK_LEVEL || "medium") as
+          | "low"
+          | "medium"
+          | "high",
+        maxPositions: parseInt(process.env.MAX_TRADING_POSITIONS || "5"),
+        autoTrading: process.env.ENABLE_AUTO_TRADING === "true",
+        stopLoss: parseFloat(process.env.TRADING_STOP_LOSS || "2"),
+        takeProfit: parseFloat(process.env.TRADING_TAKE_PROFIT || "5"),
       };
-      logger.info('Trading configuration loaded successfully');
+      logger.info("Trading configuration loaded successfully");
     } catch (error) {
-      logger.error('Failed to load trading configuration:', error);
+      logger.error("Failed to load trading configuration:", error);
       throw error;
     }
   }
 
   private async initializeExchanges(): Promise<void> {
     try {
-      logger.info('Initializing trading exchanges...');
+      logger.info("Initializing trading exchanges...");
       // Initialize each configured exchange
       for (const exchange of this.config.exchanges) {
         await this.initializeExchange(exchange);
       }
-      logger.info('Trading exchanges initialized successfully');
+      logger.info("Trading exchanges initialized successfully");
     } catch (error) {
-      logger.error('Failed to initialize trading exchanges:', error);
+      logger.error("Failed to initialize trading exchanges:", error);
       throw error;
     }
   }
@@ -107,14 +110,14 @@ export class TradingService {
 
   private async initializeStrategies(): Promise<void> {
     try {
-      logger.info('Initializing trading strategies...');
+      logger.info("Initializing trading strategies...");
       // Initialize each configured strategy
       for (const strategy of this.config.strategies) {
         await this.initializeStrategy(strategy);
       }
-      logger.info('Trading strategies initialized successfully');
+      logger.info("Trading strategies initialized successfully");
     } catch (error) {
-      logger.error('Failed to initialize trading strategies:', error);
+      logger.error("Failed to initialize trading strategies:", error);
       throw error;
     }
   }
@@ -125,14 +128,18 @@ export class TradingService {
   }
 
   // Trading operations
-  public async openPosition(symbol: string, type: 'long' | 'short', size: number): Promise<TradingPosition> {
+  public async openPosition(
+    symbol: string,
+    type: "long" | "short",
+    size: number,
+  ): Promise<TradingPosition> {
     try {
       if (!this.config.enabled) {
-        throw new Error('Trading is not enabled');
+        throw new Error("Trading is not enabled");
       }
 
       if (this.positions.length >= this.config.maxPositions) {
-        throw new Error('Maximum number of positions reached');
+        throw new Error("Maximum number of positions reached");
       }
 
       const position: TradingPosition = {
@@ -143,8 +150,8 @@ export class TradingService {
         currentPrice: 0,
         size,
         pnl: 0,
-        status: 'open',
-        timestamp: Date.now()
+        status: "open",
+        timestamp: Date.now(),
       };
 
       // Execute trade on exchange
@@ -152,38 +159,38 @@ export class TradingService {
 
       this.positions.push(position);
       logger.info(`Position opened: ${JSON.stringify(position)}`);
-      
+
       await this.notificationService.sendNotification(
-        'New Trading Position',
-        `Opened ${type} position for ${symbol} with size ${size}`
+        "New Trading Position",
+        `Opened ${type} position for ${symbol} with size ${size}`,
       );
 
       return position;
     } catch (error) {
-      logger.error('Failed to open position:', error);
+      logger.error("Failed to open position:", error);
       throw error;
     }
   }
 
   public async closePosition(positionId: string): Promise<void> {
     try {
-      const position = this.positions.find(p => p.id === positionId);
+      const position = this.positions.find((p) => p.id === positionId);
       if (!position) {
-        throw new Error('Position not found');
+        throw new Error("Position not found");
       }
 
       // Close position on exchange
       await this.executeClose(position);
 
-      position.status = 'closed';
+      position.status = "closed";
       logger.info(`Position closed: ${JSON.stringify(position)}`);
-      
+
       await this.notificationService.sendNotification(
-        'Position Closed',
-        `Closed ${position.type} position for ${position.symbol} with PnL ${position.pnl}`
+        "Position Closed",
+        `Closed ${position.type} position for ${position.symbol} with PnL ${position.pnl}`,
       );
     } catch (error) {
-      logger.error('Failed to close position:', error);
+      logger.error("Failed to close position:", error);
       throw error;
     }
   }
@@ -209,10 +216,10 @@ export class TradingService {
   public async updateConfig(newConfig: Partial<TradingConfig>): Promise<void> {
     try {
       this.config = { ...this.config, ...newConfig };
-      logger.info('Trading configuration updated successfully');
+      logger.info("Trading configuration updated successfully");
     } catch (error) {
-      logger.error('Failed to update trading configuration:', error);
+      logger.error("Failed to update trading configuration:", error);
       throw error;
     }
   }
-} 
+}

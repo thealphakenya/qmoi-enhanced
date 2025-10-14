@@ -19,14 +19,14 @@ yarn lint:notify  # Get notifications about remaining errors
 
 ### Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `yarn lint:auto` | Runs complete auto-linting with smart fixes |
-| `yarn lint:watch` | Watches files for changes and auto-lints |
-| `yarn lint:smart` | Applies intelligent fixes for complex errors |
-| `yarn lint:report` | Generates detailed HTML and JSON reports |
-| `yarn lint:notify` | Sends notifications about errors |
-| `yarn lint:full` | Runs auto-lint + notifications |
+| Command            | Description                                  |
+| ------------------ | -------------------------------------------- |
+| `yarn lint:auto`   | Runs complete auto-linting with smart fixes  |
+| `yarn lint:watch`  | Watches files for changes and auto-lints     |
+| `yarn lint:smart`  | Applies intelligent fixes for complex errors |
+| `yarn lint:report` | Generates detailed HTML and JSON reports     |
+| `yarn lint:notify` | Sends notifications about errors             |
+| `yarn lint:full`   | Runs auto-lint + notifications               |
 
 ## 🔧 How It Works
 
@@ -54,6 +54,7 @@ The smart linter can automatically fix:
 ### 3. File Watching (`yarn lint:watch`)
 
 The file watcher:
+
 - Monitors all `.ts`, `.tsx`, `.js`, `.jsx` files
 - Automatically runs linting when files change
 - Debounces multiple changes to avoid excessive runs
@@ -62,6 +63,7 @@ The file watcher:
 ### 4. Error Reporting (`yarn lint:report`)
 
 Generates comprehensive reports:
+
 - **HTML Report**: Beautiful, interactive report with error details
 - **JSON Report**: Machine-readable error data
 - **Error Categorization**: Groups errors by severity and type
@@ -70,6 +72,7 @@ Generates comprehensive reports:
 ### 5. Notifications (`yarn lint:notify`)
 
 Sends notifications for:
+
 - **Desktop Notifications**: System notifications on Windows/macOS/Linux
 - **WhatsApp Notifications**: Critical errors sent via WhatsApp bot
 - **Console Output**: Detailed error summaries in terminal
@@ -77,21 +80,25 @@ Sends notifications for:
 ## 📊 Error Categories
 
 ### Critical Errors
+
 - `no-undef`: Undefined variables
 - `import/no-unresolved`: Missing imports
 - `no-unused-vars`: Unused variables
 
 ### High Priority
+
 - `no-console`: Console statements
 - `no-debugger`: Debugger statements
 - `no-alert`: Alert statements
 
 ### Medium Priority
+
 - `prefer-const`: Should use const instead of let
 - `no-var`: Should use let/const instead of var
 - `eqeqeq`: Should use strict equality
 
 ### Low Priority
+
 - `quotes`: Quote style consistency
 - `semi`: Semicolon usage
 - `indent`: Indentation issues
@@ -117,11 +124,13 @@ reports/
 ## 🔔 Notification System
 
 ### Desktop Notifications
+
 - **Windows**: Uses PowerShell BurntToast
 - **macOS**: Uses osascript
 - **Linux**: Uses notify-send
 
 ### WhatsApp Integration
+
 - Sends critical error notifications via WhatsApp bot
 - Requires WhatsApp bot to be configured and running
 - Only sends notifications for critical errors
@@ -129,6 +138,7 @@ reports/
 ## 🛠️ Configuration
 
 ### ESLint Configuration
+
 The system uses your existing `eslint.config.js` configuration. Make sure it includes:
 
 ```javascript
@@ -147,6 +157,7 @@ rules: {
 ```
 
 ### Customization
+
 You can customize the behavior by modifying the scripts:
 
 - **Auto-lint**: `scripts/auto-lint.js`
@@ -166,12 +177,14 @@ The system uses different exit codes to indicate status:
 ## 📈 Performance
 
 ### Optimization Features
+
 - **Debounced File Watching**: Prevents excessive linting runs
 - **Incremental Processing**: Only processes changed files
 - **Parallel Processing**: Runs multiple fix strategies concurrently
 - **Caching**: Caches error results to avoid redundant work
 
 ### Monitoring
+
 - **Execution Time**: Logs time taken for each operation
 - **Memory Usage**: Monitors memory consumption
 - **File Count**: Tracks number of files processed
@@ -182,12 +195,14 @@ The system uses different exit codes to indicate status:
 ### Common Issues
 
 1. **Scripts not found**
+
    ```bash
    # Make sure scripts are executable
    chmod +x scripts/*.js
    ```
 
 2. **Permission errors**
+
    ```bash
    # Run with appropriate permissions
    sudo yarn lint:auto
@@ -214,6 +229,7 @@ DEBUG=true yarn lint:auto
 ## 🤝 Integration
 
 ### CI/CD Integration
+
 Add to your CI/CD pipeline:
 
 ```yaml
@@ -230,6 +246,7 @@ Add to your CI/CD pipeline:
 ```
 
 ### Pre-commit Hooks
+
 Add to your pre-commit configuration:
 
 ```json
@@ -241,6 +258,7 @@ Add to your pre-commit configuration:
 ```
 
 ### IDE Integration
+
 Configure your IDE to run auto-lint on save:
 
 ```json
@@ -256,23 +274,25 @@ Configure your IDE to run auto-lint on save:
 ## 📚 Advanced Usage
 
 ### Custom Fix Strategies
+
 Add your own fix strategies to `scripts/smart-lint.js`:
 
 ```javascript
 fixCustomRule(filePath, errors) {
   // Your custom fix logic here
   const customErrors = errors.filter(e => e.rule.includes('custom-rule'));
-  
+
   if (customErrors.length > 0) {
     // Apply fixes
     return this.applyCustomFixes(filePath, customErrors);
   }
-  
+
   return false;
 }
 ```
 
 ### Custom Notifications
+
 Extend the notification system in `scripts/lint-notifier.js`:
 
 ```javascript
@@ -283,6 +303,7 @@ async sendCustomNotification(message) {
 ```
 
 ### Custom Reports
+
 Modify the report generation in `scripts/lint-reporter.js`:
 
 ```javascript
@@ -303,6 +324,7 @@ generateCustomReport(errors, categories) {
 ## 🔮 Future Enhancements
 
 Planned features:
+
 - **AI-Powered Fixes**: Machine learning-based error resolution
 - **Team Collaboration**: Share error reports with team members
 - **Performance Analytics**: Track linting performance over time
@@ -326,10 +348,11 @@ Planned features:
 - All lint and error fixing events are logged and auditable.
 
 ## Linting, Compliance, and Audit Logging
+
 - Linting, compliance, and error checks run before every deploy.
 - All actions are logged and auditable.
 - Integrated with QMOI Auto-Dev and master-only audit logging.
 
 ---
 
-*The QMOI AI Automated Linting System is designed to make code quality management effortless and intelligent.* 
+_The QMOI AI Automated Linting System is designed to make code quality management effortless and intelligent._

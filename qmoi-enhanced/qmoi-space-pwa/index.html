@@ -1,707 +1,762 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QMOI Space - Advanced AI Platform</title>
-    
+
     <!-- PWA Meta Tags -->
-    <meta name="description" content="QMOI Space - Advanced AI Platform for Development, Gaming, and Revenue Generation">
-    <meta name="theme-color" content="#667eea">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="QMOI Space">
-    
+    <meta
+      name="description"
+      content="QMOI Space - Advanced AI Platform for Development, Gaming, and Revenue Generation"
+    />
+    <meta name="theme-color" content="#667eea" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="QMOI Space" />
+
     <!-- Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
+    <link rel="manifest" href="manifest.json" />
+
     <!-- Icons -->
-    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
-    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512x512.png">
-    
+    <link rel="icon" type="image/x-icon" href="icons/favicon.ico" />
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="icons/icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="icons/icon-512x512.png"
+    />
+
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/components.css">
-    <link rel="stylesheet" href="styles/responsive.css">
-    
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Service Worker Registration -->
     <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(registration => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("sw.js")
+            .then((registration) => {
+              console.log("SW registered: ", registration);
+            })
+            .catch((registrationError) => {
+              console.log("SW registration failed: ", registrationError);
             });
-        }
+        });
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <div class="qmoi-logo">
-                <div class="logo-animation">Q'</div>
-            </div>
-            <h2>QMOI Space</h2>
-            <p>Advanced AI Platform</p>
-            <div class="loading-spinner"></div>
+      <div class="loading-content">
+        <div class="qmoi-logo">
+          <div class="logo-animation">Q'</div>
         </div>
+        <h2>QMOI Space</h2>
+        <p>Advanced AI Platform</p>
+        <div class="loading-spinner"></div>
+      </div>
     </div>
 
     <!-- Main App Container -->
-    <div id="app" class="app-container" style="display: none;">
-        <!-- Header -->
-        <header class="app-header">
-            <div class="header-content">
-                <div class="logo-section">
-                    <div class="qmoi-logo-small">Q'</div>
-                    <h1>QMOI Space</h1>
-                </div>
-                
-                <nav class="main-nav">
-                    <button class="nav-btn active" data-tab="dashboard">
-                        <i class="icon-dashboard"></i>
-                        Dashboard
-                    </button>
-                    <button class="nav-btn" data-tab="ai-chat">
-                        <i class="icon-chat"></i>
-                        AI Chat
-                    </button>
-                    <button class="nav-btn" data-tab="gaming">
-                        <i class="icon-gaming"></i>
-                        Gaming
-                    </button>
-                    <button class="nav-btn" data-tab="development">
-                        <i class="icon-code"></i>
-                        Development
-                    </button>
-                    <button class="nav-btn" data-tab="revenue">
-                        <i class="icon-revenue"></i>
-                        Revenue
-                    </button>
-                    <button class="nav-btn" data-tab="analytics">
-                        <i class="icon-analytics"></i>
-                        Analytics
-                    </button>
-                </nav>
-                
-                <div class="header-actions">
-                    <button class="action-btn" id="notifications-btn">
-                        <i class="icon-notifications"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
-                    <button class="action-btn" id="settings-btn">
-                        <i class="icon-settings"></i>
-                    </button>
-                    <div class="user-menu">
-                        <button class="user-avatar" id="user-menu-btn">
-                            <img src="icons/avatar.png" alt="User Avatar">
-                        </button>
-                    </div>
-                </div>
+    <div id="app" class="app-container" style="display: none">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="header-content">
+          <div class="logo-section">
+            <div class="qmoi-logo-small">Q'</div>
+            <h1>QMOI Space</h1>
+          </div>
+
+          <nav class="main-nav">
+            <button class="nav-btn active" data-tab="dashboard">
+              <i class="icon-dashboard"></i>
+              Dashboard
+            </button>
+            <button class="nav-btn" data-tab="ai-chat">
+              <i class="icon-chat"></i>
+              AI Chat
+            </button>
+            <button class="nav-btn" data-tab="gaming">
+              <i class="icon-gaming"></i>
+              Gaming
+            </button>
+            <button class="nav-btn" data-tab="development">
+              <i class="icon-code"></i>
+              Development
+            </button>
+            <button class="nav-btn" data-tab="revenue">
+              <i class="icon-revenue"></i>
+              Revenue
+            </button>
+            <button class="nav-btn" data-tab="analytics">
+              <i class="icon-analytics"></i>
+              Analytics
+            </button>
+          </nav>
+
+          <div class="header-actions">
+            <button class="action-btn" id="notifications-btn">
+              <i class="icon-notifications"></i>
+              <span class="notification-badge">3</span>
+            </button>
+            <button class="action-btn" id="settings-btn">
+              <i class="icon-settings"></i>
+            </button>
+            <div class="user-menu">
+              <button class="user-avatar" id="user-menu-btn">
+                <img src="icons/avatar.png" alt="User Avatar" />
+              </button>
             </div>
-        </header>
+          </div>
+        </div>
+      </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Dashboard Tab -->
-            <div id="dashboard-tab" class="tab-content active">
-                <div class="dashboard-grid">
-                    <!-- Revenue Overview -->
-                    <div class="dashboard-card revenue-card">
-                        <div class="card-header">
-                            <h3>Revenue Overview</h3>
-                            <div class="card-actions">
-                                <button class="btn-icon" title="Refresh">
-                                    <i class="icon-refresh"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="revenue-stats">
-                                <div class="stat-item">
-                                    <span class="stat-value">KSH 45,230</span>
-                                    <span class="stat-label">Today</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value">KSH 1,245,600</span>
-                                    <span class="stat-label">This Month</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-value">+23.5%</span>
-                                    <span class="stat-label">Growth</span>
-                                </div>
-                            </div>
-                            <div class="revenue-chart">
-                                <canvas id="revenue-chart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- System Status -->
-                    <div class="dashboard-card status-card">
-                        <div class="card-header">
-                            <h3>System Status</h3>
-                            <div class="status-indicator online"></div>
-                        </div>
-                        <div class="card-content">
-                            <div class="status-grid">
-                                <div class="status-item">
-                                    <i class="icon-cpu"></i>
-                                    <span>CPU: 45%</span>
-                                </div>
-                                <div class="status-item">
-                                    <i class="icon-memory"></i>
-                                    <span>Memory: 67%</span>
-                                </div>
-                                <div class="status-item">
-                                    <i class="icon-storage"></i>
-                                    <span>Storage: 23%</span>
-                                </div>
-                                <div class="status-item">
-                                    <i class="icon-network"></i>
-                                    <span>Network: 12ms</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Active Projects -->
-                    <div class="dashboard-card projects-card">
-                        <div class="card-header">
-                            <h3>Active Projects</h3>
-                            <button class="btn-primary">New Project</button>
-                        </div>
-                        <div class="card-content">
-                            <div class="project-list">
-                                <div class="project-item">
-                                    <div class="project-info">
-                                        <h4>QMOI Core v2.0</h4>
-                                        <p>AI automation system</p>
-                                    </div>
-                                    <div class="project-progress">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 85%"></div>
-                                        </div>
-                                        <span>85%</span>
-                                    </div>
-                                </div>
-                                <div class="project-item">
-                                    <div class="project-info">
-                                        <h4>Gaming Platform</h4>
-                                        <p>Multiplayer gaming hub</p>
-                                    </div>
-                                    <div class="project-progress">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 62%"></div>
-                                        </div>
-                                        <span>62%</span>
-                                    </div>
-                                </div>
-                                <div class="project-item">
-                                    <div class="project-info">
-                                        <h4>Revenue Engine</h4>
-                                        <p>Automated revenue generation</p>
-                                    </div>
-                                    <div class="project-progress">
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: 91%"></div>
-                                        </div>
-                                        <span>91%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recent Activity -->
-                    <div class="dashboard-card activity-card">
-                        <div class="card-header">
-                            <h3>Recent Activity</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="activity-list">
-                                <div class="activity-item">
-                                    <div class="activity-icon">
-                                        <i class="icon-success"></i>
-                                    </div>
-                                    <div class="activity-content">
-                                        <p>Revenue target achieved for today</p>
-                                        <span class="activity-time">2 minutes ago</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon">
-                                        <i class="icon-code"></i>
-                                    </div>
-                                    <div class="activity-content">
-                                        <p>QMOI Core v2.0 build completed</p>
-                                        <span class="activity-time">15 minutes ago</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon">
-                                        <i class="icon-gaming"></i>
-                                    </div>
-                                    <div class="activity-content">
-                                        <p>New game added to platform</p>
-                                        <span class="activity-time">1 hour ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Dashboard Tab -->
+        <div id="dashboard-tab" class="tab-content active">
+          <div class="dashboard-grid">
+            <!-- Revenue Overview -->
+            <div class="dashboard-card revenue-card">
+              <div class="card-header">
+                <h3>Revenue Overview</h3>
+                <div class="card-actions">
+                  <button class="btn-icon" title="Refresh">
+                    <i class="icon-refresh"></i>
+                  </button>
                 </div>
+              </div>
+              <div class="card-content">
+                <div class="revenue-stats">
+                  <div class="stat-item">
+                    <span class="stat-value">KSH 45,230</span>
+                    <span class="stat-label">Today</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-value">KSH 1,245,600</span>
+                    <span class="stat-label">This Month</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-value">+23.5%</span>
+                    <span class="stat-label">Growth</span>
+                  </div>
+                </div>
+                <div class="revenue-chart">
+                  <canvas id="revenue-chart"></canvas>
+                </div>
+              </div>
             </div>
 
-            <!-- AI Chat Tab -->
-            <div id="ai-chat-tab" class="tab-content">
-                <div class="chat-container">
-                    <div class="chat-header">
-                        <h3>QMOI AI Assistant</h3>
-                        <div class="chat-actions">
-                            <button class="btn-icon" title="Clear Chat">
-                                <i class="icon-clear"></i>
-                            </button>
-                            <button class="btn-icon" title="Export Chat">
-                                <i class="icon-export"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="chat-messages" id="chat-messages">
-                        <div class="message ai-message">
-                            <div class="message-avatar">
-                                <div class="qmoi-logo-small">Q'</div>
-                            </div>
-                            <div class="message-content">
-                                <p>Hello! I'm QMOI, your AI assistant. How can I help you today?</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="chat-input-container">
-                        <div class="chat-input">
-                            <textarea id="chat-input" placeholder="Ask QMOI anything..." rows="3"></textarea>
-                            <button class="send-btn" id="send-btn">
-                                <i class="icon-send"></i>
-                            </button>
-                        </div>
-                        <div class="chat-settings">
-                            <div class="setting-group">
-                                <label>Temperature:</label>
-                                <input type="range" id="temperature" min="0.1" max="2.0" step="0.1" value="0.7">
-                                <span id="temperature-value">0.7</span>
-                            </div>
-                            <div class="setting-group">
-                                <label>Max Length:</label>
-                                <input type="range" id="max-length" min="100" max="4096" step="100" value="2048">
-                                <span id="max-length-value">2048</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- System Status -->
+            <div class="dashboard-card status-card">
+              <div class="card-header">
+                <h3>System Status</h3>
+                <div class="status-indicator online"></div>
+              </div>
+              <div class="card-content">
+                <div class="status-grid">
+                  <div class="status-item">
+                    <i class="icon-cpu"></i>
+                    <span>CPU: 45%</span>
+                  </div>
+                  <div class="status-item">
+                    <i class="icon-memory"></i>
+                    <span>Memory: 67%</span>
+                  </div>
+                  <div class="status-item">
+                    <i class="icon-storage"></i>
+                    <span>Storage: 23%</span>
+                  </div>
+                  <div class="status-item">
+                    <i class="icon-network"></i>
+                    <span>Network: 12ms</span>
+                  </div>
                 </div>
+              </div>
             </div>
 
-            <!-- Gaming Tab -->
-            <div id="gaming-tab" class="tab-content">
-                <div class="gaming-container">
-                    <div class="gaming-header">
-                        <h3>QMOI Gaming Hub</h3>
-                        <div class="gaming-stats">
-                            <div class="stat">
-                                <span class="stat-value">1,247</span>
-                                <span class="stat-label">Active Players</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">23</span>
-                                <span class="stat-label">Games Available</span>
-                            </div>
-                        </div>
+            <!-- Active Projects -->
+            <div class="dashboard-card projects-card">
+              <div class="card-header">
+                <h3>Active Projects</h3>
+                <button class="btn-primary">New Project</button>
+              </div>
+              <div class="card-content">
+                <div class="project-list">
+                  <div class="project-item">
+                    <div class="project-info">
+                      <h4>QMOI Core v2.0</h4>
+                      <p>AI automation system</p>
                     </div>
-                    
-                    <div class="games-grid">
-                        <div class="game-card">
-                            <div class="game-image">
-                                <img src="images/games/racing.jpg" alt="Car Racing">
-                            </div>
-                            <div class="game-info">
-                                <h4>Car Racing</h4>
-                                <p>High-speed 3D racing simulation</p>
-                                <div class="game-stats">
-                                    <span class="players">1,234 players</span>
-                                    <span class="rating">4.8★</span>
-                                </div>
-                                <button class="btn-primary">Play Now</button>
-                            </div>
-                        </div>
-                        
-                        <div class="game-card">
-                            <div class="game-image">
-                                <img src="images/games/football.jpg" alt="Football">
-                            </div>
-                            <div class="game-info">
-                                <h4>Football</h4>
-                                <p>Multiplayer football simulation</p>
-                                <div class="game-stats">
-                                    <span class="players">856 players</span>
-                                    <span class="rating">4.6★</span>
-                                </div>
-                                <button class="btn-primary">Play Now</button>
-                            </div>
-                        </div>
-                        
-                        <div class="game-card">
-                            <div class="game-image">
-                                <img src="images/games/strategy.jpg" alt="Strategy">
-                            </div>
-                            <div class="game-info">
-                                <h4>Strategy Wars</h4>
-                                <p>Real-time strategy game</p>
-                                <div class="game-stats">
-                                    <span class="players">567 players</span>
-                                    <span class="rating">4.9★</span>
-                                </div>
-                                <button class="btn-primary">Play Now</button>
-                            </div>
-                        </div>
+                    <div class="project-progress">
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                      </div>
+                      <span>85%</span>
                     </div>
+                  </div>
+                  <div class="project-item">
+                    <div class="project-info">
+                      <h4>Gaming Platform</h4>
+                      <p>Multiplayer gaming hub</p>
+                    </div>
+                    <div class="project-progress">
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 62%"></div>
+                      </div>
+                      <span>62%</span>
+                    </div>
+                  </div>
+                  <div class="project-item">
+                    <div class="project-info">
+                      <h4>Revenue Engine</h4>
+                      <p>Automated revenue generation</p>
+                    </div>
+                    <div class="project-progress">
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 91%"></div>
+                      </div>
+                      <span>91%</span>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
 
-            <!-- Development Tab -->
-            <div id="development-tab" class="tab-content">
-                <div class="development-container">
-                    <div class="dev-header">
-                        <h3>Development Environment</h3>
-                        <div class="dev-actions">
-                            <button class="btn-primary">New Project</button>
-                            <button class="btn-secondary">Import Project</button>
-                        </div>
+            <!-- Recent Activity -->
+            <div class="dashboard-card activity-card">
+              <div class="card-header">
+                <h3>Recent Activity</h3>
+              </div>
+              <div class="card-content">
+                <div class="activity-list">
+                  <div class="activity-item">
+                    <div class="activity-icon">
+                      <i class="icon-success"></i>
                     </div>
-                    
-                    <div class="dev-tabs">
-                        <button class="dev-tab-btn active" data-dev-tab="projects">Projects</button>
-                        <button class="dev-tab-btn" data-dev-tab="code-editor">Code Editor</button>
-                        <button class="dev-tab-btn" data-dev-tab="builds">Builds</button>
-                        <button class="dev-tab-btn" data-dev-tab="deployments">Deployments</button>
+                    <div class="activity-content">
+                      <p>Revenue target achieved for today</p>
+                      <span class="activity-time">2 minutes ago</span>
                     </div>
-                    
-                    <div class="dev-content">
-                        <div id="projects-panel" class="dev-panel active">
-                            <div class="project-grid">
-                                <div class="project-card">
-                                    <div class="project-header">
-                                        <h4>QMOI Core</h4>
-                                        <div class="project-status running">Running</div>
-                                    </div>
-                                    <div class="project-details">
-                                        <p>AI automation system with advanced features</p>
-                                        <div class="project-metrics">
-                                            <span>Python</span>
-                                            <span>95% Complete</span>
-                                            <span>Last updated: 2 hours ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="project-actions">
-                                        <button class="btn-icon" title="Open">
-                                            <i class="icon-open"></i>
-                                        </button>
-                                        <button class="btn-icon" title="Build">
-                                            <i class="icon-build"></i>
-                                        </button>
-                                        <button class="btn-icon" title="Deploy">
-                                            <i class="icon-deploy"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div id="code-editor-panel" class="dev-panel">
-                            <div class="editor-container">
-                                <div class="editor-toolbar">
-                                    <div class="file-tabs">
-                                        <div class="file-tab active">main.py</div>
-                                        <div class="file-tab">config.py</div>
-                                        <div class="file-tab">utils.py</div>
-                                    </div>
-                                    <div class="editor-actions">
-                                        <button class="btn-icon" title="Save">
-                                            <i class="icon-save"></i>
-                                        </button>
-                                        <button class="btn-icon" title="Run">
-                                            <i class="icon-run"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="editor-content">
-                                    <textarea id="code-editor" placeholder="Start coding..."></textarea>
-                                </div>
-                            </div>
-                        </div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-icon">
+                      <i class="icon-code"></i>
                     </div>
+                    <div class="activity-content">
+                      <p>QMOI Core v2.0 build completed</p>
+                      <span class="activity-time">15 minutes ago</span>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-icon">
+                      <i class="icon-gaming"></i>
+                    </div>
+                    <div class="activity-content">
+                      <p>New game added to platform</p>
+                      <span class="activity-time">1 hour ago</span>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Chat Tab -->
+        <div id="ai-chat-tab" class="tab-content">
+          <div class="chat-container">
+            <div class="chat-header">
+              <h3>QMOI AI Assistant</h3>
+              <div class="chat-actions">
+                <button class="btn-icon" title="Clear Chat">
+                  <i class="icon-clear"></i>
+                </button>
+                <button class="btn-icon" title="Export Chat">
+                  <i class="icon-export"></i>
+                </button>
+              </div>
             </div>
 
-            <!-- Revenue Tab -->
-            <div id="revenue-tab" class="tab-content">
-                <div class="revenue-container">
-                    <div class="revenue-header">
-                        <h3>Revenue Management</h3>
-                        <div class="revenue-actions">
-                            <button class="btn-primary">Withdraw Funds</button>
-                            <button class="btn-secondary">View Reports</button>
-                        </div>
-                    </div>
-                    
-                    <div class="revenue-overview">
-                        <div class="revenue-card">
-                            <h4>Total Revenue</h4>
-                            <div class="revenue-amount">KSH 1,245,600</div>
-                            <div class="revenue-change positive">+23.5% from last month</div>
-                        </div>
-                        
-                        <div class="revenue-card">
-                            <h4>Today's Revenue</h4>
-                            <div class="revenue-amount">KSH 45,230</div>
-                            <div class="revenue-change positive">+12.3% from yesterday</div>
-                        </div>
-                        
-                        <div class="revenue-card">
-                            <h4>Target Progress</h4>
-                            <div class="revenue-amount">226%</div>
-                            <div class="revenue-change positive">Exceeded daily target</div>
-                        </div>
-                    </div>
-                    
-                    <div class="revenue-channels">
-                        <h4>Revenue Channels</h4>
-                        <div class="channels-grid">
-                            <div class="channel-card">
-                                <div class="channel-icon">
-                                    <i class="icon-gaming"></i>
-                                </div>
-                                <div class="channel-info">
-                                    <h5>Gaming</h5>
-                                    <div class="channel-amount">KSH 78,450</div>
-                                    <div class="channel-percentage">34.7%</div>
-                                </div>
-                            </div>
-                            
-                            <div class="channel-card">
-                                <div class="channel-icon">
-                                    <i class="icon-content"></i>
-                                </div>
-                                <div class="channel-info">
-                                    <h5>Content Creation</h5>
-                                    <div class="channel-amount">KSH 56,230</div>
-                                    <div class="channel-percentage">24.9%</div>
-                                </div>
-                            </div>
-                            
-                            <div class="channel-card">
-                                <div class="channel-icon">
-                                    <i class="icon-software"></i>
-                                </div>
-                                <div class="channel-info">
-                                    <h5>Software Development</h5>
-                                    <div class="channel-amount">KSH 42,180</div>
-                                    <div class="channel-percentage">18.7%</div>
-                                </div>
-                            </div>
-                            
-                            <div class="channel-card">
-                                <div class="channel-icon">
-                                    <i class="icon-ai"></i>
-                                </div>
-                                <div class="channel-info">
-                                    <h5>AI Services</h5>
-                                    <div class="channel-amount">KSH 48,370</div>
-                                    <div class="channel-percentage">21.4%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="chat-messages" id="chat-messages">
+              <div class="message ai-message">
+                <div class="message-avatar">
+                  <div class="qmoi-logo-small">Q'</div>
                 </div>
+                <div class="message-content">
+                  <p>
+                    Hello! I'm QMOI, your AI assistant. How can I help you
+                    today?
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <!-- Analytics Tab -->
-            <div id="analytics-tab" class="tab-content">
-                <div class="analytics-container">
-                    <div class="analytics-header">
-                        <h3>Analytics Dashboard</h3>
-                        <div class="analytics-filters">
-                            <select id="time-filter">
-                                <option value="7d">Last 7 days</option>
-                                <option value="30d">Last 30 days</option>
-                                <option value="90d">Last 90 days</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="analytics-grid">
-                        <div class="analytics-card">
-                            <h4>User Engagement</h4>
-                            <canvas id="engagement-chart"></canvas>
-                        </div>
-                        
-                        <div class="analytics-card">
-                            <h4>Revenue Trends</h4>
-                            <canvas id="revenue-trends-chart"></canvas>
-                        </div>
-                        
-                        <div class="analytics-card">
-                            <h4>Performance Metrics</h4>
-                            <canvas id="performance-chart"></canvas>
-                        </div>
-                        
-                        <div class="analytics-card">
-                            <h4>Top Features</h4>
-                            <div class="features-list">
-                                <div class="feature-item">
-                                    <span class="feature-name">AI Chat</span>
-                                    <span class="feature-usage">85%</span>
-                                </div>
-                                <div class="feature-item">
-                                    <span class="feature-name">Gaming</span>
-                                    <span class="feature-usage">72%</span>
-                                </div>
-                                <div class="feature-item">
-                                    <span class="feature-name">Development</span>
-                                    <span class="feature-usage">68%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="chat-input-container">
+              <div class="chat-input">
+                <textarea
+                  id="chat-input"
+                  placeholder="Ask QMOI anything..."
+                  rows="3"
+                ></textarea>
+                <button class="send-btn" id="send-btn">
+                  <i class="icon-send"></i>
+                </button>
+              </div>
+              <div class="chat-settings">
+                <div class="setting-group">
+                  <label>Temperature:</label>
+                  <input
+                    type="range"
+                    id="temperature"
+                    min="0.1"
+                    max="2.0"
+                    step="0.1"
+                    value="0.7"
+                  />
+                  <span id="temperature-value">0.7</span>
                 </div>
+                <div class="setting-group">
+                  <label>Max Length:</label>
+                  <input
+                    type="range"
+                    id="max-length"
+                    min="100"
+                    max="4096"
+                    step="100"
+                    value="2048"
+                  />
+                  <span id="max-length-value">2048</span>
+                </div>
+              </div>
             </div>
-        </main>
+          </div>
+        </div>
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-content">
-                <div class="sidebar-section">
-                    <h4>Quick Actions</h4>
-                    <div class="quick-actions">
-                        <button class="quick-action-btn">
-                            <i class="icon-add"></i>
-                            New Project
-                        </button>
-                        <button class="quick-action-btn">
-                            <i class="icon-build"></i>
-                            Build All
-                        </button>
-                        <button class="quick-action-btn">
-                            <i class="icon-deploy"></i>
-                            Deploy
-                        </button>
-                        <button class="quick-action-btn">
-                            <i class="icon-analytics"></i>
-                            View Reports
-                        </button>
-                    </div>
+        <!-- Gaming Tab -->
+        <div id="gaming-tab" class="tab-content">
+          <div class="gaming-container">
+            <div class="gaming-header">
+              <h3>QMOI Gaming Hub</h3>
+              <div class="gaming-stats">
+                <div class="stat">
+                  <span class="stat-value">1,247</span>
+                  <span class="stat-label">Active Players</span>
                 </div>
-                
-                <div class="sidebar-section">
-                    <h4>System Health</h4>
-                    <div class="health-metrics">
-                        <div class="health-item">
-                            <span class="health-label">CPU Usage</span>
-                            <div class="health-bar">
-                                <div class="health-fill" style="width: 45%"></div>
-                            </div>
-                            <span class="health-value">45%</span>
-                        </div>
-                        <div class="health-item">
-                            <span class="health-label">Memory</span>
-                            <div class="health-bar">
-                                <div class="health-fill" style="width: 67%"></div>
-                            </div>
-                            <span class="health-value">67%</span>
-                        </div>
-                        <div class="health-item">
-                            <span class="health-label">Storage</span>
-                            <div class="health-bar">
-                                <div class="health-fill" style="width: 23%"></div>
-                            </div>
-                            <span class="health-value">23%</span>
-                        </div>
-                    </div>
+                <div class="stat">
+                  <span class="stat-value">23</span>
+                  <span class="stat-label">Games Available</span>
                 </div>
-                
-                <div class="sidebar-section">
-                    <h4>Recent Notifications</h4>
-                    <div class="notifications-list">
-                        <div class="notification-item">
-                            <div class="notification-icon success">
-                                <i class="icon-success"></i>
-                            </div>
-                            <div class="notification-content">
-                                <p>Build completed successfully</p>
-                                <span class="notification-time">2m ago</span>
-                            </div>
-                        </div>
-                        <div class="notification-item">
-                            <div class="notification-icon warning">
-                                <i class="icon-warning"></i>
-                            </div>
-                            <div class="notification-content">
-                                <p>High memory usage detected</p>
-                                <span class="notification-time">5m ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </aside>
+
+            <div class="games-grid">
+              <div class="game-card">
+                <div class="game-image">
+                  <img src="images/games/racing.jpg" alt="Car Racing" />
+                </div>
+                <div class="game-info">
+                  <h4>Car Racing</h4>
+                  <p>High-speed 3D racing simulation</p>
+                  <div class="game-stats">
+                    <span class="players">1,234 players</span>
+                    <span class="rating">4.8★</span>
+                  </div>
+                  <button class="btn-primary">Play Now</button>
+                </div>
+              </div>
+
+              <div class="game-card">
+                <div class="game-image">
+                  <img src="images/games/football.jpg" alt="Football" />
+                </div>
+                <div class="game-info">
+                  <h4>Football</h4>
+                  <p>Multiplayer football simulation</p>
+                  <div class="game-stats">
+                    <span class="players">856 players</span>
+                    <span class="rating">4.6★</span>
+                  </div>
+                  <button class="btn-primary">Play Now</button>
+                </div>
+              </div>
+
+              <div class="game-card">
+                <div class="game-image">
+                  <img src="images/games/strategy.jpg" alt="Strategy" />
+                </div>
+                <div class="game-info">
+                  <h4>Strategy Wars</h4>
+                  <p>Real-time strategy game</p>
+                  <div class="game-stats">
+                    <span class="players">567 players</span>
+                    <span class="rating">4.9★</span>
+                  </div>
+                  <button class="btn-primary">Play Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Development Tab -->
+        <div id="development-tab" class="tab-content">
+          <div class="development-container">
+            <div class="dev-header">
+              <h3>Development Environment</h3>
+              <div class="dev-actions">
+                <button class="btn-primary">New Project</button>
+                <button class="btn-secondary">Import Project</button>
+              </div>
+            </div>
+
+            <div class="dev-tabs">
+              <button class="dev-tab-btn active" data-dev-tab="projects">
+                Projects
+              </button>
+              <button class="dev-tab-btn" data-dev-tab="code-editor">
+                Code Editor
+              </button>
+              <button class="dev-tab-btn" data-dev-tab="builds">Builds</button>
+              <button class="dev-tab-btn" data-dev-tab="deployments">
+                Deployments
+              </button>
+            </div>
+
+            <div class="dev-content">
+              <div id="projects-panel" class="dev-panel active">
+                <div class="project-grid">
+                  <div class="project-card">
+                    <div class="project-header">
+                      <h4>QMOI Core</h4>
+                      <div class="project-status running">Running</div>
+                    </div>
+                    <div class="project-details">
+                      <p>AI automation system with advanced features</p>
+                      <div class="project-metrics">
+                        <span>Python</span>
+                        <span>95% Complete</span>
+                        <span>Last updated: 2 hours ago</span>
+                      </div>
+                    </div>
+                    <div class="project-actions">
+                      <button class="btn-icon" title="Open">
+                        <i class="icon-open"></i>
+                      </button>
+                      <button class="btn-icon" title="Build">
+                        <i class="icon-build"></i>
+                      </button>
+                      <button class="btn-icon" title="Deploy">
+                        <i class="icon-deploy"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="code-editor-panel" class="dev-panel">
+                <div class="editor-container">
+                  <div class="editor-toolbar">
+                    <div class="file-tabs">
+                      <div class="file-tab active">main.py</div>
+                      <div class="file-tab">config.py</div>
+                      <div class="file-tab">utils.py</div>
+                    </div>
+                    <div class="editor-actions">
+                      <button class="btn-icon" title="Save">
+                        <i class="icon-save"></i>
+                      </button>
+                      <button class="btn-icon" title="Run">
+                        <i class="icon-run"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="editor-content">
+                    <textarea
+                      id="code-editor"
+                      placeholder="Start coding..."
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revenue Tab -->
+        <div id="revenue-tab" class="tab-content">
+          <div class="revenue-container">
+            <div class="revenue-header">
+              <h3>Revenue Management</h3>
+              <div class="revenue-actions">
+                <button class="btn-primary">Withdraw Funds</button>
+                <button class="btn-secondary">View Reports</button>
+              </div>
+            </div>
+
+            <div class="revenue-overview">
+              <div class="revenue-card">
+                <h4>Total Revenue</h4>
+                <div class="revenue-amount">KSH 1,245,600</div>
+                <div class="revenue-change positive">
+                  +23.5% from last month
+                </div>
+              </div>
+
+              <div class="revenue-card">
+                <h4>Today's Revenue</h4>
+                <div class="revenue-amount">KSH 45,230</div>
+                <div class="revenue-change positive">+12.3% from yesterday</div>
+              </div>
+
+              <div class="revenue-card">
+                <h4>Target Progress</h4>
+                <div class="revenue-amount">226%</div>
+                <div class="revenue-change positive">Exceeded daily target</div>
+              </div>
+            </div>
+
+            <div class="revenue-channels">
+              <h4>Revenue Channels</h4>
+              <div class="channels-grid">
+                <div class="channel-card">
+                  <div class="channel-icon">
+                    <i class="icon-gaming"></i>
+                  </div>
+                  <div class="channel-info">
+                    <h5>Gaming</h5>
+                    <div class="channel-amount">KSH 78,450</div>
+                    <div class="channel-percentage">34.7%</div>
+                  </div>
+                </div>
+
+                <div class="channel-card">
+                  <div class="channel-icon">
+                    <i class="icon-content"></i>
+                  </div>
+                  <div class="channel-info">
+                    <h5>Content Creation</h5>
+                    <div class="channel-amount">KSH 56,230</div>
+                    <div class="channel-percentage">24.9%</div>
+                  </div>
+                </div>
+
+                <div class="channel-card">
+                  <div class="channel-icon">
+                    <i class="icon-software"></i>
+                  </div>
+                  <div class="channel-info">
+                    <h5>Software Development</h5>
+                    <div class="channel-amount">KSH 42,180</div>
+                    <div class="channel-percentage">18.7%</div>
+                  </div>
+                </div>
+
+                <div class="channel-card">
+                  <div class="channel-icon">
+                    <i class="icon-ai"></i>
+                  </div>
+                  <div class="channel-info">
+                    <h5>AI Services</h5>
+                    <div class="channel-amount">KSH 48,370</div>
+                    <div class="channel-percentage">21.4%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div id="analytics-tab" class="tab-content">
+          <div class="analytics-container">
+            <div class="analytics-header">
+              <h3>Analytics Dashboard</h3>
+              <div class="analytics-filters">
+                <select id="time-filter">
+                  <option value="7d">Last 7 days</option>
+                  <option value="30d">Last 30 days</option>
+                  <option value="90d">Last 90 days</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="analytics-grid">
+              <div class="analytics-card">
+                <h4>User Engagement</h4>
+                <canvas id="engagement-chart"></canvas>
+              </div>
+
+              <div class="analytics-card">
+                <h4>Revenue Trends</h4>
+                <canvas id="revenue-trends-chart"></canvas>
+              </div>
+
+              <div class="analytics-card">
+                <h4>Performance Metrics</h4>
+                <canvas id="performance-chart"></canvas>
+              </div>
+
+              <div class="analytics-card">
+                <h4>Top Features</h4>
+                <div class="features-list">
+                  <div class="feature-item">
+                    <span class="feature-name">AI Chat</span>
+                    <span class="feature-usage">85%</span>
+                  </div>
+                  <div class="feature-item">
+                    <span class="feature-name">Gaming</span>
+                    <span class="feature-usage">72%</span>
+                  </div>
+                  <div class="feature-item">
+                    <span class="feature-name">Development</span>
+                    <span class="feature-usage">68%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-content">
+          <div class="sidebar-section">
+            <h4>Quick Actions</h4>
+            <div class="quick-actions">
+              <button class="quick-action-btn">
+                <i class="icon-add"></i>
+                New Project
+              </button>
+              <button class="quick-action-btn">
+                <i class="icon-build"></i>
+                Build All
+              </button>
+              <button class="quick-action-btn">
+                <i class="icon-deploy"></i>
+                Deploy
+              </button>
+              <button class="quick-action-btn">
+                <i class="icon-analytics"></i>
+                View Reports
+              </button>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>System Health</h4>
+            <div class="health-metrics">
+              <div class="health-item">
+                <span class="health-label">CPU Usage</span>
+                <div class="health-bar">
+                  <div class="health-fill" style="width: 45%"></div>
+                </div>
+                <span class="health-value">45%</span>
+              </div>
+              <div class="health-item">
+                <span class="health-label">Memory</span>
+                <div class="health-bar">
+                  <div class="health-fill" style="width: 67%"></div>
+                </div>
+                <span class="health-value">67%</span>
+              </div>
+              <div class="health-item">
+                <span class="health-label">Storage</span>
+                <div class="health-bar">
+                  <div class="health-fill" style="width: 23%"></div>
+                </div>
+                <span class="health-value">23%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Recent Notifications</h4>
+            <div class="notifications-list">
+              <div class="notification-item">
+                <div class="notification-icon success">
+                  <i class="icon-success"></i>
+                </div>
+                <div class="notification-content">
+                  <p>Build completed successfully</p>
+                  <span class="notification-time">2m ago</span>
+                </div>
+              </div>
+              <div class="notification-item">
+                <div class="notification-icon warning">
+                  <i class="icon-warning"></i>
+                </div>
+                <div class="notification-content">
+                  <p>High memory usage detected</p>
+                  <span class="notification-time">5m ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
 
     <!-- Modals -->
     <div id="settings-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Settings</h3>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="settings-tabs">
-                    <button class="settings-tab active" data-settings-tab="general">General</button>
-                    <button class="settings-tab" data-settings-tab="ai">AI Settings</button>
-                    <button class="settings-tab" data-settings-tab="notifications">Notifications</button>
-                </div>
-                <div class="settings-content">
-                    <div id="general-settings" class="settings-panel active">
-                        <h4>General Settings</h4>
-                        <div class="setting-item">
-                            <label>Theme</label>
-                            <select>
-                                <option value="light">Light</option>
-                                <option value="dark">Dark</option>
-                                <option value="auto">Auto</option>
-                            </select>
-                        </div>
-                        <div class="setting-item">
-                            <label>Language</label>
-                            <select>
-                                <option value="en">English</option>
-                                <option value="es">Spanish</option>
-                                <option value="fr">French</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Settings</h3>
+          <button class="modal-close">&times;</button>
         </div>
+        <div class="modal-body">
+          <div class="settings-tabs">
+            <button class="settings-tab active" data-settings-tab="general">
+              General
+            </button>
+            <button class="settings-tab" data-settings-tab="ai">
+              AI Settings
+            </button>
+            <button class="settings-tab" data-settings-tab="notifications">
+              Notifications
+            </button>
+          </div>
+          <div class="settings-content">
+            <div id="general-settings" class="settings-panel active">
+              <h4>General Settings</h4>
+              <div class="setting-item">
+                <label>Theme</label>
+                <select>
+                  <option value="light">Light</option>
+                  <option value="dark">Dark</option>
+                  <option value="auto">Auto</option>
+                </select>
+              </div>
+              <div class="setting-item">
+                <label>Language</label>
+                <select>
+                  <option value="en">English</option>
+                  <option value="es">Spanish</option>
+                  <option value="fr">French</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Scripts -->
@@ -709,7 +764,5 @@
     <script src="js/chat.js"></script>
     <script src="js/charts.js"></script>
     <script src="js/pwa.js"></script>
-</body>
+  </body>
 </html>
-
-

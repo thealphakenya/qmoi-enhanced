@@ -35,30 +35,36 @@
 Welcome, Master! This guide covers all features, controls, and instructions for using and managing the Alpha-Q AI/Qmoi system.
 
 ### 1. Access & Authentication
+
 - Use your master credentials to unlock all admin features in the UI.
 - Master-only tabs: Project Management, Wallet, Device Control, AI State, Invention Projects, and more.
 
 ### 2. Project Automation & Cross-Interface Continuity
+
 - AI auto-creates, manages, and saves projects in the master projects dashboard.
 - You receive WhatsApp notifications when projects are completed, with project info and status.
 - Start a project in chat, continue in WhatsApp, and vice versa—context and progress are always synced.
 - View, edit, or trigger new projects from the QI UI or via WhatsApp commands.
 
 ### 3. Daily Master Plan
+
 - The AI generates a daily plan/timetable of intended projects and tasks.
 - Access the plan in the QI UI or request it via WhatsApp.
 - Status updates are sent automatically.
 
 ### 4. Wallet, Trading, and Financial Controls
+
 - All financial integrations (Pesapal, Mpesa, Airtel, etc.) are master-controlled.
 - Approve, deny, or review all transactions and wallet requests from any interface.
 - All actions are logged and auditable.
 
 ### 5. WhatsApp Business Automation
+
 - Manage business features (ads, settings, group management, status) via WhatsApp.
 - All business actions are logged and notified to you.
 
 ### 6. Versioning & Documentation
+
 - All updates auto-generate version and changelog files.
 - Version info and changelogs are visible in QI, QCity, and WhatsApp (on request).
 - All .md files are updated automatically after each update.
@@ -77,12 +83,14 @@ Welcome, Master! This guide covers all features, controls, and instructions for 
 
 ---
 
-*Last updated: June 2025*
+_Last updated: June 2025_
 
 # QMOI Master README
 
 ## Overview
+
 QMOI is an AI-driven universal automation, distribution, and accessibility system. It now features:
+
 - **Auto-distribution** of all projects (apps, games, videos, docs, etc.) to any platform, as instructed by master
 - **Platform discovery**: QMOI constantly searches for new distribution and monetization platforms, proposing them to master for approval
 - **Asset generation**: AI generates trailers, documentation, banners, and ads for every project
@@ -92,6 +100,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - **UI enhancements**: Master can preview assets, approve platforms and deals, and view analytics dashboards in QI and QCity
 
 ## Advanced Enhancements
+
 - **Multi-Platform Integrations**: App stores, code repos, video/content platforms, cloud storage, payment providers
 - **Localization & AI Translation**: Auto-translate and localize all assets and UI
 - **Predictive Analytics & A/B Testing**: Forecast trends, run experiments, and auto-optimize
@@ -102,6 +111,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - **Security, Compliance, & Self-Healing**: Automated compliance checks, security monitoring, and error/problem auto-fixing
 
 ## Key Documentation
+
 - `QMOIFORALL.md`: Universal accessibility features
 - `QMOIAUTODISTRIBUTEMARKET.md`: Auto distribution and marketing system
 - `QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md`: Auto projects distribution and marketing
@@ -110,6 +120,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - `QMOIALLPROJECTSADDSTRAILERSDOCS.md`: Automatic trailers, docs, and instructions for all projects
 
 ## Key Services & Workflows
+
 - `platform_integrations.ts`: Multi-platform publishing and management
 - `localization_service.ts`: AI-powered localization and translation
 - `analytics_optimization.ts`: Predictive analytics, A/B testing, optimization
@@ -117,6 +128,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - `role_management.ts`: Team roles, permissions, and approval workflows
 
 ## Master Controls
+
 - Approve or reject new platforms and deals
 - Preview assets before distribution
 - Monitor analytics and revenue
@@ -125,11 +137,12 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 
 ---
 
-*QMOI - From creation to global distribution, marketing, and revenue, fully automated, intelligent, and self-healing.*
+_QMOI - From creation to global distribution, marketing, and revenue, fully automated, intelligent, and self-healing._
 
 # Alpha-Q Master System
 
 ## QMOI Auto-Dev & Master Automation
+
 - QMOI Auto-Dev is always running, self-healing, and automates all system and project management
 - **Continuous Auto-Fix**: Always-on error fixing with self-enhancement (runs every minute)
 - **GitHub Integration**: Automated Git operations (commit, push, PR creation) with master-only controls
@@ -143,6 +156,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - See QMOIAUTODEV.md for details
 
 ## QMOI Health Reporting & Data Optimization (Master-Only)
+
 - **Comprehensive Health Monitoring**: Real-time monitoring of all QMOI systems with 1-minute intervals
 - **Performance Analytics**: Detailed performance analysis with optimization recommendations
 - **Revenue Tracking**: Advanced revenue analytics with growth tracking and optimization suggestions
@@ -157,6 +171,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - **Auto-Evolution Integration**: Continuous system improvement based on health metrics
 
 ### Master Assets ('owns') - Auto-Discovery & Management
+
 - **Organizations**: Auto-created organizations for revenue generation (QMOI AI, QMOI Gaming, QMOI Trading, etc.)
 - **Companies**: Business entities for commercial operations (QMOI Technologies, QMOI Gaming Corp, etc.)
 - **Domains**: Web properties and digital assets (qmoi.ai, qmoigaming.com, qmoitrading.com, etc.)
@@ -169,6 +184,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - **Avatar Assets**: Avatar-related properties (3D Avatar Models, Animation Systems, Avatar Marketplace, etc.)
 
 ### Data Optimization Features (Master-Only)
+
 - **Advanced Compression**: Multi-algorithm compression (Gzip, LZ4, Brotli) for maximum data reduction
 - **Intelligent Caching**: Multi-level caching system with TTL and access-based optimization
 - **Cloud Offloading**: Intelligent cloud processing for large data to reduce local resource usage
@@ -180,6 +196,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - **Cache Management**: Intelligent cache management with automatic cleanup and optimization
 
 ## New QVS (QMOI Virtual System) Integration
+
 - QMOI kernel is now modular, persistent, and fully integrated
 - Master/admin users have new UI panels for control and monitoring
 - API endpoints for QMOI status and payloads
@@ -188,6 +205,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 See QVS/QVSREADME.md for details.
 
 ## QMOI File Editor Chat (Master Only)
+
 - Master/admin-only controls for file management and automation
 - Features: **Rollback**, **AI Suggest**, **Batch Edit** (multi-file), distributed automation (future)
 - All actions are logged and auditable

@@ -1,14 +1,14 @@
 // scripts/log-summary.js
-const fs = require('fs');
+const fs = require("fs");
 
-console.log('📋 QMOI App Build Summary:');
+console.log("📋 QMOI App Build Summary:");
 
-const summaryFile = 'logs/app-summary.log';
-if (!fs.existsSync('logs')) fs.mkdirSync('logs');
+const summaryFile = "logs/app-summary.log";
+if (!fs.existsSync("logs")) fs.mkdirSync("logs");
 
 let log = `🕒 Report: ${new Date().toLocaleString()}\n`;
 
-const apps = fs.readdirSync('Qmoi_apps', { withFileTypes: true });
+const apps = fs.readdirSync("Qmoi_apps", { withFileTypes: true });
 
 for (const platform of apps) {
   if (platform.isDirectory()) {

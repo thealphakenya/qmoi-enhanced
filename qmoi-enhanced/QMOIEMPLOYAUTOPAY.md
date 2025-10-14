@@ -18,6 +18,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Supported Payment Platforms
 
 #### 1. M-Pesa Integration
+
 - **Consumer Key**: ruOrfyOb22NgqcsmToADVNDf0Gltcu6AI8woFLOusfgkNBnj
 - **Consumer Secret**: u27oKMfyACGxoQsD2bAuAJn0QzMQ8cWofA6bfzuG4hXaGxCB90PiGOSuCVNcaCSj
 - **Shortcode**: N/A (Business Account)
@@ -29,6 +30,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
   - Transaction status tracking
 
 #### 2. Airtel Money Integration
+
 - **Client ID**: [Securely stored]
 - **Client Secret**: [Securely stored]
 - **Environment**: Production
@@ -39,6 +41,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
   - Balance checking
 
 #### 3. Pesapal Integration
+
 - **Consumer Key**: UCz/GBzE5O5vNpzt99a6xEEqMi0O3QQE
 - **Consumer Secret**: OyeJBzYMiWvVQdfNGJW3/wBpems=
 - **Environment**: Production
@@ -49,6 +52,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
   - Refund processing
 
 #### 4. Bank Transfer Integration
+
 - **Bank**: Equity Bank Kenya
 - **Account Number**: 1234567890
 - **Account Type**: Business Account
@@ -63,6 +67,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Employee Payment Schedules
 
 #### Monthly Payments
+
 - **Frequency**: Once per month
 - **Payment Date**: 1st of each month
 - **Processing Time**: 24-48 hours
@@ -70,6 +75,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 - **Example**: Content Creator, Data Analyst, Marketing Specialist
 
 #### Semi-Monthly Payments
+
 - **Frequency**: Twice per month
 - **Payment Dates**: 1st and 15th of each month
 - **Processing Time**: 24-48 hours
@@ -77,6 +83,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 - **Example**: Freelance developers, consultants
 
 #### On-Demand Payments
+
 - **Frequency**: As requested
 - **Processing Time**: 2-4 hours
 - **Applicable Roles**: Project-based workers, bonus recipients
@@ -85,18 +92,21 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### User Payment Schedules
 
 #### Task-Based Payments
+
 - **Frequency**: Upon task completion
 - **Processing Time**: 1-2 hours
 - **Threshold**: Minimum $5 for processing
 - **Example**: Microtask workers, survey participants
 
 #### Commission Payments
+
 - **Frequency**: Weekly
 - **Processing Time**: 24 hours
 - **Threshold**: Minimum $10 for processing
 - **Example**: Affiliate marketers, sales agents
 
 #### Content Payments
+
 - **Frequency**: Upon content approval
 - **Processing Time**: 24-48 hours
 - **Quality Check**: Required before payment
@@ -107,18 +117,21 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### 1. Salary Payments
 
 #### Regular Salary
+
 - **Type**: Fixed monthly/semi-monthly payment
 - **Calculation**: Base salary + allowances
 - **Deductions**: Taxes, insurance, benefits
 - **Processing**: Automated on schedule
 
 #### Performance Bonuses
+
 - **Type**: Variable payment based on performance
 - **Calculation**: Base salary × performance multiplier
 - **Frequency**: Monthly/quarterly
 - **Processing**: Manual approval required
 
 #### Overtime Pay
+
 - **Type**: Additional payment for extra hours
 - **Calculation**: Hourly rate × overtime hours
 - **Processing**: Weekly processing
@@ -127,18 +140,21 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### 2. Commission Payments
 
 #### Sales Commission
+
 - **Type**: Percentage of sales generated
 - **Calculation**: Sales amount × commission rate
 - **Processing**: Weekly processing
 - **Verification**: Sales validation required
 
 #### Affiliate Commission
+
 - **Type**: Percentage of referred sales
 - **Calculation**: Referral sales × affiliate rate
 - **Processing**: Weekly processing
 - **Tracking**: Affiliate link tracking
 
 #### Referral Bonuses
+
 - **Type**: Fixed amount for successful referrals
 - **Amount**: $50-200 per referral
 - **Processing**: Upon referral completion
@@ -147,18 +163,21 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### 3. Task-Based Payments
 
 #### Microtask Payments
+
 - **Type**: Payment per completed task
 - **Amount**: $0.50-15 per task
 - **Processing**: Immediate upon completion
 - **Quality Check**: Automated + manual review
 
 #### Survey Payments
+
 - **Type**: Payment per completed survey
 - **Amount**: $5-25 per survey
 - **Processing**: 24 hours after completion
 - **Validation**: Survey quality check
 
 #### Content Creation Payments
+
 - **Type**: Payment per approved content piece
 - **Amount**: $20-100 per piece
 - **Processing**: 48 hours after approval
@@ -167,12 +186,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### 4. Dividend Payments
 
 #### Profit Sharing
+
 - **Type**: Percentage of company profits
 - **Calculation**: Total profit × employee percentage
 - **Frequency**: Quarterly
 - **Processing**: Manual calculation and approval
 
 #### Performance Dividends
+
 - **Type**: Bonus based on company performance
 - **Calculation**: Performance metrics × bonus rate
 - **Frequency**: Annual
@@ -183,12 +204,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Credential Management
 
 #### Secure Storage
+
 - **Encryption**: AES-256 encryption for all credentials
 - **Storage**: Environment variables and secure vaults
 - **Access**: Master user access only
 - **Backup**: Automatic backup to rovicviccy@gmail.com
 
 #### Credential Rotation
+
 - **Frequency**: Quarterly rotation
 - **Process**: Automated with manual verification
 - **Notification**: Email alerts for credential updates
@@ -197,12 +220,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Transaction Security
 
 #### Authentication
+
 - **Multi-factor Authentication**: Required for all payment operations
 - **API Key Management**: Secure API key storage and rotation
 - **Session Management**: Secure session handling
 - **Access Logging**: Comprehensive access logging
 
 #### Transaction Verification
+
 - **Double Verification**: Two-step verification for large payments
 - **Fraud Detection**: AI-powered fraud detection system
 - **Transaction Limits**: Daily and monthly transaction limits
@@ -211,12 +236,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Data Protection
 
 #### Personal Information
+
 - **Encryption**: End-to-end encryption for all personal data
 - **Access Control**: Role-based access control
 - **Data Retention**: Automatic data retention policies
 - **GDPR Compliance**: Full GDPR compliance for EU users
 
 #### Payment Information
+
 - **PCI Compliance**: Payment Card Industry compliance
 - **Tokenization**: Payment information tokenization
 - **Secure Transmission**: HTTPS/TLS for all transactions
@@ -227,12 +254,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Scheduled Payments
 
 #### Automatic Processing
+
 - **Cron Jobs**: Automated payment processing
 - **Error Handling**: Automatic retry mechanisms
 - **Status Tracking**: Real-time payment status tracking
 - **Notifications**: Automatic status notifications
 
 #### Payment Queues
+
 - **Priority Queue**: High-priority payments processed first
 - **Batch Processing**: Efficient batch processing for multiple payments
 - **Retry Logic**: Automatic retry for failed payments
@@ -241,12 +270,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Smart Routing
 
 #### Payment Method Selection
+
 - **User Preference**: Respects user payment method preference
 - **Cost Optimization**: Selects most cost-effective payment method
 - **Speed Optimization**: Selects fastest payment method
 - **Reliability**: Fallback to alternative methods if primary fails
 
 #### Geographic Routing
+
 - **Local Optimization**: Uses local payment methods when available
 - **Currency Conversion**: Automatic currency conversion
 - **Regulatory Compliance**: Ensures compliance with local regulations
@@ -257,12 +288,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Payment Analytics
 
 #### Performance Metrics
+
 - **Success Rate**: Payment success rate tracking
 - **Processing Time**: Average processing time monitoring
 - **Cost Analysis**: Payment processing cost analysis
 - **User Satisfaction**: Payment satisfaction surveys
 
 #### Financial Reporting
+
 - **Payment Reports**: Comprehensive payment reports
 - **Tax Reporting**: Automated tax reporting
 - **Audit Reports**: Detailed audit reports
@@ -271,12 +304,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Real-Time Monitoring
 
 #### Dashboard
+
 - **Live Status**: Real-time payment status dashboard
 - **Alerts**: Instant alerts for payment issues
 - **Metrics**: Key performance indicators
 - **Trends**: Payment trend analysis
 
 #### Notifications
+
 - **Email Alerts**: Email notifications for payment events
 - **SMS Alerts**: SMS notifications for critical events
 - **Push Notifications**: Mobile app push notifications
@@ -287,12 +322,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Payment Failures
 
 #### Common Issues
+
 - **Insufficient Funds**: Automatic retry with alternative methods
 - **Network Issues**: Automatic retry with exponential backoff
 - **Invalid Credentials**: Automatic credential refresh
 - **Rate Limiting**: Automatic rate limit handling
 
 #### Resolution Process
+
 - **Automatic Retry**: Up to 3 automatic retries
 - **Manual Review**: Failed payments flagged for manual review
 - **Alternative Methods**: Automatic fallback to alternative payment methods
@@ -301,12 +338,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### System Failures
 
 #### Backup Systems
+
 - **Redundant Processing**: Multiple payment processing systems
 - **Data Backup**: Real-time data backup
 - **Failover**: Automatic failover to backup systems
 - **Recovery**: Automatic system recovery procedures
 
 #### Disaster Recovery
+
 - **Data Recovery**: Complete data recovery procedures
 - **System Restoration**: System restoration protocols
 - **Business Continuity**: Business continuity planning
@@ -317,12 +356,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Regulatory Compliance
 
 #### Local Regulations
+
 - **Kenya**: Compliance with Central Bank of Kenya regulations
 - **EU**: GDPR compliance for EU users
 - **US**: Compliance with US financial regulations
 - **Other Markets**: Compliance with local financial regulations
 
 #### Industry Standards
+
 - **PCI DSS**: Payment Card Industry Data Security Standard
 - **ISO 27001**: Information security management
 - **SOC 2**: Service Organization Control 2
@@ -331,12 +372,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Tax Compliance
 
 #### Tax Calculation
+
 - **Automatic Calculation**: Automatic tax calculation
 - **Tax Deduction**: Automatic tax deduction
 - **Tax Reporting**: Automated tax reporting
 - **Tax Filing**: Automated tax filing
 
 #### Tax Documentation
+
 - **Tax Certificates**: Automatic tax certificate generation
 - **Tax Reports**: Comprehensive tax reports
 - **Tax Audits**: Support for tax audits
@@ -347,12 +390,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Payment APIs
 
 #### RESTful APIs
+
 - **Payment Processing**: POST /api/employment/payment
 - **Payment Status**: GET /api/employment/payment
 - **Payment History**: GET /api/employment/payment/history
 - **Payment Configuration**: PUT /api/employment/payment/config
 
 #### Webhook Integration
+
 - **Payment Notifications**: Real-time payment notifications
 - **Status Updates**: Payment status updates
 - **Error Alerts**: Payment error alerts
@@ -361,12 +406,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Third-Party Integrations
 
 #### Accounting Systems
+
 - **QuickBooks**: Automatic QuickBooks integration
 - **Xero**: Automatic Xero integration
 - **Sage**: Automatic Sage integration
 - **Custom Systems**: Custom accounting system integration
 
 #### HR Systems
+
 - **BambooHR**: Automatic BambooHR integration
 - **Workday**: Automatic Workday integration
 - **ADP**: Automatic ADP integration
@@ -377,12 +424,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### Technical Support
 
 #### Support Channels
+
 - **Email Support**: support@qmoi.com
 - **Phone Support**: +254700000000
 - **Chat Support**: Live chat on QMOI platform
 - **Documentation**: Comprehensive documentation
 
 #### Support Hours
+
 - **24/7 Automated**: Automated support available 24/7
 - **Business Hours**: Manual support 9 AM - 6 PM
 - **Emergency Support**: Emergency support available 24/7
@@ -391,12 +440,14 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 ### System Maintenance
 
 #### Regular Maintenance
+
 - **Weekly Updates**: Weekly system updates
 - **Monthly Reviews**: Monthly system reviews
 - **Quarterly Audits**: Quarterly security audits
 - **Annual Overhauls**: Annual system overhauls
 
 #### Performance Optimization
+
 - **Database Optimization**: Regular database optimization
 - **Cache Management**: Intelligent cache management
 - **Load Balancing**: Automatic load balancing
@@ -407,4 +458,4 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 **Last Updated**: January 1, 2025
 **Next Review**: February 1, 2025
 **Document Version**: 1.0
-**Maintained By**: QMOI AI System 
+**Maintained By**: QMOI AI System

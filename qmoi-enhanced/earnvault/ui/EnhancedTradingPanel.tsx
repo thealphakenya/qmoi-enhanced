@@ -1,24 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
-import { Button } from '../ui/button';
-import { Badge } from '../ui/badge';
-import { Progress } from '../ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { Switch } from '../ui/switch';
-import { Alert, AlertDescription } from '../ui/alert';
-import { Separator } from '../ui/separator';
-import { ScrollArea } from '../ui/scroll-area';
-import { 
-  TrendingUp, 
-  TrendingDown, 
-  DollarSign, 
-  BarChart3, 
-  Settings, 
-  Play, 
-  Pause, 
-  RefreshCw, 
+import React, { useState, useEffect } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
+import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
+import { Progress } from "../ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { Switch } from "../ui/switch";
+import { Alert, AlertDescription } from "../ui/alert";
+import { Separator } from "../ui/separator";
+import { ScrollArea } from "../ui/scroll-area";
+import {
+  TrendingUp,
+  TrendingDown,
+  DollarSign,
+  BarChart3,
+  Settings,
+  Play,
+  Pause,
+  RefreshCw,
   AlertTriangle,
   CheckCircle,
   XCircle,
@@ -71,9 +77,9 @@ import {
   Server as ServerIcon,
   Database as DatabaseIcon,
   Network as NetworkIcon,
-  Globe as GlobeIcon
-} from 'lucide-react';
-import { enhancedTradingService } from '../services/EnhancedTradingService';
+  Globe as GlobeIcon,
+} from "lucide-react";
+import { enhancedTradingService } from "../services/EnhancedTradingService";
 
 interface TradingAccount {
   id: string;
@@ -130,16 +136,16 @@ export default function EnhancedTradingPanel() {
   const [isTrading, setIsTrading] = useState<boolean>(false);
   const [autoTrading, setAutoTrading] = useState<boolean>(false);
   const [aiEnabled, setAiEnabled] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState<string>('dashboard');
-  const [selectedAccount, setSelectedAccount] = useState<string>('');
-  const [selectedStrategy, setSelectedStrategy] = useState<string>('');
+  const [activeTab, setActiveTab] = useState<string>("dashboard");
+  const [selectedAccount, setSelectedAccount] = useState<string>("");
+  const [selectedStrategy, setSelectedStrategy] = useState<string>("");
   const [orderForm, setOrderForm] = useState({
-    symbol: '',
-    side: 'buy',
+    symbol: "",
+    side: "buy",
     size: 0.001,
     price: 0,
     stopLoss: 0,
-    takeProfit: 0
+    takeProfit: 0,
   });
 
   useEffect(() => {
@@ -165,18 +171,18 @@ export default function EnhancedTradingPanel() {
     });
 
     enhancedTradingService.onTradeExecuted(({ position, accountId }) => {
-      setPositions(prev => [...prev, position]);
+      setPositions((prev) => [...prev, position]);
     });
 
     enhancedTradingService.onSignalGenerated((signal) => {
-      setSignals(prev => [signal, ...prev.slice(0, 9)]); // Keep last 10 signals
+      setSignals((prev) => [signal, ...prev.slice(0, 9)]); // Keep last 10 signals
     });
 
     enhancedTradingService.onMarketDataUpdate((data) => {
-      setMarketData(prev => {
-        const existing = prev.find(m => m.symbol === data.symbol);
+      setMarketData((prev) => {
+        const existing = prev.find((m) => m.symbol === data.symbol);
         if (existing) {
-          return prev.map(m => m.symbol === data.symbol ? data : m);
+          return prev.map((m) => (m.symbol === data.symbol ? data : m));
         }
         return [...prev, data];
       });
@@ -199,7 +205,7 @@ export default function EnhancedTradingPanel() {
     try {
       await enhancedTradingService.startTrading();
     } catch (error) {
-      console.error('Failed to start trading:', error);
+      console.error("Failed to start trading:", error);
     }
   };
 
@@ -215,24 +221,24 @@ export default function EnhancedTradingPanel() {
         price: orderForm.price,
         stopLoss: orderForm.stopLoss,
         takeProfit: orderForm.takeProfit,
-        reason: 'Manual trade',
+        reason: "Manual trade",
         timestamp: new Date(),
-        strategy: 'Manual'
+        strategy: "Manual",
       };
 
       await enhancedTradingService.executeTrade(signal, selectedAccount);
-      
+
       // Reset form
       setOrderForm({
-        symbol: '',
-        side: 'buy',
+        symbol: "",
+        side: "buy",
         size: 0.001,
         price: 0,
         stopLoss: 0,
-        takeProfit: 0
+        takeProfit: 0,
       });
     } catch (error) {
-      console.error('Trade execution failed:', error);
+      console.error("Trade execution failed:", error);
     }
   };
 
@@ -248,12 +254,15 @@ export default function EnhancedTradingPanel() {
     enhancedTradingService.updateRiskManagement(updates);
   };
 
-  const formatCurrency = (amount: number, currency: string = 'USDT'): string => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
+  const formatCurrency = (
+    amount: number,
+    currency: string = "USDT",
+  ): string => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
       currency: currency,
       minimumFractionDigits: 2,
-      maximumFractionDigits: 6
+      maximumFractionDigits: 6,
     }).format(amount);
   };
 
@@ -262,33 +271,48 @@ export default function EnhancedTradingPanel() {
   };
 
   const getPnLColor = (pnl: number): string => {
-    return pnl >= 0 ? 'text-green-600' : 'text-red-600';
+    return pnl >= 0 ? "text-green-600" : "text-red-600";
   };
 
   const getStatusColor = (status: string): string => {
     switch (status) {
-      case 'open': return 'bg-blue-500';
-      case 'closed': return 'bg-gray-500';
-      case 'pending': return 'bg-yellow-500';
-      default: return 'bg-gray-500';
+      case "open":
+        return "bg-blue-500";
+      case "closed":
+        return "bg-gray-500";
+      case "pending":
+        return "bg-yellow-500";
+      default:
+        return "bg-gray-500";
     }
   };
 
-  const getActiveAccount = () => accounts.find(acc => acc.id === selectedAccount);
+  const getActiveAccount = () =>
+    accounts.find((acc) => acc.id === selectedAccount);
 
   const renderAccountCard = (account: TradingAccount) => (
-    <Card key={account.id} className={`cursor-pointer transition-all ${
-      selectedAccount === account.id ? 'ring-2 ring-blue-500' : ''
-    }`} onClick={() => setSelectedAccount(account.id)}>
+    <Card
+      key={account.id}
+      className={`cursor-pointer transition-all ${
+        selectedAccount === account.id ? "ring-2 ring-blue-500" : ""
+      }`}
+      onClick={() => setSelectedAccount(account.id)}
+    >
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className={`p-2 rounded-full ${
-              account.type === 'futures' ? 'bg-purple-100' : 'bg-blue-100'
-            }`}>
-              <Wallet className={`h-5 w-5 ${
-                account.type === 'futures' ? 'text-purple-600' : 'text-blue-600'
-              }`} />
+            <div
+              className={`p-2 rounded-full ${
+                account.type === "futures" ? "bg-purple-100" : "bg-blue-100"
+              }`}
+            >
+              <Wallet
+                className={`h-5 w-5 ${
+                  account.type === "futures"
+                    ? "text-purple-600"
+                    : "text-blue-600"
+                }`}
+              />
             </div>
             <div>
               <CardTitle className="text-lg">{account.name}</CardTitle>
@@ -297,8 +321,8 @@ export default function EnhancedTradingPanel() {
               </CardDescription>
             </div>
           </div>
-          <Badge variant={account.isActive ? 'default' : 'secondary'}>
-            {account.isActive ? 'Active' : 'Inactive'}
+          <Badge variant={account.isActive ? "default" : "secondary"}>
+            {account.isActive ? "Active" : "Inactive"}
           </Badge>
         </div>
       </CardHeader>
@@ -306,7 +330,9 @@ export default function EnhancedTradingPanel() {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-muted-foreground">Balance</p>
-            <p className="font-semibold">{formatCurrency(account.balance, account.currency)}</p>
+            <p className="font-semibold">
+              {formatCurrency(account.balance, account.currency)}
+            </p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Leverage</p>
@@ -343,10 +369,12 @@ export default function EnhancedTradingPanel() {
       <CardContent className="p-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-3">
-            <div className={`p-2 rounded-full ${
-              position.side === 'long' ? 'bg-green-100' : 'bg-red-100'
-            }`}>
-              {position.side === 'long' ? (
+            <div
+              className={`p-2 rounded-full ${
+                position.side === "long" ? "bg-green-100" : "bg-red-100"
+              }`}
+            >
+              {position.side === "long" ? (
                 <TrendingUp className="h-4 w-4 text-green-600" />
               ) : (
                 <TrendingDown className="h-4 w-4 text-red-600" />
@@ -354,14 +382,16 @@ export default function EnhancedTradingPanel() {
             </div>
             <div>
               <h3 className="font-semibold">{position.symbol}</h3>
-              <p className="text-sm text-muted-foreground capitalize">{position.side}</p>
+              <p className="text-sm text-muted-foreground capitalize">
+                {position.side}
+              </p>
             </div>
           </div>
           <Badge className={getStatusColor(position.status)}>
             {position.status}
           </Badge>
         </div>
-        
+
         <div className="grid grid-cols-2 gap-4 mb-3">
           <div>
             <p className="text-sm text-muted-foreground">Size</p>
@@ -373,7 +403,9 @@ export default function EnhancedTradingPanel() {
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Current Price</p>
-            <p className="font-medium">{formatCurrency(position.currentPrice)}</p>
+            <p className="font-medium">
+              {formatCurrency(position.currentPrice)}
+            </p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Unrealized P&L</p>
@@ -409,10 +441,12 @@ export default function EnhancedTradingPanel() {
       <CardContent className="p-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-3">
-            <div className={`p-2 rounded-full ${
-              signal.action === 'buy' ? 'bg-green-100' : 'bg-red-100'
-            }`}>
-              {signal.action === 'buy' ? (
+            <div
+              className={`p-2 rounded-full ${
+                signal.action === "buy" ? "bg-green-100" : "bg-red-100"
+              }`}
+            >
+              {signal.action === "buy" ? (
                 <TrendingUp className="h-4 w-4 text-green-600" />
               ) : (
                 <TrendingDown className="h-4 w-4 text-red-600" />
@@ -420,7 +454,9 @@ export default function EnhancedTradingPanel() {
             </div>
             <div>
               <h3 className="font-semibold">{signal.symbol}</h3>
-              <p className="text-sm text-muted-foreground capitalize">{signal.action}</p>
+              <p className="text-sm text-muted-foreground capitalize">
+                {signal.action}
+              </p>
             </div>
           </div>
           <div className="text-right">
@@ -430,9 +466,9 @@ export default function EnhancedTradingPanel() {
             </p>
           </div>
         </div>
-        
+
         <p className="text-sm text-muted-foreground mb-3">{signal.reason}</p>
-        
+
         <div className="grid grid-cols-2 gap-4 mb-3">
           <div>
             <p className="text-sm text-muted-foreground">Stop Loss</p>
@@ -467,7 +503,7 @@ export default function EnhancedTradingPanel() {
         </div>
         <div className="flex items-center space-x-2">
           <Button
-            variant={isTrading ? 'destructive' : 'default'}
+            variant={isTrading ? "destructive" : "default"}
             onClick={handleStartTrading}
             disabled={isTrading}
           >
@@ -504,12 +540,16 @@ export default function EnhancedTradingPanel() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  Total Balance
+                </CardTitle>
                 <DollarSign className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">
-                  {formatCurrency(accounts.reduce((sum, acc) => sum + acc.balance, 0))}
+                  {formatCurrency(
+                    accounts.reduce((sum, acc) => sum + acc.balance, 0),
+                  )}
                 </div>
                 <p className="text-xs text-muted-foreground">
                   Across {accounts.length} accounts
@@ -523,41 +563,65 @@ export default function EnhancedTradingPanel() {
                 <BarChart3 className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className={`text-2xl font-bold ${
-                  getPnLColor(accounts.reduce((sum, acc) => sum + acc.totalPnL, 0))
-                }`}>
-                  {formatCurrency(accounts.reduce((sum, acc) => sum + acc.totalPnL, 0))}
+                <div
+                  className={`text-2xl font-bold ${getPnLColor(
+                    accounts.reduce((sum, acc) => sum + acc.totalPnL, 0),
+                  )}`}
+                >
+                  {formatCurrency(
+                    accounts.reduce((sum, acc) => sum + acc.totalPnL, 0),
+                  )}
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  {formatPercentage(accounts.reduce((sum, acc) => sum + acc.totalPnL, 0) / 
-                    Math.max(accounts.reduce((sum, acc) => sum + acc.balance, 0), 1))}
+                  {formatPercentage(
+                    accounts.reduce((sum, acc) => sum + acc.totalPnL, 0) /
+                      Math.max(
+                        accounts.reduce((sum, acc) => sum + acc.balance, 0),
+                        1,
+                      ),
+                  )}
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Open Positions</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  Open Positions
+                </CardTitle>
                 <Activity className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{positions.filter(p => p.status === 'open').length}</div>
+                <div className="text-2xl font-bold">
+                  {positions.filter((p) => p.status === "open").length}
+                </div>
                 <p className="text-xs text-muted-foreground">
-                  {positions.filter(p => p.status === 'open').reduce((sum, p) => sum + p.unrealizedPnL, 0) >= 0 ? '+' : ''}
-                  {formatCurrency(positions.filter(p => p.status === 'open').reduce((sum, p) => sum + p.unrealizedPnL, 0))}
+                  {positions
+                    .filter((p) => p.status === "open")
+                    .reduce((sum, p) => sum + p.unrealizedPnL, 0) >= 0
+                    ? "+"
+                    : ""}
+                  {formatCurrency(
+                    positions
+                      .filter((p) => p.status === "open")
+                      .reduce((sum, p) => sum + p.unrealizedPnL, 0),
+                  )}
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">AI Signals</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  AI Signals
+                </CardTitle>
                 <Zap className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{signals.length}</div>
                 <p className="text-xs text-muted-foreground">
-                  {signals.filter(s => s.confidence > 0.7).length} high confidence
+                  {signals.filter((s) => s.confidence > 0.7).length} high
+                  confidence
                 </p>
               </CardContent>
             </Card>
@@ -581,7 +645,10 @@ export default function EnhancedTradingPanel() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {positions.filter(p => p.status === 'open').slice(0, 5).map(renderPositionCard)}
+                  {positions
+                    .filter((p) => p.status === "open")
+                    .slice(0, 5)
+                    .map(renderPositionCard)}
                 </div>
               </CardContent>
             </Card>
@@ -645,9 +712,10 @@ export default function EnhancedTradingPanel() {
                       onChange={(e) => setSelectedAccount(e.target.value)}
                     >
                       <option value="">Select Account</option>
-                      {accounts.map(account => (
+                      {accounts.map((account) => (
                         <option key={account.id} value={account.id}>
-                          {account.name} ({formatCurrency(account.balance, account.currency)})
+                          {account.name} (
+                          {formatCurrency(account.balance, account.currency)})
                         </option>
                       ))}
                     </select>
@@ -657,7 +725,12 @@ export default function EnhancedTradingPanel() {
                     <Input
                       placeholder="e.g., BTCUSDT"
                       value={orderForm.symbol}
-                      onChange={(e) => setOrderForm(prev => ({ ...prev, symbol: e.target.value }))}
+                      onChange={(e) =>
+                        setOrderForm((prev) => ({
+                          ...prev,
+                          symbol: e.target.value,
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -668,7 +741,12 @@ export default function EnhancedTradingPanel() {
                     <select
                       className="w-full p-2 border rounded-md"
                       value={orderForm.side}
-                      onChange={(e) => setOrderForm(prev => ({ ...prev, side: e.target.value }))}
+                      onChange={(e) =>
+                        setOrderForm((prev) => ({
+                          ...prev,
+                          side: e.target.value,
+                        }))
+                      }
                     >
                       <option value="buy">Buy (Long)</option>
                       <option value="sell">Sell (Short)</option>
@@ -682,7 +760,12 @@ export default function EnhancedTradingPanel() {
                       min="0.001"
                       placeholder="0.001"
                       value={orderForm.size}
-                      onChange={(e) => setOrderForm(prev => ({ ...prev, size: parseFloat(e.target.value) || 0.001 }))}
+                      onChange={(e) =>
+                        setOrderForm((prev) => ({
+                          ...prev,
+                          size: parseFloat(e.target.value) || 0.001,
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -695,7 +778,12 @@ export default function EnhancedTradingPanel() {
                       step="0.01"
                       placeholder="0.00"
                       value={orderForm.price}
-                      onChange={(e) => setOrderForm(prev => ({ ...prev, price: parseFloat(e.target.value) || 0 }))}
+                      onChange={(e) =>
+                        setOrderForm((prev) => ({
+                          ...prev,
+                          price: parseFloat(e.target.value) || 0,
+                        }))
+                      }
                     />
                   </div>
                   <div>
@@ -705,7 +793,12 @@ export default function EnhancedTradingPanel() {
                       step="0.01"
                       placeholder="0.00"
                       value={orderForm.stopLoss}
-                      onChange={(e) => setOrderForm(prev => ({ ...prev, stopLoss: parseFloat(e.target.value) || 0 }))}
+                      onChange={(e) =>
+                        setOrderForm((prev) => ({
+                          ...prev,
+                          stopLoss: parseFloat(e.target.value) || 0,
+                        }))
+                      }
                     />
                   </div>
                   <div>
@@ -715,13 +808,18 @@ export default function EnhancedTradingPanel() {
                       step="0.01"
                       placeholder="0.00"
                       value={orderForm.takeProfit}
-                      onChange={(e) => setOrderForm(prev => ({ ...prev, takeProfit: parseFloat(e.target.value) || 0 }))}
+                      onChange={(e) =>
+                        setOrderForm((prev) => ({
+                          ...prev,
+                          takeProfit: parseFloat(e.target.value) || 0,
+                        }))
+                      }
                     />
                   </div>
                 </div>
 
-                <Button 
-                  className="w-full" 
+                <Button
+                  className="w-full"
                   onClick={handleExecuteTrade}
                   disabled={!selectedAccount || !orderForm.symbol}
                 >
@@ -742,7 +840,9 @@ export default function EnhancedTradingPanel() {
                 <div className="flex items-center justify-between">
                   <div>
                     <Label>Auto Trading</Label>
-                    <p className="text-sm text-muted-foreground">Automatically execute AI signals</p>
+                    <p className="text-sm text-muted-foreground">
+                      Automatically execute AI signals
+                    </p>
                   </div>
                   <Switch
                     checked={autoTrading}
@@ -753,7 +853,9 @@ export default function EnhancedTradingPanel() {
                 <div className="flex items-center justify-between">
                   <div>
                     <Label>AI Trading</Label>
-                    <p className="text-sm text-muted-foreground">Enable AI-powered trading</p>
+                    <p className="text-sm text-muted-foreground">
+                      Enable AI-powered trading
+                    </p>
                   </div>
                   <Switch
                     checked={aiEnabled}
@@ -775,9 +877,12 @@ export default function EnhancedTradingPanel() {
                       type="number"
                       step="0.1"
                       value={riskManagement.maxPositionSize * 100}
-                      onChange={(e) => handleUpdateRiskManagement({
-                        maxPositionSize: (parseFloat(e.target.value) || 0) / 100
-                      })}
+                      onChange={(e) =>
+                        handleUpdateRiskManagement({
+                          maxPositionSize:
+                            (parseFloat(e.target.value) || 0) / 100,
+                        })
+                      }
                     />
                   </div>
                   <div>
@@ -786,9 +891,11 @@ export default function EnhancedTradingPanel() {
                       type="number"
                       step="0.1"
                       value={riskManagement.maxDailyLoss * 100}
-                      onChange={(e) => handleUpdateRiskManagement({
-                        maxDailyLoss: (parseFloat(e.target.value) || 0) / 100
-                      })}
+                      onChange={(e) =>
+                        handleUpdateRiskManagement({
+                          maxDailyLoss: (parseFloat(e.target.value) || 0) / 100,
+                        })
+                      }
                     />
                   </div>
                 </div>
@@ -800,9 +907,12 @@ export default function EnhancedTradingPanel() {
                       type="number"
                       step="0.1"
                       value={riskManagement.stopLossPercentage * 100}
-                      onChange={(e) => handleUpdateRiskManagement({
-                        stopLossPercentage: (parseFloat(e.target.value) || 0) / 100
-                      })}
+                      onChange={(e) =>
+                        handleUpdateRiskManagement({
+                          stopLossPercentage:
+                            (parseFloat(e.target.value) || 0) / 100,
+                        })
+                      }
                     />
                   </div>
                   <div>
@@ -811,9 +921,12 @@ export default function EnhancedTradingPanel() {
                       type="number"
                       step="0.1"
                       value={riskManagement.takeProfitPercentage * 100}
-                      onChange={(e) => handleUpdateRiskManagement({
-                        takeProfitPercentage: (parseFloat(e.target.value) || 0) / 100
-                      })}
+                      onChange={(e) =>
+                        handleUpdateRiskManagement({
+                          takeProfitPercentage:
+                            (parseFloat(e.target.value) || 0) / 100,
+                        })
+                      }
                     />
                   </div>
                 </div>
@@ -824,4 +937,4 @@ export default function EnhancedTradingPanel() {
       </Tabs>
     </div>
   );
-} 
+}

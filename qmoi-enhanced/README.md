@@ -118,3 +118,4 @@ Edit
 - ✅ Update-safe via comment markers
 - ✅ Markdown table for device status
 - ✅ Web-safe and version-controllable
+```

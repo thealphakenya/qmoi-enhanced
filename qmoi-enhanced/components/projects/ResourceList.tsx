@@ -1,6 +1,6 @@
-import React from 'react';
-import { useProjects } from '../../hooks/useProjects';
-import { Resource } from '../../types/projects';
+import React from "react";
+import { useProjects } from "../../hooks/useProjects";
+import { Resource } from "../../types/projects";
 
 interface ResourceListProps {
   projectId: string;
@@ -11,28 +11,33 @@ export function ResourceList({ projectId }: ResourceListProps) {
   const project = projects.find((p) => p.id === projectId);
   const resources = project?.resources || [];
 
-  const handleStatusChange = async (resourceId: string, newStatus: Resource['status']) => {
+  const handleStatusChange = async (
+    resourceId: string,
+    newStatus: Resource["status"],
+  ) => {
     try {
       const updatedResources = resources.map((resource) =>
-        resource.id === resourceId ? { ...resource, status: newStatus } : resource
+        resource.id === resourceId
+          ? { ...resource, status: newStatus }
+          : resource,
       );
       await updateProject(projectId, { resources: updatedResources });
     } catch (error) {
-      console.error('Failed to update resource status:', error);
+      console.error("Failed to update resource status:", error);
     }
   };
 
   const typeColors = {
-    human: 'bg-blue-100 text-blue-800',
-    equipment: 'bg-green-100 text-green-800',
-    software: 'bg-purple-100 text-purple-800',
-    other: 'bg-gray-100 text-gray-800',
+    human: "bg-blue-100 text-blue-800",
+    equipment: "bg-green-100 text-green-800",
+    software: "bg-purple-100 text-purple-800",
+    other: "bg-gray-100 text-gray-800",
   };
 
   const statusColors = {
-    available: 'bg-green-100 text-green-800',
-    allocated: 'bg-yellow-100 text-yellow-800',
-    maintenance: 'bg-red-100 text-red-800',
+    available: "bg-green-100 text-green-800",
+    allocated: "bg-yellow-100 text-yellow-800",
+    maintenance: "bg-red-100 text-red-800",
   };
 
   return (
@@ -62,7 +67,9 @@ export function ResourceList({ projectId }: ResourceListProps) {
               </div>
               <div className="text-right">
                 <div className="text-sm text-gray-500">Cost</div>
-                <div className="font-medium">${resource.cost.toLocaleString()}</div>
+                <div className="font-medium">
+                  ${resource.cost.toLocaleString()}
+                </div>
               </div>
             </div>
 
@@ -96,7 +103,10 @@ export function ResourceList({ projectId }: ResourceListProps) {
                 id={`status-${resource.id}`}
                 value={resource.status}
                 onChange={(e) =>
-                  handleStatusChange(resource.id, e.target.value as Resource['status'])
+                  handleStatusChange(
+                    resource.id,
+                    e.target.value as Resource["status"],
+                  )
                 }
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               >
@@ -120,4 +130,4 @@ export function ResourceList({ projectId }: ResourceListProps) {
       </div>
     </div>
   );
-} 
+}

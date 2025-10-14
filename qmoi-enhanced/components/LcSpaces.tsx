@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const sectionStyle: React.CSSProperties = {
   background: "#fff",
@@ -7,16 +7,27 @@ const sectionStyle: React.CSSProperties = {
   padding: 24,
   marginBottom: 24,
   minHeight: 120,
-}
+};
 
 export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
   // Only show if user is Leah or Master (Victor)
-  if (user !== 'Leah Chebet' && user !== 'Victor Kwemoi' && user !== 'thealphakenya@gmail.com') return null
+  if (
+    user !== "Leah Chebet" &&
+    user !== "Victor Kwemoi" &&
+    user !== "thealphakenya@gmail.com"
+  )
+    return null;
   return (
-    <div style={{ padding: 24, maxWidth: 900, margin: '0 auto' }}>
-      <h2 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>LC Spaces (Leah Chebet)</h2>
-      <p style={{ marginBottom: 32 }}>Welcome, {user === 'Leah Chebet' ? 'Leah' : 'Master Victor'}! Here you can manage Leah's goals, achievements, plans, projects, routines, alarms, reminders, places, and settings.</p>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+    <div style={{ padding: 24, maxWidth: 900, margin: "0 auto" }}>
+      <h2 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>
+        LC Spaces (Leah Chebet)
+      </h2>
+      <p style={{ marginBottom: 32 }}>
+        Welcome, {user === "Leah Chebet" ? "Leah" : "Master Victor"}! Here you
+        can manage Leah's goals, achievements, plans, projects, routines,
+        alarms, reminders, places, and settings.
+      </p>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
         <div style={sectionStyle}>
           <h3>Goals & Plans</h3>
           <ul>
@@ -75,5 +86,5 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

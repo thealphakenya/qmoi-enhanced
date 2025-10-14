@@ -1,9 +1,11 @@
 # QMedia Player - Enhanced UI & Controls
 
 ## Overview
+
 QMedia Player now supports all media types (audio, video, images, streams, documents) with advanced UI features and controls for playback, visualization, playlists, device casting, and master/admin features.
 
 ### Core Features
+
 - **Universal Media Support:** Play audio, video, images, live streams, and documents in a single player.
 - **Advanced Playback Controls:** Play, pause, seek, speed, volume, mute, loop, shuffle, repeat, skip, and frame-by-frame controls.
 - **Visualization:** Real-time audio visualizer, video overlays, waveform, spectrum, and customizable themes.
@@ -17,6 +19,7 @@ QMedia Player now supports all media types (audio, video, images, streams, docum
 - **Analytics & Stats:** Real-time stats for playback, device usage, and media performance, visible to master/admin.
 
 ### UI Panels
+
 - **Main Player Panel:** Universal controls for all media types, with responsive design.
 - **Playlist/Queue Panel:** Drag-and-drop playlist management, queue visualization, and history.
 - **Device Panel:** Device selection, casting status, and group sync controls.
@@ -24,4 +27,5 @@ QMedia Player now supports all media types (audio, video, images, streams, docum
 - **Admin Panel:** Master-only controls for all features, audit logs, and advanced settings.
 
 ---
-*This file documents all QMedia Player UI features and enhancements.* 
+
+_This file documents all QMedia Player UI features and enhancements._

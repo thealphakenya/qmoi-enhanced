@@ -1,32 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface Category {
-  key: 'media' | 'docs' | 'code' | 'other';
+  key: "media" | "docs" | "code" | "other";
   label: string;
 }
 
 interface File {
   name: string;
-  category: Category['key'];
+  category: Category["key"];
   added: string;
 }
 
 const categories: Category[] = [
-  { key: 'media', label: 'Media' },
-  { key: 'docs', label: 'Documents' },
-  { key: 'code', label: 'Code' },
-  { key: 'other', label: 'Other' },
+  { key: "media", label: "Media" },
+  { key: "docs", label: "Documents" },
+  { key: "code", label: "Code" },
+  { key: "other", label: "Other" },
 ];
 
 export const FileCategorizer: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
-  const [category, setCategory] = useState<Category['key']>('media');
-  const [fileName, setFileName] = useState('');
+  const [category, setCategory] = useState<Category["key"]>("media");
+  const [fileName, setFileName] = useState("");
 
   const handleAdd = () => {
     if (!fileName) return;
-    setFiles(f => [...f, { name: fileName, category, added: new Date().toLocaleString() }]);
-    setFileName('');
+    setFiles((f) => [
+      ...f,
+      { name: fileName, category, added: new Date().toLocaleString() },
+    ]);
+    setFileName("");
   };
 
   return (
@@ -36,20 +39,35 @@ export const FileCategorizer: React.FC = () => {
         type="text"
         placeholder="File name"
         value={fileName}
-        onChange={e => setFileName(e.target.value)}
-        style={{ marginBottom: 8, width: '100%' }}
+        onChange={(e) => setFileName(e.target.value)}
+        style={{ marginBottom: 8, width: "100%" }}
       />
-      <select value={category} onChange={e => setCategory(e.target.value as Category['key'])} style={{ marginBottom: 8 }}>
-        {categories.map(c => <option key={c.key} value={c.key}>{c.label}</option>)}
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value as Category["key"])}
+        style={{ marginBottom: 8 }}
+      >
+        {categories.map((c) => (
+          <option key={c.key} value={c.key}>
+            {c.label}
+          </option>
+        ))}
       </select>
-      <button onClick={handleAdd} disabled={!fileName}>Add File</button>
+      <button onClick={handleAdd} disabled={!fileName}>
+        Add File
+      </button>
       <ul style={{ marginTop: 16, fontSize: 14 }}>
         {files.map((f, i) => (
-          <li key={i}>{f.name} <b>({categories.find(c => c.key === f.category)?.label})</b> <span style={{ color: '#aaa' }}>({f.added})</span></li>
+          <li key={i}>
+            {f.name}{" "}
+            <b>({categories.find((c) => c.key === f.category)?.label})</b>{" "}
+            <span style={{ color: "#aaa" }}>({f.added})</span>
+          </li>
         ))}
       </ul>
-      <div style={{ marginTop: 16, fontSize: 12, color: '#888' }}>
-        Files are auto-categorized and saved in persistent folders. File explorer and search included.
+      <div style={{ marginTop: 16, fontSize: 12, color: "#888" }}>
+        Files are auto-categorized and saved in persistent folders. File
+        explorer and search included.
       </div>
     </div>
   );

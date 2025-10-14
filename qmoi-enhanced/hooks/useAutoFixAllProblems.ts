@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 interface GlobalFixResponse {
   status: string;
@@ -15,24 +15,30 @@ export function useAutoFixAllProblems() {
     let retryCount = 0;
     const interval = setInterval(async () => {
       // Use new globalScanFix endpoint for robust global fixing
-      const res = await fetch('/api/qmoi-model?globalScanFix=1', {
-        method: 'POST',
-        headers: { 'x-admin-token': localStorage.getItem('adminToken') || '' },
+      const res = await fetch("/api/qmoi-model?globalScanFix=1", {
+        method: "POST",
+        headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      const data = await res.json() as GlobalFixResponse;
-      if (data.status === 'all-fixed') {
+      const data = (await res.json()) as GlobalFixResponse;
+      if (data.status === "all-fixed") {
         // Optionally notify user or update UI
         if (window && window.dispatchEvent) {
-          window.dispatchEvent(new CustomEvent('ai-global-fix', { 
-            detail: data as GlobalFixEventDetail 
-          }));
+          window.dispatchEvent(
+            new CustomEvent("ai-global-fix", {
+              detail: data as GlobalFixEventDetail,
+            }),
+          );
         }
         // UI notification
-        if (window && 'Notification' in window && Notification.permission === 'granted') {
-          new Notification('All problems auto-fixed by QMOI AI!');
+        if (
+          window &&
+          "Notification" in window &&
+          Notification.permission === "granted"
+        ) {
+          new Notification("All problems auto-fixed by QMOI AI!");
         }
         // Log to console
-        console.log('[QMOI] All problems auto-fixed.');
+        console.log("[QMOI] All problems auto-fixed.");
         retryCount = 0;
       } else {
         retryCount++;

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import { ProjectDashboard } from '../../../components/projects/ProjectDashboard';
-import { TaskList } from '../../../components/projects/TaskList';
-import { ResourceList } from '../../../components/projects/ResourceList';
-import { ProjectForm } from '../../../components/projects/ProjectForm';
-import { useProjects } from '../../../hooks/useProjects';
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { ProjectDashboard } from "../../../components/projects/ProjectDashboard";
+import { TaskList } from "../../../components/projects/TaskList";
+import { ResourceList } from "../../../components/projects/ResourceList";
+import { ProjectForm } from "../../../components/projects/ProjectForm";
+import { useProjects } from "../../../hooks/useProjects";
 
 export default function ProjectDetailPage() {
   const router = useRouter();
@@ -17,12 +17,14 @@ export default function ProjectDetailPage() {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900">Project Not Found</h1>
+          <h1 className="text-2xl font-bold text-gray-900">
+            Project Not Found
+          </h1>
           <p className="mt-2 text-gray-600">
             The project you're looking for doesn't exist or has been removed.
           </p>
           <button
-            onClick={() => router.push('/qcity/projects')}
+            onClick={() => router.push("/qcity/projects")}
             className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Back to Projects
@@ -37,7 +39,7 @@ export default function ProjectDetailPage() {
       await updateProject(project.id, updates);
       setShowEditForm(false);
     } catch (error) {
-      console.error('Failed to update project:', error);
+      console.error("Failed to update project:", error);
     }
   };
 
@@ -68,7 +70,10 @@ export default function ProjectDetailPage() {
                 ✕
               </button>
             </div>
-            <ProjectForm project={project} onSuccess={() => setShowEditForm(false)} />
+            <ProjectForm
+              project={project}
+              onSuccess={() => setShowEditForm(false)}
+            />
           </div>
         </div>
       )}
@@ -87,4 +92,4 @@ export default function ProjectDetailPage() {
       </div>
     </div>
   );
-} 
+}

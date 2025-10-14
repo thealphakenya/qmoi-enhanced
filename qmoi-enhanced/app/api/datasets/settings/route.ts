@@ -1,29 +1,40 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { maxConcurrentProcessing, autoBackup, defaultFormat, storageLocation } = body;
+    const {
+      maxConcurrentProcessing,
+      autoBackup,
+      defaultFormat,
+      storageLocation,
+    } = body;
 
     // Validate settings
-    if (maxConcurrentProcessing && (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)) {
+    if (
+      maxConcurrentProcessing &&
+      (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
+    ) {
       return NextResponse.json(
-        { error: 'maxConcurrentProcessing must be between 1 and 10' },
-        { status: 400 }
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
+        { status: 400 },
       );
     }
 
-    if (defaultFormat && !['json', 'csv', 'parquet'].includes(defaultFormat)) {
+    if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { error: 'defaultFormat must be one of: json, csv, parquet' },
-        { status: 400 }
+        { error: "defaultFormat must be one of: json, csv, parquet" },
+        { status: 400 },
       );
     }
 
-    if (storageLocation && !['local', 'cloud', 'hybrid'].includes(storageLocation)) {
+    if (
+      storageLocation &&
+      !["local", "cloud", "hybrid"].includes(storageLocation)
+    ) {
       return NextResponse.json(
-        { error: 'storageLocation must be one of: local, cloud, hybrid' },
-        { status: 400 }
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
+        { status: 400 },
       );
     }
 
@@ -31,8 +42,8 @@ export async function POST(request: Request) {
     const updatedSettings = {
       maxConcurrentProcessing: maxConcurrentProcessing || 2,
       autoBackup: autoBackup ?? true,
-      defaultFormat: defaultFormat || 'json',
-      storageLocation: storageLocation || 'local'
+      defaultFormat: defaultFormat || "json",
+      storageLocation: storageLocation || "local",
     };
 
     // In a real implementation, you would:
@@ -43,10 +54,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json(updatedSettings);
   } catch (error) {
-    console.error('Error in dataset settings endpoint:', error);
+    console.error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { error: 'Failed to update dataset settings' },
-      { status: 500 }
+      { error: "Failed to update dataset settings" },
+      { status: 500 },
     );
   }
-} 
+}

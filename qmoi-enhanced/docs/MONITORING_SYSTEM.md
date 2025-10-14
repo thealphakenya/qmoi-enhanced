@@ -7,6 +7,7 @@ The QMOI Monitoring System is a comprehensive, automated monitoring solution tha
 ## Features
 
 ### 🔍 **Comprehensive Monitoring**
+
 - **System Health**: CPU, memory, disk, network monitoring
 - **Performance**: Response times, throughput, resource utilization
 - **Security**: Real-time threat detection, file integrity, network activity
@@ -16,6 +17,7 @@ The QMOI Monitoring System is a comprehensive, automated monitoring solution tha
 - **Notifications**: Multi-channel alerting system
 
 ### 🚀 **Automated Operations**
+
 - Auto-restart failed components
 - Auto-recovery from critical issues
 - Rate limiting and cooldown periods
@@ -23,6 +25,7 @@ The QMOI Monitoring System is a comprehensive, automated monitoring solution tha
 - Health checks and status reporting
 
 ### 📊 **Real-time Dashboard**
+
 - Web-based monitoring dashboard
 - Real-time status updates
 - Historical data and trends
@@ -46,8 +49,9 @@ QMOI Monitoring System
 ## Components
 
 ### 1. Master Monitor (`scripts/monitoring/master_monitor.py`)
+
 - **Purpose**: Orchestrates all monitoring components
-- **Features**: 
+- **Features**:
   - Component lifecycle management
   - Overall health assessment
   - Auto-recovery mechanisms
@@ -55,6 +59,7 @@ QMOI Monitoring System
 - **Priority**: Critical
 
 ### 2. System Health Monitor (`scripts/monitoring/system_health_monitor.py`)
+
 - **Purpose**: Monitors system resources and health
 - **Features**:
   - CPU, memory, disk usage
@@ -64,6 +69,7 @@ QMOI Monitoring System
 - **Priority**: High
 
 ### 3. Performance Monitor (`scripts/monitoring/performance_monitor.py`)
+
 - **Purpose**: Tracks system performance metrics
 - **Features**:
   - Response time monitoring
@@ -73,6 +79,7 @@ QMOI Monitoring System
 - **Priority**: High
 
 ### 4. Security Monitor (`scripts/qmoi_security_monitor.py`)
+
 - **Purpose**: Real-time security monitoring
 - **Features**:
   - Threat detection
@@ -82,6 +89,7 @@ QMOI Monitoring System
 - **Priority**: Critical
 
 ### 5. Backup Monitor (`scripts/monitoring/backup_monitor.py`)
+
 - **Purpose**: Monitors backup operations
 - **Features**:
   - Backup status tracking
@@ -91,6 +99,7 @@ QMOI Monitoring System
 - **Priority**: Medium
 
 ### 6. Cloud Resources Monitor (`scripts/monitoring/cloud_resources_monitor.py`)
+
 - **Purpose**: Monitors cloud infrastructure
 - **Features**:
   - AWS, Azure, GCP monitoring
@@ -100,6 +109,7 @@ QMOI Monitoring System
 - **Priority**: Medium
 
 ### 7. API Endpoints Monitor (`scripts/monitoring/api_endpoints_monitor.py`)
+
 - **Purpose**: Monitors API availability and performance
 - **Features**:
   - Endpoint health checks
@@ -109,6 +119,7 @@ QMOI Monitoring System
 - **Priority**: High
 
 ### 8. Notification Monitor (`scripts/monitoring/notification_monitor.py`)
+
 - **Purpose**: Manages notifications and alerts
 - **Features**:
   - Multi-channel notifications
@@ -129,6 +140,7 @@ python scripts/start_monitoring_system.py
 ### 2. Access the Dashboard
 
 Open your browser and navigate to:
+
 ```
 http://localhost:8080
 ```
@@ -185,9 +197,7 @@ tail -f logs/master_monitor.log
     },
     "webhook": {
       "enabled": true,
-      "urls": [
-        "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
-      ]
+      "urls": ["https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"]
     }
   },
   "priorities": {
@@ -202,21 +212,25 @@ tail -f logs/master_monitor.log
 ## Monitoring Endpoints
 
 ### System Health
+
 - **Endpoint**: `/api/monitor/status`
 - **Method**: GET
 - **Description**: Current system health status
 
 ### Performance Metrics
+
 - **Endpoint**: `/api/monitor/performance`
 - **Method**: GET
 - **Description**: Performance metrics and trends
 
 ### Security Status
+
 - **Endpoint**: `/api/monitor/security`
 - **Method**: GET
 - **Description**: Security monitoring status
 
 ### Backup Status
+
 - **Endpoint**: `/api/monitor/backup`
 - **Method**: GET
 - **Description**: Backup operations status
@@ -224,18 +238,21 @@ tail -f logs/master_monitor.log
 ## Alert Levels
 
 ### 🔴 Critical
+
 - System down or unresponsive
 - Security breaches detected
 - Critical component failures
 - Data loss or corruption
 
 ### 🟡 Warning
+
 - High resource usage
 - Performance degradation
 - Backup failures
 - API endpoint issues
 
 ### 🟢 Info
+
 - Normal operations
 - Status updates
 - Scheduled maintenance
@@ -244,24 +261,28 @@ tail -f logs/master_monitor.log
 ## Notification Channels
 
 ### Email
+
 - SMTP configuration
 - HTML and text templates
 - Priority-based routing
 - Rate limiting
 
 ### Webhooks
+
 - Slack integration
 - Discord integration
 - Custom webhook support
 - JSON payload formatting
 
 ### SMS
+
 - Twilio integration
 - Emergency notifications
 - Critical alerts only
 - Rate limiting
 
 ### Internal
+
 - Log file storage
 - Dashboard notifications
 - In-app alerts
@@ -270,11 +291,13 @@ tail -f logs/master_monitor.log
 ## Reports and Logs
 
 ### Report Locations
+
 - **Latest Reports**: `logs/*_latest.json`
 - **Historical Reports**: `logs/*_report_YYYYMMDD_HHMMSS.json`
 - **Startup Reports**: `logs/monitoring_startup_*.json`
 
 ### Log Files
+
 - **Master Monitor**: `logs/master_monitor.log`
 - **System Health**: `logs/system_health_monitor.log`
 - **Performance**: `logs/performance_monitor.log`
@@ -289,6 +312,7 @@ tail -f logs/master_monitor.log
 ### Common Issues
 
 #### 1. Component Not Starting
+
 ```bash
 # Check dependencies
 python -c "import requests, psutil, boto3"
@@ -301,6 +325,7 @@ tail -f logs/monitoring_startup.log
 ```
 
 #### 2. High Resource Usage
+
 ```bash
 # Check system resources
 python scripts/monitoring/system_health_monitor.py --check
@@ -310,6 +335,7 @@ python scripts/monitoring/system_health_monitor.py --check
 ```
 
 #### 3. Notification Failures
+
 ```bash
 # Check notification configuration
 cat config/notification_config.json
@@ -322,6 +348,7 @@ python scripts/monitoring/notification_monitor.py --test-webhook
 ```
 
 #### 4. Dashboard Not Accessible
+
 ```bash
 # Check if dashboard is running
 netstat -tlnp | grep 8080
@@ -336,13 +363,16 @@ python scripts/monitoring/master_monitor.py --restart-dashboard
 ### Recovery Procedures
 
 #### Auto-Recovery
+
 The system automatically attempts recovery for:
+
 - Failed component restarts
 - High resource usage
 - Network connectivity issues
 - Temporary service outages
 
 #### Manual Recovery
+
 ```bash
 # Restart specific component
 python scripts/monitoring/master_monitor.py --restart-component system_health
@@ -357,18 +387,21 @@ python scripts/monitoring/master_monitor.py --reset
 ## Performance Optimization
 
 ### Monitoring Intervals
+
 - **Critical Components**: 30-60 seconds
 - **High Priority**: 1-5 minutes
 - **Medium Priority**: 5-15 minutes
 - **Low Priority**: 15-60 minutes
 
 ### Resource Usage
+
 - **CPU**: < 5% average
 - **Memory**: < 100MB per component
 - **Disk**: < 50MB logs per day
 - **Network**: < 1MB per minute
 
 ### Scaling
+
 - **Horizontal**: Add monitoring nodes
 - **Vertical**: Increase resource limits
 - **Load Balancing**: Distribute monitoring load
@@ -377,18 +410,21 @@ python scripts/monitoring/master_monitor.py --reset
 ## Security Considerations
 
 ### Access Control
+
 - Dashboard authentication
 - API endpoint protection
 - Log file permissions
 - Configuration file security
 
 ### Data Protection
+
 - Encrypted notifications
 - Secure webhook URLs
 - Masked sensitive data
 - Audit logging
 
 ### Network Security
+
 - Firewall rules
 - VPN access
 - SSL/TLS encryption
@@ -397,6 +433,7 @@ python scripts/monitoring/master_monitor.py --reset
 ## Integration
 
 ### External Systems
+
 - **Slack**: Real-time notifications
 - **Discord**: Community alerts
 - **Email**: Formal notifications
@@ -404,12 +441,14 @@ python scripts/monitoring/master_monitor.py --reset
 - **Webhooks**: Custom integrations
 
 ### APIs
+
 - **REST API**: Status endpoints
 - **WebSocket**: Real-time updates
 - **GraphQL**: Flexible queries
 - **gRPC**: High-performance communication
 
 ### Data Export
+
 - **JSON**: Standard format
 - **CSV**: Spreadsheet import
 - **Prometheus**: Metrics collection
@@ -418,18 +457,21 @@ python scripts/monitoring/master_monitor.py --reset
 ## Maintenance
 
 ### Daily Tasks
+
 - Review alert logs
 - Check component health
 - Verify backup status
 - Monitor resource usage
 
 ### Weekly Tasks
+
 - Analyze performance trends
 - Review security logs
 - Update configurations
 - Clean old logs
 
 ### Monthly Tasks
+
 - Performance optimization
 - Security assessment
 - Capacity planning
@@ -438,18 +480,21 @@ python scripts/monitoring/master_monitor.py --reset
 ## Support
 
 ### Documentation
+
 - **User Guide**: This document
 - **API Reference**: `/docs/API.md`
 - **Configuration**: `/docs/CONFIG.md`
 - **Troubleshooting**: `/docs/TROUBLESHOOTING.md`
 
 ### Logs and Debugging
+
 - **Debug Mode**: `--debug` flag
 - **Verbose Logging**: `--verbose` flag
 - **Log Rotation**: Automatic
 - **Log Analysis**: Built-in tools
 
 ### Community
+
 - **GitHub Issues**: Bug reports
 - **Discussions**: Feature requests
 - **Wiki**: Community documentation
@@ -461,4 +506,4 @@ This monitoring system is part of the QMOI AI project and is licensed under the 
 
 ---
 
-**QMOI Monitoring System** - Comprehensive monitoring for the QMOI AI platform 
+**QMOI Monitoring System** - Comprehensive monitoring for the QMOI AI platform

@@ -3,12 +3,12 @@ QMOI Auto-Dev: Always-On, Self-Healing, Auto-Deploying System
 QMOI Auto-Dev is the heartbeat of the Alpha-Q ecosystem. It continuously monitors, fixes, commits, deploys, and optimizes every part of the system in real time — with zero manual effort.
 
 🧠 Key Highlights
-Feature	Description
-🔄 Continuous Daemon	Runs 24/7, scanning logs, errors, running tests, and triggering fixes.
-⚙️ Unified CI/CD	Auto commit → push → deploy (e.g. Vercel) on every successful fix.
-🖥️ Dashboard Control	Master-only dashboard to view status, logs, trigger or stop the daemon.
-📜 Audit Logging	All actions (fixes, commits, deploys) are logged for transparency.
-🧹 Auto-Cleanup	Obsolete logs and files are deleted/rotated for performance.
+Feature Description
+🔄 Continuous Daemon Runs 24/7, scanning logs, errors, running tests, and triggering fixes.
+⚙️ Unified CI/CD Auto commit → push → deploy (e.g. Vercel) on every successful fix.
+🖥️ Dashboard Control Master-only dashboard to view status, logs, trigger or stop the daemon.
+📜 Audit Logging All actions (fixes, commits, deploys) are logged for transparency.
+🧹 Auto-Cleanup Obsolete logs and files are deleted/rotated for performance.
 
 🚀 Usage
 Runs Automatically in background (no manual trigger required).
@@ -34,20 +34,20 @@ Logs rotated automatically
 Admin UI to start/stop/refresh daemon
 
 📦 Unified CI/CD Pipeline
-Stage	Description
-✅ Auto Commit	Every fix is committed automatically
-🚀 Auto Push	Changes pushed to GitHub repository
-🔁 PR Support	PRs are opened for protected branches
-🔂 Vercel Deployment	Triggered after every successful push
-📊 Health Monitoring	Vercel deploy health is tracked
-♻️ Auto-Redeploy	Failing deploys are re-triggered with rollback if needed
+Stage Description
+✅ Auto Commit Every fix is committed automatically
+🚀 Auto Push Changes pushed to GitHub repository
+🔁 PR Support PRs are opened for protected branches
+🔂 Vercel Deployment Triggered after every successful push
+📊 Health Monitoring Vercel deploy health is tracked
+♻️ Auto-Redeploy Failing deploys are re-triggered with rollback if needed
 
 📊 Dashboard & API
-Endpoint	Description
-POST /api/qmoi/autodev with { action: 'full_status' }	Get full automation/deployment state
-POST /api/qmoi/autodev with { action: 'continuous_autofix_start' }	Start daemon
-POST /api/qmoi/autodev with { action: 'continuous_autofix_stop' }	Stop daemon
-POST /api/qmoi/autodev with `{ action: 'lint_fix'	'dependency_fix'
+Endpoint Description
+POST /api/qmoi/autodev with { action: 'full_status' } Get full automation/deployment state
+POST /api/qmoi/autodev with { action: 'continuous_autofix_start' } Start daemon
+POST /api/qmoi/autodev with { action: 'continuous_autofix_stop' } Stop daemon
+POST /api/qmoi/autodev with `{ action: 'lint_fix' 'dependency_fix'
 
 Dashboard Panels:
 
@@ -83,12 +83,12 @@ Device-Aware Logic: Adapt automation depending on host platform specs
 Live Job Migration: Jobs can move from local → cloud in real time
 
 🔧 Advanced Master Widgets (QCity Only)
-Widget	Purpose
-📡 Auto-Dev Health Monitor	Real-time metrics, fix rate, CPU/mem usage
-📚 Job History	All past auto-fix cycles, errors, and logs
-🧠 ML Enhancement Panel	Latest AI auto-improvements with logs and retrain triggers
-📤 Elastic Offload Panel	Cloud/local job routing, manual offload
-🧬 Self-Evolution Trigger	Runs full optimization + evolution cycle (master only)
+Widget Purpose
+📡 Auto-Dev Health Monitor Real-time metrics, fix rate, CPU/mem usage
+📚 Job History All past auto-fix cycles, errors, and logs
+🧠 ML Enhancement Panel Latest AI auto-improvements with logs and retrain triggers
+📤 Elastic Offload Panel Cloud/local job routing, manual offload
+🧬 Self-Evolution Trigger Runs full optimization + evolution cycle (master only)
 
 🧠 Smart Adaptation & Self-Evolution
 Detects new project types (e.g., new language, runtime, target)
@@ -127,26 +127,23 @@ Live terminal & remote fix trigger via chat
 Job dependency graph viewer (visual)
 
 ✅ Summary
-Capability	Status
-Continuous Automation	✅
-GitHub + Vercel CI/CD	✅
-Cloud Offload	✅
-Admin Controls	✅
-Logs & Audits	✅
-Self-Evolving Scripts	✅
-Money-Making Dashboard	✅
-Documentation Auto-Update	✅
-Offline + Colab Support	✅
+Capability Status
+Continuous Automation ✅
+GitHub + Vercel CI/CD ✅
+Cloud Offload ✅
+Admin Controls ✅
+Logs & Audits ✅
+Self-Evolving Scripts ✅
+Money-Making Dashboard ✅
+Documentation Auto-Update ✅
+Offline + Colab Support ✅
 
 🔒 This document is maintained by the QMOI AI system. All edits, automation, and deployment logic are under strict version control and logged for audit purposes.
 
 > Auto-updated by QMOI Unified Push at 2025-09-24T17:57:20.413021
 
-
 > Auto-updated by QMOI Unified Push at 2025-09-24T18:33:30.533760
 
-
 > Auto-updated by QMOI Unified Push at 2025-09-24T18:39:13.529274
-
 
 > Auto-updated by QMOI Unified Push at 2025-09-24T18:56:52.718799

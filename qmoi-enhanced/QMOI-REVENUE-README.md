@@ -1,6 +1,7 @@
 # QMOI Revenue Engine & M-Pesa Integration
 
 ## Overview
+
 QMOI is now a fully automated revenue generation system that continuously makes money through multiple streams and automatically transfers earnings to your M-Pesa account. **The system is now optimized to generate a minimum of Ksh 50,000 per day and maintain at least Ksh 50,000 in QMOI Space.**
 
 ## 🚀 Quick Start
@@ -46,12 +47,14 @@ node scripts/start-revenue-engine.js
 ### 3. Monitor Dashboard
 
 Access the revenue dashboard at `/qcity` (master only) to:
+
 - View real-time earnings
 - Monitor revenue streams
 - Control the engine
 - Transfer to M-Pesa
 
 ## 💰 Revenue Streams & Minimum Targets
+
 - **Minimum Daily Target**: Ksh 200,000 (doubled from previous target, enforced by automation)
 - **QMOI Space Minimum**: Ksh 100,000 must always be available (doubled from previous target, auto-replenish if below)
 - **Automated Alerts**: Master is notified if targets are not met or balance drops below threshold
@@ -59,6 +62,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 - **AI-Driven Maximization**: QMOI uses all features (projects, distribution, marketing, content, etc.) to maximize revenue
 
 ## AI-Driven Idea Generation & Project Quality
+
 - AI scans global trends, market data, and user feedback to generate new project and earning ideas
 - Each idea is scored for revenue potential, feasibility, and quality
 - Only the highest quality, most profitable ideas are executed
@@ -66,12 +70,14 @@ Access the revenue dashboard at `/qcity` (master only) to:
 - Trailers, documentation, and marketing assets are auto-generated for every project
 
 ## Revenue Maximization Automation
+
 - Every project and campaign is evaluated for revenue potential and quality before launch
 - Multi-channel distribution: projects and campaigns are sent to all relevant platforms for maximum exposure and revenue
 - Marketing, deals, and pricing are optimized by AI and approved by master
 - All actions, earnings, and optimizations are logged and auditable
 
 ## Enhanced Project & Revenue Workflow
+
 1. **Idea Generation**: AI proposes high-revenue, high-quality project ideas
 2. **Master Approval**: Master can approve, modify, or prioritize ideas
 3. **Project Creation**: AI creates and manages projects, ensuring quality and revenue focus
@@ -81,6 +87,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 7. **Continuous Optimization**: AI monitors performance, optimizes strategies, and proposes improvements
 
 ## Security, Compliance & Quality
+
 - All projects and earnings are subject to automated quality checks
 - Master can review, approve, or reject any project or earning strategy
 - Compliance with financial regulations and platform policies is enforced automatically
@@ -96,6 +103,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 ## 📱 M-Pesa Integration
 
 ### Features
+
 - **Real API Integration**: Uses official Safaricom M-Pesa API
 - **STK Push**: Initiates payments directly to your phone
 - **Transaction Verification**: Automatically checks payment status
@@ -103,6 +111,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 - **Transaction Reversal**: Can reverse failed transactions
 
 ### Setup Process
+
 1. Register with Safaricom for M-Pesa API access
 2. Get your API credentials (Consumer Key, Secret, Passkey)
 3. Configure your shortcode and security credentials
@@ -110,6 +119,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 5. Switch to production when ready
 
 ### Transaction Flow
+
 1. QMOI initiates STK Push to your phone
 2. You receive M-Pesa prompt on your phone
 3. Enter your M-Pesa PIN to confirm
@@ -120,17 +130,20 @@ Access the revenue dashboard at `/qcity` (master only) to:
 ## 🛡️ Security & Compliance
 
 ### Credential Security
+
 - All M-Pesa credentials stored in `.env.production` (never in git)
 - Environment variables loaded securely at runtime
 - Master token required for all financial operations
 
 ### Transaction Security
+
 - All transactions logged with audit trails
 - Error handling and retry mechanisms
 - Automatic alerts for failed transactions
 - Transaction verification and status checking
 
 ### Access Control
+
 - Master-only access to revenue controls
 - Authentication required for all financial operations
 - Session management and token validation
@@ -138,6 +151,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 ## 📊 Monitoring & Analytics
 
 ### Dashboard Features
+
 - **Real-time Earnings**: Live updates of all revenue streams
 - **Daily Progress**: Progress towards daily targets
 - **Transaction History**: Complete audit trail of all transactions
@@ -145,6 +159,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 - **Revenue Controls**: Start/stop/transfer controls
 
 ### Analytics
+
 - Revenue stream performance
 - Daily/weekly/monthly trends
 - Success rates and conversion metrics
@@ -154,12 +169,14 @@ Access the revenue dashboard at `/qcity` (master only) to:
 ## 🔧 API Endpoints
 
 ### Revenue Management
+
 - `GET /api/qmoi/revenue` - Get revenue status and streams
 - `GET /api/qmoi/revenue?action=status` - Detailed status
 - `GET /api/qmoi/revenue?action=transactions` - Transaction history
 - `POST /api/qmoi/revenue` - Control revenue engine
 
 ### M-Pesa Integration
+
 - `POST /api/mpesa/callback` - Handle payment confirmations
 - `POST /api/mpesa/timeout` - Handle timeouts
 - `POST /api/mpesa/result` - Handle results
@@ -169,17 +186,20 @@ Access the revenue dashboard at `/qcity` (master only) to:
 ### Common Issues
 
 #### M-Pesa API Errors
+
 - **Invalid Credentials**: Check your API credentials in `.env.production`
 - **Network Issues**: Verify internet connectivity and API endpoints
 - **Callback Failures**: Ensure callback URLs are accessible
 - **Transaction Failures**: Check phone number format and balance
 
 #### Revenue Engine Issues
+
 - **Engine Not Starting**: Check environment variables and dependencies
 - **No Revenue Generated**: Verify all streams are active
 - **Transfer Failures**: Check M-Pesa configuration and balance
 
 #### Dashboard Issues
+
 - **Authentication Errors**: Verify master token is correct
 - **Data Not Loading**: Check API endpoints and network connectivity
 - **Real-time Updates**: Ensure auto-refresh is enabled
@@ -196,6 +216,7 @@ npm run revenue:start
 ### Log Files
 
 Check logs for detailed information:
+
 - Revenue engine logs: `logs/revenue-engine.log`
 - M-Pesa transaction logs: `logs/mpesa-transactions.log`
 - Error logs: `logs/error.log`
@@ -203,12 +224,14 @@ Check logs for detailed information:
 ## 📈 Performance Optimization
 
 ### Revenue Maximization
+
 - Monitor and optimize underperforming streams
 - Adjust daily targets based on performance
 - Implement A/B testing for different strategies
 - Scale successful revenue streams
 
 ### System Optimization
+
 - Monitor system resources and performance
 - Optimize database queries and caching
 - Implement rate limiting for API calls
@@ -217,6 +240,7 @@ Check logs for detailed information:
 ## 🔮 Future Enhancements
 
 ### Planned Features
+
 - **Multi-Currency Support**: USD, EUR, GBP transactions
 - **Advanced Analytics**: Machine learning for revenue optimization
 - **Mobile App**: Native mobile app for monitoring
@@ -224,6 +248,7 @@ Check logs for detailed information:
 - **Advanced Trading**: More sophisticated trading algorithms
 
 ### Scalability
+
 - **Microservices Architecture**: Distributed revenue streams
 - **Load Balancing**: Handle increased transaction volume
 - **Database Optimization**: Improved performance and reliability
@@ -242,12 +267,14 @@ For issues and questions:
 ## 🔄 Updates & Maintenance
 
 ### Regular Maintenance
+
 - Monitor system health and performance
 - Update dependencies and security patches
 - Backup configuration and transaction data
 - Review and optimize revenue strategies
 
 ### Version Updates
+
 - Follow semantic versioning
 - Test updates in staging environment
 - Maintain backward compatibility
@@ -255,4 +282,4 @@ For issues and questions:
 
 ---
 
-*QMOI Revenue Engine: Automated, high-quality, high-revenue, and always above Ksh 200,000 per day.* 
+_QMOI Revenue Engine: Automated, high-quality, high-revenue, and always above Ksh 200,000 per day._

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  BarChart, 
-  LineChart, 
-  PieChart, 
-  TrendingUp, 
-  DollarSign, 
+import React, { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  BarChart,
+  LineChart,
+  PieChart,
+  TrendingUp,
+  DollarSign,
   Activity,
   Users,
   Globe,
@@ -17,8 +17,8 @@ import {
   Download,
   RefreshCw,
   Eye,
-  EyeOff
-} from 'lucide-react';
+  EyeOff,
+} from "lucide-react";
 
 interface RevenueData {
   current: number;
@@ -99,12 +99,14 @@ interface DashboardData {
 }
 
 const QMOIRevenueDashboard: React.FC = () => {
-  const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
+  const [dashboardData, setDashboardData] = useState<DashboardData | null>(
+    null,
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [masterMode, setMasterMode] = useState(false);
   const [showSensitiveData, setShowSensitiveData] = useState(false);
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState("overview");
 
   useEffect(() => {
     fetchDashboardData();
@@ -115,21 +117,21 @@ const QMOIRevenueDashboard: React.FC = () => {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/qmoi/revenue-dashboard', {
+      const response = await fetch("/api/qmoi/revenue-dashboard", {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('qmoi-master-token')}`
-        }
+          Authorization: `Bearer ${localStorage.getItem("qmoi-master-token")}`,
+        },
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch dashboard data');
+        throw new Error("Failed to fetch dashboard data");
       }
 
       const data = await response.json();
       setDashboardData(data);
       setError(null);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unknown error');
+      setError(err instanceof Error ? err.message : "Unknown error");
     } finally {
       setLoading(false);
     }
@@ -137,13 +139,13 @@ const QMOIRevenueDashboard: React.FC = () => {
 
   const enableMasterMode = async () => {
     try {
-      const response = await fetch('/api/qmoi/master-mode', {
-        method: 'POST',
+      const response = await fetch("/api/qmoi/master-mode", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('qmoi-master-token')}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("qmoi-master-token")}`,
         },
-        body: JSON.stringify({ enabled: true })
+        body: JSON.stringify({ enabled: true }),
       });
 
       if (response.ok) {
@@ -151,41 +153,41 @@ const QMOIRevenueDashboard: React.FC = () => {
         fetchDashboardData();
       }
     } catch (err) {
-      console.error('Failed to enable master mode:', err);
+      console.error("Failed to enable master mode:", err);
     }
   };
 
   const exportDashboardData = async () => {
     try {
-      const response = await fetch('/api/qmoi/revenue-dashboard/export', {
+      const response = await fetch("/api/qmoi/revenue-dashboard/export", {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('qmoi-master-token')}`
-        }
+          Authorization: `Bearer ${localStorage.getItem("qmoi-master-token")}`,
+        },
       });
 
       if (response.ok) {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
+        const a = document.createElement("a");
         a.href = url;
         a.download = `qmoi-revenue-dashboard-${new Date().toISOString()}.json`;
         a.click();
         window.URL.revokeObjectURL(url);
       }
     } catch (err) {
-      console.error('Failed to export dashboard data:', err);
+      console.error("Failed to export dashboard data:", err);
     }
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-KE', {
-      style: 'currency',
-      currency: 'KES'
+    return new Intl.NumberFormat("en-KE", {
+      style: "currency",
+      currency: "KES",
     }).format(amount);
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleString('en-KE');
+    return new Date(dateString).toLocaleString("en-KE");
   };
 
   if (!masterMode) {
@@ -200,7 +202,7 @@ const QMOIRevenueDashboard: React.FC = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-4">
-              This dashboard contains sensitive revenue and activity data. 
+              This dashboard contains sensitive revenue and activity data.
               Master mode is required to access this information.
             </p>
             <Button onClick={enableMasterMode} className="w-full">
@@ -265,8 +267,12 @@ const QMOIRevenueDashboard: React.FC = () => {
             size="sm"
             onClick={() => setShowSensitiveData(!showSensitiveData)}
           >
-            {showSensitiveData ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-            {showSensitiveData ? 'Hide' : 'Show'} Sensitive Data
+            {showSensitiveData ? (
+              <EyeOff className="h-4 w-4" />
+            ) : (
+              <Eye className="h-4 w-4" />
+            )}
+            {showSensitiveData ? "Hide" : "Show"} Sensitive Data
           </Button>
           <Button variant="outline" size="sm" onClick={exportDashboardData}>
             <Download className="h-4 w-4 mr-2" />
@@ -355,11 +361,15 @@ const QMOIRevenueDashboard: React.FC = () => {
                     .sort((a, b) => b.current - a.current)
                     .slice(0, 5)
                     .map((stream) => (
-                      <div key={stream.id} className="flex items-center justify-between">
+                      <div
+                        key={stream.id}
+                        className="flex items-center justify-between"
+                      >
                         <div>
                           <p className="font-medium">{stream.name}</p>
                           <p className="text-sm text-muted-foreground">
-                            {formatCurrency(stream.current)} / {formatCurrency(stream.target)}
+                            {formatCurrency(stream.current)} /{" "}
+                            {formatCurrency(stream.target)}
                           </p>
                         </div>
                         <Badge variant="secondary">
@@ -393,15 +403,19 @@ const QMOIRevenueDashboard: React.FC = () => {
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
                         <span>Current:</span>
-                        <span className="font-medium">{formatCurrency(stream.current)}</span>
+                        <span className="font-medium">
+                          {formatCurrency(stream.current)}
+                        </span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span>Target:</span>
-                        <span className="font-medium">{formatCurrency(stream.target)}</span>
+                        <span className="font-medium">
+                          {formatCurrency(stream.target)}
+                        </span>
                       </div>
-                      <Progress 
-                        value={(stream.current / stream.target) * 100} 
-                        className="h-2" 
+                      <Progress
+                        value={(stream.current / stream.target) * 100}
+                        className="h-2"
                       />
                     </div>
                   </Card>
@@ -423,7 +437,10 @@ const QMOIRevenueDashboard: React.FC = () => {
             <CardContent>
               <div className="space-y-4">
                 {dashboardData.activities.recent.map((activity) => (
-                  <div key={activity.id} className="flex items-center justify-between p-3 border rounded-lg">
+                  <div
+                    key={activity.id}
+                    className="flex items-center justify-between p-3 border rounded-lg"
+                  >
                     <div className="flex items-center gap-3">
                       <Badge variant="outline">{activity.type}</Badge>
                       <div>
@@ -459,7 +476,10 @@ const QMOIRevenueDashboard: React.FC = () => {
               <CardContent>
                 <div className="space-y-3">
                   {dashboardData.platforms.active.map((platform) => (
-                    <div key={platform.id} className="flex items-center justify-between p-3 border rounded-lg">
+                    <div
+                      key={platform.id}
+                      className="flex items-center justify-between p-3 border rounded-lg"
+                    >
                       <div>
                         <p className="font-medium">{platform.name}</p>
                         <p className="text-sm text-muted-foreground">
@@ -488,10 +508,17 @@ const QMOIRevenueDashboard: React.FC = () => {
               <CardContent>
                 <div className="space-y-3">
                   {dashboardData.platforms.accounts
-                    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+                    .sort(
+                      (a, b) =>
+                        new Date(b.createdAt).getTime() -
+                        new Date(a.createdAt).getTime(),
+                    )
                     .slice(0, 10)
                     .map((account) => (
-                      <div key={account.id} className="flex items-center justify-between p-3 border rounded-lg">
+                      <div
+                        key={account.id}
+                        className="flex items-center justify-between p-3 border rounded-lg"
+                      >
                         <div>
                           <p className="font-medium">{account.username}</p>
                           <p className="text-sm text-muted-foreground">
@@ -499,7 +526,13 @@ const QMOIRevenueDashboard: React.FC = () => {
                           </p>
                         </div>
                         <div className="text-right">
-                          <Badge variant={account.status === 'active' ? 'default' : 'secondary'}>
+                          <Badge
+                            variant={
+                              account.status === "active"
+                                ? "default"
+                                : "secondary"
+                            }
+                          >
                             {account.status}
                           </Badge>
                           {showSensitiveData && (
@@ -520,4 +553,4 @@ const QMOIRevenueDashboard: React.FC = () => {
   );
 };
 
-export default QMOIRevenueDashboard; 
+export default QMOIRevenueDashboard;

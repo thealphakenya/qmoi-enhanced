@@ -6,27 +6,31 @@ Self-Hosted · Self-Healing · Ever-Evolving · Self-Developer
 QCity Runners Engine powers QMOI’s entire CI/CD and automation framework. Designed to auto-fix, evolve, and optimize itself, it ensures every build, download, and service stays error-free, secure, and always-on—across any platform or cloud.
 
 🚀 Key Features
-Feature	Description
-🔧 Self-Fixing Engine	Auto-detects, auto-fixes, and restarts on failure
-🧠 Ever-Evolving	Learns from past errors, improves CI workflows automatically
-💻 Universal Deployment	Works on Colab, DagsHub, QCity, local, or cloud environments
-👨‍💻 Self-Developer	Evolves its own automation, CI/CD scripts, and code base
-📡 Live Monitoring	Dashboard shows runner health, history, and active jobs
-🔐 Secure Execution	Sandboxed runners with token revocation & log auditing
-🛠 Autotests + Health Checks	All runners continuously tested & logged in QCity
-🌐 Ngrok Integration	Starts and syncs tunnels, auto-updates links (see QMOINGROK.md)
-🌍 Platform Stats	Visual status for GitHub, GitLab, Vercel, GCP, HuggingFace, etc.
-🔒 Master-Only Control	Logs and UI controls restricted to admin/master
+Feature Description
+🔧 Self-Fixing Engine Auto-detects, auto-fixes, and restarts on failure
+🧠 Ever-Evolving Learns from past errors, improves CI workflows automatically
+💻 Universal Deployment Works on Colab, DagsHub, QCity, local, or cloud environments
+👨‍💻 Self-Developer Evolves its own automation, CI/CD scripts, and code base
+📡 Live Monitoring Dashboard shows runner health, history, and active jobs
+🔐 Secure Execution Sandboxed runners with token revocation & log auditing
+🛠 Autotests + Health Checks All runners continuously tested & logged in QCity
+🌐 Ngrok Integration Starts and syncs tunnels, auto-updates links (see QMOINGROK.md)
+🌍 Platform Stats Visual status for GitHub, GitLab, Vercel, GCP, HuggingFace, etc.
+🔒 Master-Only Control Logs and UI controls restricted to admin/master
 
 🏗️ Setup Instructions
 bash
 Copy
 Edit
+
 # 1. Navigate to GitHub > Settings > Actions > Runners > New Self-Hosted Runner
+
 # 2. Follow OS-specific setup steps
+
 # 3. Start the runner:
-./run.sh       # For Linux/macOS
-.\run.cmd      # For Windows
+
+./run.sh # For Linux/macOS
+.\run.cmd # For Windows
 QMOI will auto-detect, log, monitor, and evolve the runner without additional config.
 
 🔄 Automation & Self-Healing
@@ -111,12 +115,12 @@ Auto restarts if Colab or CLI is interrupted
 Feeds into dashboard runner widget for live monitoring
 
 🔌 Integrations & Enhancements
-Integration	Feature
-QMOIAUTOMAKENEW.md	Autoclone + scaffold new runner projects
-QMOIBROWSER.md	Tests and fixes all runner links from browser layer
-QMOIQCITYAUTOMATIC.md	Auto-verify .md docs & update
-QMOINGROK.md	Tunnel fallback + link sync
-.gitlab-ci.yml	Pre-deploy tunnel/DNS health checks
+Integration Feature
+QMOIAUTOMAKENEW.md Autoclone + scaffold new runner projects
+QMOIBROWSER.md Tests and fixes all runner links from browser layer
+QMOIQCITYAUTOMATIC.md Auto-verify .md docs & update
+QMOINGROK.md Tunnel fallback + link sync
+.gitlab-ci.yml Pre-deploy tunnel/DNS health checks
 
 💰 Revenue Contribution Logic
 Each runner contributes to QMOI’s minimum daily revenue target
@@ -126,17 +130,16 @@ Income stats per runner/job visible in money-making UI panel
 Prioritizes profitable jobs & auto-scales compute offload accordingly
 
 ✅ Summary
-Capability	Status
-Continuous Runner Monitoring	✅
-DNS & Tunnel Auto-Repair	✅
-Self-Developer Enhancements	✅
-Ngrok Link Injection	✅
-Cloud & Local Compatibility	✅
-Real-Time .md File Verifier	✅
-Zero-Rated Fallback Support	✅
-Enhanced Platform Integration	✅
-Master-Only Dashboard Controls	✅
-Auto-Revenue Contribution	✅
+Capability Status
+Continuous Runner Monitoring ✅
+DNS & Tunnel Auto-Repair ✅
+Self-Developer Enhancements ✅
+Ngrok Link Injection ✅
+Cloud & Local Compatibility ✅
+Real-Time .md File Verifier ✅
+Zero-Rated Fallback Support ✅
+Enhanced Platform Integration ✅
+Master-Only Dashboard Controls ✅
+Auto-Revenue Contribution ✅
 
 🧠 QCity Runners Engine is the AI backbone of QMOI’s automation. Self-hosted or cloud-offloaded, it guarantees uptime, correctness, and evolution—autonomously. See QMOINGROK.md and QMOIDNS.md for full link sync/fallback system.
-

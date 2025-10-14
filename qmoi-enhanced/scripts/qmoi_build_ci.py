@@ -4,6 +4,7 @@ import subprocess
 import json
 from qmoi_activity_logger import log_activity
 
+
 def run_ci_pipeline():
     log_activity("CI Pipeline Started", {})
 
@@ -13,7 +14,9 @@ def run_ci_pipeline():
 
         # Step 2: Commit & Push built apps and log
         subprocess.run(["git", "add", "Qmoi_apps/", "logs/"], check=True)
-        subprocess.run(["git", "commit", "-m", "Auto: Built and logged QMOI AI apps"], check=True)
+        subprocess.run(
+            ["git", "commit", "-m", "Auto: Built and logged QMOI AI apps"], check=True
+        )
         subprocess.run(["git", "push", "origin", "main"], check=True)
         log_activity("Build and Push Successful", {})
 
@@ -24,6 +27,7 @@ def run_ci_pipeline():
     except subprocess.CalledProcessError as e:
         log_activity("CI pipeline failed", {"error": str(e)})
 
+
 def deploy_via_ngrok():
     zip_path = os.path.join("Qmoi_apps", "qmoi_ai_all_apps.zip")
     if not os.path.exists(zip_path):
@@ -32,10 +36,14 @@ def deploy_via_ngrok():
 
     try:
         # Start local HTTP server on port 9090
-        subprocess.Popen(["python", "-m", "http.server", "9090", "--directory", "Qmoi_apps"], cwd=os.getcwd())
+        subprocess.Popen(
+            ["python", "-m", "http.server", "9090", "--directory", "Qmoi_apps"],
+            cwd=os.getcwd(),
+        )
         subprocess.run(["ngrok", "http", "9090"], check=True)
     except Exception as e:
         log_activity("Ngrok deploy failed", {"error": str(e)})
+
 
 def deploy_status_dashboard():
     try:
@@ -51,5 +59,6 @@ def deploy_status_dashboard():
     except Exception as e:
         log_activity("Dashboard deploy failed", {"error": str(e)})
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run_ci_pipeline()

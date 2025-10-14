@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
-import { Slider } from './ui/slider';
-import { Label } from './ui/label';
-import { VoiceRecognitionService } from '../src/services/VoiceRecognitionService';
+import React, { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import { Slider } from "./ui/slider";
+import { Label } from "./ui/label";
+import { VoiceRecognitionService } from "../src/services/VoiceRecognitionService";
 
 interface HumanVoice {
   id: string;
   name: string;
-  gender: 'male' | 'female' | 'neutral';
-  age: 'young' | 'adult' | 'mature';
+  gender: "male" | "female" | "neutral";
+  age: "young" | "adult" | "mature";
   accent: string;
   personality: string;
   pitch: number;
@@ -29,17 +29,17 @@ interface VoiceSelectionPanelProps {
 export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
   isOpen,
   onClose,
-  onVoiceSelected
+  onVoiceSelected,
 }) => {
   const [voices, setVoices] = useState<HumanVoice[]>([]);
   const [selectedVoice, setSelectedVoice] = useState<HumanVoice | null>(null);
   const [voiceSettings, setVoiceSettings] = useState({
     pitch: 1.0,
     rate: 1.0,
-    volume: 1.0
+    volume: 1.0,
   });
   const [preferredNames, setPreferredNames] = useState<string[]>([]);
-  const [newName, setNewName] = useState('');
+  const [newName, setNewName] = useState("");
   const [isFirstTime, setIsFirstTime] = useState(false);
   const [voiceService] = useState(() => VoiceRecognitionService.getInstance());
 
@@ -53,14 +53,14 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
   const loadVoices = () => {
     const availableVoices = voiceService.getAvailableVoices();
     setVoices(availableVoices);
-    
+
     const currentVoice = voiceService.getCurrentVoice();
     if (currentVoice) {
       setSelectedVoice(currentVoice);
       setVoiceSettings({
         pitch: currentVoice.pitch,
         rate: currentVoice.rate,
-        volume: currentVoice.volume
+        volume: currentVoice.volume,
       });
     }
   };
@@ -68,9 +68,9 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
   const loadUserSettings = () => {
     const names = voiceService.getPreferredNames();
     setPreferredNames(names);
-    
+
     // Check if this is first time setup
-    const hasUsedVoice = localStorage.getItem('voiceFirstTimeSetup');
+    const hasUsedVoice = localStorage.getItem("voiceFirstTimeSetup");
     setIsFirstTime(!hasUsedVoice);
   };
 
@@ -79,9 +79,9 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
     setVoiceSettings({
       pitch: voice.pitch,
       rate: voice.rate,
-      volume: voice.volume
+      volume: voice.volume,
     });
-    
+
     // Test the voice
     voiceService.speak(`Hello! I'm ${voice.name}. How can I help you today?`);
   };
@@ -90,12 +90,12 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
     if (selectedVoice) {
       voiceService.selectVoice(selectedVoice.id);
       voiceService.updateVoiceSettings(voiceSettings);
-      
+
       // Add preferred names
-      preferredNames.forEach(name => {
+      preferredNames.forEach((name) => {
         voiceService.addPreferredName(name);
       });
-      
+
       onVoiceSelected(selectedVoice);
       onClose();
     }
@@ -104,20 +104,24 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
   const handleAddName = () => {
     if (newName.trim() && !preferredNames.includes(newName.trim())) {
       setPreferredNames([...preferredNames, newName.trim()]);
-      setNewName('');
+      setNewName("");
     }
   };
 
   const handleRemoveName = (name: string) => {
-    setPreferredNames(preferredNames.filter(n => n !== name));
+    setPreferredNames(preferredNames.filter((n) => n !== name));
   };
 
   const getGenderIcon = (gender: string) => {
     switch (gender) {
-      case 'male': return '👨';
-      case 'female': return '👩';
-      case 'neutral': return '👤';
-      default: return '👤';
+      case "male":
+        return "👨";
+      case "female":
+        return "👩";
+      case "neutral":
+        return "👤";
+      default:
+        return "👤";
     }
   };
 
@@ -128,15 +132,17 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
       <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            🎤 {isFirstTime ? 'Choose Your AI Voice Assistant' : 'Voice Settings'}
+            🎤{" "}
+            {isFirstTime ? "Choose Your AI Voice Assistant" : "Voice Settings"}
           </CardTitle>
           {isFirstTime && (
             <p className="text-muted-foreground">
-              Welcome! Please select your preferred AI voice assistant. You can change this anytime in settings.
+              Welcome! Please select your preferred AI voice assistant. You can
+              change this anytime in settings.
             </p>
           )}
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           {/* Voice Selection */}
           <div>
@@ -147,8 +153,8 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                   key={voice.id}
                   className={`cursor-pointer transition-all ${
                     selectedVoice?.id === voice.id
-                      ? 'ring-2 ring-primary bg-primary/5'
-                      : 'hover:bg-muted/50'
+                      ? "ring-2 ring-primary bg-primary/5"
+                      : "hover:bg-muted/50"
                   }`}
                   onClick={() => handleVoiceSelect(voice)}
                 >
@@ -159,10 +165,12 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                       </div>
                       <div>
                         <h4 className="font-semibold">{voice.name}</h4>
-                        <p className="text-sm text-muted-foreground">{voice.accent}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {voice.accent}
+                        </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-2 mb-2">
                       <Badge variant="secondary">{voice.age}</Badge>
                       <Badge variant="outline">{voice.gender}</Badge>
@@ -170,11 +178,11 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                         <Badge variant="default">Default</Badge>
                       )}
                     </div>
-                    
+
                     <p className="text-sm text-muted-foreground mb-3">
                       {voice.personality}
                     </p>
-                    
+
                     <div className="space-y-2">
                       <div className="flex justify-between text-xs">
                         <span>Pitch: {voice.pitch}</span>
@@ -196,7 +204,9 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                   <Label>Pitch</Label>
                   <Slider
                     value={[voiceSettings.pitch]}
-                    onValueChange={([value]) => setVoiceSettings({ ...voiceSettings, pitch: value })}
+                    onValueChange={([value]) =>
+                      setVoiceSettings({ ...voiceSettings, pitch: value })
+                    }
                     min={0.5}
                     max={2.0}
                     step={0.1}
@@ -207,12 +217,14 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                     <span>Higher</span>
                   </div>
                 </div>
-                
+
                 <div>
                   <Label>Speed</Label>
                   <Slider
                     value={[voiceSettings.rate]}
-                    onValueChange={([value]) => setVoiceSettings({ ...voiceSettings, rate: value })}
+                    onValueChange={([value]) =>
+                      setVoiceSettings({ ...voiceSettings, rate: value })
+                    }
                     min={0.5}
                     max={2.0}
                     step={0.1}
@@ -223,12 +235,14 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                     <span>Faster</span>
                   </div>
                 </div>
-                
+
                 <div>
                   <Label>Volume</Label>
                   <Slider
                     value={[voiceSettings.volume]}
-                    onValueChange={([value]) => setVoiceSettings({ ...voiceSettings, volume: value })}
+                    onValueChange={([value]) =>
+                      setVoiceSettings({ ...voiceSettings, volume: value })
+                    }
                     min={0.0}
                     max={1.0}
                     step={0.1}
@@ -247,9 +261,10 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
           <div>
             <h3 className="text-lg font-semibold mb-4">Preferred Names</h3>
             <p className="text-sm text-muted-foreground mb-3">
-              Add names you'd like the AI to call you by. The AI will randomly use these names when addressing you.
+              Add names you'd like the AI to call you by. The AI will randomly
+              use these names when addressing you.
             </p>
-            
+
             <div className="flex gap-2 mb-3">
               <input
                 type="text"
@@ -257,16 +272,20 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                 onChange={(e) => setNewName(e.target.value)}
                 placeholder="Enter a name..."
                 className="flex-1 px-3 py-2 border rounded-md"
-                onKeyPress={(e) => e.key === 'Enter' && handleAddName()}
+                onKeyPress={(e) => e.key === "Enter" && handleAddName()}
               />
               <Button onClick={handleAddName} size="sm">
                 Add
               </Button>
             </div>
-            
+
             <div className="flex flex-wrap gap-2">
               {preferredNames.map((name) => (
-                <Badge key={name} variant="secondary" className="cursor-pointer">
+                <Badge
+                  key={name}
+                  variant="secondary"
+                  className="cursor-pointer"
+                >
                   {name}
                   <button
                     onClick={() => handleRemoveName(name)}
@@ -285,11 +304,11 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
               Cancel
             </Button>
             <Button onClick={handleConfirmSelection} disabled={!selectedVoice}>
-              {isFirstTime ? 'Start Using Voice Assistant' : 'Save Settings'}
+              {isFirstTime ? "Start Using Voice Assistant" : "Save Settings"}
             </Button>
           </div>
         </CardContent>
       </Card>
     </div>
   );
-}; 
+};

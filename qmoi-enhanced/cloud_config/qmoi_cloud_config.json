@@ -27,10 +27,7 @@
     },
     "cloudfront": {
       "enabled": true,
-      "domains": [
-        "qmoi.ai",
-        "qmoi.cloud"
-      ],
+      "domains": ["qmoi.ai", "qmoi.cloud"],
       "cache_behavior": {
         "default_ttl": 3600,
         "max_ttl": 86400
@@ -114,10 +111,7 @@
   "cloudflare": {
     "enabled": true,
     "zone_id": "qmoi-zone",
-    "domains": [
-      "qmoi.ai",
-      "qmoi.cloud"
-    ],
+    "domains": ["qmoi.ai", "qmoi.cloud"],
     "workers": {
       "revenue_processor": {
         "script": "revenue-processor.js",

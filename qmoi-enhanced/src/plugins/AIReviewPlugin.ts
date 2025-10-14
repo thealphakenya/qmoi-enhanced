@@ -14,7 +14,12 @@ export const AIReviewPlugin: QmoiPlugin = {
     const actions = [
       { type: "edit", file: "main.py", time: "2m ago" },
       { type: "run", file: "main.py", time: "1m ago" },
-      { type: "error", file: "main.py", time: "1m ago", message: "SyntaxError: invalid syntax" },
+      {
+        type: "error",
+        file: "main.py",
+        time: "1m ago",
+        message: "SyntaxError: invalid syntax",
+      },
     ];
     const feedback = [
       "Consider running tests after editing code.",
@@ -22,22 +27,26 @@ export const AIReviewPlugin: QmoiPlugin = {
       "Use the auto-fix feature for common errors.",
     ];
     return React.createElement(
-      'div',
+      "div",
       null,
-      React.createElement('h4', null, 'AI Review'),
+      React.createElement("h4", null, "AI Review"),
       React.createElement(
-        'ul',
+        "ul",
         null,
         actions.map((a, i) =>
-          React.createElement('li', { key: i }, `${a.type} ${a.file} (${a.time})${a.message ? ` - ${a.message}` : ''}`)
-        )
+          React.createElement(
+            "li",
+            { key: i },
+            `${a.type} ${a.file} (${a.time})${a.message ? ` - ${a.message}` : ""}`,
+          ),
+        ),
       ),
-      React.createElement('h5', null, 'AI Suggestions'),
+      React.createElement("h5", null, "AI Suggestions"),
       React.createElement(
-        'ul',
+        "ul",
         null,
-        feedback.map((f, i) => React.createElement('li', { key: i }, f))
-      )
+        feedback.map((f, i) => React.createElement("li", { key: i }, f)),
+      ),
     );
   },
-}; 
+};

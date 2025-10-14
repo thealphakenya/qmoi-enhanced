@@ -1,11 +1,13 @@
 # QMOI Hugging Face Spaces Setup & Integration Guide
 
 ## 🚀 Overview
+
 QMOI (Quantum Multi-Objective Intelligence) is fully integrated with Hugging Face Spaces, enabling advanced, always-on, self-healing, and observable AI-powered deployments. This guide covers everything from setup to advanced automation, ensuring your QMOI system is always connected, healthy, and operational in Hugging Face Spaces and GitHub.
 
 ---
 
 ## 1. Prerequisites
+
 - **Hugging Face Account** ([Sign up](https://huggingface.co/join))
 - **Hugging Face Token** ([Create token](https://huggingface.co/settings/tokens))
 - **Python 3.9+** (for Spaces)
@@ -15,6 +17,7 @@ QMOI (Quantum Multi-Objective Intelligence) is fully integrated with Hugging Fac
 ---
 
 ## 2. Environment Variables
+
 QMOI automates environment variable management for both Hugging Face and GitHub. The following variables are required:
 
 ```env
@@ -33,6 +36,7 @@ QMOI_DEBUG=false
 ```
 
 ### Automated Handling
+
 - **scripts/qmoi_env_manager.js**: Checks, auto-fills, and creates `.env` from config, `.env.example`, or safe defaults. Never fails the workflow—logs and continues.
 - **.github/workflows/qmoi-autodev.yml**: Always runs environment validation and logs status. If variables are missing, it attempts to auto-populate and never fails the workflow.
 - **config/qmoi_huggingface_config.json**: Central config for all Hugging Face and QMOI integration settings.
@@ -44,6 +48,7 @@ QMOI_DEBUG=false
 ## 3. Setup & Deployment
 
 ### A. Local Setup
+
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/your-org/QMOI.git
@@ -58,9 +63,11 @@ QMOI_DEBUG=false
    - Or manually copy `.env.template` to `.env` and fill in your values.
 
 ### B. Deploy to Hugging Face Spaces
+
 - All Hugging Face Space setup and updates are now handled exclusively by GitLab CI/CD automation.
 
 ### C. GitHub Actions Integration
+
 - **CI/CD**: `.github/workflows/qmoi-autodev.yml` and `auto-deploy.yml` automate build, test, lint, doc verification, and Hugging Face deployment.
 - **Artifacts & Logs**: All logs and status are uploaded as artifacts and shown in the Actions summary.
 - **Environment Validation**: Always runs before deploy; never fails the workflow on env errors—logs and continues.
@@ -70,6 +77,7 @@ QMOI_DEBUG=false
 ## 4. Using QMOI in Hugging Face Spaces
 
 ### Access
+
 - Visit: `https://huggingface.co/spaces/<your-username>/qmoi-ai-system`
 - Use the multi-tab Gradio UI for:
   - 💬 Chat with QMOI
@@ -79,6 +87,7 @@ QMOI_DEBUG=false
   - ⚙️ Device Optimization
 
 ### Features
+
 - **Self-healing**: Auto-repairs and redeploys on failure
 - **Real-time Monitoring**: Health, logs, and status always visible
 - **Cross-platform Sync**: WhatsApp, Discord, Telegram, and more
@@ -90,16 +99,19 @@ QMOI_DEBUG=false
 ## 5. Advanced Automation & Troubleshooting
 
 ### Automated Environment Variable Handling
+
 - **Never fails**: If envs are missing, QMOI auto-fills from config, `.env.example`, or safe defaults, logs the issue, and continues.
 - **Status Logging**: See `logs/env_manager_status.json` and GitHub Actions summary for env status.
 - **Manual Fix**: Edit `.env` or update GitHub/Hugging Face secrets as needed.
 
 ### Common Issues
+
 - **Missing HF_TOKEN/HF_USERNAME**: Run `node scripts/qmoi_env_manager.js` or set in Hugging Face/GitHub secrets.
 - **Deployment Fails**: Check logs in `logs/huggingface_spaces.log` or GitHub Actions summary.
 - **WhatsApp Integration Fails**: Ensure tokens and webhook URLs are set in `.env` or config.
 
 ### Automation Scripts
+
 - `scripts/qmoi_huggingface_spaces.js`: Full-featured deployment, update, and health management for Spaces.
 - `scripts/qmoi_env_manager.js`: Automated env management for all platforms.
 - `scripts/qmoi_huggingface_backup.js`: Continuous backup and sync to Hugging Face.
@@ -108,6 +120,7 @@ QMOI_DEBUG=false
 ---
 
 ## 6. System-wide Hugging Face Integration
+
 - **QMOI is always connected**: All core, chat, monitoring, and backup services are integrated with Hugging Face Spaces.
 - **Config-driven**: All integration settings are in `config/qmoi_huggingface_config.json` and `config/qmoi_master_config.json`.
 - **Continuous Sync**: Conversation, health, and deployment status are always synced between QMOI, Hugging Face, and GitHub.
@@ -116,6 +129,7 @@ QMOI_DEBUG=false
 ---
 
 ## 7. Further Automation & Enhancement
+
 - **Add new envs**: Update `requiredEnvs` in `scripts/qmoi_env_manager.js` and `.env.template`.
 - **Enhance automation**: Extend `qmoi_huggingface_spaces.js` for new features or integrations.
 - **Monitor everything**: Use the dashboard and GitHub Actions summary for real-time health and status.
@@ -124,6 +138,7 @@ QMOI_DEBUG=false
 ---
 
 ## 8. References & Resources
+
 - [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces)
 - [QMOI-HUGGINGFACE-ENHANCEMENTS.md](QMOI-HUGGINGFACE-ENHANCEMENTS.md)
 - [config/qmoi_huggingface_config.json](config/qmoi_huggingface_config.json)
@@ -162,6 +177,7 @@ The QMOI system now includes full CI/CD automation for Hugging Face integration:
   - All results, logs, and health checks are visible in the GitHub Actions dashboard.
 
 See also:
+
 - [scripts/qmoi_huggingface_spaces.js](./scripts/qmoi_huggingface_spaces.js)
 - [scripts/hf_model_sync.py](./scripts/hf_model_sync.py)
 - [scripts/test_hf_space_ui.py](./scripts/test_hf_space_ui.py)
@@ -170,7 +186,9 @@ See also:
 ---
 
 ## 🛡️ Always-On, Always-Healing, Always-Connected
+
 QMOI ensures your Hugging Face Spaces deployment is:
+
 - **Always running**
 - **Always fixing itself**
 - **Always pushing updates**
@@ -178,7 +196,7 @@ QMOI ensures your Hugging Face Spaces deployment is:
 - **Always documented and verifiable**
 - **Always connected to Hugging Face, GitHub, and all supported platforms**
 
-> For any issues, check logs, the dashboard, or run the automation scripts. QMOI will attempt to auto-fix and notify you of any manual steps needed. 
+> For any issues, check logs, the dashboard, or run the automation scripts. QMOI will attempt to auto-fix and notify you of any manual steps needed.
 
 ---
 
@@ -205,10 +223,12 @@ QMOI Hugging Face Spaces now includes:
   - QMOI Spaces is robust and self-healing—even if errors occur, the system attempts auto-repair and exposes all status in `/status` and logs.
 
 **Usage:**
+
 - To check live health/status: `GET /status` on your deployed Space.
 - To trigger optimization or error fixing: interact with the Space or restart as needed (auto-triggers on error).
 
 **Relevant scripts:**
+
 - `huggingface_space/app.py` (core logic)
 - `scripts/qmoi_huggingface_spaces.js` (deployment/automation)
 
@@ -235,4 +255,4 @@ QMOI now includes:
 - **Development Safe Mode:**
   - In development, QMOI never destabilizes the device and always logs before taking action.
 
---- 
+---

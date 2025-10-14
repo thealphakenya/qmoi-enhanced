@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface TradingStatus {
   isActive: boolean;
   lastTrade: {
     timestamp: string;
-    type: 'buy' | 'sell';
+    type: "buy" | "sell";
     amount: number;
     price: number;
     profit?: number;
@@ -17,7 +17,7 @@ interface TradingStatus {
   };
   settings: {
     autoTrade: boolean;
-    riskLevel: 'low' | 'medium' | 'high';
+    riskLevel: "low" | "medium" | "high";
     maxTradeAmount: number;
     stopLoss: number;
     takeProfit: number;
@@ -32,26 +32,26 @@ export function useTradingAutomation() {
       totalTrades: 0,
       successRate: 0,
       totalProfit: 0,
-      averageProfit: 0
+      averageProfit: 0,
     },
     settings: {
       autoTrade: false,
-      riskLevel: 'medium',
+      riskLevel: "medium",
       maxTradeAmount: 100,
       stopLoss: 5,
-      takeProfit: 10
-    }
+      takeProfit: 10,
+    },
   });
 
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await fetch('/api/trading/status');
-        if (!res.ok) throw new Error('Failed to fetch trading status');
+        const res = await fetch("/api/trading/status");
+        if (!res.ok) throw new Error("Failed to fetch trading status");
         const data = await res.json();
         setStatus(data);
       } catch (error) {
-        console.error('Failed to fetch trading status:', error);
+        console.error("Failed to fetch trading status:", error);
       }
     };
 
@@ -60,39 +60,44 @@ export function useTradingAutomation() {
     return () => clearInterval(interval);
   }, []);
 
-  const updateSettings = async (newSettings: Partial<TradingStatus['settings']>) => {
+  const updateSettings = async (
+    newSettings: Partial<TradingStatus["settings"]>,
+  ) => {
     try {
-      const res = await fetch('/api/trading/settings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newSettings)
+      const res = await fetch("/api/trading/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newSettings),
       });
-      if (!res.ok) throw new Error('Failed to update trading settings');
+      if (!res.ok) throw new Error("Failed to update trading settings");
       const data = await res.json();
-      setStatus(prev => ({ ...prev, settings: { ...prev.settings, ...data } }));
+      setStatus((prev) => ({
+        ...prev,
+        settings: { ...prev.settings, ...data },
+      }));
     } catch (error) {
-      console.error('Failed to update trading settings:', error);
+      console.error("Failed to update trading settings:", error);
     }
   };
 
   const toggleAutoTrade = async () => {
     try {
-      const res = await fetch('/api/trading/toggle', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ enable: !status.isActive })
+      const res = await fetch("/api/trading/toggle", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ enable: !status.isActive }),
       });
-      if (!res.ok) throw new Error('Failed to toggle auto-trading');
+      if (!res.ok) throw new Error("Failed to toggle auto-trading");
       const data = await res.json();
-      setStatus(prev => ({ ...prev, isActive: data.isActive }));
+      setStatus((prev) => ({ ...prev, isActive: data.isActive }));
     } catch (error) {
-      console.error('Failed to toggle auto-trading:', error);
+      console.error("Failed to toggle auto-trading:", error);
     }
   };
 
   return {
     status,
     updateSettings,
-    toggleAutoTrade
+    toggleAutoTrade,
   };
 }

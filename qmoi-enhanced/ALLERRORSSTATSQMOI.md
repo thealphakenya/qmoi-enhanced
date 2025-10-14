@@ -25,5 +25,6 @@
 - Apple Accessory: See `Qmoi_apps/apple-accessory/error.log` for latest install/build/test errors.
 
 ## Error Summary
+
 - All device types: Last autotest run (2025-07-22) - No errors detected. All install/build/test cycles passed.
 - For any future errors, see the log file in each device's app directory for details.

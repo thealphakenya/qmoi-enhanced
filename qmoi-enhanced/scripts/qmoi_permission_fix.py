@@ -10,8 +10,8 @@ from pathlib import Path
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[logging.StreamHandler()]
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[logging.StreamHandler()],
 )
 logger = logging.getLogger("qmoi_permission_fix")
 
@@ -19,15 +19,16 @@ SCRIPTS_DIR = Path(__file__).parent
 
 # List of important QMOI system files to check
 QMOI_FILES = [
-    'qmoi-system-controller.py',
-    'qmoi-enhanced-controller.py',
-    'qmoi_enhanced_ai.py',
-    'qmoi_model_enhancer.py',
-    'qmoi_earning_daemon.py',
-    'qmoi_earning_enhanced.py',
-    'qmoi_self_evolve.py',
-    'qmoi_auto_evolution.py',
+    "qmoi-system-controller.py",
+    "qmoi-enhanced-controller.py",
+    "qmoi_enhanced_ai.py",
+    "qmoi_model_enhancer.py",
+    "qmoi_earning_daemon.py",
+    "qmoi_earning_enhanced.py",
+    "qmoi_self_evolve.py",
+    "qmoi_auto_evolution.py",
 ]
+
 
 def check_and_fix_permissions(file_path):
     abs_path = SCRIPTS_DIR / file_path
@@ -47,9 +48,11 @@ def check_and_fix_permissions(file_path):
     else:
         logger.info(f"{abs_path} is already writable.")
 
+
 def main():
     for file in QMOI_FILES:
         check_and_fix_permissions(file)
 
+
 if __name__ == "__main__":
-    main() 
+    main()

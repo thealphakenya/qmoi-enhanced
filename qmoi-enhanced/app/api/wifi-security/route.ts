@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 interface Network {
   ssid: string;
@@ -17,8 +17,8 @@ interface IoTRisk {
 
 interface SecurityThreat {
   id: string;
-  type: 'intrusion' | 'weak-password' | 'rogue-ap' | 'deauth-attack';
-  severity: 'low' | 'medium' | 'high' | 'critical';
+  type: "intrusion" | "weak-password" | "rogue-ap" | "deauth-attack";
+  severity: "low" | "medium" | "high" | "critical";
   description: string;
   timestamp: string;
   source?: string;
@@ -40,8 +40,8 @@ interface SecurityStatus {
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const status = searchParams.get('status');
-    const threats = searchParams.get('threats');
+    const status = searchParams.get("status");
+    const threats = searchParams.get("threats");
 
     if (status) {
       // Mock security status - replace with actual implementation
@@ -53,8 +53,8 @@ export async function GET(request: NextRequest) {
           totalScans: 150,
           threatsDetected: 3,
           blockedAttempts: 12,
-          lastUpdate: new Date().toISOString()
-        }
+          lastUpdate: new Date().toISOString(),
+        },
       };
 
       return NextResponse.json(mockStatus);
@@ -64,45 +64,45 @@ export async function GET(request: NextRequest) {
       // Mock security threats - replace with actual implementation
       const mockThreats: SecurityThreat[] = [
         {
-          id: 'T001',
-          type: 'deauth-attack',
-          severity: 'high',
-          description: 'Multiple deauthentication packets detected',
+          id: "T001",
+          type: "deauth-attack",
+          severity: "high",
+          description: "Multiple deauthentication packets detected",
           timestamp: new Date(Date.now() - 1800000).toISOString(), // 30 minutes ago
-          source: '00:11:22:33:44:55',
+          source: "00:11:22:33:44:55",
           details: {
             packetCount: 150,
-            duration: '2 minutes',
-            affectedClients: 3
-          }
+            duration: "2 minutes",
+            affectedClients: 3,
+          },
         },
         {
-          id: 'T002',
-          type: 'rogue-ap',
-          severity: 'critical',
-          description: 'Rogue access point detected',
+          id: "T002",
+          type: "rogue-ap",
+          severity: "critical",
+          description: "Rogue access point detected",
           timestamp: new Date(Date.now() - 3600000).toISOString(), // 1 hour ago
-          source: '66:77:88:99:AA:BB',
+          source: "66:77:88:99:AA:BB",
           details: {
-            ssid: 'Free_WiFi',
+            ssid: "Free_WiFi",
             channel: 6,
-            signal: -75
-          }
-        }
+            signal: -75,
+          },
+        },
       ];
 
       return NextResponse.json({ threats: mockThreats });
     }
 
     return NextResponse.json(
-      { error: 'Invalid query parameter' },
-      { status: 400 }
+      { error: "Invalid query parameter" },
+      { status: 400 },
     );
   } catch (error) {
-    console.error('Error in WiFi security endpoint:', error);
+    console.error("Error in WiFi security endpoint:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Unknown error' },
-      { status: 500 }
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 },
     );
   }
 }
@@ -112,61 +112,61 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { action, settings } = body;
 
-    if (action === 'start-monitoring') {
+    if (action === "start-monitoring") {
       // Mock start monitoring - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       return NextResponse.json({
-        status: 'success',
-        message: 'Security monitoring started',
+        status: "success",
+        message: "Security monitoring started",
         settings: {
           scanInterval: 300, // 5 minutes
-          threatLevel: 'high',
-          autoBlock: true
-        }
+          threatLevel: "high",
+          autoBlock: true,
+        },
       });
     }
 
-    if (action === 'stop-monitoring') {
+    if (action === "stop-monitoring") {
       // Mock stop monitoring - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
       return NextResponse.json({
-        status: 'success',
-        message: 'Security monitoring stopped'
+        status: "success",
+        message: "Security monitoring stopped",
       });
     }
 
-    if (action === 'update-settings') {
+    if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { error: 'Settings are required' },
-          { status: 400 }
+          { error: "Settings are required" },
+          { status: 400 },
         );
       }
 
       // Mock settings update - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 800));
+      await new Promise((resolve) => setTimeout(resolve, 800));
 
       return NextResponse.json({
-        status: 'success',
-        message: 'Security settings updated',
+        status: "success",
+        message: "Security settings updated",
         settings: {
           ...settings,
-          lastUpdate: new Date().toISOString()
-        }
+          lastUpdate: new Date().toISOString(),
+        },
       });
     }
 
     return NextResponse.json(
-      { error: 'Invalid action specified' },
-      { status: 400 }
+      { error: "Invalid action specified" },
+      { status: 400 },
     );
   } catch (error) {
-    console.error('Error in WiFi security action endpoint:', error);
+    console.error("Error in WiFi security action endpoint:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Unknown error' },
-      { status: 500 }
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 },
     );
   }
-} 
+}

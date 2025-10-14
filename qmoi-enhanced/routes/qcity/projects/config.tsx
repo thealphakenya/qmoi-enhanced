@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { useProjects } from '../../../hooks/useProjects';
-import { ProjectConfig } from '../../../types/projects';
+import React, { useState } from "react";
+import { useProjects } from "../../../hooks/useProjects";
+import { ProjectConfig } from "../../../types/projects";
 
 export default function ProjectConfigPage() {
   const { config, updateConfig } = useProjects();
   const [formData, setFormData] = useState<Partial<ProjectConfig>>(
     config || {
       enabled: true,
-      defaultPriority: 'medium',
+      defaultPriority: "medium",
       autoAssign: false,
       notificationSettings: {
         onTaskAssigned: true,
@@ -18,7 +18,7 @@ export default function ProjectConfigPage() {
       defaultTags: [],
       maxTeamSize: 10,
       maxConcurrentProjects: 5,
-    }
+    },
   );
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,17 +26,18 @@ export default function ProjectConfigPage() {
     try {
       await updateConfig(formData);
     } catch (error) {
-      console.error('Failed to update project configuration:', error);
+      console.error("Failed to update project configuration:", error);
     }
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value, type } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+      [name]:
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -52,7 +53,7 @@ export default function ProjectConfigPage() {
   };
 
   const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const tags = e.target.value.split(',').map((tag) => tag.trim());
+    const tags = e.target.value.split(",").map((tag) => tag.trim());
     setFormData((prev) => ({ ...prev, defaultTags: tags }));
   };
 
@@ -63,7 +64,7 @@ export default function ProjectConfigPage() {
       <form onSubmit={handleSubmit} className="max-w-2xl space-y-6">
         <div className="bg-white rounded-lg shadow-sm p-6">
           <h2 className="text-xl font-semibold mb-4">General Settings</h2>
-          
+
           <div className="space-y-4">
             <div className="flex items-center">
               <input
@@ -74,7 +75,10 @@ export default function ProjectConfigPage() {
                 onChange={handleChange}
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <label htmlFor="enabled" className="ml-2 block text-sm text-gray-900">
+              <label
+                htmlFor="enabled"
+                className="ml-2 block text-sm text-gray-900"
+              >
                 Enable Project Management
               </label>
             </div>
@@ -109,7 +113,10 @@ export default function ProjectConfigPage() {
                 onChange={handleChange}
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <label htmlFor="autoAssign" className="ml-2 block text-sm text-gray-900">
+              <label
+                htmlFor="autoAssign"
+                className="ml-2 block text-sm text-gray-900"
+              >
                 Auto-assign Tasks
               </label>
             </div>
@@ -118,7 +125,7 @@ export default function ProjectConfigPage() {
 
         <div className="bg-white rounded-lg shadow-sm p-6">
           <h2 className="text-xl font-semibold mb-4">Notification Settings</h2>
-          
+
           <div className="space-y-4">
             <div className="flex items-center">
               <input
@@ -192,7 +199,7 @@ export default function ProjectConfigPage() {
 
         <div className="bg-white rounded-lg shadow-sm p-6">
           <h2 className="text-xl font-semibold mb-4">Limits and Defaults</h2>
-          
+
           <div className="space-y-4">
             <div>
               <label
@@ -205,7 +212,7 @@ export default function ProjectConfigPage() {
                 type="text"
                 id="defaultTags"
                 name="defaultTags"
-                value={formData.defaultTags?.join(', ')}
+                value={formData.defaultTags?.join(", ")}
                 onChange={handleTagsChange}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
@@ -260,4 +267,4 @@ export default function ProjectConfigPage() {
       </form>
     </div>
   );
-} 
+}

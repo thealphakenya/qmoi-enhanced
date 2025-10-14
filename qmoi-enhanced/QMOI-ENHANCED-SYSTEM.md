@@ -322,7 +322,7 @@ POST /api/predictions/train
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - React Native CLI (for mobile app)
 - Python 3.8+ (for ML service)
@@ -495,5 +495,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-*Last updated: January 2024*
-*Version: 2.0.0* 
+_Last updated: January 2024_
+_Version: 2.0.0_

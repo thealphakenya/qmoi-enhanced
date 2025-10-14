@@ -1,6 +1,10 @@
 import React from "react";
 
-export function DeviceHealthPanel({ stats }: { stats: { cpu: number; memory: number; disk: number; network: number } }) {
+export function DeviceHealthPanel({
+  stats,
+}: {
+  stats: { cpu: number; memory: number; disk: number; network: number };
+}) {
   const suggestions = [
     stats.cpu > 70 ? "Consider offloading tasks to Colab/Dagshub." : null,
     stats.memory > 65 ? "Enable Data Saver mode to reduce memory usage." : null,
@@ -18,7 +22,11 @@ export function DeviceHealthPanel({ stats }: { stats: { cpu: number; memory: num
       </ul>
       <h5>Suggestions</h5>
       <ul>
-        {suggestions.length ? suggestions.map((s, i) => <li key={i}>{s}</li>) : <li>No issues detected.</li>}
+        {suggestions.length ? (
+          suggestions.map((s, i) => <li key={i}>{s}</li>)
+        ) : (
+          <li>No issues detected.</li>
+        )}
       </ul>
     </div>
   );

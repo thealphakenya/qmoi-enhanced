@@ -1,6 +1,6 @@
-import React from 'react';
-import { useProjects } from '../../hooks/useProjects';
-import { Project } from '../../types/projects';
+import React from "react";
+import { useProjects } from "../../hooks/useProjects";
+import { Project } from "../../types/projects";
 
 interface ProjectDashboardProps {
   projectId: string;
@@ -17,13 +17,13 @@ export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
   const calculateTaskStats = () => {
     const totalTasks = project.tasks.length;
     const completedTasks = project.tasks.filter(
-      (task) => task.status === 'completed'
+      (task) => task.status === "completed",
     ).length;
     const inProgressTasks = project.tasks.filter(
-      (task) => task.status === 'in-progress'
+      (task) => task.status === "in-progress",
     ).length;
     const todoTasks = project.tasks.filter(
-      (task) => task.status === 'todo'
+      (task) => task.status === "todo",
     ).length;
 
     return {
@@ -38,14 +38,14 @@ export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
   const calculateResourceStats = () => {
     const totalResources = project.resources.length;
     const allocatedResources = project.resources.filter(
-      (resource) => resource.status === 'allocated'
+      (resource) => resource.status === "allocated",
     ).length;
     const availableResources = project.resources.filter(
-      (resource) => resource.status === 'available'
+      (resource) => resource.status === "available",
     ).length;
     const totalCost = project.resources.reduce(
       (sum, resource) => sum + resource.cost,
-      0
+      0,
     );
 
     return {
@@ -63,7 +63,9 @@ export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white rounded-lg shadow-sm p-4">
-          <h4 className="text-sm font-medium text-gray-500">Project Progress</h4>
+          <h4 className="text-sm font-medium text-gray-500">
+            Project Progress
+          </h4>
           <div className="mt-2">
             <div className="text-2xl font-semibold">{project.progress}%</div>
             <div className="mt-1 w-full bg-gray-200 rounded-full h-2">
@@ -80,7 +82,8 @@ export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
           <div className="mt-2">
             <div className="text-2xl font-semibold">{taskStats.total}</div>
             <div className="mt-1 text-sm text-gray-600">
-              {taskStats.completed} completed, {taskStats.inProgress} in progress
+              {taskStats.completed} completed, {taskStats.inProgress} in
+              progress
             </div>
           </div>
         </div>
@@ -90,7 +93,8 @@ export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
           <div className="mt-2">
             <div className="text-2xl font-semibold">{resourceStats.total}</div>
             <div className="mt-1 text-sm text-gray-600">
-              {resourceStats.allocated} allocated, {resourceStats.available} available
+              {resourceStats.allocated} allocated, {resourceStats.available}{" "}
+              available
             </div>
           </div>
         </div>
@@ -125,7 +129,9 @@ export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
 
             <div className="flex justify-between items-center">
               <span className="text-sm">In Progress</span>
-              <span className="text-sm font-medium">{taskStats.inProgress}</span>
+              <span className="text-sm font-medium">
+                {taskStats.inProgress}
+              </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
@@ -152,11 +158,15 @@ export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
         </div>
 
         <div className="bg-white rounded-lg shadow-sm p-4">
-          <h4 className="text-sm font-medium text-gray-500">Resource Allocation</h4>
+          <h4 className="text-sm font-medium text-gray-500">
+            Resource Allocation
+          </h4>
           <div className="mt-4 space-y-2">
             <div className="flex justify-between items-center">
               <span className="text-sm">Allocated</span>
-              <span className="text-sm font-medium">{resourceStats.allocated}</span>
+              <span className="text-sm font-medium">
+                {resourceStats.allocated}
+              </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
@@ -169,7 +179,9 @@ export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
 
             <div className="flex justify-between items-center">
               <span className="text-sm">Available</span>
-              <span className="text-sm font-medium">{resourceStats.available}</span>
+              <span className="text-sm font-medium">
+                {resourceStats.available}
+              </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
@@ -202,4 +214,4 @@ export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
       </div>
     </div>
   );
-} 
+}

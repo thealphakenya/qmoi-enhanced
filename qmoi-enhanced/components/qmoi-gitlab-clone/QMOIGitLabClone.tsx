@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  GitBranch, 
-  GitCommit, 
-  GitPullRequest, 
+import React, { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  GitBranch,
+  GitCommit,
+  GitPullRequest,
   GitMerge,
   Play,
   Stop,
@@ -16,12 +16,12 @@ import {
   AlertTriangle,
   CheckCircle,
   Clock,
-  Activity
-} from 'lucide-react';
+  Activity,
+} from "lucide-react";
 
 interface Pipeline {
   id: number;
-  status: 'running' | 'success' | 'failed' | 'pending';
+  status: "running" | "success" | "failed" | "pending";
   ref: string;
   created_at: string;
   duration?: number;
@@ -31,14 +31,14 @@ interface Pipeline {
 interface Job {
   id: number;
   name: string;
-  status: 'running' | 'success' | 'failed' | 'pending';
+  status: "running" | "success" | "failed" | "pending";
   stage: string;
   duration?: number;
 }
 
 interface Deployment {
   id: string;
-  state: 'READY' | 'ERROR' | 'BUILDING' | 'QUEUED';
+  state: "READY" | "ERROR" | "BUILDING" | "QUEUED";
   url?: string;
   created_at: string;
   meta: {
@@ -57,7 +57,9 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
   const [deployments, setDeployments] = useState<Deployment[]>([]);
   const [monitoringActive, setMonitoringActive] = useState(false);
   const [autoFixEnabled, setAutoFixEnabled] = useState(true);
-  const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'error'>('idle');
+  const [syncStatus, setSyncStatus] = useState<
+    "idle" | "syncing" | "success" | "error"
+  >("idle");
   const [errorCount, setErrorCount] = useState(0);
   const [successCount, setSuccessCount] = useState(0);
 
@@ -77,72 +79,72 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
 
   const fetchPipelines = async () => {
     try {
-      const response = await fetch('/api/qmoi-gitlab/pipelines');
+      const response = await fetch("/api/qmoi-gitlab/pipelines");
       if (response.ok) {
         const data = await response.json();
         setPipelines(data.pipelines || []);
       }
     } catch (error) {
-      console.error('Error fetching pipelines:', error);
+      console.error("Error fetching pipelines:", error);
     }
   };
 
   const fetchJobs = async () => {
     try {
-      const response = await fetch('/api/qmoi-gitlab/jobs');
+      const response = await fetch("/api/qmoi-gitlab/jobs");
       if (response.ok) {
         const data = await response.json();
         setJobs(data.jobs || []);
       }
     } catch (error) {
-      console.error('Error fetching jobs:', error);
+      console.error("Error fetching jobs:", error);
     }
   };
 
   const fetchDeployments = async () => {
     try {
-      const response = await fetch('/api/qmoi-gitlab/deployments');
+      const response = await fetch("/api/qmoi-gitlab/deployments");
       if (response.ok) {
         const data = await response.json();
         setDeployments(data.deployments || []);
       }
     } catch (error) {
-      console.error('Error fetching deployments:', error);
+      console.error("Error fetching deployments:", error);
     }
   };
 
   const checkErrors = async () => {
     try {
-      const response = await fetch('/api/qmoi-gitlab/errors');
+      const response = await fetch("/api/qmoi-gitlab/errors");
       if (response.ok) {
         const data = await response.json();
         setErrorCount(data.errorCount || 0);
         setSuccessCount(data.successCount || 0);
       }
     } catch (error) {
-      console.error('Error checking errors:', error);
+      console.error("Error checking errors:", error);
     }
   };
 
   const triggerPipeline = async () => {
     try {
-      setSyncStatus('syncing');
-      const response = await fetch('/api/qmoi-gitlab/trigger', {
-        method: 'POST',
+      setSyncStatus("syncing");
+      const response = await fetch("/api/qmoi-gitlab/trigger", {
+        method: "POST",
       });
-      
+
       if (response.ok) {
-        setSyncStatus('success');
+        setSyncStatus("success");
         fetchPipelines(); // Refresh pipelines
-        setTimeout(() => setSyncStatus('idle'), 3000);
+        setTimeout(() => setSyncStatus("idle"), 3000);
       } else {
-        setSyncStatus('error');
-        setTimeout(() => setSyncStatus('idle'), 3000);
+        setSyncStatus("error");
+        setTimeout(() => setSyncStatus("idle"), 3000);
       }
     } catch (error) {
-      console.error('Error triggering pipeline:', error);
-      setSyncStatus('error');
-      setTimeout(() => setSyncStatus('idle'), 3000);
+      console.error("Error triggering pipeline:", error);
+      setSyncStatus("error");
+      setTimeout(() => setSyncStatus("idle"), 3000);
     }
   };
 
@@ -156,17 +158,17 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'success':
-      case 'READY':
+      case "success":
+      case "READY":
         return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'failed':
-      case 'ERROR':
+      case "failed":
+      case "ERROR":
         return <AlertTriangle className="h-4 w-4 text-red-500" />;
-      case 'running':
-      case 'BUILDING':
+      case "running":
+      case "BUILDING":
         return <Activity className="h-4 w-4 text-blue-500 animate-pulse" />;
-      case 'pending':
-      case 'QUEUED':
+      case "pending":
+      case "QUEUED":
         return <Clock className="h-4 w-4 text-yellow-500" />;
       default:
         return <Clock className="h-4 w-4 text-gray-500" />;
@@ -174,10 +176,15 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
   };
 
   const getStatusBadge = (status: string) => {
-    const variant = status === 'success' || status === 'READY' ? 'default' :
-                   status === 'failed' || status === 'ERROR' ? 'destructive' :
-                   status === 'running' || status === 'BUILDING' ? 'secondary' : 'outline';
-    
+    const variant =
+      status === "success" || status === "READY"
+        ? "default"
+        : status === "failed" || status === "ERROR"
+          ? "destructive"
+          : status === "running" || status === "BUILDING"
+            ? "secondary"
+            : "outline";
+
     return <Badge variant={variant}>{status}</Badge>;
   };
 
@@ -199,36 +206,42 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
                 variant={monitoringActive ? "destructive" : "default"}
                 size="sm"
               >
-                {monitoringActive ? <Stop className="h-4 w-4 mr-2" /> : <Play className="h-4 w-4 mr-2" />}
-                {monitoringActive ? 'Stop Monitoring' : 'Start Monitoring'}
+                {monitoringActive ? (
+                  <Stop className="h-4 w-4 mr-2" />
+                ) : (
+                  <Play className="h-4 w-4 mr-2" />
+                )}
+                {monitoringActive ? "Stop Monitoring" : "Start Monitoring"}
               </Button>
-              
+
               <Button
                 onClick={triggerPipeline}
-                disabled={syncStatus === 'syncing'}
+                disabled={syncStatus === "syncing"}
                 size="sm"
               >
-                <RefreshCw className={`h-4 w-4 mr-2 ${syncStatus === 'syncing' ? 'animate-spin' : ''}`} />
+                <RefreshCw
+                  className={`h-4 w-4 mr-2 ${syncStatus === "syncing" ? "animate-spin" : ""}`}
+                />
                 Trigger Pipeline
               </Button>
-              
+
               <Button
                 onClick={toggleAutoFix}
                 variant={autoFixEnabled ? "default" : "outline"}
                 size="sm"
               >
                 <GitMerge className="h-4 w-4 mr-2" />
-                Auto-Fix: {autoFixEnabled ? 'ON' : 'OFF'}
+                Auto-Fix: {autoFixEnabled ? "ON" : "OFF"}
               </Button>
             </div>
-            
+
             <div className="flex items-center gap-4">
               <div className="text-sm">
                 <span className="text-green-500">✓ {successCount}</span>
                 <span className="mx-2">|</span>
                 <span className="text-red-500">✗ {errorCount}</span>
               </div>
-              
+
               {monitoringActive && (
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -245,7 +258,8 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
         <Alert>
           <AlertTriangle className="h-4 w-4" />
           <AlertDescription>
-            {errorCount} error(s) detected. Auto-fix is {autoFixEnabled ? 'enabled' : 'disabled'}.
+            {errorCount} error(s) detected. Auto-fix is{" "}
+            {autoFixEnabled ? "enabled" : "disabled"}.
           </AlertDescription>
         </Alert>
       )}
@@ -268,9 +282,12 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
                     <div className="flex items-center gap-3">
                       {getStatusIcon(pipeline.status)}
                       <div>
-                        <div className="font-medium">Pipeline #{pipeline.id}</div>
+                        <div className="font-medium">
+                          Pipeline #{pipeline.id}
+                        </div>
                         <div className="text-sm text-muted-foreground">
-                          Branch: {pipeline.ref} • {new Date(pipeline.created_at).toLocaleString()}
+                          Branch: {pipeline.ref} •{" "}
+                          {new Date(pipeline.created_at).toLocaleString()}
                         </div>
                       </div>
                     </div>
@@ -328,14 +345,17 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
                     <div className="flex items-center gap-3">
                       {getStatusIcon(deployment.state)}
                       <div>
-                        <div className="font-medium">Deployment {deployment.id.slice(0, 8)}</div>
+                        <div className="font-medium">
+                          Deployment {deployment.id.slice(0, 8)}
+                        </div>
                         <div className="text-sm text-muted-foreground">
-                          {deployment.meta.githubCommitMessage || 'No commit message'}
+                          {deployment.meta.githubCommitMessage ||
+                            "No commit message"}
                         </div>
                         {deployment.url && (
-                          <a 
-                            href={deployment.url} 
-                            target="_blank" 
+                          <a
+                            href={deployment.url}
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-sm text-blue-500 hover:underline"
                           >
@@ -368,18 +388,36 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
                   <div>
                     <div className="flex justify-between text-sm mb-1">
                       <span>Success Rate</span>
-                      <span>{successCount + errorCount > 0 ? Math.round((successCount / (successCount + errorCount)) * 100) : 0}%</span>
+                      <span>
+                        {successCount + errorCount > 0
+                          ? Math.round(
+                              (successCount / (successCount + errorCount)) *
+                                100,
+                            )
+                          : 0}
+                        %
+                      </span>
                     </div>
-                    <Progress value={successCount + errorCount > 0 ? (successCount / (successCount + errorCount)) * 100 : 0} />
+                    <Progress
+                      value={
+                        successCount + errorCount > 0
+                          ? (successCount / (successCount + errorCount)) * 100
+                          : 0
+                      }
+                    />
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <div className="text-green-500 font-medium">{successCount}</div>
+                      <div className="text-green-500 font-medium">
+                        {successCount}
+                      </div>
                       <div className="text-muted-foreground">Successful</div>
                     </div>
                     <div>
-                      <div className="text-red-500 font-medium">{errorCount}</div>
+                      <div className="text-red-500 font-medium">
+                        {errorCount}
+                      </div>
                       <div className="text-muted-foreground">Errors</div>
                     </div>
                   </div>
@@ -399,21 +437,27 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
                       {monitoringActive ? "Active" : "Inactive"}
                     </Badge>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <span className="text-sm">Auto-Fix</span>
                     <Badge variant={autoFixEnabled ? "default" : "secondary"}>
                       {autoFixEnabled ? "Enabled" : "Disabled"}
                     </Badge>
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <span className="text-sm">Sync Status</span>
-                    <Badge variant={
-                      syncStatus === 'success' ? "default" :
-                      syncStatus === 'error' ? "destructive" :
-                      syncStatus === 'syncing' ? "secondary" : "outline"
-                    }>
+                    <Badge
+                      variant={
+                        syncStatus === "success"
+                          ? "default"
+                          : syncStatus === "error"
+                            ? "destructive"
+                            : syncStatus === "syncing"
+                              ? "secondary"
+                              : "outline"
+                      }
+                    >
                       {syncStatus.charAt(0).toUpperCase() + syncStatus.slice(1)}
                     </Badge>
                   </div>
@@ -425,4 +469,4 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
       </Tabs>
     </div>
   );
-} 
+}

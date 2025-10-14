@@ -1,6 +1,7 @@
 # QMOI Auto-Fix Report
 
 ## Summary
+
 - **Total Errors**: 1
 - **Fixed Errors**: 0
 - **Remaining Errors**: 1
@@ -8,9 +9,11 @@
 - **Deployment Status**: failed
 
 ## Error Details
+
 - [PENDING] test: This is a test error
 
 ## Fix Details
+
 - [FAILED] clean-install: Clean install failed (0ms)
 - [FAILED] typescript-fix: TypeScript auto-fix failed (0ms)
 - [FAILED] auto-fix: Lint auto-fix failed (0ms)
