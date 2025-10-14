@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="#1a1a1a"/>
+  
+  <!-- Q Letter -->
+  <path d="M256 96C167.6 96 96 167.6 96 256C96 344.4 167.6 416 256 416C344.4 416 416 344.4 416 256C416 167.6 344.4 96 256 96ZM256 384C185.3 384 128 326.7 128 256C128 185.3 185.3 128 256 128C326.7 128 384 185.3 384 256C384 326.7 326.7 384 256 384Z" fill="#00ff00"/>
+  
+  <!-- Circuit Lines -->
+  <path d="M256 128V384" stroke="#00ff00" stroke-width="8"/>
+  <path d="M128 256H384" stroke="#00ff00" stroke-width="8"/>
+  <path d="M192 192L320 320" stroke="#00ff00" stroke-width="8"/>
+  <path d="M320 192L192 320" stroke="#00ff00" stroke-width="8"/>
+  
+  <!-- Center Dot -->
+  <circle cx="256" cy="256" r="16" fill="#00ff00"/>
+</svg> 

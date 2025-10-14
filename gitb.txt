@@ -1,0 +1,26 @@
+Quick usage
+
+Manual run:
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\Alpha-Q-ai\git-smart-sync.ps1"
+
+
+Install scheduled task (one-time):
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\Alpha-Q-ai\git-smart-sync.ps1" -InstallScheduledTask
+
+
+git-depsfix.ps1
+
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\Alpha-Q-ai\git-depsfix.ps1"
+
+
+Notes & safety
+
+The script creates remote backup branches (autosync-backup-*, autosync-safety-*) before risky operations so you can recover any local work.
+
+It prefers safe operations (rebase/autostash then merge with theirs strategy if necessary); it does not perform an unconditional forced push to the main branch.
+
+It logs everything to git-smart-sync.log and maintains .git-smart-sync.state to resume progress.
+
+For extremely large repos, the chunking/resume logic will split the upload; it tries to minimize retries and re-sending large bundles by reusing git's incremental transfer behavior and by only reattempting missing objects.
