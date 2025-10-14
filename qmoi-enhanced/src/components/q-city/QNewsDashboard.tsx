@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
 
 interface NewsItem {
   id: number;
@@ -138,40 +141,43 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   return (
     <Card className="space-y-4">
       <CardHeader>
-        <CardTitle>QNews Dashboard</CardTitle>
+  <Typography variant="h6">QNews Dashboard</Typography>
       </CardHeader>
       <CardContent>
         <div className="mb-4">
-          <Input
-            placeholder="Title"
+          <TextField
+            label="Title"
             value={form.title}
-            onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
-            className="mb-2"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, title: e.target.value }))}
+            sx={{ mb: 2 }}
+            fullWidth
+            size="small"
           />
-          <Input
-            placeholder="Content"
+          <TextField
+            label="Content"
             value={form.content}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, content: e.target.value }))
-            }
-            className="mb-2"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, content: e.target.value }))}
+            sx={{ mb: 2 }}
+            fullWidth
+            size="small"
           />
           {isMaster && (
             <>
-              <Input
-                placeholder="Category (e.g. earning, project, marketing, global, local)"
+              <TextField
+                label="Category (e.g. earning, project, marketing, global, local)"
                 value={form.category}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, category: e.target.value }))
-                }
-                className="mb-2"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, category: e.target.value }))}
+                sx={{ mb: 2 }}
+                fullWidth
+                size="small"
               />
               <div className="flex gap-2 mb-2">
-                <Input
-                  placeholder="Media URL"
+                <TextField
+                  label="Media URL"
                   value={mediaUrl}
-                  onChange={(e) => setMediaUrl(e.target.value)}
-                  className="flex-1"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMediaUrl(e.target.value)}
+                  sx={{ flex: 1 }}
+                  size="small"
                 />
                 <select
                   value={mediaType}
@@ -184,7 +190,9 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                   <option value="text">Text</option>
                 </select>
                 <Button
-                  size="sm"
+                  size="small"
+                  variant="outlined"
+                  color="primary"
                   onClick={handleAddMedia}
                   disabled={!editingId || !mediaUrl}
                 >
@@ -193,13 +201,13 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
               </div>
             </>
           )}
-          <Input
-            placeholder="Schedule (ISO, optional)"
+          <TextField
+            label="Schedule (ISO, optional)"
             value={form.scheduledAt}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, scheduledAt: e.target.value }))
-            }
-            className="mb-2"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, scheduledAt: e.target.value }))}
+            sx={{ mb: 2 }}
+            fullWidth
+            size="small"
           />
           <Button onClick={handleSave}>
             {editingId ? "Save Changes" : "Submit News"}
@@ -228,17 +236,20 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                   <td>
                     {isMaster && item.status !== "approved" && (
                       <Button
-                        size="sm"
+                        size="small"
+                        variant="contained"
+                        color="primary"
                         onClick={() => handleApprove(item.id)}
-                        className="mr-2"
+                        sx={{ mr: 1 }}
                       >
                         Approve
                       </Button>
                     )}
                     {isMaster && (
                       <Button
-                        size="sm"
-                        variant="secondary"
+                        size="small"
+                        variant="outlined"
+                        color="secondary"
                         onClick={() => handleEdit(item)}
                       >
                         Edit
@@ -246,8 +257,9 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                     )}
                     {isMaster && (
                       <Button
-                        size="sm"
-                        variant="outline"
+                        size="small"
+                        variant="outlined"
+                        color="primary"
                         onClick={() =>
                           handleSchedule(
                             item.id,

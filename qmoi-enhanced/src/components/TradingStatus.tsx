@@ -132,7 +132,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
           <>
             <Grid container spacing={2}>
               {walletBalances.map((wallet) => (
-                <Grid item xs={12} sm={6} md={4} key={wallet.currency}>
+                <Grid size={4} key={wallet.currency}>
                   <Card variant="outlined">
                     <CardContent>
                       <Box display="flex" alignItems="center" gap={1} mb={1}>

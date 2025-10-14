@@ -143,7 +143,7 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({
         )}
 
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+          <Grid size={6}>
             <TextField
               fullWidth
               label="Max Daily Trades"
@@ -158,7 +158,7 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({
               InputProps={{ inputProps: { min: 0 } }}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid size={6}>
             <TextField
               fullWidth
               label="Max Trade Amount (USD)"

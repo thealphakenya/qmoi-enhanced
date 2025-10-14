@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 export function LeahWallet() {
   const [balance, setBalance] = useState(1000);
@@ -21,7 +24,7 @@ export function LeahWallet() {
   return (
     <Card className="max-w-md mx-auto my-6">
       <CardHeader>
-        <CardTitle>Leah's Wallet</CardTitle>
+  <Typography variant="h6">Leah's Wallet</Typography>
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold mb-2">Balance: ${balance}</div>
@@ -40,7 +43,7 @@ export function LeahWallet() {
             onChange={e => setNote(e.target.value)}
             className="border rounded px-2 py-1 mr-2"
           />
-          <Button onClick={handleAddFunds} size="sm">Add Funds</Button>
+          <Button onClick={handleAddFunds} size="small">Add Funds</Button>
         </div>
         <div>
           <h4 className="font-semibold mb-1">History</h4>

@@ -146,13 +146,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
           <>
             <Grid container spacing={2} mb={3}>
               {assets.map((asset) => (
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  key={`${asset.type}_${asset.currency}`}
-                >
+                <Grid size={4} key={`${asset.type}_${asset.currency}`}>
                   <Card variant="outlined">
                     <CardContent>
                       <Box display="flex" alignItems="center" gap={1} mb={1}>
@@ -184,7 +178,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
             </Typography>
             <Grid container spacing={2}>
               {opportunities.map((opp, index) => (
-                <Grid item xs={12} sm={6} key={index}>
+                <Grid size={6} key={index}>
                   <Card variant="outlined">
                     <CardContent>
                       <Box

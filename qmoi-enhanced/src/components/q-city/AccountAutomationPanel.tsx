@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
 
 interface Account {
   id: number;
@@ -68,26 +71,26 @@ const AccountAutomationPanel: React.FC = () => {
   return (
     <Card className="space-y-4 mt-4">
       <CardHeader>
-        <CardTitle>Account Automation & Security</CardTitle>
+        <Typography variant="h6">Account Automation & Security</Typography>
       </CardHeader>
       <CardContent>
         <div className="mb-4">
-          <Input
-            placeholder="Username"
+          <TextField
+            label="Username"
             value={form.username}
             onChange={(e) =>
               setForm((f) => ({ ...f, username: e.target.value }))
             }
             className="mb-2"
           />
-          <Input
-            placeholder="Email"
+          <TextField
+            label="Email"
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             className="mb-2"
           />
-          <Input
-            placeholder="Platform (e.g. WhatsApp, Telegram)"
+          <TextField
+            label="Platform"
             value={form.platform}
             onChange={(e) =>
               setForm((f) => ({ ...f, platform: e.target.value }))
@@ -97,13 +100,13 @@ const AccountAutomationPanel: React.FC = () => {
           <Button onClick={createAccount} className="mr-2">
             Create Account
           </Button>
-          <Button onClick={login} variant="secondary">
+          <Button onClick={login} variant="outlined" color="secondary">
             Login
           </Button>
         </div>
         <div className="mb-4">
-          <Input
-            placeholder="Account ID to check status"
+          <TextField
+            label="Account ID to check"
             value={idToCheck}
             onChange={(e) => setIdToCheck(e.target.value)}
             className="mb-2"
@@ -135,8 +138,8 @@ const AccountAutomationPanel: React.FC = () => {
                   <td>{a.verified ? "Yes" : "No"}</td>
                   <td>
                     {!a.verified && (
-                      <Button size="sm" onClick={() => verify(a.id, a.email)}>
-                        Trigger Verification
+                      <Button size="small" variant="outlined" color="primary" onClick={() => verify(a.id, a.email)}>
+                        Verify
                       </Button>
                     )}
                   </td>

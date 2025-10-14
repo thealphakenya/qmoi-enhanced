@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 interface ApiKey {
   key: string;
@@ -47,10 +50,10 @@ const QApiKeyManager: React.FC = () => {
   return (
     <Card className="space-y-4 mt-4">
       <CardHeader>
-        <CardTitle>Q API Key Manager</CardTitle>
+  <Typography variant="h6">Q API Key Manager</Typography>
       </CardHeader>
       <CardContent>
-        <Button onClick={createKey} className="mb-2">
+  <Button onClick={createKey} sx={{ mb: 2 }} variant="contained" color="primary">
           Generate New Key
         </Button>
         <table className="w-full text-sm">
@@ -73,8 +76,9 @@ const QApiKeyManager: React.FC = () => {
                 <td>
                   {!k.revoked && (
                     <Button
-                      size="sm"
-                      variant="secondary"
+                      size="small"
+                      variant="outlined"
+                      color="secondary"
                       onClick={() => revokeKey(k.key)}
                     >
                       Revoke

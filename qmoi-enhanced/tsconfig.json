@@ -56,7 +56,7 @@
     "allowJs": true,
     "noEmit": true,
     "incremental": true,
-  "jsx": "react",
+    "jsx": "preserve",
     "plugins": [
       {
         "name": "next"

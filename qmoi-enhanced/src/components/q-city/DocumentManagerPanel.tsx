@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
 
 interface Document {
   id: number;
@@ -60,38 +63,44 @@ const DocumentManagerPanel: React.FC = () => {
   return (
     <Card className="space-y-4 mt-4">
       <CardHeader>
-        <CardTitle>Document Backup & Retrieval</CardTitle>
+  <Typography variant="h6">Document Backup & Retrieval</Typography>
       </CardHeader>
       <CardContent>
         <div className="mb-4">
-          <Input
-            placeholder="Document Name"
+          <TextField
+            label="Document Name"
             value={form.name}
-            onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-            className="mb-2"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, name: e.target.value }))}
+            sx={{ mb: 2 }}
+            fullWidth
+            size="small"
           />
-          <Input
-            placeholder="Type (pdf, docx, etc.)"
+          <TextField
+            label="Type (pdf, docx, etc.)"
             value={form.type}
-            onChange={(e) => setForm((f) => ({ ...f, type: e.target.value }))}
-            className="mb-2"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, type: e.target.value }))}
+            sx={{ mb: 2 }}
+            fullWidth
+            size="small"
           />
-          <Input
-            placeholder="Content (or file data)"
+          <TextField
+            label="Content (or file data)"
             value={form.content}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, content: e.target.value }))
-            }
-            className="mb-2"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, content: e.target.value }))}
+            sx={{ mb: 2 }}
+            fullWidth
+            size="small"
           />
           <Button onClick={upload}>Upload</Button>
         </div>
         <div className="mb-4">
-          <Input
-            placeholder="Search documents..."
+          <TextField
+            label="Search documents..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="mb-2"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+            sx={{ mb: 2 }}
+            fullWidth
+            size="small"
           />
           <Button onClick={searchDocs}>Search</Button>
         </div>
@@ -113,7 +122,7 @@ const DocumentManagerPanel: React.FC = () => {
                   <td>{d.type}</td>
                   <td>{d.createdAt}</td>
                   <td>
-                    <Button size="sm" onClick={() => restore(d.id)}>
+                    <Button size="small" variant="outlined" color="primary" onClick={() => restore(d.id)}>
                       Restore
                     </Button>
                   </td>

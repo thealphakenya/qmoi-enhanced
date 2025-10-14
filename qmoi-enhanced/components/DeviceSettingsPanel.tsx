@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 export function DeviceSettingsPanel() {
   const [wallpaper, setWallpaper] = useState<string>('');
@@ -27,7 +30,7 @@ export function DeviceSettingsPanel() {
   return (
     <Card className="my-4">
       <CardHeader>
-        <CardTitle>Device Settings</CardTitle>
+  <Typography variant="h6">Device Settings</Typography>
       </CardHeader>
       <CardContent>
         <div className="mb-2">

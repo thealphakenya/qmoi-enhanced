@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
 
 export function LeahWalletPanel() {
   const [balance, setBalance] = useState(100.00);
@@ -35,8 +36,8 @@ export function LeahWalletPanel() {
         <div className="mb-2">
           <input type="number" placeholder="Amount" value={amount} onChange={e => setAmount(e.target.value)} className="border p-1 rounded w-1/3 mr-2" />
           <input type="text" placeholder="Description" value={desc} onChange={e => setDesc(e.target.value)} className="border p-1 rounded w-1/3 mr-2" />
-          <Button size="sm" onClick={handleAddFunds}>Add Funds</Button>
-          <Button size="sm" variant="outline" onClick={handleSpendFunds} className="ml-2">Spend</Button>
+          <Button size="small" onClick={handleAddFunds}>Add Funds</Button>
+          <Button size="small" variant="outlined" onClick={handleSpendFunds} className="ml-2">Spend</Button>
         </div>
         <div>
           <h4 className="font-semibold mb-1">Transactions</h4>
