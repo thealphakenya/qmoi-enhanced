@@ -53,9 +53,9 @@ class QMOIAutoDev:
             'enhancements_completed': [],
             'models_updated': [],
             'performance_improvements': {},
-        'errors': [],
-        'warnings': []
-    }
+            'errors': [],
+            'warnings': []
+        }
     
     def load_config(self) -> Dict:
         """Load auto-development configuration"""
@@ -162,7 +162,7 @@ class QMOIAutoDev:
                         analysis_results[model_name] = json.loads(result['stdout'])
                     except json.JSONDecodeError:
                         analysis_results[model_name] = {'status': 'analyzed', 'performance': 0.8}
-        else:
+                else:
                     analysis_results[model_name] = {'status': 'error', 'error': result['stderr']}
             else:
                 # Default analysis
@@ -199,7 +199,7 @@ class QMOIAutoDev:
             
             if needs_enhancement:
                 logger.info(f"{model_name} needs enhancement (current: {current_performance:.3f}, target: {performance_threshold:.3f})")
-    else:
+            else:
                 logger.info(f"{model_name} performing well (current: {current_performance:.3f})")
         
         self.enhancement_status['enhancements_completed'].append('performance_evaluation')

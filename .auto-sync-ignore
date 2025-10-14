@@ -10,10 +10,7 @@ dist
 .npm-cache
 
 # Files/paths that Black currently fails to parse; skip until manual fixes
-scripts/core_automation_&_evolution.py
-scripts/enhanced_automation_&_cloud_features_(2025_01_22).py
 scripts/financial-integration.py
-scripts/models/qmoi_autodev.py
 scripts/qmoi-dashboard-enhance.py
 scripts/qmoi-git-auto.py
 scripts/qmoi-real-time-logger.py
