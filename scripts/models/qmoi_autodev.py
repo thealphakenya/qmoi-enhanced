@@ -410,7 +410,7 @@ class QMOIAutoDev:
                     '--status', status,
                     '--models_updated', ','.join(self.enhancement_status['models_updated'])
                 ])
-    except Exception as e:
+        except Exception as e:
             logger.error(f"Failed to send notification: {e}")
 
     def run_enhancement_pipeline(self) -> bool:
@@ -441,7 +441,7 @@ class QMOIAutoDev:
                 tests_passed = self.run_tests()
                 if not tests_passed:
                     logger.error("Tests failed")
-    return False
+                    return False
 
             # Generate report and notify
             self.generate_enhancement_report()
