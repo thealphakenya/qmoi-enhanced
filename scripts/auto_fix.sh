@@ -9,6 +9,7 @@ set -euo pipefail
 
 TARGET_BRANCH=${TARGET_BRANCH:-main}
 GITHUB_TOKEN=${GITHUB_TOKEN:-}
+AUTO_FIX_PATHS=${AUTO_FIX_PATHS:-"scripts qmoi-enhanced"}
 
 echo "Auto-fix script starting. Target branch: $TARGET_BRANCH"
 
@@ -21,15 +22,26 @@ if command -v npm >/dev/null 2>&1 && [ -f package.json ]; then
     else
       npm install --silent || true
     fi
-    echo "Running npm run format and lint if defined"
-    npm run format --silent || true
-    npm run lint --silent || true
+    echo "Running npm run format and lint (scoped if AUTO_FIX_PATHS set)"
+    if [ "${AUTO_FIX_PATHS}" != "." ]; then
+      for p in ${AUTO_FIX_PATHS}; do
+        npx prettier --write "$p" 2>/dev/null || true
+        npx eslint --fix "$p" --ext .js,.jsx,.ts,.tsx 2>/dev/null || true
+      done
+    else
+      npm run format --silent || true
+      npm run lint --silent || true
+    fi
   fi
 fi
 
-if command -v black >/dev/null 2>&1 && ls *.py >/dev/null 2>&1; then
-  echo "Running black"
-  black . || true
+if command -v black >/dev/null 2>&1; then
+  echo "Running black on specified paths: ${AUTO_FIX_PATHS}"
+  for p in ${AUTO_FIX_PATHS}; do
+    if [ -e "$p" ]; then
+      black "$p" || true
+    fi
+  done
 fi
 
 # 2) Run tests if a test runner is available

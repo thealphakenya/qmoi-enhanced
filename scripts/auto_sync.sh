@@ -14,6 +14,8 @@ TARGET_BRANCH=${TARGET_BRANCH:-main}
 REMOTE=${REMOTE:-origin}
 AUTO_COMMIT=${AUTO_COMMIT:-true}
 GITHUB_TOKEN=${GITHUB_TOKEN:-}
+AUTO_FIX_PATHS=${AUTO_FIX_PATHS:-"scripts qmoi-enhanced"}
+AUTO_SYNC_IGNORE_FILE=${AUTO_SYNC_IGNORE_FILE:-".auto-sync-ignore"}
 
 echo "==> Auto-sync starting (branch: $(git rev-parse --abbrev-ref HEAD))"
 
@@ -70,14 +72,28 @@ fi
 
 # 3) Run formatters/linters and tests (best-effort)
 echo "Running formatters, linters, and tests (best-effort)"
+echo "AUTO_FIX_PATHS='$AUTO_FIX_PATHS'"
 if [ -f package.json ] && command -v npm >/dev/null 2>&1; then
   npm ci --silent || true
-  npm run format --silent || true
-  npm run lint --silent || true
+  # If AUTO_FIX_PATHS is not the default "." try to run fixers only on those paths
+  if [ "${AUTO_FIX_PATHS}" != "." ] && command -v npx >/dev/null 2>&1; then
+    for p in ${AUTO_FIX_PATHS}; do
+      npx prettier --write "$p" 2>/dev/null || true
+      npx eslint --fix "$p" --ext .js,.jsx,.ts,.tsx 2>/dev/null || true
+    done
+  else
+    npm run format --silent || true
+    npm run lint --silent || true
+  fi
 fi
 
-if command -v black >/dev/null 2>&1 && ls *.py >/dev/null 2>&1; then
-  black . || true
+if command -v black >/dev/null 2>&1; then
+  # Run black only against configured paths to avoid reformatting vendored/stdlib files
+  for p in ${AUTO_FIX_PATHS}; do
+    if [ -e "$p" ]; then
+      black "$p" || true
+    fi
+  done
 fi
 
 RUN_TESTS=${RUN_TESTS:-false}
@@ -92,12 +108,27 @@ fi
 
 # 4) Auto-commit formatting/lint fixes if any
 if [ "$AUTO_COMMIT" = "true" ]; then
-  if ! git diff --quiet || ! git diff --cached --quiet; then
-    echo "Committing auto-fix changes"
-    git add -A
-    git commit -m "chore(auto-sync): apply auto-fixes/formatting" || true
+  # Respect .auto-sync-ignore if present by only adding configured paths
+  TO_ADD=()
+  for p in ${AUTO_FIX_PATHS}; do
+    if [ -e "$p" ]; then
+      TO_ADD+=("$p")
+    fi
+  done
+
+  if [ ${#TO_ADD[@]} -gt 0 ]; then
+    echo "Committing auto-fix changes for: ${TO_ADD[*]}"
+    git add "${TO_ADD[@]}" || true
+    # Also add updated config files if they exist in repo root
+    [ -f package.json ] && git add package.json || true
+    [ -f pyproject.toml ] && git add pyproject.toml || true
+    if ! git diff --cached --quiet; then
+      git commit -m "chore(auto-sync): apply auto-fixes/formatting (scoped)" || true
+    else
+      echo "No staged auto-fix changes to commit"
+    fi
   else
-    echo "No auto-fix changes to commit"
+    echo "AUTO_FIX_PATHS resolved to nothing; skipping auto-commit"
   fi
 fi
 

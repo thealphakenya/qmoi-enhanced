@@ -1,0 +1,10 @@
+# Paths to ignore for auto-sync/auto-fix
+# Add globs or directory names here to avoid accidental formatting
+node_modules
+vendor
+**/Python-3.*
+.tilt
+.dist
+build
+dist
+.npm-cache
