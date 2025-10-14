@@ -1,0 +1,4 @@
+[tool.black]
+line-length = 88
+target-version = ['py312']
+exclude = '\\.(git|hg|mypy_cache|venv|ENV|\.venv|node_modules|\.npm-cache)/|\bPython-3\\.'

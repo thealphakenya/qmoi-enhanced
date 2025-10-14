@@ -1,3 +1,8 @@
+node_modules
+.npm-cache
+dist
+build
+Python-3.*
 .next
 dist
 build

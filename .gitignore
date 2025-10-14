@@ -1,3 +1,22 @@
+# Ignore caches and generated files
+.npm-cache/
+node_modules/
+dist/
+build/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# Ignore Python-3.* source tree copies that are present in this repo
+Python-3.*/
+
+# Ignore editor and OS files
+.idea/
+.vscode/
+.coverage
 qmoi-placeholder-scan-report.txt
 cloud-sync/
 *.log
