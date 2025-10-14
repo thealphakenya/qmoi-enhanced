@@ -1,0 +1,36 @@
+name: Auto Fix and Rebase
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch: {}
+
+jobs:
+  auto-fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js (if needed)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install jq and curl
+        run: sudo apt-get update && sudo apt-get install -y jq curl
+
+      - name: Make script executable
+        run: chmod +x scripts/auto_fix.sh
+
+      - name: Run auto-fix script
+        env:
+          GITHUB_TOKEN: ${{ secrets.AUTOMERGE_TOKEN || github.token }}
+          TARGET_BRANCH: ${{ github.event.pull_request.base.ref || 'main' }}
+        run: |
+          ./scripts/auto_fix.sh
