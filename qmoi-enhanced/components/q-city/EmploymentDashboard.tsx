@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
@@ -13,8 +16,6 @@ import {
   Settings, 
   Plus,
   UserPlus,
-  CreditCard,
-  BarChart3,
   Building2,
   Zap,
   Target,

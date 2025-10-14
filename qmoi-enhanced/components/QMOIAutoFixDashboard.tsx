@@ -1,13 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Separator } from "@/components/ui/separator";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import { Badge } from "@/components/ui/badge"; // Keep this import if Badge is used
+import { Progress } from "@/components/ui/progress"; // Keep this import if Progress is used
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"; // Keep this import if Tabs is used
+import { Alert, AlertDescription } from "@/components/ui/alert"; // Keep this import if Alert is used
+import { Separator } from "@/components/ui/separator"; // Keep this import if Separator is used
 import { 
   RefreshCw, 
   CheckCircle, 

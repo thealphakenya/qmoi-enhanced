@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
 
 // SisterProjects: Shows and saves AI-suggested projects for the sister role
 export function SisterProjects() {
@@ -36,7 +37,7 @@ export function SisterProjects() {
           {suggested.map((p, i) => (
             <li key={i} className="mb-2 flex items-center justify-between">
               <span><span className="font-bold">{p.title}:</span> {p.description}</span>
-              <Button size="sm" onClick={() => saveProject(p)} disabled={saved.some(s => s.title === p.title)}>
+              <Button size="small" onClick={() => saveProject(p)} disabled={saved.some(s => s.title === p.title)}>
                 {saved.some(s => s.title === p.title) ? 'Saved' : 'Save'}
               </Button>
             </li>

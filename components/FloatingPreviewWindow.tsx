@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
 import { Progress } from "@/components/ui/progress";
 import { FaTimes, FaDownload, FaPlay, FaPause, FaVolumeUp, FaExpand } from 'react-icons/fa';
 

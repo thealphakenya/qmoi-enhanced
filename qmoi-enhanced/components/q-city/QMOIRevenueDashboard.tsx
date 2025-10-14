@@ -264,18 +264,18 @@ const QMOIRevenueDashboard: React.FC = () => {
         </div>
         <div className="flex items-center gap-2">
           <Button
-            variant="outline"
-            size="sm"
+            variant="outlined"
+            size="small"
             onClick={() => setShowSensitiveData(!showSensitiveData)}
           >
             {showSensitiveData ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             {showSensitiveData ? 'Hide' : 'Show'} Sensitive Data
           </Button>
-          <Button variant="outline" size="sm" onClick={exportDashboardData}>
+          <Button variant="outlined" size="small" onClick={exportDashboardData}>
             <Download className="h-4 w-4 mr-2" />
             Export
           </Button>
-          <Button variant="outline" size="sm" onClick={fetchDashboardData}>
+          <Button variant="outlined" size="small" onClick={fetchDashboardData}>
             <RefreshCw className="h-4 w-4 mr-2" />
             Refresh
           </Button>

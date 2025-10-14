@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minimize2, Maximize2, Settings, Volume2, VolumeX, Mic, MicOff } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import Button from '@mui/material/Button';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
 import { Badge } from '@/components/ui/badge';
 import './QAvatar.accessibility.css';
 import { useToast } from '@/components/ui/use-toast';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import Button from '@mui/material/Button';
 import { useToast } from "@/components/ui/use-toast";
 
 interface Network {

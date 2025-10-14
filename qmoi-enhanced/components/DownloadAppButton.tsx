@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Button } from "@/components/ui/button"
+import Button from '@mui/material/Button';
 
 // Download URLs per device type (customize as needed)
 const DOWNLOAD_URLS: Record<string, string> = {
@@ -41,7 +41,7 @@ export function DownloadAppButton() {
   if (!show) return null;
   return (
     <>
-      <Button size="sm" className="ml-2 bg-blue-700 text-white" onClick={() => setConfirm(true)} disabled={downloading}>
+  <Button size="small" className="ml-2 bg-blue-700 text-white" onClick={() => setConfirm(true)} disabled={downloading}>
         {downloading ? "Downloading..." : "Download App"}
       </Button>
       {confirm && (
@@ -49,8 +49,8 @@ export function DownloadAppButton() {
           <div className="bg-gray-900 p-6 rounded shadow-lg text-green-200">
             <div className="mb-4">Download and install the app for your device ({device})?</div>
             <div className="flex gap-4">
-              <Button size="sm" className="bg-blue-700 text-white" onClick={() => { setConfirm(false); handleDownload(); }}>Yes, Download</Button>
-              <Button size="sm" variant="outline" onClick={() => setConfirm(false)}>Cancel</Button>
+              <Button size="small" className="bg-blue-700 text-white" onClick={() => { setConfirm(false); handleDownload(); }}>Yes, Download</Button>
+              <Button size="small" variant="outlined" onClick={() => setConfirm(false)}>Cancel</Button>
             </div>
           </div>
         </div>

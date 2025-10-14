@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Button } from "@/components/ui/button";
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+// import { Badge } from "@/components/ui/badge";
+// import { Progress } from "@/components/ui/progress";
 import { FloatingPreviewWindow } from './FloatingPreviewWindow';
 import { AIRequestRouter } from '../src/services/AIRequestRouter';
 import { MultiUserSessionManager } from '../src/services/MultiUserSessionManager';

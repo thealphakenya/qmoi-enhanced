@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import { Badge } from '@/components/ui/badge';
 
 // Notification system for real-time events (Colab jobs, project status, etc.)

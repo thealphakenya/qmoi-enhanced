@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import QCityDevicePanel from './QCityDevicePanel';
 import QVillage from './QVillage';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Server, Cloud, Database, Globe, Shield } from 'lucide-react';

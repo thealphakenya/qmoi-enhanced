@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
 
 export function MediaPreviewWindow() {
   const [mediaUrl, setMediaUrl] = useState('');
@@ -17,7 +18,7 @@ export function MediaPreviewWindow() {
         <h3 className="font-bold mb-2">Media Preview</h3>
         <div className="mb-2">
           <input type="text" placeholder="Paste movie/YouTube/audio URL" className="border p-1 rounded w-2/3 mr-2" id="media-url" />
-          <Button size="sm" onClick={() => {
+          <Button size="small" onClick={() => {
             const input = document.getElementById('media-url') as HTMLInputElement;
             if (input && input.value) {
               if (input.value.includes('youtube.com') || input.value.includes('youtu.be')) handlePreview(input.value, 'youtube');
