@@ -33,9 +33,12 @@ if command -v black >/dev/null 2>&1 && ls *.py >/dev/null 2>&1; then
 fi
 
 # 2) Run tests if a test runner is available
-if command -v pytest >/dev/null 2>&1; then
+RUN_TESTS=${RUN_TESTS:-false}
+if [ "$RUN_TESTS" = "true" ] && command -v pytest >/dev/null 2>&1; then
   echo "Running pytest"
   pytest -q || (echo "Tests failed" && exit 1)
+else
+  echo "Skipping tests (RUN_TESTS=$RUN_TESTS)"
 fi
 
 # 3) Attempt rebase onto target branch

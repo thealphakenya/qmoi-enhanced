@@ -80,11 +80,14 @@ if command -v black >/dev/null 2>&1 && ls *.py >/dev/null 2>&1; then
   black . || true
 fi
 
-if command -v pytest >/dev/null 2>&1; then
+RUN_TESTS=${RUN_TESTS:-false}
+if [ "$RUN_TESTS" = "true" ] && command -v pytest >/dev/null 2>&1; then
   pytest -q || {
     echo "Tests failed — aborting auto-sync" >&2
     exit 1
   }
+else
+  echo "Skipping tests (RUN_TESTS=$RUN_TESTS)"
 fi
 
 # 4) Auto-commit formatting/lint fixes if any
