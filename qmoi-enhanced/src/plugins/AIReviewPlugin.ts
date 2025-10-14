@@ -21,19 +21,23 @@ export const AIReviewPlugin: QmoiPlugin = {
       "Fix the syntax error in main.py to proceed.",
       "Use the auto-fix feature for common errors.",
     ];
-    return (
-      <div>
-        <h4>AI Review</h4>
-        <ul>
-          {actions.map((a, i) => (
-            <li key={i}>{a.type} {a.file} ({a.time}) {a.message ? `- ${a.message}` : ""}</li>
-          ))}
-        </ul>
-        <h5>AI Suggestions</h5>
-        <ul>
-          {feedback.map((f, i) => <li key={i}>{f}</li>)}
-        </ul>
-      </div>
+    return React.createElement(
+      'div',
+      null,
+      React.createElement('h4', null, 'AI Review'),
+      React.createElement(
+        'ul',
+        null,
+        actions.map((a, i) =>
+          React.createElement('li', { key: i }, `${a.type} ${a.file} (${a.time})${a.message ? ` - ${a.message}` : ''}`)
+        )
+      ),
+      React.createElement('h5', null, 'AI Suggestions'),
+      React.createElement(
+        'ul',
+        null,
+        feedback.map((f, i) => React.createElement('li', { key: i }, f))
+      )
     );
   },
 }; 

@@ -11,9 +11,9 @@ export default function AuditLogPanel() {
   const [format, setFormat] = useState("json");
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetchLogs();
+    fetchLogsQMOI();
   }, [filter]);
-  function fetchLogs() {
+  function fetchLogsQMOI() {
     setLoading(true);
     const params = new URLSearchParams({ ...filter, format });
     fetch(`/api/qcity/audit-log?${params.toString()}`, {
@@ -25,7 +25,7 @@ export default function AuditLogPanel() {
       .then((data) => {
         setLogs(
           format === "csv"
-            ? data.split("\n").map((l: string) => l.split(","))
+            ? data.split("\n").map(function(l: string) { return l.split(","); })
             : data.logs || [],
         );
         setLoading(false);
@@ -33,7 +33,7 @@ export default function AuditLogPanel() {
   }
   function exportLogs(fmt: string) {
     setFormat(fmt);
-    fetchLogs();
+    fetchLogsQMOI();
   }
   return (
     <div className="p-4 bg-gray-900 text-white rounded shadow-lg">

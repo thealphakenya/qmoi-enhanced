@@ -1,0 +1,14 @@
+{
+  "name": "QMOI Elastic Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": [
+    "--memory=16g",
+    "--cpus=8"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postCreateCommand": "npm install --legacy-peer-deps"
+}

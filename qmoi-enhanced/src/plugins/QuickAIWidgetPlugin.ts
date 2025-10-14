@@ -21,17 +21,21 @@ export const QuickAIWidgetPlugin: QmoiPlugin = {
       "Run Diagnostics",
       "Open AI Console",
     ];
-    return (
-      <div>
-        <h4>Quick AI Widget</h4>
-        <ul>
-          {insights.map((i, idx) => <li key={idx}>{i}</li>)}
-        </ul>
-        <h5>Quick Actions</h5>
-        <ul>
-          {actions.map((a, idx) => <li key={idx}><button>{a}</button></li>)}
-        </ul>
-      </div>
+    return React.createElement(
+      'div',
+      null,
+      React.createElement('h4', null, 'Quick AI Widget'),
+      React.createElement(
+        'ul',
+        null,
+        insights.map((i, idx) => React.createElement('li', { key: idx }, i))
+      ),
+      React.createElement('h5', null, 'Quick Actions'),
+      React.createElement(
+        'ul',
+        null,
+        actions.map((a, idx) => React.createElement('li', { key: idx }, React.createElement('button', null, a)))
+      )
     );
   },
 }; 

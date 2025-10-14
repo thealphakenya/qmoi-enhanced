@@ -23,13 +23,17 @@ export const OptimizationSuggestionPlugin: QmoiPlugin = {
       state.storageFree < 15 ? "Free up storage space for optimal operation." : null,
       state.backgroundApps > 5 ? "Close unused background apps to save memory." : null,
     ].filter(Boolean);
-    return (
-      <div>
-        <h4>Optimization Suggestions</h4>
-        <ul>
-          {suggestions.length ? suggestions.map((s, i) => <li key={i}>{s}</li>) : <li>System is fully optimized.</li>}
-        </ul>
-      </div>
+    return React.createElement(
+      'div',
+      null,
+      React.createElement('h4', null, 'Optimization Suggestions'),
+      React.createElement(
+        'ul',
+        null,
+        suggestions.length
+          ? suggestions.map((s, i) => React.createElement('li', { key: i }, s))
+          : [React.createElement('li', { key: 'optimized' }, 'System is fully optimized.')]
+      )
     );
   },
 }; 

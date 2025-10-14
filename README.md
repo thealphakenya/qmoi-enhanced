@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# qmoi-enhanced-new-masterkingkenya
-=======
 # qmoi-enhanced-new-themegakenya
 
 ## 📚 Full App List & Features
@@ -142,3 +139,23 @@ Edit
 
 # QMOI AUTO-ENHANCE: Updated README.md with latest automation, error-fix, and install results.
 auto_updater.py
+
+# QMOI Extension: Universal AI Agent
+
+![QMOI Extension Icon](./assets/qmoi-extension-icon.png)
+
+QMOI Extension is an always-on, independent, self-evolving AI agent that auto-injects itself into any workspace, codespace, browser, or platform. It features:
+- Automated chat interface (like Copilot Chat/Cursor, but enhanced)
+- Auto-creation of all required files/settings (e.g., `qmoi.json`)
+- Advanced styles, themes, floating windows, and animated icons
+- Revenue generation, employment, and payment automation (10+ methods)
+- Real-time, auto-updating graphs for all automations and revenue
+- Direct QMOI model/memory, always in sync across all apps, platforms, and emails
+- Downloadable as a browser/IDE extension, always up-to-date
+- Strictly master/sister-only access to advanced features and data
+- Error-resilient: runs even if there are local problems or file errors
+- Autorelease and auto-marketing across all platforms
+
+See `QMOIEXTENTION.md` for full details, features, and usage.
+
+---

@@ -1,0 +1,32 @@
+{
+  "name": "QMOI Universal Extension",
+  "id": "qmoi-universal-extension",
+  "description": "Self-installing, self-healing, parallel, and production-ready QMOI extension for all platforms and codespaces.",
+  "version": "1.0.0",
+  "author": "QMOI Team",
+  "icons": {
+    "16": "assets/qmoi-icon-16.png",
+    "32": "assets/qmoi-icon-32.png",
+    "128": "assets/qmoi-icon-128.png"
+  },
+  "main": "scripts/qmoi-auto-setup.js",
+  "activationEvents": ["*"],
+  "contributes": {
+    "commands": [
+      { "command": "qmoi.start", "title": "Start QMOI Extension" },
+      { "command": "qmoi.healthCheck", "title": "QMOI Health Check" }
+    ],
+    "icons": [
+      { "icon": "assets/qmoi-icon-32.png", "theme": "default" },
+      { "icon": "assets/qmoi-icon-32-animated.gif", "theme": "animated" }
+    ]
+  },
+  "qcityElastic": true,
+  "permanent": true,
+  "autoParallel": true,
+  "autoInstall": true,
+  "autoStart": true,
+  "autoBuild": true,
+  "autoFixErrors": true,
+  "autoHealth": true
+}
