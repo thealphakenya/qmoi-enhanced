@@ -1,6 +1,7 @@
 MASTER_EMAIL = "rovicviccy@gmail.com"
 MASTER_PHONE = "+254786322855"
 
+
 class QmoiEarning:
     def __init__(self):
         self.earnings = 0
@@ -36,10 +37,11 @@ class QmoiEarning:
         for entry in self.audit_log:
             print(entry)
 
+
 if __name__ == "__main__":
     q = QmoiEarning()
     q.link_account("Airtel Money")
     q.link_account("Mpesa")
     q.earn(1000)
     q.deposit("Airtel Money", 500, by_master=True)
-    q.show_audit_log() 
+    q.show_audit_log()

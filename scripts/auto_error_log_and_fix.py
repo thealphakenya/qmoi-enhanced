@@ -5,6 +5,7 @@ from datetime import datetime
 
 ERROR_LOG_FILE = "logs/all_errors_autologged.json"
 
+
 def scan_errors():
     errors = []
     # Scan for lint errors
@@ -20,10 +21,14 @@ def scan_errors():
     # ...existing code...
     return errors
 
+
 def log_errors(errors):
     os.makedirs(os.path.dirname(ERROR_LOG_FILE), exist_ok=True)
     with open(ERROR_LOG_FILE, "w") as f:
-        json.dump({"timestamp": datetime.utcnow().isoformat(), "errors": errors}, f, indent=2)
+        json.dump(
+            {"timestamp": datetime.utcnow().isoformat(), "errors": errors}, f, indent=2
+        )
+
 
 def auto_fix_errors(errors):
     fixed = []
@@ -36,6 +41,7 @@ def auto_fix_errors(errors):
         except Exception as e:
             fixed.append({"msg": err["msg"], "status": f"failed: {e}"})
     return fixed
+
 
 if __name__ == "__main__":
     errors = scan_errors()

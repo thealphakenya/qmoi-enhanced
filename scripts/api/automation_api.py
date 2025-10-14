@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="AI Automation API",
     description="API endpoints for the AI-powered automation system",
-    version="1.0.0"
+    version="1.0.0",
 )
 
 # Add CORS middleware
@@ -41,13 +41,16 @@ automation = AIAutomation()
 # Security
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
+
 # Models
 class Token(BaseModel):
     access_token: str
     token_type: str
 
+
 class TokenData(BaseModel):
     username: Optional[str] = None
+
 
 class User(BaseModel):
     username: str
@@ -55,8 +58,10 @@ class User(BaseModel):
     full_name: Optional[str] = None
     disabled: Optional[bool] = None
 
+
 class UserInDB(User):
     hashed_password: str
+
 
 class AutomationConfig(BaseModel):
     automation_interval: int = Field(..., ge=1)
@@ -64,9 +69,11 @@ class AutomationConfig(BaseModel):
     max_concurrent_tasks: int = Field(..., ge=1)
     task_timeout: int = Field(..., ge=1)
 
+
 class OptimizationRequest(BaseModel):
     target: str
     parameters: Dict[str, Any]
+
 
 class TaskResponse(BaseModel):
     id: str
@@ -74,28 +81,34 @@ class TaskResponse(BaseModel):
     status: str
     result: Optional[Dict[str, Any]] = None
 
+
 class SystemMetrics(BaseModel):
     resources: Dict[str, float]
     performance: Dict[str, float]
     errors: List[Dict[str, Any]]
     timestamp: str
 
+
 # Security functions
 def get_user(username: str):
     # Implement user retrieval from database
     pass
 
+
 def authenticate_user(username: str, password: str):
     # Implement user authentication
     pass
+
 
 def create_access_token(data: dict):
     # Implement token creation
     pass
 
+
 async def get_current_user(token: str = Depends(oauth2_scheme)):
     # Implement current user retrieval
     pass
+
 
 # API Endpoints
 @app.post("/token", response_model=Token)
@@ -110,6 +123,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     access_token = create_access_token(data={"sub": user.username})
     return {"access_token": access_token, "token_type": "bearer"}
 
+
 @app.get("/automation/status")
 async def get_automation_status(current_user: User = Depends(get_current_user)):
     """Get current automation system status"""
@@ -117,31 +131,40 @@ async def get_automation_status(current_user: User = Depends(get_current_user)):
         return {
             "running": automation.running,
             "active_tasks": len(automation.tasks),
-            "system_state": automation._collect_system_state().__dict__
+            "system_state": automation._collect_system_state().__dict__,
         }
     except Exception as e:
         logger.error(f"Error getting automation status: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/automation/start")
 async def start_automation(current_user: User = Depends(get_current_user)):
     """Start the automation system"""
     try:
         automation.start()
-        return {"status": "started", "message": "Automation system started successfully"}
+        return {
+            "status": "started",
+            "message": "Automation system started successfully",
+        }
     except Exception as e:
         logger.error(f"Error starting automation: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/automation/stop")
 async def stop_automation(current_user: User = Depends(get_current_user)):
     """Stop the automation system"""
     try:
         automation.stop()
-        return {"status": "stopped", "message": "Automation system stopped successfully"}
+        return {
+            "status": "stopped",
+            "message": "Automation system stopped successfully",
+        }
     except Exception as e:
         logger.error(f"Error stopping automation: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/automation/tasks")
 async def get_tasks(current_user: User = Depends(get_current_user)):
@@ -152,10 +175,10 @@ async def get_tasks(current_user: User = Depends(get_current_user)):
         logger.error(f"Error getting tasks: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.post("/automation/tasks")
 async def create_task(
-    task: AutomationTask,
-    current_user: User = Depends(get_current_user)
+    task: AutomationTask, current_user: User = Depends(get_current_user)
 ):
     """Create a new automation task"""
     try:
@@ -164,6 +187,7 @@ async def create_task(
     except Exception as e:
         logger.error(f"Error creating task: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/automation/metrics")
 async def get_metrics(current_user: User = Depends(get_current_user)):
@@ -174,16 +198,16 @@ async def get_metrics(current_user: User = Depends(get_current_user)):
             resources=state.resources,
             performance=state.performance,
             errors=state.errors,
-            timestamp=state.timestamp
+            timestamp=state.timestamp,
         )
     except Exception as e:
         logger.error(f"Error getting metrics: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.post("/automation/optimize")
 async def optimize_system(
-    request: OptimizationRequest,
-    current_user: User = Depends(get_current_user)
+    request: OptimizationRequest, current_user: User = Depends(get_current_user)
 ):
     """Trigger system optimization"""
     try:
@@ -194,13 +218,14 @@ async def optimize_system(
             status="pending",
             parameters=request.parameters,
             created_at=datetime.now().isoformat(),
-            updated_at=datetime.now().isoformat()
+            updated_at=datetime.now().isoformat(),
         )
         automation.tasks.append(task)
         return {"status": "optimization_scheduled", "task_id": task.id}
     except Exception as e:
         logger.error(f"Error scheduling optimization: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/automation/history")
 async def get_history(current_user: User = Depends(get_current_user)):
@@ -211,23 +236,30 @@ async def get_history(current_user: User = Depends(get_current_user)):
         logger.error(f"Error getting history: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/automation/trends")
 async def get_trends(current_user: User = Depends(get_current_user)):
     """Get system performance trends"""
     try:
         return {
-            "resources": automation._analyze_resource_trends(automation.system_state_history[-10:]),
-            "performance": automation._analyze_performance_trends(automation.system_state_history[-10:]),
-            "errors": automation._analyze_error_trends(automation.system_state_history[-10:])
+            "resources": automation._analyze_resource_trends(
+                automation.system_state_history[-10:]
+            ),
+            "performance": automation._analyze_performance_trends(
+                automation.system_state_history[-10:]
+            ),
+            "errors": automation._analyze_error_trends(
+                automation.system_state_history[-10:]
+            ),
         }
     except Exception as e:
         logger.error(f"Error getting trends: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.post("/automation/config")
 async def update_config(
-    config: AutomationConfig,
-    current_user: User = Depends(get_current_user)
+    config: AutomationConfig, current_user: User = Depends(get_current_user)
 ):
     """Update automation configuration"""
     try:
@@ -236,6 +268,7 @@ async def update_config(
     except Exception as e:
         logger.error(f"Error updating config: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/automation/config")
 async def get_config(current_user: User = Depends(get_current_user)):
@@ -246,7 +279,9 @@ async def get_config(current_user: User = Depends(get_current_user)):
         logger.error(f"Error getting config: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 # Run the API
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000) 
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)

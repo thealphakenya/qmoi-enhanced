@@ -24,6 +24,7 @@ SCRIPT_FILE = Path(__file__).resolve().parents[0] / "qmoi-unified-push.py"
 START_MARKER = "<!-- AUTO-CLI-USAGE:START -->"
 END_MARKER = "<!-- AUTO-CLI-USAGE:END -->"
 
+
 def get_cli_help():
     """Run the CLI script and capture --help output"""
     try:
@@ -32,7 +33,7 @@ def get_cli_help():
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
-            check=True
+            check=True,
         )
         output = result.stdout.strip()
         if not output:
@@ -45,6 +46,7 @@ def get_cli_help():
     except FileNotFoundError:
         print(f"❌ Script not found: {SCRIPT_FILE}")
         sys.exit(1)
+
 
 def update_readme(cli_output):
     """Inject CLI usage block into README.md with validation"""
@@ -59,17 +61,10 @@ def update_readme(cli_output):
         print(f"   {START_MARKER}\n   {END_MARKER}")
         sys.exit(1)
 
-    usage_block = (
-        f"{START_MARKER}\n"
-        f"```bash\n{cli_output}\n```\n"
-        f"{END_MARKER}"
-    )
+    usage_block = f"{START_MARKER}\n" f"```bash\n{cli_output}\n```\n" f"{END_MARKER}"
 
     new_content = re.sub(
-        f"{START_MARKER}.*?{END_MARKER}",
-        usage_block,
-        content,
-        flags=re.DOTALL
+        f"{START_MARKER}.*?{END_MARKER}", usage_block, content, flags=re.DOTALL
     )
 
     # Validation: ensure new block exists & not empty
@@ -86,9 +81,11 @@ def update_readme(cli_output):
     README_FILE.write_text(new_content, encoding="utf-8")
     print(f"✅ README.md updated successfully at {timestamp}")
 
+
 def main():
     cli_output = get_cli_help()
     update_readme(cli_output)
+
 
 if __name__ == "__main__":
     main()

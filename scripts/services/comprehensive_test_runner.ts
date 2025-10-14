@@ -1,7 +1,7 @@
-import { exec } from 'child_process';
-import { promisify } from 'util';
+import { exec } from "child_process";
+import { promisify } from "util";
 // import * as fs from 'fs';
-import * as path from 'path';
+import * as path from "path";
 
 const execAsync = promisify(exec);
 
@@ -25,86 +25,62 @@ class ComprehensiveTestRunner {
   private results: TestResult[] = [];
   private testSuites: TestSuite[] = [
     {
-      name: 'Linting',
+      name: "Linting",
       commands: [
         "npx eslint '**/*.{js,jsx,ts,tsx}'",
-        'npx eslint . --fix',
-        'npx prettier --check .',
-        'npx prettier --write .'
+        "npx eslint . --fix",
+        "npx prettier --check .",
+        "npx prettier --write .",
       ],
-      fallbackCommands: [
-        'npm run lint',
-        'npm run lint:fix'
-      ]
+      fallbackCommands: ["npm run lint", "npm run lint:fix"],
     },
     {
-      name: 'Type Checking',
-      commands: [
-        'npx tsc --noEmit',
-        'npx tsc --noEmit --skipLibCheck'
-      ],
-      fallbackCommands: [
-        'npm run type-check',
-        'npm run build'
-      ]
+      name: "Type Checking",
+      commands: ["npx tsc --noEmit", "npx tsc --noEmit --skipLibCheck"],
+      fallbackCommands: ["npm run type-check", "npm run build"],
     },
     {
-      name: 'Unit Tests',
-      commands: [
-        'npm test',
-        'npm run test:unit',
-        'npx jest',
-        'npx vitest run'
-      ],
+      name: "Unit Tests",
+      commands: ["npm test", "npm run test:unit", "npx jest", "npx vitest run"],
       fallbackCommands: [
-        'npm run test -- --passWithNoTests',
-        'npx jest --passWithNoTests'
-      ]
+        "npm run test -- --passWithNoTests",
+        "npx jest --passWithNoTests",
+      ],
     },
     {
-      name: 'Integration Tests',
-      commands: [
-        'npm run test:integration',
-        'npm run test:e2e'
-      ],
-      fallbackCommands: [
-        'npm run test:integration -- --passWithNoTests'
-      ],
-      required: false
+      name: "Integration Tests",
+      commands: ["npm run test:integration", "npm run test:e2e"],
+      fallbackCommands: ["npm run test:integration -- --passWithNoTests"],
+      required: false,
     },
     {
-      name: 'Build Tests',
-      commands: [
-        'npm run build',
-        'npm run build:check'
-      ],
-      fallbackCommands: [
-        'npm run build --dry-run'
-      ]
+      name: "Build Tests",
+      commands: ["npm run build", "npm run build:check"],
+      fallbackCommands: ["npm run build --dry-run"],
     },
     {
-      name: 'Dependency Checks',
-      commands: [
-        'npm audit',
-        'npm audit fix',
-        'npm outdated'
-      ],
-      fallbackCommands: [
-        'npm ls'
-      ]
+      name: "Dependency Checks",
+      commands: ["npm audit", "npm audit fix", "npm outdated"],
+      fallbackCommands: ["npm ls"],
     },
     {
-      name: 'File System Checks',
+      name: "File System Checks",
       commands: [],
-      required: false
-    }
+      required: false,
+    },
   ];
 
-  async runAllTests(): Promise<{ success: boolean; results: TestResult[]; summary: any }> {
+  async runAllTests(): Promise<{
+    success: boolean;
+    results: TestResult[];
+    summary: any;
+  }> {
     this.results = [];
     const startTime = Date.now();
 
-    logger.info('[COMPREHENSIVE-TEST-RUNNER] Starting comprehensive test suite...');
+    logger.info(
+      "[COMPREHENSIVE-TEST-RUNNER] Starting comprehensive test suite...",
+    );
 
     // Run each test suite
     for (const suite of this.testSuites) {
@@ -120,12 +96,12 @@ class ComprehensiveTestRunner {
     const totalDuration = Date.now() - startTime;
     const summary = this.generateSummary(totalDuration);
 
-    logger.info('[COMPREHENSIVE-TEST-RUNNER] Test suite complete:', summary);
+    logger.info("[COMPREHENSIVE-TEST-RUNNER] Test suite complete:", summary);
 
     return {
       success: summary.overallSuccess,
       results: this.results,
-      summary
+      summary,
     };
   }
 
@@ -138,7 +114,7 @@ class ComprehensiveTestRunner {
     for (const command of suite.commands) {
       const result = await this.runCommand(command, suite.name);
       this.results.push(result);
-      
+
       if (result.success) {
         suiteSuccess = true;
         break;
@@ -148,9 +124,12 @@ class ComprehensiveTestRunner {
     // If primary commands failed and fallbacks exist, try them
     if (!suiteSuccess && suite.fallbackCommands) {
       for (const command of suite.fallbackCommands) {
-        const result = await this.runCommand(command, `${suite.name} (fallback)`);
+        const result = await this.runCommand(
+          command,
+          `${suite.name} (fallback)`,
+        );
         this.results.push(result);
-        
+
         if (result.success) {
           suiteSuccess = true;
           break;
@@ -164,62 +143,63 @@ class ComprehensiveTestRunner {
     }
   }
 
-  private async runCommand(command: string, suiteName: string): Promise<TestResult> {
+  private async runCommand(
+    command: string,
+    suiteName: string,
+  ): Promise<TestResult> {
     const startTime = Date.now();
-    
+
     try {
       logger.info(`[COMPREHENSIVE-TEST-RUNNER] Running: ${command}`);
       const { stdout, stderr } = await execAsync(command, { timeout: 300000 }); // 5 minute timeout
       const duration = Date.now() - startTime;
-      
+
       const result: TestResult = {
         success: true,
         output: stdout,
         error: stderr || undefined,
         command,
         duration,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
 
-      logger.info(`[COMPREHENSIVE-TEST-RUNNER] ${suiteName} passed in ${duration}ms`);
+      logger.info(
+        `[COMPREHENSIVE-TEST-RUNNER] ${suiteName} passed in ${duration}ms`,
+      );
       return result;
-
     } catch (error: any) {
       const duration = Date.now() - startTime;
-      
+
       const result: TestResult = {
         success: false,
-        output: error.stdout || '',
+        output: error.stdout || "",
         error: error.stderr || error.message,
         command,
         duration,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
 
-      logger.warn(`[COMPREHENSIVE-TEST-RUNNER] ${suiteName} failed:`, error.message);
+      logger.warn(
+        `[COMPREHENSIVE-TEST-RUNNER] ${suiteName} failed:`,
+        error.message,
+      );
       return result;
     }
   }
 
   private async runFileSystemChecks(): Promise<void> {
-    logger.info('[COMPREHENSIVE-TEST-RUNNER] Running file system checks...');
+    logger.info("[COMPREHENSIVE-TEST-RUNNER] Running file system checks...");
 
     const criticalFiles = [
-      'package.json',
-      'tsconfig.json',
-      'next.config.mjs',
-      'tailwind.config.ts',
-      'components/QConverse.tsx',
-      'scripts/services/qmoi_autodev_daemon.ts'
+      "package.json",
+      "tsconfig.json",
+      "next.config.mjs",
+      "tailwind.config.ts",
+      "components/QConverse.tsx",
+      "scripts/services/qmoi_autodev_daemon.ts",
     ];
 
-    const criticalDirs = [
-      'components',
-      'scripts',
-      'api',
-      'hooks',
-      'types'
-    ];
+    const criticalDirs = ["components", "scripts", "api", "hooks", "types"];
 
     let fsChecksPassed = 0;
     let fsChecksTotal = 0;
@@ -234,11 +214,15 @@ class ComprehensiveTestRunner {
           const accessible = fs.accessSync(file, fs.constants.R_OK);
           if (accessible === undefined) {
             fsChecksPassed++;
-            logger.info(`[COMPREHENSIVE-TEST-RUNNER] File check passed: ${file}`);
+            logger.info(
+              `[COMPREHENSIVE-TEST-RUNNER] File check passed: ${file}`,
+            );
           }
         }
       } catch (error: any) {
-        logger.warn(`[COMPREHENSIVE-TEST-RUNNER] File check failed: ${file} - ${error.message}`);
+        logger.warn(
+          `[COMPREHENSIVE-TEST-RUNNER] File check failed: ${file} - ${error.message}`,
+        );
       }
     }
 
@@ -251,73 +235,81 @@ class ComprehensiveTestRunner {
           const stats = fs.statSync(dir);
           if (stats.isDirectory()) {
             fsChecksPassed++;
-            logger.info(`[COMPREHENSIVE-TEST-RUNNER] Directory check passed: ${dir}`);
+            logger.info(
+              `[COMPREHENSIVE-TEST-RUNNER] Directory check passed: ${dir}`,
+            );
           }
         }
       } catch (error: any) {
-        logger.warn(`[COMPREHENSIVE-TEST-RUNNER] Directory check failed: ${dir} - ${error.message}`);
+        logger.warn(
+          `[COMPREHENSIVE-TEST-RUNNER] Directory check failed: ${dir} - ${error.message}`,
+        );
       }
     }
 
     const result: TestResult = {
       success: fsChecksPassed === fsChecksTotal,
       output: `File system checks: ${fsChecksPassed}/${fsChecksTotal} passed`,
-      command: 'File System Checks',
+      command: "File System Checks",
       duration: 0,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
     this.results.push(result);
   }
 
   private async runQMOISpecificTests(): Promise<void> {
-    logger.info('[COMPREHENSIVE-TEST-RUNNER] Running QMOI-specific tests...');
+    logger.info("[COMPREHENSIVE-TEST-RUNNER] Running QMOI-specific tests...");
 
     const qmoiTests = [
       {
-        name: 'Q-Converse Component',
-        test: () => this.testQConverseComponent()
+        name: "Q-Converse Component",
+        test: () => this.testQConverseComponent(),
       },
       {
-        name: 'Auto-Dev Daemon',
-        test: () => this.testAutoDevDaemon()
+        name: "Auto-Dev Daemon",
+        test: () => this.testAutoDevDaemon(),
       },
       {
-        name: 'API Endpoints',
-        test: () => this.testAPIEndpoints()
-      }
+        name: "API Endpoints",
+        test: () => this.testAPIEndpoints(),
+      },
     ];
 
     for (const test of qmoiTests) {
       try {
         await test.test();
-        logger.info(`[COMPREHENSIVE-TEST-RUNNER] QMOI test passed: ${test.name}`);
+        logger.info(
+          `[COMPREHENSIVE-TEST-RUNNER] QMOI test passed: ${test.name}`,
+        );
       } catch (error: any) {
-        logger.warn(`[COMPREHENSIVE-TEST-RUNNER] QMOI test failed: ${test.name} - ${error.message}`);
+        logger.warn(
+          `[COMPREHENSIVE-TEST-RUNNER] QMOI test failed: ${test.name} - ${error.message}`,
+        );
       }
     }
   }
 
   private async testQConverseComponent(): Promise<void> {
-    const componentPath = 'components/QConverse.tsx';
-    
+    const componentPath = "components/QConverse.tsx";
+
     if (!fs.existsSync(componentPath)) {
-      throw new Error('Q-Converse component not found');
+      throw new Error("Q-Converse component not found");
     }
 
-    const content = fs.readFileSync(componentPath, 'utf-8');
-    
+    const content = fs.readFileSync(componentPath, "utf-8");
+
     // Basic syntax checks
-    if (!content.includes('export const QConverse')) {
-      throw new Error('Q-Converse component export not found');
+    if (!content.includes("export const QConverse")) {
+      throw new Error("Q-Converse component export not found");
     }
 
-    if (!content.includes('interface QConverseProps')) {
-      throw new Error('QConverseProps interface not found');
+    if (!content.includes("interface QConverseProps")) {
+      throw new Error("QConverseProps interface not found");
     }
 
     // Check for required imports
-    const requiredImports = ['React', 'useState', 'useEffect', 'useRef'];
+    const requiredImports = ["React", "useState", "useEffect", "useRef"];
     for (const importName of requiredImports) {
       if (!content.includes(importName)) {
         throw new Error(`Required import not found: ${importName}`);
@@ -326,19 +318,19 @@ class ComprehensiveTestRunner {
   }
 
   private async testAutoDevDaemon(): Promise<void> {
-    const daemonPath = 'scripts/services/qmoi_autodev_daemon.ts';
-    
+    const daemonPath = "scripts/services/qmoi_autodev_daemon.ts";
+
     if (!fs.existsSync(daemonPath)) {
-      throw new Error('Auto-Dev daemon not found');
+      throw new Error("Auto-Dev daemon not found");
     }
 
-    const content = fs.readFileSync(daemonPath, 'utf-8');
-    
+    const content = fs.readFileSync(daemonPath, "utf-8");
+
     // Check for required components
     const requiredComponents = [
-      'QmoiAutodevDaemon',
-      'daemonLoop',
-      'ErrorRecoverySystem'
+      "QmoiAutodevDaemon",
+      "daemonLoop",
+      "ErrorRecoverySystem",
     ];
 
     for (const component of requiredComponents) {
@@ -350,32 +342,36 @@ class ComprehensiveTestRunner {
 
   private async testAPIEndpoints(): Promise<void> {
     const apiEndpoints = [
-      '/api/qmoi/autodev',
-      '/api/qcity/status',
-      '/api/health'
+      "/api/qmoi/autodev",
+      "/api/qcity/status",
+      "/api/health",
     ];
 
     for (const endpoint of apiEndpoints) {
       try {
         const response = await fetch(`http://localhost:3000${endpoint}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'status' })
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "status" }),
         });
 
         if (!response.ok) {
-          throw new Error(`API endpoint ${endpoint} returned ${response.status}`);
+          throw new Error(
+            `API endpoint ${endpoint} returned ${response.status}`,
+          );
         }
       } catch (error: any) {
         // Don't fail the entire test suite for API issues
-        logger.warn(`[COMPREHENSIVE-TEST-RUNNER] API test warning: ${endpoint} - ${error.message}`);
+        logger.warn(
+          `[COMPREHENSIVE-TEST-RUNNER] API test warning: ${endpoint} - ${error.message}`,
+        );
       }
     }
   }
 
   private generateSummary(totalDuration: number): any {
-    const passed = this.results.filter(r => r.success).length;
-    const failed = this.results.filter(r => !r.success).length;
+    const passed = this.results.filter((r) => r.success).length;
+    const failed = this.results.filter((r) => !r.success).length;
     const total = this.results.length;
 
     const successRate = total > 0 ? (passed / total) * 100 : 0;
@@ -389,24 +385,24 @@ class ComprehensiveTestRunner {
       successRate: `${successRate.toFixed(1)}%`,
       totalDuration: `${totalDuration}ms`,
       timestamp: new Date().toISOString(),
-      details: this.results.map(r => ({
+      details: this.results.map((r) => ({
         command: r.command,
         success: r.success,
         duration: r.duration,
-        error: r.error
-      }))
+        error: r.error,
+      })),
     };
 
     return summary;
   }
 
   async runQuickTest(): Promise<{ success: boolean; summary: any }> {
-    logger.info('[COMPREHENSIVE-TEST-RUNNER] Running quick test...');
+    logger.info("[COMPREHENSIVE-TEST-RUNNER] Running quick test...");
 
     const quickTests = [
-      'npm run lint --silent',
-      'npx tsc --noEmit --skipLibCheck',
-      'npm test -- --passWithNoTests'
+      "npm run lint --silent",
+      "npx tsc --noEmit --skipLibCheck",
+      "npm test -- --passWithNoTests",
     ];
 
     let passed = 0;
@@ -428,7 +424,7 @@ class ComprehensiveTestRunner {
       success,
       passed,
       total: quickTests.length,
-      results
+      results,
     };
 
     return { success, summary };
@@ -448,18 +444,19 @@ const logger = {
   },
   error: (message: string, ...args: any[]) => {
     console.error(`[ERROR] ${message}`, ...args);
-  }
+  },
 };
 
 // Auto-run if called directly
 if (require.main === module) {
-  comprehensiveTestRunner.runAllTests()
-    .then(result => {
-      console.log('Test Results:', result);
+  comprehensiveTestRunner
+    .runAllTests()
+    .then((result) => {
+      console.log("Test Results:", result);
       process.exit(result.success ? 0 : 1);
     })
-    .catch(error => {
-      console.error('Test runner failed:', error);
+    .catch((error) => {
+      console.error("Test runner failed:", error);
       process.exit(1);
     });
-} 
+}

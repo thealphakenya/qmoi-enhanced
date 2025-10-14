@@ -1,46 +1,55 @@
-const express = require('express');
-const session = require('express-session');
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-const { sendEmail, sendSlack, sendWhatsApp } = require('./qmoi_notifier.cjs');
-const axios = require('axios');
+const express = require("express");
+const session = require("express-session");
+const fs = require("fs");
+const path = require("path");
+const { execSync } = require("child_process");
+const { sendEmail, sendSlack, sendWhatsApp } = require("./qmoi_notifier.cjs");
+const axios = require("axios");
 const app = express();
 
-const LOG_FILE = './logs/qmoi_media_orchestrator.log';
-const ERROR_FIX_LOG = './logs/error_fix_summary.json';
-const GITHUB_STATUS_FILE = './logs/github_status.json';
-const MASTER_ACTIVITIES_LOG = './logs/qmoi-master-activities.log';
-const NOTIFICATIONS_LOG = './logs/qmoi-notifications.log';
+const LOG_FILE = "./logs/qmoi_media_orchestrator.log";
+const ERROR_FIX_LOG = "./logs/error_fix_summary.json";
+const GITHUB_STATUS_FILE = "./logs/github_status.json";
+const MASTER_ACTIVITIES_LOG = "./logs/qmoi-master-activities.log";
+const NOTIFICATIONS_LOG = "./logs/qmoi-notifications.log";
 // Utility: Parse JSON lines from a log file
 function parseJsonLines(filePath, max = 40) {
   if (!fs.existsSync(filePath)) return [];
-  const lines = fs.readFileSync(filePath, 'utf-8').split('\n').filter(Boolean);
-  return lines.slice(-max).map(line => {
-    try { return JSON.parse(line); } catch { return null; }
-  }).filter(Boolean);
+  const lines = fs.readFileSync(filePath, "utf-8").split("\n").filter(Boolean);
+  return lines
+    .slice(-max)
+    .map((line) => {
+      try {
+        return JSON.parse(line);
+      } catch {
+        return null;
+      }
+    })
+    .filter(Boolean);
 }
 
 // API: Get recent events from master activities and notifications logs
-app.get('/api/realtime-events', (req, res) => {
+app.get("/api/realtime-events", (req, res) => {
   const masterEvents = parseJsonLines(MASTER_ACTIVITIES_LOG, 40);
   const notificationEvents = parseJsonLines(NOTIFICATIONS_LOG, 40);
   // Flatten and tag events
   const events = [];
-  masterEvents.forEach(e => {
+  masterEvents.forEach((e) => {
     if (e.activities && Array.isArray(e.activities)) {
-      e.activities.forEach(a => events.push({
-        source: 'master',
-        ...a,
-        timestamp: a.timestamp || e.timestamp
-      }));
+      e.activities.forEach((a) =>
+        events.push({
+          source: "master",
+          ...a,
+          timestamp: a.timestamp || e.timestamp,
+        }),
+      );
     }
   });
-  notificationEvents.forEach(e => {
+  notificationEvents.forEach((e) => {
     events.push({
-      source: 'notification',
+      source: "notification",
       ...e,
-      timestamp: e.timestamp
+      timestamp: e.timestamp,
     });
   });
   // Sort by timestamp descending
@@ -48,26 +57,36 @@ app.get('/api/realtime-events', (req, res) => {
   res.json({ events });
 });
 
-
 // Enhanced: Support multiple users and biometrics
 const USERS = [
-  { username: 'Victor', password: 'Victor9798!', role: 'master', biometrics: 'enabled' },
-  { username: 'Leah', password: 'Leah2025!', role: 'sister', biometrics: 'enabled' }
+  {
+    username: "Victor",
+    password: "Victor9798!",
+    role: "master",
+    biometrics: "enabled",
+  },
+  {
+    username: "Leah",
+    password: "Leah2025!",
+    role: "sister",
+    biometrics: "enabled",
+  },
 ];
 
 function checkCredentials(user, pass) {
-  return USERS.find(u => u.username === user && u.password === pass);
+  return USERS.find((u) => u.username === user && u.password === pass);
 }
 
-app.use(session({ secret: 'qmoi-dashboard', resave: false, saveUninitialized: true }));
+app.use(
+  session({ secret: "qmoi-dashboard", resave: false, saveUninitialized: true }),
+);
 app.use(express.urlencoded({ extended: true }));
-
 
 // Enhanced login page with biometrics and features
 function requireAuth(req, res, next) {
-  if (req.path === '/health') return next();
+  if (req.path === "/health") return next();
   if (req.session && req.session.authenticated) return next();
-  if (req.method === 'POST' && req.path === '/login') return next();
+  if (req.method === "POST" && req.path === "/login") return next();
   res.send(`
     <form method="POST" action="/login" style="max-width:400px;margin:40px auto;padding:24px;background:#f9f9f9;border-radius:12px;box-shadow:0 2px 8px #0001;">
       <h2 style="text-align:center;color:#2563eb;">QMOI Dashboard Login</h2>
@@ -83,9 +102,8 @@ function requireAuth(req, res, next) {
 
 app.use(requireAuth);
 
-
 // Enhanced login with biometrics and user memory
-app.post('/login', (req, res) => {
+app.post("/login", (req, res) => {
   const { user, pass, biometrics } = req.body;
   const found = checkCredentials(user, pass);
   if (found) {
@@ -93,39 +111,40 @@ app.post('/login', (req, res) => {
     req.session.user = found.username;
     req.session.role = found.role;
     req.session.biometrics = found.biometrics;
-    res.redirect('/');
+    res.redirect("/");
   } else {
     res.send('Login failed. <a href="/">Try again</a>');
   }
 });
 
-app.get('/logout', (req, res) => {
-  req.session.destroy(() => res.redirect('/'));
+app.get("/logout", (req, res) => {
+  req.session.destroy(() => res.redirect("/"));
 });
 
-
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', time: new Date().toISOString() });
+app.get("/health", (req, res) => {
+  res.json({ status: "ok", time: new Date().toISOString() });
 });
 
-app.get('/logs', (req, res) => {
-  const logs = fs.existsSync(LOG_FILE) ? fs.readFileSync(LOG_FILE, 'utf-8') : '';
-  res.type('text/plain').send(logs);
+app.get("/logs", (req, res) => {
+  const logs = fs.existsSync(LOG_FILE)
+    ? fs.readFileSync(LOG_FILE, "utf-8")
+    : "";
+  res.type("text/plain").send(logs);
 });
 
-app.get('/error-fix-stats', (req, res) => {
+app.get("/error-fix-stats", (req, res) => {
   if (!fs.existsSync(ERROR_FIX_LOG)) return res.json({});
-  const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, 'utf-8'));
+  const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, "utf-8"));
   const latest = log[log.length - 1];
   res.json(latest);
 });
 
-app.post('/trigger-fix', (req, res) => {
+app.post("/trigger-fix", (req, res) => {
   try {
-    execSync('node ./scripts/enhanced-error-fix.js');
+    execSync("node ./scripts/enhanced-error-fix.js");
     let stats = {};
     if (fs.existsSync(ERROR_FIX_LOG)) {
-      const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, 'utf-8'));
+      const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, "utf-8"));
       stats = log[log.length - 1];
     }
     res.json({ success: true, stats });
@@ -134,19 +153,21 @@ app.post('/trigger-fix', (req, res) => {
   }
 });
 
-app.post('/send-test-notification', async (req, res) => {
+app.post("/send-test-notification", async (req, res) => {
   try {
-    await sendEmail('QMOI Test Notification', 'This is a test email from the dashboard.');
-    await sendSlack('QMOI Test Notification from dashboard.');
-    await sendWhatsApp('QMOI Test Notification from dashboard.');
+    await sendEmail(
+      "QMOI Test Notification",
+      "This is a test email from the dashboard.",
+    );
+    await sendSlack("QMOI Test Notification from dashboard.");
+    await sendWhatsApp("QMOI Test Notification from dashboard.");
     res.send('Test notification sent! <a href="/">Back</a>');
   } catch (err) {
-    res.send('Notification failed: ' + err + ' <a href="/">Back</a>');
+    res.send("Notification failed: " + err + ' <a href="/">Back</a>');
   }
 });
 
-
-app.get('/', async (req, res) => {
+app.get("/", async (req, res) => {
   // Serve a dashboard with a real-time event feed
   res.send(`
     <h1 style="text-align:center;color:#2563eb;">QMOI Dashboard</h1>
@@ -225,9 +246,9 @@ app.get('/', async (req, res) => {
 });
 
 // Add endpoint to update notification preferences
-app.post('/update-notification-prefs', express.json(), async (req, res) => {
+app.post("/update-notification-prefs", express.json(), async (req, res) => {
   try {
-    await axios.post('http://localhost:4200/api/notification-prefs', req.body);
+    await axios.post("http://localhost:4200/api/notification-prefs", req.body);
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ success: false, error: err.toString() });
@@ -235,21 +256,23 @@ app.post('/update-notification-prefs', express.json(), async (req, res) => {
 });
 
 // API endpoints
-app.get('/api/error-fix-log', (req, res) => {
+app.get("/api/error-fix-log", (req, res) => {
   if (!fs.existsSync(ERROR_FIX_LOG)) return res.json([]);
-  res.json(JSON.parse(fs.readFileSync(ERROR_FIX_LOG, 'utf-8')));
+  res.json(JSON.parse(fs.readFileSync(ERROR_FIX_LOG, "utf-8")));
 });
-app.get('/api/logs', (req, res) => {
-  if (!fs.existsSync(LOG_FILE)) return res.send('');
-  res.type('text/plain').send(fs.readFileSync(LOG_FILE, 'utf-8'));
+app.get("/api/logs", (req, res) => {
+  if (!fs.existsSync(LOG_FILE)) return res.send("");
+  res.type("text/plain").send(fs.readFileSync(LOG_FILE, "utf-8"));
 });
-app.post('/api/trigger-fix', (req, res) => {
+app.post("/api/trigger-fix", (req, res) => {
   try {
-    execSync('node ./scripts/enhanced-error-fix.js');
+    execSync("node ./scripts/enhanced-error-fix.js");
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ success: false, error: err.toString() });
   }
 });
 
-app.listen(4000, () => console.log('QMOI Dashboard running on http://localhost:4000')); 
+app.listen(4000, () =>
+  console.log("QMOI Dashboard running on http://localhost:4000"),
+);

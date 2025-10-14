@@ -1,20 +1,21 @@
 #!/usr/bin/env node
 
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
+const https = require("https");
+const fs = require("fs");
+const path = require("path");
 
 class GitLabNotificationService {
   constructor() {
-    this.gitlabToken = process.env.GITLAB_TOKEN || process.env.GITLAB_ACCESS_TOKEN;
-    this.gitlabUrl = process.env.GITLAB_URL || 'https://gitlab.com';
+    this.gitlabToken =
+      process.env.GITLAB_TOKEN || process.env.GITLAB_ACCESS_TOKEN;
+    this.gitlabUrl = process.env.GITLAB_URL || "https://gitlab.com";
     this.projectId = process.env.GITLAB_PROJECT_ID;
-    this.branch = process.env.CI_COMMIT_REF_NAME || 'main';
+    this.branch = process.env.CI_COMMIT_REF_NAME || "main";
     this.commitSha = process.env.CI_COMMIT_SHA;
     this.jobId = process.env.CI_JOB_ID;
     this.pipelineId = process.env.CI_PIPELINE_ID;
-    
-    this.logFile = path.join(process.cwd(), 'logs', 'gitlab-notifications.log');
+
+    this.logFile = path.join(process.cwd(), "logs", "gitlab-notifications.log");
     this.ensureLogDir();
   }
 
@@ -25,14 +26,14 @@ class GitLabNotificationService {
     }
   }
 
-  log(message, level = 'INFO') {
+  log(message, level = "INFO") {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${level}] ${message}\n`;
     fs.appendFileSync(this.logFile, logEntry);
     console.log(`[${level}] ${message}`);
   }
 
-  async makeGitLabRequest(endpoint, method = 'GET', body = null) {
+  async makeGitLabRequest(endpoint, method = "GET", body = null) {
     return new Promise((resolve, reject) => {
       const options = {
         hostname: new URL(this.gitlabUrl).hostname,
@@ -40,16 +41,16 @@ class GitLabNotificationService {
         path: `/api/v4${endpoint}`,
         method,
         headers: {
-          'Authorization': `Bearer ${this.gitlabToken}`,
-          'Content-Type': 'application/json',
-          'User-Agent': 'QMOI-GitLab-Notifications/1.0'
-        }
+          Authorization: `Bearer ${this.gitlabToken}`,
+          "Content-Type": "application/json",
+          "User-Agent": "QMOI-GitLab-Notifications/1.0",
+        },
       };
 
       const req = https.request(options, (res) => {
-        let data = '';
-        res.on('data', chunk => data += chunk);
-        res.on('end', () => {
+        let data = "";
+        res.on("data", (chunk) => (data += chunk));
+        res.on("end", () => {
           try {
             const jsonData = JSON.parse(data);
             resolve(jsonData);
@@ -59,7 +60,7 @@ class GitLabNotificationService {
         });
       });
 
-      req.on('error', reject);
+      req.on("error", reject);
       if (body) {
         req.write(JSON.stringify(body));
       }
@@ -67,18 +68,26 @@ class GitLabNotificationService {
     });
   }
 
-  async createGitLabIssue(title, description, labels = ['qmoi', 'notification']) {
+  async createGitLabIssue(
+    title,
+    description,
+    labels = ["qmoi", "notification"],
+  ) {
     try {
-      const issue = await this.makeGitLabRequest(`/projects/${this.projectId}/issues`, 'POST', {
-        title,
-        description,
-        labels: labels.join(','),
-        confidential: false
-      });
+      const issue = await this.makeGitLabRequest(
+        `/projects/${this.projectId}/issues`,
+        "POST",
+        {
+          title,
+          description,
+          labels: labels.join(","),
+          confidential: false,
+        },
+      );
       this.log(`Created GitLab issue: ${issue.iid} - ${title}`);
       return issue;
     } catch (error) {
-      this.log(`Failed to create GitLab issue: ${error.message}`, 'ERROR');
+      this.log(`Failed to create GitLab issue: ${error.message}`, "ERROR");
       return null;
     }
   }
@@ -86,25 +95,33 @@ class GitLabNotificationService {
   async addGitLabComment(comment, mergeRequestId = null) {
     try {
       const mrId = mergeRequestId || this.pipelineId;
-      await this.makeGitLabRequest(`/projects/${this.projectId}/merge_requests/${mrId}/notes`, 'POST', {
-        body: comment
-      });
+      await this.makeGitLabRequest(
+        `/projects/${this.projectId}/merge_requests/${mrId}/notes`,
+        "POST",
+        {
+          body: comment,
+        },
+      );
       this.log(`Added GitLab comment to MR ${mrId}`);
     } catch (error) {
-      this.log(`Failed to add GitLab comment: ${error.message}`, 'ERROR');
+      this.log(`Failed to add GitLab comment: ${error.message}`, "ERROR");
     }
   }
 
   async updateGitLabStatus(status, description) {
     try {
-      await this.makeGitLabRequest(`/projects/${this.projectId}/status_checks/${this.commitSha}`, 'POST', {
-        state: status,
-        description,
-        target_url: `${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}`
-      });
+      await this.makeGitLabRequest(
+        `/projects/${this.projectId}/status_checks/${this.commitSha}`,
+        "POST",
+        {
+          state: status,
+          description,
+          target_url: `${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}`,
+        },
+      );
       this.log(`Updated GitLab status: ${status} - ${description}`);
     } catch (error) {
-      this.log(`Failed to update GitLab status: ${error.message}`, 'ERROR');
+      this.log(`Failed to update GitLab status: ${error.message}`, "ERROR");
     }
   }
 
@@ -113,11 +130,11 @@ class GitLabNotificationService {
       const timestamp = new Date().toISOString();
       const pipelineUrl = `${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}`;
       const jobUrl = `${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}`;
-      
+
       let title, description, labels;
-      
+
       switch (type) {
-        case 'pipeline_started':
+        case "pipeline_started":
           title = `🚀 QMOI Pipeline Started - ${timestamp}`;
           description = `## QMOI Pipeline Started
 
@@ -139,10 +156,10 @@ Pipeline has started and is running through all stages.
 
 ---
 *Generated by QMOI Notification Service*`;
-          labels = ['qmoi', 'pipeline', 'started'];
+          labels = ["qmoi", "pipeline", "started"];
           break;
-          
-        case 'pipeline_success':
+
+        case "pipeline_success":
           title = `✅ QMOI Pipeline Success - ${timestamp}`;
           description = `## QMOI Pipeline Completed Successfully
 
@@ -173,10 +190,10 @@ ${jobUrl}
 
 ---
 *Generated by QMOI Notification Service*`;
-          labels = ['qmoi', 'pipeline', 'success'];
+          labels = ["qmoi", "pipeline", "success"];
           break;
-          
-        case 'pipeline_failed':
+
+        case "pipeline_failed":
           title = `❌ QMOI Pipeline Failed - ${timestamp}`;
           description = `## QMOI Pipeline Failed
 
@@ -189,7 +206,7 @@ ${jobUrl}
 
 ### Error Details:
 \`\`\`
-${data.error || 'Unknown error occurred'}
+${data.error || "Unknown error occurred"}
 \`\`\`
 
 ### Pipeline URL:
@@ -214,10 +231,10 @@ ${jobUrl}
 
 ---
 *Generated by QMOI Notification Service*`;
-          labels = ['qmoi', 'pipeline', 'failed', 'needs-attention'];
+          labels = ["qmoi", "pipeline", "failed", "needs-attention"];
           break;
-          
-        case 'auto_fix_applied':
+
+        case "auto_fix_applied":
           title = `🔧 QMOI Auto-Fix Applied - ${timestamp}`;
           description = `## QMOI Auto-Fix Applied
 
@@ -229,7 +246,7 @@ ${jobUrl}
 - **Timestamp**: ${timestamp}
 
 ### Fixes Applied:
-${data.fixes ? data.fixes.map(fix => `- ${fix}`).join('\n') : '- Various automated fixes'}
+${data.fixes ? data.fixes.map((fix) => `- ${fix}`).join("\n") : "- Various automated fixes"}
 
 ### Pipeline URL:
 ${pipelineUrl}
@@ -247,10 +264,10 @@ The QMOI automation system detected and automatically fixed issues in the pipeli
 
 ---
 *Generated by QMOI Notification Service*`;
-          labels = ['qmoi', 'auto-fix', 'applied'];
+          labels = ["qmoi", "auto-fix", "applied"];
           break;
-          
-        case 'deployment_success':
+
+        case "deployment_success":
           title = `🚀 QMOI Deployment Success - ${timestamp}`;
           description = `## QMOI Deployment Completed Successfully
 
@@ -260,7 +277,7 @@ The QMOI automation system detected and automatically fixed issues in the pipeli
 - **Pipeline ID**: ${this.pipelineId}
 - **Job ID**: ${this.jobId}
 - **Timestamp**: ${timestamp}
-- **Environment**: ${data.environment || 'Production'}
+- **Environment**: ${data.environment || "Production"}
 
 ### Deployment Results:
 - ✅ Build artifacts created
@@ -281,10 +298,10 @@ The QMOI automation system detected and automatically fixed issues in the pipeli
 
 ---
 *Generated by QMOI Notification Service*`;
-          labels = ['qmoi', 'deployment', 'success'];
+          labels = ["qmoi", "deployment", "success"];
           break;
-          
-        case 'deployment_failed':
+
+        case "deployment_failed":
           title = `❌ QMOI Deployment Failed - ${timestamp}`;
           description = `## QMOI Deployment Failed
 
@@ -294,11 +311,11 @@ The QMOI automation system detected and automatically fixed issues in the pipeli
 - **Pipeline ID**: ${this.pipelineId}
 - **Job ID**: ${this.jobId}
 - **Timestamp**: ${timestamp}
-- **Environment**: ${data.environment || 'Production'}
+- **Environment**: ${data.environment || "Production"}
 
 ### Error Details:
 \`\`\`
-${data.error || 'Unknown deployment error'}
+${data.error || "Unknown deployment error"}
 \`\`\`
 
 ### Pipeline URL:
@@ -323,10 +340,10 @@ ${jobUrl}
 
 ---
 *Generated by QMOI Notification Service*`;
-          labels = ['qmoi', 'deployment', 'failed', 'needs-rollback'];
+          labels = ["qmoi", "deployment", "failed", "needs-rollback"];
           break;
-          
-        case 'test_failure':
+
+        case "test_failure":
           title = `🧪 QMOI Test Failure - ${timestamp}`;
           description = `## QMOI Test Failure Report
 
@@ -344,7 +361,7 @@ ${jobUrl}
 
 ### Error Details:
 \`\`\`
-${data.error || 'Test execution failed'}
+${data.error || "Test execution failed"}
 \`\`\`
 
 ### Pipeline URL:
@@ -367,10 +384,10 @@ ${jobUrl}
 
 ---
 *Generated by QMOI Notification Service*`;
-          labels = ['qmoi', 'test', 'failed', 'needs-review'];
+          labels = ["qmoi", "test", "failed", "needs-review"];
           break;
-          
-        case 'build_failure':
+
+        case "build_failure":
           title = `🏗️ QMOI Build Failure - ${timestamp}`;
           description = `## QMOI Build Failure Report
 
@@ -389,7 +406,7 @@ ${jobUrl}
 
 ### Error Details:
 \`\`\`
-${data.error || 'Build process failed'}
+${data.error || "Build process failed"}
 \`\`\`
 
 ### Pipeline URL:
@@ -413,9 +430,9 @@ ${jobUrl}
 
 ---
 *Generated by QMOI Notification Service*`;
-          labels = ['qmoi', 'build', 'failed', 'needs-fix'];
+          labels = ["qmoi", "build", "failed", "needs-fix"];
           break;
-          
+
         default:
           title = `📢 QMOI Notification - ${timestamp}`;
           description = `## QMOI Notification
@@ -436,37 +453,39 @@ ${jobUrl}
 
 ---
 *Generated by QMOI Notification Service*`;
-          labels = ['qmoi', 'notification'];
+          labels = ["qmoi", "notification"];
       }
-      
+
       // Create GitLab issue
       const issue = await this.createGitLabIssue(title, description, labels);
-      
+
       // Add comment to merge request if available
       if (this.pipelineId) {
         await this.addGitLabComment(description, this.pipelineId);
       }
-      
+
       // Update GitLab status
       const statusMap = {
-        'pipeline_started': 'running',
-        'pipeline_success': 'success',
-        'pipeline_failed': 'failed',
-        'auto_fix_applied': 'success',
-        'deployment_success': 'success',
-        'deployment_failed': 'failed',
-        'test_failure': 'failed',
-        'build_failure': 'failed'
+        pipeline_started: "running",
+        pipeline_success: "success",
+        pipeline_failed: "failed",
+        auto_fix_applied: "success",
+        deployment_success: "success",
+        deployment_failed: "failed",
+        test_failure: "failed",
+        build_failure: "failed",
       };
-      
-      const status = statusMap[type] || 'running';
+
+      const status = statusMap[type] || "running";
       await this.updateGitLabStatus(status, title);
-      
+
       this.log(`Pipeline notification sent: ${type}`);
       return issue;
-      
     } catch (error) {
-      this.log(`Failed to send pipeline notification: ${error.message}`, 'ERROR');
+      this.log(
+        `Failed to send pipeline notification: ${error.message}`,
+        "ERROR",
+      );
       throw error;
     }
   }
@@ -474,12 +493,12 @@ ${jobUrl}
   async sendErrorNotification(error, context = {}) {
     try {
       const timestamp = new Date().toISOString();
-      const errorTitle = `❌ QMOI Error - ${context.type || 'Unknown'} - ${timestamp}`;
-      
+      const errorTitle = `❌ QMOI Error - ${context.type || "Unknown"} - ${timestamp}`;
+
       const errorDescription = `## QMOI Error Report
 
 ### Error Details:
-- **Type**: ${context.type || 'Unknown'}
+- **Type**: ${context.type || "Unknown"}
 - **Branch**: ${this.branch}
 - **Commit**: ${this.commitSha}
 - **Pipeline ID**: ${this.pipelineId}
@@ -493,11 +512,13 @@ ${error.message}
 
 ### Error Stack:
 \`\`\`
-${error.stack || 'No stack trace available'}
+${error.stack || "No stack trace available"}
 \`\`\`
 
 ### Context:
-${Object.entries(context).map(([key, value]) => `- **${key}**: ${value}`).join('\n')}
+${Object.entries(context)
+  .map(([key, value]) => `- **${key}**: ${value}`)
+  .join("\n")}
 
 ### Recovery Steps:
 1. Review the error details
@@ -514,21 +535,32 @@ ${Object.entries(context).map(([key, value]) => `- **${key}**: ${value}`).join('
 ---
 *Generated by QMOI Notification Service*`;
 
-      const labels = ['qmoi', 'error', context.type || 'unknown', 'needs-attention'];
-      
-      const issue = await this.createGitLabIssue(errorTitle, errorDescription, labels);
-      
+      const labels = [
+        "qmoi",
+        "error",
+        context.type || "unknown",
+        "needs-attention",
+      ];
+
+      const issue = await this.createGitLabIssue(
+        errorTitle,
+        errorDescription,
+        labels,
+      );
+
       if (this.pipelineId) {
         await this.addGitLabComment(errorDescription, this.pipelineId);
       }
-      
-      await this.updateGitLabStatus('failed', errorTitle);
-      
-      this.log(`Error notification sent: ${context.type || 'Unknown'}`);
+
+      await this.updateGitLabStatus("failed", errorTitle);
+
+      this.log(`Error notification sent: ${context.type || "Unknown"}`);
       return issue;
-      
     } catch (notificationError) {
-      this.log(`Failed to send error notification: ${notificationError.message}`, 'ERROR');
+      this.log(
+        `Failed to send error notification: ${notificationError.message}`,
+        "ERROR",
+      );
       throw notificationError;
     }
   }
@@ -536,12 +568,12 @@ ${Object.entries(context).map(([key, value]) => `- **${key}**: ${value}`).join('
   async sendSuccessNotification(context = {}) {
     try {
       const timestamp = new Date().toISOString();
-      const successTitle = `✅ QMOI Success - ${context.type || 'Operation'} - ${timestamp}`;
-      
+      const successTitle = `✅ QMOI Success - ${context.type || "Operation"} - ${timestamp}`;
+
       const successDescription = `## QMOI Success Report
 
 ### Success Details:
-- **Type**: ${context.type || 'Operation'}
+- **Type**: ${context.type || "Operation"}
 - **Branch**: ${this.branch}
 - **Commit**: ${this.commitSha}
 - **Pipeline ID**: ${this.pipelineId}
@@ -549,7 +581,9 @@ ${Object.entries(context).map(([key, value]) => `- **${key}**: ${value}`).join('
 - **Timestamp**: ${timestamp}
 
 ### Results:
-${Object.entries(context).map(([key, value]) => `- **${key}**: ${value}`).join('\n')}
+${Object.entries(context)
+  .map(([key, value]) => `- **${key}**: ${value}`)
+  .join("\n")}
 
 ### Pipeline URL:
 ${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}
@@ -566,21 +600,27 @@ ${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}
 ---
 *Generated by QMOI Notification Service*`;
 
-      const labels = ['qmoi', 'success', context.type || 'operation'];
-      
-      const issue = await this.createGitLabIssue(successTitle, successDescription, labels);
-      
+      const labels = ["qmoi", "success", context.type || "operation"];
+
+      const issue = await this.createGitLabIssue(
+        successTitle,
+        successDescription,
+        labels,
+      );
+
       if (this.pipelineId) {
         await this.addGitLabComment(successDescription, this.pipelineId);
       }
-      
-      await this.updateGitLabStatus('success', successTitle);
-      
-      this.log(`Success notification sent: ${context.type || 'Operation'}`);
+
+      await this.updateGitLabStatus("success", successTitle);
+
+      this.log(`Success notification sent: ${context.type || "Operation"}`);
       return issue;
-      
     } catch (error) {
-      this.log(`Failed to send success notification: ${error.message}`, 'ERROR');
+      this.log(
+        `Failed to send success notification: ${error.message}`,
+        "ERROR",
+      );
       throw error;
     }
   }
@@ -589,63 +629,105 @@ ${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}
 // Main execution
 async function main() {
   const notificationService = new GitLabNotificationService();
-  
+
   try {
     const args = process.argv.slice(2);
     const command = args[0];
     const data = args[1] ? JSON.parse(args[1]) : {};
-    
+
     switch (command) {
-      case '--pipeline-started':
-        await notificationService.sendPipelineNotification('pipeline_started', data);
+      case "--pipeline-started":
+        await notificationService.sendPipelineNotification(
+          "pipeline_started",
+          data,
+        );
         break;
-      case '--pipeline-success':
-        await notificationService.sendPipelineNotification('pipeline_success', data);
+      case "--pipeline-success":
+        await notificationService.sendPipelineNotification(
+          "pipeline_success",
+          data,
+        );
         break;
-      case '--pipeline-failed':
-        await notificationService.sendPipelineNotification('pipeline_failed', data);
+      case "--pipeline-failed":
+        await notificationService.sendPipelineNotification(
+          "pipeline_failed",
+          data,
+        );
         break;
-      case '--auto-fix-applied':
-        await notificationService.sendPipelineNotification('auto_fix_applied', data);
+      case "--auto-fix-applied":
+        await notificationService.sendPipelineNotification(
+          "auto_fix_applied",
+          data,
+        );
         break;
-      case '--deployment-success':
-        await notificationService.sendPipelineNotification('deployment_success', data);
+      case "--deployment-success":
+        await notificationService.sendPipelineNotification(
+          "deployment_success",
+          data,
+        );
         break;
-      case '--deployment-failed':
-        await notificationService.sendPipelineNotification('deployment_failed', data);
+      case "--deployment-failed":
+        await notificationService.sendPipelineNotification(
+          "deployment_failed",
+          data,
+        );
         break;
-      case '--test-failure':
-        await notificationService.sendPipelineNotification('test_failure', data);
+      case "--test-failure":
+        await notificationService.sendPipelineNotification(
+          "test_failure",
+          data,
+        );
         break;
-      case '--build-failure':
-        await notificationService.sendPipelineNotification('build_failure', data);
+      case "--build-failure":
+        await notificationService.sendPipelineNotification(
+          "build_failure",
+          data,
+        );
         break;
-      case '--error':
-        const error = new Error(data.message || 'Unknown error');
+      case "--error":
+        const error = new Error(data.message || "Unknown error");
         error.stack = data.stack;
         await notificationService.sendErrorNotification(error, data);
         break;
-      case '--success':
+      case "--success":
         await notificationService.sendSuccessNotification(data);
         break;
       default:
-        console.log('QMOI GitLab Notification Service');
-        console.log('Usage:');
-        console.log('  --pipeline-started [data]    Send pipeline started notification');
-        console.log('  --pipeline-success [data]    Send pipeline success notification');
-        console.log('  --pipeline-failed [data]     Send pipeline failed notification');
-        console.log('  --auto-fix-applied [data]    Send auto-fix applied notification');
-        console.log('  --deployment-success [data]  Send deployment success notification');
-        console.log('  --deployment-failed [data]   Send deployment failed notification');
-        console.log('  --test-failure [data]        Send test failure notification');
-        console.log('  --build-failure [data]       Send build failure notification');
-        console.log('  --error [data]               Send error notification');
-        console.log('  --success [data]             Send success notification');
+        console.log("QMOI GitLab Notification Service");
+        console.log("Usage:");
+        console.log(
+          "  --pipeline-started [data]    Send pipeline started notification",
+        );
+        console.log(
+          "  --pipeline-success [data]    Send pipeline success notification",
+        );
+        console.log(
+          "  --pipeline-failed [data]     Send pipeline failed notification",
+        );
+        console.log(
+          "  --auto-fix-applied [data]    Send auto-fix applied notification",
+        );
+        console.log(
+          "  --deployment-success [data]  Send deployment success notification",
+        );
+        console.log(
+          "  --deployment-failed [data]   Send deployment failed notification",
+        );
+        console.log(
+          "  --test-failure [data]        Send test failure notification",
+        );
+        console.log(
+          "  --build-failure [data]       Send build failure notification",
+        );
+        console.log("  --error [data]               Send error notification");
+        console.log("  --success [data]             Send success notification");
         break;
     }
-    
   } catch (error) {
-    notificationService.log(`Notification service failed: ${error.message}`, 'ERROR');
+    notificationService.log(
+      `Notification service failed: ${error.message}`,
+      "ERROR",
+    );
     process.exit(1);
   }
 }
@@ -656,4 +738,4 @@ module.exports = { GitLabNotificationService };
 // Run if this script is executed directly
 if (require.main === module) {
   main();
-} 
+}

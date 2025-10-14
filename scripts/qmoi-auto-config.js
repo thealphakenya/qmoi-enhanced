@@ -1,15 +1,15 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const configPath = path.resolve(__dirname, '../config/qmoi_env_vars.json');
-const envPath = path.resolve(__dirname, '../.env');
+const configPath = path.resolve(__dirname, "../config/qmoi_env_vars.json");
+const envPath = path.resolve(__dirname, "../.env");
 
-const envVars = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-let envContent = '';
+const envVars = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+let envContent = "";
 let missing = [];
 
 Object.entries(envVars).forEach(([key, { default: def }]) => {
@@ -23,7 +23,10 @@ Object.entries(envVars).forEach(([key, { default: def }]) => {
 });
 
 fs.writeFileSync(envPath, envContent);
-console.log('QMOI env setup complete.');
+console.log("QMOI env setup complete.");
 if (missing.length) {
-  console.log('QMOI: The following env vars were missing and set to defaults:', missing.join(', '));
-} 
+  console.log(
+    "QMOI: The following env vars were missing and set to defaults:",
+    missing.join(", "),
+  );
+}
