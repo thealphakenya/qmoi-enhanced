@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # qmoi-enhanced-new-themegakenya
 
 ## 📚 Full App List & Features
@@ -147,15 +148,34 @@ auto_updater.py
 QMOI Extension is an always-on, independent, self-evolving AI agent that auto-injects itself into any workspace, codespace, browser, or platform. It features:
 - Automated chat interface (like Copilot Chat/Cursor, but enhanced)
 - Auto-creation of all required files/settings (e.g., `qmoi.json`)
-- Advanced styles, themes, floating windows, and animated icons
-- Revenue generation, employment, and payment automation (10+ methods)
-- Real-time, auto-updating graphs for all automations and revenue
-- Direct QMOI model/memory, always in sync across all apps, platforms, and emails
-- Downloadable as a browser/IDE extension, always up-to-date
-- Strictly master/sister-only access to advanced features and data
-- Error-resilient: runs even if there are local problems or file errors
-- Autorelease and auto-marketing across all platforms
+# qmoi-enhanced
 
-See `QMOIEXTENTION.md` for full details, features, and usage.
+Welcome to the qmoi-enhanced repository — a large, actively-developed mono-repo for the QMOI system (automation, builds, and AI-enabled tooling).
 
----
+This repository contains build tooling, automation scripts, and CI workflows used to build, test, and release QMOI apps across multiple platforms. The repository is actively synchronized between maintainers.
+
+Overview
+--------
+- Build & automation scripts for multiple platforms (Windows, macOS, Linux, Android, iOS, SmartTV, Raspberry Pi)
+- CI workflows and release instrumentation under `.github/workflows/`
+- Auto-update, auto-rebuild, and autotest orchestration for the QMOI ecosystem
+
+Quick links
+-----------
+- Full app list and docs: `ALLMDFILESREFS.md` and `RELEASESTRACKS.md`
+- Build scripts: look under `scripts/` and repo root for platform-specific helpers
+
+Auto-fix / Auto-merge features
+-------------------------------
+This branch adds initial automation to attempt automated lint/format/test, rebase/merge, and push flow for branches via a script and GitHub Actions workflow:
+
+- `scripts/auto_fix.sh` — attempts to run formatting and linters, execute tests when available, rebase onto target, and push the branch. It can create and attempt to merge a PR via the GitHub API when a token is supplied.
+- `.github/workflows/auto_fix.yml` — runs the auto-fix script on pull requests and via manual dispatch.
+
+Notes and limitations
+---------------------
+- Automatic conflict resolution is limited. The script will attempt a safe rebase and fall back to a merge strategy, but complex conflicts require human review.
+- For repositories with branch protection (required reviews, required checks), auto-merging may be blocked; consider configuring required checks or using a token with appropriate permissions.
+- Add `AUTOMERGE_TOKEN` in repository Secrets if you want the workflow to use a token with broader rights than the `GITHUB_TOKEN`.
+
+If you need a README merge that preserves more specific sections from the previous versions, tell me which parts to keep and I will integrate them.
