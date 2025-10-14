@@ -1,6 +1,7 @@
 # This module is used in `test_doctest`.
 # It must not have a docstring.
 
+
 def func_with_docstring():
     """Some unrelated info."""
 
@@ -48,6 +49,7 @@ class MethodWrapper:
         >>> MethodWrapper.method_with_doctest.__name__
         'method_with_doctest'
         """
+
 
 # https://github.com/python/cpython/issues/99433
 str_wrapper = object().__str__

@@ -586,7 +586,7 @@ def main():
     if ns.include_cat and not ns.include_cat.is_absolute():
         ns.include_cat = (Path.cwd() / ns.include_cat).resolve()
     if not ns.arch:
-        ns.arch = "amd64" if sys.maxsize > 2 ** 32 else "win32"
+        ns.arch = "amd64" if sys.maxsize > 2**32 else "win32"
 
     if ns.copy and not ns.copy.is_absolute():
         ns.copy = (Path.cwd() / ns.copy).resolve()
@@ -616,7 +616,9 @@ Catalog: {ns.catalog}""",
     if ns.arch in ("arm32", "arm64"):
         for n in ("include_idle", "include_tcltk"):
             if getattr(ns, n):
-                log_warning(f"Disabling --{n.replace('_', '-')} on unsupported platform")
+                log_warning(
+                    f"Disabling --{n.replace('_', '-')} on unsupported platform"
+                )
                 setattr(ns, n, False)
 
     if ns.include_idle and not ns.include_tcltk:

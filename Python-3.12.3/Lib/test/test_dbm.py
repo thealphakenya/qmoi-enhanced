@@ -14,17 +14,19 @@ except ImportError:
 dirname = os_helper.TESTFN
 _fname = os.path.join(dirname, os_helper.TESTFN)
 
+
 #
 # Iterates over every database module supported by dbm currently available.
 #
 def dbm_iterator():
     for name in dbm._names:
         try:
-            mod = __import__(name, fromlist=['open'])
+            mod = __import__(name, fromlist=["open"])
         except ImportError:
             continue
         dbm._modules[name] = mod
         yield mod
+
 
 #
 # Clean up all scratch databases we might have created during testing
@@ -32,22 +34,24 @@ def dbm_iterator():
 def cleaunup_test_dir():
     os_helper.rmtree(dirname)
 
+
 def setup_test_dir():
     cleaunup_test_dir()
     os.mkdir(dirname)
 
 
 class AnyDBMTestCase:
-    _dict = {'a': b'Python:',
-             'b': b'Programming',
-             'c': b'the',
-             'd': b'way',
-             'f': b'Guido',
-             'g': b'intended',
-             }
+    _dict = {
+        "a": b"Python:",
+        "b": b"Programming",
+        "c": b"the",
+        "d": b"way",
+        "f": b"Guido",
+        "g": b"intended",
+    }
 
     def init_db(self):
-        f = dbm.open(_fname, 'n')
+        f = dbm.open(_fname, "n")
         for k in self._dict:
             f[k.encode("ascii")] = self._dict[k]
         f.close()
@@ -65,7 +69,7 @@ class AnyDBMTestCase:
         self.assertRaises(dbm.error, dbm.open, _fname)
 
     def test_anydbm_creation(self):
-        f = dbm.open(_fname, 'c')
+        f = dbm.open(_fname, "c")
         self.assertEqual(list(f.keys()), [])
         for key in self._dict:
             f[key.encode("ascii")] = self._dict[key]
@@ -75,57 +79,58 @@ class AnyDBMTestCase:
     def test_anydbm_creation_n_file_exists_with_invalid_contents(self):
         # create an empty file
         os_helper.create_empty_file(_fname)
-        with dbm.open(_fname, 'n') as f:
+        with dbm.open(_fname, "n") as f:
             self.assertEqual(len(f), 0)
 
     def test_anydbm_modification(self):
         self.init_db()
-        f = dbm.open(_fname, 'c')
-        self._dict['g'] = f[b'g'] = b"indented"
+        f = dbm.open(_fname, "c")
+        self._dict["g"] = f[b"g"] = b"indented"
         self.read_helper(f)
         # setdefault() works as in the dict interface
-        self.assertEqual(f.setdefault(b'xxx', b'foo'), b'foo')
-        self.assertEqual(f[b'xxx'], b'foo')
+        self.assertEqual(f.setdefault(b"xxx", b"foo"), b"foo")
+        self.assertEqual(f[b"xxx"], b"foo")
         f.close()
 
     def test_anydbm_read(self):
         self.init_db()
-        f = dbm.open(_fname, 'r')
+        f = dbm.open(_fname, "r")
         self.read_helper(f)
         # get() works as in the dict interface
-        self.assertEqual(f.get(b'a'), self._dict['a'])
-        self.assertEqual(f.get(b'xxx', b'foo'), b'foo')
-        self.assertIsNone(f.get(b'xxx'))
+        self.assertEqual(f.get(b"a"), self._dict["a"])
+        self.assertEqual(f.get(b"xxx", b"foo"), b"foo")
+        self.assertIsNone(f.get(b"xxx"))
         with self.assertRaises(KeyError):
-            f[b'xxx']
+            f[b"xxx"]
         f.close()
 
     def test_anydbm_keys(self):
         self.init_db()
-        f = dbm.open(_fname, 'r')
+        f = dbm.open(_fname, "r")
         keys = self.keys_helper(f)
         f.close()
 
     def test_empty_value(self):
-        if getattr(dbm._defaultmod, 'library', None) == 'Berkeley DB':
-            self.skipTest("Berkeley DB doesn't distinguish the empty value "
-                          "from the absent one")
-        f = dbm.open(_fname, 'c')
+        if getattr(dbm._defaultmod, "library", None) == "Berkeley DB":
+            self.skipTest(
+                "Berkeley DB doesn't distinguish the empty value " "from the absent one"
+            )
+        f = dbm.open(_fname, "c")
         self.assertEqual(f.keys(), [])
-        f[b'empty'] = b''
-        self.assertEqual(f.keys(), [b'empty'])
-        self.assertIn(b'empty', f)
-        self.assertEqual(f[b'empty'], b'')
-        self.assertEqual(f.get(b'empty'), b'')
-        self.assertEqual(f.setdefault(b'empty'), b'')
+        f[b"empty"] = b""
+        self.assertEqual(f.keys(), [b"empty"])
+        self.assertIn(b"empty", f)
+        self.assertEqual(f[b"empty"], b"")
+        self.assertEqual(f.get(b"empty"), b"")
+        self.assertEqual(f.setdefault(b"empty"), b"")
         f.close()
 
     def test_anydbm_access(self):
         self.init_db()
-        f = dbm.open(_fname, 'r')
+        f = dbm.open(_fname, "r")
         key = "a".encode("ascii")
         self.assertIn(key, f)
-        assert(f[key] == b"Python:")
+        assert f[key] == b"Python:"
         f.close()
 
     def test_open_with_bytes(self):
@@ -143,20 +148,20 @@ class AnyDBMTestCase:
             self.assertEqual(self._dict[key], f[key.encode("ascii")])
 
     def test_keys(self):
-        with dbm.open(_fname, 'c') as d:
+        with dbm.open(_fname, "c") as d:
             self.assertEqual(d.keys(), [])
-            a = [(b'a', b'b'), (b'12345678910', b'019237410982340912840198242')]
+            a = [(b"a", b"b"), (b"12345678910", b"019237410982340912840198242")]
             for k, v in a:
                 d[k] = v
             self.assertEqual(sorted(d.keys()), sorted(k for (k, v) in a))
             for k, v in a:
                 self.assertIn(k, d)
                 self.assertEqual(d[k], v)
-            self.assertNotIn(b'xxx', d)
-            self.assertRaises(KeyError, lambda: d[b'xxx'])
+            self.assertNotIn(b"xxx", d)
+            self.assertRaises(KeyError, lambda: d[b"xxx"])
 
     def setUp(self):
-        self.addCleanup(setattr, dbm, '_defaultmod', dbm._defaultmod)
+        self.addCleanup(setattr, dbm, "_defaultmod", dbm._defaultmod)
         dbm._defaultmod = self.module
         self.addCleanup(cleaunup_test_dir)
         setup_test_dir()
@@ -164,10 +169,14 @@ class AnyDBMTestCase:
 
 class WhichDBTestCase(unittest.TestCase):
     def test_whichdb(self):
-        self.addCleanup(setattr, dbm, '_defaultmod', dbm._defaultmod)
+        self.addCleanup(setattr, dbm, "_defaultmod", dbm._defaultmod)
         _bytes_fname = os.fsencode(_fname)
-        fnames = [_fname, os_helper.FakePath(_fname),
-                  _bytes_fname, os_helper.FakePath(_bytes_fname)]
+        fnames = [
+            _fname,
+            os_helper.FakePath(_fname),
+            _bytes_fname,
+            os_helper.FakePath(_bytes_fname),
+        ]
         for module in dbm_iterator():
             # Check whether whichdb correctly guesses module name
             # for databases opened with "module" module.
@@ -175,11 +184,12 @@ class WhichDBTestCase(unittest.TestCase):
             setup_test_dir()
             dbm._defaultmod = module
             # Try with empty files first
-            with module.open(_fname, 'c'): pass
+            with module.open(_fname, "c"):
+                pass
             for path in fnames:
                 self.assertEqual(name, self.dbm.whichdb(path))
             # Now add a key
-            with module.open(_fname, 'w') as f:
+            with module.open(_fname, "w") as f:
                 f[b"1"] = b"1"
                 # and test that we can find it
                 self.assertIn(b"1", f)
@@ -188,29 +198,34 @@ class WhichDBTestCase(unittest.TestCase):
             for path in fnames:
                 self.assertEqual(name, self.dbm.whichdb(path))
 
-    @unittest.skipUnless(ndbm, reason='Test requires ndbm')
+    @unittest.skipUnless(ndbm, reason="Test requires ndbm")
     def test_whichdb_ndbm(self):
         # Issue 17198: check that ndbm which is referenced in whichdb is defined
-        with open(_fname + '.db', 'wb'): pass
+        with open(_fname + ".db", "wb"):
+            pass
         _bytes_fname = os.fsencode(_fname)
-        fnames = [_fname, os_helper.FakePath(_fname),
-                  _bytes_fname, os_helper.FakePath(_bytes_fname)]
+        fnames = [
+            _fname,
+            os_helper.FakePath(_fname),
+            _bytes_fname,
+            os_helper.FakePath(_bytes_fname),
+        ]
         for path in fnames:
             self.assertIsNone(self.dbm.whichdb(path))
 
     def setUp(self):
         self.addCleanup(cleaunup_test_dir)
         setup_test_dir()
-        self.dbm = import_helper.import_fresh_module('dbm')
+        self.dbm = import_helper.import_fresh_module("dbm")
 
 
 for mod in dbm_iterator():
-    assert mod.__name__.startswith('dbm.')
+    assert mod.__name__.startswith("dbm.")
     suffix = mod.__name__[4:]
-    testname = f'TestCase_{suffix}'
-    globals()[testname] = type(testname,
-                               (AnyDBMTestCase, unittest.TestCase),
-                               {'module': mod})
+    testname = f"TestCase_{suffix}"
+    globals()[testname] = type(
+        testname, (AnyDBMTestCase, unittest.TestCase), {"module": mod}
+    )
 
 
 if __name__ == "__main__":

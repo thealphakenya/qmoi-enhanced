@@ -14,6 +14,7 @@ from sys import getrefcount as grc
 #
 # What about pointers?
 
+
 class ObjectsTestCase(unittest.TestCase):
     def assertSame(self, a, b):
         self.assertEqual(id(a), id(b))
@@ -78,23 +79,26 @@ class ObjectsTestCase(unittest.TestCase):
         y = Y()
         y.x = x
         self.assertEqual(y._objects, {"0": {"0": s1, "1": s2}})
-##        x = y.x
-##        del y
-##        print x._b_base_._objects
+
+    ##        x = y.x
+    ##        del y
+    ##        print x._b_base_._objects
 
     def test_ptr_struct(self):
         class X(Structure):
             _fields_ = [("data", POINTER(c_int))]
 
-        A = c_int*4
+        A = c_int * 4
         a = A(11, 22, 33, 44)
         self.assertEqual(a._objects, None)
 
         x = X()
         x.data = a
+
+
 ##XXX        print x._objects
 ##XXX        print x.data[0]
 ##XXX        print x.data._objects
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

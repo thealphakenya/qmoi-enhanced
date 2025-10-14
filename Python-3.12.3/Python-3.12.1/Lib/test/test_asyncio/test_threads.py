@@ -44,20 +44,20 @@ class ToThreadTests(unittest.IsolatedAsyncioTestCase):
         # Unlike run_in_executor(), to_thread() should directly accept kwargs.
         func = mock.Mock()
 
-        await asyncio.to_thread(func, 'test', something=True)
+        await asyncio.to_thread(func, "test", something=True)
 
-        func.assert_called_once_with('test', something=True)
+        func.assert_called_once_with("test", something=True)
 
     async def test_to_thread_contextvars(self):
-        test_ctx = ContextVar('test_ctx')
+        test_ctx = ContextVar("test_ctx")
 
         def get_ctx():
             return test_ctx.get()
 
-        test_ctx.set('parrot')
+        test_ctx.set("parrot")
         result = await asyncio.to_thread(get_ctx)
 
-        self.assertEqual(result, 'parrot')
+        self.assertEqual(result, "parrot")
 
 
 if __name__ == "__main__":

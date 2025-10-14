@@ -7,6 +7,7 @@ import sys
 import getopt
 import tokenize
 
+
 def main():
     tabsize = 8
     try:
@@ -18,7 +19,7 @@ def main():
         print("usage:", sys.argv[0], "[-t tabwidth] file ...")
         return
     for optname, optvalue in opts:
-        if optname == '-t':
+        if optname == "-t":
             tabsize = int(optvalue)
 
     return max(process(filename, tabsize) for filename in args)
@@ -51,5 +52,5 @@ def process(filename, tabsize, verbose=True):
     return 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     raise SystemExit(main())

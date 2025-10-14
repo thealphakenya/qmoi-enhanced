@@ -16,6 +16,7 @@ class TestEquality(object):
             self.assertNotEqual(obj_1, obj_2)
             self.assertNotEqual(obj_2, obj_1)
 
+
 class TestHashing(object):
     """Used as a mixin for TestCase"""
 
@@ -31,8 +32,7 @@ class TestHashing(object):
         for obj_1, obj_2 in self.ne_pairs:
             try:
                 if hash(obj_1) == hash(obj_2):
-                    self.fail("%s and %s hash equal, but shouldn't" %
-                              (obj_1, obj_2))
+                    self.fail("%s and %s hash equal, but shouldn't" % (obj_1, obj_2))
             except Exception as e:
                 self.fail("Problem hashing %s and %s: %s" % (obj_1, obj_2, e))
 
@@ -43,43 +43,43 @@ class _BaseLoggingResult(unittest.TestResult):
         super().__init__()
 
     def startTest(self, test):
-        self._events.append('startTest')
+        self._events.append("startTest")
         super().startTest(test)
 
     def startTestRun(self):
-        self._events.append('startTestRun')
+        self._events.append("startTestRun")
         super().startTestRun()
 
     def stopTest(self, test):
-        self._events.append('stopTest')
+        self._events.append("stopTest")
         super().stopTest(test)
 
     def stopTestRun(self):
-        self._events.append('stopTestRun')
+        self._events.append("stopTestRun")
         super().stopTestRun()
 
     def addFailure(self, *args):
-        self._events.append('addFailure')
+        self._events.append("addFailure")
         super().addFailure(*args)
 
     def addSuccess(self, *args):
-        self._events.append('addSuccess')
+        self._events.append("addSuccess")
         super().addSuccess(*args)
 
     def addError(self, *args):
-        self._events.append('addError')
+        self._events.append("addError")
         super().addError(*args)
 
     def addSkip(self, *args):
-        self._events.append('addSkip')
+        self._events.append("addSkip")
         super().addSkip(*args)
 
     def addExpectedFailure(self, *args):
-        self._events.append('addExpectedFailure')
+        self._events.append("addExpectedFailure")
         super().addExpectedFailure(*args)
 
     def addUnexpectedSuccess(self, *args):
-        self._events.append('addUnexpectedSuccess')
+        self._events.append("addUnexpectedSuccess")
         super().addUnexpectedSuccess(*args)
 
 
@@ -101,9 +101,9 @@ class LoggingResult(_BaseLoggingResult):
 
     def addSubTest(self, test, subtest, err):
         if err is None:
-            self._events.append('addSubTestSuccess')
+            self._events.append("addSubTestSuccess")
         else:
-            self._events.append('addSubTestFailure')
+            self._events.append("addSubTestFailure")
         super().addSubTest(test, subtest, err)
 
 
@@ -140,15 +140,15 @@ class ResultWithNoStartTestRunStopTestRun(object):
 
 class BufferedWriter:
     def __init__(self):
-        self.result = ''
-        self.buffer = ''
+        self.result = ""
+        self.buffer = ""
 
     def write(self, arg):
         self.buffer += arg
 
     def flush(self):
         self.result += self.buffer
-        self.buffer = ''
+        self.buffer = ""
 
     def getvalue(self):
         return self.result

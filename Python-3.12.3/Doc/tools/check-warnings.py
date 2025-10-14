@@ -81,16 +81,12 @@ def get_diff_lines(ref_a: str, ref_b: str, file: Path) -> list[int]:
     # Scrape line offsets + lengths from diff and convert to line numbers
     line_matches = DIFF_PATTERN.finditer(diff_output.stdout)
     # Removed and added line counts are 1 if not printed
-    line_match_values = [
-        line_match.groupdict(default=1) for line_match in line_matches
-    ]
+    line_match_values = [line_match.groupdict(default=1) for line_match in line_matches]
     line_ints = [
         (int(match_value["lineb"]), int(match_value["added"]))
         for match_value in line_match_values
     ]
-    line_ranges = [
-        range(line_b, line_b + added) for line_b, added in line_ints
-    ]
+    line_ranges = [range(line_b, line_b + added) for line_b, added in line_ints]
     line_numbers = list(itertools.chain(*line_ranges))
 
     return line_numbers
@@ -115,13 +111,10 @@ def filter_and_parse_warnings(
 ) -> list[re.Match[str]]:
     """Get the warnings matching passed files and parse them with regex."""
     filtered_warnings = [
-        warning
-        for warning in warnings
-        if any(str(file) in warning for file in files)
+        warning for warning in warnings if any(str(file) in warning for file in files)
     ]
     warning_matches = [
-        WARNING_PATTERN.fullmatch(warning.strip())
-        for warning in filtered_warnings
+        WARNING_PATTERN.fullmatch(warning.strip()) for warning in filtered_warnings
     ]
     non_null_matches = [warning for warning in warning_matches if warning]
     return non_null_matches
@@ -135,14 +128,10 @@ def filter_warnings_by_diff(
     with file.open(encoding="UTF-8") as file_obj:
         paragraphs = get_para_line_numbers(file_obj)
     touched_paras = [
-        para_lines
-        for para_lines in paragraphs
-        if set(diff_lines) & set(para_lines)
+        para_lines for para_lines in paragraphs if set(diff_lines) & set(para_lines)
     ]
     touched_para_lines = set(itertools.chain(*touched_paras))
-    warnings_infile = [
-        warning for warning in warnings if str(file) in warning["file"]
-    ]
+    warnings_infile = [warning for warning in warnings if str(file) in warning["file"]]
     warnings_touched = [
         warning
         for warning in warnings_infile

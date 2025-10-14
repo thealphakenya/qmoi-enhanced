@@ -8,6 +8,7 @@ from collections import namedtuple
 # Simple class representing a record in our database.
 MemoRecord = namedtuple("MemoRecord", "key, task")
 
+
 class DBPickler(pickle.Pickler):
 
     def persistent_id(self, obj):
@@ -55,10 +56,10 @@ def main():
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE memos(key INTEGER PRIMARY KEY, task TEXT)")
     tasks = (
-        'give food to fish',
-        'prepare group meeting',
-        'fight with a zebra',
-        )
+        "give food to fish",
+        "prepare group meeting",
+        "fight with a zebra",
+    )
     for task in tasks:
         cursor.execute("INSERT INTO memos VALUES(NULL, ?)", (task,))
 
@@ -83,5 +84,5 @@ def main():
     pprint.pprint(memos)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

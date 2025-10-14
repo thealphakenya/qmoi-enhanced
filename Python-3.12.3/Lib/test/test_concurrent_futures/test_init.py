@@ -11,23 +11,26 @@ from test import support
 from .util import ExecutorMixin, create_executor_tests, setup_module
 
 
-INITIALIZER_STATUS = 'uninitialized'
+INITIALIZER_STATUS = "uninitialized"
+
 
 def init(x):
     global INITIALIZER_STATUS
     INITIALIZER_STATUS = x
 
+
 def get_init_status():
     return INITIALIZER_STATUS
 
+
 def init_fail(log_queue=None):
     if log_queue is not None:
-        logger = logging.getLogger('concurrent.futures')
+        logger = logging.getLogger("concurrent.futures")
         logger.addHandler(QueueHandler(log_queue))
-        logger.setLevel('CRITICAL')
+        logger.setLevel("CRITICAL")
         logger.propagate = False
     time.sleep(0.1)  # let some futures be scheduled
-    raise ValueError('error in initializer')
+    raise ValueError("error in initializer")
 
 
 class InitializerMixin(ExecutorMixin):
@@ -35,17 +38,17 @@ class InitializerMixin(ExecutorMixin):
 
     def setUp(self):
         global INITIALIZER_STATUS
-        INITIALIZER_STATUS = 'uninitialized'
-        self.executor_kwargs = dict(initializer=init,
-                                    initargs=('initialized',))
+        INITIALIZER_STATUS = "uninitialized"
+        self.executor_kwargs = dict(initializer=init, initargs=("initialized",))
         super().setUp()
 
     def test_initializer(self):
-        futures = [self.executor.submit(get_init_status)
-                   for _ in range(self.worker_count)]
+        futures = [
+            self.executor.submit(get_init_status) for _ in range(self.worker_count)
+        ]
 
         for f in futures:
-            self.assertEqual(f.result(), 'initialized')
+            self.assertEqual(f.result(), "initialized")
 
 
 class FailingInitializerMixin(ExecutorMixin):
@@ -56,8 +59,9 @@ class FailingInitializerMixin(ExecutorMixin):
             # Pass a queue to redirect the child's logging output
             self.mp_context = self.get_context()
             self.log_queue = self.mp_context.Queue()
-            self.executor_kwargs = dict(initializer=init_fail,
-                                        initargs=(self.log_queue,))
+            self.executor_kwargs = dict(
+                initializer=init_fail, initargs=(self.log_queue,)
+            )
         else:
             # In a thread pool, the child shares our logging setup
             # (see _assert_logged())
@@ -67,7 +71,7 @@ class FailingInitializerMixin(ExecutorMixin):
         super().setUp()
 
     def test_initializer(self):
-        with self._assert_logged('ValueError: error in initializer'):
+        with self._assert_logged("ValueError: error in initializer"):
             try:
                 future = self.executor.submit(get_init_status)
             except BrokenExecutor:
@@ -78,8 +82,9 @@ class FailingInitializerMixin(ExecutorMixin):
                     future.result()
 
             # At some point, the executor should break
-            for _ in support.sleeping_retry(support.SHORT_TIMEOUT,
-                                            "executor not broken"):
+            for _ in support.sleeping_retry(
+                support.SHORT_TIMEOUT, "executor not broken"
+            ):
                 if self.executor._broken:
                     break
 
@@ -98,11 +103,10 @@ class FailingInitializerMixin(ExecutorMixin):
             except queue.Empty:
                 pass
         else:
-            with self.assertLogs('concurrent.futures', 'CRITICAL') as cm:
+            with self.assertLogs("concurrent.futures", "CRITICAL") as cm:
                 yield
             output = cm.output
-        self.assertTrue(any(msg in line for line in output),
-                        output)
+        self.assertTrue(any(msg in line for line in output), output)
 
 
 create_executor_tests(globals(), InitializerMixin)

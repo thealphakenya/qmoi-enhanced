@@ -17,6 +17,7 @@ _PyHASH_NAN = sys.hash_info.nan
 # _PyHASH_10INV is the inverse of 10 modulo the prime _PyHASH_MODULUS
 _PyHASH_10INV = pow(10, _PyHASH_MODULUS - 2, _PyHASH_MODULUS)
 
+
 def xhash(coeff, exp):
     sign = 1
     if coeff < 0:
@@ -34,7 +35,7 @@ def xhash(coeff, exp):
 x = mpz(10) ** 425000000 - 1
 coeff = int(x)
 
-d = Decimal('9' * 425000000 + 'e-849999999')
+d = Decimal("9" * 425000000 + "e-849999999")
 
 h1 = xhash(coeff, -849999999)
 h2 = hash(d)

@@ -1,11 +1,11 @@
-""" Test script for the Unicode implementation.
+"""Test script for the Unicode implementation.
 
 Written by Bill Tutt.
 Modified for Python 2.0 by Fredrik Lundh (fredrik@pythonware.com)
 
 (c) Copyright CNRI, All Rights Reserved. NO WARRANTY.
 
-"""#"
+"""  # "
 
 import ast
 import unittest
@@ -18,6 +18,7 @@ try:
     from _testcapi import INT_MAX, PY_SSIZE_T_MAX, UINT_MAX
 except ImportError:
     INT_MAX = PY_SSIZE_T_MAX = UINT_MAX = 2**64 - 1
+
 
 class UnicodeNamesTest(unittest.TestCase):
 
@@ -57,13 +58,12 @@ class UnicodeNamesTest(unittest.TestCase):
             "LATIN small LETTER e",
             "LATIN small LETTER e",
             "LATIN SMALL LETTER P",
-            "FULL STOP"
+            "FULL STOP",
         ]
         string = "The rEd fOx ate the sheep."
 
         self.assertEqual(
-            "".join([self.checkletter(*args) for args in zip(chars, string)]),
-            string
+            "".join([self.checkletter(*args) for args in zip(chars, string)]), string
         )
 
     def test_ascii_letters(self):
@@ -93,14 +93,14 @@ class UnicodeNamesTest(unittest.TestCase):
         self.checkletter("CJK UNIFIED IDEOGRAPH-3400", "\u3400")
         self.checkletter("CJK UNIFIED IDEOGRAPH-4DB5", "\u4db5")
         self.checkletter("CJK UNIFIED IDEOGRAPH-4E00", "\u4e00")
-        self.checkletter("CJK UNIFIED IDEOGRAPH-9FCB", "\u9fCB")
+        self.checkletter("CJK UNIFIED IDEOGRAPH-9FCB", "\u9fcb")
         self.checkletter("CJK UNIFIED IDEOGRAPH-20000", "\U00020000")
         self.checkletter("CJK UNIFIED IDEOGRAPH-2A6D6", "\U0002a6d6")
-        self.checkletter("CJK UNIFIED IDEOGRAPH-2A700", "\U0002A700")
-        self.checkletter("CJK UNIFIED IDEOGRAPH-2B734", "\U0002B734")
-        self.checkletter("CJK UNIFIED IDEOGRAPH-2B740", "\U0002B740")
-        self.checkletter("CJK UNIFIED IDEOGRAPH-2B81D", "\U0002B81D")
-        self.checkletter("CJK UNIFIED IDEOGRAPH-3134A", "\U0003134A")
+        self.checkletter("CJK UNIFIED IDEOGRAPH-2A700", "\U0002a700")
+        self.checkletter("CJK UNIFIED IDEOGRAPH-2B734", "\U0002b734")
+        self.checkletter("CJK UNIFIED IDEOGRAPH-2B740", "\U0002b740")
+        self.checkletter("CJK UNIFIED IDEOGRAPH-2B81D", "\U0002b81d")
+        self.checkletter("CJK UNIFIED IDEOGRAPH-3134A", "\U0003134a")
 
     def test_bmp_characters(self):
         for code in range(0x10000):
@@ -111,58 +111,57 @@ class UnicodeNamesTest(unittest.TestCase):
 
     def test_misc_symbols(self):
         self.checkletter("PILCROW SIGN", "\u00b6")
-        self.checkletter("REPLACEMENT CHARACTER", "\uFFFD")
-        self.checkletter("HALFWIDTH KATAKANA SEMI-VOICED SOUND MARK", "\uFF9F")
-        self.checkletter("FULLWIDTH LATIN SMALL LETTER A", "\uFF41")
+        self.checkletter("REPLACEMENT CHARACTER", "\ufffd")
+        self.checkletter("HALFWIDTH KATAKANA SEMI-VOICED SOUND MARK", "\uff9f")
+        self.checkletter("FULLWIDTH LATIN SMALL LETTER A", "\uff41")
 
     def test_aliases(self):
         # Check that the aliases defined in the NameAliases.txt file work.
         # This should be updated when new aliases are added or the file
         # should be downloaded and parsed instead.  See #12753.
         aliases = [
-            ('LATIN CAPITAL LETTER GHA', 0x01A2),
-            ('LATIN SMALL LETTER GHA', 0x01A3),
-            ('KANNADA LETTER LLLA', 0x0CDE),
-            ('LAO LETTER FO FON', 0x0E9D),
-            ('LAO LETTER FO FAY', 0x0E9F),
-            ('LAO LETTER RO', 0x0EA3),
-            ('LAO LETTER LO', 0x0EA5),
-            ('TIBETAN MARK BKA- SHOG GI MGO RGYAN', 0x0FD0),
-            ('YI SYLLABLE ITERATION MARK', 0xA015),
-            ('PRESENTATION FORM FOR VERTICAL RIGHT WHITE LENTICULAR BRACKET', 0xFE18),
-            ('BYZANTINE MUSICAL SYMBOL FTHORA SKLIRON CHROMA VASIS', 0x1D0C5)
+            ("LATIN CAPITAL LETTER GHA", 0x01A2),
+            ("LATIN SMALL LETTER GHA", 0x01A3),
+            ("KANNADA LETTER LLLA", 0x0CDE),
+            ("LAO LETTER FO FON", 0x0E9D),
+            ("LAO LETTER FO FAY", 0x0E9F),
+            ("LAO LETTER RO", 0x0EA3),
+            ("LAO LETTER LO", 0x0EA5),
+            ("TIBETAN MARK BKA- SHOG GI MGO RGYAN", 0x0FD0),
+            ("YI SYLLABLE ITERATION MARK", 0xA015),
+            ("PRESENTATION FORM FOR VERTICAL RIGHT WHITE LENTICULAR BRACKET", 0xFE18),
+            ("BYZANTINE MUSICAL SYMBOL FTHORA SKLIRON CHROMA VASIS", 0x1D0C5),
         ]
         for alias, codepoint in aliases:
             self.checkletter(alias, chr(codepoint))
             name = unicodedata.name(chr(codepoint))
             self.assertNotEqual(name, alias)
-            self.assertEqual(unicodedata.lookup(alias),
-                             unicodedata.lookup(name))
+            self.assertEqual(unicodedata.lookup(alias), unicodedata.lookup(name))
             with self.assertRaises(KeyError):
                 unicodedata.ucd_3_2_0.lookup(alias)
 
     def test_aliases_names_in_pua_range(self):
         # We are storing aliases in the PUA 15, but their names shouldn't leak
-        for cp in range(0xf0000, 0xf0100):
+        for cp in range(0xF0000, 0xF0100):
             with self.assertRaises(ValueError) as cm:
                 unicodedata.name(chr(cp))
-            self.assertEqual(str(cm.exception), 'no such name')
+            self.assertEqual(str(cm.exception), "no such name")
 
     def test_named_sequences_names_in_pua_range(self):
         # We are storing named seq in the PUA 15, but their names shouldn't leak
-        for cp in range(0xf0100, 0xf0fff):
+        for cp in range(0xF0100, 0xF0FFF):
             with self.assertRaises(ValueError) as cm:
                 unicodedata.name(chr(cp))
-            self.assertEqual(str(cm.exception), 'no such name')
+            self.assertEqual(str(cm.exception), "no such name")
 
     def test_named_sequences_sample(self):
         # Check a few named sequences.  See #12753.
         sequences = [
-            ('LATIN SMALL LETTER R WITH TILDE', '\u0072\u0303'),
-            ('TAMIL SYLLABLE SAI', '\u0BB8\u0BC8'),
-            ('TAMIL SYLLABLE MOO', '\u0BAE\u0BCB'),
-            ('TAMIL SYLLABLE NNOO', '\u0BA3\u0BCB'),
-            ('TAMIL CONSONANT KSS', '\u0B95\u0BCD\u0BB7\u0BCD'),
+            ("LATIN SMALL LETTER R WITH TILDE", "\u0072\u0303"),
+            ("TAMIL SYLLABLE SAI", "\u0bb8\u0bc8"),
+            ("TAMIL SYLLABLE MOO", "\u0bae\u0bcb"),
+            ("TAMIL SYLLABLE NNOO", "\u0ba3\u0bcb"),
+            ("TAMIL CONSONANT KSS", "\u0b95\u0bcd\u0bb7\u0bcd"),
         ]
         for seqname, codepoints in sequences:
             self.assertEqual(unicodedata.lookup(seqname), codepoints)
@@ -176,20 +175,24 @@ class UnicodeNamesTest(unittest.TestCase):
         def check_version(testfile):
             hdr = testfile.readline()
             return unicodedata.unidata_version in hdr
-        url = ("http://www.pythontest.net/unicode/%s/NamedSequences.txt" %
-               unicodedata.unidata_version)
+
+        url = (
+            "http://www.pythontest.net/unicode/%s/NamedSequences.txt"
+            % unicodedata.unidata_version
+        )
         try:
-            testdata = support.open_urlresource(url, encoding="utf-8",
-                                                check=check_version)
+            testdata = support.open_urlresource(
+                url, encoding="utf-8", check=check_version
+            )
         except (OSError, HTTPException):
             self.skipTest("Could not retrieve " + url)
         self.addCleanup(testdata.close)
         for line in testdata:
             line = line.strip()
-            if not line or line.startswith('#'):
+            if not line or line.startswith("#"):
                 continue
-            seqname, codepoints = line.split(';')
-            codepoints = ''.join(chr(int(cp, 16)) for cp in codepoints.split())
+            seqname, codepoints = line.split(";")
+            codepoints = "".join(chr(int(cp, 16)) for cp in codepoints.split())
             self.assertEqual(unicodedata.lookup(seqname), codepoints)
             with self.assertRaises(SyntaxError):
                 self.checkletter(seqname, None)
@@ -198,42 +201,35 @@ class UnicodeNamesTest(unittest.TestCase):
 
     def test_errors(self):
         self.assertRaises(TypeError, unicodedata.name)
-        self.assertRaises(TypeError, unicodedata.name, 'xx')
+        self.assertRaises(TypeError, unicodedata.name, "xx")
         self.assertRaises(TypeError, unicodedata.lookup)
-        self.assertRaises(KeyError, unicodedata.lookup, 'unknown')
+        self.assertRaises(KeyError, unicodedata.lookup, "unknown")
 
     def test_strict_error_handling(self):
         # bogus character name
-        self.assertRaises(
-            UnicodeError,
-            str, b"\\N{blah}", 'unicode-escape', 'strict'
-        )
+        self.assertRaises(UnicodeError, str, b"\\N{blah}", "unicode-escape", "strict")
         # long bogus character name
         self.assertRaises(
             UnicodeError,
-            str, bytes("\\N{%s}" % ("x" * 100000), "ascii"), 'unicode-escape', 'strict'
+            str,
+            bytes("\\N{%s}" % ("x" * 100000), "ascii"),
+            "unicode-escape",
+            "strict",
         )
         # missing closing brace
-        self.assertRaises(
-            UnicodeError,
-            str, b"\\N{SPACE", 'unicode-escape', 'strict'
-        )
+        self.assertRaises(UnicodeError, str, b"\\N{SPACE", "unicode-escape", "strict")
         # missing opening brace
-        self.assertRaises(
-            UnicodeError,
-            str, b"\\NSPACE", 'unicode-escape', 'strict'
-        )
+        self.assertRaises(UnicodeError, str, b"\\NSPACE", "unicode-escape", "strict")
 
     @support.cpython_only
     @unittest.skipUnless(INT_MAX < PY_SSIZE_T_MAX, "needs UINT_MAX < SIZE_MAX")
     @support.bigmemtest(size=UINT_MAX + 1, memuse=2 + 1, dry_run=False)
     def test_issue16335(self, size):
         # very very long bogus character name
-        x = b'\\N{SPACE' + b'x' * (UINT_MAX + 1) + b'}'
-        self.assertEqual(len(x), len(b'\\N{SPACE}') + (UINT_MAX + 1))
-        self.assertRaisesRegex(UnicodeError,
-            'unknown Unicode character name',
-            x.decode, 'unicode-escape'
+        x = b"\\N{SPACE" + b"x" * (UINT_MAX + 1) + b"}"
+        self.assertEqual(len(x), len(b"\\N{SPACE}") + (UINT_MAX + 1))
+        self.assertRaisesRegex(
+            UnicodeError, "unknown Unicode character name", x.decode, "unicode-escape"
         )
 
 

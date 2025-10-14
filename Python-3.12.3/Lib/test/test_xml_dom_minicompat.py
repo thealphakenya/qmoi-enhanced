@@ -16,7 +16,7 @@ class EmptyNodeListTestCase(unittest.TestCase):
         node_list = EmptyNodeList()
 
         self.assertIsNone(node_list.item(0))
-        self.assertIsNone(node_list.item(-1)) # invalid item
+        self.assertIsNone(node_list.item(-1))  # invalid item
 
         with self.assertRaises(IndexError):
             node_list[0]
@@ -36,8 +36,8 @@ class EmptyNodeListTestCase(unittest.TestCase):
         self.assertEqual(node_list, NodeList())
 
     def test_emptynodelist___radd__(self):
-        node_list = [1,2] + EmptyNodeList()
-        self.assertEqual(node_list, [1,2])
+        node_list = [1, 2] + EmptyNodeList()
+        self.assertEqual(node_list, [1, 2])
 
 
 class NodeListTestCase(unittest.TestCase):
@@ -61,7 +61,7 @@ class NodeListTestCase(unittest.TestCase):
         node_list.append(999)
 
         self.assertEqual(node_list.item(0), 111)
-        self.assertIsNone(node_list.item(-1)) # invalid item
+        self.assertIsNone(node_list.item(-1))  # invalid item
 
         self.assertEqual(node_list[0], 111)
         self.assertEqual(node_list[-1], 999)
@@ -134,5 +134,6 @@ class NodeListTestCase(unittest.TestCase):
             self.assertIsNot(x, y)
             self.assertEqual(x, y)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

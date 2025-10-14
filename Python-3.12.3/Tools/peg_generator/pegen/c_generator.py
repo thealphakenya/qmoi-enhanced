@@ -286,7 +286,9 @@ class CCallMakerVisitor(GrammarVisitor):
                 comment=f"forced_token=({node.node.rhs!s})",
             )
         else:
-            raise NotImplementedError(f"Forced tokens don't work with {node.node} nodes")
+            raise NotImplementedError(
+                f"Forced tokens don't work with {node.node} nodes"
+            )
 
     def visit_Opt(self, node: Opt) -> FunctionCall:
         call = self.generate_call(node.node)
@@ -462,7 +464,11 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
         if self.skip_actions:
             mode = 0
         else:
-            mode = int(self.rules["start"].type == "mod_ty") if "start" in self.rules else 1
+            mode = (
+                int(self.rules["start"].type == "mod_ty")
+                if "start" in self.rules
+                else 1
+            )
             if mode == 1 and self.grammar.metas.get("bytecode"):
                 mode += 1
         modulename = self.grammar.metas.get("modulename", "parse")
@@ -597,7 +603,9 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
                 rulename=node.name,
             )
             if self.debug:
-                self.print(f'D(fprintf(stderr, "Fail at %d: {node.name}\\n", p->mark));')
+                self.print(
+                    f'D(fprintf(stderr, "Fail at %d: {node.name}\\n", p->mark));'
+                )
             self.print("_res = NULL;")
         self.print("  done:")
         with self.indent():
@@ -639,12 +647,18 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
                     self.print("PyMem_Free(_children);")
                     self.add_return("NULL")
                 self.print("}")
-            self.print("asdl_seq *_seq = (asdl_seq*)_Py_asdl_generic_seq_new(_n, p->arena);")
+            self.print(
+                "asdl_seq *_seq = (asdl_seq*)_Py_asdl_generic_seq_new(_n, p->arena);"
+            )
             self.out_of_memory_return(f"!_seq", cleanup_code="PyMem_Free(_children);")
-            self.print("for (int i = 0; i < _n; i++) asdl_seq_SET_UNTYPED(_seq, i, _children[i]);")
+            self.print(
+                "for (int i = 0; i < _n; i++) asdl_seq_SET_UNTYPED(_seq, i, _children[i]);"
+            )
             self.print("PyMem_Free(_children);")
             if memoize and node.name:
-                self.print(f"_PyPegen_insert_memo(p, _start_mark, {node.name}_type, _seq);")
+                self.print(
+                    f"_PyPegen_insert_memo(p, _start_mark, {node.name}_type, _seq);"
+                )
             self.add_return("_seq")
 
     def visit_Rule(self, node: Rule) -> None:
@@ -675,7 +689,9 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
             with self.indent():
                 self.print("int _prev_call_invalid = p->call_invalid_rules;")
                 self.print("p->call_invalid_rules = 0;")
-                self.cleanup_statements.append("p->call_invalid_rules = _prev_call_invalid;")
+                self.cleanup_statements.append(
+                    "p->call_invalid_rules = _prev_call_invalid;"
+                )
 
         if is_loop:
             self._handle_loop_rule_body(node, rhs)
@@ -755,7 +771,9 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
     def emit_dummy_action(self) -> None:
         self.print("_res = _PyPegen_dummy_name(p);")
 
-    def handle_alt_normal(self, node: Alt, is_gather: bool, rulename: Optional[str]) -> None:
+    def handle_alt_normal(
+        self, node: Alt, is_gather: bool, rulename: Optional[str]
+    ) -> None:
         self.join_conditions(keyword="if", node=node)
         self.print("{")
         # We have parsed successfully all the conditions for the option.
@@ -778,7 +796,9 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
             self.print(f"goto done;")
         self.print("}")
 
-    def handle_alt_loop(self, node: Alt, is_gather: bool, rulename: Optional[str]) -> None:
+    def handle_alt_loop(
+        self, node: Alt, is_gather: bool, rulename: Optional[str]
+    ) -> None:
         # Condition of the main body of the alternative
         self.join_conditions(keyword="while", node=node)
         self.print("{")
@@ -802,7 +822,9 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
                 self.print(
                     "void **_new_children = PyMem_Realloc(_children, _children_capacity*sizeof(void *));"
                 )
-                self.out_of_memory_return(f"!_new_children", cleanup_code="PyMem_Free(_children);")
+                self.out_of_memory_return(
+                    f"!_new_children", cleanup_code="PyMem_Free(_children);"
+                )
                 self.print("_children = _new_children;")
             self.print("}")
             self.print("_children[_n++] = _res;")
@@ -824,7 +846,9 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
             )
             # Prepare variable declarations for the alternative
             vars = self.collect_vars(node)
-            for v, var_type in sorted(item for item in vars.items() if item[0] is not None):
+            for v, var_type in sorted(
+                item for item in vars.items() if item[0] is not None
+            ):
                 if not var_type:
                     var_type = "void *"
                 else:

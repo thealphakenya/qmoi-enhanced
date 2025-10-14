@@ -10,10 +10,12 @@ from errno import EEXIST
 class SubOSError(OSError):
     pass
 
+
 class SubOSErrorWithInit(OSError):
     def __init__(self, message, bar):
         self.bar = bar
         super().__init__(message)
+
 
 class SubOSErrorWithNew(OSError):
     def __new__(cls, message, baz):
@@ -21,11 +23,14 @@ class SubOSErrorWithNew(OSError):
         self.baz = baz
         return self
 
+
 class SubOSErrorCombinedInitFirst(SubOSErrorWithInit, SubOSErrorWithNew):
     pass
 
+
 class SubOSErrorCombinedNewFirst(SubOSErrorWithNew, SubOSErrorWithInit):
     pass
+
 
 class SubOSErrorWithStandaloneInit(OSError):
     def __init__(self):
@@ -35,7 +40,7 @@ class SubOSErrorWithStandaloneInit(OSError):
 class HierarchyTest(unittest.TestCase):
 
     def test_builtin_errors(self):
-        self.assertEqual(OSError.__name__, 'OSError')
+        self.assertEqual(OSError.__name__, "OSError")
         self.assertIs(IOError, OSError)
         self.assertIs(EnvironmentError, OSError)
 
@@ -67,18 +72,20 @@ class HierarchyTest(unittest.TestCase):
         +-- ProcessLookupError                                          ESRCH
         +-- TimeoutError                                            ETIMEDOUT
     """
+
     def _make_map(s):
         _map = {}
         for line in s.splitlines():
-            line = line.strip('+- ')
+            line = line.strip("+- ")
             if not line:
                 continue
-            excname, _, errnames = line.partition(' ')
-            for errname in filter(None, errnames.strip().split(', ')):
+            excname, _, errnames = line.partition(" ")
+            for errname in filter(None, errnames.strip().split(", ")):
                 if errname == "ENOTCAPABLE" and not hasattr(errno, errname):
                     continue
                 _map[getattr(errno, errname)] = getattr(builtins, excname)
         return _map
+
     _map = _make_map(_pep_map)
 
     def test_errno_mapping(self):
@@ -123,9 +130,9 @@ class AttributesTest(unittest.TestCase):
 
     def test_windows_error(self):
         if os.name == "nt":
-            self.assertIn('winerror', dir(OSError))
+            self.assertIn("winerror", dir(OSError))
         else:
-            self.assertNotIn('winerror', dir(OSError))
+            self.assertNotIn("winerror", dir(OSError))
 
     def test_posix_error(self):
         e = OSError(EEXIST, "File already exists", "foo.txt")
@@ -204,7 +211,7 @@ class ExplicitSubclassingTest(unittest.TestCase):
         # __init__ doesn't propagate to OSError.__init__ (see issue #15229)
         e = SubOSErrorWithStandaloneInit()
         self.assertEqual(e.args, ())
-        self.assertEqual(str(e), '')
+        self.assertEqual(str(e), "")
 
 
 if __name__ == "__main__":

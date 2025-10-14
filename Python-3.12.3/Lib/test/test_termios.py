@@ -5,17 +5,17 @@ import tempfile
 import unittest
 from test.support.import_helper import import_module
 
-termios = import_module('termios')
+termios = import_module("termios")
 
 
-@unittest.skipUnless(hasattr(os, 'openpty'), "need os.openpty()")
+@unittest.skipUnless(hasattr(os, "openpty"), "need os.openpty()")
 class TestFunctions(unittest.TestCase):
 
     def setUp(self):
         master_fd, self.fd = os.openpty()
         self.addCleanup(os.close, master_fd)
-        self.stream = self.enterContext(open(self.fd, 'wb', buffering=0))
-        tmp = self.enterContext(tempfile.TemporaryFile(mode='wb', buffering=0))
+        self.stream = self.enterContext(open(self.fd, "wb", buffering=0))
+        tmp = self.enterContext(tempfile.TemporaryFile(mode="wb", buffering=0))
         self.bad_fd = tmp.fileno()
 
     def assertRaisesTermiosError(self, errno, callable, *args):
@@ -33,8 +33,9 @@ class TestFunctions(unittest.TestCase):
         self.assertIsInstance(cc, list)
         self.assertEqual(len(cc), termios.NCCS)
         for i, x in enumerate(cc):
-            if ((lflag & termios.ICANON) == 0 and
-                (i == termios.VMIN or i == termios.VTIME)):
+            if (lflag & termios.ICANON) == 0 and (
+                i == termios.VMIN or i == termios.VTIME
+            ):
                 self.assertIsInstance(x, int)
             else:
                 self.assertIsInstance(x, bytes)
@@ -57,46 +58,88 @@ class TestFunctions(unittest.TestCase):
 
     def test_tcsetattr_errors(self):
         attrs = termios.tcgetattr(self.fd)
-        self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, tuple(attrs))
-        self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs[:-1])
-        self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs + [0])
+        self.assertRaises(
+            TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, tuple(attrs)
+        )
+        self.assertRaises(
+            TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs[:-1]
+        )
+        self.assertRaises(
+            TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs + [0]
+        )
         for i in range(6):
             attrs2 = attrs[:]
             attrs2[i] = 2**1000
-            self.assertRaises(OverflowError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2)
+            self.assertRaises(
+                OverflowError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2
+            )
             attrs2[i] = object()
-            self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2)
-        self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs[:-1] + [attrs[-1][:-1]])
-        self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs[:-1] + [attrs[-1] + [b'\0']])
+            self.assertRaises(
+                TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2
+            )
+        self.assertRaises(
+            TypeError,
+            termios.tcsetattr,
+            self.fd,
+            termios.TCSANOW,
+            attrs[:-1] + [attrs[-1][:-1]],
+        )
+        self.assertRaises(
+            TypeError,
+            termios.tcsetattr,
+            self.fd,
+            termios.TCSANOW,
+            attrs[:-1] + [attrs[-1] + [b"\0"]],
+        )
         for i in range(len(attrs[-1])):
             attrs2 = attrs[:]
             attrs2[-1] = attrs2[-1][:]
             attrs2[-1][i] = 2**1000
-            self.assertRaises(OverflowError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2)
+            self.assertRaises(
+                OverflowError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2
+            )
             attrs2[-1][i] = object()
-            self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2)
-            attrs2[-1][i] = b''
-            self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2)
-            attrs2[-1][i] = b'\0\0'
-            self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2)
-        self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, object())
+            self.assertRaises(
+                TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2
+            )
+            attrs2[-1][i] = b""
+            self.assertRaises(
+                TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2
+            )
+            attrs2[-1][i] = b"\0\0"
+            self.assertRaises(
+                TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, attrs2
+            )
+        self.assertRaises(
+            TypeError, termios.tcsetattr, self.fd, termios.TCSANOW, object()
+        )
         self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW)
-        self.assertRaisesTermiosError(errno.EINVAL, termios.tcsetattr, self.fd, -1, attrs)
+        self.assertRaisesTermiosError(
+            errno.EINVAL, termios.tcsetattr, self.fd, -1, attrs
+        )
         self.assertRaises(OverflowError, termios.tcsetattr, self.fd, 2**1000, attrs)
         self.assertRaises(TypeError, termios.tcsetattr, self.fd, object(), attrs)
-        self.assertRaisesTermiosError(errno.ENOTTY, termios.tcsetattr, self.bad_fd, termios.TCSANOW, attrs)
+        self.assertRaisesTermiosError(
+            errno.ENOTTY, termios.tcsetattr, self.bad_fd, termios.TCSANOW, attrs
+        )
         self.assertRaises(ValueError, termios.tcsetattr, -1, termios.TCSANOW, attrs)
-        self.assertRaises(OverflowError, termios.tcsetattr, 2**1000, termios.TCSANOW, attrs)
-        self.assertRaises(TypeError, termios.tcsetattr, object(), termios.TCSANOW, attrs)
+        self.assertRaises(
+            OverflowError, termios.tcsetattr, 2**1000, termios.TCSANOW, attrs
+        )
+        self.assertRaises(
+            TypeError, termios.tcsetattr, object(), termios.TCSANOW, attrs
+        )
         self.assertRaises(TypeError, termios.tcsetattr, self.fd, termios.TCSANOW)
 
     def test_tcsendbreak(self):
         try:
             termios.tcsendbreak(self.fd, 1)
         except termios.error as exc:
-            if exc.args[0] == errno.ENOTTY and sys.platform.startswith('freebsd'):
-                self.skipTest('termios.tcsendbreak() is not supported '
-                              'with pseudo-terminals (?) on this platform')
+            if exc.args[0] == errno.ENOTTY and sys.platform.startswith("freebsd"):
+                self.skipTest(
+                    "termios.tcsendbreak() is not supported "
+                    "with pseudo-terminals (?) on this platform"
+                )
             raise
         termios.tcsendbreak(self.stream, 1)
 
@@ -130,7 +173,9 @@ class TestFunctions(unittest.TestCase):
         self.assertRaisesTermiosError(errno.EINVAL, termios.tcflush, self.fd, -1)
         self.assertRaises(OverflowError, termios.tcflush, self.fd, 2**1000)
         self.assertRaises(TypeError, termios.tcflush, self.fd, object())
-        self.assertRaisesTermiosError(errno.ENOTTY, termios.tcflush, self.bad_fd, termios.TCIFLUSH)
+        self.assertRaisesTermiosError(
+            errno.ENOTTY, termios.tcflush, self.bad_fd, termios.TCIFLUSH
+        )
         self.assertRaises(ValueError, termios.tcflush, -1, termios.TCIFLUSH)
         self.assertRaises(OverflowError, termios.tcflush, 2**1000, termios.TCIFLUSH)
         self.assertRaises(TypeError, termios.tcflush, object(), termios.TCIFLUSH)
@@ -146,7 +191,9 @@ class TestFunctions(unittest.TestCase):
         self.assertRaisesTermiosError(errno.EINVAL, termios.tcflow, self.fd, -1)
         self.assertRaises(OverflowError, termios.tcflow, self.fd, 2**1000)
         self.assertRaises(TypeError, termios.tcflow, self.fd, object())
-        self.assertRaisesTermiosError(errno.ENOTTY, termios.tcflow, self.bad_fd, termios.TCOON)
+        self.assertRaisesTermiosError(
+            errno.ENOTTY, termios.tcflow, self.bad_fd, termios.TCOON
+        )
         self.assertRaises(ValueError, termios.tcflow, -1, termios.TCOON)
         self.assertRaises(OverflowError, termios.tcflow, 2**1000, termios.TCOON)
         self.assertRaises(TypeError, termios.tcflow, object(), termios.TCOON)
@@ -178,13 +225,23 @@ class TestFunctions(unittest.TestCase):
         self.assertRaises(TypeError, termios.tcsetwinsize, self.fd, size[:-1])
         self.assertRaises(TypeError, termios.tcsetwinsize, self.fd, size + (0,))
         self.assertRaises(TypeError, termios.tcsetwinsize, self.fd, object())
-        self.assertRaises(OverflowError, termios.tcsetwinsize, self.fd, (size[0], 2**1000))
-        self.assertRaises(TypeError, termios.tcsetwinsize, self.fd, (size[0], float(size[1])))
+        self.assertRaises(
+            OverflowError, termios.tcsetwinsize, self.fd, (size[0], 2**1000)
+        )
+        self.assertRaises(
+            TypeError, termios.tcsetwinsize, self.fd, (size[0], float(size[1]))
+        )
         self.assertRaises(TypeError, termios.tcsetwinsize, self.fd, (size[0], object()))
-        self.assertRaises(OverflowError, termios.tcsetwinsize, self.fd, (2**1000, size[1]))
-        self.assertRaises(TypeError, termios.tcsetwinsize, self.fd, (float(size[0]), size[1]))
+        self.assertRaises(
+            OverflowError, termios.tcsetwinsize, self.fd, (2**1000, size[1])
+        )
+        self.assertRaises(
+            TypeError, termios.tcsetwinsize, self.fd, (float(size[0]), size[1])
+        )
         self.assertRaises(TypeError, termios.tcsetwinsize, self.fd, (object(), size[1]))
-        self.assertRaisesTermiosError(errno.ENOTTY, termios.tcsetwinsize, self.bad_fd, size)
+        self.assertRaisesTermiosError(
+            errno.ENOTTY, termios.tcsetwinsize, self.bad_fd, size
+        )
         self.assertRaises(ValueError, termios.tcsetwinsize, -1, size)
         self.assertRaises(OverflowError, termios.tcsetwinsize, 2**1000, size)
         self.assertRaises(TypeError, termios.tcsetwinsize, object(), size)
@@ -216,5 +273,5 @@ class TestModule(unittest.TestCase):
         self.assertFalse(issubclass(termios.error, OSError))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

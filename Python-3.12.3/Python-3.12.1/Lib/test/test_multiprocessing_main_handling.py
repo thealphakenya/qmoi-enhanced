@@ -1,8 +1,9 @@
 # tests __main__ module handling in multiprocessing
 from test import support
 from test.support import import_helper
+
 # Skip tests if _multiprocessing wasn't built.
-import_helper.import_module('_multiprocessing')
+import_helper.import_module("_multiprocessing")
 
 import importlib
 import importlib.machinery
@@ -14,14 +15,19 @@ import py_compile
 
 from test.support import os_helper
 from test.support.script_helper import (
-    make_pkg, make_script, make_zip_pkg, make_zip_script,
-    assert_python_ok)
+    make_pkg,
+    make_script,
+    make_zip_pkg,
+    make_zip_script,
+    assert_python_ok,
+)
 
 if support.PGO:
     raise unittest.SkipTest("test is not helpful for PGO")
 
 # Look up which start methods are available to test
 import multiprocessing
+
 AVAILABLE_START_METHODS = set(multiprocessing.get_all_start_methods())
 
 # Issue #22332: Skip tests if sem_open implementation is broken.
@@ -107,22 +113,27 @@ pool.join()
 
 # These helpers were copied from test_cmd_line_script & tweaked a bit...
 
-def _make_test_script(script_dir, script_basename,
-                      source=test_source, omit_suffix=False):
-    to_return = make_script(script_dir, script_basename,
-                            source, omit_suffix)
+
+def _make_test_script(
+    script_dir, script_basename, source=test_source, omit_suffix=False
+):
+    to_return = make_script(script_dir, script_basename, source, omit_suffix)
     # Hack to check explicit relative imports
     if script_basename == "check_sibling":
         make_script(script_dir, "sibling", "")
     importlib.invalidate_caches()
     return to_return
 
-def _make_test_zip_pkg(zip_dir, zip_basename, pkg_name, script_basename,
-                       source=test_source, depth=1):
-    to_return = make_zip_pkg(zip_dir, zip_basename, pkg_name, script_basename,
-                             source, depth)
+
+def _make_test_zip_pkg(
+    zip_dir, zip_basename, pkg_name, script_basename, source=test_source, depth=1
+):
+    to_return = make_zip_pkg(
+        zip_dir, zip_basename, pkg_name, script_basename, source, depth
+    )
     importlib.invalidate_caches()
     return to_return
+
 
 # There's no easy way to pass the script directory in to get
 # -m to work (avoiding that is the whole point of making
@@ -134,6 +145,7 @@ sys.path.insert(0, %s)
 runpy._run_module_as_main(%r)
 """
 
+
 def _make_launch_script(script_dir, script_basename, module_name, path=None):
     if path is None:
         path = "os.path.dirname(__file__)"
@@ -144,8 +156,9 @@ def _make_launch_script(script_dir, script_basename, module_name, path=None):
     importlib.invalidate_caches()
     return to_return
 
-class MultiProcessingCmdLineMixin():
-    maxDiff = None # Show full tracebacks on subprocess failure
+
+class MultiProcessingCmdLineMixin:
+    maxDiff = None  # Show full tracebacks on subprocess failure
 
     def setUp(self):
         if self.start_method not in AVAILABLE_START_METHODS:
@@ -156,26 +169,25 @@ class MultiProcessingCmdLineMixin():
             print("Output from test script %r:" % script_name)
             print(repr(out))
         self.assertEqual(exit_code, 0)
-        self.assertEqual(err.decode('utf-8'), '')
+        self.assertEqual(err.decode("utf-8"), "")
         expected_results = "%s -> [1, 4, 9]" % self.start_method
-        self.assertEqual(out.decode('utf-8').strip(), expected_results)
+        self.assertEqual(out.decode("utf-8").strip(), expected_results)
 
     def _check_script(self, script_name, *cmd_line_switches):
         if not __debug__:
-            cmd_line_switches += ('-' + 'O' * sys.flags.optimize,)
+            cmd_line_switches += ("-" + "O" * sys.flags.optimize,)
         run_args = cmd_line_switches + (script_name, self.start_method)
         rc, out, err = assert_python_ok(*run_args, __isolated=False)
         self._check_output(script_name, rc, out, err)
 
     def test_basic_script(self):
         with os_helper.temp_dir() as script_dir:
-            script_name = _make_test_script(script_dir, 'script')
+            script_name = _make_test_script(script_dir, "script")
             self._check_script(script_name)
 
     def test_basic_script_no_suffix(self):
         with os_helper.temp_dir() as script_dir:
-            script_name = _make_test_script(script_dir, 'script',
-                                            omit_suffix=True)
+            script_name = _make_test_script(script_dir, "script", omit_suffix=True)
             self._check_script(script_name)
 
     def test_ipython_workaround(self):
@@ -185,17 +197,16 @@ class MultiProcessingCmdLineMixin():
         # See https://github.com/ipython/ipython/issues/4698
         source = test_source_main_skipped_in_children
         with os_helper.temp_dir() as script_dir:
-            script_name = _make_test_script(script_dir, 'ipython',
-                                            source=source)
+            script_name = _make_test_script(script_dir, "ipython", source=source)
             self._check_script(script_name)
-            script_no_suffix = _make_test_script(script_dir, 'ipython',
-                                                 source=source,
-                                                 omit_suffix=True)
+            script_no_suffix = _make_test_script(
+                script_dir, "ipython", source=source, omit_suffix=True
+            )
             self._check_script(script_no_suffix)
 
     def test_script_compiled(self):
         with os_helper.temp_dir() as script_dir:
-            script_name = _make_test_script(script_dir, 'script')
+            script_name = _make_test_script(script_dir, "script")
             py_compile.compile(script_name, doraise=True)
             os.remove(script_name)
             pyc_file = import_helper.make_legacy_pyc(script_name)
@@ -204,15 +215,13 @@ class MultiProcessingCmdLineMixin():
     def test_directory(self):
         source = self.main_in_children_source
         with os_helper.temp_dir() as script_dir:
-            script_name = _make_test_script(script_dir, '__main__',
-                                            source=source)
+            script_name = _make_test_script(script_dir, "__main__", source=source)
             self._check_script(script_dir)
 
     def test_directory_compiled(self):
         source = self.main_in_children_source
         with os_helper.temp_dir() as script_dir:
-            script_name = _make_test_script(script_dir, '__main__',
-                                            source=source)
+            script_name = _make_test_script(script_dir, "__main__", source=source)
             py_compile.compile(script_name, doraise=True)
             os.remove(script_name)
             pyc_file = import_helper.make_legacy_pyc(script_name)
@@ -221,80 +230,91 @@ class MultiProcessingCmdLineMixin():
     def test_zipfile(self):
         source = self.main_in_children_source
         with os_helper.temp_dir() as script_dir:
-            script_name = _make_test_script(script_dir, '__main__',
-                                            source=source)
-            zip_name, run_name = make_zip_script(script_dir, 'test_zip', script_name)
+            script_name = _make_test_script(script_dir, "__main__", source=source)
+            zip_name, run_name = make_zip_script(script_dir, "test_zip", script_name)
             self._check_script(zip_name)
 
     def test_zipfile_compiled(self):
         source = self.main_in_children_source
         with os_helper.temp_dir() as script_dir:
-            script_name = _make_test_script(script_dir, '__main__',
-                                            source=source)
+            script_name = _make_test_script(script_dir, "__main__", source=source)
             compiled_name = py_compile.compile(script_name, doraise=True)
-            zip_name, run_name = make_zip_script(script_dir, 'test_zip', compiled_name)
+            zip_name, run_name = make_zip_script(script_dir, "test_zip", compiled_name)
             self._check_script(zip_name)
 
     def test_module_in_package(self):
         with os_helper.temp_dir() as script_dir:
-            pkg_dir = os.path.join(script_dir, 'test_pkg')
+            pkg_dir = os.path.join(script_dir, "test_pkg")
             make_pkg(pkg_dir)
-            script_name = _make_test_script(pkg_dir, 'check_sibling')
-            launch_name = _make_launch_script(script_dir, 'launch',
-                                              'test_pkg.check_sibling')
+            script_name = _make_test_script(pkg_dir, "check_sibling")
+            launch_name = _make_launch_script(
+                script_dir, "launch", "test_pkg.check_sibling"
+            )
             self._check_script(launch_name)
 
     def test_module_in_package_in_zipfile(self):
         with os_helper.temp_dir() as script_dir:
-            zip_name, run_name = _make_test_zip_pkg(script_dir, 'test_zip', 'test_pkg', 'script')
-            launch_name = _make_launch_script(script_dir, 'launch', 'test_pkg.script', zip_name)
+            zip_name, run_name = _make_test_zip_pkg(
+                script_dir, "test_zip", "test_pkg", "script"
+            )
+            launch_name = _make_launch_script(
+                script_dir, "launch", "test_pkg.script", zip_name
+            )
             self._check_script(launch_name)
 
     def test_module_in_subpackage_in_zipfile(self):
         with os_helper.temp_dir() as script_dir:
-            zip_name, run_name = _make_test_zip_pkg(script_dir, 'test_zip', 'test_pkg', 'script', depth=2)
-            launch_name = _make_launch_script(script_dir, 'launch', 'test_pkg.test_pkg.script', zip_name)
+            zip_name, run_name = _make_test_zip_pkg(
+                script_dir, "test_zip", "test_pkg", "script", depth=2
+            )
+            launch_name = _make_launch_script(
+                script_dir, "launch", "test_pkg.test_pkg.script", zip_name
+            )
             self._check_script(launch_name)
 
     def test_package(self):
         source = self.main_in_children_source
         with os_helper.temp_dir() as script_dir:
-            pkg_dir = os.path.join(script_dir, 'test_pkg')
+            pkg_dir = os.path.join(script_dir, "test_pkg")
             make_pkg(pkg_dir)
-            script_name = _make_test_script(pkg_dir, '__main__',
-                                            source=source)
-            launch_name = _make_launch_script(script_dir, 'launch', 'test_pkg')
+            script_name = _make_test_script(pkg_dir, "__main__", source=source)
+            launch_name = _make_launch_script(script_dir, "launch", "test_pkg")
             self._check_script(launch_name)
 
     def test_package_compiled(self):
         source = self.main_in_children_source
         with os_helper.temp_dir() as script_dir:
-            pkg_dir = os.path.join(script_dir, 'test_pkg')
+            pkg_dir = os.path.join(script_dir, "test_pkg")
             make_pkg(pkg_dir)
-            script_name = _make_test_script(pkg_dir, '__main__',
-                                            source=source)
+            script_name = _make_test_script(pkg_dir, "__main__", source=source)
             compiled_name = py_compile.compile(script_name, doraise=True)
             os.remove(script_name)
             pyc_file = import_helper.make_legacy_pyc(script_name)
-            launch_name = _make_launch_script(script_dir, 'launch', 'test_pkg')
+            launch_name = _make_launch_script(script_dir, "launch", "test_pkg")
             self._check_script(launch_name)
+
 
 # Test all supported start methods (setupClass skips as appropriate)
 
+
 class SpawnCmdLineTest(MultiProcessingCmdLineMixin, unittest.TestCase):
-    start_method = 'spawn'
+    start_method = "spawn"
     main_in_children_source = test_source_main_skipped_in_children
+
 
 class ForkCmdLineTest(MultiProcessingCmdLineMixin, unittest.TestCase):
-    start_method = 'fork'
+    start_method = "fork"
     main_in_children_source = test_source
 
+
 class ForkServerCmdLineTest(MultiProcessingCmdLineMixin, unittest.TestCase):
-    start_method = 'forkserver'
+    start_method = "forkserver"
     main_in_children_source = test_source_main_skipped_in_children
+
 
 def tearDownModule():
     support.reap_children()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

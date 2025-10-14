@@ -8,7 +8,9 @@ except NameError:
     WINFUNCTYPE = CFUNCTYPE
 
 import _ctypes_test
+
 lib = CDLL(_ctypes_test.__file__)
+
 
 class CFuncPtrTestCase(unittest.TestCase):
     def test_basic(self):
@@ -37,7 +39,7 @@ class CFuncPtrTestCase(unittest.TestCase):
         self.assertEqual(c(1, 2), 3)
         # The following no longer raises a TypeError - it is now
         # possible, as in C, to call cdecl functions with more parameters.
-        #self.assertRaises(TypeError, c, 1, 2, 3)
+        # self.assertRaises(TypeError, c, 1, 2, 3)
         self.assertEqual(c(1, 2, 3, 4, 5, 6), 3)
         if not WINFUNCTYPE is CFUNCTYPE:
             self.assertRaises(TypeError, s, 1, 2, 3)
@@ -54,15 +56,17 @@ class CFuncPtrTestCase(unittest.TestCase):
         LPCTSTR = c_char_p
 
         class WNDCLASS(Structure):
-            _fields_ = [("style", c_uint),
-                        ("lpfnWndProc", WNDPROC),
-                        ("cbClsExtra", c_int),
-                        ("cbWndExtra", c_int),
-                        ("hInstance", HINSTANCE),
-                        ("hIcon", HICON),
-                        ("hCursor", HCURSOR),
-                        ("lpszMenuName", LPCTSTR),
-                        ("lpszClassName", LPCTSTR)]
+            _fields_ = [
+                ("style", c_uint),
+                ("lpfnWndProc", WNDPROC),
+                ("cbClsExtra", c_int),
+                ("cbWndExtra", c_int),
+                ("hInstance", HINSTANCE),
+                ("hIcon", HICON),
+                ("hCursor", HCURSOR),
+                ("lpszMenuName", LPCTSTR),
+                ("lpszClassName", LPCTSTR),
+            ]
 
         wndclass = WNDCLASS()
         wndclass.lpfnWndProc = WNDPROC(wndproc)
@@ -78,7 +82,6 @@ class CFuncPtrTestCase(unittest.TestCase):
         self.assertIs(WNDPROC, WNDPROC_2)
         # 'wndclass.lpfnWndProc' leaks 94 references.  Why?
         self.assertEqual(wndclass.lpfnWndProc(1, 2, 3, 4), 10)
-
 
         f = wndclass.lpfnWndProc
 
@@ -100,24 +103,23 @@ class CFuncPtrTestCase(unittest.TestCase):
         self.assertEqual(strchr(b"abcdefghi", b"b"), b"bcdefghi")
         self.assertEqual(strchr(b"abcdefghi", b"x"), None)
 
-
         strtok = lib.my_strtok
         strtok.restype = c_char_p
         # Neither of this does work: strtok changes the buffer it is passed
-##        strtok.argtypes = (c_char_p, c_char_p)
-##        strtok.argtypes = (c_string, c_char_p)
+        ##        strtok.argtypes = (c_char_p, c_char_p)
+        ##        strtok.argtypes = (c_string, c_char_p)
 
         def c_string(init):
             size = len(init) + 1
-            return (c_char*size)(*init)
+            return (c_char * size)(*init)
 
         s = b"a\nb\nc"
         b = c_string(s)
 
-##        b = (c_char * (len(s)+1))()
-##        b.value = s
+        ##        b = (c_char * (len(s)+1))()
+        ##        b.value = s
 
-##        b = c_string(s)
+        ##        b = c_string(s)
         self.assertEqual(strtok(b, b"\n"), b"a")
         self.assertEqual(strtok(None, b"\n"), b"b")
         self.assertEqual(strtok(None, b"\n"), b"c")
@@ -128,5 +130,6 @@ class CFuncPtrTestCase(unittest.TestCase):
 
         self.assertRaises(TypeError, _CFuncPtr, 13, "name", 42, "iid")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

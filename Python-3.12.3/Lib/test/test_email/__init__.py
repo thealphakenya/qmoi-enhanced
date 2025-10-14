@@ -7,6 +7,7 @@ from email._policybase import compat32
 from test.support import load_package_tests
 from test.test_email import __file__ as landmark
 
+
 # Load all tests in package
 def load_tests(*args):
     return load_package_tests(os.path.dirname(__file__), *args)
@@ -14,8 +15,9 @@ def load_tests(*args):
 
 # helper code used by a number of test modules.
 
+
 def openfile(filename, *args, **kws):
-    path = os.path.join(os.path.dirname(landmark), 'data', filename)
+    path = os.path.join(os.path.dirname(landmark), "data", filename)
     return open(path, *args, **kws)
 
 
@@ -68,8 +70,7 @@ class TestEmailBase(unittest.TestCase):
     def assertDefectsEqual(self, actual, expected):
         self.assertEqual(len(actual), len(expected), actual)
         for i in range(len(actual)):
-            self.assertIsInstance(actual[i], expected[i],
-                                    'item {}'.format(i))
+            self.assertIsInstance(actual[i], expected[i], "item {}".format(i))
 
 
 def parameterize(cls):
@@ -128,18 +129,18 @@ def parameterize(cls):
     paramdicts = {}
     testers = collections.defaultdict(list)
     for name, attr in cls.__dict__.items():
-        if name.endswith('_params'):
-            if not hasattr(attr, 'keys'):
+        if name.endswith("_params"):
+            if not hasattr(attr, "keys"):
                 d = {}
                 for x in attr:
-                    if not hasattr(x, '__iter__'):
+                    if not hasattr(x, "__iter__"):
                         x = (x,)
-                    n = '_'.join(str(v) for v in x).replace(' ', '_')
+                    n = "_".join(str(v) for v in x).replace(" ", "_")
                     d[n] = x
                 attr = d
-            paramdicts[name[:-7] + '_as_'] = attr
-        if '_as_' in name:
-            testers[name.split('_as_')[0] + '_as_'].append(name)
+            paramdicts[name[:-7] + "_as_"] = attr
+        if "_as_" in name:
+            testers[name.split("_as_")[0] + "_as_"].append(name)
     testfuncs = {}
     for name in paramdicts:
         if name not in testers:
@@ -150,15 +151,17 @@ def parameterize(cls):
     for name, attr in cls.__dict__.items():
         for paramsname, paramsdict in paramdicts.items():
             if name.startswith(paramsname):
-                testnameroot = 'test_' + name[len(paramsname):]
+                testnameroot = "test_" + name[len(paramsname) :]
                 for paramname, params in paramsdict.items():
-                    if hasattr(params, 'keys'):
-                        test = (lambda self, name=name, params=params:
-                                    getattr(self, name)(**params))
+                    if hasattr(params, "keys"):
+                        test = lambda self, name=name, params=params: getattr(
+                            self, name
+                        )(**params)
                     else:
-                        test = (lambda self, name=name, params=params:
-                                        getattr(self, name)(*params))
-                    testname = testnameroot + '_' + paramname
+                        test = lambda self, name=name, params=params: getattr(
+                            self, name
+                        )(*params)
+                    testname = testnameroot + "_" + paramname
                     test.__name__ = testname
                     testfuncs[testname] = test
     for key, value in testfuncs.items():

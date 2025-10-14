@@ -25,14 +25,17 @@ class PEGLexer(RegexLexer):
     _text_ws = r"(\s*)"
 
     tokens = {
-        "ws": [(r"\n", Text), (r"\s+", Text), (r"#.*$", Comment.Singleline),],
+        "ws": [
+            (r"\n", Text),
+            (r"\s+", Text),
+            (r"#.*$", Comment.Singleline),
+        ],
         "lookaheads": [
             # Forced tokens
             (r"(&&)(?=\w+\s?)", bygroups(None)),
             (r"(&&)(?='.+'\s?)", bygroups(None)),
             (r'(&&)(?=".+"\s?)', bygroups(None)),
             (r"(&&)(?=\(.+\)\s?)", bygroups(None)),
-
             (r"(?<=\|\s)(&\w+\s?)", bygroups(None)),
             (r"(?<=\|\s)(&'.+'\s?)", bygroups(None)),
             (r'(?<=\|\s)(&".+"\s?)', bygroups(None)),
@@ -52,13 +55,22 @@ class PEGLexer(RegexLexer):
             (r'"\W+?"', Text),
         ],
         "variables": [
-            (_name + _text_ws + "(=)", bygroups(None, None, None),),
-            (_name + _text_ws + r"(\[[\w\d_\*]+?\])" + _text_ws + "(=)", bygroups(None, None, None, None, None),),
+            (
+                _name + _text_ws + "(=)",
+                bygroups(None, None, None),
+            ),
+            (
+                _name + _text_ws + r"(\[[\w\d_\*]+?\])" + _text_ws + "(=)",
+                bygroups(None, None, None, None, None),
+            ),
         ],
         "invalids": [
             (r"^(\s+\|\s+.*invalid_\w+.*\n)", bygroups(None)),
             (r"^(\s+\|\s+.*incorrect_\w+.*\n)", bygroups(None)),
-            (r"^(#.*invalid syntax.*(?:.|\n)*)", bygroups(None),),
+            (
+                r"^(#.*invalid syntax.*(?:.|\n)*)",
+                bygroups(None),
+            ),
         ],
         "root": [
             include("invalids"),
@@ -68,9 +80,18 @@ class PEGLexer(RegexLexer):
             include("actions"),
             include("strings"),
             include("variables"),
-            (r"\b(?!(NULL|EXTRA))([A-Z_]+)\b\s*(?!\()", Text,),
             (
-                r"^\s*" + _name + r"\s*" + r"(\[.*\])?" + r"\s*" + r"(\(.+\))?" + r"\s*(:)",
+                r"\b(?!(NULL|EXTRA))([A-Z_]+)\b\s*(?!\()",
+                Text,
+            ),
+            (
+                r"^\s*"
+                + _name
+                + r"\s*"
+                + r"(\[.*\])?"
+                + r"\s*"
+                + r"(\(.+\))?"
+                + r"\s*(:)",
                 bygroups(Name.Function, None, None, Punctuation),
             ),
             (_name, Name.Function),

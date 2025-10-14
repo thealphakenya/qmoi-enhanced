@@ -13,6 +13,7 @@ import unittest
 import unittest.mock
 import tempfile
 from time import monotonic as time
+
 try:
     import resource
 except ImportError:
@@ -23,9 +24,10 @@ if support.is_emscripten or support.is_wasi:
     raise unittest.SkipTest("Cannot create socketpair on Emscripten/WASI.")
 
 
-if hasattr(socket, 'socketpair'):
+if hasattr(socket, "socketpair"):
     socketpair = socket.socketpair
 else:
+
     def socketpair(family=socket.AF_INET, type=socket.SOCK_STREAM, proto=0):
         with socket.socket(family, type, proto) as l:
             l.bind((socket_helper.HOST, 0))
@@ -84,8 +86,7 @@ class BaseSelectorTestCase:
         self.assertRaises(KeyError, s.register, rd, selectors.EVENT_READ)
 
         # register the same FD, but with a different object
-        self.assertRaises(KeyError, s.register, rd.fileno(),
-                          selectors.EVENT_READ)
+        self.assertRaises(KeyError, s.register, rd.fileno(), selectors.EVENT_READ)
 
     def test_unregister(self):
         s = self.SELECTOR()
@@ -114,7 +115,7 @@ class BaseSelectorTestCase:
         s.unregister(r)
         s.unregister(w)
 
-    @unittest.skipUnless(os.name == 'posix', "requires posix")
+    @unittest.skipUnless(os.name == "posix", "requires posix")
     def test_unregister_after_fd_close_and_reuse(self):
         s = self.SELECTOR()
         self.addCleanup(s.close)
@@ -184,21 +185,17 @@ class BaseSelectorTestCase:
     def test_modify_unregister(self):
         # Make sure the fd is unregister()ed in case of error on
         # modify(): http://bugs.python.org/issue30014
-        if self.SELECTOR.__name__ == 'EpollSelector':
-            patch = unittest.mock.patch(
-                'selectors.EpollSelector._selector_cls')
-        elif self.SELECTOR.__name__ == 'PollSelector':
-            patch = unittest.mock.patch(
-                'selectors.PollSelector._selector_cls')
-        elif self.SELECTOR.__name__ == 'DevpollSelector':
-            patch = unittest.mock.patch(
-                'selectors.DevpollSelector._selector_cls')
+        if self.SELECTOR.__name__ == "EpollSelector":
+            patch = unittest.mock.patch("selectors.EpollSelector._selector_cls")
+        elif self.SELECTOR.__name__ == "PollSelector":
+            patch = unittest.mock.patch("selectors.PollSelector._selector_cls")
+        elif self.SELECTOR.__name__ == "DevpollSelector":
+            patch = unittest.mock.patch("selectors.DevpollSelector._selector_cls")
         else:
             raise self.skipTest("")
 
         with patch as m:
-            m.return_value.modify = unittest.mock.Mock(
-                side_effect=ZeroDivisionError)
+            m.return_value.modify = unittest.mock.Mock(side_effect=ZeroDivisionError)
             s = self.SELECTOR()
             self.addCleanup(s.close)
             rd, wr = self.make_socketpair()
@@ -274,8 +271,7 @@ class BaseSelectorTestCase:
         for key, events in result:
             self.assertTrue(isinstance(key, selectors.SelectorKey))
             self.assertTrue(events)
-            self.assertFalse(events & ~(selectors.EVENT_READ |
-                                        selectors.EVENT_WRITE))
+            self.assertFalse(events & ~(selectors.EVENT_READ | selectors.EVENT_WRITE))
 
         self.assertEqual([(wr_key, selectors.EVENT_WRITE)], result)
 
@@ -297,8 +293,7 @@ class BaseSelectorTestCase:
         for key, events in result:
             self.assertTrue(isinstance(key, selectors.SelectorKey))
             self.assertEqual(key, my_key)
-            self.assertFalse(events & ~(selectors.EVENT_READ |
-                                        selectors.EVENT_WRITE))
+            self.assertFalse(events & ~(selectors.EVENT_READ | selectors.EVENT_WRITE))
             if events & selectors.EVENT_READ:
                 self.assertFalse(seen_read)
                 seen_read = True
@@ -325,7 +320,7 @@ class BaseSelectorTestCase:
         s = self.SELECTOR()
         self.addCleanup(s.close)
 
-        if hasattr(s, 'fileno'):
+        if hasattr(s, "fileno"):
             fd = s.fileno()
             self.assertTrue(isinstance(fd, int))
             self.assertGreaterEqual(fd, 0)
@@ -363,8 +358,7 @@ class BaseSelectorTestCase:
 
             for i in range(10):
                 ready = s.select()
-                ready_readers = find_ready_matching(ready,
-                                                    selectors.EVENT_READ)
+                ready_readers = find_ready_matching(ready, selectors.EVENT_READ)
                 if ready_readers:
                     break
                 # there might be a delay between the write to the write end and
@@ -383,8 +377,9 @@ class BaseSelectorTestCase:
 
         self.assertEqual(bufs, [MSG] * NUM_SOCKETS)
 
-    @unittest.skipIf(sys.platform == 'win32',
-                     'select.select() cannot be used with empty fd sets')
+    @unittest.skipIf(
+        sys.platform == "win32", "select.select() cannot be used with empty fd sets"
+    )
     def test_empty_select(self):
         # Issue #23009: Make sure EpollSelector.select() works when no FD is
         # registered.
@@ -418,8 +413,9 @@ class BaseSelectorTestCase:
         # Tolerate 2.0 seconds for very slow buildbots
         self.assertTrue(0.8 <= dt <= 2.0, dt)
 
-    @unittest.skipUnless(hasattr(signal, "alarm"),
-                         "signal.alarm() required for this test")
+    @unittest.skipUnless(
+        hasattr(signal, "alarm"), "signal.alarm() required for this test"
+    )
     def test_select_interrupt_exc(self):
         s = self.SELECTOR()
         self.addCleanup(s.close)
@@ -448,8 +444,9 @@ class BaseSelectorTestCase:
         finally:
             signal.alarm(0)
 
-    @unittest.skipUnless(hasattr(signal, "alarm"),
-                         "signal.alarm() required for this test")
+    @unittest.skipUnless(
+        hasattr(signal, "alarm"), "signal.alarm() required for this test"
+    )
     def test_select_interrupt_noraise(self):
         s = self.SELECTOR()
         self.addCleanup(s.close)
@@ -478,7 +475,7 @@ class ScalableSelectorMixIn:
     # see issue #18963 for why it's skipped on older OS X versions
     @support.requires_mac_ver(10, 5)
     @unittest.skipUnless(resource, "Test needs resource module")
-    @support.requires_resource('cpu')
+    @support.requires_resource("cpu")
     def test_above_fd_setsize(self):
         # A scalable implementation should have no problem with more than
         # FD_SETSIZE file descriptors. Since we don't know the value, we just
@@ -486,8 +483,7 @@ class ScalableSelectorMixIn:
         soft, hard = resource.getrlimit(resource.RLIMIT_NOFILE)
         try:
             resource.setrlimit(resource.RLIMIT_NOFILE, (hard, hard))
-            self.addCleanup(resource.setrlimit, resource.RLIMIT_NOFILE,
-                            (soft, hard))
+            self.addCleanup(resource.setrlimit, resource.RLIMIT_NOFILE, (soft, hard))
             NUM_FDS = min(hard, 2**16)
         except (OSError, ValueError):
             NUM_FDS = soft
@@ -520,7 +516,7 @@ class ScalableSelectorMixIn:
         try:
             fds = s.select()
         except OSError as e:
-            if e.errno == errno.EINVAL and sys.platform == 'darwin':
+            if e.errno == errno.EINVAL and sys.platform == "darwin":
                 # unexplainable errors on macOS don't need to fail the test
                 self.skipTest("Invalid argument error calling poll()")
             raise
@@ -537,20 +533,24 @@ class SelectSelectorTestCase(BaseSelectorTestCase, unittest.TestCase):
     SELECTOR = selectors.SelectSelector
 
 
-@unittest.skipUnless(hasattr(selectors, 'PollSelector'),
-                     "Test needs selectors.PollSelector")
-class PollSelectorTestCase(BaseSelectorTestCase, ScalableSelectorMixIn,
-                           unittest.TestCase):
+@unittest.skipUnless(
+    hasattr(selectors, "PollSelector"), "Test needs selectors.PollSelector"
+)
+class PollSelectorTestCase(
+    BaseSelectorTestCase, ScalableSelectorMixIn, unittest.TestCase
+):
 
-    SELECTOR = getattr(selectors, 'PollSelector', None)
+    SELECTOR = getattr(selectors, "PollSelector", None)
 
 
-@unittest.skipUnless(hasattr(selectors, 'EpollSelector'),
-                     "Test needs selectors.EpollSelector")
-class EpollSelectorTestCase(BaseSelectorTestCase, ScalableSelectorMixIn,
-                            unittest.TestCase):
+@unittest.skipUnless(
+    hasattr(selectors, "EpollSelector"), "Test needs selectors.EpollSelector"
+)
+class EpollSelectorTestCase(
+    BaseSelectorTestCase, ScalableSelectorMixIn, unittest.TestCase
+):
 
-    SELECTOR = getattr(selectors, 'EpollSelector', None)
+    SELECTOR = getattr(selectors, "EpollSelector", None)
 
     def test_register_file(self):
         # epoll(7) returns EPERM when given a file to watch
@@ -563,12 +563,14 @@ class EpollSelectorTestCase(BaseSelectorTestCase, ScalableSelectorMixIn,
                 s.get_key(f)
 
 
-@unittest.skipUnless(hasattr(selectors, 'KqueueSelector'),
-                     "Test needs selectors.KqueueSelector)")
-class KqueueSelectorTestCase(BaseSelectorTestCase, ScalableSelectorMixIn,
-                             unittest.TestCase):
+@unittest.skipUnless(
+    hasattr(selectors, "KqueueSelector"), "Test needs selectors.KqueueSelector)"
+)
+class KqueueSelectorTestCase(
+    BaseSelectorTestCase, ScalableSelectorMixIn, unittest.TestCase
+):
 
-    SELECTOR = getattr(selectors, 'KqueueSelector', None)
+    SELECTOR = getattr(selectors, "KqueueSelector", None)
 
     def test_register_bad_fd(self):
         # a file descriptor that's been closed should raise an OSError
@@ -596,12 +598,14 @@ class KqueueSelectorTestCase(BaseSelectorTestCase, ScalableSelectorMixIn,
         self.assertTrue(0.8 <= dt <= 2.0, dt)
 
 
-@unittest.skipUnless(hasattr(selectors, 'DevpollSelector'),
-                     "Test needs selectors.DevpollSelector")
-class DevpollSelectorTestCase(BaseSelectorTestCase, ScalableSelectorMixIn,
-                              unittest.TestCase):
+@unittest.skipUnless(
+    hasattr(selectors, "DevpollSelector"), "Test needs selectors.DevpollSelector"
+)
+class DevpollSelectorTestCase(
+    BaseSelectorTestCase, ScalableSelectorMixIn, unittest.TestCase
+):
 
-    SELECTOR = getattr(selectors, 'DevpollSelector', None)
+    SELECTOR = getattr(selectors, "DevpollSelector", None)
 
 
 def tearDownModule():

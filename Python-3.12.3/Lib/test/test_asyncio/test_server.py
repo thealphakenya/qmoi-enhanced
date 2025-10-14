@@ -18,7 +18,7 @@ class BaseStartServer(func_tests.FunctionalTestCaseMixin):
         raise NotImplementedError
 
     def test_start_server_1(self):
-        HELLO_MSG = b'1' * 1024 * 5 + b'\n'
+        HELLO_MSG = b"1" * 1024 * 5 + b"\n"
 
         def client(sock, addr):
             for i in range(10):
@@ -37,7 +37,7 @@ class BaseStartServer(func_tests.FunctionalTestCaseMixin):
         async def serve(reader, writer):
             await reader.readline()
             main_task.cancel()
-            writer.write(b'1')
+            writer.write(b"1")
             writer.close()
             await writer.wait_closed()
 
@@ -45,8 +45,9 @@ class BaseStartServer(func_tests.FunctionalTestCaseMixin):
             async with srv:
                 await srv.serve_forever()
 
-        srv = self.loop.run_until_complete(asyncio.start_server(
-            serve, socket_helper.HOSTv4, 0, start_serving=False))
+        srv = self.loop.run_until_complete(
+            asyncio.start_server(serve, socket_helper.HOSTv4, 0, start_serving=False)
+        )
 
         self.assertFalse(srv.is_serving())
 
@@ -63,7 +64,7 @@ class BaseStartServer(func_tests.FunctionalTestCaseMixin):
         self.assertIsNone(srv._waiters)
         self.assertFalse(srv.is_serving())
 
-        with self.assertRaisesRegex(RuntimeError, r'is closed'):
+        with self.assertRaisesRegex(RuntimeError, r"is closed"):
             self.loop.run_until_complete(srv.serve_forever())
 
 
@@ -74,7 +75,7 @@ class SelectorStartServerTests(BaseStartServer, unittest.TestCase):
 
     @socket_helper.skip_unless_bind_unix_socket
     def test_start_unix_server_1(self):
-        HELLO_MSG = b'1' * 1024 * 5 + b'\n'
+        HELLO_MSG = b"1" * 1024 * 5 + b"\n"
         started = threading.Event()
 
         def client(sock, addr):
@@ -88,7 +89,7 @@ class SelectorStartServerTests(BaseStartServer, unittest.TestCase):
         async def serve(reader, writer):
             await reader.readline()
             main_task.cancel()
-            writer.write(b'1')
+            writer.write(b"1")
             writer.close()
             await writer.wait_closed()
 
@@ -101,8 +102,9 @@ class SelectorStartServerTests(BaseStartServer, unittest.TestCase):
                 await srv.serve_forever()
 
         with test_utils.unix_socket_path() as addr:
-            srv = self.loop.run_until_complete(asyncio.start_unix_server(
-                serve, addr, start_serving=False))
+            srv = self.loop.run_until_complete(
+                asyncio.start_unix_server(serve, addr, start_serving=False)
+            )
 
             main_task = self.loop.create_task(main(srv))
 
@@ -116,7 +118,7 @@ class SelectorStartServerTests(BaseStartServer, unittest.TestCase):
             self.assertIsNone(srv._waiters)
             self.assertFalse(srv.is_serving())
 
-            with self.assertRaisesRegex(RuntimeError, r'is closed'):
+            with self.assertRaisesRegex(RuntimeError, r"is closed"):
                 self.loop.run_until_complete(srv.serve_forever())
 
 
@@ -175,14 +177,12 @@ class TestServer2(unittest.IsolatedAsyncioTestCase):
         await srv.wait_closed()
 
 
-
-
-@unittest.skipUnless(hasattr(asyncio, 'ProactorEventLoop'), 'Windows only')
+@unittest.skipUnless(hasattr(asyncio, "ProactorEventLoop"), "Windows only")
 class ProactorStartServerTests(BaseStartServer, unittest.TestCase):
 
     def new_loop(self):
         return asyncio.ProactorEventLoop()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

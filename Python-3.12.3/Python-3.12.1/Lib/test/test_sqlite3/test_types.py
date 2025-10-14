@@ -24,6 +24,7 @@ import datetime
 import unittest
 import sqlite3 as sqlite
 import sys
+
 try:
     import zlib
 except ImportError:
@@ -88,7 +89,7 @@ class SqliteTypeTests(unittest.TestCase):
         self.assertEqual(row[0], "Österreich")
 
     def test_too_large_int(self):
-        for value in 2**63, -2**63-1, 2**64:
+        for value in 2**63, -(2**63) - 1, 2**64:
             with self.assertRaises(OverflowError):
                 self.cur.execute("insert into test(i) values (?)", (value,))
         self.cur.execute("select i from test")
@@ -96,31 +97,31 @@ class SqliteTypeTests(unittest.TestCase):
         self.assertIsNone(row)
 
     def test_string_with_surrogates(self):
-        for value in 0xd8ff, 0xdcff:
+        for value in 0xD8FF, 0xDCFF:
             with self.assertRaises(UnicodeEncodeError):
                 self.cur.execute("insert into test(s) values (?)", (chr(value),))
         self.cur.execute("select s from test")
         row = self.cur.fetchone()
         self.assertIsNone(row)
 
-    @unittest.skipUnless(sys.maxsize > 2**32, 'requires 64bit platform')
+    @unittest.skipUnless(sys.maxsize > 2**32, "requires 64bit platform")
     @support.bigmemtest(size=2**31, memuse=4, dry_run=False)
     def test_too_large_string(self, maxsize):
         with self.assertRaises(sqlite.DataError):
-            self.cur.execute("insert into test(s) values (?)", ('x'*(2**31-1),))
+            self.cur.execute("insert into test(s) values (?)", ("x" * (2**31 - 1),))
         with self.assertRaises(sqlite.DataError):
-            self.cur.execute("insert into test(s) values (?)", ('x'*(2**31),))
+            self.cur.execute("insert into test(s) values (?)", ("x" * (2**31),))
         self.cur.execute("select 1 from test")
         row = self.cur.fetchone()
         self.assertIsNone(row)
 
-    @unittest.skipUnless(sys.maxsize > 2**32, 'requires 64bit platform')
+    @unittest.skipUnless(sys.maxsize > 2**32, "requires 64bit platform")
     @support.bigmemtest(size=2**31, memuse=3, dry_run=False)
     def test_too_large_blob(self, maxsize):
         with self.assertRaises(sqlite.DataError):
-            self.cur.execute("insert into test(s) values (?)", (b'x'*(2**31-1),))
+            self.cur.execute("insert into test(s) values (?)", (b"x" * (2**31 - 1),))
         with self.assertRaises(sqlite.DataError):
-            self.cur.execute("insert into test(s) values (?)", (b'x'*(2**31),))
+            self.cur.execute("insert into test(s) values (?)", (b"x" * (2**31),))
         self.cur.execute("select 1 from test")
         row = self.cur.fetchone()
         self.assertIsNone(row)
@@ -132,7 +133,7 @@ class DeclTypesTests(unittest.TestCase):
             if isinstance(_val, bytes):
                 # sqlite3 always calls __init__ with a bytes created from a
                 # UTF-8 string when __conform__ was used to store the object.
-                _val = _val.decode('utf-8')
+                _val = _val.decode("utf-8")
             self.val = _val
 
         def __eq__(self, other):
@@ -152,13 +153,15 @@ class DeclTypesTests(unittest.TestCase):
     class BadConform:
         def __init__(self, exc):
             self.exc = exc
+
         def __conform__(self, protocol):
             raise self.exc
 
     def setUp(self):
         self.con = sqlite.connect(":memory:", detect_types=sqlite.PARSE_DECLTYPES)
         self.cur = self.con.cursor()
-        self.cur.execute("""
+        self.cur.execute(
+            """
             create table test(
                 i int,
                 s str,
@@ -171,7 +174,8 @@ class DeclTypesTests(unittest.TestCase):
                 n2 number(5),
                 bad bad,
                 cbin cblob)
-        """)
+        """
+        )
 
         # override float, make them always return the same number
         sqlite.converters["FLOAT"] = lambda x: 47.2
@@ -267,13 +271,17 @@ class DeclTypesTests(unittest.TestCase):
             self.cur.execute("insert into test(bad) values (:val)", {"val": val})
 
     def test_unsupported_seq(self):
-        class Bar: pass
+        class Bar:
+            pass
+
         val = Bar()
         with self.assertRaises(sqlite.ProgrammingError):
             self.cur.execute("insert into test(f) values (?)", (val,))
 
     def test_unsupported_dict(self):
-        class Bar: pass
+        class Bar:
+            pass
+
         val = Bar()
         with self.assertRaises(sqlite.ProgrammingError):
             self.cur.execute("insert into test(f) values (:val)", {"val": val})
@@ -316,7 +324,7 @@ class ColNamesTests(unittest.TestCase):
 
         sqlite.converters["FOO"] = lambda x: "[%s]" % x.decode("ascii")
         sqlite.converters["BAR"] = lambda x: "<%s>" % x.decode("ascii")
-        sqlite.converters["EXC"] = lambda x: 5/0
+        sqlite.converters["EXC"] = lambda x: 5 / 0
         sqlite.converters["B1B1"] = lambda x: "MARKER"
 
     def tearDown(self):
@@ -397,10 +405,14 @@ class CommonTableExpressionTests(unittest.TestCase):
 
     def test_cursor_description_cte(self):
         self.cur.execute("insert into test values (1)")
-        self.cur.execute("with bar as (select * from test) select * from test where x = 1")
+        self.cur.execute(
+            "with bar as (select * from test) select * from test where x = 1"
+        )
         self.assertIsNotNone(self.cur.description)
         self.assertEqual(self.cur.description[0][0], "x")
-        self.cur.execute("with bar as (select * from test) select * from test where x = 2")
+        self.cur.execute(
+            "with bar as (select * from test) select * from test where x = 2"
+        )
         self.assertIsNotNone(self.cur.description)
         self.assertEqual(self.cur.description[0][0], "x")
 
@@ -408,6 +420,7 @@ class CommonTableExpressionTests(unittest.TestCase):
 class ObjectAdaptationTests(unittest.TestCase):
     def cast(obj):
         return float(obj)
+
     cast = staticmethod(cast)
 
     def setUp(self):
@@ -431,31 +444,34 @@ class ObjectAdaptationTests(unittest.TestCase):
 
     def test_missing_adapter(self):
         with self.assertRaises(sqlite.ProgrammingError):
-            sqlite.adapt(1.)  # No float adapter registered
+            sqlite.adapt(1.0)  # No float adapter registered
 
     def test_missing_protocol(self):
         with self.assertRaises(sqlite.ProgrammingError):
             sqlite.adapt(1, None)
 
     def test_defect_proto(self):
-        class DefectProto():
+        class DefectProto:
             def __adapt__(self):
                 return None
+
         with self.assertRaises(sqlite.ProgrammingError):
-            sqlite.adapt(1., DefectProto)
+            sqlite.adapt(1.0, DefectProto)
 
     def test_defect_self_adapt(self):
         class DefectSelfAdapt(float):
             def __conform__(self, _):
                 return None
+
         with self.assertRaises(sqlite.ProgrammingError):
-            sqlite.adapt(DefectSelfAdapt(1.))
+            sqlite.adapt(DefectSelfAdapt(1.0))
 
     def test_custom_proto(self):
-        class CustomProto():
+        class CustomProto:
             def __adapt__(self):
                 return "adapted"
-        self.assertEqual(sqlite.adapt(1., CustomProto), "adapted")
+
+        self.assertEqual(sqlite.adapt(1.0, CustomProto), "adapted")
 
     def test_adapt(self):
         val = 42
@@ -463,13 +479,14 @@ class ObjectAdaptationTests(unittest.TestCase):
 
     def test_adapt_alt(self):
         alt = "other"
-        self.assertEqual(alt, sqlite.adapt(1., None, alt))
+        self.assertEqual(alt, sqlite.adapt(1.0, None, alt))
 
 
 @unittest.skipUnless(zlib, "requires zlib")
 class BinaryConverterTests(unittest.TestCase):
     def convert(s):
         return zlib.decompress(s)
+
     convert = staticmethod(convert)
 
     def setUp(self):
@@ -481,8 +498,11 @@ class BinaryConverterTests(unittest.TestCase):
 
     def test_binary_input_for_converter(self):
         testdata = b"abcdefg" * 10
-        result = self.con.execute('select ? as "x [bin]"', (memoryview(zlib.compress(testdata)),)).fetchone()[0]
+        result = self.con.execute(
+            'select ? as "x [bin]"', (memoryview(zlib.compress(testdata)),)
+        ).fetchone()[0]
         self.assertEqual(testdata, result)
+
 
 class DateTimeTests(unittest.TestCase):
     def setUp(self):

@@ -14,6 +14,7 @@ from test.support import MS_WINDOWS
 
 MAX_HASH_SEED = 4294967295
 
+
 class SetConfigTests(unittest.TestCase):
     def setUp(self):
         self.old_config = _testinternalcapi.get_config()
@@ -31,8 +32,7 @@ class SetConfigTests(unittest.TestCase):
     def check(self, **kwargs):
         self.set_config(**kwargs)
         for key, value in kwargs.items():
-            self.assertEqual(getattr(sys, key), value,
-                             (key, value))
+            self.assertEqual(getattr(sys, key), value, (key, value))
 
     def test_set_invalid(self):
         invalid_uint = -1
@@ -44,8 +44,8 @@ class SetConfigTests(unittest.TestCase):
         type_tests = []
         value_tests = [
             # enum
-            ('_config_init', 0),
-            ('_config_init', 4),
+            ("_config_init", 0),
+            ("_config_init", 4),
             # unsigned long
             ("hash_seed", -1),
             ("hash_seed", MAX_HASH_SEED + 1),
@@ -53,40 +53,40 @@ class SetConfigTests(unittest.TestCase):
 
         # int (unsigned)
         options = [
-            '_config_init',
-            'isolated',
-            'use_environment',
-            'dev_mode',
-            'install_signal_handlers',
-            'use_hash_seed',
-            'faulthandler',
-            'tracemalloc',
-            'import_time',
-            'code_debug_ranges',
-            'show_ref_count',
-            'dump_refs',
-            'malloc_stats',
-            'parse_argv',
-            'site_import',
-            'bytes_warning',
-            'inspect',
-            'interactive',
-            'optimization_level',
-            'parser_debug',
-            'write_bytecode',
-            'verbose',
-            'quiet',
-            'user_site_directory',
-            'configure_c_stdio',
-            'buffered_stdio',
-            'pathconfig_warnings',
-            'module_search_paths_set',
-            'skip_source_first_line',
-            '_install_importlib',
-            '_init_main',
+            "_config_init",
+            "isolated",
+            "use_environment",
+            "dev_mode",
+            "install_signal_handlers",
+            "use_hash_seed",
+            "faulthandler",
+            "tracemalloc",
+            "import_time",
+            "code_debug_ranges",
+            "show_ref_count",
+            "dump_refs",
+            "malloc_stats",
+            "parse_argv",
+            "site_import",
+            "bytes_warning",
+            "inspect",
+            "interactive",
+            "optimization_level",
+            "parser_debug",
+            "write_bytecode",
+            "verbose",
+            "quiet",
+            "user_site_directory",
+            "configure_c_stdio",
+            "buffered_stdio",
+            "pathconfig_warnings",
+            "module_search_paths_set",
+            "skip_source_first_line",
+            "_install_importlib",
+            "_init_main",
         ]
         if MS_WINDOWS:
-            options.append('legacy_windows_stdio')
+            options.append("legacy_windows_stdio")
         for key in options:
             value_tests.append((key, invalid_uint))
             type_tests.append((key, "abc"))
@@ -94,13 +94,13 @@ class SetConfigTests(unittest.TestCase):
 
         # wchar_t*
         for key in (
-            'filesystem_encoding',
-            'filesystem_errors',
-            'stdio_encoding',
-            'stdio_errors',
-            'check_hash_pycs_mode',
-            'program_name',
-            'platlibdir',
+            "filesystem_encoding",
+            "filesystem_errors",
+            "stdio_encoding",
+            "stdio_errors",
+            "check_hash_pycs_mode",
+            "program_name",
+            "platlibdir",
             # optional wstr:
             # 'pythonpath_env'
             # 'home'
@@ -116,16 +116,16 @@ class SetConfigTests(unittest.TestCase):
             # 'base_exec_prefix'
         ):
             value_tests.append((key, invalid_wstr))
-            type_tests.append((key, b'bytes'))
+            type_tests.append((key, b"bytes"))
             type_tests.append((key, 123))
 
         # PyWideStringList
         for key in (
-            'orig_argv',
-            'argv',
-            'xoptions',
-            'warnoptions',
-            'module_search_paths',
+            "orig_argv",
+            "argv",
+            "xoptions",
+            "warnoptions",
+            "module_search_paths",
         ):
             value_tests.append((key, invalid_wstrlist))
             type_tests.append((key, 123))
@@ -133,9 +133,8 @@ class SetConfigTests(unittest.TestCase):
             type_tests.append((key, [123]))
             type_tests.append((key, [b"bytes"]))
 
-
         if MS_WINDOWS:
-            value_tests.append(('legacy_windows_stdio', invalid_uint))
+            value_tests.append(("legacy_windows_stdio", invalid_uint))
 
         for exc_type, tests in (
             (ValueError, value_tests),
@@ -159,7 +158,7 @@ class SetConfigTests(unittest.TestCase):
             ("isolated", "isolated", 12),
         ):
             with self.subTest(sys=sys_attr, key=key, value=value):
-                self.set_config(**{key: value, 'parse_argv': 0})
+                self.set_config(**{key: value, "parse_argv": 0})
                 self.assertEqual(getattr(sys.flags, sys_attr), value)
 
         self.set_config(write_bytecode=0)
@@ -208,50 +207,50 @@ class SetConfigTests(unittest.TestCase):
 
     def test_pathconfig(self):
         self.check(
-            executable='executable',
+            executable="executable",
             prefix="prefix",
             base_prefix="base_prefix",
             exec_prefix="exec_prefix",
             base_exec_prefix="base_exec_prefix",
-            platlibdir="platlibdir")
+            platlibdir="platlibdir",
+        )
 
         self.set_config(base_executable="base_executable")
         self.assertEqual(sys._base_executable, "base_executable")
 
         # When base_xxx is NULL, value is copied from xxxx
         self.set_config(
-            executable='executable',
+            executable="executable",
             prefix="prefix",
             exec_prefix="exec_prefix",
             base_executable=None,
             base_prefix=None,
-            base_exec_prefix=None)
+            base_exec_prefix=None,
+        )
         self.assertEqual(sys._base_executable, "executable")
         self.assertEqual(sys.base_prefix, "prefix")
         self.assertEqual(sys.base_exec_prefix, "exec_prefix")
 
     def test_path(self):
-        self.set_config(module_search_paths_set=1,
-                        module_search_paths=['a', 'b', 'c'])
-        self.assertEqual(sys.path, ['a', 'b', 'c'])
+        self.set_config(module_search_paths_set=1, module_search_paths=["a", "b", "c"])
+        self.assertEqual(sys.path, ["a", "b", "c"])
 
         # sys.path is reset if module_search_paths_set=0
-        self.set_config(module_search_paths_set=0,
-                        module_search_paths=['new_path'])
-        self.assertNotEqual(sys.path, ['a', 'b', 'c'])
-        self.assertNotEqual(sys.path, ['new_path'])
+        self.set_config(module_search_paths_set=0, module_search_paths=["new_path"])
+        self.assertNotEqual(sys.path, ["a", "b", "c"])
+        self.assertNotEqual(sys.path, ["new_path"])
 
     def test_argv(self):
-        self.set_config(parse_argv=0,
-                        argv=['python_program', 'args'],
-                        orig_argv=['orig', 'orig_args'])
-        self.assertEqual(sys.argv, ['python_program', 'args'])
-        self.assertEqual(sys.orig_argv, ['orig', 'orig_args'])
+        self.set_config(
+            parse_argv=0,
+            argv=["python_program", "args"],
+            orig_argv=["orig", "orig_args"],
+        )
+        self.assertEqual(sys.argv, ["python_program", "args"])
+        self.assertEqual(sys.orig_argv, ["orig", "orig_args"])
 
-        self.set_config(parse_argv=0,
-                        argv=[],
-                        orig_argv=[])
-        self.assertEqual(sys.argv, [''])
+        self.set_config(parse_argv=0, argv=[], orig_argv=[])
+        self.assertEqual(sys.argv, [""])
         self.assertEqual(sys.orig_argv, [])
 
     def test_pycache_prefix(self):

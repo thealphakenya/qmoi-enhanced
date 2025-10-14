@@ -2,8 +2,8 @@ import unittest
 from test.support import import_helper
 import types
 
-xxlimited = import_helper.import_module('xxlimited')
-xxlimited_35 = import_helper.import_module('xxlimited_35')
+xxlimited = import_helper.import_module("xxlimited")
+xxlimited_35 = import_helper.import_module("xxlimited_35")
 
 
 class CommonTests:

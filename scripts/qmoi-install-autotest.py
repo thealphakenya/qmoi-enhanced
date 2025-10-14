@@ -2,12 +2,13 @@ import os
 import json
 import platform
 
+
 def autotest_install(device, binary_path):
     result = {
         "device": device,
         "binary": binary_path,
         "status": "success",
-        "details": "Install test passed (simulated)."
+        "details": "Install test passed (simulated).",
     }
     # Simulate error detection and auto-fix for each platform
     if not os.path.exists(binary_path):
@@ -35,6 +36,7 @@ def autotest_install(device, binary_path):
     # Add more device-specific checks as needed
     return result
 
+
 def main():
     device_binaries = {
         "android": "Qmoi_apps/android/qmoi ai.apk",
@@ -45,14 +47,17 @@ def main():
         "chromebook": "Qmoi_apps/chromebook/qmoi ai.deb",
         "raspberrypi": "Qmoi_apps/raspberrypi/qmoi ai.img",
         "smarttv": "Qmoi_apps/smarttv/qmoi ai.apk",
-        "qcity": "Qmoi_apps/qcity/qmoi ai.zip"
+        "qcity": "Qmoi_apps/qcity/qmoi ai.zip",
     }
     report = {}
     for device, binary in device_binaries.items():
         report[device] = autotest_install(device, binary)
     with open("Qmoi_apps/install_autotest_report.json", "w") as f:
         json.dump(report, f, indent=2)
-    print("Install autotest complete. Report written to Qmoi_apps/install_autotest_report.json")
+    print(
+        "Install autotest complete. Report written to Qmoi_apps/install_autotest_report.json"
+    )
+
 
 if __name__ == "__main__":
     main()

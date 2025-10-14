@@ -2,6 +2,7 @@ import textwrap
 import unittest
 from test.support import run_code
 
+
 class TypeAnnotationTests(unittest.TestCase):
 
     def test_lazy_create_annotations(self):
@@ -14,18 +15,18 @@ class TypeAnnotationTests(unittest.TestCase):
             d = foo.__annotations__
             self.assertTrue("__annotations__" in foo.__dict__)
             self.assertEqual(foo.__annotations__, d)
-            self.assertEqual(foo.__dict__['__annotations__'], d)
+            self.assertEqual(foo.__dict__["__annotations__"], d)
             del foo.__annotations__
 
     def test_setting_annotations(self):
         foo = type("Foo", (), {})
         for i in range(3):
             self.assertFalse("__annotations__" in foo.__dict__)
-            d = {'a': int}
+            d = {"a": int}
             foo.__annotations__ = d
             self.assertTrue("__annotations__" in foo.__dict__)
             self.assertEqual(foo.__annotations__, d)
-            self.assertEqual(foo.__dict__['__annotations__'], d)
+            self.assertEqual(foo.__dict__["__annotations__"], d)
             del foo.__annotations__
 
     def test_annotations_getset_raises(self):
@@ -46,8 +47,9 @@ class TypeAnnotationTests(unittest.TestCase):
 
     def test_annotations_are_created_correctly(self):
         class C:
-            a:int=3
-            b:str=4
+            a: int = 3
+            b: str = 4
+
         self.assertTrue("__annotations__" in C.__dict__)
         del C.__annotations__
         self.assertFalse("__annotations__" in C.__dict__)
@@ -59,7 +61,7 @@ class TypeAnnotationTests(unittest.TestCase):
 
             @property
             def __annotations__(self):
-                if not hasattr(self, 'my_annotations'):
+                if not hasattr(self, "my_annotations"):
                     self.my_annotations = {}
                 if not isinstance(self.my_annotations, dict):
                     self.my_annotations = {}
@@ -73,13 +75,13 @@ class TypeAnnotationTests(unittest.TestCase):
 
             @__annotations__.deleter
             def __annotations__(self):
-                if getattr(self, 'my_annotations', False) is None:
-                    raise AttributeError('__annotations__')
+                if getattr(self, "my_annotations", False) is None:
+                    raise AttributeError("__annotations__")
                 self.my_annotations = None
 
         c = C()
         self.assertEqual(c.__annotations__, {})
-        d = {'a':'int'}
+        d = {"a": "int"}
         c.__annotations__ = d
         self.assertEqual(c.__annotations__, d)
         with self.assertRaises(ValueError):
@@ -89,12 +91,11 @@ class TypeAnnotationTests(unittest.TestCase):
             del c.__annotations__
         self.assertEqual(c.__annotations__, {})
 
-
         class D(metaclass=C):
             pass
 
         self.assertEqual(D.__annotations__, {})
-        d = {'a':'int'}
+        d = {"a": "int"}
         D.__annotations__ = d
         self.assertEqual(D.__annotations__, d)
         with self.assertRaises(ValueError):
@@ -124,91 +125,117 @@ class TestSetupAnnotations(unittest.TestCase):
 
     def test_blocks(self):
         self.check("if True:\n    x: int = 1")
-        self.check("""
+        self.check(
+            """
             while True:
                 x: int = 1
                 break
-        """)
-        self.check("""
+        """
+        )
+        self.check(
+            """
             while False:
                 pass
             else:
                 x: int = 1
-        """)
-        self.check("""
+        """
+        )
+        self.check(
+            """
             for i in range(1):
                 x: int = 1
-        """)
-        self.check("""
+        """
+        )
+        self.check(
+            """
             for i in range(1):
                 pass
             else:
                 x: int = 1
-        """)
+        """
+        )
 
     def test_try(self):
-        self.check("""
+        self.check(
+            """
             try:
                 x: int = 1
             except:
                 pass
-        """)
-        self.check("""
+        """
+        )
+        self.check(
+            """
             try:
                 pass
             except:
                 pass
             else:
                 x: int = 1
-        """)
-        self.check("""
+        """
+        )
+        self.check(
+            """
             try:
                 pass
             except:
                 pass
             finally:
                 x: int = 1
-        """)
-        self.check("""
+        """
+        )
+        self.check(
+            """
             try:
                 1/0
             except:
                 x: int = 1
-        """)
+        """
+        )
 
     def test_try_star(self):
-        self.check("""
+        self.check(
+            """
             try:
                 x: int = 1
             except* Exception:
                 pass
-        """)
-        self.check("""
+        """
+        )
+        self.check(
+            """
             try:
                 pass
             except* Exception:
                 pass
             else:
                 x: int = 1
-        """)
-        self.check("""
+        """
+        )
+        self.check(
+            """
             try:
                 pass
             except* Exception:
                 pass
             finally:
                 x: int = 1
-        """)
-        self.check("""
+        """
+        )
+        self.check(
+            """
             try:
                 1/0
             except* Exception:
                 x: int = 1
-        """)
+        """
+        )
 
     def test_match(self):
-        self.check("""
+        self.check(
+            """
             match 0:
                 case 0:
                     x: int = 1
-        """)
+        """
+        )

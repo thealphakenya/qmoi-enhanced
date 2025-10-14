@@ -135,11 +135,13 @@ def parse(srclines, **srckwargs):
 
 def anonymous_names():
     counter = 1
-    def anon_name(prefix='anon-'):
+
+    def anon_name(prefix="anon-"):
         nonlocal counter
-        name = f'{prefix}{counter}'
+        name = f"{prefix}{counter}"
         counter += 1
         return name
+
     return anon_name
 
 
@@ -164,6 +166,7 @@ def _parse(srclines, anon_name, **srckwargs):
 # We use defaults that cover most files.  Files with bigger declarations
 # are covered elsewhere (MAX_SIZES in cpython/_parser.py).
 
+
 def _iter_source(lines, *, maxtext=10_000, maxlines=200, showtext=False):
     maxtext = maxtext if maxtext and maxtext > 0 else None
     maxlines = maxlines if maxlines and maxlines > 0 else None
@@ -183,32 +186,32 @@ def _iter_source(lines, *, maxtext=10_000, maxlines=200, showtext=False):
             filestack.append(filename)
             allinfo[filename] = srcinfo
 
-        _logger.debug(f'-> {line}')
+        _logger.debug(f"-> {line}")
         srcinfo._add_line(line, fileinfo.lno)
         if srcinfo.too_much(maxtext, maxlines):
             break
         while srcinfo._used():
             yield srcinfo
             if showtext:
-                _logger.debug(f'=> {srcinfo.text}')
+                _logger.debug(f"=> {srcinfo.text}")
     else:
         if not filestack:
-            srcinfo = SourceInfo('???')
+            srcinfo = SourceInfo("???")
         else:
             filename = filestack[-1]
             srcinfo = allinfo[filename]
             while srcinfo._used():
                 yield srcinfo
                 if showtext:
-                    _logger.debug(f'=> {srcinfo.text}')
+                    _logger.debug(f"=> {srcinfo.text}")
         yield srcinfo
         if showtext:
-            _logger.debug(f'=> {srcinfo.text}')
+            _logger.debug(f"=> {srcinfo.text}")
         if not srcinfo._ready:
             return
     # At this point either the file ended prematurely
     # or there's "too much" text.
     filename, lno, text = srcinfo.filename, srcinfo._start, srcinfo.text
     if len(text) > 500:
-        text = text[:500] + '...'
-    raise Exception(f'unmatched text ({filename} starting at line {lno}):\n{text}')
+        text = text[:500] + "..."
+    raise Exception(f"unmatched text ({filename} starting at line {lno}):\n{text}")

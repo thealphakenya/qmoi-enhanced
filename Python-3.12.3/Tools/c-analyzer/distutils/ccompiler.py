@@ -5,9 +5,11 @@ for the Distutils compiler abstraction model."""
 
 import sys, os, re
 from distutils.errors import (
-    DistutilsModuleError, DistutilsPlatformError,
+    DistutilsModuleError,
+    DistutilsPlatformError,
 )
 from distutils.util import split_quoted
+
 
 class CCompiler:
     """Abstract base class to define the interface that must be implemented
@@ -53,17 +55,16 @@ class CCompiler:
     #     think this is useless without the ability to null out the
     #     library search path anyways.
 
-
     # Subclasses that rely on the standard filename generation methods
     # implemented below should override these; see the comment near
     # those methods ('object_filenames()' et. al.) for details:
-    src_extensions = None               # list of strings
-    obj_extension = None                # string
+    src_extensions = None  # list of strings
+    obj_extension = None  # string
     static_lib_extension = None
-    shared_lib_extension = None         # string
-    static_lib_format = None            # format string
-    shared_lib_format = None            # prob. same as static_lib_format
-    exe_extension = None                # string
+    shared_lib_extension = None  # string
+    static_lib_format = None  # format string
+    shared_lib_format = None  # prob. same as static_lib_format
+    exe_extension = None  # string
 
     # Default language settings. language_map is used to detect a source
     # file or Extension target language, checking source filenames.
@@ -71,12 +72,13 @@ class CCompiler:
     # what language to use when mixing source types. For example, if some
     # extension has two files with ".c" extension, and one with ".cpp", it
     # is still linked as c++.
-    language_map = {".c"   : "c",
-                    ".cc"  : "c++",
-                    ".cpp" : "c++",
-                    ".cxx" : "c++",
-                    ".m"   : "objc",
-                   }
+    language_map = {
+        ".c": "c",
+        ".cc": "c++",
+        ".cpp": "c++",
+        ".cxx": "c++",
+        ".m": "objc",
+    }
     language_order = ["c++", "objc", "c"]
 
     def __init__(self, verbose=0, dry_run=0, force=0):
@@ -143,8 +145,10 @@ class CCompiler:
 
         for key in kwargs:
             if key not in self.executables:
-                raise ValueError("unknown executable '%s' for class %s" %
-                      (key, self.__class__.__name__))
+                raise ValueError(
+                    "unknown executable '%s' for class %s"
+                    % (key, self.__class__.__name__)
+                )
             self.set_executable(key, kwargs[key])
 
     def set_executable(self, key, value):
@@ -167,14 +171,19 @@ class CCompiler:
         nothing if all definitions are OK, raise TypeError otherwise.
         """
         for defn in definitions:
-            if not (isinstance(defn, tuple) and
-                    (len(defn) in (1, 2) and
-                      (isinstance (defn[1], str) or defn[1] is None)) and
-                    isinstance (defn[0], str)):
-                raise TypeError(("invalid macro definition '%s': " % defn) + \
-                      "must be tuple (string,), (string, string), or " + \
-                      "(string, None)")
-
+            if not (
+                isinstance(defn, tuple)
+                and (
+                    len(defn) in (1, 2)
+                    and (isinstance(defn[1], str) or defn[1] is None)
+                )
+                and isinstance(defn[0], str)
+            ):
+                raise TypeError(
+                    ("invalid macro definition '%s': " % defn)
+                    + "must be tuple (string,), (string, string), or "
+                    + "(string, None)"
+                )
 
     # -- Bookkeeping methods -------------------------------------------
 
@@ -187,7 +196,7 @@ class CCompiler:
         """
         # Delete from the list of macro definitions/undefinitions if
         # already there (so that this one will take precedence).
-        i = self._find_macro (name)
+        i = self._find_macro(name)
         if i is not None:
             del self.macros[i]
 
@@ -204,7 +213,7 @@ class CCompiler:
         """
         # Delete from the list of macro definitions/undefinitions if
         # already there (so that this one will take precedence).
-        i = self._find_macro (name)
+        i = self._find_macro(name)
         if i is not None:
             del self.macros[i]
 
@@ -228,7 +237,6 @@ class CCompiler:
         search by default.
         """
         self.include_dirs = dirs[:]
-
 
     # -- Private utility methods --------------------------------------
     # (here for the convenience of subclasses)
@@ -262,17 +270,22 @@ class CCompiler:
         elif isinstance(include_dirs, (list, tuple)):
             include_dirs = list(include_dirs) + (self.include_dirs or [])
         else:
-            raise TypeError(
-                  "'include_dirs' (if supplied) must be a list of strings")
+            raise TypeError("'include_dirs' (if supplied) must be a list of strings")
 
         return output_dir, macros, include_dirs
-
 
     # -- Worker methods ------------------------------------------------
     # (must be implemented by subclasses)
 
-    def preprocess(self, source, output_file=None, macros=None,
-                   include_dirs=None, extra_preargs=None, extra_postargs=None):
+    def preprocess(
+        self,
+        source,
+        output_file=None,
+        macros=None,
+        include_dirs=None,
+        extra_preargs=None,
+        extra_postargs=None,
+    ):
         """Preprocess a single C/C++ source file, named in 'source'.
         Output will be written to file named 'output_file', or stdout if
         'output_file' not supplied.  'macros' is a list of macro
@@ -284,39 +297,37 @@ class CCompiler:
         """
         pass
 
-
     # -- Miscellaneous methods -----------------------------------------
     # These are all used by the 'gen_lib_options() function; there is
     # no appropriate default implementation so subclasses should
     # implement all of these.
 
-#    def library_dir_option(self, dir):
-#        """Return the compiler option to add 'dir' to the list of
-#        directories searched for libraries.
-#        """
-#        raise NotImplementedError
-#
-#    def runtime_library_dir_option(self, dir):
-#        """Return the compiler option to add 'dir' to the list of
-#        directories searched for runtime libraries.
-#        """
-#        raise NotImplementedError
-#
-#    def library_option(self, lib):
-#        """Return the compiler option to add 'lib' to the list of libraries
-#        linked into the shared library or executable.
-#        """
-#        raise NotImplementedError
-#
-#    def find_library_file (self, dirs, lib, debug=0):
-#        """Search the specified list of directories for a static or shared
-#        library file 'lib' and return the full path to that file.  If
-#        'debug' true, look for a debugging version (if that makes sense on
-#        the current platform).  Return None if 'lib' wasn't found in any of
-#        the specified directories.
-#        """
-#        raise NotImplementedError
-
+    #    def library_dir_option(self, dir):
+    #        """Return the compiler option to add 'dir' to the list of
+    #        directories searched for libraries.
+    #        """
+    #        raise NotImplementedError
+    #
+    #    def runtime_library_dir_option(self, dir):
+    #        """Return the compiler option to add 'dir' to the list of
+    #        directories searched for runtime libraries.
+    #        """
+    #        raise NotImplementedError
+    #
+    #    def library_option(self, lib):
+    #        """Return the compiler option to add 'lib' to the list of libraries
+    #        linked into the shared library or executable.
+    #        """
+    #        raise NotImplementedError
+    #
+    #    def find_library_file (self, dirs, lib, debug=0):
+    #        """Search the specified list of directories for a static or shared
+    #        library file 'lib' and return the full path to that file.  If
+    #        'debug' true, look for a debugging version (if that makes sense on
+    #        the current platform).  Return None if 'lib' wasn't found in any of
+    #        the specified directories.
+    #        """
+    #        raise NotImplementedError
 
     # -- Utility methods -----------------------------------------------
 
@@ -329,54 +340,58 @@ class CCompiler:
 # patterns. Order is important; platform mappings are preferred over
 # OS names.
 _default_compilers = (
-
     # Platform string mappings
-
     # on a cygwin built python we can use gcc like an ordinary UNIXish
     # compiler
-    ('cygwin.*', 'unix'),
-
+    ("cygwin.*", "unix"),
     # OS name mappings
-    ('posix', 'unix'),
-    ('nt', 'msvc'),
+    ("posix", "unix"),
+    ("nt", "msvc"),
+)
 
-    )
 
 def get_default_compiler(osname=None, platform=None):
     """Determine the default compiler to use for the given platform.
 
-       osname should be one of the standard Python OS names (i.e. the
-       ones returned by os.name) and platform the common value
-       returned by sys.platform for the platform in question.
+    osname should be one of the standard Python OS names (i.e. the
+    ones returned by os.name) and platform the common value
+    returned by sys.platform for the platform in question.
 
-       The default values are os.name and sys.platform in case the
-       parameters are not given.
+    The default values are os.name and sys.platform in case the
+    parameters are not given.
     """
     if osname is None:
         osname = os.name
     if platform is None:
         platform = sys.platform
     for pattern, compiler in _default_compilers:
-        if re.match(pattern, platform) is not None or \
-           re.match(pattern, osname) is not None:
+        if (
+            re.match(pattern, platform) is not None
+            or re.match(pattern, osname) is not None
+        ):
             return compiler
     # Default to Unix compiler
-    return 'unix'
+    return "unix"
+
 
 # Map compiler types to (module_name, class_name) pairs -- ie. where to
 # find the code that implements an interface to this compiler.  (The module
 # is assumed to be in the 'distutils' package.)
-compiler_class = { 'unix':    ('unixccompiler', 'UnixCCompiler',
-                               "standard UNIX-style compiler"),
-                   'msvc':    ('_msvccompiler', 'MSVCCompiler',
-                               "Microsoft Visual C++"),
-                   'cygwin':  ('cygwinccompiler', 'CygwinCCompiler',
-                               "Cygwin port of GNU C Compiler for Win32"),
-                   'mingw32': ('cygwinccompiler', 'Mingw32CCompiler',
-                               "Mingw32 port of GNU C Compiler for Win32"),
-                   'bcpp':    ('bcppcompiler', 'BCPPCompiler',
-                               "Borland C++ Compiler"),
-                 }
+compiler_class = {
+    "unix": ("unixccompiler", "UnixCCompiler", "standard UNIX-style compiler"),
+    "msvc": ("_msvccompiler", "MSVCCompiler", "Microsoft Visual C++"),
+    "cygwin": (
+        "cygwinccompiler",
+        "CygwinCCompiler",
+        "Cygwin port of GNU C Compiler for Win32",
+    ),
+    "mingw32": (
+        "cygwinccompiler",
+        "Mingw32CCompiler",
+        "Mingw32 port of GNU C Compiler for Win32",
+    ),
+    "bcpp": ("bcppcompiler", "BCPPCompiler", "Borland C++ Compiler"),
+}
 
 
 def new_compiler(plat=None, compiler=None, verbose=0, dry_run=0, force=0):
@@ -406,18 +421,19 @@ def new_compiler(plat=None, compiler=None, verbose=0, dry_run=0, force=0):
 
     try:
         module_name = "distutils." + module_name
-        __import__ (module_name)
+        __import__(module_name)
         module = sys.modules[module_name]
         klass = vars(module)[class_name]
     except ImportError:
         raise
         raise DistutilsModuleError(
-              "can't compile C/C++ code: unable to load module '%s'" % \
-              module_name)
+            "can't compile C/C++ code: unable to load module '%s'" % module_name
+        )
     except KeyError:
         raise DistutilsModuleError(
-               "can't compile C/C++ code: unable to find class '%s' "
-               "in module '%s'" % (class_name, module_name))
+            "can't compile C/C++ code: unable to find class '%s' "
+            "in module '%s'" % (class_name, module_name)
+        )
 
     # XXX The None is necessary to preserve backwards compatibility
     # with classes that expect verbose to be the first positional
@@ -450,14 +466,14 @@ def gen_preprocess_options(macros, include_dirs):
     for macro in macros:
         if not (isinstance(macro, tuple) and 1 <= len(macro) <= 2):
             raise TypeError(
-                  "bad macro definition '%s': "
-                  "each element of 'macros' list must be a 1- or 2-tuple"
-                  % macro)
+                "bad macro definition '%s': "
+                "each element of 'macros' list must be a 1- or 2-tuple" % macro
+            )
 
-        if len(macro) == 1:        # undefine this macro
+        if len(macro) == 1:  # undefine this macro
             pp_opts.append("-U%s" % macro[0])
         elif len(macro) == 2:
-            if macro[1] is None:    # define with no explicit value
+            if macro[1] is None:  # define with no explicit value
                 pp_opts.append("-D%s" % macro[0])
             else:
                 # XXX *don't* need to be clever about quoting the

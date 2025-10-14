@@ -7,7 +7,9 @@ MyCallback = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_int)
 OtherCallback = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_ulonglong)
 
 import _ctypes_test
+
 dll = ctypes.CDLL(_ctypes_test.__file__)
+
 
 class RefcountTestCase(unittest.TestCase):
 
@@ -20,7 +22,7 @@ class RefcountTestCase(unittest.TestCase):
         f.argtypes = [ctypes.c_int, MyCallback]
 
         def callback(value):
-            #print "called back with", value
+            # print "called back with", value
             return value
 
         self.assertEqual(grc(callback), 2)
@@ -35,12 +37,13 @@ class RefcountTestCase(unittest.TestCase):
 
         self.assertEqual(grc(callback), 2)
 
-
     @support.refcount_test
     def test_refcount(self):
         from sys import getrefcount as grc
+
         def func(*args):
             pass
+
         # this is the standard refcount for func
         self.assertEqual(grc(func), 2)
 
@@ -58,6 +61,7 @@ class RefcountTestCase(unittest.TestCase):
 
         class X(ctypes.Structure):
             _fields_ = [("a", OtherCallback)]
+
         x = X()
         x.a = OtherCallback(func)
 
@@ -84,13 +88,16 @@ class RefcountTestCase(unittest.TestCase):
         gc.collect()
         self.assertEqual(grc(func), 2)
 
+
 class AnotherLeak(unittest.TestCase):
     def test_callback(self):
         import sys
 
         proto = ctypes.CFUNCTYPE(ctypes.c_int, ctypes.c_int, ctypes.c_int)
+
         def func(a, b):
             return a * b * 2
+
         f = proto(func)
 
         a = sys.getrefcount(ctypes.c_int)
@@ -104,6 +111,7 @@ class AnotherLeak(unittest.TestCase):
 
         for FUNCTYPE in (ctypes.CFUNCTYPE, ctypes.PYFUNCTYPE):
             with self.subTest(FUNCTYPE=FUNCTYPE):
+
                 @FUNCTYPE(ctypes.py_object)
                 def func():
                     return None
@@ -112,5 +120,6 @@ class AnotherLeak(unittest.TestCase):
                 for _ in range(10000):
                     func()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

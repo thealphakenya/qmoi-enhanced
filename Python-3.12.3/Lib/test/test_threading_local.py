@@ -18,6 +18,7 @@ threading_helper.requires_working_threading(module=True)
 class Weak(object):
     pass
 
+
 def target(local, weaklist):
     weak = Weak()
     local.weak = weak
@@ -45,13 +46,13 @@ class BaseLocalTest:
 
         # XXX _threading_local keeps the local of the last stopped thread alive.
         deadlist = [weak for weak in weaklist if weak() is None]
-        self.assertIn(len(deadlist), (n-1, n))
+        self.assertIn(len(deadlist), (n - 1, n))
 
         # Assignment to the same thread local frees it sometimes (!)
         local.someothervar = None
         support.gc_collect()  # For PyPy or other GCs.
         deadlist = [weak for weak in weaklist if weak() is None]
-        self.assertIn(len(deadlist), (n-1, n), (n, len(deadlist)))
+        self.assertIn(len(deadlist), (n - 1, n), (n, len(deadlist)))
 
     def test_derived(self):
         # Issue 3088: if there is a threads switch inside the __init__
@@ -59,9 +60,11 @@ class BaseLocalTest:
         # is created but not correctly set on the object.
         # The first member set may be bogus.
         import time
+
         class Local(self._local):
             def __init__(self):
                 time.sleep(0.01)
+
         local = Local()
 
         def f(i):
@@ -69,14 +72,16 @@ class BaseLocalTest:
             # Simply check that the variable is correctly set
             self.assertEqual(local.x, i)
 
-        with threading_helper.start_threads(threading.Thread(target=f, args=(i,))
-                                            for i in range(10)):
+        with threading_helper.start_threads(
+            threading.Thread(target=f, args=(i,)) for i in range(10)
+        ):
             pass
 
     def test_derived_cycle_dealloc(self):
         # http://bugs.python.org/issue6990
         class Local(self._local):
             pass
+
         locals = None
         passed = False
         e1 = threading.Event()
@@ -87,7 +92,7 @@ class BaseLocalTest:
             # 1) Involve Local in a cycle
             cycle = [Local()]
             cycle.append(cycle)
-            cycle[0].foo = 'bar'
+            cycle[0].foo = "bar"
 
             # 2) GC the cycle (triggers threadmodule.c::local_clear
             # before local_dealloc)
@@ -97,7 +102,7 @@ class BaseLocalTest:
             e2.wait()
 
             # 4) New Locals should be empty
-            passed = all(not hasattr(local, 'foo') for local in locals)
+            passed = all(not hasattr(local, "foo") for local in locals)
 
         t = threading.Thread(target=f)
         t.start()
@@ -130,8 +135,8 @@ class BaseLocalTest:
         e2 = threading.Event()
 
         def f1():
-            obj.x = 'foo'
-            obj.y = 'bar'
+            obj.x = "foo"
+            obj.y = "bar"
             del obj.y
             e1.set()
             e2.wait()
@@ -143,8 +148,7 @@ class BaseLocalTest:
                 # This is expected -- we haven't set obj.x in this thread yet!
                 self._failed = ""  # passed
             else:
-                self._failed = ('Incorrectly got value %r from class %r\n' %
-                                (foo, c))
+                self._failed = "Incorrectly got value %r from class %r\n" % (foo, c)
                 sys.stderr.write(self._failed)
 
         t1 = threading.Thread(target=f1)
@@ -165,12 +169,13 @@ class BaseLocalTest:
     def test_threading_local_subclass(self):
         class LocalSubclass(self._local):
             """To test that subclasses behave properly."""
+
         self._test_one_class(LocalSubclass)
 
     def _test_dict_attribute(self, cls):
         obj = cls()
         obj.x = 5
-        self.assertEqual(obj.__dict__, {'x': 5})
+        self.assertEqual(obj.__dict__, {"x": 5})
         with self.assertRaises(AttributeError):
             obj.__dict__ = {}
         with self.assertRaises(AttributeError):
@@ -182,6 +187,7 @@ class BaseLocalTest:
     def test_dict_attribute_subclass(self):
         class LocalSubclass(self._local):
             """To test that subclasses behave properly."""
+
         self._test_dict_attribute(LocalSubclass)
 
     def test_cycle_collection(self):
@@ -196,11 +202,10 @@ class BaseLocalTest:
         support.gc_collect()  # For PyPy or other GCs.
         self.assertIsNone(wr())
 
-
     def test_threading_local_clear_race(self):
         # See https://github.com/python/cpython/issues/100892
 
-        _testcapi = import_module('_testcapi')
+        _testcapi = import_module("_testcapi")
         _testcapi.call_in_temporary_c_thread(lambda: None, False)
 
         for _ in range(1000):
@@ -212,23 +217,25 @@ class BaseLocalTest:
 class ThreadLocalTest(unittest.TestCase, BaseLocalTest):
     _local = _thread._local
 
+
 class PyThreadingLocalTest(unittest.TestCase, BaseLocalTest):
     _local = _threading_local.local
 
 
 def load_tests(loader, tests, pattern):
-    tests.addTest(DocTestSuite('_threading_local'))
+    tests.addTest(DocTestSuite("_threading_local"))
 
     local_orig = _threading_local.local
+
     def setUp(test):
         _threading_local.local = _thread._local
+
     def tearDown(test):
         _threading_local.local = local_orig
-    tests.addTests(DocTestSuite('_threading_local',
-                                setUp=setUp, tearDown=tearDown)
-                   )
+
+    tests.addTests(DocTestSuite("_threading_local", setUp=setUp, tearDown=tearDown))
     return tests
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

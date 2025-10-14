@@ -6,18 +6,22 @@ VERBOSITY = 3
 
 
 # The root logger for the whole top-level package:
-_logger = logging.getLogger(__name__.rpartition('.')[0])
+_logger = logging.getLogger(__name__.rpartition(".")[0])
 
 
-def configure_logger(logger, verbosity=VERBOSITY, *,
-                     logfile=None,
-                     maxlevel=logging.CRITICAL,
-                     ):
-    level = max(1,  # 0 disables it, so we use the next lowest.
-                min(maxlevel,
-                    maxlevel - verbosity * 10))
+def configure_logger(
+    logger,
+    verbosity=VERBOSITY,
+    *,
+    logfile=None,
+    maxlevel=logging.CRITICAL,
+):
+    level = max(
+        1,  # 0 disables it, so we use the next lowest.
+        min(maxlevel, maxlevel - verbosity * 10),
+    )
     logger.setLevel(level)
-    #logger.propagate = False
+    # logger.propagate = False
 
     if not logger.handlers:
         if logfile:
@@ -25,7 +29,7 @@ def configure_logger(logger, verbosity=VERBOSITY, *,
         else:
             handler = logging.StreamHandler(sys.stdout)
         handler.setLevel(level)
-        #handler.setFormatter(logging.Formatter())
+        # handler.setFormatter(logging.Formatter())
         logger.addHandler(handler)
 
     # In case the provided logger is in a sub-package...
@@ -48,8 +52,10 @@ def hide_emit_errors():
     # a Handler subclass with a custom handleError() method.
     orig = logging.raiseExceptions
     logging.raiseExceptions = False
+
     def restore():
         logging.raiseExceptions = orig
+
     return restore
 
 

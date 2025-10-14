@@ -14,8 +14,9 @@ class OpenptyTest(unittest.TestCase):
         if not os.isatty(slave):
             self.fail("Slave-end of pty is not a terminal.")
 
-        os.write(slave, b'Ping!')
-        self.assertEqual(os.read(master, 1024), b'Ping!')
+        os.write(slave, b"Ping!")
+        self.assertEqual(os.read(master, 1024), b"Ping!")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

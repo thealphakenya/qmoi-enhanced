@@ -1,6 +1,7 @@
 """
 Very minimal unittests for parts of the readline module.
 """
+
 import locale
 import os
 import sys
@@ -14,12 +15,12 @@ from test.support.pty_helper import run_pty
 from test.support.script_helper import assert_python_ok
 
 # Skip tests if there is no readline module
-readline = import_module('readline')
+readline = import_module("readline")
 
 if hasattr(readline, "_READLINE_LIBRARY_VERSION"):
-    is_editline = ("EditLine wrapper" in readline._READLINE_LIBRARY_VERSION)
+    is_editline = "EditLine wrapper" in readline._READLINE_LIBRARY_VERSION
 else:
-    is_editline = (readline.__doc__ and "libedit" in readline.__doc__)
+    is_editline = readline.__doc__ and "libedit" in readline.__doc__
 
 
 def setUpModule():
@@ -34,10 +35,12 @@ def setUpModule():
         print(f"use libedit emulation? {is_editline}")
 
 
-@unittest.skipUnless(hasattr(readline, "clear_history"),
-                     "The history update test cannot be run because the "
-                     "clear_history method is not available.")
-class TestHistoryManipulation (unittest.TestCase):
+@unittest.skipUnless(
+    hasattr(readline, "clear_history"),
+    "The history update test cannot be run because the "
+    "clear_history method is not available.",
+)
+class TestHistoryManipulation(unittest.TestCase):
     """
     These tests were added to check that the libedit emulation on OSX and the
     "real" readline have the same interface for history manipulation. That's
@@ -67,8 +70,9 @@ class TestHistoryManipulation (unittest.TestCase):
 
         self.assertEqual(readline.get_current_history_length(), 1)
 
-    @unittest.skipUnless(hasattr(readline, "append_history_file"),
-                         "append_history not available")
+    @unittest.skipUnless(
+        hasattr(readline, "append_history_file"), "append_history not available"
+    )
     def test_write_read_append(self):
         hfile = tempfile.NamedTemporaryFile(delete=False)
         hfile.close()
@@ -135,15 +139,18 @@ class TestHistoryManipulation (unittest.TestCase):
 
 class TestReadline(unittest.TestCase):
 
-    @unittest.skipIf(readline._READLINE_VERSION < 0x0601 and not is_editline,
-                     "not supported in this library version")
+    @unittest.skipIf(
+        readline._READLINE_VERSION < 0x0601 and not is_editline,
+        "not supported in this library version",
+    )
     def test_init(self):
         # Issue #19884: Ensure that the ANSI sequence "\033[1034h" is not
         # written into stdout when the readline module is imported and stdout
         # is redirected to a pipe.
-        rc, stdout, stderr = assert_python_ok('-c', 'import readline',
-                                              TERM='xterm-256color')
-        self.assertEqual(stdout, b'')
+        rc, stdout, stderr = assert_python_ok(
+            "-c", "import readline", TERM="xterm-256color"
+        )
+        self.assertEqual(stdout, b"")
 
     auto_history_script = """\
 import readline
@@ -165,7 +172,8 @@ print("History length:", readline.get_current_history_length())
         self.assertIn(b"History length: 0", output)
 
     def test_set_complete_delims(self):
-        script = textwrap.dedent("""
+        script = textwrap.dedent(
+            """
             import readline
             def complete(text, state):
                 if state == 0 and text == "$":
@@ -178,21 +186,22 @@ print("History length:", readline.get_current_history_length())
             readline.set_completer_delims(" \\t\\n")
             readline.set_completer(complete)
             print(input())
-        """)
+        """
+        )
 
         output = run_pty(script, input=b"$\t\n")
         self.assertIn(b"$complete", output)
 
     def test_nonascii(self):
         loc = locale.setlocale(locale.LC_CTYPE, None)
-        if loc in ('C', 'POSIX'):
+        if loc in ("C", "POSIX"):
             # bpo-29240: On FreeBSD, if the LC_CTYPE locale is C or POSIX,
             # writing and reading non-ASCII bytes into/from a TTY works, but
             # readline or ncurses ignores non-ASCII bytes on read.
             self.skipTest(f"the LC_CTYPE locale is {loc!r}")
 
         try:
-            readline.add_history("\xEB\xEF")
+            readline.add_history("\xeb\xef")
         except UnicodeEncodeError as err:
             self.skipTest("Locale cannot encode test data: " + format(err))
 
@@ -270,7 +279,7 @@ print("history", ascii(readline.get_history_item(1)))
         if not is_editline and hasattr(readline, "set_pre_input_hook"):
             self.assertIn(b"substitution 't\\xeb'\r\n", output)
             self.assertIn(b"matches ['t\\xebnt', 't\\xebxt']\r\n", output)
-        expected = br"'[\xefnserted]|t\xebxt[after]'"
+        expected = rb"'[\xefnserted]|t\xebxt[after]'"
         self.assertIn(b"result " + expected + b"\r\n", output)
         # bpo-45195: Sometimes, the newline character is not written at the
         # end, so don't expect it in the output.
@@ -281,10 +290,11 @@ print("history", ascii(readline.get_history_item(1)))
     #   See https://cnswww.cns.cwru.edu/php/chet/readline/CHANGES
     # - editline: history size is broken on OS X 10.11.6.
     #   Newer versions were not tested yet.
-    @unittest.skipIf(readline._READLINE_VERSION < 0x600,
-                     "this readline version does not support history-size")
-    @unittest.skipIf(is_editline,
-                     "editline history size configuration is broken")
+    @unittest.skipIf(
+        readline._READLINE_VERSION < 0x600,
+        "this readline version does not support history-size",
+    )
+    @unittest.skipIf(is_editline, "editline history size configuration is broken")
     def test_history_size(self):
         history_size = 10
         with temp_dir() as test_dir:
@@ -295,8 +305,7 @@ print("history", ascii(readline.get_history_item(1)))
             history_file = os.path.join(test_dir, "history")
             with open(history_file, "wb") as f:
                 # history_size * 2 items crashes readline
-                data = b"".join(b"item %d\n" % i
-                                for i in range(history_size * 2))
+                data = b"".join(b"item %d\n" % i for i in range(history_size * 2))
                 f.write(data)
 
             script = """

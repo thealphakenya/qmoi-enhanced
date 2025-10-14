@@ -5,17 +5,22 @@ import sys
 import unittest
 from test import support
 
+
 class PropertyBase(Exception):
     pass
+
 
 class PropertyGet(PropertyBase):
     pass
 
+
 class PropertySet(PropertyBase):
     pass
 
+
 class PropertyDel(PropertyBase):
     pass
+
 
 class BaseClass(object):
     def __init__(self):
@@ -34,6 +39,7 @@ class BaseClass(object):
     def spam(self):
         del self._spam
 
+
 class SubClass(BaseClass):
 
     @BaseClass.spam.getter
@@ -49,11 +55,15 @@ class SubClass(BaseClass):
     def spam(self):
         raise PropertyDel(self._spam)
 
+
 class PropertyDocBase(object):
     _spam = 1
+
     def _get_spam(self):
         return self._spam
+
     spam = property(_get_spam, doc="spam spam spam")
+
 
 class PropertyDocSub(PropertyDocBase):
     @PropertyDocBase.spam.getter
@@ -61,21 +71,25 @@ class PropertyDocSub(PropertyDocBase):
         """The decorator does not use this doc string"""
         return self._spam
 
+
 class PropertySubNewGetter(BaseClass):
     @BaseClass.spam.getter
     def spam(self):
         """new docstring"""
         return 5
 
+
 class PropertyNewGetter(object):
     @property
     def spam(self):
         """original docstring"""
         return 1
+
     @spam.getter
     def spam(self):
         """new docstring"""
         return 8
+
 
 class PropertyTests(unittest.TestCase):
     def test_property_decorator_baseclass(self):
@@ -100,14 +114,16 @@ class PropertyTests(unittest.TestCase):
         self.assertRaises(PropertySet, setattr, sub, "spam", None)
         self.assertRaises(PropertyDel, delattr, sub, "spam")
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_property_decorator_subclass_doc(self):
         sub = SubClass()
         self.assertEqual(sub.__class__.spam.__doc__, "SubClass.getter")
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_property_decorator_baseclass_doc(self):
         base = BaseClass()
         self.assertEqual(base.__class__.spam.__doc__, "BaseClass.getter")
@@ -118,8 +134,9 @@ class PropertyTests(unittest.TestCase):
         self.assertEqual(base.__class__.spam.__doc__, "spam spam spam")
         self.assertEqual(sub.__class__.spam.__doc__, "spam spam spam")
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_property_getter_doc_override(self):
         newgettersub = PropertySubNewGetter()
         self.assertEqual(newgettersub.spam, 5)
@@ -129,12 +146,15 @@ class PropertyTests(unittest.TestCase):
         self.assertEqual(newgetter.__class__.spam.__doc__, "new docstring")
 
     def test_property___isabstractmethod__descriptor(self):
-        for val in (True, False, [], [1], '', '1'):
+        for val in (True, False, [], [1], "", "1"):
+
             class C(object):
                 def foo(self):
                     pass
+
                 foo.__isabstractmethod__ = val
                 foo = property(foo)
+
             self.assertIs(C.foo.__isabstractmethod__, bool(val))
 
         # check that the property's __isabstractmethod__ descriptor does the
@@ -142,25 +162,32 @@ class PropertyTests(unittest.TestCase):
         class NotBool(object):
             def __bool__(self):
                 raise ValueError()
+
             __len__ = __bool__
+
         with self.assertRaises(ValueError):
+
             class C(object):
                 def foo(self):
                     pass
+
                 foo.__isabstractmethod__ = NotBool()
                 foo = property(foo)
+
             C.foo.__isabstractmethod__
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_property_builtin_doc_writable(self):
-        p = property(doc='basic')
-        self.assertEqual(p.__doc__, 'basic')
-        p.__doc__ = 'extended'
-        self.assertEqual(p.__doc__, 'extended')
+        p = property(doc="basic")
+        self.assertEqual(p.__doc__, "basic")
+        p.__doc__ = "extended"
+        self.assertEqual(p.__doc__, "extended")
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_property_decorator_doc_writable(self):
         class PropertyWritableDoc(object):
 
@@ -170,24 +197,24 @@ class PropertyTests(unittest.TestCase):
                 return "eggs"
 
         sub = PropertyWritableDoc()
-        self.assertEqual(sub.__class__.spam.__doc__, 'Eggs')
-        sub.__class__.spam.__doc__ = 'Spam'
-        self.assertEqual(sub.__class__.spam.__doc__, 'Spam')
+        self.assertEqual(sub.__class__.spam.__doc__, "Eggs")
+        sub.__class__.spam.__doc__ = "Spam"
+        self.assertEqual(sub.__class__.spam.__doc__, "Spam")
 
     @support.refcount_test
     def test_refleaks_in___init__(self):
-        gettotalrefcount = support.get_attribute(sys, 'gettotalrefcount')
-        fake_prop = property('fget', 'fset', 'fdel', 'doc')
+        gettotalrefcount = support.get_attribute(sys, "gettotalrefcount")
+        fake_prop = property("fget", "fset", "fdel", "doc")
         refs_before = gettotalrefcount()
         for i in range(100):
-            fake_prop.__init__('fget', 'fset', 'fdel', 'doc')
+            fake_prop.__init__("fget", "fset", "fdel", "doc")
         self.assertAlmostEqual(gettotalrefcount() - refs_before, 0, delta=10)
 
     @support.refcount_test
     def test_gh_115618(self):
         # Py_XDECREF() was improperly called for None argument
         # in property methods.
-        gettotalrefcount = support.get_attribute(sys, 'gettotalrefcount')
+        gettotalrefcount = support.get_attribute(sys, "gettotalrefcount")
         prop = property()
         refs_before = gettotalrefcount()
         for i in range(100):
@@ -201,26 +228,31 @@ class PropertyTests(unittest.TestCase):
         self.assertIsNone(prop.fdel)
         self.assertAlmostEqual(gettotalrefcount() - refs_before, 0, delta=10)
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_class_property(self):
         class A:
             @classmethod
             @property
             def __doc__(cls):
-                return 'A doc for %r' % cls.__name__
+                return "A doc for %r" % cls.__name__
+
         self.assertEqual(A.__doc__, "A doc for 'A'")
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_class_property_override(self):
         class A:
             """First"""
+
             @classmethod
             @property
             def __doc__(cls):
-                return 'Second'
-        self.assertEqual(A.__doc__, 'Second')
+                return "Second"
+
+        self.assertEqual(A.__doc__, "Second")
 
     def test_property_set_name_incorrect_args(self):
         p = property()
@@ -228,7 +260,7 @@ class PropertyTests(unittest.TestCase):
         for i in (0, 1, 3):
             with self.assertRaisesRegex(
                 TypeError,
-                fr'^__set_name__\(\) takes 2 positional arguments but {i} were given$'
+                rf"^__set_name__\(\) takes 2 positional arguments but {i} were given$",
             ):
                 p.__set_name__(*([0] * i))
 
@@ -250,16 +282,21 @@ class PropertyTests(unittest.TestCase):
         p.__set_name__(A, 1)
         np = p.getter(lambda self: 1)
 
+
 # Issue 5890: subclasses of property do not preserve method __doc__ strings
 class PropertySub(property):
     """This is a subclass of property"""
 
+
 class PropertySubWoDoc(property):
     pass
 
+
 class PropertySubSlots(property):
     """This is a subclass of property that defines __slots__"""
+
     __slots__ = ()
+
 
 class PropertySubclassTests(unittest.TestCase):
 
@@ -271,6 +308,7 @@ class PropertySubclassTests(unittest.TestCase):
         # as part of https://bugs.python.org/issue5890 which allowed docs to
         # be set via property subclasses in the first place.
         with self.assertRaises(AttributeError):
+
             class Foo(object):
                 @PropertySubSlots
                 def spam(self):
@@ -291,8 +329,9 @@ class PropertySubclassTests(unittest.TestCase):
         p = slotted_prop(undocumented_getter)  # New in 3.12: no AttributeError
         self.assertIsNone(getattr(p, "__doc__", None))
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_property_with_slots_docstring_silently_dropped(self):
         # https://github.com/python/cpython/issues/98963#issuecomment-1574413319
         class slotted_prop(property):
@@ -310,8 +349,9 @@ class PropertySubclassTests(unittest.TestCase):
         with self.assertRaises(AttributeError):
             p = slotted_prop(documented_getter)
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_property_with_slots_and_doc_slot_docstring_present(self):
         # https://github.com/python/cpython/issues/98963#issuecomment-1574413319
         class slotted_prop(property):
@@ -327,16 +367,23 @@ class PropertySubclassTests(unittest.TestCase):
         p = slotted_prop(documented_getter)
         self.assertEqual("what's up getter doc?", p.__doc__)
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_issue41287(self):
 
-        self.assertEqual(PropertySub.__doc__, "This is a subclass of property",
-                         "Docstring of `property` subclass is ignored")
+        self.assertEqual(
+            PropertySub.__doc__,
+            "This is a subclass of property",
+            "Docstring of `property` subclass is ignored",
+        )
 
         doc = PropertySub(None, None, None, "issue 41287 is fixed").__doc__
-        self.assertEqual(doc, "issue 41287 is fixed",
-                         "Subclasses of `property` ignores `doc` constructor argument")
+        self.assertEqual(
+            doc,
+            "issue 41287 is fixed",
+            "Subclasses of `property` ignores `doc` constructor argument",
+        )
 
         def getter(x):
             """Getter docstring"""
@@ -346,33 +393,46 @@ class PropertySubclassTests(unittest.TestCase):
 
         for ps in property, PropertySub, PropertySubWoDoc:
             doc = ps(getter, None, None, "issue 41287 is fixed").__doc__
-            self.assertEqual(doc, "issue 41287 is fixed",
-                             "Getter overrides explicit property docstring (%s)" % ps.__name__)
+            self.assertEqual(
+                doc,
+                "issue 41287 is fixed",
+                "Getter overrides explicit property docstring (%s)" % ps.__name__,
+            )
 
             doc = ps(getter, None, None, None).__doc__
-            self.assertEqual(doc, "Getter docstring", "Getter docstring is not picked-up (%s)" % ps.__name__)
+            self.assertEqual(
+                doc,
+                "Getter docstring",
+                "Getter docstring is not picked-up (%s)" % ps.__name__,
+            )
 
             doc = ps(getter_wo_doc, None, None, "issue 41287 is fixed").__doc__
-            self.assertEqual(doc, "issue 41287 is fixed",
-                             "Getter overrides explicit property docstring (%s)" % ps.__name__)
+            self.assertEqual(
+                doc,
+                "issue 41287 is fixed",
+                "Getter overrides explicit property docstring (%s)" % ps.__name__,
+            )
 
             doc = ps(getter_wo_doc, None, None, None).__doc__
-            self.assertIsNone(doc, "Property class doc appears in instance __doc__ (%s)" % ps.__name__)
+            self.assertIsNone(
+                doc, "Property class doc appears in instance __doc__ (%s)" % ps.__name__
+            )
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_docstring_copy(self):
         class Foo(object):
             @PropertySub
             def spam(self):
                 """spam wrapped in property subclass"""
                 return 1
-        self.assertEqual(
-            Foo.spam.__doc__,
-            "spam wrapped in property subclass")
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+        self.assertEqual(Foo.spam.__doc__, "spam wrapped in property subclass")
+
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_docstring_copy2(self):
         """
         Property tries to provide the best docstring it finds for its instances.
@@ -380,11 +440,14 @@ class PropertySubclassTests(unittest.TestCase):
         If no docstring is available during property creation, the property
         will utilize the docstring from the getter if available.
         """
+
         def getter1(self):
             return 1
+
         def getter2(self):
             """doc 2"""
             return 2
+
         def getter3(self):
             """doc 3"""
             return 3
@@ -431,41 +494,45 @@ class PropertySubclassTests(unittest.TestCase):
         self.assertEqual(p.__doc__, "user")
         self.assertEqual(p2.__doc__, "user")
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_property_setter_copies_getter_docstring(self):
         class Foo(object):
-            def __init__(self): self._spam = 1
+            def __init__(self):
+                self._spam = 1
+
             @PropertySub
             def spam(self):
                 """spam wrapped in property subclass"""
                 return self._spam
+
             @spam.setter
             def spam(self, value):
                 """this docstring is ignored"""
                 self._spam = value
+
         foo = Foo()
         self.assertEqual(foo.spam, 1)
         foo.spam = 2
         self.assertEqual(foo.spam, 2)
-        self.assertEqual(
-            Foo.spam.__doc__,
-            "spam wrapped in property subclass")
+        self.assertEqual(Foo.spam.__doc__, "spam wrapped in property subclass")
+
         class FooSub(Foo):
             @Foo.spam.setter
             def spam(self, value):
                 """another ignored docstring"""
-                self._spam = 'eggs'
+                self._spam = "eggs"
+
         foosub = FooSub()
         self.assertEqual(foosub.spam, 1)
         foosub.spam = 7
-        self.assertEqual(foosub.spam, 'eggs')
-        self.assertEqual(
-            FooSub.spam.__doc__,
-            "spam wrapped in property subclass")
+        self.assertEqual(foosub.spam, "eggs")
+        self.assertEqual(FooSub.spam.__doc__, "spam wrapped in property subclass")
 
-    @unittest.skipIf(sys.flags.optimize >= 2,
-                     "Docstrings are omitted with -O2 and above")
+    @unittest.skipIf(
+        sys.flags.optimize >= 2, "Docstrings are omitted with -O2 and above"
+    )
     def test_property_new_getter_new_docstring(self):
 
         class Foo(object):
@@ -473,21 +540,26 @@ class PropertySubclassTests(unittest.TestCase):
             def spam(self):
                 """a docstring"""
                 return 1
+
             @spam.getter
             def spam(self):
                 """a new docstring"""
                 return 2
+
         self.assertEqual(Foo.spam.__doc__, "a new docstring")
+
         class FooBase(object):
             @PropertySub
             def spam(self):
                 """a docstring"""
                 return 1
+
         class Foo2(FooBase):
             @FooBase.spam.getter
             def spam(self):
                 """a new docstring"""
                 return 2
+
         self.assertEqual(Foo.spam.__doc__, "a new docstring")
 
 
@@ -504,26 +576,38 @@ class _PropertyUnreachableAttribute:
         cls.obj = cls.cls()
 
     def test_get_property(self):
-        with self.assertRaisesRegex(AttributeError, self._format_exc_msg("has no getter")):
+        with self.assertRaisesRegex(
+            AttributeError, self._format_exc_msg("has no getter")
+        ):
             self.obj.foo
 
     def test_set_property(self):
-        with self.assertRaisesRegex(AttributeError, self._format_exc_msg("has no setter")):
+        with self.assertRaisesRegex(
+            AttributeError, self._format_exc_msg("has no setter")
+        ):
             self.obj.foo = None
 
     def test_del_property(self):
-        with self.assertRaisesRegex(AttributeError, self._format_exc_msg("has no deleter")):
+        with self.assertRaisesRegex(
+            AttributeError, self._format_exc_msg("has no deleter")
+        ):
             del self.obj.foo
 
 
-class PropertyUnreachableAttributeWithName(_PropertyUnreachableAttribute, unittest.TestCase):
-    msg_format = r"^property 'foo' of 'PropertyUnreachableAttributeWithName\.cls' object {}$"
+class PropertyUnreachableAttributeWithName(
+    _PropertyUnreachableAttribute, unittest.TestCase
+):
+    msg_format = (
+        r"^property 'foo' of 'PropertyUnreachableAttributeWithName\.cls' object {}$"
+    )
 
     class cls:
         foo = property()
 
 
-class PropertyUnreachableAttributeNoName(_PropertyUnreachableAttribute, unittest.TestCase):
+class PropertyUnreachableAttributeNoName(
+    _PropertyUnreachableAttribute, unittest.TestCase
+):
     msg_format = r"^property of 'PropertyUnreachableAttributeNoName\.cls' object {}$"
 
     class cls:
@@ -532,5 +616,5 @@ class PropertyUnreachableAttributeNoName(_PropertyUnreachableAttribute, unittest
     cls.foo = property()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

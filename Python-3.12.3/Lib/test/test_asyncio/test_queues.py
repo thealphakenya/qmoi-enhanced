@@ -18,7 +18,7 @@ class QueueBasicTests(unittest.IsolatedAsyncioTestCase):
         appear in fn(Queue()).
         """
         q = asyncio.Queue()
-        self.assertTrue(fn(q).startswith('<Queue'), fn(q))
+        self.assertTrue(fn(q).startswith("<Queue"), fn(q))
         id_is_present = hex(id(q)) in fn(q)
         self.assertEqual(expect_id, id_is_present)
 
@@ -29,7 +29,7 @@ class QueueBasicTests(unittest.IsolatedAsyncioTestCase):
             getter = tg.create_task(q.get())
             # Let it start waiting.
             await asyncio.sleep(0)
-            self.assertTrue('_getters[1]' in fn(q))
+            self.assertTrue("_getters[1]" in fn(q))
             # resume q.get coroutine to finish generator
             q.put_nowait(0)
 
@@ -43,7 +43,7 @@ class QueueBasicTests(unittest.IsolatedAsyncioTestCase):
             putter = tg.create_task(q.put(2))
             # Let it start waiting.
             await asyncio.sleep(0)
-            self.assertTrue('_putters[1]' in fn(q))
+            self.assertTrue("_putters[1]" in fn(q))
             # resume q.put coroutine to finish generator
             q.get_nowait()
 
@@ -51,7 +51,7 @@ class QueueBasicTests(unittest.IsolatedAsyncioTestCase):
 
         q = asyncio.Queue()
         q.put_nowait(1)
-        self.assertTrue('_queue=[1]' in fn(q))
+        self.assertTrue("_queue=[1]" in fn(q))
 
     async def test_repr(self):
         await self._test_repr_or_str(repr, True)
@@ -178,16 +178,16 @@ class QueueGetTests(unittest.IsolatedAsyncioTestCase):
         t1.cancel()
         await asyncio.sleep(0)
         self.assertTrue(t1.done())
-        await q.put('a')
+        await q.put("a")
         await asyncio.sleep(0)
-        self.assertEqual('a', await t2)
+        self.assertEqual("a", await t2)
 
     async def test_get_with_waiting_putters(self):
         q = asyncio.Queue(maxsize=1)
-        asyncio.create_task(q.put('a'))
-        asyncio.create_task(q.put('b'))
-        self.assertEqual(await q.get(), 'a')
-        self.assertEqual(await q.get(), 'b')
+        asyncio.create_task(q.put("a"))
+        asyncio.create_task(q.put("b"))
+        self.assertEqual(await q.get(), "a")
+        self.assertEqual(await q.get(), "b")
 
     async def test_why_are_getters_waiting(self):
         async def consumer(queue, num_expected):
@@ -317,18 +317,24 @@ class QueuePutTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(q.qsize(), 0)
 
     def test_nonblocking_put_exception(self):
-        q = asyncio.Queue(maxsize=1, )
+        q = asyncio.Queue(
+            maxsize=1,
+        )
         q.put_nowait(1)
         self.assertRaises(asyncio.QueueFull, q.put_nowait, 2)
 
     async def test_float_maxsize(self):
-        q = asyncio.Queue(maxsize=1.3, )
+        q = asyncio.Queue(
+            maxsize=1.3,
+        )
         q.put_nowait(1)
         q.put_nowait(2)
         self.assertTrue(q.full())
         self.assertRaises(asyncio.QueueFull, q.put_nowait, 3)
 
-        q = asyncio.Queue(maxsize=1.3, )
+        q = asyncio.Queue(
+            maxsize=1.3,
+        )
 
         await q.put(1)
         await q.put(2)
@@ -350,9 +356,9 @@ class QueuePutTests(unittest.IsolatedAsyncioTestCase):
     async def test_put_cancelled_race(self):
         q = asyncio.Queue(maxsize=1)
 
-        put_a = asyncio.create_task(q.put('a'))
-        put_b = asyncio.create_task(q.put('b'))
-        put_c = asyncio.create_task(q.put('X'))
+        put_a = asyncio.create_task(q.put("a"))
+        put_b = asyncio.create_task(q.put("b"))
+        put_c = asyncio.create_task(q.put("X"))
 
         await asyncio.sleep(0)
         self.assertTrue(put_a.done())
@@ -361,9 +367,9 @@ class QueuePutTests(unittest.IsolatedAsyncioTestCase):
         put_c.cancel()
         await asyncio.sleep(0)
         self.assertTrue(put_c.done())
-        self.assertEqual(q.get_nowait(), 'a')
+        self.assertEqual(q.get_nowait(), "a")
         await asyncio.sleep(0)
-        self.assertEqual(q.get_nowait(), 'b')
+        self.assertEqual(q.get_nowait(), "b")
 
         await put_b
 
@@ -371,8 +377,8 @@ class QueuePutTests(unittest.IsolatedAsyncioTestCase):
         q = asyncio.Queue()
         t = asyncio.create_task(q.get())
         await asyncio.sleep(0)
-        await q.put('a')
-        self.assertEqual(await t, 'a')
+        await q.put("a")
+        self.assertEqual(await t, "a")
 
     async def test_why_are_putters_waiting(self):
         queue = asyncio.Queue(2)
@@ -482,8 +488,7 @@ class _QueueJoinTestMixin:
                 q.task_done()
 
         async with asyncio.TaskGroup() as tg:
-            tasks = [tg.create_task(worker())
-                     for index in range(2)]
+            tasks = [tg.create_task(worker()) for index in range(2)]
 
             await q.join()
             self.assertEqual(sum(range(100)), accumulator)
@@ -504,10 +509,10 @@ class _QueueJoinTestMixin:
 
     async def test_format(self):
         q = self.q_class()
-        self.assertEqual(q._format(), 'maxsize=0')
+        self.assertEqual(q._format(), "maxsize=0")
 
         q._unfinished_tasks = 2
-        self.assertEqual(q._format(), 'maxsize=0 tasks=2')
+        self.assertEqual(q._format(), "maxsize=0 tasks=2")
 
 
 class QueueJoinTests(_QueueJoinTestMixin, unittest.IsolatedAsyncioTestCase):
@@ -522,5 +527,5 @@ class PriorityQueueJoinTests(_QueueJoinTestMixin, unittest.IsolatedAsyncioTestCa
     q_class = asyncio.PriorityQueue
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

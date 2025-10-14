@@ -19,6 +19,7 @@ encodedtext = b"""\
 M5&AE('-Y;6)O;',@;VX@=&]P(&]F('EO=7(@:V5Y8F]A<F0@87)E("% (R0E
 *7B8J*"E?*WQ^"@  """
 
+
 # Stolen from io.py
 class FakeIO(io.TextIOWrapper):
     """Text I/O implementation using an in-memory buffer.
@@ -28,12 +29,12 @@ class FakeIO(io.TextIOWrapper):
 
     # XXX This is really slow, but fully functional
 
-    def __init__(self, initial_value="", encoding="utf-8",
-                 errors="strict", newline="\n"):
-        super(FakeIO, self).__init__(io.BytesIO(),
-                                     encoding=encoding,
-                                     errors=errors,
-                                     newline=newline)
+    def __init__(
+        self, initial_value="", encoding="utf-8", errors="strict", newline="\n"
+    ):
+        super(FakeIO, self).__init__(
+            io.BytesIO(), encoding=encoding, errors=errors, newline=newline
+        )
         self._encoding = encoding
         self._errors = errors
         if initial_value:
@@ -49,12 +50,19 @@ class FakeIO(io.TextIOWrapper):
 
 def encodedtextwrapped(mode, filename, backtick=False):
     if backtick:
-        res = (bytes("begin %03o %s\n" % (mode, filename), "ascii") +
-               encodedtext.replace(b' ', b'`') + b"\n`\nend\n")
+        res = (
+            bytes("begin %03o %s\n" % (mode, filename), "ascii")
+            + encodedtext.replace(b" ", b"`")
+            + b"\n`\nend\n"
+        )
     else:
-        res = (bytes("begin %03o %s\n" % (mode, filename), "ascii") +
-               encodedtext + b"\n \nend\n")
+        res = (
+            bytes("begin %03o %s\n" % (mode, filename), "ascii")
+            + encodedtext
+            + b"\n \nend\n"
+        )
     return res
+
 
 class UUTest(unittest.TestCase):
 
@@ -82,9 +90,9 @@ class UUTest(unittest.TestCase):
             uu.decode(inp, out)
             self.assertEqual(out.getvalue(), plaintext)
             inp = io.BytesIO(
-                b"UUencoded files may contain many lines,\n" +
-                b"even some that have 'begin' in them.\n" +
-                encodedtextwrapped(0o666, "t1", backtick=backtick)
+                b"UUencoded files may contain many lines,\n"
+                + b"even some that have 'begin' in them.\n"
+                + encodedtextwrapped(0o666, "t1", backtick=backtick)
             )
             out = io.BytesIO()
             uu.decode(inp, out)
@@ -113,14 +121,14 @@ class UUTest(unittest.TestCase):
         encodedtext1 = (
             b"begin 644 file\n"
             # length 1; bits 001100 111111 111111 111111
-            b"\x21\x2C\x5F\x5F\x5F\n"
+            b"\x21\x2c\x5f\x5f\x5f\n"
             b"\x20\n"
             b"end\n"
         )
         encodedtext2 = (
             b"begin 644 file\n"
             # length 1; bits 001100 111111 111111 111111
-            b"\x21\x2C\x5F\x5F\x5F\n"
+            b"\x21\x2c\x5f\x5f\x5f\n"
             b"\x60\n"
             b"end\n"
         )
@@ -135,6 +143,7 @@ class UUTest(unittest.TestCase):
 
             with self.subTest("uu_codec"):
                 import codecs
+
                 decoded = codecs.decode(encodedtext, "uu_codec")
                 self.assertEqual(decoded, plaintext)
 
@@ -154,11 +163,11 @@ $86)C"@``
 `
 end
 """
-        with self.assertRaisesRegex(uu.Error, 'directory'):
+        with self.assertRaisesRegex(uu.Error, "directory"):
             uu.decode(io.BytesIO(relative_bad))
         if os.altsep:
-            relative_bad_bs = relative_bad.replace(b'/', b'\\')
-            with self.assertRaisesRegex(uu.Error, 'directory'):
+            relative_bad_bs = relative_bad.replace(b"/", b"\\")
+            with self.assertRaisesRegex(uu.Error, "directory"):
                 uu.decode(io.BytesIO(relative_bad_bs))
 
         absolute_bad = b"""\
@@ -167,11 +176,11 @@ $86)C"@``
 `
 end
 """
-        with self.assertRaisesRegex(uu.Error, 'directory'):
+        with self.assertRaisesRegex(uu.Error, "directory"):
             uu.decode(io.BytesIO(absolute_bad))
         if os.altsep:
-            absolute_bad_bs = absolute_bad.replace(b'/', b'\\')
-            with self.assertRaisesRegex(uu.Error, 'directory'):
+            absolute_bad_bs = absolute_bad.replace(b"/", b"\\")
+            with self.assertRaisesRegex(uu.Error, "directory"):
                 uu.decode(io.BytesIO(absolute_bad_bs))
 
 
@@ -189,8 +198,9 @@ class UUStdIOTest(unittest.TestCase):
         sys.stdin = FakeIO(plaintext.decode("ascii"))
         sys.stdout = FakeIO()
         uu.encode("-", "-", "t1", 0o666)
-        self.assertEqual(sys.stdout.getvalue(),
-                         encodedtextwrapped(0o666, "t1").decode("ascii"))
+        self.assertEqual(
+            sys.stdout.getvalue(), encodedtextwrapped(0o666, "t1").decode("ascii")
+        )
 
     def test_decode(self):
         sys.stdin = FakeIO(encodedtextwrapped(0o666, "t1").decode("ascii"))
@@ -201,87 +211,85 @@ class UUStdIOTest(unittest.TestCase):
         sys.stdin = self.stdin
         self.assertEqual(stdout.getvalue(), plaintext.decode("ascii"))
 
+
 class UUFileTest(unittest.TestCase):
 
     def setUp(self):
         # uu.encode() supports only ASCII file names
-        self.tmpin  = os_helper.TESTFN_ASCII + "i"
+        self.tmpin = os_helper.TESTFN_ASCII + "i"
         self.tmpout = os_helper.TESTFN_ASCII + "o"
         self.addCleanup(os_helper.unlink, self.tmpin)
         self.addCleanup(os_helper.unlink, self.tmpout)
 
     def test_encode(self):
-        with open(self.tmpin, 'wb') as fin:
+        with open(self.tmpin, "wb") as fin:
             fin.write(plaintext)
 
-        with open(self.tmpin, 'rb') as fin:
-            with open(self.tmpout, 'wb') as fout:
+        with open(self.tmpin, "rb") as fin:
+            with open(self.tmpout, "wb") as fout:
                 uu.encode(fin, fout, self.tmpin, mode=0o644)
 
-        with open(self.tmpout, 'rb') as fout:
+        with open(self.tmpout, "rb") as fout:
             s = fout.read()
         self.assertEqual(s, encodedtextwrapped(0o644, self.tmpin))
 
         # in_file and out_file as filenames
         uu.encode(self.tmpin, self.tmpout, self.tmpin, mode=0o644)
-        with open(self.tmpout, 'rb') as fout:
+        with open(self.tmpout, "rb") as fout:
             s = fout.read()
         self.assertEqual(s, encodedtextwrapped(0o644, self.tmpin))
 
     # decode() calls chmod()
     @os_helper.skip_unless_working_chmod
     def test_decode(self):
-        with open(self.tmpin, 'wb') as f:
+        with open(self.tmpin, "wb") as f:
             f.write(encodedtextwrapped(0o644, self.tmpout))
 
-        with open(self.tmpin, 'rb') as f:
+        with open(self.tmpin, "rb") as f:
             uu.decode(f)
 
-        with open(self.tmpout, 'rb') as f:
+        with open(self.tmpout, "rb") as f:
             s = f.read()
         self.assertEqual(s, plaintext)
         # XXX is there an xp way to verify the mode?
 
     @os_helper.skip_unless_working_chmod
     def test_decode_filename(self):
-        with open(self.tmpin, 'wb') as f:
+        with open(self.tmpin, "wb") as f:
             f.write(encodedtextwrapped(0o644, self.tmpout))
 
         uu.decode(self.tmpin)
 
-        with open(self.tmpout, 'rb') as f:
+        with open(self.tmpout, "rb") as f:
             s = f.read()
         self.assertEqual(s, plaintext)
 
     @os_helper.skip_unless_working_chmod
     def test_decodetwice(self):
         # Verify that decode() will refuse to overwrite an existing file
-        with open(self.tmpin, 'wb') as f:
+        with open(self.tmpin, "wb") as f:
             f.write(encodedtextwrapped(0o644, self.tmpout))
-        with open(self.tmpin, 'rb') as f:
+        with open(self.tmpin, "rb") as f:
             uu.decode(f)
 
-        with open(self.tmpin, 'rb') as f:
+        with open(self.tmpin, "rb") as f:
             self.assertRaises(uu.Error, uu.decode, f)
 
     @os_helper.skip_unless_working_chmod
     def test_decode_mode(self):
         # Verify that decode() will set the given mode for the out_file
         expected_mode = 0o444
-        with open(self.tmpin, 'wb') as f:
+        with open(self.tmpin, "wb") as f:
             f.write(encodedtextwrapped(expected_mode, self.tmpout))
 
         # make file writable again, so it can be removed (Windows only)
         self.addCleanup(os.chmod, self.tmpout, expected_mode | stat.S_IWRITE)
 
-        with open(self.tmpin, 'rb') as f:
+        with open(self.tmpin, "rb") as f:
             uu.decode(f)
 
-        self.assertEqual(
-            stat.S_IMODE(os.stat(self.tmpout).st_mode),
-            expected_mode
-        )
+        self.assertEqual(stat.S_IMODE(os.stat(self.tmpout).st_mode), expected_mode)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     unittest.main()

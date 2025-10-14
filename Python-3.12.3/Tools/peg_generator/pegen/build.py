@@ -50,22 +50,21 @@ def fixup_build_ext(cmd):
 
     Taken from distutils (was part of the CPython stdlib until Python 3.11)
     """
-    if os.name == 'nt':
-        cmd.debug = sys.executable.endswith('_d.exe')
-    elif sysconfig.get_config_var('Py_ENABLE_SHARED'):
+    if os.name == "nt":
+        cmd.debug = sys.executable.endswith("_d.exe")
+    elif sysconfig.get_config_var("Py_ENABLE_SHARED"):
         # To further add to the shared builds fun on Unix, we can't just add
         # library_dirs to the Extension() instance because that doesn't get
         # plumbed through to the final compiler command.
-        runshared = sysconfig.get_config_var('RUNSHARED')
+        runshared = sysconfig.get_config_var("RUNSHARED")
         if runshared is None:
-            cmd.library_dirs = ['.']
+            cmd.library_dirs = ["."]
         else:
-            if sys.platform == 'darwin':
+            if sys.platform == "darwin":
                 cmd.library_dirs = []
             else:
-                name, equals, value = runshared.partition('=')
+                name, equals, value = runshared.partition("=")
                 cmd.library_dirs = [d for d in value.split(os.pathsep) if d]
-
 
 
 def compile_c_extension(
@@ -110,7 +109,7 @@ def compile_c_extension(
     if keep_asserts:
         extra_compile_args.append("-UNDEBUG")
     if disable_optimization:
-        if sys.platform == 'win32':
+        if sys.platform == "win32":
             extra_compile_args.append("/Od")
             extra_link_args.append("/LTCG:OFF")
         else:
@@ -153,54 +152,69 @@ def compile_c_extension(
     compiler.set_library_dirs(cmd.library_dirs)
     # build static lib
     if library_dir:
-        library_filename = compiler.library_filename(extension_name,
-                                                     output_dir=library_dir)
-        if newer_group(common_sources, library_filename, 'newer'):
-            if sys.platform == 'win32':
-                pdb = compiler.static_lib_format % (extension_name, '.pdb')
+        library_filename = compiler.library_filename(
+            extension_name, output_dir=library_dir
+        )
+        if newer_group(common_sources, library_filename, "newer"):
+            if sys.platform == "win32":
+                pdb = compiler.static_lib_format % (extension_name, ".pdb")
                 compile_opts = [f"/Fd{library_dir}\\{pdb}"]
                 compile_opts.extend(extra_compile_args)
             else:
                 compile_opts = extra_compile_args
-            objects = compiler.compile(common_sources,
-                                       output_dir=library_dir,
-                                       debug=cmd.debug,
-                                       extra_postargs=compile_opts)
-            compiler.create_static_lib(objects, extension_name,
-                                       output_dir=library_dir,
-                                       debug=cmd.debug)
-        if sys.platform == 'win32':
+            objects = compiler.compile(
+                common_sources,
+                output_dir=library_dir,
+                debug=cmd.debug,
+                extra_postargs=compile_opts,
+            )
+            compiler.create_static_lib(
+                objects, extension_name, output_dir=library_dir, debug=cmd.debug
+            )
+        if sys.platform == "win32":
             compiler.add_library_dir(library_dir)
             extension.libraries = [extension_name]
-        elif sys.platform == 'darwin':
-            compiler.set_link_objects([
-                '-Wl,-force_load', library_filename,
-            ])
+        elif sys.platform == "darwin":
+            compiler.set_link_objects(
+                [
+                    "-Wl,-force_load",
+                    library_filename,
+                ]
+            )
         else:
-            compiler.set_link_objects([
-                '-Wl,--whole-archive', library_filename, '-Wl,--no-whole-archive',
-            ])
+            compiler.set_link_objects(
+                [
+                    "-Wl,--whole-archive",
+                    library_filename,
+                    "-Wl,--no-whole-archive",
+                ]
+            )
     else:
         extension.sources[0:0] = common_sources
 
     # Compile the source code to object files.
     ext_path = cmd.get_ext_fullpath(extension_name)
-    if newer_group(extension.sources, ext_path, 'newer'):
-        objects = compiler.compile(extension.sources,
-                                    output_dir=cmd.build_temp,
-                                    debug=cmd.debug,
-                                    extra_postargs=extra_compile_args)
+    if newer_group(extension.sources, ext_path, "newer"):
+        objects = compiler.compile(
+            extension.sources,
+            output_dir=cmd.build_temp,
+            debug=cmd.debug,
+            extra_postargs=extra_compile_args,
+        )
     else:
-        objects = compiler.object_filenames(extension.sources,
-                                            output_dir=cmd.build_temp)
+        objects = compiler.object_filenames(
+            extension.sources, output_dir=cmd.build_temp
+        )
     # Now link the object files together into a "shared object"
     compiler.link_shared_object(
-        objects, ext_path,
+        objects,
+        ext_path,
         libraries=cmd.get_libraries(extension),
         extra_postargs=extra_link_args,
         export_symbols=cmd.get_export_symbols(extension),
         debug=cmd.debug,
-        build_temp=cmd.build_temp)
+        build_temp=cmd.build_temp,
+    )
 
     return pathlib.Path(ext_path)
 
@@ -209,7 +223,9 @@ def build_parser(
     grammar_file: str, verbose_tokenizer: bool = False, verbose_parser: bool = False
 ) -> Tuple[Grammar, Parser, Tokenizer]:
     with open(grammar_file) as file:
-        tokenizer = Tokenizer(tokenize.generate_tokens(file.readline), verbose=verbose_tokenizer)
+        tokenizer = Tokenizer(
+            tokenize.generate_tokens(file.readline), verbose=verbose_tokenizer
+        )
         parser = GrammarParser(tokenizer, verbose=verbose_parser)
         grammar = parser.start()
 
@@ -262,7 +278,12 @@ def build_c_generator(
         all_tokens, exact_tok, non_exact_tok = generate_token_definitions(tok_file)
     with open(output_file, "w") as file:
         gen: ParserGenerator = CParserGenerator(
-            grammar, all_tokens, exact_tok, non_exact_tok, file, skip_actions=skip_actions
+            grammar,
+            all_tokens,
+            exact_tok,
+            non_exact_tok,
+            file,
+            skip_actions=skip_actions,
         )
         gen.generate(grammar_file)
 
@@ -284,7 +305,9 @@ def build_python_generator(
     skip_actions: bool = False,
 ) -> ParserGenerator:
     with open(output_file, "w") as file:
-        gen: ParserGenerator = PythonParserGenerator(grammar, file)  # TODO: skip_actions
+        gen: ParserGenerator = PythonParserGenerator(
+            grammar, file
+        )  # TODO: skip_actions
         gen.generate(grammar_file)
     return gen
 
@@ -318,7 +341,9 @@ def build_c_parser_and_generator(
           when compiling the extension module. Defaults to True.
         skip_actions (bool, optional): Whether to pretend no rule has any actions.
     """
-    grammar, parser, tokenizer = build_parser(grammar_file, verbose_tokenizer, verbose_parser)
+    grammar, parser, tokenizer = build_parser(
+        grammar_file, verbose_tokenizer, verbose_parser
+    )
     gen = build_c_generator(
         grammar,
         grammar_file,
@@ -351,7 +376,9 @@ def build_python_parser_and_generator(
           when generating the parser. Defaults to False.
         skip_actions (bool, optional): Whether to pretend no rule has any actions.
     """
-    grammar, parser, tokenizer = build_parser(grammar_file, verbose_tokenizer, verbose_parser)
+    grammar, parser, tokenizer = build_parser(
+        grammar_file, verbose_tokenizer, verbose_parser
+    )
     gen = build_python_generator(
         grammar,
         grammar_file,

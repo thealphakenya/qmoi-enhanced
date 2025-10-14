@@ -10,6 +10,7 @@ import requests
 
 app = Flask(__name__)
 
+
 # Example: parse /var/log/auth.log for failed logins (timestamp, IP)
 def parse_auth_log(log_path="/var/log/auth.log"):
     if not os.path.exists(log_path):
@@ -18,10 +19,14 @@ def parse_auth_log(log_path="/var/log/auth.log"):
         lines = f.readlines()
     failed = []
     for line in lines:
-        m = re.search(r"(\w{3} \d+ \d+:\d+:\d+) [^ ]+ sshd\[\d+\]: Failed password for .* from ([\d.]+)", line)
+        m = re.search(
+            r"(\w{3} \d+ \d+:\d+:\d+) [^ ]+ sshd\[\d+\]: Failed password for .* from ([\d.]+)",
+            line,
+        )
         if m:
             failed.append({"timestamp": m.group(1), "ip": m.group(2)})
     return failed
+
 
 @app.route("/detect-anomaly", methods=["POST"])
 def detect_anomaly():
@@ -49,17 +54,21 @@ def detect_anomaly():
     model.fit(X_scaled)
     scores = model.decision_function(X_scaled)
     anomaly = (scores < 0).any()
-    return jsonify({
-        "anomaly": bool(anomaly),
-        "score": float(scores.min()),
-        "ip_counts": ip_counts,
-        "msg": "Anomaly detected" if anomaly else "No anomaly"
-    })
+    return jsonify(
+        {
+            "anomaly": bool(anomaly),
+            "score": float(scores.min()),
+            "ip_counts": ip_counts,
+            "msg": "Anomaly detected" if anomaly else "No anomaly",
+        }
+    )
+
 
 @app.route("/parse-log", methods=["GET"])
 def parse_log():
     failed = parse_auth_log()
     return jsonify({"events": failed})
+
 
 @app.route("/analytics", methods=["GET"])
 def analytics():
@@ -71,11 +80,14 @@ def analytics():
         ip_counts[ip] = ip_counts.get(ip, 0) + 1
     top_ips = sorted(ip_counts.items(), key=lambda x: x[1], reverse=True)[:10]
     total_events = len(failed)
-    return jsonify({
-        "total_events": total_events,
-        "unique_ips": len(ip_counts),
-        "top_ips": top_ips,
-    })
+    return jsonify(
+        {
+            "total_events": total_events,
+            "unique_ips": len(ip_counts),
+            "top_ips": top_ips,
+        }
+    )
+
 
 @app.route("/export-analytics", methods=["GET"])
 def export_analytics():
@@ -83,7 +95,15 @@ def export_analytics():
     failed = parse_auth_log()
     lines = ["timestamp,ip"] + [f'{e["timestamp"]},{e["ip"]}' for e in failed]
     csv = "\n".join(lines)
-    return (csv, 200, {'Content-Type': 'text/csv', 'Content-Disposition': 'attachment; filename=analytics.csv'})
+    return (
+        csv,
+        200,
+        {
+            "Content-Type": "text/csv",
+            "Content-Disposition": "attachment; filename=analytics.csv",
+        },
+    )
+
 
 @app.route("/alert", methods=["POST"])
 def external_alert():
@@ -98,6 +118,7 @@ def external_alert():
             return jsonify({"status": "failed", "error": str(e)}), 500
     return jsonify({"status": "no webhook provided"}), 400
 
+
 auto_monitoring = {
     "enabled": False,
     "interval": 60,  # seconds
@@ -105,7 +126,10 @@ auto_monitoring = {
 }
 
 # --- Automated alerting on anomaly detection ---
-ALERT_WEBHOOK = os.environ.get("ALERT_WEBHOOK")  # Set this env var to enable auto-alerts
+ALERT_WEBHOOK = os.environ.get(
+    "ALERT_WEBHOOK"
+)  # Set this env var to enable auto-alerts
+
 
 def send_alert(message):
     if ALERT_WEBHOOK:
@@ -113,6 +137,7 @@ def send_alert(message):
             requests.post(ALERT_WEBHOOK, json={"text": message})
         except Exception as e:
             print(f"Failed to send alert: {e}")
+
 
 # Modify monitor_loop to send alert on anomaly
 def monitor_loop():
@@ -129,6 +154,7 @@ def monitor_loop():
                         send_alert(msg)
         time.sleep(auto_monitoring["interval"])
 
+
 @app.route("/monitor", methods=["POST"])
 def start_monitor():
     data = request.json or {}
@@ -143,22 +169,28 @@ def start_monitor():
     else:
         return jsonify({"status": "stopped"})
 
+
 @app.route("/monitor/status", methods=["GET"])
 def monitor_status():
-    return jsonify({
-        "enabled": auto_monitoring["enabled"],
-        "interval": auto_monitoring["interval"],
-        "last_result": auto_monitoring["last_result"]
-    })
+    return jsonify(
+        {
+            "enabled": auto_monitoring["enabled"],
+            "interval": auto_monitoring["interval"],
+            "last_result": auto_monitoring["last_result"],
+        }
+    )
+
 
 # --- More analytics: failed logins per hour ---
 @app.route("/analytics/hourly", methods=["GET"])
 def analytics_hourly():
     failed = parse_auth_log()
     from collections import Counter
+
     hours = [e["timestamp"][:6] for e in failed]  # e.g. 'Jun 08'
     hour_counts = Counter(hours)
     return jsonify(dict(hour_counts))
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001)

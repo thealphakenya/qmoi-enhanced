@@ -6,7 +6,7 @@ from tkinter import colorchooser
 from tkinter.colorchooser import askcolor
 from tkinter.commondialog import Dialog
 
-requires('gui')
+requires("gui")
 
 
 class ChooserTest(AbstractTkTest, unittest.TestCase):
@@ -14,29 +14,31 @@ class ChooserTest(AbstractTkTest, unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         AbstractTkTest.setUpClass.__func__(cls)
-        cls.cc = colorchooser.Chooser(initialcolor='dark blue slate')
+        cls.cc = colorchooser.Chooser(initialcolor="dark blue slate")
 
     def test_fixoptions(self):
         cc = self.cc
         cc._fixoptions()
-        self.assertEqual(cc.options['initialcolor'], 'dark blue slate')
+        self.assertEqual(cc.options["initialcolor"], "dark blue slate")
 
-        cc.options['initialcolor'] = '#D2D269691E1E'
+        cc.options["initialcolor"] = "#D2D269691E1E"
         cc._fixoptions()
-        self.assertEqual(cc.options['initialcolor'], '#D2D269691E1E')
+        self.assertEqual(cc.options["initialcolor"], "#D2D269691E1E")
 
-        cc.options['initialcolor'] = (210, 105, 30)
+        cc.options["initialcolor"] = (210, 105, 30)
         cc._fixoptions()
-        self.assertEqual(cc.options['initialcolor'], '#d2691e')
+        self.assertEqual(cc.options["initialcolor"], "#d2691e")
 
     def test_fixresult(self):
         cc = self.cc
         self.assertEqual(cc._fixresult(self.root, ()), (None, None))
-        self.assertEqual(cc._fixresult(self.root, ''), (None, None))
-        self.assertEqual(cc._fixresult(self.root, 'chocolate'),
-                         ((210, 105, 30), 'chocolate'))
-        self.assertEqual(cc._fixresult(self.root, '#4a3c8c'),
-                         ((74, 60, 140), '#4a3c8c'))
+        self.assertEqual(cc._fixresult(self.root, ""), (None, None))
+        self.assertEqual(
+            cc._fixresult(self.root, "chocolate"), ((210, 105, 30), "chocolate")
+        )
+        self.assertEqual(
+            cc._fixresult(self.root, "#4a3c8c"), ((74, 60, 140), "#4a3c8c")
+        )
 
 
 class DefaultRootTest(AbstractDefaultRootTest, unittest.TestCase):
@@ -48,10 +50,10 @@ class DefaultRootTest(AbstractDefaultRootTest, unittest.TestCase):
             ismapped = master.winfo_ismapped()
             raise ZeroDivisionError
 
-        with swap_attr(Dialog, '_test_callback', test_callback):
+        with swap_attr(Dialog, "_test_callback", test_callback):
             ismapped = None
             self.assertRaises(ZeroDivisionError, askcolor)
-            #askcolor()
+            # askcolor()
             self.assertEqual(ismapped, False)
 
             root = tkinter.Tk()

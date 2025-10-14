@@ -255,10 +255,11 @@ Test failures in looking up the __prepare__ method work.
 import sys
 
 # Trace function introduces __locals__ which causes various tests to fail.
-if hasattr(sys, 'gettrace') and sys.gettrace():
+if hasattr(sys, "gettrace") and sys.gettrace():
     __test__ = {}
 else:
-    __test__ = {'doctests' : doctests}
+    __test__ = {"doctests": doctests}
+
 
 def load_tests(loader, tests, pattern):
     tests.addTest(doctest.DocTestSuite())

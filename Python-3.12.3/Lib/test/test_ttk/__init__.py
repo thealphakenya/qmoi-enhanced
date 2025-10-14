@@ -8,10 +8,10 @@ if support.check_sanitizer(address=True, memory=True):
     raise unittest.SkipTest("Tests involving libX11 can SEGFAULT on ASAN/MSAN builds")
 
 # Skip this test if _tkinter wasn't built.
-import_helper.import_module('_tkinter')
+import_helper.import_module("_tkinter")
 
 # Skip test if tk cannot be initialized.
-support.requires('gui')
+support.requires("gui")
 
 
 import tkinter

@@ -12,7 +12,7 @@ class TextInfo:
         self.start = start
 
         # mutable:
-        lines = text.splitlines() or ['']
+        lines = text.splitlines() or [""]
         self.text = text.strip()
         if not end:
             end = start + len(lines) - 1
@@ -20,8 +20,7 @@ class TextInfo:
         self.line = lines[-1]
 
     def __repr__(self):
-        args = (f'{a}={getattr(self, a)!r}'
-                for a in ['text', 'start', 'end'])
+        args = (f"{a}={getattr(self, a)!r}" for a in ["text", "start", "end"])
         return f'{type(self).__name__}({", ".join(args)})'
 
     def add_line(self, line, lno=None):
@@ -34,10 +33,10 @@ class TextInfo:
                     raise NotImplementedError((fileinfo, self.filename))
                 lno = fileinfo.lno
             # XXX
-            #if lno < self.end:
+            # if lno < self.end:
             #    raise NotImplementedError((lno, self.end))
         line = line.lstrip()
-        self.text += ' ' + line
+        self.text += " " + line
         self.line = line
         self.end = lno
 
@@ -59,8 +58,7 @@ class SourceInfo:
         self._set_ready()
 
     def __repr__(self):
-        args = (f'{a}={getattr(self, a)!r}'
-                for a in ['filename', '_current'])
+        args = (f"{a}={getattr(self, a)!r}" for a in ["filename", "_current"])
         return f'{type(self).__name__}({", ".join(args)})'
 
     @property
@@ -78,12 +76,12 @@ class SourceInfo:
     @property
     def text(self):
         if self._current is None:
-            return ''
+            return ""
         return self._current.text
 
     def nest(self, text, before, start=None):
         if self._current is None:
-            raise Exception('nesting requires active source text')
+            raise Exception("nesting requires active source text")
         current = self._current
         current.text = before
         self._nested.append(current)
@@ -91,31 +89,31 @@ class SourceInfo:
 
     def resume(self, remainder=None):
         if not self._nested:
-            raise Exception('no nested text to resume')
+            raise Exception("no nested text to resume")
         if self._current is None:
-            raise Exception('un-nesting requires active source text')
+            raise Exception("un-nesting requires active source text")
         if remainder is None:
             remainder = self._current.text
         self._clear()
         self._current = self._nested.pop()
-        self._current.text += ' ' + remainder
+        self._current.text += " " + remainder
         self._set_ready()
 
     def advance(self, remainder, start=None):
         if self._current is None:
-            raise Exception('advancing requires active source text')
+            raise Exception("advancing requires active source text")
         if remainder.strip():
             self._replace(remainder, start, fixnested=True)
         else:
             if self._nested:
-                self._replace('', start, fixnested=True)
-                #raise Exception('cannot advance while nesting')
+                self._replace("", start, fixnested=True)
+                # raise Exception('cannot advance while nesting')
             else:
                 self._clear(start)
 
     def resolve(self, kind, data, name, parent=None):
         # "field" isn't a top-level kind, so we leave it as-is.
-        if kind and kind != 'field':
+        if kind and kind != "field":
             kind = KIND._from_raw(kind)
         fileinfo = FileInfo(self.filename, self._start)
         return ParsedItem(fileinfo, kind, parent, name, data)
@@ -131,7 +129,7 @@ class SourceInfo:
         else:
             return False
 
-        #if re.fullmatch(r'[^;]+\[\][ ]*=[ ]*[{]([ ]*\d+,)*([ ]*\d+,?)\s*',
+        # if re.fullmatch(r'[^;]+\[\][ ]*=[ ]*[{]([ ]*\d+,)*([ ]*\d+,?)\s*',
         #                self._current.text):
         #    return False
         return True
@@ -140,7 +138,7 @@ class SourceInfo:
         if self._current is None:
             self._ready = False
         else:
-            self._ready = self._current.text.strip() != ''
+            self._ready = self._current.text.strip() != ""
 
     def _used(self):
         ready = self._ready
@@ -176,7 +174,7 @@ class SourceInfo:
             self._current = TextInfo(line, lno)
         else:
             # XXX
-            #if lno < self._current.end:
+            # if lno < self._current.end:
             #    # A circular include?
             #    raise NotImplementedError((lno, self))
             self._current.add_line(line, lno)

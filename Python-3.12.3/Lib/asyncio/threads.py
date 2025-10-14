@@ -6,7 +6,7 @@ import contextvars
 from . import events
 
 
-__all__ = "to_thread",
+__all__ = ("to_thread",)
 
 
 async def to_thread(func, /, *args, **kwargs):

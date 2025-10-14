@@ -412,7 +412,9 @@ def get_appxmanifest(ns):
             node.text = value
 
     try:
-        winver = tuple(int(i) for i in os.getenv("APPX_DATA_WINVER", "").split(".", maxsplit=3))
+        winver = tuple(
+            int(i) for i in os.getenv("APPX_DATA_WINVER", "").split(".", maxsplit=3)
+        )
     except (TypeError, ValueError):
         winver = ()
 
@@ -448,7 +450,13 @@ def get_appxmanifest(ns):
         ["pythonw", "pythonw{}".format(VER_MAJOR), "pythonw{}".format(VER_DOT)],
         PYTHONW_VE_DATA,
         "windows",
-        ("python.windowedfile", [".pyw"], '"%1" %*', "Python File (no console)", PY_PNG),
+        (
+            "python.windowedfile",
+            [".pyw"],
+            '"%1" %*',
+            "Python File (no console)",
+            PY_PNG,
+        ),
     )
 
     if ns.include_pip and ns.include_launchers:

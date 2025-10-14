@@ -20,21 +20,25 @@ class TestPackages(unittest.TestCase):
         # Test version()
         with tempfile.TemporaryDirectory() as tmpdir:
             self.touch(tmpdir, "pip-1.2.3b1-py2.py3-none-any.whl")
-            with (unittest.mock.patch.object(ensurepip, '_PACKAGES', None),
-                  unittest.mock.patch.object(ensurepip, '_WHEEL_PKG_DIR', tmpdir)):
-                self.assertEqual(ensurepip.version(), '1.2.3b1')
+            with (
+                unittest.mock.patch.object(ensurepip, "_PACKAGES", None),
+                unittest.mock.patch.object(ensurepip, "_WHEEL_PKG_DIR", tmpdir),
+            ):
+                self.assertEqual(ensurepip.version(), "1.2.3b1")
 
     def test_get_packages_no_dir(self):
         # Test _get_packages() without a wheel package directory
-        with (unittest.mock.patch.object(ensurepip, '_PACKAGES', None),
-              unittest.mock.patch.object(ensurepip, '_WHEEL_PKG_DIR', None)):
+        with (
+            unittest.mock.patch.object(ensurepip, "_PACKAGES", None),
+            unittest.mock.patch.object(ensurepip, "_WHEEL_PKG_DIR", None),
+        ):
             packages = ensurepip._get_packages()
 
             # when bundled wheel packages are used, we get _PIP_VERSION
             self.assertEqual(ensurepip._PIP_VERSION, ensurepip.version())
 
         # use bundled wheel packages
-        self.assertIsNotNone(packages['pip'].wheel_name)
+        self.assertIsNotNone(packages["pip"].wheel_name)
 
     def test_get_packages_with_dir(self):
         # Test _get_packages() with a wheel package directory
@@ -45,16 +49,19 @@ class TestPackages(unittest.TestCase):
             # not used, make sure that it's ignored
             self.touch(tmpdir, "wheel-0.34.2-py2.py3-none-any.whl")
 
-            with (unittest.mock.patch.object(ensurepip, '_PACKAGES', None),
-                  unittest.mock.patch.object(ensurepip, '_WHEEL_PKG_DIR', tmpdir)):
+            with (
+                unittest.mock.patch.object(ensurepip, "_PACKAGES", None),
+                unittest.mock.patch.object(ensurepip, "_WHEEL_PKG_DIR", tmpdir),
+            ):
                 packages = ensurepip._get_packages()
 
-            self.assertEqual(packages['pip'].version, '20.2.2')
-            self.assertEqual(packages['pip'].wheel_path,
-                             os.path.join(tmpdir, pip_filename))
+            self.assertEqual(packages["pip"].version, "20.2.2")
+            self.assertEqual(
+                packages["pip"].wheel_path, os.path.join(tmpdir, pip_filename)
+            )
 
             # wheel package is ignored
-            self.assertEqual(sorted(packages), ['pip'])
+            self.assertEqual(sorted(packages), ["pip"])
 
 
 class EnsurepipMixin:
@@ -84,8 +91,12 @@ class TestBootstrap(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "install", "--no-cache-dir", "--no-index", "--find-links",
-                unittest.mock.ANY, "pip",
+                "install",
+                "--no-cache-dir",
+                "--no-index",
+                "--find-links",
+                unittest.mock.ANY,
+                "pip",
             ],
             unittest.mock.ANY,
         )
@@ -98,8 +109,13 @@ class TestBootstrap(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "install", "--no-cache-dir", "--no-index", "--find-links",
-                unittest.mock.ANY, "--root", "/foo/bar/",
+                "install",
+                "--no-cache-dir",
+                "--no-index",
+                "--find-links",
+                unittest.mock.ANY,
+                "--root",
+                "/foo/bar/",
                 "pip",
             ],
             unittest.mock.ANY,
@@ -110,8 +126,13 @@ class TestBootstrap(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "install", "--no-cache-dir", "--no-index", "--find-links",
-                unittest.mock.ANY, "--user", "pip",
+                "install",
+                "--no-cache-dir",
+                "--no-index",
+                "--find-links",
+                unittest.mock.ANY,
+                "--user",
+                "pip",
             ],
             unittest.mock.ANY,
         )
@@ -121,8 +142,13 @@ class TestBootstrap(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "install", "--no-cache-dir", "--no-index", "--find-links",
-                unittest.mock.ANY, "--upgrade", "pip",
+                "install",
+                "--no-cache-dir",
+                "--no-index",
+                "--find-links",
+                unittest.mock.ANY,
+                "--upgrade",
+                "pip",
             ],
             unittest.mock.ANY,
         )
@@ -132,8 +158,13 @@ class TestBootstrap(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "install", "--no-cache-dir", "--no-index", "--find-links",
-                unittest.mock.ANY, "-v", "pip",
+                "install",
+                "--no-cache-dir",
+                "--no-index",
+                "--find-links",
+                unittest.mock.ANY,
+                "-v",
+                "pip",
             ],
             unittest.mock.ANY,
         )
@@ -143,8 +174,13 @@ class TestBootstrap(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "install", "--no-cache-dir", "--no-index", "--find-links",
-                unittest.mock.ANY, "-vv", "pip",
+                "install",
+                "--no-cache-dir",
+                "--no-index",
+                "--find-links",
+                unittest.mock.ANY,
+                "-vv",
+                "pip",
             ],
             unittest.mock.ANY,
         )
@@ -154,8 +190,13 @@ class TestBootstrap(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "install", "--no-cache-dir", "--no-index", "--find-links",
-                unittest.mock.ANY, "-vvv", "pip",
+                "install",
+                "--no-cache-dir",
+                "--no-index",
+                "--find-links",
+                unittest.mock.ANY,
+                "-vvv",
+                "pip",
             ],
             unittest.mock.ANY,
         )
@@ -190,13 +231,16 @@ class TestBootstrap(EnsurepipMixin, unittest.TestCase):
         ensurepip.bootstrap()
         self.assertEqual(self.os_environ["PIP_CONFIG_FILE"], os.devnull)
 
+
 @contextlib.contextmanager
 def fake_pip(version=ensurepip.version()):
     if version is None:
         pip = None
     else:
-        class FakePip():
+
+        class FakePip:
             __version__ = version
+
         pip = FakePip()
     sentinel = object()
     orig_pip = sys.modules.get("pip", sentinel)
@@ -208,6 +252,7 @@ def fake_pip(version=ensurepip.version()):
             del sys.modules["pip"]
         else:
             sys.modules["pip"] = orig_pip
+
 
 class TestUninstall(EnsurepipMixin, unittest.TestCase):
 
@@ -224,14 +269,16 @@ class TestUninstall(EnsurepipMixin, unittest.TestCase):
         self.assertIn("only uninstall a matching version", warning)
         self.assertFalse(self.run_pip.called)
 
-
     def test_uninstall(self):
         with fake_pip():
             ensurepip._uninstall_helper()
 
         self.run_pip.assert_called_once_with(
             [
-                "uninstall", "-y", "--disable-pip-version-check", "pip",
+                "uninstall",
+                "-y",
+                "--disable-pip-version-check",
+                "pip",
             ]
         )
 
@@ -241,7 +288,11 @@ class TestUninstall(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "uninstall", "-y", "--disable-pip-version-check", "-v", "pip",
+                "uninstall",
+                "-y",
+                "--disable-pip-version-check",
+                "-v",
+                "pip",
             ]
         )
 
@@ -251,7 +302,11 @@ class TestUninstall(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "uninstall", "-y", "--disable-pip-version-check", "-vv", "pip",
+                "uninstall",
+                "-y",
+                "--disable-pip-version-check",
+                "-vv",
+                "pip",
             ]
         )
 
@@ -260,10 +315,7 @@ class TestUninstall(EnsurepipMixin, unittest.TestCase):
             ensurepip._uninstall_helper(verbosity=3)
 
         self.run_pip.assert_called_once_with(
-            [
-                "uninstall", "-y", "--disable-pip-version-check", "-vvv",
-                "pip"
-            ]
+            ["uninstall", "-y", "--disable-pip-version-check", "-vvv", "pip"]
         )
 
     def test_pip_environment_variables_removed(self):
@@ -286,6 +338,7 @@ class TestUninstall(EnsurepipMixin, unittest.TestCase):
 
 EXPECTED_VERSION_OUTPUT = "pip " + ensurepip.version()
 
+
 class TestBootstrappingMainFunction(EnsurepipMixin, unittest.TestCase):
 
     def test_bootstrap_version(self):
@@ -301,8 +354,12 @@ class TestBootstrappingMainFunction(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "install", "--no-cache-dir", "--no-index", "--find-links",
-                unittest.mock.ANY, "pip",
+                "install",
+                "--no-cache-dir",
+                "--no-index",
+                "--find-links",
+                unittest.mock.ANY,
+                "pip",
             ],
             unittest.mock.ANY,
         )
@@ -333,7 +390,10 @@ class TestUninstallationMainFunction(EnsurepipMixin, unittest.TestCase):
 
         self.run_pip.assert_called_once_with(
             [
-                "uninstall", "-y", "--disable-pip-version-check", "pip",
+                "uninstall",
+                "-y",
+                "--disable-pip-version-check",
+                "pip",
             ]
         )
 

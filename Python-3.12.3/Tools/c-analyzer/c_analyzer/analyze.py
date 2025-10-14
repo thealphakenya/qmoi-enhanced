@@ -28,8 +28,9 @@ def get_typespecs(typedecls):
     return typespecs
 
 
-def analyze_decl(decl, typespecs, knowntypespecs, types, knowntypes, *,
-                 analyze_resolved=None):
+def analyze_decl(
+    decl, typespecs, knowntypespecs, types, knowntypes, *, analyze_resolved=None
+):
     resolved = resolve_decl(decl, typespecs, knowntypespecs, types)
     if resolved is None:
         # The decl is supposed to be skipped or ignored.
@@ -37,6 +38,7 @@ def analyze_decl(decl, typespecs, knowntypespecs, types, knowntypes, *,
     if analyze_resolved is None:
         return resolved, None
     return analyze_resolved(resolved, decl, types, knowntypes)
+
 
 # This alias helps us avoid name collisions.
 _analyze_decl = analyze_decl
@@ -154,8 +156,8 @@ def find_typedecl(decl, typespec, typespecs):
     filename = decl.filename
 
     if len(specdecls) == 1:
-        typedecl, = specdecls
-        if '-' in typespec and typedecl.filename != filename:
+        (typedecl,) = specdecls
+        if "-" in typespec and typedecl.filename != filename:
             # Inlined types are always in the same file.
             return None
         return typedecl
@@ -170,7 +172,7 @@ def find_typedecl(decl, typespec, typespecs):
                 # We expect type names to be unique in a file.
                 raise NotImplementedError((decl, samefile, typedecl))
             samefile = typedecl
-        elif filename.endswith('.c') and not type_filename.endswith('.h'):
+        elif filename.endswith(".c") and not type_filename.endswith(".h"):
             # If the decl is in a source file then we expect the
             # type to be in the same file or in a header file.
             continue
@@ -178,9 +180,9 @@ def find_typedecl(decl, typespec, typespecs):
     if not candidates:
         return None
     elif len(candidates) == 1:
-        winner, = candidates
+        (winner,) = candidates
         # XXX Check for inline?
-    elif '-' in typespec:
+    elif "-" in typespec:
         # Inlined types are always in the same file.
         winner = samefile
     elif samefile is not None:
@@ -196,16 +198,19 @@ def find_typedecl(decl, typespec, typespecs):
 #############################
 # handling unresolved decls
 
+
 class Skipped(TypeDeclaration):
     def __init__(self):
         _file = _name = _data = _parent = None
-        super().__init__(_file, _name, _data, _parent, _shortkey='<skipped>')
+        super().__init__(_file, _name, _data, _parent, _shortkey="<skipped>")
+
+
 _SKIPPED = Skipped()
 del Skipped
 
 
 def _handle_unresolved(unresolved, types, analyze_decl):
-    #raise NotImplementedError(unresolved)
+    # raise NotImplementedError(unresolved)
 
     dump = True
     dump = False
@@ -227,7 +232,7 @@ def _handle_unresolved(unresolved, types, analyze_decl):
             if dump:
                 _dump_unresolved(decl, types, analyze_decl)
                 print()
-    #raise NotImplementedError
+    # raise NotImplementedError
 
     for decl in unresolved:
         types[decl] = ([_SKIPPED], None)
@@ -239,71 +244,74 @@ def _handle_unresolved(unresolved, types, analyze_decl):
 def _dump_unresolved(decl, types, analyze_decl):
     if isinstance(decl, str):
         typespec = decl
-        decl, = (d for d in types if d.shortkey == typespec)
+        (decl,) = (d for d in types if d.shortkey == typespec)
     elif type(decl) is tuple:
         filename, typespec = decl
-        if '-' in typespec:
-            found = [d for d in types
-                     if d.shortkey == typespec and d.filename == filename]
-            #if not found:
+        if "-" in typespec:
+            found = [
+                d for d in types if d.shortkey == typespec and d.filename == filename
+            ]
+            # if not found:
             #    raise NotImplementedError(decl)
-            decl, = found
+            (decl,) = found
         else:
             found = [d for d in types if d.shortkey == typespec]
             if not found:
-                print(f'*** {typespec} ???')
+                print(f"*** {typespec} ???")
                 return
-                #raise NotImplementedError(decl)
+                # raise NotImplementedError(decl)
             else:
-                decl, = found
+                (decl,) = found
     resolved = analyze_decl(decl)
     if resolved:
         typedeps, _ = resolved or (None, None)
 
     if decl.kind is KIND.STRUCT or decl.kind is KIND.UNION:
-        print(f'*** {decl.shortkey} {decl.filename}')
+        print(f"*** {decl.shortkey} {decl.filename}")
         for member, mtype in zip(decl.members, typedeps):
             typespec = member.vartype.typespec
             if typespec == decl.shortkey:
-                print(f'     ~~~~: {typespec:20} - {member!r}')
+                print(f"     ~~~~: {typespec:20} - {member!r}")
                 continue
             status = None
             if is_pots(typespec):
                 mtype = typespec
-                status = 'okay'
+                status = "okay"
             elif is_system_type(typespec):
                 mtype = typespec
-                status = 'okay'
+                status = "okay"
             elif mtype is None:
-                if '-' in member.vartype.typespec:
-                    mtype, = [d for d in types
-                              if d.shortkey == member.vartype.typespec
-                              and d.filename == decl.filename]
+                if "-" in member.vartype.typespec:
+                    (mtype,) = [
+                        d
+                        for d in types
+                        if d.shortkey == member.vartype.typespec
+                        and d.filename == decl.filename
+                    ]
                 else:
-                    found = [d for d in types
-                             if d.shortkey == typespec]
+                    found = [d for d in types if d.shortkey == typespec]
                     if not found:
-                        print(f' ???: {typespec:20}')
+                        print(f" ???: {typespec:20}")
                         continue
-                    mtype, = found
+                    (mtype,) = found
             if status is None:
-                status = 'okay' if types.get(mtype) else 'oops'
+                status = "okay" if types.get(mtype) else "oops"
             if mtype is _SKIPPED:
-                status = 'okay'
-                mtype = '<skipped>'
+                status = "okay"
+                mtype = "<skipped>"
             elif isinstance(mtype, FuncPtr):
-                status = 'okay'
+                status = "okay"
                 mtype = str(mtype.vartype)
             elif not isinstance(mtype, str):
-                if hasattr(mtype, 'vartype'):
+                if hasattr(mtype, "vartype"):
                     if is_funcptr(mtype.vartype):
-                        status = 'okay'
-                mtype = str(mtype).rpartition('(')[0].rstrip()
-            status = '    okay' if status == 'okay' else f'--> {status}'
-            print(f' {status}: {typespec:20} - {member!r} ({mtype})')
+                        status = "okay"
+                mtype = str(mtype).rpartition("(")[0].rstrip()
+            status = "    okay" if status == "okay" else f"--> {status}"
+            print(f" {status}: {typespec:20} - {member!r} ({mtype})")
     else:
-        print(f'*** {decl} ({decl.vartype!r})')
-        if decl.vartype.typespec.startswith('struct ') or is_funcptr(decl):
+        print(f"*** {decl} ({decl.vartype!r})")
+        if decl.vartype.typespec.startswith("struct ") or is_funcptr(decl):
             _dump_unresolved(
                 (decl.filename, decl.vartype.typespec),
                 types,

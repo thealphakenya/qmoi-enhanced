@@ -27,10 +27,10 @@ class LazyLoaderFactoryTests(unittest.TestCase):
         factory = util.LazyLoader.factory(CollectInit)
         # E.g. what importlib.machinery.FileFinder instantiates loaders with
         # plus keyword arguments.
-        lazy_loader = factory('module name', 'module path', kw='kw')
+        lazy_loader = factory("module name", "module path", kw="kw")
         loader = lazy_loader.loader
-        self.assertEqual(('module name', 'module path'), loader.args)
-        self.assertEqual({'kw': 'kw'}, loader.kwargs)
+        self.assertEqual(("module name", "module path"), loader.args)
+        self.assertEqual({"kw": "kw"}, loader.kwargs)
 
     def test_validation(self):
         # No exec_module(), no lazy loading.
@@ -40,11 +40,11 @@ class LazyLoaderFactoryTests(unittest.TestCase):
 
 class TestingImporter(abc.MetaPathFinder, abc.Loader):
 
-    module_name = 'lazy_loader_test'
-    mutated_name = 'changed'
+    module_name = "lazy_loader_test"
+    mutated_name = "changed"
     loaded = None
     load_count = 0
-    source_code = 'attr = 42; __name__ = {!r}'.format(mutated_name)
+    source_code = "attr = 42; __name__ = {!r}".format(mutated_name)
 
     def find_spec(self, name, path, target=None):
         if name != self.module_name:
@@ -70,8 +70,9 @@ class LazyLoaderTests(unittest.TestCase):
             loader = TestingImporter()
         if source_code is not None:
             loader.source_code = source_code
-        spec = util.spec_from_loader(TestingImporter.module_name,
-                                     util.LazyLoader(loader))
+        spec = util.spec_from_loader(
+            TestingImporter.module_name, util.LazyLoader(loader)
+        )
         module = spec.loader.create_module(spec)
         if module is None:
             module = types.ModuleType(TestingImporter.module_name)
@@ -111,8 +112,8 @@ class LazyLoaderTests(unittest.TestCase):
         # Changing an attribute that already existed on the module --
         # e.g. __name__ -- should persist.
         module = self.new_module()
-        module.__name__ = 'bogus'
-        self.assertEqual('bogus', module.__name__)
+        module.__name__ = "bogus"
+        self.assertEqual("bogus", module.__name__)
 
     def test_mutated_attr(self):
         # Changing an attribute that comes into existence after an import
@@ -125,12 +126,12 @@ class LazyLoaderTests(unittest.TestCase):
         # Deleting an attribute should stay deleted.
         module = self.new_module()
         del module.attr
-        self.assertFalse(hasattr(module, 'attr'))
+        self.assertFalse(hasattr(module, "attr"))
 
     def test_delete_preexisting_attr(self):
         module = self.new_module()
         del module.__name__
-        self.assertFalse(hasattr(module, '__name__'))
+        self.assertFalse(hasattr(module, "__name__"))
 
     def test_module_substitution_error(self):
         with test_util.uncache(TestingImporter.module_name):
@@ -156,6 +157,7 @@ class LazyLoaderTests(unittest.TestCase):
 
             class RaisingThread(threading.Thread):
                 exc = None
+
                 def run(self):
                     try:
                         super().run()
@@ -182,20 +184,20 @@ class LazyLoaderTests(unittest.TestCase):
         # Directory modules with submodules that reference the parent can attempt to access
         # the parent module during a load. Verify that this common pattern works with lazy loading.
         # json is a good example in the stdlib.
-        json_modules = [name for name in sys.modules if name.startswith('json')]
+        json_modules = [name for name in sys.modules if name.startswith("json")]
         with test_util.uncache(*json_modules):
             # Standard lazy loading, unwrapped
-            spec = util.find_spec('json')
+            spec = util.find_spec("json")
             loader = util.LazyLoader(spec.loader)
             spec.loader = loader
             module = util.module_from_spec(spec)
-            sys.modules['json'] = module
+            sys.modules["json"] = module
             loader.exec_module(module)
 
             # Trigger load with attribute lookup, ensure expected behavior
-            test_load = module.loads('{}')
+            test_load = module.loads("{}")
             self.assertEqual(test_load, {})
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

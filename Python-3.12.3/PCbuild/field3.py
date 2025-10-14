@@ -15,12 +15,13 @@
 import sys
 
 major, minor, micro, level, serial = sys.version_info
-levelnum = {'alpha': 0xA,
-            'beta': 0xB,
-            'candidate': 0xC,
-            'final': 0xF,
-           }[level]
-string = sys.version.split()[0] # like '2.3a0'
+levelnum = {
+    "alpha": 0xA,
+    "beta": 0xB,
+    "candidate": 0xC,
+    "final": 0xF,
+}[level]
+string = sys.version.split()[0]  # like '2.3a0'
 
 print(" * For %s," % string)
 print(" * PY_MICRO_VERSION = %d" % micro)

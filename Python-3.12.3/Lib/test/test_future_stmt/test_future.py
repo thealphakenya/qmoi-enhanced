@@ -10,39 +10,43 @@ import os
 import re
 import sys
 
-rx = re.compile(r'\((\S+).py, line (\d+)')
+rx = re.compile(r"\((\S+).py, line (\d+)")
+
 
 def get_error_location(msg):
     mo = rx.search(str(msg))
     return mo.group(1, 2)
 
+
 class FutureTest(unittest.TestCase):
 
     def check_syntax_error(self, err, basename, lineno, offset=1):
-        self.assertIn('%s.py, line %d' % (basename, lineno), str(err))
-        self.assertEqual(os.path.basename(err.filename), basename + '.py')
+        self.assertIn("%s.py, line %d" % (basename, lineno), str(err))
+        self.assertEqual(os.path.basename(err.filename), basename + ".py")
         self.assertEqual(err.lineno, lineno)
         self.assertEqual(err.offset, offset)
 
     def test_future1(self):
-        with import_helper.CleanImport('test.test_future_stmt.future_test1'):
+        with import_helper.CleanImport("test.test_future_stmt.future_test1"):
             from test.test_future_stmt import future_test1
+
             self.assertEqual(future_test1.result, 6)
 
     def test_future2(self):
-        with import_helper.CleanImport('test.test_future_stmt.future_test2'):
+        with import_helper.CleanImport("test.test_future_stmt.future_test2"):
             from test.test_future_stmt import future_test2
+
             self.assertEqual(future_test2.result, 6)
 
     def test_future_single_import(self):
         with import_helper.CleanImport(
-            'test.test_future_stmt.test_future_single_import',
+            "test.test_future_stmt.test_future_single_import",
         ):
             from test.test_future_stmt import test_future_single_import
 
     def test_future_multiple_imports(self):
         with import_helper.CleanImport(
-            'test.test_future_stmt.test_future_multiple_imports',
+            "test.test_future_stmt.test_future_multiple_imports",
         ):
             from test.test_future_stmt import test_future_multiple_imports
 
@@ -102,8 +106,7 @@ class FutureTest(unittest.TestCase):
         }
         # obtain some of the exported compiler flags (PyCF_***) from the ast module
         flags |= {
-            flag: getattr(ast, flag)
-            for flag in dir(ast) if flag.startswith("PyCF_")
+            flag: getattr(ast, flag) for flag in dir(ast) if flag.startswith("PyCF_")
         }
         self.assertCountEqual(set(flags.values()), flags.values())
 
@@ -133,11 +136,12 @@ class FutureTest(unittest.TestCase):
         self.assertIsInstance(scope["x"], str)
 
     def test_syntactical_future_repl(self):
-        p = spawn_python('-i')
+        p = spawn_python("-i")
         p.stdin.write(b"from __future__ import barry_as_FLUFL\n")
         p.stdin.write(b"2 <> 3\n")
         out = kill_python(p)
-        self.assertNotIn(b'SyntaxError: invalid syntax', out)
+        self.assertNotIn(b"SyntaxError: invalid syntax", out)
+
 
 class AnnotationsFutureTestCase(unittest.TestCase):
     template = dedent(
@@ -163,12 +167,12 @@ class AnnotationsFutureTestCase(unittest.TestCase):
     def getActual(self, annotation):
         scope = {}
         exec(self.template.format(ann=annotation), {}, scope)
-        func_ret_ann = scope['f'].__annotations__['return']
-        func_arg_ann = scope['g'].__annotations__['arg']
-        async_func_ret_ann = scope['f2'].__annotations__['return']
-        async_func_arg_ann = scope['g2'].__annotations__['arg']
-        var_ann1 = scope['__annotations__']['var']
-        var_ann2 = scope['__annotations__']['var2']
+        func_ret_ann = scope["f"].__annotations__["return"]
+        func_arg_ann = scope["g"].__annotations__["arg"]
+        async_func_ret_ann = scope["f2"].__annotations__["return"]
+        async_func_arg_ann = scope["g2"].__annotations__["arg"]
+        var_ann1 = scope["__annotations__"]["var"]
+        var_ann2 = scope["__annotations__"]["var2"]
         self.assertEqual(func_ret_ann, func_arg_ann)
         self.assertEqual(func_ret_ann, async_func_ret_ann)
         self.assertEqual(func_ret_ann, async_func_arg_ann)
@@ -177,7 +181,11 @@ class AnnotationsFutureTestCase(unittest.TestCase):
         return func_ret_ann
 
     def assertAnnotationEqual(
-        self, annotation, expected=None, drop_parens=False, is_tuple=False,
+        self,
+        annotation,
+        expected=None,
+        drop_parens=False,
+        is_tuple=False,
     ):
         actual = self.getActual(annotation)
         if expected is None:
@@ -190,72 +198,69 @@ class AnnotationsFutureTestCase(unittest.TestCase):
 
     def _exec_future(self, code):
         scope = {}
-        exec(
-            "from __future__ import annotations\n"
-            + code, scope
-        )
+        exec("from __future__ import annotations\n" + code, scope)
         return scope
 
     def test_annotations(self):
         eq = self.assertAnnotationEqual
-        eq('...')
+        eq("...")
         eq("'some_string'")
         eq("u'some_string'")
         eq("b'\\xa3'")
-        eq('Name')
-        eq('None')
-        eq('True')
-        eq('False')
-        eq('1')
-        eq('1.0')
-        eq('1j')
-        eq('True or False')
-        eq('True or False or None')
-        eq('True and False')
-        eq('True and False and None')
-        eq('Name1 and Name2 or Name3')
-        eq('Name1 and (Name2 or Name3)')
-        eq('Name1 or Name2 and Name3')
-        eq('(Name1 or Name2) and Name3')
-        eq('Name1 and Name2 or Name3 and Name4')
-        eq('Name1 or Name2 and Name3 or Name4')
-        eq('a + b + (c + d)')
-        eq('a * b * (c * d)')
-        eq('(a ** b) ** c ** d')
-        eq('v1 << 2')
-        eq('1 >> v2')
-        eq('1 % finished')
-        eq('1 + v2 - v3 * 4 ^ 5 ** v6 / 7 // 8')
-        eq('not great')
-        eq('not not great')
-        eq('~great')
-        eq('+value')
-        eq('++value')
-        eq('-1')
-        eq('~int and not v1 ^ 123 + v2 | True')
-        eq('a + (not b)')
-        eq('lambda: None')
-        eq('lambda arg: None')
-        eq('lambda a=True: a')
-        eq('lambda a, b, c=True: a')
+        eq("Name")
+        eq("None")
+        eq("True")
+        eq("False")
+        eq("1")
+        eq("1.0")
+        eq("1j")
+        eq("True or False")
+        eq("True or False or None")
+        eq("True and False")
+        eq("True and False and None")
+        eq("Name1 and Name2 or Name3")
+        eq("Name1 and (Name2 or Name3)")
+        eq("Name1 or Name2 and Name3")
+        eq("(Name1 or Name2) and Name3")
+        eq("Name1 and Name2 or Name3 and Name4")
+        eq("Name1 or Name2 and Name3 or Name4")
+        eq("a + b + (c + d)")
+        eq("a * b * (c * d)")
+        eq("(a ** b) ** c ** d")
+        eq("v1 << 2")
+        eq("1 >> v2")
+        eq("1 % finished")
+        eq("1 + v2 - v3 * 4 ^ 5 ** v6 / 7 // 8")
+        eq("not great")
+        eq("not not great")
+        eq("~great")
+        eq("+value")
+        eq("++value")
+        eq("-1")
+        eq("~int and not v1 ^ 123 + v2 | True")
+        eq("a + (not b)")
+        eq("lambda: None")
+        eq("lambda arg: None")
+        eq("lambda a=True: a")
+        eq("lambda a, b, c=True: a")
         eq("lambda a, b, c=True, *, d=1 << v2, e='str': a")
         eq("lambda a, b, c=True, *vararg, d, e='str', **kwargs: a + b")
         eq("lambda a, /, b, c=True, *vararg, d, e='str', **kwargs: a + b")
-        eq('lambda x, /: x')
-        eq('lambda x=1, /: x')
-        eq('lambda x, /, y: x + y')
-        eq('lambda x=1, /, y=2: x + y')
-        eq('lambda x, /, y=1: x + y')
-        eq('lambda x, /, y=1, *, z=3: x + y + z')
-        eq('lambda x=1, /, y=2, *, z=3: x + y + z')
-        eq('lambda x=1, /, y=2, *, z: x + y + z')
-        eq('lambda x=1, y=2, z=3, /, w=4, *, l, l2: x + y + z + w + l + l2')
-        eq('lambda x=1, y=2, z=3, /, w=4, *, l, l2, **kwargs: x + y + z + w + l + l2')
-        eq('lambda x, /, y=1, *, z: x + y + z')
-        eq('lambda x: lambda y: x + y')
-        eq('1 if True else 2')
-        eq('str or None if int or True else str or bytes or None')
-        eq('str or None if (1 if True else 2) else str or bytes or None')
+        eq("lambda x, /: x")
+        eq("lambda x=1, /: x")
+        eq("lambda x, /, y: x + y")
+        eq("lambda x=1, /, y=2: x + y")
+        eq("lambda x, /, y=1: x + y")
+        eq("lambda x, /, y=1, *, z=3: x + y + z")
+        eq("lambda x=1, /, y=2, *, z=3: x + y + z")
+        eq("lambda x=1, /, y=2, *, z: x + y + z")
+        eq("lambda x=1, y=2, z=3, /, w=4, *, l, l2: x + y + z + w + l + l2")
+        eq("lambda x=1, y=2, z=3, /, w=4, *, l, l2, **kwargs: x + y + z + w + l + l2")
+        eq("lambda x, /, y=1, *, z: x + y + z")
+        eq("lambda x: lambda y: x + y")
+        eq("1 if True else 2")
+        eq("str or None if int or True else str or bytes or None")
+        eq("str or None if (1 if True else 2) else str or bytes or None")
         eq("0 if not x else 1 if x > 0 else -1")
         eq("(1 if x > 0 else -1) if x else 0")
         eq("{'2.7': dead, '3.7': long_live or die_hard}")
@@ -340,7 +345,7 @@ class AnnotationsFutureTestCase(unittest.TestCase):
         eq("slice[1:2, *Ts, 3:4]")
         eq("slice[a, b:c, d:e:f]")
         eq("slice[(x for x in a)]")
-        eq('str or None if sys.version_info[0] > (3,) else str or bytes or None')
+        eq("str or None if sys.version_info[0] > (3,) else str or bytes or None")
         eq("f'f-string without formatted values is just a string'")
         eq("f'{{NOT a formatted value}}'")
         eq("f'some f-string with {a} {few():.2f} {formatted.values!r}'")
@@ -351,13 +356,13 @@ class AnnotationsFutureTestCase(unittest.TestCase):
         eq("f'{x}'")
         eq("f'{x!r}'")
         eq("f'{x!a}'")
-        eq('[x for x in (a if b else c)]')
-        eq('[x for x in a if (b if c else d)]')
-        eq('f(x for x in a)')
-        eq('f(1, (x for x in a))')
-        eq('f((x for x in a), 2)')
-        eq('(((a)))', 'a')
-        eq('(((a, b)))', '(a, b)')
+        eq("[x for x in (a if b else c)]")
+        eq("[x for x in a if (b if c else d)]")
+        eq("f(x for x in a)")
+        eq("f(1, (x for x in a))")
+        eq("f((x for x in a), 2)")
+        eq("(((a)))", "a")
+        eq("(((a, b)))", "(a, b)")
         eq("1 + 2 + 3")
 
     def test_fstring_debug_annotations(self):
@@ -379,18 +384,22 @@ class AnnotationsFutureTestCase(unittest.TestCase):
         self.assertAnnotationEqual("3+1e1000j", expected=f"3 + {infj}")
         self.assertAnnotationEqual("(1e1000, 1e1000j)", expected=f"({inf}, {infj})")
         self.assertAnnotationEqual("'inf'")
-        self.assertAnnotationEqual("('inf', 1e1000, 'infxxx', 1e1000j)", expected=f"('inf', {inf}, 'infxxx', {infj})")
-        self.assertAnnotationEqual("(1e1000, (1e1000j,))", expected=f"({inf}, ({infj},))")
+        self.assertAnnotationEqual(
+            "('inf', 1e1000, 'infxxx', 1e1000j)",
+            expected=f"('inf', {inf}, 'infxxx', {infj})",
+        )
+        self.assertAnnotationEqual(
+            "(1e1000, (1e1000j,))", expected=f"({inf}, ({infj},))"
+        )
 
     def test_annotation_with_complex_target(self):
         with self.assertRaises(SyntaxError):
-            exec(
-                "from __future__ import annotations\n"
-                "object.__debug__: int"
-            )
+            exec("from __future__ import annotations\n" "object.__debug__: int")
 
     def test_annotations_symbol_table_pass(self):
-        namespace = self._exec_future(dedent("""
+        namespace = self._exec_future(
+            dedent(
+                """
         from __future__ import annotations
 
         def foo():
@@ -398,7 +407,9 @@ class AnnotationsFutureTestCase(unittest.TestCase):
             def bar():
                 inner: outer = 1
             return bar
-        """))
+        """
+            )
+        )
 
         foo = namespace.pop("foo")
         self.assertIsNone(foo().__closure__)
@@ -425,23 +436,31 @@ class AnnotationsFutureTestCase(unittest.TestCase):
             self._exec_future("async def test() -> something((a := b)): pass")
 
         with self.assertRaises(SyntaxError):
-            self._exec_future("test: await some.complicated[0].call(with_args=True or 1 is not 1)")
+            self._exec_future(
+                "test: await some.complicated[0].call(with_args=True or 1 is not 1)"
+            )
 
         with self.assertRaises(SyntaxError):
             self._exec_future("test: f'{(x := 10):=10}'")
 
         with self.assertRaises(SyntaxError):
-            self._exec_future(dedent("""\
+            self._exec_future(
+                dedent(
+                    """\
             def foo():
                 def bar(arg: (yield)): pass
-            """))
+            """
+                )
+            )
 
     def test_get_type_hints_on_func_with_variadic_arg(self):
         # `typing.get_type_hints` might break on a function with a variadic
         # annotation (e.g. `f(*args: *Ts)`) if `from __future__ import
         # annotations`, because it could try to evaluate `*Ts` as an expression,
         # which on its own isn't value syntax.
-        namespace = self._exec_future(dedent("""\
+        namespace = self._exec_future(
+            dedent(
+                """\
         class StarredC: pass
         class C:
           def __iter__(self):
@@ -450,10 +469,12 @@ class AnnotationsFutureTestCase(unittest.TestCase):
         def f(*args: *c): pass
         import typing
         hints = typing.get_type_hints(f)
-        """))
+        """
+            )
+        )
 
-        hints = namespace.pop('hints')
-        self.assertIsInstance(hints['args'], namespace['StarredC'])
+        hints = namespace.pop("hints")
+        self.assertIsInstance(hints["args"], namespace["StarredC"])
 
 
 if __name__ == "__main__":

@@ -8,7 +8,10 @@ import threading
 import time
 import unittest
 from test.support import (
-    cpython_only, requires_subprocess, requires_working_socket, requires_resource
+    cpython_only,
+    requires_subprocess,
+    requires_working_socket,
+    requires_resource,
 )
 from test.support import threading_helper
 from test.support.os_helper import TESTFN
@@ -21,12 +24,14 @@ except AttributeError:
 
 requires_working_socket(module=True)
 
+
 def find_ready_matching(ready, flag):
     match = []
     for fd, mode in ready:
         if mode & flag:
             match.append(fd)
     return match
+
 
 class PollTests(unittest.TestCase):
 
@@ -72,9 +77,10 @@ class PollTests(unittest.TestCase):
             buf = os.read(rd, MSG_LEN)
             self.assertEqual(len(buf), MSG_LEN)
             bufs.append(buf)
-            os.close(r2w[rd]) ; os.close( rd )
-            p.unregister( r2w[rd] )
-            p.unregister( rd )
+            os.close(r2w[rd])
+            os.close(rd)
+            p.unregister(r2w[rd])
+            p.unregister(rd)
             writers.remove(r2w[rd])
 
         self.assertEqual(bufs, [MSG] * NUM_PIPES)
@@ -89,7 +95,7 @@ class PollTests(unittest.TestCase):
         r = p.poll()
         self.assertEqual(r[0], (FD, select.POLLNVAL))
 
-        with open(TESTFN, 'w') as f:
+        with open(TESTFN, "w") as f:
             fd = f.fileno()
             p = select.poll()
             p.register(f)
@@ -110,12 +116,13 @@ class PollTests(unittest.TestCase):
 
         # Test error cases
         pollster = select.poll()
+
         class Nope:
             pass
 
         class Almost:
             def fileno(self):
-                return 'fileno'
+                return "fileno"
 
         self.assertRaises(TypeError, pollster.register, Nope(), 0)
         self.assertRaises(TypeError, pollster.register, Almost(), 0)
@@ -124,34 +131,33 @@ class PollTests(unittest.TestCase):
     # select(), modified to use poll() instead.
 
     @requires_subprocess()
-    @requires_resource('walltime')
+    @requires_resource("walltime")
     def test_poll2(self):
-        cmd = 'for i in 0 1 2 3 4 5 6 7 8 9; do echo testing...; sleep 1; done'
-        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
-                                bufsize=0)
+        cmd = "for i in 0 1 2 3 4 5 6 7 8 9; do echo testing...; sleep 1; done"
+        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, bufsize=0)
         self.enterContext(proc)
         p = proc.stdout
         pollster = select.poll()
-        pollster.register( p, select.POLLIN )
-        for tout in (0, 1000, 2000, 4000, 8000, 16000) + (-1,)*10:
+        pollster.register(p, select.POLLIN)
+        for tout in (0, 1000, 2000, 4000, 8000, 16000) + (-1,) * 10:
             fdlist = pollster.poll(tout)
-            if (fdlist == []):
+            if fdlist == []:
                 continue
             fd, flags = fdlist[0]
             if flags & select.POLLHUP:
                 line = p.readline()
                 if line != b"":
-                    self.fail('error: pipe seems to be closed, but still returns data')
+                    self.fail("error: pipe seems to be closed, but still returns data")
                 continue
 
             elif flags & select.POLLIN:
                 line = p.readline()
                 if not line:
                     break
-                self.assertEqual(line, b'testing...\n')
+                self.assertEqual(line, b"testing...\n")
                 continue
             else:
-                self.fail('Unexpected return value from select.poll: %s' % fdlist)
+                self.fail("Unexpected return value from select.poll: %s" % fdlist)
 
     def test_poll3(self):
         # test int overflow
@@ -162,7 +168,7 @@ class PollTests(unittest.TestCase):
 
         x = 2 + 3
         if x != 5:
-            self.fail('Overflow must have occurred')
+            self.fail("Overflow must have occurred")
 
         # Issues #15989, #17919
         self.assertRaises(ValueError, pollster.register, 0, -1)
@@ -173,6 +179,7 @@ class PollTests(unittest.TestCase):
     @cpython_only
     def test_poll_c_limits(self):
         from _testcapi import USHRT_MAX, INT_MAX, UINT_MAX
+
         pollster = select.poll()
         pollster.register(1)
 
@@ -207,10 +214,10 @@ class PollTests(unittest.TestCase):
             self.assertRaises(RuntimeError, pollster.poll)
         finally:
             # and make the call to poll() from the thread return
-            os.write(w, b'spam')
+            os.write(w, b"spam")
             t.join()
 
-    @unittest.skipUnless(threading, 'Threading required for this test.')
+    @unittest.skipUnless(threading, "Threading required for this test.")
     @threading_helper.reap_threads
     def test_poll_blocks_with_negative_ms(self):
         for timeout_ms in [None, -1000, -1, -1.0, -0.1, -1e-100]:
@@ -226,12 +233,12 @@ class PollTests(unittest.TestCase):
             self.assertTrue(poll_thread.is_alive())
 
             # Write to the pipe so pollster.poll unblocks and the thread ends.
-            os.write(w, b'spam')
+            os.write(w, b"spam")
             poll_thread.join()
             self.assertFalse(poll_thread.is_alive())
             os.close(r)
             os.close(w)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

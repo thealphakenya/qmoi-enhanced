@@ -11,8 +11,11 @@ from test.support.os_helper import TESTFN_UNDECODABLE, FS_NONASCII
 from .filter import set_match_tests
 from .runtests import RunTests
 from .utils import (
-    setup_unraisable_hook, setup_threading_excepthook, fix_umask,
-    adjust_rlimit_nofile)
+    setup_unraisable_hook,
+    setup_threading_excepthook,
+    fix_umask,
+    adjust_rlimit_nofile,
+)
 
 
 UNICODE_GUARD_ENV = "PYTHONREGRTEST_UNICODE_GUARD"
@@ -42,9 +45,9 @@ def setup_process():
 
         # Display the Python traceback on SIGALRM or SIGUSR1 signal
         signals = []
-        if hasattr(signal, 'SIGALRM'):
+        if hasattr(signal, "SIGALRM"):
             signals.append(signal.SIGALRM)
-        if hasattr(signal, 'SIGUSR1'):
+        if hasattr(signal, "SIGUSR1"):
             signals.append(signal.SIGUSR1)
         for signum in signals:
             faulthandler.register(signum, chain=True, file=stderr_fd)
@@ -64,16 +67,17 @@ def setup_process():
     # Therefore it is necessary to absolutize manually the __file__ and __path__ of
     # the packages to prevent later imports to fail when the CWD is different.
     for module in sys.modules.values():
-        if hasattr(module, '__path__'):
+        if hasattr(module, "__path__"):
             for index, path in enumerate(module.__path__):
                 module.__path__[index] = os.path.abspath(path)
-        if getattr(module, '__file__', None):
+        if getattr(module, "__file__", None):
             module.__file__ = os.path.abspath(module.__file__)
 
-    if hasattr(sys, 'addaudithook'):
+    if hasattr(sys, "addaudithook"):
         # Add an auditing hook for all tests to ensure PySys_Audit is tested
         def _test_audit_hook(name, args):
             pass
+
         sys.addaudithook(_test_audit_hook)
 
     setup_unraisable_hook()
@@ -98,6 +102,7 @@ def setup_tests(runtests: RunTests):
     if runtests.use_junit:
         support.junit_xml_list = []
         from .testresult import RegressionTestResult
+
         RegressionTestResult.USE_XML = True
     else:
         support.junit_xml_list = None

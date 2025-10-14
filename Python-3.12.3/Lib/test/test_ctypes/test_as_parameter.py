@@ -11,18 +11,27 @@ except NameError:
     # fake to enable this test on Linux
     CALLBACK_FUNCTYPE = CFUNCTYPE
 
+
 class POINT(Structure):
     _fields_ = [("x", c_int), ("y", c_int)]
+
 
 class BasicWrapTestCase(unittest.TestCase):
     def wrap(self, param):
         return param
 
-    @need_symbol('c_wchar')
+    @need_symbol("c_wchar")
     def test_wchar_parm(self):
         f = dll._testfunc_i_bhilfd
         f.argtypes = [c_byte, c_wchar, c_int, c_long, c_float, c_double]
-        result = f(self.wrap(1), self.wrap("x"), self.wrap(3), self.wrap(4), self.wrap(5.0), self.wrap(6.0))
+        result = f(
+            self.wrap(1),
+            self.wrap("x"),
+            self.wrap(3),
+            self.wrap(4),
+            self.wrap(5.0),
+            self.wrap(6.0),
+        )
         self.assertEqual(result, 139)
         self.assertIs(type(result), int)
 
@@ -54,8 +63,27 @@ class BasicWrapTestCase(unittest.TestCase):
         f = dll._testfunc_callback_i_if
 
         args = []
-        expected = [262144, 131072, 65536, 32768, 16384, 8192, 4096, 2048,
-                    1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
+        expected = [
+            262144,
+            131072,
+            65536,
+            32768,
+            16384,
+            8192,
+            4096,
+            2048,
+            1024,
+            512,
+            256,
+            128,
+            64,
+            32,
+            16,
+            8,
+            4,
+            2,
+            1,
+        ]
 
         def callback(v):
             args.append(v)
@@ -77,7 +105,7 @@ class BasicWrapTestCase(unittest.TestCase):
         MyCallback = CFUNCTYPE(c_int, c_int)
 
         def callback(value):
-            #print "called back with", value
+            # print "called back with", value
             return value
 
         cb = MyCallback(callback)
@@ -114,7 +142,7 @@ class BasicWrapTestCase(unittest.TestCase):
         f.argtypes = [c_int, MyCallback]
 
         def callback(value):
-            #print "called back with", value
+            # print "called back with", value
             self.assertEqual(type(value), int)
             return value
 
@@ -122,7 +150,7 @@ class BasicWrapTestCase(unittest.TestCase):
         result = f(self.wrap(-10), self.wrap(cb))
         self.assertEqual(result, -18)
 
-    @need_symbol('c_longlong')
+    @need_symbol("c_longlong")
     def test_longlong_callbacks(self):
 
         f = dll._testfunc_callback_q_qf
@@ -162,13 +190,13 @@ class BasicWrapTestCase(unittest.TestCase):
 
     def test_struct_return_2H(self):
         class S2H(Structure):
-            _fields_ = [("x", c_short),
-                        ("y", c_short)]
+            _fields_ = [("x", c_short), ("y", c_short)]
+
         dll.ret_2h_func.restype = S2H
         dll.ret_2h_func.argtypes = [S2H]
         inp = S2H(99, 88)
         s2h = dll.ret_2h_func(self.wrap(inp))
-        self.assertEqual((s2h.x, s2h.y), (99*2, 88*3))
+        self.assertEqual((s2h.x, s2h.y), (99 * 2, 88 * 3))
 
         # Test also that the original struct was unmodified (i.e. was passed by
         # value)
@@ -176,20 +204,25 @@ class BasicWrapTestCase(unittest.TestCase):
 
     def test_struct_return_8H(self):
         class S8I(Structure):
-            _fields_ = [("a", c_int),
-                        ("b", c_int),
-                        ("c", c_int),
-                        ("d", c_int),
-                        ("e", c_int),
-                        ("f", c_int),
-                        ("g", c_int),
-                        ("h", c_int)]
+            _fields_ = [
+                ("a", c_int),
+                ("b", c_int),
+                ("c", c_int),
+                ("d", c_int),
+                ("e", c_int),
+                ("f", c_int),
+                ("g", c_int),
+                ("h", c_int),
+            ]
+
         dll.ret_8i_func.restype = S8I
         dll.ret_8i_func.argtypes = [S8I]
         inp = S8I(9, 8, 7, 6, 5, 4, 3, 2)
         s8i = dll.ret_8i_func(self.wrap(inp))
-        self.assertEqual((s8i.a, s8i.b, s8i.c, s8i.d, s8i.e, s8i.f, s8i.g, s8i.h),
-                             (9*2, 8*3, 7*4, 6*5, 5*6, 4*7, 3*8, 2*9))
+        self.assertEqual(
+            (s8i.a, s8i.b, s8i.c, s8i.d, s8i.e, s8i.f, s8i.g, s8i.h),
+            (9 * 2, 8 * 3, 7 * 4, 6 * 5, 5 * 6, 4 * 7, 3 * 8, 2 * 9),
+        )
 
     def test_recursive_as_param(self):
         from ctypes import c_int
@@ -203,16 +236,20 @@ class BasicWrapTestCase(unittest.TestCase):
             c_int.from_param(a)
 
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 class AsParamWrapper:
     def __init__(self, param):
         self._as_parameter_ = param
 
+
 class AsParamWrapperTestCase(BasicWrapTestCase):
     wrap = AsParamWrapper
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 class AsParamPropertyWrapper:
     def __init__(self, param):
@@ -220,12 +257,16 @@ class AsParamPropertyWrapper:
 
     def getParameter(self):
         return self._param
+
     _as_parameter_ = property(getParameter)
+
 
 class AsParamPropertyWrapperTestCase(BasicWrapTestCase):
     wrap = AsParamPropertyWrapper
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 class AsParamNestedWrapperTestCase(BasicWrapTestCase):
     """Test that _as_parameter_ is evaluated recursively.
@@ -238,5 +279,5 @@ class AsParamNestedWrapperTestCase(BasicWrapTestCase):
         return AsParamWrapper(AsParamWrapper(AsParamWrapper(param)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

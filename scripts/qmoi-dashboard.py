@@ -14,9 +14,11 @@ DOC_HISTORY_FILE = Path(__file__).parent.parent / "ALLMDFILESREFS.md"
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route("/")
 def index():
-    return render_template_string('''
+    return render_template_string(
+        """
     <html>
     <head>
         <title>QMOI Dashboard</title>
@@ -68,8 +70,8 @@ def index():
         <script>
             function highlightLog(log) {
                 return log
-                    .replace(/(ERROR|\u274c|\u274E|\u26A0)/g, '<span class="error">$1</span>')
-                    .replace(/(WARNING|WARN|\u26A0)/g, '<span class="warning">$1</span>')
+                    .replace(/(ERROR|\u274c|\u274e|\u26a0)/g, '<span class="error">$1</span>')
+                    .replace(/(WARNING|WARN|\u26a0)/g, '<span class="warning">$1</span>')
                     .replace(/(SUCCESS|\u2705)/g, '<span class="success">$1</span>');
             }
             function filterLogs() {
@@ -162,35 +164,49 @@ def index():
         </script>
     </body>
     </html>
-    ''', report=get_report(), log=highlight_log(get_log()), doc_history=get_doc_history())
+    """,
+        report=get_report(),
+        log=highlight_log(get_log()),
+        doc_history=get_doc_history(),
+    )
 
-@app.route('/api/log')
+
+@app.route("/api/log")
 def api_log():
-    search = request.args.get('search', '').lower()
+    search = request.args.get("search", "").lower()
     log = get_log()
     if search:
-        log = '\n'.join([line for line in log.splitlines() if search in line.lower()])
-    return jsonify({'log': highlight_log(log)})
+        log = "\n".join([line for line in log.splitlines() if search in line.lower()])
+    return jsonify({"log": highlight_log(log)})
 
-@app.route('/api/report')
+
+@app.route("/api/report")
 def api_report():
-    return jsonify({'report': get_report()})
+    return jsonify({"report": get_report()})
 
-@app.route('/api/doc-history')
+
+@app.route("/api/doc-history")
 def api_doc_history():
-    return jsonify({'doc_history': get_doc_history()})
+    return jsonify({"doc_history": get_doc_history()})
 
-@app.route('/api/notifications')
+
+@app.route("/api/notifications")
 def api_notifications():
     # Placeholder: integrate with notification logs/status
-    return jsonify({'notifications': 'Gmail and multi-channel notification status will appear here.'})
+    return jsonify(
+        {
+            "notifications": "Gmail and multi-channel notification status will appear here."
+        }
+    )
 
-@app.route('/api/notifications/test', methods=['POST'])
+
+@app.route("/api/notifications/test", methods=["POST"])
 def api_notifications_test():
     # Placeholder: trigger a test notification (integrate with QMOI notification system)
-    return jsonify({'result': 'Test notification sent (simulated).'})
+    return jsonify({"result": "Test notification sent (simulated)."})
 
-@app.route('/api/event-stats')
+
+@app.route("/api/event-stats")
 def api_event_stats():
     # Parse log for error/warning/success counts by time window (e.g., last 10 minutes)
     log = get_log()
@@ -200,70 +216,102 @@ def api_event_stats():
     warnings = []
     successes = []
     for i in range(0, len(lines), 10):
-        chunk = lines[i:i+10]
-        labels.append(f'Lines {i+1}-{i+len(chunk)}')
-        errors.append(sum(1 for l in chunk if re.search(r'ERROR|\u274c|\u274E|\u26A0', l)))
-        warnings.append(sum(1 for l in chunk if re.search(r'WARNING|WARN|\u26A0', l)))
-        successes.append(sum(1 for l in chunk if re.search(r'SUCCESS|\u2705', l)))
-    return jsonify({'labels': labels, 'errors': errors, 'warnings': warnings, 'successes': successes})
+        chunk = lines[i : i + 10]
+        labels.append(f"Lines {i+1}-{i+len(chunk)}")
+        errors.append(
+            sum(1 for l in chunk if re.search(r"ERROR|\u274c|\u274E|\u26A0", l))
+        )
+        warnings.append(sum(1 for l in chunk if re.search(r"WARNING|WARN|\u26A0", l)))
+        successes.append(sum(1 for l in chunk if re.search(r"SUCCESS|\u2705", l)))
+    return jsonify(
+        {
+            "labels": labels,
+            "errors": errors,
+            "warnings": warnings,
+            "successes": successes,
+        }
+    )
 
-@app.route('/api/preautotest')
+
+@app.route("/api/preautotest")
 def api_preautotest():
     # Simulate multi-platform pre-autotest results and history
     import random, datetime
-    platforms = ['GitHub', 'GitLab', 'Vercel', 'HuggingFace', 'QCity']
+
+    platforms = ["GitHub", "GitLab", "Vercel", "HuggingFace", "QCity"]
     results = []
     for p in platforms:
-        status = random.choice(['PASS', 'FAIL'])
-        error = '' if status == 'PASS' else f"{p} permission error"
-        results.append({'platform': p, 'status': status, 'error': error})
+        status = random.choice(["PASS", "FAIL"])
+        error = "" if status == "PASS" else f"{p} permission error"
+        results.append({"platform": p, "status": status, "error": error})
     # Simulate history (last 5 runs)
     history = []
     for i in range(5):
         hresults = []
         for p in platforms:
-            status = random.choice(['PASS', 'FAIL'])
-            hresults.append({'platform': p, 'status': status, 'error': '' if status == 'PASS' else f"{p} error"})
-        history.append({'timestamp': (datetime.datetime.now() - datetime.timedelta(minutes=5-i)).strftime('%H:%M'), 'platforms': platforms, 'results': hresults})
-    return jsonify({'results': results, 'history': history})
+            status = random.choice(["PASS", "FAIL"])
+            hresults.append(
+                {
+                    "platform": p,
+                    "status": status,
+                    "error": "" if status == "PASS" else f"{p} error",
+                }
+            )
+        history.append(
+            {
+                "timestamp": (
+                    datetime.datetime.now() - datetime.timedelta(minutes=5 - i)
+                ).strftime("%H:%M"),
+                "platforms": platforms,
+                "results": hresults,
+            }
+        )
+    return jsonify({"results": results, "history": history})
+
 
 def get_log():
     if LOG_FILE.exists():
-        with open(LOG_FILE, 'r', encoding='utf-8', errors='replace') as f:
+        with open(LOG_FILE, "r", encoding="utf-8", errors="replace") as f:
             lines = f.readlines()[-100:]
-        return ''.join(lines)
-    return 'No log file found.'
+        return "".join(lines)
+    return "No log file found."
+
 
 def highlight_log(log):
     # Highlight errors, warnings, successes
-    log = re.sub(r'(ERROR|\u274c|\u274E|\u26A0)', r'<span class="error">\1</span>', log)
-    log = re.sub(r'(WARNING|WARN|\u26A0)', r'<span class="warning">\1</span>', log)
-    log = re.sub(r'(SUCCESS|\u2705)', r'<span class="success">\1</span>', log)
+    log = re.sub(r"(ERROR|\u274c|\u274E|\u26A0)", r'<span class="error">\1</span>', log)
+    log = re.sub(r"(WARNING|WARN|\u26A0)", r'<span class="warning">\1</span>', log)
+    log = re.sub(r"(SUCCESS|\u2705)", r'<span class="success">\1</span>', log)
     return log
+
 
 def get_report():
     if REPORT_FILE.exists():
         try:
-            with open(REPORT_FILE, 'r', encoding='utf-8', errors='replace') as f:
+            with open(REPORT_FILE, "r", encoding="utf-8", errors="replace") as f:
                 report = json.load(f)
             return json.dumps(report, indent=2)
         except Exception as e:
-            return f'Error reading report: {e}'
-    return 'No report file found.'
+            return f"Error reading report: {e}"
+    return "No report file found."
+
 
 def get_doc_history():
     if DOC_HISTORY_FILE.exists():
         try:
-            with open(DOC_HISTORY_FILE, 'r', encoding='utf-8', errors='replace') as f:
+            with open(DOC_HISTORY_FILE, "r", encoding="utf-8", errors="replace") as f:
                 content = f.read()
             # Extract the update history table
-            match = re.search(r'## Documentation Update History(.+?)(---|$)', content, re.DOTALL)
+            match = re.search(
+                r"## Documentation Update History(.+?)(---|$)", content, re.DOTALL
+            )
             if match:
                 return match.group(1).strip()
-            return 'No update history found.'
+            return "No update history found."
         except Exception as e:
-            return f'Error reading doc history: {e}'
-    return 'No documentation history file found.'
+            return f"Error reading doc history: {e}"
+    return "No documentation history file found."
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5055, debug=True) 
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5055, debug=True)

@@ -8,7 +8,10 @@ exact_token_types = token.EXACT_TOKEN_TYPES
 
 
 def shorttok(tok: tokenize.TokenInfo) -> str:
-    return "%-25.25s" % f"{tok.start[0]}.{tok.start[1]}: {token.tok_name[tok.type]}:{tok.string!r}"
+    return (
+        "%-25.25s"
+        % f"{tok.start[0]}.{tok.start[1]}: {token.tok_name[tok.type]}:{tok.string!r}"
+    )
 
 
 class Tokenizer:
@@ -20,7 +23,11 @@ class Tokenizer:
     _tokens: List[tokenize.TokenInfo]
 
     def __init__(
-        self, tokengen: Iterator[tokenize.TokenInfo], *, path: str = "", verbose: bool = False
+        self,
+        tokengen: Iterator[tokenize.TokenInfo],
+        *,
+        path: str = "",
+        verbose: bool = False,
     ):
         self._tokengen = tokengen
         self._tokens = []

@@ -19,12 +19,27 @@ from .runtests import RunTests, HuntRefleak
 from .setup import setup_process, setup_test_dir
 from .single import run_single_test, PROGRESS_MIN_TIME
 from .utils import (
-    StrPath, StrJSON, TestName, TestList, TestTuple, TestFilter,
-    strip_py_suffix, count, format_duration,
-    printlist, get_temp_dir, get_work_dir, exit_timeout,
-    display_header, cleanup_temp_dir, print_warning,
-    is_cross_compiled, get_host_runner, process_cpu_count,
-    EXIT_TIMEOUT)
+    StrPath,
+    StrJSON,
+    TestName,
+    TestList,
+    TestTuple,
+    TestFilter,
+    strip_py_suffix,
+    count,
+    format_duration,
+    printlist,
+    get_temp_dir,
+    get_work_dir,
+    exit_timeout,
+    display_header,
+    cleanup_temp_dir,
+    print_warning,
+    is_cross_compiled,
+    get_host_runner,
+    process_cpu_count,
+    EXIT_TIMEOUT,
+)
 
 
 class Regrtest:
@@ -50,6 +65,7 @@ class Regrtest:
     directly to set the values that would normally be set by flags
     on the command line.
     """
+
     def __init__(self, ns: Namespace, _add_python_opts: bool = False):
         # Log verbosity
         self.verbose: int = int(ns.verbose)
@@ -73,9 +89,8 @@ class Regrtest:
         self.want_rerun: bool = ns.rerun
         self.want_run_leaks: bool = ns.runleaks
 
-        self.ci_mode: bool = (ns.fast_ci or ns.slow_ci)
-        self.want_add_python_opts: bool = (_add_python_opts
-                                           and ns._add_python_opts)
+        self.ci_mode: bool = ns.fast_ci or ns.slow_ci
+        self.want_add_python_opts: bool = _add_python_opts and ns._add_python_opts
 
         # Select tests
         self.match_tests: TestFilter = ns.match_tests
@@ -122,15 +137,16 @@ class Regrtest:
 
         # Randomize
         self.randomize: bool = ns.randomize
-        if ('SOURCE_DATE_EPOCH' in os.environ
+        if (
+            "SOURCE_DATE_EPOCH" in os.environ
             # don't use the variable if empty
-            and os.environ['SOURCE_DATE_EPOCH']
+            and os.environ["SOURCE_DATE_EPOCH"]
         ):
             self.randomize = False
             # SOURCE_DATE_EPOCH should be an integer, but use a string to not
             # fail if it's not integer. random.seed() accepts a string.
             # https://reproducible-builds.org/docs/source-date-epoch/
-            self.random_seed: int | str = os.environ['SOURCE_DATE_EPOCH']
+            self.random_seed: int | str = os.environ["SOURCE_DATE_EPOCH"]
         elif ns.random_seed is None:
             self.random_seed = random.getrandbits(32)
         else:
@@ -150,14 +166,16 @@ class Regrtest:
         self.next_single_test: TestName | None = None
         self.next_single_filename: StrPath | None = None
 
-    def log(self, line=''):
+    def log(self, line=""):
         self.logger.log(line)
 
-    def find_tests(self, tests: TestList | None = None) -> tuple[TestTuple, TestList | None]:
+    def find_tests(
+        self, tests: TestList | None = None
+    ) -> tuple[TestTuple, TestList | None]:
         if self.single_test_run:
-            self.next_single_filename = os.path.join(self.tmp_dir, 'pynexttest')
+            self.next_single_filename = os.path.join(self.tmp_dir, "pynexttest")
             try:
-                with open(self.next_single_filename, 'r') as fp:
+                with open(self.next_single_filename, "r") as fp:
                     next_test = fp.read().strip()
                     tests = [next_test]
             except OSError:
@@ -167,10 +185,10 @@ class Regrtest:
             tests = []
             # regex to match 'test_builtin' in line:
             # '0:00:00 [  4/400] test_builtin -- test_dict took 1 sec'
-            regex = re.compile(r'\btest_[a-zA-Z0-9_]+\b')
+            regex = re.compile(r"\btest_[a-zA-Z0-9_]+\b")
             with open(os.path.join(os_helper.SAVEDCWD, self.fromfile)) as fp:
                 for line in fp:
-                    line = line.split('#', 1)[0]
+                    line = line.split("#", 1)[0]
                     line = line.strip()
                     match = regex.search(line)
                     if match is not None:
@@ -188,8 +206,7 @@ class Regrtest:
                 exclude_tests.add(arg)
             self.cmdline_args = []
 
-        alltests = findtests(testdir=self.test_dir,
-                             exclude=exclude_tests)
+        alltests = findtests(testdir=self.test_dir, exclude=exclude_tests)
 
         if not self.fromfile:
             selected = tests or self.cmdline_args
@@ -211,7 +228,7 @@ class Regrtest:
         # Remove all the selected tests that precede start if it's set.
         if self.starting_test:
             try:
-                del selected[:selected.index(self.starting_test)]
+                del selected[: selected.index(self.starting_test)]
             except ValueError:
                 print(f"Cannot find starting test: {self.starting_test}")
                 sys.exit(1)
@@ -239,7 +256,9 @@ class Regrtest:
         tests, match_tests_dict = self.results.prepare_rerun()
 
         # Re-run failed tests
-        self.log(f"Re-running {len(tests)} failed tests in verbose mode in subprocesses")
+        self.log(
+            f"Re-running {len(tests)} failed tests in verbose mode in subprocesses"
+        )
         runtests = runtests.copy(
             tests=tests,
             rerun=True,
@@ -247,7 +266,8 @@ class Regrtest:
             forever=False,
             fail_fast=False,
             match_tests_dict=match_tests_dict,
-            output_on_failure=False)
+            output_on_failure=False,
+        )
         self.logger.set_tests(runtests)
         self._run_tests_mp(runtests, self.num_workers)
         return runtests
@@ -267,7 +287,7 @@ class Regrtest:
         rerun_runtests = self._rerun_failed_tests(runtests)
 
         if self.results.bad:
-            print(count(len(self.results.bad), 'test'), "failed again:")
+            print(count(len(self.results.bad), "test"), "failed again:")
             printlist(self.results.bad)
 
         self.display_result(rerun_runtests)
@@ -281,17 +301,16 @@ class Regrtest:
         print()
         print(f"== Tests result: {state} ==")
 
-        self.results.display_result(runtests.tests,
-                                    self.quiet, self.print_slowest)
+        self.results.display_result(runtests.tests, self.quiet, self.print_slowest)
 
     def run_test(self, test_name: TestName, runtests: RunTests, tracer):
         if tracer is not None:
             # If we're tracing code coverage, then we don't exit with status
             # if on a false return value from main.
-            cmd = ('result = run_single_test(test_name, runtests)')
+            cmd = "result = run_single_test(test_name, runtests)"
             namespace = dict(locals())
             tracer.runctx(cmd, globals=globals(), locals=namespace)
-            result = namespace['result']
+            result = namespace["result"]
         else:
             result = run_single_test(test_name, runtests)
 
@@ -302,6 +321,7 @@ class Regrtest:
     def run_tests_sequentially(self, runtests):
         if self.coverage:
             import trace
+
             tracer = trace.Trace(trace=False, count=True)
         else:
             tracer = None
@@ -310,9 +330,9 @@ class Regrtest:
 
         jobs = runtests.get_jobs()
         if jobs is not None:
-            tests = count(jobs, 'test')
+            tests = count(jobs, "test")
         else:
-            tests = 'tests'
+            tests = "tests"
         msg = f"Run {tests} sequentially"
         if runtests.timeout:
             msg += " (timeout: %s)" % format_duration(runtests.timeout)
@@ -325,19 +345,21 @@ class Regrtest:
 
             text = test_name
             if previous_test:
-                text = '%s -- %s' % (text, previous_test)
+                text = "%s -- %s" % (text, previous_test)
             self.logger.display_progress(test_index, text)
 
             result = self.run_test(test_name, runtests, tracer)
 
             # Unload the newly imported test modules (best effort finalization)
-            new_modules = [module for module in sys.modules
-                           if module not in save_modules and
-                                module.startswith(("test.", "test_"))]
+            new_modules = [
+                module
+                for module in sys.modules
+                if module not in save_modules and module.startswith(("test.", "test_"))
+            ]
             for module in new_modules:
                 sys.modules.pop(module, None)
                 # Remove the attribute of the parent module.
-                parent, _, name = module.rpartition('.')
+                parent, _, name = module.rpartition(".")
                 try:
                     delattr(sys.modules[parent], name)
                 except (KeyError, AttributeError):
@@ -362,25 +384,27 @@ class Regrtest:
     def get_state(self):
         state = self.results.get_state(self.fail_env_changed)
         if self.first_state:
-            state = f'{self.first_state} then {state}'
+            state = f"{self.first_state} then {state}"
         return state
 
     def _run_tests_mp(self, runtests: RunTests, num_workers: int) -> None:
         from .run_workers import RunWorkers
+
         RunWorkers(num_workers, runtests, self.logger, self.results).run()
 
     def finalize_tests(self, tracer):
         if self.next_single_filename:
             if self.next_single_test:
-                with open(self.next_single_filename, 'w') as fp:
-                    fp.write(self.next_single_test + '\n')
+                with open(self.next_single_filename, "w") as fp:
+                    fp.write(self.next_single_test + "\n")
             else:
                 os.unlink(self.next_single_filename)
 
         if tracer is not None:
             results = tracer.results()
-            results.write_results(show_missing=True, summary=True,
-                                  coverdir=self.coverage_dir)
+            results.write_results(
+                show_missing=True, summary=True, coverdir=self.coverage_dir
+            )
 
         if self.want_run_leaks:
             os.system("leaks %d" % os.getpid())
@@ -430,8 +454,10 @@ class Regrtest:
 
     def _run_tests(self, selected: TestTuple, tests: TestList | None) -> int:
         if self.hunt_refleak and self.hunt_refleak.warmups < 3:
-            msg = ("WARNING: Running tests with --huntrleaks/-R and "
-                   "less than 3 warmup repetitions can give false positives!")
+            msg = (
+                "WARNING: Running tests with --huntrleaks/-R and "
+                "less than 3 warmup repetitions can give false positives!"
+            )
             print(msg, file=sys.stdout, flush=True)
 
         if self.num_workers < 0:
@@ -440,9 +466,9 @@ class Regrtest:
             self.num_workers = (process_cpu_count() or 1) + 2
 
         # For a partial run, we do not need to clutter the output.
-        if (self.want_header
-            or not(self.pgo or self.quiet or self.single_test_run
-                   or tests or self.cmdline_args)):
+        if self.want_header or not (
+            self.pgo or self.quiet or self.single_test_run or tests or self.cmdline_args
+        ):
             display_header(self.use_resources, self.python_cmd)
 
         print("Using random seed:", self.random_seed)
@@ -480,8 +506,7 @@ class Regrtest:
         self.display_summary()
         self.finalize_tests(tracer)
 
-        return self.results.get_exitcode(self.fail_env_changed,
-                                         self.fail_rerun)
+        return self.results.get_exitcode(self.fail_env_changed, self.fail_rerun)
 
     def run_tests(self, selected: TestTuple, tests: TestList | None) -> int:
         os.makedirs(self.tmp_dir, exist_ok=True)
@@ -516,15 +541,16 @@ class Regrtest:
             # emulate -E, but keep PYTHONPATH + cross compile env vars,
             # so test executable can load correct sysconfigdata file.
             keep = {
-                '_PYTHON_PROJECT_BASE',
-                '_PYTHON_HOST_PLATFORM',
-                '_PYTHON_SYSCONFIGDATA_NAME',
-                'PYTHONPATH'
+                "_PYTHON_PROJECT_BASE",
+                "_PYTHON_HOST_PLATFORM",
+                "_PYTHON_SYSCONFIGDATA_NAME",
+                "PYTHONPATH",
             }
             old_environ = os.environ
             new_environ = {
-                name: value for name, value in os.environ.items()
-                if not name.startswith(('PYTHON', '_PYTHON')) or name in keep
+                name: value
+                for name, value in os.environ.items()
+                if not name.startswith(("PYTHON", "_PYTHON")) or name in keep
             }
             # Only set environ if at least one variable was removed
             if new_environ != old_environ:
@@ -535,7 +561,7 @@ class Regrtest:
             if self.num_workers == 0:
                 # For now use only two cores for cross-compiled builds;
                 # hostrunner can be expensive.
-                regrtest_opts.extend(['-j', '2'])
+                regrtest_opts.extend(["-j", "2"])
 
             # If HOSTRUNNER is set and -p/--python option is not given, then
             # use hostrunner to execute python binary for tests.
@@ -553,20 +579,20 @@ class Regrtest:
 
         # Unbuffered stdout and stderr
         if not sys.stdout.write_through:
-            python_opts.append('-u')
+            python_opts.append("-u")
 
         # Add warnings filter 'default'
-        if 'default' not in sys.warnoptions:
-            python_opts.extend(('-W', 'default'))
+        if "default" not in sys.warnoptions:
+            python_opts.extend(("-W", "default"))
 
         # Error on bytes/str comparison
         if sys.flags.bytes_warning < 2:
-            python_opts.append('-bb')
+            python_opts.append("-bb")
 
         if not keep_environ:
             # Ignore PYTHON* environment variables
             if not sys.flags.ignore_environment:
-                python_opts.append('-E')
+                python_opts.append("-E")
 
     def _execute_python(self, cmd, environ):
         # Make sure that messages before execv() are logged
@@ -577,12 +603,13 @@ class Regrtest:
         try:
             print(f"+ {cmd_text}", flush=True)
 
-            if hasattr(os, 'execv') and not MS_WINDOWS:
+            if hasattr(os, "execv") and not MS_WINDOWS:
                 os.execv(cmd[0], cmd)
                 # On success, execv() do no return.
                 # On error, it raises an OSError.
             else:
                 import subprocess
+
                 with subprocess.Popen(cmd, env=environ) as proc:
                     try:
                         proc.wait()
@@ -598,8 +625,9 @@ class Regrtest:
 
                 sys.exit(proc.returncode)
         except Exception as exc:
-            print_warning(f"Failed to change Python options: {exc!r}\n"
-                          f"Command: {cmd_text}")
+            print_warning(
+                f"Failed to change Python options: {exc!r}\n" f"Command: {cmd_text}"
+            )
             # continue executing main()
 
     def _add_python_opts(self):
@@ -657,9 +685,7 @@ class Regrtest:
         if self.want_list_tests:
             self.list_tests(selected)
         elif self.want_list_cases:
-            list_cases(selected,
-                       match_tests=self.match_tests,
-                       test_dir=self.test_dir)
+            list_cases(selected, match_tests=self.match_tests, test_dir=self.test_dir)
         else:
             exitcode = self.run_tests(selected, tests)
 

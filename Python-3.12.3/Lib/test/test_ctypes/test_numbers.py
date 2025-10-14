@@ -2,6 +2,7 @@ from ctypes import *
 import unittest
 import struct
 
+
 def valid_ranges(*types):
     # given a sequence of numeric types, collect their _type_
     # attribute, which is a single format character compatible with
@@ -12,12 +13,13 @@ def valid_ranges(*types):
     for t in types:
         fmt = t._type_
         size = struct.calcsize(fmt)
-        a = struct.unpack(fmt, (b"\x00"*32)[:size])[0]
-        b = struct.unpack(fmt, (b"\xFF"*32)[:size])[0]
-        c = struct.unpack(fmt, (b"\x7F"+b"\x00"*32)[:size])[0]
-        d = struct.unpack(fmt, (b"\x80"+b"\xFF"*32)[:size])[0]
+        a = struct.unpack(fmt, (b"\x00" * 32)[:size])[0]
+        b = struct.unpack(fmt, (b"\xff" * 32)[:size])[0]
+        c = struct.unpack(fmt, (b"\x7f" + b"\x00" * 32)[:size])[0]
+        d = struct.unpack(fmt, (b"\x80" + b"\xff" * 32)[:size])[0]
         result.append((min(a, b, c, d), max(a, b, c, d)))
     return result
+
 
 ArgType = type(byref(c_int(0)))
 
@@ -46,9 +48,10 @@ else:
 
 unsigned_ranges = valid_ranges(*unsigned_types)
 signed_ranges = valid_ranges(*signed_types)
-bool_values = [True, False, 0, 1, -1, 5000, 'test', [], [1]]
+bool_values = [True, False, 0, 1, -1, 5000, "test", [], [1]]
 
 ################################################################
+
 
 class NumberTestCase(unittest.TestCase):
 
@@ -72,6 +75,7 @@ class NumberTestCase(unittest.TestCase):
 
     def test_bool_values(self):
         from operator import truth
+
         for t, v in zip(bool_types, bool_values):
             self.assertEqual(t(v).value, truth(v))
 
@@ -94,13 +98,13 @@ class NumberTestCase(unittest.TestCase):
             parm = byref(t())
             self.assertEqual(ArgType, type(parm))
 
-
     def test_floats(self):
         # c_float and c_double can be created from
         # Python int and float
         class FloatLike:
             def __float__(self):
                 return 2.0
+
         f = FloatLike()
         for t in float_types:
             self.assertEqual(t(2.0).value, 2.0)
@@ -112,14 +116,19 @@ class NumberTestCase(unittest.TestCase):
         class FloatLike:
             def __float__(self):
                 return 2.0
+
         f = FloatLike()
+
         class IntLike:
             def __int__(self):
                 return 2
+
         d = IntLike()
+
         class IndexLike:
             def __index__(self):
                 return 2
+
         i = IndexLike()
         # integers cannot be constructed from floats,
         # but from integer-like objects
@@ -142,18 +151,17 @@ class NumberTestCase(unittest.TestCase):
 
     def test_alignments(self):
         for t in signed_types + unsigned_types + float_types:
-            code = t._type_ # the typecode
+            code = t._type_  # the typecode
             align = struct.calcsize("c%c" % code) - struct.calcsize(code)
 
             # alignment of the type...
-            self.assertEqual((code, alignment(t)),
-                                 (code, align))
+            self.assertEqual((code, alignment(t)), (code, align))
             # and alignment of an instance
-            self.assertEqual((code, alignment(t())),
-                                 (code, align))
+            self.assertEqual((code, alignment(t())), (code, align))
 
     def test_int_from_address(self):
         from array import array
+
         for t in signed_types + unsigned_types:
             # the array module doesn't support all format codes
             # (no 'q' or 'Q')
@@ -172,9 +180,9 @@ class NumberTestCase(unittest.TestCase):
             a[0] = 42
             self.assertEqual(v.value, a[0])
 
-
     def test_float_from_address(self):
         from array import array
+
         for t in float_types:
             a = array(t._type_, [3.14])
             v = t.from_address(a.buffer_info()[0])
@@ -188,14 +196,14 @@ class NumberTestCase(unittest.TestCase):
         from ctypes import c_char
         from array import array
 
-        a = array('b', [0])
-        a[0] = ord('x')
+        a = array("b", [0])
+        a[0] = ord("x")
         v = c_char.from_address(a.buffer_info()[0])
-        self.assertEqual(v.value, b'x')
+        self.assertEqual(v.value, b"x")
         self.assertIs(type(v), c_char)
 
-        a[0] = ord('?')
-        self.assertEqual(v.value, b'?')
+        a[0] = ord("?")
+        self.assertEqual(v.value, b"?")
 
     def test_init(self):
         # c_int() can be initialized from Python's int, and c_int.
@@ -205,14 +213,15 @@ class NumberTestCase(unittest.TestCase):
 
     def test_float_overflow(self):
         import sys
+
         big_int = int(sys.float_info.max) * 2
         for t in float_types + [c_longdouble]:
             self.assertRaises(OverflowError, t, big_int)
-            if (hasattr(t, "__ctype_be__")):
+            if hasattr(t, "__ctype_be__"):
                 self.assertRaises(OverflowError, t.__ctype_be__, big_int)
-            if (hasattr(t, "__ctype_le__")):
+            if hasattr(t, "__ctype_le__"):
                 self.assertRaises(OverflowError, t.__ctype_le__, big_int)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

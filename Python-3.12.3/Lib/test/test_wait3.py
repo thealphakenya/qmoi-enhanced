@@ -1,5 +1,4 @@
-"""This test checks for correct wait3() behavior.
-"""
+"""This test checks for correct wait3() behavior."""
 
 import os
 import subprocess
@@ -11,8 +10,9 @@ from test import support
 if not support.has_fork_support:
     raise unittest.SkipTest("requires working os.fork()")
 
-if not hasattr(os, 'wait3'):
+if not hasattr(os, "wait3"):
     raise unittest.SkipTest("os.wait3 not defined")
+
 
 class Wait3Test(ForkWait):
     def wait_impl(self, cpid, *, exitcode):
@@ -34,7 +34,7 @@ class Wait3Test(ForkWait):
         # Ensure a successful wait3() call where no child was ready to report
         # its exit status does not return uninitialized memory in the rusage
         # structure. See bpo-36279.
-        args = [sys.executable, '-c', 'import sys; sys.stdin.read()']
+        args = [sys.executable, "-c", "import sys; sys.stdin.read()"]
         proc = subprocess.Popen(args, stdin=subprocess.PIPE)
         try:
             pid, status, rusage = os.wait3(os.WNOHANG)
@@ -48,6 +48,7 @@ class Wait3Test(ForkWait):
 
 def tearDownModule():
     support.reap_children()
+
 
 if __name__ == "__main__":
     unittest.main()

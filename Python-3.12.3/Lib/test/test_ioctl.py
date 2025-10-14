@@ -3,9 +3,10 @@ import unittest
 from test.support import get_attribute
 from test.support.import_helper import import_module
 import os, struct
-fcntl = import_module('fcntl')
-termios = import_module('termios')
-get_attribute(termios, 'TIOCGPGRP') #Can't run tests without this feature
+
+fcntl = import_module("fcntl")
+termios = import_module("termios")
+get_attribute(termios, "TIOCGPGRP")  # Can't run tests without this feature
 
 try:
     tty = open("/dev/tty", "rb")
@@ -17,14 +18,16 @@ else:
         r = fcntl.ioctl(tty, termios.TIOCGPGRP, "    ")
     rpgrp = struct.unpack("i", r)[0]
     if rpgrp not in (os.getpgrp(), os.getsid(0)):
-        raise unittest.SkipTest("Neither the process group nor the session "
-                                "are attached to /dev/tty")
+        raise unittest.SkipTest(
+            "Neither the process group nor the session " "are attached to /dev/tty"
+        )
     del tty, r, rpgrp
 
 try:
     import pty
 except ImportError:
     pty = None
+
 
 class IoctlTests(unittest.TestCase):
     def test_ioctl(self):
@@ -37,7 +40,7 @@ class IoctlTests(unittest.TestCase):
             self.assertIn(rpgrp, ids)
 
     def _check_ioctl_mutate_len(self, nbytes=None):
-        buf = array.array('i')
+        buf = array.array("i")
         intsize = buf.itemsize
         ids = (os.getpgrp(), os.getsid(0))
         # A fill value unlikely to be in `ids`
@@ -45,7 +48,7 @@ class IoctlTests(unittest.TestCase):
         if nbytes is not None:
             # Extend the buffer so that it is exactly `nbytes` bytes long
             buf.extend([fill] * (nbytes // intsize))
-            self.assertEqual(len(buf) * intsize, nbytes)   # sanity check
+            self.assertEqual(len(buf) * intsize, nbytes)  # sanity check
         else:
             buf.append(fill)
         with open("/dev/tty", "rb") as tty:
@@ -68,18 +71,19 @@ class IoctlTests(unittest.TestCase):
 
     def test_ioctl_signed_unsigned_code_param(self):
         if not pty:
-            raise unittest.SkipTest('pty module required')
+            raise unittest.SkipTest("pty module required")
         mfd, sfd = pty.openpty()
         try:
             if termios.TIOCSWINSZ < 0:
                 set_winsz_opcode_maybe_neg = termios.TIOCSWINSZ
-                set_winsz_opcode_pos = termios.TIOCSWINSZ & 0xffffffff
+                set_winsz_opcode_pos = termios.TIOCSWINSZ & 0xFFFFFFFF
             else:
                 set_winsz_opcode_pos = termios.TIOCSWINSZ
-                set_winsz_opcode_maybe_neg, = struct.unpack("i",
-                        struct.pack("I", termios.TIOCSWINSZ))
+                (set_winsz_opcode_maybe_neg,) = struct.unpack(
+                    "i", struct.pack("I", termios.TIOCSWINSZ)
+                )
 
-            our_winsz = struct.pack("HHHH",80,25,0,0)
+            our_winsz = struct.pack("HHHH", 80, 25, 0, 0)
             # test both with a positive and potentially negative ioctl code
             new_winsz = fcntl.ioctl(mfd, set_winsz_opcode_pos, our_winsz)
             new_winsz = fcntl.ioctl(mfd, set_winsz_opcode_maybe_neg, our_winsz)

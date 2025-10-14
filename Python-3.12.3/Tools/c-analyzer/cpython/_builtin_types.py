@@ -8,10 +8,12 @@ from . import REPO_ROOT
 from ._files import iter_header_files, iter_filenames
 
 
-CAPI_PREFIX = os.path.join('Include', '')
-INTERNAL_PREFIX = os.path.join('Include', 'internal', '')
+CAPI_PREFIX = os.path.join("Include", "")
+INTERNAL_PREFIX = os.path.join("Include", "internal", "")
 
-REGEX = re.compile(textwrap.dedent(rf'''
+REGEX = re.compile(
+    textwrap.dedent(
+        rf"""
     (?:
         ^
         (?:
@@ -60,47 +62,54 @@ REGEX = re.compile(textwrap.dedent(rf'''
              )
          )
     )
-'''), re.VERBOSE)
+"""
+    ),
+    re.VERBOSE,
+)
 
 
 def _parse_line(line):
     m = re.match(REGEX, line)
     if not m:
         return None
-    (static, extern, capi,
-     name,
-     def_, decl,
-     excname,
-     ) = m.groups()
+    (
+        static,
+        extern,
+        capi,
+        name,
+        def_,
+        decl,
+        excname,
+    ) = m.groups()
     if def_:
         isdecl = False
         if extern or capi:
             raise NotImplementedError(line)
-        kind = 'static' if static else None
+        kind = "static" if static else None
     elif excname:
-        name = f'_PyExc_{excname}'
+        name = f"_PyExc_{excname}"
         isdecl = False
-        kind = 'static'
+        kind = "static"
     else:
         isdecl = True
         if static:
-            kind = 'static'
+            kind = "static"
         elif extern:
-            kind = 'extern'
+            kind = "extern"
         elif capi:
-            kind = 'capi'
+            kind = "capi"
         else:
             kind = None
     return name, isdecl, kind
 
 
-class BuiltinTypeDecl(namedtuple('BuiltinTypeDecl', 'file lno name kind')):
+class BuiltinTypeDecl(namedtuple("BuiltinTypeDecl", "file lno name kind")):
 
     KINDS = {
-        'static',
-        'extern',
-        'capi',
-        'forward',
+        "static",
+        "extern",
+        "capi",
+        "forward",
     }
 
     @classmethod
@@ -117,23 +126,23 @@ class BuiltinTypeDecl(namedtuple('BuiltinTypeDecl', 'file lno name kind')):
     @classmethod
     def from_parsed(cls, name, kind, filename, lno):
         if not kind:
-            kind = 'forward'
+            kind = "forward"
         return cls.from_values(filename, lno, name, kind)
 
     @classmethod
     def from_values(cls, filename, lno, name, kind):
         if kind not in cls.KINDS:
-            raise ValueError(f'unsupported kind {kind!r}')
+            raise ValueError(f"unsupported kind {kind!r}")
         self = cls(filename, lno, name, kind)
-        if self.kind not in ('extern', 'capi') and self.api:
+        if self.kind not in ("extern", "capi") and self.api:
             raise NotImplementedError(self)
-        elif self.kind == 'capi' and not self.api:
+        elif self.kind == "capi" and not self.api:
             raise NotImplementedError(self)
         return self
 
     @property
     def relfile(self):
-        return self.file[len(REPO_ROOT) + 1:]
+        return self.file[len(REPO_ROOT) + 1 :]
 
     @property
     def api(self):
@@ -145,18 +154,18 @@ class BuiltinTypeDecl(namedtuple('BuiltinTypeDecl', 'file lno name kind')):
 
     @property
     def private(self):
-        if not self.name.startswith('_'):
+        if not self.name.startswith("_"):
             return False
         return self.api and not self.internal
 
     @property
     def public(self):
-        if self.kind != 'capi':
+        if self.kind != "capi":
             return False
         return not self.internal and not self.private
 
 
-class BuiltinTypeInfo(namedtuple('BuiltinTypeInfo', 'file lno name static decl')):
+class BuiltinTypeInfo(namedtuple("BuiltinTypeInfo", "file lno name static decl")):
 
     @classmethod
     def from_line(cls, line, filename, lno, *, decls=None):
@@ -172,7 +181,7 @@ class BuiltinTypeInfo(namedtuple('BuiltinTypeInfo', 'file lno name static decl')
     def from_parsed(cls, name, kind, filename, lno, *, decls=None):
         if not kind:
             static = False
-        elif kind == 'static':
+        elif kind == "static":
             static = True
         else:
             raise NotImplementedError((filename, line, kind))
@@ -181,7 +190,7 @@ class BuiltinTypeInfo(namedtuple('BuiltinTypeInfo', 'file lno name static decl')
 
     @property
     def relfile(self):
-        return self.file[len(REPO_ROOT) + 1:]
+        return self.file[len(REPO_ROOT) + 1 :]
 
     @property
     def exported(self):
@@ -213,26 +222,26 @@ class BuiltinTypeInfo(namedtuple('BuiltinTypeInfo', 'file lno name static decl')
 
     @property
     def inmodule(self):
-        return self.relfile.startswith('Modules' + os.path.sep)
+        return self.relfile.startswith("Modules" + os.path.sep)
 
     def render_rowvalues(self, kinds):
         row = {
-            'name': self.name,
-            **{k: '' for k in kinds},
-            'filename': f'{self.relfile}:{self.lno}',
+            "name": self.name,
+            **{k: "" for k in kinds},
+            "filename": f"{self.relfile}:{self.lno}",
         }
         if self.static:
-            kind = 'static'
+            kind = "static"
         else:
             if self.internal:
-                kind = 'internal'
+                kind = "internal"
             elif self.private:
-                kind = 'private'
+                kind = "private"
             elif self.public:
-                kind = 'public'
+                kind = "public"
             else:
-                kind = 'global'
-        row['kind'] = kind
+                kind = "global"
+        row["kind"] = kind
         row[kind] = kind
         return row
 
@@ -240,13 +249,13 @@ class BuiltinTypeInfo(namedtuple('BuiltinTypeInfo', 'file lno name static decl')
 def _ensure_decl(decl, decls):
     prev = decls.get(decl.name)
     if prev:
-        if decl.kind == 'forward':
+        if decl.kind == "forward":
             return None
-        if prev.kind != 'forward':
+        if prev.kind != "forward":
             if decl.kind == prev.kind and decl.file == prev.file:
                 assert decl.lno != prev.lno, (decl, prev)
                 return None
-            raise NotImplementedError(f'duplicate {decl} (was {prev}')
+            raise NotImplementedError(f"duplicate {decl} (was {prev}")
     decls[decl.name] = decl
 
 
@@ -263,7 +272,7 @@ def iter_builtin_types(filenames=None):
                 _ensure_decl(decl, decls)
     srcfiles = []
     for filename in iter_filenames():
-        if filename.endswith('.c'):
+        if filename.endswith(".c"):
             srcfiles.append(filename)
             continue
         if filename in seen:
@@ -290,8 +299,12 @@ def iter_builtin_types(filenames=None):
                     _ensure_decl(decl, localdecls)
                 else:
                     builtin = BuiltinTypeInfo.from_parsed(
-                            name, kind, filename, lno,
-                            decls=decls if name in decls else localdecls)
+                        name,
+                        kind,
+                        filename,
+                        lno,
+                        decls=decls if name in decls else localdecls,
+                    )
                     if not builtin:
                         raise NotImplementedError((filename, line))
                     yield builtin
@@ -302,17 +315,19 @@ def resolve_matcher(showmodules=False):
         if not info.inmodule:
             return True
         if log is not None:
-            log(f'ignored {info.name!r}')
+            log(f"ignored {info.name!r}")
         return False
+
     return match
 
 
 ##################################
 # CLI rendering
 
+
 def resolve_format(fmt):
     if not fmt:
-        return 'table'
+        return "table"
     elif isinstance(fmt, str) and fmt in _FORMATS:
         return fmt
     else:
@@ -325,7 +340,7 @@ def get_renderer(fmt):
         try:
             return _FORMATS[fmt]
         except KeyError:
-            raise ValueError(f'unsupported format {fmt!r}')
+            raise ValueError(f"unsupported format {fmt!r}")
     else:
         raise NotImplementedError(fmt)
 
@@ -333,25 +348,26 @@ def get_renderer(fmt):
 def render_table(types):
     types = sorted(types, key=(lambda t: t.name))
     colspecs = tables.resolve_columns(
-            'name:<33 static:^ global:^ internal:^ private:^ public:^ filename:<30')
+        "name:<33 static:^ global:^ internal:^ private:^ public:^ filename:<30"
+    )
     header, div, rowfmt = tables.build_table(colspecs)
-    leader = ' ' * sum(c.width+2 for c in colspecs[:3]) + '   '
+    leader = " " * sum(c.width + 2 for c in colspecs[:3]) + "   "
     yield leader + f'{"API":^29}'
-    yield leader + '-' * 29
+    yield leader + "-" * 29
     yield header
     yield div
     kinds = [c[0] for c in colspecs[1:-1]]
     counts = {k: 0 for k in kinds}
-    base = {k: '' for k in kinds}
+    base = {k: "" for k in kinds}
     for t in types:
         row = t.render_rowvalues(kinds)
-        kind = row['kind']
+        kind = row["kind"]
         yield rowfmt.format(**row)
         counts[kind] += 1
-    yield ''
-    yield f'total: {sum(counts.values()):>3}'
+    yield ""
+    yield f"total: {sum(counts.values()):>3}"
     for kind in kinds:
-        yield f'  {kind:>10}: {counts[kind]:>3}'
+        yield f"  {kind:>10}: {counts[kind]:>3}"
 
 
 def render_repr(types):
@@ -360,6 +376,6 @@ def render_repr(types):
 
 
 _FORMATS = {
-    'table': render_table,
-    'repr': render_repr,
+    "table": render_table,
+    "repr": render_repr,
 }

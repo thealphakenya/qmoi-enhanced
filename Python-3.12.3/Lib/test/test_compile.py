@@ -10,9 +10,14 @@ import types
 import textwrap
 import warnings
 from test import support
-from test.support import (script_helper, requires_debug_ranges,
-                          requires_specialization, C_RECURSION_LIMIT)
+from test.support import (
+    script_helper,
+    requires_debug_ranges,
+    requires_specialization,
+    C_RECURSION_LIMIT,
+)
 from test.support.os_helper import FakePath
+
 
 class TestSpecifics(unittest.TestCase):
 
@@ -37,21 +42,22 @@ class TestSpecifics(unittest.TestCase):
 
     def test_debug_assignment(self):
         # catch assignments to __debug__
-        self.assertRaises(SyntaxError, compile, '__debug__ = 1', '?', 'single')
+        self.assertRaises(SyntaxError, compile, "__debug__ = 1", "?", "single")
         import builtins
+
         prev = builtins.__debug__
-        setattr(builtins, '__debug__', 'sure')
+        setattr(builtins, "__debug__", "sure")
         self.assertEqual(__debug__, prev)
-        setattr(builtins, '__debug__', prev)
+        setattr(builtins, "__debug__", prev)
 
     def test_argument_handling(self):
         # detect duplicate positional and keyword arguments
-        self.assertRaises(SyntaxError, eval, 'lambda a,a:0')
-        self.assertRaises(SyntaxError, eval, 'lambda a,a=1:0')
-        self.assertRaises(SyntaxError, eval, 'lambda a=1,a=1:0')
-        self.assertRaises(SyntaxError, exec, 'def f(a, a): pass')
-        self.assertRaises(SyntaxError, exec, 'def f(a = 0, a = 1): pass')
-        self.assertRaises(SyntaxError, exec, 'def f(a): global a; a = 1')
+        self.assertRaises(SyntaxError, eval, "lambda a,a:0")
+        self.assertRaises(SyntaxError, eval, "lambda a,a=1:0")
+        self.assertRaises(SyntaxError, eval, "lambda a=1,a=1:0")
+        self.assertRaises(SyntaxError, exec, "def f(a, a): pass")
+        self.assertRaises(SyntaxError, exec, "def f(a = 0, a = 1): pass")
+        self.assertRaises(SyntaxError, exec, "def f(a): global a; a = 1")
 
     def test_syntax_error(self):
         self.assertRaises(SyntaxError, compile, "1+*3", "filename", "exec")
@@ -60,61 +66,68 @@ class TestSpecifics(unittest.TestCase):
         self.assertRaises(SyntaxError, compile, "f(None=1)", "<string>", "exec")
 
     def test_duplicate_global_local(self):
-        self.assertRaises(SyntaxError, exec, 'def f(a): global a; a = 1')
+        self.assertRaises(SyntaxError, exec, "def f(a): global a; a = 1")
 
     def test_exec_with_general_mapping_for_locals(self):
 
         class M:
             "Test mapping interface versus possible calls from eval()."
+
             def __getitem__(self, key):
-                if key == 'a':
+                if key == "a":
                     return 12
                 raise KeyError
+
             def __setitem__(self, key, value):
                 self.results = (key, value)
+
             def keys(self):
-                return list('xyz')
+                return list("xyz")
 
         m = M()
         g = globals()
-        exec('z = a', g, m)
-        self.assertEqual(m.results, ('z', 12))
+        exec("z = a", g, m)
+        self.assertEqual(m.results, ("z", 12))
         try:
-            exec('z = b', g, m)
+            exec("z = b", g, m)
         except NameError:
             pass
         else:
-            self.fail('Did not detect a KeyError')
-        exec('z = dir()', g, m)
-        self.assertEqual(m.results, ('z', list('xyz')))
-        exec('z = globals()', g, m)
-        self.assertEqual(m.results, ('z', g))
-        exec('z = locals()', g, m)
-        self.assertEqual(m.results, ('z', m))
-        self.assertRaises(TypeError, exec, 'z = b', m)
+            self.fail("Did not detect a KeyError")
+        exec("z = dir()", g, m)
+        self.assertEqual(m.results, ("z", list("xyz")))
+        exec("z = globals()", g, m)
+        self.assertEqual(m.results, ("z", g))
+        exec("z = locals()", g, m)
+        self.assertEqual(m.results, ("z", m))
+        self.assertRaises(TypeError, exec, "z = b", m)
 
         class A:
             "Non-mapping"
+
             pass
+
         m = A()
-        self.assertRaises(TypeError, exec, 'z = a', g, m)
+        self.assertRaises(TypeError, exec, "z = a", g, m)
 
         # Verify that dict subclasses work as well
         class D(dict):
             def __getitem__(self, key):
-                if key == 'a':
+                if key == "a":
                     return 12
                 return dict.__getitem__(self, key)
+
         d = D()
-        exec('z = a', g, d)
-        self.assertEqual(d['z'], 12)
+        exec("z = a", g, d)
+        self.assertEqual(d["z"], 12)
 
     @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
     def test_extended_arg(self):
         repeat = int(C_RECURSION_LIMIT * 0.9)
-        longexpr = 'x = x or ' + '-x' * repeat
+        longexpr = "x = x or " + "-x" * repeat
         g = {}
-        code = textwrap.dedent('''
+        code = textwrap.dedent(
+            """
             def f(x):
                 %s
                 %s
@@ -131,12 +144,14 @@ class TestSpecifics(unittest.TestCase):
                     x -= 1
                     # EXTENDED_ARG/JUMP_ABSOLUTE here
                 return x
-            ''' % ((longexpr,)*10))
+            """
+            % ((longexpr,) * 10)
+        )
         exec(code, g)
-        self.assertEqual(g['f'](5), 0)
+        self.assertEqual(g["f"](5), 0)
 
     def test_argument_order(self):
-        self.assertRaises(SyntaxError, exec, 'def f(a=1, b): pass')
+        self.assertRaises(SyntaxError, exec, "def f(a=1, b): pass")
 
     def test_float_literals(self):
         # testing bad float literals
@@ -147,11 +162,13 @@ class TestSpecifics(unittest.TestCase):
 
     def test_indentation(self):
         # testing compile() of indented block w/o trailing newline"
-        s = textwrap.dedent("""
+        s = textwrap.dedent(
+            """
             if 1:
                 if 2:
                     pass
-            """)
+            """
+        )
         compile(s, "<string>", "exec")
 
     # This test is probably specific to CPython and may not generalize
@@ -160,23 +177,42 @@ class TestSpecifics(unittest.TestCase):
     # in tracebacks are still produced.
     def test_leading_newlines(self):
         s256 = "".join(["\n"] * 256 + ["spam"])
-        co = compile(s256, 'fn', 'exec')
+        co = compile(s256, "fn", "exec")
         self.assertEqual(co.co_firstlineno, 1)
         lines = [line for _, _, line in co.co_lines()]
         self.assertEqual(lines, [0, 257])
 
     def test_literals_with_leading_zeroes(self):
-        for arg in ["077787", "0xj", "0x.", "0e",  "090000000000000",
-                    "080000000000000", "000000000000009", "000000000000008",
-                    "0b42", "0BADCAFE", "0o123456789", "0b1.1", "0o4.2",
-                    "0b101j", "0o153j", "0b100e1", "0o777e1", "0777",
-                    "000777", "000000000000007"]:
+        for arg in [
+            "077787",
+            "0xj",
+            "0x.",
+            "0e",
+            "090000000000000",
+            "080000000000000",
+            "000000000000009",
+            "000000000000008",
+            "0b42",
+            "0BADCAFE",
+            "0o123456789",
+            "0b1.1",
+            "0o4.2",
+            "0b101j",
+            "0o153j",
+            "0b100e1",
+            "0o777e1",
+            "0777",
+            "000777",
+            "000000000000007",
+        ]:
             self.assertRaises(SyntaxError, eval, arg)
 
         self.assertEqual(eval("0xff"), 255)
         self.assertEqual(eval("0777."), 777)
         self.assertEqual(eval("0777.0"), 777)
-        self.assertEqual(eval("000000000000000000000000000000000000000000000000000777e0"), 777)
+        self.assertEqual(
+            eval("000000000000000000000000000000000000000000000000000777e0"), 777
+        )
         self.assertEqual(eval("0777e1"), 7770)
         self.assertEqual(eval("0e0"), 0)
         self.assertEqual(eval("0000e-012"), 0)
@@ -186,13 +222,15 @@ class TestSpecifics(unittest.TestCase):
         self.assertEqual(eval("00j"), 0j)
         self.assertEqual(eval("00.0"), 0)
         self.assertEqual(eval("0e3"), 0)
-        self.assertEqual(eval("090000000000000."), 90000000000000.)
-        self.assertEqual(eval("090000000000000.0000000000000000000000"), 90000000000000.)
-        self.assertEqual(eval("090000000000000e0"), 90000000000000.)
-        self.assertEqual(eval("090000000000000e-0"), 90000000000000.)
+        self.assertEqual(eval("090000000000000."), 90000000000000.0)
+        self.assertEqual(
+            eval("090000000000000.0000000000000000000000"), 90000000000000.0
+        )
+        self.assertEqual(eval("090000000000000e0"), 90000000000000.0)
+        self.assertEqual(eval("090000000000000e-0"), 90000000000000.0)
         self.assertEqual(eval("090000000000000j"), 90000000000000j)
-        self.assertEqual(eval("000000000000008."), 8.)
-        self.assertEqual(eval("000000000000009."), 9.)
+        self.assertEqual(eval("000000000000008."), 8.0)
+        self.assertEqual(eval("000000000000009."), 9.0)
         self.assertEqual(eval("0b101010"), 42)
         self.assertEqual(eval("-0b000000000010"), -2)
         self.assertEqual(eval("0o777"), 511)
@@ -203,24 +241,24 @@ class TestSpecifics(unittest.TestCase):
         source = f"a = 1\nb = 2\nc = {'3'*n}\nd = 4"
         with support.adjust_int_max_str_digits(n):
             compile(source, "<long_int_pass>", "exec")  # no errors.
-        with support.adjust_int_max_str_digits(n-1):
+        with support.adjust_int_max_str_digits(n - 1):
             with self.assertRaises(SyntaxError) as err_ctx:
                 compile(source, "<long_int_fail>", "exec")
             exc = err_ctx.exception
             self.assertEqual(exc.lineno, 3)
-            self.assertIn('Exceeds the limit ', str(exc))
-            self.assertIn(' Consider hexadecimal ', str(exc))
+            self.assertIn("Exceeds the limit ", str(exc))
+            self.assertIn(" Consider hexadecimal ", str(exc))
 
     def test_unary_minus(self):
         # Verify treatment of unary minus on negative numbers SF bug #660455
         if sys.maxsize == 2147483647:
             # 32-bit machine
-            all_one_bits = '0xffffffff'
+            all_one_bits = "0xffffffff"
             self.assertEqual(eval(all_one_bits), 4294967295)
             self.assertEqual(eval("-" + all_one_bits), -4294967295)
         elif sys.maxsize == 9223372036854775807:
             # 64-bit machine
-            all_one_bits = '0xffffffffffffffff'
+            all_one_bits = "0xffffffffffffffff"
             self.assertEqual(eval(all_one_bits), 18446744073709551615)
             self.assertEqual(eval("-" + all_one_bits), -18446744073709551615)
         else:
@@ -231,6 +269,7 @@ class TestSpecifics(unittest.TestCase):
         self.assertIsInstance(eval("%s" % (-sys.maxsize - 2)), int)
 
     if sys.maxsize == 9223372036854775807:
+
         def test_32_63_bit_values(self):
             a = +4294967296  # 1 << 32
             b = -4294967296  # 1 << 32
@@ -247,76 +286,76 @@ class TestSpecifics(unittest.TestCase):
 
     def test_sequence_unpacking_error(self):
         # Verify sequence packing/unpacking with "or".  SF bug #757818
-        i,j = (1, -1) or (-1, 1)
+        i, j = (1, -1) or (-1, 1)
         self.assertEqual(i, 1)
         self.assertEqual(j, -1)
 
     def test_none_assignment(self):
         stmts = [
-            'None = 0',
-            'None += 0',
-            '__builtins__.None = 0',
-            'def None(): pass',
-            'class None: pass',
-            '(a, None) = 0, 0',
-            'for None in range(10): pass',
-            'def f(None): pass',
-            'import None',
-            'import x as None',
-            'from x import None',
-            'from x import y as None'
+            "None = 0",
+            "None += 0",
+            "__builtins__.None = 0",
+            "def None(): pass",
+            "class None: pass",
+            "(a, None) = 0, 0",
+            "for None in range(10): pass",
+            "def f(None): pass",
+            "import None",
+            "import x as None",
+            "from x import None",
+            "from x import y as None",
         ]
         for stmt in stmts:
             stmt += "\n"
-            self.assertRaises(SyntaxError, compile, stmt, 'tmp', 'single')
-            self.assertRaises(SyntaxError, compile, stmt, 'tmp', 'exec')
+            self.assertRaises(SyntaxError, compile, stmt, "tmp", "single")
+            self.assertRaises(SyntaxError, compile, stmt, "tmp", "exec")
 
     def test_import(self):
         succeed = [
-            'import sys',
-            'import os, sys',
-            'import os as bar',
-            'import os.path as bar',
-            'from __future__ import nested_scopes, generators',
-            'from __future__ import (nested_scopes,\ngenerators)',
-            'from __future__ import (nested_scopes,\ngenerators,)',
-            'from sys import stdin, stderr, stdout',
-            'from sys import (stdin, stderr,\nstdout)',
-            'from sys import (stdin, stderr,\nstdout,)',
-            'from sys import (stdin\n, stderr, stdout)',
-            'from sys import (stdin\n, stderr, stdout,)',
-            'from sys import stdin as si, stdout as so, stderr as se',
-            'from sys import (stdin as si, stdout as so, stderr as se)',
-            'from sys import (stdin as si, stdout as so, stderr as se,)',
-            ]
+            "import sys",
+            "import os, sys",
+            "import os as bar",
+            "import os.path as bar",
+            "from __future__ import nested_scopes, generators",
+            "from __future__ import (nested_scopes,\ngenerators)",
+            "from __future__ import (nested_scopes,\ngenerators,)",
+            "from sys import stdin, stderr, stdout",
+            "from sys import (stdin, stderr,\nstdout)",
+            "from sys import (stdin, stderr,\nstdout,)",
+            "from sys import (stdin\n, stderr, stdout)",
+            "from sys import (stdin\n, stderr, stdout,)",
+            "from sys import stdin as si, stdout as so, stderr as se",
+            "from sys import (stdin as si, stdout as so, stderr as se)",
+            "from sys import (stdin as si, stdout as so, stderr as se,)",
+        ]
         fail = [
-            'import (os, sys)',
-            'import (os), (sys)',
-            'import ((os), (sys))',
-            'import (sys',
-            'import sys)',
-            'import (os,)',
-            'import os As bar',
-            'import os.path a bar',
-            'from sys import stdin As stdout',
-            'from sys import stdin a stdout',
-            'from (sys) import stdin',
-            'from __future__ import (nested_scopes',
-            'from __future__ import nested_scopes)',
-            'from __future__ import nested_scopes,\ngenerators',
-            'from sys import (stdin',
-            'from sys import stdin)',
-            'from sys import stdin, stdout,\nstderr',
-            'from sys import stdin si',
-            'from sys import stdin,',
-            'from sys import (*)',
-            'from sys import (stdin,, stdout, stderr)',
-            'from sys import (stdin, stdout),',
-            ]
+            "import (os, sys)",
+            "import (os), (sys)",
+            "import ((os), (sys))",
+            "import (sys",
+            "import sys)",
+            "import (os,)",
+            "import os As bar",
+            "import os.path a bar",
+            "from sys import stdin As stdout",
+            "from sys import stdin a stdout",
+            "from (sys) import stdin",
+            "from __future__ import (nested_scopes",
+            "from __future__ import nested_scopes)",
+            "from __future__ import nested_scopes,\ngenerators",
+            "from sys import (stdin",
+            "from sys import stdin)",
+            "from sys import stdin, stdout,\nstderr",
+            "from sys import stdin si",
+            "from sys import stdin,",
+            "from sys import (*)",
+            "from sys import (stdin,, stdout, stderr)",
+            "from sys import (stdin, stdout),",
+        ]
         for stmt in succeed:
-            compile(stmt, 'tmp', 'exec')
+            compile(stmt, "tmp", "exec")
         for stmt in fail:
-            self.assertRaises(SyntaxError, compile, stmt, 'tmp', 'exec')
+            self.assertRaises(SyntaxError, compile, stmt, "tmp", "exec")
 
     def test_for_distinct_code_objects(self):
         # SF bug 1048870
@@ -324,6 +363,7 @@ class TestSpecifics(unittest.TestCase):
             f1 = lambda x=1: x
             f2 = lambda x=2: x
             return f1, f2
+
         f1, f2 = f()
         self.assertNotEqual(id(f1.__code__), id(f2.__code__))
 
@@ -332,25 +372,25 @@ class TestSpecifics(unittest.TestCase):
         self.assertIsNone(l.__doc__)
 
     def test_encoding(self):
-        code = b'# -*- coding: badencoding -*-\npass\n'
-        self.assertRaises(SyntaxError, compile, code, 'tmp', 'exec')
+        code = b"# -*- coding: badencoding -*-\npass\n"
+        self.assertRaises(SyntaxError, compile, code, "tmp", "exec")
         code = '# -*- coding: badencoding -*-\n"\xc2\xa4"\n'
-        compile(code, 'tmp', 'exec')
-        self.assertEqual(eval(code), '\xc2\xa4')
+        compile(code, "tmp", "exec")
+        self.assertEqual(eval(code), "\xc2\xa4")
         code = '"\xc2\xa4"\n'
-        self.assertEqual(eval(code), '\xc2\xa4')
+        self.assertEqual(eval(code), "\xc2\xa4")
         code = b'"\xc2\xa4"\n'
-        self.assertEqual(eval(code), '\xa4')
+        self.assertEqual(eval(code), "\xa4")
         code = b'# -*- coding: latin1 -*-\n"\xc2\xa4"\n'
-        self.assertEqual(eval(code), '\xc2\xa4')
+        self.assertEqual(eval(code), "\xc2\xa4")
         code = b'# -*- coding: utf-8 -*-\n"\xc2\xa4"\n'
-        self.assertEqual(eval(code), '\xa4')
+        self.assertEqual(eval(code), "\xa4")
         code = b'# -*- coding: iso8859-15 -*-\n"\xc2\xa4"\n'
-        self.assertEqual(eval(code), '\xc2\u20ac')
+        self.assertEqual(eval(code), "\xc2\u20ac")
         code = '"""\\\n# -*- coding: iso8859-15 -*-\n\xc2\xa4"""\n'
-        self.assertEqual(eval(code), '# -*- coding: iso8859-15 -*-\n\xc2\xa4')
+        self.assertEqual(eval(code), "# -*- coding: iso8859-15 -*-\n\xc2\xa4")
         code = b'"""\\\n# -*- coding: iso8859-15 -*-\n\xc2\xa4"""\n'
-        self.assertEqual(eval(code), '# -*- coding: iso8859-15 -*-\n\xa4')
+        self.assertEqual(eval(code), "# -*- coding: iso8859-15 -*-\n\xa4")
 
     def test_subscripts(self):
         # SF bug 1448804
@@ -358,14 +398,19 @@ class TestSpecifics(unittest.TestCase):
         class str_map(object):
             def __init__(self):
                 self.data = {}
+
             def __getitem__(self, key):
                 return self.data[str(key)]
+
             def __setitem__(self, key, value):
                 self.data[str(key)] = value
+
             def __delitem__(self, key):
                 del self.data[str(key)]
+
             def __contains__(self, key):
                 return str(key) in self.data
+
         d = str_map()
         # Index
         d[1] = 1
@@ -427,8 +472,8 @@ class TestSpecifics(unittest.TestCase):
     def test_annotation_limit(self):
         # more than 255 annotations, should compile ok
         s = "def f(%s): pass"
-        s %= ', '.join('a%d:%d' % (i,i) for i in range(300))
-        compile(s, '?', 'exec')
+        s %= ", ".join("a%d:%d" % (i, i) for i in range(300))
+        compile(s, "?", "exec")
 
     def test_mangling(self):
         class A:
@@ -472,38 +517,38 @@ class TestSpecifics(unittest.TestCase):
 
     def test_compile_ast(self):
         fname = __file__
-        if fname.lower().endswith('pyc'):
+        if fname.lower().endswith("pyc"):
             fname = fname[:-1]
-        with open(fname, encoding='utf-8') as f:
+        with open(fname, encoding="utf-8") as f:
             fcontents = f.read()
         sample_code = [
-            ['<assign>', 'x = 5'],
-            ['<ifblock>', """if True:\n    pass\n"""],
-            ['<forblock>', """for n in [1, 2, 3]:\n    print(n)\n"""],
-            ['<deffunc>', """def foo():\n    pass\nfoo()\n"""],
+            ["<assign>", "x = 5"],
+            ["<ifblock>", """if True:\n    pass\n"""],
+            ["<forblock>", """for n in [1, 2, 3]:\n    print(n)\n"""],
+            ["<deffunc>", """def foo():\n    pass\nfoo()\n"""],
             [fname, fcontents],
         ]
 
         for fname, code in sample_code:
-            co1 = compile(code, '%s1' % fname, 'exec')
-            ast = compile(code, '%s2' % fname, 'exec', _ast.PyCF_ONLY_AST)
+            co1 = compile(code, "%s1" % fname, "exec")
+            ast = compile(code, "%s2" % fname, "exec", _ast.PyCF_ONLY_AST)
             self.assertTrue(type(ast) == _ast.Module)
-            co2 = compile(ast, '%s3' % fname, 'exec')
+            co2 = compile(ast, "%s3" % fname, "exec")
             self.assertEqual(co1, co2)
             # the code object's filename comes from the second compilation step
-            self.assertEqual(co2.co_filename, '%s3' % fname)
+            self.assertEqual(co2.co_filename, "%s3" % fname)
 
         # raise exception when node type doesn't match with compile mode
-        co1 = compile('print(1)', '<string>', 'exec', _ast.PyCF_ONLY_AST)
-        self.assertRaises(TypeError, compile, co1, '<ast>', 'eval')
+        co1 = compile("print(1)", "<string>", "exec", _ast.PyCF_ONLY_AST)
+        self.assertRaises(TypeError, compile, co1, "<ast>", "eval")
 
         # raise exception when node type is no start node
-        self.assertRaises(TypeError, compile, _ast.If(), '<ast>', 'exec')
+        self.assertRaises(TypeError, compile, _ast.If(), "<ast>", "exec")
 
         # raise exception when node has invalid children
         ast = _ast.Module()
         ast.body = [_ast.BoolOp()]
-        self.assertRaises(TypeError, compile, ast, '<ast>', 'exec')
+        self.assertRaises(TypeError, compile, ast, "<ast>", "exec")
 
     def test_compile_invalid_typealias(self):
         # gh-109341
@@ -537,13 +582,13 @@ class TestSpecifics(unittest.TestCase):
         self.assertEqual(d, {1: 2, 3: 4})
 
     def test_compile_filename(self):
-        for filename in 'file.py', b'file.py':
-            code = compile('pass', filename, 'exec')
-            self.assertEqual(code.co_filename, 'file.py')
-        for filename in bytearray(b'file.py'), memoryview(b'file.py'):
+        for filename in "file.py", b"file.py":
+            code = compile("pass", filename, "exec")
+            self.assertEqual(code.co_filename, "file.py")
+        for filename in bytearray(b"file.py"), memoryview(b"file.py"):
             with self.assertRaises(TypeError):
-                compile('pass', filename, 'exec')
-        self.assertRaises(TypeError, compile, 'pass', list(b'file.py'), 'exec')
+                compile("pass", filename, "exec")
+        self.assertRaises(TypeError, compile, "pass", list(b"file.py"), "exec")
 
     @support.cpython_only
     def test_same_filename_used(self):
@@ -571,19 +616,19 @@ class TestSpecifics(unittest.TestCase):
         self.compile_single("c = '''\na=1\nb=2\nc=3\n'''")
 
     def test_bad_single_statement(self):
-        self.assertInvalidSingle('1\n2')
-        self.assertInvalidSingle('def f(): pass')
-        self.assertInvalidSingle('a = 13\nb = 187')
-        self.assertInvalidSingle('del x\ndel y')
-        self.assertInvalidSingle('f()\ng()')
-        self.assertInvalidSingle('f()\n# blah\nblah()')
-        self.assertInvalidSingle('f()\nxy # blah\nblah()')
-        self.assertInvalidSingle('x = 5 # comment\nx = 6\n')
+        self.assertInvalidSingle("1\n2")
+        self.assertInvalidSingle("def f(): pass")
+        self.assertInvalidSingle("a = 13\nb = 187")
+        self.assertInvalidSingle("del x\ndel y")
+        self.assertInvalidSingle("f()\ng()")
+        self.assertInvalidSingle("f()\n# blah\nblah()")
+        self.assertInvalidSingle("f()\nxy # blah\nblah()")
+        self.assertInvalidSingle("x = 5 # comment\nx = 6\n")
         self.assertInvalidSingle("c = '''\nd=1\n'''\na = 1\n\nb = 2\n")
 
     def test_particularly_evil_undecodable(self):
         # Issue 24022
-        src = b'0000\x00\n00000000000\n\x00\n\x9e\n'
+        src = b"0000\x00\n00000000000\n\x00\n\x9e\n"
         with tempfile.TemporaryDirectory() as tmpd:
             fn = os.path.join(tmpd, "bad.py")
             with open(fn, "wb") as fp:
@@ -613,13 +658,12 @@ class TestSpecifics(unittest.TestCase):
 
         def check_limit(prefix, repeated, mode="single"):
             expect_ok = prefix + repeated * success_depth
-            compile(expect_ok, '<test>', mode)
+            compile(expect_ok, "<test>", mode)
             for depth in (fail_depth, crash_depth):
                 broken = prefix + repeated * depth
-                details = "Compiling ({!r} + {!r} * {})".format(
-                            prefix, repeated, depth)
+                details = "Compiling ({!r} + {!r} * {})".format(prefix, repeated, depth)
                 with self.assertRaises(RecursionError, msg=details):
-                    compile(broken, '<test>', mode)
+                    compile(broken, "<test>", mode)
 
         check_limit("a", "()")
         check_limit("a", ".b")
@@ -647,15 +691,16 @@ class TestSpecifics(unittest.TestCase):
         self.assertEqual(eval(memoryview(b"1234")[1:-1]), 23)
         namespace = dict()
         exec(memoryview(b"ax = 123")[1:-1], namespace)
-        self.assertEqual(namespace['x'], 12)
+        self.assertEqual(namespace["x"], 12)
 
     def check_constant(self, func, expected):
         for const in func.__code__.co_consts:
             if repr(const) == repr(expected):
                 break
         else:
-            self.fail("unable to find constant %r in %r"
-                      % (expected, func.__code__.co_consts))
+            self.fail(
+                "unable to find constant %r in %r" % (expected, func.__code__.co_consts)
+            )
 
     # Merging equal constants is not a strict requirement for the Python
     # semantics, it's a more an implementation detail.
@@ -668,8 +713,8 @@ class TestSpecifics(unittest.TestCase):
             ns = {}
             code = "f1, f2 = lambda: %r, lambda: %r" % (const, const)
             exec(code, ns)
-            f1 = ns['f1']
-            f2 = ns['f2']
+            f1 = ns["f1"]
+            f2 = ns["f2"]
             self.assertIs(f1.__code__.co_consts, f2.__code__.co_consts)
             self.check_constant(f1, const)
             self.assertEqual(repr(f1()), repr(const))
@@ -677,8 +722,8 @@ class TestSpecifics(unittest.TestCase):
         check_same_constant(None)
         check_same_constant(0)
         check_same_constant(0.0)
-        check_same_constant(b'abc')
-        check_same_constant('abc')
+        check_same_constant(b"abc")
+        check_same_constant("abc")
 
         # Note: "lambda: ..." emits "LOAD_CONST Ellipsis",
         # whereas "lambda: Ellipsis" emits "LOAD_GLOBAL Ellipsis"
@@ -690,10 +735,8 @@ class TestSpecifics(unittest.TestCase):
         # Merge constants in tuple or frozenset
         f1, f2 = lambda: "not a name", lambda: ("not a name",)
         f3 = lambda x: x in {("not a name",)}
-        self.assertIs(f1.__code__.co_consts[1],
-                      f2.__code__.co_consts[1][0])
-        self.assertIs(next(iter(f3.__code__.co_consts[1])),
-                      f2.__code__.co_consts[1])
+        self.assertIs(f1.__code__.co_consts[1], f2.__code__.co_consts[1][0])
+        self.assertIs(next(iter(f3.__code__.co_consts[1])), f2.__code__.co_consts[1])
 
         # {0} is converted to a constant frozenset({0}) by the peephole
         # optimizer
@@ -721,8 +764,7 @@ class TestSpecifics(unittest.TestCase):
             else:
                 return "unused"
 
-        self.assertEqual(f.__code__.co_consts,
-                         (f.__doc__, "used"))
+        self.assertEqual(f.__code__.co_consts, (f.__doc__, "used"))
 
     @support.cpython_only
     def test_remove_unused_consts_no_docstring(self):
@@ -734,8 +776,7 @@ class TestSpecifics(unittest.TestCase):
             else:
                 return "unused"
 
-        self.assertEqual(f.__code__.co_consts,
-                         (None, "used"))
+        self.assertEqual(f.__code__.co_consts, (None, "used"))
 
     @support.cpython_only
     def test_remove_unused_consts_extended_args(self):
@@ -752,8 +793,8 @@ class TestSpecifics(unittest.TestCase):
         g = {}
         eval(compile(code, "file.py", "exec"), g)
         exec(code, g)
-        f = g['f']
-        expected = tuple([None, '', 1] + [f't{i}' for i in range(N)])
+        f = g["f"]
+        expected = tuple([None, "", 1] + [f"t{i}" for i in range(N)])
         self.assertEqual(f.__code__.co_consts, expected)
         expected = "".join(expected[3:])
         self.assertEqual(expected, f())
@@ -767,6 +808,7 @@ class TestSpecifics(unittest.TestCase):
         def f1():
             "docstring"
             return 42
+
         self.assertEqual(f1.__code__.co_consts, (f1.__doc__, 42))
 
     # This is a regression test for a CPython specific peephole optimizer
@@ -776,16 +818,18 @@ class TestSpecifics(unittest.TestCase):
     @support.cpython_only
     def test_peephole_opt_unreachable_code_array_access_in_bounds(self):
         """Regression test for issue35193 when run under clang msan."""
+
         def unused_code_at_end():
             return 3
             raise RuntimeError("unreachable")
+
         # The above function definition will trigger the out of bounds
         # bug in the peephole optimizer as it scans opcodes past the
         # RETURN_VALUE opcode.  This does not always crash an interpreter.
         # When you build with the clang memory sanitizer it reliably aborts.
         self.assertEqual(
-            'RETURN_CONST',
-            list(dis.get_instructions(unused_code_at_end))[-1].opname)
+            "RETURN_CONST", list(dis.get_instructions(unused_code_at_end))[-1].opname
+        )
 
     def test_dont_merge_constants(self):
         # Issue #25843: compile() must not merge constants which are equal
@@ -794,8 +838,8 @@ class TestSpecifics(unittest.TestCase):
         def check_different_constants(const1, const2):
             ns = {}
             exec("f1, f2 = lambda: %r, lambda: %r" % (const1, const2), ns)
-            f1 = ns['f1']
-            f2 = ns['f2']
+            f1 = ns["f1"]
+            f2 = ns["f2"]
             self.assertIsNot(f1.__code__, f2.__code__)
             self.assertNotEqual(f1.__code__, f2.__code__)
             self.check_constant(f1, const1)
@@ -806,8 +850,8 @@ class TestSpecifics(unittest.TestCase):
         check_different_constants(0, 0.0)
         check_different_constants(+0.0, -0.0)
         check_different_constants((0,), (0.0,))
-        check_different_constants('a', b'a')
-        check_different_constants(('a',), (b'a',))
+        check_different_constants("a", b"a")
+        check_different_constants(("a",), (b"a",))
 
         # check_different_constants() cannot be used because repr(-0j) is
         # '(-0-0j)', but when '(-0-0j)' is evaluated to 0j: we loose the sign.
@@ -831,7 +875,7 @@ class TestSpecifics(unittest.TestCase):
         # An implicit test for PyUnicode_FSDecoder().
         compile("42", FakePath("test_compile_pathlike"), "single")
 
-    @support.requires_resource('cpu')
+    @support.requires_resource("cpu")
     def test_stack_overflow(self):
         # bpo-31113: Stack overflow when compile a long sequence of
         # complex statements.
@@ -861,13 +905,17 @@ class TestSpecifics(unittest.TestCase):
             else:
                 return 42
 
-        funcs = [unused_block_if, unused_block_while,
-                 unused_block_if_else, unused_block_while_else]
+        funcs = [
+            unused_block_if,
+            unused_block_while,
+            unused_block_if_else,
+            unused_block_while_else,
+        ]
 
         for func in funcs:
             opcodes = list(dis.get_instructions(func))
             self.assertLessEqual(len(opcodes), 3)
-            self.assertEqual('RETURN_CONST', opcodes[-1].opname)
+            self.assertEqual("RETURN_CONST", opcodes[-1].opname)
             self.assertEqual(None, opcodes[-1].argval)
 
     def test_false_while_loop(self):
@@ -885,7 +933,7 @@ class TestSpecifics(unittest.TestCase):
         for func in funcs:
             opcodes = list(dis.get_instructions(func))
             self.assertEqual(2, len(opcodes))
-            self.assertEqual('RETURN_CONST', opcodes[1].opname)
+            self.assertEqual("RETURN_CONST", opcodes[1].opname)
             self.assertEqual(None, opcodes[1].argval)
 
     def test_consts_in_conditionals(self):
@@ -908,8 +956,8 @@ class TestSpecifics(unittest.TestCase):
             with self.subTest(func=func):
                 opcodes = list(dis.get_instructions(func))
                 self.assertLessEqual(len(opcodes), 3)
-                self.assertIn('LOAD_', opcodes[-2].opname)
-                self.assertEqual('RETURN_VALUE', opcodes[-1].opname)
+                self.assertIn("LOAD_", opcodes[-2].opname)
+                self.assertEqual("RETURN_VALUE", opcodes[-1].opname)
 
     def test_imported_load_method(self):
         sources = [
@@ -932,60 +980,66 @@ class TestSpecifics(unittest.TestCase):
             from os import path as os_path
             def foo(x):
                 return os_path.join(x)
-            """
+            """,
         ]
         for source in sources:
             namespace = {}
             exec(textwrap.dedent(source), namespace)
-            func = namespace['foo']
+            func = namespace["foo"]
             with self.subTest(func=func.__name__):
                 opcodes = list(dis.get_instructions(func))
                 instructions = [opcode.opname for opcode in opcodes]
-                self.assertNotIn('LOAD_METHOD', instructions)
-                self.assertIn('LOAD_ATTR', instructions)
-                self.assertIn('CALL', instructions)
+                self.assertNotIn("LOAD_METHOD", instructions)
+                self.assertIn("LOAD_ATTR", instructions)
+                self.assertIn("CALL", instructions)
 
     def test_lineno_procedure_call(self):
         def call():
-            (
-                print()
-            )
+            (print())
+
         line1 = call.__code__.co_firstlineno + 1
         assert line1 not in [line for (_, _, line) in call.__code__.co_lines()]
 
     def test_lineno_after_implicit_return(self):
         TRUE = True
+
         # Don't use constant True or False, as compiler will remove test
         def if1(x):
             x()
             if TRUE:
                 pass
+
         def if2(x):
             x()
             if TRUE:
                 pass
             else:
                 pass
+
         def if3(x):
             x()
             if TRUE:
                 pass
             else:
                 return None
+
         def if4(x):
             x()
             if not TRUE:
                 pass
-        funcs = [ if1, if2, if3, if4]
-        lastlines = [ 3, 3, 3, 2]
+
+        funcs = [if1, if2, if3, if4]
+        lastlines = [3, 3, 3, 2]
         frame = None
+
         def save_caller_frame():
             nonlocal frame
             frame = sys._getframe(1)
+
         for func, lastline in zip(funcs, lastlines, strict=True):
             with self.subTest(func=func):
                 func(save_caller_frame)
-                self.assertEqual(frame.f_lineno-frame.f_code.co_firstlineno, lastline)
+                self.assertEqual(frame.f_lineno - frame.f_code.co_firstlineno, lastline)
 
     def test_lineno_after_no_code(self):
         def no_code1():
@@ -1015,42 +1069,32 @@ class TestSpecifics(unittest.TestCase):
 
     def test_lineno_attribute(self):
         def load_attr():
-            return (
-                o.
-                a
-            )
-        load_attr_lines = [ 0, 2, 3, 1 ]
+            return o.a
+
+        load_attr_lines = [0, 2, 3, 1]
 
         def load_method():
-            return (
-                o.
-                m(
-                    0
-                )
-            )
-        load_method_lines = [ 0, 2, 3, 4, 3, 1 ]
+            return o.m(0)
+
+        load_method_lines = [0, 2, 3, 4, 3, 1]
 
         def store_attr():
-            (
-                o.
-                a
-            ) = (
-                v
-            )
-        store_attr_lines = [ 0, 5, 2, 3 ]
+            (o.a) = v
+
+        store_attr_lines = [0, 5, 2, 3]
 
         def aug_store_attr():
-            (
-                o.
-                a
-            ) += (
-                v
-            )
-        aug_store_attr_lines = [ 0, 2, 3, 5, 1, 3 ]
+            (o.a) += v
 
-        funcs = [ load_attr, load_method, store_attr, aug_store_attr]
-        func_lines = [ load_attr_lines, load_method_lines,
-                 store_attr_lines, aug_store_attr_lines]
+        aug_store_attr_lines = [0, 2, 3, 5, 1, 3]
+
+        funcs = [load_attr, load_method, store_attr, aug_store_attr]
+        func_lines = [
+            load_attr_lines,
+            load_method_lines,
+            store_attr_lines,
+            aug_store_attr_lines,
+        ]
 
         for func, lines in zip(funcs, func_lines, strict=True):
             with self.subTest(func=func):
@@ -1060,11 +1104,8 @@ class TestSpecifics(unittest.TestCase):
     def test_line_number_genexp(self):
 
         def return_genexp():
-            return (1
-                    for
-                    x
-                    in
-                    y)
+            return (1 for x in y)
+
         genexp_lines = [0, 2, 0]
 
         genexp_code = return_genexp.__code__.co_consts[1]
@@ -1088,9 +1129,11 @@ class TestSpecifics(unittest.TestCase):
                 if y:
                     pass
 
-        linenos = list(inst.positions.lineno
-                       for inst in dis.get_instructions(f.__code__)
-                       if inst.opname == 'JUMP_BACKWARD')
+        linenos = list(
+            inst.positions.lineno
+            for inst in dis.get_instructions(f.__code__)
+            if inst.opname == "JUMP_BACKWARD"
+        )
 
         self.assertTrue(len(linenos) > 0)
         self.assertTrue(all(l is not None for l in linenos))
@@ -1120,19 +1163,17 @@ class TestSpecifics(unittest.TestCase):
 
         INSTR_SIZE = 2
         HANDLED_JUMPS = (
-            'POP_JUMP_IF_FALSE',
-            'POP_JUMP_IF_TRUE',
-            'JUMP_ABSOLUTE',
-            'JUMP_FORWARD',
+            "POP_JUMP_IF_FALSE",
+            "POP_JUMP_IF_TRUE",
+            "JUMP_ABSOLUTE",
+            "JUMP_FORWARD",
         )
 
-        for line, instr in enumerate(
-            dis.Bytecode(if_else_break, show_caches=True)
-        ):
-            if instr.opname == 'JUMP_FORWARD':
+        for line, instr in enumerate(dis.Bytecode(if_else_break, show_caches=True)):
+            if instr.opname == "JUMP_FORWARD":
                 self.assertNotEqual(instr.arg, 0)
             elif instr.opname in HANDLED_JUMPS:
-                self.assertNotEqual(instr.arg, (line + 1)*INSTR_SIZE)
+                self.assertNotEqual(instr.arg, (line + 1) * INSTR_SIZE)
 
     def test_no_wraparound_jump(self):
         # See https://bugs.python.org/issue46724
@@ -1155,11 +1196,11 @@ class TestSpecifics(unittest.TestCase):
             self.assertEqual(actual, expected)
 
         def load():
-            return x[a:b] + x [a:] + x[:b] + x[:]
+            return x[a:b] + x[a:] + x[:b] + x[:]
 
         def store():
             x[a:b] = y
-            x [a:] = y
+            x[a:] = y
             x[:b] = y
             x[:] = y
 
@@ -1190,10 +1231,12 @@ class TestSpecifics(unittest.TestCase):
             ("IS_OP", "is"),
             ("IS_OP", "is not"),
         ]:
-            expr = f'a {op} b {op} c'
+            expr = f"a {op} b {op} c"
             expected_positions = 2 * [(2, 2, 0, len(expr))]
             for source in [
-                f"\\\n{expr}", f'if \\\n{expr}: x', f"x if \\\n{expr} else y"
+                f"\\\n{expr}",
+                f"if \\\n{expr}: x",
+                f"x if \\\n{expr} else y",
             ]:
                 code = compile(source, "<test>", "exec")
                 actual_positions = [
@@ -1217,32 +1260,37 @@ class TestSpecifics(unittest.TestCase):
 
     def test_multi_line_lambda_as_argument(self):
         # See gh-101928
-        code = textwrap.dedent("""
+        code = textwrap.dedent(
+            """
             def foo(param, lambda_exp):
                 pass
 
             foo(param=0,
                 lambda_exp=lambda:
                 1)
-        """)
+        """
+        )
         compile(code, "<test>", "exec")
 
     def test_apply_static_swaps(self):
         def f(x, y):
             a, a = x, y
             return a
+
         self.assertEqual(f("x", "y"), "y")
 
     def test_apply_static_swaps_2(self):
         def f(x, y, z):
             a, b, a = x, y, z
             return a
+
         self.assertEqual(f("x", "y", "z"), "z")
 
     def test_apply_static_swaps_3(self):
         def f(x, y, z):
             a, a, b = x, y, z
             return a
+
         self.assertEqual(f("x", "y", "z"), "y")
 
     def test_duplicated_small_exit_block(self):
@@ -1276,6 +1324,7 @@ class TestSpecifics(unittest.TestCase):
         def f():
             a if (1 if b else c) else d
 
+
 @requires_debug_ranges()
 class TestSourcePositions(unittest.TestCase):
     # Ensure that compiled code snippets have correct line and column numbers
@@ -1284,12 +1333,13 @@ class TestSourcePositions(unittest.TestCase):
     def check_positions_against_ast(self, snippet):
         # Basic check that makes sure each line and column is at least present
         # in one of the AST nodes of the source code.
-        code = compile(snippet, 'test_compile.py', 'exec')
-        ast_tree = compile(snippet, 'test_compile.py', 'exec', _ast.PyCF_ONLY_AST)
+        code = compile(snippet, "test_compile.py", "exec")
+        ast_tree = compile(snippet, "test_compile.py", "exec", _ast.PyCF_ONLY_AST)
         self.assertTrue(type(ast_tree) == _ast.Module)
 
         # Use an AST visitor that notes all the offsets.
         lines, end_lines, columns, end_columns = set(), set(), set(), set()
+
         class SourceOffsetVisitor(ast.NodeVisitor):
             def generic_visit(self, node):
                 super().generic_visit(node)
@@ -1303,9 +1353,9 @@ class TestSourcePositions(unittest.TestCase):
         SourceOffsetVisitor().visit(ast_tree)
 
         # Check against the positions in the code object.
-        for (line, end_line, col, end_col) in code.co_positions():
+        for line, end_line, col, end_col in code.co_positions():
             if line == 0:
-                continue # This is an artificial module-start line
+                continue  # This is an artificial module-start line
             # If the offset is not None (indicating missing data), ensure that
             # it was part of one of the AST nodes.
             if line is not None:
@@ -1319,8 +1369,9 @@ class TestSourcePositions(unittest.TestCase):
 
         return code, ast_tree
 
-    def assertOpcodeSourcePositionIs(self, code, opcode,
-            line, end_line, column, end_column, occurrence=1):
+    def assertOpcodeSourcePositionIs(
+        self, code, opcode, line, end_line, column, end_column, occurrence=1
+    ):
 
         for instr, position in zip(
             dis.Bytecode(code, show_caches=True), code.co_positions(), strict=True
@@ -1345,129 +1396,263 @@ class TestSourcePositions(unittest.TestCase):
         # EXTENDED_ARG by performing a loop which needs a JUMP_ABSOLUTE after
         # a bunch of opcodes.
         snippet = "x = x\n" * 10_000
-        snippet += ("while x != 0:\n"
-                    "  x -= 1\n"
-                    "while x != 0:\n"
-                    "  x +=  1\n"
-                   )
+        snippet += "while x != 0:\n" "  x -= 1\n" "while x != 0:\n" "  x +=  1\n"
 
         compiled_code, _ = self.check_positions_against_ast(snippet)
 
-        self.assertOpcodeSourcePositionIs(compiled_code, 'BINARY_OP',
-            line=10_000 + 2, end_line=10_000 + 2,
-            column=2, end_column=8, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'BINARY_OP',
-            line=10_000 + 4, end_line=10_000 + 4,
-            column=2, end_column=9, occurrence=2)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "BINARY_OP",
+            line=10_000 + 2,
+            end_line=10_000 + 2,
+            column=2,
+            end_column=8,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "BINARY_OP",
+            line=10_000 + 4,
+            end_line=10_000 + 4,
+            column=2,
+            end_column=9,
+            occurrence=2,
+        )
 
     def test_multiline_expression(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             f(
                 1, 2, 3, 4
             )
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'CALL',
-            line=1, end_line=3, column=0, end_column=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code, "CALL", line=1, end_line=3, column=0, end_column=1
+        )
 
     @requires_specialization
     def test_multiline_boolean_expression(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             if (a or
                 (b and not c) or
                 not (
                     d > 0)):
                 x = 42
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
         # jump if a is true:
-        self.assertOpcodeSourcePositionIs(compiled_code, 'POP_JUMP_IF_TRUE',
-            line=1, end_line=1, column=4, end_column=5, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "POP_JUMP_IF_TRUE",
+            line=1,
+            end_line=1,
+            column=4,
+            end_column=5,
+            occurrence=1,
+        )
         # jump if b is false:
-        self.assertOpcodeSourcePositionIs(compiled_code, 'POP_JUMP_IF_FALSE',
-            line=2, end_line=2, column=5, end_column=6, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "POP_JUMP_IF_FALSE",
+            line=2,
+            end_line=2,
+            column=5,
+            end_column=6,
+            occurrence=1,
+        )
         # jump if c is false:
-        self.assertOpcodeSourcePositionIs(compiled_code, 'POP_JUMP_IF_FALSE',
-            line=2, end_line=2, column=15, end_column=16, occurrence=2)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "POP_JUMP_IF_FALSE",
+            line=2,
+            end_line=2,
+            column=15,
+            end_column=16,
+            occurrence=2,
+        )
         # compare d and 0
-        self.assertOpcodeSourcePositionIs(compiled_code, 'COMPARE_OP',
-            line=4, end_line=4, column=8, end_column=13, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "COMPARE_OP",
+            line=4,
+            end_line=4,
+            column=8,
+            end_column=13,
+            occurrence=1,
+        )
         # jump if comparison it True
-        self.assertOpcodeSourcePositionIs(compiled_code, 'POP_JUMP_IF_TRUE',
-            line=4, end_line=4, column=8, end_column=13, occurrence=2)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "POP_JUMP_IF_TRUE",
+            line=4,
+            end_line=4,
+            column=8,
+            end_column=13,
+            occurrence=2,
+        )
 
     @unittest.skipIf(sys.flags.optimize, "Assertions are disabled in optimized mode")
     def test_multiline_assert(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             assert (a > 0 and
                     bb > 0 and
                     ccc == 4), "error msg"
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'LOAD_ASSERTION_ERROR',
-            line=1, end_line=3, column=0, end_column=30, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "LOAD_ASSERTION_ERROR",
+            line=1,
+            end_line=3,
+            column=0,
+            end_column=30,
+            occurrence=1,
+        )
         #  The "error msg":
-        self.assertOpcodeSourcePositionIs(compiled_code, 'LOAD_CONST',
-            line=3, end_line=3, column=19, end_column=30, occurrence=4)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'CALL',
-            line=1, end_line=3, column=0, end_column=30, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'RAISE_VARARGS',
-            line=1, end_line=3, column=8, end_column=16, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "LOAD_CONST",
+            line=3,
+            end_line=3,
+            column=19,
+            end_column=30,
+            occurrence=4,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "CALL",
+            line=1,
+            end_line=3,
+            column=0,
+            end_column=30,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "RAISE_VARARGS",
+            line=1,
+            end_line=3,
+            column=8,
+            end_column=16,
+            occurrence=1,
+        )
 
     def test_multiline_generator_expression(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             ((x,
                 2*x)
                 for x
                 in [1,2,3] if (x > 0
                                and x < 100
                                and x != 50))
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
         compiled_code = compiled_code.co_consts[0]
         self.assertIsInstance(compiled_code, types.CodeType)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'YIELD_VALUE',
-            line=1, end_line=2, column=1, end_column=8, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'JUMP_BACKWARD',
-            line=1, end_line=2, column=1, end_column=8, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'RETURN_CONST',
-            line=1, end_line=6, column=0, end_column=32, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "YIELD_VALUE",
+            line=1,
+            end_line=2,
+            column=1,
+            end_column=8,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "JUMP_BACKWARD",
+            line=1,
+            end_line=2,
+            column=1,
+            end_column=8,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "RETURN_CONST",
+            line=1,
+            end_line=6,
+            column=0,
+            end_column=32,
+            occurrence=1,
+        )
 
     def test_multiline_async_generator_expression(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             ((x,
                 2*x)
                 async for x
                 in [1,2,3] if (x > 0
                                and x < 100
                                and x != 50))
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
         compiled_code = compiled_code.co_consts[0]
         self.assertIsInstance(compiled_code, types.CodeType)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'YIELD_VALUE',
-            line=1, end_line=2, column=1, end_column=8, occurrence=2)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'RETURN_CONST',
-            line=1, end_line=6, column=0, end_column=32, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "YIELD_VALUE",
+            line=1,
+            end_line=2,
+            column=1,
+            end_column=8,
+            occurrence=2,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "RETURN_CONST",
+            line=1,
+            end_line=6,
+            column=0,
+            end_column=32,
+            occurrence=1,
+        )
 
     def test_multiline_list_comprehension(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             [(x,
                 2*x)
                 for x
                 in [1,2,3] if (x > 0
                                and x < 100
                                and x != 50)]
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
         self.assertIsInstance(compiled_code, types.CodeType)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'LIST_APPEND',
-            line=1, end_line=2, column=1, end_column=8, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'JUMP_BACKWARD',
-            line=1, end_line=2, column=1, end_column=8, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "LIST_APPEND",
+            line=1,
+            end_line=2,
+            column=1,
+            end_column=8,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "JUMP_BACKWARD",
+            line=1,
+            end_line=2,
+            column=1,
+            end_column=8,
+            occurrence=1,
+        )
 
     def test_multiline_async_list_comprehension(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             async def f():
                 [(x,
                     2*x)
@@ -1475,37 +1660,76 @@ class TestSourcePositions(unittest.TestCase):
                     in [1,2,3] if (x > 0
                                    and x < 100
                                    and x != 50)]
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
         g = {}
         eval(compiled_code, g)
-        compiled_code = g['f'].__code__
+        compiled_code = g["f"].__code__
         self.assertIsInstance(compiled_code, types.CodeType)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'LIST_APPEND',
-            line=2, end_line=3, column=5, end_column=12, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'JUMP_BACKWARD',
-            line=2, end_line=3, column=5, end_column=12, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'RETURN_CONST',
-            line=2, end_line=7, column=4, end_column=36, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "LIST_APPEND",
+            line=2,
+            end_line=3,
+            column=5,
+            end_column=12,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "JUMP_BACKWARD",
+            line=2,
+            end_line=3,
+            column=5,
+            end_column=12,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "RETURN_CONST",
+            line=2,
+            end_line=7,
+            column=4,
+            end_column=36,
+            occurrence=1,
+        )
 
     def test_multiline_set_comprehension(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             {(x,
                 2*x)
                 for x
                 in [1,2,3] if (x > 0
                                and x < 100
                                and x != 50)}
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
         self.assertIsInstance(compiled_code, types.CodeType)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'SET_ADD',
-            line=1, end_line=2, column=1, end_column=8, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'JUMP_BACKWARD',
-            line=1, end_line=2, column=1, end_column=8, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "SET_ADD",
+            line=1,
+            end_line=2,
+            column=1,
+            end_column=8,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "JUMP_BACKWARD",
+            line=1,
+            end_line=2,
+            column=1,
+            end_column=8,
+            occurrence=1,
+        )
 
     def test_multiline_async_set_comprehension(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             async def f():
                 {(x,
                     2*x)
@@ -1513,37 +1737,76 @@ class TestSourcePositions(unittest.TestCase):
                     in [1,2,3] if (x > 0
                                    and x < 100
                                    and x != 50)}
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
         g = {}
         eval(compiled_code, g)
-        compiled_code = g['f'].__code__
+        compiled_code = g["f"].__code__
         self.assertIsInstance(compiled_code, types.CodeType)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'SET_ADD',
-            line=2, end_line=3, column=5, end_column=12, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'JUMP_BACKWARD',
-            line=2, end_line=3, column=5, end_column=12, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'RETURN_CONST',
-            line=2, end_line=7, column=4, end_column=36, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "SET_ADD",
+            line=2,
+            end_line=3,
+            column=5,
+            end_column=12,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "JUMP_BACKWARD",
+            line=2,
+            end_line=3,
+            column=5,
+            end_column=12,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "RETURN_CONST",
+            line=2,
+            end_line=7,
+            column=4,
+            end_column=36,
+            occurrence=1,
+        )
 
     def test_multiline_dict_comprehension(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             {x:
                 2*x
                 for x
                 in [1,2,3] if (x > 0
                                and x < 100
                                and x != 50)}
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
         self.assertIsInstance(compiled_code, types.CodeType)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MAP_ADD',
-            line=1, end_line=2, column=1, end_column=7, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'JUMP_BACKWARD',
-            line=1, end_line=2, column=1, end_column=7, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MAP_ADD",
+            line=1,
+            end_line=2,
+            column=1,
+            end_column=7,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "JUMP_BACKWARD",
+            line=1,
+            end_line=2,
+            column=1,
+            end_column=7,
+            occurrence=1,
+        )
 
     def test_multiline_async_dict_comprehension(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             async def f():
                 {x:
                     2*x
@@ -1551,112 +1814,307 @@ class TestSourcePositions(unittest.TestCase):
                     in [1,2,3] if (x > 0
                                    and x < 100
                                    and x != 50)}
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
         g = {}
         eval(compiled_code, g)
-        compiled_code = g['f'].__code__
+        compiled_code = g["f"].__code__
         self.assertIsInstance(compiled_code, types.CodeType)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MAP_ADD',
-            line=2, end_line=3, column=5, end_column=11, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'JUMP_BACKWARD',
-            line=2, end_line=3, column=5, end_column=11, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'RETURN_CONST',
-            line=2, end_line=7, column=4, end_column=36, occurrence=1)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MAP_ADD",
+            line=2,
+            end_line=3,
+            column=5,
+            end_column=11,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "JUMP_BACKWARD",
+            line=2,
+            end_line=3,
+            column=5,
+            end_column=11,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "RETURN_CONST",
+            line=2,
+            end_line=7,
+            column=4,
+            end_column=36,
+            occurrence=1,
+        )
 
     def test_matchcase_sequence(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             match x:
                 case a, b:
                     pass
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MATCH_SEQUENCE',
-            line=2, end_line=2, column=9, end_column=13, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'UNPACK_SEQUENCE',
-            line=2, end_line=2, column=9, end_column=13, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=13, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=13, occurrence=2)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MATCH_SEQUENCE",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=13,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "UNPACK_SEQUENCE",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=13,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=13,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=13,
+            occurrence=2,
+        )
 
     def test_matchcase_sequence_wildcard(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             match x:
                 case a, *b, c:
                     pass
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MATCH_SEQUENCE',
-            line=2, end_line=2, column=9, end_column=17, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'UNPACK_EX',
-            line=2, end_line=2, column=9, end_column=17, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=17, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=17, occurrence=2)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=17, occurrence=3)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MATCH_SEQUENCE",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=17,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "UNPACK_EX",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=17,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=17,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=17,
+            occurrence=2,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=17,
+            occurrence=3,
+        )
 
     def test_matchcase_mapping(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             match x:
                 case {"a" : a, "b": b}:
                     pass
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MATCH_MAPPING',
-            line=2, end_line=2, column=9, end_column=26, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MATCH_KEYS',
-            line=2, end_line=2, column=9, end_column=26, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=26, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=26, occurrence=2)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MATCH_MAPPING",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=26,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MATCH_KEYS",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=26,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=26,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=26,
+            occurrence=2,
+        )
 
     def test_matchcase_mapping_wildcard(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             match x:
                 case {"a" : a, "b": b, **c}:
                     pass
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MATCH_MAPPING',
-            line=2, end_line=2, column=9, end_column=31, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MATCH_KEYS',
-            line=2, end_line=2, column=9, end_column=31, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=31, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=31, occurrence=2)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MATCH_MAPPING",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=31,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MATCH_KEYS",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=31,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=31,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=31,
+            occurrence=2,
+        )
 
     def test_matchcase_class(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             match x:
                 case C(a, b):
                     pass
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MATCH_CLASS',
-            line=2, end_line=2, column=9, end_column=16, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'UNPACK_SEQUENCE',
-            line=2, end_line=2, column=9, end_column=16, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=16, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'STORE_NAME',
-            line=2, end_line=2, column=9, end_column=16, occurrence=2)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MATCH_CLASS",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=16,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "UNPACK_SEQUENCE",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=16,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=16,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "STORE_NAME",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=16,
+            occurrence=2,
+        )
 
     def test_matchcase_or(self):
-        snippet = textwrap.dedent("""\
+        snippet = textwrap.dedent(
+            """\
             match x:
                 case C(1) | C(2):
                     pass
-            """)
+            """
+        )
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MATCH_CLASS',
-            line=2, end_line=2, column=9, end_column=13, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'MATCH_CLASS',
-            line=2, end_line=2, column=16, end_column=20, occurrence=2)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MATCH_CLASS",
+            line=2,
+            end_line=2,
+            column=9,
+            end_column=13,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "MATCH_CLASS",
+            line=2,
+            end_line=2,
+            column=16,
+            end_column=20,
+            occurrence=2,
+        )
 
     def test_very_long_line_end_offset(self):
         # Make sure we get the correct column offset for offsets
@@ -1665,23 +2123,53 @@ class TestSourcePositions(unittest.TestCase):
         snippet = f"g('{long_string}')"
 
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'CALL',
-            line=1, end_line=1, column=0, end_column=1005)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code, "CALL", line=1, end_line=1, column=0, end_column=1005
+        )
 
     def test_complex_single_line_expression(self):
         snippet = "a - b @ (c * x['key'] + 23)"
 
         compiled_code, _ = self.check_positions_against_ast(snippet)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'BINARY_SUBSCR',
-            line=1, end_line=1, column=13, end_column=21)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'BINARY_OP',
-            line=1, end_line=1, column=9, end_column=21, occurrence=1)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'BINARY_OP',
-            line=1, end_line=1, column=9, end_column=26, occurrence=2)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'BINARY_OP',
-            line=1, end_line=1, column=4, end_column=27, occurrence=3)
-        self.assertOpcodeSourcePositionIs(compiled_code, 'BINARY_OP',
-            line=1, end_line=1, column=0, end_column=27, occurrence=4)
+        self.assertOpcodeSourcePositionIs(
+            compiled_code, "BINARY_SUBSCR", line=1, end_line=1, column=13, end_column=21
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "BINARY_OP",
+            line=1,
+            end_line=1,
+            column=9,
+            end_column=21,
+            occurrence=1,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "BINARY_OP",
+            line=1,
+            end_line=1,
+            column=9,
+            end_column=26,
+            occurrence=2,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "BINARY_OP",
+            line=1,
+            end_line=1,
+            column=4,
+            end_column=27,
+            occurrence=3,
+        )
+        self.assertOpcodeSourcePositionIs(
+            compiled_code,
+            "BINARY_OP",
+            line=1,
+            end_line=1,
+            column=0,
+            end_column=27,
+            occurrence=4,
+        )
 
     def test_multiline_assert_rewritten_as_method_call(self):
         # GH-94694: Don't crash if pytest rewrites a multiline assert as a
@@ -1732,7 +2220,7 @@ class TestSourcePositions(unittest.TestCase):
                 namespace = {}
                 source = textwrap.dedent(source_template.format(body))
                 with warnings.catch_warnings():
-                    warnings.simplefilter('ignore', SyntaxWarning)
+                    warnings.simplefilter("ignore", SyntaxWarning)
                     exec(source, namespace)
                 code = namespace["f"].__code__
                 self.assertOpcodeSourcePositionIs(
@@ -1787,16 +2275,10 @@ class TestSourcePositions(unittest.TestCase):
 
     def test_weird_attribute_position_regressions(self):
         def f():
-            (bar.
-        baz)
-            (bar.
-        baz(
-        ))
-            files().setdefault(
-                0
-            ).setdefault(
-                0
-            )
+            (bar.baz)
+            (bar.baz())
+            files().setdefault(0).setdefault(0)
+
         for line, end_line, column, end_column in f.__code__.co_positions():
             self.assertIsNotNone(line)
             self.assertIsNotNone(end_line)
@@ -1878,15 +2360,15 @@ class TestExpressionStackSize(unittest.TestCase):
         self.check_stack_size("f(" + "x, " * self.N + ")")
 
     def test_func_kwargs(self):
-        kwargs = (f'a{i}=x' for i in range(self.N))
-        self.check_stack_size("f(" +  ", ".join(kwargs) + ")")
+        kwargs = (f"a{i}=x" for i in range(self.N))
+        self.check_stack_size("f(" + ", ".join(kwargs) + ")")
 
     def test_meth_args(self):
         self.check_stack_size("o.m(" + "x, " * self.N + ")")
 
     def test_meth_kwargs(self):
-        kwargs = (f'a{i}=x' for i in range(self.N))
-        self.check_stack_size("o.m(" +  ", ".join(kwargs) + ")")
+        kwargs = (f"a{i}=x" for i in range(self.N))
+        self.check_stack_size("o.m(" + ", ".join(kwargs) + ")")
 
     def test_func_and(self):
         code = "def f(x):\n"
@@ -1919,15 +2401,18 @@ class TestStackSizeStability(unittest.TestCase):
                 script = "async " + script
             code = compile(script, "<script>", "exec")
             exec(code, ns, ns)
-            return ns['func'].__code__
+            return ns["func"].__code__
 
         sizes = [compile_snippet(i).co_stacksize for i in range(2, 5)]
         if len(set(sizes)) != 1:
             import dis, io
+
             out = io.StringIO()
             dis.dis(compile_snippet(1), file=out)
-            self.fail("stack sizes diverge with # of consecutive snippets: "
-                      "%s\n%s\n%s" % (sizes, snippet, out.getvalue()))
+            self.fail(
+                "stack sizes diverge with # of consecutive snippets: "
+                "%s\n%s\n%s" % (sizes, snippet, out.getvalue())
+            )
 
     def test_if(self):
         snippet = """

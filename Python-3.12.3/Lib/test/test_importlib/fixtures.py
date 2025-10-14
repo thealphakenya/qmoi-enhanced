@@ -18,8 +18,8 @@ from ._path import FilesSpec
 try:
     from importlib import resources  # type: ignore
 
-    getattr(resources, 'files')
-    getattr(resources, 'as_file')
+    getattr(resources, "files")
+    getattr(resources, "as_file")
 except (ImportError, AttributeError):
     import importlib_resources as resources  # type: ignore
 
@@ -331,7 +331,7 @@ build_files = _path.build
 
 
 def build_record(file_defs):
-    return ''.join(f'{name},,\n' for name in record_names(file_defs))
+    return "".join(f"{name},,\n" for name in record_names(file_defs))
 
 
 def record_names(file_defs):
@@ -352,12 +352,12 @@ def DALS(str):
 
 @requires_zlib()
 class ZipFixtures:
-    root = 'test.test_importlib.data'
+    root = "test.test_importlib.data"
 
     def _fixture_on_path(self, filename):
         pkg_file = resources.files(self.root).joinpath(filename)
         file = self.resources.enter_context(resources.as_file(pkg_file))
-        assert file.name.startswith('example'), file.name
+        assert file.name.startswith("example"), file.name
         sys.path.insert(0, str(file))
         self.resources.callback(sys.path.pop, 0)
 

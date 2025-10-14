@@ -189,4 +189,5 @@ Test cyclic gc(?)
 
 if __name__ == "__main__":
     import doctest, __main__
+
     doctest.testmod(__main__)

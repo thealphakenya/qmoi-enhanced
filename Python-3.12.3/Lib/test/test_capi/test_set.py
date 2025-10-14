@@ -3,10 +3,12 @@ import unittest
 from test.support import import_helper
 
 # Skip this test if the _testcapi module isn't available.
-_testcapi = import_helper.import_module('_testcapi')
+_testcapi = import_helper.import_module("_testcapi")
+
 
 class set_subclass(set):
     pass
+
 
 class frozenset_subclass(frozenset):
     pass
@@ -87,9 +89,9 @@ class TestSetCAPI(unittest.TestCase):
         self.assertEqual(set_new(), set())
         self.assertEqual(set_new((1, 1, 2)), {1, 2})
         self.assertEqual(set_new([1, 1, 2]), {1, 2})
-        with self.assertRaisesRegex(TypeError, 'object is not iterable'):
+        with self.assertRaisesRegex(TypeError, "object is not iterable"):
             set_new(object())
-        with self.assertRaisesRegex(TypeError, 'object is not iterable'):
+        with self.assertRaisesRegex(TypeError, "object is not iterable"):
             set_new(1)
         with self.assertRaisesRegex(TypeError, "unhashable type: 'dict'"):
             set_new((1, {}))
@@ -100,9 +102,9 @@ class TestSetCAPI(unittest.TestCase):
         self.assertEqual(frozenset_new(), frozenset())
         self.assertEqual(frozenset_new((1, 1, 2)), frozenset({1, 2}))
         self.assertEqual(frozenset_new([1, 1, 2]), frozenset({1, 2}))
-        with self.assertRaisesRegex(TypeError, 'object is not iterable'):
+        with self.assertRaisesRegex(TypeError, "object is not iterable"):
             frozenset_new(object())
-        with self.assertRaisesRegex(TypeError, 'object is not iterable'):
+        with self.assertRaisesRegex(TypeError, "object is not iterable"):
             frozenset_new(1)
         with self.assertRaisesRegex(TypeError, "unhashable type: 'dict'"):
             frozenset_new((1, {}))
@@ -136,7 +138,7 @@ class TestSetCAPI(unittest.TestCase):
             with self.subTest(cls=cls):
                 instance = cls((1, 2))
                 self.assertTrue(contains(instance, 1))
-                self.assertFalse(contains(instance, 'missing'))
+                self.assertFalse(contains(instance, "missing"))
                 with self.assertRaisesRegex(TypeError, "unhashable type: 'list'"):
                     contains(instance, [])
         # CRASHES: contains(instance, NULL)

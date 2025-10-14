@@ -101,9 +101,15 @@ class TestCParser(unittest.TestCase):
         cls.addClassCleanup(shutil.rmtree, cls.library_dir)
 
         with contextlib.ExitStack() as stack:
-            python_exe = stack.enter_context(support.setup_venv_with_pip_setuptools_wheel("venv"))
+            python_exe = stack.enter_context(
+                support.setup_venv_with_pip_setuptools_wheel("venv")
+            )
             sitepackages = subprocess.check_output(
-                [python_exe, "-c", "import sysconfig; print(sysconfig.get_path('platlib'))"],
+                [
+                    python_exe,
+                    "-c",
+                    "import sysconfig; print(sysconfig.get_path('platlib'))",
+                ],
                 text=True,
             ).strip()
             stack.enter_context(import_helper.DirsOnSysPath(sitepackages))
@@ -130,7 +136,7 @@ class TestCParser(unittest.TestCase):
         # Because setUp() already changes the current directory to the
         # temporary path, use a relative path here to prevent excessive
         # path lengths when compiling.
-        generate_parser_c_extension(grammar, Path('.'), library_dir=self.library_dir)
+        generate_parser_c_extension(grammar, Path("."), library_dir=self.library_dir)
 
     def run_test(self, grammar_source, test_source):
         self.build_extension(grammar_source)

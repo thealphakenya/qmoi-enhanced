@@ -9,9 +9,14 @@ from test import support
 from test.support.script_helper import assert_python_ok
 
 from .util import (
-    BaseTestCase, ThreadPoolMixin, ProcessPoolForkMixin,
-    ProcessPoolForkserverMixin, ProcessPoolSpawnMixin,
-    create_executor_tests, setup_module)
+    BaseTestCase,
+    ThreadPoolMixin,
+    ProcessPoolForkMixin,
+    ProcessPoolForkserverMixin,
+    ProcessPoolSpawnMixin,
+    create_executor_tests,
+    setup_module,
+)
 
 
 def sleep_and_print(t, msg):
@@ -23,13 +28,13 @@ def sleep_and_print(t, msg):
 class ExecutorShutdownTest:
     def test_run_after_shutdown(self):
         self.executor.shutdown()
-        self.assertRaises(RuntimeError,
-                          self.executor.submit,
-                          pow, 2, 5)
+        self.assertRaises(RuntimeError, self.executor.submit, pow, 2, 5)
 
     def test_interpreter_shutdown(self):
         # Test the atexit hook for shutdown of worker threads and processes
-        rc, out, err = assert_python_ok('-c', """if 1:
+        rc, out, err = assert_python_ok(
+            "-c",
+            """if 1:
             from concurrent.futures import {executor_type}
             from time import sleep
             from test.test_concurrent_futures.test_shutdown import sleep_and_print
@@ -42,8 +47,11 @@ class ExecutorShutdownTest:
                     context = get_context(context)
                     t = {executor_type}(5, mp_context=context)
                 t.submit(sleep_and_print, 1.0, "apple")
-            """.format(executor_type=self.executor_type.__name__,
-                       context=getattr(self, "ctx", "")))
+            """.format(
+                executor_type=self.executor_type.__name__,
+                context=getattr(self, "ctx", ""),
+            ),
+        )
         # Errors in atexit hooks don't change the process exit code, check
         # stderr manually.
         self.assertFalse(err)
@@ -51,7 +59,9 @@ class ExecutorShutdownTest:
 
     def test_submit_after_interpreter_shutdown(self):
         # Test the atexit hook for shutdown of worker threads and processes
-        rc, out, err = assert_python_ok('-c', """if 1:
+        rc, out, err = assert_python_ok(
+            "-c",
+            """if 1:
             import atexit
             @atexit.register
             def run_last():
@@ -70,8 +80,11 @@ class ExecutorShutdownTest:
                     context = get_context(context)
                     t = {executor_type}(5, mp_context=context)
                     t.submit(id, 42).result()
-            """.format(executor_type=self.executor_type.__name__,
-                       context=getattr(self, "ctx", "")))
+            """.format(
+                executor_type=self.executor_type.__name__,
+                context=getattr(self, "ctx", ""),
+            ),
+        )
         # Errors in atexit hooks don't change the process exit code, check
         # stderr manually.
         self.assertIn("RuntimeError: cannot schedule new futures", err.decode())
@@ -85,7 +98,7 @@ class ExecutorShutdownTest:
 
     def test_cancel_futures(self):
         assert self.worker_count <= 5, "test needs few workers"
-        fs = [self.executor.submit(time.sleep, .1) for _ in range(50)]
+        fs = [self.executor.submit(time.sleep, 0.1) for _ in range(50)]
         self.executor.shutdown(cancel_futures=True)
         # We can't guarantee the exact number of cancellations, but we can
         # guarantee that *some* were cancelled. With few workers, many of
@@ -113,9 +126,12 @@ class ExecutorShutdownTest:
         """
         if self.executor_type == futures.ProcessPoolExecutor:
             raise unittest.SkipTest(
-                "Hangs, see https://github.com/python/cpython/issues/83386")
+                "Hangs, see https://github.com/python/cpython/issues/83386"
+            )
 
-        rc, out, err = assert_python_ok('-c', """if True:
+        rc, out, err = assert_python_ok(
+            "-c",
+            """if True:
             from concurrent.futures import {executor_type}
             from test.test_concurrent_futures.test_shutdown import sleep_and_print
             if __name__ == "__main__":
@@ -123,8 +139,11 @@ class ExecutorShutdownTest:
                 t = {executor_type}(max_workers=3)
                 t.submit(sleep_and_print, 1.0, "apple")
                 t.shutdown(wait=False)
-            """.format(executor_type=self.executor_type.__name__,
-                       context=getattr(self, 'ctx', None)))
+            """.format(
+                executor_type=self.executor_type.__name__,
+                context=getattr(self, "ctx", None),
+            ),
+        )
         self.assertFalse(err)
         self.assertEqual(out.strip(), b"apple")
 
@@ -134,16 +153,15 @@ class ExecutorShutdownTest:
 
         See https://github.com/python/cpython/issues/94440.
         """
-        if not hasattr(signal, 'alarm'):
-            raise unittest.SkipTest(
-                "Tested platform does not support the alarm signal")
+        if not hasattr(signal, "alarm"):
+            raise unittest.SkipTest("Tested platform does not support the alarm signal")
 
         def timeout(_signum, _frame):
             raise RuntimeError("timed out waiting for shutdown")
 
         kwargs = {}
-        if getattr(self, 'ctx', None):
-            kwargs['mp_context'] = self.get_context()
+        if getattr(self, "ctx", None):
+            kwargs["mp_context"] = self.get_context()
         executor = self.executor_type(max_workers=1, **kwargs)
         executor.submit(int).result()
         old_handler = signal.signal(signal.SIGALRM, timeout)
@@ -174,8 +192,9 @@ class ThreadPoolShutdownTest(ThreadPoolMixin, ExecutorShutdownTest, BaseTestCase
     def test_context_manager_shutdown(self):
         with futures.ThreadPoolExecutor(max_workers=5) as e:
             executor = e
-            self.assertEqual(list(e.map(abs, range(-5, 5))),
-                             [5, 4, 3, 2, 1, 0, 1, 2, 3, 4])
+            self.assertEqual(
+                list(e.map(abs, range(-5, 5))), [5, 4, 3, 2, 1, 0, 1, 2, 3, 4]
+            )
 
         for t in executor._threads:
             t.join()
@@ -207,17 +226,17 @@ class ThreadPoolShutdownTest(ThreadPoolMixin, ExecutorShutdownTest, BaseTestCase
         # executor got shutdown.
         assert all([r == abs(v) for r, v in zip(res, range(-5, 5))])
 
-
     def test_thread_names_assigned(self):
         executor = futures.ThreadPoolExecutor(
-            max_workers=5, thread_name_prefix='SpecialPool')
+            max_workers=5, thread_name_prefix="SpecialPool"
+        )
         executor.map(abs, range(-5, 5))
         threads = executor._threads
         del executor
         support.gc_collect()  # For PyPy or other GCs.
 
         for t in threads:
-            self.assertRegex(t.name, r'^SpecialPool_[0-4]$')
+            self.assertRegex(t.name, r"^SpecialPool_[0-4]$")
             t.join()
 
     def test_thread_names_default(self):
@@ -230,20 +249,23 @@ class ThreadPoolShutdownTest(ThreadPoolMixin, ExecutorShutdownTest, BaseTestCase
         for t in threads:
             # Ensure that our default name is reasonably sane and unique when
             # no thread_name_prefix was supplied.
-            self.assertRegex(t.name, r'ThreadPoolExecutor-\d+_[0-4]$')
+            self.assertRegex(t.name, r"ThreadPoolExecutor-\d+_[0-4]$")
             t.join()
 
     def test_cancel_futures_wait_false(self):
         # Can only be reliably tested for TPE, since PPE often hangs with
         # `wait=False` (even without *cancel_futures*).
-        rc, out, err = assert_python_ok('-c', """if True:
+        rc, out, err = assert_python_ok(
+            "-c",
+            """if True:
             from concurrent.futures import ThreadPoolExecutor
             from test.test_concurrent_futures.test_shutdown import sleep_and_print
             if __name__ == "__main__":
                 t = ThreadPoolExecutor()
                 t.submit(sleep_and_print, .1, "apple")
                 t.shutdown(wait=False, cancel_futures=True)
-            """)
+            """,
+        )
         # Errors in atexit hooks don't change the process exit code, check
         # stderr manually.
         self.assertFalse(err)
@@ -276,17 +298,20 @@ class ProcessPoolShutdownTest(ExecutorShutdownTest):
 
     def test_context_manager_shutdown(self):
         with futures.ProcessPoolExecutor(
-                max_workers=5, mp_context=self.get_context()) as e:
+            max_workers=5, mp_context=self.get_context()
+        ) as e:
             processes = e._processes
-            self.assertEqual(list(e.map(abs, range(-5, 5))),
-                             [5, 4, 3, 2, 1, 0, 1, 2, 3, 4])
+            self.assertEqual(
+                list(e.map(abs, range(-5, 5))), [5, 4, 3, 2, 1, 0, 1, 2, 3, 4]
+            )
 
         for p in processes.values():
             p.join()
 
     def test_del_shutdown(self):
         executor = futures.ProcessPoolExecutor(
-                max_workers=5, mp_context=self.get_context())
+            max_workers=5, mp_context=self.get_context()
+        )
         res = executor.map(abs, range(-5, 5))
         executor_manager_thread = executor._executor_manager_thread
         processes = executor._processes
@@ -310,7 +335,8 @@ class ProcessPoolShutdownTest(ExecutorShutdownTest):
         # Ensure that the executor cleans up the processes when calling
         # shutdown with wait=False
         executor = futures.ProcessPoolExecutor(
-                max_workers=5, mp_context=self.get_context())
+            max_workers=5, mp_context=self.get_context()
+        )
         res = executor.map(abs, range(-5, 5))
         processes = executor._processes
         call_queue = executor._call_queue
@@ -329,10 +355,15 @@ class ProcessPoolShutdownTest(ExecutorShutdownTest):
         assert all([r == abs(v) for r, v in zip(res, range(-5, 5))])
 
 
-create_executor_tests(globals(), ProcessPoolShutdownTest,
-                      executor_mixins=(ProcessPoolForkMixin,
-                                       ProcessPoolForkserverMixin,
-                                       ProcessPoolSpawnMixin))
+create_executor_tests(
+    globals(),
+    ProcessPoolShutdownTest,
+    executor_mixins=(
+        ProcessPoolForkMixin,
+        ProcessPoolForkserverMixin,
+        ProcessPoolSpawnMixin,
+    ),
+)
 
 
 def setUpModule():

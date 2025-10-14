@@ -15,12 +15,14 @@ def t1():
         traceback.print_exc()
         os._exit(1)
 
+
 def t2():
     try:
         from concurrent.futures.thread import ThreadPoolExecutor
     except Exception:
         traceback.print_exc()
         os._exit(1)
+
 
 def main():
     for j in range(NLOOPS):
@@ -31,8 +33,9 @@ def main():
             thread.start()
         for thread in threads:
             thread.join()
-        sys.modules.pop('concurrent.futures', None)
-        sys.modules.pop('concurrent.futures.thread', None)
+        sys.modules.pop("concurrent.futures", None)
+        sys.modules.pop("concurrent.futures.thread", None)
+
 
 if __name__ == "__main__":
     main()

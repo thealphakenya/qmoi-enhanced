@@ -6,9 +6,11 @@ def peek_and_iter(items):
         peeked = next(items)
     except StopIteration:
         return None, None
+
     def chain():
         yield peeked
         yield from items
+
     return chain(), peeked
 
 

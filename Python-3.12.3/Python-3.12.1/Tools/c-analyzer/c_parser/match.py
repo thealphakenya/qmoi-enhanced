@@ -9,7 +9,7 @@ _KIND = _info.KIND
 
 def match_storage(decl, expected):
     default = _info.get_default_storage(decl)
-    #assert default
+    # assert default
     if expected is None:
         expected = {default}
     elif isinstance(expected, str):
@@ -25,6 +25,7 @@ def match_storage(decl, expected):
 ##################################
 # decl matchers
 
+
 def is_type_decl(item):
     return _KIND.is_type_decl(item.kind)
 
@@ -33,9 +34,11 @@ def is_decl(item):
     return _KIND.is_decl(item.kind)
 
 
-def is_pots(typespec, *,
-            _regex=re.compile(rf'^{SIMPLE_TYPE}$', re.VERBOSE),
-            ):
+def is_pots(
+    typespec,
+    *,
+    _regex=re.compile(rf"^{SIMPLE_TYPE}$", re.VERBOSE),
+):
 
     if not typespec:
         return None
@@ -55,7 +58,7 @@ def _is_funcptr(declstr):
     if not declstr:
         return None
     # XXX Support "(<name>*)(".
-    return '(*)(' in declstr.replace(' ', '')
+    return "(*)(" in declstr.replace(" ", "")
 
 
 def is_forward_decl(decl):
@@ -80,26 +83,26 @@ def can_have_symbol(decl):
 def has_external_symbol(decl):
     if not can_have_symbol(decl):
         return False
-    if _info.get_effective_storage(decl) != 'extern':
+    if _info.get_effective_storage(decl) != "extern":
         return False
     if decl.kind is _KIND.FUNCTION:
         return not decl.signature.isforward
     else:
         # It must be a variable, which can only be implicitly extern here.
-        return decl.storage != 'extern'
+        return decl.storage != "extern"
 
 
 def has_internal_symbol(decl):
     if not can_have_symbol(decl):
         return False
-    return _info.get_actual_storage(decl) == 'static'
+    return _info.get_actual_storage(decl) == "static"
 
 
 def is_external_reference(decl):
     if not can_have_symbol(decl):
         return False
     # We have to check the declared storage rather tnan the effective.
-    if decl.storage != 'extern':
+    if decl.storage != "extern":
         return False
     if decl.kind is _KIND.FUNCTION:
         return decl.signature.isforward
@@ -122,10 +125,11 @@ def is_global_var(decl):
 ##################################
 # filtering with matchers
 
+
 def filter_by_kind(items, kind):
-    if kind == 'type':
+    if kind == "type":
         kinds = _KIND._TYPE_DECLS
-    elif kind == 'decl':
+    elif kind == "decl":
         kinds = _KIND._TYPE_DECLS
     try:
         okay = kind in _KIND
@@ -141,6 +145,7 @@ def filter_by_kind(items, kind):
 ##################################
 # grouping with matchers
 
+
 def group_by_category(decls, categories, *, ignore_non_match=True):
     collated = {}
     for decl in decls:
@@ -154,7 +159,7 @@ def group_by_category(decls, categories, *, ignore_non_match=True):
                 break
         else:
             if not ignore_non_match:
-                raise Exception(f'no match for {decl!r}')
+                raise Exception(f"no match for {decl!r}")
     return collated
 
 
@@ -164,7 +169,7 @@ def group_by_kind(items):
         try:
             collated[item.kind].append(item)
         except KeyError:
-            raise ValueError(f'unsupported kind in {item!r}')
+            raise ValueError(f"unsupported kind in {item!r}")
     return collated
 
 

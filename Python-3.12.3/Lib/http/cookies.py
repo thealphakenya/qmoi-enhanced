@@ -135,9 +135,10 @@ import types
 
 __all__ = ["CookieError", "BaseCookie", "SimpleCookie"]
 
-_nulljoin = ''.join
-_semispacejoin = '; '.join
-_spacejoin = ' '.join
+_nulljoin = "".join
+_semispacejoin = "; ".join
+_spacejoin = " ".join
+
 
 #
 # Define an exception visible to External modules
@@ -160,16 +161,20 @@ class CookieError(Exception):
 #       _Translator       hash-table for fast quoting
 #
 _LegalChars = string.ascii_letters + string.digits + "!#$%&'*+-.^_`|~:"
-_UnescapedChars = _LegalChars + ' ()/<=>?@[]{}'
+_UnescapedChars = _LegalChars + " ()/<=>?@[]{}"
 
-_Translator = {n: '\\%03o' % n
-               for n in set(range(256)) - set(map(ord, _UnescapedChars))}
-_Translator.update({
-    ord('"'): '\\"',
-    ord('\\'): '\\\\',
-})
+_Translator = {
+    n: "\\%03o" % n for n in set(range(256)) - set(map(ord, _UnescapedChars))
+}
+_Translator.update(
+    {
+        ord('"'): '\\"',
+        ord("\\"): "\\\\",
+    }
+)
 
-_is_legal_key = re.compile('[%s]+' % re.escape(_LegalChars)).fullmatch
+_is_legal_key = re.compile("[%s]+" % re.escape(_LegalChars)).fullmatch
+
 
 def _quote(str):
     r"""Quote a string for use in a cookie header.
@@ -186,6 +191,7 @@ def _quote(str):
 
 _OctalPatt = re.compile(r"\\[0-3][0-7][0-7]")
 _QuotePatt = re.compile(r"[\\].")
+
 
 def _unquote(str):
     # If there aren't any doublequotes,
@@ -211,7 +217,7 @@ def _unquote(str):
     while 0 <= i < n:
         o_match = _OctalPatt.search(str, i)
         q_match = _QuotePatt.search(str, i)
-        if not o_match and not q_match:              # Neither matched
+        if not o_match and not q_match:  # Neither matched
             res.append(str[i:])
             break
         # else:
@@ -220,15 +226,16 @@ def _unquote(str):
             j = o_match.start(0)
         if q_match:
             k = q_match.start(0)
-        if q_match and (not o_match or k < j):     # QuotePatt matched
+        if q_match and (not o_match or k < j):  # QuotePatt matched
             res.append(str[i:k])
-            res.append(str[k+1])
+            res.append(str[k + 1])
             i = k + 2
-        else:                                      # OctalPatt matched
+        else:  # OctalPatt matched
             res.append(str[i:j])
-            res.append(chr(int(str[j+1:j+4], 8)))
+            res.append(chr(int(str[j + 1 : j + 4], 8)))
             i = j + 4
     return _nulljoin(res)
+
 
 # The _getdate() routine is used to set the expiration time in the cookie's HTTP
 # header.  By default, _getdate() returns the current time in the appropriate
@@ -237,18 +244,39 @@ def _unquote(str):
 # ago".  The offset may be a floating point number.
 #
 
-_weekdayname = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+_weekdayname = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
-_monthname = [None,
-              'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+_monthname = [
+    None,
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+]
+
 
 def _getdate(future=0, weekdayname=_weekdayname, monthname=_monthname):
     from time import gmtime, time
+
     now = time()
     year, month, day, hh, mm, ss, wd, y, z = gmtime(now + future)
-    return "%s, %02d %3s %4d %02d:%02d:%02d GMT" % \
-           (weekdayname[wd], day, monthname[month], year, hh, mm, ss)
+    return "%s, %02d %3s %4d %02d:%02d:%02d GMT" % (
+        weekdayname[wd],
+        day,
+        monthname[month],
+        year,
+        hh,
+        mm,
+        ss,
+    )
 
 
 class Morsel(dict):
@@ -259,6 +287,7 @@ class Morsel(dict):
     This class also includes a coded_value attribute, which is used to hold
     the network representation of the value.
     """
+
     # RFC 2109 lists these attributes as reserved:
     #   path       comment         domain
     #   max-age    secure      version
@@ -273,18 +302,18 @@ class Morsel(dict):
     # variant on the left to the appropriate traditional
     # formatting on the right.
     _reserved = {
-        "expires"  : "expires",
-        "path"     : "Path",
-        "comment"  : "Comment",
-        "domain"   : "Domain",
-        "max-age"  : "Max-Age",
-        "secure"   : "Secure",
-        "httponly" : "HttpOnly",
-        "version"  : "Version",
-        "samesite" : "SameSite",
+        "expires": "expires",
+        "path": "Path",
+        "comment": "Comment",
+        "domain": "Domain",
+        "max-age": "Max-Age",
+        "secure": "Secure",
+        "httponly": "HttpOnly",
+        "version": "Version",
+        "samesite": "SameSite",
     }
 
-    _flags = {'secure', 'httponly'}
+    _flags = {"secure", "httponly"}
 
     def __init__(self):
         # Set defaults
@@ -321,10 +350,12 @@ class Morsel(dict):
     def __eq__(self, morsel):
         if not isinstance(morsel, Morsel):
             return NotImplemented
-        return (dict.__eq__(self, morsel) and
-                self._value == morsel._value and
-                self._key == morsel._key and
-                self._coded_value == morsel._coded_value)
+        return (
+            dict.__eq__(self, morsel)
+            and self._value == morsel._value
+            and self._key == morsel._key
+            and self._coded_value == morsel._coded_value
+        )
 
     __ne__ = object.__ne__
 
@@ -348,9 +379,9 @@ class Morsel(dict):
 
     def set(self, key, val, coded_val):
         if key.lower() in self._reserved:
-            raise CookieError('Attempt to set a reserved key %r' % (key,))
+            raise CookieError("Attempt to set a reserved key %r" % (key,))
         if not _is_legal_key(key):
-            raise CookieError('Illegal key %r' % (key,))
+            raise CookieError("Illegal key %r" % (key,))
 
         # It's a good key, so save it.
         self._key = key
@@ -359,15 +390,15 @@ class Morsel(dict):
 
     def __getstate__(self):
         return {
-            'key': self._key,
-            'value': self._value,
-            'coded_value': self._coded_value,
+            "key": self._key,
+            "value": self._value,
+            "coded_value": self._coded_value,
         }
 
     def __setstate__(self, state):
-        self._key = state['key']
-        self._value = state['value']
-        self._coded_value = state['coded_value']
+        self._key = state["key"]
+        self._value = state["value"]
+        self._coded_value = state["coded_value"]
 
     def output(self, attrs=None, header="Set-Cookie:"):
         return "%s %s" % (header, self.OutputString(attrs))
@@ -375,7 +406,7 @@ class Morsel(dict):
     __str__ = output
 
     def __repr__(self):
-        return '<%s: %s>' % (self.__class__.__name__, self.OutputString())
+        return "<%s: %s>" % (self.__class__.__name__, self.OutputString())
 
     def js_output(self, attrs=None):
         # Print javascript
@@ -385,7 +416,9 @@ class Morsel(dict):
         document.cookie = \"%s\";
         // end hiding -->
         </script>
-        """ % (self.OutputString(attrs).replace('"', r'\"'))
+        """ % (
+            self.OutputString(attrs).replace('"', r"\"")
+        )
 
     def OutputString(self, attrs=None):
         # Build up our result
@@ -432,12 +465,15 @@ class Morsel(dict):
 # result, the parsing rules here are less strict.
 #
 
-_LegalKeyChars  = r"\w\d!#%&'~_`><@,:/\$\*\+\-\.\^\|\)\(\?\}\{\="
-_LegalValueChars = _LegalKeyChars + r'\[\]'
-_CookiePattern = re.compile(r"""
+_LegalKeyChars = r"\w\d!#%&'~_`><@,:/\$\*\+\-\.\^\|\)\(\?\}\{\="
+_LegalValueChars = _LegalKeyChars + r"\[\]"
+_CookiePattern = re.compile(
+    r"""
     \s*                            # Optional whitespace at start of cookie
     (?P<key>                       # Start of group 'key'
-    [""" + _LegalKeyChars + r"""]+?   # Any word of at least one letter
+    ["""
+    + _LegalKeyChars
+    + r"""]+?   # Any word of at least one letter
     )                              # End of group 'key'
     (                              # Optional group: there may not be a value.
     \s*=\s*                          # Equal Sign
@@ -446,12 +482,16 @@ _CookiePattern = re.compile(r"""
     |                                  # or
     \w{3},\s[\w\d\s-]{9,11}\s[\d:]{8}\sGMT  # Special case for "expires" attr
     |                                  # or
-    [""" + _LegalValueChars + r"""]*      # Any word or empty string
+    ["""
+    + _LegalValueChars
+    + r"""]*      # Any word or empty string
     )                                # End of group 'val'
     )?                             # End of optional value group
     \s*                            # Any number of spaces.
     (\s+|;|$)                      # Ending either at space, semicolon, or EOS.
-    """, re.ASCII | re.VERBOSE)    # re.ASCII may be removed if safe.
+    """,
+    re.ASCII | re.VERBOSE,
+)  # re.ASCII may be removed if safe.
 
 
 # At long last, here is the cookie class.  Using this class is almost just like
@@ -511,8 +551,8 @@ class BaseCookie(dict):
         l = []
         items = sorted(self.items())
         for key, value in items:
-            l.append('%s=%s' % (key, repr(value.value)))
-        return '<%s: %s>' % (self.__class__.__name__, _spacejoin(l))
+            l.append("%s=%s" % (key, repr(value.value)))
+        return "<%s: %s>" % (self.__class__.__name__, _spacejoin(l))
 
     def js_output(self, attrs=None):
         """Return a string suitable for JavaScript."""
@@ -537,10 +577,10 @@ class BaseCookie(dict):
         return
 
     def __parse_string(self, str, patt=_CookiePattern):
-        i = 0                 # Our starting point
-        n = len(str)          # Length of string
-        parsed_items = []     # Parsed (type, key, value) triples
-        morsel_seen = False   # A key=value pair was previously encountered
+        i = 0  # Our starting point
+        n = len(str)  # Length of string
+        parsed_items = []  # Parsed (type, key, value) triples
+        morsel_seen = False  # A key=value pair was previously encountered
 
         TYPE_ATTRIBUTE = 1
         TYPE_KEYVALUE = 2
@@ -585,7 +625,7 @@ class BaseCookie(dict):
                 return
 
         # The cookie string is valid, apply it.
-        M = None         # current morsel
+        M = None  # current morsel
         for tp, key, value in parsed_items:
             if tp == TYPE_ATTRIBUTE:
                 assert M is not None
@@ -604,6 +644,7 @@ class SimpleCookie(BaseCookie):
     calls the builtin str() to convert the value to a string.  Values
     received from HTTP are kept as strings.
     """
+
     def value_decode(self, val):
         return _unquote(val), val
 

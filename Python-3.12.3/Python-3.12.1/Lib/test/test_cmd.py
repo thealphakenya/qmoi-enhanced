@@ -3,13 +3,13 @@ Test script for the 'cmd' module
 Original by Michael Schneider
 """
 
-
 import cmd
 import sys
 import doctest
 import unittest
 import io
 from test import support
+
 
 class samplecmdclass(cmd.Cmd):
     """
@@ -172,17 +172,19 @@ class samplecmdclass(cmd.Cmd):
         except ValueError:
             print("*** arguments should be numbers")
             return
-        print(l[0]+l[1])
+        print(l[0] + l[1])
 
     def help_add(self):
         print("help text for add")
         return
 
     def help_meaning(self):
-        print("Try and be nice to people, avoid eating fat, read a "
-              "good book every now and then, get some walking in, "
-              "and try to live together in peace and harmony with "
-              "people of all creeds and nations.")
+        print(
+            "Try and be nice to people, avoid eating fat, read a "
+            "good book every now and then, get some walking in, "
+            "and try to live together in peace and harmony with "
+            "people of all creeds and nations."
+        )
         return
 
     def help_life(self):
@@ -203,13 +205,11 @@ class TestAlternateInput(unittest.TestCase):
         def do_EOF(self, args):
             return True
 
-
     class simplecmd2(simplecmd):
 
         def do_EOF(self, args):
-            print('*** Unknown syntax: EOF', file=self.stdout)
+            print("*** Unknown syntax: EOF", file=self.stdout)
             return True
-
 
     def test_file_with_missing_final_nl(self):
         input = io.StringIO("print test\nprint test2")
@@ -217,11 +217,9 @@ class TestAlternateInput(unittest.TestCase):
         cmd = self.simplecmd(stdin=input, stdout=output)
         cmd.use_rawinput = False
         cmd.cmdloop()
-        self.assertMultiLineEqual(output.getvalue(),
-            ("(Cmd) test\n"
-             "(Cmd) test2\n"
-             "(Cmd) "))
-
+        self.assertMultiLineEqual(
+            output.getvalue(), ("(Cmd) test\n" "(Cmd) test2\n" "(Cmd) ")
+        )
 
     def test_input_reset_at_EOF(self):
         input = io.StringIO("print test\nprint test2")
@@ -229,19 +227,18 @@ class TestAlternateInput(unittest.TestCase):
         cmd = self.simplecmd2(stdin=input, stdout=output)
         cmd.use_rawinput = False
         cmd.cmdloop()
-        self.assertMultiLineEqual(output.getvalue(),
-            ("(Cmd) test\n"
-             "(Cmd) test2\n"
-             "(Cmd) *** Unknown syntax: EOF\n"))
+        self.assertMultiLineEqual(
+            output.getvalue(),
+            ("(Cmd) test\n" "(Cmd) test2\n" "(Cmd) *** Unknown syntax: EOF\n"),
+        )
         input = io.StringIO("print \n\n")
         output = io.StringIO()
         cmd.stdin = input
         cmd.stdout = output
         cmd.cmdloop()
-        self.assertMultiLineEqual(output.getvalue(),
-            ("(Cmd) \n"
-             "(Cmd) \n"
-             "(Cmd) *** Unknown syntax: EOF\n"))
+        self.assertMultiLineEqual(
+            output.getvalue(), ("(Cmd) \n" "(Cmd) \n" "(Cmd) *** Unknown syntax: EOF\n")
+        )
 
 
 def load_tests(loader, tests, pattern):

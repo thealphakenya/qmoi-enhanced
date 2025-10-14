@@ -4,8 +4,8 @@ import sys
 import unittest
 import warnings
 
-if sys.platform != 'win32':
-    raise unittest.SkipTest('Windows only')
+if sys.platform != "win32":
+    raise unittest.SkipTest("Windows only")
 
 import _overlapped
 import _winapi
@@ -37,7 +37,7 @@ class PipeTests(unittest.TestCase):
             except OSError as e:
                 self.assertEqual(e.winerror, ERROR_IO_INCOMPLETE)
             else:
-                raise RuntimeError('expected ERROR_IO_INCOMPLETE')
+                raise RuntimeError("expected ERROR_IO_INCOMPLETE")
 
             ov2 = _overlapped.Overlapped()
             self.assertFalse(ov2.pending)
@@ -67,15 +67,15 @@ class PipeTests(unittest.TestCase):
 
         # check garbage collection of p closes handle
         with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", "",  ResourceWarning)
+            warnings.filterwarnings("ignore", "", ResourceWarning)
             del p
             support.gc_collect()
         try:
             _winapi.CloseHandle(h)
         except OSError as e:
-            self.assertEqual(e.winerror, 6)     # ERROR_INVALID_HANDLE
+            self.assertEqual(e.winerror, 6)  # ERROR_INVALID_HANDLE
         else:
-            raise RuntimeError('expected ERROR_INVALID_HANDLE')
+            raise RuntimeError("expected ERROR_INVALID_HANDLE")
 
 
 class PopenTests(unittest.TestCase):
@@ -89,10 +89,12 @@ class PopenTests(unittest.TestCase):
             """
         msg = b"blah\n"
 
-        p = windows_utils.Popen([sys.executable, '-c', command],
-                                stdin=windows_utils.PIPE,
-                                stdout=windows_utils.PIPE,
-                                stderr=windows_utils.PIPE)
+        p = windows_utils.Popen(
+            [sys.executable, "-c", command],
+            stdin=windows_utils.PIPE,
+            stdout=windows_utils.PIPE,
+            stderr=windows_utils.PIPE,
+        )
 
         for f in [p.stdin, p.stdout, p.stderr]:
             self.assertIsInstance(f, windows_utils.PipeHandle)
@@ -107,8 +109,9 @@ class PopenTests(unittest.TestCase):
 
         events = [ovin.event, ovout.event, overr.event]
         # Super-long timeout for slow buildbots.
-        res = _winapi.WaitForMultipleObjects(events, True,
-                                             int(support.SHORT_TIMEOUT * 1000))
+        res = _winapi.WaitForMultipleObjects(
+            events, True, int(support.SHORT_TIMEOUT * 1000)
+        )
         self.assertEqual(res, _winapi.WAIT_OBJECT_0)
         self.assertFalse(ovout.pending)
         self.assertFalse(overr.pending)
@@ -129,5 +132,5 @@ class PopenTests(unittest.TestCase):
             pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

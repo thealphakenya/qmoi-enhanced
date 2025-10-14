@@ -2,6 +2,7 @@ import functools
 import tkinter
 import unittest
 
+
 class AbstractTkTest:
 
     @classmethod
@@ -13,9 +14,9 @@ class AbstractTkTest:
         cls.wantobjects = cls.root.wantobjects()
         # De-maximize main window.
         # Some window managers can maximize new windows.
-        cls.root.wm_state('normal')
+        cls.root.wm_state("normal")
         try:
-            cls.root.wm_attributes('-zoomed', False)
+            cls.root.wm_attributes("-zoomed", False)
         except tkinter.TclError:
             pass
 
@@ -59,27 +60,30 @@ class AbstractDefaultRootTest:
         destroy_default_root()
         tkinter.NoDefaultRoot()
         self.assertRaises(RuntimeError, constructor)
-        self.assertFalse(hasattr(tkinter, '_default_root'))
+        self.assertFalse(hasattr(tkinter, "_default_root"))
 
 
 def destroy_default_root():
-    if getattr(tkinter, '_default_root', None):
+    if getattr(tkinter, "_default_root", None):
         tkinter._default_root.update_idletasks()
         tkinter._default_root.destroy()
         tkinter._default_root = None
 
+
 def simulate_mouse_click(widget, x, y):
     """Generate proper events to click at the x, y position (tries to act
     like an X server)."""
-    widget.event_generate('<Enter>', x=0, y=0)
-    widget.event_generate('<Motion>', x=x, y=y)
-    widget.event_generate('<ButtonPress-1>', x=x, y=y)
-    widget.event_generate('<ButtonRelease-1>', x=x, y=y)
+    widget.event_generate("<Enter>", x=0, y=0)
+    widget.event_generate("<Motion>", x=x, y=y)
+    widget.event_generate("<ButtonPress-1>", x=x, y=y)
+    widget.event_generate("<ButtonRelease-1>", x=x, y=y)
 
 
 import _tkinter
-tcl_version = tuple(map(int, _tkinter.TCL_VERSION.split('.')))
-tk_version = tuple(map(int, _tkinter.TK_VERSION.split('.')))
+
+tcl_version = tuple(map(int, _tkinter.TCL_VERSION.split(".")))
+tk_version = tuple(map(int, _tkinter.TK_VERSION.split(".")))
+
 
 def requires_tk(*version):
     if len(version) <= 2 and tk_version >= version:
@@ -88,30 +92,37 @@ def requires_tk(*version):
     def deco(test):
         @functools.wraps(test)
         def newtest(self):
-            root = getattr(self, 'root', None)
+            root = getattr(self, "root", None)
             if get_tk_patchlevel(root) < version:
-                self.skipTest('requires Tk version >= ' +
-                                '.'.join(map(str, version)))
+                self.skipTest("requires Tk version >= " + ".".join(map(str, version)))
             test(self)
+
         return newtest
+
     return deco
 
+
 _tk_patchlevel = None
+
+
 def get_tk_patchlevel(root):
     global _tk_patchlevel
     if _tk_patchlevel is None:
-        _tk_patchlevel = tkinter._parse_version(root.tk.globalgetvar('tk_patchLevel'))
+        _tk_patchlevel = tkinter._parse_version(root.tk.globalgetvar("tk_patchLevel"))
     return _tk_patchlevel
 
+
 units = {
-    'c': 72 / 2.54,     # centimeters
-    'i': 72,            # inches
-    'm': 72 / 25.4,     # millimeters
-    'p': 1,             # points
+    "c": 72 / 2.54,  # centimeters
+    "i": 72,  # inches
+    "m": 72 / 25.4,  # millimeters
+    "p": 1,  # points
 }
+
 
 def pixels_conv(value):
     return float(value[:-1]) * units[value[-1:]]
+
 
 def tcl_obj_eq(actual, expected):
     if actual == expected:
@@ -121,10 +132,11 @@ def tcl_obj_eq(actual, expected):
             return str(actual) == expected
     if isinstance(actual, tuple):
         if isinstance(expected, tuple):
-            return (len(actual) == len(expected) and
-                    all(tcl_obj_eq(act, exp)
-                        for act, exp in zip(actual, expected)))
+            return len(actual) == len(expected) and all(
+                tcl_obj_eq(act, exp) for act, exp in zip(actual, expected)
+            )
     return False
+
 
 def widget_eq(actual, expected):
     if actual == expected:

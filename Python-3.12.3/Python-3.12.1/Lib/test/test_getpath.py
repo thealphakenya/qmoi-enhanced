@@ -8,10 +8,13 @@ from test.support import verbose
 
 try:
     # If we are in a source tree, use the original source file for tests
-    SOURCE = (pathlib.Path(__file__).absolute().parent.parent.parent / "Modules/getpath.py").read_bytes()
+    SOURCE = (
+        pathlib.Path(__file__).absolute().parent.parent.parent / "Modules/getpath.py"
+    ).read_bytes()
 except FileNotFoundError:
     # Try from _testcapimodule instead
     from _testinternalcapi import get_getpath_codeobject
+
     SOURCE = get_getpath_codeobject()
 
 
@@ -87,9 +90,7 @@ class MockGetPathTests(unittest.TestCase):
         ns.add_known_xfile(r"C:\venv\Scripts\python.exe")
         ns.add_known_file(r"C:\Python\Lib\os.py")
         ns.add_known_dir(r"C:\Python\DLLs")
-        ns.add_known_file(r"C:\venv\pyvenv.cfg", [
-            r"home = C:\Python"
-        ])
+        ns.add_known_file(r"C:\venv\pyvenv.cfg", [r"home = C:\Python"])
         expected = dict(
             executable=r"C:\venv\Scripts\python.exe",
             prefix=r"C:\Python",
@@ -115,11 +116,13 @@ class MockGetPathTests(unittest.TestCase):
         applications to register search paths.
         """
         hkey = rf"HKLM\Software\Python\PythonCore\9.8-XY\PythonPath"
-        winreg = MockWinreg({
-            hkey: None,
-            f"{hkey}\\Path1": "path1-dir",
-            f"{hkey}\\Path1\\Subdir": "not-subdirs",
-        })
+        winreg = MockWinreg(
+            {
+                hkey: None,
+                f"{hkey}\\Path1": "path1-dir",
+                f"{hkey}\\Path1\\Subdir": "not-subdirs",
+            }
+        )
         ns = MockNTNamespace(
             argv0=r"C:\Python\python.exe",
             real_executable=r"C:\Python\python.exe",
@@ -192,7 +195,9 @@ class MockGetPathTests(unittest.TestCase):
         )
         ns.add_known_xfile(r"C:\LinkedFrom\python.exe")
         ns.add_known_xfile(r"C:\CPython\PCbuild\amd64\python.exe")
-        ns.add_known_link(r"C:\LinkedFrom\python.exe", r"C:\CPython\PCbuild\amd64\python.exe")
+        ns.add_known_link(
+            r"C:\LinkedFrom\python.exe", r"C:\CPython\PCbuild\amd64\python.exe"
+        )
         ns.add_known_file(r"C:\CPython\Lib\os.py")
         ns.add_known_file(r"C:\CPython\PCbuild\amd64\pybuilddir.txt", [""])
         expected = dict(
@@ -303,7 +308,9 @@ class MockGetPathTests(unittest.TestCase):
         )
         ns.add_known_xfile("/home/cpython/python")
         ns.add_known_xfile("/usr/local/bin/python")
-        ns.add_known_file("/home/cpython/pybuilddir.txt", ["build/lib.linux-x86_64-9.8"])
+        ns.add_known_file(
+            "/home/cpython/pybuilddir.txt", ["build/lib.linux-x86_64-9.8"]
+        )
         ns.add_known_file("/home/cpython/Lib/os.py")
         ns.add_known_dir("/home/cpython/lib-dynload")
         expected = dict(
@@ -334,9 +341,7 @@ class MockGetPathTests(unittest.TestCase):
         ns.add_known_xfile("/venv/bin/python")
         ns.add_known_file("/usr/lib/python9.8/os.py")
         ns.add_known_dir("/usr/lib/python9.8/lib-dynload")
-        ns.add_known_file("/venv/pyvenv.cfg", [
-            r"home = /usr/bin"
-        ])
+        ns.add_known_file("/venv/pyvenv.cfg", [r"home = /usr/bin"])
         expected = dict(
             executable="/venv/bin/python",
             prefix="/usr",
@@ -366,9 +371,7 @@ class MockGetPathTests(unittest.TestCase):
         ns.add_known_link("/venv/bin/python", "/usr/bin/python3")
         ns.add_known_file("/usr/lib/python9.8/os.py")
         ns.add_known_dir("/usr/lib/python9.8/lib-dynload")
-        ns.add_known_file("/venv/pyvenv.cfg", [
-            r"home = /usr/bin"
-        ])
+        ns.add_known_file("/venv/pyvenv.cfg", [r"home = /usr/bin"])
         expected = dict(
             executable="/venv/bin/python",
             prefix="/usr",
@@ -387,7 +390,7 @@ class MockGetPathTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_venv_non_installed_zip_path_posix(self):
-        "Test a venv created from non-installed python has correct zip path."""
+        "Test a venv created from non-installed python has correct zip path." ""
         ns = MockPosixNamespace(
             argv0="/venv/bin/python",
             PREFIX="/usr",
@@ -395,13 +398,10 @@ class MockGetPathTests(unittest.TestCase):
         )
         ns.add_known_xfile("/path/to/non-installed/bin/python")
         ns.add_known_xfile("/venv/bin/python")
-        ns.add_known_link("/venv/bin/python",
-                          "/path/to/non-installed/bin/python")
+        ns.add_known_link("/venv/bin/python", "/path/to/non-installed/bin/python")
         ns.add_known_file("/path/to/non-installed/lib/python9.8/os.py")
         ns.add_known_dir("/path/to/non-installed/lib/python9.8/lib-dynload")
-        ns.add_known_file("/venv/pyvenv.cfg", [
-            r"home = /path/to/non-installed"
-        ])
+        ns.add_known_file("/venv/pyvenv.cfg", [r"home = /path/to/non-installed"])
         expected = dict(
             executable="/venv/bin/python",
             prefix="/path/to/non-installed",
@@ -430,9 +430,7 @@ class MockGetPathTests(unittest.TestCase):
         ns.add_known_xfile("/venv/bin/python")
         ns.add_known_file("/usr/lib/python9.8/os.py")
         ns.add_known_dir("/usr/lib/python9.8/lib-dynload")
-        ns.add_known_file("/venv/pyvenv.cfg", [
-            r"home = /usr/bin"
-        ])
+        ns.add_known_file("/venv/pyvenv.cfg", [r"home = /usr/bin"])
         expected = dict(
             executable="/venv/bin/python",
             prefix="/usr",
@@ -491,7 +489,9 @@ class MockGetPathTests(unittest.TestCase):
         ns.add_known_xfile("/home/cpython/python")
         ns.add_known_link("/linkfrom/python", "/home/cpython/python")
         ns.add_known_xfile("/usr/local/bin/python")
-        ns.add_known_file("/home/cpython/pybuilddir.txt", ["build/lib.linux-x86_64-9.8"])
+        ns.add_known_file(
+            "/home/cpython/pybuilddir.txt", ["build/lib.linux-x86_64-9.8"]
+        )
         ns.add_known_file("/home/cpython/Lib/os.py")
         ns.add_known_dir("/home/cpython/lib-dynload")
         expected = dict(
@@ -537,7 +537,7 @@ class MockGetPathTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_framework_macos(self):
-        """ Test framework layout on macOS
+        """Test framework layout on macOS
 
         This layout is primarily detected using a compile-time option
         (WITH_NEXT_FRAMEWORK).
@@ -552,13 +552,21 @@ class MockGetPathTests(unittest.TestCase):
             real_executable="/Library/Frameworks/Python.framework/Versions/9.8/Resources/Python.app/Contents/MacOS/Python",
             library="/Library/Frameworks/Python.framework/Versions/9.8/Python",
         )
-        ns.add_known_xfile("/Library/Frameworks/Python.framework/Versions/9.8/Resources/Python.app/Contents/MacOS/Python")
-        ns.add_known_xfile("/Library/Frameworks/Python.framework/Versions/9.8/bin/python9.8")
-        ns.add_known_dir("/Library/Frameworks/Python.framework/Versions/9.8/lib/python9.8/lib-dynload")
-        ns.add_known_file("/Library/Frameworks/Python.framework/Versions/9.8/lib/python9.8/os.py")
+        ns.add_known_xfile(
+            "/Library/Frameworks/Python.framework/Versions/9.8/Resources/Python.app/Contents/MacOS/Python"
+        )
+        ns.add_known_xfile(
+            "/Library/Frameworks/Python.framework/Versions/9.8/bin/python9.8"
+        )
+        ns.add_known_dir(
+            "/Library/Frameworks/Python.framework/Versions/9.8/lib/python9.8/lib-dynload"
+        )
+        ns.add_known_file(
+            "/Library/Frameworks/Python.framework/Versions/9.8/lib/python9.8/os.py"
+        )
 
         # This is definitely not the stdlib (see discusion in bpo-46890)
-        #ns.add_known_file("/Library/Frameworks/lib/python98.zip")
+        # ns.add_known_file("/Library/Frameworks/lib/python98.zip")
 
         expected = dict(
             executable="/Library/Frameworks/Python.framework/Versions/9.8/bin/python9.8",
@@ -578,7 +586,7 @@ class MockGetPathTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_alt_framework_macos(self):
-        """ Test framework layout on macOS with alternate framework name
+        """Test framework layout on macOS with alternate framework name
 
         ``--with-framework-name=DebugPython``
 
@@ -600,13 +608,21 @@ class MockGetPathTests(unittest.TestCase):
             executable_dir=None,
             py_setpath=None,
         )
-        ns.add_known_xfile("/Library/Frameworks/DebugPython.framework/Versions/9.8/Resources/Python.app/Contents/MacOS/DebugPython")
-        ns.add_known_xfile("/Library/Frameworks/DebugPython.framework/Versions/9.8/bin/python9.8")
-        ns.add_known_dir("/Library/Frameworks/DebugPython.framework/Versions/9.8/lib/python9.8/lib-dynload")
-        ns.add_known_xfile("/Library/Frameworks/DebugPython.framework/Versions/9.8/lib/python9.8/os.py")
+        ns.add_known_xfile(
+            "/Library/Frameworks/DebugPython.framework/Versions/9.8/Resources/Python.app/Contents/MacOS/DebugPython"
+        )
+        ns.add_known_xfile(
+            "/Library/Frameworks/DebugPython.framework/Versions/9.8/bin/python9.8"
+        )
+        ns.add_known_dir(
+            "/Library/Frameworks/DebugPython.framework/Versions/9.8/lib/python9.8/lib-dynload"
+        )
+        ns.add_known_xfile(
+            "/Library/Frameworks/DebugPython.framework/Versions/9.8/lib/python9.8/os.py"
+        )
 
         # This is definitely not the stdlib (see discusion in bpo-46890)
-        #ns.add_known_xfile("/Library/lib/python98.zip")
+        # ns.add_known_xfile("/Library/lib/python98.zip")
         expected = dict(
             executable="/Library/Frameworks/DebugPython.framework/Versions/9.8/bin/python9.8",
             prefix="/Library/Frameworks/DebugPython.framework/Versions/9.8",
@@ -625,8 +641,7 @@ class MockGetPathTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_venv_framework_macos(self):
-        """Test a venv layout on macOS using a framework build
-        """
+        """Test a venv layout on macOS using a framework build"""
         venv_path = "/tmp/workdir/venv"
         ns = MockPosixNamespace(
             os_name="darwin",
@@ -643,13 +658,22 @@ class MockGetPathTests(unittest.TestCase):
         ns.add_known_dir(f"{venv_path}/lib")
         ns.add_known_dir(f"{venv_path}/lib/python9.8")
         ns.add_known_xfile(f"{venv_path}/bin/python")
-        ns.add_known_xfile("/Library/Frameworks/Python.framework/Versions/9.8/Resources/Python.app/Contents/MacOS/Python")
-        ns.add_known_xfile("/Library/Frameworks/Python.framework/Versions/9.8/bin/python9.8")
-        ns.add_known_dir("/Library/Frameworks/Python.framework/Versions/9.8/lib/python9.8/lib-dynload")
-        ns.add_known_xfile("/Library/Frameworks/Python.framework/Versions/9.8/lib/python9.8/os.py")
-        ns.add_known_file(f"{venv_path}/pyvenv.cfg", [
-            "home = /Library/Frameworks/Python.framework/Versions/9.8/bin"
-        ])
+        ns.add_known_xfile(
+            "/Library/Frameworks/Python.framework/Versions/9.8/Resources/Python.app/Contents/MacOS/Python"
+        )
+        ns.add_known_xfile(
+            "/Library/Frameworks/Python.framework/Versions/9.8/bin/python9.8"
+        )
+        ns.add_known_dir(
+            "/Library/Frameworks/Python.framework/Versions/9.8/lib/python9.8/lib-dynload"
+        )
+        ns.add_known_xfile(
+            "/Library/Frameworks/Python.framework/Versions/9.8/lib/python9.8/os.py"
+        )
+        ns.add_known_file(
+            f"{venv_path}/pyvenv.cfg",
+            ["home = /Library/Frameworks/Python.framework/Versions/9.8/bin"],
+        )
         expected = dict(
             executable=f"{venv_path}/bin/python",
             prefix="/Library/Frameworks/Python.framework/Versions/9.8",
@@ -688,13 +712,22 @@ class MockGetPathTests(unittest.TestCase):
         ns.add_known_dir(f"{venv_path}/lib")
         ns.add_known_dir(f"{venv_path}/lib/python9.8")
         ns.add_known_xfile(f"{venv_path}/bin/python")
-        ns.add_known_xfile("/Library/Frameworks/DebugPython.framework/Versions/9.8/Resources/Python.app/Contents/MacOS/DebugPython")
-        ns.add_known_xfile("/Library/Frameworks/DebugPython.framework/Versions/9.8/bin/python9.8")
-        ns.add_known_dir("/Library/Frameworks/DebugPython.framework/Versions/9.8/lib/python9.8/lib-dynload")
-        ns.add_known_xfile("/Library/Frameworks/DebugPython.framework/Versions/9.8/lib/python9.8/os.py")
-        ns.add_known_file(f"{venv_path}/pyvenv.cfg", [
-            "home = /Library/Frameworks/DebugPython.framework/Versions/9.8/bin"
-        ])
+        ns.add_known_xfile(
+            "/Library/Frameworks/DebugPython.framework/Versions/9.8/Resources/Python.app/Contents/MacOS/DebugPython"
+        )
+        ns.add_known_xfile(
+            "/Library/Frameworks/DebugPython.framework/Versions/9.8/bin/python9.8"
+        )
+        ns.add_known_dir(
+            "/Library/Frameworks/DebugPython.framework/Versions/9.8/lib/python9.8/lib-dynload"
+        )
+        ns.add_known_xfile(
+            "/Library/Frameworks/DebugPython.framework/Versions/9.8/lib/python9.8/os.py"
+        )
+        ns.add_known_file(
+            f"{venv_path}/pyvenv.cfg",
+            ["home = /Library/Frameworks/DebugPython.framework/Versions/9.8/bin"],
+        )
         expected = dict(
             executable=f"{venv_path}/bin/python",
             prefix="/Library/Frameworks/DebugPython.framework/Versions/9.8",
@@ -729,9 +762,7 @@ class MockGetPathTests(unittest.TestCase):
         ns.add_known_xfile("/framework/Python9.8/python")
         ns.add_known_file("/usr/lib/python9.8/os.py")
         ns.add_known_dir("/usr/lib/python9.8/lib-dynload")
-        ns.add_known_file("/framework/Python9.8/pyvenv.cfg", [
-            "home = /usr/bin"
-        ])
+        ns.add_known_file("/framework/Python9.8/pyvenv.cfg", ["home = /usr/bin"])
         expected = dict(
             executable="/framework/Python9.8/python",
             prefix="/usr",
@@ -828,11 +859,10 @@ DEFAULT_NAMESPACE = dict(
     VPATH="",
     PLATLIBDIR="",
     PYDEBUGEXT="",
-    VERSION_MAJOR=9,    # fixed version number for ease
-    VERSION_MINOR=8,    # of testing
+    VERSION_MAJOR=9,  # fixed version number for ease
+    VERSION_MINOR=8,  # of testing
     PYWINVER=None,
     EXE_SUFFIX=None,
-
     ENV_PATH="",
     ENV_PYTHONHOME="",
     ENV_PYTHONEXECUTABLE="",
@@ -865,11 +895,11 @@ DEFAULT_CONFIG = dict(
     pythonpath_env=None,
     argv=None,
     orig_argv=None,
-
     isolated=0,
     use_environment=1,
     use_site=1,
 )
+
 
 class MockNTNamespace(dict):
     def __init__(self, *a, argv0=None, config=None, **kw):
@@ -1024,9 +1054,9 @@ class MockWinreg:
         hkey = hkey.casefold()
         if hkey not in self.open:
             raise RuntimeError("key is not open")
-        prefix = f'{hkey}\\'
-        subkeys = [k[len(prefix):] for k in sorted(self.keys) if k.startswith(prefix)]
-        subkeys[:] = [k for k in subkeys if '\\' not in k]
+        prefix = f"{hkey}\\"
+        subkeys = [k[len(prefix) :] for k in sorted(self.keys) if k.startswith(prefix)]
+        subkeys[:] = [k for k in subkeys if "\\" not in k]
         for j, n in enumerate(subkeys):
             if j == i:
                 return n.removeprefix(prefix)
@@ -1040,7 +1070,7 @@ class MockWinreg:
             raise RuntimeError("key is not open")
         if subkey:
             subkey = subkey.casefold()
-            hkey = f'{hkey}\\{subkey}'
+            hkey = f"{hkey}\\{subkey}"
         try:
             return self.keys[hkey]
         except KeyError:
@@ -1171,7 +1201,9 @@ def diff_dict(before, after, prefix="global"):
     if verbose:
         for k, b, a in diff:
             if b:
-                print("{}.{} -{!r}\n{} +{!r}".format(prefix, k.ljust(max_k), b, indent, a))
+                print(
+                    "{}.{} -{!r}\n{} +{!r}".format(prefix, k.ljust(max_k), b, indent, a)
+                )
             else:
                 print("{}.{} +{!r}".format(prefix, k.ljust(max_k), a))
 
@@ -1188,7 +1220,9 @@ def dump_dict(before, after, prefix="global"):
             continue
         try:
             if v != before[k]:
-                print("{}.{} {!r} (was {!r})".format(prefix, k.ljust(max_k), v, before[k]))
+                print(
+                    "{}.{} {!r} (was {!r})".format(prefix, k.ljust(max_k), v, before[k])
+                )
                 continue
         except KeyError:
             pass
@@ -1206,7 +1240,4 @@ def getpath(ns, keys):
             dump_dict(before, ns)
         else:
             diff_dict(before, ns)
-    return {
-        k: ns['config'].get(k, ns.get(k, ...))
-        for k in keys
-    }
+    return {k: ns["config"].get(k, ns.get(k, ...)) for k in keys}

@@ -61,8 +61,12 @@ import weakref
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
-from socketserver import (ThreadingUDPServer, DatagramRequestHandler,
-                          ThreadingTCPServer, StreamRequestHandler)
+from socketserver import (
+    ThreadingUDPServer,
+    DatagramRequestHandler,
+    ThreadingTCPServer,
+    StreamRequestHandler,
+)
 
 try:
     import win32evtlog, win32evtlogutil, pywintypes
@@ -79,14 +83,14 @@ except ImportError:
 # to work around a libasan race condition, dead lock in pthread_create().
 skip_if_asan_fork = unittest.skipIf(
     support.HAVE_ASAN_FORK_BUG,
-    "libasan has a pthread_create() dead lock related to thread+fork")
+    "libasan has a pthread_create() dead lock related to thread+fork",
+)
 skip_if_tsan_fork = unittest.skipIf(
-    support.check_sanitizer(thread=True),
-    "TSAN doesn't support threads after fork")
+    support.check_sanitizer(thread=True), "TSAN doesn't support threads after fork"
+)
 
 
 class BaseTest(unittest.TestCase):
-
     """Base class for logging tests."""
 
     log_format = "%(name)s -> %(levelname)s: %(message)s"
@@ -108,8 +112,7 @@ class BaseTest(unittest.TestCase):
             self.saved_level_to_name = logging._levelToName.copy()
             self.logger_states = logger_states = {}
             for name in saved_loggers:
-                logger_states[name] = getattr(saved_loggers[name],
-                                              'disabled', None)
+                logger_states[name] = getattr(saved_loggers[name], "disabled", None)
         finally:
             logging._releaseLock()
 
@@ -127,10 +130,10 @@ class BaseTest(unittest.TestCase):
         self.root_hdlr.setFormatter(self.root_formatter)
         if self.logger1.hasHandlers():
             hlist = self.logger1.handlers + self.root_logger.handlers
-            raise AssertionError('Unexpected handlers: %s' % hlist)
+            raise AssertionError("Unexpected handlers: %s" % hlist)
         if self.logger2.hasHandlers():
             hlist = self.logger2.handlers + self.root_logger.handlers
-            raise AssertionError('Unexpected handlers: %s' % hlist)
+            raise AssertionError("Unexpected handlers: %s" % hlist)
         self.root_logger.addHandler(self.root_hdlr)
         self.assertTrue(self.logger1.hasHandlers())
         self.assertTrue(self.logger2.hasHandlers())
@@ -180,8 +183,7 @@ class BaseTest(unittest.TestCase):
         for actual, expected in zip(actual_lines, expected_values):
             match = pat.search(actual)
             if not match:
-                self.fail("Log line does not match expected pattern:\n" +
-                            actual)
+                self.fail("Log line does not match expected pattern:\n" + actual)
             self.assertEqual(tuple(match.groups()), expected)
         s = stream.read()
         if s:
@@ -230,19 +232,21 @@ class BuiltinLevelsTest(BaseTest):
 
         INF.debug(m())
 
-        self.assert_log_lines([
-            ('ERR', 'CRITICAL', '1'),
-            ('ERR', 'ERROR', '2'),
-            ('INF', 'CRITICAL', '3'),
-            ('INF', 'ERROR', '4'),
-            ('INF', 'WARNING', '5'),
-            ('INF', 'INFO', '6'),
-            ('DEB', 'CRITICAL', '7'),
-            ('DEB', 'ERROR', '8'),
-            ('DEB', 'WARNING', '9'),
-            ('DEB', 'INFO', '10'),
-            ('DEB', 'DEBUG', '11'),
-        ])
+        self.assert_log_lines(
+            [
+                ("ERR", "CRITICAL", "1"),
+                ("ERR", "ERROR", "2"),
+                ("INF", "CRITICAL", "3"),
+                ("INF", "ERROR", "4"),
+                ("INF", "WARNING", "5"),
+                ("INF", "INFO", "6"),
+                ("DEB", "CRITICAL", "7"),
+                ("DEB", "ERROR", "8"),
+                ("DEB", "WARNING", "9"),
+                ("DEB", "INFO", "10"),
+                ("DEB", "DEBUG", "11"),
+            ]
+        )
 
     def test_nested_explicit(self):
         # Logging levels in a nested namespace, all explicitly set.
@@ -250,7 +254,7 @@ class BuiltinLevelsTest(BaseTest):
 
         INF = logging.getLogger("INF")
         INF.setLevel(logging.INFO)
-        INF_ERR  = logging.getLogger("INF.ERR")
+        INF_ERR = logging.getLogger("INF.ERR")
         INF_ERR.setLevel(logging.ERROR)
 
         # These should log.
@@ -262,10 +266,12 @@ class BuiltinLevelsTest(BaseTest):
         INF_ERR.info(m())
         INF_ERR.debug(m())
 
-        self.assert_log_lines([
-            ('INF.ERR', 'CRITICAL', '1'),
-            ('INF.ERR', 'ERROR', '2'),
-        ])
+        self.assert_log_lines(
+            [
+                ("INF.ERR", "CRITICAL", "1"),
+                ("INF.ERR", "ERROR", "2"),
+            ]
+        )
 
     def test_nested_inherited(self):
         # Logging levels in a nested namespace, inherited from parent loggers.
@@ -273,7 +279,7 @@ class BuiltinLevelsTest(BaseTest):
 
         INF = logging.getLogger("INF")
         INF.setLevel(logging.INFO)
-        INF_ERR  = logging.getLogger("INF.ERR")
+        INF_ERR = logging.getLogger("INF.ERR")
         INF_ERR.setLevel(logging.ERROR)
         INF_UNDEF = logging.getLogger("INF.UNDEF")
         INF_ERR_UNDEF = logging.getLogger("INF.ERR.UNDEF")
@@ -293,14 +299,16 @@ class BuiltinLevelsTest(BaseTest):
         INF_ERR_UNDEF.info(m())
         INF_ERR_UNDEF.debug(m())
 
-        self.assert_log_lines([
-            ('INF.UNDEF', 'CRITICAL', '1'),
-            ('INF.UNDEF', 'ERROR', '2'),
-            ('INF.UNDEF', 'WARNING', '3'),
-            ('INF.UNDEF', 'INFO', '4'),
-            ('INF.ERR.UNDEF', 'CRITICAL', '5'),
-            ('INF.ERR.UNDEF', 'ERROR', '6'),
-        ])
+        self.assert_log_lines(
+            [
+                ("INF.UNDEF", "CRITICAL", "1"),
+                ("INF.UNDEF", "ERROR", "2"),
+                ("INF.UNDEF", "WARNING", "3"),
+                ("INF.UNDEF", "INFO", "4"),
+                ("INF.ERR.UNDEF", "CRITICAL", "5"),
+                ("INF.ERR.UNDEF", "ERROR", "6"),
+            ]
+        )
 
     def test_nested_with_virtual_parent(self):
         # Logging levels when some parent does not exist yet.
@@ -321,32 +329,34 @@ class BuiltinLevelsTest(BaseTest):
         GRANDCHILD.debug(m())
         CHILD.debug(m())
 
-        self.assert_log_lines([
-            ('INF.BADPARENT.UNDEF', 'CRITICAL', '1'),
-            ('INF.BADPARENT.UNDEF', 'INFO', '2'),
-            ('INF.BADPARENT', 'CRITICAL', '3'),
-            ('INF.BADPARENT', 'INFO', '4'),
-        ])
+        self.assert_log_lines(
+            [
+                ("INF.BADPARENT.UNDEF", "CRITICAL", "1"),
+                ("INF.BADPARENT.UNDEF", "INFO", "2"),
+                ("INF.BADPARENT", "CRITICAL", "3"),
+                ("INF.BADPARENT", "INFO", "4"),
+            ]
+        )
 
     def test_regression_22386(self):
         """See issue #22386 for more information."""
-        self.assertEqual(logging.getLevelName('INFO'), logging.INFO)
-        self.assertEqual(logging.getLevelName(logging.INFO), 'INFO')
+        self.assertEqual(logging.getLevelName("INFO"), logging.INFO)
+        self.assertEqual(logging.getLevelName(logging.INFO), "INFO")
 
     def test_issue27935(self):
-        fatal = logging.getLevelName('FATAL')
+        fatal = logging.getLevelName("FATAL")
         self.assertEqual(fatal, logging.FATAL)
 
     def test_regression_29220(self):
         """See issue #29220 for more information."""
-        logging.addLevelName(logging.INFO, '')
-        self.addCleanup(logging.addLevelName, logging.INFO, 'INFO')
-        self.assertEqual(logging.getLevelName(logging.INFO), '')
-        self.assertEqual(logging.getLevelName(logging.NOTSET), 'NOTSET')
-        self.assertEqual(logging.getLevelName('NOTSET'), logging.NOTSET)
+        logging.addLevelName(logging.INFO, "")
+        self.addCleanup(logging.addLevelName, logging.INFO, "INFO")
+        self.assertEqual(logging.getLevelName(logging.INFO), "")
+        self.assertEqual(logging.getLevelName(logging.NOTSET), "NOTSET")
+        self.assertEqual(logging.getLevelName("NOTSET"), logging.NOTSET)
+
 
 class BasicFilterTest(BaseTest):
-
     """Test the bundled Filter class."""
 
     def test_filter(self):
@@ -366,10 +376,12 @@ class BasicFilterTest(BaseTest):
             spam_eggs_fish.info(self.next_message())  # Good.
             spam_bakedbeans.info(self.next_message())
 
-            self.assert_log_lines([
-                ('spam.eggs', 'INFO', '2'),
-                ('spam.eggs.fish', 'INFO', '3'),
-            ])
+            self.assert_log_lines(
+                [
+                    ("spam.eggs", "INFO", "2"),
+                    ("spam.eggs.fish", "INFO", "3"),
+                ]
+            )
         finally:
             handler.removeFilter(filter_)
 
@@ -378,9 +390,9 @@ class BasicFilterTest(BaseTest):
         #  filter.
 
         def filterfunc(record):
-            parts = record.name.split('.')
-            prefix = '.'.join(parts[:2])
-            return prefix == 'spam.eggs'
+            parts = record.name.split(".")
+            prefix = ".".join(parts[:2])
+            return prefix == "spam.eggs"
 
         handler = self.root_logger.handlers[0]
         try:
@@ -395,17 +407,20 @@ class BasicFilterTest(BaseTest):
             spam_eggs_fish.info(self.next_message())  # Good.
             spam_bakedbeans.info(self.next_message())
 
-            self.assert_log_lines([
-                ('spam.eggs', 'INFO', '2'),
-                ('spam.eggs.fish', 'INFO', '3'),
-            ])
+            self.assert_log_lines(
+                [
+                    ("spam.eggs", "INFO", "2"),
+                    ("spam.eggs.fish", "INFO", "3"),
+                ]
+            )
         finally:
             handler.removeFilter(filterfunc)
 
     def test_empty_filter(self):
         f = logging.Filter()
-        r = logging.makeLogRecord({'name': 'spam.eggs'})
+        r = logging.makeLogRecord({"name": "spam.eggs"})
         self.assertTrue(f.filter(r))
+
 
 #
 #   First, we define our levels. There can be as many as you want - the only
@@ -415,16 +430,16 @@ class BasicFilterTest(BaseTest):
 #   mapping dictionary to convert between your application levels and the
 #   logging system.
 #
-SILENT      = 120
-TACITURN    = 119
-TERSE       = 118
-EFFUSIVE    = 117
-SOCIABLE    = 116
-VERBOSE     = 115
-TALKATIVE   = 114
-GARRULOUS   = 113
-CHATTERBOX  = 112
-BORING      = 111
+SILENT = 120
+TACITURN = 119
+TERSE = 118
+EFFUSIVE = 117
+SOCIABLE = 116
+VERBOSE = 115
+TALKATIVE = 114
+GARRULOUS = 113
+CHATTERBOX = 112
+BORING = 111
 
 LEVEL_RANGE = range(BORING, SILENT + 1)
 
@@ -433,27 +448,27 @@ LEVEL_RANGE = range(BORING, SILENT + 1)
 #   case the system will use "Level n" to denote the text for the level.
 #
 my_logging_levels = {
-    SILENT      : 'Silent',
-    TACITURN    : 'Taciturn',
-    TERSE       : 'Terse',
-    EFFUSIVE    : 'Effusive',
-    SOCIABLE    : 'Sociable',
-    VERBOSE     : 'Verbose',
-    TALKATIVE   : 'Talkative',
-    GARRULOUS   : 'Garrulous',
-    CHATTERBOX  : 'Chatterbox',
-    BORING      : 'Boring',
+    SILENT: "Silent",
+    TACITURN: "Taciturn",
+    TERSE: "Terse",
+    EFFUSIVE: "Effusive",
+    SOCIABLE: "Sociable",
+    VERBOSE: "Verbose",
+    TALKATIVE: "Talkative",
+    GARRULOUS: "Garrulous",
+    CHATTERBOX: "Chatterbox",
+    BORING: "Boring",
 }
 
-class GarrulousFilter(logging.Filter):
 
+class GarrulousFilter(logging.Filter):
     """A filter which blocks garrulous messages."""
 
     def filter(self, record):
         return record.levelno != GARRULOUS
 
-class VerySpecificFilter(logging.Filter):
 
+class VerySpecificFilter(logging.Filter):
     """A filter which blocks sociable and taciturn messages."""
 
     def filter(self, record):
@@ -461,7 +476,6 @@ class VerySpecificFilter(logging.Filter):
 
 
 class CustomLevelsAndFiltersTest(BaseTest):
-
     """Test various filtering possibilities with custom logging levels."""
 
     # Skip the logger name group.
@@ -526,14 +540,16 @@ class CustomLevelsAndFiltersTest(BaseTest):
         self.root_logger.setLevel(VERBOSE)
         # Levels >= 'Verbose' are good.
         self.log_at_all_levels(self.root_logger)
-        self.assert_log_lines([
-            ('Verbose', '5'),
-            ('Sociable', '6'),
-            ('Effusive', '7'),
-            ('Terse', '8'),
-            ('Taciturn', '9'),
-            ('Silent', '10'),
-        ])
+        self.assert_log_lines(
+            [
+                ("Verbose", "5"),
+                ("Sociable", "6"),
+                ("Effusive", "7"),
+                ("Terse", "8"),
+                ("Taciturn", "9"),
+                ("Silent", "10"),
+            ]
+        )
 
     def test_handler_filter(self):
         # Filter at handler level.
@@ -541,13 +557,15 @@ class CustomLevelsAndFiltersTest(BaseTest):
         try:
             # Levels >= 'Sociable' are good.
             self.log_at_all_levels(self.root_logger)
-            self.assert_log_lines([
-                ('Sociable', '6'),
-                ('Effusive', '7'),
-                ('Terse', '8'),
-                ('Taciturn', '9'),
-                ('Silent', '10'),
-            ])
+            self.assert_log_lines(
+                [
+                    ("Sociable", "6"),
+                    ("Effusive", "7"),
+                    ("Terse", "8"),
+                    ("Taciturn", "9"),
+                    ("Silent", "10"),
+                ]
+            )
         finally:
             self.root_logger.handlers[0].setLevel(logging.NOTSET)
 
@@ -562,32 +580,35 @@ class CustomLevelsAndFiltersTest(BaseTest):
             self.log_at_all_levels(self.root_logger)
             first_lines = [
                 # Notice how 'Garrulous' is missing
-                ('Boring', '1'),
-                ('Chatterbox', '2'),
-                ('Talkative', '4'),
-                ('Verbose', '5'),
-                ('Sociable', '6'),
-                ('Effusive', '7'),
-                ('Terse', '8'),
-                ('Taciturn', '9'),
-                ('Silent', '10'),
+                ("Boring", "1"),
+                ("Chatterbox", "2"),
+                ("Talkative", "4"),
+                ("Verbose", "5"),
+                ("Sociable", "6"),
+                ("Effusive", "7"),
+                ("Terse", "8"),
+                ("Taciturn", "9"),
+                ("Silent", "10"),
             ]
             self.assert_log_lines(first_lines)
 
             specific_filter = VerySpecificFilter()
             self.root_logger.addFilter(specific_filter)
             self.log_at_all_levels(self.root_logger)
-            self.assert_log_lines(first_lines + [
-                # Not only 'Garrulous' is still missing, but also 'Sociable'
-                # and 'Taciturn'
-                ('Boring', '11'),
-                ('Chatterbox', '12'),
-                ('Talkative', '14'),
-                ('Verbose', '15'),
-                ('Effusive', '17'),
-                ('Terse', '18'),
-                ('Silent', '20'),
-        ])
+            self.assert_log_lines(
+                first_lines
+                + [
+                    # Not only 'Garrulous' is still missing, but also 'Sociable'
+                    # and 'Taciturn'
+                    ("Boring", "11"),
+                    ("Chatterbox", "12"),
+                    ("Talkative", "14"),
+                    ("Verbose", "15"),
+                    ("Effusive", "17"),
+                    ("Terse", "18"),
+                    ("Silent", "20"),
+                ]
+            )
         finally:
             if specific_filter:
                 self.root_logger.removeFilter(specific_filter)
@@ -603,26 +624,28 @@ def make_temp_file(*args, **kwargs):
 class HandlerTest(BaseTest):
     def test_name(self):
         h = logging.Handler()
-        h.name = 'generic'
-        self.assertEqual(h.name, 'generic')
-        h.name = 'anothergeneric'
-        self.assertEqual(h.name, 'anothergeneric')
+        h.name = "generic"
+        self.assertEqual(h.name, "generic")
+        h.name = "anothergeneric"
+        self.assertEqual(h.name, "anothergeneric")
         self.assertRaises(NotImplementedError, h.emit, None)
 
     def test_builtin_handlers(self):
         # We can't actually *use* too many handlers in the tests,
         # but we can try instantiating them with various options
-        if sys.platform in ('linux', 'darwin'):
+        if sys.platform in ("linux", "darwin"):
             for existing in (True, False):
                 fn = make_temp_file()
                 if not existing:
                     os.unlink(fn)
-                h = logging.handlers.WatchedFileHandler(fn, encoding='utf-8', delay=True)
+                h = logging.handlers.WatchedFileHandler(
+                    fn, encoding="utf-8", delay=True
+                )
                 if existing:
                     dev, ino = h.dev, h.ino
                     self.assertEqual(dev, -1)
                     self.assertEqual(ino, -1)
-                    r = logging.makeLogRecord({'msg': 'Test'})
+                    r = logging.makeLogRecord({"msg": "Test"})
                     h.handle(r)
                     # Now remove the file.
                     os.unlink(fn)
@@ -636,23 +659,28 @@ class HandlerTest(BaseTest):
                 h.close()
                 if existing:
                     os.unlink(fn)
-            if sys.platform == 'darwin':
-                sockname = '/var/run/syslog'
+            if sys.platform == "darwin":
+                sockname = "/var/run/syslog"
             else:
-                sockname = '/dev/log'
+                sockname = "/dev/log"
             try:
                 h = logging.handlers.SysLogHandler(sockname)
                 self.assertEqual(h.facility, h.LOG_USER)
                 self.assertTrue(h.unixsocket)
                 h.close()
-            except OSError: # syslogd might not be available
+            except OSError:  # syslogd might not be available
                 pass
-        for method in ('GET', 'POST', 'PUT'):
-            if method == 'PUT':
-                self.assertRaises(ValueError, logging.handlers.HTTPHandler,
-                                  'localhost', '/log', method)
+        for method in ("GET", "POST", "PUT"):
+            if method == "PUT":
+                self.assertRaises(
+                    ValueError,
+                    logging.handlers.HTTPHandler,
+                    "localhost",
+                    "/log",
+                    method,
+                )
             else:
-                h = logging.handlers.HTTPHandler('localhost', '/log', method)
+                h = logging.handlers.HTTPHandler("localhost", "/log", method)
                 h.close()
         h = logging.handlers.BufferingHandler(0)
         r = logging.makeLogRecord({})
@@ -672,24 +700,22 @@ class HandlerTest(BaseTest):
         os.unlink(fn)
         pfn = pathlib.Path(fn)
         cases = (
-                    (logging.FileHandler, (pfn, 'w')),
-                    (logging.handlers.RotatingFileHandler, (pfn, 'a')),
-                    (logging.handlers.TimedRotatingFileHandler, (pfn, 'h')),
-                )
-        if sys.platform in ('linux', 'darwin'):
-            cases += ((logging.handlers.WatchedFileHandler, (pfn, 'w')),)
+            (logging.FileHandler, (pfn, "w")),
+            (logging.handlers.RotatingFileHandler, (pfn, "a")),
+            (logging.handlers.TimedRotatingFileHandler, (pfn, "h")),
+        )
+        if sys.platform in ("linux", "darwin"):
+            cases += ((logging.handlers.WatchedFileHandler, (pfn, "w")),)
         for cls, args in cases:
             h = cls(*args, encoding="utf-8")
             self.assertTrue(os.path.exists(fn))
             h.close()
             os.unlink(fn)
 
-    @unittest.skipIf(os.name == 'nt', 'WatchedFileHandler not appropriate for Windows.')
-    @unittest.skipIf(
-        support.is_emscripten, "Emscripten cannot fstat unlinked files."
-    )
+    @unittest.skipIf(os.name == "nt", "WatchedFileHandler not appropriate for Windows.")
+    @unittest.skipIf(support.is_emscripten, "Emscripten cannot fstat unlinked files.")
     @threading_helper.requires_working_threading()
-    @support.requires_resource('walltime')
+    @support.requires_resource("walltime")
     def test_race(self):
         # Issue #14632 refers.
         def remove_loop(fname, tries):
@@ -708,24 +734,25 @@ class HandlerTest(BaseTest):
         self.deletion_time = None
 
         for delay in (False, True):
-            fn = make_temp_file('.log', 'test_logging-3-')
+            fn = make_temp_file(".log", "test_logging-3-")
             remover = threading.Thread(target=remove_loop, args=(fn, del_count))
             remover.daemon = True
             remover.start()
-            h = logging.handlers.WatchedFileHandler(fn, encoding='utf-8', delay=delay)
-            f = logging.Formatter('%(asctime)s: %(levelname)s: %(message)s')
+            h = logging.handlers.WatchedFileHandler(fn, encoding="utf-8", delay=delay)
+            f = logging.Formatter("%(asctime)s: %(levelname)s: %(message)s")
             h.setFormatter(f)
             try:
                 for _ in range(log_count):
                     time.sleep(0.005)
-                    r = logging.makeLogRecord({'msg': 'testing' })
+                    r = logging.makeLogRecord({"msg": "testing"})
                     try:
                         self.handle_time = time.time()
                         h.handle(r)
                     except Exception:
-                        print('Deleted at %s, '
-                              'opened at %s' % (self.deletion_time,
-                                                self.handle_time))
+                        print(
+                            "Deleted at %s, "
+                            "opened at %s" % (self.deletion_time, self.handle_time)
+                        )
                         raise
             finally:
                 remover.join()
@@ -743,11 +770,13 @@ class HandlerTest(BaseTest):
     @skip_if_tsan_fork
     def test_post_fork_child_no_deadlock(self):
         """Ensure child logging locks are not held; bpo-6721 & bpo-36533."""
+
         class _OurHandler(logging.Handler):
             def __init__(self):
                 super().__init__()
                 self.sub_handler = logging.StreamHandler(
-                    stream=open('/dev/null', 'wt', encoding='utf-8'))
+                    stream=open("/dev/null", "wt", encoding="utf-8")
+                )
 
             def emit(self, record):
                 self.sub_handler.acquire()
@@ -759,10 +788,10 @@ class HandlerTest(BaseTest):
         self.assertEqual(len(logging._handlers), 0)
         refed_h = _OurHandler()
         self.addCleanup(refed_h.sub_handler.stream.close)
-        refed_h.name = 'because we need at least one for this test'
+        refed_h.name = "because we need at least one for this test"
         self.assertGreater(len(logging._handlers), 0)
         self.assertGreater(len(logging._at_fork_reinit_lock_weakset), 1)
-        test_logger = logging.getLogger('test_post_fork_child_no_deadlock')
+        test_logger = logging.getLogger("test_post_fork_child_no_deadlock")
         test_logger.addHandler(refed_h)
         test_logger.setLevel(logging.DEBUG)
 
@@ -795,8 +824,9 @@ class HandlerTest(BaseTest):
                 logging._releaseLock()
 
         lock_holder_thread = threading.Thread(
-                target=lock_holder_thread_fn,
-                name='test_post_fork_child_no_deadlock lock holder')
+            target=lock_holder_thread_fn,
+            name="test_post_fork_child_no_deadlock lock holder",
+        )
         lock_holder_thread.start()
 
         locks_held__ready_to_fork.wait()
@@ -804,12 +834,12 @@ class HandlerTest(BaseTest):
         if pid == 0:
             # Child process
             try:
-                test_logger.info(r'Child process did not deadlock. \o/')
+                test_logger.info(r"Child process did not deadlock. \o/")
             finally:
                 os._exit(0)
         else:
             # Parent process
-            test_logger.info(r'Parent process returned from fork. \o/')
+            test_logger.info(r"Parent process returned from fork. \o/")
             fork_happened__release_locks_and_end_thread.set()
             lock_holder_thread.join()
 
@@ -818,15 +848,18 @@ class HandlerTest(BaseTest):
 
 class BadStream(object):
     def write(self, data):
-        raise RuntimeError('deliberate mistake')
+        raise RuntimeError("deliberate mistake")
+
 
 class TestStreamHandler(logging.StreamHandler):
     def handleError(self, record):
         self.error_record = record
 
+
 class StreamWithIntName(object):
     level = logging.NOTSET
     name = 2
+
 
 class StreamHandlerTest(BaseTest):
     def test_error_handling(self):
@@ -841,13 +874,13 @@ class StreamHandlerTest(BaseTest):
             h = logging.StreamHandler(BadStream())
             with support.captured_stderr() as stderr:
                 h.handle(r)
-                msg = '\nRuntimeError: deliberate mistake\n'
+                msg = "\nRuntimeError: deliberate mistake\n"
                 self.assertIn(msg, stderr.getvalue())
 
             logging.raiseExceptions = False
             with support.captured_stderr() as stderr:
                 h.handle(r)
-                self.assertEqual('', stderr.getvalue())
+                self.assertEqual("", stderr.getvalue())
         finally:
             logging.raiseExceptions = old_raise
 
@@ -867,10 +900,12 @@ class StreamHandlerTest(BaseTest):
 
     def test_can_represent_stream_with_int_name(self):
         h = logging.StreamHandler(StreamWithIntName())
-        self.assertEqual(repr(h), '<StreamHandler 2 (NOTSET)>')
+        self.assertEqual(repr(h), "<StreamHandler 2 (NOTSET)>")
+
 
 # -- The following section could be moved into a server_helper.py module
 # -- if it proves to be of wider utility than just test_logging
+
 
 class TestSMTPServer(smtpd.SMTPServer):
     """
@@ -894,8 +929,7 @@ class TestSMTPServer(smtpd.SMTPServer):
     """
 
     def __init__(self, addr, handler, poll_interval, sockmap):
-        smtpd.SMTPServer.__init__(self, addr, None, map=sockmap,
-                                  decode_data=True)
+        smtpd.SMTPServer.__init__(self, addr, None, map=sockmap, decode_data=True)
         self.port = self.socket.getsockname()[1]
         self._handler = handler
         self._thread = None
@@ -918,8 +952,9 @@ class TestSMTPServer(smtpd.SMTPServer):
         """
         Start the server running on a separate daemon thread.
         """
-        self._thread = t = threading.Thread(target=self.serve_forever,
-                                            args=(self.poll_interval,))
+        self._thread = t = threading.Thread(
+            target=self.serve_forever, args=(self.poll_interval,)
+        )
         t.daemon = True
         t.start()
 
@@ -962,6 +997,7 @@ class ControlMixin(object):
                     this should be fine for testing applications.
     :param poll_interval: The polling interval in seconds.
     """
+
     def __init__(self, handler, poll_interval):
         self._thread = None
         self.poll_interval = poll_interval
@@ -972,8 +1008,9 @@ class ControlMixin(object):
         """
         Create a daemon thread to run the server, and start it.
         """
-        self._thread = t = threading.Thread(target=self.serve_forever,
-                                            args=(self.poll_interval,))
+        self._thread = t = threading.Thread(
+            target=self.serve_forever, args=(self.poll_interval,)
+        )
         t.daemon = True
         t.start()
 
@@ -996,6 +1033,7 @@ class ControlMixin(object):
         self.server_close()
         self.ready.clear()
 
+
 class TestHTTPServer(ControlMixin, HTTPServer):
     """
     An HTTP server which is controllable using :class:`ControlMixin`.
@@ -1007,11 +1045,11 @@ class TestHTTPServer(ControlMixin, HTTPServer):
     :param poll_interval: The polling interval in seconds.
     :param log: Pass ``True`` to enable log messages.
     """
-    def __init__(self, addr, handler, poll_interval=0.5,
-                 log=False, sslctx=None):
+
+    def __init__(self, addr, handler, poll_interval=0.5, log=False, sslctx=None):
         class DelegatingHTTPRequestHandler(BaseHTTPRequestHandler):
             def __getattr__(self, name, default=None):
-                if name.startswith('do_'):
+                if name.startswith("do_"):
                     return self.process_request
                 raise AttributeError(name)
 
@@ -1020,8 +1058,8 @@ class TestHTTPServer(ControlMixin, HTTPServer):
 
             def log_message(self, format, *args):
                 if log:
-                    super(DelegatingHTTPRequestHandler,
-                          self).log_message(format, *args)
+                    super(DelegatingHTTPRequestHandler, self).log_message(format, *args)
+
         HTTPServer.__init__(self, addr, DelegatingHTTPRequestHandler)
         ControlMixin.__init__(self, handler, poll_interval)
         self.sslctx = sslctx
@@ -1036,6 +1074,7 @@ class TestHTTPServer(ControlMixin, HTTPServer):
             sys.stderr.write("Got an error:\n%s\n" % e)
             raise
         return sock, addr
+
 
 class TestTCPServer(ControlMixin, ThreadingTCPServer):
     """
@@ -1054,19 +1093,21 @@ class TestTCPServer(ControlMixin, ThreadingTCPServer):
 
     allow_reuse_address = True
 
-    def __init__(self, addr, handler, poll_interval=0.5,
-                 bind_and_activate=True):
+    def __init__(self, addr, handler, poll_interval=0.5, bind_and_activate=True):
         class DelegatingTCPRequestHandler(StreamRequestHandler):
 
             def handle(self):
                 self.server._handler(self)
-        ThreadingTCPServer.__init__(self, addr, DelegatingTCPRequestHandler,
-                                    bind_and_activate)
+
+        ThreadingTCPServer.__init__(
+            self, addr, DelegatingTCPRequestHandler, bind_and_activate
+        )
         ControlMixin.__init__(self, handler, poll_interval)
 
     def server_bind(self):
         super(TestTCPServer, self).server_bind()
         self.port = self.socket.getsockname()[1]
+
 
 class TestUDPServer(ControlMixin, ThreadingUDPServer):
     """
@@ -1085,8 +1126,8 @@ class TestUDPServer(ControlMixin, ThreadingUDPServer):
                         before calling :meth:`start`, so that the server will
                         set up the socket and listen on it.
     """
-    def __init__(self, addr, handler, poll_interval=0.5,
-                 bind_and_activate=True):
+
+    def __init__(self, addr, handler, poll_interval=0.5, bind_and_activate=True):
         class DelegatingUDPRequestHandler(DatagramRequestHandler):
 
             def handle(self):
@@ -1101,9 +1142,9 @@ class TestUDPServer(ControlMixin, ThreadingUDPServer):
                         if not self.server._closed:
                             raise
 
-        ThreadingUDPServer.__init__(self, addr,
-                                    DelegatingUDPRequestHandler,
-                                    bind_and_activate)
+        ThreadingUDPServer.__init__(
+            self, addr, DelegatingUDPRequestHandler, bind_and_activate
+        )
         ControlMixin.__init__(self, handler, poll_interval)
         self._closed = False
 
@@ -1115,14 +1156,18 @@ class TestUDPServer(ControlMixin, ThreadingUDPServer):
         super(TestUDPServer, self).server_close()
         self._closed = True
 
+
 if hasattr(socket, "AF_UNIX"):
+
     class TestUnixStreamServer(TestTCPServer):
         address_family = socket.AF_UNIX
 
     class TestUnixDatagramServer(TestUDPServer):
         address_family = socket.AF_UNIX
 
+
 # - end of server_helper section
+
 
 @support.requires_working_socket()
 @threading_helper.requires_working_threading()
@@ -1132,15 +1177,15 @@ class SMTPHandlerTest(BaseTest):
 
     def test_basic(self):
         sockmap = {}
-        server = TestSMTPServer((socket_helper.HOST, 0), self.process_message, 0.001,
-                                sockmap)
+        server = TestSMTPServer(
+            (socket_helper.HOST, 0), self.process_message, 0.001, sockmap
+        )
         server.start()
         addr = (socket_helper.HOST, server.port)
-        h = logging.handlers.SMTPHandler(addr, 'me', 'you', 'Log',
-                                         timeout=self.TIMEOUT)
-        self.assertEqual(h.toaddrs, ['you'])
+        h = logging.handlers.SMTPHandler(addr, "me", "you", "Log", timeout=self.TIMEOUT)
+        self.assertEqual(h.toaddrs, ["you"])
         self.messages = []
-        r = logging.makeLogRecord({'msg': 'Hello \u2713'})
+        r = logging.makeLogRecord({"msg": "Hello \u2713"})
         self.handled = threading.Event()
         h.handle(r)
         self.handled.wait(self.TIMEOUT)
@@ -1148,18 +1193,18 @@ class SMTPHandlerTest(BaseTest):
         self.assertTrue(self.handled.is_set())
         self.assertEqual(len(self.messages), 1)
         peer, mailfrom, rcpttos, data = self.messages[0]
-        self.assertEqual(mailfrom, 'me')
-        self.assertEqual(rcpttos, ['you'])
-        self.assertIn('\nSubject: Log\n', data)
-        self.assertTrue(data.endswith('\n\nHello \u2713'))
+        self.assertEqual(mailfrom, "me")
+        self.assertEqual(rcpttos, ["you"])
+        self.assertIn("\nSubject: Log\n", data)
+        self.assertTrue(data.endswith("\n\nHello \u2713"))
         h.close()
 
     def process_message(self, *args):
         self.messages.append(args)
         self.handled.set()
 
-class MemoryHandlerTest(BaseTest):
 
+class MemoryHandlerTest(BaseTest):
     """Tests for the MemoryHandler."""
 
     # Do not bother with a logger name group.
@@ -1167,9 +1212,10 @@ class MemoryHandlerTest(BaseTest):
 
     def setUp(self):
         BaseTest.setUp(self)
-        self.mem_hdlr = logging.handlers.MemoryHandler(10, logging.WARNING,
-                                                       self.root_hdlr)
-        self.mem_logger = logging.getLogger('mem')
+        self.mem_hdlr = logging.handlers.MemoryHandler(
+            10, logging.WARNING, self.root_hdlr
+        )
+        self.mem_logger = logging.getLogger("mem")
         self.mem_logger.propagate = 0
         self.mem_logger.addHandler(self.mem_hdlr)
 
@@ -1187,9 +1233,9 @@ class MemoryHandlerTest(BaseTest):
         # This will flush because the level is >= logging.WARNING
         self.mem_logger.warning(self.next_message())
         lines = [
-            ('DEBUG', '1'),
-            ('INFO', '2'),
-            ('WARNING', '3'),
+            ("DEBUG", "1"),
+            ("INFO", "2"),
+            ("WARNING", "3"),
         ]
         self.assert_log_lines(lines)
         for n in (4, 14):
@@ -1199,7 +1245,7 @@ class MemoryHandlerTest(BaseTest):
             # This will flush because it's the 10th message since the last
             #  flush.
             self.mem_logger.debug(self.next_message())
-            lines = lines + [('DEBUG', str(i)) for i in range(n, n + 10)]
+            lines = lines + [("DEBUG", str(i)) for i in range(n, n + 10)]
             self.assert_log_lines(lines)
 
         self.mem_logger.debug(self.next_message())
@@ -1217,14 +1263,14 @@ class MemoryHandlerTest(BaseTest):
         # Default behaviour is to flush on close. Check that it happens.
         self.mem_hdlr.close()
         lines = [
-            ('DEBUG', '1'),
-            ('INFO', '2'),
+            ("DEBUG", "1"),
+            ("INFO", "2"),
         ]
         self.assert_log_lines(lines)
         # Now configure for flushing not to be done on close.
-        self.mem_hdlr = logging.handlers.MemoryHandler(10, logging.WARNING,
-                                                       self.root_hdlr,
-                                                       False)
+        self.mem_hdlr = logging.handlers.MemoryHandler(
+            10, logging.WARNING, self.root_hdlr, False
+        )
         self.mem_logger.addHandler(self.mem_hdlr)
         self.mem_logger.debug(self.next_message())
         self.assert_log_lines(lines)  # no change
@@ -1247,14 +1293,14 @@ class MemoryHandlerTest(BaseTest):
         # Default behaviour is to flush on close. Check that it happens.
         logging.shutdown(handlerList=[logging.weakref.ref(self.mem_hdlr)])
         lines = [
-            ('DEBUG', '1'),
-            ('INFO', '2'),
+            ("DEBUG", "1"),
+            ("INFO", "2"),
         ]
         self.assert_log_lines(lines)
         # Now configure for flushing not to be done on close.
-        self.mem_hdlr = logging.handlers.MemoryHandler(10, logging.WARNING,
-                                                       self.root_hdlr,
-                                                       False)
+        self.mem_hdlr = logging.handlers.MemoryHandler(
+            10, logging.WARNING, self.root_hdlr, False
+        )
         self.mem_logger.addHandler(self.mem_hdlr)
         self.mem_logger.debug(self.next_message())
         self.assert_log_lines(lines)  # no change
@@ -1262,7 +1308,7 @@ class MemoryHandlerTest(BaseTest):
         self.assert_log_lines(lines)  # no change
         # assert that no new lines have been added after shutdown
         logging.shutdown(handlerList=[logging.weakref.ref(self.mem_hdlr)])
-        self.assert_log_lines(lines) # no change
+        self.assert_log_lines(lines)  # no change
 
     @threading_helper.requires_working_threading()
     def test_race_between_set_target_and_flush(self):
@@ -1294,15 +1340,17 @@ class MemoryHandlerTest(BaseTest):
 
 class ExceptionFormatter(logging.Formatter):
     """A special exception formatter."""
+
     def formatException(self, ei):
         return "Got a [%s]" % ei[0].__name__
+
 
 def closeFileHandler(h, fn):
     h.close()
     os.remove(fn)
 
-class ConfigFileTest(BaseTest):
 
+class ConfigFileTest(BaseTest):
     """Reading logging config from a .ini-style config file."""
 
     check_no_resource_warning = warnings_helper.check_no_resource_warning
@@ -1405,7 +1453,8 @@ class ConfigFileTest(BaseTest):
     config3 = config1.replace("formatter=form1", "formatter=misspelled_name")
 
     # config4 specifies a custom formatter class to be loaded
-    config4 = """
+    config4 = (
+        """
     [loggers]
     keys=root
 
@@ -1426,13 +1475,16 @@ class ConfigFileTest(BaseTest):
     args=(sys.stdout,)
 
     [formatter_form1]
-    class=""" + __name__ + """.ExceptionFormatter
+    class="""
+        + __name__
+        + """.ExceptionFormatter
     format=%(levelname)s:%(name)s:%(message)s
     datefmt=
     """
+    )
 
     # config5 specifies a custom handler class to be loaded
-    config5 = config1.replace('class=StreamHandler', 'class=logging.StreamHandler')
+    config5 = config1.replace("class=StreamHandler", "class=logging.StreamHandler")
 
     # config6 uses ', ' delimiters in the handlers and formatters sections
     config6 = """
@@ -1536,7 +1588,6 @@ class ConfigFileTest(BaseTest):
     kwargs={{"encoding": "utf-8"}}
     """
 
-
     config9 = """
     [loggers]
     keys=root
@@ -1596,9 +1647,12 @@ class ConfigFileTest(BaseTest):
             logger.info(self.next_message())
             # Outputs a message
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('ERROR', '2'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("ERROR", "2"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
@@ -1614,9 +1668,12 @@ class ConfigFileTest(BaseTest):
             logger.info(self.next_message())
             # Outputs a message
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('ERROR', '2'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("ERROR", "2"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
@@ -1628,10 +1685,13 @@ class ConfigFileTest(BaseTest):
             # Both will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '1'),
-                ('ERROR', '2'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "1"),
+                    ("ERROR", "2"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
@@ -1653,8 +1713,9 @@ class ConfigFileTest(BaseTest):
             except RuntimeError:
                 logging.exception("just testing")
             sys.stdout.seek(0)
-            self.assertEqual(output.getvalue(),
-                "ERROR:root:just testing\nGot a [RuntimeError]\n")
+            self.assertEqual(
+                output.getvalue(), "ERROR:root:just testing\nGot a [RuntimeError]\n"
+            )
             # Original logger output is empty
             self.assert_log_lines([])
 
@@ -1673,16 +1734,19 @@ class ConfigFileTest(BaseTest):
             # was preventing compiler.xyz from being included
             # in the child loggers of compiler because of an
             # overzealous loop termination condition.
-            hyphenated = logging.getLogger('compiler-hyphenated')
+            hyphenated = logging.getLogger("compiler-hyphenated")
             # All will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
             hyphenated.critical(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '1'),
-                ('ERROR', '2'),
-                ('CRITICAL', '3'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "1"),
+                    ("ERROR", "2"),
+                    ("CRITICAL", "3"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
         with support.captured_stdout() as output:
@@ -1698,12 +1762,15 @@ class ConfigFileTest(BaseTest):
             logger.error(self.next_message())
             # Will not appear
             hyphenated.critical(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '4'),
-                ('ERROR', '5'),
-                ('INFO', '6'),
-                ('ERROR', '7'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "4"),
+                    ("ERROR", "5"),
+                    ("INFO", "6"),
+                    ("ERROR", "7"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
@@ -1728,16 +1795,16 @@ class ConfigFileTest(BaseTest):
     def test_config9_ok(self):
         self.apply_config(self.config9)
         formatter = logging.root.handlers[0].formatter
-        result = formatter.format(logging.makeLogRecord({'msg': 'test'}))
-        self.assertEqual(result, 'test ++ defaultvalue')
-        result = formatter.format(logging.makeLogRecord(
-            {'msg': 'test', 'customfield': "customvalue"}))
-        self.assertEqual(result, 'test ++ customvalue')
-
+        result = formatter.format(logging.makeLogRecord({"msg": "test"}))
+        self.assertEqual(result, "test ++ defaultvalue")
+        result = formatter.format(
+            logging.makeLogRecord({"msg": "test", "customfield": "customvalue"})
+        )
+        self.assertEqual(result, "test ++ customvalue")
 
     def test_logger_disabling(self):
         self.apply_config(self.disable_test)
-        logger = logging.getLogger('some_pristine_logger')
+        logger = logging.getLogger("some_pristine_logger")
         self.assertFalse(logger.disabled)
         self.apply_config(self.disable_test)
         self.assertTrue(logger.disabled)
@@ -1766,7 +1833,7 @@ class ConfigFileTest(BaseTest):
             format=%(levelname)s ++ %(message)s
             """
         self.apply_config(test_config)
-        self.assertEqual(logging.getLogger().handlers[0].name, 'hand1')
+        self.assertEqual(logging.getLogger().handlers[0].name, "hand1")
 
     def test_exception_if_confg_file_is_invalid(self):
         test_config = """
@@ -1796,17 +1863,18 @@ class ConfigFileTest(BaseTest):
         self.assertRaises(RuntimeError, logging.config.fileConfig, file)
 
     def test_exception_if_confg_file_is_empty(self):
-        fd, fn = tempfile.mkstemp(prefix='test_empty_', suffix='.ini')
+        fd, fn = tempfile.mkstemp(prefix="test_empty_", suffix=".ini")
         os.close(fd)
         self.assertRaises(RuntimeError, logging.config.fileConfig, fn)
         os.remove(fn)
 
     def test_exception_if_config_file_does_not_exist(self):
-        self.assertRaises(FileNotFoundError, logging.config.fileConfig, 'filenotfound')
+        self.assertRaises(FileNotFoundError, logging.config.fileConfig, "filenotfound")
 
     def test_defaults_do_no_interpolation(self):
         """bpo-33802 defaults should not get interpolated"""
-        ini = textwrap.dedent("""
+        ini = textwrap.dedent(
+            """
             [formatters]
             keys=default
 
@@ -1825,10 +1893,11 @@ class ConfigFileTest(BaseTest):
             [logger_root]
             formatter=default
             handlers=console
-            """).strip()
-        fd, fn = tempfile.mkstemp(prefix='test_logging_', suffix='.ini')
+            """
+        ).strip()
+        fd, fn = tempfile.mkstemp(prefix="test_logging_", suffix=".ini")
         try:
-            os.write(fd, ini.encode('ascii'))
+            os.write(fd, ini.encode("ascii"))
             os.close(fd)
             logging.config.fileConfig(
                 fn,
@@ -1840,10 +1909,10 @@ class ConfigFileTest(BaseTest):
                         "generic": {
                             "format": "%(asctime)s [%(process)d] [%(levelname)s] %(message)s",
                             "datefmt": "[%Y-%m-%d %H:%M:%S %z]",
-                            "class": "logging.Formatter"
+                            "class": "logging.Formatter",
                         },
                     },
-                )
+                ),
             )
         finally:
             os.unlink(fn)
@@ -1852,11 +1921,10 @@ class ConfigFileTest(BaseTest):
 @support.requires_working_socket()
 @threading_helper.requires_working_threading()
 class SocketHandlerTest(BaseTest):
-
     """Test for SocketHandler objects."""
 
     server_class = TestTCPServer
-    address = ('localhost', 0)
+    address = ("localhost", 0)
 
     def setUp(self):
         """Set up a TCP server to receive log messages, and a SocketHandler
@@ -1865,8 +1933,9 @@ class SocketHandlerTest(BaseTest):
         # Issue #29177: deal with errors that happen during setup
         self.server = self.sock_hdlr = self.server_exception = None
         try:
-            self.server = server = self.server_class(self.address,
-                                                     self.handle_socket, 0.01)
+            self.server = server = self.server_class(
+                self.address, self.handle_socket, 0.01
+            )
             server.start()
             # Uncomment next line to test error recovery in setUp()
             # raise OSError('dummy error raised')
@@ -1876,10 +1945,10 @@ class SocketHandlerTest(BaseTest):
         server.ready.wait()
         hcls = logging.handlers.SocketHandler
         if isinstance(server.server_address, tuple):
-            self.sock_hdlr = hcls('localhost', server.port)
+            self.sock_hdlr = hcls("localhost", server.port)
         else:
             self.sock_hdlr = hcls(server.server_address, None)
-        self.log_output = ''
+        self.log_output = ""
         self.root_logger.removeHandler(self.root_logger.handlers[0])
         self.root_logger.addHandler(self.sock_hdlr)
         self.handled = threading.Semaphore(0)
@@ -1907,7 +1976,7 @@ class SocketHandlerTest(BaseTest):
                 chunk = chunk + conn.recv(slen - len(chunk))
             obj = pickle.loads(chunk)
             record = logging.makeLogRecord(obj)
-            self.log_output += record.msg + '\n'
+            self.log_output += record.msg + "\n"
             self.handled.release()
 
     def test_output(self):
@@ -1931,19 +2000,18 @@ class SocketHandlerTest(BaseTest):
         self.server.stop()
         # The logging call should try to connect, which should fail
         try:
-            raise RuntimeError('Deliberate mistake')
+            raise RuntimeError("Deliberate mistake")
         except RuntimeError:
-            self.root_logger.exception('Never sent')
-        self.root_logger.error('Never sent, either')
+            self.root_logger.exception("Never sent")
+        self.root_logger.error("Never sent, either")
         now = time.time()
         self.assertGreater(self.sock_hdlr.retryTime, now)
         time.sleep(self.sock_hdlr.retryTime - now + 0.001)
-        self.root_logger.error('Nor this')
+        self.root_logger.error("Nor this")
 
 
 @unittest.skipUnless(hasattr(socket, "AF_UNIX"), "Unix sockets required")
 class UnixSocketHandlerTest(SocketHandlerTest):
-
     """Test for SocketHandler with unix sockets."""
 
     if hasattr(socket, "AF_UNIX"):
@@ -1955,14 +2023,14 @@ class UnixSocketHandlerTest(SocketHandlerTest):
         self.addCleanup(os_helper.unlink, self.address)
         SocketHandlerTest.setUp(self)
 
+
 @support.requires_working_socket()
 @threading_helper.requires_working_threading()
 class DatagramHandlerTest(BaseTest):
-
     """Test for DatagramHandler."""
 
     server_class = TestUDPServer
-    address = ('localhost', 0)
+    address = ("localhost", 0)
 
     def setUp(self):
         """Set up a UDP server to receive log messages, and a DatagramHandler
@@ -1971,8 +2039,9 @@ class DatagramHandlerTest(BaseTest):
         # Issue #29177: deal with errors that happen during setup
         self.server = self.sock_hdlr = self.server_exception = None
         try:
-            self.server = server = self.server_class(self.address,
-                                                     self.handle_datagram, 0.01)
+            self.server = server = self.server_class(
+                self.address, self.handle_datagram, 0.01
+            )
             server.start()
             # Uncomment next line to test error recovery in setUp()
             # raise OSError('dummy error raised')
@@ -1982,10 +2051,10 @@ class DatagramHandlerTest(BaseTest):
         server.ready.wait()
         hcls = logging.handlers.DatagramHandler
         if isinstance(server.server_address, tuple):
-            self.sock_hdlr = hcls('localhost', server.port)
+            self.sock_hdlr = hcls("localhost", server.port)
         else:
             self.sock_hdlr = hcls(server.server_address, None)
-        self.log_output = ''
+        self.log_output = ""
         self.root_logger.removeHandler(self.root_logger.handlers[0])
         self.root_logger.addHandler(self.sock_hdlr)
         self.handled = threading.Event()
@@ -2002,11 +2071,11 @@ class DatagramHandlerTest(BaseTest):
             BaseTest.tearDown(self)
 
     def handle_datagram(self, request):
-        slen = struct.pack('>L', 0) # length of prefix
-        packet = request.packet[len(slen):]
+        slen = struct.pack(">L", 0)  # length of prefix
+        packet = request.packet[len(slen) :]
         obj = pickle.loads(packet)
         record = logging.makeLogRecord(obj)
-        self.log_output += record.msg + '\n'
+        self.log_output += record.msg + "\n"
         self.handled.set()
 
     def test_output(self):
@@ -2021,9 +2090,9 @@ class DatagramHandlerTest(BaseTest):
         self.handled.wait()
         self.assertEqual(self.log_output, "spam\neggs\n")
 
+
 @unittest.skipUnless(hasattr(socket, "AF_UNIX"), "Unix sockets required")
 class UnixDatagramHandlerTest(DatagramHandlerTest):
-
     """Test for DatagramHandler using Unix sockets."""
 
     if hasattr(socket, "AF_UNIX"):
@@ -2035,14 +2104,14 @@ class UnixDatagramHandlerTest(DatagramHandlerTest):
         self.addCleanup(os_helper.unlink, self.address)
         DatagramHandlerTest.setUp(self)
 
+
 @support.requires_working_socket()
 @threading_helper.requires_working_threading()
 class SysLogHandlerTest(BaseTest):
-
     """Test for SysLogHandler using UDP."""
 
     server_class = TestUDPServer
-    address = ('localhost', 0)
+    address = ("localhost", 0)
 
     def setUp(self):
         """Set up a UDP server to receive log messages, and a SysLogHandler
@@ -2051,8 +2120,9 @@ class SysLogHandlerTest(BaseTest):
         # Issue #29177: deal with errors that happen during setup
         self.server = self.sl_hdlr = self.server_exception = None
         try:
-            self.server = server = self.server_class(self.address,
-                                                     self.handle_datagram, 0.01)
+            self.server = server = self.server_class(
+                self.address, self.handle_datagram, 0.01
+            )
             server.start()
             # Uncomment next line to test error recovery in setUp()
             # raise OSError('dummy error raised')
@@ -2065,7 +2135,7 @@ class SysLogHandlerTest(BaseTest):
             self.sl_hdlr = hcls((server.server_address[0], server.port))
         else:
             self.sl_hdlr = hcls(server.server_address)
-        self.log_output = b''
+        self.log_output = b""
         self.root_logger.removeHandler(self.root_logger.handlers[0])
         self.root_logger.addHandler(self.sl_hdlr)
         self.handled = threading.Event()
@@ -2092,17 +2162,17 @@ class SysLogHandlerTest(BaseTest):
         logger = logging.getLogger("slh")
         logger.error("sp\xe4m")
         self.handled.wait(support.LONG_TIMEOUT)
-        self.assertEqual(self.log_output, b'<11>sp\xc3\xa4m\x00')
+        self.assertEqual(self.log_output, b"<11>sp\xc3\xa4m\x00")
         self.handled.clear()
         self.sl_hdlr.append_nul = False
         logger.error("sp\xe4m")
         self.handled.wait(support.LONG_TIMEOUT)
-        self.assertEqual(self.log_output, b'<11>sp\xc3\xa4m')
+        self.assertEqual(self.log_output, b"<11>sp\xc3\xa4m")
         self.handled.clear()
         self.sl_hdlr.ident = "h\xe4m-"
         logger.error("sp\xe4m")
         self.handled.wait(support.LONG_TIMEOUT)
-        self.assertEqual(self.log_output, b'<11>h\xc3\xa4m-sp\xc3\xa4m')
+        self.assertEqual(self.log_output, b"<11>h\xc3\xa4m-sp\xc3\xa4m")
 
     def test_udp_reconnection(self):
         logger = logging.getLogger("slh")
@@ -2110,11 +2180,11 @@ class SysLogHandlerTest(BaseTest):
         self.handled.clear()
         logger.error("sp\xe4m")
         self.handled.wait(support.LONG_TIMEOUT)
-        self.assertEqual(self.log_output, b'<11>sp\xc3\xa4m\x00')
+        self.assertEqual(self.log_output, b"<11>sp\xc3\xa4m\x00")
+
 
 @unittest.skipUnless(hasattr(socket, "AF_UNIX"), "Unix sockets required")
 class UnixSysLogHandlerTest(SysLogHandlerTest):
-
     """Test for SysLogHandler with Unix sockets."""
 
     if hasattr(socket, "AF_UNIX"):
@@ -2126,14 +2196,13 @@ class UnixSysLogHandlerTest(SysLogHandlerTest):
         self.addCleanup(os_helper.unlink, self.address)
         SysLogHandlerTest.setUp(self)
 
-@unittest.skipUnless(socket_helper.IPV6_ENABLED,
-                     'IPv6 support required for this test.')
-class IPv6SysLogHandlerTest(SysLogHandlerTest):
 
+@unittest.skipUnless(socket_helper.IPV6_ENABLED, "IPv6 support required for this test.")
+class IPv6SysLogHandlerTest(SysLogHandlerTest):
     """Test for SysLogHandler with IPv6 host."""
 
     server_class = TestUDPServer
-    address = ('::1', 0)
+    address = ("::1", 0)
 
     def setUp(self):
         self.server_class.address_family = socket.AF_INET6
@@ -2142,6 +2211,7 @@ class IPv6SysLogHandlerTest(SysLogHandlerTest):
     def tearDown(self):
         self.server_class.address_family = socket.AF_INET
         super(IPv6SysLogHandlerTest, self).tearDown()
+
 
 @support.requires_working_socket()
 @threading_helper.requires_working_threading()
@@ -2157,9 +2227,9 @@ class HTTPHandlerTest(BaseTest):
     def handle_request(self, request):
         self.command = request.command
         self.log_data = urlparse(request.path)
-        if self.command == 'POST':
+        if self.command == "POST":
             try:
-                rlen = int(request.headers['Content-Length'])
+                rlen = int(request.headers["Content-Length"])
                 self.post_data = request.rfile.read(rlen)
             except:
                 self.post_data = None
@@ -2173,7 +2243,7 @@ class HTTPHandlerTest(BaseTest):
         root_logger = self.root_logger
         root_logger.removeHandler(self.root_logger.handlers[0])
         for secure in (False, True):
-            addr = ('localhost', 0)
+            addr = ("localhost", 0)
             if secure:
                 try:
                     import ssl
@@ -2189,41 +2259,45 @@ class HTTPHandlerTest(BaseTest):
             else:
                 sslctx = None
                 context = None
-            self.server = server = TestHTTPServer(addr, self.handle_request,
-                                                    0.01, sslctx=sslctx)
+            self.server = server = TestHTTPServer(
+                addr, self.handle_request, 0.01, sslctx=sslctx
+            )
             server.start()
             server.ready.wait()
-            host = 'localhost:%d' % server.server_port
+            host = "localhost:%d" % server.server_port
             secure_client = secure and sslctx
-            self.h_hdlr = logging.handlers.HTTPHandler(host, '/frob',
-                                                       secure=secure_client,
-                                                       context=context,
-                                                       credentials=('foo', 'bar'))
+            self.h_hdlr = logging.handlers.HTTPHandler(
+                host,
+                "/frob",
+                secure=secure_client,
+                context=context,
+                credentials=("foo", "bar"),
+            )
             self.log_data = None
             root_logger.addHandler(self.h_hdlr)
 
-            for method in ('GET', 'POST'):
+            for method in ("GET", "POST"):
                 self.h_hdlr.method = method
                 self.handled.clear()
                 msg = "sp\xe4m"
                 logger.error(msg)
                 self.handled.wait()
-                self.assertEqual(self.log_data.path, '/frob')
+                self.assertEqual(self.log_data.path, "/frob")
                 self.assertEqual(self.command, method)
-                if method == 'GET':
+                if method == "GET":
                     d = parse_qs(self.log_data.query)
                 else:
-                    d = parse_qs(self.post_data.decode('utf-8'))
-                self.assertEqual(d['name'], ['http'])
-                self.assertEqual(d['funcName'], ['test_output'])
-                self.assertEqual(d['msg'], [msg])
+                    d = parse_qs(self.post_data.decode("utf-8"))
+                self.assertEqual(d["name"], ["http"])
+                self.assertEqual(d["funcName"], ["test_output"])
+                self.assertEqual(d["msg"], [msg])
 
             self.server.stop()
             self.root_logger.removeHandler(self.h_hdlr)
             self.h_hdlr.close()
 
-class MemoryTest(BaseTest):
 
+class MemoryTest(BaseTest):
     """Test memory persistence of logger objects."""
 
     def setUp(self):
@@ -2247,8 +2321,10 @@ class MemoryTest(BaseTest):
             if ref() is None:
                 dead.append(repr_)
         if dead:
-            self.fail("%d objects should have survived "
-                "but have been destroyed: %s" % (len(dead), ", ".join(dead)))
+            self.fail(
+                "%d objects should have survived "
+                "but have been destroyed: %s" % (len(dead), ", ".join(dead))
+            )
 
     def test_persistent_loggers(self):
         # Logger objects are persistent and retain their configuration, even
@@ -2259,19 +2335,23 @@ class MemoryTest(BaseTest):
         foo.setLevel(logging.DEBUG)
         self.root_logger.debug(self.next_message())
         foo.debug(self.next_message())
-        self.assert_log_lines([
-            ('foo', 'DEBUG', '2'),
-        ])
+        self.assert_log_lines(
+            [
+                ("foo", "DEBUG", "2"),
+            ]
+        )
         del foo
         # foo has survived.
         self._assertTruesurvival()
         # foo has retained its settings.
         bar = logging.getLogger("foo")
         bar.debug(self.next_message())
-        self.assert_log_lines([
-            ('foo', 'DEBUG', '2'),
-            ('foo', 'DEBUG', '3'),
-        ])
+        self.assert_log_lines(
+            [
+                ("foo", "DEBUG", "2"),
+                ("foo", "DEBUG", "3"),
+            ]
+        )
 
 
 class EncodingTest(BaseTest):
@@ -2303,12 +2383,12 @@ class EncodingTest(BaseTest):
     def test_encoding_cyrillic_unicode(self):
         log = logging.getLogger("test")
         # Get a message in Unicode: Do svidanya in Cyrillic (meaning goodbye)
-        message = '\u0434\u043e \u0441\u0432\u0438\u0434\u0430\u043d\u0438\u044f'
+        message = "\u0434\u043e \u0441\u0432\u0438\u0434\u0430\u043d\u0438\u044f"
         # Ensure it's written in a Cyrillic encoding
-        writer_class = codecs.getwriter('cp1251')
-        writer_class.encoding = 'cp1251'
+        writer_class = codecs.getwriter("cp1251")
+        writer_class.encoding = "cp1251"
         stream = io.BytesIO()
-        writer = writer_class(stream, 'strict')
+        writer = writer_class(stream, "strict")
         handler = logging.StreamHandler(writer)
         log.addHandler(handler)
         try:
@@ -2319,7 +2399,7 @@ class EncodingTest(BaseTest):
         # check we wrote exactly those bytes, ignoring trailing \n etc
         s = stream.getvalue()
         # Compare against what the data should be when encoded in CP-1251
-        self.assertEqual(s, b'\xe4\xee \xf1\xe2\xe8\xe4\xe0\xed\xe8\xff\n')
+        self.assertEqual(s, b"\xe4\xee \xf1\xe2\xe8\xe4\xe0\xed\xe8\xff\n")
 
 
 class WarningsTest(BaseTest):
@@ -2341,12 +2421,12 @@ class WarningsTest(BaseTest):
 
             # See if an explicit file uses the original implementation
             a_file = io.StringIO()
-            warnings.showwarning("Explicit", UserWarning, "dummy.py", 42,
-                                 a_file, "Dummy line")
+            warnings.showwarning(
+                "Explicit", UserWarning, "dummy.py", 42, a_file, "Dummy line"
+            )
             s = a_file.getvalue()
             a_file.close()
-            self.assertEqual(s,
-                "dummy.py:42: UserWarning: Explicit\n  Dummy line\n")
+            self.assertEqual(s, "dummy.py:42: UserWarning: Explicit\n  Dummy line\n")
 
     def test_warnings_no_handlers(self):
         with warnings.catch_warnings():
@@ -2365,33 +2445,41 @@ class WarningsTest(BaseTest):
 def formatFunc(format, datefmt=None):
     return logging.Formatter(format, datefmt)
 
+
 class myCustomFormatter:
     def __init__(self, fmt, datefmt=None):
         pass
 
+
 def handlerFunc():
     return logging.StreamHandler()
+
 
 class CustomHandler(logging.StreamHandler):
     pass
 
+
 class CustomListener(logging.handlers.QueueListener):
     pass
+
 
 class CustomQueue(queue.Queue):
     pass
 
+
 def queueMaker():
     return queue.Queue()
 
+
 def listenerMaker(arg1, arg2, respect_handler_level=False):
     def func(queue, *handlers, **kwargs):
-        kwargs.setdefault('respect_handler_level', respect_handler_level)
+        kwargs.setdefault("respect_handler_level", respect_handler_level)
         return CustomListener(queue, *handlers, **kwargs)
+
     return func
 
-class ConfigDictTest(BaseTest):
 
+class ConfigDictTest(BaseTest):
     """Reading logging config from a dictionary."""
 
     check_no_resource_warning = warnings_helper.check_no_resource_warning
@@ -2399,327 +2487,326 @@ class ConfigDictTest(BaseTest):
 
     # config0 is a standard configuration.
     config0 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'root' : {
-            'level' : 'WARNING',
-            'handlers' : ['hand1'],
+        "root": {
+            "level": "WARNING",
+            "handlers": ["hand1"],
         },
     }
 
     # config1 adds a little to the standard configuration.
     config1 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     # config1a moves the handler to the root. Used with config8a
     config1a = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
             },
         },
-        'root' : {
-            'level' : 'WARNING',
-            'handlers' : ['hand1'],
+        "root": {
+            "level": "WARNING",
+            "handlers": ["hand1"],
         },
     }
 
     # config2 has a subtle configuration error that should be reported
     config2 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdbout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdbout",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     # As config1 but with a misspelt level on a handler
     config2a = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NTOSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NTOSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
-
     # As config1 but with a misspelt level on a logger
     config2b = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WRANING',
+        "root": {
+            "level": "WRANING",
         },
     }
 
     # config3 has a less subtle configuration error
     config3 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'misspelled_name',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "misspelled_name",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     # config4 specifies a custom formatter class to be loaded
     config4 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                '()' : __name__ + '.ExceptionFormatter',
-                'format' : '%(levelname)s:%(name)s:%(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "()": __name__ + ".ExceptionFormatter",
+                "format": "%(levelname)s:%(name)s:%(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'root' : {
-            'level' : 'NOTSET',
-                'handlers' : ['hand1'],
+        "root": {
+            "level": "NOTSET",
+            "handlers": ["hand1"],
         },
     }
 
     # As config4 but using an actual callable rather than a string
     config4a = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                '()' : ExceptionFormatter,
-                'format' : '%(levelname)s:%(name)s:%(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "()": ExceptionFormatter,
+                "format": "%(levelname)s:%(name)s:%(message)s",
             },
-            'form2' : {
-                '()' : __name__ + '.formatFunc',
-                'format' : '%(levelname)s:%(name)s:%(message)s',
+            "form2": {
+                "()": __name__ + ".formatFunc",
+                "format": "%(levelname)s:%(name)s:%(message)s",
             },
-            'form3' : {
-                '()' : formatFunc,
-                'format' : '%(levelname)s:%(name)s:%(message)s',
-            },
-        },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
-            },
-            'hand2' : {
-                '()' : handlerFunc,
+            "form3": {
+                "()": formatFunc,
+                "format": "%(levelname)s:%(name)s:%(message)s",
             },
         },
-        'root' : {
-            'level' : 'NOTSET',
-                'handlers' : ['hand1'],
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
+            },
+            "hand2": {
+                "()": handlerFunc,
+            },
+        },
+        "root": {
+            "level": "NOTSET",
+            "handlers": ["hand1"],
         },
     }
 
     # config5 specifies a custom handler class to be loaded
     config5 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : __name__ + '.CustomHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": __name__ + ".CustomHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     # config6 specifies a custom handler class to be loaded
     # but has bad arguments
     config6 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : __name__ + '.CustomHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
-                '9' : 'invalid parameter name',
+        "handlers": {
+            "hand1": {
+                "class": __name__ + ".CustomHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
+                "9": "invalid parameter name",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     # config 7 does not define compiler.parser but defines compiler.lexer
     # so compiler.parser should be disabled after applying it
     config7 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler.lexer' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.lexer": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
@@ -2727,293 +2814,291 @@ class ConfigDictTest(BaseTest):
     # so compiler.parser should not be disabled (since
     # compiler is defined)
     config8 = {
-        'version': 1,
-        'disable_existing_loggers' : False,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
-            'compiler.lexer' : {
-            },
+            "compiler.lexer": {},
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     # config8a disables existing loggers
     config8a = {
-        'version': 1,
-        'disable_existing_loggers' : True,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "disable_existing_loggers": True,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
-            'compiler.lexer' : {
-            },
+            "compiler.lexer": {},
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     config9 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'WARNING',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "WARNING",
+                "stream": "ext://sys.stdout",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'WARNING',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "WARNING",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'NOTSET',
+        "root": {
+            "level": "NOTSET",
         },
     }
 
     config9a = {
-        'version': 1,
-        'incremental' : True,
-        'handlers' : {
-            'hand1' : {
-                'level' : 'WARNING',
+        "version": 1,
+        "incremental": True,
+        "handlers": {
+            "hand1": {
+                "level": "WARNING",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'INFO',
+        "loggers": {
+            "compiler.parser": {
+                "level": "INFO",
             },
         },
     }
 
     config9b = {
-        'version': 1,
-        'incremental' : True,
-        'handlers' : {
-            'hand1' : {
-                'level' : 'INFO',
+        "version": 1,
+        "incremental": True,
+        "handlers": {
+            "hand1": {
+                "level": "INFO",
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'INFO',
+        "loggers": {
+            "compiler.parser": {
+                "level": "INFO",
             },
         },
     }
 
     # As config1 but with a filter added
     config10 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'filters' : {
-            'filt1' : {
-                'name' : 'compiler.parser',
+        "filters": {
+            "filt1": {
+                "name": "compiler.parser",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
-                'filters' : ['filt1'],
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
+                "filters": ["filt1"],
             },
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'filters' : ['filt1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "filters": ["filt1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
-            'handlers' : ['hand1'],
+        "root": {
+            "level": "WARNING",
+            "handlers": ["hand1"],
         },
     }
 
     # As config1 but using cfg:// references
     config11 = {
-        'version': 1,
-        'true_formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "true_formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handler_configs': {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handler_configs": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'formatters' : 'cfg://true_formatters',
-        'handlers' : {
-            'hand1' : 'cfg://handler_configs[hand1]',
+        "formatters": "cfg://true_formatters",
+        "handlers": {
+            "hand1": "cfg://handler_configs[hand1]",
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     # As config11 but missing the version key
     config12 = {
-        'true_formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "true_formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handler_configs': {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handler_configs": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'formatters' : 'cfg://true_formatters',
-        'handlers' : {
-            'hand1' : 'cfg://handler_configs[hand1]',
+        "formatters": "cfg://true_formatters",
+        "handlers": {
+            "hand1": "cfg://handler_configs[hand1]",
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     # As config11 but using an unsupported version
     config13 = {
-        'version': 2,
-        'true_formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 2,
+        "true_formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handler_configs': {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handler_configs": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'formatters' : 'cfg://true_formatters',
-        'handlers' : {
-            'hand1' : 'cfg://handler_configs[hand1]',
+        "formatters": "cfg://true_formatters",
+        "handlers": {
+            "hand1": "cfg://handler_configs[hand1]",
         },
-        'loggers' : {
-            'compiler.parser' : {
-                'level' : 'DEBUG',
-                'handlers' : ['hand1'],
+        "loggers": {
+            "compiler.parser": {
+                "level": "DEBUG",
+                "handlers": ["hand1"],
             },
         },
-        'root' : {
-            'level' : 'WARNING',
+        "root": {
+            "level": "WARNING",
         },
     }
 
     # As config0, but with properties
     config14 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(levelname)s ++ %(message)s',
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(levelname)s ++ %(message)s",
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
-                '.': {
-                    'foo': 'bar',
-                    'terminator': '!\n',
-                }
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
+                ".": {
+                    "foo": "bar",
+                    "terminator": "!\n",
+                },
             },
         },
-        'root' : {
-            'level' : 'WARNING',
-            'handlers' : ['hand1'],
+        "root": {
+            "level": "WARNING",
+            "handlers": ["hand1"],
         },
     }
 
     # config0 but with default values for formatter. Skipped 15, it is defined
     # in the test code.
     config16 = {
-        'version': 1,
-        'formatters': {
-            'form1' : {
-                'format' : '%(message)s ++ %(customfield)s',
-                'defaults': {"customfield": "defaultvalue"}
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "format": "%(message)s ++ %(customfield)s",
+                "defaults": {"customfield": "defaultvalue"},
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'form1',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'root' : {
-            'level' : 'WARNING',
-            'handlers' : ['hand1'],
+        "root": {
+            "level": "WARNING",
+            "handlers": ["hand1"],
         },
     }
 
@@ -3024,29 +3109,27 @@ class ConfigDictTest(BaseTest):
             return super().format(record)
 
     config17 = {
-        'version': 1,
-        'formatters': {
+        "version": 1,
+        "formatters": {
             "custom": {
                 "()": CustomFormatter,
                 "style": "{",
                 "datefmt": "%Y-%m-%d %H:%M:%S",
-                "format": "{message}", # <-- to force an exception when configuring
-                ".": {
-                    "custom_property": "value"
-                }
+                "format": "{message}",  # <-- to force an exception when configuring
+                ".": {"custom_property": "value"},
             }
         },
-        'handlers' : {
-            'hand1' : {
-                'class' : 'logging.StreamHandler',
-                'formatter' : 'custom',
-                'level' : 'NOTSET',
-                'stream'  : 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "custom",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
-        'root' : {
-            'level' : 'WARNING',
-            'handlers' : ['hand1'],
+        "root": {
+            "level": "WARNING",
+            "handlers": ["hand1"],
         },
     }
 
@@ -3055,183 +3138,177 @@ class ConfigDictTest(BaseTest):
         "formatters": {
             "mySimpleFormatter": {
                 "format": "%(asctime)s (%(name)s) %(levelname)s: %(message)s",
-                "style": "$"
+                "style": "$",
             }
         },
         "handlers": {
             "fileGlobal": {
                 "class": "logging.StreamHandler",
                 "level": "DEBUG",
-                "formatter": "mySimpleFormatter"
+                "formatter": "mySimpleFormatter",
             },
             "bufferGlobal": {
                 "class": "logging.handlers.MemoryHandler",
                 "capacity": 5,
                 "formatter": "mySimpleFormatter",
                 "target": "fileGlobal",
-                "level": "DEBUG"
-            }
+                "level": "DEBUG",
+            },
         },
         "loggers": {
             "mymodule": {
                 "level": "DEBUG",
                 "handlers": ["bufferGlobal"],
-                "propagate": "true"
+                "propagate": "true",
             }
-        }
+        },
     }
 
     # Configuration with custom logging.Formatter subclass as '()' key and 'validate' set to False
     custom_formatter_class_validate = {
-        'version': 1,
-        'formatters': {
-            'form1': {
-                '()': __name__ + '.ExceptionFormatter',
-                'format': '%(levelname)s:%(name)s:%(message)s',
-                'validate': False,
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "()": __name__ + ".ExceptionFormatter",
+                "format": "%(levelname)s:%(name)s:%(message)s",
+                "validate": False,
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class': 'logging.StreamHandler',
-                'formatter': 'form1',
-                'level': 'NOTSET',
-                'stream': 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
         "loggers": {
             "my_test_logger_custom_formatter": {
                 "level": "DEBUG",
                 "handlers": ["hand1"],
-                "propagate": "true"
+                "propagate": "true",
             }
-        }
+        },
     }
 
     # Configuration with custom logging.Formatter subclass as 'class' key and 'validate' set to False
     custom_formatter_class_validate2 = {
-        'version': 1,
-        'formatters': {
-            'form1': {
-                'class': __name__ + '.ExceptionFormatter',
-                'format': '%(levelname)s:%(name)s:%(message)s',
-                'validate': False,
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "class": __name__ + ".ExceptionFormatter",
+                "format": "%(levelname)s:%(name)s:%(message)s",
+                "validate": False,
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class': 'logging.StreamHandler',
-                'formatter': 'form1',
-                'level': 'NOTSET',
-                'stream': 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
         "loggers": {
             "my_test_logger_custom_formatter": {
                 "level": "DEBUG",
                 "handlers": ["hand1"],
-                "propagate": "true"
+                "propagate": "true",
             }
-        }
+        },
     }
 
     # Configuration with custom class that is not inherited from logging.Formatter
     custom_formatter_class_validate3 = {
-        'version': 1,
-        'formatters': {
-            'form1': {
-                'class': __name__ + '.myCustomFormatter',
-                'format': '%(levelname)s:%(name)s:%(message)s',
-                'validate': False,
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "class": __name__ + ".myCustomFormatter",
+                "format": "%(levelname)s:%(name)s:%(message)s",
+                "validate": False,
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class': 'logging.StreamHandler',
-                'formatter': 'form1',
-                'level': 'NOTSET',
-                'stream': 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
         "loggers": {
             "my_test_logger_custom_formatter": {
                 "level": "DEBUG",
                 "handlers": ["hand1"],
-                "propagate": "true"
+                "propagate": "true",
             }
-        }
+        },
     }
 
     # Configuration with custom function, 'validate' set to False and no defaults
     custom_formatter_with_function = {
-        'version': 1,
-        'formatters': {
-            'form1': {
-                '()': formatFunc,
-                'format': '%(levelname)s:%(name)s:%(message)s',
-                'validate': False,
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "()": formatFunc,
+                "format": "%(levelname)s:%(name)s:%(message)s",
+                "validate": False,
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class': 'logging.StreamHandler',
-                'formatter': 'form1',
-                'level': 'NOTSET',
-                'stream': 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
         "loggers": {
             "my_test_logger_custom_formatter": {
                 "level": "DEBUG",
                 "handlers": ["hand1"],
-                "propagate": "true"
+                "propagate": "true",
             }
-        }
+        },
     }
 
     # Configuration with custom function, and defaults
     custom_formatter_with_defaults = {
-        'version': 1,
-        'formatters': {
-            'form1': {
-                '()': formatFunc,
-                'format': '%(levelname)s:%(name)s:%(message)s:%(customfield)s',
-                'defaults': {"customfield": "myvalue"}
+        "version": 1,
+        "formatters": {
+            "form1": {
+                "()": formatFunc,
+                "format": "%(levelname)s:%(name)s:%(message)s:%(customfield)s",
+                "defaults": {"customfield": "myvalue"},
             },
         },
-        'handlers' : {
-            'hand1' : {
-                'class': 'logging.StreamHandler',
-                'formatter': 'form1',
-                'level': 'NOTSET',
-                'stream': 'ext://sys.stdout',
+        "handlers": {
+            "hand1": {
+                "class": "logging.StreamHandler",
+                "formatter": "form1",
+                "level": "NOTSET",
+                "stream": "ext://sys.stdout",
             },
         },
         "loggers": {
             "my_test_logger_custom_formatter": {
                 "level": "DEBUG",
                 "handlers": ["hand1"],
-                "propagate": "true"
+                "propagate": "true",
             }
-        }
+        },
     }
 
     config_queue_handler = {
-        'version': 1,
-        'handlers' : {
-            'h1' : {
-                'class': 'logging.FileHandler',
+        "version": 1,
+        "handlers": {
+            "h1": {
+                "class": "logging.FileHandler",
             },
-             # key is before depended on handlers to test that deferred config works
-            'ah' : {
-                'class': 'logging.handlers.QueueHandler',
-                'handlers': ['h1']
-            },
+            # key is before depended on handlers to test that deferred config works
+            "ah": {"class": "logging.handlers.QueueHandler", "handlers": ["h1"]},
         },
-        "root": {
-            "level": "DEBUG",
-            "handlers": ["ah"]
-        }
+        "root": {"level": "DEBUG", "handlers": ["ah"]},
     }
 
     def apply_config(self, conf):
@@ -3245,15 +3322,18 @@ class ConfigDictTest(BaseTest):
         # A simple config which overrides the default settings.
         with support.captured_stdout() as output:
             self.apply_config(self.config0)
-            self.check_handler('hand1', logging.StreamHandler)
+            self.check_handler("hand1", logging.StreamHandler)
             logger = logging.getLogger()
             # Won't output anything
             logger.info(self.next_message())
             # Outputs a message
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('ERROR', '2'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("ERROR", "2"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
@@ -3265,10 +3345,13 @@ class ConfigDictTest(BaseTest):
             # Both will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '1'),
-                ('ERROR', '2'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "1"),
+                    ("ERROR", "2"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
@@ -3292,15 +3375,16 @@ class ConfigDictTest(BaseTest):
         # A config specifying a custom formatter class.
         with support.captured_stdout() as output:
             self.apply_config(self.config4)
-            self.check_handler('hand1', logging.StreamHandler)
-            #logger = logging.getLogger()
+            self.check_handler("hand1", logging.StreamHandler)
+            # logger = logging.getLogger()
             try:
                 raise RuntimeError()
             except RuntimeError:
                 logging.exception("just testing")
             sys.stdout.seek(0)
-            self.assertEqual(output.getvalue(),
-                "ERROR:root:just testing\nGot a [RuntimeError]\n")
+            self.assertEqual(
+                output.getvalue(), "ERROR:root:just testing\nGot a [RuntimeError]\n"
+            )
             # Original logger output is empty
             self.assert_log_lines([])
 
@@ -3308,20 +3392,21 @@ class ConfigDictTest(BaseTest):
         # A config specifying a custom formatter class.
         with support.captured_stdout() as output:
             self.apply_config(self.config4a)
-            #logger = logging.getLogger()
+            # logger = logging.getLogger()
             try:
                 raise RuntimeError()
             except RuntimeError:
                 logging.exception("just testing")
             sys.stdout.seek(0)
-            self.assertEqual(output.getvalue(),
-                "ERROR:root:just testing\nGot a [RuntimeError]\n")
+            self.assertEqual(
+                output.getvalue(), "ERROR:root:just testing\nGot a [RuntimeError]\n"
+            )
             # Original logger output is empty
             self.assert_log_lines([])
 
     def test_config5_ok(self):
         self.test_config1_ok(config=self.config5)
-        self.check_handler('hand1', CustomHandler)
+        self.check_handler("hand1", CustomHandler)
 
     def test_config6_failure(self):
         self.assertRaises(Exception, self.apply_config, self.config6)
@@ -3333,25 +3418,31 @@ class ConfigDictTest(BaseTest):
             # Both will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '1'),
-                ('ERROR', '2'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "1"),
+                    ("ERROR", "2"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
         with support.captured_stdout() as output:
             self.apply_config(self.config7)
-            self.check_handler('hand1', logging.StreamHandler)
+            self.check_handler("hand1", logging.StreamHandler)
             logger = logging.getLogger("compiler.parser")
             self.assertTrue(logger.disabled)
             logger = logging.getLogger("compiler.lexer")
             # Both will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '3'),
-                ('ERROR', '4'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "3"),
+                    ("ERROR", "4"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
@@ -3363,15 +3454,18 @@ class ConfigDictTest(BaseTest):
             # All will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '1'),
-                ('ERROR', '2'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "1"),
+                    ("ERROR", "2"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
         with support.captured_stdout() as output:
             self.apply_config(self.config8)
-            self.check_handler('hand1', logging.StreamHandler)
+            self.check_handler("hand1", logging.StreamHandler)
             logger = logging.getLogger("compiler.parser")
             self.assertFalse(logger.disabled)
             # Both will output a message
@@ -3381,40 +3475,46 @@ class ConfigDictTest(BaseTest):
             # Both will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '3'),
-                ('ERROR', '4'),
-                ('INFO', '5'),
-                ('ERROR', '6'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "3"),
+                    ("ERROR", "4"),
+                    ("INFO", "5"),
+                    ("ERROR", "6"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
     def test_config_8a_ok(self):
         with support.captured_stdout() as output:
             self.apply_config(self.config1a)
-            self.check_handler('hand1', logging.StreamHandler)
+            self.check_handler("hand1", logging.StreamHandler)
             logger = logging.getLogger("compiler.parser")
             # See issue #11424. compiler-hyphenated sorts
             # between compiler and compiler.xyz and this
             # was preventing compiler.xyz from being included
             # in the child loggers of compiler because of an
             # overzealous loop termination condition.
-            hyphenated = logging.getLogger('compiler-hyphenated')
+            hyphenated = logging.getLogger("compiler-hyphenated")
             # All will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
             hyphenated.critical(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '1'),
-                ('ERROR', '2'),
-                ('CRITICAL', '3'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "1"),
+                    ("ERROR", "2"),
+                    ("CRITICAL", "3"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
         with support.captured_stdout() as output:
             self.apply_config(self.config8a)
-            self.check_handler('hand1', logging.StreamHandler)
+            self.check_handler("hand1", logging.StreamHandler)
             logger = logging.getLogger("compiler.parser")
             self.assertFalse(logger.disabled)
             # Both will output a message
@@ -3426,19 +3526,22 @@ class ConfigDictTest(BaseTest):
             logger.error(self.next_message())
             # Will not appear
             hyphenated.critical(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '4'),
-                ('ERROR', '5'),
-                ('INFO', '6'),
-                ('ERROR', '7'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "4"),
+                    ("ERROR", "5"),
+                    ("INFO", "6"),
+                    ("ERROR", "7"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
     def test_config_9_ok(self):
         with support.captured_stdout() as output:
             self.apply_config(self.config9)
-            self.check_handler('hand1', logging.StreamHandler)
+            self.check_handler("hand1", logging.StreamHandler)
             logger = logging.getLogger("compiler.parser")
             # Nothing will be output since both handler and logger are set to WARNING
             logger.info(self.next_message())
@@ -3450,29 +3553,35 @@ class ConfigDictTest(BaseTest):
             self.apply_config(self.config9b)
             # Message should now be output
             logger.info(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '3'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "3"),
+                ],
+                stream=output,
+            )
 
     def test_config_10_ok(self):
         with support.captured_stdout() as output:
             self.apply_config(self.config10)
-            self.check_handler('hand1', logging.StreamHandler)
+            self.check_handler("hand1", logging.StreamHandler)
             logger = logging.getLogger("compiler.parser")
             logger.warning(self.next_message())
-            logger = logging.getLogger('compiler')
+            logger = logging.getLogger("compiler")
             # Not output, because filtered
             logger.warning(self.next_message())
-            logger = logging.getLogger('compiler.lexer')
+            logger = logging.getLogger("compiler.lexer")
             # Not output, because filtered
             logger.warning(self.next_message())
             logger = logging.getLogger("compiler.parser.codegen")
             # Output, as not filtered
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('WARNING', '1'),
-                ('ERROR', '4'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("WARNING", "1"),
+                    ("ERROR", "4"),
+                ],
+                stream=output,
+            )
 
     def test_config11_ok(self):
         self.test_config1_ok(self.config11)
@@ -3486,11 +3595,11 @@ class ConfigDictTest(BaseTest):
     def test_config14_ok(self):
         with support.captured_stdout() as output:
             self.apply_config(self.config14)
-            h = logging._handlers['hand1']
-            self.assertEqual(h.foo, 'bar')
-            self.assertEqual(h.terminator, '!\n')
-            logging.warning('Exclamation')
-            self.assertTrue(output.getvalue().endswith('Exclamation!\n'))
+            h = logging._handlers["hand1"]
+            self.assertEqual(h.foo, "bar")
+            self.assertEqual(h.terminator, "!\n")
+            logging.warning("Exclamation")
+            self.assertTrue(output.getvalue().endswith("Exclamation!\n"))
 
     def test_config15_ok(self):
 
@@ -3506,9 +3615,7 @@ class ConfigDictTest(BaseTest):
                         "encoding": "utf-8",
                     }
                 },
-                "root": {
-                    "handlers": ["file"]
-                }
+                "root": {"handlers": ["file"]},
             }
 
             self.apply_config(config)
@@ -3519,22 +3626,22 @@ class ConfigDictTest(BaseTest):
 
     def test_config16_ok(self):
         self.apply_config(self.config16)
-        h = logging._handlers['hand1']
+        h = logging._handlers["hand1"]
 
         # Custom value
-        result = h.formatter.format(logging.makeLogRecord(
-            {'msg': 'Hello', 'customfield': 'customvalue'}))
-        self.assertEqual(result, 'Hello ++ customvalue')
+        result = h.formatter.format(
+            logging.makeLogRecord({"msg": "Hello", "customfield": "customvalue"})
+        )
+        self.assertEqual(result, "Hello ++ customvalue")
 
         # Default value
-        result = h.formatter.format(logging.makeLogRecord(
-            {'msg': 'Hello'}))
-        self.assertEqual(result, 'Hello ++ defaultvalue')
+        result = h.formatter.format(logging.makeLogRecord({"msg": "Hello"}))
+        self.assertEqual(result, "Hello ++ defaultvalue")
 
     def test_config17_ok(self):
         self.apply_config(self.config17)
-        h = logging._handlers['hand1']
-        self.assertEqual(h.formatter.custom_property, 'value')
+        h = logging._handlers["hand1"]
+        self.assertEqual(h.formatter.custom_property, "value")
 
     def setup_via_listener(self, text, verify=None):
         text = text.encode("utf-8")
@@ -3548,9 +3655,9 @@ class ConfigDictTest(BaseTest):
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.settimeout(2.0)
-            sock.connect(('localhost', port))
+            sock.connect(("localhost", port))
 
-            slen = struct.pack('>L', len(text))
+            slen = struct.pack(">L", len(text))
             s = slen + text
             sentsofar = 0
             left = len(s)
@@ -3568,22 +3675,25 @@ class ConfigDictTest(BaseTest):
     def test_listen_config_10_ok(self):
         with support.captured_stdout() as output:
             self.setup_via_listener(json.dumps(self.config10))
-            self.check_handler('hand1', logging.StreamHandler)
+            self.check_handler("hand1", logging.StreamHandler)
             logger = logging.getLogger("compiler.parser")
             logger.warning(self.next_message())
-            logger = logging.getLogger('compiler')
+            logger = logging.getLogger("compiler")
             # Not output, because filtered
             logger.warning(self.next_message())
-            logger = logging.getLogger('compiler.lexer')
+            logger = logging.getLogger("compiler.lexer")
             # Not output, because filtered
             logger.warning(self.next_message())
             logger = logging.getLogger("compiler.parser.codegen")
             # Output, as not filtered
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('WARNING', '1'),
-                ('ERROR', '4'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("WARNING", "1"),
+                    ("ERROR", "4"),
+                ],
+                stream=output,
+            )
 
     @support.requires_working_socket()
     def test_listen_config_1_ok(self):
@@ -3593,10 +3703,13 @@ class ConfigDictTest(BaseTest):
             # Both will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
-            self.assert_log_lines([
-                ('INFO', '1'),
-                ('ERROR', '2'),
-            ], stream=output)
+            self.assert_log_lines(
+                [
+                    ("INFO", "1"),
+                    ("ERROR", "2"),
+                ],
+                stream=output,
+            )
             # Original logger output is empty.
             self.assert_log_lines([])
 
@@ -3621,29 +3734,38 @@ class ConfigDictTest(BaseTest):
             logger.error(self.next_message())
         self.assert_log_lines([], stream=output)
         # Original logger output has the stuff we logged.
-        self.assert_log_lines([
-            ('INFO', '1'),
-            ('ERROR', '2'),
-        ], pat=r"^[\w.]+ -> (\w+): (\d+)$")
+        self.assert_log_lines(
+            [
+                ("INFO", "1"),
+                ("ERROR", "2"),
+            ],
+            pat=r"^[\w.]+ -> (\w+): (\d+)$",
+        )
 
         # Now, perform no verification. Our configuration
         # should take effect.
 
         with support.captured_stdout() as output:
-            self.setup_via_listener(to_send)    # no verify callable specified
+            self.setup_via_listener(to_send)  # no verify callable specified
             logger = logging.getLogger("compiler.parser")
             # Both will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
-        self.assert_log_lines([
-            ('INFO', '3'),
-            ('ERROR', '4'),
-        ], stream=output)
+        self.assert_log_lines(
+            [
+                ("INFO", "3"),
+                ("ERROR", "4"),
+            ],
+            stream=output,
+        )
         # Original logger output still has the stuff we logged before.
-        self.assert_log_lines([
-            ('INFO', '1'),
-            ('ERROR', '2'),
-        ], pat=r"^[\w.]+ -> (\w+): (\d+)$")
+        self.assert_log_lines(
+            [
+                ("INFO", "1"),
+                ("ERROR", "2"),
+            ],
+            pat=r"^[\w.]+ -> (\w+): (\d+)$",
+        )
 
         # Now, perform verification which transforms the bytes.
 
@@ -3653,30 +3775,38 @@ class ConfigDictTest(BaseTest):
             # Both will output a message
             logger.info(self.next_message())
             logger.error(self.next_message())
-        self.assert_log_lines([
-            ('INFO', '5'),
-            ('ERROR', '6'),
-        ], stream=output)
+        self.assert_log_lines(
+            [
+                ("INFO", "5"),
+                ("ERROR", "6"),
+            ],
+            stream=output,
+        )
         # Original logger output still has the stuff we logged before.
-        self.assert_log_lines([
-            ('INFO', '1'),
-            ('ERROR', '2'),
-        ], pat=r"^[\w.]+ -> (\w+): (\d+)$")
+        self.assert_log_lines(
+            [
+                ("INFO", "1"),
+                ("ERROR", "2"),
+            ],
+            pat=r"^[\w.]+ -> (\w+): (\d+)$",
+        )
 
     def test_bad_format(self):
         self.assertRaises(ValueError, self.apply_config, self.bad_format)
 
     def test_bad_format_with_dollar_style(self):
         config = copy.deepcopy(self.bad_format)
-        config['formatters']['mySimpleFormatter']['format'] = "${asctime} (${name}) ${levelname}: ${message}"
+        config["formatters"]["mySimpleFormatter"][
+            "format"
+        ] = "${asctime} (${name}) ${levelname}: ${message}"
 
         self.apply_config(config)
-        handler = logging.getLogger('mymodule').handlers[0]
+        handler = logging.getLogger("mymodule").handlers[0]
         self.assertIsInstance(handler.target, logging.Handler)
-        self.assertIsInstance(handler.formatter._style,
-                              logging.StringTemplateStyle)
-        self.assertEqual(sorted(logging.getHandlerNames()),
-                         ['bufferGlobal', 'fileGlobal'])
+        self.assertIsInstance(handler.formatter._style, logging.StringTemplateStyle)
+        self.assertEqual(
+            sorted(logging.getHandlerNames()), ["bufferGlobal", "fileGlobal"]
+        )
 
     def test_custom_formatter_class_with_validate(self):
         self.apply_config(self.custom_formatter_class_validate)
@@ -3690,7 +3820,7 @@ class ConfigDictTest(BaseTest):
 
     def test_custom_formatter_class_with_validate2_with_wrong_fmt(self):
         config = self.custom_formatter_class_validate.copy()
-        config['formatters']['form1']['style'] = "$"
+        config["formatters"]["form1"]["style"] = "$"
 
         # Exception should not be raised as we have configured 'validate' to False
         self.apply_config(config)
@@ -3698,35 +3828,41 @@ class ConfigDictTest(BaseTest):
         self.assertIsInstance(handler.formatter, ExceptionFormatter)
 
     def test_custom_formatter_class_with_validate3(self):
-        self.assertRaises(ValueError, self.apply_config, self.custom_formatter_class_validate3)
+        self.assertRaises(
+            ValueError, self.apply_config, self.custom_formatter_class_validate3
+        )
 
     def test_custom_formatter_function_with_validate(self):
-        self.assertRaises(ValueError, self.apply_config, self.custom_formatter_with_function)
+        self.assertRaises(
+            ValueError, self.apply_config, self.custom_formatter_with_function
+        )
 
     def test_custom_formatter_function_with_defaults(self):
-        self.assertRaises(ValueError, self.apply_config, self.custom_formatter_with_defaults)
+        self.assertRaises(
+            ValueError, self.apply_config, self.custom_formatter_with_defaults
+        )
 
     def test_baseconfig(self):
         d = {
-            'atuple': (1, 2, 3),
-            'alist': ['a', 'b', 'c'],
-            'adict': {'d': 'e', 'f': 3 },
-            'nest1': ('g', ('h', 'i'), 'j'),
-            'nest2': ['k', ['l', 'm'], 'n'],
-            'nest3': ['o', 'cfg://alist', 'p'],
+            "atuple": (1, 2, 3),
+            "alist": ["a", "b", "c"],
+            "adict": {"d": "e", "f": 3},
+            "nest1": ("g", ("h", "i"), "j"),
+            "nest2": ["k", ["l", "m"], "n"],
+            "nest3": ["o", "cfg://alist", "p"],
         }
         bc = logging.config.BaseConfigurator(d)
-        self.assertEqual(bc.convert('cfg://atuple[1]'), 2)
-        self.assertEqual(bc.convert('cfg://alist[1]'), 'b')
-        self.assertEqual(bc.convert('cfg://nest1[1][0]'), 'h')
-        self.assertEqual(bc.convert('cfg://nest2[1][1]'), 'm')
-        self.assertEqual(bc.convert('cfg://adict.d'), 'e')
-        self.assertEqual(bc.convert('cfg://adict[f]'), 3)
-        v = bc.convert('cfg://nest3')
-        self.assertEqual(v.pop(1), ['a', 'b', 'c'])
-        self.assertRaises(KeyError, bc.convert, 'cfg://nosuch')
-        self.assertRaises(ValueError, bc.convert, 'cfg://!')
-        self.assertRaises(KeyError, bc.convert, 'cfg://adict[2]')
+        self.assertEqual(bc.convert("cfg://atuple[1]"), 2)
+        self.assertEqual(bc.convert("cfg://alist[1]"), "b")
+        self.assertEqual(bc.convert("cfg://nest1[1][0]"), "h")
+        self.assertEqual(bc.convert("cfg://nest2[1][1]"), "m")
+        self.assertEqual(bc.convert("cfg://adict.d"), "e")
+        self.assertEqual(bc.convert("cfg://adict[f]"), 3)
+        v = bc.convert("cfg://nest3")
+        self.assertEqual(v.pop(1), ["a", "b", "c"])
+        self.assertRaises(KeyError, bc.convert, "cfg://nosuch")
+        self.assertRaises(ValueError, bc.convert, "cfg://!")
+        self.assertRaises(KeyError, bc.convert, "cfg://adict[2]")
 
     def test_namedtuple(self):
         # see bpo-39142
@@ -3738,41 +3874,37 @@ class ConfigDictTest(BaseTest):
                 self.resource: namedtuple = resource
 
             def emit(self, record):
-                record.msg += f' {self.resource.type}'
+                record.msg += f" {self.resource.type}"
                 return super().emit(record)
 
-        Resource = namedtuple('Resource', ['type', 'labels'])
-        resource = Resource(type='my_type', labels=['a'])
+        Resource = namedtuple("Resource", ["type", "labels"])
+        resource = Resource(type="my_type", labels=["a"])
 
         config = {
-            'version': 1,
-            'handlers': {
-                'myhandler': {
-                    '()': MyHandler,
-                    'resource': resource
-                }
-            },
-            'root':  {'level': 'INFO', 'handlers': ['myhandler']},
+            "version": 1,
+            "handlers": {"myhandler": {"()": MyHandler, "resource": resource}},
+            "root": {"level": "INFO", "handlers": ["myhandler"]},
         }
         with support.captured_stderr() as stderr:
             self.apply_config(config)
-            logging.info('some log')
-        self.assertEqual(stderr.getvalue(), 'some log my_type\n')
+            logging.info("some log")
+        self.assertEqual(stderr.getvalue(), "some log my_type\n")
 
     def test_config_callable_filter_works(self):
         def filter_(_):
             return 1
-        self.apply_config({
-            "version": 1, "root": {"level": "DEBUG", "filters": [filter_]}
-        })
+
+        self.apply_config(
+            {"version": 1, "root": {"level": "DEBUG", "filters": [filter_]}}
+        )
         assert logging.getLogger().filters[0] is filter_
         logging.getLogger().filters = []
 
     def test_config_filter_works(self):
         filter_ = logging.Filter("spam.eggs")
-        self.apply_config({
-            "version": 1, "root": {"level": "DEBUG", "filters": [filter_]}
-        })
+        self.apply_config(
+            {"version": 1, "root": {"level": "DEBUG", "filters": [filter_]}}
+        )
         assert logging.getLogger().filters[0] is filter_
         logging.getLogger().filters = []
 
@@ -3780,57 +3912,59 @@ class ConfigDictTest(BaseTest):
         class FakeFilter:
             def filter(self, _):
                 return 1
+
         filter_ = FakeFilter()
-        self.apply_config({
-            "version": 1, "root": {"level": "DEBUG", "filters": [filter_]}
-        })
+        self.apply_config(
+            {"version": 1, "root": {"level": "DEBUG", "filters": [filter_]}}
+        )
         assert logging.getLogger().filters[0] is filter_
         logging.getLogger().filters = []
 
     def test_invalid_type_raises(self):
-        class NotAFilter: pass
+        class NotAFilter:
+            pass
+
         for filter_ in [None, 1, NotAFilter()]:
             self.assertRaises(
                 ValueError,
                 self.apply_config,
-                {"version": 1, "root": {"level": "DEBUG", "filters": [filter_]}}
+                {"version": 1, "root": {"level": "DEBUG", "filters": [filter_]}},
             )
 
     def do_queuehandler_configuration(self, qspec, lspec):
         cd = copy.deepcopy(self.config_queue_handler)
-        fn = make_temp_file('.log', 'test_logging-cqh-')
-        cd['handlers']['h1']['filename'] = fn
+        fn = make_temp_file(".log", "test_logging-cqh-")
+        cd["handlers"]["h1"]["filename"] = fn
         if qspec is not None:
-            cd['handlers']['ah']['queue'] = qspec
+            cd["handlers"]["ah"]["queue"] = qspec
         if lspec is not None:
-            cd['handlers']['ah']['listener'] = lspec
+            cd["handlers"]["ah"]["listener"] = lspec
         qh = None
         try:
             self.apply_config(cd)
-            qh = logging.getHandlerByName('ah')
-            self.assertEqual(sorted(logging.getHandlerNames()), ['ah', 'h1'])
+            qh = logging.getHandlerByName("ah")
+            self.assertEqual(sorted(logging.getHandlerNames()), ["ah", "h1"])
             self.assertIsNotNone(qh.listener)
             qh.listener.start()
-            logging.debug('foo')
-            logging.info('bar')
-            logging.warning('baz')
+            logging.debug("foo")
+            logging.info("bar")
+            logging.warning("baz")
 
             # Need to let the listener thread finish its work
-            while support.sleeping_retry(support.LONG_TIMEOUT,
-                                         "queue not empty"):
+            while support.sleeping_retry(support.LONG_TIMEOUT, "queue not empty"):
                 if qh.listener.queue.empty():
                     break
 
             # wait until the handler completed its last task
             qh.listener.queue.join()
 
-            with open(fn, encoding='utf-8') as f:
+            with open(fn, encoding="utf-8") as f:
                 data = f.read().splitlines()
-            self.assertEqual(data, ['foo', 'bar', 'baz'])
+            self.assertEqual(data, ["foo", "bar", "baz"])
         finally:
             if qh:
                 qh.listener.stop()
-            h = logging.getHandlerByName('h1')
+            h = logging.getHandlerByName("h1")
             if h:
                 self.addCleanup(closeFileHandler, h, fn)
             else:
@@ -3839,24 +3973,21 @@ class ConfigDictTest(BaseTest):
     @threading_helper.requires_working_threading()
     def test_config_queue_handler(self):
         q = CustomQueue()
-        dq = {
-            '()': __name__ + '.CustomQueue',
-            'maxsize': 10
-        }
+        dq = {"()": __name__ + ".CustomQueue", "maxsize": 10}
         dl = {
-            '()': __name__ + '.listenerMaker',
-            'arg1': None,
-            'arg2': None,
-            'respect_handler_level': True
+            "()": __name__ + ".listenerMaker",
+            "arg1": None,
+            "arg2": None,
+            "respect_handler_level": True,
         }
-        qvalues = (None, __name__ + '.queueMaker', __name__ + '.CustomQueue', dq, q)
-        lvalues = (None, __name__ + '.CustomListener', dl, CustomListener)
+        qvalues = (None, __name__ + ".queueMaker", __name__ + ".CustomQueue", dq, q)
+        lvalues = (None, __name__ + ".CustomListener", dl, CustomListener)
         for qspec, lspec in itertools.product(qvalues, lvalues):
             self.do_queuehandler_configuration(qspec, lspec)
 
         # Some failure cases
-        qvalues = (None, 4, int, '', 'foo')
-        lvalues = (None, 4, int, '', 'bar')
+        qvalues = (None, 4, int, "", "foo")
+        lvalues = (None, 4, int, "", "bar")
         for qspec, lspec in itertools.product(qvalues, lvalues):
             if lspec is None and qspec is None:
                 continue
@@ -3868,52 +3999,48 @@ class ConfigDictTest(BaseTest):
     def test_90195(self):
         # See gh-90195
         config = {
-            'version': 1,
-            'disable_existing_loggers': False,
-            'handlers': {
-                'console': {
-                    'level': 'DEBUG',
-                    'class': 'logging.StreamHandler',
+            "version": 1,
+            "disable_existing_loggers": False,
+            "handlers": {
+                "console": {
+                    "level": "DEBUG",
+                    "class": "logging.StreamHandler",
                 },
             },
-            'loggers': {
-                'a': {
-                    'level': 'DEBUG',
-                    'handlers': ['console']
-                }
-            }
+            "loggers": {"a": {"level": "DEBUG", "handlers": ["console"]}},
         }
-        logger = logging.getLogger('a')
+        logger = logging.getLogger("a")
         self.assertFalse(logger.disabled)
         self.apply_config(config)
         self.assertFalse(logger.disabled)
         # Should disable all loggers ...
-        self.apply_config({'version': 1})
+        self.apply_config({"version": 1})
         self.assertTrue(logger.disabled)
-        del config['disable_existing_loggers']
+        del config["disable_existing_loggers"]
         self.apply_config(config)
         # Logger should be enabled, since explicitly mentioned
         self.assertFalse(logger.disabled)
 
     def test_111615(self):
         # See gh-111615
-        import_helper.import_module('_multiprocessing')  # see gh-113692
-        mp = import_helper.import_module('multiprocessing')
+        import_helper.import_module("_multiprocessing")  # see gh-113692
+        mp = import_helper.import_module("multiprocessing")
 
         config = {
-            'version': 1,
-            'handlers': {
-                'sink': {
-                    'class': 'logging.handlers.QueueHandler',
-                    'queue': mp.get_context('spawn').Queue(),
+            "version": 1,
+            "handlers": {
+                "sink": {
+                    "class": "logging.handlers.QueueHandler",
+                    "queue": mp.get_context("spawn").Queue(),
                 },
             },
-            'root': {
-                'handlers': ['sink'],
-                'level': 'DEBUG',
+            "root": {
+                "handlers": ["sink"],
+                "level": "DEBUG",
             },
         }
         logging.config.dictConfig(config)
+
 
 class ManagerTest(BaseTest):
     def test_manager_loggerclass(self):
@@ -3926,11 +4053,11 @@ class ManagerTest(BaseTest):
         man = logging.Manager(None)
         self.assertRaises(TypeError, man.setLoggerClass, int)
         man.setLoggerClass(MyLogger)
-        logger = man.getLogger('test')
-        logger.warning('should appear in logged')
-        logging.warning('should not appear in logged')
+        logger = man.getLogger("test")
+        logger.warning("should appear in logged")
+        logging.warning("should not appear in logged")
 
-        self.assertEqual(logged, ['should appear in logged'])
+        self.assertEqual(logged, ["should appear in logged"])
 
     def test_set_log_record_factory(self):
         man = logging.Manager(None)
@@ -3938,28 +4065,29 @@ class ManagerTest(BaseTest):
         man.setLogRecordFactory(expected)
         self.assertEqual(man.logRecordFactory, expected)
 
+
 class ChildLoggerTest(BaseTest):
     def test_child_loggers(self):
         r = logging.getLogger()
-        l1 = logging.getLogger('abc')
-        l2 = logging.getLogger('def.ghi')
-        c1 = r.getChild('xyz')
-        c2 = r.getChild('uvw.xyz')
-        self.assertIs(c1, logging.getLogger('xyz'))
-        self.assertIs(c2, logging.getLogger('uvw.xyz'))
-        c1 = l1.getChild('def')
-        c2 = c1.getChild('ghi')
-        c3 = l1.getChild('def.ghi')
-        self.assertIs(c1, logging.getLogger('abc.def'))
-        self.assertIs(c2, logging.getLogger('abc.def.ghi'))
+        l1 = logging.getLogger("abc")
+        l2 = logging.getLogger("def.ghi")
+        c1 = r.getChild("xyz")
+        c2 = r.getChild("uvw.xyz")
+        self.assertIs(c1, logging.getLogger("xyz"))
+        self.assertIs(c2, logging.getLogger("uvw.xyz"))
+        c1 = l1.getChild("def")
+        c2 = c1.getChild("ghi")
+        c3 = l1.getChild("def.ghi")
+        self.assertIs(c1, logging.getLogger("abc.def"))
+        self.assertIs(c2, logging.getLogger("abc.def.ghi"))
         self.assertIs(c2, c3)
 
     def test_get_children(self):
         r = logging.getLogger()
-        l1 = logging.getLogger('foo')
-        l2 = logging.getLogger('foo.bar')
-        l3 = logging.getLogger('foo.bar.baz.bozz')
-        l4 = logging.getLogger('bar')
+        l1 = logging.getLogger("foo")
+        l2 = logging.getLogger("foo.bar")
+        l3 = logging.getLogger("foo.bar.baz.bozz")
+        l4 = logging.getLogger("bar")
         kids = r.getChildren()
         expected = {l1, l4}
         self.assertEqual(expected, kids & expected)  # might be other kids for root
@@ -3969,8 +4097,10 @@ class ChildLoggerTest(BaseTest):
         kids = l2.getChildren()
         self.assertEqual(set(), kids)
 
+
 class DerivedLogRecord(logging.LogRecord):
     pass
+
 
 class LogRecordFactoryTest(BaseTest):
 
@@ -3982,8 +4112,7 @@ class LogRecordFactoryTest(BaseTest):
             def filter(self, record):
                 t = type(record)
                 if t is not self.cls:
-                    msg = 'Unexpected LogRecord type %s, expected %s' % (t,
-                            self.cls)
+                    msg = "Unexpected LogRecord type %s, expected %s" % (t, self.cls)
                     raise TypeError(msg)
                 return True
 
@@ -3998,13 +4127,14 @@ class LogRecordFactoryTest(BaseTest):
         logging.setLogRecordFactory(self.orig_factory)
 
     def test_logrecord_class(self):
-        self.assertRaises(TypeError, self.root_logger.warning,
-                          self.next_message())
+        self.assertRaises(TypeError, self.root_logger.warning, self.next_message())
         logging.setLogRecordFactory(DerivedLogRecord)
         self.root_logger.error(self.next_message())
-        self.assert_log_lines([
-           ('root', 'ERROR', '2'),
-        ])
+        self.assert_log_lines(
+            [
+                ("root", "ERROR", "2"),
+            ]
+        )
 
 
 @threading_helper.requires_working_threading()
@@ -4016,8 +4146,8 @@ class QueueHandlerTest(BaseTest):
         BaseTest.setUp(self)
         self.queue = queue.Queue(-1)
         self.que_hdlr = logging.handlers.QueueHandler(self.queue)
-        self.name = 'que'
-        self.que_logger = logging.getLogger('que')
+        self.name = "que"
+        self.que_logger = logging.getLogger("que")
         self.que_logger.propagate = False
         self.que_logger.setLevel(logging.WARNING)
         self.que_logger.addHandler(self.que_hdlr)
@@ -4041,9 +4171,10 @@ class QueueHandlerTest(BaseTest):
     def test_formatting(self):
         msg = self.next_message()
         levelname = logging.getLevelName(logging.WARNING)
-        log_format_str = '{name} -> {levelname}: {message}'
-        formatted_msg = log_format_str.format(name=self.name,
-                                              levelname=levelname, message=msg)
+        log_format_str = "{name} -> {levelname}: {message}"
+        formatted_msg = log_format_str.format(
+            name=self.name, levelname=levelname, message=msg
+        )
         formatter = logging.Formatter(self.log_format)
         self.que_hdlr.setFormatter(formatter)
         self.que_logger.warning(msg)
@@ -4051,8 +4182,10 @@ class QueueHandlerTest(BaseTest):
         self.assertEqual(formatted_msg, log_record.msg)
         self.assertEqual(formatted_msg, log_record.message)
 
-    @unittest.skipUnless(hasattr(logging.handlers, 'QueueListener'),
-                         'logging.handlers.QueueListener required for this test')
+    @unittest.skipUnless(
+        hasattr(logging.handlers, "QueueListener"),
+        "logging.handlers.QueueListener required for this test",
+    )
     def test_queue_listener(self):
         handler = TestHandler(support.Matcher())
         listener = logging.handlers.QueueListener(self.queue, handler)
@@ -4063,17 +4196,18 @@ class QueueHandlerTest(BaseTest):
             self.que_logger.critical(self.next_message())
         finally:
             listener.stop()
-        self.assertTrue(handler.matches(levelno=logging.WARNING, message='1'))
-        self.assertTrue(handler.matches(levelno=logging.ERROR, message='2'))
-        self.assertTrue(handler.matches(levelno=logging.CRITICAL, message='3'))
+        self.assertTrue(handler.matches(levelno=logging.WARNING, message="1"))
+        self.assertTrue(handler.matches(levelno=logging.ERROR, message="2"))
+        self.assertTrue(handler.matches(levelno=logging.CRITICAL, message="3"))
         handler.close()
 
         # Now test with respect_handler_level set
 
         handler = TestHandler(support.Matcher())
         handler.setLevel(logging.CRITICAL)
-        listener = logging.handlers.QueueListener(self.queue, handler,
-                                                  respect_handler_level=True)
+        listener = logging.handlers.QueueListener(
+            self.queue, handler, respect_handler_level=True
+        )
         listener.start()
         try:
             self.que_logger.warning(self.next_message())
@@ -4081,13 +4215,15 @@ class QueueHandlerTest(BaseTest):
             self.que_logger.critical(self.next_message())
         finally:
             listener.stop()
-        self.assertFalse(handler.matches(levelno=logging.WARNING, message='4'))
-        self.assertFalse(handler.matches(levelno=logging.ERROR, message='5'))
-        self.assertTrue(handler.matches(levelno=logging.CRITICAL, message='6'))
+        self.assertFalse(handler.matches(levelno=logging.WARNING, message="4"))
+        self.assertFalse(handler.matches(levelno=logging.ERROR, message="5"))
+        self.assertTrue(handler.matches(levelno=logging.CRITICAL, message="6"))
         handler.close()
 
-    @unittest.skipUnless(hasattr(logging.handlers, 'QueueListener'),
-                         'logging.handlers.QueueListener required for this test')
+    @unittest.skipUnless(
+        hasattr(logging.handlers, "QueueListener"),
+        "logging.handlers.QueueListener required for this test",
+    )
     def test_queue_listener_with_StreamHandler(self):
         # Test that traceback and stack-info only appends once (bpo-34334, bpo-46755).
         listener = logging.handlers.QueueListener(self.queue, self.root_hdlr)
@@ -4099,11 +4235,13 @@ class QueueHandlerTest(BaseTest):
             self.que_logger.exception(self.next_message(), exc_info=exc)
         self.que_logger.error(self.next_message(), stack_info=True)
         listener.stop()
-        self.assertEqual(self.stream.getvalue().strip().count('Traceback'), 1)
-        self.assertEqual(self.stream.getvalue().strip().count('Stack'), 1)
+        self.assertEqual(self.stream.getvalue().strip().count("Traceback"), 1)
+        self.assertEqual(self.stream.getvalue().strip().count("Stack"), 1)
 
-    @unittest.skipUnless(hasattr(logging.handlers, 'QueueListener'),
-                         'logging.handlers.QueueListener required for this test')
+    @unittest.skipUnless(
+        hasattr(logging.handlers, "QueueListener"),
+        "logging.handlers.QueueListener required for this test",
+    )
     def test_queue_listener_with_multiple_handlers(self):
         # Test that queue handler format doesn't affect other handler formats (bpo-35726).
         self.que_hdlr.setFormatter(self.root_formatter)
@@ -4115,7 +4253,8 @@ class QueueHandlerTest(BaseTest):
         listener.stop()
         self.assertEqual(self.stream.getvalue().strip(), "que -> ERROR: error")
 
-if hasattr(logging.handlers, 'QueueListener'):
+
+if hasattr(logging.handlers, "QueueListener"):
     import multiprocessing
     from unittest.mock import patch
 
@@ -4135,43 +4274,49 @@ if hasattr(logging.handlers, 'QueueListener'):
             QueueListener. Starts the listener, logs five messages, and stops
             the listener.
             """
-            logger = logging.getLogger('test_logger_with_id_%s' % ident)
+            logger = logging.getLogger("test_logger_with_id_%s" % ident)
             logger.setLevel(logging.DEBUG)
             handler = logging.handlers.QueueHandler(log_queue)
             logger.addHandler(handler)
             listener = logging.handlers.QueueListener(log_queue)
             listener.start()
 
-            logger.info('one')
-            logger.info('two')
-            logger.info('three')
-            logger.info('four')
-            logger.info('five')
+            logger.info("one")
+            logger.info("two")
+            logger.info("three")
+            logger.info("four")
+            logger.info("five")
 
             listener.stop()
             logger.removeHandler(handler)
             handler.close()
 
-        @patch.object(logging.handlers.QueueListener, 'handle')
+        @patch.object(logging.handlers.QueueListener, "handle")
         def test_handle_called_with_queue_queue(self, mock_handle):
             for i in range(self.repeat):
                 log_queue = queue.Queue()
-                self.setup_and_log(log_queue, '%s_%s' % (self.id(), i))
-            self.assertEqual(mock_handle.call_count, 5 * self.repeat,
-                             'correct number of handled log messages')
+                self.setup_and_log(log_queue, "%s_%s" % (self.id(), i))
+            self.assertEqual(
+                mock_handle.call_count,
+                5 * self.repeat,
+                "correct number of handled log messages",
+            )
 
-        @patch.object(logging.handlers.QueueListener, 'handle')
+        @patch.object(logging.handlers.QueueListener, "handle")
         def test_handle_called_with_mp_queue(self, mock_handle):
             # bpo-28668: The multiprocessing (mp) module is not functional
             # when the mp.synchronize module cannot be imported.
             support.skip_if_broken_multiprocessing_synchronize()
             for i in range(self.repeat):
                 log_queue = multiprocessing.Queue()
-                self.setup_and_log(log_queue, '%s_%s' % (self.id(), i))
+                self.setup_and_log(log_queue, "%s_%s" % (self.id(), i))
                 log_queue.close()
                 log_queue.join_thread()
-            self.assertEqual(mock_handle.call_count, 5 * self.repeat,
-                             'correct number of handled log messages')
+            self.assertEqual(
+                mock_handle.call_count,
+                5 * self.repeat,
+                "correct number of handled log messages",
+            )
 
         @staticmethod
         def get_all_from_queue(log_queue):
@@ -4193,17 +4338,24 @@ if hasattr(logging.handlers, 'QueueListener'):
             support.skip_if_broken_multiprocessing_synchronize()
             for i in range(self.repeat):
                 queue = multiprocessing.Queue()
-                self.setup_and_log(queue, '%s_%s' %(self.id(), i))
+                self.setup_and_log(queue, "%s_%s" % (self.id(), i))
                 # time.sleep(1)
                 items = list(self.get_all_from_queue(queue))
                 queue.close()
                 queue.join_thread()
 
                 expected = [[], [logging.handlers.QueueListener._sentinel]]
-                self.assertIn(items, expected,
-                              'Found unexpected messages in queue: %s' % (
-                                    [m.msg if isinstance(m, logging.LogRecord)
-                                     else m for m in items]))
+                self.assertIn(
+                    items,
+                    expected,
+                    "Found unexpected messages in queue: %s"
+                    % (
+                        [
+                            m.msg if isinstance(m, logging.LogRecord) else m
+                            for m in items
+                        ]
+                    ),
+                )
 
         def test_calls_task_done_after_stop(self):
             # Issue 36813: Make sure queue.join does not deadlock.
@@ -4218,6 +4370,7 @@ if hasattr(logging.handlers, 'QueueListener'):
 
 ZERO = datetime.timedelta(0)
 
+
 class UTC(datetime.tzinfo):
     def utcoffset(self, dt):
         return ZERO
@@ -4225,9 +4378,11 @@ class UTC(datetime.tzinfo):
     dst = utcoffset
 
     def tzname(self, dt):
-        return 'UTC'
+        return "UTC"
+
 
 utc = UTC()
+
 
 class AssertErrorMessage:
 
@@ -4237,23 +4392,20 @@ class AssertErrorMessage:
         except exception as e:
             self.assertEqual(message, str(e))
 
+
 class FormatterTest(unittest.TestCase, AssertErrorMessage):
     def setUp(self):
         self.common = {
-            'name': 'formatter.test',
-            'level': logging.DEBUG,
-            'pathname': os.path.join('path', 'to', 'dummy.ext'),
-            'lineno': 42,
-            'exc_info': None,
-            'func': None,
-            'msg': 'Message with %d %s',
-            'args': (2, 'placeholders'),
+            "name": "formatter.test",
+            "level": logging.DEBUG,
+            "pathname": os.path.join("path", "to", "dummy.ext"),
+            "lineno": 42,
+            "exc_info": None,
+            "func": None,
+            "msg": "Message with %d %s",
+            "args": (2, "placeholders"),
         }
-        self.variants = {
-            'custom': {
-                'custom': 1234
-            }
-        }
+        self.variants = {"custom": {"custom": 1234}}
 
     def get_record(self, name=None):
         result = dict(self.common)
@@ -4264,60 +4416,65 @@ class FormatterTest(unittest.TestCase, AssertErrorMessage):
     def test_percent(self):
         # Test %-formatting
         r = self.get_record()
-        f = logging.Formatter('${%(message)s}')
-        self.assertEqual(f.format(r), '${Message with 2 placeholders}')
-        f = logging.Formatter('%(random)s')
+        f = logging.Formatter("${%(message)s}")
+        self.assertEqual(f.format(r), "${Message with 2 placeholders}")
+        f = logging.Formatter("%(random)s")
         self.assertRaises(ValueError, f.format, r)
         self.assertFalse(f.usesTime())
-        f = logging.Formatter('%(asctime)s')
+        f = logging.Formatter("%(asctime)s")
         self.assertTrue(f.usesTime())
-        f = logging.Formatter('%(asctime)-15s')
+        f = logging.Formatter("%(asctime)-15s")
         self.assertTrue(f.usesTime())
-        f = logging.Formatter('%(asctime)#15s')
+        f = logging.Formatter("%(asctime)#15s")
         self.assertTrue(f.usesTime())
 
     def test_braces(self):
         # Test {}-formatting
         r = self.get_record()
-        f = logging.Formatter('$%{message}%$', style='{')
-        self.assertEqual(f.format(r), '$%Message with 2 placeholders%$')
-        f = logging.Formatter('{random}', style='{')
+        f = logging.Formatter("$%{message}%$", style="{")
+        self.assertEqual(f.format(r), "$%Message with 2 placeholders%$")
+        f = logging.Formatter("{random}", style="{")
         self.assertRaises(ValueError, f.format, r)
-        f = logging.Formatter("{message}", style='{')
+        f = logging.Formatter("{message}", style="{")
         self.assertFalse(f.usesTime())
-        f = logging.Formatter('{asctime}', style='{')
+        f = logging.Formatter("{asctime}", style="{")
         self.assertTrue(f.usesTime())
-        f = logging.Formatter('{asctime!s:15}', style='{')
+        f = logging.Formatter("{asctime!s:15}", style="{")
         self.assertTrue(f.usesTime())
-        f = logging.Formatter('{asctime:15}', style='{')
+        f = logging.Formatter("{asctime:15}", style="{")
         self.assertTrue(f.usesTime())
 
     def test_dollars(self):
         # Test $-formatting
         r = self.get_record()
-        f = logging.Formatter('${message}', style='$')
-        self.assertEqual(f.format(r), 'Message with 2 placeholders')
-        f = logging.Formatter('$message', style='$')
-        self.assertEqual(f.format(r), 'Message with 2 placeholders')
-        f = logging.Formatter('$$%${message}%$$', style='$')
-        self.assertEqual(f.format(r), '$%Message with 2 placeholders%$')
-        f = logging.Formatter('${random}', style='$')
+        f = logging.Formatter("${message}", style="$")
+        self.assertEqual(f.format(r), "Message with 2 placeholders")
+        f = logging.Formatter("$message", style="$")
+        self.assertEqual(f.format(r), "Message with 2 placeholders")
+        f = logging.Formatter("$$%${message}%$$", style="$")
+        self.assertEqual(f.format(r), "$%Message with 2 placeholders%$")
+        f = logging.Formatter("${random}", style="$")
         self.assertRaises(ValueError, f.format, r)
         self.assertFalse(f.usesTime())
-        f = logging.Formatter('${asctime}', style='$')
+        f = logging.Formatter("${asctime}", style="$")
         self.assertTrue(f.usesTime())
-        f = logging.Formatter('$asctime', style='$')
+        f = logging.Formatter("$asctime", style="$")
         self.assertTrue(f.usesTime())
-        f = logging.Formatter('${message}', style='$')
+        f = logging.Formatter("${message}", style="$")
         self.assertFalse(f.usesTime())
-        f = logging.Formatter('${asctime}--', style='$')
+        f = logging.Formatter("${asctime}--", style="$")
         self.assertTrue(f.usesTime())
 
     def test_format_validate(self):
         # Check correct formatting
         # Percentage style
-        f = logging.Formatter("%(levelname)-15s - %(message) 5s - %(process)03d - %(module) - %(asctime)*.3s")
-        self.assertEqual(f._fmt, "%(levelname)-15s - %(message) 5s - %(process)03d - %(module) - %(asctime)*.3s")
+        f = logging.Formatter(
+            "%(levelname)-15s - %(message) 5s - %(process)03d - %(module) - %(asctime)*.3s"
+        )
+        self.assertEqual(
+            f._fmt,
+            "%(levelname)-15s - %(message) 5s - %(process)03d - %(module) - %(asctime)*.3s",
+        )
         f = logging.Formatter("%(asctime)*s - %(asctime)*.3s - %(process)-34.33o")
         self.assertEqual(f._fmt, "%(asctime)*s - %(asctime)*.3s - %(process)-34.33o")
         f = logging.Formatter("%(process)#+027.23X")
@@ -4326,8 +4483,12 @@ class FormatterTest(unittest.TestCase, AssertErrorMessage):
         self.assertEqual(f._fmt, "%(foo)#.*g")
 
         # StrFormat Style
-        f = logging.Formatter("$%{message}%$ - {asctime!a:15} - {customfield['key']}", style="{")
-        self.assertEqual(f._fmt, "$%{message}%$ - {asctime!a:15} - {customfield['key']}")
+        f = logging.Formatter(
+            "$%{message}%$ - {asctime!a:15} - {customfield['key']}", style="{"
+        )
+        self.assertEqual(
+            f._fmt, "$%{message}%$ - {asctime!a:15} - {customfield['key']}"
+        )
         f = logging.Formatter("{process:.2f} - {custom.f:.4f}", style="{")
         self.assertEqual(f._fmt, "{process:.2f} - {custom.f:.4f}")
         f = logging.Formatter("{customfield!s:#<30}", style="{")
@@ -4340,8 +4501,12 @@ class FormatterTest(unittest.TestCase, AssertErrorMessage):
         self.assertEqual(f._fmt, "{message!a}")
         f = logging.Formatter("{process!r:4.2}", style="{")
         self.assertEqual(f._fmt, "{process!r:4.2}")
-        f = logging.Formatter("{process!s:<#30,.12f}- {custom:=+#30,.1d} - {module:^30}", style="{")
-        self.assertEqual(f._fmt, "{process!s:<#30,.12f}- {custom:=+#30,.1d} - {module:^30}")
+        f = logging.Formatter(
+            "{process!s:<#30,.12f}- {custom:=+#30,.1d} - {module:^30}", style="{"
+        )
+        self.assertEqual(
+            f._fmt, "{process!s:<#30,.12f}- {custom:=+#30,.1d} - {module:^30}"
+        )
         f = logging.Formatter("{process!s:{w},.{p}}", style="{")
         self.assertEqual(f._fmt, "{process!s:{w},.{p}}")
         f = logging.Formatter("{foo:12.{p}}", style="{")
@@ -4370,108 +4535,137 @@ class FormatterTest(unittest.TestCase, AssertErrorMessage):
         self.assertRaises(ValueError, logging.Formatter, "%(asctime)*")
         self.assertRaises(ValueError, logging.Formatter, "%(asctime)*3s")
         self.assertRaises(ValueError, logging.Formatter, "%(asctime)_")
-        self.assertRaises(ValueError, logging.Formatter, '{asctime}')
-        self.assertRaises(ValueError, logging.Formatter, '${message}')
-        self.assertRaises(ValueError, logging.Formatter, '%(foo)#12.3*f')  # with both * and decimal number as precision
-        self.assertRaises(ValueError, logging.Formatter, '%(foo)0*.8*f')
+        self.assertRaises(ValueError, logging.Formatter, "{asctime}")
+        self.assertRaises(ValueError, logging.Formatter, "${message}")
+        self.assertRaises(
+            ValueError, logging.Formatter, "%(foo)#12.3*f"
+        )  # with both * and decimal number as precision
+        self.assertRaises(ValueError, logging.Formatter, "%(foo)0*.8*f")
 
         # StrFormat Style
         # Testing failure for '-' in field name
         self.assert_error_message(
             ValueError,
             "invalid format: invalid field name/expression: 'name-thing'",
-            logging.Formatter, "{name-thing}", style="{"
+            logging.Formatter,
+            "{name-thing}",
+            style="{",
         )
         # Testing failure for style mismatch
         self.assert_error_message(
             ValueError,
             "invalid format: no fields",
-            logging.Formatter, '%(asctime)s', style='{'
+            logging.Formatter,
+            "%(asctime)s",
+            style="{",
         )
         # Testing failure for invalid conversion
-        self.assert_error_message(
-            ValueError,
-            "invalid conversion: 'Z'"
+        self.assert_error_message(ValueError, "invalid conversion: 'Z'")
+        self.assertRaises(
+            ValueError, logging.Formatter, "{asctime!s:#30,15f}", style="{"
         )
-        self.assertRaises(ValueError, logging.Formatter, '{asctime!s:#30,15f}', style='{')
         self.assert_error_message(
             ValueError,
             "invalid format: expected ':' after conversion specifier",
-            logging.Formatter, '{asctime!aa:15}', style='{'
+            logging.Formatter,
+            "{asctime!aa:15}",
+            style="{",
         )
         # Testing failure for invalid spec
         self.assert_error_message(
             ValueError,
             "invalid format: bad specifier: '.2ff'",
-            logging.Formatter, '{process:.2ff}', style='{'
+            logging.Formatter,
+            "{process:.2ff}",
+            style="{",
         )
-        self.assertRaises(ValueError, logging.Formatter, '{process:.2Z}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{process!s:<##30,12g}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{process!s:<#30#,12g}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{process!s:{{w}},{{p}}}', style='{')
+        self.assertRaises(ValueError, logging.Formatter, "{process:.2Z}", style="{")
+        self.assertRaises(
+            ValueError, logging.Formatter, "{process!s:<##30,12g}", style="{"
+        )
+        self.assertRaises(
+            ValueError, logging.Formatter, "{process!s:<#30#,12g}", style="{"
+        )
+        self.assertRaises(
+            ValueError, logging.Formatter, "{process!s:{{w}},{{p}}}", style="{"
+        )
         # Testing failure for mismatch braces
         self.assert_error_message(
             ValueError,
             "invalid format: expected '}' before end of string",
-            logging.Formatter, '{process', style='{'
+            logging.Formatter,
+            "{process",
+            style="{",
         )
         self.assert_error_message(
             ValueError,
             "invalid format: Single '}' encountered in format string",
-            logging.Formatter, 'process}', style='{'
+            logging.Formatter,
+            "process}",
+            style="{",
         )
-        self.assertRaises(ValueError, logging.Formatter, '{{foo!r:4.2}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{{foo!r:4.2}}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{foo/bar}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{foo:{{w}}.{{p}}}}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{foo!X:{{w}}.{{p}}}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{foo!a:random}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{foo!a:ran{dom}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{foo!a:ran{d}om}', style='{')
-        self.assertRaises(ValueError, logging.Formatter, '{foo.!a:d}', style='{')
+        self.assertRaises(ValueError, logging.Formatter, "{{foo!r:4.2}", style="{")
+        self.assertRaises(ValueError, logging.Formatter, "{{foo!r:4.2}}", style="{")
+        self.assertRaises(ValueError, logging.Formatter, "{foo/bar}", style="{")
+        self.assertRaises(
+            ValueError, logging.Formatter, "{foo:{{w}}.{{p}}}}", style="{"
+        )
+        self.assertRaises(
+            ValueError, logging.Formatter, "{foo!X:{{w}}.{{p}}}", style="{"
+        )
+        self.assertRaises(ValueError, logging.Formatter, "{foo!a:random}", style="{")
+        self.assertRaises(ValueError, logging.Formatter, "{foo!a:ran{dom}", style="{")
+        self.assertRaises(ValueError, logging.Formatter, "{foo!a:ran{d}om}", style="{")
+        self.assertRaises(ValueError, logging.Formatter, "{foo.!a:d}", style="{")
 
         # Dollar style
         # Testing failure for mismatch bare $
         self.assert_error_message(
             ValueError,
-            "invalid format: bare \'$\' not allowed",
-            logging.Formatter, '$bar $$$', style='$'
+            "invalid format: bare '$' not allowed",
+            logging.Formatter,
+            "$bar $$$",
+            style="$",
         )
         self.assert_error_message(
             ValueError,
-            "invalid format: bare \'$\' not allowed",
-            logging.Formatter, 'bar $', style='$'
+            "invalid format: bare '$' not allowed",
+            logging.Formatter,
+            "bar $",
+            style="$",
         )
         self.assert_error_message(
             ValueError,
-            "invalid format: bare \'$\' not allowed",
-            logging.Formatter, 'foo $.', style='$'
+            "invalid format: bare '$' not allowed",
+            logging.Formatter,
+            "foo $.",
+            style="$",
         )
         # Testing failure for mismatch style
         self.assert_error_message(
             ValueError,
             "invalid format: no fields",
-            logging.Formatter, '{asctime}', style='$'
+            logging.Formatter,
+            "{asctime}",
+            style="$",
         )
-        self.assertRaises(ValueError, logging.Formatter, '%(asctime)s', style='$')
+        self.assertRaises(ValueError, logging.Formatter, "%(asctime)s", style="$")
 
         # Testing failure for incorrect fields
         self.assert_error_message(
-            ValueError,
-            "invalid format: no fields",
-            logging.Formatter, 'foo', style='$'
+            ValueError, "invalid format: no fields", logging.Formatter, "foo", style="$"
         )
-        self.assertRaises(ValueError, logging.Formatter, '${asctime', style='$')
+        self.assertRaises(ValueError, logging.Formatter, "${asctime", style="$")
 
     def test_defaults_parameter(self):
-        fmts = ['%(custom)s %(message)s', '{custom} {message}', '$custom $message']
-        styles = ['%', '{', '$']
+        fmts = ["%(custom)s %(message)s", "{custom} {message}", "$custom $message"]
+        styles = ["%", "{", "$"]
         for fmt, style in zip(fmts, styles):
-            f = logging.Formatter(fmt, style=style, defaults={'custom': 'Default'})
+            f = logging.Formatter(fmt, style=style, defaults={"custom": "Default"})
             r = self.get_record()
-            self.assertEqual(f.format(r), 'Default Message with 2 placeholders')
+            self.assertEqual(f.format(r), "Default Message with 2 placeholders")
             r = self.get_record("custom")
-            self.assertEqual(f.format(r), '1234 Message with 2 placeholders')
+            self.assertEqual(f.format(r), "1234 Message with 2 placeholders")
 
             # Without default
             f = logging.Formatter(fmt, style=style)
@@ -4479,12 +4673,14 @@ class FormatterTest(unittest.TestCase, AssertErrorMessage):
             self.assertRaises(ValueError, f.format, r)
 
             # Non-existing default is ignored
-            f = logging.Formatter(fmt, style=style, defaults={'Non-existing': 'Default'})
+            f = logging.Formatter(
+                fmt, style=style, defaults={"Non-existing": "Default"}
+            )
             r = self.get_record("custom")
-            self.assertEqual(f.format(r), '1234 Message with 2 placeholders')
+            self.assertEqual(f.format(r), "1234 Message with 2 placeholders")
 
     def test_invalid_style(self):
-        self.assertRaises(ValueError, logging.Formatter, None, None, 'x')
+        self.assertRaises(ValueError, logging.Formatter, None, None, "x")
 
     def test_time(self):
         r = self.get_record()
@@ -4493,59 +4689,65 @@ class FormatterTest(unittest.TestCase, AssertErrorMessage):
         # We're essentially converting a UTC time to local time
         r.created = time.mktime(dt.astimezone(None).timetuple())
         r.msecs = 123
-        f = logging.Formatter('%(asctime)s %(message)s')
+        f = logging.Formatter("%(asctime)s %(message)s")
         f.converter = time.gmtime
-        self.assertEqual(f.formatTime(r), '1993-04-21 08:03:00,123')
-        self.assertEqual(f.formatTime(r, '%Y:%d'), '1993:21')
+        self.assertEqual(f.formatTime(r), "1993-04-21 08:03:00,123")
+        self.assertEqual(f.formatTime(r, "%Y:%d"), "1993:21")
         f.format(r)
-        self.assertEqual(r.asctime, '1993-04-21 08:03:00,123')
+        self.assertEqual(r.asctime, "1993-04-21 08:03:00,123")
 
     def test_default_msec_format_none(self):
         class NoMsecFormatter(logging.Formatter):
             default_msec_format = None
-            default_time_format = '%d/%m/%Y %H:%M:%S'
+            default_time_format = "%d/%m/%Y %H:%M:%S"
 
         r = self.get_record()
         dt = datetime.datetime(1993, 4, 21, 8, 3, 0, 123, utc)
         r.created = time.mktime(dt.astimezone(None).timetuple())
         f = NoMsecFormatter()
         f.converter = time.gmtime
-        self.assertEqual(f.formatTime(r), '21/04/1993 08:03:00')
+        self.assertEqual(f.formatTime(r), "21/04/1993 08:03:00")
 
     def test_issue_89047(self):
-        f = logging.Formatter(fmt='{asctime}.{msecs:03.0f} {message}', style='{', datefmt="%Y-%m-%d %H:%M:%S")
+        f = logging.Formatter(
+            fmt="{asctime}.{msecs:03.0f} {message}",
+            style="{",
+            datefmt="%Y-%m-%d %H:%M:%S",
+        )
         for i in range(2500):
             time.sleep(0.0004)
-            r = logging.makeLogRecord({'msg': 'Message %d' % (i + 1)})
+            r = logging.makeLogRecord({"msg": "Message %d" % (i + 1)})
             s = f.format(r)
-            self.assertNotIn('.1000', s)
+            self.assertNotIn(".1000", s)
 
 
 class TestBufferingFormatter(logging.BufferingFormatter):
     def formatHeader(self, records):
-        return '[(%d)' % len(records)
+        return "[(%d)" % len(records)
 
     def formatFooter(self, records):
-        return '(%d)]' % len(records)
+        return "(%d)]" % len(records)
+
 
 class BufferingFormatterTest(unittest.TestCase):
     def setUp(self):
         self.records = [
-            logging.makeLogRecord({'msg': 'one'}),
-            logging.makeLogRecord({'msg': 'two'}),
+            logging.makeLogRecord({"msg": "one"}),
+            logging.makeLogRecord({"msg": "two"}),
         ]
 
     def test_default(self):
         f = logging.BufferingFormatter()
-        self.assertEqual('', f.format([]))
-        self.assertEqual('onetwo', f.format(self.records))
+        self.assertEqual("", f.format([]))
+        self.assertEqual("onetwo", f.format(self.records))
 
     def test_custom(self):
         f = TestBufferingFormatter()
-        self.assertEqual('[(2)onetwo(2)]', f.format(self.records))
-        lf = logging.Formatter('<%(message)s>')
+        self.assertEqual("[(2)onetwo(2)]", f.format(self.records))
+        lf = logging.Formatter("<%(message)s>")
         f = TestBufferingFormatter(lf)
-        self.assertEqual('[(2)<one><two>(2)]', f.format(self.records))
+        self.assertEqual("[(2)<one><two>(2)]", f.format(self.records))
+
 
 class ExceptionTest(BaseTest):
     def test_formatting(self):
@@ -4553,20 +4755,20 @@ class ExceptionTest(BaseTest):
         h = RecordingHandler()
         r.addHandler(h)
         try:
-            raise RuntimeError('deliberate mistake')
+            raise RuntimeError("deliberate mistake")
         except:
-            logging.exception('failed', stack_info=True)
+            logging.exception("failed", stack_info=True)
         r.removeHandler(h)
         h.close()
         r = h.records[0]
-        self.assertTrue(r.exc_text.startswith('Traceback (most recent '
-                                              'call last):\n'))
-        self.assertTrue(r.exc_text.endswith('\nRuntimeError: '
-                                            'deliberate mistake'))
-        self.assertTrue(r.stack_info.startswith('Stack (most recent '
-                                              'call last):\n'))
-        self.assertTrue(r.stack_info.endswith('logging.exception(\'failed\', '
-                                            'stack_info=True)'))
+        self.assertTrue(
+            r.exc_text.startswith("Traceback (most recent " "call last):\n")
+        )
+        self.assertTrue(r.exc_text.endswith("\nRuntimeError: " "deliberate mistake"))
+        self.assertTrue(r.stack_info.startswith("Stack (most recent " "call last):\n"))
+        self.assertTrue(
+            r.stack_info.endswith("logging.exception('failed', " "stack_info=True)")
+        )
 
 
 class LastResortTest(BaseTest):
@@ -4579,29 +4781,29 @@ class LastResortTest(BaseTest):
 
         try:
             with support.captured_stderr() as stderr:
-                root.debug('This should not appear')
-                self.assertEqual(stderr.getvalue(), '')
-                root.warning('Final chance!')
-                self.assertEqual(stderr.getvalue(), 'Final chance!\n')
+                root.debug("This should not appear")
+                self.assertEqual(stderr.getvalue(), "")
+                root.warning("Final chance!")
+                self.assertEqual(stderr.getvalue(), "Final chance!\n")
 
             # No handlers and no last resort, so 'No handlers' message
             logging.lastResort = None
             with support.captured_stderr() as stderr:
-                root.warning('Final chance!')
+                root.warning("Final chance!")
                 msg = 'No handlers could be found for logger "root"\n'
                 self.assertEqual(stderr.getvalue(), msg)
 
             # 'No handlers' message only printed once
             with support.captured_stderr() as stderr:
-                root.warning('Final chance!')
-                self.assertEqual(stderr.getvalue(), '')
+                root.warning("Final chance!")
+                self.assertEqual(stderr.getvalue(), "")
 
             # If raiseExceptions is False, no message is printed
             root.manager.emittedNoHandlerWarning = False
             logging.raiseExceptions = False
             with support.captured_stderr() as stderr:
-                root.warning('Final chance!')
-                self.assertEqual(stderr.getvalue(), '')
+                root.warning("Final chance!")
+                self.assertEqual(stderr.getvalue(), "")
         finally:
             root.addHandler(self.root_hdlr)
             logging.lastResort = old_lastresort
@@ -4611,12 +4813,13 @@ class LastResortTest(BaseTest):
 class FakeHandler:
 
     def __init__(self, identifier, called):
-        for method in ('acquire', 'flush', 'close', 'release'):
+        for method in ("acquire", "flush", "close", "release"):
             setattr(self, method, self.record_call(identifier, method, called))
 
     def record_call(self, identifier, method_name, called):
         def inner():
-            called.append('{} - {}'.format(identifier, method_name))
+            called.append("{} - {}".format(identifier, method_name))
+
         return inner
 
 
@@ -4632,7 +4835,6 @@ class RecordingHandler(logging.NullHandler):
 
 
 class ShutdownTest(BaseTest):
-
     """Test suite for the shutdown method."""
 
     def setUp(self):
@@ -4640,11 +4842,12 @@ class ShutdownTest(BaseTest):
         self.called = []
 
         raise_exceptions = logging.raiseExceptions
-        self.addCleanup(setattr, logging, 'raiseExceptions', raise_exceptions)
+        self.addCleanup(setattr, logging, "raiseExceptions", raise_exceptions)
 
     def raise_error(self, error):
         def inner():
             raise error()
+
         return inner
 
     def test_no_failure(self):
@@ -4658,9 +4861,20 @@ class ShutdownTest(BaseTest):
 
         logging.shutdown(handlerList=list(handlers))
 
-        expected = ['2 - acquire', '2 - flush', '2 - close', '2 - release',
-                    '1 - acquire', '1 - flush', '1 - close', '1 - release',
-                    '0 - acquire', '0 - flush', '0 - close', '0 - release']
+        expected = [
+            "2 - acquire",
+            "2 - flush",
+            "2 - close",
+            "2 - release",
+            "1 - acquire",
+            "1 - flush",
+            "1 - close",
+            "1 - release",
+            "0 - acquire",
+            "0 - flush",
+            "0 - close",
+            "0 - release",
+        ]
         self.assertEqual(expected, self.called)
 
     def _test_with_failure_in_method(self, method, error):
@@ -4670,56 +4884,58 @@ class ShutdownTest(BaseTest):
 
         logging.shutdown(handlerList=list(handlers))
 
-        self.assertEqual('0 - release', self.called[-1])
+        self.assertEqual("0 - release", self.called[-1])
 
     def test_with_ioerror_in_acquire(self):
-        self._test_with_failure_in_method('acquire', OSError)
+        self._test_with_failure_in_method("acquire", OSError)
 
     def test_with_ioerror_in_flush(self):
-        self._test_with_failure_in_method('flush', OSError)
+        self._test_with_failure_in_method("flush", OSError)
 
     def test_with_ioerror_in_close(self):
-        self._test_with_failure_in_method('close', OSError)
+        self._test_with_failure_in_method("close", OSError)
 
     def test_with_valueerror_in_acquire(self):
-        self._test_with_failure_in_method('acquire', ValueError)
+        self._test_with_failure_in_method("acquire", ValueError)
 
     def test_with_valueerror_in_flush(self):
-        self._test_with_failure_in_method('flush', ValueError)
+        self._test_with_failure_in_method("flush", ValueError)
 
     def test_with_valueerror_in_close(self):
-        self._test_with_failure_in_method('close', ValueError)
+        self._test_with_failure_in_method("close", ValueError)
 
     def test_with_other_error_in_acquire_without_raise(self):
         logging.raiseExceptions = False
-        self._test_with_failure_in_method('acquire', IndexError)
+        self._test_with_failure_in_method("acquire", IndexError)
 
     def test_with_other_error_in_flush_without_raise(self):
         logging.raiseExceptions = False
-        self._test_with_failure_in_method('flush', IndexError)
+        self._test_with_failure_in_method("flush", IndexError)
 
     def test_with_other_error_in_close_without_raise(self):
         logging.raiseExceptions = False
-        self._test_with_failure_in_method('close', IndexError)
+        self._test_with_failure_in_method("close", IndexError)
 
     def test_with_other_error_in_acquire_with_raise(self):
         logging.raiseExceptions = True
-        self.assertRaises(IndexError, self._test_with_failure_in_method,
-                          'acquire', IndexError)
+        self.assertRaises(
+            IndexError, self._test_with_failure_in_method, "acquire", IndexError
+        )
 
     def test_with_other_error_in_flush_with_raise(self):
         logging.raiseExceptions = True
-        self.assertRaises(IndexError, self._test_with_failure_in_method,
-                          'flush', IndexError)
+        self.assertRaises(
+            IndexError, self._test_with_failure_in_method, "flush", IndexError
+        )
 
     def test_with_other_error_in_close_with_raise(self):
         logging.raiseExceptions = True
-        self.assertRaises(IndexError, self._test_with_failure_in_method,
-                          'close', IndexError)
+        self.assertRaises(
+            IndexError, self._test_with_failure_in_method, "close", IndexError
+        )
 
 
 class ModuleLevelMiscTest(BaseTest):
-
     """Test suite for some module level methods."""
 
     def test_disable(self):
@@ -4747,8 +4963,9 @@ class ModuleLevelMiscTest(BaseTest):
 
     def _test_log(self, method, level=None):
         called = []
-        support.patch(self, logging, 'basicConfig',
-                      lambda *a, **kw: called.append((a, kw)))
+        support.patch(
+            self, logging, "basicConfig", lambda *a, **kw: called.append((a, kw))
+        )
 
         recording = RecordingHandler()
         logging.root.addHandler(recording)
@@ -4763,29 +4980,31 @@ class ModuleLevelMiscTest(BaseTest):
         record = recording.records[0]
         self.assertEqual(record.getMessage(), "test me: %r" % recording)
 
-        expected_level = level if level is not None else getattr(logging, method.upper())
+        expected_level = (
+            level if level is not None else getattr(logging, method.upper())
+        )
         self.assertEqual(record.levelno, expected_level)
 
         # basicConfig was not called!
         self.assertEqual(called, [])
 
     def test_log(self):
-        self._test_log('log', logging.ERROR)
+        self._test_log("log", logging.ERROR)
 
     def test_debug(self):
-        self._test_log('debug')
+        self._test_log("debug")
 
     def test_info(self):
-        self._test_log('info')
+        self._test_log("info")
 
     def test_warning(self):
-        self._test_log('warning')
+        self._test_log("warning")
 
     def test_error(self):
-        self._test_log('error')
+        self._test_log("error")
 
     def test_critical(self):
-        self._test_log('critical')
+        self._test_log("critical")
 
     def test_set_logger_class(self):
         self.assertRaises(TypeError, logging.setLoggerClass, object)
@@ -4804,13 +5023,13 @@ class ModuleLevelMiscTest(BaseTest):
         message = []
 
         class MyLogger(logging.getLoggerClass()):
-            def __init__(self, name='MyLogger', level=logging.NOTSET):
+            def __init__(self, name="MyLogger", level=logging.NOTSET):
                 super().__init__(name, level)
-                message.append('initialized')
+                message.append("initialized")
 
         logging.setLoggerClass(MyLogger)
-        logger = logging.getLogger('just_some_logger')
-        self.assertEqual(message, ['initialized'])
+        logger = logging.getLogger("just_some_logger")
+        self.assertEqual(message, ["initialized"])
         stream = io.StringIO()
         h = logging.StreamHandler(stream)
         logger.addHandler(h)
@@ -4832,7 +5051,8 @@ class ModuleLevelMiscTest(BaseTest):
 
     def test_logging_at_shutdown(self):
         # bpo-20037: Doing text I/O late at interpreter shutdown must not crash
-        code = textwrap.dedent("""
+        code = textwrap.dedent(
+            """
             import logging
 
             class A:
@@ -4843,7 +5063,8 @@ class ModuleLevelMiscTest(BaseTest):
                         logging.exception("exception in __del__")
 
             a = A()
-        """)
+        """
+        )
         rc, out, err = assert_python_ok("-c", code)
         err = err.decode()
         self.assertIn("exception in __del__", err)
@@ -4856,7 +5077,8 @@ class ModuleLevelMiscTest(BaseTest):
         filename = os_helper.TESTFN
         self.addCleanup(os_helper.unlink, filename)
 
-        code = textwrap.dedent(f"""
+        code = textwrap.dedent(
+            f"""
             import builtins
             import logging
 
@@ -4874,7 +5096,8 @@ class ModuleLevelMiscTest(BaseTest):
             # Simulate the Python finalization which removes the builtin
             # open() function.
             del builtins.open
-        """)
+        """
+        )
         assert_python_ok("-c", code)
 
         with open(filename, encoding="utf-8") as fp:
@@ -4882,7 +5105,8 @@ class ModuleLevelMiscTest(BaseTest):
 
     def test_recursion_error(self):
         # Issue 36272
-        code = textwrap.dedent("""
+        code = textwrap.dedent(
+            """
             import logging
 
             def rec():
@@ -4890,7 +5114,8 @@ class ModuleLevelMiscTest(BaseTest):
                 rec()
 
             rec()
-        """)
+        """
+        )
         rc, out, err = assert_python_failure("-c", code)
         err = err.decode()
         self.assertNotIn("Cannot recover from stack overflow.", err)
@@ -4900,47 +5125,49 @@ class ModuleLevelMiscTest(BaseTest):
         mapping = logging.getLevelNamesMapping()
         self.assertEqual(logging._nameToLevel, mapping)  # value is equivalent
         self.assertIsNot(logging._nameToLevel, mapping)  # but not the internal data
-        new_mapping = logging.getLevelNamesMapping()     # another call -> another copy
-        self.assertIsNot(mapping, new_mapping)           # verify not the same object as before
-        self.assertEqual(mapping, new_mapping)           # but equivalent in value
+        new_mapping = logging.getLevelNamesMapping()  # another call -> another copy
+        self.assertIsNot(mapping, new_mapping)  # verify not the same object as before
+        self.assertEqual(mapping, new_mapping)  # but equivalent in value
 
 
 class LogRecordTest(BaseTest):
     def test_str_rep(self):
         r = logging.makeLogRecord({})
         s = str(r)
-        self.assertTrue(s.startswith('<LogRecord: '))
-        self.assertTrue(s.endswith('>'))
+        self.assertTrue(s.startswith("<LogRecord: "))
+        self.assertTrue(s.endswith(">"))
 
     def test_dict_arg(self):
         h = RecordingHandler()
         r = logging.getLogger()
         r.addHandler(h)
-        d = {'less' : 'more' }
-        logging.warning('less is %(less)s', d)
+        d = {"less": "more"}
+        logging.warning("less is %(less)s", d)
         self.assertIs(h.records[0].args, d)
-        self.assertEqual(h.records[0].message, 'less is more')
+        self.assertEqual(h.records[0].message, "less is more")
         r.removeHandler(h)
         h.close()
 
-    @staticmethod # pickled as target of child process in the following test
+    @staticmethod  # pickled as target of child process in the following test
     def _extract_logrecord_process_name(key, logMultiprocessing, conn=None):
         prev_logMultiprocessing = logging.logMultiprocessing
         logging.logMultiprocessing = logMultiprocessing
         try:
             import multiprocessing as mp
+
             name = mp.current_process().name
 
-            r1 = logging.makeLogRecord({'msg': f'msg1_{key}'})
+            r1 = logging.makeLogRecord({"msg": f"msg1_{key}"})
 
             # https://bugs.python.org/issue45128
-            with support.swap_item(sys.modules, 'multiprocessing', None):
-                r2 = logging.makeLogRecord({'msg': f'msg2_{key}'})
+            with support.swap_item(sys.modules, "multiprocessing", None):
+                r2 = logging.makeLogRecord({"msg": f"msg2_{key}"})
 
-            results = {'processName'  : name,
-                       'r1.processName': r1.processName,
-                       'r2.processName': r2.processName,
-                      }
+            results = {
+                "processName": name,
+                "r1.processName": r1.processName,
+                "r2.processName": r2.processName,
+            }
         finally:
             logging.logMultiprocessing = prev_logMultiprocessing
         if conn:
@@ -4950,7 +5177,7 @@ class LogRecordTest(BaseTest):
 
     def test_multiprocessing(self):
         support.skip_if_broken_multiprocessing_synchronize()
-        multiprocessing_imported = 'multiprocessing' in sys.modules
+        multiprocessing_imported = "multiprocessing" in sys.modules
         try:
             # logMultiprocessing is True by default
             self.assertEqual(logging.logMultiprocessing, True)
@@ -4959,26 +5186,31 @@ class LogRecordTest(BaseTest):
             # When logMultiprocessing == True:
             # In the main process processName = 'MainProcess'
             r = logging.makeLogRecord({})
-            self.assertEqual(r.processName, 'MainProcess')
+            self.assertEqual(r.processName, "MainProcess")
 
             results = self._extract_logrecord_process_name(1, LOG_MULTI_PROCESSING)
-            self.assertEqual('MainProcess', results['processName'])
-            self.assertEqual('MainProcess', results['r1.processName'])
-            self.assertEqual('MainProcess', results['r2.processName'])
+            self.assertEqual("MainProcess", results["processName"])
+            self.assertEqual("MainProcess", results["r1.processName"])
+            self.assertEqual("MainProcess", results["r2.processName"])
 
             # In other processes, processName is correct when multiprocessing in imported,
             # but it is (incorrectly) defaulted to 'MainProcess' otherwise (bpo-38762).
             import multiprocessing
+
             parent_conn, child_conn = multiprocessing.Pipe()
             p = multiprocessing.Process(
                 target=self._extract_logrecord_process_name,
-                args=(2, LOG_MULTI_PROCESSING, child_conn,)
+                args=(
+                    2,
+                    LOG_MULTI_PROCESSING,
+                    child_conn,
+                ),
             )
             p.start()
             results = parent_conn.recv()
-            self.assertNotEqual('MainProcess', results['processName'])
-            self.assertEqual(results['processName'], results['r1.processName'])
-            self.assertEqual('MainProcess', results['r2.processName'])
+            self.assertNotEqual("MainProcess", results["processName"])
+            self.assertEqual(results["processName"], results["r1.processName"])
+            self.assertEqual("MainProcess", results["r2.processName"])
             p.join()
 
         finally:
@@ -5037,7 +5269,9 @@ class LogRecordTest(BaseTest):
     def test_taskName_without_asyncio_imported(self):
         try:
             make_record = self._make_record_async
-            with asyncio.Runner() as runner, support.swap_item(sys.modules, 'asyncio', None):
+            with asyncio.Runner() as runner, support.swap_item(
+                sys.modules, "asyncio", None
+            ):
                 logging.logAsyncioTasks = True
                 runner.run(make_record(self.assertIsNone))
                 logging.logAsyncioTasks = False
@@ -5047,7 +5281,6 @@ class LogRecordTest(BaseTest):
 
 
 class BasicConfigTest(unittest.TestCase):
-
     """Test suite for logging.basicConfig."""
 
     def setUp(self):
@@ -5066,7 +5299,7 @@ class BasicConfigTest(unittest.TestCase):
         super(BasicConfigTest, self).tearDown()
 
     def cleanup(self):
-        setattr(logging.root, 'handlers', self.handlers)
+        setattr(logging.root, "handlers", self.handlers)
         logging._handlers.clear()
         logging._handlers.update(self.saved_handlers)
         logging._handlerList[:] = self.saved_handler_list
@@ -5097,16 +5330,14 @@ class BasicConfigTest(unittest.TestCase):
             logging.basicConfig(stream=sys.stdout, style="{")
             logging.error("Log an error")
             sys.stdout.seek(0)
-            self.assertEqual(output.getvalue().strip(),
-                "ERROR:root:Log an error")
+            self.assertEqual(output.getvalue().strip(), "ERROR:root:Log an error")
 
     def test_stringtemplatestyle(self):
         with support.captured_stdout() as output:
             logging.basicConfig(stream=sys.stdout, style="$")
             logging.error("Log an error")
             sys.stdout.seek(0)
-            self.assertEqual(output.getvalue().strip(),
-                "ERROR:root:Log an error")
+            self.assertEqual(output.getvalue().strip(), "ERROR:root:Log an error")
 
     def test_filename(self):
 
@@ -5115,16 +5346,16 @@ class BasicConfigTest(unittest.TestCase):
             h2.close()
             os.remove(fn)
 
-        logging.basicConfig(filename='test.log', encoding='utf-8')
+        logging.basicConfig(filename="test.log", encoding="utf-8")
 
         self.assertEqual(len(logging.root.handlers), 1)
         handler = logging.root.handlers[0]
         self.assertIsInstance(handler, logging.FileHandler)
 
-        expected = logging.FileHandler('test.log', 'a', encoding='utf-8')
+        expected = logging.FileHandler("test.log", "a", encoding="utf-8")
         self.assertEqual(handler.stream.mode, expected.stream.mode)
         self.assertEqual(handler.stream.name, expected.stream.name)
-        self.addCleanup(cleanup, handler, expected, 'test.log')
+        self.addCleanup(cleanup, handler, expected, "test.log")
 
     def test_filemode(self):
 
@@ -5133,12 +5364,12 @@ class BasicConfigTest(unittest.TestCase):
             h2.close()
             os.remove(fn)
 
-        logging.basicConfig(filename='test.log', filemode='wb')
+        logging.basicConfig(filename="test.log", filemode="wb")
 
         handler = logging.root.handlers[0]
-        expected = logging.FileHandler('test.log', 'wb')
+        expected = logging.FileHandler("test.log", "wb")
         self.assertEqual(handler.stream.mode, expected.stream.mode)
-        self.addCleanup(cleanup, handler, expected, 'test.log')
+        self.addCleanup(cleanup, handler, expected, "test.log")
 
     def test_stream(self):
         stream = io.StringIO()
@@ -5151,19 +5382,19 @@ class BasicConfigTest(unittest.TestCase):
         self.assertEqual(handler.stream, stream)
 
     def test_format(self):
-        logging.basicConfig(format='%(asctime)s - %(message)s')
+        logging.basicConfig(format="%(asctime)s - %(message)s")
 
         formatter = logging.root.handlers[0].formatter
-        self.assertEqual(formatter._style._fmt, '%(asctime)s - %(message)s')
+        self.assertEqual(formatter._style._fmt, "%(asctime)s - %(message)s")
 
     def test_datefmt(self):
-        logging.basicConfig(datefmt='bar')
+        logging.basicConfig(datefmt="bar")
 
         formatter = logging.root.handlers[0].formatter
-        self.assertEqual(formatter.datefmt, 'bar')
+        self.assertEqual(formatter.datefmt, "bar")
 
     def test_style(self):
-        logging.basicConfig(style='$')
+        logging.basicConfig(style="$")
 
         formatter = logging.root.handlers[0].formatter
         self.assertIsInstance(formatter._style, logging.StringTemplateStyle)
@@ -5182,16 +5413,17 @@ class BasicConfigTest(unittest.TestCase):
         assertRaises = self.assertRaises
         handlers = [logging.StreamHandler()]
         stream = sys.stderr
-        assertRaises(ValueError, logging.basicConfig, filename='test.log',
-                                                      stream=stream)
-        assertRaises(ValueError, logging.basicConfig, filename='test.log',
-                                                      handlers=handlers)
-        assertRaises(ValueError, logging.basicConfig, stream=stream,
-                                                      handlers=handlers)
+        assertRaises(
+            ValueError, logging.basicConfig, filename="test.log", stream=stream
+        )
+        assertRaises(
+            ValueError, logging.basicConfig, filename="test.log", handlers=handlers
+        )
+        assertRaises(ValueError, logging.basicConfig, stream=stream, handlers=handlers)
         # Issue 23207: test for invalid kwargs
         assertRaises(ValueError, logging.basicConfig, loglevel=logging.INFO)
         # Should pop both filename and filemode even if filename is None
-        logging.basicConfig(filename=None, filemode='a')
+        logging.basicConfig(filename=None, filemode="a")
 
     def test_handlers(self):
         handlers = [
@@ -5216,87 +5448,104 @@ class BasicConfigTest(unittest.TestCase):
         old_handlers = [logging.StreamHandler(old_string_io)]
         new_handlers = [logging.StreamHandler(new_string_io)]
         logging.basicConfig(level=logging.WARNING, handlers=old_handlers)
-        logging.warning('warn')
-        logging.info('info')
-        logging.debug('debug')
+        logging.warning("warn")
+        logging.info("info")
+        logging.debug("debug")
         self.assertEqual(len(logging.root.handlers), 1)
-        logging.basicConfig(level=logging.INFO, handlers=new_handlers,
-                            force=True)
-        logging.warning('warn')
-        logging.info('info')
-        logging.debug('debug')
+        logging.basicConfig(level=logging.INFO, handlers=new_handlers, force=True)
+        logging.warning("warn")
+        logging.info("info")
+        logging.debug("debug")
         self.assertEqual(len(logging.root.handlers), 1)
-        self.assertEqual(old_string_io.getvalue().strip(),
-                         'WARNING:root:warn')
-        self.assertEqual(new_string_io.getvalue().strip(),
-                         'WARNING:root:warn\nINFO:root:info')
+        self.assertEqual(old_string_io.getvalue().strip(), "WARNING:root:warn")
+        self.assertEqual(
+            new_string_io.getvalue().strip(), "WARNING:root:warn\nINFO:root:info"
+        )
 
     def test_encoding(self):
         try:
-            encoding = 'utf-8'
-            logging.basicConfig(filename='test.log', encoding=encoding,
-                                errors='strict',
-                                format='%(message)s', level=logging.DEBUG)
+            encoding = "utf-8"
+            logging.basicConfig(
+                filename="test.log",
+                encoding=encoding,
+                errors="strict",
+                format="%(message)s",
+                level=logging.DEBUG,
+            )
 
             self.assertEqual(len(logging.root.handlers), 1)
             handler = logging.root.handlers[0]
             self.assertIsInstance(handler, logging.FileHandler)
             self.assertEqual(handler.encoding, encoding)
-            logging.debug('The Øresund Bridge joins Copenhagen to Malmö')
+            logging.debug("The Øresund Bridge joins Copenhagen to Malmö")
         finally:
             handler.close()
-            with open('test.log', encoding='utf-8') as f:
+            with open("test.log", encoding="utf-8") as f:
                 data = f.read().strip()
-            os.remove('test.log')
-            self.assertEqual(data,
-                             'The Øresund Bridge joins Copenhagen to Malmö')
+            os.remove("test.log")
+            self.assertEqual(data, "The Øresund Bridge joins Copenhagen to Malmö")
 
     def test_encoding_errors(self):
         try:
-            encoding = 'ascii'
-            logging.basicConfig(filename='test.log', encoding=encoding,
-                                errors='ignore',
-                                format='%(message)s', level=logging.DEBUG)
+            encoding = "ascii"
+            logging.basicConfig(
+                filename="test.log",
+                encoding=encoding,
+                errors="ignore",
+                format="%(message)s",
+                level=logging.DEBUG,
+            )
 
             self.assertEqual(len(logging.root.handlers), 1)
             handler = logging.root.handlers[0]
             self.assertIsInstance(handler, logging.FileHandler)
             self.assertEqual(handler.encoding, encoding)
-            logging.debug('The Øresund Bridge joins Copenhagen to Malmö')
+            logging.debug("The Øresund Bridge joins Copenhagen to Malmö")
         finally:
             handler.close()
-            with open('test.log', encoding='utf-8') as f:
+            with open("test.log", encoding="utf-8") as f:
                 data = f.read().strip()
-            os.remove('test.log')
-            self.assertEqual(data, 'The resund Bridge joins Copenhagen to Malm')
+            os.remove("test.log")
+            self.assertEqual(data, "The resund Bridge joins Copenhagen to Malm")
 
     def test_encoding_errors_default(self):
         try:
-            encoding = 'ascii'
-            logging.basicConfig(filename='test.log', encoding=encoding,
-                                format='%(message)s', level=logging.DEBUG)
+            encoding = "ascii"
+            logging.basicConfig(
+                filename="test.log",
+                encoding=encoding,
+                format="%(message)s",
+                level=logging.DEBUG,
+            )
 
             self.assertEqual(len(logging.root.handlers), 1)
             handler = logging.root.handlers[0]
             self.assertIsInstance(handler, logging.FileHandler)
             self.assertEqual(handler.encoding, encoding)
-            self.assertEqual(handler.errors, 'backslashreplace')
-            logging.debug('😂: ☃️: The Øresund Bridge joins Copenhagen to Malmö')
+            self.assertEqual(handler.errors, "backslashreplace")
+            logging.debug("😂: ☃️: The Øresund Bridge joins Copenhagen to Malmö")
         finally:
             handler.close()
-            with open('test.log', encoding='utf-8') as f:
+            with open("test.log", encoding="utf-8") as f:
                 data = f.read().strip()
-            os.remove('test.log')
-            self.assertEqual(data, r'\U0001f602: \u2603\ufe0f: The \xd8resund '
-                                   r'Bridge joins Copenhagen to Malm\xf6')
+            os.remove("test.log")
+            self.assertEqual(
+                data,
+                r"\U0001f602: \u2603\ufe0f: The \xd8resund "
+                r"Bridge joins Copenhagen to Malm\xf6",
+            )
 
     def test_encoding_errors_none(self):
         # Specifying None should behave as 'strict'
         try:
-            encoding = 'ascii'
-            logging.basicConfig(filename='test.log', encoding=encoding,
-                                errors=None,
-                                format='%(message)s', level=logging.DEBUG)
+            encoding = "ascii"
+            logging.basicConfig(
+                filename="test.log",
+                encoding=encoding,
+                errors=None,
+                format="%(message)s",
+                level=logging.DEBUG,
+            )
 
             self.assertEqual(len(logging.root.handlers), 1)
             handler = logging.root.handlers[0]
@@ -5310,31 +5559,37 @@ class BasicConfigTest(unittest.TestCase):
                 message.append(str(sys.exception()))
 
             handler.handleError = dummy_handle_error
-            logging.debug('The Øresund Bridge joins Copenhagen to Malmö')
+            logging.debug("The Øresund Bridge joins Copenhagen to Malmö")
             self.assertTrue(message)
-            self.assertIn("'ascii' codec can't encode "
-                          "character '\\xd8' in position 4:", message[0])
+            self.assertIn(
+                "'ascii' codec can't encode " "character '\\xd8' in position 4:",
+                message[0],
+            )
         finally:
             handler.close()
-            with open('test.log', encoding='utf-8') as f:
+            with open("test.log", encoding="utf-8") as f:
                 data = f.read().strip()
-            os.remove('test.log')
+            os.remove("test.log")
             # didn't write anything due to the encoding error
-            self.assertEqual(data, r'')
+            self.assertEqual(data, r"")
 
     @support.requires_working_socket()
     def test_log_taskName(self):
         async def log_record():
-            logging.warning('hello world')
+            logging.warning("hello world")
 
         handler = None
-        log_filename = make_temp_file('.log', 'test-logging-taskname-')
+        log_filename = make_temp_file(".log", "test-logging-taskname-")
         self.addCleanup(os.remove, log_filename)
         try:
-            encoding = 'utf-8'
-            logging.basicConfig(filename=log_filename, errors='strict',
-                                encoding=encoding, level=logging.WARNING,
-                                format='%(taskName)s - %(message)s')
+            encoding = "utf-8"
+            logging.basicConfig(
+                filename=log_filename,
+                errors="strict",
+                encoding=encoding,
+                level=logging.WARNING,
+                format="%(taskName)s - %(message)s",
+            )
 
             self.assertEqual(len(logging.root.handlers), 1)
             handler = logging.root.handlers[0]
@@ -5343,20 +5598,20 @@ class BasicConfigTest(unittest.TestCase):
             with asyncio.Runner(debug=True) as runner:
                 logging.logAsyncioTasks = True
                 runner.run(log_record())
-            with open(log_filename, encoding='utf-8') as f:
+            with open(log_filename, encoding="utf-8") as f:
                 data = f.read().strip()
-            self.assertRegex(data, r'Task-\d+ - hello world')
+            self.assertRegex(data, r"Task-\d+ - hello world")
         finally:
             asyncio.set_event_loop_policy(None)
             if handler:
                 handler.close()
-
 
     def _test_log(self, method, level=None):
         # logging.root has no handlers so basicConfig should be called
         called = []
 
         old_basic_config = logging.basicConfig
+
         def my_basic_config(*a, **kw):
             old_basic_config()
             old_level = logging.root.level
@@ -5364,7 +5619,7 @@ class BasicConfigTest(unittest.TestCase):
             self.addCleanup(logging.root.setLevel, old_level)
             called.append((a, kw))
 
-        support.patch(self, logging, 'basicConfig', my_basic_config)
+        support.patch(self, logging, "basicConfig", my_basic_config)
 
         log_method = getattr(logging, method)
         if level is not None:
@@ -5376,22 +5631,22 @@ class BasicConfigTest(unittest.TestCase):
         self.assertEqual(called, [((), {})])
 
     def test_log(self):
-        self._test_log('log', logging.WARNING)
+        self._test_log("log", logging.WARNING)
 
     def test_debug(self):
-        self._test_log('debug')
+        self._test_log("debug")
 
     def test_info(self):
-        self._test_log('info')
+        self._test_log("info")
 
     def test_warning(self):
-        self._test_log('warning')
+        self._test_log("warning")
 
     def test_error(self):
-        self._test_log('error')
+        self._test_log("error")
 
     def test_critical(self):
-        self._test_log('critical')
+        self._test_log("critical")
 
 
 class LoggerAdapterTest(unittest.TestCase):
@@ -5413,7 +5668,7 @@ class LoggerAdapterTest(unittest.TestCase):
         self.adapter = logging.LoggerAdapter(logger=self.logger, extra=None)
 
     def test_exception(self):
-        msg = 'testing exception: %r'
+        msg = "testing exception: %r"
         exc = None
         try:
             1 / 0
@@ -5426,8 +5681,7 @@ class LoggerAdapterTest(unittest.TestCase):
         self.assertEqual(record.levelno, logging.ERROR)
         self.assertEqual(record.msg, msg)
         self.assertEqual(record.args, (self.recording,))
-        self.assertEqual(record.exc_info,
-                         (exc.__class__, exc, exc.__traceback__))
+        self.assertEqual(record.exc_info, (exc.__class__, exc, exc.__traceback__))
 
     def test_exception_excinfo(self):
         try:
@@ -5435,15 +5689,14 @@ class LoggerAdapterTest(unittest.TestCase):
         except ZeroDivisionError as e:
             exc = e
 
-        self.adapter.exception('exc_info test', exc_info=exc)
+        self.adapter.exception("exc_info test", exc_info=exc)
 
         self.assertEqual(len(self.recording.records), 1)
         record = self.recording.records[0]
-        self.assertEqual(record.exc_info,
-                         (exc.__class__, exc, exc.__traceback__))
+        self.assertEqual(record.exc_info, (exc.__class__, exc, exc.__traceback__))
 
     def test_critical(self):
-        msg = 'critical test! %r'
+        msg = "critical test! %r"
         self.adapter.critical(msg, self.recording)
 
         self.assertEqual(len(self.recording.records), 1)
@@ -5451,13 +5704,12 @@ class LoggerAdapterTest(unittest.TestCase):
         self.assertEqual(record.levelno, logging.CRITICAL)
         self.assertEqual(record.msg, msg)
         self.assertEqual(record.args, (self.recording,))
-        self.assertEqual(record.funcName, 'test_critical')
+        self.assertEqual(record.funcName, "test_critical")
 
     def test_is_enabled_for(self):
         old_disable = self.adapter.logger.manager.disable
         self.adapter.logger.manager.disable = 33
-        self.addCleanup(setattr, self.adapter.logger.manager, 'disable',
-                        old_disable)
+        self.addCleanup(setattr, self.adapter.logger.manager, "disable", old_disable)
         self.assertFalse(self.adapter.isEnabledFor(32))
 
     def test_has_handlers(self):
@@ -5470,10 +5722,10 @@ class LoggerAdapterTest(unittest.TestCase):
         self.assertFalse(self.adapter.hasHandlers())
 
     def test_nested(self):
-        msg = 'Adapters can be nested, yo.'
+        msg = "Adapters can be nested, yo."
         adapter = PrefixAdapter(logger=self.logger, extra=None)
         adapter_adapter = PrefixAdapter(logger=adapter, extra=None)
-        adapter_adapter.prefix = 'AdapterAdapter'
+        adapter_adapter.prefix = "AdapterAdapter"
         self.assertEqual(repr(adapter), repr(adapter_adapter))
         adapter_adapter.log(logging.CRITICAL, msg, self.recording)
         self.assertEqual(len(self.recording.records), 1)
@@ -5481,7 +5733,7 @@ class LoggerAdapterTest(unittest.TestCase):
         self.assertEqual(record.levelno, logging.CRITICAL)
         self.assertEqual(record.msg, f"Adapter AdapterAdapter {msg}")
         self.assertEqual(record.args, (self.recording,))
-        self.assertEqual(record.funcName, 'test_nested')
+        self.assertEqual(record.funcName, "test_nested")
         orig_manager = adapter_adapter.manager
         self.assertIs(adapter.manager, orig_manager)
         self.assertIs(self.logger.manager, orig_manager)
@@ -5501,31 +5753,31 @@ class LoggerAdapterTest(unittest.TestCase):
         # Test an example from the Cookbook.
         records = self.recording.records
         adapter = StyleAdapter(self.logger)
-        adapter.warning('Hello, {}!', 'world')
-        self.assertEqual(str(records[-1].msg), 'Hello, world!')
-        self.assertEqual(records[-1].funcName, 'test_styled_adapter')
-        adapter.log(logging.WARNING, 'Goodbye {}.', 'world')
-        self.assertEqual(str(records[-1].msg), 'Goodbye world.')
-        self.assertEqual(records[-1].funcName, 'test_styled_adapter')
+        adapter.warning("Hello, {}!", "world")
+        self.assertEqual(str(records[-1].msg), "Hello, world!")
+        self.assertEqual(records[-1].funcName, "test_styled_adapter")
+        adapter.log(logging.WARNING, "Goodbye {}.", "world")
+        self.assertEqual(str(records[-1].msg), "Goodbye world.")
+        self.assertEqual(records[-1].funcName, "test_styled_adapter")
 
     def test_nested_styled_adapter(self):
         records = self.recording.records
         adapter = PrefixAdapter(self.logger)
-        adapter.prefix = '{}'
+        adapter.prefix = "{}"
         adapter2 = StyleAdapter(adapter)
-        adapter2.warning('Hello, {}!', 'world')
-        self.assertEqual(str(records[-1].msg), '{} Hello, world!')
-        self.assertEqual(records[-1].funcName, 'test_nested_styled_adapter')
-        adapter2.log(logging.WARNING, 'Goodbye {}.', 'world')
-        self.assertEqual(str(records[-1].msg), '{} Goodbye world.')
-        self.assertEqual(records[-1].funcName, 'test_nested_styled_adapter')
+        adapter2.warning("Hello, {}!", "world")
+        self.assertEqual(str(records[-1].msg), "{} Hello, world!")
+        self.assertEqual(records[-1].funcName, "test_nested_styled_adapter")
+        adapter2.log(logging.WARNING, "Goodbye {}.", "world")
+        self.assertEqual(str(records[-1].msg), "{} Goodbye world.")
+        self.assertEqual(records[-1].funcName, "test_nested_styled_adapter")
 
     def test_find_caller_with_stacklevel(self):
         the_level = 1
         trigger = self.adapter.warning
 
         def innermost():
-            trigger('test', stacklevel=the_level)
+            trigger("test", stacklevel=the_level)
 
         def inner():
             innermost()
@@ -5535,42 +5787,41 @@ class LoggerAdapterTest(unittest.TestCase):
 
         records = self.recording.records
         outer()
-        self.assertEqual(records[-1].funcName, 'innermost')
+        self.assertEqual(records[-1].funcName, "innermost")
         lineno = records[-1].lineno
         the_level += 1
         outer()
-        self.assertEqual(records[-1].funcName, 'inner')
+        self.assertEqual(records[-1].funcName, "inner")
         self.assertGreater(records[-1].lineno, lineno)
         lineno = records[-1].lineno
         the_level += 1
         outer()
-        self.assertEqual(records[-1].funcName, 'outer')
+        self.assertEqual(records[-1].funcName, "outer")
         self.assertGreater(records[-1].lineno, lineno)
         lineno = records[-1].lineno
         the_level += 1
         outer()
-        self.assertEqual(records[-1].funcName, 'test_find_caller_with_stacklevel')
+        self.assertEqual(records[-1].funcName, "test_find_caller_with_stacklevel")
         self.assertGreater(records[-1].lineno, lineno)
 
     def test_extra_in_records(self):
-        self.adapter = logging.LoggerAdapter(logger=self.logger,
-                                             extra={'foo': '1'})
+        self.adapter = logging.LoggerAdapter(logger=self.logger, extra={"foo": "1"})
 
-        self.adapter.critical('foo should be here')
+        self.adapter.critical("foo should be here")
         self.assertEqual(len(self.recording.records), 1)
         record = self.recording.records[0]
-        self.assertTrue(hasattr(record, 'foo'))
-        self.assertEqual(record.foo, '1')
+        self.assertTrue(hasattr(record, "foo"))
+        self.assertEqual(record.foo, "1")
 
     def test_extra_not_merged_by_default(self):
-        self.adapter.critical('foo should NOT be here', extra={'foo': 'nope'})
+        self.adapter.critical("foo should NOT be here", extra={"foo": "nope"})
         self.assertEqual(len(self.recording.records), 1)
         record = self.recording.records[0]
-        self.assertFalse(hasattr(record, 'foo'))
+        self.assertFalse(hasattr(record, "foo"))
 
 
 class PrefixAdapter(logging.LoggerAdapter):
-    prefix = 'Adapter'
+    prefix = "Adapter"
 
     def process(self, msg, kwargs):
         return f"{self.prefix} {msg}", kwargs
@@ -5589,8 +5840,9 @@ class StyleAdapter(logging.LoggerAdapter):
     def log(self, level, msg, /, *args, stacklevel=1, **kwargs):
         if self.isEnabledFor(level):
             msg, kwargs = self.process(msg, kwargs)
-            self.logger.log(level, Message(msg, args), **kwargs,
-                            stacklevel=stacklevel+1)
+            self.logger.log(
+                level, Message(msg, args), **kwargs, stacklevel=stacklevel + 1
+            )
 
 
 class LoggerTest(BaseTest, AssertErrorMessage):
@@ -5598,7 +5850,7 @@ class LoggerTest(BaseTest, AssertErrorMessage):
     def setUp(self):
         super(LoggerTest, self).setUp()
         self.recording = RecordingHandler()
-        self.logger = logging.Logger(name='blah')
+        self.logger = logging.Logger(name="blah")
         self.logger.addHandler(self.recording)
         self.addCleanup(self.logger.removeHandler, self.recording)
         self.addCleanup(self.recording.close)
@@ -5606,14 +5858,20 @@ class LoggerTest(BaseTest, AssertErrorMessage):
 
     def test_set_invalid_level(self):
         self.assert_error_message(
-            TypeError, 'Level not an integer or a valid string: None',
-            self.logger.setLevel, None)
+            TypeError,
+            "Level not an integer or a valid string: None",
+            self.logger.setLevel,
+            None,
+        )
         self.assert_error_message(
-            TypeError, 'Level not an integer or a valid string: (0, 0)',
-            self.logger.setLevel, (0, 0))
+            TypeError,
+            "Level not an integer or a valid string: (0, 0)",
+            self.logger.setLevel,
+            (0, 0),
+        )
 
     def test_exception(self):
-        msg = 'testing exception: %r'
+        msg = "testing exception: %r"
         exc = None
         try:
             1 / 0
@@ -5626,33 +5884,36 @@ class LoggerTest(BaseTest, AssertErrorMessage):
         self.assertEqual(record.levelno, logging.ERROR)
         self.assertEqual(record.msg, msg)
         self.assertEqual(record.args, (self.recording,))
-        self.assertEqual(record.exc_info,
-                         (exc.__class__, exc, exc.__traceback__))
+        self.assertEqual(record.exc_info, (exc.__class__, exc, exc.__traceback__))
 
     def test_log_invalid_level_with_raise(self):
-        with support.swap_attr(logging, 'raiseExceptions', True):
-            self.assertRaises(TypeError, self.logger.log, '10', 'test message')
+        with support.swap_attr(logging, "raiseExceptions", True):
+            self.assertRaises(TypeError, self.logger.log, "10", "test message")
 
     def test_log_invalid_level_no_raise(self):
-        with support.swap_attr(logging, 'raiseExceptions', False):
-            self.logger.log('10', 'test message')  # no exception happens
+        with support.swap_attr(logging, "raiseExceptions", False):
+            self.logger.log("10", "test message")  # no exception happens
 
     def test_find_caller_with_stack_info(self):
         called = []
-        support.patch(self, logging.traceback, 'print_stack',
-                      lambda f, file: called.append(file.getvalue()))
+        support.patch(
+            self,
+            logging.traceback,
+            "print_stack",
+            lambda f, file: called.append(file.getvalue()),
+        )
 
         self.logger.findCaller(stack_info=True)
 
         self.assertEqual(len(called), 1)
-        self.assertEqual('Stack (most recent call last):\n', called[0])
+        self.assertEqual("Stack (most recent call last):\n", called[0])
 
     def test_find_caller_with_stacklevel(self):
         the_level = 1
         trigger = self.logger.warning
 
         def innermost():
-            trigger('test', stacklevel=the_level)
+            trigger("test", stacklevel=the_level)
 
         def inner():
             innermost()
@@ -5662,51 +5923,63 @@ class LoggerTest(BaseTest, AssertErrorMessage):
 
         records = self.recording.records
         outer()
-        self.assertEqual(records[-1].funcName, 'innermost')
+        self.assertEqual(records[-1].funcName, "innermost")
         lineno = records[-1].lineno
         the_level += 1
         outer()
-        self.assertEqual(records[-1].funcName, 'inner')
+        self.assertEqual(records[-1].funcName, "inner")
         self.assertGreater(records[-1].lineno, lineno)
         lineno = records[-1].lineno
         the_level += 1
         outer()
-        self.assertEqual(records[-1].funcName, 'outer')
+        self.assertEqual(records[-1].funcName, "outer")
         self.assertGreater(records[-1].lineno, lineno)
         lineno = records[-1].lineno
         root_logger = logging.getLogger()
         root_logger.addHandler(self.recording)
         trigger = logging.warning
         outer()
-        self.assertEqual(records[-1].funcName, 'outer')
+        self.assertEqual(records[-1].funcName, "outer")
         root_logger.removeHandler(self.recording)
         trigger = self.logger.warning
         the_level += 1
         outer()
-        self.assertEqual(records[-1].funcName, 'test_find_caller_with_stacklevel')
+        self.assertEqual(records[-1].funcName, "test_find_caller_with_stacklevel")
         self.assertGreater(records[-1].lineno, lineno)
 
     def test_make_record_with_extra_overwrite(self):
-        name = 'my record'
+        name = "my record"
         level = 13
         fn = lno = msg = args = exc_info = func = sinfo = None
-        rv = logging._logRecordFactory(name, level, fn, lno, msg, args,
-                                       exc_info, func, sinfo)
+        rv = logging._logRecordFactory(
+            name, level, fn, lno, msg, args, exc_info, func, sinfo
+        )
 
-        for key in ('message', 'asctime') + tuple(rv.__dict__.keys()):
-            extra = {key: 'some value'}
-            self.assertRaises(KeyError, self.logger.makeRecord, name, level,
-                              fn, lno, msg, args, exc_info,
-                              extra=extra, sinfo=sinfo)
+        for key in ("message", "asctime") + tuple(rv.__dict__.keys()):
+            extra = {key: "some value"}
+            self.assertRaises(
+                KeyError,
+                self.logger.makeRecord,
+                name,
+                level,
+                fn,
+                lno,
+                msg,
+                args,
+                exc_info,
+                extra=extra,
+                sinfo=sinfo,
+            )
 
     def test_make_record_with_extra_no_overwrite(self):
-        name = 'my record'
+        name = "my record"
         level = 13
         fn = lno = msg = args = exc_info = func = sinfo = None
-        extra = {'valid_key': 'some value'}
-        result = self.logger.makeRecord(name, level, fn, lno, msg, args,
-                                        exc_info, extra=extra, sinfo=sinfo)
-        self.assertIn('valid_key', result.__dict__)
+        extra = {"valid_key": "some value"}
+        result = self.logger.makeRecord(
+            name, level, fn, lno, msg, args, exc_info, extra=extra, sinfo=sinfo
+        )
+        self.assertIn("valid_key", result.__dict__)
 
     def test_has_handlers(self):
         self.assertTrue(self.logger.hasHandlers())
@@ -5716,14 +5989,14 @@ class LoggerTest(BaseTest, AssertErrorMessage):
         self.assertFalse(self.logger.hasHandlers())
 
     def test_has_handlers_no_propagate(self):
-        child_logger = logging.getLogger('blah.child')
+        child_logger = logging.getLogger("blah.child")
         child_logger.propagate = False
         self.assertFalse(child_logger.hasHandlers())
 
     def test_is_enabled_for(self):
         old_disable = self.logger.manager.disable
         self.logger.manager.disable = 23
-        self.addCleanup(setattr, self.logger.manager, 'disable', old_disable)
+        self.addCleanup(setattr, self.logger.manager, "disable", old_disable)
         self.assertFalse(self.logger.isEnabledFor(22))
 
     def test_is_enabled_for_disabled_logger(self):
@@ -5733,8 +6006,8 @@ class LoggerTest(BaseTest, AssertErrorMessage):
         self.logger.disabled = True
         self.logger.manager.disable = 21
 
-        self.addCleanup(setattr, self.logger, 'disabled', old_disabled)
-        self.addCleanup(setattr, self.logger.manager, 'disable', old_disable)
+        self.addCleanup(setattr, self.logger, "disabled", old_disabled)
+        self.addCleanup(setattr, self.logger.manager, "disable", old_disable)
 
         self.assertFalse(self.logger.isEnabledFor(22))
 
@@ -5742,22 +6015,22 @@ class LoggerTest(BaseTest, AssertErrorMessage):
         root = logging.getLogger()
         self.assertIs(root, logging.root)
         self.assertIs(root, logging.getLogger(None))
-        self.assertIs(root, logging.getLogger(''))
-        self.assertIs(root, logging.getLogger('root'))
-        self.assertIs(root, logging.getLogger('foo').root)
-        self.assertIs(root, logging.getLogger('foo.bar').root)
-        self.assertIs(root, logging.getLogger('foo').parent)
+        self.assertIs(root, logging.getLogger(""))
+        self.assertIs(root, logging.getLogger("root"))
+        self.assertIs(root, logging.getLogger("foo").root)
+        self.assertIs(root, logging.getLogger("foo.bar").root)
+        self.assertIs(root, logging.getLogger("foo").parent)
 
-        self.assertIsNot(root, logging.getLogger('\0'))
-        self.assertIsNot(root, logging.getLogger('foo.bar').parent)
+        self.assertIsNot(root, logging.getLogger("\0"))
+        self.assertIsNot(root, logging.getLogger("foo.bar").parent)
 
     def test_invalid_names(self):
         self.assertRaises(TypeError, logging.getLogger, any)
-        self.assertRaises(TypeError, logging.getLogger, b'foo')
+        self.assertRaises(TypeError, logging.getLogger, b"foo")
 
     def test_pickling(self):
         for proto in range(pickle.HIGHEST_PROTOCOL + 1):
-            for name in ('', 'root', 'foo', 'foo.bar', 'baz.bar'):
+            for name in ("", "root", "foo", "foo.bar", "baz.bar"):
                 logger = logging.getLogger(name)
                 s = pickle.dumps(logger, proto)
                 unpickled = pickle.loads(s)
@@ -5837,18 +6110,21 @@ class BaseFileTest(BaseTest):
 
     def assertLogFile(self, filename):
         "Assert a log file is there and register it for deletion"
-        self.assertTrue(os.path.exists(filename),
-                        msg="Log file %r does not exist" % filename)
+        self.assertTrue(
+            os.path.exists(filename), msg="Log file %r does not exist" % filename
+        )
         self.rmfiles.append(filename)
 
     def next_rec(self):
-        return logging.LogRecord('n', logging.DEBUG, 'p', 1,
-                                 self.next_message(), None, None, None)
+        return logging.LogRecord(
+            "n", logging.DEBUG, "p", 1, self.next_message(), None, None, None
+        )
+
 
 class FileHandlerTest(BaseFileTest):
     def test_delay(self):
         os.unlink(self.fn)
-        fh = logging.FileHandler(self.fn, encoding='utf-8', delay=True)
+        fh = logging.FileHandler(self.fn, encoding="utf-8", delay=True)
         self.assertIsNone(fh.stream)
         self.assertFalse(os.path.exists(self.fn))
         fh.handle(logging.makeLogRecord({}))
@@ -5859,27 +6135,28 @@ class FileHandlerTest(BaseFileTest):
     def test_emit_after_closing_in_write_mode(self):
         # Issue #42378
         os.unlink(self.fn)
-        fh = logging.FileHandler(self.fn, encoding='utf-8', mode='w')
-        fh.setFormatter(logging.Formatter('%(message)s'))
-        fh.emit(self.next_rec())    # '1'
+        fh = logging.FileHandler(self.fn, encoding="utf-8", mode="w")
+        fh.setFormatter(logging.Formatter("%(message)s"))
+        fh.emit(self.next_rec())  # '1'
         fh.close()
-        fh.emit(self.next_rec())    # '2'
+        fh.emit(self.next_rec())  # '2'
         with open(self.fn) as fp:
-            self.assertEqual(fp.read().strip(), '1')
+            self.assertEqual(fp.read().strip(), "1")
+
 
 class RotatingFileHandlerTest(BaseFileTest):
     @unittest.skipIf(support.is_wasi, "WASI does not have /dev/null.")
     def test_should_not_rollover(self):
         # If maxbytes is zero rollover never occurs
-        rh = logging.handlers.RotatingFileHandler(
-                self.fn, encoding="utf-8", maxBytes=0)
+        rh = logging.handlers.RotatingFileHandler(self.fn, encoding="utf-8", maxBytes=0)
         self.assertFalse(rh.shouldRollover(None))
         rh.close()
         # bpo-45401 - test with special file
         # We set maxBytes to 1 so that rollover would normally happen, except
         # for the check for regular files
         rh = logging.handlers.RotatingFileHandler(
-                os.devnull, encoding="utf-8", maxBytes=1)
+            os.devnull, encoding="utf-8", maxBytes=1
+        )
         self.assertFalse(rh.shouldRollover(self.next_rec()))
         rh.close()
 
@@ -5899,8 +6176,10 @@ class RotatingFileHandlerTest(BaseFileTest):
     def test_rollover_filenames(self):
         def namer(name):
             return name + ".test"
+
         rh = logging.handlers.RotatingFileHandler(
-            self.fn, encoding="utf-8", backupCount=2, maxBytes=1)
+            self.fn, encoding="utf-8", backupCount=2, maxBytes=1
+        )
         rh.namer = namer
         rh.emit(self.next_rec())
         self.assertLogFile(self.fn)
@@ -5921,7 +6200,8 @@ class RotatingFileHandlerTest(BaseFileTest):
                     os.replace(source, dest + ".rotated")
 
         rh = HandlerWithNamerAndRotator(
-            self.fn, encoding="utf-8", backupCount=2, maxBytes=1)
+            self.fn, encoding="utf-8", backupCount=2, maxBytes=1
+        )
         self.assertEqual(rh.namer(self.fn), self.fn + ".test")
         rh.emit(self.next_rec())
         self.assertLogFile(self.fn)
@@ -5944,7 +6224,8 @@ class RotatingFileHandlerTest(BaseFileTest):
             os.remove(source)
 
         rh = logging.handlers.RotatingFileHandler(
-            self.fn, encoding="utf-8", backupCount=2, maxBytes=1)
+            self.fn, encoding="utf-8", backupCount=2, maxBytes=1
+        )
         rh.rotator = rotator
         rh.namer = namer
         m1 = self.next_rec()
@@ -5975,28 +6256,31 @@ class RotatingFileHandlerTest(BaseFileTest):
         self.assertFalse(os.path.exists(namer(self.fn + ".3")))
         rh.close()
 
+
 class TimedRotatingFileHandlerTest(BaseFileTest):
     @unittest.skipIf(support.is_wasi, "WASI does not have /dev/null.")
     def test_should_not_rollover(self):
         # See bpo-45401. Should only ever rollover regular files
         fh = logging.handlers.TimedRotatingFileHandler(
-                os.devnull, 'S', encoding="utf-8", backupCount=1)
-        time.sleep(1.1)    # a little over a second ...
-        r = logging.makeLogRecord({'msg': 'testing - device file'})
+            os.devnull, "S", encoding="utf-8", backupCount=1
+        )
+        time.sleep(1.1)  # a little over a second ...
+        r = logging.makeLogRecord({"msg": "testing - device file"})
         self.assertFalse(fh.shouldRollover(r))
         fh.close()
 
     # other test methods added below
     def test_rollover(self):
         fh = logging.handlers.TimedRotatingFileHandler(
-                self.fn, 'S', encoding="utf-8", backupCount=1)
-        fmt = logging.Formatter('%(asctime)s %(message)s')
+            self.fn, "S", encoding="utf-8", backupCount=1
+        )
+        fmt = logging.Formatter("%(asctime)s %(message)s")
         fh.setFormatter(fmt)
-        r1 = logging.makeLogRecord({'msg': 'testing - initial'})
+        r1 = logging.makeLogRecord({"msg": "testing - initial"})
         fh.emit(r1)
         self.assertLogFile(self.fn)
-        time.sleep(1.1)    # a little over a second ...
-        r2 = logging.makeLogRecord({'msg': 'testing - after delay'})
+        time.sleep(1.1)  # a little over a second ...
+        r2 = logging.makeLogRecord({"msg": "testing - after delay"})
         fh.emit(r2)
         fh.close()
         # At this point, we should have a recent rotated file which we
@@ -6007,7 +6291,7 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         # could of course still fail, but the chances are lower.
         found = False
         now = datetime.datetime.now()
-        GO_BACK = 5 * 60 # seconds
+        GO_BACK = 5 * 60  # seconds
         for secs in range(GO_BACK):
             prev = now - datetime.timedelta(seconds=secs)
             fn = self.fn + prev.strftime(".%Y-%m-%d_%H-%M-%S")
@@ -6015,17 +6299,17 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
             if found:
                 self.rmfiles.append(fn)
                 break
-        msg = 'No rotated files found, went back %d seconds' % GO_BACK
+        msg = "No rotated files found, went back %d seconds" % GO_BACK
         if not found:
             # print additional diagnostics
             dn, fn = os.path.split(self.fn)
             files = [f for f in os.listdir(dn) if f.startswith(fn)]
-            print('Test time: %s' % now.strftime("%Y-%m-%d %H-%M-%S"), file=sys.stderr)
-            print('The only matching files are: %s' % files, file=sys.stderr)
+            print("Test time: %s" % now.strftime("%Y-%m-%d %H-%M-%S"), file=sys.stderr)
+            print("The only matching files are: %s" % files, file=sys.stderr)
             for f in files:
-                print('Contents of %s:' % f)
+                print("Contents of %s:" % f)
                 path = os.path.join(dn, f)
-                with open(path, 'r') as tf:
+                with open(path, "r") as tf:
                     print(tf.read())
         self.assertTrue(found, msg=msg)
 
@@ -6033,63 +6317,83 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         os_helper.unlink(self.fn)
         now = datetime.datetime.now()
         atTime = now.time()
-        if not 0.1 < atTime.microsecond/1e6 < 0.9:
+        if not 0.1 < atTime.microsecond / 1e6 < 0.9:
             # The test requires all records to be emitted within
             # the range of the same whole second.
-            time.sleep((0.1 - atTime.microsecond/1e6) % 1.0)
+            time.sleep((0.1 - atTime.microsecond / 1e6) % 1.0)
             now = datetime.datetime.now()
             atTime = now.time()
         atTime = atTime.replace(microsecond=0)
-        fmt = logging.Formatter('%(asctime)s %(message)s')
-        when = f'W{now.weekday()}' if weekly else 'MIDNIGHT'
+        fmt = logging.Formatter("%(asctime)s %(message)s")
+        when = f"W{now.weekday()}" if weekly else "MIDNIGHT"
         for i in range(3):
             fh = logging.handlers.TimedRotatingFileHandler(
-                self.fn, encoding="utf-8", when=when, atTime=atTime)
+                self.fn, encoding="utf-8", when=when, atTime=atTime
+            )
             fh.setFormatter(fmt)
-            r2 = logging.makeLogRecord({'msg': f'testing1 {i}'})
+            r2 = logging.makeLogRecord({"msg": f"testing1 {i}"})
             fh.emit(r2)
             fh.close()
         self.assertLogFile(self.fn)
         with open(self.fn, encoding="utf-8") as f:
             for i, line in enumerate(f):
-                self.assertIn(f'testing1 {i}', line)
+                self.assertIn(f"testing1 {i}", line)
 
-        os.utime(self.fn, (now.timestamp() - 1,)*2)
+        os.utime(self.fn, (now.timestamp() - 1,) * 2)
         for i in range(2):
             fh = logging.handlers.TimedRotatingFileHandler(
-                self.fn, encoding="utf-8", when=when, atTime=atTime)
+                self.fn, encoding="utf-8", when=when, atTime=atTime
+            )
             fh.setFormatter(fmt)
-            r2 = logging.makeLogRecord({'msg': f'testing2 {i}'})
+            r2 = logging.makeLogRecord({"msg": f"testing2 {i}"})
             fh.emit(r2)
             fh.close()
         rolloverDate = now - datetime.timedelta(days=7 if weekly else 1)
-        otherfn = f'{self.fn}.{rolloverDate:%Y-%m-%d}'
+        otherfn = f"{self.fn}.{rolloverDate:%Y-%m-%d}"
         self.assertLogFile(otherfn)
         with open(self.fn, encoding="utf-8") as f:
             for i, line in enumerate(f):
-                self.assertIn(f'testing2 {i}', line)
+                self.assertIn(f"testing2 {i}", line)
         with open(otherfn, encoding="utf-8") as f:
             for i, line in enumerate(f):
-                self.assertIn(f'testing1 {i}', line)
+                self.assertIn(f"testing1 {i}", line)
 
     def test_rollover_at_weekday(self):
         self.test_rollover_at_midnight(weekly=True)
 
     def test_invalid(self):
         assertRaises = self.assertRaises
-        assertRaises(ValueError, logging.handlers.TimedRotatingFileHandler,
-                     self.fn, 'X', encoding="utf-8", delay=True)
-        assertRaises(ValueError, logging.handlers.TimedRotatingFileHandler,
-                     self.fn, 'W', encoding="utf-8", delay=True)
-        assertRaises(ValueError, logging.handlers.TimedRotatingFileHandler,
-                     self.fn, 'W7', encoding="utf-8", delay=True)
+        assertRaises(
+            ValueError,
+            logging.handlers.TimedRotatingFileHandler,
+            self.fn,
+            "X",
+            encoding="utf-8",
+            delay=True,
+        )
+        assertRaises(
+            ValueError,
+            logging.handlers.TimedRotatingFileHandler,
+            self.fn,
+            "W",
+            encoding="utf-8",
+            delay=True,
+        )
+        assertRaises(
+            ValueError,
+            logging.handlers.TimedRotatingFileHandler,
+            self.fn,
+            "W7",
+            encoding="utf-8",
+            delay=True,
+        )
 
     # TODO: Test for utc=False.
     def test_compute_rollover_daily_attime(self):
         currentTime = 0
         rh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='MIDNIGHT',
-            utc=True, atTime=None)
+            self.fn, encoding="utf-8", when="MIDNIGHT", utc=True, atTime=None
+        )
         try:
             actual = rh.computeRollover(currentTime)
             self.assertEqual(actual, currentTime + 24 * 60 * 60)
@@ -6107,8 +6411,8 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
 
         atTime = datetime.time(12, 0, 0)
         rh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='MIDNIGHT',
-            utc=True, atTime=atTime)
+            self.fn, encoding="utf-8", when="MIDNIGHT", utc=True, atTime=atTime
+        )
         try:
             actual = rh.computeRollover(currentTime)
             self.assertEqual(actual, currentTime + 12 * 60 * 60)
@@ -6134,15 +6438,21 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         wday = time.gmtime(today).tm_wday
         for day in range(7):
             rh = logging.handlers.TimedRotatingFileHandler(
-                self.fn, encoding="utf-8", when='W%d' % day, interval=1, backupCount=0,
-                utc=True, atTime=atTime)
+                self.fn,
+                encoding="utf-8",
+                when="W%d" % day,
+                interval=1,
+                backupCount=0,
+                utc=True,
+                atTime=atTime,
+            )
             try:
                 if wday > day:
                     # The rollover day has already passed this week, so we
                     # go over into next week
-                    expected = (7 - wday + day)
+                    expected = 7 - wday + day
                 else:
-                    expected = (day - wday)
+                    expected = day - wday
                 # At this point expected is in days from now, convert to seconds
                 expected *= 24 * 60 * 60
                 # Add in the rollover time
@@ -6152,14 +6462,14 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
 
                 actual = rh.computeRollover(today)
                 if actual != expected:
-                    print('failed in timezone: %d' % time.timezone)
-                    print('local vars: %s' % locals())
+                    print("failed in timezone: %d" % time.timezone)
+                    print("local vars: %s" % locals())
                 self.assertEqual(actual, expected)
 
                 actual = rh.computeRollover(today + 12 * 60 * 60 - 1)
                 if actual != expected:
-                    print('failed in timezone: %d' % time.timezone)
-                    print('local vars: %s' % locals())
+                    print("failed in timezone: %d" % time.timezone)
+                    print("local vars: %s" % locals())
                 self.assertEqual(actual, expected)
 
                 if day == wday:
@@ -6167,129 +6477,133 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
                     expected += 7 * 24 * 60 * 60
                 actual = rh.computeRollover(today + 12 * 60 * 60)
                 if actual != expected:
-                    print('failed in timezone: %d' % time.timezone)
-                    print('local vars: %s' % locals())
+                    print("failed in timezone: %d" % time.timezone)
+                    print("local vars: %s" % locals())
                 self.assertEqual(actual, expected)
 
                 actual = rh.computeRollover(today + 13 * 60 * 60)
                 if actual != expected:
-                    print('failed in timezone: %d' % time.timezone)
-                    print('local vars: %s' % locals())
+                    print("failed in timezone: %d" % time.timezone)
+                    print("local vars: %s" % locals())
                 self.assertEqual(actual, expected)
             finally:
                 rh.close()
 
     def test_compute_files_to_delete(self):
         # See bpo-46063 for background
-        wd = tempfile.mkdtemp(prefix='test_logging_')
+        wd = tempfile.mkdtemp(prefix="test_logging_")
         self.addCleanup(shutil.rmtree, wd)
         times = []
         dt = datetime.datetime.now()
         for i in range(10):
-            times.append(dt.strftime('%Y-%m-%d_%H-%M-%S'))
+            times.append(dt.strftime("%Y-%m-%d_%H-%M-%S"))
             dt += datetime.timedelta(seconds=5)
-        prefixes = ('a.b', 'a.b.c', 'd.e', 'd.e.f', 'g')
+        prefixes = ("a.b", "a.b.c", "d.e", "d.e.f", "g")
         files = []
         rotators = []
         for prefix in prefixes:
-            p = os.path.join(wd, '%s.log' % prefix)
-            rotator = logging.handlers.TimedRotatingFileHandler(p, when='s',
-                                                                interval=5,
-                                                                backupCount=7,
-                                                                delay=True)
+            p = os.path.join(wd, "%s.log" % prefix)
+            rotator = logging.handlers.TimedRotatingFileHandler(
+                p, when="s", interval=5, backupCount=7, delay=True
+            )
             rotators.append(rotator)
-            if prefix.startswith('a.b'):
+            if prefix.startswith("a.b"):
                 for t in times:
-                    files.append('%s.log.%s' % (prefix, t))
-            elif prefix.startswith('d.e'):
+                    files.append("%s.log.%s" % (prefix, t))
+            elif prefix.startswith("d.e"):
+
                 def namer(filename):
                     dirname, basename = os.path.split(filename)
-                    basename = basename.replace('.log', '') + '.log'
+                    basename = basename.replace(".log", "") + ".log"
                     return os.path.join(dirname, basename)
+
                 rotator.namer = namer
                 for t in times:
-                    files.append('%s.%s.log' % (prefix, t))
-            elif prefix == 'g':
+                    files.append("%s.%s.log" % (prefix, t))
+            elif prefix == "g":
+
                 def namer(filename):
                     dirname, basename = os.path.split(filename)
-                    basename = 'g' + basename[6:] + '.oldlog'
+                    basename = "g" + basename[6:] + ".oldlog"
                     return os.path.join(dirname, basename)
+
                 rotator.namer = namer
                 for t in times:
-                    files.append('g%s.oldlog' % t)
+                    files.append("g%s.oldlog" % t)
         # Create empty files
         for fn in files:
             p = os.path.join(wd, fn)
-            with open(p, 'wb') as f:
+            with open(p, "wb") as f:
                 pass
         # Now the checks that only the correct files are offered up for deletion
         for i, prefix in enumerate(prefixes):
             rotator = rotators[i]
             candidates = rotator.getFilesToDelete()
             self.assertEqual(len(candidates), 3, candidates)
-            if prefix.startswith('a.b'):
-                p = '%s.log.' % prefix
+            if prefix.startswith("a.b"):
+                p = "%s.log." % prefix
                 for c in candidates:
                     d, fn = os.path.split(c)
                     self.assertTrue(fn.startswith(p))
-            elif prefix.startswith('d.e'):
+            elif prefix.startswith("d.e"):
                 for c in candidates:
                     d, fn = os.path.split(c)
-                    self.assertTrue(fn.endswith('.log'), fn)
-                    self.assertTrue(fn.startswith(prefix + '.') and
-                                    fn[len(prefix) + 2].isdigit())
-            elif prefix == 'g':
+                    self.assertTrue(fn.endswith(".log"), fn)
+                    self.assertTrue(
+                        fn.startswith(prefix + ".") and fn[len(prefix) + 2].isdigit()
+                    )
+            elif prefix == "g":
                 for c in candidates:
                     d, fn = os.path.split(c)
-                    self.assertTrue(fn.endswith('.oldlog'))
-                    self.assertTrue(fn.startswith('g') and fn[1].isdigit())
+                    self.assertTrue(fn.endswith(".oldlog"))
+                    self.assertTrue(fn.startswith("g") and fn[1].isdigit())
 
     def test_compute_files_to_delete_same_filename_different_extensions(self):
         # See GH-93205 for background
-        wd = pathlib.Path(tempfile.mkdtemp(prefix='test_logging_'))
+        wd = pathlib.Path(tempfile.mkdtemp(prefix="test_logging_"))
         self.addCleanup(shutil.rmtree, wd)
         times = []
         dt = datetime.datetime.now()
         n_files = 10
         for _ in range(n_files):
-            times.append(dt.strftime('%Y-%m-%d_%H-%M-%S'))
+            times.append(dt.strftime("%Y-%m-%d_%H-%M-%S"))
             dt += datetime.timedelta(seconds=5)
-        prefixes = ('a.log', 'a.log.b')
+        prefixes = ("a.log", "a.log.b")
         files = []
         rotators = []
         for i, prefix in enumerate(prefixes):
-            backupCount = i+1
-            rotator = logging.handlers.TimedRotatingFileHandler(wd / prefix, when='s',
-                                                                interval=5,
-                                                                backupCount=backupCount,
-                                                                delay=True)
+            backupCount = i + 1
+            rotator = logging.handlers.TimedRotatingFileHandler(
+                wd / prefix, when="s", interval=5, backupCount=backupCount, delay=True
+            )
             rotators.append(rotator)
             for t in times:
-                files.append('%s.%s' % (prefix, t))
+                files.append("%s.%s" % (prefix, t))
         for t in times:
-            files.append('a.log.%s.c' % t)
+            files.append("a.log.%s.c" % t)
         # Create empty files
         for f in files:
             (wd / f).touch()
         # Now the checks that only the correct files are offered up for deletion
         for i, prefix in enumerate(prefixes):
-            backupCount = i+1
+            backupCount = i + 1
             rotator = rotators[i]
             candidates = rotator.getFilesToDelete()
             self.assertEqual(len(candidates), n_files - backupCount, candidates)
             matcher = re.compile(r"^\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}\Z")
             for c in candidates:
                 d, fn = os.path.split(c)
-                self.assertTrue(fn.startswith(prefix+'.'))
-                suffix = fn[(len(prefix)+1):]
+                self.assertTrue(fn.startswith(prefix + "."))
+                suffix = fn[(len(prefix) + 1) :]
                 self.assertRegex(suffix, matcher)
 
     # Run with US-style DST rules: DST begins 2 a.m. on second Sunday in
     # March (M3.2.0) and ends 2 a.m. on first Sunday in November (M11.1.0).
-    @support.run_with_tz('EST+05EDT,M3.2.0,M11.1.0')
+    @support.run_with_tz("EST+05EDT,M3.2.0,M11.1.0")
     def test_compute_rollover_MIDNIGHT_local(self):
         # DST begins at 2012-3-11T02:00:00 and ends at 2012-11-4T02:00:00.
         DT = datetime.datetime
+
         def test(current, expected):
             actual = fh.computeRollover(current.timestamp())
             diff = actual - expected.timestamp()
@@ -6297,7 +6611,8 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
                 self.assertEqual(diff, 0, datetime.timedelta(seconds=diff))
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='MIDNIGHT', utc=False)
+            self.fn, encoding="utf-8", when="MIDNIGHT", utc=False
+        )
 
         test(DT(2012, 3, 10, 23, 59, 59), DT(2012, 3, 11, 0, 0))
         test(DT(2012, 3, 11, 0, 0), DT(2012, 3, 12, 0, 0))
@@ -6310,8 +6625,12 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='MIDNIGHT', utc=False,
-            atTime=datetime.time(12, 0, 0))
+            self.fn,
+            encoding="utf-8",
+            when="MIDNIGHT",
+            utc=False,
+            atTime=datetime.time(12, 0, 0),
+        )
 
         test(DT(2012, 3, 10, 11, 59, 59), DT(2012, 3, 10, 12, 0))
         test(DT(2012, 3, 10, 12, 0), DT(2012, 3, 11, 12, 0))
@@ -6324,8 +6643,12 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='MIDNIGHT', utc=False,
-            atTime=datetime.time(2, 0, 0))
+            self.fn,
+            encoding="utf-8",
+            when="MIDNIGHT",
+            utc=False,
+            atTime=datetime.time(2, 0, 0),
+        )
 
         test(DT(2012, 3, 10, 1, 59, 59), DT(2012, 3, 10, 2, 0))
         # 2:00:00 is the same as 3:00:00 at 2012-3-11.
@@ -6350,8 +6673,12 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='MIDNIGHT', utc=False,
-            atTime=datetime.time(2, 30, 0))
+            self.fn,
+            encoding="utf-8",
+            when="MIDNIGHT",
+            utc=False,
+            atTime=datetime.time(2, 30, 0),
+        )
 
         test(DT(2012, 3, 10, 2, 29, 59), DT(2012, 3, 10, 2, 30))
         # No time 2:30:00 at 2012-3-11.
@@ -6370,8 +6697,12 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='MIDNIGHT', utc=False,
-            atTime=datetime.time(1, 30, 0))
+            self.fn,
+            encoding="utf-8",
+            when="MIDNIGHT",
+            utc=False,
+            atTime=datetime.time(1, 30, 0),
+        )
 
         test(DT(2012, 3, 11, 1, 29, 59), DT(2012, 3, 11, 1, 30))
         test(DT(2012, 3, 11, 1, 30), DT(2012, 3, 12, 1, 30))
@@ -6398,10 +6729,11 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
 
     # Run with US-style DST rules: DST begins 2 a.m. on second Sunday in
     # March (M3.2.0) and ends 2 a.m. on first Sunday in November (M11.1.0).
-    @support.run_with_tz('EST+05EDT,M3.2.0,M11.1.0')
+    @support.run_with_tz("EST+05EDT,M3.2.0,M11.1.0")
     def test_compute_rollover_W6_local(self):
         # DST begins at 2012-3-11T02:00:00 and ends at 2012-11-4T02:00:00.
         DT = datetime.datetime
+
         def test(current, expected):
             actual = fh.computeRollover(current.timestamp())
             diff = actual - expected.timestamp()
@@ -6409,7 +6741,8 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
                 self.assertEqual(diff, 0, datetime.timedelta(seconds=diff))
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='W6', utc=False)
+            self.fn, encoding="utf-8", when="W6", utc=False
+        )
 
         test(DT(2012, 3, 4, 23, 59, 59), DT(2012, 3, 5, 0, 0))
         test(DT(2012, 3, 5, 0, 0), DT(2012, 3, 12, 0, 0))
@@ -6422,8 +6755,12 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='W6', utc=False,
-            atTime=datetime.time(0, 0, 0))
+            self.fn,
+            encoding="utf-8",
+            when="W6",
+            utc=False,
+            atTime=datetime.time(0, 0, 0),
+        )
 
         test(DT(2012, 3, 10, 23, 59, 59), DT(2012, 3, 11, 0, 0))
         test(DT(2012, 3, 11, 0, 0), DT(2012, 3, 18, 0, 0))
@@ -6436,8 +6773,12 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='W6', utc=False,
-            atTime=datetime.time(12, 0, 0))
+            self.fn,
+            encoding="utf-8",
+            when="W6",
+            utc=False,
+            atTime=datetime.time(12, 0, 0),
+        )
 
         test(DT(2012, 3, 4, 11, 59, 59), DT(2012, 3, 4, 12, 0))
         test(DT(2012, 3, 4, 12, 0), DT(2012, 3, 11, 12, 0))
@@ -6450,8 +6791,12 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='W6', utc=False,
-            atTime=datetime.time(2, 0, 0))
+            self.fn,
+            encoding="utf-8",
+            when="W6",
+            utc=False,
+            atTime=datetime.time(2, 0, 0),
+        )
 
         test(DT(2012, 3, 4, 1, 59, 59), DT(2012, 3, 4, 2, 0))
         # 2:00:00 is the same as 3:00:00 at 2012-3-11.
@@ -6476,8 +6821,12 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='W6', utc=False,
-            atTime=datetime.time(2, 30, 0))
+            self.fn,
+            encoding="utf-8",
+            when="W6",
+            utc=False,
+            atTime=datetime.time(2, 30, 0),
+        )
 
         test(DT(2012, 3, 4, 2, 29, 59), DT(2012, 3, 4, 2, 30))
         # No time 2:30:00 at 2012-3-11.
@@ -6496,8 +6845,12 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='W6', utc=False,
-            atTime=datetime.time(1, 30, 0))
+            self.fn,
+            encoding="utf-8",
+            when="W6",
+            utc=False,
+            atTime=datetime.time(1, 30, 0),
+        )
 
         test(DT(2012, 3, 11, 1, 29, 59), DT(2012, 3, 11, 1, 30))
         test(DT(2012, 3, 11, 1, 30), DT(2012, 3, 18, 1, 30))
@@ -6524,10 +6877,11 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
 
     # Run with US-style DST rules: DST begins 2 a.m. on second Sunday in
     # March (M3.2.0) and ends 2 a.m. on first Sunday in November (M11.1.0).
-    @support.run_with_tz('EST+05EDT,M3.2.0,M11.1.0')
+    @support.run_with_tz("EST+05EDT,M3.2.0,M11.1.0")
     def test_compute_rollover_MIDNIGHT_local_interval(self):
         # DST begins at 2012-3-11T02:00:00 and ends at 2012-11-4T02:00:00.
         DT = datetime.datetime
+
         def test(current, expected):
             actual = fh.computeRollover(current.timestamp())
             diff = actual - expected.timestamp()
@@ -6535,7 +6889,8 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
                 self.assertEqual(diff, 0, datetime.timedelta(seconds=diff))
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='MIDNIGHT', utc=False, interval=3)
+            self.fn, encoding="utf-8", when="MIDNIGHT", utc=False, interval=3
+        )
 
         test(DT(2012, 3, 8, 23, 59, 59), DT(2012, 3, 11, 0, 0))
         test(DT(2012, 3, 9, 0, 0), DT(2012, 3, 12, 0, 0))
@@ -6554,8 +6909,13 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='MIDNIGHT', utc=False, interval=3,
-            atTime=datetime.time(12, 0, 0))
+            self.fn,
+            encoding="utf-8",
+            when="MIDNIGHT",
+            utc=False,
+            interval=3,
+            atTime=datetime.time(12, 0, 0),
+        )
 
         test(DT(2012, 3, 8, 11, 59, 59), DT(2012, 3, 10, 12, 0))
         test(DT(2012, 3, 8, 12, 0), DT(2012, 3, 11, 12, 0))
@@ -6575,10 +6935,11 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
 
     # Run with US-style DST rules: DST begins 2 a.m. on second Sunday in
     # March (M3.2.0) and ends 2 a.m. on first Sunday in November (M11.1.0).
-    @support.run_with_tz('EST+05EDT,M3.2.0,M11.1.0')
+    @support.run_with_tz("EST+05EDT,M3.2.0,M11.1.0")
     def test_compute_rollover_W6_local_interval(self):
         # DST begins at 2012-3-11T02:00:00 and ends at 2012-11-4T02:00:00.
         DT = datetime.datetime
+
         def test(current, expected):
             actual = fh.computeRollover(current.timestamp())
             diff = actual - expected.timestamp()
@@ -6586,7 +6947,8 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
                 self.assertEqual(diff, 0, datetime.timedelta(seconds=diff))
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='W6', utc=False, interval=3)
+            self.fn, encoding="utf-8", when="W6", utc=False, interval=3
+        )
 
         test(DT(2012, 2, 19, 23, 59, 59), DT(2012, 3, 5, 0, 0))
         test(DT(2012, 2, 20, 0, 0), DT(2012, 3, 12, 0, 0))
@@ -6605,8 +6967,13 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='W6', utc=False, interval=3,
-            atTime=datetime.time(0, 0, 0))
+            self.fn,
+            encoding="utf-8",
+            when="W6",
+            utc=False,
+            interval=3,
+            atTime=datetime.time(0, 0, 0),
+        )
 
         test(DT(2012, 2, 25, 23, 59, 59), DT(2012, 3, 11, 0, 0))
         test(DT(2012, 2, 26, 0, 0), DT(2012, 3, 18, 0, 0))
@@ -6625,8 +6992,13 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
         fh.close()
 
         fh = logging.handlers.TimedRotatingFileHandler(
-            self.fn, encoding="utf-8", when='W6', utc=False, interval=3,
-            atTime=datetime.time(12, 0, 0))
+            self.fn,
+            encoding="utf-8",
+            when="W6",
+            utc=False,
+            interval=3,
+            atTime=datetime.time(12, 0, 0),
+        )
 
         test(DT(2012, 2, 18, 11, 59, 59), DT(2012, 3, 4, 12, 0))
         test(DT(2012, 2, 19, 12, 0), DT(2012, 3, 11, 12, 0))
@@ -6648,29 +7020,38 @@ class TimedRotatingFileHandlerTest(BaseFileTest):
 def secs(**kw):
     return datetime.timedelta(**kw) // datetime.timedelta(seconds=1)
 
-for when, exp in (('S', 1),
-                  ('M', 60),
-                  ('H', 60 * 60),
-                  ('D', 60 * 60 * 24),
-                  ('MIDNIGHT', 60 * 60 * 24),
-                  # current time (epoch start) is a Thursday, W0 means Monday
-                  ('W0', secs(days=4, hours=24)),
-                 ):
+
+for when, exp in (
+    ("S", 1),
+    ("M", 60),
+    ("H", 60 * 60),
+    ("D", 60 * 60 * 24),
+    ("MIDNIGHT", 60 * 60 * 24),
+    # current time (epoch start) is a Thursday, W0 means Monday
+    ("W0", secs(days=4, hours=24)),
+):
     for interval in 1, 3:
+
         def test_compute_rollover(self, when=when, interval=interval, exp=exp):
             rh = logging.handlers.TimedRotatingFileHandler(
-                self.fn, encoding="utf-8", when=when, interval=interval, backupCount=0, utc=True)
+                self.fn,
+                encoding="utf-8",
+                when=when,
+                interval=interval,
+                backupCount=0,
+                utc=True,
+            )
             currentTime = 0.0
             actual = rh.computeRollover(currentTime)
-            if when.startswith('W'):
-                exp += secs(days=7*(interval-1))
+            if when.startswith("W"):
+                exp += secs(days=7 * (interval - 1))
             else:
                 exp *= interval
             if exp != actual:
                 # Failures occur on some systems for MIDNIGHT and W0.
                 # Print detailed calculation for MIDNIGHT so we can try to see
                 # what's going on
-                if when == 'MIDNIGHT':
+                if when == "MIDNIGHT":
                     try:
                         if rh.utc:
                             t = time.gmtime(currentTime)
@@ -6680,20 +7061,21 @@ for when, exp in (('S', 1),
                         currentMinute = t[4]
                         currentSecond = t[5]
                         # r is the number of seconds left between now and midnight
-                        r = logging.handlers._MIDNIGHT - ((currentHour * 60 +
-                                                        currentMinute) * 60 +
-                                currentSecond)
+                        r = logging.handlers._MIDNIGHT - (
+                            (currentHour * 60 + currentMinute) * 60 + currentSecond
+                        )
                         result = currentTime + r
-                        print('t: %s (%s)' % (t, rh.utc), file=sys.stderr)
-                        print('currentHour: %s' % currentHour, file=sys.stderr)
-                        print('currentMinute: %s' % currentMinute, file=sys.stderr)
-                        print('currentSecond: %s' % currentSecond, file=sys.stderr)
-                        print('r: %s' % r, file=sys.stderr)
-                        print('result: %s' % result, file=sys.stderr)
+                        print("t: %s (%s)" % (t, rh.utc), file=sys.stderr)
+                        print("currentHour: %s" % currentHour, file=sys.stderr)
+                        print("currentMinute: %s" % currentMinute, file=sys.stderr)
+                        print("currentSecond: %s" % currentSecond, file=sys.stderr)
+                        print("r: %s" % r, file=sys.stderr)
+                        print("result: %s" % result, file=sys.stderr)
                     except Exception as e:
-                        print('exception in diagnostic code: %s' % e, file=sys.stderr)
+                        print("exception in diagnostic code: %s" % e, file=sys.stderr)
             self.assertEqual(exp, actual)
             rh.close()
+
         name = "test_compute_rollover_%s" % when
         if interval > 1:
             name += "_interval"
@@ -6701,49 +7083,63 @@ for when, exp in (('S', 1),
         setattr(TimedRotatingFileHandlerTest, name, test_compute_rollover)
 
 
-@unittest.skipUnless(win32evtlog, 'win32evtlog/win32evtlogutil/pywintypes required for this test.')
+@unittest.skipUnless(
+    win32evtlog, "win32evtlog/win32evtlogutil/pywintypes required for this test."
+)
 class NTEventLogHandlerTest(BaseTest):
     def test_basic(self):
-        logtype = 'Application'
+        logtype = "Application"
         elh = win32evtlog.OpenEventLog(None, logtype)
         num_recs = win32evtlog.GetNumberOfEventLogRecords(elh)
 
         try:
-            h = logging.handlers.NTEventLogHandler('test_logging')
+            h = logging.handlers.NTEventLogHandler("test_logging")
         except pywintypes.error as e:
             if e.winerror == 5:  # access denied
-                raise unittest.SkipTest('Insufficient privileges to run test')
+                raise unittest.SkipTest("Insufficient privileges to run test")
             raise
 
-        r = logging.makeLogRecord({'msg': 'Test Log Message'})
+        r = logging.makeLogRecord({"msg": "Test Log Message"})
         h.handle(r)
         h.close()
         # Now see if the event is recorded
         self.assertLess(num_recs, win32evtlog.GetNumberOfEventLogRecords(elh))
-        flags = win32evtlog.EVENTLOG_BACKWARDS_READ | \
-                win32evtlog.EVENTLOG_SEQUENTIAL_READ
+        flags = (
+            win32evtlog.EVENTLOG_BACKWARDS_READ | win32evtlog.EVENTLOG_SEQUENTIAL_READ
+        )
         found = False
         GO_BACK = 100
         events = win32evtlog.ReadEventLog(elh, flags, GO_BACK)
         for e in events:
-            if e.SourceName != 'test_logging':
+            if e.SourceName != "test_logging":
                 continue
             msg = win32evtlogutil.SafeFormatMessage(e, logtype)
-            if msg != 'Test Log Message\r\n':
+            if msg != "Test Log Message\r\n":
                 continue
             found = True
             break
-        msg = 'Record not found in event log, went back %d records' % GO_BACK
+        msg = "Record not found in event log, went back %d records" % GO_BACK
         self.assertTrue(found, msg=msg)
 
 
 class MiscTestCase(unittest.TestCase):
     def test__all__(self):
         not_exported = {
-            'logThreads', 'logMultiprocessing', 'logProcesses', 'currentframe',
-            'PercentStyle', 'StrFormatStyle', 'StringTemplateStyle',
-            'Filterer', 'PlaceHolder', 'Manager', 'RootLogger', 'root',
-            'threading', 'logAsyncioTasks'}
+            "logThreads",
+            "logMultiprocessing",
+            "logProcesses",
+            "currentframe",
+            "PercentStyle",
+            "StrFormatStyle",
+            "StringTemplateStyle",
+            "Filterer",
+            "PlaceHolder",
+            "Manager",
+            "RootLogger",
+            "root",
+            "threading",
+            "logAsyncioTasks",
+        }
         support.check__all__(self, logging, not_exported=not_exported)
 
 
@@ -6751,7 +7147,7 @@ class MiscTestCase(unittest.TestCase):
 # why the test does this, but in any case we save the current locale
 # first and restore it at the end.
 def setUpModule():
-    unittest.enterModuleContext(support.run_with_locale('LC_ALL', ''))
+    unittest.enterModuleContext(support.run_with_locale("LC_ALL", ""))
 
 
 if __name__ == "__main__":

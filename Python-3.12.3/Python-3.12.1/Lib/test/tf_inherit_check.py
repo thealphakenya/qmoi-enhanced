@@ -7,7 +7,7 @@ import os
 from test.support import SuppressCrashReport
 
 with SuppressCrashReport():
-    verbose = (sys.argv[1] == 'v')
+    verbose = sys.argv[1] == "v"
     try:
         fd = int(sys.argv[2])
 

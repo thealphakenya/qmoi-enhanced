@@ -19,13 +19,14 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
+    format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler('logs/qmoi-enhanced-platform-automation.log'),
-        logging.StreamHandler()
-    ]
+        logging.FileHandler("logs/qmoi-enhanced-platform-automation.log"),
+        logging.StreamHandler(),
+    ],
 )
 logger = logging.getLogger(__name__)
+
 
 @dataclass
 class PlatformConfig:
@@ -36,98 +37,106 @@ class PlatformConfig:
     features: List[str]
     automation_level: str
 
+
 class QMOIEnhancedPlatformAutomation:
     def __init__(self):
         self.platforms = {
-            'github': PlatformConfig(
-                name='GitHub',
+            "github": PlatformConfig(
+                name="GitHub",
                 enabled=True,
-                token=os.getenv('QMOI_GITHUB_TOKEN', ''),
-                url='https://github.qmoi.com',
-                features=['repositories', 'actions', 'packages', 'pages', 'codespaces', 'security'],
-                automation_level='comprehensive'
+                token=os.getenv("QMOI_GITHUB_TOKEN", ""),
+                url="https://github.qmoi.com",
+                features=[
+                    "repositories",
+                    "actions",
+                    "packages",
+                    "pages",
+                    "codespaces",
+                    "security",
+                ],
+                automation_level="comprehensive",
             ),
-            'gitlab': PlatformConfig(
-                name='GitLab',
+            "gitlab": PlatformConfig(
+                name="GitLab",
                 enabled=True,
-                token=os.getenv('QMOI_GITLAB_TOKEN', ''),
-                url='https://gitlab.qmoi.com',
-                features=['ci_cd', 'repositories', 'security', 'analytics'],
-                automation_level='comprehensive'
+                token=os.getenv("QMOI_GITLAB_TOKEN", ""),
+                url="https://gitlab.qmoi.com",
+                features=["ci_cd", "repositories", "security", "analytics"],
+                automation_level="comprehensive",
             ),
-            'vercel': PlatformConfig(
-                name='Vercel',
+            "vercel": PlatformConfig(
+                name="Vercel",
                 enabled=True,
-                token=os.getenv('QMOI_VERCEL_TOKEN', ''),
-                url='https://vercel.qmoi.com',
-                features=['deployments', 'domains', 'functions', 'analytics'],
-                automation_level='comprehensive'
+                token=os.getenv("QMOI_VERCEL_TOKEN", ""),
+                url="https://vercel.qmoi.com",
+                features=["deployments", "domains", "functions", "analytics"],
+                automation_level="comprehensive",
             ),
-            'gitpod': PlatformConfig(
-                name='Gitpod',
+            "gitpod": PlatformConfig(
+                name="Gitpod",
                 enabled=True,
-                token=os.getenv('QMOI_GITPOD_TOKEN', ''),
-                url='https://gitpod.qmoi.com',
-                features=['workspaces', 'environments', 'collaboration'],
-                automation_level='comprehensive'
+                token=os.getenv("QMOI_GITPOD_TOKEN", ""),
+                url="https://gitpod.qmoi.com",
+                features=["workspaces", "environments", "collaboration"],
+                automation_level="comprehensive",
             ),
-            'netlify': PlatformConfig(
-                name='Netlify',
+            "netlify": PlatformConfig(
+                name="Netlify",
                 enabled=True,
-                token=os.getenv('QMOI_NETLIFY_TOKEN', ''),
-                url='https://netlify.qmoi.com',
-                features=['sites', 'forms', 'functions', 'analytics'],
-                automation_level='comprehensive'
+                token=os.getenv("QMOI_NETLIFY_TOKEN", ""),
+                url="https://netlify.qmoi.com",
+                features=["sites", "forms", "functions", "analytics"],
+                automation_level="comprehensive",
             ),
-            'quantum': PlatformConfig(
-                name='Quantum',
+            "quantum": PlatformConfig(
+                name="Quantum",
                 enabled=True,
-                token=os.getenv('QMOI_QUANTUM_TOKEN', ''),
-                url='https://quantum.qmoi.com',
-                features=['computing', 'ai_ml', 'analytics'],
-                automation_level='comprehensive'
+                token=os.getenv("QMOI_QUANTUM_TOKEN", ""),
+                url="https://quantum.qmoi.com",
+                features=["computing", "ai_ml", "analytics"],
+                automation_level="comprehensive",
             ),
-            'huggingface': PlatformConfig(
-                name='Hugging Face',
+            "huggingface": PlatformConfig(
+                name="Hugging Face",
                 enabled=True,
-                token=os.getenv('QMOI_HF_TOKEN', ''),
-                url='https://huggingface.qmoi.com',
-                features=['models', 'spaces', 'datasets', 'inference'],
-                automation_level='comprehensive'
-            )
+                token=os.getenv("QMOI_HF_TOKEN", ""),
+                url="https://huggingface.qmoi.com",
+                features=["models", "spaces", "datasets", "inference"],
+                automation_level="comprehensive",
+            ),
         }
-        
+
         self.stats = {
-            'start_time': datetime.now().isoformat(),
-            'platforms_processed': 0,
-            'features_activated': 0,
-            'errors_fixed': 0,
-            'optimizations_applied': 0,
-            'security_enhancements': 0,
-            'performance_improvements': 0
+            "start_time": datetime.now().isoformat(),
+            "platforms_processed": 0,
+            "features_activated": 0,
+            "errors_fixed": 0,
+            "optimizations_applied": 0,
+            "security_enhancements": 0,
+            "performance_improvements": 0,
         }
-        
+
         self.error_log = []
         self.success_log = []
 
-    def log_error(self, platform: str, error: str, context: str = ''):
+    def log_error(self, platform: str, error: str, context: str = ""):
         """Log error with context"""
         error_entry = {
-            'timestamp': datetime.now().isoformat(),
-            'platform': platform,
-            'error': error,
-            'context': context
+            "timestamp": datetime.now().isoformat(),
+            "platform": platform,
+            "error": error,
+            "context": context,
         }
         self.error_log.append(error_entry)
         logger.error(f"[{platform}] {error} - {context}")
 
-    def log_success(self, platform: str, action: str, details: str = ''):
+    def log_success(self, platform: str, action: str, details: str = ""):
         """Log success with details"""
         success_entry = {
-            'timestamp': datetime.now().isoformat(),
-            'platform': platform,
-            'action': action,
-            'details': details
+            "timestamp": datetime.now().isoformat(),
+            "platform": platform,
+            "action": action,
+            "details": details,
         }
         self.success_log.append(success_entry)
         logger.info(f"[{platform}] {action} - {details}")
@@ -136,21 +145,25 @@ class QMOIEnhancedPlatformAutomation:
         """Activate all features for a platform"""
         try:
             logger.info(f"Activating features for {platform.name}")
-            
+
             # Activate unlimited features
             for feature in platform.features:
                 self.activate_feature(platform, feature)
-                self.stats['features_activated'] += 1
-            
+                self.stats["features_activated"] += 1
+
             # Activate paid features
             self.activate_paid_features(platform)
-            
+
             # Activate enterprise features
             self.activate_enterprise_features(platform)
-            
-            self.log_success(platform.name, "Features activated", f"Activated {len(platform.features)} features")
+
+            self.log_success(
+                platform.name,
+                "Features activated",
+                f"Activated {len(platform.features)} features",
+            )
             return True
-            
+
         except Exception as e:
             self.log_error(platform.name, str(e), "Feature activation")
             return False
@@ -161,23 +174,54 @@ class QMOIEnhancedPlatformAutomation:
             # Simulate feature activation
             time.sleep(0.1)
             logger.info(f"Activated {feature} for {platform.name}")
-            
+
         except Exception as e:
             self.log_error(platform.name, str(e), f"Feature activation: {feature}")
 
     def activate_paid_features(self, platform: PlatformConfig):
         """Activate all paid features for a platform"""
         paid_features = {
-            'github': ['unlimited_repos', 'unlimited_actions', 'unlimited_packages', 'unlimited_pages', 'unlimited_codespaces'],
-            'gitlab': ['unlimited_ci_cd', 'unlimited_repos', 'advanced_security', 'enterprise_features'],
-            'vercel': ['unlimited_deployments', 'unlimited_domains', 'unlimited_functions', 'advanced_analytics'],
-            'gitpod': ['unlimited_workspaces', 'advanced_machines', 'team_collaboration', 'enterprise_features'],
-            'netlify': ['unlimited_sites', 'unlimited_forms', 'unlimited_functions', 'advanced_analytics'],
-            'quantum': ['unlimited_computing', 'advanced_ai_ml', 'enterprise_features'],
-            'huggingface': ['unlimited_models', 'unlimited_spaces', 'unlimited_datasets', 'unlimited_inference']
+            "github": [
+                "unlimited_repos",
+                "unlimited_actions",
+                "unlimited_packages",
+                "unlimited_pages",
+                "unlimited_codespaces",
+            ],
+            "gitlab": [
+                "unlimited_ci_cd",
+                "unlimited_repos",
+                "advanced_security",
+                "enterprise_features",
+            ],
+            "vercel": [
+                "unlimited_deployments",
+                "unlimited_domains",
+                "unlimited_functions",
+                "advanced_analytics",
+            ],
+            "gitpod": [
+                "unlimited_workspaces",
+                "advanced_machines",
+                "team_collaboration",
+                "enterprise_features",
+            ],
+            "netlify": [
+                "unlimited_sites",
+                "unlimited_forms",
+                "unlimited_functions",
+                "advanced_analytics",
+            ],
+            "quantum": ["unlimited_computing", "advanced_ai_ml", "enterprise_features"],
+            "huggingface": [
+                "unlimited_models",
+                "unlimited_spaces",
+                "unlimited_datasets",
+                "unlimited_inference",
+            ],
         }
-        
-        platform_key = platform.name.lower().replace(' ', '')
+
+        platform_key = platform.name.lower().replace(" ", "")
         if platform_key in paid_features:
             for feature in paid_features[platform_key]:
                 self.activate_feature(platform, f"paid_{feature}")
@@ -185,16 +229,16 @@ class QMOIEnhancedPlatformAutomation:
     def activate_enterprise_features(self, platform: PlatformConfig):
         """Activate enterprise features for a platform"""
         enterprise_features = [
-            'enterprise_security',
-            'advanced_permissions',
-            'audit_logging',
-            'compliance_management',
-            'sso_integration',
-            'advanced_analytics',
-            'custom_branding',
-            'priority_support'
+            "enterprise_security",
+            "advanced_permissions",
+            "audit_logging",
+            "compliance_management",
+            "sso_integration",
+            "advanced_analytics",
+            "custom_branding",
+            "priority_support",
         ]
-        
+
         for feature in enterprise_features:
             self.activate_feature(platform, f"enterprise_{feature}")
 
@@ -202,7 +246,7 @@ class QMOIEnhancedPlatformAutomation:
         """Fix errors for a platform"""
         try:
             logger.info(f"Fixing errors for {platform.name}")
-            
+
             # Fix common errors
             self.fix_authentication_errors(platform)
             self.fix_permission_errors(platform)
@@ -210,11 +254,13 @@ class QMOIEnhancedPlatformAutomation:
             self.fix_network_errors(platform)
             self.fix_resource_errors(platform)
             self.fix_security_errors(platform)
-            
-            self.stats['errors_fixed'] += 1
-            self.log_success(platform.name, "Errors fixed", "All platform errors resolved")
+
+            self.stats["errors_fixed"] += 1
+            self.log_success(
+                platform.name, "Errors fixed", "All platform errors resolved"
+            )
             return True
-            
+
         except Exception as e:
             self.log_error(platform.name, str(e), "Error fixing")
             return False
@@ -277,19 +323,23 @@ class QMOIEnhancedPlatformAutomation:
         """Optimize performance for a platform"""
         try:
             logger.info(f"Optimizing performance for {platform.name}")
-            
+
             # Apply performance optimizations
             self.optimize_compute_resources(platform)
             self.optimize_storage_resources(platform)
             self.optimize_network_resources(platform)
             self.optimize_security_performance(platform)
             self.optimize_automation_performance(platform)
-            
-            self.stats['optimizations_applied'] += 1
-            self.stats['performance_improvements'] += 1
-            self.log_success(platform.name, "Performance optimized", "All performance optimizations applied")
+
+            self.stats["optimizations_applied"] += 1
+            self.stats["performance_improvements"] += 1
+            self.log_success(
+                platform.name,
+                "Performance optimized",
+                "All performance optimizations applied",
+            )
             return True
-            
+
         except Exception as e:
             self.log_error(platform.name, str(e), "Performance optimization")
             return False
@@ -343,18 +393,20 @@ class QMOIEnhancedPlatformAutomation:
         """Enhance security for a platform"""
         try:
             logger.info(f"Enhancing security for {platform.name}")
-            
+
             # Apply security enhancements
             self.enhance_authentication_security(platform)
             self.enhance_data_security(platform)
             self.enhance_network_security(platform)
             self.enhance_application_security(platform)
             self.enhance_compliance_security(platform)
-            
-            self.stats['security_enhancements'] += 1
-            self.log_success(platform.name, "Security enhanced", "All security enhancements applied")
+
+            self.stats["security_enhancements"] += 1
+            self.log_success(
+                platform.name, "Security enhanced", "All security enhancements applied"
+            )
             return True
-            
+
         except Exception as e:
             self.log_error(platform.name, str(e), "Security enhancement")
             return False
@@ -408,17 +460,21 @@ class QMOIEnhancedPlatformAutomation:
         """Enable auto-evolution for a platform"""
         try:
             logger.info(f"Enabling auto-evolution for {platform.name}")
-            
+
             # Enable auto-evolution features
             self.enable_ai_optimization(platform)
             self.enable_predictive_analytics(platform)
             self.enable_automated_improvements(platform)
             self.enable_self_healing(platform)
             self.enable_continuous_learning(platform)
-            
-            self.log_success(platform.name, "Auto-evolution enabled", "All auto-evolution features enabled")
+
+            self.log_success(
+                platform.name,
+                "Auto-evolution enabled",
+                "All auto-evolution features enabled",
+            )
             return True
-            
+
         except Exception as e:
             self.log_error(platform.name, str(e), "Auto-evolution enablement")
             return False
@@ -471,63 +527,67 @@ class QMOIEnhancedPlatformAutomation:
     def process_platform(self, platform: PlatformConfig) -> Dict[str, Any]:
         """Process a single platform with all enhancements"""
         logger.info(f"Processing platform: {platform.name}")
-        
+
         results = {
-            'platform': platform.name,
-            'success': True,
-            'features_activated': 0,
-            'errors_fixed': 0,
-            'optimizations_applied': 0,
-            'security_enhancements': 0,
-            'auto_evolution_enabled': False
+            "platform": platform.name,
+            "success": True,
+            "features_activated": 0,
+            "errors_fixed": 0,
+            "optimizations_applied": 0,
+            "security_enhancements": 0,
+            "auto_evolution_enabled": False,
         }
-        
+
         try:
             # Activate features
             if self.activate_platform_features(platform):
-                results['features_activated'] = len(platform.features)
-            
+                results["features_activated"] = len(platform.features)
+
             # Fix errors
             if self.fix_platform_errors(platform):
-                results['errors_fixed'] = 1
-            
+                results["errors_fixed"] = 1
+
             # Optimize performance
             if self.optimize_platform_performance(platform):
-                results['optimizations_applied'] = 1
-            
+                results["optimizations_applied"] = 1
+
             # Enhance security
             if self.enhance_platform_security(platform):
-                results['security_enhancements'] = 1
-            
+                results["security_enhancements"] = 1
+
             # Enable auto-evolution
             if self.enable_auto_evolution(platform):
-                results['auto_evolution_enabled'] = True
-            
-            self.stats['platforms_processed'] += 1
-            self.log_success(platform.name, "Platform processed", "All enhancements applied successfully")
-            
+                results["auto_evolution_enabled"] = True
+
+            self.stats["platforms_processed"] += 1
+            self.log_success(
+                platform.name,
+                "Platform processed",
+                "All enhancements applied successfully",
+            )
+
         except Exception as e:
-            results['success'] = False
+            results["success"] = False
             self.log_error(platform.name, str(e), "Platform processing")
-        
+
         return results
 
     def run_automation(self) -> Dict[str, Any]:
         """Run the complete automation process"""
         logger.info("Starting QMOI Enhanced Platform Automation")
-        
+
         start_time = time.time()
         results = []
-        
+
         # Process all enabled platforms
         enabled_platforms = [p for p in self.platforms.values() if p.enabled]
-        
+
         with ThreadPoolExecutor(max_workers=len(enabled_platforms)) as executor:
             future_to_platform = {
-                executor.submit(self.process_platform, platform): platform 
+                executor.submit(self.process_platform, platform): platform
                 for platform in enabled_platforms
             }
-            
+
             for future in as_completed(future_to_platform):
                 platform = future_to_platform[future]
                 try:
@@ -535,94 +595,104 @@ class QMOIEnhancedPlatformAutomation:
                     results.append(result)
                 except Exception as e:
                     self.log_error(platform.name, str(e), "Platform processing")
-                    results.append({
-                        'platform': platform.name,
-                        'success': False,
-                        'error': str(e)
-                    })
-        
+                    results.append(
+                        {"platform": platform.name, "success": False, "error": str(e)}
+                    )
+
         end_time = time.time()
         duration = end_time - start_time
-        
+
         # Generate final report
         final_report = {
-            'automation_stats': self.stats,
-            'platform_results': results,
-            'error_log': self.error_log,
-            'success_log': self.success_log,
-            'duration_seconds': duration,
-            'timestamp': datetime.now().isoformat()
+            "automation_stats": self.stats,
+            "platform_results": results,
+            "error_log": self.error_log,
+            "success_log": self.success_log,
+            "duration_seconds": duration,
+            "timestamp": datetime.now().isoformat(),
         }
-        
+
         # Save report
         self.save_report(final_report)
-        
+
         logger.info(f"Automation completed in {duration:.2f} seconds")
         return final_report
 
     def save_report(self, report: Dict[str, Any]):
         """Save the automation report"""
         try:
-            os.makedirs('logs', exist_ok=True)
-            
+            os.makedirs("logs", exist_ok=True)
+
             # Save detailed report
-            with open('logs/enhanced-platform-automation-report.json', 'w') as f:
+            with open("logs/enhanced-platform-automation-report.json", "w") as f:
                 json.dump(report, f, indent=2)
-            
+
             # Save summary
             summary = {
-                'platforms_processed': self.stats['platforms_processed'],
-                'features_activated': self.stats['features_activated'],
-                'errors_fixed': self.stats['errors_fixed'],
-                'optimizations_applied': self.stats['optimizations_applied'],
-                'security_enhancements': self.stats['security_enhancements'],
-                'performance_improvements': self.stats['performance_improvements'],
-                'duration_seconds': report['duration_seconds'],
-                'timestamp': report['timestamp']
+                "platforms_processed": self.stats["platforms_processed"],
+                "features_activated": self.stats["features_activated"],
+                "errors_fixed": self.stats["errors_fixed"],
+                "optimizations_applied": self.stats["optimizations_applied"],
+                "security_enhancements": self.stats["security_enhancements"],
+                "performance_improvements": self.stats["performance_improvements"],
+                "duration_seconds": report["duration_seconds"],
+                "timestamp": report["timestamp"],
             }
-            
-            with open('logs/enhanced-platform-automation-summary.json', 'w') as f:
+
+            with open("logs/enhanced-platform-automation-summary.json", "w") as f:
                 json.dump(summary, f, indent=2)
-                
+
             logger.info("Report saved successfully")
-            
+
         except Exception as e:
             logger.error(f"Failed to save report: {e}")
+
 
 def main():
     """Main function"""
     try:
         # Create automation instance
         automation = QMOIEnhancedPlatformAutomation()
-        
+
         # Run automation
         report = automation.run_automation()
-        
+
         # Print summary
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("QMOI Enhanced Platform Automation Summary")
-        print("="*60)
-        print(f"Platforms Processed: {report['automation_stats']['platforms_processed']}")
+        print("=" * 60)
+        print(
+            f"Platforms Processed: {report['automation_stats']['platforms_processed']}"
+        )
         print(f"Features Activated: {report['automation_stats']['features_activated']}")
         print(f"Errors Fixed: {report['automation_stats']['errors_fixed']}")
-        print(f"Optimizations Applied: {report['automation_stats']['optimizations_applied']}")
-        print(f"Security Enhancements: {report['automation_stats']['security_enhancements']}")
-        print(f"Performance Improvements: {report['automation_stats']['performance_improvements']}")
+        print(
+            f"Optimizations Applied: {report['automation_stats']['optimizations_applied']}"
+        )
+        print(
+            f"Security Enhancements: {report['automation_stats']['security_enhancements']}"
+        )
+        print(
+            f"Performance Improvements: {report['automation_stats']['performance_improvements']}"
+        )
         print(f"Duration: {report['duration_seconds']:.2f} seconds")
-        print("="*60)
-        
+        print("=" * 60)
+
         # Print platform results
         print("\nPlatform Results:")
-        for result in report['platform_results']:
-            status = "✅ SUCCESS" if result['success'] else "❌ FAILED"
+        for result in report["platform_results"]:
+            status = "✅ SUCCESS" if result["success"] else "❌ FAILED"
             print(f"  {result['platform']}: {status}")
-        
-        print("\nDetailed report saved to: logs/enhanced-platform-automation-report.json")
+
+        print(
+            "\nDetailed report saved to: logs/enhanced-platform-automation-report.json"
+        )
         print("Summary saved to: logs/enhanced-platform-automation-summary.json")
-        
+
     except Exception as e:
         logger.error(f"Automation failed: {e}")
         sys.exit(1)
 
+
 if __name__ == "__main__":
-    main() 
+    main()

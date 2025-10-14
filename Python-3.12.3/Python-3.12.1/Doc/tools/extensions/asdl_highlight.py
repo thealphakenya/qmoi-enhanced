@@ -5,11 +5,11 @@ CPYTHON_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 sys.path.append(str(CPYTHON_ROOT / "Parser"))
 
 from pygments.lexer import RegexLexer, bygroups, include, words
-from pygments.token import (Comment, Keyword, Name, Operator,
-                            Punctuation, Text)
+from pygments.token import Comment, Keyword, Name, Operator, Punctuation, Text
 
 from asdl import builtin_types
 from sphinx.highlighting import lexers
+
 
 class ASDLLexer(RegexLexer):
     name = "ASDL"
@@ -50,4 +50,4 @@ class ASDLLexer(RegexLexer):
 
 def setup(app):
     lexers["asdl"] = ASDLLexer()
-    return {'version': '1.0', 'parallel_read_safe': True}
+    return {"version": "1.0", "parallel_read_safe": True}

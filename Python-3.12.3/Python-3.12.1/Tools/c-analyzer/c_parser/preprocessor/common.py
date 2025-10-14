@@ -24,27 +24,29 @@ logger = logging.getLogger(__name__)
 #  * iterate all lines
 
 
-def run_cmd(argv, *,
-            #capture_output=True,
-            stdout=subprocess.PIPE,
-            #stderr=subprocess.STDOUT,
-            stderr=subprocess.PIPE,
-            text=True,
-            check=True,
-            **kwargs
-            ):
-    if isinstance(stderr, str) and stderr.lower() == 'stdout':
+def run_cmd(
+    argv,
+    *,
+    # capture_output=True,
+    stdout=subprocess.PIPE,
+    # stderr=subprocess.STDOUT,
+    stderr=subprocess.PIPE,
+    text=True,
+    check=True,
+    **kwargs,
+):
+    if isinstance(stderr, str) and stderr.lower() == "stdout":
         stderr = subprocess.STDOUT
 
     kw = dict(locals())
-    kw.pop('argv')
-    kw.pop('kwargs')
+    kw.pop("argv")
+    kw.pop("kwargs")
     kwargs.update(kw)
 
     # Remove LANG environment variable: the C parser doesn't support GCC
     # localized messages
     env = dict(os.environ)
-    env.pop('LANG', None)
+    env.pop("LANG", None)
 
     proc = subprocess.run(argv, env=env, **kwargs)
     return proc.stdout
@@ -52,10 +54,10 @@ def run_cmd(argv, *,
 
 def preprocess(tool, filename, cwd=None, **kwargs):
     argv = _build_argv(tool, filename, **kwargs)
-    logger.debug(' '.join(shlex.quote(v) for v in argv))
+    logger.debug(" ".join(shlex.quote(v) for v in argv))
 
     # Make sure the OS is supported for this file.
-    if (_expected := is_os_mismatch(filename)):
+    if _expected := is_os_mismatch(filename):
         error = None
         raise OSMismatchError(filename, _expected, argv, error, TOOL)
 
@@ -80,19 +82,21 @@ def _build_argv(
     compiler=None,
 ):
     if includes:
-        includes = tuple(f'-include{i}' for i in includes)
+        includes = tuple(f"-include{i}" for i in includes)
         postargs = (includes + postargs) if postargs else includes
 
     compiler = distutils.ccompiler.new_compiler(
         compiler=compiler or tool,
     )
     if executable:
-        compiler.set_executable('preprocessor', executable)
+        compiler.set_executable("preprocessor", executable)
 
     argv = None
+
     def _spawn(_argv):
         nonlocal argv
         argv = _argv
+
     compiler.spawn = _spawn
     compiler.preprocess(
         filename,
@@ -120,13 +124,13 @@ def converted_error(tool, argv, filename):
 
 def convert_error(tool, argv, filename, stderr, rc):
     error = (stderr.splitlines()[0], rc)
-    if (_expected := is_os_mismatch(filename, stderr)):
+    if _expected := is_os_mismatch(filename, stderr):
         logger.info(stderr.strip())
         raise OSMismatchError(filename, _expected, argv, error, tool)
-    elif (_missing := is_missing_dep(stderr)):
+    elif _missing := is_missing_dep(stderr):
         logger.info(stderr.strip())
         raise MissingDependenciesError(filename, (_missing,), argv, error, tool)
-    elif '#error' in stderr:
+    elif "#error" in stderr:
         # XXX Ignore incompatible files.
         error = (stderr.splitlines()[1], rc)
         logger.info(stderr.strip())
@@ -142,11 +146,11 @@ def convert_error(tool, argv, filename, stderr, rc):
 def is_os_mismatch(filename, errtext=None):
     # See: https://docs.python.org/3/library/sys.html#sys.platform
     actual = sys.platform
-    if actual == 'unknown':
+    if actual == "unknown":
         raise NotImplementedError
 
     if errtext is not None:
-        if (missing := is_missing_dep(errtext)):
+        if missing := is_missing_dep(errtext):
             matching = get_matching_oses(missing, filename)
             if actual not in matching:
                 return matching
@@ -155,22 +159,22 @@ def is_os_mismatch(filename, errtext=None):
 
 def get_matching_oses(missing, filename):
     # OSX
-    if 'darwin' in filename or 'osx' in filename:
-        return ('darwin',)
-    elif missing == 'SystemConfiguration/SystemConfiguration.h':
-        return ('darwin',)
+    if "darwin" in filename or "osx" in filename:
+        return ("darwin",)
+    elif missing == "SystemConfiguration/SystemConfiguration.h":
+        return ("darwin",)
 
     # Windows
-    elif missing in ('windows.h', 'winsock2.h'):
-        return ('win32',)
+    elif missing in ("windows.h", "winsock2.h"):
+        return ("win32",)
 
     # other
-    elif missing == 'sys/ldr.h':
-        return ('aix',)
-    elif missing == 'dl.h':
+    elif missing == "sys/ldr.h":
+        return ("aix",)
+    elif missing == "dl.h":
         # XXX The existence of Python/dynload_dl.c implies others...
         # Note that hpux isn't actual supported any more.
-        return ('hpux', '???')
+        return ("hpux", "???")
 
     # unrecognized
     else:
@@ -178,7 +182,7 @@ def get_matching_oses(missing, filename):
 
 
 def is_missing_dep(errtext):
-    if 'No such file or directory' in errtext:
-        missing = errtext.split(': No such file or directory')[0].split()[-1]
+    if "No such file or directory" in errtext:
+        missing = errtext.split(": No such file or directory")[0].split()[-1]
         return missing
     return False

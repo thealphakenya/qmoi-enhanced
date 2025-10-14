@@ -47,19 +47,16 @@ def task_pidigits():
     def calc_ndigits(n):
         # From http://shootout.alioth.debian.org/
         def gen_x():
-            return _map(lambda k: (k, 4*k + 2, 0, 2*k + 1), _count(1))
+            return _map(lambda k: (k, 4 * k + 2, 0, 2 * k + 1), _count(1))
 
         def compose(a, b):
             aq, ar, as_, at = a
             bq, br, bs, bt = b
-            return (aq * bq,
-                    aq * br + ar * bt,
-                    as_ * bq + at * bs,
-                    as_ * br + at * bt)
+            return (aq * bq, aq * br + ar * bt, as_ * bq + at * bs, as_ * br + at * bt)
 
         def extract(z, j):
             q, r, s, t = z
-            return (q*j + r) // (s*j + t)
+            return (q * j + r) // (s * j + t)
 
         def pi_digits():
             z = (1, 0, 0, 1)
@@ -69,64 +66,77 @@ def task_pidigits():
                 while y != extract(z, 4):
                     z = compose(z, next(x))
                     y = extract(z, 3)
-                z = compose((10, -10*y, 0, 1), z)
+                z = compose((10, -10 * y, 0, 1), z)
                 yield y
 
         return list(_islice(pi_digits(), n))
 
-    return calc_ndigits, (50, )
+    return calc_ndigits, (50,)
+
 
 def task_regex():
     """regular expression (C)"""
     # XXX this task gives horrendous latency results.
     import re
+
     # Taken from the `inspect` module
-    pat = re.compile(r'^(\s*def\s)|(.*(?<!\w)lambda(:|\s))|^(\s*@)', re.MULTILINE)
+    pat = re.compile(r"^(\s*def\s)|(.*(?<!\w)lambda(:|\s))|^(\s*@)", re.MULTILINE)
     with open(__file__, "r") as f:
         arg = f.read(2000)
-    return pat.findall, (arg, )
+    return pat.findall, (arg,)
+
 
 def task_sort():
     """list sorting (C)"""
+
     def list_sort(l):
         l = l[::-1]
         l.sort()
 
-    return list_sort, (list(range(1000)), )
+    return list_sort, (list(range(1000)),)
+
 
 def task_compress_zlib():
     """zlib compression (C)"""
     import zlib
+
     with open(__file__, "rb") as f:
         arg = f.read(5000) * 3
 
     def compress(s):
         zlib.decompress(zlib.compress(s, 5))
-    return compress, (arg, )
+
+    return compress, (arg,)
+
 
 def task_compress_bz2():
     """bz2 compression (C)"""
     import bz2
+
     with open(__file__, "rb") as f:
         arg = f.read(3000) * 2
 
     def compress(s):
         bz2.compress(s)
-    return compress, (arg, )
+
+    return compress, (arg,)
+
 
 def task_hashing():
     """SHA1 hashing (C)"""
     import hashlib
+
     with open(__file__, "rb") as f:
         arg = f.read(5000) * 30
 
     def compute(s):
         hashlib.sha1(s).digest()
-    return compute, (arg, )
+
+    return compute, (arg,)
 
 
 throughput_tasks = [task_pidigits, task_regex]
-for mod in 'bz2', 'hashlib':
+for mod in "bz2", "hashlib":
     try:
         globals()[mod] = __import__(mod)
     except ImportError:
@@ -198,8 +208,7 @@ def run_throughput_test(func, args, nthreads):
         # Pure single-threaded performance, without any switching or
         # synchronization overhead.
         start_time = time.time()
-        results.append(loop(start_time, THROUGHPUT_DURATION,
-                            end_event, do_yield=False))
+        results.append(loop(start_time, THROUGHPUT_DURATION, end_event, do_yield=False))
         return results
 
     started = False
@@ -214,8 +223,7 @@ def run_throughput_test(func, args, nthreads):
         with start_cond:
             while not started:
                 start_cond.wait()
-        results.append(loop(start_time, THROUGHPUT_DURATION,
-                            end_event, do_yield=True))
+        results.append(loop(start_time, THROUGHPUT_DURATION, end_event, do_yield=True))
 
     threads = []
     for i in range(nthreads):
@@ -236,6 +244,7 @@ def run_throughput_test(func, args, nthreads):
         t.join()
 
     return results
+
 
 def run_throughput_tests(max_threads):
     for task in throughput_tasks:
@@ -261,19 +270,24 @@ def run_throughput_tests(max_threads):
 
 LAT_END = "END"
 
+
 def _sendto(sock, s, addr):
-    sock.sendto(s.encode('ascii'), addr)
+    sock.sendto(s.encode("ascii"), addr)
+
 
 def _recv(sock, n):
-    return sock.recv(n).decode('ascii')
+    return sock.recv(n).decode("ascii")
+
 
 def latency_client(addr, nb_pings, interval):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
         _time = time.time
         _sleep = time.sleep
+
         def _ping():
             _sendto(sock, "%r\n" % _time(), addr)
+
         # The first ping signals the parent process that we are ready.
         _ping()
         # We give the parent a bit of time to notice.
@@ -285,11 +299,13 @@ def latency_client(addr, nb_pings, interval):
     finally:
         sock.close()
 
+
 def run_latency_client(**kwargs):
-    cmd_line = [sys.executable, '-E', os.path.abspath(__file__)]
-    cmd_line.extend(['--latclient', repr(kwargs)])
-    return subprocess.Popen(cmd_line) #, stdin=subprocess.PIPE,
-                            #stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    cmd_line = [sys.executable, "-E", os.path.abspath(__file__)]
+    cmd_line.extend(["--latclient", repr(kwargs)])
+    return subprocess.Popen(cmd_line)  # , stdin=subprocess.PIPE,
+    # stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
 
 def run_latency_test(func, args, nthreads):
     # Create a listening socket to receive the pings. We use UDP which should
@@ -338,8 +354,9 @@ def run_latency_test(func, args, nthreads):
     # Run the client and wait for the first ping(s) to arrive before
     # unblocking the background threads.
     chunks = []
-    process = run_latency_client(addr=sock.getsockname(),
-                                 nb_pings=nb_pings, interval=interval)
+    process = run_latency_client(
+        addr=sock.getsockname(), nb_pings=nb_pings, interval=interval
+    )
     s = _recv(sock, 4096)
     _time = time.time
 
@@ -372,6 +389,7 @@ def run_latency_test(func, args, nthreads):
 
     return results
 
+
 def run_latency_tests(max_threads):
     for task in latency_tasks:
         print("Background CPU task:", task.__doc__)
@@ -383,17 +401,21 @@ def run_latency_tests(max_threads):
             n = len(results)
             # We print out milliseconds
             lats = [1000 * (t2 - t1) for (t1, t2) in results]
-            #print(list(map(int, lats)))
+            # print(list(map(int, lats)))
             avg = sum(lats) / n
             dev = (sum((x - avg) ** 2 for x in lats) / n) ** 0.5
-            print("CPU threads=%d: %d ms. (std dev: %d ms.)" % (nthreads, avg, dev), end="")
+            print(
+                "CPU threads=%d: %d ms. (std dev: %d ms.)" % (nthreads, avg, dev),
+                end="",
+            )
             print()
-            #print("    [... from %d samples]" % n)
+            # print("    [... from %d samples]" % n)
             nthreads += 1
         print()
 
 
 BW_END = "END"
+
 
 def bandwidth_client(addr, packet_size, duration):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -401,8 +423,10 @@ def bandwidth_client(addr, packet_size, duration):
     local_addr = sock.getsockname()
     _time = time.time
     _sleep = time.sleep
+
     def _send_chunk(msg):
         _sendto(sock, ("%r#%s\n" % (local_addr, msg)).rjust(packet_size), addr)
+
     # We give the parent some time to be ready.
     _sleep(1.0)
     try:
@@ -418,11 +442,13 @@ def bandwidth_client(addr, packet_size, duration):
     finally:
         sock.close()
 
+
 def run_bandwidth_client(**kwargs):
-    cmd_line = [sys.executable, '-E', os.path.abspath(__file__)]
-    cmd_line.extend(['--bwclient', repr(kwargs)])
-    return subprocess.Popen(cmd_line) #, stdin=subprocess.PIPE,
-                            #stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    cmd_line = [sys.executable, "-E", os.path.abspath(__file__)]
+    cmd_line.extend(["--bwclient", repr(kwargs)])
+    return subprocess.Popen(cmd_line)  # , stdin=subprocess.PIPE,
+    # stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
 
 def run_bandwidth_test(func, args, nthreads):
     # Create a listening socket to receive the packets. We use UDP which should
@@ -469,13 +495,13 @@ def run_bandwidth_test(func, args, nthreads):
 
         # Run the client and wait for the first packet to arrive before
         # unblocking the background threads.
-        process = run_bandwidth_client(addr=addr,
-                                       packet_size=packet_size,
-                                       duration=duration)
+        process = run_bandwidth_client(
+            addr=addr, packet_size=packet_size, duration=duration
+        )
         _time = time.time
         # This will also wait for the parent to be ready
         s = _recv(sock, packet_size)
-        remote_addr = eval(s.partition('#')[0])
+        remote_addr = eval(s.partition("#")[0])
 
         with start_cond:
             start_time = _time()
@@ -499,6 +525,7 @@ def run_bandwidth_test(func, args, nthreads):
 
     return (n - 1) / (end_time - first_time)
 
+
 def run_bandwidth_tests(max_threads):
     for task in bandwidth_tasks:
         print("Background CPU task:", task.__doc__)
@@ -509,7 +536,7 @@ def run_bandwidth_tests(max_threads):
         while nthreads <= max_threads:
             results = run_bandwidth_test(func, args, nthreads)
             speed = results
-            #speed = len(results) * 1.0 / results[-1][0]
+            # speed = len(results) * 1.0 / results[-1][0]
             print("CPU threads=%d: %.1f" % (nthreads, speed), end="")
             if baseline_speed is None:
                 print(" packets/s.")
@@ -523,34 +550,75 @@ def run_bandwidth_tests(max_threads):
 def main():
     usage = "usage: %prog [-h|--help] [options]"
     parser = OptionParser(usage=usage)
-    parser.add_option("-t", "--throughput",
-                      action="store_true", dest="throughput", default=False,
-                      help="run throughput tests")
-    parser.add_option("-l", "--latency",
-                      action="store_true", dest="latency", default=False,
-                      help="run latency tests")
-    parser.add_option("-b", "--bandwidth",
-                      action="store_true", dest="bandwidth", default=False,
-                      help="run I/O bandwidth tests")
-    parser.add_option("-i", "--interval",
-                      action="store", type="int", dest="check_interval", default=None,
-                      help="sys.setcheckinterval() value "
-                           "(Python 3.8 and older)")
-    parser.add_option("-I", "--switch-interval",
-                      action="store", type="float", dest="switch_interval", default=None,
-                      help="sys.setswitchinterval() value "
-                           "(Python 3.2 and newer)")
-    parser.add_option("-n", "--num-threads",
-                      action="store", type="int", dest="nthreads", default=4,
-                      help="max number of threads in tests")
+    parser.add_option(
+        "-t",
+        "--throughput",
+        action="store_true",
+        dest="throughput",
+        default=False,
+        help="run throughput tests",
+    )
+    parser.add_option(
+        "-l",
+        "--latency",
+        action="store_true",
+        dest="latency",
+        default=False,
+        help="run latency tests",
+    )
+    parser.add_option(
+        "-b",
+        "--bandwidth",
+        action="store_true",
+        dest="bandwidth",
+        default=False,
+        help="run I/O bandwidth tests",
+    )
+    parser.add_option(
+        "-i",
+        "--interval",
+        action="store",
+        type="int",
+        dest="check_interval",
+        default=None,
+        help="sys.setcheckinterval() value " "(Python 3.8 and older)",
+    )
+    parser.add_option(
+        "-I",
+        "--switch-interval",
+        action="store",
+        type="float",
+        dest="switch_interval",
+        default=None,
+        help="sys.setswitchinterval() value " "(Python 3.2 and newer)",
+    )
+    parser.add_option(
+        "-n",
+        "--num-threads",
+        action="store",
+        type="int",
+        dest="nthreads",
+        default=4,
+        help="max number of threads in tests",
+    )
 
     # Hidden option to run the pinging and bandwidth clients
-    parser.add_option("", "--latclient",
-                      action="store", dest="latclient", default=None,
-                      help=SUPPRESS_HELP)
-    parser.add_option("", "--bwclient",
-                      action="store", dest="bwclient", default=None,
-                      help=SUPPRESS_HELP)
+    parser.add_option(
+        "",
+        "--latclient",
+        action="store",
+        dest="latclient",
+        default=None,
+        help=SUPPRESS_HELP,
+    )
+    parser.add_option(
+        "",
+        "--bwclient",
+        action="store",
+        dest="bwclient",
+        default=None,
+        help=SUPPRESS_HELP,
+    )
 
     options, args = parser.parse_args()
     if args:
@@ -573,18 +641,24 @@ def main():
     if options.switch_interval:
         sys.setswitchinterval(options.switch_interval)
 
-    print("== %s %s (%s) ==" % (
-        platform.python_implementation(),
-        platform.python_version(),
-        platform.python_build()[0],
-    ))
+    print(
+        "== %s %s (%s) =="
+        % (
+            platform.python_implementation(),
+            platform.python_version(),
+            platform.python_build()[0],
+        )
+    )
     # Processor identification often has repeated spaces
-    cpu = ' '.join(platform.processor().split())
-    print("== %s %s on '%s' ==" % (
-        platform.machine(),
-        platform.system(),
-        cpu,
-    ))
+    cpu = " ".join(platform.processor().split())
+    print(
+        "== %s %s on '%s' =="
+        % (
+            platform.machine(),
+            platform.system(),
+            cpu,
+        )
+    )
     print()
 
     if options.throughput:
@@ -601,6 +675,7 @@ def main():
         print("--- I/O bandwidth ---")
         print()
         run_bandwidth_tests(options.nthreads)
+
 
 if __name__ == "__main__":
     main()

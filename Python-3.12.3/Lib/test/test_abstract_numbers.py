@@ -56,7 +56,7 @@ class TestNumbers(unittest.TestCase):
         self.assertTrue(issubclass(complex, Complex))
         self.assertTrue(issubclass(complex, Number))
 
-        c1, c2 = complex(3, 2), complex(4,1)
+        c1, c2 = complex(3, 2), complex(4, 1)
         # XXX: This is not ideal, but see the comment in math_trunc().
         self.assertRaises(TypeError, math.trunc, c1)
         self.assertRaises(TypeError, operator.mod, c1, c2)
@@ -84,8 +84,7 @@ class TestNumbersDefaultMethods(unittest.TestCase):
 
             def __add__(self, other):
                 if isinstance(other, Complex):
-                    return MyComplex(self.imag + other.imag,
-                                     self.real + other.real)
+                    return MyComplex(self.imag + other.imag, self.real + other.real)
                 raise NotImplementedError
 
             def __neg__(self):
@@ -140,7 +139,7 @@ class TestNumbersDefaultMethods(unittest.TestCase):
         self.assertEqual(divmod(3, MyReal(2)), (1, 1))
 
         # test __complex__
-        self.assertEqual(complex(MyReal(1)), 1+0j)
+        self.assertEqual(complex(MyReal(1)), 1 + 0j)
 
         # test real
         self.assertEqual(MyReal(3).real, 3)
@@ -150,7 +149,6 @@ class TestNumbersDefaultMethods(unittest.TestCase):
 
         # test conjugate
         self.assertEqual(MyReal(123).conjugate(), 123)
-
 
     def test_rational(self):
         @concretize
@@ -169,7 +167,6 @@ class TestNumbersDefaultMethods(unittest.TestCase):
 
         # test__float__
         self.assertEqual(float(MyRational(5, 2)), 2.5)
-
 
     def test_integral(self):
         @concretize

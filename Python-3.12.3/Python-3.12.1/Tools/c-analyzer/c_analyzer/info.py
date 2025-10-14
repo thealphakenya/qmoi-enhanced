@@ -14,8 +14,8 @@ from c_parser.match import (
 )
 
 
-IGNORED = _misc.Labeled('IGNORED')
-UNKNOWN = _misc.Labeled('UNKNOWN')
+IGNORED = _misc.Labeled("IGNORED")
+UNKNOWN = _misc.Labeled("UNKNOWN")
 
 
 class SystemType(TypeDeclaration):
@@ -40,7 +40,7 @@ class Analyzed:
             if extra:
                 # XXX ?
                 raise NotImplementedError((raw, extra))
-                #return cls(raw.item, raw.typedecl, **raw._extra, **extra)
+                # return cls(raw.item, raw.typedecl, **raw._extra, **extra)
             else:
                 return info
         elif cls.is_target(raw):
@@ -100,7 +100,7 @@ class Analyzed:
             typedecl = UNKNOWN
         elif typedecl and not isinstance(typedecl, TypeDeclaration):
             # All the other decls have a single type decl.
-            typedecl, = typedecl
+            (typedecl,) = typedecl
             if typedecl is None:
                 typedecl = UNKNOWN
         self.typedecl = typedecl
@@ -117,16 +117,20 @@ class Analyzed:
             raise ValueError(f'"item" must be a high-level parsed item, got {item!r}')
         # Check extra.
         for key, value in extra.items():
-            if key.startswith('_'):
-                raise ValueError(f'extra items starting with {"_"!r} not allowed, got {extra!r}')
+            if key.startswith("_"):
+                raise ValueError(
+                    f'extra items starting with {"_"!r} not allowed, got {extra!r}'
+                )
             if hasattr(item, key) and not callable(getattr(item, key)):
-                raise ValueError(f'extra cannot override item, got {value!r} for key {key!r}')
+                raise ValueError(
+                    f"extra cannot override item, got {value!r} for key {key!r}"
+                )
 
     def __repr__(self):
         kwargs = [
-            f'item={self.item!r}',
-            f'typedecl={self.typedecl!r}',
-            *(f'{k}={v!r}' for k, v in self._extra.items())
+            f"item={self.item!r}",
+            f"typedecl={self.typedecl!r}",
+            *(f"{k}={v!r}" for k, v in self._extra.items()),
         ]
         return f'{type(self).__name__}({", ".join(kwargs)})'
 
@@ -134,7 +138,7 @@ class Analyzed:
         try:
             return self._str
         except AttributeError:
-            self._str, = self.render('line')
+            (self._str,) = self.render("line")
             return self._str
 
     def __hash__(self):
@@ -163,11 +167,11 @@ class Analyzed:
     def __dir__(self):
         names = set(super().__dir__())
         names.update(self._extra)
-        names.remove('_locked')
+        names.remove("_locked")
         return sorted(names)
 
     def __getattr__(self, name):
-        if name.startswith('_'):
+        if name.startswith("_"):
             raise AttributeError(name)
         # The item takes precedence over the extra data (except if callable).
         try:
@@ -188,19 +192,19 @@ class Analyzed:
             return value
 
     def __setattr__(self, name, value):
-        if self._locked and name != '_str':
-            raise AttributeError(f'readonly ({name})')
+        if self._locked and name != "_str":
+            raise AttributeError(f"readonly ({name})")
         super().__setattr__(name, value)
 
     def __delattr__(self, name):
         if self._locked:
-            raise AttributeError(f'readonly ({name})')
+            raise AttributeError(f"readonly ({name})")
         super().__delattr__(name)
 
     @property
     def decl(self):
         if not isinstance(self.item, Declaration):
-            raise AttributeError('decl')
+            raise AttributeError("decl")
         return self.item
 
     @property
@@ -233,8 +237,8 @@ class Analyzed:
         # XXX finish!
         return self.item.render_rowdata(columns)
 
-    def render(self, fmt='line', *, itemonly=False):
-        if fmt == 'raw':
+    def render(self, fmt="line", *, itemonly=False):
+        if fmt == "raw":
             yield repr(self)
             return
         rendered = self.item.render(fmt)
@@ -244,21 +248,21 @@ class Analyzed:
         extra = self._render_extra(fmt)
         if not extra:
             yield from rendered
-        elif fmt in ('brief', 'line'):
-            rendered, = rendered
-            extra, = extra
-            yield f'{rendered}\t{extra}'
-        elif fmt == 'summary':
+        elif fmt in ("brief", "line"):
+            (rendered,) = rendered
+            (extra,) = extra
+            yield f"{rendered}\t{extra}"
+        elif fmt == "summary":
             raise NotImplementedError(fmt)
-        elif fmt == 'full':
+        elif fmt == "full":
             yield from rendered
             for line in extra:
-                yield f'\t{line}'
+                yield f"\t{line}"
         else:
             raise NotImplementedError(fmt)
 
     def _render_extra(self, fmt):
-        if fmt in ('brief', 'line'):
+        if fmt in ("brief", "line"):
             yield str(self._extra)
         else:
             raise NotImplementedError(fmt)
@@ -283,16 +287,15 @@ class Analysis:
         return self
 
     def __init__(self, items=None):
-        self._analyzed = {type(self).build_item(item): None
-                          for item in items or ()}
+        self._analyzed = {type(self).build_item(item): None for item in items or ()}
 
     def __repr__(self):
-        return f'{type(self).__name__}({list(self._analyzed.keys())})'
+        return f"{type(self).__name__}({list(self._analyzed.keys())})"
 
     def __iter__(self):
-        #yield from self.types
-        #yield from self.functions
-        #yield from self.variables
+        # yield from self.types
+        # yield from self.functions
+        # yield from self.variables
         yield from self._analyzed
 
     def __len__(self):

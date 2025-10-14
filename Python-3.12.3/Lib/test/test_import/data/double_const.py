@@ -9,11 +9,12 @@ from test.support import TestFailed
 # the marshal format for doubles.  It's also possible that repr() doesn't
 # produce enough digits to get reasonable precision for this box.
 
-PI    = 3.14159265358979324
+PI = 3.14159265358979324
 TWOPI = 6.28318530717958648
 
-PI_str    = "3.14159265358979324"
+PI_str = "3.14159265358979324"
 TWOPI_str = "6.28318530717958648"
+
 
 # Verify that the double x is within a few bits of eval(x_str).
 def check_ok(x, x_str):
@@ -23,8 +24,9 @@ def check_ok(x, x_str):
     diff = abs(x - x2)
     # If diff is no larger than 3 ULP (wrt x2), then diff/8 is no larger
     # than 0.375 ULP, so adding diff/8 to x2 should have no effect.
-    if x2 + (diff / 8.) != x2:
+    if x2 + (diff / 8.0) != x2:
         raise TestFailed("Manifest const %s lost too much precision " % x_str)
+
 
 check_ok(PI, PI_str)
 check_ok(TWOPI, TWOPI_str)

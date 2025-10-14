@@ -15,8 +15,9 @@ TODO:
 
 # .pyw is for Windows; .pyi is for typing stub files.
 # The extension order is needed for iomenu open/save dialogs.
-py_extensions = ('.py', '.pyw', '.pyi')
+py_extensions = (".py", ".pyw", ".pyi")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     from unittest import main
-    main('idlelib.idle_test.test_util', verbosity=2)
+
+    main("idlelib.idle_test.test_util", verbosity=2)

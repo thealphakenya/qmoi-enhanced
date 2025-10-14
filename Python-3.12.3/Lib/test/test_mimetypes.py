@@ -63,8 +63,7 @@ class MimeTypesTestCase(unittest.TestCase):
         eq = self.assertEqual
         sio = io.StringIO("x-application/x-unittest pyunit\n")
         self.db.readfp(sio)
-        eq(self.db.guess_type("foo.pyunit"),
-           ("x-application/x-unittest", None))
+        eq(self.db.guess_type("foo.pyunit"), ("x-application/x-unittest", None))
         eq(self.db.guess_extension("x-application/x-unittest"), ".pyunit")
 
     def test_read_mime_types(self):
@@ -83,110 +82,119 @@ class MimeTypesTestCase(unittest.TestCase):
         # bpo-41048: read_mime_types should read the rule file with 'utf-8' encoding.
         # Not with locale encoding. _bootlocale has been imported because io.open(...)
         # uses it.
-        data = "application/no-mans-land  Fran\u00E7ais"
+        data = "application/no-mans-land  Fran\u00e7ais"
         filename = "filename"
         fp = io.StringIO(data)
-        with unittest.mock.patch.object(mimetypes, 'open',
-                                        return_value=fp) as mock_open:
+        with unittest.mock.patch.object(
+            mimetypes, "open", return_value=fp
+        ) as mock_open:
             mime_dict = mimetypes.read_mime_types(filename)
-            mock_open.assert_called_with(filename, encoding='utf-8')
+            mock_open.assert_called_with(filename, encoding="utf-8")
         eq(mime_dict[".Français"], "application/no-mans-land")
 
     def test_non_standard_types(self):
         eq = self.assertEqual
         # First try strict
-        eq(self.db.guess_type('foo.xul', strict=True), (None, None))
-        eq(self.db.guess_extension('image/jpg', strict=True), None)
-        eq(self.db.guess_extension('image/webp', strict=True), None)
+        eq(self.db.guess_type("foo.xul", strict=True), (None, None))
+        eq(self.db.guess_extension("image/jpg", strict=True), None)
+        eq(self.db.guess_extension("image/webp", strict=True), None)
         # And then non-strict
-        eq(self.db.guess_type('foo.xul', strict=False), ('text/xul', None))
-        eq(self.db.guess_type('foo.XUL', strict=False), ('text/xul', None))
-        eq(self.db.guess_type('foo.invalid', strict=False), (None, None))
-        eq(self.db.guess_extension('image/jpg', strict=False), '.jpg')
-        eq(self.db.guess_extension('image/JPG', strict=False), '.jpg')
-        eq(self.db.guess_extension('image/webp', strict=False), '.webp')
+        eq(self.db.guess_type("foo.xul", strict=False), ("text/xul", None))
+        eq(self.db.guess_type("foo.XUL", strict=False), ("text/xul", None))
+        eq(self.db.guess_type("foo.invalid", strict=False), (None, None))
+        eq(self.db.guess_extension("image/jpg", strict=False), ".jpg")
+        eq(self.db.guess_extension("image/JPG", strict=False), ".jpg")
+        eq(self.db.guess_extension("image/webp", strict=False), ".webp")
 
     def test_filename_with_url_delimiters(self):
         # bpo-38449: URL delimiters cases should be handled also.
         # They would have different mime types if interpreted as URL as
         # compared to when interpreted as filename because of the semicolon.
         eq = self.assertEqual
-        gzip_expected = ('application/x-tar', 'gzip')
+        gzip_expected = ("application/x-tar", "gzip")
         for name in (
-                ';1.tar.gz',
-                '?1.tar.gz',
-                '#1.tar.gz',
-                '#1#.tar.gz',
-                ';1#.tar.gz',
-                ';&1=123;?.tar.gz',
-                '?k1=v1&k2=v2.tar.gz',
+            ";1.tar.gz",
+            "?1.tar.gz",
+            "#1.tar.gz",
+            "#1#.tar.gz",
+            ";1#.tar.gz",
+            ";&1=123;?.tar.gz",
+            "?k1=v1&k2=v2.tar.gz",
+        ):
+            for prefix in (
+                "",
+                "/",
+                "\\",
+                "c:",
+                "c:/",
+                "c:\\",
+                "c:/d/",
+                "c:\\d\\",
+                "//share/server/",
+                "\\\\share\\server\\",
             ):
-            for prefix in ('', '/', '\\',
-                           'c:', 'c:/', 'c:\\', 'c:/d/', 'c:\\d\\',
-                           '//share/server/', '\\\\share\\server\\'):
                 path = prefix + name
                 with self.subTest(path=path):
                     eq(self.db.guess_type(path), gzip_expected)
-            expected = (None, None) if os.name == 'nt' else gzip_expected
-            for prefix in ('//', '\\\\', '//share/', '\\\\share\\'):
+            expected = (None, None) if os.name == "nt" else gzip_expected
+            for prefix in ("//", "\\\\", "//share/", "\\\\share\\"):
                 path = prefix + name
                 with self.subTest(path=path):
                     eq(self.db.guess_type(path), expected)
         eq(self.db.guess_type(r" \"\`;b&b&c |.tar.gz"), gzip_expected)
 
     def test_url(self):
-        result = self.db.guess_type('http://host.html')
-        msg = 'URL only has a host name, not a file'
+        result = self.db.guess_type("http://host.html")
+        msg = "URL only has a host name, not a file"
         self.assertSequenceEqual(result, (None, None), msg)
-        result = self.db.guess_type('http://example.com/host.html')
-        msg = 'Should be text/html'
-        self.assertSequenceEqual(result, ('text/html', None), msg)
-        result = self.db.guess_type('http://example.com/host.html#x.tar')
-        self.assertSequenceEqual(result, ('text/html', None))
-        result = self.db.guess_type('http://example.com/host.html?q=x.tar')
-        self.assertSequenceEqual(result, ('text/html', None))
+        result = self.db.guess_type("http://example.com/host.html")
+        msg = "Should be text/html"
+        self.assertSequenceEqual(result, ("text/html", None), msg)
+        result = self.db.guess_type("http://example.com/host.html#x.tar")
+        self.assertSequenceEqual(result, ("text/html", None))
+        result = self.db.guess_type("http://example.com/host.html?q=x.tar")
+        self.assertSequenceEqual(result, ("text/html", None))
 
     def test_guess_all_types(self):
         # First try strict.  Use a set here for testing the results because if
         # test_urllib2 is run before test_mimetypes, global state is modified
         # such that the 'all' set will have more items in it.
-        all = self.db.guess_all_extensions('text/plain', strict=True)
-        self.assertTrue(set(all) >= {'.bat', '.c', '.h', '.ksh', '.pl', '.txt'})
+        all = self.db.guess_all_extensions("text/plain", strict=True)
+        self.assertTrue(set(all) >= {".bat", ".c", ".h", ".ksh", ".pl", ".txt"})
         self.assertEqual(len(set(all)), len(all))  # no duplicates
         # And now non-strict
-        all = self.db.guess_all_extensions('image/jpg', strict=False)
-        self.assertEqual(all, ['.jpg'])
+        all = self.db.guess_all_extensions("image/jpg", strict=False)
+        self.assertEqual(all, [".jpg"])
         # And now for no hits
-        all = self.db.guess_all_extensions('image/jpg', strict=True)
+        all = self.db.guess_all_extensions("image/jpg", strict=True)
         self.assertEqual(all, [])
         # And now for type existing in both strict and non-strict mappings.
-        self.db.add_type('test-type', '.strict-ext')
-        self.db.add_type('test-type', '.non-strict-ext', strict=False)
-        all = self.db.guess_all_extensions('test-type', strict=False)
-        self.assertEqual(all, ['.strict-ext', '.non-strict-ext'])
-        all = self.db.guess_all_extensions('test-type')
-        self.assertEqual(all, ['.strict-ext'])
+        self.db.add_type("test-type", ".strict-ext")
+        self.db.add_type("test-type", ".non-strict-ext", strict=False)
+        all = self.db.guess_all_extensions("test-type", strict=False)
+        self.assertEqual(all, [".strict-ext", ".non-strict-ext"])
+        all = self.db.guess_all_extensions("test-type")
+        self.assertEqual(all, [".strict-ext"])
         # Test that changing the result list does not affect the global state
-        all.append('.no-such-ext')
-        all = self.db.guess_all_extensions('test-type')
-        self.assertNotIn('.no-such-ext', all)
+        all.append(".no-such-ext")
+        all = self.db.guess_all_extensions("test-type")
+        self.assertNotIn(".no-such-ext", all)
 
     def test_encoding(self):
         filename = support.findfile("mime.types")
         mimes = mimetypes.MimeTypes([filename])
-        exts = mimes.guess_all_extensions('application/vnd.geocube+xml',
-                                          strict=True)
-        self.assertEqual(exts, ['.g3', '.g\xb3'])
+        exts = mimes.guess_all_extensions("application/vnd.geocube+xml", strict=True)
+        self.assertEqual(exts, [".g3", ".g\xb3"])
 
     def test_init_reinitializes(self):
         # Issue 4936: make sure an init starts clean
         # First, put some poison into the types table
-        mimetypes.add_type('foo/bar', '.foobar')
-        self.assertEqual(mimetypes.guess_extension('foo/bar'), '.foobar')
+        mimetypes.add_type("foo/bar", ".foobar")
+        self.assertEqual(mimetypes.guess_extension("foo/bar"), ".foobar")
         # Reinitialize
         mimetypes.init()
         # Poison should be gone.
-        self.assertEqual(mimetypes.guess_extension('foo/bar'), None)
+        self.assertEqual(mimetypes.guess_extension("foo/bar"), None)
 
     @unittest.skipIf(sys.platform.startswith("win"), "Non-Windows only")
     def test_guess_known_extensions(self):
@@ -194,28 +202,39 @@ class MimeTypesTestCase(unittest.TestCase):
         # The test fails on Windows because Windows adds mime types from the Registry
         # and that creates some duplicates.
         from mimetypes import types_map
+
         for v in types_map.values():
             self.assertIsNotNone(mimetypes.guess_extension(v))
 
     def test_preferred_extension(self):
         def check_extensions():
-            self.assertEqual(mimetypes.guess_extension('application/octet-stream'), '.bin')
-            self.assertEqual(mimetypes.guess_extension('application/postscript'), '.ps')
-            self.assertEqual(mimetypes.guess_extension('application/vnd.apple.mpegurl'), '.m3u')
-            self.assertEqual(mimetypes.guess_extension('application/vnd.ms-excel'), '.xls')
-            self.assertEqual(mimetypes.guess_extension('application/vnd.ms-powerpoint'), '.ppt')
-            self.assertEqual(mimetypes.guess_extension('application/x-texinfo'), '.texi')
-            self.assertEqual(mimetypes.guess_extension('application/x-troff'), '.roff')
-            self.assertEqual(mimetypes.guess_extension('application/xml'), '.xsl')
-            self.assertEqual(mimetypes.guess_extension('audio/mpeg'), '.mp3')
-            self.assertEqual(mimetypes.guess_extension('image/avif'), '.avif')
-            self.assertEqual(mimetypes.guess_extension('image/jpeg'), '.jpg')
-            self.assertEqual(mimetypes.guess_extension('image/tiff'), '.tiff')
-            self.assertEqual(mimetypes.guess_extension('message/rfc822'), '.eml')
-            self.assertEqual(mimetypes.guess_extension('text/html'), '.html')
-            self.assertEqual(mimetypes.guess_extension('text/plain'), '.txt')
-            self.assertEqual(mimetypes.guess_extension('video/mpeg'), '.mpeg')
-            self.assertEqual(mimetypes.guess_extension('video/quicktime'), '.mov')
+            self.assertEqual(
+                mimetypes.guess_extension("application/octet-stream"), ".bin"
+            )
+            self.assertEqual(mimetypes.guess_extension("application/postscript"), ".ps")
+            self.assertEqual(
+                mimetypes.guess_extension("application/vnd.apple.mpegurl"), ".m3u"
+            )
+            self.assertEqual(
+                mimetypes.guess_extension("application/vnd.ms-excel"), ".xls"
+            )
+            self.assertEqual(
+                mimetypes.guess_extension("application/vnd.ms-powerpoint"), ".ppt"
+            )
+            self.assertEqual(
+                mimetypes.guess_extension("application/x-texinfo"), ".texi"
+            )
+            self.assertEqual(mimetypes.guess_extension("application/x-troff"), ".roff")
+            self.assertEqual(mimetypes.guess_extension("application/xml"), ".xsl")
+            self.assertEqual(mimetypes.guess_extension("audio/mpeg"), ".mp3")
+            self.assertEqual(mimetypes.guess_extension("image/avif"), ".avif")
+            self.assertEqual(mimetypes.guess_extension("image/jpeg"), ".jpg")
+            self.assertEqual(mimetypes.guess_extension("image/tiff"), ".tiff")
+            self.assertEqual(mimetypes.guess_extension("message/rfc822"), ".eml")
+            self.assertEqual(mimetypes.guess_extension("text/html"), ".html")
+            self.assertEqual(mimetypes.guess_extension("text/plain"), ".txt")
+            self.assertEqual(mimetypes.guess_extension("video/mpeg"), ".mpeg")
+            self.assertEqual(mimetypes.guess_extension("video/quicktime"), ".mov")
 
         check_extensions()
         mimetypes.init()
@@ -242,25 +261,27 @@ class MimeTypesTestCase(unittest.TestCase):
     def test_path_like_ob(self):
         filename = "LICENSE.txt"
         filepath = pathlib.Path(filename)
-        filepath_with_abs_dir = pathlib.Path('/dir/'+filename)
-        filepath_relative = pathlib.Path('../dir/'+filename)
-        path_dir = pathlib.Path('./')
+        filepath_with_abs_dir = pathlib.Path("/dir/" + filename)
+        filepath_relative = pathlib.Path("../dir/" + filename)
+        path_dir = pathlib.Path("./")
 
         expected = self.db.guess_type(filename)
 
         self.assertEqual(self.db.guess_type(filepath), expected)
-        self.assertEqual(self.db.guess_type(
-            filepath_with_abs_dir), expected)
+        self.assertEqual(self.db.guess_type(filepath_with_abs_dir), expected)
         self.assertEqual(self.db.guess_type(filepath_relative), expected)
         self.assertEqual(self.db.guess_type(path_dir), (None, None))
 
     def test_keywords_args_api(self):
-        self.assertEqual(self.db.guess_type(
-            url="foo.html", strict=True), ("text/html", None))
-        self.assertEqual(self.db.guess_all_extensions(
-            type='image/jpg', strict=True), [])
-        self.assertEqual(self.db.guess_extension(
-            type='image/jpg', strict=False), '.jpg')
+        self.assertEqual(
+            self.db.guess_type(url="foo.html", strict=True), ("text/html", None)
+        )
+        self.assertEqual(
+            self.db.guess_all_extensions(type="image/jpg", strict=True), []
+        )
+        self.assertEqual(
+            self.db.guess_extension(type="image/jpg", strict=False), ".jpg"
+        )
 
 
 @unittest.skipUnless(sys.platform.startswith("win"), "Windows only")
@@ -277,8 +298,10 @@ class Win32MimeTypesTestCase(unittest.TestCase):
         mimetypes.types_map.clear()
         mimetypes.types_map.update(self.original_types_map)
 
-    @unittest.skipIf(win32_edition() in ('NanoServer', 'WindowsCoreHeadless', 'IoTEdgeOS'),
-                                         "MIME types registry keys unavailable")
+    @unittest.skipIf(
+        win32_edition() in ("NanoServer", "WindowsCoreHeadless", "IoTEdgeOS"),
+        "MIME types registry keys unavailable",
+    )
     def test_registry_parsing(self):
         # the original, minimum contents of the MIME database in the
         # Windows registry is undocumented AFAIK.
@@ -288,8 +311,10 @@ class Win32MimeTypesTestCase(unittest.TestCase):
         eq(self.db.guess_type("image.jpg"), ("image/jpeg", None))
         eq(self.db.guess_type("image.png"), ("image/png", None))
 
-    @unittest.skipIf(not hasattr(_winapi, "_mimetypes_read_windows_registry"),
-                     "read_windows_registry accelerator unavailable")
+    @unittest.skipIf(
+        not hasattr(_winapi, "_mimetypes_read_windows_registry"),
+        "read_windows_registry accelerator unavailable",
+    )
     def test_registry_accelerator(self):
         from_accel = {}
         from_reg = {}
@@ -355,6 +380,7 @@ class MimetypesCliTestCase(unittest.TestCase):
 
         type_info = self.mimetypes_cmd("foo.pic")
         eq(type_info, "I don't know anything about type foo.pic")
+
 
 if __name__ == "__main__":
     unittest.main()

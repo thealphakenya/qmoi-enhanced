@@ -42,7 +42,11 @@ arg_parser.add_argument(
     "-o", "--output", type=str, help="Generated code", default=DEFAULT_OUTPUT
 )
 arg_parser.add_argument(
-    "-m", "--metadata", type=str, help="Generated metadata", default=DEFAULT_METADATA_OUTPUT
+    "-m",
+    "--metadata",
+    type=str,
+    help="Generated metadata",
+    default=DEFAULT_METADATA_OUTPUT,
 )
 arg_parser.add_argument(
     "-l", "--emit-line-directives", help="Emit #line directives", action="store_true"
@@ -116,7 +120,7 @@ class Formatter:
     nominal_filename: str
 
     def __init__(
-            self, stream: typing.TextIO, indent: int, emit_line_directives: bool = False
+        self, stream: typing.TextIO, indent: int, emit_line_directives: bool = False
     ) -> None:
         self.stream = stream
         self.prefix = " " * indent
@@ -255,8 +259,9 @@ class Instruction:
         self.kind = inst.kind
         self.name = inst.name
         self.block = inst.block
-        self.block_text, self.check_eval_breaker, self.predictions, self.block_line = \
+        self.block_text, self.check_eval_breaker, self.predictions, self.block_line = (
             extract_block_text(self.block)
+        )
         self.always_exits = always_exits(self.block_text)
         self.cache_effects = [
             effect for effect in inst.inputs if isinstance(effect, parser.CacheEffect)
@@ -302,9 +307,14 @@ class Instruction:
                 list_effect_size([ieff for ieff in ieffects[: i + 1]])
             )
             if ieffect.size:
-                src = StackEffect(f"(stack_pointer - {maybe_parenthesize(isize)})", "PyObject **")
+                src = StackEffect(
+                    f"(stack_pointer - {maybe_parenthesize(isize)})", "PyObject **"
+                )
             elif ieffect.cond:
-                src = StackEffect(f"({ieffect.cond}) ? stack_pointer[-{maybe_parenthesize(isize)}] : NULL", "")
+                src = StackEffect(
+                    f"({ieffect.cond}) ? stack_pointer[-{maybe_parenthesize(isize)}] : NULL",
+                    "",
+                )
             else:
                 src = StackEffect(f"stack_pointer[-{maybe_parenthesize(isize)}]", "")
             out.declare(ieffect, src)
@@ -353,7 +363,9 @@ class Instruction:
                 list_effect_size([oeff for oeff in oeffects[: i + 1]])
             )
             if oeffect.size:
-                dst = StackEffect(f"stack_pointer - {maybe_parenthesize(osize)}", "PyObject **")
+                dst = StackEffect(
+                    f"stack_pointer - {maybe_parenthesize(osize)}", "PyObject **"
+                )
             else:
                 dst = StackEffect(f"stack_pointer[-{maybe_parenthesize(osize)}]", "")
             out.assign(dst, oeffect)
@@ -509,7 +521,9 @@ class Analyzer:
     errors: int = 0
     emit_line_directives: bool = False
 
-    def __init__(self, input_filenames: list[str], output_filename: str, metadata_filename: str):
+    def __init__(
+        self, input_filenames: list[str], output_filename: str, metadata_filename: str
+    ):
         """Read the input file."""
         self.input_filenames = input_filenames
         self.output_filename = output_filename
@@ -605,7 +619,9 @@ class Analyzer:
                                 f"previous definition @ {self.instrs[name].inst.context}",
                                 thing_first_token,
                             )
-                        self.everything[instrs_idx[name]] = OverriddenInstructionPlaceHolder(name=name)
+                        self.everything[instrs_idx[name]] = (
+                            OverriddenInstructionPlaceHolder(name=name)
+                        )
                     if name not in self.instrs and thing.override:
                         raise psr.make_syntax_error(
                             f"Definition of '{name}' @ {thing.context} is supposed to be "
@@ -931,10 +947,14 @@ class Analyzer:
         ) -> None:
             self.out.emit("")
             self.out.emit("#ifndef NEED_OPCODE_METADATA")
-            self.out.emit(f"extern int _PyOpcode_num_{direction}(int opcode, int oparg, bool jump);")
+            self.out.emit(
+                f"extern int _PyOpcode_num_{direction}(int opcode, int oparg, bool jump);"
+            )
             self.out.emit("#else")
             self.out.emit("int")
-            self.out.emit(f"_PyOpcode_num_{direction}(int opcode, int oparg, bool jump) {{")
+            self.out.emit(
+                f"_PyOpcode_num_{direction}(int opcode, int oparg, bool jump) {{"
+            )
             self.out.emit("    switch(opcode) {")
             for instr, effect in data:
                 self.out.emit(f"        case {instr.name}:")
@@ -986,7 +1006,6 @@ class Analyzer:
             self.out.write_raw(self.from_source_files())
             self.out.write_raw(f"// Do not edit!\n")
 
-
             self.write_stack_effect_functions()
 
             # Write type definitions
@@ -1000,9 +1019,13 @@ class Analyzer:
 
             # Write metadata array declaration
             self.out.emit("#ifndef NEED_OPCODE_METADATA")
-            self.out.emit("extern const struct opcode_metadata _PyOpcode_opcode_metadata[256];")
+            self.out.emit(
+                "extern const struct opcode_metadata _PyOpcode_opcode_metadata[256];"
+            )
             self.out.emit("#else")
-            self.out.emit("const struct opcode_metadata _PyOpcode_opcode_metadata[256] = {")
+            self.out.emit(
+                "const struct opcode_metadata _PyOpcode_opcode_metadata[256] = {"
+            )
 
             # Write metadata for each instruction
             for thing in self.everything:
@@ -1079,11 +1102,11 @@ class Analyzer:
             file=sys.stderr,
         )
 
-    def write_overridden_instr_place_holder(self,
-            place_holder: OverriddenInstructionPlaceHolder) -> None:
+    def write_overridden_instr_place_holder(
+        self, place_holder: OverriddenInstructionPlaceHolder
+    ) -> None:
         self.out.emit("")
-        self.out.emit(
-            f"// TARGET({place_holder.name}) overridden by later definition")
+        self.out.emit(f"// TARGET({place_holder.name}) overridden by later definition")
 
     def write_instr(self, instr: Instruction) -> None:
         name = instr.name
@@ -1195,8 +1218,9 @@ def extract_block_text(block: parser.Block) -> tuple[list[str], bool, list[str],
         blocklines.pop()
 
     # Separate CHECK_EVAL_BREAKER() macro from end
-    check_eval_breaker = \
+    check_eval_breaker = (
         blocklines != [] and blocklines[-1].strip() == "CHECK_EVAL_BREAKER();"
+    )
     if check_eval_breaker:
         del blocklines[-1]
 
@@ -1244,7 +1268,9 @@ def main():
     args = arg_parser.parse_args()  # Prints message and sys.exit(2) on error
     if len(args.input) == 0:
         args.input.append(DEFAULT_INPUT)
-    a = Analyzer(args.input, args.output, args.metadata)  # Raises OSError if input unreadable
+    a = Analyzer(
+        args.input, args.output, args.metadata
+    )  # Raises OSError if input unreadable
     if args.emit_line_directives:
         a.emit_line_directives = True
     a.parse()  # Raises SyntaxError on failure

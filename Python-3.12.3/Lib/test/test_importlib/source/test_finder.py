@@ -1,6 +1,6 @@
 from test.test_importlib import abc, util
 
-machinery = util.import_importlib('importlib.machinery')
+machinery = util.import_importlib("importlib.machinery")
 
 import errno
 import os
@@ -14,7 +14,6 @@ import warnings
 
 
 class FinderTests(abc.FinderTests):
-
     """For a top-level module, it should just be found directly in the
     directory being searched. This is true for a directory with source
     [top-level source], bytecode [top-level bc], or both [top-level both].
@@ -38,10 +37,10 @@ class FinderTests(abc.FinderTests):
     """
 
     def get_finder(self, root):
-        loader_details = [(self.machinery.SourceFileLoader,
-                            self.machinery.SOURCE_SUFFIXES),
-                          (self.machinery.SourcelessFileLoader,
-                            self.machinery.BYTECODE_SUFFIXES)]
+        loader_details = [
+            (self.machinery.SourceFileLoader, self.machinery.SOURCE_SUFFIXES),
+            (self.machinery.SourcelessFileLoader, self.machinery.BYTECODE_SUFFIXES),
+        ]
         return self.machinery.FileFinder(root, *loader_details)
 
     def import_(self, root, module):
@@ -73,87 +72,91 @@ class FinderTests(abc.FinderTests):
                         # PEP 3147 pyc file to rename.
                         if error.errno != errno.ENOENT:
                             raise
-            loader = self.import_(mapping['.root'], test)
-            self.assertTrue(hasattr(loader, 'load_module'))
+            loader = self.import_(mapping[".root"], test)
+            self.assertTrue(hasattr(loader, "load_module"))
             return loader
 
     def test_module(self):
         # [top-level source]
-        self.run_test('top_level')
+        self.run_test("top_level")
         # [top-level bc]
-        self.run_test('top_level', compile_={'top_level'},
-                      unlink={'top_level'})
+        self.run_test("top_level", compile_={"top_level"}, unlink={"top_level"})
         # [top-level both]
-        self.run_test('top_level', compile_={'top_level'})
+        self.run_test("top_level", compile_={"top_level"})
 
     # [top-level package]
     def test_package(self):
         # Source.
-        self.run_test('pkg', {'pkg.__init__'})
+        self.run_test("pkg", {"pkg.__init__"})
         # Bytecode.
-        self.run_test('pkg', {'pkg.__init__'}, compile_={'pkg.__init__'},
-                unlink={'pkg.__init__'})
+        self.run_test(
+            "pkg", {"pkg.__init__"}, compile_={"pkg.__init__"}, unlink={"pkg.__init__"}
+        )
         # Both.
-        self.run_test('pkg', {'pkg.__init__'}, compile_={'pkg.__init__'})
+        self.run_test("pkg", {"pkg.__init__"}, compile_={"pkg.__init__"})
 
     # [sub module]
     def test_module_in_package(self):
-        with util.create_modules('pkg.__init__', 'pkg.sub') as mapping:
-            pkg_dir = os.path.dirname(mapping['pkg.__init__'])
-            loader = self.import_(pkg_dir, 'pkg.sub')
-            self.assertTrue(hasattr(loader, 'load_module'))
+        with util.create_modules("pkg.__init__", "pkg.sub") as mapping:
+            pkg_dir = os.path.dirname(mapping["pkg.__init__"])
+            loader = self.import_(pkg_dir, "pkg.sub")
+            self.assertTrue(hasattr(loader, "load_module"))
 
     # [sub package]
     def test_package_in_package(self):
-        context = util.create_modules('pkg.__init__', 'pkg.sub.__init__')
+        context = util.create_modules("pkg.__init__", "pkg.sub.__init__")
         with context as mapping:
-            pkg_dir = os.path.dirname(mapping['pkg.__init__'])
-            loader = self.import_(pkg_dir, 'pkg.sub')
-            self.assertTrue(hasattr(loader, 'load_module'))
+            pkg_dir = os.path.dirname(mapping["pkg.__init__"])
+            loader = self.import_(pkg_dir, "pkg.sub")
+            self.assertTrue(hasattr(loader, "load_module"))
 
     # [package over modules]
     def test_package_over_module(self):
-        name = '_temp'
-        loader = self.run_test(name, {'{0}.__init__'.format(name), name})
-        self.assertIn('__init__', loader.get_filename(name))
+        name = "_temp"
+        loader = self.run_test(name, {"{0}.__init__".format(name), name})
+        self.assertIn("__init__", loader.get_filename(name))
 
     def test_failure(self):
-        with util.create_modules('blah') as mapping:
-            nothing = self.import_(mapping['.root'], 'sdfsadsadf')
+        with util.create_modules("blah") as mapping:
+            nothing = self.import_(mapping[".root"], "sdfsadsadf")
             self.assertEqual(nothing, self.NOT_FOUND)
 
     def test_empty_string_for_dir(self):
         # The empty string from sys.path means to search in the cwd.
-        finder = self.machinery.FileFinder('', (self.machinery.SourceFileLoader,
-            self.machinery.SOURCE_SUFFIXES))
-        with open('mod.py', 'w', encoding='utf-8') as file:
+        finder = self.machinery.FileFinder(
+            "", (self.machinery.SourceFileLoader, self.machinery.SOURCE_SUFFIXES)
+        )
+        with open("mod.py", "w", encoding="utf-8") as file:
             file.write("# test file for importlib")
         try:
-            loader = self._find(finder, 'mod', loader_only=True)
-            self.assertTrue(hasattr(loader, 'load_module'))
+            loader = self._find(finder, "mod", loader_only=True)
+            self.assertTrue(hasattr(loader, "load_module"))
         finally:
-            os.unlink('mod.py')
+            os.unlink("mod.py")
 
     def test_invalidate_caches(self):
         # invalidate_caches() should reset the mtime.
-        finder = self.machinery.FileFinder('', (self.machinery.SourceFileLoader,
-            self.machinery.SOURCE_SUFFIXES))
+        finder = self.machinery.FileFinder(
+            "", (self.machinery.SourceFileLoader, self.machinery.SOURCE_SUFFIXES)
+        )
         finder._path_mtime = 42
         finder.invalidate_caches()
         self.assertEqual(finder._path_mtime, -1)
 
     # Regression test for http://bugs.python.org/issue14846
     def test_dir_removal_handling(self):
-        mod = 'mod'
+        mod = "mod"
         with util.create_modules(mod) as mapping:
-            finder = self.get_finder(mapping['.root'])
-            found = self._find(finder, 'mod', loader_only=True)
+            finder = self.get_finder(mapping[".root"])
+            found = self._find(finder, "mod", loader_only=True)
             self.assertIsNotNone(found)
-        found = self._find(finder, 'mod', loader_only=True)
+        found = self._find(finder, "mod", loader_only=True)
         self.assertEqual(found, self.NOT_FOUND)
 
-    @unittest.skipUnless(sys.platform != 'win32',
-            'os.chmod() does not support the needed arguments under Windows')
+    @unittest.skipUnless(
+        sys.platform != "win32",
+        "os.chmod() does not support the needed arguments under Windows",
+    )
     def test_no_read_directory(self):
         # Issue #16730
         tempdir = tempfile.TemporaryDirectory()
@@ -165,7 +168,7 @@ class FinderTests(abc.FinderTests):
         self.addCleanup(os.chmod, tempdir.name, original_mode)
         os.chmod(tempdir.name, stat.S_IWUSR | stat.S_IXUSR)
         finder = self.get_finder(tempdir.name)
-        found = self._find(finder, 'doesnotexist')
+        found = self._find(finder, "doesnotexist")
         self.assertEqual(found, self.NOT_FOUND)
 
     def test_ignore_file(self):
@@ -173,7 +176,7 @@ class FinderTests(abc.FinderTests):
         # worry about looking for submodules.
         with tempfile.NamedTemporaryFile() as file_obj:
             finder = self.get_finder(file_obj.name)
-            found = self._find(finder, 'doesnotexist')
+            found = self._find(finder, "doesnotexist")
             self.assertEqual(found, self.NOT_FOUND)
 
 
@@ -186,9 +189,9 @@ class FinderTestsPEP451(FinderTests):
         return spec.loader if spec is not None else spec
 
 
-(Frozen_FinderTestsPEP451,
- Source_FinderTestsPEP451
- ) = util.test_both(FinderTestsPEP451, machinery=machinery)
+(Frozen_FinderTestsPEP451, Source_FinderTestsPEP451) = util.test_both(
+    FinderTestsPEP451, machinery=machinery
+)
 
 
 class FinderTestsPEP420(FinderTests):
@@ -204,10 +207,10 @@ class FinderTestsPEP420(FinderTests):
         return spec.loader, spec.submodule_search_locations
 
 
-(Frozen_FinderTestsPEP420,
- Source_FinderTestsPEP420
- ) = util.test_both(FinderTestsPEP420, machinery=machinery)
+(Frozen_FinderTestsPEP420, Source_FinderTestsPEP420) = util.test_both(
+    FinderTestsPEP420, machinery=machinery
+)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

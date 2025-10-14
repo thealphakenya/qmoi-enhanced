@@ -6,7 +6,7 @@ OS = sys.platform
 
 def _as_tuple(items):
     if isinstance(items, str):
-        return tuple(items.strip().replace(',', ' ').split())
+        return tuple(items.strip().replace(",", " ").split())
     elif items:
         return tuple(items)
     else:
@@ -18,9 +18,9 @@ class PreprocessorError(Exception):
 
     @classmethod
     def _msg(cls, filename, reason, **ignored):
-        msg = 'failure while preprocessing'
+        msg = "failure while preprocessing"
         if reason:
-            msg = f'{msg} ({reason})'
+            msg = f"{msg} ({reason})"
         return msg
 
     def __init__(self, filename, preprocessor=None, reason=None):
@@ -32,9 +32,9 @@ class PreprocessorError(Exception):
         self.reason = str(reason) if reason else None
 
         msg = self._msg(**vars(self))
-        msg = f'({filename}) {msg}'
+        msg = f"({filename}) {msg}"
         if preprocessor:
-            msg = f'[{preprocessor}] {msg}'
+            msg = f"[{preprocessor}] {msg}"
         super().__init__(msg)
 
 
@@ -43,9 +43,9 @@ class PreprocessorFailure(PreprocessorError):
 
     @classmethod
     def _msg(cls, error, **ignored):
-        msg = 'preprocessor command failed'
+        msg = "preprocessor command failed"
         if error:
-            msg = f'{msg} {error}'
+            msg = f"{msg} {error}"
         return msg
 
     def __init__(self, filename, argv, error=None, preprocessor=None):
@@ -71,7 +71,7 @@ class ErrorDirectiveError(PreprocessorFailure):
 
     @classmethod
     def _msg(cls, error, **ignored):
-        return f'#error directive hit ({error})'
+        return f"#error directive hit ({error})"
 
     def __init__(self, filename, argv, error, *args, **kwargs):
         super().__init__(filename, argv, error, *args, **kwargs)
@@ -82,7 +82,7 @@ class MissingDependenciesError(PreprocessorFailure):
 
     @classmethod
     def _msg(cls, missing, **ignored):
-        msg = 'preprocessing failed due to missing dependencies'
+        msg = "preprocessing failed due to missing dependencies"
         if missing:
             msg = f'{msg} ({", ".join(missing)})'
         return msg

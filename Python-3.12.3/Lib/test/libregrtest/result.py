@@ -3,8 +3,13 @@ import json
 from typing import Any
 
 from .utils import (
-    StrJSON, TestName, FilterTuple,
-    format_duration, normalize_test_name, print_warning)
+    StrJSON,
+    TestName,
+    FilterTuple,
+    format_duration,
+    normalize_test_name,
+    print_warning,
+)
 
 
 @dataclasses.dataclass(slots=True)
@@ -15,15 +20,11 @@ class TestStats:
 
     @staticmethod
     def from_unittest(result):
-        return TestStats(result.testsRun,
-                         len(result.failures),
-                         len(result.skipped))
+        return TestStats(result.testsRun, len(result.failures), len(result.skipped))
 
     @staticmethod
     def from_doctest(results):
-        return TestStats(results.attempted,
-                         results.failed,
-                         results.skipped)
+        return TestStats(results.attempted, results.failed, results.skipped)
 
     def accumulate(self, stats):
         self.tests_run += stats.tests_run
@@ -41,8 +42,8 @@ class State:
     ENV_CHANGED = "ENV_CHANGED"
     RESOURCE_DENIED = "RESOURCE_DENIED"
     INTERRUPTED = "INTERRUPTED"
-    WORKER_FAILED = "WORKER_FAILED"   # non-zero worker process exit code
-    WORKER_BUG = "WORKER_BUG"         # exception when running a worker
+    WORKER_FAILED = "WORKER_FAILED"  # non-zero worker process exit code
+    WORKER_BUG = "WORKER_BUG"  # exception when running a worker
     DID_NOT_RUN = "DID_NOT_RUN"
     TIMEOUT = "TIMEOUT"
 
@@ -54,7 +55,8 @@ class State:
             State.REFLEAK,
             State.WORKER_FAILED,
             State.WORKER_BUG,
-            State.TIMEOUT}
+            State.TIMEOUT,
+        }
 
     @staticmethod
     def has_meaningful_duration(state):
@@ -68,7 +70,8 @@ class State:
             State.INTERRUPTED,
             State.WORKER_FAILED,
             State.WORKER_BUG,
-            State.DID_NOT_RUN}
+            State.DID_NOT_RUN,
+        }
 
     @staticmethod
     def must_stop(state):
@@ -175,8 +178,10 @@ class TestResult:
                     return None
                 if not match_name:
                     error_type = "ERROR" if is_error else "FAIL"
-                    print_warning(f"rerun failed to parse {error_type} test name: "
-                                  f"{full_name!r}: don't filter tests")
+                    print_warning(
+                        f"rerun failed to parse {error_type} test name: "
+                        f"{full_name!r}: don't filter tests"
+                    )
                     return None
                 match_tests.append(match_name)
 
@@ -188,7 +193,7 @@ class TestResult:
         json.dump(self, file, cls=_EncodeTestResult)
 
     @staticmethod
-    def from_json(worker_json: StrJSON) -> 'TestResult':
+    def from_json(worker_json: StrJSON) -> "TestResult":
         return json.loads(worker_json, object_hook=_decode_test_result)
 
 
@@ -204,9 +209,9 @@ class _EncodeTestResult(json.JSONEncoder):
 
 def _decode_test_result(data: dict[str, Any]) -> TestResult | dict[str, Any]:
     if "__test_result__" in data:
-        data.pop('__test_result__')
-        if data['stats'] is not None:
-            data['stats'] = TestStats(**data['stats'])
+        data.pop("__test_result__")
+        if data["stats"] is not None:
+            data["stats"] = TestStats(**data["stats"])
         return TestResult(**data)
     else:
         return data

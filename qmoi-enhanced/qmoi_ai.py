@@ -2,6 +2,7 @@ import customtkinter as ctk
 import platform
 import sys
 
+
 def main_gui():
     ctk.set_appearance_mode("dark")
     app = ctk.CTk()
@@ -16,6 +17,7 @@ def main_gui():
     label2.pack(pady=10)
 
     app.mainloop()
+
 
 if __name__ == "__main__":
     main_gui()

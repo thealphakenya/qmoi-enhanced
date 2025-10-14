@@ -4,8 +4,13 @@ import time
 import unittest
 from concurrent import futures
 from concurrent.futures._base import (
-    PENDING, RUNNING, CANCELLED, CANCELLED_AND_NOTIFIED, FINISHED, Future,
-    )
+    PENDING,
+    RUNNING,
+    CANCELLED,
+    CANCELLED_AND_NOTIFIED,
+    FINISHED,
+    Future,
+)
 from concurrent.futures.process import _check_system_limits
 
 from test import support
@@ -49,11 +54,12 @@ class ExecutorMixin:
             self.executor = self.executor_type(
                 max_workers=self.worker_count,
                 mp_context=self.get_context(),
-                **self.executor_kwargs)
+                **self.executor_kwargs
+            )
         else:
             self.executor = self.executor_type(
-                max_workers=self.worker_count,
-                **self.executor_kwargs)
+                max_workers=self.worker_count, **self.executor_kwargs
+            )
 
     def tearDown(self):
         self.executor.shutdown(wait=True)
@@ -61,7 +67,7 @@ class ExecutorMixin:
 
         dt = time.monotonic() - self.t1
         if support.verbose:
-            print("%.2fs" % dt, end=' ')
+            print("%.2fs" % dt, end=" ")
         self.assertLess(dt, 300, "synchronization issue: test lasted too long")
 
         super().tearDown()
@@ -118,24 +124,29 @@ class ProcessPoolForkserverMixin(ExecutorMixin):
         return super().get_context()
 
 
-def create_executor_tests(remote_globals, mixin, bases=(BaseTestCase,),
-                          executor_mixins=(ThreadPoolMixin,
-                                           ProcessPoolForkMixin,
-                                           ProcessPoolForkserverMixin,
-                                           ProcessPoolSpawnMixin)):
+def create_executor_tests(
+    remote_globals,
+    mixin,
+    bases=(BaseTestCase,),
+    executor_mixins=(
+        ThreadPoolMixin,
+        ProcessPoolForkMixin,
+        ProcessPoolForkserverMixin,
+        ProcessPoolSpawnMixin,
+    ),
+):
     def strip_mixin(name):
-        if name.endswith(('Mixin', 'Tests')):
+        if name.endswith(("Mixin", "Tests")):
             return name[:-5]
-        elif name.endswith('Test'):
+        elif name.endswith("Test"):
             return name[:-4]
         else:
             return name
 
-    module = remote_globals['__name__']
+    module = remote_globals["__name__"]
     for exe in executor_mixins:
-        name = ("%s%sTest"
-                % (strip_mixin(exe.__name__), strip_mixin(mixin.__name__)))
-        cls = type(name, (mixin,) + (exe,) + bases, {'__module__': module})
+        name = "%s%sTest" % (strip_mixin(exe.__name__), strip_mixin(mixin.__name__))
+        cls = type(name, (mixin,) + (exe,) + bases, {"__module__": module})
         remote_globals[name] = cls
 
 

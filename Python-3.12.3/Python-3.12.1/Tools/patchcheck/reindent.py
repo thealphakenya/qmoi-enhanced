@@ -66,30 +66,35 @@ def errprint(*args):
     sys.stderr.write(" ".join(str(arg) for arg in args))
     sys.stderr.write("\n")
 
+
 def main():
     import getopt
+
     global verbose, recurse, dryrun, makebackup, spec_newline
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "drnvh",
-            ["dryrun", "recurse", "nobackup", "verbose", "newline=", "help"])
+        opts, args = getopt.getopt(
+            sys.argv[1:],
+            "drnvh",
+            ["dryrun", "recurse", "nobackup", "verbose", "newline=", "help"],
+        )
     except getopt.error as msg:
         usage(msg)
         return
     for o, a in opts:
-        if o in ('-d', '--dryrun'):
+        if o in ("-d", "--dryrun"):
             dryrun = True
-        elif o in ('-r', '--recurse'):
+        elif o in ("-r", "--recurse"):
             recurse = True
-        elif o in ('-n', '--nobackup'):
+        elif o in ("-n", "--nobackup"):
             makebackup = False
-        elif o in ('-v', '--verbose'):
+        elif o in ("-v", "--verbose"):
             verbose = True
-        elif o in ('--newline',):
-            if not a.upper() in ('CRLF', 'LF'):
+        elif o in ("--newline",):
+            if not a.upper() in ("CRLF", "LF"):
                 usage()
                 return
-            spec_newline = dict(CRLF='\r\n', LF='\n')[a.upper()]
-        elif o in ('-h', '--help'):
+            spec_newline = dict(CRLF="\r\n", LF="\n")[a.upper()]
+        elif o in ("-h", "--help"):
             usage()
             return
     if not args:
@@ -108,16 +113,18 @@ def check(file):
         names = os.listdir(file)
         for name in names:
             fullname = os.path.join(file, name)
-            if ((recurse and os.path.isdir(fullname) and
-                 not os.path.islink(fullname) and
-                 not os.path.split(fullname)[1].startswith("."))
-                or name.lower().endswith(".py")):
+            if (
+                recurse
+                and os.path.isdir(fullname)
+                and not os.path.islink(fullname)
+                and not os.path.split(fullname)[1].startswith(".")
+            ) or name.lower().endswith(".py"):
                 check(fullname)
         return
 
     if verbose:
-        print("checking", file, "...", end=' ')
-    with open(file, 'rb') as f:
+        print("checking", file, "...", end=" ")
+    with open(file, "rb") as f:
         try:
             encoding, _ = tokenize.detect_encoding(f.readline)
         except SyntaxError as se:
@@ -132,7 +139,9 @@ def check(file):
 
     newline = spec_newline if spec_newline else r.newlines
     if isinstance(newline, tuple):
-        errprint("%s: mixed newlines detected; cannot continue without --newline" % file)
+        errprint(
+            "%s: mixed newlines detected; cannot continue without --newline" % file
+        )
         return
 
     if r.run():
@@ -157,7 +166,7 @@ def check(file):
         return False
 
 
-def _rstrip(line, JUNK='\n \t'):
+def _rstrip(line, JUNK="\n \t"):
     """Return line stripped of trailing spaces, tabs, newlines.
 
     Note that line.rstrip() instead also strips sundry control characters,
@@ -175,7 +184,7 @@ class Reindenter:
 
     def __init__(self, f):
         self.find_stmt = 1  # next token begins a fresh stmt?
-        self.level = 0      # current indent level
+        self.level = 0  # current indent level
 
         # Raw file lines.
         self.raw = f.readlines()
@@ -183,8 +192,7 @@ class Reindenter:
         # File lines, rstripped & tab-expanded.  Dummy at start is so
         # that we can use tokenize's 1-based line numbering easily.
         # Note that a line is all-blank iff it's "\n".
-        self.lines = [_rstrip(line).expandtabs() + "\n"
-                      for line in self.raw]
+        self.lines = [_rstrip(line).expandtabs() + "\n" for line in self.raw]
         self.lines.insert(0, None)
         self.index = 1  # index into self.lines of next line
 
@@ -237,15 +245,17 @@ class Reindenter:
                                 if have == getlspace(lines[jline]):
                                     want = jlevel * 4
                                 break
-                    if want < 0:           # Maybe it's a hanging
-                                           # comment like this one,
+                    if want < 0:  # Maybe it's a hanging
+                        # comment like this one,
                         # in which case we should shift it like its base
                         # line got shifted.
                         for j in range(i - 1, -1, -1):
                             jline, jlevel = stats[j]
                             if jlevel >= 0:
-                                want = have + (getlspace(after[jline - 1]) -
-                                               getlspace(lines[jline]))
+                                want = have + (
+                                    getlspace(after[jline - 1])
+                                    - getlspace(lines[jline])
+                                )
                                 break
                     if want < 0:
                         # Still no luck -- leave it alone.
@@ -282,12 +292,19 @@ class Reindenter:
         return line
 
     # Line-eater for tokenize.
-    def tokeneater(self, type, token, slinecol, end, line,
-                   INDENT=tokenize.INDENT,
-                   DEDENT=tokenize.DEDENT,
-                   NEWLINE=tokenize.NEWLINE,
-                   COMMENT=tokenize.COMMENT,
-                   NL=tokenize.NL):
+    def tokeneater(
+        self,
+        type,
+        token,
+        slinecol,
+        end,
+        line,
+        INDENT=tokenize.INDENT,
+        DEDENT=tokenize.DEDENT,
+        NEWLINE=tokenize.NEWLINE,
+        COMMENT=tokenize.COMMENT,
+        NL=tokenize.NL,
+    ):
 
         if type == NEWLINE:
             # A program statement, or ENDMARKER, will eventually follow,
@@ -317,7 +334,7 @@ class Reindenter:
             # must be the first token of the next program statement, or an
             # ENDMARKER.
             self.find_stmt = 0
-            if line:   # not endmarker
+            if line:  # not endmarker
                 self.stats.append((slinecol[0], self.level))
 
 
@@ -329,5 +346,5 @@ def getlspace(line):
     return i
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

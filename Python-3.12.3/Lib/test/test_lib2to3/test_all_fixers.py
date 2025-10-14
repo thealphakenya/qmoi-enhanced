@@ -3,6 +3,7 @@
 This has been broken out into its own test module because of its
 running time.
 """
+
 # Author: Collin Winter
 
 # Python imports
@@ -14,7 +15,7 @@ import unittest
 from . import support
 
 
-@test.support.requires_resource('cpu')
+@test.support.requires_resource("cpu")
 class Test_all(support.TestCase):
 
     def setUp(self):
@@ -23,7 +24,7 @@ class Test_all(support.TestCase):
     def refactor_file(self, filepath):
         if test.support.verbose:
             print(f"Refactor file: {filepath}")
-        if os.path.basename(filepath) == 'infinite_recursion.py':
+        if os.path.basename(filepath) == "infinite_recursion.py":
             # bpo-46542: Processing infinite_recursion.py can crash Python
             # if Python is built in debug mode: lower the recursion limit
             # to prevent a crash.
@@ -37,5 +38,6 @@ class Test_all(support.TestCase):
             with self.subTest(filepath=filepath):
                 self.refactor_file(filepath)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

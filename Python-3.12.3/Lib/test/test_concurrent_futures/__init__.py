@@ -4,7 +4,7 @@ from test import support
 from test.support import import_helper
 
 # Skip tests if _multiprocessing wasn't built.
-import_helper.import_module('_multiprocessing')
+import_helper.import_module("_multiprocessing")
 
 if support.check_sanitizer(address=True, memory=True):
     # gh-90791: Skip the test because it is too slow when Python is built

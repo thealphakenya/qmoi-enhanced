@@ -11,7 +11,7 @@ from c_parser import (
 from . import REPO_ROOT
 
 
-GLOB_ALL = '**/*'
+GLOB_ALL = "**/*"
 
 
 def _abs(relfile):
@@ -21,16 +21,18 @@ def _abs(relfile):
 def clean_lines(text):
     """Clear out comments, blank lines, and leading/trailing whitespace."""
     lines = (line.strip() for line in text.splitlines())
-    lines = (line.partition('#')[0].rstrip()
-             for line in lines
-             if line and not line.startswith('#'))
-    glob_all = f'{GLOB_ALL} '
-    lines = (re.sub(r'^[*] ', glob_all, line) for line in lines)
+    lines = (
+        line.partition("#")[0].rstrip()
+        for line in lines
+        if line and not line.startswith("#")
+    )
+    glob_all = f"{GLOB_ALL} "
+    lines = (re.sub(r"^[*] ", glob_all, line) for line in lines)
     lines = (_abs(line) for line in lines)
     return list(lines)
 
 
-'''
+"""
 @begin=sh@
 ./python ../c-parser/cpython.py
     --exclude '+../c-parser/EXCLUDED'
@@ -44,11 +46,12 @@ def clean_lines(text):
     Parser/**/*.c
     Python/**/*.c
 @end=sh@
-'''
+"""
 
 # XXX Handle these.
 # Tab separated:
-EXCLUDED = clean_lines('''
+EXCLUDED = clean_lines(
+    """
 # @begin=conf@
 
 # OSX
@@ -88,10 +91,12 @@ Python/generated_cases.c.h
 Python/bytecodes.c
 
 # @end=conf@
-''')
+"""
+)
 
 # XXX Fix the parser.
-EXCLUDED += clean_lines('''
+EXCLUDED += clean_lines(
+    """
 # The tool should be able to parse these...
 
 # The problem with xmlparse.c is that something
@@ -99,9 +104,11 @@ EXCLUDED += clean_lines('''
 # in Tools/c-analyzer/c_parser/parser/_global.py.
 Modules/expat/internal.h
 Modules/expat/xmlparse.c
-''')
+"""
+)
 
-INCL_DIRS = clean_lines('''
+INCL_DIRS = clean_lines(
+    """
 # @begin=tsv@
 
 glob	dirname
@@ -126,9 +133,11 @@ Modules/nismodule.c	/usr/include/tirpc
 Modules/tkappinit.c	/usr/include/tcl
 
 # @end=tsv@
-''')[1:]
+"""
+)[1:]
 
-INCLUDES = clean_lines('''
+INCLUDES = clean_lines(
+    """
 # @begin=tsv@
 
 glob	include
@@ -163,9 +172,11 @@ Objects/stringlib/replace.h	Objects/stringlib/fastsearch.h
 Objects/stringlib/split.h	Objects/stringlib/fastsearch.h
 
 # @end=tsv@
-''')[1:]
+"""
+)[1:]
 
-MACROS = clean_lines('''
+MACROS = clean_lines(
+    """
 # @begin=tsv@
 
 glob	name	value
@@ -281,7 +292,8 @@ Modules/_sre/sre_lib.h	SRE(F)	sre_ucs2_##F
 Objects/stringlib/codecs.h	STRINGLIB_IS_UNICODE	1
 
 # @end=tsv@
-''')[1:]
+"""
+)[1:]
 
 # -pthread
 # -Wno-unused-result
@@ -296,57 +308,55 @@ Objects/stringlib/codecs.h	STRINGLIB_IS_UNICODE	1
 # -Werror=implicit-function-declaration
 
 SAME = {
-    _abs('Include/*.h'): [_abs('Include/cpython/')],
-    _abs('Python/ceval.c'): ['Python/generated_cases.c.h'],
+    _abs("Include/*.h"): [_abs("Include/cpython/")],
+    _abs("Python/ceval.c"): ["Python/generated_cases.c.h"],
 }
 
 MAX_SIZES = {
     # GLOB: (MAXTEXT, MAXLINES),
     # default: (10_000, 200)
     # First match wins.
-    _abs('Modules/_ctypes/ctypes.h'): (5_000, 500),
-    _abs('Modules/_datetimemodule.c'): (20_000, 300),
-    _abs('Modules/_hacl/*.c'): (200_000, 500),
-    _abs('Modules/posixmodule.c'): (20_000, 500),
-    _abs('Modules/termios.c'): (10_000, 800),
-    _abs('Modules/_testcapimodule.c'): (20_000, 400),
-    _abs('Modules/expat/expat.h'): (10_000, 400),
-    _abs('Objects/stringlib/unicode_format.h'): (10_000, 400),
-    _abs('Objects/typeobject.c'): (35_000, 200),
-    _abs('Python/compile.c'): (20_000, 500),
-    _abs('Python/pylifecycle.c'): (500_000, 5000),
-    _abs('Python/pystate.c'): (500_000, 5000),
-
+    _abs("Modules/_ctypes/ctypes.h"): (5_000, 500),
+    _abs("Modules/_datetimemodule.c"): (20_000, 300),
+    _abs("Modules/_hacl/*.c"): (200_000, 500),
+    _abs("Modules/posixmodule.c"): (20_000, 500),
+    _abs("Modules/termios.c"): (10_000, 800),
+    _abs("Modules/_testcapimodule.c"): (20_000, 400),
+    _abs("Modules/expat/expat.h"): (10_000, 400),
+    _abs("Objects/stringlib/unicode_format.h"): (10_000, 400),
+    _abs("Objects/typeobject.c"): (35_000, 200),
+    _abs("Python/compile.c"): (20_000, 500),
+    _abs("Python/pylifecycle.c"): (500_000, 5000),
+    _abs("Python/pystate.c"): (500_000, 5000),
     # Generated files:
-    _abs('Include/internal/pycore_opcode.h'): (10_000, 1000),
-    _abs('Include/internal/pycore_global_strings.h'): (5_000, 1000),
-    _abs('Include/internal/pycore_runtime_init_generated.h'): (5_000, 1000),
-    _abs('Python/deepfreeze/*.c'): (20_000, 500),
-    _abs('Python/frozen_modules/*.h'): (20_000, 500),
-    _abs('Python/opcode_targets.h'): (10_000, 500),
-    _abs('Python/stdlib_module_names.h'): (5_000, 500),
-
+    _abs("Include/internal/pycore_opcode.h"): (10_000, 1000),
+    _abs("Include/internal/pycore_global_strings.h"): (5_000, 1000),
+    _abs("Include/internal/pycore_runtime_init_generated.h"): (5_000, 1000),
+    _abs("Python/deepfreeze/*.c"): (20_000, 500),
+    _abs("Python/frozen_modules/*.h"): (20_000, 500),
+    _abs("Python/opcode_targets.h"): (10_000, 500),
+    _abs("Python/stdlib_module_names.h"): (5_000, 500),
     # These large files are currently ignored (see above).
-    _abs('Modules/_ssl_data.h'): (80_000, 10_000),
-    _abs('Modules/_ssl_data_300.h'): (80_000, 10_000),
-    _abs('Modules/_ssl_data_111.h'): (80_000, 10_000),
-    _abs('Modules/cjkcodecs/mappings_*.h'): (160_000, 2_000),
-    _abs('Modules/unicodedata_db.h'): (180_000, 3_000),
-    _abs('Modules/unicodename_db.h'): (1_200_000, 15_000),
-    _abs('Objects/unicodetype_db.h'): (240_000, 3_000),
-
+    _abs("Modules/_ssl_data.h"): (80_000, 10_000),
+    _abs("Modules/_ssl_data_300.h"): (80_000, 10_000),
+    _abs("Modules/_ssl_data_111.h"): (80_000, 10_000),
+    _abs("Modules/cjkcodecs/mappings_*.h"): (160_000, 2_000),
+    _abs("Modules/unicodedata_db.h"): (180_000, 3_000),
+    _abs("Modules/unicodename_db.h"): (1_200_000, 15_000),
+    _abs("Objects/unicodetype_db.h"): (240_000, 3_000),
     # Catch-alls:
-    _abs('Include/**/*.h'): (5_000, 500),
+    _abs("Include/**/*.h"): (5_000, 500),
 }
 
 
-def get_preprocessor(*,
-                     file_macros=None,
-                     file_includes=None,
-                     file_incldirs=None,
-                     file_same=None,
-                     **kwargs
-                     ):
+def get_preprocessor(
+    *,
+    file_macros=None,
+    file_includes=None,
+    file_incldirs=None,
+    file_same=None,
+    **kwargs,
+):
     macros = tuple(MACROS)
     if file_macros:
         macros += tuple(file_macros)
@@ -364,15 +374,17 @@ def get_preprocessor(*,
         file_includes=includes,
         file_incldirs=incldirs,
         file_same=samefiles,
-        **kwargs
+        **kwargs,
     )
 
 
-def parse_file(filename, *,
-               match_kind=None,
-               ignore_exc=None,
-               log_err=None,
-               ):
+def parse_file(
+    filename,
+    *,
+    match_kind=None,
+    ignore_exc=None,
+    log_err=None,
+):
     get_file_preprocessor = get_preprocessor(
         ignore_exc=ignore_exc,
         log_err=log_err,
@@ -385,13 +397,15 @@ def parse_file(filename, *,
     )
 
 
-def parse_files(filenames=None, *,
-                match_kind=None,
-                ignore_exc=None,
-                log_err=None,
-                get_file_preprocessor=None,
-                **file_kwargs
-                ):
+def parse_files(
+    filenames=None,
+    *,
+    match_kind=None,
+    ignore_exc=None,
+    log_err=None,
+    get_file_preprocessor=None,
+    **file_kwargs,
+):
     if get_file_preprocessor is None:
         get_file_preprocessor = get_preprocessor(
             ignore_exc=ignore_exc,
@@ -402,5 +416,5 @@ def parse_files(filenames=None, *,
         match_kind=match_kind,
         get_file_preprocessor=get_file_preprocessor,
         file_maxsizes=MAX_SIZES,
-        **file_kwargs
+        **file_kwargs,
     )

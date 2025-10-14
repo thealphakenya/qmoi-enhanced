@@ -34,7 +34,9 @@ class GrammarVisitor:
 
 
 class Grammar:
-    def __init__(self, rules: Iterable[Rule], metas: Iterable[Tuple[str, Optional[str]]]):
+    def __init__(
+        self, rules: Iterable[Rule], metas: Iterable[Tuple[str, Optional[str]]]
+    ):
         # Check if there are repeated rules in "rules"
         all_rules = {}
         for rule in rules:
@@ -66,7 +68,9 @@ SIMPLE_STR = True
 
 
 class Rule:
-    def __init__(self, name: str, type: Optional[str], rhs: Rhs, memo: Optional[object] = None):
+    def __init__(
+        self, name: str, type: Optional[str], rhs: Rhs, memo: Optional[object] = None
+    ):
         self.name = name
         self.type = type
         self.rhs = rhs
@@ -166,7 +170,9 @@ class Rhs:
 
 
 class Alt:
-    def __init__(self, items: List[NamedItem], *, icut: int = -1, action: Optional[str] = None):
+    def __init__(
+        self, items: List[NamedItem], *, icut: int = -1, action: Optional[str] = None
+    ):
         self.items = items
         self.icut = icut
         self.action = action

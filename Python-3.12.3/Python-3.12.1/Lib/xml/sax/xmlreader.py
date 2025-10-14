@@ -1,5 +1,5 @@
 """An XML Reader is the SAX 2 name for an XML parser. XML Parsers
-should be based on this code. """
+should be based on this code."""
 
 from . import handler
 
@@ -7,6 +7,7 @@ from ._exceptions import SAXNotSupportedException, SAXNotRecognizedException
 
 
 # ===== XMLREADER =====
+
 
 class XMLReader:
     """Interface for reading an XML document using callbacks.
@@ -88,6 +89,7 @@ class XMLReader:
         "Sets the value of a SAX2 property."
         raise SAXNotRecognizedException("Property '%s' not recognized" % name)
 
+
 class IncrementalParser(XMLReader):
     """This interface adds three extra methods to the XMLReader
     interface that allow XML parsers to support incremental
@@ -114,6 +116,7 @@ class IncrementalParser(XMLReader):
 
     def parse(self, source):
         from . import saxutils
+
         source = saxutils.prepare_input_source(source)
 
         self.prepareParser(source)
@@ -158,7 +161,9 @@ class IncrementalParser(XMLReader):
         reset are undefined."""
         raise NotImplementedError("This method must be implemented!")
 
+
 # ===== LOCATOR =====
+
 
 class Locator:
     """Interface for associating a SAX event with a document
@@ -182,7 +187,9 @@ class Locator:
         "Return the system identifier for the current event."
         return None
 
+
 # ===== INPUTSOURCE =====
+
 
 class InputSource:
     """Encapsulation of the information needed by the XMLReader to
@@ -200,12 +207,12 @@ class InputSource:
     allowed to modify InputSource objects passed to it from the
     application, although it may make copies and modify those."""
 
-    def __init__(self, system_id = None):
+    def __init__(self, system_id=None):
         self.__system_id = system_id
         self.__public_id = None
-        self.__encoding  = None
-        self.__bytefile  = None
-        self.__charfile  = None
+        self.__encoding = None
+        self.__bytefile = None
+        self.__charfile = None
 
     def setPublicId(self, public_id):
         "Sets the public identifier of this InputSource."
@@ -271,7 +278,9 @@ class InputSource:
         "Get the character stream for this input source."
         return self.__charfile
 
+
 # ===== ATTRIBUTESIMPL =====
+
 
 class AttributesImpl:
 
@@ -333,7 +342,9 @@ class AttributesImpl:
     def values(self):
         return list(self._attrs.values())
 
+
 # ===== ATTRIBUTESNSIMPL =====
+
 
 class AttributesNSImpl(AttributesImpl):
 
@@ -346,14 +357,14 @@ class AttributesNSImpl(AttributesImpl):
         self._qnames = qnames
 
     def getValueByQName(self, name):
-        for (nsname, qname) in self._qnames.items():
+        for nsname, qname in self._qnames.items():
             if qname == name:
                 return self._attrs[nsname]
 
         raise KeyError(name)
 
     def getNameByQName(self, name):
-        for (nsname, qname) in self._qnames.items():
+        for nsname, qname in self._qnames.items():
             if qname == name:
                 return nsname
 
@@ -373,6 +384,7 @@ def _test():
     XMLReader()
     IncrementalParser()
     Locator()
+
 
 if __name__ == "__main__":
     _test()

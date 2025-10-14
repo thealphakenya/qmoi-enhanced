@@ -10,20 +10,26 @@ import weakref
 try:
     from _testcapi import with_tp_del
 except ImportError:
+
     def with_tp_del(cls):
         class C(object):
             def __new__(cls, *args, **kwargs):
-                raise TypeError('requires _testcapi.with_tp_del')
+                raise TypeError("requires _testcapi.with_tp_del")
+
         return C
+
 
 try:
     from _testcapi import without_gc
 except ImportError:
+
     def without_gc(cls):
         class C:
             def __new__(cls, *args, **kwargs):
-                raise TypeError('requires _testcapi.without_gc')
+                raise TypeError("requires _testcapi.without_gc")
+
         return C
+
 
 from test import support
 
@@ -107,6 +113,7 @@ class SimpleBase(NonGCSimpleBase):
 class NonGC(NonGCSimpleBase):
     __slots__ = ()
 
+
 @without_gc
 class NonGCResurrector(NonGCSimpleBase):
     __slots__ = ()
@@ -117,8 +124,10 @@ class NonGCResurrector(NonGCSimpleBase):
         """
         self.survivors.append(self)
 
+
 class Simple(SimpleBase):
     pass
+
 
 # Can't inherit from NonGCResurrector, in case importing without_gc fails.
 class SimpleResurrector(SimpleBase):
@@ -235,11 +244,14 @@ class SelfCycleBase:
         super().check_sanity()
         assert self.ref is self
 
+
 class SimpleSelfCycle(SelfCycleBase, Simple):
     pass
 
+
 class SelfCycleResurrector(SelfCycleBase, SimpleResurrector):
     pass
+
 
 class SuicidalSelfCycle(SelfCycleBase, Simple):
 
@@ -332,11 +344,14 @@ class ChainedBase:
             else:
                 assert right.left is self
 
+
 class SimpleChained(ChainedBase, Simple):
     pass
 
+
 class ChainedResurrector(ChainedBase, SimpleResurrector):
     pass
+
 
 class SuicidalChained(ChainedBase, Simple):
 
@@ -359,7 +374,7 @@ class CycleChainFinalizationTest(TestBase, unittest.TestCase):
     def build_chain(self, classes):
         nodes = [cls() for cls in classes]
         for i in range(len(nodes)):
-            nodes[i].chain(nodes[i-1])
+            nodes[i].chain(nodes[i - 1])
         return nodes
 
     def check_non_resurrecting_chain(self, classes):
@@ -408,23 +423,25 @@ class CycleChainFinalizationTest(TestBase, unittest.TestCase):
         self.check_non_resurrecting_chain([SuicidalChained, SimpleChained] * 2)
 
     def test_heterogenous_suicidal_two(self):
-        self.check_non_resurrecting_chain(
-            [SuicidalChained] * 2 + [SimpleChained] * 2)
+        self.check_non_resurrecting_chain([SuicidalChained] * 2 + [SimpleChained] * 2)
 
     def test_heterogenous_resurrect_one(self):
         self.check_resurrecting_chain([ChainedResurrector, SimpleChained] * 2)
 
     def test_heterogenous_resurrect_two(self):
         self.check_resurrecting_chain(
-            [ChainedResurrector, SimpleChained, SuicidalChained] * 2)
+            [ChainedResurrector, SimpleChained, SuicidalChained] * 2
+        )
 
     def test_heterogenous_resurrect_three(self):
         self.check_resurrecting_chain(
-            [ChainedResurrector] * 2 + [SimpleChained] * 2 + [SuicidalChained] * 2)
+            [ChainedResurrector] * 2 + [SimpleChained] * 2 + [SuicidalChained] * 2
+        )
 
 
 # NOTE: the tp_del slot isn't automatically inherited, so we have to call
 # with_tp_del() for each instantiated class.
+
 
 class LegacyBase(SimpleBase):
 
@@ -450,9 +467,11 @@ class LegacyBase(SimpleBase):
         except Exception as e:
             self.errors.append(e)
 
+
 @with_tp_del
 class Legacy(LegacyBase):
     pass
+
 
 @with_tp_del
 class LegacyResurrector(LegacyBase):
@@ -462,6 +481,7 @@ class LegacyResurrector(LegacyBase):
         Resurrect self by storing self in a class-wide list.
         """
         self.survivors.append(self)
+
 
 @with_tp_del
 class LegacySelfCycle(SelfCycleBase, LegacyBase):

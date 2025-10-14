@@ -3,19 +3,33 @@ import time
 import unittest
 from concurrent import futures
 from concurrent.futures._base import (
-    PENDING, RUNNING, CANCELLED, CANCELLED_AND_NOTIFIED, FINISHED, Future)
+    PENDING,
+    RUNNING,
+    CANCELLED,
+    CANCELLED_AND_NOTIFIED,
+    FINISHED,
+    Future,
+)
 
 from test import support
 
 from .util import (
-    PENDING_FUTURE, RUNNING_FUTURE, CANCELLED_FUTURE,
-    CANCELLED_AND_NOTIFIED_FUTURE, EXCEPTION_FUTURE, SUCCESSFUL_FUTURE,
-    BaseTestCase, create_future, setup_module)
+    PENDING_FUTURE,
+    RUNNING_FUTURE,
+    CANCELLED_FUTURE,
+    CANCELLED_AND_NOTIFIED_FUTURE,
+    EXCEPTION_FUTURE,
+    SUCCESSFUL_FUTURE,
+    BaseTestCase,
+    create_future,
+    setup_module,
+)
 
 
 class FutureTests(BaseTestCase):
     def test_done_callback_with_result(self):
         callback_result = None
+
         def fn(callback_future):
             nonlocal callback_result
             callback_result = callback_future.result()
@@ -27,17 +41,19 @@ class FutureTests(BaseTestCase):
 
     def test_done_callback_with_exception(self):
         callback_exception = None
+
         def fn(callback_future):
             nonlocal callback_exception
             callback_exception = callback_future.exception()
 
         f = Future()
         f.add_done_callback(fn)
-        f.set_exception(Exception('test'))
-        self.assertEqual(('test',), callback_exception.args)
+        f.set_exception(Exception("test"))
+        self.assertEqual(("test",), callback_exception.args)
 
     def test_done_callback_with_cancel(self):
         was_cancelled = None
+
         def fn(callback_future):
             nonlocal was_cancelled
             was_cancelled = callback_future.cancelled()
@@ -55,7 +71,7 @@ class FutureTests(BaseTestCase):
             def raising_fn(callback_future):
                 nonlocal raising_was_called
                 raising_was_called = True
-                raise Exception('doh!')
+                raise Exception("doh!")
 
             def fn(callback_future):
                 nonlocal fn_was_called
@@ -67,10 +83,11 @@ class FutureTests(BaseTestCase):
             f.set_result(5)
             self.assertTrue(raising_was_called)
             self.assertTrue(fn_was_called)
-            self.assertIn('Exception: doh!', stderr.getvalue())
+            self.assertIn("Exception: doh!", stderr.getvalue())
 
     def test_done_callback_already_successful(self):
         callback_result = None
+
         def fn(callback_future):
             nonlocal callback_result
             callback_result = callback_future.result()
@@ -82,17 +99,19 @@ class FutureTests(BaseTestCase):
 
     def test_done_callback_already_failed(self):
         callback_exception = None
+
         def fn(callback_future):
             nonlocal callback_exception
             callback_exception = callback_future.exception()
 
         f = Future()
-        f.set_exception(Exception('test'))
+        f.set_exception(Exception("test"))
         f.add_done_callback(fn)
-        self.assertEqual(('test',), callback_exception.args)
+        self.assertEqual(("test",), callback_exception.args)
 
     def test_done_callback_already_cancelled(self):
         was_cancelled = None
+
         def fn(callback_future):
             nonlocal was_cancelled
             was_cancelled = callback_future.cancelled()
@@ -104,8 +123,9 @@ class FutureTests(BaseTestCase):
 
     def test_done_callback_raises_already_succeeded(self):
         with support.captured_stderr() as stderr:
+
             def raising_fn(callback_future):
-                raise Exception('doh!')
+                raise Exception("doh!")
 
             f = Future()
 
@@ -114,25 +134,27 @@ class FutureTests(BaseTestCase):
             f.set_result(5)
             f.add_done_callback(raising_fn)
 
-            self.assertIn('exception calling callback for', stderr.getvalue())
-            self.assertIn('doh!', stderr.getvalue())
-
+            self.assertIn("exception calling callback for", stderr.getvalue())
+            self.assertIn("doh!", stderr.getvalue())
 
     def test_repr(self):
-        self.assertRegex(repr(PENDING_FUTURE),
-                         '<Future at 0x[0-9a-f]+ state=pending>')
-        self.assertRegex(repr(RUNNING_FUTURE),
-                         '<Future at 0x[0-9a-f]+ state=running>')
-        self.assertRegex(repr(CANCELLED_FUTURE),
-                         '<Future at 0x[0-9a-f]+ state=cancelled>')
-        self.assertRegex(repr(CANCELLED_AND_NOTIFIED_FUTURE),
-                         '<Future at 0x[0-9a-f]+ state=cancelled>')
+        self.assertRegex(repr(PENDING_FUTURE), "<Future at 0x[0-9a-f]+ state=pending>")
+        self.assertRegex(repr(RUNNING_FUTURE), "<Future at 0x[0-9a-f]+ state=running>")
         self.assertRegex(
-                repr(EXCEPTION_FUTURE),
-                '<Future at 0x[0-9a-f]+ state=finished raised OSError>')
+            repr(CANCELLED_FUTURE), "<Future at 0x[0-9a-f]+ state=cancelled>"
+        )
         self.assertRegex(
-                repr(SUCCESSFUL_FUTURE),
-                '<Future at 0x[0-9a-f]+ state=finished returned int>')
+            repr(CANCELLED_AND_NOTIFIED_FUTURE),
+            "<Future at 0x[0-9a-f]+ state=cancelled>",
+        )
+        self.assertRegex(
+            repr(EXCEPTION_FUTURE),
+            "<Future at 0x[0-9a-f]+ state=finished raised OSError>",
+        )
+        self.assertRegex(
+            repr(SUCCESSFUL_FUTURE),
+            "<Future at 0x[0-9a-f]+ state=finished returned int>",
+        )
 
     def test_cancel(self):
         f1 = create_future(state=PENDING)
@@ -185,14 +207,12 @@ class FutureTests(BaseTestCase):
         self.assertFalse(SUCCESSFUL_FUTURE.running())
 
     def test_result_with_timeout(self):
-        self.assertRaises(futures.TimeoutError,
-                          PENDING_FUTURE.result, timeout=0)
-        self.assertRaises(futures.TimeoutError,
-                          RUNNING_FUTURE.result, timeout=0)
-        self.assertRaises(futures.CancelledError,
-                          CANCELLED_FUTURE.result, timeout=0)
-        self.assertRaises(futures.CancelledError,
-                          CANCELLED_AND_NOTIFIED_FUTURE.result, timeout=0)
+        self.assertRaises(futures.TimeoutError, PENDING_FUTURE.result, timeout=0)
+        self.assertRaises(futures.TimeoutError, RUNNING_FUTURE.result, timeout=0)
+        self.assertRaises(futures.CancelledError, CANCELLED_FUTURE.result, timeout=0)
+        self.assertRaises(
+            futures.CancelledError, CANCELLED_AND_NOTIFIED_FUTURE.result, timeout=0
+        )
         self.assertRaises(OSError, EXCEPTION_FUTURE.result, timeout=0)
         self.assertEqual(SUCCESSFUL_FUTURE.result(timeout=0), 42)
 
@@ -221,21 +241,19 @@ class FutureTests(BaseTestCase):
         t = threading.Thread(target=notification)
         t.start()
 
-        self.assertRaises(futures.CancelledError,
-                          f1.result, timeout=support.SHORT_TIMEOUT)
+        self.assertRaises(
+            futures.CancelledError, f1.result, timeout=support.SHORT_TIMEOUT
+        )
         t.join()
 
     def test_exception_with_timeout(self):
-        self.assertRaises(futures.TimeoutError,
-                          PENDING_FUTURE.exception, timeout=0)
-        self.assertRaises(futures.TimeoutError,
-                          RUNNING_FUTURE.exception, timeout=0)
-        self.assertRaises(futures.CancelledError,
-                          CANCELLED_FUTURE.exception, timeout=0)
-        self.assertRaises(futures.CancelledError,
-                          CANCELLED_AND_NOTIFIED_FUTURE.exception, timeout=0)
-        self.assertTrue(isinstance(EXCEPTION_FUTURE.exception(timeout=0),
-                                   OSError))
+        self.assertRaises(futures.TimeoutError, PENDING_FUTURE.exception, timeout=0)
+        self.assertRaises(futures.TimeoutError, RUNNING_FUTURE.exception, timeout=0)
+        self.assertRaises(futures.CancelledError, CANCELLED_FUTURE.exception, timeout=0)
+        self.assertRaises(
+            futures.CancelledError, CANCELLED_AND_NOTIFIED_FUTURE.exception, timeout=0
+        )
+        self.assertTrue(isinstance(EXCEPTION_FUTURE.exception(timeout=0), OSError))
         self.assertEqual(SUCCESSFUL_FUTURE.exception(timeout=0), None)
 
     def test_exception_with_success(self):
@@ -251,7 +269,9 @@ class FutureTests(BaseTestCase):
         t = threading.Thread(target=notification)
         t.start()
 
-        self.assertTrue(isinstance(f1.exception(timeout=support.SHORT_TIMEOUT), OSError))
+        self.assertTrue(
+            isinstance(f1.exception(timeout=support.SHORT_TIMEOUT), OSError)
+        )
         t.join()
 
     def test_multiple_set_result(self):
@@ -259,9 +279,8 @@ class FutureTests(BaseTestCase):
         f.set_result(1)
 
         with self.assertRaisesRegex(
-                futures.InvalidStateError,
-                'FINISHED: <Future at 0x[0-9a-f]+ '
-                'state=finished returned int>'
+            futures.InvalidStateError,
+            "FINISHED: <Future at 0x[0-9a-f]+ " "state=finished returned int>",
         ):
             f.set_result(2)
 
@@ -274,9 +293,8 @@ class FutureTests(BaseTestCase):
         f.set_exception(e)
 
         with self.assertRaisesRegex(
-                futures.InvalidStateError,
-                'FINISHED: <Future at 0x[0-9a-f]+ '
-                'state=finished raised ValueError>'
+            futures.InvalidStateError,
+            "FINISHED: <Future at 0x[0-9a-f]+ " "state=finished raised ValueError>",
         ):
             f.set_exception(Exception())
 

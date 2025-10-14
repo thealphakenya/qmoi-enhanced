@@ -12,7 +12,7 @@ def preprocess(lines, filename=None, cwd=None):
 
     # XXX actually preprocess...
     for lno, line in enumerate(lines, 1):
-        kind = 'source'
+        kind = "source"
         data = line
         conditions = None
         yield _common.SourceLine(

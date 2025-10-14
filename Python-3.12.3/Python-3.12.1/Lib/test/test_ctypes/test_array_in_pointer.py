@@ -3,6 +3,7 @@ from ctypes import *
 from binascii import hexlify
 import re
 
+
 def dump(obj):
     # helper function to dump memory contents in hex, with a hyphen
     # between the bytes.
@@ -13,8 +14,10 @@ def dump(obj):
 class Value(Structure):
     _fields_ = [("val", c_byte)]
 
+
 class Container(Structure):
     _fields_ = [("pvalues", POINTER(Value))]
+
 
 class Test(unittest.TestCase):
     def test(self):
@@ -35,10 +38,7 @@ class Test(unittest.TestCase):
         values = [c.pvalues[i].val for i in range(4)]
 
         # These are the expected results: here s the bug!
-        self.assertEqual(
-            (values, dump(val_array)),
-            ([1, 2, 3, 4], "01-02-03-04")
-        )
+        self.assertEqual((values, dump(val_array)), ([1, 2, 3, 4], "01-02-03-04"))
 
     def test_2(self):
 
@@ -55,10 +55,8 @@ class Test(unittest.TestCase):
         values = [ptr[i].val for i in range(4)]
 
         # These are the expected results: here s the bug!
-        self.assertEqual(
-            (values, dump(val_array)),
-            ([1, 2, 3, 4], "01-02-03-04")
-        )
+        self.assertEqual((values, dump(val_array)), ([1, 2, 3, 4], "01-02-03-04"))
+
 
 if __name__ == "__main__":
     unittest.main()

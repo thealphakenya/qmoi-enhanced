@@ -46,7 +46,9 @@ def main() -> None:
         "grammar", type=str, help="The file with the grammar definition in PEG format"
     )
     parser.add_argument(
-        "tokens_file", type=argparse.FileType("r"), help="The file with the token definitions"
+        "tokens_file",
+        type=argparse.FileType("r"),
+        help="The file with the token definitions",
     )
     parser.add_argument(
         "keyword_file",
@@ -65,9 +67,13 @@ def main() -> None:
         all_keywords = sorted(list(gen.keywords.keys()) + EXTRA_KEYWORDS)
         all_soft_keywords = sorted(gen.soft_keywords)
 
-        keywords = "" if not all_keywords else "    " + ",\n    ".join(map(repr, all_keywords))
+        keywords = (
+            "" if not all_keywords else "    " + ",\n    ".join(map(repr, all_keywords))
+        )
         soft_keywords = (
-            "" if not all_soft_keywords else "    " + ",\n    ".join(map(repr, all_soft_keywords))
+            ""
+            if not all_soft_keywords
+            else "    " + ",\n    ".join(map(repr, all_soft_keywords))
         )
         thefile.write(TEMPLATE.format(keywords=keywords, soft_keywords=soft_keywords))
 

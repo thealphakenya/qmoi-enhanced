@@ -7,6 +7,7 @@ import types
 # the `unittest` library once there's a strict guarantee of no leaks
 # during runtime shutdown.
 
+
 # bpo-46417: Test that structseq types used by the sys module are still
 # valid when Py_Finalize()/Py_Initialize() are called multiple times.
 class TestStructSeq:
@@ -29,20 +30,20 @@ class TestStructSeq:
 
     def test_sys_attrs(self):
         for attr_name in (
-            'flags',          # FlagsType
-            'float_info',     # FloatInfoType
-            'hash_info',      # Hash_InfoType
-            'int_info',       # Int_InfoType
-            'thread_info',    # ThreadInfoType
-            'version_info',   # VersionInfoType
+            "flags",  # FlagsType
+            "float_info",  # FloatInfoType
+            "hash_info",  # Hash_InfoType
+            "int_info",  # Int_InfoType
+            "thread_info",  # ThreadInfoType
+            "version_info",  # VersionInfoType
         ):
             attr = getattr(sys, attr_name)
             self._check_structseq(type(attr))
 
     def test_sys_funcs(self):
-        func_names = ['get_asyncgen_hooks']  # AsyncGenHooksType
-        if hasattr(sys, 'getwindowsversion'):
-            func_names.append('getwindowsversion')  # WindowsVersionType
+        func_names = ["get_asyncgen_hooks"]  # AsyncGenHooksType
+        if hasattr(sys, "getwindowsversion"):
+            func_names.append("getwindowsversion")  # WindowsVersionType
         for func_name in func_names:
             func = getattr(sys, func_name)
             obj = func()

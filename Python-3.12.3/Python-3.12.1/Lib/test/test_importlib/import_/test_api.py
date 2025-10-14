@@ -6,8 +6,8 @@ import types
 import unittest
 import warnings
 
-PKG_NAME = 'fine'
-SUBMOD_NAME = 'fine.bogus'
+PKG_NAME = "fine"
+SUBMOD_NAME = "fine.bogus"
 
 
 class BadSpecFinderLoader:
@@ -24,24 +24,23 @@ class BadSpecFinderLoader:
     @staticmethod
     def exec_module(module):
         if module.__name__ == SUBMOD_NAME:
-            raise ImportError('I cannot be loaded!')
+            raise ImportError("I cannot be loaded!")
 
 
 class BadLoaderFinder:
     @classmethod
     def load_module(cls, fullname):
         if fullname == SUBMOD_NAME:
-            raise ImportError('I cannot be loaded!')
+            raise ImportError("I cannot be loaded!")
 
 
 class APITest:
-
     """Test API-specific details for __import__ (e.g. raising the right
     exception when passing in an int for the module name)."""
 
     def test_raises_ModuleNotFoundError(self):
         with self.assertRaises(ModuleNotFoundError):
-            util.import_importlib('some module that does not exist')
+            util.import_importlib("some module that does not exist")
 
     def test_name_requires_rparition(self):
         # Raise TypeError if a non-string is passed in for the module name.
@@ -53,30 +52,31 @@ class APITest:
         # PEP 328 did away with sys.module None entries and the ambiguity of
         # absolute/relative imports.
         with self.assertRaises(ValueError):
-            self.__import__('os', globals(), level=-1)
+            self.__import__("os", globals(), level=-1)
 
     def test_nonexistent_fromlist_entry(self):
         # If something in fromlist doesn't exist, that's okay.
         # issue15715
         mod = types.ModuleType(PKG_NAME)
-        mod.__path__ = ['XXX']
+        mod.__path__ = ["XXX"]
         with util.import_state(meta_path=[self.bad_finder_loader]):
             with util.uncache(PKG_NAME):
                 sys.modules[PKG_NAME] = mod
-                self.__import__(PKG_NAME, fromlist=['not here'])
+                self.__import__(PKG_NAME, fromlist=["not here"])
 
     def test_fromlist_load_error_propagates(self):
         # If something in fromlist triggers an exception not related to not
         # existing, let that exception propagate.
         # issue15316
         mod = types.ModuleType(PKG_NAME)
-        mod.__path__ = ['XXX']
+        mod.__path__ = ["XXX"]
         with util.import_state(meta_path=[self.bad_finder_loader]):
             with util.uncache(PKG_NAME):
                 sys.modules[PKG_NAME] = mod
                 with self.assertRaises(ImportError):
-                    self.__import__(PKG_NAME,
-                                    fromlist=[SUBMOD_NAME.rpartition('.')[-1]])
+                    self.__import__(
+                        PKG_NAME, fromlist=[SUBMOD_NAME.rpartition(".")[-1]]
+                    )
 
     def test_blocked_fromlist(self):
         # If fromlist entry is None, let a ModuleNotFoundError propagate.
@@ -88,8 +88,9 @@ class APITest:
                 sys.modules[PKG_NAME] = mod
                 sys.modules[SUBMOD_NAME] = None
                 with self.assertRaises(ModuleNotFoundError) as cm:
-                    self.__import__(PKG_NAME,
-                                    fromlist=[SUBMOD_NAME.rpartition('.')[-1]])
+                    self.__import__(
+                        PKG_NAME, fromlist=[SUBMOD_NAME.rpartition(".")[-1]]
+                    )
                 self.assertEqual(cm.exception.name, SUBMOD_NAME)
 
 
@@ -127,19 +128,19 @@ class OldAPITests(APITest):
             super().test_blocked_fromlist()
 
 
-(Frozen_OldAPITests,
- Source_OldAPITests
- ) = util.test_both(OldAPITests, __import__=util.__import__)
+(Frozen_OldAPITests, Source_OldAPITests) = util.test_both(
+    OldAPITests, __import__=util.__import__
+)
 
 
 class SpecAPITests(APITest):
     bad_finder_loader = BadSpecFinderLoader
 
 
-(Frozen_SpecAPITests,
- Source_SpecAPITests
- ) = util.test_both(SpecAPITests, __import__=util.__import__)
+(Frozen_SpecAPITests, Source_SpecAPITests) = util.test_both(
+    SpecAPITests, __import__=util.__import__
+)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

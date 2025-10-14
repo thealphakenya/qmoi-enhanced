@@ -171,39 +171,42 @@
 # PLATFORM CONSTANTS
 # ******************************************************************************
 
-platlibdir = config.get('platlibdir') or PLATLIBDIR
+platlibdir = config.get("platlibdir") or PLATLIBDIR
 
-if os_name == 'posix' or os_name == 'darwin':
-    BUILDDIR_TXT = 'pybuilddir.txt'
-    BUILD_LANDMARK = 'Modules/Setup.local'
-    DEFAULT_PROGRAM_NAME = f'python{VERSION_MAJOR}'
-    STDLIB_SUBDIR = f'{platlibdir}/python{VERSION_MAJOR}.{VERSION_MINOR}'
-    STDLIB_LANDMARKS = [f'{STDLIB_SUBDIR}/os.py', f'{STDLIB_SUBDIR}/os.pyc']
-    PLATSTDLIB_LANDMARK = f'{platlibdir}/python{VERSION_MAJOR}.{VERSION_MINOR}/lib-dynload'
-    BUILDSTDLIB_LANDMARKS = ['Lib/os.py']
-    VENV_LANDMARK = 'pyvenv.cfg'
-    ZIP_LANDMARK = f'{platlibdir}/python{VERSION_MAJOR}{VERSION_MINOR}.zip'
-    DELIM = ':'
-    SEP = '/'
+if os_name == "posix" or os_name == "darwin":
+    BUILDDIR_TXT = "pybuilddir.txt"
+    BUILD_LANDMARK = "Modules/Setup.local"
+    DEFAULT_PROGRAM_NAME = f"python{VERSION_MAJOR}"
+    STDLIB_SUBDIR = f"{platlibdir}/python{VERSION_MAJOR}.{VERSION_MINOR}"
+    STDLIB_LANDMARKS = [f"{STDLIB_SUBDIR}/os.py", f"{STDLIB_SUBDIR}/os.pyc"]
+    PLATSTDLIB_LANDMARK = (
+        f"{platlibdir}/python{VERSION_MAJOR}.{VERSION_MINOR}/lib-dynload"
+    )
+    BUILDSTDLIB_LANDMARKS = ["Lib/os.py"]
+    VENV_LANDMARK = "pyvenv.cfg"
+    ZIP_LANDMARK = f"{platlibdir}/python{VERSION_MAJOR}{VERSION_MINOR}.zip"
+    DELIM = ":"
+    SEP = "/"
 
-elif os_name == 'nt':
-    BUILDDIR_TXT = 'pybuilddir.txt'
-    BUILD_LANDMARK = f'{VPATH}\\Modules\\Setup.local'
-    DEFAULT_PROGRAM_NAME = f'python'
-    STDLIB_SUBDIR = 'Lib'
-    STDLIB_LANDMARKS = [f'{STDLIB_SUBDIR}\\os.py', f'{STDLIB_SUBDIR}\\os.pyc']
-    PLATSTDLIB_LANDMARK = f'{platlibdir}'
-    BUILDSTDLIB_LANDMARKS = ['Lib\\os.py']
-    VENV_LANDMARK = 'pyvenv.cfg'
+elif os_name == "nt":
+    BUILDDIR_TXT = "pybuilddir.txt"
+    BUILD_LANDMARK = f"{VPATH}\\Modules\\Setup.local"
+    DEFAULT_PROGRAM_NAME = f"python"
+    STDLIB_SUBDIR = "Lib"
+    STDLIB_LANDMARKS = [f"{STDLIB_SUBDIR}\\os.py", f"{STDLIB_SUBDIR}\\os.pyc"]
+    PLATSTDLIB_LANDMARK = f"{platlibdir}"
+    BUILDSTDLIB_LANDMARKS = ["Lib\\os.py"]
+    VENV_LANDMARK = "pyvenv.cfg"
     ZIP_LANDMARK = f'python{VERSION_MAJOR}{VERSION_MINOR}{PYDEBUGEXT or ""}.zip'
-    WINREG_KEY = f'SOFTWARE\\Python\\PythonCore\\{PYWINVER}\\PythonPath'
-    DELIM = ';'
-    SEP = '\\'
+    WINREG_KEY = f"SOFTWARE\\Python\\PythonCore\\{PYWINVER}\\PythonPath"
+    DELIM = ";"
+    SEP = "\\"
 
 
 # ******************************************************************************
 # HELPER FUNCTIONS (note that we prefer C functions for performance)
 # ******************************************************************************
+
 
 def search_up(prefix, *landmarks, test=isfile):
     while prefix:
@@ -216,19 +219,19 @@ def search_up(prefix, *landmarks, test=isfile):
 # READ VARIABLES FROM config
 # ******************************************************************************
 
-program_name = config.get('program_name')
-home = config.get('home')
-executable = config.get('executable')
-base_executable = config.get('base_executable')
-prefix = config.get('prefix')
-exec_prefix = config.get('exec_prefix')
-base_prefix = config.get('base_prefix')
-base_exec_prefix = config.get('base_exec_prefix')
-ENV_PYTHONPATH = config['pythonpath_env']
-use_environment = config.get('use_environment', 1)
+program_name = config.get("program_name")
+home = config.get("home")
+executable = config.get("executable")
+base_executable = config.get("base_executable")
+prefix = config.get("prefix")
+exec_prefix = config.get("exec_prefix")
+base_prefix = config.get("base_prefix")
+base_exec_prefix = config.get("base_exec_prefix")
+ENV_PYTHONPATH = config["pythonpath_env"]
+use_environment = config.get("use_environment", 1)
 
-pythonpath = config.get('module_search_paths')
-pythonpath_was_set = config.get('module_search_paths_set')
+pythonpath = config.get("module_search_paths")
+pythonpath_was_set = config.get("module_search_paths_set")
 
 real_executable_dir = None
 stdlib_dir = None
@@ -242,14 +245,18 @@ program_name_was_set = bool(program_name)
 
 if not program_name:
     try:
-        program_name = config.get('orig_argv', [])[0]
+        program_name = config.get("orig_argv", [])[0]
     except IndexError:
         pass
 
 if not program_name:
     program_name = DEFAULT_PROGRAM_NAME
 
-if EXE_SUFFIX and not hassuffix(program_name, EXE_SUFFIX) and isxfile(program_name + EXE_SUFFIX):
+if (
+    EXE_SUFFIX
+    and not hassuffix(program_name, EXE_SUFFIX)
+    and isxfile(program_name + EXE_SUFFIX)
+):
     program_name = program_name + EXE_SUFFIX
 
 
@@ -271,7 +278,7 @@ if not executable:
     # All platforms default to real_executable if known at this
     # stage. POSIX does not set this value.
     executable = real_executable
-elif os_name == 'darwin':
+elif os_name == "darwin":
     # QUIRK: On macOS we may know the real executable path, but
     # if our caller has lied to us about it (e.g. most of
     # test_embed), we need to use their path in order to detect
@@ -290,11 +297,11 @@ if not executable and program_name and ENV_PATH:
             break
 
 if not executable:
-    executable = ''
+    executable = ""
     # When we cannot calculate the executable, subsequent searches
     # look in the current working directory. Here, we emulate that
     # (the former getpath.c would do it apparently by accident).
-    executable_dir = abspath('.')
+    executable_dir = abspath(".")
     # Also need to set this fallback in case we are running from a
     # build directory with an invalid argv0 (i.e. test_sys.test_executable)
     real_executable_dir = executable_dir
@@ -304,18 +311,20 @@ if ENV_PYTHONEXECUTABLE or ENV___PYVENV_LAUNCHER__:
     # sys.executable and when searching for venvs. However, we should
     # use the argv0 path for prefix calculation
 
-    if os_name == 'darwin' and WITH_NEXT_FRAMEWORK:
+    if os_name == "darwin" and WITH_NEXT_FRAMEWORK:
         # In a framework build the binary in {sys.exec_prefix}/bin is
         # a stub executable that execs the real interpreter in an
         # embedded app bundle. That bundle is an implementation detail
         # and should not affect base_executable.
-        base_executable = f"{dirname(library)}/bin/python{VERSION_MAJOR}.{VERSION_MINOR}"
+        base_executable = (
+            f"{dirname(library)}/bin/python{VERSION_MAJOR}.{VERSION_MINOR}"
+        )
     else:
         base_executable = executable
 
     if not real_executable:
         real_executable = base_executable
-        #real_executable_dir = dirname(real_executable)
+        # real_executable_dir = dirname(real_executable)
     executable = ENV_PYTHONEXECUTABLE or ENV___PYVENV_LAUNCHER__
     executable_dir = dirname(executable)
 
@@ -360,8 +369,8 @@ if not home and not py_setpath:
         pyvenvcfg = []
 
     for line in pyvenvcfg:
-        key, had_equ, value = line.partition('=')
-        if had_equ and key.strip().lower() == 'home':
+        key, had_equ, value = line.partition("=")
+        if had_equ and key.strip().lower() == "home":
             executable_dir = real_executable_dir = value.strip()
             if not base_executable:
                 # First try to resolve symlinked executables, since that may be
@@ -370,7 +379,7 @@ if not home and not py_setpath:
                     base_executable = realpath(executable)
                     if base_executable == executable:
                         # No change, so probably not a link. Clear it and fall back
-                        base_executable = ''
+                        base_executable = ""
                 except OSError:
                     pass
                 if not base_executable:
@@ -380,10 +389,13 @@ if not home and not py_setpath:
                     # `make install` does not create it and distros often do not provide it.
                     #
                     # In this case, try to fall back to known alternatives
-                    if os_name != 'nt' and not isfile(base_executable):
+                    if os_name != "nt" and not isfile(base_executable):
                         base_exe = basename(executable)
-                        for candidate in (DEFAULT_PROGRAM_NAME, f'python{VERSION_MAJOR}.{VERSION_MINOR}'):
-                            candidate += EXE_SUFFIX if EXE_SUFFIX else ''
+                        for candidate in (
+                            DEFAULT_PROGRAM_NAME,
+                            f"python{VERSION_MAJOR}.{VERSION_MINOR}",
+                        ):
+                            candidate += EXE_SUFFIX if EXE_SUFFIX else ""
                             if base_exe == candidate:
                                 continue
                             candidate = joinpath(executable_dir, candidate)
@@ -404,7 +416,7 @@ if not home and not py_setpath:
 # ******************************************************************************
 
 if not base_executable:
-    base_executable = executable or real_executable or ''
+    base_executable = executable or real_executable or ""
 
 if not real_executable:
     real_executable = base_executable
@@ -415,9 +427,9 @@ except OSError as ex:
     # Only warn if the file actually exists and was unresolvable
     # Otherwise users who specify a fake executable may get spurious warnings.
     if isfile(real_executable):
-        warn(f'Failed to find real location of {base_executable}')
+        warn(f"Failed to find real location of {base_executable}")
 
-if not executable_dir and os_name == 'darwin' and library:
+if not executable_dir and os_name == "darwin" and library:
     # QUIRK: macOS checks adjacent to its library early
     library_dir = dirname(library)
     if any(isfile(joinpath(library_dir, p)) for p in STDLIB_LANDMARKS):
@@ -456,9 +468,9 @@ if not py_setpath and not home_was_set:
     # ._pth file, but it cannot override the library's one.
     for p in [library, executable, real_executable]:
         if p:
-            if os_name == 'nt' and (hassuffix(p, 'exe') or hassuffix(p, 'dll')):
-                p = p.rpartition('.')[0]
-            p += '._pth'
+            if os_name == "nt" and (hassuffix(p, "exe") or hassuffix(p, "dll")):
+                p = p.rpartition(".")[0]
+            p += "._pth"
             try:
                 pth = readlines(p)
                 pth_dir = dirname(p)
@@ -480,8 +492,9 @@ if not py_setpath and not home_was_set:
 
 build_prefix = None
 
-if ((not home_was_set and real_executable_dir and not py_setpath)
-        or config.get('_is_python_build', 0) > 0):
+if (not home_was_set and real_executable_dir and not py_setpath) or config.get(
+    "_is_python_build", 0
+) > 0:
     # Detect a build marker and use it to infer prefix, exec_prefix,
     # stdlib_dir and the platstdlib_dir directories.
     try:
@@ -497,35 +510,35 @@ if ((not home_was_set and real_executable_dir and not py_setpath)
     except (FileNotFoundError, PermissionError):
         if isfile(joinpath(real_executable_dir, BUILD_LANDMARK)):
             build_prefix = joinpath(real_executable_dir, VPATH)
-            if os_name == 'nt':
+            if os_name == "nt":
                 # QUIRK: Windows builds need platstdlib_dir to be the executable
                 # dir. Normally the builddir marker handles this, but in this
                 # case we need to correct manually.
                 platstdlib_dir = real_executable_dir
 
     if build_prefix:
-        if os_name == 'nt':
+        if os_name == "nt":
             # QUIRK: No searching for more landmarks on Windows
             build_stdlib_prefix = build_prefix
         else:
             build_stdlib_prefix = search_up(build_prefix, *BUILDSTDLIB_LANDMARKS)
         # Always use the build prefix for stdlib
         if build_stdlib_prefix:
-            stdlib_dir = joinpath(build_stdlib_prefix, 'Lib')
+            stdlib_dir = joinpath(build_stdlib_prefix, "Lib")
         else:
-            stdlib_dir = joinpath(build_prefix, 'Lib')
+            stdlib_dir = joinpath(build_prefix, "Lib")
         # Only use the build prefix for prefix if it hasn't already been set
         if not prefix:
             prefix = build_stdlib_prefix
         # Do not warn, because 'prefix' never equals 'build_prefix' on POSIX
-        #elif not venv_prefix and prefix != build_prefix:
+        # elif not venv_prefix and prefix != build_prefix:
         #    warn('Detected development environment but prefix is already set')
         if not exec_prefix:
             exec_prefix = build_prefix
         # Do not warn, because 'exec_prefix' never equals 'build_prefix' on POSIX
-        #elif not venv_prefix and exec_prefix != build_prefix:
+        # elif not venv_prefix and exec_prefix != build_prefix:
         #    warn('Detected development environment but exec_prefix is already set')
-        config['_is_python_build'] = 1
+        config["_is_python_build"] = 1
 
 
 # ******************************************************************************
@@ -535,7 +548,7 @@ if ((not home_was_set and real_executable_dir and not py_setpath)
 if py_setpath:
     # As documented, calling Py_SetPath will force both prefix
     # and exec_prefix to the empty string.
-    prefix = exec_prefix = ''
+    prefix = exec_prefix = ""
 
 else:
     # Read prefix and exec_prefix from explicitly set home
@@ -548,12 +561,11 @@ else:
         # Reset the standard library directory if it was already set
         stdlib_dir = None
 
-
     # First try to detect prefix by looking alongside our runtime library, if known
     if library and not prefix:
         library_dir = dirname(library)
         if ZIP_LANDMARK:
-            if os_name == 'nt':
+            if os_name == "nt":
                 # QUIRK: Windows does not search up for ZIP file
                 if isfile(joinpath(library_dir, ZIP_LANDMARK)):
                     prefix = library_dir
@@ -564,10 +576,9 @@ else:
                 prefix = library_dir
                 stdlib_dir = joinpath(prefix, STDLIB_SUBDIR)
 
-
     # Detect prefix by looking for zip file
     if ZIP_LANDMARK and executable_dir and not prefix:
-        if os_name == 'nt':
+        if os_name == "nt":
             # QUIRK: Windows does not search up for ZIP file
             if isfile(joinpath(executable_dir, ZIP_LANDMARK)):
                 prefix = executable_dir
@@ -578,7 +589,6 @@ else:
             if not isdir(stdlib_dir):
                 stdlib_dir = None
 
-
     # Detect prefix by searching from our executable location for the stdlib_dir
     if STDLIB_SUBDIR and STDLIB_LANDMARKS and executable_dir and not prefix:
         prefix = search_up(executable_dir, *STDLIB_LANDMARKS)
@@ -588,16 +598,15 @@ else:
     if PREFIX and not prefix:
         prefix = PREFIX
         if not any(isfile(joinpath(prefix, f)) for f in STDLIB_LANDMARKS):
-            warn('Could not find platform independent libraries <prefix>')
+            warn("Could not find platform independent libraries <prefix>")
 
     if not prefix:
-        prefix = abspath('')
-        warn('Could not find platform independent libraries <prefix>')
-
+        prefix = abspath("")
+        warn("Could not find platform independent libraries <prefix>")
 
     # Detect exec_prefix by searching from executable for the platstdlib_dir
     if PLATSTDLIB_LANDMARK and not exec_prefix:
-        if os_name == 'nt':
+        if os_name == "nt":
             # QUIRK: Windows always assumed these were the same
             # gh-100320: Our PYDs are assumed to be relative to the Lib directory
             # (that is, prefix) rather than the executable (that is, executable_dir)
@@ -607,7 +616,7 @@ else:
         if not exec_prefix and EXEC_PREFIX:
             exec_prefix = EXEC_PREFIX
         if not exec_prefix or not isdir(joinpath(exec_prefix, PLATSTDLIB_LANDMARK)):
-            if os_name == 'nt':
+            if os_name == "nt":
                 # QUIRK: If DLLs is missing on Windows, don't warn, just assume
                 # that they're in exec_prefix
                 if not platstdlib_dir:
@@ -619,21 +628,19 @@ else:
                     # keep working.
                     platstdlib_dir = exec_prefix
             else:
-                warn('Could not find platform dependent libraries <exec_prefix>')
-
+                warn("Could not find platform dependent libraries <exec_prefix>")
 
     # Fallback: assume exec_prefix == prefix
     if not exec_prefix:
         exec_prefix = prefix
 
-
     if not prefix or not exec_prefix:
-        warn('Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]')
+        warn("Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]")
 
 
 # For a venv, update the main prefix/exec_prefix but leave the base ones unchanged
 # XXX: We currently do not update prefix here, but it happens in site.py
-#if venv_prefix:
+# if venv_prefix:
 #    base_prefix = prefix
 #    base_exec_prefix = exec_prefix
 #    prefix = exec_prefix = venv_prefix
@@ -645,8 +652,8 @@ else:
 
 if py_setpath:
     # If Py_SetPath was called then it overrides any existing search path
-    config['module_search_paths'] = py_setpath.split(DELIM)
-    config['module_search_paths_set'] = 1
+    config["module_search_paths"] = py_setpath.split(DELIM)
+    config["module_search_paths_set"] = 1
 
 elif not pythonpath_was_set:
     # If pythonpath was already explicitly set or calculated, we leave it alone.
@@ -660,7 +667,7 @@ elif not pythonpath_was_set:
             pythonpath.append(abspath(p))
 
     # Then add the default zip file
-    if os_name == 'nt':
+    if os_name == "nt":
         # QUIRK: Windows uses the library directory rather than the prefix
         if library:
             library_dir = dirname(library)
@@ -673,7 +680,7 @@ elif not pythonpath_was_set:
     else:
         pythonpath.append(joinpath(prefix, ZIP_LANDMARK))
 
-    if os_name == 'nt' and use_environment and winreg:
+    if os_name == "nt" and use_environment and winreg:
         # QUIRK: Windows also lists paths in the registry. Paths are stored
         # as the default value of each subkey of
         # {HKCU,HKLM}\Software\Python\PythonCore\{winver}\PythonPath
@@ -714,7 +721,7 @@ elif not pythonpath_was_set:
     if not platstdlib_dir and exec_prefix:
         platstdlib_dir = joinpath(exec_prefix, PLATSTDLIB_LANDMARK)
 
-    if os_name == 'nt':
+    if os_name == "nt":
         # QUIRK: Windows generates paths differently
         if platstdlib_dir:
             pythonpath.append(platstdlib_dir)
@@ -732,8 +739,8 @@ elif not pythonpath_was_set:
         if platstdlib_dir:
             pythonpath.append(platstdlib_dir)
 
-    config['module_search_paths'] = pythonpath
-    config['module_search_paths_set'] = 1
+    config["module_search_paths"] = pythonpath
+    config["module_search_paths_set"] = 1
 
 
 # ******************************************************************************
@@ -742,9 +749,9 @@ elif not pythonpath_was_set:
 
 # QUIRK: Non-Windows replaces prefix/exec_prefix with defaults when running
 # in build directory. This happens after pythonpath calculation.
-if os_name != 'nt' and build_prefix:
-    prefix = config.get('prefix') or PREFIX
-    exec_prefix = config.get('exec_prefix') or EXEC_PREFIX or prefix
+if os_name != "nt" and build_prefix:
+    prefix = config.get("prefix") or PREFIX
+    exec_prefix = config.get("exec_prefix") or EXEC_PREFIX or prefix
 
 
 # ******************************************************************************
@@ -752,38 +759,38 @@ if os_name != 'nt' and build_prefix:
 # ******************************************************************************
 
 if pth:
-    config['isolated'] = 1
-    config['use_environment'] = 0
-    config['site_import'] = 0
-    config['safe_path'] = 1
+    config["isolated"] = 1
+    config["use_environment"] = 0
+    config["site_import"] = 0
+    config["safe_path"] = 1
     pythonpath = []
     for line in pth:
-        line = line.partition('#')[0].strip()
+        line = line.partition("#")[0].strip()
         if not line:
             pass
-        elif line == 'import site':
-            config['site_import'] = 1
-        elif line.startswith('import '):
+        elif line == "import site":
+            config["site_import"] = 1
+        elif line.startswith("import "):
             warn("unsupported 'import' line in ._pth file")
         else:
             pythonpath.append(joinpath(pth_dir, line))
-    config['module_search_paths'] = pythonpath
-    config['module_search_paths_set'] = 1
+    config["module_search_paths"] = pythonpath
+    config["module_search_paths_set"] = 1
 
 # ******************************************************************************
 # UPDATE config FROM CALCULATED VALUES
 # ******************************************************************************
 
-config['program_name'] = program_name
-config['home'] = home
-config['executable'] = executable
-config['base_executable'] = base_executable
-config['prefix'] = prefix
-config['exec_prefix'] = exec_prefix
-config['base_prefix'] = base_prefix or prefix
-config['base_exec_prefix'] = base_exec_prefix or exec_prefix
+config["program_name"] = program_name
+config["home"] = home
+config["executable"] = executable
+config["base_executable"] = base_executable
+config["prefix"] = prefix
+config["exec_prefix"] = exec_prefix
+config["base_prefix"] = base_prefix or prefix
+config["base_exec_prefix"] = base_exec_prefix or exec_prefix
 
-config['platlibdir'] = platlibdir
+config["platlibdir"] = platlibdir
 # test_embed expects empty strings, not None
-config['stdlib_dir'] = stdlib_dir or ''
-config['platstdlib_dir'] = platstdlib_dir or ''
+config["stdlib_dir"] = stdlib_dir or ""
+config["platstdlib_dir"] = platstdlib_dir or ""

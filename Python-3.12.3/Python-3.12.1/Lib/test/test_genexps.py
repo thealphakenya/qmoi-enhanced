@@ -280,10 +280,11 @@ Verify that genexps are weakly referencable
 """
 
 # Trace function can throw off the tuple reuse test.
-if hasattr(sys, 'gettrace') and sys.gettrace():
+if hasattr(sys, "gettrace") and sys.gettrace():
     __test__ = {}
 else:
-    __test__ = {'doctests' : doctests}
+    __test__ = {"doctests": doctests}
+
 
 def load_tests(loader, tests, pattern):
     tests.addTest(doctest.DocTestSuite())

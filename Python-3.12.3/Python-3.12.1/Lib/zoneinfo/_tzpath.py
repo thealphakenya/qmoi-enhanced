@@ -21,9 +21,7 @@ def reset_tzpath(to=None):
         if env_var is not None:
             base_tzpath = _parse_python_tzpath(env_var)
         else:
-            base_tzpath = _parse_python_tzpath(
-                sysconfig.get_config_var("TZPATH")
-            )
+            base_tzpath = _parse_python_tzpath(sysconfig.get_config_var("TZPATH"))
 
     TZPATH = tuple(base_tzpath)
 
@@ -42,8 +40,7 @@ def _parse_python_tzpath(env_var):
         msg = _get_invalid_paths_message(raw_tzpath)
 
         warnings.warn(
-            "Invalid paths specified in PYTHONTZPATH environment variable. "
-            + msg,
+            "Invalid paths specified in PYTHONTZPATH environment variable. " + msg,
             InvalidTZPathWarning,
         )
 
@@ -78,9 +75,7 @@ _TEST_PATH = os.path.normpath(os.path.join("_", "_"))[:-1]
 
 def _validate_tzfile_path(path, _base=_TEST_PATH):
     if os.path.isabs(path):
-        raise ValueError(
-            f"ZoneInfo keys may not be absolute paths, got: {path}"
-        )
+        raise ValueError(f"ZoneInfo keys may not be absolute paths, got: {path}")
 
     # We only care about the kinds of path normalizations that would change the
     # length of the key - e.g. a/../b -> a/b, or a/b/ -> a/b. On Windows,

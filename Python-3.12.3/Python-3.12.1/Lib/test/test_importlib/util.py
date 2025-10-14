@@ -17,17 +17,18 @@ import types
 BUILTINS = types.SimpleNamespace()
 BUILTINS.good_name = None
 BUILTINS.bad_name = None
-if 'errno' in sys.builtin_module_names:
-    BUILTINS.good_name = 'errno'
-if 'importlib' not in sys.builtin_module_names:
-    BUILTINS.bad_name = 'importlib'
+if "errno" in sys.builtin_module_names:
+    BUILTINS.good_name = "errno"
+if "importlib" not in sys.builtin_module_names:
+    BUILTINS.bad_name = "importlib"
 
 EXTENSIONS = types.SimpleNamespace()
 EXTENSIONS.path = None
 EXTENSIONS.ext = None
 EXTENSIONS.filename = None
 EXTENSIONS.file_path = None
-EXTENSIONS.name = '_testsinglephase'
+EXTENSIONS.name = "_testsinglephase"
+
 
 def _extension_details():
     global EXTENSIONS
@@ -42,16 +43,20 @@ def _extension_details():
                 EXTENSIONS.file_path = file_path
                 return
 
+
 _extension_details()
 
 
 def import_importlib(module_name):
     """Import a module from importlib both w/ and w/o _frozen_importlib."""
-    fresh = ('importlib',) if '.' in module_name else ()
+    fresh = ("importlib",) if "." in module_name else ()
     frozen = import_helper.import_fresh_module(module_name)
-    source = import_helper.import_fresh_module(module_name, fresh=fresh,
-                                         blocked=('_frozen_importlib', '_frozen_importlib_external'))
-    return {'Frozen': frozen, 'Source': source}
+    source = import_helper.import_fresh_module(
+        module_name,
+        fresh=fresh,
+        blocked=("_frozen_importlib", "_frozen_importlib_external"),
+    )
+    return {"Frozen": frozen, "Source": source}
 
 
 def specialize_class(cls, kind, base=None, **kwargs):
@@ -61,7 +66,7 @@ def specialize_class(cls, kind, base=None, **kwargs):
         base = unittest.TestCase
     elif not isinstance(base, type):
         base = base[kind]
-    name = '{}_{}'.format(kind, cls.__name__)
+    name = "{}_{}".format(kind, cls.__name__)
     bases = (cls, base)
     specialized = types.new_class(name, bases)
     specialized.__module__ = cls.__module__
@@ -74,8 +79,8 @@ def specialize_class(cls, kind, base=None, **kwargs):
 
 
 def split_frozen(cls, base=None, **kwargs):
-    frozen = specialize_class(cls, 'Frozen', base, **kwargs)
-    source = specialize_class(cls, 'Source', base, **kwargs)
+    frozen = specialize_class(cls, "Frozen", base, **kwargs)
+    source = specialize_class(cls, "Source", base, **kwargs)
     return frozen, source
 
 
@@ -86,30 +91,33 @@ def test_both(test_class, base=None, **kwargs):
 CASE_INSENSITIVE_FS = True
 # Windows is the only OS that is *always* case-insensitive
 # (OS X *can* be case-sensitive).
-if sys.platform not in ('win32', 'cygwin'):
+if sys.platform not in ("win32", "cygwin"):
     changed_name = __file__.upper()
     if changed_name == __file__:
         changed_name = __file__.lower()
     if not os.path.exists(changed_name):
         CASE_INSENSITIVE_FS = False
 
-source_importlib = import_importlib('importlib')['Source']
-__import__ = {'Frozen': staticmethod(builtins.__import__),
-              'Source': staticmethod(source_importlib.__import__)}
+source_importlib = import_importlib("importlib")["Source"]
+__import__ = {
+    "Frozen": staticmethod(builtins.__import__),
+    "Source": staticmethod(source_importlib.__import__),
+}
 
 
 def case_insensitive_tests(test):
     """Class decorator that nullifies tests requiring a case-insensitive
     file system."""
-    return unittest.skipIf(not CASE_INSENSITIVE_FS,
-                            "requires a case-insensitive filesystem")(test)
+    return unittest.skipIf(
+        not CASE_INSENSITIVE_FS, "requires a case-insensitive filesystem"
+    )(test)
 
 
-def submodule(parent, name, pkg_dir, content=''):
-    path = os.path.join(pkg_dir, name + '.py')
-    with open(path, 'w', encoding='utf-8') as subfile:
+def submodule(parent, name, pkg_dir, content=""):
+    path = os.path.join(pkg_dir, name + ".py")
+    with open(path, "w", encoding="utf-8") as subfile:
         subfile.write(content)
-    return '{}.{}'.format(parent, name), path
+    return "{}.{}".format(parent, name), path
 
 
 def get_code_from_pyc(pyc_path):
@@ -117,7 +125,7 @@ def get_code_from_pyc(pyc_path):
 
     No header validation is performed.
     """
-    with open(pyc_path, 'rb') as pyc_f:
+    with open(pyc_path, "rb") as pyc_f:
         pyc_f.seek(16)
         return marshal.load(pyc_f)
 
@@ -131,7 +139,7 @@ def uncache(*names):
 
     """
     for name in names:
-        if name in ('sys', 'marshal'):
+        if name in ("sys", "marshal"):
             raise ValueError("cannot uncache {}".format(name))
         try:
             del sys.modules[name]
@@ -148,8 +156,8 @@ def uncache(*names):
 
 
 @contextlib.contextmanager
-def temp_module(name, content='', *, pkg=False):
-    conflicts = [n for n in sys.modules if n.partition('.')[0] == name]
+def temp_module(name, content="", *, pkg=False):
+    conflicts = [n for n in sys.modules if n.partition(".")[0] == name]
     with os_helper.temp_cwd(None) as cwd:
         with uncache(name, *conflicts):
             with import_helper.DirsOnSysPath(cwd):
@@ -157,16 +165,16 @@ def temp_module(name, content='', *, pkg=False):
 
                 location = os.path.join(cwd, name)
                 if pkg:
-                    modpath = os.path.join(location, '__init__.py')
+                    modpath = os.path.join(location, "__init__.py")
                     os.mkdir(name)
                 else:
-                    modpath = location + '.py'
+                    modpath = location + ".py"
                     if content is None:
                         # Make sure the module file gets created.
-                        content = ''
+                        content = ""
                 if content is not None:
                     # not a namespace package
-                    with open(modpath, 'w', encoding='utf-8') as modfile:
+                    with open(modpath, "w", encoding="utf-8") as modfile:
                         modfile.write(content)
                 yield location
 
@@ -183,9 +191,12 @@ def import_state(**kwargs):
     """
     originals = {}
     try:
-        for attr, default in (('meta_path', []), ('path', []),
-                              ('path_hooks', []),
-                              ('path_importer_cache', {})):
+        for attr, default in (
+            ("meta_path", []),
+            ("path", []),
+            ("path_hooks", []),
+            ("path_importer_cache", {}),
+        ):
             originals[attr] = getattr(sys, attr)
             if attr in kwargs:
                 new_value = kwargs[attr]
@@ -194,7 +205,7 @@ def import_state(**kwargs):
                 new_value = default
             setattr(sys, attr, new_value)
         if len(kwargs):
-            raise ValueError('unrecognized arguments: {}'.format(kwargs))
+            raise ValueError("unrecognized arguments: {}".format(kwargs))
         yield
     finally:
         for attr, value in originals.items():
@@ -202,30 +213,29 @@ def import_state(**kwargs):
 
 
 class _ImporterMock:
-
     """Base class to help with creating importer mocks."""
 
     def __init__(self, *names, module_code={}):
         self.modules = {}
         self.module_code = {}
         for name in names:
-            if not name.endswith('.__init__'):
+            if not name.endswith(".__init__"):
                 import_name = name
             else:
-                import_name = name[:-len('.__init__')]
-            if '.' not in name:
+                import_name = name[: -len(".__init__")]
+            if "." not in name:
                 package = None
             elif import_name == name:
-                package = name.rsplit('.', 1)[0]
+                package = name.rsplit(".", 1)[0]
             else:
                 package = import_name
             module = types.ModuleType(import_name)
             module.__loader__ = self
-            module.__file__ = '<mock __file__>'
+            module.__file__ = "<mock __file__>"
             module.__package__ = package
             module.attr = name
             if import_name != name:
-                module.__path__ = ['<mock __path__>']
+                module.__path__ = ["<mock __path__>"]
             self.modules[import_name] = module
             if import_name in module_code:
                 self.module_code[import_name] = module_code[import_name]
@@ -243,7 +253,6 @@ class _ImporterMock:
 
 
 class mock_spec(_ImporterMock):
-
     """Importer mock using PEP 451 APIs."""
 
     def find_spec(self, fullname, path=None, parent=None):
@@ -252,8 +261,11 @@ class mock_spec(_ImporterMock):
         except KeyError:
             return None
         spec = util.spec_from_file_location(
-                fullname, module.__file__, loader=self,
-                submodule_search_locations=getattr(module, '__path__', None))
+            fullname,
+            module.__file__,
+            loader=self,
+            submodule_search_locations=getattr(module, "__path__", None),
+        )
         return spec
 
     def create_module(self, spec):
@@ -273,6 +285,7 @@ def writes_bytecode_files(fxn):
     tests that require it to be set to False."""
     if sys.dont_write_bytecode:
         return unittest.skip("relies on writing bytecode")(fxn)
+
     @functools.wraps(fxn)
     def wrapper(*args, **kwargs):
         original = sys.dont_write_bytecode
@@ -282,6 +295,7 @@ def writes_bytecode_files(fxn):
         finally:
             sys.dont_write_bytecode = original
         return to_return
+
     return wrapper
 
 
@@ -324,32 +338,32 @@ def create_modules(*names):
     well.
 
     """
-    source = 'attr = {0!r}'
+    source = "attr = {0!r}"
     created_paths = []
     mapping = {}
     state_manager = None
     uncache_manager = None
     try:
         temp_dir = tempfile.mkdtemp()
-        mapping['.root'] = temp_dir
+        mapping[".root"] = temp_dir
         import_names = set()
         for name in names:
-            if not name.endswith('__init__'):
+            if not name.endswith("__init__"):
                 import_name = name
             else:
-                import_name = name[:-len('.__init__')]
+                import_name = name[: -len(".__init__")]
             import_names.add(import_name)
             if import_name in sys.modules:
                 del sys.modules[import_name]
-            name_parts = name.split('.')
+            name_parts = name.split(".")
             file_path = temp_dir
             for directory in name_parts[:-1]:
                 file_path = os.path.join(file_path, directory)
                 if not os.path.exists(file_path):
                     os.mkdir(file_path)
                     created_paths.append(file_path)
-            file_path = os.path.join(file_path, name_parts[-1] + '.py')
-            with open(file_path, 'w', encoding='utf-8') as file:
+            file_path = os.path.join(file_path, name_parts[-1] + ".py")
+            with open(file_path, "w", encoding="utf-8") as file:
                 file.write(source.format(name))
             created_paths.append(file_path)
             mapping[name] = file_path
@@ -368,17 +382,24 @@ def create_modules(*names):
 
 def mock_path_hook(*entries, importer):
     """A mock sys.path_hooks entry."""
+
     def hook(entry):
         if entry not in entries:
             raise ImportError
         return importer
+
     return hook
 
 
 class CASEOKTestBase:
 
     def caseok_env_changed(self, *, should_exist):
-        possibilities = b'PYTHONCASEOK', 'PYTHONCASEOK'
-        if any(x in self.importlib._bootstrap_external._os.environ
-                    for x in possibilities) != should_exist:
-            self.skipTest('os.environ changes not reflected in _os.environ')
+        possibilities = b"PYTHONCASEOK", "PYTHONCASEOK"
+        if (
+            any(
+                x in self.importlib._bootstrap_external._os.environ
+                for x in possibilities
+            )
+            != should_exist
+        ):
+            self.skipTest("os.environ changes not reflected in _os.environ")

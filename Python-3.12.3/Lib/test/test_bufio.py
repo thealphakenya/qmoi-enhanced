@@ -1,15 +1,27 @@
 import unittest
 from test.support import os_helper
 
-import io # C implementation.
-import _pyio as pyio # Python implementation.
+import io  # C implementation.
+import _pyio as pyio  # Python implementation.
 
 # Simple test to ensure that optimizations in the IO library deliver the
 # expected results.  For best testing, run this under a debug-build Python too
 # (to exercise asserts in the C code).
 
-lengths = list(range(1, 257)) + [512, 1000, 1024, 2048, 4096, 8192, 10000,
-                                 16384, 32768, 65536, 1000000]
+lengths = list(range(1, 257)) + [
+    512,
+    1000,
+    1024,
+    2048,
+    4096,
+    8192,
+    10000,
+    16384,
+    32768,
+    65536,
+    1000000,
+]
+
 
 class BufferSizeTest:
     def try_one(self, s):
@@ -34,7 +46,7 @@ class BufferSizeTest:
             line = f.readline()
             self.assertEqual(line, s)
             line = f.readline()
-            self.assertFalse(line) # Must be at EOF
+            self.assertFalse(line)  # Must be at EOF
             f.close()
         finally:
             os_helper.unlink(os_helper.TESTFN)
@@ -59,11 +71,12 @@ class BufferSizeTest:
         self.drive_one(b"1234567890\00\01\02\03\04\05\06")
 
     def test_nullpat(self):
-        self.drive_one(b'\0' * 1000)
+        self.drive_one(b"\0" * 1000)
 
 
 class CBufferSizeTest(BufferSizeTest, unittest.TestCase):
     open = io.open
+
 
 class PyBufferSizeTest(BufferSizeTest, unittest.TestCase):
     open = staticmethod(pyio.open)

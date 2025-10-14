@@ -19,11 +19,13 @@ DEVICES = {
     "qcity": "qmoi_ai.qcapp",
 }
 
+
 def ensure_directories():
     for device in DEVICES:
         os.makedirs(os.path.join(OUTPUT_BASE, device), exist_ok=True)
     if not os.path.exists(ICON_PATH):
         from PIL import Image, ImageDraw
+
         icon = Image.new("RGBA", (256, 256), (0, 102, 204, 255))
         draw = ImageDraw.Draw(icon)
         draw.text((100, 100), "Q", fill=(255, 255, 255, 255))
@@ -40,7 +42,9 @@ def build_windows():
             print("✅ Windows build succeeded.")
             return True
         else:
-            print(f"❌ Windows build failed (attempt {attempt+1}/{retries}). Retrying...")
+            print(
+                f"❌ Windows build failed (attempt {attempt+1}/{retries}). Retrying..."
+            )
             subprocess.call("npm run fix-build", shell=True)
             time.sleep(2)
     print("❌ Windows build failed after retries.")
@@ -62,12 +66,23 @@ def build_android():
             print("✅ Android build succeeded.")
             return True
         else:
-            print(f"❌ Android build failed (attempt {attempt+1}/{retries}). Retrying...")
+            print(
+                f"❌ Android build failed (attempt {attempt+1}/{retries}). Retrying..."
+            )
             subprocess.call("npm run fix-build", shell=True)
             time.sleep(2)
     print("❌ Android build failed after retries.")
     return False
-    apk_source = os.path.join(ROOT_DIR, "android", "app", "build", "outputs", "apk", "release", "app-release.apk")
+    apk_source = os.path.join(
+        ROOT_DIR,
+        "android",
+        "app",
+        "build",
+        "outputs",
+        "apk",
+        "release",
+        "app-release.apk",
+    )
     apk_target = os.path.join(OUTPUT_BASE, "android", DEVICES["android"])
     if os.path.exists(apk_source):
         shutil.copy(apk_source, apk_target)
@@ -75,13 +90,14 @@ def build_android():
     else:
         print("❌ Android APK build failed")
 
+
 def install_android():
     apk_path = os.path.join(OUTPUT_BASE, "android", DEVICES["android"])
     if os.path.exists(apk_path):
         subprocess.call("adb kill-server && adb start-server", shell=True)
         time.sleep(2)
         subprocess.call("adb wait-for-device", shell=True)
-        subprocess.call(f"adb install -r \"{apk_path}\"", shell=True)
+        subprocess.call(f'adb install -r "{apk_path}"', shell=True)
         subprocess.call("adb shell monkey -p com.qmoi.ai -v 1", shell=True)
         print("✅ Android App installed and launched.")
     else:
@@ -96,11 +112,15 @@ def build_linux():
         qmoiexe_path = os.path.abspath(os.path.join(ROOT_DIR, "../qmoiexe.py"))
     if not os.path.exists(qmoiexe_path):
         qmoiexe_path = os.path.abspath(os.path.join(ROOT_DIR, "qmoiexe.py"))
-    ret = subprocess.call(f"pyinstaller --onefile --name=qmoi_ai --windowed {qmoiexe_path} --distpath {os.path.dirname(appimage_path)} --workpath /tmp/pyinstaller-linux", shell=True)
+    ret = subprocess.call(
+        f"pyinstaller --onefile --name=qmoi_ai --windowed {qmoiexe_path} --distpath {os.path.dirname(appimage_path)} --workpath /tmp/pyinstaller-linux",
+        shell=True,
+    )
     if ret == 0 and os.path.exists(appimage_path):
         print("✅ Linux AppImage built.")
     else:
         print("❌ Linux AppImage build failed.")
+
 
 def build_mac():
     print("🍏 Building Mac .dmg...")
@@ -110,11 +130,15 @@ def build_mac():
         qmoiexe_path = os.path.abspath(os.path.join(ROOT_DIR, "../qmoiexe.py"))
     if not os.path.exists(qmoiexe_path):
         qmoiexe_path = os.path.abspath(os.path.join(ROOT_DIR, "qmoiexe.py"))
-    ret = subprocess.call(f"pyinstaller --onefile --name=qmoi_ai --windowed {qmoiexe_path} --distpath {os.path.dirname(dmg_path)} --workpath /tmp/pyinstaller-mac", shell=True)
+    ret = subprocess.call(
+        f"pyinstaller --onefile --name=qmoi_ai --windowed {qmoiexe_path} --distpath {os.path.dirname(dmg_path)} --workpath /tmp/pyinstaller-mac",
+        shell=True,
+    )
     if ret == 0 and os.path.exists(dmg_path):
         print("✅ Mac DMG built.")
     else:
         print("❌ Mac DMG build failed.")
+
 
 def build_ios():
     print("📱 Building iOS .ipa...")
@@ -127,16 +151,18 @@ def build_ios():
     else:
         print("❌ iOS IPA build missing. Please provide a production IPA.")
 
+
 def build_chromebook():
     print("💻 Building Chromebook PWA zip...")
     pwa_zip = os.path.join(OUTPUT_BASE, "chromebook", DEVICES["chromebook"])
     # Copy actual compiled PWA files (assume build exists at ../qmoi-space-pwa/dist)
     pwa_dist = os.path.abspath(os.path.join(ROOT_DIR, "../qmoi-space-pwa/dist"))
     if os.path.exists(pwa_dist):
-        shutil.make_archive(pwa_zip.replace('.zip',''), 'zip', pwa_dist)
+        shutil.make_archive(pwa_zip.replace(".zip", ""), "zip", pwa_dist)
         print("✅ Chromebook PWA zip built.")
     else:
         print("❌ Chromebook PWA build missing. Please build the PWA first.")
+
 
 def build_smarttv():
     print("📺 Building SmartTV app...")
@@ -147,6 +173,7 @@ def build_smarttv():
     else:
         print("❌ SmartTV app build missing. Please provide a production build.")
 
+
 def build_rpi():
     print("🍓 Building Raspberry Pi .deb...")
     deb_path = os.path.join(OUTPUT_BASE, "rpi", DEVICES["rpi"])
@@ -156,16 +183,18 @@ def build_rpi():
     else:
         print("❌ RPi DEB build missing. Please provide a production build.")
 
+
 def build_qcity():
     print("🌐 Building QCity PWA qcapp...")
     qcapp_path = os.path.join(OUTPUT_BASE, "qcity", DEVICES["qcity"])
     # Copy actual compiled QCity PWA (assume build exists at ../qcity-pwa/dist)
     qcity_dist = os.path.abspath(os.path.join(ROOT_DIR, "../qcity-pwa/dist"))
     if os.path.exists(qcity_dist):
-        shutil.make_archive(qcapp_path.replace('.qcapp',''), 'zip', qcity_dist)
+        shutil.make_archive(qcapp_path.replace(".qcapp", ""), "zip", qcity_dist)
         print("✅ QCity PWA qcapp built.")
     else:
         print("❌ QCity PWA build missing. Please build the QCity PWA first.")
+
 
 def update_readme():
     status = f"## QMOI AI Build Status ({datetime.now().strftime('%Y-%m-%d %H:%M')})\n"
@@ -180,6 +209,7 @@ def update_readme():
             f.seek(0)
             f.write(status + "\n" + "".join(lines))
     print("📝 README updated")
+
 
 def notify_watchdebug():
     if os.path.exists(WATCHDEBUG_PATH):
@@ -221,6 +251,7 @@ def main():
         print("🎉 All apps built and deployed successfully.")
     else:
         print("⚠️ Some builds failed after retries. Check logs for details.")
+
 
 if __name__ == "__main__":
     main()

@@ -1,4 +1,3 @@
-
 _NOT_SET = object()
 
 
@@ -9,12 +8,15 @@ class Slot:
     e.g. tuple subclasses.
     """
 
-    __slots__ = ('initial', 'default', 'readonly', 'instances', 'name')
+    __slots__ = ("initial", "default", "readonly", "instances", "name")
 
-    def __init__(self, initial=_NOT_SET, *,
-                 default=_NOT_SET,
-                 readonly=False,
-                 ):
+    def __init__(
+        self,
+        initial=_NOT_SET,
+        *,
+        default=_NOT_SET,
+        readonly=False,
+    ):
         self.initial = initial
         self.default = default
         self.readonly = readonly
@@ -31,7 +33,7 @@ class Slot:
 
     def __set_name__(self, cls, name):
         if self.name is not None:
-            raise TypeError('already used')
+            raise TypeError("already used")
         self.name = name
         try:
             slotnames = cls.__slot_names__
@@ -58,28 +60,29 @@ class Slot:
 
     def __set__(self, obj, value):
         if self.readonly:
-            raise AttributeError(f'{self.name} is readonly')
+            raise AttributeError(f"{self.name} is readonly")
         # XXX Optionally coerce?
         self.instances[id(obj)] = value
 
     def __delete__(self, obj):
         if self.readonly:
-            raise AttributeError(f'{self.name} is readonly')
+            raise AttributeError(f"{self.name} is readonly")
         self.instances[id(obj)] = self.default  # XXX refleak?
 
     def _ensure___del__(self, cls, slotnames):  # See the comment in __init__().
         try:
             old___del__ = cls.__del__
         except AttributeError:
-            old___del__ = (lambda s: None)
+            old___del__ = lambda s: None
         else:
-            if getattr(old___del__, '_slotted', False):
+            if getattr(old___del__, "_slotted", False):
                 return
 
         def __del__(_self):
             for name in slotnames:
                 delattr(_self, name)
             old___del__(_self)
+
         __del__._slotted = True
         cls.__del__ = __del__
 
@@ -107,7 +110,7 @@ class classonly:
 
     def __set_name__(self, cls, name):
         if self.name is not None:
-            raise TypeError('already used')
+            raise TypeError("already used")
         self.name = name
 
     def __get__(self, obj, cls):

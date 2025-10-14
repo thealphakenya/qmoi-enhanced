@@ -4,10 +4,10 @@ import unittest
 
 class Test_iskeyword(unittest.TestCase):
     def test_true_is_a_keyword(self):
-        self.assertTrue(keyword.iskeyword('True'))
+        self.assertTrue(keyword.iskeyword("True"))
 
     def test_uppercase_true_is_not_a_keyword(self):
-        self.assertFalse(keyword.iskeyword('TRUE'))
+        self.assertFalse(keyword.iskeyword("TRUE"))
 
     def test_none_value_is_not_a_keyword(self):
         self.assertFalse(keyword.iskeyword(None))
@@ -16,9 +16,9 @@ class Test_iskeyword(unittest.TestCase):
     # preserved for backward compatibility.
     def test_changing_the_kwlist_does_not_affect_iskeyword(self):
         oldlist = keyword.kwlist
-        self.addCleanup(setattr, keyword, 'kwlist', oldlist)
-        keyword.kwlist = ['its', 'all', 'eggs', 'beans', 'and', 'a', 'slice']
-        self.assertFalse(keyword.iskeyword('eggs'))
+        self.addCleanup(setattr, keyword, "kwlist", oldlist)
+        keyword.kwlist = ["its", "all", "eggs", "beans", "and", "a", "slice"]
+        self.assertFalse(keyword.iskeyword("eggs"))
 
     def test_changing_the_softkwlist_does_not_affect_issoftkeyword(self):
         oldlist = keyword.softkwlist

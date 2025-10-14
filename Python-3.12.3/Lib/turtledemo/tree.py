@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""      turtle-example-suite:
+"""turtle-example-suite:
 
              tdemo_tree.py
 
@@ -18,8 +18,9 @@ there are 1024 turtles.
 from turtle import Turtle, mainloop
 from time import perf_counter as clock
 
+
 def tree(plist, l, a, f):
-    """ plist is list of pens
+    """plist is list of pens
     l is length of branch
     a is half of the angle between 2 branches
     f is factor by which branch is shortened
@@ -33,15 +34,16 @@ def tree(plist, l, a, f):
             q.right(a)
             lst.append(p)
             lst.append(q)
-        for x in tree(lst, l*f, a, f):
+        for x in tree(lst, l * f, a, f):
             yield None
+
 
 def maketree():
     p = Turtle()
     p.setundobuffer(None)
     p.hideturtle()
     p.speed(0)
-    p.getscreen().tracer(30,0)
+    p.getscreen().tracer(30, 0)
     p.left(90)
     p.penup()
     p.forward(-210)
@@ -50,11 +52,13 @@ def maketree():
     for x in t:
         pass
 
+
 def main():
-    a=clock()
+    a = clock()
     maketree()
-    b=clock()
-    return "done: %.2f sec." % (b-a)
+    b = clock()
+    return "done: %.2f sec." % (b - a)
+
 
 if __name__ == "__main__":
     msg = main()

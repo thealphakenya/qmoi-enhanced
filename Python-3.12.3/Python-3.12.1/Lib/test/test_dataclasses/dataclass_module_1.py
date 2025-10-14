@@ -1,4 +1,4 @@
-#from __future__ import annotations
+# from __future__ import annotations
 USING_STRINGS = False
 
 # dataclass_module_1.py and dataclass_module_1_str.py are identical
@@ -13,6 +13,7 @@ T_CV3 = typing.ClassVar
 T_IV2 = dataclasses.InitVar[int]
 T_IV3 = dataclasses.InitVar
 
+
 @dataclasses.dataclass
 class CV:
     T_CV4 = typing.ClassVar
@@ -21,6 +22,7 @@ class CV:
     cv2: T_CV2
     cv3: T_CV3
     not_cv4: T_CV4  # When using string annotations, this field is not recognized as a ClassVar.
+
 
 @dataclasses.dataclass
 class IV:

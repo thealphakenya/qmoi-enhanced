@@ -318,7 +318,8 @@ is *not* valid syntax.)
     SyntaxError: invalid syntax
 """
 
-__test__ = {'doctests' : doctests}
+__test__ = {"doctests": doctests}
+
 
 def load_tests(loader, tests, pattern):
     tests.addTest(doctest.DocTestSuite())

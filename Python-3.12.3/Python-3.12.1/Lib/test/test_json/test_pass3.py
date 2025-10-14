@@ -2,14 +2,14 @@ from test.test_json import PyTest, CTest
 
 
 # from https://json.org/JSON_checker/test/pass3.json
-JSON = r'''
+JSON = r"""
 {
     "JSON Test Pattern pass3": {
         "The outermost value": "must be an object or array.",
         "In this test": "It is an object."
     }
 }
-'''
+"""
 
 
 class TestPass3:
@@ -20,5 +20,9 @@ class TestPass3:
         self.assertEqual(res, self.loads(out))
 
 
-class TestPyPass3(TestPass3, PyTest): pass
-class TestCPass3(TestPass3, CTest): pass
+class TestPyPass3(TestPass3, PyTest):
+    pass
+
+
+class TestCPass3(TestPass3, CTest):
+    pass

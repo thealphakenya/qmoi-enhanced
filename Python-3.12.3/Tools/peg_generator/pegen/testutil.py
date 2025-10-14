@@ -35,7 +35,9 @@ def generate_parser(grammar: Grammar) -> Type[Parser]:
     return ns["GeneratedParser"]
 
 
-def run_parser(file: IO[bytes], parser_class: Type[Parser], *, verbose: bool = False) -> Any:
+def run_parser(
+    file: IO[bytes], parser_class: Type[Parser], *, verbose: bool = False
+) -> Any:
     # Run a parser on a file (stream).
     tokenizer = Tokenizer(tokenize.generate_tokens(file.readline))  # type: ignore # typeshed issue #3515
     parser = parser_class(tokenizer, verbose=verbose)
@@ -46,7 +48,11 @@ def run_parser(file: IO[bytes], parser_class: Type[Parser], *, verbose: bool = F
 
 
 def parse_string(
-    source: str, parser_class: Type[Parser], *, dedent: bool = True, verbose: bool = False
+    source: str,
+    parser_class: Type[Parser],
+    *,
+    dedent: bool = True,
+    verbose: bool = False,
 ) -> Any:
     # Run the parser on a string.
     if dedent:
@@ -83,7 +89,9 @@ def generate_c_parser_source(grammar: Grammar) -> str:
 
 
 def generate_parser_c_extension(
-    grammar: Grammar, path: pathlib.PurePath, debug: bool = False,
+    grammar: Grammar,
+    path: pathlib.PurePath,
+    debug: bool = False,
     library_dir: Optional[str] = None,
 ) -> Any:
     """Generate a parser c extension for the given grammar in the given path
@@ -112,7 +120,7 @@ def generate_parser_c_extension(
 
 
 def print_memstats() -> bool:
-    MiB: Final = 2 ** 20
+    MiB: Final = 2**20
     try:
         import psutil  # type: ignore
     except ImportError:

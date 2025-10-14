@@ -1,6 +1,6 @@
 """Support for running coroutines in parallel with staggered start times."""
 
-__all__ = 'staggered_race',
+__all__ = ("staggered_race",)
 
 import contextlib
 import typing
@@ -12,14 +12,12 @@ from . import tasks
 
 
 async def staggered_race(
-        coro_fns: typing.Iterable[typing.Callable[[], typing.Awaitable]],
-        delay: typing.Optional[float],
-        *,
-        loop: events.AbstractEventLoop = None,
+    coro_fns: typing.Iterable[typing.Callable[[], typing.Awaitable]],
+    delay: typing.Optional[float],
+    *,
+    loop: events.AbstractEventLoop = None,
 ) -> typing.Tuple[
-    typing.Any,
-    typing.Optional[int],
-    typing.List[typing.Optional[Exception]]
+    typing.Any, typing.Optional[int], typing.List[typing.Optional[Exception]]
 ]:
     """Run coroutines with staggered start times and take the first to finish.
 
@@ -79,8 +77,7 @@ async def staggered_race(
     exceptions = []
     running_tasks = []
 
-    async def run_one_coro(
-            previous_failed: typing.Optional[locks.Event]) -> None:
+    async def run_one_coro(previous_failed: typing.Optional[locks.Event]) -> None:
         # Wait for the previous task to finish, or for delay seconds
         if previous_failed is not None:
             with contextlib.suppress(exceptions_mod.TimeoutError):

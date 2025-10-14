@@ -7,7 +7,6 @@ import typing
 from test import support
 
 
-
 class TestIsInstanceExceptions(unittest.TestCase):
     # Test to make sure that an AttributeError when accessing the instance's
     # class's bases is masked.  This was actually a bug in Python 2.2 and
@@ -28,11 +27,13 @@ class TestIsInstanceExceptions(unittest.TestCase):
             def getclass(self):
                 # This must return an object that has no __bases__ attribute
                 return None
+
             __class__ = property(getclass)
 
         class C(object):
             def getbases(self):
                 return ()
+
             __bases__ = property(getbases)
 
         self.assertEqual(False, isinstance(I(), C()))
@@ -43,16 +44,19 @@ class TestIsInstanceExceptions(unittest.TestCase):
         class E(object):
             def getbases(self):
                 raise RuntimeError
+
             __bases__ = property(getbases)
 
         class I(object):
             def getclass(self):
                 return E()
+
             __class__ = property(getclass)
 
         class C(object):
             def getbases(self):
                 return ()
+
             __bases__ = property(getbases)
 
         self.assertRaises(RuntimeError, isinstance, I(), C())
@@ -60,11 +64,13 @@ class TestIsInstanceExceptions(unittest.TestCase):
     # Here's a situation where getattr(cls, '__bases__') raises an exception.
     # If that exception is not AttributeError, it should not get masked
     def test_dont_mask_non_attribute_error(self):
-        class I: pass
+        class I:
+            pass
 
         class C(object):
             def getbases(self):
                 raise RuntimeError
+
             __bases__ = property(getbases)
 
         self.assertRaises(RuntimeError, isinstance, I(), C())
@@ -72,11 +78,13 @@ class TestIsInstanceExceptions(unittest.TestCase):
     # Like above, except that getattr(cls, '__bases__') raises an
     # AttributeError, which /should/ get masked as a TypeError
     def test_mask_attribute_error(self):
-        class I: pass
+        class I:
+            pass
 
         class C(object):
             def getbases(self):
                 raise AttributeError
+
             __bases__ = property(getbases)
 
         self.assertRaises(TypeError, isinstance, I(), C())
@@ -87,13 +95,16 @@ class TestIsInstanceExceptions(unittest.TestCase):
         class C(object):
             def getclass(self):
                 raise RuntimeError
+
             __class__ = property(getclass)
 
         c = C()
         self.assertRaises(RuntimeError, isinstance, c, bool)
 
         # test another code path
-        class D: pass
+        class D:
+            pass
+
         self.assertRaises(RuntimeError, isinstance, c, D)
 
 
@@ -105,9 +116,11 @@ class TestIsSubclassExceptions(unittest.TestCase):
         class C(object):
             def getbases(self):
                 raise RuntimeError
+
             __bases__ = property(getbases)
 
-        class S(C): pass
+        class S(C):
+            pass
 
         self.assertRaises(RuntimeError, issubclass, C(), S())
 
@@ -115,9 +128,11 @@ class TestIsSubclassExceptions(unittest.TestCase):
         class C(object):
             def getbases(self):
                 raise AttributeError
+
             __bases__ = property(getbases)
 
-        class S(C): pass
+        class S(C):
+            pass
 
         self.assertRaises(TypeError, issubclass, C(), S())
 
@@ -126,25 +141,28 @@ class TestIsSubclassExceptions(unittest.TestCase):
     # return a valid __bases__, and it's okay for it to be a normal --
     # unrelated by inheritance -- class.
     def test_dont_mask_non_attribute_error_in_cls_arg(self):
-        class B: pass
+        class B:
+            pass
 
         class C(object):
             def getbases(self):
                 raise RuntimeError
+
             __bases__ = property(getbases)
 
         self.assertRaises(RuntimeError, issubclass, B, C())
 
     def test_mask_attribute_error_in_cls_arg(self):
-        class B: pass
+        class B:
+            pass
 
         class C(object):
             def getbases(self):
                 raise AttributeError
+
             __bases__ = property(getbases)
 
         self.assertRaises(TypeError, issubclass, B, C())
-
 
 
 # meta classes for creating abstract classes and instances
@@ -154,10 +172,12 @@ class AbstractClass(object):
 
     def getbases(self):
         return self.bases
+
     __bases__ = property(getbases)
 
     def __call__(self):
         return AbstractInstance(self)
+
 
 class AbstractInstance(object):
     def __init__(self, klass):
@@ -165,19 +185,24 @@ class AbstractInstance(object):
 
     def getclass(self):
         return self.klass
+
     __class__ = property(getclass)
+
 
 # abstract classes
 AbstractSuper = AbstractClass(bases=())
 
 AbstractChild = AbstractClass(bases=(AbstractSuper,))
 
+
 # normal classes
 class Super:
     pass
 
+
 class Child(Super):
     pass
+
 
 class TestIsInstanceIsSubclass(unittest.TestCase):
     # Tests to ensure that isinstance and issubclass work on abstract
@@ -226,8 +251,6 @@ class TestIsInstanceIsSubclass(unittest.TestCase):
         with self.assertRaises(TypeError):
             isinstance(2, float | str | list[int] | int)
 
-
-
     def test_subclass_normal(self):
         # normal classes
         self.assertEqual(True, issubclass(Super, Super))
@@ -237,8 +260,8 @@ class TestIsInstanceIsSubclass(unittest.TestCase):
         self.assertEqual(True, issubclass(Child, Child))
         self.assertEqual(True, issubclass(Child, Super))
         self.assertEqual(False, issubclass(Child, AbstractSuper))
-        self.assertTrue(issubclass(typing.List, typing.List|typing.Tuple))
-        self.assertFalse(issubclass(int, typing.List|typing.Tuple))
+        self.assertTrue(issubclass(typing.List, typing.List | typing.Tuple))
+        self.assertFalse(issubclass(int, typing.List | typing.Tuple))
 
     def test_subclass_abstract(self):
         # abstract classes
@@ -273,13 +296,13 @@ class TestIsInstanceIsSubclass(unittest.TestCase):
         # make sure that issubclass raises RecursionError before the C stack is
         # blown
         with support.infinite_recursion():
-            self.assertRaises(RecursionError, blowstack, isinstance, '', str)
+            self.assertRaises(RecursionError, blowstack, isinstance, "", str)
 
     def test_subclass_with_union(self):
         self.assertTrue(issubclass(int, int | float | int))
         self.assertTrue(issubclass(str, str | Child | str))
-        self.assertFalse(issubclass(dict, float|str))
-        self.assertFalse(issubclass(object, float|str))
+        self.assertFalse(issubclass(dict, float | str))
+        self.assertFalse(issubclass(object, float | str))
         with self.assertRaises(TypeError):
             issubclass(2, Child | Super)
         with self.assertRaises(TypeError):
@@ -291,7 +314,7 @@ class TestIsInstanceIsSubclass(unittest.TestCase):
         class A:
             @property
             def __bases__(self):
-                return (int, )
+                return (int,)
 
         class B:
             def __init__(self):
@@ -301,7 +324,7 @@ class TestIsInstanceIsSubclass(unittest.TestCase):
 
             @property
             def __bases__(self):
-                return (A(), )
+                return (A(),)
 
         self.assertEqual(True, issubclass(B(), int))
 
@@ -310,6 +333,7 @@ class TestIsInstanceIsSubclass(unittest.TestCase):
             @property
             def __bases__(self):
                 return self.__bases__
+
         with support.infinite_recursion():
             self.assertRaises(RecursionError, issubclass, X(), int)
             self.assertRaises(RecursionError, issubclass, int, X())
@@ -317,33 +341,42 @@ class TestIsInstanceIsSubclass(unittest.TestCase):
 
     def test_infinite_recursion_via_bases_tuple(self):
         """Regression test for bpo-30570."""
+
         class Failure(object):
             def __getattr__(self, attr):
                 return (self, None)
+
         with support.infinite_recursion():
             with self.assertRaises(RecursionError):
                 issubclass(Failure(), int)
 
     def test_infinite_cycle_in_bases(self):
         """Regression test for bpo-30570."""
+
         class X:
             @property
             def __bases__(self):
                 return (self, self, self)
+
         with support.infinite_recursion():
             self.assertRaises(RecursionError, issubclass, X(), int)
 
     def test_infinitely_many_bases(self):
         """Regression test for bpo-30570."""
+
         class X:
             def __getattr__(self, attr):
                 self.assertEqual(attr, "__bases__")
+
                 class A:
                     pass
+
                 class B:
                     pass
+
                 A.__getattr__ = B.__getattr__ = X.__getattr__
                 return (A(), B())
+
         with support.infinite_recursion():
             self.assertRaises(RecursionError, issubclass, X(), int)
 
@@ -357,5 +390,5 @@ def blowstack(fxn, arg, compare_to):
         fxn(arg, tuple_arg)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

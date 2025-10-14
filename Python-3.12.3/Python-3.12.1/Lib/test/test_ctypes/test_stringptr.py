@@ -6,18 +6,21 @@ import _ctypes_test
 
 lib = CDLL(_ctypes_test.__file__)
 
+
 class StringPtrTestCase(unittest.TestCase):
 
     @support.refcount_test
     def test__POINTER_c_char(self):
         class X(Structure):
             _fields_ = [("str", POINTER(c_char))]
+
         x = X()
 
         # NULL pointer access
         self.assertRaises(ValueError, getattr, x.str, "contents")
         b = c_buffer(b"Hello, World")
         from sys import getrefcount as grc
+
         self.assertEqual(grc(b), 2)
         x.str = b
         self.assertEqual(grc(b), 3)
@@ -32,6 +35,7 @@ class StringPtrTestCase(unittest.TestCase):
     def test__c_char_p(self):
         class X(Structure):
             _fields_ = [("str", c_char_p)]
+
         x = X()
 
         # c_char_p and Python string is compatible
@@ -41,7 +45,6 @@ class StringPtrTestCase(unittest.TestCase):
         self.assertEqual(x.str, b"Hello, World")
         b = c_buffer(b"Hello, World")
         self.assertRaises(TypeError, setattr, x, b"str", b)
-
 
     def test_functions(self):
         strchr = lib.my_strchr
@@ -73,5 +76,6 @@ class StringPtrTestCase(unittest.TestCase):
         # Because r is a pointer to memory that is freed after deleting buf,
         # the pointer is hanging and using it would reference freed memory.
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

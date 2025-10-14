@@ -13,14 +13,14 @@ if MS_WINDOWS:
 class Logger:
     def __init__(self, results: TestResults, quiet: bool, pgo: bool):
         self.start_time = time.perf_counter()
-        self.test_count_text = ''
+        self.test_count_text = ""
         self.test_count_width = 3
         self.win_load_tracker: WindowsLoadTracker | None = None
         self._results: TestResults = results
         self._quiet: bool = quiet
         self._pgo: bool = pgo
 
-    def log(self, line: str = '') -> None:
+    def log(self, line: str = "") -> None:
         empty = not line
 
         # add the system load prefix: "load avg: 1.80 "
@@ -42,7 +42,7 @@ class Logger:
         print(line, flush=True)
 
     def get_load_avg(self) -> float | None:
-        if hasattr(os, 'getloadavg'):
+        if hasattr(os, "getloadavg"):
             return os.getloadavg()[0]
         if self.win_load_tracker is not None:
             return self.win_load_tracker.getloadavg()
@@ -62,10 +62,10 @@ class Logger:
 
     def set_tests(self, runtests: RunTests) -> None:
         if runtests.forever:
-            self.test_count_text = ''
+            self.test_count_text = ""
             self.test_count_width = 3
         else:
-            self.test_count_text = '/{}'.format(len(runtests.tests))
+            self.test_count_text = "/{}".format(len(runtests.tests))
             self.test_count_width = len(self.test_count_text) - 1
 
     def start_load_tracker(self) -> None:
@@ -77,7 +77,7 @@ class Logger:
         except PermissionError as error:
             # Standard accounts may not have access to the performance
             # counters.
-            print_warning(f'Failed to create WindowsLoadTracker: {error}')
+            print_warning(f"Failed to create WindowsLoadTracker: {error}")
 
     def stop_load_tracker(self) -> None:
         if self.win_load_tracker is None:

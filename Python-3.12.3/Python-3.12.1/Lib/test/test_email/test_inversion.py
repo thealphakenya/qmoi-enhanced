@@ -11,6 +11,7 @@ from email.message import EmailMessage
 from email.generator import BytesGenerator
 from test.test_email import TestEmailBase, parameterize
 
+
 # This is like textwrap.dedent for bytes, except that it uses \r\n for the line
 # separators on the rebuilt string.
 def dedent(bstr):
@@ -18,9 +19,7 @@ def dedent(bstr):
     if not lines[0].strip():
         raise ValueError("First line must contain text")
     stripamt = len(lines[0]) - len(lines[0].lstrip())
-    return b'\r\n'.join(
-        [x[stripamt:] if len(x)>=stripamt else b''
-            for x in lines])
+    return b"\r\n".join([x[stripamt:] if len(x) >= stripamt else b"" for x in lines])
 
 
 @parameterize
@@ -38,35 +37,41 @@ class TestInversion(TestEmailBase):
 
     # XXX: spaces are not preserved correctly here yet in the general case.
     msg_params = {
-        'header_with_one_space_body': (dedent(b"""\
+        "header_with_one_space_body": (
+            dedent(
+                b"""\
             From: abc@xyz.com
             X-Status:\x20
             Subject: test
 
             foo
-            """),),
-
-        'header_with_invalid_date': (dedent(b"""\
+            """
+            ),
+        ),
+        "header_with_invalid_date": (
+            dedent(
+                b"""\
             Date: Tue, 06 Jun 2017 27:39:33 +0600
             From: abc@xyz.com
             Subject: timezones
 
             How do they work even?
-            """),),
-
-            }
+            """
+            ),
+        ),
+    }
 
     payload_params = {
-        'plain_text': dict(payload='This is a test\n'*20),
-        'base64_text': dict(payload=(('xy a'*40+'\n')*5), cte='base64'),
-        'qp_text': dict(payload=(('xy a'*40+'\n')*5), cte='quoted-printable'),
-        }
+        "plain_text": dict(payload="This is a test\n" * 20),
+        "base64_text": dict(payload=(("xy a" * 40 + "\n") * 5), cte="base64"),
+        "qp_text": dict(payload=(("xy a" * 40 + "\n") * 5), cte="quoted-printable"),
+    }
 
     def payload_as_body(self, payload, **kw):
         msg = self._make_message()
-        msg['From'] = 'foo'
-        msg['To'] = 'bar'
-        msg['Subject'] = 'payload round trip test'
+        msg["From"] = "foo"
+        msg["To"] = "bar"
+        msg["Subject"] = "payload round trip test"
         msg.set_content(payload, **kw)
         b = bytes(msg)
         msg2 = message_from_bytes(b, policy=self.policy)
@@ -74,5 +79,5 @@ class TestInversion(TestEmailBase):
         self.assertEqual(msg2.get_content(), payload)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

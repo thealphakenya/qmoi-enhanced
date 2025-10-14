@@ -154,7 +154,13 @@ class Parser(PLexer):
         if hdr := self.inst_header():
             if block := self.block():
                 return InstDef(
-                    hdr.override, hdr.register, hdr.kind, hdr.name, hdr.inputs, hdr.outputs, block
+                    hdr.override,
+                    hdr.register,
+                    hdr.kind,
+                    hdr.name,
+                    hdr.inputs,
+                    hdr.outputs,
+                    block,
                 )
             raise self.make_syntax_error("Expected block")
         return None

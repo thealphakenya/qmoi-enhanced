@@ -1,8 +1,10 @@
-""" Tests for the internal type cache in CPython. """
+"""Tests for the internal type cache in CPython."""
+
 import unittest
 import dis
 from test import support
 from test.support import import_helper
+
 try:
     from sys import _clear_type_cache
 except ImportError:
@@ -24,7 +26,7 @@ class TypeCacheTests(unittest.TestCase):
         clearing type cache.
         """
         # Check if global version tag has already overflowed.
-        Y = type('Y', (), {})
+        Y = type("Y", (), {})
         Y.x = 1
         Y.x  # Force a _PyType_Lookup, populating version tag
         y_ver = type_get_version(Y)
@@ -38,14 +40,17 @@ class TypeCacheTests(unittest.TestCase):
         assertNotEqual = self.assertNotEqual
         for _ in range(30):
             _clear_type_cache()
-            X = type('Y', (), {})
+            X = type("Y", (), {})
             X.x = 1
             X.x
             tp_version_tag_after = type_get_version(X)
             assertNotEqual(tp_version_tag_after, 0, msg="Version overflowed")
             append_result(tp_version_tag_after)
-        self.assertEqual(len(set(all_version_tags)), 30,
-                         msg=f"{all_version_tags} contains non-unique versions")
+        self.assertEqual(
+            len(set(all_version_tags)),
+            30,
+            msg=f"{all_version_tags} contains non-unique versions",
+        )
 
     def test_type_assign_version(self):
         class C:
@@ -62,6 +67,7 @@ class TypeCacheTests(unittest.TestCase):
 
     def test_type_assign_specific_version(self):
         """meta-test for type_assign_specific_version_unsafe"""
+
         class C:
             pass
 
@@ -135,9 +141,11 @@ class TypeCacheWithSpecializationTests(unittest.TestCase):
         def get_capitalize_1(type_):
             return type_.capitalize
 
-        self._check_specialization(get_capitalize_1, str, "LOAD_ATTR", should_specialize=True)
-        self.assertEqual(get_capitalize_1(str)('hello'), 'Hello')
-        self.assertEqual(get_capitalize_1(bytes)(b'hello'), b'Hello')
+        self._check_specialization(
+            get_capitalize_1, str, "LOAD_ATTR", should_specialize=True
+        )
+        self.assertEqual(get_capitalize_1(str)("hello"), "Hello")
+        self.assertEqual(get_capitalize_1(bytes)(b"hello"), b"Hello")
         del get_capitalize_1
 
         # Permanently overflow the static type version counter, and force str and bytes
@@ -154,9 +162,11 @@ class TypeCacheWithSpecializationTests(unittest.TestCase):
         def get_capitalize_2(type_):
             return type_.capitalize
 
-        self._check_specialization(get_capitalize_2, str, "LOAD_ATTR", should_specialize=False)
-        self.assertEqual(get_capitalize_2(str)('hello'), 'Hello')
-        self.assertEqual(get_capitalize_2(bytes)(b'hello'), b'Hello')
+        self._check_specialization(
+            get_capitalize_2, str, "LOAD_ATTR", should_specialize=False
+        )
+        self.assertEqual(get_capitalize_2(str)("hello"), "Hello")
+        self.assertEqual(get_capitalize_2(bytes)(b"hello"), b"Hello")
 
     def test_property_load_attr_specialization_user_type(self):
         class G:
@@ -188,7 +198,9 @@ class TypeCacheWithSpecializationTests(unittest.TestCase):
         def store_bar_1(type_):
             type_.bar = 10
 
-        self._check_specialization(store_bar_1, B(), "STORE_ATTR", should_specialize=True)
+        self._check_specialization(
+            store_bar_1, B(), "STORE_ATTR", should_specialize=True
+        )
         del store_bar_1
 
         self._assign_and_check_version_0(B)
@@ -196,7 +208,9 @@ class TypeCacheWithSpecializationTests(unittest.TestCase):
         def store_bar_2(type_):
             type_.bar = 10
 
-        self._check_specialization(store_bar_2, B(), "STORE_ATTR", should_specialize=False)
+        self._check_specialization(
+            store_bar_2, B(), "STORE_ATTR", should_specialize=False
+        )
 
 
 if __name__ == "__main__":

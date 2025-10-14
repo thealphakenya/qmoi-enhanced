@@ -7,8 +7,7 @@ from typing import Any
 
 from test import support
 
-from .utils import (
-    StrPath, StrJSON, TestTuple, TestFilter, FilterTuple, FilterDict)
+from .utils import StrPath, StrJSON, TestTuple, TestFilter, FilterTuple, FilterDict
 
 
 class JsonFileType:
@@ -30,13 +29,13 @@ class JsonFile:
         match self.file_type:
             case JsonFileType.UNIX_FD:
                 # Unix file descriptor
-                popen_kwargs['pass_fds'] = [self.file]
+                popen_kwargs["pass_fds"] = [self.file]
             case JsonFileType.WINDOWS_HANDLE:
                 # Windows handle
                 # We run mypy with `--platform=linux` so it complains about this:
                 startupinfo = subprocess.STARTUPINFO()  # type: ignore[attr-defined]
                 startupinfo.lpAttributeList = {"handle_list": [self.file]}
-                popen_kwargs['startupinfo'] = startupinfo
+                popen_kwargs["startupinfo"] = startupinfo
 
     @contextlib.contextmanager
     def inherit_subprocess(self):
@@ -49,13 +48,14 @@ class JsonFile:
         else:
             yield
 
-    def open(self, mode='r', *, encoding):
+    def open(self, mode="r", *, encoding):
         if self.file_type == JsonFileType.STDOUT:
             raise ValueError("for STDOUT file type, just use sys.stdout")
 
         file = self.file
         if self.file_type == JsonFileType.WINDOWS_HANDLE:
             import msvcrt
+
             # Create a file descriptor from the handle
             file = msvcrt.open_osfhandle(file, os.O_WRONLY)
         return open(file, mode, encoding=encoding)
@@ -93,7 +93,7 @@ class RunTests:
     randomize: bool
     random_seed: int | str
 
-    def copy(self, **override) -> 'RunTests':
+    def copy(self, **override) -> "RunTests":
         state = dataclasses.asdict(self)
         state.update(override)
         return RunTests(**state)
@@ -130,11 +130,7 @@ class RunTests:
         # - On Emscripten and WASI.
         #
         # On other platforms, UNIX_FD or WINDOWS_HANDLE can be used.
-        return (
-            bool(self.python_cmd)
-            or support.is_emscripten
-            or support.is_wasi
-        )
+        return bool(self.python_cmd) or support.is_emscripten or support.is_wasi
 
 
 @dataclasses.dataclass(slots=True, frozen=True)
@@ -145,7 +141,7 @@ class WorkerRunTests(RunTests):
         return json.dumps(self, cls=_EncodeRunTests)
 
     @staticmethod
-    def from_json(worker_json: StrJSON) -> 'WorkerRunTests':
+    def from_json(worker_json: StrJSON) -> "WorkerRunTests":
         return json.loads(worker_json, object_hook=_decode_runtests)
 
 
@@ -161,11 +157,11 @@ class _EncodeRunTests(json.JSONEncoder):
 
 def _decode_runtests(data: dict[str, Any]) -> RunTests | dict[str, Any]:
     if "__runtests__" in data:
-        data.pop('__runtests__')
-        if data['hunt_refleak']:
-            data['hunt_refleak'] = HuntRefleak(**data['hunt_refleak'])
-        if data['json_file']:
-            data['json_file'] = JsonFile(**data['json_file'])
+        data.pop("__runtests__")
+        if data["hunt_refleak"]:
+            data["hunt_refleak"] = HuntRefleak(**data["hunt_refleak"])
+        if data["json_file"]:
+            data["json_file"] = JsonFile(**data["json_file"])
         return WorkerRunTests(**data)
     else:
         return data

@@ -129,6 +129,7 @@ docstring_prefixes = (
     "async def foo():\n    ",
 )
 
+
 class ASTTestCase(ASTTestMixin, unittest.TestCase):
     def check_ast_roundtrip(self, code1, **kwargs):
         with self.subTest(code1=code1, ast_parse_kwargs=kwargs):
@@ -156,6 +157,7 @@ class ASTTestCase(ASTTestMixin, unittest.TestCase):
         with self.subTest(code1=code1, code2=code2):
             self.assertNotEqual(code2, code1)
 
+
 class UnparseTestCase(ASTTestCase):
     # Tests for specific bugs found in earlier versions of unparse
 
@@ -176,8 +178,8 @@ class UnparseTestCase(ASTTestCase):
         self.check_ast_roundtrip("f'{a!r:10}'")
         self.check_ast_roundtrip("f'{a:a{b}10}'")
         self.check_ast_roundtrip(
-                "f'a{b}{c!s}{d!r}{e!a}{f:a}{g:a{b}}{h!s:a}"
-                "{j!s:{a}b}{k!s:a{b}c}{l!a:{b}c{d}}{x+y=}'"
+            "f'a{b}{c!s}{d!r}{e!a}{f:a}{g:a{b}}{h!s:a}"
+            "{j!s:{a}b}{k!s:a{b}c}{l!a:{b}c{d}}{x+y=}'"
         )
 
     def test_fstrings_special_chars(self):
@@ -191,9 +193,11 @@ class UnparseTestCase(ASTTestCase):
         # See issue 28002
         self.check_ast_roundtrip("""f'''{"'"}'''""")
         self.check_ast_roundtrip('''f\'\'\'-{f"""*{f"+{f'.{x}.'}+"}*"""}-\'\'\'''')
-        self.check_ast_roundtrip('''f\'\'\'-{f"""*{f"+{f'.{x}.'}+"}*"""}-'single quote\\'\'\'\'''')
-        self.check_ast_roundtrip('f"""{\'\'\'\n\'\'\'}"""')
-        self.check_ast_roundtrip('f"""{g(\'\'\'\n\'\'\')}"""')
+        self.check_ast_roundtrip(
+            '''f\'\'\'-{f"""*{f"+{f'.{x}.'}+"}*"""}-'single quote\\'\'\'\''''
+        )
+        self.check_ast_roundtrip("f\"\"\"{'''\n'''}\"\"\"")
+        self.check_ast_roundtrip("f\"\"\"{g('''\n''')}\"\"\"")
         self.check_ast_roundtrip('''f"a\\r\\nb"''')
         self.check_ast_roundtrip('''f"\\u2028{'x'}"''')
 
@@ -237,13 +241,13 @@ class UnparseTestCase(ASTTestCase):
 
     def test_nan(self):
         self.assertASTEqual(
-            ast.parse(ast.unparse(ast.Constant(value=float('nan')))),
-            ast.parse('1e1000 - 1e1000')
+            ast.parse(ast.unparse(ast.Constant(value=float("nan")))),
+            ast.parse("1e1000 - 1e1000"),
         )
 
     def test_min_int(self):
-        self.check_ast_roundtrip(str(-(2 ** 31)))
-        self.check_ast_roundtrip(str(-(2 ** 63)))
+        self.check_ast_roundtrip(str(-(2**31)))
+        self.check_ast_roundtrip(str(-(2**63)))
 
     def test_imaginary_literals(self):
         self.check_ast_roundtrip("7j")
@@ -296,8 +300,7 @@ class UnparseTestCase(ASTTestCase):
 
     def test_empty_set(self):
         self.assertASTEqual(
-            ast.parse(ast.unparse(ast.Set(elts=[]))),
-            ast.parse('{*()}')
+            ast.parse(ast.unparse(ast.Set(elts=[]))), ast.parse("{*()}")
         )
 
     def test_set_comprehension(self):
@@ -374,48 +377,46 @@ class UnparseTestCase(ASTTestCase):
 
     def test_invalid_fstring_value(self):
         self.check_invalid(
-            ast.JoinedStr(
-                values=[
-                    ast.Name(id="test"),
-                    ast.Constant(value="test")
-                ]
-            )
+            ast.JoinedStr(values=[ast.Name(id="test"), ast.Constant(value="test")])
         )
 
     def test_fstring_backslash(self):
         # valid since Python 3.12
-        self.assertEqual(ast.unparse(
-                            ast.FormattedValue(
-                                value=ast.Constant(value="\\\\"),
-                                conversion=-1,
-                                format_spec=None,
-                            )
-                        ), "{'\\\\\\\\'}")
+        self.assertEqual(
+            ast.unparse(
+                ast.FormattedValue(
+                    value=ast.Constant(value="\\\\"),
+                    conversion=-1,
+                    format_spec=None,
+                )
+            ),
+            "{'\\\\\\\\'}",
+        )
 
     def test_invalid_yield_from(self):
         self.check_invalid(ast.YieldFrom(value=None))
 
     def test_import_from_level_none(self):
-        tree = ast.ImportFrom(module='mod', names=[ast.alias(name='x')])
+        tree = ast.ImportFrom(module="mod", names=[ast.alias(name="x")])
         self.assertEqual(ast.unparse(tree), "from mod import x")
-        tree = ast.ImportFrom(module='mod', names=[ast.alias(name='x')], level=None)
+        tree = ast.ImportFrom(module="mod", names=[ast.alias(name="x")], level=None)
         self.assertEqual(ast.unparse(tree), "from mod import x")
 
     def test_docstrings(self):
         docstrings = (
             'this ends with double quote"',
             'this includes a """triple quote"""',
-            '\r',
-            '\\r',
-            '\t',
-            '\\t',
-            '\n',
-            '\\n',
-            '\r\\r\t\\t\n\\n',
-            '""">>> content = \"\"\"blabla\"\"\" <<<"""',
-            r'foo\n\x00',
+            "\r",
+            "\\r",
+            "\t",
+            "\\t",
+            "\n",
+            "\\n",
+            "\r\\r\t\\t\n\\n",
+            '""">>> content = """blabla""" <<<"""',
+            r"foo\n\x00",
             "' \\'\\'\\'\"\"\" \"\"\\'\\' \\'",
-            '🐍⛎𩸽üéş^\\\\X\\\\BB\N{LONG RIGHTWARDS SQUIGGLE ARROW}'
+            "🐍⛎𩸽üéş^\\\\X\\\\BB\N{LONG RIGHTWARDS SQUIGGLE ARROW}",
         )
         for docstring in docstrings:
             # check as Module docstrings for easy testing
@@ -423,15 +424,13 @@ class UnparseTestCase(ASTTestCase):
 
     def test_constant_tuples(self):
         self.check_src_roundtrip(ast.Constant(value=(1,), kind=None), "(1,)")
-        self.check_src_roundtrip(
-            ast.Constant(value=(1, 2, 3), kind=None), "(1, 2, 3)"
-        )
+        self.check_src_roundtrip(ast.Constant(value=(1, 2, 3), kind=None), "(1, 2, 3)")
 
     def test_function_type(self):
         for function_type in (
             "() -> int",
             "(int, int) -> int",
-            "(Callable[complex], More[Complex(call.to_typevar())]) -> None"
+            "(Callable[complex], More[Complex(call.to_typevar())]) -> None",
         ):
             self.check_ast_roundtrip(function_type, mode="func_type")
 
@@ -447,7 +446,7 @@ class UnparseTestCase(ASTTestCase):
             "for x in y: # type: int\n\tpass",
             "async for x in y: # type: int\n\tpass",
             "with x(): # type: int\n\tpass",
-            "async with x(): # type: int\n\tpass"
+            "async with x(): # type: int\n\tpass",
         ):
             self.check_ast_roundtrip(statement, type_comments=True)
 
@@ -462,7 +461,7 @@ class UnparseTestCase(ASTTestCase):
             "for x in y: # type: ignore\n\tpass",
             "async for x in y: # type: ignore\n\tpass",
             "with x(): # type: ignore\n\tpass",
-            "async with x(): # type: ignore\n\tpass"
+            "async with x(): # type: ignore\n\tpass",
         ):
             self.check_ast_roundtrip(statement, type_comments=True)
 
@@ -532,7 +531,7 @@ class CosmeticTestCase(ASTTestCase):
             '"""\\r"""',
             '""""""',
             '"""\'\'\'"""',
-            '"""\'\'\'\'\'\'"""',
+            "\"\"\"''''''\"\"\"",
             '"""🐍⛎𩸽üéş^\\\\X\\\\BB⟿"""',
             '"""end in single \'quote\'"""',
             "'''end in double \"quote\"'''",
@@ -551,7 +550,7 @@ class CosmeticTestCase(ASTTestCase):
             'a = """false"""',
             '"""false""" + """unless its optimized"""',
             '1 + 1\n"""false"""',
-            'f"""no, top level but f-fstring"""'
+            'f"""no, top level but f-fstring"""',
         )
         for prefix in docstring_prefixes:
             for negative in docstrings_negative:
@@ -601,7 +600,7 @@ class CosmeticTestCase(ASTTestCase):
             ("single assignment", "{target} = foo"),
             ("multiple assignment", "{target} = {target} = bar"),
             ("for loop", "for {target} in foo:\n    pass"),
-            ("async for loop", "async for {target} in foo:\n    pass")
+            ("async for loop", "async for {target} in foo:\n    pass"),
         ]:
             for target in [
                 "a",
@@ -621,7 +620,7 @@ class CosmeticTestCase(ASTTestCase):
                 "[a, [b, *c, [d, e], f], g]",
                 "a, [b, c], d",
                 "[a, b, (c, d), (e, f)]",
-                "a, b, [*c], d, e"
+                "a, b, [*c], d, e",
             ]:
                 with self.subTest(source_type=source_type, target=target):
                     self.check_src_roundtrip(source.format(target=target))
@@ -636,7 +635,7 @@ class CosmeticTestCase(ASTTestCase):
         self.check_src_roundtrip("a, b = [c, d] = e, f = g")
 
     def test_multiquote_joined_string(self):
-        self.check_ast_roundtrip("f\"'''{1}\\\"\\\"\\\"\" ")
+        self.check_ast_roundtrip('f"\'\'\'{1}\\"\\"\\"" ')
         self.check_ast_roundtrip("""f"'''{1}""\\"" """)
         self.check_ast_roundtrip("""f'""\"{1}''' """)
         self.check_ast_roundtrip("""f'""\"{1}""\\"' """)
@@ -651,6 +650,7 @@ class CosmeticTestCase(ASTTestCase):
 
     def test_backslash_in_format_spec(self):
         import re
+
         msg = re.escape("invalid escape sequence '\\ '")
         with self.assertWarnsRegex(SyntaxWarning, msg):
             self.check_ast_roundtrip("""f"{x:\\ }" """)
@@ -678,20 +678,36 @@ class ManualASTCreationTestCase(unittest.TestCase):
     """Test that AST nodes created without a type_params field unparse correctly."""
 
     def test_class(self):
-        node = ast.ClassDef(name="X", bases=[], keywords=[], body=[ast.Pass()], decorator_list=[])
+        node = ast.ClassDef(
+            name="X", bases=[], keywords=[], body=[ast.Pass()], decorator_list=[]
+        )
         ast.fix_missing_locations(node)
         self.assertEqual(ast.unparse(node), "class X:\n    pass")
 
     def test_class_with_type_params(self):
-        node = ast.ClassDef(name="X", bases=[], keywords=[], body=[ast.Pass()], decorator_list=[],
-                             type_params=[ast.TypeVar("T")])
+        node = ast.ClassDef(
+            name="X",
+            bases=[],
+            keywords=[],
+            body=[ast.Pass()],
+            decorator_list=[],
+            type_params=[ast.TypeVar("T")],
+        )
         ast.fix_missing_locations(node)
         self.assertEqual(ast.unparse(node), "class X[T]:\n    pass")
 
     def test_function(self):
         node = ast.FunctionDef(
             name="f",
-            args=ast.arguments(posonlyargs=[], args=[], vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[]),
+            args=ast.arguments(
+                posonlyargs=[],
+                args=[],
+                vararg=None,
+                kwonlyargs=[],
+                kw_defaults=[],
+                kwarg=None,
+                defaults=[],
+            ),
             body=[ast.Pass()],
             decorator_list=[],
             returns=None,
@@ -702,7 +718,15 @@ class ManualASTCreationTestCase(unittest.TestCase):
     def test_function_with_type_params(self):
         node = ast.FunctionDef(
             name="f",
-            args=ast.arguments(posonlyargs=[], args=[], vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[]),
+            args=ast.arguments(
+                posonlyargs=[],
+                args=[],
+                vararg=None,
+                kwonlyargs=[],
+                kw_defaults=[],
+                kwarg=None,
+                defaults=[],
+            ),
             body=[ast.Pass()],
             decorator_list=[],
             returns=None,
@@ -714,7 +738,15 @@ class ManualASTCreationTestCase(unittest.TestCase):
     def test_function_with_type_params_and_bound(self):
         node = ast.FunctionDef(
             name="f",
-            args=ast.arguments(posonlyargs=[], args=[], vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[]),
+            args=ast.arguments(
+                posonlyargs=[],
+                args=[],
+                vararg=None,
+                kwonlyargs=[],
+                kw_defaults=[],
+                kwarg=None,
+                defaults=[],
+            ),
             body=[ast.Pass()],
             decorator_list=[],
             returns=None,
@@ -726,7 +758,15 @@ class ManualASTCreationTestCase(unittest.TestCase):
     def test_async_function(self):
         node = ast.AsyncFunctionDef(
             name="f",
-            args=ast.arguments(posonlyargs=[], args=[], vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[]),
+            args=ast.arguments(
+                posonlyargs=[],
+                args=[],
+                vararg=None,
+                kwonlyargs=[],
+                kw_defaults=[],
+                kwarg=None,
+                defaults=[],
+            ),
             body=[ast.Pass()],
             decorator_list=[],
             returns=None,
@@ -737,7 +777,15 @@ class ManualASTCreationTestCase(unittest.TestCase):
     def test_async_function_with_type_params(self):
         node = ast.AsyncFunctionDef(
             name="f",
-            args=ast.arguments(posonlyargs=[], args=[], vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[]),
+            args=ast.arguments(
+                posonlyargs=[],
+                args=[],
+                vararg=None,
+                kwonlyargs=[],
+                kw_defaults=[],
+                kwarg=None,
+                defaults=[],
+            ),
             body=[ast.Pass()],
             decorator_list=[],
             returns=None,
@@ -752,10 +800,18 @@ class DirectoryTestCase(ASTTestCase):
 
     lib_dir = pathlib.Path(__file__).parent / ".."
     test_directories = (lib_dir, lib_dir / "test")
-    run_always_files = {"test_grammar.py", "test_syntax.py", "test_compile.py",
-                        "test_ast.py", "test_asdl_parser.py", "test_fstring.py",
-                        "test_patma.py", "test_type_alias.py", "test_type_params.py",
-                        "test_tokenize.py"}
+    run_always_files = {
+        "test_grammar.py",
+        "test_syntax.py",
+        "test_compile.py",
+        "test_ast.py",
+        "test_asdl_parser.py",
+        "test_fstring.py",
+        "test_patma.py",
+        "test_type_alias.py",
+        "test_type_params.py",
+        "test_tokenize.py",
+    }
 
     _files_to_test = None
 
@@ -775,8 +831,9 @@ class DirectoryTestCase(ASTTestCase):
         # Test limited subset of files unless the 'cpu' resource is specified.
         if not test.support.is_resource_enabled("cpu"):
 
-            tests_to_run_always = {item for item in items if
-                                   item.name in cls.run_always_files}
+            tests_to_run_always = {
+                item for item in items if item.name in cls.run_always_files
+            }
 
             items = set(random.sample(items, 10))
 

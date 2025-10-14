@@ -1,4 +1,4 @@
-""" Test Iterator Length Transparency
+"""Test Iterator Length Transparency
 
 Some functions or methods which accept general iterable arguments have
 optional, more efficient code paths if they know how many items to expect.
@@ -53,12 +53,13 @@ class TestInvariantWithoutMutations:
 
     def test_invariant(self):
         it = self.it
-        for i in reversed(range(1, n+1)):
+        for i in reversed(range(1, n + 1)):
             self.assertEqual(length_hint(it), i)
             next(it)
         self.assertEqual(length_hint(it), 0)
         self.assertRaises(StopIteration, next, it)
         self.assertEqual(length_hint(it), 0)
+
 
 class TestTemporarilyImmutable(TestInvariantWithoutMutations):
 
@@ -69,34 +70,41 @@ class TestTemporarilyImmutable(TestInvariantWithoutMutations):
         it = self.it
         self.assertEqual(length_hint(it), n)
         next(it)
-        self.assertEqual(length_hint(it), n-1)
+        self.assertEqual(length_hint(it), n - 1)
         self.mutate()
         self.assertRaises(RuntimeError, next, it)
         self.assertEqual(length_hint(it), 0)
 
+
 ## ------- Concrete Type Tests -------
+
 
 class TestRepeat(TestInvariantWithoutMutations, unittest.TestCase):
 
     def setUp(self):
         self.it = repeat(None, n)
 
+
 class TestXrange(TestInvariantWithoutMutations, unittest.TestCase):
 
     def setUp(self):
         self.it = iter(range(n))
+
 
 class TestXrangeCustomReversed(TestInvariantWithoutMutations, unittest.TestCase):
 
     def setUp(self):
         self.it = reversed(range(n))
 
+
 class TestTuple(TestInvariantWithoutMutations, unittest.TestCase):
 
     def setUp(self):
         self.it = iter(tuple(range(n)))
 
+
 ## ------- Types that should not be mutated during iteration -------
+
 
 class TestDeque(TestTemporarilyImmutable, unittest.TestCase):
 
@@ -105,12 +113,14 @@ class TestDeque(TestTemporarilyImmutable, unittest.TestCase):
         self.it = iter(d)
         self.mutate = d.pop
 
+
 class TestDequeReversed(TestTemporarilyImmutable, unittest.TestCase):
 
     def setUp(self):
         d = deque(range(n))
         self.it = reversed(d)
         self.mutate = d.pop
+
 
 class TestDictKeys(TestTemporarilyImmutable, unittest.TestCase):
 
@@ -119,12 +129,14 @@ class TestDictKeys(TestTemporarilyImmutable, unittest.TestCase):
         self.it = iter(d)
         self.mutate = d.popitem
 
+
 class TestDictItems(TestTemporarilyImmutable, unittest.TestCase):
 
     def setUp(self):
         d = dict.fromkeys(range(n))
         self.it = iter(d.items())
         self.mutate = d.popitem
+
 
 class TestDictValues(TestTemporarilyImmutable, unittest.TestCase):
 
@@ -133,6 +145,7 @@ class TestDictValues(TestTemporarilyImmutable, unittest.TestCase):
         self.it = iter(d.values())
         self.mutate = d.popitem
 
+
 class TestSet(TestTemporarilyImmutable, unittest.TestCase):
 
     def setUp(self):
@@ -140,7 +153,9 @@ class TestSet(TestTemporarilyImmutable, unittest.TestCase):
         self.it = iter(d)
         self.mutate = d.pop
 
+
 ## ------- Types that can mutate during iteration -------
+
 
 class TestList(TestInvariantWithoutMutations, unittest.TestCase):
 
@@ -181,6 +196,7 @@ class TestListReversed(TestInvariantWithoutMutations, unittest.TestCase):
         d.extend(range(20))
         self.assertEqual(length_hint(it), 0)
 
+
 ## -- Check to make sure exceptions are not suppressed by __length_hint__()
 
 
@@ -189,7 +205,7 @@ class BadLen(object):
         return iter(range(10))
 
     def __len__(self):
-        raise RuntimeError('hello')
+        raise RuntimeError("hello")
 
 
 class BadLengthHint(object):
@@ -197,7 +213,7 @@ class BadLengthHint(object):
         return iter(range(10))
 
     def __length_hint__(self):
-        raise RuntimeError('hello')
+        raise RuntimeError("hello")
 
 
 class NoneLengthHint(object):

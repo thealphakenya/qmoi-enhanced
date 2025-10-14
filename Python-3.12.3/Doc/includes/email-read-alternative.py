@@ -19,42 +19,42 @@ def magic_html_parser(html_text, partfiles):
 
 
 # In a real program you'd get the filename from the arguments.
-with open('outgoing.msg', 'rb') as fp:
+with open("outgoing.msg", "rb") as fp:
     msg = BytesParser(policy=policy.default).parse(fp)
 
 # Now the header items can be accessed as a dictionary, and any non-ASCII will
 # be converted to unicode:
-print('To:', msg['to'])
-print('From:', msg['from'])
-print('Subject:', msg['subject'])
+print("To:", msg["to"])
+print("From:", msg["from"])
+print("Subject:", msg["subject"])
 
 # If we want to print a preview of the message content, we can extract whatever
 # the least formatted payload is and print the first three lines.  Of course,
 # if the message has no plain text part printing the first three lines of html
 # is probably useless, but this is just a conceptual example.
-simplest = msg.get_body(preferencelist=('plain', 'html'))
+simplest = msg.get_body(preferencelist=("plain", "html"))
 print()
-print(''.join(simplest.get_content().splitlines(keepends=True)[:3]))
+print("".join(simplest.get_content().splitlines(keepends=True)[:3]))
 
 ans = input("View full message?")
-if ans.lower()[0] == 'n':
+if ans.lower()[0] == "n":
     sys.exit()
 
 # We can extract the richest alternative in order to display it:
 richest = msg.get_body()
 partfiles = {}
-if richest['content-type'].maintype == 'text':
-    if richest['content-type'].subtype == 'plain':
+if richest["content-type"].maintype == "text":
+    if richest["content-type"].subtype == "plain":
         for line in richest.get_content().splitlines():
             print(line)
         sys.exit()
-    elif richest['content-type'].subtype == 'html':
+    elif richest["content-type"].subtype == "html":
         body = richest
     else:
         print("Don't know how to display {}".format(richest.get_content_type()))
         sys.exit()
-elif richest['content-type'].content_type == 'multipart/related':
-    body = richest.get_body(preferencelist=('html'))
+elif richest["content-type"].content_type == "multipart/related":
+    body = richest.get_body(preferencelist=("html"))
     for part in richest.iter_attachments():
         fn = part.get_filename()
         if fn:
@@ -64,11 +64,11 @@ elif richest['content-type'].content_type == 'multipart/related':
         with tempfile.NamedTemporaryFile(suffix=extension, delete=False) as f:
             f.write(part.get_content())
             # again strip the <> to go from email form of cid to html form.
-            partfiles[part['content-id'][1:-1]] = f.name
+            partfiles[part["content-id"][1:-1]] = f.name
 else:
     print("Don't know how to display {}".format(richest.get_content_type()))
     sys.exit()
-with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
+with tempfile.NamedTemporaryFile(mode="w", delete=False) as f:
     f.write(magic_html_parser(body.get_content(), partfiles))
 webbrowser.open(f.name)
 os.remove(f.name)

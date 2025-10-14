@@ -24,16 +24,16 @@ class Test_FunctionTestCase(unittest.TestCase):
         result = LoggingResult(events)
 
         def setUp():
-            events.append('setUp')
-            raise RuntimeError('raised by setUp')
+            events.append("setUp")
+            raise RuntimeError("raised by setUp")
 
         def test():
-            events.append('test')
+            events.append("test")
 
         def tearDown():
-            events.append('tearDown')
+            events.append("tearDown")
 
-        expected = ['startTest', 'setUp', 'addError', 'stopTest']
+        expected = ["startTest", "setUp", "addError", "stopTest"]
         unittest.FunctionTestCase(test, setUp, tearDown).run(result)
         self.assertEqual(events, expected)
 
@@ -49,17 +49,16 @@ class Test_FunctionTestCase(unittest.TestCase):
         result = LoggingResult(events)
 
         def setUp():
-            events.append('setUp')
+            events.append("setUp")
 
         def test():
-            events.append('test')
-            raise RuntimeError('raised by test')
+            events.append("test")
+            raise RuntimeError("raised by test")
 
         def tearDown():
-            events.append('tearDown')
+            events.append("tearDown")
 
-        expected = ['startTest', 'setUp', 'test',
-                    'addError', 'tearDown', 'stopTest']
+        expected = ["startTest", "setUp", "test", "addError", "tearDown", "stopTest"]
         unittest.FunctionTestCase(test, setUp, tearDown).run(result)
         self.assertEqual(events, expected)
 
@@ -75,17 +74,16 @@ class Test_FunctionTestCase(unittest.TestCase):
         result = LoggingResult(events)
 
         def setUp():
-            events.append('setUp')
+            events.append("setUp")
 
         def test():
-            events.append('test')
-            self.fail('raised by test')
+            events.append("test")
+            self.fail("raised by test")
 
         def tearDown():
-            events.append('tearDown')
+            events.append("tearDown")
 
-        expected = ['startTest', 'setUp', 'test',
-                    'addFailure', 'tearDown', 'stopTest']
+        expected = ["startTest", "setUp", "test", "addFailure", "tearDown", "stopTest"]
         unittest.FunctionTestCase(test, setUp, tearDown).run(result)
         self.assertEqual(events, expected)
 
@@ -101,17 +99,16 @@ class Test_FunctionTestCase(unittest.TestCase):
         result = LoggingResult(events)
 
         def setUp():
-            events.append('setUp')
+            events.append("setUp")
 
         def test():
-            events.append('test')
+            events.append("test")
 
         def tearDown():
-            events.append('tearDown')
-            raise RuntimeError('raised by tearDown')
+            events.append("tearDown")
+            raise RuntimeError("raised by tearDown")
 
-        expected = ['startTest', 'setUp', 'test', 'tearDown', 'addError',
-                    'stopTest']
+        expected = ["startTest", "setUp", "test", "tearDown", "addError", "stopTest"]
         unittest.FunctionTestCase(test, setUp, tearDown).run(result)
         self.assertEqual(events, expected)
 

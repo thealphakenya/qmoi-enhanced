@@ -55,7 +55,9 @@ def memoize(method: F) -> F:
         fill = "  " * self._level
         if key not in self._cache:
             if verbose:
-                print(f"{fill}{method_name}({argsr}) ... (looking at {self.showpeek()})")
+                print(
+                    f"{fill}{method_name}({argsr}) ... (looking at {self.showpeek()})"
+                )
             self._level += 1
             tree = method(self, *args)
             self._level -= 1
@@ -181,7 +183,9 @@ class Parser:
 
     def showpeek(self) -> str:
         tok = self._tokenizer.peek()
-        return f"{tok.start[0]}.{tok.start[1]}: {token.tok_name[tok.type]}:{tok.string!r}"
+        return (
+            f"{tok.start[0]}.{tok.start[1]}: {token.tok_name[tok.type]}:{tok.string!r}"
+        )
 
     @memoize
     def name(self) -> Optional[tokenize.TokenInfo]:
@@ -257,9 +261,13 @@ class Parser:
         self._reset(mark)
         return not ok
 
-    def make_syntax_error(self, message: str, filename: str = "<unknown>") -> SyntaxError:
+    def make_syntax_error(
+        self, message: str, filename: str = "<unknown>"
+    ) -> SyntaxError:
         tok = self._tokenizer.diagnose()
-        return SyntaxError(message, (filename, tok.start[0], 1 + tok.start[1], tok.line))
+        return SyntaxError(
+            message, (filename, tok.start[0], 1 + tok.start[1], tok.line)
+        )
 
 
 def simple_parser_main(parser_class: Type[Parser]) -> None:

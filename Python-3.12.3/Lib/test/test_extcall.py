@@ -1,4 +1,3 @@
-
 """Doctest for method/function calls.
 
 We're going the use these types for extra testing
@@ -545,10 +544,11 @@ Same with keyword only args:
 import doctest
 import unittest
 
+
 def load_tests(loader, tests, pattern):
     tests.addTest(doctest.DocTestSuite())
     return tests
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

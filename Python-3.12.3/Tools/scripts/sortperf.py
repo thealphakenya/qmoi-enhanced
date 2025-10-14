@@ -29,6 +29,7 @@ import random
 # Data generation
 # ===============
 
+
 def _random_data(size: int, rand: random.Random) -> list[float]:
     result = [rand.random() for _ in range(size)]
     # Shuffle it a bit...
@@ -111,6 +112,7 @@ def list_sort_worst_case(size: int, rand: random.Random) -> list[float]:
 # =========
 # Benchmark
 # =========
+
 
 class Benchmark:
     def __init__(self, name: str, size: int, seed: int) -> None:

@@ -24,7 +24,7 @@ def _is_full_match_test(pattern):
     #
     # ignore patterns which contain fnmatch patterns: '*', '?', '[...]'
     # or '[!...]'. For example, ignore 'test_access*'.
-    return ('.' in pattern) and (not re.search(r'[?*\[\]]', pattern))
+    return ("." in pattern) and (not re.search(r"[?*\[\]]", pattern))
 
 
 def set_match_tests(patterns):
@@ -53,7 +53,8 @@ def _compile_match_function(patterns):
         return set(patterns).__contains__
     else:
         import fnmatch
-        regex = '|'.join(map(fnmatch.translate, patterns))
+
+        regex = "|".join(map(fnmatch.translate, patterns))
         # The search *is* case sensitive on purpose:
         # don't use flags=re.IGNORECASE
         regex_match = re.compile(regex).match

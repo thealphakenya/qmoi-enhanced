@@ -11,22 +11,18 @@ except ImportError:  # pragma: no cover
     from typing_extensions import Protocol, runtime_checkable  # type: ignore
 
 
-FilesSpec = Dict[str, Union[str, bytes, 'FilesSpec']]  # type: ignore
+FilesSpec = Dict[str, Union[str, bytes, "FilesSpec"]]  # type: ignore
 
 
 @runtime_checkable
 class TreeMaker(Protocol):
-    def __truediv__(self, *args, **kwargs):
-        ...  # pragma: no cover
+    def __truediv__(self, *args, **kwargs): ...  # pragma: no cover
 
-    def mkdir(self, **kwargs):
-        ...  # pragma: no cover
+    def mkdir(self, **kwargs): ...  # pragma: no cover
 
-    def write_text(self, content, **kwargs):
-        ...  # pragma: no cover
+    def write_text(self, content, **kwargs): ...  # pragma: no cover
 
-    def write_bytes(self, content):
-        ...  # pragma: no cover
+    def write_bytes(self, content): ...  # pragma: no cover
 
 
 def _ensure_tree_maker(obj: Union[str, TreeMaker]) -> TreeMaker:
@@ -75,12 +71,12 @@ def _(content: bytes, path):
 
 @create.register
 def _(content: str, path):
-    path.write_text(content, encoding='utf-8')
+    path.write_text(content, encoding="utf-8")
 
 
 @create.register
 def _(content: str, path):
-    path.write_text(content, encoding='utf-8')
+    path.write_text(content, encoding="utf-8")
 
 
 class Recording:

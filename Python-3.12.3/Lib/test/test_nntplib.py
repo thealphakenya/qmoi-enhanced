@@ -11,23 +11,28 @@ import threading
 
 from test import support
 from test.support import socket_helper, warnings_helper
+
 nntplib = warnings_helper.import_deprecated("nntplib")
 from nntplib import NNTP, GroupInfo
 from unittest.mock import patch
+
 try:
     import ssl
 except ImportError:
     ssl = None
 
 
-certfile = os.path.join(os.path.dirname(__file__), 'certdata', 'keycert3.pem')
+certfile = os.path.join(os.path.dirname(__file__), "certdata", "keycert3.pem")
 
 if ssl is not None:
     SSLError = ssl.SSLError
 else:
+
     class SSLError(Exception):
         """Non-existent exception class when we lack SSL support."""
+
         reason = "This will never be raised."
+
 
 # TODO:
 # - test the `file` arg to more commands
@@ -81,6 +86,7 @@ class NetworkedNNTPTestsMixin:
             # Sanity checks
             self.assertIsInstance(desc, str)
             self.assertNotIn(self.GROUP_NAME, desc)
+
         desc = self.server.description(self.GROUP_NAME)
         _check_desc(desc)
         # Another sanity check
@@ -90,13 +96,12 @@ class NetworkedNNTPTestsMixin:
         _check_desc(desc)
         # Shouldn't exist
         desc = self.server.description("zk.brrtt.baz")
-        self.assertEqual(desc, '')
+        self.assertEqual(desc, "")
 
     def test_descriptions(self):
         resp, descs = self.server.descriptions(self.GROUP_PAT)
         # 215 for LIST NEWSGROUPS, 282 for XGTITLE
-        self.assertTrue(
-            resp.startswith("215 ") or resp.startswith("282 "), resp)
+        self.assertTrue(resp.startswith("215 ") or resp.startswith("282 "), resp)
         self.assertIsInstance(descs, dict)
         desc = descs[self.GROUP_NAME]
         self.assertEqual(desc, self.server.description(self.GROUP_NAME))
@@ -123,10 +128,10 @@ class NetworkedNNTPTestsMixin:
         # Some sanity checks for a field dictionary returned by OVER / XOVER
         self.assertIsInstance(art_dict, dict)
         # NNTP has 7 mandatory fields
-        self.assertGreaterEqual(art_dict.keys(),
-            {"subject", "from", "date", "message-id",
-             "references", ":bytes", ":lines"}
-            )
+        self.assertGreaterEqual(
+            art_dict.keys(),
+            {"subject", "from", "date", "message-id", "references", ":bytes", ":lines"},
+        )
         for v in art_dict.values():
             self.assertIsInstance(v, (str, type(None)))
 
@@ -141,8 +146,10 @@ class NetworkedNNTPTestsMixin:
         self.assertLessEqual(art_num, last)
         self._check_art_dict(art_dict)
 
-    @unittest.skipIf(True, 'temporarily skipped until a permanent solution'
-                           ' is found for issue #28971')
+    @unittest.skipIf(
+        True,
+        "temporarily skipped until a permanent solution" " is found for issue #28971",
+    )
     def test_over(self):
         resp, count, first, last, name = self.server.group(self.GROUP_NAME)
         start = last - 10
@@ -162,7 +169,7 @@ class NetworkedNNTPTestsMixin:
 
     def test_xhdr(self):
         resp, count, first, last, name = self.server.group(self.GROUP_NAME)
-        resp, lines = self.server.xhdr('subject', last)
+        resp, lines = self.server.xhdr("subject", last)
         for line in lines:
             self.assertEqual(str, type(line[1]))
 
@@ -199,21 +206,20 @@ class NetworkedNNTPTestsMixin:
         self.assertTrue(resp.startswith("220 "), resp)
         self.check_article_resp(resp, article, art_num)
         # Tolerate running the tests from behind a NNTP virus checker
-        denylist = lambda line: line.startswith(b'X-Antivirus')
-        filtered_head_lines = [line for line in head.lines
-                               if not denylist(line)]
-        filtered_lines = [line for line in article.lines
-                          if not denylist(line)]
-        self.assertEqual(filtered_lines, filtered_head_lines + [b''] + body.lines)
+        denylist = lambda line: line.startswith(b"X-Antivirus")
+        filtered_head_lines = [line for line in head.lines if not denylist(line)]
+        filtered_lines = [line for line in article.lines if not denylist(line)]
+        self.assertEqual(filtered_lines, filtered_head_lines + [b""] + body.lines)
 
     def test_capabilities(self):
         # The server under test implements NNTP version 2 and has a
         # couple of well-known capabilities. Just sanity check that we
         # got them.
         def _check_caps(caps):
-            caps_list = caps['LIST']
+            caps_list = caps["LIST"]
             self.assertIsInstance(caps_list, (list, tuple))
-            self.assertIn('OVERVIEW.FMT', caps_list)
+            self.assertIn("OVERVIEW.FMT", caps_list)
+
         self.assertGreaterEqual(self.server.nntp_version, 2)
         _check_caps(self.server.getcapabilities())
         # This re-emits the command
@@ -226,8 +232,13 @@ class NetworkedNNTPTestsMixin:
         baduser = "notarealuser"
         badpw = "notarealpassword"
         # Check that bogus credentials cause failure
-        self.assertRaises(nntplib.NNTPError, self.server.login,
-                          user=baduser, password=badpw, usenetrc=False)
+        self.assertRaises(
+            nntplib.NNTPError,
+            self.server.login,
+            user=baduser,
+            password=badpw,
+            usenetrc=False,
+        )
         # FIXME: We should check that correct credentials succeed, but that
         # would require valid details for some server somewhere to be in the
         # test suite, I think. Gmane is anonymous, at least as used for the
@@ -250,9 +261,11 @@ class NetworkedNNTPTestsMixin:
             def wrapped(self):
                 with socket_helper.transient_internet(self.NNTP_HOST):
                     meth(self)
+
             return wrapped
+
         for name in dir(cls):
-            if not name.startswith('test_'):
+            if not name.startswith("test_"):
                 continue
             meth = getattr(cls, name)
             if not callable(meth):
@@ -267,7 +280,7 @@ class NetworkedNNTPTestsMixin:
 
     def test_with_statement(self):
         def is_connected():
-            if not hasattr(server, 'file'):
+            if not hasattr(server, "file"):
                 return False
             try:
                 server.help()
@@ -275,10 +288,7 @@ class NetworkedNNTPTestsMixin:
                 return False
             return True
 
-        kwargs = dict(
-            timeout=support.INTERNET_TIMEOUT,
-            usenetrc=False
-        )
+        kwargs = dict(timeout=support.INTERNET_TIMEOUT, usenetrc=False)
         if self.ssl_context is not None:
             kwargs["ssl_context"] = self.ssl_context
 
@@ -295,9 +305,10 @@ class NetworkedNNTPTestsMixin:
             self.assertFalse(is_connected())
         except SSLError as ssl_err:
             # matches "[SSL: DH_KEY_TOO_SMALL] dh key too small"
-            if re.search(r'(?i)KEY.TOO.SMALL', ssl_err.reason):
-                raise unittest.SkipTest(f"Got {ssl_err} connecting "
-                                        f"to {self.NNTP_HOST!r}")
+            if re.search(r"(?i)KEY.TOO.SMALL", ssl_err.reason):
+                raise unittest.SkipTest(
+                    f"Got {ssl_err} connecting " f"to {self.NNTP_HOST!r}"
+                )
             raise
 
 
@@ -311,20 +322,17 @@ if ssl is not None:
 
 class NetworkedNNTPTests(NetworkedNNTPTestsMixin, unittest.TestCase):
     # This server supports STARTTLS (gmane doesn't)
-    NNTP_HOST = 'news.trigofacile.com'
-    GROUP_NAME = 'fr.comp.lang.python'
-    GROUP_PAT = 'fr.comp.lang.*'
-    DESC = 'Python'
+    NNTP_HOST = "news.trigofacile.com"
+    GROUP_NAME = "fr.comp.lang.python"
+    GROUP_PAT = "fr.comp.lang.*"
+    DESC = "Python"
 
     NNTP_CLASS = NNTP
 
     @classmethod
     def setUpClass(cls):
         support.requires("network")
-        kwargs = dict(
-            timeout=support.INTERNET_TIMEOUT,
-            usenetrc=False
-        )
+        kwargs = dict(timeout=support.INTERNET_TIMEOUT, usenetrc=False)
         if cls.ssl_context is not None:
             kwargs["ssl_context"] = cls.ssl_context
         with socket_helper.transient_internet(cls.NNTP_HOST):
@@ -332,35 +340,38 @@ class NetworkedNNTPTests(NetworkedNNTPTestsMixin, unittest.TestCase):
                 cls.server = cls.NNTP_CLASS(cls.NNTP_HOST, **kwargs)
             except SSLError as ssl_err:
                 # matches "[SSL: DH_KEY_TOO_SMALL] dh key too small"
-                if re.search(r'(?i)KEY.TOO.SMALL', ssl_err.reason):
-                    raise unittest.SkipTest(f"{cls} got {ssl_err} connecting "
-                                            f"to {cls.NNTP_HOST!r}")
+                if re.search(r"(?i)KEY.TOO.SMALL", ssl_err.reason):
+                    raise unittest.SkipTest(
+                        f"{cls} got {ssl_err} connecting " f"to {cls.NNTP_HOST!r}"
+                    )
                 print(cls.NNTP_HOST)
                 raise
             except EOF_ERRORS:
-                raise unittest.SkipTest(f"{cls} got EOF error on connecting "
-                                        f"to {cls.NNTP_HOST!r}")
+                raise unittest.SkipTest(
+                    f"{cls} got EOF error on connecting " f"to {cls.NNTP_HOST!r}"
+                )
 
     @classmethod
     def tearDownClass(cls):
         if cls.server is not None:
             cls.server.quit()
 
-@unittest.skipUnless(ssl, 'requires SSL support')
+
+@unittest.skipUnless(ssl, "requires SSL support")
 class NetworkedNNTP_SSLTests(NetworkedNNTPTests):
 
     # Technical limits for this public NNTP server (see http://www.aioe.org):
     # "Only two concurrent connections per IP address are allowed and
     # 400 connections per day are accepted from each IP address."
 
-    NNTP_HOST = 'nntp.aioe.org'
+    NNTP_HOST = "nntp.aioe.org"
     # bpo-42794: aioe.test is one of the official groups on this server
     # used for testing: https://news.aioe.org/manual/aioe-hierarchy/
-    GROUP_NAME = 'aioe.test'
-    GROUP_PAT = 'aioe.*'
-    DESC = 'test'
+    GROUP_NAME = "aioe.test"
+    GROUP_PAT = "aioe.*"
+    DESC = "test"
 
-    NNTP_CLASS = getattr(nntplib, 'NNTP_SSL', None)
+    NNTP_CLASS = getattr(nntplib, "NNTP_SSL", None)
 
     # Disabled as it produces too much data
     test_list = None
@@ -373,9 +384,11 @@ class NetworkedNNTP_SSLTests(NetworkedNNTPTests):
         ssl_context.set_ciphers("DEFAULT")
         ssl_context.maximum_version = ssl.TLSVersion.TLSv1_2
 
+
 #
 # Non-networked tests using a local server (or something mocking it).
 #
+
 
 class _NNTPServerIO(io.RawIOBase):
     """A raw IO object allowing NNTP commands to be received and processed
@@ -456,7 +469,7 @@ class MockedNNTPTestsMixin:
     def make_server(self, *args, **kwargs):
         self.handler = self.handler_class()
         self.sio, file = make_mock_file(self.handler)
-        self.server = NNTPServer(file, 'test.server', *args, **kwargs)
+        self.server = NNTPServer(file, "test.server", *args, **kwargs)
         return self.server
 
 
@@ -508,7 +521,7 @@ class NNTPv1Handler:
                 raise ValueError("line doesn't end with \\r\\n: {!r}".format(line))
             line = line[:-2]
             cmd, *tokens = line.split()
-            #meth = getattr(self.handler, "handle_" + cmd.upper(), None)
+            # meth = getattr(self.handler, "handle_" + cmd.upper(), None)
             meth = getattr(self, "handle_" + cmd.upper(), None)
             if meth is None:
                 self.handle_unknown()
@@ -534,7 +547,7 @@ class NNTPv1Handler:
         """Push a string literal"""
         lit = textwrap.dedent(lit)
         lit = "\r\n".join(lit.splitlines()) + "\r\n"
-        lit = lit.encode('utf-8')
+        lit = lit.encode("utf-8")
         self.push_data(lit)
 
     def handle_unknown(self):
@@ -556,13 +569,15 @@ class NNTPv1Handler:
             self.push_lit("411 No such group {}".format(group))
 
     def handle_HELP(self):
-        self.push_lit("""\
+        self.push_lit(
+            """\
             100 Legal commands
               authinfo user Name|pass Password|generic <prog> <args>
               date
               help
             Report problems to <root@example.org>
-            .""")
+            ."""
+        )
 
     def handle_STAT(self, message_spec=None):
         if message_spec is None:
@@ -582,7 +597,8 @@ class NNTPv1Handler:
 
     def handle_LIST(self, action=None, param=None):
         if action is None:
-            self.push_lit("""\
+            self.push_lit(
+                """\
                 215 Newsgroups in form "group high low flags".
                 comp.lang.python 0000052340 0000002828 y
                 comp.lang.python.announce 0000001153 0000000993 m
@@ -590,20 +606,26 @@ class NNTPv1Handler:
                 fr.comp.lang.python 0000001254 0000000760 y
                 free.it.comp.lang.python.learner 0000000000 0000000001 y
                 tw.bbs.comp.lang.python 0000000304 0000000304 y
-                .""")
+                ."""
+            )
         elif action == "ACTIVE":
             if param == "*distutils*":
-                self.push_lit("""\
+                self.push_lit(
+                    """\
                     215 Newsgroups in form "group high low flags"
                     gmane.comp.python.distutils.devel 0000014104 0000000001 m
                     gmane.comp.python.distutils.cvs 0000000000 0000000001 m
-                    .""")
+                    ."""
+                )
             else:
-                self.push_lit("""\
+                self.push_lit(
+                    """\
                     215 Newsgroups in form "group high low flags"
-                    .""")
+                    ."""
+                )
         elif action == "OVERVIEW.FMT":
-            self.push_lit("""\
+            self.push_lit(
+                """\
                 215 Order of fields in overview database.
                 Subject:
                 From:
@@ -613,55 +635,75 @@ class NNTPv1Handler:
                 Bytes:
                 Lines:
                 Xref:full
-                .""")
+                ."""
+            )
         elif action == "NEWSGROUPS":
             assert param is not None
             if param == "comp.lang.python":
-                self.push_lit("""\
+                self.push_lit(
+                    """\
                     215 Descriptions in form "group description".
                     comp.lang.python\tThe Python computer language.
-                    .""")
+                    ."""
+                )
             elif param == "comp.lang.python*":
-                self.push_lit("""\
+                self.push_lit(
+                    """\
                     215 Descriptions in form "group description".
                     comp.lang.python.announce\tAnnouncements about the Python language. (Moderated)
                     comp.lang.python\tThe Python computer language.
-                    .""")
+                    ."""
+                )
             else:
-                self.push_lit("""\
+                self.push_lit(
+                    """\
                     215 Descriptions in form "group description".
-                    .""")
+                    ."""
+                )
         else:
-            self.push_lit('501 Unknown LIST keyword')
+            self.push_lit("501 Unknown LIST keyword")
 
     def handle_NEWNEWS(self, group, date_str, time_str):
         # We hard code different return messages depending on passed
         # argument and date syntax.
-        if (group == "comp.lang.python" and date_str == "20100913"
-            and time_str == "082004"):
+        if (
+            group == "comp.lang.python"
+            and date_str == "20100913"
+            and time_str == "082004"
+        ):
             # Date was passed in RFC 3977 format (NNTP "v2")
-            self.push_lit("""\
+            self.push_lit(
+                """\
                 230 list of newsarticles (NNTP v2) created after Mon Sep 13 08:20:04 2010 follows
                 <a4929a40-6328-491a-aaaf-cb79ed7309a2@q2g2000vbk.googlegroups.com>
                 <f30c0419-f549-4218-848f-d7d0131da931@y3g2000vbm.googlegroups.com>
-                .""")
-        elif (group == "comp.lang.python" and date_str == "100913"
-            and time_str == "082004"):
+                ."""
+            )
+        elif (
+            group == "comp.lang.python"
+            and date_str == "100913"
+            and time_str == "082004"
+        ):
             # Date was passed in RFC 977 format (NNTP "v1")
-            self.push_lit("""\
+            self.push_lit(
+                """\
                 230 list of newsarticles (NNTP v1) created after Mon Sep 13 08:20:04 2010 follows
                 <a4929a40-6328-491a-aaaf-cb79ed7309a2@q2g2000vbk.googlegroups.com>
                 <f30c0419-f549-4218-848f-d7d0131da931@y3g2000vbm.googlegroups.com>
-                .""")
-        elif (group == 'comp.lang.python' and
-              date_str in ('20100101', '100101') and
-              time_str == '090000'):
-            self.push_lit('too long line' * 3000 +
-                          '\n.')
+                ."""
+            )
+        elif (
+            group == "comp.lang.python"
+            and date_str in ("20100101", "100101")
+            and time_str == "090000"
+        ):
+            self.push_lit("too long line" * 3000 + "\n.")
         else:
-            self.push_lit("""\
+            self.push_lit(
+                """\
                 230 An empty list of newsarticles follows
-                .""")
+                ."""
+            )
         # (Note for experiments: many servers disable NEWNEWS.
         #  As of this writing, sicinfo3.epfl.ch doesn't.)
 
@@ -670,32 +712,35 @@ class NNTPv1Handler:
             self.push_lit(
                 "224 Overview information for 57-58 follows\n"
                 "57\tRe: ANN: New Plone book with strong Python (and Zope) themes throughout"
-                    "\tDoug Hellmann <doug.hellmann-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>"
-                    "\tSat, 19 Jun 2010 18:04:08 -0400"
-                    "\t<4FD05F05-F98B-44DC-8111-C6009C925F0C@gmail.com>"
-                    "\t<hvalf7$ort$1@dough.gmane.org>\t7103\t16"
-                    "\tXref: news.gmane.io gmane.comp.python.authors:57"
-                    "\n"
+                "\tDoug Hellmann <doug.hellmann-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>"
+                "\tSat, 19 Jun 2010 18:04:08 -0400"
+                "\t<4FD05F05-F98B-44DC-8111-C6009C925F0C@gmail.com>"
+                "\t<hvalf7$ort$1@dough.gmane.org>\t7103\t16"
+                "\tXref: news.gmane.io gmane.comp.python.authors:57"
+                "\n"
                 "58\tLooking for a few good bloggers"
-                    "\tDoug Hellmann <doug.hellmann-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>"
-                    "\tThu, 22 Jul 2010 09:14:14 -0400"
-                    "\t<A29863FA-F388-40C3-AA25-0FD06B09B5BF@gmail.com>"
-                    "\t\t6683\t16"
-                    "\t"
-                    "\n"
+                "\tDoug Hellmann <doug.hellmann-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>"
+                "\tThu, 22 Jul 2010 09:14:14 -0400"
+                "\t<A29863FA-F388-40C3-AA25-0FD06B09B5BF@gmail.com>"
+                "\t\t6683\t16"
+                "\t"
+                "\n"
                 # A UTF-8 overview line from fr.comp.lang.python
                 "59\tRe: Message d'erreur incompréhensible (par moi)"
-                    "\tEric Brunel <eric.brunel@pragmadev.nospam.com>"
-                    "\tWed, 15 Sep 2010 18:09:15 +0200"
-                    "\t<eric.brunel-2B8B56.18091515092010@news.wanadoo.fr>"
-                    "\t<4c90ec87$0$32425$ba4acef3@reader.news.orange.fr>\t1641\t27"
-                    "\tXref: saria.nerim.net fr.comp.lang.python:1265"
-                    "\n"
-                ".\n")
+                "\tEric Brunel <eric.brunel@pragmadev.nospam.com>"
+                "\tWed, 15 Sep 2010 18:09:15 +0200"
+                "\t<eric.brunel-2B8B56.18091515092010@news.wanadoo.fr>"
+                "\t<4c90ec87$0$32425$ba4acef3@reader.news.orange.fr>\t1641\t27"
+                "\tXref: saria.nerim.net fr.comp.lang.python:1265"
+                "\n"
+                ".\n"
+            )
         else:
-            self.push_lit("""\
+            self.push_lit(
+                """\
                 224 No articles
-                .""")
+                ."""
+            )
 
     def handle_POST(self, *, body=None):
         if body is None:
@@ -711,8 +756,10 @@ class NNTPv1Handler:
 
     def handle_IHAVE(self, message_id, *, body=None):
         if body is None:
-            if (self.allow_posting and
-                message_id == "<i.am.an.article.you.will.want@example.com>"):
+            if (
+                self.allow_posting
+                and message_id == "<i.am.an.article.you.will.want@example.com>"
+            ):
                 self.push_lit("335 Send it; end with <CR-LF>.<CR-LF>")
                 self.expect_body()
             else:
@@ -777,18 +824,18 @@ class NNTPv1Handler:
 
     def handle_AUTHINFO(self, cred_type, data):
         if self._logged_in:
-            self.push_lit('502 Already Logged In')
-        elif cred_type == 'user':
+            self.push_lit("502 Already Logged In")
+        elif cred_type == "user":
             if self._user_sent:
-                self.push_lit('482 User Credential Already Sent')
+                self.push_lit("482 User Credential Already Sent")
             else:
-                self.push_lit('381 Password Required')
+                self.push_lit("381 Password Required")
                 self._user_sent = True
-        elif cred_type == 'pass':
-            self.push_lit('281 Login Successful')
+        elif cred_type == "pass":
+            self.push_lit("281 Login Successful")
             self._logged_in = True
         else:
-            raise Exception('Unknown cred type {}'.format(cred_type))
+            raise Exception("Unknown cred type {}".format(cred_type))
 
 
 class NNTPv2Handler(NNTPv1Handler):
@@ -807,12 +854,12 @@ class NNTPv2Handler(NNTPv1Handler):
             ."""
 
         if not self._logged_in:
-            self.push_lit(fmt.format('\n            AUTHINFO USER'))
+            self.push_lit(fmt.format("\n            AUTHINFO USER"))
         else:
-            self.push_lit(fmt.format(''))
+            self.push_lit(fmt.format(""))
 
     def handle_MODE(self, _):
-        raise Exception('MODE READER sent despite READER has been advertised')
+        raise Exception("MODE READER sent despite READER has been advertised")
 
     def handle_OVER(self, message_spec=None):
         return self.handle_XOVER(message_spec)
@@ -823,7 +870,7 @@ class CapsAfterLoginNNTPv2Handler(NNTPv2Handler):
 
     def handle_CAPABILITIES(self):
         if not self._logged_in:
-            self.push_lit('480 You must log in.')
+            self.push_lit("480 You must log in.")
         else:
             super().handle_CAPABILITIES()
 
@@ -846,14 +893,14 @@ class ModeSwitchingNNTPv2Handler(NNTPv2Handler):
             {}READER
             ."""
         if self._switched:
-            self.push_lit(fmt.format(''))
+            self.push_lit(fmt.format(""))
         else:
-            self.push_lit(fmt.format('MODE-'))
+            self.push_lit(fmt.format("MODE-"))
 
     def handle_MODE(self, what):
-        assert not self._switched and what == 'reader'
+        assert not self._switched and what == "reader"
         self._switched = True
-        self.push_lit('200 Posting allowed')
+        self.push_lit("200 Posting allowed")
 
 
 class NNTPv1v2TestsMixin:
@@ -866,11 +913,11 @@ class NNTPv1v2TestsMixin:
 
     def test_authinfo(self):
         if self.nntp_version == 2:
-            self.assertIn('AUTHINFO', self.server._caps)
-        self.server.login('testuser', 'testpw')
+            self.assertIn("AUTHINFO", self.server._caps)
+        self.server.login("testuser", "testpw")
         # if AUTHINFO is gone from _caps we also know that getcapabilities()
         # has been called after login as it should
-        self.assertNotIn('AUTHINFO', self.server._caps)
+        self.assertNotIn("AUTHINFO", self.server._caps)
 
     def test_date(self):
         resp, date = self.server.date()
@@ -886,26 +933,32 @@ class NNTPv1v2TestsMixin:
     def test_help(self):
         resp, help = self.server.help()
         self.assertEqual(resp, "100 Legal commands")
-        self.assertEqual(help, [
-            '  authinfo user Name|pass Password|generic <prog> <args>',
-            '  date',
-            '  help',
-            'Report problems to <root@example.org>',
-        ])
+        self.assertEqual(
+            help,
+            [
+                "  authinfo user Name|pass Password|generic <prog> <args>",
+                "  date",
+                "  help",
+                "Report problems to <root@example.org>",
+            ],
+        )
 
     def test_list(self):
         resp, groups = self.server.list()
         self.assertEqual(len(groups), 6)
         g = groups[1]
-        self.assertEqual(g,
-            GroupInfo("comp.lang.python.announce", "0000001153",
-                      "0000000993", "m"))
+        self.assertEqual(
+            g, GroupInfo("comp.lang.python.announce", "0000001153", "0000000993", "m")
+        )
         resp, groups = self.server.list("*distutils*")
         self.assertEqual(len(groups), 2)
         g = groups[0]
-        self.assertEqual(g,
-            GroupInfo("gmane.comp.python.distutils.devel", "0000014104",
-                      "0000000001", "m"))
+        self.assertEqual(
+            g,
+            GroupInfo(
+                "gmane.comp.python.distutils.devel", "0000014104", "0000000001", "m"
+            ),
+        )
 
     def test_stat(self):
         resp, art_num, message_id = self.server.stat(3000234)
@@ -944,14 +997,20 @@ class NNTPv1v2TestsMixin:
     def test_descriptions(self):
         resp, groups = self.server.descriptions("comp.lang.python")
         self.assertEqual(resp, '215 Descriptions in form "group description".')
-        self.assertEqual(groups, {
-            "comp.lang.python": "The Python computer language.",
-            })
+        self.assertEqual(
+            groups,
+            {
+                "comp.lang.python": "The Python computer language.",
+            },
+        )
         resp, groups = self.server.descriptions("comp.lang.python*")
-        self.assertEqual(groups, {
-            "comp.lang.python": "The Python computer language.",
-            "comp.lang.python.announce": "Announcements about the Python language. (Moderated)",
-            })
+        self.assertEqual(
+            groups,
+            {
+                "comp.lang.python": "The Python computer language.",
+                "comp.lang.python.announce": "Announcements about the Python language. (Moderated)",
+            },
+        )
         resp, groups = self.server.descriptions("comp.lang.pythonx")
         self.assertEqual(groups, {})
 
@@ -965,8 +1024,7 @@ class NNTPv1v2TestsMixin:
         with self.assertRaises(nntplib.NNTPTemporaryError) as cm:
             self.server.group("comp.lang.python.devel")
         exc = cm.exception
-        self.assertTrue(exc.response.startswith("411 No such group"),
-                        exc.response)
+        self.assertTrue(exc.response.startswith("411 No such group"), exc.response)
 
     def test_newnews(self):
         # NEWNEWS comp.lang.python [20]100913 082004
@@ -975,12 +1033,15 @@ class NNTPv1v2TestsMixin:
         expected = (
             "230 list of newsarticles (NNTP v{0}) "
             "created after Mon Sep 13 08:20:04 2010 follows"
-            ).format(self.nntp_version)
+        ).format(self.nntp_version)
         self.assertEqual(resp, expected)
-        self.assertEqual(ids, [
-            "<a4929a40-6328-491a-aaaf-cb79ed7309a2@q2g2000vbk.googlegroups.com>",
-            "<f30c0419-f549-4218-848f-d7d0131da931@y3g2000vbm.googlegroups.com>",
-            ])
+        self.assertEqual(
+            ids,
+            [
+                "<a4929a40-6328-491a-aaaf-cb79ed7309a2@q2g2000vbk.googlegroups.com>",
+                "<f30c0419-f549-4218-848f-d7d0131da931@y3g2000vbm.googlegroups.com>",
+            ],
+        )
         # NEWNEWS fr.comp.lang.python [20]100913 082004
         dt = datetime.datetime(2010, 9, 13, 8, 20, 4)
         resp, ids = self.server.newnews("fr.comp.lang.python", dt)
@@ -989,7 +1050,7 @@ class NNTPv1v2TestsMixin:
 
     def _check_article_body(self, lines):
         self.assertEqual(len(lines), 4)
-        self.assertEqual(lines[-1].decode('utf-8'), "-- Signed by André.")
+        self.assertEqual(lines[-1].decode("utf-8"), "-- Signed by André.")
         self.assertEqual(lines[-2], b"")
         self.assertEqual(lines[-3], b".Here is a dot-starting line.")
         self.assertEqual(lines[-4], b"This is just a test article.")
@@ -997,7 +1058,9 @@ class NNTPv1v2TestsMixin:
     def _check_article_head(self, lines):
         self.assertEqual(len(lines), 4)
         self.assertEqual(lines[0], b'From: "Demo User" <nobody@example.net>')
-        self.assertEqual(lines[3], b"Message-ID: <i.am.an.article.you.will.want@example.com>")
+        self.assertEqual(
+            lines[3], b"Message-ID: <i.am.an.article.you.will.want@example.com>"
+        )
 
     def _check_article_data(self, lines):
         self.assertEqual(len(lines), 9)
@@ -1042,16 +1105,22 @@ class NNTPv1v2TestsMixin:
         self.assertEqual(message_id, "<45223423@example.com>")
         self.assertEqual(lines, [])
         data = f.getvalue()
-        self.assertTrue(data.startswith(
-            b'From: "Demo User" <nobody@example.net>\r\n'
-            b'Subject: I am just a test article\r\n'
-            ), ascii(data))
-        self.assertTrue(data.endswith(
-            b'This is just a test article.\r\n'
-            b'.Here is a dot-starting line.\r\n'
-            b'\r\n'
-            b'-- Signed by Andr\xc3\xa9.\r\n'
-            ), ascii(data))
+        self.assertTrue(
+            data.startswith(
+                b'From: "Demo User" <nobody@example.net>\r\n'
+                b"Subject: I am just a test article\r\n"
+            ),
+            ascii(data),
+        )
+        self.assertTrue(
+            data.endswith(
+                b"This is just a test article.\r\n"
+                b".Here is a dot-starting line.\r\n"
+                b"\r\n"
+                b"-- Signed by Andr\xc3\xa9.\r\n"
+            ),
+            ascii(data),
+        )
 
     def test_head(self):
         # HEAD
@@ -1089,16 +1158,22 @@ class NNTPv1v2TestsMixin:
         self.assertEqual(message_id, "<45223423@example.com>")
         self.assertEqual(lines, [])
         data = f.getvalue()
-        self.assertTrue(data.startswith(
-            b'From: "Demo User" <nobody@example.net>\r\n'
-            b'Subject: I am just a test article\r\n'
-            ), ascii(data))
-        self.assertFalse(data.endswith(
-            b'This is just a test article.\r\n'
-            b'.Here is a dot-starting line.\r\n'
-            b'\r\n'
-            b'-- Signed by Andr\xc3\xa9.\r\n'
-            ), ascii(data))
+        self.assertTrue(
+            data.startswith(
+                b'From: "Demo User" <nobody@example.net>\r\n'
+                b"Subject: I am just a test article\r\n"
+            ),
+            ascii(data),
+        )
+        self.assertFalse(
+            data.endswith(
+                b"This is just a test article.\r\n"
+                b".Here is a dot-starting line.\r\n"
+                b"\r\n"
+                b"-- Signed by Andr\xc3\xa9.\r\n"
+            ),
+            ascii(data),
+        )
 
     def test_body(self):
         # BODY
@@ -1136,37 +1211,47 @@ class NNTPv1v2TestsMixin:
         self.assertEqual(message_id, "<45223423@example.com>")
         self.assertEqual(lines, [])
         data = f.getvalue()
-        self.assertFalse(data.startswith(
-            b'From: "Demo User" <nobody@example.net>\r\n'
-            b'Subject: I am just a test article\r\n'
-            ), ascii(data))
-        self.assertTrue(data.endswith(
-            b'This is just a test article.\r\n'
-            b'.Here is a dot-starting line.\r\n'
-            b'\r\n'
-            b'-- Signed by Andr\xc3\xa9.\r\n'
-            ), ascii(data))
+        self.assertFalse(
+            data.startswith(
+                b'From: "Demo User" <nobody@example.net>\r\n'
+                b"Subject: I am just a test article\r\n"
+            ),
+            ascii(data),
+        )
+        self.assertTrue(
+            data.endswith(
+                b"This is just a test article.\r\n"
+                b".Here is a dot-starting line.\r\n"
+                b"\r\n"
+                b"-- Signed by Andr\xc3\xa9.\r\n"
+            ),
+            ascii(data),
+        )
 
     def check_over_xover_resp(self, resp, overviews):
         self.assertTrue(resp.startswith("224 "), resp)
         self.assertEqual(len(overviews), 3)
         art_num, over = overviews[0]
         self.assertEqual(art_num, 57)
-        self.assertEqual(over, {
-            "from": "Doug Hellmann <doug.hellmann-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>",
-            "subject": "Re: ANN: New Plone book with strong Python (and Zope) themes throughout",
-            "date": "Sat, 19 Jun 2010 18:04:08 -0400",
-            "message-id": "<4FD05F05-F98B-44DC-8111-C6009C925F0C@gmail.com>",
-            "references": "<hvalf7$ort$1@dough.gmane.org>",
-            ":bytes": "7103",
-            ":lines": "16",
-            "xref": "news.gmane.io gmane.comp.python.authors:57"
-            })
+        self.assertEqual(
+            over,
+            {
+                "from": "Doug Hellmann <doug.hellmann-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>",
+                "subject": "Re: ANN: New Plone book with strong Python (and Zope) themes throughout",
+                "date": "Sat, 19 Jun 2010 18:04:08 -0400",
+                "message-id": "<4FD05F05-F98B-44DC-8111-C6009C925F0C@gmail.com>",
+                "references": "<hvalf7$ort$1@dough.gmane.org>",
+                ":bytes": "7103",
+                ":lines": "16",
+                "xref": "news.gmane.io gmane.comp.python.authors:57",
+            },
+        )
         art_num, over = overviews[1]
         self.assertEqual(over["xref"], None)
         art_num, over = overviews[2]
-        self.assertEqual(over["subject"],
-                         "Re: Message d'erreur incompréhensible (par moi)")
+        self.assertEqual(
+            over["subject"], "Re: Message d'erreur incompréhensible (par moi)"
+        )
 
     def test_xover(self):
         resp, overviews = self.server.xover(57, 59)
@@ -1179,14 +1264,14 @@ class NNTPv1v2TestsMixin:
 
     sample_post = (
         b'From: "Demo User" <nobody@example.net>\r\n'
-        b'Subject: I am just a test article\r\n'
-        b'Content-Type: text/plain; charset=UTF-8; format=flowed\r\n'
-        b'Message-ID: <i.am.an.article.you.will.want@example.com>\r\n'
-        b'\r\n'
-        b'This is just a test article.\r\n'
-        b'.Here is a dot-starting line.\r\n'
-        b'\r\n'
-        b'-- Signed by Andr\xc3\xa9.\r\n'
+        b"Subject: I am just a test article\r\n"
+        b"Content-Type: text/plain; charset=UTF-8; format=flowed\r\n"
+        b"Message-ID: <i.am.an.article.you.will.want@example.com>\r\n"
+        b"\r\n"
+        b"This is just a test article.\r\n"
+        b".Here is a dot-starting line.\r\n"
+        b"\r\n"
+        b"-- Signed by Andr\xc3\xa9.\r\n"
     )
 
     def _check_posted_body(self):
@@ -1194,10 +1279,10 @@ class NNTPv1v2TestsMixin:
         lines = self.handler.posted_body
         # One additional line for the "." terminator
         self.assertEqual(len(lines), 10)
-        self.assertEqual(lines[-1], b'.\r\n')
-        self.assertEqual(lines[-2], b'-- Signed by Andr\xc3\xa9.\r\n')
-        self.assertEqual(lines[-3], b'\r\n')
-        self.assertEqual(lines[-4], b'..Here is a dot-starting line.\r\n')
+        self.assertEqual(lines[-1], b".\r\n")
+        self.assertEqual(lines[-2], b"-- Signed by Andr\xc3\xa9.\r\n")
+        self.assertEqual(lines[-3], b"\r\n")
+        self.assertEqual(lines[-4], b"..Here is a dot-starting line.\r\n")
         self.assertEqual(lines[0], b'From: "Demo User" <nobody@example.net>\r\n')
 
     def _check_post_ihave_sub(self, func, *args, file_factory):
@@ -1226,14 +1311,18 @@ class NNTPv1v2TestsMixin:
         # With a file object
         resp = self._check_post_ihave_sub(func, *args, file_factory=io.BytesIO)
         self.assertEqual(resp, success_resp)
+
         # With an iterable of terminated lines
         def iterlines(b):
             return iter(b.splitlines(keepends=True))
+
         resp = self._check_post_ihave_sub(func, *args, file_factory=iterlines)
         self.assertEqual(resp, success_resp)
+
         # With an iterable of non-terminated lines
         def iterlines(b):
             return iter(b.splitlines(keepends=False))
+
         resp = self._check_post_ihave_sub(func, *args, file_factory=iterlines)
         self.assertEqual(resp, success_resp)
 
@@ -1242,21 +1331,23 @@ class NNTPv1v2TestsMixin:
         self.handler.allow_posting = False
         with self.assertRaises(nntplib.NNTPTemporaryError) as cm:
             self.server.post(self.sample_post)
-        self.assertEqual(cm.exception.response,
-                         "440 Posting not permitted")
+        self.assertEqual(cm.exception.response, "440 Posting not permitted")
 
     def test_ihave(self):
-        self.check_post_ihave(self.server.ihave, "235 Article transferred OK",
-                              "<i.am.an.article.you.will.want@example.com>")
+        self.check_post_ihave(
+            self.server.ihave,
+            "235 Article transferred OK",
+            "<i.am.an.article.you.will.want@example.com>",
+        )
         with self.assertRaises(nntplib.NNTPTemporaryError) as cm:
             self.server.ihave("<another.message.id>", self.sample_post)
-        self.assertEqual(cm.exception.response,
-                         "435 Article not wanted")
+        self.assertEqual(cm.exception.response, "435 Article not wanted")
 
     def test_too_long_lines(self):
         dt = datetime.datetime(2010, 1, 1, 9, 0, 0)
-        self.assertRaises(nntplib.NNTPDataError,
-                          self.server.newnews, "comp.lang.python", dt)
+        self.assertRaises(
+            nntplib.NNTPDataError, self.server.newnews, "comp.lang.python", dt
+        )
 
 
 class NNTPv1Tests(NNTPv1v2TestsMixin, MockedNNTPTestsMixin, unittest.TestCase):
@@ -1280,19 +1371,28 @@ class NNTPv2Tests(NNTPv1v2TestsMixin, MockedNNTPTestsMixin, unittest.TestCase):
 
     def test_caps(self):
         caps = self.server.getcapabilities()
-        self.assertEqual(caps, {
-            'VERSION': ['2', '3'],
-            'IMPLEMENTATION': ['INN', '2.5.1'],
-            'AUTHINFO': ['USER'],
-            'HDR': [],
-            'LIST': ['ACTIVE', 'ACTIVE.TIMES', 'DISTRIB.PATS',
-                     'HEADERS', 'NEWSGROUPS', 'OVERVIEW.FMT'],
-            'OVER': [],
-            'POST': [],
-            'READER': [],
-            })
+        self.assertEqual(
+            caps,
+            {
+                "VERSION": ["2", "3"],
+                "IMPLEMENTATION": ["INN", "2.5.1"],
+                "AUTHINFO": ["USER"],
+                "HDR": [],
+                "LIST": [
+                    "ACTIVE",
+                    "ACTIVE.TIMES",
+                    "DISTRIB.PATS",
+                    "HEADERS",
+                    "NEWSGROUPS",
+                    "OVERVIEW.FMT",
+                ],
+                "OVER": [],
+                "POST": [],
+                "READER": [],
+            },
+        )
         self.assertEqual(self.server.nntp_version, 3)
-        self.assertEqual(self.server.nntp_implementation, 'INN 2.5.1')
+        self.assertEqual(self.server.nntp_implementation, "INN 2.5.1")
 
 
 class CapsAfterLoginNNTPv2Tests(MockedNNTPTestsMixin, unittest.TestCase):
@@ -1303,12 +1403,11 @@ class CapsAfterLoginNNTPv2Tests(MockedNNTPTestsMixin, unittest.TestCase):
 
     def test_caps_only_after_login(self):
         self.assertEqual(self.server._caps, {})
-        self.server.login('testuser', 'testpw')
-        self.assertIn('VERSION', self.server._caps)
+        self.server.login("testuser", "testpw")
+        self.assertIn("VERSION", self.server._caps)
 
 
-class SendReaderNNTPv2Tests(MockedNNTPWithReaderModeMixin,
-        unittest.TestCase):
+class SendReaderNNTPv2Tests(MockedNNTPWithReaderModeMixin, unittest.TestCase):
     """Same tests as for v2 but we tell NTTP to send MODE READER to a server
     that isn't in READER mode by default."""
 
@@ -1316,7 +1415,7 @@ class SendReaderNNTPv2Tests(MockedNNTPWithReaderModeMixin,
     handler_class = ModeSwitchingNNTPv2Handler
 
     def test_we_are_in_reader_mode_after_connect(self):
-        self.assertIn('READER', self.server._caps)
+        self.assertIn("READER", self.server._caps)
 
 
 class MiscTests(unittest.TestCase):
@@ -1324,109 +1423,196 @@ class MiscTests(unittest.TestCase):
     def test_decode_header(self):
         def gives(a, b):
             self.assertEqual(nntplib.decode_header(a), b)
-        gives("" , "")
+
+        gives("", "")
         gives("a plain header", "a plain header")
         gives(" with extra  spaces ", " with extra  spaces ")
         gives("=?ISO-8859-15?Q?D=E9buter_en_Python?=", "Débuter en Python")
-        gives("=?utf-8?q?Re=3A_=5Bsqlite=5D_probl=C3=A8me_avec_ORDER_BY_sur_des_cha?="
-              " =?utf-8?q?=C3=AEnes_de_caract=C3=A8res_accentu=C3=A9es?=",
-              "Re: [sqlite] problème avec ORDER BY sur des chaînes de caractères accentuées")
-        gives("Re: =?UTF-8?B?cHJvYmzDqG1lIGRlIG1hdHJpY2U=?=",
-              "Re: problème de matrice")
+        gives(
+            "=?utf-8?q?Re=3A_=5Bsqlite=5D_probl=C3=A8me_avec_ORDER_BY_sur_des_cha?="
+            " =?utf-8?q?=C3=AEnes_de_caract=C3=A8res_accentu=C3=A9es?=",
+            "Re: [sqlite] problème avec ORDER BY sur des chaînes de caractères accentuées",
+        )
+        gives("Re: =?UTF-8?B?cHJvYmzDqG1lIGRlIG1hdHJpY2U=?=", "Re: problème de matrice")
         # A natively utf-8 header (found in the real world!)
-        gives("Re: Message d'erreur incompréhensible (par moi)",
-              "Re: Message d'erreur incompréhensible (par moi)")
+        gives(
+            "Re: Message d'erreur incompréhensible (par moi)",
+            "Re: Message d'erreur incompréhensible (par moi)",
+        )
 
     def test_parse_overview_fmt(self):
         # The minimal (default) response
-        lines = ["Subject:", "From:", "Date:", "Message-ID:",
-                 "References:", ":bytes", ":lines"]
-        self.assertEqual(nntplib._parse_overview_fmt(lines),
-            ["subject", "from", "date", "message-id", "references",
-             ":bytes", ":lines"])
+        lines = [
+            "Subject:",
+            "From:",
+            "Date:",
+            "Message-ID:",
+            "References:",
+            ":bytes",
+            ":lines",
+        ]
+        self.assertEqual(
+            nntplib._parse_overview_fmt(lines),
+            ["subject", "from", "date", "message-id", "references", ":bytes", ":lines"],
+        )
         # The minimal response using alternative names
-        lines = ["Subject:", "From:", "Date:", "Message-ID:",
-                 "References:", "Bytes:", "Lines:"]
-        self.assertEqual(nntplib._parse_overview_fmt(lines),
-            ["subject", "from", "date", "message-id", "references",
-             ":bytes", ":lines"])
+        lines = [
+            "Subject:",
+            "From:",
+            "Date:",
+            "Message-ID:",
+            "References:",
+            "Bytes:",
+            "Lines:",
+        ]
+        self.assertEqual(
+            nntplib._parse_overview_fmt(lines),
+            ["subject", "from", "date", "message-id", "references", ":bytes", ":lines"],
+        )
         # Variations in casing
-        lines = ["subject:", "FROM:", "DaTe:", "message-ID:",
-                 "References:", "BYTES:", "Lines:"]
-        self.assertEqual(nntplib._parse_overview_fmt(lines),
-            ["subject", "from", "date", "message-id", "references",
-             ":bytes", ":lines"])
+        lines = [
+            "subject:",
+            "FROM:",
+            "DaTe:",
+            "message-ID:",
+            "References:",
+            "BYTES:",
+            "Lines:",
+        ]
+        self.assertEqual(
+            nntplib._parse_overview_fmt(lines),
+            ["subject", "from", "date", "message-id", "references", ":bytes", ":lines"],
+        )
         # First example from RFC 3977
-        lines = ["Subject:", "From:", "Date:", "Message-ID:",
-                 "References:", ":bytes", ":lines", "Xref:full",
-                 "Distribution:full"]
-        self.assertEqual(nntplib._parse_overview_fmt(lines),
-            ["subject", "from", "date", "message-id", "references",
-             ":bytes", ":lines", "xref", "distribution"])
+        lines = [
+            "Subject:",
+            "From:",
+            "Date:",
+            "Message-ID:",
+            "References:",
+            ":bytes",
+            ":lines",
+            "Xref:full",
+            "Distribution:full",
+        ]
+        self.assertEqual(
+            nntplib._parse_overview_fmt(lines),
+            [
+                "subject",
+                "from",
+                "date",
+                "message-id",
+                "references",
+                ":bytes",
+                ":lines",
+                "xref",
+                "distribution",
+            ],
+        )
         # Second example from RFC 3977
-        lines = ["Subject:", "From:", "Date:", "Message-ID:",
-                 "References:", "Bytes:", "Lines:", "Xref:FULL",
-                 "Distribution:FULL"]
-        self.assertEqual(nntplib._parse_overview_fmt(lines),
-            ["subject", "from", "date", "message-id", "references",
-             ":bytes", ":lines", "xref", "distribution"])
+        lines = [
+            "Subject:",
+            "From:",
+            "Date:",
+            "Message-ID:",
+            "References:",
+            "Bytes:",
+            "Lines:",
+            "Xref:FULL",
+            "Distribution:FULL",
+        ]
+        self.assertEqual(
+            nntplib._parse_overview_fmt(lines),
+            [
+                "subject",
+                "from",
+                "date",
+                "message-id",
+                "references",
+                ":bytes",
+                ":lines",
+                "xref",
+                "distribution",
+            ],
+        )
         # A classic response from INN
-        lines = ["Subject:", "From:", "Date:", "Message-ID:",
-                 "References:", "Bytes:", "Lines:", "Xref:full"]
-        self.assertEqual(nntplib._parse_overview_fmt(lines),
-            ["subject", "from", "date", "message-id", "references",
-             ":bytes", ":lines", "xref"])
+        lines = [
+            "Subject:",
+            "From:",
+            "Date:",
+            "Message-ID:",
+            "References:",
+            "Bytes:",
+            "Lines:",
+            "Xref:full",
+        ]
+        self.assertEqual(
+            nntplib._parse_overview_fmt(lines),
+            [
+                "subject",
+                "from",
+                "date",
+                "message-id",
+                "references",
+                ":bytes",
+                ":lines",
+                "xref",
+            ],
+        )
 
     def test_parse_overview(self):
         fmt = nntplib._DEFAULT_OVERVIEW_FMT + ["xref"]
         # First example from RFC 3977
         lines = [
             '3000234\tI am just a test article\t"Demo User" '
-            '<nobody@example.com>\t6 Oct 1998 04:38:40 -0500\t'
-            '<45223423@example.com>\t<45454@example.net>\t1234\t'
-            '17\tXref: news.example.com misc.test:3000363',
+            "<nobody@example.com>\t6 Oct 1998 04:38:40 -0500\t"
+            "<45223423@example.com>\t<45454@example.net>\t1234\t"
+            "17\tXref: news.example.com misc.test:3000363",
         ]
         overview = nntplib._parse_overview(lines, fmt)
-        (art_num, fields), = overview
+        ((art_num, fields),) = overview
         self.assertEqual(art_num, 3000234)
-        self.assertEqual(fields, {
-            'subject': 'I am just a test article',
-            'from': '"Demo User" <nobody@example.com>',
-            'date': '6 Oct 1998 04:38:40 -0500',
-            'message-id': '<45223423@example.com>',
-            'references': '<45454@example.net>',
-            ':bytes': '1234',
-            ':lines': '17',
-            'xref': 'news.example.com misc.test:3000363',
-        })
+        self.assertEqual(
+            fields,
+            {
+                "subject": "I am just a test article",
+                "from": '"Demo User" <nobody@example.com>',
+                "date": "6 Oct 1998 04:38:40 -0500",
+                "message-id": "<45223423@example.com>",
+                "references": "<45454@example.net>",
+                ":bytes": "1234",
+                ":lines": "17",
+                "xref": "news.example.com misc.test:3000363",
+            },
+        )
         # Second example; here the "Xref" field is totally absent (including
         # the header name) and comes out as None
         lines = [
             '3000234\tI am just a test article\t"Demo User" '
-            '<nobody@example.com>\t6 Oct 1998 04:38:40 -0500\t'
-            '<45223423@example.com>\t<45454@example.net>\t1234\t'
-            '17\t\t',
+            "<nobody@example.com>\t6 Oct 1998 04:38:40 -0500\t"
+            "<45223423@example.com>\t<45454@example.net>\t1234\t"
+            "17\t\t",
         ]
         overview = nntplib._parse_overview(lines, fmt)
-        (art_num, fields), = overview
-        self.assertEqual(fields['xref'], None)
+        ((art_num, fields),) = overview
+        self.assertEqual(fields["xref"], None)
         # Third example; the "Xref" is an empty string, while "references"
         # is a single space.
         lines = [
             '3000234\tI am just a test article\t"Demo User" '
-            '<nobody@example.com>\t6 Oct 1998 04:38:40 -0500\t'
-            '<45223423@example.com>\t \t1234\t'
-            '17\tXref: \t',
+            "<nobody@example.com>\t6 Oct 1998 04:38:40 -0500\t"
+            "<45223423@example.com>\t \t1234\t"
+            "17\tXref: \t",
         ]
         overview = nntplib._parse_overview(lines, fmt)
-        (art_num, fields), = overview
-        self.assertEqual(fields['references'], ' ')
-        self.assertEqual(fields['xref'], '')
+        ((art_num, fields),) = overview
+        self.assertEqual(fields["references"], " ")
+        self.assertEqual(fields["xref"], "")
 
     def test_parse_datetime(self):
         def gives(a, b, *c):
-            self.assertEqual(nntplib._parse_datetime(a, b),
-                             datetime.datetime(*c))
+            self.assertEqual(nntplib._parse_datetime(a, b), datetime.datetime(*c))
+
         # Output of DATE command
         gives("19990623135624", None, 1999, 6, 23, 13, 56, 24)
         # Variations
@@ -1439,20 +1625,19 @@ class MiscTests(unittest.TestCase):
         # 1) with a datetime
         def gives(y, M, d, h, m, s, date_str, time_str):
             dt = datetime.datetime(y, M, d, h, m, s)
-            self.assertEqual(nntplib._unparse_datetime(dt),
-                             (date_str, time_str))
-            self.assertEqual(nntplib._unparse_datetime(dt, False),
-                             (date_str, time_str))
+            self.assertEqual(nntplib._unparse_datetime(dt), (date_str, time_str))
+            self.assertEqual(nntplib._unparse_datetime(dt, False), (date_str, time_str))
+
         gives(1999, 6, 23, 13, 56, 24, "19990623", "135624")
         gives(2000, 6, 23, 13, 56, 24, "20000623", "135624")
         gives(2010, 6, 5, 1, 2, 3, "20100605", "010203")
+
         # 2) with a date
         def gives(y, M, d, date_str, time_str):
             dt = datetime.date(y, M, d)
-            self.assertEqual(nntplib._unparse_datetime(dt),
-                             (date_str, time_str))
-            self.assertEqual(nntplib._unparse_datetime(dt, False),
-                             (date_str, time_str))
+            self.assertEqual(nntplib._unparse_datetime(dt), (date_str, time_str))
+            self.assertEqual(nntplib._unparse_datetime(dt, False), (date_str, time_str))
+
         gives(1999, 6, 23, "19990623", "000000")
         gives(2000, 6, 23, "20000623", "000000")
         gives(2010, 6, 5, "20100605", "000000")
@@ -1462,36 +1647,45 @@ class MiscTests(unittest.TestCase):
         # 1) with a datetime
         def gives(y, M, d, h, m, s, date_str, time_str):
             dt = datetime.datetime(y, M, d, h, m, s)
-            self.assertEqual(nntplib._unparse_datetime(dt, True),
-                             (date_str, time_str))
+            self.assertEqual(nntplib._unparse_datetime(dt, True), (date_str, time_str))
+
         gives(1999, 6, 23, 13, 56, 24, "990623", "135624")
         gives(2000, 6, 23, 13, 56, 24, "000623", "135624")
         gives(2010, 6, 5, 1, 2, 3, "100605", "010203")
+
         # 2) with a date
         def gives(y, M, d, date_str, time_str):
             dt = datetime.date(y, M, d)
-            self.assertEqual(nntplib._unparse_datetime(dt, True),
-                             (date_str, time_str))
+            self.assertEqual(nntplib._unparse_datetime(dt, True), (date_str, time_str))
+
         gives(1999, 6, 23, "990623", "000000")
         gives(2000, 6, 23, "000623", "000000")
         gives(2010, 6, 5, "100605", "000000")
 
-    @unittest.skipUnless(ssl, 'requires SSL support')
+    @unittest.skipUnless(ssl, "requires SSL support")
     def test_ssl_support(self):
-        self.assertTrue(hasattr(nntplib, 'NNTP_SSL'))
+        self.assertTrue(hasattr(nntplib, "NNTP_SSL"))
 
 
 class PublicAPITests(unittest.TestCase):
     """Ensures that the correct values are exposed in the public API."""
 
     def test_module_all_attribute(self):
-        self.assertTrue(hasattr(nntplib, '__all__'))
-        target_api = ['NNTP', 'NNTPError', 'NNTPReplyError',
-                      'NNTPTemporaryError', 'NNTPPermanentError',
-                      'NNTPProtocolError', 'NNTPDataError', 'decode_header']
+        self.assertTrue(hasattr(nntplib, "__all__"))
+        target_api = [
+            "NNTP",
+            "NNTPError",
+            "NNTPReplyError",
+            "NNTPTemporaryError",
+            "NNTPPermanentError",
+            "NNTPProtocolError",
+            "NNTPDataError",
+            "decode_header",
+        ]
         if ssl is not None:
-            target_api.append('NNTP_SSL')
+            target_api.append("NNTP_SSL")
         self.assertEqual(set(nntplib.__all__), set(target_api))
+
 
 class MockSocketTests(unittest.TestCase):
     """Tests involving a mock socket object
@@ -1501,9 +1695,13 @@ class MockSocketTests(unittest.TestCase):
     nntp_class = nntplib.NNTP
 
     def check_constructor_error_conditions(
-            self, handler_class,
-            expected_error_type, expected_error_msg,
-            login=None, password=None):
+        self,
+        handler_class,
+        expected_error_type,
+        expected_error_msg,
+        login=None,
+        password=None,
+    ):
 
         class mock_socket_module:
             def create_connection(address, timeout):
@@ -1522,61 +1720,75 @@ class MockSocketTests(unittest.TestCase):
 
         socket_closed = False
         files = []
-        with patch('nntplib.socket', mock_socket_module), \
-             self.assertRaisesRegex(expected_error_type, expected_error_msg):
-            self.nntp_class('dummy', user=login, password=password)
+        with patch("nntplib.socket", mock_socket_module), self.assertRaisesRegex(
+            expected_error_type, expected_error_msg
+        ):
+            self.nntp_class("dummy", user=login, password=password)
         self.assertTrue(socket_closed)
         for f in files:
             self.assertTrue(f.closed)
 
     def test_bad_welcome(self):
-        #Test a bad welcome message
+        # Test a bad welcome message
         class Handler(NNTPv1Handler):
-            welcome = 'Bad Welcome'
+            welcome = "Bad Welcome"
+
         self.check_constructor_error_conditions(
-            Handler, nntplib.NNTPProtocolError, Handler.welcome)
+            Handler, nntplib.NNTPProtocolError, Handler.welcome
+        )
 
     def test_service_temporarily_unavailable(self):
-        #Test service temporarily unavailable
+        # Test service temporarily unavailable
         class Handler(NNTPv1Handler):
-            welcome = '400 Service temporarily unavailable'
+            welcome = "400 Service temporarily unavailable"
+
         self.check_constructor_error_conditions(
-            Handler, nntplib.NNTPTemporaryError, Handler.welcome)
+            Handler, nntplib.NNTPTemporaryError, Handler.welcome
+        )
 
     def test_service_permanently_unavailable(self):
-        #Test service permanently unavailable
+        # Test service permanently unavailable
         class Handler(NNTPv1Handler):
-            welcome = '502 Service permanently unavailable'
+            welcome = "502 Service permanently unavailable"
+
         self.check_constructor_error_conditions(
-            Handler, nntplib.NNTPPermanentError, Handler.welcome)
+            Handler, nntplib.NNTPPermanentError, Handler.welcome
+        )
 
     def test_bad_capabilities(self):
-        #Test a bad capabilities response
+        # Test a bad capabilities response
         class Handler(NNTPv1Handler):
             def handle_CAPABILITIES(self):
                 self.push_lit(capabilities_response)
-        capabilities_response = '201 bad capability'
+
+        capabilities_response = "201 bad capability"
         self.check_constructor_error_conditions(
-            Handler, nntplib.NNTPReplyError, capabilities_response)
+            Handler, nntplib.NNTPReplyError, capabilities_response
+        )
 
     def test_login_aborted(self):
-        #Test a bad authinfo response
-        login = 't@e.com'
-        password = 'python'
+        # Test a bad authinfo response
+        login = "t@e.com"
+        password = "python"
+
         class Handler(NNTPv1Handler):
             def handle_AUTHINFO(self, *args):
                 self.push_lit(authinfo_response)
-        authinfo_response = '503 Mechanism not recognized'
+
+        authinfo_response = "503 Mechanism not recognized"
         self.check_constructor_error_conditions(
-            Handler, nntplib.NNTPPermanentError, authinfo_response,
-            login, password)
+            Handler, nntplib.NNTPPermanentError, authinfo_response, login, password
+        )
+
 
 class bypass_context:
     """Bypass encryption and actual SSL module"""
+
     def wrap_socket(sock, **args):
         return sock
 
-@unittest.skipUnless(ssl, 'requires SSL support')
+
+@unittest.skipUnless(ssl, "requires SSL support")
 class MockSslTests(MockSocketTests):
     @staticmethod
     def nntp_class(*pos, **kw):
@@ -1588,8 +1800,7 @@ class LocalServerTests(unittest.TestCase):
         sock = socket.socket()
         port = socket_helper.bind_port(sock)
         sock.listen()
-        self.background = threading.Thread(
-            target=self.run_server, args=(sock,))
+        self.background = threading.Thread(target=self.run_server, args=(sock,))
         self.background.start()
         self.addCleanup(self.background.join)
 
@@ -1601,33 +1812,32 @@ class LocalServerTests(unittest.TestCase):
             [client, _] = sock.accept()
         with contextlib.ExitStack() as cleanup:
             cleanup.enter_context(client)
-            reader = cleanup.enter_context(client.makefile('rb'))
-            client.sendall(b'200 Server ready\r\n')
+            reader = cleanup.enter_context(client.makefile("rb"))
+            client.sendall(b"200 Server ready\r\n")
             while True:
                 cmd = reader.readline()
-                if cmd == b'CAPABILITIES\r\n':
+                if cmd == b"CAPABILITIES\r\n":
                     client.sendall(
-                        b'101 Capability list:\r\n'
-                        b'VERSION 2\r\n'
-                        b'STARTTLS\r\n'
-                        b'.\r\n'
+                        b"101 Capability list:\r\n"
+                        b"VERSION 2\r\n"
+                        b"STARTTLS\r\n"
+                        b".\r\n"
                     )
-                elif cmd == b'STARTTLS\r\n':
+                elif cmd == b"STARTTLS\r\n":
                     reader.close()
-                    client.sendall(b'382 Begin TLS negotiation now\r\n')
+                    client.sendall(b"382 Begin TLS negotiation now\r\n")
                     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
                     context.load_cert_chain(certfile)
-                    client = context.wrap_socket(
-                        client, server_side=True)
+                    client = context.wrap_socket(client, server_side=True)
                     cleanup.enter_context(client)
-                    reader = cleanup.enter_context(client.makefile('rb'))
-                elif cmd == b'QUIT\r\n':
-                    client.sendall(b'205 Bye!\r\n')
+                    reader = cleanup.enter_context(client.makefile("rb"))
+                elif cmd == b"QUIT\r\n":
+                    client.sendall(b"205 Bye!\r\n")
                     break
                 else:
-                    raise ValueError('Unexpected command {!r}'.format(cmd))
+                    raise ValueError("Unexpected command {!r}".format(cmd))
 
-    @unittest.skipUnless(ssl, 'requires SSL support')
+    @unittest.skipUnless(ssl, "requires SSL support")
     def test_starttls(self):
         file = self.nntp.file
         sock = self.nntp.sock

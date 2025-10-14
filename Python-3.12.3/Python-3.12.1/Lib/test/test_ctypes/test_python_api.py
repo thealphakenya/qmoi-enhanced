@@ -11,6 +11,7 @@ from _ctypes import PyObj_FromPtr
 
 from sys import getrefcount as grc
 
+
 class PythonAPITestCase(unittest.TestCase):
 
     def test_PyBytes_FromStringAndSize(self):
@@ -71,7 +72,9 @@ class PythonAPITestCase(unittest.TestCase):
         PyOS_snprintf(buf, sizeof(buf), b"Hello from %s", b"ctypes")
         self.assertEqual(buf.value, b"Hello from ctypes")
 
-        PyOS_snprintf(buf, sizeof(buf), b"Hello from %s (%d, %d, %d)", b"ctypes", 1, 2, 3)
+        PyOS_snprintf(
+            buf, sizeof(buf), b"Hello from %s (%d, %d, %d)", b"ctypes", 1, 2, 3
+        )
         self.assertEqual(buf.value, b"Hello from ctypes (1, 2, 3)")
 
         # not enough arguments
@@ -81,6 +84,7 @@ class PythonAPITestCase(unittest.TestCase):
         self.assertEqual(repr(py_object()), "py_object(<NULL>)")
         self.assertEqual(repr(py_object(42)), "py_object(42)")
         self.assertEqual(repr(py_object(object)), "py_object(%r)" % object)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -73,7 +73,9 @@ def generate_python_code(
 argparser = argparse.ArgumentParser(
     prog="pegen", description="Experimental PEG-like parser generator"
 )
-argparser.add_argument("-q", "--quiet", action="store_true", help="Don't print the parsed grammar")
+argparser.add_argument(
+    "-q", "--quiet", action="store_true", help="Don't print the parsed grammar"
+)
 argparser.add_argument(
     "-v",
     "--verbose",
@@ -88,7 +90,11 @@ c_parser.set_defaults(func=generate_c_code)
 c_parser.add_argument("grammar_filename", help="Grammar description")
 c_parser.add_argument("tokens_filename", help="Tokens description")
 c_parser.add_argument(
-    "-o", "--output", metavar="OUT", default="parse.c", help="Where to write the generated parser"
+    "-o",
+    "--output",
+    metavar="OUT",
+    default="parse.c",
+    help="Where to write the generated parser",
 )
 c_parser.add_argument(
     "--compile-extension",

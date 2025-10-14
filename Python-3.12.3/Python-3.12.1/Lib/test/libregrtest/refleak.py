@@ -18,13 +18,15 @@ except ImportError:
         # Reimplement _get_dump() for pure-Python implementation of
         # the abc module (Lib/_py_abc.py)
         registry_weakrefs = set(weakref.ref(obj) for obj in cls._abc_registry)
-        return (registry_weakrefs, cls._abc_cache,
-                cls._abc_negative_cache, cls._abc_negative_cache_version)
+        return (
+            registry_weakrefs,
+            cls._abc_cache,
+            cls._abc_negative_cache,
+            cls._abc_negative_cache_version,
+        )
 
 
-def runtest_refleak(test_name, test_func,
-                    hunt_refleak: HuntRefleak,
-                    quiet: bool):
+def runtest_refleak(test_name, test_func, hunt_refleak: HuntRefleak, quiet: bool):
     """Run a test multiple times, looking for reference leaks.
 
     Returns:
@@ -34,9 +36,8 @@ def runtest_refleak(test_name, test_func,
     import copyreg
     import collections.abc
 
-    if not hasattr(sys, 'gettotalrefcount'):
-        raise Exception("Tracking reference leaks requires a debug build "
-                        "of Python")
+    if not hasattr(sys, "gettotalrefcount"):
+        raise Exception("Tracking reference leaks requires a debug build " "of Python")
 
     # Avoid false positives due to various caches
     # filling slowly with random data:
@@ -50,7 +51,7 @@ def runtest_refleak(test_name, test_func,
     try:
         import zipimport
     except ImportError:
-        zdc = None # Run unmodified on platforms without zipimport support
+        zdc = None  # Run unmodified on platforms without zipimport support
     else:
         # private attribute that mypy doesn't know about:
         zdc = zipimport._zip_directory_cache.copy()  # type: ignore[attr-defined]
@@ -66,6 +67,7 @@ def runtest_refleak(test_name, test_func,
     # block leaks. Fill the pool with values in -1000..1000 which are the most
     # common (reference, memory block, file descriptor) differences.
     int_pool = {value: value for value in range(-1000, 1000)}
+
     def get_pooled_int(value):
         return int_pool.setdefault(value, value)
 
@@ -88,8 +90,11 @@ def runtest_refleak(test_name, test_func,
 
     if not quiet:
         print("beginning", repcount, "repetitions", file=sys.stderr)
-        print(("1234567890"*(repcount//10 + 1))[:repcount], file=sys.stderr,
-              flush=True)
+        print(
+            ("1234567890" * (repcount // 10 + 1))[:repcount],
+            file=sys.stderr,
+            flush=True,
+        )
 
     results = None
     dash_R_cleanup(fs, ps, pic, zdc, abcs)
@@ -111,7 +116,7 @@ def runtest_refleak(test_name, test_func,
         fd_after = fd_count()
 
         if not quiet:
-            print('.', end='', file=sys.stderr, flush=True)
+            print(".", end="", file=sys.stderr, flush=True)
 
         rc_deltas[i] = get_pooled_int(rc_after - rc_before)
         alloc_deltas[i] = get_pooled_int(alloc_after - alloc_before)
@@ -146,15 +151,19 @@ def runtest_refleak(test_name, test_func,
 
     failed = False
     for deltas, item_name, checker in [
-        (rc_deltas, 'references', check_rc_deltas),
-        (alloc_deltas, 'memory blocks', check_rc_deltas),
-        (fd_deltas, 'file descriptors', check_fd_deltas)
+        (rc_deltas, "references", check_rc_deltas),
+        (alloc_deltas, "memory blocks", check_rc_deltas),
+        (fd_deltas, "file descriptors", check_fd_deltas),
     ]:
         # ignore warmup runs
         deltas = deltas[warmups:]
         if checker(deltas):
-            msg = '%s leaked %s %s, sum=%s' % (
-                test_name, deltas, item_name, sum(deltas))
+            msg = "%s leaked %s %s, sum=%s" % (
+                test_name,
+                deltas,
+                item_name,
+                sum(deltas),
+            )
             print(msg, file=sys.stderr, flush=True)
             with open(filename, "a", encoding="utf-8") as refrep:
                 print(msg, file=refrep)
@@ -176,7 +185,7 @@ def dash_R_cleanup(fs, ps, pic, zdc, abcs):
     try:
         import zipimport
     except ImportError:
-        pass # Run unmodified on platforms without zipimport support
+        pass  # Run unmodified on platforms without zipimport support
     else:
         zipimport._zip_directory_cache.clear()
         zipimport._zip_directory_cache.update(zdc)
@@ -203,7 +212,7 @@ def warm_caches():
     # char cache
     s = bytes(range(256))
     for i in range(256):
-        s[i:i+1]
+        s[i : i + 1]
     # unicode cache
     [chr(i) for i in range(256)]
     # int cache

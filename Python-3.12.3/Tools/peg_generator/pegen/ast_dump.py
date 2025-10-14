@@ -61,7 +61,10 @@ def ast_dump(
         elif isinstance(node, list):
             if not node:
                 return "[]", True
-            return "[%s%s]" % (prefix, sep.join(_format(x, level)[0] for x in node)), False
+            return (
+                "[%s%s]" % (prefix, sep.join(_format(x, level)[0] for x in node)),
+                False,
+            )
         return repr(node), True
 
     if all(cls.__name__ != "AST" for cls in node.__class__.__mro__):

@@ -40,7 +40,7 @@ class CollationTests(unittest.TestCase):
         con = sqlite.connect(":memory:")
         with self.assertRaises(TypeError) as cm:
             con.create_collation("X", 42)
-        self.assertEqual(str(cm.exception), 'parameter must be callable')
+        self.assertEqual(str(cm.exception), "parameter must be callable")
 
     def test_create_collation_not_ascii(self):
         con = sqlite.connect(":memory:")
@@ -50,18 +50,21 @@ class CollationTests(unittest.TestCase):
         class BadUpperStr(str):
             def upper(self):
                 return None
+
         con = sqlite.connect(":memory:")
         mycoll = lambda x, y: -((x > y) - (x < y))
         con.create_collation(BadUpperStr("mycoll"), mycoll)
-        result = con.execute("""
+        result = con.execute(
+            """
             select x from (
             select 'a' as x
             union
             select 'b' as x
             ) order by x collate mycoll
-            """).fetchall()
-        self.assertEqual(result[0][0], 'b')
-        self.assertEqual(result[1][0], 'a')
+            """
+        ).fetchall()
+        self.assertEqual(result[0][0], "b")
+        self.assertEqual(result[1][0], "a")
 
     def test_collation_is_used(self):
         def mycoll(x, y):
@@ -80,18 +83,20 @@ class CollationTests(unittest.TestCase):
             ) order by x collate mycoll
             """
         result = con.execute(sql).fetchall()
-        self.assertEqual(result, [('c',), ('b',), ('a',)],
-                         msg='the expected order was not returned')
+        self.assertEqual(
+            result, [("c",), ("b",), ("a",)], msg="the expected order was not returned"
+        )
 
         con.create_collation("mycoll", None)
         with self.assertRaises(sqlite.OperationalError) as cm:
             result = con.execute(sql).fetchall()
-        self.assertEqual(str(cm.exception), 'no such collation sequence: mycoll')
+        self.assertEqual(str(cm.exception), "no such collation sequence: mycoll")
 
     def test_collation_returns_large_integer(self):
         def mycoll(x, y):
             # reverse order
             return -((x > y) - (x < y)) * 2**32
+
         con = sqlite.connect(":memory:")
         con.create_collation("mycoll", mycoll)
         sql = """
@@ -104,8 +109,9 @@ class CollationTests(unittest.TestCase):
             ) order by x collate mycoll
             """
         result = con.execute(sql).fetchall()
-        self.assertEqual(result, [('c',), ('b',), ('a',)],
-                         msg="the expected order was not returned")
+        self.assertEqual(
+            result, [("c",), ("b",), ("a",)], msg="the expected order was not returned"
+        )
 
     def test_collation_register_twice(self):
         """
@@ -115,11 +121,13 @@ class CollationTests(unittest.TestCase):
         con = sqlite.connect(":memory:")
         con.create_collation("mycoll", lambda x, y: (x > y) - (x < y))
         con.create_collation("mycoll", lambda x, y: -((x > y) - (x < y)))
-        result = con.execute("""
+        result = con.execute(
+            """
             select x from (select 'a' as x union select 'b' as x) order by x collate mycoll
-            """).fetchall()
-        self.assertEqual(result[0][0], 'b')
-        self.assertEqual(result[1][0], 'a')
+            """
+        ).fetchall()
+        self.assertEqual(result[0][0], "b")
+        self.assertEqual(result[1][0], "a")
 
     def test_deregister_collation(self):
         """
@@ -130,8 +138,11 @@ class CollationTests(unittest.TestCase):
         con.create_collation("mycoll", lambda x, y: (x > y) - (x < y))
         con.create_collation("mycoll", None)
         with self.assertRaises(sqlite.OperationalError) as cm:
-            con.execute("select 'a' as x union select 'b' as x order by x collate mycoll")
-        self.assertEqual(str(cm.exception), 'no such collation sequence: mycoll')
+            con.execute(
+                "select 'a' as x union select 'b' as x order by x collate mycoll"
+            )
+        self.assertEqual(str(cm.exception), "no such collation sequence: mycoll")
+
 
 class ProgressTests(unittest.TestCase):
     def test_progress_handler_used(self):
@@ -140,13 +151,17 @@ class ProgressTests(unittest.TestCase):
         """
         con = sqlite.connect(":memory:")
         progress_calls = []
+
         def progress():
             progress_calls.append(None)
             return 0
+
         con.set_progress_handler(progress, 1)
-        con.execute("""
+        con.execute(
+            """
             create table foo(a, b)
-            """)
+            """
+        )
         self.assertTrue(progress_calls)
 
     def test_opcode_count(self):
@@ -155,20 +170,26 @@ class ProgressTests(unittest.TestCase):
         """
         con = sqlite.connect(":memory:")
         progress_calls = []
+
         def progress():
             progress_calls.append(None)
             return 0
+
         con.set_progress_handler(progress, 1)
         curs = con.cursor()
-        curs.execute("""
+        curs.execute(
+            """
             create table foo (a, b)
-            """)
+            """
+        )
         first_count = len(progress_calls)
         progress_calls = []
         con.set_progress_handler(progress, 2)
-        curs.execute("""
+        curs.execute(
+            """
             create table bar (a, b)
-            """)
+            """
+        )
         second_count = len(progress_calls)
         self.assertGreaterEqual(first_count, second_count)
 
@@ -177,14 +198,15 @@ class ProgressTests(unittest.TestCase):
         Test that returning a non-zero value stops the operation in progress.
         """
         con = sqlite.connect(":memory:")
+
         def progress():
             return 1
+
         con.set_progress_handler(progress, 1)
         curs = con.cursor()
         self.assertRaises(
-            sqlite.OperationalError,
-            curs.execute,
-            "create table bar (a, b)")
+            sqlite.OperationalError, curs.execute, "create table bar (a, b)"
+        )
 
     def test_clear_handler(self):
         """
@@ -192,10 +214,12 @@ class ProgressTests(unittest.TestCase):
         """
         con = sqlite.connect(":memory:")
         action = 0
+
         def progress():
             nonlocal action
             action = 1
             return 0
+
         con.set_progress_handler(progress, 1)
         con.set_progress_handler(None, 1)
         con.execute("select 1 union select 2 union select 3").fetchall()
@@ -204,27 +228,36 @@ class ProgressTests(unittest.TestCase):
     @with_tracebacks(ZeroDivisionError, name="bad_progress")
     def test_error_in_progress_handler(self):
         con = sqlite.connect(":memory:")
+
         def bad_progress():
             1 / 0
+
         con.set_progress_handler(bad_progress, 1)
         with self.assertRaises(sqlite.OperationalError):
-            con.execute("""
+            con.execute(
+                """
                 create table foo(a, b)
-                """)
+                """
+            )
 
     @with_tracebacks(ZeroDivisionError, name="bad_progress")
     def test_error_in_progress_handler_result(self):
         con = sqlite.connect(":memory:")
+
         class BadBool:
             def __bool__(self):
                 1 / 0
+
         def bad_progress():
             return BadBool()
+
         con.set_progress_handler(bad_progress, 1)
         with self.assertRaises(sqlite.OperationalError):
-            con.execute("""
+            con.execute(
+                """
                 create table foo(a, b)
-                """)
+                """
+            )
 
 
 class TraceCallbackTests(unittest.TestCase):
@@ -244,8 +277,10 @@ class TraceCallbackTests(unittest.TestCase):
         """
         con = sqlite.connect(":memory:")
         traced_statements = []
+
         def trace(statement):
             traced_statements.append(statement)
+
         con.set_trace_callback(trace)
         con.execute("create table foo(a, b)")
         self.assertTrue(traced_statements)
@@ -257,8 +292,10 @@ class TraceCallbackTests(unittest.TestCase):
         """
         con = sqlite.connect(":memory:")
         traced_statements = []
+
         def trace(statement):
             traced_statements.append(statement)
+
         con.set_trace_callback(trace)
         con.set_trace_callback(None)
         con.execute("create table foo(a, b)")
@@ -268,27 +305,31 @@ class TraceCallbackTests(unittest.TestCase):
         """
         Test that the statement can contain unicode literals.
         """
-        unicode_value = '\xf6\xe4\xfc\xd6\xc4\xdc\xdf\u20ac'
+        unicode_value = "\xf6\xe4\xfc\xd6\xc4\xdc\xdf\u20ac"
         con = sqlite.connect(":memory:")
         traced_statements = []
+
         def trace(statement):
             traced_statements.append(statement)
+
         con.set_trace_callback(trace)
         con.execute("create table foo(x)")
         con.execute("insert into foo(x) values ('%s')" % unicode_value)
         con.commit()
-        self.assertTrue(any(unicode_value in stmt for stmt in traced_statements),
-                        "Unicode data %s garbled in trace callback: %s"
-                        % (ascii(unicode_value), ', '.join(map(ascii, traced_statements))))
+        self.assertTrue(
+            any(unicode_value in stmt for stmt in traced_statements),
+            "Unicode data %s garbled in trace callback: %s"
+            % (ascii(unicode_value), ", ".join(map(ascii, traced_statements))),
+        )
 
     def test_trace_callback_content(self):
         # set_trace_callback() shouldn't produce duplicate content (bpo-26187)
         traced_statements = []
+
         def trace(statement):
             traced_statements.append(statement)
 
-        queries = ["create table foo(x)",
-                   "insert into foo(x) values(1)"]
+        queries = ["create table foo(x)", "insert into foo(x) values(1)"]
         self.addCleanup(unlink, TESTFN)
         con1 = sqlite.connect(TESTFN, isolation_level=None)
         con2 = sqlite.connect(TESTFN)
@@ -318,8 +359,7 @@ class TraceCallbackTests(unittest.TestCase):
                 cx.executemany("insert into t values(?)", ((v,) for v in range(3)))
 
     @with_tracebacks(
-        sqlite.DataError,
-        regex="Expanded SQL string exceeds the maximum string length"
+        sqlite.DataError, regex="Expanded SQL string exceeds the maximum string length"
     )
     def test_trace_too_much_expanded_sql(self):
         # If the expanded string is too large, we'll fall back to the
@@ -346,7 +386,7 @@ class TraceCallbackTests(unittest.TestCase):
     @with_tracebacks(ZeroDivisionError, regex="division by zero")
     def test_trace_bad_handler(self):
         with memory_database() as cx:
-            cx.set_trace_callback(lambda stmt: 5/0)
+            cx.set_trace_callback(lambda stmt: 5 / 0)
             cx.execute("select 1")
 
 

@@ -12,11 +12,11 @@ with open(textfile) as fp:
 
 # me == the sender's email address
 # you == the recipient's email address
-msg['Subject'] = f'The contents of {textfile}'
-msg['From'] = me
-msg['To'] = you
+msg["Subject"] = f"The contents of {textfile}"
+msg["From"] = me
+msg["To"] = you
 
 # Send the message via our own SMTP server.
-s = smtplib.SMTP('localhost')
+s = smtplib.SMTP("localhost")
 s.send_message(msg)
 s.quit()

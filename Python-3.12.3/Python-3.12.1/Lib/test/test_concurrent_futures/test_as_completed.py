@@ -3,15 +3,20 @@ import time
 import unittest
 import weakref
 from concurrent import futures
-from concurrent.futures._base import (
-    CANCELLED_AND_NOTIFIED, FINISHED, Future)
+from concurrent.futures._base import CANCELLED_AND_NOTIFIED, FINISHED, Future
 
 from test import support
 
 from .util import (
-    PENDING_FUTURE, RUNNING_FUTURE,
-    CANCELLED_AND_NOTIFIED_FUTURE, EXCEPTION_FUTURE, SUCCESSFUL_FUTURE,
-    create_future, create_executor_tests, setup_module)
+    PENDING_FUTURE,
+    RUNNING_FUTURE,
+    CANCELLED_AND_NOTIFIED_FUTURE,
+    EXCEPTION_FUTURE,
+    SUCCESSFUL_FUTURE,
+    create_future,
+    create_executor_tests,
+    setup_module,
+)
 
 
 def mul(x, y):
@@ -23,24 +28,38 @@ class AsCompletedTests:
         future1 = self.executor.submit(mul, 2, 21)
         future2 = self.executor.submit(mul, 7, 6)
 
-        completed = set(futures.as_completed(
-                [CANCELLED_AND_NOTIFIED_FUTURE,
-                 EXCEPTION_FUTURE,
-                 SUCCESSFUL_FUTURE,
-                 future1, future2]))
-        self.assertEqual(set(
-                [CANCELLED_AND_NOTIFIED_FUTURE,
-                 EXCEPTION_FUTURE,
-                 SUCCESSFUL_FUTURE,
-                 future1, future2]),
-                completed)
+        completed = set(
+            futures.as_completed(
+                [
+                    CANCELLED_AND_NOTIFIED_FUTURE,
+                    EXCEPTION_FUTURE,
+                    SUCCESSFUL_FUTURE,
+                    future1,
+                    future2,
+                ]
+            )
+        )
+        self.assertEqual(
+            set(
+                [
+                    CANCELLED_AND_NOTIFIED_FUTURE,
+                    EXCEPTION_FUTURE,
+                    SUCCESSFUL_FUTURE,
+                    future1,
+                    future2,
+                ]
+            ),
+            completed,
+        )
 
     def test_future_times_out(self):
         """Test ``futures.as_completed`` timing out before
         completing it's final future."""
-        already_completed = {CANCELLED_AND_NOTIFIED_FUTURE,
-                             EXCEPTION_FUTURE,
-                             SUCCESSFUL_FUTURE}
+        already_completed = {
+            CANCELLED_AND_NOTIFIED_FUTURE,
+            EXCEPTION_FUTURE,
+            SUCCESSFUL_FUTURE,
+        }
 
         # Windows clock resolution is around 15.6 ms
         short_timeout = 0.100
@@ -52,8 +71,7 @@ class AsCompletedTests:
 
                 try:
                     for f in futures.as_completed(
-                        already_completed | {future},
-                        timeout
+                        already_completed | {future}, timeout
                     ):
                         completed_futures.add(f)
                 except futures.TimeoutError:
@@ -67,9 +85,7 @@ class AsCompletedTests:
         # duplicate responses.
         # Issue #31641: accept arbitrary iterables.
         future1 = self.executor.submit(time.sleep, 2)
-        completed = [
-            f for f in futures.as_completed(itertools.repeat(future1, 3))
-        ]
+        completed = [f for f in futures.as_completed(itertools.repeat(future1, 3))]
         self.assertEqual(len(completed), 1)
 
     def test_free_reference_yielded_future(self):
@@ -98,13 +114,17 @@ class AsCompletedTests:
                 futures_list[0].set_result("test")
 
     def test_correct_timeout_exception_msg(self):
-        futures_list = [CANCELLED_AND_NOTIFIED_FUTURE, PENDING_FUTURE,
-                        RUNNING_FUTURE, SUCCESSFUL_FUTURE]
+        futures_list = [
+            CANCELLED_AND_NOTIFIED_FUTURE,
+            PENDING_FUTURE,
+            RUNNING_FUTURE,
+            SUCCESSFUL_FUTURE,
+        ]
 
         with self.assertRaises(futures.TimeoutError) as cm:
             list(futures.as_completed(futures_list, timeout=0))
 
-        self.assertEqual(str(cm.exception), '2 (of 4) futures unfinished')
+        self.assertEqual(str(cm.exception), "2 (of 4) futures unfinished")
 
 
 create_executor_tests(globals(), AsCompletedTests)

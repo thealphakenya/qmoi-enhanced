@@ -9,25 +9,31 @@ from .setup import setup_process, setup_test_dir
 from .runtests import WorkerRunTests, JsonFile, JsonFileType
 from .single import run_single_test
 from .utils import (
-    StrPath, StrJSON, TestFilter,
-    get_temp_dir, get_work_dir, exit_timeout)
+    StrPath,
+    StrJSON,
+    TestFilter,
+    get_temp_dir,
+    get_work_dir,
+    exit_timeout,
+)
 
 
-USE_PROCESS_GROUP = (hasattr(os, "setsid") and hasattr(os, "killpg"))
+USE_PROCESS_GROUP = hasattr(os, "setsid") and hasattr(os, "killpg")
 
 
-def create_worker_process(runtests: WorkerRunTests, output_fd: int,
-                          tmp_dir: StrPath | None = None) -> subprocess.Popen:
+def create_worker_process(
+    runtests: WorkerRunTests, output_fd: int, tmp_dir: StrPath | None = None
+) -> subprocess.Popen:
     worker_json = runtests.as_json()
 
     cmd = runtests.create_python_cmd()
-    cmd.extend(['-m', 'test.libregrtest.worker', worker_json])
+    cmd.extend(["-m", "test.libregrtest.worker", worker_json])
 
     env = dict(os.environ)
     if tmp_dir is not None:
-        env['TMPDIR'] = tmp_dir
-        env['TEMP'] = tmp_dir
-        env['TMP'] = tmp_dir
+        env["TMPDIR"] = tmp_dir
+        env["TEMP"] = tmp_dir
+        env["TMP"] = tmp_dir
 
     # Running the child from the same working directory as regrtest's original
     # invocation ensures that TEMPDIR for the child is the same when
@@ -48,7 +54,7 @@ def create_worker_process(runtests: WorkerRunTests, output_fd: int,
         cwd=work_dir,
     )
     if USE_PROCESS_GROUP:
-        kwargs['start_new_session'] = True
+        kwargs["start_new_session"] = True
 
     # Pass json_file to the worker process
     json_file = runtests.json_file
@@ -69,7 +75,9 @@ def worker_process(worker_json: StrJSON) -> NoReturn:
 
     if runtests.rerun:
         if match_tests:
-            matching = "matching: " + ", ".join(pattern for pattern, result in match_tests if result)
+            matching = "matching: " + ", ".join(
+                pattern for pattern, result in match_tests if result
+            )
             print(f"Re-running {test_name} in verbose mode ({matching})", flush=True)
         else:
             print(f"Re-running {test_name} in verbose mode", flush=True)
@@ -80,7 +88,7 @@ def worker_process(worker_json: StrJSON) -> NoReturn:
         print()
         result.write_json_into(sys.stdout)
     else:
-        with json_file.open('w', encoding='utf-8') as json_fp:
+        with json_file.open("w", encoding="utf-8") as json_fp:
             result.write_json_into(json_fp)
 
     sys.exit(0)

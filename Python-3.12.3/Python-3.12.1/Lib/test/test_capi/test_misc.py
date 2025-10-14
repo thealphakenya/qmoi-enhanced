@@ -27,7 +27,12 @@ from test.support import import_helper
 from test.support import threading_helper
 from test.support import warnings_helper
 from test.support import requires_limited_api
-from test.support.script_helper import assert_python_failure, assert_python_ok, run_python_until_end
+from test.support.script_helper import (
+    assert_python_failure,
+    assert_python_ok,
+    run_python_until_end,
+)
+
 try:
     import _posixsubprocess
 except ImportError:
@@ -46,21 +51,21 @@ except ModuleNotFoundError:
     _interpreters = None
 
 # Skip this test if the _testcapi module isn't available.
-_testcapi = import_helper.import_module('_testcapi')
+_testcapi = import_helper.import_module("_testcapi")
 
 import _testinternalcapi
 
 
 NULL = None
 
+
 def decode_stderr(err):
-    return err.decode('utf-8', 'replace').replace('\r', '')
+    return err.decode("utf-8", "replace").replace("\r", "")
 
 
 def requires_subinterpreters(meth):
     """Decorator to skip a test if subinterpreters are not supported."""
-    return unittest.skipIf(_interpreters is None,
-                           'subinterpreters required')(meth)
+    return unittest.skipIf(_interpreters is None, "subinterpreters required")(meth)
 
 
 def testfunction(self):
@@ -71,6 +76,7 @@ def testfunction(self):
 class InstanceMethod:
     id = _testcapi.instancemethod(id)
     testfunction = _testcapi.instancemethod(testfunction)
+
 
 class CAPITest(unittest.TestCase):
 
@@ -83,63 +89,146 @@ class CAPITest(unittest.TestCase):
 
         InstanceMethod.testfunction.attribute = "test"
         self.assertEqual(testfunction.attribute, "test")
-        self.assertRaises(AttributeError, setattr, inst.testfunction, "attribute", "test")
+        self.assertRaises(
+            AttributeError, setattr, inst.testfunction, "attribute", "test"
+        )
 
     @support.requires_subprocess()
     def test_no_FatalError_infinite_loop(self):
-        code = textwrap.dedent("""
+        code = textwrap.dedent(
+            """
             import _testcapi
             from test import support
 
             with support.SuppressCrashReport():
                 _testcapi.crash_no_current_thread()
-        """)
+        """
+        )
 
-        run_result, _cmd_line = run_python_until_end('-c', code)
+        run_result, _cmd_line = run_python_until_end("-c", code)
         _rc, out, err = run_result
-        self.assertEqual(out, b'')
+        self.assertEqual(out, b"")
         # This used to cause an infinite loop.
-        msg = ("Fatal Python error: PyThreadState_Get: "
-               "the function must be called with the GIL held, "
-               "after Python initialization and before Python finalization, "
-               "but the GIL is released "
-               "(the current Python thread state is NULL)").encode()
-        self.assertTrue(err.rstrip().startswith(msg),
-                        err)
+        msg = (
+            "Fatal Python error: PyThreadState_Get: "
+            "the function must be called with the GIL held, "
+            "after Python initialization and before Python finalization, "
+            "but the GIL is released "
+            "(the current Python thread state is NULL)"
+        ).encode()
+        self.assertTrue(err.rstrip().startswith(msg), err)
 
     def test_memoryview_from_NULL_pointer(self):
         self.assertRaises(ValueError, _testcapi.make_memoryview_from_NULL_pointer)
 
-    @unittest.skipUnless(_posixsubprocess, '_posixsubprocess required for this test.')
+    @unittest.skipUnless(_posixsubprocess, "_posixsubprocess required for this test.")
     def test_seq_bytes_to_charp_array(self):
         # Issue #15732: crash in _PySequence_BytesToCharpArray()
         class Z(object):
             def __len__(self):
                 return 1
-        with self.assertRaisesRegex(TypeError, 'indexing'):
+
+        with self.assertRaisesRegex(TypeError, "indexing"):
             _posixsubprocess.fork_exec(
-                          1,Z(),True,(1, 2),5,6,7,8,9,10,11,12,13,14,True,True,17,False,19,20,21,22,False)
+                1,
+                Z(),
+                True,
+                (1, 2),
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                True,
+                True,
+                17,
+                False,
+                19,
+                20,
+                21,
+                22,
+                False,
+            )
+
         # Issue #15736: overflow in _PySequence_BytesToCharpArray()
         class Z(object):
             def __len__(self):
                 return sys.maxsize
-            def __getitem__(self, i):
-                return b'x'
-        self.assertRaises(MemoryError, _posixsubprocess.fork_exec,
-                          1,Z(),True,(1, 2),5,6,7,8,9,10,11,12,13,14,True,True,17,False,19,20,21,22,False)
 
-    @unittest.skipUnless(_posixsubprocess, '_posixsubprocess required for this test.')
+            def __getitem__(self, i):
+                return b"x"
+
+        self.assertRaises(
+            MemoryError,
+            _posixsubprocess.fork_exec,
+            1,
+            Z(),
+            True,
+            (1, 2),
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            True,
+            True,
+            17,
+            False,
+            19,
+            20,
+            21,
+            22,
+            False,
+        )
+
+    @unittest.skipUnless(_posixsubprocess, "_posixsubprocess required for this test.")
     def test_subprocess_fork_exec(self):
         class Z(object):
             def __len__(self):
                 return 1
 
         # Issue #15738: crash in subprocess_fork_exec()
-        self.assertRaises(TypeError, _posixsubprocess.fork_exec,
-                          Z(),[b'1'],True,(1, 2),5,6,7,8,9,10,11,12,13,14,True,True,17,False,19,20,21,22,False)
+        self.assertRaises(
+            TypeError,
+            _posixsubprocess.fork_exec,
+            Z(),
+            [b"1"],
+            True,
+            (1, 2),
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            True,
+            True,
+            17,
+            False,
+            19,
+            20,
+            21,
+            22,
+            False,
+        )
 
-    @unittest.skipIf(MISSING_C_DOCSTRINGS,
-                     "Signature information for builtins requires docstrings")
+    @unittest.skipIf(
+        MISSING_C_DOCSTRINGS, "Signature information for builtins requires docstrings"
+    )
     def test_docstring_signature_parsing(self):
 
         self.assertEqual(_testcapi.no_docstring.__doc__, None)
@@ -148,38 +237,55 @@ class CAPITest(unittest.TestCase):
         self.assertEqual(_testcapi.docstring_empty.__doc__, None)
         self.assertEqual(_testcapi.docstring_empty.__text_signature__, None)
 
-        self.assertEqual(_testcapi.docstring_no_signature.__doc__,
-            "This docstring has no signature.")
+        self.assertEqual(
+            _testcapi.docstring_no_signature.__doc__, "This docstring has no signature."
+        )
         self.assertEqual(_testcapi.docstring_no_signature.__text_signature__, None)
 
-        self.assertEqual(_testcapi.docstring_with_invalid_signature.__doc__,
+        self.assertEqual(
+            _testcapi.docstring_with_invalid_signature.__doc__,
             "docstring_with_invalid_signature($module, /, boo)\n"
             "\n"
-            "This docstring has an invalid signature."
-            )
-        self.assertEqual(_testcapi.docstring_with_invalid_signature.__text_signature__, None)
+            "This docstring has an invalid signature.",
+        )
+        self.assertEqual(
+            _testcapi.docstring_with_invalid_signature.__text_signature__, None
+        )
 
-        self.assertEqual(_testcapi.docstring_with_invalid_signature2.__doc__,
+        self.assertEqual(
+            _testcapi.docstring_with_invalid_signature2.__doc__,
             "docstring_with_invalid_signature2($module, /, boo)\n"
             "\n"
             "--\n"
             "\n"
-            "This docstring also has an invalid signature."
-            )
-        self.assertEqual(_testcapi.docstring_with_invalid_signature2.__text_signature__, None)
+            "This docstring also has an invalid signature.",
+        )
+        self.assertEqual(
+            _testcapi.docstring_with_invalid_signature2.__text_signature__, None
+        )
 
-        self.assertEqual(_testcapi.docstring_with_signature.__doc__,
-            "This docstring has a valid signature.")
-        self.assertEqual(_testcapi.docstring_with_signature.__text_signature__, "($module, /, sig)")
+        self.assertEqual(
+            _testcapi.docstring_with_signature.__doc__,
+            "This docstring has a valid signature.",
+        )
+        self.assertEqual(
+            _testcapi.docstring_with_signature.__text_signature__, "($module, /, sig)"
+        )
 
         self.assertEqual(_testcapi.docstring_with_signature_but_no_doc.__doc__, None)
-        self.assertEqual(_testcapi.docstring_with_signature_but_no_doc.__text_signature__,
-            "($module, /, sig)")
+        self.assertEqual(
+            _testcapi.docstring_with_signature_but_no_doc.__text_signature__,
+            "($module, /, sig)",
+        )
 
-        self.assertEqual(_testcapi.docstring_with_signature_and_extra_newlines.__doc__,
-            "\nThis docstring has a valid signature and some extra newlines.")
-        self.assertEqual(_testcapi.docstring_with_signature_and_extra_newlines.__text_signature__,
-            "($module, /, parameter)")
+        self.assertEqual(
+            _testcapi.docstring_with_signature_and_extra_newlines.__doc__,
+            "\nThis docstring has a valid signature and some extra newlines.",
+        )
+        self.assertEqual(
+            _testcapi.docstring_with_signature_and_extra_newlines.__text_signature__,
+            "($module, /, parameter)",
+        )
 
     def test_c_type_with_matrix_multiplication(self):
         M = _testcapi.matmulType
@@ -209,175 +315,192 @@ class CAPITest(unittest.TestCase):
         # Issue #23571: A function must not return NULL without setting an
         # error
         if support.Py_DEBUG:
-            code = textwrap.dedent("""
+            code = textwrap.dedent(
+                """
                 import _testcapi
                 from test import support
 
                 with support.SuppressCrashReport():
                     _testcapi.return_null_without_error()
-            """)
-            rc, out, err = assert_python_failure('-c', code)
+            """
+            )
+            rc, out, err = assert_python_failure("-c", code)
             err = decode_stderr(err)
-            self.assertRegex(err,
-                r'Fatal Python error: _Py_CheckFunctionResult: '
-                    r'a function returned NULL without setting an exception\n'
-                r'Python runtime state: initialized\n'
-                r'SystemError: <built-in function return_null_without_error> '
-                    r'returned NULL without setting an exception\n'
-                r'\n'
-                r'Current thread.*:\n'
-                r'  File .*", line 6 in <module>\n')
+            self.assertRegex(
+                err,
+                r"Fatal Python error: _Py_CheckFunctionResult: "
+                r"a function returned NULL without setting an exception\n"
+                r"Python runtime state: initialized\n"
+                r"SystemError: <built-in function return_null_without_error> "
+                r"returned NULL without setting an exception\n"
+                r"\n"
+                r"Current thread.*:\n"
+                r'  File .*", line 6 in <module>\n',
+            )
         else:
             with self.assertRaises(SystemError) as cm:
                 _testcapi.return_null_without_error()
-            self.assertRegex(str(cm.exception),
-                             'return_null_without_error.* '
-                             'returned NULL without setting an exception')
+            self.assertRegex(
+                str(cm.exception),
+                "return_null_without_error.* "
+                "returned NULL without setting an exception",
+            )
 
     def test_return_result_with_error(self):
         # Issue #23571: A function must not return a result with an error set
         if support.Py_DEBUG:
-            code = textwrap.dedent("""
+            code = textwrap.dedent(
+                """
                 import _testcapi
                 from test import support
 
                 with support.SuppressCrashReport():
                     _testcapi.return_result_with_error()
-            """)
-            rc, out, err = assert_python_failure('-c', code)
+            """
+            )
+            rc, out, err = assert_python_failure("-c", code)
             err = decode_stderr(err)
-            self.assertRegex(err,
-                    r'Fatal Python error: _Py_CheckFunctionResult: '
-                        r'a function returned a result with an exception set\n'
-                    r'Python runtime state: initialized\n'
-                    r'ValueError\n'
-                    r'\n'
-                    r'The above exception was the direct cause '
-                        r'of the following exception:\n'
-                    r'\n'
-                    r'SystemError: <built-in '
-                        r'function return_result_with_error> '
-                        r'returned a result with an exception set\n'
-                    r'\n'
-                    r'Current thread.*:\n'
-                    r'  File .*, line 6 in <module>\n')
+            self.assertRegex(
+                err,
+                r"Fatal Python error: _Py_CheckFunctionResult: "
+                r"a function returned a result with an exception set\n"
+                r"Python runtime state: initialized\n"
+                r"ValueError\n"
+                r"\n"
+                r"The above exception was the direct cause "
+                r"of the following exception:\n"
+                r"\n"
+                r"SystemError: <built-in "
+                r"function return_result_with_error> "
+                r"returned a result with an exception set\n"
+                r"\n"
+                r"Current thread.*:\n"
+                r"  File .*, line 6 in <module>\n",
+            )
         else:
             with self.assertRaises(SystemError) as cm:
                 _testcapi.return_result_with_error()
-            self.assertRegex(str(cm.exception),
-                             'return_result_with_error.* '
-                             'returned a result with an exception set')
+            self.assertRegex(
+                str(cm.exception),
+                "return_result_with_error.* " "returned a result with an exception set",
+            )
 
     def test_getitem_with_error(self):
         # Test _Py_CheckSlotResult(). Raise an exception and then calls
         # PyObject_GetItem(): check that the assertion catches the bug.
         # PyObject_GetItem() must not be called with an exception set.
-        code = textwrap.dedent("""
+        code = textwrap.dedent(
+            """
             import _testcapi
             from test import support
 
             with support.SuppressCrashReport():
                 _testcapi.getitem_with_error({1: 2}, 1)
-        """)
-        rc, out, err = assert_python_failure('-c', code)
+        """
+        )
+        rc, out, err = assert_python_failure("-c", code)
         err = decode_stderr(err)
-        if 'SystemError: ' not in err:
-            self.assertRegex(err,
-                    r'Fatal Python error: _Py_CheckSlotResult: '
-                        r'Slot __getitem__ of type dict succeeded '
-                        r'with an exception set\n'
-                    r'Python runtime state: initialized\n'
-                    r'ValueError: bug\n'
-                    r'\n'
-                    r'Current thread .* \(most recent call first\):\n'
-                    r'  File .*, line 6 in <module>\n'
-                    r'\n'
-                    r'Extension modules: _testcapi \(total: 1\)\n')
+        if "SystemError: " not in err:
+            self.assertRegex(
+                err,
+                r"Fatal Python error: _Py_CheckSlotResult: "
+                r"Slot __getitem__ of type dict succeeded "
+                r"with an exception set\n"
+                r"Python runtime state: initialized\n"
+                r"ValueError: bug\n"
+                r"\n"
+                r"Current thread .* \(most recent call first\):\n"
+                r"  File .*, line 6 in <module>\n"
+                r"\n"
+                r"Extension modules: _testcapi \(total: 1\)\n",
+            )
         else:
             # Python built with NDEBUG macro defined:
             # test _Py_CheckFunctionResult() instead.
-            self.assertIn('returned a result with an exception set', err)
+            self.assertIn("returned a result with an exception set", err)
 
     def test_buildvalue(self):
         # Test Py_BuildValue() with object arguments
         buildvalue = _testcapi.py_buildvalue
-        self.assertEqual(buildvalue(''), None)
-        self.assertEqual(buildvalue('()'), ())
-        self.assertEqual(buildvalue('[]'), [])
-        self.assertEqual(buildvalue('{}'), {})
-        self.assertEqual(buildvalue('()[]{}'), ((), [], {}))
-        self.assertEqual(buildvalue('O', 1), 1)
-        self.assertEqual(buildvalue('(O)', 1), (1,))
-        self.assertEqual(buildvalue('[O]', 1), [1])
-        self.assertRaises(SystemError, buildvalue, '{O}', 1)
-        self.assertEqual(buildvalue('OO', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('(OO)', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('[OO]', 1, 2), [1, 2])
-        self.assertEqual(buildvalue('{OO}', 1, 2), {1: 2})
-        self.assertEqual(buildvalue('{OOOO}', 1, 2, 3, 4), {1: 2, 3: 4})
-        self.assertEqual(buildvalue('((O))', 1), ((1,),))
-        self.assertEqual(buildvalue('((OO))', 1, 2), ((1, 2),))
+        self.assertEqual(buildvalue(""), None)
+        self.assertEqual(buildvalue("()"), ())
+        self.assertEqual(buildvalue("[]"), [])
+        self.assertEqual(buildvalue("{}"), {})
+        self.assertEqual(buildvalue("()[]{}"), ((), [], {}))
+        self.assertEqual(buildvalue("O", 1), 1)
+        self.assertEqual(buildvalue("(O)", 1), (1,))
+        self.assertEqual(buildvalue("[O]", 1), [1])
+        self.assertRaises(SystemError, buildvalue, "{O}", 1)
+        self.assertEqual(buildvalue("OO", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("(OO)", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("[OO]", 1, 2), [1, 2])
+        self.assertEqual(buildvalue("{OO}", 1, 2), {1: 2})
+        self.assertEqual(buildvalue("{OOOO}", 1, 2, 3, 4), {1: 2, 3: 4})
+        self.assertEqual(buildvalue("((O))", 1), ((1,),))
+        self.assertEqual(buildvalue("((OO))", 1, 2), ((1, 2),))
 
-        self.assertEqual(buildvalue(' \t,:'), None)
-        self.assertEqual(buildvalue('   O   ', 1), 1)
-        self.assertEqual(buildvalue('\tO\t', 1), 1)
-        self.assertEqual(buildvalue('O,O', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('O, O', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('O,\tO', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('O O', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('O\tO', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('(O,O)', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('(O, O)', 1, 2), (1, 2))
-        self.assertEqual(buildvalue(' ( O O) ', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('\t(\tO\tO)\t', 1, 2), (1, 2))
-        self.assertEqual(buildvalue('[O,O]', 1, 2), [1, 2])
-        self.assertEqual(buildvalue('[O, O]', 1, 2), [1, 2])
-        self.assertEqual(buildvalue(' [ O O] ', 1, 2), [1, 2])
-        self.assertEqual(buildvalue('{O:O}', 1, 2), {1: 2})
-        self.assertEqual(buildvalue('{O:O,O:O}', 1, 2, 3, 4), {1: 2, 3: 4})
-        self.assertEqual(buildvalue('{O: O, O: O}', 1, 2, 3, 4), {1: 2, 3: 4})
-        self.assertEqual(buildvalue(' { O O O O} ', 1, 2, 3, 4), {1: 2, 3: 4})
-        self.assertEqual(buildvalue('\t{\tO\tO\tO\tO}\t', 1, 2, 3, 4), {1: 2, 3: 4})
+        self.assertEqual(buildvalue(" \t,:"), None)
+        self.assertEqual(buildvalue("   O   ", 1), 1)
+        self.assertEqual(buildvalue("\tO\t", 1), 1)
+        self.assertEqual(buildvalue("O,O", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("O, O", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("O,\tO", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("O O", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("O\tO", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("(O,O)", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("(O, O)", 1, 2), (1, 2))
+        self.assertEqual(buildvalue(" ( O O) ", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("\t(\tO\tO)\t", 1, 2), (1, 2))
+        self.assertEqual(buildvalue("[O,O]", 1, 2), [1, 2])
+        self.assertEqual(buildvalue("[O, O]", 1, 2), [1, 2])
+        self.assertEqual(buildvalue(" [ O O] ", 1, 2), [1, 2])
+        self.assertEqual(buildvalue("{O:O}", 1, 2), {1: 2})
+        self.assertEqual(buildvalue("{O:O,O:O}", 1, 2, 3, 4), {1: 2, 3: 4})
+        self.assertEqual(buildvalue("{O: O, O: O}", 1, 2, 3, 4), {1: 2, 3: 4})
+        self.assertEqual(buildvalue(" { O O O O} ", 1, 2, 3, 4), {1: 2, 3: 4})
+        self.assertEqual(buildvalue("\t{\tO\tO\tO\tO}\t", 1, 2, 3, 4), {1: 2, 3: 4})
 
-        self.assertRaises(SystemError, buildvalue, 'O', NULL)
-        self.assertRaises(SystemError, buildvalue, '(O)', NULL)
-        self.assertRaises(SystemError, buildvalue, '[O]', NULL)
-        self.assertRaises(SystemError, buildvalue, '{O}', NULL)
-        self.assertRaises(SystemError, buildvalue, 'OO', 1, NULL)
-        self.assertRaises(SystemError, buildvalue, 'OO', NULL, 2)
-        self.assertRaises(SystemError, buildvalue, '(OO)', 1, NULL)
-        self.assertRaises(SystemError, buildvalue, '(OO)', NULL, 2)
-        self.assertRaises(SystemError, buildvalue, '[OO]', 1, NULL)
-        self.assertRaises(SystemError, buildvalue, '[OO]', NULL, 2)
-        self.assertRaises(SystemError, buildvalue, '{OO}', 1, NULL)
-        self.assertRaises(SystemError, buildvalue, '{OO}', NULL, 2)
+        self.assertRaises(SystemError, buildvalue, "O", NULL)
+        self.assertRaises(SystemError, buildvalue, "(O)", NULL)
+        self.assertRaises(SystemError, buildvalue, "[O]", NULL)
+        self.assertRaises(SystemError, buildvalue, "{O}", NULL)
+        self.assertRaises(SystemError, buildvalue, "OO", 1, NULL)
+        self.assertRaises(SystemError, buildvalue, "OO", NULL, 2)
+        self.assertRaises(SystemError, buildvalue, "(OO)", 1, NULL)
+        self.assertRaises(SystemError, buildvalue, "(OO)", NULL, 2)
+        self.assertRaises(SystemError, buildvalue, "[OO]", 1, NULL)
+        self.assertRaises(SystemError, buildvalue, "[OO]", NULL, 2)
+        self.assertRaises(SystemError, buildvalue, "{OO}", 1, NULL)
+        self.assertRaises(SystemError, buildvalue, "{OO}", NULL, 2)
 
     def test_buildvalue_ints(self):
         # Test Py_BuildValue() with integer arguments
         buildvalue = _testcapi.py_buildvalue_ints
         from _testcapi import SHRT_MIN, SHRT_MAX, USHRT_MAX, INT_MIN, INT_MAX, UINT_MAX
-        self.assertEqual(buildvalue('i', INT_MAX), INT_MAX)
-        self.assertEqual(buildvalue('i', INT_MIN), INT_MIN)
-        self.assertEqual(buildvalue('I', UINT_MAX), UINT_MAX)
 
-        self.assertEqual(buildvalue('h', SHRT_MAX), SHRT_MAX)
-        self.assertEqual(buildvalue('h', SHRT_MIN), SHRT_MIN)
-        self.assertEqual(buildvalue('H', USHRT_MAX), USHRT_MAX)
+        self.assertEqual(buildvalue("i", INT_MAX), INT_MAX)
+        self.assertEqual(buildvalue("i", INT_MIN), INT_MIN)
+        self.assertEqual(buildvalue("I", UINT_MAX), UINT_MAX)
 
-        self.assertEqual(buildvalue('b', 127), 127)
-        self.assertEqual(buildvalue('b', -128), -128)
-        self.assertEqual(buildvalue('B', 255), 255)
+        self.assertEqual(buildvalue("h", SHRT_MAX), SHRT_MAX)
+        self.assertEqual(buildvalue("h", SHRT_MIN), SHRT_MIN)
+        self.assertEqual(buildvalue("H", USHRT_MAX), USHRT_MAX)
 
-        self.assertEqual(buildvalue('c', ord('A')), b'A')
-        self.assertEqual(buildvalue('c', 255), b'\xff')
-        self.assertEqual(buildvalue('c', 256), b'\x00')
-        self.assertEqual(buildvalue('c', -1), b'\xff')
+        self.assertEqual(buildvalue("b", 127), 127)
+        self.assertEqual(buildvalue("b", -128), -128)
+        self.assertEqual(buildvalue("B", 255), 255)
 
-        self.assertEqual(buildvalue('C', 255), chr(255))
-        self.assertEqual(buildvalue('C', 256), chr(256))
-        self.assertEqual(buildvalue('C', sys.maxunicode), chr(sys.maxunicode))
-        self.assertRaises(ValueError, buildvalue, 'C', -1)
-        self.assertRaises(ValueError, buildvalue, 'C', sys.maxunicode+1)
+        self.assertEqual(buildvalue("c", ord("A")), b"A")
+        self.assertEqual(buildvalue("c", 255), b"\xff")
+        self.assertEqual(buildvalue("c", 256), b"\x00")
+        self.assertEqual(buildvalue("c", -1), b"\xff")
+
+        self.assertEqual(buildvalue("C", 255), chr(255))
+        self.assertEqual(buildvalue("C", 256), chr(256))
+        self.assertEqual(buildvalue("C", sys.maxunicode), chr(sys.maxunicode))
+        self.assertRaises(ValueError, buildvalue, "C", -1)
+        self.assertRaises(ValueError, buildvalue, "C", sys.maxunicode + 1)
+
     def test_buildvalue_N(self):
         _testcapi.test_buildvalue_N()
 
@@ -385,14 +508,17 @@ class CAPITest(unittest.TestCase):
         # bpo-35059: Check that Py_DECREF() reports the correct filename
         # when calling _Py_NegativeRefcount() to abort Python.
         code = textwrap.dedent(code)
-        rc, out, err = assert_python_failure('-c', code)
-        self.assertRegex(err,
-                         br'_testcapimodule\.c:[0-9]+: '
-                         br'_Py_NegativeRefcount: Assertion failed: '
-                         br'object has negative ref count')
+        rc, out, err = assert_python_failure("-c", code)
+        self.assertRegex(
+            err,
+            rb"_testcapimodule\.c:[0-9]+: "
+            rb"_Py_NegativeRefcount: Assertion failed: "
+            rb"object has negative ref count",
+        )
 
-    @unittest.skipUnless(hasattr(_testcapi, 'negative_refcount'),
-                         'need _testcapi.negative_refcount()')
+    @unittest.skipUnless(
+        hasattr(_testcapi, "negative_refcount"), "need _testcapi.negative_refcount()"
+    )
     def test_negative_refcount(self):
         code = """
             import _testcapi
@@ -403,10 +529,13 @@ class CAPITest(unittest.TestCase):
         """
         self.check_negative_refcount(code)
 
-    @unittest.skipUnless(hasattr(_testcapi, 'decref_freed_object'),
-                         'need _testcapi.decref_freed_object()')
-    @support.skip_if_sanitizer("use after free on purpose",
-                               address=True, memory=True, ub=True)
+    @unittest.skipUnless(
+        hasattr(_testcapi, "decref_freed_object"),
+        "need _testcapi.decref_freed_object()",
+    )
+    @support.skip_if_sanitizer(
+        "use after free on purpose", address=True, memory=True, ub=True
+    )
     def test_decref_freed_object(self):
         code = """
             import _testcapi
@@ -421,17 +550,19 @@ class CAPITest(unittest.TestCase):
         # bpo-35983: Check that the trashcan mechanism for "list" is NOT
         # activated when its tp_dealloc is being called by a subclass
         from _testcapi import MyList
+
         L = None
         for i in range(1000):
             L = MyList((L,))
 
-    @support.requires_resource('cpu')
+    @support.requires_resource("cpu")
     def test_trashcan_python_class1(self):
         self.do_test_trashcan_python_class(list)
 
-    @support.requires_resource('cpu')
+    @support.requires_resource("cpu")
     def test_trashcan_python_class2(self):
         from _testcapi import MyList
+
         self.do_test_trashcan_python_class(MyList)
 
     def do_test_trashcan_python_class(self, base):
@@ -442,9 +573,11 @@ class CAPITest(unittest.TestCase):
             # Count the number of PyList instances to verify that there is
             # no memory leak
             num = 0
+
             def __init__(self, *args):
                 __class__.num += 1
                 super().__init__(*args)
+
             def __del__(self):
                 __class__.num -= 1
 
@@ -486,7 +619,9 @@ class CAPITest(unittest.TestCase):
         del subclass_instance
         self.assertEqual(type_refcnt - 1, sys.getrefcount(HeapGcCTypeSubclass))
 
-    def test_subclass_of_heap_gc_ctype_with_del_modifying_dunder_class_only_decrefs_once(self):
+    def test_subclass_of_heap_gc_ctype_with_del_modifying_dunder_class_only_decrefs_once(
+        self,
+    ):
         class A(_testcapi.HeapGcCType):
             def __init__(self):
                 self.value2 = 20
@@ -592,10 +727,14 @@ class CAPITest(unittest.TestCase):
 
     def test_sublclassing_managed_both(self):
 
-        class C1(_testcapi.HeapCTypeWithManagedWeakref, _testcapi.HeapCTypeWithManagedDict):
+        class C1(
+            _testcapi.HeapCTypeWithManagedWeakref, _testcapi.HeapCTypeWithManagedDict
+        ):
             pass
 
-        class C2(_testcapi.HeapCTypeWithManagedDict, _testcapi.HeapCTypeWithManagedWeakref):
+        class C2(
+            _testcapi.HeapCTypeWithManagedDict, _testcapi.HeapCTypeWithManagedWeakref
+        ):
             pass
 
         for cls in (C1, C2):
@@ -624,7 +763,9 @@ class CAPITest(unittest.TestCase):
         del subclass_instance
         self.assertEqual(type_refcnt - 1, sys.getrefcount(_testcapi.HeapCTypeSubclass))
 
-    def test_c_subclass_of_heap_ctype_with_del_modifying_dunder_class_only_decrefs_once(self):
+    def test_c_subclass_of_heap_ctype_with_del_modifying_dunder_class_only_decrefs_once(
+        self,
+    ):
         subclass_instance = _testcapi.HeapCTypeSubclassWithFinalizer()
         type_refcnt = sys.getrefcount(_testcapi.HeapCTypeSubclassWithFinalizer)
         new_type_refcnt = sys.getrefcount(_testcapi.HeapCTypeSubclass)
@@ -640,13 +781,19 @@ class CAPITest(unittest.TestCase):
         if support.Py_DEBUG:
             # gh-89373: In debug mode, _Py_Dealloc() keeps a strong reference
             # to the type while calling tp_dealloc()
-            self.assertEqual(type_refcnt, _testcapi.HeapCTypeSubclassWithFinalizer.refcnt_in_del)
+            self.assertEqual(
+                type_refcnt, _testcapi.HeapCTypeSubclassWithFinalizer.refcnt_in_del
+            )
         else:
-            self.assertEqual(type_refcnt - 1, _testcapi.HeapCTypeSubclassWithFinalizer.refcnt_in_del)
+            self.assertEqual(
+                type_refcnt - 1, _testcapi.HeapCTypeSubclassWithFinalizer.refcnt_in_del
+            )
         self.assertEqual(new_type_refcnt + 1, _testcapi.HeapCTypeSubclass.refcnt_in_del)
 
         # Test that the original type already has decreased its refcnt
-        self.assertEqual(type_refcnt - 1, sys.getrefcount(_testcapi.HeapCTypeSubclassWithFinalizer))
+        self.assertEqual(
+            type_refcnt - 1, sys.getrefcount(_testcapi.HeapCTypeSubclassWithFinalizer)
+        )
 
         # Test that subtype_dealloc decref the newly assigned __class__ only once
         self.assertEqual(new_type_refcnt, sys.getrefcount(_testcapi.HeapCTypeSubclass))
@@ -709,8 +856,11 @@ class CAPITest(unittest.TestCase):
 
         # Class creation from C
         with warnings_helper.check_warnings(
-                ('.* _testcapi.Subclass .* custom tp_new.*in Python 3.14.*', DeprecationWarning),
-                ):
+            (
+                ".* _testcapi.Subclass .* custom tp_new.*in Python 3.14.*",
+                DeprecationWarning,
+            ),
+        ):
             sub = _testcapi.make_type_with_base(Base)
         self.assertTrue(issubclass(sub, Base))
         self.assertIsInstance(sub, metaclass)
@@ -718,24 +868,30 @@ class CAPITest(unittest.TestCase):
     def test_multiple_inheritance_ctypes_with_weakref_or_dict(self):
 
         with self.assertRaises(TypeError):
+
             class Both1(_testcapi.HeapCTypeWithWeakref, _testcapi.HeapCTypeWithDict):
                 pass
+
         with self.assertRaises(TypeError):
+
             class Both2(_testcapi.HeapCTypeWithDict, _testcapi.HeapCTypeWithWeakref):
                 pass
 
     def test_multiple_inheritance_ctypes_with_weakref_or_dict_and_other_builtin(self):
 
         with self.assertRaises(TypeError):
+
             class C1(_testcapi.HeapCTypeWithDict, list):
                 pass
 
         with self.assertRaises(TypeError):
+
             class C2(_testcapi.HeapCTypeWithWeakref, list):
                 pass
 
         class C3(_testcapi.HeapCTypeWithManagedDict, list):
             pass
+
         class C4(_testcapi.HeapCTypeWithManagedWeakref, list):
             pass
 
@@ -747,12 +903,18 @@ class CAPITest(unittest.TestCase):
         inst.append(0)
         str(inst.__weakref__)
 
-        for cls in (_testcapi.HeapCTypeWithManagedDict, _testcapi.HeapCTypeWithManagedWeakref):
+        for cls in (
+            _testcapi.HeapCTypeWithManagedDict,
+            _testcapi.HeapCTypeWithManagedWeakref,
+        ):
             for cls2 in (_testcapi.HeapCTypeWithDict, _testcapi.HeapCTypeWithWeakref):
+
                 class S(cls, cls2):
                     pass
+
             class B1(C3, cls):
                 pass
+
             class B2(C4, cls):
                 pass
 
@@ -766,71 +928,84 @@ class CAPITest(unittest.TestCase):
     def test_immutable_type_with_mutable_base(self):
         # Add deprecation warning here so it's removed in 3.14
         warnings._deprecated(
-            'creating immutable classes with mutable bases', remove=(3, 14))
+            "creating immutable classes with mutable bases", remove=(3, 14)
+        )
 
         class MutableBase:
             def meth(self):
-                return 'original'
+                return "original"
 
         with self.assertWarns(DeprecationWarning):
-            ImmutableSubclass = _testcapi.make_immutable_type_with_base(
-                MutableBase)
+            ImmutableSubclass = _testcapi.make_immutable_type_with_base(MutableBase)
         instance = ImmutableSubclass()
 
-        self.assertEqual(instance.meth(), 'original')
+        self.assertEqual(instance.meth(), "original")
 
         # Cannot override the static type's method
         with self.assertRaisesRegex(
-                TypeError,
-                "cannot set 'meth' attribute of immutable type"):
-            ImmutableSubclass.meth = lambda self: 'overridden'
-        self.assertEqual(instance.meth(), 'original')
+            TypeError, "cannot set 'meth' attribute of immutable type"
+        ):
+            ImmutableSubclass.meth = lambda self: "overridden"
+        self.assertEqual(instance.meth(), "original")
 
         # Can change the method on the mutable base
-        MutableBase.meth = lambda self: 'changed'
-        self.assertEqual(instance.meth(), 'changed')
+        MutableBase.meth = lambda self: "changed"
+        self.assertEqual(instance.meth(), "changed")
 
     def test_pynumber_tobase(self):
         from _testcapi import pynumber_tobase
+
         small_number = 123
         large_number = 2**64
+
         class IDX:
             def __init__(self, val):
                 self.val = val
+
             def __index__(self):
                 return self.val
 
-        test_cases = ((2, '0b1111011', '0b10000000000000000000000000000000000000000000000000000000000000000'),
-                      (8, '0o173', '0o2000000000000000000000'),
-                      (10, '123', '18446744073709551616'),
-                      (16, '0x7b', '0x10000000000000000'))
+        test_cases = (
+            (
+                2,
+                "0b1111011",
+                "0b10000000000000000000000000000000000000000000000000000000000000000",
+            ),
+            (8, "0o173", "0o2000000000000000000000"),
+            (10, "123", "18446744073709551616"),
+            (16, "0x7b", "0x10000000000000000"),
+        )
         for base, small_target, large_target in test_cases:
             with self.subTest(base=base, st=small_target, lt=large_target):
                 # Test for small number
                 self.assertEqual(pynumber_tobase(small_number, base), small_target)
-                self.assertEqual(pynumber_tobase(-small_number, base), '-' + small_target)
+                self.assertEqual(
+                    pynumber_tobase(-small_number, base), "-" + small_target
+                )
                 self.assertEqual(pynumber_tobase(IDX(small_number), base), small_target)
                 # Test for large number(out of range of a longlong,i.e.[-2**63, 2**63-1])
                 self.assertEqual(pynumber_tobase(large_number, base), large_target)
-                self.assertEqual(pynumber_tobase(-large_number, base), '-' + large_target)
+                self.assertEqual(
+                    pynumber_tobase(-large_number, base), "-" + large_target
+                )
                 self.assertEqual(pynumber_tobase(IDX(large_number), base), large_target)
         self.assertRaises(TypeError, pynumber_tobase, IDX(123.0), 10)
-        self.assertRaises(TypeError, pynumber_tobase, IDX('123'), 10)
+        self.assertRaises(TypeError, pynumber_tobase, IDX("123"), 10)
         self.assertRaises(TypeError, pynumber_tobase, 123.0, 10)
-        self.assertRaises(TypeError, pynumber_tobase, '123', 10)
+        self.assertRaises(TypeError, pynumber_tobase, "123", 10)
         self.assertRaises(SystemError, pynumber_tobase, 123, 0)
 
     def test_pyobject_repr_from_null(self):
         s = _testcapi.pyobject_repr_from_null()
-        self.assertEqual(s, '<NULL>')
+        self.assertEqual(s, "<NULL>")
 
     def test_pyobject_str_from_null(self):
         s = _testcapi.pyobject_str_from_null()
-        self.assertEqual(s, '<NULL>')
+        self.assertEqual(s, "<NULL>")
 
     def test_pyobject_bytes_from_null(self):
         s = _testcapi.pyobject_bytes_from_null()
-        self.assertEqual(s, b'<NULL>')
+        self.assertEqual(s, b"<NULL>")
 
     def test_Py_CompileString(self):
         # Check that Py_CompileString respects the coding cookie
@@ -844,20 +1019,20 @@ class CAPITest(unittest.TestCase):
         # bpo-44133: Ensure that the "Py_FrozenMain" and
         # "PyThread_get_thread_native_id" symbols are exported by the Python
         # (directly by the binary, or via by the Python dynamic library).
-        ctypes = import_helper.import_module('ctypes')
+        ctypes = import_helper.import_module("ctypes")
         names = []
 
         # Test if the PY_HAVE_THREAD_NATIVE_ID macro is defined
-        if hasattr(_thread, 'get_native_id'):
-            names.append('PyThread_get_thread_native_id')
+        if hasattr(_thread, "get_native_id"):
+            names.append("PyThread_get_thread_native_id")
 
         # Python/frozenmain.c fails to build on Windows when the symbols are
         # missing:
         # - PyWinFreeze_ExeInit
         # - PyWinFreeze_ExeTerm
         # - PyInitFrozenExtensions
-        if os.name != 'nt':
-            names.append('Py_FrozenMain')
+        if os.name != "nt":
+            names.append("Py_FrozenMain")
 
         for name in names:
             with self.subTest(name=name):
@@ -873,7 +1048,7 @@ class CAPITest(unittest.TestCase):
         _testcapi.clear_managed_dict(c)
         self.assertEqual(c.__dict__, {})
         c = C()
-        self.assertEqual(c.__dict__, {'a':1})
+        self.assertEqual(c.__dict__, {"a": 1})
         _testcapi.clear_managed_dict(c)
         self.assertEqual(c.__dict__, {})
 
@@ -883,12 +1058,15 @@ class CAPITest(unittest.TestCase):
         class A:
             def method_example(self): ...
 
-        self.assertEqual(_testcapi.eval_get_func_name(function_example),
-                         "function_example")
-        self.assertEqual(_testcapi.eval_get_func_name(A.method_example),
-                         "method_example")
-        self.assertEqual(_testcapi.eval_get_func_name(A().method_example),
-                         "method_example")
+        self.assertEqual(
+            _testcapi.eval_get_func_name(function_example), "function_example"
+        )
+        self.assertEqual(
+            _testcapi.eval_get_func_name(A.method_example), "method_example"
+        )
+        self.assertEqual(
+            _testcapi.eval_get_func_name(A().method_example), "method_example"
+        )
         self.assertEqual(_testcapi.eval_get_func_name(sum), "sum")  # c function
         self.assertEqual(_testcapi.eval_get_func_name(A), "type")
 
@@ -898,12 +1076,9 @@ class CAPITest(unittest.TestCase):
         class A:
             def method_example(self): ...
 
-        self.assertEqual(_testcapi.eval_get_func_desc(function_example),
-                         "()")
-        self.assertEqual(_testcapi.eval_get_func_desc(A.method_example),
-                         "()")
-        self.assertEqual(_testcapi.eval_get_func_desc(A().method_example),
-                         "()")
+        self.assertEqual(_testcapi.eval_get_func_desc(function_example), "()")
+        self.assertEqual(_testcapi.eval_get_func_desc(A.method_example), "()")
+        self.assertEqual(_testcapi.eval_get_func_desc(A().method_example), "()")
         self.assertEqual(_testcapi.eval_get_func_desc(sum), "()")  # c function
         self.assertEqual(_testcapi.eval_get_func_desc(A), " object")
 
@@ -944,9 +1119,11 @@ class CAPITest(unittest.TestCase):
 
     def test_function_get_defaults(self):
         def some(
-            pos_only1, pos_only2='p',
+            pos_only1,
+            pos_only2="p",
             /,
-            zero=0, optional=None,
+            zero=0,
+            optional=None,
             *,
             kw1,
             kw2=True,
@@ -954,7 +1131,7 @@ class CAPITest(unittest.TestCase):
             pass
 
         defaults = _testcapi.function_get_defaults(some)
-        self.assertEqual(defaults, ('p', 0, None))
+        self.assertEqual(defaults, ("p", 0, None))
         self.assertEqual(defaults, some.__defaults__)
 
         with self.assertRaises(SystemError):
@@ -962,16 +1139,18 @@ class CAPITest(unittest.TestCase):
 
     def test_function_set_defaults(self):
         def some(
-            pos_only1, pos_only2='p',
+            pos_only1,
+            pos_only2="p",
             /,
-            zero=0, optional=None,
+            zero=0,
+            optional=None,
             *,
             kw1,
             kw2=True,
         ):
             pass
 
-        old_defaults = ('p', 0, None)
+        old_defaults = ("p", 0, None)
         self.assertEqual(_testcapi.function_get_defaults(some), old_defaults)
         self.assertEqual(some.__defaults__, old_defaults)
 
@@ -981,11 +1160,11 @@ class CAPITest(unittest.TestCase):
         self.assertEqual(some.__defaults__, old_defaults)
 
         with self.assertRaises(SystemError):
-            _testcapi.function_set_defaults(1, ())    # not a function
+            _testcapi.function_set_defaults(1, ())  # not a function
         self.assertEqual(_testcapi.function_get_defaults(some), old_defaults)
         self.assertEqual(some.__defaults__, old_defaults)
 
-        new_defaults = ('q', 1, None)
+        new_defaults = ("q", 1, None)
         _testcapi.function_set_defaults(some, new_defaults)
         self.assertEqual(_testcapi.function_get_defaults(some), new_defaults)
         self.assertEqual(some.__defaults__, new_defaults)
@@ -998,7 +1177,7 @@ class CAPITest(unittest.TestCase):
 
         class tuplesub(tuple): ...  # tuple subclasses must work
 
-        new_defaults = tuplesub(((1, 2), ['a', 'b'], None))
+        new_defaults = tuplesub(((1, 2), ["a", "b"], None))
         _testcapi.function_set_defaults(some, new_defaults)
         self.assertEqual(_testcapi.function_get_defaults(some), new_defaults)
         self.assertEqual(some.__defaults__, new_defaults)
@@ -1011,9 +1190,11 @@ class CAPITest(unittest.TestCase):
 
     def test_function_get_kw_defaults(self):
         def some(
-            pos_only1, pos_only2='p',
+            pos_only1,
+            pos_only2="p",
             /,
-            zero=0, optional=None,
+            zero=0,
+            optional=None,
             *,
             kw1,
             kw2=True,
@@ -1021,7 +1202,7 @@ class CAPITest(unittest.TestCase):
             pass
 
         defaults = _testcapi.function_get_kw_defaults(some)
-        self.assertEqual(defaults, {'kw2': True})
+        self.assertEqual(defaults, {"kw2": True})
         self.assertEqual(defaults, some.__kwdefaults__)
 
         with self.assertRaises(SystemError):
@@ -1029,16 +1210,18 @@ class CAPITest(unittest.TestCase):
 
     def test_function_set_kw_defaults(self):
         def some(
-            pos_only1, pos_only2='p',
+            pos_only1,
+            pos_only2="p",
             /,
-            zero=0, optional=None,
+            zero=0,
+            optional=None,
             *,
             kw1,
             kw2=True,
         ):
             pass
 
-        old_defaults = {'kw2': True}
+        old_defaults = {"kw2": True}
         self.assertEqual(_testcapi.function_get_kw_defaults(some), old_defaults)
         self.assertEqual(some.__kwdefaults__, old_defaults)
 
@@ -1048,11 +1231,11 @@ class CAPITest(unittest.TestCase):
         self.assertEqual(some.__kwdefaults__, old_defaults)
 
         with self.assertRaises(SystemError):
-            _testcapi.function_set_kw_defaults(1, {})    # not a function
+            _testcapi.function_set_kw_defaults(1, {})  # not a function
         self.assertEqual(_testcapi.function_get_kw_defaults(some), old_defaults)
         self.assertEqual(some.__kwdefaults__, old_defaults)
 
-        new_defaults = {'kw2': (1, 2, 3)}
+        new_defaults = {"kw2": (1, 2, 3)}
         _testcapi.function_set_kw_defaults(some, new_defaults)
         self.assertEqual(_testcapi.function_get_kw_defaults(some), new_defaults)
         self.assertEqual(some.__kwdefaults__, new_defaults)
@@ -1065,7 +1248,7 @@ class CAPITest(unittest.TestCase):
 
         class dictsub(dict): ...  # dict subclasses must work
 
-        new_defaults = dictsub({'kw2': None})
+        new_defaults = dictsub({"kw2": None})
         _testcapi.function_set_kw_defaults(some, new_defaults)
         self.assertEqual(_testcapi.function_get_kw_defaults(some), new_defaults)
         self.assertEqual(some.__kwdefaults__, new_defaults)
@@ -1078,7 +1261,7 @@ class CAPITest(unittest.TestCase):
 
     def test_unstable_gc_new_with_extra_data(self):
         class Data(_testcapi.ObjExtraData):
-            __slots__ = ('x', 'y')
+            __slots__ = ("x", "y")
 
         d = Data()
         d.x = 10
@@ -1100,8 +1283,8 @@ class TestHeapTypeRelative(unittest.TestCase):
         # Test subclassing using "relative" basicsize, see PEP 697
         def check(extra_base_size, extra_size):
             Base, Sub, instance, data_ptr, data_offset, data_size = (
-                _testcapi.make_sized_heaptypes(
-                    extra_base_size, -extra_size))
+                _testcapi.make_sized_heaptypes(extra_base_size, -extra_size)
+            )
 
             # no alignment shenanigans when inheriting directly
             if extra_size == 0:
@@ -1111,37 +1294,48 @@ class TestHeapTypeRelative(unittest.TestCase):
             else:
                 # The following offsets should be in increasing order:
                 offsets = [
-                    (0, 'start of object'),
-                    (Base.__basicsize__, 'end of base data'),
-                    (data_offset, 'subclass data'),
-                    (data_offset + extra_size, 'end of requested subcls data'),
-                    (data_offset + data_size, 'end of reserved subcls data'),
-                    (Sub.__basicsize__, 'end of object'),
+                    (0, "start of object"),
+                    (Base.__basicsize__, "end of base data"),
+                    (data_offset, "subclass data"),
+                    (data_offset + extra_size, "end of requested subcls data"),
+                    (data_offset + data_size, "end of reserved subcls data"),
+                    (Sub.__basicsize__, "end of object"),
                 ]
                 ordered_offsets = sorted(offsets, key=operator.itemgetter(0))
                 self.assertEqual(
-                    offsets, ordered_offsets,
-                    msg=f'Offsets not in expected order, got: {ordered_offsets}')
+                    offsets,
+                    ordered_offsets,
+                    msg=f"Offsets not in expected order, got: {ordered_offsets}",
+                )
 
                 # end of reserved subcls data == end of object
                 self.assertEqual(Sub.__basicsize__, data_offset + data_size)
 
                 # we don't reserve (requested + alignment) or more data
-                self.assertLess(data_size - extra_size,
-                                _testcapi.ALIGNOF_MAX_ALIGN_T)
+                self.assertLess(data_size - extra_size, _testcapi.ALIGNOF_MAX_ALIGN_T)
 
             # The offsets/sizes we calculated should be aligned.
             self.assertEqual(data_offset % _testcapi.ALIGNOF_MAX_ALIGN_T, 0)
             self.assertEqual(data_size % _testcapi.ALIGNOF_MAX_ALIGN_T, 0)
 
-        sizes = sorted({0, 1, 2, 3, 4, 7, 8, 123,
-                        object.__basicsize__,
-                        object.__basicsize__-1,
-                        object.__basicsize__+1})
+        sizes = sorted(
+            {
+                0,
+                1,
+                2,
+                3,
+                4,
+                7,
+                8,
+                123,
+                object.__basicsize__,
+                object.__basicsize__ - 1,
+                object.__basicsize__ + 1,
+            }
+        )
         for extra_base_size in sizes:
             for extra_size in sizes:
-                args = dict(extra_base_size=extra_base_size,
-                            extra_size=extra_size)
+                args = dict(extra_base_size=extra_base_size, extra_size=extra_size)
                 with self.subTest(**args):
                     check(**args)
 
@@ -1152,41 +1346,71 @@ class TestHeapTypeRelative(unittest.TestCase):
 
     def test_heaptype_inherit_itemsize(self):
         """Test HeapCCollection subclasses work properly"""
-        sizes = sorted({0, 1, 2, 3, 4, 7, 8, 123,
-                        object.__basicsize__,
-                        object.__basicsize__-1,
-                        object.__basicsize__+1})
+        sizes = sorted(
+            {
+                0,
+                1,
+                2,
+                3,
+                4,
+                7,
+                8,
+                123,
+                object.__basicsize__,
+                object.__basicsize__ - 1,
+                object.__basicsize__ + 1,
+            }
+        )
         for extra_size in sizes:
             with self.subTest(extra_size=extra_size):
                 Sub = _testcapi.subclass_var_heaptype(
-                    _testcapi.HeapCCollection, -extra_size, 0, 0)
+                    _testcapi.HeapCCollection, -extra_size, 0, 0
+                )
                 collection = Sub(1, 2, 3)
                 collection.set_data_to_3s()
 
                 self.assertEqual(list(collection), [1, 2, 3])
                 mem = collection.get_data()
                 self.assertGreaterEqual(len(mem), extra_size)
-                self.assertTrue(set(mem) <= {3}, f'got {mem!r}')
+                self.assertTrue(set(mem) <= {3}, f"got {mem!r}")
 
     def test_heaptype_invalid_inheritance(self):
-        with self.assertRaises(SystemError,
-                               msg="Cannot extend variable-size class without "
-                               + "Py_TPFLAGS_ITEMS_AT_END"):
+        with self.assertRaises(
+            SystemError,
+            msg="Cannot extend variable-size class without "
+            + "Py_TPFLAGS_ITEMS_AT_END",
+        ):
             _testcapi.subclass_heaptype(int, -8, 0)
 
     def test_heaptype_relative_members(self):
         """Test HeapCCollection subclasses work properly"""
-        sizes = sorted({0, 1, 2, 3, 4, 7, 8, 123,
-                        object.__basicsize__,
-                        object.__basicsize__-1,
-                        object.__basicsize__+1})
+        sizes = sorted(
+            {
+                0,
+                1,
+                2,
+                3,
+                4,
+                7,
+                8,
+                123,
+                object.__basicsize__,
+                object.__basicsize__ - 1,
+                object.__basicsize__ + 1,
+            }
+        )
         for extra_base_size in sizes:
             for extra_size in sizes:
                 for offset in sizes:
-                    with self.subTest(extra_base_size=extra_base_size, extra_size=extra_size, offset=offset):
+                    with self.subTest(
+                        extra_base_size=extra_base_size,
+                        extra_size=extra_size,
+                        offset=offset,
+                    ):
                         if offset < extra_size:
                             Sub = _testcapi.make_heaptype_with_member(
-                                extra_base_size, -extra_size, offset, True)
+                                extra_base_size, -extra_size, offset, True
+                            )
                             Base = Sub.mro()[1]
                             instance = Sub()
                             self.assertEqual(instance.memb, instance.get_memb())
@@ -1196,8 +1420,12 @@ class TestHeapTypeRelative(unittest.TestCase):
                             instance.memb = 14
                             self.assertEqual(instance.memb, instance.get_memb())
                             self.assertEqual(instance.get_memb(), 14)
-                            self.assertGreaterEqual(instance.get_memb_offset(), Base.__basicsize__)
-                            self.assertLess(instance.get_memb_offset(), Sub.__basicsize__)
+                            self.assertGreaterEqual(
+                                instance.get_memb_offset(), Base.__basicsize__
+                            )
+                            self.assertLess(
+                                instance.get_memb_offset(), Sub.__basicsize__
+                            )
                             with self.assertRaises(SystemError):
                                 instance.get_memb_relative()
                             with self.assertRaises(SystemError):
@@ -1205,34 +1433,43 @@ class TestHeapTypeRelative(unittest.TestCase):
                         else:
                             with self.assertRaises(SystemError):
                                 Sub = _testcapi.make_heaptype_with_member(
-                                    extra_base_size, -extra_size, offset, True)
+                                    extra_base_size, -extra_size, offset, True
+                                )
                         with self.assertRaises(SystemError):
                             Sub = _testcapi.make_heaptype_with_member(
-                                extra_base_size, extra_size, offset, True)
-                with self.subTest(extra_base_size=extra_base_size, extra_size=extra_size):
+                                extra_base_size, extra_size, offset, True
+                            )
+                with self.subTest(
+                    extra_base_size=extra_base_size, extra_size=extra_size
+                ):
                     with self.assertRaises(SystemError):
                         Sub = _testcapi.make_heaptype_with_member(
-                            extra_base_size, -extra_size, -1, True)
+                            extra_base_size, -extra_size, -1, True
+                        )
 
     def test_heaptype_relative_members_errors(self):
         with self.assertRaisesRegex(
-                SystemError,
-                r"With Py_RELATIVE_OFFSET, basicsize must be negative"):
+            SystemError, r"With Py_RELATIVE_OFFSET, basicsize must be negative"
+        ):
             _testcapi.make_heaptype_with_member(0, 1234, 0, True)
         with self.assertRaisesRegex(
-                SystemError, r"Member offset out of range \(0\.\.-basicsize\)"):
+            SystemError, r"Member offset out of range \(0\.\.-basicsize\)"
+        ):
             _testcapi.make_heaptype_with_member(0, -8, 1234, True)
         with self.assertRaisesRegex(
-                SystemError, r"Member offset out of range \(0\.\.-basicsize\)"):
+            SystemError, r"Member offset out of range \(0\.\.-basicsize\)"
+        ):
             _testcapi.make_heaptype_with_member(0, -8, -1, True)
 
         Sub = _testcapi.make_heaptype_with_member(0, -8, 0, True)
         instance = Sub()
         with self.assertRaisesRegex(
-                SystemError, r"PyMember_GetOne used with Py_RELATIVE_OFFSET"):
+            SystemError, r"PyMember_GetOne used with Py_RELATIVE_OFFSET"
+        ):
             instance.get_memb_relative()
         with self.assertRaisesRegex(
-                SystemError, r"PyMember_SetOne used with Py_RELATIVE_OFFSET"):
+            SystemError, r"PyMember_SetOne used with Py_RELATIVE_OFFSET"
+        ):
             instance.set_memb_relative(0)
 
     def test_pyobject_getitemdata_error(self):
@@ -1254,56 +1491,63 @@ class TestPendingCalls(unittest.TestCase):
 
     def pendingcalls_submit(self, l, n):
         def callback():
-            #this function can be interrupted by thread switching so let's
-            #use an atomic operation
+            # this function can be interrupted by thread switching so let's
+            # use an atomic operation
             l.append(None)
 
         for i in range(n):
-            time.sleep(random.random()*0.02) #0.01 secs on average
-            #try submitting callback until successful.
-            #rely on regular interrupt to flush queue if we are
-            #unsuccessful.
+            time.sleep(random.random() * 0.02)  # 0.01 secs on average
+            # try submitting callback until successful.
+            # rely on regular interrupt to flush queue if we are
+            # unsuccessful.
             while True:
                 if _testcapi._pending_threadfunc(callback):
                     break
 
-    def pendingcalls_wait(self, l, n, context = None):
-        #now, stick around until l[0] has grown to 10
+    def pendingcalls_wait(self, l, n, context=None):
+        # now, stick around until l[0] has grown to 10
         count = 0
         while len(l) != n:
-            #this busy loop is where we expect to be interrupted to
-            #run our callbacks.  Note that callbacks are only run on the
-            #main thread
+            # this busy loop is where we expect to be interrupted to
+            # run our callbacks.  Note that callbacks are only run on the
+            # main thread
             if False and support.verbose:
-                print("(%i)"%(len(l),),)
+                print(
+                    "(%i)" % (len(l),),
+                )
             for i in range(1000):
-                a = i*i
+                a = i * i
             if context and not context.event.is_set():
                 continue
             count += 1
-            self.assertTrue(count < 10000,
-                "timeout waiting for %i callbacks, got %i"%(n, len(l)))
+            self.assertTrue(
+                count < 10000, "timeout waiting for %i callbacks, got %i" % (n, len(l))
+            )
         if False and support.verbose:
-            print("(%i)"%(len(l),))
+            print("(%i)" % (len(l),))
 
     @threading_helper.requires_working_threading()
     def test_pendingcalls_threaded(self):
 
-        #do every callback on a separate thread
-        n = 32 #total callbacks
+        # do every callback on a separate thread
+        n = 32  # total callbacks
         threads = []
-        class foo(object):pass
+
+        class foo(object):
+            pass
+
         context = foo()
         context.l = []
-        context.n = 2 #submits per thread
+        context.n = 2  # submits per thread
         context.nThreads = n // context.n
         context.nFinished = 0
         context.lock = threading.Lock()
         context.event = threading.Event()
 
-        threads = [threading.Thread(target=self.pendingcalls_thread,
-                                    args=(context,))
-                   for i in range(context.nThreads)]
+        threads = [
+            threading.Thread(target=self.pendingcalls_thread, args=(context,))
+            for i in range(context.nThreads)
+        ]
         with threading_helper.start_threads(threads):
             self.pendingcalls_wait(context.l, n, context)
 
@@ -1320,17 +1564,19 @@ class TestPendingCalls(unittest.TestCase):
                 context.event.set()
 
     def test_pendingcalls_non_threaded(self):
-        #again, just using the main thread, likely they will all be dispatched at
-        #once.  It is ok to ask for too many, because we loop until we find a slot.
-        #the loop can be interrupted to dispatch.
-        #there are only 32 dispatch slots, so we go for twice that!
+        # again, just using the main thread, likely they will all be dispatched at
+        # once.  It is ok to ask for too many, because we loop until we find a slot.
+        # the loop can be interrupted to dispatch.
+        # there are only 32 dispatch slots, so we go for twice that!
         l = []
         n = 64
         self.pendingcalls_submit(l, n)
         self.pendingcalls_wait(l, n)
 
     def test_gen_get_code(self):
-        def genf(): yield
+        def genf():
+            yield
+
         gen = genf()
         self.assertEqual(_testcapi.gen_get_code(gen), gen.gi_code)
 
@@ -1361,6 +1607,7 @@ class TestPendingCalls(unittest.TestCase):
         def run_in_pending_call(self, worker_tids):
             assert self._add_pending is _testinternalcapi.pending_threadfunc
             self.requester_tid = threading.get_ident()
+
             def callback():
                 assert self.result is None
                 # It can be tricky to control which thread handles
@@ -1370,6 +1617,7 @@ class TestPendingCalls(unittest.TestCase):
                     self._add_pending(callback, ensure_added=True)
                     return
                 self.run()
+
             self._add_pending(callback, ensure_added=True)
 
         def create_thread(self, worker_tids):
@@ -1384,14 +1632,16 @@ class TestPendingCalls(unittest.TestCase):
 
     @threading_helper.requires_working_threading()
     def test_subthreads_can_handle_pending_calls(self):
-        payload = 'Spam spam spam spam. Lovely spam! Wonderful spam!'
+        payload = "Spam spam spam spam. Lovely spam! Wonderful spam!"
 
         task = self.PendingTask(payload)
+
         def do_the_work():
             tid = threading.get_ident()
             t = task.create_thread({tid})
             with threading_helper.start_threads([t]):
                 task.wait_for_result()
+
         t = threading.Thread(target=do_the_work)
         with threading_helper.start_threads([t]):
             pass
@@ -1408,15 +1658,18 @@ class TestPendingCalls(unittest.TestCase):
         _queue = deque()
         _active = deque()
         _done_lock = threading.Lock()
+
         def queue_put(task):
             _queue.append(task)
             _active.append(True)
+
         def queue_get():
             try:
                 task = _queue.popleft()
             except IndexError:
                 raise queue.Empty
             return task
+
         def queue_task_done():
             _active.pop()
             if not _active:
@@ -1424,8 +1677,10 @@ class TestPendingCalls(unittest.TestCase):
                     _done_lock.release()
                 except RuntimeError:
                     assert not _done_lock.locked()
+
         def queue_empty():
             return not _queue
+
         def queue_join():
             _done_lock.acquire()
             _done_lock.release()
@@ -1433,7 +1688,7 @@ class TestPendingCalls(unittest.TestCase):
         tasks = []
         for i in range(20):
             task = self.PendingTask(
-                req=f'request {i}',
+                req=f"request {i}",
                 taskid=i,
                 notify_done=queue_task_done,
             )
@@ -1453,6 +1708,7 @@ class TestPendingCalls(unittest.TestCase):
                 task.run_in_pending_call(worker_tids)
 
         done = False
+
         def run_tasks():
             while not queue_empty():
                 if done:
@@ -1463,14 +1719,15 @@ class TestPendingCalls(unittest.TestCase):
                 time.sleep(0.01)
 
         # Start the workers and wait for them to finish.
-        worker_threads = [threading.Thread(target=run_tasks)
-                          for _ in range(3)]
+        worker_threads = [threading.Thread(target=run_tasks) for _ in range(3)]
         with threading_helper.start_threads(worker_threads):
             try:
                 # Add a pending call for each task.
                 worker_tids = [t.ident for t in worker_threads]
-                threads = [threading.Thread(target=add_tasks, args=(worker_tids,))
-                           for _ in range(3)]
+                threads = [
+                    threading.Thread(target=add_tasks, args=(worker_tids,))
+                    for _ in range(3)
+                ]
                 with threading_helper.start_threads(threads):
                     try:
                         pass
@@ -1488,7 +1745,7 @@ class TestPendingCalls(unittest.TestCase):
 
         self.assertNotIn(main_tid, runner_tids)
         for task in tasks:
-            with self.subTest(f'task {task.id}'):
+            with self.subTest(f"task {task.id}"):
                 self.assertNotEqual(task.requester_tid, main_tid)
                 self.assertNotEqual(task.requester_tid, task.runner_tid)
                 self.assertNotIn(task.requester_tid, runner_tids)
@@ -1504,14 +1761,17 @@ class TestPendingCalls(unittest.TestCase):
         maxtext = 250
         main_interpid = 0
         interpid = _interpreters.create()
-        _interpreters.run_string(interpid, f"""if True:
+        _interpreters.run_string(
+            interpid,
+            f"""if True:
             import json
             import os
             import threading
             import time
             import _testinternalcapi
             from test.support import threading_helper
-            """)
+            """,
+        )
 
         def create_pipe():
             r, w = os.pipe()
@@ -1519,13 +1779,15 @@ class TestPendingCalls(unittest.TestCase):
             self.addCleanup(lambda: os.close(w))
             return r, w
 
-        with self.subTest('add in main, run in subinterpreter'):
+        with self.subTest("add in main, run in subinterpreter"):
             r_ready, w_ready = create_pipe()
-            r_done, w_done= create_pipe()
+            r_done, w_done = create_pipe()
             timeout = time.time() + 30  # seconds
 
             def do_work():
-                _interpreters.run_string(interpid, f"""if True:
+                _interpreters.run_string(
+                    interpid,
+                    f"""if True:
                     # Wait until this interp has handled the pending call.
                     waiting = False
                     done = False
@@ -1544,24 +1806,28 @@ class TestPendingCalls(unittest.TestCase):
                             time.sleep(0.01)
                             if time.time() > {timeout}:
                                 raise Exception('timed out!')
-                    """)
+                    """,
+                )
+
             t = threading.Thread(target=do_work)
             with threading_helper.start_threads([t]):
                 os.read(r_ready, 1)
                 # Add the pending call and wait for it to finish.
                 actual = _testinternalcapi.pending_identify(interpid)
                 # Signal the subinterpreter to stop.
-                os.write(w_done, b'\0')
+                os.write(w_done, b"\0")
 
             self.assertEqual(actual, int(interpid))
 
-        with self.subTest('add in main, run in subinterpreter sub-thread'):
+        with self.subTest("add in main, run in subinterpreter sub-thread"):
             r_ready, w_ready = create_pipe()
-            r_done, w_done= create_pipe()
+            r_done, w_done = create_pipe()
             timeout = time.time() + 30  # seconds
 
             def do_work():
-                _interpreters.run_string(interpid, f"""if True:
+                _interpreters.run_string(
+                    interpid,
+                    f"""if True:
                     waiting = False
                     done = False
                     def subthread():
@@ -1579,109 +1845,126 @@ class TestPendingCalls(unittest.TestCase):
                         waiting = True
                         os.read({r_done}, 1)
                         done = True
-                    """)
+                    """,
+                )
+
             t = threading.Thread(target=do_work)
             with threading_helper.start_threads([t]):
                 os.read(r_ready, 1)
                 # Add the pending call and wait for it to finish.
                 actual = _testinternalcapi.pending_identify(interpid)
                 # Signal the subinterpreter to stop.
-                os.write(w_done, b'\0')
+                os.write(w_done, b"\0")
 
             self.assertEqual(actual, int(interpid))
 
-        with self.subTest('add in subinterpreter, run in main'):
+        with self.subTest("add in subinterpreter, run in main"):
             r_ready, w_ready = create_pipe()
-            r_done, w_done= create_pipe()
-            r_data, w_data= create_pipe()
+            r_done, w_done = create_pipe()
+            r_data, w_data = create_pipe()
             timeout = time.time() + 30  # seconds
 
             def add_job():
                 os.read(r_ready, 1)
-                _interpreters.run_string(interpid, f"""if True:
+                _interpreters.run_string(
+                    interpid,
+                    f"""if True:
                     # Add the pending call and wait for it to finish.
                     actual = _testinternalcapi.pending_identify({main_interpid})
                     # Signal the subinterpreter to stop.
                     os.write({w_done}, b'\\0')
                     os.write({w_data}, actual.to_bytes(1, 'little'))
-                    """)
+                    """,
+                )
+
             # Wait until this interp has handled the pending call.
             waiting = False
             done = False
+
             def wait(os_read=os.read):
                 nonlocal done, waiting
                 waiting = True
                 os_read(r_done, 1)
                 done = True
+
             t1 = threading.Thread(target=add_job)
             t2 = threading.Thread(target=wait)
             with threading_helper.start_threads([t1, t2]):
                 while not waiting:
                     pass
-                os.write(w_ready, b'\0')
+                os.write(w_ready, b"\0")
                 # Loop to trigger the eval breaker.
                 while not done:
                     time.sleep(0.01)
                     if time.time() > timeout:
-                        raise Exception('timed out!')
+                        raise Exception("timed out!")
                 text = os.read(r_data, 1)
-            actual = int.from_bytes(text, 'little')
+            actual = int.from_bytes(text, "little")
 
             self.assertEqual(actual, int(main_interpid))
 
-        with self.subTest('add in subinterpreter, run in sub-thread'):
+        with self.subTest("add in subinterpreter, run in sub-thread"):
             r_ready, w_ready = create_pipe()
-            r_done, w_done= create_pipe()
-            r_data, w_data= create_pipe()
+            r_done, w_done = create_pipe()
+            r_data, w_data = create_pipe()
             timeout = time.time() + 30  # seconds
 
             def add_job():
                 os.read(r_ready, 1)
-                _interpreters.run_string(interpid, f"""if True:
+                _interpreters.run_string(
+                    interpid,
+                    f"""if True:
                     # Add the pending call and wait for it to finish.
                     actual = _testinternalcapi.pending_identify({main_interpid})
                     # Signal the subinterpreter to stop.
                     os.write({w_done}, b'\\0')
                     os.write({w_data}, actual.to_bytes(1, 'little'))
-                    """)
+                    """,
+                )
+
             # Wait until this interp has handled the pending call.
             waiting = False
             done = False
+
             def wait(os_read=os.read):
                 nonlocal done, waiting
                 waiting = True
                 os_read(r_done, 1)
                 done = True
+
             def subthread():
                 while not waiting:
                     pass
-                os.write(w_ready, b'\0')
+                os.write(w_ready, b"\0")
                 # Loop to trigger the eval breaker.
                 while not done:
                     time.sleep(0.01)
                     if time.time() > timeout:
-                        raise Exception('timed out!')
+                        raise Exception("timed out!")
+
             t1 = threading.Thread(target=add_job)
             t2 = threading.Thread(target=wait)
             t3 = threading.Thread(target=subthread)
             with threading_helper.start_threads([t1, t2, t3]):
                 pass
             text = os.read(r_data, 1)
-            actual = int.from_bytes(text, 'little')
+            actual = int.from_bytes(text, "little")
 
             self.assertEqual(actual, int(main_interpid))
 
         # XXX We can't use the rest until gh-105716 is fixed.
         return
 
-        with self.subTest('add in subinterpreter, run in subinterpreter sub-thread'):
+        with self.subTest("add in subinterpreter, run in subinterpreter sub-thread"):
             r_ready, w_ready = create_pipe()
-            r_done, w_done= create_pipe()
-            r_data, w_data= create_pipe()
+            r_done, w_done = create_pipe()
+            r_data, w_data = create_pipe()
             timeout = time.time() + 30  # seconds
 
             def do_work():
-                _interpreters.run_string(interpid, f"""if True:
+                _interpreters.run_string(
+                    interpid,
+                    f"""if True:
                     waiting = False
                     done = False
                     def subthread():
@@ -1699,22 +1982,27 @@ class TestPendingCalls(unittest.TestCase):
                         waiting = True
                         os.read({r_done}, 1)
                         done = True
-                    """)
+                    """,
+                )
+
             t = threading.Thread(target=do_work)
-            #with threading_helper.start_threads([t]):
+            # with threading_helper.start_threads([t]):
             t.start()
             if True:
                 os.read(r_ready, 1)
-                _interpreters.run_string(interpid, f"""if True:
+                _interpreters.run_string(
+                    interpid,
+                    f"""if True:
                     # Add the pending call and wait for it to finish.
                     actual = _testinternalcapi.pending_identify({interpid})
                     # Signal the subinterpreter to stop.
                     os.write({w_done}, b'\\0')
                     os.write({w_data}, actual.to_bytes(1, 'little'))
-                    """)
+                    """,
+                )
             t.join()
             text = os.read(r_data, 1)
-            actual = int.from_bytes(text, 'little')
+            actual = int.from_bytes(text, "little")
 
             self.assertEqual(actual, int(interpid))
 
@@ -1724,13 +2012,16 @@ class SubinterpreterTest(unittest.TestCase):
     @unittest.skipUnless(hasattr(os, "pipe"), "requires os.pipe()")
     def test_subinterps(self):
         import builtins
+
         r, w = os.pipe()
         code = """if 1:
             import sys, builtins, pickle
             with open({:d}, "wb") as f:
                 pickle.dump(id(sys.modules), f)
                 pickle.dump(id(builtins), f)
-            """.format(w)
+            """.format(
+            w
+        )
         with open(r, "rb") as f:
             ret = support.run_in_subinterp(code)
             self.assertEqual(ret, 0)
@@ -1752,12 +2043,14 @@ class SubinterpreterTest(unittest.TestCase):
                 async def foo(arg): return await arg  # Py 3.5
 
                 pickle.dump(dict(a=a, b=b), f)
-            """.format(w)
+            """.format(
+            w
+        )
 
         with open(r, "rb") as f:
             ret = support.run_in_subinterp(code)
             self.assertEqual(ret, 0)
-            self.assertEqual(pickle.load(f), {'a': '123x', 'b': '123'})
+            self.assertEqual(pickle.load(f), {"a": "123x", "b": "123"})
 
     def test_py_config_isoloated_per_interpreter(self):
         # A config change in one interpreter must not leak to out to others.
@@ -1776,16 +2069,22 @@ class SubinterpreterTest(unittest.TestCase):
         assert sub_value == 55555, sub_value
         """
         before_config = _testinternalcapi.get_config()
-        assert before_config['int_max_str_digits'] != 55555
-        self.assertEqual(support.run_in_subinterp(code), 0,
-                         'subinterp code failure, check stderr.')
+        assert before_config["int_max_str_digits"] != 55555
+        self.assertEqual(
+            support.run_in_subinterp(code), 0, "subinterp code failure, check stderr."
+        )
         after_config = _testinternalcapi.get_config()
         self.assertIsNot(
-                before_config, after_config,
-                "Expected get_config() to return a new dict on each call")
-        self.assertEqual(before_config, after_config,
-                         "CAUTION: Tests executed after this may be "
-                         "running under an altered config.")
+            before_config,
+            after_config,
+            "Expected get_config() to return a new dict on each call",
+        )
+        self.assertEqual(
+            before_config,
+            after_config,
+            "CAUTION: Tests executed after this may be "
+            "running under an altered config.",
+        )
         # try:...finally: calling set_config(before_config) not done
         # as that results in sys.argv, sys.path, and sys.warnoptions
         # "being modified by test_capi" per test.regrtest.  So if this
@@ -1801,52 +2100,53 @@ class SubinterpreterTest(unittest.TestCase):
         """
         import json
 
-        OBMALLOC = 1<<5
-        EXTENSIONS = 1<<8
-        THREADS = 1<<10
-        DAEMON_THREADS = 1<<11
-        FORK = 1<<15
-        EXEC = 1<<16
-        ALL_FLAGS = (OBMALLOC | FORK | EXEC | THREADS | DAEMON_THREADS
-                     | EXTENSIONS);
+        OBMALLOC = 1 << 5
+        EXTENSIONS = 1 << 8
+        THREADS = 1 << 10
+        DAEMON_THREADS = 1 << 11
+        FORK = 1 << 15
+        EXEC = 1 << 16
+        ALL_FLAGS = OBMALLOC | FORK | EXEC | THREADS | DAEMON_THREADS | EXTENSIONS
 
         features = [
-            'obmalloc',
-            'fork',
-            'exec',
-            'threads',
-            'daemon_threads',
-            'extensions',
-            'own_gil',
+            "obmalloc",
+            "fork",
+            "exec",
+            "threads",
+            "daemon_threads",
+            "extensions",
+            "own_gil",
         ]
-        kwlist = [f'allow_{n}' for n in features]
-        kwlist[0] = 'use_main_obmalloc'
-        kwlist[-2] = 'check_multi_interp_extensions'
-        kwlist[-1] = 'own_gil'
+        kwlist = [f"allow_{n}" for n in features]
+        kwlist[0] = "use_main_obmalloc"
+        kwlist[-2] = "check_multi_interp_extensions"
+        kwlist[-1] = "own_gil"
 
         # expected to work
         for config, expected in {
-            (True, True, True, True, True, True, True):
-                (ALL_FLAGS, True),
-            (True, False, False, False, False, False, False):
-                (OBMALLOC, False),
-            (False, False, False, True, False, True, False):
-                (THREADS | EXTENSIONS, False),
+            (True, True, True, True, True, True, True): (ALL_FLAGS, True),
+            (True, False, False, False, False, False, False): (OBMALLOC, False),
+            (False, False, False, True, False, True, False): (
+                THREADS | EXTENSIONS,
+                False,
+            ),
         }.items():
             kwargs = dict(zip(kwlist, config))
             exp_flags, exp_gil = expected
             expected = {
-                'feature_flags': exp_flags,
-                'own_gil': exp_gil,
+                "feature_flags": exp_flags,
+                "own_gil": exp_gil,
             }
             with self.subTest(config):
                 r, w = os.pipe()
-                script = textwrap.dedent(f'''
+                script = textwrap.dedent(
+                    f"""
                     import _testinternalcapi, json, os
                     settings = _testinternalcapi.get_interp_settings()
                     with os.fdopen({w}, "w") as stdin:
                         json.dump(settings, stdin)
-                    ''')
+                    """
+                )
                 with os.fdopen(r) as stdout:
                     ret = support.run_in_subinterp_with_config(script, **kwargs)
                     self.assertEqual(ret, 0)
@@ -1861,11 +2161,13 @@ class SubinterpreterTest(unittest.TestCase):
         ]:
             kwargs = dict(zip(kwlist, config))
             with self.subTest(config):
-                script = textwrap.dedent(f'''
+                script = textwrap.dedent(
+                    f"""
                     import _testinternalcapi
                     _testinternalcapi.get_interp_settings()
                     raise NotImplementedError('unreachable')
-                    ''')
+                    """
+                )
                 with self.assertRaises(RuntimeError):
                     support.run_in_subinterp_with_config(script, **kwargs)
 
@@ -1880,20 +2182,20 @@ class SubinterpreterTest(unittest.TestCase):
         """
         import json
 
-        OBMALLOC = 1<<5
-        EXTENSIONS = 1<<8
-        THREADS = 1<<10
-        DAEMON_THREADS = 1<<11
-        FORK = 1<<15
-        EXEC = 1<<16
+        OBMALLOC = 1 << 5
+        EXTENSIONS = 1 << 8
+        THREADS = 1 << 10
+        DAEMON_THREADS = 1 << 11
+        FORK = 1 << 15
+        EXEC = 1 << 16
         BASE_FLAGS = OBMALLOC | FORK | EXEC | THREADS | DAEMON_THREADS
         base_kwargs = {
-            'use_main_obmalloc': True,
-            'allow_fork': True,
-            'allow_exec': True,
-            'allow_threads': True,
-            'allow_daemon_threads': True,
-            'own_gil': False,
+            "use_main_obmalloc": True,
+            "allow_fork": True,
+            "allow_exec": True,
+            "allow_threads": True,
+            "allow_daemon_threads": True,
+            "own_gil": False,
         }
 
         def check(enabled, override):
@@ -1903,30 +2205,32 @@ class SubinterpreterTest(unittest.TestCase):
             )
             flags = BASE_FLAGS | EXTENSIONS if enabled else BASE_FLAGS
             settings = {
-                'feature_flags': flags,
-                'own_gil': False,
+                "feature_flags": flags,
+                "own_gil": False,
             }
 
             expected = {
-                'requested': override,
-                'override__initial': 0,
-                'override_after': override,
-                'override_restored': 0,
+                "requested": override,
+                "override__initial": 0,
+                "override_after": override,
+                "override_restored": 0,
                 # The override should not affect the config or settings.
-                'settings__initial': settings,
-                'settings_after': settings,
-                'settings_restored': settings,
+                "settings__initial": settings,
+                "settings_after": settings,
+                "settings_restored": settings,
                 # These are the most likely values to be wrong.
-                'allowed__initial': not enabled,
-                'allowed_after': not ((override > 0) if override else enabled),
-                'allowed_restored': not enabled,
+                "allowed__initial": not enabled,
+                "allowed_after": not ((override > 0) if override else enabled),
+                "allowed_restored": not enabled,
             }
 
             r, w = os.pipe()
-            script = textwrap.dedent(f'''
+            script = textwrap.dedent(
+                f"""
                 from test.test_capi.check_config import run_singlephase_check
                 run_singlephase_check({override}, {w})
-                ''')
+                """
+            )
             with os.fdopen(r) as stdout:
                 ret = support.run_in_subinterp_with_config(script, **kwargs)
                 self.assertEqual(ret, 0)
@@ -1938,19 +2242,19 @@ class SubinterpreterTest(unittest.TestCase):
         self.maxDiff = None
 
         # setting: check disabled
-        with self.subTest('config: check disabled; override: disabled'):
+        with self.subTest("config: check disabled; override: disabled"):
             check(False, -1)
-        with self.subTest('config: check disabled; override: use config'):
+        with self.subTest("config: check disabled; override: use config"):
             check(False, 0)
-        with self.subTest('config: check disabled; override: enabled'):
+        with self.subTest("config: check disabled; override: enabled"):
             check(False, 1)
 
         # setting: check enabled
-        with self.subTest('config: check enabled; override: disabled'):
+        with self.subTest("config: check enabled; override: disabled"):
             check(True, -1)
-        with self.subTest('config: check enabled; override: use config'):
+        with self.subTest("config: check enabled; override: use config"):
             check(True, 0)
-        with self.subTest('config: check enabled; override: enabled'):
+        with self.subTest("config: check enabled; override: enabled"):
             check(True, 1)
 
     def test_mutate_exception(self):
@@ -1976,7 +2280,8 @@ class SubinterpreterTest(unittest.TestCase):
         self.addCleanup(os.close, r)
         self.addCleanup(os.close, w)
 
-        script = textwrap.dedent(f"""
+        script = textwrap.dedent(
+            f"""
             import importlib.machinery
             import importlib.util
             import os
@@ -1989,7 +2294,8 @@ class SubinterpreterTest(unittest.TestCase):
             attr_id = str(id(module.Error)).encode()
 
             os.write({w}, attr_id)
-            """)
+            """
+        )
         exec(script)
         main_attr_id = os.read(r, 100)
 
@@ -2041,7 +2347,7 @@ class TestStaticTypes(unittest.TestCase):
         # The tests here don't play nice with our approach to refleak
         # detection, so we bail out in that case.
         if cls._has_run:
-            raise unittest.SkipTest('these tests do not support re-running')
+            raise unittest.SkipTest("these tests do not support re-running")
         cls._has_run = True
 
     @contextlib.contextmanager
@@ -2056,15 +2362,15 @@ class TestStaticTypes(unittest.TestCase):
 
         # First check when tp_base/tp_bases is *not* set before PyType_Ready().
         with self.basic_static_type() as cls:
-            self.assertIs(cls.__base__, object);
-            self.assertEqual(cls.__bases__, (object,));
-            self.assertIs(type(cls), type(object));
+            self.assertIs(cls.__base__, object)
+            self.assertEqual(cls.__bases__, (object,))
+            self.assertIs(type(cls), type(object))
 
         # Then check when we *do* set tp_base/tp_bases first.
         with self.basic_static_type(object) as cls:
-            self.assertIs(cls.__base__, object);
-            self.assertEqual(cls.__bases__, (object,));
-            self.assertIs(type(cls), type(object));
+            self.assertIs(cls.__base__, object)
+            self.assertEqual(cls.__bases__, (object,))
+            self.assertIs(type(cls), type(object))
 
 
 class TestThreadState(unittest.TestCase):
@@ -2083,8 +2389,11 @@ class TestThreadState(unittest.TestCase):
             a = b = callback
             time.sleep(1)
             # Check our main thread is in the list exactly 3 times.
-            self.assertEqual(idents.count(threading.get_ident()), 3,
-                             "Couldn't find main thread correctly in the list")
+            self.assertEqual(
+                idents.count(threading.get_ident()),
+                3,
+                "Couldn't find main thread correctly in the list",
+            )
 
         target()
         t = threading.Thread(target=target)
@@ -2095,25 +2404,29 @@ class TestThreadState(unittest.TestCase):
     @threading_helper.requires_working_threading()
     def test_gilstate_ensure_no_deadlock(self):
         # See https://github.com/python/cpython/issues/96071
-        code = textwrap.dedent("""
+        code = textwrap.dedent(
+            """
             import _testcapi
 
             def callback():
                 print('callback called')
 
             _testcapi._test_thread_state(callback)
-            """)
-        ret = assert_python_ok('-X', 'tracemalloc', '-c', code)
-        self.assertIn(b'callback called', ret.out)
+            """
+        )
+        ret = assert_python_ok("-X", "tracemalloc", "-c", code)
+        self.assertIn(b"callback called", ret.out)
 
     def test_gilstate_matches_current(self):
         _testcapi.test_current_tstate_matches()
 
 
 class Test_testcapi(unittest.TestCase):
-    locals().update((name, getattr(_testcapi, name))
-                    for name in dir(_testcapi)
-                    if name.startswith('test_') and not name.endswith('_code'))
+    locals().update(
+        (name, getattr(_testcapi, name))
+        for name in dir(_testcapi)
+        if name.startswith("test_") and not name.endswith("_code")
+    )
 
     # Suppress warning from PyUnicode_FromUnicode().
     @warnings_helper.ignore_warnings(category=DeprecationWarning)
@@ -2125,9 +2438,11 @@ class Test_testcapi(unittest.TestCase):
 
 
 class Test_testinternalcapi(unittest.TestCase):
-    locals().update((name, getattr(_testinternalcapi, name))
-                    for name in dir(_testinternalcapi)
-                    if name.startswith('test_'))
+    locals().update(
+        (name, getattr(_testinternalcapi, name))
+        for name in dir(_testinternalcapi)
+        if name.startswith("test_")
+    )
 
 
 @unittest.skipIf(_testmultiphase is None, "test requires _testmultiphase module")
@@ -2139,8 +2454,8 @@ class Test_ModuleStateAccess(unittest.TestCase):
     # This module has multi-phase initialization, unlike _testcapi.
 
     def setUp(self):
-        fullname = '_testmultiphase_meth_state_access'  # XXX
-        origin = importlib.util.find_spec('_testmultiphase').origin
+        fullname = "_testmultiphase_meth_state_access"  # XXX
+        origin = importlib.util.find_spec("_testmultiphase").origin
         loader = importlib.machinery.ExtensionFileLoader(fullname, origin)
         spec = importlib.util.spec_from_loader(fullname, loader)
         module = importlib.util.module_from_spec(spec)
@@ -2149,6 +2464,7 @@ class Test_ModuleStateAccess(unittest.TestCase):
 
     def test_subclass_get_module(self):
         """PyType_GetModule for defining_class"""
+
         class StateAccessType_Subclass(self.module.StateAccessType):
             pass
 
@@ -2174,8 +2490,8 @@ class Test_ModuleStateAccess(unittest.TestCase):
         b = self.module.StateAccessType()
 
         methods = {
-            'clinic': a.increment_count_clinic,
-            'noclinic': a.increment_count_noclinic,
+            "clinic": a.increment_count_clinic,
+            "noclinic": a.increment_count_noclinic,
         }
 
         for name, increment_count in methods.items():
@@ -2215,6 +2531,7 @@ class Test_ModuleStateAccess(unittest.TestCase):
         # see bpo-46433
         class Subclass(BaseException, self.module.StateAccessType):
             pass
+
         self.assertIs(Subclass().get_defining_module(), self.module)
 
 
@@ -2244,6 +2561,7 @@ class TestInternalFrameApi(unittest.TestCase):
 
 SUFFICIENT_TO_DEOPT_AND_SPECIALIZE = 100
 
+
 class Test_Pep523API(unittest.TestCase):
 
     def do_test(self, func, names):
@@ -2266,34 +2584,42 @@ class Test_Pep523API(unittest.TestCase):
         class C:
             def __getitem__(self, other):
                 return None
+
         def func():
             C()[42]
+
         names = ["func", "__getitem__"]
         self.do_test(func, names)
 
     def test_inlined_call(self):
         def inner(x=42):
             pass
+
         def func():
             inner()
             inner(42)
+
         names = ["func", "inner", "inner"]
         self.do_test(func, names)
 
     def test_inlined_call_function_ex(self):
         def inner(x):
             pass
+
         def func():
             inner(*[42])
+
         names = ["func", "inner"]
         self.do_test(func, names)
 
     def test_inlined_for_iter(self):
         def gen():
             yield 42
+
         def func():
             for _ in gen():
                 pass
+
         names = ["func", "gen", "gen", "gen"]
         self.do_test(func, names)
 
@@ -2302,22 +2628,28 @@ class Test_Pep523API(unittest.TestCase):
             @property
             def a(self):
                 return 42
+
         class D:
             def __getattribute__(self, name):
                 return 42
+
         def func():
             C().a
             D().a
+
         names = ["func", "a", "__getattribute__"]
         self.do_test(func, names)
 
     def test_inlined_send(self):
         def inner():
             yield 42
+
         def outer():
             yield from inner()
+
         def func():
             list(outer())
+
         names = ["func", "outer", "outer", "inner", "inner", "outer", "inner"]
         self.do_test(func, names)
 

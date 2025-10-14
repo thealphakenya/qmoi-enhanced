@@ -47,6 +47,7 @@ class Test(unittest.TestCase):
                 raise RuntimeError
 
         with self.assertRaises(RuntimeError):
+
             class B(A):
                 pass
 
@@ -56,6 +57,7 @@ class Test(unittest.TestCase):
                 pass
 
         with self.assertRaises(TypeError):
+
             class B(A):
                 pass
 
@@ -127,21 +129,23 @@ class Test(unittest.TestCase):
 
         class A(metaclass=Meta):
             d = Descriptor()
+
         self.assertEqual(A, 0)
 
     def test_set_name_error(self):
         class Descriptor:
             def __set_name__(self, owner, name):
-                1/0
+                1 / 0
 
         with self.assertRaises(ZeroDivisionError) as cm:
+
             class NotGoingToWork:
                 attr = Descriptor()
 
         notes = cm.exception.__notes__
-        self.assertRegex(str(notes), r'\bNotGoingToWork\b')
-        self.assertRegex(str(notes), r'\battr\b')
-        self.assertRegex(str(notes), r'\bDescriptor\b')
+        self.assertRegex(str(notes), r"\bNotGoingToWork\b")
+        self.assertRegex(str(notes), r"\battr\b")
+        self.assertRegex(str(notes), r"\bDescriptor\b")
 
     def test_set_name_wrong(self):
         class Descriptor:
@@ -149,16 +153,18 @@ class Test(unittest.TestCase):
                 pass
 
         with self.assertRaises(TypeError) as cm:
+
             class NotGoingToWork:
                 attr = Descriptor()
 
         notes = cm.exception.__notes__
-        self.assertRegex(str(notes), r'\bNotGoingToWork\b')
-        self.assertRegex(str(notes), r'\battr\b')
-        self.assertRegex(str(notes), r'\bDescriptor\b')
+        self.assertRegex(str(notes), r"\bNotGoingToWork\b")
+        self.assertRegex(str(notes), r"\battr\b")
+        self.assertRegex(str(notes), r"\bDescriptor\b")
 
     def test_set_name_lookup(self):
         resolved = []
+
         class NonDescriptor:
             def __getattr__(self, name):
                 resolved.append(name)
@@ -166,8 +172,9 @@ class Test(unittest.TestCase):
         class A:
             d = NonDescriptor()
 
-        self.assertNotIn('__set_name__', resolved,
-                         '__set_name__ is looked up in instance dict')
+        self.assertNotIn(
+            "__set_name__", resolved, "__set_name__ is looked up in instance dict"
+        )
 
     def test_set_name_init_subclass(self):
         class Descriptor:
@@ -191,15 +198,16 @@ class Test(unittest.TestCase):
             d = Descriptor()
 
         self.assertIs(B.owner, B)
-        self.assertEqual(B.name, 'd')
+        self.assertEqual(B.name, "d")
         self.assertIs(B.meta_owner, B)
-        self.assertEqual(B.name, 'd')
+        self.assertEqual(B.name, "d")
 
     def test_set_name_modifying_dict(self):
         notified = []
+
         class Descriptor:
             def __set_name__(self, owner, name):
-                setattr(owner, name + 'x', None)
+                setattr(owner, name + "x", None)
                 notified.append(name)
 
         class A:
@@ -209,27 +217,27 @@ class Test(unittest.TestCase):
             d = Descriptor()
             e = Descriptor()
 
-        self.assertCountEqual(notified, ['a', 'b', 'c', 'd', 'e'])
+        self.assertCountEqual(notified, ["a", "b", "c", "d", "e"])
 
     def test_errors(self):
         class MyMeta(type):
             pass
 
         with self.assertRaises(TypeError):
+
             class MyClass(metaclass=MyMeta, otherarg=1):
                 pass
 
         with self.assertRaises(TypeError):
-            types.new_class("MyClass", (object,),
-                            dict(metaclass=MyMeta, otherarg=1))
-        types.prepare_class("MyClass", (object,),
-                            dict(metaclass=MyMeta, otherarg=1))
+            types.new_class("MyClass", (object,), dict(metaclass=MyMeta, otherarg=1))
+        types.prepare_class("MyClass", (object,), dict(metaclass=MyMeta, otherarg=1))
 
         class MyMeta(type):
             def __init__(self, name, bases, namespace, otherarg):
                 super().__init__(name, bases, namespace)
 
         with self.assertRaises(TypeError):
+
             class MyClass2(metaclass=MyMeta, otherarg=1):
                 pass
 
@@ -250,10 +258,10 @@ class Test(unittest.TestCase):
         # These tests failed before Python 3.6, PEP 487
         class MyMeta(type):
             def __new__(cls, name, bases, namespace):
-                return super().__new__(cls, name=name, bases=bases,
-                                       dict=namespace)
+                return super().__new__(cls, name=name, bases=bases, dict=namespace)
 
         with self.assertRaises(TypeError):
+
             class MyClass(metaclass=MyMeta):
                 pass
 
@@ -269,12 +277,12 @@ class Test(unittest.TestCase):
         self.assertEqual(MyClass2.otherarg, 1)
 
     def test_type(self):
-        t = type('NewClass', (object,), {})
+        t = type("NewClass", (object,), {})
         self.assertIsInstance(t, type)
-        self.assertEqual(t.__name__, 'NewClass')
+        self.assertEqual(t.__name__, "NewClass")
 
         with self.assertRaises(TypeError):
-            type(name='NewClass', bases=(object,), dict={})
+            type(name="NewClass", bases=(object,), dict={})
 
 
 if __name__ == "__main__":

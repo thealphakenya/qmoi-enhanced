@@ -144,7 +144,8 @@ Unpacking to an empty iterable should raise ValueError
 
 """
 
-__test__ = {'doctests' : doctests}
+__test__ = {"doctests": doctests}
+
 
 def load_tests(loader, tests, pattern):
     tests.addTest(doctest.DocTestSuite())
@@ -154,7 +155,7 @@ def load_tests(loader, tests, pattern):
 class TestCornerCases(unittest.TestCase):
     def test_extended_oparg_not_ignored(self):
         # https://github.com/python/cpython/issues/91625
-        target = "(" + "y,"*400 + ")"
+        target = "(" + "y," * 400 + ")"
         code = f"""def unpack_400(x):
             {target} = x
             return y
@@ -166,6 +167,7 @@ class TestCornerCases(unittest.TestCase):
         for _ in range(30):
             y = unpack_400(range(400))
             self.assertEqual(y, 399)
+
 
 if __name__ == "__main__":
     unittest.main()

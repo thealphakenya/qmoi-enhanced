@@ -33,15 +33,13 @@ def normalize_trace_output(output):
         result = [
             row.split("\t")
             for row in output.splitlines()
-            if row and not row.startswith('#')
+            if row and not row.startswith("#")
         ]
         result.sort(key=lambda row: int(row[0]))
         result = [row[1] for row in result]
         return "\n".join(result)
     except (IndexError, ValueError):
-        raise AssertionError(
-            "tracer produced unparsable output:\n{}".format(output)
-        )
+        raise AssertionError("tracer produced unparsable output:\n{}".format(output))
 
 
 class TraceBackend:
@@ -50,10 +48,13 @@ class TraceBackend:
     COMMAND_ARGS = []
 
     def run_case(self, name, optimize_python=None):
-        actual_output = normalize_trace_output(self.trace_python(
-            script_file=abspath(name + self.EXTENSION),
-            python_file=abspath(name + ".py"),
-            optimize_python=optimize_python))
+        actual_output = normalize_trace_output(
+            self.trace_python(
+                script_file=abspath(name + self.EXTENSION),
+                python_file=abspath(name + ".py"),
+                optimize_python=optimize_python,
+            )
+        )
 
         with open(abspath(name + self.EXTENSION + ".expected")) as f:
             expected_output = f.read().rstrip()
@@ -68,10 +69,12 @@ class TraceBackend:
 
     def trace(self, script_file, subcommand=None):
         command = self.generate_trace_command(script_file, subcommand)
-        stdout, _ = subprocess.Popen(command,
-                                     stdout=subprocess.PIPE,
-                                     stderr=subprocess.STDOUT,
-                                     universal_newlines=True).communicate()
+        stdout, _ = subprocess.Popen(
+            command,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            universal_newlines=True,
+        ).communicate()
         return stdout
 
     def trace_python(self, script_file, python_file, optimize_python=None):
@@ -88,9 +91,7 @@ class TraceBackend:
         except (FileNotFoundError, NotADirectoryError, PermissionError) as fnfe:
             output = str(fnfe)
         if output != "probe: success":
-            raise unittest.SkipTest(
-                "{}(1) failed: {}".format(self.COMMAND[0], output)
-            )
+            raise unittest.SkipTest("{}(1) failed: {}".format(self.COMMAND[0], output))
 
 
 class DTraceBackend(TraceBackend):
@@ -117,7 +118,8 @@ class TraceTests:
 
     def run_case(self, name):
         actual_output, expected_output = self.backend.run_case(
-            name, optimize_python=self.optimize_python)
+            name, optimize_python=self.optimize_python
+        )
         self.assertEqual(actual_output, expected_output)
 
     def test_function_entry_return(self):
@@ -133,17 +135,19 @@ class TraceTests:
 
         def get_function_instructions(funcname):
             # Recompile with appropriate optimization setting
-            code = compile(source=code_string,
-                           filename="<string>",
-                           mode="exec",
-                           optimize=self.optimize_python)
+            code = compile(
+                source=code_string,
+                filename="<string>",
+                mode="exec",
+                optimize=self.optimize_python,
+            )
 
             for c in code.co_consts:
                 if isinstance(c, types.CodeType) and c.co_name == funcname:
                     return dis.get_instructions(c)
             return []
 
-        for instruction in get_function_instructions('start'):
+        for instruction in get_function_instructions("start"):
             opcodes.discard(instruction.opname)
 
         self.assertEqual(set(), opcodes)
@@ -174,16 +178,20 @@ class SystemTapOptimizedTests(TraceTests, unittest.TestCase):
     backend = SystemTapBackend()
     optimize_python = 2
 
+
 class CheckDtraceProbes(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        if sysconfig.get_config_var('WITH_DTRACE'):
+        if sysconfig.get_config_var("WITH_DTRACE"):
             readelf_major_version, readelf_minor_version = cls.get_readelf_version()
             if support.verbose:
-                print(f"readelf version: {readelf_major_version}.{readelf_minor_version}")
+                print(
+                    f"readelf version: {readelf_major_version}.{readelf_minor_version}"
+                )
         else:
-            raise unittest.SkipTest("CPython must be configured with the --with-dtrace option.")
-
+            raise unittest.SkipTest(
+                "CPython must be configured with the --with-dtrace option."
+            )
 
     @staticmethod
     def get_readelf_version():
@@ -256,5 +264,5 @@ class CheckDtraceProbes(unittest.TestCase):
                 self.assertIn(probe_name, readelf_output)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

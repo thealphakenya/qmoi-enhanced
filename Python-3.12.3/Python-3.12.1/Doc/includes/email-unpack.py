@@ -12,17 +12,23 @@ from argparse import ArgumentParser
 
 
 def main():
-    parser = ArgumentParser(description="""\
+    parser = ArgumentParser(
+        description="""\
 Unpack a MIME message into a directory of files.
-""")
-    parser.add_argument('-d', '--directory', required=True,
-                        help="""Unpack the MIME message into the named
+"""
+    )
+    parser.add_argument(
+        "-d",
+        "--directory",
+        required=True,
+        help="""Unpack the MIME message into the named
                         directory, which will be created if it doesn't already
-                        exist.""")
-    parser.add_argument('msgfile')
+                        exist.""",
+    )
+    parser.add_argument("msgfile")
     args = parser.parse_args()
 
-    with open(args.msgfile, 'rb') as fp:
+    with open(args.msgfile, "rb") as fp:
         msg = email.message_from_binary_file(fp, policy=default)
 
     try:
@@ -33,7 +39,7 @@ Unpack a MIME message into a directory of files.
     counter = 1
     for part in msg.walk():
         # multipart/* are just containers
-        if part.get_content_maintype() == 'multipart':
+        if part.get_content_maintype() == "multipart":
             continue
         # Applications should really sanitize the given filename so that an
         # email message can't be used to overwrite important files
@@ -42,12 +48,12 @@ Unpack a MIME message into a directory of files.
             ext = mimetypes.guess_extension(part.get_content_type())
             if not ext:
                 # Use a generic bag-of-bits extension
-                ext = '.bin'
-            filename = f'part-{counter:03d}{ext}'
+                ext = ".bin"
+            filename = f"part-{counter:03d}{ext}"
         counter += 1
-        with open(os.path.join(args.directory, filename), 'wb') as fp:
+        with open(os.path.join(args.directory, filename), "wb") as fp:
             fp.write(part.get_payload(decode=True))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,11 +1,11 @@
 from ctypes import *
 import unittest
 
+
 class VarSizeTest(unittest.TestCase):
     def test_resize(self):
         class X(Structure):
-            _fields_ = [("item", c_int),
-                        ("array", c_int * 1)]
+            _fields_ = [("item", c_int), ("array", c_int * 1)]
 
         self.assertEqual(sizeof(X), sizeof(c_int) * 2)
         x = X()
@@ -45,6 +45,7 @@ class VarSizeTest(unittest.TestCase):
         self.assertRaises(IndexError, array.__getitem__, 1)
         self.assertRaises(IndexError, array.__setitem__, -1, None)
         self.assertRaises(IndexError, array.__getitem__, -1)
+
 
 if __name__ == "__main__":
     unittest.main()

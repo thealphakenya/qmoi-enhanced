@@ -11,6 +11,7 @@ d3 = {"one": 1, "two": 3, "three": 5}
 d4 = {"one": None, "two": None}
 d5 = {"one": 1, "two": 1}
 
+
 class UserDictTest(mapping_tests.TestHashMappingProtocol):
     type2test = collections.UserDict
 
@@ -29,26 +30,29 @@ class UserDictTest(mapping_tests.TestHashMappingProtocol):
         # keyword arg constructor
         self.assertEqual(collections.UserDict(one=1, two=2), d2)
         # item sequence constructor
-        self.assertEqual(collections.UserDict([('one',1), ('two',2)]), d2)
-        self.assertEqual(collections.UserDict(dict=[('one',1), ('two',2)]),
-                         {'dict': [('one', 1), ('two', 2)]})
+        self.assertEqual(collections.UserDict([("one", 1), ("two", 2)]), d2)
+        self.assertEqual(
+            collections.UserDict(dict=[("one", 1), ("two", 2)]),
+            {"dict": [("one", 1), ("two", 2)]},
+        )
         # both together
-        self.assertEqual(collections.UserDict([('one',1), ('two',2)], two=3, three=5), d3)
+        self.assertEqual(
+            collections.UserDict([("one", 1), ("two", 2)], two=3, three=5), d3
+        )
 
         # alternate constructor
-        self.assertEqual(collections.UserDict.fromkeys('one two'.split()), d4)
-        self.assertEqual(collections.UserDict().fromkeys('one two'.split()), d4)
-        self.assertEqual(collections.UserDict.fromkeys('one two'.split(), 1), d5)
-        self.assertEqual(collections.UserDict().fromkeys('one two'.split(), 1), d5)
-        self.assertTrue(u1.fromkeys('one two'.split()) is not u1)
-        self.assertIsInstance(u1.fromkeys('one two'.split()), collections.UserDict)
-        self.assertIsInstance(u2.fromkeys('one two'.split()), collections.UserDict)
+        self.assertEqual(collections.UserDict.fromkeys("one two".split()), d4)
+        self.assertEqual(collections.UserDict().fromkeys("one two".split()), d4)
+        self.assertEqual(collections.UserDict.fromkeys("one two".split(), 1), d5)
+        self.assertEqual(collections.UserDict().fromkeys("one two".split(), 1), d5)
+        self.assertTrue(u1.fromkeys("one two".split()) is not u1)
+        self.assertIsInstance(u1.fromkeys("one two".split()), collections.UserDict)
+        self.assertIsInstance(u2.fromkeys("one two".split()), collections.UserDict)
 
         # Test __repr__
         self.assertEqual(str(u0), str(d0))
         self.assertEqual(repr(u1), repr(d1))
-        self.assertIn(repr(u2), ("{'one': 1, 'two': 2}",
-                                 "{'two': 2, 'one': 1}"))
+        self.assertIn(repr(u2), ("{'one': 1, 'two': 2}", "{'two': 2, 'one': 1}"))
 
         # Test rich comparison and __len__
         all = [d0, d1, d2, u, u0, u1, u2, uu, uu0, uu1, uu2]
@@ -77,18 +81,19 @@ class UserDictTest(mapping_tests.TestHashMappingProtocol):
         u2a = u2.copy()
         self.assertEqual(u2a, u2)
         u2b = collections.UserDict(x=42, y=23)
-        u2c = u2b.copy() # making a copy of a UserDict is special cased
+        u2c = u2b.copy()  # making a copy of a UserDict is special cased
         self.assertEqual(u2b, u2c)
 
         class MyUserDict(collections.UserDict):
-            def display(self): print(self)
+            def display(self):
+                print(self)
 
         m2 = MyUserDict(u2)
         m2a = m2.copy()
         self.assertEqual(m2a, m2)
 
         # SF bug #476616 -- copy() of UserDict subclass shared data
-        m2['foo'] = 'bar'
+        m2["foo"] = "bar"
         self.assertNotEqual(m2a, m2)
 
         # Test keys, items, values
@@ -142,21 +147,23 @@ class UserDictTest(mapping_tests.TestHashMappingProtocol):
         self.assertRaises(KeyError, t.popitem)
 
     def test_init(self):
-        for kw in 'self', 'other', 'iterable':
-            self.assertEqual(list(collections.UserDict(**{kw: 42}).items()),
-                             [(kw, 42)])
-        self.assertEqual(list(collections.UserDict({}, dict=42).items()),
-                         [('dict', 42)])
-        self.assertEqual(list(collections.UserDict({}, dict=None).items()),
-                         [('dict', None)])
-        self.assertEqual(list(collections.UserDict(dict={'a': 42}).items()),
-                         [('dict', {'a': 42})])
+        for kw in "self", "other", "iterable":
+            self.assertEqual(list(collections.UserDict(**{kw: 42}).items()), [(kw, 42)])
+        self.assertEqual(
+            list(collections.UserDict({}, dict=42).items()), [("dict", 42)]
+        )
+        self.assertEqual(
+            list(collections.UserDict({}, dict=None).items()), [("dict", None)]
+        )
+        self.assertEqual(
+            list(collections.UserDict(dict={"a": 42}).items()), [("dict", {"a": 42})]
+        )
         self.assertRaises(TypeError, collections.UserDict, 42)
         self.assertRaises(TypeError, collections.UserDict, (), ())
         self.assertRaises(TypeError, collections.UserDict.__init__)
 
     def test_update(self):
-        for kw in 'self', 'dict', 'other', 'iterable':
+        for kw in "self", "dict", "other", "iterable":
             d = collections.UserDict()
             d.update(**{kw: 42})
             self.assertEqual(list(d.items()), [(kw, 42)])
@@ -167,6 +174,7 @@ class UserDictTest(mapping_tests.TestHashMappingProtocol):
     def test_missing(self):
         # Make sure UserDict doesn't have a __missing__ method
         self.assertEqual(hasattr(collections.UserDict, "__missing__"), False)
+
         # Test several cases:
         # (D) subclass defines __missing__ method returning a value
         # (E) subclass defines __missing__ method raising RuntimeError
@@ -175,15 +183,18 @@ class UserDictTest(mapping_tests.TestHashMappingProtocol):
         class D(collections.UserDict):
             def __missing__(self, key):
                 return 42
+
         d = D({1: 2, 3: 4})
         self.assertEqual(d[1], 2)
         self.assertEqual(d[3], 4)
         self.assertNotIn(2, d)
         self.assertNotIn(2, d.keys())
         self.assertEqual(d[2], 42)
+
         class E(collections.UserDict):
             def __missing__(self, key):
                 raise RuntimeError(key)
+
         e = E()
         try:
             e[42]
@@ -191,11 +202,13 @@ class UserDictTest(mapping_tests.TestHashMappingProtocol):
             self.assertEqual(err.args, (42,))
         else:
             self.fail("e[42] didn't raise RuntimeError")
+
         class F(collections.UserDict):
             def __init__(self):
                 # An instance variable __missing__ should have no effect
                 self.__missing__ = lambda key: None
                 collections.UserDict.__init__(self)
+
         f = F()
         try:
             f[42]
@@ -203,8 +216,10 @@ class UserDictTest(mapping_tests.TestHashMappingProtocol):
             self.assertEqual(err.args, (42,))
         else:
             self.fail("f[42] didn't raise KeyError")
+
         class G(collections.UserDict):
             pass
+
         g = G()
         try:
             g[42]
@@ -212,7 +227,6 @@ class UserDictTest(mapping_tests.TestHashMappingProtocol):
             self.assertEqual(err.args, (42,))
         else:
             self.fail("g[42] didn't raise KeyError")
-
 
 
 if __name__ == "__main__":

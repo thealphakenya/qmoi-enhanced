@@ -44,7 +44,7 @@ def kill_on_error(proc):
 
 @unittest.skipUnless(hasattr(signal, "setitimer"), "requires setitimer()")
 class EINTRBaseTest(unittest.TestCase):
-    """ Base class for EINTR tests. """
+    """Base class for EINTR tests."""
 
     # delay for initial signal delivery
     signal_delay = 0.1
@@ -60,13 +60,11 @@ class EINTRBaseTest(unittest.TestCase):
     def setUp(self):
         self.signals = 0
         self.orig_handler = signal.signal(signal.SIGALRM, self.sighandler)
-        signal.setitimer(signal.ITIMER_REAL, self.signal_delay,
-                         self.signal_period)
+        signal.setitimer(signal.ITIMER_REAL, self.signal_delay, self.signal_period)
 
         # Use faulthandler as watchdog to debug when a test hangs
         # (timeout of 10 minutes)
-        faulthandler.dump_traceback_later(10 * 60, exit=True,
-                                          file=sys.__stderr__)
+        faulthandler.dump_traceback_later(10 * 60, exit=True, file=sys.__stderr__)
 
     @staticmethod
     def stop_alarm():
@@ -78,7 +76,7 @@ class EINTRBaseTest(unittest.TestCase):
         faulthandler.cancel_dump_traceback_later()
 
     def subprocess(self, *args, **kw):
-        cmd_args = (sys.executable, '-c') + args
+        cmd_args = (sys.executable, "-c") + args
         return subprocess.Popen(cmd_args, **kw)
 
     def check_elapsed_time(self, elapsed):
@@ -87,10 +85,10 @@ class EINTRBaseTest(unittest.TestCase):
 
 @unittest.skipUnless(hasattr(signal, "setitimer"), "requires setitimer()")
 class OSEINTRTest(EINTRBaseTest):
-    """ EINTR tests for the os module. """
+    """EINTR tests for the os module."""
 
     def new_sleep_process(self):
-        code = 'import time; time.sleep(%r)' % self.sleep_time
+        code = "import time; time.sleep(%r)" % self.sleep_time
         return self.subprocess(code)
 
     def _test_wait_multiple(self, wait_func):
@@ -105,7 +103,7 @@ class OSEINTRTest(EINTRBaseTest):
     def test_wait(self):
         self._test_wait_multiple(os.wait)
 
-    @unittest.skipUnless(hasattr(os, 'wait3'), 'requires wait3()')
+    @unittest.skipUnless(hasattr(os, "wait3"), "requires wait3()")
     def test_wait3(self):
         self._test_wait_multiple(lambda: os.wait3(0))
 
@@ -118,7 +116,7 @@ class OSEINTRTest(EINTRBaseTest):
     def test_waitpid(self):
         self._test_wait_single(lambda pid: os.waitpid(pid, 0))
 
-    @unittest.skipUnless(hasattr(os, 'wait4'), 'requires wait4()')
+    @unittest.skipUnless(hasattr(os, "wait4"), "requires wait4()")
     def test_wait4(self):
         self._test_wait_single(lambda pid: os.wait4(pid, 0))
 
@@ -131,18 +129,20 @@ class OSEINTRTest(EINTRBaseTest):
         # atomic
         datas = [b"hello", b"world", b"spam"]
 
-        code = '\n'.join((
-            'import os, sys, time',
-            '',
-            'wr = int(sys.argv[1])',
-            'datas = %r' % datas,
-            'sleep_time = %r' % self.sleep_time,
-            '',
-            'for data in datas:',
-            '    # let the parent block on read()',
-            '    time.sleep(sleep_time)',
-            '    os.write(wr, data)',
-        ))
+        code = "\n".join(
+            (
+                "import os, sys, time",
+                "",
+                "wr = int(sys.argv[1])",
+                "datas = %r" % datas,
+                "sleep_time = %r" % self.sleep_time,
+                "",
+                "for data in datas:",
+                "    # let the parent block on read()",
+                "    time.sleep(sleep_time)",
+                "    os.write(wr, data)",
+            )
+        )
 
         proc = self.subprocess(code, str(wr), pass_fds=[wr])
         with kill_on_error(proc):
@@ -159,27 +159,29 @@ class OSEINTRTest(EINTRBaseTest):
         # we must write enough data for the write() to block
         data = b"x" * support.PIPE_MAX_SIZE
 
-        code = '\n'.join((
-            'import io, os, sys, time',
-            '',
-            'rd = int(sys.argv[1])',
-            'sleep_time = %r' % self.sleep_time,
-            'data = b"x" * %s' % support.PIPE_MAX_SIZE,
-            'data_len = len(data)',
-            '',
-            '# let the parent block on write()',
-            'time.sleep(sleep_time)',
-            '',
-            'read_data = io.BytesIO()',
-            'while len(read_data.getvalue()) < data_len:',
-            '    chunk = os.read(rd, 2 * data_len)',
-            '    read_data.write(chunk)',
-            '',
-            'value = read_data.getvalue()',
-            'if value != data:',
-            '    raise Exception("read error: %s vs %s bytes"',
-            '                    % (len(value), data_len))',
-        ))
+        code = "\n".join(
+            (
+                "import io, os, sys, time",
+                "",
+                "rd = int(sys.argv[1])",
+                "sleep_time = %r" % self.sleep_time,
+                'data = b"x" * %s' % support.PIPE_MAX_SIZE,
+                "data_len = len(data)",
+                "",
+                "# let the parent block on write()",
+                "time.sleep(sleep_time)",
+                "",
+                "read_data = io.BytesIO()",
+                "while len(read_data.getvalue()) < data_len:",
+                "    chunk = os.read(rd, 2 * data_len)",
+                "    read_data.write(chunk)",
+                "",
+                "value = read_data.getvalue()",
+                "if value != data:",
+                '    raise Exception("read error: %s vs %s bytes"',
+                "                    % (len(value), data_len))",
+            )
+        )
 
         proc = self.subprocess(code, str(rd), pass_fds=[rd])
         with kill_on_error(proc):
@@ -192,9 +194,9 @@ class OSEINTRTest(EINTRBaseTest):
 
 @unittest.skipUnless(hasattr(signal, "setitimer"), "requires setitimer()")
 class SocketEINTRTest(EINTRBaseTest):
-    """ EINTR tests for the socket module. """
+    """EINTR tests for the socket module."""
 
-    @unittest.skipUnless(hasattr(socket, 'socketpair'), 'needs socketpair()')
+    @unittest.skipUnless(hasattr(socket, "socketpair"), "needs socketpair()")
     def _test_recv(self, recv_func):
         rd, wr = socket.socketpair()
         self.addCleanup(rd.close)
@@ -203,24 +205,26 @@ class SocketEINTRTest(EINTRBaseTest):
         # single-byte payload guard us against partial recv
         datas = [b"x", b"y", b"z"]
 
-        code = '\n'.join((
-            'import os, socket, sys, time',
-            '',
-            'fd = int(sys.argv[1])',
-            'family = %s' % int(wr.family),
-            'sock_type = %s' % int(wr.type),
-            'datas = %r' % datas,
-            'sleep_time = %r' % self.sleep_time,
-            '',
-            'wr = socket.fromfd(fd, family, sock_type)',
-            'os.close(fd)',
-            '',
-            'with wr:',
-            '    for data in datas:',
-            '        # let the parent block on recv()',
-            '        time.sleep(sleep_time)',
-            '        wr.sendall(data)',
-        ))
+        code = "\n".join(
+            (
+                "import os, socket, sys, time",
+                "",
+                "fd = int(sys.argv[1])",
+                "family = %s" % int(wr.family),
+                "sock_type = %s" % int(wr.type),
+                "datas = %r" % datas,
+                "sleep_time = %r" % self.sleep_time,
+                "",
+                "wr = socket.fromfd(fd, family, sock_type)",
+                "os.close(fd)",
+                "",
+                "with wr:",
+                "    for data in datas:",
+                "        # let the parent block on recv()",
+                "        time.sleep(sleep_time)",
+                "        wr.sendall(data)",
+            )
+        )
 
         fd = wr.fileno()
         proc = self.subprocess(code, str(fd), pass_fds=[fd])
@@ -233,7 +237,7 @@ class SocketEINTRTest(EINTRBaseTest):
     def test_recv(self):
         self._test_recv(socket.socket.recv)
 
-    @unittest.skipUnless(hasattr(socket.socket, 'recvmsg'), 'needs recvmsg()')
+    @unittest.skipUnless(hasattr(socket.socket, "recvmsg"), "needs recvmsg()")
     def test_recvmsg(self):
         self._test_recv(lambda sock, data: sock.recvmsg(data)[0])
 
@@ -245,32 +249,34 @@ class SocketEINTRTest(EINTRBaseTest):
         # we must send enough data for the send() to block
         data = b"xyz" * (support.SOCK_MAX_SIZE // 3)
 
-        code = '\n'.join((
-            'import os, socket, sys, time',
-            '',
-            'fd = int(sys.argv[1])',
-            'family = %s' % int(rd.family),
-            'sock_type = %s' % int(rd.type),
-            'sleep_time = %r' % self.sleep_time,
-            'data = b"xyz" * %s' % (support.SOCK_MAX_SIZE // 3),
-            'data_len = len(data)',
-            '',
-            'rd = socket.fromfd(fd, family, sock_type)',
-            'os.close(fd)',
-            '',
-            'with rd:',
-            '    # let the parent block on send()',
-            '    time.sleep(sleep_time)',
-            '',
-            '    received_data = bytearray(data_len)',
-            '    n = 0',
-            '    while n < data_len:',
-            '        n += rd.recv_into(memoryview(received_data)[n:])',
-            '',
-            'if received_data != data:',
-            '    raise Exception("recv error: %s vs %s bytes"',
-            '                    % (len(received_data), data_len))',
-        ))
+        code = "\n".join(
+            (
+                "import os, socket, sys, time",
+                "",
+                "fd = int(sys.argv[1])",
+                "family = %s" % int(rd.family),
+                "sock_type = %s" % int(rd.type),
+                "sleep_time = %r" % self.sleep_time,
+                'data = b"xyz" * %s' % (support.SOCK_MAX_SIZE // 3),
+                "data_len = len(data)",
+                "",
+                "rd = socket.fromfd(fd, family, sock_type)",
+                "os.close(fd)",
+                "",
+                "with rd:",
+                "    # let the parent block on send()",
+                "    time.sleep(sleep_time)",
+                "",
+                "    received_data = bytearray(data_len)",
+                "    n = 0",
+                "    while n < data_len:",
+                "        n += rd.recv_into(memoryview(received_data)[n:])",
+                "",
+                "if received_data != data:",
+                '    raise Exception("recv error: %s vs %s bytes"',
+                "                    % (len(received_data), data_len))",
+            )
+        )
 
         fd = rd.fileno()
         proc = self.subprocess(code, str(fd), pass_fds=[fd])
@@ -289,7 +295,7 @@ class SocketEINTRTest(EINTRBaseTest):
     def test_sendall(self):
         self._test_send(socket.socket.sendall)
 
-    @unittest.skipUnless(hasattr(socket.socket, 'sendmsg'), 'needs sendmsg()')
+    @unittest.skipUnless(hasattr(socket.socket, "sendmsg"), "needs sendmsg()")
     def test_sendmsg(self):
         self._test_send(lambda sock, data: sock.sendmsg([data]))
 
@@ -298,18 +304,20 @@ class SocketEINTRTest(EINTRBaseTest):
         self.addCleanup(sock.close)
         port = sock.getsockname()[1]
 
-        code = '\n'.join((
-            'import socket, time',
-            '',
-            'host = %r' % socket_helper.HOST,
-            'port = %s' % port,
-            'sleep_time = %r' % self.sleep_time,
-            '',
-            '# let parent block on accept()',
-            'time.sleep(sleep_time)',
-            'with socket.create_connection((host, port)):',
-            '    time.sleep(sleep_time)',
-        ))
+        code = "\n".join(
+            (
+                "import socket, time",
+                "",
+                "host = %r" % socket_helper.HOST,
+                "port = %s" % port,
+                "sleep_time = %r" % self.sleep_time,
+                "",
+                "# let parent block on accept()",
+                "time.sleep(sleep_time)",
+                "with socket.create_connection((host, port)):",
+                "    time.sleep(sleep_time)",
+            )
+        )
 
         proc = self.subprocess(code)
         with kill_on_error(proc):
@@ -322,7 +330,7 @@ class SocketEINTRTest(EINTRBaseTest):
     # fixed in the kernel.
     # https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=203162
     @support.requires_freebsd_version(10, 3)
-    @unittest.skipUnless(hasattr(os, 'mkfifo'), 'needs mkfifo()')
+    @unittest.skipUnless(hasattr(os, "mkfifo"), "needs mkfifo()")
     def _test_open(self, do_open_close_reader, do_open_close_writer):
         filename = os_helper.TESTFN
 
@@ -332,20 +340,22 @@ class SocketEINTRTest(EINTRBaseTest):
         try:
             os.mkfifo(filename)
         except PermissionError as e:
-            self.skipTest('os.mkfifo(): %s' % e)
+            self.skipTest("os.mkfifo(): %s" % e)
         self.addCleanup(os_helper.unlink, filename)
 
-        code = '\n'.join((
-            'import os, time',
-            '',
-            'path = %a' % filename,
-            'sleep_time = %r' % self.sleep_time,
-            '',
-            '# let the parent block',
-            'time.sleep(sleep_time)',
-            '',
-            do_open_close_reader,
-        ))
+        code = "\n".join(
+            (
+                "import os, time",
+                "",
+                "path = %a" % filename,
+                "sleep_time = %r" % self.sleep_time,
+                "",
+                "# let the parent block",
+                "time.sleep(sleep_time)",
+                "",
+                do_open_close_reader,
+            )
+        )
 
         proc = self.subprocess(code)
         with kill_on_error(proc):
@@ -353,29 +363,29 @@ class SocketEINTRTest(EINTRBaseTest):
             self.assertEqual(proc.wait(), 0)
 
     def python_open(self, path):
-        fp = open(path, 'w')
+        fp = open(path, "w")
         fp.close()
 
-    @unittest.skipIf(sys.platform == "darwin",
-                     "hangs under macOS; see bpo-25234, bpo-35363")
+    @unittest.skipIf(
+        sys.platform == "darwin", "hangs under macOS; see bpo-25234, bpo-35363"
+    )
     def test_open(self):
-        self._test_open("fp = open(path, 'r')\nfp.close()",
-                        self.python_open)
+        self._test_open("fp = open(path, 'r')\nfp.close()", self.python_open)
 
     def os_open(self, path):
         fd = os.open(path, os.O_WRONLY)
         os.close(fd)
 
-    @unittest.skipIf(sys.platform == "darwin",
-                     "hangs under macOS; see bpo-25234, bpo-35363")
+    @unittest.skipIf(
+        sys.platform == "darwin", "hangs under macOS; see bpo-25234, bpo-35363"
+    )
     def test_os_open(self):
-        self._test_open("fd = os.open(path, os.O_RDONLY)\nos.close(fd)",
-                        self.os_open)
+        self._test_open("fd = os.open(path, os.O_RDONLY)\nos.close(fd)", self.os_open)
 
 
 @unittest.skipUnless(hasattr(signal, "setitimer"), "requires setitimer()")
 class TimeEINTRTest(EINTRBaseTest):
-    """ EINTR tests for the time module. """
+    """EINTR tests for the time module."""
 
     def test_sleep(self):
         t0 = time.monotonic()
@@ -388,10 +398,11 @@ class TimeEINTRTest(EINTRBaseTest):
 @unittest.skipUnless(hasattr(signal, "setitimer"), "requires setitimer()")
 # bpo-30320: Need pthread_sigmask() to block the signal, otherwise the test
 # is vulnerable to a race condition between the child and the parent processes.
-@unittest.skipUnless(hasattr(signal, 'pthread_sigmask'),
-                     'need signal.pthread_sigmask()')
+@unittest.skipUnless(
+    hasattr(signal, "pthread_sigmask"), "need signal.pthread_sigmask()"
+)
 class SignalEINTRTest(EINTRBaseTest):
-    """ EINTR tests for the signal module. """
+    """EINTR tests for the signal module."""
 
     def check_sigwait(self, wait_func):
         signum = signal.SIGUSR1
@@ -400,14 +411,16 @@ class SignalEINTRTest(EINTRBaseTest):
         old_handler = signal.signal(signum, lambda *args: None)
         self.addCleanup(signal.signal, signum, old_handler)
 
-        code = '\n'.join((
-            'import os, time',
-            'pid = %s' % os.getpid(),
-            'signum = %s' % int(signum),
-            'sleep_time = %r' % self.sleep_time,
-            'time.sleep(sleep_time)',
-            'os.kill(pid, signum)',
-        ))
+        code = "\n".join(
+            (
+                "import os, time",
+                "pid = %s" % os.getpid(),
+                "signum = %s" % int(signum),
+                "sleep_time = %r" % self.sleep_time,
+                "time.sleep(sleep_time)",
+                "os.kill(pid, signum)",
+            )
+        )
 
         old_mask = signal.pthread_sigmask(signal.SIG_BLOCK, [signum])
         self.addCleanup(signal.pthread_sigmask, signal.SIG_UNBLOCK, [signum])
@@ -418,16 +431,14 @@ class SignalEINTRTest(EINTRBaseTest):
 
         self.assertEqual(proc.wait(), 0)
 
-    @unittest.skipUnless(hasattr(signal, 'sigwaitinfo'),
-                         'need signal.sigwaitinfo()')
+    @unittest.skipUnless(hasattr(signal, "sigwaitinfo"), "need signal.sigwaitinfo()")
     def test_sigwaitinfo(self):
         def wait_func(signum):
             signal.sigwaitinfo([signum])
 
         self.check_sigwait(wait_func)
 
-    @unittest.skipUnless(hasattr(signal, 'sigtimedwait'),
-                         'need signal.sigwaitinfo()')
+    @unittest.skipUnless(hasattr(signal, "sigtimedwait"), "need signal.sigwaitinfo()")
     def test_sigtimedwait(self):
         def wait_func(signum):
             signal.sigtimedwait([signum], 120.0)
@@ -437,7 +448,7 @@ class SignalEINTRTest(EINTRBaseTest):
 
 @unittest.skipUnless(hasattr(signal, "setitimer"), "requires setitimer()")
 class SelectEINTRTest(EINTRBaseTest):
-    """ EINTR tests for the select module. """
+    """EINTR tests for the select module."""
 
     def test_select(self):
         t0 = time.monotonic()
@@ -446,9 +457,10 @@ class SelectEINTRTest(EINTRBaseTest):
         self.stop_alarm()
         self.check_elapsed_time(dt)
 
-    @unittest.skipIf(sys.platform == "darwin",
-                     "poll may fail on macOS; see issue #28087")
-    @unittest.skipUnless(hasattr(select, 'poll'), 'need select.poll')
+    @unittest.skipIf(
+        sys.platform == "darwin", "poll may fail on macOS; see issue #28087"
+    )
+    @unittest.skipUnless(hasattr(select, "poll"), "need select.poll")
     def test_poll(self):
         poller = select.poll()
 
@@ -458,7 +470,7 @@ class SelectEINTRTest(EINTRBaseTest):
         self.stop_alarm()
         self.check_elapsed_time(dt)
 
-    @unittest.skipUnless(hasattr(select, 'epoll'), 'need select.epoll')
+    @unittest.skipUnless(hasattr(select, "epoll"), "need select.epoll")
     def test_epoll(self):
         poller = select.epoll()
         self.addCleanup(poller.close)
@@ -469,7 +481,7 @@ class SelectEINTRTest(EINTRBaseTest):
         self.stop_alarm()
         self.check_elapsed_time(dt)
 
-    @unittest.skipUnless(hasattr(select, 'kqueue'), 'need select.kqueue')
+    @unittest.skipUnless(hasattr(select, "kqueue"), "need select.kqueue")
     def test_kqueue(self):
         kqueue = select.kqueue()
         self.addCleanup(kqueue.close)
@@ -480,7 +492,7 @@ class SelectEINTRTest(EINTRBaseTest):
         self.stop_alarm()
         self.check_elapsed_time(dt)
 
-    @unittest.skipUnless(hasattr(select, 'devpoll'), 'need select.devpoll')
+    @unittest.skipUnless(hasattr(select, "devpoll"), "need select.devpoll")
     def test_devpoll(self):
         poller = select.devpoll()
         self.addCleanup(poller.close)
@@ -495,15 +507,18 @@ class SelectEINTRTest(EINTRBaseTest):
 class FNTLEINTRTest(EINTRBaseTest):
     def _lock(self, lock_func, lock_name):
         self.addCleanup(os_helper.unlink, os_helper.TESTFN)
-        code = '\n'.join((
-            "import fcntl, time",
-            "with open('%s', 'wb') as f:" % os_helper.TESTFN,
-            "   fcntl.%s(f, fcntl.LOCK_EX)" % lock_name,
-            "   time.sleep(%s)" % self.sleep_time))
+        code = "\n".join(
+            (
+                "import fcntl, time",
+                "with open('%s', 'wb') as f:" % os_helper.TESTFN,
+                "   fcntl.%s(f, fcntl.LOCK_EX)" % lock_name,
+                "   time.sleep(%s)" % self.sleep_time,
+            )
+        )
         start_time = time.monotonic()
         proc = self.subprocess(code)
         with kill_on_error(proc):
-            with open(os_helper.TESTFN, 'wb') as f:
+            with open(os_helper.TESTFN, "wb") as f:
                 # synchronize the subprocess
                 start_time = time.monotonic()
                 for _ in support.sleeping_retry(support.LONG_TIMEOUT, error=False):

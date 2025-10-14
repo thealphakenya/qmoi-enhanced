@@ -31,9 +31,24 @@ def test_effect_sizes():
     assert generate_cases.list_effect_size(output_effects) == (2, "oparg*4")
     assert generate_cases.list_effect_size(other_effects) == (2, "(oparg<<1)")
 
-    assert generate_cases.string_effect_size(generate_cases.list_effect_size(input_effects)) == "1 + oparg + oparg*2"
-    assert generate_cases.string_effect_size(generate_cases.list_effect_size(output_effects)) == "2 + oparg*4"
-    assert generate_cases.string_effect_size(generate_cases.list_effect_size(other_effects)) == "2 + (oparg<<1)"
+    assert (
+        generate_cases.string_effect_size(
+            generate_cases.list_effect_size(input_effects)
+        )
+        == "1 + oparg + oparg*2"
+    )
+    assert (
+        generate_cases.string_effect_size(
+            generate_cases.list_effect_size(output_effects)
+        )
+        == "2 + oparg*4"
+    )
+    assert (
+        generate_cases.string_effect_size(
+            generate_cases.list_effect_size(other_effects)
+        )
+        == "2 + (oparg<<1)"
+    )
 
 
 def run_cases_test(input: str, expected: str):
@@ -62,6 +77,7 @@ def run_cases_test(input: str, expected: str):
     #     print("End")
     assert actual.rstrip() == expected.rstrip()
 
+
 def test_legacy():
     input = """
         inst(OP) {
@@ -76,6 +92,7 @@ def test_legacy():
     """
     run_cases_test(input, output)
 
+
 def test_inst_no_args():
     input = """
         inst(OP, (--)) {
@@ -89,6 +106,7 @@ def test_inst_no_args():
         }
     """
     run_cases_test(input, output)
+
 
 def test_inst_one_pop():
     input = """
@@ -105,6 +123,7 @@ def test_inst_one_pop():
         }
     """
     run_cases_test(input, output)
+
 
 def test_inst_one_push():
     input = """
@@ -123,6 +142,7 @@ def test_inst_one_push():
     """
     run_cases_test(input, output)
 
+
 def test_inst_one_push_one_pop():
     input = """
         inst(OP, (value -- res)) {
@@ -139,6 +159,7 @@ def test_inst_one_push_one_pop():
         }
     """
     run_cases_test(input, output)
+
 
 def test_binary_op():
     input = """
@@ -159,6 +180,7 @@ def test_binary_op():
     """
     run_cases_test(input, output)
 
+
 def test_overlap():
     input = """
         inst(OP, (left, right -- left, result)) {
@@ -176,6 +198,7 @@ def test_overlap():
         }
     """
     run_cases_test(input, output)
+
 
 def test_predictions_and_eval_breaker():
     input = """
@@ -212,6 +235,7 @@ def test_predictions_and_eval_breaker():
     """
     run_cases_test(input, output)
 
+
 def test_error_if_plain():
     input = """
         inst(OP, (--)) {
@@ -226,6 +250,7 @@ def test_error_if_plain():
     """
     run_cases_test(input, output)
 
+
 def test_error_if_plain_with_comment():
     input = """
         inst(OP, (--)) {
@@ -239,6 +264,7 @@ def test_error_if_plain_with_comment():
         }
     """
     run_cases_test(input, output)
+
 
 def test_error_if_pop():
     input = """
@@ -259,6 +285,7 @@ def test_error_if_pop():
     """
     run_cases_test(input, output)
 
+
 def test_cache_effect():
     input = """
         inst(OP, (counter/1, extra/2, value --)) {
@@ -276,6 +303,7 @@ def test_cache_effect():
     """
     run_cases_test(input, output)
 
+
 def test_suppress_dispatch():
     input = """
         inst(OP, (--)) {
@@ -288,6 +316,7 @@ def test_suppress_dispatch():
         }
     """
     run_cases_test(input, output)
+
 
 def test_super_instruction():
     # TODO: Test cache effect
@@ -341,6 +370,7 @@ def test_super_instruction():
         }
     """
     run_cases_test(input, output)
+
 
 def test_macro_instruction():
     input = """
@@ -408,6 +438,7 @@ def test_macro_instruction():
     """
     run_cases_test(input, output)
 
+
 def test_array_input():
     input = """
         inst(OP, (below, values[oparg*2], above --)) {
@@ -426,6 +457,7 @@ def test_array_input():
         }
     """
     run_cases_test(input, output)
+
 
 def test_array_output():
     input = """
@@ -447,6 +479,7 @@ def test_array_output():
     """
     run_cases_test(input, output)
 
+
 def test_array_input_output():
     input = """
         inst(OP, (values[oparg] -- values[oparg], above)) {
@@ -465,6 +498,7 @@ def test_array_input_output():
     """
     run_cases_test(input, output)
 
+
 def test_array_error_if():
     input = """
         inst(OP, (extra, values[oparg] --)) {
@@ -482,6 +516,7 @@ def test_array_error_if():
         }
     """
     run_cases_test(input, output)
+
 
 def test_register():
     input = """
@@ -502,6 +537,7 @@ def test_register():
         }
     """
     run_cases_test(input, output)
+
 
 def test_cond_effect():
     input = """

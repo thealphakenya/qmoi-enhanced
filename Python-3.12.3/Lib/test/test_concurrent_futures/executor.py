@@ -8,6 +8,7 @@ from test import support
 def mul(x, y):
     return x * y
 
+
 def capture(*args, **kwargs):
     return args, kwargs
 
@@ -32,7 +33,7 @@ class ExecutorTest:
         future = self.executor.submit(mul, 2, y=8)
         self.assertEqual(16, future.result())
         future = self.executor.submit(capture, 1, self=2, fn=3)
-        self.assertEqual(future.result(), ((1,), {'self': 2, 'fn': 3}))
+        self.assertEqual(future.result(), ((1,), {"self": 2, "fn": 3}))
         with self.assertRaises(TypeError):
             self.executor.submit(fn=capture, arg=1)
         with self.assertRaises(TypeError):
@@ -40,12 +41,14 @@ class ExecutorTest:
 
     def test_map(self):
         self.assertEqual(
-                list(self.executor.map(pow, range(10), range(10))),
-                list(map(pow, range(10), range(10))))
+            list(self.executor.map(pow, range(10), range(10))),
+            list(map(pow, range(10), range(10))),
+        )
 
         self.assertEqual(
-                list(self.executor.map(pow, range(10), range(10), chunksize=3)),
-                list(map(pow, range(10), range(10))))
+            list(self.executor.map(pow, range(10), range(10), chunksize=3)),
+            list(map(pow, range(10), range(10))),
+        )
 
     def test_map_exception(self):
         i = self.executor.map(divmod, [1, 1, 1, 1], [2, 3, 0, 5])
@@ -53,18 +56,16 @@ class ExecutorTest:
         self.assertEqual(i.__next__(), (0, 1))
         self.assertRaises(ZeroDivisionError, i.__next__)
 
-    @support.requires_resource('walltime')
+    @support.requires_resource("walltime")
     def test_map_timeout(self):
         results = []
         try:
-            for i in self.executor.map(time.sleep,
-                                       [0, 0, 6],
-                                       timeout=5):
+            for i in self.executor.map(time.sleep, [0, 0, 6], timeout=5):
                 results.append(i)
         except futures.TimeoutError:
             pass
         else:
-            self.fail('expected TimeoutError')
+            self.fail("expected TimeoutError")
 
         self.assertEqual([None, None], results)
 
@@ -82,20 +83,20 @@ class ExecutorTest:
         my_object = MyObject()
         my_object_collected = threading.Event()
         my_object_callback = weakref.ref(
-            my_object, lambda obj: my_object_collected.set())
+            my_object, lambda obj: my_object_collected.set()
+        )
         # Deliberately discarding the future.
         self.executor.submit(my_object.my_method)
         del my_object
 
         collected = my_object_collected.wait(timeout=support.SHORT_TIMEOUT)
-        self.assertTrue(collected,
-                        "Stale reference not collected within timeout.")
+        self.assertTrue(collected, "Stale reference not collected within timeout.")
 
     def test_max_workers_negative(self):
         for number in (0, -1):
-            with self.assertRaisesRegex(ValueError,
-                                        "max_workers must be greater "
-                                        "than 0"):
+            with self.assertRaisesRegex(
+                ValueError, "max_workers must be greater " "than 0"
+            ):
                 self.executor_type(max_workers=number)
 
     def test_free_reference(self):

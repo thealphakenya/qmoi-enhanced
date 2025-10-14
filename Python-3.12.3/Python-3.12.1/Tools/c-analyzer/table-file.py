@@ -1,9 +1,8 @@
-
 KINDS = [
-    'section-major',
-    'section-minor',
-    'section-group',
-    'row',
+    "section-major",
+    "section-minor",
+    "section-group",
+    "row",
 ]
 
 
@@ -11,7 +10,7 @@ def iter_clean_lines(lines):
     lines = iter(lines)
     for rawline in lines:
         line = rawline.strip()
-        if line.startswith('#') and not rawline.startswith('##'):
+        if line.startswith("#") and not rawline.startswith("##"):
             continue
         yield line, rawline
 
@@ -20,18 +19,18 @@ def parse_table_lines(lines):
     lines = iter_clean_lines(lines)
 
     group = None
-    prev = ''
+    prev = ""
     for line, rawline in lines:
-        if line.startswith('## '):
-            assert not rawline.startswith(' '), (line, rawline)
+        if line.startswith("## "):
+            assert not rawline.startswith(" "), (line, rawline)
             if group:
                 assert prev, (line, rawline)
                 kind, after, _ = group
-                assert kind and kind != 'section-group', (group, line, rawline)
+                assert kind and kind != "section-group", (group, line, rawline)
                 assert after is not None, (group, line, rawline)
             else:
                 assert not prev, (prev, line, rawline)
-                kind, after = group = ('section-group', None)
+                kind, after = group = ("section-group", None)
             title = line[3:].lstrip()
             assert title, (line, rawline)
             if after is not None:
@@ -45,14 +44,14 @@ def parse_table_lines(lines):
             group = None
         elif group:
             raise NotImplementedError((group, line, rawline))
-        elif line.startswith('##---'):
-            assert line.rstrip('-') == '##', (line, rawline)
-            group = ('section-minor', '', line)
-        elif line.startswith('#####'):
-            assert not line.strip('#'), (line, rawline)
-            group = ('section-major', '', line)
+        elif line.startswith("##---"):
+            assert line.rstrip("-") == "##", (line, rawline)
+            group = ("section-minor", "", line)
+        elif line.startswith("#####"):
+            assert not line.strip("#"), (line, rawline)
+            group = ("section-major", "", line)
         elif line:
-            yield 'row', line
+            yield "row", line
         prev = line
 
 
@@ -60,7 +59,7 @@ def iter_sections(lines):
     header = None
     section = []
     for kind, value in parse_table_lines(lines):
-        if kind == 'row':
+        if kind == "row":
             if not section:
                 if header is None:
                     header = value
@@ -108,34 +107,39 @@ def collate_sections(lines):
 #############################
 # the commands
 
+
 def cmd_count_by_section(lines):
-    div = ' ' + '-' * 50
+    div = " " + "-" * 50
     total = 0
+
     def render_tree(root, depth=0):
         nonlocal total
-        indent = '    ' * depth
+        indent = "    " * depth
         for name, data in root.items():
             subroot, rows, totalrows = data
-            sectotal = f'({len(totalrows)})' if totalrows != rows else ''
-            count = len(rows) if rows else ''
+            sectotal = f"({len(totalrows)})" if totalrows != rows else ""
+            count = len(rows) if rows else ""
             if depth == 0:
                 yield div
-            yield f'{sectotal:>7} {count:>4}  {indent}{name}'
-            yield from render_tree(subroot, depth+1)
+            yield f"{sectotal:>7} {count:>4}  {indent}{name}"
+            yield from render_tree(subroot, depth + 1)
             total += len(rows)
+
     sections = collate_sections(lines)
     yield from render_tree(sections)
     yield div
-    yield f'(total: {total})'
+    yield f"(total: {total})"
 
 
 #############################
 # the script
 
+
 def parse_args(argv=None, prog=None):
     import argparse
+
     parser = argparse.ArgumentParser(prog=prog)
-    parser.add_argument('filename')
+    parser.add_argument("filename")
 
     args = parser.parse_args(argv)
     ns = vars(args)
@@ -149,6 +153,6 @@ def main(filename):
             print(line)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     kwargs = parse_args()
     main(**kwargs)

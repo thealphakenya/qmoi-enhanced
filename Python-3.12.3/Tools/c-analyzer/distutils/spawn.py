@@ -18,14 +18,14 @@ def find_executable(executable, path=None):
     os.environ['PATH'].  Returns the complete filename or None if not found.
     """
     _, ext = os.path.splitext(executable)
-    if (sys.platform == 'win32') and (ext != '.exe'):
-        executable = executable + '.exe'
+    if (sys.platform == "win32") and (ext != ".exe"):
+        executable = executable + ".exe"
 
     if os.path.isfile(executable):
         return executable
 
     if path is None:
-        path = os.environ.get('PATH', None)
+        path = os.environ.get("PATH", None)
         if path is None:
             try:
                 path = os.confstr("CS_PATH")

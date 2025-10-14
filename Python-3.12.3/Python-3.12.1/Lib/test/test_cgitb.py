@@ -3,7 +3,9 @@ from test.support.script_helper import assert_python_failure
 from test.support.warnings_helper import import_deprecated
 import unittest
 import sys
+
 cgitb = import_deprecated("cgitb")
+
 
 class TestCgitb(unittest.TestCase):
 
@@ -11,8 +13,9 @@ class TestCgitb(unittest.TestCase):
         text = "Hello Robbie!"
         self.assertEqual(cgitb.small(text), "<small>{}</small>".format(text))
         self.assertEqual(cgitb.strong(text), "<strong>{}</strong>".format(text))
-        self.assertEqual(cgitb.grey(text),
-                         '<font color="#909090">{}</font>'.format(text))
+        self.assertEqual(
+            cgitb.grey(text), '<font color="#909090">{}</font>'.format(text)
+        )
 
     def test_blanks(self):
         self.assertEqual(cgitb.small(""), "")
@@ -40,31 +43,39 @@ class TestCgitb(unittest.TestCase):
     def test_syshook_no_logdir_default_format(self):
         with temp_dir() as tracedir:
             rc, out, err = assert_python_failure(
-                  '-c',
-                  ('import cgitb; cgitb.enable(logdir=%s); '
-                   'raise ValueError("Hello World")') % repr(tracedir),
-                  PYTHONIOENCODING='utf-8')
+                "-c",
+                (
+                    "import cgitb; cgitb.enable(logdir=%s); "
+                    'raise ValueError("Hello World")'
+                )
+                % repr(tracedir),
+                PYTHONIOENCODING="utf-8",
+            )
         out = out.decode()
         self.assertIn("ValueError", out)
         self.assertIn("Hello World", out)
         self.assertIn("<strong>&lt;module&gt;</strong>", out)
         # By default we emit HTML markup.
-        self.assertIn('<p>', out)
-        self.assertIn('</p>', out)
+        self.assertIn("<p>", out)
+        self.assertIn("</p>", out)
 
     def test_syshook_no_logdir_text_format(self):
         # Issue 12890: we were emitting the <p> tag in text mode.
         with temp_dir() as tracedir:
             rc, out, err = assert_python_failure(
-                  '-c',
-                  ('import cgitb; cgitb.enable(format="text", logdir=%s); '
-                   'raise ValueError("Hello World")') % repr(tracedir),
-                  PYTHONIOENCODING='utf-8')
+                "-c",
+                (
+                    'import cgitb; cgitb.enable(format="text", logdir=%s); '
+                    'raise ValueError("Hello World")'
+                )
+                % repr(tracedir),
+                PYTHONIOENCODING="utf-8",
+            )
         out = out.decode()
         self.assertIn("ValueError", out)
         self.assertIn("Hello World", out)
-        self.assertNotIn('<p>', out)
-        self.assertNotIn('</p>', out)
+        self.assertNotIn("<p>", out)
+        self.assertNotIn("</p>", out)
 
 
 if __name__ == "__main__":

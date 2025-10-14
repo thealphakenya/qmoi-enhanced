@@ -6,6 +6,7 @@ from test import support
 from test.support import os_helper
 from test.support.script_helper import assert_python_ok
 
+
 def example():
     x = []
     for i in range(0):
@@ -20,13 +21,13 @@ class TestLLTrace(unittest.TestCase):
 
     def run_code(self, code):
         code = textwrap.dedent(code).strip()
-        with open(os_helper.TESTFN, 'w', encoding='utf-8') as fd:
+        with open(os_helper.TESTFN, "w", encoding="utf-8") as fd:
             self.addCleanup(os_helper.unlink, os_helper.TESTFN)
             fd.write(code)
         status, stdout, stderr = assert_python_ok(os_helper.TESTFN)
         self.assertEqual(stderr, b"")
         self.assertEqual(status, 0)
-        result = stdout.decode('utf-8')
+        result = stdout.decode("utf-8")
         if support.verbose:
             print("\n\n--- code ---")
             print(code)
@@ -36,7 +37,8 @@ class TestLLTrace(unittest.TestCase):
         return result
 
     def test_lltrace(self):
-        stdout = self.run_code("""
+        stdout = self.run_code(
+            """
             def dont_trace_1():
                 a = "a"
                 a = 10 * a
@@ -51,7 +53,8 @@ class TestLLTrace(unittest.TestCase):
             trace_me()
             del __lltrace__
             dont_trace_2()
-        """)
+        """
+        )
         self.assertIn("GET_ITER", stdout)
         self.assertIn("FOR_ITER", stdout)
         self.assertIn("CALL_INTRINSIC_1", stdout)
@@ -64,15 +67,17 @@ class TestLLTrace(unittest.TestCase):
         self.assertNotIn("'dont_trace_2' in module", stdout)
 
     def test_lltrace_different_module(self):
-        stdout = self.run_code("""
+        stdout = self.run_code(
+            """
             from test import test_lltrace
             test_lltrace.__lltrace__ = 1
             test_lltrace.example()
-        """)
+        """
+        )
         self.assertIn("'example' in module 'test.test_lltrace'", stdout)
-        self.assertIn('LOAD_CONST', stdout)
-        self.assertIn('FOR_ITER', stdout)
-        self.assertIn('this is an example', stdout)
+        self.assertIn("LOAD_CONST", stdout)
+        self.assertIn("FOR_ITER", stdout)
+        self.assertIn("this is an example", stdout)
 
         # check that offsets match the output of dis.dis()
         instr_map = {i.offset: i for i in dis.get_instructions(example, adaptive=True)}
@@ -96,7 +101,8 @@ class TestLLTrace(unittest.TestCase):
         # bpo-34113. The crash happened at the command line console of
         # debug Python builds with __lltrace__ enabled (only possible in console),
         # when the internal Python stack was negatively adjusted
-        stdout = self.run_code("""
+        stdout = self.run_code(
+            """
             import code
 
             console = code.InteractiveConsole()
@@ -104,8 +110,10 @@ class TestLLTrace(unittest.TestCase):
             console.push('a = [1, 2, 3]')
             console.push('a[0] = 1')
             print('unreachable if bug exists')
-        """)
+        """
+        )
         self.assertIn("unreachable if bug exists", stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

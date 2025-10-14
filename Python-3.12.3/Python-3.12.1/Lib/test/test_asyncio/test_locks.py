@@ -8,13 +8,13 @@ import asyncio
 import collections
 
 STR_RGX_REPR = (
-    r'^<(?P<class>.*?) object at (?P<address>.*?)'
-    r'\[(?P<extras>'
-    r'(set|unset|locked|unlocked|filling|draining|resetting|broken)'
-    r'(, value:\d)?'
-    r'(, waiters:\d+)?'
-    r'(, waiters:\d+\/\d+)?' # barrier
-    r')\]>\Z'
+    r"^<(?P<class>.*?) object at (?P<address>.*?)"
+    r"\[(?P<extras>"
+    r"(set|unset|locked|unlocked|filling|draining|resetting|broken)"
+    r"(, value:\d)?"
+    r"(, waiters:\d+)?"
+    r"(, waiters:\d+\/\d+)?"  # barrier
+    r")\]>\Z"
 )
 RGX_REPR = re.compile(STR_RGX_REPR)
 
@@ -27,19 +27,18 @@ class LockTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_repr(self):
         lock = asyncio.Lock()
-        self.assertTrue(repr(lock).endswith('[unlocked]>'))
+        self.assertTrue(repr(lock).endswith("[unlocked]>"))
         self.assertTrue(RGX_REPR.match(repr(lock)))
 
         await lock.acquire()
-        self.assertTrue(repr(lock).endswith('[locked]>'))
+        self.assertTrue(repr(lock).endswith("[locked]>"))
         self.assertTrue(RGX_REPR.match(repr(lock)))
 
     async def test_lock(self):
         lock = asyncio.Lock()
 
         with self.assertRaisesRegex(
-            TypeError,
-            "object Lock can't be used in 'await' expression"
+            TypeError, "object Lock can't be used in 'await' expression"
         ):
             await lock
 
@@ -60,7 +59,7 @@ class LockTests(unittest.IsolatedAsyncioTestCase):
             with self.assertRaisesRegex(
                 TypeError,
                 rf"{cls.__name__}\.__init__\(\) got an unexpected "
-                rf"keyword argument 'loop'"
+                rf"keyword argument 'loop'",
             ):
                 cls(loop=loop)
 
@@ -76,8 +75,7 @@ class LockTests(unittest.IsolatedAsyncioTestCase):
             await asyncio.sleep(0.01)
             self.assertFalse(lock.locked())
             with self.assertRaisesRegex(
-                TypeError,
-                r"object \w+ can't be used in 'await' expression"
+                TypeError, r"object \w+ can't be used in 'await' expression"
             ):
                 with await lock:
                     pass
@@ -170,13 +168,13 @@ class LockTests(unittest.IsolatedAsyncioTestCase):
                 lock.release()
 
         fa = asyncio.get_running_loop().create_future()
-        ta = asyncio.create_task(lockit('A', fa))
+        ta = asyncio.create_task(lockit("A", fa))
         await asyncio.sleep(0)
         self.assertTrue(lock.locked())
-        tb = asyncio.create_task(lockit('B', None))
+        tb = asyncio.create_task(lockit("B", None))
         await asyncio.sleep(0)
         self.assertEqual(len(lock._waiters), 1)
-        tc = asyncio.create_task(lockit('C', None))
+        tc = asyncio.create_task(lockit("C", None))
         await asyncio.sleep(0)
         self.assertEqual(len(lock._waiters), 2)
 
@@ -286,16 +284,16 @@ class EventTests(unittest.IsolatedAsyncioTestCase):
 
     def test_repr(self):
         ev = asyncio.Event()
-        self.assertTrue(repr(ev).endswith('[unset]>'))
+        self.assertTrue(repr(ev).endswith("[unset]>"))
         match = RGX_REPR.match(repr(ev))
-        self.assertEqual(match.group('extras'), 'unset')
+        self.assertEqual(match.group("extras"), "unset")
 
         ev.set()
-        self.assertTrue(repr(ev).endswith('[set]>'))
+        self.assertTrue(repr(ev).endswith("[set]>"))
         self.assertTrue(RGX_REPR.match(repr(ev)))
 
         ev._waiters.append(mock.Mock())
-        self.assertTrue('waiters:1' in repr(ev))
+        self.assertTrue("waiters:1" in repr(ev))
         self.assertTrue(RGX_REPR.match(repr(ev)))
 
     async def test_wait(self):
@@ -667,18 +665,18 @@ class ConditionTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_repr(self):
         cond = asyncio.Condition()
-        self.assertTrue('unlocked' in repr(cond))
+        self.assertTrue("unlocked" in repr(cond))
         self.assertTrue(RGX_REPR.match(repr(cond)))
 
         await cond.acquire()
-        self.assertTrue('locked' in repr(cond))
+        self.assertTrue("locked" in repr(cond))
 
         cond._waiters.append(mock.Mock())
-        self.assertTrue('waiters:1' in repr(cond))
+        self.assertTrue("waiters:1" in repr(cond))
         self.assertTrue(RGX_REPR.match(repr(cond)))
 
         cond._waiters.append(mock.Mock())
-        self.assertTrue('waiters:2' in repr(cond))
+        self.assertTrue("waiters:2" in repr(cond))
         self.assertTrue(RGX_REPR.match(repr(cond)))
 
     async def test_context_manager(self):
@@ -767,23 +765,23 @@ class SemaphoreTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_repr(self):
         sem = asyncio.Semaphore()
-        self.assertTrue(repr(sem).endswith('[unlocked, value:1]>'))
+        self.assertTrue(repr(sem).endswith("[unlocked, value:1]>"))
         self.assertTrue(RGX_REPR.match(repr(sem)))
 
         await sem.acquire()
-        self.assertTrue(repr(sem).endswith('[locked]>'))
-        self.assertTrue('waiters' not in repr(sem))
+        self.assertTrue(repr(sem).endswith("[locked]>"))
+        self.assertTrue("waiters" not in repr(sem))
         self.assertTrue(RGX_REPR.match(repr(sem)))
 
         if sem._waiters is None:
             sem._waiters = collections.deque()
 
         sem._waiters.append(mock.Mock())
-        self.assertTrue('waiters:1' in repr(sem))
+        self.assertTrue("waiters:1" in repr(sem))
         self.assertTrue(RGX_REPR.match(repr(sem)))
 
         sem._waiters.append(mock.Mock())
-        self.assertTrue('waiters:2' in repr(sem))
+        self.assertTrue("waiters:2" in repr(sem))
         self.assertTrue(RGX_REPR.match(repr(sem)))
 
     async def test_semaphore(self):
@@ -871,8 +869,9 @@ class SemaphoreTests(unittest.IsolatedAsyncioTestCase):
         asyncio.get_running_loop().call_soon(acquire.cancel)
         with self.assertRaises(asyncio.CancelledError):
             await acquire
-        self.assertTrue((not sem._waiters) or
-                        all(waiter.done() for waiter in sem._waiters))
+        self.assertTrue(
+            (not sem._waiters) or all(waiter.done() for waiter in sem._waiters)
+        )
 
     async def test_acquire_cancel_before_awoken(self):
         sem = asyncio.Semaphore(value=0)
@@ -954,24 +953,21 @@ class SemaphoreTests(unittest.IsolatedAsyncioTestCase):
 
         async def coro(tag):
             await sem.acquire()
-            result.append(f'{tag}_1')
+            result.append(f"{tag}_1")
             await asyncio.sleep(0.01)
             sem.release()
 
             await sem.acquire()
-            result.append(f'{tag}_2')
+            result.append(f"{tag}_2")
             await asyncio.sleep(0.01)
             sem.release()
 
         async with asyncio.TaskGroup() as tg:
-            tg.create_task(coro('c1'))
-            tg.create_task(coro('c2'))
-            tg.create_task(coro('c3'))
+            tg.create_task(coro("c1"))
+            tg.create_task(coro("c2"))
+            tg.create_task(coro("c3"))
 
-        self.assertEqual(
-            ['c1_1', 'c2_1', 'c3_1', 'c1_2', 'c2_2', 'c3_2'],
-            result
-        )
+        self.assertEqual(["c1_1", "c2_1", "c3_1", "c1_2", "c2_2", "c3_2"], result)
 
     async def test_acquire_fifo_order_2(self):
         sem = asyncio.Semaphore(1)
@@ -1078,6 +1074,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("filling", repr(barrier))
 
         waiters = []
+
         async def wait(barrier):
             await barrier.wait()
 
@@ -1207,7 +1204,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
 
         await self.gather_tasks(self.N, coro)
 
-        self.assertEqual(len(results), self.N*2)
+        self.assertEqual(len(results), self.N * 2)
         self.assertEqual(results.count(True), self.N)
         self.assertEqual(results.count(False), self.N)
 
@@ -1251,7 +1248,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(len(results), self.N)
         self.assertEqual(results[-1], False)
-        self.assertTrue(all(results[:self.N-1]))
+        self.assertTrue(all(results[: self.N - 1]))
 
         self.assertEqual(barrier.n_waiting, 0)
         self.assertFalse(barrier.broken)
@@ -1345,14 +1342,14 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
             await barrier.reset()
 
         # N-1 tasks waiting on barrier with N parties
-        tasks  = self.make_tasks(self.N-1, coro)
+        tasks = self.make_tasks(self.N - 1, coro)
         await asyncio.sleep(0)
 
         # reset the barrier
         asyncio.create_task(coro_reset())
         await asyncio.gather(*tasks)
 
-        self.assertEqual(len(results), self.N-1)
+        self.assertEqual(len(results), self.N - 1)
         self.assertTrue(all(results))
         self.assertEqual(barrier.n_waiting, 0)
         self.assertNotIn("resetting", repr(barrier))
@@ -1361,7 +1358,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
     async def test_reset_barrier_when_tasks_half_draining(self):
         barrier = asyncio.Barrier(self.N)
         results1 = []
-        rest_of_tasks = self.N//2
+        rest_of_tasks = self.N // 2
 
         async def coro():
             try:
@@ -1377,7 +1374,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
 
         await self.gather_tasks(self.N, coro)
 
-        self.assertEqual(results1, [True]*rest_of_tasks)
+        self.assertEqual(results1, [True] * rest_of_tasks)
         self.assertEqual(barrier.n_waiting, 0)
         self.assertNotIn("resetting", repr(barrier))
         self.assertFalse(barrier.broken)
@@ -1386,7 +1383,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
         barrier = asyncio.Barrier(self.N)
         results1 = []
         results2 = []
-        blocking_tasks = self.N//2
+        blocking_tasks = self.N // 2
         count = 0
 
         async def coro():
@@ -1416,7 +1413,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
 
         await self.gather_tasks(self.N, coro)
 
-        self.assertEqual(results1, [True]*blocking_tasks)
+        self.assertEqual(results1, [True] * blocking_tasks)
         self.assertEqual(results2, [])
         self.assertEqual(barrier.n_waiting, 0)
         self.assertNotIn("resetting", repr(barrier))
@@ -1440,7 +1437,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
             async with barrier:
                 results2.append(True)
 
-        tasks = self.make_tasks(self.N-1, coro1)
+        tasks = self.make_tasks(self.N - 1, coro1)
 
         # reset barrier, N-1 waiting tasks raise an BrokenBarrierError
         asyncio.create_task(barrier.reset())
@@ -1452,13 +1449,12 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
         await asyncio.gather(*tasks)
 
         self.assertFalse(barrier.broken)
-        self.assertEqual(len(results1), self.N-1)
+        self.assertEqual(len(results1), self.N - 1)
         self.assertTrue(all(results1))
         self.assertEqual(len(results2), self.N)
         self.assertTrue(all(results2))
 
         self.assertEqual(barrier.n_waiting, 0)
-
 
     async def test_reset_barrier_while_tasks_draining(self):
         barrier = asyncio.Barrier(self.N)
@@ -1498,7 +1494,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertFalse(barrier.broken)
         self.assertTrue(all(results1))
-        self.assertEqual(len(results1), self.N-1)
+        self.assertEqual(len(results1), self.N - 1)
         self.assertEqual(len(results2), 0)
         self.assertEqual(len(results3), self.N)
         self.assertTrue(all(results3))
@@ -1518,7 +1514,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
         barrier = asyncio.Barrier(self.N)
         results1 = []
         results2 = []
-        blocking_tasks = self.N//2
+        blocking_tasks = self.N // 2
         count = 0
 
         async def coro():
@@ -1543,8 +1539,8 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
         await self.gather_tasks(self.N, coro)
 
         self.assertTrue(barrier.broken)
-        self.assertEqual(results1, [True]*blocking_tasks)
-        self.assertEqual(results2, [True]*(self.N-blocking_tasks-1))
+        self.assertEqual(results1, [True] * blocking_tasks)
+        self.assertEqual(results2, [True] * (self.N - blocking_tasks - 1))
         self.assertEqual(barrier.n_waiting, 0)
         self.assertNotIn("resetting", repr(barrier))
 
@@ -1556,8 +1552,8 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
 
         async def coro():
             try:
-                async with barrier as i :
-                    if i == self.N//2:
+                async with barrier as i:
+                    if i == self.N // 2:
                         raise RuntimeError
                 async with barrier:
                     results1.append(True)
@@ -1570,7 +1566,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertTrue(barrier.broken)
         self.assertEqual(len(results1), 0)
-        self.assertEqual(len(results2), self.N-1)
+        self.assertEqual(len(results2), self.N - 1)
         self.assertTrue(all(results2))
         self.assertEqual(barrier.n_waiting, 0)
 
@@ -1585,7 +1581,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
         async def coro():
             try:
                 i = await barrier1.wait()
-                if i == self.N//2:
+                if i == self.N // 2:
                     raise RuntimeError
                 await barrier1.wait()
                 results1.append(True)
@@ -1598,7 +1594,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
             # that everyone has left it when we reset, and after so that no
             # one enters it before the reset.
             i = await barrier2.wait()
-            if  i == self.N//2:
+            if i == self.N // 2:
                 await barrier1.reset()
             await barrier2.wait()
             await barrier1.wait()
@@ -1608,7 +1604,7 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertFalse(barrier1.broken)
         self.assertEqual(len(results1), 0)
-        self.assertEqual(len(results2), self.N-1)
+        self.assertEqual(len(results2), self.N - 1)
         self.assertTrue(all(results2))
         self.assertEqual(len(results3), self.N)
         self.assertTrue(all(results3))
@@ -1616,5 +1612,5 @@ class BarrierTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(barrier1.n_waiting, 0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -1,12 +1,14 @@
 # ensure_build_files.py
 import os
 
+
 # Required files with minimal content
 def ensure_file(path, content=""):
     if not os.path.exists(path):
         with open(path, "w") as f:
             f.write(content)
             print(f"✅ Created missing file: {path}")
+
 
 # Public icon fallback
 ensure_file("public/favicon.ico", "")

@@ -45,7 +45,12 @@ def save_mem(data: Dict[str, Any]) -> None:
 
 
 def get_current_user() -> str:
-    return os.environ.get("QMOI_USER") or os.environ.get("USERNAME") or os.environ.get("USER") or "default"
+    return (
+        os.environ.get("QMOI_USER")
+        or os.environ.get("USERNAME")
+        or os.environ.get("USER")
+        or "default"
+    )
 
 
 def get_current_device() -> str:
@@ -54,7 +59,9 @@ def get_current_device() -> str:
 
 def ensure_user(mem: Dict[str, Any], user: str) -> Dict[str, Any]:
     users = mem.setdefault("users", {})
-    profile = users.setdefault(user, {"preferences": {"writing_assistant_enabled": True}, "recent": []})
+    profile = users.setdefault(
+        user, {"preferences": {"writing_assistant_enabled": True}, "recent": []}
+    )
     return profile
 
 
@@ -72,7 +79,9 @@ def get_prefs() -> Dict[str, Any]:
     return profile["preferences"]
 
 
-def record_session(app: str, project: str, extra: Dict[str, Any] | None = None) -> Dict[str, Any]:
+def record_session(
+    app: str, project: str, extra: Dict[str, Any] | None = None
+) -> Dict[str, Any]:
     mem = load_mem()
     profile = ensure_user(mem, get_current_user())
     entry = {
@@ -129,5 +138,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

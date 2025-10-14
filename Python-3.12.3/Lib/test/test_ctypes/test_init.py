@@ -1,9 +1,9 @@
 from ctypes import *
 import unittest
 
+
 class X(Structure):
-    _fields_ = [("a", c_int),
-                ("b", c_int)]
+    _fields_ = [("a", c_int), ("b", c_int)]
     new_was_called = False
 
     def __new__(cls):
@@ -14,6 +14,7 @@ class X(Structure):
     def __init__(self):
         self.a = 9
         self.b = 12
+
 
 class Y(Structure):
     _fields_ = [("x", X)]
@@ -35,6 +36,7 @@ class InitTest(unittest.TestCase):
         y.x = x
         self.assertEqual((y.x.a, y.x.b), (9, 12))
         self.assertEqual(y.x.new_was_called, False)
+
 
 if __name__ == "__main__":
     unittest.main()

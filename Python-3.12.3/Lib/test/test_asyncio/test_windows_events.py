@@ -7,8 +7,8 @@ import threading
 import unittest
 from unittest import mock
 
-if sys.platform != 'win32':
-    raise unittest.SkipTest('Windows only')
+if sys.platform != "win32":
+    raise unittest.SkipTest("Windows only")
 
 import _overlapped
 import _winapi
@@ -31,8 +31,8 @@ class UpperProto(asyncio.Protocol):
 
     def data_received(self, data):
         self.buf.append(data)
-        if b'\n' in data:
-            self.trans.write(b''.join(self.buf).upper())
+        if b"\n" in data:
+            self.trans.write(b"".join(self.buf).upper())
             self.trans.close()
 
 
@@ -51,6 +51,7 @@ class WindowsEventsTestCase(test_utils.TestCase):
     def tearDown(self):
         sys.unraisablehook = self._prev_unraisablehook
         self.assertIsNone(self._unraisable)
+
 
 class ProactorLoopCtrlC(WindowsEventsTestCase):
 
@@ -108,11 +109,11 @@ class ProactorTests(WindowsEventsTestCase):
         f = asyncio.ensure_future(self.loop.sock_recv(b, 100), loop=self.loop)
         trans.close()
         self.loop.run_until_complete(f)
-        self.assertEqual(f.result(), b'')
+        self.assertEqual(f.result(), b"")
         b.close()
 
     def test_double_bind(self):
-        ADDRESS = r'\\.\pipe\test_double_bind-%s' % os.getpid()
+        ADDRESS = r"\\.\pipe\test_double_bind-%s" % os.getpid()
         server1 = windows_events.PipeServer(ADDRESS)
         with self.assertRaises(PermissionError):
             windows_events.PipeServer(ADDRESS)
@@ -120,52 +121,48 @@ class ProactorTests(WindowsEventsTestCase):
 
     def test_pipe(self):
         res = self.loop.run_until_complete(self._test_pipe())
-        self.assertEqual(res, 'done')
+        self.assertEqual(res, "done")
 
     async def _test_pipe(self):
-        ADDRESS = r'\\.\pipe\_test_pipe-%s' % os.getpid()
+        ADDRESS = r"\\.\pipe\_test_pipe-%s" % os.getpid()
 
         with self.assertRaises(FileNotFoundError):
-            await self.loop.create_pipe_connection(
-                asyncio.Protocol, ADDRESS)
+            await self.loop.create_pipe_connection(asyncio.Protocol, ADDRESS)
 
-        [server] = await self.loop.start_serving_pipe(
-            UpperProto, ADDRESS)
+        [server] = await self.loop.start_serving_pipe(UpperProto, ADDRESS)
         self.assertIsInstance(server, windows_events.PipeServer)
 
         clients = []
         for i in range(5):
             stream_reader = asyncio.StreamReader(loop=self.loop)
-            protocol = asyncio.StreamReaderProtocol(stream_reader,
-                                                    loop=self.loop)
+            protocol = asyncio.StreamReaderProtocol(stream_reader, loop=self.loop)
             trans, proto = await self.loop.create_pipe_connection(
-                lambda: protocol, ADDRESS)
+                lambda: protocol, ADDRESS
+            )
             self.assertIsInstance(trans, asyncio.Transport)
             self.assertEqual(protocol, proto)
             clients.append((stream_reader, trans))
 
         for i, (r, w) in enumerate(clients):
-            w.write('lower-{}\n'.format(i).encode())
+            w.write("lower-{}\n".format(i).encode())
 
         for i, (r, w) in enumerate(clients):
             response = await r.readline()
-            self.assertEqual(response, 'LOWER-{}\n'.format(i).encode())
+            self.assertEqual(response, "LOWER-{}\n".format(i).encode())
             w.close()
 
         server.close()
 
         with self.assertRaises(FileNotFoundError):
-            await self.loop.create_pipe_connection(
-                asyncio.Protocol, ADDRESS)
+            await self.loop.create_pipe_connection(asyncio.Protocol, ADDRESS)
 
-        return 'done'
+        return "done"
 
     def test_connect_pipe_cancel(self):
         exc = OSError()
         exc.winerror = _overlapped.ERROR_PIPE_BUSY
-        with mock.patch.object(_overlapped, 'ConnectPipe',
-                               side_effect=exc) as connect:
-            coro = self.loop._proactor.connect_pipe('pipe_address')
+        with mock.patch.object(_overlapped, "ConnectPipe", side_effect=exc) as connect:
+            coro = self.loop._proactor.connect_pipe("pipe_address")
             task = self.loop.create_task(coro)
 
             # check that it's possible to cancel connect_pipe()
@@ -256,16 +253,16 @@ class ProactorTests(WindowsEventsTestCase):
         with self.assertRaises(TypeError):
             proactor.connect(sock, bad_address)
         with self.assertRaises(TypeError):
-            proactor.sendto(sock, b'abc', addr=bad_address)
+            proactor.sendto(sock, b"abc", addr=bad_address)
         sock.close()
 
     def test_client_pipe_stat(self):
         res = self.loop.run_until_complete(self._test_client_pipe_stat())
-        self.assertEqual(res, 'done')
+        self.assertEqual(res, "done")
 
     async def _test_client_pipe_stat(self):
         # Regression test for https://github.com/python/cpython/issues/100573
-        ADDRESS = r'\\.\pipe\test_client_pipe_stat-%s' % os.getpid()
+        ADDRESS = r"\\.\pipe\test_client_pipe_stat-%s" % os.getpid()
 
         async def probe():
             # See https://github.com/python/cpython/pull/100959#discussion_r1068533658
@@ -303,18 +300,20 @@ class ProactorTests(WindowsEventsTestCase):
         # We're fishing for the "RuntimeError: <_overlapped.Overlapped object at XXX>
         # still has pending operation at deallocation, the process may crash" error
         stop = threading.Event()
+
         def threadMain():
             while not stop.is_set():
                 self.loop.call_soon_threadsafe(lambda: None)
                 time.sleep(0.01)
+
         thr = threading.Thread(target=threadMain)
 
         # In 10 60-second runs of this test prior to the fix:
         # time in seconds until failure: (none), 15.0, 6.4, (none), 7.6, 8.3, 1.7, 22.2, 23.5, 8.3
         # 10 seconds had a 50% failure rate but longer would be more costly
-        end_time = time.time() + 10 # Run for 10 seconds
+        end_time = time.time() + 10  # Run for 10 seconds
         self.loop.call_soon(thr.start)
-        while not self._unraisable: # Stop if we got an unraisable exc
+        while not self._unraisable:  # Stop if we got an unraisable exc
             self.loop.stop()
             self.loop.run_forever()
             if time.time() >= end_time:
@@ -328,32 +327,26 @@ class WinPolicyTests(WindowsEventsTestCase):
 
     def test_selector_win_policy(self):
         async def main():
-            self.assertIsInstance(
-                asyncio.get_running_loop(),
-                asyncio.SelectorEventLoop)
+            self.assertIsInstance(asyncio.get_running_loop(), asyncio.SelectorEventLoop)
 
         old_policy = asyncio.get_event_loop_policy()
         try:
-            asyncio.set_event_loop_policy(
-                asyncio.WindowsSelectorEventLoopPolicy())
+            asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
             asyncio.run(main())
         finally:
             asyncio.set_event_loop_policy(old_policy)
 
     def test_proactor_win_policy(self):
         async def main():
-            self.assertIsInstance(
-                asyncio.get_running_loop(),
-                asyncio.ProactorEventLoop)
+            self.assertIsInstance(asyncio.get_running_loop(), asyncio.ProactorEventLoop)
 
         old_policy = asyncio.get_event_loop_policy()
         try:
-            asyncio.set_event_loop_policy(
-                asyncio.WindowsProactorEventLoopPolicy())
+            asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
             asyncio.run(main())
         finally:
             asyncio.set_event_loop_policy(old_policy)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

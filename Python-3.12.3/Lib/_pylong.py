@@ -139,18 +139,18 @@ def int_from_string(s):
     # use of underscore characters, checked that string consists of only digits
     # and underscores, and stripped leading whitespace.  The input can still
     # contain underscores and have trailing whitespace.
-    s = s.rstrip().replace('_', '')
+    s = s.rstrip().replace("_", "")
     return _str_to_int_inner(s)
 
 
 def str_to_int(s):
     """Asymptotically fast version of decimal string to 'int' conversion."""
     # FIXME: this doesn't support the full syntax that int() supports.
-    m = re.match(r'\s*([+-]?)([0-9_]+)\s*', s)
+    m = re.match(r"\s*([+-]?)([0-9_]+)\s*", s)
     if not m:
-        raise ValueError('invalid literal for int() with base 10')
+        raise ValueError("invalid literal for int() with base 10")
     v = int_from_string(m.group(2))
-    if m.group(1) == '-':
+    if m.group(1) == "-":
         v = -v
     return v
 

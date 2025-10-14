@@ -14,16 +14,16 @@ for the Borland C++ compiler.
 
 import os
 from distutils.errors import DistutilsExecError, CompileError
-from distutils.ccompiler import \
-     CCompiler, gen_preprocess_options
+from distutils.ccompiler import CCompiler, gen_preprocess_options
 from distutils.dep_util import newer
 
-class BCPPCompiler(CCompiler) :
+
+class BCPPCompiler(CCompiler):
     """Concrete class that implements an interface to the Borland C/C++
     compiler, as defined by the CCompiler abstract class.
     """
 
-    compiler_type = 'bcpp'
+    compiler_type = "bcpp"
 
     # Just set this so CCompiler's constructor doesn't barf.  We currently
     # don't use the 'set_executables()' bureaucracy provided by CCompiler,
@@ -33,25 +33,21 @@ class BCPPCompiler(CCompiler) :
     executables = {}
 
     # Private class data (need to distinguish C from C++ source for compiler)
-    _c_extensions = ['.c']
-    _cpp_extensions = ['.cc', '.cpp', '.cxx']
+    _c_extensions = [".c"]
+    _cpp_extensions = [".cc", ".cpp", ".cxx"]
 
     # Needed for the filename generation methods provided by the
     # base class, CCompiler.
     src_extensions = _c_extensions + _cpp_extensions
-    obj_extension = '.obj'
-    static_lib_extension = '.lib'
-    shared_lib_extension = '.dll'
-    static_lib_format = shared_lib_format = '%s%s'
-    exe_extension = '.exe'
+    obj_extension = ".obj"
+    static_lib_extension = ".lib"
+    shared_lib_extension = ".dll"
+    static_lib_format = shared_lib_format = "%s%s"
+    exe_extension = ".exe"
 
+    def __init__(self, verbose=0, dry_run=0, force=0):
 
-    def __init__ (self,
-                  verbose=0,
-                  dry_run=0,
-                  force=0):
-
-        CCompiler.__init__ (self, verbose, dry_run, force)
+        CCompiler.__init__(self, verbose, dry_run, force)
 
         # These executables are assumed to all be in the path.
         # Borland doesn't seem to use any special registry settings to
@@ -62,32 +58,32 @@ class BCPPCompiler(CCompiler) :
         self.lib = "tlib.exe"
 
         self.preprocess_options = None
-        self.compile_options = ['/tWM', '/O2', '/q', '/g0']
-        self.compile_options_debug = ['/tWM', '/Od', '/q', '/g0']
+        self.compile_options = ["/tWM", "/O2", "/q", "/g0"]
+        self.compile_options_debug = ["/tWM", "/Od", "/q", "/g0"]
 
-        self.ldflags_shared = ['/Tpd', '/Gn', '/q', '/x']
-        self.ldflags_shared_debug = ['/Tpd', '/Gn', '/q', '/x']
+        self.ldflags_shared = ["/Tpd", "/Gn", "/q", "/x"]
+        self.ldflags_shared_debug = ["/Tpd", "/Gn", "/q", "/x"]
         self.ldflags_static = []
-        self.ldflags_exe = ['/Gn', '/q', '/x']
-        self.ldflags_exe_debug = ['/Gn', '/q', '/x','/r']
-
+        self.ldflags_exe = ["/Gn", "/q", "/x"]
+        self.ldflags_exe_debug = ["/Gn", "/q", "/x", "/r"]
 
     # -- Worker methods ------------------------------------------------
 
-    def preprocess (self,
-                    source,
-                    output_file=None,
-                    macros=None,
-                    include_dirs=None,
-                    extra_preargs=None,
-                    extra_postargs=None):
+    def preprocess(
+        self,
+        source,
+        output_file=None,
+        macros=None,
+        include_dirs=None,
+        extra_preargs=None,
+        extra_postargs=None,
+    ):
 
-        (_, macros, include_dirs) = \
-            self._fix_compile_args(None, macros, include_dirs)
+        (_, macros, include_dirs) = self._fix_compile_args(None, macros, include_dirs)
         pp_opts = gen_preprocess_options(macros, include_dirs)
-        pp_args = ['cpp32.exe'] + pp_opts
+        pp_args = ["cpp32.exe"] + pp_opts
         if output_file is not None:
-            pp_args.append('-o' + output_file)
+            pp_args.append("-o" + output_file)
         if extra_preargs:
             pp_args[:0] = extra_preargs
         if extra_postargs:

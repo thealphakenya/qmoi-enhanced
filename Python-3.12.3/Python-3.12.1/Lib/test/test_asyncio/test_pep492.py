@@ -76,8 +76,7 @@ class LockTests(BaseTest):
             await asyncio.sleep(0.01)
             self.assertFalse(lock.locked())
             with self.assertRaisesRegex(
-                TypeError,
-                "can't be used in 'await' expression"
+                TypeError, "can't be used in 'await' expression"
             ):
                 with await lock:
                     pass
@@ -90,7 +89,7 @@ class LockTests(BaseTest):
 class StreamReaderTests(BaseTest):
 
     def test_readline(self):
-        DATA = b'line1\nline2\nline3'
+        DATA = b"line1\nline2\nline3"
 
         stream = asyncio.StreamReader(loop=self.loop)
         stream.feed_data(DATA)
@@ -103,46 +102,50 @@ class StreamReaderTests(BaseTest):
             return data
 
         data = self.loop.run_until_complete(reader())
-        self.assertEqual(data, [b'line1\n', b'line2\n', b'line3'])
+        self.assertEqual(data, [b"line1\n", b"line2\n", b"line3"])
 
 
 class CoroutineTests(BaseTest):
 
     def test_iscoroutine(self):
-        async def foo(): pass
+        async def foo():
+            pass
 
         f = foo()
         try:
             self.assertTrue(asyncio.iscoroutine(f))
         finally:
-            f.close() # silence warning
+            f.close()  # silence warning
 
         self.assertTrue(asyncio.iscoroutine(FakeCoro()))
 
     def test_iscoroutine_generator(self):
-        def foo(): yield
+        def foo():
+            yield
 
         self.assertFalse(asyncio.iscoroutine(foo()))
 
-
     def test_iscoroutinefunction(self):
-        async def foo(): pass
+        async def foo():
+            pass
+
         self.assertTrue(asyncio.iscoroutinefunction(foo))
 
     def test_async_def_coroutines(self):
         async def bar():
-            return 'spam'
+            return "spam"
+
         async def foo():
             return await bar()
 
         # production mode
         data = self.loop.run_until_complete(foo())
-        self.assertEqual(data, 'spam')
+        self.assertEqual(data, "spam")
 
         # debug mode
         self.loop.set_debug(True)
         data = self.loop.run_until_complete(foo())
-        self.assertEqual(data, 'spam')
+        self.assertEqual(data, "spam")
 
     def test_debug_mode_manages_coroutine_origin_tracking(self):
         async def start():
@@ -156,7 +159,7 @@ class CoroutineTests(BaseTest):
     def test_types_coroutine(self):
         def gen():
             yield from ()
-            return 'spam'
+            return "spam"
 
         @types.coroutine
         def func():
@@ -168,7 +171,7 @@ class CoroutineTests(BaseTest):
             return await wrapper
 
         data = self.loop.run_until_complete(coro())
-        self.assertEqual(data, 'spam')
+        self.assertEqual(data, "spam")
 
     def test_task_print_stack(self):
         T = None
@@ -176,7 +179,7 @@ class CoroutineTests(BaseTest):
         async def foo():
             f = T.get_stack(limit=1)
             try:
-                self.assertEqual(f[0].f_code.co_name, 'foo')
+                self.assertEqual(f[0].f_code.co_name, "foo")
             finally:
                 f = None
 
@@ -201,12 +204,10 @@ class CoroutineTests(BaseTest):
                 t.cancel()
 
         self.loop.set_debug(True)
-        with self.assertRaises(
-                RuntimeError,
-                msg='coroutine is being awaited already'):
+        with self.assertRaises(RuntimeError, msg="coroutine is being awaited already"):
 
             self.loop.run_until_complete(runner())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

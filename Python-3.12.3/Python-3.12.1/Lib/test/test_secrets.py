@@ -4,7 +4,6 @@ As most of the functions in secrets are thin wrappers around functions
 defined elsewhere, we don't need to test them exhaustively.
 """
 
-
 import secrets
 import unittest
 import string
@@ -12,31 +11,36 @@ import string
 
 # === Unit tests ===
 
+
 class Compare_Digest_Tests(unittest.TestCase):
     """Test secrets.compare_digest function."""
 
     def test_equal(self):
         # Test compare_digest functionality with equal (byte/text) strings.
         for s in ("a", "bcd", "xyz123"):
-            a = s*100
-            b = s*100
+            a = s * 100
+            b = s * 100
             self.assertTrue(secrets.compare_digest(a, b))
-            self.assertTrue(secrets.compare_digest(a.encode('utf-8'), b.encode('utf-8')))
+            self.assertTrue(
+                secrets.compare_digest(a.encode("utf-8"), b.encode("utf-8"))
+            )
 
     def test_unequal(self):
         # Test compare_digest functionality with unequal (byte/text) strings.
         self.assertFalse(secrets.compare_digest("abc", "abcd"))
         self.assertFalse(secrets.compare_digest(b"abc", b"abcd"))
         for s in ("x", "mn", "a1b2c3"):
-            a = s*100 + "q"
-            b = s*100 + "k"
+            a = s * 100 + "q"
+            b = s * 100 + "k"
             self.assertFalse(secrets.compare_digest(a, b))
-            self.assertFalse(secrets.compare_digest(a.encode('utf-8'), b.encode('utf-8')))
+            self.assertFalse(
+                secrets.compare_digest(a.encode("utf-8"), b.encode("utf-8"))
+            )
 
     def test_bad_types(self):
         # Test that compare_digest raises with mixed types.
-        a = 'abcde'
-        b = a.encode('utf-8')
+        a = "abcde"
+        b = a.encode("utf-8")
         assert isinstance(a, str)
         assert isinstance(b, bytes)
         self.assertRaises(TypeError, secrets.compare_digest, a, b)
@@ -78,8 +82,7 @@ class Token_Tests(unittest.TestCase):
 
     def test_token_defaults(self):
         # Test that token_* functions handle default size correctly.
-        for func in (secrets.token_bytes, secrets.token_hex,
-                     secrets.token_urlsafe):
+        for func in (secrets.token_bytes, secrets.token_hex, secrets.token_urlsafe):
             with self.subTest(func=func):
                 name = func.__name__
                 try:
@@ -92,7 +95,7 @@ class Token_Tests(unittest.TestCase):
                     self.fail("%s cannot be called with None" % name)
         size = secrets.DEFAULT_ENTROPY
         self.assertEqual(len(secrets.token_bytes(None)), size)
-        self.assertEqual(len(secrets.token_hex(None)), 2*size)
+        self.assertEqual(len(secrets.token_hex(None)), 2 * size)
 
     def test_token_bytes(self):
         # Test token_bytes.
@@ -107,12 +110,12 @@ class Token_Tests(unittest.TestCase):
             with self.subTest(n=n):
                 s = secrets.token_hex(n)
                 self.assertIsInstance(s, str)
-                self.assertEqual(len(s), 2*n)
+                self.assertEqual(len(s), 2 * n)
                 self.assertTrue(all(c in string.hexdigits for c in s))
 
     def test_token_urlsafe(self):
         # Test token_urlsafe.
-        legal = string.ascii_letters + string.digits + '-_'
+        legal = string.ascii_letters + string.digits + "-_"
         for n in (1, 11, 28, 76):
             with self.subTest(n=n):
                 s = secrets.token_urlsafe(n)
@@ -120,5 +123,5 @@ class Token_Tests(unittest.TestCase):
                 self.assertTrue(all(c in legal for c in s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

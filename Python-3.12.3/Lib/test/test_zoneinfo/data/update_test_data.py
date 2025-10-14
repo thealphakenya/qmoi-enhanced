@@ -9,6 +9,7 @@ important property to test.
 
 This must be run from a computer with zoneinfo data installed.
 """
+
 from __future__ import annotations
 
 import base64
@@ -62,11 +63,7 @@ def get_zoneinfo_metadata() -> typing.Dict[str, str]:
 
     _, version = version_line.strip().rsplit(" ", 1)
 
-    if (
-        not version[0:4].isdigit()
-        or len(version) < 5
-        or not version[4:].isalpha()
-    ):
+    if not version[0:4].isdigit() or len(version) < 5 or not version[4:].isalpha():
         raise ValueError(
             "Version string should be YYYYx, "
             + "where YYYY is the year and x is a letter; "
@@ -104,7 +101,8 @@ def update_test_data(fname: str = "zoneinfo_data.json") -> None:
 
     # Annotation required: https://github.com/python/mypy/issues/8772
     json_kwargs: typing.Dict[str, typing.Any] = dict(
-        indent=2, sort_keys=True,
+        indent=2,
+        sort_keys=True,
     )
 
     compressed_keys = load_compressed_keys()

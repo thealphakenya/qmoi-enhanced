@@ -13,11 +13,12 @@ from test.test_tools import scriptsdir, import_tool, skip_if_missing
 
 skip_if_missing()
 
+
 class TestSundryScripts(unittest.TestCase):
     # At least make sure the rest don't have syntax errors.  When tests are
     # added for a script it should be added to the allowlist below.
 
-    skiplist = ['2to3']
+    skiplist = ["2to3"]
 
     # import logging registers "atfork" functions which keep indirectly the
     # logging module dictionary alive. Mock the function to be able to unload
@@ -27,7 +28,7 @@ class TestSundryScripts(unittest.TestCase):
         old_modules = import_helper.modules_setup()
         try:
             for fn in os.listdir(scriptsdir):
-                if not fn.endswith('.py'):
+                if not fn.endswith(".py"):
                     continue
 
                 name = fn[:-3]
@@ -40,5 +41,5 @@ class TestSundryScripts(unittest.TestCase):
             import_helper.modules_cleanup(*old_modules)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -6,8 +6,13 @@ import sys
 import unicodedata
 
 import unittest
-from test.support.os_helper import (rmtree, change_cwd, TESTFN_UNICODE,
-    TESTFN_UNENCODABLE, create_empty_file)
+from test.support.os_helper import (
+    rmtree,
+    change_cwd,
+    TESTFN_UNICODE,
+    TESTFN_UNENCODABLE,
+    create_empty_file,
+)
 
 
 if not os.path.supports_unicode_filenames:
@@ -18,9 +23,11 @@ if not os.path.supports_unicode_filenames:
         # cannot be encoded in the file system encoding.
         raise unittest.SkipTest("No Unicode filesystem semantics on this platform.")
 
+
 def remove_if_exists(filename):
     if os.path.exists(filename):
         os.unlink(filename)
+
 
 class TestUnicodeFiles(unittest.TestCase):
     # The 'do_' functions are the actual tests.  They generally assume the
@@ -42,7 +49,9 @@ class TestUnicodeFiles(unittest.TestCase):
         self._do_copyish(filename, filename)
         # Filename should appear in glob output
         self.assertTrue(
-            os.path.abspath(filename)==os.path.abspath(glob.glob(glob.escape(filename))[0]))
+            os.path.abspath(filename)
+            == os.path.abspath(glob.glob(glob.escape(filename))[0])
+        )
         # basename should appear in listdir.
         path, base = os.path.split(os.path.abspath(filename))
         file_list = os.listdir(path)
@@ -56,22 +65,22 @@ class TestUnicodeFiles(unittest.TestCase):
     # Tests that copy, move, etc one file to another.
     def _do_copyish(self, filename1, filename2):
         # Should be able to rename the file using either name.
-        self.assertTrue(os.path.isfile(filename1)) # must exist.
+        self.assertTrue(os.path.isfile(filename1))  # must exist.
         os.rename(filename1, filename2 + ".new")
         self.assertFalse(os.path.isfile(filename2))
-        self.assertTrue(os.path.isfile(filename1 + '.new'))
+        self.assertTrue(os.path.isfile(filename1 + ".new"))
         os.rename(filename1 + ".new", filename2)
-        self.assertFalse(os.path.isfile(filename1 + '.new'))
+        self.assertFalse(os.path.isfile(filename1 + ".new"))
         self.assertTrue(os.path.isfile(filename2))
 
         shutil.copy(filename1, filename2 + ".new")
-        os.unlink(filename1 + ".new") # remove using equiv name.
+        os.unlink(filename1 + ".new")  # remove using equiv name.
         # And a couple of moves, one using each name.
         shutil.move(filename1, filename2 + ".new")
         self.assertFalse(os.path.exists(filename2))
-        self.assertTrue(os.path.exists(filename1 + '.new'))
+        self.assertTrue(os.path.exists(filename1 + ".new"))
         shutil.move(filename1 + ".new", filename2)
-        self.assertFalse(os.path.exists(filename2 + '.new'))
+        self.assertFalse(os.path.exists(filename2 + ".new"))
         self.assertTrue(os.path.exists(filename1))
         # Note - due to the implementation of shutil.move,
         # it tries a rename first.  This only fails on Windows when on
@@ -79,9 +88,9 @@ class TestUnicodeFiles(unittest.TestCase):
         # So we test the shutil.copy2 function, which is the thing most
         # likely to fail.
         shutil.copy2(filename1, filename2 + ".new")
-        self.assertTrue(os.path.isfile(filename1 + '.new'))
+        self.assertTrue(os.path.isfile(filename1 + ".new"))
         os.unlink(filename1 + ".new")
-        self.assertFalse(os.path.exists(filename2 + '.new'))
+        self.assertFalse(os.path.exists(filename2 + ".new"))
 
     def _do_directory(self, make_name, chdir_name):
         if os.path.isdir(make_name):
@@ -95,7 +104,7 @@ class TestUnicodeFiles(unittest.TestCase):
                 cwd_result = unicodedata.normalize("NFD", cwd_result)
                 name_result = unicodedata.normalize("NFD", name_result)
 
-                self.assertEqual(os.path.basename(cwd_result),name_result)
+                self.assertEqual(os.path.basename(cwd_result), name_result)
         finally:
             os.rmdir(make_name)
 
@@ -129,11 +138,10 @@ class TestUnicodeFiles(unittest.TestCase):
         #  Make dir with encoded, chdir with unicode, checkdir with encoded
         #  (or unicode/encoded/unicode, etc
         ext = ".dir"
-        self._do_directory(TESTFN_UNICODE+ext, TESTFN_UNICODE+ext)
+        self._do_directory(TESTFN_UNICODE + ext, TESTFN_UNICODE + ext)
         # Our directory name that can't use a non-unicode name.
         if TESTFN_UNENCODABLE is not None:
-            self._do_directory(TESTFN_UNENCODABLE+ext,
-                               TESTFN_UNENCODABLE+ext)
+            self._do_directory(TESTFN_UNENCODABLE + ext, TESTFN_UNENCODABLE + ext)
 
 
 if __name__ == "__main__":

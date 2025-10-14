@@ -12,30 +12,31 @@ def log_match(group, m, depth_before=None, depth_after=None):
 
     if m is not None:
         text = m.group(0)
-        if text.startswith(('(', ')')) or text.endswith(('(', ')')):
-            _logger.debug(f'matched <{group}> ({text!r})')
+        if text.startswith(("(", ")")) or text.endswith(("(", ")")):
+            _logger.debug(f"matched <{group}> ({text!r})")
         else:
-            _logger.debug(f'matched <{group}> ({text})')
+            _logger.debug(f"matched <{group}> ({text})")
 
     elif depth_before is not None or depth_after is not None:
         if depth_before is None:
-            depth_before = '???'
+            depth_before = "???"
         elif depth_after is None:
-            depth_after = '???'
-        _logger.log(1, f'depth: %s -> %s', depth_before, depth_after)
+            depth_after = "???"
+        _logger.log(1, f"depth: %s -> %s", depth_before, depth_after)
 
     else:
-        raise NotImplementedError('this should not have been hit')
+        raise NotImplementedError("this should not have been hit")
 
 
 #############################
 # regex utils
 
+
 def set_capture_group(pattern, group, *, strict=True):
-    old = f'(?:  # <{group}>'
-    if strict and f'(?:  # <{group}>' not in pattern:
-        raise ValueError(f'{old!r} not found in pattern')
-    return pattern.replace(old, f'(  # <{group}>', 1)
+    old = f"(?:  # <{group}>"
+    if strict and f"(?:  # <{group}>" not in pattern:
+        raise ValueError(f"{old!r} not found in pattern")
+    return pattern.replace(old, f"(  # <{group}>", 1)
 
 
 def set_capture_groups(pattern, groups, *, strict=True):
@@ -47,7 +48,8 @@ def set_capture_groups(pattern, groups, *, strict=True):
 #############################
 # syntax-related utils
 
-_PAREN_RE = re.compile(rf'''
+_PAREN_RE = re.compile(
+    rf"""
     (?:
         (?:
             [^'"()]*
@@ -60,12 +62,14 @@ _PAREN_RE = re.compile(rf'''
             ( [)] )
          )
      )
-    ''', re.VERBOSE)
+    """,
+    re.VERBOSE,
+)
 
 
 def match_paren(text, depth=0):
     pos = 0
-    while (m := _PAREN_RE.match(text, pos)):
+    while m := _PAREN_RE.match(text, pos):
         pos = m.end()
         _open, _close = m.groups()
         if _open:
@@ -75,49 +79,57 @@ def match_paren(text, depth=0):
             if depth == 0:
                 return pos
     else:
-        raise ValueError(f'could not find matching parens for {text!r}')
+        raise ValueError(f"could not find matching parens for {text!r}")
 
 
-VAR_DECL = set_capture_groups(_VAR_DECL, (
-    'STORAGE',
-    'TYPE_QUAL',
-    'TYPE_SPEC',
-    'DECLARATOR',
-    'IDENTIFIER',
-    'WRAPPED_IDENTIFIER',
-    'FUNC_IDENTIFIER',
-))
+VAR_DECL = set_capture_groups(
+    _VAR_DECL,
+    (
+        "STORAGE",
+        "TYPE_QUAL",
+        "TYPE_SPEC",
+        "DECLARATOR",
+        "IDENTIFIER",
+        "WRAPPED_IDENTIFIER",
+        "FUNC_IDENTIFIER",
+    ),
+)
 
 
 def parse_var_decl(decl):
     m = re.match(VAR_DECL, decl, re.VERBOSE)
-    (storage, typequal, typespec, declarator,
-     name,
-     wrappedname,
-     funcptrname,
-     ) = m.groups()
+    (
+        storage,
+        typequal,
+        typespec,
+        declarator,
+        name,
+        wrappedname,
+        funcptrname,
+    ) = m.groups()
     if name:
-        kind = 'simple'
+        kind = "simple"
     elif wrappedname:
-        kind = 'wrapped'
+        kind = "wrapped"
         name = wrappedname
     elif funcptrname:
-        kind = 'funcptr'
+        kind = "funcptr"
         name = funcptrname
     else:
         raise NotImplementedError
-    abstract = declarator.replace(name, '')
+    abstract = declarator.replace(name, "")
     vartype = {
-        'storage': storage,
-        'typequal': typequal,
-        'typespec': typespec,
-        'abstract': abstract,
+        "storage": storage,
+        "typequal": typequal,
+        "typespec": typespec,
+        "abstract": abstract,
     }
     return (kind, name, vartype)
 
 
 #############################
 # parser state utils
+
 
 # XXX Drop this or use it!
 def iter_results(results):

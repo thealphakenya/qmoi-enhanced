@@ -19,8 +19,12 @@ class FixUpModuleTests:
         ns = {"__spec__": spec}
         _bootstrap_external._fix_up_module(ns, name, path)
 
-        expected = {"__spec__": spec, "__loader__": loader, "__file__": path,
-                    "__cached__": None}
+        expected = {
+            "__spec__": spec,
+            "__loader__": loader,
+            "__file__": path,
+            "__cached__": None,
+        }
         self.assertEqual(ns, expected)
 
     def test_no_loader_no_spec_but_sourceless(self):
@@ -77,7 +81,7 @@ class TestBlessMyLoader(unittest.TestCase):
     # in favor of requiring __spec__.loader.
 
     def test_gh86298_no_loader_and_no_spec(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         del bar.__loader__
         del bar.__spec__
         # 2022-10-06(warsaw): For backward compatibility with the
@@ -90,7 +94,7 @@ class TestBlessMyLoader(unittest.TestCase):
         self.assertIsNone(_bootstrap_external._bless_my_loader(bar.__dict__))
 
     def test_gh86298_loader_is_none_and_no_spec(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         bar.__loader__ = None
         del bar.__spec__
         # 2022-10-06(warsaw): For backward compatibility with the
@@ -103,81 +107,79 @@ class TestBlessMyLoader(unittest.TestCase):
         self.assertIsNone(_bootstrap_external._bless_my_loader(bar.__dict__))
 
     def test_gh86298_no_loader_and_spec_is_none(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         del bar.__loader__
         bar.__spec__ = None
         self.assertRaises(
-            ValueError,
-            _bootstrap_external._bless_my_loader, bar.__dict__)
+            ValueError, _bootstrap_external._bless_my_loader, bar.__dict__
+        )
 
     def test_gh86298_loader_is_none_and_spec_is_none(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         bar.__loader__ = None
         bar.__spec__ = None
         self.assertRaises(
-            ValueError,
-            _bootstrap_external._bless_my_loader, bar.__dict__)
+            ValueError, _bootstrap_external._bless_my_loader, bar.__dict__
+        )
 
     def test_gh86298_loader_is_none_and_spec_loader_is_none(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         bar.__loader__ = None
         bar.__spec__ = SimpleNamespace(loader=None)
         self.assertRaises(
-            ValueError,
-            _bootstrap_external._bless_my_loader, bar.__dict__)
+            ValueError, _bootstrap_external._bless_my_loader, bar.__dict__
+        )
 
     def test_gh86298_no_spec(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         bar.__loader__ = object()
         del bar.__spec__
         with warnings.catch_warnings():
             self.assertWarns(
-                DeprecationWarning,
-                _bootstrap_external._bless_my_loader, bar.__dict__)
+                DeprecationWarning, _bootstrap_external._bless_my_loader, bar.__dict__
+            )
 
     def test_gh86298_spec_is_none(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         bar.__loader__ = object()
         bar.__spec__ = None
         with warnings.catch_warnings():
             self.assertWarns(
-                DeprecationWarning,
-                _bootstrap_external._bless_my_loader, bar.__dict__)
+                DeprecationWarning, _bootstrap_external._bless_my_loader, bar.__dict__
+            )
 
     def test_gh86298_no_spec_loader(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         bar.__loader__ = object()
         bar.__spec__ = SimpleNamespace()
         with warnings.catch_warnings():
             self.assertWarns(
-                DeprecationWarning,
-                _bootstrap_external._bless_my_loader, bar.__dict__)
+                DeprecationWarning, _bootstrap_external._bless_my_loader, bar.__dict__
+            )
 
     def test_gh86298_loader_and_spec_loader_disagree(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         bar.__loader__ = object()
         bar.__spec__ = SimpleNamespace(loader=object())
         with warnings.catch_warnings():
             self.assertWarns(
-                DeprecationWarning,
-                _bootstrap_external._bless_my_loader, bar.__dict__)
+                DeprecationWarning, _bootstrap_external._bless_my_loader, bar.__dict__
+            )
 
     def test_gh86298_no_loader_and_no_spec_loader(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         del bar.__loader__
         bar.__spec__ = SimpleNamespace()
         self.assertRaises(
-            AttributeError,
-            _bootstrap_external._bless_my_loader, bar.__dict__)
+            AttributeError, _bootstrap_external._bless_my_loader, bar.__dict__
+        )
 
     def test_gh86298_no_loader_with_spec_loader_okay(self):
-        bar = ModuleType('bar')
+        bar = ModuleType("bar")
         del bar.__loader__
         loader = object()
         bar.__spec__ = SimpleNamespace(loader=loader)
-        self.assertEqual(
-            _bootstrap_external._bless_my_loader(bar.__dict__),
-            loader)
+        self.assertEqual(_bootstrap_external._bless_my_loader(bar.__dict__), loader)
 
 
 if __name__ == "__main__":

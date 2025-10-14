@@ -14,6 +14,5 @@ the user build or load random bytecodes anyway.  Otherwise, this is a
 
 import types
 
-co = types.CodeType(0, 0, 0, 0, 0, 0, b'\x04\x00\x71\x00',
-                    (), (), (), '', '', 1, b'')
+co = types.CodeType(0, 0, 0, 0, 0, 0, b"\x04\x00\x71\x00", (), (), (), "", "", 1, b"")
 exec(co)

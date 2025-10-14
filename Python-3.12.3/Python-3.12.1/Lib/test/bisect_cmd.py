@@ -44,7 +44,7 @@ def write_output(filename, tests):
 
 
 def format_shell_args(args):
-    return ' '.join(args)
+    return " ".join(args)
 
 
 def python_cmd():
@@ -56,16 +56,13 @@ def python_cmd():
 
 def list_cases(args):
     cmd = python_cmd()
-    cmd.extend(['-m', 'test', '--list-cases'])
+    cmd.extend(["-m", "test", "--list-cases"])
     cmd.extend(args.test_args)
-    proc = subprocess.run(cmd,
-                          stdout=subprocess.PIPE,
-                          universal_newlines=True)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, universal_newlines=True)
     exitcode = proc.returncode
     if exitcode:
         cmd = format_shell_args(cmd)
-        print("Failed to list tests: %s failed with exit code %s"
-              % (cmd, exitcode))
+        print("Failed to list tests: %s failed with exit code %s" % (cmd, exitcode))
         sys.exit(exitcode)
     tests = proc.stdout.splitlines()
     return tests
@@ -77,7 +74,7 @@ def run_tests(args, tests, huntrleaks=None):
         write_tests(tmp, tests)
 
         cmd = python_cmd()
-        cmd.extend(['-m', 'test', '--matchfile', tmp])
+        cmd.extend(["-m", "test", "--matchfile", tmp])
         cmd.extend(args.test_args)
         print("+ %s" % format_shell_args(cmd))
         proc = subprocess.run(cmd)
@@ -89,17 +86,27 @@ def run_tests(args, tests, huntrleaks=None):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--input',
-                        help='Test names produced by --list-tests written '
-                             'into a file. If not set, run --list-tests')
-    parser.add_argument('-o', '--output',
-                        help='Result of the bisection')
-    parser.add_argument('-n', '--max-tests', type=int, default=1,
-                        help='Maximum number of tests to stop the bisection '
-                             '(default: 1)')
-    parser.add_argument('-N', '--max-iter', type=int, default=100,
-                        help='Maximum number of bisection iterations '
-                             '(default: 100)')
+    parser.add_argument(
+        "-i",
+        "--input",
+        help="Test names produced by --list-tests written "
+        "into a file. If not set, run --list-tests",
+    )
+    parser.add_argument("-o", "--output", help="Result of the bisection")
+    parser.add_argument(
+        "-n",
+        "--max-tests",
+        type=int,
+        default=1,
+        help="Maximum number of tests to stop the bisection " "(default: 1)",
+    )
+    parser.add_argument(
+        "-N",
+        "--max-iter",
+        type=int,
+        default=100,
+        help="Maximum number of bisection iterations " "(default: 100)",
+    )
     # FIXME: document that following arguments are test arguments
 
     args, test_args = parser.parse_known_args()
@@ -109,7 +116,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-    for opt in ('-w', '--rerun', '--verbose2'):
+    for opt in ("-w", "--rerun", "--verbose2"):
         if opt in args.test_args:
             print(f"WARNING: {opt} option should not be used to bisect!")
             print()
@@ -122,10 +129,11 @@ def main():
 
     print("Start bisection with %s tests" % len(tests))
     print("Test arguments: %s" % format_shell_args(args.test_args))
-    print("Bisection will stop when getting %s or less tests "
-          "(-n/--max-tests option), or after %s iterations "
-          "(-N/--max-iter option)"
-          % (args.max_tests, args.max_iter))
+    print(
+        "Bisection will stop when getting %s or less tests "
+        "(-n/--max-tests option), or after %s iterations "
+        "(-N/--max-iter option)" % (args.max_tests, args.max_iter)
+    )
     output = write_output(args.output, tests)
     print()
 
@@ -137,8 +145,10 @@ def main():
             ntest = max(ntest // 2, 1)
             subtests = random.sample(tests, ntest)
 
-            print("[+] Iteration %s: run %s tests/%s"
-                  % (iteration, len(subtests), len(tests)))
+            print(
+                "[+] Iteration %s: run %s tests/%s"
+                % (iteration, len(subtests), len(tests))
+            )
             print()
 
             exitcode = run_tests(args, subtests)
@@ -168,12 +178,16 @@ def main():
 
     dt = math.ceil(time.monotonic() - start_time)
     if len(tests) <= args.max_tests:
-        print("Bisection completed in %s iterations and %s"
-              % (iteration, datetime.timedelta(seconds=dt)))
+        print(
+            "Bisection completed in %s iterations and %s"
+            % (iteration, datetime.timedelta(seconds=dt))
+        )
         sys.exit(1)
     else:
-        print("Bisection failed after %s iterations and %s"
-              % (iteration, datetime.timedelta(seconds=dt)))
+        print(
+            "Bisection failed after %s iterations and %s"
+            % (iteration, datetime.timedelta(seconds=dt))
+        )
 
 
 if __name__ == "__main__":

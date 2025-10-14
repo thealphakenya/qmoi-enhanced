@@ -15,7 +15,7 @@ class WinTypesTest(unittest.TestCase):
         for true_value in (1, 32767, 32768, 65535, 65537):
             true = POINTER(c_int16)(c_int16(true_value))
             value = cast(true, POINTER(wintypes.VARIANT_BOOL))
-            self.assertEqual(repr(value.contents), 'VARIANT_BOOL(True)')
+            self.assertEqual(repr(value.contents), "VARIANT_BOOL(True)")
 
             vb = wintypes.VARIANT_BOOL()
             self.assertIs(vb.value, False)
@@ -27,7 +27,7 @@ class WinTypesTest(unittest.TestCase):
         for false_value in (0, 65536, 262144, 2**33):
             false = POINTER(c_int16)(c_int16(false_value))
             value = cast(false, POINTER(wintypes.VARIANT_BOOL))
-            self.assertEqual(repr(value.contents), 'VARIANT_BOOL(False)')
+            self.assertEqual(repr(value.contents), "VARIANT_BOOL(False)")
 
         # allow any bool conversion on assignment to value
         for set_value in (65536, 262144, 2**33):
@@ -48,8 +48,14 @@ class WinTypesTest(unittest.TestCase):
         self.assertGreater(ctype(-1).value, 0)
 
     def test_signedness(self):
-        for ctype in (wintypes.BYTE, wintypes.WORD, wintypes.DWORD,
-                     wintypes.BOOLEAN, wintypes.UINT, wintypes.ULONG):
+        for ctype in (
+            wintypes.BYTE,
+            wintypes.WORD,
+            wintypes.DWORD,
+            wintypes.BOOLEAN,
+            wintypes.UINT,
+            wintypes.ULONG,
+        ):
             with self.subTest(ctype=ctype):
                 self.assertIsUnsigned(ctype)
 

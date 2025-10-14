@@ -4,6 +4,7 @@ from test.test_ctypes import need_symbol
 
 import _ctypes_test
 
+
 class SlicesTestCase(unittest.TestCase):
     def test_getslice_cint(self):
         a = (c_int * 100)(*range(1100, 1200))
@@ -51,11 +52,9 @@ class SlicesTestCase(unittest.TestCase):
         # TypeError: int expected instead of str instance
         self.assertRaises(TypeError, setitem, a, slice(0, 5), "abcde")
         # TypeError: int expected instead of str instance
-        self.assertRaises(TypeError, setitem, a, slice(0, 5),
-                          ["a", "b", "c", "d", "e"])
+        self.assertRaises(TypeError, setitem, a, slice(0, 5), ["a", "b", "c", "d", "e"])
         # TypeError: int expected instead of float instance
-        self.assertRaises(TypeError, setitem, a, slice(0, 5),
-                          [1, 2, 3, 4, 3.14])
+        self.assertRaises(TypeError, setitem, a, slice(0, 5), [1, 2, 3, 4, 3.14])
         # ValueError: Can only assign sequence of same size
         self.assertRaises(ValueError, setitem, a, slice(0, 5), range(32))
 
@@ -66,31 +65,27 @@ class SlicesTestCase(unittest.TestCase):
         dll.my_strdup.restype = POINTER(c_char)
         dll.my_free.restype = None
         res = dll.my_strdup(s)
-        self.assertEqual(res[:len(s)], s)
+        self.assertEqual(res[: len(s)], s)
         self.assertEqual(res[:3], s[:3])
-        self.assertEqual(res[:len(s):], s)
-        self.assertEqual(res[len(s)-1:-1:-1], s[::-1])
-        self.assertEqual(res[len(s)-1:5:-7], s[:5:-7])
+        self.assertEqual(res[: len(s) :], s)
+        self.assertEqual(res[len(s) - 1 : -1 : -1], s[::-1])
+        self.assertEqual(res[len(s) - 1 : 5 : -7], s[:5:-7])
         self.assertEqual(res[0:-1:-1], s[0::-1])
 
         import operator
-        self.assertRaises(ValueError, operator.getitem,
-                          res, slice(None, None, None))
-        self.assertRaises(ValueError, operator.getitem,
-                          res, slice(0, None, None))
-        self.assertRaises(ValueError, operator.getitem,
-                          res, slice(None, 5, -1))
-        self.assertRaises(ValueError, operator.getitem,
-                          res, slice(-5, None, None))
 
-        self.assertRaises(TypeError, operator.setitem,
-                          res, slice(0, 5), "abcde")
+        self.assertRaises(ValueError, operator.getitem, res, slice(None, None, None))
+        self.assertRaises(ValueError, operator.getitem, res, slice(0, None, None))
+        self.assertRaises(ValueError, operator.getitem, res, slice(None, 5, -1))
+        self.assertRaises(ValueError, operator.getitem, res, slice(-5, None, None))
+
+        self.assertRaises(TypeError, operator.setitem, res, slice(0, 5), "abcde")
         dll.my_free(res)
 
         dll.my_strdup.restype = POINTER(c_byte)
         res = dll.my_strdup(s)
-        self.assertEqual(res[:len(s)], list(range(ord("a"), ord("z")+1)))
-        self.assertEqual(res[:len(s):], list(range(ord("a"), ord("z")+1)))
+        self.assertEqual(res[: len(s)], list(range(ord("a"), ord("z") + 1)))
+        self.assertEqual(res[: len(s) :], list(range(ord("a"), ord("z") + 1)))
         dll.my_free(res)
 
     def test_char_ptr_with_free(self):
@@ -101,6 +96,7 @@ class SlicesTestCase(unittest.TestCase):
             pass
 
         dll.my_free.restype = None
+
         def errcheck(result, func, args):
             retval = result.value
             dll.my_free(result)
@@ -114,7 +110,6 @@ class SlicesTestCase(unittest.TestCase):
         finally:
             del dll.my_strdup.errcheck
 
-
     def test_char_array(self):
         s = b"abcdefghijklmnopqrstuvwxyz\0"
 
@@ -125,24 +120,23 @@ class SlicesTestCase(unittest.TestCase):
         self.assertEqual(p[5::-2], s[5::-2])
         self.assertEqual(p[2:5:-3], s[2:5:-3])
 
-
-    @need_symbol('c_wchar')
+    @need_symbol("c_wchar")
     def test_wchar_ptr(self):
         s = "abcdefghijklmnopqrstuvwxyz\0"
 
         dll = CDLL(_ctypes_test.__file__)
         dll.my_wcsdup.restype = POINTER(c_wchar)
-        dll.my_wcsdup.argtypes = POINTER(c_wchar),
+        dll.my_wcsdup.argtypes = (POINTER(c_wchar),)
         dll.my_free.restype = None
         res = dll.my_wcsdup(s[:-1])
-        self.assertEqual(res[:len(s)], s)
-        self.assertEqual(res[:len(s):], s)
-        self.assertEqual(res[len(s)-1:-1:-1], s[::-1])
-        self.assertEqual(res[len(s)-1:5:-7], s[:5:-7])
+        self.assertEqual(res[: len(s)], s)
+        self.assertEqual(res[: len(s) :], s)
+        self.assertEqual(res[len(s) - 1 : -1 : -1], s[::-1])
+        self.assertEqual(res[len(s) - 1 : 5 : -7], s[:5:-7])
 
         import operator
-        self.assertRaises(TypeError, operator.setitem,
-                          res, slice(0, 5), "abcde")
+
+        self.assertRaises(TypeError, operator.setitem, res, slice(0, 5), "abcde")
         dll.my_free(res)
 
         if sizeof(c_wchar) == sizeof(c_short):
@@ -152,14 +146,15 @@ class SlicesTestCase(unittest.TestCase):
         elif sizeof(c_wchar) == sizeof(c_long):
             dll.my_wcsdup.restype = POINTER(c_long)
         else:
-            self.skipTest('Pointers to c_wchar are not supported')
+            self.skipTest("Pointers to c_wchar are not supported")
         res = dll.my_wcsdup(s[:-1])
-        tmpl = list(range(ord("a"), ord("z")+1))
-        self.assertEqual(res[:len(s)-1], tmpl)
-        self.assertEqual(res[:len(s)-1:], tmpl)
-        self.assertEqual(res[len(s)-2:-1:-1], tmpl[::-1])
-        self.assertEqual(res[len(s)-2:5:-7], tmpl[:5:-7])
+        tmpl = list(range(ord("a"), ord("z") + 1))
+        self.assertEqual(res[: len(s) - 1], tmpl)
+        self.assertEqual(res[: len(s) - 1 :], tmpl)
+        self.assertEqual(res[len(s) - 2 : -1 : -1], tmpl[::-1])
+        self.assertEqual(res[len(s) - 2 : 5 : -7], tmpl[:5:-7])
         dll.my_free(res)
+
 
 ################################################################
 

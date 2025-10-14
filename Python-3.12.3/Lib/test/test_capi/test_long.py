@@ -4,12 +4,14 @@ import sys
 from test.support import import_helper
 
 # Skip this test if the _testcapi module isn't available.
-_testcapi = import_helper.import_module('_testcapi')
+_testcapi = import_helper.import_module("_testcapi")
 
 NULL = None
 
+
 class IntSubclass(int):
     pass
+
 
 class Index:
     def __init__(self, value):
@@ -18,10 +20,12 @@ class Index:
     def __index__(self):
         return self.value
 
+
 # use __index__(), not __int__()
 class MyIndexAndInt:
     def __index__(self):
         return 10
+
     def __int__(self):
         return 22
 
@@ -32,12 +36,12 @@ class LongTests(unittest.TestCase):
         for n in {
             # Edge cases
             *(2**n for n in range(66)),
-            *(-2**n for n in range(66)),
+            *(-(2**n) for n in range(66)),
             *(2**n - 1 for n in range(66)),
-            *(-2**n + 1 for n in range(66)),
+            *(-(2**n) + 1 for n in range(66)),
             # Essentially random
             *(37**n for n in range(14)),
-            *(-37**n for n in range(14)),
+            *(-(37**n) for n in range(14)),
         }:
             with self.subTest(n=n):
                 is_compact, value = _testcapi.call_long_compact_api(n)
@@ -50,8 +54,7 @@ class LongTests(unittest.TestCase):
         self.assertEqual(_testcapi.call_long_compact_api(-1), (True, -1))
         self.assertEqual(_testcapi.call_long_compact_api(0), (True, 0))
         self.assertEqual(_testcapi.call_long_compact_api(256), (True, 256))
-        self.assertEqual(_testcapi.call_long_compact_api(sys.maxsize),
-                         (False, -1))
+        self.assertEqual(_testcapi.call_long_compact_api(sys.maxsize), (False, -1))
 
     def test_long_check(self):
         # Test PyLong_Check()
@@ -84,9 +87,9 @@ class LongTests(unittest.TestCase):
         for value in (5.0, 5.1, 5.9, -5.1, -5.9, 0.0, -0.0, float_max, -float_max):
             with self.subTest(value=value):
                 self.assertEqual(fromdouble(value), int(value))
-        self.assertRaises(OverflowError, fromdouble, float('inf'))
-        self.assertRaises(OverflowError, fromdouble, float('-inf'))
-        self.assertRaises(ValueError, fromdouble, float('nan'))
+        self.assertRaises(OverflowError, fromdouble, float("inf"))
+        self.assertRaises(OverflowError, fromdouble, float("-inf"))
+        self.assertRaises(ValueError, fromdouble, float("nan"))
 
     def test_long_fromvoidptr(self):
         # Test PyLong_FromVoidPtr()
@@ -103,29 +106,29 @@ class LongTests(unittest.TestCase):
     def test_long_fromstring(self):
         # Test PyLong_FromString()
         fromstring = _testcapi.pylong_fromstring
-        self.assertEqual(fromstring(b'123', 10), (123, 3))
-        self.assertEqual(fromstring(b'cafe', 16), (0xcafe, 4))
-        self.assertEqual(fromstring(b'xyz', 36), (44027, 3))
-        self.assertEqual(fromstring(b'123', 0), (123, 3))
-        self.assertEqual(fromstring(b'0xcafe', 0), (0xcafe, 6))
-        self.assertRaises(ValueError, fromstring, b'cafe', 0)
-        self.assertEqual(fromstring(b'-123', 10), (-123, 4))
-        self.assertEqual(fromstring(b' -123 ', 10), (-123, 6))
-        self.assertEqual(fromstring(b'1_23', 10), (123, 4))
-        self.assertRaises(ValueError, fromstring, b'- 123', 10)
-        self.assertRaises(ValueError, fromstring, b'', 10)
+        self.assertEqual(fromstring(b"123", 10), (123, 3))
+        self.assertEqual(fromstring(b"cafe", 16), (0xCAFE, 4))
+        self.assertEqual(fromstring(b"xyz", 36), (44027, 3))
+        self.assertEqual(fromstring(b"123", 0), (123, 3))
+        self.assertEqual(fromstring(b"0xcafe", 0), (0xCAFE, 6))
+        self.assertRaises(ValueError, fromstring, b"cafe", 0)
+        self.assertEqual(fromstring(b"-123", 10), (-123, 4))
+        self.assertEqual(fromstring(b" -123 ", 10), (-123, 6))
+        self.assertEqual(fromstring(b"1_23", 10), (123, 4))
+        self.assertRaises(ValueError, fromstring, b"- 123", 10)
+        self.assertRaises(ValueError, fromstring, b"", 10)
 
-        self.assertRaises(ValueError, fromstring, b'123', 1)
-        self.assertRaises(ValueError, fromstring, b'123', -1)
-        self.assertRaises(ValueError, fromstring, b'123', 37)
+        self.assertRaises(ValueError, fromstring, b"123", 1)
+        self.assertRaises(ValueError, fromstring, b"123", -1)
+        self.assertRaises(ValueError, fromstring, b"123", 37)
 
-        self.assertRaises(ValueError, fromstring, '١٢٣٤٥٦٧٨٩٠'.encode(), 0)
-        self.assertRaises(ValueError, fromstring, '١٢٣٤٥٦٧٨٩٠'.encode(), 16)
+        self.assertRaises(ValueError, fromstring, "١٢٣٤٥٦٧٨٩٠".encode(), 0)
+        self.assertRaises(ValueError, fromstring, "١٢٣٤٥٦٧٨٩٠".encode(), 16)
 
-        self.assertEqual(fromstring(b'123\x00', 0), (123, 3))
-        self.assertEqual(fromstring(b'123\x00456', 0), (123, 3))
-        self.assertEqual(fromstring(b'123\x00', 16), (0x123, 3))
-        self.assertEqual(fromstring(b'123\x00456', 16), (0x123, 3))
+        self.assertEqual(fromstring(b"123\x00", 0), (123, 3))
+        self.assertEqual(fromstring(b"123\x00456", 0), (123, 3))
+        self.assertEqual(fromstring(b"123\x00", 16), (0x123, 3))
+        self.assertEqual(fromstring(b"123\x00456", 16), (0x123, 3))
 
         # CRASHES fromstring(NULL, 0)
         # CRASHES fromstring(NULL, 16)
@@ -133,29 +136,29 @@ class LongTests(unittest.TestCase):
     def test_long_fromunicodeobject(self):
         # Test PyLong_FromUnicodeObject()
         fromunicodeobject = _testcapi.pylong_fromunicodeobject
-        self.assertEqual(fromunicodeobject('123', 10), 123)
-        self.assertEqual(fromunicodeobject('cafe', 16), 0xcafe)
-        self.assertEqual(fromunicodeobject('xyz', 36), 44027)
-        self.assertEqual(fromunicodeobject('123', 0), 123)
-        self.assertEqual(fromunicodeobject('0xcafe', 0), 0xcafe)
-        self.assertRaises(ValueError, fromunicodeobject, 'cafe', 0)
-        self.assertEqual(fromunicodeobject('-123', 10), -123)
-        self.assertEqual(fromunicodeobject(' -123 ', 10), -123)
-        self.assertEqual(fromunicodeobject('1_23', 10), 123)
-        self.assertRaises(ValueError, fromunicodeobject, '- 123', 10)
-        self.assertRaises(ValueError, fromunicodeobject, '', 10)
+        self.assertEqual(fromunicodeobject("123", 10), 123)
+        self.assertEqual(fromunicodeobject("cafe", 16), 0xCAFE)
+        self.assertEqual(fromunicodeobject("xyz", 36), 44027)
+        self.assertEqual(fromunicodeobject("123", 0), 123)
+        self.assertEqual(fromunicodeobject("0xcafe", 0), 0xCAFE)
+        self.assertRaises(ValueError, fromunicodeobject, "cafe", 0)
+        self.assertEqual(fromunicodeobject("-123", 10), -123)
+        self.assertEqual(fromunicodeobject(" -123 ", 10), -123)
+        self.assertEqual(fromunicodeobject("1_23", 10), 123)
+        self.assertRaises(ValueError, fromunicodeobject, "- 123", 10)
+        self.assertRaises(ValueError, fromunicodeobject, "", 10)
 
-        self.assertRaises(ValueError, fromunicodeobject, '123', 1)
-        self.assertRaises(ValueError, fromunicodeobject, '123', -1)
-        self.assertRaises(ValueError, fromunicodeobject, '123', 37)
+        self.assertRaises(ValueError, fromunicodeobject, "123", 1)
+        self.assertRaises(ValueError, fromunicodeobject, "123", -1)
+        self.assertRaises(ValueError, fromunicodeobject, "123", 37)
 
-        self.assertEqual(fromunicodeobject('١٢٣٤٥٦٧٨٩٠', 0), 1234567890)
-        self.assertEqual(fromunicodeobject('١٢٣٤٥٦٧٨٩٠', 16), 0x1234567890)
+        self.assertEqual(fromunicodeobject("١٢٣٤٥٦٧٨٩٠", 0), 1234567890)
+        self.assertEqual(fromunicodeobject("١٢٣٤٥٦٧٨٩٠", 16), 0x1234567890)
 
-        self.assertRaises(ValueError, fromunicodeobject, '123\x00', 0)
-        self.assertRaises(ValueError, fromunicodeobject, '123\x00456', 0)
-        self.assertRaises(ValueError, fromunicodeobject, '123\x00', 16)
-        self.assertRaises(ValueError, fromunicodeobject, '123\x00456', 16)
+        self.assertRaises(ValueError, fromunicodeobject, "123\x00", 0)
+        self.assertRaises(ValueError, fromunicodeobject, "123\x00456", 0)
+        self.assertRaises(ValueError, fromunicodeobject, "123\x00", 16)
+        self.assertRaises(ValueError, fromunicodeobject, "123\x00456", 16)
 
         # CRASHES fromunicodeobject(NULL, 0)
         # CRASHES fromunicodeobject(NULL, 16)
@@ -164,6 +167,7 @@ class LongTests(unittest.TestCase):
         # Test PyLong_AsLong() and PyLong_FromLong()
         aslong = _testcapi.pylong_aslong
         from _testcapi import LONG_MIN, LONG_MAX
+
         # round trip (object -> long -> object)
         for value in (LONG_MIN, LONG_MAX, -1, 0, 1, 1234):
             with self.subTest(value=value):
@@ -176,14 +180,15 @@ class LongTests(unittest.TestCase):
         self.assertRaises(OverflowError, aslong, LONG_MIN - 1)
         self.assertRaises(OverflowError, aslong, LONG_MAX + 1)
         self.assertRaises(TypeError, aslong, 1.0)
-        self.assertRaises(TypeError, aslong, b'2')
-        self.assertRaises(TypeError, aslong, '3')
+        self.assertRaises(TypeError, aslong, b"2")
+        self.assertRaises(TypeError, aslong, "3")
         self.assertRaises(SystemError, aslong, NULL)
 
     def test_long_aslongandoverflow(self):
         # Test PyLong_AsLongAndOverflow()
         aslongandoverflow = _testcapi.pylong_aslongandoverflow
         from _testcapi import LONG_MIN, LONG_MAX
+
         # round trip (object -> long -> object)
         for value in (LONG_MIN, LONG_MAX, -1, 0, 1, 1234):
             with self.subTest(value=value):
@@ -202,6 +207,7 @@ class LongTests(unittest.TestCase):
         # Test PyLong_AsUnsignedLong() and PyLong_FromUnsignedLong()
         asunsignedlong = _testcapi.pylong_asunsignedlong
         from _testcapi import ULONG_MAX
+
         # round trip (object -> unsigned long -> object)
         for value in (ULONG_MAX, 0, 1, 1234):
             with self.subTest(value=value):
@@ -214,14 +220,15 @@ class LongTests(unittest.TestCase):
         self.assertRaises(OverflowError, asunsignedlong, -1)
         self.assertRaises(OverflowError, asunsignedlong, ULONG_MAX + 1)
         self.assertRaises(TypeError, asunsignedlong, 1.0)
-        self.assertRaises(TypeError, asunsignedlong, b'2')
-        self.assertRaises(TypeError, asunsignedlong, '3')
+        self.assertRaises(TypeError, asunsignedlong, b"2")
+        self.assertRaises(TypeError, asunsignedlong, "3")
         self.assertRaises(SystemError, asunsignedlong, NULL)
 
     def test_long_asunsignedlongmask(self):
         # Test PyLong_AsUnsignedLongMask()
         asunsignedlongmask = _testcapi.pylong_asunsignedlongmask
         from _testcapi import ULONG_MAX
+
         # round trip (object -> unsigned long -> object)
         for value in (ULONG_MAX, 0, 1, 1234):
             with self.subTest(value=value):
@@ -234,14 +241,15 @@ class LongTests(unittest.TestCase):
         self.assertEqual(asunsignedlongmask(-1), ULONG_MAX)
         self.assertEqual(asunsignedlongmask(ULONG_MAX + 1), 0)
         self.assertRaises(TypeError, asunsignedlongmask, 1.0)
-        self.assertRaises(TypeError, asunsignedlongmask, b'2')
-        self.assertRaises(TypeError, asunsignedlongmask, '3')
+        self.assertRaises(TypeError, asunsignedlongmask, b"2")
+        self.assertRaises(TypeError, asunsignedlongmask, "3")
         self.assertRaises(SystemError, asunsignedlongmask, NULL)
 
     def test_long_aslonglong(self):
         # Test PyLong_AsLongLong() and PyLong_FromLongLong()
         aslonglong = _testcapi.pylong_aslonglong
         from _testcapi import LLONG_MIN, LLONG_MAX
+
         # round trip (object -> long long -> object)
         for value in (LLONG_MIN, LLONG_MAX, -1, 0, 1, 1234):
             with self.subTest(value=value):
@@ -254,14 +262,15 @@ class LongTests(unittest.TestCase):
         self.assertRaises(OverflowError, aslonglong, LLONG_MIN - 1)
         self.assertRaises(OverflowError, aslonglong, LLONG_MAX + 1)
         self.assertRaises(TypeError, aslonglong, 1.0)
-        self.assertRaises(TypeError, aslonglong, b'2')
-        self.assertRaises(TypeError, aslonglong, '3')
+        self.assertRaises(TypeError, aslonglong, b"2")
+        self.assertRaises(TypeError, aslonglong, "3")
         self.assertRaises(SystemError, aslonglong, NULL)
 
     def test_long_aslonglongandoverflow(self):
         # Test PyLong_AsLongLongAndOverflow()
         aslonglongandoverflow = _testcapi.pylong_aslonglongandoverflow
         from _testcapi import LLONG_MIN, LLONG_MAX
+
         # round trip (object -> long long -> object)
         for value in (LLONG_MIN, LLONG_MAX, -1, 0, 1, 1234):
             with self.subTest(value=value):
@@ -280,6 +289,7 @@ class LongTests(unittest.TestCase):
         # Test PyLong_AsUnsignedLongLong() and PyLong_FromUnsignedLongLong()
         asunsignedlonglong = _testcapi.pylong_asunsignedlonglong
         from _testcapi import ULLONG_MAX
+
         # round trip (object -> unsigned long long -> object)
         for value in (ULLONG_MAX, 0, 1, 1234):
             with self.subTest(value=value):
@@ -292,14 +302,15 @@ class LongTests(unittest.TestCase):
         self.assertRaises(OverflowError, asunsignedlonglong, -1)
         self.assertRaises(OverflowError, asunsignedlonglong, ULLONG_MAX + 1)
         self.assertRaises(TypeError, asunsignedlonglong, 1.0)
-        self.assertRaises(TypeError, asunsignedlonglong, b'2')
-        self.assertRaises(TypeError, asunsignedlonglong, '3')
+        self.assertRaises(TypeError, asunsignedlonglong, b"2")
+        self.assertRaises(TypeError, asunsignedlonglong, "3")
         self.assertRaises(SystemError, asunsignedlonglong, NULL)
 
     def test_long_asunsignedlonglongmask(self):
         # Test PyLong_AsUnsignedLongLongMask()
         asunsignedlonglongmask = _testcapi.pylong_asunsignedlonglongmask
         from _testcapi import ULLONG_MAX
+
         # round trip (object -> unsigned long long -> object)
         for value in (ULLONG_MAX, 0, 1, 1234):
             with self.subTest(value=value):
@@ -312,14 +323,15 @@ class LongTests(unittest.TestCase):
         self.assertEqual(asunsignedlonglongmask(-1), ULLONG_MAX)
         self.assertEqual(asunsignedlonglongmask(ULLONG_MAX + 1), 0)
         self.assertRaises(TypeError, asunsignedlonglongmask, 1.0)
-        self.assertRaises(TypeError, asunsignedlonglongmask, b'2')
-        self.assertRaises(TypeError, asunsignedlonglongmask, '3')
+        self.assertRaises(TypeError, asunsignedlonglongmask, b"2")
+        self.assertRaises(TypeError, asunsignedlonglongmask, "3")
         self.assertRaises(SystemError, asunsignedlonglongmask, NULL)
 
     def test_long_as_ssize_t(self):
         # Test PyLong_AsSsize_t() and PyLong_FromSsize_t()
         as_ssize_t = _testcapi.pylong_as_ssize_t
         from _testcapi import PY_SSIZE_T_MIN, PY_SSIZE_T_MAX
+
         # round trip (object -> Py_ssize_t -> object)
         for value in (PY_SSIZE_T_MIN, PY_SSIZE_T_MAX, -1, 0, 1, 1234):
             with self.subTest(value=value):
@@ -332,14 +344,15 @@ class LongTests(unittest.TestCase):
         self.assertRaises(OverflowError, as_ssize_t, PY_SSIZE_T_MIN - 1)
         self.assertRaises(OverflowError, as_ssize_t, PY_SSIZE_T_MAX + 1)
         self.assertRaises(TypeError, as_ssize_t, 1.0)
-        self.assertRaises(TypeError, as_ssize_t, b'2')
-        self.assertRaises(TypeError, as_ssize_t, '3')
+        self.assertRaises(TypeError, as_ssize_t, b"2")
+        self.assertRaises(TypeError, as_ssize_t, "3")
         self.assertRaises(SystemError, as_ssize_t, NULL)
 
     def test_long_as_size_t(self):
         # Test PyLong_AsSize_t() and PyLong_FromSize_t()
         as_size_t = _testcapi.pylong_as_size_t
         from _testcapi import SIZE_MAX
+
         # round trip (object -> size_t -> object)
         for value in (SIZE_MAX, 0, 1, 1234):
             with self.subTest(value=value):
@@ -352,8 +365,8 @@ class LongTests(unittest.TestCase):
         self.assertRaises(OverflowError, as_size_t, -1)
         self.assertRaises(OverflowError, as_size_t, SIZE_MAX + 1)
         self.assertRaises(TypeError, as_size_t, 1.0)
-        self.assertRaises(TypeError, as_size_t, b'2')
-        self.assertRaises(TypeError, as_size_t, '3')
+        self.assertRaises(TypeError, as_size_t, b"2")
+        self.assertRaises(TypeError, as_size_t, "3")
         self.assertRaises(SystemError, as_size_t, NULL)
 
     def test_long_asdouble(self):
@@ -372,8 +385,8 @@ class LongTests(unittest.TestCase):
         self.assertRaises(OverflowError, asdouble, 2 * MAX)
         self.assertRaises(OverflowError, asdouble, -2 * MAX)
         self.assertRaises(TypeError, asdouble, 1.0)
-        self.assertRaises(TypeError, asdouble, b'2')
-        self.assertRaises(TypeError, asdouble, '3')
+        self.assertRaises(TypeError, asdouble, b"2")
+        self.assertRaises(TypeError, asdouble, "3")
         self.assertRaises(SystemError, asdouble, NULL)
 
     def test_long_asvoidptr(self):
@@ -388,25 +401,26 @@ class LongTests(unittest.TestCase):
         self.assertIs(asvoidptr(IntSubclass(x)), obj)
 
         # negative values
-        M = (1 << _testcapi.SIZEOF_VOID_P * 8)
-        if x >= M//2:
+        M = 1 << _testcapi.SIZEOF_VOID_P * 8
+        if x >= M // 2:
             self.assertIs(asvoidptr(x - M), obj)
-        if y >= M//2:
+        if y >= M // 2:
             self.assertIs(asvoidptr(y - M), NULL)
 
         self.assertRaises(TypeError, asvoidptr, Index(x))
         self.assertRaises(TypeError, asvoidptr, object())
         self.assertRaises(OverflowError, asvoidptr, 2**1000)
-        self.assertRaises(OverflowError, asvoidptr, -2**1000)
+        self.assertRaises(OverflowError, asvoidptr, -(2**1000))
         # CRASHES asvoidptr(NULL)
 
     def test_long_aspid(self):
         # Test PyLong_AsPid()
         aspid = _testcapi.pylong_aspid
         from _testcapi import SIZEOF_PID_T
+
         bits = 8 * SIZEOF_PID_T
-        PID_T_MIN = -2**(bits-1)
-        PID_T_MAX = 2**(bits-1) - 1
+        PID_T_MIN = -(2 ** (bits - 1))
+        PID_T_MAX = 2 ** (bits - 1) - 1
         # round trip (object -> long -> object)
         for value in (PID_T_MIN, PID_T_MAX, -1, 0, 1, 1234):
             with self.subTest(value=value):
@@ -419,8 +433,8 @@ class LongTests(unittest.TestCase):
         self.assertRaises(OverflowError, aspid, PID_T_MIN - 1)
         self.assertRaises(OverflowError, aspid, PID_T_MAX + 1)
         self.assertRaises(TypeError, aspid, 1.0)
-        self.assertRaises(TypeError, aspid, b'2')
-        self.assertRaises(TypeError, aspid, '3')
+        self.assertRaises(TypeError, aspid, b"2")
+        self.assertRaises(TypeError, aspid, "3")
         self.assertRaises(SystemError, aspid, NULL)
 
 

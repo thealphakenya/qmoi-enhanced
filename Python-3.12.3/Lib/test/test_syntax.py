@@ -2012,11 +2012,21 @@ import unittest
 
 from test import support
 
+
 class SyntaxTestCase(unittest.TestCase):
 
-    def _check_error(self, code, errtext,
-                     filename="<testcase>", mode="exec", subclass=None,
-                     lineno=None, offset=None, end_lineno=None, end_offset=None):
+    def _check_error(
+        self,
+        code,
+        errtext,
+        filename="<testcase>",
+        mode="exec",
+        subclass=None,
+        lineno=None,
+        offset=None,
+        end_lineno=None,
+        end_offset=None,
+    ):
         """Check that compiling code raises SyntaxError with errtext.
 
         errtest is a regular expression that must be present in the
@@ -2048,7 +2058,7 @@ class SyntaxTestCase(unittest.TestCase):
         self._check_error(
             "print(end1 + end2 = ' ')",
             'expression cannot contain assignment, perhaps you meant "=="?',
-            offset=7
+            offset=7,
         )
 
     def test_curly_brace_after_primary_raises_immediately(self):
@@ -2072,7 +2082,9 @@ class SyntaxTestCase(unittest.TestCase):
         self._check_error("del a[0]()", "cannot delete function call")
         self._check_error("del x, f()", "cannot delete function call")
         self._check_error("del f(), x", "cannot delete function call")
-        self._check_error("del [a, b, ((c), (d,), e.f())]", "cannot delete function call")
+        self._check_error(
+            "del [a, b, ((c), (d,), e.f())]", "cannot delete function call"
+        )
         self._check_error("del (a if True else b)", "cannot delete conditional")
         self._check_error("del +a", "cannot delete expression")
         self._check_error("del a, +b", "cannot delete expression")
@@ -2109,31 +2121,30 @@ class SyntaxTestCase(unittest.TestCase):
         self._check_error(source, "parameter and nonlocal", lineno=3)
 
     def test_yield_outside_function(self):
-        self._check_error("if 0: yield",                "outside function")
-        self._check_error("if 0: yield\nelse:  x=1",    "outside function")
-        self._check_error("if 1: pass\nelse: yield",    "outside function")
-        self._check_error("while 0: yield",             "outside function")
+        self._check_error("if 0: yield", "outside function")
+        self._check_error("if 0: yield\nelse:  x=1", "outside function")
+        self._check_error("if 1: pass\nelse: yield", "outside function")
+        self._check_error("while 0: yield", "outside function")
         self._check_error("while 0: yield\nelse:  x=1", "outside function")
-        self._check_error("class C:\n  if 0: yield",    "outside function")
-        self._check_error("class C:\n  if 1: pass\n  else: yield",
-                          "outside function")
+        self._check_error("class C:\n  if 0: yield", "outside function")
+        self._check_error("class C:\n  if 1: pass\n  else: yield", "outside function")
         self._check_error("class C:\n  while 0: yield", "outside function")
-        self._check_error("class C:\n  while 0: yield\n  else:  x = 1",
-                          "outside function")
+        self._check_error(
+            "class C:\n  while 0: yield\n  else:  x = 1", "outside function"
+        )
 
     def test_return_outside_function(self):
-        self._check_error("if 0: return",                "outside function")
-        self._check_error("if 0: return\nelse:  x=1",    "outside function")
-        self._check_error("if 1: pass\nelse: return",    "outside function")
-        self._check_error("while 0: return",             "outside function")
-        self._check_error("class C:\n  if 0: return",    "outside function")
+        self._check_error("if 0: return", "outside function")
+        self._check_error("if 0: return\nelse:  x=1", "outside function")
+        self._check_error("if 1: pass\nelse: return", "outside function")
+        self._check_error("while 0: return", "outside function")
+        self._check_error("class C:\n  if 0: return", "outside function")
         self._check_error("class C:\n  while 0: return", "outside function")
-        self._check_error("class C:\n  while 0: return\n  else:  x=1",
-                          "outside function")
-        self._check_error("class C:\n  if 0: return\n  else: x= 1",
-                          "outside function")
-        self._check_error("class C:\n  if 1: pass\n  else: return",
-                          "outside function")
+        self._check_error(
+            "class C:\n  while 0: return\n  else:  x=1", "outside function"
+        )
+        self._check_error("class C:\n  if 0: return\n  else: x= 1", "outside function")
+        self._check_error("class C:\n  if 1: pass\n  else: return", "outside function")
 
     def test_break_outside_loop(self):
         msg = "outside loop"
@@ -2142,10 +2153,8 @@ class SyntaxTestCase(unittest.TestCase):
         self._check_error("if 0: break\nelse:  x=1", msg, lineno=1)
         self._check_error("if 1: pass\nelse: break", msg, lineno=2)
         self._check_error("class C:\n  if 0: break", msg, lineno=2)
-        self._check_error("class C:\n  if 1: pass\n  else: break",
-                          msg, lineno=3)
-        self._check_error("with object() as obj:\n break",
-                          msg, lineno=2)
+        self._check_error("class C:\n  if 1: pass\n  else: break", msg, lineno=3)
+        self._check_error("with object() as obj:\n break", msg, lineno=2)
 
     def test_continue_outside_loop(self):
         msg = "not properly in loop"
@@ -2153,52 +2162,72 @@ class SyntaxTestCase(unittest.TestCase):
         self._check_error("if 0: continue\nelse:  x=1", msg, lineno=1)
         self._check_error("if 1: pass\nelse: continue", msg, lineno=2)
         self._check_error("class C:\n  if 0: continue", msg, lineno=2)
-        self._check_error("class C:\n  if 1: pass\n  else: continue",
-                          msg, lineno=3)
-        self._check_error("with object() as obj:\n    continue",
-                          msg, lineno=2)
+        self._check_error("class C:\n  if 1: pass\n  else: continue", msg, lineno=3)
+        self._check_error("with object() as obj:\n    continue", msg, lineno=2)
 
     def test_unexpected_indent(self):
-        self._check_error("foo()\n bar()\n", "unexpected indent",
-                          subclass=IndentationError)
+        self._check_error(
+            "foo()\n bar()\n", "unexpected indent", subclass=IndentationError
+        )
 
     def test_no_indent(self):
-        self._check_error("if 1:\nfoo()", "expected an indented block",
-                          subclass=IndentationError)
+        self._check_error(
+            "if 1:\nfoo()", "expected an indented block", subclass=IndentationError
+        )
 
     def test_bad_outdent(self):
-        self._check_error("if 1:\n  foo()\n bar()",
-                          "unindent does not match .* level",
-                          subclass=IndentationError)
+        self._check_error(
+            "if 1:\n  foo()\n bar()",
+            "unindent does not match .* level",
+            subclass=IndentationError,
+        )
 
     def test_kwargs_last(self):
-        self._check_error("int(base=10, '2')",
-                          "positional argument follows keyword argument")
+        self._check_error(
+            "int(base=10, '2')", "positional argument follows keyword argument"
+        )
 
     def test_kwargs_last2(self):
-        self._check_error("int(**{'base': 10}, '2')",
-                          "positional argument follows "
-                          "keyword argument unpacking")
+        self._check_error(
+            "int(**{'base': 10}, '2')",
+            "positional argument follows " "keyword argument unpacking",
+        )
 
     def test_kwargs_last3(self):
-        self._check_error("int(**{'base': 10}, *['2'])",
-                          "iterable argument unpacking follows "
-                          "keyword argument unpacking")
+        self._check_error(
+            "int(**{'base': 10}, *['2'])",
+            "iterable argument unpacking follows " "keyword argument unpacking",
+        )
 
     def test_generator_in_function_call(self):
-        self._check_error("foo(x,    y for y in range(3) for z in range(2) if z    , p)",
-                          "Generator expression must be parenthesized",
-                          lineno=1, end_lineno=1, offset=11, end_offset=53)
+        self._check_error(
+            "foo(x,    y for y in range(3) for z in range(2) if z    , p)",
+            "Generator expression must be parenthesized",
+            lineno=1,
+            end_lineno=1,
+            offset=11,
+            end_offset=53,
+        )
 
     def test_except_then_except_star(self):
-        self._check_error("try: pass\nexcept ValueError: pass\nexcept* TypeError: pass",
-                          r"cannot have both 'except' and 'except\*' on the same 'try'",
-                          lineno=3, end_lineno=3, offset=1, end_offset=8)
+        self._check_error(
+            "try: pass\nexcept ValueError: pass\nexcept* TypeError: pass",
+            r"cannot have both 'except' and 'except\*' on the same 'try'",
+            lineno=3,
+            end_lineno=3,
+            offset=1,
+            end_offset=8,
+        )
 
     def test_except_star_then_except(self):
-        self._check_error("try: pass\nexcept* ValueError: pass\nexcept TypeError: pass",
-                          r"cannot have both 'except' and 'except\*' on the same 'try'",
-                          lineno=3, end_lineno=3, offset=1, end_offset=7)
+        self._check_error(
+            "try: pass\nexcept* ValueError: pass\nexcept TypeError: pass",
+            r"cannot have both 'except' and 'except\*' on the same 'try'",
+            lineno=3,
+            end_lineno=3,
+            offset=1,
+            end_offset=7,
+        )
 
     def test_empty_line_after_linecont(self):
         # See issue-40847
@@ -2209,7 +2238,7 @@ pass
 pass
 """
         try:
-            compile(s, '<string>', 'exec')
+            compile(s, "<string>", "exec")
         except SyntaxError:
             self.fail("Empty line after a line continuation character is valid.")
 
@@ -2227,8 +2256,8 @@ def fib(n):
     a, b = 0, 1
 """
         try:
-            compile(s1, '<string>', 'exec')
-            compile(s2, '<string>', 'exec')
+            compile(s1, "<string>", "exec")
+            compile(s2, "<string>", "exec")
         except SyntaxError:
             self.fail("Indented statement over multiple lines is valid")
 
@@ -2259,11 +2288,13 @@ if x:
         # See gh-113297
 
         def get_code(n):
-            code = textwrap.dedent("""
+            code = textwrap.dedent(
+                """
                 def bug():
                     with (
                     a
-                """)
+                """
+            )
             for i in range(n):
                 code += f"    as a{i}, a\n"
             code += "): yield a"
@@ -2297,30 +2328,41 @@ def func2():
         self._check_error(code, "expected ':'")
 
     def test_invalid_line_continuation_error_position(self):
-        self._check_error(r"a = 3 \ 4",
-                          "unexpected character after line continuation character",
-                          lineno=1, offset=8)
-        self._check_error('1,\\#\n2',
-                          "unexpected character after line continuation character",
-                          lineno=1, offset=4)
-        self._check_error('\nfgdfgf\n1,\\#\n2\n',
-                          "unexpected character after line continuation character",
-                          lineno=3, offset=4)
+        self._check_error(
+            r"a = 3 \ 4",
+            "unexpected character after line continuation character",
+            lineno=1,
+            offset=8,
+        )
+        self._check_error(
+            "1,\\#\n2",
+            "unexpected character after line continuation character",
+            lineno=1,
+            offset=4,
+        )
+        self._check_error(
+            "\nfgdfgf\n1,\\#\n2\n",
+            "unexpected character after line continuation character",
+            lineno=3,
+            offset=4,
+        )
 
     def test_invalid_line_continuation_left_recursive(self):
         # Check bpo-42218: SyntaxErrors following left-recursive rules
         # (t_primary_raw in this case) need to be tested explicitly
-        self._check_error("A.\u018a\\ ",
-                          "unexpected character after line continuation character")
-        self._check_error("A.\u03bc\\\n",
-                          "unexpected EOF while parsing")
+        self._check_error(
+            "A.\u018a\\ ", "unexpected character after line continuation character"
+        )
+        self._check_error("A.\u03bc\\\n", "unexpected EOF while parsing")
 
     def test_error_parenthesis(self):
         for paren in "([{":
             self._check_error(paren + "1 + 2", f"\\{paren}' was never closed")
 
         for paren in "([{":
-            self._check_error(f"a = {paren} 1, 2, 3\nb=3", f"\\{paren}' was never closed")
+            self._check_error(
+                f"a = {paren} 1, 2, 3\nb=3", f"\\{paren}' was never closed"
+            )
 
         for paren in ")]}":
             self._check_error(paren + "1 + 2", f"unmatched '\\{paren}'")
@@ -2332,12 +2374,14 @@ func(
     b=2,
 )
 """
-        self._check_error(code, "parenthesis '\\)' does not match opening parenthesis '\\['")
+        self._check_error(
+            code, "parenthesis '\\)' does not match opening parenthesis '\\['"
+        )
 
         self._check_error("match y:\n case e(e=v,v,", " was never closed")
 
         # Examples with dencodings
-        s = b'# coding=latin\n(aaaaaaaaaaaaaaaaa\naaaaaaaaaaa\xb5'
+        s = b"# coding=latin\n(aaaaaaaaaaaaaaaaa\naaaaaaaaaaa\xb5"
         self._check_error(s, r"'\(' was never closed")
 
     def test_error_string_literal(self):
@@ -2370,11 +2414,7 @@ case(34)
         compile(code, "<string>", "exec")
 
     def test_multiline_compiler_error_points_to_the_end(self):
-        self._check_error(
-            "call(\na=1,\na=1\n)",
-            "keyword argument repeated",
-            lineno=3
-        )
+        self._check_error("call(\na=1,\na=1\n)", "keyword argument repeated", lineno=3)
 
     @support.cpython_only
     def test_syntax_error_on_deeply_nested_blocks(self):

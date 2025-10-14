@@ -54,13 +54,14 @@ class ThreadedTempFileTest(unittest.TestCase):
         with threading_helper.start_threads(threads, startEvent.set):
             pass
         ok = sum(t.ok_count for t in threads)
-        errors = [str(t.name) + str(t.errors.getvalue())
-                  for t in threads if t.error_count]
+        errors = [
+            str(t.name) + str(t.errors.getvalue()) for t in threads if t.error_count
+        ]
 
-        msg = "Errors: errors %d ok %d\n%s" % (len(errors), ok,
-            '\n'.join(errors))
+        msg = "Errors: errors %d ok %d\n%s" % (len(errors), ok, "\n".join(errors))
         self.assertEqual(errors, [], msg)
         self.assertEqual(ok, NUM_THREADS * FILES_PER_THREAD)
+
 
 if __name__ == "__main__":
     unittest.main()

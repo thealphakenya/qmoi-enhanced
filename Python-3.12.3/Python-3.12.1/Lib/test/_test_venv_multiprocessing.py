@@ -2,6 +2,7 @@ import multiprocessing
 import random
 import sys
 
+
 def fill_queue(queue, code):
     queue.put(code)
 
@@ -14,14 +15,8 @@ def drain_queue(queue, code):
 def test_func():
     code = random.randrange(0, 1000)
     queue = multiprocessing.Queue()
-    fill_pool = multiprocessing.Process(
-        target=fill_queue,
-        args=(queue, code)
-    )
-    drain_pool = multiprocessing.Process(
-        target=drain_queue,
-        args=(queue, code)
-    )
+    fill_pool = multiprocessing.Process(target=fill_queue, args=(queue, code))
+    drain_pool = multiprocessing.Process(target=drain_queue, args=(queue, code))
     drain_pool.start()
     fill_pool.start()
     fill_pool.join()
@@ -29,7 +24,7 @@ def test_func():
 
 
 def main():
-    multiprocessing.set_start_method('spawn')
+    multiprocessing.set_start_method("spawn")
     test_pool = multiprocessing.Process(target=test_func)
     test_pool.start()
     test_pool.join()

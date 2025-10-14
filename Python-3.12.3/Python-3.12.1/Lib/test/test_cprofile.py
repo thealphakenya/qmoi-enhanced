@@ -37,7 +37,8 @@ class CProfileTest(ProfileTest):
 
         prof.enable()
         self.assertEqual(
-            sys.monitoring.get_tool(sys.monitoring.PROFILER_ID), "cProfile")
+            sys.monitoring.get_tool(sys.monitoring.PROFILER_ID), "cProfile"
+        )
 
         prof.disable()
         self.assertIs(sys.monitoring.get_tool(sys.monitoring.PROFILER_ID), None)
@@ -54,7 +55,8 @@ class CProfileTest(ProfileTest):
             # profile should be set as the global profiler inside the
             # with-block
             self.assertEqual(
-                sys.monitoring.get_tool(sys.monitoring.PROFILER_ID), "cProfile")
+                sys.monitoring.get_tool(sys.monitoring.PROFILER_ID), "cProfile"
+            )
 
         # profile shouldn't be set once we leave the with-block.
         self.assertIs(sys.monitoring.get_tool(sys.monitoring.PROFILER_ID), None)
@@ -89,22 +91,24 @@ class CProfileTest(ProfileTest):
 
 class TestCommandLine(unittest.TestCase):
     def test_sort(self):
-        rc, out, err = assert_python_failure('-m', 'cProfile', '-s', 'demo')
+        rc, out, err = assert_python_failure("-m", "cProfile", "-s", "demo")
         self.assertGreater(rc, 0)
         self.assertIn(b"option -s: invalid choice: 'demo'", err)
 
 
 def main():
-    if '-r' not in sys.argv:
+    if "-r" not in sys.argv:
         unittest.main()
     else:
         regenerate_expected_output(__file__, CProfileTest)
 
 
 # Don't remove this comment. Everything below it is auto-generated.
-#--cut--------------------------------------------------------------------------
+# --cut--------------------------------------------------------------------------
 _ProfileOutput = {}
-_ProfileOutput['print_stats'] = """\
+_ProfileOutput[
+    "print_stats"
+] = """\
        28    0.028    0.001    0.028    0.001 profilee.py:110(__getattr__)
         1    0.270    0.270    1.000    1.000 profilee.py:25(testfunc)
      23/3    0.150    0.007    0.170    0.057 profilee.py:35(factorial)
@@ -114,7 +118,9 @@ _ProfileOutput['print_stats'] = """\
         2    0.000    0.000    0.140    0.070 profilee.py:84(helper2_indirect)
         8    0.312    0.039    0.400    0.050 profilee.py:88(helper2)
         8    0.064    0.008    0.080    0.010 profilee.py:98(subhelper)"""
-_ProfileOutput['print_callers'] = """\
+_ProfileOutput[
+    "print_callers"
+] = """\
 profilee.py:110(__getattr__)                      <-      16    0.016    0.016  profilee.py:98(subhelper)
 profilee.py:25(testfunc)                          <-       1    0.270    1.000  <string>:1(<module>)
 profilee.py:35(factorial)                         <-       1    0.014    0.130  profilee.py:25(testfunc)
@@ -131,7 +137,9 @@ profilee.py:98(subhelper)                         <-       8    0.064    0.080  
                                                            8    0.000    0.008  profilee.py:88(helper2)
 {built-in method sys.exception}                   <-       4    0.000    0.000  profilee.py:73(helper1)
 {method 'append' of 'list' objects}               <-       4    0.000    0.000  profilee.py:73(helper1)"""
-_ProfileOutput['print_callees'] = """\
+_ProfileOutput[
+    "print_callees"
+] = """\
 <string>:1(<module>)                              ->       1    0.270    1.000  profilee.py:25(testfunc)
 profilee.py:110(__getattr__)                      ->
 profilee.py:25(testfunc)                          ->       1    0.014    0.130  profilee.py:35(factorial)

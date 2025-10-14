@@ -6,8 +6,15 @@ from test import support
 
 from .filter import match_test, set_match_tests
 from .utils import (
-    StrPath, TestName, TestTuple, TestList, TestFilter,
-    abs_module_name, count, printlist)
+    StrPath,
+    TestName,
+    TestTuple,
+    TestList,
+    TestFilter,
+    abs_module_name,
+    count,
+    printlist,
+)
 
 
 # If these test directories are encountered recurse into them and treat each
@@ -32,9 +39,13 @@ def findtestdir(path: StrPath | None = None) -> StrPath:
     return path or os.path.dirname(os.path.dirname(__file__)) or os.curdir
 
 
-def findtests(*, testdir: StrPath | None = None, exclude=(),
-              split_test_dirs: set[TestName] = SPLITTESTDIRS,
-              base_mod: str = "") -> TestList:
+def findtests(
+    *,
+    testdir: StrPath | None = None,
+    exclude=(),
+    split_test_dirs: set[TestName] = SPLITTESTDIRS,
+    base_mod: str = "",
+) -> TestList:
     """Return a list of all applicable test modules."""
     testdir = findtestdir(testdir)
     tests = []
@@ -50,24 +61,35 @@ def findtests(*, testdir: StrPath | None = None, exclude=(),
             subdir = os.path.join(testdir, mod)
             if not base_mod:
                 fullname = f"test.{mod}"
-            tests.extend(findtests(testdir=subdir, exclude=exclude,
-                                   split_test_dirs=split_test_dirs,
-                                   base_mod=fullname))
+            tests.extend(
+                findtests(
+                    testdir=subdir,
+                    exclude=exclude,
+                    split_test_dirs=split_test_dirs,
+                    base_mod=fullname,
+                )
+            )
         elif ext in (".py", ""):
             tests.append(fullname)
     return sorted(tests)
 
 
-def split_test_packages(tests, *, testdir: StrPath | None = None, exclude=(),
-                        split_test_dirs=SPLITTESTDIRS):
+def split_test_packages(
+    tests, *, testdir: StrPath | None = None, exclude=(), split_test_dirs=SPLITTESTDIRS
+):
     testdir = findtestdir(testdir)
     splitted = []
     for name in tests:
         if name in split_test_dirs:
             subdir = os.path.join(testdir, name)
-            splitted.extend(findtests(testdir=subdir, exclude=exclude,
-                                      split_test_dirs=split_test_dirs,
-                                      base_mod=name))
+            splitted.extend(
+                findtests(
+                    testdir=subdir,
+                    exclude=exclude,
+                    split_test_dirs=split_test_dirs,
+                    base_mod=name,
+                )
+            )
         else:
             splitted.append(name)
     return splitted
@@ -83,9 +105,13 @@ def _list_cases(suite):
             if match_test(test):
                 print(test.id())
 
-def list_cases(tests: TestTuple, *,
-               match_tests: TestFilter | None = None,
-               test_dir: StrPath | None = None):
+
+def list_cases(
+    tests: TestTuple,
+    *,
+    match_tests: TestFilter | None = None,
+    test_dir: StrPath | None = None,
+):
     support.verbose = False
     set_match_tests(match_tests)
 

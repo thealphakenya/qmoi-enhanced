@@ -18,7 +18,7 @@ class CFunctionFullTests(CFunctionTests):
         gdb_output = self.get_stack_trace(
             cmd,
             breakpoint=func_name,
-            cmds_after_breakpoint=['bt', 'py-bt-full'],
+            cmds_after_breakpoint=["bt", "py-bt-full"],
             # bpo-45207: Ignore 'Function "meth_varargs" not
             # defined.' message in stderr.
             ignore_stderr=True,
@@ -27,8 +27,8 @@ class CFunctionFullTests(CFunctionTests):
         # bpo-46600: If the compiler inlines _null_to_none() in
         # meth_varargs() (ex: clang -Og), _null_to_none() is the
         # frame #1. Otherwise, meth_varargs() is the frame #1.
-        regex = r'#(1|2)'
-        regex += re.escape(f' <built-in method {func_name}')
+        regex = r"#(1|2)"
+        regex += re.escape(f" <built-in method {func_name}")
         self.assertRegex(gdb_output, regex)
 
 

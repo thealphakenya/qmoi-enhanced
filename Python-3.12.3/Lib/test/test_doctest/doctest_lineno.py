@@ -1,6 +1,7 @@
 # This module is used in `test_doctest`.
 # It must not have a docstring.
 
+
 def func_with_docstring():
     """Some unrelated info."""
 
@@ -65,12 +66,14 @@ class MethodWrapper:
         'property_with_doctest'
         """
 
+
 # https://github.com/python/cpython/issues/99433
 str_wrapper = object().__str__
 
 
 # https://github.com/python/cpython/issues/115392
 from test.test_doctest.decorator_mod import decorator
+
 
 @decorator
 @decorator

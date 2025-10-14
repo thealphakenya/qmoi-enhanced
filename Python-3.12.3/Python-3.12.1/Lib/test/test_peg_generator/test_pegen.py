@@ -808,12 +808,8 @@ class TestPegen(unittest.TestCase):
         parser_class = make_parser(grammar)
         self.assertEqual(parse_string("number 1", parser_class), 1)
         self.assertEqual(parse_string("string 'b'", parser_class), "'b'")
-        self.assertEqual(
-            parse_string("number test 1", parser_class), "test = 1"
-        )
-        assert (
-            parse_string("string test 'b'", parser_class) == "test = 'b'"
-        )
+        self.assertEqual(parse_string("number test 1", parser_class), "test = 1")
+        assert parse_string("string test 'b'", parser_class) == "test = 'b'"
         with self.assertRaises(SyntaxError):
             parse_string("test 1", parser_class)
 

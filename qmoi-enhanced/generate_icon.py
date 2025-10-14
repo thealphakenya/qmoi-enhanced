@@ -7,17 +7,26 @@ BASE_NAME = "icon"
 VARIANTS = ["light", "dark"]
 PACKAGE_JSON = "package.json"
 
-def ensure_dir(path): os.makedirs(path, exist_ok=True)
+
+def ensure_dir(path):
+    os.makedirs(path, exist_ok=True)
+
+
 def get_version():
     if os.path.exists(PACKAGE_JSON):
-        with open(PACKAGE_JSON) as f: return json.load(f).get("version", "1.0.0")
+        with open(PACKAGE_JSON) as f:
+            return json.load(f).get("version", "1.0.0")
     return "1.0.0"
-def get_timestamp(): return datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+
+
+def get_timestamp():
+    return datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+
 
 def generate_icon(theme, version):
-    bg = (255,255,255,255) if theme == "light" else (30,30,30,255)
-    fg = (90,150,255,255)
-    text = (0,0,0,255) if theme == "light" else (255,255,255,255)
+    bg = (255, 255, 255, 255) if theme == "light" else (30, 30, 30, 255)
+    fg = (90, 150, 255, 255)
+    text = (0, 0, 0, 255) if theme == "light" else (255, 255, 255, 255)
     img = Image.new("RGBA", (256, 256), bg)
     draw = ImageDraw.Draw(img)
     draw.ellipse((20, 20, 236, 236), fill=fg, outline=(0, 0, 0), width=4)
@@ -32,6 +41,7 @@ def generate_icon(theme, version):
     draw.text((120, 225), get_timestamp(), font=subfont, fill=text)
     return img
 
+
 def save_icons(theme, version):
     ensure_dir(ICON_DIR)
     img = generate_icon(theme, version)
@@ -40,6 +50,7 @@ def save_icons(theme, version):
     img.save(f"{ICON_DIR}/{BASE_NAME}{suffix}.icns", format="ICNS")
     img.save(f"{ICON_DIR}/{BASE_NAME}{suffix}.png", format="PNG")
     print(f"✅ Generated {theme} icons.")
+
 
 if __name__ == "__main__":
     version = get_version()

@@ -10,12 +10,19 @@ import calendar
 import threading
 import socket
 
-from test.support import verbose, run_with_tz, run_with_locale, cpython_only, requires_resource
+from test.support import (
+    verbose,
+    run_with_tz,
+    run_with_locale,
+    cpython_only,
+    requires_resource,
+)
 from test.support import hashlib_helper
 from test.support import threading_helper
 import unittest
 from unittest import mock
 from datetime import datetime, timezone, timedelta
+
 try:
     import ssl
 except ImportError:
@@ -23,8 +30,12 @@ except ImportError:
 
 support.requires_working_socket(module=True)
 
-CERTFILE = os.path.join(os.path.dirname(__file__) or os.curdir, "certdata", "keycert3.pem")
-CAFILE = os.path.join(os.path.dirname(__file__) or os.curdir, "certdata", "pycacert.pem")
+CERTFILE = os.path.join(
+    os.path.dirname(__file__) or os.curdir, "certdata", "keycert3.pem"
+)
+CAFILE = os.path.join(
+    os.path.dirname(__file__) or os.curdir, "certdata", "pycacert.pem"
+)
 
 
 class TestImaplib(unittest.TestCase):
@@ -32,34 +43,44 @@ class TestImaplib(unittest.TestCase):
     def test_Internaldate2tuple(self):
         t0 = calendar.timegm((2000, 1, 1, 0, 0, 0, -1, -1, -1))
         tt = imaplib.Internaldate2tuple(
-            b'25 (INTERNALDATE "01-Jan-2000 00:00:00 +0000")')
+            b'25 (INTERNALDATE "01-Jan-2000 00:00:00 +0000")'
+        )
         self.assertEqual(time.mktime(tt), t0)
         tt = imaplib.Internaldate2tuple(
-            b'25 (INTERNALDATE "01-Jan-2000 11:30:00 +1130")')
+            b'25 (INTERNALDATE "01-Jan-2000 11:30:00 +1130")'
+        )
         self.assertEqual(time.mktime(tt), t0)
         tt = imaplib.Internaldate2tuple(
-            b'25 (INTERNALDATE "31-Dec-1999 12:30:00 -1130")')
+            b'25 (INTERNALDATE "31-Dec-1999 12:30:00 -1130")'
+        )
         self.assertEqual(time.mktime(tt), t0)
 
-    @run_with_tz('MST+07MDT,M4.1.0,M10.5.0')
+    @run_with_tz("MST+07MDT,M4.1.0,M10.5.0")
     def test_Internaldate2tuple_issue10941(self):
-        self.assertNotEqual(imaplib.Internaldate2tuple(
-            b'25 (INTERNALDATE "02-Apr-2000 02:30:00 +0000")'),
+        self.assertNotEqual(
             imaplib.Internaldate2tuple(
-                b'25 (INTERNALDATE "02-Apr-2000 03:30:00 +0000")'))
+                b'25 (INTERNALDATE "02-Apr-2000 02:30:00 +0000")'
+            ),
+            imaplib.Internaldate2tuple(
+                b'25 (INTERNALDATE "02-Apr-2000 03:30:00 +0000")'
+            ),
+        )
 
     def timevalues(self):
-        return [2000000000, 2000000000.0, time.localtime(2000000000),
-                (2033, 5, 18, 5, 33, 20, -1, -1, -1),
-                (2033, 5, 18, 5, 33, 20, -1, -1, 1),
-                datetime.fromtimestamp(2000000000,
-                                       timezone(timedelta(0, 2 * 60 * 60))),
-                '"18-May-2033 05:33:20 +0200"']
+        return [
+            2000000000,
+            2000000000.0,
+            time.localtime(2000000000),
+            (2033, 5, 18, 5, 33, 20, -1, -1, -1),
+            (2033, 5, 18, 5, 33, 20, -1, -1, 1),
+            datetime.fromtimestamp(2000000000, timezone(timedelta(0, 2 * 60 * 60))),
+            '"18-May-2033 05:33:20 +0200"',
+        ]
 
-    @run_with_locale('LC_ALL', 'de_DE', 'fr_FR')
+    @run_with_locale("LC_ALL", "de_DE", "fr_FR")
     # DST rules included to work around quirk where the Gnu C library may not
     # otherwise restore the previous time zone
-    @run_with_tz('STD-1DST,M3.2.0,M11.1.0')
+    @run_with_tz("STD-1DST,M3.2.0,M11.1.0")
     def test_Time2Internaldate(self):
         expected = '"18-May-2033 05:33:20 +0200"'
 
@@ -79,9 +100,8 @@ class TestImaplib(unittest.TestCase):
         # Check whether the IMAP4_PORT is truly unavailable.
         with socket.socket() as s:
             try:
-                s.connect(('', imaplib.IMAP4_PORT))
-                self.skipTest(
-                    "Cannot run the test with local IMAP server running.")
+                s.connect(("", imaplib.IMAP4_PORT))
+                self.skipTest("Cannot run the test with local IMAP server running.")
             except socket.error:
                 pass
 
@@ -93,6 +113,7 @@ class TestImaplib(unittest.TestCase):
 
 
 if ssl:
+
     class SecureTCPServer(socketserver.TCPServer):
 
         def get_request(self):
@@ -115,7 +136,7 @@ else:
 class SimpleIMAPHandler(socketserver.StreamRequestHandler):
     timeout = support.LOOPBACK_TIMEOUT
     continuation = None
-    capabilities = ''
+    capabilities = ""
 
     def setup(self):
         super().setup()
@@ -128,86 +149,84 @@ class SimpleIMAPHandler(socketserver.StreamRequestHandler):
         self.wfile.write(message)
 
     def _send_line(self, message):
-        self._send(message + b'\r\n')
+        self._send(message + b"\r\n")
 
     def _send_textline(self, message):
-        self._send_line(message.encode('ASCII'))
+        self._send_line(message.encode("ASCII"))
 
     def _send_tagged(self, tag, code, message):
-        self._send_textline(' '.join((tag, code, message)))
+        self._send_textline(" ".join((tag, code, message)))
 
     def handle(self):
         # Send a welcome message.
-        self._send_textline('* OK IMAP4rev1')
+        self._send_textline("* OK IMAP4rev1")
         while 1:
             # Gather up input until we receive a line terminator or we timeout.
             # Accumulate read(1) because it's simpler to handle the differences
             # between naked sockets and SSL sockets.
-            line = b''
+            line = b""
             while 1:
                 try:
                     part = self.rfile.read(1)
-                    if part == b'':
+                    if part == b"":
                         # Naked sockets return empty strings..
                         return
                     line += part
                 except OSError:
                     # ..but SSLSockets raise exceptions.
                     return
-                if line.endswith(b'\r\n'):
+                if line.endswith(b"\r\n"):
                     break
 
             if verbose:
-                print('GOT: %r' % line.strip())
+                print("GOT: %r" % line.strip())
             if self.continuation:
                 try:
                     self.continuation.send(line)
                 except StopIteration:
                     self.continuation = None
                 continue
-            splitline = line.decode('ASCII').split()
+            splitline = line.decode("ASCII").split()
             tag = splitline[0]
             cmd = splitline[1]
             args = splitline[2:]
 
-            if hasattr(self, 'cmd_' + cmd):
-                continuation = getattr(self, 'cmd_' + cmd)(tag, args)
+            if hasattr(self, "cmd_" + cmd):
+                continuation = getattr(self, "cmd_" + cmd)(tag, args)
                 if continuation:
                     self.continuation = continuation
                     next(continuation)
             else:
-                self._send_tagged(tag, 'BAD', cmd + ' unknown')
+                self._send_tagged(tag, "BAD", cmd + " unknown")
 
     def cmd_CAPABILITY(self, tag, args):
-        caps = ('IMAP4rev1 ' + self.capabilities
-                if self.capabilities
-                else 'IMAP4rev1')
-        self._send_textline('* CAPABILITY ' + caps)
-        self._send_tagged(tag, 'OK', 'CAPABILITY completed')
+        caps = "IMAP4rev1 " + self.capabilities if self.capabilities else "IMAP4rev1"
+        self._send_textline("* CAPABILITY " + caps)
+        self._send_tagged(tag, "OK", "CAPABILITY completed")
 
     def cmd_LOGOUT(self, tag, args):
         self.server.logged = None
-        self._send_textline('* BYE IMAP4ref1 Server logging out')
-        self._send_tagged(tag, 'OK', 'LOGOUT completed')
+        self._send_textline("* BYE IMAP4ref1 Server logging out")
+        self._send_tagged(tag, "OK", "LOGOUT completed")
 
     def cmd_LOGIN(self, tag, args):
         self.server.logged = args[0]
-        self._send_tagged(tag, 'OK', 'LOGIN completed')
+        self._send_tagged(tag, "OK", "LOGIN completed")
 
     def cmd_SELECT(self, tag, args):
         self.server.is_selected = True
-        self._send_line(b'* 2 EXISTS')
-        self._send_tagged(tag, 'OK', '[READ-WRITE] SELECT completed.')
+        self._send_line(b"* 2 EXISTS")
+        self._send_tagged(tag, "OK", "[READ-WRITE] SELECT completed.")
 
     def cmd_UNSELECT(self, tag, args):
         if self.server.is_selected:
             self.server.is_selected = False
-            self._send_tagged(tag, 'OK', 'Returned to authenticated state. (Success)')
+            self._send_tagged(tag, "OK", "Returned to authenticated state. (Success)")
         else:
-            self._send_tagged(tag, 'BAD', 'No mailbox selected')
+            self._send_tagged(tag, "BAD", "No mailbox selected")
 
 
-class NewIMAPTestsMixin():
+class NewIMAPTestsMixin:
     client = None
 
     def _setup(self, imap_handler, connect=True):
@@ -217,6 +236,7 @@ class NewIMAPTestsMixin():
         - socketserver.StreamRequestHandler - if raw access to stream is needed.
         Returns (client, server).
         """
+
         class TestTCPServer(self.server_class):
             def handle_error(self, request, client_address):
                 """
@@ -229,12 +249,13 @@ class NewIMAPTestsMixin():
         self.addCleanup(self._cleanup)
         self.server = self.server_class((socket_helper.HOST, 0), imap_handler)
         self.thread = threading.Thread(
-            name=self._testMethodName+'-server',
+            name=self._testMethodName + "-server",
             target=self.server.serve_forever,
             # Short poll interval to make the test finish quickly.
             # Time between requests is short enough that we won't wake
             # up spuriously too many times.
-            kwargs={'poll_interval': 0.01})
+            kwargs={"poll_interval": 0.01},
+        )
         self.thread.daemon = True  # In case this function raises.
         self.thread.start()
 
@@ -250,7 +271,7 @@ class NewIMAPTestsMixin():
         """
         # if logout was called already we'd raise an exception trying to
         # shutdown the client once again
-        if self.client is not None and self.client.state != 'LOGOUT':
+        if self.client is not None and self.client.state != "LOGOUT":
             self.client.shutdown()
         # cleanup the server
         self.server.shutdown()
@@ -263,193 +284,210 @@ class NewIMAPTestsMixin():
         # http://bugs.python.org/issue5949
         class EOFHandler(socketserver.StreamRequestHandler):
             def handle(self):
-                self.wfile.write(b'* OK')
+                self.wfile.write(b"* OK")
+
         _, server = self._setup(EOFHandler, connect=False)
-        self.assertRaises(imaplib.IMAP4.abort, self.imap_class,
-                          *server.server_address)
+        self.assertRaises(imaplib.IMAP4.abort, self.imap_class, *server.server_address)
 
     def test_line_termination(self):
         class BadNewlineHandler(SimpleIMAPHandler):
             def cmd_CAPABILITY(self, tag, args):
-                self._send(b'* CAPABILITY IMAP4rev1 AUTH\n')
-                self._send_tagged(tag, 'OK', 'CAPABILITY completed')
+                self._send(b"* CAPABILITY IMAP4rev1 AUTH\n")
+                self._send_tagged(tag, "OK", "CAPABILITY completed")
+
         _, server = self._setup(BadNewlineHandler, connect=False)
-        self.assertRaises(imaplib.IMAP4.abort, self.imap_class,
-                          *server.server_address)
+        self.assertRaises(imaplib.IMAP4.abort, self.imap_class, *server.server_address)
 
     def test_enable_raises_error_if_not_AUTH(self):
         class EnableHandler(SimpleIMAPHandler):
-            capabilities = 'AUTH ENABLE UTF8=ACCEPT'
+            capabilities = "AUTH ENABLE UTF8=ACCEPT"
+
         client, _ = self._setup(EnableHandler)
         self.assertFalse(client.utf8_enabled)
-        with self.assertRaisesRegex(imaplib.IMAP4.error, 'ENABLE.*NONAUTH'):
-            client.enable('foo')
+        with self.assertRaisesRegex(imaplib.IMAP4.error, "ENABLE.*NONAUTH"):
+            client.enable("foo")
         self.assertFalse(client.utf8_enabled)
 
     def test_enable_raises_error_if_no_capability(self):
         client, _ = self._setup(SimpleIMAPHandler)
-        with self.assertRaisesRegex(imaplib.IMAP4.error,
-                'does not support ENABLE'):
-            client.enable('foo')
+        with self.assertRaisesRegex(imaplib.IMAP4.error, "does not support ENABLE"):
+            client.enable("foo")
 
     def test_enable_UTF8_raises_error_if_not_supported(self):
         client, _ = self._setup(SimpleIMAPHandler)
-        typ, data = client.login('user', 'pass')
-        self.assertEqual(typ, 'OK')
-        with self.assertRaisesRegex(imaplib.IMAP4.error,
-                'does not support ENABLE'):
-            client.enable('UTF8=ACCEPT')
+        typ, data = client.login("user", "pass")
+        self.assertEqual(typ, "OK")
+        with self.assertRaisesRegex(imaplib.IMAP4.error, "does not support ENABLE"):
+            client.enable("UTF8=ACCEPT")
 
     def test_enable_UTF8_True_append(self):
         class UTF8AppendServer(SimpleIMAPHandler):
-            capabilities = 'ENABLE UTF8=ACCEPT'
+            capabilities = "ENABLE UTF8=ACCEPT"
+
             def cmd_ENABLE(self, tag, args):
-                self._send_tagged(tag, 'OK', 'ENABLE successful')
+                self._send_tagged(tag, "OK", "ENABLE successful")
+
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.server.response = yield
-                self._send_tagged(tag, 'OK', 'FAKEAUTH successful')
+                self._send_tagged(tag, "OK", "FAKEAUTH successful")
+
             def cmd_APPEND(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.server.response = yield
-                self._send_tagged(tag, 'OK', 'okay')
+                self._send_tagged(tag, "OK", "okay")
+
         client, server = self._setup(UTF8AppendServer)
-        self.assertEqual(client._encoding, 'ascii')
-        code, _ = client.authenticate('MYAUTH', lambda x: b'fake')
-        self.assertEqual(code, 'OK')
-        self.assertEqual(server.response, b'ZmFrZQ==\r\n')  # b64 encoded 'fake'
-        code, _ = client.enable('UTF8=ACCEPT')
-        self.assertEqual(code, 'OK')
-        self.assertEqual(client._encoding, 'utf-8')
-        msg_string = 'Subject: üñí©öðé'
-        typ, data = client.append(None, None, None, msg_string.encode('utf-8'))
-        self.assertEqual(typ, 'OK')
-        self.assertEqual(server.response,
-            ('UTF8 (%s)\r\n' % msg_string).encode('utf-8'))
+        self.assertEqual(client._encoding, "ascii")
+        code, _ = client.authenticate("MYAUTH", lambda x: b"fake")
+        self.assertEqual(code, "OK")
+        self.assertEqual(server.response, b"ZmFrZQ==\r\n")  # b64 encoded 'fake'
+        code, _ = client.enable("UTF8=ACCEPT")
+        self.assertEqual(code, "OK")
+        self.assertEqual(client._encoding, "utf-8")
+        msg_string = "Subject: üñí©öðé"
+        typ, data = client.append(None, None, None, msg_string.encode("utf-8"))
+        self.assertEqual(typ, "OK")
+        self.assertEqual(
+            server.response, ("UTF8 (%s)\r\n" % msg_string).encode("utf-8")
+        )
 
     def test_search_disallows_charset_in_utf8_mode(self):
         class UTF8Server(SimpleIMAPHandler):
-            capabilities = 'AUTH ENABLE UTF8=ACCEPT'
+            capabilities = "AUTH ENABLE UTF8=ACCEPT"
+
             def cmd_ENABLE(self, tag, args):
-                self._send_tagged(tag, 'OK', 'ENABLE successful')
+                self._send_tagged(tag, "OK", "ENABLE successful")
+
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.server.response = yield
-                self._send_tagged(tag, 'OK', 'FAKEAUTH successful')
+                self._send_tagged(tag, "OK", "FAKEAUTH successful")
+
         client, _ = self._setup(UTF8Server)
-        typ, _ = client.authenticate('MYAUTH', lambda x: b'fake')
-        self.assertEqual(typ, 'OK')
-        typ, _ = client.enable('UTF8=ACCEPT')
-        self.assertEqual(typ, 'OK')
+        typ, _ = client.authenticate("MYAUTH", lambda x: b"fake")
+        self.assertEqual(typ, "OK")
+        typ, _ = client.enable("UTF8=ACCEPT")
+        self.assertEqual(typ, "OK")
         self.assertTrue(client.utf8_enabled)
-        with self.assertRaisesRegex(imaplib.IMAP4.error, 'charset.*UTF8'):
-            client.search('foo', 'bar')
+        with self.assertRaisesRegex(imaplib.IMAP4.error, "charset.*UTF8"):
+            client.search("foo", "bar")
 
     def test_bad_auth_name(self):
         class MyServer(SimpleIMAPHandler):
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_tagged(tag, 'NO',
-                    'unrecognized authentication type {}'.format(args[0]))
+                self._send_tagged(
+                    tag, "NO", "unrecognized authentication type {}".format(args[0])
+                )
+
         client, _ = self._setup(MyServer)
-        with self.assertRaisesRegex(imaplib.IMAP4.error,
-                'unrecognized authentication type METHOD'):
-            client.authenticate('METHOD', lambda: 1)
+        with self.assertRaisesRegex(
+            imaplib.IMAP4.error, "unrecognized authentication type METHOD"
+        ):
+            client.authenticate("METHOD", lambda: 1)
 
     def test_invalid_authentication(self):
         class MyServer(SimpleIMAPHandler):
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.response = yield
-                self._send_tagged(tag, 'NO', '[AUTHENTICATIONFAILED] invalid')
+                self._send_tagged(tag, "NO", "[AUTHENTICATIONFAILED] invalid")
+
         client, _ = self._setup(MyServer)
-        with self.assertRaisesRegex(imaplib.IMAP4.error,
-                r'\[AUTHENTICATIONFAILED\] invalid'):
-            client.authenticate('MYAUTH', lambda x: b'fake')
+        with self.assertRaisesRegex(
+            imaplib.IMAP4.error, r"\[AUTHENTICATIONFAILED\] invalid"
+        ):
+            client.authenticate("MYAUTH", lambda x: b"fake")
 
     def test_valid_authentication_bytes(self):
         class MyServer(SimpleIMAPHandler):
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.server.response = yield
-                self._send_tagged(tag, 'OK', 'FAKEAUTH successful')
+                self._send_tagged(tag, "OK", "FAKEAUTH successful")
+
         client, server = self._setup(MyServer)
-        code, _ = client.authenticate('MYAUTH', lambda x: b'fake')
-        self.assertEqual(code, 'OK')
-        self.assertEqual(server.response, b'ZmFrZQ==\r\n')  # b64 encoded 'fake'
+        code, _ = client.authenticate("MYAUTH", lambda x: b"fake")
+        self.assertEqual(code, "OK")
+        self.assertEqual(server.response, b"ZmFrZQ==\r\n")  # b64 encoded 'fake'
 
     def test_valid_authentication_plain_text(self):
         class MyServer(SimpleIMAPHandler):
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.server.response = yield
-                self._send_tagged(tag, 'OK', 'FAKEAUTH successful')
-        client, server = self._setup(MyServer)
-        code, _ = client.authenticate('MYAUTH', lambda x: 'fake')
-        self.assertEqual(code, 'OK')
-        self.assertEqual(server.response, b'ZmFrZQ==\r\n')  # b64 encoded 'fake'
+                self._send_tagged(tag, "OK", "FAKEAUTH successful")
 
-    @hashlib_helper.requires_hashdigest('md5', openssl=True)
+        client, server = self._setup(MyServer)
+        code, _ = client.authenticate("MYAUTH", lambda x: "fake")
+        self.assertEqual(code, "OK")
+        self.assertEqual(server.response, b"ZmFrZQ==\r\n")  # b64 encoded 'fake'
+
+    @hashlib_helper.requires_hashdigest("md5", openssl=True)
     def test_login_cram_md5_bytes(self):
         class AuthHandler(SimpleIMAPHandler):
-            capabilities = 'LOGINDISABLED AUTH=CRAM-MD5'
+            capabilities = "LOGINDISABLED AUTH=CRAM-MD5"
+
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+ PDE4OTYuNjk3MTcwOTUyQHBvc3RvZmZpY2Uucm'
-                                    'VzdG9uLm1jaS5uZXQ=')
+                self._send_textline(
+                    "+ PDE4OTYuNjk3MTcwOTUyQHBvc3RvZmZpY2Uucm" "VzdG9uLm1jaS5uZXQ="
+                )
                 r = yield
-                if (r == b'dGltIGYxY2E2YmU0NjRiOWVmYT'
-                         b'FjY2E2ZmZkNmNmMmQ5ZjMy\r\n'):
-                    self._send_tagged(tag, 'OK', 'CRAM-MD5 successful')
+                if r == b"dGltIGYxY2E2YmU0NjRiOWVmYT" b"FjY2E2ZmZkNmNmMmQ5ZjMy\r\n":
+                    self._send_tagged(tag, "OK", "CRAM-MD5 successful")
                 else:
-                    self._send_tagged(tag, 'NO', 'No access')
+                    self._send_tagged(tag, "NO", "No access")
+
         client, _ = self._setup(AuthHandler)
-        self.assertTrue('AUTH=CRAM-MD5' in client.capabilities)
+        self.assertTrue("AUTH=CRAM-MD5" in client.capabilities)
         ret, _ = client.login_cram_md5("tim", b"tanstaaftanstaaf")
         self.assertEqual(ret, "OK")
 
-    @hashlib_helper.requires_hashdigest('md5', openssl=True)
+    @hashlib_helper.requires_hashdigest("md5", openssl=True)
     def test_login_cram_md5_plain_text(self):
         class AuthHandler(SimpleIMAPHandler):
-            capabilities = 'LOGINDISABLED AUTH=CRAM-MD5'
+            capabilities = "LOGINDISABLED AUTH=CRAM-MD5"
+
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+ PDE4OTYuNjk3MTcwOTUyQHBvc3RvZmZpY2Uucm'
-                                    'VzdG9uLm1jaS5uZXQ=')
+                self._send_textline(
+                    "+ PDE4OTYuNjk3MTcwOTUyQHBvc3RvZmZpY2Uucm" "VzdG9uLm1jaS5uZXQ="
+                )
                 r = yield
-                if (r == b'dGltIGYxY2E2YmU0NjRiOWVmYT'
-                         b'FjY2E2ZmZkNmNmMmQ5ZjMy\r\n'):
-                    self._send_tagged(tag, 'OK', 'CRAM-MD5 successful')
+                if r == b"dGltIGYxY2E2YmU0NjRiOWVmYT" b"FjY2E2ZmZkNmNmMmQ5ZjMy\r\n":
+                    self._send_tagged(tag, "OK", "CRAM-MD5 successful")
                 else:
-                    self._send_tagged(tag, 'NO', 'No access')
+                    self._send_tagged(tag, "NO", "No access")
+
         client, _ = self._setup(AuthHandler)
-        self.assertTrue('AUTH=CRAM-MD5' in client.capabilities)
+        self.assertTrue("AUTH=CRAM-MD5" in client.capabilities)
         ret, _ = client.login_cram_md5("tim", "tanstaaftanstaaf")
         self.assertEqual(ret, "OK")
 
     def test_aborted_authentication(self):
         class MyServer(SimpleIMAPHandler):
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.response = yield
-                if self.response == b'*\r\n':
-                    self._send_tagged(
-                        tag,
-                        'NO',
-                        '[AUTHENTICATIONFAILED] aborted')
+                if self.response == b"*\r\n":
+                    self._send_tagged(tag, "NO", "[AUTHENTICATIONFAILED] aborted")
                 else:
-                    self._send_tagged(tag, 'OK', 'MYAUTH successful')
-        client, _ = self._setup(MyServer)
-        with self.assertRaisesRegex(imaplib.IMAP4.error,
-                r'\[AUTHENTICATIONFAILED\] aborted'):
-            client.authenticate('MYAUTH', lambda x: None)
+                    self._send_tagged(tag, "OK", "MYAUTH successful")
 
-    @mock.patch('imaplib._MAXLINE', 10)
+        client, _ = self._setup(MyServer)
+        with self.assertRaisesRegex(
+            imaplib.IMAP4.error, r"\[AUTHENTICATIONFAILED\] aborted"
+        ):
+            client.authenticate("MYAUTH", lambda x: None)
+
+    @mock.patch("imaplib._MAXLINE", 10)
     def test_linetoolong(self):
         class TooLongHandler(SimpleIMAPHandler):
             def handle(self):
                 # send response line longer than the limit set in the next line
-                self.wfile.write(b'* OK ' + 11 * b'x' + b'\r\n')
+                self.wfile.write(b"* OK " + 11 * b"x" + b"\r\n")
+
         _, server = self._setup(TooLongHandler, connect=False)
-        with self.assertRaisesRegex(imaplib.IMAP4.error,
-                'got more than 10 bytes'):
+        with self.assertRaisesRegex(imaplib.IMAP4.error, "got more than 10 bytes"):
             self.imap_class(*server.server_address)
 
     def test_simple_with_statement(self):
@@ -457,7 +495,7 @@ class NewIMAPTestsMixin():
         with self.imap_class(*server.server_address):
             pass
 
-    @requires_resource('walltime')
+    @requires_resource("walltime")
     def test_imaplib_timeout_test(self):
         _, server = self._setup(SimpleIMAPHandler)
         addr = server.server_address[1]
@@ -484,16 +522,16 @@ class NewIMAPTestsMixin():
     def test_with_statement(self):
         _, server = self._setup(SimpleIMAPHandler, connect=False)
         with self.imap_class(*server.server_address) as imap:
-            imap.login('user', 'pass')
-            self.assertEqual(server.logged, 'user')
+            imap.login("user", "pass")
+            self.assertEqual(server.logged, "user")
         self.assertIsNone(server.logged)
 
     def test_with_statement_logout(self):
         # It is legal to log out explicitly inside the with block
         _, server = self._setup(SimpleIMAPHandler, connect=False)
         with self.imap_class(*server.server_address) as imap:
-            imap.login('user', 'pass')
-            self.assertEqual(server.logged, 'user')
+            imap.login("user", "pass")
+            self.assertEqual(server.logged, "user")
             imap.logout()
             self.assertIsNone(server.logged)
         self.assertIsNone(server.logged)
@@ -502,43 +540,44 @@ class NewIMAPTestsMixin():
 
     def test_login(self):
         client, _ = self._setup(SimpleIMAPHandler)
-        typ, data = client.login('user', 'pass')
-        self.assertEqual(typ, 'OK')
-        self.assertEqual(data[0], b'LOGIN completed')
-        self.assertEqual(client.state, 'AUTH')
+        typ, data = client.login("user", "pass")
+        self.assertEqual(typ, "OK")
+        self.assertEqual(data[0], b"LOGIN completed")
+        self.assertEqual(client.state, "AUTH")
 
     def test_logout(self):
         client, _ = self._setup(SimpleIMAPHandler)
-        typ, data = client.login('user', 'pass')
-        self.assertEqual(typ, 'OK')
-        self.assertEqual(data[0], b'LOGIN completed')
+        typ, data = client.login("user", "pass")
+        self.assertEqual(typ, "OK")
+        self.assertEqual(data[0], b"LOGIN completed")
         typ, data = client.logout()
-        self.assertEqual(typ, 'BYE', (typ, data))
-        self.assertEqual(data[0], b'IMAP4ref1 Server logging out', (typ, data))
-        self.assertEqual(client.state, 'LOGOUT')
+        self.assertEqual(typ, "BYE", (typ, data))
+        self.assertEqual(data[0], b"IMAP4ref1 Server logging out", (typ, data))
+        self.assertEqual(client.state, "LOGOUT")
 
     def test_lsub(self):
         class LsubCmd(SimpleIMAPHandler):
             def cmd_LSUB(self, tag, args):
                 self._send_textline('* LSUB () "." directoryA')
-                return self._send_tagged(tag, 'OK', 'LSUB completed')
+                return self._send_tagged(tag, "OK", "LSUB completed")
+
         client, _ = self._setup(LsubCmd)
-        client.login('user', 'pass')
+        client.login("user", "pass")
         typ, data = client.lsub()
-        self.assertEqual(typ, 'OK')
+        self.assertEqual(typ, "OK")
         self.assertEqual(data[0], b'() "." directoryA')
 
     def test_unselect(self):
         client, _ = self._setup(SimpleIMAPHandler)
-        client.login('user', 'pass')
+        client.login("user", "pass")
         typ, data = client.select()
-        self.assertEqual(typ, 'OK')
-        self.assertEqual(data[0], b'2')
+        self.assertEqual(typ, "OK")
+        self.assertEqual(data[0], b"2")
 
         typ, data = client.unselect()
-        self.assertEqual(typ, 'OK')
-        self.assertEqual(data[0], b'Returned to authenticated state. (Success)')
-        self.assertEqual(client.state, 'AUTH')
+        self.assertEqual(typ, "OK")
+        self.assertEqual(data[0], b"Returned to authenticated state. (Success)")
+        self.assertEqual(client.state, "AUTH")
 
 
 class NewIMAPTests(NewIMAPTestsMixin, unittest.TestCase):
@@ -551,30 +590,32 @@ class NewIMAPSSLTests(NewIMAPTestsMixin, unittest.TestCase):
     imap_class = IMAP4_SSL
     server_class = SecureTCPServer
 
-    @requires_resource('walltime')
+    @requires_resource("walltime")
     def test_ssl_raises(self):
         ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
         self.assertEqual(ssl_context.verify_mode, ssl.CERT_REQUIRED)
         self.assertEqual(ssl_context.check_hostname, True)
         ssl_context.load_verify_locations(CAFILE)
 
-        with self.assertRaisesRegex(ssl.CertificateError,
-                "IP address mismatch, certificate is not valid for "
-                "'127.0.0.1'"):
+        with self.assertRaisesRegex(
+            ssl.CertificateError,
+            "IP address mismatch, certificate is not valid for " "'127.0.0.1'",
+        ):
             _, server = self._setup(SimpleIMAPHandler)
-            client = self.imap_class(*server.server_address,
-                                     ssl_context=ssl_context)
+            client = self.imap_class(*server.server_address, ssl_context=ssl_context)
             client.shutdown()
 
-    @requires_resource('walltime')
+    @requires_resource("walltime")
     def test_ssl_verified(self):
         ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
         ssl_context.load_verify_locations(CAFILE)
 
         _, server = self._setup(SimpleIMAPHandler)
-        client = self.imap_class("localhost", server.server_address[1],
-                                 ssl_context=ssl_context)
+        client = self.imap_class(
+            "localhost", server.server_address[1], ssl_context=ssl_context
+        )
         client.shutdown()
+
 
 class ThreadedNetworkedTests(unittest.TestCase):
     server_class = socketserver.TCPServer
@@ -600,12 +641,13 @@ class ThreadedNetworkedTests(unittest.TestCase):
             print("HDLR =", server.RequestHandlerClass)
 
         t = threading.Thread(
-            name='%s serving' % self.server_class,
+            name="%s serving" % self.server_class,
             target=server.serve_forever,
             # Short poll interval to make the test finish quickly.
             # Time between requests is short enough that we won't wake
             # up spuriously too many times.
-            kwargs={'poll_interval': 0.01})
+            kwargs={"poll_interval": 0.01},
+        )
         t.daemon = True  # In case this function raises.
         t.start()
         if verbose:
@@ -656,42 +698,41 @@ class ThreadedNetworkedTests(unittest.TestCase):
         class BracketFlagHandler(SimpleIMAPHandler):
 
             def handle(self):
-                self.flags = ['Answered', 'Flagged', 'Deleted', 'Seen', 'Draft']
+                self.flags = ["Answered", "Flagged", "Deleted", "Seen", "Draft"]
                 super().handle()
 
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.server.response = yield
-                self._send_tagged(tag, 'OK', 'FAKEAUTH successful')
+                self._send_tagged(tag, "OK", "FAKEAUTH successful")
 
             def cmd_SELECT(self, tag, args):
-                flag_msg = ' \\'.join(self.flags)
-                self._send_line(('* FLAGS (%s)' % flag_msg).encode('ascii'))
-                self._send_line(b'* 2 EXISTS')
-                self._send_line(b'* 0 RECENT')
-                msg = ('* OK [PERMANENTFLAGS %s \\*)] Flags permitted.'
-                        % flag_msg)
-                self._send_line(msg.encode('ascii'))
-                self._send_tagged(tag, 'OK', '[READ-WRITE] SELECT completed.')
+                flag_msg = " \\".join(self.flags)
+                self._send_line(("* FLAGS (%s)" % flag_msg).encode("ascii"))
+                self._send_line(b"* 2 EXISTS")
+                self._send_line(b"* 0 RECENT")
+                msg = "* OK [PERMANENTFLAGS %s \\*)] Flags permitted." % flag_msg
+                self._send_line(msg.encode("ascii"))
+                self._send_tagged(tag, "OK", "[READ-WRITE] SELECT completed.")
 
             def cmd_STORE(self, tag, args):
-                new_flags = args[2].strip('(').strip(')').split()
+                new_flags = args[2].strip("(").strip(")").split()
                 self.flags.extend(new_flags)
-                flags_msg = '(FLAGS (%s))' % ' \\'.join(self.flags)
-                msg = '* %s FETCH %s' % (args[0], flags_msg)
-                self._send_line(msg.encode('ascii'))
-                self._send_tagged(tag, 'OK', 'STORE completed.')
+                flags_msg = "(FLAGS (%s))" % " \\".join(self.flags)
+                msg = "* %s FETCH %s" % (args[0], flags_msg)
+                self._send_line(msg.encode("ascii"))
+                self._send_tagged(tag, "OK", "STORE completed.")
 
         with self.reaped_pair(BracketFlagHandler) as (server, client):
-            code, data = client.authenticate('MYAUTH', lambda x: b'fake')
-            self.assertEqual(code, 'OK')
-            self.assertEqual(server.response, b'ZmFrZQ==\r\n')
-            client.select('test')
-            typ, [data] = client.store(b'1', "+FLAGS", "[test]")
-            self.assertIn(b'[test]', data)
-            client.select('test')
-            typ, [data] = client.response('PERMANENTFLAGS')
-            self.assertIn(b'[test]', data)
+            code, data = client.authenticate("MYAUTH", lambda x: b"fake")
+            self.assertEqual(code, "OK")
+            self.assertEqual(server.response, b"ZmFrZQ==\r\n")
+            client.select("test")
+            typ, [data] = client.store(b"1", "+FLAGS", "[test]")
+            self.assertIn(b"[test]", data)
+            client.select("test")
+            typ, [data] = client.response("PERMANENTFLAGS")
+            self.assertIn(b"[test]", data)
 
     @threading_helper.reap_threads
     def test_issue5949(self):
@@ -699,11 +740,12 @@ class ThreadedNetworkedTests(unittest.TestCase):
         class EOFHandler(socketserver.StreamRequestHandler):
             def handle(self):
                 # EOF without sending a complete welcome message.
-                self.wfile.write(b'* OK')
+                self.wfile.write(b"* OK")
 
         with self.reaped_server(EOFHandler) as server:
-            self.assertRaises(imaplib.IMAP4.abort,
-                              self.imap_class, *server.server_address)
+            self.assertRaises(
+                imaplib.IMAP4.abort, self.imap_class, *server.server_address
+            )
 
     @threading_helper.reap_threads
     def test_line_termination(self):
@@ -711,29 +753,30 @@ class ThreadedNetworkedTests(unittest.TestCase):
         class BadNewlineHandler(SimpleIMAPHandler):
 
             def cmd_CAPABILITY(self, tag, args):
-                self._send(b'* CAPABILITY IMAP4rev1 AUTH\n')
-                self._send_tagged(tag, 'OK', 'CAPABILITY completed')
+                self._send(b"* CAPABILITY IMAP4rev1 AUTH\n")
+                self._send_tagged(tag, "OK", "CAPABILITY completed")
 
         with self.reaped_server(BadNewlineHandler) as server:
-            self.assertRaises(imaplib.IMAP4.abort,
-                              self.imap_class, *server.server_address)
+            self.assertRaises(
+                imaplib.IMAP4.abort, self.imap_class, *server.server_address
+            )
 
     class UTF8Server(SimpleIMAPHandler):
-        capabilities = 'AUTH ENABLE UTF8=ACCEPT'
+        capabilities = "AUTH ENABLE UTF8=ACCEPT"
 
         def cmd_ENABLE(self, tag, args):
-            self._send_tagged(tag, 'OK', 'ENABLE successful')
+            self._send_tagged(tag, "OK", "ENABLE successful")
 
         def cmd_AUTHENTICATE(self, tag, args):
-            self._send_textline('+')
+            self._send_textline("+")
             self.server.response = yield
-            self._send_tagged(tag, 'OK', 'FAKEAUTH successful')
+            self._send_tagged(tag, "OK", "FAKEAUTH successful")
 
     @threading_helper.reap_threads
     def test_enable_raises_error_if_not_AUTH(self):
         with self.reaped_pair(self.UTF8Server) as (server, client):
             self.assertFalse(client.utf8_enabled)
-            self.assertRaises(imaplib.IMAP4.error, client.enable, 'foo')
+            self.assertRaises(imaplib.IMAP4.error, client.enable, "foo")
             self.assertFalse(client.utf8_enabled)
 
     # XXX Also need a test that enable after SELECT raises an error.
@@ -741,45 +784,44 @@ class ThreadedNetworkedTests(unittest.TestCase):
     @threading_helper.reap_threads
     def test_enable_raises_error_if_no_capability(self):
         class NoEnableServer(self.UTF8Server):
-            capabilities = 'AUTH'
+            capabilities = "AUTH"
+
         with self.reaped_pair(NoEnableServer) as (server, client):
-            self.assertRaises(imaplib.IMAP4.error, client.enable, 'foo')
+            self.assertRaises(imaplib.IMAP4.error, client.enable, "foo")
 
     @threading_helper.reap_threads
     def test_enable_UTF8_raises_error_if_not_supported(self):
         class NonUTF8Server(SimpleIMAPHandler):
             pass
+
         with self.assertRaises(imaplib.IMAP4.error):
             with self.reaped_pair(NonUTF8Server) as (server, client):
-                typ, data = client.login('user', 'pass')
-                self.assertEqual(typ, 'OK')
-                client.enable('UTF8=ACCEPT')
+                typ, data = client.login("user", "pass")
+                self.assertEqual(typ, "OK")
+                client.enable("UTF8=ACCEPT")
 
     @threading_helper.reap_threads
     def test_enable_UTF8_True_append(self):
 
         class UTF8AppendServer(self.UTF8Server):
             def cmd_APPEND(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.server.response = yield
-                self._send_tagged(tag, 'OK', 'okay')
+                self._send_tagged(tag, "OK", "okay")
 
         with self.reaped_pair(UTF8AppendServer) as (server, client):
-            self.assertEqual(client._encoding, 'ascii')
-            code, _ = client.authenticate('MYAUTH', lambda x: b'fake')
-            self.assertEqual(code, 'OK')
-            self.assertEqual(server.response,
-                             b'ZmFrZQ==\r\n')  # b64 encoded 'fake'
-            code, _ = client.enable('UTF8=ACCEPT')
-            self.assertEqual(code, 'OK')
-            self.assertEqual(client._encoding, 'utf-8')
-            msg_string = 'Subject: üñí©öðé'
-            typ, data = client.append(
-                None, None, None, msg_string.encode('utf-8'))
-            self.assertEqual(typ, 'OK')
+            self.assertEqual(client._encoding, "ascii")
+            code, _ = client.authenticate("MYAUTH", lambda x: b"fake")
+            self.assertEqual(code, "OK")
+            self.assertEqual(server.response, b"ZmFrZQ==\r\n")  # b64 encoded 'fake'
+            code, _ = client.enable("UTF8=ACCEPT")
+            self.assertEqual(code, "OK")
+            self.assertEqual(client._encoding, "utf-8")
+            msg_string = "Subject: üñí©öðé"
+            typ, data = client.append(None, None, None, msg_string.encode("utf-8"))
+            self.assertEqual(typ, "OK")
             self.assertEqual(
-                server.response,
-                ('UTF8 (%s)\r\n' % msg_string).encode('utf-8')
+                server.response, ("UTF8 (%s)\r\n" % msg_string).encode("utf-8")
             )
 
     # XXX also need a test that makes sure that the Literal and Untagged_status
@@ -788,12 +830,12 @@ class ThreadedNetworkedTests(unittest.TestCase):
     @threading_helper.reap_threads
     def test_search_disallows_charset_in_utf8_mode(self):
         with self.reaped_pair(self.UTF8Server) as (server, client):
-            typ, _ = client.authenticate('MYAUTH', lambda x: b'fake')
-            self.assertEqual(typ, 'OK')
-            typ, _ = client.enable('UTF8=ACCEPT')
-            self.assertEqual(typ, 'OK')
+            typ, _ = client.authenticate("MYAUTH", lambda x: b"fake")
+            self.assertEqual(typ, "OK")
+            typ, _ = client.enable("UTF8=ACCEPT")
+            self.assertEqual(typ, "OK")
             self.assertTrue(client.utf8_enabled)
-            self.assertRaises(imaplib.IMAP4.error, client.search, 'foo', 'bar')
+            self.assertRaises(imaplib.IMAP4.error, client.search, "foo", "bar")
 
     @threading_helper.reap_threads
     def test_bad_auth_name(self):
@@ -801,12 +843,13 @@ class ThreadedNetworkedTests(unittest.TestCase):
         class MyServer(SimpleIMAPHandler):
 
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_tagged(tag, 'NO', 'unrecognized authentication '
-                                  'type {}'.format(args[0]))
+                self._send_tagged(
+                    tag, "NO", "unrecognized authentication " "type {}".format(args[0])
+                )
 
         with self.reaped_pair(MyServer) as (server, client):
             with self.assertRaises(imaplib.IMAP4.error):
-                client.authenticate('METHOD', lambda: 1)
+                client.authenticate("METHOD", lambda: 1)
 
     @threading_helper.reap_threads
     def test_invalid_authentication(self):
@@ -814,13 +857,13 @@ class ThreadedNetworkedTests(unittest.TestCase):
         class MyServer(SimpleIMAPHandler):
 
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.response = yield
-                self._send_tagged(tag, 'NO', '[AUTHENTICATIONFAILED] invalid')
+                self._send_tagged(tag, "NO", "[AUTHENTICATIONFAILED] invalid")
 
         with self.reaped_pair(MyServer) as (server, client):
             with self.assertRaises(imaplib.IMAP4.error):
-                code, data = client.authenticate('MYAUTH', lambda x: b'fake')
+                code, data = client.authenticate("MYAUTH", lambda x: b"fake")
 
     @threading_helper.reap_threads
     def test_valid_authentication(self):
@@ -828,50 +871,47 @@ class ThreadedNetworkedTests(unittest.TestCase):
         class MyServer(SimpleIMAPHandler):
 
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.server.response = yield
-                self._send_tagged(tag, 'OK', 'FAKEAUTH successful')
+                self._send_tagged(tag, "OK", "FAKEAUTH successful")
 
         with self.reaped_pair(MyServer) as (server, client):
-            code, data = client.authenticate('MYAUTH', lambda x: b'fake')
-            self.assertEqual(code, 'OK')
-            self.assertEqual(server.response,
-                             b'ZmFrZQ==\r\n')  # b64 encoded 'fake'
+            code, data = client.authenticate("MYAUTH", lambda x: b"fake")
+            self.assertEqual(code, "OK")
+            self.assertEqual(server.response, b"ZmFrZQ==\r\n")  # b64 encoded 'fake'
 
         with self.reaped_pair(MyServer) as (server, client):
-            code, data = client.authenticate('MYAUTH', lambda x: 'fake')
-            self.assertEqual(code, 'OK')
-            self.assertEqual(server.response,
-                             b'ZmFrZQ==\r\n')  # b64 encoded 'fake'
+            code, data = client.authenticate("MYAUTH", lambda x: "fake")
+            self.assertEqual(code, "OK")
+            self.assertEqual(server.response, b"ZmFrZQ==\r\n")  # b64 encoded 'fake'
 
     @threading_helper.reap_threads
-    @hashlib_helper.requires_hashdigest('md5', openssl=True)
+    @hashlib_helper.requires_hashdigest("md5", openssl=True)
     def test_login_cram_md5(self):
 
         class AuthHandler(SimpleIMAPHandler):
 
-            capabilities = 'LOGINDISABLED AUTH=CRAM-MD5'
+            capabilities = "LOGINDISABLED AUTH=CRAM-MD5"
 
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+ PDE4OTYuNjk3MTcwOTUyQHBvc3RvZmZpY2Uucm'
-                                    'VzdG9uLm1jaS5uZXQ=')
+                self._send_textline(
+                    "+ PDE4OTYuNjk3MTcwOTUyQHBvc3RvZmZpY2Uucm" "VzdG9uLm1jaS5uZXQ="
+                )
                 r = yield
-                if (r == b'dGltIGYxY2E2YmU0NjRiOWVmYT'
-                         b'FjY2E2ZmZkNmNmMmQ5ZjMy\r\n'):
-                    self._send_tagged(tag, 'OK', 'CRAM-MD5 successful')
+                if r == b"dGltIGYxY2E2YmU0NjRiOWVmYT" b"FjY2E2ZmZkNmNmMmQ5ZjMy\r\n":
+                    self._send_tagged(tag, "OK", "CRAM-MD5 successful")
                 else:
-                    self._send_tagged(tag, 'NO', 'No access')
+                    self._send_tagged(tag, "NO", "No access")
 
         with self.reaped_pair(AuthHandler) as (server, client):
-            self.assertTrue('AUTH=CRAM-MD5' in client.capabilities)
+            self.assertTrue("AUTH=CRAM-MD5" in client.capabilities)
             ret, data = client.login_cram_md5("tim", "tanstaaftanstaaf")
             self.assertEqual(ret, "OK")
 
         with self.reaped_pair(AuthHandler) as (server, client):
-            self.assertTrue('AUTH=CRAM-MD5' in client.capabilities)
+            self.assertTrue("AUTH=CRAM-MD5" in client.capabilities)
             ret, data = client.login_cram_md5("tim", b"tanstaaftanstaaf")
             self.assertEqual(ret, "OK")
-
 
     @threading_helper.reap_threads
     def test_aborted_authentication(self):
@@ -879,28 +919,28 @@ class ThreadedNetworkedTests(unittest.TestCase):
         class MyServer(SimpleIMAPHandler):
 
             def cmd_AUTHENTICATE(self, tag, args):
-                self._send_textline('+')
+                self._send_textline("+")
                 self.response = yield
 
-                if self.response == b'*\r\n':
-                    self._send_tagged(tag, 'NO', '[AUTHENTICATIONFAILED] aborted')
+                if self.response == b"*\r\n":
+                    self._send_tagged(tag, "NO", "[AUTHENTICATIONFAILED] aborted")
                 else:
-                    self._send_tagged(tag, 'OK', 'MYAUTH successful')
+                    self._send_tagged(tag, "OK", "MYAUTH successful")
 
         with self.reaped_pair(MyServer) as (server, client):
             with self.assertRaises(imaplib.IMAP4.error):
-                code, data = client.authenticate('MYAUTH', lambda x: None)
-
+                code, data = client.authenticate("MYAUTH", lambda x: None)
 
     def test_linetoolong(self):
         class TooLongHandler(SimpleIMAPHandler):
             def handle(self):
                 # Send a very long response line
-                self.wfile.write(b'* OK ' + imaplib._MAXLINE * b'x' + b'\r\n')
+                self.wfile.write(b"* OK " + imaplib._MAXLINE * b"x" + b"\r\n")
 
         with self.reaped_server(TooLongHandler) as server:
-            self.assertRaises(imaplib.IMAP4.error,
-                              self.imap_class, *server.server_address)
+            self.assertRaises(
+                imaplib.IMAP4.error, self.imap_class, *server.server_address
+            )
 
     @threading_helper.reap_threads
     def test_simple_with_statement(self):
@@ -913,8 +953,8 @@ class ThreadedNetworkedTests(unittest.TestCase):
     def test_with_statement(self):
         with self.reaped_server(SimpleIMAPHandler) as server:
             with self.imap_class(*server.server_address) as imap:
-                imap.login('user', 'pass')
-                self.assertEqual(server.logged, 'user')
+                imap.login("user", "pass")
+                self.assertEqual(server.logged, "user")
             self.assertIsNone(server.logged)
 
     @threading_helper.reap_threads
@@ -922,8 +962,8 @@ class ThreadedNetworkedTests(unittest.TestCase):
         # what happens if already logout in the block?
         with self.reaped_server(SimpleIMAPHandler) as server:
             with self.imap_class(*server.server_address) as imap:
-                imap.login('user', 'pass')
-                self.assertEqual(server.logged, 'user')
+                imap.login("user", "pass")
+                self.assertEqual(server.logged, "user")
                 imap.logout()
                 self.assertIsNone(server.logged)
             self.assertIsNone(server.logged)
@@ -933,11 +973,11 @@ class ThreadedNetworkedTests(unittest.TestCase):
     @unittest.skipUnless(__debug__, "Won't work if __debug__ is False")
     def test_dump_ur(self):
         # See: http://bugs.python.org/issue26543
-        untagged_resp_dict = {'READ-WRITE': [b'']}
+        untagged_resp_dict = {"READ-WRITE": [b""]}
 
         with self.reaped_server(SimpleIMAPHandler) as server:
             with self.imap_class(*server.server_address) as imap:
-                with mock.patch.object(imap, '_mesg') as mock_mesg:
+                with mock.patch.object(imap, "_mesg") as mock_mesg:
                     imap._dump_ur(untagged_resp_dict)
                     mock_mesg.assert_called_with(
                         "untagged responses dump:READ-WRITE: [b'']"
@@ -955,28 +995,31 @@ class ThreadedNetworkedTestsSSL(ThreadedNetworkedTests):
         ssl_context.load_verify_locations(CAFILE)
 
         with self.assertRaisesRegex(
-                ssl.CertificateError,
-                "IP address mismatch, certificate is not valid for "
-                "'127.0.0.1'"):
+            ssl.CertificateError,
+            "IP address mismatch, certificate is not valid for " "'127.0.0.1'",
+        ):
             with self.reaped_server(SimpleIMAPHandler) as server:
-                client = self.imap_class(*server.server_address,
-                                         ssl_context=ssl_context)
+                client = self.imap_class(
+                    *server.server_address, ssl_context=ssl_context
+                )
                 client.shutdown()
 
         with self.reaped_server(SimpleIMAPHandler) as server:
-            client = self.imap_class("localhost", server.server_address[1],
-                                     ssl_context=ssl_context)
+            client = self.imap_class(
+                "localhost", server.server_address[1], ssl_context=ssl_context
+            )
             client.shutdown()
 
 
 @unittest.skipUnless(
-    support.is_resource_enabled('network'), 'network resource disabled')
-@unittest.skip('cyrus.andrew.cmu.edu blocks connections')
+    support.is_resource_enabled("network"), "network resource disabled"
+)
+@unittest.skip("cyrus.andrew.cmu.edu blocks connections")
 class RemoteIMAPTest(unittest.TestCase):
-    host = 'cyrus.andrew.cmu.edu'
+    host = "cyrus.andrew.cmu.edu"
     port = 143
-    username = 'anonymous'
-    password = 'pass'
+    username = "anonymous"
+    password = "pass"
     imap_class = imaplib.IMAP4
 
     def setUp(self):
@@ -992,38 +1035,39 @@ class RemoteIMAPTest(unittest.TestCase):
         with socket_helper.transient_internet(self.host):
             for cap in self.server.capabilities:
                 self.assertIsInstance(cap, str)
-            self.assertIn('LOGINDISABLED', self.server.capabilities)
-            self.assertIn('AUTH=ANONYMOUS', self.server.capabilities)
+            self.assertIn("LOGINDISABLED", self.server.capabilities)
+            self.assertIn("AUTH=ANONYMOUS", self.server.capabilities)
             rs = self.server.login(self.username, self.password)
-            self.assertEqual(rs[0], 'OK')
+            self.assertEqual(rs[0], "OK")
 
     def test_logout(self):
         with socket_helper.transient_internet(self.host):
             rs = self.server.logout()
             self.server = None
-            self.assertEqual(rs[0], 'BYE', rs)
+            self.assertEqual(rs[0], "BYE", rs)
 
 
 @unittest.skipUnless(ssl, "SSL not available")
 @unittest.skipUnless(
-    support.is_resource_enabled('network'), 'network resource disabled')
-@unittest.skip('cyrus.andrew.cmu.edu blocks connections')
+    support.is_resource_enabled("network"), "network resource disabled"
+)
+@unittest.skip("cyrus.andrew.cmu.edu blocks connections")
 class RemoteIMAP_STARTTLSTest(RemoteIMAPTest):
 
     def setUp(self):
         super().setUp()
         with socket_helper.transient_internet(self.host):
             rs = self.server.starttls()
-            self.assertEqual(rs[0], 'OK')
+            self.assertEqual(rs[0], "OK")
 
     def test_logincapa(self):
         for cap in self.server.capabilities:
             self.assertIsInstance(cap, str)
-        self.assertNotIn('LOGINDISABLED', self.server.capabilities)
+        self.assertNotIn("LOGINDISABLED", self.server.capabilities)
 
 
 @unittest.skipUnless(ssl, "SSL not available")
-@unittest.skip('cyrus.andrew.cmu.edu blocks connections')
+@unittest.skip("cyrus.andrew.cmu.edu blocks connections")
 class RemoteIMAP_SSLTest(RemoteIMAPTest):
     port = 993
     imap_class = IMAP4_SSL
@@ -1045,10 +1089,10 @@ class RemoteIMAP_SSLTest(RemoteIMAPTest):
         try:
             for cap in server.capabilities:
                 self.assertIsInstance(cap, str)
-            self.assertNotIn('LOGINDISABLED', server.capabilities)
-            self.assertIn('AUTH=PLAIN', server.capabilities)
+            self.assertNotIn("LOGINDISABLED", server.capabilities)
+            self.assertIn("AUTH=PLAIN", server.capabilities)
             rs = server.login(self.username, self.password)
-            self.assertEqual(rs[0], 'OK')
+            self.assertEqual(rs[0], "OK")
         finally:
             server.logout()
 
@@ -1061,7 +1105,7 @@ class RemoteIMAP_SSLTest(RemoteIMAPTest):
         with socket_helper.transient_internet(self.host):
             _server = self.imap_class(self.host, self.port)
             rs = _server.logout()
-            self.assertEqual(rs[0], 'BYE', rs)
+            self.assertEqual(rs[0], "BYE", rs)
 
 
 if __name__ == "__main__":

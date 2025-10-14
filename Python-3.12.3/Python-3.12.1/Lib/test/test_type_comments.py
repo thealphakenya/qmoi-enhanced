@@ -224,8 +224,7 @@ class TypeCommentTests(unittest.TestCase):
     highest = sys.version_info[1]  # Highest minor version
 
     def parse(self, source, feature_version=highest):
-        return ast.parse(source, type_comments=True,
-                         feature_version=feature_version)
+        return ast.parse(source, type_comments=True, feature_version=feature_version)
 
     def parse_all(self, source, minver=lowest, maxver=highest, expected_regex=""):
         for version in range(self.lowest, self.highest + 1):
@@ -236,8 +235,11 @@ class TypeCommentTests(unittest.TestCase):
                 except SyntaxError as err:
                     raise SyntaxError(str(err) + f" feature_version={feature_version}")
             else:
-                with self.assertRaisesRegex(SyntaxError, expected_regex,
-                                            msg=f"feature_version={feature_version}"):
+                with self.assertRaisesRegex(
+                    SyntaxError,
+                    expected_regex,
+                    msg=f"feature_version={feature_version}",
+                ):
                     self.parse(source, feature_version)
 
     def classic_parse(self, source):
@@ -280,8 +282,11 @@ class TypeCommentTests(unittest.TestCase):
             pass
 
     def test_redundantdef(self):
-        for tree in self.parse_all(redundantdef, maxver=0,
-                                expected_regex="^Cannot have two type comments on def"):
+        for tree in self.parse_all(
+            redundantdef,
+            maxver=0,
+            expected_regex="^Cannot have two type comments on def",
+        ):
             pass
 
     def test_nonasciidef(self):
@@ -311,13 +316,14 @@ class TypeCommentTests(unittest.TestCase):
             self.assertEqual(
                 [(ti.lineno, ti.tag) for ti in tree.type_ignores],
                 [
-                    (2, ''),
-                    (5, ''),
-                    (8, '[excuse]'),
-                    (9, '=excuse'),
-                    (10, ' [excuse]'),
-                    (11, ' whatever'),
-                ])
+                    (2, ""),
+                    (5, ""),
+                    (8, "[excuse]"),
+                    (9, "=excuse"),
+                    (10, " [excuse]"),
+                    (11, " whatever"),
+                ],
+            )
         tree = self.classic_parse(ignores)
         self.assertEqual(tree.type_ignores, [])
 
@@ -326,21 +332,29 @@ class TypeCommentTests(unittest.TestCase):
             for t in tree.body:
                 # The expected args are encoded in the function name
                 todo = set(t.name[1:])
-                self.assertEqual(len(t.args.args) + len(t.args.posonlyargs),
-                                 len(todo) - bool(t.args.vararg) - bool(t.args.kwarg))
-                self.assertTrue(t.name.startswith('f'), t.name)
+                self.assertEqual(
+                    len(t.args.args) + len(t.args.posonlyargs),
+                    len(todo) - bool(t.args.vararg) - bool(t.args.kwarg),
+                )
+                self.assertTrue(t.name.startswith("f"), t.name)
                 for index, c in enumerate(t.name[1:]):
                     todo.remove(c)
-                    if c == 'v':
+                    if c == "v":
                         arg = t.args.vararg
-                    elif c == 'k':
+                    elif c == "k":
                         arg = t.args.kwarg
                     else:
-                        assert 0 <= ord(c) - ord('a') < len(t.args.posonlyargs + t.args.args)
+                        assert (
+                            0
+                            <= ord(c) - ord("a")
+                            < len(t.args.posonlyargs + t.args.args)
+                        )
                         if index < len(t.args.posonlyargs):
-                            arg = t.args.posonlyargs[ord(c) - ord('a')]
+                            arg = t.args.posonlyargs[ord(c) - ord("a")]
                         else:
-                            arg = t.args.args[ord(c) - ord('a') - len(t.args.posonlyargs)]
+                            arg = t.args.args[
+                                ord(c) - ord("a") - len(t.args.posonlyargs)
+                            ]
                     self.assertEqual(arg.arg, c)  # That's the argument name
                     self.assertEqual(arg.type_comment, arg.arg.upper())
                 assert not todo
@@ -348,8 +362,10 @@ class TypeCommentTests(unittest.TestCase):
         for t in tree.body:
             for arg in t.args.args + [t.args.vararg, t.args.kwarg]:
                 if arg is not None:
-                    self.assertIsNone(arg.type_comment, "%s(%s:%r)" %
-                                      (t.name, arg.arg, arg.type_comment))
+                    self.assertIsNone(
+                        arg.type_comment,
+                        "%s(%s:%r)" % (t.name, arg.arg, arg.type_comment),
+                    )
 
     def test_inappropriate_type_comments(self):
         """Tests for inappropriately-placed type comments.
@@ -416,5 +432,5 @@ class TypeCommentTests(unittest.TestCase):
             tree = parse_func_type_input("(**int, **str) -> float")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
