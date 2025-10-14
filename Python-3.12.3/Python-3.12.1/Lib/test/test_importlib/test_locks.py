@@ -1,6 +1,6 @@
 from test.test_importlib import util as test_util
 
-init = test_util.import_importlib("importlib")
+init = test_util.import_importlib('importlib')
 
 import sys
 import threading
@@ -40,13 +40,13 @@ class ModuleLockAsRLockTests:
             splitinit._bootstrap._blocking_on.clear()
 
 
-LOCK_TYPES = {
-    kind: splitinit._bootstrap._ModuleLock for kind, splitinit in init.items()
-}
+LOCK_TYPES = {kind: splitinit._bootstrap._ModuleLock
+              for kind, splitinit in init.items()}
 
-(Frozen_ModuleLockAsRLockTests, Source_ModuleLockAsRLockTests) = test_util.test_both(
-    ModuleLockAsRLockTests, lock_tests.RLockTests, LockType=LOCK_TYPES
-)
+(Frozen_ModuleLockAsRLockTests,
+ Source_ModuleLockAsRLockTests
+ ) = test_util.test_both(ModuleLockAsRLockTests, lock_tests.RLockTests,
+                         LockType=LOCK_TYPES)
 
 
 class DeadlockAvoidanceTests:
@@ -65,7 +65,7 @@ class DeadlockAvoidanceTests:
     def run_deadlock_avoidance_test(self, create_deadlock):
         NLOCKS = 10
         locks = [self.LockType(str(i)) for i in range(NLOCKS)]
-        pairs = [(locks[i], locks[(i + 1) % NLOCKS]) for i in range(NLOCKS)]
+        pairs = [(locks[i], locks[(i+1)%NLOCKS]) for i in range(NLOCKS)]
         if create_deadlock:
             NTHREADS = NLOCKS
         else:
@@ -93,7 +93,6 @@ class DeadlockAvoidanceTests:
                 b.release()
             if ra:
                 a.release()
-
         with lock_tests.Bunch(f, NTHREADS):
             pass
         self.assertEqual(len(results), NTHREADS)
@@ -114,13 +113,14 @@ class DeadlockAvoidanceTests:
         self.assertEqual(results.count((True, True)), len(results))
 
 
-DEADLOCK_ERRORS = {
-    kind: splitinit._bootstrap._DeadlockError for kind, splitinit in init.items()
-}
+DEADLOCK_ERRORS = {kind: splitinit._bootstrap._DeadlockError
+                   for kind, splitinit in init.items()}
 
-(Frozen_DeadlockAvoidanceTests, Source_DeadlockAvoidanceTests) = test_util.test_both(
-    DeadlockAvoidanceTests, LockType=LOCK_TYPES, DeadlockError=DEADLOCK_ERRORS
-)
+(Frozen_DeadlockAvoidanceTests,
+ Source_DeadlockAvoidanceTests
+ ) = test_util.test_both(DeadlockAvoidanceTests,
+                         LockType=LOCK_TYPES,
+                         DeadlockError=DEADLOCK_ERRORS)
 
 
 class LifetimeTests:
@@ -142,14 +142,13 @@ class LifetimeTests:
 
     def test_all_locks(self):
         support.gc_collect()
-        self.assertEqual(
-            0, len(self.bootstrap._module_locks), self.bootstrap._module_locks
-        )
+        self.assertEqual(0, len(self.bootstrap._module_locks),
+                         self.bootstrap._module_locks)
 
 
-(Frozen_LifetimeTests, Source_LifetimeTests) = test_util.test_both(
-    LifetimeTests, init=init
-)
+(Frozen_LifetimeTests,
+ Source_LifetimeTests
+ ) = test_util.test_both(LifetimeTests, init=init)
 
 
 def setUpModule():
@@ -157,5 +156,5 @@ def setUpModule():
     unittest.addModuleCleanup(threading_helper.threading_cleanup, *thread_info)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

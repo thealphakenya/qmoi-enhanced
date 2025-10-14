@@ -131,40 +131,29 @@ import threading
 from io import BufferedIOBase
 from time import monotonic as time
 
-__all__ = [
-    "BaseServer",
-    "TCPServer",
-    "UDPServer",
-    "ThreadingUDPServer",
-    "ThreadingTCPServer",
-    "BaseRequestHandler",
-    "StreamRequestHandler",
-    "DatagramRequestHandler",
-    "ThreadingMixIn",
-]
+__all__ = ["BaseServer", "TCPServer", "UDPServer",
+           "ThreadingUDPServer", "ThreadingTCPServer",
+           "BaseRequestHandler", "StreamRequestHandler",
+           "DatagramRequestHandler", "ThreadingMixIn"]
 if hasattr(os, "fork"):
-    __all__.extend(["ForkingUDPServer", "ForkingTCPServer", "ForkingMixIn"])
+    __all__.extend(["ForkingUDPServer","ForkingTCPServer", "ForkingMixIn"])
 if hasattr(socket, "AF_UNIX"):
-    __all__.extend(
-        [
-            "UnixStreamServer",
-            "UnixDatagramServer",
-            "ThreadingUnixStreamServer",
-            "ThreadingUnixDatagramServer",
-        ]
-    )
+    __all__.extend(["UnixStreamServer","UnixDatagramServer",
+                    "ThreadingUnixStreamServer",
+                    "ThreadingUnixDatagramServer"])
     if hasattr(os, "fork"):
         __all__.extend(["ForkingUnixStreamServer", "ForkingUnixDatagramServer"])
 
 # poll/select have the advantage of not requiring any extra file descriptor,
 # contrarily to epoll/kqueue (also, they require a single syscall).
-if hasattr(selectors, "PollSelector"):
+if hasattr(selectors, 'PollSelector'):
     _ServerSelector = selectors.PollSelector
 else:
     _ServerSelector = selectors.SelectSelector
 
 
 class BaseServer:
+
     """Base class for server classes.
 
     Methods for the caller:
@@ -386,16 +375,12 @@ class BaseServer:
         The default is to print a traceback and continue.
 
         """
-        print("-" * 40, file=sys.stderr)
-        print(
-            "Exception occurred during processing of request from",
-            client_address,
-            file=sys.stderr,
-        )
+        print('-'*40, file=sys.stderr)
+        print('Exception occurred during processing of request from',
+            client_address, file=sys.stderr)
         import traceback
-
         traceback.print_exc()
-        print("-" * 40, file=sys.stderr)
+        print('-'*40, file=sys.stderr)
 
     def __enter__(self):
         return self
@@ -405,6 +390,7 @@ class BaseServer:
 
 
 class TCPServer(BaseServer):
+
     """Base class for various socket-based server classes.
 
     Defaults to synchronous IP stream (i.e., TCP).
@@ -464,7 +450,8 @@ class TCPServer(BaseServer):
     def __init__(self, server_address, RequestHandlerClass, bind_and_activate=True):
         """Constructor.  May be extended, do not override."""
         BaseServer.__init__(self, server_address, RequestHandlerClass)
-        self.socket = socket.socket(self.address_family, self.socket_type)
+        self.socket = socket.socket(self.address_family,
+                                    self.socket_type)
         if bind_and_activate:
             try:
                 self.server_bind()
@@ -521,11 +508,11 @@ class TCPServer(BaseServer):
     def shutdown_request(self, request):
         """Called to shutdown and close an individual request."""
         try:
-            # explicitly shutdown.  socket.close() merely releases
-            # the socket and waits for GC to perform the actual close.
+            #explicitly shutdown.  socket.close() merely releases
+            #the socket and waits for GC to perform the actual close.
             request.shutdown(socket.SHUT_WR)
         except OSError:
-            pass  # some platforms may raise ENOTCONN here
+            pass #some platforms may raise ENOTCONN here
         self.close_request(request)
 
     def close_request(self, request):
@@ -534,6 +521,7 @@ class TCPServer(BaseServer):
 
 
 class UDPServer(TCPServer):
+
     """UDP server class."""
 
     allow_reuse_address = False
@@ -560,9 +548,7 @@ class UDPServer(TCPServer):
         # No need to close anything.
         pass
 
-
 if hasattr(os, "fork"):
-
     class ForkingMixIn:
         """Mix-in class to handle each request in a new process."""
 
@@ -655,7 +641,6 @@ class _Threads(list):
     """
     Joinable list of all non-daemon threads.
     """
-
     def append(self, thread):
         self.reap()
         if thread.daemon:
@@ -678,7 +663,6 @@ class _NoThreads:
     """
     Degenerate version of _Threads.
     """
-
     def append(self, thread):
         pass
 
@@ -714,10 +698,9 @@ class ThreadingMixIn:
     def process_request(self, request, client_address):
         """Start a new thread to process the request."""
         if self.block_on_close:
-            vars(self).setdefault("_threads", _Threads())
-        t = threading.Thread(
-            target=self.process_request_thread, args=(request, client_address)
-        )
+            vars(self).setdefault('_threads', _Threads())
+        t = threading.Thread(target = self.process_request_thread,
+                             args = (request, client_address))
         t.daemon = self.daemon_threads
         self._threads.append(t)
         t.start()
@@ -728,23 +711,13 @@ class ThreadingMixIn:
 
 
 if hasattr(os, "fork"):
+    class ForkingUDPServer(ForkingMixIn, UDPServer): pass
+    class ForkingTCPServer(ForkingMixIn, TCPServer): pass
 
-    class ForkingUDPServer(ForkingMixIn, UDPServer):
-        pass
+class ThreadingUDPServer(ThreadingMixIn, UDPServer): pass
+class ThreadingTCPServer(ThreadingMixIn, TCPServer): pass
 
-    class ForkingTCPServer(ForkingMixIn, TCPServer):
-        pass
-
-
-class ThreadingUDPServer(ThreadingMixIn, UDPServer):
-    pass
-
-
-class ThreadingTCPServer(ThreadingMixIn, TCPServer):
-    pass
-
-
-if hasattr(socket, "AF_UNIX"):
+if hasattr(socket, 'AF_UNIX'):
 
     class UnixStreamServer(TCPServer):
         address_family = socket.AF_UNIX
@@ -752,22 +725,17 @@ if hasattr(socket, "AF_UNIX"):
     class UnixDatagramServer(UDPServer):
         address_family = socket.AF_UNIX
 
-    class ThreadingUnixStreamServer(ThreadingMixIn, UnixStreamServer):
-        pass
+    class ThreadingUnixStreamServer(ThreadingMixIn, UnixStreamServer): pass
 
-    class ThreadingUnixDatagramServer(ThreadingMixIn, UnixDatagramServer):
-        pass
+    class ThreadingUnixDatagramServer(ThreadingMixIn, UnixDatagramServer): pass
 
     if hasattr(os, "fork"):
+        class ForkingUnixStreamServer(ForkingMixIn, UnixStreamServer): pass
 
-        class ForkingUnixStreamServer(ForkingMixIn, UnixStreamServer):
-            pass
-
-        class ForkingUnixDatagramServer(ForkingMixIn, UnixDatagramServer):
-            pass
-
+        class ForkingUnixDatagramServer(ForkingMixIn, UnixDatagramServer): pass
 
 class BaseRequestHandler:
+
     """Base class for request handler classes.
 
     This class is instantiated for each request to be handled.  The
@@ -813,6 +781,7 @@ class BaseRequestHandler:
 
 
 class StreamRequestHandler(BaseRequestHandler):
+
     """Define self.rfile and self.wfile for stream sockets."""
 
     # Default buffer sizes for rfile, wfile.
@@ -837,12 +806,13 @@ class StreamRequestHandler(BaseRequestHandler):
         if self.timeout is not None:
             self.connection.settimeout(self.timeout)
         if self.disable_nagle_algorithm:
-            self.connection.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, True)
-        self.rfile = self.connection.makefile("rb", self.rbufsize)
+            self.connection.setsockopt(socket.IPPROTO_TCP,
+                                       socket.TCP_NODELAY, True)
+        self.rfile = self.connection.makefile('rb', self.rbufsize)
         if self.wbufsize == 0:
             self.wfile = _SocketWriter(self.connection)
         else:
-            self.wfile = self.connection.makefile("wb", self.wbufsize)
+            self.wfile = self.connection.makefile('wb', self.wbufsize)
 
     def finish(self):
         if not self.wfile.closed:
@@ -854,7 +824,6 @@ class StreamRequestHandler(BaseRequestHandler):
                 pass
         self.wfile.close()
         self.rfile.close()
-
 
 class _SocketWriter(BufferedIOBase):
     """Simple writable BufferedIOBase implementation for a socket
@@ -875,13 +844,12 @@ class _SocketWriter(BufferedIOBase):
     def fileno(self):
         return self._sock.fileno()
 
-
 class DatagramRequestHandler(BaseRequestHandler):
+
     """Define self.rfile and self.wfile for datagram sockets."""
 
     def setup(self):
         from io import BytesIO
-
         self.packet, self.socket = self.request
         self.rfile = BytesIO(self.packet)
         self.wfile = BytesIO()

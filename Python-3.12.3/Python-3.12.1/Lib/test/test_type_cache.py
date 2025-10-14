@@ -1,17 +1,15 @@
-"""Tests for the internal type cache in CPython."""
-
+""" Tests for the internal type cache in CPython. """
 import unittest
 from test import support
 from test.support import import_helper
-
 try:
     from sys import _clear_type_cache
 except ImportError:
     _clear_type_cache = None
 
 # Skip this test if the _testcapi module isn't available.
-type_get_version = import_helper.import_module("_testcapi").type_get_version
-type_assign_version = import_helper.import_module("_testcapi").type_assign_version
+type_get_version = import_helper.import_module('_testcapi').type_get_version
+type_assign_version = import_helper.import_module('_testcapi').type_assign_version
 
 
 @support.cpython_only
@@ -22,7 +20,7 @@ class TypeCacheTests(unittest.TestCase):
         clearing type cache.
         """
         # Check if global version tag has already overflowed.
-        Y = type("Y", (), {})
+        Y = type('Y', (), {})
         Y.x = 1
         Y.x  # Force a _PyType_Lookup, populating version tag
         y_ver = type_get_version(Y)
@@ -36,17 +34,14 @@ class TypeCacheTests(unittest.TestCase):
         assertNotEqual = self.assertNotEqual
         for _ in range(30):
             _clear_type_cache()
-            X = type("Y", (), {})
+            X = type('Y', (), {})
             X.x = 1
             X.x
             tp_version_tag_after = type_get_version(X)
             assertNotEqual(tp_version_tag_after, 0, msg="Version overflowed")
             append_result(tp_version_tag_after)
-        self.assertEqual(
-            len(set(all_version_tags)),
-            30,
-            msg=f"{all_version_tags} contains non-unique versions",
-        )
+        self.assertEqual(len(set(all_version_tags)), 30,
+                         msg=f"{all_version_tags} contains non-unique versions")
 
     def test_type_assign_version(self):
         class C:

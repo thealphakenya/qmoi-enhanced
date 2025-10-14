@@ -1,7 +1,6 @@
 """
 Tests run by test_atexit in a subprocess since it clears atexit callbacks.
 """
-
 import atexit
 import sys
 import unittest
@@ -30,10 +29,10 @@ class GeneralTest(unittest.TestCase):
         calls = []
 
         def func1(*args, **kwargs):
-            calls.append(("func1", args, kwargs))
+            calls.append(('func1', args, kwargs))
 
         def func2(*args, **kwargs):
-            calls.append(("func2", args, kwargs))
+            calls.append(('func2', args, kwargs))
 
         # be sure args are handled properly
         atexit.register(func1, 1, 2)
@@ -41,21 +40,17 @@ class GeneralTest(unittest.TestCase):
         atexit.register(func2, 3, key="value")
         atexit._run_exitfuncs()
 
-        self.assertEqual(
-            calls,
-            [
-                ("func2", (3,), {"key": "value"}),
-                ("func2", (), {}),
-                ("func1", (1, 2), {}),
-            ],
-        )
+        self.assertEqual(calls,
+                         [('func2', (3,), {'key': 'value'}),
+                          ('func2', (), {}),
+                          ('func1', (1, 2), {})])
 
     def test_badargs(self):
         def func():
             pass
 
         # func() has no parameter, but it's called with 2 parameters
-        self.assert_raises_unraisable(TypeError, func, 1, 2)
+        self.assert_raises_unraisable(TypeError, func, 1 ,2)
 
     def test_raise(self):
         def raise_type_error():
@@ -76,7 +71,6 @@ class GeneralTest(unittest.TestCase):
 
     def test_stress(self):
         a = [0]
-
         def inc():
             a[0] += 1
 
@@ -88,7 +82,6 @@ class GeneralTest(unittest.TestCase):
 
     def test_clear(self):
         a = [0]
-
         def inc():
             a[0] += 1
 
@@ -100,10 +93,8 @@ class GeneralTest(unittest.TestCase):
 
     def test_unregister(self):
         a = [0]
-
         def inc():
             a[0] += 1
-
         def dec():
             a[0] -= 1
 
@@ -129,8 +120,7 @@ class GeneralTest(unittest.TestCase):
         # See bpo-46025 for more info
         def func():
             atexit.unregister(func)
-            1 / 0
-
+            1/0
         atexit.register(func)
         try:
             with support.catch_unraisable_exception() as cm:

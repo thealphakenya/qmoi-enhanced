@@ -14,88 +14,81 @@ from test.support.script_helper import assert_python_ok
 from test.support.os_helper import FakePath
 
 
-def create_file(filename, data=b"foo"):
-    with open(filename, "xb", 0) as fp:
+def create_file(filename, data=b'foo'):
+    with open(filename, 'xb', 0) as fp:
         fp.write(data)
 
 
 class GenericTest:
-    common_attributes = [
-        "commonprefix",
-        "getsize",
-        "getatime",
-        "getctime",
-        "getmtime",
-        "exists",
-        "isdir",
-        "isfile",
-    ]
+    common_attributes = ['commonprefix', 'getsize', 'getatime', 'getctime',
+                         'getmtime', 'exists', 'isdir', 'isfile']
     attributes = []
 
     def test_no_argument(self):
         for attr in self.common_attributes + self.attributes:
             with self.assertRaises(TypeError):
                 getattr(self.pathmodule, attr)()
-                raise self.fail(
-                    "{}.{}() did not raise a TypeError".format(
-                        self.pathmodule.__name__, attr
-                    )
-                )
+                raise self.fail("{}.{}() did not raise a TypeError"
+                                .format(self.pathmodule.__name__, attr))
 
     def test_commonprefix(self):
         commonprefix = self.pathmodule.commonprefix
-        self.assertEqual(commonprefix([]), "")
         self.assertEqual(
-            commonprefix(["/home/swenson/spam", "/home/swen/spam"]), "/home/swen"
+            commonprefix([]),
+            ""
         )
         self.assertEqual(
-            commonprefix(["/home/swen/spam", "/home/swen/eggs"]), "/home/swen/"
+            commonprefix(["/home/swenson/spam", "/home/swen/spam"]),
+            "/home/swen"
         )
         self.assertEqual(
-            commonprefix(["/home/swen/spam", "/home/swen/spam"]), "/home/swen/spam"
+            commonprefix(["/home/swen/spam", "/home/swen/eggs"]),
+            "/home/swen/"
         )
         self.assertEqual(
-            commonprefix(["home:swenson:spam", "home:swen:spam"]), "home:swen"
+            commonprefix(["/home/swen/spam", "/home/swen/spam"]),
+            "/home/swen/spam"
         )
         self.assertEqual(
-            commonprefix([":home:swen:spam", ":home:swen:eggs"]), ":home:swen:"
+            commonprefix(["home:swenson:spam", "home:swen:spam"]),
+            "home:swen"
         )
         self.assertEqual(
-            commonprefix([":home:swen:spam", ":home:swen:spam"]), ":home:swen:spam"
-        )
-
-        self.assertEqual(
-            commonprefix([b"/home/swenson/spam", b"/home/swen/spam"]), b"/home/swen"
+            commonprefix([":home:swen:spam", ":home:swen:eggs"]),
+            ":home:swen:"
         )
         self.assertEqual(
-            commonprefix([b"/home/swen/spam", b"/home/swen/eggs"]), b"/home/swen/"
-        )
-        self.assertEqual(
-            commonprefix([b"/home/swen/spam", b"/home/swen/spam"]), b"/home/swen/spam"
-        )
-        self.assertEqual(
-            commonprefix([b"home:swenson:spam", b"home:swen:spam"]), b"home:swen"
-        )
-        self.assertEqual(
-            commonprefix([b":home:swen:spam", b":home:swen:eggs"]), b":home:swen:"
-        )
-        self.assertEqual(
-            commonprefix([b":home:swen:spam", b":home:swen:spam"]), b":home:swen:spam"
+            commonprefix([":home:swen:spam", ":home:swen:spam"]),
+            ":home:swen:spam"
         )
 
-        testlist = [
-            "",
-            "abc",
-            "Xbcd",
-            "Xb",
-            "XY",
-            "abcd",
-            "aXc",
-            "abd",
-            "ab",
-            "aX",
-            "abcX",
-        ]
+        self.assertEqual(
+            commonprefix([b"/home/swenson/spam", b"/home/swen/spam"]),
+            b"/home/swen"
+        )
+        self.assertEqual(
+            commonprefix([b"/home/swen/spam", b"/home/swen/eggs"]),
+            b"/home/swen/"
+        )
+        self.assertEqual(
+            commonprefix([b"/home/swen/spam", b"/home/swen/spam"]),
+            b"/home/swen/spam"
+        )
+        self.assertEqual(
+            commonprefix([b"home:swenson:spam", b"home:swen:spam"]),
+            b"home:swen"
+        )
+        self.assertEqual(
+            commonprefix([b":home:swen:spam", b":home:swen:eggs"]),
+            b":home:swen:"
+        )
+        self.assertEqual(
+            commonprefix([b":home:swen:spam", b":home:swen:spam"]),
+            b":home:swen:spam"
+        )
+
+        testlist = ['', 'abc', 'Xbcd', 'Xb', 'XY', 'abcd',
+                    'aXc', 'abd', 'ab', 'aX', 'abcX']
         for s1 in testlist:
             for s2 in testlist:
                 p = commonprefix([s1, s2])
@@ -103,24 +96,24 @@ class GenericTest:
                 self.assertTrue(s2.startswith(p))
                 if s1 != s2:
                     n = len(p)
-                    self.assertNotEqual(s1[n : n + 1], s2[n : n + 1])
+                    self.assertNotEqual(s1[n:n+1], s2[n:n+1])
 
     def test_getsize(self):
         filename = os_helper.TESTFN
         self.addCleanup(os_helper.unlink, filename)
 
-        create_file(filename, b"Hello")
+        create_file(filename, b'Hello')
         self.assertEqual(self.pathmodule.getsize(filename), 5)
         os.remove(filename)
 
-        create_file(filename, b"Hello World!")
+        create_file(filename, b'Hello World!')
         self.assertEqual(self.pathmodule.getsize(filename), 12)
 
     def test_filetime(self):
         filename = os_helper.TESTFN
         self.addCleanup(os_helper.unlink, filename)
 
-        create_file(filename, b"foo")
+        create_file(filename, b'foo')
 
         with open(filename, "ab", 0) as f:
             f.write(b"bar")
@@ -130,7 +123,8 @@ class GenericTest:
         self.assertEqual(data, b"foobar")
 
         self.assertLessEqual(
-            self.pathmodule.getctime(filename), self.pathmodule.getmtime(filename)
+            self.pathmodule.getctime(filename),
+            self.pathmodule.getmtime(filename)
         )
 
     def test_exists(self):
@@ -146,19 +140,19 @@ class GenericTest:
         self.assertIs(self.pathmodule.exists(filename), True)
         self.assertIs(self.pathmodule.exists(bfilename), True)
 
-        self.assertIs(self.pathmodule.exists(filename + "\udfff"), False)
-        self.assertIs(self.pathmodule.exists(bfilename + b"\xff"), False)
-        self.assertIs(self.pathmodule.exists(filename + "\x00"), False)
-        self.assertIs(self.pathmodule.exists(bfilename + b"\x00"), False)
+        self.assertIs(self.pathmodule.exists(filename + '\udfff'), False)
+        self.assertIs(self.pathmodule.exists(bfilename + b'\xff'), False)
+        self.assertIs(self.pathmodule.exists(filename + '\x00'), False)
+        self.assertIs(self.pathmodule.exists(bfilename + b'\x00'), False)
 
         if self.pathmodule is not genericpath:
             self.assertIs(self.pathmodule.lexists(filename), True)
             self.assertIs(self.pathmodule.lexists(bfilename), True)
 
-            self.assertIs(self.pathmodule.lexists(filename + "\udfff"), False)
-            self.assertIs(self.pathmodule.lexists(bfilename + b"\xff"), False)
-            self.assertIs(self.pathmodule.lexists(filename + "\x00"), False)
-            self.assertIs(self.pathmodule.lexists(bfilename + b"\x00"), False)
+            self.assertIs(self.pathmodule.lexists(filename + '\udfff'), False)
+            self.assertIs(self.pathmodule.lexists(bfilename + b'\xff'), False)
+            self.assertIs(self.pathmodule.lexists(filename + '\x00'), False)
+            self.assertIs(self.pathmodule.lexists(bfilename + b'\x00'), False)
 
     @unittest.skipUnless(hasattr(os, "pipe"), "requires os.pipe()")
     @unittest.skipIf(is_emscripten, "Emscripten pipe fds have no stat")
@@ -177,10 +171,10 @@ class GenericTest:
         self.assertIs(self.pathmodule.isdir(filename), False)
         self.assertIs(self.pathmodule.isdir(bfilename), False)
 
-        self.assertIs(self.pathmodule.isdir(filename + "\udfff"), False)
-        self.assertIs(self.pathmodule.isdir(bfilename + b"\xff"), False)
-        self.assertIs(self.pathmodule.isdir(filename + "\x00"), False)
-        self.assertIs(self.pathmodule.isdir(bfilename + b"\x00"), False)
+        self.assertIs(self.pathmodule.isdir(filename + '\udfff'), False)
+        self.assertIs(self.pathmodule.isdir(bfilename + b'\xff'), False)
+        self.assertIs(self.pathmodule.isdir(filename + '\x00'), False)
+        self.assertIs(self.pathmodule.isdir(bfilename + b'\x00'), False)
 
         try:
             create_file(filename)
@@ -202,10 +196,10 @@ class GenericTest:
         self.assertIs(self.pathmodule.isfile(filename), False)
         self.assertIs(self.pathmodule.isfile(bfilename), False)
 
-        self.assertIs(self.pathmodule.isfile(filename + "\udfff"), False)
-        self.assertIs(self.pathmodule.isfile(bfilename + b"\xff"), False)
-        self.assertIs(self.pathmodule.isfile(filename + "\x00"), False)
-        self.assertIs(self.pathmodule.isfile(bfilename + b"\x00"), False)
+        self.assertIs(self.pathmodule.isfile(filename + '\udfff'), False)
+        self.assertIs(self.pathmodule.isfile(bfilename + b'\xff'), False)
+        self.assertIs(self.pathmodule.isfile(filename + '\x00'), False)
+        self.assertIs(self.pathmodule.isfile(bfilename + b'\x00'), False)
 
         try:
             create_file(filename)
@@ -254,12 +248,12 @@ class GenericTest:
     def test_samefile_on_symlink(self):
         self._test_samefile_on_link_func(os.symlink)
 
-    @unittest.skipUnless(hasattr(os, "link"), "requires os.link")
+    @unittest.skipUnless(hasattr(os, 'link'), 'requires os.link')
     def test_samefile_on_link(self):
         try:
             self._test_samefile_on_link_func(os.link)
         except PermissionError as e:
-            self.skipTest("os.link(): %s" % e)
+            self.skipTest('os.link(): %s' % e)
 
     def test_samestat(self):
         test_fn1 = os_helper.TESTFN
@@ -285,22 +279,24 @@ class GenericTest:
 
         create_file(test_fn1)
         func(test_fn1, test_fn2)
-        self.assertTrue(self.pathmodule.samestat(os.stat(test_fn1), os.stat(test_fn2)))
+        self.assertTrue(self.pathmodule.samestat(os.stat(test_fn1),
+                                                 os.stat(test_fn2)))
         os.remove(test_fn2)
 
         create_file(test_fn2)
-        self.assertFalse(self.pathmodule.samestat(os.stat(test_fn1), os.stat(test_fn2)))
+        self.assertFalse(self.pathmodule.samestat(os.stat(test_fn1),
+                                                  os.stat(test_fn2)))
 
     @os_helper.skip_unless_symlink
     def test_samestat_on_symlink(self):
         self._test_samestat_on_link_func(os.symlink)
 
-    @unittest.skipUnless(hasattr(os, "link"), "requires os.link")
+    @unittest.skipUnless(hasattr(os, 'link'), 'requires os.link')
     def test_samestat_on_link(self):
         try:
             self._test_samestat_on_link_func(os.link)
         except PermissionError as e:
-            self.skipTest("os.link(): %s" % e)
+            self.skipTest('os.link(): %s' % e)
 
     def test_sameopenfile(self):
         filename = os_helper.TESTFN
@@ -323,59 +319,37 @@ class TestGenericTest(GenericTest, unittest.TestCase):
     def test_invalid_paths(self):
         for attr in GenericTest.common_attributes:
             # os.path.commonprefix doesn't raise ValueError
-            if attr == "commonprefix":
+            if attr == 'commonprefix':
                 continue
             func = getattr(self.pathmodule, attr)
             with self.subTest(attr=attr):
-                if attr in ("exists", "isdir", "isfile"):
-                    func("/tmp\udfffabcds")
-                    func(b"/tmp\xffabcds")
-                    func("/tmp\x00abcds")
-                    func(b"/tmp\x00abcds")
+                if attr in ('exists', 'isdir', 'isfile'):
+                    func('/tmp\udfffabcds')
+                    func(b'/tmp\xffabcds')
+                    func('/tmp\x00abcds')
+                    func(b'/tmp\x00abcds')
                 else:
                     with self.assertRaises((OSError, UnicodeEncodeError)):
-                        func("/tmp\udfffabcds")
+                        func('/tmp\udfffabcds')
                     with self.assertRaises((OSError, UnicodeDecodeError)):
-                        func(b"/tmp\xffabcds")
-                    with self.assertRaisesRegex(ValueError, "embedded null"):
-                        func("/tmp\x00abcds")
-                    with self.assertRaisesRegex(ValueError, "embedded null"):
-                        func(b"/tmp\x00abcds")
-
+                        func(b'/tmp\xffabcds')
+                    with self.assertRaisesRegex(ValueError, 'embedded null'):
+                        func('/tmp\x00abcds')
+                    with self.assertRaisesRegex(ValueError, 'embedded null'):
+                        func(b'/tmp\x00abcds')
 
 # Following TestCase is not supposed to be run from test_genericpath.
 # It is inherited by other test modules (ntpath, posixpath).
 
-
 class CommonTest(GenericTest):
     common_attributes = GenericTest.common_attributes + [
         # Properties
-        "curdir",
-        "pardir",
-        "extsep",
-        "sep",
-        "pathsep",
-        "defpath",
-        "altsep",
-        "devnull",
+        'curdir', 'pardir', 'extsep', 'sep',
+        'pathsep', 'defpath', 'altsep', 'devnull',
         # Methods
-        "normcase",
-        "splitdrive",
-        "expandvars",
-        "normpath",
-        "abspath",
-        "join",
-        "split",
-        "splitext",
-        "isabs",
-        "basename",
-        "dirname",
-        "lexists",
-        "islink",
-        "ismount",
-        "expanduser",
-        "normpath",
-        "realpath",
+        'normcase', 'splitdrive', 'expandvars', 'normpath', 'abspath',
+        'join', 'split', 'splitext', 'isabs', 'basename', 'dirname',
+        'lexists', 'islink', 'ismount', 'expanduser', 'normpath', 'realpath',
     ]
 
     def test_normcase(self):
@@ -385,11 +359,11 @@ class CommonTest(GenericTest):
             p = normcase(p)
             self.assertEqual(p, normcase(p))
 
-        self.assertEqual(normcase(""), "")
-        self.assertEqual(normcase(b""), b"")
+        self.assertEqual(normcase(''), '')
+        self.assertEqual(normcase(b''), b'')
 
         # check that normcase raises a TypeError for invalid types
-        for path in (None, True, 0, 2.5, [], bytearray(b""), {"o", "o"}):
+        for path in (None, True, 0, 2.5, [], bytearray(b''), {'o','o'}):
             self.assertRaises(TypeError, normcase, path)
 
     def test_splitdrive(self):
@@ -434,36 +408,31 @@ class CommonTest(GenericTest):
             self.assertEqual(expandvars(b"$foo$foo"), b"barbar")
             self.assertEqual(expandvars(b"$bar$bar"), b"$bar$bar")
 
-    @unittest.skipUnless(os_helper.FS_NONASCII, "need os_helper.FS_NONASCII")
+    @unittest.skipUnless(os_helper.FS_NONASCII, 'need os_helper.FS_NONASCII')
     def test_expandvars_nonascii(self):
         expandvars = self.pathmodule.expandvars
-
         def check(value, expected):
             self.assertEqual(expandvars(value), expected)
-
         with os_helper.EnvironmentVarGuard() as env:
             env.clear()
             nonascii = os_helper.FS_NONASCII
-            env["spam"] = nonascii
-            env[nonascii] = "ham" + nonascii
+            env['spam'] = nonascii
+            env[nonascii] = 'ham' + nonascii
             check(nonascii, nonascii)
-            check("$spam bar", "%s bar" % nonascii)
-            check("${spam}bar", "%sbar" % nonascii)
-            check("${%s}bar" % nonascii, "ham%sbar" % nonascii)
-            check("$bar%s bar" % nonascii, "$bar%s bar" % nonascii)
-            check("$spam}bar", "%s}bar" % nonascii)
+            check('$spam bar', '%s bar' % nonascii)
+            check('${spam}bar', '%sbar' % nonascii)
+            check('${%s}bar' % nonascii, 'ham%sbar' % nonascii)
+            check('$bar%s bar' % nonascii, '$bar%s bar' % nonascii)
+            check('$spam}bar', '%s}bar' % nonascii)
 
             check(os.fsencode(nonascii), os.fsencode(nonascii))
-            check(b"$spam bar", os.fsencode("%s bar" % nonascii))
-            check(b"${spam}bar", os.fsencode("%sbar" % nonascii))
-            check(
-                os.fsencode("${%s}bar" % nonascii), os.fsencode("ham%sbar" % nonascii)
-            )
-            check(
-                os.fsencode("$bar%s bar" % nonascii),
-                os.fsencode("$bar%s bar" % nonascii),
-            )
-            check(b"$spam}bar", os.fsencode("%s}bar" % nonascii))
+            check(b'$spam bar', os.fsencode('%s bar' % nonascii))
+            check(b'${spam}bar', os.fsencode('%sbar' % nonascii))
+            check(os.fsencode('${%s}bar' % nonascii),
+                  os.fsencode('ham%sbar' % nonascii))
+            check(os.fsencode('$bar%s bar' % nonascii),
+                  os.fsencode('$bar%s bar' % nonascii))
+            check(b'$spam}bar', os.fsencode('%s}bar' % nonascii))
 
     def test_abspath(self):
         self.assertIn("foo", self.pathmodule.abspath("foo"))
@@ -472,12 +441,12 @@ class CommonTest(GenericTest):
             self.assertIn(b"foo", self.pathmodule.abspath(b"foo"))
 
         # avoid UnicodeDecodeError on Windows
-        undecodable_path = b"" if sys.platform == "win32" else b"f\xf2\xf2"
+        undecodable_path = b'' if sys.platform == 'win32' else b'f\xf2\xf2'
 
         # Abspath returns bytes when the arg is bytes
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", DeprecationWarning)
-            for path in (b"", b"foo", undecodable_path, b"/foo", b"C:\\"):
+            for path in (b'', b'foo', undecodable_path, b'/foo', b'C:\\'):
                 self.assertIsInstance(self.pathmodule.abspath(path), bytes)
 
     def test_realpath(self):
@@ -488,21 +457,21 @@ class CommonTest(GenericTest):
 
     def test_normpath_issue5827(self):
         # Make sure normpath preserves unicode
-        for path in ("", ".", "/", "\\", "///foo/.//bar//"):
+        for path in ('', '.', '/', '\\', '///foo/.//bar//'):
             self.assertIsInstance(self.pathmodule.normpath(path), str)
 
     def test_normpath_issue106242(self):
-        for path in ("\x00", "foo\x00bar", "\x00\x00", "\x00foo", "foo\x00"):
+        for path in ('\x00', 'foo\x00bar', '\x00\x00', '\x00foo', 'foo\x00'):
             self.assertEqual(self.pathmodule.normpath(path), path)
 
     def test_abspath_issue3426(self):
         # Check that abspath returns unicode when the arg is unicode
         # with both ASCII and non-ASCII cwds.
         abspath = self.pathmodule.abspath
-        for path in ("", "fuu", "f\xf9\xf9", "/fuu", "U:\\"):
+        for path in ('', 'fuu', 'f\xf9\xf9', '/fuu', 'U:\\'):
             self.assertIsInstance(abspath(path), str)
 
-        unicwd = "\xe7w\xf0"
+        unicwd = '\xe7w\xf0'
         try:
             os.fsencode(unicwd)
         except (AttributeError, UnicodeEncodeError):
@@ -510,18 +479,16 @@ class CommonTest(GenericTest):
             pass
         else:
             with os_helper.temp_cwd(unicwd):
-                for path in ("", "fuu", "f\xf9\xf9", "/fuu", "U:\\"):
+                for path in ('', 'fuu', 'f\xf9\xf9', '/fuu', 'U:\\'):
                     self.assertIsInstance(abspath(path), str)
 
     def test_nonascii_abspath(self):
-        if (
-            os_helper.TESTFN_UNDECODABLE
-            # macOS and Emscripten deny the creation of a directory with an
-            # invalid UTF-8 name. Windows allows creating a directory with an
-            # arbitrary bytes name, but fails to enter this directory
-            # (when the bytes name is used).
-            and sys.platform not in ("win32", "darwin", "emscripten", "wasi")
-        ):
+        if (os_helper.TESTFN_UNDECODABLE
+        # macOS and Emscripten deny the creation of a directory with an
+        # invalid UTF-8 name. Windows allows creating a directory with an
+        # arbitrary bytes name, but fails to enter this directory
+        # (when the bytes name is used).
+        and sys.platform not in ('win32', 'darwin', 'emscripten', 'wasi')):
             name = os_helper.TESTFN_UNDECODABLE
         elif os_helper.TESTFN_NONASCII:
             name = os_helper.TESTFN_NONASCII
@@ -535,43 +502,42 @@ class CommonTest(GenericTest):
 
     def test_join_errors(self):
         # Check join() raises friendly TypeErrors.
-        with warnings_helper.check_warnings(("", BytesWarning), quiet=True):
+        with warnings_helper.check_warnings(('', BytesWarning), quiet=True):
             errmsg = "Can't mix strings and bytes in path components"
             with self.assertRaisesRegex(TypeError, errmsg):
-                self.pathmodule.join(b"bytes", "str")
+                self.pathmodule.join(b'bytes', 'str')
             with self.assertRaisesRegex(TypeError, errmsg):
-                self.pathmodule.join("str", b"bytes")
+                self.pathmodule.join('str', b'bytes')
             # regression, see #15377
-            with self.assertRaisesRegex(TypeError, "int"):
-                self.pathmodule.join(42, "str")
-            with self.assertRaisesRegex(TypeError, "int"):
-                self.pathmodule.join("str", 42)
-            with self.assertRaisesRegex(TypeError, "int"):
+            with self.assertRaisesRegex(TypeError, 'int'):
+                self.pathmodule.join(42, 'str')
+            with self.assertRaisesRegex(TypeError, 'int'):
+                self.pathmodule.join('str', 42)
+            with self.assertRaisesRegex(TypeError, 'int'):
                 self.pathmodule.join(42)
-            with self.assertRaisesRegex(TypeError, "list"):
+            with self.assertRaisesRegex(TypeError, 'list'):
                 self.pathmodule.join([])
-            with self.assertRaisesRegex(TypeError, "bytearray"):
-                self.pathmodule.join(bytearray(b"foo"), bytearray(b"bar"))
+            with self.assertRaisesRegex(TypeError, 'bytearray'):
+                self.pathmodule.join(bytearray(b'foo'), bytearray(b'bar'))
 
     def test_relpath_errors(self):
         # Check relpath() raises friendly TypeErrors.
         with warnings_helper.check_warnings(
-            ("", (BytesWarning, DeprecationWarning)), quiet=True
-        ):
+                ('', (BytesWarning, DeprecationWarning)), quiet=True):
             errmsg = "Can't mix strings and bytes in path components"
             with self.assertRaisesRegex(TypeError, errmsg):
-                self.pathmodule.relpath(b"bytes", "str")
+                self.pathmodule.relpath(b'bytes', 'str')
             with self.assertRaisesRegex(TypeError, errmsg):
-                self.pathmodule.relpath("str", b"bytes")
-            with self.assertRaisesRegex(TypeError, "int"):
-                self.pathmodule.relpath(42, "str")
-            with self.assertRaisesRegex(TypeError, "int"):
-                self.pathmodule.relpath("str", 42)
-            with self.assertRaisesRegex(TypeError, "bytearray"):
-                self.pathmodule.relpath(bytearray(b"foo"), bytearray(b"bar"))
+                self.pathmodule.relpath('str', b'bytes')
+            with self.assertRaisesRegex(TypeError, 'int'):
+                self.pathmodule.relpath(42, 'str')
+            with self.assertRaisesRegex(TypeError, 'int'):
+                self.pathmodule.relpath('str', 42)
+            with self.assertRaisesRegex(TypeError, 'bytearray'):
+                self.pathmodule.relpath(bytearray(b'foo'), bytearray(b'bar'))
 
     def test_import(self):
-        assert_python_ok("-S", "-c", "import " + self.pathmodule.__name__)
+        assert_python_ok('-S', '-c', 'import ' + self.pathmodule.__name__)
 
 
 class PathLikeTests(unittest.TestCase):
@@ -595,9 +561,8 @@ class PathLikeTests(unittest.TestCase):
         self.assertPathEqual(os.path.isdir)
 
     def test_path_commonprefix(self):
-        self.assertEqual(
-            os.path.commonprefix([self.file_path, self.file_name]), self.file_name
-        )
+        self.assertEqual(os.path.commonprefix([self.file_path, self.file_name]),
+                         self.file_name)
 
     def test_path_getsize(self):
         self.assertPathEqual(os.path.getsize)

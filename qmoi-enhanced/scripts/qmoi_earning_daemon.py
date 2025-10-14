@@ -2,11 +2,9 @@ import time
 import threading
 from qmoi_earning_enhanced import QmoiEarning, MASTER_EMAIL, MASTER_PHONE
 
-
 # Simulate master authorization (in production, check real credentials)
 def is_master():
     return True
-
 
 def earning_loop(q: QmoiEarning):
     while True:
@@ -18,7 +16,6 @@ def earning_loop(q: QmoiEarning):
                 q.deposit("Airtel Money", 100, by_master=True)
         q.show_audit_log()
         print("---")
-
 
 def main():
     q = QmoiEarning()
@@ -33,6 +30,5 @@ def main():
     except KeyboardInterrupt:
         print("QMOI Earning Daemon stopped.")
 
-
 if __name__ == "__main__":
-    main()
+    main() 

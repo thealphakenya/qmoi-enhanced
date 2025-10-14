@@ -18,7 +18,6 @@ import openai
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 
-
 @dataclass
 class AutomationTask:
     id: str
@@ -30,7 +29,6 @@ class AutomationTask:
     updated_at: str
     result: Optional[Dict[str, Any]] = None
 
-
 @dataclass
 class SystemState:
     resources: Dict[str, float]
@@ -39,9 +37,8 @@ class SystemState:
     tasks: List[Dict[str, Any]]
     timestamp: str
 
-
 class AIAutomation:
-    def __init__(self, config_path: str = "config/ai_automation_config.json"):
+    def __init__(self, config_path: str = 'config/ai_automation_config.json'):
         self.logger = logging.getLogger(__name__)
         self.setup_logging()
         self.load_config(config_path)
@@ -49,22 +46,22 @@ class AIAutomation:
         self.automation_thread = None
         self.tasks: List[AutomationTask] = []
         self.system_state_history: List[SystemState] = []
-        self.max_history_size = self.config.get("max_history_size", 1000)
+        self.max_history_size = self.config.get('max_history_size', 1000)
         self.setup_ai_models()
         self.setup_automation_storage()
 
     def setup_logging(self):
         """Setup automation logging configuration"""
-        log_dir = Path("logs")
+        log_dir = Path('logs')
         log_dir.mkdir(exist_ok=True)
-
+        
         logging.basicConfig(
             level=logging.INFO,
-            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
             handlers=[
-                logging.FileHandler("logs/ai_automation.log"),
-                logging.StreamHandler(),
-            ],
+                logging.FileHandler('logs/ai_automation.log'),
+                logging.StreamHandler()
+            ]
         )
 
     def load_config(self, config_path: str):
@@ -73,23 +70,21 @@ class AIAutomation:
             with open(config_path) as f:
                 self.config = json.load(f)
         except FileNotFoundError:
-            self.logger.warning(
-                f"AI automation config not found at {config_path}, using defaults"
-            )
+            self.logger.warning(f"AI automation config not found at {config_path}, using defaults")
             self.config = {
-                "automation_interval": 60,
-                "ai_models": {
-                    "llm": "gpt-4",
-                    "classifier": "random_forest",
-                    "optimizer": "gradient_boosting",
+                'automation_interval': 60,
+                'ai_models': {
+                    'llm': 'gpt-4',
+                    'classifier': 'random_forest',
+                    'optimizer': 'gradient_boosting'
                 },
-                "thresholds": {
-                    "resource_optimization": 80,
-                    "error_prevention": 0.1,
-                    "performance_improvement": 0.2,
+                'thresholds': {
+                    'resource_optimization': 80,
+                    'error_prevention': 0.1,
+                    'performance_improvement': 0.2
                 },
-                "max_concurrent_tasks": 5,
-                "task_timeout": 300,
+                'max_concurrent_tasks': 5,
+                'task_timeout': 300
             }
 
     def setup_ai_models(self):
@@ -101,21 +96,23 @@ class AIAutomation:
 
             # Setup classifier
             self.classifier = RandomForestClassifier(
-                n_estimators=100, max_depth=10, random_state=42
+                n_estimators=100,
+                max_depth=10,
+                random_state=42
             )
 
             # Setup scaler
             self.scaler = StandardScaler()
 
             # Setup OpenAI
-            openai.api_key = self.config.get("openai_api_key")
+            openai.api_key = self.config.get('openai_api_key')
 
         except Exception as e:
             self.logger.error(f"Error setting up AI models: {str(e)}")
 
     def setup_automation_storage(self):
         """Setup automation storage directory"""
-        storage_dir = Path("data/automation")
+        storage_dir = Path('data/automation')
         storage_dir.mkdir(parents=True, exist_ok=True)
 
     def start(self):
@@ -159,7 +156,7 @@ class AIAutomation:
                 # Cleanup old data
                 self._cleanup_old_data()
 
-                time.sleep(self.config.get("automation_interval", 60))
+                time.sleep(self.config.get('automation_interval', 60))
 
             except Exception as e:
                 self.logger.error(f"Error in automation loop: {str(e)}")
@@ -169,19 +166,19 @@ class AIAutomation:
         try:
             return SystemState(
                 resources={
-                    "cpu": psutil.cpu_percent(),
-                    "memory": psutil.virtual_memory().percent,
-                    "disk": psutil.disk_usage("/").percent,
-                    "network": self._get_network_usage(),
+                    'cpu': psutil.cpu_percent(),
+                    'memory': psutil.virtual_memory().percent,
+                    'disk': psutil.disk_usage('/').percent,
+                    'network': self._get_network_usage()
                 },
                 performance={
-                    "response_time": self._measure_response_time(),
-                    "throughput": self._measure_throughput(),
-                    "error_rate": self._calculate_error_rate(),
+                    'response_time': self._measure_response_time(),
+                    'throughput': self._measure_throughput(),
+                    'error_rate': self._calculate_error_rate()
                 },
                 errors=self._get_recent_errors(),
                 tasks=self._get_active_tasks(),
-                timestamp=datetime.now().isoformat(),
+                timestamp=datetime.now().isoformat()
             )
         except Exception as e:
             self.logger.error(f"Error collecting system state: {str(e)}")
@@ -190,7 +187,7 @@ class AIAutomation:
                 performance={},
                 errors=[],
                 tasks=[],
-                timestamp=datetime.now().isoformat(),
+                timestamp=datetime.now().isoformat()
             )
 
     def _analyze_system_state(self, state: SystemState) -> Dict[str, Any]:
@@ -208,37 +205,35 @@ class AIAutomation:
             # Analyze performance trends
             trends = self._analyze_trends()
 
-            return {"issues": issues, "optimizations": optimizations, "trends": trends}
+            return {
+                'issues': issues,
+                'optimizations': optimizations,
+                'trends': trends
+            }
         except Exception as e:
             self.logger.error(f"Error analyzing system state: {str(e)}")
-            return {"issues": [], "optimizations": [], "trends": {}}
+            return {
+                'issues': [],
+                'optimizations': [],
+                'trends': {}
+            }
 
-    def _generate_automation_tasks(
-        self, analysis: Dict[str, Any]
-    ) -> List[AutomationTask]:
+    def _generate_automation_tasks(self, analysis: Dict[str, Any]) -> List[AutomationTask]:
         """Generate automation tasks based on analysis"""
         try:
             tasks = []
 
             # Generate resource optimization tasks
-            if analysis["issues"].get("resource_issues"):
-                tasks.extend(
-                    self._generate_resource_tasks(analysis["issues"]["resource_issues"])
-                )
+            if analysis['issues'].get('resource_issues'):
+                tasks.extend(self._generate_resource_tasks(analysis['issues']['resource_issues']))
 
             # Generate performance optimization tasks
-            if analysis["issues"].get("performance_issues"):
-                tasks.extend(
-                    self._generate_performance_tasks(
-                        analysis["issues"]["performance_issues"]
-                    )
-                )
+            if analysis['issues'].get('performance_issues'):
+                tasks.extend(self._generate_performance_tasks(analysis['issues']['performance_issues']))
 
             # Generate error prevention tasks
-            if analysis["issues"].get("error_issues"):
-                tasks.extend(
-                    self._generate_error_tasks(analysis["issues"]["error_issues"])
-                )
+            if analysis['issues'].get('error_issues'):
+                tasks.extend(self._generate_error_tasks(analysis['issues']['error_issues']))
 
             return tasks
         except Exception as e:
@@ -249,14 +244,14 @@ class AIAutomation:
         """Execute automation tasks"""
         try:
             for task in tasks:
-                if len(self.tasks) >= self.config.get("max_concurrent_tasks", 5):
+                if len(self.tasks) >= self.config.get('max_concurrent_tasks', 5):
                     break
 
-                if task.type == "resource_optimization":
+                if task.type == 'resource_optimization':
                     self._execute_resource_task(task)
-                elif task.type == "performance_optimization":
+                elif task.type == 'performance_optimization':
                     self._execute_performance_task(task)
-                elif task.type == "error_prevention":
+                elif task.type == 'error_prevention':
                     self._execute_error_task(task)
 
                 self.tasks.append(task)
@@ -268,15 +263,13 @@ class AIAutomation:
         """Update status of running tasks"""
         try:
             for task in self.tasks[:]:
-                if task.status == "completed":
+                if task.status == 'completed':
                     self.tasks.remove(task)
-                elif task.status == "failed":
+                elif task.status == 'failed':
                     self._handle_failed_task(task)
                     self.tasks.remove(task)
-                elif time.time() - datetime.fromisoformat(
-                    task.created_at
-                ).timestamp() > self.config.get("task_timeout", 300):
-                    task.status = "timeout"
+                elif time.time() - datetime.fromisoformat(task.created_at).timestamp() > self.config.get('task_timeout', 300):
+                    task.status = 'timeout'
                     self.tasks.remove(task)
 
         except Exception as e:
@@ -286,25 +279,21 @@ class AIAutomation:
         """Prepare features for AI analysis"""
         try:
             features = []
-
+            
             # Resource features
-            features.extend(
-                [
-                    state.resources["cpu"],
-                    state.resources["memory"],
-                    state.resources["disk"],
-                    state.resources["network"],
-                ]
-            )
+            features.extend([
+                state.resources['cpu'],
+                state.resources['memory'],
+                state.resources['disk'],
+                state.resources['network']
+            ])
 
             # Performance features
-            features.extend(
-                [
-                    state.performance["response_time"],
-                    state.performance["throughput"],
-                    state.performance["error_rate"],
-                ]
-            )
+            features.extend([
+                state.performance['response_time'],
+                state.performance['throughput'],
+                state.performance['error_rate']
+            ])
 
             # Error features
             features.append(len(state.errors))
@@ -328,39 +317,34 @@ class AIAutomation:
             predictions = self.classifier.predict_proba(scaled_features)
 
             return {
-                "resource_issues": predictions[0][0]
-                > self.config["thresholds"]["resource_optimization"],
-                "performance_issues": predictions[0][1]
-                > self.config["thresholds"]["performance_improvement"],
-                "error_issues": predictions[0][2]
-                > self.config["thresholds"]["error_prevention"],
+                'resource_issues': predictions[0][0] > self.config['thresholds']['resource_optimization'],
+                'performance_issues': predictions[0][1] > self.config['thresholds']['performance_improvement'],
+                'error_issues': predictions[0][2] > self.config['thresholds']['error_prevention']
             }
 
         except Exception as e:
             self.logger.error(f"Error predicting issues: {str(e)}")
             return {
-                "resource_issues": False,
-                "performance_issues": False,
-                "error_issues": False,
+                'resource_issues': False,
+                'performance_issues': False,
+                'error_issues': False
             }
 
-    def _generate_optimizations(
-        self, state: SystemState, issues: Dict[str, bool]
-    ) -> List[Dict[str, Any]]:
+    def _generate_optimizations(self, state: SystemState, issues: Dict[str, bool]) -> List[Dict[str, Any]]:
         """Generate optimization suggestions"""
         try:
             optimizations = []
 
             # Generate resource optimizations
-            if issues["resource_issues"]:
+            if issues['resource_issues']:
                 optimizations.extend(self._generate_resource_optimizations(state))
 
             # Generate performance optimizations
-            if issues["performance_issues"]:
+            if issues['performance_issues']:
                 optimizations.extend(self._generate_performance_optimizations(state))
 
             # Generate error prevention optimizations
-            if issues["error_issues"]:
+            if issues['error_issues']:
                 optimizations.extend(self._generate_error_optimizations(state))
 
             return optimizations
@@ -377,9 +361,9 @@ class AIAutomation:
 
             recent_states = self.system_state_history[-10:]
             trends = {
-                "resources": self._analyze_resource_trends(recent_states),
-                "performance": self._analyze_performance_trends(recent_states),
-                "errors": self._analyze_error_trends(recent_states),
+                'resources': self._analyze_resource_trends(recent_states),
+                'performance': self._analyze_performance_trends(recent_states),
+                'errors': self._analyze_error_trends(recent_states)
             }
 
             return trends
@@ -393,22 +377,18 @@ class AIAutomation:
         try:
             tasks = []
             if issues:
-                tasks.append(
-                    AutomationTask(
-                        id=f"resource-{int(time.time())}",
-                        type="resource_optimization",
-                        priority=1,
-                        status="pending",
-                        parameters={
-                            "target": "all",
-                            "threshold": self.config["thresholds"][
-                                "resource_optimization"
-                            ],
-                        },
-                        created_at=datetime.now().isoformat(),
-                        updated_at=datetime.now().isoformat(),
-                    )
-                )
+                tasks.append(AutomationTask(
+                    id=f"resource-{int(time.time())}",
+                    type='resource_optimization',
+                    priority=1,
+                    status='pending',
+                    parameters={
+                        'target': 'all',
+                        'threshold': self.config['thresholds']['resource_optimization']
+                    },
+                    created_at=datetime.now().isoformat(),
+                    updated_at=datetime.now().isoformat()
+                ))
             return tasks
 
         except Exception as e:
@@ -420,22 +400,18 @@ class AIAutomation:
         try:
             tasks = []
             if issues:
-                tasks.append(
-                    AutomationTask(
-                        id=f"performance-{int(time.time())}",
-                        type="performance_optimization",
-                        priority=2,
-                        status="pending",
-                        parameters={
-                            "target": "all",
-                            "threshold": self.config["thresholds"][
-                                "performance_improvement"
-                            ],
-                        },
-                        created_at=datetime.now().isoformat(),
-                        updated_at=datetime.now().isoformat(),
-                    )
-                )
+                tasks.append(AutomationTask(
+                    id=f"performance-{int(time.time())}",
+                    type='performance_optimization',
+                    priority=2,
+                    status='pending',
+                    parameters={
+                        'target': 'all',
+                        'threshold': self.config['thresholds']['performance_improvement']
+                    },
+                    created_at=datetime.now().isoformat(),
+                    updated_at=datetime.now().isoformat()
+                ))
             return tasks
 
         except Exception as e:
@@ -447,20 +423,18 @@ class AIAutomation:
         try:
             tasks = []
             if issues:
-                tasks.append(
-                    AutomationTask(
-                        id=f"error-{int(time.time())}",
-                        type="error_prevention",
-                        priority=3,
-                        status="pending",
-                        parameters={
-                            "target": "all",
-                            "threshold": self.config["thresholds"]["error_prevention"],
-                        },
-                        created_at=datetime.now().isoformat(),
-                        updated_at=datetime.now().isoformat(),
-                    )
-                )
+                tasks.append(AutomationTask(
+                    id=f"error-{int(time.time())}",
+                    type='error_prevention',
+                    priority=3,
+                    status='pending',
+                    parameters={
+                        'target': 'all',
+                        'threshold': self.config['thresholds']['error_prevention']
+                    },
+                    created_at=datetime.now().isoformat(),
+                    updated_at=datetime.now().isoformat()
+                ))
             return tasks
 
         except Exception as e:
@@ -471,59 +445,73 @@ class AIAutomation:
         """Execute resource optimization task"""
         try:
             # Implement resource optimization logic
-            task.status = "completed"
+            task.status = 'completed'
             task.result = {
-                "success": True,
-                "improvements": {"cpu": 10.5, "memory": 15.2, "disk": 5.8},
+                'success': True,
+                'improvements': {
+                    'cpu': 10.5,
+                    'memory': 15.2,
+                    'disk': 5.8
+                }
             }
         except Exception as e:
             self.logger.error(f"Error executing resource task: {str(e)}")
-            task.status = "failed"
-            task.result = {"success": False, "error": str(e)}
+            task.status = 'failed'
+            task.result = {
+                'success': False,
+                'error': str(e)
+            }
 
     def _execute_performance_task(self, task: AutomationTask):
         """Execute performance optimization task"""
         try:
             # Implement performance optimization logic
-            task.status = "completed"
+            task.status = 'completed'
             task.result = {
-                "success": True,
-                "improvements": {
-                    "response_time": 20.5,
-                    "throughput": 25.3,
-                    "error_rate": -5.2,
-                },
+                'success': True,
+                'improvements': {
+                    'response_time': 20.5,
+                    'throughput': 25.3,
+                    'error_rate': -5.2
+                }
             }
         except Exception as e:
             self.logger.error(f"Error executing performance task: {str(e)}")
-            task.status = "failed"
-            task.result = {"success": False, "error": str(e)}
+            task.status = 'failed'
+            task.result = {
+                'success': False,
+                'error': str(e)
+            }
 
     def _execute_error_task(self, task: AutomationTask):
         """Execute error prevention task"""
         try:
             # Implement error prevention logic
-            task.status = "completed"
+            task.status = 'completed'
             task.result = {
-                "success": True,
-                "improvements": {"error_rate": -15.5, "recovery_time": -20.3},
+                'success': True,
+                'improvements': {
+                    'error_rate': -15.5,
+                    'recovery_time': -20.3
+                }
             }
         except Exception as e:
             self.logger.error(f"Error executing error task: {str(e)}")
-            task.status = "failed"
-            task.result = {"success": False, "error": str(e)}
+            task.status = 'failed'
+            task.result = {
+                'success': False,
+                'error': str(e)
+            }
 
     def _handle_failed_task(self, task: AutomationTask):
         """Handle failed automation task"""
         try:
-            self.logger.error(
-                f"Task {task.id} failed: {task.result.get('error', 'Unknown error')}"
-            )
-
+            self.logger.error(f"Task {task.id} failed: {task.result.get('error', 'Unknown error')}")
+            
             # Implement retry logic
             if task.priority > 1:
                 task.priority -= 1
-                task.status = "pending"
+                task.status = 'pending'
                 self.tasks.append(task)
 
         except Exception as e:
@@ -533,9 +521,7 @@ class AIAutomation:
         """Clean up old system state history"""
         try:
             if len(self.system_state_history) > self.max_history_size:
-                self.system_state_history = self.system_state_history[
-                    -self.max_history_size :
-                ]
+                self.system_state_history = self.system_state_history[-self.max_history_size:]
         except Exception as e:
             self.logger.error(f"Error cleaning up old data: {str(e)}")
 
@@ -590,19 +576,24 @@ class AIAutomation:
     def _analyze_resource_trends(self, states: List[SystemState]) -> Dict[str, Any]:
         """Analyze resource usage trends"""
         try:
-            trends = {"cpu": [], "memory": [], "disk": [], "network": []}
+            trends = {
+                'cpu': [],
+                'memory': [],
+                'disk': [],
+                'network': []
+            }
 
             for state in states:
-                trends["cpu"].append(state.resources["cpu"])
-                trends["memory"].append(state.resources["memory"])
-                trends["disk"].append(state.resources["disk"])
-                trends["network"].append(state.resources["network"])
+                trends['cpu'].append(state.resources['cpu'])
+                trends['memory'].append(state.resources['memory'])
+                trends['disk'].append(state.resources['disk'])
+                trends['network'].append(state.resources['network'])
 
             return {
-                "cpu": np.mean(trends["cpu"]),
-                "memory": np.mean(trends["memory"]),
-                "disk": np.mean(trends["disk"]),
-                "network": np.mean(trends["network"]),
+                'cpu': np.mean(trends['cpu']),
+                'memory': np.mean(trends['memory']),
+                'disk': np.mean(trends['disk']),
+                'network': np.mean(trends['network'])
             }
 
         except Exception as e:
@@ -612,17 +603,21 @@ class AIAutomation:
     def _analyze_performance_trends(self, states: List[SystemState]) -> Dict[str, Any]:
         """Analyze performance trends"""
         try:
-            trends = {"response_time": [], "throughput": [], "error_rate": []}
+            trends = {
+                'response_time': [],
+                'throughput': [],
+                'error_rate': []
+            }
 
             for state in states:
-                trends["response_time"].append(state.performance["response_time"])
-                trends["throughput"].append(state.performance["throughput"])
-                trends["error_rate"].append(state.performance["error_rate"])
+                trends['response_time'].append(state.performance['response_time'])
+                trends['throughput'].append(state.performance['throughput'])
+                trends['error_rate'].append(state.performance['error_rate'])
 
             return {
-                "response_time": np.mean(trends["response_time"]),
-                "throughput": np.mean(trends["throughput"]),
-                "error_rate": np.mean(trends["error_rate"]),
+                'response_time': np.mean(trends['response_time']),
+                'throughput': np.mean(trends['throughput']),
+                'error_rate': np.mean(trends['error_rate'])
             }
 
         except Exception as e:
@@ -634,14 +629,10 @@ class AIAutomation:
         try:
             error_counts = [len(state.errors) for state in states]
             return {
-                "count": np.mean(error_counts),
-                "trend": (
-                    "increasing"
-                    if np.mean(error_counts[-3:]) > np.mean(error_counts[:-3])
-                    else "decreasing"
-                ),
+                'count': np.mean(error_counts),
+                'trend': 'increasing' if np.mean(error_counts[-3:]) > np.mean(error_counts[:-3]) else 'decreasing'
             }
 
         except Exception as e:
             self.logger.error(f"Error analyzing error trends: {str(e)}")
-            return {}
+            return {} 

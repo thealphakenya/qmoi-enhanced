@@ -34,7 +34,6 @@ class defaultdict(dict):
             if key not in self:
                 self[key] = other[key]
 
-
 test_1 = """
 
 Here's the new type at work:
@@ -102,9 +101,8 @@ just like classic classes:
     >>>
 """
 
-
 class defaultdict2(dict):
-    __slots__ = ["default"]
+    __slots__ = ['default']
 
     def __init__(self, default=None):
         dict.__init__(self)
@@ -125,7 +123,6 @@ class defaultdict2(dict):
         for key in other:
             if key not in self:
                 self[key] = other[key]
-
 
 test_2 = """
 
@@ -417,21 +414,17 @@ called C.save()
 called C.save()
 """
 
-
 class A(object):
     def m(self):
         return "A"
-
 
 class B(A):
     def m(self):
         return "B" + super(B, self).m()
 
-
 class C(A):
     def m(self):
         return "C" + super(C, self).m()
-
 
 class D(C, B):
     def m(self):
@@ -471,17 +464,14 @@ called A.foo()
 called A.foo()
 """
 
-__test__ = {
-    "tut1": test_1,
-    "tut2": test_2,
-    "tut3": test_3,
-    "tut4": test_4,
-    "tut5": test_5,
-    "tut6": test_6,
-    "tut7": test_7,
-    "tut8": test_8,
-}
-
+__test__ = {"tut1": test_1,
+            "tut2": test_2,
+            "tut3": test_3,
+            "tut4": test_4,
+            "tut5": test_5,
+            "tut6": test_6,
+            "tut7": test_7,
+            "tut8": test_8}
 
 def load_tests(loader, tests, pattern):
     tests.addTest(doctest.DocTestSuite())

@@ -1,21 +1,20 @@
-"""Implementation of JSONDecoder"""
-
+"""Implementation of JSONDecoder
+"""
 import re
 
 from json import scanner
-
 try:
     from _json import scanstring as c_scanstring
 except ImportError:
     c_scanstring = None
 
-__all__ = ["JSONDecoder", "JSONDecodeError"]
+__all__ = ['JSONDecoder', 'JSONDecodeError']
 
 FLAGS = re.VERBOSE | re.MULTILINE | re.DOTALL
 
-NaN = float("nan")
-PosInf = float("inf")
-NegInf = float("-inf")
+NaN = float('nan')
+PosInf = float('inf')
+NegInf = float('-inf')
 
 
 class JSONDecodeError(ValueError):
@@ -28,12 +27,11 @@ class JSONDecodeError(ValueError):
     colno: The column corresponding to pos
 
     """
-
     # Note that this exception is used from _json
     def __init__(self, msg, doc, pos):
-        lineno = doc.count("\n", 0, pos) + 1
-        colno = pos - doc.rfind("\n", 0, pos)
-        errmsg = "%s: line %d column %d (char %d)" % (msg, lineno, colno, pos)
+        lineno = doc.count('\n', 0, pos) + 1
+        colno = pos - doc.rfind('\n', 0, pos)
+        errmsg = '%s: line %d column %d (char %d)' % (msg, lineno, colno, pos)
         ValueError.__init__(self, errmsg)
         self.msg = msg
         self.doc = doc
@@ -46,28 +44,21 @@ class JSONDecodeError(ValueError):
 
 
 _CONSTANTS = {
-    "-Infinity": NegInf,
-    "Infinity": PosInf,
-    "NaN": NaN,
+    '-Infinity': NegInf,
+    'Infinity': PosInf,
+    'NaN': NaN,
 }
 
 
 STRINGCHUNK = re.compile(r'(.*?)(["\\\x00-\x1f])', FLAGS)
 BACKSLASH = {
-    '"': '"',
-    "\\": "\\",
-    "/": "/",
-    "b": "\b",
-    "f": "\f",
-    "n": "\n",
-    "r": "\r",
-    "t": "\t",
+    '"': '"', '\\': '\\', '/': '/',
+    'b': '\b', 'f': '\f', 'n': '\n', 'r': '\r', 't': '\t',
 }
 
-
 def _decode_uXXXX(s, pos):
-    esc = s[pos + 1 : pos + 5]
-    if len(esc) == 4 and esc[1] not in "xX":
+    esc = s[pos + 1:pos + 5]
+    if len(esc) == 4 and esc[1] not in 'xX':
         try:
             return int(esc, 16)
         except ValueError:
@@ -75,8 +66,8 @@ def _decode_uXXXX(s, pos):
     msg = "Invalid \\uXXXX escape"
     raise JSONDecodeError(msg, s, pos)
 
-
-def py_scanstring(s, end, strict=True, _b=BACKSLASH, _m=STRINGCHUNK.match):
+def py_scanstring(s, end, strict=True,
+        _b=BACKSLASH, _m=STRINGCHUNK.match):
     """Scan the string s for a JSON string. End is the index of the
     character in s after the quote that started the JSON string.
     Unescapes all valid JSON string escape sequences and raises ValueError
@@ -101,9 +92,9 @@ def py_scanstring(s, end, strict=True, _b=BACKSLASH, _m=STRINGCHUNK.match):
         # or a backslash denoting that an escape sequence follows
         if terminator == '"':
             break
-        elif terminator != "\\":
+        elif terminator != '\\':
             if strict:
-                # msg = "Invalid control character %r at" % (terminator,)
+                #msg = "Invalid control character %r at" % (terminator,)
                 msg = "Invalid control character {0!r} at".format(terminator)
                 raise JSONDecodeError(msg, s, end)
             else:
@@ -112,9 +103,10 @@ def py_scanstring(s, end, strict=True, _b=BACKSLASH, _m=STRINGCHUNK.match):
         try:
             esc = s[end]
         except IndexError:
-            raise JSONDecodeError("Unterminated string starting at", s, begin) from None
+            raise JSONDecodeError("Unterminated string starting at",
+                                  s, begin) from None
         # If not a unicode escape sequence, must be in the lookup table
-        if esc != "u":
+        if esc != 'u':
             try:
                 char = _b[esc]
             except KeyError:
@@ -124,33 +116,25 @@ def py_scanstring(s, end, strict=True, _b=BACKSLASH, _m=STRINGCHUNK.match):
         else:
             uni = _decode_uXXXX(s, end)
             end += 5
-            if 0xD800 <= uni <= 0xDBFF and s[end : end + 2] == "\\u":
+            if 0xd800 <= uni <= 0xdbff and s[end:end + 2] == '\\u':
                 uni2 = _decode_uXXXX(s, end + 1)
-                if 0xDC00 <= uni2 <= 0xDFFF:
-                    uni = 0x10000 + (((uni - 0xD800) << 10) | (uni2 - 0xDC00))
+                if 0xdc00 <= uni2 <= 0xdfff:
+                    uni = 0x10000 + (((uni - 0xd800) << 10) | (uni2 - 0xdc00))
                     end += 6
             char = chr(uni)
         _append(char)
-    return "".join(chunks), end
+    return ''.join(chunks), end
 
 
 # Use speedup if available
 scanstring = c_scanstring or py_scanstring
 
-WHITESPACE = re.compile(r"[ \t\n\r]*", FLAGS)
-WHITESPACE_STR = " \t\n\r"
+WHITESPACE = re.compile(r'[ \t\n\r]*', FLAGS)
+WHITESPACE_STR = ' \t\n\r'
 
 
-def JSONObject(
-    s_and_end,
-    strict,
-    scan_once,
-    object_hook,
-    object_pairs_hook,
-    memo=None,
-    _w=WHITESPACE.match,
-    _ws=WHITESPACE_STR,
-):
+def JSONObject(s_and_end, strict, scan_once, object_hook, object_pairs_hook,
+               memo=None, _w=WHITESPACE.match, _ws=WHITESPACE_STR):
     s, end = s_and_end
     pairs = []
     pairs_append = pairs.append
@@ -160,14 +144,14 @@ def JSONObject(
     memo_get = memo.setdefault
     # Use a slice to prevent IndexError from being raised, the following
     # check will raise a more specific ValueError if the string is empty
-    nextchar = s[end : end + 1]
+    nextchar = s[end:end + 1]
     # Normally we expect nextchar == '"'
     if nextchar != '"':
         if nextchar in _ws:
             end = _w(s, end).end()
-            nextchar = s[end : end + 1]
+            nextchar = s[end:end + 1]
         # Trivial empty object
-        if nextchar == "}":
+        if nextchar == '}':
             if object_pairs_hook is not None:
                 result = object_pairs_hook(pairs)
                 return result, end + 1
@@ -177,17 +161,16 @@ def JSONObject(
             return pairs, end + 1
         elif nextchar != '"':
             raise JSONDecodeError(
-                "Expecting property name enclosed in double quotes", s, end
-            )
+                "Expecting property name enclosed in double quotes", s, end)
     end += 1
     while True:
         key, end = scanstring(s, end, strict)
         key = memo_get(key, key)
         # To skip some function call overhead we optimize the fast paths where
         # the JSON key separator is ": " or just ":".
-        if s[end : end + 1] != ":":
+        if s[end:end + 1] != ':':
             end = _w(s, end).end()
-            if s[end : end + 1] != ":":
+            if s[end:end + 1] != ':':
                 raise JSONDecodeError("Expecting ':' delimiter", s, end)
         end += 1
 
@@ -210,20 +193,19 @@ def JSONObject(
                 end = _w(s, end + 1).end()
                 nextchar = s[end]
         except IndexError:
-            nextchar = ""
+            nextchar = ''
         end += 1
 
-        if nextchar == "}":
+        if nextchar == '}':
             break
-        elif nextchar != ",":
+        elif nextchar != ',':
             raise JSONDecodeError("Expecting ',' delimiter", s, end - 1)
         end = _w(s, end).end()
-        nextchar = s[end : end + 1]
+        nextchar = s[end:end + 1]
         end += 1
         if nextchar != '"':
             raise JSONDecodeError(
-                "Expecting property name enclosed in double quotes", s, end - 1
-            )
+                "Expecting property name enclosed in double quotes", s, end - 1)
     if object_pairs_hook is not None:
         result = object_pairs_hook(pairs)
         return result, end
@@ -232,16 +214,15 @@ def JSONObject(
         pairs = object_hook(pairs)
     return pairs, end
 
-
 def JSONArray(s_and_end, scan_once, _w=WHITESPACE.match, _ws=WHITESPACE_STR):
     s, end = s_and_end
     values = []
-    nextchar = s[end : end + 1]
+    nextchar = s[end:end + 1]
     if nextchar in _ws:
         end = _w(s, end + 1).end()
-        nextchar = s[end : end + 1]
+        nextchar = s[end:end + 1]
     # Look-ahead for trivial empty array
-    if nextchar == "]":
+    if nextchar == ']':
         return values, end + 1
     _append = values.append
     while True:
@@ -250,14 +231,14 @@ def JSONArray(s_and_end, scan_once, _w=WHITESPACE.match, _ws=WHITESPACE_STR):
         except StopIteration as err:
             raise JSONDecodeError("Expecting value", s, err.value) from None
         _append(value)
-        nextchar = s[end : end + 1]
+        nextchar = s[end:end + 1]
         if nextchar in _ws:
             end = _w(s, end + 1).end()
-            nextchar = s[end : end + 1]
+            nextchar = s[end:end + 1]
         end += 1
-        if nextchar == "]":
+        if nextchar == ']':
             break
-        elif nextchar != ",":
+        elif nextchar != ',':
             raise JSONDecodeError("Expecting ',' delimiter", s, end - 1)
         try:
             if s[end] in _ws:
@@ -300,16 +281,9 @@ class JSONDecoder(object):
 
     """
 
-    def __init__(
-        self,
-        *,
-        object_hook=None,
-        parse_float=None,
-        parse_int=None,
-        parse_constant=None,
-        strict=True,
-        object_pairs_hook=None
-    ):
+    def __init__(self, *, object_hook=None, parse_float=None,
+            parse_int=None, parse_constant=None, strict=True,
+            object_pairs_hook=None):
         """``object_hook``, if specified, will be called with the result
         of every JSON object decoded and its return value will be used in
         place of the given ``dict``.  This can be used to provide custom
@@ -353,6 +327,7 @@ class JSONDecoder(object):
         self.parse_string = scanstring
         self.memo = {}
         self.scan_once = scanner.make_scanner(self)
+
 
     def decode(self, s, _w=WHITESPACE.match):
         """Return the Python representation of ``s`` (a ``str`` instance

@@ -1,5 +1,4 @@
 """Test equality and order comparisons."""
-
 import unittest
 from test.support import ALWAYS_EQ
 from fractions import Fraction
@@ -11,19 +10,19 @@ class ComparisonSimpleTest(unittest.TestCase):
 
     class Empty:
         def __repr__(self):
-            return "<Empty>"
+            return '<Empty>'
 
     class Cmp:
         def __init__(self, arg):
             self.arg = arg
 
         def __repr__(self):
-            return "<Cmp %s>" % self.arg
+            return '<Cmp %s>' % self.arg
 
         def __eq__(self, other):
             return self.arg == other
 
-    set1 = [2, 2.0, 2, 2 + 0j, Cmp(2.0)]
+    set1 = [2, 2.0, 2, 2+0j, Cmp(2.0)]
     set2 = [[1], (3,), None, Empty()]
     candidates = set1 + set2
 
@@ -39,10 +38,10 @@ class ComparisonSimpleTest(unittest.TestCase):
         # Ensure default comparison compares id() of args
         L = []
         for i in range(10):
-            L.insert(len(L) // 2, self.Empty())
+            L.insert(len(L)//2, self.Empty())
         for a in L:
             for b in L:
-                self.assertEqual(a == b, a is b, "a=%r, b=%r" % (a, b))
+                self.assertEqual(a == b, a is b, 'a=%r, b=%r' % (a, b))
 
     def test_ne_defaults_to_not_eq(self):
         a = self.Cmp(1)
@@ -55,69 +54,58 @@ class ComparisonSimpleTest(unittest.TestCase):
     def test_ne_high_priority(self):
         """object.__ne__() should allow reflected __ne__() to be tried"""
         calls = []
-
         class Left:
             # Inherits object.__ne__()
             def __eq__(*args):
-                calls.append("Left.__eq__")
+                calls.append('Left.__eq__')
                 return NotImplemented
-
         class Right:
             def __eq__(*args):
-                calls.append("Right.__eq__")
+                calls.append('Right.__eq__')
                 return NotImplemented
-
             def __ne__(*args):
-                calls.append("Right.__ne__")
+                calls.append('Right.__ne__')
                 return NotImplemented
-
         Left() != Right()
-        self.assertSequenceEqual(calls, ["Left.__eq__", "Right.__ne__"])
+        self.assertSequenceEqual(calls, ['Left.__eq__', 'Right.__ne__'])
 
     def test_ne_low_priority(self):
         """object.__ne__() should not invoke reflected __eq__()"""
         calls = []
-
         class Base:
             # Inherits object.__ne__()
             def __eq__(*args):
-                calls.append("Base.__eq__")
+                calls.append('Base.__eq__')
                 return NotImplemented
-
         class Derived(Base):  # Subclassing forces higher priority
             def __eq__(*args):
-                calls.append("Derived.__eq__")
+                calls.append('Derived.__eq__')
                 return NotImplemented
-
             def __ne__(*args):
-                calls.append("Derived.__ne__")
+                calls.append('Derived.__ne__')
                 return NotImplemented
-
         Base() != Derived()
-        self.assertSequenceEqual(calls, ["Derived.__ne__", "Base.__eq__"])
+        self.assertSequenceEqual(calls, ['Derived.__ne__', 'Base.__eq__'])
 
     def test_other_delegation(self):
         """No default delegation between operations except __ne__()"""
         ops = (
-            ("__eq__", lambda a, b: a == b),
-            ("__lt__", lambda a, b: a < b),
-            ("__le__", lambda a, b: a <= b),
-            ("__gt__", lambda a, b: a > b),
-            ("__ge__", lambda a, b: a >= b),
+            ('__eq__', lambda a, b: a == b),
+            ('__lt__', lambda a, b: a < b),
+            ('__le__', lambda a, b: a <= b),
+            ('__gt__', lambda a, b: a > b),
+            ('__ge__', lambda a, b: a >= b),
         )
         for name, func in ops:
             with self.subTest(name):
-
                 def unexpected(*args):
-                    self.fail("Unexpected operator method called")
-
+                    self.fail('Unexpected operator method called')
                 class C:
                     __ne__ = unexpected
-
                 for other, _ in ops:
                     if other != name:
                         setattr(C, other, unexpected)
-                if name == "__eq__":
+                if name == '__eq__':
                     self.assertIs(func(C(), object()), False)
                 else:
                     self.assertRaises(TypeError, func, C(), object())
@@ -153,22 +141,18 @@ class ComparisonFullTest(unittest.TestCase):
     # Classes with all combinations of value-based equality comparison methods.
     class CompEq(CompBase):
         meth = ("eq",)
-
         def __eq__(self, other):
             return self.x == other.x
 
     class CompNe(CompBase):
         meth = ("ne",)
-
         def __ne__(self, other):
             return self.x != other.x
 
     class CompEqNe(CompBase):
         meth = ("eq", "ne")
-
         def __eq__(self, other):
             return self.x == other.x
-
         def __ne__(self, other):
             return self.x != other.x
 
@@ -176,22 +160,18 @@ class ComparisonFullTest(unittest.TestCase):
     # comparison methods.
     class CompLt(CompBase):
         meth = ("lt",)
-
         def __lt__(self, other):
             return self.x < other.x
 
     class CompGt(CompBase):
         meth = ("gt",)
-
         def __gt__(self, other):
             return self.x > other.x
 
     class CompLtGt(CompBase):
         meth = ("lt", "gt")
-
         def __lt__(self, other):
             return self.x < other.x
-
         def __gt__(self, other):
             return self.x > other.x
 
@@ -199,39 +179,28 @@ class ComparisonFullTest(unittest.TestCase):
     # order comparison methods
     class CompLe(CompBase):
         meth = ("le",)
-
         def __le__(self, other):
             return self.x <= other.x
 
     class CompGe(CompBase):
         meth = ("ge",)
-
         def __ge__(self, other):
             return self.x >= other.x
 
     class CompLeGe(CompBase):
         meth = ("le", "ge")
-
         def __le__(self, other):
             return self.x <= other.x
-
         def __ge__(self, other):
             return self.x >= other.x
 
     # It should be sufficient to combine the comparison methods only within
     # each group.
     all_comp_classes = (
-        CompNone,
-        CompEq,
-        CompNe,
-        CompEqNe,  # equal group
-        CompLt,
-        CompGt,
-        CompLtGt,  # less/greater-than group
-        CompLe,
-        CompGe,
-        CompLeGe,
-    )  # less/greater-or-equal group
+            CompNone,
+            CompEq, CompNe, CompEqNe,  # equal group
+            CompLt, CompGt, CompLtGt,  # less/greater-than group
+            CompLe, CompGe, CompLeGe)  # less/greater-or-equal group
 
     def create_sorted_instances(self, class_, values):
         """Create objects of type `class_` and return them in a list.
@@ -378,26 +347,22 @@ class ComparisonFullTest(unittest.TestCase):
                 instances = self.create_sorted_instances(cls, (1, 2, 1))
 
                 # Same object.
-                self.assert_total_order(
-                    instances[0], instances[0], 0, cls.meth, cls.meth
-                )
+                self.assert_total_order(instances[0], instances[0], 0,
+                                        cls.meth, cls.meth)
 
                 # Different objects, same value.
-                self.assert_total_order(
-                    instances[0], instances[2], 0, cls.meth, cls.meth
-                )
+                self.assert_total_order(instances[0], instances[2], 0,
+                                        cls.meth, cls.meth)
 
                 # Different objects, value ascending for ascending identities.
-                self.assert_total_order(
-                    instances[0], instances[1], -1, cls.meth, cls.meth
-                )
+                self.assert_total_order(instances[0], instances[1], -1,
+                                        cls.meth, cls.meth)
 
                 # different objects, value descending for ascending identities.
                 # This is the interesting case to assert that order comparison
                 # is performed based on the value and not based on the identity.
-                self.assert_total_order(
-                    instances[1], instances[2], +1, cls.meth, cls.meth
-                )
+                self.assert_total_order(instances[1], instances[2], +1,
+                                        cls.meth, cls.meth)
 
     def test_comp_classes_different(self):
         """Compare different-class instances with comparison methods."""
@@ -412,12 +377,13 @@ class ComparisonFullTest(unittest.TestCase):
                     b2 = cls_b()
                     b2.x = 2
 
-                    self.assert_total_order(a1, b1, 0, cls_a.meth, cls_b.meth)
-                    self.assert_total_order(a1, b2, -1, cls_a.meth, cls_b.meth)
+                    self.assert_total_order(
+                        a1, b1, 0, cls_a.meth, cls_b.meth)
+                    self.assert_total_order(
+                        a1, b2, -1, cls_a.meth, cls_b.meth)
 
     def test_str_subclass(self):
         """Compare instances of str and a subclass."""
-
         class StrSubclass(str):
             pass
 
@@ -427,16 +393,16 @@ class ComparisonFullTest(unittest.TestCase):
         c2 = StrSubclass("b")
         c3 = StrSubclass("b")
 
-        self.assert_total_order(s1, s1, 0)
+        self.assert_total_order(s1, s1,   0)
         self.assert_total_order(s1, s2, -1)
-        self.assert_total_order(c1, c1, 0)
+        self.assert_total_order(c1, c1,   0)
         self.assert_total_order(c1, c2, -1)
-        self.assert_total_order(c2, c3, 0)
+        self.assert_total_order(c2, c3,   0)
 
         self.assert_total_order(s1, c2, -1)
-        self.assert_total_order(s2, c3, 0)
+        self.assert_total_order(s2, c3,   0)
         self.assert_total_order(c1, s2, -1)
-        self.assert_total_order(c2, s2, 0)
+        self.assert_total_order(c2, s2,   0)
 
     def test_numbers(self):
         """Compare number types."""
@@ -457,18 +423,19 @@ class ComparisonFullTest(unittest.TestCase):
         self.assert_total_order(q1, q1, 0)
         self.assert_total_order(q1, q2, -1)
 
-        d1 = Decimal("1001.0")
-        d2 = Decimal("1001.1")
+        d1 = Decimal('1001.0')
+        d2 = Decimal('1001.1')
         self.assert_total_order(d1, d1, 0)
         self.assert_total_order(d1, d2, -1)
 
-        c1 = 1001 + 0j
-        c2 = 1001 + 1j
+        c1 = 1001+0j
+        c2 = 1001+1j
         self.assert_equality_only(c1, c1, True)
         self.assert_equality_only(c1, c2, False)
 
+
         # Mixing types.
-        for n1, n2 in ((i1, f1), (i1, q1), (i1, d1), (f1, q1), (f1, d1), (q1, d1)):
+        for n1, n2 in ((i1,f1), (i1,q1), (i1,d1), (f1,q1), (f1,d1), (q1,d1)):
             self.assert_total_order(n1, n2, 0)
         for n1 in (i1, f1, q1, d1):
             self.assert_equality_only(n1, c1, True)
@@ -496,14 +463,14 @@ class ComparisonFullTest(unittest.TestCase):
 
     def test_bytes(self):
         """Compare bytes and bytearray."""
-        bs1 = b"a1"
-        bs2 = b"b2"
+        bs1 = b'a1'
+        bs2 = b'b2'
         self.assert_total_order(bs1, bs1, 0)
         self.assert_total_order(bs1, bs2, -1)
 
-        ba1 = bytearray(b"a1")
-        ba2 = bytearray(b"b2")
-        self.assert_total_order(ba1, ba1, 0)
+        ba1 = bytearray(b'a1')
+        ba2 = bytearray(b'b2')
+        self.assert_total_order(ba1, ba1,  0)
         self.assert_total_order(ba1, ba2, -1)
 
         self.assert_total_order(bs1, ba1, 0)
@@ -520,7 +487,7 @@ class ComparisonFullTest(unittest.TestCase):
 
         f1 = frozenset(s1)
         f2 = frozenset(s2)
-        self.assert_total_order(f1, f1, 0)
+        self.assert_total_order(f1, f1,  0)
         self.assert_total_order(f1, f2, -1)
 
         self.assert_total_order(s1, f1, 0)
@@ -529,7 +496,8 @@ class ComparisonFullTest(unittest.TestCase):
         self.assert_total_order(f1, s2, -1)
 
     def test_mappings(self):
-        """Compare dict."""
+        """ Compare dict.
+        """
         d1 = {1: "a", 2: "b"}
         d2 = {2: "b", 3: "c"}
         d3 = {3: "c", 2: "b"}
@@ -538,5 +506,5 @@ class ComparisonFullTest(unittest.TestCase):
         self.assert_equality_only(d2, d3, True)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -2,7 +2,7 @@ from test.support import verbose, reap_children
 from test.support.import_helper import import_module
 
 # Skip these tests if termios or fcntl are not available
-import_module("termios")
+import_module('termios')
 # fcntl is a proxy for not being one of the wasm32 platforms even though we
 # don't use this module... a proper check for what crashes those is needed.
 import_module("fcntl")
@@ -15,7 +15,7 @@ import sys
 import select
 import signal
 import socket
-import io  # readline
+import io # readline
 import unittest
 import warnings
 
@@ -25,12 +25,9 @@ TEST_STRING_2 = b"For my pet fish, Eric.\n"
 _HAVE_WINSZ = hasattr(tty, "TIOCGWINSZ") and hasattr(tty, "TIOCSWINSZ")
 
 if verbose:
-
     def debug(msg):
         print(msg)
-
 else:
-
     def debug(msg):
         pass
 
@@ -45,7 +42,6 @@ else:
 # test suite deterministic and OS-independent, the functions _readline
 # and normalize_output can be used.
 
-
 def normalize_output(data):
     # Some operating systems do conversions on newline.  We could possibly fix
     # that by doing the appropriate termios.tcsetattr()s.  I couldn't figure out
@@ -58,20 +54,18 @@ def normalize_output(data):
     # from someone more knowledgable.
 
     # OSF/1 (Tru64) apparently turns \n into \r\r\n.
-    if data.endswith(b"\r\r\n"):
-        return data.replace(b"\r\r\n", b"\n")
+    if data.endswith(b'\r\r\n'):
+        return data.replace(b'\r\r\n', b'\n')
 
-    if data.endswith(b"\r\n"):
-        return data.replace(b"\r\n", b"\n")
+    if data.endswith(b'\r\n'):
+        return data.replace(b'\r\n', b'\n')
 
     return data
 
-
 def _readline(fd):
     """Read one line.  May block forever if no newline is read."""
-    reader = io.FileIO(fd, mode="rb", closefd=False)
+    reader = io.FileIO(fd, mode='rb', closefd=False)
     return reader.readline()
-
 
 def expectedFailureIfStdinIsTTY(fun):
     # avoid isatty()
@@ -87,9 +81,8 @@ def write_all(fd, data):
     written = os.write(fd, data)
     if written != len(data):
         # gh-73256, gh-110673: It should never happen, but check just in case
-        raise Exception(
-            f"short write: os.write({fd}, {len(data)} bytes) " f"wrote {written} bytes"
-        )
+        raise Exception(f"short write: os.write({fd}, {len(data)} bytes) "
+                        f"wrote {written} bytes")
 
 
 # Marginal testing of pty suite. Cannot do extensive 'do or fail' testing
@@ -104,7 +97,8 @@ class PtyTest(unittest.TestCase):
         if _HAVE_WINSZ:
             try:
                 self.stdin_dim = tty.tcgetwinsize(pty.STDIN_FILENO)
-                self.addCleanup(tty.tcsetwinsize, pty.STDIN_FILENO, self.stdin_dim)
+                self.addCleanup(tty.tcsetwinsize, pty.STDIN_FILENO,
+                                self.stdin_dim)
             except tty.error:
                 pass
 
@@ -136,9 +130,8 @@ class PtyTest(unittest.TestCase):
                 # Were we able to set the window size
                 # of pty.STDIN_FILENO successfully?
                 new_dim = tty.tcgetwinsize(pty.STDIN_FILENO)
-                self.assertEqual(
-                    new_dim, target_dim, "pty.STDIN_FILENO window size unchanged"
-                )
+                self.assertEqual(new_dim, target_dim,
+                                 "pty.STDIN_FILENO window size unchanged")
             except OSError:
                 warnings.warn("Failed to set pty.STDIN_FILENO window size.")
                 pass
@@ -146,7 +139,8 @@ class PtyTest(unittest.TestCase):
         try:
             debug("Calling pty.openpty()")
             try:
-                master_fd, slave_fd, slave_name = pty.openpty(mode, new_dim, True)
+                master_fd, slave_fd, slave_name = pty.openpty(mode, new_dim,
+                                                              True)
             except TypeError:
                 master_fd, slave_fd = pty.openpty()
                 slave_name = None
@@ -164,15 +158,11 @@ class PtyTest(unittest.TestCase):
         self.assertTrue(os.isatty(slave_fd), "slave_fd is not a tty")
 
         if mode:
-            self.assertEqual(
-                tty.tcgetattr(slave_fd), mode, "openpty() failed to set slave termios"
-            )
+            self.assertEqual(tty.tcgetattr(slave_fd), mode,
+                             "openpty() failed to set slave termios")
         if new_dim:
-            self.assertEqual(
-                tty.tcgetwinsize(slave_fd),
-                new_dim,
-                "openpty() failed to set slave window size",
-            )
+            self.assertEqual(tty.tcgetwinsize(slave_fd), new_dim,
+                             "openpty() failed to set slave window size")
 
         # Ensure the fd is non-blocking in case there's nothing to read.
         blocking = os.get_blocking(master_fd)
@@ -180,7 +170,7 @@ class PtyTest(unittest.TestCase):
             os.set_blocking(master_fd, False)
             try:
                 s1 = os.read(master_fd, 1024)
-                self.assertEqual(b"", s1)
+                self.assertEqual(b'', s1)
             except OSError as e:
                 if e.errno != errno.EAGAIN:
                     raise
@@ -191,13 +181,14 @@ class PtyTest(unittest.TestCase):
         debug("Writing to slave_fd")
         write_all(slave_fd, TEST_STRING_1)
         s1 = _readline(master_fd)
-        self.assertEqual(b"I wish to buy a fish license.\n", normalize_output(s1))
+        self.assertEqual(b'I wish to buy a fish license.\n',
+                         normalize_output(s1))
 
         debug("Writing chunked output")
         write_all(slave_fd, TEST_STRING_2[:5])
         write_all(slave_fd, TEST_STRING_2[5:])
         s2 = _readline(master_fd)
-        self.assertEqual(b"For my pet fish, Eric.\n", normalize_output(s2))
+        self.assertEqual(b'For my pet fish, Eric.\n', normalize_output(s2))
 
     def test_fork(self):
         debug("calling pty.fork()")
@@ -252,7 +243,8 @@ class PtyTest(unittest.TestCase):
                     break
                 if not data:
                     break
-                sys.stdout.write(str(data.replace(b"\r\n", b"\n"), encoding="ascii"))
+                sys.stdout.write(str(data.replace(b'\r\n', b'\n'),
+                                     encoding='ascii'))
 
             ##line = os.read(master_fd, 80)
             ##lines = line.replace('\r\n', '\n').split('\n')
@@ -294,14 +286,13 @@ class PtyTest(unittest.TestCase):
         debug("Reading from master_fd")
         try:
             data = os.read(master_fd, 1)
-        except OSError:  # Linux
+        except OSError: # Linux
             data = b""
 
         self.assertEqual(data, b"")
 
     def test_spawn_doesnt_hang(self):
-        pty.spawn([sys.executable, "-c", 'print("hi there")'])
-
+        pty.spawn([sys.executable, '-c', 'print("hi there")'])
 
 class SmallPtyTests(unittest.TestCase):
     """These tests don't spawn children or hang."""
@@ -363,7 +354,6 @@ class SmallPtyTests(unittest.TestCase):
     def _make_mock_fork(self, pid):
         def mock_fork():
             return (pid, 12)
-
         return mock_fork
 
     def _mock_tcsetattr(self, fileno, opt, mode):
@@ -379,16 +369,14 @@ class SmallPtyTests(unittest.TestCase):
         masters = [s.fileno() for s in socketpair]
 
         # Feed data.  Smaller than PIPEBUF.  These writes will not block.
-        write_all(masters[1], b"from master")
-        write_all(write_to_stdin_fd, b"from stdin")
+        write_all(masters[1], b'from master')
+        write_all(write_to_stdin_fd, b'from stdin')
 
         # Expect three select calls, the last one will cause IndexError
         pty.select = self._mock_select
         self.select_input.append(([mock_stdin_fd, masters[0]], [], []))
         self.select_output.append(([mock_stdin_fd, masters[0]], [], []))
-        self.select_input.append(
-            ([mock_stdin_fd, masters[0]], [mock_stdout_fd, masters[0]], [])
-        )
+        self.select_input.append(([mock_stdin_fd, masters[0]], [mock_stdout_fd, masters[0]], []))
         self.select_output.append(([], [mock_stdout_fd, masters[0]], []))
         self.select_input.append(([mock_stdin_fd, masters[0]], [], []))
 
@@ -398,8 +386,8 @@ class SmallPtyTests(unittest.TestCase):
         # Test that the right data went to the right places.
         rfds = select.select([read_from_stdout_fd, masters[1]], [], [], 0)[0]
         self.assertEqual([read_from_stdout_fd, masters[1]], rfds)
-        self.assertEqual(os.read(read_from_stdout_fd, 20), b"from master")
-        self.assertEqual(os.read(masters[1], 20), b"from stdin")
+        self.assertEqual(os.read(read_from_stdout_fd, 20), b'from master')
+        self.assertEqual(os.read(masters[1], 20), b'from stdin')
 
     def test__restore_tty_mode_normal_return(self):
         """Test that spawn resets the tty mode no when _copy returns normally."""
@@ -419,16 +407,8 @@ class SmallPtyTests(unittest.TestCase):
         pty.tcsetattr = self._mock_tcsetattr
         pty.setraw = lambda _: None
 
-        self.assertEqual(
-            pty.spawn([]),
-            status_sentinel,
-            "pty.waitpid process status not returned by pty.spawn",
-        )
-        self.assertEqual(
-            self.tcsetattr_mode_setting,
-            mode_sentinel,
-            "pty.tcsetattr not called with original mode value",
-        )
+        self.assertEqual(pty.spawn([]), status_sentinel, "pty.waitpid process status not returned by pty.spawn")
+        self.assertEqual(self.tcsetattr_mode_setting, mode_sentinel, "pty.tcsetattr not called with original mode value")
 
 
 def tearDownModule():

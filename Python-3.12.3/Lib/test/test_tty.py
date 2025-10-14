@@ -2,17 +2,17 @@ import os
 import unittest
 from test.support.import_helper import import_module
 
-termios = import_module("termios")
-tty = import_module("tty")
+termios = import_module('termios')
+tty = import_module('tty')
 
 
-@unittest.skipUnless(hasattr(os, "openpty"), "need os.openpty()")
+@unittest.skipUnless(hasattr(os, 'openpty'), "need os.openpty()")
 class TestTty(unittest.TestCase):
 
     def setUp(self):
         master_fd, self.fd = os.openpty()
         self.addCleanup(os.close, master_fd)
-        self.stream = self.enterContext(open(self.fd, "wb", buffering=0))
+        self.stream = self.enterContext(open(self.fd, 'wb', buffering=0))
         self.fd = self.stream.fileno()
         self.mode = termios.tcgetattr(self.fd)
         self.addCleanup(termios.tcsetattr, self.fd, termios.TCSANOW, self.mode)
@@ -57,16 +57,12 @@ class TestTty(unittest.TestCase):
         self.assertEqual(mode[5], self.mode[5])
         mode[tty.IFLAG] |= termios.ICRNL
         tty.cfmakecbreak(mode)
-        self.assertEqual(
-            mode[tty.IFLAG] & termios.ICRNL,
-            termios.ICRNL,
-            msg="ICRNL should not be cleared by cbreak",
-        )
+        self.assertEqual(mode[tty.IFLAG] & termios.ICRNL, termios.ICRNL,
+                         msg="ICRNL should not be cleared by cbreak")
         mode[tty.IFLAG] &= ~termios.ICRNL
         tty.cfmakecbreak(mode)
-        self.assertEqual(
-            mode[tty.IFLAG] & termios.ICRNL, 0, msg="ICRNL should not be set by cbreak"
-        )
+        self.assertEqual(mode[tty.IFLAG] & termios.ICRNL, 0,
+                         msg="ICRNL should not be set by cbreak")
 
     def test_setraw(self):
         mode0 = termios.tcgetattr(self.fd)
@@ -86,16 +82,13 @@ class TestTty(unittest.TestCase):
         mode2 = termios.tcgetattr(self.fd)
         self.check_cbreak(mode2)
         ICRNL = termios.ICRNL
-        self.assertEqual(
-            mode2[tty.IFLAG] & ICRNL,
-            mode0[tty.IFLAG] & ICRNL,
-            msg="ICRNL should not be altered by cbreak",
-        )
+        self.assertEqual(mode2[tty.IFLAG] & ICRNL, mode0[tty.IFLAG] & ICRNL,
+                         msg="ICRNL should not be altered by cbreak")
         mode3 = tty.setcbreak(self.fd, termios.TCSANOW)
         self.assertEqual(mode3, mode2)
         tty.setcbreak(self.stream)
         tty.setcbreak(fd=self.fd, when=termios.TCSANOW)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

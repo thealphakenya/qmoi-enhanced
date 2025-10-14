@@ -13,7 +13,6 @@ order_comparisons = le, lt, ge, gt
 equality_comparisons = eq, ne
 comparisons = order_comparisons + equality_comparisons
 
-
 class TestCopy(unittest.TestCase):
 
     # Attempt full line coverage of copy.py from top to bottom
@@ -33,10 +32,8 @@ class TestCopy(unittest.TestCase):
         class C(object):
             def __init__(self, foo):
                 self.foo = foo
-
             def __copy__(self):
                 return C(self.foo)
-
         x = C(42)
         y = copy.copy(x)
         self.assertEqual(y.__class__, x.__class__)
@@ -48,10 +45,8 @@ class TestCopy(unittest.TestCase):
                 obj = object.__new__(cls)
                 obj.foo = foo
                 return obj
-
         def pickle_C(obj):
             return (C, (obj.foo,))
-
         x = C(42)
         self.assertRaises(TypeError, copy.copy, x)
         copyreg.pickle(C, pickle_C, C)
@@ -65,10 +60,8 @@ class TestCopy(unittest.TestCase):
             def __reduce_ex__(self, proto):
                 c.append(1)
                 return ""
-
             def __reduce__(self):
                 self.fail("shouldn't call this")
-
         c = []
         x = C()
         y = copy.copy(x)
@@ -80,7 +73,6 @@ class TestCopy(unittest.TestCase):
             def __reduce__(self):
                 c.append(1)
                 return ""
-
         c = []
         x = C()
         y = copy.copy(x)
@@ -93,7 +85,6 @@ class TestCopy(unittest.TestCase):
                 if name.startswith("__reduce"):
                     raise AttributeError(name)
                 return object.__getattribute__(self, name)
-
         x = C()
         self.assertRaises(copy.Error, copy.copy, x)
 
@@ -102,35 +93,15 @@ class TestCopy(unittest.TestCase):
     def test_copy_atomic(self):
         class NewStyle:
             pass
-
         def f():
             pass
-
         class WithMetaclass(metaclass=abc.ABCMeta):
             pass
-
-        tests = [
-            None,
-            ...,
-            NotImplemented,
-            42,
-            2**100,
-            3.14,
-            True,
-            False,
-            1j,
-            "hello",
-            "hello\u1234",
-            f.__code__,
-            b"world",
-            bytes(range(256)),
-            range(10),
-            slice(1, 10, 2),
-            NewStyle,
-            max,
-            WithMetaclass,
-            property(),
-        ]
+        tests = [None, ..., NotImplemented,
+                 42, 2**100, 3.14, True, False, 1j,
+                 "hello", "hello\u1234", f.__code__,
+                 b"world", bytes(range(256)), range(10), slice(1, 10, 2),
+                 NewStyle, max, WithMetaclass, property()]
         for x in tests:
             self.assertIs(copy.copy(x), x)
 
@@ -179,7 +150,7 @@ class TestCopy(unittest.TestCase):
         self.assertIs(copy.copy(x), x)
 
     def test_copy_bytearray(self):
-        x = bytearray(b"abc")
+        x = bytearray(b'abc')
         y = copy.copy(x)
         self.assertEqual(y, x)
         self.assertIsNot(y, x)
@@ -192,10 +163,8 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C(42)
         self.assertEqual(copy.copy(x), x)
 
@@ -203,13 +172,10 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __copy__(self):
                 return C(self.foo)
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C(42)
         self.assertEqual(copy.copy(x), x)
 
@@ -217,13 +183,10 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __getinitargs__(self):
                 return (self.foo,)
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C(42)
         self.assertEqual(copy.copy(x), x)
 
@@ -233,13 +196,10 @@ class TestCopy(unittest.TestCase):
                 self = int.__new__(cls)
                 self.foo = foo
                 return self
-
             def __getnewargs__(self):
-                return (self.foo,)
-
+                return self.foo,
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C(42)
         y = copy.copy(x)
         self.assertIsInstance(y, C)
@@ -253,13 +213,10 @@ class TestCopy(unittest.TestCase):
                 self = int.__new__(cls)
                 self.foo = foo
                 return self
-
             def __getnewargs_ex__(self):
-                return (), {"foo": self.foo}
-
+                return (), {'foo': self.foo}
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C(foo=42)
         y = copy.copy(x)
         self.assertIsInstance(y, C)
@@ -271,13 +228,10 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __getstate__(self):
                 return {"foo": self.foo}
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C(42)
         self.assertEqual(copy.copy(x), x)
 
@@ -285,13 +239,10 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __setstate__(self, state):
                 self.foo = state["foo"]
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C(42)
         self.assertEqual(copy.copy(x), x)
 
@@ -299,16 +250,12 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __getstate__(self):
                 return self.foo
-
             def __setstate__(self, state):
                 self.foo = state
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C(42)
         self.assertEqual(copy.copy(x), x)
         # State with boolean value is false (issue #25718)
@@ -340,20 +287,16 @@ class TestCopy(unittest.TestCase):
         # type.
         class Meta(type):
             pass
-
         class C(metaclass=Meta):
             pass
-
         self.assertEqual(copy.deepcopy(C), C)
 
     def test_deepcopy_deepcopy(self):
         class C(object):
             def __init__(self, foo):
                 self.foo = foo
-
             def __deepcopy__(self, memo=None):
                 return C(self.foo)
-
         x = C(42)
         y = copy.deepcopy(x)
         self.assertEqual(y.__class__, x.__class__)
@@ -365,10 +308,8 @@ class TestCopy(unittest.TestCase):
                 obj = object.__new__(cls)
                 obj.foo = foo
                 return obj
-
         def pickle_C(obj):
             return (C, (obj.foo,))
-
         x = C(42)
         self.assertRaises(TypeError, copy.deepcopy, x)
         copyreg.pickle(C, pickle_C, C)
@@ -382,10 +323,8 @@ class TestCopy(unittest.TestCase):
             def __reduce_ex__(self, proto):
                 c.append(1)
                 return ""
-
             def __reduce__(self):
                 self.fail("shouldn't call this")
-
         c = []
         x = C()
         y = copy.deepcopy(x)
@@ -397,7 +336,6 @@ class TestCopy(unittest.TestCase):
             def __reduce__(self):
                 c.append(1)
                 return ""
-
         c = []
         x = C()
         y = copy.deepcopy(x)
@@ -410,7 +348,6 @@ class TestCopy(unittest.TestCase):
                 if name.startswith("__reduce"):
                     raise AttributeError(name)
                 return object.__getattribute__(self, name)
-
         x = C()
         self.assertRaises(copy.Error, copy.deepcopy, x)
 
@@ -419,29 +356,11 @@ class TestCopy(unittest.TestCase):
     def test_deepcopy_atomic(self):
         class NewStyle:
             pass
-
         def f():
             pass
-
-        tests = [
-            None,
-            ...,
-            NotImplemented,
-            42,
-            2**100,
-            3.14,
-            True,
-            False,
-            1j,
-            b"bytes",
-            "hello",
-            "hello\u1234",
-            f.__code__,
-            NewStyle,
-            range(10),
-            max,
-            property(),
-        ]
+        tests = [None, ..., NotImplemented, 42, 2**100, 3.14, True, False, 1j,
+                 b"bytes", "hello", "hello\u1234", f.__code__,
+                 NewStyle, range(10), max, property()]
         for x in tests:
             self.assertIs(copy.deepcopy(x), x)
 
@@ -498,14 +417,14 @@ class TestCopy(unittest.TestCase):
 
     def test_deepcopy_reflexive_dict(self):
         x = {}
-        x["foo"] = x
+        x['foo'] = x
         y = copy.deepcopy(x)
         for op in order_comparisons:
             self.assertRaises(TypeError, op, y, x)
         for op in equality_comparisons:
             self.assertRaises(RecursionError, op, y, x)
         self.assertIsNot(y, x)
-        self.assertIs(y["foo"], y)
+        self.assertIs(y['foo'], y)
         self.assertEqual(len(y), 1)
 
     def test_deepcopy_keepalive(self):
@@ -533,10 +452,8 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C([42])
         y = copy.deepcopy(x)
         self.assertEqual(y, x)
@@ -546,13 +463,10 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __deepcopy__(self, memo):
                 return C(copy.deepcopy(self.foo, memo))
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C([42])
         y = copy.deepcopy(x)
         self.assertEqual(y, x)
@@ -563,13 +477,10 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __getinitargs__(self):
                 return (self.foo,)
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C([42])
         y = copy.deepcopy(x)
         self.assertEqual(y, x)
@@ -582,13 +493,10 @@ class TestCopy(unittest.TestCase):
                 self = int.__new__(cls)
                 self.foo = foo
                 return self
-
             def __getnewargs__(self):
-                return (self.foo,)
-
+                return self.foo,
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C([42])
         y = copy.deepcopy(x)
         self.assertIsInstance(y, C)
@@ -603,13 +511,10 @@ class TestCopy(unittest.TestCase):
                 self = int.__new__(cls)
                 self.foo = foo
                 return self
-
             def __getnewargs_ex__(self):
-                return (), {"foo": self.foo}
-
+                return (), {'foo': self.foo}
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C(foo=[42])
         y = copy.deepcopy(x)
         self.assertIsInstance(y, C)
@@ -622,13 +527,10 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __getstate__(self):
                 return {"foo": self.foo}
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C([42])
         y = copy.deepcopy(x)
         self.assertEqual(y, x)
@@ -639,13 +541,10 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __setstate__(self, state):
                 self.foo = state["foo"]
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C([42])
         y = copy.deepcopy(x)
         self.assertEqual(y, x)
@@ -656,16 +555,12 @@ class TestCopy(unittest.TestCase):
         class C:
             def __init__(self, foo):
                 self.foo = foo
-
             def __getstate__(self):
                 return self.foo
-
             def __setstate__(self, state):
                 self.foo = state
-
             def __eq__(self, other):
                 return self.foo == other.foo
-
         x = C([42])
         y = copy.deepcopy(x)
         self.assertEqual(y, x)
@@ -681,7 +576,6 @@ class TestCopy(unittest.TestCase):
     def test_deepcopy_reflexive_inst(self):
         class C:
             pass
-
         x = C()
         x.foo = x
         y = copy.deepcopy(x)
@@ -694,7 +588,6 @@ class TestCopy(unittest.TestCase):
         class C(object):
             def __reduce__(self):
                 return ""
-
         x = C()
         y = copy.copy(x)
         self.assertIs(y, x)
@@ -705,7 +598,6 @@ class TestCopy(unittest.TestCase):
         class C(object):
             def __reduce__(self):
                 return (C, ())
-
         x = C()
         x.foo = 42
         y = copy.copy(x)
@@ -717,10 +609,8 @@ class TestCopy(unittest.TestCase):
         class C(object):
             def __reduce__(self):
                 return (C, (), self.__dict__)
-
             def __eq__(self, other):
                 return self.__dict__ == other.__dict__
-
         x = C()
         x.foo = [42]
         y = copy.copy(x)
@@ -733,13 +623,10 @@ class TestCopy(unittest.TestCase):
         class C(object):
             def __reduce__(self):
                 return (C, (), self.__dict__)
-
             def __setstate__(self, state):
                 self.__dict__.update(state)
-
             def __eq__(self, other):
                 return self.__dict__ == other.__dict__
-
         x = C()
         x.foo = [42]
         y = copy.copy(x)
@@ -751,7 +638,6 @@ class TestCopy(unittest.TestCase):
     def test_reconstruct_reflexive(self):
         class C(object):
             pass
-
         x = C()
         x.foo = x
         y = copy.deepcopy(x)
@@ -764,10 +650,9 @@ class TestCopy(unittest.TestCase):
         class C(list):
             def __reduce__(self):
                 return (C, (), self.__dict__, iter(self))
-
             def __eq__(self, other):
-                return list(self) == list(other) and self.__dict__ == other.__dict__
-
+                return (list(self) == list(other) and
+                        self.__dict__ == other.__dict__)
         x = C([[1, 2], 3])
         y = copy.copy(x)
         self.assertEqual(x, y)
@@ -782,10 +667,9 @@ class TestCopy(unittest.TestCase):
         class C(dict):
             def __reduce__(self):
                 return (C, (), self.__dict__, None, self.items())
-
             def __eq__(self, other):
-                return dict(self) == dict(other) and self.__dict__ == other.__dict__
-
+                return (dict(self) == dict(other) and
+                        self.__dict__ == other.__dict__)
         x = C([("foo", [1, 2]), ("bar", 3)])
         y = copy.copy(x)
         self.assertEqual(x, y)
@@ -799,11 +683,9 @@ class TestCopy(unittest.TestCase):
     def test_reduce_6tuple(self):
         def state_setter(*args, **kwargs):
             self.fail("shouldn't call this")
-
         class C:
             def __reduce__(self):
                 return C, (), self.__dict__, None, None, state_setter
-
         x = C()
         with self.assertRaises(TypeError):
             copy.copy(x)
@@ -814,7 +696,6 @@ class TestCopy(unittest.TestCase):
         class C:
             def __reduce__(self):
                 return C, (), self.__dict__, None, None, None
-
         x = C()
         with self.assertRaises(TypeError):
             copy.copy(x)
@@ -824,7 +705,6 @@ class TestCopy(unittest.TestCase):
     def test_copy_slots(self):
         class C(object):
             __slots__ = ["foo"]
-
         x = C()
         x.foo = [42]
         y = copy.copy(x)
@@ -833,7 +713,6 @@ class TestCopy(unittest.TestCase):
     def test_deepcopy_slots(self):
         class C(object):
             __slots__ = ["foo"]
-
         x = C()
         x.foo = [42]
         y = copy.deepcopy(x)
@@ -847,25 +726,22 @@ class TestCopy(unittest.TestCase):
                     d = {}
                 self._keys = list(d.keys())
                 super().__init__(d)
-
             def __setitem__(self, key, item):
                 super().__setitem__(key, item)
                 if key not in self._keys:
                     self._keys.append(key)
-
-        x = C(d={"foo": 0})
+        x = C(d={'foo':0})
         y = copy.deepcopy(x)
         self.assertEqual(x, y)
         self.assertEqual(x._keys, y._keys)
         self.assertIsNot(x, y)
-        x["bar"] = 1
+        x['bar'] = 1
         self.assertNotEqual(x, y)
         self.assertNotEqual(x._keys, y._keys)
 
     def test_copy_list_subclass(self):
         class C(list):
             pass
-
         x = C([[1, 2], 3])
         x.foo = [4, 5]
         y = copy.copy(x)
@@ -877,7 +753,6 @@ class TestCopy(unittest.TestCase):
     def test_deepcopy_list_subclass(self):
         class C(list):
             pass
-
         x = C([[1, 2], 3])
         x.foo = [4, 5]
         y = copy.deepcopy(x)
@@ -889,7 +764,6 @@ class TestCopy(unittest.TestCase):
     def test_copy_tuple_subclass(self):
         class C(tuple):
             pass
-
         x = C([1, 2, 3])
         self.assertEqual(tuple(x), (1, 2, 3))
         y = copy.copy(x)
@@ -898,7 +772,6 @@ class TestCopy(unittest.TestCase):
     def test_deepcopy_tuple_subclass(self):
         class C(tuple):
             pass
-
         x = C([[1, 2], 3])
         self.assertEqual(tuple(x), ([1, 2], 3))
         y = copy.deepcopy(x)
@@ -910,25 +783,18 @@ class TestCopy(unittest.TestCase):
         class EvilState(object):
             def __getstate__(self):
                 raise ValueError("ain't got no stickin' state")
-
         self.assertRaises(ValueError, copy.copy, EvilState())
 
     def test_copy_function(self):
         self.assertEqual(copy.copy(global_foo), global_foo)
-
-        def foo(x, y):
-            return x + y
-
+        def foo(x, y): return x+y
         self.assertEqual(copy.copy(foo), foo)
         bar = lambda: None
         self.assertEqual(copy.copy(bar), bar)
 
     def test_deepcopy_function(self):
         self.assertEqual(copy.deepcopy(global_foo), global_foo)
-
-        def foo(x, y):
-            return x + y
-
+        def foo(x, y): return x+y
         self.assertEqual(copy.deepcopy(foo), foo)
         bar = lambda: None
         self.assertEqual(copy.deepcopy(bar), bar)
@@ -936,7 +802,6 @@ class TestCopy(unittest.TestCase):
     def _check_weakref(self, _copy):
         class C(object):
             pass
-
         obj = C()
         x = weakref.ref(obj)
         y = _copy(x)
@@ -954,7 +819,6 @@ class TestCopy(unittest.TestCase):
     def _check_copy_weakdict(self, _dicttype):
         class C(object):
             pass
-
         a, b, c, d = [C() for i in range(4)]
         u = _dicttype()
         u[a] = b
@@ -983,7 +847,6 @@ class TestCopy(unittest.TestCase):
         class C(object):
             def __init__(self, i):
                 self.i = i
-
         a, b, c, d = [C(i) for i in range(4)]
         u = weakref.WeakKeyDictionary()
         u[a] = b
@@ -1004,7 +867,6 @@ class TestCopy(unittest.TestCase):
         class C(object):
             def __init__(self, i):
                 self.i = i
-
         a, b, c, d = [C(i) for i in range(4)]
         u = weakref.WeakValueDictionary()
         u[a] = b
@@ -1029,7 +891,6 @@ class TestCopy(unittest.TestCase):
         class Foo(object):
             def m(self):
                 pass
-
         f = Foo()
         f.b = f.m
         g = copy.deepcopy(f)
@@ -1038,9 +899,7 @@ class TestCopy(unittest.TestCase):
         g.b()
 
 
-def global_foo(x, y):
-    return x + y
-
+def global_foo(x, y): return x+y
 
 if __name__ == "__main__":
     unittest.main()

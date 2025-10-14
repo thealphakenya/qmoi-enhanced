@@ -20,7 +20,7 @@ release = repo.create_git_release(
     name=RELEASE_TITLE,
     message="🚀 Auto release for QMOI AI (All Platforms)",
     draft=False,
-    prerelease=False,
+    prerelease=False
 )
 
 # Upload zip
@@ -29,7 +29,7 @@ with open(ZIP_PATH, "rb") as zip_file:
         path=ZIP_PATH,
         label="QMOI AI All Platforms.zip",
         name=os.path.basename(ZIP_PATH),
-        content_type="application/zip",
+        content_type="application/zip"
     )
 
 print(f"✅ Uploaded release {RELEASE_TITLE} at: {release.html_url}")

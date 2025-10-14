@@ -80,7 +80,7 @@ class PlatformTest(unittest.TestCase):
 
     @os_helper.skip_unless_symlink
     @support.requires_subprocess()
-    def test_architecture_via_symlink(self):  # issue3762
+    def test_architecture_via_symlink(self): # issue3762
         with support.PythonSymlink() as py:
             cmd = "-c", "import platform; print(platform.architecture())"
             self.assertEqual(py.call_real(*cmd), py.call_link(*cmd))
@@ -121,106 +121,62 @@ class PlatformTest(unittest.TestCase):
     def test_sys_version(self):
         # Old test.
         for input, output in (
-            (
-                "2.4.3 (#1, Jun 21 2006, 13:54:21) \n[GCC 3.3.4 (pre 3.3.5 20040809)]",
-                (
-                    "CPython",
-                    "2.4.3",
-                    "",
-                    "",
-                    "1",
-                    "Jun 21 2006 13:54:21",
-                    "GCC 3.3.4 (pre 3.3.5 20040809)",
-                ),
-            ),
-            (
-                "2.4.3 (truncation, date, t) \n[GCC]",
-                ("CPython", "2.4.3", "", "", "truncation", "date t", "GCC"),
-            ),
-            (
-                "2.4.3 (truncation, date, ) \n[GCC]",
-                ("CPython", "2.4.3", "", "", "truncation", "date", "GCC"),
-            ),
-            (
-                "2.4.3 (truncation, date,) \n[GCC]",
-                ("CPython", "2.4.3", "", "", "truncation", "date", "GCC"),
-            ),
-            (
-                "2.4.3 (truncation, date) \n[GCC]",
-                ("CPython", "2.4.3", "", "", "truncation", "date", "GCC"),
-            ),
-            (
-                "2.4.3 (truncation, d) \n[GCC]",
-                ("CPython", "2.4.3", "", "", "truncation", "d", "GCC"),
-            ),
-            (
-                "2.4.3 (truncation, ) \n[GCC]",
-                ("CPython", "2.4.3", "", "", "truncation", "", "GCC"),
-            ),
-            (
-                "2.4.3 (truncation,) \n[GCC]",
-                ("CPython", "2.4.3", "", "", "truncation", "", "GCC"),
-            ),
-            (
-                "2.4.3 (truncation) \n[GCC]",
-                ("CPython", "2.4.3", "", "", "truncation", "", "GCC"),
-            ),
-        ):
+            ('2.4.3 (#1, Jun 21 2006, 13:54:21) \n[GCC 3.3.4 (pre 3.3.5 20040809)]',
+             ('CPython', '2.4.3', '', '', '1', 'Jun 21 2006 13:54:21', 'GCC 3.3.4 (pre 3.3.5 20040809)')),
+            ('2.4.3 (truncation, date, t) \n[GCC]',
+             ('CPython', '2.4.3', '', '', 'truncation', 'date t', 'GCC')),
+            ('2.4.3 (truncation, date, ) \n[GCC]',
+             ('CPython', '2.4.3', '', '', 'truncation', 'date', 'GCC')),
+            ('2.4.3 (truncation, date,) \n[GCC]',
+             ('CPython', '2.4.3', '', '', 'truncation', 'date', 'GCC')),
+            ('2.4.3 (truncation, date) \n[GCC]',
+             ('CPython', '2.4.3', '', '', 'truncation', 'date', 'GCC')),
+            ('2.4.3 (truncation, d) \n[GCC]',
+             ('CPython', '2.4.3', '', '', 'truncation', 'd', 'GCC')),
+            ('2.4.3 (truncation, ) \n[GCC]',
+             ('CPython', '2.4.3', '', '', 'truncation', '', 'GCC')),
+            ('2.4.3 (truncation,) \n[GCC]',
+             ('CPython', '2.4.3', '', '', 'truncation', '', 'GCC')),
+            ('2.4.3 (truncation) \n[GCC]',
+             ('CPython', '2.4.3', '', '', 'truncation', '', 'GCC')),
+            ):
             # branch and revision are not "parsed", but fetched
             # from sys._git.  Ignore them
-            (name, version, branch, revision, buildno, builddate, compiler) = (
-                platform._sys_version(input)
-            )
+            (name, version, branch, revision, buildno, builddate, compiler) \
+                   = platform._sys_version(input)
             self.assertEqual(
-                (name, version, "", "", buildno, builddate, compiler), output
-            )
+                (name, version, '', '', buildno, builddate, compiler), output)
 
         # Tests for python_implementation(), python_version(), python_branch(),
         # python_revision(), python_build(), and python_compiler().
         sys_versions = {
-            (
-                "2.6.1 (r261:67515, Dec  6 2008, 15:26:00) \n[GCC 4.0.1 (Apple Computer, Inc. build 5370)]",
-                ("CPython", "tags/r261", "67515"),
-                self.save_platform,
-            ): (
-                "CPython",
-                "2.6.1",
-                "tags/r261",
-                "67515",
-                ("r261:67515", "Dec  6 2008 15:26:00"),
-                "GCC 4.0.1 (Apple Computer, Inc. build 5370)",
-            ),
-            (
-                "3.10.8 (tags/v3.10.8:aaaf517424, Feb 14 2023, 16:28:12) [GCC 9.4.0]",
-                None,
-                "linux",
-            ): (
-                "CPython",
-                "3.10.8",
-                "",
-                "",
-                ("tags/v3.10.8:aaaf517424", "Feb 14 2023 16:28:12"),
-                "GCC 9.4.0",
-            ),
-            (
-                '2.5 (trunk:6107, Mar 26 2009, 13:02:18) \n[Java HotSpot(TM) Client VM ("Apple Computer, Inc.")]',
-                ("Jython", "trunk", "6107"),
-                "java1.5.0_16",
-            ): (
-                "Jython",
-                "2.5.0",
-                "trunk",
-                "6107",
-                ("trunk:6107", "Mar 26 2009"),
-                "java1.5.0_16",
-            ),
-            (
-                "2.5.2 (63378, Mar 26 2009, 18:03:29)\n[PyPy 1.0.0]",
-                ("PyPy", "trunk", "63378"),
-                self.save_platform,
-            ): ("PyPy", "2.5.2", "trunk", "63378", ("63378", "Mar 26 2009"), ""),
-        }
-        for (version_tag, scm, sys_platform), info in sys_versions.items():
+            ("2.6.1 (r261:67515, Dec  6 2008, 15:26:00) \n[GCC 4.0.1 (Apple Computer, Inc. build 5370)]",
+             ('CPython', 'tags/r261', '67515'), self.save_platform)
+            :
+                ("CPython", "2.6.1", "tags/r261", "67515",
+                 ('r261:67515', 'Dec  6 2008 15:26:00'),
+                 'GCC 4.0.1 (Apple Computer, Inc. build 5370)'),
+
+            ("3.10.8 (tags/v3.10.8:aaaf517424, Feb 14 2023, 16:28:12) [GCC 9.4.0]",
+             None, "linux")
+            :
+                ('CPython', '3.10.8', '', '',
+                ('tags/v3.10.8:aaaf517424', 'Feb 14 2023 16:28:12'), 'GCC 9.4.0'),
+
+            ("2.5 (trunk:6107, Mar 26 2009, 13:02:18) \n[Java HotSpot(TM) Client VM (\"Apple Computer, Inc.\")]",
+            ('Jython', 'trunk', '6107'), "java1.5.0_16")
+            :
+                ("Jython", "2.5.0", "trunk", "6107",
+                 ('trunk:6107', 'Mar 26 2009'), "java1.5.0_16"),
+
+            ("2.5.2 (63378, Mar 26 2009, 18:03:29)\n[PyPy 1.0.0]",
+             ('PyPy', 'trunk', '63378'), self.save_platform)
+            :
+                ("PyPy", "2.5.2", "trunk", "63378", ('63378', 'Mar 26 2009'),
+                 "")
+            }
+        for (version_tag, scm, sys_platform), info in \
+                sys_versions.items():
             sys.version = version_tag
             if scm is None:
                 if hasattr(sys, "_git"):
@@ -237,7 +193,7 @@ class PlatformTest(unittest.TestCase):
             self.assertEqual(platform.python_compiler(), info[5])
 
         with self.assertRaises(ValueError):
-            platform._sys_version("2. 4.3 (truncation) \n[GCC]")
+            platform._sys_version('2. 4.3 (truncation) \n[GCC]')
 
     def test_system_alias(self):
         res = platform.system_alias(
@@ -263,22 +219,18 @@ class PlatformTest(unittest.TestCase):
         self.assertEqual(res[-1], res.processor)
         self.assertEqual(len(res), 6)
 
-    @unittest.skipUnless(sys.platform.startswith("win"), "windows only test")
+    @unittest.skipUnless(sys.platform.startswith('win'), "windows only test")
     def test_uname_win32_without_wmi(self):
         def raises_oserror(*a):
             raise OSError()
 
-        with support.swap_attr(platform, "_wmi_query", raises_oserror):
+        with support.swap_attr(platform, '_wmi_query', raises_oserror):
             self.test_uname()
 
     def test_uname_cast_to_tuple(self):
         res = platform.uname()
         expected = (
-            res.system,
-            res.node,
-            res.release,
-            res.version,
-            res.machine,
+            res.system, res.node, res.release, res.version, res.machine,
             res.processor,
         )
         self.assertEqual(tuple(res), expected)
@@ -286,17 +238,13 @@ class PlatformTest(unittest.TestCase):
     def test_uname_replace(self):
         res = platform.uname()
         new = res._replace(
-            system="system",
-            node="node",
-            release="release",
-            version="version",
-            machine="machine",
-        )
-        self.assertEqual(new.system, "system")
-        self.assertEqual(new.node, "node")
-        self.assertEqual(new.release, "release")
-        self.assertEqual(new.version, "version")
-        self.assertEqual(new.machine, "machine")
+            system='system', node='node', release='release',
+            version='version', machine='machine')
+        self.assertEqual(new.system, 'system')
+        self.assertEqual(new.node, 'node')
+        self.assertEqual(new.release, 'release')
+        self.assertEqual(new.version, 'version')
+        self.assertEqual(new.machine, 'machine')
         # processor cannot be replaced
         self.assertEqual(new.processor, res.processor)
 
@@ -320,14 +268,14 @@ class PlatformTest(unittest.TestCase):
         self.assertEqual(res[:5], expected[:5])
 
     def test_uname_fields(self):
-        self.assertIn("processor", platform.uname()._fields)
+        self.assertIn('processor', platform.uname()._fields)
 
     def test_uname_asdict(self):
         res = platform.uname()._asdict()
         self.assertEqual(len(res), 6)
-        self.assertIn("processor", res)
+        self.assertIn('processor', res)
 
-    @unittest.skipIf(sys.platform in ["win32", "OpenVMS"], "uname -p not used")
+    @unittest.skipIf(sys.platform in ['win32', 'OpenVMS'], "uname -p not used")
     @support.requires_subprocess()
     def test_uname_processor(self):
         """
@@ -335,13 +283,13 @@ class PlatformTest(unittest.TestCase):
         of 'uname -p'. See Issue 35967 for rationale.
         """
         try:
-            proc_res = subprocess.check_output(["uname", "-p"], text=True).strip()
+            proc_res = subprocess.check_output(['uname', '-p'], text=True).strip()
             expect = platform._unknown_as_blank(proc_res)
         except (OSError, subprocess.CalledProcessError):
-            expect = ""
+            expect = ''
         self.assertEqual(platform.uname().processor, expect)
 
-    @unittest.skipUnless(sys.platform.startswith("win"), "windows only test")
+    @unittest.skipUnless(sys.platform.startswith('win'), "windows only test")
     def test_uname_win32_ARCHITEW6432(self):
         # Issue 7860: make sure we get architecture from the correct variable
         # on 64 bit Windows: if PROCESSOR_ARCHITEW6432 exists we should be
@@ -353,34 +301,30 @@ class PlatformTest(unittest.TestCase):
         def raises_oserror(*a):
             raise OSError()
 
-        with support.swap_attr(platform, "_wmi_query", raises_oserror):
+        with support.swap_attr(platform, '_wmi_query', raises_oserror):
             with os_helper.EnvironmentVarGuard() as environ:
                 try:
-                    if "PROCESSOR_ARCHITEW6432" in environ:
-                        del environ["PROCESSOR_ARCHITEW6432"]
-                    environ["PROCESSOR_ARCHITECTURE"] = "foo"
+                    if 'PROCESSOR_ARCHITEW6432' in environ:
+                        del environ['PROCESSOR_ARCHITEW6432']
+                    environ['PROCESSOR_ARCHITECTURE'] = 'foo'
                     platform._uname_cache = None
-                    system, node, release, version, machine, processor = (
-                        platform.uname()
-                    )
-                    self.assertEqual(machine, "foo")
-                    environ["PROCESSOR_ARCHITEW6432"] = "bar"
+                    system, node, release, version, machine, processor = platform.uname()
+                    self.assertEqual(machine, 'foo')
+                    environ['PROCESSOR_ARCHITEW6432'] = 'bar'
                     platform._uname_cache = None
-                    system, node, release, version, machine, processor = (
-                        platform.uname()
-                    )
-                    self.assertEqual(machine, "bar")
+                    system, node, release, version, machine, processor = platform.uname()
+                    self.assertEqual(machine, 'bar')
                 finally:
                     platform._uname_cache = None
 
     def test_java_ver(self):
         res = platform.java_ver()
-        if sys.platform == "java":  # Is never actually checked in CI
+        if sys.platform == 'java':  # Is never actually checked in CI
             self.assertTrue(all(res))
 
-    @unittest.skipUnless(support.MS_WINDOWS, "This test only makes sense on Windows")
+    @unittest.skipUnless(support.MS_WINDOWS, 'This test only makes sense on Windows')
     def test_win32_ver(self):
-        release1, version1, csd1, ptype1 = "a", "b", "c", "d"
+        release1, version1, csd1, ptype1 = 'a', 'b', 'c', 'd'
         res = platform.win32_ver(release1, version1, csd1, ptype1)
         self.assertEqual(len(res), 4)
         release, version, csd, ptype = res
@@ -392,59 +336,60 @@ class PlatformTest(unittest.TestCase):
         if version:
             # It is rather hard to test explicit version without
             # going deep into the details.
-            self.assertIn(".", version)
-            for v in version.split("."):
+            self.assertIn('.', version)
+            for v in version.split('.'):
                 int(v)  # should not fail
         if csd:
-            self.assertTrue(csd.startswith("SP"), msg=csd)
+            self.assertTrue(csd.startswith('SP'), msg=csd)
         if ptype:
             if os.cpu_count() > 1:
-                self.assertIn("Multiprocessor", ptype)
+                self.assertIn('Multiprocessor', ptype)
             else:
-                self.assertIn("Uniprocessor", ptype)
+                self.assertIn('Uniprocessor', ptype)
 
-    @unittest.skipIf(support.MS_WINDOWS, "This test only makes sense on non Windows")
+    @unittest.skipIf(support.MS_WINDOWS, 'This test only makes sense on non Windows')
     def test_win32_ver_on_non_windows(self):
-        release, version, csd, ptype = "a", "1.0", "c", "d"
+        release, version, csd, ptype = 'a', '1.0', 'c', 'd'
         res = platform.win32_ver(release, version, csd, ptype)
         self.assertSequenceEqual(res, (release, version, csd, ptype), seq_type=tuple)
 
     def test_mac_ver(self):
         res = platform.mac_ver()
 
-        if platform.uname().system == "Darwin":
+        if platform.uname().system == 'Darwin':
             # We are on a macOS system, check that the right version
             # information is returned
-            output = subprocess.check_output(["sw_vers"], text=True)
+            output = subprocess.check_output(['sw_vers'], text=True)
             for line in output.splitlines():
-                if line.startswith("ProductVersion:"):
+                if line.startswith('ProductVersion:'):
                     real_ver = line.strip().split()[-1]
                     break
             else:
                 self.fail(f"failed to parse sw_vers output: {output!r}")
 
-            result_list = res[0].split(".")
-            expect_list = real_ver.split(".")
+            result_list = res[0].split('.')
+            expect_list = real_ver.split('.')
             len_diff = len(result_list) - len(expect_list)
             # On Snow Leopard, sw_vers reports 10.6.0 as 10.6
             if len_diff > 0:
-                expect_list.extend(["0"] * len_diff)
+                expect_list.extend(['0'] * len_diff)
             # For compatibility with older binaries, macOS 11.x may report
             # itself as '10.16' rather than '11.x.y'.
-            if result_list != ["10", "16"]:
+            if result_list != ['10', '16']:
                 self.assertEqual(result_list, expect_list)
 
             # res[1] claims to contain
             # (version, dev_stage, non_release_version)
             # That information is no longer available
-            self.assertEqual(res[1], ("", "", ""))
+            self.assertEqual(res[1], ('', '', ''))
 
-            if sys.byteorder == "little":
-                self.assertIn(res[2], ("i386", "x86_64", "arm64"))
+            if sys.byteorder == 'little':
+                self.assertIn(res[2], ('i386', 'x86_64', 'arm64'))
             else:
-                self.assertEqual(res[2], "PowerPC")
+                self.assertEqual(res[2], 'PowerPC')
 
-    @unittest.skipUnless(sys.platform == "darwin", "OSX only test")
+
+    @unittest.skipUnless(sys.platform == 'darwin', "OSX only test")
     def test_mac_ver_with_fork(self):
         # Issue7895: platform.mac_ver() crashes when using fork without exec
         #
@@ -463,14 +408,14 @@ class PlatformTest(unittest.TestCase):
     @unittest.skipIf(support.is_emscripten, "Does not apply to Emscripten")
     def test_libc_ver(self):
         # check that libc_ver(executable) doesn't raise an exception
-        if os.path.isdir(sys.executable) and os.path.exists(sys.executable + ".exe"):
+        if os.path.isdir(sys.executable) and \
+           os.path.exists(sys.executable+'.exe'):
             # Cygwin horror
-            executable = sys.executable + ".exe"
+            executable = sys.executable + '.exe'
         elif sys.platform == "win32" and not os.path.exists(sys.executable):
             # App symlink appears to not exist, but we want the
             # real executable here anyway
             import _winapi
-
             executable = _winapi.GetModuleFileName(0)
         else:
             executable = sys.executable
@@ -479,103 +424,96 @@ class PlatformTest(unittest.TestCase):
         filename = os_helper.TESTFN
         self.addCleanup(os_helper.unlink, filename)
 
-        with mock.patch("os.confstr", create=True, return_value="mock 1.0"):
+        with mock.patch('os.confstr', create=True, return_value='mock 1.0'):
             # test os.confstr() code path
-            self.assertEqual(platform.libc_ver(), ("mock", "1.0"))
+            self.assertEqual(platform.libc_ver(), ('mock', '1.0'))
 
             # test the different regular expressions
             for data, expected in (
-                (b"__libc_init", ("libc", "")),
-                (b"GLIBC_2.9", ("glibc", "2.9")),
-                (b"libc.so.1.2.5", ("libc", "1.2.5")),
-                (b"libc_pthread.so.1.2.5", ("libc", "1.2.5_pthread")),
-                (b"", ("", "")),
+                (b'__libc_init', ('libc', '')),
+                (b'GLIBC_2.9', ('glibc', '2.9')),
+                (b'libc.so.1.2.5', ('libc', '1.2.5')),
+                (b'libc_pthread.so.1.2.5', ('libc', '1.2.5_pthread')),
+                (b'', ('', '')),
             ):
-                with open(filename, "wb") as fp:
-                    fp.write(b"[xxx%sxxx]" % data)
+                with open(filename, 'wb') as fp:
+                    fp.write(b'[xxx%sxxx]' % data)
                     fp.flush()
 
                 # os.confstr() must not be used if executable is set
-                self.assertEqual(platform.libc_ver(executable=filename), expected)
+                self.assertEqual(platform.libc_ver(executable=filename),
+                                 expected)
 
         # binary containing multiple versions: get the most recent,
         # make sure that 1.9 is seen as older than 1.23.4
         chunksize = 16384
-        with open(filename, "wb") as f:
+        with open(filename, 'wb') as f:
             # test match at chunk boundary
-            f.write(b"x" * (chunksize - 10))
-            f.write(b"GLIBC_1.23.4\0GLIBC_1.9\0GLIBC_1.21\0")
-        self.assertEqual(
-            platform.libc_ver(filename, chunksize=chunksize), ("glibc", "1.23.4")
-        )
+            f.write(b'x'*(chunksize - 10))
+            f.write(b'GLIBC_1.23.4\0GLIBC_1.9\0GLIBC_1.21\0')
+        self.assertEqual(platform.libc_ver(filename, chunksize=chunksize),
+                         ('glibc', '1.23.4'))
 
     @support.cpython_only
     def test__comparable_version(self):
         from platform import _comparable_version as V
+        self.assertEqual(V('1.2.3'), V('1.2.3'))
+        self.assertLess(V('1.2.3'), V('1.2.10'))
+        self.assertEqual(V('1.2.3.4'), V('1_2-3+4'))
+        self.assertLess(V('1.2spam'), V('1.2dev'))
+        self.assertLess(V('1.2dev'), V('1.2alpha'))
+        self.assertLess(V('1.2dev'), V('1.2a'))
+        self.assertLess(V('1.2alpha'), V('1.2beta'))
+        self.assertLess(V('1.2a'), V('1.2b'))
+        self.assertLess(V('1.2beta'), V('1.2c'))
+        self.assertLess(V('1.2b'), V('1.2c'))
+        self.assertLess(V('1.2c'), V('1.2RC'))
+        self.assertLess(V('1.2c'), V('1.2rc'))
+        self.assertLess(V('1.2RC'), V('1.2.0'))
+        self.assertLess(V('1.2rc'), V('1.2.0'))
+        self.assertLess(V('1.2.0'), V('1.2pl'))
+        self.assertLess(V('1.2.0'), V('1.2p'))
 
-        self.assertEqual(V("1.2.3"), V("1.2.3"))
-        self.assertLess(V("1.2.3"), V("1.2.10"))
-        self.assertEqual(V("1.2.3.4"), V("1_2-3+4"))
-        self.assertLess(V("1.2spam"), V("1.2dev"))
-        self.assertLess(V("1.2dev"), V("1.2alpha"))
-        self.assertLess(V("1.2dev"), V("1.2a"))
-        self.assertLess(V("1.2alpha"), V("1.2beta"))
-        self.assertLess(V("1.2a"), V("1.2b"))
-        self.assertLess(V("1.2beta"), V("1.2c"))
-        self.assertLess(V("1.2b"), V("1.2c"))
-        self.assertLess(V("1.2c"), V("1.2RC"))
-        self.assertLess(V("1.2c"), V("1.2rc"))
-        self.assertLess(V("1.2RC"), V("1.2.0"))
-        self.assertLess(V("1.2rc"), V("1.2.0"))
-        self.assertLess(V("1.2.0"), V("1.2pl"))
-        self.assertLess(V("1.2.0"), V("1.2p"))
+        self.assertLess(V('1.5.1'), V('1.5.2b2'))
+        self.assertLess(V('3.10a'), V('161'))
+        self.assertEqual(V('8.02'), V('8.02'))
+        self.assertLess(V('3.4j'), V('1996.07.12'))
+        self.assertLess(V('3.1.1.6'), V('3.2.pl0'))
+        self.assertLess(V('2g6'), V('11g'))
+        self.assertLess(V('0.9'), V('2.2'))
+        self.assertLess(V('1.2'), V('1.2.1'))
+        self.assertLess(V('1.1'), V('1.2.2'))
+        self.assertLess(V('1.1'), V('1.2'))
+        self.assertLess(V('1.2.1'), V('1.2.2'))
+        self.assertLess(V('1.2'), V('1.2.2'))
+        self.assertLess(V('0.4'), V('0.4.0'))
+        self.assertLess(V('1.13++'), V('5.5.kw'))
+        self.assertLess(V('0.960923'), V('2.2beta29'))
 
-        self.assertLess(V("1.5.1"), V("1.5.2b2"))
-        self.assertLess(V("3.10a"), V("161"))
-        self.assertEqual(V("8.02"), V("8.02"))
-        self.assertLess(V("3.4j"), V("1996.07.12"))
-        self.assertLess(V("3.1.1.6"), V("3.2.pl0"))
-        self.assertLess(V("2g6"), V("11g"))
-        self.assertLess(V("0.9"), V("2.2"))
-        self.assertLess(V("1.2"), V("1.2.1"))
-        self.assertLess(V("1.1"), V("1.2.2"))
-        self.assertLess(V("1.1"), V("1.2"))
-        self.assertLess(V("1.2.1"), V("1.2.2"))
-        self.assertLess(V("1.2"), V("1.2.2"))
-        self.assertLess(V("0.4"), V("0.4.0"))
-        self.assertLess(V("1.13++"), V("5.5.kw"))
-        self.assertLess(V("0.960923"), V("2.2beta29"))
 
     def test_macos(self):
         self.addCleanup(self.clear_caches)
 
-        uname = (
-            "Darwin",
-            "hostname",
-            "17.7.0",
-            (
-                "Darwin Kernel Version 17.7.0: "
-                "Thu Jun 21 22:53:14 PDT 2018; "
-                "root:xnu-4570.71.2~1/RELEASE_X86_64"
-            ),
-            "x86_64",
-            "i386",
-        )
-        arch = ("64bit", "")
-        with mock.patch.object(
-            platform, "uname", return_value=uname
-        ), mock.patch.object(platform, "architecture", return_value=arch):
+        uname = ('Darwin', 'hostname', '17.7.0',
+                 ('Darwin Kernel Version 17.7.0: '
+                  'Thu Jun 21 22:53:14 PDT 2018; '
+                  'root:xnu-4570.71.2~1/RELEASE_X86_64'),
+                 'x86_64', 'i386')
+        arch = ('64bit', '')
+        with mock.patch.object(platform, 'uname', return_value=uname), \
+             mock.patch.object(platform, 'architecture', return_value=arch):
             for mac_ver, expected_terse, expected in [
                 # darwin: mac_ver() returns empty strings
-                (("", "", ""), "Darwin-17.7.0", "Darwin-17.7.0-x86_64-i386-64bit"),
+                (('', '', ''),
+                 'Darwin-17.7.0',
+                 'Darwin-17.7.0-x86_64-i386-64bit'),
                 # macOS: mac_ver() returns macOS version
-                (
-                    ("10.13.6", ("", "", ""), "x86_64"),
-                    "macOS-10.13.6",
-                    "macOS-10.13.6-x86_64-i386-64bit",
-                ),
+                (('10.13.6', ('', '', ''), 'x86_64'),
+                 'macOS-10.13.6',
+                 'macOS-10.13.6-x86_64-i386-64bit'),
             ]:
-                with mock.patch.object(platform, "mac_ver", return_value=mac_ver):
+                with mock.patch.object(platform, 'mac_ver',
+                                       return_value=mac_ver):
                     self.clear_caches()
                     self.assertEqual(platform.platform(terse=1), expected_terse)
                     self.assertEqual(platform.platform(), expected)
@@ -590,7 +528,10 @@ class PlatformTest(unittest.TestCase):
             self.assertIn("ID", info)
 
             info["CPYTHON_TEST"] = "test"
-            self.assertNotIn("CPYTHON_TEST", platform.freedesktop_os_release())
+            self.assertNotIn(
+                "CPYTHON_TEST",
+                platform.freedesktop_os_release()
+            )
         else:
             with self.assertRaises(OSError):
                 platform.freedesktop_os_release()
@@ -626,5 +567,5 @@ class PlatformTest(unittest.TestCase):
         self.assertEqual(len(info["SPECIALS"]), 5)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

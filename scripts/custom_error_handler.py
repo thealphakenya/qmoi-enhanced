@@ -41,19 +41,16 @@ def diagnose(log: str) -> Dict[str, str]:
     for key, tpl in TEMPLATES.items():
         if re.search(tpl["match"], log, flags=re.I | re.M):
             return {"type": key, "message": tpl["message"], "action": tpl["action"]}
-    return {
-        "type": "unknown",
-        "message": "Unknown error.",
-        "action": "Check logs for details and retry.",
-    }
+    return {"type": "unknown", "message": "Unknown error.", "action": "Check logs for details and retry."}
 
 
 def main():
     import sys
-
     content = sys.stdin.read()
     print(json.dumps(diagnose(content), indent=2))
 
 
 if __name__ == "__main__":
     main()
+
+

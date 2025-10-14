@@ -5,7 +5,6 @@ import unittest
 
 from stringprep import *
 
-
 class StringprepTests(unittest.TestCase):
     def test(self):
         self.assertTrue(in_table_a1("\u0221"))
@@ -89,6 +88,5 @@ class StringprepTests(unittest.TestCase):
         #     h.update(data)
         #     print p, h.hexdigest()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -3,7 +3,6 @@ from ctypes import *
 
 _array_type = type(Array)
 
-
 def _other_endian(typ):
     """Return the type with the 'other' byte order.  Simple types like
     c_int and so on already have __ctype_be__ and __ctype_le__
@@ -21,7 +20,6 @@ def _other_endian(typ):
         return typ
     raise TypeError("This type does not support other endian: %s" % typ)
 
-
 class _swapped_meta:
     def __setattr__(self, attrname, value):
         if attrname == "_fields_":
@@ -33,15 +31,8 @@ class _swapped_meta:
                 fields.append((name, _other_endian(typ)) + rest)
             value = fields
         super().__setattr__(attrname, value)
-
-
-class _swapped_struct_meta(_swapped_meta, type(Structure)):
-    pass
-
-
-class _swapped_union_meta(_swapped_meta, type(Union)):
-    pass
-
+class _swapped_struct_meta(_swapped_meta, type(Structure)): pass
+class _swapped_union_meta(_swapped_meta, type(Union)): pass
 
 ################################################################
 
@@ -56,7 +47,6 @@ if sys.byteorder == "little":
 
     class BigEndianStructure(Structure, metaclass=_swapped_struct_meta):
         """Structure with big endian byte order"""
-
         __slots__ = ()
         _swappedbytes_ = None
 
@@ -64,7 +54,6 @@ if sys.byteorder == "little":
 
     class BigEndianUnion(Union, metaclass=_swapped_union_meta):
         """Union with big endian byte order"""
-
         __slots__ = ()
         _swappedbytes_ = None
 
@@ -75,7 +64,6 @@ elif sys.byteorder == "big":
 
     class LittleEndianStructure(Structure, metaclass=_swapped_struct_meta):
         """Structure with little endian byte order"""
-
         __slots__ = ()
         _swappedbytes_ = None
 
@@ -83,7 +71,6 @@ elif sys.byteorder == "big":
 
     class LittleEndianUnion(Union, metaclass=_swapped_union_meta):
         """Union with little endian byte order"""
-
         __slots__ = ()
         _swappedbytes_ = None
 

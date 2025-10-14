@@ -12,44 +12,42 @@ from test import support
 class Foo:
     pass
 
-
 class RefCycle:
     def __init__(self):
         self.cycle = self
 
-
 class WeakSetSubclass(WeakSet):
     pass
 
-
 class WeakSetWithSlots(WeakSet):
-    __slots__ = ("x", "y")
+    __slots__ = ('x', 'y')
 
 
 class TestWeakSet(unittest.TestCase):
 
     def setUp(self):
         # need to keep references to them
-        self.items = [ustr(c) for c in ("a", "b", "c")]
-        self.items2 = [ustr(c) for c in ("x", "y", "z")]
-        self.ab_items = [ustr(c) for c in "ab"]
-        self.abcde_items = [ustr(c) for c in "abcde"]
-        self.def_items = [ustr(c) for c in "def"]
+        self.items = [ustr(c) for c in ('a', 'b', 'c')]
+        self.items2 = [ustr(c) for c in ('x', 'y', 'z')]
+        self.ab_items = [ustr(c) for c in 'ab']
+        self.abcde_items = [ustr(c) for c in 'abcde']
+        self.def_items = [ustr(c) for c in 'def']
         self.ab_weakset = WeakSet(self.ab_items)
         self.abcde_weakset = WeakSet(self.abcde_items)
         self.def_weakset = WeakSet(self.def_items)
         self.letters = [ustr(c) for c in string.ascii_letters]
         self.s = WeakSet(self.items)
         self.d = dict.fromkeys(self.items)
-        self.obj = ustr("F")
+        self.obj = ustr('F')
         self.fs = WeakSet([self.obj])
 
     def test_methods(self):
         weaksetmethods = dir(WeakSet)
         for method in dir(set):
-            if method == "test_c_api" or method.startswith("_"):
+            if method == 'test_c_api' or method.startswith('_'):
                 continue
-            self.assertIn(method, weaksetmethods, "WeakSet missing method " + method)
+            self.assertIn(method, weaksetmethods,
+                         "WeakSet missing method " + method)
 
     def test_new_or_init(self):
         self.assertRaises(TypeError, WeakSet, [], 2)
@@ -69,7 +67,7 @@ class TestWeakSet(unittest.TestCase):
         self.assertIn(self.obj, self.fs)
         del self.obj
         support.gc_collect()  # For PyPy or other GCs.
-        self.assertNotIn(ustr("F"), self.fs)
+        self.assertNotIn(ustr('F'), self.fs)
 
     def test_union(self):
         u = self.s.union(self.items2)
@@ -153,10 +151,10 @@ class TestWeakSet(unittest.TestCase):
         self.assertTrue(self.abcde_weakset >= self.ab_weakset)
         self.assertFalse(self.abcde_weakset <= self.def_weakset)
         self.assertFalse(self.abcde_weakset >= self.def_weakset)
-        self.assertTrue(set("a").issubset("abc"))
-        self.assertTrue(set("abc").issuperset("a"))
-        self.assertFalse(set("a").issubset("cbs"))
-        self.assertFalse(set("cbs").issuperset("a"))
+        self.assertTrue(set('a').issubset('abc'))
+        self.assertTrue(set('abc').issuperset('a'))
+        self.assertFalse(set('a').issubset('cbs'))
+        self.assertFalse(set('cbs').issuperset('a'))
 
     def test_lt(self):
         self.assertTrue(self.ab_weakset < self.abcde_weakset)
@@ -182,10 +180,9 @@ class TestWeakSet(unittest.TestCase):
         # Bug #1257731
         class H(WeakSet):
             def __hash__(self):
-                return int(id(self) & 0x7FFFFFFF)
-
-        s = H()
-        f = set()
+                return int(id(self) & 0x7fffffff)
+        s=H()
+        f=set()
         f.add(s)
         self.assertIn(s, f)
         f.remove(s)
@@ -198,8 +195,8 @@ class TestWeakSet(unittest.TestCase):
         self.assertEqual(s, self.s)
         s.__init__(self.items2)
         self.assertEqual(s, WeakSet(self.items2))
-        self.assertRaises(TypeError, s.__init__, s, 2)
-        self.assertRaises(TypeError, s.__init__, 1)
+        self.assertRaises(TypeError, s.__init__, s, 2);
+        self.assertRaises(TypeError, s.__init__, 1);
 
     def test_constructor_identity(self):
         s = WeakSet(self.items)
@@ -220,7 +217,7 @@ class TestWeakSet(unittest.TestCase):
         self.assertNotEqual(id(self.s), id(dup))
 
     def test_add(self):
-        x = ustr("Q")
+        x = ustr('Q')
         self.s.add(x)
         self.assertIn(x, self.s)
         dup = self.s.copy()
@@ -234,14 +231,14 @@ class TestWeakSet(unittest.TestCase):
         self.assertTrue(len(self.fs) == 1)
 
     def test_remove(self):
-        x = ustr("a")
+        x = ustr('a')
         self.s.remove(x)
         self.assertNotIn(x, self.s)
         self.assertRaises(KeyError, self.s.remove, x)
         self.assertRaises(TypeError, self.s.remove, [])
 
     def test_discard(self):
-        a, q = ustr("a"), ustr("Q")
+        a, q = ustr('a'), ustr('Q')
         self.s.discard(a)
         self.assertNotIn(a, self.s)
         self.s.discard(q)
@@ -256,24 +253,24 @@ class TestWeakSet(unittest.TestCase):
     def test_update(self):
         retval = self.s.update(self.items2)
         self.assertEqual(retval, None)
-        for c in self.items + self.items2:
+        for c in (self.items + self.items2):
             self.assertIn(c, self.s)
         self.assertRaises(TypeError, self.s.update, [[]])
 
     def test_update_set(self):
         self.s.update(set(self.items2))
-        for c in self.items + self.items2:
+        for c in (self.items + self.items2):
             self.assertIn(c, self.s)
 
     def test_ior(self):
         self.s |= set(self.items2)
-        for c in self.items + self.items2:
+        for c in (self.items + self.items2):
             self.assertIn(c, self.s)
 
     def test_intersection_update(self):
         retval = self.s.intersection_update(self.items2)
         self.assertEqual(retval, None)
-        for c in self.items + self.items2:
+        for c in (self.items + self.items2):
             if c in self.items2 and c in self.items:
                 self.assertIn(c, self.s)
             else:
@@ -282,7 +279,7 @@ class TestWeakSet(unittest.TestCase):
 
     def test_iand(self):
         self.s &= set(self.items2)
-        for c in self.items + self.items2:
+        for c in (self.items + self.items2):
             if c in self.items2 and c in self.items:
                 self.assertIn(c, self.s)
             else:
@@ -291,7 +288,7 @@ class TestWeakSet(unittest.TestCase):
     def test_difference_update(self):
         retval = self.s.difference_update(self.items2)
         self.assertEqual(retval, None)
-        for c in self.items + self.items2:
+        for c in (self.items + self.items2):
             if c in self.items and c not in self.items2:
                 self.assertIn(c, self.s)
             else:
@@ -301,7 +298,7 @@ class TestWeakSet(unittest.TestCase):
 
     def test_isub(self):
         self.s -= set(self.items2)
-        for c in self.items + self.items2:
+        for c in (self.items + self.items2):
             if c in self.items and c not in self.items2:
                 self.assertIn(c, self.s)
             else:
@@ -310,7 +307,7 @@ class TestWeakSet(unittest.TestCase):
     def test_symmetric_difference_update(self):
         retval = self.s.symmetric_difference_update(self.items2)
         self.assertEqual(retval, None)
-        for c in self.items + self.items2:
+        for c in (self.items + self.items2):
             if (c in self.items) ^ (c in self.items2):
                 self.assertIn(c, self.s)
             else:
@@ -319,7 +316,7 @@ class TestWeakSet(unittest.TestCase):
 
     def test_ixor(self):
         self.s ^= set(self.items2)
-        for c in self.items + self.items2:
+        for c in (self.items + self.items2):
             if (c in self.items) ^ (c in self.items2):
                 self.assertIn(c, self.s)
             else:
@@ -356,13 +353,13 @@ class TestWeakSet(unittest.TestCase):
     def test_weak_destroy_while_iterating(self):
         # Issue #7105: iterators shouldn't crash when a key is implicitly removed
         # Create new items to be sure no-one else holds a reference
-        items = [ustr(c) for c in ("a", "b", "c")]
+        items = [ustr(c) for c in ('a', 'b', 'c')]
         s = WeakSet(items)
         it = iter(s)
-        next(it)  # Trigger internal iteration
+        next(it)             # Trigger internal iteration
         # Destroy an item
         del items[-1]
-        gc.collect()  # just in case
+        gc.collect()    # just in case
         # We have removed either the first consumed items, or another one
         self.assertIn(len(list(it)), [len(items), len(items) - 1])
         del it
@@ -373,7 +370,6 @@ class TestWeakSet(unittest.TestCase):
         # Issue #7105: iterators shouldn't crash when a key is implicitly removed
         items = [ustr(c) for c in string.ascii_letters]
         s = WeakSet(items)
-
         @contextlib.contextmanager
         def testcontext():
             try:
@@ -386,10 +382,10 @@ class TestWeakSet(unittest.TestCase):
                     # The iterator still has a reference to the removed item,
                     # advance it (issue #20006).
                     next(it)
-                gc.collect()  # just in case
+                gc.collect()      # just in case
                 yield u
             finally:
-                it = None  # should commit all removals
+                it = None           # should commit all removals
 
         with testcontext() as u:
             self.assertNotIn(u, s)
@@ -461,8 +457,8 @@ class TestWeakSet(unittest.TestCase):
     def test_copying(self):
         for cls in WeakSet, WeakSetWithSlots:
             s = cls(self.items)
-            s.x = ["x"]
-            s.z = ["z"]
+            s.x = ['x']
+            s.z = ['z']
 
             dup = copy.copy(s)
             self.assertIsInstance(dup, cls)
@@ -470,7 +466,7 @@ class TestWeakSet(unittest.TestCase):
             self.assertIsNot(dup, s)
             self.assertIs(dup.x, s.x)
             self.assertIs(dup.z, s.z)
-            self.assertFalse(hasattr(dup, "y"))
+            self.assertFalse(hasattr(dup, 'y'))
 
             dup = copy.deepcopy(s)
             self.assertIsInstance(dup, cls)
@@ -480,7 +476,7 @@ class TestWeakSet(unittest.TestCase):
             self.assertIsNot(dup.x, s.x)
             self.assertEqual(dup.z, s.z)
             self.assertIsNot(dup.z, s.z)
-            self.assertFalse(hasattr(dup, "y"))
+            self.assertFalse(hasattr(dup, 'y'))
 
 
 if __name__ == "__main__":

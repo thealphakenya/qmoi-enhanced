@@ -8,13 +8,11 @@ import psutil
 import os
 from pathlib import Path
 
-
 class ErrorSeverity:
     LOW = "low"
     MEDIUM = "medium"
     HIGH = "high"
     CRITICAL = "critical"
-
 
 class ErrorCategory:
     SYSTEM = "system"
@@ -25,7 +23,6 @@ class ErrorCategory:
     SECURITY = "security"
     DATA = "data"
     API = "api"
-
 
 class ErrorHandler:
     def __init__(self):
@@ -38,13 +35,16 @@ class ErrorHandler:
 
     def setup_logging(self):
         """Setup error logging configuration"""
-        log_dir = Path("logs")
+        log_dir = Path('logs')
         log_dir.mkdir(exist_ok=True)
-
+        
         logging.basicConfig(
             level=logging.INFO,
-            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-            handlers=[logging.FileHandler("logs/errors.log"), logging.StreamHandler()],
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.FileHandler('logs/errors.log'),
+                logging.StreamHandler()
+            ]
         )
 
     def setup_recovery_strategies(self):
@@ -53,62 +53,60 @@ class ErrorHandler:
             ErrorCategory.SYSTEM: [
                 self._recover_system_resources,
                 self._restart_critical_services,
-                self._clear_temp_files,
+                self._clear_temp_files
             ],
             ErrorCategory.PLATFORM: [
                 self._reconnect_platform,
                 self._reset_platform_state,
-                self._restart_platform,
+                self._restart_platform
             ],
             ErrorCategory.FEATURE: [
                 self._restart_feature,
                 self._reset_feature_state,
-                self._disable_feature,
+                self._disable_feature
             ],
             ErrorCategory.RESOURCE: [
                 self._optimize_memory,
                 self._optimize_cpu,
-                self._cleanup_disk,
+                self._cleanup_disk
             ],
             ErrorCategory.NETWORK: [
                 self._reset_network_connection,
                 self._clear_network_cache,
-                self._switch_network_mode,
+                self._switch_network_mode
             ],
             ErrorCategory.SECURITY: [
                 self._reset_security_state,
                 self._clear_security_cache,
-                self._restart_security_services,
+                self._restart_security_services
             ],
             ErrorCategory.DATA: [
                 self._restore_data_backup,
                 self._repair_data_corruption,
-                self._clear_corrupted_data,
+                self._clear_corrupted_data
             ],
             ErrorCategory.API: [
                 self._reset_api_connection,
                 self._clear_api_cache,
-                self._restart_api_services,
-            ],
+                self._restart_api_services
+            ]
         }
 
-    def handle_error(
-        self, error: Exception, category: str, severity: str = ErrorSeverity.MEDIUM
-    ) -> bool:
+    def handle_error(self, error: Exception, category: str, severity: str = ErrorSeverity.MEDIUM) -> bool:
         """Handle an error with appropriate recovery strategies"""
         error_info = {
-            "timestamp": datetime.now().isoformat(),
-            "type": type(error).__name__,
-            "message": str(error),
-            "category": category,
-            "severity": severity,
-            "traceback": traceback.format_exc(),
-            "system_state": self._get_system_state(),
+            'timestamp': datetime.now().isoformat(),
+            'type': type(error).__name__,
+            'message': str(error),
+            'category': category,
+            'severity': severity,
+            'traceback': traceback.format_exc(),
+            'system_state': self._get_system_state()
         }
 
         self.logger.error(f"Error occurred: {json.dumps(error_info, indent=2)}")
         self.error_history.append(error_info)
-
+        
         if len(self.error_history) > self.max_history_size:
             self.error_history.pop(0)
 
@@ -116,8 +114,8 @@ class ErrorHandler:
 
     def _attempt_recovery(self, error_info: Dict[str, Any]) -> bool:
         """Attempt to recover from an error using appropriate strategies"""
-        category = error_info["category"]
-        severity = error_info["severity"]
+        category = error_info['category']
+        severity = error_info['severity']
 
         if category not in self.recovery_strategies:
             self.logger.error(f"No recovery strategies for category: {category}")
@@ -133,9 +131,7 @@ class ErrorHandler:
                     success = True
                     break
             except Exception as e:
-                self.logger.error(
-                    f"Recovery strategy {strategy.__name__} failed: {str(e)}"
-                )
+                self.logger.error(f"Recovery strategy {strategy.__name__} failed: {str(e)}")
 
         if not success and severity == ErrorSeverity.CRITICAL:
             self._handle_critical_error(error_info)
@@ -145,20 +141,18 @@ class ErrorHandler:
     def _get_system_state(self) -> Dict[str, Any]:
         """Get current system state for error context"""
         return {
-            "cpu_usage": psutil.cpu_percent(),
-            "memory_usage": psutil.virtual_memory().percent,
-            "disk_usage": psutil.disk_usage("/").percent,
-            "process_count": len(psutil.pids()),
-            "uptime": psutil.boot_time(),
-            "python_version": sys.version,
-            "platform": sys.platform,
+            'cpu_usage': psutil.cpu_percent(),
+            'memory_usage': psutil.virtual_memory().percent,
+            'disk_usage': psutil.disk_usage('/').percent,
+            'process_count': len(psutil.pids()),
+            'uptime': psutil.boot_time(),
+            'python_version': sys.version,
+            'platform': sys.platform
         }
 
     def _handle_critical_error(self, error_info: Dict[str, Any]):
         """Handle critical errors that couldn't be recovered from"""
-        self.logger.critical(
-            f"Critical error occurred: {json.dumps(error_info, indent=2)}"
-        )
+        self.logger.critical(f"Critical error occurred: {json.dumps(error_info, indent=2)}")
         # Implement critical error handling (e.g., system shutdown, emergency backup)
         self._emergency_shutdown()
 
@@ -166,20 +160,16 @@ class ErrorHandler:
         """Perform emergency shutdown procedures"""
         try:
             # Save error state
-            with open("logs/emergency_state.json", "w") as f:
-                json.dump(
-                    {
-                        "timestamp": datetime.now().isoformat(),
-                        "error_history": self.error_history[-10:],
-                        "system_state": self._get_system_state(),
-                    },
-                    f,
-                    indent=2,
-                )
+            with open('logs/emergency_state.json', 'w') as f:
+                json.dump({
+                    'timestamp': datetime.now().isoformat(),
+                    'error_history': self.error_history[-10:],
+                    'system_state': self._get_system_state()
+                }, f, indent=2)
 
             # Perform cleanup
             self._cleanup_resources()
-
+            
             # Exit with error code
             sys.exit(1)
         except Exception as e:
@@ -208,9 +198,9 @@ class ErrorHandler:
     def _clear_temp_files(self) -> bool:
         """Clear temporary files"""
         try:
-            temp_dir = Path("temp")
+            temp_dir = Path('temp')
             if temp_dir.exists():
-                for file in temp_dir.glob("*"):
+                for file in temp_dir.glob('*'):
                     file.unlink()
             return True
         except:
@@ -268,7 +258,6 @@ class ErrorHandler:
         """Optimize memory usage"""
         try:
             import gc
-
             gc.collect()
             return True
         except:
@@ -391,13 +380,12 @@ class ErrorHandler:
         try:
             # Clear error history
             self.error_history.clear()
-
+            
             # Clear any temporary files
             self._clear_temp_files()
-
+            
             # Force garbage collection
             import gc
-
             gc.collect()
         except:
-            pass
+            pass 

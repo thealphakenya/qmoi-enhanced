@@ -16,7 +16,6 @@ class ThreadPoolExecutorTest(ThreadPoolMixin, ExecutorTest, BaseTestCase):
     def test_map_submits_without_iteration(self):
         """Tests verifying issue 11777."""
         finished = []
-
         def record_finished(n):
             finished.append(n)
 
@@ -31,7 +30,6 @@ class ThreadPoolExecutorTest(ThreadPoolMixin, ExecutorTest, BaseTestCase):
 
     def test_saturation(self):
         executor = self.executor_type(4)
-
         def acquire_lock(lock):
             lock.acquire()
 
@@ -51,8 +49,8 @@ class ThreadPoolExecutorTest(ThreadPoolMixin, ExecutorTest, BaseTestCase):
         self.assertEqual(len(executor._threads), 1)
         executor.shutdown(wait=True)
 
-    @unittest.skipUnless(hasattr(os, "register_at_fork"), "need os.register_at_fork")
-    @support.requires_resource("cpu")
+    @unittest.skipUnless(hasattr(os, 'register_at_fork'), 'need os.register_at_fork')
+    @support.requires_resource('cpu')
     def test_hang_global_shutdown_lock(self):
         # bpo-45021: _global_shutdown_lock should be reinitialized in the child
         # process, otherwise it will never exit
@@ -63,9 +61,7 @@ class ThreadPoolExecutorTest(ThreadPoolMixin, ExecutorTest, BaseTestCase):
             pool.submit(submit, pool)
 
             for _ in range(50):
-                with futures.ProcessPoolExecutor(
-                    1, mp_context=mp.get_context("fork")
-                ) as workers:
+                with futures.ProcessPoolExecutor(1, mp_context=mp.get_context('fork')) as workers:
                     workers.submit(tuple)
 
     def test_executor_map_current_future_cancel(self):

@@ -36,7 +36,7 @@ import argparse
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
+    datefmt="%Y-%m-%d %H:%M:%S"
 )
 logger = logging.getLogger("QMOI-Push")
 
@@ -52,7 +52,6 @@ GITHUB_REPO = "Alpha-Q-ai"
 
 # Track fixes to avoid infinite recursion
 already_fixed = set()
-
 
 # -----------------------------
 # GitHub Token Handling
@@ -76,9 +75,7 @@ def get_github_token():
     logger.warning("No GITHUB_TOKEN found; skipping GitHub release creation.")
     return None
 
-
 GITHUB_TOKEN = get_github_token()
-
 
 # -----------------------------
 # Utility Functions
@@ -88,17 +85,14 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
         logger.warning(f"â�Œ Executable missing: {cmd[0]}")
         auto_fix_error(cmd)
         if shutil.which(cmd[0]) is None:
-            raise FileNotFoundError(
-                f"Cannot run '{cmd[0]}', executable still missing after auto-fix."
-            )
+            raise FileNotFoundError(f"Cannot run '{cmd[0]}', executable still missing after auto-fix.")
 
     env = os.environ.copy()
     for attempt in range(1, retries + 1):
         try:
             logger.info(f"ðŸ”„ Running: {' '.join(cmd)} (attempt {attempt})")
-            result = subprocess.run(
-                cmd, cwd=cwd, check=True, capture_output=capture, text=True, env=env
-            )
+            result = subprocess.run(cmd, cwd=cwd, check=True,
+                                    capture_output=capture, text=True, env=env)
             return result.stdout if capture else True
         except subprocess.CalledProcessError as e:
             logger.warning(f"âš ï¸� Command failed: {cmd} -> {e}")
@@ -113,7 +107,6 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
             auto_fix_error(cmd, str(e))
             return False
     return False
-
 
 def auto_fix_error(cmd, error_msg=""):
     if cmd[0] in already_fixed:
@@ -131,18 +124,7 @@ def auto_fix_error(cmd, error_msg=""):
 
     elif "pip" in cmd[0] or "ModuleNotFoundError" in error_msg:
         run_cmd([sys.executable, "-m", "ensurepip", "--upgrade"])
-        run_cmd(
-            [
-                sys.executable,
-                "-m",
-                "pip",
-                "install",
-                "--upgrade",
-                "pip",
-                "setuptools",
-                "wheel",
-            ]
-        )
+        run_cmd([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"])
 
     elif "npm" in cmd[0] or "node" in error_msg.lower():
         # Guard to avoid recursive npm install loops
@@ -164,7 +146,6 @@ def auto_fix_error(cmd, error_msg=""):
         # Minimal deep clean without recursive npm calls
         shutil.rmtree(PROJECT_ROOT / "__pycache__", ignore_errors=True)
         run_cmd([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
-
 
 # -----------------------------
 # Portable Node Download & PATH Fix
@@ -208,7 +189,6 @@ def download_portable_node():
         logger.warning("âš ï¸� Node.exe not found after extraction")
         return None
 
-
 def ensure_tool(tool: str):
     if shutil.which(tool):
         logger.info(f"âœ… Tool already installed: {tool}")
@@ -222,23 +202,17 @@ def ensure_tool(tool: str):
             logger.info(f"âœ… Using portable Node.js from {node_path}")
             npm_path = Path(node_path) / "npm.cmd"
             if npm_path.exists():
-                os.environ["PATH"] = (
-                    str(npm_path.parent) + os.pathsep + os.environ["PATH"]
-                )
+                os.environ["PATH"] = str(npm_path.parent) + os.pathsep + os.environ["PATH"]
             if not shutil.which("npm"):
                 logger.warning("âš ï¸� npm still not detected after portable install")
         else:
-            logger.warning(
-                "âš ï¸� Manual Node.js/npm install required: https://nodejs.org/"
-            )
+            logger.warning("âš ï¸� Manual Node.js/npm install required: https://nodejs.org/")
     else:
         logger.warning(f"âš ï¸� No portable fallback for {tool}. Install manually.")
-
 
 def check_and_install_tools():
     for tool in ["git", "node", "npm", "pytest"]:
         ensure_tool(tool)
-
 
 # -----------------------------
 # Version Detection
@@ -291,7 +265,6 @@ def detect_version():
     logger.warning("âš ï¸� No version detected, defaulting to 0.0.1")
     return "0.0.1"
 
-
 def bump_version(version):
     try:
         parts = version.split(".")
@@ -302,17 +275,13 @@ def bump_version(version):
         pass
     return version + ".1"
 
-
 # -----------------------------
 # GitHub Release Helper
 # -----------------------------
-def create_github_release(
-    tag, body="Automated release by QMOI Unified Push", target_commitish: str = "main"
-):
+def create_github_release(tag, body="Automated release by QMOI Unified Push", target_commitish: str = "main"):
     if not GITHUB_TOKEN:
         logger.warning("âš ï¸� GITHUB_TOKEN not set, skipping GitHub release creation")
         return False
-
 
 def upload_github_asset(tag: str, file_path: Path) -> bool:
     if not GITHUB_TOKEN:
@@ -323,18 +292,14 @@ def upload_github_asset(tag: str, file_path: Path) -> bool:
         return False
 
     # Find release by tag
-    url = (
-        f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/releases/tags/{tag}"
-    )
+    url = f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/releases/tags/{tag}"
     headers = {
         "Authorization": f"token {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github+json",
+        "Accept": "application/vnd.github+json"
     }
     resp = requests.get(url, headers=headers)
     if resp.status_code != 200:
-        logger.warning(
-            f"Failed to fetch release for {tag}: {resp.status_code} {resp.text}"
-        )
+        logger.warning(f"Failed to fetch release for {tag}: {resp.status_code} {resp.text}")
         return False
     release = resp.json()
     upload_url = release.get("upload_url", "").split("{", 1)[0]
@@ -366,7 +331,7 @@ def upload_github_asset(tag: str, file_path: Path) -> bool:
         ".ipa": "application/octet-stream",
         ".tar": "application/x-tar",
         ".gz": "application/gzip",
-        ".xz": "application/x-xz",
+        ".xz": "application/x-xz"
     }
     mime = mime_map.get(ext, "application/octet-stream")
     with open(file_path, "rb") as f:
@@ -387,7 +352,7 @@ def upload_github_asset(tag: str, file_path: Path) -> bool:
         "body": body,
         "target_commitish": target_commitish,
         "draft": False,
-        "prerelease": False,
+        "prerelease": False
     }
 
     # Check if release already exists
@@ -402,23 +367,14 @@ def upload_github_asset(tag: str, file_path: Path) -> bool:
         logger.info(f"âœ… GitHub release created: {tag}")
         return True
     else:
-        logger.warning(
-            f"âš ï¸� Failed to create GitHub release: {response.status_code} {response.text}"
-        )
+        logger.warning(f"âš ï¸� Failed to create GitHub release: {response.status_code} {response.text}")
         return False
-
 
 # -----------------------------
 # Core Tool
 # -----------------------------
 class QmoiPush:
-    def __init__(
-        self,
-        fast: bool = False,
-        skip_tests: bool = False,
-        no_build: bool = False,
-        docs_only: bool = False,
-    ):
+    def __init__(self, fast: bool = False, skip_tests: bool = False, no_build: bool = False, docs_only: bool = False):
         self.project_root = PROJECT_ROOT
         self.version = detect_version()
         self.fast = fast
@@ -437,19 +393,7 @@ class QmoiPush:
 
     def setup_env(self):
         logger.info("ðŸ”§ Ensuring Python & Node environment")
-        run_cmd(
-            [
-                sys.executable,
-                "-m",
-                "pip",
-                "install",
-                "--upgrade",
-                "pip",
-                "setuptools",
-                "wheel",
-            ],
-            critical=True,
-        )
+        run_cmd([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], critical=True)
         if not shutil.which("npm"):
             already_fixed.discard("npm")
             ensure_tool("npm")
@@ -461,10 +405,7 @@ class QmoiPush:
 
     def install_deps(self):
         logger.info("ðŸ“¦ Installing dependencies")
-        run_cmd(
-            [sys.executable, "-m", "pip", "install", "-r", "requirements.txt"],
-            critical=True,
-        )
+        run_cmd([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"], critical=True)
 
         if not shutil.which("npm"):
             already_fixed.discard("npm")
@@ -475,32 +416,20 @@ class QmoiPush:
             for attempt in range(1, 6):
                 logger.info(f"ðŸ”„ Running npm ci (attempt {attempt}/5)")
                 # Faster, more resilient flags
-                success = run_cmd(
-                    ["npm", "ci", "--prefer-offline", "--no-audit", "--no-fund"],
-                    retries=1,
-                    backoff=2,
-                    critical=False,
-                )
+                success = run_cmd([
+                    "npm", "ci", "--prefer-offline", "--no-audit", "--no-fund"
+                ], retries=1, backoff=2, critical=False)
                 if success:
                     break
-                logger.warning(
-                    f"âš ï¸� npm ci failed on attempt {attempt}, retrying..."
-                )
+                logger.warning(f"âš ï¸� npm ci failed on attempt {attempt}, retrying...")
                 # Try legacy peer deps mode
-                run_cmd(
-                    ["npm", "config", "set", "legacy-peer-deps", "true"], critical=False
-                )
+                run_cmd(["npm", "config", "set", "legacy-peer-deps", "true"], critical=False)
                 already_fixed.discard("npm")
                 ensure_tool("npm")
                 time.sleep(attempt * 2)
             if not success:
-                logger.warning(
-                    "â�Œ npm ci failed after 5 attempts, falling back to npm install..."
-                )
-                run_cmd(
-                    ["npm", "install", "--prefer-offline", "--no-audit", "--no-fund"],
-                    critical=True,
-                )
+                logger.warning("â�Œ npm ci failed after 5 attempts, falling back to npm install...")
+                run_cmd(["npm", "install", "--prefer-offline", "--no-audit", "--no-fund"], critical=True)
         else:
             logger.error("â�Œ npm still not found. Manual install required.")
             raise FileNotFoundError("npm not found")
@@ -511,9 +440,7 @@ class QmoiPush:
             return
         logger.info("ðŸ§ª Running tests")
         # Python tests (non-fatal)
-        ok_py = run_cmd(
-            [sys.executable, "-m", "pytest", "-q"], retries=1, critical=False
-        )
+        ok_py = run_cmd([sys.executable, "-m", "pytest", "-q"], retries=1, critical=False)
         if not ok_py:
             logger.warning("Skipping Python tests failures (non-blocking)")
         # JS tests (non-fatal)
@@ -528,12 +455,7 @@ class QmoiPush:
             return
         logger.info("ðŸ�—ï¸� Building project")
         if shutil.which("npm"):
-            ok_build = run_cmd(
-                ["npm", "run", "build", "--silent"],
-                retries=1,
-                backoff=3,
-                critical=False,
-            )
+            ok_build = run_cmd(["npm", "run", "build", "--silent"], retries=1, backoff=3, critical=False)
             if not ok_build:
                 logger.warning("Skipping npm build failures (non-blocking)")
         else:
@@ -543,12 +465,7 @@ class QmoiPush:
         """Run the documentation verifier to update and fix all .md files."""
         logger.info("ðŸ“– Verifying and auto-updating all .md files")
         try:
-            run_cmd(
-                [sys.executable, str(SCRIPTS_DIR / "doc_verifier.py")],
-                retries=1,
-                backoff=2,
-                critical=False,
-            )
+            run_cmd([sys.executable, str(SCRIPTS_DIR / "doc_verifier.py")], retries=1, backoff=2, critical=False)
         except Exception as e:
             logger.warning(f"Doc verifier failed: {e}")
         # Always append a timestamp to key docs as a lightweight confirmation
@@ -581,28 +498,18 @@ class QmoiPush:
             attempt += 1
             tag_base = bump_version(tag_base)
         # Create annotated tag
-        run_cmd(
-            ["git", "tag", "-a", version_tag, "-m", f"Release {tag_base}"],
-            critical=False,
-        )
+        run_cmd(["git", "tag", "-a", version_tag, "-m", f"Release {tag_base}"], critical=False)
 
         # Push with resilient HTTP settings and retries
         run_cmd(["git", "config", "http.postBuffer", "524288000"], critical=False)
         run_cmd(["git", "config", "http.version", "HTTP/1.1"], critical=False)
         run_cmd(["git", "config", "http.lowSpeedLimit", "0"], critical=False)
         run_cmd(["git", "config", "http.lowSpeedTime", "0"], critical=False)
-        pushed = run_cmd(
-            ["git", "push", "origin", "HEAD:main", "--tags"],
-            retries=3,
-            backoff=5,
-            critical=False,
-        )
+        pushed = run_cmd(["git", "push", "origin", "HEAD:main", "--tags"], retries=3, backoff=5, critical=False)
 
         # Auto-create GitHub release
         commit_log = run_cmd(["git", "log", "-1", "--pretty=%B"], capture=True)
-        release_body = (
-            f"Automated release {version_tag}\n\nLatest commit:\n{commit_log}"
-        )
+        release_body = f"Automated release {version_tag}\n\nLatest commit:\n{commit_log}"
         if pushed:
             create_github_release(version_tag, release_body, target_commitish="main")
         else:
@@ -623,7 +530,6 @@ class QmoiPush:
     def update_docs(self):
         """Lightweight docs update to confirm automation links/commands."""
         ts = datetime.utcnow().isoformat()
-
         def append_stamp(path: Path):
             try:
                 if path.exists():
@@ -631,7 +537,6 @@ class QmoiPush:
                         f.write(f"\n\n> Auto-updated by QMOI Unified Push at {ts}\n")
             except Exception:
                 pass
-
         append_stamp(PROJECT_ROOT / "ALLMDFILESREFS.md")
         append_stamp(PROJECT_ROOT / "QMOIAUTODEV.md")
         append_stamp(PROJECT_ROOT / "QMOISPACEDEV.md")
@@ -639,17 +544,12 @@ class QmoiPush:
     def update_readme(self):
         logger.info("ðŸ“� Updating README usage section")
         try:
-            help_output = subprocess.check_output(
-                [sys.executable, str(SCRIPTS_DIR / "qmoi-unified-push.py"), "--help"],
-                text=True,
-            )
+            help_output = subprocess.check_output([sys.executable, str(SCRIPTS_DIR / "qmoi-unified-push.py"), "--help"], text=True)
             with open(README_FILE, "r", encoding="utf-8") as f:
                 content = f.read()
-            new_content = re.sub(
-                r"(?s)(## CLI Usage.*?```)(.*?)(```)",
-                f"\\1\n{help_output}\n\\3",
-                content,
-            )
+            new_content = re.sub(r"(?s)(## CLI Usage.*?```)(.*?)(```)",
+                                f"\\1\n{help_output}\n\\3",
+                                content)
             with open(README_FILE, "w", encoding="utf-8") as f:
                 f.write(new_content)
             logger.info("âœ… README updated dynamically")
@@ -671,31 +571,17 @@ class QmoiPush:
             self.push_git()
         self.update_readme()
         self.update_docs()
-        logger.info(
-            f"âœ… All steps completed successfully (v{self.version}, self-healing)"
-        )
-
+        logger.info(f"âœ… All steps completed successfully (v{self.version}, self-healing)")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="QMOI Unified Push - Complete automation for build, test, push, release"
-    )
-    parser.add_argument(
-        "--fast", action="store_true", help="Skip heavy clean steps for faster runs"
-    )
+    parser = argparse.ArgumentParser(description="QMOI Unified Push - Complete automation for build, test, push, release")
+    parser.add_argument("--fast", action="store_true", help="Skip heavy clean steps for faster runs")
     parser.add_argument("--skip-tests", action="store_true", help="Skip running tests")
     parser.add_argument("--no-build", action="store_true", help="Skip build step")
-    parser.add_argument(
-        "--docs-only", action="store_true", help="Only update documentation and exit"
-    )
+    parser.add_argument("--docs-only", action="store_true", help="Only update documentation and exit")
     args = parser.parse_args()
 
-    tool = QmoiPush(
-        fast=args.fast,
-        skip_tests=args.skip_tests,
-        no_build=args.no_build,
-        docs_only=args.docs_only,
-    )
+    tool = QmoiPush(fast=args.fast, skip_tests=args.skip_tests, no_build=args.no_build, docs_only=args.docs_only)
     try:
         tool.run()
     except Exception as e:

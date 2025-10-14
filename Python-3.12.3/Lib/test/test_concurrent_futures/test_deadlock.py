@@ -12,12 +12,8 @@ from concurrent.futures.process import BrokenProcessPool, _ThreadWakeup
 from test import support
 
 from .util import (
-    create_executor_tests,
-    setup_module,
-    ProcessPoolForkMixin,
-    ProcessPoolForkserverMixin,
-    ProcessPoolSpawnMixin,
-)
+    create_executor_tests, setup_module,
+    ProcessPoolForkMixin, ProcessPoolForkserverMixin, ProcessPoolSpawnMixin)
 
 
 def _crash(delay=None):
@@ -25,7 +21,6 @@ def _crash(delay=None):
     if delay:
         time.sleep(delay)
     import faulthandler
-
     faulthandler.disable()
     faulthandler._sigsegv()
 
@@ -48,7 +43,6 @@ def _raise_error(Err):
 def _raise_error_ignore_stderr(Err):
     """Function that raises an Exception in process and ignores stderr."""
     import io
-
     sys.stderr = io.StringIO()
     raise Err()
 
@@ -60,48 +54,40 @@ def _return_instance(cls):
 
 class CrashAtPickle(object):
     """Bad object that triggers a segfault at pickling time."""
-
     def __reduce__(self):
         _crash()
 
 
 class CrashAtUnpickle(object):
     """Bad object that triggers a segfault at unpickling time."""
-
     def __reduce__(self):
         return _crash, ()
 
 
 class ExitAtPickle(object):
     """Bad object that triggers a process exit at pickling time."""
-
     def __reduce__(self):
         _exit()
 
 
 class ExitAtUnpickle(object):
     """Bad object that triggers a process exit at unpickling time."""
-
     def __reduce__(self):
         return _exit, ()
 
 
 class ErrorAtPickle(object):
     """Bad object that triggers an error at pickling time."""
-
     def __reduce__(self):
         from pickle import PicklingError
-
         raise PicklingError("Error in pickle")
 
 
 class ErrorAtUnpickle(object):
     """Bad object that triggers an error at unpickling time."""
-
     def __reduce__(self):
         from pickle import UnpicklingError
-
-        return _raise_error_ignore_stderr, (UnpicklingError,)
+        return _raise_error_ignore_stderr, (UnpicklingError, )
 
 
 class ExecutorDeadlockTest:
@@ -113,7 +99,6 @@ class ExecutorDeadlockTest:
         # composants.
         import faulthandler
         from tempfile import TemporaryFile
-
         with TemporaryFile(mode="w+") as f:
             faulthandler.dump_traceback(file=f)
             f.seek(0)
@@ -126,11 +111,13 @@ class ExecutorDeadlockTest:
         print(f"\nTraceback:\n {tb}", file=sys.__stderr__)
         self.fail(f"Executor deadlock:\n\n{tb}")
 
+
     def _check_crash(self, error, func, *args, ignore_stderr=False):
         # test for deadlock caused by crashes in a pool
         self.executor.shutdown(wait=True)
 
-        executor = self.executor_type(max_workers=2, mp_context=self.get_context())
+        executor = self.executor_type(
+            max_workers=2, mp_context=self.get_context())
         res = executor.submit(func, *args)
 
         if ignore_stderr:
@@ -159,7 +146,7 @@ class ExecutorDeadlockTest:
 
     def test_error_at_task_unpickle(self):
         # gh-109832: Restore stderr overriden by _raise_error_ignore_stderr()
-        self.addCleanup(setattr, sys, "stderr", sys.stderr)
+        self.addCleanup(setattr, sys, 'stderr', sys.stderr)
 
         # Check problem occurring while unpickling a task on workers
         self._check_crash(BrokenProcessPool, id, ErrorAtUnpickle())
@@ -197,13 +184,13 @@ class ExecutorDeadlockTest:
 
     def test_error_during_result_unpickle_in_result_handler(self):
         # gh-109832: Restore stderr overriden by _raise_error_ignore_stderr()
-        self.addCleanup(setattr, sys, "stderr", sys.stderr)
+        self.addCleanup(setattr, sys, 'stderr', sys.stderr)
 
         # Check problem occurring while unpickling a task in
         # the result_handler thread
-        self._check_crash(
-            BrokenProcessPool, _return_instance, ErrorAtUnpickle, ignore_stderr=True
-        )
+        self._check_crash(BrokenProcessPool,
+                          _return_instance, ErrorAtUnpickle,
+                          ignore_stderr=True)
 
     def test_exit_during_result_unpickle_in_result_handler(self):
         # Check problem occurring while unpickling a task in
@@ -214,11 +201,10 @@ class ExecutorDeadlockTest:
         # Test that the pool calling shutdown do not cause deadlock
         # if a worker fails after the shutdown call.
         self.executor.shutdown(wait=True)
-        with self.executor_type(
-            max_workers=2, mp_context=self.get_context()
-        ) as executor:
+        with self.executor_type(max_workers=2,
+                                mp_context=self.get_context()) as executor:
             self.executor = executor  # Allow clean up in fail_on_deadlock
-            f = executor.submit(_crash, delay=0.1)
+            f = executor.submit(_crash, delay=.1)
             executor.shutdown(wait=True)
             with self.assertRaises(BrokenProcessPool):
                 f.result()
@@ -228,9 +214,8 @@ class ExecutorDeadlockTest:
         # a deadlock if a task fails at pickle after the shutdown call.
         # Reported in bpo-39104.
         self.executor.shutdown(wait=True)
-        with self.executor_type(
-            max_workers=2, mp_context=self.get_context()
-        ) as executor:
+        with self.executor_type(max_workers=2,
+                                mp_context=self.get_context()) as executor:
             self.executor = executor  # Allow clean up in fail_on_deadlock
 
             # Start the executor and get the executor_manager_thread to collect
@@ -257,9 +242,8 @@ class ExecutorDeadlockTest:
         # https://github.com/python/cpython/issues/94777
         self.executor.shutdown(wait=True)
         data = "a" * support.PIPE_MAX_SIZE
-        with self.executor_type(
-            max_workers=2, mp_context=self.get_context()
-        ) as executor:
+        with self.executor_type(max_workers=2,
+                                mp_context=self.get_context()) as executor:
             self.executor = executor  # Allow clean up in fail_on_deadlock
             with self.assertRaises(BrokenProcessPool):
                 list(executor.map(_crash_with_data, [data] * 10))
@@ -273,18 +257,17 @@ class ExecutorDeadlockTest:
 
         self.executor.shutdown(wait=True)
 
-        if not hasattr(signal, "alarm"):
-            raise unittest.SkipTest("Tested platform does not support the alarm signal")
+        if not hasattr(signal, 'alarm'):
+            raise unittest.SkipTest(
+                "Tested platform does not support the alarm signal")
 
         def timeout(_signum, _frame):
             import faulthandler
-
             faulthandler.dump_traceback()
 
             raise RuntimeError("timed out while submitting jobs?")
 
         thread_run = futures.process._ExecutorManagerThread.run
-
         def mock_run(self):
             # Delay thread startup so the wakeup pipe can fill up and block
             time.sleep(3)
@@ -292,7 +275,6 @@ class ExecutorDeadlockTest:
 
         class MockWakeup(_ThreadWakeup):
             """Mock wakeup object to force the wakeup to block"""
-
             def __init__(self):
                 super().__init__()
                 self._dummy_queue = queue.Queue(maxsize=1)
@@ -309,15 +291,12 @@ class ExecutorDeadlockTest:
                 except queue.Empty:
                     pass
 
-        with (
-            unittest.mock.patch.object(
-                futures.process._ExecutorManagerThread, "run", mock_run
-            ),
-            unittest.mock.patch("concurrent.futures.process._ThreadWakeup", MockWakeup),
-        ):
-            with self.executor_type(
-                max_workers=2, mp_context=self.get_context()
-            ) as executor:
+        with (unittest.mock.patch.object(futures.process._ExecutorManagerThread,
+                                         'run', mock_run),
+              unittest.mock.patch('concurrent.futures.process._ThreadWakeup',
+                                  MockWakeup)):
+            with self.executor_type(max_workers=2,
+                                    mp_context=self.get_context()) as executor:
                 self.executor = executor  # Allow clean up in fail_on_deadlock
 
                 job_num = 100
@@ -338,16 +317,10 @@ class ExecutorDeadlockTest:
                     signal.signal(signal.SIGALRM, old_handler)
 
 
-create_executor_tests(
-    globals(),
-    ExecutorDeadlockTest,
-    executor_mixins=(
-        ProcessPoolForkMixin,
-        ProcessPoolForkserverMixin,
-        ProcessPoolSpawnMixin,
-    ),
-)
-
+create_executor_tests(globals(), ExecutorDeadlockTest,
+                      executor_mixins=(ProcessPoolForkMixin,
+                                       ProcessPoolForkserverMixin,
+                                       ProcessPoolSpawnMixin))
 
 def setUpModule():
     setup_module()

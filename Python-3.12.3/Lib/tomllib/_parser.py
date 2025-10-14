@@ -41,11 +41,11 @@ BASIC_STR_ESCAPE_REPLACEMENTS = MappingProxyType(
     {
         "\\b": "\u0008",  # backspace
         "\\t": "\u0009",  # tab
-        "\\n": "\u000a",  # linefeed
-        "\\f": "\u000c",  # form feed
-        "\\r": "\u000d",  # carriage return
+        "\\n": "\u000A",  # linefeed
+        "\\f": "\u000C",  # form feed
+        "\\r": "\u000D",  # carriage return
         '\\"': "\u0022",  # quote
-        "\\\\": "\u005c",  # backslash
+        "\\\\": "\u005C",  # backslash
     }
 )
 
@@ -66,9 +66,7 @@ def load(fp: BinaryIO, /, *, parse_float: ParseFloat = float) -> dict[str, Any]:
     return loads(s, parse_float=parse_float)
 
 
-def loads(
-    s: str, /, *, parse_float: ParseFloat = float
-) -> dict[str, Any]:  # noqa: C901
+def loads(s: str, /, *, parse_float: ParseFloat = float) -> dict[str, Any]:  # noqa: C901
     """Parse TOML from a string."""
 
     # The spec allows converting "\r\n" to "\n", even in string

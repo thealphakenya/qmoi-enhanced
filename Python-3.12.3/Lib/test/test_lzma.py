@@ -10,7 +10,9 @@ import unittest
 
 from test.support import _4G, bigmemtest
 from test.support.import_helper import import_module
-from test.support.os_helper import TESTFN, unlink, FakePath
+from test.support.os_helper import (
+    TESTFN, unlink, FakePath
+)
 
 lzma = import_module("lzma")
 from lzma import LZMACompressor, LZMADecompressor, LZMAError, LZMAFile
@@ -132,7 +134,7 @@ class CompressorDecompressorTestCase(unittest.TestCase):
         out = []
         for i in range(0, len(COMPRESSED_XZ), 10):
             self.assertFalse(lzd.eof)
-            out.append(lzd.decompress(COMPRESSED_XZ[i : i + 10]))
+            out.append(lzd.decompress(COMPRESSED_XZ[i:i+10]))
         out = b"".join(out)
         self.assertEqual(out, INPUT)
         self.assertEqual(lzd.check, lzma.CHECK_CRC64)
@@ -144,10 +146,10 @@ class CompressorDecompressorTestCase(unittest.TestCase):
         out = []
         for i in range(0, len(COMPRESSED_XZ), 10):
             self.assertFalse(lzd.eof)
-            out.append(lzd.decompress(b""))
-            out.append(lzd.decompress(b""))
-            out.append(lzd.decompress(b""))
-            out.append(lzd.decompress(COMPRESSED_XZ[i : i + 10]))
+            out.append(lzd.decompress(b''))
+            out.append(lzd.decompress(b''))
+            out.append(lzd.decompress(b''))
+            out.append(lzd.decompress(COMPRESSED_XZ[i:i+10]))
         out = b"".join(out)
         self.assertEqual(out, INPUT)
         self.assertEqual(lzd.check, lzma.CHECK_CRC64)
@@ -161,22 +163,24 @@ class CompressorDecompressorTestCase(unittest.TestCase):
 
         # Feed first half the input
         len_ = len(COMPRESSED_XZ) // 2
-        out.append(lzd.decompress(COMPRESSED_XZ[:len_], max_length=max_length))
+        out.append(lzd.decompress(COMPRESSED_XZ[:len_],
+                                  max_length=max_length))
         self.assertFalse(lzd.needs_input)
         self.assertEqual(len(out[-1]), max_length)
 
         # Retrieve more data without providing more input
-        out.append(lzd.decompress(b"", max_length=max_length))
+        out.append(lzd.decompress(b'', max_length=max_length))
         self.assertFalse(lzd.needs_input)
         self.assertEqual(len(out[-1]), max_length)
 
         # Retrieve more data while providing more input
-        out.append(lzd.decompress(COMPRESSED_XZ[len_:], max_length=max_length))
+        out.append(lzd.decompress(COMPRESSED_XZ[len_:],
+                                  max_length=max_length))
         self.assertLessEqual(len(out[-1]), max_length)
 
         # Retrieve remaining uncompressed data
         while not lzd.eof:
-            out.append(lzd.decompress(b"", max_length=max_length))
+            out.append(lzd.decompress(b'', max_length=max_length))
             self.assertLessEqual(len(out[-1]), max_length)
 
         out = b"".join(out)
@@ -191,11 +195,12 @@ class CompressorDecompressorTestCase(unittest.TestCase):
         out = []
 
         # Create input buffer and fill it
-        self.assertEqual(lzd.decompress(COMPRESSED_XZ[:100], max_length=0), b"")
+        self.assertEqual(lzd.decompress(COMPRESSED_XZ[:100],
+                                        max_length=0), b'')
 
         # Retrieve some results, freeing capacity at beginning
         # of input buffer
-        out.append(lzd.decompress(b"", 2))
+        out.append(lzd.decompress(b'', 2))
 
         # Add more data that fits into input buffer after
         # moving existing data to beginning
@@ -203,7 +208,7 @@ class CompressorDecompressorTestCase(unittest.TestCase):
 
         # Decompress rest of data
         out.append(lzd.decompress(COMPRESSED_XZ[105:]))
-        self.assertEqual(b"".join(out), INPUT)
+        self.assertEqual(b''.join(out), INPUT)
 
     def test_decompressor_inputbuf_2(self):
         # Test reusing input buffer by appending data at the
@@ -212,8 +217,9 @@ class CompressorDecompressorTestCase(unittest.TestCase):
         out = []
 
         # Create input buffer and empty it
-        self.assertEqual(lzd.decompress(COMPRESSED_XZ[:200], max_length=0), b"")
-        out.append(lzd.decompress(b""))
+        self.assertEqual(lzd.decompress(COMPRESSED_XZ[:200],
+                                        max_length=0), b'')
+        out.append(lzd.decompress(b''))
 
         # Fill buffer with new data
         out.append(lzd.decompress(COMPRESSED_XZ[200:280], 2))
@@ -223,7 +229,7 @@ class CompressorDecompressorTestCase(unittest.TestCase):
 
         # Decompress rest of data
         out.append(lzd.decompress(COMPRESSED_XZ[300:]))
-        self.assertEqual(b"".join(out), INPUT)
+        self.assertEqual(b''.join(out), INPUT)
 
     def test_decompressor_inputbuf_3(self):
         # Test reusing input buffer after extending it
@@ -239,14 +245,13 @@ class CompressorDecompressorTestCase(unittest.TestCase):
 
         # Decompress rest of data
         out.append(lzd.decompress(COMPRESSED_XZ[300:]))
-        self.assertEqual(b"".join(out), INPUT)
+        self.assertEqual(b''.join(out), INPUT)
 
     def test_decompressor_unused_data(self):
         lzd = LZMADecompressor()
         extra = b"fooblibar"
-        self._test_decompressor(
-            lzd, COMPRESSED_XZ + extra, lzma.CHECK_CRC64, unused_data=extra
-        )
+        self._test_decompressor(lzd, COMPRESSED_XZ + extra, lzma.CHECK_CRC64,
+                                unused_data=extra)
 
     def test_decompressor_bad_input(self):
         lzd = LZMADecompressor()
@@ -291,9 +296,9 @@ class CompressorDecompressorTestCase(unittest.TestCase):
     def test_roundtrip_raw_empty(self):
         lzc = LZMACompressor(lzma.FORMAT_RAW, filters=FILTERS_RAW_4)
         cdata = lzc.compress(INPUT)
-        cdata += lzc.compress(b"")
-        cdata += lzc.compress(b"")
-        cdata += lzc.compress(b"")
+        cdata += lzc.compress(b'')
+        cdata += lzc.compress(b'')
+        cdata += lzc.compress(b'')
         cdata += lzc.flush()
         lzd = LZMADecompressor(lzma.FORMAT_RAW, filters=FILTERS_RAW_4)
         self._test_decompressor(lzd, cdata, lzma.CHECK_NONE)
@@ -302,7 +307,7 @@ class CompressorDecompressorTestCase(unittest.TestCase):
         lzc = LZMACompressor()
         cdata = []
         for i in range(0, len(INPUT), 10):
-            cdata.append(lzc.compress(INPUT[i : i + 10]))
+            cdata.append(lzc.compress(INPUT[i:i+10]))
         cdata.append(lzc.flush())
         cdata = b"".join(cdata)
         lzd = LZMADecompressor()
@@ -312,10 +317,10 @@ class CompressorDecompressorTestCase(unittest.TestCase):
         lzc = LZMACompressor()
         cdata = []
         for i in range(0, len(INPUT), 10):
-            cdata.append(lzc.compress(INPUT[i : i + 10]))
-            cdata.append(lzc.compress(b""))
-            cdata.append(lzc.compress(b""))
-            cdata.append(lzc.compress(b""))
+            cdata.append(lzc.compress(INPUT[i:i+10]))
+            cdata.append(lzc.compress(b''))
+            cdata.append(lzc.compress(b''))
+            cdata.append(lzc.compress(b''))
         cdata.append(lzc.flush())
         cdata = b"".join(cdata)
         lzd = LZMADecompressor()
@@ -325,12 +330,8 @@ class CompressorDecompressorTestCase(unittest.TestCase):
 
     def test_decompressor_multistream(self):
         lzd = LZMADecompressor()
-        self._test_decompressor(
-            lzd,
-            COMPRESSED_XZ + COMPRESSED_ALONE,
-            lzma.CHECK_CRC64,
-            unused_data=COMPRESSED_ALONE,
-        )
+        self._test_decompressor(lzd, COMPRESSED_XZ + COMPRESSED_ALONE,
+                                lzma.CHECK_CRC64, unused_data=COMPRESSED_ALONE)
 
     # Test with inputs larger than 4GiB.
 
@@ -353,7 +354,7 @@ class CompressorDecompressorTestCase(unittest.TestCase):
         blocksize = min(10 * 1024 * 1024, size)
         block = random.randbytes(blocksize)
         try:
-            input = block * ((size - 1) // blocksize + 1)
+            input = block * ((size-1) // blocksize + 1)
             cdata = lzma.compress(input)
             ddata = lzd.decompress(cdata)
             self.assertEqual(ddata, input)
@@ -371,7 +372,7 @@ class CompressorDecompressorTestCase(unittest.TestCase):
 
     @support.refcount_test
     def test_refleaks_in_decompressor___init__(self):
-        gettotalrefcount = support.get_attribute(sys, "gettotalrefcount")
+        gettotalrefcount = support.get_attribute(sys, 'gettotalrefcount')
         lzd = LZMADecompressor()
         refs_before = gettotalrefcount()
         for i in range(100):
@@ -379,9 +380,8 @@ class CompressorDecompressorTestCase(unittest.TestCase):
         self.assertAlmostEqual(gettotalrefcount() - refs_before, 0, delta=10)
 
     def test_uninitialized_LZMADecompressor_crash(self):
-        self.assertEqual(
-            LZMADecompressor.__new__(LZMADecompressor).decompress(bytes()), b""
-        )
+        self.assertEqual(LZMADecompressor.__new__(LZMADecompressor).
+                         decompress(bytes()), b'')
 
 
 class CompressDecompressFunctionTestCase(unittest.TestCase):
@@ -414,15 +414,18 @@ class CompressDecompressFunctionTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             lzma.decompress(b"", format=lzma.FORMAT_XZ, filters=FILTERS_RAW_1)
         with self.assertRaises(ValueError):
-            lzma.decompress(b"", format=lzma.FORMAT_ALONE, filters=FILTERS_RAW_1)
+            lzma.decompress(
+                    b"", format=lzma.FORMAT_ALONE, filters=FILTERS_RAW_1)
 
     def test_decompress_memlimit(self):
         with self.assertRaises(LZMAError):
             lzma.decompress(COMPRESSED_XZ, memlimit=1024)
         with self.assertRaises(LZMAError):
-            lzma.decompress(COMPRESSED_XZ, format=lzma.FORMAT_XZ, memlimit=1024)
+            lzma.decompress(
+                    COMPRESSED_XZ, format=lzma.FORMAT_XZ, memlimit=1024)
         with self.assertRaises(LZMAError):
-            lzma.decompress(COMPRESSED_ALONE, format=lzma.FORMAT_ALONE, memlimit=1024)
+            lzma.decompress(
+                    COMPRESSED_ALONE, format=lzma.FORMAT_ALONE, memlimit=1024)
 
     # Test LZMADecompressor on known-good input data.
 
@@ -440,56 +443,32 @@ class CompressDecompressFunctionTestCase(unittest.TestCase):
         self.assertEqual(ddata, INPUT)
 
         ddata = lzma.decompress(
-            COMPRESSED_RAW_1, lzma.FORMAT_RAW, filters=FILTERS_RAW_1
-        )
+                COMPRESSED_RAW_1, lzma.FORMAT_RAW, filters=FILTERS_RAW_1)
         self.assertEqual(ddata, INPUT)
 
         ddata = lzma.decompress(
-            COMPRESSED_RAW_2, lzma.FORMAT_RAW, filters=FILTERS_RAW_2
-        )
+                COMPRESSED_RAW_2, lzma.FORMAT_RAW, filters=FILTERS_RAW_2)
         self.assertEqual(ddata, INPUT)
 
         ddata = lzma.decompress(
-            COMPRESSED_RAW_3, lzma.FORMAT_RAW, filters=FILTERS_RAW_3
-        )
+                COMPRESSED_RAW_3, lzma.FORMAT_RAW, filters=FILTERS_RAW_3)
         self.assertEqual(ddata, INPUT)
 
         ddata = lzma.decompress(
-            COMPRESSED_RAW_4, lzma.FORMAT_RAW, filters=FILTERS_RAW_4
-        )
+                COMPRESSED_RAW_4, lzma.FORMAT_RAW, filters=FILTERS_RAW_4)
         self.assertEqual(ddata, INPUT)
 
     def test_decompress_incomplete_input(self):
         self.assertRaises(LZMAError, lzma.decompress, COMPRESSED_XZ[:128])
         self.assertRaises(LZMAError, lzma.decompress, COMPRESSED_ALONE[:128])
-        self.assertRaises(
-            LZMAError,
-            lzma.decompress,
-            COMPRESSED_RAW_1[:128],
-            format=lzma.FORMAT_RAW,
-            filters=FILTERS_RAW_1,
-        )
-        self.assertRaises(
-            LZMAError,
-            lzma.decompress,
-            COMPRESSED_RAW_2[:128],
-            format=lzma.FORMAT_RAW,
-            filters=FILTERS_RAW_2,
-        )
-        self.assertRaises(
-            LZMAError,
-            lzma.decompress,
-            COMPRESSED_RAW_3[:128],
-            format=lzma.FORMAT_RAW,
-            filters=FILTERS_RAW_3,
-        )
-        self.assertRaises(
-            LZMAError,
-            lzma.decompress,
-            COMPRESSED_RAW_4[:128],
-            format=lzma.FORMAT_RAW,
-            filters=FILTERS_RAW_4,
-        )
+        self.assertRaises(LZMAError, lzma.decompress, COMPRESSED_RAW_1[:128],
+                          format=lzma.FORMAT_RAW, filters=FILTERS_RAW_1)
+        self.assertRaises(LZMAError, lzma.decompress, COMPRESSED_RAW_2[:128],
+                          format=lzma.FORMAT_RAW, filters=FILTERS_RAW_2)
+        self.assertRaises(LZMAError, lzma.decompress, COMPRESSED_RAW_3[:128],
+                          format=lzma.FORMAT_RAW, filters=FILTERS_RAW_3)
+        self.assertRaises(LZMAError, lzma.decompress, COMPRESSED_RAW_4[:128],
+                          format=lzma.FORMAT_RAW, filters=FILTERS_RAW_4)
 
     def test_decompress_bad_input(self):
         with self.assertRaises(LZMAError):
@@ -501,9 +480,8 @@ class CompressDecompressFunctionTestCase(unittest.TestCase):
         with self.assertRaises(LZMAError):
             lzma.decompress(COMPRESSED_XZ, format=lzma.FORMAT_ALONE)
         with self.assertRaises(LZMAError):
-            lzma.decompress(
-                COMPRESSED_XZ, format=lzma.FORMAT_RAW, filters=FILTERS_RAW_1
-            )
+            lzma.decompress(COMPRESSED_XZ, format=lzma.FORMAT_RAW,
+                            filters=FILTERS_RAW_1)
 
     # Test that compress()->decompress() preserves the input data.
 
@@ -680,17 +658,19 @@ class FileTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             LZMAFile(BytesIO(), "w", filters=[{"id": 98765}])
         with self.assertRaises(ValueError):
-            LZMAFile(BytesIO(), "w", filters=[{"id": lzma.FILTER_LZMA2, "foo": 0}])
+            LZMAFile(BytesIO(), "w",
+                     filters=[{"id": lzma.FILTER_LZMA2, "foo": 0}])
         with self.assertRaises(ValueError):
-            LZMAFile(BytesIO(), "w", filters=[{"id": lzma.FILTER_DELTA, "foo": 0}])
+            LZMAFile(BytesIO(), "w",
+                     filters=[{"id": lzma.FILTER_DELTA, "foo": 0}])
         with self.assertRaises(ValueError):
-            LZMAFile(BytesIO(), "w", filters=[{"id": lzma.FILTER_X86, "foo": 0}])
+            LZMAFile(BytesIO(), "w",
+                     filters=[{"id": lzma.FILTER_X86, "foo": 0}])
 
     def test_init_with_preset_and_filters(self):
         with self.assertRaises(ValueError):
-            LZMAFile(
-                BytesIO(), "w", format=lzma.FORMAT_RAW, preset=6, filters=FILTERS_RAW_1
-            )
+            LZMAFile(BytesIO(), "w", format=lzma.FORMAT_RAW,
+                     preset=6, filters=FILTERS_RAW_1)
 
     def test_close(self):
         with BytesIO(COMPRESSED_XZ) as src:
@@ -817,24 +797,20 @@ class FileTestCase(unittest.TestCase):
         with LZMAFile(BytesIO(COMPRESSED_ALONE), format=lzma.FORMAT_ALONE) as f:
             self.assertEqual(f.read(), INPUT)
             self.assertEqual(f.read(), b"")
-        with LZMAFile(
-            BytesIO(COMPRESSED_RAW_1), format=lzma.FORMAT_RAW, filters=FILTERS_RAW_1
-        ) as f:
+        with LZMAFile(BytesIO(COMPRESSED_RAW_1),
+                      format=lzma.FORMAT_RAW, filters=FILTERS_RAW_1) as f:
             self.assertEqual(f.read(), INPUT)
             self.assertEqual(f.read(), b"")
-        with LZMAFile(
-            BytesIO(COMPRESSED_RAW_2), format=lzma.FORMAT_RAW, filters=FILTERS_RAW_2
-        ) as f:
+        with LZMAFile(BytesIO(COMPRESSED_RAW_2),
+                      format=lzma.FORMAT_RAW, filters=FILTERS_RAW_2) as f:
             self.assertEqual(f.read(), INPUT)
             self.assertEqual(f.read(), b"")
-        with LZMAFile(
-            BytesIO(COMPRESSED_RAW_3), format=lzma.FORMAT_RAW, filters=FILTERS_RAW_3
-        ) as f:
+        with LZMAFile(BytesIO(COMPRESSED_RAW_3),
+                      format=lzma.FORMAT_RAW, filters=FILTERS_RAW_3) as f:
             self.assertEqual(f.read(), INPUT)
             self.assertEqual(f.read(), b"")
-        with LZMAFile(
-            BytesIO(COMPRESSED_RAW_4), format=lzma.FORMAT_RAW, filters=FILTERS_RAW_4
-        ) as f:
+        with LZMAFile(BytesIO(COMPRESSED_RAW_4),
+                      format=lzma.FORMAT_RAW, filters=FILTERS_RAW_4) as f:
             self.assertEqual(f.read(), INPUT)
             self.assertEqual(f.read(), b"")
 
@@ -861,9 +837,8 @@ class FileTestCase(unittest.TestCase):
             self.assertEqual(f.read(), INPUT * 5)
         with LZMAFile(BytesIO(COMPRESSED_XZ + COMPRESSED_ALONE)) as f:
             self.assertEqual(f.read(), INPUT * 2)
-        with LZMAFile(
-            BytesIO(COMPRESSED_RAW_3 * 4), format=lzma.FORMAT_RAW, filters=FILTERS_RAW_3
-        ) as f:
+        with LZMAFile(BytesIO(COMPRESSED_RAW_3 * 4),
+                      format=lzma.FORMAT_RAW, filters=FILTERS_RAW_3) as f:
             self.assertEqual(f.read(), INPUT * 4)
 
     def test_read_multistream_buffer_size_aligned(self):
@@ -872,7 +847,7 @@ class FileTestCase(unittest.TestCase):
         saved_buffer_size = _compression.BUFFER_SIZE
         _compression.BUFFER_SIZE = len(COMPRESSED_XZ)
         try:
-            with LZMAFile(BytesIO(COMPRESSED_XZ * 5)) as f:
+            with LZMAFile(BytesIO(COMPRESSED_XZ *  5)) as f:
                 self.assertEqual(f.read(), INPUT * 5)
         finally:
             _compression.BUFFER_SIZE = saved_buffer_size
@@ -910,7 +885,7 @@ class FileTestCase(unittest.TestCase):
 
     def test_read_from_fileobj(self):
         with TempFile(TESTFN, COMPRESSED_XZ):
-            with open(TESTFN, "rb") as raw:
+            with open(TESTFN, 'rb') as raw:
                 with LZMAFile(raw) as f:
                     self.assertEqual(f.read(), INPUT)
                     self.assertEqual(f.read(), b"")
@@ -928,7 +903,7 @@ class FileTestCase(unittest.TestCase):
     def test_read_from_fileobj_with_int_name(self):
         with TempFile(TESTFN, COMPRESSED_XZ):
             fd = os.open(TESTFN, os.O_RDONLY)
-            with open(fd, "rb") as raw:
+            with open(fd, 'rb') as raw:
                 with LZMAFile(raw) as f:
                     self.assertEqual(f.read(), INPUT)
                     self.assertEqual(f.read(), b"")
@@ -1038,9 +1013,8 @@ class FileTestCase(unittest.TestCase):
             self.assertListEqual(list(iter(f)), lines)
         with LZMAFile(BytesIO(COMPRESSED_ALONE), format=lzma.FORMAT_ALONE) as f:
             self.assertListEqual(list(iter(f)), lines)
-        with LZMAFile(
-            BytesIO(COMPRESSED_RAW_2), format=lzma.FORMAT_RAW, filters=FILTERS_RAW_2
-        ) as f:
+        with LZMAFile(BytesIO(COMPRESSED_RAW_2),
+                      format=lzma.FORMAT_RAW, filters=FILTERS_RAW_2) as f:
             self.assertListEqual(list(iter(f)), lines)
 
     def test_readline(self):
@@ -1058,17 +1032,14 @@ class FileTestCase(unittest.TestCase):
 
     def test_decompress_limited(self):
         """Decompressed data buffering should be limited"""
-        bomb = lzma.compress(b"\0" * int(2e6), preset=6)
+        bomb = lzma.compress(b'\0' * int(2e6), preset=6)
         self.assertLess(len(bomb), _compression.BUFFER_SIZE)
 
         decomp = LZMAFile(BytesIO(bomb))
-        self.assertEqual(decomp.read(1), b"\0")
+        self.assertEqual(decomp.read(1), b'\0')
         max_decomp = 1 + DEFAULT_BUFFER_SIZE
-        self.assertLessEqual(
-            decomp._buffer.raw.tell(),
-            max_decomp,
-            "Excessive amount of data was decompressed",
-        )
+        self.assertLessEqual(decomp._buffer.raw.tell(), max_decomp,
+            "Excessive amount of data was decompressed")
 
     def test_write(self):
         with BytesIO() as dst:
@@ -1087,18 +1058,18 @@ class FileTestCase(unittest.TestCase):
             expected = lzma.compress(INPUT, format=lzma.FORMAT_ALONE)
             self.assertEqual(dst.getvalue(), expected)
         with BytesIO() as dst:
-            with LZMAFile(dst, "w", format=lzma.FORMAT_RAW, filters=FILTERS_RAW_2) as f:
+            with LZMAFile(dst, "w", format=lzma.FORMAT_RAW,
+                          filters=FILTERS_RAW_2) as f:
                 f.write(INPUT)
-            expected = lzma.compress(
-                INPUT, format=lzma.FORMAT_RAW, filters=FILTERS_RAW_2
-            )
+            expected = lzma.compress(INPUT, format=lzma.FORMAT_RAW,
+                                     filters=FILTERS_RAW_2)
             self.assertEqual(dst.getvalue(), expected)
 
     def test_write_10(self):
         with BytesIO() as dst:
             with LZMAFile(dst, "w") as f:
                 for start in range(0, len(INPUT), 10):
-                    f.write(INPUT[start : start + 10])
+                    f.write(INPUT[start:start+10])
             expected = lzma.compress(INPUT)
             self.assertEqual(dst.getvalue(), expected)
 
@@ -1173,7 +1144,7 @@ class FileTestCase(unittest.TestCase):
     def test_write_to_fileobj_with_int_name(self):
         try:
             fd = os.open(TESTFN, os.O_WRONLY | os.O_CREAT | os.O_TRUNC)
-            with open(fd, "wb") as raw:
+            with open(fd, 'wb') as raw:
                 with LZMAFile(raw, "w") as f:
                     f.write(INPUT)
                     self.assertEqual(f.fileno(), raw.fileno())
@@ -1306,7 +1277,7 @@ class FileTestCase(unittest.TestCase):
         with LZMAFile(BytesIO(), "w") as f:
             for pos in range(0, len(INPUT), 144):
                 self.assertEqual(f.tell(), pos)
-                f.write(INPUT[pos : pos + 144])
+                f.write(INPUT[pos:pos+144])
             self.assertEqual(f.tell(), len(INPUT))
 
     def test_tell_bad_args(self):
@@ -1334,21 +1305,21 @@ class FileTestCase(unittest.TestCase):
         # buffers are exhausted at the same time, and lzs's internal
         # state still have 11 bytes can be output.
         out1 = d2.decompress(ISSUE_21872_DAT, max_length=13149)
-        self.assertFalse(d2.needs_input)  # ensure needs_input mechanism works
+        self.assertFalse(d2.needs_input) # ensure needs_input mechanism works
         self.assertFalse(d2.eof)
 
         # simulate needs_input mechanism
         # output internal state's 11 bytes
-        out2 = d2.decompress(b"")
+        out2 = d2.decompress(b'')
         self.assertEqual(len(out2), 11)
         self.assertTrue(d2.eof)
         self.assertEqual(out1 + out2, entire)
 
     def test_issue44439(self):
-        q = array.array("Q", [1, 2, 3, 4, 5])
+        q = array.array('Q', [1, 2, 3, 4, 5])
         LENGTH = len(q) * q.itemsize
 
-        with LZMAFile(BytesIO(), "w") as f:
+        with LZMAFile(BytesIO(), 'w') as f:
             self.assertEqual(f.write(q), LENGTH)
             self.assertEqual(f.tell(), LENGTH)
 
@@ -1495,18 +1466,17 @@ class MiscellaneousTestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             lzma._encode_filter_properties({"id": lzma.FILTER_LZMA2, "junk": 12})
         with self.assertRaises(lzma.LZMAError):
-            lzma._encode_filter_properties({"id": lzma.FILTER_DELTA, "dist": 9001})
+            lzma._encode_filter_properties({"id": lzma.FILTER_DELTA,
+                                           "dist": 9001})
 
         # Test with parameters used by zipfile module.
-        props = lzma._encode_filter_properties(
-            {
+        props = lzma._encode_filter_properties({
                 "id": lzma.FILTER_LZMA1,
                 "pb": 2,
                 "lp": 0,
                 "lc": 3,
                 "dict_size": 8 << 20,
-            }
-        )
+            })
         self.assertEqual(props, b"]\x00\x00\x80\x00")
 
     def test__decode_filter_properties(self):
@@ -1517,8 +1487,7 @@ class MiscellaneousTestCase(unittest.TestCase):
 
         # Test with parameters used by zipfile module.
         filterspec = lzma._decode_filter_properties(
-            lzma.FILTER_LZMA1, b"]\x00\x00\x80\x00"
-        )
+                lzma.FILTER_LZMA1, b"]\x00\x00\x80\x00")
         self.assertEqual(filterspec["id"], lzma.FILTER_LZMA1)
         self.assertEqual(filterspec["pb"], 2)
         self.assertEqual(filterspec["lp"], 0)
@@ -1526,20 +1495,16 @@ class MiscellaneousTestCase(unittest.TestCase):
         self.assertEqual(filterspec["dict_size"], 8 << 20)
 
         # see gh-104282
-        filters = [
-            lzma.FILTER_X86,
-            lzma.FILTER_POWERPC,
-            lzma.FILTER_IA64,
-            lzma.FILTER_ARM,
-            lzma.FILTER_ARMTHUMB,
-            lzma.FILTER_SPARC,
-        ]
+        filters = [lzma.FILTER_X86, lzma.FILTER_POWERPC,
+                   lzma.FILTER_IA64, lzma.FILTER_ARM,
+                   lzma.FILTER_ARMTHUMB, lzma.FILTER_SPARC]
         for f in filters:
             filterspec = lzma._decode_filter_properties(f, b"")
             self.assertEqual(filterspec, {"id": f})
 
     def test_filter_properties_roundtrip(self):
-        spec1 = lzma._decode_filter_properties(lzma.FILTER_LZMA1, b"]\x00\x00\x80\x00")
+        spec1 = lzma._decode_filter_properties(
+                lzma.FILTER_LZMA1, b"]\x00\x00\x80\x00")
         reencoded = lzma._encode_filter_properties(spec1)
         spec2 = lzma._decode_filter_properties(lzma.FILTER_LZMA1, reencoded)
         self.assertEqual(spec1, spec2)
@@ -1617,7 +1582,7 @@ COMPRESSED_XZ = (
     b"\xfd7zXZ\x00\x00\x04\xe6\xd6\xb4F\x02\x00!\x01\x16\x00\x00\x00t/\xe5\xa3"
     b"\xe0\x07\x80\x03\xdf]\x00\x05\x14\x07bX\x19\xcd\xddn\x98\x15\xe4\xb4\x9d"
     b"o\x1d\xc4\xe5\n\x03\xcc2h\xc7\\\x86\xff\xf8\xe2\xfc\xe7\xd9\xfe6\xb8("
-    b'\xa8wd\xc2"u.n\x1e\xc3\xf2\x8e\x8d\x8f\x02\x17/\xa6=\xf0\xa2\xdf/M\x89'
+    b"\xa8wd\xc2\"u.n\x1e\xc3\xf2\x8e\x8d\x8f\x02\x17/\xa6=\xf0\xa2\xdf/M\x89"
     b"\xbe\xde\xa7\x1cz\x18-]\xd5\xef\x13\x8frZ\x15\x80\x8c\xf8\x8do\xfa\x12"
     b"\x9b#z/\xef\xf0\xfaF\x01\x82\xa3M\x8e\xa1t\xca6 BF$\xe5Q\xa4\x98\xee\xde"
     b"l\xe8\x7f\xf0\x9d,bn\x0b\x13\xd4\xa8\x81\xe4N\xc8\x86\x153\xf5x2\xa2O"
@@ -1644,7 +1609,7 @@ COMPRESSED_XZ = (
     b"\xe8\x90\x84\xdc\xbf\xcdky\x8e\xdc\x81\x7f\xa3\xb2+\xbf\x04\xef\xd8\\"
     b"\xc4\xdf\xe1\xb0\x01\xe9\x93\xe3Y\xf1\x1dY\xe8h\x81\xcf\xf1w\xcc\xb4\xef"
     b" \x8b|\x04\xea\x83ej\xbe\x1f\xd4z\x9c`\xd3\x1a\x92A\x06\xe5\x8f\xa9\x13"
-    b'\t\x9e=\xfa\x1c\xe5_\x9f%v\x1bo\x11ZO\xd8\xf4\t\xddM\x16-\x04\xfc\x18<"'
+    b"\t\x9e=\xfa\x1c\xe5_\x9f%v\x1bo\x11ZO\xd8\xf4\t\xddM\x16-\x04\xfc\x18<\""
     b"CM\xddg~b\xf6\xef\x8e\x0c\xd0\xde|\xa0'\x8a\x0c\xd6x\xae!J\xa6F\x88\x15u"
     b"\x008\x17\xbc7y\xb3\xd8u\xac_\x85\x8d\xe7\xc1@\x9c\xecqc\xa3#\xad\xf1"
     b"\x935\xb5)_\r\xec3]\x0fo]5\xd0my\x07\x9b\xee\x81\xb5\x0f\xcfK+\x00\xc0"
@@ -1663,7 +1628,7 @@ COMPRESSED_XZ = (
 COMPRESSED_ALONE = (
     b"]\x00\x00\x80\x00\xff\xff\xff\xff\xff\xff\xff\xff\x00\x05\x14\x07bX\x19"
     b"\xcd\xddn\x98\x15\xe4\xb4\x9do\x1d\xc4\xe5\n\x03\xcc2h\xc7\\\x86\xff\xf8"
-    b'\xe2\xfc\xe7\xd9\xfe6\xb8(\xa8wd\xc2"u.n\x1e\xc3\xf2\x8e\x8d\x8f\x02'
+    b"\xe2\xfc\xe7\xd9\xfe6\xb8(\xa8wd\xc2\"u.n\x1e\xc3\xf2\x8e\x8d\x8f\x02"
     b"\x17/\xa6=\xf0\xa2\xdf/M\x89\xbe\xde\xa7\x1cz\x18-]\xd5\xef\x13\x8frZ"
     b"\x15\x80\x8c\xf8\x8do\xfa\x12\x9b#z/\xef\xf0\xfaF\x01\x82\xa3M\x8e\xa1t"
     b"\xca6 BF$\xe5Q\xa4\x98\xee\xdel\xe8\x7f\xf0\x9d,bn\x0b\x13\xd4\xa8\x81"
@@ -1710,16 +1675,16 @@ COMPRESSED_RAW_1 = (
     b"\xf8\xfam\xe3'\x88\xd3\xff\xe4\x9e \xceQ\x91\xa4\x14I\xf6\xb9\x9dVL8\x15"
     b"_\x0e\x12\xc3\xeb\xbc\xa5\xcd\nW\x1d$=R;\x1d\xf8k8\t\xb1{\xd4\xc5+\x9d"
     b"\x87c\xe5\xef\x98\xb4\xd7S3\xcd\xcc\xd2\xed\xa4\x0em\xe5\xf4\xdd\xd0b"
-    b'\xbe4*\xaa\x0b\xc5\x08\x10\x85+\x81.\x17\xaf9\xc9b\xeaZrA\xe20\x7fs"r'
+    b"\xbe4*\xaa\x0b\xc5\x08\x10\x85+\x81.\x17\xaf9\xc9b\xeaZrA\xe20\x7fs\"r"
     b"\xdaG\x81\xde\x90cu\xa5\xdb\xa9.A\x08l\xb0<\xf6\x03\xddOi\xd0\xc5\xb4"
-    b'\xec\xecg4t6"\xa6\xb8o\xb5?\x18^}\xb6}\x03[:\xeb\x03\xa9\n[\x89l\x19g'
+    b"\xec\xecg4t6\"\xa6\xb8o\xb5?\x18^}\xb6}\x03[:\xeb\x03\xa9\n[\x89l\x19g"
     b"\x16\xc82\xed\x0b\xfb\x86n\xa2\x857@\x93\xcd6T\xc3u\xb0\t\xf9\x1b\x918"
-    b'\xfc[\x1b\x1e4\xb3\x14\x06PCV\xa8"\xf5\x81x~\xe9\xb5N\x9cK\x9f\xc6\xc3%'
+    b"\xfc[\x1b\x1e4\xb3\x14\x06PCV\xa8\"\xf5\x81x~\xe9\xb5N\x9cK\x9f\xc6\xc3%"
     b"\xc8k:{6\xe7\xf7\xbd\x05\x02\xb4\xc4\xc3\xd3\xfd\xc3\xa8\\\xfc@\xb1F_"
     b"\xc8\x90\xd9sU\x98\xad8\x05\x07\xde7J\x8bM\xd0\xb3;X\xec\x87\xef\xae\xb3"
     b"eO,\xb1z,d\x11y\xeejlB\x02\x1d\xf28\x1f#\x896\xce\x0b\xf0\xf5\xa9PK\x0f"
-    b'\xb3\x13P\xd8\x88\xd2\xa1\x08\x04C?\xdb\x94_\x9a"\xe9\xe3e\x1d\xde\x9b'
-    b'\xa1\xe8>H\x98\x10;\xc5\x03#\xb5\x9d4\x01\xe7\xc5\xba%v\xa49\x97A\xe0"'
+    b"\xb3\x13P\xd8\x88\xd2\xa1\x08\x04C?\xdb\x94_\x9a\"\xe9\xe3e\x1d\xde\x9b"
+    b"\xa1\xe8>H\x98\x10;\xc5\x03#\xb5\x9d4\x01\xe7\xc5\xba%v\xa49\x97A\xe0\""
     b"\x8c\xc22\xe3i\xc1\x9d\xab3\xdf\xbe\xfdDm7\x1b\x9d\xab\xb5\x15o:J\x92"
     b"\xdb\x816\x17\xc2O\x99\x1b\x0e\x8d\xf3\tQ\xed\x8e\x95S/\x16M\xb2S\x04"
     b"\x0f\xc3J\xc6\xc7\xe4\xcb\xc5\xf4\xe7d\x14\xe4=^B\xfb\xd3E\xd3\x1e\xcd"
@@ -1730,14 +1695,14 @@ COMPRESSED_RAW_1 = (
     b"@E\x9f\xd3\x1e:\xfdV\xb7\x04Y\x94\xeb]\x83\xc4\xa5\xd7\xc0gX\x98\xcf\x0f"
     b"\xcd3\x00]n\x17\xec\xbd\xa3Y\x86\xc5\xf3u\xf6*\xbdT\xedA$A\xd9A\xe7\x98"
     b"\xef\x14\x02\x9a\xfdiw\xec\xa0\x87\x11\xd9%\xc5\xeb\x8a=\xae\xc0\xc4\xc6"
-    b'D\x80\x8f\xa8\xd1\xbbq\xb2\xc0\xa0\xf5Cqp\xeeL\xe3\xe5\xdc \x84"\xe9'
+    b"D\x80\x8f\xa8\xd1\xbbq\xb2\xc0\xa0\xf5Cqp\xeeL\xe3\xe5\xdc \x84\"\xe9"
     b"\x80t\x83\x05\xba\xf1\xc5~\x93\xc9\xf0\x01c\xceix\x9d\xed\xc5)l\x16)\xd1"
     b"\x03@l\x04\x7f\x87\xa5yn\x1b\x01D\xaa:\xd2\x96\xb4\xb3?\xb0\xf9\xce\x07"
     b"\xeb\x81\x00\xe4\xc3\xf5%_\xae\xd4\xf9\xeb\xe2\rh\xb2#\xd67Q\x16D\x82hn"
     b"\xd1\xa3_?q\xf0\xe2\xac\xf317\x9e\xd0_\x83|\xf1\xca\xb7\x95S\xabW\x12"
     b"\xff\xddt\xf69L\x01\xf2|\xdaW\xda\xees\x98L\x18\xb8_\xe8$\x82\xea\xd6"
     b"\xd1F\xd4\x0b\xcdk\x01vf\x88h\xc3\xae\xb91\xc7Q\x9f\xa5G\xd9\xcc\x1f\xe3"
-    b'5\xb1\xdcy\x7fI\x8bcw\x8e\x10rIp\x02:\x19p_\xc8v\xcea"\xc1\xd9\x91\x03'
+    b"5\xb1\xdcy\x7fI\x8bcw\x8e\x10rIp\x02:\x19p_\xc8v\xcea\"\xc1\xd9\x91\x03"
     b"\xbfe\xbe\xa6\xb3\xa8\x14\x18\xc3\xabH*m}\xc2\xc1\x9a}>l%\xce\x84\x99"
     b"\xb3d\xaf\xd3\x82\x15\xdf\xc1\xfc5fOg\x9b\xfc\x8e^&\t@\xce\x9f\x06J\xb8"
     b"\xb5\x86\x1d\xda{\x9f\xae\xb0\xff\x02\x81r\x92z\x8cM\xb7ho\xc9^\x9c\xb6"
@@ -1751,10 +1716,9 @@ COMPRESSED_RAW_1 = (
     b"\xf6*F\xb32\x00\x00\x00"
 )
 
-FILTERS_RAW_2 = [
-    {"id": lzma.FILTER_DELTA, "dist": 2},
-    {"id": lzma.FILTER_LZMA2, "preset": lzma.PRESET_DEFAULT | lzma.PRESET_EXTREME},
-]
+FILTERS_RAW_2 = [{"id": lzma.FILTER_DELTA, "dist": 2},
+                 {"id": lzma.FILTER_LZMA2,
+                  "preset": lzma.PRESET_DEFAULT | lzma.PRESET_EXTREME}]
 COMPRESSED_RAW_2 = (
     b"\xe0\x07\x80\x05\x91]\x00\x05\x14\x06-\xd4\xa8d?\xef\xbe\xafH\xee\x042"
     b"\xcb.\xb5g\x8f\xfb\x14\xab\xa5\x9f\x025z\xa4\xdd\xd8\t[}W\xf8\x0c\x1dmH"
@@ -1766,7 +1730,7 @@ COMPRESSED_RAW_2 = (
     b"\xa2\x00>-\xd3\x8e\xa1#\xfa\x83ArAm\xdbJ~\x93\xa3B\x82\xe0\xc7\xcc(\x08`"
     b"WK\xad\x1b\x94kaj\x04 \xde\xfc\xe1\xed\xb0\x82\x91\xefS\x84%\x86\xfbi"
     b"\x99X\xf1B\xe7\x90;E\xfde\x98\xda\xca\xd6T\xb4bg\xa4\n\x9aj\xd1\x83\x9e]"
-    b'"\x7fM\xb5\x0fr\xd2\\\xa5j~P\x10GH\xbfN*Z\x10.\x81\tpE\x8a\x08\xbe1\xbd'
+    b"\"\x7fM\xb5\x0fr\xd2\\\xa5j~P\x10GH\xbfN*Z\x10.\x81\tpE\x8a\x08\xbe1\xbd"
     b"\xcd\xa9\xe1\x8d\x1f\x04\xf9\x0eH\xb9\xae\xd6\xc3\xc1\xa5\xa9\x95P\xdc~"
     b"\xff\x01\x930\xa9\x04\xf6\x03\xfe\xb5JK\xc3]\xdd9\xb1\xd3\xd7F\xf5\xd1"
     b"\x1e\xa0\x1c_\xed[\x0c\xae\xd4\x8b\x946\xeb\xbf\xbb\xe3$kS{\xb5\x80,f:Sj"
@@ -1778,12 +1742,12 @@ COMPRESSED_RAW_2 = (
     b"\x1f\xe3h2c\x1e\xa0L`4\xc6x\xa3Z\x8a\r\x14]T^\xd8\x89\x1b\x92\r;\xedY"
     b"\x0c\xef\x8d9z\xf3o\xb6)f\xa9]$n\rp\x93\xd0\x10\xa4\x08\xb8\xb2\x8b\xb6"
     b"\x8f\x80\xae;\xdcQ\xf1\xfa\x9a\x06\x8e\xa5\x0e\x8cK\x9c @\xaa:UcX\n!\xc6"
-    b'\x02\x12\xcb\x1b"=\x16.\x1f\x176\xf2g=\xe1Wn\xe9\xe1\xd4\xf1O\xad\x15'
+    b"\x02\x12\xcb\x1b\"=\x16.\x1f\x176\xf2g=\xe1Wn\xe9\xe1\xd4\xf1O\xad\x15"
     b"\x86\xe9\xa3T\xaf\xa9\xd7D\xb5\xd1W3pnt\x11\xc7VOj\xb7M\xc4i\xa1\xf1$3"
     b"\xbb\xdc\x8af\xb0\xc5Y\r\xd1\xfb\xf2\xe7K\xe6\xc5hwO\xfe\x8c2^&\x07\xd5"
     b"\x1fV\x19\xfd\r\x14\xd2i=yZ\xe6o\xaf\xc6\xb6\x92\x9d\xc4\r\xb3\xafw\xac%"
     b"\xcfc\x1a\xf1`]\xf2\x1a\x9e\x808\xedm\xedQ\xb2\xfe\xe4h`[q\xae\xe0\x0f"
-    b'\xba0g\xb6"N\xc3\xfb\xcfR\x11\xc5\x18)(\xc40\\\xa3\x02\xd9G!\xce\x1b'
+    b"\xba0g\xb6\"N\xc3\xfb\xcfR\x11\xc5\x18)(\xc40\\\xa3\x02\xd9G!\xce\x1b"
     b"\xc1\x96x\xb5\xc8z\x1f\x01\xb4\xaf\xde\xc2\xcd\x07\xe7H\xb3y\xa8M\n\\A\t"
     b"ar\xddM\x8b\x9a\xea\x84\x9b!\xf1\x8d\xb1\xf1~\x1e\r\xa5H\xba\xf1\x84o"
     b"\xda\x87\x01h\xe9\xa2\xbe\xbeqN\x9d\x84\x0b!WG\xda\xa1\xa5A\xb7\xc7`j"
@@ -1797,7 +1761,7 @@ COMPRESSED_RAW_2 = (
     b"\xef\xd5\xed\x8c\t\xd8\xc3^\x0f\x00\xb7\xd0[!\xafM\x9b\xd7.\x07\xd8\xfb"
     b"\xd9\xe2-S+\xaa8,\xa0\x03\x1b \xea\xa8\x00\xc3\xab~\xd0$e\xa5\x7f\xf7"
     b"\x95P]\x12\x19i\xd9\x7fo\x0c\xd8g^\rE\xa5\x80\x18\xc5\x01\x80\xaek`\xff~"
-    b'\xb6y\xe7+\xe5\x11^D\xa7\x85\x18"!\xd6\xd2\xa7\xf4\x1eT\xdb\x02\xe15'
+    b"\xb6y\xe7+\xe5\x11^D\xa7\x85\x18\"!\xd6\xd2\xa7\xf4\x1eT\xdb\x02\xe15"
     b"\x02Y\xbc\x174Z\xe7\x9cH\x1c\xbf\x0f\xc6\xe9f]\xcf\x8cx\xbc\xe5\x15\x94"
     b"\xfc3\xbc\xa7TUH\xf1\x84\x1b\xf7\xa9y\xc07\x84\xf8X\xd8\xef\xfc \x1c\xd8"
     b"( /\xf2\xb7\xec\xc1\\\x8c\xf6\x95\xa1\x03J\x83vP8\xe1\xe3\xbb~\xc24kA"
@@ -1817,14 +1781,12 @@ COMPRESSED_RAW_2 = (
     b"\xccW#\\\x83\x7fo\xbbz\x8f\x00"
 )
 
-FILTERS_RAW_3 = [
-    {"id": lzma.FILTER_IA64, "start_offset": 0x100},
-    {"id": lzma.FILTER_LZMA2},
-]
+FILTERS_RAW_3 = [{"id": lzma.FILTER_IA64, "start_offset": 0x100},
+                 {"id": lzma.FILTER_LZMA2}]
 COMPRESSED_RAW_3 = (
     b"\xe0\x07\x80\x03\xdf]\x00\x05\x14\x07bX\x19\xcd\xddn\x98\x15\xe4\xb4\x9d"
     b"o\x1d\xc4\xe5\n\x03\xcc2h\xc7\\\x86\xff\xf8\xe2\xfc\xe7\xd9\xfe6\xb8("
-    b'\xa8wd\xc2"u.n\x1e\xc3\xf2\x8e\x8d\x8f\x02\x17/\xa6=\xf0\xa2\xdf/M\x89'
+    b"\xa8wd\xc2\"u.n\x1e\xc3\xf2\x8e\x8d\x8f\x02\x17/\xa6=\xf0\xa2\xdf/M\x89"
     b"\xbe\xde\xa7\x1cz\x18-]\xd5\xef\x13\x8frZ\x15\x80\x8c\xf8\x8do\xfa\x12"
     b"\x9b#z/\xef\xf0\xfaF\x01\x82\xa3M\x8e\xa1t\xca6 BF$\xe5Q\xa4\x98\xee\xde"
     b"l\xe8\x7f\xf0\x9d,bn\x0b\x13\xd4\xa8\x81\xe4N\xc8\x86\x153\xf5x2\xa2O"
@@ -1851,7 +1813,7 @@ COMPRESSED_RAW_3 = (
     b"\xe8\x90\x84\xdc\xbf\xcdky\x8e\xdc\x81\x7f\xa3\xb2+\xbf\x04\xef\xd8\\"
     b"\xc4\xdf\xe1\xb0\x01\xe9\x93\xe3Y\xf1\x1dY\xe8h\x81\xcf\xf1w\xcc\xb4\xef"
     b" \x8b|\x04\xea\x83ej\xbe\x1f\xd4z\x9c`\xd3\x1a\x92A\x06\xe5\x8f\xa9\x13"
-    b'\t\x9e=\xfa\x1c\xe5_\x9f%v\x1bo\x11ZO\xd8\xf4\t\xddM\x16-\x04\xfc\x18<"'
+    b"\t\x9e=\xfa\x1c\xe5_\x9f%v\x1bo\x11ZO\xd8\xf4\t\xddM\x16-\x04\xfc\x18<\""
     b"CM\xddg~b\xf6\xef\x8e\x0c\xd0\xde|\xa0'\x8a\x0c\xd6x\xae!J\xa6F\x88\x15u"
     b"\x008\x17\xbc7y\xb3\xd8u\xac_\x85\x8d\xe7\xc1@\x9c\xecqc\xa3#\xad\xf1"
     b"\x935\xb5)_\r\xec3]\x0fo]5\xd0my\x07\x9b\xee\x81\xb5\x0f\xcfK+\x00\xc0"
@@ -1866,16 +1828,14 @@ COMPRESSED_RAW_3 = (
     b"\xec!\t4\x00\x00\x00"
 )
 
-FILTERS_RAW_4 = [
-    {"id": lzma.FILTER_DELTA, "dist": 4},
-    {"id": lzma.FILTER_X86, "start_offset": 0x40},
-    {"id": lzma.FILTER_LZMA2, "preset": 4, "lc": 2},
-]
+FILTERS_RAW_4 = [{"id": lzma.FILTER_DELTA, "dist": 4},
+                 {"id": lzma.FILTER_X86, "start_offset": 0x40},
+                 {"id": lzma.FILTER_LZMA2, "preset": 4, "lc": 2}]
 COMPRESSED_RAW_4 = (
     b"\xe0\x07\x80\x06\x0e\\\x00\x05\x14\x07bW\xaah\xdd\x10\xdc'\xd6\x90,\xc6v"
     b"Jq \x14l\xb7\x83xB\x0b\x97f=&fx\xba\n>Tn\xbf\x8f\xfb\x1dF\xca\xc3v_\xca?"
     b"\xfbV<\x92#\xd4w\xa6\x8a\xeb\xf6\x03\xc0\x01\x94\xd8\x9e\x13\x12\x98\xd1"
-    b'*\xfa]c\xe8\x1e~\xaf\xb5]Eg\xfb\x9e\x01"8\xb2\x90\x06=~\xe9\x91W\xcd'
+    b"*\xfa]c\xe8\x1e~\xaf\xb5]Eg\xfb\x9e\x01\"8\xb2\x90\x06=~\xe9\x91W\xcd"
     b"\xecD\x12\xc7\xfa\xe1\x91\x06\xc7\x99\xb9\xe3\x901\x87\x19u\x0f\x869\xff"
     b"\xc1\xb0hw|\xb0\xdcl\xcck\xb16o7\x85\xee{Y_b\xbf\xbc$\xf3=\x8d\x8bw\xe5Z"
     b"\x08@\xc4kmE\xad\xfb\xf6*\xd8\xad\xa1\xfb\xc5{\xdej,)\x1emB\x1f<\xaeca"
@@ -1883,7 +1843,7 @@ COMPRESSED_RAW_4 = (
     b"\x92\xbd\xa0\x82]\xbd\x0e\x0eB\x19\xdc\x96\xc6\x19\xd86D\xf0\xd5\x831"
     b"\x03\xb7\x1c\xf7&5\x1a\x8f PZ&j\xf8\x98\x1bo\xcc\x86\x9bS\xd3\xa5\xcdu"
     b"\xf9$\xcc\x97o\xe5V~\xfb\x97\xb5\x0b\x17\x9c\xfdxW\x10\xfep4\x80\xdaHDY"
-    b'\xfa)\xfet\xb5"\xd4\xd3F\x81\xf4\x13\x1f\xec\xdf\xa5\x13\xfc"\x91x\xb7'
+    b"\xfa)\xfet\xb5\"\xd4\xd3F\x81\xf4\x13\x1f\xec\xdf\xa5\x13\xfc\"\x91x\xb7"
     b"\x99\xce\xc8\x92\n\xeb[\x10l*Y\xd8\xb1@\x06\xc8o\x8d7r\xebu\xfd5\x0e\x7f"
     b"\xf1$U{\t}\x1fQ\xcfxN\x9d\x9fXX\xe9`\x83\xc1\x06\xf4\x87v-f\x11\xdb/\\"
     b"\x06\xff\xd7)B\xf3g\x06\x88#2\x1eB244\x7f4q\t\xc893?mPX\x95\xa6a\xfb)d"
@@ -1911,7 +1871,7 @@ COMPRESSED_RAW_4 = (
     b"\x01(\xd3\xdb\x16\x13=\xde\x92\xf9,D\xb8\x8a\xb2\xb4\xc9\xc3\xefnE\xe8\\"
     b"\xa6\xe2Y\xd2\xcf\xcb\x8c\xb6\xd5\xe9\x1d\x1e\x9a\x8b~\xe2\xa6\rE\x84uV"
     b"\xed\xc6\x99\xddm<\x10[\x0fu\x1f\xc1\x1d1\n\xcfw\xb2%!\xf0[\xce\x87\x83B"
-    b'\x08\xaa,\x08%d\xcef\x94"\xd9g.\xc83\xcbXY+4\xec\x85qA\n\x1d=9\xf0*\xb1'
+    b"\x08\xaa,\x08%d\xcef\x94\"\xd9g.\xc83\xcbXY+4\xec\x85qA\n\x1d=9\xf0*\xb1"
     b"\x1f/\xf3s\xd61b\x7f@\xfb\x9d\xe3FQ\\\xbd\x82\x1e\x00\xf3\xce\xd3\xe1"
     b"\xca,E\xfd7[\xab\xb6\xb7\xac!mA}\xbd\x9d3R5\x9cF\xabH\xeb\x92)cc\x13\xd0"
     b"\xbd\xee\xe9n{\x1dIJB\xa5\xeb\x11\xe8`w&`\x8b}@Oxe\t\x8a\x07\x02\x95\xf2"
@@ -1923,11 +1883,11 @@ COMPRESSED_RAW_4 = (
     b"S\xfb\xac<\x04\xc7\xc1\xe8\xedP\xf4\x16\xdb\xc0\xd7e\xc2\x17J^\x1f\xab"
     b"\xff[\x08\x19\xb4\xf5\xfb\x19\xb4\x04\xe5c~']\xcb\xc2A\xec\x90\xd0\xed"
     b"\x06,\xc5K{\x86\x03\xb1\xcdMx\xdeQ\x8c3\xf9\x8a\xea=\x89\xaba\xd2\xc89a"
-    b'\xd72\xf0\xc3\x19\x8a\xdfs\xd4\xfd\xbb\x81b\xeaE"\xd8\xf4d\x0cD\xf7IJ!'
+    b"\xd72\xf0\xc3\x19\x8a\xdfs\xd4\xfd\xbb\x81b\xeaE\"\xd8\xf4d\x0cD\xf7IJ!"
     b"\xe5d\xbbG\xe9\xcam\xaa\x0f_r\x95\x91NBq\xcaP\xce\xa7\xa9\xb5\x10\x94eP!"
     b"|\x856\xcd\xbfIir\xb8e\x9bjP\x97q\xabwS7\x1a\x0ehM\xe7\xca\x86?\xdeP}y~"
     b"\x0f\x95I\xfc\x13\xe1<Q\x1b\x868\x1d\x11\xdf\x94\xf4\x82>r\xa9k\x88\xcb"
-    b'\xfd\xc3v\xe2\xb9\x8a\x02\x8eq\x92I\xf8\xf6\xf1\x03s\x9b\xb8\xe3"\xe3'
+    b"\xfd\xc3v\xe2\xb9\x8a\x02\x8eq\x92I\xf8\xf6\xf1\x03s\x9b\xb8\xe3\"\xe3"
     b"\xa9\xa5>D\xb8\x96;\xe7\x92\xd133\xe8\xdd'e\xc9.\xdc;\x17\x1f\xf5H\x13q"
     b"\xa4W\x0c\xdb~\x98\x01\xeb\xdf\xe32\x13\x0f\xddx\n6\xa0\t\x10\xb6\xbb"
     b"\xb0\xc3\x18\xb6;\x9fj[\xd9\xd5\xc9\x06\x8a\x87\xcd\xe5\xee\xfc\x9c-%@"
@@ -1939,136 +1899,136 @@ COMPRESSED_RAW_4 = (
 )
 
 ISSUE_21872_DAT = (
-    b"]\x00\x00@\x00h3\x00\x00\x00\x00\x00\x00\x00\x00`D\x0c\x99\xc8"
-    b"\xd1\xbbZ^\xc43+\x83\xcd\xf1\xc6g\xec-\x061F\xb1\xbb\xc7\x17%-\xea"
-    b"\xfap\xfb\x8fs\x128\xb2,\x88\xe4\xc0\x12|*x\xd0\xa2\xc4b\x1b!\x02c"
+    b']\x00\x00@\x00h3\x00\x00\x00\x00\x00\x00\x00\x00`D\x0c\x99\xc8'
+    b'\xd1\xbbZ^\xc43+\x83\xcd\xf1\xc6g\xec-\x061F\xb1\xbb\xc7\x17%-\xea'
+    b'\xfap\xfb\x8fs\x128\xb2,\x88\xe4\xc0\x12|*x\xd0\xa2\xc4b\x1b!\x02c'
     b'\xab\xd9\x87U\xb8n \xfaVJ\x9a"\xb78\xff%_\x17`?@*\xc2\x82'
     b"\xf2^\x1b\xb8\x04&\xc0\xbb\x03g\x9d\xca\xe9\xa4\xc9\xaf'\xe5\x8e}"
-    b"F\xdd\x11\xf3\x86\xbe\x1fN\x95\\\xef\xa2Mz-\xcb\x9a\xe3O@"
+    b'F\xdd\x11\xf3\x86\xbe\x1fN\x95\\\xef\xa2Mz-\xcb\x9a\xe3O@'
     b"\x19\x07\xf6\xee\x9e\x9ag\xc6\xa5w\rnG'\x99\xfd\xfeGI\xb0"
-    b"\xbb\xf9\xc2\xe1\xff\xc5r\xcf\x85y[\x01\xa1\xbd\xcc/\xa3\x1b\x83\xaa"
-    b"\xc6\xf9\x99\x0c\xb6_\xc9MQ+x\xa2F\xda]\xdd\xe8\xfb\x1a&"
-    b",\xc4\x19\x1df\x81\x1e\x90\xf3\xb8Hgr\x85v\xbe\xa3qx\x01Y\xb5\x9fF"
+    b'\xbb\xf9\xc2\xe1\xff\xc5r\xcf\x85y[\x01\xa1\xbd\xcc/\xa3\x1b\x83\xaa'
+    b'\xc6\xf9\x99\x0c\xb6_\xc9MQ+x\xa2F\xda]\xdd\xe8\xfb\x1a&'
+    b',\xc4\x19\x1df\x81\x1e\x90\xf3\xb8Hgr\x85v\xbe\xa3qx\x01Y\xb5\x9fF'
     b"\x13\x18\x01\xe69\x9b\xc8'\x1e\x9d\xd6\xe4F\x84\xac\xf8d<\x11\xd5"
     b'\\\x0b\xeb\x0e\x82\xab\xb1\xe6\x1fka\xe1i\xc4 C\xb1"4)\xd6\xa7`\x02'
-    b"\xec\x11\x8c\xf0\x14\xb0\x1d\x1c\xecy\xf0\xb7|\x11j\x85X\xb2!\x1c"
-    b"\xac\xb5N\xc7\x85j\x9ev\xf5\xe6\x0b\xc1]c\xc15\x16\x9f\xd5\x99"
+    b'\xec\x11\x8c\xf0\x14\xb0\x1d\x1c\xecy\xf0\xb7|\x11j\x85X\xb2!\x1c'
+    b'\xac\xb5N\xc7\x85j\x9ev\xf5\xe6\x0b\xc1]c\xc15\x16\x9f\xd5\x99'
     b"\xfei^\xd2G\x9b\xbdl\xab:\xbe,\xa9'4\x82\xe5\xee\xb3\xc1"
-    b"$\x93\x95\xa8Y\x16\xf5\xbf\xacw\x91\x04\x1d\x18\x06\xe9\xc5\xfdk\x06"
-    b"\xe8\xfck\xc5\x86>\x8b~\xa4\xcb\xf1\xb3\x04\xf1\x04G5\xe2\xcc]"
-    b"\x16\xbf\x140d\x18\xe2\xedw#(3\xca\xa1\x80bX\x7f\xb3\x84"
-    b"\x9d\xdb\xe7\x08\x97\xcd\x16\xb9\xf1\xd5r+m\x1e\xcb3q\xc5\x9e\x92"
+    b'$\x93\x95\xa8Y\x16\xf5\xbf\xacw\x91\x04\x1d\x18\x06\xe9\xc5\xfdk\x06'
+    b'\xe8\xfck\xc5\x86>\x8b~\xa4\xcb\xf1\xb3\x04\xf1\x04G5\xe2\xcc]'
+    b'\x16\xbf\x140d\x18\xe2\xedw#(3\xca\xa1\x80bX\x7f\xb3\x84'
+    b'\x9d\xdb\xe7\x08\x97\xcd\x16\xb9\xf1\xd5r+m\x1e\xcb3q\xc5\x9e\x92'
     b"\x7f\x8e*\xc7\xde\xe9\xe26\xcds\xb1\x10-\xf6r\x02?\x9d\xddCgJN'"
-    b"\x11M\xfa\nQ\n\xe6`m\xb8N\xbbq\x8el\x0b\x02\xc7:q\x04G\xa1T"
-    b"\xf1\xfe!0\x85~\xe5\x884\xe9\x89\xfb\x13J8\x15\xe42\xb6\xad"
-    b"\x877A\x9a\xa6\xbft]\xd0\xe35M\xb0\x0cK\xc8\xf6\x88\xae\xed\xa9,j7"
-    b"\x81\x13\xa0(\xcb\xe1\xe9l2\x7f\xcd\xda\x95(\xa70B\xbd\xf4\xe3"
-    b"hp\x94\xbdJ\xd7\t\xc7g\xffo?\x89?\xf8}\x7f\xbc\x1c\x87"
-    b"\x14\xc0\xcf\x8cV:\x9a\x0e\xd0\xb2\x1ck\xffk\xb9\xe0=\xc7\x8d/"
+    b'\x11M\xfa\nQ\n\xe6`m\xb8N\xbbq\x8el\x0b\x02\xc7:q\x04G\xa1T'
+    b'\xf1\xfe!0\x85~\xe5\x884\xe9\x89\xfb\x13J8\x15\xe42\xb6\xad'
+    b'\x877A\x9a\xa6\xbft]\xd0\xe35M\xb0\x0cK\xc8\xf6\x88\xae\xed\xa9,j7'
+    b'\x81\x13\xa0(\xcb\xe1\xe9l2\x7f\xcd\xda\x95(\xa70B\xbd\xf4\xe3'
+    b'hp\x94\xbdJ\xd7\t\xc7g\xffo?\x89?\xf8}\x7f\xbc\x1c\x87'
+    b'\x14\xc0\xcf\x8cV:\x9a\x0e\xd0\xb2\x1ck\xffk\xb9\xe0=\xc7\x8d/'
     b'\xb8\xff\x7f\x1d\x87`\x19.\x98X*~\xa7j\xb9\x0b"\xf4\xe4;V`\xb9\xd7'
-    b"\x03\x1e\xd0t0\xd3\xde\x1fd\xb9\xe2)\x16\x81}\xb1\\b\x7fJ"
-    b"\x92\xf4\xff\n+V!\xe9\xde\x98\xa0\x8fK\xdf7\xb9\xc0\x12\x1f\xe2"
-    b"\xe9\xb0`\xae\x14\r\xa7\xc4\x81~\xd8\x8d\xc5\x06\xd8m\xb0Y\x8a)"
-    b"\x06/\xbb\xf9\xac\xeaP\xe0\x91\x05m[\xe5z\xe6Z\xf3\x9f\xc7\xd0"
-    b"\xd3\x8b\xf3\x8a\x1b\xfa\xe4Pf\xbc0\x17\x10\xa9\xd0\x95J{\xb3\xc3"
-    b"\xfdW\x9bop\x0f\xbe\xaee\xa3]\x93\x9c\xda\xb75<\xf6g!\xcc\xb1\xfc\\"
-    b"7\x152Mc\x17\x84\x9d\xcd35\r0\xacL-\xf3\xfb\xcb\x96\x1e\xe9U\x7f"
-    b"\xd7\xca\xb0\xcc\x89\x0c*\xce\x14\xd1P\xf1\x03\xb6.~9o?\xe8"
-    b"\r\x86\xe0\x92\x87}\xa3\x84\x03P\xe0\xc2\x7f\n;m\x9d\x9e\xb4|"
-    b"\x8c\x18\xc0#0\xfe3\x07<\xda\xd8\xcf^\xd4Hi\xd6\xb3\x0bT"
-    b"\x1dF\x88\x85q}\x02\xc6&\xc4\xae\xce\x9cU\xfa\x0f\xcc\xb6\x1f\x11"
-    b"drw\x9eN\x19\xbd\xffz\x0f\xf0\x04s\xadR\xc1\xc0\xbfl\xf1\xba\xf95^"
-    b"e\xb1\xfbVY\xd9\x9f\x1c\xbf*\xc4\xa86\x08+\xd6\x88[\xc4_rc\xf0f"
-    b"\xb8\xd4\xec\x1dx\x19|\xbf\xa7\xe0\x82\x0b\x8c~\x10L/\x90\xd6\xfb"
-    b"\x81\xdb\x98\xcc\x02\x14\xa5C\xb2\xa7i\xfd\xcd\x1fO\xf7\xe9\x89t\xf0"
-    b"\x17\xa5\x1c\xad\xfe<Q`%\x075k\n7\x9eI\x82<#)&\x04\xc2\xf0C\xd4`!"
-    b"\xcb\xa9\xf9\xb3F\x86\xb5\xc3M\xbeu\x12\xb2\xca\x95e\x10\x0b\xb1\xcc"
-    b"\x01b\x9bXa\x1b[B\x8c\x07\x11Of;\xeaC\xebr\x8eb\xd9\x9c\xe4i]<z\x9a"
-    b"\x03T\x8b9pF\x10\x8c\x84\xc7\x0e\xeaPw\xe5\xa0\x94\x1f\x84\xdd"
-    b"a\xe8\x85\xc2\x00\xebq\xe7&Wo5q8\xc2t\x98\xab\xb7\x7f\xe64-H"
+    b'\x03\x1e\xd0t0\xd3\xde\x1fd\xb9\xe2)\x16\x81}\xb1\\b\x7fJ'
+    b'\x92\xf4\xff\n+V!\xe9\xde\x98\xa0\x8fK\xdf7\xb9\xc0\x12\x1f\xe2'
+    b'\xe9\xb0`\xae\x14\r\xa7\xc4\x81~\xd8\x8d\xc5\x06\xd8m\xb0Y\x8a)'
+    b'\x06/\xbb\xf9\xac\xeaP\xe0\x91\x05m[\xe5z\xe6Z\xf3\x9f\xc7\xd0'
+    b'\xd3\x8b\xf3\x8a\x1b\xfa\xe4Pf\xbc0\x17\x10\xa9\xd0\x95J{\xb3\xc3'
+    b'\xfdW\x9bop\x0f\xbe\xaee\xa3]\x93\x9c\xda\xb75<\xf6g!\xcc\xb1\xfc\\'
+    b'7\x152Mc\x17\x84\x9d\xcd35\r0\xacL-\xf3\xfb\xcb\x96\x1e\xe9U\x7f'
+    b'\xd7\xca\xb0\xcc\x89\x0c*\xce\x14\xd1P\xf1\x03\xb6.~9o?\xe8'
+    b'\r\x86\xe0\x92\x87}\xa3\x84\x03P\xe0\xc2\x7f\n;m\x9d\x9e\xb4|'
+    b'\x8c\x18\xc0#0\xfe3\x07<\xda\xd8\xcf^\xd4Hi\xd6\xb3\x0bT'
+    b'\x1dF\x88\x85q}\x02\xc6&\xc4\xae\xce\x9cU\xfa\x0f\xcc\xb6\x1f\x11'
+    b'drw\x9eN\x19\xbd\xffz\x0f\xf0\x04s\xadR\xc1\xc0\xbfl\xf1\xba\xf95^'
+    b'e\xb1\xfbVY\xd9\x9f\x1c\xbf*\xc4\xa86\x08+\xd6\x88[\xc4_rc\xf0f'
+    b'\xb8\xd4\xec\x1dx\x19|\xbf\xa7\xe0\x82\x0b\x8c~\x10L/\x90\xd6\xfb'
+    b'\x81\xdb\x98\xcc\x02\x14\xa5C\xb2\xa7i\xfd\xcd\x1fO\xf7\xe9\x89t\xf0'
+    b'\x17\xa5\x1c\xad\xfe<Q`%\x075k\n7\x9eI\x82<#)&\x04\xc2\xf0C\xd4`!'
+    b'\xcb\xa9\xf9\xb3F\x86\xb5\xc3M\xbeu\x12\xb2\xca\x95e\x10\x0b\xb1\xcc'
+    b'\x01b\x9bXa\x1b[B\x8c\x07\x11Of;\xeaC\xebr\x8eb\xd9\x9c\xe4i]<z\x9a'
+    b'\x03T\x8b9pF\x10\x8c\x84\xc7\x0e\xeaPw\xe5\xa0\x94\x1f\x84\xdd'
+    b'a\xe8\x85\xc2\x00\xebq\xe7&Wo5q8\xc2t\x98\xab\xb7\x7f\xe64-H'
     b'\t\xb4d\xbe\x06\xe3Q\x8b\xa9J\xb0\x00\xd7s.\x85"\xc0p\x05'
-    b"\x1c\x06N\x87\xa5\xf8\xc3g\x1b}\x0f\x0f\xc3|\x90\xea\xefd3X"
-    b"[\xab\x04E\xf2\xf2\xc9\x08\x8a\xa8+W\xa2v\xec\x15G\x08/I<L\\1"
-    b"\xff\x15O\xaa\x89{\xd1mW\x13\xbd~\xe1\x90^\xc4@\r\xed\xb5D@\xb4\x08"
-    b"A\x90\xe69;\xc7BO\xdb\xda\xebu\x9e\xa9tN\xae\x8aJ5\xcd\x11\x1d\xea"
+    b'\x1c\x06N\x87\xa5\xf8\xc3g\x1b}\x0f\x0f\xc3|\x90\xea\xefd3X'
+    b'[\xab\x04E\xf2\xf2\xc9\x08\x8a\xa8+W\xa2v\xec\x15G\x08/I<L\\1'
+    b'\xff\x15O\xaa\x89{\xd1mW\x13\xbd~\xe1\x90^\xc4@\r\xed\xb5D@\xb4\x08'
+    b'A\x90\xe69;\xc7BO\xdb\xda\xebu\x9e\xa9tN\xae\x8aJ5\xcd\x11\x1d\xea'
     b"\xe5\xa7\x04\xe6\x82Z\xc7O\xe46[7\xdco*[\xbe\x0b\xc9\xb7a\xab'\xf6"
     b"\xd1u\xdb\xd9q\xf5+y\x1b\x00\xb4\xf3a\xae\xf1M\xc4\xbc\xd00'\x06pQ"
-    b"\x8dH\xaa\xaa\xc4\xd2K\x9b\xc0\xe9\xec=n\xa9\x1a\x8a\xc2\xe8\x18\xbc"
-    b"\x93\xb8F\xa1\x8fOY\xe7\xda\xcf0\t\xff|\xd9\xe5\xcf\xe7\xf6\xbe"
-    b"\xf8\x04\x17\xf2\xe5P\xa7y~\xce\x11h0\x81\x80d[\x00_v\xbbc\xdbI"
-    b"3\xbc`W\xc0yrkB\xf5\x9f\xe9i\xc5\x8a^\x8d\xd4\x81\xd9\x05\xc1\xfc>"
+    b'\x8dH\xaa\xaa\xc4\xd2K\x9b\xc0\xe9\xec=n\xa9\x1a\x8a\xc2\xe8\x18\xbc'
+    b'\x93\xb8F\xa1\x8fOY\xe7\xda\xcf0\t\xff|\xd9\xe5\xcf\xe7\xf6\xbe'
+    b'\xf8\x04\x17\xf2\xe5P\xa7y~\xce\x11h0\x81\x80d[\x00_v\xbbc\xdbI'
+    b'3\xbc`W\xc0yrkB\xf5\x9f\xe9i\xc5\x8a^\x8d\xd4\x81\xd9\x05\xc1\xfc>'
     b'"\xd1v`\x82\xd5$\x89\xcf^\xd52.\xafd\xe8d@\xaa\xd5Y|\x90\x84'
-    b"j\xdb}\x84riV\x8e\xf0X4rB\xf2NPS[\x8e\x88\xd4\x0fI\xb8"
-    b"\xdd\xcb\x1d\xf2(\xdf;9\x9e|\xef^0;.*[\x9fl\x7f\xa2_X\xaff!\xbb\x03"
-    b"\xff\x19\x8f\x88\xb5\xb6\x884\xa3\x05\xde3D{\xe3\xcb\xce\xe4t]"
-    b"\x875\xe3Uf\xae\xea\x88\x1c\x03b\n\xb1,Q\xec\xcf\x08\t\xde@\x83\xaa<"
-    b",-\xe4\xee\x9b\x843\xe5\x007\tK\xac\x057\xd6*X\xa3\xc6~\xba\xe6O"
+    b'j\xdb}\x84riV\x8e\xf0X4rB\xf2NPS[\x8e\x88\xd4\x0fI\xb8'
+    b'\xdd\xcb\x1d\xf2(\xdf;9\x9e|\xef^0;.*[\x9fl\x7f\xa2_X\xaff!\xbb\x03'
+    b'\xff\x19\x8f\x88\xb5\xb6\x884\xa3\x05\xde3D{\xe3\xcb\xce\xe4t]'
+    b'\x875\xe3Uf\xae\xea\x88\x1c\x03b\n\xb1,Q\xec\xcf\x08\t\xde@\x83\xaa<'
+    b',-\xe4\xee\x9b\x843\xe5\x007\tK\xac\x057\xd6*X\xa3\xc6~\xba\xe6O'
     b'\x81kz"\xbe\xe43sL\xf1\xfa;\xf4^\x1e\xb4\x80\xe2\xbd\xaa\x17Z\xe1f'
-    b"\xda\xa6\xb9\x07:]}\x9fa\x0b?\xba\xe7\xf15\x04M\xe3\n}M\xa4\xcb\r"
-    b"2\x8a\x88\xa9\xa7\x92\x93\x84\x81Yo\x00\xcc\xc4\xab\x9aT\x96\x0b\xbe"
+    b'\xda\xa6\xb9\x07:]}\x9fa\x0b?\xba\xe7\xf15\x04M\xe3\n}M\xa4\xcb\r'
+    b'2\x8a\x88\xa9\xa7\x92\x93\x84\x81Yo\x00\xcc\xc4\xab\x9aT\x96\x0b\xbe'
     b'U\xac\x1d\x8d\x1b\x98"\xf8\x8f\xf1u\xc1n\xcc\xfcA\xcc\x90\xb7i'
-    b"\x83\x9c\x9c~\x1d4\xa2\xf0*J\xe7t\x12\xb4\xe3\xa0u\xd7\x95Z"
-    b"\xf7\xafG\x96~ST,\xa7\rC\x06\xf4\xf0\xeb`2\x9e>Q\x0e\xf6\xf5\xc5"
-    b"\x9b\xb5\xaf\xbe\xa3\x8f\xc0\xa3hu\x14\x12 \x97\x99\x04b\x8e\xc7\x1b"
-    b"VKc\xc1\xf3 \xde\x85-:\xdc\x1f\xac\xce*\x06\xb3\x80;`"
-    b"\xdb\xdd\x97\xfdg\xbf\xe7\xa8S\x08}\xf55e7\xb8/\xf0!\xc8"
+    b'\x83\x9c\x9c~\x1d4\xa2\xf0*J\xe7t\x12\xb4\xe3\xa0u\xd7\x95Z'
+    b'\xf7\xafG\x96~ST,\xa7\rC\x06\xf4\xf0\xeb`2\x9e>Q\x0e\xf6\xf5\xc5'
+    b'\x9b\xb5\xaf\xbe\xa3\x8f\xc0\xa3hu\x14\x12 \x97\x99\x04b\x8e\xc7\x1b'
+    b'VKc\xc1\xf3 \xde\x85-:\xdc\x1f\xac\xce*\x06\xb3\x80;`'
+    b'\xdb\xdd\x97\xfdg\xbf\xe7\xa8S\x08}\xf55e7\xb8/\xf0!\xc8'
     b"Y\xa8\x9a\x07'\xe2\xde\r\x02\xe1\xb2\x0c\xf4C\xcd\xf9\xcb(\xe8\x90"
-    b"\xd3bTD\x15_\xf6\xc3\xfb\xb3E\xfc\xd6\x98{\xc6\\fz\x81\xa99\x85\xcb"
-    b"\xa5\xb1\x1d\x94bqW\x1a!;z~\x18\x88\xe8i\xdb\x1b\x8d\x8d"
-    b"\x06\xaa\x0e\x99s+5k\x00\xe4\xffh\xfe\xdbt\xa6\x1bU\xde\xa3"
-    b"\xef\xcb\x86\x9e\x81\x16j\n\x9d\xbc\xbbC\x80?\x010\xc7Jj;"
-    b"\xc4\xe5\x86\xd5\x0e0d#\xc6;\xb8\xd1\xc7c\xb5&8?\xd9J\xe5\xden\xb9"
-    b"\xe9cb4\xbb\xe6\x14\xe0\xe7l\x1b\x85\x94\x1fh\xf1n\xdeZ\xbe"
-    b"\x88\xff\xc2e\xca\xdc,B-\x8ac\xc9\xdf\xf5|&\xe4LL\xf0\x1f\xaa8\xbd"
-    b"\xc26\x94bVi\xd3\x0c\x1c\xb6\xbb\x99F\x8f\x0e\xcc\x8e4\xc6/^W\xf5?"
-    b"\xdc\x84(\x14dO\x9aD6\x0f4\xa3,\x0c\x0bS\x9fJ\xe1\xacc^\x8a0\t\x80D["
-    b"\xb8\xe6\x86\xb0\xe8\xd4\xf9\x1en\xf1\xf5^\xeb\xb8\xb8\xf8"
-    b")\xa8\xbf\xaa\x84\x86\xb1a \x95\x16\x08\x1c\xbb@\xbd+\r/\xfb"
-    b"\x92\xfbh\xf1\x8d3\xf9\x92\xde`\xf1\x86\x03\xaa+\xd9\xd9\xc6P\xaf"
-    b"\xe3-\xea\xa5\x0fB\xca\xde\xd5n^\xe3/\xbf\xa6w\xc8\x0e<M"
-    b"\xc2\x1e!\xd4\xc6E\xf2\xad\x0c\xbc\x1d\x88Y\x03\x98<\x92\xd9\xa6B"
+    b'\xd3bTD\x15_\xf6\xc3\xfb\xb3E\xfc\xd6\x98{\xc6\\fz\x81\xa99\x85\xcb'
+    b'\xa5\xb1\x1d\x94bqW\x1a!;z~\x18\x88\xe8i\xdb\x1b\x8d\x8d'
+    b'\x06\xaa\x0e\x99s+5k\x00\xe4\xffh\xfe\xdbt\xa6\x1bU\xde\xa3'
+    b'\xef\xcb\x86\x9e\x81\x16j\n\x9d\xbc\xbbC\x80?\x010\xc7Jj;'
+    b'\xc4\xe5\x86\xd5\x0e0d#\xc6;\xb8\xd1\xc7c\xb5&8?\xd9J\xe5\xden\xb9'
+    b'\xe9cb4\xbb\xe6\x14\xe0\xe7l\x1b\x85\x94\x1fh\xf1n\xdeZ\xbe'
+    b'\x88\xff\xc2e\xca\xdc,B-\x8ac\xc9\xdf\xf5|&\xe4LL\xf0\x1f\xaa8\xbd'
+    b'\xc26\x94bVi\xd3\x0c\x1c\xb6\xbb\x99F\x8f\x0e\xcc\x8e4\xc6/^W\xf5?'
+    b'\xdc\x84(\x14dO\x9aD6\x0f4\xa3,\x0c\x0bS\x9fJ\xe1\xacc^\x8a0\t\x80D['
+    b'\xb8\xe6\x86\xb0\xe8\xd4\xf9\x1en\xf1\xf5^\xeb\xb8\xb8\xf8'
+    b')\xa8\xbf\xaa\x84\x86\xb1a \x95\x16\x08\x1c\xbb@\xbd+\r/\xfb'
+    b'\x92\xfbh\xf1\x8d3\xf9\x92\xde`\xf1\x86\x03\xaa+\xd9\xd9\xc6P\xaf'
+    b'\xe3-\xea\xa5\x0fB\xca\xde\xd5n^\xe3/\xbf\xa6w\xc8\x0e<M'
+    b'\xc2\x1e!\xd4\xc6E\xf2\xad\x0c\xbc\x1d\x88Y\x03\x98<\x92\xd9\xa6B'
     b'\xc7\x83\xb5"\x97D|&\xc4\xd4\xfad\x0e\xde\x06\xa3\xc2\x9c`\xf2'
-    b"7\x03\x1a\xed\xd80\x10\xe9\x0co\x10\xcf\x18\x16\xa7\x1c"
+    b'7\x03\x1a\xed\xd80\x10\xe9\x0co\x10\xcf\x18\x16\xa7\x1c'
     b"\xe5\x96\xa4\xd9\xe1\xa5v;]\xb7\xa9\xdc'hA\xe3\x9c&\x98\x0b9\xdf~@"
-    b"\xf8\xact\x87<\xf94\x0c\x9d\x93\xb0)\xe1\xa2\x0f\x1e=:&\xd56\xa5A+"
-    b"\xab\xc4\x00\x8d\x81\x93\xd4\xd8<\x82k\\d\xd8v\xab\xbd^l5C?\xd4\xa0"
-    b"M\x12C\xc8\x80\r\xc83\xe8\xc0\xf5\xdf\xca\x05\xf4BPjy\xbe\x91\x9bzE"
+    b'\xf8\xact\x87<\xf94\x0c\x9d\x93\xb0)\xe1\xa2\x0f\x1e=:&\xd56\xa5A+'
+    b'\xab\xc4\x00\x8d\x81\x93\xd4\xd8<\x82k\\d\xd8v\xab\xbd^l5C?\xd4\xa0'
+    b'M\x12C\xc8\x80\r\xc83\xe8\xc0\xf5\xdf\xca\x05\xf4BPjy\xbe\x91\x9bzE'
     b"\xd8[\x93oT\r\x13\x16'\x1a\xbd*H\xd6\xfe\r\xf3\x91M\x8b\xee\x8f7f"
     b"\x0b;\xaa\x85\xf2\xdd'\x0fwM \xbd\x13\xb9\xe5\xb8\xb7 D+P\x1c\xe4g"
-    b"n\xd2\xf1kc\x15\xaf\xc6\x90V\x03\xc2UovfZ\xcc\xd23^\xb3\xe7\xbf"
-    b"\xacv\x1d\x82\xedx\xa3J\xa9\xb7\xcf\x0c\xe6j\x96n*o\x18>"
-    b"\xc6\xfd\x97_+D{\x03\x15\xe8s\xb1\xc8HAG\xcf\xf4\x1a\xdd"
+    b'n\xd2\xf1kc\x15\xaf\xc6\x90V\x03\xc2UovfZ\xcc\xd23^\xb3\xe7\xbf'
+    b'\xacv\x1d\x82\xedx\xa3J\xa9\xb7\xcf\x0c\xe6j\x96n*o\x18>'
+    b'\xc6\xfd\x97_+D{\x03\x15\xe8s\xb1\xc8HAG\xcf\xf4\x1a\xdd'
     b'\xad\x11\xbf\x157q+\xdeW\x89g"X\x82\xfd~\xf7\xab4\xf6`\xab\xf1q'
-    b")\x82\x10K\xe9sV\xfe\xe45\xafs*\x14\xa7;\xac{\x06\x9d<@\x93G"
-    b"j\x1d\xefL\xe9\xd8\x92\x19&\xa1\x16\x19\x04\tu5\x01]\xf6\xf4"
-    b"\xcd\\\xd8A|I\xd4\xeb\x05\x88C\xc6e\xacQ\xe9*\x97~\x9au\xf8Xy"
+    b')\x82\x10K\xe9sV\xfe\xe45\xafs*\x14\xa7;\xac{\x06\x9d<@\x93G'
+    b'j\x1d\xefL\xe9\xd8\x92\x19&\xa1\x16\x19\x04\tu5\x01]\xf6\xf4'
+    b'\xcd\\\xd8A|I\xd4\xeb\x05\x88C\xc6e\xacQ\xe9*\x97~\x9au\xf8Xy'
     b"\x17P\x10\x9f\n\x8c\xe2fZEu>\x9b\x1e\x91\x0b'`\xbd\xc0\xa8\x86c\x1d"
-    b"Z\xe2\xdc8j\x95\xffU\x90\x1e\xf4o\xbc\xe5\xe3e>\xd2R\xc0b#\xbc\x15"
-    b"H-\xb9!\xde\x9d\x90k\xdew\x9b{\x99\xde\xf7/K)A\xfd\xf5\xe6:\xda"
-    b"UM\xcc\xbb\xa2\x0b\x9a\x93\xf5{9\xc0 \xd2((6i\xc0\xbbu\xd8\x9e\x8d"
-    b"\xf8\x04q\x10\xd4\x14\x9e7-\xb9B\xea\x01Q8\xc8v\x9a\x12A\x88Cd\x92"
+    b'Z\xe2\xdc8j\x95\xffU\x90\x1e\xf4o\xbc\xe5\xe3e>\xd2R\xc0b#\xbc\x15'
+    b'H-\xb9!\xde\x9d\x90k\xdew\x9b{\x99\xde\xf7/K)A\xfd\xf5\xe6:\xda'
+    b'UM\xcc\xbb\xa2\x0b\x9a\x93\xf5{9\xc0 \xd2((6i\xc0\xbbu\xd8\x9e\x8d'
+    b'\xf8\x04q\x10\xd4\x14\x9e7-\xb9B\xea\x01Q8\xc8v\x9a\x12A\x88Cd\x92'
     b"\x1c\x8c!\xf4\x94\x87'\xe3\xcd\xae\xf7\xd8\x93\xfa\xde\xa8b\x9e\xee2"
-    b"K\xdb\x00l\x9d\t\xb1|D\x05U\xbb\xf4>\xf1w\x887\xd1}W\x9d|g|1\xb0\x13"
+    b'K\xdb\x00l\x9d\t\xb1|D\x05U\xbb\xf4>\xf1w\x887\xd1}W\x9d|g|1\xb0\x13'
     b"\xa3 \xe5\xbfm@\xc06+\xb7\t\xcf\x15D\x9a \x1fM\x1f\xd2\xb5'\xa9\xbb"
-    b"~Co\x82\xfa\xc2\t\xe6f\xfc\xbeI\xae1\x8e\xbe\xb8\xcf\x86\x17"
-    b"\x9f\xe2`\xbd\xaf\xba\xb9\xbc\x1b\xa3\xcd\x82\x8fwc\xefd\xa9\xd5\x14"
+    b'~Co\x82\xfa\xc2\t\xe6f\xfc\xbeI\xae1\x8e\xbe\xb8\xcf\x86\x17'
+    b'\x9f\xe2`\xbd\xaf\xba\xb9\xbc\x1b\xa3\xcd\x82\x8fwc\xefd\xa9\xd5\x14'
     b'\xe2C\xafUE\xb6\x11MJH\xd0=\x05\xd4*I\xff"\r\x1b^\xcaS6=\xec@\xd5'
-    b"\x11,\xe0\x87Gr\xaa[\xb8\xbc>n\xbd\x81\x0c\x07<\xe9\x92("
-    b"\xb2\xff\xac}\xe7\xb6\x15\x90\x9f~4\x9a\xe6\xd6\xd8s\xed\x99tf"
-    b"\xa0f\xf8\xf1\x87\t\x96/)\x85\xb6\n\xd7\xb2w\x0b\xbc\xba\x99\xee"
-    b"Q\xeen\x1d\xad\x03\xc3s\xd1\xfd\xa2\xc6\xb7\x9a\x9c(G<6\xad[~H "
-    b"\x16\x89\x89\xd0\xc3\xd2\xca~\xac\xea\xa5\xed\xe5\xfb\r:"
-    b"\x8e\xa6\xf1e\xbb\xba\xbd\xe0(\xa3\x89_\x01(\xb5c\xcc\x9f\x1fg"
-    b"v\xfd\x17\xb3\x08S=S\xee\xfc\x85>\x91\x8d\x8d\nYR\xb3G\xd1A\xa2\xb1"
-    b"\xec\xb0\x01\xd2\xcd\xf9\xfe\x82\x06O\xb3\xecd\xa9c\xe0\x8eP\x90\xce"
+    b'\x11,\xe0\x87Gr\xaa[\xb8\xbc>n\xbd\x81\x0c\x07<\xe9\x92('
+    b'\xb2\xff\xac}\xe7\xb6\x15\x90\x9f~4\x9a\xe6\xd6\xd8s\xed\x99tf'
+    b'\xa0f\xf8\xf1\x87\t\x96/)\x85\xb6\n\xd7\xb2w\x0b\xbc\xba\x99\xee'
+    b'Q\xeen\x1d\xad\x03\xc3s\xd1\xfd\xa2\xc6\xb7\x9a\x9c(G<6\xad[~H '
+    b'\x16\x89\x89\xd0\xc3\xd2\xca~\xac\xea\xa5\xed\xe5\xfb\r:'
+    b'\x8e\xa6\xf1e\xbb\xba\xbd\xe0(\xa3\x89_\x01(\xb5c\xcc\x9f\x1fg'
+    b'v\xfd\x17\xb3\x08S=S\xee\xfc\x85>\x91\x8d\x8d\nYR\xb3G\xd1A\xa2\xb1'
+    b'\xec\xb0\x01\xd2\xcd\xf9\xfe\x82\x06O\xb3\xecd\xa9c\xe0\x8eP\x90\xce'
     b'\xe0\xcd\xd8\xd8\xdc\x9f\xaa\x01"[Q~\xe4\x88\xa1#\xc1\x12C\xcf'
-    b"\xbe\x80\x11H\xbf\x86\xd8\xbem\xcfWFQ(X\x01DK\xdfB\xaa\x10.-"
-    b"\xd5\x9e|\x86\x15\x86N]\xc7Z\x17\xcd=\xd7)M\xde\x15\xa4LTi\xa0\x15"
-    b"\xd1\xe7\xbdN\xa4?\xd1\xe7\x02\xfe4\xe4O\x89\x98&\x96\x0f\x02\x9c"
-    b"\x9e\x19\xaa\x13u7\xbd0\xdc\xd8\x93\xf4BNE\x1d\x93\x82\x81\x16"
-    b"\xe5y\xcf\x98D\xca\x9a\xe2\xfd\xcdL\xcc\xd1\xfc_\x0b\x1c\xa0]\xdc"
-    b"\xa91 \xc9c\xd8\xbf\x97\xcfp\xe6\x19-\xad\xff\xcc\xd1N(\xe8"
-    b"\xeb#\x182\x96I\xf7l\xf3r\x00"
+    b'\xbe\x80\x11H\xbf\x86\xd8\xbem\xcfWFQ(X\x01DK\xdfB\xaa\x10.-'
+    b'\xd5\x9e|\x86\x15\x86N]\xc7Z\x17\xcd=\xd7)M\xde\x15\xa4LTi\xa0\x15'
+    b'\xd1\xe7\xbdN\xa4?\xd1\xe7\x02\xfe4\xe4O\x89\x98&\x96\x0f\x02\x9c'
+    b'\x9e\x19\xaa\x13u7\xbd0\xdc\xd8\x93\xf4BNE\x1d\x93\x82\x81\x16'
+    b'\xe5y\xcf\x98D\xca\x9a\xe2\xfd\xcdL\xcc\xd1\xfc_\x0b\x1c\xa0]\xdc'
+    b'\xa91 \xc9c\xd8\xbf\x97\xcfp\xe6\x19-\xad\xff\xcc\xd1N(\xe8'
+    b'\xeb#\x182\x96I\xf7l\xf3r\x00'
 )
 
 

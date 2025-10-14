@@ -4,23 +4,22 @@ import requests
 import psutil
 from datetime import datetime
 
-LOG_FILE = "logs/qmoi_simple_autotest.log"
+LOG_FILE = 'logs/qmoi_simple_autotest.log'
 
 # Optionally set these for email notifications
-SMTP_SERVER = os.environ.get("QMOI_SMTP_SERVER")
-SMTP_PORT = int(os.environ.get("QMOI_SMTP_PORT", 587))
-SMTP_USER = os.environ.get("QMOI_SMTP_USER")
-SMTP_PASS = os.environ.get("QMOI_SMTP_PASS")
-NOTIFY_EMAIL = os.environ.get("QMOI_NOTIFY_EMAIL")
-SLACK_WEBHOOK = os.environ.get("QMOI_SLACK_WEBHOOK")
-DISCORD_WEBHOOK = os.environ.get("QMOI_DISCORD_WEBHOOK")
+SMTP_SERVER = os.environ.get('QMOI_SMTP_SERVER')
+SMTP_PORT = int(os.environ.get('QMOI_SMTP_PORT', 587))
+SMTP_USER = os.environ.get('QMOI_SMTP_USER')
+SMTP_PASS = os.environ.get('QMOI_SMTP_PASS')
+NOTIFY_EMAIL = os.environ.get('QMOI_NOTIFY_EMAIL')
+SLACK_WEBHOOK = os.environ.get('QMOI_SLACK_WEBHOOK')
+DISCORD_WEBHOOK = os.environ.get('QMOI_DISCORD_WEBHOOK')
 
 
 def log_result(msg):
     print(msg)
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
+    with open(LOG_FILE, 'a', encoding='utf-8') as f:
         f.write(f"[{datetime.now().isoformat()}] {msg}\n")
-
 
 def check_system_health():
     cpu = psutil.cpu_percent(interval=1)
@@ -31,7 +30,6 @@ def check_system_health():
         log_result("❌ High resource usage!")
         return False
     return True
-
 
 def test_url(url):
     try:
@@ -46,7 +44,6 @@ def test_url(url):
         log_result(f"❌ {url} ERROR: {e}")
         return False
 
-
 def send_email(subject, body):
     if not (SMTP_SERVER and SMTP_USER and SMTP_PASS and NOTIFY_EMAIL):
         log_result("(Email notification skipped: SMTP credentials not set)")
@@ -54,11 +51,10 @@ def send_email(subject, body):
     try:
         import smtplib
         from email.mime.text import MIMEText
-
         msg = MIMEText(body)
-        msg["Subject"] = subject
-        msg["From"] = SMTP_USER
-        msg["To"] = NOTIFY_EMAIL
+        msg['Subject'] = subject
+        msg['From'] = SMTP_USER
+        msg['To'] = NOTIFY_EMAIL
         with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
             server.starttls()
             server.login(SMTP_USER, SMTP_PASS)
@@ -66,7 +62,6 @@ def send_email(subject, body):
         log_result("(Email notification sent)")
     except Exception as e:
         log_result(f"(Email notification failed: {e})")
-
 
 def send_slack_notification(message):
     if not SLACK_WEBHOOK:
@@ -81,7 +76,6 @@ def send_slack_notification(message):
     except Exception as e:
         log_result(f"(Slack notification failed: {e})")
 
-
 def send_discord_notification(message):
     if not DISCORD_WEBHOOK:
         log_result("(Discord notification skipped: webhook not set)")
@@ -94,7 +88,6 @@ def send_discord_notification(message):
             log_result(f"(Discord notification failed: {resp.status_code})")
     except Exception as e:
         log_result(f"(Discord notification failed: {e})")
-
 
 def main():
     all_ok = True
@@ -117,7 +110,7 @@ def main():
         "https://downloads.qmoi.app/qcity/linux.appimage",
         "https://downloads.qmoi.app/qcity/android.apk",
         "https://downloads.qmoi.app/qcity/ios.ipa",
-        "https://downloads.qmoi.app/qstore/qstore-universal.apk",
+        "https://downloads.qmoi.app/qstore/qstore-universal.apk"
     ]
     for url in urls:
         if not test_url(url):
@@ -140,23 +133,21 @@ def main():
         requests.get(dashboard_url, timeout=5)
         log_result(f"✅ Dashboard reachable at {dashboard_url}")
     except Exception:
-        log_result(
-            f"⚠️ Dashboard not reachable at {dashboard_url} (may be expected if not running)"
-        )
+        log_result(f"⚠️ Dashboard not reachable at {dashboard_url} (may be expected if not running)")
 
     if all_ok:
         log_result("✅ All autotests passed!")
         sys.exit(0)
     else:
         log_result("❌ Some autotests failed!")
-        summary = (
-            f"QMOI Autotest Failure: {len(failed)} checks failed. See log for details."
+        summary = f"QMOI Autotest Failure: {len(failed)} checks failed. See log for details."
+        send_email(
+            subject="QMOI Autotest Failure",
+            body=summary
         )
-        send_email(subject="QMOI Autotest Failure", body=summary)
         send_slack_notification(summary)
         send_discord_notification(summary)
         sys.exit(1)
 
-
 if __name__ == "__main__":
-    main()
+    main() 

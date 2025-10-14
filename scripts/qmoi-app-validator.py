@@ -4,9 +4,8 @@ targets = {
     "qmoi_ai.exe": 10_000_000,
     "qmoi_ai.apk": 5_000_000,
     "qmoi_ai.AppImage": 8_000_000,
-    "qmoi_ai.dmg": 9_000_000,
+    "qmoi_ai.dmg": 9_000_000
 }
-
 
 def validate():
     print("[🧪] Validating release binaries...")
@@ -28,7 +27,6 @@ def validate():
         print(f"[❌] Validation failed with {errors} issues.")
         exit(1)
     print("[🎉] All binaries passed validation.")
-
 
 if __name__ == "__main__":
     validate()

@@ -5,7 +5,6 @@ import sys
 import unittest
 from test.support import C_RECURSION_LIMIT
 
-
 class DictSetTest(unittest.TestCase):
 
     def test_constructors_not_callable(self):
@@ -79,78 +78,78 @@ class DictSetTest(unittest.TestCase):
         self.assertIsInstance(repr(d), str)
         r = repr(d.items())
         self.assertIsInstance(r, str)
-        self.assertTrue(
-            r == "dict_items([('a', 'ABC'), (1, 10)])"
-            or r == "dict_items([(1, 10), ('a', 'ABC')])"
-        )
+        self.assertTrue(r == "dict_items([('a', 'ABC'), (1, 10)])" or
+                        r == "dict_items([(1, 10), ('a', 'ABC')])")
         r = repr(d.keys())
         self.assertIsInstance(r, str)
-        self.assertTrue(r == "dict_keys(['a', 1])" or r == "dict_keys([1, 'a'])")
+        self.assertTrue(r == "dict_keys(['a', 1])" or
+                        r == "dict_keys([1, 'a'])")
         r = repr(d.values())
         self.assertIsInstance(r, str)
-        self.assertTrue(
-            r == "dict_values(['ABC', 10])" or r == "dict_values([10, 'ABC'])"
-        )
+        self.assertTrue(r == "dict_values(['ABC', 10])" or
+                        r == "dict_values([10, 'ABC'])")
 
     def test_keys_set_operations(self):
-        d1 = {"a": 1, "b": 2}
-        d2 = {"b": 3, "c": 2}
-        d3 = {"d": 4, "e": 5}
-        d4 = {"d": 4}
+        d1 = {'a': 1, 'b': 2}
+        d2 = {'b': 3, 'c': 2}
+        d3 = {'d': 4, 'e': 5}
+        d4 = {'d': 4}
 
         class CustomSet(set):
             def intersection(self, other):
                 return CustomSet(super().intersection(other))
 
-        self.assertEqual(d1.keys() & d1.keys(), {"a", "b"})
-        self.assertEqual(d1.keys() & d2.keys(), {"b"})
+        self.assertEqual(d1.keys() & d1.keys(), {'a', 'b'})
+        self.assertEqual(d1.keys() & d2.keys(), {'b'})
         self.assertEqual(d1.keys() & d3.keys(), set())
-        self.assertEqual(d1.keys() & set(d1.keys()), {"a", "b"})
-        self.assertEqual(d1.keys() & set(d2.keys()), {"b"})
+        self.assertEqual(d1.keys() & set(d1.keys()), {'a', 'b'})
+        self.assertEqual(d1.keys() & set(d2.keys()), {'b'})
         self.assertEqual(d1.keys() & set(d3.keys()), set())
-        self.assertEqual(d1.keys() & tuple(d1.keys()), {"a", "b"})
-        self.assertEqual(d3.keys() & d4.keys(), {"d"})
-        self.assertEqual(d4.keys() & d3.keys(), {"d"})
-        self.assertEqual(d4.keys() & set(d3.keys()), {"d"})
+        self.assertEqual(d1.keys() & tuple(d1.keys()), {'a', 'b'})
+        self.assertEqual(d3.keys() & d4.keys(), {'d'})
+        self.assertEqual(d4.keys() & d3.keys(), {'d'})
+        self.assertEqual(d4.keys() & set(d3.keys()), {'d'})
         self.assertIsInstance(d4.keys() & frozenset(d3.keys()), set)
         self.assertIsInstance(frozenset(d3.keys()) & d4.keys(), set)
         self.assertIs(type(d4.keys() & CustomSet(d3.keys())), set)
         self.assertIs(type(d1.keys() & []), set)
         self.assertIs(type([] & d1.keys()), set)
 
-        self.assertEqual(d1.keys() | d1.keys(), {"a", "b"})
-        self.assertEqual(d1.keys() | d2.keys(), {"a", "b", "c"})
-        self.assertEqual(d1.keys() | d3.keys(), {"a", "b", "d", "e"})
-        self.assertEqual(d1.keys() | set(d1.keys()), {"a", "b"})
-        self.assertEqual(d1.keys() | set(d2.keys()), {"a", "b", "c"})
-        self.assertEqual(d1.keys() | set(d3.keys()), {"a", "b", "d", "e"})
-        self.assertEqual(d1.keys() | (1, 2), {"a", "b", 1, 2})
+        self.assertEqual(d1.keys() | d1.keys(), {'a', 'b'})
+        self.assertEqual(d1.keys() | d2.keys(), {'a', 'b', 'c'})
+        self.assertEqual(d1.keys() | d3.keys(), {'a', 'b', 'd', 'e'})
+        self.assertEqual(d1.keys() | set(d1.keys()), {'a', 'b'})
+        self.assertEqual(d1.keys() | set(d2.keys()), {'a', 'b', 'c'})
+        self.assertEqual(d1.keys() | set(d3.keys()),
+                         {'a', 'b', 'd', 'e'})
+        self.assertEqual(d1.keys() | (1, 2), {'a', 'b', 1, 2})
 
         self.assertEqual(d1.keys() ^ d1.keys(), set())
-        self.assertEqual(d1.keys() ^ d2.keys(), {"a", "c"})
-        self.assertEqual(d1.keys() ^ d3.keys(), {"a", "b", "d", "e"})
+        self.assertEqual(d1.keys() ^ d2.keys(), {'a', 'c'})
+        self.assertEqual(d1.keys() ^ d3.keys(), {'a', 'b', 'd', 'e'})
         self.assertEqual(d1.keys() ^ set(d1.keys()), set())
-        self.assertEqual(d1.keys() ^ set(d2.keys()), {"a", "c"})
-        self.assertEqual(d1.keys() ^ set(d3.keys()), {"a", "b", "d", "e"})
-        self.assertEqual(d1.keys() ^ tuple(d2.keys()), {"a", "c"})
+        self.assertEqual(d1.keys() ^ set(d2.keys()), {'a', 'c'})
+        self.assertEqual(d1.keys() ^ set(d3.keys()),
+                         {'a', 'b', 'd', 'e'})
+        self.assertEqual(d1.keys() ^ tuple(d2.keys()), {'a', 'c'})
 
         self.assertEqual(d1.keys() - d1.keys(), set())
-        self.assertEqual(d1.keys() - d2.keys(), {"a"})
-        self.assertEqual(d1.keys() - d3.keys(), {"a", "b"})
+        self.assertEqual(d1.keys() - d2.keys(), {'a'})
+        self.assertEqual(d1.keys() - d3.keys(), {'a', 'b'})
         self.assertEqual(d1.keys() - set(d1.keys()), set())
-        self.assertEqual(d1.keys() - set(d2.keys()), {"a"})
-        self.assertEqual(d1.keys() - set(d3.keys()), {"a", "b"})
-        self.assertEqual(d1.keys() - (0, 1), {"a", "b"})
+        self.assertEqual(d1.keys() - set(d2.keys()), {'a'})
+        self.assertEqual(d1.keys() - set(d3.keys()), {'a', 'b'})
+        self.assertEqual(d1.keys() - (0, 1), {'a', 'b'})
 
         self.assertFalse(d1.keys().isdisjoint(d1.keys()))
         self.assertFalse(d1.keys().isdisjoint(d2.keys()))
         self.assertFalse(d1.keys().isdisjoint(list(d2.keys())))
         self.assertFalse(d1.keys().isdisjoint(set(d2.keys())))
-        self.assertTrue(d1.keys().isdisjoint({"x", "y", "z"}))
-        self.assertTrue(d1.keys().isdisjoint(["x", "y", "z"]))
-        self.assertTrue(d1.keys().isdisjoint(set(["x", "y", "z"])))
-        self.assertTrue(d1.keys().isdisjoint(set(["x", "y"])))
-        self.assertTrue(d1.keys().isdisjoint(["x", "y"]))
+        self.assertTrue(d1.keys().isdisjoint({'x', 'y', 'z'}))
+        self.assertTrue(d1.keys().isdisjoint(['x', 'y', 'z']))
+        self.assertTrue(d1.keys().isdisjoint(set(['x', 'y', 'z'])))
+        self.assertTrue(d1.keys().isdisjoint(set(['x', 'y'])))
+        self.assertTrue(d1.keys().isdisjoint(['x', 'y']))
         self.assertTrue(d1.keys().isdisjoint({}))
         self.assertTrue(d1.keys().isdisjoint(d3.keys()))
 
@@ -161,66 +160,70 @@ class DictSetTest(unittest.TestCase):
         self.assertTrue(de.keys().isdisjoint([1]))
 
     def test_items_set_operations(self):
-        d1 = {"a": 1, "b": 2}
-        d2 = {"a": 2, "b": 2}
-        d3 = {"d": 4, "e": 5}
-        self.assertEqual(d1.items() & d1.items(), {("a", 1), ("b", 2)})
-        self.assertEqual(d1.items() & d2.items(), {("b", 2)})
+        d1 = {'a': 1, 'b': 2}
+        d2 = {'a': 2, 'b': 2}
+        d3 = {'d': 4, 'e': 5}
+        self.assertEqual(
+            d1.items() & d1.items(), {('a', 1), ('b', 2)})
+        self.assertEqual(d1.items() & d2.items(), {('b', 2)})
         self.assertEqual(d1.items() & d3.items(), set())
-        self.assertEqual(d1.items() & set(d1.items()), {("a", 1), ("b", 2)})
-        self.assertEqual(d1.items() & set(d2.items()), {("b", 2)})
+        self.assertEqual(d1.items() & set(d1.items()),
+                         {('a', 1), ('b', 2)})
+        self.assertEqual(d1.items() & set(d2.items()), {('b', 2)})
         self.assertEqual(d1.items() & set(d3.items()), set())
-        self.assertEqual(d1.items() & (("a", 1), ("b", 2)), {("a", 1), ("b", 2)})
-        self.assertEqual(d1.items() & (("a", 2), ("b", 2)), {("b", 2)})
+        self.assertEqual(d1.items() & (("a", 1), ("b", 2)),
+                         {('a', 1), ('b', 2)})
+        self.assertEqual(d1.items() & (("a", 2), ("b", 2)), {('b', 2)})
         self.assertEqual(d1.items() & (("d", 4), ("e", 5)), set())
 
-        self.assertEqual(d1.items() | d1.items(), {("a", 1), ("b", 2)})
-        self.assertEqual(d1.items() | d2.items(), {("a", 1), ("a", 2), ("b", 2)})
-        self.assertEqual(
-            d1.items() | d3.items(), {("a", 1), ("b", 2), ("d", 4), ("e", 5)}
-        )
-        self.assertEqual(d1.items() | set(d1.items()), {("a", 1), ("b", 2)})
-        self.assertEqual(d1.items() | set(d2.items()), {("a", 1), ("a", 2), ("b", 2)})
-        self.assertEqual(
-            d1.items() | set(d3.items()), {("a", 1), ("b", 2), ("d", 4), ("e", 5)}
-        )
-        self.assertEqual(d1.items() | (("a", 1), ("b", 2)), {("a", 1), ("b", 2)})
-        self.assertEqual(
-            d1.items() | (("a", 2), ("b", 2)), {("a", 1), ("a", 2), ("b", 2)}
-        )
-        self.assertEqual(
-            d1.items() | (("d", 4), ("e", 5)), {("a", 1), ("b", 2), ("d", 4), ("e", 5)}
-        )
+        self.assertEqual(d1.items() | d1.items(),
+                         {('a', 1), ('b', 2)})
+        self.assertEqual(d1.items() | d2.items(),
+                         {('a', 1), ('a', 2), ('b', 2)})
+        self.assertEqual(d1.items() | d3.items(),
+                         {('a', 1), ('b', 2), ('d', 4), ('e', 5)})
+        self.assertEqual(d1.items() | set(d1.items()),
+                         {('a', 1), ('b', 2)})
+        self.assertEqual(d1.items() | set(d2.items()),
+                         {('a', 1), ('a', 2), ('b', 2)})
+        self.assertEqual(d1.items() | set(d3.items()),
+                         {('a', 1), ('b', 2), ('d', 4), ('e', 5)})
+        self.assertEqual(d1.items() | (('a', 1), ('b', 2)),
+                         {('a', 1), ('b', 2)})
+        self.assertEqual(d1.items() | (('a', 2), ('b', 2)),
+                         {('a', 1), ('a', 2), ('b', 2)})
+        self.assertEqual(d1.items() | (('d', 4), ('e', 5)),
+                         {('a', 1), ('b', 2), ('d', 4), ('e', 5)})
 
         self.assertEqual(d1.items() ^ d1.items(), set())
-        self.assertEqual(d1.items() ^ d2.items(), {("a", 1), ("a", 2)})
-        self.assertEqual(
-            d1.items() ^ d3.items(), {("a", 1), ("b", 2), ("d", 4), ("e", 5)}
-        )
-        self.assertEqual(d1.items() ^ (("a", 1), ("b", 2)), set())
-        self.assertEqual(d1.items() ^ (("a", 2), ("b", 2)), {("a", 1), ("a", 2)})
-        self.assertEqual(
-            d1.items() ^ (("d", 4), ("e", 5)), {("a", 1), ("b", 2), ("d", 4), ("e", 5)}
-        )
+        self.assertEqual(d1.items() ^ d2.items(),
+                         {('a', 1), ('a', 2)})
+        self.assertEqual(d1.items() ^ d3.items(),
+                         {('a', 1), ('b', 2), ('d', 4), ('e', 5)})
+        self.assertEqual(d1.items() ^ (('a', 1), ('b', 2)), set())
+        self.assertEqual(d1.items() ^ (("a", 2), ("b", 2)),
+                         {('a', 1), ('a', 2)})
+        self.assertEqual(d1.items() ^ (("d", 4), ("e", 5)),
+                         {('a', 1), ('b', 2), ('d', 4), ('e', 5)})
 
         self.assertEqual(d1.items() - d1.items(), set())
-        self.assertEqual(d1.items() - d2.items(), {("a", 1)})
-        self.assertEqual(d1.items() - d3.items(), {("a", 1), ("b", 2)})
+        self.assertEqual(d1.items() - d2.items(), {('a', 1)})
+        self.assertEqual(d1.items() - d3.items(), {('a', 1), ('b', 2)})
         self.assertEqual(d1.items() - set(d1.items()), set())
-        self.assertEqual(d1.items() - set(d2.items()), {("a", 1)})
-        self.assertEqual(d1.items() - set(d3.items()), {("a", 1), ("b", 2)})
-        self.assertEqual(d1.items() - (("a", 1), ("b", 2)), set())
-        self.assertEqual(d1.items() - (("a", 2), ("b", 2)), {("a", 1)})
-        self.assertEqual(d1.items() - (("d", 4), ("e", 5)), {("a", 1), ("b", 2)})
+        self.assertEqual(d1.items() - set(d2.items()), {('a', 1)})
+        self.assertEqual(d1.items() - set(d3.items()), {('a', 1), ('b', 2)})
+        self.assertEqual(d1.items() - (('a', 1), ('b', 2)), set())
+        self.assertEqual(d1.items() - (("a", 2), ("b", 2)), {('a', 1)})
+        self.assertEqual(d1.items() - (("d", 4), ("e", 5)), {('a', 1), ('b', 2)})
 
         self.assertFalse(d1.items().isdisjoint(d1.items()))
         self.assertFalse(d1.items().isdisjoint(d2.items()))
         self.assertFalse(d1.items().isdisjoint(list(d2.items())))
         self.assertFalse(d1.items().isdisjoint(set(d2.items())))
-        self.assertTrue(d1.items().isdisjoint({"x", "y", "z"}))
-        self.assertTrue(d1.items().isdisjoint(["x", "y", "z"]))
-        self.assertTrue(d1.items().isdisjoint(set(["x", "y", "z"])))
-        self.assertTrue(d1.items().isdisjoint(set(["x", "y"])))
+        self.assertTrue(d1.items().isdisjoint({'x', 'y', 'z'}))
+        self.assertTrue(d1.items().isdisjoint(['x', 'y', 'z']))
+        self.assertTrue(d1.items().isdisjoint(set(['x', 'y', 'z'])))
+        self.assertTrue(d1.items().isdisjoint(set(['x', 'y'])))
         self.assertTrue(d1.items().isdisjoint({}))
         self.assertTrue(d1.items().isdisjoint(d3.items()))
 
@@ -277,7 +280,7 @@ class DictSetTest(unittest.TestCase):
 
     def test_deeply_nested_repr(self):
         d = {}
-        for i in range(C_RECURSION_LIMIT // 2 + 100):
+        for i in range(C_RECURSION_LIMIT//2 + 100):
             d = {42: d.values()}
         self.assertRaises(RecursionError, repr, d)
 
@@ -294,7 +297,6 @@ class DictSetTest(unittest.TestCase):
         class BadEq:
             def __hash__(self):
                 return 7
-
             def __eq__(self, other):
                 raise Exc
 
@@ -317,15 +319,12 @@ class DictSetTest(unittest.TestCase):
     def test_pickle(self):
         d = {1: 10, "a": "ABC"}
         for proto in range(pickle.HIGHEST_PROTOCOL + 1):
-            self.assertRaises(
-                (TypeError, pickle.PicklingError), pickle.dumps, d.keys(), proto
-            )
-            self.assertRaises(
-                (TypeError, pickle.PicklingError), pickle.dumps, d.values(), proto
-            )
-            self.assertRaises(
-                (TypeError, pickle.PicklingError), pickle.dumps, d.items(), proto
-            )
+            self.assertRaises((TypeError, pickle.PicklingError),
+                pickle.dumps, d.keys(), proto)
+            self.assertRaises((TypeError, pickle.PicklingError),
+                pickle.dumps, d.values(), proto)
+            self.assertRaises((TypeError, pickle.PicklingError),
+                pickle.dumps, d.items(), proto)
 
     def test_abc_registry(self):
         d = dict(a=1)

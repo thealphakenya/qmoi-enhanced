@@ -14,7 +14,7 @@ from test.support import os_helper
 #    has no sense, it would have if we were testing a parser (i.e. pygettext)
 #  - Tests should have only one assert.
 
-GNU_MO_DATA = b"""\
+GNU_MO_DATA = b'''\
 3hIElQAAAAAJAAAAHAAAAGQAAAAAAAAArAAAAAAAAACsAAAAFQAAAK0AAAAjAAAAwwAAAKEAAADn
 AAAAMAAAAIkBAAAHAAAAugEAABYAAADCAQAAHAAAANkBAAALAAAA9gEAAEIBAAACAgAAFgAAAEUD
 AAAeAAAAXAMAAKEAAAB7AwAAMgAAAB0EAAAFAAAAUAQAABsAAABWBAAAIQAAAHIEAAAJAAAAlAQA
@@ -36,13 +36,13 @@ Z3ViYSBjZWJ0ZW56ZiBvbCBjZWJpdnF2YXQgbmEgdmFncmVzbnByIGdiIGd1ciBUQUgKdHJnZ3Jr
 ZyB6cmZmbnRyIHBuZ255YnQgeXZvZW5lbC4ASGF5ICVzIGZpY2hlcm8gKGNvbnRleHQpAEhheSAl
 cyBmaWNoZXJvcyAoY29udGV4dCkAYmFjb24Ad2luayB3aW5rIChpbiAibXkgY29udGV4dCIpAHdp
 bmsgd2luayAoaW4gIm15IG90aGVyIGNvbnRleHQiKQB3aW5rIHdpbmsA
-"""
+'''
 
 # This data contains an invalid major version number (5)
 # An unexpected major version number should be treated as an error when
 # parsing a .mo file
 
-GNU_MO_DATA_BAD_MAJOR_VERSION = b"""\
+GNU_MO_DATA_BAD_MAJOR_VERSION = b'''\
 3hIElQAABQAGAAAAHAAAAEwAAAALAAAAfAAAAAAAAACoAAAAFQAAAKkAAAAjAAAAvwAAAKEAAADj
 AAAABwAAAIUBAAALAAAAjQEAAEUBAACZAQAAFgAAAN8CAAAeAAAA9gIAAKEAAAAVAwAABQAAALcD
 AAAJAAAAvQMAAAEAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABQAAAAYAAAACAAAAAFJh
@@ -60,13 +60,13 @@ d29iYmxlciBNYW5ncm92ZQBIYXkgJXMgZmljaGVybwBIYXkgJXMgZmljaGVyb3MAR3V2ZiB6YnFo
 eXIgY2ViaXZxcmYgdmFncmVhbmd2YmFueXZtbmd2YmEgbmFxIHlicG55dm1uZ3ZiYQpmaGNjYmVn
 IHNiZSBsYmhlIENsZ3ViYSBjZWJ0ZW56ZiBvbCBjZWJpdnF2YXQgbmEgdmFncmVzbnByIGdiIGd1
 ciBUQUgKdHJnZ3JrZyB6cmZmbnRyIHBuZ255YnQgeXZvZW5lbC4AYmFjb24Ad2luayB3aW5rAA==
-"""
+'''
 
 # This data contains an invalid minor version number (7)
 # An unexpected minor version number only indicates that some of the file's
 # contents may not be able to be read. It does not indicate an error.
 
-GNU_MO_DATA_BAD_MINOR_VERSION = b"""\
+GNU_MO_DATA_BAD_MINOR_VERSION = b'''\
 3hIElQcAAAAGAAAAHAAAAEwAAAALAAAAfAAAAAAAAACoAAAAFQAAAKkAAAAjAAAAvwAAAKEAAADj
 AAAABwAAAIUBAAALAAAAjQEAAEUBAACZAQAAFgAAAN8CAAAeAAAA9gIAAKEAAAAVAwAABQAAALcD
 AAAJAAAAvQMAAAEAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABQAAAAYAAAACAAAAAFJh
@@ -84,10 +84,10 @@ d29iYmxlciBNYW5ncm92ZQBIYXkgJXMgZmljaGVybwBIYXkgJXMgZmljaGVyb3MAR3V2ZiB6YnFo
 eXIgY2ViaXZxcmYgdmFncmVhbmd2YmFueXZtbmd2YmEgbmFxIHlicG55dm1uZ3ZiYQpmaGNjYmVn
 IHNiZSBsYmhlIENsZ3ViYSBjZWJ0ZW56ZiBvbCBjZWJpdnF2YXQgbmEgdmFncmVzbnByIGdiIGd1
 ciBUQUgKdHJnZ3JrZyB6cmZmbnRyIHBuZ255YnQgeXZvZW5lbC4AYmFjb24Ad2luayB3aW5rAA==
-"""
+'''
 
 
-UMO_DATA = b"""\
+UMO_DATA = b'''\
 3hIElQAAAAADAAAAHAAAADQAAAAAAAAAAAAAAAAAAABMAAAABAAAAE0AAAAQAAAAUgAAAA8BAABj
 AAAABAAAAHMBAAAWAAAAeAEAAABhYsOeAG15Y29udGV4dMOeBGFiw54AUHJvamVjdC1JZC1WZXJz
 aW9uOiAyLjAKUE8tUmV2aXNpb24tRGF0ZTogMjAwMy0wNC0xMSAxMjo0Mi0wNDAwCkxhc3QtVHJh
@@ -95,9 +95,9 @@ bnNsYXRvcjogQmFycnkgQS4gV0Fyc2F3IDxiYXJyeUBweXRob24ub3JnPgpMYW5ndWFnZS1UZWFt
 OiBYWCA8cHl0aG9uLWRldkBweXRob24ub3JnPgpNSU1FLVZlcnNpb246IDEuMApDb250ZW50LVR5
 cGU6IHRleHQvcGxhaW47IGNoYXJzZXQ9dXRmLTgKQ29udGVudC1UcmFuc2Zlci1FbmNvZGluZzog
 N2JpdApHZW5lcmF0ZWQtQnk6IG1hbnVhbGx5CgDCpHl6AMKkeXogKGNvbnRleHQgdmVyc2lvbikA
-"""
+'''
 
-MMO_DATA = b"""\
+MMO_DATA = b'''\
 3hIElQAAAAABAAAAHAAAACQAAAADAAAALAAAAAAAAAA4AAAAeAEAADkAAAABAAAAAAAAAAAAAAAA
 UHJvamVjdC1JZC1WZXJzaW9uOiBObyBQcm9qZWN0IDAuMApQT1QtQ3JlYXRpb24tRGF0ZTogV2Vk
 IERlYyAxMSAwNzo0NDoxNSAyMDAyClBPLVJldmlzaW9uLURhdGU6IDIwMDItMDgtMTQgMDE6MTg6
@@ -106,19 +106,19 @@ ZSBGb29iYXIgPGpmb29iYXJAZXhhbXBsZS5jb20+Ckxhbmd1YWdlLVRlYW06IHh4IDx4eEBleGFt
 cGxlLmNvbT4KTUlNRS1WZXJzaW9uOiAxLjAKQ29udGVudC1UeXBlOiB0ZXh0L3BsYWluOyBjaGFy
 c2V0PWlzby04ODU5LTE1CkNvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IHF1b3RlZC1wcmludGFi
 bGUKR2VuZXJhdGVkLUJ5OiBweWdldHRleHQucHkgMS4zCgA=
-"""
+'''
 
-LOCALEDIR = os.path.join("xx", "LC_MESSAGES")
-MOFILE = os.path.join(LOCALEDIR, "gettext.mo")
-MOFILE_BAD_MAJOR_VERSION = os.path.join(LOCALEDIR, "gettext_bad_major_version.mo")
-MOFILE_BAD_MINOR_VERSION = os.path.join(LOCALEDIR, "gettext_bad_minor_version.mo")
-UMOFILE = os.path.join(LOCALEDIR, "ugettext.mo")
-MMOFILE = os.path.join(LOCALEDIR, "metadata.mo")
+LOCALEDIR = os.path.join('xx', 'LC_MESSAGES')
+MOFILE = os.path.join(LOCALEDIR, 'gettext.mo')
+MOFILE_BAD_MAJOR_VERSION = os.path.join(LOCALEDIR, 'gettext_bad_major_version.mo')
+MOFILE_BAD_MINOR_VERSION = os.path.join(LOCALEDIR, 'gettext_bad_minor_version.mo')
+UMOFILE = os.path.join(LOCALEDIR, 'ugettext.mo')
+MMOFILE = os.path.join(LOCALEDIR, 'metadata.mo')
 
 
 def reset_gettext():
     gettext._localedirs.clear()
-    gettext._current_domain = "messages"
+    gettext._current_domain = 'messages'
     gettext._translations.clear()
 
 
@@ -128,108 +128,101 @@ class GettextBaseTest(unittest.TestCase):
         cls.addClassCleanup(os_helper.rmtree, os.path.split(LOCALEDIR)[0])
         if not os.path.isdir(LOCALEDIR):
             os.makedirs(LOCALEDIR)
-        with open(MOFILE, "wb") as fp:
+        with open(MOFILE, 'wb') as fp:
             fp.write(base64.decodebytes(GNU_MO_DATA))
-        with open(MOFILE_BAD_MAJOR_VERSION, "wb") as fp:
+        with open(MOFILE_BAD_MAJOR_VERSION, 'wb') as fp:
             fp.write(base64.decodebytes(GNU_MO_DATA_BAD_MAJOR_VERSION))
-        with open(MOFILE_BAD_MINOR_VERSION, "wb") as fp:
+        with open(MOFILE_BAD_MINOR_VERSION, 'wb') as fp:
             fp.write(base64.decodebytes(GNU_MO_DATA_BAD_MINOR_VERSION))
-        with open(UMOFILE, "wb") as fp:
+        with open(UMOFILE, 'wb') as fp:
             fp.write(base64.decodebytes(UMO_DATA))
-        with open(MMOFILE, "wb") as fp:
+        with open(MMOFILE, 'wb') as fp:
             fp.write(base64.decodebytes(MMO_DATA))
 
     def setUp(self):
         self.env = self.enterContext(os_helper.EnvironmentVarGuard())
-        self.env["LANGUAGE"] = "xx"
+        self.env['LANGUAGE'] = 'xx'
         reset_gettext()
         self.addCleanup(reset_gettext)
 
 
-GNU_MO_DATA_ISSUE_17898 = b"""\
+GNU_MO_DATA_ISSUE_17898 = b'''\
 3hIElQAAAAABAAAAHAAAACQAAAAAAAAAAAAAAAAAAAAsAAAAggAAAC0AAAAAUGx1cmFsLUZvcm1z
 OiBucGx1cmFscz0yOyBwbHVyYWw9KG4gIT0gMSk7CiMtIy0jLSMtIyAgbWVzc2FnZXMucG8gKEVk
 WCBTdHVkaW8pICAjLSMtIy0jLSMKQ29udGVudC1UeXBlOiB0ZXh0L3BsYWluOyBjaGFyc2V0PVVU
 Ri04CgA=
-"""
-
+'''
 
 class GettextTestCase1(GettextBaseTest):
     def setUp(self):
         GettextBaseTest.setUp(self)
         self.localedir = os.curdir
         self.mofile = MOFILE
-        gettext.install("gettext", self.localedir, names=["pgettext"])
+        gettext.install('gettext', self.localedir, names=['pgettext'])
 
     def test_some_translations(self):
         eq = self.assertEqual
         # test some translations
-        eq(_("albatross"), "albatross")
-        eq(_("mullusk"), "bacon")
-        eq(_(r"Raymond Luxury Yach-t"), "Throatwobbler Mangrove")
-        eq(_(r"nudge nudge"), "wink wink")
+        eq(_('albatross'), 'albatross')
+        eq(_('mullusk'), 'bacon')
+        eq(_(r'Raymond Luxury Yach-t'), 'Throatwobbler Mangrove')
+        eq(_(r'nudge nudge'), 'wink wink')
 
     def test_some_translations_with_context(self):
         eq = self.assertEqual
-        eq(pgettext("my context", "nudge nudge"), 'wink wink (in "my context")')
-        eq(
-            pgettext("my other context", "nudge nudge"),
-            'wink wink (in "my other context")',
-        )
+        eq(pgettext('my context', 'nudge nudge'),
+           'wink wink (in "my context")')
+        eq(pgettext('my other context', 'nudge nudge'),
+           'wink wink (in "my other context")')
 
     def test_double_quotes(self):
         eq = self.assertEqual
         # double quotes
-        eq(_("albatross"), "albatross")
-        eq(_("mullusk"), "bacon")
-        eq(_(r"Raymond Luxury Yach-t"), "Throatwobbler Mangrove")
-        eq(_(r"nudge nudge"), "wink wink")
+        eq(_("albatross"), 'albatross')
+        eq(_("mullusk"), 'bacon')
+        eq(_(r"Raymond Luxury Yach-t"), 'Throatwobbler Mangrove')
+        eq(_(r"nudge nudge"), 'wink wink')
 
     def test_triple_single_quotes(self):
         eq = self.assertEqual
         # triple single quotes
-        eq(_("""albatross"""), "albatross")
-        eq(_("""mullusk"""), "bacon")
-        eq(_(r"""Raymond Luxury Yach-t"""), "Throatwobbler Mangrove")
-        eq(_(r"""nudge nudge"""), "wink wink")
+        eq(_('''albatross'''), 'albatross')
+        eq(_('''mullusk'''), 'bacon')
+        eq(_(r'''Raymond Luxury Yach-t'''), 'Throatwobbler Mangrove')
+        eq(_(r'''nudge nudge'''), 'wink wink')
 
     def test_triple_double_quotes(self):
         eq = self.assertEqual
         # triple double quotes
-        eq(_("""albatross"""), "albatross")
-        eq(_("""mullusk"""), "bacon")
-        eq(_(r"""Raymond Luxury Yach-t"""), "Throatwobbler Mangrove")
-        eq(_(r"""nudge nudge"""), "wink wink")
+        eq(_("""albatross"""), 'albatross')
+        eq(_("""mullusk"""), 'bacon')
+        eq(_(r"""Raymond Luxury Yach-t"""), 'Throatwobbler Mangrove')
+        eq(_(r"""nudge nudge"""), 'wink wink')
 
     def test_multiline_strings(self):
         eq = self.assertEqual
         # multiline strings
-        eq(
-            _(
-                """This module provides internationalization and localization
+        eq(_('''This module provides internationalization and localization
 support for your Python programs by providing an interface to the GNU
-gettext message catalog library."""
-            ),
-            """Guvf zbqhyr cebivqrf vagreangvbanyvmngvba naq ybpnyvmngvba
+gettext message catalog library.'''),
+           '''Guvf zbqhyr cebivqrf vagreangvbanyvmngvba naq ybpnyvmngvba
 fhccbeg sbe lbhe Clguba cebtenzf ol cebivqvat na vagresnpr gb gur TAH
-trggrkg zrffntr pngnybt yvoenel.""",
-        )
+trggrkg zrffntr pngnybt yvoenel.''')
 
     def test_the_alternative_interface(self):
         eq = self.assertEqual
         neq = self.assertNotEqual
         # test the alternative interface
-        with open(self.mofile, "rb") as fp:
+        with open(self.mofile, 'rb') as fp:
             t = gettext.GNUTranslations(fp)
         # Install the translation object
         t.install()
-        eq(_("nudge nudge"), "wink wink")
+        eq(_('nudge nudge'), 'wink wink')
         # Try unicode return type
         t.install()
-        eq(_("mullusk"), "bacon")
+        eq(_('mullusk'), 'bacon')
         # Test installation of other methods
         import builtins
-
         t.install(names=["gettext", "ngettext"])
         eq(_, t.gettext)
         eq(builtins.gettext, t.gettext)
@@ -244,19 +237,19 @@ class GettextTestCase2(GettextBaseTest):
         GettextBaseTest.setUp(self)
         self.localedir = os.curdir
         # Set up the bindings
-        gettext.bindtextdomain("gettext", self.localedir)
-        gettext.textdomain("gettext")
+        gettext.bindtextdomain('gettext', self.localedir)
+        gettext.textdomain('gettext')
         # For convenience
         self._ = gettext.gettext
 
     def test_bindtextdomain(self):
-        self.assertEqual(gettext.bindtextdomain("gettext"), self.localedir)
+        self.assertEqual(gettext.bindtextdomain('gettext'), self.localedir)
 
     def test_textdomain(self):
-        self.assertEqual(gettext.textdomain(), "gettext")
+        self.assertEqual(gettext.textdomain(), 'gettext')
 
     def test_bad_major_version(self):
-        with open(MOFILE_BAD_MAJOR_VERSION, "rb") as fp:
+        with open(MOFILE_BAD_MAJOR_VERSION, 'rb') as fp:
             with self.assertRaises(OSError) as cm:
                 gettext.GNUTranslations(fp)
 
@@ -266,81 +259,72 @@ class GettextTestCase2(GettextBaseTest):
             self.assertEqual(exception.filename, MOFILE_BAD_MAJOR_VERSION)
 
     def test_bad_minor_version(self):
-        with open(MOFILE_BAD_MINOR_VERSION, "rb") as fp:
+        with open(MOFILE_BAD_MINOR_VERSION, 'rb') as fp:
             # Check that no error is thrown with a bad minor version number
             gettext.GNUTranslations(fp)
 
     def test_some_translations(self):
         eq = self.assertEqual
         # test some translations
-        eq(self._("albatross"), "albatross")
-        eq(self._("mullusk"), "bacon")
-        eq(self._(r"Raymond Luxury Yach-t"), "Throatwobbler Mangrove")
-        eq(self._(r"nudge nudge"), "wink wink")
+        eq(self._('albatross'), 'albatross')
+        eq(self._('mullusk'), 'bacon')
+        eq(self._(r'Raymond Luxury Yach-t'), 'Throatwobbler Mangrove')
+        eq(self._(r'nudge nudge'), 'wink wink')
 
     def test_some_translations_with_context(self):
         eq = self.assertEqual
-        eq(gettext.pgettext("my context", "nudge nudge"), 'wink wink (in "my context")')
-        eq(
-            gettext.pgettext("my other context", "nudge nudge"),
-            'wink wink (in "my other context")',
-        )
+        eq(gettext.pgettext('my context', 'nudge nudge'),
+           'wink wink (in "my context")')
+        eq(gettext.pgettext('my other context', 'nudge nudge'),
+           'wink wink (in "my other context")')
 
     def test_some_translations_with_context_and_domain(self):
         eq = self.assertEqual
-        eq(
-            gettext.dpgettext("gettext", "my context", "nudge nudge"),
-            'wink wink (in "my context")',
-        )
-        eq(
-            gettext.dpgettext("gettext", "my other context", "nudge nudge"),
-            'wink wink (in "my other context")',
-        )
+        eq(gettext.dpgettext('gettext', 'my context', 'nudge nudge'),
+           'wink wink (in "my context")')
+        eq(gettext.dpgettext('gettext', 'my other context', 'nudge nudge'),
+           'wink wink (in "my other context")')
 
     def test_double_quotes(self):
         eq = self.assertEqual
         # double quotes
-        eq(self._("albatross"), "albatross")
-        eq(self._("mullusk"), "bacon")
-        eq(self._(r"Raymond Luxury Yach-t"), "Throatwobbler Mangrove")
-        eq(self._(r"nudge nudge"), "wink wink")
+        eq(self._("albatross"), 'albatross')
+        eq(self._("mullusk"), 'bacon')
+        eq(self._(r"Raymond Luxury Yach-t"), 'Throatwobbler Mangrove')
+        eq(self._(r"nudge nudge"), 'wink wink')
 
     def test_triple_single_quotes(self):
         eq = self.assertEqual
         # triple single quotes
-        eq(self._("""albatross"""), "albatross")
-        eq(self._("""mullusk"""), "bacon")
-        eq(self._(r"""Raymond Luxury Yach-t"""), "Throatwobbler Mangrove")
-        eq(self._(r"""nudge nudge"""), "wink wink")
+        eq(self._('''albatross'''), 'albatross')
+        eq(self._('''mullusk'''), 'bacon')
+        eq(self._(r'''Raymond Luxury Yach-t'''), 'Throatwobbler Mangrove')
+        eq(self._(r'''nudge nudge'''), 'wink wink')
 
     def test_triple_double_quotes(self):
         eq = self.assertEqual
         # triple double quotes
-        eq(self._("""albatross"""), "albatross")
-        eq(self._("""mullusk"""), "bacon")
-        eq(self._(r"""Raymond Luxury Yach-t"""), "Throatwobbler Mangrove")
-        eq(self._(r"""nudge nudge"""), "wink wink")
+        eq(self._("""albatross"""), 'albatross')
+        eq(self._("""mullusk"""), 'bacon')
+        eq(self._(r"""Raymond Luxury Yach-t"""), 'Throatwobbler Mangrove')
+        eq(self._(r"""nudge nudge"""), 'wink wink')
 
     def test_multiline_strings(self):
         eq = self.assertEqual
         # multiline strings
-        eq(
-            self._(
-                """This module provides internationalization and localization
+        eq(self._('''This module provides internationalization and localization
 support for your Python programs by providing an interface to the GNU
-gettext message catalog library."""
-            ),
-            """Guvf zbqhyr cebivqrf vagreangvbanyvmngvba naq ybpnyvmngvba
+gettext message catalog library.'''),
+           '''Guvf zbqhyr cebivqrf vagreangvbanyvmngvba naq ybpnyvmngvba
 fhccbeg sbe lbhe Clguba cebtenzf ol cebivqvat na vagresnpr gb gur TAH
-trggrkg zrffntr pngnybt yvoenel.""",
-        )
+trggrkg zrffntr pngnybt yvoenel.''')
 
 
 class PluralFormsTests:
 
-    def _test_plural_forms(
-        self, ngettext, gettext, singular, plural, tsingular, tplural, numbers_only=True
-    ):
+    def _test_plural_forms(self, ngettext, gettext,
+                           singular, plural, tsingular, tplural,
+                           numbers_only=True):
         x = ngettext(singular, plural, 1)
         self.assertEqual(x, tsingular)
         x = ngettext(singular, plural, 2)
@@ -368,59 +352,40 @@ class PluralFormsTests:
 
     def test_plural_forms(self):
         self._test_plural_forms(
-            self.ngettext,
-            self.gettext,
-            "There is %s file",
-            "There are %s files",
-            "Hay %s fichero",
-            "Hay %s ficheros",
-        )
+            self.ngettext, self.gettext,
+            'There is %s file', 'There are %s files',
+            'Hay %s fichero', 'Hay %s ficheros')
         self._test_plural_forms(
-            self.ngettext,
-            self.gettext,
-            "%d file deleted",
-            "%d files deleted",
-            "%d file deleted",
-            "%d files deleted",
-        )
+            self.ngettext, self.gettext,
+            '%d file deleted', '%d files deleted',
+            '%d file deleted', '%d files deleted')
 
     def test_plural_context_forms(self):
-        ngettext = partial(self.npgettext, "With context")
-        gettext = partial(self.pgettext, "With context")
+        ngettext = partial(self.npgettext, 'With context')
+        gettext = partial(self.pgettext, 'With context')
         self._test_plural_forms(
-            ngettext,
-            gettext,
-            "There is %s file",
-            "There are %s files",
-            "Hay %s fichero (context)",
-            "Hay %s ficheros (context)",
-        )
+            ngettext, gettext,
+            'There is %s file', 'There are %s files',
+            'Hay %s fichero (context)', 'Hay %s ficheros (context)')
         self._test_plural_forms(
-            ngettext,
-            gettext,
-            "%d file deleted",
-            "%d files deleted",
-            "%d file deleted",
-            "%d files deleted",
-        )
+            ngettext, gettext,
+            '%d file deleted', '%d files deleted',
+            '%d file deleted', '%d files deleted')
 
     def test_plural_wrong_context_forms(self):
         self._test_plural_forms(
-            partial(self.npgettext, "Unknown context"),
-            partial(self.pgettext, "Unknown context"),
-            "There is %s file",
-            "There are %s files",
-            "There is %s file",
-            "There are %s files",
-        )
+            partial(self.npgettext, 'Unknown context'),
+            partial(self.pgettext, 'Unknown context'),
+            'There is %s file', 'There are %s files',
+            'There is %s file', 'There are %s files')
 
 
 class GNUTranslationsPluralFormsTestCase(PluralFormsTests, GettextBaseTest):
     def setUp(self):
         GettextBaseTest.setUp(self)
         # Set up the bindings
-        gettext.bindtextdomain("gettext", os.curdir)
-        gettext.textdomain("gettext")
+        gettext.bindtextdomain('gettext', os.curdir)
+        gettext.textdomain('gettext')
 
         self.gettext = gettext.gettext
         self.ngettext = gettext.ngettext
@@ -432,40 +397,34 @@ class GNUTranslationsWithDomainPluralFormsTestCase(PluralFormsTests, GettextBase
     def setUp(self):
         GettextBaseTest.setUp(self)
         # Set up the bindings
-        gettext.bindtextdomain("gettext", os.curdir)
+        gettext.bindtextdomain('gettext', os.curdir)
 
-        self.gettext = partial(gettext.dgettext, "gettext")
-        self.ngettext = partial(gettext.dngettext, "gettext")
-        self.pgettext = partial(gettext.dpgettext, "gettext")
-        self.npgettext = partial(gettext.dnpgettext, "gettext")
+        self.gettext = partial(gettext.dgettext, 'gettext')
+        self.ngettext = partial(gettext.dngettext, 'gettext')
+        self.pgettext = partial(gettext.dpgettext, 'gettext')
+        self.npgettext = partial(gettext.dnpgettext, 'gettext')
 
     def test_plural_forms_wrong_domain(self):
         self._test_plural_forms(
-            partial(gettext.dngettext, "unknown"),
-            partial(gettext.dgettext, "unknown"),
-            "There is %s file",
-            "There are %s files",
-            "There is %s file",
-            "There are %s files",
-            numbers_only=False,
-        )
+            partial(gettext.dngettext, 'unknown'),
+            partial(gettext.dgettext, 'unknown'),
+            'There is %s file', 'There are %s files',
+            'There is %s file', 'There are %s files',
+            numbers_only=False)
 
     def test_plural_context_forms_wrong_domain(self):
         self._test_plural_forms(
-            partial(gettext.dnpgettext, "unknown", "With context"),
-            partial(gettext.dpgettext, "unknown", "With context"),
-            "There is %s file",
-            "There are %s files",
-            "There is %s file",
-            "There are %s files",
-            numbers_only=False,
-        )
+            partial(gettext.dnpgettext, 'unknown', 'With context'),
+            partial(gettext.dpgettext, 'unknown', 'With context'),
+            'There is %s file', 'There are %s files',
+            'There is %s file', 'There are %s files',
+            numbers_only=False)
 
 
 class GNUTranslationsClassPluralFormsTestCase(PluralFormsTests, GettextBaseTest):
     def setUp(self):
         GettextBaseTest.setUp(self)
-        with open(MOFILE, "rb") as fp:
+        with open(MOFILE, 'rb') as fp:
             t = gettext.GNUTranslations(fp)
 
         self.gettext = t.gettext
@@ -476,26 +435,19 @@ class GNUTranslationsClassPluralFormsTestCase(PluralFormsTests, GettextBaseTest)
     def test_plural_forms_null_translations(self):
         t = gettext.NullTranslations()
         self._test_plural_forms(
-            t.ngettext,
-            t.gettext,
-            "There is %s file",
-            "There are %s files",
-            "There is %s file",
-            "There are %s files",
-            numbers_only=False,
-        )
+            t.ngettext, t.gettext,
+            'There is %s file', 'There are %s files',
+            'There is %s file', 'There are %s files',
+            numbers_only=False)
 
     def test_plural_context_forms_null_translations(self):
         t = gettext.NullTranslations()
         self._test_plural_forms(
-            partial(t.npgettext, "With context"),
-            partial(t.pgettext, "With context"),
-            "There is %s file",
-            "There are %s files",
-            "There is %s file",
-            "There are %s files",
-            numbers_only=False,
-        )
+            partial(t.npgettext, 'With context'),
+            partial(t.pgettext, 'With context'),
+            'There is %s file', 'There are %s files',
+            'There is %s file', 'There are %s files',
+            numbers_only=False)
 
 
 class PluralFormsInternalTestCase:
@@ -503,129 +455,82 @@ class PluralFormsInternalTestCase:
 
     def test_ja(self):
         eq = self.assertEqual
-        f = gettext.c2py("0")
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-        )
+        f = gettext.c2py('0')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
 
     def test_de(self):
         eq = self.assertEqual
-        f = gettext.c2py("n != 1")
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "10111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-        )
+        f = gettext.c2py('n != 1')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "10111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
 
     def test_fr(self):
         eq = self.assertEqual
-        f = gettext.c2py("n>1")
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "00111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-        )
+        f = gettext.c2py('n>1')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "00111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
 
     def test_lv(self):
         eq = self.assertEqual
-        f = gettext.c2py("n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2")
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "20111111111111111111101111111110111111111011111111101111111110111111111011111111101111111110111111111011111111111111111110111111111011111111101111111110111111111011111111101111111110111111111011111111",
-        )
+        f = gettext.c2py('n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "20111111111111111111101111111110111111111011111111101111111110111111111011111111101111111110111111111011111111111111111110111111111011111111101111111110111111111011111111101111111110111111111011111111")
 
     def test_gd(self):
         eq = self.assertEqual
-        f = gettext.c2py("n==1 ? 0 : n==2 ? 1 : 2")
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "20122222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222",
-        )
+        f = gettext.c2py('n==1 ? 0 : n==2 ? 1 : 2')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "20122222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222")
 
     def test_gd2(self):
         eq = self.assertEqual
         # Tests the combination of parentheses and "?:"
-        f = gettext.c2py("n==1 ? 0 : (n==2 ? 1 : 2)")
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "20122222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222",
-        )
+        f = gettext.c2py('n==1 ? 0 : (n==2 ? 1 : 2)')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "20122222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222")
 
     def test_ro(self):
         eq = self.assertEqual
-        f = gettext.c2py("n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2")
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "10111111111111111111222222222222222222222222222222222222222222222222222222222222222222222222222222222111111111111111111122222222222222222222222222222222222222222222222222222222222222222222222222222222",
-        )
+        f = gettext.c2py('n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "10111111111111111111222222222222222222222222222222222222222222222222222222222222222222222222222222222111111111111111111122222222222222222222222222222222222222222222222222222222222222222222222222222222")
 
     def test_lt(self):
         eq = self.assertEqual
-        f = gettext.c2py(
-            "n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2"
-        )
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "20111111112222222222201111111120111111112011111111201111111120111111112011111111201111111120111111112011111111222222222220111111112011111111201111111120111111112011111111201111111120111111112011111111",
-        )
+        f = gettext.c2py('n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "20111111112222222222201111111120111111112011111111201111111120111111112011111111201111111120111111112011111111222222222220111111112011111111201111111120111111112011111111201111111120111111112011111111")
 
     def test_ru(self):
         eq = self.assertEqual
-        f = gettext.c2py(
-            "n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2"
-        )
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "20111222222222222222201112222220111222222011122222201112222220111222222011122222201112222220111222222011122222222222222220111222222011122222201112222220111222222011122222201112222220111222222011122222",
-        )
+        f = gettext.c2py('n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "20111222222222222222201112222220111222222011122222201112222220111222222011122222201112222220111222222011122222222222222220111222222011122222201112222220111222222011122222201112222220111222222011122222")
 
     def test_cs(self):
         eq = self.assertEqual
-        f = gettext.c2py("(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2")
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "20111222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222",
-        )
+        f = gettext.c2py('(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "20111222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222")
 
     def test_pl(self):
         eq = self.assertEqual
-        f = gettext.c2py(
-            "n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2"
-        )
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "20111222222222222222221112222222111222222211122222221112222222111222222211122222221112222222111222222211122222222222222222111222222211122222221112222222111222222211122222221112222222111222222211122222",
-        )
+        f = gettext.c2py('n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "20111222222222222222221112222222111222222211122222221112222222111222222211122222221112222222111222222211122222222222222222111222222211122222221112222222111222222211122222221112222222111222222211122222")
 
     def test_sl(self):
         eq = self.assertEqual
-        f = gettext.c2py("n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3")
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "30122333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333012233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333",
-        )
+        f = gettext.c2py('n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "30122333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333012233333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333")
 
     def test_ar(self):
         eq = self.assertEqual
-        f = gettext.c2py(
-            "n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5"
-        )
-        s = "".join([str(f(x)) for x in range(200)])
-        eq(
-            s,
-            "01233333333444444444444444444444444444444444444444444444444444444444444444444444444444444444444444445553333333344444444444444444444444444444444444444444444444444444444444444444444444444444444444444444",
-        )
+        f = gettext.c2py('n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5')
+        s = ''.join([ str(f(x)) for x in range(200) ])
+        eq(s, "01233333333444444444444444444444444444444444444444444444444444444444444444444444444444444444444444445553333333344444444444444444444444444444444444444444444444444444444444444444444444444444444444444444")
 
     def test_security(self):
         raises = self.assertRaises
@@ -633,60 +538,47 @@ class PluralFormsInternalTestCase:
         raises(ValueError, gettext.c2py, "os.chmod('/etc/passwd',0777)")
         # issue28563
         raises(ValueError, gettext.c2py, '"(eval(foo) && ""')
-        raises(ValueError, gettext.c2py, "f\"{os.system('sh')}\"")
+        raises(ValueError, gettext.c2py, 'f"{os.system(\'sh\')}"')
         # Maximum recursion depth exceeded during compilation
-        raises(ValueError, gettext.c2py, "n+" * 10000 + "n")
-        self.assertEqual(gettext.c2py("n+" * 100 + "n")(1), 101)
+        raises(ValueError, gettext.c2py, 'n+'*10000 + 'n')
+        self.assertEqual(gettext.c2py('n+'*100 + 'n')(1), 101)
         # MemoryError during compilation
-        raises(ValueError, gettext.c2py, "(" * 100 + "n" + ")" * 100)
+        raises(ValueError, gettext.c2py, '('*100 + 'n' + ')'*100)
         # Maximum recursion depth exceeded in C to Python translator
-        raises(ValueError, gettext.c2py, "(" * 10000 + "n" + ")" * 10000)
-        self.assertEqual(gettext.c2py("(" * 20 + "n" + ")" * 20)(1), 1)
+        raises(ValueError, gettext.c2py, '('*10000 + 'n' + ')'*10000)
+        self.assertEqual(gettext.c2py('('*20 + 'n' + ')'*20)(1), 1)
 
     def test_chained_comparison(self):
         # C doesn't chain comparison as Python so 2 == 2 == 2 gets different results
-        f = gettext.c2py("n == n == n")
-        self.assertEqual("".join(str(f(x)) for x in range(3)), "010")
-        f = gettext.c2py("1 < n == n")
-        self.assertEqual("".join(str(f(x)) for x in range(3)), "100")
-        f = gettext.c2py("n == n < 2")
-        self.assertEqual("".join(str(f(x)) for x in range(3)), "010")
-        f = gettext.c2py("0 < n < 2")
-        self.assertEqual("".join(str(f(x)) for x in range(3)), "111")
+        f = gettext.c2py('n == n == n')
+        self.assertEqual(''.join(str(f(x)) for x in range(3)), '010')
+        f = gettext.c2py('1 < n == n')
+        self.assertEqual(''.join(str(f(x)) for x in range(3)), '100')
+        f = gettext.c2py('n == n < 2')
+        self.assertEqual(''.join(str(f(x)) for x in range(3)), '010')
+        f = gettext.c2py('0 < n < 2')
+        self.assertEqual(''.join(str(f(x)) for x in range(3)), '111')
 
     def test_decimal_number(self):
-        self.assertEqual(gettext.c2py("0123")(1), 123)
+        self.assertEqual(gettext.c2py('0123')(1), 123)
 
     def test_invalid_syntax(self):
         invalid_expressions = [
-            "x>1",
-            "(n>1",
-            "n>1)",
-            "42**42**42",
-            "0xa",
-            "1.0",
-            "1e2",
-            "n>0x1",
-            "+n",
-            "-n",
-            "n()",
-            "n(1)",
-            "1+",
-            "nn",
-            "n n",
+            'x>1', '(n>1', 'n>1)', '42**42**42', '0xa', '1.0', '1e2',
+            'n>0x1', '+n', '-n', 'n()', 'n(1)', '1+', 'nn', 'n n',
         ]
         for expr in invalid_expressions:
             with self.assertRaises(ValueError):
                 gettext.c2py(expr)
 
     def test_nested_condition_operator(self):
-        self.assertEqual(gettext.c2py("n?1?2:3:4")(0), 4)
-        self.assertEqual(gettext.c2py("n?1?2:3:4")(1), 2)
-        self.assertEqual(gettext.c2py("n?1:3?4:5")(0), 4)
-        self.assertEqual(gettext.c2py("n?1:3?4:5")(1), 1)
+        self.assertEqual(gettext.c2py('n?1?2:3:4')(0), 4)
+        self.assertEqual(gettext.c2py('n?1?2:3:4')(1), 2)
+        self.assertEqual(gettext.c2py('n?1:3?4:5')(0), 4)
+        self.assertEqual(gettext.c2py('n?1:3?4:5')(1), 1)
 
     def test_division(self):
-        f = gettext.c2py("2/n*3")
+        f = gettext.c2py('2/n*3')
         self.assertEqual(f(1), 6)
         self.assertEqual(f(2), 3)
         self.assertEqual(f(3), 0)
@@ -694,7 +586,7 @@ class PluralFormsInternalTestCase:
         self.assertRaises(ZeroDivisionError, f, 0)
 
     def test_plural_number(self):
-        f = gettext.c2py("n != 1")
+        f = gettext.c2py('n != 1')
         self.assertEqual(f(1), 0)
         self.assertEqual(f(2), 1)
         with self.assertWarns(DeprecationWarning):
@@ -703,17 +595,17 @@ class PluralFormsInternalTestCase:
             self.assertEqual(f(2.0), 1)
         with self.assertWarns(DeprecationWarning):
             self.assertEqual(f(1.1), 1)
-        self.assertRaises(TypeError, f, "2")
-        self.assertRaises(TypeError, f, b"2")
+        self.assertRaises(TypeError, f, '2')
+        self.assertRaises(TypeError, f, b'2')
         self.assertRaises(TypeError, f, [])
         self.assertRaises(TypeError, f, object())
 
 
 class GNUTranslationParsingTest(GettextBaseTest):
     def test_plural_form_error_issue17898(self):
-        with open(MOFILE, "wb") as fp:
+        with open(MOFILE, 'wb') as fp:
             fp.write(base64.decodebytes(GNU_MO_DATA_ISSUE_17898))
-        with open(MOFILE, "rb") as fp:
+        with open(MOFILE, 'rb') as fp:
             # If this runs cleanly, the bug is fixed.
             t = gettext.GNUTranslations(fp)
 
@@ -724,9 +616,9 @@ class GNUTranslationParsingTest(GettextBaseTest):
 
         are ignored.
         """
-        with open(MOFILE, "wb") as fp:
+        with open(MOFILE, 'wb') as fp:
             fp.write(base64.decodebytes(GNU_MO_DATA_ISSUE_17898))
-        with open(MOFILE, "rb") as fp:
+        with open(MOFILE, 'rb') as fp:
             t = gettext.GNUTranslations(fp)
             self.assertEqual(t.info()["plural-forms"], "nplurals=2; plural=(n != 1);")
 
@@ -734,40 +626,40 @@ class GNUTranslationParsingTest(GettextBaseTest):
 class UnicodeTranslationsTest(GettextBaseTest):
     def setUp(self):
         GettextBaseTest.setUp(self)
-        with open(UMOFILE, "rb") as fp:
+        with open(UMOFILE, 'rb') as fp:
             self.t = gettext.GNUTranslations(fp)
         self._ = self.t.gettext
         self.pgettext = self.t.pgettext
 
     def test_unicode_msgid(self):
-        self.assertIsInstance(self._(""), str)
+        self.assertIsInstance(self._(''), str)
 
     def test_unicode_msgstr(self):
-        self.assertEqual(self._("ab\xde"), "\xa4yz")
+        self.assertEqual(self._('ab\xde'), '\xa4yz')
 
     def test_unicode_context_msgstr(self):
-        t = self.pgettext("mycontext\xde", "ab\xde")
+        t = self.pgettext('mycontext\xde', 'ab\xde')
         self.assertTrue(isinstance(t, str))
-        self.assertEqual(t, "\xa4yz (context version)")
+        self.assertEqual(t, '\xa4yz (context version)')
 
 
 class UnicodeTranslationsPluralTest(GettextBaseTest):
     def setUp(self):
         GettextBaseTest.setUp(self)
-        with open(MOFILE, "rb") as fp:
+        with open(MOFILE, 'rb') as fp:
             self.t = gettext.GNUTranslations(fp)
         self.ngettext = self.t.ngettext
         self.npgettext = self.t.npgettext
 
     def test_unicode_msgid(self):
         unless = self.assertTrue
-        unless(isinstance(self.ngettext("", "", 1), str))
-        unless(isinstance(self.ngettext("", "", 2), str))
+        unless(isinstance(self.ngettext('', '', 1), str))
+        unless(isinstance(self.ngettext('', '', 2), str))
 
     def test_unicode_context_msgid(self):
         unless = self.assertTrue
-        unless(isinstance(self.npgettext("", "", "", 1), str))
-        unless(isinstance(self.npgettext("", "", "", 2), str))
+        unless(isinstance(self.npgettext('', '', '', 1), str))
+        unless(isinstance(self.npgettext('', '', '', 2), str))
 
     def test_unicode_msgstr(self):
         eq = self.assertEqual
@@ -783,10 +675,12 @@ class UnicodeTranslationsPluralTest(GettextBaseTest):
     def test_unicode_msgstr_with_context(self):
         eq = self.assertEqual
         unless = self.assertTrue
-        t = self.npgettext("With context", "There is %s file", "There are %s files", 1)
+        t = self.npgettext("With context",
+                           "There is %s file", "There are %s files", 1)
         unless(isinstance(t, str))
         eq(t, "Hay %s fichero (context)")
-        t = self.npgettext("With context", "There is %s file", "There are %s files", 5)
+        t = self.npgettext("With context",
+                           "There is %s file", "There are %s files", 5)
         unless(isinstance(t, str))
         eq(t, "Hay %s ficheros (context)")
 
@@ -794,7 +688,7 @@ class UnicodeTranslationsPluralTest(GettextBaseTest):
 class WeirdMetadataTest(GettextBaseTest):
     def setUp(self):
         GettextBaseTest.setUp(self)
-        with open(MMOFILE, "rb") as fp:
+        with open(MMOFILE, 'rb') as fp:
             try:
                 self.t = gettext.GNUTranslations(fp)
             except:
@@ -804,15 +698,13 @@ class WeirdMetadataTest(GettextBaseTest):
     def test_weird_metadata(self):
         info = self.t.info()
         self.assertEqual(len(info), 9)
-        self.assertEqual(
-            info["last-translator"],
-            "John Doe <jdoe@example.com>\nJane Foobar <jfoobar@example.com>",
-        )
+        self.assertEqual(info['last-translator'],
+           'John Doe <jdoe@example.com>\nJane Foobar <jfoobar@example.com>')
 
 
 class DummyGNUTranslations(gettext.GNUTranslations):
     def foo(self):
-        return "foo"
+        return 'foo'
 
 
 class GettextCacheTestCase(GettextBaseTest):
@@ -822,18 +714,20 @@ class GettextCacheTestCase(GettextBaseTest):
 
         self.assertEqual(len(gettext._translations), 0)
 
-        t = gettext.translation("gettext", self.localedir)
+        t = gettext.translation('gettext', self.localedir)
 
         self.assertEqual(len(gettext._translations), 1)
 
-        t = gettext.translation("gettext", self.localedir, class_=DummyGNUTranslations)
+        t = gettext.translation('gettext', self.localedir,
+                                class_=DummyGNUTranslations)
 
         self.assertEqual(len(gettext._translations), 2)
         self.assertEqual(t.__class__, DummyGNUTranslations)
 
         # Calling it again doesn't add to the cache
 
-        t = gettext.translation("gettext", self.localedir, class_=DummyGNUTranslations)
+        t = gettext.translation('gettext', self.localedir,
+                                class_=DummyGNUTranslations)
 
         self.assertEqual(len(gettext._translations), 2)
         self.assertEqual(t.__class__, DummyGNUTranslations)
@@ -841,10 +735,11 @@ class GettextCacheTestCase(GettextBaseTest):
 
 class MiscTestCase(unittest.TestCase):
     def test__all__(self):
-        support.check__all__(self, gettext, not_exported={"c2py", "ENOENT"})
+        support.check__all__(self, gettext,
+                             not_exported={'c2py', 'ENOENT'})
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
 
 
@@ -853,7 +748,7 @@ if __name__ == "__main__":
 # The original version was automatically generated from the sources with
 # pygettext. Later it was manually modified to add plural forms support.
 
-b"""
+b'''
 # Dummy translation for the Python test_gettext.py module.
 # Copyright (C) 2001 Python Software Foundation
 # Barry Warsaw <barry@python.org>, 2000.
@@ -924,12 +819,12 @@ msgid "There is %s file"
 msgid_plural "There are %s files"
 msgstr[0] "Hay %s fichero (context)"
 msgstr[1] "Hay %s ficheros (context)"
-"""
+'''
 
 # Here's the second example po file example, used to generate the UMO_DATA
 # containing utf-8 encoded Unicode strings
 
-b"""
+b'''
 # Dummy translation for the Python test_gettext.py module.
 # Copyright (C) 2001 Python Software Foundation
 # Barry Warsaw <barry@python.org>, 2000.
@@ -953,11 +848,11 @@ msgstr "\xc2\xa4yz"
 msgctxt "mycontext\xc3\x9e"
 msgid "ab\xc3\x9e"
 msgstr "\xc2\xa4yz (context version)"
-"""
+'''
 
 # Here's the third example po file, used to generate MMO_DATA
 
-b"""
+b'''
 msgid ""
 msgstr ""
 "Project-Id-Version: No Project 0.0\n"
@@ -970,17 +865,17 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-15\n"
 "Content-Transfer-Encoding: quoted-printable\n"
 "Generated-By: pygettext.py 1.3\n"
-"""
+'''
 
 #
 # messages.po, used for bug 17898
 #
 
-b"""
+b'''
 # test file for http://bugs.python.org/issue17898
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "#-#-#-#-#  messages.po (EdX Studio)  #-#-#-#-#\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"""
+'''

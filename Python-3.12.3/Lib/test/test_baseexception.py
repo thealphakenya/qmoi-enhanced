@@ -5,6 +5,7 @@ from platform import system as platform_system
 
 
 class ExceptionClassTests(unittest.TestCase):
+
     """Tests for anything relating to exception objects themselves (e.g.,
     inheritance hierarchy)"""
 
@@ -13,10 +14,9 @@ class ExceptionClassTests(unittest.TestCase):
 
     def verify_instance_interface(self, ins):
         for attr in ("args", "__str__", "__repr__"):
-            self.assertTrue(
-                hasattr(ins, attr),
-                "%s missing %s attribute" % (ins.__class__.__name__, attr),
-            )
+            self.assertTrue(hasattr(ins, attr),
+                    "%s missing %s attribute" %
+                        (ins.__class__.__name__, attr))
 
     def test_inheritance(self):
         # Make sure the inheritance hierarchy matches the documentation
@@ -29,33 +29,33 @@ class ExceptionClassTests(unittest.TestCase):
                 pass
 
         inheritance_tree = open(
-            os.path.join(os.path.split(__file__)[0], "exception_hierarchy.txt"),
-            encoding="utf-8",
-        )
+                os.path.join(os.path.split(__file__)[0], 'exception_hierarchy.txt'),
+                encoding="utf-8")
         try:
             superclass_name = inheritance_tree.readline().rstrip()
             try:
                 last_exc = getattr(builtins, superclass_name)
             except AttributeError:
                 self.fail("base class %s not a built-in" % superclass_name)
-            self.assertIn(superclass_name, exc_set, "%s not found" % superclass_name)
+            self.assertIn(superclass_name, exc_set,
+                          '%s not found' % superclass_name)
             exc_set.discard(superclass_name)
             superclasses = []  # Loop will insert base exception
             last_depth = 0
             for exc_line in inheritance_tree:
                 exc_line = exc_line.rstrip()
-                depth = exc_line.rindex("─")
-                exc_name = exc_line[depth + 2 :]  # Slice past space
-                if "(" in exc_name:
-                    paren_index = exc_name.index("(")
-                    platform_name = exc_name[paren_index + 1 : -1]
-                    exc_name = exc_name[: paren_index - 1]  # Slice off space
+                depth = exc_line.rindex('─')
+                exc_name = exc_line[depth+2:]  # Slice past space
+                if '(' in exc_name:
+                    paren_index = exc_name.index('(')
+                    platform_name = exc_name[paren_index+1:-1]
+                    exc_name = exc_name[:paren_index-1]  # Slice off space
                     if platform_system() != platform_name:
                         exc_set.discard(exc_name)
                         continue
-                if "[" in exc_name:
-                    left_bracket = exc_name.index("[")
-                    exc_name = exc_name[: left_bracket - 1]  # cover space
+                if '[' in exc_name:
+                    left_bracket = exc_name.index('[')
+                    exc_name = exc_name[:left_bracket-1]  # cover space
                 try:
                     exc = getattr(builtins, exc_name)
                 except AttributeError:
@@ -65,11 +65,9 @@ class ExceptionClassTests(unittest.TestCase):
                 elif last_depth > depth:
                     while superclasses[-1][0] >= depth:
                         superclasses.pop()
-                self.assertTrue(
-                    issubclass(exc, superclasses[-1][1]),
-                    "%s is not a subclass of %s"
-                    % (exc.__name__, superclasses[-1][1].__name__),
-                )
+                self.assertTrue(issubclass(exc, superclasses[-1][1]),
+                "%s is not a subclass of %s" % (exc.__name__,
+                    superclasses[-1][1].__name__))
                 try:  # Some exceptions require arguments; just skip them
                     self.verify_instance_interface(exc())
                 except TypeError:
@@ -86,20 +84,16 @@ class ExceptionClassTests(unittest.TestCase):
 
     def interface_test_driver(self, results):
         for test_name, (given, expected) in zip(self.interface_tests, results):
-            self.assertEqual(
-                given, expected, "%s: %s != %s" % (test_name, given, expected)
-            )
+            self.assertEqual(given, expected, "%s: %s != %s" % (test_name,
+                given, expected))
 
     def test_interface_single_arg(self):
         # Make sure interface works properly when given a single argument
         arg = "spam"
         exc = Exception(arg)
-        results = (
-            [len(exc.args), 1],
-            [exc.args[0], arg],
-            [str(exc), str(arg)],
-            [repr(exc), "%s(%r)" % (exc.__class__.__name__, arg)],
-        )
+        results = ([len(exc.args), 1], [exc.args[0], arg],
+                   [str(exc), str(arg)],
+            [repr(exc), '%s(%r)' % (exc.__class__.__name__, arg)])
         self.interface_test_driver(results)
 
     def test_interface_multi_arg(self):
@@ -107,40 +101,30 @@ class ExceptionClassTests(unittest.TestCase):
         arg_count = 3
         args = tuple(range(arg_count))
         exc = Exception(*args)
-        results = (
-            [len(exc.args), arg_count],
-            [exc.args, args],
-            [str(exc), str(args)],
-            [repr(exc), exc.__class__.__name__ + repr(exc.args)],
-        )
+        results = ([len(exc.args), arg_count], [exc.args, args],
+                [str(exc), str(args)],
+                [repr(exc), exc.__class__.__name__ + repr(exc.args)])
         self.interface_test_driver(results)
 
     def test_interface_no_arg(self):
         # Make sure that with no args that interface is correct
         exc = Exception()
-        results = (
-            [len(exc.args), 0],
-            [exc.args, tuple()],
-            [str(exc), ""],
-            [repr(exc), exc.__class__.__name__ + "()"],
-        )
+        results = ([len(exc.args), 0], [exc.args, tuple()],
+                [str(exc), ''],
+                [repr(exc), exc.__class__.__name__ + '()'])
         self.interface_test_driver(results)
 
     def test_setstate_refcount_no_crash(self):
         # gh-97591: Acquire strong reference before calling tp_hash slot
         # in PyObject_SetAttr.
         import gc
-
         d = {}
-
         class HashThisKeyWillClearTheDict(str):
             def __hash__(self) -> int:
                 d.clear()
                 return super().__hash__()
-
         class Value(str):
             pass
-
         exc = Exception()
 
         d[HashThisKeyWillClearTheDict()] = Value()  # refcount of Value() is 1 now
@@ -156,6 +140,7 @@ class ExceptionClassTests(unittest.TestCase):
 
 
 class UsageTests(unittest.TestCase):
+
     """Test usage of exceptions"""
 
     def raise_fails(self, object_):
@@ -186,10 +171,8 @@ class UsageTests(unittest.TestCase):
         except TypeError:
             return
         except Exception:
-            self.fail(
-                "TypeError expected when catching %s as specified in a "
-                "tuple" % type(object_)
-            )
+            self.fail("TypeError expected when catching %s as specified in a "
+                        "tuple" % type(object_))
 
     def test_raise_new_style_non_exception(self):
         # You cannot raise a new-style class that does not inherit from
@@ -198,7 +181,6 @@ class UsageTests(unittest.TestCase):
         # inherit from it.
         class NewStyleClass(object):
             pass
-
         self.raise_fails(NewStyleClass)
         self.raise_fails(NewStyleClass())
 
@@ -211,7 +193,6 @@ class UsageTests(unittest.TestCase):
         # is not allowed.
         class NonBaseException(object):
             pass
-
         self.catch_fails(NonBaseException)
         self.catch_fails(NonBaseException())
 
@@ -224,5 +205,5 @@ class UsageTests(unittest.TestCase):
         self.catch_fails("spam")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

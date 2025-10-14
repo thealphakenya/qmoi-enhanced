@@ -27,7 +27,6 @@ from typing import Dict, List, Tuple
 # Utilities
 # -------------------------
 
-
 def normalize_text(text: str) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     return re.sub(r"\s+", " ", text).strip()
@@ -50,7 +49,6 @@ def jaccard(a: set, b: set) -> float:
 # -------------------------
 # Originality Assistant
 # -------------------------
-
 
 def generate_outline(topic: str, sections: int = 5) -> Dict[str, List[str]]:
     sections = max(3, min(sections, 10))
@@ -88,7 +86,6 @@ def scaffold_draft(outline: Dict[str, List[str]]) -> str:
 # Style Coach
 # -------------------------
 
-
 @dataclass
 class StyleProfile:
     sentence_length: Tuple[int, int] = (10, 22)
@@ -116,18 +113,15 @@ def adapt_style(text: str, profile: StyleProfile) -> str:
             s = re.sub(r"\b(therefore|thus)\b", "so", s, flags=re.I)
 
         if not profile.passive_ok:
-            s = re.sub(
-                r"\b(is|was|were|be|been|being) ([a-z]+ed) by\b", r"\2", s, flags=re.I
-            )
+            s = re.sub(r"\b(is|was|were|be|been|being) ([a-z]+ed) by\b", r"\2", s, flags=re.I)
 
-        adjusted.append(s if s.endswith((".", "!", "?")) else s + ".")
+        adjusted.append(s if s.endswith(('.', '!', '?')) else s + '.')
     return " ".join(adjusted)
 
 
 # -------------------------
 # Self-Similarity Checker
 # -------------------------
-
 
 def similarity_report(text: str, ref_texts: List[str], n: int = 5) -> Dict:
     tokens = normalize_text(text).lower().split()
@@ -146,13 +140,12 @@ def similarity_report(text: str, ref_texts: List[str], n: int = 5) -> Dict:
 # Citation Builder
 # -------------------------
 
-
 def cite_apa(author: str, year: str, title: str, source: str) -> str:
     return f"{author} ({year}). {title}. {source}."
 
 
 def cite_mla(author: str, title: str, source: str, year: str) -> str:
-    return f'{author}. "{title}." {source}, {year}.'
+    return f"{author}. \"{title}.\" {source}, {year}."
 
 
 def cite_chicago(author: str, year: str, title: str, source: str) -> str:
@@ -163,11 +156,10 @@ def cite_chicago(author: str, year: str, title: str, source: str) -> str:
 # Rubric Reviewer
 # -------------------------
 
-
 def rubric_review(text: str, rubric_points: List[str]) -> Dict:
     findings = []
     for point in rubric_points:
-        pattern = re.escape(point.split(":")[0].strip())
+        pattern = re.escape(point.split(':')[0].strip())
         present = re.search(pattern, text, flags=re.I) is not None
         findings.append({"criterion": point, "addressed": present})
     coverage = sum(1 for f in findings if f["addressed"]) / max(len(findings), 1)
@@ -178,7 +170,6 @@ def rubric_review(text: str, rubric_points: List[str]) -> Dict:
 # CLI
 # -------------------------
 
-
 def main():
     p = argparse.ArgumentParser(description="QMOI Ethical Writing Assistant")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -187,23 +178,17 @@ def main():
     p_outline.add_argument("topic")
     p_outline.add_argument("--sections", type=int, default=5)
 
-    p_scaffold = sub.add_parser(
-        "scaffold", help="Create draft scaffold from outline JSON"
-    )
+    p_scaffold = sub.add_parser("scaffold", help="Create draft scaffold from outline JSON")
     p_scaffold.add_argument("outline_json")
 
     p_style = sub.add_parser("style", help="Adapt text to a style profile")
     p_style.add_argument("--text", required=True)
-    p_style.add_argument(
-        "--formality", choices=["informal", "neutral", "formal"], default="neutral"
-    )
+    p_style.add_argument("--formality", choices=["informal", "neutral", "formal"], default="neutral")
     p_style.add_argument("--min-len", type=int, default=10)
     p_style.add_argument("--max-len", type=int, default=22)
     p_style.add_argument("--passive-ok", action="store_true")
 
-    p_sim = sub.add_parser(
-        "similarity", help="Self-similarity report against references"
-    )
+    p_sim = sub.add_parser("similarity", help="Self-similarity report against references")
     p_sim.add_argument("--text", required=True)
     p_sim.add_argument("--refs", nargs="*", default=[])
     p_sim.add_argument("--n", type=int, default=5)
@@ -217,9 +202,7 @@ def main():
 
     p_rubric = sub.add_parser("rubric", help="Rubric-driven checklist review")
     p_rubric.add_argument("--text", required=True)
-    p_rubric.add_argument(
-        "--points", nargs="+", required=True, help="List rubric criteria"
-    )
+    p_rubric.add_argument("--points", nargs="+", required=True, help="List rubric criteria")
 
     args = p.parse_args()
 
@@ -234,9 +217,7 @@ def main():
         return
 
     if args.cmd == "style":
-        prof = StyleProfile(
-            (args.min_len, args.max_len), args.formality, args.passive_ok
-        )
+        prof = StyleProfile((args.min_len, args.max_len), args.formality, args.passive_ok)
         print(adapt_style(args.text, prof))
         return
 
@@ -260,3 +241,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+

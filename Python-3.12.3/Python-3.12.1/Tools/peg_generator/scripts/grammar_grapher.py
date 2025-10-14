@@ -1,21 +1,21 @@
 #!/usr/bin/env python3.8
 
-"""Convert a grammar into a dot-file suitable for use with GraphViz
+""" Convert a grammar into a dot-file suitable for use with GraphViz
 
-For example:
-    Generate the GraphViz file:
-    # scripts/grammar_grapher.py data/python.gram > python.gv
+    For example:
+        Generate the GraphViz file:
+        # scripts/grammar_grapher.py data/python.gram > python.gv
 
-    Then generate the graph...
+        Then generate the graph...
 
-    # twopi python.gv -Tpng > python_twopi.png
+        # twopi python.gv -Tpng > python_twopi.png
 
-    or
+        or
 
-    # dot python.gv -Tpng > python_dot.png
+        # dot python.gv -Tpng > python_dot.png
 
-    NOTE: The _dot_ and _twopi_ tools seem to produce the most useful results.
-          The _circo_ tool is the worst of the bunch. Don't even bother.
+        NOTE: The _dot_ and _twopi_ tools seem to produce the most useful results.
+              The _circo_ tool is the worst of the bunch. Don't even bother.
 """
 
 import argparse

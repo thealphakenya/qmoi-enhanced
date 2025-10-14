@@ -5,7 +5,6 @@ g.throw(E, V)    -> g.throw(E(V))
 g.throw(E, V, T) -> g.throw(E(V).with_traceback(T))
 
 g.throw("foo"[, V[, T]]) will warn about string exceptions."""
-
 # Author: Collin Winter
 
 # Local imports
@@ -13,7 +12,6 @@ from .. import pytree
 from ..pgen2 import token
 from .. import fixer_base
 from ..fixer_util import Name, Call, ArgList, Attr, is_tuple
-
 
 class FixThrow(fixer_base.BaseFix):
     BM_compatible = True
@@ -52,7 +50,7 @@ class FixThrow(fixer_base.BaseFix):
             tb.prefix = ""
 
             e = Call(exc, args)
-            with_tb = Attr(e, Name("with_traceback")) + [ArgList([tb])]
+            with_tb = Attr(e, Name('with_traceback')) + [ArgList([tb])]
             throw_args.replace(pytree.Node(syms.power, with_tb))
         else:
             throw_args.replace(Call(exc, args))

@@ -12,12 +12,10 @@ class GeneralTest(unittest.TestCase):
         script = support.findfile("_test_atexit.py")
         script_helper.run_test_script(script)
 
-
 class FunctionalTest(unittest.TestCase):
     def test_shutdown(self):
         # Actually test the shutdown mechanism in a subprocess
-        code = textwrap.dedent(
-            """
+        code = textwrap.dedent("""
             import atexit
 
             def f(msg):
@@ -25,16 +23,14 @@ class FunctionalTest(unittest.TestCase):
 
             atexit.register(f, "one")
             atexit.register(f, "two")
-        """
-        )
+        """)
         res = script_helper.assert_python_ok("-c", code)
         self.assertEqual(res.out.decode().splitlines(), ["two", "one"])
         self.assertFalse(res.err)
 
     def test_atexit_instances(self):
         # bpo-42639: It is safe to have more than one atexit instance.
-        code = textwrap.dedent(
-            """
+        code = textwrap.dedent("""
             import sys
             import atexit as atexit1
             del sys.modules['atexit']
@@ -45,8 +41,7 @@ class FunctionalTest(unittest.TestCase):
 
             atexit1.register(print, "atexit1")
             atexit2.register(print, "atexit2")
-        """
-        )
+        """)
         res = script_helper.assert_python_ok("-c", code)
         self.assertEqual(res.out.decode().splitlines(), ["atexit2", "atexit1"])
         self.assertFalse(res.err)
@@ -60,15 +55,13 @@ class SubinterpreterTest(unittest.TestCase):
         # take care to free callbacks in its per-subinterpreter module
         # state.
         n = atexit._ncallbacks()
-        code = textwrap.dedent(
-            r"""
+        code = textwrap.dedent(r"""
             import atexit
             def f():
                 pass
             atexit.register(f)
             del atexit
-        """
-        )
+        """)
         ret = support.run_in_subinterp(code)
         self.assertEqual(ret, 0)
         self.assertEqual(atexit._ncallbacks(), n)
@@ -77,15 +70,13 @@ class SubinterpreterTest(unittest.TestCase):
         # Similar to the above, but with a refcycle through the atexit
         # module.
         n = atexit._ncallbacks()
-        code = textwrap.dedent(
-            r"""
+        code = textwrap.dedent(r"""
             import atexit
             def f():
                 pass
             atexit.register(f)
             atexit.__atexit = atexit
-        """
-        )
+        """)
         ret = support.run_in_subinterp(code)
         self.assertEqual(ret, 0)
         self.assertEqual(atexit._ncallbacks(), n)
@@ -97,17 +88,13 @@ class SubinterpreterTest(unittest.TestCase):
         expected = b"The test has passed!"
         r, w = os.pipe()
 
-        code = textwrap.dedent(
-            r"""
+        code = textwrap.dedent(r"""
             import os
             import atexit
             def callback():
                 os.write({:d}, b"The test has passed!")
             atexit.register(callback)
-        """.format(
-                w
-            )
-        )
+        """.format(w))
         ret = support.run_in_subinterp(code)
         os.close(w)
         self.assertEqual(os.read(r, len(expected)), expected)

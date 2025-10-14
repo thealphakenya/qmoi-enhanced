@@ -1,7 +1,6 @@
 """
 Tests for kqueue wrapper.
 """
-
 import errno
 import os
 import select
@@ -12,7 +11,6 @@ import unittest
 
 if not hasattr(select, "kqueue"):
     raise unittest.SkipTest("test works only on BSD")
-
 
 class TestKQueue(unittest.TestCase):
     def test_create_queue(self):
@@ -76,7 +74,7 @@ class TestKQueue(unittest.TestCase):
         self.assertEqual(ev, ev)
         self.assertNotEqual(ev, other)
 
-        bignum = 0x7FFF
+        bignum = 0x7fff
         ev = select.kevent(bignum, 1, 2, 3, bignum - 1, bignum)
         self.assertEqual(ev.ident, bignum)
         self.assertEqual(ev.filter, 1)
@@ -88,7 +86,7 @@ class TestKQueue(unittest.TestCase):
         self.assertNotEqual(ev, other)
 
         # Issue 11973
-        bignum = 0xFFFF
+        bignum = 0xffff
         ev = select.kevent(0, 1, bignum)
         self.assertEqual(ev.ident, 0)
         self.assertEqual(ev.filter, 1)
@@ -100,7 +98,7 @@ class TestKQueue(unittest.TestCase):
         self.assertNotEqual(ev, other)
 
         # Issue 11973
-        bignum = 0xFFFFFFFF
+        bignum = 0xffffffff
         ev = select.kevent(0, 1, 2, bignum)
         self.assertEqual(ev.ident, 0)
         self.assertEqual(ev.filter, 1)
@@ -111,58 +109,45 @@ class TestKQueue(unittest.TestCase):
         self.assertEqual(ev, ev)
         self.assertNotEqual(ev, other)
 
+
     def test_queue_event(self):
-        serverSocket = socket.create_server(("127.0.0.1", 0))
+        serverSocket = socket.create_server(('127.0.0.1', 0))
         client = socket.socket()
         client.setblocking(False)
         try:
-            client.connect(("127.0.0.1", serverSocket.getsockname()[1]))
+            client.connect(('127.0.0.1', serverSocket.getsockname()[1]))
         except OSError as e:
             self.assertEqual(e.args[0], errno.EINPROGRESS)
         else:
-            # raise AssertionError("Connect should have raised EINPROGRESS")
-            pass  # FreeBSD doesn't raise an exception here
+            #raise AssertionError("Connect should have raised EINPROGRESS")
+            pass # FreeBSD doesn't raise an exception here
         server, addr = serverSocket.accept()
 
         kq = select.kqueue()
         kq2 = select.kqueue.fromfd(kq.fileno())
 
-        ev = select.kevent(
-            server.fileno(),
-            select.KQ_FILTER_WRITE,
-            select.KQ_EV_ADD | select.KQ_EV_ENABLE,
-        )
+        ev = select.kevent(server.fileno(),
+                           select.KQ_FILTER_WRITE,
+                           select.KQ_EV_ADD | select.KQ_EV_ENABLE)
         kq.control([ev], 0)
-        ev = select.kevent(
-            server.fileno(),
-            select.KQ_FILTER_READ,
-            select.KQ_EV_ADD | select.KQ_EV_ENABLE,
-        )
+        ev = select.kevent(server.fileno(),
+                           select.KQ_FILTER_READ,
+                           select.KQ_EV_ADD | select.KQ_EV_ENABLE)
         kq.control([ev], 0)
-        ev = select.kevent(
-            client.fileno(),
-            select.KQ_FILTER_WRITE,
-            select.KQ_EV_ADD | select.KQ_EV_ENABLE,
-        )
+        ev = select.kevent(client.fileno(),
+                           select.KQ_FILTER_WRITE,
+                           select.KQ_EV_ADD | select.KQ_EV_ENABLE)
         kq2.control([ev], 0)
-        ev = select.kevent(
-            client.fileno(),
-            select.KQ_FILTER_READ,
-            select.KQ_EV_ADD | select.KQ_EV_ENABLE,
-        )
+        ev = select.kevent(client.fileno(),
+                           select.KQ_FILTER_READ,
+                           select.KQ_EV_ADD | select.KQ_EV_ENABLE)
         kq2.control([ev], 0)
 
         events = kq.control(None, 4, 1)
         events = set((e.ident, e.filter) for e in events)
-        self.assertEqual(
-            events,
-            set(
-                [
-                    (client.fileno(), select.KQ_FILTER_WRITE),
-                    (server.fileno(), select.KQ_FILTER_WRITE),
-                ]
-            ),
-        )
+        self.assertEqual(events, set([
+            (client.fileno(), select.KQ_FILTER_WRITE),
+            (server.fileno(), select.KQ_FILTER_WRITE)]))
 
         client.send(b"Hello!")
         server.send(b"world!!!")
@@ -174,32 +159,33 @@ class TestKQueue(unittest.TestCase):
                 break
             time.sleep(1.0)
         else:
-            self.fail("timeout waiting for event notifications")
+            self.fail('timeout waiting for event notifications')
 
         events = set((e.ident, e.filter) for e in events)
-        self.assertEqual(
-            events,
-            set(
-                [
-                    (client.fileno(), select.KQ_FILTER_WRITE),
-                    (client.fileno(), select.KQ_FILTER_READ),
-                    (server.fileno(), select.KQ_FILTER_WRITE),
-                    (server.fileno(), select.KQ_FILTER_READ),
-                ]
-            ),
-        )
+        self.assertEqual(events, set([
+            (client.fileno(), select.KQ_FILTER_WRITE),
+            (client.fileno(), select.KQ_FILTER_READ),
+            (server.fileno(), select.KQ_FILTER_WRITE),
+            (server.fileno(), select.KQ_FILTER_READ)]))
 
         # Remove completely client, and server read part
-        ev = select.kevent(client.fileno(), select.KQ_FILTER_WRITE, select.KQ_EV_DELETE)
+        ev = select.kevent(client.fileno(),
+                           select.KQ_FILTER_WRITE,
+                           select.KQ_EV_DELETE)
         kq.control([ev], 0)
-        ev = select.kevent(client.fileno(), select.KQ_FILTER_READ, select.KQ_EV_DELETE)
+        ev = select.kevent(client.fileno(),
+                           select.KQ_FILTER_READ,
+                           select.KQ_EV_DELETE)
         kq.control([ev], 0)
-        ev = select.kevent(server.fileno(), select.KQ_FILTER_READ, select.KQ_EV_DELETE)
+        ev = select.kevent(server.fileno(),
+                           select.KQ_FILTER_READ,
+                           select.KQ_EV_DELETE)
         kq.control([ev], 0, 0)
 
         events = kq.control([], 4, 0.99)
         events = set((e.ident, e.filter) for e in events)
-        self.assertEqual(events, set([(server.fileno(), select.KQ_FILTER_WRITE)]))
+        self.assertEqual(events, set([
+            (server.fileno(), select.KQ_FILTER_WRITE)]))
 
         client.close()
         server.close()
@@ -209,17 +195,13 @@ class TestKQueue(unittest.TestCase):
         kq = select.kqueue()
         a, b = socket.socketpair()
 
-        a.send(b"foo")
-        event1 = select.kevent(
-            a, select.KQ_FILTER_READ, select.KQ_EV_ADD | select.KQ_EV_ENABLE
-        )
-        event2 = select.kevent(
-            b, select.KQ_FILTER_READ, select.KQ_EV_ADD | select.KQ_EV_ENABLE
-        )
+        a.send(b'foo')
+        event1 = select.kevent(a, select.KQ_FILTER_READ, select.KQ_EV_ADD | select.KQ_EV_ENABLE)
+        event2 = select.kevent(b, select.KQ_FILTER_READ, select.KQ_EV_ADD | select.KQ_EV_ENABLE)
         r = kq.control([event1, event2], 1, 1)
         self.assertTrue(r)
         self.assertFalse(r[0].flags & select.KQ_EV_ERROR)
-        self.assertEqual(b.recv(r[0].data), b"foo")
+        self.assertEqual(b.recv(r[0].data), b'foo')
 
         a.close()
         b.close()
@@ -229,23 +211,18 @@ class TestKQueue(unittest.TestCase):
         # changelist must be an iterable
         kq = select.kqueue()
         a, b = socket.socketpair()
-        ev = select.kevent(
-            a, select.KQ_FILTER_READ, select.KQ_EV_ADD | select.KQ_EV_ENABLE
-        )
+        ev = select.kevent(a, select.KQ_FILTER_READ, select.KQ_EV_ADD | select.KQ_EV_ENABLE)
 
         kq.control([ev], 0)
         # not a list
         kq.control((ev,), 0)
-
         # __len__ is not consistent with __iter__
         class BadList:
             def __len__(self):
                 return 0
-
             def __iter__(self):
                 for i in range(100):
                     yield ev
-
         kq.control(BadList(), 0)
         # doesn't have __len__
         kq.control(iter([ev]), 0)

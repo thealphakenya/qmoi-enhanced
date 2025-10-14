@@ -1,7 +1,6 @@
 """
 Helper to run a script in a pseudo-terminal.
 """
-
 import os
 import selectors
 import subprocess
@@ -11,24 +10,21 @@ from errno import EIO
 
 from test.support.import_helper import import_module
 
-
 def run_pty(script, input=b"dummy input\r", env=None):
-    pty = import_module("pty")
+    pty = import_module('pty')
     output = bytearray()
     [master, slave] = pty.openpty()
-    args = (sys.executable, "-c", script)
+    args = (sys.executable, '-c', script)
     proc = subprocess.Popen(args, stdin=slave, stdout=slave, stderr=slave, env=env)
     os.close(slave)
     with ExitStack() as cleanup:
         cleanup.enter_context(proc)
-
         def terminate(proc):
             try:
                 proc.terminate()
             except ProcessLookupError:
                 # Workaround for Open/Net BSD bug (Issue 16762)
                 pass
-
         cleanup.callback(terminate, proc)
         cleanup.callback(os.close, master)
         # Avoid using DefaultSelector and PollSelector. Kqueue() does not
@@ -54,7 +50,7 @@ def run_pty(script, input=b"dummy input\r", env=None):
                     output.extend(chunk)
                 if events & selectors.EVENT_WRITE:
                     try:
-                        input = input[os.write(master, input) :]
+                        input = input[os.write(master, input):]
                     except OSError as err:
                         # Apparently EIO means the slave was closed
                         if err.errno != EIO:

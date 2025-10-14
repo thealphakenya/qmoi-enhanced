@@ -1,13 +1,9 @@
 import gc
 
-
-class old_style_class:
+class old_style_class():
     pass
-
-
 class new_style_class(object):
     pass
-
 
 a = old_style_class()
 del a

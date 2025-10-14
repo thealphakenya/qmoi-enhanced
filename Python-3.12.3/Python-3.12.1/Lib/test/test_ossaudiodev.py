@@ -1,16 +1,15 @@
 from test import support
 from test.support import import_helper, warnings_helper
 import warnings
-
-support.requires("audio")
+support.requires('audio')
 
 from test.support import findfile
 
 with warnings.catch_warnings():
     warnings.simplefilter("ignore", DeprecationWarning)
-    ossaudiodev = import_helper.import_module("ossaudiodev")
-audioop = warnings_helper.import_deprecated("audioop")
-sunau = warnings_helper.import_deprecated("sunau")
+    ossaudiodev = import_helper.import_module('ossaudiodev')
+audioop = warnings_helper.import_deprecated('audioop')
+sunau = warnings_helper.import_deprecated('sunau')
 
 import errno
 import sys
@@ -29,7 +28,7 @@ except ImportError:
 
 
 def read_sound_file(path):
-    with open(path, "rb") as fp:
+    with open(path, 'rb') as fp:
         au = sunau.open(fp)
         rate = au.getframerate()
         nchannels = au.getnchannels()
@@ -44,14 +43,14 @@ def read_sound_file(path):
     data = audioop.ulaw2lin(data, 2)
     return (data, rate, 16, nchannels)
 
-
 class OSSAudioDevTests(unittest.TestCase):
 
     def play_sound_file(self, data, rate, ssize, nchannels):
         try:
-            dsp = ossaudiodev.open("w")
+            dsp = ossaudiodev.open('w')
         except OSError as msg:
-            if msg.args[0] in (errno.EACCES, errno.ENOENT, errno.ENODEV, errno.EBUSY):
+            if msg.args[0] in (errno.EACCES, errno.ENOENT,
+                               errno.ENODEV, errno.EBUSY):
                 raise unittest.SkipTest(msg)
             raise
 
@@ -68,7 +67,7 @@ class OSSAudioDevTests(unittest.TestCase):
         self.assertEqual(dsp.mode, "w", "bad dsp.mode: %r" % dsp.mode)
 
         # And make sure they're really read-only.
-        for attr in ("closed", "name", "mode"):
+        for attr in ('closed', 'name', 'mode'):
             try:
                 setattr(dsp, attr, 42)
             except (TypeError, AttributeError):
@@ -77,7 +76,7 @@ class OSSAudioDevTests(unittest.TestCase):
                 self.fail("dsp.%s not read-only" % attr)
 
         # Compute expected running time of sound sample (in seconds).
-        expected_time = float(len(data)) / (ssize / 8) / nchannels / rate
+        expected_time = float(len(data)) / (ssize/8) / nchannels / rate
 
         # set parameters based on .au file headers
         dsp.setparameters(AFMT_S16_NE, nchannels, rate)
@@ -89,11 +88,9 @@ class OSSAudioDevTests(unittest.TestCase):
         elapsed_time = t2 - t1
 
         percent_diff = (abs(elapsed_time - expected_time) / expected_time) * 100
-        self.assertTrue(
-            percent_diff <= 10.0,
-            "elapsed time (%s) > 10%% off of expected time (%s)"
-            % (elapsed_time, expected_time),
-        )
+        self.assertTrue(percent_diff <= 10.0,
+                        "elapsed time (%s) > 10%% off of expected time (%s)" %
+                        (elapsed_time, expected_time))
 
     def set_parameters(self, dsp):
         # Two configurations for testing:
@@ -107,33 +104,23 @@ class OSSAudioDevTests(unittest.TestCase):
 
         for config in [config1, config2]:
             (fmt, channels, rate) = config
-            if (
-                dsp.setfmt(fmt) == fmt
-                and dsp.channels(channels) == channels
-                and dsp.speed(rate) == rate
-            ):
+            if (dsp.setfmt(fmt) == fmt and
+                dsp.channels(channels) == channels and
+                dsp.speed(rate) == rate):
                 break
         else:
-            raise RuntimeError(
-                "unable to set audio sampling parameters: "
-                "you must have really weird audio hardware"
-            )
+            raise RuntimeError("unable to set audio sampling parameters: "
+                               "you must have really weird audio hardware")
 
         # setparameters() should be able to set this configuration in
         # either strict or non-strict mode.
         result = dsp.setparameters(fmt, channels, rate, False)
-        self.assertEqual(
-            result,
-            (fmt, channels, rate),
-            "setparameters%r: returned %r" % (config, result),
-        )
+        self.assertEqual(result, (fmt, channels, rate),
+                         "setparameters%r: returned %r" % (config, result))
 
         result = dsp.setparameters(fmt, channels, rate, True)
-        self.assertEqual(
-            result,
-            (fmt, channels, rate),
-            "setparameters%r: returned %r" % (config, result),
-        )
+        self.assertEqual(result, (fmt, channels, rate),
+                         "setparameters%r: returned %r" % (config, result))
 
     def set_bad_parameters(self, dsp):
         # Now try some configurations that are presumably bogus: eg. 300
@@ -144,16 +131,14 @@ class OSSAudioDevTests(unittest.TestCase):
         fmt = AFMT_S16_NE
         rate = 44100
         channels = 2
-        for config in [
-            (fmt, 300, rate),  # ridiculous nchannels
-            (fmt, -5, rate),  # impossible nchannels
-            (fmt, channels, -50),  # impossible rate
-        ]:
+        for config in [(fmt, 300, rate),       # ridiculous nchannels
+                       (fmt, -5, rate),        # impossible nchannels
+                       (fmt, channels, -50),   # impossible rate
+                      ]:
             (fmt, channels, rate) = config
             result = dsp.setparameters(fmt, channels, rate, False)
-            self.assertNotEqual(
-                result, config, "unexpectedly got requested configuration"
-            )
+            self.assertNotEqual(result, config,
+                             "unexpectedly got requested configuration")
 
             try:
                 result = dsp.setparameters(fmt, channels, rate, True)
@@ -163,7 +148,7 @@ class OSSAudioDevTests(unittest.TestCase):
                 self.fail("expected OSSAudioError")
 
     def test_playback(self):
-        sound_info = read_sound_file(findfile("audiotest.au"))
+        sound_info = read_sound_file(findfile('audiotest.au'))
         self.play_sound_file(*sound_info)
 
     def test_set_parameters(self):
@@ -173,7 +158,7 @@ class OSSAudioDevTests(unittest.TestCase):
 
             # Disabled because it fails under Linux 2.6 with ALSA's OSS
             # emulation layer.
-            # self.set_bad_parameters(dsp)
+            #self.set_bad_parameters(dsp)
         finally:
             dsp.close()
             self.assertTrue(dsp.closed)
@@ -185,17 +170,17 @@ class OSSAudioDevTests(unittest.TestCase):
             self.assertGreaterEqual(mixer.fileno(), 0)
 
     def test_with(self):
-        with ossaudiodev.open("w") as dsp:
+        with ossaudiodev.open('w') as dsp:
             pass
         self.assertTrue(dsp.closed)
 
     def test_on_closed(self):
-        dsp = ossaudiodev.open("w")
+        dsp = ossaudiodev.open('w')
         dsp.close()
         self.assertRaises(ValueError, dsp.fileno)
         self.assertRaises(ValueError, dsp.read, 1)
-        self.assertRaises(ValueError, dsp.write, b"x")
-        self.assertRaises(ValueError, dsp.writeall, b"x")
+        self.assertRaises(ValueError, dsp.write, b'x')
+        self.assertRaises(ValueError, dsp.writeall, b'x')
         self.assertRaises(ValueError, dsp.bufsize)
         self.assertRaises(ValueError, dsp.obufcount)
         self.assertRaises(ValueError, dsp.obufcount)
@@ -206,16 +191,15 @@ class OSSAudioDevTests(unittest.TestCase):
         mixer.close()
         self.assertRaises(ValueError, mixer.fileno)
 
-
 def setUpModule():
     try:
-        dsp = ossaudiodev.open("w")
+        dsp = ossaudiodev.open('w')
     except (ossaudiodev.error, OSError) as msg:
-        if msg.args[0] in (errno.EACCES, errno.ENOENT, errno.ENODEV, errno.EBUSY):
+        if msg.args[0] in (errno.EACCES, errno.ENOENT,
+                           errno.ENODEV, errno.EBUSY):
             raise unittest.SkipTest(msg)
         raise
     dsp.close()
-
 
 if __name__ == "__main__":
     unittest.main()

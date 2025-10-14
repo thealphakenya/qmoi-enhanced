@@ -7,7 +7,6 @@ import threading
 import types
 import unittest
 import weakref
-
 try:
     import _testcapi
 except ImportError:
@@ -24,7 +23,7 @@ class ClearTest(unittest.TestCase):
     """
 
     def inner(self, x=5, **kwargs):
-        1 / 0
+        1/0
 
     def outer(self, **kwargs):
         try:
@@ -44,7 +43,6 @@ class ClearTest(unittest.TestCase):
     def test_clear_locals(self):
         class C:
             pass
-
         c = C()
         wr = weakref.ref(c)
         exc = self.outer(c=c)
@@ -60,7 +58,6 @@ class ClearTest(unittest.TestCase):
     def test_clear_does_not_clear_specials(self):
         class C:
             pass
-
         c = C()
         exc = self.outer(c=c)
         del c
@@ -73,7 +70,6 @@ class ClearTest(unittest.TestCase):
 
     def test_clear_generator(self):
         endly = False
-
         def g():
             nonlocal endly
             try:
@@ -81,7 +77,6 @@ class ClearTest(unittest.TestCase):
                 self.inner()
             finally:
                 endly = True
-
         gen = g()
         next(gen)
         self.assertFalse(endly)
@@ -92,7 +87,7 @@ class ClearTest(unittest.TestCase):
     def test_clear_executing(self):
         # Attempting to clear an executing frame is forbidden.
         try:
-            1 / 0
+            1/0
         except ZeroDivisionError as e:
             f = e.__traceback__.tb_frame
         with self.assertRaises(RuntimeError):
@@ -103,11 +98,10 @@ class ClearTest(unittest.TestCase):
     def test_clear_executing_generator(self):
         # Attempting to clear an executing generator frame is forbidden.
         endly = False
-
         def g():
             nonlocal endly
             try:
-                1 / 0
+                1/0
             except ZeroDivisionError as e:
                 f = e.__traceback__.tb_frame
                 with self.assertRaises(RuntimeError):
@@ -117,7 +111,6 @@ class ClearTest(unittest.TestCase):
                 yield f
             finally:
                 endly = True
-
         gen = g()
         f = next(gen)
         self.assertFalse(endly)
@@ -128,7 +121,7 @@ class ClearTest(unittest.TestCase):
     def test_lineno_with_tracing(self):
         def record_line():
             f = sys._getframe(1)
-            lines.append(f.f_lineno - f.f_code.co_firstlineno)
+            lines.append(f.f_lineno-f.f_code.co_firstlineno)
 
         def test(trace):
             record_line()
@@ -149,10 +142,8 @@ class ClearTest(unittest.TestCase):
     def test_clear_refcycles(self):
         # .clear() doesn't leave any refcycle behind
         with support.disable_gc():
-
             class C:
                 pass
-
             c = C()
             wr = weakref.ref(c)
             exc = self.outer(c=c)
@@ -168,14 +159,11 @@ class FrameAttrsTest(unittest.TestCase):
         def outer():
             x = 5
             y = 6
-
             def inner():
                 z = x + 2
-                1 / 0
+                1/0
                 t = 9
-
             return inner()
-
         try:
             outer()
         except ZeroDivisionError as e:
@@ -189,10 +177,10 @@ class FrameAttrsTest(unittest.TestCase):
     def test_locals(self):
         f, outer, inner = self.make_frames()
         outer_locals = outer.f_locals
-        self.assertIsInstance(outer_locals.pop("inner"), types.FunctionType)
-        self.assertEqual(outer_locals, {"x": 5, "y": 6})
+        self.assertIsInstance(outer_locals.pop('inner'), types.FunctionType)
+        self.assertEqual(outer_locals, {'x': 5, 'y': 6})
         inner_locals = inner.f_locals
-        self.assertEqual(inner_locals, {"x": 5, "z": 7})
+        self.assertEqual(inner_locals, {'x': 5, 'z': 7})
 
     def test_clear_locals(self):
         # Test f_locals after clear() (issue #21897)
@@ -227,12 +215,10 @@ class ReprTest(unittest.TestCase):
         def outer():
             x = 5
             y = 6
-
             def inner():
                 z = x + 2
-                1 / 0
+                1/0
                 t = 9
-
             return inner()
 
         offset = outer.__code__.co_firstlineno
@@ -249,29 +235,21 @@ class ReprTest(unittest.TestCase):
 
         f_this, f_outer, f_inner = frames
         file_repr = re.escape(repr(__file__))
-        self.assertRegex(
-            repr(f_this),
-            r"^<frame at 0x[0-9a-fA-F]+, file %s, line %d, code test_repr>$"
-            % (file_repr, offset + 23),
-        )
-        self.assertRegex(
-            repr(f_outer),
-            r"^<frame at 0x[0-9a-fA-F]+, file %s, line %d, code outer>$"
-            % (file_repr, offset + 7),
-        )
-        self.assertRegex(
-            repr(f_inner),
-            r"^<frame at 0x[0-9a-fA-F]+, file %s, line %d, code inner>$"
-            % (file_repr, offset + 5),
-        )
-
+        self.assertRegex(repr(f_this),
+                         r"^<frame at 0x[0-9a-fA-F]+, file %s, line %d, code test_repr>$"
+                         % (file_repr, offset + 23))
+        self.assertRegex(repr(f_outer),
+                         r"^<frame at 0x[0-9a-fA-F]+, file %s, line %d, code outer>$"
+                         % (file_repr, offset + 7))
+        self.assertRegex(repr(f_inner),
+                         r"^<frame at 0x[0-9a-fA-F]+, file %s, line %d, code inner>$"
+                         % (file_repr, offset + 5))
 
 class TestIncompleteFrameAreInvisible(unittest.TestCase):
 
     def test_issue95818(self):
         # See GH-95818 for details
-        code = textwrap.dedent(
-            f"""
+        code = textwrap.dedent(f"""
             import gc
 
             gc.set_threshold(1,1,1)
@@ -288,8 +266,7 @@ class TestIncompleteFrameAreInvisible(unittest.TestCase):
             del fd
             del l
             gen()
-        """
-        )
+        """)
         assert_python_ok("-c", code)
 
     @support.cpython_only
@@ -391,7 +368,9 @@ class TestIncompleteFrameAreInvisible(unittest.TestCase):
         # torn down:
         self.assertIsNotNone(sneaky_frame_object)
         while sneaky_frame_object is not None:
-            self.assertIsNot(sneaky_frame_object.f_code, SneakyThread.run.__code__)
+            self.assertIsNot(
+                sneaky_frame_object.f_code, SneakyThread.run.__code__
+            )
             sneaky_frame_object = sneaky_frame_object.f_back
 
     def test_entry_frames_are_invisible_during_teardown(self):
@@ -414,8 +393,7 @@ class TestIncompleteFrameAreInvisible(unittest.TestCase):
             self.assertIs(catcher.unraisable.exc_type, TypeError)
         self.assertIsNone(weak())
 
-
-@unittest.skipIf(_testcapi is None, "need _testcapi")
+@unittest.skipIf(_testcapi is None, 'need _testcapi')
 class TestCAPI(unittest.TestCase):
     def getframe(self):
         return sys._getframe()
@@ -439,7 +417,7 @@ class TestCAPI(unittest.TestCase):
 
         # wrong name type
         with self.assertRaises(TypeError):
-            _testcapi.frame_getvar(current_frame, b"x")
+            _testcapi.frame_getvar(current_frame, b'x')
         with self.assertRaises(TypeError):
             _testcapi.frame_getvar(current_frame, 123)
 
@@ -454,14 +432,12 @@ class TestCAPI(unittest.TestCase):
     def test_frame_fback_api(self):
         """Test that accessing `f_back` does not cause a segmentation fault on
         a frame created with `PyFrame_New` (GH-99110)."""
-
         def dummy():
             pass
 
         frame = _testcapi.frame_new(dummy.__code__, globals(), locals())
         # The following line should not cause a segmentation fault.
         self.assertIsNone(frame.f_back)
-
 
 if __name__ == "__main__":
     unittest.main()

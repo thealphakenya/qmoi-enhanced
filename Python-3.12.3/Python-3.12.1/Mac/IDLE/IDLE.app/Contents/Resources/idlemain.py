@@ -1,12 +1,11 @@
 """
 Bootstrap script for IDLE as an application bundle.
 """
-
 import sys, os
 
 # Change the current directory the user's home directory, that way we'll get
 # a more useful default location in the open/save dialogs.
-os.chdir(os.path.expanduser("~/Documents"))
+os.chdir(os.path.expanduser('~/Documents'))
 
 
 # Make sure sys.executable points to the python interpreter inside the
@@ -48,31 +47,27 @@ os.chdir(os.path.expanduser("~/Documents"))
 # Reset sys.executable to its normal value, the actual path of
 # the interpreter in the framework, by following the symlink
 # exported in PYTHONEXECUTABLE.
-pyex = os.environ["PYTHONEXECUTABLE"]
-sys.executable = os.path.join(sys.prefix, "bin", "python%d.%d" % (sys.version_info[:2]))
+pyex = os.environ['PYTHONEXECUTABLE']
+sys.executable = os.path.join(sys.prefix, 'bin', 'python%d.%d'%(sys.version_info[:2]))
 
 # Remove any sys.path entries for the Resources dir in the IDLE.app bundle.
-p = pyex.partition(".app")
-if p[2].startswith("/Contents/MacOS/Python"):
-    sys.path = [
-        value
-        for value in sys.path
-        if value.partition(".app") != (p[0], p[1], "/Contents/Resources")
-    ]
+p = pyex.partition('.app')
+if p[2].startswith('/Contents/MacOS/Python'):
+    sys.path = [value for value in sys.path if
+            value.partition('.app') != (p[0], p[1], '/Contents/Resources')]
 
 # Unexport PYTHONEXECUTABLE so that the other Python processes started
 # by IDLE have a normal sys.executable.
-del os.environ["PYTHONEXECUTABLE"]
+del os.environ['PYTHONEXECUTABLE']
 
 # Look for the -psn argument that the launcher adds and remove it, it will
 # only confuse the IDLE startup code.
 for idx, value in enumerate(sys.argv):
-    if value.startswith("-psn_"):
+    if value.startswith('-psn_'):
         del sys.argv[idx]
         break
 
 # Now it is safe to import idlelib.
 from idlelib.pyshell import main
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

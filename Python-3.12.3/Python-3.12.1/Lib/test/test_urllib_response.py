@@ -14,8 +14,9 @@ class TestResponse(unittest.TestCase):
 
     def setUp(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.fp = self.sock.makefile("rb")
-        self.test_headers = {"Host": "www.python.org", "Connection": "close"}
+        self.fp = self.sock.makefile('rb')
+        self.test_headers = {"Host": "www.python.org",
+                             "Connection": "close"}
 
     def test_with(self):
         addbase = urllib.response.addbase(self.fp)
@@ -25,7 +26,6 @@ class TestResponse(unittest.TestCase):
         def f():
             with addbase as spam:
                 pass
-
         self.assertFalse(self.fp.closed)
         f()
         self.assertTrue(self.fp.closed)
@@ -52,7 +52,8 @@ class TestResponse(unittest.TestCase):
     def test_addinfourl(self):
         url = "http://www.python.org"
         code = 200
-        infourl = urllib.response.addinfourl(self.fp, self.test_headers, url, code)
+        infourl = urllib.response.addinfourl(self.fp, self.test_headers,
+                                             url, code)
         self.assertEqual(infourl.info(), self.test_headers)
         self.assertEqual(infourl.geturl(), url)
         self.assertEqual(infourl.getcode(), code)
@@ -63,6 +64,5 @@ class TestResponse(unittest.TestCase):
     def tearDown(self):
         self.sock.close()
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -20,7 +20,6 @@ LONGSLEEP = 2
 SHORTSLEEP = 0.5
 NUM_THREADS = 4
 
-
 class ForkWait(unittest.TestCase):
 
     def setUp(self):
@@ -66,7 +65,8 @@ class ForkWait(unittest.TestCase):
         prefork_lives = self.alive.copy()
 
         # Ignore the warning about fork with threads.
-        with warnings.catch_warnings(category=DeprecationWarning, action="ignore"):
+        with warnings.catch_warnings(category=DeprecationWarning,
+                                     action="ignore"):
             if (cpid := os.fork()) == 0:
                 # Child
                 time.sleep(LONGSLEEP)

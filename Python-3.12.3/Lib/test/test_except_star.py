@@ -3,7 +3,6 @@ import unittest
 import textwrap
 from test.support.testcase import ExceptionIsLikeMixin
 
-
 class TestInvalidExceptStar(unittest.TestCase):
     def test_mixed_except_and_except_star_is_syntax_error(self):
         errors = [
@@ -50,7 +49,8 @@ class TestInvalidExceptStar(unittest.TestCase):
 
 
 class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
-    MSG = r"'break', 'continue' and 'return'" r" cannot appear in an except\* block"
+    MSG = (r"'break', 'continue' and 'return'"
+           r" cannot appear in an except\* block")
 
     def check_invalid(self, src):
         with self.assertRaisesRegex(SyntaxError, self.MSG):
@@ -63,8 +63,7 @@ class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
                 raise ValueError
             except* Exception as e:
                 break
-            """
-        )
+            """)
 
         self.check_invalid(
             """
@@ -74,8 +73,7 @@ class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
                 except* Exception as e:
                     if i == 2:
                         break
-            """
-        )
+            """)
 
         self.check_invalid(
             """
@@ -87,8 +85,8 @@ class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
                         break
                 finally:
                     return 0
-            """
-        )
+            """)
+
 
     def test_continue_in_except_star_block_invalid(self):
         self.check_invalid(
@@ -98,8 +96,7 @@ class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
                     raise ValueError
                 except* Exception as e:
                     continue
-            """
-        )
+            """)
 
         self.check_invalid(
             """
@@ -109,8 +106,7 @@ class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
                 except* Exception as e:
                     if i == 2:
                         continue
-            """
-        )
+            """)
 
         self.check_invalid(
             """
@@ -122,8 +118,7 @@ class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
                         continue
                 finally:
                     return 0
-            """
-        )
+            """)
 
     def test_return_in_except_star_block_invalid(self):
         self.check_invalid(
@@ -133,8 +128,7 @@ class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
                     raise ValueError
                 except* Exception as e:
                     return 42
-            """
-        )
+            """)
 
         self.check_invalid(
             """
@@ -145,8 +139,7 @@ class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
                     return 42
                 finally:
                     finished = True
-            """
-        )
+            """)
 
     def test_break_continue_in_except_star_block_valid(self):
         try:
@@ -169,10 +162,8 @@ class TestBreakContinueReturnInExceptStarBlock(unittest.TestCase):
         try:
             raise ValueError(42)
         except* Exception as e:
-
             def f(x):
-                return 2 * x
-
+                return 2*x
             r = f(3)
             exc = e
         self.assertEqual(r, 6)
@@ -192,11 +183,9 @@ class ExceptStarTest(ExceptionIsLikeMixin, unittest.TestCase):
         if e1 is None or e2 is None:
             self.assertNotEqual(e1, e2)
         else:
-            return not (
-                e1.__context__ == e2.__context__
-                and e1.__cause__ == e2.__cause__
-                and e1.__traceback__ == e2.__traceback__
-            )
+            return not (e1.__context__ == e2.__context__
+                        and e1.__cause__ == e2.__cause__
+                        and e1.__traceback__ == e2.__traceback__)
 
 
 class TestExceptStarSplitSemantics(ExceptStarTest):
@@ -236,14 +225,14 @@ class TestExceptStarSplitSemantics(ExceptStarTest):
 
     def doSplitTestInExceptHandler(self, exc, T, match_template, rest_template):
         try:
-            raise ExceptionGroup("eg", [TypeError(1), ValueError(2)])
+            raise ExceptionGroup('eg', [TypeError(1), ValueError(2)])
         except Exception:
             self.doSplitTestNamed(exc, T, match_template, rest_template)
             self.doSplitTestUnnamed(exc, T, match_template, rest_template)
 
     def doSplitTestInExceptStarHandler(self, exc, T, match_template, rest_template):
         try:
-            raise ExceptionGroup("eg", [TypeError(1), ValueError(2)])
+            raise ExceptionGroup('eg', [TypeError(1), ValueError(2)])
         except* Exception:
             self.doSplitTestNamed(exc, T, match_template, rest_template)
             self.doSplitTestUnnamed(exc, T, match_template, rest_template)
@@ -259,165 +248,136 @@ class TestExceptStarSplitSemantics(ExceptStarTest):
             ExceptionGroup("test1", [ValueError("V"), TypeError("T")]),
             SyntaxError,
             None,
-            ExceptionGroup("test1", [ValueError("V"), TypeError("T")]),
-        )
+            ExceptionGroup("test1", [ValueError("V"), TypeError("T")]))
 
     def test_match_single_type(self):
         self.doSplitTest(
             ExceptionGroup("test2", [ValueError("V1"), ValueError("V2")]),
             ValueError,
             ExceptionGroup("test2", [ValueError("V1"), ValueError("V2")]),
-            None,
-        )
+            None)
 
     def test_match_single_type_partial_match(self):
         self.doSplitTest(
             ExceptionGroup(
-                "test3", [ValueError("V1"), OSError("OS"), ValueError("V2")]
-            ),
+                "test3",
+                [ValueError("V1"), OSError("OS"), ValueError("V2")]),
             ValueError,
             ExceptionGroup("test3", [ValueError("V1"), ValueError("V2")]),
-            ExceptionGroup("test3", [OSError("OS")]),
-        )
+            ExceptionGroup("test3", [OSError("OS")]))
 
     def test_match_single_type_nested(self):
         self.doSplitTest(
             ExceptionGroup(
-                "g1",
-                [
-                    ValueError("V1"),
-                    OSError("OS1"),
-                    ExceptionGroup(
-                        "g2", [OSError("OS2"), ValueError("V2"), TypeError("T")]
-                    ),
-                ],
-            ),
+                "g1", [
+                ValueError("V1"),
+                OSError("OS1"),
+                ExceptionGroup(
+                    "g2", [
+                    OSError("OS2"),
+                    ValueError("V2"),
+                    TypeError("T")])]),
             ValueError,
             ExceptionGroup(
-                "g1", [ValueError("V1"), ExceptionGroup("g2", [ValueError("V2")])]
-            ),
-            ExceptionGroup(
-                "g1",
-                [
-                    OSError("OS1"),
-                    ExceptionGroup("g2", [OSError("OS2"), TypeError("T")]),
-                ],
-            ),
-        )
+                "g1", [
+                ValueError("V1"),
+                ExceptionGroup("g2", [ValueError("V2")])]),
+            ExceptionGroup("g1", [
+                OSError("OS1"),
+                ExceptionGroup("g2", [
+                    OSError("OS2"), TypeError("T")])]))
 
     def test_match_type_tuple_nested(self):
         self.doSplitTest(
             ExceptionGroup(
-                "h1",
-                [
-                    ValueError("V1"),
-                    OSError("OS1"),
-                    ExceptionGroup(
-                        "h2", [OSError("OS2"), ValueError("V2"), TypeError("T")]
-                    ),
-                ],
-            ),
+                "h1", [
+                ValueError("V1"),
+                OSError("OS1"),
+                ExceptionGroup(
+                    "h2", [OSError("OS2"), ValueError("V2"), TypeError("T")])]),
             (ValueError, TypeError),
             ExceptionGroup(
-                "h1",
-                [
-                    ValueError("V1"),
-                    ExceptionGroup("h2", [ValueError("V2"), TypeError("T")]),
-                ],
-            ),
+                "h1", [
+                ValueError("V1"),
+                ExceptionGroup("h2", [ValueError("V2"), TypeError("T")])]),
             ExceptionGroup(
-                "h1", [OSError("OS1"), ExceptionGroup("h2", [OSError("OS2")])]
-            ),
-        )
+                "h1", [
+                OSError("OS1"),
+                ExceptionGroup("h2", [OSError("OS2")])]))
 
     def test_empty_groups_removed(self):
         self.doSplitTest(
             ExceptionGroup(
-                "eg",
-                [
-                    ExceptionGroup("i1", [ValueError("V1")]),
-                    ExceptionGroup("i2", [ValueError("V2"), TypeError("T1")]),
-                    ExceptionGroup("i3", [TypeError("T2")]),
-                ],
-            ),
+                "eg", [
+                ExceptionGroup("i1", [ValueError("V1")]),
+                ExceptionGroup("i2", [ValueError("V2"), TypeError("T1")]),
+                ExceptionGroup("i3", [TypeError("T2")])]),
             TypeError,
-            ExceptionGroup(
-                "eg",
-                [
-                    ExceptionGroup("i2", [TypeError("T1")]),
-                    ExceptionGroup("i3", [TypeError("T2")]),
-                ],
-            ),
-            ExceptionGroup(
-                "eg",
-                [
+            ExceptionGroup("eg", [
+                ExceptionGroup("i2", [TypeError("T1")]),
+                ExceptionGroup("i3", [TypeError("T2")])]),
+            ExceptionGroup("eg", [
                     ExceptionGroup("i1", [ValueError("V1")]),
-                    ExceptionGroup("i2", [ValueError("V2")]),
-                ],
-            ),
-        )
+                    ExceptionGroup("i2", [ValueError("V2")])]))
 
     def test_singleton_groups_are_kept(self):
         self.doSplitTest(
-            ExceptionGroup(
-                "j1",
-                [
-                    ExceptionGroup(
-                        "j2",
-                        [
-                            ExceptionGroup("j3", [ValueError("V1")]),
-                            ExceptionGroup("j4", [TypeError("T")]),
-                        ],
-                    )
-                ],
-            ),
+            ExceptionGroup("j1", [
+                ExceptionGroup("j2", [
+                    ExceptionGroup("j3", [ValueError("V1")]),
+                    ExceptionGroup("j4", [TypeError("T")])])]),
             TypeError,
             ExceptionGroup(
-                "j1", [ExceptionGroup("j2", [ExceptionGroup("j4", [TypeError("T")])])]
-            ),
+                "j1",
+                [ExceptionGroup("j2", [ExceptionGroup("j4", [TypeError("T")])])]),
             ExceptionGroup(
-                "j1", [ExceptionGroup("j2", [ExceptionGroup("j3", [ValueError("V1")])])]
-            ),
-        )
+                "j1",
+                [ExceptionGroup("j2", [ExceptionGroup("j3", [ValueError("V1")])])]))
 
     def test_naked_exception_matched_wrapped1(self):
         self.doSplitTest(
-            ValueError("V"), ValueError, ExceptionGroup("", [ValueError("V")]), None
-        )
+            ValueError("V"),
+            ValueError,
+            ExceptionGroup("", [ValueError("V")]),
+            None)
 
     def test_naked_exception_matched_wrapped2(self):
         self.doSplitTest(
-            ValueError("V"), Exception, ExceptionGroup("", [ValueError("V")]), None
-        )
+            ValueError("V"),
+            Exception,
+            ExceptionGroup("", [ValueError("V")]),
+            None)
 
     def test_exception_group_except_star_Exception_not_wrapped(self):
         self.doSplitTest(
             ExceptionGroup("eg", [ValueError("V")]),
             Exception,
             ExceptionGroup("eg", [ValueError("V")]),
-            None,
-        )
+            None)
 
     def test_plain_exception_not_matched(self):
-        self.doSplitTest(ValueError("V"), TypeError, None, ValueError("V"))
+        self.doSplitTest(
+            ValueError("V"),
+            TypeError,
+            None,
+            ValueError("V"))
 
     def test_match__supertype(self):
         self.doSplitTest(
             ExceptionGroup("st", [BlockingIOError("io"), TypeError("T")]),
             OSError,
             ExceptionGroup("st", [BlockingIOError("io")]),
-            ExceptionGroup("st", [TypeError("T")]),
-        )
+            ExceptionGroup("st", [TypeError("T")]))
 
     def test_multiple_matches_named(self):
         try:
             raise ExceptionGroup("mmn", [OSError("os"), BlockingIOError("io")])
         except* BlockingIOError as e:
-            self.assertExceptionIsLike(
-                e, ExceptionGroup("mmn", [BlockingIOError("io")])
-            )
+            self.assertExceptionIsLike(e,
+                ExceptionGroup("mmn", [BlockingIOError("io")]))
         except* OSError as e:
-            self.assertExceptionIsLike(e, ExceptionGroup("mmn", [OSError("os")]))
+            self.assertExceptionIsLike(e,
+                ExceptionGroup("mmn", [OSError("os")]))
         else:
             self.fail("Exception not raised")
 
@@ -426,12 +386,12 @@ class TestExceptStarSplitSemantics(ExceptStarTest):
             raise ExceptionGroup("mmu", [OSError("os"), BlockingIOError("io")])
         except* BlockingIOError:
             e = sys.exception()
-            self.assertExceptionIsLike(
-                e, ExceptionGroup("mmu", [BlockingIOError("io")])
-            )
+            self.assertExceptionIsLike(e,
+                ExceptionGroup("mmu", [BlockingIOError("io")]))
         except* OSError:
             e = sys.exception()
-            self.assertExceptionIsLike(e, ExceptionGroup("mmu", [OSError("os")]))
+            self.assertExceptionIsLike(e,
+                ExceptionGroup("mmu", [OSError("os")]))
         else:
             self.fail("Exception not raised")
 
@@ -439,9 +399,8 @@ class TestExceptStarSplitSemantics(ExceptStarTest):
         try:
             raise ExceptionGroup("fst", [BlockingIOError("io")])
         except* OSError as e:
-            self.assertExceptionIsLike(
-                e, ExceptionGroup("fst", [BlockingIOError("io")])
-            )
+            self.assertExceptionIsLike(e,
+                ExceptionGroup("fst", [BlockingIOError("io")]))
         except* BlockingIOError:
             self.fail("Should have been matched as OSError")
         else:
@@ -452,9 +411,8 @@ class TestExceptStarSplitSemantics(ExceptStarTest):
             raise ExceptionGroup("fstu", [BlockingIOError("io")])
         except* OSError:
             e = sys.exception()
-            self.assertExceptionIsLike(
-                e, ExceptionGroup("fstu", [BlockingIOError("io")])
-            )
+            self.assertExceptionIsLike(e,
+                ExceptionGroup("fstu", [BlockingIOError("io")]))
         except* BlockingIOError:
             pass
         else:
@@ -471,7 +429,8 @@ class TestExceptStarSplitSemantics(ExceptStarTest):
             else:
                 self.fail("Exception not raised")
             e = sys.exception()
-            self.assertExceptionIsLike(e, ExceptionGroup("n", [BlockingIOError("io")]))
+            self.assertExceptionIsLike(e,
+                 ExceptionGroup("n", [BlockingIOError("io")]))
         else:
             self.fail("Exception not raised")
 
@@ -489,7 +448,8 @@ class TestExceptStarReraise(ExceptStarTest):
     def test_reraise_all_named(self):
         try:
             try:
-                raise ExceptionGroup("eg", [TypeError(1), ValueError(2), OSError(3)])
+                raise ExceptionGroup(
+                    "eg", [TypeError(1), ValueError(2), OSError(3)])
             except* TypeError as e:
                 raise
             except* ValueError as e:
@@ -499,13 +459,14 @@ class TestExceptStarReraise(ExceptStarTest):
             exc = e
 
         self.assertExceptionIsLike(
-            exc, ExceptionGroup("eg", [TypeError(1), ValueError(2), OSError(3)])
-        )
+            exc,
+            ExceptionGroup("eg", [TypeError(1), ValueError(2), OSError(3)]))
 
     def test_reraise_all_unnamed(self):
         try:
             try:
-                raise ExceptionGroup("eg", [TypeError(1), ValueError(2), OSError(3)])
+                raise ExceptionGroup(
+                    "eg", [TypeError(1), ValueError(2), OSError(3)])
             except* TypeError:
                 raise
             except* ValueError:
@@ -515,13 +476,14 @@ class TestExceptStarReraise(ExceptStarTest):
             exc = e
 
         self.assertExceptionIsLike(
-            exc, ExceptionGroup("eg", [TypeError(1), ValueError(2), OSError(3)])
-        )
+            exc,
+            ExceptionGroup("eg", [TypeError(1), ValueError(2), OSError(3)]))
 
     def test_reraise_some_handle_all_named(self):
         try:
             try:
-                raise ExceptionGroup("eg", [TypeError(1), ValueError(2), OSError(3)])
+                raise ExceptionGroup(
+                    "eg", [TypeError(1), ValueError(2), OSError(3)])
             except* TypeError as e:
                 raise
             except* ValueError as e:
@@ -531,13 +493,13 @@ class TestExceptStarReraise(ExceptStarTest):
             exc = e
 
         self.assertExceptionIsLike(
-            exc, ExceptionGroup("eg", [TypeError(1), OSError(3)])
-        )
+            exc, ExceptionGroup("eg", [TypeError(1), OSError(3)]))
 
     def test_reraise_partial_handle_all_unnamed(self):
         try:
             try:
-                raise ExceptionGroup("eg", [TypeError(1), ValueError(2)])
+                raise ExceptionGroup(
+                    "eg", [TypeError(1), ValueError(2)])
             except* TypeError:
                 raise
             except* ValueError:
@@ -545,12 +507,14 @@ class TestExceptStarReraise(ExceptStarTest):
         except ExceptionGroup as e:
             exc = e
 
-        self.assertExceptionIsLike(exc, ExceptionGroup("eg", [TypeError(1)]))
+        self.assertExceptionIsLike(
+            exc, ExceptionGroup("eg", [TypeError(1)]))
 
     def test_reraise_partial_handle_some_named(self):
         try:
             try:
-                raise ExceptionGroup("eg", [TypeError(1), ValueError(2), OSError(3)])
+                raise ExceptionGroup(
+                    "eg", [TypeError(1), ValueError(2), OSError(3)])
             except* TypeError as e:
                 raise
             except* ValueError as e:
@@ -560,13 +524,13 @@ class TestExceptStarReraise(ExceptStarTest):
             exc = e
 
         self.assertExceptionIsLike(
-            exc, ExceptionGroup("eg", [TypeError(1), OSError(3)])
-        )
+            exc, ExceptionGroup("eg", [TypeError(1), OSError(3)]))
 
     def test_reraise_partial_handle_some_unnamed(self):
         try:
             try:
-                raise ExceptionGroup("eg", [TypeError(1), ValueError(2), OSError(3)])
+                raise ExceptionGroup(
+                    "eg", [TypeError(1), ValueError(2), OSError(3)])
             except* TypeError:
                 raise
             except* ValueError:
@@ -575,8 +539,7 @@ class TestExceptStarReraise(ExceptStarTest):
             exc = e
 
         self.assertExceptionIsLike(
-            exc, ExceptionGroup("eg", [TypeError(1), OSError(3)])
-        )
+            exc, ExceptionGroup("eg", [TypeError(1), OSError(3)]))
 
     def test_reraise_plain_exception_named(self):
         try:
@@ -587,7 +550,8 @@ class TestExceptStarReraise(ExceptStarTest):
         except ExceptionGroup as e:
             exc = e
 
-        self.assertExceptionIsLike(exc, ExceptionGroup("", [ValueError(42)]))
+        self.assertExceptionIsLike(
+            exc, ExceptionGroup("", [ValueError(42)]))
 
     def test_reraise_plain_exception_unnamed(self):
         try:
@@ -598,7 +562,8 @@ class TestExceptStarReraise(ExceptStarTest):
         except ExceptionGroup as e:
             exc = e
 
-        self.assertExceptionIsLike(exc, ExceptionGroup("", [ValueError(42)]))
+        self.assertExceptionIsLike(
+            exc, ExceptionGroup("", [ValueError(42)]))
 
 
 class TestExceptStarRaise(ExceptStarTest):
@@ -614,12 +579,12 @@ class TestExceptStarRaise(ExceptStarTest):
 
         self.assertExceptionIsLike(
             exc,
-            ExceptionGroup("", [TypeError(3), ExceptionGroup("eg", [ValueError(1)])]),
-        )
+            ExceptionGroup(
+                "", [TypeError(3), ExceptionGroup("eg", [ValueError(1)])]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__context__, ExceptionGroup("eg", [OSError(2)])
-        )
+            exc.exceptions[0].__context__,
+            ExceptionGroup("eg", [OSError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.exceptions[0].__context__)
@@ -636,12 +601,12 @@ class TestExceptStarRaise(ExceptStarTest):
 
         self.assertExceptionIsLike(
             exc,
-            ExceptionGroup("", [TypeError(3), ExceptionGroup("eg", [ValueError(1)])]),
-        )
+            ExceptionGroup(
+                "", [TypeError(3), ExceptionGroup("eg", [ValueError(1)])]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__context__, ExceptionGroup("eg", [OSError(2)])
-        )
+            exc.exceptions[0].__context__,
+            ExceptionGroup("eg", [OSError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.exceptions[0].__context__)
@@ -659,8 +624,8 @@ class TestExceptStarRaise(ExceptStarTest):
         self.assertExceptionIsLike(exc, SyntaxError(3))
 
         self.assertExceptionIsLike(
-            exc.__context__, ExceptionGroup("eg", [TypeError(1), ValueError(2)])
-        )
+            exc.__context__,
+            ExceptionGroup("eg", [TypeError(1), ValueError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.__context__)
@@ -678,8 +643,8 @@ class TestExceptStarRaise(ExceptStarTest):
         self.assertExceptionIsLike(exc, SyntaxError(3))
 
         self.assertExceptionIsLike(
-            exc.__context__, ExceptionGroup("eg", [TypeError(1), ValueError(2)])
-        )
+            exc.__context__,
+            ExceptionGroup("eg", [TypeError(1), ValueError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.__context__)
@@ -697,16 +662,15 @@ class TestExceptStarRaise(ExceptStarTest):
             exc = e
 
         self.assertExceptionIsLike(
-            exc, ExceptionGroup("", [SyntaxError(3), SyntaxError(4)])
-        )
+            exc, ExceptionGroup("", [SyntaxError(3), SyntaxError(4)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__context__, ExceptionGroup("eg", [TypeError(1)])
-        )
+            exc.exceptions[0].__context__,
+            ExceptionGroup("eg", [TypeError(1)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[1].__context__, ExceptionGroup("eg", [ValueError(2)])
-        )
+            exc.exceptions[1].__context__,
+            ExceptionGroup("eg", [ValueError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.exceptions[0].__context__)
@@ -725,16 +689,15 @@ class TestExceptStarRaise(ExceptStarTest):
             exc = e
 
         self.assertExceptionIsLike(
-            exc, ExceptionGroup("", [SyntaxError(3), SyntaxError(4)])
-        )
+            exc, ExceptionGroup("", [SyntaxError(3), SyntaxError(4)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__context__, ExceptionGroup("eg", [TypeError(1)])
-        )
+            exc.exceptions[0].__context__,
+            ExceptionGroup("eg", [TypeError(1)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[1].__context__, ExceptionGroup("eg", [ValueError(2)])
-        )
+            exc.exceptions[1].__context__,
+            ExceptionGroup("eg", [ValueError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.exceptions[0].__context__)
@@ -754,16 +717,16 @@ class TestExceptStarRaiseFrom(ExceptStarTest):
 
         self.assertExceptionIsLike(
             exc,
-            ExceptionGroup("", [TypeError(3), ExceptionGroup("eg", [ValueError(1)])]),
-        )
+            ExceptionGroup(
+                "", [TypeError(3), ExceptionGroup("eg", [ValueError(1)])]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__context__, ExceptionGroup("eg", [OSError(2)])
-        )
+            exc.exceptions[0].__context__,
+            ExceptionGroup("eg", [OSError(2)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__cause__, ExceptionGroup("eg", [OSError(2)])
-        )
+            exc.exceptions[0].__cause__,
+            ExceptionGroup("eg", [OSError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.exceptions[0].__context__)
@@ -784,16 +747,16 @@ class TestExceptStarRaiseFrom(ExceptStarTest):
 
         self.assertExceptionIsLike(
             exc,
-            ExceptionGroup("", [TypeError(3), ExceptionGroup("eg", [ValueError(1)])]),
-        )
+            ExceptionGroup(
+                "", [TypeError(3), ExceptionGroup("eg", [ValueError(1)])]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__context__, ExceptionGroup("eg", [OSError(2)])
-        )
+            exc.exceptions[0].__context__,
+            ExceptionGroup("eg", [OSError(2)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__cause__, ExceptionGroup("eg", [OSError(2)])
-        )
+            exc.exceptions[0].__cause__,
+            ExceptionGroup("eg", [OSError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.exceptions[0].__context__)
@@ -814,12 +777,12 @@ class TestExceptStarRaiseFrom(ExceptStarTest):
         self.assertExceptionIsLike(exc, SyntaxError(3))
 
         self.assertExceptionIsLike(
-            exc.__context__, ExceptionGroup("eg", [TypeError(1), ValueError(2)])
-        )
+            exc.__context__,
+            ExceptionGroup("eg", [TypeError(1), ValueError(2)]))
 
         self.assertExceptionIsLike(
-            exc.__cause__, ExceptionGroup("eg", [TypeError(1), ValueError(2)])
-        )
+            exc.__cause__,
+            ExceptionGroup("eg", [TypeError(1), ValueError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.__context__)
@@ -839,12 +802,12 @@ class TestExceptStarRaiseFrom(ExceptStarTest):
         self.assertExceptionIsLike(exc, SyntaxError(3))
 
         self.assertExceptionIsLike(
-            exc.__context__, ExceptionGroup("eg", [TypeError(1), ValueError(2)])
-        )
+            exc.__context__,
+            ExceptionGroup("eg", [TypeError(1), ValueError(2)]))
 
         self.assertExceptionIsLike(
-            exc.__cause__, ExceptionGroup("eg", [TypeError(1), ValueError(2)])
-        )
+            exc.__cause__,
+            ExceptionGroup("eg", [TypeError(1), ValueError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.__context__)
@@ -863,24 +826,23 @@ class TestExceptStarRaiseFrom(ExceptStarTest):
             exc = e
 
         self.assertExceptionIsLike(
-            exc, ExceptionGroup("", [SyntaxError(3), SyntaxError(4)])
-        )
+            exc, ExceptionGroup("", [SyntaxError(3), SyntaxError(4)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__context__, ExceptionGroup("eg", [TypeError(1)])
-        )
+            exc.exceptions[0].__context__,
+            ExceptionGroup("eg", [TypeError(1)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__cause__, ExceptionGroup("eg", [TypeError(1)])
-        )
+            exc.exceptions[0].__cause__,
+            ExceptionGroup("eg", [TypeError(1)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[1].__context__, ExceptionGroup("eg", [ValueError(2)])
-        )
+            exc.exceptions[1].__context__,
+            ExceptionGroup("eg", [ValueError(2)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[1].__cause__, ExceptionGroup("eg", [ValueError(2)])
-        )
+            exc.exceptions[1].__cause__,
+            ExceptionGroup("eg", [ValueError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.exceptions[0].__context__)
@@ -901,24 +863,23 @@ class TestExceptStarRaiseFrom(ExceptStarTest):
             exc = e
 
         self.assertExceptionIsLike(
-            exc, ExceptionGroup("", [SyntaxError(3), SyntaxError(4)])
-        )
+            exc, ExceptionGroup("", [SyntaxError(3), SyntaxError(4)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__context__, ExceptionGroup("eg", [TypeError(1)])
-        )
+            exc.exceptions[0].__context__,
+            ExceptionGroup("eg", [TypeError(1)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[0].__cause__, ExceptionGroup("eg", [TypeError(1)])
-        )
+            exc.exceptions[0].__cause__,
+            ExceptionGroup("eg", [TypeError(1)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[1].__context__, ExceptionGroup("eg", [ValueError(2)])
-        )
+            exc.exceptions[1].__context__,
+            ExceptionGroup("eg", [ValueError(2)]))
 
         self.assertExceptionIsLike(
-            exc.exceptions[1].__cause__, ExceptionGroup("eg", [ValueError(2)])
-        )
+            exc.exceptions[1].__cause__,
+            ExceptionGroup("eg", [ValueError(2)]))
 
         self.assertMetadataNotEqual(orig, exc)
         self.assertMetadataEqual(orig, exc.exceptions[0].__context__)
@@ -974,10 +935,10 @@ class TestExceptStarExceptionGroupSubclass(ExceptStarTest):
         try:
             try:
                 raise FalsyEG("eg", [TypeError(1), ValueError(2)])
-            except* TypeError as e:
+            except *TypeError as e:
                 tes = e
                 raise
-            except* ValueError as e:
+            except *ValueError as e:
                 ves = e
                 pass
         except Exception as e:
@@ -1002,11 +963,11 @@ class TestExceptStarCleanup(ExceptStarTest):
                     raise TypeError(int)
                 except* Exception:
                     pass
-                1 / 0
+                1/0
         except Exception as e:
             exc = e
 
-        self.assertExceptionIsLike(exc, ZeroDivisionError("division by zero"))
+        self.assertExceptionIsLike(exc, ZeroDivisionError('division by zero'))
         self.assertExceptionIsLike(exc.__context__, ValueError(42))
         self.assertEqual(sys.exception(), None)
 
@@ -1031,19 +992,17 @@ class TestExceptStar_WeirdLeafExceptions(ExceptStarTest):
             raise RuntimeError()
 
     def setUp(self):
-        self.bad_types = [
-            self.UnhashableExc,
-            self.AlwaysEqualExc,
-            self.NeverEqualExc,
-            self.BrokenEqualExc,
-        ]
+        self.bad_types = [self.UnhashableExc,
+                          self.AlwaysEqualExc,
+                          self.NeverEqualExc,
+                          self.BrokenEqualExc]
 
     def except_type(self, eg, type):
         match, rest = None, None
         try:
             try:
                 raise eg
-            except* type as e:
+            except* type  as e:
                 match = e
         except Exception as e:
             rest = e
@@ -1054,16 +1013,20 @@ class TestExceptStar_WeirdLeafExceptions(ExceptStarTest):
             with self.subTest(Bad):
                 eg = ExceptionGroup("eg", [TypeError(1), Bad(2)])
                 match, rest = self.except_type(eg, Bad)
-                self.assertExceptionIsLike(match, ExceptionGroup("eg", [Bad(2)]))
-                self.assertExceptionIsLike(rest, ExceptionGroup("eg", [TypeError(1)]))
+                self.assertExceptionIsLike(
+                    match, ExceptionGroup("eg", [Bad(2)]))
+                self.assertExceptionIsLike(
+                    rest, ExceptionGroup("eg", [TypeError(1)]))
 
     def test_propagate_unhashable_leaf(self):
         for Bad in self.bad_types:
             with self.subTest(Bad):
                 eg = ExceptionGroup("eg", [TypeError(1), Bad(2)])
                 match, rest = self.except_type(eg, TypeError)
-                self.assertExceptionIsLike(match, ExceptionGroup("eg", [TypeError(1)]))
-                self.assertExceptionIsLike(rest, ExceptionGroup("eg", [Bad(2)]))
+                self.assertExceptionIsLike(
+                    match, ExceptionGroup("eg", [TypeError(1)]))
+                self.assertExceptionIsLike(
+                    rest, ExceptionGroup("eg", [Bad(2)]))
 
     def test_catch_nothing_unhashable_leaf(self):
         for Bad in self.bad_types:
@@ -1084,7 +1047,8 @@ class TestExceptStar_WeirdLeafExceptions(ExceptStarTest):
     def test_reraise_unhashable_leaf(self):
         for Bad in self.bad_types:
             with self.subTest(Bad):
-                eg = ExceptionGroup("eg", [TypeError(1), Bad(2), ValueError(3)])
+                eg = ExceptionGroup(
+                    "eg", [TypeError(1), Bad(2), ValueError(3)])
 
                 try:
                     try:
@@ -1097,8 +1061,7 @@ class TestExceptStar_WeirdLeafExceptions(ExceptStarTest):
                     exc = e
 
                 self.assertExceptionIsLike(
-                    exc, ExceptionGroup("eg", [Bad(2), ValueError(3)])
-                )
+                    exc, ExceptionGroup("eg", [Bad(2), ValueError(3)]))
 
 
 class TestExceptStar_WeirdExceptionGroupSubclass(ExceptStarTest):
@@ -1133,19 +1096,17 @@ class TestExceptStar_WeirdExceptionGroupSubclass(ExceptStarTest):
             return type(self)(self.message, excs)
 
     def setUp(self):
-        self.bad_types = [
-            self.UnhashableEG,
-            self.AlwaysEqualEG,
-            self.NeverEqualEG,
-            self.BrokenEqualEG,
-        ]
+        self.bad_types = [self.UnhashableEG,
+                          self.AlwaysEqualEG,
+                          self.NeverEqualEG,
+                          self.BrokenEqualEG]
 
     def except_type(self, eg, type):
         match, rest = None, None
         try:
             try:
                 raise eg
-            except* type as e:
+            except* type  as e:
                 match = e
         except Exception as e:
             rest = e
@@ -1154,19 +1115,22 @@ class TestExceptStar_WeirdExceptionGroupSubclass(ExceptStarTest):
     def test_catch_some_unhashable_exception_group_subclass(self):
         for BadEG in self.bad_types:
             with self.subTest(BadEG):
-                eg = BadEG("eg", [TypeError(1), BadEG("nested", [ValueError(2)])])
+                eg = BadEG("eg",
+                           [TypeError(1),
+                            BadEG("nested", [ValueError(2)])])
 
                 match, rest = self.except_type(eg, TypeError)
                 self.assertExceptionIsLike(match, BadEG("eg", [TypeError(1)]))
-                self.assertExceptionIsLike(
-                    rest, BadEG("eg", [BadEG("nested", [ValueError(2)])])
-                )
+                self.assertExceptionIsLike(rest,
+                    BadEG("eg", [BadEG("nested", [ValueError(2)])]))
 
     def test_catch_none_unhashable_exception_group_subclass(self):
         for BadEG in self.bad_types:
             with self.subTest(BadEG):
 
-                eg = BadEG("eg", [TypeError(1), BadEG("nested", [ValueError(2)])])
+                eg = BadEG("eg",
+                           [TypeError(1),
+                            BadEG("nested", [ValueError(2)])])
 
                 match, rest = self.except_type(eg, OSError)
                 self.assertIsNone(match)
@@ -1176,7 +1140,9 @@ class TestExceptStar_WeirdExceptionGroupSubclass(ExceptStarTest):
         for BadEG in self.bad_types:
             with self.subTest(BadEG):
 
-                eg = BadEG("eg", [TypeError(1), BadEG("nested", [ValueError(2)])])
+                eg = BadEG("eg",
+                           [TypeError(1),
+                            BadEG("nested", [ValueError(2)])])
 
                 match, rest = self.except_type(eg, Exception)
                 self.assertExceptionIsLike(match, eg)
@@ -1186,14 +1152,9 @@ class TestExceptStar_WeirdExceptionGroupSubclass(ExceptStarTest):
         for BadEG in self.bad_types:
             with self.subTest(BadEG):
 
-                eg = BadEG(
-                    "eg",
-                    [
-                        TypeError(1),
-                        ValueError(2),
-                        BadEG("nested", [ValueError(3), OSError(4)]),
-                    ],
-                )
+                eg = BadEG("eg",
+                           [TypeError(1), ValueError(2),
+                            BadEG("nested", [ValueError(3), OSError(4)])])
 
                 try:
                     try:
@@ -1206,9 +1167,9 @@ class TestExceptStar_WeirdExceptionGroupSubclass(ExceptStarTest):
                     exc = e
 
                 self.assertExceptionIsLike(
-                    exc, BadEG("eg", [TypeError(1), BadEG("nested", [OSError(4)])])
-                )
+                    exc, BadEG("eg", [TypeError(1),
+                               BadEG("nested", [OSError(4)])]))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

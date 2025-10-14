@@ -40,7 +40,7 @@ class BytesTest(unittest.TestCase):
 
             with self.assertRaises(OverflowError) as cm:
                 # this statement used a fast path in ceval.c
-                x += b"x" * 128
+                x +=  b"x" * 128
         finally:
             x = None
 
@@ -79,7 +79,7 @@ class StrTest(unittest.TestCase):
 
             with self.assertRaises(MemoryError) as cm:
                 # this statement uses a fast path in ceval.c
-                x += x
+                x +=  x
         finally:
             x = None
 
@@ -92,7 +92,7 @@ class StrTest(unittest.TestCase):
             x = None
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     if len(sys.argv) > 1:
         support.set_memlimit(sys.argv[1])
     unittest.main()

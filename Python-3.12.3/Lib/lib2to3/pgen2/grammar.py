@@ -104,14 +104,8 @@ class Grammar(object):
         Copy the grammar.
         """
         new = self.__class__()
-        for dict_attr in (
-            "symbol2number",
-            "number2symbol",
-            "dfas",
-            "keywords",
-            "tokens",
-            "symbol2label",
-        ):
+        for dict_attr in ("symbol2number", "number2symbol", "dfas", "keywords",
+                          "tokens", "symbol2label"):
             setattr(new, dict_attr, getattr(self, dict_attr).copy())
         new.labels = self.labels[:]
         new.states = self.states[:]
@@ -121,7 +115,6 @@ class Grammar(object):
     def report(self):
         """Dump the grammar tables to standard output, for debugging."""
         from pprint import pprint
-
         print("s2n")
         pprint(self.symbol2number)
         print("n2s")

@@ -150,7 +150,7 @@ class Namespace(argparse.Namespace):
         self.fail_env_changed = False
         self.use_resources = None
         self.trace = False
-        self.coverdir = "coverage"
+        self.coverdir = 'coverage'
         self.runleaks = False
         self.huntrleaks: tuple[int, int, str] | None = None
         self.rerun = False
@@ -191,7 +191,7 @@ class FilterAction(argparse.Action):
 class FromFileFilterAction(argparse.Action):
     def __call__(self, parser, namespace, value, option_string=None):
         items = getattr(namespace, self.dest)
-        with open(value, encoding="utf-8") as fp:
+        with open(value, encoding='utf-8') as fp:
             for line in fp:
                 items.append((line.strip(), self.const))
 
@@ -199,309 +199,157 @@ class FromFileFilterAction(argparse.Action):
 def _create_parser():
     # Set prog to prevent the uninformative "__main__.py" from displaying in
     # error messages when using "python -m test ...".
-    parser = _ArgParser(
-        prog="regrtest.py",
-        usage=USAGE,
-        description=DESCRIPTION,
-        epilog=EPILOG,
-        add_help=False,
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-    )
+    parser = _ArgParser(prog='regrtest.py',
+                        usage=USAGE,
+                        description=DESCRIPTION,
+                        epilog=EPILOG,
+                        add_help=False,
+                        formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.set_defaults(match_tests=[])
 
     # Arguments with this clause added to its help are described further in
     # the epilog's "Additional option details" section.
-    more_details = "  See the section at bottom for more details."
+    more_details = '  See the section at bottom for more details.'
 
-    group = parser.add_argument_group("General options")
+    group = parser.add_argument_group('General options')
     # We add help explicitly to control what argument group it renders under.
-    group.add_argument(
-        "-h", "--help", action="help", help="show this help message and exit"
-    )
-    group.add_argument(
-        "--fast-ci",
-        action="store_true",
-        help="Fast Continuous Integration (CI) mode used by " "GitHub Actions",
-    )
-    group.add_argument(
-        "--slow-ci",
-        action="store_true",
-        help="Slow Continuous Integration (CI) mode used by " "buildbot workers",
-    )
-    group.add_argument(
-        "--timeout",
-        metavar="TIMEOUT",
-        help="dump the traceback and exit if a test takes "
-        "more than TIMEOUT seconds; disabled if TIMEOUT "
-        "is negative or equals to zero",
-    )
-    group.add_argument(
-        "--wait",
-        action="store_true",
-        help="wait for user input, e.g., allow a debugger " "to be attached",
-    )
-    group.add_argument(
-        "-S",
-        "--start",
-        metavar="START",
-        help="the name of the test at which to start." + more_details,
-    )
-    group.add_argument(
-        "-p",
-        "--python",
-        metavar="PYTHON",
-        help="Command to run Python test subprocesses with.",
-    )
-    group.add_argument(
-        "--randseed",
-        metavar="SEED",
-        dest="random_seed",
-        type=int,
-        help="pass a global random seed",
-    )
+    group.add_argument('-h', '--help', action='help',
+                       help='show this help message and exit')
+    group.add_argument('--fast-ci', action='store_true',
+                       help='Fast Continuous Integration (CI) mode used by '
+                            'GitHub Actions')
+    group.add_argument('--slow-ci', action='store_true',
+                       help='Slow Continuous Integration (CI) mode used by '
+                            'buildbot workers')
+    group.add_argument('--timeout', metavar='TIMEOUT',
+                        help='dump the traceback and exit if a test takes '
+                             'more than TIMEOUT seconds; disabled if TIMEOUT '
+                             'is negative or equals to zero')
+    group.add_argument('--wait', action='store_true',
+                       help='wait for user input, e.g., allow a debugger '
+                            'to be attached')
+    group.add_argument('-S', '--start', metavar='START',
+                       help='the name of the test at which to start.' +
+                            more_details)
+    group.add_argument('-p', '--python', metavar='PYTHON',
+                       help='Command to run Python test subprocesses with.')
+    group.add_argument('--randseed', metavar='SEED',
+                       dest='random_seed', type=int,
+                       help='pass a global random seed')
 
-    group = parser.add_argument_group("Verbosity")
-    group.add_argument(
-        "-v",
-        "--verbose",
-        action="count",
-        help="run tests in verbose mode with output to stdout",
-    )
-    group.add_argument(
-        "-w", "--rerun", action="store_true", help="re-run failed tests in verbose mode"
-    )
-    group.add_argument(
-        "--verbose2",
-        action="store_true",
-        dest="rerun",
-        help="deprecated alias to --rerun",
-    )
-    group.add_argument(
-        "-W", "--verbose3", action="store_true", help="display test output on failure"
-    )
-    group.add_argument(
-        "-q",
-        "--quiet",
-        action="store_true",
-        help="no output unless one or more tests fail",
-    )
-    group.add_argument(
-        "-o",
-        "--slowest",
-        action="store_true",
-        dest="print_slow",
-        help="print the slowest 10 tests",
-    )
-    group.add_argument(
-        "--header", action="store_true", help="print header with interpreter info"
-    )
+    group = parser.add_argument_group('Verbosity')
+    group.add_argument('-v', '--verbose', action='count',
+                       help='run tests in verbose mode with output to stdout')
+    group.add_argument('-w', '--rerun', action='store_true',
+                       help='re-run failed tests in verbose mode')
+    group.add_argument('--verbose2', action='store_true', dest='rerun',
+                       help='deprecated alias to --rerun')
+    group.add_argument('-W', '--verbose3', action='store_true',
+                       help='display test output on failure')
+    group.add_argument('-q', '--quiet', action='store_true',
+                       help='no output unless one or more tests fail')
+    group.add_argument('-o', '--slowest', action='store_true', dest='print_slow',
+                       help='print the slowest 10 tests')
+    group.add_argument('--header', action='store_true',
+                       help='print header with interpreter info')
 
-    group = parser.add_argument_group("Selecting tests")
-    group.add_argument(
-        "-r",
-        "--randomize",
-        action="store_true",
-        help="randomize test execution order." + more_details,
-    )
-    group.add_argument(
-        "-f",
-        "--fromfile",
-        metavar="FILE",
-        help="read names of tests to run from a file." + more_details,
-    )
-    group.add_argument(
-        "-x", "--exclude", action="store_true", help="arguments are tests to *exclude*"
-    )
-    group.add_argument(
-        "-s",
-        "--single",
-        action="store_true",
-        help="single step through a set of tests." + more_details,
-    )
-    group.add_argument(
-        "-m",
-        "--match",
-        metavar="PAT",
-        dest="match_tests",
-        action=FilterAction,
-        const=True,
-        help="match test cases and methods with glob pattern PAT",
-    )
-    group.add_argument(
-        "-i",
-        "--ignore",
-        metavar="PAT",
-        dest="match_tests",
-        action=FilterAction,
-        const=False,
-        help="ignore test cases and methods with glob pattern PAT",
-    )
-    group.add_argument(
-        "--matchfile",
-        metavar="FILENAME",
-        dest="match_tests",
-        action=FromFileFilterAction,
-        const=True,
-        help="similar to --match but get patterns from a "
-        "text file, one pattern per line",
-    )
-    group.add_argument(
-        "--ignorefile",
-        metavar="FILENAME",
-        dest="match_tests",
-        action=FromFileFilterAction,
-        const=False,
-        help="similar to --matchfile but it receives patterns "
-        "from text file to ignore",
-    )
-    group.add_argument(
-        "-G",
-        "--failfast",
-        action="store_true",
-        help="fail as soon as a test fails (only with -v or -W)",
-    )
-    group.add_argument(
-        "-u",
-        "--use",
-        metavar="RES1,RES2,...",
-        action="append",
-        type=resources_list,
-        help="specify which special resource intensive tests " "to run." + more_details,
-    )
-    group.add_argument(
-        "-M",
-        "--memlimit",
-        metavar="LIMIT",
-        help="run very large memory-consuming tests." + more_details,
-    )
-    group.add_argument(
-        "--testdir",
-        metavar="DIR",
-        type=relative_filename,
-        help="execute test files in the specified directory "
-        "(instead of the Python stdlib test suite)",
-    )
+    group = parser.add_argument_group('Selecting tests')
+    group.add_argument('-r', '--randomize', action='store_true',
+                       help='randomize test execution order.' + more_details)
+    group.add_argument('-f', '--fromfile', metavar='FILE',
+                       help='read names of tests to run from a file.' +
+                            more_details)
+    group.add_argument('-x', '--exclude', action='store_true',
+                       help='arguments are tests to *exclude*')
+    group.add_argument('-s', '--single', action='store_true',
+                       help='single step through a set of tests.' +
+                            more_details)
+    group.add_argument('-m', '--match', metavar='PAT',
+                       dest='match_tests', action=FilterAction, const=True,
+                       help='match test cases and methods with glob pattern PAT')
+    group.add_argument('-i', '--ignore', metavar='PAT',
+                       dest='match_tests', action=FilterAction, const=False,
+                       help='ignore test cases and methods with glob pattern PAT')
+    group.add_argument('--matchfile', metavar='FILENAME',
+                       dest='match_tests',
+                       action=FromFileFilterAction, const=True,
+                       help='similar to --match but get patterns from a '
+                            'text file, one pattern per line')
+    group.add_argument('--ignorefile', metavar='FILENAME',
+                       dest='match_tests',
+                       action=FromFileFilterAction, const=False,
+                       help='similar to --matchfile but it receives patterns '
+                            'from text file to ignore')
+    group.add_argument('-G', '--failfast', action='store_true',
+                       help='fail as soon as a test fails (only with -v or -W)')
+    group.add_argument('-u', '--use', metavar='RES1,RES2,...',
+                       action='append', type=resources_list,
+                       help='specify which special resource intensive tests '
+                            'to run.' + more_details)
+    group.add_argument('-M', '--memlimit', metavar='LIMIT',
+                       help='run very large memory-consuming tests.' +
+                            more_details)
+    group.add_argument('--testdir', metavar='DIR',
+                       type=relative_filename,
+                       help='execute test files in the specified directory '
+                            '(instead of the Python stdlib test suite)')
 
-    group = parser.add_argument_group("Special runs")
-    group.add_argument(
-        "-L",
-        "--runleaks",
-        action="store_true",
-        help="run the leaks(1) command just before exit." + more_details,
-    )
-    group.add_argument(
-        "-R",
-        "--huntrleaks",
-        metavar="RUNCOUNTS",
-        type=huntrleaks,
-        help="search for reference leaks (needs debug build, "
-        "very slow)." + more_details,
-    )
-    group.add_argument(
-        "-j",
-        "--multiprocess",
-        metavar="PROCESSES",
-        dest="use_mp",
-        type=int,
-        help="run PROCESSES processes at once",
-    )
-    group.add_argument(
-        "-T",
-        "--coverage",
-        action="store_true",
-        dest="trace",
-        help="turn on code coverage tracing using the trace " "module",
-    )
-    group.add_argument(
-        "-D",
-        "--coverdir",
-        metavar="DIR",
-        type=relative_filename,
-        help="directory where coverage files are put",
-    )
-    group.add_argument(
-        "-N",
-        "--nocoverdir",
-        action="store_const",
-        const=None,
-        dest="coverdir",
-        help="put coverage files alongside modules",
-    )
-    group.add_argument(
-        "-t",
-        "--threshold",
-        metavar="THRESHOLD",
-        type=int,
-        help="call gc.set_threshold(THRESHOLD)",
-    )
-    group.add_argument(
-        "-n",
-        "--nowindows",
-        action="store_true",
-        help="suppress error message boxes on Windows",
-    )
-    group.add_argument(
-        "-F",
-        "--forever",
-        action="store_true",
-        help="run the specified tests in a loop, until an "
-        "error happens; imply --failfast",
-    )
-    group.add_argument(
-        "--list-tests",
-        action="store_true",
-        help="only write the name of tests that will be run, " "don't execute them",
-    )
-    group.add_argument(
-        "--list-cases",
-        action="store_true",
-        help="only write the name of test cases that will be run"
-        " , don't execute them",
-    )
-    group.add_argument(
-        "-P",
-        "--pgo",
-        dest="pgo",
-        action="store_true",
-        help="enable Profile Guided Optimization (PGO) training",
-    )
-    group.add_argument(
-        "--pgo-extended",
-        action="store_true",
-        help="enable extended PGO training (slower training)",
-    )
-    group.add_argument(
-        "--fail-env-changed",
-        action="store_true",
-        help="if a test file alters the environment, mark " "the test as failed",
-    )
-    group.add_argument(
-        "--fail-rerun",
-        action="store_true",
-        help="if a test failed and then passed when re-run, "
-        "mark the tests as failed",
-    )
+    group = parser.add_argument_group('Special runs')
+    group.add_argument('-L', '--runleaks', action='store_true',
+                       help='run the leaks(1) command just before exit.' +
+                            more_details)
+    group.add_argument('-R', '--huntrleaks', metavar='RUNCOUNTS',
+                       type=huntrleaks,
+                       help='search for reference leaks (needs debug build, '
+                            'very slow).' + more_details)
+    group.add_argument('-j', '--multiprocess', metavar='PROCESSES',
+                       dest='use_mp', type=int,
+                       help='run PROCESSES processes at once')
+    group.add_argument('-T', '--coverage', action='store_true',
+                       dest='trace',
+                       help='turn on code coverage tracing using the trace '
+                            'module')
+    group.add_argument('-D', '--coverdir', metavar='DIR',
+                       type=relative_filename,
+                       help='directory where coverage files are put')
+    group.add_argument('-N', '--nocoverdir',
+                       action='store_const', const=None, dest='coverdir',
+                       help='put coverage files alongside modules')
+    group.add_argument('-t', '--threshold', metavar='THRESHOLD',
+                       type=int,
+                       help='call gc.set_threshold(THRESHOLD)')
+    group.add_argument('-n', '--nowindows', action='store_true',
+                       help='suppress error message boxes on Windows')
+    group.add_argument('-F', '--forever', action='store_true',
+                       help='run the specified tests in a loop, until an '
+                            'error happens; imply --failfast')
+    group.add_argument('--list-tests', action='store_true',
+                       help="only write the name of tests that will be run, "
+                            "don't execute them")
+    group.add_argument('--list-cases', action='store_true',
+                       help='only write the name of test cases that will be run'
+                            ' , don\'t execute them')
+    group.add_argument('-P', '--pgo', dest='pgo', action='store_true',
+                       help='enable Profile Guided Optimization (PGO) training')
+    group.add_argument('--pgo-extended', action='store_true',
+                       help='enable extended PGO training (slower training)')
+    group.add_argument('--fail-env-changed', action='store_true',
+                       help='if a test file alters the environment, mark '
+                            'the test as failed')
+    group.add_argument('--fail-rerun', action='store_true',
+                       help='if a test failed and then passed when re-run, '
+                            'mark the tests as failed')
 
-    group.add_argument(
-        "--junit-xml",
-        dest="xmlpath",
-        metavar="FILENAME",
-        help="writes JUnit-style XML results to the specified " "file",
-    )
-    group.add_argument(
-        "--tempdir",
-        metavar="PATH",
-        help="override the working directory for the test run",
-    )
-    group.add_argument(
-        "--cleanup", action="store_true", help="remove old test_python_* directories"
-    )
-    group.add_argument(
-        "--dont-add-python-opts",
-        dest="_add_python_opts",
-        action="store_false",
-        help="internal option, don't use it",
-    )
+    group.add_argument('--junit-xml', dest='xmlpath', metavar='FILENAME',
+                       help='writes JUnit-style XML results to the specified '
+                            'file')
+    group.add_argument('--tempdir', metavar='PATH',
+                       help='override the working directory for the test run')
+    group.add_argument('--cleanup', action='store_true',
+                       help='remove old test_python_* directories')
+    group.add_argument('--dont-add-python-opts', dest='_add_python_opts',
+                       action='store_false',
+                       help="internal option, don't use it")
     return parser
 
 
@@ -512,24 +360,25 @@ def relative_filename(string):
 
 
 def huntrleaks(string):
-    args = string.split(":")
+    args = string.split(':')
     if len(args) not in (2, 3):
-        raise argparse.ArgumentTypeError("needs 2 or 3 colon-separated arguments")
+        raise argparse.ArgumentTypeError(
+            'needs 2 or 3 colon-separated arguments')
     nwarmup = int(args[0]) if args[0] else 5
     ntracked = int(args[1]) if args[1] else 4
-    fname = args[2] if len(args) > 2 and args[2] else "reflog.txt"
+    fname = args[2] if len(args) > 2 and args[2] else 'reflog.txt'
     return nwarmup, ntracked, fname
 
 
 def resources_list(string):
-    u = [x.lower() for x in string.split(",")]
+    u = [x.lower() for x in string.split(',')]
     for r in u:
-        if r == "all" or r == "none":
+        if r == 'all' or r == 'none':
             continue
-        if r[0] == "-":
+        if r[0] == '-':
             r = r[1:]
         if r not in RESOURCE_NAMES:
-            raise argparse.ArgumentTypeError("invalid resource: " + r)
+            raise argparse.ArgumentTypeError('invalid resource: ' + r)
     return u
 
 
@@ -538,9 +387,8 @@ def _parse_args(args, **kwargs):
     ns = Namespace()
     for k, v in kwargs.items():
         if not hasattr(ns, k):
-            raise TypeError(
-                "%r is an invalid keyword argument " "for this function" % k
-            )
+            raise TypeError('%r is an invalid keyword argument '
+                            'for this function' % k)
         setattr(ns, k, v)
     if ns.use_resources is None:
         ns.use_resources = []
@@ -550,7 +398,7 @@ def _parse_args(args, **kwargs):
     # optional arguments. Use parse_known_args() as workaround.
     ns.args = parser.parse_known_args(args=args, namespace=ns)[1]
     for arg in ns.args:
-        if arg.startswith("-"):
+        if arg.startswith('-'):
             parser.error("unrecognized arguments: %s" % arg)
 
     if ns.timeout is not None:
@@ -588,14 +436,14 @@ def _parse_args(args, **kwargs):
         # Similar to: -u "all" --timeout=1200
         if ns.use is None:
             ns.use = []
-        ns.use.insert(0, ["all"])
+        ns.use.insert(0, ['all'])
         if ns.timeout is None:
             ns.timeout = 1200  # 20 minutes
     elif ns.fast_ci:
         # Similar to: -u "all,-cpu" --timeout=600
         if ns.use is None:
             ns.use = []
-        ns.use.insert(0, ["all", "-cpu"])
+        ns.use.insert(0, ['all', '-cpu'])
         if ns.timeout is None:
             ns.timeout = 600  # 10 minutes
 
@@ -616,11 +464,8 @@ def _parse_args(args, **kwargs):
         ns.pgo = True  # pgo_extended implies pgo
 
     if ns.nowindows:
-        print(
-            "Warning: the --nowindows (-n) option is deprecated. "
-            "Use -vv to display assertions in stderr.",
-            file=sys.stderr,
-        )
+        print("Warning: the --nowindows (-n) option is deprecated. "
+              "Use -vv to display assertions in stderr.", file=sys.stderr)
 
     if ns.quiet:
         ns.verbose = 0
@@ -630,14 +475,14 @@ def _parse_args(args, **kwargs):
     if ns.use:
         for a in ns.use:
             for r in a:
-                if r == "all":
+                if r == 'all':
                     ns.use_resources[:] = ALL_RESOURCES
                     continue
-                if r == "none":
+                if r == 'none':
                     del ns.use_resources[:]
                     continue
                 remove = False
-                if r[0] == "-":
+                if r[0] == '-':
                     remove = True
                     r = r[1:]
                 if remove:
@@ -657,11 +502,9 @@ def _parse_args(args, **kwargs):
         # run_single_test() replaces sys.stdout with io.StringIO if verbose3
         # is true. In this case, huntrleaks sees an write into StringIO as
         # a memory leak, whereas it is not (gh-71290).
-        print(
-            "WARNING: Disable --verbose3 because it's incompatible with "
-            "--huntrleaks without -jN option",
-            file=sys.stderr,
-        )
+        print("WARNING: Disable --verbose3 because it's incompatible with "
+              "--huntrleaks without -jN option",
+              file=sys.stderr)
     if ns.forever:
         # --forever implies --failfast
         ns.failfast = True
@@ -669,11 +512,9 @@ def _parse_args(args, **kwargs):
     if ns.huntrleaks:
         warmup, repetitions, _ = ns.huntrleaks
         if warmup < 1 or repetitions < 1:
-            msg = (
-                "Invalid values for the --huntrleaks/-R parameters. The "
-                "number of warmups and repetitions must be at least 1 "
-                "each (1:1)."
-            )
+            msg = ("Invalid values for the --huntrleaks/-R parameters. The "
+                   "number of warmups and repetitions must be at least 1 "
+                   "each (1:1).")
             print(msg, file=sys.stderr, flush=True)
             sys.exit(2)
 

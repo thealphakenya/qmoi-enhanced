@@ -26,28 +26,28 @@ from . import _parser, REPO_ROOT
 
 
 _DATA_DIR = os.path.dirname(__file__)
-KNOWN_FILE = os.path.join(_DATA_DIR, "known.tsv")
-IGNORED_FILE = os.path.join(_DATA_DIR, "ignored.tsv")
-NEED_FIX_FILE = os.path.join(_DATA_DIR, "globals-to-fix.tsv")
+KNOWN_FILE = os.path.join(_DATA_DIR, 'known.tsv')
+IGNORED_FILE = os.path.join(_DATA_DIR, 'ignored.tsv')
+NEED_FIX_FILE = os.path.join(_DATA_DIR, 'globals-to-fix.tsv')
 KNOWN_IN_DOT_C = {
-    "struct _odictobject": False,
-    "PyTupleObject": False,
-    "struct _typeobject": False,
-    "struct _arena": True,  # ???
-    "struct _frame": False,
-    "struct _ts": True,  # ???
-    "struct PyCodeObject": False,
-    "struct _is": True,  # ???
-    "PyWideStringList": True,  # ???
+    'struct _odictobject': False,
+    'PyTupleObject': False,
+    'struct _typeobject': False,
+    'struct _arena': True,  # ???
+    'struct _frame': False,
+    'struct _ts': True,  # ???
+    'struct PyCodeObject': False,
+    'struct _is': True,  # ???
+    'PyWideStringList': True,  # ???
     # recursive
-    "struct _dictkeysobject": False,
+    'struct _dictkeysobject': False,
 }
 # These are loaded from the respective .tsv files upon first use.
 _KNOWN = {
     # {(file, ID) | ID => info | bool}
     #'PyWideStringList': True,
 }
-# _KNOWN = {(Struct(None, typeid.partition(' ')[-1], None)
+#_KNOWN = {(Struct(None, typeid.partition(' ')[-1], None)
 #           if typeid.startswith('struct ')
 #           else TypeDef(None, typeid, None)
 #           ): ([], {'unsupported': None if supported else True})
@@ -59,41 +59,41 @@ _IGNORED = {
 # XXX We should be handling these through known.tsv.
 _OTHER_SUPPORTED_TYPES = {
     # Holds tuple of strings, which we statically initialize:
-    "_PyArg_Parser",
+    '_PyArg_Parser',
     # Uses of these should be const, but we don't worry about it.
-    "PyModuleDef",
-    "PyModuleDef_Slot[]",
-    "PyType_Spec",
-    "PyType_Slot[]",
-    "PyMethodDef",
-    "PyMethodDef[]",
-    "PyMemberDef[]",
-    "PyGetSetDef[]",
-    "PyNumberMethods",
-    "PySequenceMethods",
-    "PyMappingMethods",
-    "PyAsyncMethods",
-    "PyBufferProcs",
-    "PyStructSequence_Field[]",
-    "PyStructSequence_Desc",
+    'PyModuleDef',
+    'PyModuleDef_Slot[]',
+    'PyType_Spec',
+    'PyType_Slot[]',
+    'PyMethodDef',
+    'PyMethodDef[]',
+    'PyMemberDef[]',
+    'PyGetSetDef[]',
+    'PyNumberMethods',
+    'PySequenceMethods',
+    'PyMappingMethods',
+    'PyAsyncMethods',
+    'PyBufferProcs',
+    'PyStructSequence_Field[]',
+    'PyStructSequence_Desc',
 }
 
 # XXX We should normalize all cases to a single name,
 # e.g. "kwlist" (currently the most common).
 _KWLIST_VARIANTS = [
-    ("*", "kwlist"),
-    ("*", "keywords"),
-    ("*", "kwargs"),
-    ("Modules/_csv.c", "dialect_kws"),
-    ("Modules/_datetimemodule.c", "date_kws"),
-    ("Modules/_datetimemodule.c", "datetime_kws"),
-    ("Modules/_datetimemodule.c", "time_kws"),
-    ("Modules/_datetimemodule.c", "timezone_kws"),
-    ("Modules/_lzmamodule.c", "optnames"),
-    ("Modules/_lzmamodule.c", "arg_names"),
-    ("Modules/cjkcodecs/multibytecodec.c", "incnewkwarglist"),
-    ("Modules/cjkcodecs/multibytecodec.c", "streamkwarglist"),
-    ("Modules/socketmodule.c", "kwnames"),
+    ('*', 'kwlist'),
+    ('*', 'keywords'),
+    ('*', 'kwargs'),
+    ('Modules/_csv.c', 'dialect_kws'),
+    ('Modules/_datetimemodule.c', 'date_kws'),
+    ('Modules/_datetimemodule.c', 'datetime_kws'),
+    ('Modules/_datetimemodule.c', 'time_kws'),
+    ('Modules/_datetimemodule.c', 'timezone_kws'),
+    ('Modules/_lzmamodule.c', 'optnames'),
+    ('Modules/_lzmamodule.c', 'arg_names'),
+    ('Modules/cjkcodecs/multibytecodec.c', 'incnewkwarglist'),
+    ('Modules/cjkcodecs/multibytecodec.c', 'streamkwarglist'),
+    ('Modules/socketmodule.c', 'kwnames'),
 ]
 
 KINDS = frozenset((*KIND.TYPES, KIND.VARIABLE))
@@ -103,7 +103,7 @@ def read_known():
     if not _KNOWN:
         # Cache a copy the first time.
         extracols = None  # XXX
-        # extracols = ['unsupported']
+        #extracols = ['unsupported']
         known = _datafiles.read_known(KNOWN_FILE, extracols, REPO_ROOT)
         # For now we ignore known.values() (i.e. "extra").
         types, _ = _datafiles.analyze_known(
@@ -116,7 +116,7 @@ def read_known():
 
 def write_known():
     raise NotImplementedError
-    datafiles.write_known(decls, IGNORED_FILE, ["unsupported"], relroot=REPO_ROOT)
+    datafiles.write_known(decls, IGNORED_FILE, ['unsupported'], relroot=REPO_ROOT)
 
 
 def read_ignored():
@@ -131,7 +131,10 @@ def write_ignored():
     _datafiles.write_ignored(variables, IGNORED_FILE, relroot=REPO_ROOT)
 
 
-def analyze(filenames, *, skip_objects=False, **kwargs):
+def analyze(filenames, *,
+            skip_objects=False,
+            **kwargs
+            ):
     if skip_objects:
         # XXX Set up a filter.
         raise NotImplementedError
@@ -155,7 +158,7 @@ def iter_decls(filenames, **kwargs):
         # We ignore functions (and statements).
         kinds=KINDS,
         parse_files=_parser.parse_files,
-        **kwargs,
+        **kwargs
     )
     for decl in decls:
         if not decl.data:
@@ -175,15 +178,15 @@ def analyze_resolved(resolved, decl, types, knowntypes, extra=None):
             typedeps = [typedeps] * len(decl.members)
         else:
             typedeps = [typedeps]
-    # assert isinstance(typedeps, (list, TypeDeclaration)), typedeps
+    #assert isinstance(typedeps, (list, TypeDeclaration)), typedeps
 
     if extra is None:
         extra = {}
-    elif "unsupported" in extra:
+    elif 'unsupported' in extra:
         raise NotImplementedError((decl, extra))
 
     unsupported = _check_unsupported(decl, typedeps, types, knowntypes)
-    extra["unsupported"] = unsupported
+    extra['unsupported'] = unsupported
 
     return typedeps, extra
 
@@ -206,7 +209,7 @@ def _check_members(decl, typedeps, types, knowntypes):
     if isinstance(typedeps, TypeDeclaration):
         raise NotImplementedError((decl, typedeps))
 
-    # members = decl.members or ()  # A forward decl has no members.
+    #members = decl.members or ()  # A forward decl has no members.
     members = decl.members
     if not members:
         # A forward decl has no members, but that shouldn't surface here..
@@ -228,17 +231,17 @@ def _check_members(decl, typedeps, types, knowntypes):
 
 def _check_typedep(decl, typedecl, types, knowntypes):
     if not isinstance(typedecl, TypeDeclaration):
-        if hasattr(type(typedecl), "__len__"):
+        if hasattr(type(typedecl), '__len__'):
             if len(typedecl) == 1:
-                (typedecl,) = typedecl
+                typedecl, = typedecl
     if typedecl is None:
         # XXX Fail?
-        return "typespec (missing)"
+        return 'typespec (missing)'
     elif typedecl is _info.UNKNOWN:
         if _has_other_supported_type(decl):
             return None
         # XXX Is this right?
-        return "typespec (unknown)"
+        return 'typespec (unknown)'
     elif not isinstance(typedecl, TypeDeclaration):
         raise NotImplementedError((decl, typedecl))
 
@@ -256,7 +259,7 @@ def _check_typedep(decl, typedecl, types, knowntypes):
         if _has_other_supported_type(decl):
             return None
         checked = _check_vartype(decl, typedecl, types, knowntypes)
-        return "mutable" if checked is FIXED_TYPE else checked
+        return 'mutable' if checked is FIXED_TYPE else checked
     else:
         raise NotImplementedError(decl)
 
@@ -267,7 +270,7 @@ def _is_kwlist(decl):
     # XXX These should be made const.
     for relpath, name in _KWLIST_VARIANTS:
         if decl.name == name:
-            if relpath == "*":
+            if relpath == '*':
                 break
             assert os.path.isabs(decl.file.filename)
             relpath = os.path.normpath(relpath)
@@ -275,19 +278,19 @@ def _is_kwlist(decl):
                 break
     else:
         return False
-    vartype = "".join(str(decl.vartype).split())
-    return vartype == "char*[]"
+    vartype = ''.join(str(decl.vartype).split())
+    return vartype == 'char*[]'
 
 
 def _has_other_supported_type(decl):
-    if hasattr(decl, "file") and decl.file.filename.endswith(".c.h"):
-        assert "clinic" in decl.file.filename, (decl,)
-        if decl.name == "_kwtuple":
+    if hasattr(decl, 'file') and decl.file.filename.endswith('.c.h'):
+        assert 'clinic' in decl.file.filename, (decl,)
+        if decl.name == '_kwtuple':
             return True
     vartype = str(decl.vartype).split()
-    if vartype[0] == "struct":
+    if vartype[0] == 'struct':
         vartype = vartype[1:]
-    vartype = "".join(vartype)
+    vartype = ''.join(vartype)
     return vartype in _OTHER_SUPPORTED_TYPES
 
 
@@ -300,7 +303,7 @@ def _check_vartype(decl, typedecl, types, knowntypes):
         return None
     if is_fixed_type(decl.vartype):
         return FIXED_TYPE
-    return "mutable"
+    return 'mutable'
 
 
 def _check_typespec(decl, typedecl, types, knowntypes):
@@ -315,10 +318,10 @@ def _check_typespec(decl, typedecl, types, knowntypes):
             if extra is None:
                 # XXX Under what circumstances does this happen?
                 extra = {}
-            unsupported = extra.get("unsupported")
+            unsupported = extra.get('unsupported')
             if unsupported is FIXED_TYPE:
                 unsupported = None
-            return "typespec" if unsupported else None
+            return 'typespec' if unsupported else None
     # Fall back to default known types.
     if is_pots(typespec):
         return None
@@ -326,7 +329,7 @@ def _check_typespec(decl, typedecl, types, knowntypes):
         return None
     elif is_funcptr(decl.vartype):
         return None
-    return "typespec"
+    return 'typespec'
 
 
 class Analyzed(_info.Analyzed):
@@ -339,15 +342,15 @@ class Analyzed(_info.Analyzed):
             return False
         return True
 
-    # @classonly
-    # def _parse_raw_result(cls, result, extra):
+    #@classonly
+    #def _parse_raw_result(cls, result, extra):
     #    typedecl, extra = super()._parse_raw_result(result, extra)
     #    if typedecl is None:
     #        return None, extra
     #    raise NotImplementedError
 
     def __init__(self, item, typedecl=None, *, unsupported=None, **extra):
-        if "unsupported" in extra:
+        if 'unsupported' in extra:
             raise NotImplementedError((item, typedecl, unsupported, extra))
         if not unsupported:
             unsupported = None
@@ -356,9 +359,9 @@ class Analyzed(_info.Analyzed):
         elif unsupported is not FIXED_TYPE:
             unsupported = tuple(unsupported)
         self.unsupported = unsupported
-        extra["unsupported"] = self.unsupported  # ...for __repr__(), etc.
+        extra['unsupported'] = self.unsupported  # ...for __repr__(), etc.
         if self.unsupported is None:
-            # self.supported = None
+            #self.supported = None
             self.supported = True
         elif self.unsupported is FIXED_TYPE:
             if item.kind is KIND.VARIABLE:
@@ -368,28 +371,28 @@ class Analyzed(_info.Analyzed):
             self.supported = not self.unsupported
         super().__init__(item, typedecl, **extra)
 
-    def render(self, fmt="line", *, itemonly=False):
-        if fmt == "raw":
+    def render(self, fmt='line', *, itemonly=False):
+        if fmt == 'raw':
             yield repr(self)
             return
         rendered = super().render(fmt, itemonly=itemonly)
         # XXX ???
-        # if itemonly:
+        #if itemonly:
         #    yield from rendered
         supported = self.supported
-        if fmt in ("line", "brief"):
-            (rendered,) = rendered
+        if fmt in ('line', 'brief'):
+            rendered, = rendered
             parts = [
-                "+" if supported else "-" if supported is False else "",
+                '+' if supported else '-' if supported is False else '',
                 rendered,
             ]
-            yield "\t".join(parts)
-        elif fmt == "summary":
+            yield '\t'.join(parts)
+        elif fmt == 'summary':
             raise NotImplementedError(fmt)
-        elif fmt == "full":
+        elif fmt == 'full':
             yield from rendered
             if supported:
-                yield f"\tsupported:\t{supported}"
+                yield f'\tsupported:\t{supported}'
         else:
             raise NotImplementedError(fmt)
 
@@ -416,9 +419,9 @@ def check_globals(analysis):
             continue
         reason = item.unsupported
         if not reason:
-            reason = "???"
+            reason = '???'
         elif not isinstance(reason, str):
             if len(reason) == 1:
-                (reason,) = reason
-        reason = f"({reason})"
+                reason, = reason
+        reason = f'({reason})'
         yield item, f'not supported {reason:20}\t{item.storage or ""} {item.vartype}'

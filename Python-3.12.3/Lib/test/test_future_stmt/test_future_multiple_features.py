@@ -17,5 +17,5 @@ class TestMultipleFeatures(unittest.TestCase):
         self.assertEqual(s.getvalue(), "foo\n")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

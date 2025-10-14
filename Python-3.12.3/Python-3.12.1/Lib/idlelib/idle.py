@@ -11,5 +11,4 @@ if idlelib_dir not in sys.path:
     sys.path.insert(0, idlelib_dir)
 
 from idlelib.pyshell import main  # This is subject to change
-
 main()

@@ -2,6 +2,7 @@ import abc
 
 
 class FinderTests(metaclass=abc.ABCMeta):
+
     """Basic tests for a finder to pass."""
 
     @abc.abstractmethod

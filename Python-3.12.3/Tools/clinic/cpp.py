@@ -7,15 +7,13 @@ from typing import NoReturn
 TokenAndCondition = tuple[str, str]
 TokenStack = list[TokenAndCondition]
 
-
 def negate(condition: str) -> str:
     """
     Returns a CPP conditional that is the opposite of the conditional passed in.
     """
-    if condition.startswith("!"):
+    if condition.startswith('!'):
         return condition[1:]
     return "!" + condition
-
 
 class Monitor:
     """
@@ -31,7 +29,7 @@ class Monitor:
     """
 
     is_a_simple_defined: Callable[[str], re.Match[str] | None]
-    is_a_simple_defined = re.compile(r"^defined\s*\(\s*[A-Za-z0-9_]+\s*\)$").match
+    is_a_simple_defined = re.compile(r'^defined\s*\(\s*[A-Za-z0-9_]+\s*\)$').match
 
     def __init__(self, filename: str | None = None, *, verbose: bool = False) -> None:
         self.stack: TokenStack = []
@@ -42,17 +40,12 @@ class Monitor:
         self.verbose = verbose
 
     def __repr__(self) -> str:
-        return "".join(
-            (
-                "<Monitor ",
-                str(id(self)),
-                " line=",
-                str(self.line_number),
-                " condition=",
-                repr(self.condition()),
-                ">",
-            )
-        )
+        return ''.join((
+            '<Monitor ',
+            str(id(self)),
+            " line=", str(self.line_number),
+            " condition=", repr(self.condition()),
+            ">"))
 
     def status(self) -> str:
         return str(self.line_number).rjust(4) + ": " + self.condition()
@@ -67,9 +60,9 @@ class Monitor:
         if self.filename:
             filename = " " + self.filename
         else:
-            filename = ""
+            filename = ''
         print("Error at" + filename, "line", self.line_number, ":")
-        print("   ", " ".join(str(x) for x in a))
+        print("   ", ' '.join(str(x) for x in a))
         sys.exit(-1)
 
     def close(self) -> None:
@@ -96,7 +89,7 @@ class Monitor:
         if not line:
             return
 
-        if line.endswith("\\"):
+        if line.endswith('\\'):
             self.continuation = line[:-1].rstrip() + " "
             return
 
@@ -113,26 +106,26 @@ class Monitor:
         #     ...
         #     */   /* also tricky! */
         if self.in_comment:
-            if "*/" in line:
+            if '*/' in line:
                 # snip out the comment and continue
                 #
                 # GCC allows
                 #    /* comment
                 #    */ #include <stdio.h>
                 # maybe other compilers too?
-                _, _, line = line.partition("*/")
+                _, _, line = line.partition('*/')
                 self.in_comment = False
 
         while True:
-            if "/*" in line:
+            if '/*' in line:
                 if self.in_comment:
                     self.fail("Nested block comment!")
 
-                before, _, remainder = line.partition("/*")
-                comment, comment_ends, after = remainder.partition("*/")
+                before, _, remainder = line.partition('/*')
+                comment, comment_ends, after = remainder.partition('*/')
                 if comment_ends:
                     # snip out the comment
-                    line = before.rstrip() + " " + after.lstrip()
+                    line = before.rstrip() + ' ' + after.lstrip()
                     continue
                 # comment continues to eol
                 self.in_comment = True
@@ -141,11 +134,11 @@ class Monitor:
 
         # we actually have some // comments
         # (but block comments take precedence)
-        before, line_comment, comment = line.partition("//")
+        before, line_comment, comment = line.partition('//')
         if line_comment:
             line = before.rstrip()
 
-        if not line.startswith("#"):
+        if not line.startswith('#'):
             return
 
         line = line[1:].lstrip()
@@ -153,39 +146,35 @@ class Monitor:
 
         fields = line.split()
         token = fields[0].lower()
-        condition = " ".join(fields[1:]).strip()
+        condition = ' '.join(fields[1:]).strip()
 
-        if token in {"if", "ifdef", "ifndef", "elif"}:
+        if token in {'if', 'ifdef', 'ifndef', 'elif'}:
             if not condition:
                 self.fail("Invalid format for #" + token + " line: no argument!")
-            if token in {"if", "elif"}:
+            if token in {'if', 'elif'}:
                 if not self.is_a_simple_defined(condition):
                     condition = "(" + condition + ")"
-                if token == "elif":
+                if token == 'elif':
                     previous_token, previous_condition = pop_stack()
                     self.stack.append((previous_token, negate(previous_condition)))
             else:
                 fields = condition.split()
                 if len(fields) != 1:
-                    self.fail(
-                        "Invalid format for #"
-                        + token
-                        + " line: should be exactly one argument!"
-                    )
+                    self.fail("Invalid format for #" + token + " line: should be exactly one argument!")
                 symbol = fields[0]
-                condition = "defined(" + symbol + ")"
-                if token == "ifndef":
-                    condition = "!" + condition
-                token = "if"
+                condition = 'defined(' + symbol + ')'
+                if token == 'ifndef':
+                    condition = '!' + condition
+                token = 'if'
 
             self.stack.append((token, condition))
 
-        elif token == "else":
+        elif token == 'else':
             previous_token, previous_condition = pop_stack()
             self.stack.append((previous_token, negate(previous_condition)))
 
-        elif token == "endif":
-            while pop_stack()[0] != "if":
+        elif token == 'endif':
+            while pop_stack()[0] != 'if':
                 pass
 
         else:
@@ -194,12 +183,11 @@ class Monitor:
         if self.verbose:
             print(self.status())
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     for filename in sys.argv[1:]:
         with open(filename) as f:
             cpp = Monitor(filename, verbose=True)
             print()
             print(filename)
-            for line_number, line in enumerate(f.read().split("\n"), 1):
+            for line_number, line in enumerate(f.read().split('\n'), 1):
                 cpp.writeline(line)

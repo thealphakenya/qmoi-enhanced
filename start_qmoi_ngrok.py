@@ -24,9 +24,7 @@ except Exception as e:
     exit(1)
 
 # ✅ Auto-copy fallback EXE if available and not already in downloads/
-fallback_source = os.path.join(
-    "Qmoi_downloaded_apps", "windows", "latest", "qmoi_ai.exe"
-)
+fallback_source = os.path.join("Qmoi_downloaded_apps", "windows", "latest", "qmoi_ai.exe")
 target_path = os.path.join("downloads", "qmoi ai.exe")
 
 if os.path.exists(fallback_source) and not os.path.exists(target_path):

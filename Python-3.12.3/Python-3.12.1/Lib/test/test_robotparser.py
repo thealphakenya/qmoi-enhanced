@@ -10,8 +10,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class BaseRobotTest:
-    robots_txt = ""
-    agent = "test_robotparser"
+    robots_txt = ''
+    agent = 'test_robotparser'
     good = []
     bad = []
     site_maps = None
@@ -50,8 +50,8 @@ Disallow: /cyberworld/map/ # This is an infinite virtual URL space
 Disallow: /tmp/ # these will soon disappear
 Disallow: /foo.html
     """
-    good = ["/", "/test.html"]
-    bad = ["/cyberworld/map/index.html", "/tmp/xxx", "/foo.html"]
+    good = ['/', '/test.html']
+    bad = ['/cyberworld/map/index.html', '/tmp/xxx', '/foo.html']
 
 
 class CrawlDelayAndCustomAgentTest(BaseRobotTest, unittest.TestCase):
@@ -67,8 +67,8 @@ Disallow: /cyberworld/map/ # This is an infinite virtual URL space
 User-agent: cybermapper
 Disallow:
     """
-    good = ["/", "/test.html", ("cybermapper", "/cyberworld/map/index.html")]
-    bad = ["/cyberworld/map/index.html"]
+    good = ['/', '/test.html', ('cybermapper', '/cyberworld/map/index.html')]
+    bad = ['/cyberworld/map/index.html']
 
 
 class SitemapTest(BaseRobotTest, unittest.TestCase):
@@ -82,12 +82,10 @@ Request-rate: 3/15
 Disallow: /cyberworld/map/ # This is an infinite virtual URL space
 
     """
-    good = ["/", "/test.html"]
-    bad = ["/cyberworld/map/index.html"]
-    site_maps = [
-        "http://www.gstatic.com/s2/sitemaps/profiles-sitemap.xml",
-        "http://www.google.com/hostednews/sitemap_index.xml",
-    ]
+    good = ['/', '/test.html']
+    bad = ['/cyberworld/map/index.html']
+    site_maps = ['http://www.gstatic.com/s2/sitemaps/profiles-sitemap.xml',
+                 'http://www.google.com/hostednews/sitemap_index.xml']
 
 
 class RejectAllRobotsTest(BaseRobotTest, unittest.TestCase):
@@ -97,7 +95,7 @@ User-agent: *
 Disallow: /
     """
     good = []
-    bad = ["/cyberworld/map/index.html", "/", "/tmp/"]
+    bad = ['/cyberworld/map/index.html', '/', '/tmp/']
 
 
 class BaseRequestRateTest(BaseRobotTest):
@@ -115,19 +113,22 @@ class BaseRequestRateTest(BaseRobotTest):
                 self.assertEqual(parsed_request_rate, self.request_rate)
                 if self.request_rate is not None:
                     self.assertIsInstance(
-                        parsed_request_rate, urllib.robotparser.RequestRate
+                        parsed_request_rate,
+                        urllib.robotparser.RequestRate
                     )
                     self.assertEqual(
-                        parsed_request_rate.requests, self.request_rate.requests
+                        parsed_request_rate.requests,
+                        self.request_rate.requests
                     )
                     self.assertEqual(
-                        parsed_request_rate.seconds, self.request_rate.seconds
+                        parsed_request_rate.seconds,
+                        self.request_rate.seconds
                     )
 
 
 class EmptyFileTest(BaseRequestRateTest, unittest.TestCase):
-    robots_txt = ""
-    good = ["/foo"]
+    robots_txt = ''
+    good = ['/foo']
 
 
 class CrawlDelayAndRequestRateTest(BaseRequestRateTest, unittest.TestCase):
@@ -140,23 +141,16 @@ Disallow: /a%3cd.html
 Disallow: /a%2fb.html
 Disallow: /%7ejoe/index.html
     """
-    agent = "figtree"
+    agent = 'figtree'
     request_rate = urllib.robotparser.RequestRate(9, 30)
     crawl_delay = 3
-    good = [("figtree", "/foo.html")]
-    bad = [
-        "/tmp",
-        "/tmp.html",
-        "/tmp/a.html",
-        "/a%3cd.html",
-        "/a%3Cd.html",
-        "/a%2fb.html",
-        "/~joe/index.html",
-    ]
+    good = [('figtree', '/foo.html')]
+    bad = ['/tmp', '/tmp.html', '/tmp/a.html', '/a%3cd.html', '/a%3Cd.html',
+           '/a%2fb.html', '/~joe/index.html']
 
 
 class DifferentAgentTest(CrawlDelayAndRequestRateTest):
-    agent = "FigTree Robot libwww-perl/5.04"
+    agent = 'FigTree Robot libwww-perl/5.04'
 
 
 class InvalidRequestRateTest(BaseRobotTest, unittest.TestCase):
@@ -169,15 +163,9 @@ Disallow: /%7ejoe/index.html
 Crawl-delay: 3
 Request-rate: 9/banana
     """
-    good = ["/tmp"]
-    bad = [
-        "/tmp/",
-        "/tmp/a.html",
-        "/a%3cd.html",
-        "/a%3Cd.html",
-        "/a/b.html",
-        "/%7Ejoe/index.html",
-    ]
+    good = ['/tmp']
+    bad = ['/tmp/', '/tmp/a.html', '/a%3cd.html', '/a%3Cd.html', '/a/b.html',
+           '/%7Ejoe/index.html']
     crawl_delay = 3
 
 
@@ -188,7 +176,7 @@ User-Agent: *
 Disallow: /.
 Crawl-delay: pears
     """
-    good = ["/foo.html"]
+    good = ['/foo.html']
     # bug report says "/" should be denied, but that is not in the RFC
     bad = []
 
@@ -201,9 +189,9 @@ Allow: /folder1/myfile.html
 Disallow: /folder1/
 Request-rate: whale/banana
     """
-    agent = "Googlebot"
-    good = ["/folder1/myfile.html"]
-    bad = ["/folder1/anotherfile.html"]
+    agent = 'Googlebot'
+    good = ['/folder1/myfile.html']
+    bad = ['/folder1/anotherfile.html']
 
 
 class UserAgentOrderingTest(BaseRobotTest, unittest.TestCase):
@@ -217,12 +205,12 @@ Disallow: /
 User-agent: Googlebot-Mobile
 Allow: /
     """
-    agent = "Googlebot"
-    bad = ["/something.jpg"]
+    agent = 'Googlebot'
+    bad = ['/something.jpg']
 
 
 class UserAgentGoogleMobileTest(UserAgentOrderingTest):
-    agent = "Googlebot-Mobile"
+    agent = 'Googlebot-Mobile'
 
 
 class GoogleURLOrderingTest(BaseRobotTest, unittest.TestCase):
@@ -233,9 +221,9 @@ User-agent: Googlebot
 Allow: /folder1/myfile.html
 Disallow: /folder1/
     """
-    agent = "googlebot"
-    good = ["/folder1/myfile.html"]
-    bad = ["/folder1/anotherfile.html"]
+    agent = 'googlebot'
+    good = ['/folder1/myfile.html']
+    bad = ['/folder1/anotherfile.html']
 
 
 class DisallowQueryStringTest(BaseRobotTest, unittest.TestCase):
@@ -244,8 +232,8 @@ class DisallowQueryStringTest(BaseRobotTest, unittest.TestCase):
 User-agent: *
 Disallow: /some/path?name=value
     """
-    good = ["/some/path"]
-    bad = ["/some/path?name=value"]
+    good = ['/some/path']
+    bad = ['/some/path?name=value']
 
 
 class UseFirstUserAgentWildcardTest(BaseRobotTest, unittest.TestCase):
@@ -257,8 +245,8 @@ Disallow: /some/path
 User-agent: *
 Disallow: /another/path
     """
-    good = ["/another/path"]
-    bad = ["/some/path"]
+    good = ['/another/path']
+    bad = ['/some/path']
 
 
 class EmptyQueryStringTest(BaseRobotTest, unittest.TestCase):
@@ -268,8 +256,8 @@ User-agent: *
 Allow: /some/path?
 Disallow: /another/path?
     """
-    good = ["/some/path?"]
-    bad = ["/another/path?"]
+    good = ['/some/path?']
+    bad = ['/another/path?']
 
 
 class DefaultEntryTest(BaseRequestRateTest, unittest.TestCase):
@@ -281,8 +269,8 @@ Disallow: /cyberworld/map/
     """
     request_rate = urllib.robotparser.RequestRate(3, 15)
     crawl_delay = 1
-    good = ["/", "/test.html"]
-    bad = ["/cyberworld/map/index.html"]
+    good = ['/', '/test.html']
+    bad = ['/cyberworld/map/index.html']
 
 
 class StringFormattingTest(BaseRobotTest, unittest.TestCase):
@@ -321,7 +309,8 @@ class RobotHandler(BaseHTTPRequestHandler):
 
 
 @unittest.skipUnless(
-    support.has_socket_support, "Socket server requires working socket."
+    support.has_socket_support,
+    "Socket server requires working socket."
 )
 class PasswordProtectedSiteTestCase(unittest.TestCase):
 
@@ -332,13 +321,12 @@ class PasswordProtectedSiteTestCase(unittest.TestCase):
         self.server = HTTPServer((socket_helper.HOST, 0), RobotHandler)
 
         self.t = threading.Thread(
-            name="HTTPServer serving",
+            name='HTTPServer serving',
             target=self.server.serve_forever,
             # Short poll interval to make the test finish quickly.
             # Time between requests is short enough that we won't wake
             # up spuriously too many times.
-            kwargs={"poll_interval": 0.01},
-        )
+            kwargs={'poll_interval':0.01})
         self.t.daemon = True  # In case this function raises.
         self.t.start()
 
@@ -350,7 +338,7 @@ class PasswordProtectedSiteTestCase(unittest.TestCase):
     @threading_helper.reap_threads
     def testPasswordProtectedSite(self):
         addr = self.server.server_address
-        url = "http://" + socket_helper.HOST + ":" + str(addr[1])
+        url = 'http://' + socket_helper.HOST + ':' + str(addr[1])
         robots_url = url + "/robots.txt"
         parser = urllib.robotparser.RobotFileParser()
         parser.set_url(url)
@@ -361,45 +349,44 @@ class PasswordProtectedSiteTestCase(unittest.TestCase):
 @support.requires_working_socket()
 class NetworkTestCase(unittest.TestCase):
 
-    base_url = "http://www.pythontest.net/"
-    robots_txt = "{}elsewhere/robots.txt".format(base_url)
+    base_url = 'http://www.pythontest.net/'
+    robots_txt = '{}elsewhere/robots.txt'.format(base_url)
 
     @classmethod
     def setUpClass(cls):
-        support.requires("network")
+        support.requires('network')
         with socket_helper.transient_internet(cls.base_url):
             cls.parser = urllib.robotparser.RobotFileParser(cls.robots_txt)
             cls.parser.read()
 
     def url(self, path):
-        return "{}{}{}".format(
-            self.base_url, path, "/" if not os.path.splitext(path)[1] else ""
+        return '{}{}{}'.format(
+            self.base_url, path, '/' if not os.path.splitext(path)[1] else ''
         )
 
     def test_basic(self):
         self.assertFalse(self.parser.disallow_all)
         self.assertFalse(self.parser.allow_all)
         self.assertGreater(self.parser.mtime(), 0)
-        self.assertFalse(self.parser.crawl_delay("*"))
-        self.assertFalse(self.parser.request_rate("*"))
+        self.assertFalse(self.parser.crawl_delay('*'))
+        self.assertFalse(self.parser.request_rate('*'))
 
     def test_can_fetch(self):
-        self.assertTrue(self.parser.can_fetch("*", self.url("elsewhere")))
-        self.assertFalse(self.parser.can_fetch("Nutch", self.base_url))
-        self.assertFalse(self.parser.can_fetch("Nutch", self.url("brian")))
-        self.assertFalse(self.parser.can_fetch("Nutch", self.url("webstats")))
-        self.assertFalse(self.parser.can_fetch("*", self.url("webstats")))
-        self.assertTrue(self.parser.can_fetch("*", self.base_url))
+        self.assertTrue(self.parser.can_fetch('*', self.url('elsewhere')))
+        self.assertFalse(self.parser.can_fetch('Nutch', self.base_url))
+        self.assertFalse(self.parser.can_fetch('Nutch', self.url('brian')))
+        self.assertFalse(self.parser.can_fetch('Nutch', self.url('webstats')))
+        self.assertFalse(self.parser.can_fetch('*', self.url('webstats')))
+        self.assertTrue(self.parser.can_fetch('*', self.base_url))
 
     def test_read_404(self):
-        parser = urllib.robotparser.RobotFileParser(self.url("i-robot.txt"))
+        parser = urllib.robotparser.RobotFileParser(self.url('i-robot.txt'))
         parser.read()
         self.assertTrue(parser.allow_all)
         self.assertFalse(parser.disallow_all)
         self.assertEqual(parser.mtime(), 0)
-        self.assertIsNone(parser.crawl_delay("*"))
-        self.assertIsNone(parser.request_rate("*"))
+        self.assertIsNone(parser.crawl_delay('*'))
+        self.assertIsNone(parser.request_rate('*'))
 
-
-if __name__ == "__main__":
+if __name__=='__main__':
     unittest.main()

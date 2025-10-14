@@ -9,13 +9,14 @@ from email import charset as _charset
 from email.utils import _has_surrogates
 
 __all__ = [
-    "Policy",
-    "Compat32",
-    "compat32",
-]
+    'Policy',
+    'Compat32',
+    'compat32',
+    ]
 
 
 class _PolicyBase:
+
     """Policy Object basic framework.
 
     This class is useless unless subclassed.  A subclass should define
@@ -45,17 +46,16 @@ class _PolicyBase:
         """
         for name, value in kw.items():
             if hasattr(self, name):
-                super(_PolicyBase, self).__setattr__(name, value)
+                super(_PolicyBase,self).__setattr__(name, value)
             else:
                 raise TypeError(
                     "{!r} is an invalid keyword argument for {}".format(
-                        name, self.__class__.__name__
-                    )
-                )
+                        name, self.__class__.__name__))
 
     def __repr__(self):
-        args = ["{}={!r}".format(name, value) for name, value in self.__dict__.items()]
-        return "{}({})".format(self.__class__.__name__, ", ".join(args))
+        args = [ "{}={!r}".format(name, value)
+                 for name, value in self.__dict__.items() ]
+        return "{}({})".format(self.__class__.__name__, ', '.join(args))
 
     def clone(self, **kw):
         """Return a new instance with specified attributes changed.
@@ -71,9 +71,7 @@ class _PolicyBase:
             if not hasattr(self, attr):
                 raise TypeError(
                     "{!r} is an invalid keyword argument for {}".format(
-                        attr, self.__class__.__name__
-                    )
-                )
+                        attr, self.__class__.__name__))
             object.__setattr__(newpolicy, attr, value)
         return newpolicy
 
@@ -94,18 +92,17 @@ class _PolicyBase:
 
 
 def _append_doc(doc, added_doc):
-    doc = doc.rsplit("\n", 1)[0]
-    added_doc = added_doc.split("\n", 1)[1]
-    return doc + "\n" + added_doc
-
+    doc = doc.rsplit('\n', 1)[0]
+    added_doc = added_doc.split('\n', 1)[1]
+    return doc + '\n' + added_doc
 
 def _extend_docstrings(cls):
-    if cls.__doc__ and cls.__doc__.startswith("+"):
+    if cls.__doc__ and cls.__doc__.startswith('+'):
         cls.__doc__ = _append_doc(cls.__bases__[0].__doc__, cls.__doc__)
     for name, attr in cls.__dict__.items():
-        if attr.__doc__ and attr.__doc__.startswith("+"):
+        if attr.__doc__ and attr.__doc__.startswith('+'):
             for c in (c for base in cls.__bases__ for c in base.mro()):
-                doc = getattr(getattr(c, name), "__doc__")
+                doc = getattr(getattr(c, name), '__doc__')
                 if doc:
                     attr.__doc__ = _append_doc(doc, attr.__doc__)
                     break
@@ -113,6 +110,7 @@ def _extend_docstrings(cls):
 
 
 class Policy(_PolicyBase, metaclass=abc.ABCMeta):
+
     r"""Controls for how messages are interpreted and formatted.
 
     Most of the classes and many of the methods in the email package accept
@@ -162,8 +160,8 @@ class Policy(_PolicyBase, metaclass=abc.ABCMeta):
     """
 
     raise_on_defect = False
-    linesep = "\n"
-    cte_type = "8bit"
+    linesep = '\n'
+    cte_type = '8bit'
     max_line_length = 78
     mangle_from_ = False
     message_factory = None
@@ -272,6 +270,7 @@ class Policy(_PolicyBase, metaclass=abc.ABCMeta):
 
 @_extend_docstrings
 class Compat32(Policy):
+
     """+
     This particular policy is the backward compatibility Policy.  It
     replicates the behavior of the email package version 5.1.
@@ -286,7 +285,8 @@ class Compat32(Policy):
             # Assume it is already a header object
             return value
         if _has_surrogates(value):
-            return header.Header(value, charset=_charset.UNKNOWN8BIT, header_name=name)
+            return header.Header(value, charset=_charset.UNKNOWN8BIT,
+                                 header_name=name)
         else:
             return value
 
@@ -298,9 +298,9 @@ class Compat32(Policy):
         stripping any trailing carriage return or linefeed characters.
 
         """
-        name, value = sourcelines[0].split(":", 1)
-        value = value.lstrip(" \t") + "".join(sourcelines[1:])
-        return (name, value.rstrip("\r\n"))
+        name, value = sourcelines[0].split(':', 1)
+        value = value.lstrip(' \t') + ''.join(sourcelines[1:])
+        return (name, value.rstrip('\r\n'))
 
     def header_store_parse(self, name, value):
         """+
@@ -334,18 +334,18 @@ class Compat32(Policy):
         header is used, with its existing line breaks and/or binary data.
 
         """
-        folded = self._fold(name, value, sanitize=self.cte_type == "7bit")
-        return folded.encode("ascii", "surrogateescape")
+        folded = self._fold(name, value, sanitize=self.cte_type=='7bit')
+        return folded.encode('ascii', 'surrogateescape')
 
     def _fold(self, name, value, sanitize):
         parts = []
-        parts.append("%s: " % name)
+        parts.append('%s: ' % name)
         if isinstance(value, str):
             if _has_surrogates(value):
                 if sanitize:
-                    h = header.Header(
-                        value, charset=_charset.UNKNOWN8BIT, header_name=name
-                    )
+                    h = header.Header(value,
+                                      charset=_charset.UNKNOWN8BIT,
+                                      header_name=name)
                 else:
                     # If we have raw 8bit data in a byte string, we have no idea
                     # what the encoding is.  There is no safe way to split this
@@ -368,7 +368,7 @@ class Compat32(Policy):
                 maxlinelen = self.max_line_length
             parts.append(h.encode(linesep=self.linesep, maxlinelen=maxlinelen))
         parts.append(self.linesep)
-        return "".join(parts)
+        return ''.join(parts)
 
 
 compat32 = Compat32()

@@ -6,21 +6,20 @@ from watchdog.events import FileSystemEventHandler
 import subprocess
 from pathlib import Path
 
-
 class ErrorFixingTestHandler(FileSystemEventHandler):
     def __init__(self):
         self.last_run = 0
         self.cooldown = 2  # Minimum seconds between test runs
         self.project_root = Path(__file__).parent.parent
-
+        
         # Files and directories to watch
         self.watch_patterns = [
-            "scripts/error/**/*.py",
-            "scripts/services/auto_fix_service.ts",
-            "scripts/error_handler.py",
-            "components/QCityErrorManager.tsx",
-            "tests/unit/test_error_fixing.py",
-            "tests/integration/test_error_fixing_integration.py",
+            'scripts/error/**/*.py',
+            'scripts/services/auto_fix_service.ts',
+            'scripts/error_handler.py',
+            'components/QCityErrorManager.tsx',
+            'tests/unit/test_error_fixing.py',
+            'tests/integration/test_error_fixing_integration.py'
         ]
 
     def on_modified(self, event):
@@ -40,14 +39,14 @@ class ErrorFixingTestHandler(FileSystemEventHandler):
     def run_tests(self):
         """Run the error fixing test suite"""
         print("\n=== Change detected! Running Error Fixing Tests... ===")
-
+        
         try:
             # Run the test suite
             result = subprocess.run(
-                [sys.executable, "scripts/test_error_fixing_suite.py"],
+                [sys.executable, 'scripts/test_error_fixing_suite.py'],
                 cwd=self.project_root,
                 capture_output=True,
-                text=True,
+                text=True
             )
 
             # Print output
@@ -70,33 +69,29 @@ class ErrorFixingTestHandler(FileSystemEventHandler):
         """Send desktop notification"""
         try:
             # Windows notification
-            if os.name == "nt":
+            if os.name == 'nt':
                 from win10toast import ToastNotifier
-
                 toaster = ToastNotifier()
                 toaster.show_toast("Error Fixing Tests", message, duration=5)
-
+            
             # macOS notification
-            elif sys.platform == "darwin":
-                os.system(
-                    f"""
+            elif sys.platform == 'darwin':
+                os.system(f"""
                     osascript -e 'display notification "{message}" with title "Error Fixing Tests"'
-                """
-                )
-
+                """)
+            
             # Linux notification
             else:
                 os.system(f'notify-send "Error Fixing Tests" "{message}"')
-
+        
         except Exception as e:
             print(f"Could not send notification: {e}")
-
 
 def main():
     path = Path(__file__).parent.parent
     event_handler = ErrorFixingTestHandler()
     observer = Observer()
-
+    
     # Watch the entire project directory
     observer.schedule(event_handler, str(path), recursive=True)
     observer.start()
@@ -113,9 +108,8 @@ def main():
     except KeyboardInterrupt:
         observer.stop()
         print("\nTest watcher stopped.")
-
+    
     observer.join()
 
-
 if __name__ == "__main__":
-    main()
+    main() 

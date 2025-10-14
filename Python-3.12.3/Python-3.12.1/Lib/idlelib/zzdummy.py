@@ -18,7 +18,7 @@ def format_selection(format_line):
             line = lines[pos]
             lines[pos] = format_line(self, line)
         self.formatter.set_region(head, tail, chars, lines)
-        return "break"
+        return 'break'
 
     return apply
 
@@ -28,13 +28,10 @@ class ZzDummy:
 
     # Extend the format menu.
     menudefs = [
-        (
-            "format",
-            [
-                ("Z in", "<<z-in>>"),
-                ("Z out", "<<z-out>>"),
-            ],
-        )
+        ('format', [
+            ('Z in', '<<z-in>>'),
+            ('Z out', '<<z-out>>'),
+        ] )
     ]
 
     def __init__(self, editwin):
@@ -46,7 +43,7 @@ class ZzDummy:
     @classmethod
     def reload(cls):
         "Load class variables from config."
-        cls.ztext = idleConf.GetOption("extensions", "ZzDummy", "z-text")
+        cls.ztext = idleConf.GetOption('extensions', 'ZzDummy', 'z-text')
 
     @format_selection
     def z_in_event(self, line):
@@ -55,7 +52,7 @@ class ZzDummy:
         This is bound to the <<z-in>> virtual event when the extensions
         are loaded.
         """
-        return f"{self.ztext}{line}"
+        return f'{self.ztext}{line}'
 
     @format_selection
     def z_out_event(self, line):
@@ -73,5 +70,4 @@ ZzDummy.reload()
 
 if __name__ == "__main__":
     import unittest
-
-    unittest.main("idlelib.idle_test.test_zzdummy", verbosity=2, exit=False)
+    unittest.main('idlelib.idle_test.test_zzdummy', verbosity=2, exit=False)

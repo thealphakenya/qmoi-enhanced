@@ -14,14 +14,14 @@ class TestPickleCopyHeader(TestEmailBase):
 
     header_factory = HeaderRegistry()
 
-    unstructured = header_factory("subject", "this is a test")
+    unstructured = header_factory('subject', 'this is a test')
 
     header_params = {
-        "subject": ("subject", "this is a test"),
-        "from": ("from", "frodo@mordor.net"),
-        "to": ("to", "a: k@b.com, y@z.com;, j@f.com"),
-        "date": ("date", "Tue, 29 May 2012 09:24:26 +1000"),
-    }
+        'subject': ('subject', 'this is a test'),
+        'from':    ('from',    'frodo@mordor.net'),
+        'to':      ('to',      'a: k@b.com, y@z.com;, j@f.com'),
+        'date':    ('date',    'Tue, 29 May 2012 09:24:26 +1000'),
+        }
 
     def header_as_deepcopy(self, name, value):
         header = self.header_factory(name, value)
@@ -45,28 +45,21 @@ class TestPickleCopyMessage(TestEmailBase):
     msg_params = {}
 
     # Note: there will be no custom header objects in the parsed message.
-    msg_params["parsed"] = (
-        email.message_from_string(
-            textwrap.dedent(
-                """\
+    msg_params['parsed'] = (email.message_from_string(textwrap.dedent("""\
         Date: Tue, 29 May 2012 09:24:26 +1000
         From: frodo@mordor.net
         To: bilbo@underhill.org
         Subject: help
 
         I think I forgot the ring.
-        """
-            ),
-            policy=policy.default,
-        ),
-    )
+        """), policy=policy.default),)
 
-    msg_params["created"] = (email.message.Message(policy=policy.default),)
-    msg_params["created"][0]["Date"] = "Tue, 29 May 2012 09:24:26 +1000"
-    msg_params["created"][0]["From"] = "frodo@mordor.net"
-    msg_params["created"][0]["To"] = "bilbo@underhill.org"
-    msg_params["created"][0]["Subject"] = "help"
-    msg_params["created"][0].set_payload("I think I forgot the ring.")
+    msg_params['created'] = (email.message.Message(policy=policy.default),)
+    msg_params['created'][0]['Date'] = 'Tue, 29 May 2012 09:24:26 +1000'
+    msg_params['created'][0]['From'] = 'frodo@mordor.net'
+    msg_params['created'][0]['To'] = 'bilbo@underhill.org'
+    msg_params['created'][0]['Subject'] = 'help'
+    msg_params['created'][0].set_payload('I think I forgot the ring.')
 
     def msg_as_deepcopy(self, msg):
         msg2 = copy.deepcopy(msg)
@@ -79,5 +72,5 @@ class TestPickleCopyMessage(TestEmailBase):
             self.assertEqual(msg2.as_string(), msg.as_string())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

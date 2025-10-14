@@ -15,10 +15,7 @@ argparser.add_argument(
     "-n", "--number", type=int, default=100, help="Number of packages to download"
 )
 argparser.add_argument(
-    "-a",
-    "--all",
-    action="store_true",
-    help="Download all packages listed in the json file",
+    "-a", "--all", action="store_true", help="Download all packages listed in the json file"
 )
 
 

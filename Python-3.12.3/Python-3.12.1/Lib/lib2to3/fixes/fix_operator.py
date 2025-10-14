@@ -20,7 +20,6 @@ def invocation(s):
     def dec(f):
         f.invocation = s
         return f
-
     return dec
 
 
@@ -39,9 +38,7 @@ class FixOperator(fixer_base.BaseFix):
                 trailer< '.' %(methods)s > trailer< %(obj)s > >
               |
               power< %(methods)s trailer< %(obj)s > >
-              """ % dict(
-        methods=methods, obj=obj
-    )
+              """ % dict(methods=methods, obj=obj)
 
     def transform(self, node, results):
         method = self._check_method(node, results)

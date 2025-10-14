@@ -1,6 +1,5 @@
 import ast
 
-
 class ASTTestMixin:
     """Test mixing to have basic assertions for AST nodes."""
 
@@ -41,5 +40,4 @@ class ASTTestMixin:
                     raise self.failureException(msg) from None
             elif a != b:
                 self.fail(f"{a!r} != {b!r}")
-
         traverse_compare(ast1, ast2)

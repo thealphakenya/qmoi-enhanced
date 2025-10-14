@@ -2,7 +2,6 @@ import unittest
 from ctypes import *
 from test.test_ctypes import need_symbol
 
-
 class StringArrayTestCase(unittest.TestCase):
     def test(self):
         BUF = c_char * 4
@@ -47,15 +46,13 @@ class StringArrayTestCase(unittest.TestCase):
     def test_param_1(self):
         BUF = c_char * 4
         buf = BUF()
-
-    ##        print c_char_p.from_param(buf)
+##        print c_char_p.from_param(buf)
 
     def test_param_2(self):
         BUF = c_char * 4
         buf = BUF()
-
-    ##        print BUF.from_param(c_char_p("python"))
-    ##        print BUF.from_param(BUF(*"pyth"))
+##        print BUF.from_param(c_char_p("python"))
+##        print BUF.from_param(BUF(*"pyth"))
 
     def test_del_segfault(self):
         BUF = c_char * 4
@@ -64,7 +61,7 @@ class StringArrayTestCase(unittest.TestCase):
             del buf.raw
 
 
-@need_symbol("c_wchar")
+@need_symbol('c_wchar')
 class WStringArrayTestCase(unittest.TestCase):
     def test(self):
         BUF = c_wchar * 4
@@ -81,21 +78,23 @@ class WStringArrayTestCase(unittest.TestCase):
         buf[1] = "Z"
         self.assertEqual(buf.value, "xZCD")
 
-    @unittest.skipIf(sizeof(c_wchar) < 4, "sizeof(wchar_t) is smaller than 4 bytes")
+    @unittest.skipIf(sizeof(c_wchar) < 4,
+                     "sizeof(wchar_t) is smaller than 4 bytes")
     def test_nonbmp(self):
-        u = chr(0x10FFFF)
+        u = chr(0x10ffff)
         w = c_wchar(u)
         self.assertEqual(w.value, u)
 
 
-@need_symbol("c_wchar")
+@need_symbol('c_wchar')
 class WStringTestCase(unittest.TestCase):
     def test_wchar(self):
         c_wchar("x")
         repr(byref(c_wchar("x")))
         c_wchar("x")
 
-    @unittest.skip("test disabled")
+
+    @unittest.skip('test disabled')
     def test_basic_wstrings(self):
         cs = c_wstring("abcdef")
 
@@ -122,7 +121,7 @@ class WStringTestCase(unittest.TestCase):
         self.assertRaises(TypeError, c_wstring, "123")
         self.assertRaises(ValueError, c_wstring, 0)
 
-    @unittest.skip("test disabled")
+    @unittest.skip('test disabled')
     def test_toolong(self):
         cs = c_wstring("abcdef")
         # Much too long string:
@@ -135,17 +134,12 @@ class WStringTestCase(unittest.TestCase):
 def run_test(rep, msg, func, arg):
     items = range(rep)
     from time import perf_counter as clock
-
     start = clock()
     for i in items:
-        func(arg)
-        func(arg)
-        func(arg)
-        func(arg)
-        func(arg)
+        func(arg); func(arg); func(arg); func(arg); func(arg)
     stop = clock()
-    print("%20s: %.2f us" % (msg, ((stop - start) * 1e6 / 5 / rep)))
+    print("%20s: %.2f us" % (msg, ((stop-start)*1e6/5/rep)))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

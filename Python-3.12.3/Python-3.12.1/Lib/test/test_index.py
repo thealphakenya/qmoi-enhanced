@@ -1,19 +1,15 @@
 import unittest
 from test import support
 import operator
-
 maxsize = support.MAX_Py_ssize_t
-
 
 class newstyle:
     def __index__(self):
         return self.ind
 
-
 class TrapInt(int):
     def __index__(self):
         return int(self)
-
 
 class BaseTestCase(unittest.TestCase):
     def setUp(self):
@@ -39,8 +35,8 @@ class BaseTestCase(unittest.TestCase):
     def test_wrappers(self):
         self.o.ind = 4
         self.n.ind = 5
-        self.assertEqual((6).__index__(), 6)
-        self.assertEqual(-(7).__index__(), -7)
+        self.assertEqual(6 .__index__(), 6)
+        self.assertEqual(-7 .__index__(), -7)
         self.assertEqual(self.o.__index__(), 4)
         self.assertEqual(self.n.__index__(), 5)
         self.assertEqual(True.__index__(), 1)
@@ -48,12 +44,12 @@ class BaseTestCase(unittest.TestCase):
 
     def test_subclasses(self):
         r = list(range(10))
-        self.assertEqual(r[TrapInt(5) : TrapInt(10)], r[5:10])
-        self.assertEqual(slice(TrapInt()).indices(0), (0, 0, 1))
+        self.assertEqual(r[TrapInt(5):TrapInt(10)], r[5:10])
+        self.assertEqual(slice(TrapInt()).indices(0), (0,0,1))
 
     def test_error(self):
-        self.o.ind = "dumb"
-        self.n.ind = "bad"
+        self.o.ind = 'dumb'
+        self.n.ind = 'bad'
         self.assertRaises(TypeError, operator.index, self.o)
         self.assertRaises(TypeError, operator.index, self.n)
         self.assertRaises(TypeError, slice(self.o).indices, 0)
@@ -73,7 +69,7 @@ class BaseTestCase(unittest.TestCase):
         self.assertEqual(operator_index, 7)
         # Both results should be of exact type int.
         self.assertIs(type(direct_index), int)
-        # self.assertIs(type(operator_index), int)
+        #self.assertIs(type(operator_index), int)
 
     def test_index_returns_int_subclass(self):
         class BadInt:
@@ -114,23 +110,23 @@ class SeqTestCase:
         self.o2.ind = 3
         self.n.ind = 2
         self.n2.ind = 4
-        self.assertEqual(self.seq[self.o : self.o2], self.seq[1:3])
-        self.assertEqual(self.seq[self.n : self.n2], self.seq[2:4])
+        self.assertEqual(self.seq[self.o:self.o2], self.seq[1:3])
+        self.assertEqual(self.seq[self.n:self.n2], self.seq[2:4])
 
     def test_slice_bug7532(self):
         seqlen = len(self.seq)
         self.o.ind = int(seqlen * 1.5)
         self.n.ind = seqlen + 2
-        self.assertEqual(self.seq[self.o :], self.seq[0:0])
-        self.assertEqual(self.seq[: self.o], self.seq)
-        self.assertEqual(self.seq[self.n :], self.seq[0:0])
-        self.assertEqual(self.seq[: self.n], self.seq)
+        self.assertEqual(self.seq[self.o:], self.seq[0:0])
+        self.assertEqual(self.seq[:self.o], self.seq)
+        self.assertEqual(self.seq[self.n:], self.seq[0:0])
+        self.assertEqual(self.seq[:self.n], self.seq)
         self.o2.ind = -seqlen - 2
         self.n2.ind = -int(seqlen * 1.5)
-        self.assertEqual(self.seq[self.o2 :], self.seq)
-        self.assertEqual(self.seq[: self.o2], self.seq[0:0])
-        self.assertEqual(self.seq[self.n2 :], self.seq)
-        self.assertEqual(self.seq[: self.n2], self.seq[0:0])
+        self.assertEqual(self.seq[self.o2:], self.seq)
+        self.assertEqual(self.seq[:self.o2], self.seq[0:0])
+        self.assertEqual(self.seq[self.n2:], self.seq)
+        self.assertEqual(self.seq[:self.n2], self.seq[0:0])
 
     def test_repeat(self):
         self.o.ind = 3
@@ -154,8 +150,8 @@ class SeqTestCase:
         self.assertEqual(self.seq[TrapInt()], self.seq[0])
 
     def test_error(self):
-        self.o.ind = "dumb"
-        self.n.ind = "bad"
+        self.o.ind = 'dumb'
+        self.n.ind = 'bad'
         indexobj = lambda x, obj: obj.seq[x]
         self.assertRaises(TypeError, indexobj, self.o, self)
         self.assertRaises(TypeError, indexobj, self.n, self)
@@ -165,17 +161,17 @@ class SeqTestCase:
 
 
 class ListTestCase(SeqTestCase, unittest.TestCase):
-    seq = [0, 10, 20, 30, 40, 50]
+    seq = [0,10,20,30,40,50]
 
     def test_setdelitem(self):
         self.o.ind = -2
         self.n.ind = 2
-        lst = list("ab!cdefghi!j")
+        lst = list('ab!cdefghi!j')
         del lst[self.o]
         del lst[self.n]
-        lst[self.o] = "X"
-        lst[self.n] = "Y"
-        self.assertEqual(lst, list("abYdefghXj"))
+        lst[self.o] = 'X'
+        lst[self.n] = 'Y'
+        self.assertEqual(lst, list('abYdefghXj'))
 
         lst = [5, 6, 7, 8, 9, 10, 11]
         lst.__setitem__(self.n, "here")
@@ -213,8 +209,7 @@ class NewSeq:
         return len(self._list)
 
     def __mul__(self, n):
-        return self.__class__(self._list * n)
-
+        return self.__class__(self._list*n)
     __rmul__ = __mul__
 
     def __getitem__(self, index):
@@ -222,23 +217,20 @@ class NewSeq:
 
 
 class TupleTestCase(SeqTestCase, unittest.TestCase):
-    seq = (0, 10, 20, 30, 40, 50)
-
+    seq = (0,10,20,30,40,50)
 
 class ByteArrayTestCase(SeqTestCase, unittest.TestCase):
     seq = bytearray(b"this is a test")
 
-
 class BytesTestCase(SeqTestCase, unittest.TestCase):
     seq = b"this is a test"
-
 
 class StringTestCase(SeqTestCase, unittest.TestCase):
     seq = "this is a test"
 
-
 class NewSeqTestCase(SeqTestCase, unittest.TestCase):
-    seq = NewSeq((0, 10, 20, 30, 40, 50))
+    seq = NewSeq((0,10,20,30,40,50))
+
 
 
 class RangeTestCase(unittest.TestCase):
@@ -264,15 +256,15 @@ class OverflowTestCase(unittest.TestCase):
         class GetItem:
             def __len__(self):
                 assert False, "__len__ should not be invoked"
-
             def __getitem__(self, key):
                 return key
-
         x = GetItem()
         self.assertEqual(x[self.pos], self.pos)
         self.assertEqual(x[self.neg], self.neg)
-        self.assertEqual(x[self.neg : self.pos].indices(maxsize), (0, maxsize, 1))
-        self.assertEqual(x[self.neg : self.pos : 1].indices(maxsize), (0, maxsize, 1))
+        self.assertEqual(x[self.neg:self.pos].indices(maxsize),
+                         (0, maxsize, 1))
+        self.assertEqual(x[self.neg:self.pos:1].indices(maxsize),
+                         (0, maxsize, 1))
 
     def test_sequence_repeat(self):
         self.assertRaises(OverflowError, lambda: "a" * self.pos)

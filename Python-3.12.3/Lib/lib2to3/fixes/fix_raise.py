@@ -20,7 +20,6 @@ CAVEATS:
    any client code would have to be changed as well, we don't automate
    this.
 """
-
 # Author: Collin Winter
 
 # Local imports
@@ -28,7 +27,6 @@ from .. import pytree
 from ..pgen2 import token
 from .. import fixer_base
 from ..fixer_util import Name, Call, Attr, ArgList, is_tuple
-
 
 class FixRaise(fixer_base.BaseFix):
 
@@ -82,11 +80,11 @@ class FixRaise(fixer_base.BaseFix):
             # traceback. See issue #9661.
             if val.type != token.NAME or val.value != "None":
                 e = Call(exc, args)
-            with_tb = Attr(e, Name("with_traceback")) + [ArgList([tb])]
+            with_tb = Attr(e, Name('with_traceback')) + [ArgList([tb])]
             new = pytree.Node(syms.simple_stmt, [Name("raise")] + with_tb)
             new.prefix = node.prefix
             return new
         else:
-            return pytree.Node(
-                syms.raise_stmt, [Name("raise"), Call(exc, args)], prefix=node.prefix
-            )
+            return pytree.Node(syms.raise_stmt,
+                               [Name("raise"), Call(exc, args)],
+                               prefix=node.prefix)

@@ -6,8 +6,8 @@ import textwrap
 from . import NOT_SET, strutil, fsutil
 
 
-EMPTY = "-"
-UNKNOWN = "???"
+EMPTY = '-'
+UNKNOWN = '???'
 
 
 def parse_markers(markers, default=None):
@@ -25,8 +25,8 @@ def parse_markers(markers, default=None):
 def fix_row(row, **markers):
     if isinstance(row, str):
         raise NotImplementedError(row)
-    empty = parse_markers(markers.pop("empty", ("-",)))
-    unknown = parse_markers(markers.pop("unknown", ("???",)))
+    empty = parse_markers(markers.pop('empty', ('-',)))
+    unknown = parse_markers(markers.pop('unknown', ('???',)))
     row = (val if val else None for val in row)
     if not empty:
         if unknown:
@@ -34,10 +34,8 @@ def fix_row(row, **markers):
     elif not unknown:
         row = (EMPTY if val in empty else val for val in row)
     else:
-        row = (
-            EMPTY if val in empty else (UNKNOWN if val in unknown else val)
-            for val in row
-        )
+        row = (EMPTY if val in empty else (UNKNOWN if val in unknown else val)
+               for val in row)
     return tuple(row)
 
 
@@ -46,62 +44,52 @@ def _fix_read_default(row):
         yield value.strip()
 
 
-def _fix_write_default(row, empty=""):
+def _fix_write_default(row, empty=''):
     for value in row:
         yield empty if value is None else str(value)
 
 
 def _normalize_fix_read(fix):
     if fix is None:
-        fix = ""
+        fix = ''
     if callable(fix):
-
         def fix_row(row):
             values = fix(row)
             return _fix_read_default(values)
-
     elif isinstance(fix, str):
-
         def fix_row(row):
             values = _fix_read_default(row)
-            return (None if v == fix else v for v in values)
-
+            return (None if v == fix else v
+                    for v in values)
     else:
         raise NotImplementedError(fix)
     return fix_row
 
 
-def _normalize_fix_write(fix, empty=""):
+def _normalize_fix_write(fix, empty=''):
     if fix is None:
         fix = empty
     if callable(fix):
-
         def fix_row(row):
             values = fix(row)
             return _fix_write_default(values, empty)
-
     elif isinstance(fix, str):
-
         def fix_row(row):
             return _fix_write_default(row, fix)
-
     else:
         raise NotImplementedError(fix)
     return fix_row
 
 
-def read_table(
-    infile,
-    header,
-    *,
-    sep="\t",
-    fix=None,
-    _open=open,
-    _get_reader=csv.reader,
-):
+def read_table(infile, header, *,
+               sep='\t',
+               fix=None,
+               _open=open,
+               _get_reader=csv.reader,
+               ):
     """Yield each row of the given ???-separated (e.g. tab) file."""
     if isinstance(infile, str):
-        with _open(infile, newline="") as infile:
+        with _open(infile, newline='') as infile:
             yield from read_table(
                 infile,
                 header,
@@ -119,31 +107,27 @@ def read_table(
     try:
         actualheader = next(lines).strip()
     except StopIteration:
-        actualheader = ""
+        actualheader = ''
     if actualheader != header:
-        raise ValueError(f"bad header {actualheader!r}")
+        raise ValueError(f'bad header {actualheader!r}')
 
     fix_row = _normalize_fix_read(fix)
-    for row in _get_reader(lines, delimiter=sep or "\t"):
+    for row in _get_reader(lines, delimiter=sep or '\t'):
         yield tuple(fix_row(row))
 
 
-def write_table(
-    outfile,
-    header,
-    rows,
-    *,
-    sep="\t",
-    fix=None,
-    backup=True,
-    _open=open,
-    _get_writer=csv.writer,
-):
+def write_table(outfile, header, rows, *,
+                sep='\t',
+                fix=None,
+                backup=True,
+                _open=open,
+                _get_writer=csv.writer,
+                ):
     """Write each of the rows to the given ???-separated (e.g. tab) file."""
     if backup:
         fsutil.create_backup(outfile, backup)
     if isinstance(outfile, str):
-        with _open(outfile, "w", newline="") as outfile:
+        with _open(outfile, 'w', newline='') as outfile:
             return write_table(
                 outfile,
                 header,
@@ -156,23 +140,20 @@ def write_table(
             )
 
     if isinstance(header, str):
-        header = header.split(sep or "\t")
+        header = header.split(sep or '\t')
     fix_row = _normalize_fix_write(fix)
-    writer = _get_writer(outfile, delimiter=sep or "\t")
+    writer = _get_writer(outfile, delimiter=sep or '\t')
     writer.writerow(header)
     for row in rows:
-        writer.writerow(tuple(fix_row(row)))
+        writer.writerow(
+            tuple(fix_row(row))
+        )
 
 
-def parse_table(
-    entries,
-    sep,
-    header=None,
-    rawsep=None,
-    *,
-    default=NOT_SET,
-    strict=True,
-):
+def parse_table(entries, sep, header=None, rawsep=None, *,
+                default=NOT_SET,
+                strict=True,
+                ):
     header, sep = _normalize_table_file_props(header, sep)
     if not sep:
         raise ValueError('missing "sep"')
@@ -214,7 +195,7 @@ def _parse_row(line, sep, ncols, default):
         diff = ncols - len(row)
         if diff:
             if default is NOT_SET or diff < 0:
-                raise Exception(f"bad row (expected {ncols} columns, got {row!r})")
+                raise Exception(f'bad row (expected {ncols} columns, got {row!r})')
             row += (default,) * diff
     return row
 
@@ -228,7 +209,7 @@ def _normalize_table_file_props(header, sep):
             raise NotImplementedError(header)
         header = sep.join(header)
     elif not sep:
-        for sep in ("\t", ",", " "):
+        for sep in ('\t', ',', ' '):
             if sep in header:
                 break
         else:
@@ -244,7 +225,7 @@ WIDTH = 20
 
 def resolve_columns(specs):
     if isinstance(specs, str):
-        specs = specs.replace(",", " ").strip().split()
+        specs = specs.replace(',', ' ').strip().split()
     resolved = []
     for raw in specs:
         column = ColumnSpec.from_raw(raw)
@@ -252,16 +233,14 @@ def resolve_columns(specs):
     return resolved
 
 
-def build_table(specs, *, sep=" ", defaultwidth=None):
+def build_table(specs, *, sep=' ', defaultwidth=None):
     columns = resolve_columns(specs)
     return _build_table(columns, sep=sep, defaultwidth=defaultwidth)
 
 
-class ColumnSpec(namedtuple("ColumnSpec", "field label fmt")):
+class ColumnSpec(namedtuple('ColumnSpec', 'field label fmt')):
 
-    REGEX = re.compile(
-        textwrap.dedent(
-            r"""
+    REGEX = re.compile(textwrap.dedent(r'''
         ^
         (?:
             \[
@@ -291,15 +270,12 @@ class ColumnSpec(namedtuple("ColumnSpec", "field label fmt")):
             )
         )?
         $
-    """
-        ),
-        re.VERBOSE,
-    )
+    '''), re.VERBOSE)
 
     @classmethod
     def from_raw(cls, raw):
         if not raw:
-            raise ValueError("missing column spec")
+            raise ValueError('missing column spec')
         elif isinstance(raw, cls):
             return raw
 
@@ -308,7 +284,7 @@ class ColumnSpec(namedtuple("ColumnSpec", "field label fmt")):
         else:
             *values, _ = cls._normalize(raw)
         if values is None:
-            raise ValueError(f"unsupported column spec {raw!r}")
+            raise ValueError(f'unsupported column spec {raw!r}')
         return cls(*values)
 
     @classmethod
@@ -324,14 +300,10 @@ class ColumnSpec(namedtuple("ColumnSpec", "field label fmt")):
         m = cls.REGEX.match(specstr)
         if not m:
             return None
-        (
-            label,
-            field,
-            align,
-            width1,
-            width2,
-            fmt,
-        ) = m.groups()
+        (label, field,
+         align, width1,
+         width2, fmt,
+         ) = m.groups()
         if not label:
             label = field
         if fmt:
@@ -350,7 +322,7 @@ class ColumnSpec(namedtuple("ColumnSpec", "field label fmt")):
             assert not fmt, (fmt, specstr)
             if align:
                 width = int(width1) if width1 else len(label)
-                fmt = f"{align}{width}"
+                fmt = f'{align}{width}'
             else:
                 width = None
         return field, label, fmt, width
@@ -358,7 +330,7 @@ class ColumnSpec(namedtuple("ColumnSpec", "field label fmt")):
     @classmethod
     def _normalize(cls, spec):
         if len(spec) == 1:
-            (raw,) = spec
+            raw, = spec
             raise NotImplementedError
             return _resolve_column(raw)
 
@@ -368,14 +340,14 @@ class ColumnSpec(namedtuple("ColumnSpec", "field label fmt")):
                 if not fmt:
                     fmt = str(width)
                 elif _parse_fmt(fmt)[0] != width:
-                    raise ValueError(f"width mismatch in {spec}")
+                    raise ValueError(f'width mismatch in {spec}')
         elif len(raw) == 3:
             label, field, fmt = spec
             if not field:
                 label, field = None, label
             elif not isinstance(field, str) or not field.isidentifier():
                 # XXX This doesn't seem right...
-                fmt = f"{field}:{fmt}" if fmt else field
+                fmt = f'{field}:{fmt}' if fmt else field
                 label, field = None, label
         elif len(raw) == 2:
             label = None
@@ -387,11 +359,11 @@ class ColumnSpec(namedtuple("ColumnSpec", "field label fmt")):
         else:
             raise NotImplementedError
 
-        fmt = f":{fmt}" if fmt else ""
+        fmt = f':{fmt}' if fmt else ''
         if label:
-            return cls._parse(f"[{label}]{field}{fmt}")
+            return cls._parse(f'[{label}]{field}{fmt}')
         else:
-            return cls._parse(f"{field}{fmt}")
+            return cls._parse(f'{field}{fmt}')
 
     @property
     def width(self):
@@ -408,13 +380,13 @@ class ColumnSpec(namedtuple("ColumnSpec", "field label fmt")):
 
 
 def _parse_fmt(fmt):
-    if fmt.startswith(tuple("<^>")):
+    if fmt.startswith(tuple('<^>')):
         align = fmt[0]
         width = fmt[1:]
         if width.isdigit():
             return int(width), align
     elif fmt.isdigit():
-        return int(fmt), "<"
+        return int(fmt), '<'
     return None
 
 
@@ -432,7 +404,7 @@ def _resolve_width(width, fmt, label, default):
 
     if not default:
         return WIDTH
-    elif hasattr(default, "get"):
+    elif hasattr(default, 'get'):
         defaults = default
         default = defaults.get(None) or WIDTH
         return defaults.get(label) or default
@@ -440,18 +412,18 @@ def _resolve_width(width, fmt, label, default):
         return default or WIDTH
 
 
-def _build_table(columns, *, sep=" ", defaultwidth=None):
+def _build_table(columns, *, sep=' ', defaultwidth=None):
     header = []
     div = []
     rowfmt = []
     for spec in columns:
         width = spec.resolve_width(defaultwidth)
         colfmt = spec.fmt
-        colfmt = f":{spec.fmt}" if spec.fmt else f":{width}"
+        colfmt = f':{spec.fmt}' if spec.fmt else f':{width}'
 
-        header.append(f" {{:^{width}}} ".format(spec.label))
-        div.append("-" * (width + 2))
-        rowfmt.append(f" {{{spec.field}{colfmt}}} ")
+        header.append(f' {{:^{width}}} '.format(spec.label))
+        div.append('-' * (width + 2))
+        rowfmt.append(f' {{{spec.field}{colfmt}}} ')
     return (
         sep.join(header),
         sep.join(div),

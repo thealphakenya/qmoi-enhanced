@@ -1,11 +1,8 @@
 """Abstract Protocol base classes."""
 
 __all__ = (
-    "BaseProtocol",
-    "Protocol",
-    "DatagramProtocol",
-    "SubprocessProtocol",
-    "BufferedProtocol",
+    'BaseProtocol', 'Protocol', 'DatagramProtocol',
+    'SubprocessProtocol', 'BufferedProtocol',
 )
 
 
@@ -206,7 +203,7 @@ def _feed_data_to_buffered_proto(proto, data):
         buf = proto.get_buffer(data_len)
         buf_len = len(buf)
         if not buf_len:
-            raise RuntimeError("get_buffer() returned an empty buffer")
+            raise RuntimeError('get_buffer() returned an empty buffer')
 
         if buf_len >= data_len:
             buf[:data_len] = data

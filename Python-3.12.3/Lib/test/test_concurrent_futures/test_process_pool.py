@@ -11,15 +11,11 @@ from test.support import hashlib_helper
 
 from .executor import ExecutorTest, mul
 from .util import (
-    ProcessPoolForkMixin,
-    ProcessPoolForkserverMixin,
-    ProcessPoolSpawnMixin,
-    create_executor_tests,
-    setup_module,
-)
+    ProcessPoolForkMixin, ProcessPoolForkserverMixin, ProcessPoolSpawnMixin,
+    create_executor_tests, setup_module)
 
 
-class EventfulGCObj:
+class EventfulGCObj():
     def __init__(self, mgr):
         self.event = mgr.Event()
 
@@ -29,9 +25,10 @@ class EventfulGCObj:
 
 class ProcessPoolExecutorTest(ExecutorTest):
 
-    @unittest.skipUnless(sys.platform == "win32", "Windows-only process limit")
+    @unittest.skipUnless(sys.platform=='win32', 'Windows-only process limit')
     def test_max_workers_too_large(self):
-        with self.assertRaisesRegex(ValueError, "max_workers must be <= 61"):
+        with self.assertRaisesRegex(ValueError,
+                                    "max_workers must be <= 61"):
             futures.ProcessPoolExecutor(max_workers=62)
 
     def test_killed_child(self):
@@ -52,19 +49,19 @@ class ProcessPoolExecutorTest(ExecutorTest):
 
         ref = list(map(pow, range(40), range(40)))
         self.assertEqual(
-            list(self.executor.map(pow, range(40), range(40), chunksize=6)), ref
-        )
+            list(self.executor.map(pow, range(40), range(40), chunksize=6)),
+            ref)
         self.assertEqual(
-            list(self.executor.map(pow, range(40), range(40), chunksize=50)), ref
-        )
+            list(self.executor.map(pow, range(40), range(40), chunksize=50)),
+            ref)
         self.assertEqual(
-            list(self.executor.map(pow, range(40), range(40), chunksize=40)), ref
-        )
+            list(self.executor.map(pow, range(40), range(40), chunksize=40)),
+            ref)
         self.assertRaises(ValueError, bad_map)
 
     @classmethod
     def _test_traceback(cls):
-        raise RuntimeError(123)  # some comment
+        raise RuntimeError(123) # some comment
 
     def test_traceback(self):
         # We want ensure that the traceback from the child process is
@@ -78,16 +75,17 @@ class ProcessPoolExecutorTest(ExecutorTest):
         self.assertEqual(exc.args, (123,))
         cause = exc.__cause__
         self.assertIs(type(cause), futures.process._RemoteTraceback)
-        self.assertIn("raise RuntimeError(123) # some comment", cause.tb)
+        self.assertIn('raise RuntimeError(123) # some comment', cause.tb)
 
         with support.captured_stderr() as f1:
             try:
                 raise exc
             except RuntimeError:
                 sys.excepthook(*sys.exc_info())
-        self.assertIn("raise RuntimeError(123) # some comment", f1.getvalue())
+        self.assertIn('raise RuntimeError(123) # some comment',
+                      f1.getvalue())
 
-    @hashlib_helper.requires_hashdigest("md5")
+    @hashlib_helper.requires_hashdigest('md5')
     def test_ressources_gced_in_workers(self):
         # Ensure that argument for a job are correctly gc-ed after the job
         # is finished
@@ -149,7 +147,8 @@ class ProcessPoolExecutorTest(ExecutorTest):
             return
         # not using self.executor as we need to control construction.
         # arguably this could go in another class w/o that mixin.
-        executor = self.executor_type(1, mp_context=context, max_tasks_per_child=3)
+        executor = self.executor_type(
+                1, mp_context=context, max_tasks_per_child=3)
         f1 = executor.submit(os.getpid)
         original_pid = f1.result()
         # The worker pid remains the same as the worker could be reused
@@ -180,7 +179,8 @@ class ProcessPoolExecutorTest(ExecutorTest):
             raise unittest.SkipTest("Incompatible with the fork start method.")
         # not using self.executor as we need to control construction.
         # arguably this could go in another class w/o that mixin.
-        executor = self.executor_type(3, mp_context=context, max_tasks_per_child=1)
+        executor = self.executor_type(
+                3, mp_context=context, max_tasks_per_child=1)
         futures = []
         for i in range(6):
             futures.append(executor.submit(mul, i, i))
@@ -200,15 +200,16 @@ class ProcessPoolExecutorTest(ExecutorTest):
         # QueueFeederThread.
         orig_start_new_thread = threading._start_new_thread
         nthread = 0
-
         def mock_start_new_thread(func, *args):
             nonlocal nthread
             if nthread >= 1:
-                raise RuntimeError("can't create new thread at " "interpreter shutdown")
+                raise RuntimeError("can't create new thread at "
+                                   "interpreter shutdown")
             nthread += 1
             return orig_start_new_thread(func, *args)
 
-        with support.swap_attr(threading, "_start_new_thread", mock_start_new_thread):
+        with support.swap_attr(threading, '_start_new_thread',
+                               mock_start_new_thread):
             executor = self.executor_type(max_workers=2, mp_context=context)
             with executor:
                 with self.assertRaises(BrokenProcessPool):
@@ -216,15 +217,10 @@ class ProcessPoolExecutorTest(ExecutorTest):
             executor.shutdown()
 
 
-create_executor_tests(
-    globals(),
-    ProcessPoolExecutorTest,
-    executor_mixins=(
-        ProcessPoolForkMixin,
-        ProcessPoolForkserverMixin,
-        ProcessPoolSpawnMixin,
-    ),
-)
+create_executor_tests(globals(), ProcessPoolExecutorTest,
+                      executor_mixins=(ProcessPoolForkMixin,
+                                       ProcessPoolForkserverMixin,
+                                       ProcessPoolSpawnMixin))
 
 
 def setUpModule():

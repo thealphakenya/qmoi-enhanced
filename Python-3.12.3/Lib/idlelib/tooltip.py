@@ -4,7 +4,6 @@ This includes:
  * an abstract base-class for different kinds of tooltips
  * a simple text-only Tooltip class
 """
-
 from tkinter import *
 
 
@@ -35,13 +34,8 @@ class TooltipBase:
             # This command is only needed and available on Tk >= 8.4.0 for OSX.
             # Without it, call tips intrude on the typing process by grabbing
             # the focus.
-            tw.tk.call(
-                "::tk::unsupported::MacWindowStyle",
-                "style",
-                tw._w,
-                "help",
-                "noActivates",
-            )
+            tw.tk.call("::tk::unsupported::MacWindowStyle", "style", tw._w,
+                       "help", "noActivates")
         except TclError:
             pass
 
@@ -110,7 +104,7 @@ class OnHoverTooltipBase(TooltipBase):
         try:
             self.anchor_widget.unbind("<Enter>", self._id1)
             self.anchor_widget.unbind("<Leave>", self._id2)  # pragma: no cover
-            self.anchor_widget.unbind("<Button>", self._id3)  # pragma: no cover
+            self.anchor_widget.unbind("<Button>", self._id3) # pragma: no cover
         except TclError:
             pass
         super().__del__()
@@ -129,7 +123,8 @@ class OnHoverTooltipBase(TooltipBase):
     def schedule(self):
         """schedule the future display of the tooltip"""
         self.unschedule()
-        self._after_id = self.anchor_widget.after(self.hover_delay, self.showtip)
+        self._after_id = self.anchor_widget.after(self.hover_delay,
+                                                  self.showtip)
 
     def unschedule(self):
         """cancel the future display of the tooltip"""
@@ -149,7 +144,6 @@ class OnHoverTooltipBase(TooltipBase):
 
 class Hovertip(OnHoverTooltipBase):
     "A tooltip that pops up when a mouse hovers over an anchor widget."
-
     def __init__(self, anchor_widget, text, hover_delay=1000):
         """Create a text tooltip with a mouse hover delay.
 
@@ -164,21 +158,15 @@ class Hovertip(OnHoverTooltipBase):
         self.text = text
 
     def showcontents(self):
-        label = Label(
-            self.tipwindow,
-            text=self.text,
-            justify=LEFT,
-            background="#ffffe0",
-            relief=SOLID,
-            borderwidth=1,
-        )
+        label = Label(self.tipwindow, text=self.text, justify=LEFT,
+                      background="#ffffe0", relief=SOLID, borderwidth=1)
         label.pack()
 
 
 def _tooltip(parent):  # htest #
     top = Toplevel(parent)
     top.title("Test tooltip")
-    x, y = map(int, parent.geometry().split("+")[1:])
+    x, y = map(int, parent.geometry().split('+')[1:])
     top.geometry("+%d+%d" % (x, y + 150))
     label = Label(top, text="Place your mouse over buttons")
     label.pack()
@@ -190,11 +178,9 @@ def _tooltip(parent):  # htest #
     Hovertip(button2, "This is tooltip\ntext for button2.", hover_delay=None)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     from unittest import main
-
-    main("idlelib.idle_test.test_tooltip", verbosity=2, exit=False)
+    main('idlelib.idle_test.test_tooltip', verbosity=2, exit=False)
 
     from idlelib.idle_test.htest import run
-
     run(_tooltip)

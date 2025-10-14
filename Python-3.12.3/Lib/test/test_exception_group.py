@@ -3,7 +3,6 @@ import types
 import unittest
 from test.support import C_RECURSION_LIMIT
 
-
 class TestExceptionGroupTypeHierarchy(unittest.TestCase):
     def test_exception_group_types(self):
         self.assertTrue(issubclass(ExceptionGroup, Exception))
@@ -11,7 +10,7 @@ class TestExceptionGroupTypeHierarchy(unittest.TestCase):
         self.assertTrue(issubclass(BaseExceptionGroup, BaseException))
 
     def test_exception_is_not_generic_type(self):
-        with self.assertRaisesRegex(TypeError, "Exception"):
+        with self.assertRaisesRegex(TypeError, 'Exception'):
             Exception[OSError]
 
     def test_exception_group_is_generic_type(self):
@@ -22,51 +21,56 @@ class TestExceptionGroupTypeHierarchy(unittest.TestCase):
 
 class BadConstructorArgs(unittest.TestCase):
     def test_bad_EG_construction__too_many_args(self):
-        MSG = r"BaseExceptionGroup.__new__\(\) takes exactly 2 arguments"
+        MSG = r'BaseExceptionGroup.__new__\(\) takes exactly 2 arguments'
         with self.assertRaisesRegex(TypeError, MSG):
-            ExceptionGroup("no errors")
+            ExceptionGroup('no errors')
         with self.assertRaisesRegex(TypeError, MSG):
-            ExceptionGroup([ValueError("no msg")])
+            ExceptionGroup([ValueError('no msg')])
         with self.assertRaisesRegex(TypeError, MSG):
-            ExceptionGroup("eg", [ValueError("too")], [TypeError("many")])
+            ExceptionGroup('eg', [ValueError('too')], [TypeError('many')])
 
     def test_bad_EG_construction__bad_message(self):
-        MSG = "argument 1 must be str, not "
+        MSG = 'argument 1 must be str, not '
         with self.assertRaisesRegex(TypeError, MSG):
-            ExceptionGroup(ValueError(12), SyntaxError("bad syntax"))
+            ExceptionGroup(ValueError(12), SyntaxError('bad syntax'))
         with self.assertRaisesRegex(TypeError, MSG):
             ExceptionGroup(None, [ValueError(12)])
 
     def test_bad_EG_construction__bad_excs_sequence(self):
-        MSG = r"second argument \(exceptions\) must be a sequence"
+        MSG = r'second argument \(exceptions\) must be a sequence'
         with self.assertRaisesRegex(TypeError, MSG):
-            ExceptionGroup("errors not sequence", {ValueError(42)})
+            ExceptionGroup('errors not sequence', {ValueError(42)})
         with self.assertRaisesRegex(TypeError, MSG):
             ExceptionGroup("eg", None)
 
-        MSG = r"second argument \(exceptions\) must be a non-empty sequence"
+        MSG = r'second argument \(exceptions\) must be a non-empty sequence'
         with self.assertRaisesRegex(ValueError, MSG):
             ExceptionGroup("eg", [])
 
     def test_bad_EG_construction__nested_non_exceptions(self):
-        MSG = r"Item [0-9]+ of second argument \(exceptions\)" " is not an exception"
+        MSG = (r'Item [0-9]+ of second argument \(exceptions\)'
+              ' is not an exception')
         with self.assertRaisesRegex(ValueError, MSG):
-            ExceptionGroup("expect instance, not type", [OSError])
+            ExceptionGroup('expect instance, not type', [OSError]);
         with self.assertRaisesRegex(ValueError, MSG):
-            ExceptionGroup("bad error", ["not an exception"])
+            ExceptionGroup('bad error', ["not an exception"])
 
 
 class InstanceCreation(unittest.TestCase):
     def test_EG_wraps_Exceptions__creates_EG(self):
         excs = [ValueError(1), TypeError(2)]
-        self.assertIs(type(ExceptionGroup("eg", excs)), ExceptionGroup)
+        self.assertIs(
+            type(ExceptionGroup("eg", excs)),
+            ExceptionGroup)
 
     def test_BEG_wraps_Exceptions__creates_EG(self):
         excs = [ValueError(1), TypeError(2)]
-        self.assertIs(type(BaseExceptionGroup("beg", excs)), ExceptionGroup)
+        self.assertIs(
+            type(BaseExceptionGroup("beg", excs)),
+            ExceptionGroup)
 
     def test_EG_wraps_BaseException__raises_TypeError(self):
-        MSG = "Cannot nest BaseExceptions in an ExceptionGroup"
+        MSG= "Cannot nest BaseExceptions in an ExceptionGroup"
         with self.assertRaisesRegex(TypeError, MSG):
             eg = ExceptionGroup("eg", [ValueError(1), KeyboardInterrupt(2)])
 
@@ -78,7 +82,9 @@ class InstanceCreation(unittest.TestCase):
         class MyEG(ExceptionGroup):
             pass
 
-        self.assertIs(type(MyEG("eg", [ValueError(12), TypeError(42)])), MyEG)
+        self.assertIs(
+            type(MyEG("eg", [ValueError(12), TypeError(42)])),
+            MyEG)
 
     def test_EG_subclass_does_not_wrap_base_exceptions(self):
         class MyEG(ExceptionGroup):
@@ -110,80 +116,82 @@ class InstanceCreation(unittest.TestCase):
         # The restriction is specific to Exception, not "the other base class"
         MyEG("eg", [ValueError(12), Exception()])
 
+
     def test_BEG_subclass_wraps_anything(self):
         class MyBEG(BaseExceptionGroup):
             pass
 
-        self.assertIs(type(MyBEG("eg", [ValueError(12), TypeError(42)])), MyBEG)
-        self.assertIs(type(MyBEG("eg", [ValueError(12), KeyboardInterrupt(42)])), MyBEG)
+        self.assertIs(
+            type(MyBEG("eg", [ValueError(12), TypeError(42)])),
+            MyBEG)
+        self.assertIs(
+            type(MyBEG("eg", [ValueError(12), KeyboardInterrupt(42)])),
+            MyBEG)
 
 
 class StrAndReprTests(unittest.TestCase):
     def test_ExceptionGroup(self):
-        eg = BaseExceptionGroup("flat", [ValueError(1), TypeError(2)])
+        eg = BaseExceptionGroup(
+            'flat', [ValueError(1), TypeError(2)])
 
         self.assertEqual(str(eg), "flat (2 sub-exceptions)")
-        self.assertEqual(
-            repr(eg), "ExceptionGroup('flat', [ValueError(1), TypeError(2)])"
-        )
+        self.assertEqual(repr(eg),
+            "ExceptionGroup('flat', [ValueError(1), TypeError(2)])")
 
-        eg = BaseExceptionGroup("nested", [eg, ValueError(1), eg, TypeError(2)])
+        eg = BaseExceptionGroup(
+            'nested', [eg, ValueError(1), eg, TypeError(2)])
 
         self.assertEqual(str(eg), "nested (4 sub-exceptions)")
-        self.assertEqual(
-            repr(eg),
+        self.assertEqual(repr(eg),
             "ExceptionGroup('nested', "
-            "[ExceptionGroup('flat', "
-            "[ValueError(1), TypeError(2)]), "
-            "ValueError(1), "
-            "ExceptionGroup('flat', "
-            "[ValueError(1), TypeError(2)]), TypeError(2)])",
-        )
+                "[ExceptionGroup('flat', "
+                    "[ValueError(1), TypeError(2)]), "
+                 "ValueError(1), "
+                 "ExceptionGroup('flat', "
+                    "[ValueError(1), TypeError(2)]), TypeError(2)])")
 
     def test_BaseExceptionGroup(self):
-        eg = BaseExceptionGroup("flat", [ValueError(1), KeyboardInterrupt(2)])
+        eg = BaseExceptionGroup(
+            'flat', [ValueError(1), KeyboardInterrupt(2)])
 
         self.assertEqual(str(eg), "flat (2 sub-exceptions)")
-        self.assertEqual(
-            repr(eg),
-            "BaseExceptionGroup(" "'flat', " "[ValueError(1), KeyboardInterrupt(2)])",
-        )
+        self.assertEqual(repr(eg),
+            "BaseExceptionGroup("
+                "'flat', "
+                "[ValueError(1), KeyboardInterrupt(2)])")
 
-        eg = BaseExceptionGroup("nested", [eg, ValueError(1), eg])
+        eg = BaseExceptionGroup(
+            'nested', [eg, ValueError(1), eg])
 
         self.assertEqual(str(eg), "nested (3 sub-exceptions)")
-        self.assertEqual(
-            repr(eg),
+        self.assertEqual(repr(eg),
             "BaseExceptionGroup('nested', "
-            "[BaseExceptionGroup('flat', "
-            "[ValueError(1), KeyboardInterrupt(2)]), "
-            "ValueError(1), "
-            "BaseExceptionGroup('flat', "
-            "[ValueError(1), KeyboardInterrupt(2)])])",
-        )
+                "[BaseExceptionGroup('flat', "
+                    "[ValueError(1), KeyboardInterrupt(2)]), "
+                "ValueError(1), "
+                "BaseExceptionGroup('flat', "
+                    "[ValueError(1), KeyboardInterrupt(2)])])")
 
     def test_custom_exception(self):
         class MyEG(ExceptionGroup):
             pass
 
-        eg = MyEG("flat", [ValueError(1), TypeError(2)])
+        eg = MyEG(
+            'flat', [ValueError(1), TypeError(2)])
 
         self.assertEqual(str(eg), "flat (2 sub-exceptions)")
         self.assertEqual(repr(eg), "MyEG('flat', [ValueError(1), TypeError(2)])")
 
-        eg = MyEG("nested", [eg, ValueError(1), eg, TypeError(2)])
+        eg = MyEG(
+            'nested', [eg, ValueError(1), eg, TypeError(2)])
 
         self.assertEqual(str(eg), "nested (4 sub-exceptions)")
-        self.assertEqual(
-            repr(eg),
-            (
-                "MyEG('nested', "
-                "[MyEG('flat', [ValueError(1), TypeError(2)]), "
-                "ValueError(1), "
-                "MyEG('flat', [ValueError(1), TypeError(2)]), "
-                "TypeError(2)])"
-            ),
-        )
+        self.assertEqual(repr(eg), (
+                 "MyEG('nested', "
+                     "[MyEG('flat', [ValueError(1), TypeError(2)]), "
+                      "ValueError(1), "
+                      "MyEG('flat', [ValueError(1), TypeError(2)]), "
+                      "TypeError(2)])"))
 
 
 def create_simple_eg():
@@ -213,7 +221,7 @@ def create_simple_eg():
         excs.append(e)
 
     try:
-        raise ExceptionGroup("simple eg", excs)
+        raise ExceptionGroup('simple eg', excs)
     except ExceptionGroup as e:
         return e
 
@@ -223,8 +231,8 @@ class ExceptionGroupFields(unittest.TestCase):
         eg = create_simple_eg()
 
         # check msg
-        self.assertEqual(eg.message, "simple eg")
-        self.assertEqual(eg.args[0], "simple eg")
+        self.assertEqual(eg.message, 'simple eg')
+        self.assertEqual(eg.args[0], 'simple eg')
 
         # check cause and context
         self.assertIsInstance(eg.exceptions[0], ValueError)
@@ -239,7 +247,8 @@ class ExceptionGroupFields(unittest.TestCase):
 
         # check tracebacks
         line0 = create_simple_eg.__code__.co_firstlineno
-        tb_linenos = [line0 + 27, [line0 + 6, line0 + 14, line0 + 22]]
+        tb_linenos = [line0 + 27,
+                      [line0 + 6, line0 + 14, line0 + 22]]
         self.assertEqual(eg.__traceback__.tb_lineno, tb_linenos[0])
         self.assertIsNone(eg.__traceback__.tb_next)
         for i in range(3):
@@ -248,7 +257,7 @@ class ExceptionGroupFields(unittest.TestCase):
             self.assertEqual(tb.tb_lineno, tb_linenos[1][i])
 
     def test_fields_are_readonly(self):
-        eg = ExceptionGroup("eg", [TypeError(1), OSError(2)])
+        eg = ExceptionGroup('eg', [TypeError(1), OSError(2)])
 
         self.assertEqual(type(eg.exceptions), tuple)
 
@@ -258,19 +267,19 @@ class ExceptionGroupFields(unittest.TestCase):
 
         eg.exceptions
         with self.assertRaises(AttributeError):
-            eg.exceptions = [OSError("xyz")]
+            eg.exceptions = [OSError('xyz')]
 
 
 class ExceptionGroupTestBase(unittest.TestCase):
     def assertMatchesTemplate(self, exc, exc_type, template):
-        """Assert that the exception matches the template
+        """ Assert that the exception matches the template
 
-        A template describes the shape of exc. If exc is a
-        leaf exception (i.e., not an exception group) then
-        template is an exception instance that has the
-        expected type and args value of exc. If exc is an
-        exception group, then template is a list of the
-        templates of its nested exceptions.
+            A template describes the shape of exc. If exc is a
+            leaf exception (i.e., not an exception group) then
+            template is an exception instance that has the
+            expected type and args value of exc. If exc is an
+            exception group, then template is a list of the
+            templates of its nested exceptions.
         """
         if exc_type is not None:
             self.assertIs(type(exc), exc_type)
@@ -292,12 +301,10 @@ class ExceptionGroupSubgroupTests(ExceptionGroupTestBase):
         self.eg_template = [ValueError(1), TypeError(int), ValueError(2)]
 
     def test_basics_subgroup_split__bad_arg_type(self):
-        bad_args = [
-            "bad arg",
-            OSError("instance not type"),
-            [OSError, TypeError],
-            (OSError, 42),
-        ]
+        bad_args = ["bad arg",
+                    OSError('instance not type'),
+                    [OSError, TypeError],
+                    (OSError, 42)]
         for arg in bad_args:
             with self.assertRaises(TypeError):
                 self.eg.subgroup(arg)
@@ -320,8 +327,7 @@ class ExceptionGroupSubgroupTests(ExceptionGroupTestBase):
             # (match_type, result_template)
             (ValueError, [ValueError(1), ValueError(2)]),
             (TypeError, [TypeError(int)]),
-            ((ValueError, TypeError), self.eg_template),
-        ]
+            ((ValueError, TypeError), self.eg_template)]
 
         for match_type, template in testcases:
             with self.subTest(match=match_type):
@@ -341,8 +347,7 @@ class ExceptionGroupSubgroupTests(ExceptionGroupTestBase):
             # (match_type, result_template)
             (ValueError, [ValueError(1), ValueError(2)]),
             (TypeError, [TypeError(int)]),
-            ((ValueError, TypeError), self.eg_template),
-        ]
+            ((ValueError, TypeError), self.eg_template)]
 
         for match_type, template in testcases:
             subeg = eg.subgroup(lambda e: isinstance(e, match_type))
@@ -356,15 +361,18 @@ class ExceptionGroupSplitTests(ExceptionGroupTestBase):
         self.eg_template = [ValueError(1), TypeError(int), ValueError(2)]
 
     def test_basics_split_by_type__passthrough(self):
-        for E in [BaseException, Exception, BaseExceptionGroup, ExceptionGroup]:
+        for E in [BaseException, Exception,
+                  BaseExceptionGroup, ExceptionGroup]:
             match, rest = self.eg.split(E)
-            self.assertMatchesTemplate(match, ExceptionGroup, self.eg_template)
+            self.assertMatchesTemplate(
+                match, ExceptionGroup, self.eg_template)
             self.assertIsNone(rest)
 
     def test_basics_split_by_type__no_match(self):
         match, rest = self.eg.split(OSError)
         self.assertIsNone(match)
-        self.assertMatchesTemplate(rest, ExceptionGroup, self.eg_template)
+        self.assertMatchesTemplate(
+            rest, ExceptionGroup, self.eg_template)
 
     def test_basics_split_by_type__match(self):
         eg = self.eg
@@ -381,10 +389,12 @@ class ExceptionGroupSplitTests(ExceptionGroupTestBase):
         for match_type, match_template, rest_template in testcases:
             match, rest = eg.split(match_type)
             self.assertEqual(match.message, eg.message)
-            self.assertMatchesTemplate(match, ExceptionGroup, match_template)
+            self.assertMatchesTemplate(
+                match, ExceptionGroup, match_template)
             if rest_template is not None:
                 self.assertEqual(rest.message, eg.message)
-                self.assertMatchesTemplate(rest, ExceptionGroup, rest_template)
+                self.assertMatchesTemplate(
+                    rest, ExceptionGroup, rest_template)
             else:
                 self.assertIsNone(rest)
 
@@ -412,17 +422,19 @@ class ExceptionGroupSplitTests(ExceptionGroupTestBase):
         for match_type, match_template, rest_template in testcases:
             match, rest = eg.split(lambda e: isinstance(e, match_type))
             self.assertEqual(match.message, eg.message)
-            self.assertMatchesTemplate(match, ExceptionGroup, match_template)
+            self.assertMatchesTemplate(
+                match, ExceptionGroup, match_template)
             if rest_template is not None:
                 self.assertEqual(rest.message, eg.message)
-                self.assertMatchesTemplate(rest, ExceptionGroup, rest_template)
+                self.assertMatchesTemplate(
+                    rest, ExceptionGroup, rest_template)
 
 
 class DeepRecursionInSplitAndSubgroup(unittest.TestCase):
     def make_deep_eg(self):
         e = TypeError(1)
         for i in range(C_RECURSION_LIMIT + 1):
-            e = ExceptionGroup("eg", [e])
+            e = ExceptionGroup('eg', [e])
         return e
 
     def test_deep_split(self):
@@ -459,10 +471,13 @@ class LeafGeneratorTest(unittest.TestCase):
     def test_leaf_generator(self):
         eg = create_simple_eg()
 
-        self.assertSequenceEqual([e for e, _ in leaf_generator(eg)], eg.exceptions)
+        self.assertSequenceEqual(
+            [e for e, _ in leaf_generator(eg)],
+            eg.exceptions)
 
         for e, tbs in leaf_generator(eg):
-            self.assertSequenceEqual(tbs, [eg.__traceback__, e.__traceback__])
+            self.assertSequenceEqual(
+                tbs, [eg.__traceback__, e.__traceback__])
 
 
 def create_nested_eg():
@@ -477,7 +492,7 @@ def create_nested_eg():
 
     try:
         try:
-            raise MemoryError("out of memory")
+            raise MemoryError('out of memory')
         except MemoryError as e:
             raise ValueError(1) from e
     except ValueError as e:
@@ -493,8 +508,9 @@ class NestedExceptionGroupBasicsTest(ExceptionGroupTestBase):
     def test_nested_group_matches_template(self):
         eg = create_nested_eg()
         self.assertMatchesTemplate(
-            eg, ExceptionGroup, [[TypeError(bytes)], ValueError(1)]
-        )
+            eg,
+            ExceptionGroup,
+            [[TypeError(bytes)], ValueError(1)])
 
     def test_nested_group_chaining(self):
         eg = create_nested_eg()
@@ -506,7 +522,7 @@ class NestedExceptionGroupBasicsTest(ExceptionGroupTestBase):
         eg = create_nested_eg()
 
         line0 = create_nested_eg.__code__.co_firstlineno
-        for tb, expected in [
+        for (tb, expected) in [
             (eg.__traceback__, line0 + 19),
             (eg.exceptions[0].__traceback__, line0 + 6),
             (eg.exceptions[1].__traceback__, line0 + 14),
@@ -522,16 +538,19 @@ class NestedExceptionGroupBasicsTest(ExceptionGroupTestBase):
         self.assertEqual(len(list(leaf_generator(eg))), 2)
 
         line0 = create_nested_eg.__code__.co_firstlineno
-        expected_tbs = [[line0 + 19, line0 + 6, line0 + 4], [line0 + 19, line0 + 14]]
+        expected_tbs = [ [line0 + 19, line0 + 6, line0 + 4],
+                         [line0 + 19, line0 + 14]]
 
-        for i, (_, tbs) in enumerate(leaf_generator(eg)):
-            self.assertSequenceEqual([tb.tb_lineno for tb in tbs], expected_tbs[i])
+        for (i, (_, tbs)) in enumerate(leaf_generator(eg)):
+            self.assertSequenceEqual(
+                [tb.tb_lineno for tb in tbs],
+                expected_tbs[i])
 
 
 class ExceptionGroupSplitTestBase(ExceptionGroupTestBase):
 
     def split_exception_group(self, eg, types):
-        """Split an EG and do some sanity checks on the result"""
+        """ Split an EG and do some sanity checks on the result """
         self.assertIsInstance(eg, BaseExceptionGroup)
 
         match, rest = eg.split(types)
@@ -539,19 +558,19 @@ class ExceptionGroupSplitTestBase(ExceptionGroupTestBase):
 
         if match is not None:
             self.assertIsInstance(match, BaseExceptionGroup)
-            for e, _ in leaf_generator(match):
+            for e,_ in leaf_generator(match):
                 self.assertIsInstance(e, types)
 
             self.assertIsNotNone(sg)
             self.assertIsInstance(sg, BaseExceptionGroup)
-            for e, _ in leaf_generator(sg):
+            for e,_ in leaf_generator(sg):
                 self.assertIsInstance(e, types)
 
         if rest is not None:
             self.assertIsInstance(rest, BaseExceptionGroup)
 
         def leaves(exc):
-            return [] if exc is None else [e for e, _ in leaf_generator(exc)]
+            return [] if exc is None else [e for e,_ in leaf_generator(exc)]
 
         # match and subgroup have the same leaves
         self.assertSequenceEqual(leaves(match), leaves(sg))
@@ -559,10 +578,14 @@ class ExceptionGroupSplitTestBase(ExceptionGroupTestBase):
         match_leaves = leaves(match)
         rest_leaves = leaves(rest)
         # each leaf exception of eg is in exactly one of match and rest
-        self.assertEqual(len(leaves(eg)), len(leaves(match)) + len(leaves(rest)))
+        self.assertEqual(
+            len(leaves(eg)),
+            len(leaves(match)) + len(leaves(rest)))
 
         for e in leaves(eg):
-            self.assertNotEqual(match and e in match_leaves, rest and e in rest_leaves)
+            self.assertNotEqual(
+                match and e in match_leaves,
+                rest and e in rest_leaves)
 
         # message, cause and context, traceback and note equal to eg
         for part in [match, rest, sg]:
@@ -572,8 +595,8 @@ class ExceptionGroupSplitTestBase(ExceptionGroupTestBase):
                 self.assertIs(eg.__context__, part.__context__)
                 self.assertIs(eg.__traceback__, part.__traceback__)
                 self.assertEqual(
-                    getattr(eg, "__notes__", None), getattr(part, "__notes__", None)
-                )
+                    getattr(eg, '__notes__', None),
+                    getattr(part, '__notes__', None))
 
         def tbs_for_leaf(leaf, eg):
             for e, tbs in leaf_generator(eg):
@@ -587,8 +610,8 @@ class ExceptionGroupSplitTestBase(ExceptionGroupTestBase):
         for part in [match, rest, sg]:
             for e in leaves(part):
                 self.assertSequenceEqual(
-                    tb_linenos(tbs_for_leaf(e, eg)), tb_linenos(tbs_for_leaf(e, part))
-                )
+                    tb_linenos(tbs_for_leaf(e, eg)),
+                    tb_linenos(tbs_for_leaf(e, part)))
 
         return match, rest
 
@@ -608,30 +631,30 @@ class NestedExceptionGroupSplitTest(ExceptionGroupSplitTestBase):
         def nested_group():
             def level1(i):
                 excs = []
-                for f, arg in [(raiseVE, i), (raiseTE, int), (raiseVE, i + 1)]:
+                for f, arg in [(raiseVE, i), (raiseTE, int), (raiseVE, i+1)]:
                     try:
                         f(arg)
                     except Exception as e:
                         excs.append(e)
-                raise ExceptionGroup("msg1", excs)
+                raise ExceptionGroup('msg1', excs)
 
             def level2(i):
                 excs = []
-                for f, arg in [(level1, i), (level1, i + 1), (raiseVE, i + 2)]:
+                for f, arg in [(level1, i), (level1, i+1), (raiseVE, i+2)]:
                     try:
                         f(arg)
                     except Exception as e:
                         excs.append(e)
-                raise MyExceptionGroup("msg2", excs)
+                raise MyExceptionGroup('msg2', excs)
 
             def level3(i):
                 excs = []
-                for f, arg in [(level2, i + 1), (raiseVE, i + 2)]:
+                for f, arg in [(level2, i+1), (raiseVE, i+2)]:
                     try:
                         f(arg)
                     except Exception as e:
                         excs.append(e)
-                raise ExceptionGroup("msg3", excs)
+                raise ExceptionGroup('msg3', excs)
 
             level3(5)
 
@@ -647,8 +670,7 @@ class NestedExceptionGroupSplitTest(ExceptionGroupSplitTestBase):
                 [ValueError(7), TypeError(int), ValueError(8)],
                 ValueError(8),
             ],
-            ValueError(7),
-        ]
+            ValueError(7)]
 
         valueErrors_template = [
             [
@@ -656,8 +678,7 @@ class NestedExceptionGroupSplitTest(ExceptionGroupSplitTestBase):
                 [ValueError(7), ValueError(8)],
                 ValueError(8),
             ],
-            ValueError(7),
-        ]
+            ValueError(7)]
 
         typeErrors_template = [[[TypeError(int)], [TypeError(int)]]]
 
@@ -705,8 +726,7 @@ class NestedExceptionGroupSplitTest(ExceptionGroupSplitTestBase):
 
         try:
             raise BaseExceptionGroup(
-                "beg", [exc(ValueError(1)), exc(KeyboardInterrupt(2))]
-            )
+                "beg", [exc(ValueError(1)), exc(KeyboardInterrupt(2))])
         except BaseExceptionGroup as e:
             beg = e
 
@@ -714,25 +734,28 @@ class NestedExceptionGroupSplitTest(ExceptionGroupSplitTestBase):
         match, rest = self.split_exception_group(beg, TypeError)
         self.assertIsNone(match)
         self.assertMatchesTemplate(
-            rest, BaseExceptionGroup, [ValueError(1), KeyboardInterrupt(2)]
-        )
+            rest, BaseExceptionGroup, [ValueError(1), KeyboardInterrupt(2)])
 
         # Match Everything
-        match, rest = self.split_exception_group(beg, (ValueError, KeyboardInterrupt))
+        match, rest = self.split_exception_group(
+            beg, (ValueError, KeyboardInterrupt))
         self.assertMatchesTemplate(
-            match, BaseExceptionGroup, [ValueError(1), KeyboardInterrupt(2)]
-        )
+            match, BaseExceptionGroup, [ValueError(1), KeyboardInterrupt(2)])
         self.assertIsNone(rest)
 
         # Match ValueErrors
         match, rest = self.split_exception_group(beg, ValueError)
-        self.assertMatchesTemplate(match, ExceptionGroup, [ValueError(1)])
-        self.assertMatchesTemplate(rest, BaseExceptionGroup, [KeyboardInterrupt(2)])
+        self.assertMatchesTemplate(
+            match, ExceptionGroup, [ValueError(1)])
+        self.assertMatchesTemplate(
+            rest, BaseExceptionGroup, [KeyboardInterrupt(2)])
 
         # Match KeyboardInterrupts
         match, rest = self.split_exception_group(beg, KeyboardInterrupt)
-        self.assertMatchesTemplate(match, BaseExceptionGroup, [KeyboardInterrupt(2)])
-        self.assertMatchesTemplate(rest, ExceptionGroup, [ValueError(1)])
+        self.assertMatchesTemplate(
+            match, BaseExceptionGroup, [KeyboardInterrupt(2)])
+        self.assertMatchesTemplate(
+            rest, ExceptionGroup, [ValueError(1)])
 
     def test_split_copies_notes(self):
         # make sure each exception group after a split has its own __notes__ list
@@ -760,15 +783,15 @@ class NestedExceptionGroupSplitTest(ExceptionGroupSplitTestBase):
         eg = ExceptionGroup("eg", [ValueError(1), TypeError(2)])
         eg.__notes__ = 123
         match, rest = eg.split(TypeError)
-        self.assertFalse(hasattr(match, "__notes__"))
-        self.assertFalse(hasattr(rest, "__notes__"))
+        self.assertFalse(hasattr(match, '__notes__'))
+        self.assertFalse(hasattr(rest, '__notes__'))
 
     def test_drive_invalid_return_value(self):
         class MyEg(ExceptionGroup):
             def derive(self, excs):
                 return 42
 
-        eg = MyEg("eg", [TypeError(1), ValueError(2)])
+        eg = MyEg('eg', [TypeError(1), ValueError(2)])
         msg = "derive must return an instance of BaseExceptionGroup"
         with self.assertRaisesRegex(TypeError, msg):
             eg.split(TypeError)
@@ -802,14 +825,12 @@ class NestedExceptionGroupSubclassSplitTest(ExceptionGroupSplitTestBase):
         match, rest = self.split_exception_group(eg, OSError)
         self.assertIsNone(match)
         self.assertMatchesTemplate(
-            rest, ExceptionGroup, [ValueError(1), [TypeError(2)]]
-        )
+            rest, ExceptionGroup, [ValueError(1), [TypeError(2)]])
 
         # Match Everything
         match, rest = self.split_exception_group(eg, (ValueError, TypeError))
         self.assertMatchesTemplate(
-            match, ExceptionGroup, [ValueError(1), [TypeError(2)]]
-        )
+            match, ExceptionGroup, [ValueError(1), [TypeError(2)]])
         self.assertIsNone(rest)
 
         # Match ValueErrors
@@ -836,30 +857,32 @@ class NestedExceptionGroupSubclassSplitTest(ExceptionGroupSplitTestBase):
         except EG as e:
             eg = e
 
-        self.assertMatchesTemplate(eg, EG, [ValueError(1), KeyboardInterrupt(2)])
+        self.assertMatchesTemplate(
+            eg, EG, [ValueError(1), KeyboardInterrupt(2)])
 
         # Match Nothing
         match, rest = self.split_exception_group(eg, OSError)
         self.assertIsNone(match)
         self.assertMatchesTemplate(
-            rest, BaseExceptionGroup, [ValueError(1), KeyboardInterrupt(2)]
-        )
+            rest, BaseExceptionGroup, [ValueError(1), KeyboardInterrupt(2)])
 
         # Match Everything
-        match, rest = self.split_exception_group(eg, (ValueError, KeyboardInterrupt))
+        match, rest = self.split_exception_group(
+            eg, (ValueError, KeyboardInterrupt))
         self.assertMatchesTemplate(
-            match, BaseExceptionGroup, [ValueError(1), KeyboardInterrupt(2)]
-        )
+            match, BaseExceptionGroup, [ValueError(1), KeyboardInterrupt(2)])
         self.assertIsNone(rest)
 
         # Match ValueErrors
         match, rest = self.split_exception_group(eg, ValueError)
         self.assertMatchesTemplate(match, ExceptionGroup, [ValueError(1)])
-        self.assertMatchesTemplate(rest, BaseExceptionGroup, [KeyboardInterrupt(2)])
+        self.assertMatchesTemplate(
+            rest, BaseExceptionGroup, [KeyboardInterrupt(2)])
 
         # Match KeyboardInterrupt
         match, rest = self.split_exception_group(eg, KeyboardInterrupt)
-        self.assertMatchesTemplate(match, BaseExceptionGroup, [KeyboardInterrupt(2)])
+        self.assertMatchesTemplate(
+            match, BaseExceptionGroup, [KeyboardInterrupt(2)])
         self.assertMatchesTemplate(rest, ExceptionGroup, [ValueError(1)])
 
     def test_split_ExceptionGroup_subclass_derive_and_new_overrides(self):
@@ -919,5 +942,5 @@ class NestedExceptionGroupSubclassSplitTest(ExceptionGroupSplitTestBase):
         self.assertEqual(rest.code, 42)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

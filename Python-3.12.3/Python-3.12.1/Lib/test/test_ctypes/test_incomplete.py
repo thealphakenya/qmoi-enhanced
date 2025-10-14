@@ -6,14 +6,13 @@ from ctypes import *
 # The incomplete pointer example from the tutorial
 #
 
-
 class MyTestCase(unittest.TestCase):
 
     def test_incomplete_example(self):
         lpcell = POINTER("cell")
-
         class cell(Structure):
-            _fields_ = [("name", c_char_p), ("next", lpcell)]
+            _fields_ = [("name", c_char_p),
+                        ("next", lpcell)]
 
         SetPointerType(lpcell, cell)
 
@@ -35,11 +34,9 @@ class MyTestCase(unittest.TestCase):
 
         # to not leak references, we must clean _pointer_type_cache
         from ctypes import _pointer_type_cache
-
         del _pointer_type_cache[cell]
-
 
 ################################################################
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

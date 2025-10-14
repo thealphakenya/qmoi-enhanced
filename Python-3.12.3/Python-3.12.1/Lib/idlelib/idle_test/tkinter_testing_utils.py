@@ -1,5 +1,4 @@
 """Utilities for testing with Tkinter"""
-
 import functools
 
 
@@ -28,7 +27,6 @@ def run_in_tk_mainloop(delay=1):
         yield
         self.assert_sidebar_lines_end_with(['>>>', '>>>'])
     """
-
     def decorator(test_method):
         @functools.wraps(test_method)
         def new_test_method(self):
@@ -38,7 +36,6 @@ def run_in_tk_mainloop(delay=1):
             # outside of the after() callback in order for the test
             # harness to capture them.
             exception = None
-
             def after_callback():
                 nonlocal exception
                 try:
@@ -54,7 +51,6 @@ def run_in_tk_mainloop(delay=1):
                     # chance to process queued events before doing so.
                     # See: https://stackoverflow.com/q/18499082#comment65004099_38817470
                     root.after(delay, root.after_idle, after_callback)
-
             root.after(0, root.after_idle, after_callback)
             root.mainloop()
 

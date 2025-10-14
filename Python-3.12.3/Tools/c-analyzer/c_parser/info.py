@@ -10,7 +10,7 @@ import c_common.tables as _tables
 from .parser._regexes import _STORAGE
 
 
-FIXED_TYPE = _misc.Labeled("FIXED_TYPE")
+FIXED_TYPE = _misc.Labeled('FIXED_TYPE')
 
 STORAGE = frozenset(_STORAGE)
 
@@ -18,18 +18,17 @@ STORAGE = frozenset(_STORAGE)
 #############################
 # kinds
 
-
 @enum.unique
 class KIND(enum.Enum):
 
     # XXX Use these in the raw parser code.
-    TYPEDEF = "typedef"
-    STRUCT = "struct"
-    UNION = "union"
-    ENUM = "enum"
-    FUNCTION = "function"
-    VARIABLE = "variable"
-    STATEMENT = "statement"
+    TYPEDEF = 'typedef'
+    STRUCT = 'struct'
+    UNION = 'union'
+    ENUM = 'enum'
+    FUNCTION = 'function'
+    VARIABLE = 'variable'
+    STATEMENT = 'statement'
 
     @classonly
     def _from_raw(cls, raw):
@@ -48,9 +47,9 @@ class KIND(enum.Enum):
     def by_priority(cls, group=None):
         if group is None:
             return cls._ALL_BY_PRIORITY.copy()
-        elif group == "type":
+        elif group == 'type':
             return cls._TYPE_DECLS_BY_PRIORITY.copy()
-        elif group == "decl":
+        elif group == 'decl':
             return cls._ALL_DECLS_BY_PRIORITY.copy()
         elif isinstance(group, str):
             raise NotImplementedError(group)
@@ -63,7 +62,7 @@ class KIND(enum.Enum):
         if kind in cls.TYPES:
             return True
         if not isinstance(kind, cls):
-            raise TypeError(f"expected KIND, got {kind!r}")
+            raise TypeError(f'expected KIND, got {kind!r}')
         return False
 
     @classonly
@@ -71,21 +70,21 @@ class KIND(enum.Enum):
         if kind in cls.DECLS:
             return True
         if not isinstance(kind, cls):
-            raise TypeError(f"expected KIND, got {kind!r}")
+            raise TypeError(f'expected KIND, got {kind!r}')
         return False
 
     @classonly
     def get_group(cls, kind, *, groups=None):
         if not isinstance(kind, cls):
-            raise TypeError(f"expected KIND, got {kind!r}")
+            raise TypeError(f'expected KIND, got {kind!r}')
         if groups is None:
-            groups = ["type"]
+            groups = ['type']
         elif not groups:
             groups = ()
         elif isinstance(groups, str):
             group = groups
             if group not in cls._GROUPS:
-                raise ValueError(f"unsupported group {group!r}")
+                raise ValueError(f'unsupported group {group!r}')
             groups = [group]
         else:
             unsupported = [g for g in groups if g not in cls._GROUPS]
@@ -105,13 +104,13 @@ class KIND(enum.Enum):
             try:
                 return cls._GROUPS[group].copy()
             except KeyError:
-                raise ValueError(f"unsupported group {group!r}")
+                raise ValueError(f'unsupported group {group!r}')
         else:
             resolved = set()
             for gr in group:
                 resolve.update(cls.resolve_group(gr))
             return resolved
-            # return {*cls.resolve_group(g) for g in group}
+            #return {*cls.resolve_group(g) for g in group}
 
 
 KIND._TYPE_DECLS_BY_PRIORITY = [
@@ -136,8 +135,8 @@ KIND._ALL_BY_PRIORITY = [
 KIND.TYPES = frozenset(KIND._TYPE_DECLS_BY_PRIORITY)
 KIND.DECLS = frozenset(KIND._ALL_DECLS_BY_PRIORITY)
 KIND._GROUPS = {
-    "type": KIND.TYPES,
-    "decl": KIND.DECLS,
+    'type': KIND.TYPES,
+    'decl': KIND.DECLS,
 }
 KIND._GROUPS.update((k.value, {k}) for k in KIND)
 
@@ -149,8 +148,9 @@ def get_kind_group(item):
 #############################
 # low-level
 
-
-def _fix_filename(filename, relroot, *, formatted=True, **kwargs):
+def _fix_filename(filename, relroot, *,
+                  formatted=True,
+                  **kwargs):
     if formatted:
         fix = fsutil.format_filename
     else:
@@ -158,7 +158,7 @@ def _fix_filename(filename, relroot, *, formatted=True, **kwargs):
     return fix(filename, relroot=relroot, **kwargs)
 
 
-class FileInfo(namedtuple("FileInfo", "filename lno")):
+class FileInfo(namedtuple('FileInfo', 'filename lno')):
     @classmethod
     def from_raw(cls, raw):
         if isinstance(raw, cls):
@@ -182,10 +182,10 @@ class FileInfo(namedtuple("FileInfo", "filename lno")):
         return self._replace(filename=filename)
 
 
-class SourceLine(namedtuple("Line", "file kind data conditions")):
+class SourceLine(namedtuple('Line', 'file kind data conditions')):
     KINDS = (
         #'directive',  # data is ...
-        "source",  # "data" is the line
+        'source',  # "data" is the line
         #'comment',  # "data" is the text, including comment markers
     )
 
@@ -198,7 +198,7 @@ class SourceLine(namedtuple("Line", "file kind data conditions")):
         return self.file.lno
 
 
-class DeclID(namedtuple("DeclID", "filename funcname name")):
+class DeclID(namedtuple('DeclID', 'filename funcname name')):
     """The globally-unique identifier for a declaration."""
 
     @classmethod
@@ -223,7 +223,7 @@ class DeclID(namedtuple("DeclID", "filename funcname name")):
             funcname=str(funcname) if funcname else None,
             name=str(name) if name else None,
         )
-        self._compare = tuple(v or "" for v in self)
+        self._compare = tuple(v or '' for v in self)
         return self
 
     def __hash__(self):
@@ -231,14 +231,14 @@ class DeclID(namedtuple("DeclID", "filename funcname name")):
 
     def __eq__(self, other):
         try:
-            other = tuple(v or "" for v in other)
+            other = tuple(v or '' for v in other)
         except TypeError:
             return NotImplemented
         return self._compare == other
 
     def __gt__(self, other):
         try:
-            other = tuple(v or "" for v in other)
+            other = tuple(v or '' for v in other)
         except TypeError:
             return NotImplemented
         return self._compare > other
@@ -250,7 +250,7 @@ class DeclID(namedtuple("DeclID", "filename funcname name")):
         return self._replace(filename=filename)
 
 
-class ParsedItem(namedtuple("ParsedItem", "file kind parent name data")):
+class ParsedItem(namedtuple('ParsedItem', 'file kind parent name data')):
 
     @classmethod
     def from_raw(cls, raw):
@@ -264,22 +264,22 @@ class ParsedItem(namedtuple("ParsedItem", "file kind parent name data")):
     @classmethod
     def from_row(cls, row, columns=None):
         if not columns:
-            colnames = "filename funcname name kind data".split()
+            colnames = 'filename funcname name kind data'.split()
         else:
             colnames = list(columns)
             for i, column in enumerate(colnames):
-                if column == "file":
-                    colnames[i] = "filename"
-                elif column == "funcname":
-                    colnames[i] = "parent"
+                if column == 'file':
+                    colnames[i] = 'filename'
+                elif column == 'funcname':
+                    colnames[i] = 'parent'
         if len(row) != len(set(colnames)):
             raise NotImplementedError(columns, row)
         kwargs = {}
         for column, value in zip(colnames, row):
-            if column == "filename":
-                kwargs["file"] = FileInfo.from_raw(value)
-            elif column == "kind":
-                kwargs["kind"] = KIND(value)
+            if column == 'filename':
+                kwargs['file'] = FileInfo.from_raw(value)
+            elif column == 'kind':
+                kwargs['kind'] = KIND(value)
             elif column in cls._fields:
                 kwargs[column] = value
             else:
@@ -329,11 +329,11 @@ class ParsedItem(namedtuple("ParsedItem", "file kind parent name data")):
             columns = self._fields
         row = []
         for column in columns:
-            if column == "file":
+            if column == 'file':
                 value = self.filename
-            elif column == "kind":
+            elif column == 'kind':
                 value = self.kind.value
-            elif column == "data":
+            elif column == 'data':
                 value = self._render_data()
             else:
                 value = getattr(self, column)
@@ -352,29 +352,29 @@ class ParsedItem(namedtuple("ParsedItem", "file kind parent name data")):
 
 def _get_vartype(data):
     try:
-        vartype = dict(data["vartype"])
+        vartype = dict(data['vartype'])
     except KeyError:
         vartype = dict(data)
-        storage = data.get("storage")
+        storage = data.get('storage')
     else:
-        storage = data.get("storage") or vartype.get("storage")
-    del vartype["storage"]
+        storage = data.get('storage') or vartype.get('storage')
+    del vartype['storage']
     return storage, vartype
 
 
 def get_parsed_vartype(decl):
-    kind = getattr(decl, "kind", None)
+    kind = getattr(decl, 'kind', None)
     if isinstance(decl, ParsedItem):
         storage, vartype = _get_vartype(decl.data)
-        typequal = vartype["typequal"]
-        typespec = vartype["typespec"]
-        abstract = vartype["abstract"]
+        typequal = vartype['typequal']
+        typespec = vartype['typespec']
+        abstract = vartype['abstract']
     elif isinstance(decl, dict):
-        kind = decl.get("kind")
+        kind = decl.get('kind')
         storage, vartype = _get_vartype(decl)
-        typequal = vartype["typequal"]
-        typespec = vartype["typespec"]
-        abstract = vartype["abstract"]
+        typequal = vartype['typequal']
+        typespec = vartype['typespec']
+        abstract = vartype['abstract']
     elif isinstance(decl, VarType):
         storage = None
         typequal, typespec, abstract = decl
@@ -401,7 +401,7 @@ def get_parsed_vartype(decl):
 def get_default_storage(decl):
     if decl.kind not in (KIND.VARIABLE, KIND.FUNCTION):
         return None
-    return "extern" if decl.parent is None else "auto"
+    return 'extern' if decl.parent is None else 'auto'
 
 
 def get_effective_storage(decl, *, default=None):
@@ -422,24 +422,23 @@ def get_effective_storage(decl, *, default=None):
 #############################
 # high-level
 
-
 class HighlevelParsedItem:
 
     kind = None
 
-    FIELDS = ("file", "parent", "name", "data")
+    FIELDS = ('file', 'parent', 'name', 'data')
 
     @classmethod
     def from_parsed(cls, parsed):
         if parsed.kind is not cls.kind:
-            raise TypeError(f"kind mismatch ({parsed.kind.value} != {cls.kind.value})")
+            raise TypeError(f'kind mismatch ({parsed.kind.value} != {cls.kind.value})')
         data, extra = cls._resolve_data(parsed.data)
         self = cls(
             cls._resolve_file(parsed),
             parsed.name,
             data,
             cls._resolve_parent(parsed) if parsed.parent else None,
-            **extra or {},
+            **extra or {}
         )
         self._parsed = parsed
         return self
@@ -470,20 +469,20 @@ class HighlevelParsedItem:
                 continue
             rendered = cls._render_data_row_item(colname, data, extra)
             if rendered is iter(rendered):
-                (rendered,) = rendered
+                rendered, = rendered
             row[colname] = rendered
         return row
 
     @classmethod
     def _render_data_row_item(cls, colname, data, extra):
-        if colname == "data":
+        if colname == 'data':
             return str(data)
         else:
             return None
 
     @classmethod
     def _render_data_row(cls, fmt, data, extra, colnames):
-        if fmt != "row":
+        if fmt != 'row':
             raise NotImplementedError
         datarow = cls._data_as_row(data, extra, colnames)
         unresolved = [c for c, v in datarow.items() if v is None]
@@ -491,7 +490,7 @@ class HighlevelParsedItem:
             raise NotImplementedError(unresolved)
         for colname, value in datarow.items():
             if type(value) != str:
-                if colname == "kind":
+                if colname == 'kind':
                     datarow[colname] = value.value
                 else:
                     datarow[colname] = str(value)
@@ -499,8 +498,8 @@ class HighlevelParsedItem:
 
     @classmethod
     def _render_data(cls, fmt, data, extra):
-        row = cls._render_data_row(fmt, data, extra, ["data"])
-        yield " ".join(row.values())
+        row = cls._render_data_row(fmt, data, extra, ['data'])
+        yield ' '.join(row.values())
 
     @classmethod
     def _resolve_parent(cls, parsed, *, _kind=None):
@@ -526,35 +525,29 @@ class HighlevelParsedItem:
         columns = list(columns or cls.FIELDS)
         datacolumns = []
         for i, colname in enumerate(columns):
-            if colname == "file":
-                columns[i] = "filename"
-                colnames["file"] = "filename"
-            elif colname == "lno":
-                columns[i] = "line"
-                colnames["lno"] = "line"
-            elif colname in ("filename", "line"):
+            if colname == 'file':
+                columns[i] = 'filename'
+                colnames['file'] = 'filename'
+            elif colname == 'lno':
+                columns[i] = 'line'
+                colnames['lno'] = 'line'
+            elif colname in ('filename', 'line'):
                 colnames[colname] = colname
-            elif colname == "data":
+            elif colname == 'data':
                 datacolumns.append(colname)
                 colnames[colname] = None
-            elif colname in cls.FIELDS or colname == "kind":
+            elif colname in cls.FIELDS or colname == 'kind':
                 colnames[colname] = colname
             else:
                 datacolumns.append(colname)
                 colnames[colname] = None
         return columns, datacolumns, colnames
 
-    def __init__(
-        self,
-        file,
-        name,
-        data,
-        parent=None,
-        *,
-        _extra=None,
-        _shortkey=None,
-        _key=None,
-    ):
+    def __init__(self, file, name, data, parent=None, *,
+                 _extra=None,
+                 _shortkey=None,
+                 _key=None,
+                 ):
         self.file = file
         self.parent = parent or None
         self.name = name
@@ -564,10 +557,8 @@ class HighlevelParsedItem:
         self._key = _key
 
     def __repr__(self):
-        args = [
-            f"{n}={getattr(self, n)!r}"
-            for n in ["file", "name", "data", "parent", *(self._extra or ())]
-        ]
+        args = [f'{n}={getattr(self, n)!r}'
+                for n in ['file', 'name', 'data', 'parent', *(self._extra or ())]]
         return f'{type(self).__name__}({", ".join(args)})'
 
     def __str__(self):
@@ -648,23 +639,21 @@ class HighlevelParsedItem:
 
     def render_rowdata(self, columns=None):
         columns, datacolumns, colnames = self._parse_columns(columns)
-
         def data_as_row(data, ext, cols):
-            return self._render_data_row("row", data, ext, cols)
-
+            return self._render_data_row('row', data, ext, cols)
         rowdata = self._as_row(colnames, datacolumns, data_as_row)
         for column, value in rowdata.items():
             colname = colnames.get(column)
             if not colname:
                 continue
-            if column == "kind":
+            if column == 'kind':
                 value = value.value
             else:
-                if column == "parent":
+                if column == 'parent':
                     if self.parent:
-                        value = f"({self.parent.kind.value} {self.parent.name})"
+                        value = f'({self.parent.kind.value} {self.parent.name})'
                 if not value:
-                    value = "-"
+                    value = '-'
                 elif type(value) is VarType:
                     value = repr(str(value))
                 else:
@@ -679,9 +668,9 @@ class HighlevelParsedItem:
             data = None
         row = data or {}
         for column, colname in colnames.items():
-            if colname == "filename":
+            if colname == 'filename':
                 value = self.file.filename if self.file else None
-            elif colname == "line":
+            elif colname == 'line':
                 value = self.file.lno if self.file else None
             elif colname is None:
                 value = getattr(self, column, None)
@@ -690,100 +679,96 @@ class HighlevelParsedItem:
             row.setdefault(column, value)
         return row
 
-    def render(self, fmt="line"):
-        fmt = fmt or "line"
+    def render(self, fmt='line'):
+        fmt = fmt or 'line'
         try:
             render = _FORMATS[fmt]
         except KeyError:
-            raise TypeError(f"unsupported fmt {fmt!r}")
+            raise TypeError(f'unsupported fmt {fmt!r}')
         try:
             data = self._render_data(fmt, self.data, self._extra)
         except NotImplementedError:
-            data = "-"
+            data = '-'
         yield from render(self, data)
 
 
 ### formats ###
 
-
 def _fmt_line(parsed, data=None):
     parts = [
-        f"<{parsed.kind.value}>",
+        f'<{parsed.kind.value}>',
     ]
-    parent = ""
+    parent = ''
     if parsed.parent:
         parent = parsed.parent
         if not isinstance(parent, str):
             if parent.kind is KIND.FUNCTION:
-                parent = f"{parent.name}()"
+                parent = f'{parent.name}()'
             else:
                 parent = parent.name
-        name = f"<{parent}>.{parsed.name}"
+        name = f'<{parent}>.{parsed.name}'
     else:
         name = parsed.name
     if data is None:
         data = parsed.data
     elif data is iter(data):
-        (data,) = data
-    parts.extend(
-        [
-            name,
-            f"<{data}>" if data else "-",
-            f'({str(parsed.file or "<unknown file>")})',
-        ]
-    )
-    yield "\t".join(parts)
+        data, = data
+    parts.extend([
+        name,
+        f'<{data}>' if data else '-',
+        f'({str(parsed.file or "<unknown file>")})',
+    ])
+    yield '\t'.join(parts)
 
 
 def _fmt_full(parsed, data=None):
     if parsed.kind is KIND.VARIABLE and parsed.parent:
-        prefix = "local "
-        suffix = f" ({parsed.parent.name})"
+        prefix = 'local '
+        suffix = f' ({parsed.parent.name})'
     else:
         # XXX Show other prefixes (e.g. global, public)
-        prefix = suffix = ""
-    yield f"{prefix}{parsed.kind.value} {parsed.name!r}{suffix}"
+        prefix = suffix = ''
+    yield f'{prefix}{parsed.kind.value} {parsed.name!r}{suffix}'
     for column, info in parsed.render_rowdata().items():
-        if column == "kind":
+        if column == 'kind':
             continue
-        if column == "name":
+        if column == 'name':
             continue
-        if column == "parent" and parsed.kind is not KIND.VARIABLE:
+        if column == 'parent' and parsed.kind is not KIND.VARIABLE:
             continue
-        if column == "data":
+        if column == 'data':
             if parsed.kind in (KIND.STRUCT, KIND.UNION):
-                column = "members"
+                column = 'members'
             elif parsed.kind is KIND.ENUM:
-                column = "enumerators"
+                column = 'enumerators'
             elif parsed.kind is KIND.STATEMENT:
-                column = "text"
-                (data,) = data
+                column = 'text'
+                data, = data
             else:
-                column = "signature"
-                (data,) = data
+                column = 'signature'
+                data, = data
             if not data:
-                #                yield f'\t{column}:\t-'
+#                yield f'\t{column}:\t-'
                 continue
             elif isinstance(data, str):
-                yield f"\t{column}:\t{data!r}"
+                yield f'\t{column}:\t{data!r}'
             else:
-                yield f"\t{column}:"
+                yield f'\t{column}:'
                 for line in data:
-                    yield f"\t\t- {line}"
+                    yield f'\t\t- {line}'
         else:
-            yield f"\t{column}:\t{info}"
+            yield f'\t{column}:\t{info}'
 
 
 _FORMATS = {
-    "raw": (lambda v, _d: [repr(v)]),
-    "brief": _fmt_line,
-    "line": _fmt_line,
-    "full": _fmt_full,
+    'raw': (lambda v, _d: [repr(v)]),
+    'brief': _fmt_line,
+    'line': _fmt_line,
+    'full': _fmt_full,
 }
 
 
 ### declarations ##
-
 
 class Declaration(HighlevelParsedItem):
 
@@ -794,7 +779,7 @@ class Declaration(HighlevelParsedItem):
             _, _, _, kind, _ = fixed
             sub = KIND_CLASSES.get(KIND(kind))
             if not sub or not issubclass(sub, Declaration):
-                raise TypeError(f"unsupported kind, got {row!r}")
+                raise TypeError(f'unsupported kind, got {row!r}')
         else:
             sub = cls
         return sub._from_row(fixed)
@@ -804,11 +789,11 @@ class Declaration(HighlevelParsedItem):
         filename, funcname, name, kind, data = row
         kind = KIND._from_raw(kind)
         if kind is not cls.kind:
-            raise TypeError(f"expected kind {cls.kind.value!r}, got {row!r}")
+            raise TypeError(f'expected kind {cls.kind.value!r}, got {row!r}')
         fileinfo = FileInfo.from_raw(filename)
         extra = None
         if isinstance(data, str):
-            data, extra = cls._parse_data(data, fmt="row")
+            data, extra = cls._parse_data(data, fmt='row')
         if extra:
             return cls(fileinfo, name, data, funcname, _extra=extra)
         else:
@@ -817,23 +802,21 @@ class Declaration(HighlevelParsedItem):
     @classmethod
     def _resolve_parent(cls, parsed, *, _kind=None):
         if _kind is None:
-            raise TypeError(
-                f"{cls.kind.value} declarations do not have parents ({parsed})"
-            )
+            raise TypeError(f'{cls.kind.value} declarations do not have parents ({parsed})')
         return super()._resolve_parent(parsed, _kind=_kind)
 
     @classmethod
     def _render_data(cls, fmt, data, extra):
         if not data:
             # XXX There should be some!  Forward?
-            yield "???"
+            yield '???'
         else:
             yield from cls._format_data(fmt, data, extra)
 
     @classmethod
     def _render_data_row_item(cls, colname, data, extra):
-        if colname == "data":
-            return cls._format_data("row", data, extra)
+        if colname == 'data':
+            return cls._format_data('row', data, extra)
         else:
             return None
 
@@ -844,11 +827,11 @@ class Declaration(HighlevelParsedItem):
     @classmethod
     def _parse_data(cls, datastr, fmt=None):
         """This is the reverse of _render_data."""
-        if not datastr or datastr is _tables.UNKNOWN or datastr == "???":
+        if not datastr or datastr is _tables.UNKNOWN or datastr == '???':
             return None, None
-        elif datastr is _tables.EMPTY or datastr == "-":
+        elif datastr is _tables.EMPTY or datastr == '-':
             # All the kinds have *something* even it is unknown.
-            raise TypeError("all declarations have data of some sort, got none")
+            raise TypeError('all declarations have data of some sort, got none')
         else:
             return cls._unformat_data(datastr, fmt)
 
@@ -857,16 +840,16 @@ class Declaration(HighlevelParsedItem):
         raise NotImplementedError(fmt)
 
 
-class VarType(namedtuple("VarType", "typequal typespec abstract")):
+class VarType(namedtuple('VarType', 'typequal typespec abstract')):
 
     @classmethod
     def from_str(cls, text):
         orig = text
-        storage, sep, text = text.strip().partition(" ")
+        storage, sep, text = text.strip().partition(' ')
         if not sep:
             text = storage
             storage = None
-        elif storage not in ("auto", "register", "static", "extern"):
+        elif storage not in ('auto', 'register', 'static', 'extern'):
             text = orig
             storage = None
         return cls._from_str(text), storage
@@ -874,15 +857,15 @@ class VarType(namedtuple("VarType", "typequal typespec abstract")):
     @classmethod
     def _from_str(cls, text):
         orig = text
-        if text.startswith(("const ", "volatile ")):
-            typequal, _, text = text.partition(" ")
+        if text.startswith(('const ', 'volatile ')):
+            typequal, _, text = text.partition(' ')
         else:
             typequal = None
 
         # Extract a series of identifiers/keywords.
         m = re.match(r"^ *'?([a-zA-Z_]\w*(?:\s+[a-zA-Z_]\w*)*)\s*(.*?)'?\s*$", text)
         if not m:
-            raise ValueError(f"invalid vartype text {orig!r}")
+            raise ValueError(f'invalid vartype text {orig!r}')
         typespec, abstract = m.groups()
 
         return cls(typequal, typespec, abstract or None)
@@ -891,8 +874,8 @@ class VarType(namedtuple("VarType", "typequal typespec abstract")):
         parts = []
         if self.qualifier:
             parts.append(self.qualifier)
-        parts.append(self.spec + (self.abstract or ""))
-        return " ".join(parts)
+        parts.append(self.spec + (self.abstract or ''))
+        return ' '.join(parts)
 
     @property
     def qualifier(self):
@@ -915,55 +898,50 @@ class Variable(Declaration):
         if not data:
             return None, None
         storage, vartype = _get_vartype(data)
-        return VarType(**vartype), {"storage": storage}
+        return VarType(**vartype), {'storage': storage}
 
     @classmethod
     def _raw_data(self, data, extra):
         vartype = data._asdict()
         return {
-            "storage": extra["storage"],
-            "vartype": vartype,
+            'storage': extra['storage'],
+            'vartype': vartype,
         }
 
     @classmethod
     def _format_data(cls, fmt, data, extra):
-        storage = extra.get("storage")
-        text = f"{storage} {data}" if storage else str(data)
-        if fmt in ("line", "brief"):
+        storage = extra.get('storage')
+        text = f'{storage} {data}' if storage else str(data)
+        if fmt in ('line', 'brief'):
             yield text
-        # elif fmt == 'full':
-        elif fmt == "row":
+        #elif fmt == 'full':
+        elif fmt == 'row':
             yield text
         else:
             raise NotImplementedError(fmt)
 
     @classmethod
     def _unformat_data(cls, datastr, fmt=None):
-        if fmt in ("line", "brief"):
+        if fmt in ('line', 'brief'):
             vartype, storage = VarType.from_str(datastr)
-            return vartype, {"storage": storage}
-        # elif fmt == 'full':
-        elif fmt == "row":
+            return vartype, {'storage': storage}
+        #elif fmt == 'full':
+        elif fmt == 'row':
             vartype, storage = VarType.from_str(datastr)
-            return vartype, {"storage": storage}
+            return vartype, {'storage': storage}
         else:
             raise NotImplementedError(fmt)
 
     def __init__(self, file, name, data, parent=None, storage=None):
-        super().__init__(
-            file,
-            name,
-            data,
-            parent,
-            _extra={"storage": storage or None},
-            _shortkey=f"({parent.name}).{name}" if parent else name,
-            _key=(
-                str(file),
-                # Tilde comes after all other ascii characters.
-                f'~{parent or ""}~',
-                name,
-            ),
-        )
+        super().__init__(file, name, data, parent,
+                         _extra={'storage': storage or None},
+                         _shortkey=f'({parent.name}).{name}' if parent else name,
+                         _key=(str(file),
+                               # Tilde comes after all other ascii characters.
+                               f'~{parent or ""}~',
+                               name,
+                               ),
+                         )
         if storage:
             if storage not in STORAGE:
                 # The parser must need an update.
@@ -975,16 +953,16 @@ class Variable(Declaration):
         return self.data
 
 
-class Signature(namedtuple("Signature", "params returntype inline isforward")):
+class Signature(namedtuple('Signature', 'params returntype inline isforward')):
 
     @classmethod
     def from_str(cls, text):
         orig = text
-        storage, sep, text = text.strip().partition(" ")
+        storage, sep, text = text.strip().partition(' ')
         if not sep:
             text = storage
             storage = None
-        elif storage not in ("auto", "register", "static", "extern"):
+        elif storage not in ('auto', 'register', 'static', 'extern'):
             text = orig
             storage = None
         return cls._from_str(text), storage
@@ -992,26 +970,26 @@ class Signature(namedtuple("Signature", "params returntype inline isforward")):
     @classmethod
     def _from_str(cls, text):
         orig = text
-        inline, sep, text = text.partition("|")
+        inline, sep, text = text.partition('|')
         if not sep:
             text = inline
             inline = None
 
         isforward = False
-        if text.endswith(";"):
+        if text.endswith(';'):
             text = text[:-1]
             isforward = True
-        elif text.endswith("{}"):
+        elif text.endswith('{}'):
             text = text[:-2]
 
-        index = text.rindex("(")
+        index = text.rindex('(')
         if index < 0:
-            raise ValueError(f"bad signature text {orig!r}")
+            raise ValueError(f'bad signature text {orig!r}')
         params = text[index:]
-        while params.count("(") <= params.count(")"):
-            index = text.rindex("(", 0, index)
+        while params.count('(') <= params.count(')'):
+            index = text.rindex('(', 0, index)
             if index < 0:
-                raise ValueError(f"bad signature text {orig!r}")
+                raise ValueError(f'bad signature text {orig!r}')
             params = text[index:]
         text = text[:index]
 
@@ -1022,20 +1000,16 @@ class Signature(namedtuple("Signature", "params returntype inline isforward")):
     def __str__(self):
         parts = []
         if self.inline:
-            parts.extend(
-                [
-                    self.inline,
-                    "|",
-                ]
-            )
-        parts.extend(
-            [
-                str(self.returntype),
-                self.params,
-                ";" if self.isforward else "{}",
-            ]
-        )
-        return " ".join(parts)
+            parts.extend([
+                self.inline,
+                '|',
+            ])
+        parts.extend([
+            str(self.returntype),
+            self.params,
+            ';' if self.isforward else '{}',
+        ])
+        return ' '.join(parts)
 
     @property
     def returns(self):
@@ -1062,11 +1036,11 @@ class Function(Declaration):
         if not data:
             return None, None
         kwargs = dict(data)
-        returntype = dict(data["returntype"])
-        del returntype["storage"]
-        kwargs["returntype"] = VarType(**returntype)
-        storage = kwargs.pop("storage")
-        return Signature(**kwargs), {"storage": storage}
+        returntype = dict(data['returntype'])
+        del returntype['storage']
+        kwargs['returntype'] = VarType(**returntype)
+        storage = kwargs.pop('storage')
+        return Signature(**kwargs), {'storage': storage}
 
     @classmethod
     def _raw_data(self, data):
@@ -1075,31 +1049,31 @@ class Function(Declaration):
 
     @classmethod
     def _format_data(cls, fmt, data, extra):
-        storage = extra.get("storage")
-        text = f"{storage} {data}" if storage else str(data)
-        if fmt in ("line", "brief"):
+        storage = extra.get('storage')
+        text = f'{storage} {data}' if storage else str(data)
+        if fmt in ('line', 'brief'):
             yield text
-        # elif fmt == 'full':
-        elif fmt == "row":
+        #elif fmt == 'full':
+        elif fmt == 'row':
             yield text
         else:
             raise NotImplementedError(fmt)
 
     @classmethod
     def _unformat_data(cls, datastr, fmt=None):
-        if fmt in ("line", "brief"):
+        if fmt in ('line', 'brief'):
             sig, storage = Signature.from_str(sig)
-            return sig, {"storage": storage}
-        # elif fmt == 'full':
-        elif fmt == "row":
+            return sig, {'storage': storage}
+        #elif fmt == 'full':
+        elif fmt == 'row':
             sig, storage = Signature.from_str(sig)
-            return sig, {"storage": storage}
+            return sig, {'storage': storage}
         else:
             raise NotImplementedError(fmt)
 
     def __init__(self, file, name, data, parent=None, storage=None):
-        super().__init__(file, name, data, parent, _extra={"storage": storage})
-        self._shortkey = f"~{name}~ {self.data}"
+        super().__init__(file, name, data, parent, _extra={'storage': storage})
+        self._shortkey = f'~{name}~ {self.data}'
         self._key = (
             str(file),
             self._shortkey,
@@ -1114,18 +1088,14 @@ class TypeDeclaration(Declaration):
 
     def __init__(self, file, name, data, parent=None, *, _shortkey=None):
         if not _shortkey:
-            _shortkey = f"{self.kind.value} {name}"
-        super().__init__(
-            file,
-            name,
-            data,
-            parent,
-            _shortkey=_shortkey,
-            _key=(
-                str(file),
-                _shortkey,
-            ),
-        )
+            _shortkey = f'{self.kind.value} {name}'
+        super().__init__(file, name, data, parent,
+                         _shortkey=_shortkey,
+                         _key=(
+                             str(file),
+                             _shortkey,
+                             ),
+                         )
 
 
 class POTSType(TypeDeclaration):
@@ -1141,7 +1111,7 @@ class FuncPtr(TypeDeclaration):
         _file = _name = _parent = None
         data = vartype
         self.vartype = vartype
-        super().__init__(_file, _name, data, _parent, _shortkey=f"<{vartype}>")
+        super().__init__(_file, _name, data, _parent, _shortkey=f'<{vartype}>')
 
 
 class TypeDef(TypeDeclaration):
@@ -1152,11 +1122,11 @@ class TypeDef(TypeDeclaration):
         if not data:
             raise NotImplementedError(data)
         kwargs = dict(data)
-        del kwargs["storage"]
-        if "returntype" in kwargs:
-            vartype = kwargs["returntype"]
-            del vartype["storage"]
-            kwargs["returntype"] = VarType(**vartype)
+        del kwargs['storage']
+        if 'returntype' in kwargs:
+            vartype = kwargs['returntype']
+            del vartype['storage']
+            kwargs['returntype'] = VarType(**vartype)
             datacls = Signature
         else:
             datacls = VarType
@@ -1170,22 +1140,22 @@ class TypeDef(TypeDeclaration):
     @classmethod
     def _format_data(cls, fmt, data, extra):
         text = str(data)
-        if fmt in ("line", "brief"):
+        if fmt in ('line', 'brief'):
             yield text
-        elif fmt == "full":
+        elif fmt == 'full':
             yield text
-        elif fmt == "row":
+        elif fmt == 'row':
             yield text
         else:
             raise NotImplementedError(fmt)
 
     @classmethod
     def _unformat_data(cls, datastr, fmt=None):
-        if fmt in ("line", "brief"):
+        if fmt in ('line', 'brief'):
             vartype, _ = VarType.from_str(datastr)
             return vartype, None
-        # elif fmt == 'full':
-        elif fmt == "row":
+        #elif fmt == 'full':
+        elif fmt == 'row':
             vartype, _ = VarType.from_str(datastr)
             return vartype, None
         else:
@@ -1199,7 +1169,7 @@ class TypeDef(TypeDeclaration):
         return self.data
 
 
-class Member(namedtuple("Member", "name vartype size")):
+class Member(namedtuple('Member', 'name vartype size')):
 
     @classmethod
     def from_data(cls, raw, index):
@@ -1211,9 +1181,9 @@ class Member(namedtuple("Member", "name vartype size")):
             size = int(raw.data)
         elif raw.data:
             vartype = dict(raw.data)
-            del vartype["storage"]
-            if "size" in vartype:
-                size = vartype.pop("size")
+            del vartype['storage']
+            if 'size' in vartype:
+                size = vartype.pop('size')
                 if isinstance(size, str) and size.isdigit():
                     size = int(size)
             vartype = VarType(**vartype)
@@ -1221,8 +1191,8 @@ class Member(namedtuple("Member", "name vartype size")):
 
     @classmethod
     def from_str(cls, text):
-        name, _, vartype = text.partition(": ")
-        if name.startswith("#"):
+        name, _, vartype = text.partition(': ')
+        if name.startswith('#'):
             name = int(name[1:])
         if vartype.isdigit():
             size = int(vartype)
@@ -1233,8 +1203,8 @@ class Member(namedtuple("Member", "name vartype size")):
         return cls(name, vartype, size)
 
     def __str__(self):
-        name = self.name if isinstance(self.name, str) else f"#{self.name}"
-        return f"{name}: {self.vartype or self.size}"
+        name = self.name if isinstance(self.name, str) else f'#{self.name}'
+        return f'{name}: {self.vartype or self.size}'
 
 
 class _StructUnion(TypeDeclaration):
@@ -1253,29 +1223,28 @@ class _StructUnion(TypeDeclaration):
 
     @classmethod
     def _format_data(cls, fmt, data, extra):
-        if fmt in ("line", "brief"):
-            members = ", ".join(f"<{m}>" for m in data)
-            yield f"[{members}]"
-        elif fmt == "full":
+        if fmt in ('line', 'brief'):
+            members = ', '.join(f'<{m}>' for m in data)
+            yield f'[{members}]'
+        elif fmt == 'full':
             for member in data:
-                yield f"{member}"
-        elif fmt == "row":
-            members = ", ".join(f"<{m}>" for m in data)
-            yield f"[{members}]"
+                yield f'{member}'
+        elif fmt == 'row':
+            members = ', '.join(f'<{m}>' for m in data)
+            yield f'[{members}]'
         else:
             raise NotImplementedError(fmt)
 
     @classmethod
     def _unformat_data(cls, datastr, fmt=None):
-        if fmt in ("line", "brief"):
-            members = [Member.from_str(m[1:-1]) for m in datastr[1:-1].split(", ")]
+        if fmt in ('line', 'brief'):
+            members = [Member.from_str(m[1:-1])
+                       for m in datastr[1:-1].split(', ')]
             return members, None
-        # elif fmt == 'full':
-        elif fmt == "row":
-            members = [
-                Member.from_str(m.rstrip(">").lstrip("<"))
-                for m in datastr[1:-1].split(">, <")
-            ]
+        #elif fmt == 'full':
+        elif fmt == 'row':
+            members = [Member.from_str(m.rstrip('>').lstrip('<'))
+                       for m in datastr[1:-1].split('>, <')]
             return members, None
         else:
             raise NotImplementedError(fmt)
@@ -1304,7 +1273,8 @@ class Enum(TypeDeclaration):
         if not data:
             # XXX There should be some!  Forward?
             return None, None
-        enumerators = [e if isinstance(e, str) else e.name for e in data]
+        enumerators = [e if isinstance(e, str) else e.name
+                       for e in data]
         return enumerators, None
 
     @classmethod
@@ -1314,24 +1284,24 @@ class Enum(TypeDeclaration):
 
     @classmethod
     def _format_data(cls, fmt, data, extra):
-        if fmt in ("line", "brief"):
+        if fmt in ('line', 'brief'):
             yield repr(data)
-        elif fmt == "full":
+        elif fmt == 'full':
             for enumerator in data:
-                yield f"{enumerator}"
-        elif fmt == "row":
+                yield f'{enumerator}'
+        elif fmt == 'row':
             # XXX This won't work with CSV...
-            yield ",".join(data)
+            yield ','.join(data)
         else:
             raise NotImplementedError(fmt)
 
     @classmethod
     def _unformat_data(cls, datastr, fmt=None):
-        if fmt in ("line", "brief"):
+        if fmt in ('line', 'brief'):
             return _strutil.unrepr(datastr), None
-        # elif fmt == 'full':
-        elif fmt == "row":
-            return datastr.split(","), None
+        #elif fmt == 'full':
+        elif fmt == 'row':
+            return datastr.split(','), None
         else:
             raise NotImplementedError(fmt)
 
@@ -1344,7 +1314,6 @@ class Enum(TypeDeclaration):
 
 
 ### statements ###
-
 
 class Statement(HighlevelParsedItem):
     kind = KIND.STATEMENT
@@ -1370,18 +1339,14 @@ class Statement(HighlevelParsedItem):
         return _strutil.unrepr(datastr), None
 
     def __init__(self, file, name, data, parent=None):
-        super().__init__(
-            file,
-            name,
-            data,
-            parent,
-            _shortkey=data or "",
-            _key=(
-                str(file),
-                file.lno,
-                # XXX Only one stmt per line?
-            ),
-        )
+        super().__init__(file, name, data, parent,
+                         _shortkey=data or '',
+                         _key=(
+                             str(file),
+                             file.lno,
+                             # XXX Only one stmt per line?
+                             ),
+                         )
 
     @property
     def text(self):
@@ -1390,18 +1355,15 @@ class Statement(HighlevelParsedItem):
 
 ###
 
-KIND_CLASSES = {
-    cls.kind: cls
-    for cls in [
-        Variable,
-        Function,
-        TypeDef,
-        Struct,
-        Union,
-        Enum,
-        Statement,
-    ]
-}
+KIND_CLASSES = {cls.kind: cls for cls in [
+    Variable,
+    Function,
+    TypeDef,
+    Struct,
+    Union,
+    Enum,
+    Statement,
+]}
 
 
 def resolve_parsed(parsed):
@@ -1410,7 +1372,7 @@ def resolve_parsed(parsed):
     try:
         cls = KIND_CLASSES[parsed.kind]
     except KeyError:
-        raise ValueError(f"unsupported kind in {parsed!r}")
+        raise ValueError(f'unsupported kind in {parsed!r}')
     return cls.from_parsed(parsed)
 
 
@@ -1424,7 +1386,6 @@ def set_flag(item, name, value):
 #############################
 # composite
 
-
 class Declarations:
 
     @classmethod
@@ -1433,9 +1394,9 @@ class Declarations:
 
     @classmethod
     def from_parsed(cls, items):
-        decls = (
-            resolve_parsed(item) for item in items if item.kind is not KIND.STATEMENT
-        )
+        decls = (resolve_parsed(item)
+                 for item in items
+                 if item.kind is not KIND.STATEMENT)
         return cls.from_decls(decls)
 
     @classmethod
@@ -1452,10 +1413,10 @@ class Declarations:
 
         extra = None
         if len(raw) == 1:
-            (name,) = raw
+            name, = raw
             if name:
                 name = str(name)
-                if name.endswith((".c", ".h")):
+                if name.endswith(('.c', '.h')):
                     # This is only legit as a query.
                     key = (name, None, None)
                 else:
@@ -1471,7 +1432,7 @@ class Declarations:
                 key = (None, None, name)
             else:
                 parent = str(parent)
-                if parent.endswith((".c", ".h")):
+                if parent.endswith(('.c', '.h')):
                     key = (parent, None, name)
                 else:
                     key = (None, parent, name)
@@ -1502,7 +1463,7 @@ class Declarations:
         #   * (file, None, name)
         # "private", "local":
         #   * (file, func, name)
-        if hasattr(decls, "items"):
+        if hasattr(decls, 'items'):
             self._decls = decls
         else:
             self._decls = {}
@@ -1513,26 +1474,20 @@ class Declarations:
     def validate(self):
         for key, decl in self._decls.items():
             if type(key) is not tuple or len(key) != 3:
-                raise ValueError(
-                    f"expected 3-tuple key, got {key!r} (for decl {decl!r})"
-                )
+                raise ValueError(f'expected 3-tuple key, got {key!r} (for decl {decl!r})')
             filename, funcname, name = key
             if not name:
-                raise ValueError(
-                    f"expected name in key, got {key!r} (for decl {decl!r})"
-                )
+                raise ValueError(f'expected name in key, got {key!r} (for decl {decl!r})')
             elif type(name) is not str:
-                raise ValueError(
-                    f"expected name in key to be str, got {key!r} (for decl {decl!r})"
-                )
+                raise ValueError(f'expected name in key to be str, got {key!r} (for decl {decl!r})')
             # XXX Check filename type?
             # XXX Check funcname type?
 
             if decl.kind is KIND.STATEMENT:
-                raise ValueError(f"expected a declaration, got {decl!r}")
+                raise ValueError(f'expected a declaration, got {decl!r}')
 
     def __repr__(self):
-        return f"{type(self).__name__}({list(self)})"
+        return f'{type(self).__name__}({list(self)})'
 
     def __len__(self):
         return len(self._decls)
@@ -1543,12 +1498,12 @@ class Declarations:
     def __getitem__(self, key):
         # XXX Be more exact for the 3-tuple case?
         if type(key) not in (str, tuple):
-            raise KeyError(f"unsupported key {key!r}")
+            raise KeyError(f'unsupported key {key!r}')
         resolved, extra = self._resolve_key(key)
         if extra:
-            raise KeyError(f"key must have at most 3 parts, got {key!r}")
+            raise KeyError(f'key must have at most 3 parts, got {key!r}')
         if not resolved[2]:
-            raise ValueError(f"expected name in key, got {key!r}")
+            raise ValueError(f'expected name in key, got {key!r}')
         try:
             return self._decls[resolved]
         except KeyError:
@@ -1556,12 +1511,12 @@ class Declarations:
                 filename, funcname, name = key
             else:
                 filename, funcname, name = resolved
-            if filename and not filename.endswith((".c", ".h")):
-                raise KeyError(f"invalid filename in key {key!r}")
-            elif funcname and funcname.endswith((".c", ".h")):
-                raise KeyError(f"invalid funcname in key {key!r}")
-            elif name and name.endswith((".c", ".h")):
-                raise KeyError(f"invalid name in key {key!r}")
+            if filename and not filename.endswith(('.c', '.h')):
+                raise KeyError(f'invalid filename in key {key!r}')
+            elif funcname and funcname.endswith(('.c', '.h')):
+                raise KeyError(f'invalid funcname in key {key!r}')
+            elif name and name.endswith(('.c', '.h')):
+                raise KeyError(f'invalid name in key {key!r}')
             else:
                 raise  # re-raise
 
@@ -1586,7 +1541,7 @@ class Declarations:
         except KeyError:
             return default
 
-    # def add_decl(self, decl, key=None):
+    #def add_decl(self, decl, key=None):
     #    decl = _resolve_parsed(decl)
     #    self._add_decl(decl, key)
 
@@ -1601,19 +1556,19 @@ class Declarations:
         if not extra:
             kind = None
         elif len(extra) == 1:
-            (kind,) = extra
+            kind, = extra
         else:
-            raise KeyError(f"key must have at most 4 parts, got {key!r}")
+            raise KeyError(f'key must have at most 4 parts, got {key!r}')
 
-        implicit = {}
+        implicit= {}
         if filename:
-            implicit["filename"] = filename
+            implicit['filename'] = filename
         if funcname:
-            implicit["funcname"] = funcname
+            implicit['funcname'] = funcname
         if name:
-            implicit["name"] = name
+            implicit['name'] = name
         if kind:
-            implicit["kind"] = kind
+            implicit['kind'] = kind
         return self._find(**implicit, **explicit)
 
     def _find(self, filename=None, funcname=None, name=None, kind=None):
@@ -1641,7 +1596,7 @@ class Declarations:
             # same partial key will still match a key lookup.
             resolved, _ = self._resolve_key(key)
             if not resolved[2]:
-                raise ValueError(f"expected name in key, got {key!r}")
+                raise ValueError(f'expected name in key, got {key!r}')
             key = resolved
             # XXX Also add with the decl-derived key if not the same?
         else:

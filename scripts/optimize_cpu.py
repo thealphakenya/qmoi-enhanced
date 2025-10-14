@@ -11,7 +11,7 @@ def optimize_cpu():
     p = psutil.Process(os.getpid())
     try:
         # Set process priority to high
-        if os.name == "nt":
+        if os.name == 'nt':
             p.nice(psutil.HIGH_PRIORITY_CLASS)
         else:
             p.nice(-10)
@@ -27,6 +27,5 @@ def optimize_cpu():
 
     print("CPU scheduling optimized.")
 
-
-if __name__ == "__main__":
-    optimize_cpu()
+if __name__ == '__main__':
+    optimize_cpu() 

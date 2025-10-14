@@ -14,18 +14,12 @@ import tempfile
 import subprocess
 
 import urllib.request
-
 # The proxy bypass method imported below has logic specific to the OSX
 # proxy config data structure but is testable on all platforms.
-from urllib.request import (
-    Request,
-    OpenerDirector,
-    HTTPBasicAuthHandler,
-    HTTPPasswordMgrWithPriorAuth,
-    _parse_proxy,
-    _proxy_bypass_macosx_sysconf,
-    AbstractDigestAuthHandler,
-)
+from urllib.request import (Request, OpenerDirector, HTTPBasicAuthHandler,
+                            HTTPPasswordMgrWithPriorAuth, _parse_proxy,
+                            _proxy_bypass_macosx_sysconf,
+                            AbstractDigestAuthHandler)
 from urllib.parse import urlparse
 import urllib.error
 import http.client
@@ -42,21 +36,18 @@ class TrivialTests(unittest.TestCase):
 
     def test___all__(self):
         # Verify which names are exposed
-        for module in "request", "response", "parse", "error", "robotparser":
+        for module in 'request', 'response', 'parse', 'error', 'robotparser':
             context = {}
-            exec("from urllib.%s import *" % module, context)
-            del context["__builtins__"]
-            if module == "request" and os.name == "nt":
-                u, p = context.pop("url2pathname"), context.pop("pathname2url")
-                self.assertEqual(u.__module__, "nturl2path")
-                self.assertEqual(p.__module__, "nturl2path")
+            exec('from urllib.%s import *' % module, context)
+            del context['__builtins__']
+            if module == 'request' and os.name == 'nt':
+                u, p = context.pop('url2pathname'), context.pop('pathname2url')
+                self.assertEqual(u.__module__, 'nturl2path')
+                self.assertEqual(p.__module__, 'nturl2path')
             for k, v in context.items():
-                self.assertEqual(
-                    v.__module__,
-                    "urllib.%s" % module,
-                    "%r is exposed in 'urllib.%s' but defined in %r"
-                    % (k, module, v.__module__),
-                )
+                self.assertEqual(v.__module__, 'urllib.%s' % module,
+                    "%r is exposed in 'urllib.%s' but defined in %r" %
+                    (k, module, v.__module__))
 
     def test_trivial(self):
         # A couple trivial tests
@@ -64,12 +55,12 @@ class TrivialTests(unittest.TestCase):
         # clear _opener global variable
         self.addCleanup(urllib.request.urlcleanup)
 
-        self.assertRaises(ValueError, urllib.request.urlopen, "bogus url")
+        self.assertRaises(ValueError, urllib.request.urlopen, 'bogus url')
 
         # XXX Name hacking to get this to work on Windows.
-        fname = os.path.abspath(urllib.request.__file__).replace(os.sep, "/")
+        fname = os.path.abspath(urllib.request.__file__).replace(os.sep, '/')
 
-        if os.name == "nt":
+        if os.name == 'nt':
             file_url = "file:///%s" % fname
         else:
             file_url = "file://%s" % fname
@@ -79,19 +70,17 @@ class TrivialTests(unittest.TestCase):
 
     def test_parse_http_list(self):
         tests = [
-            ("a,b,c", ["a", "b", "c"]),
-            ('path"o,l"og"i"cal, example', ['path"o,l"og"i"cal', "example"]),
-            (
-                'a, b, "c", "d", "e,f", g, h',
-                ["a", "b", '"c"', '"d"', '"e,f"', "g", "h"],
-            ),
-            ('a="b\\"c", d="e\\,f", g="h\\\\i"', ['a="b"c"', 'd="e,f"', 'g="h\\i"']),
-        ]
+            ('a,b,c', ['a', 'b', 'c']),
+            ('path"o,l"og"i"cal, example', ['path"o,l"og"i"cal', 'example']),
+            ('a, b, "c", "d", "e,f", g, h',
+             ['a', 'b', '"c"', '"d"', '"e,f"', 'g', 'h']),
+            ('a="b\\"c", d="e\\,f", g="h\\\\i"',
+             ['a="b"c"', 'd="e,f"', 'g="h\\i"'])]
         for string, list in tests:
             self.assertEqual(urllib.request.parse_http_list(string), list)
 
     def test_URLError_reasonstr(self):
-        err = urllib.error.URLError("reason")
+        err = urllib.error.URLError('reason')
         self.assertIn(err.reason, str(err))
 
 
@@ -111,12 +100,12 @@ class RequestHdrsTests(unittest.TestCase):
 
         """
         url = "http://example.com"
-        self.assertEqual(
-            Request(url, headers={"Spam-eggs": "blah"}).headers["Spam-eggs"], "blah"
-        )
-        self.assertEqual(
-            Request(url, headers={"spam-EggS": "blah"}).headers["Spam-eggs"], "blah"
-        )
+        self.assertEqual(Request(url,
+                                 headers={"Spam-eggs": "blah"}
+                                 ).headers["Spam-eggs"], "blah")
+        self.assertEqual(Request(url,
+                                 headers={"spam-EggS": "blah"}
+                                 ).headers["Spam-eggs"], "blah")
 
     def test_request_headers_methods(self):
         """
@@ -136,12 +125,11 @@ class RequestHdrsTests(unittest.TestCase):
         url = "http://example.com"
         req = Request(url, headers={"Spam-eggs": "blah"})
         self.assertTrue(req.has_header("Spam-eggs"))
-        self.assertEqual(req.header_items(), [("Spam-eggs", "blah")])
+        self.assertEqual(req.header_items(), [('Spam-eggs', 'blah')])
 
         req.add_header("Foo-Bar", "baz")
-        self.assertEqual(
-            sorted(req.header_items()), [("Foo-bar", "baz"), ("Spam-eggs", "blah")]
-        )
+        self.assertEqual(sorted(req.header_items()),
+                         [('Foo-bar', 'baz'), ('Spam-eggs', 'blah')])
         self.assertFalse(req.has_header("Not-there"))
         self.assertIsNone(req.get_header("Not-there"))
         self.assertEqual(req.get_header("Not-there", "default"), "default")
@@ -167,25 +155,20 @@ class RequestHdrsTests(unittest.TestCase):
         add("Some Realm", "e.example.com:3128", "5", "e")
 
         # For the same realm, password set the highest path is the winner.
-        self.assertEqual(
-            find_user_pass("Some Realm", "example.com"), ("joe", "password")
-        )
-        self.assertEqual(
-            find_user_pass("Some Realm", "http://example.com/ni"), ("joe", "password")
-        )
-        self.assertEqual(
-            find_user_pass("Some Realm", "http://example.com"), ("joe", "password")
-        )
-        self.assertEqual(
-            find_user_pass("Some Realm", "http://example.com/"), ("joe", "password")
-        )
-        self.assertEqual(
-            find_user_pass("Some Realm", "http://example.com/spam"), ("joe", "password")
-        )
-        self.assertEqual(
-            find_user_pass("Some Realm", "http://example.com/spam/spam"),
-            ("joe", "password"),
-        )
+        self.assertEqual(find_user_pass("Some Realm", "example.com"),
+                         ('joe', 'password'))
+        self.assertEqual(find_user_pass("Some Realm", "http://example.com/ni"),
+                         ('joe', 'password'))
+        self.assertEqual(find_user_pass("Some Realm", "http://example.com"),
+                         ('joe', 'password'))
+        self.assertEqual(find_user_pass("Some Realm", "http://example.com/"),
+                         ('joe', 'password'))
+        self.assertEqual(find_user_pass("Some Realm",
+                                        "http://example.com/spam"),
+                         ('joe', 'password'))
+        self.assertEqual(find_user_pass("Some Realm",
+                                        "http://example.com/spam/spam"),
+                         ('joe', 'password'))
 
         # You can have different passwords for different paths.
 
@@ -193,50 +176,58 @@ class RequestHdrsTests(unittest.TestCase):
         add("c", "http://example.com/bar", "bar", "nini")
         add("c", "http://example.com/foo/bar", "foobar", "nibar")
 
-        self.assertEqual(find_user_pass("c", "http://example.com/foo"), ("foo", "ni"))
-        self.assertEqual(find_user_pass("c", "http://example.com/bar"), ("bar", "nini"))
-        self.assertEqual(find_user_pass("c", "http://example.com/foo/"), ("foo", "ni"))
-        self.assertEqual(
-            find_user_pass("c", "http://example.com/foo/bar"), ("foo", "ni")
-        )
-        self.assertEqual(
-            find_user_pass("c", "http://example.com/foo/baz"), ("foo", "ni")
-        )
-        self.assertEqual(find_user_pass("c", "http://example.com/foobar"), (None, None))
+        self.assertEqual(find_user_pass("c", "http://example.com/foo"),
+                         ('foo', 'ni'))
+        self.assertEqual(find_user_pass("c", "http://example.com/bar"),
+                         ('bar', 'nini'))
+        self.assertEqual(find_user_pass("c", "http://example.com/foo/"),
+                         ('foo', 'ni'))
+        self.assertEqual(find_user_pass("c", "http://example.com/foo/bar"),
+                         ('foo', 'ni'))
+        self.assertEqual(find_user_pass("c", "http://example.com/foo/baz"),
+                         ('foo', 'ni'))
+        self.assertEqual(find_user_pass("c", "http://example.com/foobar"),
+                         (None, None))
 
         add("c", "http://example.com/baz/", "baz", "ninini")
 
-        self.assertEqual(find_user_pass("c", "http://example.com/baz"), (None, None))
-        self.assertEqual(
-            find_user_pass("c", "http://example.com/baz/"), ("baz", "ninini")
-        )
-        self.assertEqual(
-            find_user_pass("c", "http://example.com/baz/bar"), ("baz", "ninini")
-        )
+        self.assertEqual(find_user_pass("c", "http://example.com/baz"),
+                         (None, None))
+        self.assertEqual(find_user_pass("c", "http://example.com/baz/"),
+                         ('baz', 'ninini'))
+        self.assertEqual(find_user_pass("c", "http://example.com/baz/bar"),
+                         ('baz', 'ninini'))
 
         # For the same path, newer password should be considered.
 
         add("b", "http://example.com/", "first", "blah")
         add("b", "http://example.com/", "second", "spam")
 
-        self.assertEqual(find_user_pass("b", "http://example.com/"), ("second", "spam"))
+        self.assertEqual(find_user_pass("b", "http://example.com/"),
+                         ('second', 'spam'))
 
         # No special relationship between a.example.com and example.com:
 
         add("a", "http://example.com", "1", "a")
-        self.assertEqual(find_user_pass("a", "http://example.com/"), ("1", "a"))
+        self.assertEqual(find_user_pass("a", "http://example.com/"),
+                         ('1', 'a'))
 
-        self.assertEqual(find_user_pass("a", "http://a.example.com/"), (None, None))
+        self.assertEqual(find_user_pass("a", "http://a.example.com/"),
+                         (None, None))
 
         # Ports:
 
-        self.assertEqual(find_user_pass("Some Realm", "c.example.com"), (None, None))
-        self.assertEqual(find_user_pass("Some Realm", "c.example.com:3128"), ("3", "c"))
+        self.assertEqual(find_user_pass("Some Realm", "c.example.com"),
+                         (None, None))
+        self.assertEqual(find_user_pass("Some Realm", "c.example.com:3128"),
+                         ('3', 'c'))
         self.assertEqual(
-            find_user_pass("Some Realm", "http://c.example.com:3128"), ("3", "c")
-        )
-        self.assertEqual(find_user_pass("Some Realm", "d.example.com"), ("4", "d"))
-        self.assertEqual(find_user_pass("Some Realm", "e.example.com:3128"), ("5", "e"))
+            find_user_pass("Some Realm", "http://c.example.com:3128"),
+            ('3', 'c'))
+        self.assertEqual(find_user_pass("Some Realm", "d.example.com"),
+                         ('4', 'd'))
+        self.assertEqual(find_user_pass("Some Realm", "e.example.com:3128"),
+                         ('5', 'e'))
 
     def test_password_manager_default_port(self):
         """
@@ -251,22 +242,33 @@ class RequestHdrsTests(unittest.TestCase):
         add("g", "http://h.example.com", "11", "k")
         add("h", "i.example.com:80", "12", "l")
         add("i", "j.example.com", "13", "m")
-        self.assertEqual(find_user_pass("f", "g.example.com:100"), (None, None))
-        self.assertEqual(find_user_pass("f", "g.example.com:80"), ("10", "j"))
-        self.assertEqual(find_user_pass("f", "g.example.com"), (None, None))
-        self.assertEqual(find_user_pass("f", "http://g.example.com:100"), (None, None))
-        self.assertEqual(find_user_pass("f", "http://g.example.com:80"), ("10", "j"))
-        self.assertEqual(find_user_pass("f", "http://g.example.com"), ("10", "j"))
-        self.assertEqual(find_user_pass("g", "h.example.com"), ("11", "k"))
-        self.assertEqual(find_user_pass("g", "h.example.com:80"), ("11", "k"))
-        self.assertEqual(find_user_pass("g", "http://h.example.com:80"), ("11", "k"))
+        self.assertEqual(find_user_pass("f", "g.example.com:100"),
+                         (None, None))
+        self.assertEqual(find_user_pass("f", "g.example.com:80"),
+                         ('10', 'j'))
+        self.assertEqual(find_user_pass("f", "g.example.com"),
+                         (None, None))
+        self.assertEqual(find_user_pass("f", "http://g.example.com:100"),
+                         (None, None))
+        self.assertEqual(find_user_pass("f", "http://g.example.com:80"),
+                         ('10', 'j'))
+        self.assertEqual(find_user_pass("f", "http://g.example.com"),
+                         ('10', 'j'))
+        self.assertEqual(find_user_pass("g", "h.example.com"), ('11', 'k'))
+        self.assertEqual(find_user_pass("g", "h.example.com:80"), ('11', 'k'))
+        self.assertEqual(find_user_pass("g", "http://h.example.com:80"),
+                         ('11', 'k'))
         self.assertEqual(find_user_pass("h", "i.example.com"), (None, None))
-        self.assertEqual(find_user_pass("h", "i.example.com:80"), ("12", "l"))
-        self.assertEqual(find_user_pass("h", "http://i.example.com:80"), ("12", "l"))
-        self.assertEqual(find_user_pass("i", "j.example.com"), ("13", "m"))
-        self.assertEqual(find_user_pass("i", "j.example.com:80"), (None, None))
-        self.assertEqual(find_user_pass("i", "http://j.example.com"), ("13", "m"))
-        self.assertEqual(find_user_pass("i", "http://j.example.com:80"), (None, None))
+        self.assertEqual(find_user_pass("h", "i.example.com:80"), ('12', 'l'))
+        self.assertEqual(find_user_pass("h", "http://i.example.com:80"),
+                         ('12', 'l'))
+        self.assertEqual(find_user_pass("i", "j.example.com"), ('13', 'm'))
+        self.assertEqual(find_user_pass("i", "j.example.com:80"),
+                         (None, None))
+        self.assertEqual(find_user_pass("i", "http://j.example.com"),
+                         ('13', 'm'))
+        self.assertEqual(find_user_pass("i", "http://j.example.com:80"),
+                         (None, None))
 
 
 class MockOpener:
@@ -334,7 +336,7 @@ class MockHTTPResponse(io.IOBase):
         self.code = 200
 
     def read(self):
-        return ""
+        return ''
 
     def info(self):
         return {}
@@ -368,7 +370,8 @@ class MockHTTPClass:
         else:
             self._tunnel_headers.clear()
 
-    def request(self, method, url, body=None, headers=None, *, encode_chunked=False):
+    def request(self, method, url, body=None, headers=None, *,
+                encode_chunked=False):
         self.method = method
         self.selector = url
         if headers is not None:
@@ -416,7 +419,7 @@ class MockHandler:
         elif action == "return request":
             return Request("http://blah/")
         elif action.startswith("error"):
-            code = action[action.rfind(" ") + 1 :]
+            code = action[action.rfind(" ")+1:]
             try:
                 code = int(code)
             except ValueError:
@@ -463,7 +466,6 @@ def add_ordered_mock_handlers(opener, meth_spec):
     handlers = []
     count = 0
     for meths in meth_spec:
-
         class MockHandlerSubclass(MockHandler):
             pass
 
@@ -509,21 +511,20 @@ class MockHTTPHandlerRedirect(urllib.request.BaseHandler):
 
     def http_open(self, req):
         import email, copy
-
         self.requests.append(copy.deepcopy(req))
         if self._count == 0:
             self._count = self._count + 1
             name = http.client.responses[self.code]
             msg = email.message_from_string(self.headers)
-            return self.parent.error("http", req, MockFile(), self.code, name, msg)
+            return self.parent.error(
+                "http", req, MockFile(), self.code, name, msg)
         else:
             self.req = req
             msg = email.message_from_string("\r\n\r\n")
             return MockResponse(200, "OK", msg, "", req.get_full_url())
 
 
-if hasattr(http.client, "HTTPSConnection"):
-
+if hasattr(http.client, 'HTTPSConnection'):
     class MockHTTPSHandler(urllib.request.HTTPSHandler):
         # Useful for testing the Proxy-Authorization request by verifying the
         # properties of httpcon
@@ -548,10 +549,11 @@ class MockHTTPHandlerCheckAuth(urllib.request.BaseHandler):
         self.has_auth_header = False
 
     def http_open(self, req):
-        if req.has_header("Authorization"):
+        if req.has_header('Authorization'):
             self.has_auth_header = True
         name = http.client.responses[self.code]
         return MockResponse(self.code, name, MockFile(), "", req.get_full_url())
+
 
 
 class MockPasswordManager:
@@ -572,8 +574,8 @@ class OpenerDirectorTests(unittest.TestCase):
     def test_add_non_handler(self):
         class NonHandler(object):
             pass
-
-        self.assertRaises(TypeError, OpenerDirector().add_handler, NonHandler())
+        self.assertRaises(TypeError,
+                          OpenerDirector().add_handler, NonHandler())
 
     def test_badly_named_methods(self):
         # test work-around for three methods that accidentally follow the
@@ -590,11 +592,11 @@ class OpenerDirectorTests(unittest.TestCase):
         meth_spec = [
             [("do_open", "return self"), ("proxy_open", "return self")],
             [("redirect_request", "return self")],
-        ]
+            ]
         add_ordered_mock_handlers(o, meth_spec)
         o.add_handler(urllib.request.UnknownHandler())
         for scheme in "do", "proxy", "redirect":
-            self.assertRaises(URLError, o.open, scheme + "://example.com/")
+            self.assertRaises(URLError, o.open, scheme+"://example.com/")
 
     def test_handled(self):
         # handler returning non-None means no more handlers will be called
@@ -604,7 +606,7 @@ class OpenerDirectorTests(unittest.TestCase):
             ["ftp_open"],
             [("http_open", "return self")],
             [("http_open", "return self")],
-        ]
+            ]
         handlers = add_ordered_mock_handlers(o, meth_spec)
 
         req = Request("http://example.com/")
@@ -625,11 +627,8 @@ class OpenerDirectorTests(unittest.TestCase):
     def test_handler_order(self):
         o = OpenerDirector()
         handlers = []
-        for meths, handler_order in [
-            ([("http_open", "return self")], 500),
-            (["http_open"], 0),
-        ]:
-
+        for meths, handler_order in [([("http_open", "return self")], 500),
+                                     (["http_open"], 0)]:
             class MockHandlerSubclass(MockHandler):
                 pass
 
@@ -649,7 +648,7 @@ class OpenerDirectorTests(unittest.TestCase):
         meth_spec = [
             [("http_open", "raise")],
             [("http_open", "return self")],
-        ]
+            ]
         handlers = add_ordered_mock_handlers(o, meth_spec)
 
         req = Request("http://example.com/")
@@ -663,17 +662,17 @@ class OpenerDirectorTests(unittest.TestCase):
         meth_spec = [
             [("http_open", "error 302")],
             [("http_error_400", "raise"), "http_open"],
-            [("http_error_302", "return response"), "http_error_303", "http_error"],
-            ["http_error_302"],
-        ]
+            [("http_error_302", "return response"), "http_error_303",
+             "http_error"],
+            [("http_error_302")],
+            ]
         handlers = add_ordered_mock_handlers(o, meth_spec)
         req = Request("http://example.com/")
         o.open(req)
         assert len(o.calls) == 2
-        calls = [
-            (handlers[0], "http_open", (req,)),
-            (handlers[2], "http_error_302", (req, support.ALWAYS_EQ, 302, "", {})),
-        ]
+        calls = [(handlers[0], "http_open", (req,)),
+                 (handlers[2], "http_error_302",
+                  (req, support.ALWAYS_EQ, 302, "", {}))]
         for expected, got in zip(calls, o.calls):
             handler, method_name, args = expected
             self.assertEqual((handler, method_name), got[:2])
@@ -683,9 +682,11 @@ class OpenerDirectorTests(unittest.TestCase):
         # *_request / *_response methods get called appropriately
         o = OpenerDirector()
         meth_spec = [
-            [("http_request", "return request"), ("http_response", "return response")],
-            [("http_request", "return request"), ("http_response", "return response")],
-        ]
+            [("http_request", "return request"),
+             ("http_response", "return response")],
+            [("http_request", "return request"),
+             ("http_response", "return response")],
+            ]
         handlers = add_ordered_mock_handlers(o, meth_spec)
 
         req = Request("http://example.com/")
@@ -693,11 +694,8 @@ class OpenerDirectorTests(unittest.TestCase):
         # processor methods are called on *all* handlers that define them,
         # not just the first handler that handles the request
         calls = [
-            (handlers[0], "http_request"),
-            (handlers[1], "http_request"),
-            (handlers[0], "http_response"),
-            (handlers[1], "http_response"),
-        ]
+            (handlers[0], "http_request"), (handlers[1], "http_request"),
+            (handlers[0], "http_response"), (handlers[1], "http_response")]
 
         for i, (handler, name, args, kwds) in enumerate(o.calls):
             if i < 2:
@@ -746,15 +744,8 @@ class HandlerTests(unittest.TestCase):
             def __init__(self, data):
                 self.data = data
 
-            def connect_ftp(
-                self,
-                user,
-                passwd,
-                host,
-                port,
-                dirs,
-                timeout=socket._GLOBAL_DEFAULT_TIMEOUT,
-            ):
+            def connect_ftp(self, user, passwd, host, port, dirs,
+                            timeout=socket._GLOBAL_DEFAULT_TIMEOUT):
                 self.user, self.passwd = user, passwd
                 self.host, self.port = host, port
                 self.dirs = dirs
@@ -762,79 +753,30 @@ class HandlerTests(unittest.TestCase):
                 return self.ftpwrapper
 
         import ftplib
-
         data = "rheum rhaponicum"
         h = NullFTPHandler(data)
         h.parent = MockOpener()
 
         for url, host, port, user, passwd, type_, dirs, filename, mimetype in [
-            (
-                "ftp://localhost/foo/bar/baz.html",
-                "localhost",
-                ftplib.FTP_PORT,
-                "",
-                "",
-                "I",
-                ["foo", "bar"],
-                "baz.html",
-                "text/html",
-            ),
-            (
-                "ftp://parrot@localhost/foo/bar/baz.html",
-                "localhost",
-                ftplib.FTP_PORT,
-                "parrot",
-                "",
-                "I",
-                ["foo", "bar"],
-                "baz.html",
-                "text/html",
-            ),
-            (
-                "ftp://%25parrot@localhost/foo/bar/baz.html",
-                "localhost",
-                ftplib.FTP_PORT,
-                "%parrot",
-                "",
-                "I",
-                ["foo", "bar"],
-                "baz.html",
-                "text/html",
-            ),
-            (
-                "ftp://%2542parrot@localhost/foo/bar/baz.html",
-                "localhost",
-                ftplib.FTP_PORT,
-                "%42parrot",
-                "",
-                "I",
-                ["foo", "bar"],
-                "baz.html",
-                "text/html",
-            ),
-            (
-                "ftp://localhost:80/foo/bar/",
-                "localhost",
-                80,
-                "",
-                "",
-                "D",
-                ["foo", "bar"],
-                "",
-                None,
-            ),
-            (
-                "ftp://localhost/baz.gif;type=a",
-                "localhost",
-                ftplib.FTP_PORT,
-                "",
-                "",
-                "A",
-                [],
-                "baz.gif",
-                None,
-            ),  # XXX really this should guess image/gif
-        ]:
+            ("ftp://localhost/foo/bar/baz.html",
+             "localhost", ftplib.FTP_PORT, "", "", "I",
+             ["foo", "bar"], "baz.html", "text/html"),
+            ("ftp://parrot@localhost/foo/bar/baz.html",
+             "localhost", ftplib.FTP_PORT, "parrot", "", "I",
+             ["foo", "bar"], "baz.html", "text/html"),
+            ("ftp://%25parrot@localhost/foo/bar/baz.html",
+             "localhost", ftplib.FTP_PORT, "%parrot", "", "I",
+             ["foo", "bar"], "baz.html", "text/html"),
+            ("ftp://%2542parrot@localhost/foo/bar/baz.html",
+             "localhost", ftplib.FTP_PORT, "%42parrot", "", "I",
+             ["foo", "bar"], "baz.html", "text/html"),
+            ("ftp://localhost:80/foo/bar/",
+             "localhost", 80, "", "", "D",
+             ["foo", "bar"], "", None),
+            ("ftp://localhost/baz.gif;type=a",
+             "localhost", ftplib.FTP_PORT, "", "", "A",
+             [], "baz.gif", None),  # XXX really this should guess image/gif
+            ]:
             req = Request(url)
             req.timeout = None
             r = h.ftp_open(req)
@@ -852,7 +794,6 @@ class HandlerTests(unittest.TestCase):
 
     def test_file(self):
         import email.utils
-
         h = urllib.request.FileHandler()
         o = h.parent = MockOpener()
 
@@ -862,12 +803,12 @@ class HandlerTests(unittest.TestCase):
         urls = [
             "file://localhost%s" % urlpath,
             "file://%s" % urlpath,
-            "file://%s%s" % (socket.gethostbyname("localhost"), urlpath),
-        ]
+            "file://%s%s" % (socket.gethostbyname('localhost'), urlpath),
+            ]
         try:
             localaddr = socket.gethostbyname(socket.gethostname())
         except socket.gaierror:
-            localaddr = ""
+            localaddr = ''
         if localaddr:
             urls.append("file://%s%s" % (localaddr, urlpath))
 
@@ -900,10 +841,11 @@ class HandlerTests(unittest.TestCase):
             "file://localhost:80%s" % urlpath,
             "file:///file_does_not_exist.txt",
             "file://not-a-local-host.com//dir/file.txt",
-            "file://%s:80%s/%s"
-            % (socket.gethostbyname("localhost"), os.getcwd(), TESTFN),
-            "file://somerandomhost.ontheinternet.com%s/%s" % (os.getcwd(), TESTFN),
-        ]:
+            "file://%s:80%s/%s" % (socket.gethostbyname('localhost'),
+                                   os.getcwd(), TESTFN),
+            "file://somerandomhost.ontheinternet.com%s/%s" %
+            (os.getcwd(), TESTFN),
+            ]:
             try:
                 f = open(TESTFN, "wb")
                 try:
@@ -911,7 +853,8 @@ class HandlerTests(unittest.TestCase):
                 finally:
                     f.close()
 
-                self.assertRaises(urllib.error.URLError, h.file_open, Request(url))
+                self.assertRaises(urllib.error.URLError,
+                                  h.file_open, Request(url))
             finally:
                 os.remove(TESTFN)
 
@@ -930,7 +873,7 @@ class HandlerTests(unittest.TestCase):
             ("file://ftp.example.com/foo.txt", False),
             ("file://somehost//foo/something.txt", False),
             ("file://localhost//foo/something.txt", False),
-        ]:
+            ]:
             req = Request(url)
             try:
                 h.file_open(req)
@@ -955,24 +898,20 @@ class HandlerTests(unittest.TestCase):
             r = h.do_open(http, req)
 
             # result attributes
-            r.read
-            r.readline  # wrapped MockFile methods
-            r.info
-            r.geturl  # addinfourl methods
+            r.read; r.readline  # wrapped MockFile methods
+            r.info; r.geturl  # addinfourl methods
             r.code, r.msg == 200, "OK"  # added from MockHTTPClass.getreply()
             hdrs = r.info()
-            hdrs.get
-            hdrs.__contains__  # r.info() gives dict from .getreply()
+            hdrs.get; hdrs.__contains__  # r.info() gives dict from .getreply()
             self.assertEqual(r.geturl(), url)
 
             self.assertEqual(http.host, "example.com")
             self.assertEqual(http.level, 0)
             self.assertEqual(http.method, method)
             self.assertEqual(http.selector, "/")
-            self.assertEqual(
-                http.req_headers,
-                [("Connection", "close"), ("Foo", "bar"), ("Spam", "eggs")],
-            )
+            self.assertEqual(http.req_headers,
+                             [("Connection", "close"),
+                              ("Foo", "bar"), ("Spam", "eggs")])
             self.assertEqual(http.data, data)
 
         # check OSError converted to URLError
@@ -980,7 +919,7 @@ class HandlerTests(unittest.TestCase):
         self.assertRaises(urllib.error.URLError, h.do_open, http, req)
 
         # Check for TypeError on POST data which is str.
-        req = Request("http://example.com/", "badpost")
+        req = Request("http://example.com/","badpost")
         self.assertRaises(TypeError, h.do_request_, req)
 
         # check adding of standard headers
@@ -994,10 +933,8 @@ class HandlerTests(unittest.TestCase):
                 self.assertNotIn("Content-type", req.unredirected_hdrs)
             else:  # POST
                 self.assertEqual(req.unredirected_hdrs["Content-length"], "0")
-                self.assertEqual(
-                    req.unredirected_hdrs["Content-type"],
-                    "application/x-www-form-urlencoded",
-                )
+                self.assertEqual(req.unredirected_hdrs["Content-type"],
+                             "application/x-www-form-urlencoded")
             # XXX the details of Host could be better tested
             self.assertEqual(req.unredirected_hdrs["Host"], "example.com")
             self.assertEqual(req.unredirected_hdrs["Spam"], "eggs")
@@ -1020,7 +957,7 @@ class HandlerTests(unittest.TestCase):
         h = urllib.request.AbstractHTTPHandler()
         o = h.parent = MockOpener()
 
-        file_obj = tempfile.NamedTemporaryFile(mode="w+b", delete=False)
+        file_obj = tempfile.NamedTemporaryFile(mode='w+b', delete=False)
         file_path = file_obj.name
         file_obj.close()
         self.addCleanup(os.unlink, file_path)
@@ -1028,14 +965,14 @@ class HandlerTests(unittest.TestCase):
         with open(file_path, "rb") as f:
             req = Request("http://example.com/", f, {})
             newreq = h.do_request_(req)
-            te = newreq.get_header("Transfer-encoding")
+            te = newreq.get_header('Transfer-encoding')
             self.assertEqual(te, "chunked")
-            self.assertFalse(newreq.has_header("Content-length"))
+            self.assertFalse(newreq.has_header('Content-length'))
 
         with open(file_path, "rb") as f:
             req = Request("http://example.com/", f, {"Content-Length": 30})
             newreq = h.do_request_(req)
-            self.assertEqual(int(newreq.get_header("Content-length")), 30)
+            self.assertEqual(int(newreq.get_header('Content-length')), 30)
             self.assertFalse(newreq.has_header("Transfer-encoding"))
 
     def test_http_body_fileobj(self):
@@ -1050,13 +987,13 @@ class HandlerTests(unittest.TestCase):
 
         req = Request("http://example.com/", file_obj, {})
         newreq = h.do_request_(req)
-        self.assertEqual(newreq.get_header("Transfer-encoding"), "chunked")
-        self.assertFalse(newreq.has_header("Content-length"))
+        self.assertEqual(newreq.get_header('Transfer-encoding'), 'chunked')
+        self.assertFalse(newreq.has_header('Content-length'))
 
         headers = {"Content-Length": 30}
         req = Request("http://example.com/", file_obj, headers)
         newreq = h.do_request_(req)
-        self.assertEqual(int(newreq.get_header("Content-length")), 30)
+        self.assertEqual(int(newreq.get_header('Content-length')), 30)
         self.assertFalse(newreq.has_header("Transfer-encoding"))
 
         file_obj.close()
@@ -1076,10 +1013,12 @@ class HandlerTests(unittest.TestCase):
                 req = Request("http://example.com/", proc.stdout, headers)
                 newreq = h.do_request_(req)
                 if not headers:
-                    self.assertEqual(newreq.get_header("Content-length"), None)
-                    self.assertEqual(newreq.get_header("Transfer-encoding"), "chunked")
+                    self.assertEqual(newreq.get_header('Content-length'), None)
+                    self.assertEqual(newreq.get_header('Transfer-encoding'),
+                                     'chunked')
                 else:
-                    self.assertEqual(int(newreq.get_header("Content-length")), 30)
+                    self.assertEqual(int(newreq.get_header('Content-length')),
+                                     30)
 
     def test_http_body_iterable(self):
         # Generic iterable.  There is no way to determine the content
@@ -1095,10 +1034,11 @@ class HandlerTests(unittest.TestCase):
             req = Request("http://example.com/", iterable_body(), headers)
             newreq = h.do_request_(req)
             if not headers:
-                self.assertEqual(newreq.get_header("Content-length"), None)
-                self.assertEqual(newreq.get_header("Transfer-encoding"), "chunked")
+                self.assertEqual(newreq.get_header('Content-length'), None)
+                self.assertEqual(newreq.get_header('Transfer-encoding'),
+                                 'chunked')
             else:
-                self.assertEqual(int(newreq.get_header("Content-length")), 11)
+                self.assertEqual(int(newreq.get_header('Content-length')), 11)
 
     def test_http_body_empty_seq(self):
         # Zero-length iterable body should be treated like any other iterable
@@ -1114,15 +1054,15 @@ class HandlerTests(unittest.TestCase):
         h = urllib.request.AbstractHTTPHandler()
         o = h.parent = MockOpener()
 
-        iterable_array = array.array("I", [1, 2, 3, 4])
+        iterable_array = array.array("I",[1,2,3,4])
 
         for headers in {}, {"Content-Length": 16}:
             req = Request("http://example.com/", iterable_array, headers)
             newreq = h.do_request_(req)
-            self.assertEqual(int(newreq.get_header("Content-length")), 16)
+            self.assertEqual(int(newreq.get_header('Content-length')),16)
 
     def test_http_handler_global_debuglevel(self):
-        with mock.patch.object(http.client.HTTPConnection, "debuglevel", 6):
+        with mock.patch.object(http.client.HTTPConnection, 'debuglevel', 6):
             o = OpenerDirector()
             h = MockHTTPHandler()
             o.add_handler(h)
@@ -1136,22 +1076,16 @@ class HandlerTests(unittest.TestCase):
         o.open("http://www.example.com")
         self.assertEqual(h._debuglevel, 5)
 
-    @unittest.skipUnless(
-        hasattr(http.client, "HTTPSConnection"),
-        "HTTPSConnection required for HTTPS tests.",
-    )
+    @unittest.skipUnless(hasattr(http.client, 'HTTPSConnection'), 'HTTPSConnection required for HTTPS tests.')
     def test_https_handler_global_debuglevel(self):
-        with mock.patch.object(http.client.HTTPSConnection, "debuglevel", 7):
+        with mock.patch.object(http.client.HTTPSConnection, 'debuglevel', 7):
             o = OpenerDirector()
             h = MockHTTPSHandler()
             o.add_handler(h)
             o.open("https://www.example.com")
             self.assertEqual(h._debuglevel, 7)
 
-    @unittest.skipUnless(
-        hasattr(http.client, "HTTPSConnection"),
-        "HTTPSConnection required for HTTPS tests.",
-    )
+    @unittest.skipUnless(hasattr(http.client, 'HTTPSConnection'), 'HTTPSConnection required for HTTPS tests.')
     def test_https_handler_local_debuglevel(self):
         o = OpenerDirector()
         h = MockHTTPSHandler(debuglevel=4)
@@ -1171,8 +1105,8 @@ class HandlerTests(unittest.TestCase):
             "http://example.com/foo/bar/baz.html",
             "http://example.com//foo/bar/baz.html",
             "http://example.com/foo//bar/baz.html",
-            "http://example.com/foo/bar//baz.html",
-        ]
+            "http://example.com/foo/bar//baz.html"
+            ]
 
         for ds_url in ds_urls:
             ds_req = Request(ds_url, data)
@@ -1191,14 +1125,14 @@ class HandlerTests(unittest.TestCase):
         # full_url of a Request object
 
         urls = [
-            "http://example.com?foo=bar#baz",
-            "http://example.com?foo=bar&spam=eggs#bash",
-            "http://example.com",
+            'http://example.com?foo=bar#baz',
+            'http://example.com?foo=bar&spam=eggs#bash',
+            'http://example.com',
         ]
 
         # testing a reusable request instance, but the url parameter is
         # required, so just use a dummy one to instantiate
-        r = Request("http://example.com")
+        r = Request('http://example.com')
         for url in urls:
             r.full_url = url
             parsed = urlparse(url)
@@ -1206,15 +1140,15 @@ class HandlerTests(unittest.TestCase):
             self.assertEqual(r.get_full_url(), url)
             # full_url setter uses splittag to split into components.
             # splittag sets the fragment as None while urlparse sets it to ''
-            self.assertEqual(r.fragment or "", parsed.fragment)
+            self.assertEqual(r.fragment or '', parsed.fragment)
             self.assertEqual(urlparse(r.get_full_url()).query, parsed.query)
 
     def test_full_url_deleter(self):
-        r = Request("http://www.example.com")
+        r = Request('http://www.example.com')
         del r.full_url
         self.assertIsNone(r.full_url)
         self.assertIsNone(r.fragment)
-        self.assertEqual(r.selector, "")
+        self.assertEqual(r.selector, '')
 
     def test_fixpath_in_weirdurls(self):
         # Issue4493: urllib2 to supply '/' when to urls where path does not
@@ -1223,17 +1157,17 @@ class HandlerTests(unittest.TestCase):
         h = urllib.request.AbstractHTTPHandler()
         h.parent = MockOpener()
 
-        weird_url = "http://www.python.org?getspam"
+        weird_url = 'http://www.python.org?getspam'
         req = Request(weird_url)
         newreq = h.do_request_(req)
-        self.assertEqual(newreq.host, "www.python.org")
-        self.assertEqual(newreq.selector, "/?getspam")
+        self.assertEqual(newreq.host, 'www.python.org')
+        self.assertEqual(newreq.selector, '/?getspam')
 
-        url_without_path = "http://www.python.org"
+        url_without_path = 'http://www.python.org'
         req = Request(url_without_path)
         newreq = h.do_request_(req)
-        self.assertEqual(newreq.host, "www.python.org")
-        self.assertEqual(newreq.selector, "")
+        self.assertEqual(newreq.host, 'www.python.org')
+        self.assertEqual(newreq.selector, '')
 
     def test_errors(self):
         h = urllib.request.HTTPErrorProcessor()
@@ -1294,9 +1228,8 @@ class HandlerTests(unittest.TestCase):
                     req.add_header("Content-Length", str(len(data)))
                 req.add_unredirected_header("Spam", "spam")
                 try:
-                    method(
-                        req, MockFile(), code, "Blah", MockHeaders({"location": to_url})
-                    )
+                    method(req, MockFile(), code, "Blah",
+                           MockHeaders({"location": to_url}))
                 except urllib.error.HTTPError:
                     # 307 and 308 in response to POST require user OK
                     self.assertIn(code, (307, 308))
@@ -1313,7 +1246,8 @@ class HandlerTests(unittest.TestCase):
                 self.assertNotIn("content-length", headers)
                 self.assertNotIn("content-type", headers)
 
-                self.assertEqual(o.req.headers["Nonsense"], "viking=withhold")
+                self.assertEqual(o.req.headers["Nonsense"],
+                                 "viking=withhold")
                 self.assertNotIn("Spam", o.req.headers)
                 self.assertNotIn("Spam", o.req.unredirected_hdrs)
 
@@ -1322,10 +1256,8 @@ class HandlerTests(unittest.TestCase):
         req.timeout = socket._GLOBAL_DEFAULT_TIMEOUT
 
         def redirect(h, req, url=to_url):
-            h.http_error_302(
-                req, MockFile(), 302, "Blah", MockHeaders({"location": url})
-            )
-
+            h.http_error_302(req, MockFile(), 302, "Blah",
+                             MockHeaders({"location": url}))
         # Note that the *original* request shares the same record of
         # redirections with the sub-requests caused by the redirections.
 
@@ -1350,12 +1282,13 @@ class HandlerTests(unittest.TestCase):
                 redirect(h, req, "http://example.com/%d" % count)
                 count = count + 1
         except urllib.error.HTTPError:
-            self.assertEqual(count, urllib.request.HTTPRedirectHandler.max_redirections)
+            self.assertEqual(count,
+                             urllib.request.HTTPRedirectHandler.max_redirections)
 
     def test_invalid_redirect(self):
         from_url = "http://example.com/a.html"
-        valid_schemes = ["http", "https", "ftp"]
-        invalid_schemes = ["file", "imap", "ldap"]
+        valid_schemes = ['http','https','ftp']
+        invalid_schemes = ['file','imap','ldap']
         schemeless_url = "example.com/b.html"
         h = urllib.request.HTTPRedirectHandler()
         o = h.parent = MockOpener()
@@ -1363,26 +1296,15 @@ class HandlerTests(unittest.TestCase):
         req.timeout = socket._GLOBAL_DEFAULT_TIMEOUT
 
         for scheme in invalid_schemes:
-            invalid_url = scheme + "://" + schemeless_url
-            self.assertRaises(
-                urllib.error.HTTPError,
-                h.http_error_302,
-                req,
-                MockFile(),
-                302,
-                "Security Loophole",
-                MockHeaders({"location": invalid_url}),
-            )
+            invalid_url = scheme + '://' + schemeless_url
+            self.assertRaises(urllib.error.HTTPError, h.http_error_302,
+                    req, MockFile(), 302, "Security Loophole",
+                    MockHeaders({"location": invalid_url}))
 
         for scheme in valid_schemes:
-            valid_url = scheme + "://" + schemeless_url
-            h.http_error_302(
-                req,
-                MockFile(),
-                302,
-                "That's fine",
-                MockHeaders({"location": valid_url}),
-            )
+            valid_url = scheme + '://' + schemeless_url
+            h.http_error_302(req, MockFile(), 302, "That's fine",
+                MockHeaders({"location": valid_url}))
             self.assertEqual(o.req.get_full_url(), valid_url)
 
     def test_relative_redirect(self):
@@ -1393,10 +1315,9 @@ class HandlerTests(unittest.TestCase):
         req = Request(from_url)
         req.timeout = socket._GLOBAL_DEFAULT_TIMEOUT
 
-        valid_url = urllib.parse.urljoin(from_url, relative_url)
-        h.http_error_302(
-            req, MockFile(), 302, "That's fine", MockHeaders({"location": valid_url})
-        )
+        valid_url = urllib.parse.urljoin(from_url,relative_url)
+        h.http_error_302(req, MockFile(), 302, "That's fine",
+            MockHeaders({"location": valid_url}))
         self.assertEqual(o.req.get_full_url(), valid_url)
 
     def test_cookie_redirect(self):
@@ -1415,12 +1336,12 @@ class HandlerTests(unittest.TestCase):
         self.assertFalse(hh.req.has_header("Cookie"))
 
     def test_redirect_fragment(self):
-        redirected_url = "http://www.example.com/index.html#OK\r\n\r\n"
-        hh = MockHTTPHandlerRedirect(302, "Location: " + redirected_url)
+        redirected_url = 'http://www.example.com/index.html#OK\r\n\r\n'
+        hh = MockHTTPHandlerRedirect(302, 'Location: ' + redirected_url)
         hdeh = urllib.request.HTTPDefaultErrorHandler()
         hrh = urllib.request.HTTPRedirectHandler()
         o = build_test_opener(hh, hdeh, hrh)
-        fp = o.open("http://www.example.com")
+        fp = o.open('http://www.example.com')
         self.assertEqual(fp.geturl(), redirected_url.strip())
 
     def test_redirect_no_path(self):
@@ -1434,13 +1355,11 @@ class HandlerTests(unittest.TestCase):
         http.client.HTTPConnection = test_urllib.fakehttp(response1)
         self.addCleanup(setattr, http.client, "HTTPConnection", real_class)
         urls = iter(("/path", "/path?query"))
-
         def request(conn, method, url, *pos, **kw):
             self.assertEqual(url, next(urls))
             real_class.request(conn, method, url, *pos, **kw)
             # Change response for subsequent connection
             conn.__class__.fakedata = b"HTTP/1.1 200 OK\r\n\r\nHello!"
-
         http.client.HTTPConnection.request = request
         fp = urllib.request.urlopen("http://python.org/path")
         self.assertEqual(fp.geturl(), "http://python.org/path?query")
@@ -1454,27 +1373,29 @@ class HandlerTests(unittest.TestCase):
                 self.last_buf = self.connection.buf
                 # Set up a normal response for the next request
                 self.connection = test_urllib.fakehttp(
-                    b"HTTP/1.1 200 OK\r\n" b"Content-Length: 3\r\n" b"\r\n" b"123"
+                    b'HTTP/1.1 200 OK\r\n'
+                    b'Content-Length: 3\r\n'
+                    b'\r\n'
+                    b'123'
                 )
                 return result
-
         handler = Handler()
         opener = urllib.request.build_opener(handler)
         tests = (
-            (b"/p\xc3\xa5-dansk/", b"/p%C3%A5-dansk/"),
-            (b"/spaced%20path/", b"/spaced%20path/"),
-            (b"/spaced path/", b"/spaced%20path/"),
-            (b"/?p\xc3\xa5-dansk", b"/?p%C3%A5-dansk"),
+            (b'/p\xC3\xA5-dansk/', b'/p%C3%A5-dansk/'),
+            (b'/spaced%20path/', b'/spaced%20path/'),
+            (b'/spaced path/', b'/spaced%20path/'),
+            (b'/?p\xC3\xA5-dansk', b'/?p%C3%A5-dansk'),
         )
         for [location, result] in tests:
             with self.subTest(repr(location)):
                 handler.connection = test_urllib.fakehttp(
-                    b"HTTP/1.1 302 Redirect\r\n"
-                    b"Location: " + location + b"\r\n"
-                    b"\r\n"
+                    b'HTTP/1.1 302 Redirect\r\n'
+                    b'Location: ' + location + b'\r\n'
+                    b'\r\n'
                 )
-                response = opener.open("http://example.com/")
-                expected = b"GET " + result + b" "
+                response = opener.open('http://example.com/')
+                expected = b'GET ' + result + b' '
                 request = handler.last_buf
                 self.assertTrue(request.startswith(expected), repr(request))
 
@@ -1484,19 +1405,20 @@ class HandlerTests(unittest.TestCase):
             o = OpenerDirector()
             ph = urllib.request.ProxyHandler(d)
             o.add_handler(ph)
-            meth_spec = [[("http_open", "return response")]]
+            meth_spec = [
+                [("http_open", "return response")]
+                ]
             handlers = add_ordered_mock_handlers(o, meth_spec)
 
             req = Request("http://acme.example.com/")
             self.assertEqual(req.host, "acme.example.com")
             o.open(req)
             self.assertEqual(req.host, u)
-            self.assertEqual(
-                [(handlers[0], "http_open")], [tup[0:2] for tup in o.calls]
-            )
+            self.assertEqual([(handlers[0], "http_open")],
+                             [tup[0:2] for tup in o.calls])
 
     def test_proxy_no_proxy(self):
-        os.environ["no_proxy"] = "python.org"
+        os.environ['no_proxy'] = 'python.org'
         o = OpenerDirector()
         ph = urllib.request.ProxyHandler(dict(http="proxy.example.com"))
         o.add_handler(ph)
@@ -1508,10 +1430,10 @@ class HandlerTests(unittest.TestCase):
         self.assertEqual(req.host, "www.python.org")
         o.open(req)
         self.assertEqual(req.host, "www.python.org")
-        del os.environ["no_proxy"]
+        del os.environ['no_proxy']
 
     def test_proxy_no_proxy_all(self):
-        os.environ["no_proxy"] = "*"
+        os.environ['no_proxy'] = '*'
         o = OpenerDirector()
         ph = urllib.request.ProxyHandler(dict(http="proxy.example.com"))
         o.add_handler(ph)
@@ -1519,28 +1441,28 @@ class HandlerTests(unittest.TestCase):
         self.assertEqual(req.host, "www.python.org")
         o.open(req)
         self.assertEqual(req.host, "www.python.org")
-        del os.environ["no_proxy"]
+        del os.environ['no_proxy']
 
     def test_proxy_https(self):
         o = OpenerDirector()
         ph = urllib.request.ProxyHandler(dict(https="proxy.example.com:3128"))
         o.add_handler(ph)
-        meth_spec = [[("https_open", "return response")]]
+        meth_spec = [
+            [("https_open", "return response")]
+        ]
         handlers = add_ordered_mock_handlers(o, meth_spec)
 
         req = Request("https://www.example.com/")
         self.assertEqual(req.host, "www.example.com")
         o.open(req)
         self.assertEqual(req.host, "proxy.example.com:3128")
-        self.assertEqual([(handlers[0], "https_open")], [tup[0:2] for tup in o.calls])
+        self.assertEqual([(handlers[0], "https_open")],
+                         [tup[0:2] for tup in o.calls])
 
-    @unittest.skipUnless(
-        hasattr(http.client, "HTTPSConnection"),
-        "HTTPSConnection required for HTTPS tests.",
-    )
+    @unittest.skipUnless(hasattr(http.client, 'HTTPSConnection'), 'HTTPSConnection required for HTTPS tests.')
     def test_proxy_https_proxy_authorization(self):
         o = OpenerDirector()
-        ph = urllib.request.ProxyHandler(dict(https="proxy.example.com:3128"))
+        ph = urllib.request.ProxyHandler(dict(https='proxy.example.com:3128'))
         o.add_handler(ph)
         https_handler = MockHTTPSHandler()
         o.add_handler(https_handler)
@@ -1553,116 +1475,105 @@ class HandlerTests(unittest.TestCase):
         # Verify Proxy-Authorization gets tunneled to request.
         # httpsconn req_headers do not have the Proxy-Authorization header but
         # the req will have.
-        self.assertNotIn(
-            ("Proxy-Authorization", "FooBar"), https_handler.httpconn.req_headers
-        )
-        self.assertIn(("User-Agent", "Grail"), https_handler.httpconn.req_headers)
+        self.assertNotIn(("Proxy-Authorization", "FooBar"),
+                         https_handler.httpconn.req_headers)
+        self.assertIn(("User-Agent", "Grail"),
+                      https_handler.httpconn.req_headers)
         self.assertIsNotNone(req._tunnel_host)
         self.assertEqual(req.host, "proxy.example.com:3128")
         self.assertEqual(req.get_header("Proxy-authorization"), "FooBar")
 
-    @unittest.skipUnless(sys.platform == "darwin", "only relevant for OSX")
+    @unittest.skipUnless(sys.platform == 'darwin', "only relevant for OSX")
     def test_osx_proxy_bypass(self):
         bypass = {
-            "exclude_simple": False,
-            "exceptions": ["foo.bar", "*.bar.com", "127.0.0.1", "10.10", "10.0/16"],
+            'exclude_simple': False,
+            'exceptions': ['foo.bar', '*.bar.com', '127.0.0.1', '10.10',
+                           '10.0/16']
         }
         # Check hosts that should trigger the proxy bypass
-        for host in ("foo.bar", "www.bar.com", "127.0.0.1", "10.10.0.1", "10.0.0.1"):
-            self.assertTrue(
-                _proxy_bypass_macosx_sysconf(host, bypass),
-                "expected bypass of %s to be True" % host,
-            )
+        for host in ('foo.bar', 'www.bar.com', '127.0.0.1', '10.10.0.1',
+                     '10.0.0.1'):
+            self.assertTrue(_proxy_bypass_macosx_sysconf(host, bypass),
+                            'expected bypass of %s to be True' % host)
         # Check hosts that should not trigger the proxy bypass
-        for host in ("abc.foo.bar", "bar.com", "127.0.0.2", "10.11.0.1", "notinbypass"):
-            self.assertFalse(
-                _proxy_bypass_macosx_sysconf(host, bypass),
-                "expected bypass of %s to be False" % host,
-            )
+        for host in ('abc.foo.bar', 'bar.com', '127.0.0.2', '10.11.0.1',
+                'notinbypass'):
+            self.assertFalse(_proxy_bypass_macosx_sysconf(host, bypass),
+                             'expected bypass of %s to be False' % host)
 
         # Check the exclude_simple flag
-        bypass = {"exclude_simple": True, "exceptions": []}
-        self.assertTrue(_proxy_bypass_macosx_sysconf("test", bypass))
+        bypass = {'exclude_simple': True, 'exceptions': []}
+        self.assertTrue(_proxy_bypass_macosx_sysconf('test', bypass))
 
         # Check that invalid prefix lengths are ignored
         bypass = {
-            "exclude_simple": False,
-            "exceptions": ["10.0.0.0/40", "172.19.10.0/24"],
+            'exclude_simple': False,
+            'exceptions': [ '10.0.0.0/40', '172.19.10.0/24' ]
         }
-        host = "172.19.10.5"
-        self.assertTrue(
-            _proxy_bypass_macosx_sysconf(host, bypass),
-            "expected bypass of %s to be True" % host,
-        )
-        host = "10.0.1.5"
-        self.assertFalse(
-            _proxy_bypass_macosx_sysconf(host, bypass),
-            "expected bypass of %s to be False" % host,
-        )
+        host = '172.19.10.5'
+        self.assertTrue(_proxy_bypass_macosx_sysconf(host, bypass),
+                        'expected bypass of %s to be True' % host)
+        host = '10.0.1.5'
+        self.assertFalse(_proxy_bypass_macosx_sysconf(host, bypass),
+                        'expected bypass of %s to be False' % host)
 
     def check_basic_auth(self, headers, realm):
         with self.subTest(realm=realm, headers=headers):
             opener = OpenerDirector()
             password_manager = MockPasswordManager()
             auth_handler = urllib.request.HTTPBasicAuthHandler(password_manager)
-            body = "\r\n".join(headers) + "\r\n\r\n"
+            body = '\r\n'.join(headers) + '\r\n\r\n'
             http_handler = MockHTTPHandlerRedirect(401, body)
             opener.add_handler(auth_handler)
             opener.add_handler(http_handler)
-            self._test_basic_auth(
-                opener,
-                auth_handler,
-                "Authorization",
-                realm,
-                http_handler,
-                password_manager,
-                "http://acme.example.com/protected",
-                "http://acme.example.com/protected",
-            )
+            self._test_basic_auth(opener, auth_handler, "Authorization",
+                                  realm, http_handler, password_manager,
+                                  "http://acme.example.com/protected",
+                                  "http://acme.example.com/protected")
 
     def test_basic_auth(self):
         realm = "realm2@example.com"
         realm2 = "realm2@example.com"
         basic = f'Basic realm="{realm}"'
         basic2 = f'Basic realm="{realm2}"'
-        other_no_realm = "Otherscheme xxx"
-        digest = (
-            f'Digest realm="{realm2}", '
-            f'qop="auth, auth-int", '
-            f'nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093", '
-            f'opaque="5ccc069c403ebaf9f0171e9517f40e41"'
-        )
+        other_no_realm = 'Otherscheme xxx'
+        digest = (f'Digest realm="{realm2}", '
+                  f'qop="auth, auth-int", '
+                  f'nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093", '
+                  f'opaque="5ccc069c403ebaf9f0171e9517f40e41"')
         for realm_str in (
             # test "quote" and 'quote'
             f'Basic realm="{realm}"',
             f"Basic realm='{realm}'",
+
             # charset is ignored
             f'Basic realm="{realm}", charset="UTF-8"',
+
             # Multiple challenges per header
-            f"{basic}, {basic2}",
-            f"{basic}, {other_no_realm}",
-            f"{other_no_realm}, {basic}",
-            f"{basic}, {digest}",
-            f"{digest}, {basic}",
+            f'{basic}, {basic2}',
+            f'{basic}, {other_no_realm}',
+            f'{other_no_realm}, {basic}',
+            f'{basic}, {digest}',
+            f'{digest}, {basic}',
         ):
-            headers = [f"WWW-Authenticate: {realm_str}"]
+            headers = [f'WWW-Authenticate: {realm_str}']
             self.check_basic_auth(headers, realm)
 
         # no quote: expect a warning
-        with warnings_helper.check_warnings(
-            ("Basic Auth Realm was unquoted", UserWarning)
-        ):
-            headers = [f"WWW-Authenticate: Basic realm={realm}"]
+        with warnings_helper.check_warnings(("Basic Auth Realm was unquoted",
+                                     UserWarning)):
+            headers = [f'WWW-Authenticate: Basic realm={realm}']
             self.check_basic_auth(headers, realm)
 
         # Multiple headers: one challenge per header.
         # Use the first Basic realm.
         for challenges in (
-            [basic, basic2],
-            [basic, digest],
+            [basic,  basic2],
+            [basic,  digest],
             [digest, basic],
         ):
-            headers = [f"WWW-Authenticate: {challenge}" for challenge in challenges]
+            headers = [f'WWW-Authenticate: {challenge}'
+                       for challenge in challenges]
             self.check_basic_auth(headers, realm)
 
     def test_proxy_basic_auth(self):
@@ -1673,20 +1584,14 @@ class HandlerTests(unittest.TestCase):
         auth_handler = urllib.request.ProxyBasicAuthHandler(password_manager)
         realm = "ACME Networks"
         http_handler = MockHTTPHandlerRedirect(
-            407, 'Proxy-Authenticate: Basic realm="%s"\r\n\r\n' % realm
-        )
+            407, 'Proxy-Authenticate: Basic realm="%s"\r\n\r\n' % realm)
         opener.add_handler(auth_handler)
         opener.add_handler(http_handler)
-        self._test_basic_auth(
-            opener,
-            auth_handler,
-            "Proxy-authorization",
-            realm,
-            http_handler,
-            password_manager,
-            "http://acme.example.com:3128/protected",
-            "proxy.example.com:3128",
-        )
+        self._test_basic_auth(opener, auth_handler, "Proxy-authorization",
+                              realm, http_handler, password_manager,
+                              "http://acme.example.com:3128/protected",
+                              "proxy.example.com:3128",
+                              )
 
     def test_basic_and_digest_auth_handlers(self):
         # HTTPDigestAuthHandler raised an exception if it couldn't handle a 40*
@@ -1708,12 +1613,14 @@ class HandlerTests(unittest.TestCase):
         class TestDigestAuthHandler(urllib.request.HTTPDigestAuthHandler):
             def http_error_401(self, *args, **kwds):
                 self.parent.record("digest")
-                urllib.request.HTTPDigestAuthHandler.http_error_401(self, *args, **kwds)
+                urllib.request.HTTPDigestAuthHandler.http_error_401(self,
+                                                             *args, **kwds)
 
         class TestBasicAuthHandler(urllib.request.HTTPBasicAuthHandler):
             def http_error_401(self, *args, **kwds):
                 self.parent.record("basic")
-                urllib.request.HTTPBasicAuthHandler.http_error_401(self, *args, **kwds)
+                urllib.request.HTTPBasicAuthHandler.http_error_401(self,
+                                                            *args, **kwds)
 
         opener = RecordingOpenerDirector()
         password_manager = MockPasswordManager()
@@ -1721,34 +1628,27 @@ class HandlerTests(unittest.TestCase):
         basic_handler = TestBasicAuthHandler(password_manager)
         realm = "ACME Networks"
         http_handler = MockHTTPHandlerRedirect(
-            401, 'WWW-Authenticate: Basic realm="%s"\r\n\r\n' % realm
-        )
+            401, 'WWW-Authenticate: Basic realm="%s"\r\n\r\n' % realm)
         opener.add_handler(basic_handler)
         opener.add_handler(digest_handler)
         opener.add_handler(http_handler)
 
         # check basic auth isn't blocked by digest handler failing
-        self._test_basic_auth(
-            opener,
-            basic_handler,
-            "Authorization",
-            realm,
-            http_handler,
-            password_manager,
-            "http://acme.example.com/protected",
-            "http://acme.example.com/protected",
-        )
+        self._test_basic_auth(opener, basic_handler, "Authorization",
+                              realm, http_handler, password_manager,
+                              "http://acme.example.com/protected",
+                              "http://acme.example.com/protected",
+                              )
         # check digest was tried before basic (twice, because
         # _test_basic_auth called .open() twice)
-        self.assertEqual(opener.recorded, ["digest", "basic"] * 2)
+        self.assertEqual(opener.recorded, ["digest", "basic"]*2)
 
     def test_unsupported_auth_digest_handler(self):
         opener = OpenerDirector()
         # While using DigestAuthHandler
         digest_auth_handler = urllib.request.HTTPDigestAuthHandler(None)
         http_handler = MockHTTPHandlerRedirect(
-            401, "WWW-Authenticate: Kerberos\r\n\r\n"
-        )
+            401, 'WWW-Authenticate: Kerberos\r\n\r\n')
         opener.add_handler(digest_auth_handler)
         opener.add_handler(http_handler)
         self.assertRaises(ValueError, opener.open, "http://www.example.com")
@@ -1757,24 +1657,16 @@ class HandlerTests(unittest.TestCase):
         # While using BasicAuthHandler
         opener = OpenerDirector()
         basic_auth_handler = urllib.request.HTTPBasicAuthHandler(None)
-        http_handler = MockHTTPHandlerRedirect(401, "WWW-Authenticate: NTLM\r\n\r\n")
+        http_handler = MockHTTPHandlerRedirect(
+            401, 'WWW-Authenticate: NTLM\r\n\r\n')
         opener.add_handler(basic_auth_handler)
         opener.add_handler(http_handler)
         self.assertRaises(ValueError, opener.open, "http://www.example.com")
 
-    def _test_basic_auth(
-        self,
-        opener,
-        auth_handler,
-        auth_header,
-        realm,
-        http_handler,
-        password_manager,
-        request_url,
-        protected_url,
-    ):
+    def _test_basic_auth(self, opener, auth_handler, auth_header,
+                         realm, http_handler, password_manager,
+                         request_url, protected_url):
         import base64
-
         user, password = "wile", "coyote"
 
         # .add_password() fed through to password manager
@@ -1793,14 +1685,13 @@ class HandlerTests(unittest.TestCase):
         # expect one request without authorization, then one with
         self.assertEqual(len(http_handler.requests), 2)
         self.assertFalse(http_handler.requests[0].has_header(auth_header))
-        userpass = bytes("%s:%s" % (user, password), "ascii")
-        auth_hdr_value = "Basic " + base64.encodebytes(userpass).strip().decode()
-        self.assertEqual(
-            http_handler.requests[1].get_header(auth_header), auth_hdr_value
-        )
-        self.assertEqual(
-            http_handler.requests[1].unredirected_hdrs[auth_header], auth_hdr_value
-        )
+        userpass = bytes('%s:%s' % (user, password), "ascii")
+        auth_hdr_value = ('Basic ' +
+            base64.encodebytes(userpass).strip().decode())
+        self.assertEqual(http_handler.requests[1].get_header(auth_header),
+                         auth_hdr_value)
+        self.assertEqual(http_handler.requests[1].unredirected_hdrs[auth_header],
+                         auth_hdr_value)
         # if the password manager can't find a password, the handler won't
         # handle the HTTP auth error
         password_manager.user = password_manager.password = None
@@ -1821,12 +1712,11 @@ class HandlerTests(unittest.TestCase):
         pwd_manager = HTTPPasswordMgrWithPriorAuth()
         auth_prior_handler = HTTPBasicAuthHandler(pwd_manager)
         auth_prior_handler.add_password(
-            None, request_url, user, password, is_authenticated=True
-        )
+            None, request_url, user, password, is_authenticated=True)
 
         self.assertTrue(pwd_manager.is_authenticated(request_url))
-        self.assertTrue(pwd_manager.is_authenticated(request_url + "/nested"))
-        self.assertFalse(pwd_manager.is_authenticated(request_url + "plain"))
+        self.assertTrue(pwd_manager.is_authenticated(request_url + '/nested'))
+        self.assertFalse(pwd_manager.is_authenticated(request_url + 'plain'))
 
         opener = OpenerDirector()
         opener.add_handler(auth_prior_handler)
@@ -1840,9 +1730,9 @@ class HandlerTests(unittest.TestCase):
     def test_basic_prior_auth_send_after_first_success(self):
         # Auto send auth header after authentication is successful once
 
-        user, password = "wile", "coyote"
-        request_url = "http://acme.example.com/protected"
-        realm = "ACME"
+        user, password = 'wile', 'coyote'
+        request_url = 'http://acme.example.com/protected'
+        realm = 'ACME'
 
         pwd_manager = HTTPPasswordMgrWithPriorAuth()
         auth_prior_handler = HTTPBasicAuthHandler(pwd_manager)
@@ -1855,8 +1745,7 @@ class HandlerTests(unittest.TestCase):
         opener.add_handler(auth_prior_handler)
 
         http_handler = MockHTTPHandlerRedirect(
-            401, 'WWW-Authenticate: Basic realm="%s"\r\n\r\n' % None
-        )
+            401, 'WWW-Authenticate: Basic realm="%s"\r\n\r\n' % None)
         opener.add_handler(http_handler)
 
         opener.open(request_url)
@@ -1880,7 +1769,7 @@ class HandlerTests(unittest.TestCase):
 
     def test_http_closed(self):
         """Test the connection is cleaned up when the response is closed"""
-        for transfer, data in (
+        for (transfer, data) in (
             ("Connection: close", b"data"),
             ("Transfer-Encoding: chunked", b"4\r\ndata\r\n0\r\n\r\n"),
             ("Content-Length: 4", b"data"),
@@ -1892,9 +1781,8 @@ class HandlerTests(unittest.TestCase):
             req.timeout = None
             with handler.do_open(conn, req) as resp:
                 resp.read()
-            self.assertTrue(
-                conn.fakesock.closed, "Connection not closed with {!r}".format(transfer)
-            )
+            self.assertTrue(conn.fakesock.closed,
+                "Connection not closed with {!r}".format(transfer))
 
     def test_invalid_closed(self):
         """Test the connection is cleaned up after an invalid response"""
@@ -1910,7 +1798,8 @@ class HandlerTests(unittest.TestCase):
 class MiscTests(unittest.TestCase):
 
     def opener_has_handler(self, opener, handler_class):
-        self.assertTrue(any(h.__class__ == handler_class for h in opener.handlers))
+        self.assertTrue(any(h.__class__ == handler_class
+                            for h in opener.handlers))
 
     def test_build_opener(self):
         class MyHTTPHandler(urllib.request.HTTPHandler):
@@ -1961,17 +1850,17 @@ class MiscTests(unittest.TestCase):
         Issue 13211 reveals that HTTPError didn't implement the URLError
         interface even though HTTPError is a subclass of URLError.
         """
-        msg = "something bad happened"
+        msg = 'something bad happened'
         url = code = fp = None
-        hdrs = "Content-Length: 42"
+        hdrs = 'Content-Length: 42'
         err = urllib.error.HTTPError(url, code, msg, hdrs, fp)
-        self.assertTrue(hasattr(err, "reason"))
-        self.assertEqual(err.reason, "something bad happened")
-        self.assertTrue(hasattr(err, "headers"))
-        self.assertEqual(err.headers, "Content-Length: 42")
-        expected_errmsg = "HTTP Error %s: %s" % (err.code, err.msg)
+        self.assertTrue(hasattr(err, 'reason'))
+        self.assertEqual(err.reason, 'something bad happened')
+        self.assertTrue(hasattr(err, 'headers'))
+        self.assertEqual(err.headers, 'Content-Length: 42')
+        expected_errmsg = 'HTTP Error %s: %s' % (err.code, err.msg)
         self.assertEqual(str(err), expected_errmsg)
-        expected_errmsg = "<HTTPError %s: %r>" % (err.code, err.msg)
+        expected_errmsg = '<HTTPError %s: %r>' % (err.code, err.msg)
         self.assertEqual(repr(err), expected_errmsg)
 
     def test_gh_98778(self):
@@ -1981,87 +1870,72 @@ class MiscTests(unittest.TestCase):
 
     def test_parse_proxy(self):
         parse_proxy_test_cases = [
-            ("proxy.example.com", (None, None, None, "proxy.example.com")),
-            ("proxy.example.com:3128", (None, None, None, "proxy.example.com:3128")),
-            ("proxy.example.com", (None, None, None, "proxy.example.com")),
-            ("proxy.example.com:3128", (None, None, None, "proxy.example.com:3128")),
+            ('proxy.example.com',
+             (None, None, None, 'proxy.example.com')),
+            ('proxy.example.com:3128',
+             (None, None, None, 'proxy.example.com:3128')),
+            ('proxy.example.com', (None, None, None, 'proxy.example.com')),
+            ('proxy.example.com:3128',
+             (None, None, None, 'proxy.example.com:3128')),
             # The authority component may optionally include userinfo
             # (assumed to be # username:password):
-            (
-                "joe:password@proxy.example.com",
-                (None, "joe", "password", "proxy.example.com"),
-            ),
-            (
-                "joe:password@proxy.example.com:3128",
-                (None, "joe", "password", "proxy.example.com:3128"),
-            ),
-            # Examples with URLS
-            ("http://proxy.example.com/", ("http", None, None, "proxy.example.com")),
-            (
-                "http://proxy.example.com:3128/",
-                ("http", None, None, "proxy.example.com:3128"),
-            ),
-            (
-                "http://joe:password@proxy.example.com/",
-                ("http", "joe", "password", "proxy.example.com"),
-            ),
-            (
-                "http://joe:password@proxy.example.com:3128",
-                ("http", "joe", "password", "proxy.example.com:3128"),
-            ),
+            ('joe:password@proxy.example.com',
+             (None, 'joe', 'password', 'proxy.example.com')),
+            ('joe:password@proxy.example.com:3128',
+             (None, 'joe', 'password', 'proxy.example.com:3128')),
+            #Examples with URLS
+            ('http://proxy.example.com/',
+             ('http', None, None, 'proxy.example.com')),
+            ('http://proxy.example.com:3128/',
+             ('http', None, None, 'proxy.example.com:3128')),
+            ('http://joe:password@proxy.example.com/',
+             ('http', 'joe', 'password', 'proxy.example.com')),
+            ('http://joe:password@proxy.example.com:3128',
+             ('http', 'joe', 'password', 'proxy.example.com:3128')),
             # Everything after the authority is ignored
-            (
-                "ftp://joe:password@proxy.example.com/rubbish:3128",
-                ("ftp", "joe", "password", "proxy.example.com"),
-            ),
+            ('ftp://joe:password@proxy.example.com/rubbish:3128',
+             ('ftp', 'joe', 'password', 'proxy.example.com')),
             # Test for no trailing '/' case
-            (
-                "http://joe:password@proxy.example.com",
-                ("http", "joe", "password", "proxy.example.com"),
-            ),
+            ('http://joe:password@proxy.example.com',
+             ('http', 'joe', 'password', 'proxy.example.com')),
             # Testcases with '/' character in username, password
-            (
-                "http://user/name:password@localhost:22",
-                ("http", "user/name", "password", "localhost:22"),
-            ),
-            (
-                "http://username:pass/word@localhost:22",
-                ("http", "username", "pass/word", "localhost:22"),
-            ),
-            (
-                "http://user/name:pass/word@localhost:22",
-                ("http", "user/name", "pass/word", "localhost:22"),
-            ),
+            ('http://user/name:password@localhost:22',
+             ('http', 'user/name', 'password', 'localhost:22')),
+            ('http://username:pass/word@localhost:22',
+             ('http', 'username', 'pass/word', 'localhost:22')),
+            ('http://user/name:pass/word@localhost:22',
+             ('http', 'user/name', 'pass/word', 'localhost:22')),
         ]
+
 
         for tc, expected in parse_proxy_test_cases:
             self.assertEqual(_parse_proxy(tc), expected)
 
-        self.assertRaises(ValueError, _parse_proxy, "file:/ftp.example.com"),
+        self.assertRaises(ValueError, _parse_proxy, 'file:/ftp.example.com'),
 
     def test_unsupported_algorithm(self):
         handler = AbstractDigestAuthHandler()
         with self.assertRaises(ValueError) as exc:
-            handler.get_algorithm_impls("invalid")
+            handler.get_algorithm_impls('invalid')
         self.assertEqual(
-            str(exc.exception), "Unsupported digest authentication algorithm 'invalid'"
+            str(exc.exception),
+            "Unsupported digest authentication algorithm 'invalid'"
         )
 
 
 class RequestTests(unittest.TestCase):
     class PutRequest(Request):
-        method = "PUT"
+        method = 'PUT'
 
     def setUp(self):
         self.get = Request("http://www.python.org/~jeremy/")
-        self.post = Request(
-            "http://www.python.org/~jeremy/", "data", headers={"X-Test": "test"}
-        )
-        self.head = Request("http://www.python.org/~jeremy/", method="HEAD")
+        self.post = Request("http://www.python.org/~jeremy/",
+                            "data",
+                            headers={"X-Test": "test"})
+        self.head = Request("http://www.python.org/~jeremy/", method='HEAD')
         self.put = self.PutRequest("http://www.python.org/~jeremy/")
-        self.force_post = self.PutRequest(
-            "http://www.python.org/~jeremy/", method="POST"
-        )
+        self.force_post = self.PutRequest("http://www.python.org/~jeremy/",
+            method="POST")
 
     def test_method(self):
         self.assertEqual("POST", self.post.get_method())
@@ -2090,14 +1964,15 @@ class RequestTests(unittest.TestCase):
     # issue 17485 same for deleting data.
     def test_deleting_data_should_remove_content_length(self):
         self.assertNotIn("Content-length", self.get.unredirected_hdrs)
-        self.get.data = "foo"
+        self.get.data = 'foo'
         self.get.add_unredirected_header("Content-length", 3)
         self.assertEqual(3, self.get.unredirected_hdrs["Content-length"])
         del self.get.data
         self.assertNotIn("Content-length", self.get.unredirected_hdrs)
 
     def test_get_full_url(self):
-        self.assertEqual("http://www.python.org/~jeremy/", self.get.get_full_url())
+        self.assertEqual("http://www.python.org/~jeremy/",
+                         self.get.get_full_url())
 
     def test_selector(self):
         self.assertEqual("/~jeremy/", self.get.selector)
@@ -2132,16 +2007,14 @@ class RequestTests(unittest.TestCase):
         self.assertEqual("/", req.selector)
 
         # Issue 11703: geturl() omits fragment in the original URL.
-        url = "http://docs.python.org/library/urllib2.html#OK"
+        url = 'http://docs.python.org/library/urllib2.html#OK'
         req = Request(url)
         self.assertEqual(req.get_full_url(), url)
 
     def test_url_fullurl_get_full_url(self):
-        urls = [
-            "http://docs.python.org",
-            "http://docs.python.org/library/urllib2.html#OK",
-            "http://www.python.org/?qs=query#fragment=true",
-        ]
+        urls = ['http://docs.python.org',
+                'http://docs.python.org/library/urllib2.html#OK',
+                'http://www.python.org/?qs=query#fragment=true']
         for url in urls:
             req = Request(url)
             self.assertEqual(req.get_full_url(), req.full_url)

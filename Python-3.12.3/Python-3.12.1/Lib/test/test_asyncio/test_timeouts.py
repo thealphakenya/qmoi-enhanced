@@ -11,7 +11,6 @@ from test.test_asyncio.utils import await_without_task
 def tearDownModule():
     asyncio.set_event_loop_policy(None)
 
-
 class TimeoutTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_timeout_basic(self):
@@ -122,8 +121,7 @@ class TimeoutTests(unittest.IsolatedAsyncioTestCase):
             try:
                 await asyncio.sleep(1)
             finally:
-                1 / 0
-
+                1/0
         with self.assertRaises(ZeroDivisionError):
             async with asyncio.timeout(0.01):
                 await crash()
@@ -170,7 +168,7 @@ class TimeoutTests(unittest.IsolatedAsyncioTestCase):
                         time.sleep(0.1)
                         await asyncio.sleep(1)
                 # TimeoutError was cought by (2)
-                await asyncio.sleep(10)  # This sleep should be interrupted by (1)
+                await asyncio.sleep(10) # This sleep should be interrupted by (1)
         t1 = loop.time()
         self.assertTrue(t0 <= t1 <= t0 + 1)
 
@@ -253,7 +251,7 @@ class TimeoutTests(unittest.IsolatedAsyncioTestCase):
                     asyncio.current_task().cancel()
                     await asyncio.sleep(2)  # some cleanup
 
-    async def test_timeout_exception_cause(self):
+    async def test_timeout_exception_cause (self):
         with self.assertRaises(asyncio.TimeoutError) as exc:
             async with asyncio.timeout(0):
                 await asyncio.sleep(1)
@@ -306,5 +304,5 @@ class TimeoutTests(unittest.IsolatedAsyncioTestCase):
             cm.reschedule(0.02)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

@@ -9,13 +9,9 @@ from typing import Callable, TypeAliasType, TypeVar, get_args
 
 class TypeParamsInvalidTest(unittest.TestCase):
     def test_name_collisions(self):
-        check_syntax_error(
-            self, "type TA1[A, **A] = None", "duplicate type parameter 'A'"
-        )
-        check_syntax_error(self, "type T[A, *A] = None", "duplicate type parameter 'A'")
-        check_syntax_error(
-            self, "type T[*A, **A] = None", "duplicate type parameter 'A'"
-        )
+        check_syntax_error(self, 'type TA1[A, **A] = None', "duplicate type parameter 'A'")
+        check_syntax_error(self, 'type T[A, *A] = None', "duplicate type parameter 'A'")
+        check_syntax_error(self, 'type T[*A, **A] = None', "duplicate type parameter 'A'")
 
     def test_name_non_collision_02(self):
         ns = run_code("""type TA1[A] = lambda A: A""")
@@ -24,14 +20,13 @@ class TypeParamsInvalidTest(unittest.TestCase):
         self.assertEqual("arg", ns["TA1"].__value__("arg"))
 
     def test_name_non_collision_03(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class Outer[A]:
                 type TA1[A] = None
             """
         )
-        (outer_A,) = ns["Outer"].__type_params__
-        (inner_A,) = ns["Outer"].TA1.__type_params__
+        outer_A, = ns["Outer"].__type_params__
+        inner_A, = ns["Outer"].TA1.__type_params__
         self.assertIsNot(outer_A, inner_A)
 
 
@@ -43,8 +38,7 @@ class TypeParamsAccessTest(unittest.TestCase):
         self.assertEqual(alias.__type_params__, get_args(alias.__value__))
 
     def test_alias_access_02(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             type TA1[A, B] = TA1[A, B] | int
             """
         )
@@ -54,8 +48,7 @@ class TypeParamsAccessTest(unittest.TestCase):
         self.assertEqual(alias.__value__, alias[A, B] | int)
 
     def test_alias_access_03(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class Outer[A]:
                 def inner[B](self):
                     type TA1[C] = TA1[A, B] | int
@@ -63,8 +56,8 @@ class TypeParamsAccessTest(unittest.TestCase):
             """
         )
         cls = ns["Outer"]
-        (A,) = cls.__type_params__
-        (B,) = cls.inner.__type_params__
+        A, = cls.__type_params__
+        B, = cls.inner.__type_params__
         alias = cls.inner(None)
         self.assertIsInstance(alias, TypeAliasType)
         alias2 = cls.inner(None)
@@ -99,8 +92,8 @@ class TypeParamsAliasValueTest(unittest.TestCase):
         self.assertIsInstance(Parent.TA1, TypeAliasType)
         self.assertEqual(len(Parent.TA1.__parameters__), 1)
         self.assertEqual(len(Parent.__parameters__), 1)
-        (a,) = Parent.__parameters__
-        (b,) = Parent.TA1.__parameters__
+        a, = Parent.__parameters__
+        b, = Parent.TA1.__parameters__
         self.assertEqual(Parent.__type_params__, (a,))
         self.assertEqual(Parent.TA1.__type_params__, (b,))
         self.assertEqual(Parent.TA1.__value__, dict[a, b])
@@ -119,9 +112,7 @@ class TypeParamsAliasValueTest(unittest.TestCase):
 
     def test_alias_value_04(self):
         def more_generic[T, *Ts, **P]():
-            type TA[T2, *Ts2, **P2] = tuple[
-                Callable[P, tuple[T, *Ts]], Callable[P2, tuple[T2, *Ts2]]
-            ]
+            type TA[T2, *Ts2, **P2] = tuple[Callable[P, tuple[T, *Ts]], Callable[P2, tuple[T2, *Ts2]]]
             return TA
 
         alias = more_generic()
@@ -129,10 +120,7 @@ class TypeParamsAliasValueTest(unittest.TestCase):
         T2, Ts2, P2 = alias.__type_params__
         self.assertEqual(alias.__parameters__, (T2, *Ts2, P2))
         T, Ts, P = more_generic.__type_params__
-        self.assertEqual(
-            alias.__value__,
-            tuple[Callable[P, tuple[T, *Ts]], Callable[P2, tuple[T2, *Ts2]]],
-        )
+        self.assertEqual(alias.__value__, tuple[Callable[P, tuple[T, *Ts]], Callable[P2, tuple[T2, *Ts2]]])
 
     def test_subscripting(self):
         type NonGeneric = int
@@ -158,15 +146,12 @@ class TypeParamsAliasValueTest(unittest.TestCase):
 
         self.assertEqual(repr(Simple), "Simple")
         self.assertEqual(repr(VeryGeneric), "VeryGeneric")
-        self.assertEqual(
-            repr(VeryGeneric[int, bytes, str, [float, object]]),
-            "VeryGeneric[int, bytes, str, [float, object]]",
-        )
-        self.assertEqual(repr(VeryGeneric[int, []]), "VeryGeneric[int, []]")
-        self.assertEqual(
-            repr(VeryGeneric[int, [VeryGeneric[int], list[str]]]),
-            "VeryGeneric[int, [VeryGeneric[int], list[str]]]",
-        )
+        self.assertEqual(repr(VeryGeneric[int, bytes, str, [float, object]]),
+                         "VeryGeneric[int, bytes, str, [float, object]]")
+        self.assertEqual(repr(VeryGeneric[int, []]),
+                         "VeryGeneric[int, []]")
+        self.assertEqual(repr(VeryGeneric[int, [VeryGeneric[int], list[str]]]),
+                         "VeryGeneric[int, [VeryGeneric[int], list[str]]]")
 
     def test_recursive_repr(self):
         type Recursive = Recursive
@@ -180,10 +165,8 @@ class TypeParamsAliasValueTest(unittest.TestCase):
         type GenericRecursive[X] = list[X | GenericRecursive[X]]
         self.assertEqual(repr(GenericRecursive), "GenericRecursive")
         self.assertEqual(repr(GenericRecursive[int]), "GenericRecursive[int]")
-        self.assertEqual(
-            repr(GenericRecursive[GenericRecursive[int]]),
-            "GenericRecursive[GenericRecursive[int]]",
-        )
+        self.assertEqual(repr(GenericRecursive[GenericRecursive[int]]),
+                         "GenericRecursive[GenericRecursive[int]]")
 
     def test_raising(self):
         type MissingName = list[_My_X]
@@ -254,7 +237,6 @@ class TypeAliasTypeTest(unittest.TestCase):
 
     def test_no_subclassing(self):
         with self.assertRaisesRegex(TypeError, "not an acceptable base type"):
-
             class MyAlias(TypeAliasType):
                 pass
 
@@ -275,16 +257,14 @@ class TypeAliasTypeTest(unittest.TestCase):
         self.assertEqual(TypeAliasType.__module__, "typing")
         type Alias = int
         self.assertEqual(Alias.__module__, __name__)
-        self.assertEqual(
-            mod_generics_cache.Alias.__module__, mod_generics_cache.__name__
-        )
-        self.assertEqual(
-            mod_generics_cache.OldStyle.__module__, mod_generics_cache.__name__
-        )
+        self.assertEqual(mod_generics_cache.Alias.__module__,
+                         mod_generics_cache.__name__)
+        self.assertEqual(mod_generics_cache.OldStyle.__module__,
+                         mod_generics_cache.__name__)
 
 
 # All these type aliases are used for pickling tests:
-T = TypeVar("T")
+T = TypeVar('T')
 type SimpleAlias = int
 type RecursiveAlias = dict[str, RecursiveAlias]
 type GenericAlias[X] = list[X]
@@ -300,24 +280,31 @@ class TypeAliasPickleTest(unittest.TestCase):
         things_to_test = [
             SimpleAlias,
             RecursiveAlias,
+
             GenericAlias,
             GenericAlias[T],
             GenericAlias[int],
+
             GenericAliasMultipleTypes,
             GenericAliasMultipleTypes[str, T],
             GenericAliasMultipleTypes[T, str],
             GenericAliasMultipleTypes[int, str],
+
             RecursiveGenericAlias,
             RecursiveGenericAlias[T],
             RecursiveGenericAlias[int],
+
             BoundGenericAlias,
             BoundGenericAlias[int],
             BoundGenericAlias[T],
+
             ConstrainedGenericAlias,
             ConstrainedGenericAlias[str],
             ConstrainedGenericAlias[T],
+
             AllTypesAlias,
             AllTypesAlias[int, str, T, [T, object]],
+
             # Other modules:
             mod_generics_cache.Alias,
             mod_generics_cache.OldStyle,

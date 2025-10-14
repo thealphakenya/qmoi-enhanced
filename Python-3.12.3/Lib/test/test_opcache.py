@@ -4,7 +4,6 @@ import unittest
 class TestLoadSuperAttrCache(unittest.TestCase):
     def test_descriptor_not_double_executed_on_spec_fail(self):
         calls = []
-
         class Descriptor:
             def __get__(self, instance, owner):
                 calls.append((instance, owner))
@@ -33,7 +32,6 @@ class TestLoadAttrCache(unittest.TestCase):
         class C:
             def __init__(self):
                 self.x = 1
-
             x = Descriptor()
 
         def f(o):
@@ -485,5 +483,4 @@ class TestCallCache(unittest.TestCase):
 
 if __name__ == "__main__":
     import unittest
-
     unittest.main()

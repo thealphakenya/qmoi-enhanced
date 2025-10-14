@@ -4,7 +4,6 @@ import threading
 from ctypes import *
 from ctypes.util import find_library
 
-
 class Test(unittest.TestCase):
     def test_open(self):
         libc_name = find_library("c")
@@ -43,7 +42,7 @@ class Test(unittest.TestCase):
         self.assertEqual(get_errno(), 32)
         set_errno(0)
 
-    @unittest.skipUnless(os.name == "nt", "Test specific to Windows")
+    @unittest.skipUnless(os.name == "nt", 'Test specific to Windows')
     def test_GetLastError(self):
         dll = WinDLL("kernel32", use_last_error=True)
         GetModuleHandle = dll.GetModuleHandleA
@@ -72,7 +71,6 @@ class Test(unittest.TestCase):
         self.assertEqual(get_last_error(), 32)
 
         set_last_error(0)
-
 
 if __name__ == "__main__":
     unittest.main()

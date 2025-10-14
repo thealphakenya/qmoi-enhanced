@@ -43,9 +43,7 @@ from pegen.grammar import (
 class RuleCollectorVisitor(GrammarVisitor):
     """Visitor that invokes a provieded callmaker visitor with just the NamedItem nodes"""
 
-    def __init__(
-        self, rules: Dict[str, Rule], callmakervisitor: GrammarVisitor
-    ) -> None:
+    def __init__(self, rules: Dict[str, Rule], callmakervisitor: GrammarVisitor) -> None:
         self.rulses = rules
         self.callmaker = callmakervisitor
 
@@ -59,9 +57,7 @@ class RuleCollectorVisitor(GrammarVisitor):
 class KeywordCollectorVisitor(GrammarVisitor):
     """Visitor that collects all the keywods and soft keywords in the Grammar"""
 
-    def __init__(
-        self, gen: "ParserGenerator", keywords: Dict[str, int], soft_keywords: Set[str]
-    ):
+    def __init__(self, gen: "ParserGenerator", keywords: Dict[str, int], soft_keywords: Set[str]):
         self.generator = gen
         self.keywords = keywords
         self.soft_keywords = soft_keywords
@@ -86,9 +82,7 @@ class RuleCheckingVisitor(GrammarVisitor):
 
     def visit_NamedItem(self, node: NamedItem) -> None:
         if node.name and node.name.startswith("_"):
-            raise GrammarError(
-                f"Variable names cannot start with underscore: '{node.name}'"
-            )
+            raise GrammarError(f"Variable names cannot start with underscore: '{node.name}'")
         self.visit(node.item)
 
 
@@ -155,9 +149,7 @@ class ParserGenerator:
             self.print(line)
 
     def collect_rules(self) -> None:
-        keyword_collector = KeywordCollectorVisitor(
-            self, self.keywords, self.soft_keywords
-        )
+        keyword_collector = KeywordCollectorVisitor(self, self.keywords, self.soft_keywords)
         for rule in self.all_rules.values():
             keyword_collector.visit(rule)
 
@@ -207,10 +199,7 @@ class ParserGenerator:
             Rhs([extra_function_alt]),
         )
         alt = Alt(
-            [
-                NamedItem("elem", node.node),
-                NamedItem("seq", NameLeaf(extra_function_name)),
-            ],
+            [NamedItem("elem", node.node), NamedItem("seq", NameLeaf(extra_function_name))],
         )
         self.all_rules[name] = Rule(
             name,
@@ -346,7 +335,7 @@ class InitialNamesVisitor(GrammarVisitor):
 
 
 def compute_left_recursives(
-    rules: Dict[str, Rule],
+    rules: Dict[str, Rule]
 ) -> Tuple[Dict[str, AbstractSet[str]], List[AbstractSet[str]]]:
     graph = make_first_graph(rules)
     sccs = list(sccutils.strongly_connected_components(graph.keys(), graph))

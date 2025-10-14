@@ -18,8 +18,8 @@ class ProfileTest(unittest.TestCase):
 
     profilerclass = profile.Profile
     profilermodule = profile
-    methodnames = ["print_stats", "print_callers", "print_callees"]
-    expected_max_output = ":0(max)"
+    methodnames = ['print_stats', 'print_callers', 'print_callees']
+    expected_max_output = ':0(max)'
 
     def tearDown(self):
         unlink(TESTFN)
@@ -40,12 +40,12 @@ class ProfileTest(unittest.TestCase):
             stats.strip_dirs().sort_stats("stdname")
             getattr(stats, methodname)()
             output = s.getvalue().splitlines()
-            mod_name = testfunc.__module__.rsplit(".", 1)[1]
+            mod_name = testfunc.__module__.rsplit('.', 1)[1]
             # Only compare against stats originating from the test file.
             # Prevents outside code (e.g., the io module) from causing
             # unexpected output.
             output = [line.rstrip() for line in output if mod_name in line]
-            results.append("\n".join(output))
+            results.append('\n'.join(output))
         return results
 
     def test_cprofile(self):
@@ -55,14 +55,13 @@ class ProfileTest(unittest.TestCase):
         fail = []
         for i, method in enumerate(self.methodnames):
             a = expected[method]
-            b = results[i + 1]
+            b = results[i+1]
             if a != b:
-                fail.append(
-                    f"\nStats.{method} output for "
-                    f"{self.profilerclass.__name__} "
-                    "does not fit expectation:"
-                )
-                fail.extend(unified_diff(a.split("\n"), b.split("\n"), lineterm=""))
+                fail.append(f"\nStats.{method} output for "
+                            f"{self.profilerclass.__name__} "
+                             "does not fit expectation:")
+                fail.extend(unified_diff(a.split('\n'), b.split('\n'),
+                            lineterm=""))
         if fail:
             self.fail("\n".join(fail))
 
@@ -84,11 +83,8 @@ class ProfileTest(unittest.TestCase):
             stats = pstats.Stats(prof, stream=s)
             stats.print_stats()
             res = s.getvalue()
-            self.assertIn(
-                self.expected_max_output,
-                res,
-                "Profiling {0!r} didn't report max:\n{1}".format(stmt, res),
-            )
+            self.assertIn(self.expected_max_output, res,
+                "Profiling {0!r} didn't report max:\n{1}".format(stmt, res))
 
     def test_run(self):
         with silent():
@@ -99,57 +95,56 @@ class ProfileTest(unittest.TestCase):
     def test_runctx(self):
         with silent():
             self.profilermodule.runctx("testfunc()", globals(), locals())
-        self.profilermodule.runctx("testfunc()", globals(), locals(), filename=TESTFN)
+        self.profilermodule.runctx("testfunc()", globals(), locals(),
+                                  filename=TESTFN)
         self.assertTrue(os.path.exists(TESTFN))
 
     def test_run_profile_as_module(self):
         # Test that -m switch needs an argument
-        assert_python_failure("-m", self.profilermodule.__name__, "-m")
+        assert_python_failure('-m', self.profilermodule.__name__, '-m')
 
         # Test failure for not-existent module
-        assert_python_failure(
-            "-m", self.profilermodule.__name__, "-m", "random_module_xyz"
-        )
+        assert_python_failure('-m', self.profilermodule.__name__,
+                              '-m', 'random_module_xyz')
 
         # Test successful run
-        assert_python_ok("-m", self.profilermodule.__name__, "-m", "timeit", "-n", "1")
+        assert_python_ok('-m', self.profilermodule.__name__,
+                         '-m', 'timeit', '-n', '1')
 
     def test_output_file_when_changing_directory(self):
         with temp_dir() as tmpdir, change_cwd(tmpdir):
-            os.mkdir("dest")
-            with open("demo.py", "w", encoding="utf-8") as f:
+            os.mkdir('dest')
+            with open('demo.py', 'w', encoding="utf-8") as f:
                 f.write('import os; os.chdir("dest")')
 
             assert_python_ok(
-                "-m",
-                self.profilermodule.__name__,
-                "-o",
-                "out.pstats",
-                "demo.py",
+                '-m', self.profilermodule.__name__,
+                '-o', 'out.pstats',
+                'demo.py',
             )
 
-            self.assertTrue(os.path.exists("out.pstats"))
+            self.assertTrue(os.path.exists('out.pstats'))
 
 
 def regenerate_expected_output(filename, cls):
-    filename = filename.rstrip("co")
-    print("Regenerating %s..." % filename)
+    filename = filename.rstrip('co')
+    print('Regenerating %s...' % filename)
     results = cls.do_profiling()
 
     newfile = []
-    with open(filename, "r") as f:
+    with open(filename, 'r') as f:
         for line in f:
             newfile.append(line)
-            if line.startswith("#--cut"):
+            if line.startswith('#--cut'):
                 break
 
-    with open(filename, "w") as f:
+    with open(filename, 'w') as f:
         f.writelines(newfile)
         f.write("_ProfileOutput = {}\n")
         for i, method in enumerate(cls.methodnames):
-            f.write('_ProfileOutput[%r] = """\\\n%s"""\n' % (method, results[i + 1]))
+            f.write('_ProfileOutput[%r] = """\\\n%s"""\n' % (
+                    method, results[i+1]))
         f.write('\nif __name__ == "__main__":\n    main()\n')
-
 
 @contextmanager
 def silent():
@@ -162,18 +157,16 @@ def silent():
 
 
 def main():
-    if "-r" not in sys.argv:
+    if '-r' not in sys.argv:
         unittest.main()
     else:
         regenerate_expected_output(__file__, ProfileTest)
 
 
 # Don't remove this comment. Everything below it is auto-generated.
-# --cut--------------------------------------------------------------------------
+#--cut--------------------------------------------------------------------------
 _ProfileOutput = {}
-_ProfileOutput[
-    "print_stats"
-] = """\
+_ProfileOutput['print_stats'] = """\
        28   27.972    0.999   27.972    0.999 profilee.py:110(__getattr__)
         1  269.996  269.996  999.769  999.769 profilee.py:25(testfunc)
      23/3  149.937    6.519  169.917   56.639 profilee.py:35(factorial)
@@ -183,9 +176,7 @@ _ProfileOutput[
         2   -0.006   -0.003  139.946   69.973 profilee.py:84(helper2_indirect)
         8  311.976   38.997  399.912   49.989 profilee.py:88(helper2)
         8   63.976    7.997   79.960    9.995 profilee.py:98(subhelper)"""
-_ProfileOutput[
-    "print_callers"
-] = """\
+_ProfileOutput['print_callers'] = """\
 :0(append)                        <- profilee.py:73(helper1)(4)  119.964
 :0(exception)                     <- profilee.py:73(helper1)(4)  119.964
 :0(hasattr)                       <- profilee.py:73(helper1)(4)  119.964
@@ -203,9 +194,7 @@ profilee.py:84(helper2_indirect)  <- profilee.py:55(helper)(2)  599.830
 profilee.py:88(helper2)           <- profilee.py:55(helper)(6)  599.830
                                      profilee.py:84(helper2_indirect)(2)  139.946
 profilee.py:98(subhelper)         <- profilee.py:88(helper2)(8)  399.912"""
-_ProfileOutput[
-    "print_callees"
-] = """\
+_ProfileOutput['print_callees'] = """\
 :0(hasattr)                       -> profilee.py:110(__getattr__)(12)   27.972
 <string>:1(<module>)              -> profilee.py:25(testfunc)(1)  999.769
 profilee.py:110(__getattr__)      ->

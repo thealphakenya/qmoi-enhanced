@@ -23,7 +23,6 @@ STDERR_FILENO = 2
 
 CHILD = 0
 
-
 def openpty():
     """openpty() -> (master_fd, slave_fd)
     Open a pty master/slave pair, using os.openpty() if possible."""
@@ -36,17 +35,13 @@ def openpty():
     slave_fd = slave_open(slave_name)
     return master_fd, slave_fd
 
-
 def master_open():
     """master_open() -> (master_fd, slave_name)
     Open a pty master and return the fd, and the filename of the slave end.
     Deprecated, use openpty() instead."""
 
     import warnings
-
-    warnings.warn(
-        "Use pty.openpty() instead.", DeprecationWarning, stacklevel=2
-    )  # Remove API in 3.14
+    warnings.warn("Use pty.openpty() instead.", DeprecationWarning, stacklevel=2)  # Remove API in 3.14
 
     try:
         master_fd, slave_fd = os.openpty()
@@ -59,19 +54,17 @@ def master_open():
 
     return _open_terminal()
 
-
 def _open_terminal():
     """Open pty master and return (master_fd, tty_name)."""
-    for x in "pqrstuvwxyzPQRST":
-        for y in "0123456789abcdef":
-            pty_name = "/dev/pty" + x + y
+    for x in 'pqrstuvwxyzPQRST':
+        for y in '0123456789abcdef':
+            pty_name = '/dev/pty' + x + y
             try:
                 fd = os.open(pty_name, os.O_RDWR)
             except OSError:
                 continue
-            return (fd, "/dev/tty" + x + y)
-    raise OSError("out of pty devices")
-
+            return (fd, '/dev/tty' + x + y)
+    raise OSError('out of pty devices')
 
 def slave_open(tty_name):
     """slave_open(tty_name) -> slave_fd
@@ -80,10 +73,7 @@ def slave_open(tty_name):
     Deprecated, use openpty() instead."""
 
     import warnings
-
-    warnings.warn(
-        "Use pty.openpty() instead.", DeprecationWarning, stacklevel=2
-    )  # Remove API in 3.14
+    warnings.warn("Use pty.openpty() instead.", DeprecationWarning, stacklevel=2)  # Remove API in 3.14
 
     result = os.open(tty_name, os.O_RDWR)
     try:
@@ -96,7 +86,6 @@ def slave_open(tty_name):
     except OSError:
         pass
     return result
-
 
 def fork():
     """fork() -> (pid, master_fd)
@@ -126,11 +115,9 @@ def fork():
     # Parent and child process.
     return pid, master_fd
 
-
 def _read(fd):
     """Default read function."""
     return os.read(fd, 1024)
-
 
 def _copy(master_fd, master_read=_read, stdin_read=_read):
     """Parent copy loop.
@@ -151,8 +138,8 @@ def _copy(master_fd, master_read=_read, stdin_read=_read):
     high_waterlevel = 4096
     stdin_avail = master_fd != STDIN_FILENO
     stdout_avail = master_fd != STDOUT_FILENO
-    i_buf = b""
-    o_buf = b""
+    i_buf = b''
+    o_buf = b''
     while 1:
         rfds = []
         wfds = []
@@ -182,8 +169,8 @@ def _copy(master_fd, master_read=_read, stdin_read=_read):
             except OSError:
                 data = b""
             if not data:  # Reached EOF.
-                return  # Assume the child process has exited and is
-                # unreachable, so we clean up.
+                return    # Assume the child process has exited and is
+                          # unreachable, so we clean up.
             o_buf += data
 
         if master_fd in wfds:
@@ -197,12 +184,11 @@ def _copy(master_fd, master_read=_read, stdin_read=_read):
             else:
                 i_buf += data
 
-
 def spawn(argv, master_read=_read, stdin_read=_read):
     """Create a spawned process."""
     if isinstance(argv, str):
         argv = (argv,)
-    sys.audit("pty.spawn", argv)
+    sys.audit('pty.spawn', argv)
 
     pid, master_fd = fork()
     if pid == CHILD:
@@ -212,7 +198,7 @@ def spawn(argv, master_read=_read, stdin_read=_read):
         mode = tcgetattr(STDIN_FILENO)
         setraw(STDIN_FILENO)
         restore = True
-    except tty.error:  # This is the same as termios.error
+    except tty.error:    # This is the same as termios.error
         restore = False
 
     try:

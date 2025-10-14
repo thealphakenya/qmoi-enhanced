@@ -4,11 +4,9 @@ from unittest import mock
 
 class SampleObject:
 
-    def method_sample1(self):
-        pass
+    def method_sample1(self): pass
 
-    def method_sample2(self):
-        pass
+    def method_sample2(self): pass
 
 
 class TestSealable(unittest.TestCase):
@@ -177,24 +175,18 @@ class TestSealable(unittest.TestCase):
         # https://bugs.python.org/issue45156
         class Foo:
             foo = 0
-
-            def bar1(self):
-                pass
-
-            def bar2(self):
-                pass
+            def bar1(self): pass
+            def bar2(self): pass
 
             class Baz:
                 baz = 3
-
-                def ban(self):
-                    pass
+                def ban(self): pass
 
         for spec_set in (True, False):
             with self.subTest(spec_set=spec_set):
                 foo = mock.create_autospec(Foo, spec_set=spec_set)
-                foo.bar1.return_value = "a"
-                foo.Baz.ban.return_value = "b"
+                foo.bar1.return_value = 'a'
+                foo.Baz.ban.return_value = 'b'
 
                 mock.seal(foo)
 
@@ -208,12 +200,12 @@ class TestSealable(unittest.TestCase):
                 # see gh-91803
                 self.assertIsInstance(foo.bar2(), mock.MagicMock)
 
-                self.assertEqual(foo.bar1(), "a")
-                foo.bar1.return_value = "new_a"
-                self.assertEqual(foo.bar1(), "new_a")
-                self.assertEqual(foo.Baz.ban(), "b")
-                foo.Baz.ban.return_value = "new_b"
-                self.assertEqual(foo.Baz.ban(), "new_b")
+                self.assertEqual(foo.bar1(), 'a')
+                foo.bar1.return_value = 'new_a'
+                self.assertEqual(foo.bar1(), 'new_a')
+                self.assertEqual(foo.Baz.ban(), 'b')
+                foo.Baz.ban.return_value = 'new_b'
+                self.assertEqual(foo.Baz.ban(), 'new_b')
 
                 with self.assertRaises(TypeError):
                     foo.foo()
@@ -222,8 +214,8 @@ class TestSealable(unittest.TestCase):
                 with self.assertRaises(AttributeError):
                     foo.bar2().x
 
-                foo.bar2.return_value = "bar2"
-                self.assertEqual(foo.bar2(), "bar2")
+                foo.bar2.return_value = 'bar2'
+                self.assertEqual(foo.bar2(), 'bar2')
 
                 with self.assertRaises(AttributeError):
                     foo.missing_attr

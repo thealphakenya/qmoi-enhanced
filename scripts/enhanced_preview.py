@@ -7,7 +7,6 @@ from datetime import datetime
 import subprocess
 import shutil
 
-
 class EnhancedPreview:
     def __init__(self, config_path: str = "config/enhanced_features.json"):
         self.config = self._load_config(config_path)
@@ -17,17 +16,15 @@ class EnhancedPreview:
 
     def _load_config(self, config_path: str) -> Dict[str, Any]:
         """Load configuration from JSON file"""
-        with open(config_path, "r") as f:
+        with open(config_path, 'r') as f:
             return json.load(f)
 
     def _setup_logger(self) -> logging.Logger:
         """Setup logging configuration"""
-        logger = logging.getLogger("EnhancedPreview")
+        logger = logging.getLogger('EnhancedPreview')
         logger.setLevel(logging.INFO)
-        handler = logging.FileHandler("logs/enhanced_preview.log")
-        formatter = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
+        handler = logging.FileHandler('logs/enhanced_preview.log')
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
         logger.addHandler(handler)
         return logger
@@ -41,23 +38,23 @@ class EnhancedPreview:
             "video": [".mp4", ".avi", ".mkv", ".mov", ".webm"],
             "document": [".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx"],
             "archive": [".zip", ".rar", ".7z", ".tar", ".gz"],
-            "code": [".py", ".js", ".ts", ".java", ".cpp", ".cs", ".php"],
+            "code": [".py", ".js", ".ts", ".java", ".cpp", ".cs", ".php"]
         }
 
     def initialize_features(self):
         """Initialize all preview features"""
         self.logger.info("Initializing preview features...")
-
+        
         # Initialize file preview
-        if self.config["preview"]["file_preview"]["enabled"]:
+        if self.config['preview']['file_preview']['enabled']:
             self._init_file_preview()
-
+        
         # Initialize browser integration
-        if self.config["preview"]["browser_integration"]["enabled"]:
+        if self.config['preview']['browser_integration']['enabled']:
             self._init_browser_integration()
-
+        
         # Initialize media controls
-        if self.config["preview"]["media_controls"]["enabled"]:
+        if self.config['preview']['media_controls']['enabled']:
             self._init_media_controls()
 
     def _init_file_preview(self):
@@ -79,16 +76,16 @@ class EnhancedPreview:
         """Get file type from path"""
         mime_type, _ = mimetypes.guess_type(file_path)
         if mime_type:
-            return mime_type.split("/")[0]
+            return mime_type.split('/')[0]
         return "unknown"
 
     def preview_file(self, file_path: str) -> Dict[str, Any]:
         """Preview file with appropriate handler"""
         self.logger.info(f"Previewing file: {file_path}")
-
+        
         try:
             file_type = self.get_file_type(file_path)
-
+            
             if file_type == "text":
                 return self._preview_text(file_path)
             elif file_type == "image":
@@ -102,29 +99,30 @@ class EnhancedPreview:
             else:
                 return {
                     "status": "error",
-                    "error": f"Unsupported file type: {file_type}",
+                    "error": f"Unsupported file type: {file_type}"
                 }
-
+        
         except Exception as e:
             self.logger.error(f"Error previewing file: {str(e)}")
-            return {"status": "error", "error": str(e)}
+            return {
+                "status": "error",
+                "error": str(e)
+            }
 
     def _preview_text(self, file_path: str) -> Dict[str, Any]:
         """Preview text file"""
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-
+            
             return {
                 "status": "success",
                 "type": "text",
                 "content": content,
                 "metadata": {
                     "size": os.path.getsize(file_path),
-                    "modified": datetime.fromtimestamp(
-                        os.path.getmtime(file_path)
-                    ).isoformat(),
-                },
+                    "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
+                }
             }
         except Exception as e:
             return {"status": "error", "error": str(e)}
@@ -133,21 +131,19 @@ class EnhancedPreview:
         """Preview image file"""
         try:
             # Use system default image viewer
-            if os.name == "nt":  # Windows
+            if os.name == 'nt':  # Windows
                 os.startfile(file_path)
-            elif os.name == "posix":  # Linux/Mac
-                subprocess.run(["xdg-open", file_path])
-
+            elif os.name == 'posix':  # Linux/Mac
+                subprocess.run(['xdg-open', file_path])
+            
             return {
                 "status": "success",
                 "type": "image",
                 "path": file_path,
                 "metadata": {
                     "size": os.path.getsize(file_path),
-                    "modified": datetime.fromtimestamp(
-                        os.path.getmtime(file_path)
-                    ).isoformat(),
-                },
+                    "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
+                }
             }
         except Exception as e:
             return {"status": "error", "error": str(e)}
@@ -156,21 +152,19 @@ class EnhancedPreview:
         """Preview audio file"""
         try:
             # Use system default audio player
-            if os.name == "nt":  # Windows
+            if os.name == 'nt':  # Windows
                 os.startfile(file_path)
-            elif os.name == "posix":  # Linux/Mac
-                subprocess.run(["xdg-open", file_path])
-
+            elif os.name == 'posix':  # Linux/Mac
+                subprocess.run(['xdg-open', file_path])
+            
             return {
                 "status": "success",
                 "type": "audio",
                 "path": file_path,
                 "metadata": {
                     "size": os.path.getsize(file_path),
-                    "modified": datetime.fromtimestamp(
-                        os.path.getmtime(file_path)
-                    ).isoformat(),
-                },
+                    "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
+                }
             }
         except Exception as e:
             return {"status": "error", "error": str(e)}
@@ -179,21 +173,19 @@ class EnhancedPreview:
         """Preview video file"""
         try:
             # Use system default video player
-            if os.name == "nt":  # Windows
+            if os.name == 'nt':  # Windows
                 os.startfile(file_path)
-            elif os.name == "posix":  # Linux/Mac
-                subprocess.run(["xdg-open", file_path])
-
+            elif os.name == 'posix':  # Linux/Mac
+                subprocess.run(['xdg-open', file_path])
+            
             return {
                 "status": "success",
                 "type": "video",
                 "path": file_path,
                 "metadata": {
                     "size": os.path.getsize(file_path),
-                    "modified": datetime.fromtimestamp(
-                        os.path.getmtime(file_path)
-                    ).isoformat(),
-                },
+                    "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
+                }
             }
         except Exception as e:
             return {"status": "error", "error": str(e)}
@@ -202,21 +194,19 @@ class EnhancedPreview:
         """Preview document file"""
         try:
             # Use system default document viewer
-            if os.name == "nt":  # Windows
+            if os.name == 'nt':  # Windows
                 os.startfile(file_path)
-            elif os.name == "posix":  # Linux/Mac
-                subprocess.run(["xdg-open", file_path])
-
+            elif os.name == 'posix':  # Linux/Mac
+                subprocess.run(['xdg-open', file_path])
+            
             return {
                 "status": "success",
                 "type": "document",
                 "path": file_path,
                 "metadata": {
                     "size": os.path.getsize(file_path),
-                    "modified": datetime.fromtimestamp(
-                        os.path.getmtime(file_path)
-                    ).isoformat(),
-                },
+                    "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
+                }
             }
         except Exception as e:
             return {"status": "error", "error": str(e)}
@@ -224,24 +214,24 @@ class EnhancedPreview:
     def convert_format(self, file_path: str, target_format: str) -> Dict[str, Any]:
         """Convert file to target format"""
         self.logger.info(f"Converting file {file_path} to {target_format}")
-
+        
         try:
             # Get file extension
             _, ext = os.path.splitext(file_path)
-
+            
             # Check if conversion is supported
             if ext not in self.supported_formats.get("convertible", []):
                 return {
                     "status": "error",
-                    "error": f"Conversion not supported for {ext}",
+                    "error": f"Conversion not supported for {ext}"
                 }
-
+            
             # Generate output path
             output_path = os.path.splitext(file_path)[0] + target_format
-
+            
             # Perform conversion based on file type
             file_type = self.get_file_type(file_path)
-
+            
             if file_type == "image":
                 self._convert_image(file_path, output_path)
             elif file_type == "audio":
@@ -251,24 +241,25 @@ class EnhancedPreview:
             else:
                 return {
                     "status": "error",
-                    "error": f"Conversion not supported for {file_type}",
+                    "error": f"Conversion not supported for {file_type}"
                 }
-
+            
             return {
                 "status": "success",
                 "original": file_path,
                 "converted": output_path,
                 "metadata": {
                     "size": os.path.getsize(output_path),
-                    "modified": datetime.fromtimestamp(
-                        os.path.getmtime(output_path)
-                    ).isoformat(),
-                },
+                    "modified": datetime.fromtimestamp(os.path.getmtime(output_path)).isoformat()
+                }
             }
-
+        
         except Exception as e:
             self.logger.error(f"Error converting file: {str(e)}")
-            return {"status": "error", "error": str(e)}
+            return {
+                "status": "error",
+                "error": str(e)
+            }
 
     def _convert_image(self, input_path: str, output_path: str):
         """Convert image format"""
@@ -285,17 +276,16 @@ class EnhancedPreview:
         # Add implementation using ffmpeg or other video processing library
         pass
 
-
 if __name__ == "__main__":
     preview = EnhancedPreview()
-
+    
     # Test file preview
     test_file = "test.txt"
-    with open(test_file, "w") as f:
+    with open(test_file, 'w') as f:
         f.write("Test content")
-
+    
     result = preview.preview_file(test_file)
     print(f"File preview result: {result}")
-
+    
     # Cleanup
-    os.remove(test_file)
+    os.remove(test_file) 

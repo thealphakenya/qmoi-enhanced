@@ -1,3 +1,4 @@
+
 # The cycle GC collector can be executed when any GC-tracked object is
 # allocated, e.g. during a call to PyList_New(), PyDict_New(), ...
 # Moreover, it can invoke arbitrary Python code via a weakref callback.
@@ -11,10 +12,8 @@
 
 import weakref
 
-
 class A(object):
     pass
-
 
 def callback(x):
     del lst[:]

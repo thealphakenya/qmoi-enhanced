@@ -104,7 +104,7 @@ class TransactionTests(unittest.TestCase):
         self.assertEqual(len(res), 1)
 
         self.con1.isolation_level = "DEFERRED"
-        self.assertEqual(self.con1.isolation_level, "DEFERRED")
+        self.assertEqual(self.con1.isolation_level , "DEFERRED")
         self.cur1.execute("insert into test(i) values (5)")
         self.cur2.execute("select i from test")
         res = self.cur2.fetchall()
@@ -142,7 +142,6 @@ class TransactionTests(unittest.TestCase):
 
         # Provoke the gh-94028 by using a cursor cache.
         CURSORS = {}
-
         def sql(cx, sql, *args):
             cu = cx.cursor()
             cu.execute(sql, args)
@@ -186,7 +185,7 @@ class RollbackTests(unittest.TestCase):
         self.cur1 = self.con.cursor()
         self.cur2 = self.con.cursor()
         with self.con:
-            self.con.execute("create table t(c)")
+            self.con.execute("create table t(c)");
             self.con.executemany("insert into t values(?)", [(0,), (1,), (2,)])
         self.cur1.execute("begin transaction")
         select = "select c from t"
@@ -212,6 +211,7 @@ class RollbackTests(unittest.TestCase):
     def test_no_duplicate_rows_after_rollback_new_query(self):
         self.cur1.execute("select c from t where c = 1")
         self._check_rows()
+
 
 
 class SpecialCommandTests(unittest.TestCase):
@@ -299,12 +299,14 @@ class IsolationLevelFromInit(unittest.TestCase):
     def test_isolation_level_immediate(self):
         with memory_database(isolation_level="IMMEDIATE") as cx:
             self._run_test(cx)
-            self.assertEqual(self.traced, ["BEGIN IMMEDIATE", self.INSERT, "COMMIT"])
+            self.assertEqual(self.traced,
+                             ["BEGIN IMMEDIATE", self.INSERT, "COMMIT"])
 
     def test_isolation_level_exclusive(self):
         with memory_database(isolation_level="EXCLUSIVE") as cx:
             self._run_test(cx)
-            self.assertEqual(self.traced, ["BEGIN EXCLUSIVE", self.INSERT, "COMMIT"])
+            self.assertEqual(self.traced,
+                             ["BEGIN EXCLUSIVE", self.INSERT, "COMMIT"])
 
     def test_isolation_level_none(self):
         with memory_database(isolation_level=None) as cx:
@@ -345,13 +347,15 @@ class IsolationLevelPostInit(unittest.TestCase):
         self.cx.isolation_level = "IMMEDIATE"
         with self.cx:
             self.cx.execute(self.QUERY)
-        self.assertEqual(self.traced, ["BEGIN IMMEDIATE", self.QUERY, "COMMIT"])
+        self.assertEqual(self.traced,
+                         ["BEGIN IMMEDIATE", self.QUERY, "COMMIT"])
 
     def test_isolation_level_exclusive(self):
         self.cx.isolation_level = "EXCLUSIVE"
         with self.cx:
             self.cx.execute(self.QUERY)
-        self.assertEqual(self.traced, ["BEGIN EXCLUSIVE", self.QUERY, "COMMIT"])
+        self.assertEqual(self.traced,
+                         ["BEGIN EXCLUSIVE", self.QUERY, "COMMIT"])
 
     def test_isolation_level_none(self):
         self.cx.isolation_level = None
@@ -362,7 +366,6 @@ class IsolationLevelPostInit(unittest.TestCase):
 
 class AutocommitAttribute(unittest.TestCase):
     """Test PEP 249-compliant autocommit behaviour."""
-
     legacy = sqlite.LEGACY_TRANSACTION_CONTROL
 
     @contextmanager
@@ -378,7 +381,8 @@ class AutocommitAttribute(unittest.TestCase):
 
     def test_autocommit_default(self):
         with memory_database() as cx:
-            self.assertEqual(cx.autocommit, sqlite.LEGACY_TRANSACTION_CONTROL)
+            self.assertEqual(cx.autocommit,
+                             sqlite.LEGACY_TRANSACTION_CONTROL)
 
     def test_autocommit_setget(self):
         dataset = (

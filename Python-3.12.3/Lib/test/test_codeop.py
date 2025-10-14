@@ -1,8 +1,7 @@
 """
-Test cases for codeop.py
-Nick Mathewson
+   Test cases for codeop.py
+   Nick Mathewson
 """
-
 import unittest
 import warnings
 from test.support import warnings_helper
@@ -10,22 +9,21 @@ from textwrap import dedent
 
 from codeop import compile_command, PyCF_DONT_IMPLY_DEDENT
 
-
 class CodeopTests(unittest.TestCase):
 
-    def assertValid(self, str, symbol="single"):
-        """succeed iff str is a valid piece of code"""
+    def assertValid(self, str, symbol='single'):
+        '''succeed iff str is a valid piece of code'''
         expected = compile(str, "<input>", symbol, PyCF_DONT_IMPLY_DEDENT)
         self.assertEqual(compile_command(str, "<input>", symbol), expected)
 
-    def assertIncomplete(self, str, symbol="single"):
-        """succeed iff str is the start of a valid piece of code"""
+    def assertIncomplete(self, str, symbol='single'):
+        '''succeed iff str is the start of a valid piece of code'''
         self.assertEqual(compile_command(str, symbol=symbol), None)
 
-    def assertInvalid(self, str, symbol="single", is_syntax=1):
-        """succeed iff str is the start of an invalid piece of code"""
+    def assertInvalid(self, str, symbol='single', is_syntax=1):
+        '''succeed iff str is the start of an invalid piece of code'''
         try:
-            compile_command(str, symbol=symbol)
+            compile_command(str,symbol=symbol)
             self.fail("No exception raised for invalid code")
         except SyntaxError:
             self.assertTrue(is_syntax)
@@ -36,14 +34,12 @@ class CodeopTests(unittest.TestCase):
         av = self.assertValid
 
         # special case
-        self.assertEqual(
-            compile_command(""),
-            compile("pass", "<input>", "single", PyCF_DONT_IMPLY_DEDENT),
-        )
-        self.assertEqual(
-            compile_command("\n"),
-            compile("pass", "<input>", "single", PyCF_DONT_IMPLY_DEDENT),
-        )
+        self.assertEqual(compile_command(""),
+                            compile("pass", "<input>", 'single',
+                                    PyCF_DONT_IMPLY_DEDENT))
+        self.assertEqual(compile_command("\n"),
+                            compile("pass", "<input>", 'single',
+                                    PyCF_DONT_IMPLY_DEDENT))
 
         av("a = 1")
         av("\na = 1")
@@ -72,15 +68,15 @@ class CodeopTests(unittest.TestCase):
         av("a=3\n\n")
         av("a = 9+ \\\n3")
 
-        av("3**3", "eval")
-        av("(lambda z: \n z**3)", "eval")
+        av("3**3","eval")
+        av("(lambda z: \n z**3)","eval")
 
-        av("9+ \\\n3", "eval")
-        av("9+ \\\n3\n", "eval")
+        av("9+ \\\n3","eval")
+        av("9+ \\\n3\n","eval")
 
-        av("\n\na**3", "eval")
-        av("\n \na**3", "eval")
-        av("#a\n#b\na**3", "eval")
+        av("\n\na**3","eval")
+        av("\n \na**3","eval")
+        av("#a\n#b\na**3","eval")
 
         av("\n\na = 1\n\n")
         av("\n\nif 1: a=1\n\n")
@@ -88,9 +84,9 @@ class CodeopTests(unittest.TestCase):
         av("if 1:\n pass\n if 1:\n  pass\n else:\n  pass\n")
         av("#a\n\n   \na=3\n\n")
 
-        av("\n\na**3", "eval")
-        av("\n \na**3", "eval")
-        av("#a\n#b\na**3", "eval")
+        av("\n\na**3","eval")
+        av("\n \na**3","eval")
+        av("#a\n#b\na**3","eval")
 
         av("def f():\n try: pass\n finally: [x for x in (1,2)]\n")
         av("def f():\n pass\n#foo\n")
@@ -133,12 +129,12 @@ class CodeopTests(unittest.TestCase):
         ai("a = 'a\\")
         ai("a = '''xy")
 
-        ai("", "eval")
-        ai("\n", "eval")
-        ai("(", "eval")
-        ai("(9+", "eval")
-        ai("9+ \\", "eval")
-        ai("lambda z: \\", "eval")
+        ai("","eval")
+        ai("\n","eval")
+        ai("(","eval")
+        ai("(9+","eval")
+        ai("9+ \\","eval")
+        ai("lambda z: \\","eval")
 
         ai("if True:\n if True:\n  if True:   \n")
 
@@ -228,7 +224,7 @@ class CodeopTests(unittest.TestCase):
         ai("(x for x in (")
 
         ai('a = f"""')
-        ai("a = \\")
+        ai('a = \\')
 
     def test_invalid(self):
         ai = self.assertInvalid
@@ -249,13 +245,13 @@ class CodeopTests(unittest.TestCase):
         ai("a = 'a\\ ")
         ai("a = 'a\\\n")
 
-        ai("a = 1", "eval")
-        ai("]", "eval")
-        ai("())", "eval")
-        ai("[}", "eval")
-        ai("9+", "eval")
-        ai("lambda z:", "eval")
-        ai("a b", "eval")
+        ai("a = 1","eval")
+        ai("]","eval")
+        ai("())","eval")
+        ai("[}","eval")
+        ai("9+","eval")
+        ai("lambda z:","eval")
+        ai("a b","eval")
 
         ai("return 2.3")
         ai("if (a == 1 and b = 2): pass")
@@ -270,71 +266,64 @@ class CodeopTests(unittest.TestCase):
     def test_invalid_exec(self):
         ai = self.assertInvalid
         ai("raise = 4", symbol="exec")
-        ai("def a-b", symbol="exec")
-        ai("await?", symbol="exec")
-        ai("=!=", symbol="exec")
-        ai("a await raise b", symbol="exec")
-        ai("a await raise b?+1", symbol="exec")
+        ai('def a-b', symbol='exec')
+        ai('await?', symbol='exec')
+        ai('=!=', symbol='exec')
+        ai('a await raise b', symbol='exec')
+        ai('a await raise b?+1', symbol='exec')
 
     def test_filename(self):
-        self.assertEqual(
-            compile_command("a = 1\n", "abc").co_filename,
-            compile("a = 1\n", "abc", "single").co_filename,
-        )
-        self.assertNotEqual(
-            compile_command("a = 1\n", "abc").co_filename,
-            compile("a = 1\n", "def", "single").co_filename,
-        )
+        self.assertEqual(compile_command("a = 1\n", "abc").co_filename,
+                         compile("a = 1\n", "abc", 'single').co_filename)
+        self.assertNotEqual(compile_command("a = 1\n", "abc").co_filename,
+                            compile("a = 1\n", "def", 'single').co_filename)
 
     def test_warning(self):
         # Test that the warning is only returned once.
         with warnings_helper.check_warnings(
-            ("\"is\" with 'str' literal", SyntaxWarning),
-            ("invalid escape sequence", SyntaxWarning),
-        ) as w:
+                ('"is" with \'str\' literal', SyntaxWarning),
+                ("invalid escape sequence", SyntaxWarning),
+                ) as w:
             compile_command(r"'\e' is 0")
             self.assertEqual(len(w.warnings), 2)
 
         # bpo-41520: check SyntaxWarning treated as an SyntaxError
         with warnings.catch_warnings(), self.assertRaises(SyntaxError):
-            warnings.simplefilter("error", SyntaxWarning)
-            compile_command("1 is 1", symbol="exec")
+            warnings.simplefilter('error', SyntaxWarning)
+            compile_command('1 is 1', symbol='exec')
 
         # Check SyntaxWarning treated as an SyntaxError
         with warnings.catch_warnings(), self.assertRaises(SyntaxError):
-            warnings.simplefilter("error", SyntaxWarning)
-            compile_command(r"'\e'", symbol="exec")
+            warnings.simplefilter('error', SyntaxWarning)
+            compile_command(r"'\e'", symbol='exec')
 
     def test_incomplete_warning(self):
         with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
+            warnings.simplefilter('always')
             self.assertIncomplete("'\\e' + (")
         self.assertEqual(w, [])
 
     def test_invalid_warning(self):
         with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
+            warnings.simplefilter('always')
             self.assertInvalid("'\\e' 1")
         self.assertEqual(len(w), 1)
         self.assertEqual(w[0].category, SyntaxWarning)
-        self.assertRegex(str(w[0].message), "invalid escape sequence")
-        self.assertEqual(w[0].filename, "<input>")
+        self.assertRegex(str(w[0].message), 'invalid escape sequence')
+        self.assertEqual(w[0].filename, '<input>')
 
     def assertSyntaxErrorMatches(self, code, message):
         with self.subTest(code):
             with self.assertRaisesRegex(SyntaxError, message):
-                compile_command(code, symbol="exec")
+                compile_command(code, symbol='exec')
 
     def test_syntax_errors(self):
         self.assertSyntaxErrorMatches(
-            dedent(
-                """\
+            dedent("""\
                 def foo(x,x):
                    pass
-            """
-            ),
-            "duplicate argument 'x' in function definition",
-        )
+            """), "duplicate argument 'x' in function definition")
+
 
 
 if __name__ == "__main__":

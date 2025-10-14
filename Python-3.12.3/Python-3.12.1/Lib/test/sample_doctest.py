@@ -22,14 +22,12 @@ def foo():
     4
     """
 
-
 def bar():
     """
 
     >>> 2+2
     4
     """
-
 
 def test_silly_setup():
     """
@@ -38,7 +36,6 @@ def test_silly_setup():
     >>> test.test_doctest.sillySetup
     True
     """
-
 
 def w_blank():
     """
@@ -51,16 +48,12 @@ def w_blank():
     b
     """
 
-
 x = 1
-
-
 def x_is_one():
     """
     >>> x
     1
     """
-
 
 def y_is_one():
     """
@@ -68,20 +61,16 @@ def y_is_one():
     1
     """
 
-
-__test__ = {
-    "good": """
+__test__ = {'good': """
                     >>> 42
                     42
                     """,
-    "bad": """
+            'bad':  """
                     >>> 42
                     666
                     """,
-}
-
+           }
 
 def test_suite():
     import doctest
-
     return doctest.DocTestSuite()

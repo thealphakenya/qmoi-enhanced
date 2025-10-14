@@ -9,13 +9,11 @@ import codecs
 from . import handler
 from . import xmlreader
 
-
 def __dict_replace(s, d):
     """Replace substrings of a string using a dictionary."""
     for key, value in d.items():
         s = s.replace(key, value)
     return s
-
 
 def escape(data, entities={}):
     """Escape &, <, and > in a string of data.
@@ -33,7 +31,6 @@ def escape(data, entities={}):
         data = __dict_replace(data, entities)
     return data
 
-
 def unescape(data, entities={}):
     """Unescape &amp;, &lt;, and &gt; in a string of data.
 
@@ -48,7 +45,6 @@ def unescape(data, entities={}):
     # must do ampersand last
     return data.replace("&amp;", "&")
 
-
 def quoteattr(data, entities={}):
     """Escape and quote an attribute value.
 
@@ -60,7 +56,7 @@ def quoteattr(data, entities={}):
     the optional entities parameter.  The keys and values must all be
     strings; each key will be replaced with its corresponding value.
     """
-    entities = {**entities, "\n": "&#10;", "\r": "&#13;", "\t": "&#9;"}
+    entities = {**entities, '\n': '&#10;', '\r': '&#13;', '\t':'&#9;'}
     data = escape(data, entities)
     if '"' in data:
         if "'" in data:
@@ -75,7 +71,6 @@ def quoteattr(data, entities={}):
 def _gettextwriter(out, encoding):
     if out is None:
         import sys
-
         return sys.stdout
 
     if isinstance(out, io.TextIOBase):
@@ -92,10 +87,8 @@ def _gettextwriter(out, encoding):
         # destroyed
         class _wrapper:
             __class__ = out.__class__
-
             def __getattr__(self, name):
                 return getattr(out, name)
-
         buffer = _wrapper()
         buffer.close = lambda: None
     else:
@@ -111,14 +104,10 @@ def _gettextwriter(out, encoding):
             buffer.tell = out.tell
         except AttributeError:
             pass
-    return io.TextIOWrapper(
-        buffer,
-        encoding=encoding,
-        errors="xmlcharrefreplace",
-        newline="\n",
-        write_through=True,
-    )
-
+    return io.TextIOWrapper(buffer, encoding=encoding,
+                            errors='xmlcharrefreplace',
+                            newline='\n',
+                            write_through=True)
 
 class XMLGenerator(handler.ContentHandler):
 
@@ -127,7 +116,7 @@ class XMLGenerator(handler.ContentHandler):
         out = _gettextwriter(out, encoding)
         self._write = out.write
         self._flush = out.flush
-        self._ns_contexts = [{}]  # contains uri -> prefix dicts
+        self._ns_contexts = [{}] # contains uri -> prefix dicts
         self._current_context = self._ns_contexts[-1]
         self._undeclared_ns_maps = []
         self._encoding = encoding
@@ -141,8 +130,8 @@ class XMLGenerator(handler.ContentHandler):
             # bound by definition to http://www.w3.org/XML/1998/namespace.  It
             # does not need to be declared and will not usually be found in
             # self._current_context.
-            if "http://www.w3.org/XML/1998/namespace" == name[0]:
-                return "xml:" + name[1]
+            if 'http://www.w3.org/XML/1998/namespace' == name[0]:
+                return 'xml:' + name[1]
             # The name is in a non-empty namespace
             prefix = self._current_context[name[0]]
             if prefix:
@@ -151,15 +140,16 @@ class XMLGenerator(handler.ContentHandler):
         # Return the unqualified name
         return name[1]
 
-    def _finish_pending_start_element(self, endElement=False):
+    def _finish_pending_start_element(self,endElement=False):
         if self._pending_start_element:
-            self._write(">")
+            self._write('>')
             self._pending_start_element = False
 
     # ContentHandler methods
 
     def startDocument(self):
-        self._write('<?xml version="1.0" encoding="%s"?>\n' % self._encoding)
+        self._write('<?xml version="1.0" encoding="%s"?>\n' %
+                        self._encoding)
 
     def endDocument(self):
         self._flush()
@@ -175,9 +165,9 @@ class XMLGenerator(handler.ContentHandler):
 
     def startElement(self, name, attrs):
         self._finish_pending_start_element()
-        self._write("<" + name)
-        for name, value in attrs.items():
-            self._write(" %s=%s" % (name, quoteattr(value)))
+        self._write('<' + name)
+        for (name, value) in attrs.items():
+            self._write(' %s=%s' % (name, quoteattr(value)))
         if self._short_empty_elements:
             self._pending_start_element = True
         else:
@@ -185,14 +175,14 @@ class XMLGenerator(handler.ContentHandler):
 
     def endElement(self, name):
         if self._pending_start_element:
-            self._write("/>")
+            self._write('/>')
             self._pending_start_element = False
         else:
-            self._write("</%s>" % name)
+            self._write('</%s>' % name)
 
     def startElementNS(self, name, qname, attrs):
         self._finish_pending_start_element()
-        self._write("<" + self._qname(name))
+        self._write('<' + self._qname(name))
 
         for prefix, uri in self._undeclared_ns_maps:
             if prefix:
@@ -201,8 +191,8 @@ class XMLGenerator(handler.ContentHandler):
                 self._write(' xmlns="%s"' % uri)
         self._undeclared_ns_maps = []
 
-        for name, value in attrs.items():
-            self._write(" %s=%s" % (self._qname(name), quoteattr(value)))
+        for (name, value) in attrs.items():
+            self._write(' %s=%s' % (self._qname(name), quoteattr(value)))
         if self._short_empty_elements:
             self._pending_start_element = True
         else:
@@ -210,10 +200,10 @@ class XMLGenerator(handler.ContentHandler):
 
     def endElementNS(self, name, qname):
         if self._pending_start_element:
-            self._write("/>")
+            self._write('/>')
             self._pending_start_element = False
         else:
-            self._write("</%s>" % self._qname(name))
+            self._write('</%s>' % self._qname(name))
 
     def characters(self, content):
         if content:
@@ -231,7 +221,7 @@ class XMLGenerator(handler.ContentHandler):
 
     def processingInstruction(self, target, data):
         self._finish_pending_start_element()
-        self._write("<?%s %s?>" % (target, data))
+        self._write('<?%s %s?>' % (target, data))
 
 
 class XMLFilterBase(xmlreader.XMLReader):
@@ -242,7 +232,7 @@ class XMLFilterBase(xmlreader.XMLReader):
     the event stream or the configuration requests as they pass
     through."""
 
-    def __init__(self, parent=None):
+    def __init__(self, parent = None):
         xmlreader.XMLReader.__init__(self)
         self._parent = parent
 
@@ -343,9 +333,7 @@ class XMLFilterBase(xmlreader.XMLReader):
     def setParent(self, parent):
         self._parent = parent
 
-
 # --- Utility functions
-
 
 def prepare_input_source(source, base=""):
     """This function takes an InputSource and an optional base URL and

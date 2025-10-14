@@ -5,7 +5,7 @@ from test.test_tkinter.support import AbstractDefaultRootTest
 from tkinter.commondialog import Dialog
 from tkinter.messagebox import showinfo
 
-requires("gui")
+requires('gui')
 
 
 class DefaultRootTest(AbstractDefaultRootTest, unittest.TestCase):
@@ -17,7 +17,7 @@ class DefaultRootTest(AbstractDefaultRootTest, unittest.TestCase):
             ismapped = master.winfo_ismapped()
             raise ZeroDivisionError
 
-        with swap_attr(Dialog, "_test_callback", test_callback):
+        with swap_attr(Dialog, '_test_callback', test_callback):
             ismapped = None
             self.assertRaises(ZeroDivisionError, showinfo, "Spam", "Egg Information")
             self.assertEqual(ismapped, False)

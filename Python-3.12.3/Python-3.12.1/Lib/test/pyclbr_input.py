@@ -1,25 +1,17 @@
 """Test cases for test_pyclbr.py"""
 
-
-def f():
-    pass
-
+def f(): pass
 
 class Other(object):
     @classmethod
-    def foo(c):
-        pass
+    def foo(c): pass
 
-    def om(self):
-        pass
+    def om(self): pass
 
+class B (object):
+    def bm(self): pass
 
-class B(object):
-    def bm(self):
-        pass
-
-
-class C(B):
+class C (B):
     foo = Other().foo
     om = Other.om
 
@@ -30,15 +22,12 @@ class C(B):
     #      distinguish between this and a genuine method function like m().
     #      The pyclbr.py module gets this right as it parses the text.
     #
-    # f = f
+    #f = f
 
-    def m(self):
-        pass
+    def m(self): pass
 
     @staticmethod
-    def sm(self):
-        pass
+    def sm(self): pass
 
     @classmethod
-    def cm(self):
-        pass
+    def cm(self): pass

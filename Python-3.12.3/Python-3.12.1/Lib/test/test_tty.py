@@ -2,17 +2,17 @@ import os
 import unittest
 from test.support.import_helper import import_module
 
-termios = import_module("termios")
-tty = import_module("tty")
+termios = import_module('termios')
+tty = import_module('tty')
 
 
-@unittest.skipUnless(hasattr(os, "openpty"), "need os.openpty()")
+@unittest.skipUnless(hasattr(os, 'openpty'), "need os.openpty()")
 class TestTty(unittest.TestCase):
 
     def setUp(self):
         master_fd, self.fd = os.openpty()
         self.addCleanup(os.close, master_fd)
-        self.stream = self.enterContext(open(self.fd, "wb", buffering=0))
+        self.stream = self.enterContext(open(self.fd, 'wb', buffering=0))
         self.fd = self.stream.fileno()
         self.mode = termios.tcgetattr(self.fd)
         self.addCleanup(termios.tcsetattr, self.fd, termios.TCSANOW, self.mode)
@@ -80,5 +80,5 @@ class TestTty(unittest.TestCase):
         tty.setcbreak(fd=self.fd, when=termios.TCSANOW)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

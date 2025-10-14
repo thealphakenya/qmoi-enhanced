@@ -138,17 +138,13 @@ try:
     import ctypes
 except ImportError:
     ctypes = None
-from test.support import (
-    cpython_only,
-    check_impl_detail,
-    requires_debug_ranges,
-    gc_collect,
-)
+from test.support import (cpython_only,
+                          check_impl_detail, requires_debug_ranges,
+                          gc_collect)
 from test.support.script_helper import assert_python_ok
 from test.support import threading_helper
 from opcode import opmap, opname
-
-COPY_FREE_VARS = opmap["COPY_FREE_VARS"]
+COPY_FREE_VARS = opmap['COPY_FREE_VARS']
 
 
 def consts(t):
@@ -160,42 +156,29 @@ def consts(t):
         else:
             yield r
 
-
 def dump(co):
     """Print out a text representation of a code object."""
-    for attr in [
-        "name",
-        "argcount",
-        "posonlyargcount",
-        "kwonlyargcount",
-        "names",
-        "varnames",
-        "cellvars",
-        "freevars",
-        "nlocals",
-        "flags",
-    ]:
+    for attr in ["name", "argcount", "posonlyargcount",
+                 "kwonlyargcount", "names", "varnames",
+                 "cellvars", "freevars", "nlocals", "flags"]:
         print("%s: %s" % (attr, getattr(co, "co_" + attr)))
     print("consts:", tuple(consts(co.co_consts)))
-
 
 # Needed for test_closure_injection below
 # Defined at global scope to avoid implicitly closing over __class__
 def external_getitem(self, i):
     return f"Foreign getitem: {super().__getitem__(i)}"
 
-
 class CodeTest(unittest.TestCase):
 
     @cpython_only
     def test_newempty(self):
         import _testcapi
-
         co = _testcapi.code_newempty("filename", "funcname", 15)
         self.assertEqual(co.co_filename, "filename")
         self.assertEqual(co.co_name, "funcname")
         self.assertEqual(co.co_firstlineno, 15)
-        # Empty code object should raise, but not crash the VM
+        #Empty code object should raise, but not crash the VM
         with self.assertRaises(Exception):
             exec(co)
 
@@ -208,11 +191,8 @@ class CodeTest(unittest.TestCase):
             return (lambda: __class__).__closure__
 
         def new_code(c):
-            """A new code object with a __class__ cell added to freevars"""
-            return c.replace(
-                co_freevars=c.co_freevars + ("__class__",),
-                co_code=bytes([COPY_FREE_VARS, 1]) + c.co_code,
-            )
+            '''A new code object with a __class__ cell added to freevars'''
+            return c.replace(co_freevars=c.co_freevars + ('__class__',), co_code=bytes([COPY_FREE_VARS, 1])+c.co_code)
 
         def add_foreign_method(cls, name, f):
             code = new_code(f.__code__)
@@ -236,45 +216,40 @@ class CodeTest(unittest.TestCase):
         self.assertEqual(obj[0], "Foreign getitem: 1")
 
     def test_constructor(self):
-        def func():
-            pass
-
+        def func(): pass
         co = func.__code__
         CodeType = type(co)
 
         # test code constructor
-        CodeType(
-            co.co_argcount,
-            co.co_posonlyargcount,
-            co.co_kwonlyargcount,
-            co.co_nlocals,
-            co.co_stacksize,
-            co.co_flags,
-            co.co_code,
-            co.co_consts,
-            co.co_names,
-            co.co_varnames,
-            co.co_filename,
-            co.co_name,
-            co.co_qualname,
-            co.co_firstlineno,
-            co.co_linetable,
-            co.co_exceptiontable,
-            co.co_freevars,
-            co.co_cellvars,
-        )
+        CodeType(co.co_argcount,
+                        co.co_posonlyargcount,
+                        co.co_kwonlyargcount,
+                        co.co_nlocals,
+                        co.co_stacksize,
+                        co.co_flags,
+                        co.co_code,
+                        co.co_consts,
+                        co.co_names,
+                        co.co_varnames,
+                        co.co_filename,
+                        co.co_name,
+                        co.co_qualname,
+                        co.co_firstlineno,
+                        co.co_linetable,
+                        co.co_exceptiontable,
+                        co.co_freevars,
+                        co.co_cellvars)
 
     def test_qualname(self):
         self.assertEqual(
             CodeTest.test_qualname.__code__.co_qualname,
-            CodeTest.test_qualname.__qualname__,
+            CodeTest.test_qualname.__qualname__
         )
 
     def test_replace(self):
         def func():
             x = 1
             return x
-
         code = func.__code__
 
         # different co_name, co_varnames, co_consts
@@ -282,7 +257,6 @@ class CodeTest(unittest.TestCase):
             y = 2
             z = 3
             return y
-
         code2 = func2.__code__
 
         for attr, value in (
@@ -296,7 +270,7 @@ class CodeTest(unittest.TestCase):
             ("co_code", code2.co_code),
             ("co_consts", code2.co_consts),
             ("co_names", ("myname",)),
-            ("co_varnames", ("spam",)),
+            ("co_varnames", ('spam',)),
             ("co_freevars", ("freevar",)),
             ("co_cellvars", ("cellvar",)),
             ("co_filename", "newfilename"),
@@ -307,9 +281,8 @@ class CodeTest(unittest.TestCase):
                 new_code = code.replace(**{attr: value})
                 self.assertEqual(getattr(new_code, attr), value)
 
-        new_code = code.replace(
-            co_varnames=code2.co_varnames, co_nlocals=code2.co_nlocals
-        )
+        new_code = code.replace(co_varnames=code2.co_varnames,
+                                co_nlocals=code2.co_nlocals)
         self.assertEqual(new_code.co_varnames, code2.co_varnames)
         self.assertEqual(new_code.co_nlocals, code2.co_nlocals)
 
@@ -317,35 +290,33 @@ class CodeTest(unittest.TestCase):
         def func():
             x = 1
             return x
-
         co = func.__code__
-        assert co.co_nlocals > 0
+        assert co.co_nlocals > 0;
 
         # First we try the constructor.
         CodeType = type(co)
         for diff in (-1, 1):
             with self.assertRaises(ValueError):
-                CodeType(
-                    co.co_argcount,
-                    co.co_posonlyargcount,
-                    co.co_kwonlyargcount,
-                    # This is the only change.
-                    co.co_nlocals + diff,
-                    co.co_stacksize,
-                    co.co_flags,
-                    co.co_code,
-                    co.co_consts,
-                    co.co_names,
-                    co.co_varnames,
-                    co.co_filename,
-                    co.co_name,
-                    co.co_qualname,
-                    co.co_firstlineno,
-                    co.co_linetable,
-                    co.co_exceptiontable,
-                    co.co_freevars,
-                    co.co_cellvars,
-                )
+                CodeType(co.co_argcount,
+                         co.co_posonlyargcount,
+                         co.co_kwonlyargcount,
+                         # This is the only change.
+                         co.co_nlocals + diff,
+                         co.co_stacksize,
+                         co.co_flags,
+                         co.co_code,
+                         co.co_consts,
+                         co.co_names,
+                         co.co_varnames,
+                         co.co_filename,
+                         co.co_name,
+                         co.co_qualname,
+                         co.co_firstlineno,
+                         co.co_linetable,
+                         co.co_exceptiontable,
+                         co.co_freevars,
+                         co.co_cellvars,
+                         )
         # Then we try the replace method.
         with self.assertRaises(ValueError):
             co.replace(co_nlocals=co.co_nlocals - 1)
@@ -357,7 +328,6 @@ class CodeTest(unittest.TestCase):
         # localsplusnames and localspluskinds, if an argument is a cell.
         def func(arg):
             return lambda: arg
-
         code = func.__code__
         newcode = code.replace(co_name="func")  # Should not raise SystemError
         self.assertEqual(code, newcode)
@@ -365,8 +335,7 @@ class CodeTest(unittest.TestCase):
     def test_empty_linetable(self):
         def func():
             pass
-
-        new_code = code = func.__code__.replace(co_linetable=b"")
+        new_code = code = func.__code__.replace(co_linetable=b'')
         self.assertEqual(list(new_code.co_lines()), [])
 
     def test_co_lnotab_is_deprecated(self):  # TODO: remove in 3.14
@@ -381,10 +350,11 @@ class CodeTest(unittest.TestCase):
             pass
 
         # assert that opcode 229 is invalid
-        self.assertEqual(opname[229], "<229>")
+        self.assertEqual(opname[229], '<229>')
 
         # change first opcode to 0xeb (=229)
-        foo.__code__ = foo.__code__.replace(co_code=b"\xe5" + foo.__code__.co_code[1:])
+        foo.__code__ = foo.__code__.replace(
+            co_code=b'\xe5' + foo.__code__.co_code[1:])
 
         msg = "unknown opcode 229"
         with self.assertRaisesRegex(SystemError, msg):
@@ -395,19 +365,14 @@ class CodeTest(unittest.TestCase):
         import dis
 
         namespace = {}
-        exec(
-            textwrap.dedent(
-                """\
+        exec(textwrap.dedent("""\
         try:
             1/0
         except Exception as e:
             exc = e
-        """
-            ),
-            namespace,
-        )
+        """), namespace)
 
-        exc = namespace["exc"]
+        exc = namespace['exc']
         traceback = exc.__traceback__
         code = traceback.tb_frame.f_code
 
@@ -415,7 +380,7 @@ class CodeTest(unittest.TestCase):
         for instr, positions in zip(
             dis.get_instructions(code, show_caches=True),
             code.co_positions(),
-            strict=True,
+            strict=True
         ):
             # If any of the positions is None, then all have to
             # be None as well for the case above. There are still
@@ -435,21 +400,20 @@ class CodeTest(unittest.TestCase):
             ],
             [
                 ("PUSH_EXC_INFO", None),
-                ("LOAD_CONST", None),  # artificial 'None'
+                ("LOAD_CONST", None), # artificial 'None'
                 ("STORE_NAME", "e"),  # XX: we know the location for this
                 ("DELETE_NAME", "e"),
                 ("RERAISE", 1),
                 ("COPY", 3),
                 ("POP_EXCEPT", None),
-                ("RERAISE", 1),
-            ],
+                ("RERAISE", 1)
+            ]
         )
 
     def test_endline_and_columntable_none_when_no_debug_ranges(self):
         # Make sure that if `-X no_debug_ranges` is used, there is
         # minimal debug info
-        code = textwrap.dedent(
-            """
+        code = textwrap.dedent("""
             def f():
                 pass
 
@@ -458,14 +422,12 @@ class CodeTest(unittest.TestCase):
                 assert line == end_line
                 assert column is None
                 assert end_column is None
-            """
-        )
-        assert_python_ok("-X", "no_debug_ranges", "-c", code)
+            """)
+        assert_python_ok('-X', 'no_debug_ranges', '-c', code)
 
     def test_endline_and_columntable_none_when_no_debug_ranges_env(self):
         # Same as above but using the environment variable opt out.
-        code = textwrap.dedent(
-            """
+        code = textwrap.dedent("""
             def f():
                 pass
 
@@ -474,9 +436,8 @@ class CodeTest(unittest.TestCase):
                 assert line == end_line
                 assert column is None
                 assert end_column is None
-            """
-        )
-        assert_python_ok("-c", code, PYTHONNODEBUGRANGES="1")
+            """)
+        assert_python_ok('-c', code, PYTHONNODEBUGRANGES='1')
 
     # co_positions behavior when info is missing.
 
@@ -484,8 +445,7 @@ class CodeTest(unittest.TestCase):
     def test_co_positions_empty_linetable(self):
         def func():
             x = 1
-
-        new_code = func.__code__.replace(co_linetable=b"")
+        new_code = func.__code__.replace(co_linetable=b'')
         positions = new_code.co_positions()
         for line, end_line, column, end_column in positions:
             self.assertIsNone(line)
@@ -501,7 +461,6 @@ class CodeTest(unittest.TestCase):
                 c()
             finally:
                 d()
-
         code_a = f.__code__
         code_b = code_a.replace(co_linetable=b"")
         code_c = code_a.replace(co_exceptiontable=b"")
@@ -541,7 +500,7 @@ class CodeTest(unittest.TestCase):
 
     @cpython_only
     def test_code_equal_with_instrumentation(self):
-        """GH-109052
+        """ GH-109052
 
         Make sure the instrumentation doesn't affect the code equality
         The validity of this test relies on the fact that "x is x" and
@@ -553,15 +512,14 @@ class CodeTest(unittest.TestCase):
         code2 = compile("x in x", "example.py", "eval")
         sys._getframe().f_trace_opcodes = True
         sys.settrace(lambda *args: None)
-        exec(code1, {"x": []})
-        exec(code2, {"x": []})
+        exec(code1, {'x': []})
+        exec(code2, {'x': []})
         self.assertNotEqual(code1, code2)
         sys.settrace(None)
 
 
 def isinterned(s):
-    return s is sys.intern(("_" + s + "_")[1:-1])
-
+    return s is sys.intern(('_' + s + '_')[1:-1])
 
 class CodeConstsTest(unittest.TestCase):
 
@@ -570,45 +528,44 @@ class CodeConstsTest(unittest.TestCase):
             if v == value:
                 return v
         self.assertIn(value, consts)  # raises an exception
-        self.fail("Should never be reached")
+        self.fail('Should never be reached')
 
     def assertIsInterned(self, s):
         if not isinterned(s):
-            self.fail("String %r is not interned" % (s,))
+            self.fail('String %r is not interned' % (s,))
 
     def assertIsNotInterned(self, s):
         if isinterned(s):
-            self.fail("String %r is interned" % (s,))
+            self.fail('String %r is interned' % (s,))
 
     @cpython_only
     def test_interned_string(self):
-        co = compile('res = "str_value"', "?", "exec")
-        v = self.find_const(co.co_consts, "str_value")
+        co = compile('res = "str_value"', '?', 'exec')
+        v = self.find_const(co.co_consts, 'str_value')
         self.assertIsInterned(v)
 
     @cpython_only
     def test_interned_string_in_tuple(self):
-        co = compile('res = ("str_value",)', "?", "exec")
-        v = self.find_const(co.co_consts, ("str_value",))
+        co = compile('res = ("str_value",)', '?', 'exec')
+        v = self.find_const(co.co_consts, ('str_value',))
         self.assertIsInterned(v[0])
 
     @cpython_only
     def test_interned_string_in_frozenset(self):
-        co = compile('res = a in {"str_value"}', "?", "exec")
-        v = self.find_const(co.co_consts, frozenset(("str_value",)))
+        co = compile('res = a in {"str_value"}', '?', 'exec')
+        v = self.find_const(co.co_consts, frozenset(('str_value',)))
         self.assertIsInterned(tuple(v)[0])
 
     @cpython_only
     def test_interned_string_default(self):
-        def f(a="str_value"):
+        def f(a='str_value'):
             return a
-
         self.assertIsInterned(f())
 
     @cpython_only
     def test_interned_string_with_null(self):
-        co = compile(r'res = "str\0value!"', "?", "exec")
-        v = self.find_const(co.co_consts, "str\0value!")
+        co = compile(r'res = "str\0value!"', '?', 'exec')
+        v = self.find_const(co.co_consts, 'str\0value!')
         self.assertIsNotInterned(v)
 
 
@@ -623,7 +580,6 @@ class CodeWeakRefTest(unittest.TestCase):
         del namespace
 
         self.called = False
-
         def callback(code):
             self.called = True
 
@@ -638,22 +594,19 @@ class CodeWeakRefTest(unittest.TestCase):
         self.assertFalse(bool(coderef()))
         self.assertTrue(self.called)
 
-
 # Python implementation of location table parsing algorithm
 def read(it):
     return next(it)
 
-
 def read_varint(it):
     b = read(it)
-    val = b & 63
-    shift = 0
+    val = b & 63;
+    shift = 0;
     while b & 64:
         b = read(it)
         shift += 6
-        val |= (b & 63) << shift
+        val |= (b&63) << shift
     return val
-
 
 def read_signed_varint(it):
     uval = read_varint(it)
@@ -661,7 +614,6 @@ def read_signed_varint(it):
         return -(uval >> 1)
     else:
         return uval >> 1
-
 
 def parse_location_table(code):
     line = code.co_firstlineno
@@ -690,28 +642,26 @@ def parse_location_table(code):
             else:
                 end_col -= 1
             yield (code, length, line, end_line, col, end_col)
-        elif code == 13:  # No column
+        elif code == 13: # No column
             line_delta = read_signed_varint(it)
             line += line_delta
             yield (code, length, line, line, None, None)
-        elif code in (10, 11, 12):  # new line
+        elif code in (10, 11, 12): # new line
             line_delta = code - 10
             line += line_delta
             column = read(it)
             end_column = read(it)
             yield (code, length, line, line, column, end_column)
         else:
-            assert 0 <= code < 10
+            assert (0 <= code < 10)
             second_byte = read(it)
             column = code << 3 | (second_byte >> 4)
             yield (code, length, line, line, column, column + (second_byte & 15))
-
 
 def positions_from_location_table(code):
     for _, length, line, end_line, col, end_col in parse_location_table(code):
         for _ in range(length):
             yield (line, end_line, col, end_col)
-
 
 def dedup(lst, prev=object()):
     for item in lst:
@@ -719,21 +669,44 @@ def dedup(lst, prev=object()):
             yield item
             prev = item
 
-
 def lines_from_postions(positions):
     return dedup(l for (l, _, _, _) in positions)
 
-
 def misshappen():
-    """ """
-    x = 4 + y
-    y = a + b + d
-    return q if (x) else p
+    """
 
+
+
+
+
+    """
+    x = (
+
+
+        4
+
+        +
+
+        y
+
+    )
+    y = (
+        a
+        +
+            b
+                +
+
+                d
+        )
+    return q if (
+
+        x
+
+        ) else p
 
 def bug93662():
-    example_report_generation_message = (
-        """
+    example_report_generation_message= (
+            """
             """
     ).strip()
     raise ValueError()
@@ -774,24 +747,22 @@ class CodeLocationTest(unittest.TestCase):
         # so that they both stay in sync.
         def f():
             pass
-
         PY_CODE_LOCATION_INFO_NO_COLUMNS = 13
         f.__code__ = f.__code__.replace(
             co_stacksize=1,
             co_firstlineno=42,
             co_code=bytes(
                 [
-                    dis.opmap["RESUME"],
-                    0,
-                    dis.opmap["LOAD_ASSERTION_ERROR"],
-                    0,
-                    dis.opmap["RAISE_VARARGS"],
-                    1,
+                    dis.opmap["RESUME"], 0,
+                    dis.opmap["LOAD_ASSERTION_ERROR"], 0,
+                    dis.opmap["RAISE_VARARGS"], 1,
                 ]
             ),
             co_linetable=bytes(
                 [
-                    (1 << 7) | (PY_CODE_LOCATION_INFO_NO_COLUMNS << 3) | (3 - 1),
+                    (1 << 7)
+                    | (PY_CODE_LOCATION_INFO_NO_COLUMNS << 3)
+                    | (3 - 1),
                     0,
                 ]
             ),
@@ -805,7 +776,7 @@ class CodeLocationTest(unittest.TestCase):
 
 if check_impl_detail(cpython=True) and ctypes is not None:
     py = ctypes.pythonapi
-    freefunc = ctypes.CFUNCTYPE(None, ctypes.c_voidp)
+    freefunc = ctypes.CFUNCTYPE(None,ctypes.c_voidp)
 
     RequestCodeExtraIndex = py.PyUnstable_Eval_RequestCodeExtraIndex
     RequestCodeExtraIndex.argtypes = (freefunc,)
@@ -816,15 +787,11 @@ if check_impl_detail(cpython=True) and ctypes is not None:
     SetExtra.restype = ctypes.c_int
 
     GetExtra = py.PyUnstable_Code_GetExtra
-    GetExtra.argtypes = (
-        ctypes.py_object,
-        ctypes.c_ssize_t,
-        ctypes.POINTER(ctypes.c_voidp),
-    )
+    GetExtra.argtypes = (ctypes.py_object, ctypes.c_ssize_t,
+                         ctypes.POINTER(ctypes.c_voidp))
     GetExtra.restype = ctypes.c_int
 
     LAST_FREED = None
-
     def myfree(ptr):
         global LAST_FREED
         LAST_FREED = ptr
@@ -837,26 +804,22 @@ if check_impl_detail(cpython=True) and ctypes is not None:
             # Defining a function causes the containing function to have a
             # reference to the code object.  We need the code objects to go
             # away, so we eval a lambda.
-            return eval("lambda:42")
+            return eval('lambda:42')
 
         def test_get_non_code(self):
             f = self.get_func()
 
-            self.assertRaises(
-                SystemError, SetExtra, 42, FREE_INDEX, ctypes.c_voidp(100)
-            )
-            self.assertRaises(
-                SystemError, GetExtra, 42, FREE_INDEX, ctypes.c_voidp(100)
-            )
+            self.assertRaises(SystemError, SetExtra, 42, FREE_INDEX,
+                              ctypes.c_voidp(100))
+            self.assertRaises(SystemError, GetExtra, 42, FREE_INDEX,
+                              ctypes.c_voidp(100))
 
         def test_bad_index(self):
             f = self.get_func()
-            self.assertRaises(
-                SystemError, SetExtra, f.__code__, FREE_INDEX + 100, ctypes.c_voidp(100)
-            )
-            self.assertEqual(
-                GetExtra(f.__code__, FREE_INDEX + 100, ctypes.c_voidp(100)), 0
-            )
+            self.assertRaises(SystemError, SetExtra, f.__code__,
+                              FREE_INDEX+100, ctypes.c_voidp(100))
+            self.assertEqual(GetExtra(f.__code__, FREE_INDEX+100,
+                              ctypes.c_voidp(100)), 0)
 
         def test_free_called(self):
             # Verify that the provided free function gets invoked
@@ -888,13 +851,11 @@ if check_impl_detail(cpython=True) and ctypes is not None:
             # Freeing a code object on a different thread then
             # where the co_extra was set should be safe.
             f = self.get_func()
-
             class ThreadTest(threading.Thread):
                 def __init__(self, f, test):
                     super().__init__()
                     self.f = f
                     self.test = test
-
                 def run(self):
                     del self.f
                     self.test.assertEqual(LAST_FREED, 500)

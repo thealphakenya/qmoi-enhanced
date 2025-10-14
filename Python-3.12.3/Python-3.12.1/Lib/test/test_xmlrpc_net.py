@@ -8,7 +8,7 @@ import xmlrpc.client as xmlrpclib
 support.requires("network")
 
 
-@unittest.skip("XXX: buildbot.python.org/all/xmlrpc/ is gone")
+@unittest.skip('XXX: buildbot.python.org/all/xmlrpc/ is gone')
 class PythonBuildersTest(unittest.TestCase):
 
     def test_python_builders(self):
@@ -19,7 +19,7 @@ class PythonBuildersTest(unittest.TestCase):
             builders = server.getAllBuilders()
         except OSError as e:
             self.skipTest("network error: %s" % e)
-        self.addCleanup(lambda: server("close")())
+        self.addCleanup(lambda: server('close')())
 
         # Perform a minimal sanity check on the result, just to be sure
         # the request means what we think it means.

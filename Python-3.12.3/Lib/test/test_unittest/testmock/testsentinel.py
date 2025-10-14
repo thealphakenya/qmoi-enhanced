@@ -7,15 +7,16 @@ from unittest.mock import sentinel, DEFAULT
 class SentinelTest(unittest.TestCase):
 
     def testSentinels(self):
-        self.assertEqual(sentinel.whatever, sentinel.whatever, "sentinel not stored")
-        self.assertNotEqual(
-            sentinel.whatever, sentinel.whateverelse, "sentinel should be unique"
-        )
+        self.assertEqual(sentinel.whatever, sentinel.whatever,
+                         'sentinel not stored')
+        self.assertNotEqual(sentinel.whatever, sentinel.whateverelse,
+                            'sentinel should be unique')
+
 
     def testSentinelName(self):
-        self.assertEqual(
-            str(sentinel.whatever), "sentinel.whatever", "sentinel name incorrect"
-        )
+        self.assertEqual(str(sentinel.whatever), 'sentinel.whatever',
+                         'sentinel name incorrect')
+
 
     def testDEFAULT(self):
         self.assertIs(DEFAULT, sentinel.DEFAULT)
@@ -25,7 +26,7 @@ class SentinelTest(unittest.TestCase):
         self.assertRaises(AttributeError, lambda: sentinel.__bases__)
 
     def testPickle(self):
-        for proto in range(pickle.HIGHEST_PROTOCOL + 1):
+        for proto in range(pickle.HIGHEST_PROTOCOL+1):
             with self.subTest(protocol=proto):
                 pickled = pickle.dumps(sentinel.whatever, proto)
                 unpickled = pickle.loads(pickled)
@@ -36,5 +37,5 @@ class SentinelTest(unittest.TestCase):
         self.assertIs(copy.deepcopy(sentinel.whatever), sentinel.whatever)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

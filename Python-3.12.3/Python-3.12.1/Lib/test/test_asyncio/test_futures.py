@@ -50,11 +50,9 @@ class DuckFuture:
         return self.__cancelled
 
     def done(self):
-        return (
-            self.__cancelled
-            or self.__result is not None
-            or self.__exception is not None
-        )
+        return (self.__cancelled
+                or self.__result is not None
+                or self.__exception is not None)
 
     def result(self):
         self.assertFalse(self.cancelled())
@@ -104,7 +102,7 @@ class DuckTests(test_utils.TestCase):
 
 class BaseFutureTests:
 
-    def _new_future(self, *args, **kwargs):
+    def _new_future(self,  *args, **kwargs):
         return self.cls(*args, **kwargs)
 
     def setUp(self):
@@ -148,13 +146,12 @@ class BaseFutureTests:
         self.assertTrue(f.cancelled())
 
     def test_constructor_without_loop(self):
-        with self.assertRaisesRegex(RuntimeError, "no current event loop"):
+        with self.assertRaisesRegex(RuntimeError, 'no current event loop'):
             self._new_future()
 
     def test_constructor_use_running_loop(self):
         async def test():
             return self._new_future()
-
         f = self.loop.run_until_complete(test())
         self.assertIs(f._loop, self.loop)
         self.assertIs(f.get_loop(), self.loop)
@@ -225,24 +222,24 @@ class BaseFutureTests:
 
     def test_future_cancel_message_getter(self):
         f = self._new_future(loop=self.loop)
-        self.assertTrue(hasattr(f, "_cancel_message"))
+        self.assertTrue(hasattr(f, '_cancel_message'))
         self.assertEqual(f._cancel_message, None)
 
-        f.cancel("my message")
+        f.cancel('my message')
         with self.assertRaises(asyncio.CancelledError):
             self.loop.run_until_complete(f)
-        self.assertEqual(f._cancel_message, "my message")
+        self.assertEqual(f._cancel_message, 'my message')
 
     def test_future_cancel_message_setter(self):
         f = self._new_future(loop=self.loop)
-        f.cancel("my message")
-        f._cancel_message = "my new message"
-        self.assertEqual(f._cancel_message, "my new message")
+        f.cancel('my message')
+        f._cancel_message = 'my new message'
+        self.assertEqual(f._cancel_message, 'my new message')
 
         # Also check that the value is used for cancel().
         with self.assertRaises(asyncio.CancelledError):
             self.loop.run_until_complete(f)
-        self.assertEqual(f._cancel_message, "my new message")
+        self.assertEqual(f._cancel_message, 'my new message')
 
     def test_cancel(self):
         f = self._new_future(loop=self.loop)
@@ -274,12 +271,8 @@ class BaseFutureTests:
         self.assertRaises(asyncio.InvalidStateError, f.exception)
 
         # StopIteration cannot be raised into a Future - CPython issue26221
-        self.assertRaisesRegex(
-            TypeError,
-            "StopIteration .* cannot be raised",
-            f.set_exception,
-            StopIteration,
-        )
+        self.assertRaisesRegex(TypeError, "StopIteration .* cannot be raised",
+                               f.set_exception, StopIteration)
 
         f.set_exception(exc)
         self.assertFalse(f.cancelled())
@@ -299,19 +292,19 @@ class BaseFutureTests:
         f = self._new_future(loop=self.loop)
 
         def fixture():
-            yield "A"
+            yield 'A'
             x = yield from f
-            yield "B", x
+            yield 'B', x
             y = yield from f
-            yield "C", y
+            yield 'C', y
 
         g = fixture()
-        self.assertEqual(next(g), "A")  # yield 'A'.
+        self.assertEqual(next(g), 'A')  # yield 'A'.
         self.assertEqual(next(g), f)  # First yield from f.
         f.set_result(42)
-        self.assertEqual(next(g), ("B", 42))  # yield 'B', x.
+        self.assertEqual(next(g), ('B', 42))  # yield 'B', x.
         # The second "yield from f" does not yield f.
-        self.assertEqual(next(g), ("C", 42))  # yield 'C', y.
+        self.assertEqual(next(g), ('C', 42))  # yield 'C', y.
 
     def test_future_repr(self):
         self.loop.set_debug(True)
@@ -319,22 +312,22 @@ class BaseFutureTests:
         frame = f_pending_debug._source_traceback[-1]
         self.assertEqual(
             repr(f_pending_debug),
-            f"<{self.cls.__name__} pending created at {frame[0]}:{frame[1]}>",
-        )
+            f'<{self.cls.__name__} pending created at {frame[0]}:{frame[1]}>')
         f_pending_debug.cancel()
 
         self.loop.set_debug(False)
         f_pending = self._new_future(loop=self.loop)
-        self.assertEqual(repr(f_pending), f"<{self.cls.__name__} pending>")
+        self.assertEqual(repr(f_pending), f'<{self.cls.__name__} pending>')
         f_pending.cancel()
 
         f_cancelled = self._new_future(loop=self.loop)
         f_cancelled.cancel()
-        self.assertEqual(repr(f_cancelled), f"<{self.cls.__name__} cancelled>")
+        self.assertEqual(repr(f_cancelled), f'<{self.cls.__name__} cancelled>')
 
         f_result = self._new_future(loop=self.loop)
         f_result.set_result(4)
-        self.assertEqual(repr(f_result), f"<{self.cls.__name__} finished result=4>")
+        self.assertEqual(
+            repr(f_result), f'<{self.cls.__name__} finished result=4>')
         self.assertEqual(f_result.result(), 4)
 
         exc = RuntimeError()
@@ -342,13 +335,12 @@ class BaseFutureTests:
         f_exception.set_exception(exc)
         self.assertEqual(
             repr(f_exception),
-            f"<{self.cls.__name__} finished exception=RuntimeError()>",
-        )
+            f'<{self.cls.__name__} finished exception=RuntimeError()>')
         self.assertIs(f_exception.exception(), exc)
 
         def func_repr(func):
             filename, lineno = test_utils.get_function_source(func)
-            text = "%s() at %s:%s" % (func.__qualname__, filename, lineno)
+            text = '%s() at %s:%s' % (func.__qualname__, filename, lineno)
             return re.escape(text)
 
         f_one_callbacks = self._new_future(loop=self.loop)
@@ -356,35 +348,32 @@ class BaseFutureTests:
         fake_repr = func_repr(_fakefunc)
         self.assertRegex(
             repr(f_one_callbacks),
-            r"<" + self.cls.__name__ + r" pending cb=\[%s\]>" % fake_repr,
-        )
+            r'<' + self.cls.__name__ + r' pending cb=\[%s\]>' % fake_repr)
         f_one_callbacks.cancel()
-        self.assertEqual(repr(f_one_callbacks), f"<{self.cls.__name__} cancelled>")
+        self.assertEqual(repr(f_one_callbacks),
+                         f'<{self.cls.__name__} cancelled>')
 
         f_two_callbacks = self._new_future(loop=self.loop)
         f_two_callbacks.add_done_callback(first_cb)
         f_two_callbacks.add_done_callback(last_cb)
         first_repr = func_repr(first_cb)
         last_repr = func_repr(last_cb)
-        self.assertRegex(
-            repr(f_two_callbacks),
-            r"<"
-            + self.cls.__name__
-            + r" pending cb=\[%s, %s\]>" % (first_repr, last_repr),
-        )
+        self.assertRegex(repr(f_two_callbacks),
+                         r'<' + self.cls.__name__ + r' pending cb=\[%s, %s\]>'
+                         % (first_repr, last_repr))
 
         f_many_callbacks = self._new_future(loop=self.loop)
         f_many_callbacks.add_done_callback(first_cb)
         for i in range(8):
             f_many_callbacks.add_done_callback(_fakefunc)
         f_many_callbacks.add_done_callback(last_cb)
-        cb_regex = r"%s, <8 more>, %s" % (first_repr, last_repr)
+        cb_regex = r'%s, <8 more>, %s' % (first_repr, last_repr)
         self.assertRegex(
             repr(f_many_callbacks),
-            r"<" + self.cls.__name__ + r" pending cb=\[%s\]>" % cb_regex,
-        )
+            r'<' + self.cls.__name__ + r' pending cb=\[%s\]>' % cb_regex)
         f_many_callbacks.cancel()
-        self.assertEqual(repr(f_many_callbacks), f"<{self.cls.__name__} cancelled>")
+        self.assertEqual(repr(f_many_callbacks),
+                         f'<{self.cls.__name__} cancelled>')
 
     def test_copy_state(self):
         from asyncio.futures import _copy_future_state
@@ -427,16 +416,16 @@ class BaseFutureTests:
 
     def test_log_traceback(self):
         fut = self._new_future(loop=self.loop)
-        with self.assertRaisesRegex(ValueError, "can only be set to False"):
+        with self.assertRaisesRegex(ValueError, 'can only be set to False'):
             fut._log_traceback = True
 
-    @mock.patch("asyncio.base_events.logger")
+    @mock.patch('asyncio.base_events.logger')
     def test_tb_logger_abandoned(self, m_log):
         fut = self._new_future(loop=self.loop)
         del fut
         self.assertFalse(m_log.error.called)
 
-    @mock.patch("asyncio.base_events.logger")
+    @mock.patch('asyncio.base_events.logger')
     def test_tb_logger_not_called_after_cancel(self, m_log):
         fut = self._new_future(loop=self.loop)
         fut.set_exception(Exception())
@@ -444,14 +433,14 @@ class BaseFutureTests:
         del fut
         self.assertFalse(m_log.error.called)
 
-    @mock.patch("asyncio.base_events.logger")
+    @mock.patch('asyncio.base_events.logger')
     def test_tb_logger_result_unretrieved(self, m_log):
         fut = self._new_future(loop=self.loop)
         fut.set_result(42)
         del fut
         self.assertFalse(m_log.error.called)
 
-    @mock.patch("asyncio.base_events.logger")
+    @mock.patch('asyncio.base_events.logger')
     def test_tb_logger_result_retrieved(self, m_log):
         fut = self._new_future(loop=self.loop)
         fut.set_result(42)
@@ -459,27 +448,27 @@ class BaseFutureTests:
         del fut
         self.assertFalse(m_log.error.called)
 
-    @mock.patch("asyncio.base_events.logger")
+    @mock.patch('asyncio.base_events.logger')
     def test_tb_logger_exception_unretrieved(self, m_log):
         fut = self._new_future(loop=self.loop)
-        fut.set_exception(RuntimeError("boom"))
+        fut.set_exception(RuntimeError('boom'))
         del fut
         test_utils.run_briefly(self.loop)
         support.gc_collect()
         self.assertTrue(m_log.error.called)
 
-    @mock.patch("asyncio.base_events.logger")
+    @mock.patch('asyncio.base_events.logger')
     def test_tb_logger_exception_retrieved(self, m_log):
         fut = self._new_future(loop=self.loop)
-        fut.set_exception(RuntimeError("boom"))
+        fut.set_exception(RuntimeError('boom'))
         fut.exception()
         del fut
         self.assertFalse(m_log.error.called)
 
-    @mock.patch("asyncio.base_events.logger")
+    @mock.patch('asyncio.base_events.logger')
     def test_tb_logger_exception_result_retrieved(self, m_log):
         fut = self._new_future(loop=self.loop)
-        fut.set_exception(RuntimeError("boom"))
+        fut.set_exception(RuntimeError('boom'))
         self.assertRaises(RuntimeError, fut.result)
         del fut
         self.assertFalse(m_log.error.called)
@@ -488,13 +477,12 @@ class BaseFutureTests:
 
         def run(arg):
             return (arg, threading.get_ident())
-
         ex = concurrent.futures.ThreadPoolExecutor(1)
-        f1 = ex.submit(run, "oi")
+        f1 = ex.submit(run, 'oi')
         f2 = asyncio.wrap_future(f1, loop=self.loop)
         res, ident = self.loop.run_until_complete(f2)
         self.assertTrue(asyncio.isfuture(f2))
-        self.assertEqual(res, "oi")
+        self.assertEqual(res, 'oi')
         self.assertNotEqual(ident, threading.get_ident())
         ex.shutdown(wait=True)
 
@@ -506,23 +494,19 @@ class BaseFutureTests:
     def test_wrap_future_without_loop(self):
         def run(arg):
             return (arg, threading.get_ident())
-
         ex = concurrent.futures.ThreadPoolExecutor(1)
-        f1 = ex.submit(run, "oi")
-        with self.assertRaisesRegex(RuntimeError, "no current event loop"):
+        f1 = ex.submit(run, 'oi')
+        with self.assertRaisesRegex(RuntimeError, 'no current event loop'):
             asyncio.wrap_future(f1)
         ex.shutdown(wait=True)
 
     def test_wrap_future_use_running_loop(self):
         def run(arg):
             return (arg, threading.get_ident())
-
         ex = concurrent.futures.ThreadPoolExecutor(1)
-        f1 = ex.submit(run, "oi")
-
+        f1 = ex.submit(run, 'oi')
         async def test():
             return asyncio.wrap_future(f1)
-
         f2 = self.loop.run_until_complete(test())
         self.assertIs(self.loop, f2._loop)
         ex.shutdown(wait=True)
@@ -531,12 +515,10 @@ class BaseFutureTests:
         # Deprecated in 3.10, undeprecated in 3.12
         asyncio.set_event_loop(self.loop)
         self.addCleanup(asyncio.set_event_loop, None)
-
         def run(arg):
             return (arg, threading.get_ident())
-
         ex = concurrent.futures.ThreadPoolExecutor(1)
-        f1 = ex.submit(run, "oi")
+        f1 = ex.submit(run, 'oi')
         f2 = asyncio.wrap_future(f1)
         self.assertIs(self.loop, f2._loop)
         ex.shutdown(wait=True)
@@ -565,12 +547,12 @@ class BaseFutureTests:
         future = self._new_future(loop=self.loop)
         lineno = sys._getframe().f_lineno - 1
         self.assertIsInstance(future._source_traceback, list)
-        self.assertEqual(
-            future._source_traceback[-2][:3],
-            (__file__, lineno, "test_future_source_traceback"),
-        )
+        self.assertEqual(future._source_traceback[-2][:3],
+                         (__file__,
+                          lineno,
+                          'test_future_source_traceback'))
 
-    @mock.patch("asyncio.base_events.logger")
+    @mock.patch('asyncio.base_events.logger')
     def check_future_exception_never_retrieved(self, debug, m_log):
         self.loop.set_debug(debug)
 
@@ -579,7 +561,6 @@ class BaseFutureTests:
                 raise MemoryError()
             except BaseException as exc:
                 return exc
-
         exc = memory_error()
 
         future = self._new_future(loop=self.loop)
@@ -588,7 +569,7 @@ class BaseFutureTests:
         test_utils.run_briefly(self.loop)
         support.gc_collect()
 
-        regex = f"^{self.cls.__name__} exception was never retrieved\n"
+        regex = f'^{self.cls.__name__} exception was never retrieved\n'
         exc_info = (type(exc), exc, exc.__traceback__)
         m_log.error.assert_called_once_with(mock.ANY, exc_info=exc_info)
 
@@ -617,7 +598,7 @@ class BaseFutureTests:
         except StopIteration as ex:
             result = ex.args[0]
         else:
-            self.fail("StopIteration was expected")
+            self.fail('StopIteration was expected')
         self.assertEqual(result, (1, 2))
 
     def test_future_iter_throw(self):
@@ -627,10 +608,10 @@ class BaseFutureTests:
             self.assertRaises(Exception, fi.throw, Exception, Exception("zebra"), None)
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", category=DeprecationWarning)
-            self.assertRaises(TypeError, fi.throw, Exception, Exception("elephant"), 32)
-            self.assertRaises(
-                TypeError, fi.throw, Exception("elephant"), Exception("elephant")
-            )
+            self.assertRaises(TypeError, fi.throw,
+                            Exception, Exception("elephant"), 32)
+            self.assertRaises(TypeError, fi.throw,
+                            Exception("elephant"), Exception("elephant"))
             # https://github.com/python/cpython/issues/101326
             self.assertRaises(ValueError, fi.throw, ValueError, None, None)
         self.assertRaises(TypeError, fi.throw, list)
@@ -645,7 +626,8 @@ class BaseFutureTests:
             fut.set_result(Evil())
 
 
-@unittest.skipUnless(hasattr(futures, "_CFuture"), "requires the C _asyncio module")
+@unittest.skipUnless(hasattr(futures, '_CFuture'),
+                     'requires the C _asyncio module')
 class CFutureTests(BaseFutureTests, test_utils.TestCase):
     try:
         cls = futures._CFuture
@@ -660,10 +642,10 @@ class CFutureTests(BaseFutureTests, test_utils.TestCase):
             del fut._log_traceback
 
 
-@unittest.skipUnless(hasattr(futures, "_CFuture"), "requires the C _asyncio module")
+@unittest.skipUnless(hasattr(futures, '_CFuture'),
+                     'requires the C _asyncio module')
 class CSubFutureTests(BaseFutureTests, test_utils.TestCase):
     try:
-
         class CSubFuture(futures._CFuture):
             pass
 
@@ -676,7 +658,7 @@ class PyFutureTests(BaseFutureTests, test_utils.TestCase):
     cls = futures._PyFuture
 
 
-class BaseFutureDoneCallbackTests:
+class BaseFutureDoneCallbackTests():
 
     def setUp(self):
         super().setUp()
@@ -689,7 +671,6 @@ class BaseFutureDoneCallbackTests:
         # Create a callback function that appends thing to bag.
         def bag_appender(future):
             bag.append(thing)
-
         return bag_appender
 
     def _new_future(self):
@@ -711,12 +692,12 @@ class BaseFutureDoneCallbackTests:
         f.remove_done_callback(cb1)
 
         self.assertEqual(bag, [])
-        f.set_result("foo")
+        f.set_result('foo')
 
         self.run_briefly()
 
         self.assertEqual(bag, [17, 100])
-        self.assertEqual(f.result(), "foo")
+        self.assertEqual(f.result(), 'foo')
 
     def test_callbacks_remove_first_and_second_callback(self):
         bag = []
@@ -735,12 +716,12 @@ class BaseFutureDoneCallbackTests:
         f.remove_done_callback(cb1)
 
         self.assertEqual(bag, [])
-        f.set_result("foo")
+        f.set_result('foo')
 
         self.run_briefly()
 
         self.assertEqual(bag, [100])
-        self.assertEqual(f.result(), "foo")
+        self.assertEqual(f.result(), 'foo')
 
     def test_callbacks_remove_third_callback(self):
         bag = []
@@ -758,12 +739,12 @@ class BaseFutureDoneCallbackTests:
         f.remove_done_callback(cb3)
 
         self.assertEqual(bag, [])
-        f.set_result("foo")
+        f.set_result('foo')
 
         self.run_briefly()
 
         self.assertEqual(bag, [42, 17])
-        self.assertEqual(f.result(), "foo")
+        self.assertEqual(f.result(), 'foo')
 
     def test_callbacks_invoked_on_set_result(self):
         bag = []
@@ -772,12 +753,12 @@ class BaseFutureDoneCallbackTests:
         f.add_done_callback(self._make_callback(bag, 17))
 
         self.assertEqual(bag, [])
-        f.set_result("foo")
+        f.set_result('foo')
 
         self.run_briefly()
 
         self.assertEqual(bag, [42, 17])
-        self.assertEqual(f.result(), "foo")
+        self.assertEqual(f.result(), 'foo')
 
     def test_callbacks_invoked_on_set_exception(self):
         bag = []
@@ -819,12 +800,12 @@ class BaseFutureDoneCallbackTests:
         self.assertEqual(f.remove_done_callback(cb1), 6)
 
         self.assertEqual(bag, [])
-        f.set_result("foo")
+        f.set_result('foo')
 
         self.run_briefly()
 
         self.assertEqual(bag, [2])
-        self.assertEqual(f.result(), "foo")
+        self.assertEqual(f.result(), 'foo')
 
     def test_remove_done_callbacks_list_mutation(self):
         # see http://bugs.python.org/issue28963 for details
@@ -893,24 +874,28 @@ class BaseFutureDoneCallbackTests:
         fut.remove_done_callback(evil())
 
 
-@unittest.skipUnless(hasattr(futures, "_CFuture"), "requires the C _asyncio module")
-class CFutureDoneCallbackTests(BaseFutureDoneCallbackTests, test_utils.TestCase):
+@unittest.skipUnless(hasattr(futures, '_CFuture'),
+                     'requires the C _asyncio module')
+class CFutureDoneCallbackTests(BaseFutureDoneCallbackTests,
+                               test_utils.TestCase):
 
     def _new_future(self):
         return futures._CFuture(loop=self.loop)
 
 
-@unittest.skipUnless(hasattr(futures, "_CFuture"), "requires the C _asyncio module")
-class CSubFutureDoneCallbackTests(BaseFutureDoneCallbackTests, test_utils.TestCase):
+@unittest.skipUnless(hasattr(futures, '_CFuture'),
+                     'requires the C _asyncio module')
+class CSubFutureDoneCallbackTests(BaseFutureDoneCallbackTests,
+                                  test_utils.TestCase):
 
     def _new_future(self):
         class CSubFuture(futures._CFuture):
             pass
-
         return CSubFuture(loop=self.loop)
 
 
-class PyFutureDoneCallbackTests(BaseFutureDoneCallbackTests, test_utils.TestCase):
+class PyFutureDoneCallbackTests(BaseFutureDoneCallbackTests,
+                                test_utils.TestCase):
 
     def _new_future(self):
         return futures._PyFuture(loop=self.loop)
@@ -936,20 +921,26 @@ class BaseFutureInheritanceTests:
                 pass
 
         fut = MyFut(loop=self.loop)
-        with self.assertRaisesRegex(RuntimeError, "Future object is not initialized."):
+        with self.assertRaisesRegex(
+            RuntimeError,
+            "Future object is not initialized."
+        ):
             fut.get_loop()
 
 
-class PyFutureInheritanceTests(BaseFutureInheritanceTests, test_utils.TestCase):
+class PyFutureInheritanceTests(BaseFutureInheritanceTests,
+                               test_utils.TestCase):
     def _get_future_cls(self):
         return futures._PyFuture
 
 
-@unittest.skipUnless(hasattr(futures, "_CFuture"), "requires the C _asyncio module")
-class CFutureInheritanceTests(BaseFutureInheritanceTests, test_utils.TestCase):
+@unittest.skipUnless(hasattr(futures, '_CFuture'),
+                     'requires the C _asyncio module')
+class CFutureInheritanceTests(BaseFutureInheritanceTests,
+                              test_utils.TestCase):
     def _get_future_cls(self):
         return futures._CFuture
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

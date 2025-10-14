@@ -6,10 +6,9 @@ from test.support import import_helper
 from test.support import os_helper
 import time
 
-resource = import_helper.import_module("resource")
+resource = import_helper.import_module('resource')
 
 # This test is checking a few specific problem spots with the resource module.
-
 
 class ResourceTest(unittest.TestCase):
 
@@ -19,9 +18,8 @@ class ResourceTest(unittest.TestCase):
         self.assertRaises(TypeError, resource.setrlimit)
         self.assertRaises(TypeError, resource.setrlimit, 42, 42, 42)
 
-    @unittest.skipIf(
-        sys.platform == "vxworks", "setting RLIMIT_FSIZE is not supported on VxWorks"
-    )
+    @unittest.skipIf(sys.platform == "vxworks",
+                     "setting RLIMIT_FSIZE is not supported on VxWorks")
     def test_fsize_ismax(self):
         try:
             (cur, max) = resource.getrlimit(resource.RLIMIT_FSIZE)
@@ -67,7 +65,7 @@ class ResourceTest(unittest.TestCase):
                         # an attempt to ensure the file is really synced and
                         # the exception raised.
                         for i in range(5):
-                            time.sleep(0.1)
+                            time.sleep(.1)
                             f.flush()
                     except OSError:
                         if not limit_set:
@@ -117,20 +115,17 @@ class ResourceTest(unittest.TestCase):
             pass
 
     # Issue 6083: Reference counting bug
-    @unittest.skipIf(
-        sys.platform == "vxworks", "setting RLIMIT_CPU is not supported on VxWorks"
-    )
+    @unittest.skipIf(sys.platform == "vxworks",
+                     "setting RLIMIT_CPU is not supported on VxWorks")
     def test_setrusage_refcount(self):
         try:
             limits = resource.getrlimit(resource.RLIMIT_CPU)
         except AttributeError:
             pass
         else:
-
             class BadSequence:
                 def __len__(self):
                     return 2
-
                 def __getitem__(self, key):
                     if key in (0, 1):
                         return len(tuple(range(1000000)))
@@ -143,39 +138,41 @@ class ResourceTest(unittest.TestCase):
         self.assertIsInstance(pagesize, int)
         self.assertGreaterEqual(pagesize, 0)
 
-    @unittest.skipUnless(sys.platform == "linux", "test requires Linux")
+    @unittest.skipUnless(sys.platform == 'linux', 'test requires Linux')
     def test_linux_constants(self):
-        for attr in ["MSGQUEUE", "NICE", "RTPRIO", "RTTIME", "SIGPENDING"]:
+        for attr in ['MSGQUEUE', 'NICE', 'RTPRIO', 'RTTIME', 'SIGPENDING']:
             with contextlib.suppress(AttributeError):
-                self.assertIsInstance(getattr(resource, "RLIMIT_" + attr), int)
+                self.assertIsInstance(getattr(resource, 'RLIMIT_' + attr), int)
 
     def test_freebsd_contants(self):
-        for attr in ["SWAP", "SBSIZE", "NPTS"]:
+        for attr in ['SWAP', 'SBSIZE', 'NPTS']:
             with contextlib.suppress(AttributeError):
-                self.assertIsInstance(getattr(resource, "RLIMIT_" + attr), int)
+                self.assertIsInstance(getattr(resource, 'RLIMIT_' + attr), int)
 
-    @unittest.skipUnless(hasattr(resource, "prlimit"), "no prlimit")
+    @unittest.skipUnless(hasattr(resource, 'prlimit'), 'no prlimit')
     @support.requires_linux_version(2, 6, 36)
     def test_prlimit(self):
         self.assertRaises(TypeError, resource.prlimit)
-        self.assertRaises(ProcessLookupError, resource.prlimit, -1, resource.RLIMIT_AS)
+        self.assertRaises(ProcessLookupError, resource.prlimit,
+                          -1, resource.RLIMIT_AS)
         limit = resource.getrlimit(resource.RLIMIT_AS)
         self.assertEqual(resource.prlimit(0, resource.RLIMIT_AS), limit)
-        self.assertEqual(resource.prlimit(0, resource.RLIMIT_AS, limit), limit)
+        self.assertEqual(resource.prlimit(0, resource.RLIMIT_AS, limit),
+                         limit)
 
     # Issue 20191: Reference counting bug
-    @unittest.skipUnless(hasattr(resource, "prlimit"), "no prlimit")
+    @unittest.skipUnless(hasattr(resource, 'prlimit'), 'no prlimit')
     @support.requires_linux_version(2, 6, 36)
     def test_prlimit_refcount(self):
         class BadSeq:
             def __len__(self):
                 return 2
-
             def __getitem__(self, key):
                 return limits[key] - 1  # new reference
 
         limits = resource.getrlimit(resource.RLIMIT_AS)
-        self.assertEqual(resource.prlimit(0, resource.RLIMIT_AS, BadSeq()), limits)
+        self.assertEqual(resource.prlimit(0, resource.RLIMIT_AS, BadSeq()),
+                         limits)
 
 
 if __name__ == "__main__":

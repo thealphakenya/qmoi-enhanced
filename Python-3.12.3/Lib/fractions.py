@@ -11,7 +11,7 @@ import operator
 import re
 import sys
 
-__all__ = ["Fraction"]
+__all__ = ['Fraction']
 
 
 # Constants related to the hash implementation;  hash(x) is based
@@ -21,8 +21,7 @@ _PyHASH_MODULUS = sys.hash_info.modulus
 # _PyHASH_MODULUS.
 _PyHASH_INF = sys.hash_info.inf
 
-
-@functools.lru_cache(maxsize=1 << 14)
+@functools.lru_cache(maxsize = 1 << 14)
 def _hash_algorithm(numerator, denominator):
 
     # To make sure that the hash of a Fraction agrees with the hash
@@ -55,9 +54,7 @@ def _hash_algorithm(numerator, denominator):
     result = hash_ if numerator >= 0 else -hash_
     return -2 if result == -1 else result
 
-
-_RATIONAL_FORMAT = re.compile(
-    r"""
+_RATIONAL_FORMAT = re.compile(r"""
     \A\s*                                  # optional whitespace at the start,
     (?P<sign>[-+]?)                        # an optional sign, then
     (?=\d|\.\d)                            # lookahead for digit or .digit
@@ -69,13 +66,10 @@ _RATIONAL_FORMAT = re.compile(
        (?:E(?P<exp>[-+]?\d+(_\d+)*))?      # and optional exponent
     )
     \s*\Z                                  # and optional whitespace to finish
-""",
-    re.VERBOSE | re.IGNORECASE,
-)
+""", re.VERBOSE | re.IGNORECASE)
 
 
 # Helpers for formatting
-
 
 def _round_to_exponent(n, d, exponent, no_neg_zero=False):
     """Round a rational number to the nearest multiple of a given power of 10.
@@ -147,8 +141,7 @@ def _round_to_figures(n, d, figures):
 
 # Pattern for matching float-style format specifications;
 # supports 'e', 'E', 'f', 'F', 'g', 'G' and '%' presentation types.
-_FLOAT_FORMAT_SPECIFICATION_MATCHER = re.compile(
-    r"""
+_FLOAT_FORMAT_SPECIFICATION_MATCHER = re.compile(r"""
     (?:
         (?P<fill>.)?
         (?P<align>[<>=^])
@@ -163,9 +156,7 @@ _FLOAT_FORMAT_SPECIFICATION_MATCHER = re.compile(
     (?P<thousands_sep>[,_])?
     (?:\.(?P<precision>0|[1-9][0-9]*))?
     (?P<presentation_type>[eEfFgG%])
-""",
-    re.DOTALL | re.VERBOSE,
-).fullmatch
+""", re.DOTALL | re.VERBOSE).fullmatch
 
 
 class Fraction(numbers.Rational):
@@ -189,7 +180,7 @@ class Fraction(numbers.Rational):
 
     """
 
-    __slots__ = ("_numerator", "_denominator")
+    __slots__ = ('_numerator', '_denominator')
 
     # We're immutable, so use __new__ not __init__
     def __new__(cls, numerator=0, denominator=None):
@@ -245,47 +236,49 @@ class Fraction(numbers.Rational):
                 # Handle construction from strings.
                 m = _RATIONAL_FORMAT.match(numerator)
                 if m is None:
-                    raise ValueError("Invalid literal for Fraction: %r" % numerator)
-                numerator = int(m.group("num") or "0")
-                denom = m.group("denom")
+                    raise ValueError('Invalid literal for Fraction: %r' %
+                                     numerator)
+                numerator = int(m.group('num') or '0')
+                denom = m.group('denom')
                 if denom:
                     denominator = int(denom)
                 else:
                     denominator = 1
-                    decimal = m.group("decimal")
+                    decimal = m.group('decimal')
                     if decimal:
-                        decimal = decimal.replace("_", "")
-                        scale = 10 ** len(decimal)
+                        decimal = decimal.replace('_', '')
+                        scale = 10**len(decimal)
                         numerator = numerator * scale + int(decimal)
                         denominator *= scale
-                    exp = m.group("exp")
+                    exp = m.group('exp')
                     if exp:
                         exp = int(exp)
                         if exp >= 0:
                             numerator *= 10**exp
                         else:
                             denominator *= 10**-exp
-                if m.group("sign") == "-":
+                if m.group('sign') == '-':
                     numerator = -numerator
 
             else:
-                raise TypeError("argument should be a string " "or a Rational instance")
+                raise TypeError("argument should be a string "
+                                "or a Rational instance")
 
         elif type(numerator) is int is type(denominator):
-            pass  # *very* normal case
+            pass # *very* normal case
 
-        elif isinstance(numerator, numbers.Rational) and isinstance(
-            denominator, numbers.Rational
-        ):
+        elif (isinstance(numerator, numbers.Rational) and
+            isinstance(denominator, numbers.Rational)):
             numerator, denominator = (
                 numerator.numerator * denominator.denominator,
-                denominator.numerator * numerator.denominator,
-            )
+                denominator.numerator * numerator.denominator
+                )
         else:
-            raise TypeError("both arguments should be " "Rational instances")
+            raise TypeError("both arguments should be "
+                            "Rational instances")
 
         if denominator == 0:
-            raise ZeroDivisionError("Fraction(%s, 0)" % numerator)
+            raise ZeroDivisionError('Fraction(%s, 0)' % numerator)
         g = math.gcd(numerator, denominator)
         if denominator < 0:
             g = -g
@@ -305,24 +298,20 @@ class Fraction(numbers.Rational):
         if isinstance(f, numbers.Integral):
             return cls(f)
         elif not isinstance(f, float):
-            raise TypeError(
-                "%s.from_float() only takes floats, not %r (%s)"
-                % (cls.__name__, f, type(f).__name__)
-            )
+            raise TypeError("%s.from_float() only takes floats, not %r (%s)" %
+                            (cls.__name__, f, type(f).__name__))
         return cls._from_coprime_ints(*f.as_integer_ratio())
 
     @classmethod
     def from_decimal(cls, dec):
         """Converts a finite Decimal instance to a rational number, exactly."""
         from decimal import Decimal
-
         if isinstance(dec, numbers.Integral):
             dec = Decimal(int(dec))
         elif not isinstance(dec, Decimal):
             raise TypeError(
-                "%s.from_decimal() only takes Decimals, not %r (%s)"
-                % (cls.__name__, dec, type(dec).__name__)
-            )
+                "%s.from_decimal() only takes Decimals, not %r (%s)" %
+                (cls.__name__, dec, type(dec).__name__))
         return cls._from_coprime_ints(*dec.as_integer_ratio())
 
     @classmethod
@@ -388,22 +377,22 @@ class Fraction(numbers.Rational):
         p0, q0, p1, q1 = 0, 1, 1, 0
         n, d = self._numerator, self._denominator
         while True:
-            a = n // d
-            q2 = q0 + a * q1
+            a = n//d
+            q2 = q0+a*q1
             if q2 > max_denominator:
                 break
-            p0, q0, p1, q1 = p1, q1, p0 + a * p1, q2
-            n, d = d, n - a * d
-        k = (max_denominator - q0) // q1
+            p0, q0, p1, q1 = p1, q1, p0+a*p1, q2
+            n, d = d, n-a*d
+        k = (max_denominator-q0)//q1
 
         # Determine which of the candidates (p0+k*p1)/(q0+k*q1) and p1/q1 is
         # closer to self. The distance between them is 1/(q1*(q0+k*q1)), while
         # the distance from p1/q1 to self is d/(q1*self._denominator). So we
         # need to compare 2*(q0+k*q1) with self._denominator/d.
-        if 2 * d * (q0 + k * q1) <= self._denominator:
+        if 2*d*(q0+k*q1) <= self._denominator:
             return Fraction._from_coprime_ints(p1, q1)
         else:
-            return Fraction._from_coprime_ints(p0 + k * p1, q0 + k * q1)
+            return Fraction._from_coprime_ints(p0+k*p1, q0+k*q1)
 
     @property
     def numerator(a):
@@ -415,18 +404,15 @@ class Fraction(numbers.Rational):
 
     def __repr__(self):
         """repr(self)"""
-        return "%s(%s, %s)" % (
-            self.__class__.__name__,
-            self._numerator,
-            self._denominator,
-        )
+        return '%s(%s, %s)' % (self.__class__.__name__,
+                               self._numerator, self._denominator)
 
     def __str__(self):
         """str(self)"""
         if self._denominator == 1:
             return str(self._numerator)
         else:
-            return "%s/%s" % (self._numerator, self._denominator)
+            return '%s/%s' % (self._numerator, self._denominator)
 
     def __format__(self, format_spec, /):
         """Format this fraction according to the given format specification."""
@@ -472,17 +458,21 @@ class Fraction(numbers.Rational):
             if presentation_type == "%":
                 exponent -= 2
             negative, significand = _round_to_exponent(
-                self._numerator, self._denominator, exponent, no_neg_zero
-            )
+                self._numerator, self._denominator, exponent, no_neg_zero)
             scientific = False
             point_pos = precision
         else:  # presentation_type in "eEgG"
-            figures = max(precision, 1) if presentation_type in "gG" else precision + 1
-            negative, significand, exponent = _round_to_figures(
-                self._numerator, self._denominator, figures
+            figures = (
+                max(precision, 1)
+                if presentation_type in "gG"
+                else precision + 1
             )
+            negative, significand, exponent = _round_to_figures(
+                self._numerator, self._denominator, figures)
             scientific = (
-                presentation_type in "eE" or exponent > 0 or exponent + figures <= -4
+                presentation_type in "eE"
+                or exponent > 0
+                or exponent + figures <= -4
             )
             point_pos = figures - 1 if scientific else -exponent
 
@@ -620,7 +610,6 @@ class Fraction(numbers.Rational):
                will get a TypeError.
 
         """
-
         def forward(a, b):
             if isinstance(b, Fraction):
                 return monomorphic_operator(a, b)
@@ -632,8 +621,7 @@ class Fraction(numbers.Rational):
                 return fallback_operator(complex(a), b)
             else:
                 return NotImplemented
-
-        forward.__name__ = "__" + fallback_operator.__name__ + "__"
+        forward.__name__ = '__' + fallback_operator.__name__ + '__'
         forward.__doc__ = monomorphic_operator.__doc__
 
         def reverse(b, a):
@@ -646,8 +634,7 @@ class Fraction(numbers.Rational):
                 return fallback_operator(complex(a), complex(b))
             else:
                 return NotImplemented
-
-        reverse.__name__ = "__r" + fallback_operator.__name__ + "__"
+        reverse.__name__ = '__r' + fallback_operator.__name__ + '__'
         reverse.__doc__ = monomorphic_operator.__doc__
 
         return forward, reverse
@@ -773,7 +760,7 @@ class Fraction(numbers.Rational):
         # Same as _mul(), with inversed b.
         nb, db = b._numerator, b._denominator
         if nb == 0:
-            raise ZeroDivisionError("Fraction(%s, 0)" % db)
+            raise ZeroDivisionError('Fraction(%s, 0)' % db)
         na, da = a._numerator, a._denominator
         g1 = math.gcd(na, nb)
         if g1 > 1:
@@ -823,19 +810,17 @@ class Fraction(numbers.Rational):
             if b.denominator == 1:
                 power = b.numerator
                 if power >= 0:
-                    return Fraction._from_coprime_ints(
-                        a._numerator**power, a._denominator**power
-                    )
+                    return Fraction._from_coprime_ints(a._numerator ** power,
+                                                       a._denominator ** power)
                 elif a._numerator > 0:
-                    return Fraction._from_coprime_ints(
-                        a._denominator**-power, a._numerator**-power
-                    )
+                    return Fraction._from_coprime_ints(a._denominator ** -power,
+                                                       a._numerator ** -power)
                 elif a._numerator == 0:
-                    raise ZeroDivisionError("Fraction(%s, 0)" % a._denominator**-power)
+                    raise ZeroDivisionError('Fraction(%s, 0)' %
+                                            a._denominator ** -power)
                 else:
-                    return Fraction._from_coprime_ints(
-                        (-a._denominator) ** -power, (-a._numerator) ** -power
-                    )
+                    return Fraction._from_coprime_ints((-a._denominator) ** -power,
+                                                       (-a._numerator) ** -power)
             else:
                 # A fractional power will generally produce an
                 # irrational number.
@@ -847,13 +832,13 @@ class Fraction(numbers.Rational):
         """a ** b"""
         if b._denominator == 1 and b._numerator >= 0:
             # If a is an int, keep it that way if possible.
-            return a**b._numerator
+            return a ** b._numerator
 
         if isinstance(a, numbers.Rational):
             return Fraction(a.numerator, a.denominator) ** b
 
         if b._denominator == 1:
-            return a**b._numerator
+            return a ** b._numerator
 
         return a ** float(b)
 
@@ -909,7 +894,7 @@ class Fraction(numbers.Rational):
                 return floor
             else:
                 return floor + 1
-        shift = 10 ** abs(ndigits)
+        shift = 10**abs(ndigits)
         # See _operator_fallbacks.forward to check that the results of
         # these operations will always be Fraction and therefore have
         # round().
@@ -927,7 +912,8 @@ class Fraction(numbers.Rational):
         if type(b) is int:
             return a._numerator == b and a._denominator == 1
         if isinstance(b, numbers.Rational):
-            return a._numerator == b.numerator and a._denominator == b.denominator
+            return (a._numerator == b.numerator and
+                    a._denominator == b.denominator)
         if isinstance(b, numbers.Complex) and b.imag == 0:
             b = b.real
         if isinstance(b, float):
@@ -954,9 +940,8 @@ class Fraction(numbers.Rational):
         """
         # convert other to a Rational instance where reasonable.
         if isinstance(other, numbers.Rational):
-            return op(
-                self._numerator * other.denominator, self._denominator * other.numerator
-            )
+            return op(self._numerator * other.denominator,
+                      self._denominator * other.numerator)
         if isinstance(other, float):
             if math.isnan(other) or math.isinf(other):
                 return op(0.0, other)
@@ -994,10 +979,10 @@ class Fraction(numbers.Rational):
 
     def __copy__(self):
         if type(self) == Fraction:
-            return self  # I'm immutable; therefore I am my own clone
+            return self     # I'm immutable; therefore I am my own clone
         return self.__class__(self._numerator, self._denominator)
 
     def __deepcopy__(self, memo):
         if type(self) == Fraction:
-            return self  # My components are also immutable
+            return self     # My components are also immutable
         return self.__class__(self._numerator, self._denominator)

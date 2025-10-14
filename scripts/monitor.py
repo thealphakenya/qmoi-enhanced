@@ -13,7 +13,6 @@ import socket
 import requests
 from dataclasses import dataclass, asdict
 
-
 @dataclass
 class SystemMetrics:
     cpu_usage: float
@@ -27,7 +26,6 @@ class SystemMetrics:
     gpu_usage: Optional[float]
     timestamp: str
 
-
 @dataclass
 class PerformanceMetrics:
     response_time: float
@@ -38,7 +36,6 @@ class PerformanceMetrics:
     cache_hit_rate: float
     timestamp: str
 
-
 @dataclass
 class ResourceMetrics:
     cpu_cores: int
@@ -48,29 +45,31 @@ class ResourceMetrics:
     gpu_memory: Optional[float]
     timestamp: str
 
-
 class SystemMonitor:
-    def __init__(self, config_path: str = "config/monitor_config.json"):
+    def __init__(self, config_path: str = 'config/monitor_config.json'):
         self.logger = logging.getLogger(__name__)
         self.setup_logging()
         self.load_config(config_path)
         self.metrics_queue = queue.Queue()
         self.running = False
         self.monitoring_thread = None
-        self.alert_thresholds = self.config.get("alert_thresholds", {})
+        self.alert_thresholds = self.config.get('alert_thresholds', {})
         self.metrics_history: List[Dict[str, Any]] = []
-        self.max_history_size = self.config.get("max_history_size", 1000)
+        self.max_history_size = self.config.get('max_history_size', 1000)
         self.setup_metrics_storage()
 
     def setup_logging(self):
         """Setup monitoring logging configuration"""
-        log_dir = Path("logs")
+        log_dir = Path('logs')
         log_dir.mkdir(exist_ok=True)
-
+        
         logging.basicConfig(
             level=logging.INFO,
-            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-            handlers=[logging.FileHandler("logs/monitor.log"), logging.StreamHandler()],
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.FileHandler('logs/monitor.log'),
+                logging.StreamHandler()
+            ]
         )
 
     def load_config(self, config_path: str):
@@ -79,23 +78,21 @@ class SystemMonitor:
             with open(config_path) as f:
                 self.config = json.load(f)
         except FileNotFoundError:
-            self.logger.warning(
-                f"Monitor config not found at {config_path}, using defaults"
-            )
+            self.logger.warning(f"Monitor config not found at {config_path}, using defaults")
             self.config = {
-                "monitoring_interval": 1.0,
-                "metrics_retention": 3600,
-                "alert_thresholds": {
-                    "cpu_usage": 90,
-                    "memory_usage": 90,
-                    "disk_usage": 90,
-                    "error_rate": 0.1,
-                },
+                'monitoring_interval': 1.0,
+                'metrics_retention': 3600,
+                'alert_thresholds': {
+                    'cpu_usage': 90,
+                    'memory_usage': 90,
+                    'disk_usage': 90,
+                    'error_rate': 0.1
+                }
             }
 
     def setup_metrics_storage(self):
         """Setup metrics storage directory"""
-        metrics_dir = Path("data/metrics")
+        metrics_dir = Path('data/metrics')
         metrics_dir.mkdir(parents=True, exist_ok=True)
 
     def start(self):
@@ -127,9 +124,9 @@ class SystemMonitor:
 
                 # Store metrics
                 metrics = {
-                    "system": asdict(system_metrics),
-                    "performance": asdict(performance_metrics),
-                    "resources": asdict(resource_metrics),
+                    'system': asdict(system_metrics),
+                    'performance': asdict(performance_metrics),
+                    'resources': asdict(resource_metrics)
                 }
                 self.metrics_queue.put(metrics)
                 self._store_metrics(metrics)
@@ -140,7 +137,7 @@ class SystemMonitor:
                 # Cleanup old metrics
                 self._cleanup_old_metrics()
 
-                time.sleep(self.config.get("monitoring_interval", 1.0))
+                time.sleep(self.config.get('monitoring_interval', 1.0))
 
             except Exception as e:
                 self.logger.error(f"Error in monitoring loop: {str(e)}")
@@ -150,23 +147,23 @@ class SystemMonitor:
         try:
             cpu_usage = psutil.cpu_percent(interval=1)
             memory = psutil.virtual_memory()
-            disk = psutil.disk_usage("/")
+            disk = psutil.disk_usage('/')
             net_io = psutil.net_io_counters()
-
+            
             return SystemMetrics(
                 cpu_usage=cpu_usage,
                 memory_usage=memory.percent,
                 disk_usage=disk.percent,
                 network_io={
-                    "bytes_sent": net_io.bytes_sent,
-                    "bytes_recv": net_io.bytes_recv,
+                    'bytes_sent': net_io.bytes_sent,
+                    'bytes_recv': net_io.bytes_recv
                 },
                 process_count=len(psutil.pids()),
                 uptime=time.time() - psutil.boot_time(),
                 temperature=self._get_temperature(),
                 power_usage=self._get_power_usage(),
                 gpu_usage=self._get_gpu_usage(),
-                timestamp=datetime.now().isoformat(),
+                timestamp=datetime.now().isoformat()
             )
         except Exception as e:
             self.logger.error(f"Error collecting system metrics: {str(e)}")
@@ -174,13 +171,13 @@ class SystemMonitor:
                 cpu_usage=0,
                 memory_usage=0,
                 disk_usage=0,
-                network_io={"bytes_sent": 0, "bytes_recv": 0},
+                network_io={'bytes_sent': 0, 'bytes_recv': 0},
                 process_count=0,
                 uptime=0,
                 temperature=None,
                 power_usage=None,
                 gpu_usage=None,
-                timestamp=datetime.now().isoformat(),
+                timestamp=datetime.now().isoformat()
             )
 
     def _collect_performance_metrics(self) -> PerformanceMetrics:
@@ -193,7 +190,7 @@ class SystemMonitor:
                 queue_size=self.metrics_queue.qsize(),
                 active_connections=self._count_active_connections(),
                 cache_hit_rate=self._calculate_cache_hit_rate(),
-                timestamp=datetime.now().isoformat(),
+                timestamp=datetime.now().isoformat()
             )
         except Exception as e:
             self.logger.error(f"Error collecting performance metrics: {str(e)}")
@@ -204,7 +201,7 @@ class SystemMonitor:
                 queue_size=0,
                 active_connections=0,
                 cache_hit_rate=0,
-                timestamp=datetime.now().isoformat(),
+                timestamp=datetime.now().isoformat()
             )
 
     def _collect_resource_metrics(self) -> ResourceMetrics:
@@ -213,10 +210,10 @@ class SystemMonitor:
             return ResourceMetrics(
                 cpu_cores=psutil.cpu_count(),
                 total_memory=psutil.virtual_memory().total,
-                total_disk=psutil.disk_usage("/").total,
+                total_disk=psutil.disk_usage('/').total,
                 network_speed=self._measure_network_speed(),
                 gpu_memory=self._get_gpu_memory(),
-                timestamp=datetime.now().isoformat(),
+                timestamp=datetime.now().isoformat()
             )
         except Exception as e:
             self.logger.error(f"Error collecting resource metrics: {str(e)}")
@@ -226,14 +223,14 @@ class SystemMonitor:
                 total_disk=0,
                 network_speed=0,
                 gpu_memory=None,
-                timestamp=datetime.now().isoformat(),
+                timestamp=datetime.now().isoformat()
             )
 
     def _get_temperature(self) -> Optional[float]:
         """Get system temperature"""
         try:
-            if platform.system() == "Linux":
-                with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
+            if platform.system() == 'Linux':
+                with open('/sys/class/thermal/thermal_zone0/temp', 'r') as f:
                     return float(f.read()) / 1000.0
             return None
         except:
@@ -242,8 +239,8 @@ class SystemMonitor:
     def _get_power_usage(self) -> Optional[float]:
         """Get system power usage"""
         try:
-            if platform.system() == "Linux":
-                with open("/sys/class/power_supply/BAT0/power_now", "r") as f:
+            if platform.system() == 'Linux':
+                with open('/sys/class/power_supply/BAT0/power_now', 'r') as f:
                     return float(f.read()) / 1000000.0
             return None
         except:
@@ -321,43 +318,34 @@ class SystemMonitor:
 
         # Save to file
         try:
-            metrics_file = (
-                Path("data/metrics")
-                / f"metrics_{datetime.now().strftime('%Y%m%d')}.json"
-            )
-            with open(metrics_file, "a") as f:
+            metrics_file = Path('data/metrics') / f"metrics_{datetime.now().strftime('%Y%m%d')}.json"
+            with open(metrics_file, 'a') as f:
                 json.dump(metrics, f)
-                f.write("\n")
+                f.write('\n')
         except Exception as e:
             self.logger.error(f"Error storing metrics: {str(e)}")
 
     def _check_alerts(self, metrics: Dict[str, Any]):
         """Check metrics against alert thresholds"""
         try:
-            system_metrics = metrics["system"]
-            performance_metrics = metrics["performance"]
+            system_metrics = metrics['system']
+            performance_metrics = metrics['performance']
 
             # Check CPU usage
-            if system_metrics["cpu_usage"] > self.alert_thresholds.get("cpu_usage", 90):
-                self._trigger_alert("high_cpu_usage", system_metrics)
+            if system_metrics['cpu_usage'] > self.alert_thresholds.get('cpu_usage', 90):
+                self._trigger_alert('high_cpu_usage', system_metrics)
 
             # Check memory usage
-            if system_metrics["memory_usage"] > self.alert_thresholds.get(
-                "memory_usage", 90
-            ):
-                self._trigger_alert("high_memory_usage", system_metrics)
+            if system_metrics['memory_usage'] > self.alert_thresholds.get('memory_usage', 90):
+                self._trigger_alert('high_memory_usage', system_metrics)
 
             # Check disk usage
-            if system_metrics["disk_usage"] > self.alert_thresholds.get(
-                "disk_usage", 90
-            ):
-                self._trigger_alert("high_disk_usage", system_metrics)
+            if system_metrics['disk_usage'] > self.alert_thresholds.get('disk_usage', 90):
+                self._trigger_alert('high_disk_usage', system_metrics)
 
             # Check error rate
-            if performance_metrics["error_rate"] > self.alert_thresholds.get(
-                "error_rate", 0.1
-            ):
-                self._trigger_alert("high_error_rate", performance_metrics)
+            if performance_metrics['error_rate'] > self.alert_thresholds.get('error_rate', 0.1):
+                self._trigger_alert('high_error_rate', performance_metrics)
 
         except Exception as e:
             self.logger.error(f"Error checking alerts: {str(e)}")
@@ -366,17 +354,17 @@ class SystemMonitor:
         """Trigger an alert"""
         try:
             alert = {
-                "type": alert_type,
-                "timestamp": datetime.now().isoformat(),
-                "metrics": metrics,
+                'type': alert_type,
+                'timestamp': datetime.now().isoformat(),
+                'metrics': metrics
             }
             self.logger.warning(f"Alert triggered: {json.dumps(alert, indent=2)}")
-
+            
             # Store alert
-            alerts_file = Path("logs/alerts.json")
-            with open(alerts_file, "a") as f:
+            alerts_file = Path('logs/alerts.json')
+            with open(alerts_file, 'a') as f:
                 json.dump(alert, f)
-                f.write("\n")
+                f.write('\n')
 
             # Send alert notification
             self._send_alert_notification(alert)
@@ -395,19 +383,17 @@ class SystemMonitor:
     def _cleanup_old_metrics(self):
         """Clean up old metrics files"""
         try:
-            metrics_dir = Path("data/metrics")
-            retention_days = self.config.get("metrics_retention", 7)
+            metrics_dir = Path('data/metrics')
+            retention_days = self.config.get('metrics_retention', 7)
             cutoff_date = datetime.now().timestamp() - (retention_days * 86400)
 
-            for file in metrics_dir.glob("metrics_*.json"):
+            for file in metrics_dir.glob('metrics_*.json'):
                 if file.stat().st_mtime < cutoff_date:
                     file.unlink()
         except Exception as e:
             self.logger.error(f"Error cleaning up old metrics: {str(e)}")
 
-    def get_metrics(
-        self, start_time: Optional[str] = None, end_time: Optional[str] = None
-    ) -> List[Dict[str, Any]]:
+    def get_metrics(self, start_time: Optional[str] = None, end_time: Optional[str] = None) -> List[Dict[str, Any]]:
         """Get metrics within a time range"""
         try:
             if not start_time and not end_time:
@@ -415,7 +401,7 @@ class SystemMonitor:
 
             filtered_metrics = []
             for metrics in self.metrics_history:
-                timestamp = metrics["system"]["timestamp"]
+                timestamp = metrics['system']['timestamp']
                 if start_time and timestamp < start_time:
                     continue
                 if end_time and timestamp > end_time:
@@ -427,21 +413,19 @@ class SystemMonitor:
             self.logger.error(f"Error getting metrics: {str(e)}")
             return []
 
-    def get_alerts(
-        self, start_time: Optional[str] = None, end_time: Optional[str] = None
-    ) -> List[Dict[str, Any]]:
+    def get_alerts(self, start_time: Optional[str] = None, end_time: Optional[str] = None) -> List[Dict[str, Any]]:
         """Get alerts within a time range"""
         try:
             alerts = []
-            alerts_file = Path("logs/alerts.json")
-
+            alerts_file = Path('logs/alerts.json')
+            
             if not alerts_file.exists():
                 return alerts
 
             with open(alerts_file) as f:
                 for line in f:
                     alert = json.loads(line)
-                    timestamp = alert["timestamp"]
+                    timestamp = alert['timestamp']
                     if start_time and timestamp < start_time:
                         continue
                     if end_time and timestamp > end_time:
@@ -451,4 +435,4 @@ class SystemMonitor:
             return alerts
         except Exception as e:
             self.logger.error(f"Error getting alerts: {str(e)}")
-            return []
+            return [] 

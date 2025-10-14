@@ -33,9 +33,7 @@ subcommands = argparser.add_subparsers(title="Benchmarks", dest="subcommand")
 command_compile = subcommands.add_parser(
     "compile", help="Benchmark parsing and compiling to bytecode"
 )
-command_parse = subcommands.add_parser(
-    "parse", help="Benchmark parsing and generating an ast.AST"
-)
+command_parse = subcommands.add_parser("parse", help="Benchmark parsing and generating an ast.AST")
 
 
 def benchmark(func):

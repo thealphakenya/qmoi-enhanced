@@ -11,80 +11,64 @@ from typing import Generic, Sequence, TypeVar, TypeVarTuple, ParamSpec, get_args
 
 class TypeParamsInvalidTest(unittest.TestCase):
     def test_name_collisions(self):
-        check_syntax_error(
-            self, "def func[**A, A](): ...", "duplicate type parameter 'A'"
-        )
-        check_syntax_error(
-            self, "def func[A, *A](): ...", "duplicate type parameter 'A'"
-        )
-        check_syntax_error(
-            self, "def func[*A, **A](): ...", "duplicate type parameter 'A'"
-        )
+        check_syntax_error(self, 'def func[**A, A](): ...', "duplicate type parameter 'A'")
+        check_syntax_error(self, 'def func[A, *A](): ...', "duplicate type parameter 'A'")
+        check_syntax_error(self, 'def func[*A, **A](): ...', "duplicate type parameter 'A'")
 
-        check_syntax_error(
-            self, "class C[**A, A](): ...", "duplicate type parameter 'A'"
-        )
-        check_syntax_error(
-            self, "class C[A, *A](): ...", "duplicate type parameter 'A'"
-        )
-        check_syntax_error(
-            self, "class C[*A, **A](): ...", "duplicate type parameter 'A'"
-        )
+        check_syntax_error(self, 'class C[**A, A](): ...', "duplicate type parameter 'A'")
+        check_syntax_error(self, 'class C[A, *A](): ...', "duplicate type parameter 'A'")
+        check_syntax_error(self, 'class C[*A, **A](): ...', "duplicate type parameter 'A'")
 
     def test_name_non_collision_02(self):
         ns = run_code("""def func[A](A): return A""")
         func = ns["func"]
         self.assertEqual(func(1), 1)
-        (A,) = func.__type_params__
+        A, = func.__type_params__
         self.assertEqual(A.__name__, "A")
 
     def test_name_non_collision_03(self):
         ns = run_code("""def func[A](*A): return A""")
         func = ns["func"]
         self.assertEqual(func(1), (1,))
-        (A,) = func.__type_params__
+        A, = func.__type_params__
         self.assertEqual(A.__name__, "A")
 
     def test_name_non_collision_04(self):
         # Mangled names should not cause a conflict.
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA:
                 def func[__A](self, __A): return __A
             """
         )
         cls = ns["ClassA"]
         self.assertEqual(cls().func(1), 1)
-        (A,) = cls.func.__type_params__
+        A, = cls.func.__type_params__
         self.assertEqual(A.__name__, "__A")
 
     def test_name_non_collision_05(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA:
                 def func[_ClassA__A](self, __A): return __A
             """
         )
         cls = ns["ClassA"]
         self.assertEqual(cls().func(1), 1)
-        (A,) = cls.func.__type_params__
+        A, = cls.func.__type_params__
         self.assertEqual(A.__name__, "_ClassA__A")
 
     def test_name_non_collision_06(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA[X]:
                 def func(self, X): return X
             """
         )
         cls = ns["ClassA"]
         self.assertEqual(cls().func(1), 1)
-        (X,) = cls.__type_params__
+        X, = cls.__type_params__
         self.assertEqual(X.__name__, "X")
 
     def test_name_non_collision_07(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA[X]:
                 def func(self):
                     X = 1
@@ -93,12 +77,11 @@ class TypeParamsInvalidTest(unittest.TestCase):
         )
         cls = ns["ClassA"]
         self.assertEqual(cls().func(), 1)
-        (X,) = cls.__type_params__
+        X, = cls.__type_params__
         self.assertEqual(X.__name__, "X")
 
     def test_name_non_collision_08(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA[X]:
                 def func(self):
                     return [X for X in [1, 2]]
@@ -106,39 +89,36 @@ class TypeParamsInvalidTest(unittest.TestCase):
         )
         cls = ns["ClassA"]
         self.assertEqual(cls().func(), [1, 2])
-        (X,) = cls.__type_params__
+        X, = cls.__type_params__
         self.assertEqual(X.__name__, "X")
 
     def test_name_non_collision_9(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA[X]:
                 def func[X](self):
                     ...
             """
         )
         cls = ns["ClassA"]
-        (outer_X,) = cls.__type_params__
-        (inner_X,) = cls.func.__type_params__
+        outer_X, = cls.__type_params__
+        inner_X, = cls.func.__type_params__
         self.assertEqual(outer_X.__name__, "X")
         self.assertEqual(inner_X.__name__, "X")
         self.assertIsNot(outer_X, inner_X)
 
     def test_name_non_collision_10(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA[X]:
                 X: int
             """
         )
         cls = ns["ClassA"]
-        (X,) = cls.__type_params__
+        X, = cls.__type_params__
         self.assertEqual(X.__name__, "X")
         self.assertIs(cls.__annotations__["X"], int)
 
     def test_name_non_collision_13(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             X = 1
             def outer():
                 def inner[X]():
@@ -170,7 +150,6 @@ class TypeParamsInvalidTest(unittest.TestCase):
 
     def test_incorrect_mro_explicit_object(self):
         with self.assertRaisesRegex(TypeError, r"\(MRO\) for bases object, Generic"):
-
             class My[X](object): ...
 
 
@@ -212,14 +191,13 @@ class TypeParamsNonlocalTest(unittest.TestCase):
         """
         ns = run_code(code)
         func = ns["func"]
-        (T,) = func.__type_params__
+        T, = func.__type_params__
         self.assertEqual(T.__name__, "T")
 
 
 class TypeParamsAccessTest(unittest.TestCase):
     def test_class_access_01(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA[A, B](dict[A, B]):
                 ...
             """
@@ -229,8 +207,7 @@ class TypeParamsAccessTest(unittest.TestCase):
         self.assertEqual(types.get_original_bases(cls), (dict[A, B], Generic[A, B]))
 
     def test_class_access_02(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class MyMeta[A, B](type): ...
             class ClassA[A, B](metaclass=MyMeta[A, B]):
                 ...
@@ -257,8 +234,7 @@ class TypeParamsAccessTest(unittest.TestCase):
             run_code(code)
 
     def test_function_access_01(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             def func[A, B](a: dict[A, B]):
                 ...
             """
@@ -289,8 +265,7 @@ class TypeParamsAccessTest(unittest.TestCase):
             run_code(code)
 
     def test_method_access_01(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA:
                 x = int
                 def func[T](self, a: x, b: T):
@@ -299,12 +274,11 @@ class TypeParamsAccessTest(unittest.TestCase):
         )
         cls = ns["ClassA"]
         self.assertIs(cls.func.__annotations__["a"], int)
-        (T,) = cls.func.__type_params__
+        T, = cls.func.__type_params__
         self.assertIs(cls.func.__annotations__["b"], T)
 
     def test_nested_access_01(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class ClassA[A]:
                 def funcB[B](self):
                     class ClassC[C]:
@@ -314,11 +288,11 @@ class TypeParamsAccessTest(unittest.TestCase):
             """
         )
         cls = ns["ClassA"]
-        (A,) = cls.__type_params__
-        (B,) = cls.funcB.__type_params__
+        A, = cls.__type_params__
+        B, = cls.funcB.__type_params__
         classC = cls().funcB()
-        (C,) = classC.__type_params__
-        (D,) = classC.funcD.__type_params__
+        C, = classC.__type_params__
+        D, = classC.funcD.__type_params__
         self.assertEqual(classC().funcD()(), (A, B, C, D))
 
     def test_out_of_scope_01(self):
@@ -342,43 +316,36 @@ class TypeParamsAccessTest(unittest.TestCase):
             run_code(code)
 
     def test_class_scope_interaction_01(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class C:
                 x = 1
                 def method[T](self, arg: x): pass
-        """
-        )
+        """)
         cls = ns["C"]
         self.assertEqual(cls.method.__annotations__["arg"], 1)
 
     def test_class_scope_interaction_02(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class C:
                 class Base: pass
                 class Child[T](Base): pass
-        """
-        )
+        """)
         cls = ns["C"]
         self.assertEqual(cls.Child.__bases__, (cls.Base, Generic))
-        (T,) = cls.Child.__type_params__
+        T, = cls.Child.__type_params__
         self.assertEqual(types.get_original_bases(cls.Child), (cls.Base, Generic[T]))
 
     def test_class_deref(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             class C[T]:
                 T = "class"
                 type Alias = T
-        """
-        )
+        """)
         cls = ns["C"]
         self.assertEqual(cls.Alias.__value__, "class")
 
     def test_shadowing_nonlocal(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             def outer[T]():
                 T = "outer"
                 def inner():
@@ -386,10 +353,9 @@ class TypeParamsAccessTest(unittest.TestCase):
                     T = "inner"
                     return T
                 return lambda: T, inner
-        """
-        )
+        """)
         outer = ns["outer"]
-        (T,) = outer.__type_params__
+        T, = outer.__type_params__
         self.assertEqual(T.__name__, "T")
         getter, inner = outer()
         self.assertEqual(getter(), "outer")
@@ -419,36 +385,31 @@ class TypeParamsAccessTest(unittest.TestCase):
 
     def test_type_alias_containing_lambda(self):
         type Alias[T] = lambda: T
-        (T,) = Alias.__type_params__
+        T, = Alias.__type_params__
         self.assertIs(Alias.__value__(), T)
 
     def test_class_base_containing_lambda(self):
         # Test that scopes nested inside hidden functions work correctly
         outer_var = "outer"
-
         class Base[T]: ...
-
         class Child[T](Base[lambda: (int, outer_var, T)]): ...
-
         base, _ = types.get_original_bases(Child)
-        (func,) = get_args(base)
-        (T,) = Child.__type_params__
+        func, = get_args(base)
+        T, = Child.__type_params__
         self.assertEqual(func(), (int, "outer", T))
 
     def test_comprehension_01(self):
         type Alias[T: ([T for T in (T, [1])[1]], T)] = [T for T in T.__name__]
         self.assertEqual(Alias.__value__, ["T"])
-        (T,) = Alias.__type_params__
+        T, = Alias.__type_params__
         self.assertEqual(T.__constraints__, ([1], T))
 
     def test_comprehension_02(self):
-        type Alias[T: [lambda: T for T in (T, [1])[1]]] = [
-            lambda: T for T in T.__name__
-        ]
-        (func,) = Alias.__value__
+        type Alias[T: [lambda: T for T in (T, [1])[1]]] = [lambda: T for T in T.__name__]
+        func, = Alias.__value__
         self.assertEqual(func(), "T")
-        (T,) = Alias.__type_params__
-        (func,) = T.__bound__
+        T, = Alias.__type_params__
+        func, = T.__bound__
         self.assertEqual(func(), 1)
 
     def test_gen_exp_in_nested_class(self):
@@ -461,7 +422,7 @@ class TypeParamsAccessTest(unittest.TestCase):
                     pass
         """
         C = run_code(code)["C"]
-        (T,) = C.__type_params__
+        T, = C.__type_params__
         base1, base2 = C.Inner.__bases__
         self.assertEqual(list(base1.__arg__), [T])
         self.assertEqual(base2.__arg__, "class")
@@ -475,10 +436,8 @@ class TypeParamsAccessTest(unittest.TestCase):
                 class Inner[U](make_base(T for _ in (1,)), make_base(T)):
                     pass
         """
-        with self.assertRaisesRegex(
-            SyntaxError,
-            "Cannot use comprehension in annotation scope within class scope",
-        ):
+        with self.assertRaisesRegex(SyntaxError,
+                                    "Cannot use comprehension in annotation scope within class scope"):
             run_code(code)
 
     def test_listcomp_in_nested_class(self):
@@ -491,7 +450,7 @@ class TypeParamsAccessTest(unittest.TestCase):
                     pass
         """
         C = run_code(code)["C"]
-        (T,) = C.__type_params__
+        T, = C.__type_params__
         base1, base2 = C.Inner.__bases__
         self.assertEqual(base1.__arg__, [T])
         self.assertEqual(base2.__arg__, "class")
@@ -505,10 +464,8 @@ class TypeParamsAccessTest(unittest.TestCase):
                 class Inner[U](make_base([T for _ in (1,)]), make_base(T)):
                     pass
         """
-        with self.assertRaisesRegex(
-            SyntaxError,
-            "Cannot use comprehension in annotation scope within class scope",
-        ):
+        with self.assertRaisesRegex(SyntaxError,
+                                    "Cannot use comprehension in annotation scope within class scope"):
             run_code(code)
 
     def test_gen_exp_in_generic_method(self):
@@ -518,10 +475,8 @@ class TypeParamsAccessTest(unittest.TestCase):
                 def meth[U](x: (T for _ in (1,)), y: T):
                     pass
         """
-        with self.assertRaisesRegex(
-            SyntaxError,
-            "Cannot use comprehension in annotation scope within class scope",
-        ):
+        with self.assertRaisesRegex(SyntaxError,
+                                    "Cannot use comprehension in annotation scope within class scope"):
             run_code(code)
 
     def test_nested_scope_in_generic_alias(self):
@@ -540,23 +495,19 @@ class TypeParamsAccessTest(unittest.TestCase):
         ]
         for case in error_cases:
             with self.subTest(case=case):
-                with self.assertRaisesRegex(
-                    SyntaxError,
-                    r"Cannot use [a-z]+ in annotation scope within class scope",
-                ):
+                with self.assertRaisesRegex(SyntaxError,
+                                            r"Cannot use [a-z]+ in annotation scope within class scope"):
                     run_code(code.format(case))
 
 
 def make_base(arg):
     class Base:
         __arg__ = arg
-
     return Base
 
 
 def global_generic_func[T]():
     pass
-
 
 class GlobalGenericClass[T]:
     pass
@@ -570,13 +521,8 @@ class TypeParamsLazyEvaluationTest(unittest.TestCase):
         def func[T]():
             pass
 
-        self.assertEqual(
-            Foo.__qualname__, "TypeParamsLazyEvaluationTest.test_qualname.<locals>.Foo"
-        )
-        self.assertEqual(
-            func.__qualname__,
-            "TypeParamsLazyEvaluationTest.test_qualname.<locals>.func",
-        )
+        self.assertEqual(Foo.__qualname__, "TypeParamsLazyEvaluationTest.test_qualname.<locals>.Foo")
+        self.assertEqual(func.__qualname__, "TypeParamsLazyEvaluationTest.test_qualname.<locals>.func")
         self.assertEqual(global_generic_func.__qualname__, "global_generic_func")
         self.assertEqual(GlobalGenericClass.__qualname__, "GlobalGenericClass")
 
@@ -619,36 +565,29 @@ class TypeParamsClassScopeTest(unittest.TestCase):
         class X:
             T = int
             type U = T
-
         self.assertIs(X.U.__value__, int)
 
-        ns = run_code(
-            """
+        ns = run_code("""
             glb = "global"
             class X:
                 cls = "class"
                 type U = (glb, cls)
-        """
-        )
+        """)
         cls = ns["X"]
         self.assertEqual(cls.U.__value__, ("global", "class"))
 
     def test_bound(self):
         class X:
             T = int
-
             def foo[U: T](self): ...
-
         self.assertIs(X.foo.__type_params__[0].__bound__, int)
 
-        ns = run_code(
-            """
+        ns = run_code("""
             glb = "global"
             class X:
                 cls = "class"
                 def foo[T: glb, U: cls](self): ...
-        """
-        )
+        """)
         cls = ns["X"]
         T, U = cls.foo.__type_params__
         self.assertEqual(T.__bound__, "global")
@@ -657,18 +596,14 @@ class TypeParamsClassScopeTest(unittest.TestCase):
     def test_modified_later(self):
         class X:
             T = int
-
             def foo[U: T](self): ...
-
             type Alias = T
-
         X.T = float
         self.assertIs(X.foo.__type_params__[0].__bound__, float)
         self.assertIs(X.Alias.__value__, float)
 
     def test_binding_uses_global(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             x = "global"
             def outer():
                 x = "nonlocal"
@@ -680,16 +615,14 @@ class TypeParamsClassScopeTest(unittest.TestCase):
                     annotation = meth.__annotations__["arg"]
                     x = "class"
                 return Cls
-        """
-        )
+        """)
         cls = ns["outer"]()
         self.assertEqual(cls.val, "global")
         self.assertEqual(cls.bound, "global")
         self.assertEqual(cls.annotation, "global")
 
     def test_no_binding_uses_nonlocal(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             x = "global"
             def outer():
                 x = "nonlocal"
@@ -699,16 +632,14 @@ class TypeParamsClassScopeTest(unittest.TestCase):
                     def meth[T: x](self, arg: x): ...
                     bound = meth.__type_params__[0].__bound__
                 return Cls
-        """
-        )
+        """)
         cls = ns["outer"]()
         self.assertEqual(cls.val, "nonlocal")
         self.assertEqual(cls.bound, "nonlocal")
         self.assertEqual(cls.meth.__annotations__["arg"], "nonlocal")
 
     def test_explicit_global(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             x = "global"
             def outer():
                 x = "nonlocal"
@@ -717,29 +648,25 @@ class TypeParamsClassScopeTest(unittest.TestCase):
                     type Alias = x
                 Cls.x = "class"
                 return Cls
-        """
-        )
+        """)
         cls = ns["outer"]()
         self.assertEqual(cls.Alias.__value__, "global")
 
     def test_explicit_global_with_no_static_bound(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             def outer():
                 class Cls:
                     global x
                     type Alias = x
                 Cls.x = "class"
                 return Cls
-        """
-        )
+        """)
         ns["x"] = "global"
         cls = ns["outer"]()
         self.assertEqual(cls.Alias.__value__, "global")
 
     def test_explicit_global_with_assignment(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             x = "global"
             def outer():
                 x = "nonlocal"
@@ -749,14 +676,12 @@ class TypeParamsClassScopeTest(unittest.TestCase):
                     x = "global from class"
                 Cls.x = "class"
                 return Cls
-        """
-        )
+        """)
         cls = ns["outer"]()
         self.assertEqual(cls.Alias.__value__, "global from class")
 
     def test_explicit_nonlocal(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             x = "global"
             def outer():
                 x = "nonlocal"
@@ -765,14 +690,12 @@ class TypeParamsClassScopeTest(unittest.TestCase):
                     type Alias = x
                     x = "class"
                 return Cls
-        """
-        )
+        """)
         cls = ns["outer"]()
         self.assertEqual(cls.Alias.__value__, "class")
 
     def test_nested_free(self):
-        ns = run_code(
-            """
+        ns = run_code("""
             def f():
                 T = str
                 class C:
@@ -780,21 +703,17 @@ class TypeParamsClassScopeTest(unittest.TestCase):
                     class D[U](T):
                         x = T
                 return C
-        """
-        )
+        """)
         C = ns["f"]()
         self.assertIn(int, C.D.__bases__)
         self.assertIs(C.D.x, str)
-
 
 class TypeParamsManglingTest(unittest.TestCase):
     def test_mangling(self):
         class Foo[__T]:
             param = __T
-
             def meth[__U](self, arg: __T, arg2: __U):
                 return (__T, __U)
-
             type Alias[__V] = (__T, __V)
 
         T = Foo.__type_params__[0]
@@ -819,7 +738,7 @@ class TypeParamsComplexCallsTest(unittest.TestCase):
         def func[T](a: T = "a", *, b: T = "b"):
             return (a, b)
 
-        (T,) = func.__type_params__
+        T, = func.__type_params__
         self.assertIs(func.__annotations__["a"], T)
         self.assertIs(func.__annotations__["b"], T)
         self.assertEqual(func(), ("a", "b"))
@@ -832,21 +751,19 @@ class TypeParamsComplexCallsTest(unittest.TestCase):
                 cls.kwargs = kwargs
 
         kwargs = {"c": 3}
-
         # Base classes with **kwargs trigger a different code path in the compiler.
         class C[T](Base, a=1, b=2, **kwargs):
             pass
 
-        (T,) = C.__type_params__
+        T, = C.__type_params__
         self.assertEqual(T.__name__, "T")
         self.assertEqual(C.kwargs, {"a": 1, "b": 2, "c": 3})
 
         bases = (Base,)
-
         class C2[T](*bases, **kwargs):
             pass
 
-        (T,) = C2.__type_params__
+        T, = C2.__type_params__
         self.assertEqual(T.__name__, "T")
         self.assertEqual(C2.kwargs, {"c": 3})
 
@@ -858,26 +775,20 @@ class TypeParamsTraditionalTypeVarsTest(unittest.TestCase):
             class ClassA[T](Generic[T]): ...
         """
 
-        with self.assertRaisesRegex(
-            TypeError, r"Cannot inherit from Generic\[...\] multiple times."
-        ):
+        with self.assertRaisesRegex(TypeError, r"Cannot inherit from Generic\[...\] multiple times."):
             run_code(code)
 
     def test_traditional_02(self):
         from typing import TypeVar
-
         S = TypeVar("S")
         with self.assertRaises(TypeError):
-
             class ClassA[T](dict[T, S]): ...
 
     def test_traditional_03(self):
         # This does not generate a runtime error, but it should be
         # flagged as an error by type checkers.
         from typing import TypeVar
-
         S = TypeVar("S")
-
         def func[T](a: T, b: S) -> T | S:
             return a
 
@@ -917,7 +828,6 @@ class TypeParamsTypeVarTest(unittest.TestCase):
                 yield A
                 yield B
                 yield from generator1()
-
             return generator2
 
         gen = get_generator()
@@ -936,7 +846,6 @@ class TypeParamsTypeVarTest(unittest.TestCase):
         def get_coroutine[A]():
             async def coroutine[B]():
                 return (A, B)
-
             return coroutine
 
         co = get_coroutine()
@@ -1060,25 +969,17 @@ class TypeParamsTypeParamsDunder(unittest.TestCase):
         self.assertEqual(ns["func"].__type_params__, ())
 
 
+
 # All these type aliases are used for pickling tests:
-T = TypeVar("T")
-
-
+T = TypeVar('T')
 def func1[X](x: X) -> X: ...
 def func2[X, Y](x: X | Y) -> X | Y: ...
 def func3[X, *Y, **Z](x: X, y: tuple[*Y], z: Z) -> X: ...
 def func4[X: int, Y: (bytes, str)](x: X, y: Y) -> X | Y: ...
 
-
 class Class1[X]: ...
-
-
 class Class2[X, Y]: ...
-
-
 class Class3[X, *Y, **Z]: ...
-
-
 class Class4[X: int, Y: (bytes, str)]: ...
 
 
@@ -1101,12 +1002,15 @@ class TypeParamsPickleTest(unittest.TestCase):
             Class1,
             Class1[int],
             Class1[T],
+
             Class2,
             Class2[int, T],
             Class2[T, int],
             Class2[int, str],
+
             Class3,
             Class3[int, T, str, bytes, [float, object, T]],
+
             Class4,
             Class4[int, bytes],
             Class4[T, bytes],
@@ -1120,7 +1024,7 @@ class TypeParamsPickleTest(unittest.TestCase):
                     self.assertEqual(pickle.loads(pickled), thing)
 
         for klass in things_to_test:
-            real_class = getattr(klass, "__origin__", klass)
+            real_class = getattr(klass, '__origin__', klass)
             thing = klass()
             for proto in range(pickle.HIGHEST_PROTOCOL + 1):
                 with self.subTest(thing=thing, proto=proto):
@@ -1132,9 +1036,8 @@ class TypeParamsPickleTest(unittest.TestCase):
 
 class TypeParamsWeakRefTest(unittest.TestCase):
     def test_weakrefs(self):
-        T = TypeVar("T")
-        P = ParamSpec("P")
-
+        T = TypeVar('T')
+        P = ParamSpec('P')
         class OldStyle(Generic[T]):
             pass
 
@@ -1143,11 +1046,11 @@ class TypeParamsWeakRefTest(unittest.TestCase):
 
         cases = [
             T,
-            TypeVar("T", bound=int),
+            TypeVar('T', bound=int),
             P,
             P.args,
             P.kwargs,
-            TypeVarTuple("Ts"),
+            TypeVarTuple('Ts'),
             OldStyle,
             OldStyle[int],
             OldStyle(),

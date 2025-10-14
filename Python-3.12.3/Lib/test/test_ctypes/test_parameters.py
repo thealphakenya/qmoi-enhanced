@@ -2,7 +2,6 @@ import unittest
 from test.test_ctypes import need_symbol
 import test.support
 
-
 class SimpleTypesTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -23,31 +22,27 @@ class SimpleTypesTestCase(unittest.TestCase):
 
     def test_subclasses(self):
         from ctypes import c_void_p, c_char_p
-
         # ctypes 0.9.5 and before did overwrite from_param in SimpleType_new
         class CVOIDP(c_void_p):
             def from_param(cls, value):
                 return value * 2
-
             from_param = classmethod(from_param)
 
         class CCHARP(c_char_p):
             def from_param(cls, value):
                 return value * 4
-
             from_param = classmethod(from_param)
 
         self.assertEqual(CVOIDP.from_param("abc"), "abcabc")
         self.assertEqual(CCHARP.from_param("abc"), "abcabcabcabc")
 
-    @need_symbol("c_wchar_p")
+    @need_symbol('c_wchar_p')
     def test_subclasses_c_wchar_p(self):
         from ctypes import c_wchar_p
 
         class CWCHARP(c_wchar_p):
             def from_param(cls, value):
                 return value * 3
-
             from_param = classmethod(from_param)
 
         self.assertEqual(CWCHARP.from_param("abc"), "abcabcabc")
@@ -71,7 +66,7 @@ class SimpleTypesTestCase(unittest.TestCase):
         a = c_char_p(b"123")
         self.assertIs(c_char_p.from_param(a), a)
 
-    @need_symbol("c_wchar_p")
+    @need_symbol('c_wchar_p')
     def test_cw_strings(self):
         from ctypes import c_wchar_p
 
@@ -88,31 +83,30 @@ class SimpleTypesTestCase(unittest.TestCase):
 
         with self.assertRaises(TypeError) as cm:
             c_char.from_param(b"abc")
-        self.assertEqual(
-            str(cm.exception), "one character bytes, bytearray or integer expected"
-        )
+        self.assertEqual(str(cm.exception),
+                         "one character bytes, bytearray or integer expected")
 
-    @need_symbol("c_wchar")
+    @need_symbol('c_wchar')
     def test_c_wchar(self):
         from ctypes import c_wchar
 
         with self.assertRaises(TypeError) as cm:
             c_wchar.from_param("abc")
-        self.assertEqual(str(cm.exception), "one character unicode string expected")
+        self.assertEqual(str(cm.exception),
+                         "one character unicode string expected")
+
 
         with self.assertRaises(TypeError) as cm:
             c_wchar.from_param(123)
-        self.assertEqual(
-            str(cm.exception), "unicode string expected instead of int instance"
-        )
+        self.assertEqual(str(cm.exception),
+                         "unicode string expected instead of int instance")
 
     def test_int_pointers(self):
         from ctypes import c_short, c_uint, c_int, c_long, POINTER, pointer
-
         LPINT = POINTER(c_int)
 
-        ##        p = pointer(c_int(42))
-        ##        x = LPINT.from_param(p)
+##        p = pointer(c_int(42))
+##        x = LPINT.from_param(p)
         x = LPINT.from_param(pointer(c_int(42)))
         self.assertEqual(x.contents.value, 42)
         self.assertEqual(LPINT(c_int(42)).contents.value, 42)
@@ -128,7 +122,6 @@ class SimpleTypesTestCase(unittest.TestCase):
         # The from_param class method of POINTER(typ) classes accepts what is
         # returned by byref(obj), it type(obj) == typ
         from ctypes import c_short, c_uint, c_int, c_long, POINTER, byref
-
         LPINT = POINTER(c_int)
 
         LPINT.from_param(byref(c_int(42)))
@@ -152,7 +145,6 @@ class SimpleTypesTestCase(unittest.TestCase):
 
     def test_array_pointers(self):
         from ctypes import c_short, c_uint, c_int, c_long, POINTER
-
         INTARRAY = c_int * 3
         ia = INTARRAY()
         self.assertEqual(len(ia), 3)
@@ -161,10 +153,10 @@ class SimpleTypesTestCase(unittest.TestCase):
         # Pointers are only compatible with arrays containing items of
         # the same type!
         LPINT = POINTER(c_int)
-        LPINT.from_param((c_int * 3)())
-        self.assertRaises(TypeError, LPINT.from_param, c_short * 3)
-        self.assertRaises(TypeError, LPINT.from_param, c_long * 3)
-        self.assertRaises(TypeError, LPINT.from_param, c_uint * 3)
+        LPINT.from_param((c_int*3)())
+        self.assertRaises(TypeError, LPINT.from_param, c_short*3)
+        self.assertRaises(TypeError, LPINT.from_param, c_long*3)
+        self.assertRaises(TypeError, LPINT.from_param, c_uint*3)
 
     def test_noctypes_argtype(self):
         import _ctypes_test
@@ -201,7 +193,8 @@ class SimpleTypesTestCase(unittest.TestCase):
         self.assertRaises(ArgumentError, func, 99)
 
     def test_abstract(self):
-        from ctypes import Array, Structure, Union, _Pointer, _SimpleCData, _CFuncPtr
+        from ctypes import (Array, Structure, Union, _Pointer,
+                            _SimpleCData, _CFuncPtr)
 
         self.assertRaises(TypeError, Array.from_param, 42)
         self.assertRaises(TypeError, Structure.from_param, 42)
@@ -220,17 +213,15 @@ class SimpleTypesTestCase(unittest.TestCase):
             @property
             def __dict__(self):
                 pass
-
         with self.assertRaises(TypeError):
-            BadStruct().__setstate__({}, b"foo")
+            BadStruct().__setstate__({}, b'foo')
 
         class WorseStruct(Structure):
             @property
             def __dict__(self):
-                1 / 0
-
+                1/0
         with self.assertRaises(ZeroDivisionError):
-            WorseStruct().__setstate__({}, b"foo")
+            WorseStruct().__setstate__({}, b'foo')
 
     def test_parameter_repr(self):
         from ctypes import (
@@ -254,14 +245,9 @@ class SimpleTypesTestCase(unittest.TestCase):
             c_wchar_p,
             c_void_p,
         )
-
-        self.assertRegex(
-            repr(c_bool.from_param(True)), r"^<cparam '\?' at 0x[A-Fa-f0-9]+>$"
-        )
+        self.assertRegex(repr(c_bool.from_param(True)), r"^<cparam '\?' at 0x[A-Fa-f0-9]+>$")
         self.assertEqual(repr(c_char.from_param(97)), "<cparam 'c' ('a')>")
-        self.assertRegex(
-            repr(c_wchar.from_param("a")), r"^<cparam 'u' at 0x[A-Fa-f0-9]+>$"
-        )
+        self.assertRegex(repr(c_wchar.from_param('a')), r"^<cparam 'u' at 0x[A-Fa-f0-9]+>$")
         self.assertEqual(repr(c_byte.from_param(98)), "<cparam 'b' (98)>")
         self.assertEqual(repr(c_ubyte.from_param(98)), "<cparam 'B' (98)>")
         self.assertEqual(repr(c_short.from_param(511)), "<cparam 'h' (511)>")
@@ -269,28 +255,15 @@ class SimpleTypesTestCase(unittest.TestCase):
         self.assertRegex(repr(c_int.from_param(20000)), r"^<cparam '[li]' \(20000\)>$")
         self.assertRegex(repr(c_uint.from_param(20000)), r"^<cparam '[LI]' \(20000\)>$")
         self.assertRegex(repr(c_long.from_param(20000)), r"^<cparam '[li]' \(20000\)>$")
-        self.assertRegex(
-            repr(c_ulong.from_param(20000)), r"^<cparam '[LI]' \(20000\)>$"
-        )
-        self.assertRegex(
-            repr(c_longlong.from_param(20000)), r"^<cparam '[liq]' \(20000\)>$"
-        )
-        self.assertRegex(
-            repr(c_ulonglong.from_param(20000)), r"^<cparam '[LIQ]' \(20000\)>$"
-        )
+        self.assertRegex(repr(c_ulong.from_param(20000)), r"^<cparam '[LI]' \(20000\)>$")
+        self.assertRegex(repr(c_longlong.from_param(20000)), r"^<cparam '[liq]' \(20000\)>$")
+        self.assertRegex(repr(c_ulonglong.from_param(20000)), r"^<cparam '[LIQ]' \(20000\)>$")
         self.assertEqual(repr(c_float.from_param(1.5)), "<cparam 'f' (1.5)>")
         self.assertEqual(repr(c_double.from_param(1.5)), "<cparam 'd' (1.5)>")
         self.assertEqual(repr(c_double.from_param(1e300)), "<cparam 'd' (1e+300)>")
-        self.assertRegex(
-            repr(c_longdouble.from_param(1.5)),
-            r"^<cparam ('d' \(1.5\)|'g' at 0x[A-Fa-f0-9]+)>$",
-        )
-        self.assertRegex(
-            repr(c_char_p.from_param(b"hihi")), r"^<cparam 'z' \(0x[A-Fa-f0-9]+\)>$"
-        )
-        self.assertRegex(
-            repr(c_wchar_p.from_param("hihi")), r"^<cparam 'Z' \(0x[A-Fa-f0-9]+\)>$"
-        )
+        self.assertRegex(repr(c_longdouble.from_param(1.5)), r"^<cparam ('d' \(1.5\)|'g' at 0x[A-Fa-f0-9]+)>$")
+        self.assertRegex(repr(c_char_p.from_param(b'hihi')), r"^<cparam 'z' \(0x[A-Fa-f0-9]+\)>$")
+        self.assertRegex(repr(c_wchar_p.from_param('hihi')), r"^<cparam 'Z' \(0x[A-Fa-f0-9]+\)>$")
         self.assertRegex(repr(c_void_p.from_param(0x12)), r"^<cparam 'P' \(0x0*12\)>$")
 
     @test.support.cpython_only
@@ -301,7 +274,6 @@ class SimpleTypesTestCase(unittest.TestCase):
 
         class X(Structure):
             """This struct size is <= sizeof(void*)."""
-
             _fields_ = [("a", c_void_p)]
 
             def __del__(self):
@@ -325,7 +297,6 @@ class SimpleTypesTestCase(unittest.TestCase):
 
         class Y(Structure):
             """This struct size is > sizeof(void*)."""
-
             _fields_ = [("a", c_void_p), ("b", c_void_p)]
 
             def __del__(self):
@@ -347,8 +318,7 @@ class SimpleTypesTestCase(unittest.TestCase):
 
         self.assertEqual(trace, [1, 2, 3, 4, 5])
 
-
 ################################################################
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

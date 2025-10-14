@@ -7,20 +7,8 @@ from test.test_ctypes import need_symbol
 
 formats = "bBhHiIlLqQfd"
 
-formats = (
-    c_byte,
-    c_ubyte,
-    c_short,
-    c_ushort,
-    c_int,
-    c_uint,
-    c_long,
-    c_ulonglong,
-    c_float,
-    c_double,
-    c_longdouble,
-)
-
+formats = c_byte, c_ubyte, c_short, c_ushort, c_int, c_uint, \
+          c_long, c_ulonglong, c_float, c_double, c_longdouble
 
 class ArrayTestCase(unittest.TestCase):
     def test_simple(self):
@@ -42,15 +30,12 @@ class ArrayTestCase(unittest.TestCase):
             self.assertEqual(values, init)
 
             # out-of-bounds accesses should be caught
-            with self.assertRaises(IndexError):
-                ia[alen]
-            with self.assertRaises(IndexError):
-                ia[-alen - 1]
+            with self.assertRaises(IndexError): ia[alen]
+            with self.assertRaises(IndexError): ia[-alen-1]
 
             # change the items
             from operator import setitem
-
-            new_values = list(range(42, 42 + alen))
+            new_values = list(range(42, 42+alen))
             [setitem(ia, n, new_values[n]) for n in range(alen)]
             values = [ia[i] for i in range(alen)]
             self.assertEqual(values, new_values)
@@ -61,7 +46,7 @@ class ArrayTestCase(unittest.TestCase):
             self.assertEqual(values, [0] * alen)
 
             # Too many initializers should be caught
-            self.assertRaises(IndexError, int_array, *range(alen * 2))
+            self.assertRaises(IndexError, int_array, *range(alen*2))
 
         CharArray = ARRAY(c_char, 3)
 
@@ -82,19 +67,18 @@ class ArrayTestCase(unittest.TestCase):
 
         # cannot delete items
         from operator import delitem
-
         self.assertRaises(TypeError, delitem, ca, 0)
 
     def test_step_overflow(self):
         a = (c_int * 5)()
-        a[3 :: sys.maxsize] = (1,)
-        self.assertListEqual(a[3 :: sys.maxsize], [1])
+        a[3::sys.maxsize] = (1,)
+        self.assertListEqual(a[3::sys.maxsize], [1])
         a = (c_char * 5)()
-        a[3 :: sys.maxsize] = b"A"
-        self.assertEqual(a[3 :: sys.maxsize], b"A")
+        a[3::sys.maxsize] = b"A"
+        self.assertEqual(a[3::sys.maxsize], b"A")
         a = (c_wchar * 5)()
-        a[3 :: sys.maxsize] = "X"
-        self.assertEqual(a[3 :: sys.maxsize], "X")
+        a[3::sys.maxsize] = u"X"
+        self.assertEqual(a[3::sys.maxsize], u"X")
 
     def test_numeric_arrays(self):
 
@@ -108,7 +92,7 @@ class ArrayTestCase(unittest.TestCase):
 
         na = numarray(*[c_int()] * alen)
         values = [na[i] for i in range(alen)]
-        self.assertEqual(values, [0] * alen)
+        self.assertEqual(values, [0]*alen)
 
         na = numarray(1, 2, 3, 4, 5)
         values = [i for i in na]
@@ -133,7 +117,7 @@ class ArrayTestCase(unittest.TestCase):
         self.assertEqual(sz[1:4:2], b"o")
         self.assertEqual(sz.value, b"foo")
 
-    @need_symbol("create_unicode_buffer")
+    @need_symbol('create_unicode_buffer')
     def test_from_addressW(self):
         p = create_unicode_buffer("foo")
         sz = (c_wchar * 3).from_address(addressof(p))
@@ -153,7 +137,6 @@ class ArrayTestCase(unittest.TestCase):
         # Create a new type:
         class my_int(c_int):
             pass
-
         # Create a new array type based on it:
         t1 = my_int * 1
         t2 = my_int * 1
@@ -163,19 +146,14 @@ class ArrayTestCase(unittest.TestCase):
         class T(Array):
             _type_ = c_int
             _length_ = 13
-
         class U(T):
             pass
-
         class V(U):
             pass
-
         class W(V):
             pass
-
         class X(T):
             _type_ = c_short
-
         class Y(T):
             _length_ = 187
 
@@ -197,41 +175,29 @@ class ArrayTestCase(unittest.TestCase):
 
     def test_bad_subclass(self):
         with self.assertRaises(AttributeError):
-
             class T(Array):
                 pass
-
         with self.assertRaises(AttributeError):
-
             class T2(Array):
                 _type_ = c_int
-
         with self.assertRaises(AttributeError):
-
             class T3(Array):
                 _length_ = 13
 
     def test_bad_length(self):
         with self.assertRaises(ValueError):
-
             class T(Array):
                 _type_ = c_int
-                _length_ = -sys.maxsize * 2
-
+                _length_ = - sys.maxsize * 2
         with self.assertRaises(ValueError):
-
             class T2(Array):
                 _type_ = c_int
                 _length_ = -1
-
         with self.assertRaises(TypeError):
-
             class T3(Array):
                 _type_ = c_int
                 _length_ = 1.87
-
         with self.assertRaises(OverflowError):
-
             class T4(Array):
                 _type_ = c_int
                 _length_ = sys.maxsize * 2
@@ -263,11 +229,10 @@ class ArrayTestCase(unittest.TestCase):
         with self.assertRaises(OverflowError):
             c_char * sys.maxsize * 2
 
-    @unittest.skipUnless(sys.maxsize > 2**32, "requires 64bit platform")
+    @unittest.skipUnless(sys.maxsize > 2**32, 'requires 64bit platform')
     @bigmemtest(size=_2G, memuse=1, dry_run=False)
     def test_large_array(self, size):
         c_char * size
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

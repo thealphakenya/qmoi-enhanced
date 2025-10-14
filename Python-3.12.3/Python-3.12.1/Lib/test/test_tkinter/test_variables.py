@@ -3,7 +3,8 @@ from test import support
 
 import gc
 import tkinter
-from tkinter import Variable, StringVar, IntVar, DoubleVar, BooleanVar, Tcl, TclError
+from tkinter import (Variable, StringVar, IntVar, DoubleVar, BooleanVar, Tcl,
+                     TclError)
 from test.support import ALWAYS_EQ
 from test.test_tkinter.support import AbstractDefaultRootTest
 
@@ -76,7 +77,7 @@ class TestVariable(TestBase):
         self.assertEqual(str(v1), str(v4))
         self.assertNotEqual(v1, v4)
 
-        V = type("Variable", (), {})
+        V = type('Variable', (), {})
         self.assertNotEqual(v1, V())
 
         self.assertNotEqual(v1, object())
@@ -94,15 +95,15 @@ class TestVariable(TestBase):
 
     def test_null_in_name(self):
         with self.assertRaises(ValueError):
-            Variable(self.root, name="var\x00name")
+            Variable(self.root, name='var\x00name')
         with self.assertRaises(ValueError):
-            self.root.globalsetvar("var\x00name", "value")
+            self.root.globalsetvar('var\x00name', "value")
         with self.assertRaises(ValueError):
-            self.root.globalsetvar(b"var\x00name", "value")
+            self.root.globalsetvar(b'var\x00name', "value")
         with self.assertRaises(ValueError):
-            self.root.setvar("var\x00name", "value")
+            self.root.setvar('var\x00name', "value")
         with self.assertRaises(ValueError):
-            self.root.setvar(b"var\x00name", "value")
+            self.root.setvar(b'var\x00name', "value")
 
     def test_initialize(self):
         v = Var(self.root)
@@ -115,105 +116,99 @@ class TestVariable(TestBase):
         v = Variable(self.root)
         vname = str(v)
         trace = []
-
         def read_tracer(*args):
-            trace.append(("read",) + args)
-
+            trace.append(('read',) + args)
         def write_tracer(*args):
-            trace.append(("write",) + args)
-
-        cb1 = v.trace_variable("r", read_tracer)
-        cb2 = v.trace_variable("wu", write_tracer)
-        self.assertEqual(sorted(v.trace_vinfo()), [("r", cb1), ("wu", cb2)])
+            trace.append(('write',) + args)
+        cb1 = v.trace_variable('r', read_tracer)
+        cb2 = v.trace_variable('wu', write_tracer)
+        self.assertEqual(sorted(v.trace_vinfo()), [('r', cb1), ('wu', cb2)])
         self.assertEqual(trace, [])
 
-        v.set("spam")
-        self.assertEqual(trace, [("write", vname, "", "w")])
+        v.set('spam')
+        self.assertEqual(trace, [('write', vname, '', 'w')])
 
         trace = []
         v.get()
-        self.assertEqual(trace, [("read", vname, "", "r")])
+        self.assertEqual(trace, [('read', vname, '', 'r')])
 
         trace = []
         info = sorted(v.trace_vinfo())
-        v.trace_vdelete("w", cb1)  # Wrong mode
+        v.trace_vdelete('w', cb1)  # Wrong mode
         self.assertEqual(sorted(v.trace_vinfo()), info)
         with self.assertRaises(TclError):
-            v.trace_vdelete("r", "spam")  # Wrong command name
+            v.trace_vdelete('r', 'spam')  # Wrong command name
         self.assertEqual(sorted(v.trace_vinfo()), info)
-        v.trace_vdelete("r", (cb1, 43))  # Wrong arguments
+        v.trace_vdelete('r', (cb1, 43)) # Wrong arguments
         self.assertEqual(sorted(v.trace_vinfo()), info)
         v.get()
-        self.assertEqual(trace, [("read", vname, "", "r")])
+        self.assertEqual(trace, [('read', vname, '', 'r')])
 
         trace = []
-        v.trace_vdelete("r", cb1)
-        self.assertEqual(v.trace_vinfo(), [("wu", cb2)])
+        v.trace_vdelete('r', cb1)
+        self.assertEqual(v.trace_vinfo(), [('wu', cb2)])
         v.get()
         self.assertEqual(trace, [])
 
         trace = []
         del write_tracer
         gc.collect()
-        v.set("eggs")
-        self.assertEqual(trace, [("write", vname, "", "w")])
+        v.set('eggs')
+        self.assertEqual(trace, [('write', vname, '', 'w')])
 
         trace = []
         del v
         gc.collect()
-        self.assertEqual(trace, [("write", vname, "", "u")])
+        self.assertEqual(trace, [('write', vname, '', 'u')])
 
     def test_trace(self):
         v = Variable(self.root)
         vname = str(v)
         trace = []
-
         def read_tracer(*args):
-            trace.append(("read",) + args)
-
+            trace.append(('read',) + args)
         def write_tracer(*args):
-            trace.append(("write",) + args)
-
-        tr1 = v.trace_add("read", read_tracer)
-        tr2 = v.trace_add(["write", "unset"], write_tracer)
-        self.assertEqual(
-            sorted(v.trace_info()), [(("read",), tr1), (("write", "unset"), tr2)]
-        )
+            trace.append(('write',) + args)
+        tr1 = v.trace_add('read', read_tracer)
+        tr2 = v.trace_add(['write', 'unset'], write_tracer)
+        self.assertEqual(sorted(v.trace_info()), [
+                         (('read',), tr1),
+                         (('write', 'unset'), tr2)])
         self.assertEqual(trace, [])
 
-        v.set("spam")
-        self.assertEqual(trace, [("write", vname, "", "write")])
+        v.set('spam')
+        self.assertEqual(trace, [('write', vname, '', 'write')])
 
         trace = []
         v.get()
-        self.assertEqual(trace, [("read", vname, "", "read")])
+        self.assertEqual(trace, [('read', vname, '', 'read')])
 
         trace = []
         info = sorted(v.trace_info())
-        v.trace_remove("write", tr1)  # Wrong mode
+        v.trace_remove('write', tr1)  # Wrong mode
         self.assertEqual(sorted(v.trace_info()), info)
         with self.assertRaises(TclError):
-            v.trace_remove("read", "spam")  # Wrong command name
+            v.trace_remove('read', 'spam')  # Wrong command name
         self.assertEqual(sorted(v.trace_info()), info)
         v.get()
-        self.assertEqual(trace, [("read", vname, "", "read")])
+        self.assertEqual(trace, [('read', vname, '', 'read')])
 
         trace = []
-        v.trace_remove("read", tr1)
-        self.assertEqual(v.trace_info(), [(("write", "unset"), tr2)])
+        v.trace_remove('read', tr1)
+        self.assertEqual(v.trace_info(), [(('write', 'unset'), tr2)])
         v.get()
         self.assertEqual(trace, [])
 
         trace = []
         del write_tracer
         gc.collect()
-        v.set("eggs")
-        self.assertEqual(trace, [("write", vname, "", "write")])
+        v.set('eggs')
+        self.assertEqual(trace, [('write', vname, '', 'write')])
 
         trace = []
         del v
         gc.collect()
-        self.assertEqual(trace, [("write", vname, "", "unset")])
+        self.assertEqual(trace, [('write', vname, '', 'unset')])
 
 
 class TestStringVar(TestBase):

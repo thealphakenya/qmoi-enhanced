@@ -3,15 +3,14 @@ import signal
 
 from . import util
 
-__all__ = ["Popen"]
+__all__ = ['Popen']
 
 #
 # Start child process using fork
 #
 
-
 class Popen(object):
-    method = "fork"
+    method = 'fork'
 
     def __init__(self, process_obj):
         util._flush_std_streams()
@@ -38,7 +37,6 @@ class Popen(object):
         if self.returncode is None:
             if timeout is not None:
                 from multiprocessing.connection import wait
-
                 if not wait([self.sentinel], timeout):
                     return None
             # This shouldn't block if wait() returned successfully.
@@ -76,14 +74,8 @@ class Popen(object):
         else:
             os.close(child_w)
             os.close(child_r)
-            self.finalizer = util.Finalize(
-                self,
-                util.close_fds,
-                (
-                    parent_r,
-                    parent_w,
-                ),
-            )
+            self.finalizer = util.Finalize(self, util.close_fds,
+                                           (parent_r, parent_w,))
             self.sentinel = parent_r
 
     def close(self):

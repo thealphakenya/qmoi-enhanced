@@ -18,14 +18,10 @@ from urllib.parse import urljoin
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler("logs/test_hf_space_ui.log"),
-        logging.StreamHandler(),
-    ],
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[logging.FileHandler('logs/test_hf_space_ui.log'), logging.StreamHandler()]
 )
 logger = logging.getLogger(__name__)
-
 
 def check_tab(url, tab_name):
     try:
@@ -40,27 +36,19 @@ def check_tab(url, tab_name):
         logger.error(f'Error checking tab "{tab_name}": {e}')
         return False
 
-
 def main():
-    parser = argparse.ArgumentParser(
-        description="QMOI Hugging Face Space UI Test Script"
-    )
-    parser.add_argument(
-        "--space-url",
-        required=False,
-        default="https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
-        help="Hugging Face Space URL",
-    )
+    parser = argparse.ArgumentParser(description='QMOI Hugging Face Space UI Test Script')
+    parser.add_argument('--space-url', required=False, default='https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system', help='Hugging Face Space URL')
     args = parser.parse_args()
-    url = args.space_url.rstrip("/")
+    url = args.space_url.rstrip('/')
 
     # List of expected tabs/features (update as needed)
     tabs = [
-        "Chat with QMOI",
-        "System Monitoring",
-        "Deployment & Updates",
-        "Conversation Sync",
-        "Device Optimization",
+        'Chat with QMOI',
+        'System Monitoring',
+        'Deployment & Updates',
+        'Conversation Sync',
+        'Device Optimization',
     ]
 
     all_ok = True
@@ -70,13 +58,12 @@ def main():
         all_ok = all_ok and ok
 
     if all_ok:
-        logger.info("All UI tabs/features are accessible and working.")
+        logger.info('All UI tabs/features are accessible and working.')
     else:
-        logger.error("Some UI tabs/features are missing or broken.")
+        logger.error('Some UI tabs/features are missing or broken.')
 
     # Always exit 0 (non-fatal for workflow)
     sys.exit(0)
 
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    main() 

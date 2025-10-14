@@ -13,10 +13,8 @@ the example.  It should be ignored:
 
 import sys
 import unittest
-
 if sys.flags.optimize >= 2:
     raise unittest.SkipTest("Cannot test docstrings with -O2")
-
 
 class C(object):
     """Class C.
@@ -77,16 +75,12 @@ class C(object):
         """
         self._x = value
 
-    x = property(
-        getx,
-        setx,
-        doc="""\
+    x = property(getx, setx, doc="""\
         >>> c = C()    # 13
         >>> c.x = 12   # 14
         >>> print(c.x)  # 15
         -12
-        """,
-    )
+        """)
 
     @staticmethod
     def statm():
@@ -116,7 +110,6 @@ class C(object):
 class Test(unittest.TestCase):
     def test_testmod(self):
         import doctest, sys
-
         EXPECTED = 19
         f, t = doctest.testmod(sys.modules[__name__])
         if f:
@@ -129,5 +122,5 @@ class Test(unittest.TestCase):
 # to make sure they don't get tested.
 from doctest import *
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

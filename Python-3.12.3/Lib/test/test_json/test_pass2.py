@@ -2,10 +2,9 @@ from test.test_json import PyTest, CTest
 
 
 # from https://json.org/JSON_checker/test/pass2.json
-JSON = r"""
+JSON = r'''
 [[[[[[[[[[[[[[[[[[["Not too deep"]]]]]]]]]]]]]]]]]]]
-"""
-
+'''
 
 class TestPass2:
     def test_parse(self):
@@ -15,9 +14,5 @@ class TestPass2:
         self.assertEqual(res, self.loads(out))
 
 
-class TestPyPass2(TestPass2, PyTest):
-    pass
-
-
-class TestCPass2(TestPass2, CTest):
-    pass
+class TestPyPass2(TestPass2, PyTest): pass
+class TestCPass2(TestPass2, CTest): pass

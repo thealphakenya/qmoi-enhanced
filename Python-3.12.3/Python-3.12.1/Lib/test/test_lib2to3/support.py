@@ -1,5 +1,4 @@
 """Support code for test_*.py files"""
-
 # Author: Collin Winter
 
 # Python imports
@@ -22,23 +21,20 @@ grammar_no_print_statement = pgen2_driver.load_grammar(grammar_path)
 del grammar_no_print_statement.keywords["print"]
 driver = pgen2_driver.Driver(grammar, convert=pytree.convert)
 driver_no_print_statement = pgen2_driver.Driver(
-    grammar_no_print_statement, convert=pytree.convert
+    grammar_no_print_statement,
+    convert=pytree.convert
 )
-
 
 def parse_string(string):
     return driver.parse_string(reformat(string), debug=True)
-
 
 def run_all_tests(test_mod=None, tests=None):
     if tests is None:
         tests = unittest.TestLoader().loadTestsFromModule(test_mod)
     unittest.TextTestRunner(verbosity=2).run(tests)
 
-
 def reformat(string):
     return dedent(string) + "\n\n"
-
 
 def get_refactorer(fixer_pkg="lib2to3", fixers=None, options=None):
     """
@@ -55,14 +51,12 @@ def get_refactorer(fixer_pkg="lib2to3", fixers=None, options=None):
     options = options or {}
     return refactor.RefactoringTool(fixers, options, explicit=True)
 
-
 def _all_project_files(root, files):
     for dirpath, dirnames, filenames in os.walk(root):
         for filename in filenames:
             if not filename.endswith(".py"):
                 continue
             files.append(os.path.join(dirpath, filename))
-
 
 def all_project_files():
     files = []
@@ -71,6 +65,5 @@ def all_project_files():
     # Sort to get more reproducible tests
     files.sort()
     return files
-
 
 TestCase = unittest.TestCase

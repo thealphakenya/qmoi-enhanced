@@ -4,7 +4,6 @@ Apart from using 'argparse' for the command-line interface,
 this module implements the REPL as a thin wrapper around
 the InteractiveConsole class from the 'code' stdlib module.
 """
-
 import sqlite3
 import sys
 
@@ -69,25 +68,21 @@ def main(*args):
         prog="python -m sqlite3",
     )
     parser.add_argument(
-        "filename",
-        type=str,
-        default=":memory:",
-        nargs="?",
+        "filename", type=str, default=":memory:", nargs="?",
         help=(
             "SQLite database to open (defaults to ':memory:'). "
             "A new database is created if the file does not previously exist."
         ),
     )
     parser.add_argument(
-        "sql",
-        type=str,
-        nargs="?",
-        help=("An SQL query to execute. " "Any returned rows are printed to stdout."),
+        "sql", type=str, nargs="?",
+        help=(
+            "An SQL query to execute. "
+            "Any returned rows are printed to stdout."
+        ),
     )
     parser.add_argument(
-        "-v",
-        "--version",
-        action="version",
+        "-v", "--version", action="version",
         version=f"SQLite version {sqlite3.sqlite_version}",
         help="Print underlying SQLite library version",
     )
@@ -103,15 +98,13 @@ def main(*args):
         eofkey = "CTRL-Z"
     else:
         eofkey = "CTRL-D"
-    banner = dedent(
-        f"""
+    banner = dedent(f"""
         sqlite3 shell, running on SQLite version {sqlite3.sqlite_version}
         Connected to {db_name}
 
         Each command will be run using execute() on the cursor.
         Type ".help" for more information; type ".quit" or {eofkey} to quit.
-    """
-    ).strip()
+    """).strip()
     sys.ps1 = "sqlite> "
     sys.ps2 = "    ... "
 

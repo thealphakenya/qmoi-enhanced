@@ -1,25 +1,27 @@
 from test.test_importlib import abc, util
 
-machinery = util.import_importlib("importlib.machinery")
+machinery = util.import_importlib('importlib.machinery')
 
 import unittest
 import sys
 
 
 class FinderTests(abc.FinderTests):
+
     """Test the finder for extension modules."""
 
     def setUp(self):
         if not self.machinery.EXTENSION_SUFFIXES:
             raise unittest.SkipTest("Requires dynamic loading support.")
         if util.EXTENSIONS.name in sys.builtin_module_names:
-            raise unittest.SkipTest(f"{util.EXTENSIONS.name} is a builtin module")
+            raise unittest.SkipTest(
+                f"{util.EXTENSIONS.name} is a builtin module"
+            )
 
     def find_spec(self, fullname):
-        importer = self.machinery.FileFinder(
-            util.EXTENSIONS.path,
-            (self.machinery.ExtensionFileLoader, self.machinery.EXTENSION_SUFFIXES),
-        )
+        importer = self.machinery.FileFinder(util.EXTENSIONS.path,
+                                            (self.machinery.ExtensionFileLoader,
+                                             self.machinery.EXTENSION_SUFFIXES))
 
         return importer.find_spec(fullname)
 
@@ -36,13 +38,13 @@ class FinderTests(abc.FinderTests):
     test_package_over_module = None
 
     def test_failure(self):
-        self.assertIsNone(self.find_spec("asdfjkl;"))
+        self.assertIsNone(self.find_spec('asdfjkl;'))
 
 
-(Frozen_FinderTests, Source_FinderTests) = util.test_both(
-    FinderTests, machinery=machinery
-)
+(Frozen_FinderTests,
+ Source_FinderTests
+ ) = util.test_both(FinderTests, machinery=machinery)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

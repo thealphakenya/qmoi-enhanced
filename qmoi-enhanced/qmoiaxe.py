@@ -10,16 +10,13 @@ import customtkinter as ctk
 # -------------------------------
 app = FastAPI(title="QMOI AI Backend", version="1.0.0")
 
-
 @app.get("/ping")
 def ping():
     return {"status": "backend is alive"}
 
-
 @app.get("/qmessage")
 def qmessage():
     return {"message": "Hello from QMOI backend!"}
-
 
 def run_backend():
     uvicorn.run(app, host="127.0.0.1", port=8080, log_level="info")
@@ -36,9 +33,7 @@ def run_gui():
     root.title("QMOI AI Desktop")
     root.geometry("500x350")
 
-    title_label = ctk.CTkLabel(
-        root, text="🤖 QMOI AI Desktop", font=("Arial", 22, "bold")
-    )
+    title_label = ctk.CTkLabel(root, text="🤖 QMOI AI Desktop", font=("Arial", 22, "bold"))
     title_label.pack(pady=20)
 
     status_label = ctk.CTkLabel(root, text="Checking backend...", font=("Arial", 14))
@@ -57,11 +52,7 @@ def run_gui():
     api_button = ctk.CTkButton(root, text="Call Backend", command=call_api)
     api_button.pack(pady=12)
 
-    docs_button = ctk.CTkButton(
-        root,
-        text="Open Swagger UI",
-        command=lambda: webbrowser.open("http://127.0.0.1:8080/docs"),
-    )
+    docs_button = ctk.CTkButton(root, text="Open Swagger UI", command=lambda: webbrowser.open("http://127.0.0.1:8080/docs"))
     docs_button.pack(pady=12)
 
     exit_button = ctk.CTkButton(root, text="Exit", command=root.destroy)

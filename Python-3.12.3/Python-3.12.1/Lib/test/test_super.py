@@ -10,46 +10,36 @@ ADAPTIVE_WARMUP_DELAY = 2
 
 class A:
     def f(self):
-        return "A"
-
+        return 'A'
     @classmethod
     def cm(cls):
-        return (cls, "A")
-
+        return (cls, 'A')
 
 class B(A):
     def f(self):
-        return super().f() + "B"
-
+        return super().f() + 'B'
     @classmethod
     def cm(cls):
-        return (cls, super().cm(), "B")
-
+        return (cls, super().cm(), 'B')
 
 class C(A):
     def f(self):
-        return super().f() + "C"
-
+        return super().f() + 'C'
     @classmethod
     def cm(cls):
-        return (cls, super().cm(), "C")
-
+        return (cls, super().cm(), 'C')
 
 class D(C, B):
     def f(self):
-        return super().f() + "D"
-
+        return super().f() + 'D'
     def cm(cls):
-        return (cls, super().cm(), "D")
-
+        return (cls, super().cm(), 'D')
 
 class E(D):
     pass
 
-
 class F(E):
     f = E.f
-
 
 class G(A):
     pass
@@ -63,30 +53,30 @@ class TestSuper(unittest.TestCase):
         __class__ = TestSuper
 
     def test_basics_working(self):
-        self.assertEqual(D().f(), "ABCD")
+        self.assertEqual(D().f(), 'ABCD')
 
     def test_class_getattr_working(self):
-        self.assertEqual(D.f(D()), "ABCD")
+        self.assertEqual(D.f(D()), 'ABCD')
 
     def test_subclass_no_override_working(self):
-        self.assertEqual(E().f(), "ABCD")
-        self.assertEqual(E.f(E()), "ABCD")
+        self.assertEqual(E().f(), 'ABCD')
+        self.assertEqual(E.f(E()), 'ABCD')
 
     def test_unbound_method_transfer_working(self):
-        self.assertEqual(F().f(), "ABCD")
-        self.assertEqual(F.f(F()), "ABCD")
+        self.assertEqual(F().f(), 'ABCD')
+        self.assertEqual(F.f(F()), 'ABCD')
 
     def test_class_methods_still_working(self):
-        self.assertEqual(A.cm(), (A, "A"))
-        self.assertEqual(A().cm(), (A, "A"))
-        self.assertEqual(G.cm(), (G, "A"))
-        self.assertEqual(G().cm(), (G, "A"))
+        self.assertEqual(A.cm(), (A, 'A'))
+        self.assertEqual(A().cm(), (A, 'A'))
+        self.assertEqual(G.cm(), (G, 'A'))
+        self.assertEqual(G().cm(), (G, 'A'))
 
     def test_super_in_class_methods_working(self):
         d = D()
-        self.assertEqual(d.cm(), (d, (D, (D, (D, "A"), "B"), "C"), "D"))
+        self.assertEqual(d.cm(), (d, (D, (D, (D, 'A'), 'B'), 'C'), 'D'))
         e = E()
-        self.assertEqual(e.cm(), (e, (E, (E, (E, "A"), "B"), "C"), "D"))
+        self.assertEqual(e.cm(), (e, (E, (E, (E, 'A'), 'B'), 'C'), 'D'))
 
     def test_super_with_closure(self):
         # Issue4360: super() did not work in a function that
@@ -95,59 +85,43 @@ class TestSuper(unittest.TestCase):
             def f(self):
                 def nested():
                     self
+                return super().f() + 'E'
 
-                return super().f() + "E"
-
-        self.assertEqual(E().f(), "AE")
+        self.assertEqual(E().f(), 'AE')
 
     def test_various___class___pathologies(self):
         # See issue #12370
         class X(A):
             def f(self):
                 return super().f()
-
             __class__ = 413
-
         x = X()
-        self.assertEqual(x.f(), "A")
+        self.assertEqual(x.f(), 'A')
         self.assertEqual(x.__class__, 413)
-
         class X:
             x = __class__
-
             def f():
                 __class__
-
         self.assertIs(X.x, type(self))
         with self.assertRaises(NameError) as e:
-            exec(
-                """class X:
+            exec("""class X:
                 __class__
                 def f():
-                    __class__""",
-                globals(),
-                {},
-            )
-        self.assertIs(type(e.exception), NameError)  # Not UnboundLocalError
-
+                    __class__""", globals(), {})
+        self.assertIs(type(e.exception), NameError) # Not UnboundLocalError
         class X:
             global __class__
             __class__ = 42
-
             def f():
                 __class__
-
         self.assertEqual(globals()["__class__"], 42)
         del globals()["__class__"]
         self.assertNotIn("__class__", X.__dict__)
-
         class X:
             nonlocal __class__
             __class__ = 42
-
             def f():
                 __class__
-
         self.assertEqual(__class__, 42)
 
     def test___class___instancemethod(self):
@@ -155,7 +129,6 @@ class TestSuper(unittest.TestCase):
         class X:
             def f(self):
                 return __class__
-
         self.assertIs(X().f(), X)
 
     def test___class___classmethod(self):
@@ -164,7 +137,6 @@ class TestSuper(unittest.TestCase):
             @classmethod
             def f(cls):
                 return __class__
-
         self.assertIs(X.f(), X)
 
     def test___class___staticmethod(self):
@@ -173,7 +145,6 @@ class TestSuper(unittest.TestCase):
             @staticmethod
             def f():
                 return __class__
-
         self.assertIs(X.f(), X)
 
     def test___class___new(self):
@@ -243,17 +214,14 @@ class TestSuper(unittest.TestCase):
         # __classcell__ is injected into the class namespace by the compiler
         # when at least one method needs it, and should be omitted otherwise
         namespace_snapshot = None
-
         class WithoutClassRef(metaclass=Meta):
             pass
-
         self.assertNotIn("__classcell__", namespace_snapshot)
 
         # With zero-arg super() or an explicit __class__ reference,
         # __classcell__ is the exact cell reference to be populated by
         # type.__new__
         namespace_snapshot = None
-
         class WithClassRef(metaclass=Meta):
             def f(self):
                 return __class__
@@ -272,7 +240,7 @@ class TestSuper(unittest.TestCase):
         # We test that case here by forcibly deleting __classcell__
         class Meta(type):
             def __new__(cls, name, bases, namespace):
-                namespace.pop("__classcell__", None)
+                namespace.pop('__classcell__', None)
                 return super().__new__(cls, name, bases, namespace)
 
         # The default case should continue to work without any errors
@@ -283,9 +251,8 @@ class TestSuper(unittest.TestCase):
         # __build_class__ to raise a RuntimeError complaining that
         # __class__ was not set, and asking if __classcell__ was propagated
         # to type.__new__.
-        expected_error = "__class__ not set.*__classcell__ propagated"
+        expected_error = '__class__ not set.*__classcell__ propagated'
         with self.assertRaisesRegex(RuntimeError, expected_error):
-
             class WithClassRef(metaclass=Meta):
                 def f(self):
                     return __class__
@@ -295,13 +262,12 @@ class TestSuper(unittest.TestCase):
         # Overwriting __classcell__ with nonsense is explicitly prohibited
         class Meta(type):
             def __new__(cls, name, bases, namespace, cell):
-                namespace["__classcell__"] = cell
+                namespace['__classcell__'] = cell
                 return super().__new__(cls, name, bases, namespace)
 
         for bad_cell in (None, 0, "", object()):
             with self.subTest(bad_cell=bad_cell):
                 with self.assertRaises(TypeError):
-
                     class A(metaclass=Meta, cell=bad_cell):
                         pass
 
@@ -315,7 +281,6 @@ class TestSuper(unittest.TestCase):
                 return cls
 
         with self.assertRaises(TypeError):
-
             class A(metaclass=Meta):
                 def f(self):
                     return __class__
@@ -323,21 +288,18 @@ class TestSuper(unittest.TestCase):
     def test_obscure_super_errors(self):
         def f():
             super()
-
         with self.assertRaisesRegex(RuntimeError, r"no arguments"):
             f()
 
         class C:
             def f():
                 super()
-
         with self.assertRaisesRegex(RuntimeError, r"no arguments"):
             C.f()
 
         def f(x):
             del x
             super()
-
         with self.assertRaisesRegex(RuntimeError, r"arg\[0\] deleted"):
             f(None)
 
@@ -346,7 +308,6 @@ class TestSuper(unittest.TestCase):
                 nonlocal __class__
                 del __class__
                 super()
-
         with self.assertRaisesRegex(RuntimeError, r"empty __class__ cell"):
             X().f()
 
@@ -357,12 +318,9 @@ class TestSuper(unittest.TestCase):
 
         def f():
             k = X()
-
             def g():
                 return k
-
             return g
-
         c = f().__closure__[0]
         self.assertRaises(TypeError, X.meth, c)
 
@@ -409,11 +367,9 @@ class TestSuper(unittest.TestCase):
 
     def test_shadowed_dynamic_two_arg(self):
         call_args = []
-
         class MySuper:
             def __init__(self, *args):
                 call_args.append(args)
-
             msg = "super super"
 
         class C:
@@ -429,9 +385,7 @@ class TestSuper(unittest.TestCase):
             def method(self):
                 return super().msg
 
-        with self.assertRaisesRegex(
-            AttributeError, "'super' object has no attribute 'msg'"
-        ):
+        with self.assertRaisesRegex(AttributeError, "'super' object has no attribute 'msg'"):
             C().method()
 
     def test_bad_first_arg(self):

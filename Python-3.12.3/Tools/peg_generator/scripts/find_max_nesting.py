@@ -38,9 +38,7 @@ def check_nested_expr(nesting_depth: int) -> bool:
 
 
 def main() -> None:
-    print(
-        f"Testing {GRAMMAR_FILE} starting at nesting depth of {INITIAL_NESTING_DEPTH}..."
-    )
+    print(f"Testing {GRAMMAR_FILE} starting at nesting depth of {INITIAL_NESTING_DEPTH}...")
 
     nesting_depth = INITIAL_NESTING_DEPTH
     succeeded = True

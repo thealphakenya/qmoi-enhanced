@@ -37,7 +37,7 @@ from distutils.errors import DistutilsExecError, CompileError
 
 class UnixCCompiler(CCompiler):
 
-    compiler_type = "unix"
+    compiler_type = 'unix'
 
     # These are used by CCompiler in two places: the constructor sets
     # instance attributes 'preprocessor', 'compiler', etc. from them, and
@@ -45,19 +45,18 @@ class UnixCCompiler(CCompiler):
     # are pretty generic; they will probably have to be set by an outsider
     # (eg. using information discovered by the sysconfig about building
     # Python extensions).
-    executables = {
-        "preprocessor": None,
-        "compiler": ["cc"],
-        "compiler_so": ["cc"],
-        "compiler_cxx": ["cc"],
-        "linker_so": ["cc", "-shared"],
-        "linker_exe": ["cc"],
-        "archiver": ["ar", "-cr"],
-        "ranlib": None,
-    }
+    executables = {'preprocessor' : None,
+                   'compiler'     : ["cc"],
+                   'compiler_so'  : ["cc"],
+                   'compiler_cxx' : ["cc"],
+                   'linker_so'    : ["cc", "-shared"],
+                   'linker_exe'   : ["cc"],
+                   'archiver'     : ["ar", "-cr"],
+                   'ranlib'       : None,
+                  }
 
     if sys.platform[:6] == "darwin":
-        executables["ranlib"] = ["ranlib"]
+        executables['ranlib'] = ["ranlib"]
 
     # Needed for the filename generation methods provided by the base
     # class, CCompiler.  NB. whoever instantiates/uses a particular
@@ -65,7 +64,7 @@ class UnixCCompiler(CCompiler):
     # reasonable common default here, but it's not necessarily used on all
     # Unices!
 
-    src_extensions = [".c", ".C", ".cc", ".cxx", ".cpp", ".m"]
+    src_extensions = [".c",".C",".cc",".cxx",".cpp",".m"]
     obj_extension = ".o"
     static_lib_extension = ".a"
     shared_lib_extension = ".so"
@@ -76,21 +75,14 @@ class UnixCCompiler(CCompiler):
     if sys.platform == "cygwin":
         exe_extension = ".exe"
 
-    def preprocess(
-        self,
-        source,
-        output_file=None,
-        macros=None,
-        include_dirs=None,
-        extra_preargs=None,
-        extra_postargs=None,
-    ):
+    def preprocess(self, source, output_file=None, macros=None,
+                   include_dirs=None, extra_preargs=None, extra_postargs=None):
         fixed_args = self._fix_compile_args(None, macros, include_dirs)
         ignore, macros, include_dirs = fixed_args
         pp_opts = gen_preprocess_options(macros, include_dirs)
         pp_args = self.preprocessor + pp_opts
         if output_file:
-            pp_args.extend(["-o", output_file])
+            pp_args.extend(['-o', output_file])
         if extra_preargs:
             pp_args[:0] = extra_preargs
         if extra_postargs:

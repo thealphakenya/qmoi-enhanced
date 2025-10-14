@@ -22,12 +22,19 @@ def analyze(filenmes, **kwargs):
     return Analysis.from_results(results)
 
 
-def iter_analysis_results(filenmes, *, known=None, **kwargs):
+def iter_analysis_results(filenmes, *,
+                          known=None,
+                          **kwargs
+                          ):
     decls = iter_decls(filenames, **kwargs)
     yield from analyze_decls(decls, known)
 
 
-def iter_decls(filenames, *, kinds=None, parse_files=_parse_files, **kwargs):
+def iter_decls(filenames, *,
+               kinds=None,
+               parse_files=_parse_files,
+               **kwargs
+               ):
     kinds = KIND.DECLS if kinds is None else (KIND.DECLS & set(kinds))
     parse_files = parse_files or _parse_files
 
@@ -37,14 +44,11 @@ def iter_decls(filenames, *, kinds=None, parse_files=_parse_files, **kwargs):
         yield resolve_parsed(item)
 
 
-def analyze_decls(
-    decls,
-    known,
-    *,
-    analyze_resolved=None,
-    handle_unresolved=True,
-    relroot=None,
-):
+def analyze_decls(decls, known, *,
+                  analyze_resolved=None,
+                  handle_unresolved=True,
+                  relroot=None,
+                  ):
     knowntypes, knowntypespecs = _datafiles.get_known(
         known,
         handle_unresolved=handle_unresolved,
@@ -55,7 +59,7 @@ def analyze_decls(
     decls = list(decls)
     collated = group_by_kinds(decls)
 
-    types = {decl: None for decl in collated["type"]}
+    types = {decl: None for decl in collated['type']}
     typespecs = _analyze.get_typespecs(types)
 
     def analyze_decl(decl):
@@ -67,7 +71,6 @@ def analyze_decls(
             knowntypes,
             analyze_resolved=analyze_resolved,
         )
-
     _analyze.analyze_type_decls(types, analyze_decl, handle_unresolved)
     for decl in decls:
         if decl in types:
@@ -85,7 +88,6 @@ def analyze_decls(
 
 #######################################
 # checks
-
 
 def check_all(analysis, checks, *, failfast=False):
     for check in checks or ():

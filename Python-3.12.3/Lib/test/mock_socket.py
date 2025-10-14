@@ -1,4 +1,5 @@
-"""Mock socket module used by the smtplib tests."""
+"""Mock socket module used by the smtplib tests.
+"""
 
 # imported for _GLOBAL_DEFAULT_TIMEOUT
 import socket as socket_module
@@ -6,7 +7,6 @@ import socket as socket_module
 # Mock socket module
 _defaulttimeout = None
 _reply_data = None
-
 
 # This is used to queue up data to be read through socket.makefile, typically
 # *before* the socket object is even created. It is intended to handle a single
@@ -17,26 +17,24 @@ def reply_with(line):
 
 
 class MockFile:
-    """Mock file object returned by MockSocket.makefile()."""
-
+    """Mock file object returned by MockSocket.makefile().
+    """
     def __init__(self, lines):
         self.lines = lines
-
     def readline(self, limit=-1):
-        result = self.lines.pop(0) + b"\r\n"
+        result = self.lines.pop(0) + b'\r\n'
         if limit >= 0:
             # Re-insert the line, removing the \r\n we added.
             self.lines.insert(0, result[limit:-2])
             result = result[:limit]
         return result
-
     def close(self):
         pass
 
 
 class MockSocket:
-    """Mock socket object used by the smtplib tests."""
-
+    """Mock socket object used by the smtplib tests.
+    """
     def __init__(self, family=None):
         global _reply_data
         self.family = family
@@ -52,7 +50,7 @@ class MockSocket:
         self.lines.append(line)
 
     def recv(self, bufsize, flags=None):
-        data = self.lines.pop(0) + b"\r\n"
+        data = self.lines.pop(0) + b'\r\n'
         return data
 
     def fileno(self):
@@ -78,10 +76,10 @@ class MockSocket:
 
     def accept(self):
         self.conn = MockSocket()
-        return self.conn, "c"
+        return self.conn, 'c'
 
     def getsockname(self):
-        return ("0.0.0.0", 0)
+        return ('0.0.0.0', 0)
 
     def setblocking(self, flag):
         pass
@@ -89,7 +87,7 @@ class MockSocket:
     def listen(self, backlog):
         pass
 
-    def makefile(self, mode="r", bufsize=-1):
+    def makefile(self, mode='r', bufsize=-1):
         handle = MockFile(self.lines)
         return handle
 
@@ -104,7 +102,7 @@ class MockSocket:
         return len(data)
 
     def getpeername(self):
-        return ("peer-address", "peer-port")
+        return ('peer-address', 'peer-port')
 
     def close(self):
         pass
@@ -116,10 +114,8 @@ class MockSocket:
 def socket(family=None, type=None, proto=None):
     return MockSocket(family)
 
-
-def create_connection(
-    address, timeout=socket_module._GLOBAL_DEFAULT_TIMEOUT, source_address=None
-):
+def create_connection(address, timeout=socket_module._GLOBAL_DEFAULT_TIMEOUT,
+                      source_address=None):
     try:
         int_port = int(address[1])
     except ValueError:
@@ -151,10 +147,8 @@ def gethostname():
 def gethostbyname(name):
     return ""
 
-
 def getaddrinfo(*args, **kw):
     return socket_module.getaddrinfo(*args, **kw)
-
 
 gaierror = socket_module.gaierror
 error = socket_module.error
@@ -168,5 +162,5 @@ SOCK_STREAM = socket_module.SOCK_STREAM
 SOL_SOCKET = None
 SO_REUSEADDR = None
 
-if hasattr(socket_module, "AF_UNIX"):
+if hasattr(socket_module, 'AF_UNIX'):
     AF_UNIX = socket_module.AF_UNIX

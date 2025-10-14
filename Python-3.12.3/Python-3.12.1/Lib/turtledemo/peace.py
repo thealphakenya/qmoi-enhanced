@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""turtle-example-suite:
+"""       turtle-example-suite:
 
               tdemo_peace.py
 
@@ -11,22 +11,15 @@ it only uses turtle commands.
 
 from turtle import *
 
-
 def main():
-    peacecolors = (
-        "red3",
-        "orange",
-        "yellow",
-        "seagreen4",
-        "orchid4",
-        "royalblue1",
-        "dodgerblue4",
-    )
+    peacecolors = ("red3",  "orange", "yellow",
+                   "seagreen4", "orchid4",
+                   "royalblue1", "dodgerblue4")
 
     reset()
     Screen()
     up()
-    goto(-320, -195)
+    goto(-320,-195)
     width(70)
 
     for pcolor in peacecolors:
@@ -41,7 +34,7 @@ def main():
 
     width(25)
     color("white")
-    goto(0, -170)
+    goto(0,-170)
     down()
 
     circle(170)
@@ -60,9 +53,8 @@ def main():
     forward(170)
     up()
 
-    goto(0, 300)  # vanish if hideturtle() is not available ;-)
+    goto(0,300) # vanish if hideturtle() is not available ;-)
     return "Done!"
-
 
 if __name__ == "__main__":
     main()

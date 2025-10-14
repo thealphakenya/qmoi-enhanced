@@ -4,7 +4,6 @@ Implements the HMAC algorithm as described by RFC 2104.
 """
 
 import warnings as _warnings
-
 try:
     import _hashlib as _hashopenssl
 except ImportError:
@@ -30,12 +29,13 @@ class HMAC:
 
     This supports the API for Cryptographic Hash Functions (PEP 247).
     """
-
     blocksize = 64  # 512-bit HMAC; can be changed in subclasses.
 
-    __slots__ = ("_hmac", "_inner", "_outer", "block_size", "digest_size")
+    __slots__ = (
+        "_hmac", "_inner", "_outer", "block_size", "digest_size"
+    )
 
-    def __init__(self, key, msg=None, digestmod=""):
+    def __init__(self, key, msg=None, digestmod=''):
         """Create a new HMAC object.
 
         key: bytes or buffer, key for the keyed hash object.
@@ -50,9 +50,7 @@ class HMAC:
         """
 
         if not isinstance(key, (bytes, bytearray)):
-            raise TypeError(
-                "key: expected bytes or bytearray, but got %r" % type(key).__name__
-            )
+            raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
 
         if not digestmod:
             raise TypeError("Missing required parameter 'digestmod'.")
@@ -74,32 +72,26 @@ class HMAC:
         if callable(digestmod):
             digest_cons = digestmod
         elif isinstance(digestmod, str):
-            digest_cons = lambda d=b"": _hashlib.new(digestmod, d)
+            digest_cons = lambda d=b'': _hashlib.new(digestmod, d)
         else:
-            digest_cons = lambda d=b"": digestmod.new(d)
+            digest_cons = lambda d=b'': digestmod.new(d)
 
         self._hmac = None
         self._outer = digest_cons()
         self._inner = digest_cons()
         self.digest_size = self._inner.digest_size
 
-        if hasattr(self._inner, "block_size"):
+        if hasattr(self._inner, 'block_size'):
             blocksize = self._inner.block_size
             if blocksize < 16:
-                _warnings.warn(
-                    "block_size of %d seems too small; using our "
-                    "default of %d." % (blocksize, self.blocksize),
-                    RuntimeWarning,
-                    2,
-                )
+                _warnings.warn('block_size of %d seems too small; using our '
+                               'default of %d.' % (blocksize, self.blocksize),
+                               RuntimeWarning, 2)
                 blocksize = self.blocksize
         else:
-            _warnings.warn(
-                "No block_size attribute on given digest object; "
-                "Assuming %d." % (self.blocksize),
-                RuntimeWarning,
-                2,
-            )
+            _warnings.warn('No block_size attribute on given digest object; '
+                           'Assuming %d.' % (self.blocksize),
+                           RuntimeWarning, 2)
             blocksize = self.blocksize
 
         if len(key) > blocksize:
@@ -109,7 +101,7 @@ class HMAC:
         # effective block size as well as the public API attribute.
         self.block_size = blocksize
 
-        key = key.ljust(blocksize, b"\0")
+        key = key.ljust(blocksize, b'\0')
         self._outer.update(key.translate(trans_5C))
         self._inner.update(key.translate(trans_36))
         if msg is not None:
@@ -167,12 +159,12 @@ class HMAC:
         return h.digest()
 
     def hexdigest(self):
-        """Like digest(), but returns a string of hexadecimal digits instead."""
+        """Like digest(), but returns a string of hexadecimal digits instead.
+        """
         h = self._current()
         return h.hexdigest()
 
-
-def new(key, msg=None, digestmod=""):
+def new(key, msg=None, digestmod=''):
     """Create a new hashing object and return it.
 
     key: bytes or buffer, The starting key for the hash.
@@ -210,16 +202,16 @@ def digest(key, msg, digest):
     if callable(digest):
         digest_cons = digest
     elif isinstance(digest, str):
-        digest_cons = lambda d=b"": _hashlib.new(digest, d)
+        digest_cons = lambda d=b'': _hashlib.new(digest, d)
     else:
-        digest_cons = lambda d=b"": digest.new(d)
+        digest_cons = lambda d=b'': digest.new(d)
 
     inner = digest_cons()
     outer = digest_cons()
-    blocksize = getattr(inner, "block_size", 64)
+    blocksize = getattr(inner, 'block_size', 64)
     if len(key) > blocksize:
         key = digest_cons(key).digest()
-    key = key + b"\x00" * (blocksize - len(key))
+    key = key + b'\x00' * (blocksize - len(key))
     inner.update(key.translate(trans_36))
     outer.update(key.translate(trans_5C))
     inner.update(msg)
