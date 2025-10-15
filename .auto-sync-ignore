@@ -9,6 +9,16 @@ build
 dist
 .npm-cache
 
+# Vendored CPython test files and other non-repo sources
+Python-3.12.3/
+
+# Duplicate/archived scripts directories (skip)
+scripts/scripts/
+
+# Files containing null bytes or binary content
+**/*\x00*
+
+
 # Files/paths that Black currently fails to parse; skip until manual fixes
 scripts/financial-integration.py
 scripts/qmoi-dashboard-enhance.py
@@ -24,3 +34,19 @@ scripts/whatsapp-business-automation.py
 qmoi-enhanced/qmoihugggingfacenotes.py
 qmoi-enhanced/qmoiexe.py
 qmoi-enhanced/qmoisimtwo.py
+qmoi-enhanced/scripts/models/qmoi_autodev.py
+avatars.py
+doit.py
+qmoi-enhanced/avatars.py
+qmoi-enhanced/doit.py
+qmoi-enhanced/qmoihugggingfacenotes.py
+qmoihugggingfacenotes.py
+qmoi-enhanced/scripts/core_automation_&_evolution.py
+qmoi-enhanced/scripts/enhanced_automation_&_cloud_features_(2025_01_22).py
+qmoi-enhanced/scripts/financial-integration.py
+qmoi-enhanced/scripts/qmoi_feature_suggester.py
+qmoi-enhanced/scripts/qmoi_model_enhancer.py
+qmoi-enhanced/scripts/whatsapp-business-automation.py
+qmoi-enhanced/scripts/qmoi-git-auto.py
+qmoi-enhanced/scripts/qmoi-real-time-logger.py
+qmoi-enhanced/scripts/qmoi_dashboard.py
