@@ -1,0 +1,14 @@
+Resume - QMOI Enhanced Work & Roadmap (txr)
+
+Date: 2025-10-15
+Branch: autosync/enhancements
+
+This is a typo-safe copy of resume.txt for tools that might expect .txr.
+
+Key commands:
+- Create a backup, commit and push changes:
+  ./scripts/push_all.sh
+- Generate model card from metadata:
+  python tools/update_model_card_fixed.py --metadata qvillage/registry/qmoi/v0.0.1/metadata.json --out QMOI_MODEL_CARD.md
+
+If you need hand-holding, run the push script first, then ask me to resume the py_compile scan.

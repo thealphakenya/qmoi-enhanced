@@ -70,4 +70,62 @@ If you'd like, I can now:
 - Run the py_compile scan and start fixing the next batch of files, or
 - Generate the `QMOI_MODEL_CARD.md` template and an initial `API.md` draft.
 
+Quick start for someone who doesn't know Git or Codespaces (step-by-step)
+1. Open the Codespace workspace in your browser or VS Code.
+2. To save everything and push to GitHub (so you can continue later in another Codespace):
+  - Open a terminal in the workspace (Terminal → New Terminal).
+  - Run the push helper (this creates a backup and pushes changes):
+
+```bash
+./scripts/push_all.sh
+```
+
+  - If you want to skip the backup (not recommended):
+
+```bash
+./scripts/push_all.sh --no-backup
+```
+
+  - If you are comfortable and want to force the remote to match this workspace (use carefully):
+
+```bash
+./scripts/push_all.sh --force
+```
+
+3. To continue work in another Codespace or machine:
+  - Clone the repo at `https://github.com/thealphakenya/qmoi-enhanced.git` using your account with access.
+  - Checkout the branch `autosync/enhancements`:
+
+```bash
+git fetch origin
+git checkout autosync/enhancements
+git pull origin autosync/enhancements
+```
+
+4. If you get merge conflicts while pulling, open the conflicting files in the editor, inspect the sections marked with `<<<<<<<` and `>>>>>>>`, accept either version or merge manually, then run:
+
+```bash
+git add <fixed-files>
+git commit -m "resolve merge conflicts"
+git push origin autosync/enhancements
+```
+
+5. To run the model-card updater locally (after builds produce metadata):
+
+```bash
+python tools/update_model_card_fixed.py --metadata qvillage/registry/qmoi/v0.0.1/metadata.json --out QMOI_MODEL_CARD.md
+```
+
+6. For automated CI/test runs the repo uses a flag `RUN_TESTS`. To run tests locally:
+
+```bash
+export RUN_TESTS=true
+./ci/tests.sh
+```
+
+Troubleshooting tips
+- If `git push` fails with authentication errors, ensure your Codespace has proper GitHub access or set up a Personal Access Token (PAT) and use `git remote set-url origin https://<token>@github.com/thealphakenya/qmoi-enhanced.git` temporarily.
+- If the backup creation fails, check available disk space. Backups are saved under `.push_backups/`.
+- If Python scripts fail with "null bytes" or syntax errors, those files are likely corrupted; ask me to fix the next batch of failures.
+
 -- End of resume

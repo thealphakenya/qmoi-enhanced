@@ -1,0 +1,7 @@
+{
+  "version": "v0.0.1",
+  "commit": "test-commit-hash-0001",
+  "eval": {"mmlu": 52.3, "gsm8k": 21.4, "human_eval": 12.0},
+  "artifacts_path": "qvillage/registry/qmoi/v0.0.1",
+  "changelog": "Initial auto-release for v0.0.1\n- Baseline metrics added"
+}

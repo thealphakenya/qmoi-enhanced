@@ -48,7 +48,7 @@ class QMOIAutoDev:
             "models_updated": [],
             "performance_improvements": {},
             "errors": [],
-            "warnings": [],
+            "warnings": []
         }
 
     def load_config(self) -> Dict[str, Any]:
