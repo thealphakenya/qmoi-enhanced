@@ -29,458 +29,615 @@ import platform
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
+    format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler('logs/qmoi-dashboard.log', encoding='utf-8'),
-        logging.StreamHandler(sys.stdout)
-    ]
+        logging.FileHandler("logs/qmoi-dashboard.log", encoding="utf-8"),
+        logging.StreamHandler(sys.stdout),
+    ],
 )
 logger = logging.getLogger(__name__)
+
 
 def safe_log(level, msg):
     try:
         getattr(logger, level)(msg)
     except UnicodeEncodeError:
-        getattr(logger, level)(msg.encode('ascii', errors='replace').decode('ascii'))
+        getattr(logger, level)(msg.encode("ascii", errors="replace").decode("ascii"))
+
 
 class QMOIDashboardEnhance:
     def __init__(self):
-        template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
+        template_dir = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), "..", "templates")
+        )
         self.app = Flask(__name__, template_folder=template_dir)
         self.socketio = SocketIO(self.app, cors_allowed_origins="*")
         self.port = 3010
         self.running = False
         self.gitlab_ci_running = False
         self.automation_stats = {
-            'gitlab_ci_triggers': 0,
-            'successful_deployments': 0,
-            'failed_deployments': 0,
-            'automation_runs': 0,
-            'last_trigger': None,
-            'current_status': 'idle',
-            'run_history': [],
-            'job_queue': [],
-            'resource_usage': {'cpu': 0, 'memory': 0}
+            "gitlab_ci_triggers": 0,
+            "successful_deployments": 0,
+            "failed_deployments": 0,
+            "automation_runs": 0,
+            "last_trigger": None,
+            "current_status": "idle",
+            "run_history": [],
+            "job_queue": [],
+            "resource_usage": {"cpu": 0, "memory": 0},
         }
         self.master_mode = True  # For demo: set True to show master-only features
         self.health_logs = []
         self.autotest_logs = []
-        self.app_update_status = {'qmoi': 'Up to date', 'qcity': 'Up to date'}
+        self.app_update_status = {"qmoi": "Up to date", "qcity": "Up to date"}
         self.setup_routes()
         self.setup_socket_events()
         self.setup_file_watcher()
         self.setup_health_autotest_scheduler()
-        
+
     def setup_routes(self):
-        @self.app.route('/')
+        @self.app.route("/")
         def dashboard():
-            return render_template('dashboard.html')
-            
-        @self.app.route('/api/stats')
+            return render_template("dashboard.html")
+
+        @self.app.route("/api/stats")
         def get_stats():
             return jsonify(self.automation_stats)
-            
-        @self.app.route('/api/update-history')
+
+        @self.app.route("/api/update-history")
         def get_update_history():
             # Read update history from ALLMDFILESREFS.md
             try:
-                with open('ALLMDFILESREFS.md', 'r', encoding='utf-8') as f:
+                with open("ALLMDFILESREFS.md", "r", encoding="utf-8") as f:
                     lines = f.readlines()
                 # Find the update history table
-                start = next(i for i, l in enumerate(lines) if '| Timestamp (UTC)' in l)
-                end = next(i for i, l in enumerate(lines[start+1:], start+1) if not l.strip() or l.startswith('---'))
+                start = next(i for i, l in enumerate(lines) if "| Timestamp (UTC)" in l)
+                end = next(
+                    i
+                    for i, l in enumerate(lines[start + 1 :], start + 1)
+                    if not l.strip() or l.startswith("---")
+                )
                 table = lines[start:end]
-                return jsonify({'history': table})
+                return jsonify({"history": table})
             except Exception as e:
-                return jsonify({'error': str(e)})
-        @self.app.route('/dashboard/update-history')
+                return jsonify({"error": str(e)})
+
+        @self.app.route("/dashboard/update-history")
         def dashboard_update_history():
             try:
-                with open('ALLMDFILESREFS.md', 'r', encoding='utf-8') as f:
+                with open("ALLMDFILESREFS.md", "r", encoding="utf-8") as f:
                     lines = f.readlines()
-                start = next(i for i, l in enumerate(lines) if '| Timestamp (UTC)' in l)
-                end = next(i for i, l in enumerate(lines[start+1:], start+1) if not l.strip() or l.startswith('---'))
+                start = next(i for i, l in enumerate(lines) if "| Timestamp (UTC)" in l)
+                end = next(
+                    i
+                    for i, l in enumerate(lines[start + 1 :], start + 1)
+                    if not l.strip() or l.startswith("---")
+                )
                 table = lines[start:end]
-                return render_template('update_history.html', table=table)
+                return render_template("update_history.html", table=table)
             except Exception as e:
-                return f'Error: {e}'
-        @self.app.route('/dashboard/app-version')
+                return f"Error: {e}"
+
+        @self.app.route("/dashboard/app-version")
         def dashboard_app_version():
             try:
-                with open('version.txt', 'r', encoding='utf-8') as f:
+                with open("version.txt", "r", encoding="utf-8") as f:
                     version = f.read().strip()
-                return render_template('app_version.html', version=version)
+                return render_template("app_version.html", version=version)
             except Exception as e:
-                return f'Error: {e}'
-        @self.app.route('/api/changelog')
+                return f"Error: {e}"
+
+        @self.app.route("/api/changelog")
         def get_changelog():
             try:
-                with open('CHANGELOG.md', 'r', encoding='utf-8') as f:
+                with open("CHANGELOG.md", "r", encoding="utf-8") as f:
                     changelog = f.read()
-                return jsonify({'changelog': changelog})
+                return jsonify({"changelog": changelog})
             except Exception as e:
-                return jsonify({'error': str(e)})
-            
-        @self.app.route('/api/trigger-gitlab-ci', methods=['POST'])
+                return jsonify({"error": str(e)})
+
+        @self.app.route("/api/trigger-gitlab-ci", methods=["POST"])
         def trigger_gitlab_ci():
             try:
                 self.trigger_gitlab_ci_automation()
-                return jsonify({'status': 'success', 'message': 'GitLab CI triggered successfully'})
+                return jsonify(
+                    {"status": "success", "message": "GitLab CI triggered successfully"}
+                )
             except Exception as e:
-                safe_log('error', f"Error triggering GitLab CI: {e}")
-                return jsonify({'status': 'error', 'message': str(e)}), 500
-                
-        @self.app.route('/api/automation-status')
+                safe_log("error", f"Error triggering GitLab CI: {e}")
+                return jsonify({"status": "error", "message": str(e)}), 500
+
+        @self.app.route("/api/automation-status")
         def automation_status():
-            return jsonify({
-                'dashboard_running': self.running,
-                'gitlab_ci_running': self.gitlab_ci_running,
-                'stats': self.automation_stats
-            })
-            
-        @self.app.route('/downloads/qmoi/<device>')
+            return jsonify(
+                {
+                    "dashboard_running": self.running,
+                    "gitlab_ci_running": self.gitlab_ci_running,
+                    "stats": self.automation_stats,
+                }
+            )
+
+        @self.app.route("/downloads/qmoi/<device>")
         def download_qmoi(device):
             # Realistic production URLs (replace with your actual file URLs)
             links = {
-                'windows': 'https://downloads.qmoi.app/qmoi/windows-installer.exe',
-                'mac': 'https://downloads.qmoi.app/qmoi/mac-installer.dmg',
-                'linux': 'https://downloads.qmoi.app/qmoi/linux-installer.sh',
-                'android': 'https://downloads.qmoi.app/qmoi/android.apk',
-                'ios': 'https://downloads.qmoi.app/qmoi/ios.ipa',
+                "windows": "https://downloads.qmoi.app/qmoi/windows-installer.exe",
+                "mac": "https://downloads.qmoi.app/qmoi/mac-installer.dmg",
+                "linux": "https://downloads.qmoi.app/qmoi/linux-installer.sh",
+                "android": "https://downloads.qmoi.app/qmoi/android.apk",
+                "ios": "https://downloads.qmoi.app/qmoi/ios.ipa",
             }
-            url = links.get(device, links['windows'])
+            url = links.get(device, links["windows"])
             return f'<meta http-equiv="refresh" content="0; url={url}">'  # Redirect
-        @self.app.route('/downloads/qcity/<device>')
+
+        @self.app.route("/downloads/qcity/<device>")
         def download_qcity(device):
             links = {
-                'windows': 'https://downloads.qmoi.app/qcity/windows-installer.exe',
-                'mac': 'https://downloads.qmoi.app/qcity/mac-installer.dmg',
-                'linux': 'https://downloads.qmoi.app/qcity/linux-installer.sh',
-                'android': 'https://downloads.qmoi.app/qcity/android.apk',
-                'ios': 'https://downloads.qmoi.app/qcity/ios.ipa',
+                "windows": "https://downloads.qmoi.app/qcity/windows-installer.exe",
+                "mac": "https://downloads.qmoi.app/qcity/mac-installer.dmg",
+                "linux": "https://downloads.qmoi.app/qcity/linux-installer.sh",
+                "android": "https://downloads.qmoi.app/qcity/android.apk",
+                "ios": "https://downloads.qmoi.app/qcity/ios.ipa",
             }
-            url = links.get(device, links['windows'])
+            url = links.get(device, links["windows"])
             return f'<meta http-equiv="refresh" content="0; url={url}">'  # Redirect
-        @self.app.route('/downloads/qi/<app>/<device>')
+
+        @self.app.route("/downloads/qi/<app>/<device>")
         def qi_download(app, device):
             # Simulate QI download automation: detect features, device, and show install tips
-            features = ['Cloud sync', 'Notifications', 'Auto-update', 'Real-time monitoring']
-            url = f'https://downloads.qmoi.app/qi/{app}/{device}-installer'
-            user_agent = request.headers.get('User-Agent', '')
-            detected_device = 'windows' if 'Windows' in user_agent else 'mac' if 'Mac' in user_agent else device
+            features = [
+                "Cloud sync",
+                "Notifications",
+                "Auto-update",
+                "Real-time monitoring",
+            ]
+            url = f"https://downloads.qmoi.app/qi/{app}/{device}-installer"
+            user_agent = request.headers.get("User-Agent", "")
+            detected_device = (
+                "windows"
+                if "Windows" in user_agent
+                else "mac" if "Mac" in user_agent else device
+            )
             install_tips = f"<ul><li>After download, run the installer and follow on-screen instructions.</li><li>Detected device: {detected_device.title()}</li></ul>"
-            feature_select = '<b>Select features:</b><br>' + ''.join([f'<label><input type=\'checkbox\' checked> {f}</label><br>' for f in features])
-            return f'<h2>QI Download for {app.title()} ({device.title()})</h2>{feature_select}<a href=\"{url}\" class=\"btn\">Download Now</a>{install_tips}'
+            feature_select = "<b>Select features:</b><br>" + "".join(
+                [
+                    f"<label><input type='checkbox' checked> {f}</label><br>"
+                    for f in features
+                ]
+            )
+            return f'<h2>QI Download for {app.title()} ({device.title()})</h2>{feature_select}<a href="{url}" class="btn">Download Now</a>{install_tips}'
+
         # Advanced controls endpoints
-        @self.app.route('/api/job/retry', methods=['POST'])
+        @self.app.route("/api/job/retry", methods=["POST"])
         def retry_job():
             # Placeholder: Simulate job retry
-            job = self.automation_stats['run_history'][-1] if self.automation_stats['run_history'] else None
+            job = (
+                self.automation_stats["run_history"][-1]
+                if self.automation_stats["run_history"]
+                else None
+            )
             if job:
-                self.automation_stats['run_history'].append({
-                    'step': job['step'] + ' (retry)',
-                    'status': 'success',
-                    'timestamp': datetime.now().isoformat()
-                })
-                self.socketio.emit('status_update', self.automation_stats)
-                return {'status': 'success', 'message': 'Job retried successfully'}
-            return {'status': 'error', 'message': 'No job to retry'}, 400
-        @self.app.route('/api/job/details/<int:index>')
+                self.automation_stats["run_history"].append(
+                    {
+                        "step": job["step"] + " (retry)",
+                        "status": "success",
+                        "timestamp": datetime.now().isoformat(),
+                    }
+                )
+                self.socketio.emit("status_update", self.automation_stats)
+                return {"status": "success", "message": "Job retried successfully"}
+            return {"status": "error", "message": "No job to retry"}, 400
+
+        @self.app.route("/api/job/details/<int:index>")
         def job_details(index):
             # Return job details for modal
-            if 0 <= index < len(self.automation_stats['run_history']):
-                return self.automation_stats['run_history'][index]
-            return {'error': 'Job not found'}, 404
-        @self.app.route('/api/platform-stats')
+            if 0 <= index < len(self.automation_stats["run_history"]):
+                return self.automation_stats["run_history"][index]
+            return {"error": "Job not found"}, 404
+
+        @self.app.route("/api/platform-stats")
         def platform_stats():
             now = datetime.now().isoformat()
             return {
-                'gitlab': {'icon': '🦊', 'name': 'GitLab', 'status': 'connected', 'last_sync': now},
-                'github': {'icon': '🐙', 'name': 'GitHub', 'status': 'connected', 'last_sync': now},
-                'vercel': {'icon': '▲', 'name': 'Vercel', 'status': 'connected', 'last_sync': now},
-                'gitpod': {'icon': '🟧', 'name': 'Gitpod', 'status': 'connected', 'last_sync': now},
-                'netlify': {'icon': '🌱', 'name': 'Netlify', 'status': 'connected', 'last_sync': now},
-                'huggingface': {'icon': '🤗', 'name': 'HuggingFace', 'status': 'connected', 'last_sync': now},
-                'quantum': {'icon': '⚛️', 'name': 'Quantum', 'status': 'connected', 'last_sync': now},
-                'village': {'icon': '🏘️', 'name': 'Village', 'status': 'connected', 'last_sync': now},
-                'azure': {'icon': '☁️', 'name': 'Azure', 'status': 'connected', 'last_sync': now},
-                'aws': {'icon': '🟨', 'name': 'AWS', 'status': 'connected', 'last_sync': now},
-                'gcp': {'icon': '🟥', 'name': 'GCP', 'status': 'connected', 'last_sync': now},
-                'digitalocean': {'icon': '💧', 'name': 'DigitalOcean', 'status': 'connected', 'last_sync': now}
+                "gitlab": {
+                    "icon": "🦊",
+                    "name": "GitLab",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "github": {
+                    "icon": "🐙",
+                    "name": "GitHub",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "vercel": {
+                    "icon": "▲",
+                    "name": "Vercel",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "gitpod": {
+                    "icon": "🟧",
+                    "name": "Gitpod",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "netlify": {
+                    "icon": "🌱",
+                    "name": "Netlify",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "huggingface": {
+                    "icon": "🤗",
+                    "name": "HuggingFace",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "quantum": {
+                    "icon": "⚛️",
+                    "name": "Quantum",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "village": {
+                    "icon": "🏘️",
+                    "name": "Village",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "azure": {
+                    "icon": "☁️",
+                    "name": "Azure",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "aws": {
+                    "icon": "🟨",
+                    "name": "AWS",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "gcp": {
+                    "icon": "🟥",
+                    "name": "GCP",
+                    "status": "connected",
+                    "last_sync": now,
+                },
+                "digitalocean": {
+                    "icon": "💧",
+                    "name": "DigitalOcean",
+                    "status": "connected",
+                    "last_sync": now,
+                },
             }
-        @self.app.route('/api/health-logs')
+
+        @self.app.route("/api/health-logs")
         def get_health_logs():
             if not self.master_mode:
-                return {'error': 'Unauthorized'}, 403
-            return {'logs': self.health_logs[-20:]}
-        @self.app.route('/api/autotest-logs')
+                return {"error": "Unauthorized"}, 403
+            return {"logs": self.health_logs[-20:]}
+
+        @self.app.route("/api/autotest-logs")
         def get_autotest_logs():
             if not self.master_mode:
-                return {'error': 'Unauthorized'}, 403
-            return {'logs': self.autotest_logs[-20:]}
-        @self.app.route('/api/app-update-status')
+                return {"error": "Unauthorized"}, 403
+            return {"logs": self.autotest_logs[-20:]}
+
+        @self.app.route("/api/app-update-status")
         def get_app_update_status():
             return self.app_update_status
-        @self.app.route('/api/trigger-app-update/<app>')
+
+        @self.app.route("/api/trigger-app-update/<app>")
         def trigger_app_update(app):
-            self.app_update_status[app] = 'Updating...'
-            self.socketio.emit('app_update', {'app': app, 'status': 'Updating...'})
+            self.app_update_status[app] = "Updating..."
+            self.socketio.emit("app_update", {"app": app, "status": "Updating..."})
             import threading
+
             def do_update():
                 import time
+
                 time.sleep(2)
-                self.app_update_status[app] = 'Up to date'
-                self.socketio.emit('app_update', {'app': app, 'status': 'Up to date'})
+                self.app_update_status[app] = "Up to date"
+                self.socketio.emit("app_update", {"app": app, "status": "Up to date"})
+
             threading.Thread(target=do_update, daemon=True).start()
-            return {'status': 'started'}
-        @self.app.route('/api/preautotest')
+            return {"status": "started"}
+
+        @self.app.route("/api/preautotest")
         def api_preautotest():
             # Return real pre-autotest results and history
             try:
-                with open('logs/preautotest_results.json', 'r', encoding='utf-8') as f:
+                with open("logs/preautotest_results.json", "r", encoding="utf-8") as f:
                     data = json.load(f)
                 return jsonify(data)
             except Exception as e:
-                return jsonify({'results': [], 'history': [], 'error': str(e)})
-        @self.app.route('/api/notifications')
+                return jsonify({"results": [], "history": [], "error": str(e)})
+
+        @self.app.route("/api/notifications")
         def api_notifications():
             try:
-                with open('logs/notification_status.json', 'r', encoding='utf-8') as f:
+                with open("logs/notification_status.json", "r", encoding="utf-8") as f:
                     data = json.load(f)
                 return jsonify(data)
             except Exception as e:
-                return jsonify({'notifications': [], 'error': str(e)})
-        @self.app.route('/api/doc-history')
+                return jsonify({"notifications": [], "error": str(e)})
+
+        @self.app.route("/api/doc-history")
         def api_doc_history():
             try:
-                with open('ALLMDFILESREFS.md', 'r', encoding='utf-8') as f:
+                with open("ALLMDFILESREFS.md", "r", encoding="utf-8") as f:
                     doc_history = f.read()
-                return jsonify({'doc_history': doc_history})
+                return jsonify({"doc_history": doc_history})
             except Exception as e:
-                return jsonify({'doc_history': '', 'error': str(e)})
-        @self.app.route('/api/override-platform', methods=['POST'])
+                return jsonify({"doc_history": "", "error": str(e)})
+
+        @self.app.route("/api/override-platform", methods=["POST"])
         def api_override_platform():
             # Master/manual override for failed platforms/pre-autotests
             data = request.json
-            platform = data.get('platform')
+            platform = data.get("platform")
             # Log override and update status (pseudo)
             # ... update logs/preautotest_results.json ...
-            self.socketio.emit('override', {'platform': platform, 'status': 'overridden'})
-            return jsonify({'result': 'success', 'platform': platform})
-            
+            self.socketio.emit(
+                "override", {"platform": platform, "status": "overridden"}
+            )
+            return jsonify({"result": "success", "platform": platform})
+
     def setup_socket_events(self):
-        @self.socketio.on('connect')
+        @self.socketio.on("connect")
         def handle_connect():
-            safe_log('info', "Client connected to dashboard")
-            emit('status_update', self.automation_stats)
-            
-        @self.socketio.on('request_update')
+            safe_log("info", "Client connected to dashboard")
+            emit("status_update", self.automation_stats)
+
+        @self.socketio.on("request_update")
         def handle_update_request():
-            emit('status_update', self.automation_stats)
-            
+            emit("status_update", self.automation_stats)
+
     def setup_file_watcher(self):
         """Setup file system watcher for automatic triggers"""
+
         class QMOIFileHandler(FileSystemEventHandler):
             def __init__(self, dashboard):
                 self.dashboard = dashboard
-                
+
             def on_modified(self, event):
                 if not event.is_directory:
-                    if event.src_path.endswith(('.py', '.js', '.ts', '.tsx')):
-                        safe_log('info', f"File modified: {event.src_path}")
+                    if event.src_path.endswith((".py", ".js", ".ts", ".tsx")):
+                        safe_log("info", f"File modified: {event.src_path}")
                         self.dashboard.auto_trigger_gitlab_ci()
-                        
+
         self.file_handler = QMOIFileHandler(self)
         self.observer = Observer()
-        self.observer.schedule(self.file_handler, '.', recursive=True)
+        self.observer.schedule(self.file_handler, ".", recursive=True)
         self.observer.start()
-        
+
     def auto_trigger_gitlab_ci(self):
         """Automatically trigger GitLab CI when files change"""
         try:
-            safe_log('info', "Auto-triggering GitLab CI due to file changes")
+            safe_log("info", "Auto-triggering GitLab CI due to file changes")
             self.trigger_gitlab_ci_automation()
         except Exception as e:
-            safe_log('error', f"Error in auto-trigger: {e}")
-            
+            safe_log("error", f"Error in auto-trigger: {e}")
+
     def trigger_gitlab_ci_automation(self):
         """Trigger comprehensive GitLab CI/CD automation"""
         try:
             self.gitlab_ci_running = True
-            self.automation_stats['current_status'] = 'running'
-            self.automation_stats['gitlab_ci_triggers'] += 1
-            self.automation_stats['last_trigger'] = datetime.now().isoformat()
-            
-            safe_log('info', "Starting GitLab CI/CD automation")
-            
+            self.automation_stats["current_status"] = "running"
+            self.automation_stats["gitlab_ci_triggers"] += 1
+            self.automation_stats["last_trigger"] = datetime.now().isoformat()
+
+            safe_log("info", "Starting GitLab CI/CD automation")
+
             # Run comprehensive automation
             self.run_comprehensive_automation()
-            
+
             # Update stats
-            self.automation_stats['automation_runs'] += 1
-            self.automation_stats['current_status'] = 'completed'
-            
+            self.automation_stats["automation_runs"] += 1
+            self.automation_stats["current_status"] = "completed"
+
             # Emit real-time updates
-            self.socketio.emit('automation_update', self.automation_stats)
-            
-            safe_log('info', "GitLab CI/CD automation completed successfully")
-            
+            self.socketio.emit("automation_update", self.automation_stats)
+
+            safe_log("info", "GitLab CI/CD automation completed successfully")
+
         except Exception as e:
-            safe_log('error', f"Error in GitLab CI automation: {e}")
-            self.automation_stats['current_status'] = 'failed'
-            self.automation_stats['failed_deployments'] += 1
-            self.socketio.emit('automation_error', {'error': str(e)})
+            safe_log("error", f"Error in GitLab CI automation: {e}")
+            self.automation_stats["current_status"] = "failed"
+            self.automation_stats["failed_deployments"] += 1
+            self.socketio.emit("automation_error", {"error": str(e)})
         finally:
             self.gitlab_ci_running = False
-            
+
     def run_comprehensive_automation(self):
         """Run comprehensive QMOI automation (enhanced: always fast, always successful)"""
-        import time, psutil
+        import time
+
+        try:
+            import psutil
+        except Exception:
+            psutil = None
+
         automation_steps = [
-            ('Setup and dependencies'),
-            ('Running tests'),
-            ('Building project'),
-            ('Pushing to GitLab'),
-            ('Deploying to GitLab'),
-            ('Health checks'),
-            ('Sending notifications')
+            "Setup and dependencies",
+            "Running tests",
+            "Building project",
+            "Pushing to GitLab",
+            "Deploying to GitLab",
+            "Health checks",
+            "Sending notifications",
         ]
+
         for description in automation_steps:
             try:
-                safe_log('info', f"Running: {description}")
+                safe_log("info", f"Running: {description}")
                 time.sleep(0.5)
-                safe_log('info', f"✅ {description} completed successfully (simulated)")
-                    self.automation_stats['successful_deployments'] += 1
+                # Mark success
+                self.automation_stats["successful_deployments"] += 1
                 # Add to run history
-                self.automation_stats['run_history'].append({
-                    'step': description,
-                    'status': 'success',
-                    'timestamp': datetime.now().isoformat()
-                })
+                self.automation_stats["run_history"].append(
+                    {
+                        "step": description,
+                        "status": "success",
+                        "timestamp": datetime.now().isoformat(),
+                    }
+                )
                 # Simulate job queue
-                self.automation_stats['job_queue'] = [s for s in automation_steps if s != description]
-                # Update resource usage
-                self.automation_stats['resource_usage'] = {
-                    'cpu': psutil.cpu_percent(),
-                    'memory': psutil.virtual_memory().percent
-                }
+                self.automation_stats["job_queue"] = [
+                    s for s in automation_steps if s != description
+                ]
+                # Update resource usage if psutil is available
+                if psutil:
+                    self.automation_stats["resource_usage"] = {
+                        "cpu": psutil.cpu_percent(),
+                        "memory": psutil.virtual_memory().percent,
+                    }
+                else:
+                    self.automation_stats["resource_usage"] = {"cpu": 0, "memory": 0}
                 # Emit progress update
-                self.socketio.emit('automation_progress', {
-                    'step': description,
-                    'status': 'success',
-                    'output': f'{description} completed successfully (simulated)'
-                })
+                self.socketio.emit(
+                    "automation_progress",
+                    {
+                        "step": description,
+                        "status": "success",
+                        "output": f"{description} completed successfully (simulated)",
+                    },
+                )
                 # Emit stats update
-                self.socketio.emit('status_update', self.automation_stats)
+                self.socketio.emit("status_update", self.automation_stats)
             except Exception as e:
-                safe_log('error', f"Error running {description}: {e}")
-                self.automation_stats['failed_deployments'] += 1
-                
+                safe_log("error", f"Error running {description}: {e}")
+                self.automation_stats["failed_deployments"] += 1
+
     def start_scheduled_tasks(self):
         """Start scheduled automation tasks"""
         # Run automation every 30 minutes
         schedule.every(30).minutes.do(self.trigger_gitlab_ci_automation)
-        
+
         # Health check every 5 minutes
         schedule.every(5).minutes.do(self.run_health_check)
-        
+
         # Auto-evolution every hour
         schedule.every().hour.do(self.run_auto_evolution)
-        
+
         def run_scheduler():
             while self.running:
                 schedule.run_pending()
                 time.sleep(1)
-                
+
         scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
         scheduler_thread.start()
-        
+
     def run_health_check(self):
         """Run comprehensive health check"""
         try:
-            safe_log('info', "Running health check")
-            result = subprocess.run('npm run qmoi:health', shell=True, capture_output=True, text=True)
-            
+            safe_log("info", "Running health check")
+            result = subprocess.run(
+                "npm run qmoi:health", shell=True, capture_output=True, text=True
+            )
+
             health_status = {
-                'timestamp': datetime.now().isoformat(),
-                'status': 'healthy' if result.returncode == 0 else 'unhealthy',
-                'output': result.stdout
+                "timestamp": datetime.now().isoformat(),
+                "status": "healthy" if result.returncode == 0 else "unhealthy",
+                "output": result.stdout,
             }
-            
-            self.socketio.emit('health_update', health_status)
-            
+
+            self.socketio.emit("health_update", health_status)
+
         except Exception as e:
-            safe_log('error', f"Error in health check: {e}")
-            
+            safe_log("error", f"Error in health check: {e}")
+
     def run_auto_evolution(self):
         """Run auto-evolution for continuous improvement"""
         try:
-            safe_log('info', "Running auto-evolution")
-            result = subprocess.run('python scripts/qmoi-auto-evolution.py', shell=True, capture_output=True, text=True)
-            
+            safe_log("info", "Running auto-evolution")
+            result = subprocess.run(
+                "python scripts/qmoi-auto-evolution.py",
+                shell=True,
+                capture_output=True,
+                text=True,
+            )
+
             evolution_status = {
-                'timestamp': datetime.now().isoformat(),
-                'status': 'completed' if result.returncode == 0 else 'failed',
-                'suggestions': result.stdout
+                "timestamp": datetime.now().isoformat(),
+                "status": "completed" if result.returncode == 0 else "failed",
+                "suggestions": result.stdout,
             }
-            
-            self.socketio.emit('evolution_update', evolution_status)
-            
+
+            self.socketio.emit("evolution_update", evolution_status)
+
         except Exception as e:
-            safe_log('error', f"Error in auto-evolution: {e}")
-            
+            safe_log("error", f"Error in auto-evolution: {e}")
+
     def setup_health_autotest_scheduler(self):
         import threading, time
+
         def health_autotest_loop():
             while True:
                 # Simulate health check
-                health_result = {'timestamp': datetime.now().isoformat(), 'status': 'healthy', 'details': 'All systems nominal.'}
+                health_result = {
+                    "timestamp": datetime.now().isoformat(),
+                    "status": "healthy",
+                    "details": "All systems nominal.",
+                }
                 self.health_logs.append(health_result)
                 # Simulate autotest
-                autotest_result = {'timestamp': datetime.now().isoformat(), 'status': 'passed', 'details': 'All tests passed.'}
+                autotest_result = {
+                    "timestamp": datetime.now().isoformat(),
+                    "status": "passed",
+                    "details": "All tests passed.",
+                }
                 self.autotest_logs.append(autotest_result)
                 # Log to QCity (simulate)
-                with open('logs/qcity-health-autotest.log', 'a', encoding='utf-8') as f:
+                with open("logs/qcity-health-autotest.log", "a", encoding="utf-8") as f:
                     f.write(f"HEALTH: {health_result}\nAUTO: {autotest_result}\n")
                 # Emit real-time update
-                self.socketio.emit('health_update', health_result)
-                self.socketio.emit('autotest_update', autotest_result)
+                self.socketio.emit("health_update", health_result)
+                self.socketio.emit("autotest_update", autotest_result)
                 time.sleep(30)  # Run every 30 seconds
+
         t = threading.Thread(target=health_autotest_loop, daemon=True)
         t.start()
-            
+
     def start(self):
         """Start the enhanced dashboard"""
         try:
             # Create logs directory
-            os.makedirs('logs', exist_ok=True)
-            
+            os.makedirs("logs", exist_ok=True)
+
             # Create templates directory
-            os.makedirs('templates', exist_ok=True)
-            
+            os.makedirs("templates", exist_ok=True)
+
             # Create dashboard template
             self.create_dashboard_template()
-            
+
             # Start scheduled tasks
             self.start_scheduled_tasks()
-            
+
             # Start the Flask app
             self.running = True
-            safe_log('info', f"Dashboard server started on http://localhost:{self.port}")
-            
+            safe_log(
+                "info", f"Dashboard server started on http://localhost:{self.port}"
+            )
+
             # Open dashboard in browser
-            webbrowser.open(f'http://localhost:{self.port}')
-            
+            webbrowser.open(f"http://localhost:{self.port}")
+
             # Run the server
-            self.socketio.run(self.app, host='0.0.0.0', port=self.port, debug=False)
-            
+            self.socketio.run(self.app, host="0.0.0.0", port=self.port, debug=False)
+
         except Exception as e:
             try:
-                safe_log('error', f"Error starting dashboard: {e}")
+                safe_log("error", f"Error starting dashboard: {e}")
             except UnicodeEncodeError:
-                safe_log('error', f"Error starting dashboard: {str(e).encode('ascii', errors='replace').decode('ascii')}")
+                safe_log(
+                    "error",
+                    f"Error starting dashboard: {str(e).encode('ascii', errors='replace').decode('ascii')}",
+                )
             sys.exit(1)
-            
+
     def create_dashboard_template(self):
         """Create the dashboard HTML template"""
         template_content = """
@@ -1046,29 +1203,35 @@ class QMOIDashboardEnhance:
 </body>
 </html>
         """
-        
-        with open('templates/dashboard.html', 'w') as f:
+
+        with open("templates/dashboard.html", "w") as f:
             f.write(template_content)
-            
-        safe_log('info', "Dashboard template created successfully")
+
+        safe_log("info", "Dashboard template created successfully")
 
     def push_update_history(self):
         try:
-            with open('ALLMDFILESREFS.md', 'r', encoding='utf-8') as f:
+            with open("ALLMDFILESREFS.md", "r", encoding="utf-8") as f:
                 lines = f.readlines()
-            start = next(i for i, l in enumerate(lines) if '| Timestamp (UTC)' in l)
-            end = next(i for i, l in enumerate(lines[start+1:], start+1) if not l.strip() or l.startswith('---'))
+            start = next(i for i, l in enumerate(lines) if "| Timestamp (UTC)" in l)
+            end = next(
+                i
+                for i, l in enumerate(lines[start + 1 :], start + 1)
+                if not l.strip() or l.startswith("---")
+            )
             table = lines[start:end]
-            self.socketio.emit('update_history', {'table': table})
+            self.socketio.emit("update_history", {"table": table})
         except Exception as e:
-            self.socketio.emit('update_history', {'error': str(e)})
+            self.socketio.emit("update_history", {"error": str(e)})
+
     def push_app_version(self):
         try:
-            with open('version.txt', 'r', encoding='utf-8') as f:
+            with open("version.txt", "r", encoding="utf-8") as f:
                 version = f.read().strip()
-            self.socketio.emit('app_version', {'version': version})
+            self.socketio.emit("app_version", {"version": version})
         except Exception as e:
-            self.socketio.emit('app_version', {'error': str(e)})
+            self.socketio.emit("app_version", {"error": str(e)})
+
 
 def main():
     """Main function to start the enhanced dashboard"""
@@ -1076,10 +1239,11 @@ def main():
         dashboard = QMOIDashboardEnhance()
         dashboard.start()
     except KeyboardInterrupt:
-        safe_log('info', "Dashboard stopped by user")
+        safe_log("info", "Dashboard stopped by user")
     except Exception as e:
-        safe_log('error', f"Error in main: {e}")
+        safe_log("error", f"Error in main: {e}")
         sys.exit(1)
 
+
 if __name__ == "__main__":
-    main() 
+    main()
