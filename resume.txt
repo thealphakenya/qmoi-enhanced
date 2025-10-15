@@ -1,3 +1,97 @@
+QMOI-ENHANCED - RESUME
+
+Purpose
+-------
+This file summarizes the current workspace state, what automated tooling is available, and step-by-step instructions for a human or an automated agent to continue work in another Codespace without losing progress.
+
+Quick status
+------------
+- Branch: autosync/enhancements
+- Last automated commits: multiple parser-safe fixes, API.md regeneration, model-card generation.
+- Backup/Push tooling: scripts/push_all.py and scripts/push_all.sh (create backups, commit and push numbered commits).
+
+How to preserve and transfer work (non-technical)
+-----------------------------------------------
+1. Save your work in this Codespace by running the simple backup-and-push script:
+
+   - Open a terminal in this Codespace and run:
+
+     ```bash
+     bash scripts/push_all.sh --message "manual save"
+     ```
+
+   - This will:
+     - Create a timestamped backup under `.push_backups/` (unless you pass `--skip-backup`).
+     - Stage all changes, commit them with an automatic incremented commit message like `push 1: manual save` and push to the current GitHub branch.
+
+2. Confirm on GitHub that your branch `autosync/enhancements` has the latest commit.
+
+3. Open a new Codespace or machine, clone the repository, and checkout branch `autosync/enhancements`:
+
+   ```bash
+   git clone https://github.com/thealphakenya/qmoi-enhanced.git
+   cd qmoi-enhanced
+   git checkout autosync/enhancements
+   ```
+
+4. If you need to restore a backup from `.push_backups/` (rare): download the backup tarball from the repository's branch or ask the previous Codespace user to provide the file.
+
+
+How to use the automated tools (for agents/non-technical)
+--------------------------------------------------------
+- `scripts/push_all.sh [--skip-backup] [--force] [--message "summary"]`
+  - Use this to reliably snapshot, commit and push local changes. Each successful push is numbered (push 1, push 2...).
+
+- `tools/update_model_card_fixed.py --metadata <path> --out QMOI_MODEL_CARD.md`
+  - Use to update the model card from autodev metadata.
+
+- `tools/generate_api_md.py --out API.md`
+  - Regenerates `API.md` by scanning code for API endpoints.
+
+
+Troubleshooting
+---------------
+- If `git push` fails due to conflicts: pull remote changes first (`git pull --rebase origin autosync/enhancements`) then re-run the push script.
+- If a commit fails, the push script will attempt a soft reset to avoid leaving you with unpushed commits; inspect `git status` and re-run push script.
+- If you see syntax errors in Python files, run `python -m py_compile <file>` to check; the automation uses conservative edits to avoid breaking the repo.
+
+
+Guidance for maintainers (technical)
+-----------------------------------
+1. Keep `.auto-sync-ignore` up to date with vendor directories and problematic files (null-bytes, huge archives) to avoid noisy auto-fixes.
+2. To automatically run the model-card updater after a build, add a CI step that runs:
+
+   ```bash
+   python tools/update_model_card_fixed.py --metadata qvillage/registry/qmoi/<version>/metadata.json --out QMOI_MODEL_CARD.md
+   git add QMOI_MODEL_CARD.md && git commit -m "chore: update model card for <version>" && git push
+   ```
+
+3. For JS/TS autofix: install Node 18+, then run ESLint/Prettier in a scoped manner and commit changes with the push script.
+
+
+Next steps (recommended)
+------------------------
+1. Run `bash scripts/push_all.sh --message "auto-save before next automated edits"` to snapshot and push the current workspace.
+2. Run tests (enable `RUN_TESTS=true` in automation) and triage failures in small batches.
+3. Wire `tools/update_model_card_fixed.py` into the autodev CI pipeline.
+
+Enhanced TODO tracking
+----------------------
+The repository now tracks local helper todo items in `resume.txt` to make handoffs easier. Each item has: status [not-started|in-progress|completed], owner (optional), and a short description.
+
+- [in-progress] Run push script to push all changes — use `bash scripts/push_all.sh --message "merge resume and add push scripts"` (this will create a backup in `.push_backups/`).
+- [not-started] Re-run scoped `py_compile` and `black` on tracked Python files (exclude `.auto-sync-ignore`) and list failing files.
+- [not-started] Fix top 1-3 non-vendored failing Python files (atomic edits, commit/push per fix).
+- [not-started] Scan for JS/TS files and run ESLint/Prettier in a scoped manner, commit fixes with push script.
+- [not-started] Enable `RUN_TESTS=true` and run CI tests; triage failures in small batches.
+
+Merged txr notes
+----------------
+The separate `resume.txr` has been merged into this file and will be deleted. It contained the same instructions in a machine-friendly format and a short key/notes section. If you need the txr format again I'll recreate it.
+
+Contact & notes
+---------------
+If anything goes wrong, check `.push_backups/` for recent snapshots and the git history on `autosync/enhancements`.
 Resume - QMOI Enhanced Work & Roadmap
 
 Date: 2025-10-15
@@ -129,3 +223,142 @@ Troubleshooting tips
 - If Python scripts fail with "null bytes" or syntax errors, those files are likely corrupted; ask me to fix the next batch of failures.
 
 -- End of resume
+
+
+# Merged resume.txr content:
+QMOI-ENHANCED - RESUME
+
+Purpose
+-------
+This file summarizes the current workspace state, what automated tooling is available, and step-by-step instructions for a human or an automated agent to continue work in another Codespace without losing progress.
+
+Quick status
+------------
+- Branch: autosync/enhancements
+- Last automated commits: multiple parser-safe fixes, API.md regeneration, model-card generation.
+- Backup/Push tooling: scripts/push_all.py and scripts/push_all.sh (create backups, commit and push numbered commits).
+
+How to preserve and transfer work (non-technical)
+-----------------------------------------------
+1. Save your work in this Codespace by running the simple backup-and-push script:
+
+   - Open a terminal in this Codespace and run:
+
+     ```bash
+     bash scripts/push_all.sh --message "manual save"
+     ```
+
+   - This will:
+     - Create a timestamped backup under `.push_backups/` (unless you pass `--skip-backup`).
+     - Stage all changes, commit them with an automatic incremented commit message like `push 1: manual save` and push to the current GitHub branch.
+
+2. Confirm on GitHub that your branch `autosync/enhancements` has the latest commit.
+
+3. Open a new Codespace or machine, clone the repository, and checkout branch `autosync/enhancements`:
+
+   ```bash
+   git clone https://github.com/thealphakenya/qmoi-enhanced.git
+   cd qmoi-enhanced
+   git checkout autosync/enhancements
+   ```
+
+4. If you need to restore a backup from `.push_backups/` (rare): download the backup tarball from the repository's branch or ask the previous Codespace user to provide the file.
+
+
+How to use the automated tools (for agents/non-technical)
+--------------------------------------------------------
+- `scripts/push_all.sh [--skip-backup] [--force] [--message "summary"]`
+  - Use this to reliably snapshot, commit and push local changes. Each successful push is numbered (push 1, push 2...).
+
+- `tools/update_model_card_fixed.py --metadata <path> --out QMOI_MODEL_CARD.md`
+  - Use to update the model card from autodev metadata.
+
+- `tools/generate_api_md.py --out API.md`
+  - Regenerates `API.md` by scanning code for API endpoints.
+
+
+Troubleshooting
+---------------
+- If `git push` fails due to conflicts: pull remote changes first (`git pull --rebase origin autosync/enhancements`) then re-run the push script.
+- If a commit fails, the push script will attempt a soft reset to avoid leaving you with unpushed commits; inspect `git status` and re-run push script.
+- If you see syntax errors in Python files, run `python -m py_compile <file>` to check; the automation uses conservative edits to avoid breaking the repo.
+
+
+Guidance for maintainers (technical)
+-----------------------------------
+1. Keep `.auto-sync-ignore` up to date with vendor directories and problematic files (null-bytes, huge archives) to avoid noisy auto-fixes.
+2. To automatically run the model-card updater after a build, add a CI step that runs:
+
+   ```bash
+   python tools/update_model_card_fixed.py --metadata qvillage/registry/qmoi/<version>/metadata.json --out QMOI_MODEL_CARD.md
+   git add QMOI_MODEL_CARD.md && git commit -m "chore: update model card for <version>" && git push
+   ```
+
+3. For JS/TS autofix: install Node 18+, then run ESLint/Prettier in a scoped manner and commit changes with the push script.
+
+
+Next steps (recommended)
+------------------------
+- Run `bash scripts/push_all.sh --message "auto-save before next automated edits"` to snapshot and push the current workspace.
+- Run tests (enable `RUN_TESTS=true` in automation) and triage failures in small batches.
+- Wire `tools/update_model_card_fixed.py` into the autodev CI pipeline.
+
+Contact & notes
+---------------
+If anything goes wrong, check `.push_backups/` for recent snapshots and the git history on `autosync/enhancements`.
+Resume - QMOI Enhanced Work & Roadmap
+
+Date: 2025-10-15
+Branch: autosync/enhancements
+
+Summary of recent work
+- Implemented scoped auto-fix automation and safety controls (.auto-sync-ignore, RUN_TESTS flag, AUTO_FIX_PATHS).
+- Replaced several corrupted or parse-failing scripts with parser-safe, minimal implementations:
+  - scripts/qmoi-git-auto.py (git automation helper)
+  - scripts/qmoi-real-time-logger.py (minimal JSONL + SQLite logger)
+  - scripts/qmoi-dashboard-enhance.py (indentation and robustness fixes)
+  - scripts/qmoi_dashboard.py (minimal Flask dashboard stub)
+- Manually remediated and reformatted `qmoi-enhanced/scripts/models/qmoi_autodev.py` to fix indentation and syntax errors.
+- Updated `.auto-sync-ignore` to exclude vendored/non-repo files (e.g., Python-3.12.3/) and problematic binary files.
+- Created scoped auto-sync commits on `autosync/enhancements` for each successful fix (commits include scoped formatting and pushes to origin).
+
+Immediate next steps
+1. Re-run a scoped py_compile/Black scan across tracked Python files (excluding `.auto-sync-ignore`) to produce an updated list of failing files.
+2. Fix remaining non-vendored Python files in small batches (atomic replacement or localized edits): compile → format → commit/push.
+3. After Python cleanup, run ESLint/Prettier on selected JS/TS files (scoped), commit fixes.
+4. Enable RUN_TESTS=true and run the test suite; triage failing tests and fix iteratively.
+5. Prepare a final PR from `autosync/enhancements` to `main` once stable.
+
+-- End of resume
+QMOI-ENHANCED RESUME (TXR)
+
+branch: autosync/enhancements
+backup_tool: scripts/push_all.py and scripts/push_all.sh
+backup_location: .push_backups/
+
+instructions:
+  - to save and push: bash scripts/push_all.sh --message "manual save"
+  - to skip backup: bash scripts/push_all.sh --skip-backup --message "manual save"
+  - to force push: bash scripts/push_all.sh --force --message "emergency"
+
+next_steps:
+  - run model card update: python tools/update_model_card_fixed.py --metadata qvillage/registry/qmoi/v0.0.1/metadata.json --out QMOI_MODEL_CARD.md
+  - run api regen: python tools/generate_api_md.py --out API.md
+
+notes:
+  - Each successful push increments a counter recorded at .push_backups/last_push_number
+  - If push fails, the script will attempt a soft reset to avoid orphaned commits
+Resume - QMOI Enhanced Work & Roadmap (txr)
+
+Date: 2025-10-15
+Branch: autosync/enhancements
+
+This is a typo-safe copy of resume.txt for tools that might expect .txr.
+
+Key commands:
+- Create a backup, commit and push changes:
+  ./scripts/push_all.sh
+- Generate model card from metadata:
+  python tools/update_model_card_fixed.py --metadata qvillage/registry/qmoi/v0.0.1/metadata.json --out QMOI_MODEL_CARD.md
+
+If you need hand-holding, run the push script first, then ask me to resume the py_compile scan.
