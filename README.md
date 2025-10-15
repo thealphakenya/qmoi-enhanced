@@ -179,3 +179,5 @@ Notes and limitations
 - Add `AUTOMERGE_TOKEN` in repository Secrets if you want the workflow to use a token with broader rights than the `GITHUB_TOKEN`.
 
 If you need a README merge that preserves more specific sections from the previous versions, tell me which parts to keep and I will integrate them.
+
+<!-- Automated note: small edit added for PR demonstration -->
