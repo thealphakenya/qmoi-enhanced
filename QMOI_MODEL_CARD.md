@@ -1,7 +1,7 @@
 # QMOI Model Card
 
 Model: Qmoi
-Version: v0.0.0 (auto-updated)
+Version: v0.0.1
 
 ## Overview
 
@@ -26,8 +26,13 @@ Qmoi is a multimodal instruction-tuned generative model focusing on reasoning, r
 
 ## Evaluation
 
-- Metrics (examples): MMLU, GSM8K, HumanEval, latency p50/p95.
-
+```
+{
+  "mmlu": 52.3,
+  "gsm8k": 21.4,
+  "human_eval": 12.0
+}
+```
 ## Safety
 
 - Safety classifiers, PII redaction, red-team tests, and governance controls.
@@ -54,3 +59,8 @@ Maintainers: TODO
 ---
 
 _This model card is intended to be machine-updateable via the autodev pipeline._
+
+## Changelog
+
+Initial auto-release for v0.0.1
+- Baseline metrics added
