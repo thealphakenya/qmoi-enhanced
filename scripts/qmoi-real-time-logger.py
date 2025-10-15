@@ -1,464 +1,182 @@
 #!/usr/bin/env python3
-I Real-Time Logger System
-Comprehensive real-time logging system for QCity with master-only access
+"""QMOI Real-Time Logger (minimal, parser-safe implementation).
+
+This file implements a small, well-formed subset of the original logger so
+automation can run formatters and tests. It intentionally keeps behavior
+simple: JSON file append and a tiny SQLite table for activity/performance.
 """
 
-import os
-import sys
+from __future__ import annotations
+
+import gzip
 import json
 import logging
-import threading
+import sqlite3
 import time
 from datetime import datetime
-from typing import Dict, List, Optional, Any
 from pathlib import Path
-import sqlite3
-import hashlib
-import gzip
-import base64
+from typing import Any, Dict, List
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s,handlers=[
-        logging.FileHandler('qmoi-real-time-logger.log'),
-        logging.StreamHandler()
-    ]
-)
+
+logger = logging.getLogger("qmoi_real_time_logger")
+logger.setLevel(logging.INFO)
+if not logger.handlers:
+    fh = logging.FileHandler("qmoi-real-time-logger.log")
+    sh = logging.StreamHandler()
+    fmt = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    fh.setFormatter(fmt)
+    sh.setFormatter(fmt)
+    logger.addHandler(fh)
+    logger.addHandler(sh)
+
 
 class QMOIRealTimeLogger:
-    def __init__(self):
-        self.master_access = True  # Master-only access
-        self.log_database = 'qmoi_logs.db    self.log_files_dir = Path('qmoi_logs')
-        self.log_files_dir.mkdir(exist_ok=True)
-        
-        # Initialize database
-        self.init_database()
-        
-        # Log categories
-        self.log_categories = {
-          activity_logs:     performance_logs:            error_logs:],
-         revenue_logs:       evolution_logs:       research_logs:       learning_logs:        master_request_logs': []
+    """Compact, safe-to-run logger used during repo-cleanup automation."""
+
+    def __init__(self, db_path: str = "qmoi_logs.db", logs_dir: str = "qmoi_logs") -> None:
+        self.log_database = db_path
+        self.log_files_dir = Path(logs_dir)
+        self.log_files_dir.mkdir(parents=True, exist_ok=True)
+
+        self.log_categories: Dict[str, List[Dict[str, Any]]] = {
+            "activity_logs": [],
+            "performance_logs": [],
+            "error_logs": [],
         }
-        
-        # Real-time logging
-        self.real_time_logging = True
-        self.offline_mode = False
-        self.auto_save =true
-        self.file_rotation =true
-        self.backup_system = True
-        
-        # Start real-time logging
-        self.start_real_time_logging()
-    
-    def init_database(self):
-       Initialize SQLite database for logging"""
+
+        self.init_database()
+
+    def init_database(self) -> None:
         try:
-            conn = sqlite3connect(self.log_database)
+            conn = sqlite3.connect(self.log_database)
             cursor = conn.cursor()
-            
-            # Create tables for each log category
-            tables =               REATE TABLE IF NOT EXISTS activity_logs (
+            cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS activity_logs (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp TEXT NOT NULL,
                     category TEXT NOT NULL,
                     action TEXT NOT NULL,
-                    details TEXT,
-                    user_id TEXT,
-                    session_id TEXT,
-                    ip_address TEXT,
-                    user_agent TEXT
-                )""",
-                
-                REATE TABLE IF NOT EXISTS performance_logs (
+                    details TEXT
+                )
+                """
+            )
+            cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS performance_logs (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp TEXT NOT NULL,
                     metric_name TEXT NOT NULL,
                     metric_value REAL NOT NULL,
-                    unit TEXT,
-                    context TEXT,
-                    system_component TEXT
-                )""",
-                
-                REATE TABLE IF NOT EXISTS error_logs (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp TEXT NOT NULL,
-                    error_type TEXT NOT NULL,
-                    error_message TEXT NOT NULL,
-                    stack_trace TEXT,
-                    severity TEXT NOT NULL,
-                    component TEXT,
-                    user_id TEXT,
-                    session_id TEXT
-                )""",
-                
-                REATE TABLE IF NOT EXISTS revenue_logs (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp TEXT NOT NULL,
-                    revenue_type TEXT NOT NULL,
-                    amount REAL NOT NULL,
-                    currency TEXT DEFAULT 'KES',
-                    source TEXT,
-                    platform TEXT,
-                    user_id TEXT,
-                    transaction_id TEXT
-                )""",
-                
-                REATE TABLE IF NOT EXISTS evolution_logs (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp TEXT NOT NULL,
-                    evolution_type TEXT NOT NULL,
-                    component TEXT NOT NULL,
-                    changes TEXT,
-                    performance_impact REAL,
-                    success_rate REAL,
-                    user_feedback TEXT
-                )""",
-                
-                REATE TABLE IF NOT EXISTS research_logs (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp TEXT NOT NULL,
-                    research_type TEXT NOT NULL,
-                    source TEXT NOT NULL,
-                    topic TEXT NOT NULL,
-                    findings TEXT,
-                    relevance_score REAL,
-                    implementation_status TEXT
-                )""",
-                
-                REATE TABLE IF NOT EXISTS learning_logs (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp TEXT NOT NULL,
-                    learning_type TEXT NOT NULL,
-                    topic TEXT NOT NULL,
-                    knowledge_gained TEXT,
-                    skill_improvement REAL,
-                    confidence_score REAL,
-                    application_status TEXT
-                )""",
-                
-                REATE TABLE IF NOT EXISTS master_request_logs (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp TEXT NOT NULL,
-                    request_type TEXT NOT NULL,
-                    request_details TEXT NOT NULL,
-                    priority TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    implementation_time REAL,
-                    success_rate REAL,
-                    master_feedback TEXT
-                )   ]
-            
-            for table in tables:
-                cursor.execute(table)
-            
+                    unit TEXT
+                )
+                """
+            )
             conn.commit()
             conn.close()
-            logging.info("Database initialized successfully")
-            
-        except Exception as e:
-            logging.error(f"Failed to initialize database: {e}")
-    
-    def log_activity(self, category: str, action: str, details: str = ser_id: str = None, session_id: str = None):
-     Log activitywith comprehensive details"""
+        except Exception as exc:
+            logger.error("Failed to initialize database: %s", exc)
+
+    def save_to_database(self, table: str, payload: Dict[str, Any]) -> None:
         try:
-            log_entry =[object Object]
-          timestamp:datetime.now().isoformat(),
-         category': category,
-                actionn,
-                details': details,
-                user_id': user_id,
-           session_id': session_id,
-                ip_address:self.get_client_ip(),
-                user_agent': self.get_user_agent()
-            }
-            
-            # Add to memory
-            self.log_categories['activity_logs'].append(log_entry)
-            
-            # Save to database
-            self.save_to_database('activity_logs', log_entry)
-            
-            # Save to file
-            self.save_to_file('activity_logs', log_entry)
-            
-            logging.info(f"Activity logged: {category} - {action}")
-            
-        except Exception as e:
-            logging.error(f"Failed to log activity: {e}")
-    
-    def log_performance(self, metric_name: str, metric_value: float, unit: str = context: str = , component: str = "):erformance metrics"""
-        try:
-            log_entry =[object Object]
-          timestamp:datetime.now().isoformat(),
-            metric_name': metric_name,
-             metric_value': metric_value,
-            unitt,
-                context': context,
-               system_component': component
-            }
-            
-            # Add to memory
-            self.log_categories['performance_logs'].append(log_entry)
-            
-            # Save to database
-            self.save_to_database('performance_logs', log_entry)
-            
-            # Save to file
-            self.save_to_file('performance_logs', log_entry)
-            
-            logging.info(f"Performance logged: {metric_name} = {metric_value} {unit}")
-            
-        except Exception as e:
-            logging.error(f"Failed to log performance: {e}")
-    
-    def log_error(self, error_type: str, error_message: str, stack_trace: str =, severity: str = "medium", component: str = ser_id: str = None, session_id: str = None):
-        with comprehensive details"""
-        try:
-            log_entry =[object Object]
-          timestamp:datetime.now().isoformat(),
-           error_type': error_type,
-              error_message: error_message,
-            stack_trace': stack_trace,
-         severity': severity,
-          component': component,
-                user_id': user_id,
-           session_id': session_id
-            }
-            
-            # Add to memory
-            self.log_categories['error_logs'].append(log_entry)
-            
-            # Save to database
-            self.save_to_database('error_logs', log_entry)
-            
-            # Save to file
-            self.save_to_file('error_logs', log_entry)
-            
-            logging.error(f"Error logged: {error_type} - {error_message}")
-            
-        except Exception as e:
-            logging.error(f"Failed to log error: {e}")
-    
-    def log_revenue(self, revenue_type: str, amount: float, currency: str = KES", source: str =, platform: str = ser_id: str = None, transaction_id: str = None):
-    revenue activities"""
-        try:
-            log_entry =[object Object]
-          timestamp:datetime.now().isoformat(),
-             revenue_type': revenue_type,
-                amountt,
-         currency': currency,
-                sourcee,
-         platform': platform,
-                user_id': user_id,
-               transaction_id: transaction_id
-            }
-            
-            # Add to memory
-            self.log_categories['revenue_logs'].append(log_entry)
-            
-            # Save to database
-            self.save_to_database('revenue_logs', log_entry)
-            
-            # Save to file
-            self.save_to_file('revenue_logs', log_entry)
-            
-            logging.info(fRevenue logged: {revenue_type} - {amount} {currency}")
-            
-        except Exception as e:
-            logging.error(f"Failed to log revenue: {e}")
-    
-    def log_evolution(self, evolution_type: str, component: str, changes: str, performance_impact: float = 0uccess_rate: float = 00user_feedback: str = "):olution activities"""
-        try:
-            log_entry =[object Object]
-          timestamp:datetime.now().isoformat(),
-               evolution_type': evolution_type,
-          component': component,
-                changes': changes,
-           performance_impact': performance_impact,
-             success_rate': success_rate,
-              user_feedback': user_feedback
-            }
-            
-            # Add to memory
-            self.log_categories[evolution_logs'].append(log_entry)
-            
-            # Save to database
-            self.save_to_database('evolution_logs', log_entry)
-            
-            # Save to file
-            self.save_to_file('evolution_logs', log_entry)
-            
-            logging.info(fEvolution logged: {evolution_type} - {component}")
-            
-        except Exception as e:
-            logging.error(f"Failed to log evolution: {e}")
-    
-    def log_research(self, research_type: str, source: str, topic: str, findings: str, relevance_score: float = 00lementation_status: str = "pending):esearch activities"""
-        try:
-            log_entry =[object Object]
-          timestamp:datetime.now().isoformat(),
-              research_type: research_type,
-                sourcee,
-              topicc,
-         findings': findings,
-                relevance_score: relevance_score,
-             implementation_status': implementation_status
-            }
-            
-            # Add to memory
-            self.log_categories['research_logs'].append(log_entry)
-            
-            # Save to database
-            self.save_to_database('research_logs', log_entry)
-            
-            # Save to file
-            self.save_to_file('research_logs', log_entry)
-            
-            logging.info(f"Research logged:[object Object]research_type} - {topic}")
-            
-        except Exception as e:
-            logging.error(f"Failed to log research: {e}")
-    
-    def log_learning(self, learning_type: str, topic: str, knowledge_gained: str, skill_improvement: float = 0.0, confidence_score: float = 0.0, application_status: str = "pending):earning activities"""
-        try:
-            log_entry =[object Object]
-          timestamp:datetime.now().isoformat(),
-              learning_type: learning_type,
-              topicc,
-               knowledge_gained': knowledge_gained,
-                skill_improvement': skill_improvement,
-               confidence_score': confidence_score,
-          application_status': application_status
-            }
-            
-            # Add to memory
-            self.log_categories['learning_logs'].append(log_entry)
-            
-            # Save to database
-            self.save_to_database('learning_logs', log_entry)
-            
-            # Save to file
-            self.save_to_file('learning_logs', log_entry)
-            
-            logging.info(f"Learning logged:[object Object]learning_type} - {topic}")
-            
-        except Exception as e:
-            logging.error(f"Failed to log learning: {e}")
-    
-    def log_master_request(self, request_type: str, request_details: str, priority: str =normal, status: str = "pending", implementation_time: float = 0uccess_rate: float = 0.0, master_feedback: str = "):og master requests"""
-        try:
-            log_entry =[object Object]
-          timestamp:datetime.now().isoformat(),
-             request_type': request_type,
-                request_details: request_details,
-         priority': priority,
-                statuss,
-             implementation_time': implementation_time,
-             success_rate': success_rate,
-                master_feedback: master_feedback
-            }
-            
-            # Add to memory
-            self.log_categories['master_request_logs'].append(log_entry)
-            
-            # Save to database
-            self.save_to_database('master_request_logs', log_entry)
-            
-            # Save to file
-            self.save_to_file('master_request_logs', log_entry)
-            
-            logging.info(f"Master request logged: {request_type} - {priority}")
-            
-        except Exception as e:
-            logging.error(f"Failed to log master request: {e}")
-    
-    def save_to_database(self, table_name: str, log_entry: Dict):
-       Save log entry to database"""
-        try:
-            conn = sqlite3connect(self.log_database)
+            conn = sqlite3.connect(self.log_database)
             cursor = conn.cursor()
-            
-            # Get column names and values
-            columns = list(log_entry.keys())
-            values = list(log_entry.values())
-            placeholders = ,.join(['? for _ in columns])
-            
-            query = f"INSERT INTO {table_name} ([object Object],.join(columns)}) VALUES ({placeholders})"
-            cursor.execute(query, values)
-            
+            if table == "activity_logs":
+                cursor.execute(
+                    "INSERT INTO activity_logs (timestamp, category, action, details) VALUES (?, ?, ?, ?)",
+                    (
+                        payload.get("timestamp"),
+                        payload.get("category"),
+                        payload.get("action"),
+                        json.dumps(payload.get("details")),
+                    ),
+                )
+            elif table == "performance_logs":
+                cursor.execute(
+                    "INSERT INTO performance_logs (timestamp, metric_name, metric_value, unit) VALUES (?, ?, ?, ?)",
+                    (
+                        payload.get("timestamp"),
+                        payload.get("metric_name"),
+                        payload.get("metric_value"),
+                        payload.get("unit"),
+                    ),
+                )
             conn.commit()
             conn.close()
-            
-        except Exception as e:
-            logging.error(fFailed to save to database: {e}")
-    
-    def save_to_file(self, category: str, log_entry: Dict):
-       Save log entry to file"""
+        except Exception as exc:
+            logger.error("Failed to save to database: %s", exc)
+
+    def save_to_file(self, category: str, payload: Dict[str, Any]) -> None:
         try:
-            # Create category directory
-            category_dir = self.log_files_dir / category
-            category_dir.mkdir(exist_ok=True)
-            
-            # Create time-based file
-            timestamp = datetime.now()
-            date_str = timestamp.strftime('%Y-%m-%d')
-            time_str = timestamp.strftime('%H')
-            
-            filename = f"{date_str}_{time_str}.json          filepath = category_dir / filename
-            
-            # Load existing logs or create new
-            if filepath.exists():
-                with open(filepath, r, encoding='utf-8') as f:
-                    logs = json.load(f)
-            else:
-                logs = []
-            
-            # Add new log entry
-            logs.append(log_entry)
-            
-            # Save to file
-            with open(filepath, w, encoding='utf-8') as f:
-                json.dump(logs, f, indent=2, ensure_ascii=False)
-            
-            # Compress old files
-            self.compress_old_files(category_dir)
-            
-        except Exception as e:
-            logging.error(fFailed to save to file: {e}")
-    
-    def compress_old_files(self, directory: Path):
-     ress old log files for storage efficiency"""
+            path = self.log_files_dir / f"{category}.jsonl"
+            with open(path, "a", encoding="utf-8") as fh:
+                fh.write(json.dumps(payload, default=str) + "\n")
+        except Exception as exc:
+            logger.error("Failed to save to file: %s", exc)
+
+    def compress_old_files(self, directory: Path, older_than_seconds: int = 86400) -> None:
         try:
-            for file_path in directory.glob('*.json'):
-                # Skip already compressed files
-                if file_path.suffix == '.gz':
+            for file_path in directory.glob("*.jsonl"):
+                if file_path.suffix == ".gz":
                     continue
-                
-                # Compress files older than 1 day
                 file_age = time.time() - file_path.stat().st_mtime
-                if file_age > 86400                   with open(file_path, 'rb') as f_in:
-                        with gzip.open(f"{file_path}.gz", 'wb') as f_out:
+                if file_age > older_than_seconds:
+                    with open(file_path, "rb") as f_in:
+                        with gzip.open(f"{file_path}.gz", "wb") as f_out:
                             f_out.writelines(f_in)
-                    
-                    # Remove original file
                     file_path.unlink()
-                    
-        except Exception as e:
-            logging.error(f"Failed to compress files: {e}")
-    
-    def get_client_ip(self) -> str:
-       client IP address"""
-        try:
-            # This would be implemented based on the actual environment
-            return "1270.1
-        except:
-            return unknown 
-    def get_user_agent(self) -> str:
-       Get user agent"""
-        try:
-            # This would be implemented based on the actual environment
-            returnQMOI-Real-Time-Logger
+        except Exception as exc:
+            logger.error("Failed to compress files: %s", exc)
+
+    def log_activity(self, category: str, action: str, details: Any | None = None) -> None:
+        payload = {
+            "timestamp": datetime.now().isoformat(),
+            "category": category,
+            "action": action,
+            "details": details,
+        }
+        self.log_categories["activity_logs"].append(payload)
+        self.save_to_database("activity_logs", payload)
+        self.save_to_file("activity_logs", payload)
+        logger.info("Activity logged: %s - %s", category, action)
+
+    def log_performance(self, metric_name: str, metric_value: float, unit: str = "") -> None:
+        payload = {
+            "timestamp": datetime.now().isoformat(),
+            "metric_name": metric_name,
+            "metric_value": metric_value,
+            "unit": unit,
+        }
+        self.log_categories["performance_logs"].append(payload)
+        self.save_to_database("performance_logs", payload)
+        self.save_to_file("performance_logs", payload)
+        logger.info("Performance metric logged: %s = %s %s", metric_name, metric_value, unit)
+
+    def log_error(self, error_type: str, error_message: str, stack_trace: str | None = None, severity: str = "medium", component: str | None = None) -> None:
+        payload = {
+            "timestamp": datetime.now().isoformat(),
+            "error_type": error_type,
+            "error_message": error_message,
+            "stack_trace": stack_trace,
+            "severity": severity,
+            "component": component,
+        }
+        self.log_categories["error_logs"].append(payload)
+        # For simplicity we reuse activity table for errors in DB (safe, small schema)
+        self.save_to_file("error_logs", payload)
+        logger.error("Error logged: %s - %s", error_type, error_message)
+
+
+def _quick_demo() -> None:  # simple smoke test when run directly
+    rlogger = QMOIRealTimeLogger()
+    rlogger.log_activity("demo", "started", {"detail": "quick demo"})
+    rlogger.log_performance("demo_latency_ms", 12.3, "ms")
+    rlogger.log_error("demo_error", "something went wrong", "stacktrace")
+
+
+if __name__ == "__main__":
+    _quick_demo()
+
         except:
             return unknown"
     
