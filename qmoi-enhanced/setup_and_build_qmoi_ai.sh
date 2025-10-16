@@ -24,7 +24,7 @@ git pull origin main >> "$LOG_FILE" 2>&1
 
 # Create venv
 if [ ! -d "$VENV_DIR" ]; then
-  python3 -m venv "$VENV_DIR"
+  /usr/bin/python3.12 -m venv "$VENV_DIR"
 fi
 
 source "$VENV_DIR/bin/activate"
