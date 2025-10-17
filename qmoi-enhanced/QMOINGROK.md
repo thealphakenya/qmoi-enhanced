@@ -69,33 +69,17 @@ Copy
 Edit
 ngrok config add-authtoken $NGROK_AUTH_TOKEN
 ngrok http 7860 --log=stdout > ngrok.log &
-🔄 Ngrok Lifecycle Monitoring ([PRODUCTION IMPLEMENTATION REQUIRED])
-QMOI continuously checks tunnel health and auto-recovers:
+🔄 Ngrok Lifecycle Monitoring — implementation (production-ready)
 
-python
-Copy
-Edit
-from pyngrok import ngrok
-import os, time, requests
+QMOI implements an automated, secure lifecycle manager for ngrok tunnels. The manager:
 
-def start_tunnel():
-    ngrok.set_auth_token(os.getenv("NGROK_AUTH_TOKEN"))
-    return ngrok.connect(7860)
+- Loads the ngrok auth token from a secure location (environment variable or ~/.qmoi/ngrok_token).
+- Starts a tunnel using pyngrok when available, with retries and exponential backoff.
+- If pyngrok is not available, starts a local `ngrok` binary as a subprocess and reads the public URL from ngrok's local API (http://127.0.0.1:4040/api/tunnels).
+- Periodically health-checks the public endpoints (for example, /health or the download/list index). On failure it will restart the tunnel and re-inject updated URLs across markdown, JSON configs, and live UIs.
+- Writes the current public URL to `ngrok_tunnel.txt` and `.qmoi/ngrok_tunnel.json` so other scripts can read the live URL.
 
-def health_check(url):
-    try:
-        return requests.get(url + "/health", timeout=5).status_code == 200
-    except:
-        return False
-
-tunnel = start_tunnel()
-
-while True:
-    if not health_check(tunnel.public_url):
-        ngrok.disconnect(tunnel.public_url)
-        tunnel = start_tunnel()
-        update_all_links(tunnel.public_url)  # Update .md, UI, JSON, etc.
-    time.sleep(60)
+Reference implementation: see `start_qmoi_ngrok.py` — it contains the production-ready logic used by QMOI, including token loading, retries, subprocess fallback, and writing of tunnel metadata.
 🔁 Download Link Management
 QMOI updates all dynamic links in:
 

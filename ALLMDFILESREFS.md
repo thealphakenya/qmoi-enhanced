@@ -58,6 +58,7 @@ Status: All documentation files have been autotested and are now production-read
 ./docs/QMOIGITHUBDEV.md
 ./docs/AUTOEVOLVE.md
 ./QUANTUMAUTOMARKET.md
+./QMOIICONS.md
 ./QMOIALLDEVICESHANDSFREE.md
 ./QMOIAUTOMAKENEW.md
 ./components/qmedia-player.md

@@ -5,25 +5,72 @@ import hashlib
 import requests
 import webbrowser
 from qmoi_activity_logger import log_activity
+from typing import Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn
-from pyngrok import ngrok
+try:
+    from pyngrok import ngrok
+except Exception:
+    ngrok = None
+
+
+def load_ngrok_token() -> Optional[str]:
+    token = os.getenv("NGROK_AUTH_TOKEN")
+    if token:
+        return token.strip()
+    token_path = os.path.expanduser("~/.qmoi/ngrok_token")
+    try:
+        if os.path.exists(token_path):
+            with open(token_path, "r") as f:
+                t = f.read().strip()
+                if t:
+                    return t
+    except Exception:
+        pass
+    return None
+
+
+def start_ngrok(port: int = 8080) -> Optional[str]:
+    public_url = None
+    token = load_ngrok_token()
+    if ngrok and token:
+        try:
+            ngrok.set_auth_token(token)
+        except Exception:
+            pass
+        try:
+            tunnel = ngrok.connect(port)
+            public_url = getattr(tunnel, "public_url", None) or str(tunnel)
+        except Exception:
+            public_url = None
+
+    if not public_url:
+        # Try without token if pyngrok available
+        if ngrok:
+            try:
+                tunnel = ngrok.connect(port)
+                public_url = getattr(tunnel, "public_url", None) or str(tunnel)
+            except Exception:
+                public_url = None
+
+    if public_url:
+        try:
+            with open("ngrok_tunnel.txt", "w") as f:
+                f.write(public_url)
+        except Exception:
+            pass
+
+    return public_url
+
 
 # --- Phase 1: Ngrok Auto-Startup ---
-tunnel_url = None
-try:
-    os.environ["NGROK_AUTH_TOKEN"] = "2vpml86bIuHdp1q06rMfqsqWqPz_7sGTMrPds44ZJmMFWdUa5"
-    ngrok.set_auth_token(os.environ["NGROK_AUTH_TOKEN"])
-    tunnel = ngrok.connect(8080)
-    tunnel_url = tunnel.public_url
-    with open("ngrok_tunnel.txt", "w") as f:
-        f.write(tunnel_url)
+tunnel_url = start_ngrok(8080)
+if tunnel_url:
     print("✅ Ngrok tunnel started:", tunnel_url)
-except Exception as e:
-    print("❌ Ngrok failed:", str(e))
-    tunnel_url = None
+else:
+    print("❌ Ngrok failed or not available. Continuing without public tunnel.")
 
 # --- Phase 2: FastAPI App ---
 app = FastAPI()

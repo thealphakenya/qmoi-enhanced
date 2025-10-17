@@ -38,9 +38,9 @@ Copy
 Edit
 https://<ngrok-subdomain>.ngrok.io/downloads/<app>/<platform>
 Examples
-https://qmoitunnel.ngrok.io/downloads/qbrowser/windows.exe
+https://example-1234.ngrok.io/downloads/qbrowser/windows.exe
 
-https://abc123.ngrok.io/qcity/app/latest
+https://example-1234.ngrok.io/qcity/app/latest
 
 These links are dynamically injected into:
 
