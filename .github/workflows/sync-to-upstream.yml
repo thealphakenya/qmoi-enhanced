@@ -1,15 +1,21 @@
 name: Sync to private upstream
 
+# Trigger only when a PR is closed and merged into main, or manually via workflow_dispatch
 on:
-  push:
-    branches: [ main ]
+  pull_request:
+    types: [closed]
+  workflow_dispatch: {}
 
 jobs:
   sync:
-    name: Sync main -> upstream
+    name: Sync main -> upstream (on merged PR or manual)
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    # Only run when this is a merged PR into main, or when manually dispatched
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -21,7 +27,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Add upstream remote (token from secret)
+      - name: Ensure UPSTREAM_PAT is available
         env:
           UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
         run: |
@@ -29,6 +35,11 @@ jobs:
             echo "ERROR: UPSTREAM_PAT secret is not set" >&2
             exit 1
           fi
+
+      - name: Add upstream remote (token from secret)
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+        run: |
           git remote remove upstream || true
           git remote add upstream "https://x-access-token:${UPSTREAM_PAT}@github.com/thealphakenya/qmoi-enhanced.git"
 
