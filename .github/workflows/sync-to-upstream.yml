@@ -1,0 +1,38 @@
+name: Sync to private upstream
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sync:
+    name: Sync main -> upstream
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote (token from secret)
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+        run: |
+          if [ -z "${UPSTREAM_PAT:-}" ]; then
+            echo "ERROR: UPSTREAM_PAT secret is not set" >&2
+            exit 1
+          fi
+          git remote remove upstream || true
+          git remote add upstream "https://x-access-token:${UPSTREAM_PAT}@github.com/thealphakenya/qmoi-enhanced.git"
+
+      - name: Push to upstream
+        run: |
+          # push current HEAD to upstream main
+          git push upstream HEAD:main --follow-tags
