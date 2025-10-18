@@ -1,0 +1,81 @@
+name: Sync to private upstream
+
+# Trigger only when a PR is closed and merged into main, or manually via workflow_dispatch
+on:
+  pull_request:
+    types: [closed]
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    name: Sync main -> upstream (on merged PR or manual)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+    # Only run when this is a merged PR into main, or when manually dispatched
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Ensure UPSTREAM_PAT is available
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+        run: |
+          if [ -z "${UPSTREAM_PAT:-}" ]; then
+            echo "ERROR: UPSTREAM_PAT secret is not set" >&2
+            exit 1
+          fi
+
+      - name: Check upstream repo access (fail fast with clear message)
+        run: |
+          echo "Checking access to the upstream repo using UPSTREAM_PAT..."
+          status=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: token ${UPSTREAM_PAT}" https://api.github.com/repos/thealphakenya/qmoi-enhanced)
+          if [ "$status" -ne 200 ]; then
+            echo "ERROR: UPSTREAM_PAT cannot access the upstream repository 'thealphakenya/qmoi-enhanced'. HTTP status: $status" >&2
+            echo "Possible causes: token belongs to a different account, token lacks 'repo' scope, or the upstream repo does not exist or is private and inaccessible." >&2
+            exit 1
+          fi
+          echo "Access check passed (HTTP 200). Adding upstream remote..."
+          git remote remove upstream || true
+          git remote add upstream "https://x-access-token:${UPSTREAM_PAT}@github.com/thealphakenya/qmoi-enhanced.git"
+
+      - name: Debug: check git auth for upstream
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+        run: |
+          echo "Debug: attempting git ls-remote using UPSTREAM_PAT..."
+          # Try using http.extraheader with basic auth header (x-access-token)
+          git -c http.extraheader="AUTHORIZATION: basic $(echo -n x-access-token:${UPSTREAM_PAT} | base64)" ls-remote https://github.com/thealphakenya/qmoi-enhanced.git || true
+
+          echo "Debug: curl repo API (full headers)"
+          curl -i -H "Authorization: token ${UPSTREAM_PAT}" https://api.github.com/repos/thealphakenya/qmoi-enhanced || true
+
+          echo "Debug: try git ls-remote using token in URL (x-access-token:)"
+          git ls-remote https://x-access-token:${UPSTREAM_PAT}@github.com/thealphakenya/qmoi-enhanced.git || true
+
+      - name: Create sync branch and push to upstream
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+        run: |
+          SYNC_BRANCH="sync-from-public-$(echo $GITHUB_SHA | cut -c1-8)"
+          git checkout -b "$SYNC_BRANCH"
+          git push upstream "$SYNC_BRANCH"
+
+      - name: Create PR on upstream (if missing)
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+        run: |
+          # Use the GitHub API to create a PR from the sync branch into main
+          curl -s -H "Authorization: token ${UPSTREAM_PAT}" -X POST -d "{\"title\":\"Sync from public repo: $GITHUB_SHA\",\"head\":\"$SYNC_BRANCH\",\"base\":\"main\",\"body\":\"Automated sync from public repo ${GITHUB_REPOSITORY} (${GITHUB_SHA}).\"}" "https://api.github.com/repos/thealphakenya/qmoi-enhanced/pulls" || true
