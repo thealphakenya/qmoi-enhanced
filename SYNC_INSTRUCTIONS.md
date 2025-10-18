@@ -19,7 +19,18 @@ Setup steps (owner of this repo must do these in repo settings):
 	./scripts/set_upstream_secret.sh thevictorofkenya qmoi-enhanced-new-thevictorofkenya UPSTREAM_PAT ~/new_upstream_pat.txt
 	```
 
-2. After adding the secret, the workflow will run when a PR is merged into `main` or when manually dispatched from the Actions UI.
+2. After adding the secret, the workflow will run when a PR is merged into `main` or when manually dispatched from the Actions UI. By default the workflow now creates a sync branch on the upstream repo and opens a Pull Request instead of pushing directly to `main`.
+
+Using the helper script locally (advanced):
+
+	- To directly create a PR on the upstream using the token in the environment, you can run (requires `jq`):
+
+		```bash
+		export UPSTREAM_PAT=$(cat ~/new_upstream_pat.txt)
+		./scripts/create_upstream_pr.sh thealphakenya qmoi-enhanced "sync-branch-name" "Sync from public" "Automated sync"
+		```
+
+	The Action will also attempt to create a branch and PR automatically when run.
 
 Security notes:
 - The workflow uses the secret and will not surface the token in logs. The token is used only to create a temporary remote for the push.

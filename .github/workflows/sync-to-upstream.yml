@@ -43,7 +43,17 @@ jobs:
           git remote remove upstream || true
           git remote add upstream "https://x-access-token:${UPSTREAM_PAT}@github.com/thealphakenya/qmoi-enhanced.git"
 
-      - name: Push to upstream
+      - name: Create sync branch and push to upstream
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
         run: |
-          # push current HEAD to upstream main
-          git push upstream HEAD:main --follow-tags
+          SYNC_BRANCH="sync-from-public-$(echo $GITHUB_SHA | cut -c1-8)"
+          git checkout -b "$SYNC_BRANCH"
+          git push upstream "$SYNC_BRANCH"
+
+      - name: Create PR on upstream (if missing)
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+        run: |
+          # Use the GitHub API to create a PR from the sync branch into main
+          curl -s -H "Authorization: token ${UPSTREAM_PAT}" -X POST -d "{\"title\":\"Sync from public repo: $GITHUB_SHA\",\"head\":\"$SYNC_BRANCH\",\"base\":\"main\",\"body\":\"Automated sync from public repo ${GITHUB_REPOSITORY} (${GITHUB_SHA}).\"}" "https://api.github.com/repos/thealphakenya/qmoi-enhanced/pulls" || true
