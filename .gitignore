@@ -1,0 +1,13 @@
+# Local environment files (do NOT commit)
+.env
+.env.local
+.env.*
+.env.example
+!.env.example
+
+# Node / Python / editor defaults - keep minimal here; project has nested ignores
+.vscode/
+node_modules/
+__pycache__/
+*.pyc
+*.log
