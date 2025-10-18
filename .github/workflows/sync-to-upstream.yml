@@ -51,6 +51,20 @@ jobs:
           git remote remove upstream || true
           git remote add upstream "https://x-access-token:${UPSTREAM_PAT}@github.com/thealphakenya/qmoi-enhanced.git"
 
+      - name: Debug: check git auth for upstream
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+        run: |
+          echo "Debug: attempting git ls-remote using UPSTREAM_PAT..."
+          # Try using http.extraheader with basic auth header (x-access-token)
+          git -c http.extraheader="AUTHORIZATION: basic $(echo -n x-access-token:${UPSTREAM_PAT} | base64)" ls-remote https://github.com/thealphakenya/qmoi-enhanced.git || true
+
+          echo "Debug: curl repo API (full headers)"
+          curl -i -H "Authorization: token ${UPSTREAM_PAT}" https://api.github.com/repos/thealphakenya/qmoi-enhanced || true
+
+          echo "Debug: try git ls-remote using token in URL (x-access-token:)"
+          git ls-remote https://x-access-token:${UPSTREAM_PAT}@github.com/thealphakenya/qmoi-enhanced.git || true
+
       - name: Create sync branch and push to upstream
         env:
           UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
