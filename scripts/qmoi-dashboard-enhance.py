@@ -1,3 +1,13 @@
+"""Stub module for qmoi-dashboard-enhance (original content moved to docs/converted).
+"""
+
+from pathlib import Path
+
+def get_notes():
+    p = Path(__file__).resolve().parent.parent / 'docs' / 'converted' / 'qmoi-dashboard-enhance.md'
+    return p.read_text(encoding='utf-8') if p.exists() else ''
+
+__all__ = ['get_notes']
 #!/usr/bin/env python3
 """
 QMOI QCity Enhanced Dashboard with GitLab CI/CD Automation

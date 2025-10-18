@@ -37,7 +37,9 @@ def _get_master_key_from_keyring() -> Optional[bytes]:
     try:
         val = keyring.get_password(MASTER_KEY_SERVICE, MASTER_KEY_USERNAME)
         if val:
-            return base64.urlsafe_b64decode(val.encode())
+            # stored value is the base64 urlsafe-encoded key string; return
+            # the encoded-bytes form expected by Fernet (not the decoded bytes)
+            return val.encode()
     except Exception:
         return None
     return None
@@ -48,7 +50,10 @@ def _get_master_key_from_env() -> Optional[bytes]:
     if not v:
         return None
     try:
-        return base64.urlsafe_b64decode(v.encode())
+        # Environment variable should contain the base64 urlsafe-encoded
+        # key string; return it as bytes so Fernet() receives the expected
+        # urlsafe base64-encoded bytes.
+        return v.encode()
     except Exception:
         return None
 

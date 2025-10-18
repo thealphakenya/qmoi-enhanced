@@ -24,6 +24,19 @@ def main():
     args = p.parse_args()
 
     key = generate_master_key()
+    # Ensure the generated base64 urlsafe key is available to this process
+    # so calls to encrypt_secret() that read the env variable will succeed.
+    import os
+    os.environ['QMOI_MASTER_KEY'] = key.decode()
+    # If user explicitly confirms writes, persist the master key to .qmoi for demo
+    # and local runner bootstrapping convenience. This file is sensitive and
+    # should not be committed; .qmoi is in .gitignore by default in our changes.
+    if args.confirm_write:
+        mk = Path('.qmoi') / 'master_key.b64'
+        mk.parent.mkdir(parents=True, exist_ok=True)
+        mk.write_text(key.decode())
+        mk.chmod(0o600)
+        print(f"Persisted master key to {mk} (keep this secret)")
 
     if args.store_keyring:
         ok = store_master_key_in_keyring(key)

@@ -1,3 +1,19 @@
+"""Stub loader for qmoi_dashboard notes.
+
+The original implementation was large and included non-Python content; the
+text has been moved to `docs/converted/qmoi_dashboard.md` and this small
+stub provides a programmatic accessor for maintainers.
+"""
+
+from pathlib import Path
+
+def get_notes():
+    p = Path(__file__).resolve().parent.parent / 'docs' / 'converted' / 'qmoi_dashboard.md'
+    if p.exists():
+        return p.read_text(encoding='utf-8')
+    return ''
+
+__all__ = ['get_notes']
 #!/usr/bin/env python3
 """
 QMOI Web Dashboard: Displays system health, permission/audit status, and recent notifications.
