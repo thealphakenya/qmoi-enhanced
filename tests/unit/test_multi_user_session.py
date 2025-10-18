@@ -1,9 +1,8 @@
-import unittest
+from pathlib import Path
 
-class TestMultiUserSession(unittest.TestCase):
-    def test_multi_user_session_[PRODUCTION IMPLEMENTATION REQUIRED](self):
-        # TODO: Implement multi-user session unit tests
-        self.assertTrue(True)
-
-if __name__ == '__main__':
-    unittest.main() 
+def get_notes() -> str:
+    repo_root = Path(__file__).resolve().parent.parent
+    p = repo_root / 'docs' / 'converted' / 'qmoi-enhanced_tests_unit_test_multi_user_session_py.md'
+    if p.exists():
+        return p.read_text(encoding='utf-8')
+    return ''
