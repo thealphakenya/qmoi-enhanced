@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
     # Only run when this is a merged PR into main, or when manually dispatched
     if: >-
       github.event_name == 'workflow_dispatch' ||
@@ -36,10 +38,16 @@ jobs:
             exit 1
           fi
 
-      - name: Add upstream remote (token from secret)
-        env:
-          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+      - name: Check upstream repo access (fail fast with clear message)
         run: |
+          echo "Checking access to the upstream repo using UPSTREAM_PAT..."
+          status=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: token ${UPSTREAM_PAT}" https://api.github.com/repos/thealphakenya/qmoi-enhanced)
+          if [ "$status" -ne 200 ]; then
+            echo "ERROR: UPSTREAM_PAT cannot access the upstream repository 'thealphakenya/qmoi-enhanced'. HTTP status: $status" >&2
+            echo "Possible causes: token belongs to a different account, token lacks 'repo' scope, or the upstream repo does not exist or is private and inaccessible." >&2
+            exit 1
+          fi
+          echo "Access check passed (HTTP 200). Adding upstream remote..."
           git remote remove upstream || true
           git remote add upstream "https://x-access-token:${UPSTREAM_PAT}@github.com/thealphakenya/qmoi-enhanced.git"
 
