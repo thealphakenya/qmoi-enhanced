@@ -1,0 +1,63 @@
+name: Sync to private upstream (clean)
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Ensure UPSTREAM_PAT is set
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+        run: |
+          if [ -z "${UPSTREAM_PAT:-}" ]; then
+            echo "ERROR: UPSTREAM_PAT secret is not set" >&2
+            exit 1
+          fi
+
+      - name: Create sync branch and push to origin
+        run: |
+          SYNC_BRANCH="sync-from-public-$(echo $GITHUB_SHA | cut -c1-8)"
+          git checkout -b "$SYNC_BRANCH"
+          git push origin "$SYNC_BRANCH"
+          echo "SYNC_BRANCH=$SYNC_BRANCH" >> $GITHUB_ENV
+
+      - name: Run orchestrator
+        env:
+          UPSTREAM_PAT: ${{ secrets.UPSTREAM_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          python3 scripts/sync_orchestrator.py ${{ github.repository_owner }} "$SYNC_BRANCH" ${{ github.sha }} || true
+
+      - name: Print orchestrator debug
+        run: |
+          if [ -f /tmp/sync_orchestrator_result.json ]; then
+            echo "=== orchestrator ==="
+            cat /tmp/sync_orchestrator_result.json
+            echo "=== end orchestrator ==="
+          else
+            echo "No orchestrator result file"
+          fi
+
+      - name: Upload orchestrator debug artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-debug-${{ github.sha }}
+          path: /tmp/sync_orchestrator_result.json
