@@ -1,0 +1,23 @@
+name: QMOI Sync Orchestrator
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy-orchestrator:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy Orchestrator (placeholder)
+        env:
+          QMOI_TOKEN: ${{ secrets.QMOI_TOKEN }}
+        run: |
+          echo "Deploy step will use QMOI_TOKEN from repository secrets"
+          # Replace below with your deploy commands
+          # e.g. scripts/deploy_orchestrator.sh
