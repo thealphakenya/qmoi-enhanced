@@ -10,8 +10,6 @@ import time
 
 ROOT = Path('.')
 IGNORED = ['node_modules', '.git', 'qmoi-enhanced/mobile/node_mod']
-LINK_RE = re.compile(r"https?://[^")\]\s]+")
-# The regex above had a character class issue in some shells; use a safer approach
 LINK_RE = re.compile(r"https?://[^\s)\]]+")
 
 def find_md_links(root: Path):

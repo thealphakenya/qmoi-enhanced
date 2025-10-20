@@ -140,7 +140,7 @@ from typing import Dict, Optional
 ROOT = Path(__file__).resolve().parents[1]
 ENV = ROOT / '.env'
 EXAMPLE = ROOT / '.env.example'
-SNAP = ROOT / '.qmoi_env_snapshot'
+SNAP = ROOT / '.qmoi' / 'env_snapshot.json'
 
 try:
     from scripts import secret_store
@@ -174,10 +174,11 @@ def load_local_snapshot() -> Optional[Dict[str, str]]:
             return data
     except Exception:
         pass
-    # fallback: read snapshot file (plaintext JSON)
-    if SNAP.exists():
+    # fallback to older .qmoi plaintext snapshot location
+    alt = ROOT / '.qmoi' / 'env_snapshot.json'
+    if alt.exists():
         try:
-            return json.loads(SNAP.read_text(encoding='utf-8', errors='ignore'))
+            return json.loads(alt.read_text(encoding='utf-8', errors='ignore'))
         except Exception:
             return None
     return None
@@ -187,12 +188,16 @@ def save_local_snapshot(mapping: Dict[str, str]):
     try:
         secret_store.save(mapping)
         print('Saved encrypted snapshot via secret_store')
-    except Exception:
+    except Exception as e:
+        print('secret_store.save failed:', e)
+        # attempt to write under .qmoi as a plaintext fallback (not recommended)
+        alt = ROOT / '.qmoi'
         try:
-            SNAP.write_text(json.dumps(mapping), encoding='utf-8')
-            print(f'Wrote plaintext snapshot to {SNAP} (insecure)')
-        except Exception as e:
-            print('Failed to write snapshot:', e)
+            alt.mkdir(exist_ok=True)
+            (alt / 'env_snapshot.json').write_text(json.dumps(mapping), encoding='utf-8')
+            print(f'Wrote plaintext fallback snapshot to {alt / "env_snapshot.json"} (insecure)')
+        except Exception as e2:
+            print('Failed to write fallback snapshot:', e2)
 
 
 def _gist_find(token: str) -> Optional[str]:
@@ -295,6 +300,9 @@ def ensure_env(sync=False, restore=False, force=False):
     defaults = {'QMOI_ENV': 'production', 'QMOI_TOKEN': ''}
     write_env(ENV, defaults)
     print('Created minimal .env')
+
+    # Ensure QMOI_TOKEN created if missing in any future run
+
 
 
 def main():
