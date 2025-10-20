@@ -1,31 +1,63 @@
-name: Scan and Index
+name: scan-and-index
 
 on:
   push:
     branches: [ main ]
+  schedule:
+    - cron: '0 6 * * 1' # weekly run at 06:00 UTC on Mondays
+  workflow_dispatch:
 
 jobs:
-  scan:
+  index-and-scan:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      id-token: write
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - name: Install requirements
+
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-      - name: Run scan and index
+          pip install -r requirements.txt || true
+
+      - name: Run indexer
         run: |
-          python scripts/scan_and_index.py
-      - name: Commit generated files
+          python3 scripts/index_md_files.py || true
+
+      - name: Run scanner
         run: |
-          git config user.name "qmoibot"
-          git config user.email "qmoibot@example.com"
-          git add ALLMDFILESREFS.md ALLERRORS.txt ALLERRORS.md || true
-          git commit -m "chore: regenerate md index and errors [ci skip]" || true
-          git push || true
+          python3 scripts/scan_errors.py || true
+
+      - name: Upload artifacts (index + errors)
+        uses: actions/upload-artifact@v4
+        with:
+          name: repo-index-and-errors
+          path: |
+            ALLMDFILESREFS.md
+            ALLERRORS.md
+            ALLERRORS.txt
+
+      - name: Create a PR if files changed
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(ci): regenerate md index and errors"
+          committer: "qmoi-bot <noreply@qmoi>"
+          author: "qmoi-bot <noreply@qmoi>"
+          title: "chore: regenerate ALLMDFILESREFS and ALLERRORS"
+          body: "This PR regenerates the markdown index and error report via CI."
+          base: main
+          branch: ci/regenerate-index-errors
+          labels: automated, ci
 name: Scan and Index
 
 on:
