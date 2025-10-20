@@ -1,0 +1,114 @@
+name: Scan and Index
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+      - name: Run scan and index
+        run: |
+          python scripts/scan_and_index.py
+      - name: Commit generated files
+        run: |
+          git config user.name "qmoibot"
+          git config user.email "qmoibot@example.com"
+          git add ALLMDFILESREFS.md ALLERRORS.txt ALLERRORS.md || true
+          git commit -m "chore: regenerate md index and errors [ci skip]" || true
+          git push || true
+name: Scan and Index
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pycryptodome
+      - name: Run indexer
+        run: |
+          python scripts/index_md_files.py
+      - name: Run scanner
+        run: |
+          python scripts/scan_errors.py
+      - name: Commit results
+        run: |
+          git config user.name "qmoi-bot"
+          git config user.email "qmoi-bot@example.com"
+          git add ALLMDFILESREFS.md ALLERRORS.md ALLERRORS.txt || true
+          git commit -m "chore: update md index and errors" || echo "no changes"
+          git push origin HEAD:main || echo "push failed"
+name: Scan and Index
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+      - name: Run index generator
+        run: |
+          python3 scripts/generate_md_index.py
+      - name: Commit ALLMDFILESREFS
+        run: |
+          git config user.name "qmoi-bot"
+          git config user.email "noreply@example.com"
+          git add ALLMDFILESREFS.md || true
+          if [ -n "$(git status --porcelain)" ]; then git commit -m "chore: regenerate ALLMDFILESREFS" && git push; fi
+name: Scan and Index
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Run repo scanner
+        run: |
+          python3 scripts/scan_errors.py
+      - name: Commit results
+        run: |
+          git config user.name "qmoibot"
+          git config user.email "qmoibot@example.com"
+          git add ALLMDFILESREFS.md ALLERRORS.md ALLERRORS.txt || true
+          git commit -m "chore: update ALLMDFILESREFS and ALLERRORS" || echo "no changes"
+          git push origin HEAD:main || echo "push failed"
