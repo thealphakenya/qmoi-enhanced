@@ -1,0 +1,143 @@
+ALLERRORS.md:1: # ALLERRORS.md
+ALLERRORS.md:12: - For details, see device-specific logs in ALLERRORSSTATSQMOI.md.
+ALLERRORS.md:13: - For error types and autofix strategies, see ALLERRORTYPESANDHEALTHCHECKS.md.
+ALLERRORSTYPESFILES.md:5: - NETWORK_ERROR: see ERRORS/NETWORK.md
+ALLERRORSTYPESFILES.md:6: - AUTH_ERROR: see ERRORS/AUTH.md
+ALLERRORSTYPESFILES.md:7: - DATA_VALIDATION_ERROR: see ERRORS/VALIDATION.md
+ALLERRORTYPESANDHEALTHCHECKS.md:1: # ALLERRORTYPESANDHEALTHCHECKS.md
+ALLMDFILESREFS.md:6: - [ALLERRORS.md] - **ALLERRORS.md** -- # ALLERRORS.md
+ALLMDFILESREFS.md:7: - [ALLERRORSSTATSQMOI.md] - **QMOI Device-Specific Error Stats** -- # QMOI Device-Specific Error Stats
+ALLMDFILESREFS.md:8: - [ALLERRORSTYPESFILES.md] - **All Error Types and Reference Files** -- # All Error Types and Reference Files
+ALLMDFILESREFS.md:9: - [ALLERRORTYPESANDHEALTHCHECKS.md] - **ALLERRORTYPESANDHEALTHCHECKS.md** -- # ALLERRORTYPESANDHEALTHCHECKS.md
+ALLMDFILESREFS.md:16: - [AUTODOWNLOAD.md] - **AUTODOWNLOAD.md** -- # AUTODOWNLOAD.md
+ALLMDFILESREFS.md:38: - [ERRORSREADME.md] - **Alpha-Q AI Error Tracking & Diagnostics** -- # Alpha-Q AI Error Tracking & Diagnostics
+ALLMDFILESREFS.md:39: - [ERRORSTRACKS.md] - **QMOI Error Tracks** -- # QMOI Error Tracks
+ALLMDFILESREFS.md:219: - [SERVINGERRORSISSUES.md] - **SERVINGERRORSISSUES.md** -- # SERVINGERRORSISSUES.md
+ALLMDFILESREFS.md:234: - [WATCHDEBUG.md] - **WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System** -- # WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System
+ALLMDFILESREFS.md:261: - [qmoi-enhanced/ALLERRORSSTATSQMOI.md] - **QMOI Device-Specific Error Stats** -- # QMOI Device-Specific Error Stats
+ALLMDFILESREFS.md:267: - [qmoi-enhanced/AUTODOWNLOAD.md] - **AUTODOWNLOAD.md** -- # AUTODOWNLOAD.md
+ALLMDFILESREFS.md:287: - [qmoi-enhanced/ERRORSREADME.md] - **Alpha-Q AI Error Tracking & Diagnostics** -- # Alpha-Q AI Error Tracking & Diagnostics
+ALLMDFILESREFS.md:461: - [qmoi-enhanced/WATCHDEBUG.md] - **WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System** -- # WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System
+ALLQMOIAUTOEVOLVINGENVS.md:904: QMOI_ERROR_RECOVERY: "true"
+ALLSYSTEMSSTRUCTURESREFERENCES.md:109: See `ALLERRORS.md` for the latest automated error/issue logs and autofix status.
+API.md:616: - Errors: `data: [ERROR] ...`
+AUTODOWNLOAD.md:1: # AUTODOWNLOAD.md
+AUTOLINTREADME.md:211: DEBUG=true yarn lint:auto
+COMPONENTS.md:176: - Unused/duplicate components are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
+COMPONENTS.md:195: - `ALLERRORSSTATSQMOI.md` (device error stats)
+DEPLOYMENT-README.md:238: export DEBUG=true
+HOOKS.md:41: - Unused/duplicate hooks are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
+HOOKS.md:60: - `ALLERRORSSTATSQMOI.md` (device error stats)
+INVINSIBLEQMOI.md:30: - All fixes and enhancements are referenced in ALLERRORTYPESANDHEALTHCHECKS.md and related documentation.
+PAGES.md:14: - Unused/duplicate pages are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
+PAGES.md:33: - `ALLERRORSSTATSQMOI.md` (device error stats)
+PRODUCTIONCHECKLIST.md:44: - Use `ALLERRORSTYPESFILES.md` to map observed errors to fixes and tests.
+PUBLIC.md:30: - Unused/duplicate assets are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
+PUBLIC.md:48: - `ALLERRORSSTATSQMOI.md` (device error stats)
+QMOI-AIRTEL-INTEGRATION.md:343: export DEBUG_AIRTEL=true
+QMOI-ENHANCED-AUTOMATION.md:329: export QMOI_ERROR_RECOVERY="true"
+QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md:166: - **Error Handling**: QMOI-ERROR-FIXING-STRATEGIES.md, QMOI_AUTOFIXREADME.md
+QMOI-ENHANCED-FINAL.md:142: QMOI_ERROR_AUTO_FIX=true
+QMOI-ENHANCED-README.md:145: DEBUG=true npm run qmoi:autodev:full
+QMOI-ENHANCED-README.md:154: export DEBUG=true
+QMOI-ENHANCED-SYSTEM.md:407: - **DEBUG** - Detailed debugging information
+QMOI-ENHANCED-SYSTEM.md:410: - **ERROR** - Error messages
+QMOI-REVENUE-README.md:192: export DEBUG=true
+QMOIALLDEVICESINSTALL.md:77: - Error statistics and auto-fix logs are maintained in `ALLERRORSSTATSQMOI.md` and `QMOIALWAYSPARALLEL.md` for real-time monitoring and parallel automation.
+QMOIALLDEVICESINSTALL.md:111: - Append error statistics and auto-fix logs to `ALLERRORSSTATSQMOI.md` and `QMOIALWAYSPARALLEL.md`.
+QMOIALWAYSPARALLEL.md:119: - All error stats are aggregated and referenced in `ALLERRORSSTATSQMOI.md` and each device's log file.
+QMOIAPIKEYREADME.md:33: - TODO: Add persistent storage (e.g., file or database)
+QMOIAPIKEYREADME.md:34: - TODO: Add detailed usage logs and alerts
+QMOIAUTOMAKENEW.md:30: - WATCHDEBUG.md: All new creations are monitored and autotested.
+QMOIBROWSER.md:36: - WATCHDEBUG.md: Browser logs and fixes are visible in WatchDebug panel.
+QMOICLONEGITLAB.md:14: - Auto-fixes errors and redeploys on failure (see WATCHDEBUG integration).
+QMOICLONEGITLAB.md:31: - QMOI monitors all pipelines and auto-fixes errors using WATCHDEBUG.
+QMOICLONEGITLAB.md:55: - **WATCHDEBUG Integration:**
+QMOIDATABASE.md:72: ## TODO
+QMOIHUGGINGFACESPACESSETUPINST.md:32: QMOI_DEBUG=false
+QMOISPACEDEV.md:539: export QMOI_ENABLE_ERROR_RECOVERY="true"
+QMOISPACEDEV.md:1217: export QMOI_LOG_LEVEL="DEBUG"
+QMOISPACEDEV.md:1218: export QMOI_DEBUG_MODE="true"
+QMOI_COMPLETE_SYSTEM.md:383: DEBUG=qmoi:* npm start
+QMOI_GITLAB_AUTOMATION.md:430: DEBUG=qmoi:* npm start
+README.md:72: - [ERRORSTRACKS.md](./ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
+RELEASETRACKS.md:35: For full error/fix traceability, see [ERRORSTRACKS.md](./ERRORSTRACKS.md)
+SCRIPTS.md:31: - Unused/duplicate scripts are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
+SERVEQCITYQMOIAIQMOISPACE.md:29: - All serving errors and issues are logged in SERVINGERRORSISSUES.md in real time
+SERVICES.md:13: - Unused/duplicate services are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
+SERVINGERRORSISSUES.md:1: # SERVINGERRORSISSUES.md
+SERVINGERRORSISSUES.md:11: - [2025-10-11 12:00:00] [QCity] [ERROR] Cannot GET / - No route defined for '/'.
+SERVINGERRORSISSUES.md:13: - [2025-10-11 12:00:02] [QMOI Space] [ERROR] Component 'xyz' not served - auto-fixing.
+SRC.md:29: - Unused/duplicate files are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
+SRC.md:48: - `ALLERRORSSTATSQMOI.md` (device error stats)
+TEMPLATES.md:15: - Unused/duplicate templates are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
+TEMPLATES.md:33: - `ALLERRORSSTATSQMOI.md` (device error stats)
+TESTREADME.md:354: export TEST_LOG_LEVEL=DEBUG
+TESTREADME.md:441: export DEBUG_MODE=true
+TESTREADME.md:442: export LOG_LEVEL=DEBUG
+TRACKS.md:24: - Log format: `[YYYY-MM-DD HH:mm:ss] [TYPE] [ACTION/ERROR/DEBUG/FINANCE/AUTOTEST] - Details`
+TRACKS.md:25: - Types: ACTION, ERROR, DEBUG, SYNC, TRACK, ENHANCEMENT, FEATURE, AUTODEVELOPMENT, AUTOMATION, FINANCE, AUTOTEST
+TRACKS.md:30: - `[2025-10-07 10:03:00] [ERROR] [Sync] - Failed to sync ALLMDFILESREFS.md to Alpha-Q-ai.`
+TRACKS.md:31: - `[2025-10-07 10:04:00] [DEBUG] [Memory] - QMOI memory detected new .md file addition.`
+TRACKS.md:33: - All errors, debugs, autotests, and financial events are logged here for full traceability. For detailed error/fix logs, see [ERRORSTRACKS.md](./ERRORSTRACKS.md).
+UNIVERSALHEALTHRUNNERS.md:8: - Device-specific error logs and health stats are referenced in `ALLERRORSSTATSQMOI.md`.
+UNIVERSALHEALTHRUNNERS.md:24: - `ALLERRORSSTATSQMOI.md` (device error stats)
+WATCHDEBUG.md:1: # WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System
+WATCHDEBUG.md:4: WATCHDEBUG.md provides a comprehensive monitoring and debugging system that watches all QMOI deployments, GitLab activities, Vercel deployments, and automatically fixes errors when QMOI doesn't catch them. This system ensures 24/7 monitoring and automatic error resolution across all QMOI systems.
+qmoi-enhanced/ALLMDFILESREFS.md:47: /workspaces/qmoi-enhanced/ALLERRORSSTATSQMOI.md
+qmoi-enhanced/ALLMDFILESREFS.md:53: /workspaces/qmoi-enhanced/AUTODOWNLOAD.md
+qmoi-enhanced/ALLMDFILESREFS.md:72: /workspaces/qmoi-enhanced/ERRORSREADME.md
+qmoi-enhanced/ALLMDFILESREFS.md:240: /workspaces/qmoi-enhanced/WATCHDEBUG.md
+qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md:904: QMOI_ERROR_RECOVERY: "true"
+qmoi-enhanced/API.md:563: - Errors: `data: [ERROR] ...`
+qmoi-enhanced/AUTODOWNLOAD.md:1: # AUTODOWNLOAD.md
+qmoi-enhanced/AUTOLINTREADME.md:211: DEBUG=true yarn lint:auto
+qmoi-enhanced/DEPLOYMENT-README.md:238: export DEBUG=true
+qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md:343: export DEBUG_AIRTEL=true
+qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md:329: export QMOI_ERROR_RECOVERY="true"
+qmoi-enhanced/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md:166: - **Error Handling**: QMOI-ERROR-FIXING-STRATEGIES.md, QMOI_AUTOFIXREADME.md
+qmoi-enhanced/QMOI-ENHANCED-FINAL.md:142: QMOI_ERROR_AUTO_FIX=true
+qmoi-enhanced/QMOI-ENHANCED-README.md:145: DEBUG=true npm run qmoi:autodev:full
+qmoi-enhanced/QMOI-ENHANCED-README.md:154: export DEBUG=true
+qmoi-enhanced/QMOI-ENHANCED-SYSTEM.md:407: - **DEBUG** - Detailed debugging information
+qmoi-enhanced/QMOI-ENHANCED-SYSTEM.md:410: - **ERROR** - Error messages
+qmoi-enhanced/QMOI-REVENUE-README.md:192: export DEBUG=true
+qmoi-enhanced/QMOIALLDEVICESINSTALL.md:77: - Error statistics and auto-fix logs are maintained in `ALLERRORSSTATSQMOI.md` and `QMOIALWAYSPARALLEL.md` for real-time monitoring and parallel automation.
+qmoi-enhanced/QMOIALLDEVICESINSTALL.md:111: - Append error statistics and auto-fix logs to `ALLERRORSSTATSQMOI.md` and `QMOIALWAYSPARALLEL.md`.
+qmoi-enhanced/QMOIALWAYSPARALLEL.md:119: - All error stats are aggregated and referenced in `ALLERRORSSTATSQMOI.md` and each device's log file.
+qmoi-enhanced/QMOIAPIKEYREADME.md:33: - TODO: Add persistent storage (e.g., file or database)
+qmoi-enhanced/QMOIAPIKEYREADME.md:34: - TODO: Add detailed usage logs and alerts
+qmoi-enhanced/QMOIAUTOMAKENEW.md:30: - WATCHDEBUG.md: All new creations are monitored and autotested.
+qmoi-enhanced/QMOIBROWSER.md:36: - WATCHDEBUG.md: Browser logs and fixes are visible in WatchDebug panel.
+qmoi-enhanced/QMOICLONEGITLAB.md:14: - Auto-fixes errors and redeploys on failure (see WATCHDEBUG integration).
+qmoi-enhanced/QMOICLONEGITLAB.md:31: - QMOI monitors all pipelines and auto-fixes errors using WATCHDEBUG.
+qmoi-enhanced/QMOICLONEGITLAB.md:55: - **WATCHDEBUG Integration:**
+qmoi-enhanced/QMOIDATABASE.md:72: ## TODO
+qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md:32: QMOI_DEBUG=false
+qmoi-enhanced/QMOISPACEDEV.md:539: export QMOI_ENABLE_ERROR_RECOVERY="true"
+qmoi-enhanced/QMOISPACEDEV.md:1217: export QMOI_LOG_LEVEL="DEBUG"
+qmoi-enhanced/QMOISPACEDEV.md:1218: export QMOI_DEBUG_MODE="true"
+qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md:373: DEBUG=qmoi:* npm start
+qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md:430: DEBUG=qmoi:* npm start
+qmoi-enhanced/TESTREADME.md:354: export TEST_LOG_LEVEL=DEBUG
+qmoi-enhanced/TESTREADME.md:441: export DEBUG_MODE=true
+qmoi-enhanced/TESTREADME.md:442: export LOG_LEVEL=DEBUG
+qmoi-enhanced/TRACKS.md:11: - Log format: `[YYYY-MM-DD HH:mm:ss] [TYPE] [ACTION/ERROR/DEBUG] - Details`
+qmoi-enhanced/TRACKS.md:12: - Types: ACTION, ERROR, DEBUG, SYNC, TRACK, ENHANCEMENT, FEATURE, AUTODEVELOPMENT, AUTOMATION
+qmoi-enhanced/TRACKS.md:15: - `[2025-10-04 14:24:01] [ERROR] [Sync] - Failed to sync ALLMDFILESREFS.md to Alpha-Q-ai.`
+qmoi-enhanced/TRACKS.md:16: - `[2025-10-04 14:25:22] [DEBUG] [Memory] - QMOI memory detected new .md file addition.`
+qmoi-enhanced/WATCHDEBUG.md:1: # WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System
+qmoi-enhanced/WATCHDEBUG.md:4: WATCHDEBUG.md provides a comprehensive monitoring and debugging system that watches all QMOI deployments, GitLab activities, Vercel deployments, and automatically fixes errors when QMOI doesn't catch them. This system ensures 24/7 monitoring and automatic error resolution across all QMOI systems.
+GIT:M .npmrc
+GIT: M ALLMDFILESREFS.md
+GIT: M scripts/network/network_connectivity_manager.py
+GIT:?? .devcontainer/
+GIT:?? ALLERRORSTYPESFILES.md
+GIT:?? POSTPRODUCTIONCHECKLIST.md
+GIT:?? PRODUCTIONCHECKLIST.md
+GIT:?? QMOIGITHUBAPP.md
+GIT:?? TO-DOs.md
+GIT:?? WEBHOOKS.md
+GIT:?? scripts/env_manager.py
+GIT:?? scripts/scan_and_index.py
+GIT:?? scripts/secret_store.py

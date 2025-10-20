@@ -792,7 +792,7 @@ def main():
     # Initialize network manager
     network_manager = NetworkConnectivityManager()
     
-    # Check command line arguments
+    # Check command line argument4s
     if len(sys.argv) > 1:
         command = sys.argv[1]
         
