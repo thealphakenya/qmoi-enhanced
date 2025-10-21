@@ -1,0 +1,20 @@
+{
+  "master": {
+    "pw": "<hidden>",
+    "created": "2025-10-21T00:00:00Z",
+    "profiles": [
+      "primary"
+    ]
+  },
+  "sister": {
+    "pw": "<hidden>",
+    "created": "2025-10-21T00:00:00Z",
+    "profiles": [
+      "secondary"
+    ]
+  },
+  "testuser_667c0c": {
+    "pw": "scrypt:32768:8:1$ratdSQvoVUD9ySMU$325035465c506088fb51fb6fce330ca29d597782d33bb9a883817682d4457cb78bc40a37e68c943241fc65111fe1b55958294feecc6a05c4894951b705be4ebd",
+    "created": "2025-10-21T01:34:28.313209"
+  }
+}

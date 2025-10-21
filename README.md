@@ -1,6 +1,7 @@
 # QMOI System
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
+![Publish Q Alpha](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-alpha.yml/badge.svg)
 
 Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and device.
 
@@ -58,6 +59,16 @@ QCity runners orchestrate and manage:
 
 🤖 **QMOI Automation & Enhancement**
 - QMOI autofixes all workflow issues and errors automatically
+
+## Q Alpha PWA (Autopublished)
+
+Q Alpha is a lightweight PWA aggregator that combines QMOI, QMOI Space, and QCity into one progressive web app experience. It's set up to be auto-built and deployed to GitHub Pages on push (see `.github/workflows/publish-q-alpha.yml`).
+
+After the first successful run the site will be available at:
+
+https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-alpha/
+
+If you need a custom domain or organization Pages site, update the workflow and repository Pages settings.
 - QMOI can autotrigger any workflow, modify workflow or other files, and enhance features as needed
 - All binaries are validated and used in releases—no placeholders
 - QMOI can add new features, platforms, or app types on demand
@@ -148,3 +159,9 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 - ✅ Update-safe via comment markers
 - ✅ Markdown table for device status
 - ✅ Web-safe and version-controllable
+
+<!-- QMOI_APPS_TABLE_START -->
+| App | Platform | File | Size (KB) | Download |
+|---|---:|---|---:|---|
+| qmoi-windows-exe | windows | [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) / [GitHub Raw](https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qmoi_ai.exe) |
+<!-- QMOI_APPS_TABLE_END -->

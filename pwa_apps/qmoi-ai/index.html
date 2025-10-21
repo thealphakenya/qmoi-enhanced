@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>QMOI AI</title>
+    <link rel="manifest" href="/mirror/raw/pwa_apps/qmoi-ai/manifest.webmanifest">
+    <style>body{font-family:system-ui,Arial,sans-serif;padding:16px;background:#fff}h1{margin:0}</style>
+  </head>
+  <body>
+    <h1>QMOI AI</h1>
+    <p>AI assistant experience. Requires sign-in from Q Alpha.</p>
+    <textarea id="prompt" rows="4" cols="60" placeholder="Type a prompt..."></textarea><br>
+    <button id="send">Send</button>
+    <button id="save-qki">Save to q.ki</button>
+    <pre id="resp"></pre>
+    <script>
+      async function _callAI(p){
+        const t = localStorage.getItem('qmoi_token'); if (!t){ alert('Please login via Q Alpha'); return null; }
+        const res = await fetch(window.location.origin + '/ai', {method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+t}, body: JSON.stringify({prompt: p})});
+        if (!res.ok){ alert('AI call failed'); return null; }
+        const j = await res.json(); return j.response;
+      }
+      document.getElementById('send').addEventListener('click', async ()=>{
+        const p = document.getElementById('prompt').value;
+        const r = await _callAI(p);
+        if (r) document.getElementById('resp').innerText = JSON.stringify(r, null, 2);
+      });
+      document.getElementById('save-qki').addEventListener('click', async ()=>{
+        const val = document.getElementById('resp').innerText || document.getElementById('prompt').value;
+        const t = localStorage.getItem('qmoi_token'); if (!t){ alert('login required'); return; }
+        // push memory via sync endpoint (merge will occur on server)
+        const mem = [{id: null, key: 'q.ki', value: {note: val}, created: new Date().toISOString(), type: 'note'}];
+        await fetch(window.location.origin + '/sync-memory', {method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+t}, body: JSON.stringify({memories: mem})});
+        alert('Saved to q.ki');
+      });
+    </script>
+  </body>
+</html>

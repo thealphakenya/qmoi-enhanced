@@ -1,0 +1,9 @@
+{
+  "name": "QMOI AI",
+  "short_name": "QMOI AI",
+  "start_url": "/mirror/app/qmoi-ai/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0b5cff",
+  "icons": [{"src":"/mirror/raw/pwa_apps/qmoi-ai/icon-192.png","sizes":"192x192","type":"image/png"}]
+}

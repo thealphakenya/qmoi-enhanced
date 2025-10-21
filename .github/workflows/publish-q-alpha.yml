@@ -1,0 +1,36 @@
+name: Publish Q Alpha PWA
+
+on:
+  push:
+    branches: [ main, autosync-backup-20250926-232440 ]
+    paths:
+      - 'pwa_apps/q-alpha/**'
+  workflow_dispatch: {}
+  release:
+    types: [published]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Build Q Alpha PWA
+        working-directory: ./pwa_apps/q-alpha
+        run: |
+          npm ci --no-audit --no-fund || true
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./pwa_apps/q-alpha/dist

@@ -1,0 +1,174 @@
+{
+  "generated_by": "generate_apps_inventory.py",
+  "generated_at": "2025-10-21T01:51:07.321520Z",
+  "apps": [
+    {
+      "name": "README",
+      "file": "pwa_apps/q-alpha/README.md",
+      "platform": "q-alpha",
+      "size_bytes": 315,
+      "exists": true
+    },
+    {
+      "name": "index",
+      "file": "pwa_apps/q-alpha/index.html",
+      "platform": "q-alpha",
+      "size_bytes": 11378,
+      "exists": true
+    },
+    {
+      "name": "manifest",
+      "file": "pwa_apps/q-alpha/manifest.webmanifest",
+      "platform": "q-alpha",
+      "size_bytes": 331,
+      "exists": true
+    },
+    {
+      "name": "package",
+      "file": "pwa_apps/q-alpha/package.json",
+      "platform": "q-alpha",
+      "size_bytes": 205,
+      "exists": true
+    },
+    {
+      "name": "sw",
+      "file": "pwa_apps/q-alpha/sw.js",
+      "platform": "q-alpha",
+      "size_bytes": 322,
+      "exists": true
+    },
+    {
+      "name": "icon-192",
+      "file": "pwa_apps/qmoi/icon-192.png",
+      "platform": "qmoi",
+      "size_bytes": 0,
+      "exists": true
+    },
+    {
+      "name": "index",
+      "file": "pwa_apps/qmoi/index.html",
+      "platform": "qmoi",
+      "size_bytes": 1280,
+      "exists": true
+    },
+    {
+      "name": "manifest",
+      "file": "pwa_apps/qmoi/manifest.webmanifest",
+      "platform": "qmoi",
+      "size_bytes": 269,
+      "exists": true
+    },
+    {
+      "name": "sw",
+      "file": "pwa_apps/qmoi/sw.js",
+      "platform": "qmoi",
+      "size_bytes": 206,
+      "exists": true
+    },
+    {
+      "name": "icon-192",
+      "file": "pwa_apps/qmoi-ai/icon-192.png",
+      "platform": "qmoi-ai",
+      "size_bytes": 1,
+      "exists": true
+    },
+    {
+      "name": "index",
+      "file": "pwa_apps/qmoi-ai/index.html",
+      "platform": "qmoi-ai",
+      "size_bytes": 897,
+      "exists": true
+    },
+    {
+      "name": "manifest",
+      "file": "pwa_apps/qmoi-ai/manifest.webmanifest",
+      "platform": "qmoi-ai",
+      "size_bytes": 281,
+      "exists": true
+    },
+    {
+      "name": "sw",
+      "file": "pwa_apps/qmoi-ai/sw.js",
+      "platform": "qmoi-ai",
+      "size_bytes": 202,
+      "exists": true
+    },
+    {
+      "name": "build",
+      "file": "mobile/android/build.gradle",
+      "platform": "android",
+      "size_bytes": 547,
+      "exists": true
+    },
+    {
+      "name": "gradle",
+      "file": "mobile/android/gradle.properties",
+      "platform": "android",
+      "size_bytes": 1975,
+      "exists": true
+    },
+    {
+      "name": "gradlew",
+      "file": "mobile/android/gradlew",
+      "platform": "android",
+      "size_bytes": 8733,
+      "exists": true
+    },
+    {
+      "name": "gradlew",
+      "file": "mobile/android/gradlew.bat",
+      "platform": "android",
+      "size_bytes": 3134,
+      "exists": true
+    },
+    {
+      "name": "settings",
+      "file": "mobile/android/settings.gradle",
+      "platform": "android",
+      "size_bytes": 339,
+      "exists": true
+    },
+    {
+      "name": "AlertSettingsScreen",
+      "file": "mobile/components/AlertSettingsScreen.js",
+      "platform": "components",
+      "size_bytes": 3111,
+      "exists": true
+    },
+    {
+      "name": "AnalyticsScreen",
+      "file": "mobile/components/AnalyticsScreen.js",
+      "platform": "components",
+      "size_bytes": 21012,
+      "exists": true
+    },
+    {
+      "name": "DeviceManagementScreen",
+      "file": "mobile/components/DeviceManagementScreen.js",
+      "platform": "components",
+      "size_bytes": 27675,
+      "exists": true
+    },
+    {
+      "name": "NotificationScreen",
+      "file": "mobile/components/NotificationScreen.js",
+      "platform": "components",
+      "size_bytes": 4809,
+      "exists": true
+    },
+    {
+      "name": ".package-lock",
+      "file": "mobile/node_modules/.package-lock.json",
+      "platform": "node_modules",
+      "size_bytes": 212294,
+      "exists": true
+    },
+    {
+      "name": "pushNotifications",
+      "file": "mobile/utils/pushNotifications.js",
+      "platform": "utils",
+      "size_bytes": 1095,
+      "exists": true
+    }
+  ]
+}
