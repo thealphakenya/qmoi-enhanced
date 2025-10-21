@@ -1,0 +1,24 @@
+{
+  "generated_at": "2025-10-21T00:00:00Z",
+  "pwa_apps": [
+    "q-alpha",
+    "qmoi",
+    "qmoi-ai"
+  ],
+  "downloads": {
+    "files": [
+      "q-alpha.zip",
+      "qfilemanager.apk",
+      "qmoi ai.exe",
+      "qmoi_ai.exe",
+      "qmoi_ai_stub.apk",
+      "qmoi_stub.exe"
+    ],
+    "windows_latest": "/downloads/windows/latest/qmoi_ai.exe"
+  },
+  "placeholders_detected": [
+    "/downloads/qmoi_ai_stub.apk",
+    "/downloads/qmoi_stub.exe"
+  ],
+  "notes": "Inventory generated automatically. Next: replace stub artifacts, import full front-ends or point to authoritative GitHub releases, run build scripts for mobile/desktop where available."
+}

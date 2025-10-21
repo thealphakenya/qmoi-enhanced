@@ -58,17 +58,19 @@ ROOT = Path(__file__).parent
 USERS_FILE = ROOT / 'users.json'
 MEMORIES_FILE = ROOT / 'memories.json'
 DB_FILE = ROOT / 'qmoi.db'
+# Runtime-only in-memory storage for transient WebAuthn state (was stored in webauthn_state.json)
+WEBAUTHN_STATE = {}
 
 
 def _load_json(path, default):
-    # Deprecated: JSON storage removed for production; raise if used unexpectedly
-    app.logger.warning('_load_json called for %s (deprecated)', path)
+    # JSON storage is deprecated. Return default to avoid accidental reads.
+    app.logger.warning('Attempted to load JSON file %s but JSON persistence is deprecated; returning default', path)
     return default
 
 
 def _save_json(path, data):
-    # Deprecated: persist to DB instead. Keep no-op to avoid accidental writes.
-    app.logger.warning('_save_json called for %s (deprecated)', path)
+    # JSON persistence is deprecated. No-op (we keep backups of legacy JSON files).
+    app.logger.warning('Attempted to save JSON file %s but JSON persistence is deprecated; no-op', path)
 
 
 def load_users():
@@ -241,7 +243,9 @@ def load_creds():
             return out
         finally:
             conn.close()
-    return _load_json(ROOT / 'webauthn_creds.json', {})
+    # If DB not available, return empty dict (no credentials)
+    app.logger.warning('Database unavailable when loading webauthn creds; returning empty credential set')
+    return {}
 
 
 def save_creds(c):
@@ -260,28 +264,49 @@ def save_creds(c):
             return
         finally:
             conn.close()
-    _save_json(ROOT / 'webauthn_creds.json', c)
+    # If DB not available, log and drop (we do not persist to JSON)
+    app.logger.warning('Database unavailable when saving webauthn creds; change not persisted')
 
 
 def load_revoked_tokens():
-    # Legacy function: returns raw-token list if JSON present; new code uses jti in DB
-    legacy = _load_json(ROOT / 'revoked_tokens.json', [])
-    return legacy
+    conn = _db_get_conn()
+    tokens = []
+    if conn:
+        try:
+            cur = conn.cursor()
+            cur.execute('CREATE TABLE IF NOT EXISTS revoked_tokens (token TEXT PRIMARY KEY, jti TEXT)')
+            cur.execute('SELECT token, jti FROM revoked_tokens')
+            rows = cur.fetchall()
+            for token, jti in rows:
+                tokens.append({'token': token, 'jti': jti})
+            return tokens
+        finally:
+            conn.close()
+    app.logger.warning('Database unavailable when loading revoked tokens; returning empty list')
+    return []
 
 
 def save_revoked_token(token):
-    # legacy storage for raw token strings
-    revoked = _load_json(ROOT / 'revoked_tokens.json', [])
-    if token not in revoked:
-        revoked.append(token)
-        _save_json(ROOT / 'revoked_tokens.json', revoked)
+    conn = _db_get_conn()
+    if conn:
+        try:
+            cur = conn.cursor()
+            cur.execute('CREATE TABLE IF NOT EXISTS revoked_tokens (token TEXT PRIMARY KEY, jti TEXT)')
+            # attempt to decode jti
+            try:
+                payload = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
+                jti = payload.get('jti')
+            except Exception:
+                jti = None
+            cur.execute('REPLACE INTO revoked_tokens (token, jti) VALUES (?,?)', (token, jti))
+            conn.commit()
+            return
+        finally:
+            conn.close()
+    app.logger.warning('Database unavailable when saving revoked token; token not persisted')
 
 
 def is_token_revoked(token):
-    # Check legacy raw-token list first
-    legacy = _load_json(ROOT / 'revoked_tokens.json', [])
-    if token in legacy:
-        return True
     # Try decode and check jti or token in DB
     try:
         payload = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
@@ -292,14 +317,14 @@ def is_token_revoked(token):
     if conn:
         try:
             cur = conn.cursor()
-            # Safely query for both token and jti if columns exist
+            # Query for token
             try:
                 cur.execute("SELECT token FROM revoked_tokens WHERE token=?", (token,))
                 if cur.fetchone():
                     return True
             except Exception:
-                # ignore
                 pass
+            # Query for jti
             if jti:
                 try:
                     cur.execute("SELECT jti FROM revoked_tokens WHERE jti=?", (jti,))
@@ -309,6 +334,7 @@ def is_token_revoked(token):
                     pass
         finally:
             conn.close()
+    # If DB not available or no match, treat as not revoked
     return False
 
 
@@ -324,9 +350,8 @@ def webauthn_register_options():
     f2 = get_fido2_server()
     registration_data, state = f2.register_begin({'id': user_id, 'name': username, 'displayName': username}, user_verification='discouraged')
     # store state in memory (simple): in a temp file keyed by username
-    tmp = _load_json(ROOT / 'webauthn_state.json', {})
-    tmp[username] = state
-    _save_json(ROOT / 'webauthn_state.json', tmp)
+    # store state in memory keyed by username
+    WEBAUTHN_STATE[username] = state
     return cbor.encode(registration_data)
 
 
@@ -338,8 +363,7 @@ def webauthn_register_complete():
     username = data.get('username')
     client_data = data.get('clientData')
     att_obj = data.get('attestationObject')
-    tmp = _load_json(ROOT / 'webauthn_state.json', {})
-    state = tmp.get(username)
+    state = WEBAUTHN_STATE.get(username)
     f2 = get_fido2_server()
     auth_data = f2.register_complete(state, client_data, att_obj)
     # save credential
@@ -361,9 +385,7 @@ def webauthn_auth_options():
         allow_list.append({'type':'public-key','id': c['cred'].credential_id})
     f2 = get_fido2_server()
     auth_data, state = f2.authenticate_begin(allow_list)
-    tmp = _load_json(ROOT / 'webauthn_state.json', {})
-    tmp[username] = state
-    _save_json(ROOT / 'webauthn_state.json', tmp)
+    WEBAUTHN_STATE[username] = state
     return cbor.encode(auth_data)
 
 
@@ -375,8 +397,7 @@ def webauthn_auth_complete():
     resp = data.get('authenticatorData')
     sig = data.get('signature')
     client_data = data.get('clientData')
-    tmp = _load_json(ROOT / 'webauthn_state.json', {})
-    state = tmp.get(username)
+    state = WEBAUTHN_STATE.get(username)
     creds = load_creds().get(username, [])
     # match credential by id
     cred = None

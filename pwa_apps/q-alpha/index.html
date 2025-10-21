@@ -114,7 +114,7 @@
   document.getElementById('btn-space').addEventListener('click', ()=>{document.getElementById('content').innerText='QMOI Space UI loaded'});
   document.getElementById('btn-qcity').addEventListener('click', ()=>{document.getElementById('content').innerText='QCity UI loaded'});
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/pwa_apps/q-alpha/sw.js').catch(()=>{});
+        navigator.serviceWorker.register('/mirror/raw/pwa_apps/q-alpha/sw.js').catch(()=>{});
       }
 
       // Voice control using Web Speech API (client-side). Recognized commands are sent to the control server.
@@ -185,9 +185,9 @@
       document.getElementById('voice-stop').addEventListener('click', ()=>{ if (recognition) { recognition.stop(); document.getElementById('voice-status').innerText='Stopped'; }});
 
       // --- Auth handlers ---
-      function _setToken(t) { localStorage.setItem('qmoi_token', t); document.getElementById('user-info').style.display='block'; document.getElementById('auth-forms').style.display='none'; document.getElementById('who').innerText = 'Logged in'; }
-      function _clearToken(){ localStorage.removeItem('qmoi_token'); document.getElementById('user-info').style.display='none'; document.getElementById('auth-forms').style.display='block'; document.getElementById('who').innerText='Not logged in'; }
-  const token = localStorage.getItem('qmoi_token'); if (token) { _setToken(token); }
+    function _setToken(t) { localStorage.setItem('qmoi_token', t); localStorage.setItem('qalpha_token', t); document.getElementById('user-info').style.display='block'; document.getElementById('auth-forms').style.display='none'; document.getElementById('who').innerText = 'Logged in'; }
+    function _clearToken(){ localStorage.removeItem('qmoi_token'); localStorage.removeItem('qalpha_token'); document.getElementById('user-info').style.display='none'; document.getElementById('auth-forms').style.display='block'; document.getElementById('who').innerText='Not logged in'; }
+  const token = localStorage.getItem('qalpha_token') || localStorage.getItem('qmoi_token'); if (token) { _setToken(token); }
   let autosyncIntervalId = null;
 
   function startAutosync(){ if (!autosyncIntervalId){ autosyncOnce(); autosyncIntervalId = setInterval(autosyncOnce, 30000); } }
@@ -208,7 +208,7 @@
       });
 
       document.getElementById('logout').addEventListener('click', async ()=>{ 
-        const t = localStorage.getItem('qmoi_token');
+          const t = localStorage.getItem('qalpha_token') || localStorage.getItem('qmoi_token');
         if (t){ await fetch(window.location.origin + '/logout', {method:'POST', headers:{'Authorization':'Bearer '+t}}).catch(()=>{}); }
         _clearToken(); stopAutosync();
       });
@@ -228,7 +228,7 @@
       function _setLocalMemories(arr){ localStorage.setItem('qmoi_memories', JSON.stringify(arr)); }
 
       async function autosyncOnce(){
-        const t = localStorage.getItem('qmoi_token');
+          const t = localStorage.getItem('qalpha_token') || localStorage.getItem('qmoi_token');
         if (!t) return;
         const local = _getLocalMemories();
         try {
