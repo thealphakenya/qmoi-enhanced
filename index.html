@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Q Alpha</title>
+    <link rel="manifest" href="/mirror/raw/pwa_apps/q-alpha/manifest.webmanifest">
+    <style>
+      :root{--bg:#0b1220;--card:#0f1724;--accent:#0b5fff;--muted:#9aa6bf}
+      body{font-family:Inter,system-ui,Segoe UI,Arial;background:linear-gradient(180deg,var(--bg),#071027);color:#e6eef8;margin:0;padding:20px}
+      #app{max-width:1100px;margin:0 auto}
+      header{display:flex;align-items:center;justify-content:space-between}
+      .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,.6);margin-bottom:12px}
+      nav button{margin-right:8px;padding:8px 12px;background:transparent;border:1px solid rgba(255,255,255,.06);color:var(--muted);border-radius:8px}
+      #apps ul{display:flex;gap:8px;list-style:none;padding:0}
+      #apps li{display:inline}
+      .install-btn{background:var(--accent);color:white;padding:8px 12px;border-radius:10px;border:0}
+      .settings-icon{width:36px;height:36px;border-radius:8px;background:#081427;display:inline-flex;align-items:center;justify-content:center}
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="display:flex;align-items:center;gap:12px"><img src="/mirror/raw/pwa_apps/q-alpha/icons/icon-48.png" width="48" height="48" alt="Q"/><h1 style="margin:0">Q Alpha</h1></div>
+        <div>
+          <button id="btn-install" class="install-btn">Install</button>
+        </div>
+        <div class="settings-icon" title="Settings">⚙️</div>
+      </div>
+      <p style="color:var(--muted)">Central hub that aggregates QMOI, QMOI Space, and QCity. Use the launcher or voice control to interact.</p>
+      <nav>
+        <button id="btn-qmoi">QMOI</button>
+        <button id="btn-space">QMOI Space</button>
+        <button id="btn-qcity">QCity</button>
+      </nav>
+
+      <section id="downloads" class="card">
+        <h3>Downloads</h3>
+        <ul>
+          <li><a href="/downloads/q-alpha.zip" download>Q Alpha (zip)</a> — <a href="https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-alpha.zip">GitHub Raw</a></li>
+          <li><a href="/downloads/qfilemanager.apk" download>Q FileManager (apk)</a> — <a href="https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qfilemanager.apk">GitHub Raw</a></li>
+          <li><a href="/downloads/qmoi_ai.exe" download>QMOI (Windows .exe)</a> — <a href="https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qmoi_ai.exe">GitHub Raw</a></li>
+        </ul>
+      </section>
+
+      <section id="voice-control" class="card">
+        <h3>Voice control</h3>
+        <button id="voice-start">Start Listening</button>
+        <button id="voice-stop">Stop</button>
+        <p id="voice-status">Idle</p>
+      </section>
+
+      <section id="auth" class="card">
+        <h3>User</h3>
+        <div id="auth-forms">
+          <div id="signup">
+            <h4>Sign up</h4>
+            <input id="su-username" placeholder="username" />
+            <input id="su-password" placeholder="password" type="password" />
+            <button id="su-btn">Sign Up</button>
+          </div>
+          <div id="login">
+            <h4>Login</h4>
+            <input id="li-username" placeholder="username" />
+            <input id="li-password" placeholder="password" type="password" />
+            <button id="li-btn">Login</button>
+          </div>
+        </div>
+        <div id="user-info" style="display:none">
+          <p id="who">Not logged in</p>
+          <button id="logout">Logout</button>
+        </div>
+      </section>
+
+      <section id="memories" class="card">
+        <h3>q.ki Memory</h3>
+        <pre id="memory-display">(not loaded)</pre>
+      </section>
+
+      <div id="content"></div>
+      <section id="apps" class="card">
+        <h3>Apps</h3>
+        <ul>
+          <li><button class="app-launch" data-app="q-alpha">Q Alpha</button></li>
+          <li><button class="app-launch" data-app="qmoi">QMOI</button></li>
+          <li><button class="app-launch" data-app="qmoi-ai">QMOI AI</button></li>
+        </ul>
+        <div id="app-frame-wrap" style="border:1px solid #ccc;margin-top:10px;">
+          <iframe id="app-frame" src="about:blank" style="width:100%;height:600px;border:0;"></iframe>
+        </div>
+      </section>
+    </div>
+    <script>
+      // PWA install prompt handling
+      let deferredInstallPrompt = null;
+      window.addEventListener('beforeinstallprompt', (e)=>{
+        e.preventDefault();
+        deferredInstallPrompt = e;
+        document.getElementById('btn-install').style.display = 'inline-block';
+      });
+      document.getElementById('btn-install').addEventListener('click', async ()=>{
+        if (deferredInstallPrompt){
+          deferredInstallPrompt.prompt();
+          const choice = await deferredInstallPrompt.userChoice;
+          if (choice.outcome === 'accepted'){
+            document.getElementById('btn-install').innerText = 'Installed';
+          }
+          deferredInstallPrompt = null;
+        } else {
+          alert('Install not available');
+        }
+      });
+  document.getElementById('btn-qmoi').addEventListener('click', ()=>{document.getElementById('content').innerText='QMOI UI loaded'});
+  document.getElementById('btn-space').addEventListener('click', ()=>{document.getElementById('content').innerText='QMOI Space UI loaded'});
+  document.getElementById('btn-qcity').addEventListener('click', ()=>{document.getElementById('content').innerText='QCity UI loaded'});
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/pwa_apps/q-alpha/sw.js').catch(()=>{});
+      }
+
+      // Voice control using Web Speech API (client-side). Recognized commands are sent to the control server.
+      const controlUrl = window.location.origin + '/control';
+      let recognition;
+      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+        recognition = new SR();
+        recognition.continuous = true;
+        recognition.interimResults = false;
+        recognition.onresult = async (event) => {
+          const transcript = Array.from(event.results).map(r=>r[0].transcript).join(' ').trim();
+          document.getElementById('voice-status').innerText = 'Heard: ' + transcript;
+          // Basic intent: if user says 'download <name>' trigger download via control server
+          const lc = transcript.toLowerCase();
+          if (lc.includes('download')) {
+            // map common names to filenames
+            const map = {
+              'q alpha': 'q-alpha.zip',
+              'q-alpha': 'q-alpha.zip',
+              'filemanager': 'qfilemanager.apk',
+              'q filemanager': 'qfilemanager.apk',
+              'qmoi': 'qmoi_ai.exe',
+              'qmoi ai': 'qmoi_ai.exe'
+            };
+            let filename = null;
+            for (const k of Object.keys(map)) {
+              if (lc.includes(k)) { filename = map[k]; break; }
+            }
+            if (!filename) {
+              document.getElementById('voice-status').innerText = 'Download requested but target not recognized: ' + transcript;
+              // still send voice to control server for logging
+              fetch(controlUrl, {method: 'POST', headers: {'Content-Type':'application/json', 'Authorization':'Bearer dev-token'}, body: JSON.stringify({command: 'voice', text: transcript})}).catch(()=>{});
+              return;
+            }
+            // request download URL from control server
+            try {
+              const res = await fetch(controlUrl, {method: 'POST', headers: {'Content-Type':'application/json', 'Authorization':'Bearer dev-token'}, body: JSON.stringify({command: 'download', target: filename})});
+              if (res.ok) {
+                const j = await res.json();
+                if (j.url) {
+                  document.getElementById('voice-status').innerText = 'Opening download: ' + filename;
+                  window.open(j.url, '_blank');
+                } else {
+                  document.getElementById('voice-status').innerText = 'Download handler returned no URL';
+                }
+              } else {
+                document.getElementById('voice-status').innerText = 'Download request failed';
+              }
+            } catch (e) {
+              document.getElementById('voice-status').innerText = 'Error contacting control server';
+            }
+            return;
+          }
+
+          // Fallback: send to control server for logging/processing
+          fetch(controlUrl, {
+            method: 'POST',
+            headers: {'Content-Type':'application/json', 'Authorization':'Bearer dev-token'},
+            body: JSON.stringify({command: 'voice', text: transcript})
+          }).catch(()=>{});
+        };
+      } else {
+        document.getElementById('voice-status').innerText = 'Voice API not supported in this browser';
+      }
+
+      document.getElementById('voice-start').addEventListener('click', ()=>{ if (recognition) { recognition.start(); document.getElementById('voice-status').innerText='Listening...'; }});
+      document.getElementById('voice-stop').addEventListener('click', ()=>{ if (recognition) { recognition.stop(); document.getElementById('voice-status').innerText='Stopped'; }});
+
+      // --- Auth handlers ---
+      function _setToken(t) { localStorage.setItem('qmoi_token', t); document.getElementById('user-info').style.display='block'; document.getElementById('auth-forms').style.display='none'; document.getElementById('who').innerText = 'Logged in'; }
+      function _clearToken(){ localStorage.removeItem('qmoi_token'); document.getElementById('user-info').style.display='none'; document.getElementById('auth-forms').style.display='block'; document.getElementById('who').innerText='Not logged in'; }
+  const token = localStorage.getItem('qmoi_token'); if (token) { _setToken(token); }
+  let autosyncIntervalId = null;
+
+  function startAutosync(){ if (!autosyncIntervalId){ autosyncOnce(); autosyncIntervalId = setInterval(autosyncOnce, 30000); } }
+  function stopAutosync(){ if (autosyncIntervalId){ clearInterval(autosyncIntervalId); autosyncIntervalId = null; } }
+
+      document.getElementById('su-btn').addEventListener('click', async ()=>{
+        const u = document.getElementById('su-username').value;
+        const p = document.getElementById('su-password').value;
+        const res = await fetch(window.location.origin + '/signup', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({username: u, password: p})});
+        if (res.ok) { alert('Signup ok, please login'); } else { alert('Signup failed'); }
+      });
+
+      document.getElementById('li-btn').addEventListener('click', async ()=>{
+        const u = document.getElementById('li-username').value;
+        const p = document.getElementById('li-password').value;
+        const res = await fetch(window.location.origin + '/login', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({username: u, password: p})});
+        if (res.ok) { const j = await res.json(); _setToken(j.token); } else { alert('Login failed'); }
+      });
+
+      document.getElementById('logout').addEventListener('click', async ()=>{ 
+        const t = localStorage.getItem('qmoi_token');
+        if (t){ await fetch(window.location.origin + '/logout', {method:'POST', headers:{'Authorization':'Bearer '+t}}).catch(()=>{}); }
+        _clearToken(); stopAutosync();
+      });
+
+      // App launcher wiring: open mirrored app in iframe
+      document.querySelectorAll('.app-launch').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const app = btn.getAttribute('data-app');
+          const frame = document.getElementById('app-frame');
+          frame.src = window.location.origin + '/mirror/app/' + app;
+        });
+      });
+
+      // --- Memory autosync ---
+      // local memories stored in localStorage.qmoi_memories as JSON array
+      function _getLocalMemories(){ try { return JSON.parse(localStorage.getItem('qmoi_memories')||'[]'); } catch(e){ return []; } }
+      function _setLocalMemories(arr){ localStorage.setItem('qmoi_memories', JSON.stringify(arr)); }
+
+      async function autosyncOnce(){
+        const t = localStorage.getItem('qmoi_token');
+        if (!t) return;
+        const local = _getLocalMemories();
+        try {
+          // push local
+          await fetch(window.location.origin + '/sync-memory', {method:'POST', headers:{'Content-Type':'application/json', 'Authorization':'Bearer '+t}, body: JSON.stringify({memories: local})});
+          // fetch merged
+          const res = await fetch(window.location.origin + '/memories', {headers:{'Authorization':'Bearer '+t}});
+          if (res.ok){ const j = await res.json(); if (j.memories) { _setLocalMemories(j.memories); console.log('Autosync merged', j.memories.length); }}
+        } catch(e){ console.log('Autosync error', e); }
+        // update memory display with q.ki if present
+        const all = _getLocalMemories();
+        const qki = all.find(m => m.key === 'q.ki');
+        document.getElementById('memory-display').innerText = qki ? JSON.stringify(qki, null, 2) : '(no q.ki memory)';
+      }
+
+      // Start autosync automatically when token present
+      if (localStorage.getItem('qmoi_token')) startAutosync();
+
+    </script>
+  </body>
+</html>
