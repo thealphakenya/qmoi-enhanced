@@ -77,6 +77,14 @@
         <pre id="memory-display">(not loaded)</pre>
       </section>
 
+      <section id="attachments" class="card">
+        <h3>Attachments (@attach)</h3>
+        <input id="attach-file" type="file" />
+        <button id="attach-btn">Attach</button>
+        <ul id="attach-list"></ul>
+        <p style="color:var(--muted)">Attachments are stored locally and included in autosync as lightweight metadata (name, size, dataUrl truncated).</p>
+      </section>
+
       <div id="content"></div>
       <section id="apps" class="card">
         <h3>Apps</h3>
@@ -227,13 +235,41 @@
       function _getLocalMemories(){ try { return JSON.parse(localStorage.getItem('qmoi_memories')||'[]'); } catch(e){ return []; } }
       function _setLocalMemories(arr){ localStorage.setItem('qmoi_memories', JSON.stringify(arr)); }
 
+      // --- Attachment handling (@attach) ---
+      function _getLocalAttachments(){ try { return JSON.parse(localStorage.getItem('qmoi_attachments')||'[]'); } catch(e){ return []; } }
+      function _setLocalAttachments(arr){ localStorage.setItem('qmoi_attachments', JSON.stringify(arr)); }
+
+      document.getElementById('attach-btn').addEventListener('click', ()=>{
+        const inp = document.getElementById('attach-file');
+        if (!inp.files || inp.files.length === 0) return alert('Select a file');
+        const f = inp.files[0];
+        const reader = new FileReader();
+        reader.onload = ()=>{
+          const arr = _getLocalAttachments();
+          // store truncated dataUrl to avoid huge localStorage blobs (store first 4KB)
+          const dataUrl = (''+reader.result).slice(0, 4096);
+          const meta = {id: 'att-'+Date.now(), name: f.name, size: f.size, mime: f.type, dataUrlPreview: dataUrl};
+          arr.push(meta);
+          _setLocalAttachments(arr);
+          renderAttachments();
+        };
+        reader.readAsDataURL(f);
+      });
+
+      function renderAttachments(){
+        const ul = document.getElementById('attach-list'); ul.innerHTML='';
+        for (const a of _getLocalAttachments()){ const li = document.createElement('li'); li.innerText = `${a.name} (${Math.round(a.size/1024)}KB)`; ul.appendChild(li); }
+      }
+      renderAttachments();
+
       async function autosyncOnce(){
           const t = localStorage.getItem('qalpha_token') || localStorage.getItem('qmoi_token');
         if (!t) return;
         const local = _getLocalMemories();
+        const attachments = _getLocalAttachments();
         try {
           // push local
-          await fetch(window.location.origin + '/sync-memory', {method:'POST', headers:{'Content-Type':'application/json', 'Authorization':'Bearer '+t}, body: JSON.stringify({memories: local})});
+          await fetch(window.location.origin + '/sync-memory', {method:'POST', headers:{'Content-Type':'application/json', 'Authorization':'Bearer '+t}, body: JSON.stringify({memories: local, attachments: attachments})});
           // fetch merged
           const res = await fetch(window.location.origin + '/memories', {headers:{'Authorization':'Bearer '+t}});
           if (res.ok){ const j = await res.json(); if (j.memories) { _setLocalMemories(j.memories); console.log('Autosync merged', j.memories.length); }}
