@@ -753,75 +753,102 @@ if __name__ == '__main__':
             app.logger.error('Missing required secrets for production: %s', missing)
             raise SystemExit(1)
 
-    @app.route('/admin/backup-db', methods=['POST'])
-    def admin_backup_db():
-        # Auth with control token header
-        auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
-        token = None
-        if auth:
-            if auth.startswith('Bearer '):
-                token = auth.split(' ', 1)[1].strip()
-            else:
-                token = auth.strip()
-        if token != CONTROL_TOKEN:
-            return jsonify({'status':'error','reason':'unauthorized'}), 401
-        if not DB_FILE.exists():
-            return jsonify({'status':'error','reason':'db_missing'}), 404
-        downloads = ROOT / 'downloads'
-        downloads.mkdir(parents=True, exist_ok=True)
-        out = downloads / f'qmoi.db.backup.{int(datetime.datetime.utcnow().timestamp())}.sqlite'
-        try:
-            import shutil
-            shutil.copy2(str(DB_FILE), str(out))
-            return jsonify({'status':'ok','path': str(out.relative_to(ROOT))})
-        except Exception:
-            app.logger.exception('Backup failed')
-            return jsonify({'status':'error','reason':'backup_failed'}), 500
-
-    @app.route('/admin/update-ngrok', methods=['POST'])
-    def admin_update_ngrok():
-        """Trigger the repo ngrok URL update script. Requires CONTROL_TOKEN header.
-
-        This endpoint runs the local script in a subprocess. It's intentionally conservative:
-        - Only accepts requests authenticated with CONTROL_TOKEN
-        - Runs the script without network calls; the update script reads `live_qmoi_ngrok_url.txt`.
-        - Returns the script output. Do NOT enable unauthenticated access in production.
-        """
-        # Auth with control token header
-        auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
-        token = None
-        if auth:
-            if auth.startswith('Bearer '):
-                token = auth.split(' ', 1)[1].strip()
-            else:
-                token = auth.strip()
-        if token != CONTROL_TOKEN:
-            return jsonify({'status':'error','reason':'unauthorized'}), 401
-
-        # run the update script in dry-run or apply based on JSON body flag
-        payload = request.get_json(silent=True) or {}
-        apply_changes = bool(payload.get('apply', False))
-
-        script = Path(__file__).parent / 'scripts' / 'update_ngrok_links.py'
-        if not script.exists():
-            return jsonify({'status':'error','reason':'script_missing'}), 500
-
-        cmd = ['python3', str(script)]
-        if apply_changes:
-            cmd.append('--apply')
+@app.route('/admin/backup-db', methods=['POST'])
+def admin_backup_db():
+    # Auth with control token header
+    auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
+    token = None
+    if auth:
+        if auth.startswith('Bearer '):
+            token = auth.split(' ', 1)[1].strip()
         else:
-            cmd.append('--dry-run')
+            token = auth.strip()
+    if token != CONTROL_TOKEN:
+        return jsonify({'status':'error','reason':'unauthorized'}), 401
+    if not DB_FILE.exists():
+        return jsonify({'status':'error','reason':'db_missing'}), 404
+    downloads = ROOT / 'downloads'
+    downloads.mkdir(parents=True, exist_ok=True)
+    out = downloads / f'qmoi.db.backup.{int(datetime.datetime.utcnow().timestamp())}.sqlite'
+    try:
+        import shutil
+        shutil.copy2(str(DB_FILE), str(out))
+        return jsonify({'status':'ok','path': str(out.relative_to(ROOT))})
+    except Exception:
+        app.logger.exception('Backup failed')
+        return jsonify({'status':'error','reason':'backup_failed'}), 500
 
+
+@app.route('/admin/update-ngrok', methods=['POST'])
+def admin_update_ngrok():
+    """Trigger the repo ngrok URL update script. Requires CONTROL_TOKEN header.
+
+    This endpoint runs the local script in a subprocess. It's intentionally conservative:
+    - Only accepts requests authenticated with CONTROL_TOKEN
+    - Runs the script without network calls; the update script reads `live_qmoi_ngrok_url.txt`.
+    - Returns the script output. Do NOT enable unauthenticated access in production.
+    """
+    # Auth with control token header
+    auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
+    token = None
+    if auth:
+        if auth.startswith('Bearer '):
+            token = auth.split(' ', 1)[1].strip()
+        else:
+            token = auth.strip()
+    if token != CONTROL_TOKEN:
+        return jsonify({'status':'error','reason':'unauthorized'}), 401
+
+    # run the update script in dry-run or apply based on JSON body flag
+    payload = request.get_json(silent=True) or {}
+    apply_changes = bool(payload.get('apply', False))
+
+    script = Path(__file__).parent / 'scripts' / 'update_ngrok_links.py'
+    if not script.exists():
+        return jsonify({'status':'error','reason':'script_missing'}), 500
+
+    cmd = ['python3', str(script)]
+    if apply_changes:
+        cmd.append('--apply')
+    else:
+        cmd.append('--dry-run')
+
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        out = proc.stdout
+        err = proc.stderr
+        status = 'ok' if proc.returncode == 0 else 'error'
+        return jsonify({'status': status, 'returncode': proc.returncode, 'stdout': out, 'stderr': err})
+    except subprocess.TimeoutExpired:
+        return jsonify({'status':'error','reason':'timeout'}), 504
+    except Exception:
+        app.logger.exception('Failed to run update script')
+        return jsonify({'status':'error','reason':'failed'}), 500
+
+
+@app.route('/attachments', methods=['GET'])
+def list_attachments():
+    """Return attachments metadata for the authenticated user."""
+    user = _verify_jwt(request)
+    if not user:
+        return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
+    try:
+        cur = conn.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS attachments (id TEXT PRIMARY KEY, username TEXT, name TEXT, size INTEGER, mime TEXT, data TEXT, created TEXT)')
+        cur.execute('SELECT id, name, size, mime, created FROM attachments WHERE username=? ORDER BY created DESC', (user,))
+        rows = cur.fetchall()
+        out = [{'id': r[0], 'name': r[1], 'size': r[2], 'mime': r[3], 'created': r[4]} for r in rows]
+        return jsonify({'status': 'ok', 'attachments': out})
+    except Exception:
+        app.logger.exception('Failed to list attachments')
+        return jsonify({'status': 'error', 'reason': 'failed'}), 500
+    finally:
         try:
-            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-            out = proc.stdout
-            err = proc.stderr
-            status = 'ok' if proc.returncode == 0 else 'error'
-            return jsonify({'status': status, 'returncode': proc.returncode, 'stdout': out, 'stderr': err})
-        except subprocess.TimeoutExpired:
-            return jsonify({'status':'error','reason':'timeout'}), 504
+            conn.close()
         except Exception:
-            app.logger.exception('Failed to run update script')
-            return jsonify({'status':'error','reason':'failed'}), 500
+            pass
 
     app.run(host='0.0.0.0', port=8000)
