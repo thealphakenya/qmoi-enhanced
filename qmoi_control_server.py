@@ -19,6 +19,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 from typing import Optional
 import uuid
+import subprocess
 
 app = Flask(__name__)
 CORS(app)
@@ -168,6 +169,7 @@ def ensure_db_and_migrate():
             # ignore if cannot add (older sqlite)
             pass
     cur.execute('CREATE TABLE IF NOT EXISTS webauthn_creds (username TEXT, cred TEXT, fmt TEXT)')
+    cur.execute('CREATE TABLE IF NOT EXISTS attachments (id TEXT PRIMARY KEY, username TEXT, name TEXT, size INTEGER, mime TEXT, data TEXT, created TEXT)')
     # migrate users
     users = _load_json(USERS_FILE, {})
     for username, obj in users.items():
@@ -599,6 +601,47 @@ def sync_memory():
     return jsonify({'status': 'ok', 'merged_count': len(merged)})
 
 
+@app.route('/attachments', methods=['POST'])
+@rate_limit(lambda: request.remote_addr or 'anon', limit=30, per_seconds=60)
+def attachments():
+    """Accept lightweight attachment metadata and persist to DB.
+    Expected JSON: { "attachments": [ { name, size, mime, dataUrlPreview } ] }
+    """
+    user = _verify_jwt(request)
+    if not user:
+        return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
+    data = request.get_json(force=True)
+    arr = data.get('attachments', [])
+    if not arr:
+        return jsonify({'status': 'error', 'reason': 'missing_attachments'}), 400
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
+    try:
+        cur = conn.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS attachments (id TEXT PRIMARY KEY, username TEXT, name TEXT, size INTEGER, mime TEXT, data TEXT, created TEXT)')
+        inserted = 0
+        for a in arr:
+            aid = a.get('id') or f"att-{int(datetime.datetime.utcnow().timestamp()*1000)}"
+            name = a.get('name')
+            size = int(a.get('size') or 0)
+            mime = a.get('mime') or ''
+            data_preview = a.get('dataUrlPreview') or ''
+            created = datetime.datetime.utcnow().isoformat()
+            cur.execute('REPLACE INTO attachments (id,username,name,size,mime,data,created) VALUES (?,?,?,?,?,?,?)', (aid, user, name, size, mime, data_preview, created))
+            inserted += 1
+        conn.commit()
+        return jsonify({'status': 'ok', 'inserted': inserted})
+    except Exception:
+        app.logger.exception('Failed to save attachments')
+        return jsonify({'status': 'error', 'reason': 'save_failed'}), 500
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
 @app.route('/memories', methods=['GET'])
 def get_memories():
     user = _verify_jwt(request)
@@ -734,5 +777,51 @@ if __name__ == '__main__':
         except Exception:
             app.logger.exception('Backup failed')
             return jsonify({'status':'error','reason':'backup_failed'}), 500
+
+    @app.route('/admin/update-ngrok', methods=['POST'])
+    def admin_update_ngrok():
+        """Trigger the repo ngrok URL update script. Requires CONTROL_TOKEN header.
+
+        This endpoint runs the local script in a subprocess. It's intentionally conservative:
+        - Only accepts requests authenticated with CONTROL_TOKEN
+        - Runs the script without network calls; the update script reads `live_qmoi_ngrok_url.txt`.
+        - Returns the script output. Do NOT enable unauthenticated access in production.
+        """
+        # Auth with control token header
+        auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
+        token = None
+        if auth:
+            if auth.startswith('Bearer '):
+                token = auth.split(' ', 1)[1].strip()
+            else:
+                token = auth.strip()
+        if token != CONTROL_TOKEN:
+            return jsonify({'status':'error','reason':'unauthorized'}), 401
+
+        # run the update script in dry-run or apply based on JSON body flag
+        payload = request.get_json(silent=True) or {}
+        apply_changes = bool(payload.get('apply', False))
+
+        script = Path(__file__).parent / 'scripts' / 'update_ngrok_links.py'
+        if not script.exists():
+            return jsonify({'status':'error','reason':'script_missing'}), 500
+
+        cmd = ['python3', str(script)]
+        if apply_changes:
+            cmd.append('--apply')
+        else:
+            cmd.append('--dry-run')
+
+        try:
+            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            out = proc.stdout
+            err = proc.stderr
+            status = 'ok' if proc.returncode == 0 else 'error'
+            return jsonify({'status': status, 'returncode': proc.returncode, 'stdout': out, 'stderr': err})
+        except subprocess.TimeoutExpired:
+            return jsonify({'status':'error','reason':'timeout'}), 504
+        except Exception:
+            app.logger.exception('Failed to run update script')
+            return jsonify({'status':'error','reason':'failed'}), 500
 
     app.run(host='0.0.0.0', port=8000)
