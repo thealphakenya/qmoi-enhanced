@@ -63,6 +63,61 @@ All endpoints listed above are now exercised by the automated test suite (`qmoi_
 If any endpoint is not covered, please update the test suite or report a gap.
 ```
 
+
+## Verified endpoints (integration test results 2025-10-22)
+
+The following endpoints were exercised by the local integration test harness (`scripts/test_control_server_endpoints.py`) against the local control server. Results below show the observed HTTP status and a short summary of the response body.
+
+- GET /health — status: 200
+  - body: { "status": "ok" }
+
+- POST /signup — status: 200 (first-time)
+  - body: { "status": "ok", "user": "integ_user" }
+
+- POST /signup (duplicate) — status: 409
+  - body: { "status": "error", "reason": "user_exists" }
+
+- POST /login — status: 200
+  - body: { "status": "ok", "token": "<JWT>" }
+  - note: use the returned JWT in Authorization: Bearer <token> for authenticated endpoints.
+
+- POST /ai — status: 200
+  - body: { "status": "ok", "response": { "reply": "(simulated) Received prompt from integ_user: hello" } }
+
+- POST /sync-memory — status: 200
+  - body: { "status": "ok", "merged_count": 1 }
+
+- GET /memories — status: 200
+  - body: { "status": "ok", "memories": [ { "id": "gen-1761174682592", "key": "note", "value": "x", "created": "" } ] }
+
+- POST /control (authenticated) — status: 200
+  - body: { "status": "ok", "action": "navigate", "route": "/apps/qmoi" }
+
+- POST /control (unauthenticated) — status: 401
+  - body: { "status": "error", "reason": "unauthorized" }
+
+- GET /mirror/app/q-alpha/ — status: 200
+  - body: HTML content (content_type: text/html, size: ~13947 bytes)
+
+- GET /mirror/raw/live_qmoi_ngrok_url.txt — status: 200
+  - body: the current live ngrok URL (example: https://3cf7294944e8.ngrok-free.app)
+
+- POST /admin/backup-db — status: 404 (not found)
+  - body: None — backup endpoint not present at this path in the running server
+
+- POST /admin/update-ngrok (dry-run) — status: 404 (not found)
+  - body: None — admin update route not present at this path in the running server
+
+- POST /logout — status: 200
+  - body: { "status": "ok" }
+
+Notes & next steps:
+
+- The integration test obtains a JWT via `/login`; include this token as `Authorization: Bearer <token>` for authenticated calls.
+- Two admin endpoints returned 404 in the test run: `/admin/backup-db` and `/admin/update-ngrok`. That indicates either route names differ in the deployed server instance or admin routes require additional configuration (control token, RBAC). Confirm the server source (`qmoi_control_server.py`) to reconcile actual admin route paths and then re-run tests.
+- The mirror endpoints succeeded and returned content or raw files correctly; the raw mirror returned the `live_qmoi_ngrok_url.txt` content which is used by the ngrok update script.
+- I updated this file programmatically with the live test results. If you want these changes committed and pushed to the remote repository, please confirm and I'll push the commits (I will not push without explicit permission).
+
 ## Authentication
 
 All API endpoints require authentication using JWT tokens. Include the token in the Authorization header:
