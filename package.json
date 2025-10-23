@@ -116,6 +116,8 @@
     "yargs": "^17.7.2",
     "yup": "^1.3.2"
   },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
   "devDependencies": {
     "@babel/core": "^7.22.15",
     "@babel/plugin-transform-runtime": "^7.22.15",
@@ -164,6 +166,7 @@
     "webpack-merge": "^5.9.0",
     "webpack-node-externals": "^3.0.0",
     "webpack-stream": "^7.0.0"
+  },
   },
   "engines": {
     "node": ">=18.0.0",
