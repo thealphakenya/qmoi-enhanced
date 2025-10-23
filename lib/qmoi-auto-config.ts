@@ -12,7 +12,7 @@ interface AutoConfigResult {
 
 class QMOIAutoConfig {
   private configPath: string;
-  private sandboxSecurityCredential: string = 'gnwUmBFAGLT1O1iyhblSuNhwmnaiXuqtG/pXISIY/KlKCvD8mLM3TZTd8QxGxL6GfglVQ1hRdjrGbc+rub+d35KrI7+wV7BxRuX820Ku51o2lGtSd4xWEKqpyj+OUb+NYKFNG3iTo1hB4zyS9xG8MM2sg3TZsJ1+JfD3IvnabNnWfoOEeaNVi5ybP6t5CXXTuvoaG3m5aHnfw7wLJEwjjzVZkdKHIY5twrJrQym/zMeFsQp8DdzrMniNyETwzrS7XMDocBmszVOLbZFibOoBwZTJkm9WhyyqfKTJlMiYp8+fsrRiTQYB1izzIP6v7ZyLunVBq9EuQztVpHWn4UK+0g==';
+  private sandboxSecurityCredential = 'gnwUmBFAGLT1O1iyhblSuNhwmnaiXuqtG/pXISIY/KlKCvD8mLM3TZTd8QxGxL6GfglVQ1hRdjrGbc+rub+d35KrI7+wV7BxRuX820Ku51o2lGtSd4xWEKqpyj+OUb+NYKFNG3iTo1hB4zyS9xG8MM2sg3TZsJ1+JfD3IvnabNnWfoOEeaNVi5ybP6t5CXXTuvoaG3m5aHnfw7wLJEwjjzVZkdKHIY5twrJrQym/zMeFsQp8DdzrMniNyETwzrS7XMDocBmszVOLbZFibOoBwZTJkm9WhyyqfKTJlMiYp8+fsrRiTQYB1izzIP6v7ZyLunVBq9EuQztVpHWn4UK+0g==';
 
   constructor() {
     this.configPath = path.join(process.cwd(), '.env.production');

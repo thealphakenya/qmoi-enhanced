@@ -1,0 +1,7 @@
+{
+  "name": "den-runtime",
+  "version": "0.1.0",
+  "description": "Den: Lion runtime environment data and metadata",
+  "created": "2025-10-23T00:00:00Z",
+  "notes": "Contains runtime configs, adapters, logs and live data for Lion"
+}

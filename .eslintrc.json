@@ -33,4 +33,29 @@
       "version": "detect"
     }
   }
+  ,
+  "overrides": [
+    {
+      "files": ["src/integrations/mpesa/**/*.test.ts", "src/integrations/mpesa/**/*.test.tsx"],
+      "env": {
+        "jest": true,
+        "node": true
+      },
+      "rules": {
+        "no-undef": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    },
+    {
+      "files": ["src/integrations/mpesa/**/*.ts", "src/integrations/mpesa/**/*.tsx"],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "no-undef": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-explicit-any": "warn"
+      }
+    }
+  ]
 }

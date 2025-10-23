@@ -28,7 +28,7 @@ class MpesaAPI {
   private config: MpesaConfig;
   private baseUrl: string;
   private accessToken: string | null = null;
-  private tokenExpiry: number = 0;
+  private tokenExpiry = 0;
 
   constructor(config: MpesaConfig) {
     this.config = config;

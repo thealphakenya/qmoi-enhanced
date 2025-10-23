@@ -1,0 +1,31 @@
+name: Lion & Den CI checks
+
+on:
+  pull_request:
+    paths:
+      - '**/*.js'
+      - '**/*.cjs'
+      - 'HUGGINGFACEPAYED.md'
+      - 'qvillage/**'
+
+jobs:
+  lion-den-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Node setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci --silent || true
+      - name: Ensure lion dirs
+        run: node scripts/lion-ensure-dirs.cjs --dry
+      - name: Run den enhance (no autofix)
+        run: node scripts/den-enhance.cjs
+      - name: Run conservative autofix (dry-run)
+        run: node scripts/lion-autofix-extended.cjs || true
+      - name: Generate QVillage features
+        run: node scripts/qvillage-ensure-features.cjs
+      - name: Run node-scoped tests
+        run: npm run test:node --silent

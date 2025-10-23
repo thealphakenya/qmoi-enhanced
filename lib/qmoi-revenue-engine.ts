@@ -23,8 +23,8 @@ interface RevenueTransaction {
 class QMOIRevenueEngine {
   private revenueStreams: Map<string, RevenueStream> = new Map();
   private transactions: RevenueTransaction[] = [];
-  private isRunning: boolean = false;
-  private dailyTarget: number = 5000; // KES 5000 daily target
+  private isRunning = false;
+  private dailyTarget = 5000; // KES 5000 daily target
 
   constructor() {
     this.initializeRevenueStreams();
@@ -310,7 +310,7 @@ class QMOIRevenueEngine {
     return Array.from(this.revenueStreams.values());
   }
 
-  getTransactions(limit: number = 50): RevenueTransaction[] {
+  getTransactions(limit = 50): RevenueTransaction[] {
     return this.transactions.slice(-limit).reverse();
   }
 

@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2025-10-23T22:35:14.538Z",
+  "suggestions": [
+    {
+      "file": "/workspaces/qmoi-enhanced/tsconfig.json",
+      "issue": "invalid json or missing"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/build-and-publish.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/build.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/ci.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/ensure-env-fallback.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/github-actions-qmoi-build.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/lion-den-ci.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/nightly.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/npm.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/pr-preview.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/publish-q-alpha.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/q.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/qmoi-app-build.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/qmoi-ci.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/release.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/repo-inspector-pr.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/sync-notify.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/update-readme-cli.yml",
+      "change": "workflow-present"
+    }
+  ]
+}

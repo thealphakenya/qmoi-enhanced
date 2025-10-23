@@ -20,6 +20,8 @@ Use the following tools to automate and build your apps:
 
 > 🚗 All builds are **cloud-offloaded** to reduce load and ensure stability across devices.
 
+See the full builds and release guidance in [BUILDAPPSFORALLPLATFORMS.md](./BUILDAPPSFORALLPLATFORMS.md). All releases are published to GitHub Releases and tracked in `RELEASETRACKS.md`.
+
 ---
 
 ## 💂 File Structure
@@ -165,3 +167,12 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 |---|---:|---|---:|---|
 | qmoi-windows-exe | windows | [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) / [GitHub Raw](https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qmoi_ai.exe) |
 <!-- QMOI_APPS_TABLE_END -->
+
+## PR Previews
+
+QMOI generates a preview report for every pull request. The preview contains a short, human-readable summary of:
+
+- package.json scripts
+- changed files in the PR (when available)
+
+Preview reports are uploaded as pipeline artifacts and a comment with a link is posted to the PR. The preview generator is implemented in `scripts/generate-preview.cjs` and the CI workflow is `.github/workflows/pr-preview.yml`.

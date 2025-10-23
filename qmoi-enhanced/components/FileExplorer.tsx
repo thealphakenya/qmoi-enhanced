@@ -60,7 +60,7 @@ export const FileExplorer: React.FC = () => {
     setExpandedFolders(newExpanded);
   };
 
-  const renderFileItem = (item: FileItem, level: number = 0) => {
+  const renderFileItem = (item: FileItem, level = 0) => {
     const isExpanded = expandedFolders.has(item.id);
     const isSelected = selectedFile === item.id;
 

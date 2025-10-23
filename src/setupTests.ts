@@ -1,12 +1,12 @@
 import "@testing-library/jest-dom";
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] fetch globally
+// Provide a minimal global fetch mock for tests
 global.fetch = jest.fn();
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] window.matchMedia
-Object.defineProperty(window, "matchMedia", {
+// Minimal window.matchMedia mock
+Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().[PRODUCTION IMPLEMENTATION REQUIRED]Implementation((query) => ({
+  value: jest.fn().mockImplementation((query: string) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -18,25 +18,24 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] localStorage
-const localStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {
+// Basic localStorage/sessionStorage mocks
+const localStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.localStorage = localStorage[PRODUCTION IMPLEMENTATION REQUIRED];
+global.localStorage = localStorageMock as any;
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] sessionStorage
-const sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {
+const sessionStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.sessionStorage = sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED];
+global.sessionStorage = sessionStorageMock as any;
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] console methods to reduce noise in tests
+// Reduce noisy console output during test runs
 global.console = {
   ...console,
   log: jest.fn(),

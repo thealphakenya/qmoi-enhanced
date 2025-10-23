@@ -77,10 +77,10 @@ interface SystemHealth {
 export class EnhancedErrorFixingService extends EventEmitter {
   private static instance: EnhancedErrorFixingService;
   private errorQueue: ErrorReport[] = [];
-  private isProcessing: boolean = false;
+  private isProcessing = false;
   private learningDatabase: Map<string, LearningData> = new Map();
   private systemHealth: SystemHealth;
-  private continuousMonitoring: boolean = false;
+  private continuousMonitoring = false;
   private monitoringInterval?: NodeJS.Timeout;
   private notificationService: NotificationService;
   private maxRetries = 5;

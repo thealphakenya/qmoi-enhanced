@@ -248,7 +248,7 @@ export default function EnhancedTradingPanel() {
     enhancedTradingService.updateRiskManagement(updates);
   };
 
-  const formatCurrency = (amount: number, currency: string = 'USDT'): string => {
+  const formatCurrency = (amount: number, currency = 'USDT'): string => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: currency,

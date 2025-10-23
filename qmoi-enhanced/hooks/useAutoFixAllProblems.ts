@@ -5,9 +5,7 @@ interface GlobalFixResponse {
   time: string;
 }
 
-interface GlobalFixEventDetail extends GlobalFixResponse {
-  // Add any additional properties that might be included in the event detail
-}
+type GlobalFixEventDetail = GlobalFixResponse
 
 export function useAutoFixAllProblems() {
   useEffect(() => {

@@ -3,7 +3,7 @@
 declare const process: any;
 import { NextRequest, NextResponse } from 'next/server';
 import { logEvent } from '../../../../lib/security_check';
-import paymentStore from '../../../../src/services/paymentStore';
+import paymentStoreV2 from '../../../../src/services/paymentStoreV2';
 
 const LOG_DIR = path.resolve(process.cwd(), 'logs');
 const MPESA_LOG = path.join(LOG_DIR, 'mpesa-transactions.log');
@@ -99,9 +99,9 @@ export async function POST(req: NextRequest) {
 
       // Save transaction to paymentStore and reconcile
       try {
-        await paymentStore.appendMpesaTransaction({ receivedAt: new Date().toISOString(), details });
-        // Attempt to find payment by CheckoutRequestID and mark completed
-        const updated = await paymentStore.updatePayment(CheckoutRequestID, { status: 'completed', processedAt: Date.now(), result: { reference: CheckoutRequestID, raw: body } });
+  await paymentStoreV2.appendMpesaTransactionV2({ receivedAt: new Date().toISOString(), details });
+  // Attempt to find payment by CheckoutRequestID and mark completed
+  const updated = await paymentStoreV2.updatePaymentV2(CheckoutRequestID, { status: 'completed', processedAt: Date.now(), result: { reference: CheckoutRequestID, raw: body } });
         if (updated) logEvent('mpesa_reconciled', { checkoutRequestId: CheckoutRequestID, paymentId: updated.id });
       } catch (e) {
         console.warn('Failed to persist/reconcile mpesa transaction', (e as any)?.message || e);

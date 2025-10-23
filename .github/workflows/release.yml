@@ -1,3 +1,44 @@
+name: Create GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch: {}
+
+jobs:
+  create-release:
+    name: Create or update GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Generate build docs
+        run: |
+          node scripts/generate-builds-doc.cjs
+          node scripts/scan-md-for-releases.cjs
+
+      - name: Read release body
+        id: read_body
+        run: |
+          echo "RELEASE_BODY<<'BODY'" >> $GITHUB_ENV
+          cat BUILDAPPSFORALLPLATFORMS.md >> $GITHUB_ENV
+          echo "BODY" >> $GITHUB_ENV
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref_name || github.event.inputs.tag || 'latest' }}
+          release_name: ${{ github.ref_name || github.event.inputs.tag || 'Automated Release' }}
+          body: ${{ env.RELEASE_BODY }}
+          draft: false
+          prerelease: false
 name: QMOI Auto Build & Release
 'on':
   push:

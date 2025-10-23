@@ -111,7 +111,7 @@ class UnifiedCICDService {
     }
   }
 
-  async deployWithFallback(platform: string = 'vercel') {
+  async deployWithFallback(platform = 'vercel') {
     const platforms = [...DEPLOY_PLATFORMS];
     const startIdx = platforms.indexOf(platform);
     for (let i = startIdx; i < platforms.length; i++) {

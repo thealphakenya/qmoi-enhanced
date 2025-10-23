@@ -63,7 +63,7 @@ export class FaceRecognitionService {
   private videoElement: HTMLVideoElement | null = null;
   private canvasElement: HTMLCanvasElement | null = null;
   private context: CanvasRenderingContext2D | null = null;
-  private isRunning: boolean = false;
+  private isRunning = false;
   private detectionInterval: Timeout | null = null;
   private knownFaces: Map<string, UserProfile> = new Map();
   private currentFaces: FaceData[] = [];

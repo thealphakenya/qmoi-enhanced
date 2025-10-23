@@ -42,7 +42,7 @@ interface SiteGenerationResult {
 export class EnhancedSiteGenerationService extends EventEmitter {
   private static instance: EnhancedSiteGenerationService;
   private siteQueue: SiteGenerationRequest[] = [];
-  private isProcessing: boolean = false;
+  private isProcessing = false;
 
   private constructor() {
     super();

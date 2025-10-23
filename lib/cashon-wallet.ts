@@ -49,9 +49,9 @@ export class CashonWallet {
   private tradeRequests: TradeRequest[] = [];
   private pesapalConfig: PesapalConfig;
   private masterToken: string;
-  private isTradingEnabled: boolean = false;
-  private minTradeAmount: number = 10; // KES
-  private profitLockPercentage: number = 20; // 20% of profits locked
+  private isTradingEnabled = false;
+  private minTradeAmount = 10; // KES
+  private profitLockPercentage = 20; // 20% of profits locked
 
   constructor(pesapalConfig: PesapalConfig, masterToken: string) {
     this.pesapalConfig = pesapalConfig;
@@ -198,7 +198,7 @@ export class CashonWallet {
     return tradeId;
   }
 
-  async approveTrade(tradeId: string, autoApproved: boolean = false): Promise<boolean> {
+  async approveTrade(tradeId: string, autoApproved = false): Promise<boolean> {
     const trade = this.tradeRequests.find(t => t.id === tradeId);
     if (!trade) {
       throw new Error('Trade request not found');
