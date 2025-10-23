@@ -165,6 +165,9 @@ pids
 .env.test.local
 .env.production.local
 
+# Vercel environment file (contains tokens) - keep local only
+vercel.env
+
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
