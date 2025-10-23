@@ -15,6 +15,7 @@ from fido2.server import Fido2Server
 from fido2.webauthn import PublicKeyCredentialRpEntity
 from fido2 import cbor
 from flask_cors import CORS
+from payments import stripe_adapter
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 from typing import Optional
@@ -170,6 +171,11 @@ def ensure_db_and_migrate():
             pass
     cur.execute('CREATE TABLE IF NOT EXISTS webauthn_creds (username TEXT, cred TEXT, fmt TEXT)')
     cur.execute('CREATE TABLE IF NOT EXISTS attachments (id TEXT PRIMARY KEY, username TEXT, name TEXT, size INTEGER, mime TEXT, data TEXT, created TEXT)')
+    cur.execute('CREATE TABLE IF NOT EXISTS sponsored (username TEXT PRIMARY KEY, added_by TEXT, added_at TEXT)')
+    cur.execute('CREATE TABLE IF NOT EXISTS user_pricing (username TEXT PRIMARY KEY, price_cents INTEGER, tier TEXT, expires_at TEXT, auto_generated INTEGER)')
+    cur.execute('CREATE TABLE IF NOT EXISTS deals (id TEXT PRIMARY KEY, title TEXT, description TEXT, price_cents INTEGER, active INTEGER, created TEXT, metadata TEXT)')
+    cur.execute('CREATE TABLE IF NOT EXISTS wallets (username TEXT PRIMARY KEY, balance_cents INTEGER)')
+    cur.execute('CREATE TABLE IF NOT EXISTS transactions (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER, status TEXT, provider TEXT, provider_ref TEXT, created TEXT, settled_at TEXT)')
     # migrate users
     users = _load_json(USERS_FILE, {})
     for username, obj in users.items():
@@ -338,6 +344,465 @@ def is_token_revoked(token):
             conn.close()
     # If DB not available or no match, treat as not revoked
     return False
+
+
+def is_sponsored(username):
+    conn = _db_get_conn()
+    if not conn:
+        return False
+    try:
+        cur = conn.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS sponsored (username TEXT PRIMARY KEY, added_by TEXT, added_at TEXT)')
+        cur.execute('SELECT username FROM sponsored WHERE username=?', (username,))
+        return cur.fetchone() is not None
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+def _ensure_wallet(username):
+    conn = _db_get_conn()
+    if not conn:
+        return False
+    try:
+        cur = conn.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS wallets (username TEXT PRIMARY KEY, balance_cents INTEGER)')
+        cur.execute('SELECT balance_cents FROM wallets WHERE username=?', (username,))
+        if not cur.fetchone():
+            cur.execute('INSERT OR REPLACE INTO wallets (username,balance_cents) VALUES (?,?)', (username, 0))
+            conn.commit()
+        return True
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+def _adjust_balance(username, delta_cents):
+    conn = _db_get_conn()
+    if not conn:
+        return False
+    try:
+        cur = conn.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS wallets (username TEXT PRIMARY KEY, balance_cents INTEGER)')
+        cur.execute('SELECT balance_cents FROM wallets WHERE username=?', (username,))
+        row = cur.fetchone()
+        if not row:
+            cur.execute('INSERT INTO wallets (username,balance_cents) VALUES (?,?)', (username, delta_cents if delta_cents>0 else 0))
+            conn.commit()
+            return True
+        new = row[0] + int(delta_cents)
+        cur.execute('UPDATE wallets SET balance_cents=? WHERE username=?', (new, username))
+        conn.commit()
+        return True
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+def _get_balance(username):
+    conn = _db_get_conn()
+    if not conn:
+        return None
+    try:
+        cur = conn.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS wallets (username TEXT PRIMARY KEY, balance_cents INTEGER)')
+        cur.execute('SELECT balance_cents FROM wallets WHERE username=?', (username,))
+        row = cur.fetchone()
+        return row[0] if row else 0
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+@app.route('/sponsored/add', methods=['POST'])
+def sponsored_add():
+    # Add a username to the sponsored table. Requires CONTROL_TOKEN or master JWT.
+    auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
+    token = None
+    if auth:
+        if auth.startswith('Bearer '):
+            token = auth.split(' ', 1)[1].strip()
+        else:
+            token = auth.strip()
+    # If CONTROL_TOKEN provided, allow
+    if token == CONTROL_TOKEN:
+        payload = request.get_json(force=True) or {}
+        uname = payload.get('username')
+        added_by = 'control-token'
+    else:
+        # Otherwise require master JWT
+        user = _verify_jwt(request)
+        master = os.environ.get('QMOI_MASTER_USER', 'master')
+        if user != master:
+            return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
+        payload = request.get_json(force=True) or {}
+        uname = payload.get('username')
+        added_by = user
+    if not uname:
+        return jsonify({'status': 'error', 'reason': 'missing_username'}), 400
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
+    try:
+        cur = conn.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS sponsored (username TEXT PRIMARY KEY, added_by TEXT, added_at TEXT)')
+        cur.execute('REPLACE INTO sponsored (username, added_by, added_at) VALUES (?,?,?)', (uname, added_by, datetime.datetime.utcnow().isoformat()))
+        conn.commit()
+        return jsonify({'status': 'ok', 'sponsored': uname})
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+def sponsored_list():
+    # Anyone authenticated can view the sponsored list
+    user = _verify_jwt(request)
+    if not user:
+        return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
+    try:
+        cur = conn.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS sponsored (username TEXT PRIMARY KEY, added_by TEXT, added_at TEXT)')
+        cur.execute('SELECT username, added_by, added_at FROM sponsored')
+        rows = cur.fetchall()
+        out = [{'username': r[0], 'added_by': r[1], 'added_at': r[2]} for r in rows]
+        return jsonify({'status': 'ok', 'sponsored': out})
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+def _is_master_request(req):
+    # Accept CONTROL_TOKEN or a JWT where subject equals MASTER_USERNAME
+    auth = req.headers.get('Authorization') or req.headers.get('X-API-KEY')
+    if auth:
+        token = auth.split(' ',1)[1].strip() if auth.startswith('Bearer ') else auth.strip()
+        if token == CONTROL_TOKEN:
+            return True
+        try:
+            payload = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
+            master = os.environ.get('QMOI_MASTER_USER', 'master')
+            if payload.get('sub') == master:
+                return True
+        except Exception:
+            pass
+    return False
+
+
+@app.route('/admin/users', methods=['GET'])
+def admin_users_list():
+    # Master-only endpoint to list all registered users and pricing
+    if not _is_master_request(request):
+        return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
+    users = load_users()
+    conn = _db_get_conn()
+    pricing = {}
+    if conn:
+        try:
+            cur = conn.cursor()
+            cur.execute('CREATE TABLE IF NOT EXISTS user_pricing (username TEXT PRIMARY KEY, price_cents INTEGER, tier TEXT, expires_at TEXT, auto_generated INTEGER)')
+            cur.execute('SELECT username, price_cents, tier, expires_at, auto_generated FROM user_pricing')
+            for r in cur.fetchall():
+                pricing[r[0]] = {'price_cents': r[1], 'tier': r[2], 'expires_at': r[3], 'auto_generated': bool(r[4])}
+        finally:
+            conn.close()
+    out = []
+    for uname, obj in users.items():
+        out.append({'username': uname, 'created': obj.get('created'), 'pricing': pricing.get(uname)})
+    return jsonify({'status': 'ok', 'users': out})
+
+
+@app.route('/admin/set-pricing', methods=['POST'])
+def admin_set_pricing():
+    if not _is_master_request(request):
+        return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
+    payload = request.get_json(force=True) or {}
+    username = payload.get('username')
+    price_cents = int(payload.get('price_cents') or 0)
+    tier = payload.get('tier') or 'custom'
+    expires_at = payload.get('expires_at')
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
+    try:
+        cur = conn.cursor()
+        cur.execute('CREATE TABLE IF NOT EXISTS user_pricing (username TEXT PRIMARY KEY, price_cents INTEGER, tier TEXT, expires_at TEXT, auto_generated INTEGER)')
+        cur.execute('REPLACE INTO user_pricing (username, price_cents, tier, expires_at, auto_generated) VALUES (?,?,?,?,?)', (username, price_cents, tier, expires_at, 0))
+        conn.commit()
+        return jsonify({'status': 'ok', 'username': username, 'price_cents': price_cents, 'tier': tier, 'expires_at': expires_at})
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+@app.route('/admin/check-access/<username>/<feature>', methods=['GET'])
+def admin_check_access(username, feature):
+    # Master-only: determine if a user has access to a paid feature
+    if not _is_master_request(request):
+        return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
+    # Sponsored users get full access
+    if is_sponsored(username):
+        return jsonify({'status': 'ok', 'access': True, 'reason': 'sponsored'})
+    # Check pricing: if price 0 or expires_at in future -> access
+    conn = _db_get_conn()
+    if conn:
+        try:
+            cur = conn.cursor()
+            cur.execute('SELECT price_cents, expires_at FROM user_pricing WHERE username=?', (username,))
+            row = cur.fetchone()
+            if not row:
+                # no pricing info: auto-generate a suggestion (e.g., free trial)
+                suggested_cents = 0
+                return jsonify({'status': 'ok', 'access': False, 'suggested_price_cents': suggested_cents, 'note': 'no_pricing'})
+            price_cents, expires_at = row
+            if price_cents == 0:
+                return jsonify({'status': 'ok', 'access': True, 'reason': 'free'})
+            if expires_at:
+                try:
+                    exp_dt = datetime.datetime.fromisoformat(expires_at)
+                    if exp_dt > datetime.datetime.utcnow():
+                        return jsonify({'status': 'ok', 'access': True, 'reason': 'subscription_active', 'expires_at': expires_at})
+                except Exception:
+                    pass
+            return jsonify({'status': 'ok', 'access': False, 'price_cents': price_cents})
+        finally:
+            conn.close()
+    return jsonify({'status': 'ok', 'access': False, 'reason': 'no_db'})
+
+
+@app.route('/deals/create', methods=['POST'])
+def deals_create():
+    # Admin-only endpoint to create deals
+    if not _is_master_request(request):
+        return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
+    payload = request.get_json(force=True) or {}
+    did = payload.get('id') or f"deal-{int(datetime.datetime.utcnow().timestamp())}"
+    title = payload.get('title')
+    desc = payload.get('description','')
+    price = int(payload.get('price_cents') or 0)
+    meta = json.dumps(payload.get('metadata',{}))
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status':'error','reason':'db_unavailable'}),500
+    try:
+        cur = conn.cursor()
+        cur.execute('REPLACE INTO deals (id,title,description,price_cents,active,created,metadata) VALUES (?,?,?,?,?,?,?)', (did, title, desc, price, 1, datetime.datetime.utcnow().isoformat(), meta))
+        conn.commit()
+        return jsonify({'status':'ok','id':did})
+    finally:
+        conn.close()
+
+
+@app.route('/deals', methods=['GET'])
+def deals_list():
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status':'error','reason':'db_unavailable'}),500
+    try:
+        cur = conn.cursor()
+        cur.execute('SELECT id,title,description,price_cents,active,created,metadata FROM deals')
+        rows = cur.fetchall()
+        out = []
+        for r in rows:
+            out.append({'id':r[0],'title':r[1],'description':r[2],'price_cents':r[3],'active':bool(r[4]),'created':r[5],'metadata': json.loads(r[6] or '{}')})
+        return jsonify({'status':'ok','deals':out})
+    finally:
+        conn.close()
+
+
+@app.route('/deals/<deal_id>', methods=['GET'])
+def deals_get(deal_id):
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status':'error','reason':'db_unavailable'}),500
+    try:
+        cur = conn.cursor()
+        cur.execute('SELECT id,title,description,price_cents,active,created,metadata FROM deals WHERE id=?', (deal_id,))
+        r = cur.fetchone()
+        if not r:
+            return jsonify({'status':'error','reason':'not_found'}),404
+        return jsonify({'status':'ok','deal':{'id':r[0],'title':r[1],'description':r[2],'price_cents':r[3],'active':bool(r[4]),'created':r[5],'metadata': json.loads(r[6] or '{}')}})
+    finally:
+        conn.close()
+
+
+@app.route('/deals/<deal_id>/activate', methods=['POST'])
+def deals_activate(deal_id):
+    if not _is_master_request(request):
+        return jsonify({'status':'error','reason':'forbidden'}),403
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status':'error','reason':'db_unavailable'}),500
+    try:
+        cur = conn.cursor()
+        cur.execute('UPDATE deals SET active=1 WHERE id=?', (deal_id,))
+        conn.commit()
+        return jsonify({'status':'ok','id':deal_id})
+    finally:
+        conn.close()
+
+
+@app.route('/deals/<deal_id>/deactivate', methods=['POST'])
+def deals_deactivate(deal_id):
+    if not _is_master_request(request):
+        return jsonify({'status':'error','reason':'forbidden'}),403
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status':'error','reason':'db_unavailable'}),500
+    try:
+        cur = conn.cursor()
+        cur.execute('UPDATE deals SET active=0 WHERE id=?', (deal_id,))
+        conn.commit()
+        return jsonify({'status':'ok','id':deal_id})
+    finally:
+        conn.close()
+
+
+@app.route('/deals/<deal_id>/purchase', methods=['POST'])
+def deals_purchase(deal_id):
+    # Purchase a deal for the authenticated user. Sponsored users get it free.
+    user = _verify_jwt(request)
+    if not user:
+        return jsonify({'status':'error','reason':'unauthorized'}),401
+    # Use an explicit DB transaction to make pricing + wallet + transaction inserts atomic
+    try:
+        conn = sqlite3.connect(str(DB_FILE))
+    except Exception:
+        return jsonify({'status':'error','reason':'db_unavailable'}),500
+    try:
+        cur = conn.cursor()
+        cur.execute('BEGIN')
+        cur.execute('SELECT id,price_cents,active FROM deals WHERE id=?', (deal_id,))
+        r = cur.fetchone()
+        if not r:
+            conn.rollback()
+            return jsonify({'status':'error','reason':'not_found'}),404
+        price = r[1]
+        active = bool(r[2])
+        if not active:
+            conn.rollback()
+            return jsonify({'status':'error','reason':'inactive'}),400
+        # If sponsored, allow purchase for free
+        if is_sponsored(user):
+            cur.execute('REPLACE INTO user_pricing (username, price_cents, tier, expires_at, auto_generated) VALUES (?,?,?,?,?)', (user, 0, 'sponsored', None, 0))
+            conn.commit()
+            return jsonify({'status':'ok','paid':0,'note':'sponsored'})
+
+        # Otherwise, attempt to create a provider charge (Stripe if configured)
+        adapter_result = None
+        try:
+            adapter_result = stripe_adapter.create_charge(user, price, 'usd')
+        except Exception:
+            app.logger.exception('Payment adapter create_charge failed; falling back to local settlement')
+
+        # If adapter returned an error or is not configured, fallback to local settlement
+        if not adapter_result or adapter_result.get('error'):
+            # fallback: perform local wallet movements and mark settled
+            cur.execute('REPLACE INTO user_pricing (username, price_cents, tier, expires_at, auto_generated) VALUES (?,?,?,?,?)', (user, price, 'deal', None, 1))
+            cur.execute('CREATE TABLE IF NOT EXISTS wallets (username TEXT PRIMARY KEY, balance_cents INTEGER)')
+            cur.execute('SELECT balance_cents FROM wallets WHERE username=?', (user,))
+            if not cur.fetchone():
+                cur.execute('INSERT OR REPLACE INTO wallets (username,balance_cents) VALUES (?,?)', (user, 0))
+            cur.execute('SELECT balance_cents FROM wallets WHERE username=?', ('cashon',))
+            if not cur.fetchone():
+                cur.execute('INSERT OR REPLACE INTO wallets (username,balance_cents) VALUES (?,?)', ('cashon', 0))
+            cur.execute('UPDATE wallets SET balance_cents = balance_cents - ? WHERE username = ?', (price, user))
+            cur.execute('UPDATE wallets SET balance_cents = balance_cents + ? WHERE username = ?', (price, 'cashon'))
+            txid = f"tx-{int(datetime.datetime.utcnow().timestamp()*1000)}"
+            cur.execute('CREATE TABLE IF NOT EXISTS transactions (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER, status TEXT, provider TEXT, provider_ref TEXT, created TEXT, settled_at TEXT)')
+            cur.execute('INSERT OR REPLACE INTO transactions (id,username,deal_id,amount_cents,status,provider,provider_ref,created,settled_at) VALUES (?,?,?,?,?,?,?,?,?)', (txid, user, deal_id, price, 'settled', None, None, datetime.datetime.utcnow().isoformat(), datetime.datetime.utcnow().isoformat()))
+            conn.commit()
+            return jsonify({'status':'ok','paid_cents':price,'transaction_id': txid})
+
+        # Adapter returned a result object — inspect status
+        provider_status = adapter_result.get('status')
+        provider_ref = adapter_result.get('provider_ref')
+        client_secret = adapter_result.get('client_secret')
+        txid = f"tx-{int(datetime.datetime.utcnow().timestamp()*1000)}"
+        cur.execute('CREATE TABLE IF NOT EXISTS transactions (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER, status TEXT, provider TEXT, provider_ref TEXT, created TEXT, settled_at TEXT)')
+        if provider_status in (None, 'settled', 'succeeded'):
+            # mark settled and perform local wallet updates
+            cur.execute('REPLACE INTO user_pricing (username, price_cents, tier, expires_at, auto_generated) VALUES (?,?,?,?,?)', (user, price, 'deal', None, 1))
+            cur.execute('INSERT OR REPLACE INTO wallets (username,balance_cents) VALUES (?,COALESCE((SELECT balance_cents FROM wallets WHERE username=?),0))', (user, user))
+            cur.execute('INSERT OR REPLACE INTO wallets (username,balance_cents) VALUES (?,COALESCE((SELECT balance_cents FROM wallets WHERE username=?),0))', ('cashon', 'cashon'))
+            cur.execute('UPDATE wallets SET balance_cents = balance_cents - ? WHERE username = ?', (price, user))
+            cur.execute('UPDATE wallets SET balance_cents = balance_cents + ? WHERE username = ?', (price, 'cashon'))
+            cur.execute('INSERT OR REPLACE INTO transactions (id,username,deal_id,amount_cents,status,provider,provider_ref,created,settled_at) VALUES (?,?,?,?,?,?,?,?,?)', (txid, user, deal_id, price, 'settled', 'stripe', provider_ref, datetime.datetime.utcnow().isoformat(), datetime.datetime.utcnow().isoformat()))
+            conn.commit()
+            return jsonify({'status':'ok','paid_cents':price,'transaction_id': txid})
+        else:
+            # pending or requires client action — create pending txn and return client_hint
+            cur.execute('INSERT OR REPLACE INTO transactions (id,username,deal_id,amount_cents,status,provider,provider_ref,created,settled_at) VALUES (?,?,?,?,?,?,?,?,?)', (txid, user, deal_id, price, 'pending', 'stripe', provider_ref, datetime.datetime.utcnow().isoformat(), None))
+            conn.commit()
+            resp = {'status':'pending','transaction_id': txid}
+            if client_secret:
+                resp['client_secret'] = client_secret
+            return jsonify(resp)
+    except Exception:
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+        app.logger.exception('Purchase transaction failed')
+        return jsonify({'status':'error','reason':'purchase_failed'}),500
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+
+@app.route('/wallet', methods=['GET'])
+def wallet_get():
+    user = _verify_jwt(request)
+    if not user:
+        return jsonify({'status':'error','reason':'unauthorized'}),401
+    bal = _get_balance(user)
+    return jsonify({'status':'ok','balance_cents': bal})
+
+
+@app.route('/wallet/credit', methods=['POST'])
+def wallet_credit():
+    # master or control token may credit any wallet
+    if not _is_master_request(request):
+        return jsonify({'status':'error','reason':'forbidden'}),403
+    payload = request.get_json(force=True) or {}
+    username = payload.get('username')
+    amount = int(payload.get('amount_cents') or 0)
+    if not username:
+        return jsonify({'status':'error','reason':'missing_username'}),400
+    _ensure_wallet(username)
+    _adjust_balance(username, amount)
+    return jsonify({'status':'ok','username':username,'credit':amount})
+
+
+@app.route('/wallet/debit', methods=['POST'])
+def wallet_debit():
+    if not _is_master_request(request):
+        return jsonify({'status':'error','reason':'forbidden'}),403
+    payload = request.get_json(force=True) or {}
+    username = payload.get('username')
+    amount = int(payload.get('amount_cents') or 0)
+    if not username:
+        return jsonify({'status':'error','reason':'missing_username'}),400
+    _ensure_wallet(username)
+    _adjust_balance(username, -amount)
+    return jsonify({'status':'ok','username':username,'debit':amount})
 
 
 @app.route('/webauthn/register/options', methods=['POST'])
@@ -656,6 +1121,8 @@ def health():
 
 
 import mimetypes
+import html
+import base64
 
 # Discover apps under pwa_apps/ dynamically
 APPS_DIR = ROOT / 'pwa_apps'
@@ -734,25 +1201,6 @@ def mirror_raw(rest):
         return local.read_bytes(), 200, headers
     raw = f"{GITHUB_RAW_BASE}/{rest}"
     return redirect(raw)
-
-if __name__ == '__main__':
-    # Ensure DB and migrate any JSON-backed stores into SQLite before serving
-    try:
-        ensure_db_and_migrate()
-    except Exception:
-        app.logger.exception('DB migration failed')
-
-    # In production, require secrets to be set and not default
-    if os.environ.get('QMOI_ENV') == 'production':
-        missing = []
-        if JWT_SECRET in (None, '', 'dev-jwt-secret'):
-            missing.append('QMOI_JWT_SECRET')
-        if CONTROL_TOKEN in (None, '', 'dev-token'):
-            missing.append('QMOI_CONTROL_TOKEN')
-        if missing:
-            app.logger.error('Missing required secrets for production: %s', missing)
-            raise SystemExit(1)
-
 @app.route('/admin/backup-db', methods=['POST'])
 def admin_backup_db():
     # Auth with control token header
@@ -851,4 +1299,306 @@ def list_attachments():
         except Exception:
             pass
 
+
+@app.route('/ready', methods=['GET'])
+def ready():
+    """Readiness probe: confirms DB is accessible and basic tables exist."""
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
+    try:
+        cur = conn.cursor()
+        # simple checks: users and memories tables present
+        cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name IN ('users','memories')")
+        rows = cur.fetchall()
+        ok = len(rows) >= 1
+        return jsonify({'status': 'ok' if ok else 'degraded', 'tables_found': [r[0] for r in rows]})
+    except Exception:
+        app.logger.exception('Readiness check failed')
+        return jsonify({'status': 'error'}), 500
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+@app.route('/metrics', methods=['GET'])
+def metrics():
+    """Lightweight metrics for orchestration and supervisor scripts."""
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
+    try:
+        cur = conn.cursor()
+        cur.execute('SELECT COUNT(*) FROM users')
+        users_count = cur.fetchone()[0]
+        cur.execute('SELECT COUNT(*) FROM memories')
+        memories_count = cur.fetchone()[0]
+        cur.execute('SELECT COUNT(*) FROM attachments')
+        attachments_count = cur.fetchone()[0]
+        return jsonify({'status': 'ok', 'users': users_count, 'memories': memories_count, 'attachments': attachments_count})
+    except Exception:
+        app.logger.exception('Metrics failed')
+        return jsonify({'status': 'error'}), 500
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+@app.route('/attachments/<att_id>/download', methods=['GET'])
+def attachment_download(att_id):
+    """Return attachment data or a data URL for the authenticated user.
+
+    This is intentionally lightweight: attachments currently store a small
+    preview in the `data` column (dataUrlPreview). If a full binary is stored
+    as a data URL, we return it. For production, this should return a signed
+    S3/MinIO URL or stream with proper caching and access controls.
+    """
+    user = _verify_jwt(request)
+    if not user:
+        return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
+    conn = _db_get_conn()
+    if not conn:
+        return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
+    try:
+        cur = conn.cursor()
+        cur.execute('SELECT id, name, size, mime, data FROM attachments WHERE id=? AND username=?', (att_id, user))
+        row = cur.fetchone()
+        if not row:
+            return jsonify({'status': 'error', 'reason': 'not_found'}), 404
+        aid, name, size, mime, data_field = row
+        # If data_field looks like a data URL, return it as JSON so clients can render it
+        if isinstance(data_field, str) and data_field.startswith('data:'):
+            return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'dataUrl': data_field})
+        # If data_field looks like base64 without prefix, return it with mime
+        if isinstance(data_field, str) and data_field:
+            try:
+                # attempt base64 decode to validate
+                _ = base64.b64decode(data_field.split(',')[-1])
+                return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'dataBase64': data_field})
+            except Exception:
+                pass
+        # Fallback: no binary available; return metadata and a guidance URL
+        return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'note': 'preview-only or full data not stored; upgrade to S3 for downloads'})
+    except Exception:
+        app.logger.exception('Failed to fetch attachment')
+        return jsonify({'status': 'error', 'reason': 'failed'}), 500
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+@app.route('/ai/tts', methods=['POST'])
+def ai_tts():
+    """Return a simple SSML wrapper for the AI prompt. Requires user JWT.
+
+    Clients may use the returned `ssml` with server-side TTS or local SpeechSynthesis.
+    This is a prototype endpoint; production should return audio streams or signed URLs.
+    """
+    user = _verify_jwt(request)
+    if not user:
+        return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
+    payload = request.get_json(force=True) or {}
+    prompt = payload.get('prompt', '') or payload.get('text', '')
+    # Keep the SSML safe by escaping
+    safe_text = html.escape(prompt)
+    voice = payload.get('voice', 'default')
+    ssml = f"<speak><voice name=\"{html.escape(voice)}\">{safe_text}</voice></speak>"
+    return jsonify({'status': 'ok', 'ssml': ssml})
+
+
+from payments.webhook_processor import WebhookProcessor
+
+@app.route('/payments/webhook', methods=['POST'])
+def payments_webhook():
+    """Handle Stripe webhook events with idempotency and comprehensive error handling.
+    
+    This endpoint:
+    1. Verifies webhook signatures in production
+    2. Processes events idempotently using event IDs
+    3. Updates transaction states and user balances
+    4. Handles all relevant Stripe event types
+    """
+    payload = request.get_data()
+    sig = request.headers.get('Stripe-Signature')
+    
+    # Verify webhook signature
+    res = stripe_adapter.verify_webhook_signature(payload, sig)
+    if not res.get('ok'):
+        app.logger.error(f"Webhook signature verification failed: {res.get('error')}")
+        return jsonify({
+            'status': 'error',
+            'reason': 'invalid_signature',
+            'detail': res.get('error')
+        }), 400
+        
+    evt = res.get('event')
+    
+    # Get event details
+    try:
+        # Handle both dict and Stripe Event object formats
+        etype = evt.get('type') if isinstance(evt, dict) else getattr(evt, 'type', None)
+        event_id = evt.get('id') if isinstance(evt, dict) else getattr(evt, 'id', None)
+        data = evt.get('data', {}).get('object') if isinstance(evt, dict) else getattr(evt, 'data', {}).get('object')
+        
+        app.logger.info(f"Processing Stripe webhook event: {etype} ({event_id})")
+        
+        # Get DB connection and initialize processor
+        conn = _db_get_conn()
+        if not conn:
+            return jsonify({'status': 'error', 'reason': 'database_error'}), 500
+            
+        processor = WebhookProcessor(conn)
+        
+        try:
+            # Check for duplicate event
+            if processor.is_duplicate_event(event_id):
+                return jsonify({
+                    'status': 'ok',
+                    'reason': 'event_already_processed'
+                }), 200
+                
+            # Process event based on type
+            if etype in ('payment_intent.succeeded', 'charge.succeeded'):
+                provider_ref = data.get('id') or data.get('payment_intent')
+                amount = int(data.get('amount') or 0)
+                metadata = data.get('metadata', {})
+                username = metadata.get('username')
+                deal_id = metadata.get('deal_id')
+                
+                if provider_ref and username:
+                    processor.handle_payment_success(
+                        provider_ref=provider_ref,
+                        username=username,
+                        amount=amount,
+                        deal_id=deal_id
+                    )
+                    
+            elif etype == 'payment_intent.payment_failed':
+                provider_ref = data.get('id') or data.get('payment_intent')
+                error = data.get('last_payment_error', {}).get('message', 'Payment failed')
+                
+                if provider_ref:
+                    processor.handle_payment_failure(
+                        provider_ref=provider_ref,
+                        error=error
+                    )
+                    
+            elif etype == 'charge.refunded':
+                provider_ref = data.get('payment_intent')
+                if provider_ref:
+                    processor.handle_refund(provider_ref)
+                    
+            # Record webhook as processed
+            processor.record_event(event_id, etype)
+            conn.commit()
+            
+            return jsonify({
+                'status': 'ok',
+                'event_type': etype,
+                'provider_ref': provider_ref
+            }), 200
+                
+        except Exception as e:
+            conn.rollback()
+            app.logger.error(f"Error processing webhook: {e}")
+            return jsonify({
+                'status': 'error',
+                'reason': 'processing_error',
+                'detail': str(e)
+            }), 500
+            
+        finally:
+            conn.close()
+            
+    except Exception as e:
+        app.logger.error(f"Failed to parse webhook event: {e}")
+        return jsonify({
+            'status': 'error',
+            'reason': 'invalid_event',
+            'detail': str(e)
+        }), 400
+
+    # Handle charge/payment_intent succeeded/settled events
+    # Check for duplicate event
+    conn = _db_get_conn()
+    if not conn:
+        app.logger.error("Failed to connect to database")
+        return jsonify({'status': 'error', 'reason': 'database_error'}), 500
+        
+    try:
+        cur = conn.cursor()
+        
+        # Store webhook event for idempotency
+        cur.execute('''CREATE TABLE IF NOT EXISTS webhook_events 
+            (id TEXT PRIMARY KEY, type TEXT, processed_at TEXT)''')
+            
+        # Check if we've seen this event before
+        cur.execute('SELECT id FROM webhook_events WHERE id = ?', (event_id,))
+        if cur.fetchone():
+            app.logger.info(f"Skipping duplicate event: {event_id}")
+            return jsonify({'status': 'ok', 'reason': 'event_already_processed'}), 200
+            
+        # Ensure transactions table exists
+        cur.execute('''CREATE TABLE IF NOT EXISTS transactions 
+            (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER, 
+             status TEXT, provider TEXT, provider_ref TEXT, created TEXT, settled_at TEXT,
+             error TEXT)''')
+             
+        # Process event based on type
+        if etype in ('payment_intent.succeeded', 'charge.succeeded'):
+            # Payment successful
+            provider_ref = data.get('id') or data.get('payment_intent')
+            amount = int(data.get('amount') or 0)
+            metadata = data.get('metadata', {})
+            username = metadata.get('username')
+            deal_id = metadata.get('deal_id')
+                # idempotent update: find a transaction by provider_ref and mark settled
+                if provider_ref:
+                    cur.execute('SELECT id, status FROM transactions WHERE provider_ref=?', (provider_ref,))
+                    row = cur.fetchone()
+                    if row:
+                        if row[1] != 'settled' and etype in ('payment_intent.succeeded', 'charge.succeeded', 'charge.settled'):
+                            cur.execute('UPDATE transactions SET status=?, settled_at=? WHERE id=?', ('settled', datetime.datetime.utcnow().isoformat(), row[0]))
+                            conn.commit()
+                            handled = True
+                    else:
+                        # create transaction if not exists
+                        txid = f"tx-{int(datetime.datetime.utcnow().timestamp()*1000)}"
+                        cur.execute('INSERT OR REPLACE INTO transactions (id,username,deal_id,amount_cents,status,provider,provider_ref,created,settled_at) VALUES (?,?,?,?,?,?,?,?,?)', (txid, username or '', None, amount or 0, 'settled' if etype!='payment_intent.payment_failed' else 'failed', 'stripe', provider_ref, datetime.datetime.utcnow().isoformat(), datetime.datetime.utcnow().isoformat() if etype!='payment_intent.payment_failed' else None))
+                        conn.commit()
+                        handled = True
+        finally:
+            try:
+                conn.close()
+            except Exception:
+                pass
+
+    return jsonify({'status': 'ok' if handled else 'ignored'})
+
+
+if __name__ == '__main__':
+    # Ensure DB and migrate any JSON-backed stores into SQLite before serving
+    try:
+        ensure_db_and_migrate()
+    except Exception:
+        app.logger.exception('DB migration failed')
+
+    # In production, require secrets to be set and not default
+    if os.environ.get('QMOI_ENV') == 'production':
+        missing = []
+        if JWT_SECRET in (None, '', 'dev-jwt-secret'):
+            missing.append('QMOI_JWT_SECRET')
+        if CONTROL_TOKEN in (None, '', 'dev-token'):
+            missing.append('QMOI_CONTROL_TOKEN')
+        if missing:
+            app.logger.error('Missing required secrets for production: %s', missing)
+            raise SystemExit(1)
+
+    # Start the Flask dev server (use a WSGI server in production)
     app.run(host='0.0.0.0', port=8000)

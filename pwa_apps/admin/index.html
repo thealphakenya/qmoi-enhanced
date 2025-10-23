@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QMOI Master Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:16px;color:#111}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+    button{padding:6px 10px;border-radius:6px;border:1px solid #ccc;background:#fff}
+    .actions{display:flex;gap:8px}
+    .sponsored{color:green;font-weight:600}
+  </style>
+</head>
+<body>
+  <h1>QMOI Master Admin</h1>
+  <p>Ensure you are authenticated as master. Use <code>Authorization: Bearer &lt;token&gt;</code> or the control token for admin actions.</p>
+  <div>
+    <button id="refresh">Refresh users</button>
+  </div>
+  <table id="users">
+    <thead><tr><th>User</th><th>Created</th><th>Pricing</th><th>Sponsored</th><th>Actions</th></tr></thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+const API = '/';
+const headers = {'Content-Type':'application/json'};
+// Provide token by replacing below or prompt
+let token = localStorage.getItem('qmoi_master_token') || '';
+if(token) headers['Authorization'] = 'Bearer ' + token;
+
+async function refresh(){
+  const res = await fetch(API + 'admin/users', {headers});
+  if(res.status===403){alert('Forbidden: need master token');return}
+  const data = await res.json();
+  const tbody = document.querySelector('#users tbody'); tbody.innerHTML='';
+  for(const u of data.users){
+    const tr = document.createElement('tr');
+    const pricing = u.pricing ? (u.pricing.price_cents/100).toFixed(2)+' ('+u.pricing.tier+')' : '—';
+    tr.innerHTML = `<td>${u.username}</td><td>${u.created||''}</td><td>${pricing}</td><td class='sponsored' id='sp-${u.username}'>—</td><td class='actions'><button data-user='${u.username}' class='set-price'>Set Price</button><button data-user='${u.username}' class='mark-sponsored'>Mark Sponsored</button></td>`;
+    tbody.appendChild(tr);
+    checkSponsored(u.username);
+  }
+}
+
+async function checkSponsored(username){
+  const res = await fetch(API + 'sponsored/list', {headers});
+  const j = await res.json();
+  const exists = (j.sponsored||[]).find(x=>x.username===username);
+  const el = document.getElementById('sp-'+username);
+  if(el) el.textContent = exists ? 'Yes' : 'No';
+}
+
+document.getElementById('refresh').addEventListener('click', refresh);
+
+document.addEventListener('click', async (ev)=>{
+  const t = ev.target;
+  if(t.classList.contains('set-price')){
+    const uname = t.getAttribute('data-user');
+    const cents = prompt('Price in cents (0 for free):', '0');
+    if(cents===null) return;
+    await fetch(API + 'admin/set-pricing', {method:'POST', headers, body: JSON.stringify({username:uname, price_cents: parseInt(cents)})});
+    refresh();
+  }
+  if(t.classList.contains('mark-sponsored')){
+    const uname = t.getAttribute('data-user');
+    await fetch(API + 'sponsored/add', {method:'POST', headers, body: JSON.stringify({username: uname})});
+    refresh();
+  }
+});
+
+refresh();
+</script>
+</body>
+</html>

@@ -126,6 +126,59 @@ All API endpoints require authentication using JWT tokens. Include the token in 
 Authorization: Bearer <your_token>
 ```
 
+## Discovered/Implemented Endpoints (scanned 2025-10-22)
+
+Below are endpoints found in the repository. ✅ = endpoint exercised in local integration tests.
+
+- qmoi_control_server.py (Flask)
+  - POST /webauthn/register/options
+  - POST /webauthn/register/complete
+  - POST /webauthn/authenticate/options
+  - POST /webauthn/authenticate/complete
+  - POST /control ✅
+  - POST /ai ✅
+  - POST /signup ✅
+  - POST /login ✅
+  - POST /logout ✅
+  - POST /sync-memory ✅
+  - GET  /memories ✅
+  - GET  /health ✅
+  - GET  /mirror/app/<appname>/... ✅
+  - GET  /mirror/raw/<path> ✅
+  - POST /admin/backup-db (admin)
+  - POST /admin/update-ngrok (admin)
+
+- ai-anomaly-service.py (Flask)
+  - POST /detect-anomaly
+  - GET  /parse-log
+  - GET  /analytics
+  - GET  /export-analytics
+  - POST /alert
+  - POST /monitor
+  - GET  /monitor/status
+  - GET  /analytics/hourly
+
+- downloadqmoiaiexe.py (FastAPI)
+  - POST /api/qmoi/download-exe
+
+- api/qcity.ts (Express)
+  - GET  /status
+  - GET  /config
+  - POST /start
+  - POST /stop
+  - POST /configure-platforms
+  - POST /enable-features
+  - POST /monitor-resources
+  - GET  /notifications
+  - GET  /tasks
+  - GET  /resources
+  - GET  /logs
+  - GET  /workspace-logs
+
+Notes:
+- Admin endpoints may require `QMOI_CONTROL_TOKEN` or elevated RBAC. Ensure env vars are set when running the server.
+- I will now add a small attachments endpoint and a supervisor script, then run the control server integration tests to ensure these changes don't break existing behavior.
+
 ## Endpoints
 
 ### System Management

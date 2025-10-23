@@ -468,4 +468,4 @@ client.getStatus().then(console.log);
 
 - QMOI, QAvatar, and command panels store user preferences, history, and pins in localStorage.
 - The QMoiSettingsPanel provides export/import buttons to backup or transfer all settings as a JSON file.
-- Importing settings restores all preferences, history, and pins. 
+- Importing settings restores all preferences, history, and pins.

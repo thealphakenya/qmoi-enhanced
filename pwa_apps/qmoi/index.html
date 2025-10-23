@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>QMOI PWA</title>
+	</head>
+	<body>
+		<h1>QMOI</h1>
+		<section id="attachments">
+			<h3>Attachments (@attach)</h3>
+			<input id="attach-file" type="file" />
+			<button id="attach-btn">Attach</button>
+			<ul id="attach-list"></ul>
+		</section>
+		<script>
+			function _getLocalAttachments(){ try { return JSON.parse(localStorage.getItem('qmoi_attachments')||'[]'); } catch(e){ return []; } }
+			function _setLocalAttachments(arr){ localStorage.setItem('qmoi_attachments', JSON.stringify(arr)); }
+			document.getElementById('attach-btn').addEventListener('click', ()=>{
+				const inp = document.getElementById('attach-file');
+				if (!inp.files || inp.files.length === 0) return alert('Select a file');
+				const f = inp.files[0];
+				const reader = new FileReader();
+				reader.onload = ()=>{
+					const arr = _getLocalAttachments();
+					const dataUrl = (''+reader.result).slice(0, 4096);
+					const meta = {id: 'att-'+Date.now(), name: f.name, size: f.size, mime: f.type, dataUrlPreview: dataUrl};
+					arr.push(meta);
+					_setLocalAttachments(arr);
+					renderAttachments();
+				};
+				reader.readAsDataURL(f);
+			});
+			function renderAttachments(){ const ul = document.getElementById('attach-list'); ul.innerHTML=''; for (const a of _getLocalAttachments()){ const li = document.createElement('li'); li.innerText = `${a.name} (${Math.round(a.size/1024)}KB)`; ul.appendChild(li); } }
+			renderAttachments();
+		</script>
+	</body>
+</html>
