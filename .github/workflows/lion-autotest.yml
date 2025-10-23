@@ -1,0 +1,35 @@
+name: Lion Autotest & Autofix
+
+on:
+  push:
+    branches:
+      - feat/**
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  autotest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install deps
+        run: npm ci --silent || true
+      - name: Run lion autotest (dry run)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/lion-autotest-all.cjs
+      - name: Run lion autotest and create PR with fixes (manual trigger)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/lion-autotest-all.cjs --apply-fixes --create-pr
