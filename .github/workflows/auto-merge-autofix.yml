@@ -1,0 +1,33 @@
+name: Auto-merge autofix PRs (opt-in)
+
+on:
+  pull_request:
+    types: [labeled, synchronize, opened]
+
+jobs:
+  auto-merge:
+    if: contains(github.event.pull_request.labels.*.name, 'autofix')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Require checks to be green
+        uses: actions/github-script@v6
+        id: check
+        with:
+          script: |
+            const pr = context.payload.pull_request.number;
+            const resp = await github.rest.pulls.get({ owner: context.repo.owner, repo: context.repo.repo, pull_number: pr });
+            if (resp.data.mergeable_state !== 'clean' && resp.data.mergeable_state !== 'unstable') {
+              core.setFailed('PR is not mergeable or checks not passing');
+            }
+
+      - name: Merge PR (opt-in)
+        if: ${{ secrets.GH_TOKEN }}
+        uses: peter-evans/merge-pull-request@v5
+        with:
+          pull-number: ${{ github.event.pull_request.number }}
+          merge-method: squash
+          commit-title: "chore: merge autofix PR #${{ github.event.pull_request.number }}"
+          github-token: ${{ secrets.GH_TOKEN }}

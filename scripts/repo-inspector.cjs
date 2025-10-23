@@ -107,7 +107,15 @@ function inspectBuildGradle(gPath) {
   // Dockerfile presence
   const dockerPath = path.join(cwd, 'Dockerfile');
   if (fs.existsSync(dockerPath)) {
-    results.push({ file: dockerPath, change: 'has Dockerfile', suggestion: 'ensure multi-stage build and pinned base image' });
+    try {
+      const txt = fs.readFileSync(dockerPath, 'utf8');
+      const hasBuilder = /AS\s+builder/i.test(txt) || (txt.match(/FROM\s+/gi) || []).length > 1;
+      const usesLatest = /FROM\s+[^:\s]+:latest/i.test(txt);
+      if (!hasBuilder) results.push({ file: dockerPath, change: 'docker-no-multistage', suggestion: 'consider multi-stage build to reduce image size' });
+      if (usesLatest) results.push({ file: dockerPath, change: 'docker-uses-latest', suggestion: 'pin base image versions instead of using :latest' });
+    } catch (e) {
+      results.push({ file: dockerPath, change: 'has Dockerfile', suggestion: 'ensure multi-stage build and pinned base image' });
+    }
   }
 
   // gradle wrapper
@@ -121,6 +129,31 @@ function inspectBuildGradle(gPath) {
   if (fs.existsSync(wfDir)) {
     const wfFiles = fs.readdirSync(wfDir).filter(f => f.endsWith('.yml') || f.endsWith('.yaml'));
     for (const w of wfFiles) results.push({ file: path.join(wfDir, w), change: 'workflow-present' });
+  }
+
+  // Analyze workflows for unpinned actions and missing permissions
+  try {
+    const yaml = require('js-yaml');
+    if (fs.existsSync(wfDir)) {
+      const wfFiles = fs.readdirSync(wfDir).filter(f => f.endsWith('.yml') || f.endsWith('.yaml'));
+      for (const w of wfFiles) {
+        const full = path.join(wfDir, w);
+        try {
+          const doc = yaml.load(fs.readFileSync(full, 'utf8'));
+          const raw = fs.readFileSync(full, 'utf8');
+          // detect 'uses:' without '@' pin
+          const usesUnpinned = /uses:\s+[^@\n]+$|uses:\s+[^@\n]+\n/gm.test(raw);
+          if (usesUnpinned) results.push({ file: full, change: 'workflow-unpinned-uses', suggestion: 'pin action versions (use @v1 or @sha) to avoid breaking changes' });
+          // detect missing permissions block
+          if (!doc || !doc.permissions) results.push({ file: full, change: 'workflow-missing-permissions', suggestion: 'add least-privilege permissions block to workflows' });
+        } catch (e) {
+          results.push({ file: full, change: 'workflow-parse-failed', suggestion: 'could not parse workflow YAML' });
+        }
+      }
+    }
+  } catch (e) {
+    // js-yaml not installed: skip deeper analysis
+    results.push({ file: 'workflows', change: 'yaml-analysis-skipped', suggestion: 'install js-yaml to enable workflow analysis' });
   }
 
   writeSuggestions(results);

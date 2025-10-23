@@ -1,9 +1,13 @@
 {
-  "generatedAt": "2025-10-23T22:54:54.577Z",
+  "generatedAt": "2025-10-23T23:01:34.543Z",
   "suggestions": [
     {
       "file": "/workspaces/qmoi-enhanced/tsconfig.json",
       "issue": "invalid json or missing"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge-autofix.yml",
+      "change": "workflow-present"
     },
     {
       "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge.yml",
@@ -80,6 +84,61 @@
     {
       "file": "/workspaces/qmoi-enhanced/.github/workflows/update-readme-cli.yml",
       "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge-autofix.yml",
+      "change": "workflow-missing-permissions",
+      "suggestion": "add least-privilege permissions block to workflows"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge.yml",
+      "change": "workflow-missing-permissions",
+      "suggestion": "add least-privilege permissions block to workflows"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/build-and-publish.yml",
+      "change": "workflow-missing-permissions",
+      "suggestion": "add least-privilege permissions block to workflows"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/ci.yml",
+      "change": "workflow-parse-failed",
+      "suggestion": "could not parse workflow YAML"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/ensure-env-fallback.yml",
+      "change": "workflow-missing-permissions",
+      "suggestion": "add least-privilege permissions block to workflows"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/lion-den-ci.yml",
+      "change": "workflow-missing-permissions",
+      "suggestion": "add least-privilege permissions block to workflows"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/nightly.yml",
+      "change": "workflow-unpinned-uses",
+      "suggestion": "pin action versions (use @v1 or @sha) to avoid breaking changes"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/pr-preview.yml",
+      "change": "workflow-parse-failed",
+      "suggestion": "could not parse workflow YAML"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/publish-q-alpha.yml",
+      "change": "workflow-missing-permissions",
+      "suggestion": "add least-privilege permissions block to workflows"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/release.yml",
+      "change": "workflow-parse-failed",
+      "suggestion": "could not parse workflow YAML"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/repo-inspector-pr.yml",
+      "change": "workflow-missing-permissions",
+      "suggestion": "add least-privilege permissions block to workflows"
     }
   ]
 }
