@@ -808,6 +808,174 @@
         "file": "/workspaces/qmoi-enhanced/.github/workflows/update-readme-cli.yml",
         "analyzedAt": "2025-10-24T00:12:03.344Z"
       }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.811Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge-autofix.yml",
+        "analyzedAt": "2025-10-24T00:18:47.811Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.812Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge.yml",
+        "analyzedAt": "2025-10-24T00:18:47.812Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.812Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/autodev.yml",
+        "analyzedAt": "2025-10-24T00:18:47.812Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.813Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/build-and-publish.yml",
+        "analyzedAt": "2025-10-24T00:18:47.813Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.813Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/build.yml",
+        "analyzedAt": "2025-10-24T00:18:47.813Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.814Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/ci.yml",
+        "analyzedAt": "2025-10-24T00:18:47.814Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.815Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/ensure-env-fallback.yml",
+        "analyzedAt": "2025-10-24T00:18:47.815Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.815Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/github-actions-qmoi-build.yml",
+        "analyzedAt": "2025-10-24T00:18:47.815Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.816Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/lion-autotest.yml",
+        "analyzedAt": "2025-10-24T00:18:47.816Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.817Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/lion-den-ci.yml",
+        "analyzedAt": "2025-10-24T00:18:47.816Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.817Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/nightly.yml",
+        "analyzedAt": "2025-10-24T00:18:47.817Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.818Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/npm.yml",
+        "analyzedAt": "2025-10-24T00:18:47.818Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.818Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/pr-preview.yml",
+        "analyzedAt": "2025-10-24T00:18:47.818Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.819Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/publish-q-alpha.yml",
+        "analyzedAt": "2025-10-24T00:18:47.819Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.819Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/q.yml",
+        "analyzedAt": "2025-10-24T00:18:47.819Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.820Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/qmoi-app-build.yml",
+        "analyzedAt": "2025-10-24T00:18:47.819Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.820Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/qmoi-ci.yml",
+        "analyzedAt": "2025-10-24T00:18:47.820Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.821Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/release.yml",
+        "analyzedAt": "2025-10-24T00:18:47.820Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.821Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/repo-inspector-pr.yml",
+        "analyzedAt": "2025-10-24T00:18:47.821Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.822Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/sync-notify.yml",
+        "analyzedAt": "2025-10-24T00:18:47.822Z"
+      }
+    },
+    {
+      "ns": "inspector",
+      "ts": "2025-10-24T00:18:47.822Z",
+      "entry": {
+        "file": "/workspaces/qmoi-enhanced/.github/workflows/update-readme-cli.yml",
+        "analyzedAt": "2025-10-24T00:18:47.822Z"
+      }
     }
   ]
 }

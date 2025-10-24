@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-24T00:12:03.374Z",
+  "generatedAt": "2025-10-24T00:18:47.854Z",
   "suggestions": [
     {
       "file": "/workspaces/qmoi-enhanced/tsconfig.json",
@@ -91,8 +91,8 @@
     },
     {
       "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge-autofix.yml",
-      "change": "workflow-missing-permissions",
-      "suggestion": "add least-privilege permissions block to workflows"
+      "change": "workflow-parse-failed",
+      "suggestion": "could not parse workflow YAML"
     },
     {
       "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge.yml",
