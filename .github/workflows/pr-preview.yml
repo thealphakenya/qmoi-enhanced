@@ -1,0 +1,40 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate preview report
+        env:
+          GITHUB_PR_FILES: ${{ toJson(github.event.pull_request.changed_files == 0 ? [] : github.event.pull_request.changed_files) }}
+        run: |
+          node scripts/generate-preview.cjs
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-preview
+          path: PREVIEW_REPORT.md
+
+      - name: Comment preview link
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Preview report generated. Download: ${{ github.server_url }}/${{ github.repository }}/suites/${{ github.run_id }}/artifacts

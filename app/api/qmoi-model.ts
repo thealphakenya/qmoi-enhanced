@@ -119,7 +119,7 @@ async function creativeFileGen(type: string, details: Record<string, unknown>) {
 }
 
 // --- User Timezone Preference ---
-let userTimeZone: string = 'UTC';
+let userTimeZone = 'UTC';
 function setUserTimeZone(tz: string) {
   userTimeZone = tz;
   // Optionally persist to user profile or DB

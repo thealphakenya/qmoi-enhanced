@@ -72,35 +72,62 @@ async function backupCredentialsToEmail(credentials: any, platform: string) {
 }
 
 // Payment processing functions
-async function processMpesaPayment(paymentData: any) {
-  try {
-    // Simulate M-Pesa API call
-    const response = await fetch('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${PAYMENT_CREDENTIALS.mpesa.consumerKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        BusinessShortCode: '174379',
-        Password: PAYMENT_CREDENTIALS.mpesa.passkey,
-        Timestamp: new Date().toISOString(),
-        TransactionType: 'CustomerPayBillOnline',
-        Amount: paymentData.amount,
-        PartyA: paymentData.mpesaNumber,
-        PartyB: '174379',
-        PhoneNumber: paymentData.mpesaNumber,
-        CallBackURL: 'https://your-callback-url.com/mpesa',
-        AccountReference: paymentData.description,
-        TransactionDesc: paymentData.description,
-      }),
-    });
+import MpesaAdapter from '@/integrations/mpesa/adapter';
 
-    const result = await response.json();
-    return { success: true, reference: result.CheckoutRequestID, provider: 'mpesa' };
+async function processMpesaPayment(paymentData: any) {
+  // Prefer MpesaAdapter when credentials are provided
+  try {
+    const cfg = {
+      consumerKey: PAYMENT_CREDENTIALS.mpesa.consumerKey || process.env.MPESA_CONSUMER_KEY,
+      consumerSecret: PAYMENT_CREDENTIALS.mpesa.consumerSecret || process.env.MPESA_CONSUMER_SECRET,
+      passkey: PAYMENT_CREDENTIALS.mpesa.passkey || process.env.MPESA_PASSKEY,
+      shortcode: process.env.MPESA_SHORTCODE || process.env.MPESA_BUSINESS_SHORTCODE || '174379',
+      env: (process.env.MPESA_ENVIRONMENT || process.env.MPESA_ENV || 'sandbox') as 'sandbox' | 'production',
+    };
+
+    const hasCreds = cfg.consumerKey && cfg.consumerSecret;
+    if (hasCreds) {
+      try {
+        const adapter = new MpesaAdapter(cfg as any);
+        const res = await adapter.sendStkPush(paymentData.mpesaNumber, paymentData.amount, paymentData.description || 'QMOI');
+        return { success: true, reference: res.CheckoutRequestID || res.checkoutRequestId || res.ResponseCode, provider: 'mpesa', raw: res };
+      } catch (err) {
+        console.warn('MpesaAdapter failed, falling back to inline call:', (err as any)?.message || err);
+      }
+    }
+
+    // Fallback: existing inline fetch (sandbox)
+    try {
+      const response = await fetch('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${PAYMENT_CREDENTIALS.mpesa.consumerKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          BusinessShortCode: process.env.MPESA_SHORTCODE || '174379',
+          Password: PAYMENT_CREDENTIALS.mpesa.passkey || process.env.MPESA_PASSKEY,
+          Timestamp: new Date().toISOString(),
+          TransactionType: 'CustomerPayBillOnline',
+          Amount: paymentData.amount,
+          PartyA: paymentData.mpesaNumber,
+          PartyB: process.env.MPESA_SHORTCODE || '174379',
+          PhoneNumber: paymentData.mpesaNumber,
+          CallBackURL: process.env.MPESA_CALLBACK_URL || 'https://your-callback-url.com/mpesa',
+          AccountReference: paymentData.description,
+          TransactionDesc: paymentData.description,
+        }),
+      });
+
+      const result = await response.json();
+      return { success: true, reference: result.CheckoutRequestID, provider: 'mpesa', raw: result };
+    } catch (error) {
+      console.error('M-Pesa payment failed (fallback):', error);
+      return { success: false, error: 'M-Pesa payment failed' };
+    }
   } catch (error) {
-    console.error('M-Pesa payment failed:', error);
-    return { success: false, error: 'M-Pesa payment failed' };
+    console.error('M-Pesa processing top-level error:', error);
+    return { success: false, error: 'M-Pesa processing error' };
   }
 }
 

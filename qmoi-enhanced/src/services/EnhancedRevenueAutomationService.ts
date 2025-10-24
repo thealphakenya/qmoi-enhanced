@@ -39,7 +39,7 @@ interface RevenueAutomationResult {
 export class EnhancedRevenueAutomationService extends EventEmitter {
   private static instance: EnhancedRevenueAutomationService;
   private projectQueue: RevenueProjectRequest[] = [];
-  private isProcessing: boolean = false;
+  private isProcessing = false;
 
   private constructor() {
     super();

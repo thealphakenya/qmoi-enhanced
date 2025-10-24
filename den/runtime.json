@@ -1,0 +1,6 @@
+{
+  "node": "18.x",
+  "requires": ["node", "bash"],
+  "adapters": ["aws", "dns", "payments"],
+  "secure": true
+}

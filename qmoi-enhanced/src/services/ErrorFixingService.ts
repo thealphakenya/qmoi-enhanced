@@ -24,7 +24,7 @@ interface FixSuggestion {
 export class ErrorFixingService {
   private static instance: ErrorFixingService;
   private errorQueue: ErrorReport[] = [];
-  private isProcessing: boolean = false;
+  private isProcessing = false;
 
   private constructor() {
     // Private constructor to enforce Singleton pattern

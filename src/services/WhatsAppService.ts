@@ -42,7 +42,7 @@ export class WhatsAppService {
   private static instance: WhatsAppService;
   private client: Client;
   private config: WhatsAppConfig;
-  private isConnected: boolean = false;
+  private isConnected = false;
   private qrCodeStatus: QRCodeStatus;
   private messageTemplates: MessageTemplate[] = [];
   private autoResponders: Map<string, (message: Message) => Promise<string>> =

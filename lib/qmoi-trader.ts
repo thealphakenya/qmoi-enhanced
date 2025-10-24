@@ -49,7 +49,7 @@ export class QmoiTrader {
   private marketData: Map<string, MarketData> = new Map();
   private tradingSignals: TradingSignal[] = [];
   private activeTrades: TradeRequest[] = [];
-  private isRunning: boolean = false;
+  private isRunning = false;
   private tradingLoop: NodeJS.Timeout | null = null;
 
   constructor(config: QmoiConfig) {
@@ -415,7 +415,7 @@ export class QmoiTrader {
   }
 
   // Get recent signals
-  getRecentSignals(limit: number = 10): TradingSignal[] {
+  getRecentSignals(limit = 10): TradingSignal[] {
     return this.tradingSignals.slice(-limit);
   }
 

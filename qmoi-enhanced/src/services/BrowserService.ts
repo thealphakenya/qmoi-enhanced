@@ -131,7 +131,7 @@ export class BrowserService {
   private activeTabId: string | null = null;
   private settings: BrowserSettings;
   private aiFeatures: Map<string, AIFeature> = new Map();
-  private isIncognito: boolean = false;
+  private isIncognito = false;
   private history: string[] = [];
   private bookmarks: Bookmark[] = [];
   private downloads: Array<{
@@ -600,7 +600,7 @@ export class BrowserService {
     tabId: string,
     title: string,
     url: string,
-    folder: string = "Bookmarks",
+    folder = "Bookmarks",
   ): void {
     const bookmark: Bookmark = {
       id: this.generateId(),

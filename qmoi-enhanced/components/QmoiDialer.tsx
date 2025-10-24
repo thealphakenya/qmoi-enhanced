@@ -127,7 +127,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
     saveCallLogs(newCallLogs);
   };
 
-  const makeCall = (phone: string, isVideo: boolean = false) => {
+  const makeCall = (phone: string, isVideo = false) => {
     const call: Call = {
       id: Date.now().toString(),
       phone,

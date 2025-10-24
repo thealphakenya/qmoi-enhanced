@@ -311,7 +311,7 @@ export class QCityService {
     };
   }
 
-  public async runRemoteCommand(cmd: string, deviceId: string = 'default'): Promise<any> {
+  public async runRemoteCommand(cmd: string, deviceId = 'default'): Promise<any> {
     // Simulate routing to the correct device
     if (deviceId === 'qcity-1') {
       return { success: true, output: `[QCity Colab 1] Executed: ${cmd}` };

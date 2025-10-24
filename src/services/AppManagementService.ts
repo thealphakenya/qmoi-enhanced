@@ -74,7 +74,7 @@ export class AppManagementService {
   private static instance: AppManagementService;
   private eventEmitter: EventEmitter;
   private apps: Map<string, AppInfo> = new Map();
-  private isAutoGitEnabled: boolean = true;
+  private isAutoGitEnabled = true;
   private gitCommitInterval: Timeout | null = null;
 
   private constructor() {

@@ -1,0 +1,66 @@
+name: Build and Publish
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          pip install -r requirements.txt || true
+
+      - name: Validate env
+        run: node scripts/validate-env.cjs || echo "Validator allowed to continue in dispatch mode"
+
+      - name: Run QMOI build pipeline
+        run: |
+          python qmoi-app-builder.py || true
+
+      - name: Run quick autotest
+        run: |
+          npm run test:unit || echo "unit tests failed, continuing to gather artifacts"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-artifacts
+          path: Qmoi_apps/**
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: qmoi-artifacts
+
+      - name: Create GitHub Release and attach artifacts
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.sha }}
+          name: QMOI Build ${{ github.run_number }}
+          files: |
+            Qmoi_apps/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

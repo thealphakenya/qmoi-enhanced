@@ -5,7 +5,7 @@ export class TradingService {
   private config: TradingConfig;
   private activeStrategies: Map<string, TradingStrategy>;
   private transactionHistory: WalletTransaction[];
-  private isInitialized: boolean = false;
+  private isInitialized = false;
 
   constructor() {
     this.config = defaultTradingConfig;
