@@ -1,0 +1,27 @@
+name: Autodev
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *' # daily at 02:00 UTC
+
+jobs:
+  autodev:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install deps
+        run: npm ci
+      - name: Run autodev (dry-run)
+        run: node scripts/autodev.cjs
+      - name: Optional apply (manual)
+        if: github.event.inputs.apply == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Applying fixes and creating PRs is only enabled when AUTODEV_APPLY=1 and a token is provided"
+          AUTODEV_APPLY=1 node scripts/autodev.cjs

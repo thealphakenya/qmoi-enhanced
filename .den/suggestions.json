@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-23T23:01:34.543Z",
+  "generatedAt": "2025-10-24T00:12:03.374Z",
   "suggestions": [
     {
       "file": "/workspaces/qmoi-enhanced/tsconfig.json",
@@ -11,6 +11,10 @@
     },
     {
       "file": "/workspaces/qmoi-enhanced/.github/workflows/auto-merge.yml",
+      "change": "workflow-present"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/autodev.yml",
       "change": "workflow-present"
     },
     {
@@ -96,6 +100,11 @@
       "suggestion": "add least-privilege permissions block to workflows"
     },
     {
+      "file": "/workspaces/qmoi-enhanced/.github/workflows/autodev.yml",
+      "change": "workflow-missing-permissions",
+      "suggestion": "add least-privilege permissions block to workflows"
+    },
+    {
       "file": "/workspaces/qmoi-enhanced/.github/workflows/build-and-publish.yml",
       "change": "workflow-missing-permissions",
       "suggestion": "add least-privilege permissions block to workflows"
@@ -118,7 +127,7 @@
     {
       "file": "/workspaces/qmoi-enhanced/.github/workflows/nightly.yml",
       "change": "workflow-unpinned-uses",
-      "suggestion": "pin action versions (use @v1 or @sha) to avoid breaking changes"
+      "suggestion": "pin action in line: uses: ./.github/workflows/build-and-publish.yml"
     },
     {
       "file": "/workspaces/qmoi-enhanced/.github/workflows/pr-preview.yml",

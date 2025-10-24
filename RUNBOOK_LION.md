@@ -1,3 +1,77 @@
+# RUNBOOK: Lion (qmoi)
+
+This runbook documents how to use Lion (qmoi) developer automation and validation tooling.
+
+Key scripts
+- `scripts/lion-ensure-dirs.cjs` — ensure `.den`, `den`, `lion` directories and runtime files.
+- `scripts/repo-inspector.cjs` — conservative repo inspection, suggestions, and optional `--apply` fixes.
+- `scripts/lion-autotest-extended.cjs` — extended autotest orchestrator (lint, tests, E2E, builds).
+- `scripts/md-validator.cjs` — validate `.md` files, mark validated ones with Lion ✅, and record results to `.den/md-validation.json`.
+- `scripts/qmoi-memory.cjs` — simple JSON memory store under `.den/memory.json` used by other scripts.
+
+How to run (local)
+
+```bash
+# ensure runtime dirs
+node scripts/lion-ensure-dirs.cjs
+
+# run extended autotest (dry-run conservative)
+node scripts/lion-autotest-extended.cjs
+
+# validate markdown files and mark them
+node scripts/md-validator.cjs
+
+# inspect repo and write suggestions (dry-run)
+node scripts/repo-inspector.cjs
+```
+
+Safety and backups
+- Autofix and validators create `.bak.<ts>` backups of files before writing.
+- `repo-inspector.cjs --apply` will apply conservative changes and always back up originals.
+
+CI recommendations
+- Run `node scripts/lion-autotest-extended.cjs` on PRs as a required check (dry-run by default).
+- Provide a manual workflow dispatch to allow creating apply-PRs from validated autofixes (requires a GitHub token secret).
+
+Memory and audit
+- `.den/memory.json` stores compact event arrays used by scripts to remember past inspections and validations.
+- `.den/tracks/events.log` stores structured track entries for audit and observability.
+
+Further work
+- Auto-merge and PR policies (opt-in) — needs a policy decision and a token in CI.
+- Vulnerability fixes — run `npm audit` and create PRs for non-breaking updates.
+# RUNBOOK: Lion / QM OI Autodev
+
+This runbook documents common commands, CI hooks and how to operate Lion and QM OI autotest/autofix tools.
+
+Key scripts
+
+- `node scripts/lion-autotest-extended.cjs` — run lint, node tests, E2E (if present), and builds when configured.
+- `node scripts/lion-autotest-all.cjs` — full autotest orchestration that can create PRs (opt-in).
+- `node scripts/md-validator.cjs` — validate and mark Markdown files with a Lion-validated tick.
+- `node scripts/repo-inspector.cjs` — conservative suggestions and optional `--apply` mode.
+- `node scripts/qmoi-memory.cjs` — read/write/query lightweight `.den/memory.json` used as QM OI memory store.
+
+Where to find logs
+
+- Tracks are stored in `.den/tracks/events.log` and mirrored into `den/tracks` and the user's home `.den`.
+- Inspector suggestions: `.den/suggestions.json`
+- Memory: `.den/memory.json`
+
+Production considerations
+
+- Secrets and signing keys must be stored in a secret manager or GitHub Actions secrets — this repo does not contain secrets.
+- Mobile builds and iOS signing require macOS runners and access to signing keys.
+
+How to run CI safely
+
+1. Keep workflows dry-run by default and expose a manual dispatch to apply autofixes and open PRs.
+2. Use a service account with least privilege for auto-PR creation and narrow scope for merges (if enabled).
+
+Troubleshooting
+
+- If `md-validator` marks too many files, review `.den/memory.json` to see past validations and their timestamps.
+- If `repo-inspector` suggests fixes, run `node scripts/repo-inspector.cjs --apply` locally to apply conservative updates (backups are created).
 RUNBOOK: Lion (autotest/autofix/den)
 
 Overview

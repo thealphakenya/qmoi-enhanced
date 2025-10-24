@@ -5,6 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const track = require('./track.cjs');
+const qmoiMemory = require('./qmoi-memory.cjs');
 
 function readJsonSafe(p) {
   try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch (e) { return null; }
@@ -104,17 +105,21 @@ function inspectBuildGradle(gPath) {
     results.push(...inspectBuildGradle(gradlePath));
   }
 
-  // Dockerfile presence
+  // Dockerfile presence and basic checks
   const dockerPath = path.join(cwd, 'Dockerfile');
   if (fs.existsSync(dockerPath)) {
     try {
       const txt = fs.readFileSync(dockerPath, 'utf8');
-      const hasBuilder = /AS\s+builder/i.test(txt) || (txt.match(/FROM\s+/gi) || []).length > 1;
+      const hasBuilder = /AS\s+\w+/i.test(txt) || (txt.match(/FROM\s+/gi) || []).length > 1;
       const usesLatest = /FROM\s+[^:\s]+:latest/i.test(txt);
-      if (!hasBuilder) results.push({ file: dockerPath, change: 'docker-no-multistage', suggestion: 'consider multi-stage build to reduce image size' });
-      if (usesLatest) results.push({ file: dockerPath, change: 'docker-uses-latest', suggestion: 'pin base image versions instead of using :latest' });
+      const suggestions = [];
+      if (!hasBuilder) suggestions.push('consider multi-stage build to reduce image size');
+      if (usesLatest) suggestions.push('pin base image versions instead of using :latest');
+      if (suggestions.length) results.push({ file: dockerPath, change: 'docker-suggestions', suggestion: suggestions.join('; ') });
+      // record memory that Dockerfile was analyzed
+      try { qmoiMemory.append('inspector', { file: dockerPath, analyzedAt: new Date().toISOString(), suggestions }); } catch (e) {}
     } catch (e) {
-      results.push({ file: dockerPath, change: 'has Dockerfile', suggestion: 'ensure multi-stage build and pinned base image' });
+      results.push({ file: dockerPath, change: 'docker-read-failed', suggestion: 'could not read Dockerfile' });
     }
   }
 
@@ -122,13 +127,18 @@ function inspectBuildGradle(gPath) {
   const gradleWrapper = path.join(cwd, 'gradlew');
   if (fs.existsSync(gradleWrapper)) {
     results.push({ file: gradleWrapper, change: 'has gradle wrapper', suggestion: 'ensure wrapper is executable and versioned' });
+    try { qmoiMemory.append('inspector', { file: gradleWrapper, analyzedAt: new Date().toISOString(), note: 'gradle wrapper present' }); } catch (e) {}
   }
 
-  // scan workflows for common issues (presence)
+  // scan workflows for common issues (presence and basic analysis)
   const wfDir = path.join(cwd, '.github', 'workflows');
   if (fs.existsSync(wfDir)) {
     const wfFiles = fs.readdirSync(wfDir).filter(f => f.endsWith('.yml') || f.endsWith('.yaml'));
-    for (const w of wfFiles) results.push({ file: path.join(wfDir, w), change: 'workflow-present' });
+    for (const w of wfFiles) {
+      const full = path.join(wfDir, w);
+      results.push({ file: full, change: 'workflow-present' });
+      try { qmoiMemory.append('inspector', { file: full, analyzedAt: new Date().toISOString() }); } catch (e) {}
+    }
   }
 
   // Analyze workflows for unpinned actions and missing permissions
@@ -137,19 +147,21 @@ function inspectBuildGradle(gPath) {
     if (fs.existsSync(wfDir)) {
       const wfFiles = fs.readdirSync(wfDir).filter(f => f.endsWith('.yml') || f.endsWith('.yaml'));
       for (const w of wfFiles) {
-        const full = path.join(wfDir, w);
-        try {
-          const doc = yaml.load(fs.readFileSync(full, 'utf8'));
-          const raw = fs.readFileSync(full, 'utf8');
-          // detect 'uses:' without '@' pin
-          const usesUnpinned = /uses:\s+[^@\n]+$|uses:\s+[^@\n]+\n/gm.test(raw);
-          if (usesUnpinned) results.push({ file: full, change: 'workflow-unpinned-uses', suggestion: 'pin action versions (use @v1 or @sha) to avoid breaking changes' });
-          // detect missing permissions block
-          if (!doc || !doc.permissions) results.push({ file: full, change: 'workflow-missing-permissions', suggestion: 'add least-privilege permissions block to workflows' });
-        } catch (e) {
-          results.push({ file: full, change: 'workflow-parse-failed', suggestion: 'could not parse workflow YAML' });
+          const full = path.join(wfDir, w);
+          try {
+            const raw = fs.readFileSync(full, 'utf8');
+            const doc = yaml.load(raw);
+            // detect 'uses:' without a version pin (@) - improved check: find uses: lines and check for '@'
+            const usesLines = raw.split(/\r?\n/).filter(l => /\buses:\s+/.test(l));
+            for (const line of usesLines) {
+              if (!/@/g.test(line)) results.push({ file: full, change: 'workflow-unpinned-uses', suggestion: `pin action in line: ${line.trim()}` });
+            }
+            // detect missing permissions block
+            if (!doc || !doc.permissions) results.push({ file: full, change: 'workflow-missing-permissions', suggestion: 'add least-privilege permissions block to workflows' });
+          } catch (e) {
+            results.push({ file: full, change: 'workflow-parse-failed', suggestion: 'could not parse workflow YAML' });
+          }
         }
-      }
     }
   } catch (e) {
     // js-yaml not installed: skip deeper analysis
