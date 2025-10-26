@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # RELEASETRACKS.md
 
 QMOI Release Tracks Log
@@ -33,6 +42,16 @@ This file tracks all releases, automation, and workflow status for every app, pl
 - QMOI automation ensures all platforms are up-to-date and synced
 - Any errors or issues are auto-fixed and logged
  For full error/fix traceability, see [ERRORSTRACKS.md](./ERRORSTRACKS.md)
+
+## Auto-publishing & Billing Safeguards
+
+- QMOI can auto-publish releases, but to avoid unexpected billing or external uploads the default configuration includes safeguards:
+  - `auto_publish_allowed: false` — automatic publishing to external registries is disabled by default.
+  - Manual approval required for external registries (e.g., App Store, Play Store, paid registries).
+  - `max_artifact_size_bytes` default: 100MB. Artifacts larger than this threshold require manual review before upload.
+  - Repositories using auto-publish must configure billing and secrets in a controlled secrets store; LION will refuse to publish if required secrets are missing.
+
+These safeguards are mirrored in `tools/lionlaunch.json` (`settings.billing_safeguards`) and the CI skeletons. To enable fully automatic publishing, update the release policy and approve a dedicated service account with billing limits.
 
 ---
 

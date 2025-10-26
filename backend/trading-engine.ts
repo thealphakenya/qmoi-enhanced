@@ -19,7 +19,8 @@ interface Trade {
   rationale: string;
 }
 
-const DATASET_PATH = path.join(__dirname, '../datasets/trading/trading-dataset-[PRODUCTION IMPLEMENTATION REQUIRED].csv');
+// Production dataset filename should be provided via environment or config; defaulting to trading-dataset-latest.csv
+const DATASET_PATH = path.join(__dirname, '../datasets/trading/trading-dataset-latest.csv');
 const TRADING_LOG = path.join(__dirname, '../trading-log.json');
 
 function loadDataset(): any[] {

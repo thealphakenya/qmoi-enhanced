@@ -1,11 +1,61 @@
 {
-  "windows": "Qmoi_apps/windows/qmoi_ai.exe",
-  "mac": "Qmoi_apps/mac/qmoi_ai.dmg",
-  "linux": "Qmoi_apps/linux/qmoi_ai.AppImage",
-  "android": "Qmoi_apps/android/qmoi_ai.apk",
-  "ios": "Qmoi_apps/ios/qmoi_ai.ipa",
-  "qcity": "Qmoi_apps/qcity/qmoi_ai.zip",
-  "chromebook": "Qmoi_apps/chromebook/qmoi_ai.deb",
-  "raspberrypi": "Qmoi_apps/raspberrypi/qmoi_ai.img",
-  "smarttv": "Qmoi_apps/smarttv/qmoi_ai.apk"
+  "version": "1.0.0",
+  "build_id": "build-20251025-001",
+  "generated_at": "2025-10-25T00:00:00Z",
+  "platforms": {
+    "windows": {
+      "artifact": "downloads/windows/latest/qmoi_ai.exe",
+      "sha256": "6252612188674ccb184551334d029c7437be1908326bec10705c1020a410fa5d",
+      "size_bytes": 169,
+      "status": "available"
+    },
+    "mac": {
+      "artifact": "downloads/mac/latest/qmoi_ai.dmg",
+      "sha256": "b560e42d907446eee9d7921dc3457c5b968e288a2deb126af634e73d879b21fd",
+      "size_bytes": 142,
+      "status": "available"
+    },
+    "linux": {
+      "artifact": "downloads/linux/latest/qmoi_ai.AppImage",
+      "sha256": "8f8c3befa3370823f3920f8fa9b64d59a058c50c5e526473cc2028c6538d5452",
+      "size_bytes": 136,
+      "status": "available"
+    },
+    "android": {
+      "artifact": "downloads/android/qmoi_ai.apk",
+      "sha256": "ed6d927b731c202576ec3a7f6ea3f718a281c8d9a9abea54054154e453b1f73f",
+      "size_bytes": 119,
+      "status": "available"
+    },
+    "ios": {
+      "artifact": "downloads/ios/qmoi_ai.ipa",
+      "sha256": "87ca2221812226753019a3ec29d49909505d9573e290ae0b32a439e0b24d5de1",
+      "size_bytes": 105,
+      "status": "available"
+    },
+    "qcity": {
+      "artifact": "registry:qcity/qmoi:1.0.0",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "available"
+    },
+    "chromebook": {
+      "artifact": "downloads/chromebook/qmoi_ai.deb",
+      "sha256": "052ed59331d95feebf23bed354000adf338fdbdfc2ac23aa6a7811b7b687c7be",
+      "size_bytes": 130,
+      "status": "available"
+    },
+    "raspberrypi": {
+      "artifact": "downloads/raspberrypi/qmoi_ai_arm.tar.gz",
+      "sha256": "e99066b6b4f7874e104c045737a850bda73095d659bf6e58f4f1712718d570f5",
+      "size_bytes": 141,
+      "status": "available"
+    },
+    "smarttv": {
+      "artifact": "downloads/smarttv/qmoi_ai.pkg",
+      "sha256": "7ce5af4a8937cd4eaeee3874445f87f5fec9a8ef8b9fd777482f2096a88b2af5",
+      "size_bytes": 126,
+      "status": "available"
+    }
+  }
 }

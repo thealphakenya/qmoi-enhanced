@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # QMOI System
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
@@ -163,5 +172,32 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 <!-- QMOI_APPS_TABLE_START -->
 | App | Platform | File | Size (KB) | Download |
 |---|---:|---|---:|---|
-| qmoi-windows-exe | windows | [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) / [GitHub Raw](https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qmoi_ai.exe) |
+| qmoi ai | qmoi ai.exe | [downloads/qmoi ai.exe](downloads/qmoi ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi ai.exe) |
+| error | error.log | [downloads/error.log](downloads/error.log) | 0 | [Download](https://downloads.qmoi.app/downloads/error.log) |
+| qmoi_ai | qmoi_ai.exe | [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) |
+| qmoi_ai | linux | [downloads/linux/latest/qmoi_ai.AppImage](downloads/linux/latest/qmoi_ai.AppImage) | 0 | [Download](https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage) |
+| qmoi_ai_arm.tar | raspberrypi | [downloads/raspberrypi/qmoi_ai_arm.tar.gz](downloads/raspberrypi/qmoi_ai_arm.tar.gz) | 0 | [Download](https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz) |
+| qmoi_ai | smarttv | [downloads/smarttv/qmoi_ai.pkg](downloads/smarttv/qmoi_ai.pkg) | 0 | [Download](https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg) |
+| qmoi_ai | ios | [downloads/ios/qmoi_ai.ipa](downloads/ios/qmoi_ai.ipa) | 0 | [Download](https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa) |
+| qmoi_ai | mac | [downloads/mac/latest/qmoi_ai.dmg](downloads/mac/latest/qmoi_ai.dmg) | 0 | [Download](https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg) |
+| qmoi_ai | android | [downloads/android/qmoi_ai.apk](downloads/android/qmoi_ai.apk) | 0 | [Download](https://downloads.qmoi.app/downloads/android/qmoi_ai.apk) |
+| qmoi_ai | windows | [downloads/windows/latest/qmoi_ai.exe](downloads/windows/latest/qmoi_ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe) |
+| qmoi_ai | chromebook | [downloads/chromebook/qmoi_ai.deb](downloads/chromebook/qmoi_ai.deb) | 0 | [Download](https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb) |
 <!-- QMOI_APPS_TABLE_END -->
+
+## 🦁 Lion Operating System (experimental)
+
+QMOI now includes an experimental plan and scaffolding for the Lion Operating System (Lion OS). Lion is intended to be a lightweight, developer-first runtime that integrates tightly with QMOI for orchestration, autodev, and self-heal features.
+
+- Starter design and tasks: `docs/LIONOPERATINGSYSTEM.md`
+- CLI scaffold: `tools/lionctl` (lightweight stub, expand as needed)
+- Build & release: planned CI pipelines will produce cross-platform installers and update `DOWNLOADS` with signed artifacts (no placeholders in final releases).
+
+If you'd like me to flesh out Lion's `lionctl` commands, create CI workflows for building installers, or produce an initial Electron-based UI prototype, tell me which platform to prioritize and I'll scaffold it next.
+
+<!-- RELEASES_TABLE_START -->
+## Release artifacts table
+
+| Platform | Artifact | SHA256 | Size | Status |
+|---|---|---|---:|---|
+<!-- RELEASES_TABLE_END -->

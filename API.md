@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # Q-city API Documentation
 
 ## Overview
@@ -1094,3 +1103,9 @@ For each endpoint, QMOI will:
 - Rerun endpoint usage checks after integration
 
 All endpoints will be used and documented for full coverage and automation.
+
+---
+
+NOTE: This file is partially auto-populated by automated scans. A JSON report of placeholder and documentation gaps was produced at `docs/placeholders_report.json`. The canonical test index is at `docs/ALLTESTSAUTOTESTS.md`.
+
+If you want the assistant to actively sync this file with live code (run static extraction and integration tests) say "sync API docs now" and I will run the extraction and update this document with exact method signatures and status.

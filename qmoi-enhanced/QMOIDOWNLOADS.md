@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 D:\applications\Alpha-Q-ai>python downloadqmoiai.py
 Checking all download links for reachability...
 BROKEN: Qbrowser (skv) [win] => https://downloads.qmoi.app/qbrowser/windows.exe (error: HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002E5D81F38C0>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)")))

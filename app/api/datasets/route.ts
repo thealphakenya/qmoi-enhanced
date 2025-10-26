@@ -64,8 +64,27 @@ export async function GET() {
         defaultFormat: 'json',
         storageLocation: 'local'
       }
-    };
+    // Implementation: Get actual datasets from storage
+    const datasets = await prisma.dataset.findMany({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        type: true,
+        size: true,
+        itemCount: true,
+        createdAt: true,
+        updatedAt: true,
+        status: true,
+        metadata: true,
+        stats: true,
+      },
+      orderBy: { createdAt: 'desc' },
+    });
 
+    return NextResponse.json({
+      datasets
+    });
     return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Datasets);
   } catch (error) {
     console.error('Error in datasets endpoint:', error);

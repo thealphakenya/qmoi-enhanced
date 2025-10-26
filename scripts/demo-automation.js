@@ -7,14 +7,14 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-class Automation[PRODUCTION IMPLEMENTATION REQUIRED] {
+class AutomationManager {
   constructor() {
     this.projectRoot = join(__dirname, '..');
   }
 
   log(message, type = 'info') {
     const timestamp = new Date().toISOString();
-    console.log(`[${timestamp}] [[PRODUCTION IMPLEMENTATION REQUIRED]-${type.toUpperCase()}] ${message}`);
+    console.log(`[${timestamp}] [AUTO-LINT-${type.toUpperCase()}] ${message}`);
   }
 
   async runCommand(command, args = []) {
@@ -36,7 +36,7 @@ class Automation[PRODUCTION IMPLEMENTATION REQUIRED] {
     });
   }
 
-  async run[PRODUCTION IMPLEMENTATION REQUIRED]() {
+  async runAutomation() {
     console.log('\n' + '='.repeat(60));
     console.log('🤖 QMOI AI AUTOMATED LINTING [PRODUCTION IMPLEMENTATION REQUIRED]');
     console.log('='.repeat(60));
@@ -93,13 +93,13 @@ class Automation[PRODUCTION IMPLEMENTATION REQUIRED] {
     console.log('   4. Use yarn lint:full for regular checks');
     console.log('='.repeat(60) + '\n');
 
-    this.log('🎉 [PRODUCTION IMPLEMENTATION REQUIRED] completed successfully!', 'success');
+    this.log('🎉 Automation process completed successfully!', 'success');
   }
 }
 
-// Run the [PRODUCTION IMPLEMENTATION REQUIRED]
-const [PRODUCTION IMPLEMENTATION REQUIRED] = new Automation[PRODUCTION IMPLEMENTATION REQUIRED]();
-[PRODUCTION IMPLEMENTATION REQUIRED].run[PRODUCTION IMPLEMENTATION REQUIRED]().catch(error => {
-  console.error('Fatal error in [PRODUCTION IMPLEMENTATION REQUIRED]:', error);
+// Run the automation
+const automationManager = new AutomationManager();
+automationManager.runAutomation().catch(error => {
+  console.error('Fatal error in automation process:', error);
   process.exit(1);
 }); 

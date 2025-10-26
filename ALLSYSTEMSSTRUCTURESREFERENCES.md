@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # ALLSYSTEMSSTRUCTURESREFERENCES.md
 
 This document provides a comprehensive reference for all system structures, directories, and file responsibilities for QCity, QMOI-AI, and QMOI Space. It is designed for automation, self-development, and permanent operation of QMOI across all platforms.

@@ -1,1 +1,14 @@
-echo { "version": "1.0.0", "author": "thealphakenya" } > config.json
+{
+  "version": "1.0.0",
+  "author": "thealphakenya",
+  "ai": {
+    "model": "claude-sonnet-3.5",
+    "enabled": true,
+    "capabilities": {
+      "streaming": true,
+      "multimodal": true,
+      "structured_output": true
+    },
+    "deployment": "all-clients"
+  }
+}

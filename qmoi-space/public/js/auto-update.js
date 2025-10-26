@@ -1,4 +1,4 @@
 // auto-update.js: Auto-update logic for QMOI Space
-// [PRODUCTION IMPLEMENTATION REQUIRED] for real update logic
+// TODO: Implement secure auto-update logic for production (code signing, delta updates, auth)
 
 // TODO: Implement real auto-update logic for PWA and app

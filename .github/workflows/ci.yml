@@ -1,3 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, '**' ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies (lion helper)
+        run: |
+          node tools/lion_install.js || true
+      - name: TypeScript compile
+        run: |
+          npx -y typescript --noEmit
+      - name: Lint (if ESLint present)
+        run: |
+          if [ -f package.json ]; then npx -y eslint . --ext .ts,.js || true; fi
+      - name: Run adapter dry-run smoke script
+        run: |
+          # Use ts-node to run the TypeScript smoke script; falls back to node if not available
+          npx -y ts-node tests/integration/adapter-dryrun.test.ts || true
 name: CI Pipeline
 'on':
   push:

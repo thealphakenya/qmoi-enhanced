@@ -51,6 +51,31 @@ export async function GET() {
     return NextResponse.json(
       { error: 'Failed to fetch media status' },
       { status: 500 }
-    );
+              // Implementation: Get actual media processing status from storage
+              const mediaStatus = await prisma.mediaProcessing.findMany({
+                select: {
+                  id: true,
+                  type: true,
+                  status: true,
+                  progress: true,
+                  result: true,
+                  createdAt: true,
+                  updatedAt: true,
+                },
+                orderBy: { createdAt: 'desc' },
+                take: 10
+              });
   }
+              const stats = await prisma.mediaProcessing.groupBy({
+                by: ['status'],
+                _count: true
+              });
 } 
+              return NextResponse.json({
+                tasks: mediaStatus,
+                stats: {
+                  totalTasks: stats.reduce((acc, curr) => acc + curr._count, 0),
+                  completedTasks: stats.find(s => s.status === 'completed')?._count || 0,
+                  failedTasks: stats.find(s => s.status === 'failed')?._count || 0
+                }
+              });

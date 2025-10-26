@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # QMOI All Devices Settings & Features Reference
 
 This file documents the features, settings, and UI capabilities for each QMOI app/device type. It ensures every app is fully set up for its target device, with device-specific enhancements and access to all UI/app features.

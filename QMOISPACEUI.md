@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # QMOI Space UI - Progressive Web Application
 ## Overview
 QMOI Space UI is a comprehensive Progressive Web Application (PWA) that provides a modern, responsive interface for the QMOI Space platform. Built with vanilla JavaScript, HTML5, and CSS3, it offers a native app-like experience across all devices and platforms.

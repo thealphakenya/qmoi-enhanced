@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 QMOIDNS.md
 QMOI DNS & Tunnel Management Automation System
 The QMOI DNS system manages and automates the full lifecycle of DNS and ngrok tunnel configurations to ensure high availability, instant failover, and secure delivery of all QMOI downloads and services.

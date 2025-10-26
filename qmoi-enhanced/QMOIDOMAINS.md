@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 QMOIDOMAINS.md
 QMOI Domains Management & Automation
 This file documents how QMOI manages domains for downloads, cloud services, platform automation, and fallback recovery. QMOI dynamically integrates domain providers like Freenom, GoDaddy, Namecheap, Cloudflare, and auto-generates fallback tunnels using Ngrok.

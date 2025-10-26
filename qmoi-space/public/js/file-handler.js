@@ -1,5 +1,5 @@
 // file-handler.js: File upload/manager logic for QMOI Space
-// [PRODUCTION IMPLEMENTATION REQUIRED] for real file API integration
+// TODO: Integrate with real file API for production (e.g., signed uploads, virus scanning, ACLs)
 
 document.getElementById('upload-files').addEventListener('click', () => {
   document.getElementById('file-upload-modal').classList.remove('hidden');

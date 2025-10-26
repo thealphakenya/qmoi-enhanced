@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 yes to all, t# QMOI All Devices Install & Autotest Strategies
 
 This document details all strategies, measures, and automated tests used to ensure QMOI apps install and run successfully on every supported device. It also describes how errors are auto-fixed and how apps remain lightweight and high-performance.

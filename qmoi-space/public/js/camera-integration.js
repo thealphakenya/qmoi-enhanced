@@ -1,5 +1,5 @@
 // camera-integration.js: Camera logic for QMOI Space
-// [PRODUCTION IMPLEMENTATION REQUIRED] for real camera/vision integration
+// TODO: Implement camera/vision integration for production (secure permissions, privacy filters)
 
 document.getElementById('camera-toggle').addEventListener('click', () => {
   document.getElementById('camera-overlay').classList.toggle('hidden');

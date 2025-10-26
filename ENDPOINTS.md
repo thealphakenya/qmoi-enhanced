@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # QMOI Endpoint Inventory
 
 This file lists the canonical HTTP endpoints implemented (or proxied) by the QMOI project. Use this as the single-source reference for API surface used by PWAs, supervisors and automation scripts.
@@ -73,6 +82,12 @@ Public / unauthenticated:
 - GET /health -> basic health check
 - GET /mirror/raw/<path> -> serve repository files or redirect to GitHub raw
 - GET /mirror/app/<appname>/[<path>] -> serve PWA app files or redirect to GitHub raw
+
+---
+
+NOTE: endpoint inventory was created from a repository scan. For a machine-readable report of where placeholder tokens or missing docs were found, see `docs/placeholders_report.json`. For the canonical test matrix that exercises these endpoints see `docs/ALLTESTSAUTOTESTS.md`.
+
+To request an automated verification run (extract runtime route signatures and run integration tests against a local server), say: "verify endpoints now" and I'll run the harness and update this document with test results.
 
 Auth (user JWT required):
 - POST /signup {username,password} -> create user (rate-limited)

@@ -1,12 +1,20 @@
 import "@testing-library/jest-dom";
+import { jest } from '@jest/globals';
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] fetch globally
+declare global {
+  var fetch: jest.Mock;
+  var localStorage: Storage;
+  var sessionStorage: Storage;
+  var console: Console;
+}
+
+// Mock fetch globally
 global.fetch = jest.fn();
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] window.matchMedia
+// Mock window.matchMedia
 Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().[PRODUCTION IMPLEMENTATION REQUIRED]Implementation((query) => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -18,25 +26,36 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] localStorage
-const localStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {
+// Mock localStorage
+const localStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
+  key: jest.fn(),
+  length: 0,
 };
-global.localStorage = localStorage[PRODUCTION IMPLEMENTATION REQUIRED];
+global.localStorage = localStorageMock;
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] sessionStorage
-const sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {
+// Mock sessionStorage
+const sessionStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
+  key: jest.fn(),
+  length: 0,
 };
-global.sessionStorage = sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED];
+global.sessionStorage = {
+  getItem: jest.fn(),
+  setItem: jest.fn(),
+  removeItem: jest.fn(),
+  clear: jest.fn(),
+  key: jest.fn(),
+  length: 0,
+};
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] console methods to reduce noise in tests
+// Mock console methods to reduce noise in tests
 global.console = {
   ...console,
   log: jest.fn(),
