@@ -1,0 +1,34 @@
+[
+  {
+    "id": "rem-001",
+    "title": "Redact tracked .env and rotate secrets",
+    "status": "done",
+    "note": "Original .env backed up to .env.bak; .env values redacted. Rotate provider secrets and update CI secret store. See AUTODEV_SECRETS_ROTATION.md"
+  },
+  {
+    "id": "rem-002",
+    "title": "Replace dev-token occurrences in client apps",
+    "status": "todo",
+    "files": ["pwa_apps/q-alpha/index.html", "pwa_apps/q-alpha/*"],
+    "note": "Review tmp/placeholder_patch.diff and apply targeted replacements for Authorization headers. Do not blindly replace in code without testing."
+  },
+  {
+    "id": "rem-003",
+    "title": "Review placeholder_patch.diff and apply safe patches",
+    "status": "todo",
+    "path": "tmp/placeholder_patch.diff",
+    "note": "Patch generator produced conservative replacements for many docs and a few code snippets. Review diffs and apply PR with tested changes."
+  },
+  {
+    "id": "rem-004",
+    "title": "Rotate QMOI_JWT_SECRET and QMOI_CONTROL_TOKEN in CI",
+    "status": "todo",
+    "note": "Generate secure values (openssl rand -hex 32/48). Update GitHub/GitLab secrets and run staging smoke tests."
+  },
+  {
+    "id": "rem-005",
+    "title": "Remove PII and hard-coded passwords from docs",
+    "status": "todo",
+    "note": "Detected phone numbers and password strings in README and docs (e.g., Victor9798). Replace with placeholders and remove real emails where not needed."
+  }
+]
