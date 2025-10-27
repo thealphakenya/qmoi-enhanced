@@ -6,14 +6,14 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 - Ensure `config.json` has the correct production model (e.g., `claude-sonnet-3.5` or a locally-hosted QMOI model).
 - Store sensitive credentials in a secrets manager or environment variables. DO NOT commit keys to the repo.
 
-2. Replace all placeholders and prod-markers
-- Run: `python3 scripts/placeholder_scanner.py --root . --report reports/placeholders.json`
-- Generate suggested replacements: `python3 scripts/placeholder_scanner.py --root . --report reports/placeholders.json --suggest suggestions.json`
-- Review `suggestions.json`. If acceptable, apply with caution: `python3 scripts/placeholder_scanner.py --root . --apply --mapping suggestions.json`
+2. Replace all placeholders and prod-markers (safe, staged approach)
+- Run the repository scanner to inventory placeholder tokens: `python3 scripts/find_placeholders.py --root . --report reports/placeholders.json` (this produces `placeholder_scan_report.json`).
+- Review the generated report and prioritize replacements. For docs/config-only replacements, apply edits in a dedicated branch (e.g., `auto/placeholders-fixes`) and create a PR for review.
+- For code-level placeholder replacements, create targeted PRs after running tests. The scanner is conservative and will not modify code unless reviewed.
 
 3. Offload large assets
-- Find large files: `python3 scripts/strip_large_files.py --root . --threshold 50MB --report reports/large_files.json`
-- Move eligible files to QVS: `python3 scripts/strip_large_files.py --root . --threshold 50MB --move-to-qvs large_checkpoints`
+- Identify large files with git or system tools (example): `git rev-list --objects --all | git cat-file --batch-check='%(objectname) %(objecttype) %(objectsize) %(rest)' | sort -k3 -n -r | head -n 50` or locally use `du -sh *` in suspected folders.
+- Produce vendor artifacts on CI and upload as release artifacts (don't commit large binaries to the repo). Use `scripts/vendor_plan.sh` as a starting point to build wheels/npm tarballs on CI and publish them as workflow artifacts.
 
 4. Validate device integrations
 - Ensure `components/device/DeviceIntegrationStubs.ts` uses lightweight simulation by default and respects env flags `QMOI_DISABLE_HW=1` and `QMOI_DISABLE_CLOUD=1`.

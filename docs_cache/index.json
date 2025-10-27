@@ -297,5 +297,7 @@
     "QMOIAPPS.md",
     "SERVICES.md"
   ],
-  "cached_assets": []
+  "cached_assets": [
+    "placeholder.svg"
+  ]
 }

@@ -1,4 +1,6 @@
-## QMOI Documentation Remediation Plan (merged)
+# QMOI Documentation Remediation Plan (merged)
+
+This plan summarizes automated and manual remediation steps for docs and placeholders. The recommended automated commands reference scripts already present in the repository.
 
 Generated: 2025-10-25T00:00:00Z
 
@@ -8,7 +10,7 @@ This file summarizes the key remediation actions derived from the repository's a
 
 - Primary sources:
   - `docs/link-validation-report.json` — full link/anchor validation output (large).
-  - `docs/placeholders_report.json` — placeholders/TODOs found across code and docs.
+  - `docs/placeholders_report.json` — placeholders/TODOs found across code and docs (see `scripts/find_placeholders.py` which generates `placeholder_scan_report.json`).
 
 Top priorities (automatable first):
 
@@ -21,9 +23,9 @@ Top priorities (automatable first):
    - Many `#anchor` targets in `.md` files are referenced but not present.
    - Action: run a targeted anchor fixer (create missing anchor headings or update links). This is low-risk and can be automated per-file with a PR for each change.
 
-3) TBD (auto-filled) tokens and TODOs
-   - `docs/placeholders_report.json` contains many `TODO`/`TBD (auto-filled)` occurrences across `components/*.tsx`, `next.config.mjs`, and `.md` files.
-   - Action: Create targeted issues/PRs for high-priority UI components and apply safe automated replacements for low-risk tokens (script already present: `scripts/scan_replace_placeholders.py`). Backups (.bak) are created on apply.
+3) Tokens and TODOs
+  - `docs/placeholders_report.json` contains many `TODO`/`TBD` occurrences across `components/*.tsx`, `next.config.mjs`, and `.md` files.
+  - Action: Create targeted issues/PRs for high-priority UI components and apply safe automated replacements for low-risk tokens. Use `scripts/find_placeholders.py` to generate an inventory and then apply doc/config-only replacements in a branch for review. Always create backups before applying replacements.
 
 4) Non-HTTPS links (http://)
    - The conservative fixer script can upgrade `http://` → `https://` where HEAD succeeds. This should be run with `--apply` and will create a `docs/link_report.json` with detailed results.
@@ -33,9 +35,9 @@ Top priorities (automatable first):
    - UI components (high): `components/AutomationRulesPanel.tsx`, `Chatbot.tsx`, `AppManager.tsx`, `DeviceSettingsPanel.tsx`, `DownloadManager.tsx`, `enhanced-system-dashboard.tsx`, `EnhancedPreviewWindow.tsx`. These contain placeholders and require developer attention + unit/visual tests.
    - API verification: extract live endpoints from `app/api` and test against a local dev server; update `API.md` and `ENDPOINTS.md` with verified examples.
 
-Low-risk automated operations (recommended immediate):
- - Run: `python3 scripts/validate_and_fix_md.py --apply --out docs/link_report.json --root /workspaces/qmoi-enhanced`  (upgrades http->https where safe)
- - Run: `python3 scripts/scan_replace_placeholders.py` (dry-run) and review `docs/placeholders_report.json` before applying replacements.
+ Low-risk automated operations (recommended immediate):
+  - Run: `python3 scripts/lion_scan_and_cache.py` to build a local docs cache for offline workflows and surface any missing local files.
+  - Run: `python3 scripts/find_placeholders.py` (dry-run) and review `placeholder_scan_report.json` before applying replacements. For link fixes, run a link-checker and prefer upgrading `http://`→`https://` only after verifying the remote host supports HTTPS.
 
 Notes on governance and safety
  - All automated writes must create `.bak` backups (scripts do this). Commits should be made in feature branches and opened as PRs, not pushed directly to default branch, unless explicitly approved.

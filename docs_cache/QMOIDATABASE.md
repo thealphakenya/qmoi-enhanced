@@ -78,13 +78,14 @@ QMOI Database is a self-enhancing, Supabase-like database system designed for th
 
 ---
 
-## TODO
-- [ ] Implement backend endpoints for media, logging, and project management
-- [ ] Implement QMOI Media Manager, Project Dashboard, Settings Panel UIs
-- [ ] Connect Activity Log panel to backend
-- [ ] Add master controls for autonomy and permissions
+## Next steps and recommended implementation plan
 
-For implementation details, see the backend API and QCity UI source code.
+- Implement backend endpoints for media, logging, and project management. Start by scaffolding API routes under the `api/qmoi-database` service and add unit tests for each endpoint.
+- Implement the QMOI Media Manager and Project Dashboard UIs incrementally; begin with lightweight mock data and add integration tests before wiring to the real backend.
+- Connect the Activity Log panel to the backend using the `/api/qmoi-database/logs` endpoint and provide pagination and filters for master-only views.
+- Add master controls for autonomy and permissions via feature flags stored in `config.json` or a secure settings store; require master authentication for irreversible actions.
+
+If you want automated assistance, run `python3 scripts/find_placeholders.py` to produce `placeholder_scan_report.json`, then review high-priority items and open targeted PRs for code changes. For docs-only cleanups, the `scripts/lion_scan_and_cache.py` tool can rebuild the local docs cache used by offline workflows.
 
 <!-- QMOI_VALIDATION_START -->
 {
