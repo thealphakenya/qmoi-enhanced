@@ -1,0 +1,61 @@
+{
+  "lion_version": "0.1",
+  "offline_mode": true,
+  "max_bandwidth_kbps": 200,
+  "max_parallel_jobs": 2,
+  "disable_auto_updates": true,
+  "cache_paths": [
+    "docs_cache",
+    ".cache/pip",
+    ".cache/npm"
+  ],
+  "git": {
+    "lfs_skip_smudge": true,
+    "fetch_depth": 1
+  },
+  "npm": {
+    "maxsockets": 4,
+    "fetch_retries": 1,
+    "offline_first": true
+  },
+  "pip": {
+    "no_index": false,
+    "find_links": "./vendor/wheels"
+  },
+  "qvs": {
+    "enabled": true,
+    "parallel_mode": "limited"
+  },
+  "notes": "Tune values to match your device/bandwidth. Set offline_mode=false for cache-first behavior."
+}
+{
+  "lion_version": "0.1.0",
+  "offline_mode": true,
+  "max_bandwidth_kbps": 200,
+  "max_parallel_jobs": 2,
+  "disable_auto_updates": true,
+  "cache_paths": [
+    "docs_cache",
+    "vendor",
+    ".cache/pip",
+    ".cache/npm"
+  ],
+  "git": {
+    "lfs_skip_smudge": true,
+    "fetch_depth": 1
+  },
+  "npm": {
+    "maxsockets": 4,
+    "fetch_retries": 1,
+    "offline_first": true
+  },
+  "pip": {
+    "no_index": false,
+    "find_links": "./vendor/wheels"
+  },
+  "qvs": {
+    "enabled": true,
+    "parallel_mode": "limited"
+  },
+  "notes": "Tune these defaults to match your device and Codespace. Use scripts/apply_lion_settings.sh to apply."
+}

@@ -362,3 +362,86 @@ If you'd like me to flesh out Lion's `lionctl` commands, create CI workflows for
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+## 🦁 Lion low-bandwidth & offline-first quick start
+
+This repository includes experimental Lion settings and helper scripts to make opening this Codespace or repo in a browser/device low-bandwidth friendly.
+
+Files added:
+
+- `.lion/config.json` — repo-level low-bandwidth defaults (max bandwidth, parallel jobs, caches).
+- `scripts/apply_lion_settings.sh` — apply environment and tool settings locally in your shell/Codespace.
+- `scripts/lion_scan_and_cache.py` — builds `docs_cache/` from `ALLMDFILESREFS.md` so docs can be opened offline in the editor.
+- `scripts/vendor_plan.sh` — helper that prints recommended vendor commands to run on a trusted runner (QCity/CI).
+- `.qmoi/config.json` — repo toggle to enable "GPT-5 mini for all clients" (declarative; server deploy required).
+
+How to use (cache-first / low-bandwidth):
+
+1. Apply Lion environment settings in your shell (non-destructive):
+
+```bash
+bash scripts/apply_lion_settings.sh
+```
+
+2. Build the docs cache (creates `docs_cache/` and `vendor/` for remote assets):
+
+```bash
+python3 scripts/lion_scan_and_cache.py
+```
+
+3. Open cached markdown in the editor from `docs_cache/`.
+
+4. To vendor dependencies (CI or QCity runner recommended):
+
+```bash
+bash scripts/vendor_plan.sh
+# then run the printed commands on a trusted runner to produce vendor archives
+```
+
+Notes & constraints:
+
+- The `.qmoi/config.json` toggle enables GPT-5 mini at the repository level but does NOT by itself provision server-side model hosting; deploy to QCity or your model hosts to actually serve it.
+- The caching script will attempt to fetch remote assets using `requests` if available; when running inside an offline environment, it will skip downloads and still copy local files.
+- For aggressive offline behavior, set `offline_mode: true` in `.lion/config.json` (default in this setting) and run vendor steps on CI. Committing large vendor artifacts is optional.
+
+If you'd like, I'll now:
+
+- Run `scripts/lion_scan_and_cache.py` to populate `docs_cache/` locally (will fetch remote assets if network is available).
+- Prepare a CI workflow that runs the vendor plan on a QCity runner and uploads `vendor/` as release artifacts for Codespace consumption.
+
+## 🧭 Lion automation & low-bandwidth quick actions (automated)
+
+I added a small set of scripts and config to make this workspace Codespace/browser-friendly with very low device bandwidth usage:
+
+- `.lion/config.json` — low-bandwidth defaults (offline_mode, max_bandwidth_kbps, parallel limits).
+- `scripts/apply_lion_settings.sh` — apply env/tool limits in your shell (non-destructive).
+- `scripts/lion_scan_and_cache.py` — builds `docs_cache/` from `ALLMDFILESREFS.md` so docs open offline.
+- `scripts/find_placeholders.py` — scans for TODO/FIXME/TBD (auto-filled) and produces `placeholder_scan_report.json`.
+- `scripts/vendor_plan.sh` — prints the recommended vendor commands to run on CI/QCity runners.
+- `.qmoi/config.json` — declarative toggle to enable GPT-5 mini for all clients (server provisioning required).
+
+How to run (cache-first, low-bandwidth):
+
+1. Apply Lion settings locally:
+
+```bash
+bash scripts/apply_lion_settings.sh
+```
+
+2. Build the docs cache (safe; copies local files and attempts remote asset fetches only if network available):
+
+```bash
+python3 scripts/lion_scan_and_cache.py
+```
+
+3. Inspect TBD (auto-filled) scan results:
+
+```bash
+python3 scripts/find_placeholders.py
+# report saved at placeholder_scan_report.json
+```
+
+4. To vendor dependencies run the printed commands from `scripts/vendor_plan.sh` on a trusted CI/QCity runner and upload `vendor/` as artifacts.
+
+These changes are non-destructive and designed to be safe for interactive environments. If you'd like I can now run the cache script and the TBD (auto-filled) scan and then attach the generated reports and cached files to this repo (or open PRs with suggested safe fixes)." 
+

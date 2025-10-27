@@ -31,7 +31,9 @@
         "type": "python",
         "request": "launch",
         "program": "${workspaceFolder}/scripts/run_validations.py",
-        "args": ["--apply"],
+        "args": [
+          "--apply"
+        ],
         "console": "integratedTerminal"
       },
       {
@@ -39,15 +41,23 @@
         "type": "python",
         "request": "launch",
         "program": "${workspaceFolder}/scripts/run_validations.py",
-        "args": ["--apply"],
+        "args": [
+          "--apply"
+        ],
         "console": "integratedTerminal"
       }
     ]
   },
   "settings": {
-    "artifact_locations": ["downloads/", "https://releases.qmoi.app/"],
+    "artifact_locations": [
+      "downloads/",
+      "https://releases.qmoi.app/"
+    ],
     "require_signed_artifacts": false,
-    "notify_on_failure": ["email:support@qmoi.app", "slack:#qmoi-alerts"],
+    "notify_on_failure": [
+      "email:support@qmoi.app",
+      "slack:#qmoi-alerts"
+    ],
     "billing_safeguards": {
       "auto_publish_allowed": false,
       "require_manual_approval_for_external_registry": true,

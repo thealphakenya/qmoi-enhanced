@@ -10,7 +10,12 @@
   "scope": "/",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["productivity", "business", "games", "developer"],
+  "categories": [
+    "productivity",
+    "business",
+    "games",
+    "developer"
+  ],
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -144,9 +149,15 @@
     {
       "action": "/open-file",
       "accept": {
-        "text/plain": [".txt"],
-        "text/python": [".py"],
-        "application/json": [".json"]
+        "text/plain": [
+          ".txt"
+        ],
+        "text/python": [
+          ".py"
+        ],
+        "application/json": [
+          ".json"
+        ]
       }
     }
   ],
@@ -167,7 +178,11 @@
       "files": [
         {
           "name": "file",
-          "accept": ["text/*", "image/*", "application/*"]
+          "accept": [
+            "text/*",
+            "image/*",
+            "application/*"
+          ]
         }
       ]
     }
@@ -175,5 +190,3 @@
   "handle_links": "preferred",
   "capture_links": "new-client"
 }
-
-

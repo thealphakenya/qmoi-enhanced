@@ -45,6 +45,5 @@
     "c8": "^10.1.2",
     "typescript": "^5.2.2"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

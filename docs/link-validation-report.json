@@ -3136,7 +3136,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Kevin M\u00e5rtensson",
+        "label": "Kevin Mårtensson",
         "url": "https://github.com/kevva",
         "ok": true,
         "reason": "external URL"
@@ -7214,7 +7214,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Jan Peer St\u00f6cklmair (@JPeer264)",
+        "label": "Jan Peer Stöcklmair (@JPeer264)",
         "url": "https://github.com/JPeer264",
         "ok": true,
         "reason": "external URL"
@@ -12653,55 +12653,55 @@
     ],
     "mobile/node_modules/dayjs/README.md": [
       {
-        "label": "\u7b80\u4f53\u4e2d\u6587",
+        "label": "简体中文",
         "url": "./docs/zh-cn/README.zh-CN.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/dayjs/docs/zh-cn/README.zh-CN.md"
       },
       {
-        "label": "\u65e5\u672c\u8a9e",
+        "label": "日本語",
         "url": "./docs/ja/README-ja.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/dayjs/docs/ja/README-ja.md"
       },
       {
-        "label": "Portugu\u00eas Brasileiro",
+        "label": "Português Brasileiro",
         "url": "./docs/pt-br/README-pt-br.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/dayjs/docs/pt-br/README-pt-br.md"
       },
       {
-        "label": "\ud55c\uad6d\uc5b4",
+        "label": "한국어",
         "url": "./docs/ko/README-ko.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/dayjs/docs/ko/README-ko.md"
       },
       {
-        "label": "Espa\u00f1ol (Espa\u00f1a)",
+        "label": "Español (España)",
         "url": "./docs/es-es/README-es-es.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/dayjs/docs/es-es/README-es-es.md"
       },
       {
-        "label": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+        "label": "Русский",
         "url": "./docs/ru/README-ru.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/dayjs/docs/ru/README-ru.md"
       },
       {
-        "label": "T\u00fcrk\u00e7e",
+        "label": "Türkçe",
         "url": "./docs/tr/README-tr.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/dayjs/docs/tr/README-tr.md"
       },
       {
-        "label": "\u0dc3\u0dd2\u0d82\u0dc4\u0dbd",
+        "label": "සිංහල",
         "url": "./docs/si/README-si.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/dayjs/docs/si/README-si.md"
       },
       {
-        "label": "\u05e2\u05d1\u05e8\u05d9\u05ea",
+        "label": "עברית",
         "url": "./docs/he/README-he.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/dayjs/docs/he/README-he.md"
@@ -17962,7 +17962,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -18134,7 +18134,7 @@
     "mobile/node_modules/chrome-launcher/README.md": [
       {
         "label": "![GitHub Actions Status Badge",
-        "url": "https://github.com/GoogleChrome/chrome-launcher/workflows/\ud83d\udee0/badge.svg",
+        "url": "https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -18848,7 +18848,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -18892,7 +18892,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -18930,7 +18930,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u7b80\u4f53\u4e2d\u6587",
+        "label": "简体中文",
         "url": "./Readme_zh-CN.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme_zh-CN.md"
@@ -20894,7 +20894,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -20938,7 +20938,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -21333,7 +21333,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -27076,7 +27076,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Piotr B\u0142a\u017cejewicz",
+        "label": "Piotr Błażejewicz",
         "url": "https://github.com/peterblazejewicz",
         "ok": true,
         "reason": "external URL"
@@ -27100,7 +27100,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Linus Unneb\u00e4ck",
+        "label": "Linus Unnebäck",
         "url": "https://github.com/LinusU",
         "ok": true,
         "reason": "external URL"
@@ -27124,7 +27124,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Ren\u00e9",
+        "label": "René",
         "url": "https://github.com/Renegade334",
         "ok": true,
         "reason": "external URL"
@@ -27202,7 +27202,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Zacharias Bj\u00f6rngren",
+        "label": "Zacharias Björngren",
         "url": "https://github.com/zache",
         "ok": true,
         "reason": "external URL"
@@ -27366,7 +27366,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Steffen Viken Valv\u00e5g",
+        "label": "Steffen Viken Valvåg",
         "url": "https://github.com/steffenvv",
         "ok": true,
         "reason": "external URL"
@@ -30233,7 +30233,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u7b80\u4f53\u4e2d\u6587",
+        "label": "简体中文",
         "url": "./Readme_zh-CN.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/commander/Readme_zh-CN.md"
@@ -31124,7 +31124,7 @@
         "reason": "external URL"
       },
       {
-        "label": "1m\u53e4\\u001B[22m');\n//=> 2\n```\n\n\n## Related\n\n- [string-width-cli",
+        "label": "1m古\\u001B[22m');\n//=> 2\n```\n\n\n## Related\n\n- [string-width-cli",
         "url": "https://github.com/sindresorhus/string-width-cli",
         "ok": true,
         "reason": "external URL"
@@ -34017,7 +34017,7 @@
     ],
     "mobile/node_modules/safer-buffer/Porting-Buffer.md": [
       {
-        "label": "Variant 1: Drop support for Node.js \u2264 4.4.x and 5.0.0 \u2014 5.9.x.",
+        "label": "Variant 1: Drop support for Node.js ≤ 4.4.x and 5.0.0 — 5.9.x.",
         "url": "#variant-1",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/safer-buffer/#variant-1"
@@ -35697,7 +35697,7 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#request-method-aliases"
       },
       {
-        "label": "Concurrency \ud83d\udc4e",
+        "label": "Concurrency 👎",
         "url": "#concurrency-deprecated",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#concurrency-deprecated"
@@ -35781,7 +35781,7 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#abortcontroller"
       },
       {
-        "label": "CancelToken \ud83d\udc4e",
+        "label": "CancelToken 👎",
         "url": "#canceltoken-deprecated",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-deprecated"
@@ -35805,7 +35805,7 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#query-string-older-browsers"
       },
       {
-        "label": "\ud83c\udd95 Automatic serialization",
+        "label": "🆕 Automatic serialization",
         "url": "#-automatic-serialization-to-urlsearchparams",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-automatic-serialization-to-urlsearchparams"
@@ -35823,7 +35823,7 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#formdata"
       },
       {
-        "label": "\ud83c\udd95 Automatic serialization",
+        "label": "🆕 Automatic serialization",
         "url": "#-automatic-serialization-to-formdata",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-automatic-serialization-to-formdata"
@@ -35841,43 +35841,43 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-html-form-posting-browser"
       },
       {
-        "label": "\ud83c\udd95 Progress capturing",
+        "label": "🆕 Progress capturing",
         "url": "#-progress-capturing",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-progress-capturing"
       },
       {
-        "label": "\ud83c\udd95 Rate limiting",
+        "label": "🆕 Rate limiting",
         "url": "#-progress-capturing",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-progress-capturing"
       },
       {
-        "label": "\ud83c\udd95 AxiosHeaders",
+        "label": "🆕 AxiosHeaders",
         "url": "#-axiosheaders",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-axiosheaders"
       },
       {
-        "label": "\ud83d\udd25 Fetch adapter",
+        "label": "🔥 Fetch adapter",
         "url": "#-fetch-adapter",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-fetch-adapter"
       },
       {
-        "label": "\ud83d\udd25 Custom fetch",
+        "label": "🔥 Custom fetch",
         "url": "#-custom-fetch",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-custom-fetch"
       },
       {
-        "label": "\ud83d\udd25 Using with Tauri",
+        "label": "🔥 Using with Tauri",
         "url": "#-using-with-tauri",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-using-with-tauri"
       },
       {
-        "label": "\ud83d\udd25 Using with SvelteKit",
+        "label": "🔥 Using with SvelteKit",
         "url": "#-using-with-sveltekit-",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#-using-with-sveltekit-"
@@ -36426,7 +36426,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\ucd5c\uc608\ucc2c",
+        "label": "최예찬",
         "url": "https://github.com/HealGaren \"+5/-7 (#5715 ",
         "ok": true,
         "reason": "external URL"
@@ -36744,7 +36744,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Ionu\u021b G. Stan",
+        "label": "Ionuț G. Stan",
         "url": "https://github.com/igstan \"+1/-1 (#6661 ",
         "ok": true,
         "reason": "external URL"
@@ -36966,7 +36966,7 @@
         "reason": "external URL"
       },
       {
-        "label": "shravan || \u0936\u094d\u0930van",
+        "label": "shravan || श्रvan",
         "url": "https://github.com/shravan20 \"+7/-3 (#6116 ",
         "ok": true,
         "reason": "external URL"
@@ -37272,7 +37272,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Kasper Isager Dalsgar\u00f0",
+        "label": "Kasper Isager Dalsgarð",
         "url": "https://github.com/kasperisager \"+2/-2 (#6634 ",
         "ok": true,
         "reason": "external URL"
@@ -37530,7 +37530,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u0110\u1ed7 Tr\u1ecdng H\u1ea3i",
+        "label": "Đỗ Trọng Hải",
         "url": "https://github.com/hainenber \"+49/-4 (#6539 ",
         "ok": true,
         "reason": "external URL"
@@ -38328,7 +38328,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Mustafa Ate\u015f Uzun",
+        "label": "Mustafa Ateş Uzun",
         "url": "https://github.com/0o001 \"+4/-4 (",
         "ok": true,
         "reason": "external URL"
@@ -38436,7 +38436,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u591c\u846c",
+        "label": "夜葬",
         "url": "https://github.com/geekact \"+42/-0 (#5324 ",
         "ok": true,
         "reason": "external URL"
@@ -38742,7 +38742,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u9648\u82e5\u67ab",
+        "label": "陈若枫",
         "url": "https://github.com/ruofee \"+2/-2 (#5467 ",
         "ok": true,
         "reason": "external URL"
@@ -39534,7 +39534,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\uc724\uc138\uc601",
+        "label": "윤세영",
         "url": "https://github.com/yunseyeong",
         "ok": true,
         "reason": "external URL"
@@ -39702,7 +39702,7 @@
         "reason": "external URL"
       },
       {
-        "label": "F\u00e9lix Legrelle",
+        "label": "Félix Legrelle",
         "url": "https://github.com/FelixLgr",
         "ok": true,
         "reason": "external URL"
@@ -39822,7 +39822,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Richard Ko\u0159\u00ednek",
+        "label": "Richard Kořínek",
         "url": "https://github.com/risa",
         "ok": true,
         "reason": "external URL"
@@ -40536,7 +40536,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u66b4\u8d70\u8001\u4e03",
+        "label": "暴走老七",
         "url": "https://github.com/baozouai",
         "ok": true,
         "reason": "external URL"
@@ -40560,7 +40560,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u6bdb\u5446",
+        "label": "毛呆",
         "url": "https://github.com/aweikalee",
         "ok": true,
         "reason": "external URL"
@@ -40608,7 +40608,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Jo\u00e3o Gabriel Quaresma",
+        "label": "João Gabriel Quaresma",
         "url": "https://github.com/joaoGabriel55",
         "ok": true,
         "reason": "external URL"
@@ -40662,7 +40662,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Gr\u00e9goire Pineau",
+        "label": "Grégoire Pineau",
         "url": "https://github.com/lyrixx",
         "ok": true,
         "reason": "external URL"
@@ -40698,7 +40698,7 @@
         "reason": "external URL"
       },
       {
-        "label": "G\u00fcnther Foidl",
+        "label": "Günther Foidl",
         "url": "https://github.com/gfoidl",
         "ok": true,
         "reason": "external URL"
@@ -44647,7 +44647,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -47571,61 +47571,61 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcac",
+        "label": "💬",
         "url": "#question-tabrindle \"Answering Questions\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/envinfo/#question-tabrindle \"Answering Questions\""
       },
       {
-        "label": "\ud83d\udcdd",
+        "label": "📝",
         "url": "#blog-tabrindle \"Blogposts\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/envinfo/#blog-tabrindle \"Blogposts\""
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Atabrindle \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=tabrindle \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcd6",
+        "label": "📖",
         "url": "https://github.com/tabrindle/envinfo/commits?author=tabrindle \"Documentation\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udca1",
+        "label": "💡",
         "url": "#example-tabrindle \"Examples\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/envinfo/#example-tabrindle \"Examples\""
       },
       {
-        "label": "\ud83e\udd14",
+        "label": "🤔",
         "url": "#ideas-tabrindle \"Ideas, Planning, & Feedback\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/envinfo/#ideas-tabrindle \"Ideas, Planning, & Feedback\""
       },
       {
-        "label": "\ud83d\udc40",
+        "label": "👀",
         "url": "#review-tabrindle \"Reviewed Pull Requests\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/envinfo/#review-tabrindle \"Reviewed Pull Requests\""
       },
       {
-        "label": "\ud83d\udce2",
+        "label": "📢",
         "url": "#talk-tabrindle \"Talks\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/envinfo/#talk-tabrindle \"Talks\""
       },
       {
-        "label": "\u26a0\ufe0f",
+        "label": "⚠️",
         "url": "https://github.com/tabrindle/envinfo/commits?author=tabrindle \"Tests\"",
         "ok": true,
         "reason": "external URL"
@@ -47637,25 +47637,25 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcdd",
+        "label": "📝",
         "url": "#blog-GantMan \"Blogposts\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/envinfo/#blog-GantMan \"Blogposts\""
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3AGantMan \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=GantMan \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83e\udd14",
+        "label": "🤔",
         "url": "#ideas-GantMan \"Ideas, Planning, & Feedback\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/envinfo/#ideas-GantMan \"Ideas, Planning, & Feedback\""
@@ -47667,31 +47667,31 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Aantonfisher \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=antonfisher \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "<img src=\"https://avatars1.githubusercontent.com/u/960133?v=4\" width=\"100px;\"/><br /><sub><b>Ahmad Awais \u26a1\ufe0f</b></sub>",
+        "label": "<img src=\"https://avatars1.githubusercontent.com/u/960133?v=4\" width=\"100px;\"/><br /><sub><b>Ahmad Awais ⚡️</b></sub>",
         "url": "https://AhmadAwais.com/",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Aahmadawais \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=ahmadawais \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -47703,31 +47703,31 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3ALEQADA \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=LEQADA \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "<img src=\"https://avatars3.githubusercontent.com/u/1232725?v=4\" width=\"100px;\"/><br /><sub><b>Ernesto Ram\u00edrez</b></sub>",
+        "label": "<img src=\"https://avatars3.githubusercontent.com/u/1232725?v=4\" width=\"100px;\"/><br /><sub><b>Ernesto Ramírez</b></sub>",
         "url": "http://twitter.com/_ErnestoR",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3AErnestoR \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=ErnestoR \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -47739,25 +47739,25 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Agengjiawen \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=gengjiawen \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83e\udd14",
+        "label": "🤔",
         "url": "#ideas-gengjiawen \"Ideas, Planning, & Feedback\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/envinfo/#ideas-gengjiawen \"Ideas, Planning, & Feedback\""
       },
       {
-        "label": "\u26a0\ufe0f",
+        "label": "⚠️",
         "url": "https://github.com/tabrindle/envinfo/commits?author=gengjiawen \"Tests\"",
         "ok": true,
         "reason": "external URL"
@@ -47769,13 +47769,13 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=zacanger \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Azacanger \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
@@ -47787,13 +47787,13 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Afson \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=fson \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -47805,13 +47805,13 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Aibolmo \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=ibolmo \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -47823,13 +47823,13 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Arishabh3112 \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=rishabh3112 \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -47841,7 +47841,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=Nthalk \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -47864,13 +47864,13 @@
     ],
     "mobile/node_modules/nanoid/README.md": [
       {
-        "label": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+        "label": "Русский",
         "url": "./README.ru.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/nanoid/README.ru.md"
       },
       {
-        "label": "\u7b80\u4f53\u4e2d\u6587",
+        "label": "简体中文",
         "url": "./README.zh-CN.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/nanoid/README.zh-CN.md"
@@ -49100,7 +49100,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Kevin M\u00e5rtensson",
+        "label": "Kevin Mårtensson",
         "url": "http://github.com/kevva",
         "ok": true,
         "reason": "external URL"
@@ -60692,7 +60692,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Kevin M\u00e5rtensson",
+        "label": "Kevin Mårtensson",
         "url": "https://github.com/kevva",
         "ok": true,
         "reason": "external URL"
@@ -64770,7 +64770,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Jan Peer St\u00f6cklmair (@JPeer264)",
+        "label": "Jan Peer Stöcklmair (@JPeer264)",
         "url": "https://github.com/JPeer264",
         "ok": true,
         "reason": "external URL"
@@ -70209,55 +70209,55 @@
     ],
     "qmoi-enhanced/mobile/node_modules/dayjs/README.md": [
       {
-        "label": "\u7b80\u4f53\u4e2d\u6587",
+        "label": "简体中文",
         "url": "./docs/zh-cn/README.zh-CN.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/dayjs/docs/zh-cn/README.zh-CN.md"
       },
       {
-        "label": "\u65e5\u672c\u8a9e",
+        "label": "日本語",
         "url": "./docs/ja/README-ja.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/dayjs/docs/ja/README-ja.md"
       },
       {
-        "label": "Portugu\u00eas Brasileiro",
+        "label": "Português Brasileiro",
         "url": "./docs/pt-br/README-pt-br.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/dayjs/docs/pt-br/README-pt-br.md"
       },
       {
-        "label": "\ud55c\uad6d\uc5b4",
+        "label": "한국어",
         "url": "./docs/ko/README-ko.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/dayjs/docs/ko/README-ko.md"
       },
       {
-        "label": "Espa\u00f1ol (Espa\u00f1a)",
+        "label": "Español (España)",
         "url": "./docs/es-es/README-es-es.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/dayjs/docs/es-es/README-es-es.md"
       },
       {
-        "label": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+        "label": "Русский",
         "url": "./docs/ru/README-ru.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/dayjs/docs/ru/README-ru.md"
       },
       {
-        "label": "T\u00fcrk\u00e7e",
+        "label": "Türkçe",
         "url": "./docs/tr/README-tr.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/dayjs/docs/tr/README-tr.md"
       },
       {
-        "label": "\u0dc3\u0dd2\u0d82\u0dc4\u0dbd",
+        "label": "සිංහල",
         "url": "./docs/si/README-si.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/dayjs/docs/si/README-si.md"
       },
       {
-        "label": "\u05e2\u05d1\u05e8\u05d9\u05ea",
+        "label": "עברית",
         "url": "./docs/he/README-he.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/dayjs/docs/he/README-he.md"
@@ -75518,7 +75518,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -75690,7 +75690,7 @@
     "qmoi-enhanced/mobile/node_modules/chrome-launcher/README.md": [
       {
         "label": "![GitHub Actions Status Badge",
-        "url": "https://github.com/GoogleChrome/chrome-launcher/workflows/\ud83d\udee0/badge.svg",
+        "url": "https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -76404,7 +76404,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -76448,7 +76448,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -76486,7 +76486,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u7b80\u4f53\u4e2d\u6587",
+        "label": "简体中文",
         "url": "./Readme_zh-CN.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme_zh-CN.md"
@@ -78450,7 +78450,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -78494,7 +78494,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -78889,7 +78889,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -84632,7 +84632,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Piotr B\u0142a\u017cejewicz",
+        "label": "Piotr Błażejewicz",
         "url": "https://github.com/peterblazejewicz",
         "ok": true,
         "reason": "external URL"
@@ -84656,7 +84656,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Linus Unneb\u00e4ck",
+        "label": "Linus Unnebäck",
         "url": "https://github.com/LinusU",
         "ok": true,
         "reason": "external URL"
@@ -84680,7 +84680,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Ren\u00e9",
+        "label": "René",
         "url": "https://github.com/Renegade334",
         "ok": true,
         "reason": "external URL"
@@ -84758,7 +84758,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Zacharias Bj\u00f6rngren",
+        "label": "Zacharias Björngren",
         "url": "https://github.com/zache",
         "ok": true,
         "reason": "external URL"
@@ -84922,7 +84922,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Steffen Viken Valv\u00e5g",
+        "label": "Steffen Viken Valvåg",
         "url": "https://github.com/steffenvv",
         "ok": true,
         "reason": "external URL"
@@ -87789,7 +87789,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u7b80\u4f53\u4e2d\u6587",
+        "label": "简体中文",
         "url": "./Readme_zh-CN.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/commander/Readme_zh-CN.md"
@@ -88680,7 +88680,7 @@
         "reason": "external URL"
       },
       {
-        "label": "1m\u53e4\\u001B[22m');\n//=> 2\n```\n\n\n## Related\n\n- [string-width-cli",
+        "label": "1m古\\u001B[22m');\n//=> 2\n```\n\n\n## Related\n\n- [string-width-cli",
         "url": "https://github.com/sindresorhus/string-width-cli",
         "ok": true,
         "reason": "external URL"
@@ -91573,7 +91573,7 @@
     ],
     "qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md": [
       {
-        "label": "Variant 1: Drop support for Node.js \u2264 4.4.x and 5.0.0 \u2014 5.9.x.",
+        "label": "Variant 1: Drop support for Node.js ≤ 4.4.x and 5.0.0 — 5.9.x.",
         "url": "#variant-1",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/safer-buffer/#variant-1"
@@ -93253,7 +93253,7 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#request-method-aliases"
       },
       {
-        "label": "Concurrency \ud83d\udc4e",
+        "label": "Concurrency 👎",
         "url": "#concurrency-deprecated",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#concurrency-deprecated"
@@ -93337,7 +93337,7 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#abortcontroller"
       },
       {
-        "label": "CancelToken \ud83d\udc4e",
+        "label": "CancelToken 👎",
         "url": "#canceltoken-deprecated",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-deprecated"
@@ -93361,7 +93361,7 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#query-string-older-browsers"
       },
       {
-        "label": "\ud83c\udd95 Automatic serialization",
+        "label": "🆕 Automatic serialization",
         "url": "#-automatic-serialization-to-urlsearchparams",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-automatic-serialization-to-urlsearchparams"
@@ -93379,7 +93379,7 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#formdata"
       },
       {
-        "label": "\ud83c\udd95 Automatic serialization",
+        "label": "🆕 Automatic serialization",
         "url": "#-automatic-serialization-to-formdata",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-automatic-serialization-to-formdata"
@@ -93397,43 +93397,43 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-html-form-posting-browser"
       },
       {
-        "label": "\ud83c\udd95 Progress capturing",
+        "label": "🆕 Progress capturing",
         "url": "#-progress-capturing",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-progress-capturing"
       },
       {
-        "label": "\ud83c\udd95 Rate limiting",
+        "label": "🆕 Rate limiting",
         "url": "#-progress-capturing",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-progress-capturing"
       },
       {
-        "label": "\ud83c\udd95 AxiosHeaders",
+        "label": "🆕 AxiosHeaders",
         "url": "#-axiosheaders",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-axiosheaders"
       },
       {
-        "label": "\ud83d\udd25 Fetch adapter",
+        "label": "🔥 Fetch adapter",
         "url": "#-fetch-adapter",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-fetch-adapter"
       },
       {
-        "label": "\ud83d\udd25 Custom fetch",
+        "label": "🔥 Custom fetch",
         "url": "#-custom-fetch",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-custom-fetch"
       },
       {
-        "label": "\ud83d\udd25 Using with Tauri",
+        "label": "🔥 Using with Tauri",
         "url": "#-using-with-tauri",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-using-with-tauri"
       },
       {
-        "label": "\ud83d\udd25 Using with SvelteKit",
+        "label": "🔥 Using with SvelteKit",
         "url": "#-using-with-sveltekit-",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#-using-with-sveltekit-"
@@ -93982,7 +93982,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\ucd5c\uc608\ucc2c",
+        "label": "최예찬",
         "url": "https://github.com/HealGaren \"+5/-7 (#5715 ",
         "ok": true,
         "reason": "external URL"
@@ -94300,7 +94300,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Ionu\u021b G. Stan",
+        "label": "Ionuț G. Stan",
         "url": "https://github.com/igstan \"+1/-1 (#6661 ",
         "ok": true,
         "reason": "external URL"
@@ -94522,7 +94522,7 @@
         "reason": "external URL"
       },
       {
-        "label": "shravan || \u0936\u094d\u0930van",
+        "label": "shravan || श्रvan",
         "url": "https://github.com/shravan20 \"+7/-3 (#6116 ",
         "ok": true,
         "reason": "external URL"
@@ -94828,7 +94828,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Kasper Isager Dalsgar\u00f0",
+        "label": "Kasper Isager Dalsgarð",
         "url": "https://github.com/kasperisager \"+2/-2 (#6634 ",
         "ok": true,
         "reason": "external URL"
@@ -95086,7 +95086,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u0110\u1ed7 Tr\u1ecdng H\u1ea3i",
+        "label": "Đỗ Trọng Hải",
         "url": "https://github.com/hainenber \"+49/-4 (#6539 ",
         "ok": true,
         "reason": "external URL"
@@ -95884,7 +95884,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Mustafa Ate\u015f Uzun",
+        "label": "Mustafa Ateş Uzun",
         "url": "https://github.com/0o001 \"+4/-4 (",
         "ok": true,
         "reason": "external URL"
@@ -95992,7 +95992,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u591c\u846c",
+        "label": "夜葬",
         "url": "https://github.com/geekact \"+42/-0 (#5324 ",
         "ok": true,
         "reason": "external URL"
@@ -96298,7 +96298,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u9648\u82e5\u67ab",
+        "label": "陈若枫",
         "url": "https://github.com/ruofee \"+2/-2 (#5467 ",
         "ok": true,
         "reason": "external URL"
@@ -97090,7 +97090,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\uc724\uc138\uc601",
+        "label": "윤세영",
         "url": "https://github.com/yunseyeong",
         "ok": true,
         "reason": "external URL"
@@ -97258,7 +97258,7 @@
         "reason": "external URL"
       },
       {
-        "label": "F\u00e9lix Legrelle",
+        "label": "Félix Legrelle",
         "url": "https://github.com/FelixLgr",
         "ok": true,
         "reason": "external URL"
@@ -97378,7 +97378,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Richard Ko\u0159\u00ednek",
+        "label": "Richard Kořínek",
         "url": "https://github.com/risa",
         "ok": true,
         "reason": "external URL"
@@ -98092,7 +98092,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u66b4\u8d70\u8001\u4e03",
+        "label": "暴走老七",
         "url": "https://github.com/baozouai",
         "ok": true,
         "reason": "external URL"
@@ -98116,7 +98116,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u6bdb\u5446",
+        "label": "毛呆",
         "url": "https://github.com/aweikalee",
         "ok": true,
         "reason": "external URL"
@@ -98164,7 +98164,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Jo\u00e3o Gabriel Quaresma",
+        "label": "João Gabriel Quaresma",
         "url": "https://github.com/joaoGabriel55",
         "ok": true,
         "reason": "external URL"
@@ -98218,7 +98218,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Gr\u00e9goire Pineau",
+        "label": "Grégoire Pineau",
         "url": "https://github.com/lyrixx",
         "ok": true,
         "reason": "external URL"
@@ -98254,7 +98254,7 @@
         "reason": "external URL"
       },
       {
-        "label": "G\u00fcnther Foidl",
+        "label": "Günther Foidl",
         "url": "https://github.com/gfoidl",
         "ok": true,
         "reason": "external URL"
@@ -102203,7 +102203,7 @@
         "reason": "external URL"
       },
       {
-        "label": "More\u2026",
+        "label": "More…",
         "url": "https://github.com/sindresorhus/promise-fun",
         "ok": true,
         "reason": "external URL"
@@ -105127,61 +105127,61 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcac",
+        "label": "💬",
         "url": "#question-tabrindle \"Answering Questions\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/envinfo/#question-tabrindle \"Answering Questions\""
       },
       {
-        "label": "\ud83d\udcdd",
+        "label": "📝",
         "url": "#blog-tabrindle \"Blogposts\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/envinfo/#blog-tabrindle \"Blogposts\""
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Atabrindle \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=tabrindle \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcd6",
+        "label": "📖",
         "url": "https://github.com/tabrindle/envinfo/commits?author=tabrindle \"Documentation\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udca1",
+        "label": "💡",
         "url": "#example-tabrindle \"Examples\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/envinfo/#example-tabrindle \"Examples\""
       },
       {
-        "label": "\ud83e\udd14",
+        "label": "🤔",
         "url": "#ideas-tabrindle \"Ideas, Planning, & Feedback\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/envinfo/#ideas-tabrindle \"Ideas, Planning, & Feedback\""
       },
       {
-        "label": "\ud83d\udc40",
+        "label": "👀",
         "url": "#review-tabrindle \"Reviewed Pull Requests\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/envinfo/#review-tabrindle \"Reviewed Pull Requests\""
       },
       {
-        "label": "\ud83d\udce2",
+        "label": "📢",
         "url": "#talk-tabrindle \"Talks\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/envinfo/#talk-tabrindle \"Talks\""
       },
       {
-        "label": "\u26a0\ufe0f",
+        "label": "⚠️",
         "url": "https://github.com/tabrindle/envinfo/commits?author=tabrindle \"Tests\"",
         "ok": true,
         "reason": "external URL"
@@ -105193,25 +105193,25 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcdd",
+        "label": "📝",
         "url": "#blog-GantMan \"Blogposts\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/envinfo/#blog-GantMan \"Blogposts\""
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3AGantMan \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=GantMan \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83e\udd14",
+        "label": "🤔",
         "url": "#ideas-GantMan \"Ideas, Planning, & Feedback\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/envinfo/#ideas-GantMan \"Ideas, Planning, & Feedback\""
@@ -105223,31 +105223,31 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Aantonfisher \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=antonfisher \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "<img src=\"https://avatars1.githubusercontent.com/u/960133?v=4\" width=\"100px;\"/><br /><sub><b>Ahmad Awais \u26a1\ufe0f</b></sub>",
+        "label": "<img src=\"https://avatars1.githubusercontent.com/u/960133?v=4\" width=\"100px;\"/><br /><sub><b>Ahmad Awais ⚡️</b></sub>",
         "url": "https://AhmadAwais.com/",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Aahmadawais \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=ahmadawais \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -105259,31 +105259,31 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3ALEQADA \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=LEQADA \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "<img src=\"https://avatars3.githubusercontent.com/u/1232725?v=4\" width=\"100px;\"/><br /><sub><b>Ernesto Ram\u00edrez</b></sub>",
+        "label": "<img src=\"https://avatars3.githubusercontent.com/u/1232725?v=4\" width=\"100px;\"/><br /><sub><b>Ernesto Ramírez</b></sub>",
         "url": "http://twitter.com/_ErnestoR",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3AErnestoR \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=ErnestoR \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -105295,25 +105295,25 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Agengjiawen \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=gengjiawen \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83e\udd14",
+        "label": "🤔",
         "url": "#ideas-gengjiawen \"Ideas, Planning, & Feedback\"",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/envinfo/#ideas-gengjiawen \"Ideas, Planning, & Feedback\""
       },
       {
-        "label": "\u26a0\ufe0f",
+        "label": "⚠️",
         "url": "https://github.com/tabrindle/envinfo/commits?author=gengjiawen \"Tests\"",
         "ok": true,
         "reason": "external URL"
@@ -105325,13 +105325,13 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=zacanger \"Code\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Azacanger \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
@@ -105343,13 +105343,13 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Afson \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=fson \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -105361,13 +105361,13 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Aibolmo \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=ibolmo \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -105379,13 +105379,13 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udc1b",
+        "label": "🐛",
         "url": "https://github.com/tabrindle/envinfo/issues?q=author%3Arishabh3112 \"Bug reports\"",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=rishabh3112 \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -105397,7 +105397,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\ud83d\udcbb",
+        "label": "💻",
         "url": "https://github.com/tabrindle/envinfo/commits?author=Nthalk \"Code\"",
         "ok": true,
         "reason": "external URL"
@@ -105420,13 +105420,13 @@
     ],
     "qmoi-enhanced/mobile/node_modules/nanoid/README.md": [
       {
-        "label": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+        "label": "Русский",
         "url": "./README.ru.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/nanoid/README.ru.md"
       },
       {
-        "label": "\u7b80\u4f53\u4e2d\u6587",
+        "label": "简体中文",
         "url": "./README.zh-CN.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/nanoid/README.zh-CN.md"
@@ -106656,7 +106656,7 @@
         "reason": "external URL"
       },
       {
-        "label": "Kevin M\u00e5rtensson",
+        "label": "Kevin Mårtensson",
         "url": "http://github.com/kevva",
         "ok": true,
         "reason": "external URL"
@@ -118251,7 +118251,7 @@
         "reason": "external URL"
       },
       {
-        "label": "\u00abMaybe you don't need Rust and WASM to speed up your JS\u00bb",
+        "label": "«Maybe you don't need Rust and WASM to speed up your JS»",
         "url": "https://mrale.ph/blog/2018/02/03/maybe-you-dont-need-rust-to-speed-up-your-js.html",
         "ok": true,
         "reason": "external URL"
@@ -118439,13 +118439,13 @@
     ],
     "qmoi-enhanced/dashboard/node_modules/nanoid/README.md": [
       {
-        "label": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+        "label": "Русский",
         "url": "./README.ru.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/dashboard/node_modules/nanoid/README.ru.md"
       },
       {
-        "label": "\u7b80\u4f53\u4e2d\u6587",
+        "label": "简体中文",
         "url": "./README.zh-CN.md",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/dashboard/node_modules/nanoid/README.zh-CN.md"
@@ -123798,7 +123798,7 @@
     ],
     "dashboard/node_modules/safer-buffer/Porting-Buffer.md": [
       {
-        "label": "Variant 1: Drop support for Node.js \u2264 4.4.x and 5.0.0 \u2014 5.9.x.",
+        "label": "Variant 1: Drop support for Node.js ≤ 4.4.x and 5.0.0 — 5.9.x.",
         "url": "#variant-1",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/safer-buffer/#variant-1"
