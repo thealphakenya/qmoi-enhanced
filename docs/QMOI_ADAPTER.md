@@ -35,3 +35,23 @@ Integrating with Capilot
 Notes on safety
 - The adapter stores TODOs and small artifacts under `qmoi-data/` in the workspace root. It does not write arbitrary repo files.
 - The adapter uses no external network by default and is suitable for low-bandwidth Codespace usage.
+
+Endpoints and gateway
+
+- Adapter manifest: `http://localhost:8765/manifest` (raw manifest JSON)
+- Adapter chat: `POST http://localhost:8765/v1/chat` {"input": "..."}
+- Adapter todos: `GET/POST/PUT/DELETE http://localhost:8765/v1/todos`
+- Memory service (persistent): `http://localhost:8766` (gateway aggregates this at `/v1/memory`)
+- Progress tracker: `http://localhost:8767` (gateway aggregates at `/v1/progress`)
+- Gateway (aggregated API for Capilot): `http://localhost:8770`
+	- `GET /v1/models` — list available models and config
+	- `GET /v1/memory` — read persistent memory
+	- `POST /v1/sync` — checkpoint memory (creates `.qmoi/memory.checkpoint.*`)
+	- `POST /v1/webhook/register` — register a webhook for events (stored in `.qmoi/webhooks.json`)
+	- `GET /v1/snapshot` — workspace snapshot (lightweight project index)
+
+Using the gateway from Capilot
+
+- Configure Capilot discovery to point to `http://localhost:8770/v1/models` so QMOI appears in the model chooser.
+- Use `POST http://localhost:8770/v1/chat` as the chat endpoint for a unified integration.
+

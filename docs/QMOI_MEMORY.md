@@ -1,3 +1,35 @@
+## QMOI Memory & Sync
+
+This document explains how QMOI persists memory, checkpoints, and how Capilot or extensions can sync with it.
+
+Storage
+- Memory is stored in `.qmoi/memory.json` (auto-created). Checkpoints are saved as `.qmoi/memory.checkpoint.YYYYMMDDHHMMSS.json`.
+- Webhooks registered via the gateway are stored in `.qmoi/webhooks.json`.
+
+APIs
+- Read memory:
+
+  GET http://127.0.0.1:8770/v1/memory
+
+- Update memory (shallow merge):
+
+  POST http://127.0.0.1:8770/v1/memory  (proxied to memory service)
+
+- Create checkpoint (sync):
+
+  POST http://127.0.0.1:8770/v1/sync
+
+Notes on merge/conflict
+- The adapter uses a shallow-merge strategy: top-level keys in posted JSON overwrite existing keys. This is chosen for simplicity and low-bandwidth reliability.
+- For production use, consider adding vectorized memory stores, CRDTs, or server-side conflict resolution.
+
+How Capilot should use memory
+- On chat start, Capilot can GET `/v1/memory` to load context.
+- After conversation steps, Capilot can POST diffs to `/v1/memory` and optionally POST `/v1/sync` to create an immediate checkpoint.
+- Register webhooks with `POST /v1/webhook/register` to receive change notifications (gateway stores hooks, worker/poller can be added to dispatch events).
+
+Backups and exports
+- Use `GET http://127.0.0.1:8770/v1/memory/export` (proxied to memory service) to download raw memory JSON.
 # QMOI Memory Manager
 
 This document describes `scripts/qmoi_memory.py`, a lightweight layered cache used by validators and the LION orchestrator to improve performance and reduce repeated I/O.
