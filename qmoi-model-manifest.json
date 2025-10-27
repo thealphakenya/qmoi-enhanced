@@ -1,0 +1,11 @@
+{
+  "id": "qmoi-local",
+  "name": "QMOI Local (light)",
+  "description": "Lightweight local QMOI adapter for Capilot/Dev UIs. Offline-first, low-bandwidth.",
+  "endpoint": "http://localhost:8765",
+  "capabilities": ["chat", "todos", "file-write-limited"],
+  "recommended_settings": {
+    "max_bandwidth_kbps": 200,
+    "max_parallel_jobs": 2
+  }
+}
