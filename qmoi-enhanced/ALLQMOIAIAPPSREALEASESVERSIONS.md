@@ -77,3 +77,28 @@ This file lists all QMOI AI apps, all platforms, all versions, and their downloa
 [Qmoi_apps/linux/qmoi ai.AppImage] autotest status: FAIL
 
 [Qmoi_apps/ios/qmoi ai.ipa] autotest status: FAIL
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md",
+  "validated_at": "2025-10-26T20:51:24.590041Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI AI Apps - All Releases & Versions"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

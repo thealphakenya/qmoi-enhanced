@@ -51,4 +51,40 @@ QMOI now supports self-healing automation for Vercel deployments. The system can
 
 - All progress and result notifications for Vercel self-healing and autotest are sent to rovicviccy@gmail.com via Gmail.
 - Environment variables are managed by scripts/qmoi-environment-setup.js.
-- See scripts/ci-self-heal.js and scripts/autotest/advanced_autotest_system.py for implementation details. 
+- See scripts/ci-self-heal.js and scripts/autotest/advanced_autotest_system.py for implementation details.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/QMOIVERCELDEV.md",
+  "validated_at": "2025-10-26T20:51:22.714029Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Vercel Self-Healing CI/CD Automation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "QMOIGITLABDEV.md",
+          "target": "./QMOIGITLABDEV.md",
+          "ok": true
+        },
+        {
+          "label": "REFERENCES.md",
+          "target": "./REFERENCES.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

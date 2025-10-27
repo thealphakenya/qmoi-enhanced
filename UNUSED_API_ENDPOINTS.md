@@ -44,3 +44,28 @@ This file lists all API endpoints discovered in the codebase and documentation t
 - For each endpoint above, generate a minimal integration stub (backend or UI) or add a test in qmoi_test.sh.
 - Update API.md and CURLCOMMANDS.md to reflect new usage/tests.
 - Rerun endpoint usage checks after integration.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "UNUSED_API_ENDPOINTS.md",
+  "validated_at": "2025-10-26T20:51:22.654047Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Unused API Endpoints Report"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

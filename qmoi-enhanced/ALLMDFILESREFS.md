@@ -258,3 +258,28 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 
 - Updated `QMOI-ENHANCEMENT-SUMMARY.md` to include details about the sparse attention mechanism and dynamic enhancement strategies.
 - Updated `QMOI-ENHANCED-SUMMARY.md` to reflect the new automation and optimization features.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/ALLMDFILESREFS.md",
+  "validated_at": "2025-10-26T20:51:24.589397Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

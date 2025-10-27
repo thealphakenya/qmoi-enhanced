@@ -19,3 +19,27 @@ python3 scripts/run_validations.py --apply-md-fixes --run-artifacts
 
 For production, wire LION to run `tools/lionlaunch.json` scenarios via `tools/lionctl`.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/README_VALIDATION.md",
+  "validated_at": "2025-10-26T20:51:22.717794Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Validation README"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

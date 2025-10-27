@@ -1,0 +1,33 @@
+{
+  "file": "qmoi-enhanced/QMOIREADME.md",
+  "validated_at": "2025-10-26T20:51:24.793589Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Model: Quantum Multi-Objective Intelligence"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "QMOIALWAYSPARALLEL.md",
+          "target": "./QMOIALWAYSPARALLEL.md",
+          "ok": true
+        },
+        {
+          "label": "ENHANCEDQVS.md",
+          "target": "./ENHANCEDQVS.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}

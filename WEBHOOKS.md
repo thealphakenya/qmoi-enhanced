@@ -22,3 +22,28 @@ Example receiver (pseudo):
 2. Acknowledge 200 OK
 3. Push event payload to queue
 4. Processor picks up payload and performs idempotent actions
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "WEBHOOKS.md",
+  "validated_at": "2025-10-26T20:51:22.662696Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Webhook Receiver and Best Practices"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

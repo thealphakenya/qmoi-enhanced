@@ -27,3 +27,28 @@ services/
 - Automation ensures every service is used, and unused ones are logged for removal.
 
 **Status:** All services are now checked for usage and integration. No unused/duplicate services will remain after next cleanup. All service features are covered for QCity, QMOI AI, and QMOI Space.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "SERVICES.md",
+  "validated_at": "2025-10-26T20:51:22.632268Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "SERVICES.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

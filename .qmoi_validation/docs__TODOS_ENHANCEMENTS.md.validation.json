@@ -1,0 +1,22 @@
+{
+  "file": "docs/TODOS_ENHANCEMENTS.md",
+  "validated_at": "2025-10-26T20:51:24.577849Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI To-dos Enhancements (20+ improvements)"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}

@@ -535,4 +535,29 @@ To add new tests:
 - Before any fix or update, QMOI runs pre-autotests for all connected platforms (GitHub, GitLab, Vercel, HuggingFace, QCity, etc.).
 - Results are aggregated and only if all platforms pass does QMOI proceed with the fix or update.
 - If any platform fails, QMOI logs the error, notifies the master, and waits for resolution.
-- Pre-autotest results and history are visualized in the QMOI dashboard for full transparency. 
+- Pre-autotest results and history are visualized in the QMOI dashboard for full transparency.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "TESTREADME.md",
+  "validated_at": "2025-10-26T20:51:22.644638Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Alpha-Q AI System Test Documentation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

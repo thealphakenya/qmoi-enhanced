@@ -159,3 +159,28 @@ Offline + Colab Support	✅
 
 
 > Auto-updated by QMOI Unified Push at 2025-09-24T18:56:52.718799
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIAUTODEV.md",
+  "validated_at": "2025-10-26T20:51:22.442502Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

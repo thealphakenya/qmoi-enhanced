@@ -66,4 +66,29 @@ This creates `.qmoi/github_token.enc` and a helper `.qmoi/git-credential-qmoi.sh
 
 ## Related
 - See `TROUBLESHOOTING.md` for common issues.
-- See `README.md` for automation commands. 
+- See `README.md` for automation commands.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/SECURITY_AUTOMATION.md",
+  "validated_at": "2025-10-26T20:51:24.838556Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Security Automation & Vulnerability Remediation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

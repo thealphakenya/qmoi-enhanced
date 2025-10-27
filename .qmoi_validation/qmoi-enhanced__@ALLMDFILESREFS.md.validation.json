@@ -1,0 +1,43 @@
+{
+  "file": "qmoi-enhanced/@ALLMDFILESREFS.md",
+  "validated_at": "2025-10-26T20:51:24.587629Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "ALL MD Files References - Enhanced Comprehensive Edition"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "ok": true
+        },
+        {
+          "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "target": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "ok": true
+        },
+        {
+          "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "ok": true
+        },
+        {
+          "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "target": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}

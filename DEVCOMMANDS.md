@@ -68,3 +68,28 @@ npm run dev
 **Note:**
 - If you encounter missing features, errors, or incomplete UI, refer to the respective documentation and feature lists for troubleshooting and development guidance.
 - For advanced automation, error fixing, and cloud deployment, see QMOI Space Dev docs and QMOI Enhanced docs.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "DEVCOMMANDS.md",
+  "validated_at": "2025-10-26T20:51:22.294327Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "DEVCOMMANDS.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

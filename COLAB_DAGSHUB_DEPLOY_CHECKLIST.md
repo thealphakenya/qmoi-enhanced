@@ -37,4 +37,29 @@
 - [ ] Use lightweight, parallel features to ensure minimal resource usage
 
 ---
-**QMOI is now cloud-ready, always-on, and fully automated for Colab/Dagshub deployments!** 
+**QMOI is now cloud-ready, always-on, and fully automated for Colab/Dagshub deployments!**
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "COLAB_DAGSHUB_DEPLOY_CHECKLIST.md",
+  "validated_at": "2025-10-26T20:51:22.289185Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Colab/Dagshub Deployment Checklist"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

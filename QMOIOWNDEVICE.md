@@ -627,4 +627,29 @@ dir logs
 
 ---
 
-**QMOI Own Device: Liberating devices from organizational restrictions, one device at a time.** 
+**QMOI Own Device: Liberating devices from organizational restrictions, one device at a time.**
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIOWNDEVICE.md",
+  "validated_at": "2025-10-26T20:51:22.544906Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Own Device System - Advanced Device Liberation & Ownership"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

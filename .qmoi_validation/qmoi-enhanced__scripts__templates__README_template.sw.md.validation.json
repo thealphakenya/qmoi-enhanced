@@ -1,0 +1,22 @@
+{
+  "file": "qmoi-enhanced/scripts/templates/README_template.sw.md",
+  "validated_at": "2025-10-26T20:51:24.873987Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Mfumo wa QMOI"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}

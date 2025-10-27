@@ -39,4 +39,29 @@ QMOI Radio is a fully automated, AI-driven radio system with support for FM, AM,
 ## Live Listeners
 - Live listener count is shown in the QI UI (master-only)
 
---- 
+---
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIRADIOREADME.md",
+  "validated_at": "2025-10-26T20:51:22.551231Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Radio"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

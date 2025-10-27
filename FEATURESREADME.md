@@ -618,3 +618,28 @@ pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
 - Plugins can add new UI panels, device management features, optimization logic, and AI review modules.
 - Users can enable/disable plugins and configure their settings from the dashboard.
 - See `QMOI-PLUGIN-SYSTEM.md` for details and API.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "FEATURESREADME.md",
+  "validated_at": "2025-10-26T20:51:22.310677Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Alpha-Q AI Features"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

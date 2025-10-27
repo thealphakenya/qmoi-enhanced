@@ -54,3 +54,28 @@ Welcome! This guide will help you use all the features of Alpha-Q AI and its use
 
 ---
 For more details, see the Help tab or ask the AI for guidance!
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/USERREADME.md",
+  "validated_at": "2025-10-26T20:51:24.848533Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "USERREADME.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

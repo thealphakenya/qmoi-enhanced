@@ -36,3 +36,28 @@
 ## Error Summary
 - All device types: Last autotest run (2025-07-22) - No errors detected. All install/build/test cycles passed.
 - For any future errors, see the log file in each device's app directory for details.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/ALLERRORSSTATSQMOI.md",
+  "validated_at": "2025-10-26T20:51:24.588775Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Device-Specific Error Stats"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

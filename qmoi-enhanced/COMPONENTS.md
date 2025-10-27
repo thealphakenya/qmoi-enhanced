@@ -135,3 +135,28 @@ Most components are used in the main application page (`app/page.tsx`) and are i
 - See each component's `.tsx` file for implementation and usage examples.
 - Refer to DEVCOMMANDS.md for development commands.
 - See TRACKS.md, SYNCREPOS.md, and ALLMDFILESREFS.md for automation, memory, and sync features.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/COMPONENTS.md",
+  "validated_at": "2025-10-26T20:51:24.604102Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "COMPONENTS.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

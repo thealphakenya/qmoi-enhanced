@@ -31,3 +31,28 @@ Notes and next steps
 
 ***
 Generated on 2025-10-23 by automation.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "DEALS.md",
+  "validated_at": "2025-10-26T20:51:22.292572Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Deals"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

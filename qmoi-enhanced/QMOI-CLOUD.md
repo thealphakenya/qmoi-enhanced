@@ -41,4 +41,29 @@ npm run qmoi:automation:autotest
 - This will run all automation scripts in sequence and report any errors.
 - If you see a missing script error, ensure you are running from the project root, not a subdirectory.
 
---- 
+---
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOI-CLOUD.md",
+  "validated_at": "2025-10-26T20:51:24.670834Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Cloud Features"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

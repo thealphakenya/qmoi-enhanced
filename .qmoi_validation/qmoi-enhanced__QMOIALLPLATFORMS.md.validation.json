@@ -1,0 +1,208 @@
+{
+  "file": "qmoi-enhanced/QMOIALLPLATFORMS.md",
+  "validated_at": "2025-10-26T20:51:24.712160Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI ALL PLATFORMS - Complete Platform Ecosystem"
+    },
+    {
+      "name": "links",
+      "ok": false,
+      "detail": [
+        {
+          "label": "QMOICLONEGITHUB.md",
+          "target": "./QMOICLONEGITHUB.md",
+          "ok": true
+        },
+        {
+          "label": "GITHUBPAYED.md",
+          "target": "./GITHUBPAYED.md",
+          "ok": true
+        },
+        {
+          "label": "QMOICLONEGITLAB.md",
+          "target": "./QMOICLONEGITLAB.md",
+          "ok": true
+        },
+        {
+          "label": "PAYEDGITLAB.md",
+          "target": "./PAYEDGITLAB.md",
+          "ok": true
+        },
+        {
+          "label": "QMOICLONEVERCEL.md",
+          "target": "./QMOICLONEVERCEL.md",
+          "ok": false
+        },
+        {
+          "label": "VERCELPAYED.md",
+          "target": "./VERCELPAYED.md",
+          "ok": false
+        },
+        {
+          "label": "QMOICLONEGITPOD.md",
+          "target": "./QMOICLONEGITPOD.md",
+          "ok": true
+        },
+        {
+          "label": "GITPODPAYED.md",
+          "target": "./GITPODPAYED.md",
+          "ok": true
+        },
+        {
+          "label": "QMOICLONE.md",
+          "target": "./QMOICLONE.md",
+          "ok": true
+        },
+        {
+          "label": "NETLIFYPAYED.md",
+          "target": "./NETLIFYPAYED.md",
+          "ok": false
+        },
+        {
+          "label": "QMOICLONEQUANTUM.md",
+          "target": "./QMOICLONEQUANTUM.md",
+          "ok": false
+        },
+        {
+          "label": "QUANTUMPAYED.md",
+          "target": "./QUANTUMPAYED.md",
+          "ok": true
+        },
+        {
+          "label": "QMOICLONEHF.md",
+          "target": "./QMOICLONEHF.md",
+          "ok": false
+        },
+        {
+          "label": "HFPAYED.md",
+          "target": "./HFPAYED.md",
+          "ok": false
+        },
+        {
+          "label": "QMOICLONEGITHUB.md",
+          "target": "./QMOICLONEGITHUB.md",
+          "ok": true
+        },
+        {
+          "label": "QMOICLONEGITLAB.md",
+          "target": "./QMOICLONEGITLAB.md",
+          "ok": true
+        },
+        {
+          "label": "QMOICLONEVERCEL.md",
+          "target": "./QMOICLONEVERCEL.md",
+          "ok": false
+        },
+        {
+          "label": "QMOICLONEGITPOD.md",
+          "target": "./QMOICLONEGITPOD.md",
+          "ok": true
+        },
+        {
+          "label": "QMOICLONE.md",
+          "target": "./QMOICLONE.md",
+          "ok": true
+        },
+        {
+          "label": "QMOICLONEQUANTUM.md",
+          "target": "./QMOICLONEQUANTUM.md",
+          "ok": false
+        },
+        {
+          "label": "QMOICLONEHF.md",
+          "target": "./QMOICLONEHF.md",
+          "ok": false
+        },
+        {
+          "label": "GITHUBPAYED.md",
+          "target": "./GITHUBPAYED.md",
+          "ok": true
+        },
+        {
+          "label": "PAYEDGITLAB.md",
+          "target": "./PAYEDGITLAB.md",
+          "ok": true
+        },
+        {
+          "label": "VERCELPAYED.md",
+          "target": "./VERCELPAYED.md",
+          "ok": false
+        },
+        {
+          "label": "GITPODPAYED.md",
+          "target": "./GITPODPAYED.md",
+          "ok": true
+        },
+        {
+          "label": "NETLIFYPAYED.md",
+          "target": "./NETLIFYPAYED.md",
+          "ok": false
+        },
+        {
+          "label": "QUANTUMPAYED.md",
+          "target": "./QUANTUMPAYED.md",
+          "ok": true
+        },
+        {
+          "label": "HFPAYED.md",
+          "target": "./HFPAYED.md",
+          "ok": false
+        },
+        {
+          "label": "QMOI-CROSS-PLATFORM.md",
+          "target": "./QMOI-CROSS-PLATFORM.md",
+          "ok": false
+        },
+        {
+          "label": "QMOI-PLATFORM-AUTOMATION.md",
+          "target": "./QMOI-PLATFORM-AUTOMATION.md",
+          "ok": false
+        },
+        {
+          "label": "QMOI-PLATFORM-MONITORING.md",
+          "target": "./QMOI-PLATFORM-MONITORING.md",
+          "ok": false
+        },
+        {
+          "label": "QMOI-PLATFORM-SECURITY.md",
+          "target": "./QMOI-PLATFORM-SECURITY.md",
+          "ok": false
+        },
+        {
+          "label": "QMOI-PLATFORM-ANALYTICS.md",
+          "target": "./QMOI-PLATFORM-ANALYTICS.md",
+          "ok": false
+        },
+        {
+          "label": "QMOICLONEGITHUB.md",
+          "target": "./QMOICLONEGITHUB.md",
+          "ok": true
+        },
+        {
+          "label": "GITHUBPAYED.md",
+          "target": "./GITHUBPAYED.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIFREE.md",
+          "target": "./QMOIFREE.md",
+          "ok": true
+        },
+        {
+          "label": "QMOI-CLOUD.md",
+          "target": "./QMOI-CLOUD.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}

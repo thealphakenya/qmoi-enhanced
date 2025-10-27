@@ -29,3 +29,28 @@
 - [FAILED] alt-deploy: Alternative deployment failed (0ms)
 
 Generated at: 2025-07-11T21:23:58.980Z
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/error-fix-summary.md",
+  "validated_at": "2025-10-26T20:51:24.868507Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Auto-Fix Report"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

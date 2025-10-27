@@ -23,3 +23,28 @@ Notes
 - Both flags are safe to use in dry-run mode. To actually write files and start services, pass `--apply` or omit `--dry-run`.
 - The orchestrator will still respect existing manifests; `--manifest-write` only triggers generation when a manifest is missing.
 - If the manifest generator is not present in `deploy/qcity/`, the orchestrator will log a warning and continue in dry-run.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOI_ORCHESTRATOR_FLAGS.md",
+  "validated_at": "2025-10-26T20:51:24.816421Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

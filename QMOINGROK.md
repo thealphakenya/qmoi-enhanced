@@ -181,3 +181,28 @@ Bind tunnels to subdomains (qmoitunnel.ngrok.io)
 - Fallback logic covers ngrok, Freenom, custom DNS, and any provider, with full audit and logging.
 - All features are integrated with QCity, QMOI AI, and QMOI Space, and are visible in the QCity dashboard.
 - QMOI handles all links and domains in the system, ensuring permanent operation and instant recovery from any DNS or tunnel issue.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOINGROK.md",
+  "validated_at": "2025-10-26T20:51:22.543521Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

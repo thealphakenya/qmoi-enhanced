@@ -71,3 +71,27 @@ Operational notes
 - CI must produce artifacts and upload them to a stable location (GitHub Releases, bucket). The orchestrator will prefer that external URL over local `downloads/` when present.
 - For reproducible production builds, LION should trigger CI pipelines and validate the resulting release artifacts automatically.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/APPSVALIDATION.md",
+  "validated_at": "2025-10-26T20:51:22.676262Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "App Validation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

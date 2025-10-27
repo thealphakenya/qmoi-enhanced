@@ -1109,3 +1109,28 @@ All endpoints will be used and documented for full coverage and automation.
 NOTE: This file is partially auto-populated by automated scans. A JSON report of placeholder and documentation gaps was produced at `docs/placeholders_report.json`. The canonical test index is at `docs/ALLTESTSAUTOTESTS.md`.
 
 If you want the assistant to actively sync this file with live code (run static extraction and integration tests) say "sync API docs now" and I will run the extraction and update this document with exact method signatures and status.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "API.md",
+  "validated_at": "2025-10-26T20:51:22.281600Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Q-city API Documentation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

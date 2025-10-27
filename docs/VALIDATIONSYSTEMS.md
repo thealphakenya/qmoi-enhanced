@@ -108,3 +108,27 @@ Next steps
 - Run the orchestrator to produce a consolidated validation report.
 - Implement CI workflows to produce production artifacts and sign them.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/VALIDATIONSYSTEMS.md",
+  "validated_at": "2025-10-26T20:51:24.578985Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Validation Systems"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

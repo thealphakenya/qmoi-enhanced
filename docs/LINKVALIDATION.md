@@ -17,3 +17,27 @@ Usage
 
 The existing script `scripts/validate_and_fix_md.py` implements conservative link fixes. Use the orchestrator (`scripts/run_validations.py`) to run link checks as part of the full pipeline.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/LINKVALIDATION.md",
+  "validated_at": "2025-10-26T20:51:22.690290Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Link Validation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

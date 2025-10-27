@@ -92,4 +92,40 @@ See the script for details and future updates.
 ## See Also
 - [REFERENCES.md](./REFERENCES.md) 
 
-> **Note:** QMOI now supports GitHub Actions self-healing automation. See [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md) for details. 
+> **Note:** QMOI now supports GitHub Actions self-healing automation. See [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md) for details.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/QMOIGITLABDEV.md",
+  "validated_at": "2025-10-26T20:51:22.713327Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI GitLab Self-Healing CI/CD Automation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "REFERENCES.md",
+          "target": "./REFERENCES.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIGITHUBDEV.md",
+          "target": "./QMOIGITHUBDEV.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

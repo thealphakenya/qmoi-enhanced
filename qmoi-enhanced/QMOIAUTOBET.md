@@ -437,4 +437,29 @@ class BettingDatabase:
 
 ---
 
-*QMOI AUTOBET - Revolutionizing Automated Betting with AI* 
+*QMOI AUTOBET - Revolutionizing Automated Betting with AI*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOIAUTOBET.md",
+  "validated_at": "2025-10-26T20:51:24.726978Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI AUTOBET - Automated Betting & Revenue Generation System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

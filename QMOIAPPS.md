@@ -109,3 +109,28 @@ All device apps support:
 # QMOI AUTO-ENHANCE: Updated QMOIAPPS.md with latest automation, error-fix, and install results.
 
 <!-- All links above are production-ready and autotested. No [PRODUCTION IMPLEMENTATION REQUIRED], [PRODUCTION IMPLEMENTATION REQUIRED], or non-production links remain. -->
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIAPPS.md",
+  "validated_at": "2025-10-26T20:51:22.433293Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOIAPPS.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

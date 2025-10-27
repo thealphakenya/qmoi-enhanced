@@ -1,0 +1,10 @@
+{
+  "signatures": {
+    "c9d617657f24360779c3277261be09fb4fcb05a327a18bd4f4b4dc2b61d1161c": "sample-1"
+  },
+  "sample-1": {
+    "last_proposal": "/workspaces/qmoi-enhanced/.qmoi_validation/pr_proposals/remediate_5f3713d2_1761527229.json",
+    "processed": true,
+    "processed_at": "2025-10-27T01:07:09.466847+00:00"
+  }
+}

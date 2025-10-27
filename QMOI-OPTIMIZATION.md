@@ -34,4 +34,29 @@ This guide covers all strategies and features used by QCity/QMOI to optimize per
 - **Resource-Aware Execution:** Throttles or offloads tasks based on real-time device stats.
 - **Process Isolation:** Runs heavy tasks in isolated processes or containers with resource limits.
 - **Auto-Offload:** Automatically offloads heavy work to cloud/Colab if device is busy or low on resources.
-- **User Controls:** Dashboard allows users to adjust thresholds, switch modes, and monitor all resources. 
+- **User Controls:** Dashboard allows users to adjust thresholds, switch modes, and monitor all resources.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOI-OPTIMIZATION.md",
+  "validated_at": "2025-10-26T20:51:22.401635Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Optimization Guide"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

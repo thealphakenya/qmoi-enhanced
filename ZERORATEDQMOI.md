@@ -82,4 +82,29 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 
 ---
 
-*QMOI Zero-Rated: Always Connected, Anywhere, Anytime.* 
+*QMOI Zero-Rated: Always Connected, Anywhere, Anytime.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "ZERORATEDQMOI.md",
+  "validated_at": "2025-10-26T20:51:22.668115Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "ZERORATEDQMOI.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

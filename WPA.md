@@ -420,3 +420,27 @@ const aiResponse = await client.ai.chat('Hello QMOI');
 *Last updated: 2025-01-22*
 *Version: 4.0.0*
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "WPA.md",
+  "validated_at": "2025-10-26T20:51:22.667321Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Web Progressive App (WPA) - Complete Feature Set"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

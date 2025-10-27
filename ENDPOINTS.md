@@ -117,3 +117,28 @@ Orchestration / observability (for supervisors):
 Notes:
 - All endpoints are implemented in `qmoi_control_server.py` and persist to `qmoi.db` by default.
 - Attachment downloads are prototype only; production should use signed object storage.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "ENDPOINTS.md",
+  "validated_at": "2025-10-26T20:51:22.297416Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Endpoint Inventory"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

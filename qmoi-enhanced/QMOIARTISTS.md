@@ -286,4 +286,29 @@ For master user support and technical assistance:
 
 ---
 
-*QMOI Artists System - Exclusively for Master Users* 
+*QMOI Artists System - Exclusively for Master Users*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOIARTISTS.md",
+  "validated_at": "2025-10-26T20:51:24.722360Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Artists System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

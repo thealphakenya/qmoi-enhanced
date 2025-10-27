@@ -47,3 +47,28 @@ This document lists all error types, health check strategies, and autofix enhanc
 
 ## References
 - All error types and health checks are referenced in INVINSIBLEQMOI.md, QMOI_MEMORY.md, QMOI-ENHANCED-AUTOTESTS.md, QMOI-ENHANCED-SUMMARY.md, QMOI-CLOUD-ENHANCED.md, QMOI_AUTOMATED_SYSTEMS_README.md, and ALLSYSTEMSSTRUCTURESREFERENCES.md.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "ALLERRORTYPESANDHEALTHCHECKS.md",
+  "validated_at": "2025-10-26T20:51:22.275967Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "ALLERRORTYPESANDHEALTHCHECKS.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

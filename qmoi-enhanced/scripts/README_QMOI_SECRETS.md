@@ -51,3 +51,28 @@ python3 scripts/update_links_with_ngrok.py --apply
 Notes:
 - For production use, integrate the master key into a cloud secret manager and modify `qmoi_secret_manager.py` to fetch from that service.
 - Rotate the ngrok token if it had been accidentally committed.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/scripts/README_QMOI_SECRETS.md",
+  "validated_at": "2025-10-26T20:51:24.871159Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -47,4 +47,29 @@ QMOI Earning is a comprehensive AI-driven earning platform that combines autonom
 
 ---
 
-*QMOI Earning: Automated, high-quality, high-revenue, and always above Ksh 50,000 per day.* 
+*QMOI Earning: Automated, high-quality, high-revenue, and always above Ksh 50,000 per day.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOIEARNING.md",
+  "validated_at": "2025-10-26T20:51:24.765098Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Earning - Enhanced AI Autonomous Earning System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

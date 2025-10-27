@@ -36,4 +36,29 @@ QMOI automatically generates and attaches trailers, documentation, and instructi
 
 ---
 
-*QMOI - Every project, fully documented and promoted for maximum impact, with master in control.* 
+*QMOI - Every project, fully documented and promoted for maximum impact, with master in control.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIALLPROJECTSADDSTRAILERSDOCS.md",
+  "validated_at": "2025-10-26T20:51:22.428146Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI All Projects: Trailers, Docs, and Instructions"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -67,4 +67,29 @@ Qmoi_downloaded_apps/
 - README.md (platforms and download structure)
 - QMOINGROK.md (ngrok tunnel automation)
 - QMOIQCITYAUTOMATIC.md (cloud automation)
-- QCITYRUNNERSENGINE.md (self-hosted runners) 
+- QCITYRUNNERSENGINE.md (self-hosted runners)
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "AUTODOWNLOAD.md",
+  "validated_at": "2025-10-26T20:51:22.282567Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "AUTODOWNLOAD.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

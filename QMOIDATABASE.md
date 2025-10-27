@@ -84,4 +84,29 @@ QMOI Database is a self-enhancing, Supabase-like database system designed for th
 - [ ] Connect Activity Log panel to backend
 - [ ] Add master controls for autonomy and permissions
 
-For implementation details, see the backend API and QCity UI source code. 
+For implementation details, see the backend API and QCity UI source code.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIDATABASE.md",
+  "validated_at": "2025-10-26T20:51:22.488696Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Database System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

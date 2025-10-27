@@ -60,3 +60,28 @@ Notes
 -----
 The current implementation auto-settles transactions when no external provider
 is configured (useful for offline/testing)."}
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "PAYMENTS.md",
+  "validated_at": "2025-10-26T20:51:22.331115Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

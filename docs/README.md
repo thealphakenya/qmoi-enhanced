@@ -480,4 +480,29 @@ See `config/qmoi_config.json` for notification and email settings.
 Run `python scripts/qmoi_permission_fix.py` to manually fix permissions.
 
 ### Audit Log
-See `logs/qmoi_permission_audit.log` for a full trace of permission and notification actions. 
+See `logs/qmoi_permission_audit.log` for a full trace of permission and notification actions.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/README.md",
+  "validated_at": "2025-10-26T20:51:22.716203Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Q-City Documentation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

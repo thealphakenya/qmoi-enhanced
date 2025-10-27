@@ -79,4 +79,50 @@ QMOI operates as a fully autonomous AI developer and notification agent across a
 - [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md)
 - [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)
 - [QMOIVERCELDEV.md](./QMOIVERCELDEV.md)
-- [REFERENCES.md](./REFERENCES.md) 
+- [REFERENCES.md](./REFERENCES.md)
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIDEV.md",
+  "validated_at": "2025-10-26T20:51:22.491498Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Developer Agent (QMOIDEV)"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "QMOIGITHUBDEV.md",
+          "target": "./QMOIGITHUBDEV.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIGITLABDEV.md",
+          "target": "./QMOIGITLABDEV.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIVERCELDEV.md",
+          "target": "./QMOIVERCELDEV.md",
+          "ok": true
+        },
+        {
+          "label": "REFERENCES.md",
+          "target": "./REFERENCES.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

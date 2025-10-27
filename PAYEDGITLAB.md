@@ -30,4 +30,29 @@ All paid GitLab features are available in QMOI's Colab GitLab clone, but not in 
 - Not available in the original GitLab
 
 ---
-*QMOI Colab GitLab: All the power of paid features, unlocked for QMOI.* 
+*QMOI Colab GitLab: All the power of paid features, unlocked for QMOI.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "PAYEDGITLAB.md",
+  "validated_at": "2025-10-26T20:51:22.329430Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "PAYEDGITLAB.md - Paid GitLab Features in QMOI Colab"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

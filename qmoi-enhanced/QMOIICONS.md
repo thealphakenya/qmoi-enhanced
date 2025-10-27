@@ -65,4 +65,27 @@ See also
 - BUILDAPPSFORALLPLATFORMS.md (integration into build pipelines)
 - QMOINGROK.md (icon downloads via tunnel/CDN if needed)
 
-
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOIICONS.md",
+  "validated_at": "2025-10-26T20:51:24.783458Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

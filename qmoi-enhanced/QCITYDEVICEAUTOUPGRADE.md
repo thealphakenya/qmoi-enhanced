@@ -245,4 +245,29 @@ npm run qcity:tune
 
 ---
 
-### See also: QMOIAVATAR.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md 
+### See also: QMOIAVATAR.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+  "validated_at": "2025-10-26T20:51:24.651560Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QCITYDEVICEAUTOUPGRADE.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

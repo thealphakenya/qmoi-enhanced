@@ -1,0 +1,11 @@
+{
+  "file": "docs/QMOICLONE.md",
+  "checked_at": "2025-10-26T20:51:21.198956+00:00",
+  "validator": "qmoi-validator-v1",
+  "checks": {
+    "has_h1": false,
+    "has_frontmatter": false,
+    "has_links": true
+  },
+  "ok": false
+}

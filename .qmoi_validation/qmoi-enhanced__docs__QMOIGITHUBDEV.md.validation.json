@@ -1,0 +1,33 @@
+{
+  "file": "qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+  "validated_at": "2025-10-26T20:51:24.861853Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI GitHub Actions Self-Healing CI/CD Automation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "QMOIGITLABDEV.md",
+          "target": "./QMOIGITLABDEV.md",
+          "ok": true
+        },
+        {
+          "label": "REFERENCES.md",
+          "target": "./REFERENCES.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}

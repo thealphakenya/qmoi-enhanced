@@ -80,4 +80,29 @@ const signature = Base64(RSA_SHA256_Sign(private_key, message));
 
 ---
 
-For more, see Bitget's [official docs](https://www.bitget.com/api-doc/common/rsa-authentication.html). 
+For more, see Bitget's [official docs](https://www.bitget.com/api-doc/common/rsa-authentication.html).
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/RSAAPIREADME.md",
+  "validated_at": "2025-10-26T20:51:24.834482Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Bitget User-Generated RSA API Key Integration"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

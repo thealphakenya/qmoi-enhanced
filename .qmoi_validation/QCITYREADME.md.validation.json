@@ -1,0 +1,43 @@
+{
+  "file": "QCITYREADME.md",
+  "validated_at": "2025-10-26T20:51:22.349327Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Q-City AI System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "QCITYDEVICEAUTOUPGRADE.md",
+          "target": "./QCITYDEVICEAUTOUPGRADE.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIAVATAR.md",
+          "target": "./QMOIAVATAR.md",
+          "ok": true
+        },
+        {
+          "label": "AUTOOPTIMIZEALPHAQMOIENGINE.md",
+          "target": "./AUTOOPTIMIZEALPHAQMOIENGINE.md",
+          "ok": true
+        },
+        {
+          "label": "GitHub Workflows",
+          "target": "./.github/workflows/",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}

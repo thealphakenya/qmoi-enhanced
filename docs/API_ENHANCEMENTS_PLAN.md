@@ -19,3 +19,28 @@ Short term actionable tasks
 - Add `scripts/extract_endpoints.py` to generate a `docs/api_endpoint_index.json` (can be run in CI).
 - Add `tests/integration/test_endpoints.py` (pytest) to run against a running dev server for core endpoints.
 - Add a GitHub Action to run endpoint smoke tests on push to main.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/API_ENHANCEMENTS_PLAN.md",
+  "validated_at": "2025-10-26T20:51:22.675357Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "API / Routes Enhancement Plan"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

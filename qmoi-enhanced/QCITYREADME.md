@@ -657,4 +657,50 @@ QCity is the primary cloud device for QMOI, handling all heavy computation, stor
 - **Always-On Cloud Operation:** QCity is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
 - **Enhanced QCity Runners & Devices:** All QCity runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every QCity update, ensuring documentation is always current.
-- **Increased Minimum Daily Revenue:** QCity now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 
+- **Increased Minimum Daily Revenue:** QCity now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QCITYREADME.md",
+  "validated_at": "2025-10-26T20:51:24.654391Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Q-City AI System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "QCITYDEVICEAUTOUPGRADE.md",
+          "target": "./QCITYDEVICEAUTOUPGRADE.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIAVATAR.md",
+          "target": "./QMOIAVATAR.md",
+          "ok": true
+        },
+        {
+          "label": "AUTOOPTIMIZEALPHAQMOIENGINE.md",
+          "target": "./AUTOOPTIMIZEALPHAQMOIENGINE.md",
+          "ok": true
+        },
+        {
+          "label": "GitHub Workflows",
+          "target": "./.github/workflows/",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

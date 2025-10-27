@@ -290,4 +290,29 @@ npm run qmoi:autoconfig
 
 ---
 
-*The QMOI AI Earning System is designed to provide consistent, automated income generation while maintaining security and compliance with financial regulations.* 
+*The QMOI AI Earning System is designed to provide consistent, automated income generation while maintaining security and compliance with financial regulations.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "CASHON.md",
+  "validated_at": "2025-10-26T20:51:22.287000Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "CASHON.md - QMOI AI Earning System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -49,4 +49,29 @@ python scripts/qcity_unlimited_installer.py
 
 ## Related
 - See `SELF_EVOLUTION.md` for self-healing and continuous improvement.
-- See `GITHUB_ACTIONS_AUTOFIX.md` for CI/CD automation. 
+- See `GITHUB_ACTIONS_AUTOFIX.md` for CI/CD automation.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QCITY_DEVICE_MANAGEMENT.md",
+  "validated_at": "2025-10-26T20:51:22.355324Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QCity Device Management & Unlimited QCity Automation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

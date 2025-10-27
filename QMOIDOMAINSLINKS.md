@@ -48,3 +48,28 @@ This file contains all domains and links used in the QMOI system, including thei
 - Usage and platform details are tracked for every domain, including last checked date and status.
 - This file is referenced in ALLMDFILESREFS.md and auto-updated in real time.
 - QMOI ensures all download links are valid and working for every app/platform, and auto-fixes any issues detected.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIDOMAINSLINKS.md",
+  "validated_at": "2025-10-26T20:51:22.498296Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOIDOMAINSLINKS.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -186,3 +186,27 @@ Implementation notes (high-level)
 - Prioritize security (SSO, RBAC) and observability early.
 - Monetize gradually: storage/compute/feature gates before marketplace fees.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/qvillage_features.md",
+  "validated_at": "2025-10-26T20:51:24.584303Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

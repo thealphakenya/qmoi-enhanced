@@ -33,4 +33,29 @@ QMedia Player now supports all media types (audio, video, images, streams, docum
 - **Admin Panel:** Master-only controls for all features, audit logs, and advanced settings.
 
 ---
-*This file documents all QMedia Player UI features and enhancements.* 
+*This file documents all QMedia Player UI features and enhancements.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "components/qmedia-player.md",
+  "validated_at": "2025-10-26T20:51:22.668746Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMedia Player - Enhanced UI & Controls"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

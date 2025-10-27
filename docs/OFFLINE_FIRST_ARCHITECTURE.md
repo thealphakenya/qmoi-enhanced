@@ -166,3 +166,28 @@ qmoi qvs init --local
 - Secure storage
 - Access control
 - Audit logging
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/OFFLINE_FIRST_ARCHITECTURE.md",
+  "validated_at": "2025-10-26T20:51:22.704499Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Offline-First Architecture"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -52,3 +52,28 @@ This file documents the features, settings, and UI capabilities for each QMOI ap
 ---
 
 *Last updated: 2025-07-22*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "ALLDEVICESSETTINGS.md",
+  "validated_at": "2025-10-26T20:51:22.272487Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI All Devices Settings & Features Reference"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

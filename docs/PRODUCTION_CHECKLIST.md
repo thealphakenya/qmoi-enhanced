@@ -44,3 +44,28 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 Notes
 - The automated suggestion system is conservative. Always review suggested code replacements before applying.
 - If you want me to apply the suggested replacements automatically, run the scanner with `--apply --mapping suggestions.json` or tell me and I'll apply them (I will create backups before changing files).
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/PRODUCTION_CHECKLIST.md",
+  "validated_at": "2025-10-26T20:51:22.705978Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Production Checklist for QMOI"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

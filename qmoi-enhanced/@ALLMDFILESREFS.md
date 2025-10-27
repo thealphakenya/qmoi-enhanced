@@ -41,4 +41,50 @@ This comprehensive reference document catalogs and categorizes all .md files in 
 - All actions and errors are robustly logged via `qmoi_activity_logger`.
 - [PRODUCTION IMPLEMENTATION REQUIRED]s remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.
 - All output files are named `qmoi ai` and placed in the correct subdirectory.
-- Download links and notifications are updated automatically after each build. 
+- Download links and notifications are updated automatically after each build.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/@ALLMDFILESREFS.md",
+  "validated_at": "2025-10-26T20:51:24.587629Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "ALL MD Files References - Enhanced Comprehensive Edition"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "ok": true
+        },
+        {
+          "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "target": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "ok": true
+        },
+        {
+          "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "ok": true
+        },
+        {
+          "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "target": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

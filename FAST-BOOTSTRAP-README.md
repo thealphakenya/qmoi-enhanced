@@ -114,3 +114,28 @@ chmod +x quickstart.sh
 
 ---
 *Last updated: June 9, 2025*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "FAST-BOOTSTRAP-README.md",
+  "validated_at": "2025-10-26T20:51:22.309983Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "\u26a1\ufe0f Fast Project Bootstrap & Debugging for Alpha-Q AI"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

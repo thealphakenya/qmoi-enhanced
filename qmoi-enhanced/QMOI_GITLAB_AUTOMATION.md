@@ -461,4 +461,29 @@ npm run qmoi-error-recovery --verbose
 
 ---
 
-**QMOI GitLab Automation** - Empowering GitLab with intelligent, self-healing automation that works even when the system itself has errors. 
+**QMOI GitLab Automation** - Empowering GitLab with intelligent, self-healing automation that works even when the system itself has errors.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md",
+  "validated_at": "2025-10-26T20:51:24.813292Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI GitLab Automation Guide"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

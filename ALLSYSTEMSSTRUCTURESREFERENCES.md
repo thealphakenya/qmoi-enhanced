@@ -116,3 +116,28 @@ QMOI Space
 ## Reference Automation
 
  See `ALLERRORS.md` for the latest automated error/issue logs and autofix status.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "ALLSYSTEMSSTRUCTURESREFERENCES.md",
+  "validated_at": "2025-10-26T20:51:22.280220Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "ALLSYSTEMSSTRUCTURESREFERENCES.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

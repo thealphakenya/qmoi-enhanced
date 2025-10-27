@@ -127,3 +127,28 @@ To ensure all logs and tables are always up-to-date and actionable:
 - For manual updates, simply run the automation script or update the logs and tables as described above.
 
 ---
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+  "validated_at": "2025-10-26T20:51:24.710785Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

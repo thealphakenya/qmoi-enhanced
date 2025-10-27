@@ -295,3 +295,28 @@ For master user support and technical assistance:
 - QMOI automatically determines which artists to add, use, and collaborate with, based on market trends, genre, and language.
 - All features are updated in real time, with full integration into QCity, QMOI AI, and QMOI Space.
 - QMOIARTISTS.md is auto-updated by QMOI automation, ensuring all artists, collaborations, and music projects are tracked and optimized for revenue generation.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIARTISTS.md",
+  "validated_at": "2025-10-26T20:51:22.436317Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Artists System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

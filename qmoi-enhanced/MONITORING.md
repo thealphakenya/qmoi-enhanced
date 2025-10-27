@@ -81,4 +81,40 @@
 
 For a full list of documentation, see [REFERENCES.md](./REFERENCES.md)
 
-For questions or issues, contact the QMOI admin team. 
+For questions or issues, contact the QMOI admin team.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/MONITORING.md",
+  "validated_at": "2025-10-26T20:51:24.643093Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Monitoring & Analytics Guide"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "QMOIAUTOFIXREADME.md",
+          "target": "./QMOIAUTOFIXREADME.md",
+          "ok": true
+        },
+        {
+          "label": "REFERENCES.md",
+          "target": "./REFERENCES.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -1,0 +1,11 @@
+{
+  "file": "qmoi-enhanced/ZERORATEDQMOI.md",
+  "checked_at": "2025-10-26T20:51:21.596274+00:00",
+  "validator": "qmoi-validator-v1",
+  "checks": {
+    "has_h1": true,
+    "has_frontmatter": false,
+    "has_links": false
+  },
+  "ok": false
+}

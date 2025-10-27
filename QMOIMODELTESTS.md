@@ -52,3 +52,49 @@ This document lists all tests and autotests for the QMOI system, including healt
 - [QMOIMODEL.md](./QMOIMODEL.md)
 - [TRACKS.md](./TRACKS.md)
 - [DASHBOARDTRACKS.md](./DASHBOARDTRACKS.md)
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIMODELTESTS.md",
+  "validated_at": "2025-10-26T20:51:22.540342Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Model Tests"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "CURLCOMMANDS.md",
+          "target": "./CURLCOMMANDS.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIMODEL.md",
+          "target": "./QMOIMODEL.md",
+          "ok": true
+        },
+        {
+          "label": "TRACKS.md",
+          "target": "./TRACKS.md",
+          "ok": true
+        },
+        {
+          "label": "DASHBOARDTRACKS.md",
+          "target": "./DASHBOARDTRACKS.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -79,3 +79,94 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 ---
 
 *Last updated: 2025-08-30*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
+  "validated_at": "2025-10-26T20:51:24.598647Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "\ud83d\ude80 QMOI AI - Build Apps for All Platforms"
+    },
+    {
+      "name": "links",
+      "ok": false,
+      "detail": [
+        {
+          "label": "Win",
+          "target": "Qmoi_apps/windows/qmoi_ai.exe",
+          "ok": false
+        },
+        {
+          "label": "Mac",
+          "target": "Qmoi_apps/mac/qmoi_ai.dmg",
+          "ok": false
+        },
+        {
+          "label": "Android",
+          "target": "Qmoi_apps/android/qmoi_ai.apk",
+          "ok": false
+        },
+        {
+          "label": "iOS",
+          "target": "Qmoi_apps/ios/qmoi_ai.ipa",
+          "ok": false
+        },
+        {
+          "label": "Linux",
+          "target": "Qmoi_apps/linux/qmoi_ai.AppImage",
+          "ok": false
+        },
+        {
+          "label": "SmartTV",
+          "target": "Qmoi_apps/smarttv/qmoi_ai.apk",
+          "ok": false
+        },
+        {
+          "label": "Chromebook",
+          "target": "Qmoi_apps/chromebook/qmoi_ai.deb",
+          "ok": false
+        },
+        {
+          "label": "QCity",
+          "target": "Qmoi_apps/qcity/qmoi_ai.zip",
+          "ok": false
+        },
+        {
+          "label": "RaspberryPi",
+          "target": "Qmoi_apps/raspberrypi/qmoi_ai.img",
+          "ok": false
+        },
+        {
+          "label": "QCity",
+          "target": "Qmoi_apps/qcity/qmoi_ai.zip",
+          "ok": false
+        },
+        {
+          "label": "SmartTV",
+          "target": "Qmoi_apps/smarttv/qmoi_ai.apk",
+          "ok": false
+        },
+        {
+          "label": "PWA",
+          "target": "pwa_apps/qmoi-ai-pwa.zip",
+          "ok": false
+        },
+        {
+          "label": "Manifest",
+          "target": "pwa_apps/qmoi-ai-pwa.webmanifest",
+          "ok": false
+        }
+      ]
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -45,4 +45,29 @@ QMOI Browser is a fully automated, AI-powered browser used by QMOI to autotest, 
 - WATCHDEBUG.md: Browser logs and fixes are visible in WatchDebug panel.
 
 ---
-*This file is managed by QMOI and documents all browser automation and autotesting logic.* 
+*This file is managed by QMOI and documents all browser automation and autotesting logic.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIBROWSER.md",
+  "validated_at": "2025-10-26T20:51:22.471220Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOIBROWSER.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -707,4 +707,35 @@ For questions, issues, or contributions:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOI-ENHANCED-AUTOTESTS.md",
+  "validated_at": "2025-10-26T20:51:22.379260Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Enhanced Automation Autotests"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "LICENSE",
+          "target": "LICENSE",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

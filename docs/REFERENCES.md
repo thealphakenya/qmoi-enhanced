@@ -21,4 +21,45 @@
 
 ## QMOI Workspace Audit Logging & Notification
 - All workspace management actions (start, stop, clone, sync, etc.) are logged to logs/qcity_audit.log.
-- Notifications for all workspace events and errors are sent via all configured channels (email, Slack, WhatsApp, Telegram, Discord, etc.). 
+- Notifications for all workspace events and errors are sent via all configured channels (email, Slack, WhatsApp, Telegram, Discord, etc.).
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/REFERENCES.md",
+  "validated_at": "2025-10-26T20:51:22.721284Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "QMOI GitLab Self-Healing CI/CD Automation",
+          "target": "./QMOIGITLABDEV.md",
+          "ok": true
+        },
+        {
+          "label": "QMOI Vercel Self-Healing CI/CD Automation",
+          "target": "./QMOIVERCELDEV.md",
+          "ok": true
+        },
+        {
+          "label": "QMOI GitHub Actions Self-Healing CI/CD Automation",
+          "target": "./QMOIGITHUBDEV.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

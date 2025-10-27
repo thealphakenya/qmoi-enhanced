@@ -34,3 +34,28 @@ Phased approach
 Next steps (short term)
 - Run `python3 scripts/scan_lion_usage.py` to produce `docs/lion_usage_report.json`.
 - Triage the top 30 files with LION mentions and plan replacements in a PR branch.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/LION-USAGE-PLAN.md",
+  "validated_at": "2025-10-26T20:51:22.693585Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "LION Usage & Enhancement Plan"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

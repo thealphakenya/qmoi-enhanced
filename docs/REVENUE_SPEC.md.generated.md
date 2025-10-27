@@ -20543,3 +20543,89 @@ This document maps detected revenue-related claims and keywords to source files.
 
 - Review and classify each entry: source, expected metric name, expected value, cadence (daily/monthly), and target wallet.
 - For each classified entry, add automated checks (scripts/tests) and wire metrics to the revenue dashboard.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/REVENUE_SPEC.md.generated.md",
+  "validated_at": "2025-10-26T20:51:24.556527Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "REVENUE_SPEC (auto-generated - review required)"
+    },
+    {
+      "name": "links",
+      "ok": false,
+      "detail": [
+        {
+          "label": "TRACKS.md",
+          "target": "./TRACKS.md",
+          "ok": false
+        },
+        {
+          "label": "QMOIMODEL.md",
+          "target": "./QMOIMODEL.md",
+          "ok": false
+        },
+        {
+          "label": "QMOIMODELTESTS.md",
+          "target": "./QMOIMODELTESTS.md",
+          "ok": false
+        },
+        {
+          "label": "TRACKS.md",
+          "target": "./TRACKS.md",
+          "ok": false
+        },
+        {
+          "label": "QMOIMODEL.md",
+          "target": "./QMOIMODEL.md",
+          "ok": false
+        },
+        {
+          "label": "QMOIMODELTESTS.md",
+          "target": "./QMOIMODELTESTS.md",
+          "ok": false
+        },
+        {
+          "label": "DASHBOARDTRACKS.md",
+          "target": "./DASHBOARDTRACKS.md",
+          "ok": false
+        },
+        {
+          "label": "TRACKS.md",
+          "target": "./TRACKS.md",
+          "ok": false
+        },
+        {
+          "label": "QMOIMODELTESTS.md",
+          "target": "./QMOIMODELTESTS.md",
+          "ok": false
+        },
+        {
+          "label": "TRACKS.md",
+          "target": "./TRACKS.md",
+          "ok": false
+        },
+        {
+          "label": "DASHBOARDTRACKS.md",
+          "target": "./DASHBOARDTRACKS.md",
+          "ok": false
+        },
+        {
+          "label": "QMOIMODELTESTS.md",
+          "target": "./QMOIMODELTESTS.md",
+          "ok": false
+        }
+      ]
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

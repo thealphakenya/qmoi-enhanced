@@ -104,3 +104,27 @@ Feature	Description
 
 📄 This document is maintained by the QMOI master orchestrator. Refer to QMOINGROK.md for tunnel logic and QMOIDNS.md for DNS settings.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIDOMAINS.md",
+  "validated_at": "2025-10-26T20:51:22.496339Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -63,18 +63,24 @@ def build_fallbacks():
         if device in ("windows", "android"):
             continue
         path = os.path.join(OUTPUT_BASE, device, DEVICES[device])
-        with open(path, 'w') as f:
-                device_builds = {
-                    "linux": b'#!/bin/sh\necho "Linux AppImage release for QMOI AI"\nexit 0',
-                    "mac": b'#!/bin/sh\necho "macOS DMG release for QMOI AI"\nexit 0',
-                    "ios": b'#!/bin/sh\necho "iOS IPA release for QMOI AI"\nexit 0',
-                    "chromebook": b'#!/bin/sh\necho "ChromeOS package for QMOI AI"\nexit 0',
-                    "smarttv": b'#!/bin/sh\necho "Smart TV app for QMOI AI"\nexit 0',
-                    "rpi": b'#!/bin/sh\necho "Raspberry Pi Debian package for QMOI AI"\nexit 0',
-                    "qcity": b'#!/bin/sh\necho "QCITY app package for QMOI AI"\nexit 0'
-                }
-                f.write(device_builds.get(device, b'#!/bin/sh\necho "Generic build for QMOI AI"\nexit 0').decode('utf-8'))
+        device_builds = {
+            "linux": '#!/bin/sh\necho "Linux AppImage release for QMOI AI"\nexit 0',
+            "mac": '#!/bin/sh\necho "macOS DMG release for QMOI AI"\nexit 0',
+            "ios": '#!/bin/sh\necho "iOS IPA release for QMOI AI"\nexit 0',
+            "chromebook": '#!/bin/sh\necho "ChromeOS package for QMOI AI"\nexit 0',
+            "smarttv": '#!/bin/sh\necho "Smart TV app for QMOI AI"\nexit 0',
+            "rpi": '#!/bin/sh\necho "Raspberry Pi Debian package for QMOI AI"\nexit 0',
+            "qcity": '#!/bin/sh\necho "QCITY app package for QMOI AI"\nexit 0',
+        }
+        content = device_builds.get(device, '#!/bin/sh\necho "Generic build for QMOI AI"\nexit 0')
+        # write placeholder script and make executable
+        try:
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            os.chmod(path, 0o755)
             print(f"📦 {device.capitalize()} placeholder build created. See build documentation for full implementation.")
+        except Exception as e:
+            print(f"❌ Failed to create placeholder for {device}: {e}")
 
 def update_readme():
     status = f"## QMOI AI Build Status ({datetime.now().strftime('%Y-%m-%d %H:%M')})\n"

@@ -48,3 +48,28 @@ A WhatsApp automation bot powered by Qmoi AI, using Baileys for WhatsApp Web int
 - WhatsApp Qmoi Bot now supports wallet automation, child-friendly features (music, stories, conversations), and robust, thorough, and fast AI task handling.
 
 ---
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/whatsapp-qmoi-bot/README.md",
+  "validated_at": "2025-10-26T20:51:24.874748Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "WhatsApp Qmoi Bot"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -49,4 +49,29 @@ QMOI features a self-evolving AI system that continuously adapts, optimizes, and
 
 ## Related
 - See `ENHANCED_AUTOMATION_SUMMARY.md` for a full overview.
-- See `README.md` for commands and usage. 
+- See `README.md` for commands and usage.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "SELF_EVOLUTION.md",
+  "validated_at": "2025-10-26T20:51:22.630214Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Self-Evolution System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -131,3 +131,34 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 [Qmoi_apps/linux/qmoi ai.AppImage] autotest status: FAIL
 
 [Qmoi_apps/ios/qmoi ai.ipa] autotest status: FAIL
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+  "validated_at": "2025-10-26T20:51:24.608349Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI AI App Downloads (All Devices)"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

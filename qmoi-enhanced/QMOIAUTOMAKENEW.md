@@ -44,4 +44,29 @@ QMOI can now automatically clone and create new phones, websites, devices, platf
 - All actions require authentication and are logged for audit.
 
 ---
-*This file is managed by QMOI and documents all autoclone/automake-new logic and enhancements.* 
+*This file is managed by QMOI and documents all autoclone/automake-new logic and enhancements.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOIAUTOMAKENEW.md",
+  "validated_at": "2025-10-26T20:51:24.739686Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOIAUTOMAKENEW.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

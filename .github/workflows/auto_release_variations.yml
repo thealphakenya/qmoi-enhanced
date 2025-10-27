@@ -1,0 +1,76 @@
+name: Auto Release LION Variations
+
+on:
+  push:
+    # Tag format: variation/<name>/v1.2.3
+    tags:
+      - 'variation/*/v*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install docker/buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Parse tag
+        id: tag
+        run: |
+          # TAG like variation/lion-core/v0.1.0
+          echo "GITHUB_REF=$GITHUB_REF"
+          tag=${GITHUB_REF#refs/tags/}
+          # split by '/'
+          IFS='/' read -r prefix variation version <<< "$tag"
+          echo "variation=$variation" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: Validate required secrets
+        run: |
+          python3 scripts/env_manager.py --check --manifest required_secrets.json
+
+      - name: Package variation
+        run: |
+          python3 scripts/release_helper.py --variation "$([[ -n "${{ steps.tag.outputs.variation }}" ]] && echo "${{ steps.tag.outputs.variation }}")" --version "${{ steps.tag.outputs.version }}" --no-dry-run --create-docker-context
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image to GHCR
+        if: ${{ secrets.GITHUB_TOKEN != '' }}
+        uses: docker/build-push-action@v4
+        with:
+          context: ./dist/${{ steps.tag.outputs.variation }}-${{ steps.tag.outputs.version }}/docker
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/${{ steps.tag.outputs.variation }}:${{ steps.tag.outputs.version }}
+          platforms: linux/amd64,linux/arm64
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Optionally publish to PyPI
+        if: ${{ secrets.PYPI_API_TOKEN != '' }}
+        run: |
+          echo "Publishing to PyPI is configured but not implemented by this workflow."

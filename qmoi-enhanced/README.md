@@ -127,3 +127,28 @@ Edit
 - ✅ Update-safe via comment markers
 - ✅ Markdown table for device status
 - ✅ Web-safe and version-controllable
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/README.md",
+  "validated_at": "2025-10-26T20:51:24.831015Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

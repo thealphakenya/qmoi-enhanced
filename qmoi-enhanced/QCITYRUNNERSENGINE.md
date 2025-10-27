@@ -149,3 +149,27 @@ Auto-Revenue Contribution	✅
 
 🧠 QCity Runners Engine is the AI backbone of QMOI’s automation. Self-hosted or cloud-offloaded, it guarantees uptime, correctness, and evolution—autonomously. See QMOINGROK.md and QMOIDNS.md for full link sync/fallback system.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QCITYRUNNERSENGINE.md",
+  "validated_at": "2025-10-26T20:51:24.659503Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

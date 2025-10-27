@@ -251,4 +251,29 @@ Would you like to begin by:
 - Notifications are sent for low balance, failed trades, and required approvals.
 - The system is designed for continuous, autonomous trading with master oversight.
 
-*The Alpha-Q AI Trading System is designed for continuous profit generation while maintaining security and compliance with financial regulations. All actions are logged, auditable, and require master approval for sensitive operations.* 
+*The Alpha-Q AI Trading System is designed for continuous profit generation while maintaining security and compliance with financial regulations. All actions are logged, auditable, and require master approval for sensitive operations.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "CASHONTRADINGREADME.md",
+  "validated_at": "2025-10-26T20:51:22.287752Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "CASHON TRADING - AI Autonomous Trading System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

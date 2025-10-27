@@ -35,4 +35,29 @@ All paid features from Vercel, GitLab, HuggingFace, and other platforms are avai
 - Not available in the original Vercel, GitLab, or HuggingFace
 
 ---
-*Quantum: All the power of paid features, unlocked for QMOI.* 
+*Quantum: All the power of paid features, unlocked for QMOI.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QUANTUMPAYED.md",
+  "validated_at": "2025-10-26T20:51:22.599191Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QUANTUMPAYED.md - Quantum Paid Features"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

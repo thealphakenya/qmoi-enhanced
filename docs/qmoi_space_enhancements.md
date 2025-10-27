@@ -120,3 +120,27 @@ Implementation notes
 - Implement workspace-level namespaces for vector DB and blob storage.
 - Ensure policies and auditability when adding monetization features.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/qmoi_space_enhancements.md",
+  "validated_at": "2025-10-26T20:51:24.583739Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -95,4 +95,29 @@ A cross-platform mobile app for QMOI monitoring, notifications, and control. Fea
 
 ---
 
-**QMOI Mobile: Always connected, always in control.** 
+**QMOI Mobile: Always connected, always in control.**
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "mobile/README.md",
+  "validated_at": "2025-10-26T20:51:24.585575Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Mobile App"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

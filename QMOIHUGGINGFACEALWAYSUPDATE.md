@@ -38,4 +38,29 @@ QMOI now features an always-on, always-updating integration with Hugging Face, e
 - QMOIHUGGINGFACESPACESSETUPINST.md
 - QMOICLONE.md
 - QMOICLONEGITPOD.md
-- QMOIAICORE.md 
+- QMOIAICORE.md
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIHUGGINGFACEALWAYSUPDATE.md",
+  "validated_at": "2025-10-26T20:51:22.530602Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Hugging Face Always-Update System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

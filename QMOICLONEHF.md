@@ -10,3 +10,28 @@
 # QMOI Clone (Hugging Face)
 
 Stub for deploying QMOI to Hugging Face Spaces or similar. Include build and runtime notes.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOICLONEHF.md",
+  "validated_at": "2025-10-26T20:51:22.480290Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Clone (Hugging Face)"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

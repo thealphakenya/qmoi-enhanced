@@ -1133,3 +1133,28 @@ For help, contact the Q-team at rovicviccy@gmail.com.
 - See `RSAAPIREADME.md` for setup and usage instructions.
 - The AI automatically manages environment variables, including Vercel tokens, and securely loads them in all environments (including Vercel deployments).
 - To use your Bitget API, generate keys as described and update `keys/bitget.env`.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "TRADINGREADME.md",
+  "validated_at": "2025-10-26T20:51:22.652217Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Q-city Trading System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

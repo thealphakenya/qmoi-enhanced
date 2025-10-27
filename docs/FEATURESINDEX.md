@@ -34,4 +34,85 @@
 - [QMOINETWORK.md](../QMOINETWORK.md)
 - [ALPHAQMOIENGINE.md](../ALPHAQMOIENGINE.md)
 - [QMOIACCOUNTSPLATFORMS.md](../QMOIACCOUNTSPLATFORMS.md)
-- [QCITYREADME.md](../QCITYREADME.md) 
+- [QCITYREADME.md](../QCITYREADME.md)
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/FEATURESINDEX.md",
+  "validated_at": "2025-10-26T20:51:22.685964Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Features Master Index"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "README.md",
+          "target": "../README.md",
+          "ok": true
+        },
+        {
+          "label": "QMOI-ENHANCED-README.md",
+          "target": "../QMOI-ENHANCED-README.md",
+          "ok": true
+        },
+        {
+          "label": "QMOI-FEATURE-INDEX.md",
+          "target": "../QMOI-FEATURE-INDEX.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIALLDEVICESHANDSFREE.md",
+          "target": "../QMOIALLDEVICESHANDSFREE.md",
+          "ok": true
+        },
+        {
+          "label": "ENHANCEDQVS.md",
+          "target": "../ENHANCEDQVS.md",
+          "ok": true
+        },
+        {
+          "label": "QVPNREADME.md",
+          "target": "../QVPNREADME.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIMASKS.md",
+          "target": "../QMOIMASKS.md",
+          "ok": true
+        },
+        {
+          "label": "QMOINETWORK.md",
+          "target": "../QMOINETWORK.md",
+          "ok": true
+        },
+        {
+          "label": "ALPHAQMOIENGINE.md",
+          "target": "../ALPHAQMOIENGINE.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIACCOUNTSPLATFORMS.md",
+          "target": "../QMOIACCOUNTSPLATFORMS.md",
+          "ok": true
+        },
+        {
+          "label": "QCITYREADME.md",
+          "target": "../QCITYREADME.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

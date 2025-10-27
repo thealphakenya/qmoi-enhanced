@@ -1,5 +1,40 @@
 name: CI
 
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: python3 -m pip install --upgrade pip
+      - name: Validate required secrets
+        run: python3 scripts/env_manager.py --check
+        shell: bash
+      - name: Byte-compile checks
+        run: python3 -m py_compile scripts/*.py tests/*.py
+      - name: Run tests
+        run: python3 scripts/run_tests.py
+
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python3 -m pip install --upgrade pip pytest
+      - name: Run targeted pytest
+        run: pytest -q tests/test_task_queue.py tests/test_queue_worker.py tests/test_merge_queue_metrics.py
+name: CI
+
 on:
   push:
     branches: [ main, master, '**' ]
@@ -18,6 +53,9 @@ jobs:
       - name: Install dependencies (lion helper)
         run: |
           node tools/lion_install.js || true
+      - name: Validate required secrets
+        run: python3 scripts/env_manager.py --check
+        shell: bash
       - name: TypeScript compile
         run: |
           npx -y typescript --noEmit

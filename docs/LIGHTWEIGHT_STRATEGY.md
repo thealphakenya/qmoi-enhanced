@@ -47,3 +47,28 @@ Security & Privacy
 Notes
 - The lightweight strategy emphasizes safe defaults: the system works (in simulated mode) even when external cloud models or APIs are unavailable.
 - LION orchestrator should manage fallbacks, automatic offloading, and resource-aware scheduling when heavy operations are requested.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/LIGHTWEIGHT_STRATEGY.md",
+  "validated_at": "2025-10-26T20:51:22.689199Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Lightweight Application Strategy"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

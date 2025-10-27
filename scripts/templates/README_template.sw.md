@@ -36,3 +36,28 @@ Toleo jipya linapatikana hapa:
 ---
 
 ✅ Imeundwa na `qmoi-app-builder.py`, `update_readme.py`, na QCity automation.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "scripts/templates/README_template.sw.md",
+  "validated_at": "2025-10-26T20:51:24.877699Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Mfumo wa QMOI"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -75,3 +75,28 @@ Example: When a build job runs, the orchestrator will:
 4. If push fails, the orchestrator will retry with exponential backoff and escalate if it exhausts retries.
 
 See `deploy/qcity/qcity_runners.md` for detailed runner bootstrap steps and `deploy/qcity/deploy_orchestrator_qcity.sh` for a bootstrap script.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOI_ORCHESTRATOR.md",
+  "validated_at": "2025-10-26T20:51:24.815314Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Orchestrator"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

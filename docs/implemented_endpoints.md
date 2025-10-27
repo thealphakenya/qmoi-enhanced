@@ -75,3 +75,27 @@ Next steps:
 3. Add a supervisor script to start and health-check core servers locally.
 4. Run integration tests for `qmoi_control_server.py` and other server test suites.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/implemented_endpoints.md",
+  "validated_at": "2025-10-26T20:51:24.582040Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

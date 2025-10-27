@@ -1530,26 +1530,27 @@ def payments_webhook():
     if not conn:
         app.logger.error("Failed to connect to database")
         return jsonify({'status': 'error', 'reason': 'database_error'}), 500
-        
+
+    handled = False
     try:
         cur = conn.cursor()
-        
+
         # Store webhook event for idempotency
         cur.execute('''CREATE TABLE IF NOT EXISTS webhook_events 
             (id TEXT PRIMARY KEY, type TEXT, processed_at TEXT)''')
-            
+
         # Check if we've seen this event before
         cur.execute('SELECT id FROM webhook_events WHERE id = ?', (event_id,))
         if cur.fetchone():
             app.logger.info(f"Skipping duplicate event: {event_id}")
             return jsonify({'status': 'ok', 'reason': 'event_already_processed'}), 200
-            
+
         # Ensure transactions table exists
         cur.execute('''CREATE TABLE IF NOT EXISTS transactions 
             (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER, 
              status TEXT, provider TEXT, provider_ref TEXT, created TEXT, settled_at TEXT,
              error TEXT)''')
-             
+
         # Process event based on type
         if etype in ('payment_intent.succeeded', 'charge.succeeded'):
             # Payment successful
@@ -1558,26 +1559,47 @@ def payments_webhook():
             metadata = data.get('metadata', {})
             username = metadata.get('username')
             deal_id = metadata.get('deal_id')
-                # idempotent update: find a transaction by provider_ref and mark settled
-                if provider_ref:
-                    cur.execute('SELECT id, status FROM transactions WHERE provider_ref=?', (provider_ref,))
-                    row = cur.fetchone()
-                    if row:
-                        if row[1] != 'settled' and etype in ('payment_intent.succeeded', 'charge.succeeded', 'charge.settled'):
-                            cur.execute('UPDATE transactions SET status=?, settled_at=? WHERE id=?', ('settled', datetime.datetime.utcnow().isoformat(), row[0]))
-                            conn.commit()
-                            handled = True
-                    else:
-                        # create transaction if not exists
-                        txid = f"tx-{int(datetime.datetime.utcnow().timestamp()*1000)}"
-                        cur.execute('INSERT OR REPLACE INTO transactions (id,username,deal_id,amount_cents,status,provider,provider_ref,created,settled_at) VALUES (?,?,?,?,?,?,?,?,?)', (txid, username or '', None, amount or 0, 'settled' if etype!='payment_intent.payment_failed' else 'failed', 'stripe', provider_ref, datetime.datetime.utcnow().isoformat(), datetime.datetime.utcnow().isoformat() if etype!='payment_intent.payment_failed' else None))
+
+            # idempotent update: find a transaction by provider_ref and mark settled
+            if provider_ref:
+                cur.execute('SELECT id, status FROM transactions WHERE provider_ref=?', (provider_ref,))
+                row = cur.fetchone()
+                if row:
+                    if row[1] != 'settled' and etype in ('payment_intent.succeeded', 'charge.succeeded', 'charge.settled'):
+                        cur.execute('UPDATE transactions SET status=?, settled_at=? WHERE id=?', ('settled', datetime.datetime.utcnow().isoformat(), row[0]))
                         conn.commit()
                         handled = True
-        finally:
-            try:
-                conn.close()
-            except Exception:
-                pass
+                else:
+                    # create transaction if not exists
+                    txid = f"tx-{int(datetime.datetime.utcnow().timestamp()*1000)}"
+                    cur.execute('INSERT OR REPLACE INTO transactions (id,username,deal_id,amount_cents,status,provider,provider_ref,created,settled_at) VALUES (?,?,?,?,?,?,?,?,?)', (txid, username or '', None, amount or 0, 'settled' if etype!='payment_intent.payment_failed' else 'failed', 'stripe', provider_ref, datetime.datetime.utcnow().isoformat(), datetime.datetime.utcnow().isoformat() if etype!='payment_intent.payment_failed' else None))
+                    conn.commit()
+                    handled = True
+
+        # Record webhook as processed (best-effort)
+        try:
+            processor.record_event(event_id, etype)
+        except Exception:
+            pass
+
+        conn.commit()
+
+    except Exception as e:
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+        app.logger.error(f"Error processing webhook: {e}")
+        return jsonify({
+            'status': 'error',
+            'reason': 'processing_error',
+            'detail': str(e)
+        }), 500
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
 
     return jsonify({'status': 'ok' if handled else 'ignored'})
 

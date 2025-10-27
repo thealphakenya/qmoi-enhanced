@@ -68,3 +68,28 @@ public/
 - All documentation files for apps, downloads, builds, tests, health, and runners are referenced and auto-updated after every change.
 
 **Status:** All public assets, features, and automation flows are now checked for usage, integration, and zero-rated operation. No unused/duplicate assets will remain after next cleanup. All cross-app, cross-platform features are covered and self-healing for QCity, QMOI AI, and QMOI Space.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "PUBLIC.md",
+  "validated_at": "2025-10-26T20:51:22.336538Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "PUBLIC.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

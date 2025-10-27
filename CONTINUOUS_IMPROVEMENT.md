@@ -36,4 +36,29 @@ This document describes the continuous improvement and self-evolution features o
 ## Related
 - See `QCITY_DEVICE_MANAGEMENT.md` for device and install automation.
 - See `GITHUB_ACTIONS_AUTOFIX.md` for CI/CD automation.
-- See `SELF_EVOLUTION.md` for self-evolving AI details. 
+- See `SELF_EVOLUTION.md` for self-evolving AI details.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "CONTINUOUS_IMPROVEMENT.md",
+  "validated_at": "2025-10-26T20:51:22.290453Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Continuous Improvement & Self-Evolution"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

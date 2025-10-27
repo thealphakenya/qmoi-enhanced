@@ -215,3 +215,28 @@ Your templates are now:
   TEMPLATE_PATH = f"scripts/templates/README_template.{lang}.md"
 
 Dynamically injected and committed on every build.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "scripts/templates/README_template.en.md",
+  "validated_at": "2025-10-26T20:51:24.875565Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

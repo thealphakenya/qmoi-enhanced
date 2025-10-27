@@ -88,4 +88,40 @@ WATCHDEBUG.md provides a comprehensive monitoring and debugging system that watc
 - **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
 
 ---
-*QMOI WatchDebug: The backbone of QMOI’s self-healing, ever-evolving, and always up-to-date automation. All automation, monitoring, and error fixing are always up to date and visible in the dashboard.* 
+*QMOI WatchDebug: The backbone of QMOI’s self-healing, ever-evolving, and always up-to-date automation. All automation, monitoring, and error fixing are always up to date and visible in the dashboard.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "WATCHDEBUG.md",
+  "validated_at": "2025-10-26T20:51:22.660176Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": [
+        {
+          "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "ok": true
+        },
+        {
+          "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "target": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

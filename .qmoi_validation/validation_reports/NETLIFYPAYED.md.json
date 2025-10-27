@@ -1,0 +1,11 @@
+{
+  "file": "NETLIFYPAYED.md",
+  "checked_at": "2025-10-26T20:51:21.111897+00:00",
+  "validator": "qmoi-validator-v1",
+  "checks": {
+    "has_h1": true,
+    "has_frontmatter": false,
+    "has_links": false
+  },
+  "ok": false
+}

@@ -36,3 +36,28 @@ Security Checklist (minimum)
 Notes
 - The included `services/platformManager.ts` is a safe scaffolding and DOES NOT contact external APIs.
 - For production, implement PlatformAdapters in `services/adapters/<platform>.ts` with rate-limiting, retries, error handling and master approval flows.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/PLATFORM_AUTOMATION.md",
+  "validated_at": "2025-10-26T20:51:22.705060Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

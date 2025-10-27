@@ -118,3 +118,27 @@ Feature	Description
 
 📄 This file is maintained by QMOI Orchestrator Engine and reflects the current DNS and tunnel management state of all QMOI services. For more info, see QMOIDOMAINS.md and QMOINGROK.md.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIDNS.md",
+  "validated_at": "2025-10-26T20:51:22.495213Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -89,3 +89,28 @@ Key metrics to track:
 - Error rates
 - Client satisfaction scores
 - System resource utilization
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "docs/CLAUDE_SONNET_CONFIG.md",
+  "validated_at": "2025-10-26T20:51:22.679686Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "Claude Sonnet 3.5 Configuration"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

@@ -53,3 +53,28 @@ templates/
 - All documentation files for apps, downloads, builds, tests, health, and runners are referenced and auto-updated after every change.
 
 **Status:** All templates, features, and automation flows are now checked for usage, integration, and zero-rated operation. No unused/duplicate templates will remain after next cleanup. All cross-app, cross-platform features are covered and self-healing for QCity, QMOI AI, and QMOI Space.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "TEMPLATES.md",
+  "validated_at": "2025-10-26T20:51:22.643723Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "TEMPLATES.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

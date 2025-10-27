@@ -1,0 +1,11 @@
+{
+  "file": "MASTERGUIDE.md",
+  "checked_at": "2025-10-26T20:51:21.106823+00:00",
+  "validator": "qmoi-validator-v1",
+  "checks": {
+    "has_h1": true,
+    "has_frontmatter": false,
+    "has_links": true
+  },
+  "ok": false
+}

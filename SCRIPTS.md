@@ -44,3 +44,28 @@ scripts/
 - Automation ensures every script is used, and unused ones are logged for removal.
 
 **Status:** All scripts are now checked for usage and integration. No unused/duplicate scripts will remain after next cleanup. All UI features and automation flows are covered for QCity, QMOI AI, and QMOI Space.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "SCRIPTS.md",
+  "validated_at": "2025-10-26T20:51:22.623340Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "SCRIPTS.md"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

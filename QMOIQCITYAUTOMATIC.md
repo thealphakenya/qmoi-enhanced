@@ -205,3 +205,27 @@ Master-Only Execution	✅
 
 🧠 QCity Automatic: Always-on, cloud-offloaded, and ready for full orchestration of your future-ready, multi-platform AI automation system.
 
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIQCITYAUTOMATIC.md",
+  "validated_at": "2025-10-26T20:51:22.548472Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

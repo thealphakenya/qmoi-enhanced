@@ -43,4 +43,29 @@ This document lists all accounts QMOI manages, creates, and integrates with, inc
 
 ---
 
-*For integration details, see ALPHAQMOIENGINE.md. For registry and audit, see scripts/qmoi-registry-manager.js.* 
+*For integration details, see ALPHAQMOIENGINE.md. For registry and audit, see scripts/qmoi-registry-manager.js.*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QMOIACCOUNTSPLATFORMS.md",
+  "validated_at": "2025-10-26T20:51:24.706328Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QMOI Accounts & Platforms"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

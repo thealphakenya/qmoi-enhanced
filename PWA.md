@@ -43,3 +43,44 @@ This file documents all PWAs available for each platform and app type. Each PWA 
 - [pwa_apps/README.md](./pwa_apps/README.md)
 - [WORKFLOWSTRACKS.md](./WORKFLOWSTRACKS.md)
 - [RELEASETRACKS.md](./RELEASETRACKS.md)
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "PWA.md",
+  "validated_at": "2025-10-26T20:51:22.337895Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "PWA.md"
+    },
+    {
+      "name": "links",
+      "ok": false,
+      "detail": [
+        {
+          "label": "pwa_apps/README.md",
+          "target": "./pwa_apps/README.md",
+          "ok": true
+        },
+        {
+          "label": "WORKFLOWSTRACKS.md",
+          "target": "./WORKFLOWSTRACKS.md",
+          "ok": false
+        },
+        {
+          "label": "RELEASETRACKS.md",
+          "target": "./RELEASETRACKS.md",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

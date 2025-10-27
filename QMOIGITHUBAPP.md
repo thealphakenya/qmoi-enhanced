@@ -143,3 +143,28 @@ QMOI needs to safely manage several secrets (App private key, webhook secret, in
 ---
 
 If you want, I can also add example scripts to generate JWTs and exchange them for installation tokens and wire those into CI. Let me know and I will add `scripts/github_app_auth.py` and a CI step to refresh tokens automatically.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "QMOIGITHUBAPP.md",
+  "validated_at": "2025-10-26T20:51:22.523733Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": false,
+      "detail": "No H1 title found"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": false,
+  "summary": {
+    "total_checks": 2,
+    "passed": false
+  }
+}
+<!-- QMOI_VALIDATION_END -->

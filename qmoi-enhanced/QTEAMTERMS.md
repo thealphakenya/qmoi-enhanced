@@ -40,4 +40,29 @@ Welcome to Qcity and the QMOI Application Suite ("the Application"). Please read
 
 ---
 
-For questions or support, contact the Q-team at rovicviccy@gmail.com. 
+For questions or support, contact the Q-team at rovicviccy@gmail.com.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/QTEAMTERMS.md",
+  "validated_at": "2025-10-26T20:51:24.819227Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "QTEAM TERMS AND REGULATIONS"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

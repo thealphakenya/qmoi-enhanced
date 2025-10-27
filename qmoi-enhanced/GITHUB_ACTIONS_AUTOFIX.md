@@ -51,4 +51,29 @@ python scripts/github_actions_autofix.py
 
 ## Integration with Self-Healing
 - The self-healing script will attempt to auto-fix detected issues and log/report the results.
-- If an error cannot be auto-fixed, a GitHub issue may be created for manual intervention. 
+- If an error cannot be auto-fixed, a GitHub issue may be created for manual intervention.
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "qmoi-enhanced/GITHUB_ACTIONS_AUTOFIX.md",
+  "validated_at": "2025-10-26T20:51:24.631274Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "GitHub Actions AutoFix System"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_VALIDATION_END -->

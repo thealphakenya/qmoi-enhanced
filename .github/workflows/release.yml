@@ -1,3 +1,45 @@
+name: LION Variations Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      variation:
+        description: 'Variation to build (e.g. lion-os, lion-cloud)'
+        required: false
+      tag:
+        description: 'Release tag (vX.Y.Z)'
+        required: true
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Cache Python packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Install deps
+        run: pip install -r requirements.txt || true
+      - name: Validate required secrets
+        run: |
+          python scripts/env_manager.py --check
+        shell: bash
+      - name: Run release helper
+        run: |
+          python scripts/release_helper.py ${{ github.event.inputs.variation || '' }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: lion-release-artifacts
+          path: dist/**
 name: QMOI Auto Build & Release
 'on':
   push:
