@@ -21,6 +21,7 @@ import sqlite3
 from typing import Optional
 import uuid
 import subprocess
+from qmoi.memory import set_item
 
 app = Flask(__name__)
 CORS(app)
@@ -49,8 +50,30 @@ def rate_limit(key_func, limit=10, per_seconds=60):
     return deco
 
 # Config / secrets: set these in env for production
-CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'dev-token')
-JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'dev-jwt-secret')
+# QMOI_ENV controls strictness. Defaults to 'development' for local convenience.
+QMOI_ENV = os.environ.get('QMOI_ENV', 'development')
+
+# In production (any non-development env), require explicit env vars and fail-fast.
+CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN')
+JWT_SECRET = os.environ.get('QMOI_JWT_SECRET')
+
+if QMOI_ENV == 'development':
+    # Local dev conveniences (warn loudly but allow running tests/dev server)
+    if not CONTROL_TOKEN:
+        CONTROL_TOKEN = 'dev-token'
+    if not JWT_SECRET:
+        JWT_SECRET = 'dev-jwt-secret'
+    app.logger.warning('Running in development mode (QMOI_ENV=development). Using development defaults for CONTROL_TOKEN/JWT_SECRET if not set.')
+else:
+    missing = []
+    if not JWT_SECRET:
+        missing.append('QMOI_JWT_SECRET')
+    if not CONTROL_TOKEN:
+        missing.append('QMOI_CONTROL_TOKEN')
+    if missing:
+        # Fail fast in non-development environments to avoid running with insecure defaults
+        app.logger.critical('Missing required production environment variables: %s', ','.join(missing))
+        raise SystemExit(f"Missing required production environment variables: {', '.join(missing)}")
 # Base raw GitHub URL to serve downloads as fallback; update if repo/branch differ
 GITHUB_RAW_BASE = os.environ.get('QMOI_GITHUB_RAW_BASE',
     'https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440')
@@ -976,6 +999,11 @@ def login():
     now = datetime.datetime.utcnow()
     jti = str(uuid.uuid4())
     token = jwt.encode({'sub': username, 'iat': now.timestamp(), 'exp': (now + datetime.timedelta(days=7)).timestamp(), 'jti': jti}, JWT_SECRET, algorithm='HS256')
+    # Persist a lightweight last-login memory entry (Phase-1 memory integration)
+    try:
+        set_item(username, 'last_login', now.isoformat())
+    except Exception:
+        app.logger.exception('Failed to set last_login memory for user %s', username)
     return jsonify({'status': 'ok', 'token': token})
 
 

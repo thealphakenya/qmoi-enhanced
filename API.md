@@ -17,45 +17,635 @@ The Q-city API provides a comprehensive interface for managing and interacting w
 
 ## Discovered API Endpoints (Auto-Extracted)
 
-The following endpoints were found in the codebase by automated search. Ensure all are documented above and kept in sync with implementation:
+```
+Discovered endpoints (auto-generated):
 
+GET    /    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+POST   /admin/backup-db    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /admin/check-access/<username>/<feature>    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /admin/set-pricing    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /admin/update-ngrok    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /admin/users    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /ai    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /ai/tts    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /alert    — /workspaces/qmoi-enhanced/ai-anomaly-service.py
+POST   /alert    — /workspaces/qmoi-enhanced/qmoi-enhanced/ai-anomaly-service.py
+GET    /analytics    — /workspaces/qmoi-enhanced/ai-anomaly-service.py
+GET    /analytics    — /workspaces/qmoi-enhanced/qmoi-enhanced/ai-anomaly-service.py
+GET    /analytics/hourly    — /workspaces/qmoi-enhanced/ai-anomaly-service.py
+GET    /analytics/hourly    — /workspaces/qmoi-enhanced/qmoi-enhanced/ai-anomaly-service.py
+       /api/account-automation/create    — /workspaces/qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx
+       /api/account-automation/create    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx
+       /api/account-automation/login    — /workspaces/qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx
+       /api/account-automation/login    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx
+       /api/account-automation/verify    — /workspaces/qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx
+       /api/account-automation/verify    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx
+       /api/ai-health    — /workspaces/qmoi-enhanced/components/NotificationPanel.tsx
+       /api/ai-health    — /workspaces/qmoi-enhanced/hooks/useAIHealthCheck.ts
+       /api/ai-health    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/NotificationPanel.tsx
+       /api/ai-health    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAIHealthCheck.ts
+       /api/auth/session    — /workspaces/qmoi-enhanced/src/components/q-city/SessionPanel.tsx
+       /api/auth/session    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SessionPanel.tsx
+POST   /api/auto-fix    — /workspaces/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+POST   /api/auto-fix    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+       /api/automation/settings    — /workspaces/qmoi-enhanced/hooks/useGlobalAutomation.ts
+       /api/automation/settings    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useGlobalAutomation.ts
+       /api/automation/status    — /workspaces/qmoi-enhanced/hooks/useGlobalAutomation.ts
+       /api/automation/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useGlobalAutomation.ts
+       /api/automation/tasks    — /workspaces/qmoi-enhanced/hooks/useGlobalAutomation.ts
+       /api/automation/tasks    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useGlobalAutomation.ts
+       /api/bitget-trade    — /workspaces/qmoi-enhanced/hooks/useBitgetTrader.ts
+       /api/bitget-trade    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useBitgetTrader.ts
+POST   /api/build-apps    — /workspaces/qmoi-enhanced/scripts/qmoi_build_api.py
+POST   /api/build-apps    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_build_api.py
+       /api/cashon/balance    — /workspaces/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/balance    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/balance?logs=true    — /workspaces/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/balance?logs=true    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/balance?mpesaInfo=true    — /workspaces/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/balance?mpesaInfo=true    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/deposit    — /workspaces/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/deposit    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/signals    — /workspaces/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/signals    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/start-trading    — /workspaces/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/start-trading    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/stop-trading    — /workspaces/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/stop-trading    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/trading-status    — /workspaces/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/cashon/trading-status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/CashonTradingPanel.tsx
+       /api/colab-job    — /workspaces/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+       /api/colab-job    — /workspaces/qmoi-enhanced/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+POST   /api/colab-job?executeJob=true    — /workspaces/qmoi-enhanced/hooks/useProjects.ts
+POST   /api/colab-job?executeJob=true    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useProjects.ts
+       /api/datasets    — /workspaces/qmoi-enhanced/hooks/useDatasetManager.ts
+       /api/datasets    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useDatasetManager.ts
+       /api/datasets/settings    — /workspaces/qmoi-enhanced/hooks/useDatasetManager.ts
+       /api/datasets/settings    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useDatasetManager.ts
+POST   /api/deploy    — /workspaces/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+POST   /api/deploy    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+POST   /api/deploy/auto-redeploy    — /workspaces/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+POST   /api/deploy/auto-redeploy    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+GET    /api/deployment-status    — /workspaces/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+GET    /api/deployment-status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+       /api/deployment-status    — /workspaces/qmoi-enhanced/components/DeploymentStatusDashboard.tsx
+       /api/deployment-status    — /workspaces/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/deployment-status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/DeploymentStatusDashboard.tsx
+       /api/deployment-status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+POST   /api/device/detect    — /workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py
+POST   /api/device/detect    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_device_integration.py
+POST   /api/device/master-mode    — /workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py
+POST   /api/device/master-mode    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_device_integration.py
+GET    /api/device/reports/detection    — /workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py
+GET    /api/device/reports/detection    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_device_integration.py
+GET    /api/device/reports/unlock    — /workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py
+GET    /api/device/reports/unlock    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_device_integration.py
+GET    /api/device/status    — /workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py
+GET    /api/device/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_device_integration.py
+GET    /api/device/status/integration    — /workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py
+GET    /api/device/status/integration    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_device_integration.py
+POST   /api/device/unlock    — /workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py
+POST   /api/device/unlock    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_device_integration.py
+       /api/doc-history    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/doc-history    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/doc-history    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/doc-history    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/document-backup/list    — /workspaces/qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx
+       /api/document-backup/list    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx
+       /api/document-backup/restore    — /workspaces/qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx
+       /api/document-backup/restore    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx
+       /api/document-backup/upload    — /workspaces/qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx
+       /api/document-backup/upload    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx
+       /api/earning/analytics    — /workspaces/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+       /api/earning/analytics    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+       /api/earning/monitor    — /workspaces/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+       /api/earning/monitor    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+       /api/earning/self-heal    — /workspaces/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+       /api/earning/self-heal    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+       /api/earning/strategies    — /workspaces/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+       /api/earning/strategies    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+POST   /api/edit-file    — /workspaces/qmoi-enhanced/src/services/ErrorFixingService.ts
+POST   /api/edit-file    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/services/ErrorFixingService.ts
+       /api/employment    — /workspaces/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment/megavault?type=balance    — /workspaces/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment/megavault?type=balance    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment/payment    — /workspaces/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment/payment    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment/payment?type=payments    — /workspaces/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment/payment?type=payments    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment/revenue    — /workspaces/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment/revenue    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment?type=employees    — /workspaces/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment?type=employees    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment?type=users    — /workspaces/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/employment?type=users    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+       /api/event-stats    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/event-stats    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/event-stats    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/event-stats    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/financial/audit    — /workspaces/qmoi-enhanced/components/FinancialManager.tsx
+       /api/financial/audit    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/FinancialManager.tsx
+       /api/financial/transactions    — /workspaces/qmoi-enhanced/components/FinancialManager.tsx
+       /api/financial/transactions    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/FinancialManager.tsx
+       /api/financial/verify    — /workspaces/qmoi-enhanced/components/FinancialManager.tsx
+       /api/financial/verify    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/FinancialManager.tsx
+       /api/git/branch    — /workspaces/qmoi-enhanced/components/GitStatus.tsx
+       /api/git/branch    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/GitStatus.tsx
+POST   /api/git/commit    — /workspaces/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+POST   /api/git/commit    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+POST   /api/git/pr    — /workspaces/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+POST   /api/git/pr    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+POST   /api/git/push    — /workspaces/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+POST   /api/git/push    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+       /api/git/remote    — /workspaces/qmoi-enhanced/components/GitStatus.tsx
+       /api/git/remote    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/GitStatus.tsx
+GET    /api/git/status    — /workspaces/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+GET    /api/git/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+       /api/git/status    — /workspaces/qmoi-enhanced/components/GitStatus.tsx
+       /api/git/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/GitStatus.tsx
+       /api/health    — /workspaces/qmoi-enhanced/components/QmoiMediaManager.tsx
+       /api/health    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiMediaManager.tsx
+       /api/log    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/log    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/log    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/log    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/log?search=    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/log?search=    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/md-update    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/services/QmoiMemory.ts
+       /api/media    — /workspaces/qmoi-enhanced/components/QmoiMediaManager.tsx
+       /api/media    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiMediaManager.tsx
+       /api/media/generate    — /workspaces/qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+       /api/media/generate    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+       /api/media/settings    — /workspaces/qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+       /api/media/settings    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+       /api/media/status    — /workspaces/qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+       /api/media/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+       /api/memory    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/services/QmoiMemory.ts
+       /api/notifications    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/notifications    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/notifications    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/notifications    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/notifications/test    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/notifications/test    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+POST   /api/notifications/test    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+POST   /api/notifications/test    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/preautotest    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/preautotest    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/preautotest    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/preautotest    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/provider    — /workspaces/qmoi-enhanced/qmoi-enhanced/huggingface_space/dashboard.js
+       /api/provider    — /workspaces/qmoi-enhanced/huggingface_space/dashboard.js
+       /api/qapikey    — /workspaces/qmoi-enhanced/src/components/q-city/QApiKeyManager.tsx
+       /api/qapikey    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QApiKeyManager.tsx
+       /api/qapikey/usage    — /workspaces/qmoi-enhanced/src/components/q-city/QApiKeyManager.tsx
+       /api/qapikey/usage    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QApiKeyManager.tsx
+       /api/qcity/ai-chat    — /workspaces/qmoi-enhanced/qmoi-space/public/js/chat.js
+POST   /api/qcity/ai/fix    — /workspaces/qmoi-enhanced/scripts/services/auto_fix_service.ts
+POST   /api/qcity/ai/fix    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/services/auto_fix_service.ts
+       /api/qcity/backup    — /workspaces/qmoi-enhanced/qmoi-space/public/js/qmoi-core.js
+GET    /api/qcity/config    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+GET    /api/qcity/config    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/config    — /workspaces/qmoi-enhanced/app/qcity/page.js
+       /api/qcity/config    — /workspaces/qmoi-enhanced/public/qcity/dashboard.js
+POST   /api/qcity/configure-platforms    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+POST   /api/qcity/configure-platforms    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/devices    — /workspaces/qmoi-enhanced/src/components/q-city/DevicePanel.tsx
+       /api/qcity/devices    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/DevicePanel.tsx
+       /api/qcity/devices?action=test    — /workspaces/qmoi-enhanced/src/components/q-city/DevicePanel.tsx
+       /api/qcity/devices?action=test    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/DevicePanel.tsx
+       /api/qcity/download-url    — /workspaces/qmoi-enhanced/src/components/DownloadQCity.tsx
+       /api/qcity/download-url    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/DownloadQCity.tsx
+POST   /api/qcity/enable-features    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+POST   /api/qcity/enable-features    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+GET    /api/qcity/listLocalWorkspaces    — /workspaces/qmoi-enhanced/components/q-city/QCityDevicePanel.tsx
+GET    /api/qcity/listLocalWorkspaces    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QCityDevicePanel.tsx
+GET    /api/qcity/listWorkspaces    — /workspaces/qmoi-enhanced/components/q-city/QCityDevicePanel.tsx
+GET    /api/qcity/listWorkspaces    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QCityDevicePanel.tsx
+GET    /api/qcity/logs    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+GET    /api/qcity/logs    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/logs    — /workspaces/qmoi-enhanced/app/qcity/page.js
+       /api/qcity/logs    — /workspaces/qmoi-enhanced/public/qcity/dashboard.js
+POST   /api/qcity/manage-backup    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+POST   /api/qcity/manage-backup    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/metrics    — /workspaces/qmoi-enhanced/src/components/q-city/MetricsPanel.tsx
+       /api/qcity/metrics    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/MetricsPanel.tsx
+POST   /api/qcity/monitor-resources    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+POST   /api/qcity/monitor-resources    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+GET    /api/qcity/notifications    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+GET    /api/qcity/notifications    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/notifications    — /workspaces/qmoi-enhanced/app/qcity/page.js
+       /api/qcity/notifications    — /workspaces/qmoi-enhanced/public/qcity/dashboard.js
+POST   /api/qcity/optimize-resources    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+POST   /api/qcity/optimize-resources    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/plugins    — /workspaces/qmoi-enhanced/src/components/q-city/PluginPanel.tsx
+       /api/qcity/plugins    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/PluginPanel.tsx
+GET    /api/qcity/projects    — /workspaces/qmoi-enhanced/hooks/useProjects.ts
+GET    /api/qcity/projects    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useProjects.ts
+GET    /api/qcity/projects/config    — /workspaces/qmoi-enhanced/hooks/useProjects.ts
+GET    /api/qcity/projects/config    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useProjects.ts
+       /api/qcity/remote-command    — /workspaces/qmoi-enhanced/components/QAvatar.tsx
+       /api/qcity/remote-command    — /workspaces/qmoi-enhanced/src/components/q-city/CommandPanel.tsx
+       /api/qcity/remote-command    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QAvatar.tsx
+       /api/qcity/remote-command    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/CommandPanel.tsx
+GET    /api/qcity/resources    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+GET    /api/qcity/resources    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/resources    — /workspaces/qmoi-enhanced/app/qcity/page.js
+       /api/qcity/resources    — /workspaces/qmoi-enhanced/public/qcity/dashboard.js
+       /api/qcity/schedule    — /workspaces/qmoi-enhanced/src/components/q-city/SchedulePanel.tsx
+       /api/qcity/schedule    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SchedulePanel.tsx
+POST   /api/qcity/start    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+POST   /api/qcity/start    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/start    — /workspaces/qmoi-enhanced/public/qcity/dashboard.js
+GET    /api/qcity/status    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+GET    /api/qcity/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/status    — /workspaces/qmoi-enhanced/components/QAvatar.tsx
+       /api/qcity/status    — /workspaces/qmoi-enhanced/app/qcity/page.js
+       /api/qcity/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QAvatar.tsx
+       /api/qcity/status    — /workspaces/qmoi-enhanced/public/qcity/dashboard.js
+       /api/qcity/status    — /workspaces/qmoi-enhanced/qmoi-space/public/js/qmoi-core.js
+POST   /api/qcity/stop    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+POST   /api/qcity/stop    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/stop    — /workspaces/qmoi-enhanced/public/qcity/dashboard.js
+GET    /api/qcity/tasks    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+GET    /api/qcity/tasks    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+       /api/qcity/tasks    — /workspaces/qmoi-enhanced/app/qcity/page.js
+       /api/qcity/tasks    — /workspaces/qmoi-enhanced/public/qcity/dashboard.js
+POST   /api/qcity/track-error    — /workspaces/qmoi-enhanced/hooks/useQCity.ts
+POST   /api/qcity/track-error    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+GET    /api/qcity/trading/config    — /workspaces/qmoi-enhanced/hooks/useTrading.ts
+GET    /api/qcity/trading/config    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTrading.ts
+GET    /api/qcity/trading/positions    — /workspaces/qmoi-enhanced/hooks/useTrading.ts
+GET    /api/qcity/trading/positions    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTrading.ts
+GET    /api/qcity/whatsapp/config    — /workspaces/qmoi-enhanced/hooks/useWhatsApp.ts
+GET    /api/qcity/whatsapp/config    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useWhatsApp.ts
+GET    /api/qcity/whatsapp/messages    — /workspaces/qmoi-enhanced/hooks/useWhatsApp.ts
+GET    /api/qcity/whatsapp/messages    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useWhatsApp.ts
+       /api/qi-trading    — /workspaces/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+       /api/qi-trading    — /workspaces/qmoi-enhanced/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+       /api/qi-trading?action=account    — /workspaces/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+       /api/qi-trading?action=account    — /workspaces/qmoi-enhanced/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+       /api/qi-trading?action=stats    — /workspaces/qmoi-enhanced/components/QI.tsx
+       /api/qi-trading?action=stats    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QI.tsx
+       /api/qmoi-database    — /workspaces/qmoi-enhanced/app/api/employment/megavault/route.ts
+       /api/qmoi-database    — /workspaces/qmoi-enhanced/app/api/employment/payment/route.ts
+       /api/qmoi-database    — /workspaces/qmoi-enhanced/app/api/employment/revenue/route.ts
+       /api/qmoi-database    — /workspaces/qmoi-enhanced/qmoi-enhanced/app/api/employment/megavault/route.ts
+       /api/qmoi-database    — /workspaces/qmoi-enhanced/qmoi-enhanced/app/api/employment/payment/route.ts
+       /api/qmoi-database    — /workspaces/qmoi-enhanced/qmoi-enhanced/app/api/employment/revenue/route.ts
+       /api/qmoi-database/route    — /workspaces/qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx
+       /api/qmoi-database/route    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx
+       /api/qmoi-database/route?schema=true    — /workspaces/qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx
+       /api/qmoi-database/route?schema=true    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx
+       /api/qmoi-database/route?tables=true    — /workspaces/qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx
+       /api/qmoi-database/route?tables=true    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx
+       /api/qmoi-database?logs=true&limit=50    — /workspaces/qmoi-enhanced/components/QmoiMediaManager.tsx
+       /api/qmoi-database?logs=true&limit=50    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiMediaManager.tsx
+       /api/qmoi-gitlab/deployments    — /workspaces/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-gitlab/deployments    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-gitlab/errors    — /workspaces/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-gitlab/errors    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-gitlab/jobs    — /workspaces/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-gitlab/jobs    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-gitlab/pipelines    — /workspaces/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-gitlab/pipelines    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-gitlab/trigger    — /workspaces/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-gitlab/trigger    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+       /api/qmoi-model    — /workspaces/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+       /api/qmoi-model    — /workspaces/qmoi-enhanced/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+       /api/qmoi-model?allStats=1    — /workspaces/qmoi-enhanced/components/QI.tsx
+       /api/qmoi-model?allStats=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QI.tsx
+       /api/qmoi-model?analytics=1    — /workspaces/qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+       /api/qmoi-model?analytics=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+       /api/qmoi-model?applyDeviceFeature=1    — /workspaces/qmoi-enhanced/hooks/useDeviceOptimizer.ts
+       /api/qmoi-model?applyDeviceFeature=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useDeviceOptimizer.ts
+       /api/qmoi-model?autoEarning=1    — /workspaces/qmoi-enhanced/hooks/useAutoEarningTasks.ts
+       /api/qmoi-model?autoEarning=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAutoEarningTasks.ts
+       /api/qmoi-model?colabJob=1    — /workspaces/qmoi-enhanced/hooks/useColabJob.ts
+       /api/qmoi-model?colabJob=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useColabJob.ts
+       /api/qmoi-model?deviceOptimize=1    — /workspaces/qmoi-enhanced/hooks/useDeviceOptimizer.ts
+       /api/qmoi-model?deviceOptimize=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useDeviceOptimizer.ts
+       /api/qmoi-model?enhance=1    — /workspaces/qmoi-enhanced/components/QI.tsx
+       /api/qmoi-model?enhance=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QI.tsx
+       /api/qmoi-model?featureEnhance=1    — /workspaces/qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+       /api/qmoi-model?featureEnhance=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+       /api/qmoi-model?githubTasks=1    — /workspaces/qmoi-enhanced/hooks/useGithubRepoManager.ts
+       /api/qmoi-model?githubTasks=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useGithubRepoManager.ts
+       /api/qmoi-model?globalScanFix=1    — /workspaces/qmoi-enhanced/hooks/useErrorAutoFix.ts
+       /api/qmoi-model?globalScanFix=1    — /workspaces/qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+       /api/qmoi-model?globalScanFix=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useErrorAutoFix.ts
+       /api/qmoi-model?globalScanFix=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+       /api/qmoi-model?hookDiagnostics=1    — /workspaces/qmoi-enhanced/hooks/useVSCodeProblems.ts
+       /api/qmoi-model?hookDiagnostics=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useVSCodeProblems.ts
+       /api/qmoi-model?manageRepo=1    — /workspaces/qmoi-enhanced/hooks/useGithubRepoManager.ts
+       /api/qmoi-model?manageRepo=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useGithubRepoManager.ts
+       /api/qmoi-model?runEarningTask=1    — /workspaces/qmoi-enhanced/hooks/useAutoEarningTasks.ts
+       /api/qmoi-model?runEarningTask=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAutoEarningTasks.ts
+       /api/qmoi-model?trainingStatus=1    — /workspaces/qmoi-enhanced/hooks/useModelTrainer.ts
+       /api/qmoi-model?trainingStatus=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useModelTrainer.ts
+       /api/qmoi/auto-fix/download-report    — /workspaces/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/auto-fix/download-report    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/auto-fix/github-status    — /workspaces/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/auto-fix/github-status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/auto-fix/start    — /workspaces/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/auto-fix/start    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/auto-fix/status    — /workspaces/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/auto-fix/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/auto-fix/stop    — /workspaces/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/auto-fix/stop    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+       /api/qmoi/autodev    — /workspaces/qmoi-enhanced/src/components/q-city/QMoiFileEditorChat.tsx
+       /api/qmoi/autodev    — /workspaces/qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx
+       /api/qmoi/autodev    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiFileEditorChat.tsx
+       /api/qmoi/autodev    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx
+       /api/qmoi/avatars    — /workspaces/qmoi-enhanced/src/components/q-city/AviatorGalleryPanel.tsx
+       /api/qmoi/avatars    — /workspaces/qmoi-enhanced/src/components/q-city/AvatarSelector.tsx
+       /api/qmoi/avatars    — /workspaces/qmoi-enhanced/src/components/q-city/QMOIStateProvider.tsx
+       /api/qmoi/avatars    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/AviatorGalleryPanel.tsx
+       /api/qmoi/avatars    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/AvatarSelector.tsx
+       /api/qmoi/avatars    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMOIStateProvider.tsx
+       /api/qmoi/chat    — /workspaces/qmoi-enhanced/qmoi-enhanced/qmoi-space/public/sw.js
+       /api/qmoi/chat    — /workspaces/qmoi-enhanced/qmoi-space/public/sw.js
+       /api/qmoi/error-log    — /workspaces/qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js
+       /api/qmoi/error-log    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js
+       /api/qmoi/feedback    — /workspaces/qmoi-enhanced/src/components/q-city/QMoiMemoryPanel.tsx
+       /api/qmoi/feedback    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiMemoryPanel.tsx
+       /api/qmoi/file    — /workspaces/qmoi-enhanced/src/components/q-city/QMoiFileEditorChat.tsx
+       /api/qmoi/file    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiFileEditorChat.tsx
+       /api/qmoi/files/upload    — /workspaces/qmoi-enhanced/qmoi-enhanced/qmoi-space/public/sw.js
+       /api/qmoi/files/upload    — /workspaces/qmoi-enhanced/qmoi-space/public/sw.js
+       /api/qmoi/fix/all    — /workspaces/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/fix/all    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/fix/connectivity    — /workspaces/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/fix/connectivity    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/fix/ui    — /workspaces/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/fix/ui    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/master-mode    — /workspaces/qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
+       /api/qmoi/master-mode    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
+       /api/qmoi/master/login    — /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/master/login    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/master/verify    — /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/master/verify    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/memory    — /workspaces/qmoi-enhanced/src/components/q-city/QMoiMemoryPanel.tsx
+       /api/qmoi/memory    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiMemoryPanel.tsx
+       /api/qmoi/memory-backup    — /workspaces/qmoi-enhanced/src/components/q-city/QMoiMemoryPanel.tsx
+       /api/qmoi/memory-backup    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiMemoryPanel.tsx
+       /api/qmoi/notify-master    — /workspaces/qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js
+       /api/qmoi/notify-master    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js
+       /api/qmoi/own-device-logs    — /workspaces/qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx
+       /api/qmoi/own-device-logs    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx
+       /api/qmoi/own-device-logs/export    — /workspaces/qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx
+       /api/qmoi/own-device-logs/export    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx
+       /api/qmoi/revenue    — /workspaces/qmoi-enhanced/components/QmoiRevenueDashboard.tsx
+       /api/qmoi/revenue    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiRevenueDashboard.tsx
+       /api/qmoi/revenue-dashboard    — /workspaces/qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
+       /api/qmoi/revenue-dashboard    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
+       /api/qmoi/revenue-dashboard/export    — /workspaces/qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
+       /api/qmoi/revenue-dashboard/export    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
+       /api/qmoi/revenue/reset    — /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/reset    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/start    — /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/start    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/status    — /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/stop    — /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/stop    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/target    — /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/target    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/transactions    — /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/transactions    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/transfer    — /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue/transfer    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+       /api/qmoi/revenue?action=status    — /workspaces/qmoi-enhanced/components/QmoiRevenueDashboard.tsx
+       /api/qmoi/revenue?action=status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiRevenueDashboard.tsx
+       /api/qmoi/revenue?action=transactions&limit=100    — /workspaces/qmoi-enhanced/components/QmoiRevenueDashboard.tsx
+       /api/qmoi/revenue?action=transactions&limit=100    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiRevenueDashboard.tsx
+       /api/qmoi/status    — /workspaces/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/status    — /workspaces/qmoi-enhanced/src/hooks/useQmoiKernel.ts
+       /api/qmoi/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/hooks/useQmoiKernel.ts
+       /api/qmoi/ui-health-check    — /workspaces/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/ui-health-check    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+       /api/qmoi/voice-preview    — /workspaces/qmoi-enhanced/src/components/q-city/VoiceSelector.tsx
+       /api/qmoi/voice-preview    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/VoiceSelector.tsx
+       /api/qmoi/voice-profiles    — /workspaces/qmoi-enhanced/src/components/q-city/VoiceSelector.tsx
+       /api/qmoi/voice-profiles    — /workspaces/qmoi-enhanced/src/components/q-city/QMOIStateProvider.tsx
+       /api/qmoi/voice-profiles    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/VoiceSelector.tsx
+       /api/qmoi/voice-profiles    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMOIStateProvider.tsx
+       /api/qmoi/voice/process    — /workspaces/qmoi-enhanced/qmoi-enhanced/qmoi-space/public/sw.js
+       /api/qmoi/voice/process    — /workspaces/qmoi-enhanced/qmoi-space/public/sw.js
+       /api/qnews    — /workspaces/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+       /api/qnews    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+       /api/qnews/analytics    — /workspaces/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+       /api/qnews/analytics    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+       /api/qnews/media    — /workspaces/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+       /api/qnews/media    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+       /api/qnews/schedule    — /workspaces/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+       /api/qnews/schedule    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+       /api/qradio/channels    — /workspaces/qmoi-enhanced/src/components/QI.tsx
+       /api/qradio/channels    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/QI.tsx
+       /api/qradio/play    — /workspaces/qmoi-enhanced/src/components/QI.tsx
+       /api/qradio/play    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/QI.tsx
+       /api/qradio/program    — /workspaces/qmoi-enhanced/src/components/QI.tsx
+       /api/qradio/program    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/QI.tsx
+       /api/qradio/programs    — /workspaces/qmoi-enhanced/src/components/QI.tsx
+       /api/qradio/programs    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/QI.tsx
+       /api/qradio/status    — /workspaces/qmoi-enhanced/src/components/QI.tsx
+       /api/qradio/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/QI.tsx
+       /api/repo-sync    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/services/QmoiMemory.ts
+       /api/report    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/report    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/report    — /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+GET    /api/report    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+       /api/report-download-issue    — /workspaces/qmoi-enhanced/QI_download_component.html
+       /api/report-download-issue    — /workspaces/qmoi-enhanced/qmoi-enhanced/QI_download_component.html
+POST   /api/run-command    — /workspaces/qmoi-enhanced/src/services/ErrorFixingService.ts
+POST   /api/run-command    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/services/ErrorFixingService.ts
+       /api/social-automation/contacts    — /workspaces/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+       /api/social-automation/contacts    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+       /api/social-automation/features    — /workspaces/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+       /api/social-automation/features    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+       /api/social-automation/post    — /workspaces/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+       /api/social-automation/post    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+       /api/social-automation/tag    — /workspaces/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+       /api/social-automation/tag    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+       /api/stats    — /workspaces/qmoi-enhanced/scripts/qmoi-real-time-monitor.py
+       /api/stats    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-real-time-monitor.py
+       /api/status    — /workspaces/qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py
+       /api/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py
+       /api/system/metrics    — /workspaces/qmoi-enhanced/hooks/useSystemMetrics.ts
+       /api/system/metrics    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useSystemMetrics.ts
+       /api/tasks    — /workspaces/qmoi-enhanced/hooks/useTaskQueue.ts
+       /api/tasks    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTaskQueue.ts
+       /api/tasks/queue    — /workspaces/qmoi-enhanced/hooks/useTaskQueue.ts
+       /api/tasks/queue    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTaskQueue.ts
+       /api/tasks/settings    — /workspaces/qmoi-enhanced/hooks/useTaskQueue.ts
+       /api/tasks/settings    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTaskQueue.ts
+       /api/trading/settings    — /workspaces/qmoi-enhanced/hooks/useTradingAutomation.ts
+       /api/trading/settings    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTradingAutomation.ts
+       /api/trading/status    — /workspaces/qmoi-enhanced/hooks/useTradingAutomation.ts
+       /api/trading/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTradingAutomation.ts
+       /api/trading/toggle    — /workspaces/qmoi-enhanced/hooks/useTradingAutomation.ts
+       /api/trading/toggle    — /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTradingAutomation.ts
+       /api/trigger-evolution    — /workspaces/qmoi-enhanced/components/QmoiMemoryPanel.tsx
+       /api/trigger-gitlab-ci    — /workspaces/qmoi-enhanced/templates/dashboard.html
+       /api/trigger-gitlab-ci    — /workspaces/qmoi-enhanced/qmoi-enhanced/templates/dashboard.html
+       /api/version    — /workspaces/qmoi-enhanced/qmoi-space-pwa/js/app.js
+       /api/version    — /workspaces/qmoi-enhanced/qmoi-enhanced/qmoi-space-pwa/js/app.js
+       /api/wallet    — /workspaces/qmoi-enhanced/src/components/q-city/WalletManager.tsx
+       /api/wallet    — /workspaces/qmoi-enhanced/src/components/q-city/QFileManager.tsx
+       /api/wallet    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/WalletManager.tsx
+       /api/wallet    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QFileManager.tsx
+       /api/wallet?pending_wallets=1    — /workspaces/qmoi-enhanced/src/components/q-city/WalletManager.tsx
+       /api/wallet?pending_wallets=1    — /workspaces/qmoi-enhanced/src/components/q-city/QFileManager.tsx
+       /api/wallet?pending_wallets=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/WalletManager.tsx
+       /api/wallet?pending_wallets=1    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QFileManager.tsx
+       /api/whatsapp/audit    — /workspaces/qmoi-enhanced/components/WhatsAppBusinessPanel.tsx
+       /api/whatsapp/audit    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WhatsAppBusinessPanel.tsx
+       /api/whatsapp/create-group    — /workspaces/qmoi-enhanced/src/hooks/useAutoProjects.ts
+       /api/whatsapp/create-group    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/hooks/useAutoProjects.ts
+       /api/whatsapp/notify-master    — /workspaces/qmoi-enhanced/src/hooks/useAutoProjects.ts
+       /api/whatsapp/notify-master    — /workspaces/qmoi-enhanced/scripts/auto-git-update.js
+       /api/whatsapp/notify-master    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/hooks/useAutoProjects.ts
+       /api/whatsapp/notify-master    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/auto-git-update.js
+       /api/whatsapp/post-to-group    — /workspaces/qmoi-enhanced/src/hooks/useAutoProjects.ts
+       /api/whatsapp/post-to-group    — /workspaces/qmoi-enhanced/qmoi-enhanced/src/hooks/useAutoProjects.ts
+       /api/whatsapp/verify    — /workspaces/qmoi-enhanced/components/WhatsAppBusinessPanel.tsx
+       /api/whatsapp/verify    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WhatsAppBusinessPanel.tsx
+       /api/wifi    — /workspaces/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=ai-agents    — /workspaces/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=ai-agents    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=iot-scan    — /workspaces/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=iot-scan    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=network-scan    — /workspaces/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=network-scan    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=security-test    — /workspaces/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=security-test    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=signal-analysis    — /workspaces/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi-security?action=signal-analysis    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi/connect    — /workspaces/qmoi-enhanced/components/WifiAutoConnectPanel.tsx
+       /api/wifi/connect    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiAutoConnectPanel.tsx
+       /api/wifi/scan    — /workspaces/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi/scan    — /workspaces/qmoi-enhanced/components/WifiAutoConnectPanel.tsx
+       /api/wifi/scan    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiPanel.tsx
+       /api/wifi/scan    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiAutoConnectPanel.tsx
+POST   /attachments    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /attachments/<att_id>/download    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /config    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+GET    /config    — /workspaces/qmoi-enhanced/api/qcity.ts
+POST   /configure-platforms    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+POST   /configure-platforms    — /workspaces/qmoi-enhanced/api/qcity.ts
+POST   /control    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+       /deals    — /workspaces/qmoi-enhanced/pwa_apps/deals/index.html
+GET    /deals    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+       /deals/    — /workspaces/qmoi-enhanced/pwa_apps/deals/index.html
+GET    /deals/<deal_id>    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /deals/<deal_id>/activate    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /deals/<deal_id>/deactivate    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /deals/<deal_id>/purchase    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /deals/create    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+       /deals/create-payment    — /workspaces/qmoi-enhanced/pwa_apps/deals/js/stripe-payment.js
+POST   /detect-anomaly    — /workspaces/qmoi-enhanced/ai-anomaly-service.py
+POST   /detect-anomaly    — /workspaces/qmoi-enhanced/qmoi-enhanced/ai-anomaly-service.py
+POST   /enable-features    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+POST   /enable-features    — /workspaces/qmoi-enhanced/api/qcity.ts
+GET    /export-analytics    — /workspaces/qmoi-enhanced/ai-anomaly-service.py
+GET    /export-analytics    — /workspaces/qmoi-enhanced/qmoi-enhanced/ai-anomaly-service.py
+       /health    — /workspaces/qmoi-enhanced/qmoi-enhanced/huggingface_space/dashboard.js
+       /health    — /workspaces/qmoi-enhanced/huggingface_space/dashboard.js
+GET    /health    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+       /login    — /workspaces/qmoi-enhanced/docs/ui/login.html
+POST   /login    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /logout    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /logs    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+GET    /logs    — /workspaces/qmoi-enhanced/api/qcity.ts
+       /logs/qmoispace_health.log    — /workspaces/qmoi-enhanced/qmoi-enhanced/huggingface_space/dashboard.js
+       /logs/qmoispace_health.log    — /workspaces/qmoi-enhanced/huggingface_space/dashboard.js
+GET    /memories    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /metrics    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /mirror/app/<appname>/    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /mirror/app/<appname>/<path:rest>    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /mirror/raw/<path:rest>    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /monitor    — /workspaces/qmoi-enhanced/ai-anomaly-service.py
+POST   /monitor    — /workspaces/qmoi-enhanced/qmoi-enhanced/ai-anomaly-service.py
+POST   /monitor-resources    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+POST   /monitor-resources    — /workspaces/qmoi-enhanced/api/qcity.ts
+GET    /monitor/status    — /workspaces/qmoi-enhanced/ai-anomaly-service.py
+GET    /monitor/status    — /workspaces/qmoi-enhanced/qmoi-enhanced/ai-anomaly-service.py
+GET    /notifications    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+GET    /notifications    — /workspaces/qmoi-enhanced/api/qcity.ts
+GET    /parse-log    — /workspaces/qmoi-enhanced/ai-anomaly-service.py
+GET    /parse-log    — /workspaces/qmoi-enhanced/qmoi-enhanced/ai-anomaly-service.py
+POST   /payments/webhook    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+       /qmoi_health_status.json    — /workspaces/qmoi-enhanced/components/SystemHealthDashboard.tsx
+       /qmoi_health_status.json    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/SystemHealthDashboard.tsx
+GET    /ready    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+       /register    — /workspaces/qmoi-enhanced/docs/ui/login.html
+GET    /resources    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+GET    /resources    — /workspaces/qmoi-enhanced/api/qcity.ts
+POST   /signup    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /sponsored/add    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /start    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+POST   /start    — /workspaces/qmoi-enhanced/api/qcity.ts
+GET    /status    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+GET    /status    — /workspaces/qmoi-enhanced/api/qcity.ts
+       /status    — /workspaces/qmoi-enhanced/components/SystemHealthDashboard.tsx
+       /status    — /workspaces/qmoi-enhanced/qmoi-enhanced/components/SystemHealthDashboard.tsx
+POST   /stop    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+POST   /stop    — /workspaces/qmoi-enhanced/api/qcity.ts
+POST   /sync-memory    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /tasks    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+GET    /tasks    — /workspaces/qmoi-enhanced/api/qcity.ts
+       /trigger-fix    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_dashboard.js
+       /update-notification-prefs    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_dashboard.js
+GET    /wallet    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /wallet/credit    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /wallet/debit    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+       /webauthn/auth/finish    — /workspaces/qmoi-enhanced/docs/ui/login.html
+       /webauthn/auth/options    — /workspaces/qmoi-enhanced/docs/ui/login.html
+POST   /webauthn/authenticate/complete    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /webauthn/authenticate/options    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+POST   /webauthn/register/complete    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+       /webauthn/register/finish    — /workspaces/qmoi-enhanced/docs/ui/login.html
+       /webauthn/register/options    — /workspaces/qmoi-enhanced/docs/ui/login.html
+POST   /webauthn/register/options    — /workspaces/qmoi-enhanced/qmoi_control_server.py
+GET    /workspace-logs    — /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+GET    /workspace-logs    — /workspaces/qmoi-enhanced/api/qcity.ts
+GET    http://localhost:4000/api/device-stats    — /workspaces/qmoi-enhanced/mobile/components/AnalyticsScreen.js
+GET    http://localhost:4000/api/device-stats    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/AnalyticsScreen.js
+GET    http://localhost:4000/api/error-fix-log    — /workspaces/qmoi-enhanced/mobile/App.js
+GET    http://localhost:4000/api/error-fix-log    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/App.js
+GET    http://localhost:4100/api/predictions    — /workspaces/qmoi-enhanced/mobile/App.js
+GET    http://localhost:4100/api/predictions    — /workspaces/qmoi-enhanced/mobile/components/AnalyticsScreen.js
+GET    http://localhost:4100/api/predictions    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/App.js
+GET    http://localhost:4100/api/predictions    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/AnalyticsScreen.js
+GET    http://localhost:4100/api/predictions    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_dashboard.js
+POST   http://localhost:4200/api/acknowledge-notification    — /workspaces/qmoi-enhanced/mobile/components/NotificationScreen.js
+POST   http://localhost:4200/api/acknowledge-notification    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/NotificationScreen.js
+GET    http://localhost:4200/api/alert-prefs    — /workspaces/qmoi-enhanced/mobile/components/AlertSettingsScreen.js
+GET    http://localhost:4200/api/alert-prefs    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/AlertSettingsScreen.js
+POST   http://localhost:4200/api/delete-notification    — /workspaces/qmoi-enhanced/mobile/components/NotificationScreen.js
+POST   http://localhost:4200/api/delete-notification    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/NotificationScreen.js
+GET    http://localhost:4200/api/notification-history    — /workspaces/qmoi-enhanced/mobile/components/NotificationScreen.js
+GET    http://localhost:4200/api/notification-history    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/NotificationScreen.js
+GET    http://localhost:4200/api/notification-history    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_dashboard.js
+GET    http://localhost:4200/api/notification-prefs    — /workspaces/qmoi-enhanced/mobile/components/NotificationScreen.js
+GET    http://localhost:4200/api/notification-prefs    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/NotificationScreen.js
+GET    http://localhost:4200/api/notification-prefs    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_dashboard.js
+POST   http://localhost:4200/api/register-fcm    — /workspaces/qmoi-enhanced/mobile/utils/pushNotifications.js
+POST   http://localhost:4200/api/register-fcm    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/utils/pushNotifications.js
+POST   http://localhost:4200/api/register-pushover    — /workspaces/qmoi-enhanced/mobile/utils/pushNotifications.js
+POST   http://localhost:4200/api/register-pushover    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/utils/pushNotifications.js
+POST   http://localhost:4200/api/respond-notification    — /workspaces/qmoi-enhanced/mobile/components/NotificationScreen.js
+POST   http://localhost:4200/api/respond-notification    — /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/NotificationScreen.js
+POST   https://api.pushover.net/1/messages.json    — /workspaces/qmoi-enhanced/scripts/qmoi-notification-system.js
+POST   https://api.pushover.net/1/messages.json    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-notification-system.js
+GET    https://httpbin.org/get    — /workspaces/qmoi-enhanced/scripts/qmoi-universal-error-handler.js
+GET    https://httpbin.org/get    — /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-universal-error-handler.js
 ```
-/api/analytics/overview
-/api/chat/generate
-/api/games
-/api/games/{game_id}/start
-/api/health
-/api/projects
-/api/qmoi/download-exe
-/api/revenue/add
-/api/revenue/overview
-/api/system/status
-/automation/config
-/automation/history
-/automation/metrics
-/automation/optimize
-/automation/start
-/automation/status
-/automation/stop
-/automation/tasks
-/automation/trends
-/health
-/model/info
-/ping
-/predict
-/predict/batch
-/qmessage
-/token
-'/api/health'
-'/api/media'
-'/api/media/:id'
-'/api/media/logs'
-'/api/predictions'
-'/fix_error'
-'/health'
-'/list'
-'/predict'
-```
+
+
 
 > **Note:** If any endpoint above is missing from the main documentation, please add it with details (method, params, response, auth, etc.).
 http://localhost:3000/api
@@ -197,139 +787,97 @@ Notes:
 GET /qcity/status
 ```
 
-Returns the current status of the Q-city system.
+````markdown
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
+# AI Automation API Documentation
+
+## Overview
+The AI Automation API provides endpoints for managing and monitoring the AI-powered automation system. It includes features for system control, task management, metrics collection, and configuration management.
+
+## Authentication
+All endpoints require authentication using OAuth2 with Bearer tokens. To obtain a token:
+
+1. Send a POST request to `/token` with username and password
+2. Use the returned token in the Authorization header for subsequent requests
+
+```bash
+# Example token request
+curl -X POST "http://localhost:8000/token" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "username=user&password=<REDACTED>
+
+# Example authenticated request
+curl -X GET "http://localhost:8000/automation/status" \
+     -H "Authorization: Bearer <token>"
+```
+
+## Endpoints
+
+### System Control
+
+#### GET /automation/status
+Get current automation system status.
 
 **Response:**
 ```json
 {
-  "running": true,
-  "platforms": {
-    "colab": {
-      "connected": true,
-      "gpu_available": true,
-      "gpu_count": 1,
-      "drive_mounted": true
-    },
-    "cloud": {
-      "connected": false,
-      "providers": []
-    },
-    "local": {
-      "connected": true,
-      "os": "Windows",
-      "cpu_count": 8,
-      "memory_total": 16777216,
-      "disk_total": 1073741824
+    "running": true,
+    "active_tasks": 2,
+    "system_state": {
+   "resources": {
+       "cpu": 45.2,
+       "memory": 60.5,
+       "disk": 75.8,
+       "network": 30.1
+   },
+   "performance": {
+       "response_time": 85.3,
+       "throughput": 950.2,
+       "error_rate": 0.02
+   },
+   "errors": [],
+   "tasks": [],
+   "timestamp": "2024-03-14T12:00:00Z"
     }
-  },
-  "features": {
-    "trading": true,
-    "whatsapp": true,
-    "projects": true,
-    "updates": true
-  },
-  "resources": {
-    "cpu": 45.2,
-    "memory": 60.5,
-    "disk": 75.3,
-    "network": 1024
-  },
-  "tasks": [
-    {
-      "id": "task-1",
-      "type": "optimization",
-      "status": "completed",
-      "start_time": "2024-03-15T10:00:00Z",
-      "end_time": "2024-03-15T10:01:00Z"
-    }
-  ]
 }
 ```
 
-#### Get System Configuration
-```http
-GET /qcity/config
-```
+...[file truncated for brevity]
 
-Returns the current system configuration.
-
-**Response:**
-```json
+<!-- QMOI_VALIDATION_START -->
 {
-  "platforms": {
-    "colab": true,
-    "cloud": true,
-    "local": true
-  },
-  "features": {
-    "trading": true,
-    "whatsapp": true,
-    "projects": true,
-    "updates": true
-  },
-  "resources": {
-    "max_cpu": 90,
-    "max_memory": 0.9,
-    "max_disk": 0.9,
-    "max_network": 1000,
-    "auto_scale": true
-  },
-  "security": {
-    "encryption": true,
-    "firewall": true,
-    "vpn": true,
-    "access_control": true,
-    "audit_logging": true
+  "file": "docs/API.md",
+  "validated_at": "2025-10-26T20:51:22.673829Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present",
+      "ok": true,
+      "detail": "AI Automation API Documentation"
+    },
+    {
+      "name": "links",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
   }
 }
-```
+<!-- QMOI_VALIDATION_END -->
 
-#### Start System
-```http
-POST /qcity/start
-```
-
-Starts the Q-city system.
-
-**Response:**
-```json
-{
-  "message": "Q-city started successfully"
-}
-```
-
-#### Stop System
-```http
-POST /qcity/stop
-```
-
-Stops the Q-city system.
-
-**Response:**
-```json
-{
-  "message": "Q-city stopped successfully"
-}
-```
-
-### Platform Management
-
-#### Configure Platforms
-```http
-POST /qcity/configure-platforms
-```
-
-Configure system platforms.
-
-**Request Body:**
-```json
-{
-  "colab": true,
-  "cloud": true,
-  "local": true
-}
-```
-
+````
 **Response:**
 ```json
 {
@@ -1134,3 +1682,1041 @@ If you want the assistant to actively sync this file with live code (run static 
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- API_INVENTORY_START -->
+## Discovered API Endpoints (auto-generated)
+
+### Source: /workspaces/qmoi-enhanced/QI_download_component.html
+-        /api/report-download-issue
+
+### Source: /workspaces/qmoi-enhanced/ai-anomaly-service.py
+- POST   /alert
+- GET    /analytics
+- GET    /analytics/hourly
+- POST   /detect-anomaly
+- GET    /export-analytics
+- POST   /monitor
+- GET    /monitor/status
+- GET    /parse-log
+
+### Source: /workspaces/qmoi-enhanced/api/qcity.ts
+- GET    /config
+- POST   /configure-platforms
+- POST   /enable-features
+- GET    /logs
+- POST   /monitor-resources
+- GET    /notifications
+- GET    /resources
+- POST   /start
+- GET    /status
+- POST   /stop
+- GET    /tasks
+- GET    /workspace-logs
+
+### Source: /workspaces/qmoi-enhanced/app/api/employment/megavault/route.ts
+-        /api/qmoi-database
+
+### Source: /workspaces/qmoi-enhanced/app/api/employment/payment/route.ts
+-        /api/qmoi-database
+
+### Source: /workspaces/qmoi-enhanced/app/api/employment/revenue/route.ts
+-        /api/qmoi-database
+
+### Source: /workspaces/qmoi-enhanced/app/qcity/page.js
+-        /api/qcity/config
+-        /api/qcity/logs
+-        /api/qcity/notifications
+-        /api/qcity/resources
+-        /api/qcity/status
+-        /api/qcity/tasks
+
+### Source: /workspaces/qmoi-enhanced/components/CashonTradingPanel.tsx
+-        /api/cashon/balance
+-        /api/cashon/balance?logs=true
+-        /api/cashon/balance?mpesaInfo=true
+-        /api/cashon/deposit
+-        /api/cashon/signals
+-        /api/cashon/start-trading
+-        /api/cashon/stop-trading
+-        /api/cashon/trading-status
+
+### Source: /workspaces/qmoi-enhanced/components/DeploymentStatusDashboard.tsx
+-        /api/deployment-status
+
+### Source: /workspaces/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+-        /api/qmoi/master/login
+-        /api/qmoi/master/verify
+-        /api/qmoi/revenue/reset
+-        /api/qmoi/revenue/start
+-        /api/qmoi/revenue/status
+-        /api/qmoi/revenue/stop
+-        /api/qmoi/revenue/target
+-        /api/qmoi/revenue/transactions
+-        /api/qmoi/revenue/transfer
+
+### Source: /workspaces/qmoi-enhanced/components/FinancialManager.tsx
+-        /api/financial/audit
+-        /api/financial/transactions
+-        /api/financial/verify
+
+### Source: /workspaces/qmoi-enhanced/components/GitStatus.tsx
+-        /api/git/branch
+-        /api/git/remote
+-        /api/git/status
+
+### Source: /workspaces/qmoi-enhanced/components/NotificationPanel.tsx
+-        /api/ai-health
+
+### Source: /workspaces/qmoi-enhanced/components/QAvatar.tsx
+-        /api/qcity/remote-command
+-        /api/qcity/status
+
+### Source: /workspaces/qmoi-enhanced/components/QI.tsx
+-        /api/qi-trading?action=stats
+-        /api/qmoi-model?allStats=1
+-        /api/qmoi-model?enhance=1
+
+### Source: /workspaces/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+-        /api/deployment-status
+-        /api/qmoi/auto-fix/download-report
+-        /api/qmoi/auto-fix/github-status
+-        /api/qmoi/auto-fix/start
+-        /api/qmoi/auto-fix/status
+-        /api/qmoi/auto-fix/stop
+
+### Source: /workspaces/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+- POST   /api/auto-fix
+- POST   /api/deploy
+- POST   /api/deploy/auto-redeploy
+- GET    /api/deployment-status
+- POST   /api/git/commit
+- POST   /api/git/pr
+- POST   /api/git/push
+- GET    /api/git/status
+
+### Source: /workspaces/qmoi-enhanced/components/QmoiMediaManager.tsx
+-        /api/health
+-        /api/media
+-        /api/qmoi-database?logs=true&limit=50
+
+### Source: /workspaces/qmoi-enhanced/components/QmoiMemoryPanel.tsx
+-        /api/trigger-evolution
+
+### Source: /workspaces/qmoi-enhanced/components/QmoiRevenueDashboard.tsx
+-        /api/qmoi/revenue
+-        /api/qmoi/revenue?action=status
+-        /api/qmoi/revenue?action=transactions&limit=100
+
+### Source: /workspaces/qmoi-enhanced/components/SystemHealthDashboard.tsx
+-        /qmoi_health_status.json
+-        /status
+
+### Source: /workspaces/qmoi-enhanced/components/WhatsAppBusinessPanel.tsx
+-        /api/whatsapp/audit
+-        /api/whatsapp/verify
+
+### Source: /workspaces/qmoi-enhanced/components/WifiAutoConnectPanel.tsx
+-        /api/wifi/connect
+-        /api/wifi/scan
+
+### Source: /workspaces/qmoi-enhanced/components/WifiPanel.tsx
+-        /api/wifi
+-        /api/wifi-security?action=ai-agents
+-        /api/wifi-security?action=iot-scan
+-        /api/wifi-security?action=network-scan
+-        /api/wifi-security?action=security-test
+-        /api/wifi-security?action=signal-analysis
+-        /api/wifi/scan
+
+### Source: /workspaces/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+-        /api/employment
+-        /api/employment/megavault?type=balance
+-        /api/employment/payment
+-        /api/employment/payment?type=payments
+-        /api/employment/revenue
+-        /api/employment?type=employees
+-        /api/employment?type=users
+
+### Source: /workspaces/qmoi-enhanced/components/q-city/QCityDevicePanel.tsx
+- GET    /api/qcity/listLocalWorkspaces
+- GET    /api/qcity/listWorkspaces
+
+### Source: /workspaces/qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx
+-        /api/qmoi/own-device-logs
+-        /api/qmoi/own-device-logs/export
+
+### Source: /workspaces/qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
+-        /api/qmoi/master-mode
+-        /api/qmoi/revenue-dashboard
+-        /api/qmoi/revenue-dashboard/export
+
+### Source: /workspaces/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+-        /api/qmoi-gitlab/deployments
+-        /api/qmoi-gitlab/errors
+-        /api/qmoi-gitlab/jobs
+-        /api/qmoi-gitlab/pipelines
+-        /api/qmoi-gitlab/trigger
+
+### Source: /workspaces/qmoi-enhanced/docs/ui/login.html
+-        /login
+-        /register
+-        /webauthn/auth/finish
+-        /webauthn/auth/options
+-        /webauthn/register/finish
+-        /webauthn/register/options
+
+### Source: /workspaces/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+-        /api/colab-job
+-        /api/qi-trading
+-        /api/qi-trading?action=account
+-        /api/qmoi-model
+
+### Source: /workspaces/qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+-        /api/qmoi-model?featureEnhance=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useAIHealthCheck.ts
+-        /api/ai-health
+
+### Source: /workspaces/qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+-        /api/qmoi-model?analytics=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useAutoEarningTasks.ts
+-        /api/qmoi-model?autoEarning=1
+-        /api/qmoi-model?runEarningTask=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+-        /api/qmoi-model?globalScanFix=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useBitgetTrader.ts
+-        /api/bitget-trade
+
+### Source: /workspaces/qmoi-enhanced/hooks/useColabJob.ts
+-        /api/qmoi-model?colabJob=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useDatasetManager.ts
+-        /api/datasets
+-        /api/datasets/settings
+
+### Source: /workspaces/qmoi-enhanced/hooks/useDeviceOptimizer.ts
+-        /api/qmoi-model?applyDeviceFeature=1
+-        /api/qmoi-model?deviceOptimize=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useErrorAutoFix.ts
+-        /api/qmoi-model?globalScanFix=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useGithubRepoManager.ts
+-        /api/qmoi-model?githubTasks=1
+-        /api/qmoi-model?manageRepo=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useGlobalAutomation.ts
+-        /api/automation/settings
+-        /api/automation/status
+-        /api/automation/tasks
+
+### Source: /workspaces/qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+-        /api/media/generate
+-        /api/media/settings
+-        /api/media/status
+
+### Source: /workspaces/qmoi-enhanced/hooks/useModelTrainer.ts
+-        /api/qmoi-model?trainingStatus=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useProjects.ts
+- POST   /api/colab-job?executeJob=true
+- GET    /api/qcity/projects
+- GET    /api/qcity/projects/config
+
+### Source: /workspaces/qmoi-enhanced/hooks/useQCity.ts
+- GET    /api/qcity/config
+- POST   /api/qcity/configure-platforms
+- POST   /api/qcity/enable-features
+- GET    /api/qcity/logs
+- POST   /api/qcity/manage-backup
+- POST   /api/qcity/monitor-resources
+- GET    /api/qcity/notifications
+- POST   /api/qcity/optimize-resources
+- GET    /api/qcity/resources
+- POST   /api/qcity/start
+- GET    /api/qcity/status
+- POST   /api/qcity/stop
+- GET    /api/qcity/tasks
+- POST   /api/qcity/track-error
+
+### Source: /workspaces/qmoi-enhanced/hooks/useSystemMetrics.ts
+-        /api/system/metrics
+
+### Source: /workspaces/qmoi-enhanced/hooks/useTaskQueue.ts
+-        /api/tasks
+-        /api/tasks/queue
+-        /api/tasks/settings
+
+### Source: /workspaces/qmoi-enhanced/hooks/useTrading.ts
+- GET    /api/qcity/trading/config
+- GET    /api/qcity/trading/positions
+
+### Source: /workspaces/qmoi-enhanced/hooks/useTradingAutomation.ts
+-        /api/trading/settings
+-        /api/trading/status
+-        /api/trading/toggle
+
+### Source: /workspaces/qmoi-enhanced/hooks/useVSCodeProblems.ts
+-        /api/qmoi-model?hookDiagnostics=1
+
+### Source: /workspaces/qmoi-enhanced/hooks/useWhatsApp.ts
+- GET    /api/qcity/whatsapp/config
+- GET    /api/qcity/whatsapp/messages
+
+### Source: /workspaces/qmoi-enhanced/huggingface_space/dashboard.js
+-        /api/provider
+-        /health
+-        /logs/qmoispace_health.log
+
+### Source: /workspaces/qmoi-enhanced/mobile/App.js
+- GET    http://localhost:4000/api/error-fix-log
+- GET    http://localhost:4100/api/predictions
+
+### Source: /workspaces/qmoi-enhanced/mobile/components/AlertSettingsScreen.js
+- GET    http://localhost:4200/api/alert-prefs
+
+### Source: /workspaces/qmoi-enhanced/mobile/components/AnalyticsScreen.js
+- GET    http://localhost:4000/api/device-stats
+- GET    http://localhost:4100/api/predictions
+
+### Source: /workspaces/qmoi-enhanced/mobile/components/NotificationScreen.js
+- POST   http://localhost:4200/api/acknowledge-notification
+- POST   http://localhost:4200/api/delete-notification
+- GET    http://localhost:4200/api/notification-history
+- GET    http://localhost:4200/api/notification-prefs
+- POST   http://localhost:4200/api/respond-notification
+
+### Source: /workspaces/qmoi-enhanced/mobile/utils/pushNotifications.js
+- POST   http://localhost:4200/api/register-fcm
+- POST   http://localhost:4200/api/register-pushover
+
+### Source: /workspaces/qmoi-enhanced/public/qcity/dashboard.js
+-        /api/qcity/config
+-        /api/qcity/logs
+-        /api/qcity/notifications
+-        /api/qcity/resources
+-        /api/qcity/start
+-        /api/qcity/status
+-        /api/qcity/stop
+-        /api/qcity/tasks
+
+### Source: /workspaces/qmoi-enhanced/pwa_apps/deals/index.html
+-        /deals
+-        /deals/
+
+### Source: /workspaces/qmoi-enhanced/pwa_apps/deals/js/stripe-payment.js
+-        /deals/create-payment
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/QI_download_component.html
+-        /api/report-download-issue
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/ai-anomaly-service.py
+- POST   /alert
+- GET    /analytics
+- GET    /analytics/hourly
+- POST   /detect-anomaly
+- GET    /export-analytics
+- POST   /monitor
+- GET    /monitor/status
+- GET    /parse-log
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/api/qcity.ts
+- GET    /config
+- POST   /configure-platforms
+- POST   /enable-features
+- GET    /logs
+- POST   /monitor-resources
+- GET    /notifications
+- GET    /resources
+- POST   /start
+- GET    /status
+- POST   /stop
+- GET    /tasks
+- GET    /workspace-logs
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/app/api/employment/megavault/route.ts
+-        /api/qmoi-database
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/app/api/employment/payment/route.ts
+-        /api/qmoi-database
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/app/api/employment/revenue/route.ts
+-        /api/qmoi-database
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/CashonTradingPanel.tsx
+-        /api/cashon/balance
+-        /api/cashon/balance?logs=true
+-        /api/cashon/balance?mpesaInfo=true
+-        /api/cashon/deposit
+-        /api/cashon/signals
+-        /api/cashon/start-trading
+-        /api/cashon/stop-trading
+-        /api/cashon/trading-status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/DeploymentStatusDashboard.tsx
+-        /api/deployment-status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/EnhancedRevenuePanel.tsx
+-        /api/qmoi/master/login
+-        /api/qmoi/master/verify
+-        /api/qmoi/revenue/reset
+-        /api/qmoi/revenue/start
+-        /api/qmoi/revenue/status
+-        /api/qmoi/revenue/stop
+-        /api/qmoi/revenue/target
+-        /api/qmoi/revenue/transactions
+-        /api/qmoi/revenue/transfer
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/FinancialManager.tsx
+-        /api/financial/audit
+-        /api/financial/transactions
+-        /api/financial/verify
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/GitStatus.tsx
+-        /api/git/branch
+-        /api/git/remote
+-        /api/git/status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/NotificationPanel.tsx
+-        /api/ai-health
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/QAvatar.tsx
+-        /api/qcity/remote-command
+-        /api/qcity/status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/QI.tsx
+-        /api/qi-trading?action=stats
+-        /api/qmoi-model?allStats=1
+-        /api/qmoi-model?enhance=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx
+-        /api/deployment-status
+-        /api/qmoi/auto-fix/download-report
+-        /api/qmoi/auto-fix/github-status
+-        /api/qmoi/auto-fix/start
+-        /api/qmoi/auto-fix/status
+-        /api/qmoi/auto-fix/stop
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiAutoDistribution.tsx
+- POST   /api/auto-fix
+- POST   /api/deploy
+- POST   /api/deploy/auto-redeploy
+- GET    /api/deployment-status
+- POST   /api/git/commit
+- POST   /api/git/pr
+- POST   /api/git/push
+- GET    /api/git/status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiMediaManager.tsx
+-        /api/health
+-        /api/media
+-        /api/qmoi-database?logs=true&limit=50
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/QmoiRevenueDashboard.tsx
+-        /api/qmoi/revenue
+-        /api/qmoi/revenue?action=status
+-        /api/qmoi/revenue?action=transactions&limit=100
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/SystemHealthDashboard.tsx
+-        /qmoi_health_status.json
+-        /status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/WhatsAppBusinessPanel.tsx
+-        /api/whatsapp/audit
+-        /api/whatsapp/verify
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiAutoConnectPanel.tsx
+-        /api/wifi/connect
+-        /api/wifi/scan
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/WifiPanel.tsx
+-        /api/wifi
+-        /api/wifi-security?action=ai-agents
+-        /api/wifi-security?action=iot-scan
+-        /api/wifi-security?action=network-scan
+-        /api/wifi-security?action=security-test
+-        /api/wifi-security?action=signal-analysis
+-        /api/wifi/scan
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/EmploymentDashboard.tsx
+-        /api/employment
+-        /api/employment/megavault?type=balance
+-        /api/employment/payment
+-        /api/employment/payment?type=payments
+-        /api/employment/revenue
+-        /api/employment?type=employees
+-        /api/employment?type=users
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QCityDevicePanel.tsx
+- GET    /api/qcity/listLocalWorkspaces
+- GET    /api/qcity/listWorkspaces
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx
+-        /api/qmoi/own-device-logs
+-        /api/qmoi/own-device-logs/export
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx
+-        /api/qmoi/master-mode
+-        /api/qmoi/revenue-dashboard
+-        /api/qmoi/revenue-dashboard/export
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx
+-        /api/qmoi-gitlab/deployments
+-        /api/qmoi-gitlab/errors
+-        /api/qmoi-gitlab/jobs
+-        /api/qmoi-gitlab/pipelines
+-        /api/qmoi-gitlab/trigger
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx
+-        /api/colab-job
+-        /api/qi-trading
+-        /api/qi-trading?action=account
+-        /api/qmoi-model
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+-        /api/qmoi-model?featureEnhance=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAIHealthCheck.ts
+-        /api/ai-health
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+-        /api/qmoi-model?analytics=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAutoEarningTasks.ts
+-        /api/qmoi-model?autoEarning=1
+-        /api/qmoi-model?runEarningTask=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+-        /api/qmoi-model?globalScanFix=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useBitgetTrader.ts
+-        /api/bitget-trade
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useColabJob.ts
+-        /api/qmoi-model?colabJob=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useDatasetManager.ts
+-        /api/datasets
+-        /api/datasets/settings
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useDeviceOptimizer.ts
+-        /api/qmoi-model?applyDeviceFeature=1
+-        /api/qmoi-model?deviceOptimize=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useErrorAutoFix.ts
+-        /api/qmoi-model?globalScanFix=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useGithubRepoManager.ts
+-        /api/qmoi-model?githubTasks=1
+-        /api/qmoi-model?manageRepo=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useGlobalAutomation.ts
+-        /api/automation/settings
+-        /api/automation/status
+-        /api/automation/tasks
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+-        /api/media/generate
+-        /api/media/settings
+-        /api/media/status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useModelTrainer.ts
+-        /api/qmoi-model?trainingStatus=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useProjects.ts
+- POST   /api/colab-job?executeJob=true
+- GET    /api/qcity/projects
+- GET    /api/qcity/projects/config
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useQCity.ts
+- GET    /api/qcity/config
+- POST   /api/qcity/configure-platforms
+- POST   /api/qcity/enable-features
+- GET    /api/qcity/logs
+- POST   /api/qcity/manage-backup
+- POST   /api/qcity/monitor-resources
+- GET    /api/qcity/notifications
+- POST   /api/qcity/optimize-resources
+- GET    /api/qcity/resources
+- POST   /api/qcity/start
+- GET    /api/qcity/status
+- POST   /api/qcity/stop
+- GET    /api/qcity/tasks
+- POST   /api/qcity/track-error
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useSystemMetrics.ts
+-        /api/system/metrics
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTaskQueue.ts
+-        /api/tasks
+-        /api/tasks/queue
+-        /api/tasks/settings
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTrading.ts
+- GET    /api/qcity/trading/config
+- GET    /api/qcity/trading/positions
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useTradingAutomation.ts
+-        /api/trading/settings
+-        /api/trading/status
+-        /api/trading/toggle
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useVSCodeProblems.ts
+-        /api/qmoi-model?hookDiagnostics=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/hooks/useWhatsApp.ts
+- GET    /api/qcity/whatsapp/config
+- GET    /api/qcity/whatsapp/messages
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/huggingface_space/dashboard.js
+-        /api/provider
+-        /health
+-        /logs/qmoispace_health.log
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/App.js
+- GET    http://localhost:4000/api/error-fix-log
+- GET    http://localhost:4100/api/predictions
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/AlertSettingsScreen.js
+- GET    http://localhost:4200/api/alert-prefs
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/AnalyticsScreen.js
+- GET    http://localhost:4000/api/device-stats
+- GET    http://localhost:4100/api/predictions
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/components/NotificationScreen.js
+- POST   http://localhost:4200/api/acknowledge-notification
+- POST   http://localhost:4200/api/delete-notification
+- GET    http://localhost:4200/api/notification-history
+- GET    http://localhost:4200/api/notification-prefs
+- POST   http://localhost:4200/api/respond-notification
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/utils/pushNotifications.js
+- POST   http://localhost:4200/api/register-fcm
+- POST   http://localhost:4200/api/register-pushover
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/qmoi-space-pwa/js/app.js
+-        /api/version
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/qmoi-space/public/sw.js
+-        /api/qmoi/chat
+-        /api/qmoi/files/upload
+-        /api/qmoi/voice/process
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/auto-git-update.js
+-        /api/whatsapp/notify-master
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py
+-        /api/status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-dashboard.py
+- GET    /
+- GET    /api/doc-history
+-        /api/doc-history
+- GET    /api/event-stats
+-        /api/event-stats
+- GET    /api/log
+-        /api/log
+-        /api/log?search=
+- GET    /api/notifications
+-        /api/notifications
+- POST   /api/notifications/test
+-        /api/notifications/test
+- GET    /api/preautotest
+-        /api/preautotest
+- GET    /api/report
+-        /api/report
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js
+-        /api/qmoi/error-log
+-        /api/qmoi/notify-master
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-notification-system.js
+- POST   https://api.pushover.net/1/messages.json
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-real-time-monitor.py
+-        /api/stats
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-universal-error-handler.js
+- GET    https://httpbin.org/get
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_build_api.py
+- POST   /api/build-apps
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_dashboard.js
+-        /trigger-fix
+-        /update-notification-prefs
+- GET    http://localhost:4100/api/predictions
+- GET    http://localhost:4200/api/notification-history
+- GET    http://localhost:4200/api/notification-prefs
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_device_integration.py
+- POST   /api/device/detect
+- POST   /api/device/master-mode
+- GET    /api/device/reports/detection
+- GET    /api/device/reports/unlock
+- GET    /api/device/status
+- GET    /api/device/status/integration
+- POST   /api/device/unlock
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/services/auto_fix_service.ts
+- POST   /api/qcity/ai/fix
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/DownloadQCity.tsx
+-        /api/qcity/download-url
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/QI.tsx
+-        /api/qradio/channels
+-        /api/qradio/play
+-        /api/qradio/program
+-        /api/qradio/programs
+-        /api/qradio/status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx
+-        /api/account-automation/create
+-        /api/account-automation/login
+-        /api/account-automation/verify
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/AvatarSelector.tsx
+-        /api/qmoi/avatars
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/AviatorGalleryPanel.tsx
+-        /api/qmoi/avatars
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/CommandPanel.tsx
+-        /api/qcity/remote-command
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/DevicePanel.tsx
+-        /api/qcity/devices
+-        /api/qcity/devices?action=test
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx
+-        /api/document-backup/list
+-        /api/document-backup/restore
+-        /api/document-backup/upload
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+-        /api/earning/analytics
+-        /api/earning/monitor
+-        /api/earning/self-heal
+-        /api/earning/strategies
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/MetricsPanel.tsx
+-        /api/qcity/metrics
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/PluginPanel.tsx
+-        /api/qcity/plugins
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QApiKeyManager.tsx
+-        /api/qapikey
+-        /api/qapikey/usage
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QFileManager.tsx
+-        /api/wallet
+-        /api/wallet?pending_wallets=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMOIStateProvider.tsx
+-        /api/qmoi/avatars
+-        /api/qmoi/voice-profiles
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx
+-        /api/qmoi/autodev
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx
+-        /api/qmoi-database/route
+-        /api/qmoi-database/route?schema=true
+-        /api/qmoi-database/route?tables=true
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiFileEditorChat.tsx
+-        /api/qmoi/autodev
+-        /api/qmoi/file
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QMoiMemoryPanel.tsx
+-        /api/qmoi/feedback
+-        /api/qmoi/memory
+-        /api/qmoi/memory-backup
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+-        /api/qnews
+-        /api/qnews/analytics
+-        /api/qnews/media
+-        /api/qnews/schedule
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SchedulePanel.tsx
+-        /api/qcity/schedule
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SessionPanel.tsx
+-        /api/auth/session
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+-        /api/social-automation/contacts
+-        /api/social-automation/features
+-        /api/social-automation/post
+-        /api/social-automation/tag
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+-        /api/qmoi/fix/all
+-        /api/qmoi/fix/connectivity
+-        /api/qmoi/fix/ui
+-        /api/qmoi/status
+-        /api/qmoi/ui-health-check
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/VoiceSelector.tsx
+-        /api/qmoi/voice-preview
+-        /api/qmoi/voice-profiles
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/components/q-city/WalletManager.tsx
+-        /api/wallet
+-        /api/wallet?pending_wallets=1
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/hooks/useAutoProjects.ts
+-        /api/whatsapp/create-group
+-        /api/whatsapp/notify-master
+-        /api/whatsapp/post-to-group
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/hooks/useQmoiKernel.ts
+-        /api/qmoi/status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/services/ErrorFixingService.ts
+- POST   /api/edit-file
+- POST   /api/run-command
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/src/services/QmoiMemory.ts
+-        /api/md-update
+-        /api/memory
+-        /api/repo-sync
+
+### Source: /workspaces/qmoi-enhanced/qmoi-enhanced/templates/dashboard.html
+-        /api/trigger-gitlab-ci
+
+### Source: /workspaces/qmoi-enhanced/qmoi-space-pwa/js/app.js
+-        /api/version
+
+### Source: /workspaces/qmoi-enhanced/qmoi-space/public/js/chat.js
+-        /api/qcity/ai-chat
+
+### Source: /workspaces/qmoi-enhanced/qmoi-space/public/js/qmoi-core.js
+-        /api/qcity/backup
+-        /api/qcity/status
+
+### Source: /workspaces/qmoi-enhanced/qmoi-space/public/sw.js
+-        /api/qmoi/chat
+-        /api/qmoi/files/upload
+-        /api/qmoi/voice/process
+
+### Source: /workspaces/qmoi-enhanced/qmoi_control_server.py
+- POST   /admin/backup-db
+- GET    /admin/check-access/<username>/<feature>
+- POST   /admin/set-pricing
+- POST   /admin/update-ngrok
+- GET    /admin/users
+- POST   /ai
+- POST   /ai/tts
+- POST   /attachments
+- GET    /attachments/<att_id>/download
+- POST   /control
+- GET    /deals
+- GET    /deals/<deal_id>
+- POST   /deals/<deal_id>/activate
+- POST   /deals/<deal_id>/deactivate
+- POST   /deals/<deal_id>/purchase
+- POST   /deals/create
+- GET    /health
+- POST   /login
+- POST   /logout
+- GET    /memories
+- GET    /metrics
+- GET    /mirror/app/<appname>/
+- GET    /mirror/app/<appname>/<path:rest>
+- GET    /mirror/raw/<path:rest>
+- POST   /payments/webhook
+- GET    /ready
+- POST   /signup
+- POST   /sponsored/add
+- POST   /sync-memory
+- GET    /wallet
+- POST   /wallet/credit
+- POST   /wallet/debit
+- POST   /webauthn/authenticate/complete
+- POST   /webauthn/authenticate/options
+- POST   /webauthn/register/complete
+- POST   /webauthn/register/options
+
+### Source: /workspaces/qmoi-enhanced/scripts/auto-git-update.js
+-        /api/whatsapp/notify-master
+
+### Source: /workspaces/qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py
+-        /api/status
+
+### Source: /workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py
+- GET    /
+- GET    /api/doc-history
+-        /api/doc-history
+- GET    /api/event-stats
+-        /api/event-stats
+- GET    /api/log
+-        /api/log
+-        /api/log?search=
+- GET    /api/notifications
+-        /api/notifications
+- POST   /api/notifications/test
+-        /api/notifications/test
+- GET    /api/preautotest
+-        /api/preautotest
+- GET    /api/report
+-        /api/report
+
+### Source: /workspaces/qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js
+-        /api/qmoi/error-log
+-        /api/qmoi/notify-master
+
+### Source: /workspaces/qmoi-enhanced/scripts/qmoi-notification-system.js
+- POST   https://api.pushover.net/1/messages.json
+
+### Source: /workspaces/qmoi-enhanced/scripts/qmoi-real-time-monitor.py
+-        /api/stats
+
+### Source: /workspaces/qmoi-enhanced/scripts/qmoi-universal-error-handler.js
+- GET    https://httpbin.org/get
+
+### Source: /workspaces/qmoi-enhanced/scripts/qmoi_build_api.py
+- POST   /api/build-apps
+
+### Source: /workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py
+- POST   /api/device/detect
+- POST   /api/device/master-mode
+- GET    /api/device/reports/detection
+- GET    /api/device/reports/unlock
+- GET    /api/device/status
+- GET    /api/device/status/integration
+- POST   /api/device/unlock
+
+### Source: /workspaces/qmoi-enhanced/scripts/services/auto_fix_service.ts
+- POST   /api/qcity/ai/fix
+
+### Source: /workspaces/qmoi-enhanced/src/components/DownloadQCity.tsx
+-        /api/qcity/download-url
+
+### Source: /workspaces/qmoi-enhanced/src/components/QI.tsx
+-        /api/qradio/channels
+-        /api/qradio/play
+-        /api/qradio/program
+-        /api/qradio/programs
+-        /api/qradio/status
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx
+-        /api/account-automation/create
+-        /api/account-automation/login
+-        /api/account-automation/verify
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/AvatarSelector.tsx
+-        /api/qmoi/avatars
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/AviatorGalleryPanel.tsx
+-        /api/qmoi/avatars
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/CommandPanel.tsx
+-        /api/qcity/remote-command
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/DevicePanel.tsx
+-        /api/qcity/devices
+-        /api/qcity/devices?action=test
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx
+-        /api/document-backup/list
+-        /api/document-backup/restore
+-        /api/document-backup/upload
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/EarningDashboard.tsx
+-        /api/earning/analytics
+-        /api/earning/monitor
+-        /api/earning/self-heal
+-        /api/earning/strategies
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/MetricsPanel.tsx
+-        /api/qcity/metrics
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/PluginPanel.tsx
+-        /api/qcity/plugins
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/QApiKeyManager.tsx
+-        /api/qapikey
+-        /api/qapikey/usage
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/QFileManager.tsx
+-        /api/wallet
+-        /api/wallet?pending_wallets=1
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/QMOIStateProvider.tsx
+-        /api/qmoi/avatars
+-        /api/qmoi/voice-profiles
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx
+-        /api/qmoi/autodev
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx
+-        /api/qmoi-database/route
+-        /api/qmoi-database/route?schema=true
+-        /api/qmoi-database/route?tables=true
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/QMoiFileEditorChat.tsx
+-        /api/qmoi/autodev
+-        /api/qmoi/file
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/QMoiMemoryPanel.tsx
+-        /api/qmoi/feedback
+-        /api/qmoi/memory
+-        /api/qmoi/memory-backup
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx
+-        /api/qnews
+-        /api/qnews/analytics
+-        /api/qnews/media
+-        /api/qnews/schedule
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/SchedulePanel.tsx
+-        /api/qcity/schedule
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/SessionPanel.tsx
+-        /api/auth/session
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx
+-        /api/social-automation/contacts
+-        /api/social-automation/features
+-        /api/social-automation/post
+-        /api/social-automation/tag
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx
+-        /api/qmoi/fix/all
+-        /api/qmoi/fix/connectivity
+-        /api/qmoi/fix/ui
+-        /api/qmoi/status
+-        /api/qmoi/ui-health-check
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/VoiceSelector.tsx
+-        /api/qmoi/voice-preview
+-        /api/qmoi/voice-profiles
+
+### Source: /workspaces/qmoi-enhanced/src/components/q-city/WalletManager.tsx
+-        /api/wallet
+-        /api/wallet?pending_wallets=1
+
+### Source: /workspaces/qmoi-enhanced/src/hooks/useAutoProjects.ts
+-        /api/whatsapp/create-group
+-        /api/whatsapp/notify-master
+-        /api/whatsapp/post-to-group
+
+### Source: /workspaces/qmoi-enhanced/src/hooks/useQmoiKernel.ts
+-        /api/qmoi/status
+
+### Source: /workspaces/qmoi-enhanced/src/services/ErrorFixingService.ts
+- POST   /api/edit-file
+- POST   /api/run-command
+
+### Source: /workspaces/qmoi-enhanced/templates/dashboard.html
+-        /api/trigger-gitlab-ci
+
+<!-- API_INVENTORY_END -->

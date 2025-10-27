@@ -25,7 +25,7 @@ QMOI_PROD_CREDENTIAL=your_production_credential
 
 # M-Pesa API Credentials (Get from Safaricom)
 MPESA_CONSUMER_KEY=your_consumer_key
-MPESA_CONSUMER_SECRET=your_consumer_secret
+MPESA_CONSUMER_SECRET=<REDACTED>
 MPESA_PASSKEY=your_passkey
 MPESA_SHORTCODE=your_shortcode
 MPESA_ENVIRONMENT=production

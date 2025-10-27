@@ -367,8 +367,8 @@ cd qmoi-ai-automation
 npm run qmoi-setup
 
 # Configure environment
-export GITLAB_TOKEN="your-token"
-export GITHUB_TOKEN="your-token"
+export GITLAB_TOKEN="<REDACTED_TOKEN>"
+export GITHUB_TOKEN="<REDACTED_TOKEN>"
 
 # Start QMOI
 npm start

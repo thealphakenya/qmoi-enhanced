@@ -59,7 +59,7 @@ The QMOI Airtel Money Integration provides automated revenue generation through 
 ```bash
 # Airtel Money API Configuration
 AIRTEL_CLIENT_ID=your_airtel_client_id
-AIRTEL_CLIENT_SECRET=your_airtel_client_secret
+AIRTEL_CLIENT_SECRET=<REDACTED>
 AIRTEL_PHONE_NUMBER=254786322855
 AIRTEL_ENVIRONMENT=production
 
@@ -409,7 +409,7 @@ npm run revenue:reset:airtel
 ```bash
 # Required environment variables
 AIRTEL_CLIENT_ID=your_client_id
-AIRTEL_CLIENT_SECRET=your_client_secret
+AIRTEL_CLIENT_SECRET=<REDACTED>
 AIRTEL_PHONE_NUMBER=254786322855
 QMOI_DAILY_TARGET_AIRTEL=10000
 QMOI_AUTO_TRANSFER_AIRTEL=2000
