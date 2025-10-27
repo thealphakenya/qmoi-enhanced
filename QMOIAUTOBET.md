@@ -17,7 +17,7 @@ QMOI AUTOBET is an advanced automated betting system that operates across multip
 ## 🎯 Core Betting Platforms
 
 ### 1. Betika Integration
-- **Account Access:** Phone: 0725382624, Password: 9798
+- **Account Access:** Phone: 0725382624, Password: <REDACTED>
 - **Email:** rovicviccy@gmail.com
 - **Auto-Login:** Automated platform access with credentials
 - **Live Betting:** Real-time live match betting
@@ -26,7 +26,7 @@ QMOI AUTOBET is an advanced automated betting system that operates across multip
 - **Daily Target:** KSH 10,000+ profit per day (doubled)
 
 ### 2. Odibets Integration
-- **Account Access:** Phone: 0725382624, Password: Victor9798!
+- **Account Access:** Phone: 0725382624, Password: <REDACTED>!
 - **Email:** rovicviccy@gmail.com
 - **Auto-Login:** Automated platform access with credentials
 - **Multi-Sport Betting:** Football, basketball, tennis, etc.

@@ -381,7 +381,7 @@ describe('User API Integration', () => {
     const userData = {
       name: 'John Doe',
       email: 'john@example.com',
-      password: 'password123'
+      password: <REDACTED>
     };
 
     const response = await request(app)

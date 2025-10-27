@@ -22,7 +22,7 @@ All endpoints require authentication using OAuth2 with Bearer tokens. To obtain 
 # Example token request
 curl -X POST "http://localhost:8000/token" \
      -H "Content-Type: application/x-www-form-urlencoded" \
-     -d "username=user&password=pass"
+     -d "username=user&password=<REDACTED>
 
 # Example authenticated request
 curl -X GET "http://localhost:8000/automation/status" \
@@ -337,7 +337,7 @@ class AutomationClient:
         return response.json()
 
 # Usage
-client = AutomationClient('http://localhost:8000', 'your-token')
+client = AutomationClient('http://localhost:8000', '<REDACTED_TOKEN>')
 status = client.get_status()
 ```
 
@@ -377,7 +377,7 @@ class AutomationClient {
 }
 
 // Usage
-const client = new AutomationClient('http://localhost:8000', 'your-token');
+const client = new AutomationClient('http://localhost:8000', '<REDACTED_TOKEN>');
 client.getStatus().then(console.log);
 ```
 

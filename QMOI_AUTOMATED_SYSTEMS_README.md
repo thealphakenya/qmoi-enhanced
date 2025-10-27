@@ -28,8 +28,8 @@ QMOI Automated Systems provide continuous background operation for device owners
 - **File:** `scripts/qmoi_automated_betting_system.py`
 - **Purpose:** Automated betting across multiple platforms
 - **Platforms:**
-  - **Odibets:** Phone: 0725382624, Password: Victor9798!
-  - **Betika:** Phone: 0725382624, Password: 9798
+  - **Odibets:** Phone: 0725382624, Password: <REDACTED>!
+  - **Betika:** Phone: 0725382624, Password: <REDACTED>
   - **M-Pesa:** +254725392624
 - **Features:**
   - AI-powered betting analysis
@@ -113,13 +113,13 @@ cat logs/qmoi_startup_status.json
 ### Platform Credentials
 - **Odibets:**
   - Phone: 0725382624
-  - Password: Victor9798!
+  - Password: <REDACTED>!
   - Email: rovicviccy@gmail.com
   - Daily Target: KSH 10,000+
 
 - **Betika:**
   - Phone: 0725382624
-  - Password: 9798
+  - Password: <REDACTED>
   - Email: rovicviccy@gmail.com
   - Daily Target: KSH 10,000+
 

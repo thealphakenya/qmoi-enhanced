@@ -30,7 +30,7 @@ This document outlines the configuration and deployment process for enabling Cla
 Claude Sonnet 3.5 requires API key configuration:
 
 ```bash
-CLAUDE_API_KEY=your_api_key
+CLAUDE_API_KEY=<REDACTED>
 CLAUDE_ORG_ID=your_org_id
 ```
 

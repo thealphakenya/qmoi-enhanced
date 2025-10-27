@@ -149,8 +149,10 @@ class QmoiParallelProcessor:
         return [f.result() for f in futures]
 
     def _process_locally(self, batch: List[Dict]) -> List[ProcessingResult]:
+        # Use thread pool for local processing to avoid multiprocessing
+        # pickling issues in environments where tasks capture local state.
         futures = []
-        with self.process_pool as executor:
+        with self.thread_pool as executor:
             for task in batch:
                 futures.append(executor.submit(self._local_task_wrapper, task))
         return [f.result() for f in futures]

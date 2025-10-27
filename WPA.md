@@ -371,7 +371,7 @@ import { QMOIClient } from '@qmoi/api';
 
 const client = new QMOIClient({
   baseURL: 'https://api.qmoi.app',
-  apiKey: 'your-api-key',
+  apiKey: <REDACTED>,
   timeout: 30000
 });
 

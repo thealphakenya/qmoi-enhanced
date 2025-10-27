@@ -87,7 +87,7 @@ from flask import Flask, request, abort
 import hmac, hashlib, os
 
 app = Flask(__name__)
-WEBHOOK_SECRET = os.environ.get('QMOI_WEBHOOK_SECRET', '')
+WEBHOOK_SECRET = <REDACTED>.environ.get('QMOI_WEBHOOK_SECRET', '')
 
 def verify_signature(data, signature):
 		mac = hmac.new(WEBHOOK_SECRET.encode('utf-8'), msg=data, digestmod=hashlib.sha256)
