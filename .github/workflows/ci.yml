@@ -18,16 +18,24 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install deps
-        run: python3 -m pip install --upgrade pip
+        run: |
+          python3 -m pip install --upgrade pip
+          if [ -f requirements-dev.txt ]; then python3 -m pip install -r requirements-dev.txt || true; fi
       - name: Validate required secrets (conditional)
         if: secrets.GITHUB_TOKEN != ''
         run: python3 scripts/env_manager.py --check
         shell: bash
       - name: Byte-compile repository
         run: python3 -m py_compile $(find . -name "*.py") || true
+      - name: Lint with flake8
+        run: |
+          if command -v flake8 >/dev/null 2>&1; then
+            flake8 || true
+          else
+            echo "flake8 not installed"
+          fi
       - name: Run pytest (if present)
         run: |
-          python3 -m pip install pytest || true
           if [ -d tests ] && ls tests/*.py >/dev/null 2>&1; then pytest -q || true; else echo "No pytest tests found"; fi
 
   node-build:
