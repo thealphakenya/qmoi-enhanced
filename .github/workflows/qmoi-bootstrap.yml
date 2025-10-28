@@ -1,0 +1,32 @@
+name: qmoi-bootstrap
+
+on:
+  push:
+    branches:
+      - 'auto/*'
+
+jobs:
+  bootstrap-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install minimal deps
+        run: python -m pip install --upgrade pip
+      - name: Run master-detect (safe)
+        run: python3 scripts/qmoi_master_detect.py || true
+      - name: Enforce zero-rating (safe)
+        run: bash scripts/ensure_zero_rating.sh || true
+      - name: Validate new scripts (syntax check)
+        run: |
+          python -m py_compile scripts/qmoi_master_detect.py scripts/qmoi_friendship_daemon.py || true
+      - name: Generate placeholder report
+        run: python3 scripts/generate_placeholders_remaining.py || true
+      - name: Upload placeholders report
+        uses: actions/upload-artifact@v4
+        with:
+          name: placeholders_remaining
+          path: reports/placeholders_remaining.json
