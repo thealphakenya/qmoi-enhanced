@@ -1,0 +1,72 @@
+name: Build PWAs and Android (template)
+
+on:
+  push:
+    branches: [ auto/placeholder-stubs-clean, autosync-backup-20250926-232440 ]
+  pull_request:
+    branches: [ autosync-backup-20250926-232440 ]
+  workflow_dispatch:
+
+jobs:
+  build_pwas:
+    name: Build PWAs
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [ q-alpha, qmoi, qmoi-ai ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install & Build PWA
+        run: |
+          APP_DIR="pwa_apps/${{ matrix.app }}"
+          if [ -f "$APP_DIR/package.json" ]; then
+            cd "$APP_DIR"
+            npm ci
+            if npm run | grep -q build; then
+              npm run build
+            else
+              echo "No build script for ${{ matrix.app }}"
+            fi
+          else
+            echo "No package.json for ${{ matrix.app }}"
+          fi
+      - name: Upload build artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.app }}-dist
+          path: pwa_apps/${{ matrix.app }}/build || pwa_apps/${{ matrix.app }}/dist || pwa_apps/${{ matrix.app }}/public || ''
+
+  android_build:
+    name: Android assemble (template)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/heads/auto/')
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Install Android SDK (placeholder)
+        run: |
+          echo "This job requires Android SDK setup and keystore secrets. Replace with a proper SDK setup action."
+      - name: Build Android APK (placeholder)
+        run: |
+          if [ -f mobile/android/gradlew ]; then
+            chmod +x mobile/android/gradlew
+            cd mobile/android
+            ./gradlew assembleRelease || true
+          else
+            echo "No Android project found at mobile/android"
+          fi
+      - name: Upload APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: mobile/android/**/outputs/**/*.apk
