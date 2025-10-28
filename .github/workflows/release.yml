@@ -1,3 +1,16 @@
+name: Draft Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  draft_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Draft Release (manual step)
+        run: |
+          echo "This workflow is a template. Configure secrets.GITHUB_TOKEN or a release token and add artifact upload steps suited to your artifacts."
 name: LION Variations Release
 
 on:

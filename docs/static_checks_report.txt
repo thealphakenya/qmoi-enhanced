@@ -1,0 +1,50 @@
+Static checks run at: 2025-10-28T11:49:33+00:00
+\n-- Python syntax checks (py_compile) --
+Sorry: IndentationError: unexpected indent (next.config.mjs.auto_stub.py, line 10)PY SYNTAX ERROR: ./stubs/next.config.mjs.auto_stub.py
+Sorry: IndentationError: unexpected indent (ai_self_update.py.auto_stub.py, line 10)PY SYNTAX ERROR: ./stubs/ai_self_update.py.auto_stub.py
+Sorry: IndentationError: unexpected indent (components__enhanced-system-dashboard.tsx.auto_stub.py, line 10)PY SYNTAX ERROR: ./stubs/components__enhanced-system-dashboard.tsx.auto_stub.py
+Sorry: IndentationError: unexpected indent (components__GlobalMail.tsx.auto_stub.py, line 10)PY SYNTAX ERROR: ./stubs/components__GlobalMail.tsx.auto_stub.py
+Sorry: IndentationError: unexpected indent (notify_on_whatsapp.py.auto_stub.py, line 10)PY SYNTAX ERROR: ./stubs/notify_on_whatsapp.py.auto_stub.py
+Sorry: IndentationError: unexpected indent (components__DownloadManager.tsx.auto_stub.py, line 10)PY SYNTAX ERROR: ./stubs/components__DownloadManager.tsx.auto_stub.py
+  File "./stubs/pa.py.auto_stub.py", line 11
+    --- pa.py (suggested) ---
+                             ^
+SyntaxError: invalid syntax
+PY SYNTAX ERROR: ./stubs/pa.py.auto_stub.py
+  File "./stubs/QMOIDATABASE.md.auto_stub.py", line 10
+    - [ ] Implement back
+          ^^^^^^^^^
+SyntaxError: invalid syntax
+PY SYNTAX ERROR: ./stubs/QMOIDATABASE.md.auto_stub.py
+  File "./stubs/docs__auto_fix_report.json.auto_stub.py", line 15
+    --- docs/auto_fix_report.json (suggested) ---
+                                                 ^
+SyntaxError: invalid syntax
+PY SYNTAX ERROR: ./stubs/docs__auto_fix_report.json.auto_stub.py
+Sorry: IndentationError: unexpected indent (components__enhanced_build_tools.tsx.auto_stub.py, line 10)PY SYNTAX ERROR: ./stubs/components__enhanced_build_tools.tsx.auto_stub.py
+  File "./scripts/qmoi_todos.py", line 24
+    if not TODO  # PRODUCTION: resolvedS_FILE.exists():
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: expected ':'
+PY SYNTAX ERROR: ./scripts/qmoi_todos.py
+  File "./scripts/qmoi-unified-push-ultimate.py", line 264
+    missing_deps = ["xmlrunner", "pytest-xdist", "pytest-cov", "pytest-[PRODUCTION IMPLEMENTATION REQUIRED]"  # PRODUCTION: review and implement]  # PRODUCTION: review and implement
+                   ^
+SyntaxError: '[' was never closed
+PY SYNTAX ERROR: ./scripts/qmoi-unified-push-ultimate.py
+  File "./scripts/validate_ui_components.py", line 33
+    if TODO  # PRODUCTION: resolved_PAT.search(text):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: expected ':'
+PY SYNTAX ERROR: ./scripts/validate_ui_components.py
+  File "./qmoi-enhanced/scripts/qmoi-unified-push-ultimate.py", line 264
+    missing_deps = ["xmlrunner", "pytest-xdist", "pytest-cov", "pytest-[PRODUCTION IMPLEMENTATION REQUIRED]"  # PRODUCTION: review and implement]  # PRODUCTION: review and implement
+                   ^
+SyntaxError: '[' was never closed
+PY SYNTAX ERROR: ./qmoi-enhanced/scripts/qmoi-unified-push-ultimate.py
+Python files checked: 737, failures: 14
+\n-- Shell script syntax checks (bash -n) --
+Shell scripts checked: 27, failures: 0
+\n-- Short summary --
+PY_FAILS=14
+SH_FAILS=0

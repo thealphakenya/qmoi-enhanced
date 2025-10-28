@@ -1,3 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ auto/placeholder-stubs, autosync-backup-20250926-232440 ]
+  pull_request:
+    branches: [ autosync-backup-20250926-232440 ]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Run static checks
+        run: |
+          chmod +x scripts/run_static_checks.sh
+          ./scripts/run_static_checks.sh
+      - name: Upload static report
+        uses: actions/upload-artifact@v4
+        with:
+          name: static_checks_report
+          path: docs/static_checks_report.txt
   build:
 name: CI
 
