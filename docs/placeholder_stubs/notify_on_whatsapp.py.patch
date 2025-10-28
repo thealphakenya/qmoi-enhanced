@@ -1,0 +1,15 @@
+# Suggested conservative stub for notify_on_whatsapp.py
+# Review before applying.
+
+# L118: TODO: Integrate with device APIs
+    return True
+
+def
+# L118: # TODO: Integrate with device APIs
+    return True
+
+def
+
+--- notify_on_whatsapp.py (suggested) ---
+# AUTO-STUB: conservative placeholder to be reviewed
+raise NotImplementedError('Auto-stub: please implement notify_on_whatsapp.py')

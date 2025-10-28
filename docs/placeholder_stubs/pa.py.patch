@@ -1,0 +1,8 @@
+# Suggested conservative stub for pa.py
+# Review before applying.
+
+# L8: Placeholder executable content - in production this should be
+
+--- pa.py (suggested) ---
+# AUTO-STUB: conservative placeholder to be reviewed
+raise NotImplementedError('Auto-stub: please implement pa.py')

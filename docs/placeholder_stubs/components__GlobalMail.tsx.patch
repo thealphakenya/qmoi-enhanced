@@ -1,0 +1,16 @@
+# Suggested conservative stub for components/GlobalMail.tsx
+# Review before applying.
+
+# L19: placeholder="Recipient Email"
+        value={to}
+        onCh
+# L26: placeholder="Subject"
+        value={subject}
+        onChang
+# L32: placeholder="Message Body"
+        value={body}
+        onCha
+
+--- components/GlobalMail.tsx (suggested) ---
+# AUTO-STUB: conservative placeholder to be reviewed
+raise NotImplementedError('Auto-stub: please implement components/GlobalMail.tsx')

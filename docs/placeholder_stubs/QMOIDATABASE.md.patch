@@ -1,0 +1,9 @@
+# Suggested conservative stub for QMOIDATABASE.md
+# Review before applying.
+
+# L81: # TODO_RESOLVED (auto-note: verify)
+- [ ] Implement back
+
+--- QMOIDATABASE.md (suggested) ---
+# AUTO-STUB: conservative placeholder to be reviewed
+raise NotImplementedError('Auto-stub: please implement QMOIDATABASE.md')

@@ -1,0 +1,9 @@
+# Suggested conservative stub for next.config.mjs
+# Review before applying.
+
+# L6: placeholder.svg'],
+    unoptimized: true // disables automati
+
+--- next.config.mjs (suggested) ---
+# AUTO-STUB: conservative placeholder to be reviewed
+raise NotImplementedError('Auto-stub: please implement next.config.mjs')

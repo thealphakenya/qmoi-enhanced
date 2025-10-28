@@ -1,0 +1,12 @@
+# Suggested conservative stub for docs/auto_fix_report.json
+# Review before applying.
+
+# L6962: placeholder\\\\b', re.IGNORECASE)\",\n-    \"match\": \"REPLA
+# L5706: // TODO_RESOLVED (auto-note: verify)\",\n           \"lin
+# L5706: // TODO_RESOLVED (auto-note: verify): Define configuratio
+# L5706: // TODO_RESOLVED (auto-note: verify): Define configuratio
+# L5706: // TODO_RESOLVED (auto-note: verify)\",\n           \"lin
+
+--- docs/auto_fix_report.json (suggested) ---
+# AUTO-STUB: conservative placeholder to be reviewed
+raise NotImplementedError('Auto-stub: please implement docs/auto_fix_report.json')

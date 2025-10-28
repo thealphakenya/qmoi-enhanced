@@ -1,0 +1,10 @@
+# Suggested conservative stub for components/DownloadManager.tsx
+# Review before applying.
+
+# L67: placeholder="Enter file URL"
+        value={url}
+        onCh
+
+--- components/DownloadManager.tsx (suggested) ---
+# AUTO-STUB: conservative placeholder to be reviewed
+raise NotImplementedError('Auto-stub: please implement components/DownloadManager.tsx')

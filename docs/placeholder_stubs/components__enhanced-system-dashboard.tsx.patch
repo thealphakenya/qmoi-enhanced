@@ -1,0 +1,11 @@
+# Suggested conservative stub for components/enhanced-system-dashboard.tsx
+# Review before applying.
+
+# L465: placeholder="Search devices..."
+                        value
+# L579: placeholder="Search plugins..."
+                        value
+
+--- components/enhanced-system-dashboard.tsx (suggested) ---
+# AUTO-STUB: conservative placeholder to be reviewed
+raise NotImplementedError('Auto-stub: please implement components/enhanced-system-dashboard.tsx')
