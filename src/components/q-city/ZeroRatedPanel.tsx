@@ -46,11 +46,29 @@ export default function ZeroRatedPanel() {
           </div>
           <div>Last Used: {status.lastUsed}</div>
           <button
-            onClick={() => alert("Force zero-rated mode (not implemented)")}
+            onClick={async () => {
+              try {
+                const res = await fetch('/api/admin/zero-rated', { method: 'POST' });
+                const j = await res.json().catch(() => ({}));
+                alert(j.message || 'Requested zero-rated mode');
+              } catch (err) {
+                alert('Failed to request zero-rated mode: ' + String(err));
+              }
+            }}
           >
             Force ZeroRated Mode
           </button>
-          <button onClick={() => alert("Test endpoints (not implemented)")}>
+          <button
+            onClick={async () => {
+              try {
+                const res = await fetch('/api/admin/zero-rated/test', { method: 'POST' });
+                const j = await res.json().catch(() => ({}));
+                alert(j.message || 'Tested endpoints (see logs)');
+              } catch (err) {
+                alert('Endpoint test failed: ' + String(err));
+              }
+            }}
+          >
             Test Endpoints
           </button>
           <h4>Logs</h4>
