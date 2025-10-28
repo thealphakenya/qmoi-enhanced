@@ -1,0 +1,69 @@
+{
+  "generated_at": "2025-10-28T17:02:34.090795Z",
+  "generated_by": "check_envs.py",
+  "present_count": 1,
+  "missing_count": 11,
+  "missing": [
+    "ADMIN_TOKEN",
+    "CASHON_API_KEY",
+    "CASHON_API_SECRET",
+    "MPESA_CONSUMER_KEY",
+    "MPESA_CONSUMER_SECRET",
+    "BINANCE_API_KEY",
+    "BINANCE_API_SECRET",
+    "ANDROID_KEYSTORE_BASE64",
+    "ANDROID_KEYSTORE_PASSWORD",
+    "APPLE_CERT_P12_BASE64",
+    "APPLE_CERT_PASSWORD"
+  ],
+  "details": [
+    {
+      "name": "ADMIN_TOKEN",
+      "present": false
+    },
+    {
+      "name": "GITHUB_TOKEN",
+      "present": true
+    },
+    {
+      "name": "CASHON_API_KEY",
+      "present": false
+    },
+    {
+      "name": "CASHON_API_SECRET",
+      "present": false
+    },
+    {
+      "name": "MPESA_CONSUMER_KEY",
+      "present": false
+    },
+    {
+      "name": "MPESA_CONSUMER_SECRET",
+      "present": false
+    },
+    {
+      "name": "BINANCE_API_KEY",
+      "present": false
+    },
+    {
+      "name": "BINANCE_API_SECRET",
+      "present": false
+    },
+    {
+      "name": "ANDROID_KEYSTORE_BASE64",
+      "present": false
+    },
+    {
+      "name": "ANDROID_KEYSTORE_PASSWORD",
+      "present": false
+    },
+    {
+      "name": "APPLE_CERT_P12_BASE64",
+      "present": false
+    },
+    {
+      "name": "APPLE_CERT_PASSWORD",
+      "present": false
+    }
+  ]
+}

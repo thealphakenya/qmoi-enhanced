@@ -1,0 +1,311 @@
+{
+  "generated_at": "2025-10-28T17:02:44.923021Z",
+  "generated_by": "wallet_audit.py",
+  "found_count": 56,
+  "items": [
+    {
+      "path": "./CASHONTRADINGREADME.md",
+      "size_bytes": 8253
+    },
+    {
+      "path": "./CASHON.md",
+      "size_bytes": 12605
+    },
+    {
+      "path": "./docs/WALLET_SECURITY_PLAYBOOK.md",
+      "size_bytes": 2780
+    },
+    {
+      "path": "./docs/wallets_report.json",
+      "json_keys": [
+        "root",
+        "found",
+        "candidates"
+      ],
+      "json_preview": "{\"root\": \"/workspaces/qmoi-enhanced\", \"found\": 278, \"candidates\": [\"ALLMDFILESREFS.md\", \"AUTOLINTREADME.md\", \"AUTOMATION-SUMMARY.md\", \"CASHON.md\", \"CASHONTRADINGREADME.md\", \"COMPONENTS.md\", \"DOWNLOADQ"
+    },
+    {
+      "path": "./docs/wallets_report.json.20251027231213.bak",
+      "size_bytes": 11152
+    },
+    {
+      "path": "./components/LeahWalletPanel.tsx",
+      "size_bytes": 2135
+    },
+    {
+      "path": "./components/CashonTradingPanel.tsx",
+      "size_bytes": 17799
+    },
+    {
+      "path": "./components/LeahWallet.tsx",
+      "size_bytes": 2197
+    },
+    {
+      "path": "./src/components/q-city/WalletManager.tsx",
+      "size_bytes": 6582
+    },
+    {
+      "path": "./src/config/wallet.ts",
+      "size_bytes": 2916
+    },
+    {
+      "path": "./src/config/wallet.ts.bak",
+      "size_bytes": 2916
+    },
+    {
+      "path": "./lib/mpesa-api.ts",
+      "size_bytes": 6584
+    },
+    {
+      "path": "./lib/cashon-wallet.ts",
+      "size_bytes": 13662
+    },
+    {
+      "path": "./lib/cashon-wallet.ts.bak",
+      "size_bytes": 13662
+    },
+    {
+      "path": "./services/walletManager.ts",
+      "size_bytes": 3933
+    },
+    {
+      "path": "./mobile/android/app/debug.keystore",
+      "size_bytes": 2257
+    },
+    {
+      "path": "./scripts/test_wallets.py",
+      "size_bytes": 1442
+    },
+    {
+      "path": "./scripts/mpesa-setup-guide.js",
+      "size_bytes": 4251
+    },
+    {
+      "path": "./scripts/wallets_audit.py",
+      "size_bytes": 8644
+    },
+    {
+      "path": "./scripts/wallet_audit.py",
+      "size_bytes": 2095
+    },
+    {
+      "path": "./scripts/__pycache__/wallets_audit.cpython-311.pyc",
+      "size_bytes": 14234
+    },
+    {
+      "path": "./scripts/__pycache__/test_wallets.cpython-311.pyc",
+      "size_bytes": 2497
+    },
+    {
+      "path": "./app/api/wallet.ts",
+      "size_bytes": 13144
+    },
+    {
+      "path": "./app/api/wallet.ts.bak",
+      "size_bytes": 13144
+    },
+    {
+      "path": "./qmoi-enhanced/CASHONTRADINGREADME.md",
+      "size_bytes": 8267
+    },
+    {
+      "path": "./qmoi-enhanced/CASHON.md",
+      "size_bytes": 12619
+    },
+    {
+      "path": "./qmoi-enhanced/components/LeahWalletPanel.tsx",
+      "size_bytes": 2170
+    },
+    {
+      "path": "./qmoi-enhanced/components/CashonTradingPanel.tsx",
+      "size_bytes": 17906
+    },
+    {
+      "path": "./qmoi-enhanced/components/LeahWallet.tsx",
+      "size_bytes": 2316
+    },
+    {
+      "path": "./qmoi-enhanced/src/components/q-city/WalletManager.tsx",
+      "size_bytes": 6582
+    },
+    {
+      "path": "./qmoi-enhanced/src/config/wallet.ts",
+      "size_bytes": 2916
+    },
+    {
+      "path": "./qmoi-enhanced/src/config/wallet.ts.bak",
+      "size_bytes": 2916
+    },
+    {
+      "path": "./qmoi-enhanced/mobile/android/app/debug.keystore",
+      "size_bytes": 2257
+    },
+    {
+      "path": "./qmoi-enhanced/scripts/mpesa-setup-guide.js",
+      "size_bytes": 4251
+    },
+    {
+      "path": "./qmoi-enhanced/app/api/wallet.ts",
+      "size_bytes": 13144
+    },
+    {
+      "path": "./qmoi-enhanced/app/api/wallet.ts.bak",
+      "size_bytes": 13144
+    },
+    {
+      "path": "./.qmoi_validation/qmoi-enhanced__CASHON.md.validation.json",
+      "json_keys": [
+        "file",
+        "validated_at",
+        "validator",
+        "checks",
+        "passed",
+        "summary"
+      ],
+      "json_preview": "{\"file\": \"qmoi-enhanced/CASHON.md\", \"validated_at\": \"2025-10-26T20:51:24.602041Z\", \"validator\": \"QMOI Lion (automated)\", \"checks\": [{\"name\": \"title_present\", \"ok\": true, \"detail\": \"CASHON.md - QMOI AI"
+    },
+    {
+      "path": "./.qmoi_validation/qmoi-enhanced__CASHONTRADINGREADME.md.validation.json.20251027231156.bak",
+      "size_bytes": 438
+    },
+    {
+      "path": "./.qmoi_validation/CASHON.md.validation.json",
+      "json_keys": [
+        "file",
+        "validated_at",
+        "validator",
+        "checks",
+        "passed",
+        "summary"
+      ],
+      "json_preview": "{\"file\": \"CASHON.md\", \"validated_at\": \"2025-10-26T20:51:22.287000Z\", \"validator\": \"QMOI Lion (automated)\", \"checks\": [{\"name\": \"title_present\", \"ok\": true, \"detail\": \"CASHON.md - QMOI AI Earning Syste"
+    },
+    {
+      "path": "./.qmoi_validation/CASHON.md.validation.json.20251027231155.bak",
+      "size_bytes": 400
+    },
+    {
+      "path": "./.qmoi_validation/docs__WALLET_SECURITY_PLAYBOOK.md.validation.json.20251027231156.bak",
+      "size_bytes": 413
+    },
+    {
+      "path": "./.qmoi_validation/CASHONTRADINGREADME.md.validation.json",
+      "json_keys": [
+        "file",
+        "validated_at",
+        "validator",
+        "checks",
+        "passed",
+        "summary"
+      ],
+      "json_preview": "{\"file\": \"CASHONTRADINGREADME.md\", \"validated_at\": \"2025-10-26T20:51:22.287752Z\", \"validator\": \"QMOI Lion (automated)\", \"checks\": [{\"name\": \"title_present\", \"ok\": true, \"detail\": \"CASHON TRADING - AI "
+    },
+    {
+      "path": "./.qmoi_validation/qmoi-enhanced__CASHONTRADINGREADME.md.validation.json",
+      "json_keys": [
+        "file",
+        "validated_at",
+        "validator",
+        "checks",
+        "passed",
+        "summary"
+      ],
+      "json_preview": "{\"file\": \"qmoi-enhanced/CASHONTRADINGREADME.md\", \"validated_at\": \"2025-10-26T20:51:24.602646Z\", \"validator\": \"QMOI Lion (automated)\", \"checks\": [{\"name\": \"title_present\", \"ok\": true, \"detail\": \"CASHON"
+    },
+    {
+      "path": "./.qmoi_validation/docs__WALLET_SECURITY_PLAYBOOK.md.validation.json",
+      "json_keys": [
+        "file",
+        "validated_at",
+        "validator",
+        "checks",
+        "passed",
+        "summary"
+      ],
+      "json_preview": "{\"file\": \"docs/WALLET_SECURITY_PLAYBOOK.md\", \"validated_at\": \"2025-10-26T20:51:24.581046Z\", \"validator\": \"QMOI Lion (automated)\", \"checks\": [{\"name\": \"title_present\", \"ok\": true, \"detail\": \"Wallet Sec"
+    },
+    {
+      "path": "./.qmoi_validation/CASHONTRADINGREADME.md.validation.json.20251027231155.bak",
+      "size_bytes": 424
+    },
+    {
+      "path": "./.qmoi_validation/qmoi-enhanced__CASHON.md.validation.json.20251027231156.bak",
+      "size_bytes": 414
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/CASHON.md.json",
+      "json_keys": [
+        "file",
+        "checked_at",
+        "validator",
+        "checks",
+        "ok"
+      ],
+      "json_preview": "{\"file\": \"CASHON.md\", \"checked_at\": \"2025-10-26T20:51:21.181377+00:00\", \"validator\": \"qmoi-validator-v1\", \"checks\": {\"has_h1\": true, \"has_frontmatter\": false, \"has_links\": false}, \"ok\": false}"
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/CASHONTRADINGREADME.md.json.20251027231156.bak",
+      "size_bytes": 233
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/docs__WALLET_SECURITY_PLAYBOOK.md.json.20251027231157.bak",
+      "size_bytes": 243
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/qmoi-enhanced__CASHON.md.json.20251027231157.bak",
+      "size_bytes": 234
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/docs__WALLET_SECURITY_PLAYBOOK.md.json",
+      "json_keys": [
+        "file",
+        "checked_at",
+        "validator",
+        "checks",
+        "ok"
+      ],
+      "json_preview": "{\"file\": \"docs/WALLET_SECURITY_PLAYBOOK.md\", \"checked_at\": \"2025-10-26T20:51:21.197728+00:00\", \"validator\": \"qmoi-validator-v1\", \"checks\": {\"has_h1\": true, \"has_frontmatter\": false, \"has_links\": false"
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/qmoi-enhanced__CASHONTRADINGREADME.md.json.20251027231157.bak",
+      "size_bytes": 247
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/CASHON.md.json.20251027231156.bak",
+      "size_bytes": 220
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/qmoi-enhanced__CASHONTRADINGREADME.md.json",
+      "json_keys": [
+        "file",
+        "checked_at",
+        "validator",
+        "checks",
+        "ok"
+      ],
+      "json_preview": "{\"file\": \"qmoi-enhanced/CASHONTRADINGREADME.md\", \"checked_at\": \"2025-10-26T20:51:21.531763+00:00\", \"validator\": \"qmoi-validator-v1\", \"checks\": {\"has_h1\": true, \"has_frontmatter\": false, \"has_links\": f"
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/CASHONTRADINGREADME.md.json",
+      "json_keys": [
+        "file",
+        "checked_at",
+        "validator",
+        "checks",
+        "ok"
+      ],
+      "json_preview": "{\"file\": \"CASHONTRADINGREADME.md\", \"checked_at\": \"2025-10-26T20:51:21.097237+00:00\", \"validator\": \"qmoi-validator-v1\", \"checks\": {\"has_h1\": true, \"has_frontmatter\": false, \"has_links\": false}, \"ok\": f"
+    },
+    {
+      "path": "./.qmoi_validation/validation_reports/qmoi-enhanced__CASHON.md.json",
+      "json_keys": [
+        "file",
+        "checked_at",
+        "validator",
+        "checks",
+        "ok"
+      ],
+      "json_preview": "{\"file\": \"qmoi-enhanced/CASHON.md\", \"checked_at\": \"2025-10-26T20:51:21.608747+00:00\", \"validator\": \"qmoi-validator-v1\", \"checks\": {\"has_h1\": true, \"has_frontmatter\": false, \"has_links\": false}, \"ok\": "
+    }
+  ]
+}
