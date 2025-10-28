@@ -1,0 +1,686 @@
+{
+  "generated_at": "2025-10-28T19:51:58.992203Z",
+  "root": "/workspaces/qmoi-enhanced",
+  "projects": [
+    {
+      "name": ".capilot",
+      "path": ".capilot",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": ".devcontainer",
+      "path": ".devcontainer",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": ".github",
+      "path": ".github",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "lion"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": ".husky",
+      "path": ".husky",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": ".lion",
+      "path": ".lion",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": ".npm-cache",
+      "path": ".npm-cache",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": ".pytest_cache",
+      "path": ".pytest_cache",
+      "type": [],
+      "description": "# pytest cache directory #",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": ".qmoi_validation",
+      "path": ".qmoi_validation",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "lion",
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": ".venv",
+      "path": ".venv",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": ".venv_qmoi_control",
+      "path": ".venv_qmoi_control",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "ALL_APPS",
+      "path": "ALL_APPS",
+      "type": [],
+      "description": "# ALL_APPS — central registry for built application artifacts",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "QVS",
+      "path": "QVS",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi",
+        "lion"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "Qmoi_downloaded_apps",
+      "path": "Qmoi_downloaded_apps",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "api",
+      "path": "api",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "app",
+      "path": "app",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "revenue",
+        "lion"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "assets",
+      "path": "assets",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "backend",
+      "path": "backend",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "cloud_config",
+      "path": "cloud_config",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "components",
+      "path": "components",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi",
+        "lion"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "config",
+      "path": "config",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "cypress",
+      "path": "cypress",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "qmoi-dashboard",
+      "path": "dashboard",
+      "type": [
+        "node"
+      ],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "data",
+      "path": "data",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "datasets",
+      "path": "datasets",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "docs_cache",
+      "path": "docs_cache",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi",
+        "lion"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "downloads",
+      "path": "downloads",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "earnvault",
+      "path": "earnvault",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "hooks",
+      "path": "hooks",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "huggingface_space",
+      "path": "huggingface_space",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "installer",
+      "path": "installer",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "k8s",
+      "path": "k8s",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "lib",
+      "path": "lib",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "logrotate",
+      "path": "logrotate",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "logs",
+      "path": "logs",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "ml",
+      "path": "ml",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "qmoiMobile",
+      "path": "mobile",
+      "type": [
+        "node"
+      ],
+      "description": "<!-- LION_VALIDATION_START --> ## 🦁 L — Validated by QMOI Lion",
+      "tags": [
+        "qmoi",
+        "lion",
+        "revenue"
+      ],
+      "owner": "sister"
+    },
+    {
+      "name": "models",
+      "path": "models",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi",
+        "lion"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "notebooks",
+      "path": "notebooks",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "pages",
+      "path": "pages",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "payments",
+      "path": "payments",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "public",
+      "path": "public",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "pwa_apps",
+      "path": "pwa_apps",
+      "type": [],
+      "description": "<!-- LION_VALIDATION_START --> ## 🦁 L — Validated by QMOI Lion",
+      "tags": [
+        "qmoi",
+        "lion",
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "qcity-artifacts",
+      "path": "qcity-artifacts",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "qmoi",
+      "path": "qmoi",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "qmoi-backups",
+      "path": "qmoi-backups",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "qmoi-data",
+      "path": "qmoi-data",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "qmoi-alpha-ai",
+      "path": "qmoi-enhanced",
+      "type": [
+        "node"
+      ],
+      "description": "QMOI Alpha AI - Comprehensive AI System with Friendship Enhancement",
+      "tags": [
+        "qmoi",
+        "lion",
+        "revenue"
+      ],
+      "owner": "master"
+    },
+    {
+      "name": "qmoi-space",
+      "path": "qmoi-space",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "qmoi-space-pwa",
+      "path": "qmoi-space-pwa",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "reports",
+      "path": "reports",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi",
+        "lion"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "requirements",
+      "path": "requirements",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "routes",
+      "path": "routes",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "scripts",
+      "path": "scripts",
+      "type": [
+        "python"
+      ],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "lion",
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "server",
+      "path": "server",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "services",
+      "path": "services",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "src",
+      "path": "src",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "revenue",
+        "lion"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "ssh-backend",
+      "path": "ssh-backend",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "stubs",
+      "path": "stubs",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "styles",
+      "path": "styles",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "templates",
+      "path": "templates",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "test-results",
+      "path": "test-results",
+      "type": [],
+      "description": "",
+      "tags": [],
+      "owner": "user"
+    },
+    {
+      "name": "tests",
+      "path": "tests",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue",
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "tools",
+      "path": "tools",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi",
+        "lion",
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "types",
+      "path": "types",
+      "type": [],
+      "description": "",
+      "tags": [
+        "revenue"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "utils",
+      "path": "utils",
+      "type": [],
+      "description": "",
+      "tags": [
+        "qmoi"
+      ],
+      "owner": "user"
+    },
+    {
+      "name": "whatsapp-qmoi-bot",
+      "path": "whatsapp-qmoi-bot",
+      "type": [],
+      "description": "<!-- LION_VALIDATION_START --> ## 🦁 L — Validated by QMOI Lion",
+      "tags": [
+        "revenue",
+        "qmoi",
+        "lion"
+      ],
+      "owner": "sister"
+    }
+  ]
+}

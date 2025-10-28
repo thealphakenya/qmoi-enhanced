@@ -253,3 +253,13 @@ See QVS/QVSREADME.md for details.
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- PROJECT_MANIFEST_LINKS -->
+
+
+## Project Manifests (auto-generated)
+
+- [MASTER PROJECTS](./MASTERPROJECTS.md)
+- [SISTER PROJECTS](./SISTERPROJECTS.md)
+- [USER PROJECTS](./USERSPROJECTS.md)
+

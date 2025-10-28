@@ -426,3 +426,28 @@ The system is designed to ensure QMOI always makes more than the minimum require
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- QMOI_LION_VALIDATION_START -->
+{
+  "file": "QMOI_LION_VALIDATION.md",
+  "validated_at": "2025-10-26T20:51:22.895536Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "lion_presence",
+      "ok": true,
+      "detail": "QMOI Lion validation block present"
+    },
+    {
+      "name": "master_controls",
+      "ok": true,
+      "detail": "Master/admin controls documented and referenced"
+    }
+  ],
+  "passed": true,
+  "summary": {
+    "total_checks": 2,
+    "passed": true
+  }
+}
+<!-- QMOI_LION_VALIDATION_END -->
