@@ -1,0 +1,40 @@
+{
+  "generated_at": "2025-10-28T19:05:37.383588Z",
+  "generated_by": "wallet_checker.py",
+  "found_files_count": 63,
+  "providers_checked": 3,
+  "items": [
+    {
+      "provider": "binance",
+      "balance": 0.0,
+      "currency": "USD",
+      "has_real_credentials": false,
+      "needs_manual_setup": true,
+      "idempotency_store": ".qmoi/idempotency_binance.json"
+    },
+    {
+      "provider": "cashon",
+      "balance": 0.0,
+      "currency": "USD",
+      "has_real_credentials": false,
+      "needs_manual_setup": true,
+      "idempotency_store": ".qmoi/idempotency_cashon.json"
+    },
+    {
+      "provider": "mpesa",
+      "balance": 0.0,
+      "currency": "USD",
+      "has_real_credentials": false,
+      "needs_manual_setup": true,
+      "idempotency_store": ".qmoi/idempotency_mpesa.json"
+    }
+  ],
+  "env_generated_preview": {
+    "BINANCE_API_KEY": "binance_4c047672fd474de383418d127b2d9cbe",
+    "BINANCE_API_SECRET": "binance_503e4016adbf4f94be65c49ca6089900",
+    "CASHON_API_KEY": "cashon_58b1234e5faa45f695496c5064d502da",
+    "CASHON_ACCOUNT": "cashon_aad3527be90746a8990a3f82ae4e3b79",
+    "MPESA_CONSUMER_KEY": "mpesa_941b5f9e053f45dda78851e07ddbfa30",
+    "MPESA_CONSUMER_SECRET": "mpesa_1fba6ff0c2284c5184d64ccd3ace4217"
+  }
+}

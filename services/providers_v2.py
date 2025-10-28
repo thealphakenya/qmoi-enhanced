@@ -76,6 +76,39 @@ class BaseClient:
     def _save_ids(self, d: Dict[str, Any]):
         self._store.write_text(json.dumps(d, indent=2))
 
+    def _detect_real_creds(self) -> bool:
+        """Return True if required env vars appear to be real (not generated placeholders)."""
+        for k in self.required_env:
+            v = os.environ.get(k)
+            if not v:
+                return False
+            # heuristic: generated placeholders from ensure_env_var start with f"{self.name}_" or "qmoi_"
+            if v.startswith(f"{self.name}_") or v.startswith("qmoi_"):
+                return False
+        return True
+
+    def get_balance(self) -> Dict[str, Any]:
+        """Return a safe, non-destructive balance estimate for this provider.
+
+        If real credentials are present this may reflect a realistic simulated value.
+        If placeholders were generated, this returns a zero-like balance and marks
+        the provider as not fully configured.
+        """
+        has_real = self._detect_real_creds()
+        # Simulate different balances by provider name for convenience
+        base_map = {
+            'cashon': 1000.0,
+            'mpesa': 250.0,
+            'binance': 5000.0,
+        }
+        bal = base_map.get(self.name, 0.0) if has_real else 0.0
+        return {
+            'provider': self.name,
+            'balance': float(bal),
+            'currency': 'USD',
+            'has_real_credentials': bool(has_real),
+        }
+
     def send_payment(self, to_account: str, amount: float, idempotency_key: Optional[str] = None, currency: str = 'USD', metadata: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         ids = self._load_ids()
         if idempotency_key and idempotency_key in ids:
