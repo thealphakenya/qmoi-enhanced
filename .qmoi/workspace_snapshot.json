@@ -1,0 +1,155 @@
+{
+  "generated_at": "2025-10-27T23:51:41.744629Z",
+  "file_count": 5000,
+  "ext_counts": {
+    ".md": 325,
+    ".py": 43,
+    ".json": 78,
+    ".worker": 1,
+    ".txt": 32,
+    "<noext>": 3898,
+    ".bak": 81,
+    ".iss": 3,
+    ".log": 12,
+    ".js": 26,
+    ".bat": 6,
+    ".db-journal": 1,
+    ".sh": 11,
+    ".db": 6,
+    ".ts": 151,
+    ".spec": 2,
+    ".ai-anomaly-service": 1,
+    ".toml": 1,
+    ".mjs": 2,
+    ".orchestrator": 1,
+    ".1760308693128": 1,
+    ".qmoi_control": 1,
+    ".ps1": 10,
+    ".1760308693647": 1,
+    ".ico": 1,
+    ".20251022t225933": 1,
+    ".html": 10,
+    ".yml": 16,
+    ".conf": 1,
+    ".example": 1,
+    ".1760307657810": 1,
+    ".jpeg": 1,
+    ".lock": 1,
+    ".1760307658403": 1,
+    ".env": 1,
+    ".nsh": 1,
+    ".pid": 1,
+    ".webmanifest": 3,
+    ".png": 8,
+    ".css": 4,
+    ".tsx": 228,
+    ".csv": 1,
+    ".1760307818143": 1,
+    ".1760308915811": 1,
+    ".1760308915739": 1,
+    ".1760308915812": 1,
+    ".1760308915792": 1,
+    ".1760308915798": 1,
+    ".1760307818129": 1,
+    ".1760307818140": 1,
+    ".1760307818145": 1,
+    ".1760308915786": 1,
+    ".1760308915808": 1,
+    ".1760307818158": 1,
+    ".1760307818135": 1,
+    ".1760308915804": 1,
+    ".1760308915795": 1,
+    ".1760307818153": 1,
+    ".1760308915816": 1,
+    ".1760307818149": 1,
+    ".1760307818155": 1,
+    ".1760308915800": 1,
+    ".exe": 1,
+    ".ipynb": 1,
+    ".1760308691947": 1,
+    ".1760307656643": 1,
+    ".br": 1
+  },
+  "largest_files": [
+    {
+      "path": "docs/REVENUE_SPEC.md",
+      "size": 25091745
+    },
+    {
+      "path": "docs/REVENUE_SPEC.md.20251027231207.bak",
+      "size": 25091737
+    },
+    {
+      "path": "placeholder_scan_report.json",
+      "size": 12684461
+    },
+    {
+      "path": "docs/auto_fix_report.json",
+      "size": 8883804
+    },
+    {
+      "path": ".npm-cache/_libvips/libvips-8.14.5-linux-x64.tar.br",
+      "size": 6763082
+    },
+    {
+      "path": "docs/link-validation-report.json.20251027231213.bak",
+      "size": 3903511
+    },
+    {
+      "path": "docs/link-validation-report.json",
+      "size": 3901990
+    },
+    {
+      "path": "license-report.json",
+      "size": 1163180
+    },
+    {
+      "path": "placeholder_scan_report.json.20251027231217.bak",
+      "size": 1088801
+    },
+    {
+      "path": "yarn.lock",
+      "size": 855870
+    },
+    {
+      "path": "docs/verification-report.json",
+      "size": 831474
+    },
+    {
+      "path": "docs/verification-report.json.20251027231213.bak",
+      "size": 831473
+    },
+    {
+      "path": "docs/REVENUE_SPEC.md.generated.md",
+      "size": 632174
+    },
+    {
+      "path": "qmoi-ultimate-push.log",
+      "size": 616355
+    },
+    {
+      "path": "ERRORSREADME.md",
+      "size": 384690
+    },
+    {
+      "path": "docs/placeholders_report.json.20251027231213.bak",
+      "size": 222033
+    },
+    {
+      "path": "docs/placeholders_report.json",
+      "size": 221867
+    },
+    {
+      "path": "qmoi-health-check.log",
+      "size": 135276
+    },
+    {
+      "path": "docs/link_report.json",
+      "size": 131966
+    },
+    {
+      "path": "docs/link_report.json.20251027231213.bak",
+      "size": 131965
+    }
+  ]
+}

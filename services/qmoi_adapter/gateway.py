@@ -62,9 +62,27 @@ class Handler(BaseHTTPRequestHandler):
                 cfg = json.loads(CONFIG.read_text(encoding='utf-8'))
             except Exception:
                 cfg = {}
-            models = [manifest.get('id', 'qmoi-local')]
-            if cfg.get('gpt_versions', {}).get('default'):
-                models.append(cfg['gpt_versions']['default'])
+            models = []
+            # prefer manifest local id
+            if manifest.get('id'):
+                models.append(manifest.get('id'))
+            # respect allow_remote_models / local_only flags in config
+            allow_remote = cfg.get('allow_remote_models', True)
+            local_only = cfg.get('local_only', False)
+            if allow_remote and not local_only:
+                if cfg.get('gpt_versions', {}).get('default'):
+                    models.append(cfg['gpt_versions']['default'])
+            # fallback to qmoi-local if nothing present
+            if not models:
+                models = ['qmoi-local']
+            # dedupe while preserving order
+            seen = set()
+            dedup = []
+            for m in models:
+                if m not in seen:
+                    dedup.append(m)
+                    seen.add(m)
+            models = dedup
             self._send_json({'models': models, 'manifest': manifest, 'config': cfg})
             return
 

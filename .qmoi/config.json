@@ -1,13 +1,15 @@
+
 {
   "gpt_versions": {
     "default": "gpt-5-mini",
     "enabled_for_all_clients": true
   },
-  "notes": "This is a declarative toggle only. Deploy model hosting (QCity or your own servers) to actually serve GPT-5 mini."
-}
-{
-  "gpt5_mini_enabled": true,
-  "gpt5_mini_clients": "all",
-  "note": "This is a repo-level preference toggle. Server-side model availability and deployment are required to actually serve GPT-5 mini. Use QCity runners or control-plane to deploy model runtime configs.",
-  "applied_by": "scripts/apply_lion_settings.sh (local env) or CI deploy script (for server-side)"
+  "local_models": ["qmoi-local"],
+  "allow_remote_models": false,
+  "local_only": true,
+  "capilot": {
+    "discovery_endpoint": "http://localhost:8770/v1/models",
+    "local_models_folder": ".capilot/models"
+  },
+  "notes": "This is a declarative toggle only. Deploy model hosting to actually serve remote models. 'qmoi-local' is a lightweight local adapter suitable for Codespaces. Use scripts/disable_remote_models.sh to force local-only operation."
 }

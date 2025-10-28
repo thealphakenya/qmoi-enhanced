@@ -1,0 +1,12 @@
+{
+  "name": "qmoi-local",
+  "description": "Local QMOI model for Capilot discovery (offline-first)",
+  "discovery": {
+    "models_endpoint": "http://localhost:8770/v1/models",
+    "manifest_endpoint": "http://localhost:8765/manifest"
+  },
+  "recommended": {
+    "prefer_local": true,
+    "notes": "Ensure gateway (8770) is running via scripts/ensure_qmoi_running.sh"
+  }
+}
