@@ -1,0 +1,107 @@
+# USERSPROJECTS
+
+- **.capilot** — `.capilot`
+  - Tags: qmoi
+  - Notes: (no description)
+- **.devcontainer** — `.devcontainer`
+  - Tags: qmoi
+  - Notes: (no description)
+- **.github** — `.github`
+  - Tags: qmoi, lion
+  - Notes: (no description)
+- **.husky** — `.husky`
+  - Tags: -
+  - Notes: (no description)
+- **.lion** — `.lion`
+  - Tags: -
+  - Notes: (no description)
+- **.npm-cache** — `.npm-cache`
+  - Tags: -
+  - Notes: (no description)
+- **.pytest_cache** — `.pytest_cache`
+  - Tags: -
+  - Notes: # pytest cache directory #
+- **.venv** — `.venv`
+  - Tags: qmoi
+  - Notes: (no description)
+- **.venv_qmoi_control** — `.venv_qmoi_control`
+  - Tags: qmoi
+  - Notes: (no description)
+- **ALL_APPS** — `ALL_APPS`
+  - Tags: qmoi
+  - Notes: # ALL_APPS — central registry for built application artifacts
+- **Qmoi_downloaded_apps** — `Qmoi_downloaded_apps`
+  - Tags: -
+  - Notes: (no description)
+- **api** — `api`
+  - Tags: qmoi
+  - Notes: (no description)
+- **assets** — `assets`
+  - Tags: -
+  - Notes: (no description)
+- **cypress** — `cypress`
+  - Tags: qmoi
+  - Notes: (no description)
+- **data** — `data`
+  - Tags: -
+  - Notes: (no description)
+- **downloads** — `downloads`
+  - Tags: qmoi
+  - Notes: (no description)
+- **huggingface_space** — `huggingface_space`
+  - Tags: qmoi
+  - Notes: (no description)
+- **installer** — `installer`
+  - Tags: qmoi
+  - Notes: (no description)
+- **k8s** — `k8s`
+  - Tags: qmoi
+  - Notes: (no description)
+- **logrotate** — `logrotate`
+  - Tags: -
+  - Notes: (no description)
+- **logs** — `logs`
+  - Tags: -
+  - Notes: (no description)
+- **ml** — `ml`
+  - Tags: -
+  - Notes: (no description)
+- **pages** — `pages`
+  - Tags: -
+  - Notes: (no description)
+- **qcity-artifacts** — `qcity-artifacts`
+  - Tags: qmoi
+  - Notes: (no description)
+- **qmoi** — `qmoi`
+  - Tags: qmoi
+  - Notes: (no description)
+- **qmoi-backups** — `qmoi-backups`
+  - Tags: qmoi
+  - Notes: (no description)
+- **qmoi-data** — `qmoi-data`
+  - Tags: -
+  - Notes: (no description)
+- **requirements** — `requirements`
+  - Tags: qmoi
+  - Notes: (no description)
+- **server** — `server`
+  - Tags: qmoi
+  - Notes: (no description)
+- **ssh-backend** — `ssh-backend`
+  - Tags: -
+  - Notes: (no description)
+- **stubs** — `stubs`
+  - Tags: -
+  - Notes: (no description)
+- **styles** — `styles`
+  - Tags: -
+  - Notes: (no description)
+- **templates** — `templates`
+  - Tags: qmoi
+  - Notes: (no description)
+- **test-results** — `test-results`
+  - Tags: -
+  - Notes: (no description)
+- **utils** — `utils`
+  - Tags: qmoi
+  - Notes: (no description)

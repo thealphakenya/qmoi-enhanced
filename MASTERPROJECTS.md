@@ -1,0 +1,95 @@
+# MASTERPROJECTS
+
+- **.qmoi_validation** — `.qmoi_validation`
+  - Tags: qmoi, lion, revenue
+  - Notes: (no description)
+- **QVS** — `QVS`
+  - Tags: revenue, qmoi, lion
+  - Notes: (no description)
+- **app** — `app`
+  - Tags: qmoi, revenue, lion
+  - Notes: (no description)
+- **backend** — `backend`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **cloud_config** — `cloud_config`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **components** — `components`
+  - Tags: revenue, qmoi, lion
+  - Notes: (no description)
+- **config** — `config`
+  - Tags: qmoi, revenue
+  - Notes: (no description)
+- **qmoi-dashboard** — `dashboard`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **datasets** — `datasets`
+  - Tags: revenue
+  - Notes: (no description)
+- **docs_cache** — `docs_cache`
+  - Tags: revenue, qmoi, lion
+  - Notes: (no description)
+- **earnvault** — `earnvault`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **hooks** — `hooks`
+  - Tags: qmoi, revenue
+  - Notes: (no description)
+- **lib** — `lib`
+  - Tags: qmoi, revenue
+  - Notes: (no description)
+- **qmoiMobile** — `mobile`
+  - Tags: qmoi, lion, revenue
+  - Notes: <!-- LION_VALIDATION_START --> ## 🦁 L — Validated by QMOI Lion
+- **models** — `models`
+  - Tags: revenue, qmoi, lion
+  - Notes: (no description)
+- **notebooks** — `notebooks`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **payments** — `payments`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **public** — `public`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **pwa_apps** — `pwa_apps`
+  - Tags: qmoi, lion, revenue
+  - Notes: <!-- LION_VALIDATION_START --> ## 🦁 L — Validated by QMOI Lion
+- **qmoi-alpha-ai** — `qmoi-enhanced`
+  - Tags: qmoi, lion, revenue
+  - Notes: QMOI Alpha AI - Comprehensive AI System with Friendship Enhancement
+- **qmoi-space** — `qmoi-space`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **qmoi-space-pwa** — `qmoi-space-pwa`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **reports** — `reports`
+  - Tags: revenue, qmoi, lion
+  - Notes: (no description)
+- **routes** — `routes`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **scripts** — `scripts`
+  - Tags: qmoi, lion, revenue
+  - Notes: (no description)
+- **services** — `services`
+  - Tags: qmoi, revenue
+  - Notes: (no description)
+- **src** — `src`
+  - Tags: qmoi, revenue, lion
+  - Notes: (no description)
+- **tests** — `tests`
+  - Tags: revenue, qmoi
+  - Notes: (no description)
+- **tools** — `tools`
+  - Tags: qmoi, lion, revenue
+  - Notes: (no description)
+- **types** — `types`
+  - Tags: revenue
+  - Notes: (no description)
+- **whatsapp-qmoi-bot** — `whatsapp-qmoi-bot`
+  - Tags: revenue, qmoi, lion
+  - Notes: <!-- LION_VALIDATION_START --> ## 🦁 L — Validated by QMOI Lion
