@@ -2,7 +2,7 @@
   "name": "QMOI Dev Container",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "postCreateCommand": "./scripts/env_manager.py",
-  "postStartCommand": "python3 scripts/qmoi_master_detect.py && bash scripts/ensure_zero_rating.sh && nohup python3 scripts/qmoi_friendship_daemon.py &> .qmoi/friendship.out &",
+  "postStartCommand": "python3 scripts/qmoi_master_detect.py && bash scripts/ensure_zero_rating.sh && nohup bash scripts/qmoi_supervisor.sh &> .qmoi/supervisor.out &",
   "customizations": {
     "vscode": {
       "extensions": [
