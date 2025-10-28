@@ -1,12 +1,37 @@
-
 {
   "gpt_versions": {
     "default": "gpt-5-mini",
     "enabled_for_all_clients": true
   },
-  "local_models": ["qmoi-local"],
-  "allow_remote_models": false,
-  "local_only": true,
+  "local_models": [
+    "qmoi-local"
+  ],
+  "allow_remote_models": true,
+  "local_only": false,
+  "prefer_local": true,
+  "master": {
+    "owner": "thealphakenya",
+    "auto_detect": true,
+    "accountable": true
+  },
+  "auto_initiate_conversations": true,
+  "friendship_features": {
+    "enable_proactive_messages": true,
+    "proactive_interval_seconds": 86400,
+    "max_daily_proactive": 3
+  },
+  "zero_rating": {
+    "prefer_zero_rated": true,
+    "zero_rated_endpoints": [
+      "https://www.wikipedia.org/",
+      "https://www.facebook.com/",
+      "https://www.whatsapp.com/"
+    ]
+  },
+  "remote_endpoints": [
+    "https://qmoi.example.com/v1/models",
+    "https://qmoi-backup.example.com/v1/models"
+  ],
   "capilot": {
     "discovery_endpoint": "http://localhost:8770/v1/models",
     "local_models_folder": ".capilot/models"

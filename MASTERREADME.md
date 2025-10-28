@@ -198,6 +198,33 @@ See QVS/QVSREADME.md for details.
 
 ## QMOI File Editor Chat (Master Only)
 - Master/admin-only controls for file management and automation
+
+## Auto Master Detection & Accountability
+
+- QMOI can now detect when it's running inside the master's workspace (checks `git remote.origin.url`) and will record the master identity in `.qmoi/master.json`.
+- Script: `scripts/qmoi_master_detect.py` — idempotent detection and record of master identity. Run on Codespace start or as part of the agent bootstrap.
+- When the workspace is identified as the master's, QMOI increases automation privileges (proactive notifications, master-only features) but still logs every action for audit.
+
+## Friendship & Proactive Assistance
+
+- QMOI includes a conservative, local-only friendship daemon: `scripts/qmoi_friendship_daemon.py`.
+  - Purpose: provide polite, proactive check-ins and context-aware prompts for the master (at most `max_daily_proactive` messages per day by default).
+  - Behavior: Uses only the local adapter (`qmoi-local`) and never initiates external network calls. It is safe to run in Codespaces and will obey the `auto_initiate_conversations` flag in `.qmoi/config.json`.
+
+## Production Notes & Bootstrapping
+
+- Add the following to your Codespace pre-start or init scripts to enable master detection, zero-rating, and friendship daemon on start:
+
+```bash
+# run master detection
+python3 scripts/qmoi_master_detect.py
+# enforce zero-rating/local-only when appropriate
+scripts/ensure_zero_rating.sh
+# optionally start friendship daemon in background
+nohup python3 scripts/qmoi_friendship_daemon.py &>/dev/null &
+```
+
+All actions are logged under `.qmoi/` and can be audited by the master. Proactive messages are deliberately rate-limited and conservative to avoid spamming.
 - Features: **Rollback**, **AI Suggest**, **Batch Edit** (multi-file), distributed automation (future)
 - All actions are logged and auditable
 - Extensible for future enhancements

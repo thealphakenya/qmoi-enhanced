@@ -84,6 +84,15 @@ QMOI Zero-Rated is a global, always-on internet fallback system that leverages z
 
 *QMOI Zero-Rated: Always Connected, Anywhere, Anytime.*
 
+## Automated Zero-Rating Helper (Production)
+
+QMOI now includes a lightweight helper and policy to prefer zero-rated endpoints and avoid data bundles when running in the master's Codespace or when `zero_rating.prefer_zero_rated` is enabled in `.qmoi/config.json`.
+
+- Script: `scripts/ensure_zero_rating.sh` — idempotent helper that backs up `.qmoi/config.json`, enables zero-rating flags, and sets `local_only=true` when the workspace remote matches the master owner. Run this at Codespace start to enforce low-bandwidth behavior.
+- Policy: When `local_only=true` QMOI will route model calls to the local `qmoi-local` adapter and not use paid remote endpoints. This reduces data bundle consumption and keeps the Codespace offline-first.
+
+Add this to your Codespace's pre-start hooks or the workspace start script to ensure the environment prefers zero-rated/preserved connectivity.
+
 <!-- QMOI_VALIDATION_START -->
 {
   "file": "ZERORATEDQMOI.md",

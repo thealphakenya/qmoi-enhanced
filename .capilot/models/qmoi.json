@@ -3,5 +3,7 @@
   "name": "QMOI Local (light)",
   "manifest_path": "../qmoi-model-manifest.json",
   "discovery_endpoint": "http://localhost:8765/manifest",
-  "notes": "Local discovery hint for Capilot. Add this path to Capilot's local models folder or register via UI."
+  "owner": "thealphakenya",
+  "master": true,
+  "notes": "Local discovery hint for Capilot. Add this path to Capilot's local models folder or register via UI. When running inside the master's Codespace this model is treated as the authoritative local model."
 }
