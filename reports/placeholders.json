@@ -26028,7 +26028,7 @@
   {
     "file": "qmoi-enhanced/app/api/media/generate/route.ts",
     "line": 38,
-    "text": "// TODO: Send to dashboard API for real-time visualization",
+    "text": "// TODO: Send to dashboard API for -time visualization",
     "match": "TODO",
     "type": "placeholder"
   },

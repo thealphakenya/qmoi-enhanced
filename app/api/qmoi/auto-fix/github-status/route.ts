@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
+import libProposals from '../../../../lib/proposals';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // API key gating for status checks
+  const auth = libProposals.requireApiKey(request.headers);
+  if (!auth.ok) {
+    const r = auth.response;
+    return NextResponse.json(r.body, { status: r.status });
+  }
   try {
     const workflowsDir = path.join(process.cwd(), '.github', 'workflows');
     

@@ -90,8 +90,8 @@ Megavault Balance: $1,000,000
 ### Integration Details
 
 #### Credentials
-- **Consumer Key**: UCz/GBzE5O5vNpzt99a6xEEqMi0O3QQE
-- **Consumer Secret**: OyeJBzYMiWvVQdfNGJW3/wBpems=
+- **Consumer Key**: [PROVIDE VIA ENV: PESAPAL_CONSUMER_KEY]
+- **Consumer Secret**: [PROVIDE VIA ENV: PESAPAL_CONSUMER_SECRET]
 - **Environment**: Production
 - **Account Type**: Merchant Account
 

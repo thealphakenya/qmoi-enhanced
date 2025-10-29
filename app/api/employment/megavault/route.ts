@@ -36,37 +36,32 @@ const megavaultData = {
   dividendHistory: [] as any[],
 };
 
-// Pesapal integration credentials
+// Pesapal integration credentials - do NOT include hard-coded secrets here.
+// In production provide these via environment variables or a secrets manager.
 const PESAPAL_CREDENTIALS = {
-  consumerKey: process.env.PESAPAL_CONSUMER_KEY || 'UCz/GBzE5O5vNpzt99a6xEEqMi0O3QQE',
-  consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || 'OyeJBzYMiWvVQdfNGJW3/wBpems=',
-  environment: process.env.PESAPAL_ENVIRONMENT || 'sandbox',
+  consumerKey: process.env.PESAPAL_CONSUMER_KEY || '',
+  consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || '',
+  environment: (process.env.PESAPAL_ENVIRONMENT as 'sandbox' | 'live') || 'sandbox',
 };
 
-// Email backup function for credentials
-async function backupCredentialsToEmail(credentials: any, platform: string) {
-  try {
-    const emailData = {
-      to: 'rovicviccy@gmail.com',
-      subject: `QMOI Megavault Credentials - ${platform}`,
-      body: `Platform: ${platform}\nCredentials: ${JSON.stringify(credentials, null, 2)}\nTimestamp: ${new Date().toISOString()}`,
-    };
+// Safe backup: never transmit raw secrets. Log only masked values for debugging.
+function maskSecret(s: string | undefined | null) {
+  if (!s) return '';
+  // show last 4 chars only
+  return s.replace(/.(?=.{4})/g, '*');
+}
 
-    console.log('Megavault credentials backed up to email:', emailData);
-    
-    // Backup to QMOI server
-    await fetch('/api/qmoi-database', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        action: 'backup_megavault_credentials',
-        platform,
-        credentials: JSON.stringify(credentials),
-        timestamp: Date.now(),
-      }),
-    });
+async function backupCredentialsSafe(credentials: any, platform: string) {
+  try {
+    const masked = {
+      consumerKey: maskSecret(credentials.consumerKey),
+      consumerSecret: maskSecret(credentials.consumerSecret),
+      environment: credentials.environment,
+    };
+    console.log(`Safe backup for ${platform}:`, masked);
+    // Intentionally do not send raw credentials anywhere.
   } catch (error) {
-    console.error('Failed to backup megavault credentials:', error);
+    console.error('Failed to create safe backup for megavault credentials:', error);
   }
 }
 
@@ -82,8 +77,8 @@ async function initializePesapalAccount() {
       createdAt: new Date().toISOString(),
     };
 
-    // Backup credentials
-    await backupCredentialsToEmail(PESAPAL_CREDENTIALS, 'pesapal');
+  // Create a safe (masked) backup for ops visibility only
+  await backupCredentialsSafe(PESAPAL_CREDENTIALS, 'pesapal');
 
     return { success: true, account: accountData };
   } catch (error) {

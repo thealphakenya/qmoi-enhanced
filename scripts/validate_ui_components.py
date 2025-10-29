@@ -8,10 +8,19 @@ This is intentionally lightweight: it finds likely issues to triage, not full li
 """
 import json
 import re
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'ui_validation_report.json'
+
+# Safety: dry-run by default. If PRODUCTION_CONFIRMED=true or --apply is passed, the script
+# may optionally apply non-destructive fixes (backing up files). Without apply, a proposal
+# is written to `.qmoi_validation/ui_placeholders_proposal.json` describing the fixes.
+PRODUCTION_CONFIRMED = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+
+VALIDATION_DIR = ROOT / '.qmoi_validation'
+VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 
 TSX_GLOB = ['**/*.tsx', '**/*.ts', '**/*.jsx', '**/*.js']
 
@@ -43,10 +52,46 @@ def _grab_snippet(text, max_len=200):
     return text[:max_len].replace('\n', ' ')
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser(description='Validate UI components and optionally propose or apply fixes')
+    ap.add_argument('--apply', action='store_true', help='Apply non-destructive fixes (requires PRODUCTION_CONFIRMED=true)')
+    ap.add_argument('--report', default=str(OUT), help='Path to write report JSON')
+    args = ap.parse_args()
+
     report = scan_ui(ROOT)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(report, indent=2), encoding='utf8')
-    print('Wrote', OUT)
+    report_path = Path(args.report)
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text(json.dumps(report, indent=2), encoding='utf8')
+    print('Wrote', report_path)
+
+    # If placeholders found and not applying, write a proposal
+    if report.get('files'):
+        proposal = {
+            'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
+            'type': 'ui_placeholders',
+            'files': report['files'],
+            'note': 'Auto-detected placeholder tokens and TODOs in UI files.'
+        }
+        proposal_file = VALIDATION_DIR / f'ui_placeholders_proposal_{int(__import__("time").time())}.json'
+        proposal_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
+        print('Wrote proposal to', proposal_file)
+
+        if args.apply:
+            if not PRODUCTION_CONFIRMED:
+                print('Refusing to apply fixes: PRODUCTION_CONFIRMED is not set. Proposal remains in', proposal_file)
+            else:
+                # Non-destructive replacements: backup then replace placeholder tokens with a TODO marker
+                for f in report['files']:
+                    p = Path(f['path'])
+                    try:
+                        txt = p.read_text(encoding='utf8')
+                        backup = p.with_suffix(p.suffix + '.bak')
+                        backup.write_text(txt, encoding='utf8')
+                        newtxt = PLACEHOLDER_PAT.sub('/* TODO: replace placeholder */', txt)
+                        p.write_text(newtxt, encoding='utf8')
+                        print('Applied placeholder replacement in', p)
+                    except Exception as e:
+                        print('Failed to apply fix for', p, e)
 
 if __name__ == '__main__':
     main()

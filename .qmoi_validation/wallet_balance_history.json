@@ -1,0 +1,48 @@
+[
+  {
+    "captured_at": "2025-10-29T00:04:13Z",
+    "report": {
+      "generated_at": "2025-10-28T23:36:29Z",
+      "results": {
+        "megavault": {
+          "balance": "0.00 (mock)",
+          "currency": "USD",
+          "last_checked": "2025-10-28T23:36:29Z",
+          "status": "mocked",
+          "meta": {
+            "adapter": "mock"
+          },
+          "source_file": "MEGAVAULT.md"
+        },
+        "cashon": {
+          "status": "missing_credentials",
+          "last_checked": "2025-10-28T23:36:29Z",
+          "meta": {
+            "adapter": "cashon"
+          },
+          "source_file": "CASHON.md"
+        },
+        "cashontradingreadme": {
+          "balance": "0.00 (mock)",
+          "currency": "USD",
+          "last_checked": "2025-10-28T23:36:29Z",
+          "status": "mocked",
+          "meta": {
+            "adapter": "mock"
+          },
+          "source_file": "CASHONTRADINGREADME.md"
+        },
+        "leahwallet": {
+          "balance": "0.00 (mock)",
+          "currency": "USD",
+          "last_checked": "2025-10-28T23:36:29Z",
+          "status": "mocked",
+          "meta": {
+            "adapter": "mock"
+          },
+          "source_file": "LEAHWALLET.md"
+        }
+      }
+    }
+  }
+]

@@ -68,6 +68,9 @@ export class FaceRecognitionService {
   private knownFaces: Map<string, UserProfile> = new Map();
   private currentFaces: FaceData[] = [];
   private faceApi: any; // face-api.js or similar
+  private consentGiven: boolean = false;
+  // persistenceEnabled was removed; persistence respects consent and is
+  // controlled by `consentGiven` and higher-level settings.
 
   private constructor() {
     this.eventEmitter = new EventEmitter();
@@ -98,18 +101,73 @@ export class FaceRecognitionService {
       // Initialize face-api.js or similar library
       // This would load the required models
       console.log("🤖 Initializing face recognition API...");
+      // Try dynamic import of `face-api.js` (browser builds) when available.
+      // This keeps the module optional. If it's not available we fall back to
+      // a privacy-first stub which only performs minimal detection.
+      try {
+        // Use dynamic import so code doesn't fail if package isn't installed
+        // In browser bundlers this will resolve to the bundled library if present.
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // @ts-ignore - face-api.js is optional and may not be installed in every environment
+  const faceapiModule = (await import(/* webpackIgnore: true */ 'face-api.js')).default || (await import('face-api.js'));
 
-      // [PRODUCTION IMPLEMENTATION REQUIRED] initialization for now
-      this.faceApi = {
-        loadModels: async () => true,
-        detectFaces: async (input: any) => [],
-        detectEmotions: async (face: any) => ({}),
-        estimateAge: async (face: any) => 25,
-        estimateGender: async (face: any) => "unknown",
-      };
+        // Provide a small loader wrapper
+        this.faceApi = {
+          _impl: faceapiModule,
+          loadModels: async () => {
+            // Attempt to load common lightweight models. Projects can host models
+            // at `/models/` or set up a CDN. If not present, load attempt will fail
+            // and we'll remain in fallback mode.
+            try {
+              const base = '/models';
+              await faceapiModule.nets.tinyFaceDetector.loadFromUri(base);
+              await faceapiModule.nets.faceLandmark68TinyNet.loadFromUri(base);
+              await faceapiModule.nets.faceExpressionNet.loadFromUri(base);
+              await faceapiModule.nets.ageGenderNet.loadFromUri(base);
+              await faceapiModule.nets.faceRecognitionNet.loadFromUri(base);
+              return true;
+            } catch (err) {
+              console.warn('face-api.js models not found under /models; falling back to restricted stub', err);
+              throw err;
+            }
+          },
+          detectFaces: async (input: HTMLCanvasElement | HTMLVideoElement) => {
+            // Use tiny face detector for speed and smaller model footprint
+            const detections = await faceapiModule
+              .detectAllFaces(input, new faceapiModule.TinyFaceDetectorOptions())
+              .withFaceLandmarks(true)
+              .withFaceExpressions()
+              .withAgeAndGender()
+              .withFaceDescriptor();
 
-      await this.faceApi.loadModels();
-      console.log("✅ Face recognition API initialized");
+            return detections.map((d: any) => ({
+              box: d.detection.box,
+              confidence: d.detection.score,
+              landmarks: (d.landmarks && d.landmarks.positions) || [],
+              expressions: d.expressions || {},
+              age: d.age || 0,
+              gender: d.gender || 'unknown',
+              descriptor: d.descriptor || null,
+            }));
+          },
+          detectEmotions: async (det: any) => det.expressions || {},
+          estimateAge: async (det: any) => det.age || 0,
+          estimateGender: async (det: any) => det.gender || 'unknown',
+        };
+
+        await this.faceApi.loadModels();
+        console.log('✅ face-api.js loaded and models initialized');
+      } catch (err) {
+        // If the dynamic import or model loading failed, use a privacy-first stub.
+        console.warn('face-api.js not available or failed to load; using stubbed face API', err);
+        this.faceApi = {
+          loadModels: async () => true,
+          detectFaces: async (_: any) => [],
+          detectEmotions: async (_: any) => ({ neutral: 1, dominant: 'neutral' }),
+          estimateAge: async (_: any) => 0,
+          estimateGender: async (_: any) => 'unknown',
+        };
+      }
     } catch (error) {
       console.error("Error initializing face recognition API:", error);
     }
@@ -167,6 +225,12 @@ export class FaceRecognitionService {
   private async detectFaces(): Promise<void> {
     if (!this.videoElement || !this.context || !this.faceApi) return;
 
+    // Respect consent setting: do not run recognition unless consented
+    if (!this.consentGiven && this.config.enableRealTime) {
+      // If real-time is enabled but no consent given, skip detections
+      return;
+    }
+
     // Draw video frame to canvas
     this.canvasElement!.width = this.videoElement.videoWidth;
     this.canvasElement!.height = this.videoElement.videoHeight;
@@ -175,7 +239,7 @@ export class FaceRecognitionService {
     // Detect faces
     const detections = await this.faceApi.detectFaces(this.canvasElement);
 
-    if (detections.length === 0) {
+    if (!detections || detections.length === 0) {
       if (this.currentFaces.length > 0) {
         this.currentFaces = [];
         this.eventEmitter.emit("facesCleared");
@@ -188,7 +252,6 @@ export class FaceRecognitionService {
 
     for (const detection of detections.slice(0, this.config.maxFaces)) {
       if (detection.confidence < this.config.confidenceThreshold) continue;
-
       const faceData = await this.processFaceDetection(detection);
       if (faceData) {
         processedFaces.push(faceData);
@@ -317,7 +380,7 @@ export class FaceRecognitionService {
     // Simple face matching based on landmarks similarity
     // In a real implementation, this would use more sophisticated algorithms
 
-    for (const [userId, user] of this.knownFaces) {
+    for (const [, user] of this.knownFaces) {
       const similarity = this.calculateFaceSimilarity(face, user.faceData[0]);
 
       if (similarity > 0.8) {

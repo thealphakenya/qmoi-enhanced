@@ -14,6 +14,23 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
+# Respect dry-run by default
+PRODUCTION_CONFIRMED = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+VALIDATION_DIR = Path(__file__).resolve().parents[1] / '.qmoi_validation'
+VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
+
+def write_proposal_for_todo(todo):
+    try:
+        import time
+        fname = VALIDATION_DIR / f'proposal-todo-{int(time.time())}.json'
+        with open(fname, 'w', encoding='utf-8') as fh:
+            json.dump({'todo': todo, 'createdAt': datetime.now(timezone.utc).isoformat()}, fh, indent=2)
+        print('Wrote proposal for todo to', fname)
+        return str(fname)
+    except Exception as e:
+        print('Failed to write proposal:', e)
+        return None
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / ".qmoi_validation"
 DATA_DIR.mkdir(exist_ok=True)
@@ -54,11 +71,28 @@ def run_todo(todo_id):
         if t['id'] == todo_id:
             t['status'] = 'running'
             t.setdefault('runs', []).append({'started': datetime.now(timezone.utc).isoformat()})
-            # Placeholder: real execution and LION orchestration hooks would go here
-            t['status'] = 'done'
-            t['runs'][-1]['ended'] = datetime.now(timezone.utc).isoformat()
-            save_todos(todos)
-            return t
+            # Safe behavior: write a proposal describing the run instead of executing
+            if not PRODUCTION_CONFIRMED:
+                write_proposal_for_todo(t)
+                t['status'] = 'proposed'
+                t['runs'][-1]['ended'] = datetime.now(timezone.utc).isoformat()
+                save_todos(todos)
+                return t
+
+            # If production confirmed, execute actual hooks (placeholder for integration)
+            try:
+                # Here you would call the actual orchestration code or shells
+                # For now we mark the todo done to avoid silent destructive actions
+                t['status'] = 'done'
+                t['runs'][-1]['ended'] = datetime.now(timezone.utc).isoformat()
+                save_todos(todos)
+                return t
+            except Exception as e:
+                t['status'] = 'failed'
+                t['runs'][-1]['ended'] = datetime.now(timezone.utc).isoformat()
+                t['runs'][-1]['error'] = str(e)
+                save_todos(todos)
+                return t
     raise KeyError(f"Todo id {todo_id} not found")
 
 

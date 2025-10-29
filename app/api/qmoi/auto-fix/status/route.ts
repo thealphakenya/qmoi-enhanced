@@ -1,9 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
+import libProposals from '../../../../lib/proposals';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    // API key gating (read endpoints still respect API key when configured)
+    const auth = libProposals.requireApiKey(request.headers);
+    if (!auth.ok) {
+      const r = auth.response;
+      return NextResponse.json(r.body, { status: r.status });
+    }
     const logsDir = path.join(process.cwd(), 'logs');
     const latestReportPath = path.join(logsDir, 'qmoi_auto_fix_latest.json');
     

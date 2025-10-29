@@ -91,8 +91,9 @@ class QmoiPaymentFix {
       MPESA_SHORTCODE: process.env.MPESA_SHORTCODE || '174379',
       AIRTEL_CLIENT_ID: process.env.AIRTEL_CLIENT_ID || 'your_airtel_client_id',
       AIRTEL_CLIENT_SECRET: process.env.AIRTEL_CLIENT_SECRET || 'your_airtel_client_secret',
-      PESAPAL_CONSUMER_KEY: process.env.PESAPAL_CONSUMER_KEY || 'UCz/GBzE5O5vNpzt99a6xEEqMi0O3QQE',
-      PESAPAL_CONSUMER_SECRET: process.env.PESAPAL_CONSUMER_SECRET || 'OyeJBzYMiWvVQdfNGJW3/wBpems=',
+  // Do NOT auto-populate real Pesapal keys. Use placeholders and require operator to provide real secrets.
+  PESAPAL_CONSUMER_KEY: process.env.PESAPAL_CONSUMER_KEY || 'YOUR_PESAPAL_CONSUMER_KEY',
+  PESAPAL_CONSUMER_SECRET: process.env.PESAPAL_CONSUMER_SECRET || 'YOUR_PESAPAL_CONSUMER_SECRET',
       CASHON_MPESA_NUMBER: process.env.CASHON_MPESA_NUMBER || '254786322855',
       QMOI_MASTER_TOKEN: process.env.QMOI_MASTER_TOKEN || 'qmoi_master_token_' + Date.now(),
       QMOI_DAILY_TARGET: process.env.QMOI_DAILY_TARGET || '10000',

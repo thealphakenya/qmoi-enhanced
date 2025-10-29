@@ -1,11 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { exec } from 'child_process';
 import { promisify } from 'util';
+import libProposals from '../../../../lib/proposals';
 
 const execAsync = promisify(exec);
 
-export async function POST() {
+export async function POST(request: NextRequest) {
   try {
+    // API key gating
+    const auth = libProposals.requireApiKey(request.headers);
+    if (!auth.ok) {
+      const r = auth.response;
+      return NextResponse.json(r.body, { status: r.status });
+    }
+
+    // Proposal-first: only actually kill processes when explicitly allowed
+    const canRun = process.env.PRODUCTION_CONFIRMED === 'true' && process.argv.indexOf('--real') !== -1;
+    const proposal = { title: 'Stop auto-fix', description: 'Request to stop running auto-fix processes', payload: { requestedAt: new Date().toISOString(), willRun: !!canRun } };
+    if (!canRun) {
+      await libProposals.writeProposal(proposal);
+      return NextResponse.json({ status: 'proposed', message: 'Stop auto-fix proposed (dry-run)' });
+    }
+
     // Find and kill Python processes running the auto-fix script
     const command = process.platform === 'win32' 
       ? 'tasklist /FI "IMAGENAME eq python.exe" /FO CSV'
@@ -64,4 +80,4 @@ export async function POST() {
       { status: 500 }
     );
   }
-} 
+}

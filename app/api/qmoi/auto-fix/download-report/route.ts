@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
+import libProposals from '../../../../lib/proposals';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // API key gating for downloads/access
+  const auth = libProposals.requireApiKey(request.headers);
+  if (!auth.ok) {
+    const r = auth.response;
+    return NextResponse.json(r.body, { status: r.status });
+  }
   try {
     const logsDir = path.join(process.cwd(), 'logs');
     const latestReportPath = path.join(logsDir, 'qmoi_auto_fix_latest.json');
@@ -17,7 +24,7 @@ export async function GET() {
       );
     }
 
-    // Log every download report access
+    // Log every download report access (best-effort)
     const logEntry = {
       timestamp: new Date().toISOString(),
       action: 'download-report-access',
@@ -27,7 +34,7 @@ export async function GET() {
       device: 'unknown',
       error: null
     };
-    fs.appendFileSync('logs/download_fixes.log', JSON.stringify(logEntry) + '\n');
+    try { fs.appendFileSync('logs/download_fixes.log', JSON.stringify(logEntry) + '\n'); } catch (e) { /* ignore logging failures */ }
 
     // Read the report file
     const reportData = await fs.readFile(latestReportPath, 'utf-8');

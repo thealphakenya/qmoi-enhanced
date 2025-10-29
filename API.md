@@ -828,6 +828,12 @@ Returns current offload/throttle status.
 - `GET /api/qmoi/voice-profiles` — List available voice profiles.
 - `POST /api/qmoi/voice-profiles` — Switch voice profile (body: { action: 'switch', voiceId })
 
+### Voice Preview
+- `POST /api/qmoi/voice-preview` — Generate a short TTS audio preview for a given voice and text.
+  - Body: { voiceId: string, text: string, quality?: 'low'|'medium'|'high', volume?: number (0-200) }
+  - Response: 200 audio/wav binary (ArrayBuffer). 400 for missing params. 500 on errors.
+  - Notes: If `TTS_PROVIDER=elevenlabs` and `ELEVENLABS_API_KEY` are set, the endpoint will attempt to use ElevenLabs TTS. Otherwise it returns a safe offline silent WAV. Volume scaling is applied when possible.
+
 ## QMOI Memory API (Planned)
 - `GET /api/qmoi/memory` — Query memory (conversations, preferences, project history, etc.)
 - `POST /api/qmoi/memory` — Save/update memory (body: { type, data })

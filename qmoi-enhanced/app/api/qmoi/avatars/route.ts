@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { avatarsConfig, animationEngines, qualityLevels } from '@/components/q-city/avatarsConfig';
+import libProposals from '../../../../lib/proposals';
 
 export async function GET() {
   try {
@@ -33,22 +34,53 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    const auth = libProposals.requireApiKey(request.headers);
+    if (!auth.ok) {
+      const r = auth.response;
+      return NextResponse.json(r.body, { status: r.status });
+    }
+
+    const canRun = process.env.PRODUCTION_CONFIRMED === 'true' && process.argv.indexOf('--real') !== -1;
     const body = await request.json();
     const { action, avatarId, quality, engine, voiceProfile } = body;
 
     switch (action) {
-      case 'switch':
+      case 'switch': {
+        const proposal = { title: 'Switch avatar', description: 'Switch QMOI avatar', payload: { avatarId }, requestedAt: new Date().toISOString(), willRun: !!canRun };
+        if (!canRun) {
+          await libProposals.writeProposal(proposal);
+          return NextResponse.json({ status: 'proposed', message: 'Avatar switch proposed (dry-run)' });
+        }
         return await switchAvatar(avatarId);
-      
-      case 'upgrade':
+      }
+
+      case 'upgrade': {
+        const proposal = { title: 'Upgrade avatar', description: 'Upgrade avatar assets', payload: { avatarId }, requestedAt: new Date().toISOString(), willRun: !!canRun };
+        if (!canRun) {
+          await libProposals.writeProposal(proposal);
+          return NextResponse.json({ status: 'proposed', message: 'Avatar upgrade proposed (dry-run)' });
+        }
         return await upgradeAvatar(avatarId);
-      
-      case 'enhance':
+      }
+
+      case 'enhance': {
+        const proposal = { title: 'Enhance avatar', description: 'Enhance avatar with AI', payload: { avatarId, quality, engine }, requestedAt: new Date().toISOString(), willRun: !!canRun };
+        if (!canRun) {
+          await libProposals.writeProposal(proposal);
+          return NextResponse.json({ status: 'proposed', message: 'Avatar enhancement proposed (dry-run)' });
+        }
         return await enhanceAvatar(avatarId, quality, engine);
-      
-      case 'customize':
+      }
+
+      case 'customize': {
+        const proposal = { title: 'Customize avatar', description: 'Customize avatar voice/profile', payload: { avatarId, voiceProfile }, requestedAt: new Date().toISOString(), willRun: !!canRun };
+        if (!canRun) {
+          await libProposals.writeProposal(proposal);
+          return NextResponse.json({ status: 'proposed', message: 'Avatar customization proposed (dry-run)' });
+        }
         return await customizeAvatar(avatarId, voiceProfile);
-      
+      }
+
       default:
         return NextResponse.json(
           { error: 'Invalid action' },

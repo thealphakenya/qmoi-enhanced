@@ -7,6 +7,35 @@ ICON_PATH = os.path.join(ROOT_DIR, "icon.ico")
 README_PATH = os.path.join(ROOT_DIR, "README.md")
 WATCHDEBUG_PATH = os.path.join(ROOT_DIR, "package-watchdebug.json")
 
+# Safety: default to dry-run unless explicitly allowed
+PRODUCTION_CONFIRMED = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+import argparse
+parser = argparse.ArgumentParser(description='QMOI App Builder')
+parser.add_argument('--real', action='store_true', help='Run real build/deploy actions (unsafe)')
+args, _ = parser.parse_known_args()
+if args.real:
+    PRODUCTION_CONFIRMED = True
+
+VALIDATION_DIR = os.path.join(ROOT_DIR, '..', '.qmoi_validation')
+os.makedirs(VALIDATION_DIR, exist_ok=True)
+
+def write_proposal(title, description, payload=None):
+    try:
+        import json, time
+        fname = os.path.join(VALIDATION_DIR, f'proposal-appbuilder-{int(time.time())}.json')
+        with open(fname, 'w', encoding='utf-8') as f:
+            json.dump({
+                'title': title,
+                'description': description,
+                'payload': payload,
+                'createdAt': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
+            }, f, indent=2)
+        print(f"🗂️ Proposal written: {fname}")
+        return fname
+    except Exception as e:
+        print('Failed to write proposal:', e)
+        return None
+
 DEVICES = {
     "windows": "qmoi_ai.exe",
     "android": "qmoi ai.apk",
@@ -31,32 +60,48 @@ def ensure_directories():
         print("✅ Default icon created")
 
 def build_windows():
-    print("🪟 Building Windows .exe...")
-    subprocess.call("npm run electron:build:win", shell=True)
+    print("🪟 Building Windows .exe... (dry-run by default)")
+    cmd = "npm run electron:build:win"
+    if PRODUCTION_CONFIRMED:
+        subprocess.run(cmd, shell=True, check=False)
+    else:
+        write_proposal('build-windows', 'Dry-run: would run electron:build:win', {'cmd': cmd})
 
 def build_android():
-    print("🤖 Building Android .apk...")
-    os.chdir(os.path.join(ROOT_DIR, "android"))
-    subprocess.call("./gradlew assembleRelease", shell=True)
-    apk_source = os.path.join(ROOT_DIR, "android", "app", "build", "outputs", "apk", "release", "app-release.apk")
-    apk_target = os.path.join(OUTPUT_BASE, "android", DEVICES["android"])
-    if os.path.exists(apk_source):
-        shutil.copy(apk_source, apk_target)
-        print("✅ Android APK copied.")
+    print("🤖 Building Android .apk... (dry-run by default)")
+    cmd = "./gradlew assembleRelease"
+    android_dir = os.path.join(ROOT_DIR, "android")
+    if PRODUCTION_CONFIRMED:
+        try:
+            subprocess.run(cmd, shell=True, check=True, cwd=android_dir)
+            apk_source = os.path.join(android_dir, "app", "build", "outputs", "apk", "release", "app-release.apk")
+            apk_target = os.path.join(OUTPUT_BASE, "android", DEVICES["android"])
+            if os.path.exists(apk_source):
+                shutil.copy(apk_source, apk_target)
+                print("✅ Android APK copied.")
+            else:
+                print("❌ Android APK build failed")
+        except Exception as e:
+            print('Android build failed:', e)
     else:
-        print("❌ Android APK build failed")
+        write_proposal('build-android', 'Dry-run: would run gradle assembleRelease in android dir', {'cmd': cmd, 'cwd': android_dir})
 
 def install_android():
     apk_path = os.path.join(OUTPUT_BASE, "android", DEVICES["android"])
-    if os.path.exists(apk_path):
-        subprocess.call("adb kill-server && adb start-server", shell=True)
-        time.sleep(2)
-        subprocess.call("adb wait-for-device", shell=True)
-        subprocess.call(f"adb install -r \"{apk_path}\"", shell=True)
-        subprocess.call("adb shell monkey -p com.qmoi.ai -v 1", shell=True)
+    if not os.path.exists(apk_path):
+        print("❌ APK not found for installation")
+        return
+
+    if PRODUCTION_CONFIRMED:
+        cmds = ["adb kill-server && adb start-server", "adb wait-for-device", f"adb install -r \"{apk_path}\"", "adb shell monkey -p com.qmoi.ai -v 1"]
+        for c in cmds:
+            try:
+                subprocess.run(c, shell=True, check=True)
+            except Exception as e:
+                print('ADB command failed:', e)
         print("✅ Android App installed and launched.")
     else:
-        print("❌ APK not found for installation")
+        write_proposal('install-android', 'Dry-run: would install APK to connected Android device via adb', {'apk_path': apk_path})
 
 def build_fallbacks():
     for device in DEVICES:

@@ -27,10 +27,11 @@ const payments: any[] = [];
 const paymentLogs: any[] = [];
 
 // Secure credential storage (in production, use encrypted environment variables)
+// Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
 const PAYMENT_CREDENTIALS = {
   pesapal: {
-    consumerKey: process.env.PESAPAL_CONSUMER_KEY || 'UCz/GBzE5O5vNpzt99a6xEEqMi0O3QQE',
-    consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || 'OyeJBzYMiWvVQdfNGJW3/wBpems=',
+    consumerKey: process.env.PESAPAL_CONSUMER_KEY || '',
+    consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || '',
   },
   mpesa: {
     consumerKey: process.env.MPESA_CONSUMER_KEY || '',
@@ -43,31 +44,21 @@ const PAYMENT_CREDENTIALS = {
   },
 };
 
-// Email backup function
-async function backupCredentialsToEmail(credentials: any, platform: string) {
-  try {
-    const emailData = {
-      to: 'rovicviccy@gmail.com',
-      subject: `QMOI Payment Credentials - ${platform}`,
-      body: `Platform: ${platform}\nCredentials: ${JSON.stringify(credentials, null, 2)}\nTimestamp: ${new Date().toISOString()}`,
-    };
+function maskSecret(s: string | undefined | null) {
+  if (!s) return '';
+  return s.replace(/.(?=.{4})/g, '*');
+}
 
-    // In production, use a proper email service
-    console.log('Credentials backed up to email:', emailData);
-    
-    // Also backup to QMOI server
-    await fetch('/api/qmoi-database', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        action: 'backup_credentials',
-        platform,
-        credentials: JSON.stringify(credentials),
-        timestamp: Date.now(),
-      }),
-    });
+async function backupCredentialsSafe(credentials: any, platform: string) {
+  try {
+    const masked = {
+      pesapal: { consumerKey: maskSecret(credentials.pesapal.consumerKey) },
+      mpesa: { passkey: maskSecret(credentials.mpesa.passkey) },
+    };
+    console.log(`Safe backup for ${platform}:`, masked);
+    // Intentionally avoid sending raw secrets via email or API.
   } catch (error) {
-    console.error('Failed to backup credentials:', error);
+    console.error('Failed to create safe backup for credentials:', error);
   }
 }
 
@@ -295,8 +286,8 @@ export async function POST(request: NextRequest) {
         message: 'Payment information updated successfully' 
       });
     } else if (action === 'backup_credentials') {
-      // Backup credentials to email and server
-      await backupCredentialsToEmail(PAYMENT_CREDENTIALS, 'all_platforms');
+  // Create a safe masked backup for operations visibility only
+  await backupCredentialsSafe(PAYMENT_CREDENTIALS, 'all_platforms');
       
       return NextResponse.json({ 
         success: true, 

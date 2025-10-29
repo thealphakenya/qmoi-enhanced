@@ -1,0 +1,59 @@
+{
+  "generated_at": "2025-10-29T00:18:42Z",
+  "results": {
+    "megavault": {
+      "balance": "0.00 (mock)",
+      "currency": "USD",
+      "last_checked": "2025-10-29T00:18:42Z",
+      "status": "mocked",
+      "meta": {
+        "adapter": "mock"
+      },
+      "source_file": "MEGAVAULT.md",
+      "balance_native": 0.0,
+      "currency_native": "USD",
+      "balance_canonical": 0.0,
+      "canonical_currency": "USD"
+    },
+    "cashon": {
+      "status": "missing_credentials",
+      "last_checked": "2025-10-29T00:18:42Z",
+      "meta": {
+        "adapter": "cashon"
+      },
+      "source_file": "CASHON.md",
+      "balance_native": 0.0,
+      "currency_native": "USD",
+      "balance_canonical": 0.0,
+      "canonical_currency": "USD"
+    },
+    "cashontradingreadme": {
+      "balance": "0.00 (mock)",
+      "currency": "USD",
+      "last_checked": "2025-10-29T00:18:42Z",
+      "status": "mocked",
+      "meta": {
+        "adapter": "mock"
+      },
+      "source_file": "CASHONTRADINGREADME.md",
+      "balance_native": 0.0,
+      "currency_native": "USD",
+      "balance_canonical": 0.0,
+      "canonical_currency": "USD"
+    },
+    "leahwallet": {
+      "balance": "0.00 (mock)",
+      "currency": "USD",
+      "last_checked": "2025-10-29T00:18:42Z",
+      "status": "mocked",
+      "meta": {
+        "adapter": "mock"
+      },
+      "source_file": "LEAHWALLET.md",
+      "balance_native": 0.0,
+      "currency_native": "USD",
+      "balance_canonical": 0.0,
+      "canonical_currency": "USD"
+    }
+  }
+}

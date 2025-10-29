@@ -1,26 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cashonWallet } from '@/lib/cashon-wallet';
-
-// Verify master token
-function verifyMasterToken(request: NextRequest): string | null {
-  const authHeader = request.headers.get('authorization');
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return null;
-  }
-  
-  const token = authHeader.substring(7);
-  const masterToken = process.env.MASTER_TOKEN;
-  
-  return token === masterToken ? token : null;
-}
+import libProposals from '../../../../lib/proposals';
 
 // POST /api/cashon/deposit
 export async function POST(request: NextRequest) {
   try {
-    const masterToken = verifyMasterToken(request);
-    if (!masterToken) {
-      return NextResponse.json({ error: 'Master access required' }, { status: 401 });
+    const auth = libProposals.requireApiKey(request.headers);
+    if (!auth.ok) {
+      const r = auth.response;
+      return NextResponse.json(r.body, { status: r.status });
     }
+
+    const canRun = process.env.PRODUCTION_CONFIRMED === 'true' && process.argv.indexOf('--real') !== -1;
+    const runtimeToken = process.env.MASTER_TOKEN || '';
 
     const body = await request.json();
     const { amount } = body;
@@ -29,7 +21,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid amount - minimum KES 10' }, { status: 400 });
     }
 
-    const depositId = await cashonWallet.initiateDeposit(amount, masterToken);
+    const proposal = { title: 'Cashon deposit', description: 'Initiate deposit', payload: { amount }, requestedAt: new Date().toISOString(), willRun: !!canRun };
+    if (!canRun) {
+      await libProposals.writeProposal(proposal);
+      return NextResponse.json({ status: 'proposed', message: 'Deposit proposed (dry-run)' });
+    }
+
+    const depositId = await cashonWallet.initiateDeposit(amount, runtimeToken);
     return NextResponse.json({ 
       success: true, 
       depositId,
@@ -42,4 +40,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}

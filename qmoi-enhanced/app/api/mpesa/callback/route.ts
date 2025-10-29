@@ -1,68 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { logEvent } from '../../../../lib/security_check';
 
-export async function POST(req: NextRequest) {
+import { MPesaService } from '../../../../../lib/services/mpesa';
+import { MPesaCallbackSchema } from '../../../../../lib/models/mpesa';
+
+export async function POST(request: Request) {
   try {
-    const body = await req.json();
+    const data = await request.json();
     
-    // Log the callback for debugging
-    console.log('M-Pesa Callback received:', body);
+    // Validate callback data
+    const callback = MPesaCallbackSchema.parse(data);
     
-    // Extract transaction details
-    const {
-      Body: {
-        stkCallback: {
-          CheckoutRequestID,
-          ResultCode,
-          ResultDesc,
-          CallbackMetadata
-        }
-      }
-    } = body;
+    // Process callback
+    const mpesaService = MPesaService.getInstance();
+    await mpesaService.handleCallback(callback);
 
-    if (ResultCode === '0') {
-      // Payment successful
-      const metadata = CallbackMetadata?.Item || [];
-      const amount = metadata.find(item => item.Name === 'Amount')?.Value || 0;
-      const mpesaReceiptNumber = metadata.find(item => item.Name === 'MpesaReceiptNumber')?.Value || '';
-      const transactionDate = metadata.find(item => item.Name === 'TransactionDate')?.Value || '';
-      const phoneNumber = metadata.find(item => item.Name === 'PhoneNumber')?.Value || '';
-
-      logEvent('mpesa_payment_success', {
-        checkoutRequestId: CheckoutRequestID,
-        amount,
-        receiptNumber: mpesaReceiptNumber,
-        phoneNumber,
-        transactionDate
-      });
-
-      // TODO: Update database with successful transaction
-      // TODO: Trigger any post-payment actions
-
-      return NextResponse.json({ 
-        success: true, 
-        message: 'Payment processed successfully' 
-      });
-    } else {
-      // Payment failed
-      logEvent('mpesa_payment_failed', {
-        checkoutRequestId: CheckoutRequestID,
-        resultCode: ResultCode,
-        resultDesc: ResultDesc
-      });
-
-      return NextResponse.json({ 
-        success: false, 
-        message: ResultDesc 
-      });
-    }
+    return new Response('success', { status: 200 });
   } catch (error) {
-    console.error('M-Pesa callback processing failed:', error);
-    logEvent('mpesa_callback_error', { error: error.message });
+    console.error('MPesa callback error:', error);
     
-    return NextResponse.json({ 
-      success: false, 
-      message: 'Callback processing failed' 
-    }, { status: 500 });
+    // Log the error but still return success to M-Pesa
+    // (M-Pesa will retry on failure responses)
+    return new Response('success', { status: 200 });
   }
-} 
+}

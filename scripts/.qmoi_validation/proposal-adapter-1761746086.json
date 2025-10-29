@@ -1,0 +1,10 @@
+{
+  "title": "check-balance-megavault",
+  "description": "Dry-run: check Megavault real balance",
+  "payload": {
+    "adapter": "megavault",
+    "api_url": "",
+    "api_key_masked": ""
+  },
+  "createdAt": "2025-10-29T13:54:46Z"
+}

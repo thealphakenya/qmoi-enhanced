@@ -7,7 +7,7 @@ Produces a JSON report at docs/placeholders_report.json with locations and a sum
 
 Usage:
   python3 scripts/scan_replace_placeholders.py            # run scan (no replacements)
-  python3 scripts/scan_replace_placeholders.py --apply  # apply safe replacements (backs up files)
+  python3 scripts/scan_replace_s.py --apply  # apply safe replacements (backs up files)
 
 Safe behavior: by default the script only reports. Use --apply carefully; it will create backups (*.bak).
 """
@@ -19,7 +19,19 @@ import re
 from pathlib import Path
 
 ROOT = Path('/workspaces/qmoi-enhanced')
-TOKENS = [r"\bTODO\b", r"\bFIXME\b", r"\bPLACEHOLDER\b", r"<replace>", r"\bplaceholder\b", r"\bplaceholders\b", r"\bdummy\b"]
+TOKENS = [
+    r"\bTODO\b",
+    r"\bFIXME\b",
+    r"\bPLACEHOLDER\b",
+    r"<replace>",
+    r"\bplaceholder\b",
+    r"\bplaceholders\b",
+    r"\bdummy\b",
+    r"in production",
+    r"REPLACE_ME",
+    r"REPLACE_THIS",
+    r"<PLACEHOLDER>"
+]
 FILE_GLOBS_EXCLUDE = ['.git', 'node_modules', '.npm-cache', '__pycache__']
 
 report = {
@@ -51,11 +63,16 @@ def scan_file(path: Path):
 
 # Safe replacement rules: map token -> replacement function or string
 REPLACEMENTS = {
-    'PLACEHOLDER': '/* placeholder removed: implement production behaviour or create task in todos */',
-    'placeholder': '',
-    'placeholders': '',
-    '<replace>': '',
-    'dummy': '/* dummy removed */',
+    # key: exact substring to replace (case-sensitive)
+    'PLACEHOLDER': '/* PLACEHOLDER: implement production behavior or add task to continuetodos.txt */',
+    'placeholder': '/* placeholder: review and implement production behavior */',
+    'placeholders': '/* placeholders: review and implement production behavior */',
+    '<replace>': '/* replace: implement production behavior */',
+    'dummy': '/* dummy removed: implement real behavior */',
+    'REPLACE_ME': '/* REPLACE_ME: update with production value or secret store reference */',
+    'REPLACE_THIS': '/* REPLACE_THIS: update with production code */',
+    '<PLACEHOLDER>': '/* <PLACEHOLDER>: update before shipping to production */',
+    'in production': '/* note: this code path requires production implementation - file flagged for review */'
 }
 
 def apply_replacements(path: Path):

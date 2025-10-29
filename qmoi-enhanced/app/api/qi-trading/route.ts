@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import libProposals from '../../../../lib/proposals';
 
 interface Trade {
   id: string;
@@ -24,6 +25,11 @@ interface TradingStats {
 
 export async function GET(request: NextRequest) {
   try {
+    const auth = libProposals.requireApiKey(request.headers);
+    if (!auth.ok) {
+      const r = auth.response;
+      return NextResponse.json(r.body, { status: r.status });
+    }
     const searchParams = request.nextUrl.searchParams;
     const stats = searchParams.get('stats');
     const history = searchParams.get('history');
@@ -123,14 +129,28 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const auth = libProposals.requireApiKey(request.headers);
+    if (!auth.ok) {
+      const r = auth.response;
+      return NextResponse.json(r.body, { status: r.status });
+    }
+
     const body = await request.json();
     const { action, trade } = body;
 
     if (action === 'execute') {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] trade execution - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate trade execution time
+      // Proposal-first: write a proposal unless explicitly allowed
+      const canRun = process.env.PRODUCTION_CONFIRMED === 'true' && process.argv.indexOf('--real') !== -1;
+      const proposal = { title: 'Execute trade', description: 'Execute a trading action', payload: { trade }, requestedAt: new Date().toISOString(), willRun: !!canRun };
+      if (!canRun) {
+        await libProposals.writeProposal(proposal);
+        return NextResponse.json({ status: 'proposed', message: 'Trade execution proposed (dry-run)' });
+      }
 
-  const tradeData: Trade = {
+      // [PRODUCTION IMPLEMENTATION REQUIRED] trade execution - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate trade execution time
+
+      const tradeData: Trade = {
         id: `T${Math.floor(Math.random() * 1000)}`,
         symbol: trade.symbol,
         type: trade.type,
@@ -141,22 +161,21 @@ export async function POST(request: NextRequest) {
         profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // [PRODUCTION IMPLEMENTATION REQUIRED] profit calculation
       };
 
-      return NextResponse.json({
-        status: 'success',
-        message: 'Trade executed successfully',
-        trade: tradeData
-      });
+      return NextResponse.json({ status: 'success', message: 'Trade executed successfully', trade: tradeData });
     }
 
     if (action === 'cancel') {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] trade cancellation - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 500)); // Simulate cancellation time
+      const canRun = process.env.PRODUCTION_CONFIRMED === 'true' && process.argv.indexOf('--real') !== -1;
+      const proposal = { title: 'Cancel trade', description: 'Cancel a pending trade', payload: { tradeId: trade.id }, requestedAt: new Date().toISOString(), willRun: !!canRun };
+      if (!canRun) {
+        await libProposals.writeProposal(proposal);
+        return NextResponse.json({ status: 'proposed', message: 'Cancel trade proposed (dry-run)' });
+      }
 
-      return NextResponse.json({
-        status: 'success',
-        message: 'Trade cancelled successfully',
-        tradeId: trade.id
-      });
+      // [PRODUCTION IMPLEMENTATION REQUIRED] trade cancellation - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate cancellation time
+
+      return NextResponse.json({ status: 'success', message: 'Trade cancelled successfully', tradeId: trade.id });
     }
 
     return NextResponse.json(

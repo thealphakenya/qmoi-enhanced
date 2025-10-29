@@ -1,25 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { qmoiTrader } from '@/lib/qmoi-trader';
-
-// Verify master token
-function verifyMasterToken(request: NextRequest): string | null {
-  const authHeader = request.headers.get('authorization');
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return null;
-  }
-  
-  const token = authHeader.substring(7);
-  const masterToken = process.env.MASTER_TOKEN;
-  
-  return token === masterToken ? token : null;
-}
+import libProposals from '../../../../lib/proposals';
 
 // POST /api/cashon/start-trading
 export async function POST(request: NextRequest) {
   try {
-    const masterToken = verifyMasterToken(request);
-    if (!masterToken) {
-      return NextResponse.json({ error: 'Master access required' }, { status: 401 });
+    const auth = libProposals.requireApiKey(request.headers);
+    if (!auth.ok) {
+      const r = auth.response;
+      return NextResponse.json(r.body, { status: r.status });
+    }
+
+    const canRun = process.env.PRODUCTION_CONFIRMED === 'true' && process.argv.indexOf('--real') !== -1;
+    const proposal = { title: 'Start trading', description: 'Start AI trading loop', payload: {}, requestedAt: new Date().toISOString(), willRun: !!canRun };
+    if (!canRun) {
+      await libProposals.writeProposal(proposal);
+      return NextResponse.json({ status: 'proposed', message: 'Start trading proposed (dry-run)' });
     }
 
     await qmoiTrader.startTrading();
@@ -34,4 +30,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}

@@ -48,8 +48,8 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
   - Balance checking
 
 #### 3. Pesapal Integration
-- **Consumer Key**: UCz/GBzE5O5vNpzt99a6xEEqMi0O3QQE
-- **Consumer Secret**: OyeJBzYMiWvVQdfNGJW3/wBpems=
+- **Consumer Key**: [PROVIDE VIA ENV: PESAPAL_CONSUMER_KEY]
+- **Consumer Secret**: [PROVIDE VIA ENV: PESAPAL_CONSUMER_SECRET]
 - **Environment**: Production
 - **Features**:
   - Merchant payments

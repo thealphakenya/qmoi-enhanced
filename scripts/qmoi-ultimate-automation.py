@@ -1,15 +1,42 @@
 import subprocess
 
-def start_ngrok_tunnel(port=8080):
-    """Start ngrok tunnel and return public URL"""
+def start_ngrok_tunnel(port=8080, real: bool = False):
+    """Start ngrok tunnel and return public URL. Dry-run by default.
+    If real==False, write a proposal instead of starting processes.
+    """
     try:
-        result = subprocess.run(["ngrok", "http", str(port)], capture_output=True, text=True)
-        # Parse ngrok output for public URL (placeholder)
-        # In production, use ngrok API or parse stdout
-        logger.info("[QMOI] ngrok tunnel started for port %s", port)
-        return "https://ngrok.io"
+        if not real and not PRODUCTION_CONFIRMED():
+            # write a proposal for starting ngrok tunnel
+            prop = {
+                'action': 'start_ngrok',
+                'port': port
+            }
+            _write_proposal('start-ngrok', f'Dry-run: would start ngrok on port {port}', prop)
+            logger.info('[QMOI] Dry-run: ngrok start proposed')
+            return None
+
+        # Try to use ngrok if installed
+        import shutil
+        ngrok_path = shutil.which('ngrok')
+        if not ngrok_path:
+            logger.error('ngrok binary not found; please install ngrok or set up a tunnel service')
+            return None
+
+        # Start ngrok subprocess in the background and return a best-effort public URL
+        proc = subprocess.Popen([ngrok_path, 'http', str(port)], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        time.sleep(2)
+        logger.info('[QMOI] ngrok process started (pid=%s)', getattr(proc, 'pid', 'unknown'))
+        # best-effort: try localhost:4040 API
+        try:
+            r = requests.get('http://localhost:4040/api/tunnels', timeout=2)
+            data = r.json()
+            if data.get('tunnels'):
+                return data['tunnels'][0]['public_url']
+        except Exception:
+            pass
+        return None
     except Exception as e:
-        logger.error(f"Failed to start ngrok tunnel: {e}")
+        logger.error(f'Failed to start ngrok tunnel: {e}')
         return None
 
 def auto_register_and_host_domain(domain):
@@ -753,8 +780,13 @@ class ReleaseManager:
         )
 
 def main():
-    # Run autotests for all links and domains
-    autotest_links()
+    # Safety: only run destructive or network-heavy workflows when confirmed
+    real_run = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+    if not real_run:
+        logger.info('⚠️ Running in dry-run mode. Use PRODUCTION_CONFIRMED=true to enable real operations.')
+
+    # Run autotests for links (dry-run will write proposals for fixes)
+    autotest_links(real=real_run)
     # Update tracks dictionary for all tracks and link features
     update_tracks_dictionary()
 def update_tracks_dictionary():

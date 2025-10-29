@@ -32,28 +32,85 @@ export async function POST(request: NextRequest) {
 }
 
 async function generateTTSAudio(voiceId: string, text: string, quality: string, volume: number): Promise<Buffer> {
-  // In a real implementation, this would:
-  // 1. Load the appropriate TTS model based on voiceId
-  // 2. Apply quality settings ([PRODUCTION IMPLEMENTATION REQUIRED] rate, bit depth, etc.)
-  // 3. Apply volume normalization
-  // 4. Generate audio using the selected engine (Bark, XTTS, etc.)
-  
-  // For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] audio buffer
-  // In production, this would integrate with:
-  // - Bark: https://github.com/suno-ai/bark
-  // - XTTS: https://github.com/coqui-ai/TTS
-  // - SadTalker: https://github.com/OpenTalker/SadTalker
-  // - EVA3D: https://github.com/OpenTalker/EVA3D
-  
-  console.log(`Generating TTS audio for voice: ${voiceId}`);
-  console.log(`Text: ${text}`);
-  console.log(`Quality: ${quality}, Volume: ${volume}%`);
-  
-  // Simulate audio generation delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  
-  // Return a minimal WAV file (silence)
+  // Provider selection: supports 'elevenlabs' (if ELEVENLABS_API_KEY present) or 'mock'
+  const provider = process.env.TTS_PROVIDER || (process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : 'mock');
+
+  console.log(`Generating TTS audio for voice: ${voiceId} using provider=${provider}`);
+
+  // Normalize params
+  const vol = typeof volume === 'number' ? Math.max(0, Math.min(200, volume)) : 100;
+  const q = quality || 'standard';
+
+  if (provider === 'elevenlabs') {
+    const apiKey = process.env.ELEVENLABS_API_KEY;
+    if (!apiKey) {
+      console.warn('ELEVENLABS_API_KEY not set, falling back to mock TTS');
+      return Buffer.from(generateSilentWAV());
+    }
+
+    // Call ElevenLabs TTS API
+    try {
+      const url = `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(voiceId)}`;
+      const body = {
+        text,
+        voice_settings: { stability: q === 'high' ? 0.8 : 0.5, similarity_boost: 0.75 }
+      };
+
+      const resp = await axios.post(url, body, {
+        headers: {
+          'xi-api-key': apiKey,
+          'Content-Type': 'application/json'
+        },
+        responseType: 'arraybuffer',
+        timeout: 60000
+      });
+
+      if (resp.status >= 200 && resp.status < 300) {
+        // Adjust volume if needed — simple normalization: scale PCM samples if WAV
+        const buf = Buffer.from(resp.data);
+        if (vol !== 100) {
+          // Attempt basic volume scaling for 16-bit PCM WAV
+          try {
+            return adjustVolumeWav(buf, vol / 100);
+          } catch (e) {
+            console.warn('Volume adjust failed, returning raw audio');
+            return buf;
+          }
+        }
+        return buf;
+      }
+
+      console.warn('ElevenLabs TTS returned non-2xx:', resp.status);
+      return Buffer.from(generateSilentWAV());
+    } catch (err) {
+      console.error('ElevenLabs TTS error:', err && err.message ? err.message : err);
+      return Buffer.from(generateSilentWAV());
+    }
+  }
+
+  // Default: mock silent WAV (safe)
+  await new Promise(resolve => setTimeout(resolve, 250));
   return Buffer.from(generateSilentWAV());
+}
+
+function adjustVolumeWav(buf: Buffer, scale: number): Buffer {
+  // Very small, best-effort WAV 16-bit PCM scaler. If format isn't supported, throw.
+  if (buf.length < 44) throw new Error('Invalid WAV');
+  // Check 'WAVE' header
+  if (buf.toString('ascii', 8, 12) !== 'WAVE') throw new Error('Not a WAV');
+  const bitsPerSample = buf.readUInt16LE(34);
+  if (bitsPerSample !== 16) throw new Error('Only 16-bit PCM supported for scaling');
+
+  const dataChunkOffset = 44;
+  for (let i = dataChunkOffset; i + 1 < buf.length; i += 2) {
+    const sample = buf.readInt16LE(i);
+    let scaled = Math.round(sample * scale);
+    if (scaled > 32767) scaled = 32767;
+    if (scaled < -32768) scaled = -32768;
+    buf.writeInt16LE(scaled, i);
+  }
+  return buf;
+}
 }
 
 function generateSilentWAV(): Uint8Array {

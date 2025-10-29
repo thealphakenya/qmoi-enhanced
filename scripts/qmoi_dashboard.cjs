@@ -2,10 +2,29 @@ const express = require('express');
 const session = require('express-session');
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
-const { sendEmail, sendSlack, sendWhatsApp } = require('./qmoi_notifier.cjs');
+const { spawnSync } = require('child_process');
 const axios = require('axios');
 const app = express();
+
+// Security notes: replace hard-coded credentials and secrets with env vars or
+// proposals. Require API key for mutating endpoints.
+const DASHBOARD_SECRET = process.env.QMOI_DASHBOARD_SECRET || 'change-me-in-production';
+const API_KEY = process.env.QMOI_API_KEY || '';
+
+function requireApiKeyFromReq(req, res) {
+  const provided = req.headers['x-qmoi-api-key'] || req.headers['authorization'];
+  if (!API_KEY) return true; // allow in dev when no key configured
+  if (!provided) {
+    res.status(401).json({ error: 'Missing API key' });
+    return false;
+  }
+  const supplied = provided.startsWith('Bearer ') ? provided.split(' ')[1] : provided;
+  if (supplied !== API_KEY) {
+    res.status(403).json({ error: 'Invalid API key' });
+    return false;
+  }
+  return true;
+}
 
 const LOG_FILE = './logs/qmoi_media_orchestrator.log';
 const ERROR_FIX_LOG = './logs/error_fix_summary.json';
@@ -50,10 +69,18 @@ app.get('/api/realtime-events', (req, res) => {
 
 
 // Enhanced: Support multiple users and biometrics
-const USERS = [
-  { username: 'Victor', password: 'Victor9798!', role: 'master', biometrics: 'enabled' },
-  { username: 'Leah', password: 'Leah2025!', role: 'sister', biometrics: 'enabled' }
-];
+// Load users from .qmoi_validation/users.json if present, otherwise fallback to minimal local admin
+let USERS = [];
+try {
+  const usersPath = path.join(process.cwd(), '.qmoi_validation', 'users.json');
+  if (fs.existsSync(usersPath)) {
+    USERS = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
+  } else {
+    USERS = [{ username: 'admin', password: 'admin', role: 'admin', biometrics: false }];
+  }
+} catch (e) {
+  USERS = [{ username: 'admin', password: 'admin', role: 'admin', biometrics: false }];
+}
 
 function checkCredentials(user, pass) {
   return USERS.find(u => u.username === user && u.password === pass);
@@ -121,25 +148,55 @@ app.get('/error-fix-stats', (req, res) => {
 });
 
 app.post('/trigger-fix', (req, res) => {
+  if (!requireApiKeyFromReq(req, res)) return;
   try {
-    execSync('node ./scripts/enhanced-error-fix.js');
+    if (!process.env.PRODUCTION_CONFIRMED) {
+      // Write a proposal file instead of running the fix
+      const pdir = path.join(process.cwd(), '.qmoi_validation');
+      fs.mkdirSync(pdir, { recursive: true });
+      const fname = path.join(pdir, `proposal-trigger-fix-${Date.now()}.json`);
+      fs.writeFileSync(fname, JSON.stringify({ action: 'trigger-fix', createdAt: new Date().toISOString() }, null, 2));
+      return res.json({ success: true, proposal: fname });
+    }
+
+    // Run the fix script synchronously but safely
+    const result = spawnSync('node', ['./scripts/enhanced-error-fix.js'], { encoding: 'utf-8' });
+    if (result.error) {
+      return res.status(500).json({ success: false, error: String(result.error) });
+    }
     let stats = {};
     if (fs.existsSync(ERROR_FIX_LOG)) {
       const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, 'utf-8'));
       stats = log[log.length - 1];
     }
-    res.json({ success: true, stats });
+    res.json({ success: true, stdout: result.stdout, stderr: result.stderr, stats });
   } catch (err) {
     res.status(500).json({ success: false, error: err.toString() });
   }
 });
 
 app.post('/send-test-notification', async (req, res) => {
+  if (!requireApiKeyFromReq(req, res)) return;
   try {
-    await sendEmail('QMOI Test Notification', 'This is a test email from the dashboard.');
-    await sendSlack('QMOI Test Notification from dashboard.');
-    await sendWhatsApp('QMOI Test Notification from dashboard.');
-    res.send('Test notification sent! <a href="/">Back</a>');
+    // For safety, only run notification sends when PRODUCTION_CONFIRMED is set
+    if (!process.env.PRODUCTION_CONFIRMED) {
+      const pdir = path.join(process.cwd(), '.qmoi_validation');
+      fs.mkdirSync(pdir, { recursive: true });
+      const fname = path.join(pdir, `proposal-send-notif-${Date.now()}.json`);
+      fs.writeFileSync(fname, JSON.stringify({ action: 'send-test-notification', createdAt: new Date().toISOString() }, null, 2));
+      return res.send('Dry-run: proposal written for sending test notification.');
+    }
+
+    // If implemented notifier functions exist, call them. Otherwise return not-implemented.
+    try {
+      const notifier = require('./qmoi_notifier.cjs');
+      if (notifier && notifier.sendEmail) await notifier.sendEmail('QMOI Test Notification', 'This is a test email from the dashboard.');
+      if (notifier && notifier.sendSlack) await notifier.sendSlack('QMOI Test Notification from dashboard.');
+      if (notifier && notifier.sendWhatsApp) await notifier.sendWhatsApp('QMOI Test Notification from dashboard.');
+      res.send('Test notification sent! <a href="/">Back</a>');
+    } catch (err) {
+      res.status(501).send('Notifier not configured in this environment.');
+    }
   } catch (err) {
     res.send('Notification failed: ' + err + ' <a href="/">Back</a>');
   }
@@ -252,4 +309,4 @@ app.post('/api/trigger-fix', (req, res) => {
   }
 });
 
-app.listen(4000, () => console.log('QMOI Dashboard running on http://localhost:4000')); 
+app.listen(process.env.QMOI_DASHBOARD_PORT || 4000, () => console.log('QMOI Dashboard running on http://localhost:' + (process.env.QMOI_DASHBOARD_PORT || 4000)));
