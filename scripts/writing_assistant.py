@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+ok#!/usr/bin/env python3
 """
 QMOI Ethical Writing Assistant
 ---------------------------------
