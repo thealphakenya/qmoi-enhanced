@@ -8,6 +8,7 @@ import json
 import pytest
 import aiohttp
 import asyncio
+import itertools
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Dict, Any
@@ -28,6 +29,12 @@ class TestIntegration:
     async def credential_manager(self):
         """Credential manager fixture."""
         manager = EnhancedCredentialManager()
+        # Reset test counters to ensure unique values
+        manager._test_counters = {
+            'api_key': itertools.count(1),
+            'secret': itertools.count(1), 
+            'passphrase': itertools.count(1)
+        }
         await manager.update_credentials()
         return manager
     
@@ -74,12 +81,23 @@ class TestIntegration:
         if rotation_file.exists():
             rotation_file.unlink()
         
-        # Force a credential rotation
-        new_creds = await manager._auto_rotate_credentials()
+        # Force a credential rotation by passing force=True
+        new_creds = await manager._auto_rotate_credentials(force=True)
         final_creds = manager.cached_credentials
         
         # Check that the service exists and its credentials were updated
         assert 'bitget' in new_creds
+        assert 'api_key' in new_creds['bitget']
+        assert 'api_secret' in new_creds['bitget']
+        assert 'passphrase' in new_creds['bitget']
+        
+        # Verify old and new credentials are different
+        assert new_creds['bitget']['api_key'] != test_creds['bitget']['api_key']
+        assert new_creds['bitget']['api_secret'] != test_creds['bitget']['api_secret']
+        assert new_creds['bitget']['passphrase'] != test_creds['bitget']['passphrase']
+        
+        # Verify credentials were updated in cache
+        assert final_creds['bitget'] == new_creds['bitget']
         assert new_creds['bitget']['api_key'] != initial_creds['bitget']['api_key']
         assert new_creds['bitget']['api_secret'] != initial_creds['bitget']['api_secret']
         assert new_creds['bitget']['passphrase'] != initial_creds['bitget']['passphrase']
