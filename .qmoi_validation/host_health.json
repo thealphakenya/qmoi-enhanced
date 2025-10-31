@@ -1,0 +1,11 @@
+{
+  "generated_at": "2025-10-31T00:05:05.005720Z",
+  "domains_count": 1,
+  "checks": [
+    {
+      "project": "example",
+      "domain": "example.com",
+      "status": "planned"
+    }
+  ]
+}

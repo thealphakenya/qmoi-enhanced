@@ -1,0 +1,72 @@
+{
+  "started_at": "2025-10-31T01:33:35.638268Z",
+  "finished_at": "2025-10-31T01:34:51.582208Z",
+  "steps": [
+    {
+      "name": "placeholder_scans",
+      "returncode": 0,
+      "stdout": "scan_replace_placeholders.py rc= 0\nplaceholder_scanner.py rc= 0\nWrote summary to /workspaces/qmoi-enhanced/.qmoi_validation/placeholder_scans_summary.json\n",
+      "stderr": ""
+    },
+    {
+      "name": "generate_payed_md",
+      "returncode": 0,
+      "stdout": "Discovered 572 .md files. Missing in refs: 17. Extra refs: 4.\nFound 575 .md files (excluded vendor dirs).\nRun with --write to update ALLMDFILESREFS.md.\nLists written to .qmoi_validation/md_files_found.json\nSkipping existing HUGGINGFACEHFPAYED.md\nSkipping existing GITHUBPAYED.md\nSkipping existing GITPODPAYED.md\nSkipping existing VERCELPAYED.md\nSkipping existing NETLIFYPAYED.md\nRan generate_allmdrefs.py\nNo new files created\n",
+      "stderr": ""
+    },
+    {
+      "name": "expand_platform_todos",
+      "returncode": 0,
+      "stdout": "Wrote /workspaces/qmoi-enhanced/.qmoi_validation/todos.json (5 new todos)\n",
+      "stderr": ""
+    },
+    {
+      "name": "validate_payed_platforms",
+      "returncode": 0,
+      "stdout": "Discovered 572 .md files. Missing in refs: 17. Extra refs: 4.\nFound 575 .md files (excluded vendor dirs).\nRun with --write to update ALLMDFILESREFS.md.\nLists written to .qmoi_validation/md_files_found.json\nWrote /workspaces/qmoi-enhanced/.qmoi_validation/payed_validation_report.json\nRan generate_allmdrefs.py\nValidation complete\n",
+      "stderr": ""
+    },
+    {
+      "name": "generate_all_links",
+      "returncode": 2,
+      "stdout": "",
+      "stderr": "usage: generate_all_links.py [-h] [--apply]\ngenerate_all_links.py: error: unrecognized arguments: --dry-run\n"
+    },
+    {
+      "name": "link_autoupdater",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/workspaces/qmoi-enhanced/scripts/link_autoupdater.py\", line 16, in <module>\n    from .link_cache import LinkCache\nImportError: attempted relative import with no known parent package\n"
+    },
+    {
+      "name": "link_apply_preview",
+      "returncode": 0,
+      "stdout": "Wrote preview to /workspaces/qmoi-enhanced/.qmoi_validation/link_apply_preview.json\n",
+      "stderr": ""
+    },
+    {
+      "name": "qcity_enhancer",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/workspaces/qmoi-enhanced/scripts/qcity_enhancer.py\", line 25, in <module>\n    import yaml\nModuleNotFoundError: No module named 'yaml'\n"
+    },
+    {
+      "name": "lion_feature_enhancer",
+      "returncode": 0,
+      "stdout": "2025-10-31 01:34:08,609 [INFO] Starting Lion feature enhancement analysis\n2025-10-31 01:34:08,610 [INFO] Starting repository scan for Lion features\n2025-10-31 01:34:17,129 [WARNING] Error reading /workspaces/qmoi-enhanced/scripts/qmoi-enhanced-doc-verifier.js: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n2025-10-31 01:34:17,187 [WARNING] Error reading /workspaces/qmoi-enhanced/scripts/qmoi_huggingface_spaces.js: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n2025-10-31 01:34:17,190 [WARNING] Error reading /workspaces/qmoi-enhanced/scripts/qmoi-emergency-fix.js: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n2025-10-31 01:34:31,695 [WARNING] Error reading /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-enhanced-doc-verifier.js: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n2025-10-31 01:34:31,892 [WARNING] Error reading /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi_huggingface_spaces.js: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n2025-10-31 01:34:31,894 [WARNING] Error reading /workspaces/qmoi-enhanced/qmoi-enhanced/scripts/qmoi-emergency-fix.js: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n2025-10-31 01:34:38,552 [INFO] Found 2 Lion features\n2025-10-31 01:34:38,560 [INFO] Analyzing feature: enhancer\n2025-10-31 01:34:38,569 [INFO] Analyzing feature: error_report\n2025-10-31 01:34:38,605 [INFO] Saved enhancement report to /workspaces/qmoi-enhanced/.qmoi_validation/lion_feature_enhancer.json\n\nLion Feature Analysis Summary:\nFeatures found: 2\nFiles analyzed: 13678\n\nRisk Distribution:\n  High: 2\n  Medium: 0\n  Low: 0\n\nValidation Results:\n  Status: warning\n  High-risk features: 2\n  Untested features: 1\n2025-10-31 01:34:38,607 [INFO] Enhancement analysis completed successfully\n",
+      "stderr": ""
+    },
+    {
+      "name": "update_md_refs",
+      "returncode": 0,
+      "stdout": "2025-10-31 01:34:51,063 [INFO] Updated /workspaces/qmoi-enhanced/ALLMDFILESREFS.md with 2089 entries\n",
+      "stderr": ""
+    },
+    {
+      "name": "unit_tests",
+      "returncode": 1,
+      "stdout": "\nRunning test_adapter_base.py\nPASS: test_testnet_adapter_returns_mock\nPASS: test_registry_has_leah_adapter\nPASS: test_registry_has_cash_adapters\n\nRunning test_billing_guard.py\nPASS: test_billing_disabled_by_default\nPASS: test_require_billing_blocks_when_disabled\nPASS: test_require_billing_allows_when_enabled\n\nRunning test_currency_convert.py\nPASS: test_convert_same_currency\nPASS: test_convert_mocked_rate\n\nRunning test_dns_plan_signer.py\nPASS: test_sign_and_verify_plan\n\nRunning test_enhancers.py\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/workspaces/qmoi-enhanced/scripts/run_unit_tests.py\", line 42, in <module>\n    failures = run_tests_from_path(p)\n               ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspaces/qmoi-enhanced/scripts/run_unit_tests.py\", line 18, in run_tests_from_path\n    ns = runpy.run_path(str(path), run_name='__main__')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspaces/qmoi-enhanced/tests/test_enhancers.py\", line 15, in <module>\n    import qcity_enhancer\n  File \"/workspaces/qmoi-enhanced/scripts/qcity_enhancer.py\", line 25, in <module>\n    import yaml\nModuleNotFoundError: No module named 'yaml'\n"
+    }
+  ]
+}

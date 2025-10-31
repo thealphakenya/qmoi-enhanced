@@ -1,0 +1,122 @@
+{
+  "timestamp": "2025-10-31T01:34:38.579511Z",
+  "features_found": 2,
+  "files_analyzed": 13678,
+  "risk_summary": {
+    "high": 2,
+    "medium": 0,
+    "low": 0
+  },
+  "feature_analyses": [
+    {
+      "name": "enhancer",
+      "files": [
+        "/workspaces/qmoi-enhanced/.github/workflows/enhancer-report.yml",
+        "/workspaces/qmoi-enhanced/scripts/lion_feature_enhancer.py",
+        "/workspaces/qmoi-enhanced/scripts/auto_enhance_pipeline.py",
+        "/workspaces/qmoi-enhanced/tests/test_enhancers.py"
+      ],
+      "risk_level": "high",
+      "has_tests": true,
+      "has_feature_flag": true,
+      "has_monitoring": true,
+      "has_documentation": false,
+      "critical_ops": [
+        "deployment",
+        "payment",
+        "validation",
+        "authentication",
+        "billing",
+        "authorization",
+        "backup",
+        "verification",
+        "validation",
+        "billing",
+        "validation",
+        "backup"
+      ],
+      "suggested_improvements": [
+        {
+          "type": "documentation",
+          "severity": "medium",
+          "message": "Add feature documentation and runbook",
+          "recommendation": {
+            "action": "add_docs",
+            "files": [
+              "docs/features/enhancer.md",
+              "docs/runbooks/enhancer_ops.md"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "error_report",
+      "files": [
+        "/workspaces/qmoi-enhanced/scripts/lion_feature_enhancer.py"
+      ],
+      "risk_level": "high",
+      "has_tests": false,
+      "has_feature_flag": true,
+      "has_monitoring": true,
+      "has_documentation": false,
+      "critical_ops": [
+        "deployment",
+        "payment",
+        "validation",
+        "authentication",
+        "billing",
+        "authorization",
+        "backup",
+        "verification"
+      ],
+      "suggested_improvements": [
+        {
+          "type": "testing",
+          "severity": "high",
+          "message": "Add test coverage for feature reliability",
+          "recommendation": {
+            "action": "add_tests",
+            "files": [
+              "/workspaces/qmoi-enhanced/scripts/lion_feature_enhancer_test.py"
+            ]
+          }
+        },
+        {
+          "type": "documentation",
+          "severity": "medium",
+          "message": "Add feature documentation and runbook",
+          "recommendation": {
+            "action": "add_docs",
+            "files": [
+              "docs/features/error_report.md",
+              "docs/runbooks/error_report_ops.md"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "global_recommendations": [
+    {
+      "type": "documentation",
+      "severity": "medium",
+      "message": "Organize feature documentation",
+      "recommendation": {
+        "action": "create_doc_structure",
+        "paths": [
+          "docs/features/",
+          "docs/runbooks/",
+          "docs/architecture/"
+        ]
+      }
+    }
+  ],
+  "validation_results": {
+    "total_features": 2,
+    "high_risk_features": 2,
+    "untested_features": 1,
+    "unmonitored_critical_features": 0,
+    "validation_status": "warning"
+  }
+}

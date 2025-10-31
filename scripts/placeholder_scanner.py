@@ -41,41 +41,52 @@ PROD_MARKERS = [
 ]
 FILE_GLOB = ['**/*.py', '**/*.md', '**/*.ts', '**/*.json', '**/*.yaml', '**/*.yml']
 
+# default: skip files larger than 2MB
+DEFAULT_MAX_FILE_SIZE = 2 * 1024 * 1024
 
-def find_placeholders(root: Path):
+
+def find_placeholders(root: Path, max_file_size: int = DEFAULT_MAX_FILE_SIZE, verbose: bool = False):
     report = []
     patterns = [re.compile(p) for p in PLACEHOLDER_PATTERNS]
     prod_patterns = [re.compile(p) for p in PROD_MARKERS]
     for glob in FILE_GLOB:
-        for p in root.glob(glob):
-            if p.is_file():
-                try:
-                    text = p.read_text(encoding='utf8', errors='ignore')
-                except Exception:
+        # use rglob to traverse nested directories
+        for p in root.rglob(glob.replace('**/', '')):
+            try:
+                if not p.is_file():
                     continue
-                for i, line in enumerate(text.splitlines(), start=1):
-                    for pat in patterns:
-                        m = pat.search(line)
-                        if m:
-                            report.append({
-                                'file': str(p.relative_to(root)),
-                                'line': i,
-                                'text': line.strip(),
-                                'match': m.group(0),
-                                'type': 'placeholder'
-                            })
-                            break
-                    for pat in prod_patterns:
-                        m = pat.search(line)
-                        if m:
-                            report.append({
-                                'file': str(p.relative_to(root)),
-                                'line': i,
-                                'text': line.strip(),
-                                'match': m.group(0),
-                                'type': 'prod_marker'
-                            })
-                            break
+                if p.stat().st_size > max_file_size:
+                    if verbose:
+                        print(f"Skipping large file: {p} ({p.stat().st_size} bytes)")
+                    continue
+                text = p.read_text(encoding='utf8', errors='ignore')
+            except Exception:
+                if verbose:
+                    print(f"Failed to read: {p}")
+                continue
+            for i, line in enumerate(text.splitlines(), start=1):
+                for pat in patterns:
+                    m = pat.search(line)
+                    if m:
+                        report.append({
+                            'file': str(p.relative_to(root)),
+                            'line': i,
+                            'text': line.strip(),
+                            'match': m.group(0),
+                            'type': 'placeholder'
+                        })
+                        break
+                for pat in prod_patterns:
+                    m = pat.search(line)
+                    if m:
+                        report.append({
+                            'file': str(p.relative_to(root)),
+                            'line': i,
+                            'text': line.strip(),
+                            'match': m.group(0),
+                            'type': 'prod_marker'
+                        })
+                        break
     return report
 
 

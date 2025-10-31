@@ -1,0 +1,1199 @@
+[
+  {
+    "file": "qmoi_todos.py",
+    "line": 193,
+    "text": "status = 'DONE' if i['done'] else 'TODO'",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi-research-engine.py",
+    "line": 495,
+    "text": "# For now, return [PRODUCTION IMPLEMENTATION REQUIRED] data",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_enhanced_ai.py",
+    "line": 778,
+    "text": "\"\"\"Main function to [PRODUCTION IMPLEMENTATION REQUIRED]nstrate enhanced QMOI AI\"\"\"",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-parallel-processor.py",
+    "line": 400,
+    "text": "\"\"\"Example tasks for [PRODUCTION IMPLEMENTATION REQUIRED]nstration\"\"\"",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-parallel-processor.py",
+    "line": 451,
+    "text": "args=(\"[PRODUCTION IMPLEMENTATION REQUIRED] text for AI processing\",),",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_auto_fix_enhanced.py",
+    "line": 320,
+    "text": "\"pattern\": r\"TODO|FIXME|BUG\",",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi_auto_fix_enhanced.py",
+    "line": 374,
+    "text": "\"// TODO: Replace with proper error handling\"",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi_auto_fix_enhanced.py",
+    "line": 380,
+    "text": "fixed_line = f\"// TODO: Add proper error handling for: {original_line}\"",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi_auto_fix_enhanced.py",
+    "line": 385,
+    "text": "fixed_line = original_line.replace(\"TODO\", \"ADDRESSED\").replace(\"FIXME\", \"ADDRESSED\")",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "placeholder_scanner.py",
+    "line": 3,
+    "text": "Scan repository for placeholder tokens (TODO, FIXME, PLACEHOLDER) and optionally",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "placeholder_scanner.py",
+    "line": 34,
+    "text": "r\"SIMULATE success\",",
+    "match": "SIMULATE success",
+    "type": "prod_marker"
+  },
+  {
+    "file": "placeholder_scanner.py",
+    "line": 35,
+    "text": "r\"Simulate success\",",
+    "match": "Simulate success",
+    "type": "prod_marker"
+  },
+  {
+    "file": "placeholder_scanner.py",
+    "line": 36,
+    "text": "r\"simulate success\",",
+    "match": "simulate success",
+    "type": "prod_marker"
+  },
+  {
+    "file": "placeholder_scanner.py",
+    "line": 37,
+    "text": "r\"// Simulate\",",
+    "match": "// Simulate",
+    "type": "prod_marker"
+  },
+  {
+    "file": "placeholder_scanner.py",
+    "line": 38,
+    "text": "r\"// Simulated\",",
+    "match": "// Simulate",
+    "type": "prod_marker"
+  },
+  {
+    "file": "placeholder_scanner.py",
+    "line": 39,
+    "text": "r\"return true; // Simulate\",",
+    "match": "// Simulate",
+    "type": "prod_marker"
+  },
+  {
+    "file": "placeholder_scanner.py",
+    "line": 40,
+    "text": "r\"return true -- Simulate\",",
+    "match": "return true -- Simulate",
+    "type": "prod_marker"
+  },
+  {
+    "file": "update_readme.py",
+    "line": 60,
+    "text": "elif status == \"[PRODUCTION IMPLEMENTATION REQUIRED]_used\":",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "downloadqmoiai.py",
+    "line": 19,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with QMOI notification system",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "downloadqmoiai.py",
+    "line": 42,
+    "text": "# Trigger QMOI error handler ([PRODUCTION IMPLEMENTATION REQUIRED])",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_notification_manager.py",
+    "line": 80,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED] for SMS integration (e.g., Twilio, Nexmo, etc.)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_notification_manager.py",
+    "line": 81,
+    "text": "log_activity('Sent SMS notification ([PRODUCTION IMPLEMENTATION REQUIRED]).', {'message': message})",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_notification_manager.py",
+    "line": 82,
+    "text": "print('SMS message sent ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_notification_manager.py",
+    "line": 86,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED] for push notification integration (e.g., Firebase, OneSignal, etc.)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_notification_manager.py",
+    "line": 87,
+    "text": "log_activity('Sent push notification ([PRODUCTION IMPLEMENTATION REQUIRED]).', {'message': message})",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_notification_manager.py",
+    "line": 88,
+    "text": "print('Push notification sent ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-hf-test.py",
+    "line": 76,
+    "text": "# Trigger a redeploy or notify master ([PRODUCTION IMPLEMENTATION REQUIRED] for real fix logic)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_app_installer.py",
+    "line": 98,
+    "text": "# This would generate actual icon files; here, create a [PRODUCTION IMPLEMENTATION REQUIRED] with enhanced description",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_app_installer.py",
+    "line": 477,
+    "text": "# Create [PRODUCTION IMPLEMENTATION REQUIRED] files",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "whatsapp_verification.py",
+    "line": 6,
+    "text": "WHATSAPP_API_KEY = os.getenv('WHATSAPP_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]-key')",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "whatsapp_verification.py",
+    "line": 11,
+    "text": "# TODO: Integrate with real WhatsApp Business API using WHATSAPP_API_KEY",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "whatsapp_verification.py",
+    "line": 21,
+    "text": "# TODO: Integrate with WhatsApp notification API",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi_advanced_analytics.py",
+    "line": 655,
+    "text": "# Simple accuracy calculation ([PRODUCTION IMPLEMENTATION REQUIRED])",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_advanced_analytics.py",
+    "line": 656,
+    "text": "return 75.0  # [PRODUCTION IMPLEMENTATION REQUIRED] value",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-space-backend.py",
+    "line": 269,
+    "text": "# For now, we'll use [PRODUCTION IMPLEMENTATION REQUIRED] models",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-space-backend.py",
+    "line": 307,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED] response generation",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-unified-push-ultimate.py",
+    "line": 264,
+    "text": "missing_deps = [\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-[PRODUCTION IMPLEMENTATION REQUIRED]\"]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-unified-push-ultimate.py",
+    "line": 605,
+    "text": "\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-[PRODUCTION IMPLEMENTATION REQUIRED]\"",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_security_monitor.py",
+    "line": 584,
+    "text": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] - in a real system, you would use firewall rules",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_security_monitor.py",
+    "line": 611,
+    "text": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] - in a real system, you would use process management",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_security_monitor.py",
+    "line": 927,
+    "text": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] - in a real system, you would check against vulnerability databases",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "scan_and_index.py",
+    "line": 79,
+    "text": "if any(tok in line for tok in ('TODO', 'FIXME', 'ERROR', 'BUG')):",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi_intelligent_scheduler.py",
+    "line": 133,
+    "text": "logger.info(f\"Trained ML model on {len(features)} [PRODUCTION IMPLEMENTATION REQUIRED]s\")",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_intelligent_scheduler.py",
+    "line": 371,
+    "text": "\"\"\"Main function to [PRODUCTION IMPLEMENTATION REQUIRED]nstrate intelligent scheduling\"\"\"",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "scan_replace_placeholders.py",
+    "line": 5,
+    "text": "Scans the repository for common placeholder tokens and optionally replaces them with safe defaults or inserts TODO markers.",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "scan_replace_placeholders.py",
+    "line": 33,
+    "text": "r\"<PLACEHOLDER>\"",
+    "match": "PLACEHOLDER",
+    "type": "placeholder"
+  },
+  {
+    "file": "scan_replace_placeholders.py",
+    "line": 76,
+    "text": "'PLACEHOLDER': '/* PLACEHOLDER: implement production behavior or add task to continuetodos.txt */',",
+    "match": "PLACEHOLDER",
+    "type": "placeholder"
+  },
+  {
+    "file": "scan_replace_placeholders.py",
+    "line": 83,
+    "text": "'<PLACEHOLDER>': '/* <PLACEHOLDER>: update before shipping to production */',",
+    "match": "PLACEHOLDER",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi_self_evolve.py",
+    "line": 21,
+    "text": "code = f.read()[:512]  # Limit for [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_self_evolve.py",
+    "line": 38,
+    "text": "# TODO: Implement real logging",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi_model_enhancer.py",
+    "line": 728,
+    "text": "\"\"\"Main function to [PRODUCTION IMPLEMENTATION REQUIRED]nstrate QMOI model enhancement\"\"\"",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-ultimate-automation.py",
+    "line": 933,
+    "text": "# For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] structure",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "link_autoupdater.py",
+    "line": 154,
+    "text": "r\"https?://PLACEHOLDER\\.[A-Z_]+\",",
+    "match": "PLACEHOLDER",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi_auto_evolution_system.py",
+    "line": 638,
+    "text": "return False  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_auto_evolution_system.py",
+    "line": 647,
+    "text": "return False  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_auto_evolution_system.py",
+    "line": 656,
+    "text": "return False  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_auto_evolution_system.py",
+    "line": 863,
+    "text": "json.dumps([])  # [PRODUCTION IMPLEMENTATION REQUIRED] for evolution improvements",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-dev-actions.py",
+    "line": 44,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: create PR/MR on platform",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-dev-actions.py",
+    "line": 49,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: open issue on platform",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-dev-actions.py",
+    "line": 54,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: comment on PR/issue",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-dev-actions.py",
+    "line": 59,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: review PR/issue",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "replace_placeholders.py",
+    "line": 10,
+    "text": "the script will backup files and apply conservative TODO-style replacements.",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "replace_placeholders.py",
+    "line": 30,
+    "text": "('PLACEHOLDER', re.compile(r'\\bPLACEHOLDER\\b', re.IGNORECASE)),",
+    "match": "PLACEHOLDER",
+    "type": "placeholder"
+  },
+  {
+    "file": "replace_placeholders.py",
+    "line": 34,
+    "text": "('TODO_TOKEN', re.compile(r'\\b(TODO|FIXME|XXX)\\b')),",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "replace_placeholders.py",
+    "line": 82,
+    "text": "suggestion_body = f\"{prefix}TODO: implement production behavior (replaced '{match_text}'){suffix}\"",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "doc_verifier.py",
+    "line": 219,
+    "text": "// TODO: Implement {claim} functionality",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "doc_verifier.py",
+    "line": 233,
+    "text": "// TODO: Implement {claim} POST functionality",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "doc_verifier.py",
+    "line": 255,
+    "text": "{{/* TODO: Implement component functionality */}}",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "doc_verifier.py",
+    "line": 278,
+    "text": "# TODO: Implement {claim} functionality",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "doc_verifier.py",
+    "line": 292,
+    "text": "// TODO: Implement {claim} hook functionality",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "doc_verifier.py",
+    "line": 298,
+    "text": "// TODO: Add hook methods",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "doc_verifier.py",
+    "line": 307,
+    "text": "// TODO: Define configuration interface",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "device_ownership_detector.py",
+    "line": 481,
+    "text": "# For now, return False as [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "db_migrations.py",
+    "line": 130,
+    "text": "f.write(\"-- TODO: Add your up migration SQL here\\n\\n\")",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "db_migrations.py",
+    "line": 132,
+    "text": "f.write(\"-- TODO: Add your down migration SQL here\\n\")",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi-enhanced-health-checker.py",
+    "line": 480,
+    "text": "# Send notification ([PRODUCTION IMPLEMENTATION REQUIRED] - would integrate with actual notification system)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "validate_ui_components.py",
+    "line": 4,
+    "text": "Produces `docs/ui_validation_report.json` summarizing placeholders, TODO/FIXME markers,",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "validate_ui_components.py",
+    "line": 27,
+    "text": "PLACEHOLDER_PAT = re.compile(r'PLACEHOLDER|PLACEHOLDER_TEXT|\"placeholder\"|\\bplaceholder\\b', re.IGNORECASE)",
+    "match": "PLACEHOLDER",
+    "type": "placeholder"
+  },
+  {
+    "file": "validate_ui_components.py",
+    "line": 28,
+    "text": "TODO_PAT = re.compile(r'\\b(TODO|FIXME|XXX)\\b')",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "validate_ui_components.py",
+    "line": 83,
+    "text": "# Non-destructive replacements: backup then replace placeholder tokens with a TODO marker",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "validate_ui_components.py",
+    "line": 90,
+    "text": "newtxt = PLACEHOLDER_PAT.sub('/* TODO: replace placeholder */', txt)",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "enhance_ai.py",
+    "line": 338,
+    "text": "return 0.99  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "enhance_ai.py",
+    "line": 343,
+    "text": "return 0.95  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "enhance_ai.py",
+    "line": 348,
+    "text": "return 0.98  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "lion_feature_enhancer.py",
+    "line": 393,
+    "text": "{\"Monitoring is in place\" if feature.has_monitoring else \"TODO: Add monitoring\"}",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "lion_feature_enhancer.py",
+    "line": 396,
+    "text": "{\"Feature is controlled by feature flags\" if feature.has_feature_flag else \"TODO: Add feature flag control\"}",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "lion_feature_enhancer.py",
+    "line": 409,
+    "text": "TODO: Add monitoring steps",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "lion_feature_enhancer.py",
+    "line": 412,
+    "text": "TODO: Document common issues and solutions",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "lion_feature_enhancer.py",
+    "line": 415,
+    "text": "TODO: Add emergency response steps",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "one_command_automation.py",
+    "line": 20,
+    "text": "# TODO: Implement One Command Automation functionality",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "check_placeholders.py",
+    "line": 2,
+    "text": "\"\"\"Scan repository for common placeholders (TODO, FIXME, PLACEHOLDER) and emit a report.",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "check_placeholders.py",
+    "line": 13,
+    "text": "PATTERN = re.compile(r\"\\b(TODO|FIXME|PLACEHOLDER)\\b\", re.IGNORECASE)",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi-dashboard.py",
+    "line": 51,
+    "text": "<input type=\"text\" id=\"logSearch\" [PRODUCTION IMPLEMENTATION REQUIRED]=\"Search logs...\" oninput=\"filterLogs()\" style=\"width: 60%; padding: 0.5em;\">",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-dashboard.py",
+    "line": 185,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with notification logs/status",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-dashboard.py",
+    "line": 190,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: trigger a test notification (integrate with QMOI notification system)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_hf_auto_manager.py",
+    "line": 357,
+    "text": "return True  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qserver-download-tester.py",
+    "line": 69,
+    "text": "# Trigger auto-fix ([PRODUCTION IMPLEMENTATION REQUIRED]: notify Qteam, re-upload, etc.)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-platform-manager.py",
+    "line": 43,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: check permissions for each platform",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-platform-manager.py",
+    "line": 48,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: sync logic for each platform",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-start.py",
+    "line": 20,
+    "text": "# Check for a running QMOI process (simple check for [PRODUCTION IMPLEMENTATION REQUIRED]; can be enhanced)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_enhanced_automation.py",
+    "line": 317,
+    "text": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] - implement actual API calls",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "auto_lint_fix.py",
+    "line": 40,
+    "text": "# Prevent [PRODUCTION IMPLEMENTATION REQUIRED] files from passing",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "auto_lint_fix.py",
+    "line": 43,
+    "text": "if b'[PRODUCTION IMPLEMENTATION REQUIRED] build' in content_bytes:",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "auto_lint_fix.py",
+    "line": 44,
+    "text": "print(f\"Error: {target} is a [PRODUCTION IMPLEMENTATION REQUIRED] file. Automatically selecting best build strategy...\")",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "auto_lint_fix.py",
+    "line": 51,
+    "text": "parallel_log.append(f\"[PRODUCTION IMPLEMENTATION REQUIRED] detected for {target}, triggering auto-build.\")",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "auto_lint_fix.py",
+    "line": 119,
+    "text": "# Simulate install test: check permissions, file type, and [PRODUCTION IMPLEMENTATION REQUIRED] install",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "auto_lint_fix.py",
+    "line": 121,
+    "text": "print(f\"Install test failed: {target} is too small or is a [PRODUCTION IMPLEMENTATION REQUIRED].\")",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_cloud_integration_enhanced.py",
+    "line": 526,
+    "text": "credentials={\"access_key\": \"[PRODUCTION IMPLEMENTATION REQUIRED]\", \"secret_key\": \"[PRODUCTION IMPLEMENTATION REQUIRED]\"},",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_cloud_integration_enhanced.py",
+    "line": 536,
+    "text": "credentials={\"project_id\": \"[PRODUCTION IMPLEMENTATION REQUIRED]\"},",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_cloud_integration_enhanced.py",
+    "line": 546,
+    "text": "credentials={\"token\": \"[PRODUCTION IMPLEMENTATION REQUIRED]\"},",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "financial_verification.py",
+    "line": 8,
+    "text": "AIRTEL_API_KEY = os.getenv('AIRTEL_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]-key')",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "financial_verification.py",
+    "line": 9,
+    "text": "MPESA_API_KEY = os.getenv('MPESA_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]-key')",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "financial_verification.py",
+    "line": 14,
+    "text": "# TODO: Integrate with real Airtel Money API using AIRTEL_API_KEY",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "financial_verification.py",
+    "line": 25,
+    "text": "# TODO: Integrate with real Mpesa API using MPESA_API_KEY",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "qmoi-package-installer.py",
+    "line": 14,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: Use PyInstaller or similar for real .exe",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-package-installer.py",
+    "line": 16,
+    "text": "log_activity('Packaging app as Windows .exe installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-package-installer.py",
+    "line": 22,
+    "text": "log_activity('Packaging app as Mac .dmg installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-package-installer.py",
+    "line": 28,
+    "text": "log_activity('Packaging app as Linux AppImage installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-package-installer.py",
+    "line": 54,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED] fallback",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi-package-installer.py",
+    "line": 55,
+    "text": "log_activity(f'Uploading {file_path} to file host ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "qmoi_data_optimization_system.py",
+    "line": 435,
+    "text": "0, 0, 0, 0, 0.2  # [PRODUCTION IMPLEMENTATION REQUIRED] values",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "utils/notify_enhancement.py",
+    "line": 238,
+    "text": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] for WhatsApp Business API",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "utils/notify_enhancement.py",
+    "line": 240,
+    "text": "logger.info(f\"WhatsApp notification ([PRODUCTION IMPLEMENTATION REQUIRED]): {message}\")",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "trading/enhanced_trading_system.py",
+    "line": 373,
+    "text": "# For now, return [PRODUCTION IMPLEMENTATION REQUIRED] data",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "trading/enhanced_trading_system.py",
+    "line": 388,
+    "text": "# For now, return [PRODUCTION IMPLEMENTATION REQUIRED] result",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "trading/enhanced_trading_system.py",
+    "line": 706,
+    "text": "# Random signal for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "trading/enhanced_trading_system.py",
+    "line": 715,
+    "text": "amount=100.0,  # Fixed amount for [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "trading/enhanced_trading_system.py",
+    "line": 732,
+    "text": "# Random signal for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "trading/enhanced_trading_system.py",
+    "line": 741,
+    "text": "amount=100.0,  # Fixed amount for [PRODUCTION IMPLEMENTATION REQUIRED]",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "autotest/advanced_autotest_system.py",
+    "line": 616,
+    "text": "# Simulate a failed deployment via Vercel API ([PRODUCTION IMPLEMENTATION REQUIRED] or test project)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "autotest/advanced_autotest_system.py",
+    "line": 639,
+    "text": "# Simulate a failed workflow run ([PRODUCTION IMPLEMENTATION REQUIRED] or test repo)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "autotest/advanced_autotest_system.py",
+    "line": 654,
+    "text": "# Simulate a failed pipeline ([PRODUCTION IMPLEMENTATION REQUIRED] or test project)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "wallets/persist_history.py",
+    "line": 63,
+    "text": "print(f'Appended snapshot to {out} (total snapshots: TBD)')",
+    "match": "TBD",
+    "type": "placeholder"
+  },
+  {
+    "file": "ui/qcity_ui_enhancement.py",
+    "line": 294,
+    "text": "# Add [PRODUCTION IMPLEMENTATION REQUIRED] tasks",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "ui/qcity_ui_enhancement.py",
+    "line": 415,
+    "text": "self.resource_data[\"cpu\"].append(50)  # [PRODUCTION IMPLEMENTATION REQUIRED] data",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "models/qmoi_kernel.py",
+    "line": 70,
+    "text": "\"\"\"Run QFix payload: clear temp folders ([PRODUCTION IMPLEMENTATION REQUIRED] implementation).\"\"\"",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "models/qmoi_kernel.py",
+    "line": 79,
+    "text": "\"\"\"Run QOptimize payload: [PRODUCTION IMPLEMENTATION REQUIRED] optimization.\"\"\"",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "models/qmoi_kernel.py",
+    "line": 85,
+    "text": "\"\"\"Run QSecure payload: [PRODUCTION IMPLEMENTATION REQUIRED] security check.\"\"\"",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "models/qmoi_kernel.py",
+    "line": 92,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED]: always run qfix if error_log_detected is True",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "monitoring/monitoring_dashboard.py",
+    "line": 805,
+    "text": "# For now, generate [PRODUCTION IMPLEMENTATION REQUIRED] data",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "monitoring/monitoring_dashboard.py",
+    "line": 814,
+    "text": "cpu_data.append(30 + (i * 2) % 40)  # [PRODUCTION IMPLEMENTATION REQUIRED] CPU data",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "monitoring/monitoring_dashboard.py",
+    "line": 815,
+    "text": "memory_data.append(50 + (i * 3) % 30)  # [PRODUCTION IMPLEMENTATION REQUIRED] memory data",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "monitoring/performance_monitoring.py",
+    "line": 467,
+    "text": "# Send notification ([PRODUCTION IMPLEMENTATION REQUIRED] for actual notification system)",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "monitoring/performance_monitoring.py",
+    "line": 476,
+    "text": "# [PRODUCTION IMPLEMENTATION REQUIRED] for actual notification system",
+    "match": "[PRODUCTION IMPLEMENTATION REQUIRED]",
+    "type": "prod_marker"
+  },
+  {
+    "file": "services/platform_integrations.ts",
+    "line": 17,
+    "text": "// TODO: Implement publishing logic for each platform type",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/platform_integrations.ts",
+    "line": 23,
+    "text": "// TODO: Implement update logic",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/platform_integrations.ts",
+    "line": 28,
+    "text": "// TODO: Implement removal logic",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/platform_integrations.ts",
+    "line": 33,
+    "text": "// TODO: Handle authentication and API key/token management",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/localization_service.ts",
+    "line": 8,
+    "text": "// TODO: Integrate with AI translation API",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/localization_service.ts",
+    "line": 13,
+    "text": "// TODO: Generate localized version of asset (doc, banner, ad, UI)",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/platform_discovery.ts",
+    "line": 14,
+    "text": "// TODO: Implement web search, API queries, and AI-based discovery",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/platform_discovery.ts",
+    "line": 28,
+    "text": "// TODO: Notify master for approval (UI, email, or chat)",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/analytics_optimization.ts",
+    "line": 15,
+    "text": "// TODO: Integrate with platform APIs to fetch analytics",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/analytics_optimization.ts",
+    "line": 29,
+    "text": "// TODO: Send analytics report to master (UI, email, or chat)",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/analytics_optimization.ts",
+    "line": 34,
+    "text": "// TODO: Use AI to suggest optimizations based on analytics",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/self_healing.ts",
+    "line": 15,
+    "text": "// TODO: Scan logs, monitor health, and detect errors",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/self_healing.ts",
+    "line": 20,
+    "text": "// TODO: Use AI or rules to diagnose the root cause",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/self_healing.ts",
+    "line": 25,
+    "text": "// TODO: Attempt to auto-fix the error (restart service, patch code, etc.)",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/self_healing.ts",
+    "line": 30,
+    "text": "// TODO: Notify master of error, diagnosis, and fix result (UI, email, chat)",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/qmoi_autodev_daemon.ts",
+    "line": 530,
+    "text": "// Simulate error fixing",
+    "match": "// Simulate",
+    "type": "prod_marker"
+  },
+  {
+    "file": "services/asset_generation.ts",
+    "line": 6,
+    "text": "// TODO: Integrate with video generation API or use templates",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/asset_generation.ts",
+    "line": 12,
+    "text": "// TODO: Use AI to generate markdown or PDF documentation",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/asset_generation.ts",
+    "line": 17,
+    "text": "// TODO: Integrate with image generation API or use templates",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/asset_generation.ts",
+    "line": 22,
+    "text": "// TODO: Use AI to generate ad copy",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/qcity_service.ts",
+    "line": 315,
+    "text": "// Simulate routing to the correct device",
+    "match": "// Simulate",
+    "type": "prod_marker"
+  },
+  {
+    "file": "services/qcity_service.ts",
+    "line": 323,
+    "text": "// TODO: Integrate with SSH/cloud APIs for real device execution",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/role_management.ts",
+    "line": 25,
+    "text": "// TODO: Assign role to user",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/role_management.ts",
+    "line": 30,
+    "text": "// TODO: Check if user has permission for action",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/role_management.ts",
+    "line": 35,
+    "text": "// TODO: Initiate multi-step approval workflow",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/role_management.ts",
+    "line": 40,
+    "text": "// TODO: Approve the request",
+    "match": "TODO",
+    "type": "placeholder"
+  },
+  {
+    "file": "services/role_management.ts",
+    "line": 45,
+    "text": "// TODO: Reject the request",
+    "match": "TODO",
+    "type": "placeholder"
+  }
+]

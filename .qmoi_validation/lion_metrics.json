@@ -1,4 +1,7 @@
 {
-  "processed": 1,
-  "deduped": 10
+  "queue": {
+    "dequeues": 2,
+    "acks": 1
+  },
+  "deduped": 2
 }

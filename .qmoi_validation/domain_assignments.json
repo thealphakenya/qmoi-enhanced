@@ -1,0 +1,40 @@
+{
+  "generated_at": "2025-10-31T01:33:35.212677Z",
+  "entries": [
+    {
+      "platform": "Hugging Face (HF)",
+      "suggested_domain": "hugging-face-hf.qmoi.ai",
+      "suggested_mini_domain": "hugging-face-hf.qmoi.ai",
+      "provisioning_required": true,
+      "notes": "This is a suggested assignment. Actual DNS and registrar API calls are gated."
+    },
+    {
+      "platform": "GitHub",
+      "suggested_domain": "github.qmoi.ai",
+      "suggested_mini_domain": "github.qmoi.ai",
+      "provisioning_required": true,
+      "notes": "This is a suggested assignment. Actual DNS and registrar API calls are gated."
+    },
+    {
+      "platform": "Gitpod",
+      "suggested_domain": "gitpod.qmoi.ai",
+      "suggested_mini_domain": "gitpod.qmoi.ai",
+      "provisioning_required": true,
+      "notes": "This is a suggested assignment. Actual DNS and registrar API calls are gated."
+    },
+    {
+      "platform": "Vercel",
+      "suggested_domain": "vercel.qmoi.ai",
+      "suggested_mini_domain": "vercel.qmoi.ai",
+      "provisioning_required": true,
+      "notes": "This is a suggested assignment. Actual DNS and registrar API calls are gated."
+    },
+    {
+      "platform": "Netlify",
+      "suggested_domain": "netlify.qmoi.ai",
+      "suggested_mini_domain": "netlify.qmoi.ai",
+      "provisioning_required": true,
+      "notes": "This is a suggested assignment. Actual DNS and registrar API calls are gated."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "generated_at": "2025-10-31T00:01:54.627946Z",
+  "dry_run": true,
+  "registry": {
+    "projects": {},
+    "notes": "This is a template registry. Run with --apply to write domains.json."
+  }
+}

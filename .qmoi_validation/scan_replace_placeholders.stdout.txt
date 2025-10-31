@@ -1,0 +1,2 @@
+Written report to /workspaces/qmoi-enhanced/docs/placeholders_report.json
+Scan complete. To apply safe replacements run with --apply (creates .bak files).

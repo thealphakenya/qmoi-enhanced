@@ -1,0 +1,9 @@
+{
+  "generated_at": "2025-10-31T01:34:08Z",
+  "source": null,
+  "dry_run": true,
+  "allow_network": false,
+  "failed_count": 0,
+  "failed_examples": [],
+  "recommendation": "Review failed links. If replacements are known, prepare a patch and open PR. Otherwise mark for manual fix."
+}

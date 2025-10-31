@@ -18,7 +18,7 @@ import os
 import re
 from pathlib import Path
 
-ROOT = Path('/workspaces/qmoi-enhanced')
+ROOT = Path(__file__).resolve().parents[1]
 TOKENS = [
     r"\bTODO\b",
     r"\bFIXME\b",
@@ -42,12 +42,21 @@ report = {
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--apply', action='store_true', help='Apply safe replacements (create .bak files)')
+parser.add_argument('--max-file-size', type=int, default=2 * 1024 * 1024,
+                    help='Skip files larger than this size in bytes (default 2MB)')
+parser.add_argument('--verbose', action='store_true', help='Enable verbose logging')
 args = parser.parse_args()
 
-def should_skip(path: Path):
+def should_skip(path: Path, max_file_size: int):
+    # skip excluded dirs
     for part in path.parts:
         if part in FILE_GLOBS_EXCLUDE:
             return True
+    try:
+        if path.is_file() and path.stat().st_size > max_file_size:
+            return True
+    except Exception:
+        return True
     return False
 
 def scan_file(path: Path):
@@ -91,14 +100,16 @@ def apply_replacements(path: Path):
         return True
     return False
 
-for dirpath, dirnames, filenames in os.walk(ROOT):
-    path_dir = Path(dirpath)
-    if should_skip(path_dir):
-        continue
-    for fname in filenames:
-        path = path_dir / fname
-        if should_skip(path):
+    for dirpath, dirnames, filenames in os.walk(ROOT):
+        path_dir = Path(dirpath)
+        if should_skip(path_dir, args.max_file_size):
             continue
+        for fname in filenames:
+            path = path_dir / fname
+            if should_skip(path, args.max_file_size):
+                if args.verbose:
+                    print(f"Skipping large or excluded file: {path}")
+                continue
         # limit to text files and common code/docs extensions
         if path.suffix.lower() in ['.md', '.ts', '.tsx', '.js', '.jsx', '.py', '.json', '.mjs', '.txt', '.html', '.css']:
             matches = scan_file(path)

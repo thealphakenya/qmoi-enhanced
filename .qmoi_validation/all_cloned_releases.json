@@ -1,0 +1,1007 @@
+{
+  "generated_at": "2025-10-31T01:33:34.538928Z",
+  "payed_files": [
+    {
+      "path": "VERCELPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 37
+    },
+    {
+      "path": "NETLIFYPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 37
+    },
+    {
+      "path": "HUGGINGFACEPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 510
+    },
+    {
+      "path": "HFPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 37
+    },
+    {
+      "path": "QUANTUMPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 63
+    },
+    {
+      "path": "HUGGINGFACEHFPAYED.md",
+      "header": "Hugging Face (HF) - PAYED Features",
+      "lines": 7
+    },
+    {
+      "path": "GITPODPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 507
+    },
+    {
+      "path": "GITHUBPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 555
+    },
+    {
+      "path": "qmoi-enhanced/HUGGINGFACEPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 510
+    },
+    {
+      "path": "qmoi-enhanced/QUANTUMPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 63
+    },
+    {
+      "path": "qmoi-enhanced/GITPODPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 507
+    },
+    {
+      "path": "qmoi-enhanced/GITHUBPAYED.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 555
+    }
+  ],
+  "release_files": [
+    {
+      "path": "mobile/node_modules/mkdirp/CHANGELOG.md",
+      "header": "Changers Lorgs!",
+      "lines": 15
+    },
+    {
+      "path": "mobile/node_modules/rimraf/CHANGELOG.md",
+      "header": "v3.0",
+      "lines": 65
+    },
+    {
+      "path": "mobile/node_modules/lighthouse-logger/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "mobile/node_modules/object-inspect/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 424
+    },
+    {
+      "path": "mobile/node_modules/has-tostringtag/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 42
+    },
+    {
+      "path": "mobile/node_modules/metro/node_modules/ci-info/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 78
+    },
+    {
+      "path": "mobile/node_modules/es-errors/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 40
+    },
+    {
+      "path": "mobile/node_modules/fs-extra/CHANGELOG.md",
+      "header": "## Fixed",
+      "lines": 864
+    },
+    {
+      "path": "mobile/node_modules/connect/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "mobile/node_modules/qs/CHANGELOG.md",
+      "header": "# **6.13.0**",
+      "lines": 600
+    },
+    {
+      "path": "mobile/node_modules/json-parse-better-errors/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 46
+    },
+    {
+      "path": "mobile/node_modules/glob-parent/CHANGELOG.md",
+      "header": "## [5.1.2](https://github.com/gulpjs/glob-parent/compare/v5.1.1...v5.1.2) (2021-03-06)",
+      "lines": 110
+    },
+    {
+      "path": "mobile/node_modules/istanbul-lib-instrument/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 631
+    },
+    {
+      "path": "mobile/node_modules/has-symbols/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 91
+    },
+    {
+      "path": "mobile/node_modules/send/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "mobile/node_modules/mime/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 164
+    },
+    {
+      "path": "mobile/node_modules/dayjs/CHANGELOG.md",
+      "header": "# [1.11.18](https://github.com/iamkun/dayjs/compare/v1.11.17...v1.11.18) (2025-08-30)",
+      "lines": 982
+    },
+    {
+      "path": "mobile/node_modules/@react-native-community/cli-config/node_modules/argparse/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 216
+    },
+    {
+      "path": "mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 616
+    },
+    {
+      "path": "mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 296
+    },
+    {
+      "path": "mobile/node_modules/invariant/CHANGELOG.md",
+      "header": "2.2.4 / 2018-03-13",
+      "lines": 69
+    },
+    {
+      "path": "mobile/node_modules/finalhandler/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "mobile/node_modules/hasown/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 40
+    },
+    {
+      "path": "mobile/node_modules/side-channel/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 110
+    },
+    {
+      "path": "mobile/node_modules/js-tokens/CHANGELOG.md",
+      "header": "## Version 4.0.0 (2018-01-28) ###",
+      "lines": 151
+    },
+    {
+      "path": "mobile/node_modules/source-map-support/node_modules/source-map/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 301
+    },
+    {
+      "path": "mobile/node_modules/compression/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "mobile/node_modules/source-map/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 301
+    },
+    {
+      "path": "mobile/node_modules/react-native-biometrics/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 159
+    },
+    {
+      "path": "mobile/node_modules/color-convert/CHANGELOG.md",
+      "header": "1.0.0 - 2016-01-07",
+      "lines": 54
+    },
+    {
+      "path": "mobile/node_modules/picomatch/CHANGELOG.md",
+      "header": "Release history",
+      "lines": 136
+    },
+    {
+      "path": "mobile/node_modules/terser/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 843
+    },
+    {
+      "path": "mobile/node_modules/terser/node_modules/commander/CHANGELOG.md",
+      "header": "2.20.3 / 2019-10-11",
+      "lines": 419
+    },
+    {
+      "path": "mobile/node_modules/side-channel-list/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 15
+    },
+    {
+      "path": "mobile/node_modules/@babel/parser/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 1073
+    },
+    {
+      "path": "mobile/node_modules/side-channel-map/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 22
+    },
+    {
+      "path": "mobile/node_modules/es-set-tostringtag/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 67
+    },
+    {
+      "path": "mobile/node_modules/es-object-atoms/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 37
+    },
+    {
+      "path": "mobile/node_modules/form-data/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 601
+    },
+    {
+      "path": "mobile/node_modules/test-exclude/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 352
+    },
+    {
+      "path": "mobile/node_modules/call-bound/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 42
+    },
+    {
+      "path": "mobile/node_modules/function-bind/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 136
+    },
+    {
+      "path": "mobile/node_modules/body-parser/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "mobile/node_modules/argparse/CHANGELOG.md",
+      "header": "1.0.10 / 2018-02-15",
+      "lines": 185
+    },
+    {
+      "path": "mobile/node_modules/jsonfile/CHANGELOG.md",
+      "header": "## Changed",
+      "lines": 145
+    },
+    {
+      "path": "mobile/node_modules/ci-info/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 178
+    },
+    {
+      "path": "mobile/node_modules/js-yaml/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 557
+    },
+    {
+      "path": "mobile/node_modules/axios/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 1295
+    },
+    {
+      "path": "mobile/node_modules/math-intrinsics/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 24
+    },
+    {
+      "path": "mobile/node_modules/require-main-filename/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 26
+    },
+    {
+      "path": "mobile/node_modules/@vscode/sudo-prompt/CHANGELOG.md",
+      "header": "# [9.3.1] 2021-11-19",
+      "lines": 157
+    },
+    {
+      "path": "mobile/node_modules/istanbul-lib-coverage/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 209
+    },
+    {
+      "path": "mobile/node_modules/human-signals/CHANGELOG.md",
+      "header": "2.1.0",
+      "lines": 11
+    },
+    {
+      "path": "mobile/node_modules/cliui/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 139
+    },
+    {
+      "path": "mobile/node_modules/fast-xml-parser/CHANGELOG.md",
+      "header": "<small>Note: If you find missing information about particular minor version, that version must have been changed without",
+      "lines": 606
+    },
+    {
+      "path": "mobile/node_modules/side-channel-weakmap/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 28
+    },
+    {
+      "path": "mobile/node_modules/strnum/CHANGELOG.md",
+      "header": "",
+      "lines": 22
+    },
+    {
+      "path": "mobile/node_modules/acorn/CHANGELOG.md",
+      "header": "# 8.15.0 (2025-06-08)",
+      "lines": 954
+    },
+    {
+      "path": "mobile/node_modules/babel-plugin-istanbul/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 320
+    },
+    {
+      "path": "mobile/node_modules/slice-ansi/node_modules/color-convert/CHANGELOG.md",
+      "header": "1.0.0 - 2016-01-07",
+      "lines": 54
+    },
+    {
+      "path": "mobile/node_modules/flow-enums-runtime/CHANGELOG.md",
+      "header": "0.0.6",
+      "lines": 11
+    },
+    {
+      "path": "mobile/node_modules/get-package-type/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 10
+    },
+    {
+      "path": "mobile/node_modules/yargs-parser/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 308
+    },
+    {
+      "path": "mobile/node_modules/json-parse-even-better-errors/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 50
+    },
+    {
+      "path": "mobile/node_modules/logkitty/node_modules/cliui/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 76
+    },
+    {
+      "path": "mobile/node_modules/logkitty/node_modules/yargs/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 420
+    },
+    {
+      "path": "mobile/node_modules/logkitty/node_modules/yargs-parser/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 601
+    },
+    {
+      "path": "mobile/node_modules/logkitty/node_modules/y18n/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 35
+    },
+    {
+      "path": "mobile/node_modules/vlq/CHANGELOG.md",
+      "header": "changelog",
+      "lines": 29
+    },
+    {
+      "path": "mobile/node_modules/y18n/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 100
+    },
+    {
+      "path": "mobile/node_modules/call-bind-apply-helpers/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 30
+    },
+    {
+      "path": "mobile/node_modules/get-proto/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 21
+    },
+    {
+      "path": "mobile/node_modules/get-intrinsic/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 186
+    },
+    {
+      "path": "mobile/node_modules/which/CHANGELOG.md",
+      "header": "Changes",
+      "lines": 166
+    },
+    {
+      "path": "mobile/node_modules/cosmiconfig/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 151
+    },
+    {
+      "path": "mobile/node_modules/dunder-proto/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 24
+    },
+    {
+      "path": "mobile/node_modules/set-blocking/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 26
+    },
+    {
+      "path": "mobile/node_modules/@istanbuljs/schema/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 44
+    },
+    {
+      "path": "mobile/node_modules/@istanbuljs/load-nyc-config/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 41
+    },
+    {
+      "path": "mobile/node_modules/es-define-property/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 29
+    },
+    {
+      "path": "mobile/node_modules/gopd/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 45
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/mkdirp/CHANGELOG.md",
+      "header": "Changers Lorgs!",
+      "lines": 15
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/rimraf/CHANGELOG.md",
+      "header": "v3.0",
+      "lines": 65
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/object-inspect/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 424
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/has-tostringtag/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 42
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/metro/node_modules/ci-info/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 78
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/es-errors/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 40
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/fs-extra/CHANGELOG.md",
+      "header": "## Fixed",
+      "lines": 864
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/qs/CHANGELOG.md",
+      "header": "# **6.13.0**",
+      "lines": 600
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/json-parse-better-errors/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 46
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/glob-parent/CHANGELOG.md",
+      "header": "## [5.1.2](https://github.com/gulpjs/glob-parent/compare/v5.1.1...v5.1.2) (2021-03-06)",
+      "lines": 110
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 631
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/has-symbols/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 91
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/send/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/mime/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 164
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/dayjs/CHANGELOG.md",
+      "header": "# [1.11.18](https://github.com/iamkun/dayjs/compare/v1.11.17...v1.11.18) (2025-08-30)",
+      "lines": 982
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/argparse/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 216
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 616
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 296
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/invariant/CHANGELOG.md",
+      "header": "2.2.4 / 2018-03-13",
+      "lines": 69
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/hasown/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 40
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/side-channel/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 110
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/js-tokens/CHANGELOG.md",
+      "header": "## Version 4.0.0 (2018-01-28) ###",
+      "lines": 151
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/source-map-support/node_modules/source-map/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 301
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/source-map/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 301
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/react-native-biometrics/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 159
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/color-convert/CHANGELOG.md",
+      "header": "1.0.0 - 2016-01-07",
+      "lines": 54
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/picomatch/CHANGELOG.md",
+      "header": "Release history",
+      "lines": 136
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/terser/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 843
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/terser/node_modules/commander/CHANGELOG.md",
+      "header": "2.20.3 / 2019-10-11",
+      "lines": 419
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/side-channel-list/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 15
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/@babel/parser/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 1073
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/side-channel-map/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 22
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/es-set-tostringtag/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 67
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/es-object-atoms/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 37
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/form-data/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 601
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/test-exclude/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 352
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/call-bound/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 42
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/function-bind/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 136
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/CHANGELOG.md",
+      "header": "",
+      "lines": 362
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/argparse/CHANGELOG.md",
+      "header": "1.0.10 / 2018-02-15",
+      "lines": 185
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/jsonfile/CHANGELOG.md",
+      "header": "## Changed",
+      "lines": 145
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/ci-info/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 178
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/js-yaml/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 557
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/axios/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 1295
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/math-intrinsics/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 24
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/require-main-filename/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 26
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/@vscode/sudo-prompt/CHANGELOG.md",
+      "header": "# [9.3.1] 2021-11-19",
+      "lines": 157
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/istanbul-lib-coverage/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 209
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/human-signals/CHANGELOG.md",
+      "header": "2.1.0",
+      "lines": 11
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/cliui/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 139
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/fast-xml-parser/CHANGELOG.md",
+      "header": "<small>Note: If you find missing information about particular minor version, that version must have been changed without",
+      "lines": 606
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/side-channel-weakmap/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 28
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/strnum/CHANGELOG.md",
+      "header": "",
+      "lines": 22
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/acorn/CHANGELOG.md",
+      "header": "# 8.15.0 (2025-06-08)",
+      "lines": 954
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/babel-plugin-istanbul/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 320
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/slice-ansi/node_modules/color-convert/CHANGELOG.md",
+      "header": "1.0.0 - 2016-01-07",
+      "lines": 54
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/flow-enums-runtime/CHANGELOG.md",
+      "header": "0.0.6",
+      "lines": 11
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/get-package-type/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 10
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/yargs-parser/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 308
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/json-parse-even-better-errors/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 50
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/logkitty/node_modules/cliui/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 76
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/logkitty/node_modules/yargs/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 420
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/logkitty/node_modules/yargs-parser/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 601
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/logkitty/node_modules/y18n/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 35
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/vlq/CHANGELOG.md",
+      "header": "changelog",
+      "lines": 29
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/y18n/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 100
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/call-bind-apply-helpers/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 30
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/get-proto/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 21
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/get-intrinsic/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 186
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/which/CHANGELOG.md",
+      "header": "Changes",
+      "lines": 166
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/cosmiconfig/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 151
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/dunder-proto/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 24
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/set-blocking/CHANGELOG.md",
+      "header": "Change Log",
+      "lines": 26
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/@istanbuljs/schema/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 44
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/@istanbuljs/load-nyc-config/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 41
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/es-define-property/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 29
+    },
+    {
+      "path": "qmoi-enhanced/mobile/node_modules/gopd/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 45
+    },
+    {
+      "path": "qmoi-enhanced/dashboard/node_modules/js-tokens/CHANGELOG.md",
+      "header": "## Version 4.0.0 (2018-01-28) ###",
+      "lines": 151
+    },
+    {
+      "path": "qmoi-enhanced/dashboard/node_modules/@babel/parser/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 1073
+    },
+    {
+      "path": "dashboard/node_modules/object-inspect/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 424
+    },
+    {
+      "path": "dashboard/node_modules/es-errors/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 40
+    },
+    {
+      "path": "dashboard/node_modules/qs/CHANGELOG.md",
+      "header": "# **6.14.0**",
+      "lines": 622
+    },
+    {
+      "path": "dashboard/node_modules/has-symbols/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 91
+    },
+    {
+      "path": "dashboard/node_modules/hasown/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 40
+    },
+    {
+      "path": "dashboard/node_modules/side-channel/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 110
+    },
+    {
+      "path": "dashboard/node_modules/js-tokens/CHANGELOG.md",
+      "header": "## Version 4.0.0 (2018-01-28) ###",
+      "lines": 151
+    },
+    {
+      "path": "dashboard/node_modules/side-channel-list/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 15
+    },
+    {
+      "path": "dashboard/node_modules/side-channel-map/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 22
+    },
+    {
+      "path": "dashboard/node_modules/es-object-atoms/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 37
+    },
+    {
+      "path": "dashboard/node_modules/call-bound/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 42
+    },
+    {
+      "path": "dashboard/node_modules/function-bind/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 136
+    },
+    {
+      "path": "dashboard/node_modules/math-intrinsics/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 24
+    },
+    {
+      "path": "dashboard/node_modules/side-channel-weakmap/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 28
+    },
+    {
+      "path": "dashboard/node_modules/call-bind-apply-helpers/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 30
+    },
+    {
+      "path": "dashboard/node_modules/get-proto/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 21
+    },
+    {
+      "path": "dashboard/node_modules/get-intrinsic/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 186
+    },
+    {
+      "path": "dashboard/node_modules/dunder-proto/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 24
+    },
+    {
+      "path": "dashboard/node_modules/es-define-property/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 29
+    },
+    {
+      "path": "dashboard/node_modules/gopd/CHANGELOG.md",
+      "header": "Changelog",
+      "lines": 45
+    },
+    {
+      "path": "RELEASETRACKS.md",
+      "header": "# \ud83e\udd81 L \u2014 Validated by QMOI Lion",
+      "lines": 101
+    },
+    {
+      "path": "docs/RELEASE_AUTOMATION.md",
+      "header": "Release Automation \u2014 QMOI",
+      "lines": 38
+    },
+    {
+      "path": ".qmoi_validation/RELEASETRACKS.md.validation.json",
+      "header": "{",
+      "lines": 38
+    },
+    {
+      "path": ".qmoi_validation/validation_reports/RELEASETRACKS.md.json",
+      "header": "{",
+      "lines": 11
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "checked_at": "2025-10-31T01:33:59.667245Z",
+  "payed_files": [
+    {
+      "file": "VERCELPAYED.md",
+      "lines": 33
+    },
+    {
+      "file": "NETLIFYPAYED.md",
+      "lines": 33
+    },
+    {
+      "file": "HUGGINGFACEPAYED.md",
+      "lines": 408
+    },
+    {
+      "file": "HFPAYED.md",
+      "lines": 33
+    },
+    {
+      "file": "QUANTUMPAYED.md",
+      "lines": 56
+    },
+    {
+      "file": "HUGGINGFACEHFPAYED.md",
+      "lines": 4
+    },
+    {
+      "file": "GITPODPAYED.md",
+      "lines": 406
+    },
+    {
+      "file": "GITHUBPAYED.md",
+      "lines": 445
+    }
+  ]
+}
