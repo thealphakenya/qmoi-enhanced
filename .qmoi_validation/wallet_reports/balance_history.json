@@ -1,0 +1,11 @@
+[
+  {
+    "timestamp": "2025-10-31T03:34:58.048472",
+    "wallet": "cashon",
+    "currency": "USD",
+    "available": 0.0,
+    "pending": 0.0,
+    "total": 0.0,
+    "account_type": "spot"
+  }
+]
