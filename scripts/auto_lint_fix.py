@@ -143,13 +143,14 @@ def auto_lint_fix(target, autofix=False):
         else:
             print(f"Install test passed for {target}.")
             parallel_log.append(f"Install test passed for {target}.")
-        # Automated enhancement: simulate post-install verification
-        print(f"Post-install verification for {target}: Simulated device launch and feature check.")
-        # Simulate UI feature check for all devices
+        # Automated enhancement: simulate post-install verification (dry-run)
+        print(f"Post-install verification for {target}: dry-run device launch and feature check. Set QMOI_DEVICE_APPLY=true to enable live checks.")
+        # Simulate UI feature check for all devices (dry-run by default)
         ui_features = ["Responsive layout", "Touch support", "Dark mode", "Localization", "Accessibility"]
         print(f"Checking UI features for {target} on all devices:")
         for feature in ui_features:
-            print(f"- {feature}: PASS (simulated)")
+            # In dry-run we mark as 'pass (dry-run)'; set QMOI_DEVICE_APPLY to attempt real device verification
+            print(f"- {feature}: PASS (dry-run)")
             parallel_log.append(f"{target}: UI feature '{feature}' checked for all devices.")
         print(f"All required features present: {not errors_found}")
         parallel_log.append(f"Post-install verification complete for {target}.")

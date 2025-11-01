@@ -1045,11 +1045,14 @@ class AIMLOptimizationModule(BaseModule):
         metrics = {}
         try:
             self.logger.info("🤖 Running AI/ML-driven optimization...")
-            # Analyze logs and performance
-            # (Simulated) Suggest or auto-apply improvements
-            # (Simulated) Auto-tune parameters
-            # (Simulated) Propose new modules/scripts
+            # Analyze logs and performance and produce actionable suggestions.
+            # Production-ready behavior:
+            #  - If `ai_endpoint` is configured and network is allowed (QMOI_ALLOW_NETWORK=true),
+            #    call the AI endpoint with recent logs and metrics and accept structured actions.
+            #  - Otherwise, generate a deterministic set of recommended actions and write them to
+            #    `.qmoi_validation/ai_actions.json` for human review / PR creation.
             metrics = self.get_performance_metrics()
+            await self.ai_optimize(metrics)
             self.logger.info("✅ AI/ML optimization completed")
             return AutomationResult(
                 module=self.module_type,
@@ -1072,16 +1075,141 @@ class AIMLOptimizationModule(BaseModule):
                 timestamp=datetime.now()
             )
 
-# API endpoints for dashboard widgets (simulated, to be implemented in actual server):
+    async def ai_optimize(self, metrics: Dict[str, Any]):
+        """Perform AI-driven optimization: call configured ai_endpoint or write suggested actions.
+
+        Behavior:
+        - If `ai_endpoint` exists in config and QMOI_ALLOW_NETWORK=true, POST metrics/logs and accept actions.
+        - Otherwise, write a deterministic set of recommended actions to `.qmoi_validation/ai_actions.json`.
+        """
+        try:
+            ai_endpoint = self.config.get('ai_endpoint') or os.environ.get('QMOI_AI_ENDPOINT')
+            allow_net = os.environ.get('QMOI_ALLOW_NETWORK', 'false').lower() == 'true'
+            payload = {
+                'timestamp': datetime.now().isoformat(),
+                'metrics': metrics,
+                'recent_logs': self._read_recent_logs(limit=2000)
+            }
+
+            out_dir = Path(self.automation.project_root) / '.qmoi_validation'
+            out_dir.mkdir(exist_ok=True)
+
+            if ai_endpoint and allow_net:
+                self.logger.info(f"📡 Calling AI endpoint: {ai_endpoint}")
+                try:
+                    resp = requests.post(ai_endpoint, json=payload, timeout=30)
+                    resp.raise_for_status()
+                    actions = resp.json()
+                    # Save actions for audit
+                    (out_dir / 'ai_actions.json').write_text(json.dumps(actions, indent=2))
+                    self.logger.info("✅ AI actions written to .qmoi_validation/ai_actions.json")
+                except Exception as e:
+                    self.logger.warning(f"⚠️ AI endpoint call failed: {e}; falling back to local suggestions")
+                    suggested = self._generate_local_ai_suggestions(metrics)
+                    (out_dir / 'ai_actions.json').write_text(json.dumps(suggested, indent=2))
+            else:
+                self.logger.info("🔒 Network/gating not enabled or AI endpoint missing; generating local suggestions")
+                suggested = self._generate_local_ai_suggestions(metrics)
+                (out_dir / 'ai_actions.json').write_text(json.dumps(suggested, indent=2))
+
+        except Exception as e:
+            self.logger.error(f"❌ ai_optimize failed: {e}")
+
+    def _read_recent_logs(self, limit: int = 2000) -> str:
+        try:
+            logs = []
+            log_dir = Path(self.automation.logs_dir)
+            for f in sorted(log_dir.glob('*.log'), key=lambda p: p.stat().st_mtime, reverse=True)[:5]:
+                try:
+                    txt = f.read_text(encoding='utf-8')
+                    logs.append(txt[-limit:])
+                except Exception:
+                    continue
+            return "\n---\n".join(logs)
+        except Exception:
+            return ''
+
+    def _generate_local_ai_suggestions(self, metrics: Dict[str, Any]) -> Dict[str, Any]:
+        """Create deterministic suggestions based on metrics for manual review."""
+        suggestions = {
+            'generated_at': datetime.now().isoformat(),
+            'reasoning': 'Local deterministic suggestions because AI endpoint not configured or network blocked',
+            'metrics_snapshot': metrics,
+            'actions': []
+        }
+
+        cpu = metrics.get('cpu_usage')
+        mem = metrics.get('memory_usage')
+
+        if cpu and cpu > self.config.get('performance', {}).get('cpu_limit', 80):
+            suggestions['actions'].append({'action': 'scale_out', 'detail': 'Increase worker replicas or scale instances'})
+
+        if mem and mem > self.config.get('performance', {}).get('memory_limit', 85):
+            suggestions['actions'].append({'action': 'memory_profile', 'detail': 'Run memory profiler and restrict caches'})
+
+        # Add a safe suggestion to review dependency updates
+        suggestions['actions'].append({'action': 'review_dependencies', 'detail': 'Run `npm audit` and `pip-audit` where applicable'})
+
+        return suggestions
+
+# API endpoints for dashboard widgets (dry-run stub; implement real handlers in production):
 # - /api/qmoi/jobs: Query job status, health, and history
 # - /api/qmoi/trigger: Trigger specific automation or evolution actions
 # - /api/qmoi/logs: Stream logs and progress in real time
-# These endpoints allow dashboard widgets to interact with the automation engine and visualize all actions.
+# These endpoints allow dashboard widgets to interact with the automation engine and visualize actions.
 
 async def main():
     """Main entry point"""
     automation = QMOIEnhancedAutomation()
+    # Optionally generate a lightweight dashboard API stub for local testing
+    try:
+        if os.environ.get('QMOI_GENERATE_API_STUB', 'false').lower() == 'true':
+            generate_dashboard_api_stub(automation.project_root)
+    except Exception:
+        pass
+
     await automation.run_enhanced_automation()
+
+
+def generate_dashboard_api_stub(project_root: Path):
+    """Create a small Flask-based API stub for dashboard widgets to call locally.
+
+    This is intended for local testing only. The stub provides endpoints used by the
+    dashboard (`/api/qmoi/jobs`, `/api/qmoi/trigger`, `/api/qmoi/logs`).
+    """
+    try:
+        dash_dir = Path(project_root) / 'dashboard'
+        dash_dir.mkdir(exist_ok=True)
+        stub_file = dash_dir / 'api_stub.py'
+        if stub_file.exists():
+            return
+        stub_file.write_text(
+            """#!/usr/bin/env python3
+from flask import Flask, request, jsonify
+app = Flask(__name__)
+
+@app.route('/api/qmoi/jobs', methods=['GET'])
+def jobs():
+    return jsonify({'jobs': []})
+
+@app.route('/api/qmoi/trigger', methods=['POST'])
+def trigger():
+    data = request.json or {}
+    # In production, this would validate auth and enqueue automation actions
+    return jsonify({'status': 'accepted', 'received': data}), 202
+
+@app.route('/api/qmoi/logs', methods=['GET'])
+def logs():
+    # Stream or return recent logs - here we return an empty placeholder
+    return jsonify({'logs': []})
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8082)
+"""
+        )
+        print(f"Wrote dashboard API stub to: {stub_file}")
+    except Exception as e:
+        print(f"Failed to write dashboard api stub: {e}")
 
 if __name__ == "__main__":
     asyncio.run(main()) 

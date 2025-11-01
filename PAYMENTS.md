@@ -48,7 +48,7 @@ Recommended next steps
 
 Testing
 -------
-- `scripts/test_payments.py` demonstrates a simulated charge using the
+-- `scripts/test_payments.py` demonstrates a dry-run charge using the
   provider stub and verifies a transaction is created and marked settled.
 
 Security

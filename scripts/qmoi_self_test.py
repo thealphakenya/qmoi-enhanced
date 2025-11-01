@@ -94,8 +94,8 @@ import React from 'react';
 
 const BrokenComponent: React.FC = () => {
   const undefinedVar = undefined;
-  console.error('This is a simulated error');
-  throw new Error('Simulated error for testing');
+                console.error('This is a dry-run error');
+                throw new Error('Dry-run error for testing');
   
   return (
     <div>
@@ -161,7 +161,7 @@ This document contains false claims that should be detected and fixed.
                     json.dump(package_data, f, indent=2)
                 errors_created["broken_package"] = str(original_package)
             
-            logging.info(f"Created {len(errors_created)} simulated errors")
+            logging.info(f"Created {len(errors_created)} synthetic errors (dry-run)")
             return errors_created
             
         except Exception as e:

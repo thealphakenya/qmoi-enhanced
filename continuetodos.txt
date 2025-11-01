@@ -65,7 +65,7 @@ Notes:
 - Per the requested validation metadata requirement, the validator will insert a validation block into each `.md` with timestamp, validator id, checks, and results. This makes each file self-describing about validations performed.
 
 Notes:
-- Many device integration stubs were updated to lightweight simulated implementations to
+- Many device integration stubs were updated to lightweight dry-run implementations to
 	avoid heavy runtime dependencies and to ensure the system runs even if cloud features
 	or hardware are unavailable.
 - Use `.qvs/` for optional large artifacts; client apps remain lightweight by default.

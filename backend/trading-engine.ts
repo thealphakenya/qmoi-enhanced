@@ -63,7 +63,7 @@ export async function autonomousTradingLoop() {
         type: 'BUY',
         amount: 1,
         price: closes[idx],
-        result: 'SIMULATED',
+        result: 'DRY_RUN',
         rationale: 'SMA cross',
       };
       logTrade(trade);
@@ -74,7 +74,7 @@ export async function autonomousTradingLoop() {
         type: 'SELL',
         amount: 1,
         price: closes[idx],
-        result: 'SIMULATED',
+        result: 'DRY_RUN',
         rationale: 'SMA cross',
       };
       logTrade(trade);

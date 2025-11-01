@@ -1,0 +1,87 @@
+{
+  "generated_by": "automation-agent",
+  "generated_at": "2025-11-01T00:00:00Z",
+  "summary": "Conservative plan to replace 'simulated'/'placeholder' occurrences with production-ready scaffolds or clear gating. All changes are dry-run by default and require manual review before enabling live apply.",
+  "entries": [
+    {
+      "file": "scripts/QMOIMCPSERVER.py",
+      "line_hint": 60,
+      "match": "Simulated model response",
+      "proposed_change": "Replace simulated HTTP responses with a small pluggable adapter that calls configured AI model endpoint when QMOI_ALLOW_NETWORK=true; otherwise return a deterministic canned response. Add Vault-based secret lookup and telemetry for calls.",
+      "apply_mode": "scaffold",
+      "gating_env": ["QMOI_ALLOW_NETWORK","QMOI_AI_ENDPOINT","SECRETS_VAULT_URI"],
+      "risk": "medium",
+      "rationale": "Make the local test server usable in production while preserving dry-run behaviour and secret gating."
+    },
+    {
+      "file": "whatsapp-qmoi-bot/handlers/call.js",
+      "line_hint": 1,
+      "match": "AI is calling you now (simulated)",
+      "proposed_change": "Replace the simulated user-facing message with a configurable template and wire to TelephonyAdapter (dry-run) that logs call attempts to .qmoi_validation/calls.log. Keep an opt-in gating env var TELEPHONY_ENABLED.",
+      "apply_mode": "scaffold",
+      "gating_env": ["TELEPHONY_ENABLED","TELEPHONY_TOKEN"],
+      "risk": "low",
+      "rationale": "Avoid surprising end-users with 'simulated' messages; provide a real message path and clear gating for enabling live calls."
+    },
+    {
+      "file": "run_advanced_ai.py",
+      "line_hint": 1,
+      "match": "[Simulated] Generating image",
+      "proposed_change": "Introduce a provider adapter (providers/image_api.py) that supports a 'local' mode (simulated files) and 'remote' mode using QMOI_AI_ENDPOINT; write outputs to artifacts/ and log to .qmoi_validation/ai_actions.json.",
+      "apply_mode": "scaffold",
+      "gating_env": ["QMOI_ALLOW_NETWORK","QMOI_AI_ENDPOINT"],
+      "risk": "low",
+      "rationale": "Enable switching between fast local simulation and real remote providers with consistent logging."
+    },
+    {
+      "file": "scripts/live_validation_runner.py",
+      "line_hint": 1,
+      "match": "return 'simulated', entry",
+      "proposed_change": "Keep the simulate return for dry-run plans. Remove stray single-token 'simulated' lines if present. Ensure all logs are written to .qmoi_validation/aws_autoclone.log and that autoclone remains gated by PRODUCTION_CONFIRMED & MASTER_TOKEN.",
+      "apply_mode": "patch",
+      "gating_env": ["PRODUCTION_CONFIRMED","MASTER_TOKEN"],
+      "risk": "low",
+      "rationale": "This file is explicitly gated; we only remove accidental stray tokens and keep simulated behaviour intact."
+    },
+    {
+      "file": "qmoi-enhanced/scripts/qmoi-enhanced-automation.py",
+      "line_hint": 1150,
+      "match": "API endpoints for dashboard widgets (simulated, to be implemented in actual server)",
+      "proposed_change": "Add optional Flask dashboard stub generator (already implemented) and wire the automation to write the API stub to tools/dashboard_stub.py when QMOI_GENERATE_API_STUB=true. Add tests that validate stub generation.",
+      "apply_mode": "noop",
+      "gating_env": ["QMOI_GENERATE_API_STUB"],
+      "risk": "low",
+      "rationale": "The automation already has a stub generator; ensure tests and docs exist and remove 'simulated' tag from comments."
+    },
+    {
+      "file": "tests/aws_payed_test.py",
+      "line_hint": 50,
+      "match": "Running simulated AWS paid-features autotest",
+      "proposed_change": "Update test name and logs to indicate 'dry-run simulated' and add skip markers when AWS creds are not present. Keep test fast and non-destructive.",
+      "apply_mode": "patch",
+      "gating_env": ["AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY"],
+      "risk": "low",
+      "rationale": "Improve clarity and safety for CI."
+    },
+    {
+      "file": "scripts/auto_lint_fix.py",
+      "line_hint": 140,
+      "match": "Simulated device launch and feature check",
+      "proposed_change": "Replace simulated pass messages with a TestAdapter that records expected checks into .qmoi_validation/auto_lint_checks.json. Provide an --apply flag that would run real device commands (gated).",
+      "apply_mode": "scaffold",
+      "gating_env": ["QMOI_DEVICE_APPLY"],
+      "risk": "medium",
+      "rationale": "Make post-install verification reproducible and auditable."
+    },
+    {
+      "file": "scripts/qmoi_self_test.py",
+      "line_hint": 90,
+      "match": "Simulated error",
+      "proposed_change": "Convert simulated error throws into a TestHarness that can emit controlled synthetic errors to the error-reporting pipeline; include a --simulate flag so behavior is explicit.",
+      "apply_mode": "scaffold",
+      "gating_env": [],
+      "risk": "low",
+      "rationale": "Avoid accidental accidental exceptions in non-test contexts."
+    }
+  ]
+}
