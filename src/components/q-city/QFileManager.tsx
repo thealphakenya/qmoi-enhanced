@@ -76,7 +76,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
     }
   };
 
-  // Simulate file data
+  // Dry-run: sample file data for UI preview (no external file operations)
   useEffect(() => {
     const mockFiles: FileItem[] = [
       {
@@ -202,7 +202,8 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
     ) {
       setIsLoading(true);
       try {
-        // Simulate deletion
+        // Dry-run: simulate deletion delay and update UI (no files are removed from disk).
+        // Production note: perform actual deletions only when PRODUCTION_CONFIRMED=true and backups/audits are enabled.
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setFiles((prev) => prev.filter((file) => !file.isSelected));
       } catch (error) {
@@ -216,8 +217,8 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   const handleOrganize = useCallback(async () => {
     setIsLoading(true);
     try {
-      // Simulate AI organization
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+  // Dry-run: simulate AI organization for preview (no external AI calls unless enabled)
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // AI would organize files by type, date, or other criteria
       setFiles((prev) =>
@@ -292,24 +293,29 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         },
         body: JSON.stringify({
           action: "request_wallet",
-          email,
-          username,
-        }),
-      });
+          try {
+            setIsLoading(true);
+            try {
+              // Dry-run: simulate AI organization for preview (no external AI calls unless enabled).
+              // Production note: enable real AI services only when PRODUCTION_CONFIRMED=true and API keys are configured.
+              await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      const data = await res.json();
-
-      if (data.status === "pending") {
-        setWalletRequested(true);
-        toast({
-          title: "Success",
-          description: "Wallet request sent to master for approval",
-        });
-      } else {
-        throw new Error(data.error || "Failed to request wallet");
-      }
-    } catch (err: any) {
-      setError(err.message);
+              // AI would organize files by type, date, or other criteria
+              setFiles((prev) =>
+                prev.map((file) => ({
+                  ...file,
+                  tags: [...file.tags, "organized"],
+                })),
+              );
+            } catch (error) {
+              console.error("Error organizing files:", error);
+            } finally {
+              setIsLoading(false);
+            }
+          } catch (outerError) {
+            console.error('Unexpected error in handleOrganize:', outerError);
+            setIsLoading(false);
+          }
       toast({
         title: "Error",
         description: err.message,

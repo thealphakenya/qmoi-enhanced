@@ -8,8 +8,8 @@
     "testsPassed": 1
   },
   "issues": [
-    "Simulated permission error: ENOENT: no such file or directory, open 'D:\\root\\should_fail.txt'",
-    "Simulated missing directory: ENOENT: no such file or directory, scandir 'D:\\nonexistent\\dir'"
+    "Dry-run permission error: ENOENT: no such file or directory, open 'D:\\root\\should_fail.txt'",
+    "Dry-run missing directory: ENOENT: no such file or directory, scandir 'D:\\nonexistent\\dir'"
   ],
   "autoCreated": [],
   "testResults": [

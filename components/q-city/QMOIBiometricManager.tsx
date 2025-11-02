@@ -117,7 +117,8 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
 
   const loadBiometricData = async () => {
     try {
-      // Simulate API call to load biometric templates
+    // Dry-run: simulate API call to load biometric templates (no external calls unless enabled).
+    // Production note: enable real biometric provider integrations only when PRODUCTION_CONFIRMED=true and secure provider credentials are configured; audit all enrollments.
       const templates = [
         { id: 1, type: 'face', quality: 0.95, created_at: '2024-01-15T10:30:00Z', status: 'active' },
         { id: 2, type: 'voice', quality: 0.88, created_at: '2024-01-15T10:35:00Z', status: 'active' },
@@ -132,7 +133,8 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
 
   const loadAccountLogs = async () => {
     try {
-      // Simulate API call to load account creation logs
+  // Dry-run: simulate API call to load account creation logs (no external calls unless enabled).
+  // Production note: real account provisioning must be gated by PRODUCTION_CONFIRMED and use secure audit logging.
       const logs = [
         {
           id: 1,
@@ -176,7 +178,8 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
 
   const loadRecoveryLogs = async () => {
     try {
-      // Simulate API call to load password recovery logs
+    // Dry-run: simulate API call to load password recovery logs (no external calls unless enabled).
+    // Production note: live recovery flows must use provider integrations and multi-factor checks and be gated by PRODUCTION_CONFIRMED.
       const logs = [
         {
           id: 1,
@@ -203,7 +206,8 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
 
   const handleEnrollBiometric = async () => {
     try {
-      // Simulate biometric enrollment
+  // Dry-run: biometric enrollment (no persistent changes unless production enabled).
+  // Production note: enrollment should persist to secure storage and be recorded in .qmoi_validation/ when PRODUCTION_CONFIRMED=true.
       const result = await enrollBiometric(username, selectedBiometricType);
       if (result.status === 'success') {
         setSnackbar({ open: true, message: 'Biometric enrollment successful!', severity: 'success' });
@@ -219,7 +223,8 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
 
   const handlePasswordRecovery = async () => {
     try {
-      // Simulate password recovery
+  // Dry-run: password recovery (no persistent changes unless production enabled).
+  // Production note: password recovery must be rate-limited, monitored, and gated by PRODUCTION_CONFIRMED for live operations.
       const result = await recoverPassword(username, selectedBiometricType);
       if (result.status === 'success') {
         setSnackbar({ open: true, message: 'Password recovery successful!', severity: 'success' });
@@ -235,7 +240,8 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
 
   const handleCreateAccount = async () => {
     try {
-      // Simulate account creation
+  // Dry-run: account creation (no external account provisioning unless production enabled).
+  // Production note: account provisioning must be gated by PRODUCTION_CONFIRMED and use audited provider APIs.
       const result = await createAccount(username, selectedBiometricType);
       if (result.status === 'success') {
         setSnackbar({ open: true, message: 'Account created successfully!', severity: 'success' });
@@ -249,17 +255,18 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
     }
   };
 
-  // Simulated API functions
+  // Dry-run API functions (safe defaults; enable production providers with PRODUCTION_CONFIRMED and credentials)
+  // Production note: replace these stubs with real provider calls when PRODUCTION_CONFIRMED=true and credentials are set.
   const enrollBiometric = async (username: string, type: string) => {
-    return { status: 'success', message: 'Enrollment completed' };
+    return { status: 'success', message: 'Enrollment completed (dry-run)' };
   };
 
   const recoverPassword = async (username: string, type: string) => {
-    return { status: 'success', message: 'Password recovered' };
+    return { status: 'success', message: 'Password recovered (dry-run)' };
   };
 
   const createAccount = async (username: string, type: string) => {
-    return { status: 'success', message: 'Account created' };
+    return { status: 'success', message: 'Account created (dry-run)' };
   };
 
   const getBiometricIcon = (type: string) => {

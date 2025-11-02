@@ -53,7 +53,7 @@ jobs:
       - name: 🔢 Auto Test Installer (Sanity)
         run: |
           echo "Installing and launching app on ${{ matrix.platform }}..."
-          # Add emulator/VM test command here or simulated launch
+          # Add emulator/VM test command here or dry-run launch
           echo "✅ Test Passed"
 
       - name: 🪄 Publish to GitHub (if GH_TOKEN is set)

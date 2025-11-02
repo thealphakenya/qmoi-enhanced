@@ -38,7 +38,7 @@ export const GlobalVideoCall: React.FC = () => {
       </div>
       {callState === 'connected' && (
         <div style={{ marginTop: 16, background: '#222', color: '#fff', padding: 16, borderRadius: 8 }}>
-          <b>Video Stream Preview (Simulated)</b>
+          <b>Video Stream Preview (dry-run)</b>
           <div style={{ width: 240, height: 160, background: '#444', margin: '12px 0', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span>📹 Video Stream</span>
           </div>

@@ -1,3 +1,48 @@
+import os
+import json
+from pathlib import Path
+from typing import Optional, Dict
+
+AUDIT_DIR = Path('.qmoi_validation') / 'adapters'
+AUDIT_DIR.mkdir(parents=True, exist_ok=True)
+CALL_LOG = AUDIT_DIR / 'telephony.log'
+
+
+def _audit(entry: Dict):
+    try:
+        logs = []
+        if CALL_LOG.exists():
+            logs = json.loads(CALL_LOG.read_text())
+        logs.append(entry)
+        CALL_LOG.write_text(json.dumps(logs, indent=2))
+    except Exception:
+        pass
+
+
+def place_call(number: str, message: str, metadata: Optional[Dict] = None) -> Dict:
+    metadata = metadata or {}
+    entry = {
+        'time': __import__('datetime').datetime.utcnow().isoformat(),
+        'number': number,
+        'message_snippet': message[:200],
+        'metadata': metadata,
+    }
+
+    telephony_enabled = os.environ.get('TELEPHONY_ENABLED', 'false').lower() == 'true'
+    production_confirmed = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+    allow_network = os.environ.get('QMOI_ALLOW_NETWORK', 'false').lower() == 'true'
+    twilio_sid = os.environ.get('TWILIO_ACCOUNT_SID')
+
+    if telephony_enabled and production_confirmed and allow_network and twilio_sid:
+        entry['path'] = 'provider-attempt'
+        entry['note'] = 'Provider configured. Adapter will attempt call when fully implemented.'
+        _audit(entry)
+        return {'status': 'queued', 'dry_run': False, 'note': 'Provider-configured: adapter placeholder'}
+
+    entry['path'] = 'dry-run'
+    entry['note'] = 'Telephony adapter dry-run; no outgoing call made.'
+    _audit(entry)
+    return {'status': 'dry-run', 'dry_run': True, 'note': 'Logged to .qmoi_validation/adapters/telephony.log'}
 #!/usr/bin/env python3
 """
         Telephony adapter: centralises telephony/call interactions in a safe, gated way.

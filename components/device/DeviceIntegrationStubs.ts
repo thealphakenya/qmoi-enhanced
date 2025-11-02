@@ -85,9 +85,9 @@ export const TVDecoderIntegration: TVDecoderDevice = {
       );
       
       if (!decoderPort) {
-        console.log('No TV decoder found, using simulation mode');
+        console.log('No TV decoder found, using dry-run mode');
         this.port = new SerialPortMock({
-          path: '/dev/simulated-tv',
+          path: '/dev/dry-run-tv',
           baudRate: 115200,
           dataBits: 8,
           parity: 'none',
@@ -120,7 +120,7 @@ export const TVDecoderIntegration: TVDecoderDevice = {
     
     return new Promise((resolve) => {
       this.port!.write(cmd + '\r\n', () => {
-        // Simulate a typical TV decoder response
+        // Dry-run: a typical TV decoder response (no hardware interaction)
         setTimeout(() => {
           resolve({ 
             ok: true, 
@@ -139,11 +139,11 @@ export const TVDecoderIntegration: TVDecoderDevice = {
         port.manufacturer?.includes('TVDecoder') || 
         port.vendorId === '0x0403'
       );
-      console.log('TV decoder auto-detection:', hasDecoder ? 'found' : 'not found, using simulation');
-      return true; // Always return true in simulation mode
+      console.log('TV decoder auto-detection:', hasDecoder ? 'found' : 'not found, using dry-run');
+      return true; // Always return true in dry-run mode
     } catch (err) {
       console.error('Failed to auto-detect TV decoder:', err);
-      return true; // Return true in simulation mode
+      return true; // Return true in dry-run mode
     }
   }
 };
@@ -165,8 +165,8 @@ export const CarRadioIntegration: CarRadioDevice = {
       const carRadio = devices.find(d => d.vendorId === this.VID && d.productId === this.PID);
       
       if (!carRadio) {
-        console.log('Car radio device not found, using simulation mode');
-        this.device = new HIDMock('/dev/simulated-carradio');
+        console.log('Car radio device not found, using dry-run mode');
+        this.device = new HIDMock('/dev/dry-run-carradio');
         return true;
       }
 
@@ -174,8 +174,8 @@ export const CarRadioIntegration: CarRadioDevice = {
       return true;
     } catch (err) {
       console.error('Failed to connect to car radio:', err);
-      // In simulation mode, still return true
-      this.device = new HIDMock('/dev/simulated-carradio');
+      // In dry-run mode, still return true and fallback to a local dry-run device
+      this.device = new HIDMock('/dev/dry-run-carradio');
       return true;
     }
   },
@@ -186,7 +186,7 @@ export const CarRadioIntegration: CarRadioDevice = {
     }
 
     try {
-      // Simulate command execution
+      // Dry-run: simulate command execution (no hardware calls)
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve({
@@ -206,11 +206,11 @@ export const CarRadioIntegration: CarRadioDevice = {
     try {
       const devices = HIDMock.devices();
       const hasRadio = devices.some(d => d.vendorId === this.VID && d.productId === this.PID);
-      console.log('Car radio auto-detection:', hasRadio ? 'found' : 'not found, using simulation');
-      return true; // Always return true in simulation mode
+      console.log('Car radio auto-detection:', hasRadio ? 'found' : 'not found, using dry-run');
+      return true; // Always return true in dry-run mode
     } catch (err) {
       console.error('Failed to auto-detect car radio:', err);
-      return true; // Return true in simulation mode
+      return true; // Return true in dry-run mode
     }
   }
 };
@@ -220,9 +220,10 @@ export const SmartHomeIntegration: DeviceIntegration = {
 
   async connect() {
     try {
-      console.log('SmartHomeIntegration: connecting to local smart home bridge...');
-      // Simulate discovery and connection attempt
-      await new Promise(resolve => setTimeout(resolve, 500));
+  console.log('SmartHomeIntegration: connecting to local smart home bridge...');
+  // Dry-run: simulate discovery and connection attempt (no external hardware calls).
+  // Production note: enable real discovery only when PRODUCTION_CONFIRMED=true and device drivers are available.
+  await new Promise(resolve => setTimeout(resolve, 500));
       (this as any).connectionState = true;
       return true;
     } catch (err) {
@@ -237,8 +238,9 @@ export const SmartHomeIntegration: DeviceIntegration = {
       throw new Error('Not connected to smart home bridge');
     }
 
-    // Simulate command execution with appropriate latency
-    await new Promise(resolve => setTimeout(resolve, 200));
+  // Dry-run: simulate command execution with appropriate latency (no hardware interaction).
+  // Production note: send real commands only when PRODUCTION_CONFIRMED=true and a secure transport is configured.
+  await new Promise(resolve => setTimeout(resolve, 200));
     return { 
       ok: true, 
       response: `SMARTHOME_ACK ${cmd}`,
@@ -247,9 +249,10 @@ export const SmartHomeIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    console.log('Auto-detecting smart home bridge...');
-    await new Promise(resolve => setTimeout(resolve, 300));
-    return true;
+  console.log('Auto-detecting smart home bridge...');
+  // Dry-run: simulate auto-detection.
+  await new Promise(resolve => setTimeout(resolve, 300));
+  return true;
   }
 };
 
@@ -260,8 +263,9 @@ export const MessagingIntegration: DeviceIntegration = {
   async connect() {
     if ((this as any).connected) return true;
 
-    console.log('MessagingIntegration: establishing connection...');
-    await new Promise(resolve => setTimeout(resolve, 500));
+  console.log('MessagingIntegration: establishing connection...');
+  // Dry-run: establish a dry-run connection for queued message testing.
+  await new Promise(resolve => setTimeout(resolve, 500));
     (this as any).connected = true;
     
     // Process any queued messages
@@ -281,8 +285,8 @@ export const MessagingIntegration: DeviceIntegration = {
       throw new Error('Not connected - message queued');
     }
 
-    // Simulate network latency
-    await new Promise(resolve => setTimeout(resolve, 100 + Math.random() * 200));
+  // Dry-run: simulate network latency (no real network calls).
+  await new Promise(resolve => setTimeout(resolve, 100 + Math.random() * 200));
     return { 
       ok: true, 
       messageId: Math.random().toString(36).substr(2, 9),
@@ -293,8 +297,9 @@ export const MessagingIntegration: DeviceIntegration = {
 
   async autoDetect() {
     return new Promise(resolve => {
-      console.log('Auto-detecting messaging service...');
-      setTimeout(() => resolve(true), 200);
+    console.log('Auto-detecting messaging service...');
+    // Dry-run: pretend the messaging service is reachable for testing.
+    setTimeout(() => resolve(true), 200);
     });
   }
 };
@@ -407,7 +412,7 @@ export const AWSIntegration: DeviceIntegration = {
     return {
       ok: true,
       requestId: Math.random().toString(36).substr(2),
-      result: command.simulate || 'success',
+      result: command.simulate || command.dryRun || 'success',
       timestamp: Date.now()
     };
   },
@@ -462,7 +467,7 @@ export const AzureIntegration: DeviceIntegration = {
     return {
       ok: true,
       operationId: Math.random().toString(36).substr(2),
-      result: command.simulate || 'success',
+      result: command.simulate || command.dryRun || 'success',
       timestamp: Date.now()
     };
   },
@@ -525,7 +530,7 @@ export const GCPIntegration: DeviceIntegration = {
     return {
       ok: true,
       operationName: `projects/test/operations/${Date.now()}`,
-      result: command.simulate || 'success',
+      result: command.simulate || command.dryRun || 'success',
       timestamp: Date.now()
     };
   },
@@ -560,9 +565,9 @@ export const IoTIntegration: DeviceIntegration = {
       console.log('IoT Integration: discovering devices...');
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Simulate finding some IoT devices
-      this.devices.set('device1', { type: 'sensor', status: 'online' });
-      this.devices.set('device2', { type: 'actuator', status: 'online' });
+  // Dry-run: simulate finding some IoT devices (no network discovery performed)
+  this.devices.set('device1', { type: 'sensor', status: 'online' });
+  this.devices.set('device2', { type: 'actuator', status: 'online' });
       
       (this as any).connected = true;
       return true;

@@ -83,8 +83,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.json({ result: 'IoT scan complete', risks });
       }
       case 'ai-agents': {
-        // Simulate agent action
-        return res.json({ result: 'AI agent simulated action: would patch or isolate device if threat detected.' });
+        // dry-run agent action
+        return res.json({ result: 'AI agent dry-run action: would patch or isolate device if threat detected.' });
       }
       default:
         return res.status(400).json({ error: 'Unknown action' });

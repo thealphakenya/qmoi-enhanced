@@ -373,7 +373,7 @@ export const FloatingAQ: React.FC = () => {
     setImageLoading(false);
   };
 
-  // Device health/optimization actions (simulated)
+  // Device health/optimization actions (dry-run)
   const runHealthScan = async () => {
     setHealthScanRunning(true);
     setHealthScanResult(null);

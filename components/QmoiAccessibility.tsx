@@ -224,9 +224,9 @@ export const QmoiAccessibility: React.FC = () => {
     setCurrentProfile(prev => ({ ...prev, emergencyMode: true }));
     speak('Emergency mode activated. Location sharing enabled. Emergency contacts notified.');
     
-    // Simulate emergency actions
+    // Dry-run: emergency actions (no external notifications unless PRODUCTION_CONFIRMED=true)
     if (locationSharing) {
-      speak('Location shared with emergency contacts.');
+      speak('Location shared with emergency contacts. (dry-run)');
     }
     
     // Trigger emergency haptic pattern

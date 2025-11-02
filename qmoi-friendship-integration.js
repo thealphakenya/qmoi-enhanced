@@ -164,7 +164,7 @@ class QMOIFriendshipIntegration {
         }
 
         if (dryRun) {
-            // Do not push files to Vercel in dry-run; return a simulated response.
+            // Do not push files to Vercel in dry-run; return a dry-run response (no remote changes performed).
             return { id: `dryrun-${Date.now()}`, url: null, dryRun: true };
         }
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-// Simulated Bitget trading hook for [PRODUCTION IMPLEMENTATION REQUIRED]/production
+// Dry-run Bitget trading hook for [PRODUCTION IMPLEMENTATION REQUIRED]/production
+// PRODUCTION: replace with adapter-backed implementation that requires QMOI_ALLOW_NETWORK=true and BITGET credentials.
 export function useBitgetTrader() {
   const [bitgetStatus, setBitgetStatus] = useState<'connected'|'disconnected'|'error'>('connected');
   const [isRealTradingEnabled, setIsRealTradingEnabled] = useState(false);

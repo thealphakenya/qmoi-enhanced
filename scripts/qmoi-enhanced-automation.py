@@ -1046,9 +1046,9 @@ class AIMLOptimizationModule(BaseModule):
         try:
             self.logger.info("🤖 Running AI/ML-driven optimization...")
             # Analyze logs and performance
-            # (Simulated) Suggest or auto-apply improvements
-            # (Simulated) Auto-tune parameters
-            # (Simulated) Propose new modules/scripts
+            # (dry-run) Suggest or auto-apply improvements (PRODUCTION: implement safe adapters and approval flows)
+            # (dry-run) Auto-tune parameters (PRODUCTION: add throttles and audit logs)
+            # (dry-run) Propose new modules/scripts (PRODUCTION: require PR + review before apply)
             metrics = self.get_performance_metrics()
             self.logger.info("✅ AI/ML optimization completed")
             return AutomationResult(
@@ -1072,7 +1072,7 @@ class AIMLOptimizationModule(BaseModule):
                 timestamp=datetime.now()
             )
 
-# API endpoints for dashboard widgets (simulated, to be implemented in actual server):
+# API endpoints for dashboard widgets (dry-run stubs; implement real server integrations for production):
 # - /api/qmoi/jobs: Query job status, health, and history
 # - /api/qmoi/trigger: Trigger specific automation or evolution actions
 # - /api/qmoi/logs: Stream logs and progress in real time

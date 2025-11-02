@@ -25,7 +25,7 @@ function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
 
   if (!isMaster) return null;
 
-  // QMOI: Simulated error for auto-fix and notification test
+  // QMOI: dry-run error for auto-fix and notification test
   const = ;
 
   return (

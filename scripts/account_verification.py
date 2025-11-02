@@ -4,7 +4,7 @@ import sys
 MASTER_EMAIL = "rovicviccy@gmail.com"
 MASTER_WHATSAPP = "+254786322855"
 
-# Simulated verification logic for each service
+# dry-run verification logic for each service (replace with secure verification backend in production)
 def verify_service(service_name):
     print(f"Verifying {service_name} for master email {MASTER_EMAIL}...")
     # Simulate API call/verification

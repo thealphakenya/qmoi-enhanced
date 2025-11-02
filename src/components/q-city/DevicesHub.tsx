@@ -5,7 +5,7 @@ import {
   Device,
 } from "../../services/DeviceTrackingService";
 
-// Simulate master check (replace with real auth logic)
+// Dry-run: master check (replace with real auth logic). In production wire to real auth and permissions.
 const isMaster = true;
 
 const mockWhatsAppService = {

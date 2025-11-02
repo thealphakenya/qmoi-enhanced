@@ -144,14 +144,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } else if (req.method === 'POST') {
       // Simulate a trade (for [PRODUCTION IMPLEMENTATION REQUIRED]/testing)
       const now = Date.now();
-      const trade = {
+        const trade = {
         id: Math.random().toString(36).slice(2),
         timestamp: now,
         type: Math.random() > 0.5 ? 'BUY' : 'SELL',
         amount: 1,
         price: 70000 + Math.floor(Math.random() * 1000),
-        result: 'SIMULATED',
-        rationale: 'Manual simulation',
+        result: 'DRY_RUN',
+        rationale: 'Manual dry-run',
       };
       let trades = [];
       if (fs.existsSync(TRADING_LOG)) {

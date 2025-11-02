@@ -10,7 +10,7 @@ export const PriceProductVerifier: React.FC = () => {
     setResult(null);
     // Simulate price/product verification (offline or via public APIs)
     setTimeout(() => {
-      setResult(`Verified: "${query}" is available. Price: $${(Math.random()*100+1).toFixed(2)} (simulated)`);
+  setResult(`Verified: "${query}" is available. Price: $${(Math.random()*100+1).toFixed(2)} (dry-run)`);
       setLoading(false);
     }, 1200);
   };

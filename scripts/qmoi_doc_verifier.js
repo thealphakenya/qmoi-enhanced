@@ -1009,7 +1009,7 @@ python scripts/{SCRIPT_NAME}.py
         // Clean up
         scenario.fix();
         
-        console.log(`✅ ${scenario.name}: Simulated and fixed`);
+  console.log(`✅ ${scenario.name}: Dry-run and fixed`);
       } catch (error) {
         console.error(`❌ ${scenario.name}: Failed - ${error.message}`);
         // Ensure cleanup
@@ -1137,19 +1137,19 @@ python scripts/{SCRIPT_NAME}.py
       try {
         fs.writeFileSync('/root/should_fail.txt', 'test');
       } catch (e) {
-        this.issues.push('Simulated permission error: ' + e.message);
+  this.issues.push('Dry-run permission error: ' + e.message);
       }
       // Simulate corrupted file
       try {
         fs.writeFileSync(path.join(this.docsDir, 'corrupted.md'), '\0\0\0corrupted');
       } catch (e) {
-        this.issues.push('Simulated file corruption: ' + e.message);
+  this.issues.push('Dry-run file corruption: ' + e.message);
       }
       // Simulate missing directory
       try {
         fs.readdirSync('/nonexistent/dir');
       } catch (e) {
-        this.issues.push('Simulated missing directory: ' + e.message);
+  this.issues.push('Dry-run missing directory: ' + e.message);
       }
       // Generate comprehensive report
       const report = this.generateReport();

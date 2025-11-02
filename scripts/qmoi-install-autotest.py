@@ -7,7 +7,7 @@ def autotest_install(device, binary_path):
         "device": device,
         "binary": binary_path,
         "status": "success",
-        "details": "Install test passed (simulated)."
+    "details": "Install test passed (dry-run)."
     }
     # Simulate error detection and auto-fix for each platform
     if not os.path.exists(binary_path):

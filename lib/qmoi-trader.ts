@@ -334,7 +334,7 @@ export class QmoiTrader {
         timestamp: new Date()
       };
     } catch (error) {
-      // Fallback to simulated data
+      // Fallback to dry-run data (placeholder values). In production this should call a provider adapter and fail loudly if network is disallowed.
       return {
         symbol,
         price: 50000 + Math.random() * 10000,

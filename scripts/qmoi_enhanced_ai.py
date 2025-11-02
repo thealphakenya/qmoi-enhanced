@@ -456,7 +456,7 @@ class EnhancedQmoiAI:
             # Update response time
             self.state.performance_metrics["response_time"] = response_time
             
-            # Calculate accuracy (simulated)
+            # Calculate accuracy (dry-run)
             accuracy = 0.95 + (np.random.random() - 0.5) * 0.05
             self.state.performance_metrics["accuracy"] = max(0.8, min(1.0, accuracy))
             

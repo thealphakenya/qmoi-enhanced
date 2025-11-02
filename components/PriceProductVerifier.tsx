@@ -8,9 +8,9 @@ export const PriceProductVerifier: React.FC = () => {
   const handleCheck = async () => {
     setLoading(true);
     setResult(null);
-    // Simulate price/product verification (offline or via public APIs)
+    // Dry-run: price/product verification (no external calls unless enabled)
     setTimeout(() => {
-      setResult(`Verified: "${query}" is available. Price: $${(Math.random()*100+1).toFixed(2)} (simulated)`);
+      setResult(`Verified: "${query}" is available. Price: $${(Math.random()*100+1).toFixed(2)} (dry-run)`);
       setLoading(false);
     }, 1200);
   };

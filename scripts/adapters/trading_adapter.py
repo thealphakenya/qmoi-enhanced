@@ -1,3 +1,50 @@
+import os
+import json
+from pathlib import Path
+from typing import Dict, Optional
+
+AUDIT_DIR = Path('.qmoi_validation') / 'adapters'
+AUDIT_DIR.mkdir(parents=True, exist_ok=True)
+TRADING_LOG = AUDIT_DIR / 'trading.log'
+
+
+def _audit(entry: Dict):
+    try:
+        logs = []
+        if TRADING_LOG.exists():
+            logs = json.loads(TRADING_LOG.read_text())
+        logs.append(entry)
+        TRADING_LOG.write_text(json.dumps(logs, indent=2))
+    except Exception:
+        pass
+
+
+def place_order(side: str, amount: float, symbol: str, price: Optional[float] = None, metadata: Optional[Dict] = None) -> Dict:
+    metadata = metadata or {}
+    entry = {
+        'time': __import__('datetime').datetime.utcnow().isoformat(),
+        'side': side,
+        'amount': amount,
+        'symbol': symbol,
+        'price': price,
+        'metadata': metadata,
+    }
+
+    bitget_enabled = os.environ.get('BITGET_ENABLED', 'false').lower() == 'true'
+    production_confirmed = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+    allow_network = os.environ.get('QMOI_ALLOW_NETWORK', 'false').lower() == 'true'
+    bitget_key = os.environ.get('BITGET_API_KEY')
+
+    if bitget_enabled and production_confirmed and allow_network and bitget_key:
+        entry['path'] = 'provider-attempt'
+        entry['note'] = 'Provider configured. Adapter placeholder (implement exchange SDK client).'
+        _audit(entry)
+        return {'status': 'queued', 'dry_run': False, 'note': 'Provider-configured: adapter placeholder'}
+
+    entry['path'] = 'dry-run'
+    entry['note'] = 'Trading adapter dry-run; no order sent.'
+    _audit(entry)
+    return {'status': 'dry-run', 'dry_run': True, 'note': 'Logged to .qmoi_validation/adapters/trading.log'}
 #!/usr/bin/env python3
 """
 Trading adapter: centralises exchange/trading actions with safe dry-run fallbacks.

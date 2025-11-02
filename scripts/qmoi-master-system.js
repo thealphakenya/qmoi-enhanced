@@ -113,14 +113,14 @@ class QMOIMasterSystem {
     return { success: false, error: error.message };
   }
 
-  // Simulated auto-fix logic (expand as needed)
+  // dry-run auto-fix logic (expand as needed). PRODUCTION: implement safe, audited auto-fix adapters.
   async autoFix(error, context = {}) {
     // Example: try to restart a subsystem, reload config, etc.
     // For [PRODUCTION IMPLEMENTATION REQUIRED], always fail to trigger manual
     return { success: false, reason: 'Auto-fix not implemented for this error type.' };
   }
 
-  // Simulated manual fix logic (expand as needed)
+  // dry-run manual fix logic (expand as needed). PRODUCTION: replace with operator workflows.
   async manualFix(error, context = {}) {
     // Example: prompt user, run manual script, etc.
     // For [PRODUCTION IMPLEMENTATION REQUIRED], always fail

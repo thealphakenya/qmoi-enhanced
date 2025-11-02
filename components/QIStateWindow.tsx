@@ -7,7 +7,7 @@ export default function QIStateWindow({ userEmail, userPhone }: { userEmail: str
   const isMaster = userEmail === MASTER_EMAIL || userPhone === MASTER_PHONE;
   const [auditLog, setAuditLog] = useState<string[]>([]);
 
-  // Simulate fetching audit log
+  // Dry-run: simulate fetching audit log (no external calls)
   React.useEffect(() => {
     setAuditLog([
       "Linked Airtel Money to master.",

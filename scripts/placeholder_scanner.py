@@ -35,7 +35,7 @@ PROD_MARKERS = [
     r"Simulate success",
     r"simulate success",
     r"// Simulate",
-    r"// Simulated",
+    r"// Simulated",  # dry-run marker in scanned sources; review for production implementation
     r"return true; // Simulate",
     r"return true -- Simulate",
 ]
@@ -129,7 +129,7 @@ def suggest_replacements(report):
         txt = item['text']
         file = item['file']
         if item.get('type') == 'prod_marker':
-            # Heuristic: for JS/TS files, replace simulated returns with thrown errors
+            # Heuristic: for JS/TS files, replace simulated returns with thrown errors (or with gated adapters in production)
             if file.endswith(('.ts', '.js')):
                 if 'return true' in txt or 'Simulate' in txt or 'simulate' in txt:
                     replacement = txt + "  // PRODUCTION: replace with real implementation or throw an error"

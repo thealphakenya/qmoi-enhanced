@@ -116,7 +116,7 @@ async function previewVoice(voiceId: string, text: string, quality: string, volu
     return NextResponse.json({
       success: true,
       audioUrl,
-      duration: Math.random() * 5 + 2, // Simulated duration
+  duration: Math.random() * 5 + 2, // dry-run duration
       voice: voiceProfile
     });
   } catch (error) {

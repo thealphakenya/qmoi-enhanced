@@ -1,3 +1,59 @@
+import os
+import json
+from pathlib import Path
+from typing import Optional, Dict
+
+AUDIT_DIR = Path('.qmoi_validation') / 'adapters'
+AUDIT_DIR.mkdir(parents=True, exist_ok=True)
+MAIL_LOG = AUDIT_DIR / 'mail.log'
+
+
+def _audit(entry: Dict):
+    try:
+        logs = []
+        if MAIL_LOG.exists():
+            logs = json.loads(MAIL_LOG.read_text())
+        logs.append(entry)
+        MAIL_LOG.write_text(json.dumps(logs, indent=2))
+    except Exception:
+        # best-effort
+        pass
+
+
+def send_mail(to: str, subject: str, body: str, metadata: Optional[Dict] = None) -> Dict:
+    """Send mail via provider when enabled, otherwise log dry-run.
+
+    Behavior:
+    - Default: dry-run — write audit entry to `.qmoi_validation/adapters/mail.log` and return a dry-run response.
+    - If environment variables MAIL_ENABLED=true, PRODUCTION_CONFIRMED=true, QMOI_ALLOW_NETWORK=true and SENDGRID_API_KEY present,
+      the adapter will attempt to send via provider (implementation left minimal — production integration required).
+    """
+    metadata = metadata or {}
+    entry = {
+        'time': __import__('datetime').datetime.utcnow().isoformat(),
+        'to': to,
+        'subject': subject,
+        'body_snippet': body[:200],
+        'metadata': metadata,
+    }
+
+    mail_enabled = os.environ.get('MAIL_ENABLED', 'false').lower() == 'true'
+    production_confirmed = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+    allow_network = os.environ.get('QMOI_ALLOW_NETWORK', 'false').lower() == 'true'
+    sendgrid_key = os.environ.get('SENDGRID_API_KEY')
+
+    if mail_enabled and production_confirmed and allow_network and sendgrid_key:
+        # PRODUCTION path: minimal attempt. Replace with robust SendGrid/SMTP client.
+        entry['path'] = 'provider-attempt'
+        entry['note'] = 'Provider configured. Adapter will attempt send when fully implemented.'
+        _audit(entry)
+        return {'status': 'queued', 'dry_run': False, 'note': 'Provider-configured: adapter placeholder (implement provider client)'}
+
+    # Default dry-run
+    entry['path'] = 'dry-run'
+    entry['note'] = 'Mail adapter dry-run; no outgoing network call was made.'
+    _audit(entry)
+    return {'status': 'dry-run', 'dry_run': True, 'note': 'Logged to .qmoi_validation/adapters/mail.log'}
 #!/usr/bin/env python3
 """
 Mail adapter: centralises mail sending with safe dry-run fallbacks.

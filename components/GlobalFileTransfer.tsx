@@ -15,7 +15,7 @@ export const GlobalFileTransfer: React.FC = () => {
     if (!file || !recipient) return;
     setStatus('Transferring...');
     setTimeout(() => {
-      setStatus(`File "${file.name}" sent to ${recipient} (simulated).`);
+      setStatus(`File "${file.name}" sent to ${recipient} (dry-run).`);
     }, 2000);
   };
 

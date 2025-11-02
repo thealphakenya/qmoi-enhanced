@@ -16,9 +16,9 @@ cur = conn.cursor()
 cur.execute('CREATE TABLE IF NOT EXISTS transactions (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER, status TEXT, provider TEXT, provider_ref TEXT, created TEXT, settled_at TEXT)')
 conn.commit()
 
-# Simulate a provider charge
+# Dry-run: provider charge
 res = provider_stub.create_charge('bob', 1200)
-print('Simulated provider charge:', res)
+print('Dry-run provider charge:', res)
 
 # Build a fake webhook payload (as Stripe would send) and pass to adapter verifier
 evt = {'id': res.get('provider_ref'), 'type': 'charge.settled', 'data': {'object': {'id': res.get('provider_ref'), 'amount': 1200, 'metadata': {'username': 'bob'}}}}

@@ -1,3 +1,48 @@
+import os
+import json
+from pathlib import Path
+from typing import Dict, Optional
+
+AUDIT_DIR = Path('.qmoi_validation') / 'adapters'
+AUDIT_DIR.mkdir(parents=True, exist_ok=True)
+AI_LOG = AUDIT_DIR / 'ai.log'
+
+
+def _audit(entry: Dict):
+    try:
+        logs = []
+        if AI_LOG.exists():
+            logs = json.loads(AI_LOG.read_text())
+        logs.append(entry)
+        AI_LOG.write_text(json.dumps(logs, indent=2))
+    except Exception:
+        pass
+
+
+def call_model(prompt: str, metadata: Optional[Dict] = None) -> Dict:
+    metadata = metadata or {}
+    entry = {
+        'time': __import__('datetime').datetime.utcnow().isoformat(),
+        'prompt_snippet': prompt[:200],
+        'metadata': metadata,
+    }
+
+    ai_enabled = os.environ.get('AI_ENABLED', 'false').lower() == 'true'
+    production_confirmed = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+    allow_network = os.environ.get('QMOI_ALLOW_NETWORK', 'false').lower() == 'true'
+    ai_endpoint = os.environ.get('QMOI_AI_ENDPOINT')
+
+    if ai_enabled and production_confirmed and allow_network and ai_endpoint:
+        entry['path'] = 'provider-attempt'
+        entry['note'] = 'AI provider configured. Adapter placeholder for remote call.'
+        _audit(entry)
+        return {'status': 'queued', 'dry_run': False, 'note': 'Provider-configured: adapter placeholder'}
+
+    entry['path'] = 'dry-run'
+    entry['note'] = 'AI adapter dry-run; returning canned response.'
+    entry['response'] = {'text': 'This is a dry-run response. Replace with real model output when enabled.'}
+    _audit(entry)
+    return {'status': 'dry-run', 'dry_run': True, 'response': entry['response'], 'note': 'Logged to .qmoi_validation/adapters/ai.log'}
 #!/usr/bin/env python3
 """
 AI adapter: centralises AI provider calls with safe dry-run fallbacks.

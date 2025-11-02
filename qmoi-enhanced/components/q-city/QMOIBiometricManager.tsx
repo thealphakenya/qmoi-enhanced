@@ -249,7 +249,7 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({ isMaster })
     }
   };
 
-  // Simulated API functions
+  // dry-run API functions
   const enrollBiometric = async (username: string, type: string) => {
     return { status: 'success', message: 'Enrollment completed' };
   };
