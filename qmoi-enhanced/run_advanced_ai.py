@@ -4,21 +4,38 @@ import json
 
 def run_stable_diffusion(prompt, output_path):
     # [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with diffusers or invoke Stable Diffusion
-    print(f"[Simulated] Generating image for prompt: {prompt}")
+    # Dry-run: generate a placeholder artifact unless a production AI adapter is configured.
+    try:
+        # Try to import the ai adapter if available (production path may provide it)
+        import importlib, os, sys
+        adapter_path = os.path.join(os.path.dirname(__file__), '..', '..', 'scripts', 'adapters')
+        if adapter_path not in sys.path:
+            sys.path.insert(0, adapter_path)
+        ai_adapter = importlib.import_module('ai_adapter')
+        if os.environ.get('QMOI_ALLOW_NETWORK', 'false').lower() == 'true' and hasattr(ai_adapter, 'run_image_task'):
+            # In production this would call the configured AI endpoint.
+            return ai_adapter.run_image_task('image', prompt, output_path)
+    except Exception:
+        # Adapter not present or not enabled; fall back to dry-run placeholder
+        pass
+
+    print(f"[DRY-RUN] Generating placeholder image for prompt: {prompt}")
     with open(output_path, 'w') as f:
-        f.write(f"Simulated image for: {prompt}")
+        f.write(f"DRY-RUN placeholder image for: {prompt}")
     return output_path
 
 def run_stylegan(prompt, output_path):
-    print(f"[Simulated] Generating StyleGAN image for: {prompt}")
+    # Dry-run placeholder for StyleGAN route
+    print(f"[DRY-RUN] Generating StyleGAN placeholder for: {prompt}")
     with open(output_path, 'w') as f:
-        f.write(f"Simulated StyleGAN image for: {prompt}")
+        f.write(f"DRY-RUN StyleGAN image for: {prompt}")
     return output_path
 
 def run_animatediff(prompt, output_path):
-    print(f"[Simulated] Generating AnimateDiff animation for: {prompt}")
+    # Dry-run placeholder for AnimateDiff route
+    print(f"[DRY-RUN] Generating AnimateDiff placeholder for: {prompt}")
     with open(output_path, 'w') as f:
-        f.write(f"Simulated AnimateDiff animation for: {prompt}")
+        f.write(f"DRY-RUN AnimateDiff animation for: {prompt}")
     return output_path
 
 def main():

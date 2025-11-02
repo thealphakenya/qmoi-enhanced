@@ -84,7 +84,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
       case 'ai-agents': {
         // Simulate agent action
-        return res.json({ result: 'AI agent simulated action: would patch or isolate device if threat detected.' });
+  // Dry-run: describe the action that would be taken. Real actions are gated and require credentials.
+  return res.json({ result: 'AI agent dry-run: would patch or isolate device if threat detected.' });
       }
       default:
         return res.status(400).json({ error: 'Unknown action' });

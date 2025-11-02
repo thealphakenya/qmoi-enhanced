@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 if (process.argv.includes('--auto-repair')) {
-  console.log('[QMOI] Cloud optimizer auto-repair: Simulated success.');
+  console.log('[QMOI] Cloud optimizer auto-repair: dry-run success.');
   process.exit(0);
 } else {
   console.log('[QMOI] Cloud optimizer: No action.');

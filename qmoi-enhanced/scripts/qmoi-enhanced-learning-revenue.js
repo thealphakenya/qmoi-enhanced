@@ -330,7 +330,7 @@ function generateRecommendations(data) {
 
 async function calculateRevenue(source) {
   // Calculate revenue for a specific source
-  const baseAmount = Math.random() * 10000; // Simulated revenue calculation
+  const baseAmount = Math.random() * 10000; // dry-run revenue calculation (use real analytics adapter in production)
   const multiplier = Math.random() * 2 + 0.5;
   
   return {

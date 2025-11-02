@@ -423,7 +423,7 @@ class QMOIEnhancedController:
                 await asyncio.sleep(1)
                 results[task] = {
                     "status": "completed",
-                    "earnings": 100.0,  # Simulated earnings
+                    "earnings": 100.0,  # dry-run earnings (replace with real accounting adapter in production)
                     "timestamp": datetime.now().isoformat()
                 }
             

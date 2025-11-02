@@ -325,7 +325,7 @@ export const FloatingAQ: React.FC = () => {
     }
   }, [modal])
 
-  // Trigger a new automation job (simulated)
+  // Trigger a new automation job (dry-run placeholder)
   const triggerAutomationJob = async () => {
     setAutomationLoading(true)
     setAutomationError(null)
@@ -363,14 +363,14 @@ export const FloatingAQ: React.FC = () => {
       else if (data.image) setImageUrl(data.image); // fallback
       else setImageError('No image returned.');
     } catch (err: any) {
-      setImageError('Failed to generate image. (Simulated)');
+  setImageError('Failed to generate image. (dry-run)');
       // Simulate a placeholder image for demo
       setImageUrl('/placeholder.jpg');
     }
     setImageLoading(false);
   };
 
-  // Device health/optimization actions (simulated)
+  // Device health/optimization actions (dry-run placeholders)
   const runHealthScan = async () => {
     setHealthScanRunning(true);
     setHealthScanResult(null);
@@ -765,7 +765,7 @@ export const FloatingAQ: React.FC = () => {
                           {walletTransactions.length === 0 && <li>No transactions found.</li>}
                           {walletTransactions.map((tx, i) => (
                             <li key={typeof tx.id === 'string' || typeof tx.id === 'number' ? tx.id : i}>
-                              {tx.type || tx.side || 'TX'} {tx.amount ? `: ${tx.amount}` : ''} @ {tx.price ? `$${tx.price}` : ''} <span style={{ color: tx.type === 'BUY' || tx.side === 'BUY' ? '#0a0' : '#a00' }}>({tx.result || tx.status || 'Simulated'})</span>
+                              {tx.type || tx.side || 'TX'} {tx.amount ? `: ${tx.amount}` : ''} @ {tx.price ? `$${tx.price}` : ''} <span style={{ color: tx.type === 'BUY' || tx.side === 'BUY' ? '#0a0' : '#a00' }}>({tx.result || tx.status || 'dry-run'})</span>
                               <span style={{ color: '#888', marginLeft: 8 }}>{tx.rationale ? `- ${tx.rationale}` : ''}</span>
                               <span style={{ color: '#888', marginLeft: 8, fontSize: 12 }}>{tx.timestamp ? new Date(typeof tx.timestamp === 'string' || typeof tx.timestamp === 'number' ? tx.timestamp : '').toLocaleString() : ''}</span>
                             </li>
@@ -894,7 +894,7 @@ export const FloatingAQ: React.FC = () => {
                     </div>
                     {healthScanResult && <div style={{ marginTop: 8, color: '#0a0' }}>{healthScanResult}</div>}
                     {selfHealResult && <div style={{ marginTop: 8, color: '#22c55e' }}>{selfHealResult}</div>}
-                    <div style={{ marginTop: 16, fontStyle: 'italic', color: '#888' }}>Device optimization and self-healing routines are simulated. For advanced protection, see system integration docs.</div>
+                    <div style={{ marginTop: 16, fontStyle: 'italic', color: '#888' }}>Device optimization and self-healing routines are dry-run placeholders by default. For advanced protection, see system integration docs.</div>
                   </div>
                 </motion.div>
               )}

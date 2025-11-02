@@ -62,10 +62,10 @@ export async function autonomousTradingLoop() {
         type: 'BUY',
         amount: 1,
         price: closes[idx],
-        result: 'SIMULATED',
+  result: 'DRY_RUN',
         rationale: 'SMA cross',
       };
-      logTrade(trade);
+  logTrade(trade);
     } else if (closes[idx] < sma[idx]) {
       const trade: Trade = {
         id: Math.random().toString(36).slice(2),
@@ -73,7 +73,10 @@ export async function autonomousTradingLoop() {
         type: 'SELL',
         amount: 1,
         price: closes[idx],
-        result: 'SIMULATED',
+        // Default to DRY_RUN in this repo. To execute real trades, implement a
+        // production trading adapter and enable it via environment flags
+        // (QMOI_ALLOW_NETWORK=true + BITGET_ENABLED=true) and provider creds.
+        result: 'DRY_RUN',
         rationale: 'SMA cross',
       };
       logTrade(trade);

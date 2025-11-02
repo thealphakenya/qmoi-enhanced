@@ -30,7 +30,7 @@ function logAction(action: string, details: any) {
   }
 }
 
-// Simulated wallet state (replace with DB or secure backend in production)
+// Dry-run wallet state for local/dev. Replace with secure DB/backend in production.
 const wallet = {
   balance: 10000,
   currency: 'KES',

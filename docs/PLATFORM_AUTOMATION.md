@@ -1,6 +1,8 @@
-Platform Automation & Safety Guidelines
+# Platform Automation & Safety Guidelines
 
-This document explains how QMOI should interact with external platforms in production.
+This document explains how QMOI should interact with external platforms in production. It also
+documents the safe, dry-run-first behavior used across the repository and the environment
+variables and steps required to enable production connectors.
 
 Summary
 - QMOI may prepare and suggest account creation steps, but automatic creation of accounts
@@ -19,7 +21,9 @@ Account lifecycle (recommended)
 6. Audit: All actions logged and signed; master must be able to revoke access.
 
 Payments & Real Funds
-- Default: All modules operate in "dry-run/simulated" mode unless an explicit `--enable-live-funds` flag AND master approval are provided.
+- Default: All modules operate in a dry-run mode unless explicitly enabled for production. Tests,
+  demos, and local executions use dry-run artifacts and logs; no live funds or account creations
+  are performed without explicit gating.
 - Use PCI-compliant payment processors. Do not implement direct card handling unless certified.
 - Keep strict limits and require multi-party approval for transfers above configurable thresholds.
 - Add an escrow layer for marketplace/deals where QMOI acts as an agent.
@@ -36,6 +40,23 @@ Security Checklist (minimum)
 Notes
 - The included `services/platformManager.ts` is a safe scaffolding and DOES NOT contact external APIs.
 - For production, implement PlatformAdapters in `services/adapters/<platform>.ts` with rate-limiting, retries, error handling and master approval flows.
+
+How to enable production connectors (high level)
+
+- Required environment variables (examples):
+  - `QMOI_ALLOW_NETWORK=true` — global opt-in for network operations
+  - `PRODUCTION_CONFIRMED=true` — explicit human confirmation
+  - `MASTER_TOKEN` — secure token that authorizes master-only operations
+  - Provider credentials (for example `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `SENDGRID_API_KEY`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `CLOUDFLARE_API_TOKEN`, `ROUTE53_*` etc.) are required per-adapter and must be supplied via a secrets manager (Vault, AWS Secrets Manager, etc.)
+
+- Procedure to enable production:
+  1. Store provider credentials in a secrets manager and grant read-only access to the runner.
+  2. Set `QMOI_ALLOW_NETWORK=true` and `PRODUCTION_CONFIRMED=true` in a controlled environment (CI/CD or secure host).
+  3. Ensure `MASTER_TOKEN` is present and matches the master auth token held by the operator.
+  4. Run smaller smoke tests (read-only checks) and ensure audit logs are written to `.qmoi_validation/`.
+  5. Only after manual review flip specific adapter flags (for example `TWILIO_ENABLED=true`) to enable writes/calls.
+
+NOTE: This is intentionally conservative. Enabling any connector that moves money, creates accounts, or performs destructive actions requires legal review, rate limits, and multi-party approval.
 
 <!-- QMOI_VALIDATION_START -->
 {

@@ -150,7 +150,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         type: Math.random() > 0.5 ? 'BUY' : 'SELL',
         amount: 1,
         price: 70000 + Math.floor(Math.random() * 1000),
-        result: 'SIMULATED',
+  result: 'DRY_RUN',
         rationale: 'Manual simulation',
       };
       let trades = [];

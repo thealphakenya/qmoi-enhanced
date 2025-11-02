@@ -612,7 +612,7 @@ export default function QCityDevicePanel() {
                 <Button type="submit" variant="default">Run</Button>
               </form>
               <div className="text-xs text-muted-foreground">Heavy tasks are auto-offloaded to cloud/Colab if local resources are low. Progress and logs will appear below.</div>
-              <div className="bg-muted p-2 rounded text-xs mt-2">[Simulated] Progress: 100%<br/>Logs: Task completed successfully.</div>
+              <div className="bg-muted p-2 rounded text-xs mt-2">[dry-run] Progress: 100%<br/>Logs: Task completed successfully.</div>
             </CardContent>
           </Card>
 
@@ -623,7 +623,7 @@ export default function QCityDevicePanel() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="text-xs text-muted-foreground">All parallel jobs are shown here with real-time status and logs. Only free/local/cloud runners are used by default.</div>
-              <div className="bg-muted p-2 rounded text-xs mt-2">[Simulated] Job 1: Running (cloud)<br/>Job 2: Completed (local)<br/>Job 3: Waiting (cloud)</div>
+              <div className="bg-muted p-2 rounded text-xs mt-2">[dry-run] Job 1: Running (cloud)<br/>Job 2: Completed (local)<br/>Job 3: Waiting (cloud)</div>
             </CardContent>
           </Card>
 

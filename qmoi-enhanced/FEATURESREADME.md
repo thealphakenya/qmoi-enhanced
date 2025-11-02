@@ -181,12 +181,12 @@
 - **Context-Aware Feedback**: Smart nudges and instant recommendations based on user behavior.
 
 ## 📈 Enhanced Autonomous Trading (No API Key Required)
-- **Always-On Trading**: The AI trading engine operates continuously, even when the user or master is offline. It uses local datasets, simulated data, or public market datasets to generate and execute trades.
+- **Always-On Trading**: The AI trading engine operates continuously, even when the user or master is offline. It uses local datasets, dry-run datasets (no live orders) or public market datasets to generate and execute trades.
 - **Colab Trading Support**: The AI can offload trading simulations or batch trading jobs to Google Colab (or any cloud notebook environment) for large-scale backtesting, strategy optimization, or parallel trading experiments. Results are synced back to the main platform.
 - **Dataset Integration**: Built-in support for public market datasets (e.g., CSV/JSON files of historical prices, open datasets from Kaggle or Yahoo Finance) for backtesting and live simulation. No API key required.
-- **Trade Logging & Audit**: Every trade (simulated or real) is logged with timestamp, parameters, rationale, and result. Masters can review, filter, and export trade logs at any time.
+- **Trade Logging & Audit**: Every trade (dry-run or real) is logged with timestamp, parameters, rationale, and result. Dry-run trades are stored separately and flagged for audit. Masters can review, filter, and export trade logs at any time.
 - **Strategy Diversity**: The AI can run multiple trading strategies in parallel (momentum, mean reversion, ML-based, etc.), compare their performance, and adaptively switch or blend strategies based on results.
-- **Offline/Batch Mode**: If the platform is offline, the AI continues to simulate trades using the latest available data and syncs results when back online.
+- **Offline/Batch Mode**: If the platform is offline, the AI continues to run dry-run simulations using the latest available data and syncs results when back online.
 - **Colab Integration Example**: Users can trigger a Colab notebook to run a trading simulation, upload a dataset, and return results to the Alpha-Q dashboard.
 
 ### Example: Trading Dataset Integration
@@ -233,18 +233,18 @@ prices = pd.read_csv('BTC_USD_2020.csv')
 prices['SMA'] = prices['Close'].rolling(window=20).mean()
 trades = []: Colab Integration (Python Snippet)
 for i in range(20, len(prices)):
-    if prices['Close'][i] > prices['SMA'][i]:
-        trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': 'SIMULATED', 'rationale': 'SMA cross'})
-# Save results to CSV for Alpha-Q to importSD_2020.csv
-pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
+  if prices['Close'][i] > prices['SMA'][i]:
+    trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': 'DRY_RUN', 'rationale': 'SMA cross'})
+# Save results to CSV for Alpha-Q to import
+pd.DataFrame(trades).to_csv('dry_run_trades.csv', index=False)
 ```imulate a simple moving average strategy
 prices['SMA'] = prices['Close'].rolling(window=20).mean()
 ---des = []
 *Last updated: June 9, 2025*s)):
-    if prices['Close'][i] > prices['SMA'][i]:
-        trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': 'SIMULATED', 'rationale': 'SMA cross'})
+  if prices['Close'][i] > prices['SMA'][i]:
+    trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': 'DRY_RUN', 'rationale': 'SMA cross'})
 # Save results to CSV for Alpha-Q to import
-pd.DataFrame(trades).to_csv('simulated_trades.csv', index=False)
+pd.DataFrame(trades).to_csv('dry_run_trades.csv', index=False)
 ```
 
 ---

@@ -115,8 +115,8 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
       const ext = mediaType === 'video' ? 'mp4' : mediaType === 'audio' ? 'mp3' : mediaType;
       downloadFile(mediaUrl, `Alpha-Q-Downloads/${mediaType}.${ext}`);
     } else if (youtubeUrl) {
-      // Simulate download options for YouTube
-      alert('Choose format/size (simulated). Actual download handled by backend or extension.');
+      // Dry-run: prompt the user for download options. Actual download handled by backend or extension when enabled.
+        alert('Choose format/size (dry-run). Actual download handled by backend or extension.');
     }
   }
 

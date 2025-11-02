@@ -119,7 +119,7 @@ export default BrokenComponent;
 def broken_function():
     undefined_variable = None
     print(undefined_variable.attribute)  # This will cause an error
-    raise Exception("Simulated Python error")
+            raise Exception("Dry-run Python error")
 
 if __name__ == "__main__":
     broken_function()

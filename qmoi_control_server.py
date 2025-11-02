@@ -21,6 +21,9 @@ import sqlite3
 from typing import Optional
 import uuid
 import subprocess
+from scripts.adapters import telephony_adapter, ai_adapter
+from scripts.adapters import mail_adapter
+from scripts.adapters import trading_adapter
 
 app = Flask(__name__)
 CORS(app)
@@ -933,7 +936,7 @@ def control():
 @app.route('/ai', methods=['POST'])
 def ai_endpoint():
     """User-facing AI endpoint. Accepts JSON {prompt: string} and requires user JWT.
-    Returns a simulated response for now. In production this would proxy to an AI service.
+    Returns a dry-run response for now. In production this would proxy to an AI service when QMOI_ALLOW_NETWORK=true.
     """
     user = _verify_jwt(request)
     if not user:
@@ -941,7 +944,7 @@ def ai_endpoint():
     payload = request.get_json(force=True)
     prompt = payload.get('prompt', '')
     # Here a real system would call an LLM/service; we simulate a response
-    resp = {'reply': f"(simulated) Received prompt from {user}: {prompt[:200]}"}
+    resp = {'reply': f"(dry-run) Received prompt from {user}: {prompt[:200]}"}
     app.logger.info('AI request by %s: %s', user, prompt)
     return jsonify({'status': 'ok', 'response': resp})
 
@@ -1118,6 +1121,73 @@ def get_memories():
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({'status': 'ok'})
+
+
+@app.route('/api/emergency-action', methods=['POST'])
+def api_emergency_action():
+    """Endpoint used by frontends for emergency actions (SOS, Lockdown, Wipe, Alert).
+    This endpoint logs the requested action and delegates to telephony/mail adapters.
+    By default it runs in dry-run mode unless PRODUCTION_CONFIRMED and TELEPHONY_ENABLED / MAIL_ENABLED are set.
+    """
+    user = _verify_jwt(request) or 'anonymous'
+    payload = request.get_json(force=True) or {}
+    action = payload.get('action') or payload.get('type') or 'unknown'
+    metadata = payload.get('metadata') or {}
+
+    app.logger.info('Emergency action requested by %s: %s', user, action)
+
+    # Basic routing: SOS and Instant Alert => telephony + mail; Lockdown/Wipe => log and respond
+    resp = {'status': 'ok', 'action': action, 'mode': 'dry-run'}
+
+    if action.lower() in ('sos', 'instant alert', 'alert'):
+        # notify via telephony (call) and mail (alert)
+        call_res = telephony_adapter.make_call(os.environ.get('MASTER_EMERGENCY_NUMBER', '+0000000000'), f"Emergency: {action} by {user}", metadata={'action': action})
+        mail_res = mail_adapter.send_mail(os.environ.get('MASTER_EMAIL', 'master@example.com'), f"Emergency: {action}", f"User {user} triggered {action}. Metadata: {metadata}")
+        resp.update({'telephony': call_res, 'mail': mail_res})
+
+    elif action.lower() in ('lockdown', 'secure wipe', 'wipe'):
+        # In production, this would call device management APIs. For now log and return dry-run.
+        resp.update({'note': 'device actions are logged; production device manager integration required'})
+
+    else:
+        resp.update({'note': 'unrecognized action; logged for audit'})
+
+    # Write audit to .qmoi_validation/emergency_actions.log
+    try:
+        audit_dir = Path(__file__).parent / '.qmoi_validation'
+        audit_dir.mkdir(exist_ok=True)
+        p = audit_dir / 'emergency_actions.log'
+        with open(p, 'a', encoding='utf-8') as f:
+            f.write(json.dumps({'ts': datetime.datetime.utcnow().isoformat(), 'user': user, 'action': action, 'payload': metadata, 'resp': resp}, default=str) + "\n")
+    except Exception:
+        app.logger.exception('Failed to write emergency audit log')
+
+    return jsonify(resp)
+
+
+@app.route('/api/send-mail', methods=['POST'])
+def api_send_mail():
+    payload = request.get_json(force=True) or {}
+    to = payload.get('to')
+    subject = payload.get('subject', 'QMOI message')
+    body = payload.get('body', '')
+    metadata = payload.get('metadata', {})
+    if not to:
+        return jsonify({'status': 'error', 'reason': 'missing_to'}), 400
+    res = mail_adapter.send_mail(to, subject, body, metadata)
+    return jsonify(res)
+
+
+@app.route('/api/telephony-call', methods=['POST'])
+def api_telephony_call():
+    payload = request.get_json(force=True) or {}
+    number = payload.get('number')
+    message = payload.get('message', '')
+    metadata = payload.get('metadata', {})
+    if not number:
+        return jsonify({'status': 'error', 'reason': 'missing_number'}), 400
+    res = telephony_adapter.make_call(number, message, metadata)
+    return jsonify(res)
 
 
 import mimetypes

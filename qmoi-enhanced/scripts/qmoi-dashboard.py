@@ -188,7 +188,7 @@ def api_notifications():
 @app.route('/api/notifications/test', methods=['POST'])
 def api_notifications_test():
     # [PRODUCTION IMPLEMENTATION REQUIRED]: trigger a test notification (integrate with QMOI notification system)
-    return jsonify({'result': 'Test notification sent (simulated).'})
+    return jsonify({'result': 'Test notification sent (dry-run).'})
 
 @app.route('/api/event-stats')
 def api_event_stats():

@@ -101,7 +101,7 @@ export class EnhancedSiteGenerationService extends EventEmitter {
     // 2. Optionally use AI for content/design
     // 3. Run automated audits
     // 4. Auto-enhance based on audit results
-    // (Simulated logic below)
+  // (dry-run logic below — production integration will call the real site generation API when enabled)
     const audit: SiteAuditResult = {
       accessibilityScore: 95,
       performanceScore: 92,

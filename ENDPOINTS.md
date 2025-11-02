@@ -17,7 +17,7 @@ Notes:
 ## Control Server (`qmoi_control_server.py`)
 
 - POST /control — (admin) issue commands for PWAs and orchestrator (navigate, download, voice)
-- POST /ai — (auth) AI assistant endpoint (simulated)
+- POST /ai — (auth) AI assistant endpoint (dry-run)
 - POST /ai/tts — (auth) Prototype TTS/SSML generator (returns SSML hint)
 - POST /signup — create a user
 - POST /login — login, returns JWT

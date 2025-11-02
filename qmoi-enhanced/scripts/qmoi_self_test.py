@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 QMOI Self-Test Runner
-Simulates manual errors, runs auto-fix, and verifies recovery with detailed reporting.
+Dry-run: simulates manual errors, runs auto-fix, and verifies recovery with detailed reporting.
 """
 
 import os
@@ -94,8 +94,8 @@ import React from 'react';
 
 const BrokenComponent: React.FC = () => {
   const undefinedVar = undefined;
-  console.error('This is a simulated error');
-  throw new Error('Simulated error for testing');
+    console.error('This is a DRY-RUN error');
+    throw new Error('DRY-RUN error for testing');
   
   return (
     <div>
@@ -119,7 +119,7 @@ export default BrokenComponent;
 def broken_function():
     undefined_variable = None
     print(undefined_variable.attribute)  # This will cause an error
-    raise Exception("Simulated Python error")
+    raise Exception("DRY-RUN Python error")
 
 if __name__ == "__main__":
     broken_function()
@@ -161,7 +161,7 @@ This document contains false claims that should be detected and fixed.
                     json.dump(package_data, f, indent=2)
                 errors_created["broken_package"] = str(original_package)
             
-            logging.info(f"Created {len(errors_created)} simulated errors")
+            logging.info(f"Created {len(errors_created)} dry-run errors")
             return errors_created
             
         except Exception as e:

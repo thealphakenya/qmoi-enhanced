@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 
-// Simulated QMOI status
+// Dry-run QMOI status for dashboard demos. Replace with live status integration in production.
 let status = {
   projects: 12,
   deals: 3,

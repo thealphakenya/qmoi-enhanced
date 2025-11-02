@@ -86,7 +86,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       status: 'success',
       started: new Date().toISOString(),
       finished: new Date().toISOString(),
-      result: `Simulated Colab job for ${type}: ${name}`,
+  result: `DRY_RUN Colab job for ${type}: ${name}`,
     };
     persistJob(job);
     return res.json(job);

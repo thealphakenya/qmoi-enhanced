@@ -148,8 +148,9 @@ def _aws_autoclone(simulate: bool = True, region: str = 'us-east-1'):
             'action': 'simulate_autoclone',
             'description': 'Would clone AMI/EC2/EKS skeletons and produce QCity master entries.'
         }
-        out_log.write_text(json.dumps(entry, indent=2), encoding='utf-8')
-        return 'simulated', entry
+    out_log.write_text(json.dumps(entry, indent=2), encoding='utf-8')
+    # return dry-run marker for clarity
+    return 'dry-run', entry
 
     # real mode: attempt to use boto3 if available and if env gating is present
     if os.environ.get('PRODUCTION_CONFIRMED', '').lower() != 'true' or not os.environ.get('MASTER_TOKEN'):
