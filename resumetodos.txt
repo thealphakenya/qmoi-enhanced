@@ -1,0 +1,45 @@
+QMOI-ENHANCED - Remaining Resume Todos
+Date: 2025-11-02
+
+This file lists all remaining (not-completed) tasks tracked in the in-repo todo list. Use this as a concise checklist for continuing the "dry-run -> gated production" migration and automation.
+
+1) Patch frontend UI text (in-progress)
+   - Summary: Update frontend components (FloatingAQ, EmergencyPanel, QFileManager, QMOIBiometricManager, QMoiToolbar, QCityDevicePanel copies, QIStateWindow, etc.) to use "dry-run" wording instead of "Simulate/Simulated", add gating comments and safe UI text, and avoid making live network/hardware calls.
+   - Next action: Apply conservative replacements for the next batch of 4–6 components and commit to branch `link-update/pr-clean`.
+   - Acceptance: No behavioral changes, user-facing strings replaced consistently, gating comments added mentioning PRODUCTION_CONFIRMED & QMOI_ALLOW_NETWORK.
+
+2) Wire UI to dry-run adapters (not-started)
+   - Summary: Add lightweight API adapter endpoints under `/api/adapters/*` that default to dry-run and write audit entries to `.qmoi_validation/`.
+   - Next action: Scaffold two example adapters (mail, telephony) with PRODUCTION gating and an audit-write function.
+   - Acceptance: Endpoints accept request, return dry-run responses, and append an audit JSON with timestamp, requester, and payload to `.qmoi_validation/adapter-audit.log`.
+
+3) Patch trading engine and tests (not-started)
+   - Summary: Mark trading results as DRY_RUN by default, add adapter hooks to call real exchanges only when enabled, and update unit/integration tests to assert dry-run behavior.
+   - Next action: Add DRY_RUN flag in trading result objects; update a small set of tests to expect dry-run markers.
+   - Acceptance: Tests pass locally (fast unit tests) and trading functions annotate responses with `dryRun:true` unless production gating is set.
+
+4) Update docs (not-started)
+   - Summary: Update `FEATURESREADME.md`, `docs/PLATFORM_AUTOMATION.md`, and `docs/API.md` with steps to enable production features and list required env vars/secrets (PRODUCTION_CONFIRMED, QMOI_ALLOW_NETWORK, MASTER_TOKEN, SENDGRID_API_KEY, TWILIO_*, BITGET_*, VERCEL_TOKEN, cloud provider creds).
+   - Next action: Draft a short doc section describing gating, audit locations, and minimal secrets needed for reviewers.
+   - Acceptance: Docs added/edited and linked from the PR description.
+
+5) Run quick validations (not-started)
+   - Summary: Run syntax checks for Python edits and a repo grep to ensure no remaining 'SIMULATED' tokens in targeted files (exclude `.qmoi_validation/` and large reports).
+   - Next action: Run `grep` across `components/` and `src/components/` and run `python -m py_compile` on modified Python files; fix obvious syntax issues from edits.
+   - Acceptance: Grep shows zero `Simulate|Simulated|SIMULATED` occurrences in targeted code paths; Python syntax checks pass for edited files.
+
+6) Prepare PR branch (not-started)
+   - Summary: Commit changes incrementally on `link-update/pr-clean`, prepare a draft PR summarizing changes, gating rules, required env vars, and a short testing checklist for reviewers.
+   - Next action: After 3–8 conservative edits and adapter scaffolds, open a draft PR with a clear checklist and commands to reproduce locally.
+   - Acceptance: PR created as draft with link to audit examples, list of required secrets, and clear rollback instructions.
+
+Implementation notes / Constraints
+- Never enable live provider/hardware calls unless `PRODUCTION_CONFIRMED=true` and the required credentials are present.
+- Keep audit logs under `.qmoi_validation/` (avoid committing large generated artifacts to git; store them externally if needed).
+- Frontend type-check requires installing dev dependencies; CI should run `npm install` and `npm run build` before accepting PR.
+
+Quick next-two actions (recommended)
+- Continue conservative UI pass: edit 4–6 more components (QMoiToolbar, QIStateWindow, QAvatar, DownloadQApp, BiometricAuth).
+- Scaffold `/api/adapters/mail.js` and `/api/adapters/telephony.js` with dry-run default behavior and audit logging.
+
+-- end of resumetodos.txt

@@ -30,9 +30,9 @@ export const WhatsAppIntegration: DeviceIntegration = {
 
 export const ColabDagshubIntegration: DeviceIntegration = {
   async connect() {
-    console.log("Connecting to Colab/Dagshub...");
-    // TODO: Implement real Colab/Dagshub connect logic
-    return true; // Simulate success
+  console.log("Connecting to Colab/Dagshub...");
+  // TODO: Implement real Colab/Dagshub connect logic
+  return true; // Dry-run: simulate success
   },
   async sendCommand(cmd) {
     console.log("Sending command to Colab/Dagshub:", cmd);
@@ -40,9 +40,9 @@ export const ColabDagshubIntegration: DeviceIntegration = {
     return { result: "success" };
   },
   async autoDetect() {
-    console.log("Auto-detecting Colab/Dagshub environment...");
-    // TODO: Implement real detection logic
-    return true; // Simulate detection
+  console.log("Auto-detecting Colab/Dagshub environment...");
+  // TODO: Implement real detection logic
+  return true; // Dry-run: simulate detection
   }
 };
 

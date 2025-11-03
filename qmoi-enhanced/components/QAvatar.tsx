@@ -193,7 +193,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const enhanceAvatar = useCallback(() => {
     if (!config.aiEnhancement) return;
 
-    // Simulate AI enhancement process
+  // Dry-run: simulate AI enhancement process (no external API calls or persistent model changes)
     const enhancements = [
       () => setConfig(prev => ({ ...prev, quality: 'ai-enhanced' })),
       () => setConfig(prev => ({ ...prev, particleEffects: true })),

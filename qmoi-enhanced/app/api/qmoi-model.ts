@@ -56,7 +56,7 @@ function loadLog() {
   }
 }
 
-// Simulate Qmoi model enhancement
+// Dry-run: simulate Qmoi model enhancement
 async function enhanceModel(desc: string) {
   const task = { id: Date.now(), type: 'enhancement', desc, status: 'completed', timestamp: new Date().toISOString() };
   aiTaskLog.push(task);
@@ -64,7 +64,7 @@ async function enhanceModel(desc: string) {
   return task;
 }
 
-// Simulate file upload handling
+// Dry-run: simulate file upload handling
 interface UploadedFile {
   originalname: string;
   buffer: Buffer;
@@ -81,7 +81,7 @@ async function handleFileUpload(file: UploadedFile) {
   return task;
 }
 
-// Simulate auto-discover/build/use extension for a project
+// Dry-run: simulate auto-discover/build/use extension for a project
 async function autoDiscoverAndBuildExtension(projectType: string) {
   // Example: choose best extension/package for project type
   const ext = projectType === 'game' ? 'phaser' : projectType === 'animation' ? 'three' : projectType === 'music' ? 'tone' : 'latest-ai-lib';
@@ -101,7 +101,7 @@ async function autoDiscoverAndBuildExtension(projectType: string) {
   return job;
 }
 
-// Simulate creative file generation
+// Dry-run: simulate creative file generation
 async function creativeFileGen(type: string, details: Record<string, unknown>) {
   // Use latest packages, internet search, and AI creativity
   const file = {
@@ -152,7 +152,7 @@ async function generateDocsAndPackaging(projectName: string, files: any[]) {
   const docs = `# ${projectName} Documentation\n\nAuto-generated docs for project: ${projectName}`;
   const readmePath = `/workspaces/Alpha-Q-ai/projects/${projectName}/README.md`;
   fs.write
-  // Simulate packaging (e.g., zip/tar)
+  // Dry-run: simulate packaging (e.g., zip/tar)
   // TODO: Implement real packaging logic
   return { docs: readmePath, packaging: null };
 }
@@ -251,7 +251,7 @@ async function multiUserChat(user: string, message: string) {
 
 // --- Global Error/Problem Fixing ---
 async function globalScanAndFix(): Promise<GlobalFixResponse> {
-  // Simulate scanning all files, hooks, and components for errors
+  // Dry-run: simulate scanning all files, hooks, and components for errors
   // In production, integrate with diagnostics, lint, and auto-fix tools
   aiTaskLog.push({ 
     id: Date.now(), 

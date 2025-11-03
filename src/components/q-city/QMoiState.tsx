@@ -43,7 +43,13 @@ export function QMoiState({
     return () => clearInterval(timer);
   }, []);
 
-  // Simulate real-time Qmoi state updates
+  // Dry-run: simulate real-time Qmoi state updates (default)
+  // NOTE: This is a dry-run simulation for UI/demo purposes only.
+  // To enable live/production state updates, set the public build-time
+  // environment flags (for example NEXT_PUBLIC_PRODUCTION_CONFIRMED=true
+  // and NEXT_PUBLIC_QMOI_ALLOW_NETWORK=true) and ensure all provider
+  // credentials and audit logging are configured. Live updates must be
+  // explicitly gated and audited — do NOT enable in developer/dev envs.
   useEffect(() => {
     const emotions = [
       "focused",

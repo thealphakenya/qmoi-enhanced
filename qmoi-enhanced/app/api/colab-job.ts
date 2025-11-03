@@ -78,7 +78,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.json(result);
     }
     const { type, name } = req.body;
-    // Simulate Colab job execution (replace with real Colab API integration)
+  // Dry-run: simulate Colab job execution (replace with real Colab API integration)
     const job = {
       id: Date.now(),
       type,

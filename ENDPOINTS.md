@@ -39,6 +39,14 @@ Notes:
 - POST /admin/backup-db — (admin) create a DB backup copy in `downloads/`
 - POST /admin/update-ngrok — (admin) run the ngrok update script (dry-run or apply)
 
+## Autodev & Adapter endpoints
+
+- POST /api/autodev/suggest-restore — (auth) suggest a restore for a given path using latest snapshot (dry-run by default). Calls `scripts/autodev_manager.py suggest-restore`.
+- POST /api/autodev/restore — (auth) request a restore from a snapshot. Dry-run unless `PRODUCTION_CONFIRMED=true` and `confirm=true`.
+
+- POST /api/adapters/mail — (auth) conservative mail adapter scaffold; logs to `.qmoi_validation/adapter-audit.log`. Production send requires `SENDGRID_API_KEY` and `PRODUCTION_CONFIRMED=true`.
+- POST /api/adapters/telephony — (auth) conservative telephony adapter scaffold; logs to `.qmoi_validation/adapter-audit.log`. Production calls require Twilio creds and `PRODUCTION_CONFIRMED=true`.
+
 ## Admin user & pricing endpoints
 
 - GET /admin/users — (master) list all registered users with pricing metadata

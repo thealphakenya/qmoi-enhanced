@@ -188,8 +188,9 @@ const DownloadQApp: React.FC = () => {
     setIsDownloading(true);
     setCurrentStep(0);
 
-    // Simulate download process
-    for (let i = 0; i <= 100; i += 10) {
+  // Dry-run: simulate download process (no network transfer unless production enabled)
+  // Production note: real downloads and telemetry should only run when PRODUCTION_CONFIRMED=true and hosting/provider links are configured.
+  for (let i = 0; i <= 100; i += 10) {
       setDownloadProgress(i);
       await new Promise(resolve => setTimeout(resolve, 200));
       

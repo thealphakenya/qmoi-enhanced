@@ -147,8 +147,8 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ status: 'proposed', message: 'Trade execution proposed (dry-run)' });
       }
 
-      // [PRODUCTION IMPLEMENTATION REQUIRED] trade execution - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate trade execution time
+  // [PRODUCTION IMPLEMENTATION REQUIRED] trade execution - replace with actual implementation
+  await new Promise((resolve) => setTimeout(resolve, 1000)); // Dry-run: simulate trade execution time
 
       const tradeData: Trade = {
         id: `T${Math.floor(Math.random() * 1000)}`,
@@ -172,8 +172,8 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ status: 'proposed', message: 'Cancel trade proposed (dry-run)' });
       }
 
-      // [PRODUCTION IMPLEMENTATION REQUIRED] trade cancellation - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate cancellation time
+  // [PRODUCTION IMPLEMENTATION REQUIRED] trade cancellation - replace with actual implementation
+  await new Promise((resolve) => setTimeout(resolve, 500)); // Dry-run: simulate cancellation time
 
       return NextResponse.json({ status: 'success', message: 'Trade cancelled successfully', tradeId: trade.id });
     }

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 QMOI Self-Test Runner
-Simulates manual errors, runs auto-fix, and verifies recovery with detailed reporting.
+Dry-run: simulates manual errors, runs auto-fix, and verifies recovery with detailed reporting.
 """
 
 import os
@@ -84,7 +84,7 @@ class QMOISelfTest:
             return False
     
     def simulate_manual_errors(self) -> Dict[str, Any]:
-        """Simulate various types of manual errors"""
+        """Dry-run: simulate various types of manual errors"""
         errors_created = {}
         
         try:

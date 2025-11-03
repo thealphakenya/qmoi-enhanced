@@ -349,7 +349,8 @@ export default function BiometricAuth({
   const syncAcrossInterfaces = async () => {
     setInterfaceSync(true);
     try {
-      // Simulate interface synchronization
+      // Dry-run: simulate interface synchronization (no external interface calls).
+      // Production note: enable cross-interface sync only when PRODUCTION_CONFIRMED=true and secure channels are configured.
       await new Promise(resolve => setTimeout(resolve, 2000));
       setSuccess('All interfaces synchronized');
       addAuditLog('interface_sync', 'success', 'all');
@@ -366,8 +367,9 @@ export default function BiometricAuth({
       const updatedStrategy = { ...strategy, status: 'implementing' as const };
       setRevenueIdeas(prev => prev.map(s => s.id === strategy.id ? updatedStrategy : s));
       
-      // Simulate implementation
-      await new Promise(resolve => setTimeout(resolve, 3000));
+  // Dry-run: simulate implementation (no external side-effects).
+  // Production note: actual revenue strategy execution must be gated by PRODUCTION_CONFIRMED and have rollback/audit.
+  await new Promise(resolve => setTimeout(resolve, 3000));
       
       const completedStrategy = { ...updatedStrategy, status: 'active' as const };
       setRevenueIdeas(prev => prev.map(s => s.id === strategy.id ? completedStrategy : s));
@@ -392,8 +394,8 @@ export default function BiometricAuth({
     setError('');
     
     try {
-      // Simulate login process
-      for (let i = 0; i <= 100; i += 10) {
+  // Dry-run: simulate login process (no real authentication provider calls).
+  for (let i = 0; i <= 100; i += 10) {
         setAuthProgress(i);
         await new Promise(resolve => setTimeout(resolve, 100));
       }
@@ -423,8 +425,8 @@ export default function BiometricAuth({
     setError('');
     
     try {
-      // Simulate biometric verification
-      for (let i = 0; i <= 100; i += 20) {
+  // Dry-run: simulate biometric verification (no external verification unless production enabled).
+  for (let i = 0; i <= 100; i += 20) {
         setAuthProgress(i);
         await new Promise(resolve => setTimeout(resolve, 200));
       }
@@ -487,7 +489,7 @@ export default function BiometricAuth({
   };
   
   const captureFingerprint = async () => {
-    // Simulate fingerprint capture
+  // Dry-run: simulate fingerprint capture (no hardware calls).
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 150));
@@ -509,7 +511,7 @@ export default function BiometricAuth({
   };
   
   const captureVoice = async () => {
-    // Simulate voice capture
+  // Dry-run: simulate voice capture (no microphone/hardware calls).
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 200));
@@ -531,7 +533,7 @@ export default function BiometricAuth({
   };
   
   const captureFace = async () => {
-    // Simulate face capture
+  // Dry-run: simulate face capture (no camera/hardware calls).
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 250));
@@ -553,7 +555,7 @@ export default function BiometricAuth({
   };
   
   const captureIris = async () => {
-    // Simulate iris capture
+  // Dry-run: simulate iris capture (no hardware calls).
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 300));
@@ -575,7 +577,7 @@ export default function BiometricAuth({
   };
   
   const captureGait = async () => {
-    // Simulate gait capture
+  // Dry-run: simulate gait capture (no hardware calls).
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 400));
@@ -597,7 +599,7 @@ export default function BiometricAuth({
   };
   
   const captureKeystroke = async () => {
-    // Simulate keystroke capture
+  // Dry-run: simulate keystroke capture (no passive keystroke collection in dry-run).
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 350));

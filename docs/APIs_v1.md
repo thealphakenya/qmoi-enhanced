@@ -66,6 +66,30 @@ Mutating endpoints are *proposal-first* by default and require explicit producti
 
 ---
 
+## Autodev & Adapter endpoints (added by conservative autodev pass)
+
+The repo includes conservative autodev and adapter endpoints under `/api/autodev/*` and `/api/adapters/*`. These endpoints follow the repository-wide policy: proposal-first / dry-run by default and explicit production gating is required to perform external or destructive actions.
+
+- POST /api/autodev/suggest-restore
+	- Request body: { path: string }
+	- Returns a suggested restore candidate and snapshot id (dry-run). Writes a suggest-restore audit entry to `.qmoi_validation/autodev-audit.log`.
+
+- POST /api/autodev/restore
+	- Request body: { snapshot: string, path: string, confirm?: boolean }
+	- Behavior: If `PRODUCTION_CONFIRMED=true` in the environment and `confirm=true` is passed, the endpoint will request a real restore; otherwise it performs a dry-run and logs the intent.
+
+- POST /api/adapters/mail
+	- Request body: { action: string, ... }
+	- Behavior: Records the requested mail action to `.qmoi_validation/adapter-audit.log` and returns a dry-run response. If `PRODUCTION_CONFIRMED=true` and `SENDGRID_API_KEY` is present, the adapter will attempt a provider call (scaffolded; production calls are intentionally conservative).
+
+- POST /api/adapters/telephony
+	- Request body: { action: string, ... }
+	- Behavior: Records the telephony action to `.qmoi_validation/adapter-audit.log`. Actual telephony calls only run when `PRODUCTION_CONFIRMED=true` and Twilio creds are configured.
+
+Notes:
+- Audit and proposal files live under `.qmoi_validation/` — review them before enabling production behavior.
+- The autodev manager script lives at `scripts/autodev_manager.py` and provides CLI snapshot/list/suggest-restore/restore commands (dry-run by default).
+
 ## Notes
 - Proposal files can be found in `.qmoi_validation/` (e.g., `proposal-*.json`, `placeholders_proposal_*.json`). Review them before applying.
 - To apply a proposal and run a mutating action, *set* `PRODUCTION_CONFIRMED=true` in the environment and run the server with `--real` in the process arguments (or use a patched runner that forwards this flag). This gating is intentional to prevent accidental destructive actions.

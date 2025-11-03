@@ -955,7 +955,7 @@ python scripts/{SCRIPT_NAME}.py
   }
 
   async simulateManualErrors() {
-    console.log('🎭 Simulating manual error scenarios...');
+    console.log('🎭 Dry-run: simulating manual error scenarios...');
     
     const scenarios = [
       {
@@ -998,7 +998,7 @@ python scripts/{SCRIPT_NAME}.py
     
     for (const scenario of scenarios) {
       try {
-        console.log(`\n🎬 Simulating: ${scenario.name}`);
+        console.log(`\n🎬 Dry-run: simulating: ${scenario.name}`);
         
         // Apply the error
         scenario.action();
@@ -1023,7 +1023,7 @@ python scripts/{SCRIPT_NAME}.py
   }
 
   async detectAndFixErrors() {
-    // Simulate error detection and fixing
+    // Dry-run: simulate error detection and fixing
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     // Check for common issues

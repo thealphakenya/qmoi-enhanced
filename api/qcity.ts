@@ -179,7 +179,7 @@ router.get('/workspace-logs', async (req, res) => {
   res.setHeader('Connection', 'keep-alive');
   res.flushHeaders();
 
-  // Simulate log streaming (replace with real log source in future)
+  // Dry-run: simulate log streaming (replace with real log source in future)
   let count = 0;
   const maxLines = 10;
   const interval = setInterval(() => {

@@ -70,8 +70,8 @@ def auto_lint_fix(target, autofix=False):
                 build_cmd = ['npm', 'run', 'electron:build:deb']
                 print("[AUTO] Building Chromebook .deb using electron-builder...")
             elif target.endswith('.img'):
-                build_cmd = ['echo', 'Simulate Pi Imager build']
-                print("[AUTO] Building Raspberry Pi .img using Pi Imager...")
+                build_cmd = ['echo', 'Dry-run Pi Imager build']
+                print("[AUTO] Building Raspberry Pi .img using Pi Imager (dry-run)...")
             elif target.endswith('.zip'):
                 build_cmd = ['zip', '-r', 'qcity.zip', '.']
                 print("[AUTO] Building QCity .zip using zip tool...")
@@ -94,7 +94,7 @@ def auto_lint_fix(target, autofix=False):
             error_stats["errors"] += 1
             error_stats["targets"].append(target)
             parallel_log.append(f"{target} flagged as incomplete/corrupted.")
-        # Check for required features in scripts (simulate)
+    # Check for required features in scripts (dry-run)
         if target.endswith('.py'):
             with open(target, 'r', encoding='utf-8') as f:
                 content = f.read()
@@ -113,10 +113,10 @@ def auto_lint_fix(target, autofix=False):
                 error_stats["errors"] += 1
                 error_stats["targets"].append(target)
                 parallel_log.append(f"No main entry point in {target}.")
-    # Simulate build/install autotest for app binaries
+    # Dry-run build/install autotest for app binaries
     if target.endswith(('.exe', '.apk', '.dmg', '.AppImage', '.ipa', '.zip', '.deb', '.img')):
         print(f"Running install autotest for {target}...")
-        # Simulate install test: check permissions, file type, and [PRODUCTION IMPLEMENTATION REQUIRED] install
+    # Dry-run install test: check permissions, file type, and [PRODUCTION IMPLEMENTATION REQUIRED] install
         if size < 1024 or errors_found:
             print(f"Install test failed: {target} is too small or is a [PRODUCTION IMPLEMENTATION REQUIRED].")
             errors_found = True
@@ -143,9 +143,9 @@ def auto_lint_fix(target, autofix=False):
         else:
             print(f"Install test passed for {target}.")
             parallel_log.append(f"Install test passed for {target}.")
-        # Automated enhancement: simulate post-install verification (dry-run)
-        print(f"Post-install verification for {target}: dry-run device launch and feature check. Set QMOI_DEVICE_APPLY=true to enable live checks.")
-        # Simulate UI feature check for all devices (dry-run by default)
+    # Automated enhancement: dry-run post-install verification
+    print(f"Post-install verification for {target}: dry-run device launch and feature check. Set QMOI_DEVICE_APPLY=true to enable live checks.")
+    # Dry-run UI feature check for all devices (default)
         ui_features = ["Responsive layout", "Touch support", "Dark mode", "Localization", "Accessibility"]
         print(f"Checking UI features for {target} on all devices:")
         for feature in ui_features:
@@ -169,14 +169,14 @@ def auto_lint_fix(target, autofix=False):
 
 def automate_app_update(target):
     """
-    Simulate auto-update logic for built/downloaded apps.
+    Dry-run auto-update logic for built/downloaded apps.
     """
     update_log = f"[AUTO-UPDATE] {target} checked for updates and auto-installed latest version."
     md_file = 'QMOI_MEMORY.md'
     with open(md_file, 'a', encoding='utf-8') as f:
         f.write(f"\n{update_log}\n")
     print(update_log)
-    # Simulate auto-fix
+    # Dry-run auto-fix
     if autofix and errors_found:
         print(f"Auto-fixing errors in {target}...")
         # In real use, integrate with yamllint, flake8, prettier, etc.

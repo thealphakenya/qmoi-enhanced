@@ -8,6 +8,8 @@ This small server exposes master-only endpoints for:
 - run live checks (gated)
 - aws-autoclone (simulate or gated check)
 - capilot proxy endpoint (simple shim)
+ - aws-autoclone (dry-run or gated check)
+ - capilot proxy endpoint (simple shim)
 
 Security: requires `MASTER_TOKEN` header `X-MASTER-TOKEN` for protected endpoints and
 requires `PRODUCTION_CONFIRMED=true` in env for live actions. By default nothing

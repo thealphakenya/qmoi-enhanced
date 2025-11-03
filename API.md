@@ -57,6 +57,32 @@ The following endpoints were found in the codebase by automated search. Ensure a
 '/predict'
 ```
 
+---
+
+## Autodev & Adapter endpoints (conservative / dry-run)
+
+The repository includes conservative autodev and adapter endpoints that are dry-run by default and write proposals/audit entries to `.qmoi_validation/`.
+
+- POST /api/autodev/suggest-restore — body: { path: string }
+  - Purpose: Ask the autodev manager for a suggested restore for a missing/changed file. Runs `scripts/autodev_manager.py suggest-restore` and returns the candidate content (dry-run). No writes performed unless production gating is enabled.
+
+- POST /api/autodev/restore — body: { snapshot: string, path: string, confirm?: bool }
+  - Purpose: Request a restore from a snapshot. By default runs in dry-run and returns what would be done. To perform a real restore set `PRODUCTION_CONFIRMED=true` and pass `confirm=true`.
+
+- POST /api/adapters/mail — body: { action: string, ... }
+  - Purpose: Mail adapter (conservative scaffold). Logs intent to `.qmoi_validation/adapter-audit.log`. Will only attempt real provider calls when `PRODUCTION_CONFIRMED=true` and `SENDGRID_API_KEY` (or configured mail key) is present.
+
+- POST /api/adapters/telephony — body: { action: string, ... }
+  - Purpose: Telephony adapter (conservative scaffold). Logs intent to `.qmoi_validation/adapter-audit.log`. Real calls require `PRODUCTION_CONFIRMED=true` and `TWILIO_*` env vars.
+
+Audit logs and snapshots:
+
+- `.qmoi_validation/adapter-audit.log` — adapter call intents and responses (JSON-lines).
+- `.qmoi_validation/autodev-audit.log` — autodev snapshot/restore proposals and actions (JSON-lines).
+- `.qmoi_snapshots/` — (created when non-dry-run snapshots are applied) contains timestamped snapshots and manifests.
+
+These endpoints are intentionally conservative — they support dry-run review cycles and explicit gating before any destructive or external actions.
+
 > **Note:** If any endpoint above is missing from the main documentation, please add it with details (method, params, response, auth, etc.).
 http://localhost:3000/api
 

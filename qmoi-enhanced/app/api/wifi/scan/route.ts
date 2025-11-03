@@ -65,10 +65,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] connection attempt - replace with actual implementation
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate connection time
+  // [PRODUCTION IMPLEMENTATION REQUIRED] connection attempt - replace with actual implementation
+  await new Promise(resolve => setTimeout(resolve, 2000)); // Dry-run: simulate connection time
 
-    // Simulate random success/failure
+  // Dry-run: simulate random success/failure
     const success = Math.random() > 0.2; // 80% success rate
 
     if (success) {

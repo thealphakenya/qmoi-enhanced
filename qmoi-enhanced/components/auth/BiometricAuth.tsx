@@ -352,7 +352,7 @@ export default function BiometricAuth({
   const syncAcrossInterfaces = async () => {
     setInterfaceSync(true);
     try {
-      // Simulate interface synchronization
+  // Dry-run: simulate interface synchronization
       await new Promise(resolve => setTimeout(resolve, 2000));
       setSuccess('All interfaces synchronized');
       addAuditLog('interface_sync', 'success', 'all');
@@ -369,7 +369,7 @@ export default function BiometricAuth({
       const updatedStrategy = { ...strategy, status: 'implementing' as const };
       setRevenueIdeas(prev => prev.map(s => s.id === strategy.id ? updatedStrategy : s));
       
-      // Simulate implementation
+  // Dry-run: simulate implementation
       await new Promise(resolve => setTimeout(resolve, 3000));
       
       const completedStrategy = { ...updatedStrategy, status: 'active' as const };
@@ -395,7 +395,7 @@ export default function BiometricAuth({
     setError('');
     
     try {
-      // Simulate login process
+  // Dry-run: simulate login process
       for (let i = 0; i <= 100; i += 10) {
         setAuthProgress(i);
         await new Promise(resolve => setTimeout(resolve, 100));
@@ -426,7 +426,7 @@ export default function BiometricAuth({
     setError('');
     
     try {
-      // Simulate biometric verification
+  // Dry-run: simulate biometric verification
       for (let i = 0; i <= 100; i += 20) {
         setAuthProgress(i);
         await new Promise(resolve => setTimeout(resolve, 200));
@@ -490,7 +490,7 @@ export default function BiometricAuth({
   };
   
   const captureFingerprint = async () => {
-    // Simulate fingerprint capture
+  // Dry-run: simulate fingerprint capture
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 150));
@@ -512,7 +512,7 @@ export default function BiometricAuth({
   };
   
   const captureVoice = async () => {
-    // Simulate voice capture
+  // Dry-run: simulate voice capture
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 200));
@@ -534,7 +534,7 @@ export default function BiometricAuth({
   };
   
   const captureFace = async () => {
-    // Simulate face capture
+  // Dry-run: simulate face capture
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 250));
@@ -556,7 +556,7 @@ export default function BiometricAuth({
   };
   
   const captureIris = async () => {
-    // Simulate iris capture
+  // Dry-run: simulate iris capture
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 300));
@@ -578,7 +578,7 @@ export default function BiometricAuth({
   };
   
   const captureGait = async () => {
-    // Simulate gait capture
+  // Dry-run: simulate gait capture
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 400));
@@ -600,7 +600,7 @@ export default function BiometricAuth({
   };
   
   const captureKeystroke = async () => {
-    // Simulate keystroke capture
+  // Dry-run: simulate keystroke capture
     for (let i = 0; i <= 100; i += 10) {
       setCaptureProgress(i);
       await new Promise(resolve => setTimeout(resolve, 350));

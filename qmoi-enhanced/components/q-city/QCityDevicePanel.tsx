@@ -94,7 +94,7 @@ export default function QCityDevicePanel() {
   const isMaster = role === 'admin';
 
   useEffect(() => {
-    // Simulate QCity status updates with unlimited resources
+  // Dry-run: simulate QCity status updates with unlimited resources (no external changes)
     const interval = setInterval(() => {
       setQcityStatus(prev => ({
         ...prev,
@@ -130,7 +130,7 @@ export default function QCityDevicePanel() {
   const loadBuildFiles = async () => {
     if (!isMaster) return;
     
-    // Simulate loading build files from unlimited QCity storage
+  // Dry-run: simulate loading build files from unlimited QCity storage (no external changes)
     const files = [
       { name: 'node_modules', size: 'Unlimited', type: 'directory' },
       { name: 'build', size: 'Unlimited', type: 'directory' },
@@ -145,15 +145,15 @@ export default function QCityDevicePanel() {
   };
 
   const executeInQCity = async (command: string) => {
-    console.log(`Executing in QCity with unlimited resources: ${command}`);
-    // Simulate QCity command execution with unlimited resources
+  console.log(`Executing in QCity with unlimited resources: ${command}`);
+  // Dry-run: simulate QCity command execution with unlimited resources (no external changes)
     return { success: true, output: `QCity executed with unlimited resources: ${command}` };
   };
 
   // Handler for self-check & auto-fix
   const handleSelfCheck = async () => {
     setSelfCheckStatus('checking');
-    // Simulate self-check and auto-fix
+  // Dry-run: simulate self-check and auto-fix (no external changes)
     setTimeout(() => {
       setSelfCheckStatus('fixed');
       setErrorFixHistory(h => [

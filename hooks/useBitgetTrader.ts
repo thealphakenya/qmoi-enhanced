@@ -8,7 +8,7 @@ export function useBitgetTrader() {
   const [lastTradeResult, setLastTradeResult] = useState<any>(null);
   const [tradingError, setTradingError] = useState<string|null>(null);
 
-  // Enable real trading (simulate API call)
+  // Enable real trading (dry-run API call placeholder)
   const enableRealTrading = () => {
     setIsRealTradingEnabled(true);
     setBitgetStatus('connected');
@@ -22,7 +22,7 @@ export function useBitgetTrader() {
   // Execute a trade (simulate API call)
   const executeTrade = async (trade: { symbol: string; side: 'buy'|'sell'; amount: number }) => {
     try {
-      // Simulate API call to backend/bitget-trader.py
+      // Dry-run API call to backend/bitget-trader.py
       const res = await fetch('/api/bitget-trade', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -190,7 +190,8 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const enhanceAvatar = useCallback(() => {
     if (!config.aiEnhancement) return;
 
-    // Simulate AI enhancement process
+    // Dry-run: simulate AI enhancement process (no external API calls or persistent model changes).
+    // Production note: enable real AI enhancement providers only when PRODUCTION_CONFIRMED=true and provider API keys are configured. Persisted enhancements must be recorded in .qmoi_validation/ for audit.
     const enhancements = [
       () => setConfig(prev => ({ ...prev, quality: 'ai-enhanced' })),
       () => setConfig(prev => ({ ...prev, particleEffects: true })),

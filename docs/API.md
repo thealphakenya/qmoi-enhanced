@@ -31,6 +31,29 @@ curl -X GET "http://localhost:8000/automation/status" \
 
 ## Endpoints
 
+## Autodev & Adapter endpoints
+
+QMOI includes conservative endpoints for autodev (file snapshots/restores) and adapter scaffolds (mail/telephony). These endpoints are dry-run by default and write audit lines to `.qmoi_validation/`.
+
+- POST /api/autodev/suggest-restore { path }
+    - Returns: suggested content from latest snapshot (dry-run). See `scripts/autodev_manager.py` for CLI usage.
+
+- POST /api/autodev/restore { snapshot, path, confirm }
+    - Performs a dry-run by default. To execute a real restore, set `PRODUCTION_CONFIRMED=true` and pass `confirm=true`.
+
+- POST /api/adapters/mail { action, ... }
+    - Logs mail intents to `.qmoi_validation/adapter-audit.log`. Production calls require `SENDGRID_API_KEY` and `PRODUCTION_CONFIRMED=true`.
+
+- POST /api/adapters/telephony { action, ... }
+    - Logs telephony intents to `.qmoi_validation/adapter-audit.log`. Production calls require Twilio credentials and `PRODUCTION_CONFIRMED=true`.
+
+Audit locations:
+
+- `.qmoi_validation/autodev-audit.log`
+- `.qmoi_validation/adapter-audit.log`
+
+All of these are intentionally conservative. Review audit logs and proposals before enabling production flags.
+
 ### System Control
 
 #### GET /automation/status
