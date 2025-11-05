@@ -1,0 +1,79 @@
+Autotest/resume snapshot (generated)
+Date: 2025-11-03
+
+Completed in this session:
+- Added repository-wide Jest guidance and conservative root config (`QMOIJEST.md`, `jest.config.cjs`).
+- Added minimal Jest test setup (`jest.setup.js`) and a simple file mock at `__mocks__/fileMock.js`.
+- Updated `tools/autotest_runner.py` to run scanners, dry-list Jest tests and (if small) run tests producing JSON results.
+
+Current state / blockers:
+- Jest invocation failed in this environment: `npm/npx` and `yarn` attempts returned non-zero (tools/autotest_report.md). This environment appears to lack a usable Jest binary. To run tests here, install devDependencies or run from an environment with Node.js tooling available.
+- Placeholder scan results are large and include generated/validation artifacts under `.qmoi_validation/` — we should exclude those folders before bulk auto-fixes.
+
+Next steps I recommend (automated where safe):
+1) Triaging placeholders: update `tools/find_placeholders.py` to ignore `.qmoi_validation/`, `node_modules/`, `dist/`, and `build/` by default, then re-run scan and produce a filtered `matches.filtered.json` for review.
+2) Enable Jest execution in CI: either ensure `npm ci` runs in CI before the autotest step or commit a lightweight test-runner image into CI that includes node and the repo dependencies. Then run `python3 tools/autotest_runner.py` again to capture test results.
+3) Wire jest to `tools/autotest_runner.py` results path (`tools/jest_results.json`) into autodev gating (canary promotion) — small follow-up.
+
+Current todo states (high level):
+- Wire Jest into autotest runner: in-progress (needs usable jest binary in environment)
+- Add Jest setup and mocks: completed
+- Run dry-list of tests: not-started (blocked by missing jest binary)
+- Run Jest tests: not-started (blocked)
+- Triage placeholder scan noise: not-started
+
+If you'd like I can now:
+- A: Update `tools/find_placeholders.py` to exclude generated folders and re-run scans (safe and quick).
+- B: Attempt to run jest by invoking `npm ci` then `npx jest --listTests` (this will install packages and may be slow / network dependent). Ask explicitly before I perform installs.
+
+-- end of snapshot
+
+QMOI — Resume To-dos (auto-generated)
+
+This snapshot was updated after running the initial scans and autotest orchestration.
+Use this as the source-of-truth for the next work session.
+
+Completed:
+- Inventory & scans — completed (matches.json, allrefs.txt)
+- Generate ALLVERSIONS.md — completed (ALLVERSIONS.md and tools/versions_summary.json)
+- Automated fixes (dry-run) — completed (placeholder_fixes.patch not produced — nothing safe proposed)
+- ALLMDFILESREFS.md regeneration — completed
+
+In-progress / Needs review / Next actions:
+1) Resumetodos update — in-progress
+   - This file (resumetodos.txt) must be updated at the end of each session with remaining items.
+
+2) Link validation — in-progress
+   - `tools/check_links.py` run; report at `link_report.md` and `tools/link_report.json`.
+   - Next: review `link_report.md`, fix or update missing local links, and decide whether to validate external links.
+
+3) Autotest orchestration — in-progress
+   - `tools/autotest_runner.py` created and run; report at `tools/autotest_report.md`.
+   - Next: wire the runner into CI and add more tests (UI snapshot, accessibility checks).
+
+Planned / Not started (priority order):
+4) Add QMOI autodev doc — not-started (implementation follow-ups remain despite `QMOI_AUTODEV.md` added)
+   - Implement delta packager, signed patches, canary controller scripts.
+
+5) Enhance qvillage & Hugging Face autosync plan — not-started
+   - Draft scripts to automatically update model cards, push model artifacts to HF spaces, and sync memory store.
+
+6) UI auto-update design & implementation — not-started
+   - Implement the feature-flagged rollout controller and small hooks in the UI to accept signed delta updates.
+
+7) Finalize resumetodos — not-started
+   - On next pause: update this file with concrete owners, PRs/patches to apply, and exact commands to run.
+
+How to proceed (recommended next 2 steps):
+- Open `link_report.md`, triage missing local links; fix obvious path issues.
+- Draft a small canary rollout prototype (scripts/ or tools/) that can apply a signed CSS/JSON delta to a local dev server.
+
+Files created in this session:
+- `tools/collect_versions.py` — generates `ALLVERSIONS.md` and `tools/versions_summary.json`
+- `tools/check_links.py` — checks markdown links and writes reports
+- `tools/autotest_runner.py` — orchestrates scans and writes `tools/autotest_report.md`
+- `QMOI_AUTODEV.md` — autodev design notes
+- `ALLVERSIONS.md` — versions index (generated)
+- `tools/versions_summary.json`, `tools/link_report.json`, `link_report.md`, `tools/autotest_report.md` (reports)
+
+-- end

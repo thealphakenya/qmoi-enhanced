@@ -1,4 +1,16 @@
 {
+  "name": "qmoienhanced-devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/python:3",
+  "postStartCommand": "python3 tools/startup_manager.py || true",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  }
+}
+{
   "name": "QMOI Dev Container",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "postCreateCommand": "./scripts/env_manager.py",
