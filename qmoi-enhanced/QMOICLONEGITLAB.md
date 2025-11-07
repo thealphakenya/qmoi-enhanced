@@ -104,7 +104,7 @@ qmoi_validation_frontmatter: true
 
 ## Command Reference
 
-See [CMDCOMMANDS.md](./CMDCOMMANDS.md) for all automation, testing, and troubleshooting commands for QMOI across all platforms (PowerShell, Bash, etc.).
+See [CMDCOMMANDS.md](CMDCOMMANDS.md) for all automation, testing, and troubleshooting commands for QMOI across all platforms (PowerShell, Bash, etc.).
 
 ### Troubleshooting
 - If you see `Missing script: "qmoi:autodev:full"`, add it to your `package.json` under `"scripts"`.

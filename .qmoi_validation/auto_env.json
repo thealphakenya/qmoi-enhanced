@@ -1,9 +1,0 @@
-{
-  "GITHUB_REPO": "thealphakenya/qmoi-enhanced",
-  "GITHUB_TOKEN": "", 
-  "AUTO_PUBLISH": false,
-  "QCITY_RESOURCES": {
-    "preferred_cluster": "qcity-default",
-    "storage_bucket": "qcity-artifacts"
-  }
-}

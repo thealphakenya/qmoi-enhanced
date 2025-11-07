@@ -241,8 +241,8 @@ after_script:
 - `logs/error.log` - Error-specific information
 - `logs/audit.log` - Security audit trail
 - `logs/notification.log` - Notification history
-- [TRACKS.md](./TRACKS.md) - Real-time memory, automation, financial, and autotest tracking
-- [DASHBOARDTRACKS.md](./DASHBOARDTRACKS.md) - Real-time dashboard, model, autotest, and financial tracking
+- [TRACKS.md](TRACKS.md) - Real-time memory, automation, financial, and autotest tracking
+- [DASHBOARDTRACKS.md](DASHBOARDTRACKS.md) - Real-time dashboard, model, autotest, and financial tracking
 
 ### Real-time Monitoring & Automation
 ```javascript
@@ -357,11 +357,11 @@ npm run dev
 
 
 ## � References
-- [QMOIMODEL.md](./QMOIMODEL.md)
-- [QMOIMODELTESTS.md](./QMOIMODELTESTS.md)
-- [CURLCOMMANDS.md](./CURLCOMMANDS.md)
-- [TRACKS.md](./TRACKS.md)
-- [DASHBOARDTRACKS.md](./DASHBOARDTRACKS.md)
+- [QMOIMODEL.md](QMOIMODEL.md)
+- [QMOIMODELTESTS.md](QMOIMODELTESTS.md)
+- [CURLCOMMANDS.md](CURLCOMMANDS.md)
+- [TRACKS.md](TRACKS.md)
+- [DASHBOARDTRACKS.md](DASHBOARDTRACKS.md)
 
 ### 1. Security
 - **Token management**: Secure token storage

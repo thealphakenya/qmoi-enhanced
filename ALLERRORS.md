@@ -68,8 +68,8 @@ qmoi_validation_frontmatter: true
 - ALLERRORS.md:71: - QMOISPACEDEV.md:1218: export QMOI_DEBUG_MODE="true"
 - ALLERRORS.md:72: - QMOI_COMPLETE_SYSTEM.md:383: DEBUG=qmoi:* npm start
 - ALLERRORS.md:73: - QMOI_GITLAB_AUTOMATION.md:430: DEBUG=qmoi:* npm start
-- ALLERRORS.md:74: - README.md:72: - [ERRORSTRACKS.md](./ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
-- ALLERRORS.md:75: - RELEASETRACKS.md:35: For full error/fix traceability, see [ERRORSTRACKS.md](./ERRORSTRACKS.md)
+- ALLERRORS.md:74: - README.md:72: - [ERRORSTRACKS.md](ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
+- ALLERRORS.md:75: - RELEASETRACKS.md:35: For full error/fix traceability, see [ERRORSTRACKS.md](ERRORSTRACKS.md)
 - ALLERRORS.md:76: - SCRIPTS.md:31: - Unused/duplicate scripts are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 - ALLERRORS.md:77: - SERVEQCITYQMOIAIQMOISPACE.md:29: - All serving errors and issues are logged in SERVINGERRORSISSUES.md in real time
 - ALLERRORS.md:78: - SERVICES.md:13: - Unused/duplicate services are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
@@ -87,7 +87,7 @@ qmoi_validation_frontmatter: true
 - ALLERRORS.md:90: - TRACKS.md:25: - Types: ACTION, ERROR, DEBUG, SYNC, TRACK, ENHANCEMENT, FEATURE, AUTODEVELOPMENT, AUTOMATION, FINANCE, AUTOTEST
 - ALLERRORS.md:91: - TRACKS.md:30: - `[2025-10-07 10:03:00] [ERROR] [Sync] - Failed to sync ALLMDFILESREFS.md to Alpha-Q-ai.`
 - ALLERRORS.md:92: - TRACKS.md:31: - `[2025-10-07 10:04:00] [DEBUG] [Memory] - QMOI memory detected new .md file addition.`
-- ALLERRORS.md:93: - TRACKS.md:33: - All errors, debugs, autotests, and financial events are logged here for full traceability. For detailed error/fix logs, see [ERRORSTRACKS.md](./ERRORSTRACKS.md).
+- ALLERRORS.md:93: - TRACKS.md:33: - All errors, debugs, autotests, and financial events are logged here for full traceability. For detailed error/fix logs, see [ERRORSTRACKS.md](ERRORSTRACKS.md).
 - ALLERRORS.md:94: - UNIVERSALHEALTHRUNNERS.md:8: - Device-specific error logs and health stats are referenced in `ALLERRORSSTATSQMOI.md`.
 - ALLERRORS.md:95: - UNIVERSALHEALTHRUNNERS.md:24: - `ALLERRORSSTATSQMOI.md` (device error stats)
 - ALLERRORS.md:96: - WATCHDEBUG.md:1: # WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System
@@ -198,8 +198,8 @@ qmoi_validation_frontmatter: true
 - QMOISPACEDEV.md:1227: export QMOI_DEBUG_MODE="true"
 - QMOI_COMPLETE_SYSTEM.md:392: DEBUG=qmoi:* npm start
 - QMOI_GITLAB_AUTOMATION.md:439: DEBUG=qmoi:* npm start
-- README.md:92: - [ERRORSTRACKS.md](./ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
-- RELEASETRACKS.md:44: For full error/fix traceability, see [ERRORSTRACKS.md](./ERRORSTRACKS.md)
+- README.md:92: - [ERRORSTRACKS.md](ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
+- RELEASETRACKS.md:44: For full error/fix traceability, see [ERRORSTRACKS.md](ERRORSTRACKS.md)
 - SCRIPTS.md:40: - Unused/duplicate scripts are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 - SERVEQCITYQMOIAIQMOISPACE.md:38: - All serving errors and issues are logged in SERVINGERRORSISSUES.md in real time
 - SERVICES.md:22: - Unused/duplicate services are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
@@ -217,7 +217,7 @@ qmoi_validation_frontmatter: true
 - TRACKS.md:34: - Types: ACTION, ERROR, DEBUG, SYNC, TRACK, ENHANCEMENT, FEATURE, AUTODEVELOPMENT, AUTOMATION, FINANCE, AUTOTEST
 - TRACKS.md:39: - `[2025-10-07 10:03:00] [ERROR] [Sync] - Failed to sync ALLMDFILESREFS.md to Alpha-Q-ai.`
 - TRACKS.md:40: - `[2025-10-07 10:04:00] [DEBUG] [Memory] - QMOI memory detected new .md file addition.`
-- TRACKS.md:42: - All errors, debugs, autotests, and financial events are logged here for full traceability. For detailed error/fix logs, see [ERRORSTRACKS.md](./ERRORSTRACKS.md).
+- TRACKS.md:42: - All errors, debugs, autotests, and financial events are logged here for full traceability. For detailed error/fix logs, see [ERRORSTRACKS.md](ERRORSTRACKS.md).
 - UNIVERSALHEALTHRUNNERS.md:17: - Device-specific error logs and health stats are referenced in `ALLERRORSSTATSQMOI.md`.
 - UNIVERSALHEALTHRUNNERS.md:33: - `ALLERRORSSTATSQMOI.md` (device error stats)
 - WATCHDEBUG.md:10: # WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System

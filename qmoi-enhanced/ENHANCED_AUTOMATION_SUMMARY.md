@@ -14,7 +14,7 @@ qmoi_validation_frontmatter: true
 
 # QMOI Enhanced Automation Systems Summary
 
-> For a full list of UI components and their usage, see [COMPONENTS.md](./COMPONENTS.md).
+> For a full list of UI components and their usage, see [COMPONENTS.md](COMPONENTS.md).
 
 ## Overview
 This document summarizes the comprehensive automation enhancements implemented for the QMOI system, providing intelligent coordination, optimization, and master-level control capabilities.

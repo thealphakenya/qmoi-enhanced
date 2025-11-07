@@ -72,7 +72,7 @@ qmoi_validation_frontmatter: true
 - All runs of `npm run qmoi:always-fix-all` are logged to `logs/qmoi-always-fix-all-attempts.json`
 - Success and failure notifications are sent via the QMOI notification system
 - Persistent failures are highlighted in the dashboard and require manual intervention
-- See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for details
+- See [QMOIAUTOFIXREADME.md](QMOIAUTOFIXREADME.md) for details
 
 ---
 
@@ -84,7 +84,7 @@ qmoi_validation_frontmatter: true
 
 ---
 
-For a full list of documentation, see [REFERENCES.md](./REFERENCES.md)
+For a full list of documentation, see [REFERENCES.md](REFERENCES.md)
 
 For questions or issues, contact the QMOI admin team.
 

@@ -412,10 +412,10 @@ npm run github:manage-codespace --action "scale" --resources "unlimited"
 ---
 
 ## See Also
-- [GITHUBPAYED.md](./GITHUBPAYED.md)
-- [QMOIALLPLATFORMS.md](./QMOIALLPLATFORMS.md)
-- [QMOIFREE.md](./QMOIFREE.md)
-- [QMOI-CLOUD.md](./QMOI-CLOUD.md)
+- [GITHUBPAYED.md](GITHUBPAYED.md)
+- [QMOIALLPLATFORMS.md](QMOIALLPLATFORMS.md)
+- [QMOIFREE.md](QMOIFREE.md)
+- [QMOI-CLOUD.md](QMOI-CLOUD.md)
 
 ---
 

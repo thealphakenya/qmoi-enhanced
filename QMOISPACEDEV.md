@@ -14,7 +14,7 @@ qmoi_validation_frontmatter: true
 
 # QMOI Space Development - Hugging Face Integration v3.0
 
-> **See also:** [MASTEROWNS.md](./MASTEROWNS.md) | [QMOIDEV.md](./QMOIDEV.md) | [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md)
+> **See also:** [MASTEROWNS.md](MASTEROWNS.md) | [QMOIDEV.md](QMOIDEV.md) | [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md)
 
 ## 🚀 Parallel Error Fixing & Self-Healing
 - QMOI can now fix all errors in the entire system and in QMOI Space at the same time, in parallel.
@@ -35,7 +35,7 @@ qmoi_validation_frontmatter: true
 - **Error Fix & Redeploy:** QMOI auto-detects and fixes all deployment errors in HuggingFace Spaces, then redeploys in a loop until successful. All fixes, attempts, and results are logged and notified.
 - **Cloud/Parallelization:** QMOI offloads all heavy jobs to cloud/Colab/Dagshub, using parallel jobs for builds, tests, and error-fixes. Local device resources are never used unless explicitly allowed.
 - **Developer/Notification Features:** QMOI always identifies as "QMOI (AI Developer)" in all notifications, logs, and UIs. All notifications are retried, logged, and use fallback channels if needed.
-- **Asset/Project Tracking:** QMOI auto-tracks all assets, projects, and resources it creates or manages, updating [MASTEROWNS.md](./MASTEROWNS.md) in real time.
+- **Asset/Project Tracking:** QMOI auto-tracks all assets, projects, and resources it creates or manages, updating [MASTEROWNS.md](MASTEROWNS.md) in real time.
 
 ## Enhanced Hugging Face Space Developer & Automation Features
 - **Parallel Error Fixing:** QMOI can fix errors in HuggingFace Space and the main app independently and in parallel. One can be fixed while the other continues to work.

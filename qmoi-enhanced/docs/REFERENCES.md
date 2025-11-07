@@ -14,9 +14,9 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-- [QMOI GitLab Self-Healing CI/CD Automation](./QMOIGITLABDEV.md) 
-- [QMOI Vercel Self-Healing CI/CD Automation](./QMOIVERCELDEV.md) 
-- [QMOI GitHub Actions Self-Healing CI/CD Automation](./QMOIGITHUBDEV.md) 
+- [QMOI GitLab Self-Healing CI/CD Automation](QMOIGITLABDEV.md) 
+- [QMOI Vercel Self-Healing CI/CD Automation](QMOIVERCELDEV.md) 
+- [QMOI GitHub Actions Self-Healing CI/CD Automation](QMOIGITHUBDEV.md) 
 
 ## QMOI Gmail Notification Integration
 

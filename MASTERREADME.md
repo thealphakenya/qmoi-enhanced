@@ -209,8 +209,8 @@ See QVS/QVSREADME.md for details.
 
 ## Latest QMOI Parallel, Cloud, and Security Enhancements
 
-- See [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md) for advanced parallel intelligence, money-making, deal-making, and multi-project execution features, with real-time dashboards and universal cloud integration.
-- See [ENHANCEDQVS.md](./ENHANCEDQVS.md) for universal, adaptive, and automated security, compliance, and integration with any cloud, device, or server.
+- See [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) for advanced parallel intelligence, money-making, deal-making, and multi-project execution features, with real-time dashboards and universal cloud integration.
+- See [ENHANCEDQVS.md](ENHANCEDQVS.md) for universal, adaptive, and automated security, compliance, and integration with any cloud, device, or server.
 
 ## Universal Cloud Autonomy & Device Enhancement
 

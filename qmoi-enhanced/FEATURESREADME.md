@@ -14,7 +14,7 @@ qmoi_validation_frontmatter: true
 
 # Alpha-Q AI Features
 
-> For a full list of UI components and their usage, see [COMPONENTS.md](./COMPONENTS.md).
+> For a full list of UI components and their usage, see [COMPONENTS.md](COMPONENTS.md).
 
 ## New (2025-06-11)
 - **QI Preview Window**: Instantly preview AI state, health, and session/global memory from anywhere in the app using the `useQIPreview` hook.

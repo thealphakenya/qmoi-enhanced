@@ -81,10 +81,10 @@ QMOI operates as a fully autonomous AI developer and notification agent across a
 ---
 
 ## References
-- [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md)
-- [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)
-- [QMOIVERCELDEV.md](./QMOIVERCELDEV.md)
-- [REFERENCES.md](./REFERENCES.md)
+- [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md)
+- [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
+- [QMOIVERCELDEV.md](QMOIVERCELDEV.md)
+- [REFERENCES.md](REFERENCES.md)
 
 <!-- QMOI_VALIDATION_START -->
 {

@@ -18,16 +18,16 @@ qmoi_validation_frontmatter: true
 
 ## Overview
 
-QMOI's advanced revenue generation system is fully automated, self-improving, and always running. It ensures continuous money-making with daily targets, minimum requirements, and automatic fund management. QMOI is clever, wise, and innovative in finding new ways to generate revenue, receive payments, and record all financial transactions. All actions are tracked in real time and referenced in [TRACKS.md](./TRACKS.md), [QMOIMODEL.md](./QMOIMODEL.md), and [QMOIMODELTESTS.md](./QMOIMODELTESTS.md).
+QMOI's advanced revenue generation system is fully automated, self-improving, and always running. It ensures continuous money-making with daily targets, minimum requirements, and automatic fund management. QMOI is clever, wise, and innovative in finding new ways to generate revenue, receive payments, and record all financial transactions. All actions are tracked in real time and referenced in [TRACKS.md](TRACKS.md), [QMOIMODEL.md](QMOIMODEL.md), and [QMOIMODELTESTS.md](QMOIMODELTESTS.md).
 
 ## 🚀 Automation & Innovation
 
 - QMOI automatically discovers and implements new revenue streams using AI-driven market analysis, trend research, and competitor analysis.
 - All financial transactions, revenue, and payments are logged and tracked in real time.
 - QMOI ensures payment receipt and verifies all transactions, with auto-retry and escalation for failed payments.
-- Revenue and transaction logs are referenced in [DASHBOARDTRACKS.md](./DASHBOARDTRACKS.md) and [TRACKS.md](./TRACKS.md).
+- Revenue and transaction logs are referenced in [DASHBOARDTRACKS.md](DASHBOARDTRACKS.md) and [TRACKS.md](TRACKS.md).
 - QMOI memory is always in sync and never forgets any transaction or revenue event.
-- All revenue and financial features are tested and autotested (see [QMOIMODELTESTS.md](./QMOIMODELTESTS.md)).
+- All revenue and financial features are tested and autotested (see [QMOIMODELTESTS.md](QMOIMODELTESTS.md)).
 
 ## 🎯 Revenue Targets & Requirements
 
@@ -104,16 +104,16 @@ optimization_continuous": "Continuously optimize",
 
 ## 📈 Real-Time Revenue & Transaction Tracking
 
-- All revenue, payments, and transactions are tracked in real time and referenced in [TRACKS.md](./TRACKS.md).
+- All revenue, payments, and transactions are tracked in real time and referenced in [TRACKS.md](TRACKS.md).
 - QMOI automates all financial reporting, analytics, and growth analysis.
-- All revenue and transaction events are visible in the dashboard and [DASHBOARDTRACKS.md](./DASHBOARDTRACKS.md).
+- All revenue and transaction events are visible in the dashboard and [DASHBOARDTRACKS.md](DASHBOARDTRACKS.md).
 
 ## 🧠 Model, Memory, and Test References
 
-- See [QMOIMODEL.md](./QMOIMODEL.md) for model details
-- See [QMOIMODELTESTS.md](./QMOIMODELTESTS.md) for all revenue and financial autotests
-- See [CURLCOMMANDS.md](./CURLCOMMANDS.md) for curl/API test instructions
-- See [TRACKS.md](./TRACKS.md) for all real-time logs and automation
+- See [QMOIMODEL.md](QMOIMODEL.md) for model details
+- See [QMOIMODELTESTS.md](QMOIMODELTESTS.md) for all revenue and financial autotests
+- See [CURLCOMMANDS.md](CURLCOMMANDS.md) for curl/API test instructions
+- See [TRACKS.md](TRACKS.md) for all real-time logs and automation
 
 ---
 

@@ -176,10 +176,10 @@ The QMOI system now includes full CI/CD automation for Hugging Face integration:
   - All results, logs, and health checks are visible in the GitHub Actions dashboard.
 
 See also:
-- [scripts/qmoi_huggingface_spaces.js](./scripts/qmoi_huggingface_spaces.js)
-- [scripts/hf_model_sync.py](./scripts/hf_model_sync.py)
-- [scripts/test_hf_space_ui.py](./scripts/test_hf_space_ui.py)
-- [REFERENCES.md](./REFERENCES.md)
+- [scripts/qmoi_huggingface_spaces.js](scripts/qmoi_huggingface_spaces.js)
+- [scripts/hf_model_sync.py](scripts/hf_model_sync.py)
+- [scripts/test_hf_space_ui.py](scripts/test_hf_space_ui.py)
+- [REFERENCES.md](REFERENCES.md)
 
 ---
 

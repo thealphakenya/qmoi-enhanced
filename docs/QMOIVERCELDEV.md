@@ -49,8 +49,8 @@ QMOI now supports self-healing automation for Vercel deployments. The system can
 - All actions and fixes are logged in `logs/ci-self-heal.log`
 
 ## See Also
-- [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)
-- [REFERENCES.md](./REFERENCES.md) 
+- [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
+- [REFERENCES.md](REFERENCES.md) 
 
 ## Gmail Notification Integration
 

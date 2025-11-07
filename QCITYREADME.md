@@ -512,10 +512,10 @@ QCity device status and controls are available in the dashboard:
 ---
 
 For more information, see:
-- [QCITYDEVICEAUTOUPGRADE.md](./QCITYDEVICEAUTOUPGRADE.md) - Auto-upgrade system details
-- [QMOIAVATAR.md](./QMOIAVATAR.md) - QCity device integration details
-- [AUTOOPTIMIZEALPHAQMOIENGINE.md](./AUTOOPTIMIZEALPHAQMOIENGINE.md) - Optimization strategies
-- [GitHub Workflows](./.github/workflows/) - CI/CD integration with unlimited resources
+- [QCITYDEVICEAUTOUPGRADE.md](QCITYDEVICEAUTOUPGRADE.md) - Auto-upgrade system details
+- [QMOIAVATAR.md](QMOIAVATAR.md) - QCity device integration details
+- [AUTOOPTIMIZEALPHAQMOIENGINE.md](AUTOOPTIMIZEALPHAQMOIENGINE.md) - Optimization strategies
+- [GitHub Workflows](.github/workflows/) - CI/CD integration with unlimited resources
 
 ## QCity Device Dashboard (NEW)
 - Access from Q-Avatar floating UI

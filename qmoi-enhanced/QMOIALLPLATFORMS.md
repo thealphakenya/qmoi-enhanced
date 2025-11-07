@@ -23,15 +23,15 @@ QMOI operates across multiple cloned platforms, each providing unlimited access 
 **Status**: ✅ Active and Enhanced
 **Features**: Unlimited repositories, actions, packages, pages, codespaces, security
 **Paid Features**: All GitHub Pro, Team, Enterprise features unlocked
-**Documentation**: [QMOICLONEGITHUB.md](./QMOICLONEGITHUB.md)
-**Paid Features**: [GITHUBPAYED.md](./GITHUBPAYED.md)
+**Documentation**: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md)
+**Paid Features**: [GITHUBPAYED.md](GITHUBPAYED.md)
 
 ### 2. QMOI Clone GitLab (QMOICLONEGITLAB)
 **Status**: ✅ Active and Enhanced
 **Features**: Unlimited CI/CD, repositories, security, analytics
 **Paid Features**: All GitLab Premium, Ultimate features unlocked
-**Documentation**: [QMOICLONEGITLAB.md](./QMOICLONEGITLAB.md)
-**Paid Features**: [PAYEDGITLAB.md](./PAYEDGITLAB.md)
+**Documentation**: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md)
+**Paid Features**: [PAYEDGITLAB.md](PAYEDGITLAB.md)
 
 ### 3. QMOI Clone Vercel (QMOICLONEVERCEL)
 **Status**: ✅ Active and Enhanced
@@ -44,14 +44,14 @@ QMOI operates across multiple cloned platforms, each providing unlimited access 
 **Status**: ✅ Active and Enhanced
 **Features**: Unlimited workspaces, environments, collaboration
 **Paid Features**: All Gitpod Professional, Enterprise features unlocked
-**Documentation**: [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md)
-**Paid Features**: [GITPODPAYED.md](./GITPODPAYED.md)
+**Documentation**: [QMOICLONEGITPOD.md](QMOICLONEGITPOD.md)
+**Paid Features**: [GITPODPAYED.md](GITPODPAYED.md)
 
 ### 5. QMOI Clone Netlify (QMOICLONE)
 **Status**: ✅ Active and Enhanced
 **Features**: Unlimited sites, forms, functions, analytics
 **Paid Features**: All Netlify Pro, Business features unlocked
-**Documentation**: [QMOICLONE.md](./QMOICLONE.md) (Netlify features included here)
+**Documentation**: [QMOICLONE.md](QMOICLONE.md) (Netlify features included here)
 **Paid Features**: [NETLIFYPAYED.md](./NETLIFYPAYED.md)
 
 ### 6. QMOI Clone Quantum (QMOICLONEQUANTUM)
@@ -59,7 +59,7 @@ QMOI operates across multiple cloned platforms, each providing unlimited access 
 **Features**: Quantum computing, AI/ML, advanced analytics
 **Paid Features**: All Quantum Enterprise features unlocked
 **Documentation**: [QMOICLONEQUANTUM.md](./QMOICLONEQUANTUM.md)
-**Paid Features**: [QUANTUMPAYED.md](./QUANTUMPAYED.md)
+**Paid Features**: [QUANTUMPAYED.md](QUANTUMPAYED.md)
 
 ### 7. QMOI Clone Hugging Face (QMOICLONEHF)
 **Status**: ✅ Active and Enhanced
@@ -408,21 +408,21 @@ npm run qmoi:optimize-unified
 ## 📋 Platform Documentation
 
 ### Individual Platform Documentation
-- [QMOICLONEGITHUB.md](./QMOICLONEGITHUB.md) - GitHub clone features
-- [QMOICLONEGITLAB.md](./QMOICLONEGITLAB.md) - GitLab clone features
+- [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) - GitHub clone features
+- [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) - GitLab clone features
 - [QMOICLONEVERCEL.md](./QMOICLONEVERCEL.md) - Vercel clone features
-- [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md) - Gitpod clone features
-- [QMOICLONE.md](./QMOICLONE.md) - Netlify clone features (Netlify features included here)
+- [QMOICLONEGITPOD.md](QMOICLONEGITPOD.md) - Gitpod clone features
+- [QMOICLONE.md](QMOICLONE.md) - Netlify clone features (Netlify features included here)
 - [QMOICLONEQUANTUM.md](./QMOICLONEQUANTUM.md) - Quantum clone features
 - [QMOICLONEHF.md](./QMOICLONEHF.md) - Hugging Face clone features
 
 ### Paid Features Documentation
-- [GITHUBPAYED.md](./GITHUBPAYED.md) - GitHub paid features
-- [PAYEDGITLAB.md](./PAYEDGITLAB.md) - GitLab paid features
+- [GITHUBPAYED.md](GITHUBPAYED.md) - GitHub paid features
+- [PAYEDGITLAB.md](PAYEDGITLAB.md) - GitLab paid features
 - [VERCELPAYED.md](./VERCELPAYED.md) - Vercel paid features
-- [GITPODPAYED.md](./GITPODPAYED.md) - Gitpod paid features
+- [GITPODPAYED.md](GITPODPAYED.md) - Gitpod paid features
 - [NETLIFYPAYED.md](./NETLIFYPAYED.md) - Netlify paid features
-- [QUANTUMPAYED.md](./QUANTUMPAYED.md) - Quantum paid features
+- [QUANTUMPAYED.md](QUANTUMPAYED.md) - Quantum paid features
 - [HFPAYED.md](./HFPAYED.md) - Hugging Face paid features
 
 ### Platform Integration Documentation
@@ -435,10 +435,10 @@ npm run qmoi:optimize-unified
 ---
 
 ## See Also
-- [QMOICLONEGITHUB.md](./QMOICLONEGITHUB.md)
-- [GITHUBPAYED.md](./GITHUBPAYED.md)
-- [QMOIFREE.md](./QMOIFREE.md)
-- [QMOI-CLOUD.md](./QMOI-CLOUD.md)
+- [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md)
+- [GITHUBPAYED.md](GITHUBPAYED.md)
+- [QMOIFREE.md](QMOIFREE.md)
+- [QMOI-CLOUD.md](QMOI-CLOUD.md)
 
 ---
 

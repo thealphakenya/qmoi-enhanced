@@ -14,7 +14,7 @@ qmoi_validation_frontmatter: true
 
 # QMOI Vercel Developer Automation (QMOIVERCELDEV)
 
-> **See also:** [QMOIDEV.md](./QMOIDEV.md)
+> **See also:** [QMOIDEV.md](QMOIDEV.md)
 
 ## QMOI as a Developer & Notification Agent
 - QMOI always identifies as an AI Developer in all notifications (email, Slack, etc.).
@@ -63,10 +63,10 @@ QMOI now automates Vercel deployment, error fixing, backup, and UI integration:
 - For issues, check logs and UI panels
 
 ## References
-- [QMOICLONE.md](./QMOICLONE.md)
-- [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md)
-- [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)
-- [REFERENCES.md](./REFERENCES.md)
+- [QMOICLONE.md](QMOICLONE.md)
+- [QMOICLONEGITPOD.md](QMOICLONEGITPOD.md)
+- [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
+- [REFERENCES.md](REFERENCES.md)
 
 <!-- QMOI_VALIDATION_START -->
 {

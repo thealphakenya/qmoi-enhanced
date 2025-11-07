@@ -199,7 +199,7 @@ npm run qmoi:always-fix-all
 ### Monitoring & Troubleshooting
 - All fix attempts and results are logged
 - Persistent failures trigger notifications and require manual intervention
-- See [MONITORING.md](./MONITORING.md) for dashboard and alerting
+- See [MONITORING.md](MONITORING.md) for dashboard and alerting
 
 ## 🤖 AI Error Prediction
 
@@ -235,7 +235,7 @@ QMOI now includes an AI-powered error prediction system:
 
 ## QMOI Vercel Developer Automation
 
-For the latest and most advanced Vercel error fixing, redeployment, and environment/settings management, see [QMOIVERCELDEV.md](./QMOIVERCELDEV.md).
+For the latest and most advanced Vercel error fixing, redeployment, and environment/settings management, see [QMOIVERCELDEV.md](QMOIVERCELDEV.md).
 
 - Handles all Vercel/Node/JS/TS/Next.js errors with advanced pattern matching and multi-step/fallback fixes
 - Auto-commits, pushes, and redeploys until success

@@ -258,7 +258,7 @@ qmoi_validation_frontmatter: true
 
 # 
 
-# > \*\*Note:\*\* For all releases and versions, see \[ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md)
+# > \*\*Note:\*\* For all releases and versions, see \[ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md)
 
 # 
 
@@ -494,9 +494,9 @@ qmoi_validation_frontmatter: true
 
 # \## 📚 More Download Info \& Links
 
-# \- See \[ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md) for all app releases and versions.
+# \- See \[ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) for all app releases and versions.
 
-# \- See \[DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for all device/platform download instructions.
+# \- See \[DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) for all device/platform download instructions.
 
 # 
 

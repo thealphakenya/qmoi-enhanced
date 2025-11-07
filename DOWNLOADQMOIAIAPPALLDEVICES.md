@@ -77,7 +77,7 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 | Yap       | All           | https://downloads.qmoi.app/yap/yap-universal.apk         | v1.1.0        | ✅       |
 | Qstore    | All           | https://downloads.qmoi.app/qstore/qstore-universal.apk   | v1.0.0        | ✅       |
 
-> **Note:** For older versions and all releases, see [ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md)
+> **Note:** For older versions and all releases, see [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md)
 
 ## Autotesting, Verification & Always-Up-to-Date
 

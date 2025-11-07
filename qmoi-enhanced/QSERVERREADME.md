@@ -359,10 +359,10 @@ QServer now features a fully automated download link health checker and auto-fix
 ---
 
 For more information, see:
-- [QCITYDEVICEAUTOUPGRADE.md](./QCITYDEVICEAUTOUPGRADE.md) - Auto-upgrade system details
-- [QCITYREADME.md](./QCITYREADME.md) - QCity device integration
-- [QMOIAVATAR.md](./QMOIAVATAR.md) - QMOI system overview
-- [GitHub Workflows](./.github/workflows/) - CI/CD integration with unlimited resources 
+- [QCITYDEVICEAUTOUPGRADE.md](QCITYDEVICEAUTOUPGRADE.md) - Auto-upgrade system details
+- [QCITYREADME.md](QCITYREADME.md) - QCity device integration
+- [QMOIAVATAR.md](QMOIAVATAR.md) - QMOI system overview
+- [GitHub Workflows](.github/workflows/) - CI/CD integration with unlimited resources 
 
 ## New Integrations & Enhancements
 

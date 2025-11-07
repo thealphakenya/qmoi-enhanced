@@ -288,7 +288,7 @@ python scripts/master-dashboard.py
 
 ## Command Reference
 
-See [CMDCOMMANDS.md](./CMDCOMMANDS.md) for all automation, testing, and troubleshooting commands.
+See [CMDCOMMANDS.md](CMDCOMMANDS.md) for all automation, testing, and troubleshooting commands.
 
 ### Quick Start Commands
 ```bash

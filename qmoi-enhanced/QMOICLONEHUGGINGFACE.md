@@ -482,11 +482,11 @@ npm run huggingface:optimize-inference --model "my-model"
 ---
 
 ## See Also
-- [HUGGINGFACEPAYED.md](./HUGGINGFACEPAYED.md)
-- [QMOIALLPLATFORMS.md](./QMOIALLPLATFORMS.md)
-- [QVILLAGE.md](./QVILLAGE.md)
-- [QMOIFREE.md](./QMOIFREE.md)
-- [QMOI-CLOUD.md](./QMOI-CLOUD.md)
+- [HUGGINGFACEPAYED.md](HUGGINGFACEPAYED.md)
+- [QMOIALLPLATFORMS.md](QMOIALLPLATFORMS.md)
+- [QVILLAGE.md](QVILLAGE.md)
+- [QMOIFREE.md](QMOIFREE.md)
+- [QMOI-CLOUD.md](QMOI-CLOUD.md)
 
 ---
 
