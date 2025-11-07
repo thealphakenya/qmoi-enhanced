@@ -6203,5 +6203,122 @@
     "priority": 5,
     "created_at": "2025-11-07T13:48:51.943480+00:00",
     "runs": []
+  },
+  {
+    "id": 690,
+    "title": "Fix validation issues: @ALLMDFILESREFS.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:03.927030+00:00",
+    "runs": []
+  },
+  {
+    "id": 691,
+    "title": "Fix validation issues: ALLVERSIONS.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:04.080332+00:00",
+    "runs": []
+  },
+  {
+    "id": 692,
+    "title": "Fix validation issues: DOWNLOADQMOIAIAPPALLDEVICES.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:04.241139+00:00",
+    "runs": []
+  },
+  {
+    "id": 693,
+    "title": "Fix validation issues: PWA.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:04.470192+00:00",
+    "runs": []
+  },
+  {
+    "id": 694,
+    "title": "Fix validation issues: README.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:05.067792+00:00",
+    "runs": []
+  },
+  {
+    "id": 695,
+    "title": "Fix validation issues: docs/REVENUE_SPEC.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:06.720888+00:00",
+    "runs": []
+  },
+  {
+    "id": 696,
+    "title": "Fix validation issues: docs/REVENUE_SPEC.md.generated.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:06.881230+00:00",
+    "runs": []
+  },
+  {
+    "id": 697,
+    "title": "Fix validation issues: link_report.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:08.392306+00:00",
+    "runs": []
+  },
+  {
+    "id": 698,
+    "title": "Fix validation issues: qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:08.864416+00:00",
+    "runs": []
+  },
+  {
+    "id": 699,
+    "title": "Fix validation issues: qmoi-enhanced/QMOIALLPLATFORMS.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:09.515029+00:00",
+    "runs": []
+  },
+  {
+    "id": 700,
+    "title": "Fix validation issues: qmoi-enhanced/QMOIAPPS.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:09.734868+00:00",
+    "runs": []
+  },
+  {
+    "id": 701,
+    "title": "Fix validation issues: qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:09.994160+00:00",
+    "runs": []
+  },
+  {
+    "id": 702,
+    "title": "Fix validation issues: tools/remediation_plan.md",
+    "desc": "Auto-created remediation task from validate_md.py",
+    "status": "todo",
+    "priority": 5,
+    "created_at": "2025-11-07T13:57:11.179346+00:00",
+    "runs": []
   }
 ]

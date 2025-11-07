@@ -1,12 +1,12 @@
 {
-  "id": "fe0b0447-09e6-4890-a6d3-c31b70721f8c",
+  "id": "a9a8b7b1-7962-4f9e-83e8-a1ecd443c5bf",
   "type": "remediation",
   "file": "docs/REVENUE_SPEC.md",
-  "created_at": "2025-11-07T13:48:45.730635+00:00",
+  "created_at": "2025-11-07T13:57:05.565118+00:00",
   "report": {
     "file": "docs/REVENUE_SPEC.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:48:45.730635+00:00",
+    "checked_at": "2025-11-07T13:57:05.565118+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -569,9 +569,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "69ebf305-89d6-46b0-a38b-2e05b5691b2c",
+      "id": "772a3a58-f00c-46f0-865f-7ef1c5783a00",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:48:45.730635+00:00",
+      "created_at": "2025-11-07T13:57:05.565118+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [

@@ -1,12 +1,12 @@
 {
-  "id": "ce155c92-b138-4f2b-b43b-a7762c68dbf7",
+  "id": "b4dfb3a2-1738-4f27-8de8-0fdb601fb489",
   "type": "remediation",
   "file": "tools/remediation_plan.md",
-  "created_at": "2025-11-07T13:48:51.725238+00:00",
+  "created_at": "2025-11-07T13:57:10.951419+00:00",
   "report": {
     "file": "tools/remediation_plan.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:48:51.725238+00:00",
+    "checked_at": "2025-11-07T13:57:10.951419+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -129,9 +129,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "783ec3c8-e5e5-4711-997d-765439a9c8f2",
+      "id": "40add548-fe88-498a-91b1-72b9ad5af017",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:48:51.725238+00:00",
+      "created_at": "2025-11-07T13:57:10.951419+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [

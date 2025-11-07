@@ -1,7 +1,7 @@
 {
   "file": "docs/REVENUE_SPEC.md.generated.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:48:47.411596+00:00",
+  "checked_at": "2025-11-07T13:57:06.760982+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -84,9 +84,9 @@
   },
   "ok": false,
   "lion_task": {
-    "id": "0e3d68be-4d57-45fd-9e2c-8ab65e865095",
+    "id": "1217c8e9-a8f4-4ea4-bf08-6be9c50c68c7",
     "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:48:47.411596+00:00",
+    "created_at": "2025-11-07T13:57:06.760982+00:00",
     "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
     "priority": "medium",
     "recommended_actions": [

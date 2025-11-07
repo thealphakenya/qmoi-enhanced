@@ -1,7 +1,7 @@
 {
   "file": "SCRIPTS.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:48:45.404840+00:00",
+  "checked_at": "2025-11-07T13:57:05.145625+00:00",
   "checks": {
     "readable": {
       "ok": true

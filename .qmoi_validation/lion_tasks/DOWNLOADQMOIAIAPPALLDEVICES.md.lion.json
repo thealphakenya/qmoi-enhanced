@@ -1,12 +1,12 @@
 {
-  "id": "ea51a964-ae04-4902-961d-be4271307faa",
+  "id": "140b2777-767b-4e5a-b600-a53a0504fa67",
   "type": "remediation",
   "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-  "created_at": "2025-11-07T13:48:44.346359+00:00",
+  "created_at": "2025-11-07T13:57:04.163100+00:00",
   "report": {
     "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:48:44.346359+00:00",
+    "checked_at": "2025-11-07T13:57:04.163100+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -99,9 +99,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "f45b434f-99f9-4789-8384-f866ee203eb9",
+      "id": "53fbeb1d-8bb3-468e-adf5-0d11fa1c4bd7",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:48:44.346359+00:00",
+      "created_at": "2025-11-07T13:57:04.163100+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [

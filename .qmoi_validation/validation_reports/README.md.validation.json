@@ -1,7 +1,7 @@
 {
   "file": "README.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:48:45.217080+00:00",
+  "checked_at": "2025-11-07T13:57:04.968240+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -159,9 +159,9 @@
   },
   "ok": false,
   "lion_task": {
-    "id": "ecde8bb9-5116-47a6-8928-c03268890266",
+    "id": "92e95cec-9254-4f66-8e1f-dadd355957c9",
     "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:48:45.217080+00:00",
+    "created_at": "2025-11-07T13:57:04.968240+00:00",
     "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
     "priority": "medium",
     "recommended_actions": [
