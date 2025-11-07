@@ -1,12 +1,12 @@
 {
-  "id": "00bb077f-54e1-4071-9c93-29e2f70f656b",
+  "id": "544db585-1c43-4453-bad5-4308681c1736",
   "type": "remediation",
   "file": "README.md",
-  "created_at": "2025-11-07T13:05:12.638062+00:00",
+  "created_at": "2025-11-07T13:17:32.908495+00:00",
   "report": {
     "file": "README.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:05:12.638062+00:00",
+    "checked_at": "2025-11-07T13:17:32.908495+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -16,7 +16,7 @@
         "detail": "QMOI System"
       },
       "frontmatter_present": {
-        "ok": false
+        "ok": true
       },
       "links": {
         "ok": false,
@@ -164,9 +164,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "a51dbf89-77ba-44d7-9a7b-374a68ef8877",
+      "id": "dc1aaef5-fa6b-4bb0-b0b4-69d834c33a86",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:05:12.638062+00:00",
+      "created_at": "2025-11-07T13:17:32.908495+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [

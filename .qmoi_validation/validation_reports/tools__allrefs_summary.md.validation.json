@@ -1,7 +1,7 @@
 {
   "file": "tools/allrefs_summary.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:15:33.028053+00:00",
+  "checked_at": "2025-11-07T13:42:21.805704+00:00",
   "checks": {
     "readable": {
       "ok": true

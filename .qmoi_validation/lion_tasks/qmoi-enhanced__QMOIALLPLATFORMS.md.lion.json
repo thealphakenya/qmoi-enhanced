@@ -1,12 +1,12 @@
 {
-  "id": "28d3413e-70e2-4ea1-ae74-ad7ba0d7e21d",
+  "id": "3e3060bf-c3bc-44d7-aaca-cc5a3a550d3d",
   "type": "remediation",
   "file": "qmoi-enhanced/QMOIALLPLATFORMS.md",
-  "created_at": "2025-11-07T13:05:29.471895+00:00",
+  "created_at": "2025-11-07T13:17:35.497787+00:00",
   "report": {
     "file": "qmoi-enhanced/QMOIALLPLATFORMS.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:05:29.471895+00:00",
+    "checked_at": "2025-11-07T13:17:35.497787+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -16,7 +16,7 @@
         "detail": "QMOI ALL PLATFORMS - Complete Platform Ecosystem"
       },
       "frontmatter_present": {
-        "ok": false
+        "ok": true
       },
       "links": {
         "ok": false,
@@ -214,9 +214,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "040cc3bc-2e0c-4bc3-933d-f6226f7e7bd2",
+      "id": "5eab408c-904b-4a7c-8ea6-227cdc2d4a94",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:05:29.471895+00:00",
+      "created_at": "2025-11-07T13:17:35.497787+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [

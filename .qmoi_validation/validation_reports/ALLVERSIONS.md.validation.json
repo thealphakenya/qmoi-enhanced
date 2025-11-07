@@ -1,7 +1,7 @@
 {
   "file": "ALLVERSIONS.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:15:29.577323+00:00",
+  "checked_at": "2025-11-07T13:42:15.462077+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -649,9 +649,9 @@
   },
   "ok": false,
   "lion_task": {
-    "id": "aef8cdd9-44fe-4475-a021-0694e6eadf71",
+    "id": "a488fff5-63f4-4ef4-a7fb-12706301a296",
     "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:15:29.577323+00:00",
+    "created_at": "2025-11-07T13:42:15.462077+00:00",
     "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
     "priority": "medium",
     "recommended_actions": [

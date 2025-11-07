@@ -1,12 +1,12 @@
 {
-  "id": "dcf13d1c-94bf-456c-94d8-27725ff62bf9",
+  "id": "49a67162-d787-4673-a2e7-eaca1d81f1d2",
   "type": "remediation",
   "file": "PWA.md",
-  "created_at": "2025-11-07T13:05:00.975426+00:00",
+  "created_at": "2025-11-07T13:17:32.592504+00:00",
   "report": {
     "file": "PWA.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:05:00.975426+00:00",
+    "checked_at": "2025-11-07T13:17:32.592504+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -16,7 +16,7 @@
         "detail": "PWA.md"
       },
       "frontmatter_present": {
-        "ok": false
+        "ok": true
       },
       "links": {
         "ok": false,
@@ -44,9 +44,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "cec4df5e-8d99-4e71-ad3a-6061b7b6e517",
+      "id": "d174949d-42a3-482a-8f2a-44c01776a7fa",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:05:00.975426+00:00",
+      "created_at": "2025-11-07T13:17:32.592504+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [

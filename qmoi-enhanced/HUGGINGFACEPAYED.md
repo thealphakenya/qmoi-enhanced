@@ -453,7 +453,7 @@ npm run huggingface:enable-vulnerability-scanning
 ---
 
 ## See Also
-- [QMOICLONEHF.md](./QMOICLONEHF.md)
+- [QMOICLONEHF.md](../QMOICLONEHF.md)
 - [QMOIALLPLATFORMS.md](./QMOIALLPLATFORMS.md)
 - [QMOIFREE.md](./QMOIFREE.md)
 - [GITHUBPAYED.md](./GITHUBPAYED.md)

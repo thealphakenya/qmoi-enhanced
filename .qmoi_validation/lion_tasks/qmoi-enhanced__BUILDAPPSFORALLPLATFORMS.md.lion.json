@@ -1,12 +1,12 @@
 {
-  "id": "044bffdb-3db9-487d-9aaf-68d8954eaece",
+  "id": "4f26a509-1482-4fd5-8f2c-4e30c7f486a4",
   "type": "remediation",
   "file": "qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
-  "created_at": "2025-11-07T13:05:24.493279+00:00",
+  "created_at": "2025-11-07T13:17:35.190910+00:00",
   "report": {
     "file": "qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:05:24.493279+00:00",
+    "checked_at": "2025-11-07T13:17:35.190910+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -16,7 +16,7 @@
         "detail": "\ud83d\ude80 QMOI AI - Build Apps for All Platforms"
       },
       "frontmatter_present": {
-        "ok": false
+        "ok": true
       },
       "links": {
         "ok": false,
@@ -94,9 +94,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "2e1527f0-1f95-4221-b7c8-aa42e3c3a26f",
+      "id": "3d897371-351a-4a0b-afe5-124179664dcf",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:05:24.493279+00:00",
+      "created_at": "2025-11-07T13:17:35.190910+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [

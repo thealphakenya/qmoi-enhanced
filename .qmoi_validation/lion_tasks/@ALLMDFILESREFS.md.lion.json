@@ -1,12 +1,12 @@
 {
-  "id": "f12146ff-ec74-495a-b3fb-198ae44f5c73",
+  "id": "292f9099-d091-4965-8f82-2350e5687294",
   "type": "remediation",
   "file": "@ALLMDFILESREFS.md",
-  "created_at": "2025-11-07T13:04:56.292272+00:00",
+  "created_at": "2025-11-07T13:17:32.261569+00:00",
   "report": {
     "file": "@ALLMDFILESREFS.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:04:56.292272+00:00",
+    "checked_at": "2025-11-07T13:17:32.261569+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -16,7 +16,7 @@
         "detail": "Markdown File References"
       },
       "frontmatter_present": {
-        "ok": false
+        "ok": true
       },
       "links": {
         "ok": false,
@@ -59,9 +59,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "b343214d-079d-42f7-9f5b-9e8c62a8b69b",
+      "id": "22b687e0-e41d-40c9-b5be-64484ceb091e",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:04:56.292272+00:00",
+      "created_at": "2025-11-07T13:17:32.261569+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [

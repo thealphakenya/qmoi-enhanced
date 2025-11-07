@@ -1,12 +1,12 @@
 {
-  "id": "8eb59071-227e-4383-b80d-e08a69a9aad2",
+  "id": "138cc94c-21f4-4403-81af-200dc2335dfc",
   "type": "remediation",
   "file": "qmoi-enhanced/QMOIAUTOAPPSDEV.md",
-  "created_at": "2025-11-07T13:05:30.055072+00:00",
+  "created_at": "2025-11-07T13:17:35.650848+00:00",
   "report": {
     "file": "qmoi-enhanced/QMOIAUTOAPPSDEV.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:05:30.055072+00:00",
+    "checked_at": "2025-11-07T13:17:35.650848+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -16,7 +16,7 @@
         "detail": "QMOI Auto Apps Development (QMOIAUTOAPPSDEV.md)"
       },
       "frontmatter_present": {
-        "ok": false
+        "ok": true
       },
       "links": {
         "ok": false,
@@ -94,9 +94,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "fbd4137e-d831-466c-bb91-591679cc3b61",
+      "id": "50526cc4-ecc1-454d-9f24-427121202508",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:05:30.055072+00:00",
+      "created_at": "2025-11-07T13:17:35.650848+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [

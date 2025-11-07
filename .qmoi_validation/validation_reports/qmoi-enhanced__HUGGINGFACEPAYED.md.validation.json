@@ -1,7 +1,7 @@
 {
   "file": "qmoi-enhanced/HUGGINGFACEPAYED.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:15:32.477207+00:00",
+  "checked_at": "2025-11-07T13:42:20.945583+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -14,12 +14,12 @@
       "ok": true
     },
     "links": {
-      "ok": false,
+      "ok": true,
       "detail": [
         {
           "label": "QMOICLONEHF.md",
-          "target": "./QMOICLONEHF.md",
-          "ok": false
+          "target": "../QMOICLONEHF.md",
+          "ok": true
         },
         {
           "label": "QMOIALLPLATFORMS.md",
@@ -47,23 +47,7 @@
       "build": "not_found"
     }
   },
-  "ok": false,
-  "lion_task": {
-    "id": "6c201a7a-3597-4be5-a883-144d521ea347",
-    "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:15:32.477207+00:00",
-    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
-    "priority": "medium",
-    "recommended_actions": [
-      "add H1 title",
-      "add frontmatter",
-      "fix broken links"
-    ],
-    "qcity_hints": {
-      "preferred_cluster": "qcity-default",
-      "storage_bucket": "qcity-artifacts"
-    }
-  },
+  "ok": true,
   "qvs_provenance": {
     "codespace": "silver-journey-r4596xxpxg99cw594",
     "github_run_id": null,

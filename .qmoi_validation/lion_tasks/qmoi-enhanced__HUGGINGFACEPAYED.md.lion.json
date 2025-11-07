@@ -1,12 +1,12 @@
 {
-  "id": "34cab303-23e6-4a87-bdc0-98d218c306d3",
+  "id": "bed0d68e-d7fe-442b-95e4-6fab5e2387f3",
   "type": "remediation",
   "file": "qmoi-enhanced/HUGGINGFACEPAYED.md",
-  "created_at": "2025-11-07T13:05:25.926800+00:00",
+  "created_at": "2025-11-07T13:17:35.333892+00:00",
   "report": {
     "file": "qmoi-enhanced/HUGGINGFACEPAYED.md",
     "validator": "qmoi-validator-v3",
-    "checked_at": "2025-11-07T13:05:25.926800+00:00",
+    "checked_at": "2025-11-07T13:17:35.333892+00:00",
     "checks": {
       "readable": {
         "ok": true
@@ -16,7 +16,7 @@
         "detail": "HUGGINGFACEPAYED.md - Hugging Face Paid Features in QMOI"
       },
       "frontmatter_present": {
-        "ok": false
+        "ok": true
       },
       "links": {
         "ok": false,
@@ -54,9 +54,9 @@
     },
     "ok": false,
     "lion_task": {
-      "id": "06ed60c2-081c-4592-bcd2-0d1a3173fa07",
+      "id": "06d8d19b-0fdd-4976-93be-376c2848edae",
       "task": "remediate_markdown_issues",
-      "created_at": "2025-11-07T13:05:25.926800+00:00",
+      "created_at": "2025-11-07T13:17:35.333892+00:00",
       "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
       "priority": "medium",
       "recommended_actions": [
