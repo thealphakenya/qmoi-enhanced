@@ -139,10 +139,10 @@ QMOI_DEBUG=false
 
 ## 8. References & Resources
 - [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces)
-- [QMOI-HUGGINGFACE-ENHANCEMENTS.md](QMOI-HUGGINGFACE-ENHANCEMENTS.md)
-- [config/qmoi_huggingface_config.json](config/qmoi_huggingface_config.json)
-- [scripts/qmoi_huggingface_spaces.js](scripts/qmoi_huggingface_spaces.js)
-- [scripts/qmoi_env_manager.js](scripts/qmoi_env_manager.js)
+- [QMOI-HUGGINGFACE-ENHANCEMENTS.md](qmoi-enhanced/QMOI-HUGGINGFACE-ENHANCEMENTS.md)
+- [config/qmoi_huggingface_config.json](qmoi-enhanced/config/qmoi_huggingface_config.json)
+- [scripts/qmoi_huggingface_spaces.js](qmoi-enhanced/scripts/qmoi_huggingface_spaces.js)
+- [scripts/qmoi_env_manager.js](qmoi-enhanced/scripts/qmoi_env_manager.js)
 - [QMOI Dashboard](#)
 
 ---
@@ -176,10 +176,10 @@ The QMOI system now includes full CI/CD automation for Hugging Face integration:
   - All results, logs, and health checks are visible in the GitHub Actions dashboard.
 
 See also:
-- [scripts/qmoi_huggingface_spaces.js](./scripts/qmoi_huggingface_spaces.js)
-- [scripts/hf_model_sync.py](./scripts/hf_model_sync.py)
-- [scripts/test_hf_space_ui.py](./scripts/test_hf_space_ui.py)
-- [REFERENCES.md](./REFERENCES.md)
+- [scripts/qmoi_huggingface_spaces.js](qmoi-enhanced/scripts/qmoi_huggingface_spaces.js)
+- [scripts/hf_model_sync.py](scripts/hf_model_sync.py)
+- [scripts/test_hf_space_ui.py](scripts/test_hf_space_ui.py)
+- [REFERENCES.md](REFERENCES.md)
 
 ---
 

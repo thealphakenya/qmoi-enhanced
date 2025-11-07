@@ -712,7 +712,7 @@ For questions, issues, or contributions:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](qmoi-enhanced/LICENSE) file for details.
 
 <!-- QMOI_VALIDATION_START -->
 {
