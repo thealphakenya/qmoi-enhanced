@@ -16,6 +16,72 @@ except ImportError:
 # Ensure logs directory exists
 os.makedirs(os.path.join(os.path.dirname(__file__), '../logs'), exist_ok=True)
 
+
+def preflight_check():
+    """Conservative preflight: ensure critical runtime packages exist.
+
+    If a package is missing, print a clear message and exit with code 2 so
+    supervisors (watchers) can detect the problem early.
+    """
+    # Map import names to PyPI package names when they differ
+    check_pkgs = {
+        'requests': 'requests',
+        'aiohttp': 'aiohttp',
+        'schedule': 'schedule',
+        'yaml': 'PyYAML',
+        'git': 'GitPython',
+        'watchdog': 'watchdog',
+    }
+    # Some packages require system headers or compilation; do not attempt auto-install
+    # for heavy packages here. List can be expanded if needed.
+    auto_install_exclusions = set()
+
+    missing = []
+    for imp_name, pkg_name in check_pkgs.items():
+        try:
+            __import__(imp_name)
+        except Exception:
+            missing.append((imp_name, pkg_name))
+
+    if missing:
+        # Attempt to auto-install lightweight missing packages using the
+        # current interpreter's pip. We avoid auto-installing heavy ML packages.
+        attempted = []
+        for imp_name, pkg_name in missing:
+            if imp_name in auto_install_exclusions:
+                # skip auto-install for this package
+                print(f"Skipping auto-install for package that may need system deps: {pkg_name}", file=sys.stderr)
+                continue
+            try:
+                # Try to install the package into the current Python environment
+                print(f"Attempting to install missing package: {pkg_name}", file=sys.stderr)
+                subprocess.run([sys.executable, '-m', 'pip', 'install', pkg_name], check=False)
+                # re-check import
+                __import__(imp_name)
+                attempted.append(imp_name)
+            except Exception:
+                # leave it in missing if install/reimport failed
+                pass
+
+        # Recompute remaining missing after attempted installs
+        remaining = []
+        for imp_name, pkg_name in missing:
+            try:
+                __import__(imp_name)
+            except Exception:
+                remaining.append(imp_name)
+
+        if remaining:
+            msg = f"Missing required packages after auto-install: {', '.join(remaining)}.\n"
+            msg += "Install them with 'pip install -r requirements.txt' or use a virtualenv.\n"
+            print(msg, file=sys.stderr)
+            try:
+                log_activity('qmoi-start preflight failed: missing ' + ','.join(remaining))
+            except Exception:
+                pass
+            sys.exit(2)
+
+
 def is_qmoi_running():
     # Check for a running QMOI process (simple check for [PRODUCTION IMPLEMENTATION REQUIRED]; can be enhanced)
     try:
@@ -50,13 +116,25 @@ def start_as_service():
     else:
         # Use nohup for Unix
         try:
-            subprocess.Popen(['nohup', 'python3', 'scripts/qmoi-qcity-automatic.py', '&'])
+            # Start the child using the same Python interpreter so that virtualenv
+            # environments are respected. Run detached (new session) and redirect
+            # output to the logs directory.
+            logs_dir = os.path.join(os.path.dirname(__file__), '..', 'logs')
+            os.makedirs(logs_dir, exist_ok=True)
+            out_path = os.path.join(logs_dir, 'qmoi-service.out.log')
+            err_path = os.path.join(logs_dir, 'qmoi-service.err.log')
+            out_f = open(out_path, 'a')
+            err_f = open(err_path, 'a')
+            subprocess.Popen([sys.executable, os.path.join('scripts', 'qmoi-qcity-automatic.py')],
+                             stdout=out_f, stderr=err_f, start_new_session=True)
             print('Started QMOI automation as a Unix daemon.')
         except Exception as e:
             print(f'Failed to start as Unix daemon: {e}')
 
 def main():
     print('--- QMOI Start/Resume ---')
+    # Run preflight checks to fail fast if runtime deps are missing.
+    preflight_check()
     if is_qmoi_running():
         print('QMOI is already running.')
         log_activity('QMOI start script run: already running.')
