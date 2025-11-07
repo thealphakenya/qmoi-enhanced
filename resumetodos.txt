@@ -1,3 +1,26 @@
+Current Todo Snapshot (generated 2025-11-07T21:51Z)
+
+Completed:
+- Install runtime dependencies (requirements-minimal.txt -> .venv)
+- Re-run supervised start and capture logs
+- Add preflight dependency check and auto-install for lightweight packages
+- Create minimal requirements file and install small runtime packages
+- Link-normalization dry-run and conservative safe subset of fixes applied (29 substitutions)
+- Created CI workflow to install minimal deps and attempt CPU-friendly heavy deps in CI
+- Generated high-level remediation notes for missing artifacts
+
+In-progress:
+- Update `resumetodos.txt` and central todo store (this file)
+
+Pending (next actions):
+1) Tidy working tree: review modified files, stage intentional changes, keep validation artifacts in `.qmoi_validation/`.
+2) Push focused commits to a review branch and open a PR for link fixes and start/preflight changes.
+3) Decide strategy for heavy packages (torch): pin CPU wheels in CI or document manual install steps.
+4) Run full start flow end-to-end in a CI runner that supports heavy packages.
+
+Notes:
+- All automated edits create backups (.linkfix.bak/.dotfix.bak) and logs in `.qmoi_validation/`.
+- `requirements-minimal.txt` now includes: requests, aiohttp, boto3, numpy, pandas, GitPython, watchdog, schedule, PyYAML.
 Autotest/resume snapshot (generated)
 Date: 2025-11-03
 
@@ -37,8 +60,7 @@ Completed:
 - Inventory & scans — completed (matches.json, allrefs.txt)
 - Generate ALLVERSIONS.md — completed (ALLVERSIONS.md and tools/versions_summary.json)
 - Automated fixes (dry-run) — completed (placeholder_fixes.patch not produced — nothing safe proposed)
-- ALLMDFILESREFS.md regeneration — completed
-
+- ALLMDFILESREFS.md regeneration — complete
 In-progress / Needs review / Next actions:
 1) Resumetodos update — in-progress
    - This file (resumetodos.txt) must be updated at the end of each session with remaining items.
