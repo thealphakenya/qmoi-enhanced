@@ -1,0 +1,63 @@
+{
+  "id": "7fbe749c-dae9-41e9-8997-d28388ce795a",
+  "type": "remediation",
+  "file": "QUANTUMAUTOMARKET.md",
+  "created_at": "2025-11-07T13:05:11.976129+00:00",
+  "report": {
+    "file": "QUANTUMAUTOMARKET.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:11.976129+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QUANTUMAUTOMARKET.md - Quantum Automated Market & Trading"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "fd359f61-e266-4374-b484-2cae9b866a2c",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:11.976129+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

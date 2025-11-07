@@ -1,0 +1,58 @@
+{
+  "file": "MASTERREADME.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:20.466083+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "MASTERREADME.md"
+    },
+    "frontmatter_present": {
+      "ok": false
+    },
+    "links": {
+      "ok": true,
+      "detail": [
+        {
+          "label": "QMOIALWAYSPARALLEL.md",
+          "target": "./QMOIALWAYSPARALLEL.md",
+          "ok": true
+        },
+        {
+          "label": "ENHANCEDQVS.md",
+          "target": "./ENHANCEDQVS.md",
+          "ok": true
+        }
+      ]
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "ba8bd861-bf9b-45fa-91eb-5c8b3f1bb51b",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:12:20.466083+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

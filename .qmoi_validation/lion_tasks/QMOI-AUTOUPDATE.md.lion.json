@@ -1,0 +1,63 @@
+{
+  "id": "c4efb989-c734-42b2-979c-bf42c36c5093",
+  "type": "remediation",
+  "file": "QMOI-AUTOUPDATE.md",
+  "created_at": "2025-11-07T13:05:01.906863+00:00",
+  "report": {
+    "file": "QMOI-AUTOUPDATE.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:01.906863+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI-AUTOUPDATE.md"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "c6132a23-f82a-4048-8981-916c66c19919",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:01.906863+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

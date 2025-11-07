@@ -1,0 +1,53 @@
+{
+  "file": "qmoi-enhanced/FEATURESREADME.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:22.994156+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "Alpha-Q AI Features"
+    },
+    "frontmatter_present": {
+      "ok": false
+    },
+    "links": {
+      "ok": true,
+      "detail": [
+        {
+          "label": "COMPONENTS.md",
+          "target": "./COMPONENTS.md",
+          "ok": true
+        }
+      ]
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "aef40c8c-67a2-41ae-9edc-d2b22d1b78f5",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:12:22.994156+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

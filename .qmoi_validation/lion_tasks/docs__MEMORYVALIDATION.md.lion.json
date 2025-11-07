@@ -1,0 +1,63 @@
+{
+  "id": "bf5e5304-9c44-43ce-8bac-9de9a7a9597c",
+  "type": "remediation",
+  "file": "docs/MEMORYVALIDATION.md",
+  "created_at": "2025-11-07T13:05:18.128921+00:00",
+  "report": {
+    "file": "docs/MEMORYVALIDATION.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:18.128921+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "Memory Validation"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "098ffc97-5bbb-43eb-b6d4-32a0a857e3dc",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:18.128921+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

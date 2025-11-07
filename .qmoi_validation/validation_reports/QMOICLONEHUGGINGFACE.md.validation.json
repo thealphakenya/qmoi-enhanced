@@ -1,0 +1,73 @@
+{
+  "file": "QMOICLONEHUGGINGFACE.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:20.649006+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "QMOI Clone Hugging Face (QMOICLONEHF)"
+    },
+    "frontmatter_present": {
+      "ok": false
+    },
+    "links": {
+      "ok": true,
+      "detail": [
+        {
+          "label": "HUGGINGFACEPAYED.md",
+          "target": "./HUGGINGFACEPAYED.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIALLPLATFORMS.md",
+          "target": "./QMOIALLPLATFORMS.md",
+          "ok": true
+        },
+        {
+          "label": "QVILLAGE.md",
+          "target": "./QVILLAGE.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIFREE.md",
+          "target": "./QMOIFREE.md",
+          "ok": true
+        },
+        {
+          "label": "QMOI-CLOUD.md",
+          "target": "./QMOI-CLOUD.md",
+          "ok": true
+        }
+      ]
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "9ebf4f35-6a47-4ba8-9819-6623fc3b753d",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:12:20.649006+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "file": "qmoi-enhanced/models/latest/README.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:23.409573+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "QMOI AI Model Card (Hugging Face)"
+    },
+    "frontmatter_present": {
+      "ok": false
+    },
+    "links": {
+      "ok": true,
+      "detail": []
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "b9de10d0-fab2-4a51-adf9-8883d2221d54",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:12:23.409573+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

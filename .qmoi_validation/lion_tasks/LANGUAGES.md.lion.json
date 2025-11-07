@@ -1,0 +1,63 @@
+{
+  "id": "79d9457c-f2b5-46f8-b12a-afb6d153b64c",
+  "type": "remediation",
+  "file": "LANGUAGES.md",
+  "created_at": "2025-11-07T13:05:00.029275+00:00",
+  "report": {
+    "file": "LANGUAGES.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:00.029275+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "LANGUAGES.md"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "166d3996-372f-4eb1-bbe4-d2ab6ee57809",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:00.029275+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

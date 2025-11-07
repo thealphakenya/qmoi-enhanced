@@ -1,0 +1,63 @@
+{
+  "id": "2eb5f877-1261-4475-84c4-12ae8ce81c52",
+  "type": "remediation",
+  "file": "qmoi-enhanced/QMOIAUTOEVOLVE.md",
+  "created_at": "2025-11-07T13:05:30.378436+00:00",
+  "report": {
+    "file": "qmoi-enhanced/QMOIAUTOEVOLVE.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:30.378436+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Auto-Evolution System - Enhanced Comprehensive Edition"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "7a276e4a-fc35-4f54-9839-b85ef8c85c7f",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:30.378436+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

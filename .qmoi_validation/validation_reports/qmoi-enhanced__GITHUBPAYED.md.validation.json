@@ -1,0 +1,57 @@
+{
+  "file": "qmoi-enhanced/GITHUBPAYED.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:22.998554+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "GITHUBPAYED.md - GitHub Paid Features in QMOI"
+    },
+    "frontmatter_present": {
+      "ok": true
+    },
+    "links": {
+      "ok": true,
+      "detail": [
+        {
+          "label": "QMOICLONEGITHUB.md",
+          "target": "./QMOICLONEGITHUB.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIALLPLATFORMS.md",
+          "target": "./QMOIALLPLATFORMS.md",
+          "ok": true
+        },
+        {
+          "label": "QMOIFREE.md",
+          "target": "./QMOIFREE.md",
+          "ok": true
+        },
+        {
+          "label": "PAYEDGITLAB.md",
+          "target": "./PAYEDGITLAB.md",
+          "ok": true
+        },
+        {
+          "label": "QUANTUMPAYED.md",
+          "target": "./QUANTUMPAYED.md",
+          "ok": true
+        }
+      ]
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": true,
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

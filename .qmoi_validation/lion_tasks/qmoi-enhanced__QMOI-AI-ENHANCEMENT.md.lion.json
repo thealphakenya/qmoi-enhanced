@@ -1,0 +1,63 @@
+{
+  "id": "43b64113-a99e-4e5c-b31b-e16c4f0f1328",
+  "type": "remediation",
+  "file": "qmoi-enhanced/QMOI-AI-ENHANCEMENT.md",
+  "created_at": "2025-11-07T13:05:27.240679+00:00",
+  "report": {
+    "file": "qmoi-enhanced/QMOI-AI-ENHANCEMENT.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:27.240679+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "\ud83e\udd16 QMOI AI Enhanced System - Complete Automation & Intelligence"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "502a72cc-5405-44f2-b62c-2f62e4848d4a",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:27.240679+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

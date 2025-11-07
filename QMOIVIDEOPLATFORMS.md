@@ -1,3 +1,8 @@
+---
+title: "QMOI Video Platforms & App Build Automation"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

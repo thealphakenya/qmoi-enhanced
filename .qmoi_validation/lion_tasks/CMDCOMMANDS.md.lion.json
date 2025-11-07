@@ -1,0 +1,63 @@
+{
+  "id": "d528572f-804f-4900-952a-ea9d48c603ec",
+  "type": "remediation",
+  "file": "CMDCOMMANDS.md",
+  "created_at": "2025-11-07T13:04:57.973791+00:00",
+  "report": {
+    "file": "CMDCOMMANDS.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:04:57.973791+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Command Reference - Enhanced Universal Automation"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "present_but_unknown"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "ca572e65-0193-4e2f-bb2a-96faaa57f780",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:04:57.973791+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """
-Lightweight QMOI to-dos manager with simple persistence and LION-tag hooks.
+Consolidated QMOI to-dos manager.
 
-Usage:
-  python3 scripts/qmoi_todos.py add "title" --desc "..."
-  python3 scripts/qmoi_todos.py list
-  python3 scripts/qmoi_todos.py run <id>
-  python3 scripts/qmoi_todos.py export
+This script normalizes different todo shapes produced by other tools
+(validator, older qmoi_todos versions) and provides a small CLI for:
+ - add: create a todo (supports --desc and --note)
+ - list: show outstanding todos (robust to missing keys)
+ - done: mark an item done
+ - run: run a todo (writes a proposal in dry-run)
+ - export: export plan to a JSON file
+
+It intentionally tolerates missing fields and migrates old entries on load.
 """
 import argparse
 import json
@@ -14,55 +18,136 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-# Respect dry-run by default
+# Config
 PRODUCTION_CONFIRMED = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
-VALIDATION_DIR = Path(__file__).resolve().parents[1] / '.qmoi_validation'
-VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = REPO_ROOT / '.qmoi_validation'
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+TODOS_FILE = DATA_DIR / 'todos.json'
+
+
+def _now_iso():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def load_raw():
+    if not TODOS_FILE.exists():
+        return []
+    try:
+        return json.loads(TODOS_FILE.read_text(encoding='utf-8'))
+    except Exception:
+        # If the file is corrupted, back it up and return empty list
+        bak = TODOS_FILE.with_suffix('.json.bak')
+        TODOS_FILE.rename(bak)
+        print('Backed up corrupted todos.json to', bak)
+        return []
+
+
+def normalize_todo(t):
+    """Ensure a single canonical TODO shape for the UI and tooling."""
+    # migrate older shapes
+    normalized = {}
+    normalized['id'] = int(t.get('id') or t.get('Id') or 0)
+    normalized['title'] = t.get('title') or t.get('Title') or t.get('task') or 'Untitled'
+    # desc/note compatibility
+    normalized['desc'] = t.get('desc') or t.get('note') or t.get('description') or ''
+    # status/done compatibility
+    status = t.get('status')
+    if status is None:
+        # older shape uses done boolean
+        done_flag = t.get('done')
+        if done_flag is None:
+            normalized['status'] = 'done' if t.get('done_at') else 'todo'
+        else:
+            normalized['status'] = 'done' if bool(done_flag) else 'todo'
+    else:
+        normalized['status'] = status
+    # priority
+    try:
+        normalized['priority'] = int(t.get('priority') or t.get('prio') or 5)
+    except Exception:
+        normalized['priority'] = 5
+    normalized['created_at'] = t.get('created_at') or t.get('createdAt') or _now_iso()
+    normalized['runs'] = t.get('runs') or []
+    # keep original raw object for traceability
+    normalized['_raw'] = t
+    return normalized
+
+
+def load_todos():
+    raw = load_raw()
+    # if raw is a dict with keys, try to convert to list
+    if isinstance(raw, dict):
+        raw = [raw]
+    todos = []
+    max_id = 0
+    for item in raw:
+        nt = normalize_todo(item)
+        if nt['id'] > max_id:
+            max_id = nt['id']
+        todos.append(nt)
+    # ensure ids are present and unique
+    for i, t in enumerate(todos, start=1):
+        if not t['id']:
+            max_id += 1
+            t['id'] = max_id
+    return todos
+
+
+def save_todos(todos):
+    # Save the normalized shape (strip _raw) but keep helpful fields
+    out = []
+    for t in todos:
+        o = {
+            'id': t['id'],
+            'title': t['title'],
+            'desc': t.get('desc', ''),
+            'status': t.get('status', 'todo'),
+            'priority': int(t.get('priority', 5)),
+            'created_at': t.get('created_at', _now_iso()),
+            'runs': t.get('runs', [])
+        }
+        out.append(o)
+    TODOS_FILE.write_text(json.dumps(out, indent=2), encoding='utf-8')
+
 
 def write_proposal_for_todo(todo):
     try:
         import time
-        fname = VALIDATION_DIR / f'proposal-todo-{int(time.time())}.json'
+        fname = DATA_DIR / f'proposal-todo-{int(time.time())}.json'
         with open(fname, 'w', encoding='utf-8') as fh:
-            json.dump({'todo': todo, 'createdAt': datetime.now(timezone.utc).isoformat()}, fh, indent=2)
+            json.dump({'todo': todo, 'createdAt': _now_iso()}, fh, indent=2)
         print('Wrote proposal for todo to', fname)
         return str(fname)
     except Exception as e:
         print('Failed to write proposal:', e)
         return None
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = REPO_ROOT / ".qmoi_validation"
-DATA_DIR.mkdir(exist_ok=True)
-TODOS_FILE = DATA_DIR / "todos.json"
 
-
-def load_todos():
-    if not TODOS_FILE.exists():
-        return []
-    return json.loads(TODOS_FILE.read_text(encoding='utf-8'))
-
-
-def save_todos(todos):
-    TODOS_FILE.write_text(json.dumps(todos, indent=2), encoding='utf-8')
-
-
-def add_todo(title, desc):
+def add_todo(title, desc='', priority=5):
     todos = load_todos()
+    new_id = max([t['id'] for t in todos], default=0) + 1
     new = {
-        'id': (max([t['id'] for t in todos]) + 1) if todos else 1,
+        'id': new_id,
         'title': title,
         'desc': desc,
-        'created_at': datetime.now(timezone.utc).isoformat(),
-        'status': 'todo'
+        'status': 'todo',
+        'priority': int(priority),
+        'created_at': _now_iso(),
+        'runs': []
     }
     todos.append(new)
     save_todos(todos)
     return new
 
 
-def list_todos():
-    return load_todos()
+def list_todos(show_all=False):
+    todos = load_todos()
+    # sort by status (todo before done) and priority (lower number = higher priority)
+    def sort_key(x):
+        done = 1 if x.get('status') == 'done' else 0
+        return (done, x.get('priority', 5), x.get('created_at'))
+    return sorted(todos, key=sort_key)
 
 
 def run_todo(todo_id):
@@ -70,35 +155,44 @@ def run_todo(todo_id):
     for t in todos:
         if t['id'] == todo_id:
             t['status'] = 'running'
-            t.setdefault('runs', []).append({'started': datetime.now(timezone.utc).isoformat()})
-            # Safe behavior: write a proposal describing the run instead of executing
+            t.setdefault('runs', []).append({'started': _now_iso()})
             if not PRODUCTION_CONFIRMED:
                 write_proposal_for_todo(t)
                 t['status'] = 'proposed'
-                t['runs'][-1]['ended'] = datetime.now(timezone.utc).isoformat()
+                t['runs'][-1]['ended'] = _now_iso()
                 save_todos(todos)
                 return t
-
-            # If production confirmed, execute actual hooks (placeholder for integration)
             try:
-                # Here you would call the actual orchestration code or shells
-                # For now we mark the todo done to avoid silent destructive actions
+                # Placeholder for actual execution logic
                 t['status'] = 'done'
-                t['runs'][-1]['ended'] = datetime.now(timezone.utc).isoformat()
+                t['runs'][-1]['ended'] = _now_iso()
                 save_todos(todos)
                 return t
             except Exception as e:
                 t['status'] = 'failed'
-                t['runs'][-1]['ended'] = datetime.now(timezone.utc).isoformat()
+                t['runs'][-1]['ended'] = _now_iso()
                 t['runs'][-1]['error'] = str(e)
                 save_todos(todos)
                 return t
     raise KeyError(f"Todo id {todo_id} not found")
 
 
+def mark_done(uid):
+    todos = load_todos()
+    for t in todos:
+        if t['id'] == uid:
+            t['status'] = 'done'
+            t.setdefault('runs', [])
+            t['runs'].append({'marked_done': _now_iso()})
+            save_todos(todos)
+            return t
+    raise KeyError(f"Todo id {uid} not found")
+
+
 def export_plan(path: Path):
     todos = load_todos()
-    path.write_text(json.dumps(todos, indent=2), encoding='utf-8')
+    plan = [t for t in todos if t.get('status') != 'done']
+    Path(path).write_text(json.dumps(plan, indent=2), encoding='utf-8')
 
 
 def main():
@@ -108,26 +202,36 @@ def main():
     a = sub.add_parser('add')
     a.add_argument('title')
     a.add_argument('--desc', default='')
+    a.add_argument('--note', default=None)
+    a.add_argument('--priority', default=5, type=int)
 
     sub.add_parser('list')
-
     r = sub.add_parser('run')
     r.add_argument('id', type=int)
-
+    d = sub.add_parser('done')
+    d.add_argument('id', type=int)
     e = sub.add_parser('export')
-    e.add_argument('--out', default=str(REPO_ROOT / '.qmoi_validation' / 'todos_export.json'))
+    e.add_argument('--out', default=str(DATA_DIR / 'todos_export.json'))
 
     args = ap.parse_args()
     if args.cmd == 'add':
-        t = add_todo(args.title, args.desc)
+        desc = args.desc if args.desc is not None and args.desc != '' else (args.note or '')
+        t = add_todo(args.title, desc=desc, priority=args.priority)
         print('Added', t)
     elif args.cmd == 'list':
         for t in list_todos():
-            print(f"[{t['id']}] {t['title']} ({t['status']})")
+            status = 'DONE' if t.get('status') == 'done' else 'TODO'
+            print(f"[{t['id']}] {t['title']} ({status}, p{t.get('priority',5)})")
     elif args.cmd == 'run':
         try:
             out = run_todo(args.id)
             print('Ran', out)
+        except KeyError as e:
+            print(e)
+    elif args.cmd == 'done':
+        try:
+            out = mark_done(args.id)
+            print('Marked done', out['id'])
         except KeyError as e:
             print(e)
     elif args.cmd == 'export':
@@ -136,106 +240,6 @@ def main():
     else:
         ap.print_help()
 
-
-if __name__ == '__main__':
-    main()
-#!/usr/bin/env python3
-"""
-Lightweight QMOI to-dos manager.
-
-Features:
-- JSON-backed persistent to-do list at .qmoi_validation/todos.json
-- Create tasks, list, mark done, add notes, set priority
-- Export a plan summary for the validator to use
-
-Usage: python scripts/qmoi_todos.py add "Title" --note "..." --priority 3
-       python scripts/qmoi_todos.py list
-       python scripts/qmoi_todos.py done 3
-"""
-import os
-import json
-import argparse
-from datetime import datetime
-
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-OUT = os.path.join(ROOT, '.qmoi_validation')
-os.makedirs(OUT, exist_ok=True)
-TODO_FILE = os.path.join(OUT, 'todos.json')
-
-def load():
-    if os.path.exists(TODO_FILE):
-        return json.load(open(TODO_FILE, 'r', encoding='utf-8'))
-    return []
-
-def save(data):
-    json.dump(data, open(TODO_FILE, 'w', encoding='utf-8'), indent=2)
-
-def add(title, note=None, priority=5):
-    data = load()
-    item = {
-        'id': (max([i['id'] for i in data]) + 1) if data else 1,
-        'title': title,
-        'note': note or '',
-        'priority': int(priority),
-        'created_at': datetime.utcnow().isoformat() + 'Z',
-        'done': False,
-        'done_at': None
-    }
-    data.append(item)
-    save(data)
-    print('Added', item['id'])
-
-def list_items(show_all=False):
-    data = load()
-    for i in sorted(data, key=lambda x: (x['done'], x['priority'])):
-        if not show_all and i['done']:
-            continue
-        status = 'DONE' if i['done'] else 'TODO'
-        print(f"{i['id']:3d} [{status}] (p{i['priority']}) {i['title']}")
-
-def mark_done(uid):
-    data = load()
-    for i in data:
-        if i['id'] == uid:
-            i['done'] = True
-            i['done_at'] = datetime.utcnow().isoformat() + 'Z'
-            save(data)
-            print('Marked done', uid)
-            return
-    print('Not found', uid)
-
-def export_plan(path=None):
-    data = load()
-    plan = [i for i in data if not i['done']]
-    out = path or os.path.join(OUT, 'plan_export.json')
-    with open(out, 'w', encoding='utf-8') as fh:
-        json.dump(plan, fh, indent=2)
-    print('Exported plan to', out)
-
-def main():
-    p = argparse.ArgumentParser()
-    sub = p.add_subparsers(dest='cmd')
-    pa = sub.add_parser('add')
-    pa.add_argument('title')
-    pa.add_argument('--note')
-    pa.add_argument('--priority', default=5)
-    pb = sub.add_parser('list')
-    pb.add_argument('--all', action='store_true')
-    pc = sub.add_parser('done')
-    pc.add_argument('id', type=int)
-    pe = sub.add_parser('export')
-    pe.add_argument('--path')
-    args = p.parse_args()
-    if args.cmd == 'add':
-        add(args.title, note=args.note, priority=args.priority)
-    elif args.cmd == 'list':
-        list_items(show_all=args.all)
-    elif args.cmd == 'done':
-        mark_done(args.id)
-    elif args.cmd == 'export':
-        export_plan(path=args.path)
-    else:
-        p.print_help()
 
 if __name__ == '__main__':
     main()

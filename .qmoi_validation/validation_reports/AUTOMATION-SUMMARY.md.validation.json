@@ -1,0 +1,47 @@
+{
+  "file": "AUTOMATION-SUMMARY.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:20.374322+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "\ud83d\ude80 QMOI AI Automated Linting System - Implementation Summary"
+    },
+    "frontmatter_present": {
+      "ok": false
+    },
+    "links": {
+      "ok": true,
+      "detail": []
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "4ba1830a-3fd4-48a7-9a18-d977208cf49a",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:12:20.374322+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

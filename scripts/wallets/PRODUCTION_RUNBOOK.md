@@ -1,3 +1,8 @@
+---
+title: "QMOI Wallets — Production Runbook (High-level)"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Wallets — Production Runbook (High-level)
 
 This runbook documents the safe, auditable steps to enable live wallet checks and transactions.

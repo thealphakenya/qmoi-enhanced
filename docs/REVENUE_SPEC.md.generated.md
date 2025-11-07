@@ -1,3 +1,8 @@
+---
+title: "REVENUE_SPEC (auto-generated - review required)"
+qmoi_validation_frontmatter: true
+---
+
 # REVENUE_SPEC (auto-generated - review required)
 
 This document maps detected revenue-related claims and keywords to source files.

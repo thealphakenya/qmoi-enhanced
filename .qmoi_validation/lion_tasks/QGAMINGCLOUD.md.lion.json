@@ -1,0 +1,63 @@
+{
+  "id": "70223d96-816e-4fa0-bdd1-e135cba89cf0",
+  "type": "remediation",
+  "file": "QGAMINGCLOUD.md",
+  "created_at": "2025-11-07T13:05:01.543938+00:00",
+  "report": {
+    "file": "QGAMINGCLOUD.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:01.543938+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Gaming Cloud - Advanced Gaming Platform & Ecosystem"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "399dabeb-9f1d-4551-afa5-03b5fd7bf128",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:01.543938+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

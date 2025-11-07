@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/QMOISPACEDEV.md (104 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/QMOISPACEDEV.md (104 priority)
 
 **File**: `qmoi-enhanced/QMOISPACEDEV.md`

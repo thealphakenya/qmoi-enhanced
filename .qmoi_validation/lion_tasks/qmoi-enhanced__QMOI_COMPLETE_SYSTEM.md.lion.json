@@ -1,0 +1,63 @@
+{
+  "id": "ee117cf7-4c89-4afa-b5e8-29c51c21910f",
+  "type": "remediation",
+  "file": "qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md",
+  "created_at": "2025-11-07T13:05:36.725024+00:00",
+  "report": {
+    "file": "qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:36.725024+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Complete System Overview"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "present_but_unknown"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "67dda2c5-c531-4b7d-b1e3-b8f95280aaad",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:36.725024+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

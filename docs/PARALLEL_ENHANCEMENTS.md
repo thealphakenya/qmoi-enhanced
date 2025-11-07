@@ -1,3 +1,8 @@
+---
+title: "Parallel Enhancements"
+qmoi_validation_frontmatter: true
+---
+
 # Parallel Enhancements
 
 This doc outlines the parallel execution improvements and how to use them.

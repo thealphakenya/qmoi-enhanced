@@ -1,0 +1,63 @@
+{
+  "id": "11fd58cc-d37d-4898-9cee-caf0ec8ca873",
+  "type": "remediation",
+  "file": "placeholder_scan_summary.md",
+  "created_at": "2025-11-07T13:05:23.487488+00:00",
+  "report": {
+    "file": "placeholder_scan_summary.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:23.487488+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "Placeholder Scan Summary"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "87cd10c0-ad7c-4682-b207-bb7f8689d1b2",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:23.487488+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

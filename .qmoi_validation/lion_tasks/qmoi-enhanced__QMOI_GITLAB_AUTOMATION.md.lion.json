@@ -1,0 +1,63 @@
+{
+  "id": "1bc3e0d1-79d5-4054-9a1a-8dd01ff36115",
+  "type": "remediation",
+  "file": "qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md",
+  "created_at": "2025-11-07T13:05:37.135155+00:00",
+  "report": {
+    "file": "qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:37.135155+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI GitLab Automation Guide"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "present_but_unknown"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "b1724816-3d1d-44a7-8364-6540adeaf1de",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:37.135155+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

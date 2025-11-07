@@ -1,0 +1,63 @@
+{
+  "id": "25105439-23d8-48e6-a044-1c218d7b85a4",
+  "type": "remediation",
+  "file": "ALLQMOIAUTOEVOLVINGENVS.md",
+  "created_at": "2025-11-07T13:04:56.904808+00:00",
+  "report": {
+    "file": "ALLQMOIAUTOEVOLVINGENVS.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:04:56.904808+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "ALL QMOI Auto-Evolving Environments - Universal Programming Language Support"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "present_but_unknown"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "139fba9b-2850-4422-850e-a263f97c6e59",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:04:56.904808+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

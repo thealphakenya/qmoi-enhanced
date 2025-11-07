@@ -1,0 +1,63 @@
+{
+  "id": "6c8b36f6-5552-486c-b827-853b281a9a7a",
+  "type": "remediation",
+  "file": "QGLOBAL.md",
+  "created_at": "2025-11-07T13:05:01.605021+00:00",
+  "report": {
+    "file": "QGLOBAL.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:01.605021+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "Qglobal Music Production & Licensing Company"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "1e82605d-4228-47aa-a70d-f3197557e3df",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:01.605021+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "cf8a331e-01c1-4f2c-ad02-cca79dd3b917",
+  "type": "remediation",
+  "file": "tools/issue_drafts/18_qmoi-enhanced_src_services_VoiceRecognitionService_ts.md",
+  "created_at": "2025-11-07T13:05:44.660730+00:00",
+  "report": {
+    "file": "tools/issue_drafts/18_qmoi-enhanced_src_services_VoiceRecognitionService_ts.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:44.660730+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "Fix placeholders in qmoi-enhanced/src/services/VoiceRecognitionService.ts (61 priority)"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "5436f86f-6bd4-4fd5-bb7d-e0109519b7dd",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:44.660730+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

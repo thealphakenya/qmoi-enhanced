@@ -1,0 +1,74 @@
+{
+  "id": "77d4876b-1301-4bad-9c25-37c2aa444d8e",
+  "type": "remediation",
+  "file": "qmoi-enhanced/MONITORING.md",
+  "created_at": "2025-11-07T13:05:26.451748+00:00",
+  "report": {
+    "file": "qmoi-enhanced/MONITORING.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:26.451748+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Monitoring & Analytics Guide"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": [
+          {
+            "label": "QMOIAUTOFIXREADME.md",
+            "target": "./QMOIAUTOFIXREADME.md",
+            "ok": true
+          },
+          {
+            "label": "REFERENCES.md",
+            "target": "./REFERENCES.md",
+            "ok": true
+          }
+        ]
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "367d8076-d7cd-40ca-81a2-58f66c0c0aa4",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:26.451748+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

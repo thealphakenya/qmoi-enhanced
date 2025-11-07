@@ -1,0 +1,89 @@
+{
+  "id": "46047bc0-35f3-466d-8d0b-c09a7d47b432",
+  "type": "remediation",
+  "file": "qmoi-enhanced/GITHUBPAYED.md",
+  "created_at": "2025-11-07T13:05:25.709504+00:00",
+  "report": {
+    "file": "qmoi-enhanced/GITHUBPAYED.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:25.709504+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "GITHUBPAYED.md - GitHub Paid Features in QMOI"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": [
+          {
+            "label": "QMOICLONEGITHUB.md",
+            "target": "./QMOICLONEGITHUB.md",
+            "ok": true
+          },
+          {
+            "label": "QMOIALLPLATFORMS.md",
+            "target": "./QMOIALLPLATFORMS.md",
+            "ok": true
+          },
+          {
+            "label": "QMOIFREE.md",
+            "target": "./QMOIFREE.md",
+            "ok": true
+          },
+          {
+            "label": "PAYEDGITLAB.md",
+            "target": "./PAYEDGITLAB.md",
+            "ok": true
+          },
+          {
+            "label": "QUANTUMPAYED.md",
+            "target": "./QUANTUMPAYED.md",
+            "ok": true
+          }
+        ]
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "7fd3bb85-4139-4a25-a16a-ce0a4a8166e2",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:25.709504+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

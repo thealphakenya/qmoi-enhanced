@@ -78,24 +78,49 @@ All outputs and reports are stored in `.qmoi_validation/` so CI or other tools c
 <!-- QMOI_VALIDATION_START -->
 {
   "file": "docs/VALIDATION_TOOLS.md",
-  "validated_at": "2025-10-26T20:51:24.580438Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:03:53.260806+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
       "ok": true,
       "detail": "QMOI Validation Tools"
     },
-    {
-      "name": "links",
+    "frontmatter_present": {
+      "ok": false
+    },
+    "links": {
       "ok": true,
       "detail": []
+    },
+    "build_info": {
+      "build": "not_found"
     }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "735061c5-43c8-4213-80e6-5635724eda4a",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:03:53.260806+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
   }
 }
 <!-- QMOI_VALIDATION_END -->

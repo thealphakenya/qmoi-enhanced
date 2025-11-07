@@ -1,0 +1,249 @@
+{
+  "id": "28d3413e-70e2-4ea1-ae74-ad7ba0d7e21d",
+  "type": "remediation",
+  "file": "qmoi-enhanced/QMOIALLPLATFORMS.md",
+  "created_at": "2025-11-07T13:05:29.471895+00:00",
+  "report": {
+    "file": "qmoi-enhanced/QMOIALLPLATFORMS.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:29.471895+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI ALL PLATFORMS - Complete Platform Ecosystem"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": false,
+        "detail": [
+          {
+            "label": "QMOICLONEGITHUB.md",
+            "target": "./QMOICLONEGITHUB.md",
+            "ok": true
+          },
+          {
+            "label": "GITHUBPAYED.md",
+            "target": "./GITHUBPAYED.md",
+            "ok": true
+          },
+          {
+            "label": "QMOICLONEGITLAB.md",
+            "target": "./QMOICLONEGITLAB.md",
+            "ok": true
+          },
+          {
+            "label": "PAYEDGITLAB.md",
+            "target": "./PAYEDGITLAB.md",
+            "ok": true
+          },
+          {
+            "label": "QMOICLONEVERCEL.md",
+            "target": "./QMOICLONEVERCEL.md",
+            "ok": false
+          },
+          {
+            "label": "VERCELPAYED.md",
+            "target": "./VERCELPAYED.md",
+            "ok": false
+          },
+          {
+            "label": "QMOICLONEGITPOD.md",
+            "target": "./QMOICLONEGITPOD.md",
+            "ok": true
+          },
+          {
+            "label": "GITPODPAYED.md",
+            "target": "./GITPODPAYED.md",
+            "ok": true
+          },
+          {
+            "label": "QMOICLONE.md",
+            "target": "./QMOICLONE.md",
+            "ok": true
+          },
+          {
+            "label": "NETLIFYPAYED.md",
+            "target": "./NETLIFYPAYED.md",
+            "ok": false
+          },
+          {
+            "label": "QMOICLONEQUANTUM.md",
+            "target": "./QMOICLONEQUANTUM.md",
+            "ok": false
+          },
+          {
+            "label": "QUANTUMPAYED.md",
+            "target": "./QUANTUMPAYED.md",
+            "ok": true
+          },
+          {
+            "label": "QMOICLONEHF.md",
+            "target": "./QMOICLONEHF.md",
+            "ok": false
+          },
+          {
+            "label": "HFPAYED.md",
+            "target": "./HFPAYED.md",
+            "ok": false
+          },
+          {
+            "label": "QMOICLONEGITHUB.md",
+            "target": "./QMOICLONEGITHUB.md",
+            "ok": true
+          },
+          {
+            "label": "QMOICLONEGITLAB.md",
+            "target": "./QMOICLONEGITLAB.md",
+            "ok": true
+          },
+          {
+            "label": "QMOICLONEVERCEL.md",
+            "target": "./QMOICLONEVERCEL.md",
+            "ok": false
+          },
+          {
+            "label": "QMOICLONEGITPOD.md",
+            "target": "./QMOICLONEGITPOD.md",
+            "ok": true
+          },
+          {
+            "label": "QMOICLONE.md",
+            "target": "./QMOICLONE.md",
+            "ok": true
+          },
+          {
+            "label": "QMOICLONEQUANTUM.md",
+            "target": "./QMOICLONEQUANTUM.md",
+            "ok": false
+          },
+          {
+            "label": "QMOICLONEHF.md",
+            "target": "./QMOICLONEHF.md",
+            "ok": false
+          },
+          {
+            "label": "GITHUBPAYED.md",
+            "target": "./GITHUBPAYED.md",
+            "ok": true
+          },
+          {
+            "label": "PAYEDGITLAB.md",
+            "target": "./PAYEDGITLAB.md",
+            "ok": true
+          },
+          {
+            "label": "VERCELPAYED.md",
+            "target": "./VERCELPAYED.md",
+            "ok": false
+          },
+          {
+            "label": "GITPODPAYED.md",
+            "target": "./GITPODPAYED.md",
+            "ok": true
+          },
+          {
+            "label": "NETLIFYPAYED.md",
+            "target": "./NETLIFYPAYED.md",
+            "ok": false
+          },
+          {
+            "label": "QUANTUMPAYED.md",
+            "target": "./QUANTUMPAYED.md",
+            "ok": true
+          },
+          {
+            "label": "HFPAYED.md",
+            "target": "./HFPAYED.md",
+            "ok": false
+          },
+          {
+            "label": "QMOI-CROSS-PLATFORM.md",
+            "target": "./QMOI-CROSS-PLATFORM.md",
+            "ok": false
+          },
+          {
+            "label": "QMOI-PLATFORM-AUTOMATION.md",
+            "target": "./QMOI-PLATFORM-AUTOMATION.md",
+            "ok": false
+          },
+          {
+            "label": "QMOI-PLATFORM-MONITORING.md",
+            "target": "./QMOI-PLATFORM-MONITORING.md",
+            "ok": false
+          },
+          {
+            "label": "QMOI-PLATFORM-SECURITY.md",
+            "target": "./QMOI-PLATFORM-SECURITY.md",
+            "ok": false
+          },
+          {
+            "label": "QMOI-PLATFORM-ANALYTICS.md",
+            "target": "./QMOI-PLATFORM-ANALYTICS.md",
+            "ok": false
+          },
+          {
+            "label": "QMOICLONEGITHUB.md",
+            "target": "./QMOICLONEGITHUB.md",
+            "ok": true
+          },
+          {
+            "label": "GITHUBPAYED.md",
+            "target": "./GITHUBPAYED.md",
+            "ok": true
+          },
+          {
+            "label": "QMOIFREE.md",
+            "target": "./QMOIFREE.md",
+            "ok": true
+          },
+          {
+            "label": "QMOI-CLOUD.md",
+            "target": "./QMOI-CLOUD.md",
+            "ok": true
+          }
+        ]
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "040cc3bc-2e0c-4bc3-933d-f6226f7e7bd2",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:29.471895+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

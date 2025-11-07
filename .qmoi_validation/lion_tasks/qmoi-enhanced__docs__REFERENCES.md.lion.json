@@ -1,0 +1,79 @@
+{
+  "id": "640e960f-53d3-46ef-b605-b3400aa16e58",
+  "type": "remediation",
+  "file": "qmoi-enhanced/docs/REFERENCES.md",
+  "created_at": "2025-11-07T13:05:42.057938+00:00",
+  "report": {
+    "file": "qmoi-enhanced/docs/REFERENCES.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:42.057938+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": false,
+        "detail": ""
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": [
+          {
+            "label": "QMOI GitLab Self-Healing CI/CD Automation",
+            "target": "./QMOIGITLABDEV.md",
+            "ok": true
+          },
+          {
+            "label": "QMOI Vercel Self-Healing CI/CD Automation",
+            "target": "./QMOIVERCELDEV.md",
+            "ok": true
+          },
+          {
+            "label": "QMOI GitHub Actions Self-Healing CI/CD Automation",
+            "target": "./QMOIGITHUBDEV.md",
+            "ok": true
+          }
+        ]
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "d75493bb-7589-43d3-b5dd-38746372124c",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:42.057938+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

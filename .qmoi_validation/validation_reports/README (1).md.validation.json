@@ -1,0 +1,47 @@
+{
+  "file": "README (1).md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:20.855032+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "\\# QMOI - Quantum Master Orchestrator Intelligence"
+    },
+    "frontmatter_present": {
+      "ok": true
+    },
+    "links": {
+      "ok": true,
+      "detail": [
+        {
+          "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "ok": true
+        },
+        {
+          "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
+          "ok": true
+        },
+        {
+          "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "target": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+          "ok": true
+        }
+      ]
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": true,
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

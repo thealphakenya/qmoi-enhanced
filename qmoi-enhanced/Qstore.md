@@ -1,3 +1,8 @@
+---
+title: "Qstore - QMOI App Store (skv)"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

@@ -1,3 +1,8 @@
+---
+title: "QMOI Vercel Self-Healing CI/CD Automation"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

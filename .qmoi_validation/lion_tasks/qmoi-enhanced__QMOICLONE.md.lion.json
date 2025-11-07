@@ -1,0 +1,84 @@
+{
+  "id": "a35293cc-f47f-4f5b-bf04-7c81306f0522",
+  "type": "remediation",
+  "file": "qmoi-enhanced/QMOICLONE.md",
+  "created_at": "2025-11-07T13:05:31.580113+00:00",
+  "report": {
+    "file": "qmoi-enhanced/QMOICLONE.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:31.580113+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Cross-Platform Cloning & Optimization (QMOICLONE)"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": [
+          {
+            "label": "QMOICLONEGITPOD.md",
+            "target": "./QMOICLONEGITPOD.md",
+            "ok": true
+          },
+          {
+            "label": "QMOIGITLABDEV.md",
+            "target": "./QMOIGITLABDEV.md",
+            "ok": true
+          },
+          {
+            "label": "QMOIVERCELDEV.md",
+            "target": "./QMOIVERCELDEV.md",
+            "ok": true
+          },
+          {
+            "label": "REFERENCES.md",
+            "target": "./REFERENCES.md",
+            "ok": true
+          }
+        ]
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "ceed6bef-7a5b-4f94-a9d4-33813526bab2",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:31.580113+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

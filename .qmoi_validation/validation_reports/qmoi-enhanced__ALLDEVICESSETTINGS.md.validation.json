@@ -1,0 +1,47 @@
+{
+  "file": "qmoi-enhanced/ALLDEVICESSETTINGS.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:22.919989+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "QMOI All Devices Settings & Features Reference"
+    },
+    "frontmatter_present": {
+      "ok": false
+    },
+    "links": {
+      "ok": true,
+      "detail": []
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "338c3083-6aeb-4a23-bdcf-35b65f5603c4",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:12:22.919989+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

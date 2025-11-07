@@ -1,0 +1,63 @@
+{
+  "id": "c2d97e00-6cb0-4c2c-94de-b71f8ebe299d",
+  "type": "remediation",
+  "file": "UNUSED_API_ENDPOINTS.md",
+  "created_at": "2025-11-07T13:05:14.912240+00:00",
+  "report": {
+    "file": "UNUSED_API_ENDPOINTS.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:14.912240+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Unused API Endpoints Report"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "8f8297ac-edab-44eb-82c1-f896864d6deb",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:14.912240+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

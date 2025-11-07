@@ -1,0 +1,84 @@
+{
+  "id": "73a35387-5ee1-42fa-81ec-e98a45d152f7",
+  "type": "remediation",
+  "file": "QMOISPACEDEV.md",
+  "created_at": "2025-11-07T13:05:10.050136+00:00",
+  "report": {
+    "file": "QMOISPACEDEV.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:10.050136+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Space Development - Hugging Face Integration v3.0"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": [
+          {
+            "label": "MASTEROWNS.md",
+            "target": "./MASTEROWNS.md",
+            "ok": true
+          },
+          {
+            "label": "QMOIDEV.md",
+            "target": "./QMOIDEV.md",
+            "ok": true
+          },
+          {
+            "label": "QMOIALWAYSPARALLEL.md",
+            "target": "./QMOIALWAYSPARALLEL.md",
+            "ok": true
+          },
+          {
+            "label": "MASTEROWNS.md",
+            "target": "./MASTEROWNS.md",
+            "ok": true
+          }
+        ]
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "1f32e871-f84e-43d0-b942-cdc4fa572303",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:10.050136+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

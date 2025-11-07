@@ -1,3 +1,10 @@
+---
+title: "TROUBLESHOOTING"
+qmoi_validation_frontmatter: true
+---
+
+# TROUBLESHOOTING
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

@@ -1,0 +1,47 @@
+{
+  "file": "BUILD_COMPLETION_SUMMARY.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:20.379396+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "\ud83c\udf89 QMOI AI Build Completion Summary"
+    },
+    "frontmatter_present": {
+      "ok": false
+    },
+    "links": {
+      "ok": true,
+      "detail": []
+    },
+    "build_info": {
+      "build": "present_but_unknown"
+    }
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "c9959f57-5285-4a18-871a-c99803c7d05a",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:12:20.379396+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

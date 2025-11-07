@@ -1,0 +1,88 @@
+{
+  "file": "QMOIHUGGINGFACESPACESSETUPINST.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:20.740046+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "QMOI Hugging Face Spaces Setup & Integration Guide"
+    },
+    "frontmatter_present": {
+      "ok": false
+    },
+    "links": {
+      "ok": true,
+      "detail": [
+        {
+          "label": "QMOI-HUGGINGFACE-ENHANCEMENTS.md",
+          "target": "QMOI-HUGGINGFACE-ENHANCEMENTS.md",
+          "ok": true
+        },
+        {
+          "label": "config/qmoi_huggingface_config.json",
+          "target": "config/qmoi_huggingface_config.json",
+          "ok": true
+        },
+        {
+          "label": "scripts/qmoi_huggingface_spaces.js",
+          "target": "scripts/qmoi_huggingface_spaces.js",
+          "ok": true
+        },
+        {
+          "label": "scripts/qmoi_env_manager.js",
+          "target": "scripts/qmoi_env_manager.js",
+          "ok": true
+        },
+        {
+          "label": "scripts/qmoi_huggingface_spaces.js",
+          "target": "./scripts/qmoi_huggingface_spaces.js",
+          "ok": true
+        },
+        {
+          "label": "scripts/hf_model_sync.py",
+          "target": "./scripts/hf_model_sync.py",
+          "ok": true
+        },
+        {
+          "label": "scripts/test_hf_space_ui.py",
+          "target": "./scripts/test_hf_space_ui.py",
+          "ok": true
+        },
+        {
+          "label": "REFERENCES.md",
+          "target": "./REFERENCES.md",
+          "ok": true
+        }
+      ]
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "dfb95a5e-b025-4e81-90bb-e280d94144da",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:12:20.740046+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

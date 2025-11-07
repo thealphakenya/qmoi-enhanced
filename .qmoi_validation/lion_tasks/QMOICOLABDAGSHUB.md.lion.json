@@ -1,0 +1,63 @@
+{
+  "id": "47e713db-5a1d-4a79-80c3-a229a4a65d57",
+  "type": "remediation",
+  "file": "QMOICOLABDAGSHUB.md",
+  "created_at": "2025-11-07T13:05:06.029563+00:00",
+  "report": {
+    "file": "QMOICOLABDAGSHUB.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:06.029563+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Colab & Dagshub Optimization"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "b282ed17-1812-4925-b56a-acf4e3f389f9",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:06.029563+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

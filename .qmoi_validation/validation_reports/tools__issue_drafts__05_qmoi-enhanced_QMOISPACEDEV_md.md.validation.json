@@ -1,0 +1,31 @@
+{
+  "file": "tools/issue_drafts/05_qmoi-enhanced_QMOISPACEDEV_md.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:23.439772+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "Fix placeholders in qmoi-enhanced/QMOISPACEDEV.md (104 priority)"
+    },
+    "frontmatter_present": {
+      "ok": true
+    },
+    "links": {
+      "ok": true,
+      "detail": []
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": true,
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}

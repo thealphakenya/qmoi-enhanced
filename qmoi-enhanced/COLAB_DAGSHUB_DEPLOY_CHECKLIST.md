@@ -1,3 +1,8 @@
+---
+title: "QMOI Colab/Dagshub Deployment Checklist"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

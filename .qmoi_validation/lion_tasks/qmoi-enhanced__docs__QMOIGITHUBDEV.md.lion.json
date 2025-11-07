@@ -1,0 +1,74 @@
+{
+  "id": "87b80232-4e42-4bdf-8d45-fcc97063fa58",
+  "type": "remediation",
+  "file": "qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+  "created_at": "2025-11-07T13:05:41.692963+00:00",
+  "report": {
+    "file": "qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:41.692963+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI GitHub Actions Self-Healing CI/CD Automation"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": [
+          {
+            "label": "QMOIGITLABDEV.md",
+            "target": "./QMOIGITLABDEV.md",
+            "ok": true
+          },
+          {
+            "label": "REFERENCES.md",
+            "target": "./REFERENCES.md",
+            "ok": true
+          }
+        ]
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "62414ce6-69cc-4441-b39f-f3a2336a2d87",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:41.692963+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

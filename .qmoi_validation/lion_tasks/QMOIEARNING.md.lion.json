@@ -1,0 +1,63 @@
+{
+  "id": "8f4ee8d1-0ff3-46eb-8e22-5b32fc2c6df2",
+  "type": "remediation",
+  "file": "QMOIEARNING.md",
+  "created_at": "2025-11-07T13:05:06.680297+00:00",
+  "report": {
+    "file": "QMOIEARNING.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:06.680297+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Earning - Enhanced AI Autonomous Earning System"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "2a4308e6-d353-4227-ac7f-af1d0d5a3f2b",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:06.680297+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

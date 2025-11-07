@@ -1,0 +1,63 @@
+{
+  "id": "475f504e-26fa-42cd-8dfd-39669fc0f12b",
+  "type": "remediation",
+  "file": "QMOICLONEVERCEL.md",
+  "created_at": "2025-11-07T13:05:05.968370+00:00",
+  "report": {
+    "file": "QMOICLONEVERCEL.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:05.968370+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "QMOI Clone (Vercel)"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "4cc22079-a684-4ccd-93e1-7f5f718737d0",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:05.968370+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

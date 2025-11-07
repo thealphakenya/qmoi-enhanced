@@ -1,3 +1,10 @@
+---
+title: "INSTALLATION"
+qmoi_validation_frontmatter: true
+---
+
+# INSTALLATION
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

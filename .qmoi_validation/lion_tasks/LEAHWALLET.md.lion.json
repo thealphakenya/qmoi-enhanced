@@ -1,0 +1,63 @@
+{
+  "id": "0e97260b-bf50-475c-9aad-c246c4d50fcb",
+  "type": "remediation",
+  "file": "LEAHWALLET.md",
+  "created_at": "2025-11-07T13:05:00.109912+00:00",
+  "report": {
+    "file": "LEAHWALLET.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:00.109912+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "Leah Wallet \u2014 Setup & Autotest (SISTER-assisted)"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "2bb7261e-5dbf-41fb-ad63-b0ab9a3f733a",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:00.109912+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

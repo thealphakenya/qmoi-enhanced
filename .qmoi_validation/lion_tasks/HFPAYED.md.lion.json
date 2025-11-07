@@ -1,0 +1,63 @@
+{
+  "id": "da511c77-cb8b-4da5-bf17-6cfc4e999ef1",
+  "type": "remediation",
+  "file": "HFPAYED.md",
+  "created_at": "2025-11-07T13:04:59.451599+00:00",
+  "report": {
+    "file": "HFPAYED.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:04:59.451599+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "Hugging Face Paid Plan Notes"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "639fb9eb-ab3a-4f28-8040-4ea86be2be41",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:04:59.451599+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

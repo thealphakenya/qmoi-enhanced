@@ -1,0 +1,63 @@
+{
+  "id": "cf5797ef-9894-41b0-88fd-928c9e13fa49",
+  "type": "remediation",
+  "file": "docs/PARALLEL_ENHANCEMENTS.md",
+  "created_at": "2025-11-07T13:05:18.469019+00:00",
+  "report": {
+    "file": "docs/PARALLEL_ENHANCEMENTS.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:18.469019+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "Parallel Enhancements"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "not_found"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "f8ad4e30-5fda-4253-ab35-d679a5d8fa4f",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:18.469019+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

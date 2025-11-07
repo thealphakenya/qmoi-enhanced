@@ -1,0 +1,63 @@
+{
+  "id": "307e747a-edaf-4df3-adbb-8d0c5f312ca3",
+  "type": "remediation",
+  "file": "qmoi-enhanced/API.md",
+  "created_at": "2025-11-07T13:05:24.094299+00:00",
+  "report": {
+    "file": "qmoi-enhanced/API.md",
+    "validator": "qmoi-validator-v3",
+    "checked_at": "2025-11-07T13:05:24.094299+00:00",
+    "checks": {
+      "readable": {
+        "ok": true
+      },
+      "title_present": {
+        "ok": true,
+        "detail": "Q-city API Documentation"
+      },
+      "frontmatter_present": {
+        "ok": false
+      },
+      "links": {
+        "ok": true,
+        "detail": []
+      },
+      "build_info": {
+        "build": "present_but_unknown"
+      }
+    },
+    "ok": false,
+    "lion_task": {
+      "id": "54a4469a-ca73-4cd7-ac5f-56702bab54b4",
+      "task": "remediate_markdown_issues",
+      "created_at": "2025-11-07T13:05:24.094299+00:00",
+      "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+      "priority": "medium",
+      "recommended_actions": [
+        "add H1 title",
+        "add frontmatter",
+        "fix broken links"
+      ],
+      "qcity_hints": {
+        "preferred_cluster": "qcity-default",
+        "storage_bucket": "qcity-artifacts"
+      }
+    },
+    "qvs_provenance": {
+      "codespace": "silver-journey-r4596xxpxg99cw594",
+      "github_run_id": null,
+      "user": "vscode",
+      "host": "codespaces-08409b"
+    }
+  },
+  "priority": "medium",
+  "recommended_actions": [
+    "open file and patch title/frontmatter",
+    "update links",
+    "re-run validate_md.py"
+  ],
+  "qcity_hints": {
+    "preferred_cluster": "qcity-default",
+    "storage_bucket": "qcity-artifacts"
+  }
+}

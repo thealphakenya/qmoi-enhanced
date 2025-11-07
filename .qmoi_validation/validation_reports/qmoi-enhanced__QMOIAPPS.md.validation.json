@@ -1,0 +1,113 @@
+{
+  "file": "qmoi-enhanced/QMOIAPPS.md",
+  "validator": "qmoi-validator-v3",
+  "checked_at": "2025-11-07T13:12:23.134927+00:00",
+  "checks": {
+    "readable": {
+      "ok": true
+    },
+    "title_present": {
+      "ok": true,
+      "detail": "QMOIAPPS.md"
+    },
+    "frontmatter_present": {
+      "ok": true
+    },
+    "links": {
+      "ok": false,
+      "detail": [
+        {
+          "label": "Win",
+          "target": "Qmoi_apps/windows/qmoi_ai.exe",
+          "ok": false
+        },
+        {
+          "label": "Mac",
+          "target": "Qmoi_apps/mac/qmoi_ai.dmg",
+          "ok": false
+        },
+        {
+          "label": "Android",
+          "target": "Qmoi_apps/android/qmoi_ai.apk",
+          "ok": false
+        },
+        {
+          "label": "iOS",
+          "target": "Qmoi_apps/ios/qmoi_ai.ipa",
+          "ok": false
+        },
+        {
+          "label": "Linux",
+          "target": "Qmoi_apps/linux/qmoi_ai.AppImage",
+          "ok": false
+        },
+        {
+          "label": "SmartTV",
+          "target": "Qmoi_apps/smarttv/qmoi_ai.apk",
+          "ok": false
+        },
+        {
+          "label": "Chromebook",
+          "target": "Qmoi_apps/chromebook/qmoi_ai.deb",
+          "ok": false
+        },
+        {
+          "label": "QCity",
+          "target": "Qmoi_apps/qcity/qmoi_ai.zip",
+          "ok": false
+        },
+        {
+          "label": "RaspberryPi",
+          "target": "Qmoi_apps/raspberrypi/qmoi_ai.img",
+          "ok": false
+        },
+        {
+          "label": "QCity",
+          "target": "Qmoi_apps/qcity/qmoi_ai.zip",
+          "ok": false
+        },
+        {
+          "label": "SmartTV",
+          "target": "Qmoi_apps/smarttv/qmoi_ai.apk",
+          "ok": false
+        },
+        {
+          "label": "PWA",
+          "target": "pwa_apps/qmoi-ai-pwa.zip",
+          "ok": false
+        },
+        {
+          "label": "Manifest",
+          "target": "pwa_apps/qmoi-ai-pwa.webmanifest",
+          "ok": false
+        }
+      ]
+    },
+    "build_info": {
+      "build": "not_found"
+    }
+  },
+  "ok": false,
+  "lion_task": {
+    "id": "01e9981b-dfb1-425e-929e-d9c0f603c3fd",
+    "task": "remediate_markdown_issues",
+    "created_at": "2025-11-07T13:12:23.134927+00:00",
+    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+    "priority": "medium",
+    "recommended_actions": [
+      "add H1 title",
+      "add frontmatter",
+      "fix broken links"
+    ],
+    "qcity_hints": {
+      "preferred_cluster": "qcity-default",
+      "storage_bucket": "qcity-artifacts"
+    }
+  },
+  "qvs_provenance": {
+    "codespace": "silver-journey-r4596xxpxg99cw594",
+    "github_run_id": null,
+    "user": "vscode",
+    "host": "codespaces-08409b"
+  }
+}
