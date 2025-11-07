@@ -1,0 +1,24 @@
+{
+  "generated_at": "2025-11-07T21:51:00Z",
+  "summary": {
+    "completed": [
+      "Install runtime dependencies",
+      "Re-run supervised start",
+      "Add preflight dependency check",
+      "Create minimal requirements file",
+      "Collect and summarize watcher logs",
+      "Link-normalization dry-run",
+      "Apply safe link fixes (conservative)",
+      "Create remediation todos for missing artifacts",
+      "Add CI job for reproducible dependency installation"
+    ],
+    "in_progress": [
+      "Update resumetodos.txt and central todo store"
+    ],
+    "pending": [
+      "Resolve heavy dependency install (torch)",
+      "Run full start flow end-to-end in supported environment",
+      "Tidy working tree and create focused commits"
+    ]
+  }
+}
