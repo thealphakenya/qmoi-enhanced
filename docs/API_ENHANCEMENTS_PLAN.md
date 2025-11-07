@@ -1,3 +1,8 @@
+---
+title: "API / Routes Enhancement Plan"
+qmoi_validation_frontmatter: true
+---
+
 # API / Routes Enhancement Plan
 
 Purpose

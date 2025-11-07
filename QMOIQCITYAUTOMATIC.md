@@ -1,3 +1,10 @@
+---
+title: "QMOIQCITYAUTOMATIC"
+qmoi_validation_frontmatter: true
+---
+
+# QMOIQCITYAUTOMATIC
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

@@ -1,3 +1,8 @@
+---
+title: "lion-lite"
+qmoi_validation_frontmatter: true
+---
+
 # lion-lite
 
 Description

@@ -1,3 +1,8 @@
+---
+title: "QMOI Operations Guide"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Operations Guide
 
 This document describes how to safely operate and maintain the QMOI infrastructure, including configuration, secrets management, and operational procedures.

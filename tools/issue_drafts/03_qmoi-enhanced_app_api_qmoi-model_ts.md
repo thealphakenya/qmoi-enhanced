@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/app/api/qmoi-model.ts (133 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/app/api/qmoi-model.ts (133 priority)
 
 **File**: `qmoi-enhanced/app/api/qmoi-model.ts`

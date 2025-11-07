@@ -1,3 +1,8 @@
+---
+title: "QMOI Space Development - Hugging Face Integration v3.0"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

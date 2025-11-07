@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/src/setupTests.ts (100 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/src/setupTests.ts (100 priority)
 
 **File**: `qmoi-enhanced/src/setupTests.ts`

@@ -1,3 +1,8 @@
+---
+title: "allrefs summary"
+qmoi_validation_frontmatter: true
+---
+
 # allrefs summary
 
 Counts:

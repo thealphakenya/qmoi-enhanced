@@ -1,3 +1,8 @@
+---
+title: "QMOI Autodev & UI Auto-update (Design + Implementation Notes)"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Autodev & UI Auto-update (Design + Implementation Notes)
 
 This document describes a safe, auditable autodev/autoupdate flow for QMOI that

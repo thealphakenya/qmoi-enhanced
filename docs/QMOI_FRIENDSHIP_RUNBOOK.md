@@ -1,3 +1,8 @@
+---
+title: "QMOI Friendship Integration Runbook"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Friendship Integration Runbook
 
 This runbook documents how the `qmoi-friendship-integration.js` module operates, how to run it safely, and where it writes proposals and artifacts.

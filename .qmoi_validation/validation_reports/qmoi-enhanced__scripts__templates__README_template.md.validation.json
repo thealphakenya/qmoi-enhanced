@@ -1,7 +1,7 @@
 {
   "file": "qmoi-enhanced/scripts/templates/README_template.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:12:23.414936+00:00",
+  "checked_at": "2025-11-07T13:15:33.011271+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -11,7 +11,7 @@
       "detail": "QMOI System"
     },
     "frontmatter_present": {
-      "ok": false
+      "ok": true
     },
     "links": {
       "ok": true,
@@ -21,23 +21,7 @@
       "build": "present_but_unknown"
     }
   },
-  "ok": false,
-  "lion_task": {
-    "id": "1c8b7714-eeb0-40e0-834a-5b275e22d85d",
-    "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:12:23.414936+00:00",
-    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
-    "priority": "medium",
-    "recommended_actions": [
-      "add H1 title",
-      "add frontmatter",
-      "fix broken links"
-    ],
-    "qcity_hints": {
-      "preferred_cluster": "qcity-default",
-      "storage_bucket": "qcity-artifacts"
-    }
-  },
+  "ok": true,
   "qvs_provenance": {
     "codespace": "silver-journey-r4596xxpxg99cw594",
     "github_run_id": null,

@@ -1,7 +1,7 @@
 {
   "file": "docs/FEATURESINDEX.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:12:20.940025+00:00",
+  "checked_at": "2025-11-07T13:15:30.024565+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -11,7 +11,7 @@
       "detail": "QMOI Features Master Index"
     },
     "frontmatter_present": {
-      "ok": false
+      "ok": true
     },
     "links": {
       "ok": true,
@@ -77,23 +77,7 @@
       "build": "not_found"
     }
   },
-  "ok": false,
-  "lion_task": {
-    "id": "94c011ce-6898-4c4a-86bb-5617b60feb84",
-    "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:12:20.940025+00:00",
-    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
-    "priority": "medium",
-    "recommended_actions": [
-      "add H1 title",
-      "add frontmatter",
-      "fix broken links"
-    ],
-    "qcity_hints": {
-      "preferred_cluster": "qcity-default",
-      "storage_bucket": "qcity-artifacts"
-    }
-  },
+  "ok": true,
   "qvs_provenance": {
     "codespace": "silver-journey-r4596xxpxg99cw594",
     "github_run_id": null,

@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/scripts/qmoi_auto_evolution_system.py (75 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/scripts/qmoi_auto_evolution_system.py (75 priority)
 
 **File**: `qmoi-enhanced/scripts/qmoi_auto_evolution_system.py`

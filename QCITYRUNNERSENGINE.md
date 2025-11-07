@@ -1,3 +1,8 @@
+---
+title: "1. Navigate to GitHub > Settings > Actions > Runners > New Self-Hosted Runner"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

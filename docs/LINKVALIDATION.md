@@ -1,3 +1,8 @@
+---
+title: "Link Validation"
+qmoi_validation_frontmatter: true
+---
+
 # Link Validation
 
 Purpose

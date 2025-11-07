@@ -1,3 +1,10 @@
+---
+title: "QMOIAUTODEV"
+qmoi_validation_frontmatter: true
+---
+
+# QMOIAUTODEV
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

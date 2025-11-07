@@ -1,3 +1,8 @@
+---
+title: "Wallet Security Playbook"
+qmoi_validation_frontmatter: true
+---
+
 # Wallet Security Playbook
 
 This document summarizes the recommended operational and engineering controls for QMOI wallets and payment flows.

@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/scripts/enhance_ai.py (71 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/scripts/enhance_ai.py (71 priority)
 
 **File**: `qmoi-enhanced/scripts/enhance_ai.py`

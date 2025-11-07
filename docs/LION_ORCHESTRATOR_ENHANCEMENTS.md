@@ -1,3 +1,8 @@
+---
+title: "LION Orchestrator Enhancements"
+qmoi_validation_frontmatter: true
+---
+
 # LION Orchestrator Enhancements
 
 This document describes the enhanced LION orchestrator (`scripts/lion_orchestrator.py`) and how it integrates with the repository's validation and remediation systems.

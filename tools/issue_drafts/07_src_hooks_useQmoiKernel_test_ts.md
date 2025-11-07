@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in src/hooks/useQmoiKernel.test.ts (90 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in src/hooks/useQmoiKernel.test.ts (90 priority)
 
 **File**: `src/hooks/useQmoiKernel.test.ts`

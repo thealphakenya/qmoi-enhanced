@@ -1,3 +1,8 @@
+---
+title: "Wallet Module Runbook"
+qmoi_validation_frontmatter: true
+---
+
 # Wallet Module Runbook
 
 This document describes the `src/wallet.ts` module and how to run tests locally.

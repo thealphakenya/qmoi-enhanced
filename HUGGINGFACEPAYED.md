@@ -1,3 +1,8 @@
+---
+title: "HUGGINGFACEPAYED.md - Hugging Face Paid Features in QMOI"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

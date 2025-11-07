@@ -1,3 +1,10 @@
+---
+title: "PLATFORM AUTOMATION"
+qmoi_validation_frontmatter: true
+---
+
+# PLATFORM AUTOMATION
+
 Platform Automation & Safety Guidelines
 
 This document explains how QMOI should interact with external platforms in production.

@@ -1,3 +1,10 @@
+---
+title: "qmoi space enhancements"
+qmoi_validation_frontmatter: true
+---
+
+# qmoi space enhancements
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

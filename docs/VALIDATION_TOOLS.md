@@ -1,3 +1,8 @@
+---
+title: "QMOI Validation Tools"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Validation Tools
 
 This document explains the lightweight validation tools included in the repository and how to use them.

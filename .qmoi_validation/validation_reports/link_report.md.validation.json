@@ -1,7 +1,7 @@
 {
   "file": "link_report.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:12:21.718212+00:00",
+  "checked_at": "2025-11-07T13:15:30.842178+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -11,7 +11,7 @@
       "detail": "Link Report"
     },
     "frontmatter_present": {
-      "ok": false
+      "ok": true
     },
     "links": {
       "ok": false,
@@ -37764,9 +37764,9 @@
   },
   "ok": false,
   "lion_task": {
-    "id": "106541ca-d456-4c4d-918b-5c4c83c73c59",
+    "id": "64f08b6c-356e-4a79-b0ee-2b1d1179c2dc",
     "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:12:21.718212+00:00",
+    "created_at": "2025-11-07T13:15:30.842178+00:00",
     "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
     "priority": "medium",
     "recommended_actions": [

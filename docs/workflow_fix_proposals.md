@@ -1,3 +1,8 @@
+---
+title: "Workflow fix proposals"
+qmoi_validation_frontmatter: true
+---
+
 # Workflow fix proposals
 _generated at 2025-10-28T23:48:19.067214Z_
 

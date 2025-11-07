@@ -1,3 +1,8 @@
+---
+title: "PAYEDGITLAB.md - Paid GitLab Features in QMOI Colab"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

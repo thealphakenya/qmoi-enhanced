@@ -1,3 +1,8 @@
+---
+title: "Update Markdown Report"
+qmoi_validation_frontmatter: true
+---
+
 # Update Markdown Report
 
 - API.md: patch-created (patch: /workspaces/qmoi-enhanced/tools/patches/730e13874a1c207ea2a3a2ca71d1a929ea46dd6a.patch, confidence: high)

@@ -1,3 +1,10 @@
+---
+title: "QMOIICONS"
+qmoi_validation_frontmatter: true
+---
+
+# QMOIICONS
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

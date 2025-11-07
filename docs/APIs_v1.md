@@ -1,3 +1,8 @@
+---
+title: "QMOI API snapshot (APIs_v1)"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI API snapshot (APIs_v1)
 
 This file is an automated snapshot of commonly used API endpoints implemented under `app/api/**`.

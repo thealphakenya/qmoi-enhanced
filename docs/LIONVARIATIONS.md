@@ -1,3 +1,8 @@
+---
+title: "LION Variations — Overview"
+qmoi_validation_frontmatter: true
+---
+
 # LION Variations — Overview
 
 This document catalogs the official LION (LION = Large Intelligent Orchestration Network) variations used across QMOI. Each variation is a focused distribution or product built from the same core orchestrator/agents, optimized for different platforms and use-cases. Variations are treated as first-class artifacts and follow an automated build/release workflow.

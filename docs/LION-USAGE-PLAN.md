@@ -1,3 +1,8 @@
+---
+title: "LION Usage & Enhancement Plan"
+qmoi_validation_frontmatter: true
+---
+
 # LION Usage & Enhancement Plan
 
 This document outlines a safe, staged plan to enhance how LION is used across projects, documentation, automation, revenue-related systems, wallets, and APIs.

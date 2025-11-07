@@ -1,3 +1,8 @@
+---
+title: "ALLERRORS.md"
+qmoi_validation_frontmatter: true
+---
+
 # ALLERRORS.md
 
 - ALLERRORS.md:10: # ALLERRORS.md

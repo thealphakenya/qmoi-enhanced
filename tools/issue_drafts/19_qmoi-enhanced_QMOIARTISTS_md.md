@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/QMOIARTISTS.md (60 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/QMOIARTISTS.md (60 priority)
 
 **File**: `qmoi-enhanced/QMOIARTISTS.md`

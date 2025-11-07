@@ -1,17 +1,17 @@
 {
   "file": "qmoi-enhanced/QMOIICONS.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:12:23.249819+00:00",
+  "checked_at": "2025-11-07T13:15:32.781943+00:00",
   "checks": {
     "readable": {
       "ok": true
     },
     "title_present": {
-      "ok": false,
-      "detail": ""
+      "ok": true,
+      "detail": "QMOIICONS"
     },
     "frontmatter_present": {
-      "ok": false
+      "ok": true
     },
     "links": {
       "ok": true,
@@ -21,23 +21,7 @@
       "build": "not_found"
     }
   },
-  "ok": false,
-  "lion_task": {
-    "id": "a63b3df1-e14e-4d33-8efd-65bb39bf2f00",
-    "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:12:23.249819+00:00",
-    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
-    "priority": "medium",
-    "recommended_actions": [
-      "add H1 title",
-      "add frontmatter",
-      "fix broken links"
-    ],
-    "qcity_hints": {
-      "preferred_cluster": "qcity-default",
-      "storage_bucket": "qcity-artifacts"
-    }
-  },
+  "ok": true,
   "qvs_provenance": {
     "codespace": "silver-journey-r4596xxpxg99cw594",
     "github_run_id": null,

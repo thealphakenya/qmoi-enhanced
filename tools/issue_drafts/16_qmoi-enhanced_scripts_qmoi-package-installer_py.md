@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/scripts/qmoi-package-installer.py (63 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/scripts/qmoi-package-installer.py (63 priority)
 
 **File**: `qmoi-enhanced/scripts/qmoi-package-installer.py`

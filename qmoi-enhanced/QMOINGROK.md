@@ -1,3 +1,8 @@
+---
+title: "QMOI script continues to update download links with tunnel.public_url"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in src/services/VoiceRecognitionService.ts (61 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in src/services/VoiceRecognitionService.ts (61 priority)
 
 **File**: `src/services/VoiceRecognitionService.ts`

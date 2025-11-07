@@ -1,17 +1,17 @@
 {
   "file": "docs/merged_remediation_plan.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:12:21.627069+00:00",
+  "checked_at": "2025-11-07T13:15:30.784566+00:00",
   "checks": {
     "readable": {
       "ok": true
     },
     "title_present": {
-      "ok": false,
-      "detail": ""
+      "ok": true,
+      "detail": "merged remediation plan"
     },
     "frontmatter_present": {
-      "ok": false
+      "ok": true
     },
     "links": {
       "ok": true,
@@ -21,23 +21,7 @@
       "build": "not_found"
     }
   },
-  "ok": false,
-  "lion_task": {
-    "id": "bf402848-5f50-47fd-a4c2-22121371e35c",
-    "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:12:21.627069+00:00",
-    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
-    "priority": "medium",
-    "recommended_actions": [
-      "add H1 title",
-      "add frontmatter",
-      "fix broken links"
-    ],
-    "qcity_hints": {
-      "preferred_cluster": "qcity-default",
-      "storage_bucket": "qcity-artifacts"
-    }
-  },
+  "ok": true,
   "qvs_provenance": {
     "codespace": "silver-journey-r4596xxpxg99cw594",
     "github_run_id": null,

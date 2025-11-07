@@ -1,3 +1,8 @@
+---
+title: "QMOI Monitoring & Analytics Guide"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

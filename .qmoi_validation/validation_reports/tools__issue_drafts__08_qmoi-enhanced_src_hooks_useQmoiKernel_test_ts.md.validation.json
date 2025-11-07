@@ -1,7 +1,7 @@
 {
   "file": "tools/issue_drafts/08_qmoi-enhanced_src_hooks_useQmoiKernel_test_ts.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:12:23.443491+00:00",
+  "checked_at": "2025-11-07T13:15:33.038662+00:00",
   "checks": {
     "readable": {
       "ok": true

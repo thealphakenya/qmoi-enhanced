@@ -1,3 +1,8 @@
+---
+title: "QMOI Automation Monitoring System - Comprehensive Runner & Error Management"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

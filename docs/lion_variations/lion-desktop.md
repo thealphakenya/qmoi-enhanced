@@ -1,3 +1,8 @@
+---
+title: "lion-desktop"
+qmoi_validation_frontmatter: true
+---
+
 # lion-desktop
 
 Description

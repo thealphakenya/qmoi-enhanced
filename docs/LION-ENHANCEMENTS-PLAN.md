@@ -1,3 +1,8 @@
+---
+title: "Lion Enhancement Plan for QMOI"
+qmoi_validation_frontmatter: true
+---
+
 # Lion Enhancement Plan for QMOI
 
 ## Goals

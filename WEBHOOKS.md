@@ -1,3 +1,8 @@
+---
+title: "Webhook Receiver and Best Practices"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

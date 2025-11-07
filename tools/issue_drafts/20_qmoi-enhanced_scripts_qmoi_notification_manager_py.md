@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)
 
 **File**: `qmoi-enhanced/scripts/qmoi_notification_manager.py`

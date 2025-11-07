@@ -1,3 +1,8 @@
+---
+title: "Claude Sonnet 3.5 Configuration"
+qmoi_validation_frontmatter: true
+---
+
 # Claude Sonnet 3.5 Configuration
 
 ## Overview

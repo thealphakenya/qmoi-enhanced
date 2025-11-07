@@ -1,3 +1,8 @@
+---
+title: "Security Automation & Vulnerability Remediation"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

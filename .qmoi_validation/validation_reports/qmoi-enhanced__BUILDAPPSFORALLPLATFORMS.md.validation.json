@@ -1,7 +1,7 @@
 {
   "file": "qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:12:22.950942+00:00",
+  "checked_at": "2025-11-07T13:15:32.411305+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -89,9 +89,9 @@
   },
   "ok": false,
   "lion_task": {
-    "id": "c9b0ecc8-70c7-49e4-b778-abd7f5ca2809",
+    "id": "eb6d618e-6825-46fa-992b-a12f40b1d568",
     "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:12:22.950942+00:00",
+    "created_at": "2025-11-07T13:15:32.411305+00:00",
     "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
     "priority": "medium",
     "recommended_actions": [

@@ -1,3 +1,8 @@
+---
+title: "REFERENCES.md - QMOI System Integrations & Enhancements"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

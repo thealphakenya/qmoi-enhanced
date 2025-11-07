@@ -1,3 +1,8 @@
+---
+title: "QMOI Validation README"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Validation README
 
 This folder contains validation design docs and the orchestrator to run them.

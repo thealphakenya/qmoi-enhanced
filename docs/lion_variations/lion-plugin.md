@@ -1,3 +1,8 @@
+---
+title: "lion-plugin"
+qmoi_validation_frontmatter: true
+---
+
 # lion-plugin
 
 Description

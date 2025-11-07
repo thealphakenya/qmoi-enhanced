@@ -1,3 +1,8 @@
+---
+title: "QMOI — Required Secrets and Local .env Guidance"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI — Required Secrets and Local .env Guidance
 
 This file documents the secret names expected by QMOI and how to provide them

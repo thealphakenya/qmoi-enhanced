@@ -1,3 +1,8 @@
+---
+title: "QMOI Enhanced Validation Strategies"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Enhanced Validation Strategies
 
 ## Overview

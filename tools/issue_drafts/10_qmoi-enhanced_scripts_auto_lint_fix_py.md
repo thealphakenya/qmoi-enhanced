@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/scripts/auto_lint_fix.py (78 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/scripts/auto_lint_fix.py (78 priority)
 
 **File**: `qmoi-enhanced/scripts/auto_lint_fix.py`

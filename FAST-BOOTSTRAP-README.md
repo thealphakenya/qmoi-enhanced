@@ -1,3 +1,8 @@
+---
+title: "⚡️ Fast Project Bootstrap & Debugging for Alpha-Q AI"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

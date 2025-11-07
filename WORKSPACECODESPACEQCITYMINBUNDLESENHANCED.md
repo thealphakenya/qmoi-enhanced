@@ -1,3 +1,8 @@
+---
+title: "Workspace / Codespace / QCity — Minimize Device Data Bundles (Enhanced)"
+qmoi_validation_frontmatter: true
+---
+
 # Workspace / Codespace / QCity — Minimize Device Data Bundles (Enhanced)
 
 This document describes practical strategies and architecture patterns to make the workspace and its apps use minimal on-device data (mobile/limited-bundle devices) while leveraging cloud/qcity resources for performance and features.

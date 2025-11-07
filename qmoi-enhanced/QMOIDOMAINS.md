@@ -1,3 +1,10 @@
+---
+title: "QMOIDOMAINS"
+qmoi_validation_frontmatter: true
+---
+
+# QMOIDOMAINS
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

@@ -1,3 +1,10 @@
+---
+title: "QMOIJEST"
+qmoi_validation_frontmatter: true
+---
+
+# QMOIJEST
+
 ## QMOI Jest Guide
 
 Purpose: provide a concise, practical Jest setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a recommended root config, CI snippets, test patterns, and integration notes for the autodev/autotest pipeline.

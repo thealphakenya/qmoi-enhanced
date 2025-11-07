@@ -1,3 +1,8 @@
+---
+title: "Markdown File References"
+qmoi_validation_frontmatter: true
+---
+
 # Markdown File References
 
 A master index of all Markdown documentation in this repository.

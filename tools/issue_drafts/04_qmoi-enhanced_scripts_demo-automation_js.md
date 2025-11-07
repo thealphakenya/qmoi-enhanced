@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/scripts/demo-automation.js (110 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/scripts/demo-automation.js (110 priority)
 
 **File**: `qmoi-enhanced/scripts/demo-automation.js`

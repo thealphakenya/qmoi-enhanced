@@ -1,7 +1,7 @@
 {
   "file": "docs/CLAUDE_SONNET_CONFIG.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:12:20.933900+00:00",
+  "checked_at": "2025-11-07T13:15:30.019570+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -11,7 +11,7 @@
       "detail": "Claude Sonnet 3.5 Configuration"
     },
     "frontmatter_present": {
-      "ok": false
+      "ok": true
     },
     "links": {
       "ok": true,
@@ -21,23 +21,7 @@
       "build": "not_found"
     }
   },
-  "ok": false,
-  "lion_task": {
-    "id": "a8f3beba-faf6-4ada-ac2e-a5b7c92f1c18",
-    "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:12:20.933900+00:00",
-    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
-    "priority": "medium",
-    "recommended_actions": [
-      "add H1 title",
-      "add frontmatter",
-      "fix broken links"
-    ],
-    "qcity_hints": {
-      "preferred_cluster": "qcity-default",
-      "storage_bucket": "qcity-artifacts"
-    }
-  },
+  "ok": true,
   "qvs_provenance": {
     "codespace": "silver-journey-r4596xxpxg99cw594",
     "github_run_id": null,

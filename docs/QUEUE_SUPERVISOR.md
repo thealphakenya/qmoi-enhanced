@@ -1,3 +1,8 @@
+---
+title: "Queue worker supervisor (systemd example)"
+qmoi_validation_frontmatter: true
+---
+
 # Queue worker supervisor (systemd example)
 
 This document shows a simple systemd unit file example to run the `queue_worker.py` as a supervised service.

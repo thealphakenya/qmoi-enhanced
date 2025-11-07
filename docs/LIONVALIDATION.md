@@ -1,3 +1,8 @@
+---
+title: "LION Validation"
+qmoi_validation_frontmatter: true
+---
+
 # LION Validation
 
 Purpose

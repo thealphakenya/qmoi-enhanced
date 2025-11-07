@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/app/api/qmoi/language/route.ts (140 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/app/api/qmoi/language/route.ts (140 priority)
 
 **File**: `qmoi-enhanced/app/api/qmoi/language/route.ts`

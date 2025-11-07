@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/scripts/qmoi_master_website_automation.js (397 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/scripts/qmoi_master_website_automation.js (397 priority)
 
 **File**: `qmoi-enhanced/scripts/qmoi_master_website_automation.js`

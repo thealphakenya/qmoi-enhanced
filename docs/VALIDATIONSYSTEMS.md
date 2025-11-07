@@ -1,3 +1,8 @@
+---
+title: "QMOI Validation Systems"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Validation Systems
 
 This document describes the validation systems implemented by QMOI/LION. It links to the specific validations for artifacts, apps, links, and documentation.

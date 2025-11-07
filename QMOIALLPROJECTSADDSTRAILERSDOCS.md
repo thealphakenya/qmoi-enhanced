@@ -1,3 +1,8 @@
+---
+title: "QMOI All Projects: Trailers, Docs, and Instructions"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

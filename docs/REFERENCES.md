@@ -1,3 +1,10 @@
+---
+title: "REFERENCES"
+qmoi_validation_frontmatter: true
+---
+
+# REFERENCES
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

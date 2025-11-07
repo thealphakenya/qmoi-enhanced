@@ -1,3 +1,8 @@
+---
+title: "LION-Embedded (Tiny Runtime for Devices)"
+qmoi_validation_frontmatter: true
+---
+
 # LION-Embedded (Tiny Runtime for Devices)
 
 Purpose

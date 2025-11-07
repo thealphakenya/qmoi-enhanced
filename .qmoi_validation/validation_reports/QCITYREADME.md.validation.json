@@ -1,7 +1,7 @@
 {
   "file": "QCITYREADME.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:12:20.505281+00:00",
+  "checked_at": "2025-11-07T13:15:29.696698+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -11,7 +11,7 @@
       "detail": "Q-City AI System"
     },
     "frontmatter_present": {
-      "ok": false
+      "ok": true
     },
     "links": {
       "ok": true,
@@ -42,23 +42,7 @@
       "build": "not_found"
     }
   },
-  "ok": false,
-  "lion_task": {
-    "id": "a99703bb-4413-46c8-8a56-a9507a163c23",
-    "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:12:20.505281+00:00",
-    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
-    "priority": "medium",
-    "recommended_actions": [
-      "add H1 title",
-      "add frontmatter",
-      "fix broken links"
-    ],
-    "qcity_hints": {
-      "preferred_cluster": "qcity-default",
-      "storage_bucket": "qcity-artifacts"
-    }
-  },
+  "ok": true,
   "qvs_provenance": {
     "codespace": "silver-journey-r4596xxpxg99cw594",
     "github_run_id": null,

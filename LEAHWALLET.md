@@ -1,3 +1,8 @@
+---
+title: "Leah Wallet — Setup & Autotest (SISTER-assisted)"
+qmoi_validation_frontmatter: true
+---
+
 # Leah Wallet — Setup & Autotest (SISTER-assisted)
 
 This guide is written for Leah (SISTER) — minimal developer knowledge required. It explains how to set up the Leah wallet and run the verification autotest.
