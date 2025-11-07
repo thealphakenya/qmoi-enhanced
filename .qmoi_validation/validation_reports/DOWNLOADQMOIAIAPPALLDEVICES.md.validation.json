@@ -1,7 +1,7 @@
 {
   "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:42:15.571392+00:00",
+  "checked_at": "2025-11-07T13:48:44.346359+00:00",
   "checks": {
     "readable": {
       "ok": true
@@ -94,9 +94,9 @@
   },
   "ok": false,
   "lion_task": {
-    "id": "63190022-40d1-4587-9c4a-e576bba3a549",
+    "id": "f45b434f-99f9-4789-8384-f866ee203eb9",
     "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:42:15.571392+00:00",
+    "created_at": "2025-11-07T13:48:44.346359+00:00",
     "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
     "priority": "medium",
     "recommended_actions": [

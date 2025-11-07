@@ -1,7 +1,7 @@
 {
   "file": "docs/VALIDATION_STRATEGIES.md",
   "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:42:18.815612+00:00",
+  "checked_at": "2025-11-07T13:48:47.542577+00:00",
   "checks": {
     "readable": {
       "ok": true
