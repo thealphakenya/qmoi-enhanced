@@ -1,0 +1,15 @@
+AUTOPROGRESS SNAPSHOT — 2025-11-07
+
+applied-pending-verify:
+- app/api/qmoi-gitlab/pipelines/route.ts  (fileStore fallback added; .bak present; needs `tsc` verification)
+- app/api/qmoi-gitlab/jobs/route.ts       (fileStore fallback added; .bak present; needs `tsc` verification)
+- app/api/qmoi-gitlab/deployments/route.ts (fileStore fallback added; .bak present; needs `tsc` verification)
+
+proposals-created (.qmoi_validation):
+- .qmoi_validation/app_api_qmoi-database_route.ts.proposal  (HIGH-RISK — manual review required)
+- .qmoi_validation/app_api_ai-self-diagnostics_route.ts.proposal (HIGH-RISK — manual review required)
+- .qmoi_validation/app_api_qmoi-model_ts.proposal (HIGH-RISK — manual review required)
+
+notes:
+- Full TypeScript verification (project or per-file `tsc`) is currently blocked: the devcontainer lacks a working Node/tsc installation and `package.json` is malformed. Until verification, files marked "applied-pending-verify" will not be appended to `donerefs.txt`.
+- Next recommended action: provision a working Node/TypeScript environment (or run per-file `npx tsc --noEmit` on a host) so the pending files can be type-checked and then added to `donerefs.txt`.
