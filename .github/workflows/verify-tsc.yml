@@ -1,0 +1,39 @@
+name: Verify TypeScript (per-file)
+
+on:
+  push:
+    branches:
+      - autosync/verification-20251107-pr
+  pull_request:
+    branches:
+      - autosync/verification-20251107-pr
+
+jobs:
+  verify:
+    name: Run per-file TypeScript checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install TypeScript
+        run: |
+          npm install -g typescript
+
+      - name: Run per-file checks (explicit)
+        run: |
+          set -euo pipefail
+          # run individual checks for the pending files; adjust list in scripts/verify_pending.sh
+          npx tsc --noEmit --lib ES2015,DOM types/qmoi-ambient.d.ts app/api/qmoi-gitlab/pipelines/route.ts
+          npx tsc --noEmit --lib ES2015,DOM types/qmoi-ambient.d.ts app/api/qmoi-gitlab/jobs/route.ts
+          npx tsc --noEmit --lib ES2015,DOM types/qmoi-ambient.d.ts app/api/qmoi-gitlab/deployments/route.ts
+
+      - name: Run verification helper (optional)
+        run: |
+          chmod +x ./scripts/verify_pending.sh || true
+          ./scripts/verify_pending.sh || true
