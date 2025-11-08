@@ -174,3 +174,5 @@ vercel.env
 # Temporary folders
 tmp/
 temp/
+
+.qmoi_validation
