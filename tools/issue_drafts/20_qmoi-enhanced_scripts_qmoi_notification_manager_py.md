@@ -10,12 +10,12 @@ qmoi_validation_frontmatter: true
 
 ## Summary of matches
 
-- Line 80: # [PRODUCTION IMPLEMENTATION REQUIRED] for SMS integration (e.g., Twilio, Nexmo, etc.)
-- Line 81: log_activity('Sent SMS notification ([PRODUCTION IMPLEMENTATION REQUIRED]).', {'message': message})
-- Line 82: print('SMS message sent ([PRODUCTION IMPLEMENTATION REQUIRED]).')
-- Line 86: # [PRODUCTION IMPLEMENTATION REQUIRED] for push notification integration (e.g., Firebase, OneSignal, etc.)
-- Line 87: log_activity('Sent push notification ([PRODUCTION IMPLEMENTATION REQUIRED]).', {'message': message})
-- Line 88: print('Push notification sent ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+- Line 80: # TODO_PROD for SMS integration (e.g., Twilio, Nexmo, etc.)
+- Line 81: log_activity('Sent SMS notification (TODO_PROD).', {'message': message})
+- Line 82: print('SMS message sent (TODO_PROD).')
+- Line 86: # TODO_PROD for push notification integration (e.g., Firebase, OneSignal, etc.)
+- Line 87: log_activity('Sent push notification (TODO_PROD).', {'message': message})
+- Line 88: print('Push notification sent (TODO_PROD).')
 
 ## Recommended action
 

@@ -10,14 +10,14 @@ qmoi_validation_frontmatter: true
 
 ## Summary of matches
 
-- Line 10: // [PRODUCTION IMPLEMENTATION REQUIRED]: get user profile and relationship insights
-- Line 11: return res.status(200).json({ result: 'User profile and relationship insights ([PRODUCTION IMPLEMENTATION REQUIRED])' });
-- Line 17: // [PRODUCTION IMPLEMENTATION REQUIRED]: set user profile
-- Line 18: return res.status(200).json({ result: 'Set profile result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
-- Line 20: // [PRODUCTION IMPLEMENTATION REQUIRED]: set user preferences
-- Line 21: return res.status(200).json({ result: 'Set preferences result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
-- Line 23: // [PRODUCTION IMPLEMENTATION REQUIRED]: set learning goals
-- Line 24: return res.status(200).json({ result: 'Set learning goals result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+- Line 10: // TODO_PROD: get user profile and relationship insights
+- Line 11: return res.status(200).json({ result: 'User profile and relationship insights (TODO_PROD)' });
+- Line 17: // TODO_PROD: set user profile
+- Line 18: return res.status(200).json({ result: 'Set profile result (TODO_PROD)' });
+- Line 20: // TODO_PROD: set user preferences
+- Line 21: return res.status(200).json({ result: 'Set preferences result (TODO_PROD)' });
+- Line 23: // TODO_PROD: set learning goals
+- Line 24: return res.status(200).json({ result: 'Set learning goals result (TODO_PROD)' });
 
 ## Recommended action
 

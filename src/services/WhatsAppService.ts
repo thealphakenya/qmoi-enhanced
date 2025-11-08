@@ -1,3 +1,4 @@
+// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import process from "process";
 // @ts-expect-error: whatsapp-web.js types are not available
 import { Client, LocalAuth, Message } from "whatsapp-web.js";

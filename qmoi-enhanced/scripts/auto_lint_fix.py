@@ -1,3 +1,4 @@
+# NOTE: 6 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os
 
 def auto_enhance_ci_and_docs():

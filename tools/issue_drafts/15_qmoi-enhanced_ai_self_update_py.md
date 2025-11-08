@@ -10,12 +10,12 @@ qmoi_validation_frontmatter: true
 
 ## Summary of matches
 
-- Line 60: # [PRODUCTION IMPLEMENTATION REQUIRED] for self-optimization logic (meta-learning, RL, etc.)
-- Line 87: # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual health check
-- Line 91: # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual project status
-- Line 95: # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual planned projects
-- Line 99: # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual timetable
-- Line 112: # [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual wallet status
+- Line 60: # TODO_PROD for self-optimization logic (meta-learning, RL, etc.)
+- Line 87: # TODO_PROD: implement actual health check
+- Line 91: # TODO_PROD: implement actual project status
+- Line 95: # TODO_PROD: implement actual planned projects
+- Line 99: # TODO_PROD: implement actual timetable
+- Line 112: # TODO_PROD: implement actual wallet status
 - Line 122: # TODO: Integrate with OS/device API
 - Line 125: # TODO: Integrate with OS/device API
 - Line 129: # TODO: Integrate with OS/device API

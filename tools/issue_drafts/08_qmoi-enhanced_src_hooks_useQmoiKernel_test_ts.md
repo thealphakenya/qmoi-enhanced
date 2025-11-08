@@ -10,15 +10,15 @@ qmoi_validation_frontmatter: true
 
 ## Summary of matches
 
-- Line 4: // [PRODUCTION IMPLEMENTATION REQUIRED] global fetch
-- Line 5: const [PRODUCTION IMPLEMENTATION REQUIRED]Fetch = jest.fn();
-- Line 6: global.fetch = [PRODUCTION IMPLEMENTATION REQUIRED]Fetch;
-- Line 10: jest.clearAll[PRODUCTION IMPLEMENTATION REQUIRED]s();
-- Line 14: [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({
-- Line 35: [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });
-- Line 45: [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({
-- Line 50: [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({
-- Line 70: [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });
+- Line 4: // TODO_PROD global fetch
+- Line 5: const TODO_PRODFetch = jest.fn();
+- Line 6: global.fetch = TODO_PRODFetch;
+- Line 10: jest.clearAllTODO_PRODs();
+- Line 14: TODO_PRODFetch.TODO_PRODResolvedValueOnce({
+- Line 35: TODO_PRODFetch.TODO_PRODResolvedValueOnce({ ok: false });
+- Line 45: TODO_PRODFetch.TODO_PRODResolvedValueOnce({
+- Line 50: TODO_PRODFetch.TODO_PRODResolvedValueOnce({
+- Line 70: TODO_PRODFetch.TODO_PRODResolvedValueOnce({ ok: false });
 
 ## Recommended action
 

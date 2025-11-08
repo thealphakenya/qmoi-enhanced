@@ -1,3 +1,4 @@
+// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 // backend/trading-engine.ts
 // Autonomous trading engine for Alpha-Q AI (no API key required)
 // - Loads local CSV datasets

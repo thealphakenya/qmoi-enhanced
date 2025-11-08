@@ -1,3 +1,4 @@
+// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 // scripts/ensure-files.js
 const fs = require('fs');
 const path = require('path');

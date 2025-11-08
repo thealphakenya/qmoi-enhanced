@@ -34235,7 +34235,7 @@
     "mobile/node_modules/jest-mock/README.md": [
       {
         "label": "Jest documentation",
-        "url": "https://jestjs.io/docs/[PRODUCTION IMPLEMENTATION REQUIRED]-function-api",
+        "url": "https://jestjs.io/docs/TODO_PROD-function-api",
         "ok": true,
         "reason": "external URL"
       }
@@ -44838,7 +44838,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[PRODUCTION IMPLEMENTATION REQUIRED] for repeating a string.\"",
+        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. FasTODO_PROD for repeating a string.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -47923,7 +47923,7 @@
     "mobile/node_modules/@sinonjs/fake-timers/README.md": [
       {
         "label": "![codecov",
-        "url": "https://codecov.io/gh/sinonjs/[PRODUCTION IMPLEMENTATION REQUIRED]-timers/branch/main/graph/badge.svg",
+        "url": "https://codecov.io/gh/sinonjs/TODO_PROD-timers/branch/main/graph/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -91791,7 +91791,7 @@
     "qmoi-enhanced/mobile/node_modules/jest-mock/README.md": [
       {
         "label": "Jest documentation",
-        "url": "https://jestjs.io/docs/[PRODUCTION IMPLEMENTATION REQUIRED]-function-api",
+        "url": "https://jestjs.io/docs/TODO_PROD-function-api",
         "ok": true,
         "reason": "external URL"
       }
@@ -102394,7 +102394,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[PRODUCTION IMPLEMENTATION REQUIRED] for repeating a string.\"",
+        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. FasTODO_PROD for repeating a string.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -105479,7 +105479,7 @@
     "qmoi-enhanced/mobile/node_modules/@sinonjs/fake-timers/README.md": [
       {
         "label": "![codecov",
-        "url": "https://codecov.io/gh/sinonjs/[PRODUCTION IMPLEMENTATION REQUIRED]-timers/branch/main/graph/badge.svg",
+        "url": "https://codecov.io/gh/sinonjs/TODO_PROD-timers/branch/main/graph/badge.svg",
         "ok": true,
         "reason": "external URL"
       },

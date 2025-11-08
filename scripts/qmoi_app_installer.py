@@ -1,3 +1,4 @@
+# NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 QMOI App Installer

@@ -19,7 +19,7 @@ qmoi_validation_frontmatter: true
 - Line 146: // TODO: Update master/projects list (e.g., save to a JSON file or DB)
 - Line 155: // Simulate packaging (e.g., zip/tar)
 - Line 156: // TODO: Implement real packaging logic
-- Line 200: // [PRODUCTION IMPLEMENTATION REQUIRED] for advanced AI/ML tasks (to be implemented)
+- Line 200: // TODO_PROD for advanced AI/ML tasks (to be implemented)
 
 ## Recommended action
 

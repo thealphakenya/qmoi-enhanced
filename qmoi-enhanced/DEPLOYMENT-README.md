@@ -611,7 +611,7 @@ npm run security:integrity
 - 🛡️ **Tamper Detection**: Real-time monitoring for unauthorized changes
 - 🚨 **Decoy Mode**: Shows false information if tampering detected
 - 🔐 **Encrypted Storage**: All sensitive data encrypted at rest
-- 🎭 **Honeypot Traps**: [PRODUCTION IMPLEMENTATION REQUIRED] endpoints to catch attackers
+- 🎭 **Honeypot Traps**: TODO_PROD endpoints to catch attackers
 
 ### Security Configuration
 
@@ -1032,7 +1032,7 @@ function Dashboard() {
 }
 ```
 
-- The component uses [PRODUCTION IMPLEMENTATION REQUIRED] data by default, but can be connected to a real API for production use.
+- The component uses TODO_PROD data by default, but can be connected to a real API for production use.
 
 ### Example UI
 - Search bar and type filter dropdown
@@ -1041,7 +1041,7 @@ function Dashboard() {
 - Media logs (recent actions)
 
 **API Integration:**
-- To use real data, replace the [PRODUCTION IMPLEMENTATION REQUIRED] data in the component with an API call (e.g., `fetch('/api/media')`).
+- To use real data, replace the TODO_PROD data in the component with an API call (e.g., `fetch('/api/media')`).
 - For upload support, add an upload button and POST handler to your media API endpoint.
 - See comments in `QmoiMediaManager.tsx` for integration points.
 

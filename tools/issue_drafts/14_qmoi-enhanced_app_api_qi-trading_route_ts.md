@@ -10,13 +10,13 @@ qmoi_validation_frontmatter: true
 
 ## Summary of matches
 
-- Line 39: // [PRODUCTION IMPLEMENTATION REQUIRED] trading statistics - replace with actual implementation
-- Line 73: // [PRODUCTION IMPLEMENTATION REQUIRED] trade history - replace with actual implementation
-- Line 101: // [PRODUCTION IMPLEMENTATION REQUIRED] active trades - replace with actual implementation
-- Line 150: // [PRODUCTION IMPLEMENTATION REQUIRED] trade execution - replace with actual implementation
+- Line 39: // TODO_PROD trading statistics - replace with actual implementation
+- Line 73: // TODO_PROD trade history - replace with actual implementation
+- Line 101: // TODO_PROD active trades - replace with actual implementation
+- Line 150: // TODO_PROD trade execution - replace with actual implementation
 - Line 151: await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate trade execution time
-- Line 161: profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // [PRODUCTION IMPLEMENTATION REQUIRED] profit calculation
-- Line 175: // [PRODUCTION IMPLEMENTATION REQUIRED] trade cancellation - replace with actual implementation
+- Line 161: profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // TODO_PROD profit calculation
+- Line 175: // TODO_PROD trade cancellation - replace with actual implementation
 - Line 176: await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate cancellation time
 
 ## Recommended action
