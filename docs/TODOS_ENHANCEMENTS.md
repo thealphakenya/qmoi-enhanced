@@ -1,3 +1,8 @@
+---
+title: "QMOI To-dos Enhancements (20+ improvements)"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI To-dos Enhancements (20+ improvements)
 
 This file lists concrete improvements to the QMOI to-dos system (used by `scripts/qmoi_todos.py`) that will make planning, execution, validation, and LION integration more robust.

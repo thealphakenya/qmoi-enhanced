@@ -1,3 +1,8 @@
+---
+title: "GITHUBPAYED.md - GitHub Paid Features in QMOI"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -493,11 +498,11 @@ npm run github:enable-incident-response
 ---
 
 ## See Also
-- [QMOICLONEGITHUB.md](./QMOICLONEGITHUB.md)
-- [QMOIALLPLATFORMS.md](./QMOIALLPLATFORMS.md)
-- [QMOIFREE.md](./QMOIFREE.md)
-- [PAYEDGITLAB.md](./PAYEDGITLAB.md)
-- [QUANTUMPAYED.md](./QUANTUMPAYED.md)
+- [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md)
+- [QMOIALLPLATFORMS.md](QMOIALLPLATFORMS.md)
+- [QMOIFREE.md](QMOIFREE.md)
+- [PAYEDGITLAB.md](PAYEDGITLAB.md)
+- [QUANTUMPAYED.md](QUANTUMPAYED.md)
 
 ---
 

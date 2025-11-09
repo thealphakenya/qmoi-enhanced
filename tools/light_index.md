@@ -1,3 +1,8 @@
+---
+title: "Light index — top large files"
+qmoi_validation_frontmatter: true
+---
+
 # Light index — top large files
 
 Files listed below are the largest files found. Consider excluding them from browser-based editing or using sparse-checkout.

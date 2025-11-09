@@ -7,12 +7,12 @@
         "matches": [
           {
             "line": 28,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Integrate with domain registrar API ---",
+            "snippet": "// --- TODO_PROD: Integrate with domain registrar API ---",
             "score": 10
           },
           {
             "line": 30,
-            "snippet": "logAction(`Registering domain: ${domain} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Registering domain: ${domain} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -22,17 +22,17 @@
           },
           {
             "line": 58,
-            "snippet": "// Accessibility: axe-core ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "// Accessibility: axe-core (TODO_PROD)",
             "score": 10
           },
           {
             "line": 59,
-            "snippet": "// Performance/SEO: Lighthouse ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "// Performance/SEO: Lighthouse (TODO_PROD)",
             "score": 10
           },
           {
             "line": 60,
-            "snippet": "// Security: npm audit ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "// Security: npm audit (TODO_PROD)",
             "score": 10
           },
           {
@@ -47,7 +47,7 @@
           },
           {
             "line": 70,
-            "snippet": "// Auto-enhancement logic ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "// Auto-enhancement logic (TODO_PROD)",
             "score": 10
           },
           {
@@ -57,7 +57,7 @@
           },
           {
             "line": 80,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Deploy to cloud provider ---",
+            "snippet": "// --- TODO_PROD: Deploy to cloud provider ---",
             "score": 10
           },
           {
@@ -67,12 +67,12 @@
           },
           {
             "line": 87,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Server provisioning (cloud API) ---",
+            "snippet": "// --- TODO_PROD: Server provisioning (cloud API) ---",
             "score": 10
           },
           {
             "line": 89,
-            "snippet": "logAction(`Provisioning server for ${projectName} on provider: ${provider} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Provisioning server for ${projectName} on provider: ${provider} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -82,12 +82,12 @@
           },
           {
             "line": 94,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: SSL/HTTPS automation ---",
+            "snippet": "// --- TODO_PROD: SSL/HTTPS automation ---",
             "score": 10
           },
           {
             "line": 96,
-            "snippet": "logAction(`Provisioning SSL certificate for ${domain} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Provisioning SSL certificate for ${domain} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -97,12 +97,12 @@
           },
           {
             "line": 101,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Domain availability search & purchase ---",
+            "snippet": "// --- TODO_PROD: Domain availability search & purchase ---",
             "score": 10
           },
           {
             "line": 103,
-            "snippet": "logAction(`Searching and purchasing domain: ${domain} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Searching and purchasing domain: ${domain} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -112,12 +112,12 @@
           },
           {
             "line": 108,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: DNS management ---",
+            "snippet": "// --- TODO_PROD: DNS management ---",
             "score": 10
           },
           {
             "line": 110,
-            "snippet": "logAction(`Managing DNS for ${domain} with records: ${JSON.stringify(records)} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Managing DNS for ${domain} with records: ${JSON.stringify(records)} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -127,12 +127,12 @@
           },
           {
             "line": 115,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: SEO/search engine submission ---",
+            "snippet": "// --- TODO_PROD: SEO/search engine submission ---",
             "score": 10
           },
           {
             "line": 117,
-            "snippet": "logAction(`Submitting ${domain} to search engines ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Submitting ${domain} to search engines (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -142,12 +142,12 @@
           },
           {
             "line": 122,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Content syndication ---",
+            "snippet": "// --- TODO_PROD: Content syndication ---",
             "score": 10
           },
           {
             "line": 124,
-            "snippet": "logAction(`Syndicating content for ${projectName} to platforms: ${platforms.join(', ')} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Syndicating content for ${projectName} to platforms: ${platforms.join(', ')} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -157,12 +157,12 @@
           },
           {
             "line": 129,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Social/platform integration ---",
+            "snippet": "// --- TODO_PROD: Social/platform integration ---",
             "score": 10
           },
           {
             "line": 131,
-            "snippet": "logAction(`Creating social profiles for ${projectName} on: ${platforms.join(', ')} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Creating social profiles for ${projectName} on: ${platforms.join(', ')} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -172,12 +172,12 @@
           },
           {
             "line": 136,
-            "snippet": "// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Analytics integration ---",
+            "snippet": "// --- TODO_PROD: Analytics integration ---",
             "score": 10
           },
           {
             "line": 138,
-            "snippet": "logAction(`Integrating analytics (${tools.join(', ')}) for ${projectDir} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Integrating analytics (${tools.join(', ')}) for ${projectDir} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -187,7 +187,7 @@
           },
           {
             "line": 148,
-            "snippet": "logAction(`[AWS] Provisioning server for ${projectName} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`[AWS] Provisioning server for ${projectName} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -197,7 +197,7 @@
           },
           {
             "line": 153,
-            "snippet": "logAction(`[AWS] Deploying website from ${projectDir} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`[AWS] Deploying website from ${projectDir} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -207,7 +207,7 @@
           },
           {
             "line": 161,
-            "snippet": "logAction(`[Vercel] Provisioning server for ${projectName} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`[Vercel] Provisioning server for ${projectName} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -217,7 +217,7 @@
           },
           {
             "line": 166,
-            "snippet": "logAction(`[Vercel] Deploying website from ${projectDir} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`[Vercel] Deploying website from ${projectDir} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -232,7 +232,7 @@
           },
           {
             "line": 187,
-            "snippet": "logAction(`Updating asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Updating asset ${assetId} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -242,7 +242,7 @@
           },
           {
             "line": 192,
-            "snippet": "logAction(`Migrating asset ${assetId} to ${toProvider} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Migrating asset ${assetId} to ${toProvider} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -252,7 +252,7 @@
           },
           {
             "line": 197,
-            "snippet": "logAction(`Backing up asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Backing up asset ${assetId} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -262,7 +262,7 @@
           },
           {
             "line": 202,
-            "snippet": "logAction(`Retiring asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`Retiring asset ${assetId} (TODO_PROD)`);",
             "score": 10
           },
           {
@@ -272,7 +272,7 @@
           },
           {
             "line": 214,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: try a generic fix (e.g., retry, reset, switch provider)",
+            "snippet": "// TODO_PROD: try a generic fix (e.g., retry, reset, switch provider)",
             "score": 10
           },
           {
@@ -287,22 +287,22 @@
           },
           {
             "line": 226,
-            "snippet": "// Root cause analysis [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "// Root cause analysis TODO_PROD",
             "score": 10
           },
           {
             "line": 227,
-            "snippet": "logAction(`[AutoFix] Root cause analysis for context: ${context} ([PRODUCTION IMPLEMENTATION REQUIRED])`);",
+            "snippet": "logAction(`[AutoFix] Root cause analysis for context: ${context} (TODO_PROD)`);",
             "score": 10
           },
           {
             "line": 228,
-            "snippet": "// Continuous learning [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "// Continuous learning TODO_PROD",
             "score": 10
           },
           {
             "line": 247,
-            "snippet": "logAction('[AutoFix] Starting full error-fix sweep across all assets/projects ([PRODUCTION IMPLEMENTATION REQUIRED])');",
+            "snippet": "logAction('[AutoFix] Starting full error-fix sweep across all assets/projects (TODO_PROD)');",
             "score": 10
           },
           {
@@ -312,7 +312,7 @@
           },
           {
             "line": 249,
-            "snippet": "logAction('[AutoFix] Sweep complete ([PRODUCTION IMPLEMENTATION REQUIRED])');",
+            "snippet": "logAction('[AutoFix] Sweep complete (TODO_PROD)');",
             "score": 10
           }
         ]
@@ -325,72 +325,72 @@
         "matches": [
           {
             "line": 15,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle translation",
+            "snippet": "// TODO_PROD: handle translation",
             "score": 10
           },
           {
             "line": 16,
-            "snippet": "return res.status(200).json({ result: 'Translation result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Translation result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 18,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle STT",
+            "snippet": "// TODO_PROD: handle STT",
             "score": 10
           },
           {
             "line": 19,
-            "snippet": "return res.status(200).json({ result: 'Speech-to-text result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Speech-to-text result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 21,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle TTS",
+            "snippet": "// TODO_PROD: handle TTS",
             "score": 10
           },
           {
             "line": 22,
-            "snippet": "return res.status(200).json({ result: 'Text-to-speech result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Text-to-speech result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 24,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle language detection",
+            "snippet": "// TODO_PROD: handle language detection",
             "score": 10
           },
           {
             "line": 25,
-            "snippet": "return res.status(200).json({ result: 'Language detection result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Language detection result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 27,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle language lesson",
+            "snippet": "// TODO_PROD: handle language lesson",
             "score": 10
           },
           {
             "line": 28,
-            "snippet": "return res.status(200).json({ result: 'Lesson result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Lesson result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 30,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle language quiz",
+            "snippet": "// TODO_PROD: handle language quiz",
             "score": 10
           },
           {
             "line": 31,
-            "snippet": "return res.status(200).json({ result: 'Quiz result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Quiz result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 33,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle pronunciation check",
+            "snippet": "// TODO_PROD: handle pronunciation check",
             "score": 10
           },
           {
             "line": 34,
-            "snippet": "return res.status(200).json({ result: 'Pronunciation check result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Pronunciation check result (TODO_PROD)' });",
             "score": 10
           }
         ]
@@ -448,7 +448,7 @@
           },
           {
             "line": 200,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] for advanced AI/ML tasks (to be implemented)",
+            "snippet": "// TODO_PROD for advanced AI/ML tasks (to be implemented)",
             "score": 10
           },
           {
@@ -591,57 +591,57 @@
         "matches": [
           {
             "line": 10,
-            "snippet": "class Automation[PRODUCTION IMPLEMENTATION REQUIRED] {",
+            "snippet": "class AutomationTODO_PROD {",
             "score": 10
           },
           {
             "line": 17,
-            "snippet": "console.log(`[${timestamp}] [[PRODUCTION IMPLEMENTATION REQUIRED]-${type.toUpperCase()}] ${message}`);",
+            "snippet": "console.log(`[${timestamp}] [TODO_PROD-${type.toUpperCase()}] ${message}`);",
             "score": 10
           },
           {
             "line": 39,
-            "snippet": "async run[PRODUCTION IMPLEMENTATION REQUIRED]() {",
+            "snippet": "async runTODO_PROD() {",
             "score": 10
           },
           {
             "line": 41,
-            "snippet": "console.log('\ud83e\udd16 QMOI AI AUTOMATED LINTING [PRODUCTION IMPLEMENTATION REQUIRED]');",
+            "snippet": "console.log('\ud83e\udd16 QMOI AI AUTOMATED LINTING TODO_PROD');",
             "score": 10
           },
           {
             "line": 44,
-            "snippet": "this.log('\ud83d\ude80 Starting automated linting [PRODUCTION IMPLEMENTATION REQUIRED]nstration...', 'info');",
+            "snippet": "this.log('\ud83d\ude80 Starting automated linting TODO_PRODnstration...', 'info');",
             "score": 10
           },
           {
             "line": 78,
-            "snippet": "console.log('\ud83d\udcca [PRODUCTION IMPLEMENTATION REQUIRED] SUMMARY');",
+            "snippet": "console.log('\ud83d\udcca TODO_PROD SUMMARY');",
             "score": 10
           },
           {
             "line": 96,
-            "snippet": "this.log('\ud83c\udf89 [PRODUCTION IMPLEMENTATION REQUIRED] completed successfully!', 'success');",
+            "snippet": "this.log('\ud83c\udf89 TODO_PROD completed successfully!', 'success');",
             "score": 10
           },
           {
             "line": 100,
-            "snippet": "// Run the [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "// Run the TODO_PROD",
             "score": 10
           },
           {
             "line": 101,
-            "snippet": "const [PRODUCTION IMPLEMENTATION REQUIRED] = new Automation[PRODUCTION IMPLEMENTATION REQUIRED]();",
+            "snippet": "const TODO_PROD = new AutomationTODO_PROD();",
             "score": 10
           },
           {
             "line": 102,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED].run[PRODUCTION IMPLEMENTATION REQUIRED]().catch(error => {",
+            "snippet": "TODO_PROD.runTODO_PROD().catch(error => {",
             "score": 10
           },
           {
             "line": 103,
-            "snippet": "console.error('Fatal error in [PRODUCTION IMPLEMENTATION REQUIRED]:', error);",
+            "snippet": "console.error('Fatal error in TODO_PROD:', error);",
             "score": 10
           }
         ]
@@ -654,27 +654,27 @@
         "matches": [
           {
             "line": 174,
-            "snippet": "do_[PRODUCTION IMPLEMENTATION REQUIRED]=True,",
+            "snippet": "do_sample=True,",
             "score": 10
           },
           {
             "line": 255,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Ask QMOI anything...\",",
+            "snippet": "TODO_PROD=\"Ask QMOI anything...\",",
             "score": 10
           },
           {
             "line": 327,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Enter multiple prompts, one per line...\",",
+            "snippet": "TODO_PROD=\"Enter multiple prompts, one per line...\",",
             "score": 10
           },
           {
             "line": 345,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Test prompt for API...\",",
+            "snippet": "TODO_PROD=\"Test prompt for API...\",",
             "score": 10
           },
           {
             "line": 482,
-            "snippet": "\"do_[PRODUCTION IMPLEMENTATION REQUIRED]\": True,",
+            "snippet": "\"do_sample\": True,",
             "score": 10
           },
           {
@@ -689,27 +689,27 @@
           },
           {
             "line": 684,
-            "snippet": "from unittest.[PRODUCTION IMPLEMENTATION REQUIRED] import [PRODUCTION IMPLEMENTATION REQUIRED], patch",
+            "snippet": "from unittest.TODO_PROD import TODO_PROD, patch",
             "score": 10
           },
           {
             "line": 705,
-            "snippet": "with patch.object(app.model, 'generate') as [PRODUCTION IMPLEMENTATION REQUIRED]_generate:",
+            "snippet": "with patch.object(app.model, 'generate') as TODO_PROD_generate:",
             "score": 10
           },
           {
             "line": 706,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]_generate.return_value = torch.tensor([[1, 2, 3, 4]])",
+            "snippet": "TODO_PROD_generate.return_value = torch.tensor([[1, 2, 3, 4]])",
             "score": 10
           },
           {
             "line": 715,
-            "snippet": "with patch.object(app, 'generate_response') as [PRODUCTION IMPLEMENTATION REQUIRED]_gen:",
+            "snippet": "with patch.object(app, 'generate_response') as TODO_PROD_gen:",
             "score": 10
           },
           {
             "line": 716,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]_gen.side_effect = [\"Response 1\", \"Response 2\", \"Response 3\"]",
+            "snippet": "TODO_PROD_gen.side_effect = [\"Response 1\", \"Response 2\", \"Response 3\"]",
             "score": 10
           },
           {
@@ -732,52 +732,52 @@
         "matches": [
           {
             "line": 3,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] fetch globally",
+            "snippet": "// TODO_PROD fetch globally",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] window.matchMedia",
+            "snippet": "// TODO_PROD window.matchMedia",
             "score": 10
           },
           {
             "line": 9,
-            "snippet": "value: jest.fn().[PRODUCTION IMPLEMENTATION REQUIRED]Implementation((query) => ({",
+            "snippet": "value: jest.fn().TODO_PRODImplementation((query) => ({",
             "score": 10
           },
           {
             "line": 21,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] localStorage",
+            "snippet": "// TODO_PROD localStorage",
             "score": 10
           },
           {
             "line": 22,
-            "snippet": "const localStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {",
+            "snippet": "const localStorageTODO_PROD = {",
             "score": 10
           },
           {
             "line": 28,
-            "snippet": "global.localStorage = localStorage[PRODUCTION IMPLEMENTATION REQUIRED];",
+            "snippet": "global.localStorage = localStorageTODO_PROD;",
             "score": 10
           },
           {
             "line": 30,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] sessionStorage",
+            "snippet": "// TODO_PROD sessionStorage",
             "score": 10
           },
           {
             "line": 31,
-            "snippet": "const sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {",
+            "snippet": "const sessionStorageTODO_PROD = {",
             "score": 10
           },
           {
             "line": 37,
-            "snippet": "global.sessionStorage = sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED];",
+            "snippet": "global.sessionStorage = sessionStorageTODO_PROD;",
             "score": 10
           },
           {
             "line": 39,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] console methods to reduce noise in tests",
+            "snippet": "// TODO_PROD console methods to reduce noise in tests",
             "score": 10
           }
         ]
@@ -790,47 +790,47 @@
         "matches": [
           {
             "line": 4,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] global fetch",
+            "snippet": "// TODO_PROD global fetch",
             "score": 10
           },
           {
             "line": 5,
-            "snippet": "const [PRODUCTION IMPLEMENTATION REQUIRED]Fetch = jest.fn();",
+            "snippet": "const TODO_PRODFetch = jest.fn();",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "global.fetch = [PRODUCTION IMPLEMENTATION REQUIRED]Fetch;",
+            "snippet": "global.fetch = TODO_PRODFetch;",
             "score": 10
           },
           {
             "line": 10,
-            "snippet": "jest.clearAll[PRODUCTION IMPLEMENTATION REQUIRED]s();",
+            "snippet": "jest.clearAllTODO_PRODs();",
             "score": 10
           },
           {
             "line": 14,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({",
             "score": 10
           },
           {
             "line": 35,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({ ok: false });",
             "score": 10
           },
           {
             "line": 45,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({",
             "score": 10
           },
           {
             "line": 50,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({",
             "score": 10
           },
           {
             "line": 70,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({ ok: false });",
             "score": 10
           }
         ]
@@ -843,47 +843,47 @@
         "matches": [
           {
             "line": 4,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] global fetch",
+            "snippet": "// TODO_PROD global fetch",
             "score": 10
           },
           {
             "line": 5,
-            "snippet": "const [PRODUCTION IMPLEMENTATION REQUIRED]Fetch = jest.fn();",
+            "snippet": "const TODO_PRODFetch = jest.fn();",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "global.fetch = [PRODUCTION IMPLEMENTATION REQUIRED]Fetch;",
+            "snippet": "global.fetch = TODO_PRODFetch;",
             "score": 10
           },
           {
             "line": 10,
-            "snippet": "jest.clearAll[PRODUCTION IMPLEMENTATION REQUIRED]s();",
+            "snippet": "jest.clearAllTODO_PRODs();",
             "score": 10
           },
           {
             "line": 14,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({",
             "score": 10
           },
           {
             "line": 35,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({ ok: false });",
             "score": 10
           },
           {
             "line": 45,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({",
             "score": 10
           },
           {
             "line": 50,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({",
             "score": 10
           },
           {
             "line": 70,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });",
+            "snippet": "TODO_PRODFetch.TODO_PRODResolvedValueOnce({ ok: false });",
             "score": 10
           }
         ]
@@ -896,42 +896,42 @@
         "matches": [
           {
             "line": 10,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: get user profile and relationship insights",
+            "snippet": "// TODO_PROD: get user profile and relationship insights",
             "score": 10
           },
           {
             "line": 11,
-            "snippet": "return res.status(200).json({ result: 'User profile and relationship insights ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'User profile and relationship insights (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 17,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: set user profile",
+            "snippet": "// TODO_PROD: set user profile",
             "score": 10
           },
           {
             "line": 18,
-            "snippet": "return res.status(200).json({ result: 'Set profile result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Set profile result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 20,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: set user preferences",
+            "snippet": "// TODO_PROD: set user preferences",
             "score": 10
           },
           {
             "line": 21,
-            "snippet": "return res.status(200).json({ result: 'Set preferences result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Set preferences result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 23,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: set learning goals",
+            "snippet": "// TODO_PROD: set learning goals",
             "score": 10
           },
           {
             "line": 24,
-            "snippet": "return res.status(200).json({ result: 'Set learning goals result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Set learning goals result (TODO_PROD)' });",
             "score": 10
           }
         ]
@@ -944,22 +944,22 @@
         "matches": [
           {
             "line": 40,
-            "snippet": "# Prevent [PRODUCTION IMPLEMENTATION REQUIRED] files from passing",
+            "snippet": "# Prevent TODO_PROD files from passing",
             "score": 10
           },
           {
             "line": 43,
-            "snippet": "if b'[PRODUCTION IMPLEMENTATION REQUIRED] build' in content_bytes:",
+            "snippet": "if b'TODO_PROD build' in content_bytes:",
             "score": 10
           },
           {
             "line": 44,
-            "snippet": "print(f\"Error: {target} is a [PRODUCTION IMPLEMENTATION REQUIRED] file. Automatically selecting best build strategy...\")",
+            "snippet": "print(f\"Error: {target} is a TODO_PROD file. Automatically selecting best build strategy...\")",
             "score": 10
           },
           {
             "line": 51,
-            "snippet": "parallel_log.append(f\"[PRODUCTION IMPLEMENTATION REQUIRED] detected for {target}, triggering auto-build.\")",
+            "snippet": "parallel_log.append(f\"TODO_PROD detected for {target}, triggering auto-build.\")",
             "score": 10
           },
           {
@@ -979,12 +979,12 @@
           },
           {
             "line": 119,
-            "snippet": "# Simulate install test: check permissions, file type, and [PRODUCTION IMPLEMENTATION REQUIRED] install",
+            "snippet": "# Simulate install test: check permissions, file type, and TODO_PROD install",
             "score": 10
           },
           {
             "line": 121,
-            "snippet": "print(f\"Install test failed: {target} is too small or is a [PRODUCTION IMPLEMENTATION REQUIRED].\")",
+            "snippet": "print(f\"Install test failed: {target} is too small or is a TODO_PROD.\")",
             "score": 10
           },
           {
@@ -1037,7 +1037,7 @@
           },
           {
             "line": 638,
-            "snippet": "return False  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return False  # TODO_PROD",
             "score": 10
           },
           {
@@ -1047,7 +1047,7 @@
           },
           {
             "line": 647,
-            "snippet": "return False  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return False  # TODO_PROD",
             "score": 10
           },
           {
@@ -1057,7 +1057,7 @@
           },
           {
             "line": 656,
-            "snippet": "return False  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return False  # TODO_PROD",
             "score": 10
           },
           {
@@ -1162,7 +1162,7 @@
           },
           {
             "line": 863,
-            "snippet": "json.dumps([])  # [PRODUCTION IMPLEMENTATION REQUIRED] for evolution improvements",
+            "snippet": "json.dumps([])  # TODO_PROD for evolution improvements",
             "score": 10
           }
         ]
@@ -1280,7 +1280,7 @@
           },
           {
             "line": 338,
-            "snippet": "return 0.99  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return 0.99  # TODO_PROD",
             "score": 10
           },
           {
@@ -1290,7 +1290,7 @@
           },
           {
             "line": 343,
-            "snippet": "return 0.95  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return 0.95  # TODO_PROD",
             "score": 10
           },
           {
@@ -1300,7 +1300,7 @@
           },
           {
             "line": 348,
-            "snippet": "return 0.98  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return 0.98  # TODO_PROD",
             "score": 10
           },
           {
@@ -1503,7 +1503,7 @@
           },
           {
             "line": 76,
-            "snippet": "// For [PRODUCTION IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.",
+            "snippet": "// For TODO_PROD: store in-memory. For production, use secure storage.",
             "score": 10
           },
           {
@@ -1513,12 +1513,12 @@
           },
           {
             "line": 96,
-            "snippet": "return [\"[PRODUCTION IMPLEMENTATION REQUIRED]-rg-1\", \"[PRODUCTION IMPLEMENTATION REQUIRED]-rg-2\"];",
+            "snippet": "return [\"TODO_PROD-rg-1\", \"TODO_PROD-rg-2\"];",
             "score": 10
           },
           {
             "line": 106,
-            "snippet": "// For [PRODUCTION IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.",
+            "snippet": "// For TODO_PROD: store in-memory. For production, use secure storage.",
             "score": 10
           },
           {
@@ -1528,7 +1528,7 @@
           },
           {
             "line": 124,
-            "snippet": "return [\"[PRODUCTION IMPLEMENTATION REQUIRED]-gcp-bucket-1\", \"[PRODUCTION IMPLEMENTATION REQUIRED]-gcp-bucket-2\"];",
+            "snippet": "return [\"TODO_PROD-gcp-bucket-1\", \"TODO_PROD-gcp-bucket-2\"];",
             "score": 10
           },
           {
@@ -1571,22 +1571,22 @@
         "matches": [
           {
             "line": 39,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] trading statistics - replace with actual implementation",
+            "snippet": "// TODO_PROD trading statistics - replace with actual implementation",
             "score": 10
           },
           {
             "line": 73,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] trade history - replace with actual implementation",
+            "snippet": "// TODO_PROD trade history - replace with actual implementation",
             "score": 10
           },
           {
             "line": 101,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] active trades - replace with actual implementation",
+            "snippet": "// TODO_PROD active trades - replace with actual implementation",
             "score": 10
           },
           {
             "line": 150,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] trade execution - replace with actual implementation",
+            "snippet": "// TODO_PROD trade execution - replace with actual implementation",
             "score": 10
           },
           {
@@ -1596,12 +1596,12 @@
           },
           {
             "line": 161,
-            "snippet": "profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // [PRODUCTION IMPLEMENTATION REQUIRED] profit calculation",
+            "snippet": "profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // TODO_PROD profit calculation",
             "score": 10
           },
           {
             "line": 175,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] trade cancellation - replace with actual implementation",
+            "snippet": "// TODO_PROD trade cancellation - replace with actual implementation",
             "score": 10
           },
           {
@@ -1619,32 +1619,32 @@
         "matches": [
           {
             "line": 60,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED] for self-optimization logic (meta-learning, RL, etc.)",
+            "snippet": "# TODO_PROD for self-optimization logic (meta-learning, RL, etc.)",
             "score": 10
           },
           {
             "line": 87,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual health check",
+            "snippet": "# TODO_PROD: implement actual health check",
             "score": 10
           },
           {
             "line": 91,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual project status",
+            "snippet": "# TODO_PROD: implement actual project status",
             "score": 10
           },
           {
             "line": 95,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual planned projects",
+            "snippet": "# TODO_PROD: implement actual planned projects",
             "score": 10
           },
           {
             "line": 99,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual timetable",
+            "snippet": "# TODO_PROD: implement actual timetable",
             "score": 10
           },
           {
             "line": 112,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: implement actual wallet status",
+            "snippet": "# TODO_PROD: implement actual wallet status",
             "score": 10
           },
           {
@@ -1672,12 +1672,12 @@
         "matches": [
           {
             "line": 14,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: Use PyInstaller or similar for real .exe",
+            "snippet": "# TODO_PROD: Use PyInstaller or similar for real .exe",
             "score": 10
           },
           {
             "line": 16,
-            "snippet": "log_activity('Packaging app as Windows .exe installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+            "snippet": "log_activity('Packaging app as Windows .exe installer (TODO_PROD).')",
             "score": 10
           },
           {
@@ -1687,7 +1687,7 @@
           },
           {
             "line": 22,
-            "snippet": "log_activity('Packaging app as Mac .dmg installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+            "snippet": "log_activity('Packaging app as Mac .dmg installer (TODO_PROD).')",
             "score": 10
           },
           {
@@ -1697,7 +1697,7 @@
           },
           {
             "line": 28,
-            "snippet": "log_activity('Packaging app as Linux AppImage installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+            "snippet": "log_activity('Packaging app as Linux AppImage installer (TODO_PROD).')",
             "score": 10
           },
           {
@@ -1707,12 +1707,12 @@
           },
           {
             "line": 54,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED] fallback",
+            "snippet": "# TODO_PROD fallback",
             "score": 10
           },
           {
             "line": 55,
-            "snippet": "log_activity(f'Uploading {file_path} to file host ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+            "snippet": "log_activity(f'Uploading {file_path} to file host (TODO_PROD).')",
             "score": 10
           }
         ]
@@ -1725,12 +1725,12 @@
         "matches": [
           {
             "line": 8,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Rate: number;",
+            "snippet": "TODO_PRODRate: number;",
             "score": 10
           },
           {
             "line": 78,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Rate: 16000,",
+            "snippet": "TODO_PRODRate: 16000,",
             "score": 10
           },
           {
@@ -1740,22 +1740,22 @@
           },
           {
             "line": 785,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with actual Bitget API",
+            "snippet": "// TODO_PROD implementation - would integrate with actual Bitget API",
             "score": 10
           },
           {
             "line": 790,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with QAllpurposeService",
+            "snippet": "// TODO_PROD implementation - would integrate with QAllpurposeService",
             "score": 10
           },
           {
             "line": 798,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService",
+            "snippet": "// TODO_PROD implementation - would integrate with WhatsAppService",
             "score": 10
           },
           {
             "line": 806,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService",
+            "snippet": "// TODO_PROD implementation - would integrate with WhatsAppService",
             "score": 10
           }
         ]
@@ -1768,12 +1768,12 @@
         "matches": [
           {
             "line": 8,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Rate: number;",
+            "snippet": "TODO_PRODRate: number;",
             "score": 10
           },
           {
             "line": 78,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Rate: 16000,",
+            "snippet": "TODO_PRODRate: 16000,",
             "score": 10
           },
           {
@@ -1783,22 +1783,22 @@
           },
           {
             "line": 785,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with actual Bitget API",
+            "snippet": "// TODO_PROD implementation - would integrate with actual Bitget API",
             "score": 10
           },
           {
             "line": 790,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with QAllpurposeService",
+            "snippet": "// TODO_PROD implementation - would integrate with QAllpurposeService",
             "score": 10
           },
           {
             "line": 798,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService",
+            "snippet": "// TODO_PROD implementation - would integrate with WhatsAppService",
             "score": 10
           },
           {
             "line": 806,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService",
+            "snippet": "// TODO_PROD implementation - would integrate with WhatsAppService",
             "score": 10
           }
         ]
@@ -1811,32 +1811,32 @@
         "matches": [
           {
             "line": 27,
-            "snippet": "- **Target Audience**: 18-35 [PRODUCTION IMPLEMENTATION REQUIRED]graphic",
+            "snippet": "- **Target Audience**: 18-35 TODO_PRODgraphic",
             "score": 10
           },
           {
             "line": 39,
-            "snippet": "- **Target Audience**: 16-40 [PRODUCTION IMPLEMENTATION REQUIRED]graphic",
+            "snippet": "- **Target Audience**: 16-40 TODO_PRODgraphic",
             "score": 10
           },
           {
             "line": 51,
-            "snippet": "- **Target Audience**: 15-35 [PRODUCTION IMPLEMENTATION REQUIRED]graphic",
+            "snippet": "- **Target Audience**: 15-35 TODO_PRODgraphic",
             "score": 10
           },
           {
             "line": 63,
-            "snippet": "- **Target Audience**: 18-40 [PRODUCTION IMPLEMENTATION REQUIRED]graphic",
+            "snippet": "- **Target Audience**: 18-40 TODO_PRODgraphic",
             "score": 10
           },
           {
             "line": 75,
-            "snippet": "- **Target Audience**: 20-45 [PRODUCTION IMPLEMENTATION REQUIRED]graphic",
+            "snippet": "- **Target Audience**: 20-45 TODO_PRODgraphic",
             "score": 10
           },
           {
             "line": 116,
-            "snippet": "- **[PRODUCTION IMPLEMENTATION REQUIRED] Sales**: Beat and [PRODUCTION IMPLEMENTATION REQUIRED] licensing",
+            "snippet": "- **TODO_PROD Sales**: Beat and TODO_PROD licensing",
             "score": 10
           }
         ]
@@ -1849,32 +1849,32 @@
         "matches": [
           {
             "line": 80,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED] for SMS integration (e.g., Twilio, Nexmo, etc.)",
+            "snippet": "# TODO_PROD for SMS integration (e.g., Twilio, Nexmo, etc.)",
             "score": 10
           },
           {
             "line": 81,
-            "snippet": "log_activity('Sent SMS notification ([PRODUCTION IMPLEMENTATION REQUIRED]).', {'message': message})",
+            "snippet": "log_activity('Sent SMS notification (TODO_PROD).', {'message': message})",
             "score": 10
           },
           {
             "line": 82,
-            "snippet": "print('SMS message sent ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+            "snippet": "print('SMS message sent (TODO_PROD).')",
             "score": 10
           },
           {
             "line": 86,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED] for push notification integration (e.g., Firebase, OneSignal, etc.)",
+            "snippet": "# TODO_PROD for push notification integration (e.g., Firebase, OneSignal, etc.)",
             "score": 10
           },
           {
             "line": 87,
-            "snippet": "log_activity('Sent push notification ([PRODUCTION IMPLEMENTATION REQUIRED]).', {'message': message})",
+            "snippet": "log_activity('Sent push notification (TODO_PROD).', {'message': message})",
             "score": 10
           },
           {
             "line": 88,
-            "snippet": "print('Push notification sent ([PRODUCTION IMPLEMENTATION REQUIRED]).')",
+            "snippet": "print('Push notification sent (TODO_PROD).')",
             "score": 10
           }
         ]
@@ -1887,32 +1887,32 @@
         "matches": [
           {
             "line": 373,
-            "snippet": "# For now, return [PRODUCTION IMPLEMENTATION REQUIRED] data",
+            "snippet": "# For now, return TODO_PROD data",
             "score": 10
           },
           {
             "line": 388,
-            "snippet": "# For now, return [PRODUCTION IMPLEMENTATION REQUIRED] result",
+            "snippet": "# For now, return TODO_PROD result",
             "score": 10
           },
           {
             "line": 706,
-            "snippet": "# Random signal for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "# Random signal for TODO_PRODnstration",
             "score": 10
           },
           {
             "line": 715,
-            "snippet": "amount=100.0,  # Fixed amount for [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "amount=100.0,  # Fixed amount for TODO_PROD",
             "score": 10
           },
           {
             "line": 732,
-            "snippet": "# Random signal for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "# Random signal for TODO_PRODnstration",
             "score": 10
           },
           {
             "line": 741,
-            "snippet": "amount=100.0,  # Fixed amount for [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "amount=100.0,  # Fixed amount for TODO_PROD",
             "score": 10
           }
         ]
@@ -1925,32 +1925,32 @@
         "matches": [
           {
             "line": 14,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle research",
+            "snippet": "// TODO_PROD: handle research",
             "score": 10
           },
           {
             "line": 15,
-            "snippet": "return res.status(200).json({ result: 'Research result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Research result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 17,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle verification",
+            "snippet": "// TODO_PROD: handle verification",
             "score": 10
           },
           {
             "line": 18,
-            "snippet": "return res.status(200).json({ result: 'Verification result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Verification result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 20,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle earning opportunities",
+            "snippet": "// TODO_PROD: handle earning opportunities",
             "score": 10
           },
           {
             "line": 21,
-            "snippet": "return res.status(200).json({ result: 'Earning opportunities result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Earning opportunities result (TODO_PROD)' });",
             "score": 10
           }
         ]
@@ -1963,32 +1963,32 @@
         "matches": [
           {
             "line": 14,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup",
+            "snippet": "// TODO_PROD: handle backup",
             "score": 10
           },
           {
             "line": 15,
-            "snippet": "return res.status(200).json({ result: 'Backup result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Backup result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 17,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore",
+            "snippet": "// TODO_PROD: handle restore",
             "score": 10
           },
           {
             "line": 18,
-            "snippet": "return res.status(200).json({ result: 'Restore result ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Restore result (TODO_PROD)' });",
             "score": 10
           },
           {
             "line": 24,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status",
+            "snippet": "// TODO_PROD: handle backup status",
             "score": 10
           },
           {
             "line": 25,
-            "snippet": "return res.status(200).json({ result: 'Backup status ([PRODUCTION IMPLEMENTATION REQUIRED])' });",
+            "snippet": "return res.status(200).json({ result: 'Backup status (TODO_PROD)' });",
             "score": 10
           }
         ]
@@ -2001,32 +2001,32 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "cy.visit('/auth/callback?provider=facebook&token=facebook-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.visit('/auth/callback?provider=facebook&token=facebook-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "cy.setCookie('authToken', 'facebook-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'facebook-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 12,
-            "snippet": "cy.visit('/auth/callback?provider=okta&token=okta-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.visit('/auth/callback?provider=okta&token=okta-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 13,
-            "snippet": "cy.setCookie('authToken', 'okta-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'okta-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 19,
-            "snippet": "cy.visit('/auth/callback?provider=custom&token=custom-[PRODUCTION IMPLEMENTATION REQUIRED]-token&role=superuser');",
+            "snippet": "cy.visit('/auth/callback?provider=custom&token=custom-TODO_PROD-token&role=superuser');",
             "score": 10
           },
           {
             "line": 20,
-            "snippet": "cy.setCookie('authToken', 'custom-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'custom-TODO_PROD-token');",
             "score": 10
           }
         ]
@@ -2127,7 +2127,7 @@
           },
           {
             "line": 616,
-            "snippet": "# Simulate a failed deployment via Vercel API ([PRODUCTION IMPLEMENTATION REQUIRED] or test project)",
+            "snippet": "# Simulate a failed deployment via Vercel API (TODO_PROD or test project)",
             "score": 10
           },
           {
@@ -2137,12 +2137,12 @@
           },
           {
             "line": 639,
-            "snippet": "# Simulate a failed workflow run ([PRODUCTION IMPLEMENTATION REQUIRED] or test repo)",
+            "snippet": "# Simulate a failed workflow run (TODO_PROD or test repo)",
             "score": 10
           },
           {
             "line": 654,
-            "snippet": "# Simulate a failed pipeline ([PRODUCTION IMPLEMENTATION REQUIRED] or test project)",
+            "snippet": "# Simulate a failed pipeline (TODO_PROD or test project)",
             "score": 10
           },
           {
@@ -2165,27 +2165,27 @@
         "matches": [
           {
             "line": 448,
-            "snippet": "return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return Math.random() * 100; // TODO_PROD",
             "score": 10
           },
           {
             "line": 453,
-            "snippet": "return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return Math.random() * 100; // TODO_PROD",
             "score": 10
           },
           {
             "line": 458,
-            "snippet": "return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return Math.random() * 100; // TODO_PROD",
             "score": 10
           },
           {
             "line": 463,
-            "snippet": "return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return Math.random() * 100; // TODO_PROD",
             "score": 10
           },
           {
             "line": 468,
-            "snippet": "return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return Math.random() * 100; // TODO_PROD",
             "score": 10
           }
         ]
@@ -2198,27 +2198,27 @@
         "matches": [
           {
             "line": 47,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] security status - replace with actual implementation",
+            "snippet": "// TODO_PROD security status - replace with actual implementation",
             "score": 10
           },
           {
             "line": 64,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] security threats - replace with actual implementation",
+            "snippet": "// TODO_PROD security threats - replace with actual implementation",
             "score": 10
           },
           {
             "line": 116,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] start monitoring - replace with actual implementation",
+            "snippet": "// TODO_PROD start monitoring - replace with actual implementation",
             "score": 10
           },
           {
             "line": 131,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] stop monitoring - replace with actual implementation",
+            "snippet": "// TODO_PROD stop monitoring - replace with actual implementation",
             "score": 10
           },
           {
             "line": 148,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] settings update - replace with actual implementation",
+            "snippet": "// TODO_PROD settings update - replace with actual implementation",
             "score": 10
           }
         ]
@@ -2404,17 +2404,17 @@
           },
           {
             "line": 526,
-            "snippet": "credentials={\"access_key\": \"[PRODUCTION IMPLEMENTATION REQUIRED]\", \"secret_key\": \"[PRODUCTION IMPLEMENTATION REQUIRED]\"},",
+            "snippet": "credentials={\"access_key\": \"TODO_PROD\", \"secret_key\": \"TODO_PROD\"},",
             "score": 10
           },
           {
             "line": 536,
-            "snippet": "credentials={\"project_id\": \"[PRODUCTION IMPLEMENTATION REQUIRED]\"},",
+            "snippet": "credentials={\"project_id\": \"TODO_PROD\"},",
             "score": 10
           },
           {
             "line": 546,
-            "snippet": "credentials={\"token\": \"[PRODUCTION IMPLEMENTATION REQUIRED]\"},",
+            "snippet": "credentials={\"token\": \"TODO_PROD\"},",
             "score": 10
           }
         ]
@@ -2432,7 +2432,7 @@
           },
           {
             "line": 41,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] confidence calculation (replace with real AI logic)",
+            "snippet": "// TODO_PROD confidence calculation (replace with real AI logic)",
             "score": 10
           },
           {
@@ -2442,7 +2442,7 @@
           },
           {
             "line": 145,
-            "snippet": "// Simulate a trade (for [PRODUCTION IMPLEMENTATION REQUIRED]/testing)",
+            "snippet": "// Simulate a trade (for TODO_PROD/testing)",
             "score": 10
           },
           {
@@ -2460,22 +2460,22 @@
         "matches": [
           {
             "line": 325,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Enter device name\"",
+            "snippet": "TODO_PROD=\"Enter device name\"",
             "score": 10
           },
           {
             "line": 355,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"192.168.1.100\"",
+            "snippet": "TODO_PROD=\"192.168.1.100\"",
             "score": 10
           },
           {
             "line": 364,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"3000\"",
+            "snippet": "TODO_PROD=\"3000\"",
             "score": 10
           },
           {
             "line": 373,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Device description\"",
+            "snippet": "TODO_PROD=\"Device description\"",
             "score": 10
           }
         ]
@@ -2488,22 +2488,22 @@
         "matches": [
           {
             "line": 325,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Enter device name\"",
+            "snippet": "TODO_PROD=\"Enter device name\"",
             "score": 10
           },
           {
             "line": 355,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"192.168.1.100\"",
+            "snippet": "TODO_PROD=\"192.168.1.100\"",
             "score": 10
           },
           {
             "line": 364,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"3000\"",
+            "snippet": "TODO_PROD=\"3000\"",
             "score": 10
           },
           {
             "line": 373,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Device description\"",
+            "snippet": "TODO_PROD=\"Device description\"",
             "score": 10
           }
         ]
@@ -2516,22 +2516,22 @@
         "matches": [
           {
             "line": 116,
-            "snippet": "with gr.Blocks(title=\"QMOI AI System\", theme=gr.themes.Soft()) as [PRODUCTION IMPLEMENTATION REQUIRED]:",
+            "snippet": "with gr.Blocks(title=\"QMOI AI System\", theme=gr.themes.Soft()) as TODO_PROD:",
             "score": 10
           },
           {
             "line": 130,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Leave empty for new conversation\",",
+            "snippet": "TODO_PROD=\"Leave empty for new conversation\",",
             "score": 10
           },
           {
             "line": 136,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Ask QMOI anything about system status, automation, or deployment...\",",
+            "snippet": "TODO_PROD=\"Ask QMOI anything about system status, automation, or deployment...\",",
             "score": 10
           },
           {
             "line": 207,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED].launch(server_name=\"0.0.0.0\", server_port=7860, share=True)",
+            "snippet": "TODO_PROD.launch(server_name=\"0.0.0.0\", server_port=7860, share=True)",
             "score": 10
           }
         ]
@@ -2544,22 +2544,22 @@
         "matches": [
           {
             "line": 44,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: create PR/MR on platform",
+            "snippet": "# TODO_PROD: create PR/MR on platform",
             "score": 10
           },
           {
             "line": 49,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: open issue on platform",
+            "snippet": "# TODO_PROD: open issue on platform",
             "score": 10
           },
           {
             "line": 54,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: comment on PR/issue",
+            "snippet": "# TODO_PROD: comment on PR/issue",
             "score": 10
           },
           {
             "line": 59,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: review PR/issue",
+            "snippet": "# TODO_PROD: review PR/issue",
             "score": 10
           }
         ]
@@ -2660,22 +2660,22 @@
         "matches": [
           {
             "line": 70,
-            "snippet": "\"\"\"Run QFix payload: clear temp folders ([PRODUCTION IMPLEMENTATION REQUIRED] implementation).\"\"\"",
+            "snippet": "\"\"\"Run QFix payload: clear temp folders (TODO_PROD implementation).\"\"\"",
             "score": 10
           },
           {
             "line": 79,
-            "snippet": "\"\"\"Run QOptimize payload: [PRODUCTION IMPLEMENTATION REQUIRED] optimization.\"\"\"",
+            "snippet": "\"\"\"Run QOptimize payload: TODO_PROD optimization.\"\"\"",
             "score": 10
           },
           {
             "line": 85,
-            "snippet": "\"\"\"Run QSecure payload: [PRODUCTION IMPLEMENTATION REQUIRED] security check.\"\"\"",
+            "snippet": "\"\"\"Run QSecure payload: TODO_PROD security check.\"\"\"",
             "score": 10
           },
           {
             "line": 92,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: always run qfix if error_log_detected is True",
+            "snippet": "# TODO_PROD: always run qfix if error_log_detected is True",
             "score": 10
           }
         ]
@@ -2688,22 +2688,22 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "cy.visit('/auth/callback?provider=twitter&token=twitter-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.visit('/auth/callback?provider=twitter&token=twitter-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "cy.setCookie('authToken', 'twitter-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'twitter-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 12,
-            "snippet": "cy.visit('/auth/callback?provider=saml&token=saml-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.visit('/auth/callback?provider=saml&token=saml-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 13,
-            "snippet": "cy.setCookie('authToken', 'saml-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'saml-TODO_PROD-token');",
             "score": 10
           }
         ]
@@ -2716,22 +2716,22 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "cy.visit('/auth/callback?provider=biometric&token=biometric-[PRODUCTION IMPLEMENTATION REQUIRED]-token&biometric=true');",
+            "snippet": "cy.visit('/auth/callback?provider=biometric&token=biometric-TODO_PROD-token&biometric=true');",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "cy.setCookie('authToken', 'biometric-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'biometric-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 14,
-            "snippet": "cy.visit('/auth/callback?provider=magiclink&token=magiclink-[PRODUCTION IMPLEMENTATION REQUIRED]-token&email=user@example.com');",
+            "snippet": "cy.visit('/auth/callback?provider=magiclink&token=magiclink-TODO_PROD-token&email=user@example.com');",
             "score": 10
           },
           {
             "line": 15,
-            "snippet": "cy.setCookie('authToken', 'magiclink-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'magiclink-TODO_PROD-token');",
             "score": 10
           }
         ]
@@ -2744,22 +2744,22 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "cy.visit('/auth/callback?provider=google&token=google-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.visit('/auth/callback?provider=google&token=google-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "cy.setCookie('authToken', 'google-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'google-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 12,
-            "snippet": "cy.visit('/auth/callback?provider=github&token=github-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.visit('/auth/callback?provider=github&token=github-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 13,
-            "snippet": "cy.setCookie('authToken', 'github-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'github-TODO_PROD-token');",
             "score": 10
           }
         ]
@@ -2772,22 +2772,22 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "cy.visit('/auth/callback?provider=device&token=device-[PRODUCTION IMPLEMENTATION REQUIRED]-token&device_id=dev123');",
+            "snippet": "cy.visit('/auth/callback?provider=device&token=device-TODO_PROD-token&device_id=dev123');",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "cy.setCookie('authToken', 'device-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'device-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 14,
-            "snippet": "cy.visit('/auth/callback?provider=delegated&token=delegated-[PRODUCTION IMPLEMENTATION REQUIRED]-token&delegator=admin');",
+            "snippet": "cy.visit('/auth/callback?provider=delegated&token=delegated-TODO_PROD-token&delegator=admin');",
             "score": 10
           },
           {
             "line": 15,
-            "snippet": "cy.setCookie('authToken', 'delegated-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'delegated-TODO_PROD-token');",
             "score": 10
           }
         ]
@@ -2845,7 +2845,7 @@
           },
           {
             "line": 778,
-            "snippet": "\"\"\"Main function to [PRODUCTION IMPLEMENTATION REQUIRED]nstrate enhanced QMOI AI\"\"\"",
+            "snippet": "\"\"\"Main function to TODO_PRODnstrate enhanced QMOI AI\"\"\"",
             "score": 10
           }
         ]
@@ -2946,17 +2946,17 @@
           },
           {
             "line": 110,
-            "snippet": "no[PRODUCTION IMPLEMENTATION REQUIRED]dules: 'unlimited_qcity',",
+            "snippet": "noTODO_PRODdules: 'unlimited_qcity',",
             "score": 10
           },
           {
             "line": 326,
-            "snippet": "await this.executeInQCity(command, { storage: 'unlimited_qcity', no[PRODUCTION IMPLEMENTATION REQUIRED]dules: 'unlimited_qcity', unlimitedResources: true });",
+            "snippet": "await this.executeInQCity(command, { storage: 'unlimited_qcity', noTODO_PRODdules: 'unlimited_qcity', unlimitedResources: true });",
             "score": 10
           },
           {
             "line": 341,
-            "snippet": "return this.executeInQCity('npm dedupe', { no[PRODUCTION IMPLEMENTATION REQUIRED]dules: 'unlimited_qcity' });",
+            "snippet": "return this.executeInQCity('npm dedupe', { noTODO_PRODdules: 'unlimited_qcity' });",
             "score": 10
           },
           {
@@ -3054,7 +3054,7 @@
           },
           {
             "line": 696,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] methods for various optimizations",
+            "snippet": "// TODO_PROD methods for various optimizations",
             "score": 10
           }
         ]
@@ -3067,17 +3067,17 @@
         "matches": [
           {
             "line": 51,
-            "snippet": "<input type=\"text\" id=\"logSearch\" [PRODUCTION IMPLEMENTATION REQUIRED]=\"Search logs...\" oninput=\"filterLogs()\" style=\"width: 60%; padding: 0.5em;\">",
+            "snippet": "<input type=\"text\" id=\"logSearch\" TODO_PROD=\"Search logs...\" oninput=\"filterLogs()\" style=\"width: 60%; padding: 0.5em;\">",
             "score": 10
           },
           {
             "line": 185,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with notification logs/status",
+            "snippet": "# TODO_PROD: integrate with notification logs/status",
             "score": 10
           },
           {
             "line": 190,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: trigger a test notification (integrate with QMOI notification system)",
+            "snippet": "# TODO_PROD: trigger a test notification (integrate with QMOI notification system)",
             "score": 10
           },
           {
@@ -3283,17 +3283,17 @@
           },
           {
             "line": 50,
-            "snippet": "6. **[PRODUCTION IMPLEMENTATION REQUIRED] System** (`scripts/[PRODUCTION IMPLEMENTATION REQUIRED]-automation.js`)",
+            "snippet": "6. **TODO_PROD System** (`scripts/TODO_PROD-automation.js`)",
             "score": 10
           },
           {
             "line": 52,
-            "snippet": "- [PRODUCTION IMPLEMENTATION REQUIRED]nstrates all features",
+            "snippet": "- TODO_PRODnstrates all features",
             "score": 10
           },
           {
             "line": 88,
-            "snippet": "| `yarn lint:[PRODUCTION IMPLEMENTATION REQUIRED]` | [PRODUCTION IMPLEMENTATION REQUIRED]nstrate complete automation |",
+            "snippet": "| `yarn lint:TODO_PROD` | TODO_PRODnstrate complete automation |",
             "score": 10
           },
           {
@@ -3311,7 +3311,7 @@
         "matches": [
           {
             "line": 297,
-            "snippet": "size: 10 * 1024 * 1024, // 10MB ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "size: 10 * 1024 * 1024, // 10MB (TODO_PROD)",
             "score": 10
           },
           {
@@ -3379,17 +3379,17 @@
         "matches": [
           {
             "line": 6,
-            "snippet": "# Create the [PRODUCTION IMPLEMENTATION REQUIRED] EXE file",
+            "snippet": "# Create the TODO_PROD EXE file",
             "score": 10
           },
           {
             "line": 8,
-            "snippet": "f.write(b\"This is a [PRODUCTION IMPLEMENTATION REQUIRED] EXE file for testing.\")",
+            "snippet": "f.write(b\"This is a TODO_PROD EXE file for testing.\")",
             "score": 10
           },
           {
             "line": 10,
-            "snippet": "print(\"\u2705 [PRODUCTION IMPLEMENTATION REQUIRED] EXE created at Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe\")",
+            "snippet": "print(\"\u2705 TODO_PROD EXE created at Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe\")",
             "score": 10
           }
         ]
@@ -3402,17 +3402,17 @@
         "matches": [
           {
             "line": 609,
-            "snippet": "- \ud83c\udfad **Honeypot Traps**: [PRODUCTION IMPLEMENTATION REQUIRED] endpoints to catch attackers",
+            "snippet": "- \ud83c\udfad **Honeypot Traps**: TODO_PROD endpoints to catch attackers",
             "score": 10
           },
           {
             "line": 1030,
-            "snippet": "- The component uses [PRODUCTION IMPLEMENTATION REQUIRED] data by default, but can be connected to a real API for production use.",
+            "snippet": "- The component uses TODO_PROD data by default, but can be connected to a real API for production use.",
             "score": 10
           },
           {
             "line": 1039,
-            "snippet": "- To use real data, replace the [PRODUCTION IMPLEMENTATION REQUIRED] data in the component with an API call (e.g., `fetch('/api/media')`).",
+            "snippet": "- To use real data, replace the TODO_PROD data in the component with an API call (e.g., `fetch('/api/media')`).",
             "score": 10
           }
         ]
@@ -3425,7 +3425,7 @@
         "matches": [
           {
             "line": 297,
-            "snippet": "size: 10 * 1024 * 1024, // 10MB ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "size: 10 * 1024 * 1024, // 10MB (TODO_PROD)",
             "score": 10
           },
           {
@@ -3493,17 +3493,17 @@
         "matches": [
           {
             "line": 584,
-            "snippet": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] - in a real system, you would use firewall rules",
+            "snippet": "# This is a TODO_PROD - in a real system, you would use firewall rules",
             "score": 10
           },
           {
             "line": 611,
-            "snippet": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] - in a real system, you would use process management",
+            "snippet": "# This is a TODO_PROD - in a real system, you would use process management",
             "score": 10
           },
           {
             "line": 927,
-            "snippet": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] - in a real system, you would check against vulnerability databases",
+            "snippet": "# This is a TODO_PROD - in a real system, you would check against vulnerability databases",
             "score": 10
           }
         ]
@@ -3531,12 +3531,12 @@
           },
           {
             "line": 194,
-            "snippet": "const response = await fetch('https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com/api/PostPesapalDirectOrderV4', {",
+            "snippet": "const response = await fetch('https://TODO_PROD.pesapal.com/api/PostPesapalDirectOrderV4', {",
             "score": 10
           },
           {
             "line": 218,
-            "snippet": "PESAPAL_ENVIRONMENT: '[PRODUCTION IMPLEMENTATION REQUIRED]',",
+            "snippet": "PESAPAL_ENVIRONMENT: 'TODO_PROD',",
             "score": 10
           },
           {
@@ -3559,17 +3559,17 @@
         "matches": [
           {
             "line": 485,
-            "snippet": "'json-schema-[PRODUCTION IMPLEMENTATION REQUIRED]r': '^0.5.0',",
+            "snippet": "'json-schema-TODO_PRODr': '^0.5.0',",
             "score": 10
           },
           {
             "line": 486,
-            "snippet": "'[PRODUCTION IMPLEMENTATION REQUIRED]r': '^6.6.6',",
+            "snippet": "'TODO_PRODr': '^6.6.6',",
             "score": 10
           },
           {
             "line": 540,
-            "snippet": "'no[PRODUCTION IMPLEMENTATION REQUIRED]n': '^3.0.1',",
+            "snippet": "'noTODO_PRODn': '^3.0.1',",
             "score": 10
           }
         ]
@@ -3605,17 +3605,17 @@
         "matches": [
           {
             "line": 805,
-            "snippet": "# For now, generate [PRODUCTION IMPLEMENTATION REQUIRED] data",
+            "snippet": "# For now, generate TODO_PROD data",
             "score": 10
           },
           {
             "line": 814,
-            "snippet": "cpu_data.append(30 + (i * 2) % 40)  # [PRODUCTION IMPLEMENTATION REQUIRED] CPU data",
+            "snippet": "cpu_data.append(30 + (i * 2) % 40)  # TODO_PROD CPU data",
             "score": 10
           },
           {
             "line": 815,
-            "snippet": "memory_data.append(50 + (i * 3) % 30)  # [PRODUCTION IMPLEMENTATION REQUIRED] memory data",
+            "snippet": "memory_data.append(50 + (i * 3) % 30)  # TODO_PROD memory data",
             "score": 10
           }
         ]
@@ -3691,17 +3691,17 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "// Simulate OAuth callback with a [PRODUCTION IMPLEMENTATION REQUIRED] token",
+            "snippet": "// Simulate OAuth callback with a TODO_PROD token",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "cy.visit('/auth/callback?token=[PRODUCTION IMPLEMENTATION REQUIRED]-oauth-token');",
+            "snippet": "cy.visit('/auth/callback?token=TODO_PROD-oauth-token');",
             "score": 10
           },
           {
             "line": 7,
-            "snippet": "cy.setCookie('authToken', '[PRODUCTION IMPLEMENTATION REQUIRED]-oauth-token');",
+            "snippet": "cy.setCookie('authToken', 'TODO_PROD-oauth-token');",
             "score": 10
           }
         ]
@@ -3714,7 +3714,7 @@
         "matches": [
           {
             "line": 37,
-            "snippet": "- **Zero-Config Deployment**: System auto-detects and configures domain/ngrok for secure, instant deployment (see .env and nginx.[PRODUCTION IMPLEMENTATION REQUIRED].conf).",
+            "snippet": "- **Zero-Config Deployment**: System auto-detects and configures domain/ngrok for secure, instant deployment (see .env and nginx.TODO_PROD.conf).",
             "score": 10
           },
           {
@@ -3908,12 +3908,12 @@
         "matches": [
           {
             "line": 8,
-            "snippet": "AIRTEL_API_KEY = os.getenv('AIRTEL_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]-key')",
+            "snippet": "AIRTEL_API_KEY = os.getenv('AIRTEL_API_KEY', 'TODO_PROD-key')",
             "score": 10
           },
           {
             "line": 9,
-            "snippet": "MPESA_API_KEY = os.getenv('MPESA_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]-key')",
+            "snippet": "MPESA_API_KEY = os.getenv('MPESA_API_KEY', 'TODO_PROD-key')",
             "score": 10
           },
           {
@@ -4049,7 +4049,7 @@
         "matches": [
           {
             "line": 25,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] database",
+            "snippet": "// TODO_PROD database",
             "score": 10
           },
           {
@@ -4082,12 +4082,12 @@
         "matches": [
           {
             "line": 486,
-            "snippet": "const balance = 1250.75; // [PRODUCTION IMPLEMENTATION REQUIRED] balance",
+            "snippet": "const balance = 1250.75; // TODO_PROD balance",
             "score": 10
           },
           {
             "line": 516,
-            "snippet": "const totalEarnings = 847.5; // [PRODUCTION IMPLEMENTATION REQUIRED] earnings",
+            "snippet": "const totalEarnings = 847.5; // TODO_PROD earnings",
             "score": 10
           },
           {
@@ -4125,12 +4125,12 @@
         "matches": [
           {
             "line": 486,
-            "snippet": "const balance = 1250.75; // [PRODUCTION IMPLEMENTATION REQUIRED] balance",
+            "snippet": "const balance = 1250.75; // TODO_PROD balance",
             "score": 10
           },
           {
             "line": 516,
-            "snippet": "const totalEarnings = 847.5; // [PRODUCTION IMPLEMENTATION REQUIRED] earnings",
+            "snippet": "const totalEarnings = 847.5; // TODO_PROD earnings",
             "score": 10
           },
           {
@@ -4213,7 +4213,7 @@
           },
           {
             "line": 495,
-            "snippet": "# For now, return [PRODUCTION IMPLEMENTATION REQUIRED] data",
+            "snippet": "# For now, return TODO_PROD data",
             "score": 10
           },
           {
@@ -4251,12 +4251,12 @@
         "matches": [
           {
             "line": 270,
-            "snippet": "# For now, we'll use [PRODUCTION IMPLEMENTATION REQUIRED] models",
+            "snippet": "# For now, we'll use TODO_PROD models",
             "score": 10
           },
           {
             "line": 308,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED] response generation",
+            "snippet": "# TODO_PROD response generation",
             "score": 10
           },
           {
@@ -4445,7 +4445,7 @@
         "matches": [
           {
             "line": 27,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] database",
+            "snippet": "// TODO_PROD database",
             "score": 10
           },
           {
@@ -4473,12 +4473,12 @@
         "matches": [
           {
             "line": 15,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] WiFi networks - replace with actual implementation",
+            "snippet": "// TODO_PROD WiFi networks - replace with actual implementation",
             "score": 10
           },
           {
             "line": 68,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] connection attempt - replace with actual implementation",
+            "snippet": "// TODO_PROD connection attempt - replace with actual implementation",
             "score": 10
           },
           {
@@ -4506,12 +4506,12 @@
           },
           {
             "line": 81,
-            "snippet": "// For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.",
+            "snippet": "// For now, this is a TODO_PROD with some basic examples.",
             "score": 10
           },
           {
             "line": 166,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] for other error types",
+            "snippet": "// TODO_PROD for other error types",
             "score": 10
           },
           {
@@ -4534,7 +4534,7 @@
           },
           {
             "line": 129,
-            "snippet": "implementation_testing\": \"[PRODUCTION IMPLEMENTATION REQUIRED],validation_testing\": \"Test validation of results,deployment_testing\": \"Test deployment to production",
+            "snippet": "implementation_testing\": \"TODO_PROD,validation_testing\": \"Test validation of results,deployment_testing\": \"Test deployment to production",
             "score": 10
           },
           {
@@ -4544,7 +4544,7 @@
           },
           {
             "line": 343,
-            "snippet": "implementation_testing\": \"[PRODUCTION IMPLEMENTATION REQUIRED] thoroughly,validation_testing\": Validate solution effectiveness,",
+            "snippet": "implementation_testing\": \"TODO_PROD thoroughly,validation_testing\": Validate solution effectiveness,",
             "score": 10
           },
           {
@@ -4567,12 +4567,12 @@
           },
           {
             "line": 81,
-            "snippet": "// For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.",
+            "snippet": "// For now, this is a TODO_PROD with some basic examples.",
             "score": 10
           },
           {
             "line": 166,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] for other error types",
+            "snippet": "// TODO_PROD for other error types",
             "score": 10
           },
           {
@@ -4605,12 +4605,12 @@
           },
           {
             "line": 261,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] component check - replace with actual implementation",
+            "snippet": "// TODO_PROD component check - replace with actual implementation",
             "score": 10
           },
           {
             "line": 287,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] settings update - replace with actual implementation",
+            "snippet": "// TODO_PROD settings update - replace with actual implementation",
             "score": 10
           }
         ]
@@ -4686,12 +4686,12 @@
         "matches": [
           {
             "line": 51,
-            "snippet": "# --- AI confidence calculation ([PRODUCTION IMPLEMENTATION REQUIRED], replace with real model) ---",
+            "snippet": "# --- AI confidence calculation (TODO_PROD, replace with real model) ---",
             "score": 10
           },
           {
             "line": 57,
-            "snippet": "# --- Dynamic trading pairs selection ([PRODUCTION IMPLEMENTATION REQUIRED]) ---",
+            "snippet": "# --- Dynamic trading pairs selection (TODO_PROD) ---",
             "score": 10
           },
           {
@@ -4772,7 +4772,7 @@
         "matches": [
           {
             "line": 294,
-            "snippet": "<textarea id=\"chat-input\" [PRODUCTION IMPLEMENTATION REQUIRED]=\"Ask QMOI anything...\" rows=\"3\"></textarea>",
+            "snippet": "<textarea id=\"chat-input\" TODO_PROD=\"Ask QMOI anything...\" rows=\"3\"></textarea>",
             "score": 10
           },
           {
@@ -4787,7 +4787,7 @@
           },
           {
             "line": 448,
-            "snippet": "<textarea id=\"code-editor\" [PRODUCTION IMPLEMENTATION REQUIRED]=\"Start coding...\"></textarea>",
+            "snippet": "<textarea id=\"code-editor\" TODO_PROD=\"Start coding...\"></textarea>",
             "score": 10
           }
         ]
@@ -4810,7 +4810,7 @@
           },
           {
             "line": 13,
-            "snippet": "// For now, just return a [PRODUCTION IMPLEMENTATION REQUIRED] response",
+            "snippet": "// For now, just return a TODO_PROD response",
             "score": 10
           }
         ]
@@ -4823,7 +4823,7 @@
         "matches": [
           {
             "line": 400,
-            "snippet": "\"\"\"Example tasks for [PRODUCTION IMPLEMENTATION REQUIRED]nstration\"\"\"",
+            "snippet": "\"\"\"Example tasks for TODO_PRODnstration\"\"\"",
             "score": 10
           },
           {
@@ -4833,7 +4833,7 @@
           },
           {
             "line": 451,
-            "snippet": "args=(\"[PRODUCTION IMPLEMENTATION REQUIRED] text for AI processing\",),",
+            "snippet": "args=(\"TODO_PROD text for AI processing\",),",
             "score": 10
           }
         ]
@@ -4851,12 +4851,12 @@
           },
           {
             "line": 655,
-            "snippet": "# Simple accuracy calculation ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "# Simple accuracy calculation (TODO_PROD)",
             "score": 10
           },
           {
             "line": 656,
-            "snippet": "return 75.0  # [PRODUCTION IMPLEMENTATION REQUIRED] value",
+            "snippet": "return 75.0  # TODO_PROD value",
             "score": 10
           }
         ]
@@ -5040,7 +5040,7 @@
         "matches": [
           {
             "line": 47,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] database",
+            "snippet": "// TODO_PROD database",
             "score": 10
           },
           {
@@ -5083,12 +5083,12 @@
         "matches": [
           {
             "line": 23,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] AI tasks - replace with actual implementation",
+            "snippet": "// TODO_PROD AI tasks - replace with actual implementation",
             "score": 10
           },
           {
             "line": 101,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] enhancement process - replace with actual implementation",
+            "snippet": "// TODO_PROD enhancement process - replace with actual implementation",
             "score": 10
           },
           {
@@ -5106,7 +5106,7 @@
         "matches": [
           {
             "line": 25,
-            "snippet": "// Simulate error list for [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "// Simulate error list for TODO_PROD",
             "score": 10
           },
           {
@@ -5129,12 +5129,12 @@
         "matches": [
           {
             "line": 113,
-            "snippet": "# Enhance: Send files between devices via all wireless options ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "# Enhance: Send files between devices via all wireless options (TODO_PROD)",
             "score": 10
           },
           {
             "line": 116,
-            "snippet": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] for actual implementation",
+            "snippet": "# This is a TODO_PROD for actual implementation",
             "score": 10
           },
           {
@@ -5152,7 +5152,7 @@
         "matches": [
           {
             "line": 238,
-            "snippet": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] for WhatsApp Business API",
+            "snippet": "# This is a TODO_PROD for WhatsApp Business API",
             "score": 10
           },
           {
@@ -5162,7 +5162,7 @@
           },
           {
             "line": 240,
-            "snippet": "logger.info(f\"WhatsApp notification ([PRODUCTION IMPLEMENTATION REQUIRED]): {message}\")",
+            "snippet": "logger.info(f\"WhatsApp notification (TODO_PROD): {message}\")",
             "score": 10
           }
         ]
@@ -5180,12 +5180,12 @@
           },
           {
             "line": 467,
-            "snippet": "# Send notification ([PRODUCTION IMPLEMENTATION REQUIRED] for actual notification system)",
+            "snippet": "# Send notification (TODO_PROD for actual notification system)",
             "score": 10
           },
           {
             "line": 476,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED] for actual notification system",
+            "snippet": "# TODO_PROD for actual notification system",
             "score": 10
           }
         ]
@@ -5221,12 +5221,12 @@
         "matches": [
           {
             "line": 55,
-            "snippet": "<TextInput [PRODUCTION IMPLEMENTATION REQUIRED]=\"Username\" value={user} onChangeText={setUser} style={styles.input} />",
+            "snippet": "<TextInput TODO_PROD=\"Username\" value={user} onChangeText={setUser} style={styles.input} />",
             "score": 10
           },
           {
             "line": 56,
-            "snippet": "<TextInput [PRODUCTION IMPLEMENTATION REQUIRED]=\"Password\" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />",
+            "snippet": "<TextInput TODO_PROD=\"Password\" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />",
             "score": 10
           }
         ]
@@ -5239,12 +5239,12 @@
         "matches": [
           {
             "line": 59,
-            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [PRODUCTION IMPLEMENTATION REQUIRED]=\"TypeError,ReferenceError\" style={styles.input} />",
+            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} TODO_PROD=\"TypeError,ReferenceError\" style={styles.input} />",
             "score": 10
           },
           {
             "line": 61,
-            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [PRODUCTION IMPLEMENTATION REQUIRED]=\"22:00-07:00\" style={styles.input} />",
+            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} TODO_PROD=\"22:00-07:00\" style={styles.input} />",
             "score": 10
           }
         ]
@@ -5257,12 +5257,12 @@
         "matches": [
           {
             "line": 108,
-            "snippet": "- [PRODUCTION IMPLEMENTATION REQUIRED] external dependencies",
+            "snippet": "- TODO_PROD external dependencies",
             "score": 10
           },
           {
             "line": 620,
-            "snippet": "4. **[PRODUCTION IMPLEMENTATION REQUIRED] external dependencies** appropriately",
+            "snippet": "4. **TODO_PROD external dependencies** appropriately",
             "score": 10
           }
         ]
@@ -5275,12 +5275,12 @@
         "matches": [
           {
             "line": 67,
-            "snippet": "f.write(f\"[PRODUCTION IMPLEMENTATION REQUIRED] {device} build for QMOI AI\")",
+            "snippet": "f.write(f\"TODO_PROD {device} build for QMOI AI\")",
             "score": 10
           },
           {
             "line": 68,
-            "snippet": "print(f\"\ud83d\udce6 {device.capitalize()} [PRODUCTION IMPLEMENTATION REQUIRED] created.\")",
+            "snippet": "print(f\"\ud83d\udce6 {device.capitalize()} TODO_PROD created.\")",
             "score": 10
           }
         ]
@@ -5293,12 +5293,12 @@
         "matches": [
           {
             "line": 36,
-            "snippet": "f.write(\"# Auto-generated [PRODUCTION IMPLEMENTATION REQUIRED]\\nfrom fastapi import FastAPI\\napp = FastAPI()\\n@app.get('/')\\ndef root(): return {'status': 'ready'}\")",
+            "snippet": "f.write(\"# Auto-generated TODO_PROD\\nfrom fastapi import FastAPI\\napp = FastAPI()\\n@app.get('/')\\ndef root(): return {'status': 'ready'}\")",
             "score": 10
           },
           {
             "line": 37,
-            "snippet": "print(\"\u26a0\ufe0f Created minimal FastAPI backend as [PRODUCTION IMPLEMENTATION REQUIRED].\")",
+            "snippet": "print(\"\u26a0\ufe0f Created minimal FastAPI backend as TODO_PROD.\")",
             "score": 10
           }
         ]
@@ -5311,12 +5311,12 @@
         "matches": [
           {
             "line": 14,
-            "snippet": "# NSIS script [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "# NSIS script TODO_PROD",
             "score": 10
           },
           {
             "line": 15,
-            "snippet": "ensure_file(\"installer/installer.nsh\", \"; NSIS [PRODUCTION IMPLEMENTATION REQUIRED]\")",
+            "snippet": "ensure_file(\"installer/installer.nsh\", \"; NSIS TODO_PROD\")",
             "score": 10
           }
         ]
@@ -5329,12 +5329,12 @@
         "matches": [
           {
             "line": 55,
-            "snippet": "<TextInput [PRODUCTION IMPLEMENTATION REQUIRED]=\"Username\" value={user} onChangeText={setUser} style={styles.input} />",
+            "snippet": "<TextInput TODO_PROD=\"Username\" value={user} onChangeText={setUser} style={styles.input} />",
             "score": 10
           },
           {
             "line": 56,
-            "snippet": "<TextInput [PRODUCTION IMPLEMENTATION REQUIRED]=\"Password\" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />",
+            "snippet": "<TextInput TODO_PROD=\"Password\" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />",
             "score": 10
           }
         ]
@@ -5347,12 +5347,12 @@
         "matches": [
           {
             "line": 59,
-            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [PRODUCTION IMPLEMENTATION REQUIRED]=\"TypeError,ReferenceError\" style={styles.input} />",
+            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} TODO_PROD=\"TypeError,ReferenceError\" style={styles.input} />",
             "score": 10
           },
           {
             "line": 61,
-            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [PRODUCTION IMPLEMENTATION REQUIRED]=\"22:00-07:00\" style={styles.input} />",
+            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} TODO_PROD=\"22:00-07:00\" style={styles.input} />",
             "score": 10
           }
         ]
@@ -5365,12 +5365,12 @@
         "matches": [
           {
             "line": 60,
-            "snippet": "elif status == \"[PRODUCTION IMPLEMENTATION REQUIRED]_used\":",
+            "snippet": "elif status == \"TODO_PROD_used\":",
             "score": 10
           },
           {
             "line": 61,
-            "snippet": "lines.append(f\"| {label:<16} | \u26a0\ufe0f [PRODUCTION IMPLEMENTATION REQUIRED] | \u274c FAIL      |\")",
+            "snippet": "lines.append(f\"| {label:<16} | \u26a0\ufe0f TODO_PROD | \u274c FAIL      |\")",
             "score": 10
           }
         ]
@@ -5383,12 +5383,12 @@
         "matches": [
           {
             "line": 19,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with QMOI notification system",
+            "snippet": "# TODO_PROD: integrate with QMOI notification system",
             "score": 10
           },
           {
             "line": 42,
-            "snippet": "# Trigger QMOI error handler ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "# Trigger QMOI error handler (TODO_PROD)",
             "score": 10
           }
         ]
@@ -5401,12 +5401,12 @@
         "matches": [
           {
             "line": 98,
-            "snippet": "# This would generate actual icon files; here, create a [PRODUCTION IMPLEMENTATION REQUIRED] with enhanced description",
+            "snippet": "# This would generate actual icon files; here, create a TODO_PROD with enhanced description",
             "score": 10
           },
           {
             "line": 477,
-            "snippet": "# Create [PRODUCTION IMPLEMENTATION REQUIRED] files",
+            "snippet": "# Create TODO_PROD files",
             "score": 10
           }
         ]
@@ -5419,12 +5419,12 @@
         "matches": [
           {
             "line": 264,
-            "snippet": "missing_deps = [\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-[PRODUCTION IMPLEMENTATION REQUIRED]\"]",
+            "snippet": "missing_deps = [\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-TODO_PROD\"]",
             "score": 10
           },
           {
             "line": 605,
-            "snippet": "\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-[PRODUCTION IMPLEMENTATION REQUIRED]\"",
+            "snippet": "\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-TODO_PROD\"",
             "score": 10
           }
         ]
@@ -5437,12 +5437,12 @@
         "matches": [
           {
             "line": 133,
-            "snippet": "logger.info(f\"Trained ML model on {len(features)} [PRODUCTION IMPLEMENTATION REQUIRED]s\")",
+            "snippet": "logger.info(f\"Trained ML model on {len(features)} TODO_PRODs\")",
             "score": 10
           },
           {
             "line": 371,
-            "snippet": "\"\"\"Main function to [PRODUCTION IMPLEMENTATION REQUIRED]nstrate intelligent scheduling\"\"\"",
+            "snippet": "\"\"\"Main function to TODO_PRODnstrate intelligent scheduling\"\"\"",
             "score": 10
           }
         ]
@@ -5455,12 +5455,12 @@
         "matches": [
           {
             "line": 303,
-            "snippet": "`- [PRODUCTION IMPLEMENTATION REQUIRED]/stub configuration errors`,",
+            "snippet": "`- TODO_PROD/stub configuration errors`,",
             "score": 10
           },
           {
             "line": 460,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] for notification logic (console, API, etc.)",
+            "snippet": "// TODO_PROD for notification logic (console, API, etc.)",
             "score": 10
           }
         ]
@@ -5473,12 +5473,12 @@
         "matches": [
           {
             "line": 143,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with actual QMOI Space balance API or logic",
+            "snippet": "// TODO_PROD: integrate with actual QMOI Space balance API or logic",
             "score": 10
           },
           {
             "line": 144,
-            "snippet": "// For now, simulate with a random value for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// For now, simulate with a random value for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -5491,12 +5491,12 @@
         "matches": [
           {
             "line": 58,
-            "snippet": "'HF_TOKEN': '[PRODUCTION IMPLEMENTATION REQUIRED]-hf-token',",
+            "snippet": "'HF_TOKEN': 'TODO_PROD-hf-token',",
             "score": 10
           },
           {
             "line": 60,
-            "snippet": "'WHATSAPP_API_TOKEN': '[PRODUCTION IMPLEMENTATION REQUIRED]-whatsapp-token',",
+            "snippet": "'WHATSAPP_API_TOKEN': 'TODO_PROD-whatsapp-token',",
             "score": 10
           }
         ]
@@ -5509,12 +5509,12 @@
         "matches": [
           {
             "line": 43,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: check permissions for each platform",
+            "snippet": "# TODO_PROD: check permissions for each platform",
             "score": 10
           },
           {
             "line": 48,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: sync logic for each platform",
+            "snippet": "# TODO_PROD: sync logic for each platform",
             "score": 10
           }
         ]
@@ -5527,12 +5527,12 @@
         "matches": [
           {
             "line": 18,
-            "snippet": "fs.writeFileSync(filePath, `// Auto-created [PRODUCTION IMPLEMENTATION REQUIRED] for: ${file}\\n`);",
+            "snippet": "fs.writeFileSync(filePath, `// Auto-created TODO_PROD for: ${file}\\n`);",
             "score": 10
           },
           {
             "line": 19,
-            "snippet": "console.log(`[CREATED] [PRODUCTION IMPLEMENTATION REQUIRED] for: ${file}`);",
+            "snippet": "console.log(`[CREATED] TODO_PROD for: ${file}`);",
             "score": 10
           }
         ]
@@ -5545,12 +5545,12 @@
         "matches": [
           {
             "line": 294,
-            "snippet": "# Add [PRODUCTION IMPLEMENTATION REQUIRED] tasks",
+            "snippet": "# Add TODO_PROD tasks",
             "score": 10
           },
           {
             "line": 415,
-            "snippet": "self.resource_data[\"cpu\"].append(50)  # [PRODUCTION IMPLEMENTATION REQUIRED] data",
+            "snippet": "self.resource_data[\"cpu\"].append(50)  # TODO_PROD data",
             "score": 10
           }
         ]
@@ -5563,12 +5563,12 @@
         "matches": [
           {
             "line": 15,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] monitoring status - replace with actual implementation",
+            "snippet": "// TODO_PROD monitoring status - replace with actual implementation",
             "score": 10
           },
           {
             "line": 59,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] response - replace with actual implementation",
+            "snippet": "// TODO_PROD response - replace with actual implementation",
             "score": 10
           }
         ]
@@ -5586,7 +5586,7 @@
           },
           {
             "line": 37,
-            "snippet": "// If dashboard file doesn't exist, return [PRODUCTION IMPLEMENTATION REQUIRED] data for development",
+            "snippet": "// If dashboard file doesn't exist, return TODO_PROD data for development",
             "score": 10
           }
         ]
@@ -5632,12 +5632,12 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "cy.visit('/auth/callback?provider=microsoft&token=microsoft-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.visit('/auth/callback?provider=microsoft&token=microsoft-TODO_PROD-token');",
             "score": 10
           },
           {
             "line": 6,
-            "snippet": "cy.setCookie('authToken', 'microsoft-[PRODUCTION IMPLEMENTATION REQUIRED]-token');",
+            "snippet": "cy.setCookie('authToken', 'microsoft-TODO_PROD-token');",
             "score": 10
           }
         ]
@@ -5650,12 +5650,12 @@
         "matches": [
           {
             "line": 3,
-            "snippet": "// This is a [PRODUCTION IMPLEMENTATION REQUIRED] for future integration",
+            "snippet": "// This is a TODO_PROD for future integration",
             "score": 10
           },
           {
             "line": 8,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] for receiving call logic",
+            "snippet": "// TODO_PROD for receiving call logic",
             "score": 10
           }
         ]
@@ -5668,12 +5668,12 @@
         "matches": [
           {
             "line": 22,
-            "snippet": "const DATASET_PATH = path.join(__dirname, '../datasets/trading/trading-dataset-[PRODUCTION IMPLEMENTATION REQUIRED].csv');",
+            "snippet": "const DATASET_PATH = path.join(__dirname, '../datasets/trading/trading-dataset-TODO_PROD.csv');",
             "score": 10
           },
           {
             "line": 85,
-            "snippet": "// For Colab: import/export CSV using the same format as trading-dataset-[PRODUCTION IMPLEMENTATION REQUIRED].csv",
+            "snippet": "// For Colab: import/export CSV using the same format as trading-dataset-TODO_PROD.csv",
             "score": 10
           }
         ]
@@ -5764,7 +5764,7 @@
           },
           {
             "line": 316,
-            "snippet": "// This might involve [PRODUCTION IMPLEMENTATION REQUIRED]ing a service or blocking a port",
+            "snippet": "// This might involve TODO_PRODing a service or blocking a port",
             "score": 10
           }
         ]
@@ -5802,7 +5802,7 @@
           },
           {
             "line": 480,
-            "snippet": "# Send notification ([PRODUCTION IMPLEMENTATION REQUIRED] - would integrate with actual notification system)",
+            "snippet": "# Send notification (TODO_PROD - would integrate with actual notification system)",
             "score": 10
           },
           {
@@ -6430,7 +6430,7 @@
           },
           {
             "line": 205,
-            "snippet": "matchTemplate(type: BiometricType, [PRODUCTION IMPLEMENTATION REQUIRED]: BiometricData): Promise<MatchResult>",
+            "snippet": "matchTemplate(type: BiometricType, TODO_PROD: BiometricData): Promise<MatchResult>",
             "score": 10
           },
           {
@@ -6682,7 +6682,7 @@
         "matches": [
           {
             "line": 3,
-            "snippet": "// Simulated Bitget trading hook for [PRODUCTION IMPLEMENTATION REQUIRED]/production",
+            "snippet": "// Simulated Bitget trading hook for TODO_PROD/production",
             "score": 10
           },
           {
@@ -6826,7 +6826,7 @@
           },
           {
             "line": 566,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] methods for system-specific fixes",
+            "snippet": "// TODO_PROD methods for system-specific fixes",
             "score": 10
           },
           {
@@ -6925,7 +6925,7 @@
         "matches": [
           {
             "line": 21,
-            "snippet": "code = f.read()[:512]  # Limit for [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "code = f.read()[:512]  # Limit for TODO_PROD",
             "score": 10
           },
           {
@@ -6996,7 +6996,7 @@
           },
           {
             "line": 309,
-            "snippet": "// For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] URL",
+            "snippet": "// For now, return a TODO_PROD URL",
             "score": 10
           }
         ]
@@ -7042,7 +7042,7 @@
         "matches": [
           {
             "line": 6,
-            "snippet": "WHATSAPP_API_KEY = os.getenv('WHATSAPP_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]-key')",
+            "snippet": "WHATSAPP_API_KEY = os.getenv('WHATSAPP_API_KEY', 'TODO_PROD-key')",
             "score": 10
           },
           {
@@ -7153,7 +7153,7 @@
           },
           {
             "line": 481,
-            "snippet": "# For now, return False as [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "# For now, return False as TODO_PROD",
             "score": 10
           },
           {
@@ -7196,7 +7196,7 @@
           },
           {
             "line": 357,
-            "snippet": "return True  # [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return True  # TODO_PROD",
             "score": 10
           }
         ]
@@ -7209,7 +7209,7 @@
         "matches": [
           {
             "line": 428,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]Rate: '44.1kHz',",
+            "snippet": "TODO_PRODRate: '44.1kHz',",
             "score": 10
           },
           {
@@ -7237,7 +7237,7 @@
           },
           {
             "line": 30,
-            "snippet": "// For [PRODUCTION IMPLEMENTATION REQUIRED]nstration, stream [PRODUCTION IMPLEMENTATION REQUIRED] logs",
+            "snippet": "// For TODO_PRODnstration, stream TODO_PROD logs",
             "score": 10
           }
         ]
@@ -7313,7 +7313,7 @@
           },
           {
             "line": 26,
-            "snippet": "// This is a [PRODUCTION IMPLEMENTATION REQUIRED]; adapt to your UI's error triggers",
+            "snippet": "// This is a TODO_PROD; adapt to your UI's error triggers",
             "score": 10
           }
         ]
@@ -7427,7 +7427,7 @@
         "matches": [
           {
             "line": 57,
-            "snippet": "- **Web interfaces:** Interactive web UIs for model [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "- **Web interfaces:** Interactive web UIs for model TODO_PRODnstration",
             "score": 10
           },
           {
@@ -7627,7 +7627,7 @@
           },
           {
             "line": 64,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] self-healing process - replace with actual implementation",
+            "snippet": "// TODO_PROD self-healing process - replace with actual implementation",
             "score": 10
           },
           {
@@ -7645,7 +7645,7 @@
         "matches": [
           {
             "line": 102,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] initialization for now",
+            "snippet": "// TODO_PROD initialization for now",
             "score": 10
           },
           {
@@ -7746,7 +7746,7 @@
           },
           {
             "line": 330,
-            "snippet": "- **Teaching Mode**: Avatar [PRODUCTION IMPLEMENTATION REQUIRED]nstrates how to use new features",
+            "snippet": "- **Teaching Mode**: Avatar TODO_PRODnstrates how to use new features",
             "score": 10
           }
         ]
@@ -8134,7 +8134,7 @@
           },
           {
             "line": 91,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] response for now - replace with actual implementation",
+            "snippet": "// TODO_PROD response for now - replace with actual implementation",
             "score": 10
           },
           {
@@ -8185,7 +8185,7 @@
           },
           {
             "line": 84,
-            "snippet": "return 0; // [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return 0; // TODO_PROD",
             "score": 10
           }
         ]
@@ -8203,7 +8203,7 @@
           },
           {
             "line": 518,
-            "snippet": "## UI/UX [PRODUCTION IMPLEMENTATION REQUIRED]up",
+            "snippet": "## UI/UX TODO_PRODup",
             "score": 10
           }
         ]
@@ -8284,7 +8284,7 @@
           },
           {
             "line": 447,
-            "snippet": "## UI/UX [PRODUCTION IMPLEMENTATION REQUIRED]up",
+            "snippet": "## UI/UX TODO_PRODup",
             "score": 10
           }
         ]
@@ -8302,7 +8302,7 @@
           },
           {
             "line": 84,
-            "snippet": "return 0; // [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "return 0; // TODO_PROD",
             "score": 10
           }
         ]
@@ -8315,7 +8315,7 @@
         "matches": [
           {
             "line": 30,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] response for now - replace with actual implementation",
+            "snippet": "// TODO_PROD response for now - replace with actual implementation",
             "score": 10
           },
           {
@@ -8338,7 +8338,7 @@
           },
           {
             "line": 36,
-            "snippet": "<Textarea value={feedback} onChange={e => setFeedback(e.target.value)} [PRODUCTION IMPLEMENTATION REQUIRED]=\"Your feedback or bug report...\" mb={2} />",
+            "snippet": "<Textarea value={feedback} onChange={e => setFeedback(e.target.value)} TODO_PROD=\"Your feedback or bug report...\" mb={2} />",
             "score": 10
           }
         ]
@@ -8351,7 +8351,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] state for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// TODO_PROD state for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -8364,7 +8364,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] insights/actions for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// TODO_PROD insights/actions for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -8377,7 +8377,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] actions/logs for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// TODO_PROD actions/logs for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -8390,7 +8390,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] stats for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// TODO_PROD stats for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -8403,7 +8403,7 @@
         "matches": [
           {
             "line": 48,
-            "snippet": "// Set default data for [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "// Set default data for TODO_PROD",
             "score": 10
           }
         ]
@@ -8416,7 +8416,7 @@
         "matches": [
           {
             "line": 81,
-            "snippet": "// Generate realistic [PRODUCTION IMPLEMENTATION REQUIRED] locations",
+            "snippet": "// Generate realistic TODO_PROD locations",
             "score": 10
           }
         ]
@@ -8429,7 +8429,7 @@
         "matches": [
           {
             "line": 489,
-            "snippet": "4. **[PRODUCTION IMPLEMENTATION REQUIRED] External Dependencies**: Avoid external service calls",
+            "snippet": "4. **TODO_PROD External Dependencies**: Avoid external service calls",
             "score": 10
           }
         ]
@@ -8442,7 +8442,7 @@
         "matches": [
           {
             "line": 97,
-            "snippet": "## UI/UX [PRODUCTION IMPLEMENTATION REQUIRED]up",
+            "snippet": "## UI/UX TODO_PRODup",
             "score": 10
           }
         ]
@@ -8455,7 +8455,7 @@
         "matches": [
           {
             "line": 89,
-            "snippet": "## UI/UX [PRODUCTION IMPLEMENTATION REQUIRED]up",
+            "snippet": "## UI/UX TODO_PRODup",
             "score": 10
           }
         ]
@@ -8468,7 +8468,7 @@
         "matches": [
           {
             "line": 73,
-            "snippet": "- YouTube (trailers, [PRODUCTION IMPLEMENTATION REQUIRED]s)",
+            "snippet": "- YouTube (trailers, TODO_PRODs)",
             "score": 10
           }
         ]
@@ -8481,7 +8481,7 @@
         "matches": [
           {
             "line": 36,
-            "snippet": "- **[PRODUCTION IMPLEMENTATION REQUIRED]graphic Segmentation**: Segmentation based on [PRODUCTION IMPLEMENTATION REQUIRED]graphics",
+            "snippet": "- **TODO_PRODgraphic Segmentation**: Segmentation based on TODO_PRODgraphics",
             "score": 10
           }
         ]
@@ -8494,7 +8494,7 @@
         "matches": [
           {
             "line": 20,
-            "snippet": "- [PRODUCTION IMPLEMENTATION REQUIRED]s remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.",
+            "snippet": "- TODO_PRODs remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.",
             "score": 10
           }
         ]
@@ -8507,7 +8507,7 @@
         "matches": [
           {
             "line": 6,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with diffusers or invoke Stable Diffusion",
+            "snippet": "# TODO_PROD: integrate with diffusers or invoke Stable Diffusion",
             "score": 10
           }
         ]
@@ -8520,7 +8520,7 @@
         "matches": [
           {
             "line": 37,
-            "snippet": "# [PRODUCTION IMPLEMENTATION REQUIRED] for sandboxed browsing (e.g., using headless browser in Docker)",
+            "snippet": "# TODO_PROD for sandboxed browsing (e.g., using headless browser in Docker)",
             "score": 10
           }
         ]
@@ -8533,7 +8533,7 @@
         "matches": [
           {
             "line": 42,
-            "snippet": "- [PRODUCTION IMPLEMENTATION REQUIRED]s remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.",
+            "snippet": "- TODO_PRODs remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.",
             "score": 10
           }
         ]
@@ -8546,7 +8546,7 @@
         "matches": [
           {
             "line": 43,
-            "snippet": "# For [PRODUCTION IMPLEMENTATION REQUIRED], just use total events as a second feature",
+            "snippet": "# For TODO_PROD, just use total events as a second feature",
             "score": 10
           }
         ]
@@ -8559,7 +8559,7 @@
         "matches": [
           {
             "line": 33,
-            "snippet": "- **QMOI HuggingFace Spaces**: User interaction, file delivery, and [PRODUCTION IMPLEMENTATION REQUIRED]nstration.",
+            "snippet": "- **QMOI HuggingFace Spaces**: User interaction, file delivery, and TODO_PRODnstration.",
             "score": 10
           }
         ]
@@ -8572,7 +8572,7 @@
         "matches": [
           {
             "line": 24,
-            "snippet": "- **Trailer Generation**: AI creates engaging trailers or [PRODUCTION IMPLEMENTATION REQUIRED] videos for apps, games, and video projects",
+            "snippet": "- **Trailer Generation**: AI creates engaging trailers or TODO_PROD videos for apps, games, and video projects",
             "score": 10
           }
         ]
@@ -8585,7 +8585,7 @@
         "matches": [
           {
             "line": 74,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] stats for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// TODO_PROD stats for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -8598,7 +8598,7 @@
         "matches": [
           {
             "line": 17,
-            "snippet": "| Network Masking           | [PRODUCTION IMPLEMENTATION REQUIRED]/unreal IPs, privacy-first                   | QMOIMASKS.md                      |",
+            "snippet": "| Network Masking           | TODO_PROD/unreal IPs, privacy-first                   | QMOIMASKS.md                      |",
             "score": 10
           }
         ]
@@ -8659,7 +8659,7 @@
         "matches": [
           {
             "line": 25,
-            "snippet": "# Simple feature extraction for [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "# Simple feature extraction for TODO_PROD",
             "score": 10
           }
         ]
@@ -8718,7 +8718,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] state for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// TODO_PROD state for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -8731,7 +8731,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] insights/actions for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// TODO_PROD insights/actions for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -8744,7 +8744,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] actions/logs for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// TODO_PROD actions/logs for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -8757,7 +8757,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] stats for [PRODUCTION IMPLEMENTATION REQUIRED]nstration",
+            "snippet": "// TODO_PROD stats for TODO_PRODnstration",
             "score": 10
           }
         ]
@@ -8770,7 +8770,7 @@
         "matches": [
           {
             "line": 48,
-            "snippet": "// Set default data for [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "// Set default data for TODO_PROD",
             "score": 10
           }
         ]
@@ -8783,7 +8783,7 @@
         "matches": [
           {
             "line": 14,
-            "snippet": "return !value || value.length < 16 || value === 'changeme' || value === '[PRODUCTION IMPLEMENTATION REQUIRED]-key';",
+            "snippet": "return !value || value.length < 16 || value === 'changeme' || value === 'TODO_PROD-key';",
             "score": 10
           }
         ]
@@ -8809,7 +8809,7 @@
         "matches": [
           {
             "line": 76,
-            "snippet": "# Trigger a redeploy or notify master ([PRODUCTION IMPLEMENTATION REQUIRED] for real fix logic)",
+            "snippet": "# Trigger a redeploy or notify master (TODO_PROD for real fix logic)",
             "score": 10
           }
         ]
@@ -8822,7 +8822,7 @@
         "matches": [
           {
             "line": 2,
-            "snippet": "* [PRODUCTION IMPLEMENTATION REQUIRED] postinstall verification for Alpha-Q-ai",
+            "snippet": "* TODO_PROD postinstall verification for Alpha-Q-ai",
             "score": 10
           }
         ]
@@ -8868,7 +8868,7 @@
         "matches": [
           {
             "line": 783,
-            "snippet": "# For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] structure",
+            "snippet": "# For now, return a TODO_PROD structure",
             "score": 10
           }
         ]
@@ -8881,7 +8881,7 @@
         "matches": [
           {
             "line": 548,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] methods for rendering (would be implemented with actual graphics engine)",
+            "snippet": "// TODO_PROD methods for rendering (would be implemented with actual graphics engine)",
             "score": 10
           }
         ]
@@ -8894,7 +8894,7 @@
         "matches": [
           {
             "line": 90,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED]: check system resources, offload builds/tests to cloud if low",
+            "snippet": "// TODO_PROD: check system resources, offload builds/tests to cloud if low",
             "score": 10
           }
         ]
@@ -8907,7 +8907,7 @@
         "matches": [
           {
             "line": 23,
-            "snippet": "res.send(`<form method=\"POST\" action=\"/login\"><h2>QMOI Dashboard Login</h2><input name=\"user\" [PRODUCTION IMPLEMENTATION REQUIRED]=\"Username\"/><br/><input name=\"pass\" type=\"password\" [PRODUCTION IMPLEMENTATION REQUIRED]=\"Password\"/><br/><button type=\"submit\">Login</button></form>`);",
+            "snippet": "res.send(`<form method=\"POST\" action=\"/login\"><h2>QMOI Dashboard Login</h2><input name=\"user\" TODO_PROD=\"Username\"/><br/><input name=\"pass\" type=\"password\" TODO_PROD=\"Password\"/><br/><button type=\"submit\">Login</button></form>`);",
             "score": 10
           }
         ]
@@ -8920,7 +8920,7 @@
         "matches": [
           {
             "line": 366,
-            "snippet": "- [PRODUCTION IMPLEMENTATION REQUIRED]/stub configuration errors",
+            "snippet": "- TODO_PROD/stub configuration errors",
             "score": 10
           }
         ]
@@ -8933,7 +8933,7 @@
         "matches": [
           {
             "line": 59,
-            "snippet": "// For [PRODUCTION IMPLEMENTATION REQUIRED]: just log the tag update",
+            "snippet": "// For TODO_PROD: just log the tag update",
             "score": 10
           }
         ]
@@ -8979,7 +8979,7 @@
         "matches": [
           {
             "line": 2,
-            "snippet": "* [PRODUCTION IMPLEMENTATION REQUIRED] postinstall verification for Alpha-Q-ai",
+            "snippet": "* TODO_PROD postinstall verification for Alpha-Q-ai",
             "score": 10
           }
         ]
@@ -8992,7 +8992,7 @@
         "matches": [
           {
             "line": 69,
-            "snippet": "# Trigger auto-fix ([PRODUCTION IMPLEMENTATION REQUIRED]: notify Qteam, re-upload, etc.)",
+            "snippet": "# Trigger auto-fix (TODO_PROD: notify Qteam, re-upload, etc.)",
             "score": 10
           }
         ]
@@ -9005,7 +9005,7 @@
         "matches": [
           {
             "line": 20,
-            "snippet": "# Check for a running QMOI process (simple check for [PRODUCTION IMPLEMENTATION REQUIRED]; can be enhanced)",
+            "snippet": "# Check for a running QMOI process (simple check for TODO_PROD; can be enhanced)",
             "score": 10
           }
         ]
@@ -9031,7 +9031,7 @@
         "matches": [
           {
             "line": 317,
-            "snippet": "# This is a [PRODUCTION IMPLEMENTATION REQUIRED] - implement actual API calls",
+            "snippet": "# This is a TODO_PROD - implement actual API calls",
             "score": 10
           }
         ]
@@ -9057,7 +9057,7 @@
         "matches": [
           {
             "line": 435,
-            "snippet": "0, 0, 0, 0, 0.2  # [PRODUCTION IMPLEMENTATION REQUIRED] values",
+            "snippet": "0, 0, 0, 0, 0.2  # TODO_PROD values",
             "score": 10
           }
         ]
@@ -9070,7 +9070,7 @@
         "matches": [
           {
             "line": 4,
-            "snippet": "return NextResponse.json({ message: 'WhatsApp Business [PRODUCTION IMPLEMENTATION REQUIRED]' });",
+            "snippet": "return NextResponse.json({ message: 'WhatsApp Business TODO_PROD' });",
             "score": 10
           }
         ]
@@ -9083,7 +9083,7 @@
         "matches": [
           {
             "line": 48,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] database (replace with actual database)",
+            "snippet": "// TODO_PROD database (replace with actual database)",
             "score": 10
           }
         ]
@@ -9096,7 +9096,7 @@
         "matches": [
           {
             "line": 6,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] for JWT verification (replace with your actual logic)",
+            "snippet": "// TODO_PROD for JWT verification (replace with your actual logic)",
             "score": 10
           }
         ]
@@ -9109,7 +9109,7 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] data for now - replace with actual implementation",
+            "snippet": "// TODO_PROD data for now - replace with actual implementation",
             "score": 10
           }
         ]
@@ -9122,7 +9122,7 @@
         "matches": [
           {
             "line": 4,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] deployment status data",
+            "snippet": "// TODO_PROD deployment status data",
             "score": 10
           }
         ]
@@ -9135,7 +9135,7 @@
         "matches": [
           {
             "line": 4,
-            "snippet": "return NextResponse.json({ message: 'Earning enhanced [PRODUCTION IMPLEMENTATION REQUIRED]' });",
+            "snippet": "return NextResponse.json({ message: 'Earning enhanced TODO_PROD' });",
             "score": 10
           }
         ]
@@ -9161,7 +9161,7 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "// [PRODUCTION IMPLEMENTATION REQUIRED] automation status - replace with real implementation later",
+            "snippet": "// TODO_PROD automation status - replace with real implementation later",
             "score": 10
           }
         ]
@@ -9174,7 +9174,7 @@
         "matches": [
           {
             "line": 276,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Type your message or use voice input...\"",
+            "snippet": "TODO_PROD=\"Type your message or use voice input...\"",
             "score": 10
           }
         ]

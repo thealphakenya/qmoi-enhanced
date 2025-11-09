@@ -1,3 +1,8 @@
+---
+title: "RELEASETRACKS.md"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -41,7 +46,7 @@ This file tracks all releases, automation, and workflow status for every app, pl
 - All releases are validated, autotested, and logged in TRACKS.md
 - QMOI automation ensures all platforms are up-to-date and synced
 - Any errors or issues are auto-fixed and logged
- For full error/fix traceability, see [ERRORSTRACKS.md](./ERRORSTRACKS.md)
+ For full error/fix traceability, see [ERRORSTRACKS.md](ERRORSTRACKS.md)
 
 ## Auto-publishing & Billing Safeguards
 
@@ -56,8 +61,8 @@ These safeguards are mirrored in `tools/lionlaunch.json` (`settings.billing_safe
 ---
 
 ## References
-- [TRACKS.md](./TRACKS.md)
-- [README.md](./README.md)
+- [TRACKS.md](TRACKS.md)
+- [README.md](README.md)
 
 <!-- QMOI_VALIDATION_START -->
 {

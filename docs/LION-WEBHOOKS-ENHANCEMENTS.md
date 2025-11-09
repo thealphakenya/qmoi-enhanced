@@ -1,3 +1,8 @@
+---
+title: "Lion Webhooks & Hooks Enhancements"
+qmoi_validation_frontmatter: true
+---
+
 # Lion Webhooks & Hooks Enhancements
 
 ## Overview

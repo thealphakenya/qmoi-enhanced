@@ -1,3 +1,8 @@
+---
+title: "App Validation"
+qmoi_validation_frontmatter: true
+---
+
 # App Validation
 
 This document describes how QMOI validates application builds across platforms.

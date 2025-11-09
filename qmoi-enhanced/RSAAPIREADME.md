@@ -1,3 +1,8 @@
+---
+title: "Bitget User-Generated RSA API Key Integration"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

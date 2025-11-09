@@ -1,3 +1,8 @@
+---
+title: "QMOI Model Tests"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -48,10 +53,10 @@ This document lists all tests and autotests for the QMOI system, including healt
 - **Handsfree Operation:** No human intervention is required for QMOI to evolve and improve based on test outcomes.
 
 ## See also
-- [CURLCOMMANDS.md](./CURLCOMMANDS.md)
-- [QMOIMODEL.md](./QMOIMODEL.md)
-- [TRACKS.md](./TRACKS.md)
-- [DASHBOARDTRACKS.md](./DASHBOARDTRACKS.md)
+- [CURLCOMMANDS.md](CURLCOMMANDS.md)
+- [QMOIMODEL.md](QMOIMODEL.md)
+- [TRACKS.md](TRACKS.md)
+- [DASHBOARDTRACKS.md](DASHBOARDTRACKS.md)
 
 <!-- QMOI_VALIDATION_START -->
 {

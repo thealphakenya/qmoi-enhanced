@@ -1,3 +1,8 @@
+---
+title: "QMOI GitLab Integration & Automation Guide"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -94,12 +99,12 @@
 - All actions, fixes, and enhancements are logged and auditable
 - For errors, use logs and AI/ML suggestions; master can override or roll back as needed
 
-## UI/UX [PRODUCTION IMPLEMENTATION REQUIRED]up
+## UI/UX TODO_PRODup
 (Same as in QMOICLONE.md, with GitLab-specific emphasis)
 
 ## Command Reference
 
-See [CMDCOMMANDS.md](./CMDCOMMANDS.md) for all automation, testing, and troubleshooting commands for QMOI across all platforms (PowerShell, Bash, etc.).
+See [CMDCOMMANDS.md](CMDCOMMANDS.md) for all automation, testing, and troubleshooting commands for QMOI across all platforms (PowerShell, Bash, etc.).
 
 ### Troubleshooting
 - If you see `Missing script: "qmoi:autodev:full"`, add it to your `package.json` under `"scripts"`.

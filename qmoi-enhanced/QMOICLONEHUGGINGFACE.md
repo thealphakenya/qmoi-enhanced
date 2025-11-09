@@ -1,3 +1,8 @@
+---
+title: "QMOI Clone Hugging Face (QMOICLONEHF)"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -477,11 +482,11 @@ npm run huggingface:optimize-inference --model "my-model"
 ---
 
 ## See Also
-- [HUGGINGFACEPAYED.md](./HUGGINGFACEPAYED.md)
-- [QMOIALLPLATFORMS.md](./QMOIALLPLATFORMS.md)
-- [QVILLAGE.md](./QVILLAGE.md)
-- [QMOIFREE.md](./QMOIFREE.md)
-- [QMOI-CLOUD.md](./QMOI-CLOUD.md)
+- [HUGGINGFACEPAYED.md](HUGGINGFACEPAYED.md)
+- [QMOIALLPLATFORMS.md](QMOIALLPLATFORMS.md)
+- [QVILLAGE.md](QVILLAGE.md)
+- [QMOIFREE.md](QMOIFREE.md)
+- [QMOI-CLOUD.md](QMOI-CLOUD.md)
 
 ---
 
@@ -515,7 +520,7 @@ npm run huggingface:optimize-inference --model "my-model"
 - All actions, fixes, and enhancements are logged and auditable
 - For errors, use logs and AI/ML suggestions; master can override or roll back as needed
 
-## UI/UX [PRODUCTION IMPLEMENTATION REQUIRED]up
+## UI/UX TODO_PRODup
 (Same as in QMOICLONE.md, with Hugging Face-specific emphasis)
 
 <!-- QMOI_VALIDATION_START -->

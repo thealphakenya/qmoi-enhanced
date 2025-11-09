@@ -1,3 +1,14 @@
+requests
+aiohttp
+boto3
+numpy
+pandas
+
+# Optional/dev/test extras seen in the repository
+# - pytest (for tests)
+# - httpx (alternative http client seen in some modules)
+# - aiohttp
+# - black/flake8 (linters)
 pytest>=7.0.0
 coverage>=7.0.0
 requests>=2.28.0

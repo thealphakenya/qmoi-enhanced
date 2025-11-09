@@ -1,3 +1,10 @@
+---
+title: "QMOIDNS"
+qmoi_validation_frontmatter: true
+---
+
+# QMOIDNS
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

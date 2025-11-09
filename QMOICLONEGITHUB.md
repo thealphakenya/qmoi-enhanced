@@ -1,3 +1,8 @@
+---
+title: "QMOI Clone GitHub (QMOICLONEGITHUB)"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -407,10 +412,10 @@ npm run github:manage-codespace --action "scale" --resources "unlimited"
 ---
 
 ## See Also
-- [GITHUBPAYED.md](./GITHUBPAYED.md)
-- [QMOIALLPLATFORMS.md](./QMOIALLPLATFORMS.md)
-- [QMOIFREE.md](./QMOIFREE.md)
-- [QMOI-CLOUD.md](./QMOI-CLOUD.md)
+- [GITHUBPAYED.md](GITHUBPAYED.md)
+- [QMOIALLPLATFORMS.md](QMOIALLPLATFORMS.md)
+- [QMOIFREE.md](QMOIFREE.md)
+- [QMOI-CLOUD.md](QMOI-CLOUD.md)
 
 ---
 
@@ -444,7 +449,7 @@ npm run github:manage-codespace --action "scale" --resources "unlimited"
 - All actions, fixes, and enhancements are logged and auditable
 - For errors, use logs and AI/ML suggestions; master can override or roll back as needed
 
-## UI/UX [PRODUCTION IMPLEMENTATION REQUIRED]up
+## UI/UX TODO_PRODup
 (Same as in QMOICLONE.md, with GitHub-specific emphasis)
 
 <!-- QMOI_VALIDATION_START -->

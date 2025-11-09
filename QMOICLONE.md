@@ -1,3 +1,8 @@
+---
+title: "QMOI Cross-Platform Cloning & Optimization (QMOICLONE)"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -53,10 +58,10 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
 - Netlify clone, deploy, and optimization features are now included in this file. All Netlify-specific automation is handled as part of the main QMOI clone/optimize process.
 
 ## References
-- [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md)
-- [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)
-- [QMOIVERCELDEV.md](./QMOIVERCELDEV.md)
-- [REFERENCES.md](./REFERENCES.md) 
+- [QMOICLONEGITPOD.md](QMOICLONEGITPOD.md)
+- [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
+- [QMOIVERCELDEV.md](QMOIVERCELDEV.md)
+- [REFERENCES.md](REFERENCES.md) 
 
 ## Universal Runner Engine
 - Platform-aware runners auto-detect and load platform-specific modules (GitHub, GitLab, Hugging Face, etc.)
@@ -86,7 +91,7 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
 - All actions, fixes, and enhancements are logged and auditable
 - For errors, use logs and AI/ML suggestions; master can override or roll back as needed
 
-## UI/UX [PRODUCTION IMPLEMENTATION REQUIRED]up
+## UI/UX TODO_PRODup
 ---------------------------------------------------------------
 | GitHub | GitLab | Hugging Face | Netlify | ... (Status Cards)|
 ---------------------------------------------------------------

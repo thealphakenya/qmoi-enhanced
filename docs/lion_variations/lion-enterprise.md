@@ -1,3 +1,8 @@
+---
+title: "lion-enterprise"
+qmoi_validation_frontmatter: true
+---
+
 # lion-enterprise
 
 Description

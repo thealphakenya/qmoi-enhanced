@@ -1,3 +1,8 @@
+---
+title: "QMOI Biometric Authentication System"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -202,7 +207,7 @@ interface BiometricEnrollment {
   storeTemplate(type: BiometricType, data: BiometricData): Promise<void>
   
   // Template matching
-  matchTemplate(type: BiometricType, [PRODUCTION IMPLEMENTATION REQUIRED]: BiometricData): Promise<MatchResult>
+  matchTemplate(type: BiometricType, TODO_PROD: BiometricData): Promise<MatchResult>
 }
 ```
 

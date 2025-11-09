@@ -1,3 +1,8 @@
+---
+title: "GITPODPAYED.md - Gitpod Paid Features in QMOI"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -445,11 +450,11 @@ npm run gitpod:enable-security-training
 ---
 
 ## See Also
-- [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md)
-- [QMOIALLPLATFORMS.md](./QMOIALLPLATFORMS.md)
-- [QMOIFREE.md](./QMOIFREE.md)
-- [GITHUBPAYED.md](./GITHUBPAYED.md)
-- [QUANTUMPAYED.md](./QUANTUMPAYED.md)
+- [QMOICLONEGITPOD.md](QMOICLONEGITPOD.md)
+- [QMOIALLPLATFORMS.md](QMOIALLPLATFORMS.md)
+- [QMOIFREE.md](QMOIFREE.md)
+- [GITHUBPAYED.md](GITHUBPAYED.md)
+- [QUANTUMPAYED.md](QUANTUMPAYED.md)
 
 ---
 

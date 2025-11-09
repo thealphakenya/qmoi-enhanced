@@ -1,3 +1,8 @@
+---
+title: "Placeholder Scan Summary"
+qmoi_validation_frontmatter: true
+---
+
 # Placeholder Scan Summary
 
 Created by running `tools/find_placeholders.py`.

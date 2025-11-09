@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/scripts/qmoi-package-installer.py (63 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/scripts/qmoi-package-installer.py (63 priority)
 
 **File**: `qmoi-enhanced/scripts/qmoi-package-installer.py`
@@ -5,15 +10,15 @@
 
 ## Summary of matches
 
-- Line 14: # [PRODUCTION IMPLEMENTATION REQUIRED]: Use PyInstaller or similar for real .exe
-- Line 16: log_activity('Packaging app as Windows .exe installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+- Line 14: # TODO_PROD: Use PyInstaller or similar for real .exe
+- Line 16: log_activity('Packaging app as Windows .exe installer (TODO_PROD).')
 - Line 17: # Actual implementation would use PyInstaller or NSIS
-- Line 22: log_activity('Packaging app as Mac .dmg installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+- Line 22: log_activity('Packaging app as Mac .dmg installer (TODO_PROD).')
 - Line 23: # Actual implementation would use create-dmg or similar
-- Line 28: log_activity('Packaging app as Linux AppImage installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+- Line 28: log_activity('Packaging app as Linux AppImage installer (TODO_PROD).')
 - Line 29: # Actual implementation would use appimagetool
-- Line 54: # [PRODUCTION IMPLEMENTATION REQUIRED] fallback
-- Line 55: log_activity(f'Uploading {file_path} to file host ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+- Line 54: # TODO_PROD fallback
+- Line 55: log_activity(f'Uploading {file_path} to file host (TODO_PROD).')
 
 ## Recommended action
 

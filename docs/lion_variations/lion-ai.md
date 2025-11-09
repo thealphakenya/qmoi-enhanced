@@ -1,3 +1,8 @@
+---
+title: "LION-AI (AI-First Extensions)"
+qmoi_validation_frontmatter: true
+---
+
 # LION-AI (AI-First Extensions)
 
 Purpose

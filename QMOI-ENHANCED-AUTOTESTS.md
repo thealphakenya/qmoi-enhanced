@@ -1,3 +1,8 @@
+---
+title: "QMOI Enhanced Automation Autotests"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -105,7 +110,7 @@ npm run test:unit
 - Tests individual functions and components
 - Fast execution
 - High coverage requirements
-- [PRODUCTION IMPLEMENTATION REQUIRED] external dependencies
+- TODO_PROD external dependencies
 
 ### Integration Tests
 ```bash
@@ -617,7 +622,7 @@ pipeline {
 1. **Use factories** for creating test data
 2. **Clean up test data** after each test
 3. **Use fixtures** for complex test data
-4. **[PRODUCTION IMPLEMENTATION REQUIRED] external dependencies** appropriately
+4. **TODO_PROD external dependencies** appropriately
 5. **Use test databases** for integration tests
 
 ### Performance Testing

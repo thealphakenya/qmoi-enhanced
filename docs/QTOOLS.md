@@ -1,3 +1,10 @@
+---
+title: "QTOOLS"
+qmoi_validation_frontmatter: true
+---
+
+# QTOOLS
+
 ## QMOI Tools & QTools — Overview
 
 This document describes the enhanced toolchain (QTOOLS) used across the repository and how QMOI + LION orchestrate validation, builds, and releases.

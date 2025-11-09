@@ -1,3 +1,8 @@
+---
+title: "QMOI Space Development - Hugging Face Integration v3.0"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -9,7 +14,7 @@
 
 # QMOI Space Development - Hugging Face Integration v3.0
 
-> **See also:** [MASTEROWNS.md](./MASTEROWNS.md) | [QMOIDEV.md](./QMOIDEV.md) | [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md)
+> **See also:** [MASTEROWNS.md](MASTEROWNS.md) | [QMOIDEV.md](QMOIDEV.md) | [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md)
 
 ## 🚀 Parallel Error Fixing & Self-Healing
 - QMOI can now fix all errors in the entire system and in QMOI Space at the same time, in parallel.
@@ -30,7 +35,7 @@
 - **Error Fix & Redeploy:** QMOI auto-detects and fixes all deployment errors in HuggingFace Spaces, then redeploys in a loop until successful. All fixes, attempts, and results are logged and notified.
 - **Cloud/Parallelization:** QMOI offloads all heavy jobs to cloud/Colab/Dagshub, using parallel jobs for builds, tests, and error-fixes. Local device resources are never used unless explicitly allowed.
 - **Developer/Notification Features:** QMOI always identifies as "QMOI (AI Developer)" in all notifications, logs, and UIs. All notifications are retried, logged, and use fallback channels if needed.
-- **Asset/Project Tracking:** QMOI auto-tracks all assets, projects, and resources it creates or manages, updating [MASTEROWNS.md](./MASTEROWNS.md) in real time.
+- **Asset/Project Tracking:** QMOI auto-tracks all assets, projects, and resources it creates or manages, updating [MASTEROWNS.md](MASTEROWNS.md) in real time.
 
 ## Enhanced Hugging Face Space Developer & Automation Features
 - **Parallel Error Fixing:** QMOI can fix errors in HuggingFace Space and the main app independently and in parallel. One can be fixed while the other continues to work.
@@ -171,7 +176,7 @@ class QMOISpaceApp:
                     temperature=generation_config["temperature"],
                     top_p=generation_config["top_p"],
                     repetition_penalty=generation_config["repetition_penalty"],
-                    do_[PRODUCTION IMPLEMENTATION REQUIRED]=True,
+                    do_sample=True,
                     pad_token_id=self.tokenizer.eos_token_id
                 )
             
@@ -252,7 +257,7 @@ def create_interface():
                 with gr.Row():
                     msg = gr.Textbox(
                         label="Your Message",
-                        [PRODUCTION IMPLEMENTATION REQUIRED]="Ask QMOI anything...",
+                        TODO_PROD="Ask QMOI anything...",
                         lines=3
                     )
                     send_btn = gr.Button("🚀 Send", variant="primary")
@@ -324,7 +329,7 @@ def create_interface():
             
             batch_input = gr.Textbox(
                 label="Batch Prompts (one per line)",
-                [PRODUCTION IMPLEMENTATION REQUIRED]="Enter multiple prompts, one per line...",
+                TODO_PROD="Enter multiple prompts, one per line...",
                 lines=10
             )
             
@@ -342,7 +347,7 @@ def create_interface():
             
             api_prompt = gr.Textbox(
                 label="API Test Prompt",
-                [PRODUCTION IMPLEMENTATION REQUIRED]="Test prompt for API...",
+                TODO_PROD="Test prompt for API...",
                 lines=3
             )
             
@@ -479,7 +484,7 @@ MODEL_CONFIG = {
     "repetition_penalty": 1.1,
     "length_penalty": 1.0,
     "no_repeat_ngram_size": 3,
-    "do_[PRODUCTION IMPLEMENTATION REQUIRED]": True,
+    "do_sample": True,
     "num_beams": 1,
     "early_stopping": True,
     
@@ -681,7 +686,7 @@ jobs:
 # tests/test_qmoi_space.py
 import pytest
 import torch
-from unittest.[PRODUCTION IMPLEMENTATION REQUIRED] import [PRODUCTION IMPLEMENTATION REQUIRED], patch
+from unittest.TODO_PROD import TODO_PROD, patch
 import tempfile
 import os
 
@@ -702,8 +707,8 @@ class TestQMOISpaceApp:
     
     def test_generation(self, app):
         """Test text generation"""
-        with patch.object(app.model, 'generate') as [PRODUCTION IMPLEMENTATION REQUIRED]_generate:
-            [PRODUCTION IMPLEMENTATION REQUIRED]_generate.return_value = torch.tensor([[1, 2, 3, 4]])
+        with patch.object(app.model, 'generate') as TODO_PROD_generate:
+            TODO_PROD_generate.return_value = torch.tensor([[1, 2, 3, 4]])
             
             response = app.generate_response("Test prompt")
             assert isinstance(response, str)
@@ -712,8 +717,8 @@ class TestQMOISpaceApp:
         """Test batch generation"""
         prompts = ["Prompt 1", "Prompt 2", "Prompt 3"]
         
-        with patch.object(app, 'generate_response') as [PRODUCTION IMPLEMENTATION REQUIRED]_gen:
-            [PRODUCTION IMPLEMENTATION REQUIRED]_gen.side_effect = ["Response 1", "Response 2", "Response 3"]
+        with patch.object(app, 'generate_response') as TODO_PROD_gen:
+            TODO_PROD_gen.side_effect = ["Response 1", "Response 2", "Response 3"]
             
             responses = app.batch_generate(prompts)
             assert len(responses) == 3

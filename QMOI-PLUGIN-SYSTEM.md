@@ -1,3 +1,8 @@
+---
+title: "QMOI Plugin System"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -71,7 +76,7 @@ export const DeviceHealthReviewerPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] stats for [PRODUCTION IMPLEMENTATION REQUIRED]nstration
+    // TODO_PROD stats for TODO_PRODnstration
     const stats = {
       cpu: 72.5,
       memory: 68.2,

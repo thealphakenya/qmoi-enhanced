@@ -1,3 +1,8 @@
+---
+title: "QMOI Auto Projects Auto Distribution & Marketing"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -70,7 +75,7 @@ QMOI Auto Projects Auto Distribution & Marketing is an AI-driven system that aut
 - Educational Content
 
 ## Supported Platforms
-- YouTube (trailers, [PRODUCTION IMPLEMENTATION REQUIRED]s)
+- YouTube (trailers, TODO_PRODs)
 - GitHub, Codeberg (code, releases)
 - Itch.io, app stores (apps, games)
 - Firebase, Netlify (web apps)

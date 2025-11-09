@@ -1,3 +1,8 @@
+---
+title: "QMOI GitHub Actions Self-Healing CI/CD Automation"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -43,8 +48,8 @@ QMOI now supports self-healing automation for GitHub Actions workflows. The syst
 - All actions and fixes are logged in `logs/ci-self-heal.log`
 
 ## See Also
-- [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)
-- [REFERENCES.md](./REFERENCES.md) 
+- [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
+- [REFERENCES.md](REFERENCES.md) 
 
 ## Gmail Notification Integration
 

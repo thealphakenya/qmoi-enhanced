@@ -1,3 +1,8 @@
+---
+title: "QMOI Lightweight Application Strategy"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Lightweight Application Strategy
 
 Goal: Keep QMOI applications and artifacts as small and efficient as possible while retaining full functionality and graceful fallbacks when cloud features or external providers are unavailable.

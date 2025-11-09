@@ -1,3 +1,8 @@
+---
+title: "Memory Validation"
+qmoi_validation_frontmatter: true
+---
+
 # Memory Validation
 
 Purpose

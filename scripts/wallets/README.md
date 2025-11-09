@@ -1,3 +1,8 @@
+---
+title: "Wallets — security, testnet usage, and operational guidance"
+qmoi_validation_frontmatter: true
+---
+
 # Wallets — security, testnet usage, and operational guidance
 
 This document explains how the QMOI wallet tooling is intended to be used safely in development and production.

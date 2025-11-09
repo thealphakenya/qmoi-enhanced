@@ -1,3 +1,8 @@
+---
+title: "LION-OS (Appliance Image)"
+qmoi_validation_frontmatter: true
+---
+
 # LION-OS (Appliance Image)
 
 Purpose

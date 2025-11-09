@@ -1,3 +1,8 @@
+---
+title: "Release Automation — QMOI"
+qmoi_validation_frontmatter: true
+---
+
 # Release Automation — QMOI
 
 This document explains the release automation system in this repository and how QMOI and LION coordinate to produce safe, auditable releases.

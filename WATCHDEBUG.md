@@ -1,3 +1,8 @@
+---
+title: "WATCHDEBUG.md - QMOI Comprehensive Monitoring & Error Fixing System"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -75,7 +80,7 @@ WATCHDEBUG.md provides a comprehensive monitoring and debugging system that watc
 - Download UI and scripts feature robust error handling, retry logic, and real-time status.
 - Users can report issues directly from the download UI; all issues are logged and prioritized for immediate fix.
 - Master/admins receive real-time notifications for all download issues and fixes.
-- See [ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md) and [DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for all links and troubleshooting.
+- See [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) and [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) for all links and troubleshooting.
 
 ## New Integrations & Enhancements
 

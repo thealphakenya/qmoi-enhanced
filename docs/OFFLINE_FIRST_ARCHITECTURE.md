@@ -1,3 +1,8 @@
+---
+title: "QMOI Offline-First Architecture"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Offline-First Architecture
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+title: "QMOI GitLab Self-Healing CI/CD Automation"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -90,9 +95,9 @@ QMOI self-healing automation is designed to work with GitLab, GitHub Actions, an
 See the script for details and future updates.
 
 ## See Also
-- [REFERENCES.md](./REFERENCES.md) 
+- [REFERENCES.md](REFERENCES.md) 
 
-> **Note:** QMOI now supports GitHub Actions self-healing automation. See [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md) for details.
+> **Note:** QMOI now supports GitHub Actions self-healing automation. See [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md) for details.
 
 <!-- QMOI_VALIDATION_START -->
 {

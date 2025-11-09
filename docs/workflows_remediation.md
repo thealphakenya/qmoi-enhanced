@@ -1,3 +1,8 @@
+---
+title: "Workflows remediation report"
+qmoi_validation_frontmatter: true
+---
+
 # Workflows remediation report
 _scanned at 2025-10-28T23:42:26.289223Z_
 

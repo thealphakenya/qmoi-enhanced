@@ -1,3 +1,4 @@
+// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 /// <reference types="node" />
 import { EventEmitter } from "events";
 

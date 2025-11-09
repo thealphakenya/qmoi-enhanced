@@ -1,3 +1,8 @@
+---
+title: "Enhanced LION Features"
+qmoi_validation_frontmatter: true
+---
+
 # Enhanced LION Features
 
 This document describes enhancements to LION to make it a smarter, wiser validation and orchestrator agent.

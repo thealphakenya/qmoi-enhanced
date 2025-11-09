@@ -1,3 +1,8 @@
+---
+title: "QMOI Gaming Cloud - Advanced Gaming Platform & Ecosystem"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

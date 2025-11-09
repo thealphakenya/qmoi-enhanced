@@ -1,3 +1,8 @@
+---
+title: "Example systemd unit (place in /etc/systemd/system/qmoi-daemon.service):"
+qmoi_validation_frontmatter: true
+---
+
 QMOI daemon
 ===========
 

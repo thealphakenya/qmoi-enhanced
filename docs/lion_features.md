@@ -1,3 +1,8 @@
+---
+title: "LION Features (detailed)"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

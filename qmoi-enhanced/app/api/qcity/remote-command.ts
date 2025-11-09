@@ -1,3 +1,4 @@
+// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest } from 'next/server';
 import { QCityService } from '@/scripts/services/qcity_service';
 import * as fs from 'fs';

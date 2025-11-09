@@ -1,3 +1,8 @@
+---
+title: "QMOI Enhanced System"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -451,14 +456,14 @@ QMOI Enhanced now features a robust always-fix-all system:
 - **Best Practice:**
   - Use this script in CI/CD, before commits, and before pushes for maximum reliability
 
-See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for full details. 
+See [QMOIAUTOFIXREADME.md](QMOIAUTOFIXREADME.md) for full details. 
 
 ## 🤖 AI Error Prediction & Enhanced Notifications
 
 - AI error prediction system analyzes logs and predicts likely error types/files
 - Notification preferences and history are managed via dashboard and REST API
 - Dashboard displays predictions, notification preferences, and notification history
-- See [QMOIAUTOFIXREADME.md](./QMOIAUTOFIXREADME.md) for full details
+- See [QMOIAUTOFIXREADME.md](QMOIAUTOFIXREADME.md) for full details
 
 <!-- QMOI_VALIDATION_START -->
 {

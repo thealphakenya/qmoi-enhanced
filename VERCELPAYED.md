@@ -1,3 +1,8 @@
+---
+title: "Vercel Paid Plan Notes"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

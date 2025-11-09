@@ -1,3 +1,8 @@
+---
+title: "QMOI Autodev & Release Automation (developer instructions)"
+qmoi_validation_frontmatter: true
+---
+
 # QMOI Autodev & Release Automation (developer instructions)
 
 Generated: 2025-10-26T

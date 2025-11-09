@@ -1,3 +1,8 @@
+---
+title: "Workspace Light Mode (Low-data / Codespaces Optimizations)"
+qmoi_validation_frontmatter: true
+---
+
 # Workspace Light Mode (Low-data / Codespaces Optimizations)
 
 Purpose: reduce data and CPU usage when opening and using this workspace in a browser-based editor (Codespaces, GitHub.dev, VS Code Web). These are non-invasive, reversible changes and only add helpers and documentation — nothing will be auto-executed.

@@ -1,3 +1,10 @@
+---
+title: "merged remediation plan"
+qmoi_validation_frontmatter: true
+---
+
+# merged remediation plan
+
 ## QMOI Documentation Remediation Plan (merged)
 
 Generated: 2025-10-25T00:00:00Z

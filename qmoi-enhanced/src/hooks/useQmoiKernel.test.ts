@@ -1,3 +1,4 @@
+// NOTE: 14 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { renderHook, act } from "@testing-library/react";
 import { useQmoiKernel } from "./useQmoiKernel";
 

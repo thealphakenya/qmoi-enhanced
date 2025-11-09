@@ -1,3 +1,8 @@
+---
+title: "QMOI Linting & AutoDev Guidelines"
+qmoi_validation_frontmatter: true
+---
+
  # QMOI Linting & AutoDev Guidelines
 
 This document describes the linting and autofix strategy used by the QMOI project.

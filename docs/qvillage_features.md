@@ -1,3 +1,10 @@
+---
+title: "qvillage features"
+qmoi_validation_frontmatter: true
+---
+
+# qvillage features
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

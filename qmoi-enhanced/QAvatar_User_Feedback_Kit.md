@@ -1,3 +1,8 @@
+---
+title: "QAvatar Dashboard & QMOI System User Feedback Kit"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

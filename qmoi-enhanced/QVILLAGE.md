@@ -1,3 +1,8 @@
+---
+title: "QVILLAGE.md - QVillage: Master-Only Hugging Face Clone Platform"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

@@ -1,3 +1,8 @@
+---
+title: "QMOIWHATSAPP.md - Enhanced WhatsApp Integration"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

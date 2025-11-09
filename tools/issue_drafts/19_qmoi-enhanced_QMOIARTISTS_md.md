@@ -1,3 +1,8 @@
+---
+title: "Fix placeholders in qmoi-enhanced/QMOIARTISTS.md (60 priority)"
+qmoi_validation_frontmatter: true
+---
+
 # Fix placeholders in qmoi-enhanced/QMOIARTISTS.md (60 priority)
 
 **File**: `qmoi-enhanced/QMOIARTISTS.md`
@@ -5,12 +10,12 @@
 
 ## Summary of matches
 
-- Line 27: - **Target Audience**: 18-35 [PRODUCTION IMPLEMENTATION REQUIRED]graphic
-- Line 39: - **Target Audience**: 16-40 [PRODUCTION IMPLEMENTATION REQUIRED]graphic
-- Line 51: - **Target Audience**: 15-35 [PRODUCTION IMPLEMENTATION REQUIRED]graphic
-- Line 63: - **Target Audience**: 18-40 [PRODUCTION IMPLEMENTATION REQUIRED]graphic
-- Line 75: - **Target Audience**: 20-45 [PRODUCTION IMPLEMENTATION REQUIRED]graphic
-- Line 116: - **[PRODUCTION IMPLEMENTATION REQUIRED] Sales**: Beat and [PRODUCTION IMPLEMENTATION REQUIRED] licensing
+- Line 27: - **Target Audience**: 18-35 TODO_PRODgraphic
+- Line 39: - **Target Audience**: 16-40 TODO_PRODgraphic
+- Line 51: - **Target Audience**: 15-35 TODO_PRODgraphic
+- Line 63: - **Target Audience**: 18-40 TODO_PRODgraphic
+- Line 75: - **Target Audience**: 20-45 TODO_PRODgraphic
+- Line 116: - **TODO_PROD Sales**: Beat and TODO_PROD licensing
 
 ## Recommended action
 

@@ -1,3 +1,8 @@
+---
+title: "PWA.md"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -40,9 +45,9 @@ This file documents all PWAs available for each platform and app type. Each PWA 
 ---
 
 ## References
-- [pwa_apps/README.md](./pwa_apps/README.md)
+- [pwa_apps/README.md](pwa_apps/README.md)
 - [WORKFLOWSTRACKS.md](./WORKFLOWSTRACKS.md)
-- [RELEASETRACKS.md](./RELEASETRACKS.md)
+- [RELEASETRACKS.md](RELEASETRACKS.md)
 
 <!-- QMOI_VALIDATION_START -->
 {

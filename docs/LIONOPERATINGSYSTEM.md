@@ -1,3 +1,8 @@
+---
+title: "LION Operating System (LION OS)"
+qmoi_validation_frontmatter: true
+---
+
 # LION Operating System (LION OS)
 
 This document describes the LION operating system: the orchestration, permissions,

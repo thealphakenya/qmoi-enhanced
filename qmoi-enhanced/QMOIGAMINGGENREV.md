@@ -1,3 +1,10 @@
+---
+title: "QMOIGAMINGGENREV"
+qmoi_validation_frontmatter: true
+---
+
+# QMOIGAMINGGENREV
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

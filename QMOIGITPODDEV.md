@@ -1,3 +1,8 @@
+---
+title: "QMOI Gitpod Developer & Automation Agent (QMOIGITPODDEV)"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -41,11 +46,11 @@ QMOI acts as a fully autonomous AI developer and automation agent in Gitpod, cap
 ---
 
 ## References
-- [QMOIDEV.md](./QMOIDEV.md)
-- [QMOIGITHUBDEV.md](./QMOIGITHUBDEV.md)
-- [QMOIGITLABDEV.md](./QMOIGITLABDEV.md)
-- [QMOISPACEDEV.md](./QMOISPACEDEV.md)
-- [REFERENCES.md](./REFERENCES.md)
+- [QMOIDEV.md](QMOIDEV.md)
+- [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md)
+- [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
+- [QMOISPACEDEV.md](QMOISPACEDEV.md)
+- [REFERENCES.md](REFERENCES.md)
 
 <!-- QMOI_VALIDATION_START -->
 {

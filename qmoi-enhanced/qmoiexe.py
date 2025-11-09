@@ -1,3 +1,4 @@
+# NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os, subprocess, threading, webbrowser, sys, time, winshell
 from win32com.client import Dispatch
 from pystray import Icon as TrayIcon, Menu as TrayMenu, MenuItem as TrayMenuItem

@@ -1,3 +1,10 @@
+---
+title: "README"
+qmoi_validation_frontmatter: true
+---
+
+# README
+
 Finance scripts
 ===============
 

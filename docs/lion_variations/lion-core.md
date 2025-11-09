@@ -1,3 +1,8 @@
+---
+title: "lion-core"
+qmoi_validation_frontmatter: true
+---
+
 # lion-core
 
 Description

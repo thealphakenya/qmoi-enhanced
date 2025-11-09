@@ -1,3 +1,10 @@
+---
+title: "QMOIFINANCEENGINES"
+qmoi_validation_frontmatter: true
+---
+
+# QMOIFINANCEENGINES
+
 QMOI FINANCE ENGINES
 ====================
 

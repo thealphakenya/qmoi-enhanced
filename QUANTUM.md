@@ -1,3 +1,8 @@
+---
+title: "QUANTUM.md - QMOI Quantum Cloud System"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

@@ -1,3 +1,8 @@
+---
+title: "QMOI Features Master Index"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -14,7 +19,7 @@
 | Handsfree All Devices      | Control any device handsfree, accessibility      | QMOIALLDEVICESHANDSFREE.md        |
 | Enhanced QVS Security      | Device/network sandboxing, masking, VPN          | ENHANCEDQVS.md                    |
 | VPN                       | Always-on, privacy, Colab/Dagshub support        | QVPNREADME.md                     |
-| Network Masking           | [PRODUCTION IMPLEMENTATION REQUIRED]/unreal IPs, privacy-first                   | QMOIMASKS.md                      |
+| Network Masking           | TODO_PROD/unreal IPs, privacy-first                   | QMOIMASKS.md                      |
 | Network Optimization      | Secure, optimized, auto-connect                  | QMOINETWORK.md                    |
 | Alpha QMOI Engine         | All integrations/platforms auto-handled          | ALPHAQMOIENGINE.md                |
 | Accounts & Platforms      | Auto-create/register accounts, track credentials | QMOIACCOUNTSPLATFORMS.md          |
@@ -24,17 +29,17 @@
 | Auto-update/Auto-evolve   | Self-updating, self-enhancing, auto-fixing       | (core system, see docs)           |
 
 ## See also
-- [README.md](../README.md)
-- [QMOI-ENHANCED-README.md](../QMOI-ENHANCED-README.md)
-- [QMOI-FEATURE-INDEX.md](../QMOI-FEATURE-INDEX.md)
-- [QMOIALLDEVICESHANDSFREE.md](../QMOIALLDEVICESHANDSFREE.md)
-- [ENHANCEDQVS.md](../ENHANCEDQVS.md)
-- [QVPNREADME.md](../QVPNREADME.md)
-- [QMOIMASKS.md](../QMOIMASKS.md)
-- [QMOINETWORK.md](../QMOINETWORK.md)
-- [ALPHAQMOIENGINE.md](../ALPHAQMOIENGINE.md)
-- [QMOIACCOUNTSPLATFORMS.md](../QMOIACCOUNTSPLATFORMS.md)
-- [QCITYREADME.md](../QCITYREADME.md)
+- [README.md](qmoi-enhanced/README.md)
+- [QMOI-ENHANCED-README.md](qmoi-enhanced/QMOI-ENHANCED-README.md)
+- [QMOI-FEATURE-INDEX.md](qmoi-enhanced/QMOI-FEATURE-INDEX.md)
+- [QMOIALLDEVICESHANDSFREE.md](qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md)
+- [ENHANCEDQVS.md](qmoi-enhanced/ENHANCEDQVS.md)
+- [QVPNREADME.md](qmoi-enhanced/QVPNREADME.md)
+- [QMOIMASKS.md](qmoi-enhanced/QMOIMASKS.md)
+- [QMOINETWORK.md](qmoi-enhanced/QMOINETWORK.md)
+- [ALPHAQMOIENGINE.md](qmoi-enhanced/ALPHAQMOIENGINE.md)
+- [QMOIACCOUNTSPLATFORMS.md](qmoi-enhanced/QMOIACCOUNTSPLATFORMS.md)
+- [QCITYREADME.md](qmoi-enhanced/QCITYREADME.md)
 
 <!-- QMOI_VALIDATION_START -->
 {

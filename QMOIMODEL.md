@@ -1,3 +1,8 @@
+---
+title: "QMOI Model Overview"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -39,10 +44,10 @@ QMOI (Quantum Multi-Objective Intelligence) is a self-healing, ever-evolving, cr
 - **Continuous Learning:** QMOI leverages all test and usage data to improve itself, correct errors, and optimize performance without human intervention.
 
 ## See Also
-- [QMOIMODELTESTS.md](./QMOIMODELTESTS.md)
-- [CURLCOMMANDS.md](./CURLCOMMANDS.md)
-- [TRACKS.md](./TRACKS.md)
-- [DASHBOARDTRACKS.md](./DASHBOARDTRACKS.md)
+- [QMOIMODELTESTS.md](QMOIMODELTESTS.md)
+- [CURLCOMMANDS.md](CURLCOMMANDS.md)
+- [TRACKS.md](TRACKS.md)
+- [DASHBOARDTRACKS.md](DASHBOARDTRACKS.md)
 
 <!-- QMOI_VALIDATION_START -->
 {

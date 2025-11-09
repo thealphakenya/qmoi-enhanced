@@ -1,3 +1,8 @@
+---
+title: "QMOI GitLab Development & Integration"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -66,10 +71,10 @@ QMOI now acts as a full developer/operator for GitLab:
 - For issues, check logs and UI panels
 
 ## References
-- [QMOICLONE.md](./QMOICLONE.md)
-- [QMOICLONEGITPOD.md](./QMOICLONEGITPOD.md)
-- [QMOIVERCELDEV.md](./QMOIVERCELDEV.md)
-- [REFERENCES.md](./REFERENCES.md) 
+- [QMOICLONE.md](QMOICLONE.md)
+- [QMOICLONEGITPOD.md](QMOICLONEGITPOD.md)
+- [QMOIVERCELDEV.md](QMOIVERCELDEV.md)
+- [REFERENCES.md](REFERENCES.md) 
 
 ## 🛠️ Automated Build & Pipeline Error Fixing
 - QMOI, as a dev, now automatically detects and fixes all errors from running `npm run build` and all other commands/scripts in the GitLab pipeline.

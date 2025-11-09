@@ -1,7 +1,0 @@
-{
-  "queue": {
-    "dequeues": 2,
-    "acks": 1
-  },
-  "deduped": 2
-}

@@ -1,3 +1,8 @@
+---
+title: "QMOI CURL Commands"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -205,7 +210,7 @@ For each test above, measure:
 
 ---
 
-See also: [qmoi_test.sh](./qmoi_test.sh) for a script to run all tests and log results.
+See also: [qmoi_test.sh](qmoi_test.sh) for a script to run all tests and log results.
 
 <!-- QMOI_VALIDATION_START -->
 {

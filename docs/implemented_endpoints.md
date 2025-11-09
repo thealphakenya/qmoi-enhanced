@@ -1,3 +1,10 @@
+---
+title: "implemented endpoints"
+qmoi_validation_frontmatter: true
+---
+
+# implemented endpoints
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

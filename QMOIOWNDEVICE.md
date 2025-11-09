@@ -1,3 +1,8 @@
+---
+title: "QMOI Own Device System - Advanced Device Liberation & Ownership"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 

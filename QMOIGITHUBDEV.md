@@ -1,3 +1,8 @@
+---
+title: "QMOI GitHub Development - Advanced AI Developer Platform"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -9,7 +14,7 @@
 
 # QMOI GitHub Development - Advanced AI Developer Platform
 
-> **See also:** [QMOIDEV.md](./QMOIDEV.md)
+> **See also:** [QMOIDEV.md](QMOIDEV.md)
 
 ## QMOI as a Developer & Notification Agent
 - QMOI always identifies as an AI Developer in all notifications (email, Slack, etc.).

@@ -1,3 +1,8 @@
+---
+title: "QMOI Model: Quantum Multi-Objective Intelligence"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -259,8 +264,8 @@ QMOI is your complete, autonomous AI guardian that ensures everything runs perfe
 
 ## Latest QMOI Parallel, Cloud, and Security Enhancements
 
-- See [QMOIALWAYSPARALLEL.md](./QMOIALWAYSPARALLEL.md) for advanced parallel thinking, reasoning, and auto-decision features for money-making, deal-making, and running 100s of projects and transactions in parallel. Includes real-time dashboards, notifications, universal cloud/device/server integration, and self-optimizing project allocation.
-- See [ENHANCEDQVS.md](./ENHANCEDQVS.md) for universal, adaptive, and automated security for all QMOI activities, resources, and transactions—across any cloud, device, or environment. Features auto-integration with any cloud, real-time security dashboards, automated compliance, and QVS as a universal connector.
+- See [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) for advanced parallel thinking, reasoning, and auto-decision features for money-making, deal-making, and running 100s of projects and transactions in parallel. Includes real-time dashboards, notifications, universal cloud/device/server integration, and self-optimizing project allocation.
+- See [ENHANCEDQVS.md](ENHANCEDQVS.md) for universal, adaptive, and automated security for all QMOI activities, resources, and transactions—across any cloud, device, or environment. Features auto-integration with any cloud, real-time security dashboards, automated compliance, and QVS as a universal connector.
 
 ## Universal Cloud Autonomy & Device Enhancement
 

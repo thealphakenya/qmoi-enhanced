@@ -1,3 +1,8 @@
+---
+title: "QMOI System"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -87,9 +92,9 @@ If you need a custom domain or organization Pages site, update the workflow and 
 
 
 References:
-- [TRACKS.md](./TRACKS.md)
-- [RELEASETRACKS.md](./RELEASETRACKS.md)
-- [ERRORSTRACKS.md](./ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
+- [TRACKS.md](TRACKS.md)
+- [RELEASETRACKS.md](RELEASETRACKS.md)
+- [ERRORSTRACKS.md](ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
 
 🛠 Autotest Build Status
 <!-- QMOI_BUILD_STATUS_START -->

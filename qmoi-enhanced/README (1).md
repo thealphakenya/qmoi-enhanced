@@ -1,3 +1,8 @@
+---
+title: "\# QMOI - Quantum Master Orchestrator Intelligence"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -253,7 +258,7 @@
 
 # 
 
-# > \*\*Note:\*\* For all releases and versions, see \[ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md)
+# > \*\*Note:\*\* For all releases and versions, see \[ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md)
 
 # 
 
@@ -489,9 +494,9 @@
 
 # \## 📚 More Download Info \& Links
 
-# \- See \[ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md) for all app releases and versions.
+# \- See \[ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) for all app releases and versions.
 
-# \- See \[DOWNLOADQMOIAIAPPALLDEVICES.md](./DOWNLOADQMOIAIAPPALLDEVICES.md) for all device/platform download instructions.
+# \- See \[DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) for all device/platform download instructions.
 
 # 
 

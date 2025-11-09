@@ -1,3 +1,8 @@
+---
+title: "Production Checklist for QMOI"
+qmoi_validation_frontmatter: true
+---
+
 # Production Checklist for QMOI
 
 This checklist helps prepare the QMOI repository and runtime for production deployments. Follow each step and verify in CI or locally before enabling production runs.

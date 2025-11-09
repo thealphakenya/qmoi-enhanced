@@ -1,3 +1,8 @@
+---
+title: "REVENUE_SPEC (auto-generated - review required)"
+qmoi_validation_frontmatter: true
+---
+
 # REVENUE_SPEC (auto-generated - review required)
 
 This document maps detected revenue-related claims and keywords to source files.
@@ -6927,7 +6932,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: QMOIARTISTS.md
 
-- Line 116 — Text: - **[PRODUCTION IMPLEMENTATION REQUIRED] Sales**: Beat and [PRODUCTION IMPLEMENTATION REQUIRED] licensing
+- Line 116 — Text: - **TODO_PROD Sales**: Beat and TODO_PROD licensing
 
 ## File: QMOIARTISTS.md
 
@@ -17317,7 +17322,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/QMOIARTISTS.md
 
-- Line 116 — Text: - **[PRODUCTION IMPLEMENTATION REQUIRED] Sales**: Beat and [PRODUCTION IMPLEMENTATION REQUIRED] licensing
+- Line 116 — Text: - **TODO_PROD Sales**: Beat and TODO_PROD licensing
 
 ## File: qmoi-enhanced/QMOIARTISTS.md
 

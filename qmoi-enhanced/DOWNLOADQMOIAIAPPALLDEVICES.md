@@ -1,3 +1,8 @@
+---
+title: "QMOI AI App Downloads (All Devices)"
+qmoi_validation_frontmatter: true
+---
+
 <!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
 
@@ -72,7 +77,7 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 | Yap       | All           | https://downloads.qmoi.app/yap/yap-universal.apk         | v1.1.0        | ✅       |
 | Qstore    | All           | https://downloads.qmoi.app/qstore/qstore-universal.apk   | v1.0.0        | ✅       |
 
-> **Note:** For older versions and all releases, see [ALLQMOIAIAPPSREALEASESVERSIONS.md](./ALLQMOIAIAPPSREALEASESVERSIONS.md)
+> **Note:** For older versions and all releases, see [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md)
 
 ## Autotesting & Always-Up-to-Date
 
