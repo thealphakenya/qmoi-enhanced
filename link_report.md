@@ -50,7 +50,7 @@ Found 109453 links
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - link_report.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -156,27 +156,27 @@ Found 109453 links
 - link_report.md: [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) — MISSING
 - link_report.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - link_report.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
-- link_report.md: [downloads/qmoi ai.exe](downloads/qmoi ai.exe) — OK
+- link_report.md: [downloads/qmoi ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/qmoi ai.exe) — external (not checked)
-- link_report.md: [downloads/error.log](downloads/error.log) — OK
+- link_report.md: [downloads/error.log](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/error.log) — external (not checked)
-- link_report.md: [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) — OK
+- link_report.md: [downloads/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) — external (not checked)
-- link_report.md: [downloads/linux/latest/qmoi_ai.AppImage](downloads/linux/latest/qmoi_ai.AppImage) — MISSING
+- link_report.md: [downloads/linux/latest/qmoi_ai.AppImage](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage) — external (not checked)
-- link_report.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](downloads/raspberrypi/qmoi_ai_arm.tar.gz) — MISSING
+- link_report.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz) — external (not checked)
-- link_report.md: [downloads/smarttv/qmoi_ai.pkg](downloads/smarttv/qmoi_ai.pkg) — MISSING
+- link_report.md: [downloads/smarttv/qmoi_ai.pkg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg) — external (not checked)
-- link_report.md: [downloads/ios/qmoi_ai.ipa](downloads/ios/qmoi_ai.ipa) — MISSING
+- link_report.md: [downloads/ios/qmoi_ai.ipa](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa) — external (not checked)
-- link_report.md: [downloads/mac/latest/qmoi_ai.dmg](downloads/mac/latest/qmoi_ai.dmg) — MISSING
+- link_report.md: [downloads/mac/latest/qmoi_ai.dmg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg) — external (not checked)
-- link_report.md: [downloads/android/qmoi_ai.apk](downloads/android/qmoi_ai.apk) — MISSING
+- link_report.md: [downloads/android/qmoi_ai.apk](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/android/qmoi_ai.apk) — external (not checked)
-- link_report.md: [downloads/windows/latest/qmoi_ai.exe](downloads/windows/latest/qmoi_ai.exe) — OK
+- link_report.md: [downloads/windows/latest/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe) — external (not checked)
-- link_report.md: [downloads/chromebook/qmoi_ai.deb](downloads/chromebook/qmoi_ai.deb) — MISSING
+- link_report.md: [downloads/chromebook/qmoi_ai.deb](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Win](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
@@ -412,7 +412,7 @@ Found 109453 links
 - link_report.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - link_report.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - link_report.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -428,7 +428,7 @@ Found 109453 links
 - link_report.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - link_report.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - link_report.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -18820,7 +18820,7 @@ console.log(style.codes.get(36));
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - link_report.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -18962,7 +18962,7 @@ console.log(style.codes.get(36));
 - link_report.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - link_report.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - link_report.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -19026,7 +19026,7 @@ console.log(style.codes.get(36));
 - link_report.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - link_report.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - link_report.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - link_report.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -19042,9 +19042,9 @@ console.log(style.codes.get(36));
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md) — OK
 - link_report.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - link_report.md: [QMOIVERCELDEV.md](QMOIVERCELDEV.md) — OK
@@ -30220,7 +30220,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - link_report.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -30326,27 +30326,27 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) — MISSING
 - link_report.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - link_report.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
-- link_report.md: [downloads/qmoi ai.exe](downloads/qmoi ai.exe) — OK
+- link_report.md: [downloads/qmoi ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/qmoi ai.exe) — external (not checked)
-- link_report.md: [downloads/error.log](downloads/error.log) — OK
+- link_report.md: [downloads/error.log](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/error.log) — external (not checked)
-- link_report.md: [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) — OK
+- link_report.md: [downloads/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) — external (not checked)
-- link_report.md: [downloads/linux/latest/qmoi_ai.AppImage](downloads/linux/latest/qmoi_ai.AppImage) — MISSING
+- link_report.md: [downloads/linux/latest/qmoi_ai.AppImage](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage) — external (not checked)
-- link_report.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](downloads/raspberrypi/qmoi_ai_arm.tar.gz) — MISSING
+- link_report.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz) — external (not checked)
-- link_report.md: [downloads/smarttv/qmoi_ai.pkg](downloads/smarttv/qmoi_ai.pkg) — MISSING
+- link_report.md: [downloads/smarttv/qmoi_ai.pkg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg) — external (not checked)
-- link_report.md: [downloads/ios/qmoi_ai.ipa](downloads/ios/qmoi_ai.ipa) — MISSING
+- link_report.md: [downloads/ios/qmoi_ai.ipa](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa) — external (not checked)
-- link_report.md: [downloads/mac/latest/qmoi_ai.dmg](downloads/mac/latest/qmoi_ai.dmg) — MISSING
+- link_report.md: [downloads/mac/latest/qmoi_ai.dmg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg) — external (not checked)
-- link_report.md: [downloads/android/qmoi_ai.apk](downloads/android/qmoi_ai.apk) — MISSING
+- link_report.md: [downloads/android/qmoi_ai.apk](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/android/qmoi_ai.apk) — external (not checked)
-- link_report.md: [downloads/windows/latest/qmoi_ai.exe](downloads/windows/latest/qmoi_ai.exe) — OK
+- link_report.md: [downloads/windows/latest/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe) — external (not checked)
-- link_report.md: [downloads/chromebook/qmoi_ai.deb](downloads/chromebook/qmoi_ai.deb) — MISSING
+- link_report.md: [downloads/chromebook/qmoi_ai.deb](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Win](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
@@ -30584,7 +30584,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - link_report.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - link_report.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -30600,7 +30600,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - link_report.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - link_report.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -48992,7 +48992,7 @@ console.log(style.codes.get(36));
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - link_report.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -49134,7 +49134,7 @@ console.log(style.codes.get(36));
 - link_report.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - link_report.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - link_report.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -49198,7 +49198,7 @@ console.log(style.codes.get(36));
 - link_report.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - link_report.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - link_report.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - link_report.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -49214,9 +49214,9 @@ console.log(style.codes.get(36));
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md) — OK
 - link_report.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - link_report.md: [QMOIVERCELDEV.md](QMOIVERCELDEV.md) — OK
@@ -60392,7 +60392,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - link_report.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -60498,27 +60498,27 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) — MISSING
 - link_report.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - link_report.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
-- link_report.md: [downloads/qmoi ai.exe](downloads/qmoi ai.exe) — OK
+- link_report.md: [downloads/qmoi ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/qmoi ai.exe) — external (not checked)
-- link_report.md: [downloads/error.log](downloads/error.log) — OK
+- link_report.md: [downloads/error.log](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/error.log) — external (not checked)
-- link_report.md: [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) — OK
+- link_report.md: [downloads/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) — external (not checked)
-- link_report.md: [downloads/linux/latest/qmoi_ai.AppImage](downloads/linux/latest/qmoi_ai.AppImage) — MISSING
+- link_report.md: [downloads/linux/latest/qmoi_ai.AppImage](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage) — external (not checked)
-- link_report.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](downloads/raspberrypi/qmoi_ai_arm.tar.gz) — MISSING
+- link_report.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz) — external (not checked)
-- link_report.md: [downloads/smarttv/qmoi_ai.pkg](downloads/smarttv/qmoi_ai.pkg) — MISSING
+- link_report.md: [downloads/smarttv/qmoi_ai.pkg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg) — external (not checked)
-- link_report.md: [downloads/ios/qmoi_ai.ipa](downloads/ios/qmoi_ai.ipa) — MISSING
+- link_report.md: [downloads/ios/qmoi_ai.ipa](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa) — external (not checked)
-- link_report.md: [downloads/mac/latest/qmoi_ai.dmg](downloads/mac/latest/qmoi_ai.dmg) — MISSING
+- link_report.md: [downloads/mac/latest/qmoi_ai.dmg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg) — external (not checked)
-- link_report.md: [downloads/android/qmoi_ai.apk](downloads/android/qmoi_ai.apk) — MISSING
+- link_report.md: [downloads/android/qmoi_ai.apk](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/android/qmoi_ai.apk) — external (not checked)
-- link_report.md: [downloads/windows/latest/qmoi_ai.exe](downloads/windows/latest/qmoi_ai.exe) — OK
+- link_report.md: [downloads/windows/latest/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe) — external (not checked)
-- link_report.md: [downloads/chromebook/qmoi_ai.deb](downloads/chromebook/qmoi_ai.deb) — MISSING
+- link_report.md: [downloads/chromebook/qmoi_ai.deb](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Win](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
@@ -60756,7 +60756,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - link_report.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - link_report.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -60772,7 +60772,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - link_report.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - link_report.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -79164,7 +79164,7 @@ console.log(style.codes.get(36));
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - link_report.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -79306,7 +79306,7 @@ console.log(style.codes.get(36));
 - link_report.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - link_report.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - link_report.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -79370,7 +79370,7 @@ console.log(style.codes.get(36));
 - link_report.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - link_report.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - link_report.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - link_report.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -79386,9 +79386,9 @@ console.log(style.codes.get(36));
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md) — OK
 - link_report.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - link_report.md: [QMOIVERCELDEV.md](QMOIVERCELDEV.md) — OK
@@ -90564,7 +90564,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - link_report.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -90670,27 +90670,27 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) — MISSING
 - link_report.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - link_report.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
-- link_report.md: [downloads/qmoi ai.exe](downloads/qmoi ai.exe) — OK
+- link_report.md: [downloads/qmoi ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/qmoi ai.exe) — external (not checked)
-- link_report.md: [downloads/error.log](downloads/error.log) — OK
+- link_report.md: [downloads/error.log](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/error.log) — external (not checked)
-- link_report.md: [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) — OK
+- link_report.md: [downloads/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) — external (not checked)
-- link_report.md: [downloads/linux/latest/qmoi_ai.AppImage](downloads/linux/latest/qmoi_ai.AppImage) — MISSING
+- link_report.md: [downloads/linux/latest/qmoi_ai.AppImage](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage) — external (not checked)
-- link_report.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](downloads/raspberrypi/qmoi_ai_arm.tar.gz) — MISSING
+- link_report.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz) — external (not checked)
-- link_report.md: [downloads/smarttv/qmoi_ai.pkg](downloads/smarttv/qmoi_ai.pkg) — MISSING
+- link_report.md: [downloads/smarttv/qmoi_ai.pkg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg) — external (not checked)
-- link_report.md: [downloads/ios/qmoi_ai.ipa](downloads/ios/qmoi_ai.ipa) — MISSING
+- link_report.md: [downloads/ios/qmoi_ai.ipa](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa) — external (not checked)
-- link_report.md: [downloads/mac/latest/qmoi_ai.dmg](downloads/mac/latest/qmoi_ai.dmg) — MISSING
+- link_report.md: [downloads/mac/latest/qmoi_ai.dmg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg) — external (not checked)
-- link_report.md: [downloads/android/qmoi_ai.apk](downloads/android/qmoi_ai.apk) — MISSING
+- link_report.md: [downloads/android/qmoi_ai.apk](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/android/qmoi_ai.apk) — external (not checked)
-- link_report.md: [downloads/windows/latest/qmoi_ai.exe](downloads/windows/latest/qmoi_ai.exe) — OK
+- link_report.md: [downloads/windows/latest/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe) — external (not checked)
-- link_report.md: [downloads/chromebook/qmoi_ai.deb](downloads/chromebook/qmoi_ai.deb) — MISSING
+- link_report.md: [downloads/chromebook/qmoi_ai.deb](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - link_report.md: [Download](https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Win](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
@@ -90928,7 +90928,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - link_report.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - link_report.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -90944,7 +90944,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - link_report.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - link_report.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - link_report.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -109336,7 +109336,7 @@ console.log(style.codes.get(36));
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - link_report.md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - link_report.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -109478,7 +109478,7 @@ console.log(style.codes.get(36));
 - link_report.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - link_report.md: [REFERENCES.md](REFERENCES.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - link_report.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - link_report.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -109542,7 +109542,7 @@ console.log(style.codes.get(36));
 - link_report.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - link_report.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - link_report.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - link_report.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -109558,9 +109558,9 @@ console.log(style.codes.get(36));
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- link_report.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - link_report.md: [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md) — OK
 - link_report.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - link_report.md: [QMOIVERCELDEV.md](QMOIVERCELDEV.md) — OK
@@ -120736,7 +120736,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - README (1).md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - README (1).md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - README (1).md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- README (1).md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- README (1).md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - QMOIALLPLATFORMS.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - QMOIALLPLATFORMS.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - QMOIALLPLATFORMS.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -120842,27 +120842,27 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - README.md: [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) — MISSING
 - README.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - README.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
-- README.md: [downloads/qmoi ai.exe](downloads/qmoi ai.exe) — OK
+- README.md: [downloads/qmoi ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - README.md: [Download](https://downloads.qmoi.app/downloads/qmoi ai.exe) — external (not checked)
-- README.md: [downloads/error.log](downloads/error.log) — OK
+- README.md: [downloads/error.log](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - README.md: [Download](https://downloads.qmoi.app/downloads/error.log) — external (not checked)
-- README.md: [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) — OK
+- README.md: [downloads/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - README.md: [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) — external (not checked)
-- README.md: [downloads/linux/latest/qmoi_ai.AppImage](downloads/linux/latest/qmoi_ai.AppImage) — MISSING
+- README.md: [downloads/linux/latest/qmoi_ai.AppImage](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - README.md: [Download](https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage) — external (not checked)
-- README.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](downloads/raspberrypi/qmoi_ai_arm.tar.gz) — MISSING
+- README.md: [downloads/raspberrypi/qmoi_ai_arm.tar.gz](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - README.md: [Download](https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz) — external (not checked)
-- README.md: [downloads/smarttv/qmoi_ai.pkg](downloads/smarttv/qmoi_ai.pkg) — MISSING
+- README.md: [downloads/smarttv/qmoi_ai.pkg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - README.md: [Download](https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg) — external (not checked)
-- README.md: [downloads/ios/qmoi_ai.ipa](downloads/ios/qmoi_ai.ipa) — MISSING
+- README.md: [downloads/ios/qmoi_ai.ipa](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - README.md: [Download](https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa) — external (not checked)
-- README.md: [downloads/mac/latest/qmoi_ai.dmg](downloads/mac/latest/qmoi_ai.dmg) — MISSING
+- README.md: [downloads/mac/latest/qmoi_ai.dmg](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - README.md: [Download](https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg) — external (not checked)
-- README.md: [downloads/android/qmoi_ai.apk](downloads/android/qmoi_ai.apk) — MISSING
+- README.md: [downloads/android/qmoi_ai.apk](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - README.md: [Download](https://downloads.qmoi.app/downloads/android/qmoi_ai.apk) — external (not checked)
-- README.md: [downloads/windows/latest/qmoi_ai.exe](downloads/windows/latest/qmoi_ai.exe) — OK
+- README.md: [downloads/windows/latest/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - README.md: [Download](https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe) — external (not checked)
-- README.md: [downloads/chromebook/qmoi_ai.deb](downloads/chromebook/qmoi_ai.deb) — MISSING
+- README.md: [downloads/chromebook/qmoi_ai.deb](TODO_REPLACE_DOWNLOAD_LINK) — MISSING
 - README.md: [Download](https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb) — external (not checked)
 - DOWNLOADQMOIAIAPPALLDEVICES.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - DOWNLOADQMOIAIAPPALLDEVICES.md: [Win](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
@@ -121100,7 +121100,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - QMOIGITPODDEV.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - QMOIGITPODDEV.md: [REFERENCES.md](REFERENCES.md) — OK
 - REFERENCES.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- REFERENCES.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- REFERENCES.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - QMOIFORALL.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - QMOIFORALL.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - QMOIFORALL.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -121116,7 +121116,7 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - QMOIVERCELDEV.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - QMOIVERCELDEV.md: [REFERENCES.md](REFERENCES.md) — OK
 - WATCHDEBUG.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- WATCHDEBUG.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- WATCHDEBUG.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - QMOIHUGGINGFACESPACESSETUPINST.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - QMOIHUGGINGFACESPACESSETUPINST.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - QMOIHUGGINGFACESPACESSETUPINST.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -139508,7 +139508,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/README (1).md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
 - qmoi-enhanced/README (1).md: [Releases page](https://github.com/thealphakenya/Alpha-Q-ai/releases) — external (not checked)
 - qmoi-enhanced/README (1).md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- qmoi-enhanced/README (1).md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- qmoi-enhanced/README (1).md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - qmoi-enhanced/QMOIALLPLATFORMS.md: [QMOICLONEGITHUB.md](QMOICLONEGITHUB.md) — OK
 - qmoi-enhanced/QMOIALLPLATFORMS.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
 - qmoi-enhanced/QMOIALLPLATFORMS.md: [QMOICLONEGITLAB.md](QMOICLONEGITLAB.md) — OK
@@ -139650,7 +139650,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/QMOIGITPODDEV.md: [QMOISPACEDEV.md](QMOISPACEDEV.md) — OK
 - qmoi-enhanced/QMOIGITPODDEV.md: [REFERENCES.md](REFERENCES.md) — OK
 - qmoi-enhanced/REFERENCES.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- qmoi-enhanced/REFERENCES.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- qmoi-enhanced/REFERENCES.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - qmoi-enhanced/QMOIFORALL.md: [Download Windows](https://downloads.qmoi.app/qbrowser/windows.exe) — external (not checked)
 - qmoi-enhanced/QMOIFORALL.md: [Download Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) — external (not checked)
 - qmoi-enhanced/QMOIFORALL.md: [Download Android](https://downloads.qmoi.app/qbrowser/android.apk) — external (not checked)
@@ -139714,7 +139714,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md: [PWA](pwa_apps/qmoi-ai-pwa.zip) — MISSING
 - qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md: [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) — MISSING
 - qmoi-enhanced/WATCHDEBUG.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- qmoi-enhanced/WATCHDEBUG.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- qmoi-enhanced/WATCHDEBUG.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md: [Sign up](https://huggingface.co/join) — external (not checked)
 - qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md: [Create token](https://huggingface.co/settings/tokens) — external (not checked)
 - qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md: [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces) — external (not checked)
@@ -139730,9 +139730,9 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/MASTERREADME.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - qmoi-enhanced/MASTERREADME.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
 - qmoi-enhanced/@ALLMDFILESREFS.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- qmoi-enhanced/@ALLMDFILESREFS.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- qmoi-enhanced/@ALLMDFILESREFS.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - qmoi-enhanced/@ALLMDFILESREFS.md: [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) — OK
-- qmoi-enhanced/@ALLMDFILESREFS.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) — OK
+- qmoi-enhanced/@ALLMDFILESREFS.md: [DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) — OK
 - qmoi-enhanced/QMOIDEV.md: [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md) — OK
 - qmoi-enhanced/QMOIDEV.md: [QMOIGITLABDEV.md](QMOIGITLABDEV.md) — OK
 - qmoi-enhanced/QMOIDEV.md: [QMOIVERCELDEV.md](QMOIVERCELDEV.md) — OK
