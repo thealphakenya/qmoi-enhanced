@@ -496,7 +496,7 @@ qmoi_validation_frontmatter: true
 
 # \- See \[ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) for all app releases and versions.
 
-# \- See \[DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) for all device/platform download instructions.
+# \- See \[DOWNLOADQMOIAIAPPALLDEVICES.md](TODO_REPLACE_DOWNLOAD_LINK) for all device/platform download instructions.
 
 # 
 

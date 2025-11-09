@@ -177,17 +177,17 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 <!-- QMOI_APPS_TABLE_START -->
 | App | Platform | File | Size (KB) | Download |
 |---|---:|---|---:|---|
-| qmoi ai | qmoi ai.exe | [downloads/qmoi ai.exe](downloads/qmoi ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi ai.exe) |
-| error | error.log | [downloads/error.log](downloads/error.log) | 0 | [Download](https://downloads.qmoi.app/downloads/error.log) |
-| qmoi_ai | qmoi_ai.exe | [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) |
-| qmoi_ai | linux | [downloads/linux/latest/qmoi_ai.AppImage](downloads/linux/latest/qmoi_ai.AppImage) | 0 | [Download](https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage) |
-| qmoi_ai_arm.tar | raspberrypi | [downloads/raspberrypi/qmoi_ai_arm.tar.gz](downloads/raspberrypi/qmoi_ai_arm.tar.gz) | 0 | [Download](https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz) |
-| qmoi_ai | smarttv | [downloads/smarttv/qmoi_ai.pkg](downloads/smarttv/qmoi_ai.pkg) | 0 | [Download](https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg) |
-| qmoi_ai | ios | [downloads/ios/qmoi_ai.ipa](downloads/ios/qmoi_ai.ipa) | 0 | [Download](https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa) |
-| qmoi_ai | mac | [downloads/mac/latest/qmoi_ai.dmg](downloads/mac/latest/qmoi_ai.dmg) | 0 | [Download](https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg) |
-| qmoi_ai | android | [downloads/android/qmoi_ai.apk](downloads/android/qmoi_ai.apk) | 0 | [Download](https://downloads.qmoi.app/downloads/android/qmoi_ai.apk) |
-| qmoi_ai | windows | [downloads/windows/latest/qmoi_ai.exe](downloads/windows/latest/qmoi_ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe) |
-| qmoi_ai | chromebook | [downloads/chromebook/qmoi_ai.deb](downloads/chromebook/qmoi_ai.deb) | 0 | [Download](https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb) |
+| qmoi ai | qmoi ai.exe | [downloads/qmoi ai.exe](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi ai.exe) |
+| error | error.log | [downloads/error.log](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/error.log) |
+| qmoi_ai | qmoi_ai.exe | [downloads/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) |
+| qmoi_ai | linux | [downloads/linux/latest/qmoi_ai.AppImage](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage) |
+| qmoi_ai_arm.tar | raspberrypi | [downloads/raspberrypi/qmoi_ai_arm.tar.gz](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz) |
+| qmoi_ai | smarttv | [downloads/smarttv/qmoi_ai.pkg](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg) |
+| qmoi_ai | ios | [downloads/ios/qmoi_ai.ipa](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa) |
+| qmoi_ai | mac | [downloads/mac/latest/qmoi_ai.dmg](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg) |
+| qmoi_ai | android | [downloads/android/qmoi_ai.apk](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/android/qmoi_ai.apk) |
+| qmoi_ai | windows | [downloads/windows/latest/qmoi_ai.exe](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe) |
+| qmoi_ai | chromebook | [downloads/chromebook/qmoi_ai.deb](TODO_REPLACE_DOWNLOAD_LINK) | 0 | [Download](https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb) |
 <!-- QMOI_APPS_TABLE_END -->
 
 ## 🦁 Lion Operating System (experimental)
