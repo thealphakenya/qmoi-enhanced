@@ -1,208 +1,1208 @@
-# Link check report
+# QMOI Link Check Summary
 
-Generated: Sun Nov  9 22:02:15 2025
+Generated: Sun Nov  9 22:20:49 2025
 
-Checked 5000 unique links. Failures: 3647
+Checked 1500 links; failures: 290
 
 ## Failures (top 200)
 
-- https://api.qmoi.app' — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qcity/ios.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://localhost:3000/api — status=http_error (http: http_error code=http_error )
-- https://downloads.qmoi.app/qcity/linux.appimage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qcity/mac.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qcity/pwa/latest/ — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://localhost:3000/api/qcity/selfheal-npm — status=http_error (http: http_error code=http_error )
-- https://downloads.qmoi.app/qcity/windows.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi/android.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi/linux.deb — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi/ios.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi/linux.appimage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi/mac.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi/raspberrypi.img — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi/windows.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://localhost:4000/api/error-fix-log — status=http_error (http: http_error code=http_error )
-- http://localhost:4000/login — status=http_error (http: http_error code=http_error )
-- http://localhost:4000/api/trigger-fix — status=http_error (http: http_error code=http_error )
-- https://downloads.qmoi.app/qshare/qshare-universal.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://localhost:4000/health — status=http_error (http: http_error code=http_error )
-- http://localhost:4000/api/realtime-events — status=http_error (http: http_error code=http_error )
-- http://localhost:5050/api/build-apps — status=http_error (http: http_error code=http_error )
-- http://localhost:4000/api/logs — status=http_error (http: http_error code=http_error )
-- http://localhost:5055 — status=http_error (http: http_error code=http_error )
-- http://localhost:3000 — status=http_error (http: http_error code=http_error )
-- http://localhost:3000/qcity — status=http_error (http: http_error code=http_error )
-- http://localhost:5000 — status=http_error (http: http_error code=http_error )
-- https://downloads.qmoi.app/qautodev/android.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qautodev/linux.appimage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qautodev/mac.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qautodev/windows.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qbrowser/android.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qbrowser/ios.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qbrowser/linux.appimage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qbrowser/mac.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qbrowser/windows.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qstore/qstore-universal.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qclock/android.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qclock/ios.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi/smarttv.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qclock/linux.appimage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi/chromebook.zip — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://staging.qmoi.ai — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://qmoi.ai — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi-ai/pwa/latest/ — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmoi-space/pwa/latest/ — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qclock/mac.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qfilemanager/android.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qautodev/ios.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qfilemanager/windows.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmap/linux.appimage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qclock/windows.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/yap/yap-universal.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmap/ios.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qcity/android.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qfilemanager/linux.appimage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qfilemanager/mac.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmap/windows.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qsearch/linux.appimage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qsearch/android.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qsearch/windows.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qwhatsapp/android.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qwhatsapp/windows.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qsearch/mac.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qsearch/ios.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qwhatsapp/ios.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qwhatsapp/mac.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qwhatsapp/linux.appimage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmap/mac.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://localhost:3000/qmoi-revenue-dashboard — status=http_error (http: http_error code=http_error )
-- http://localhost:4000/ — status=http_error (http: http_error code=http_error )
-- http://localhost:3010 — status=http_error (http: http_error code=http_error )
-- https://docs.qcity.ai — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://localhost:3001 — status=http_error (http: http_error code=http_error )
-- https://api.airtel.com/status — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://q-city.ai — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://api-staging.q-city.ai — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://api.q-city.ai — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qmap/android.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/qfilemanager/ios.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://staging.q-city.ai — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://localhost:7860/status — status=http_error (http: http_error code=http_error )
-- http://localhost:7861 — status=http_error (http: http_error code=http_error )
-- http://localhost:7860 — status=http_error (http: http_error code=http_error )
-- https://3cf7294944e8.ngrok-free.app — status=client_error (http: client_error code=client_error )
-- https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.177 — status=client_error (http: client_error code=client_error )
-- https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml — status=client_error (http: client_error code=client_error )
-- https://qmoi.ai/docs — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://github.com/qcity/ai — status=client_error (http: client_error code=client_error )
-- https://github.com/q-city/qmoi-enhanced/discussions — status=client_error (http: client_error code=client_error )
-- https://github.com/q-city/qmoi-enhanced/issues — status=client_error (http: client_error code=client_error )
-- https://downloads.qmoi.app — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://github.com/q-city/qmoi-enhanced/wiki — status=client_error (http: client_error code=client_error )
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system — status=client_error (http: client_error code=client_error )
-- https://qcity.qmoi.app — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule — status=client_error (http: client_error code=client_error )
-- https://huggingface.co/alphaqmoi/qmoi-ai-system — status=client_error (http: client_error code=client_error )
-- https://github.com/alphaqmoi/qmoi-ai-system — status=client_error (http: client_error code=client_error )
-- https://api.qmoi.app — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://codespaces — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://qmoigateway.thealphakenya.com/api/github/webhook — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://discord.com/api/webhooks/ — status=client_error (http: client_error code=client_error )
-- https://qmoisystem.com — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://qmoigateway.example.com/api/github/webhook — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://api.mybank.com/balance?account=12345 — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://api-inference.huggingface.co/models/alphaqmoi/qmoi — status=client_error (http: client_error code=client_error )
-- https://gitlab.qmoi.com — status=http_error (http: http_error code=http_error )
-- https://huggingface.co/join — status=client_error (http: client_error code=client_error )
-- https://example-1234.ngrok.io/downloads/qbrowser/windows.exe — status=client_error (http: client_error code=client_error )
-- https://downloads.qmoi.app/downloads/android/qmoi_ai.apk — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://gitpod.qmoi.com — status=http_error (http: http_error code=http_error )
-- https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/downloads/qmoi — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/downloads/error.log — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/downloads/qmoi_ai.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://huggingface.co/settings/tokens — status=client_error (http: client_error code=client_error )
-- https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://example.com/dog.jpg — status=client_error (http: client_error code=client_error )
-- http://localhost:3000/api/ai-self-diagnostics?fix=1 — status=http_error (http: http_error code=http_error )
-- http://localhost:3000/api/whatsapp-bot?send=1 — status=http_error (http: http_error code=http_error )
-- https://quantum.qmoi.com — status=http_error (http: http_error code=http_error )
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status — status=client_error (http: client_error code=client_error )
-- https://example-1234.ngrok.io/qcity/app/latest — status=client_error (http: client_error code=client_error )
-- https://example.com/group_photo.jpg — status=client_error (http: client_error code=client_error )
-- https://github.qmoi.com — status=client_error (http: client_error code=client_error )
-- https://api.mytrading.com/markets — status=http_error (http: http_error code=http_error )
-- https://huggingface.qmoi.com — status=http_error (http: http_error code=http_error )
-- https://github.com/thealphakenya/Alpha-Q-ai/releases — status=client_error (http: client_error code=client_error )
-- https://alpha-q-ai.com — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://localhost:8000 — status=http_error (http: http_error code=http_error )
-- http://localhost:8000/automation/status — status=http_error (http: http_error code=http_error )
-- http://localhost:8000/token — status=http_error (http: http_error code=http_error )
-- http://localhost:8080 — status=http_error (http: http_error code=http_error )
-- https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi — status=client_error (http: client_error code=client_error )
-- https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-alpha/ — status=client_error (http: client_error code=client_error )
-- http://localhost:3000/qmoi- — status=http_error (http: http_error code=http_error )
-- http://localhost:3000/qmoi-revenue- — status=http_error (http: http_error code=http_error )
-- http://localhost:3000/qmoi-revenue-d — status=http_error (http: http_error code=http_error )
-- https://api.bitget.com — status=client_error (http: client_error code=client_error )
-- https://api.github.com/repos/ — status=client_error (http: client_error code=client_error )
-- http://w — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://staging.alpha-q-ai.com — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://api.air — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://ww — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://hooks.slack.com/services/your/webhook/url — status=client_error (http: client_error code=client_error )
-- https://www.bitget.com/api-doc/common/rsa-authentication.html — status=client_error (http: client_error code=client_error )
-- https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK — status=client_error (http: client_error code=client_error )
-- https://discord.com/api/webhooks/your/webhook/url — status=client_error (http: client_error code=client_error )
-- https://gitlab.com/api/v4 — status=client_error (http: client_error code=client_error )
-- https://example.com/app-latest.dmg — status=client_error (http: client_error code=client_error )
-- https://example.com/app-latest.apk — status=client_error (http: client_error code=client_error )
-- https://example.com/app-latest.ipa — status=client_error (http: client_error code=client_error )
-- https://example.com/app-latest.AppImage — status=client_error (http: client_error code=client_error )
-- https://example.com/app-latest.exe — status=client_error (http: client_error code=client_error )
-- https://api.travis-ci.org/tj/commander.js.svg?branch=master — status=client_error (http: client_error code=client_error )
-- https://cdn.jsdelivr.net/gh/jshttp/mime-db — status=client_error (http: client_error code=client_error )
-- https://chromium.googlesource.com/chromiu — status=client_error (http: client_error code=client_error )
-- https://ci.appveyor.com/api/projects/status/fb9i157knoixe3iq/branch/master?svg=true — status=client_error (http: client_error code=client_error )
-- https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true — status=client_error (http: client_error code=client_error )
-- https://ci.appveyor.com/api/projects/status/ol2q94g1932cy14a/branch/master?svg=true — status=client_error (http: client_error code=client_error )
-- https://david-dm.org/isaacs/rimraf — status=server_error (http: server_error code=server_error )
-- https://david-dm.org/isaacs/rimraf.svg — status=server_error (http: server_error code=server_error )
-- https://david-dm.org/isaacs/rimraf#info=devDependencies — status=server_error (http: server_error code=server_error )
-- https://david-dm.org/isaacs/rimraf/dev-status.svg — status=server_error (http: server_error code=server_error )
-- https://dev.azure.com/gulpjs/gulp/_apis/build/status/glob-parent?branchName=master — status=client_error (http: client_error code=client_error )
-- https://github.com/expressjs/express/blob/master/Contributing.md — status=client_error (http: client_error code=client_error )
-- https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#explicit-binding — status=client_error (http: client_error code=client_error )
-- https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md — status=client_error (http: client_error code=client_error )
-- https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding — status=client_error (http: client_error code=client_error )
-- https://github.com/expressjs/express/blob/master/Code-Of-Conduct.md — status=client_error (http: client_error code=client_error )
-- https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js — status=client_error (http: client_error code=client_error )
-- https://github.com/nodeca/argparse/tree/master/examples — status=client_error (http: client_error code=client_error )
-- https://github.com/rwaldron/tc39-notes/blob/master/es7/2015-07/july-29.md#611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists — status=client_error (http: client_error code=client_error )
-- https://github.com/sinclairzx81/typebox/blob/master/benchmark/measurement/module/compile.ts — status=client_error (http: client_error code=client_error )
-- https://github.com/sinclairzx81/typebox/blob/master/benchmark/measurement/module/check.ts — status=client_error (http: client_error code=client_error )
-- https://github.com/rwaldron/tc39-notes/blob/master/es7/2016-09/sept-28.md#113a-import — status=client_error (http: client_error code=client_error )
-- https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/ — status=client_error (http: client_error code=client_error )
-- https://raw.githubusercontent.com/mozilla/source-map/master/dist/source-map.min.js — status=client_error (http: client_error code=client_error )
-- https://reactnati — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://tid — status=dns_error (dns: [Errno -2] Name does not resolve)
-- https://saucelabs.com/browser-matrix/run-parallel.svg — status=client_error (http: client_error code=client_error )
-- https://twicsy.com/buy-instagram-followers?utm_source&#x3D — status=client_error (http: client_error code=client_error )
-- https://www.npmjs.com/package/assemble — status=client_error (http: client_error code=client_error )
-- https://www.npmjs.com/package/electron-to-chromium — status=client_error (http: client_error code=client_error )
-- https://www.npmjs.com/package/chalk — status=client_error (http: client_error code=client_error )
-- https://www.npmjs.com/package/is-glob — status=client_error (http: client_error code=client_error )
-- https://www.npmjs.com/package/sisteransi — status=client_error (http: client_error code=client_error )
-- http://extjs.github.com/Connect/index.html#Middleware-Authoring — status=dns_error (dns: [Errno -5] Name has no usable address)
-- http://extjs.github.com/Connect/api.html — status=dns_error (dns: [Errno -5] Name has no usable address)
-- http://devtoolscommunity.herokuapp.com/badge.svg — status=client_error (http: client_error code=client_error )
-- http://devtoolscommunity.herokuapp.com — status=client_error (http: client_error code=client_error )
-- http://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14 — status=dns_error (dns: [Errno -2] Name does not resolve)
-- http://nodeca.github.com/argparse/ — status=dns_error (dns: [Errno -5] Name has no usable address)
-- https://secure.travis-ci.org/grncdr/merge-stream.svg?branch=master — status=http_error (http: http_error code=http_error )
-- https://secure.travis-ci.org/nodeca/argparse.svg?branch=master — status=http_error (http: http_error code=http_error )
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qcity/ios.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qcity/android.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qcity/linux.appimage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qcity/mac.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qcity/windows.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qcity/pwa/latest/
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi-ai/pwa/latest/
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi-space/pwa/latest/
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi/android.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi/chromebook.zip
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi/ios.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi/linux.deb
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi/linux.appimage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi/mac.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi/raspberrypi.img
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi/windows.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmoi/smarttv.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qshare/qshare-universal.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qstore/qstore-universal.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000/api/qcity/selfheal-npm
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/yap/yap-universal.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000/api
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: WPA.md
+  - URL: https://api.qmoi.app'
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://3cf7294944e8.ngrok-free.app
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 13.202.234.110, 13.204.133.7, 13.204.33.47, 13.234.229.229, 2406:da1a:e91:9300:576f:24c2:72c5:41b6, 2406:da1a:e91:9300:a07:217:649e:8a37, 2406:da1a:e91:9301:91b4:1a34:6296:f1c3, 2406:da1a:e91:9301:a805:8585:66c4:119c, 2406:da1a:e91:9302:67d9:7b0f:c8b1:8e7, 35.154.102.28
+
+- File: ALLLINKS.md
+  - URL: http://localhost:5050/api/build-apps
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:4000/api/error-fix-log
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:4000/api/logs
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:4000/api/realtime-events
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:4000/api/trigger-fix
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:4000/health
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:4000/login
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://docs.qcity.ai
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://github.com/qcity/ai
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:5055
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.177
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://qmoi.ai
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://staging.qmoi.ai
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000/qcity
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:5000
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qautodev/android.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qautodev/ios.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qautodev/linux.appimage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qautodev/mac.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qautodev/windows.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qbrowser/android.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qbrowser/ios.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qbrowser/linux.appimage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qbrowser/mac.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qbrowser/windows.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qclock/android.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qclock/ios.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qclock/linux.appimage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qclock/mac.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qclock/windows.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qfilemanager/android.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qfilemanager/ios.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qfilemanager/linux.appimage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qfilemanager/mac.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qfilemanager/windows.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmap/android.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmap/ios.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmap/linux.appimage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmap/mac.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qmap/windows.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qsearch/android.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qsearch/ios.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qsearch/linux.appimage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qsearch/mac.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qsearch/windows.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qwhatsapp/android.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qwhatsapp/ios.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qwhatsapp/linux.appimage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qwhatsapp/mac.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/qwhatsapp/windows.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://example.com/dog.jpg
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 23.192.228.80, 23.192.228.84, 23.215.0.136, 23.215.0.138, 23.220.75.232, 23.220.75.245, 2600:1406:5e00:6::17ce:bc12, 2600:1406:5e00:6::17ce:bc1b, 2600:1406:bc00:53::b81e:94c8, 2600:1406:bc00:53::b81e:94ce, 2600:1408:ec00:36::1736:7f24, 2600:1408:ec00:36::1736:7f31
+
+- File: ALLLINKS.md
+  - URL: http://localhost:4000/
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://q-city.ai
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://api.airtel.com/status
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://github.com/qmoi/independent-qmoi.git
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000/qmoi-revenue-dashboard
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3010
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://github.com/your-repo/qmoi-system.git
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://example.com/group_photo.jpg
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 23.192.228.80, 23.192.228.84, 23.215.0.136, 23.215.0.138, 23.220.75.232, 23.220.75.245, 2600:1406:5e00:6::17ce:bc12, 2600:1406:5e00:6::17ce:bc1b, 2600:1406:bc00:53::b81e:94c8, 2600:1406:bc00:53::b81e:94ce, 2600:1408:ec00:36::1736:7f24, 2600:1408:ec00:36::1736:7f31
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3001
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://api-staging.q-city.ai
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://api.q-city.ai
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://gitpod.qmoi.com
+  - Status: None
+  - Error: network_error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>
+  - DNS OK: True Resolved: 64.190.63.222
+
+- File: ALLLINKS.md
+  - URL: https://gitlab.qmoi.com
+  - Status: None
+  - Error: network_error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>
+  - DNS OK: True Resolved: 64.190.63.222
+
+- File: ALLLINKS.md
+  - URL: https://github.com/q-city/qmoi-enhanced/discussions
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/q-city/qmoi-enhanced/issues
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/q-city/qmoi-enhanced.git
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: http://localhost:7860/status
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:7861
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:7860
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://staging.q-city.ai
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://api-inference.huggingface.co/models/alphaqmoi/qmoi
+  - Status: 410
+  - Error: http_error: Gone
+  - DNS OK: True Resolved: 108.159.80.102, 108.159.80.107, 108.159.80.125, 108.159.80.16
+
+- File: ALLLINKS.md
+  - URL: https://github.com/q-city/qmoi-enhanced/wiki
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/alphaqmoi/qmoi-ai-system
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://qmoi.ai/docs
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://huggingface.co/alphaqmoi/qmoi-ai-system
+  - Status: 401
+  - Error: http_error: Unauthorized
+  - DNS OK: True Resolved: 13.225.5.100, 13.225.5.26, 13.225.5.30, 13.225.5.95, 2600:9000:21b4:4200:17:b174:6d00:93a1, 2600:9000:21b4:6000:17:b174:6d00:93a1, 2600:9000:21b4:6600:17:b174:6d00:93a1, 2600:9000:21b4:b000:17:b174:6d00:93a1, 2600:9000:21b4:b600:17:b174:6d00:93a1, 2600:9000:21b4:c600:17:b174:6d00:93a1, 2600:9000:21b4:e200:17:b174:6d00:93a1, 2600:9000:21b4:e600:17:b174:6d00:93a1
+
+- File: ALLLINKS.md
+  - URL: https://quantum.qmoi.com
+  - Status: None
+  - Error: network_error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>
+  - DNS OK: True Resolved: 64.190.63.222
+
+- File: ALLLINKS.md
+  - URL: https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+  - Status: 401
+  - Error: http_error: Unauthorized
+  - DNS OK: True Resolved: 13.225.5.100, 13.225.5.26, 13.225.5.30, 13.225.5.95, 2600:9000:21b4:4200:17:b174:6d00:93a1, 2600:9000:21b4:6000:17:b174:6d00:93a1, 2600:9000:21b4:6600:17:b174:6d00:93a1, 2600:9000:21b4:b000:17:b174:6d00:93a1, 2600:9000:21b4:b600:17:b174:6d00:93a1, 2600:9000:21b4:c600:17:b174:6d00:93a1, 2600:9000:21b4:e200:17:b174:6d00:93a1, 2600:9000:21b4:e600:17:b174:6d00:93a1
+
+- File: ALLLINKS.md
+  - URL: https://discord.com/api/webhooks/
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 162.159.128.233, 162.159.135.232, 162.159.136.232, 162.159.137.232, 162.159.138.232
+
+- File: ALLLINKS.md
+  - URL: https://api.qmoi.app
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://qcity.qmoi.app
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://github.qmoi.com
+  - Status: 405
+  - Error: http_error: Method Not Allowed
+  - DNS OK: True Resolved: 64.190.63.222
+
+- File: ALLLINKS.md
+  - URL: https://qmoisystem.com
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://codespaces
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://qmoigateway.thealphakenya.com/api/github/webhook
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://huggingface.qmoi.com
+  - Status: None
+  - Error: network_error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>
+  - DNS OK: True Resolved: 64.190.63.222
+
+- File: ALLLINKS.md
+  - URL: https://qmoigateway.example.com/api/github/webhook
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://huggingface.co/join
+  - Status: 403
+  - Error: http_error: Forbidden
+  - DNS OK: True Resolved: 13.225.5.100, 13.225.5.26, 13.225.5.30, 13.225.5.95, 2600:9000:21b4:4200:17:b174:6d00:93a1, 2600:9000:21b4:6000:17:b174:6d00:93a1, 2600:9000:21b4:6600:17:b174:6d00:93a1, 2600:9000:21b4:b000:17:b174:6d00:93a1, 2600:9000:21b4:b600:17:b174:6d00:93a1, 2600:9000:21b4:c600:17:b174:6d00:93a1, 2600:9000:21b4:e200:17:b174:6d00:93a1, 2600:9000:21b4:e600:17:b174:6d00:93a1
+
+- File: ALLLINKS.md
+  - URL: https://huggingface.co/settings/tokens
+  - Status: 401
+  - Error: http_error: Unauthorized
+  - DNS OK: True Resolved: 13.225.5.100, 13.225.5.26, 13.225.5.30, 13.225.5.95, 2600:9000:21b4:4200:17:b174:6d00:93a1, 2600:9000:21b4:6000:17:b174:6d00:93a1, 2600:9000:21b4:6600:17:b174:6d00:93a1, 2600:9000:21b4:b000:17:b174:6d00:93a1, 2600:9000:21b4:b600:17:b174:6d00:93a1, 2600:9000:21b4:c600:17:b174:6d00:93a1, 2600:9000:21b4:e200:17:b174:6d00:93a1, 2600:9000:21b4:e600:17:b174:6d00:93a1
+
+- File: ALLLINKS.md
+  - URL: https://github.com/your-org/QMOI.git
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://example-1234.ngrok.io/downloads/qbrowser/windows.exe
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 13.202.234.110, 13.204.133.7, 13.204.33.47, 13.234.229.229, 2406:da1a:e91:9300:576f:24c2:72c5:41b6, 2406:da1a:e91:9300:a07:217:649e:8a37, 2406:da1a:e91:9301:91b4:1a34:6296:f1c3, 2406:da1a:e91:9301:a805:8585:66c4:119c, 2406:da1a:e91:9302:67d9:7b0f:c8b1:8e7, 35.154.102.28
+
+- File: ALLLINKS.md
+  - URL: https://example-1234.ngrok.io/qcity/app/latest
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 13.202.234.110, 13.204.133.7, 13.204.33.47, 13.234.229.229, 2406:da1a:e91:9300:576f:24c2:72c5:41b6, 2406:da1a:e91:9300:a07:217:649e:8a37, 2406:da1a:e91:9301:91b4:1a34:6296:f1c3, 2406:da1a:e91:9301:a805:8585:66c4:119c, 2406:da1a:e91:9302:67d9:7b0f:c8b1:8e7, 35.154.102.28
+
+- File: ALLLINKS.md
+  - URL: https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 13.225.5.100, 13.225.5.26, 13.225.5.30, 13.225.5.95, 2600:9000:21b4:4200:17:b174:6d00:93a1, 2600:9000:21b4:6000:17:b174:6d00:93a1, 2600:9000:21b4:6600:17:b174:6d00:93a1, 2600:9000:21b4:b000:17:b174:6d00:93a1, 2600:9000:21b4:b600:17:b174:6d00:93a1, 2600:9000:21b4:c600:17:b174:6d00:93a1, 2600:9000:21b4:e200:17:b174:6d00:93a1, 2600:9000:21b4:e600:17:b174:6d00:93a1
+
+- File: ALLLINKS.md
+  - URL: https://api.mybank.com/balance?account=12345
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://api.mytrading.com/markets
+  - Status: None
+  - Error: network_error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>
+  - DNS OK: True Resolved: 13.248.169.48, 76.223.54.146
+
+- File: ALLLINKS.md
+  - URL: https://github.com/qmoi-ai/qmoi-space.git
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/android/qmoi_ai.apk
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/error.log
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://gitlab.com/api/v4
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 172.65.251.78, 2606:4700:90:0:f22e:fbec:5bed:a9b9
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/qmoi
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/qmoi_ai.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://www.bitget.com/api-doc/common/rsa-authentication.html
+  - Status: 403
+  - Error: http_error: Forbidden
+  - DNS OK: True Resolved: 104.18.8.145, 104.18.9.145, 2606:4700::6812:891, 2606:4700::6812:991
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000/api/ai-self-diagnostics?fix=1
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000/api/whatsapp-bot?send=1
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-alpha/
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153, 2606:50c0:8000::153, 2606:50c0:8001::153, 2606:50c0:8002::153, 2606:50c0:8003::153
+
+- File: ALLLINKS.md
+  - URL: https://github.com/thealphakenya/Alpha-Q-ai/releases
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://example.com/app-latest.apk
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 23.192.228.80, 23.192.228.84, 23.215.0.136, 23.215.0.138, 23.220.75.232, 23.220.75.245, 2600:1406:5e00:6::17ce:bc12, 2600:1406:5e00:6::17ce:bc1b, 2600:1406:bc00:53::b81e:94c8, 2600:1406:bc00:53::b81e:94ce, 2600:1408:ec00:36::1736:7f24, 2600:1408:ec00:36::1736:7f31
+
+- File: ALLLINKS.md
+  - URL: https://example.com/app-latest.AppImage
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 23.192.228.80, 23.192.228.84, 23.215.0.136, 23.215.0.138, 23.220.75.232, 23.220.75.245, 2600:1406:5e00:6::17ce:bc12, 2600:1406:5e00:6::17ce:bc1b, 2600:1406:bc00:53::b81e:94c8, 2600:1406:bc00:53::b81e:94ce, 2600:1408:ec00:36::1736:7f24, 2600:1408:ec00:36::1736:7f31
+
+- File: ALLLINKS.md
+  - URL: https://api.github.com/repos/
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.85
+
+- File: ALLLINKS.md
+  - URL: https://example.com/app-latest.dmg
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 23.192.228.80, 23.192.228.84, 23.215.0.136, 23.215.0.138, 23.220.75.232, 23.220.75.245, 2600:1406:5e00:6::17ce:bc12, 2600:1406:5e00:6::17ce:bc1b, 2600:1406:bc00:53::b81e:94c8, 2600:1406:bc00:53::b81e:94ce, 2600:1408:ec00:36::1736:7f24, 2600:1408:ec00:36::1736:7f31
+
+- File: ALLLINKS.md
+  - URL: https://api.bitget.com
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 104.18.14.166, 104.18.15.166
+
+- File: ALLLINKS.md
+  - URL: https://example.com/app-latest.exe
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 23.192.228.80, 23.192.228.84, 23.215.0.136, 23.215.0.138, 23.220.75.232, 23.220.75.245, 2600:1406:5e00:6::17ce:bc12, 2600:1406:5e00:6::17ce:bc1b, 2600:1406:bc00:53::b81e:94c8, 2600:1406:bc00:53::b81e:94ce, 2600:1408:ec00:36::1736:7f24, 2600:1408:ec00:36::1736:7f31
+
+- File: ALLLINKS.md
+  - URL: https://hooks.slack.com/services/your/webhook/url
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 13.126.138.201, 13.127.99.68, 65.2.117.88
+
+- File: ALLLINKS.md
+  - URL: https://discord.com/api/webhooks/your/webhook/url
+  - Status: 400
+  - Error: http_error: Bad Request
+  - DNS OK: True Resolved: 162.159.128.233, 162.159.135.232, 162.159.136.232, 162.159.137.232, 162.159.138.232
+
+- File: ALLLINKS.md
+  - URL: http://localhost:8000
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:8000/automation/status
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:8000/token
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:8080
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: https://example.com/app-latest.ipa
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 23.192.228.80, 23.192.228.84, 23.215.0.136, 23.215.0.138, 23.220.75.232, 23.220.75.245, 2600:1406:5e00:6::17ce:bc12, 2600:1406:5e00:6::17ce:bc1b, 2600:1406:bc00:53::b81e:94c8, 2600:1406:bc00:53::b81e:94ce, 2600:1408:ec00:36::1736:7f24, 2600:1408:ec00:36::1736:7f31
+
+- File: ALLLINKS.md
+  - URL: https://alpha-q-ai.com
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://staging.alpha-q-ai.com
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 13.126.138.201, 13.127.99.68, 65.2.117.88
+
+- File: ALLLINKS.md
+  - URL: https://github.com/your-org/q-city.git
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000/qmoi-
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000/qmoi-revenue-
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://localhost:3000/qmoi-revenue-d
+  - Status: None
+  - Error: network_error: <urlopen error [Errno 111] Connection refused>
+  - DNS OK: True Resolved: 127.0.0.1, ::1
+
+- File: ALLLINKS.md
+  - URL: http://w
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: http://ww
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://api.air
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://api.travis-ci.org/tj/commander.js.svg?branch=master
+  - Status: 404
+  - Error: http_error: NOT FOUND
+  - DNS OK: True Resolved: 34.73.34.102
+
+- File: ALLLINKS.md
+  - URL: https://cdn.jsdelivr.net/gh/jshttp/mime-db
+  - Status: 400
+  - Error: http_error: Bad Request
+  - DNS OK: True Resolved: 104.16.174.226, 104.16.175.226, 2a04:4e42:200::485, 2a04:4e42:400::485, 2a04:4e42:600::485, 2a04:4e42::485
+
+- File: ALLLINKS.md
+  - URL: https://chromium.googlesource.com/chromiu
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 142.251.10.82, 2404:6800:4003:c03::52
+
+- File: ALLLINKS.md
+  - URL: https://ci.appveyor.com/api/projects/status/fb9i157knoixe3iq/branch/master?svg=true
+  - Status: 405
+  - Error: http_error: Method Not Allowed
+  - DNS OK: True Resolved: 138.91.141.243
+
+- File: ALLLINKS.md
+  - URL: https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true
+  - Status: 405
+  - Error: http_error: Method Not Allowed
+  - DNS OK: True Resolved: 138.91.141.243
+
+- File: ALLLINKS.md
+  - URL: https://ci.appveyor.com/api/projects/status/ol2q94g1932cy14a/branch/master?svg=true
+  - Status: 405
+  - Error: http_error: Method Not Allowed
+  - DNS OK: True Resolved: 138.91.141.243
+
+- File: ALLLINKS.md
+  - URL: https://david-dm.org/isaacs/rimraf
+  - Status: 500
+  - Error: http_error: Internal Server Error
+  - DNS OK: True Resolved: 45.156.25.24
+
+- File: ALLLINKS.md
+  - URL: https://david-dm.org/isaacs/rimraf#info=devDependencies
+  - Status: 500
+  - Error: http_error: Internal Server Error
+  - DNS OK: True Resolved: 45.156.25.24
+
+- File: ALLLINKS.md
+  - URL: https://david-dm.org/isaacs/rimraf/dev-status.svg
+  - Status: 500
+  - Error: http_error: Internal Server Error
+  - DNS OK: True Resolved: 45.156.25.24
+
+- File: ALLLINKS.md
+  - URL: https://david-dm.org/isaacs/rimraf.svg
+  - Status: 500
+  - Error: http_error: Internal Server Error
+  - DNS OK: True Resolved: 45.156.25.24
+
+- File: ALLLINKS.md
+  - URL: https://dev.azure.com/gulpjs/gulp/_apis/build/status/glob-parent?branchName=master
+  - Status: 405
+  - Error: http_error: Method Not Allowed
+  - DNS OK: True Resolved: 150.171.73.16, 150.171.74.16, 2603:1061:10:1::16, 2603:1061:10::16
+
+- File: ALLLINKS.md
+  - URL: https://github.com/expressjs/express/blob/master/Code-Of-Conduct.md
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/expressjs/express/blob/master/Contributing.md
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#explicit-binding
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/nodeca/argparse/tree/master/examples
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/nodejs/security-wg/blob/master/processes/responsible_disclosure_template.md
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/rwaldron/tc39-notes/blob/master/es7/2015-07/july-29.md#611-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-lists
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/rwaldron/tc39-notes/blob/master/es7/2016-09/sept-28.md#113a-import
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/sinclairzx81/typebox/blob/master/benchmark/measurement/module/check.ts
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/sinclairzx81/typebox/blob/master/benchmark/measurement/module/compile.ts
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/whitequark/ipaddr.js/blob/master/src/ipaddr.coffee#L71
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/whitequark/ipaddr.js/blob/master/src/ipaddr.coffee#L186
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://github.com/yargs/yargs/blob/master/yargs.js#L653
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 20.207.73.82
+
+- File: ALLLINKS.md
+  - URL: https://npmjs.com/package/
+  - Status: 403
+  - Error: http_error: Forbidden
+  - DNS OK: True Resolved: 104.17.134.117, 104.17.135.117, 2606:4700::6811:8675, 2606:4700::6811:8775
+
+- File: ALLLINKS.md
+  - URL: https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 104.20.1.252, 172.66.128.70, 2606:4700:10::6814:1fc, 2606:4700:10::ac42:8046
+
+- File: ALLLINKS.md
+  - URL: https://packagephobia.now.sh/result?p=axios
+  - Status: 429
+  - Error: http_error: Too Many Requests
+  - DNS OK: True Resolved: 216.198.79.3, 64.29.17.3
+
+- File: ALLLINKS.md
+  - URL: https://raw.githubusercontent.com/mozilla/source-map/master/dist/source-map.min.js
+  - Status: 404
+  - Error: http_error: Not Found
+  - DNS OK: True Resolved: 185.199.108.133, 185.199.109.133, 185.199.110.133, 185.199.111.133, 2606:50c0:8000::154, 2606:50c0:8001::154, 2606:50c0:8002::154, 2606:50c0:8003::154
+
+- File: ALLLINKS.md
+  - URL: https://reactnati
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://saucelabs.com/browser-matrix/run-parallel.svg
+  - Status: 405
+  - Error: http_error: Method Not Allowed
+  - DNS OK: True Resolved: 34.96.70.78
+
+- File: ALLLINKS.md
+  - URL: https://tid
+  - Status: None
+  - Error: network_error: <urlopen error [Errno -2] Name does not resolve>
+  - DNS OK: False Resolved: 
+
+- File: ALLLINKS.md
+  - URL: https://secure.travis-ci.org/grncdr/merge-stream.svg?branch=master
+  - Status: None
+  - Error: network_error: <urlopen error timed out>
+  - DNS OK: True Resolved: 34.74.152.26
+
+- File: ALLLINKS.md
+  - URL: https://secure.travis-ci.org/nodeca/argparse.svg?branch=master
+  - Status: None
+  - Error: network_error: <urlopen error timed out>
+  - DNS OK: True Resolved: 34.74.152.26
+

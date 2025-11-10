@@ -2,214 +2,315 @@
 """
 tools/check_links.py
 
-Stdlib-only fast link checker for Markdown files.
+Clean, single-version, stdlib-only Markdown link & DNS checker.
 
-What it does:
-- Scans repository for .md files
-- Extracts http:// and https:// links
-- Resolves hostnames (DNS) with short timeout
-- Performs HTTP HEAD (falls back to GET if HEAD not allowed)
-- Runs checks in parallel with a small threadpool and short timeouts
-- Writes reports to:
-  - tools/dns_docs_inventory.json  (per-file link inventory)
-  - tools/dns_links_report.json    (detailed results)
-  - tools/dns_links_report.md      (human summary)
+Writes:
+- tools/dns_docs_inventory.json
+- tools/dns_links_report.json
+- tools/dns_links_report.md
 
-Designed to run quickly and safely in CI/dev containers.
+Run: python3 tools/check_links.py --max-workers 12 --timeout 3
 """
+
+from __future__ import annotations
+
+import argparse
+import concurrent.futures
+import json
 import os
 import re
-import json
 import socket
 import time
-import argparse
-from urllib.parse import urlparse
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from http.client import HTTPConnection, HTTPSConnection
+from typing import Dict, List
+from urllib import request, error, parse
+
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 TOOLS_DIR = os.path.join(ROOT, "tools")
 os.makedirs(TOOLS_DIR, exist_ok=True)
 
-LINK_REGEX = re.compile(r"\bhttps?://[^\s)\]>\"]+", re.IGNORECASE)
-MAX_LINKS = 5000
-DNS_TIMEOUT = 3.0
-HTTP_TIMEOUT = 3.0
-MAX_WORKERS = 20
+LINK_RE = re.compile(r"\bhttps?://[\w\-._~:/?#\[\]@!$&'()*+,;=%]+", re.IGNORECASE)
 
 
-def find_md_files(root):
-    for dirpath, dirs, files in os.walk(root):
-        # skip tools output to avoid recursion
-        if os.path.abspath(dirpath).startswith(os.path.abspath(TOOLS_DIR)):
+def find_md_files(root: str) -> List[str]:
+    files: List[str] = []
+    for dirpath, dirnames, filenames in os.walk(root):
+        # skip common heavy dirs and our tools outputs
+        if any(x in dirpath for x in ("/.git", "/node_modules", "/.venv", os.path.abspath(TOOLS_DIR))):
             continue
-        for f in files:
-            if f.lower().endswith('.md'):
-                yield os.path.join(dirpath, f)
+        for fn in filenames:
+            if fn.lower().endswith(".md"):
+                files.append(os.path.join(dirpath, fn))
+    return files
 
 
-def extract_links_from_file(path):
-    links = []
+def extract_links(text: str) -> List[str]:
+    return [m.group(0).rstrip('.,:;') for m in LINK_RE.finditer(text)]
+
+
+def resolve(hostname: str) -> List[str]:
     try:
-        with open(path, 'r', encoding='utf-8', errors='replace') as fh:
-            for i, line in enumerate(fh, start=1):
-                for m in LINK_REGEX.finditer(line):
-                    links.append({'link': m.group(0).rstrip('.,;:') , 'line': i})
-    except Exception as e:
-        print(f"WARN: failed reading {path}: {e}")
-    return links
+        ai = socket.getaddrinfo(hostname, None)
+        return sorted({a[4][0] for a in ai})
+    except Exception:
+        return []
 
 
-def resolve_host(host):
+def http_head_fallback(url: str, timeout: float = 3.0) -> Dict:
+    rec: Dict = {"url": url, "status": None, "error": None}
     try:
-        # Use getaddrinfo (handles IPv4/IPv6) with timeout via socket
-        orig = socket.getdefaulttimeout()
-        socket.setdefaulttimeout(DNS_TIMEOUT)
+        req = request.Request(url, method="HEAD", headers={"User-Agent": "qmoi-link-checker/1.0"})
+        with request.urlopen(req, timeout=timeout) as resp:
+            rec["status"] = resp.getcode()
+            return rec
+    except error.HTTPError as he:
+        rec["status"] = he.code
+        rec["error"] = getattr(he, "reason", str(he))
+        return rec
+    except Exception:
+        # fallback to GET but read small amount
         try:
-            infos = socket.getaddrinfo(host, None)
-            ips = sorted({i[4][0] for i in infos})
-            return {'ok': True, 'ips': ips}
-        finally:
-            socket.setdefaulttimeout(orig)
-    except Exception as e:
-        return {'ok': False, 'error': str(e)}
+            req = request.Request(url, method="GET", headers={"User-Agent": "qmoi-link-checker/1.0"})
+            with request.urlopen(req, timeout=timeout) as resp:
+                rec["status"] = resp.getcode()
+                return rec
+        except Exception as e:
+            rec["error"] = str(e)
+            return rec
 
 
-def head_request(url):
-    parsed = urlparse(url)
-    host = parsed.hostname
-    port = parsed.port
-    scheme = parsed.scheme
-    path = parsed.path or '/'
-    if parsed.query:
-        path += '?' + parsed.query
-    try:
-        if scheme == 'http':
-            conn = HTTPConnection(host, port or 80, timeout=HTTP_TIMEOUT)
-        else:
-            conn = HTTPSConnection(host, port or 443, timeout=HTTP_TIMEOUT)
-        conn.request('HEAD', path, headers={'User-Agent': 'QMOI-LinkChecker/1.0'})
-        resp = conn.getresponse()
-        status = resp.status
-        reason = resp.reason
-        # read and discard small headers/body safely
-        resp.read(0)
-        conn.close()
-        return {'ok': True, 'status': status, 'reason': reason}
-    except Exception as e:
-        # Try GET as fallback for servers that don't support HEAD
+def check_one(entry: Dict, timeout: float) -> Dict:
+    url = entry["url"]
+    out: Dict = {"url": url, "file": entry.get("file")}
+    parsed = parse.urlparse(url)
+    host = parsed.hostname or ""
+    out["host"] = host
+    out["resolved_ips"] = resolve(host) if host else []
+    http = http_head_fallback(url, timeout=timeout)
+    out.update(http)
+    return out
+
+
+def main(root: str, max_workers: int, timeout: float):
+    md_files = find_md_files(root)
+    inventory: Dict[str, List[str]] = {}
+    link_list: List[Dict] = []
+    for p in md_files:
         try:
-            if scheme == 'http':
-                conn = HTTPConnection(host, port or 80, timeout=HTTP_TIMEOUT)
-            else:
-                conn = HTTPSConnection(host, port or 443, timeout=HTTP_TIMEOUT)
-            conn.request('GET', path, headers={'User-Agent': 'QMOI-LinkChecker/1.0'})
-            resp = conn.getresponse()
-            status = resp.status
-            reason = resp.reason
-            resp.read(0)
-            conn.close()
-            return {'ok': True, 'status': status, 'reason': reason}
-        except Exception as e2:
-            return {'ok': False, 'error': str(e2)}
-
-
-def check_link_task(link):
-    result = {'link': link, 'checked_at': time.time()}
-    parsed = urlparse(link)
-    host = parsed.hostname
-    result['host'] = host
-    # DNS
-    dns = resolve_host(host)
-    result['dns'] = dns
-    if not dns.get('ok'):
-        result['status'] = 'dns_error'
-        return result
-    # HTTP
-    http = head_request(link)
-    result.update(http)
-    if http.get('ok'):
-        code = http.get('status')
-        if 200 <= code < 400:
-            result['status'] = 'ok'
-        elif 400 <= code < 500:
-            result['status'] = 'client_error'
-        else:
-            result['status'] = 'server_error'
-    else:
-        result['status'] = 'http_error'
-    return result
-
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--root', default=ROOT, help='Repository root')
-    parser.add_argument('--max-links', type=int, default=MAX_LINKS)
-    parser.add_argument('--workers', type=int, default=MAX_WORKERS)
-    args = parser.parse_args()
-
-    files = list(find_md_files(args.root))
-    inventory = {}
-    all_links = []
-    for f in files:
-        links = extract_links_from_file(f)
+            with open(p, "r", encoding="utf-8", errors="ignore") as fh:
+                txt = fh.read()
+        except Exception:
+            continue
+        links = extract_links(txt)
         if links:
-            inventory[f] = links
-            for L in links:
-                all_links.append({'link': L['link'], 'file': f, 'line': L['line']})
-    # Write inventory quickly
-    inv_path = os.path.join(TOOLS_DIR, 'dns_docs_inventory.json')
-    with open(inv_path, 'w', encoding='utf-8') as fh:
-        json.dump({'generated_at': time.time(), 'files': inventory}, fh, indent=2)
+            inventory[os.path.relpath(p, root)] = links
+            for u in links:
+                link_list.append({"file": os.path.relpath(p, root), "url": u})
 
-    # dedupe links
-    unique = {}
-    for e in all_links:
-        unique.setdefault(e['link'], {'link': e['link'], 'refs': []})['refs'].append({'file': e['file'], 'line': e['line']})
+    inv_path = os.path.join(TOOLS_DIR, "dns_docs_inventory.json")
+    with open(inv_path, "w", encoding="utf-8") as fh:
+        json.dump({"generated_at": time.time(), "inventory": inventory}, fh, indent=2)
 
-    links_list = list(unique.keys())[:args.max_links]
-    print(f"Found {len(all_links)} link occurrences across {len(inventory)} files; checking {len(links_list)} unique links...")
+    # cap link checks to avoid very long runs
+    MAX = 2000
+    if len(link_list) > MAX:
+        seen = set(); filtered = []
+        for e in link_list:
+            if e["url"] in seen:
+                continue
+            seen.add(e["url"])
+            filtered.append(e)
+            if len(filtered) >= MAX:
+                break
+        link_list = filtered
 
-    results = []
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        futures = {ex.submit(check_link_task, link): link for link in links_list}
-        for fut in as_completed(futures):
+    results: List[Dict] = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
+        futures = {ex.submit(check_one, e, timeout): e for e in link_list}
+        for fut in concurrent.futures.as_completed(futures):
             try:
                 r = fut.result()
-            except Exception as e:
-                r = {'link': futures[fut], 'status': 'exception', 'error': str(e)}
+            except Exception as exc:
+                r = {"url": futures[fut]["url"], "file": futures[fut]["file"], "error": str(exc)}
             results.append(r)
 
-    # write JSON report
-    out_json = os.path.join(TOOLS_DIR, 'dns_links_report.json')
-    with open(out_json, 'w', encoding='utf-8') as fh:
-        json.dump({'generated_at': time.time(), 'results': results, 'inventory': unique}, fh, indent=2)
+    report_json = os.path.join(TOOLS_DIR, "dns_links_report.json")
+    with open(report_json, "w", encoding="utf-8") as fh:
+        json.dump({"generated_at": time.time(), "total": len(results), "results": results}, fh, indent=2)
 
-    # write MD summary with failures
-    out_md = os.path.join(TOOLS_DIR, 'dns_links_report.md')
-    failures = [r for r in results if r.get('status') != 'ok']
-    with open(out_md, 'w', encoding='utf-8') as fh:
-        fh.write(f"# Link check report\n\nGenerated: {time.ctime()}\n\n")
-        fh.write(f"Checked {len(results)} unique links. Failures: {len(failures)}\n\n")
+    report_md = os.path.join(TOOLS_DIR, "dns_links_report.md")
+    failures = [r for r in results if r.get("error") or (isinstance(r.get("status"), int) and r.get("status") >= 400) or (not r.get("resolved_ips"))]
+    with open(report_md, "w", encoding="utf-8") as fh:
+        fh.write("# DNS & Link Check Report\n\n")
+        fh.write(f"Generated: {time.ctime()}\n\n")
+        fh.write(f"Total md files scanned: {len(md_files)}\n\n")
+        fh.write(f"Total links checked: {len(results)}\n\n")
+        fh.write(f"Failures: {len(failures)}\n\n")
         if failures:
-            fh.write("## Failures (top 200)\n\n")
-            for r in failures[:200]:
-                fh.write(f"- {r.get('link')} — status={r.get('status')} ")
-                if r.get('dns') and not r['dns'].get('ok'):
-                    fh.write(f"(dns: {r['dns'].get('error')})")
-                elif r.get('status') == 'http_error' or r.get('status') == 'server_error' or r.get('status') == 'client_error':
-                    fh.write(f"(http: {r.get('status')} code={r.get('status') if r.get('status') else ''} )")
-                fh.write('\n')
-        else:
-            fh.write("All links OK.\n")
+            fh.write("## Top failures\n\n")
+            for f in failures[:200]:
+                fh.write(f"- File: `{f.get('file')}` URL: {f.get('url')} Status: {f.get('status')} Error: {f.get('error')} Resolved: {f.get('resolved_ips')}\n")
 
-    print(f"Reports written: {inv_path}, {out_json}, {out_md}")
+    print("Wrote:", inv_path, report_json, report_md)
 
 
-if __name__ == '__main__':
-    main()
-#!/usr/bin/env python3
-"""
+if __name__ == "__main__":
+    p = argparse.ArgumentParser()
+    p.add_argument("--root", default=ROOT)
+    p.add_argument("--max-workers", type=int, default=12)
+    p.add_argument("--timeout", type=float, default=3.0)
+    args = p.parse_args()
+    main(root=args.root, max_workers=args.max_workers, timeout=args.timeout)
+
+from __future__ import annotations
+
+import argparse
+import concurrent.futures
+import json
+import os
+import re
+import socket
+import time
+from typing import Dict, List
+from urllib import request, error, parse
+
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+TOOLS_DIR = os.path.join(ROOT, "tools")
+os.makedirs(TOOLS_DIR, exist_ok=True)
+
+LINK_RE = re.compile(r"\bhttps?://[\w\-._~:/?#\[\]@!$&'()*+,;=%]+", re.IGNORECASE)
+
+
+def find_md_files(root: str) -> List[str]:
+    files: List[str] = []
+    for dirpath, dirnames, filenames in os.walk(root):
+        # skip common heavy dirs and our tools outputs
+        if any(x in dirpath for x in ("/.git", "/node_modules", "/.venv", os.path.abspath(TOOLS_DIR))):
+            continue
+        for fn in filenames:
+            if fn.lower().endswith(".md"):
+                files.append(os.path.join(dirpath, fn))
+    return files
+
+
+def extract_links(text: str) -> List[str]:
+    return [m.group(0).rstrip('.,:;') for m in LINK_RE.finditer(text)]
+
+
+def resolve(hostname: str) -> List[str]:
+    try:
+        ai = socket.getaddrinfo(hostname, None)
+        return sorted({a[4][0] for a in ai})
+    except Exception:
+        return []
+
+
+def http_head_fallback(url: str, timeout: float = 3.0) -> Dict:
+    rec: Dict = {"url": url, "status": None, "error": None}
+    try:
+        req = request.Request(url, method="HEAD", headers={"User-Agent": "qmoi-link-checker/1.0"})
+        with request.urlopen(req, timeout=timeout) as resp:
+            rec["status"] = resp.getcode()
+            return rec
+    except error.HTTPError as he:
+        rec["status"] = he.code
+        rec["error"] = getattr(he, "reason", str(he))
+        return rec
+    except Exception:
+        # fallback to GET but read small amount
+        try:
+            req = request.Request(url, method="GET", headers={"User-Agent": "qmoi-link-checker/1.0"})
+            with request.urlopen(req, timeout=timeout) as resp:
+                rec["status"] = resp.getcode()
+                return rec
+        except Exception as e:
+            rec["error"] = str(e)
+            return rec
+
+
+def check_one(entry: Dict, timeout: float) -> Dict:
+    url = entry["url"]
+    out: Dict = {"url": url, "file": entry.get("file")}
+    parsed = parse.urlparse(url)
+    host = parsed.hostname or ""
+    out["host"] = host
+    out["resolved_ips"] = resolve(host) if host else []
+    http = http_head_fallback(url, timeout=timeout)
+    out.update(http)
+    return out
+
+
+def main(root: str, max_workers: int, timeout: float):
+    md_files = find_md_files(root)
+    inventory: Dict[str, List[str]] = {}
+    link_list: List[Dict] = []
+    for p in md_files:
+        try:
+            with open(p, "r", encoding="utf-8", errors="ignore") as fh:
+                txt = fh.read()
+        except Exception:
+            continue
+        links = extract_links(txt)
+        if links:
+            inventory[os.path.relpath(p, root)] = links
+            for u in links:
+                link_list.append({"file": os.path.relpath(p, root), "url": u})
+
+    inv_path = os.path.join(TOOLS_DIR, "dns_docs_inventory.json")
+    with open(inv_path, "w", encoding="utf-8") as fh:
+        json.dump({"generated_at": time.time(), "inventory": inventory}, fh, indent=2)
+
+    # cap link checks to avoid very long runs
+    MAX = 2000
+    if len(link_list) > MAX:
+        seen = set(); filtered = []
+        for e in link_list:
+            if e["url"] in seen:
+                continue
+            seen.add(e["url"])
+            filtered.append(e)
+            if len(filtered) >= MAX:
+                break
+        link_list = filtered
+
+    results: List[Dict] = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
+        futures = {ex.submit(check_one, e, timeout): e for e in link_list}
+        for fut in concurrent.futures.as_completed(futures):
+            try:
+                r = fut.result()
+            except Exception as exc:
+                r = {"url": futures[fut]["url"], "file": futures[fut]["file"], "error": str(exc)}
+            results.append(r)
+
+    report_json = os.path.join(TOOLS_DIR, "dns_links_report.json")
+    with open(report_json, "w", encoding="utf-8") as fh:
+        json.dump({"generated_at": time.time(), "total": len(results), "results": results}, fh, indent=2)
+
+    report_md = os.path.join(TOOLS_DIR, "dns_links_report.md")
+    failures = [r for r in results if r.get("error") or (isinstance(r.get("status"), int) and r.get("status") >= 400) or (not r.get("resolved_ips"))]
+    with open(report_md, "w", encoding="utf-8") as fh:
+        fh.write("# DNS & Link Check Report\n\n")
+        fh.write(f"Generated: {time.ctime()}\n\n")
+        fh.write(f"Total md files scanned: {len(md_files)}\n\n")
+        fh.write(f"Total links checked: {len(results)}\n\n")
+        fh.write(f"Failures: {len(failures)}\n\n")
+        if failures:
+            fh.write("## Top failures\n\n")
+            for f in failures[:200]:
+                fh.write(f"- File: `{f.get('file')}` URL: {f.get('url')} Status: {f.get('status')} Error: {f.get('error')} Resolved: {f.get('resolved_ips')}\n")
+
+    print("Wrote:", inv_path, report_json, report_md)
+
+
+if __name__ == "__main__":
+    p = argparse.ArgumentParser()
+    p.add_argument("--root", default=ROOT)
+    p.add_argument("--max-workers", type=int, default=12)
+    p.add_argument("--timeout", type=float, default=3.0)
+    args = p.parse_args()
+    main(root=args.root, max_workers=args.max_workers, timeout=args.timeout)
 tools/check_links.py - single, clean, stdlib-only checker.
 
 Scans Markdown files for http/https links, resolves hostnames, performs lightweight
