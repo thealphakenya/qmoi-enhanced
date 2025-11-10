@@ -29,14 +29,22 @@ os.makedirs(TOOLS_DIR, exist_ok=True)
 LINK_RE = re.compile(r"\bhttps?://[\w\-._~:/?#\[\]@!$&'()*+,;=%]+", re.IGNORECASE)
 
 
-def find_md_files(root: str) -> List[str]:
-    out = []
+def find_files(root: str, exts: List[str] | None = None) -> List[str]:
+    """Find files under root matching extensions (defaults to Markdown + common docs/code files)."""
+    if exts is None:
+        exts = [".md", ".mdx", ".html", ".htm", ".js", ".ts", ".tsx", ".jsx"]
+    exts = [e.lower() for e in exts]
+    out: List[str] = []
+    skip_paths = ("/.git", "/node_modules", "/.venv", os.path.abspath(TOOLS_DIR))
     for dirpath, dirnames, filenames in os.walk(root):
-        if any(x in dirpath for x in ("/.git", "/node_modules", "/.venv", os.path.abspath(TOOLS_DIR))):
+        if any(x in dirpath for x in skip_paths):
             continue
         for fn in filenames:
-            if fn.lower().endswith(".md"):
-                out.append(os.path.join(dirpath, fn))
+            lf = fn.lower()
+            for e in exts:
+                if lf.endswith(e):
+                    out.append(os.path.join(dirpath, fn))
+                    break
     return out
 
 
@@ -87,7 +95,7 @@ def check_one(entry: Dict, timeout: float) -> Dict:
 
 
 def main(root: str, max_workers: int, timeout: float):
-    md_files = find_md_files(root)
+    md_files = find_files(root)
     inventory: Dict[str, List[str]] = {}
     link_list: List[Dict] = []
     for p in md_files:
@@ -137,7 +145,7 @@ def main(root: str, max_workers: int, timeout: float):
     with open(report_md, "w", encoding="utf-8") as fh:
         fh.write("# DNS & Link Check Report\n\n")
         fh.write(f"Generated: {time.ctime()}\n\n")
-        fh.write(f"Total md files scanned: {len(md_files)}\n\n")
+        fh.write(f"Total files scanned: {len(md_files)}\n\n")
         fh.write(f"Total links checked: {len(results)}\n\n")
         fh.write(f"Failures: {len(failures)}\n\n")
         if failures:
