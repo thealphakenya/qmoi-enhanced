@@ -9,3 +9,14 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
