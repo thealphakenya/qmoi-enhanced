@@ -32,6 +32,28 @@ jobs:
             tools/dns_links_report.md
             tools/link_fix_proposals.json
             tools/link_fix_actions.md
+
+      - name: Commit proposals
+        run: |
+          git config user.name "qmoiauto-bot"
+          git config user.email "automation@local"
+          git add tools/link_fix_proposals.json tools/link_fix_actions.md || true
+          if git diff --staged --quiet; then
+            echo "No proposal changes to commit"
+          else
+            git commit -m "chore: link-check proposals (automated)"
+          fi
+
+      - name: Create or update PR for proposals
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: add link-check proposals"
+          title: "Automated link-check proposals"
+          body: |
+            This PR was created automatically by the scheduled link checker. It contains proposed http->https replacements verified by the checker. Backups (.bak) are created for any modified files.
+          base: autosync-backup-20250926-232440
+          branch: automated/link-check-proposals
 name: Scheduled Link Check
 
 on:
