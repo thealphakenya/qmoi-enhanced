@@ -14,3 +14,5 @@ Key features
 
 Release & packaging
 - Published to language registries (npm, Maven, Go modules) and GitHub releases.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

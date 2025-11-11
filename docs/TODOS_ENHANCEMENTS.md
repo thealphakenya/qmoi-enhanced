@@ -58,3 +58,5 @@ Next steps: implement items incrementally; begin by wiring (11) and (12) so that
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

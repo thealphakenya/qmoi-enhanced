@@ -150905,3 +150905,5 @@ library](https://www.npmjs.org/package/qs#readme) — external (not checked)
 - models/latest/README.md: [QMOI Dashboard](#) — OK
 - models/latest/README.md: [QMOI Hugging Face Space](https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system) — external (not checked)
 - models/latest/README.md: [QMOI Project Documentation](https://gitlab.com/qmoi/QMOI) — external (not checked)
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

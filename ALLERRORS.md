@@ -955,3 +955,5 @@ qmoi_validation_frontmatter: true
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

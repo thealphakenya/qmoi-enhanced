@@ -29,3 +29,5 @@ Usage
 
 - For simple runs, use `python3 scripts/lion_orchestrator.py --concurrency 4` to process up to 4 tasks concurrently.
 - For custom programs, import `ParallelExecutor` from `scripts/parallel_executor.py` and register per-handler rates via `register_rate(handler, rate, burst)`.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

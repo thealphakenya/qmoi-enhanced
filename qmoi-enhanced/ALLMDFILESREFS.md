@@ -290,3 +290,5 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

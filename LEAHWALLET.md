@@ -55,3 +55,5 @@ python3 scripts/wallets/check_wallets.py --wallet leah --real --report leah_wall
 - Master must ensure testnet vs mainnet configuration is correct for each provider.
 
 Generated: 2025-10-28T22:30:00Z
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

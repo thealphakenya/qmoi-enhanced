@@ -208,3 +208,5 @@ Top files:
 - qmoi-enhanced/ALPHAQMOIENGINE.md — score: 10 — matches: 1
 
 Detailed per-file entries are available in `tools/matches_priority.json`.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

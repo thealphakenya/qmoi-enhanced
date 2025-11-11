@@ -75,3 +75,4 @@ Mutating endpoints are *proposal-first* by default and require explicit producti
 - Proposal files can be found in `.qmoi_validation/` (e.g., `proposal-*.json`, `placeholders_proposal_*.json`). Review them before applying.
 - To apply a proposal and run a mutating action, *set* `PRODUCTION_CONFIRMED=true` in the environment and run the server with `--real` in the process arguments (or use a patched runner that forwards this flag). This gating is intentional to prevent accidental destructive actions.
 
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

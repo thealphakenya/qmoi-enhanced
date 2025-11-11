@@ -69,3 +69,5 @@ Notes:
 
 - This draft was generated automatically to help triage files removed from `donerefs.txt`.
 - Backups and previous runs may exist under `.qmoi_validation`.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

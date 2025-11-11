@@ -40,3 +40,5 @@ Monetization
 
 Integration with QMOI
 - Enterprise telemetry opt-in with strong privacy and export controls; enterprise-managed QVS instances.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

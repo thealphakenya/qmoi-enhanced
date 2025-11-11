@@ -88,3 +88,5 @@ _scanned at 2025-10-28T23:42:26.289223Z_
 2. Avoid hard-coding tokens in workflow YAML; use inputs or secrets instead.
 3. Template owner/repo references when workflows must run from forks or other users; prefer using inputs or `github.repository`.
 4. For workflows that need to run in other users' codespaces, provide a README or `workflows_remediation.md` listing required secrets and how to set them (use `gh secret set`).
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

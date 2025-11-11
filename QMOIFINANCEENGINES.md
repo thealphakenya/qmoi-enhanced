@@ -62,3 +62,5 @@ Governance
 Large financial changes and the creation of live payout automations require a manual approval workflow (PR + signed acceptance) and a documented runbook stored in `PRODUCTION_RUNBOOK.md`.
 
 End of file
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

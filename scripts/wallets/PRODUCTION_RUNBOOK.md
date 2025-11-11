@@ -38,3 +38,5 @@ This runbook documents the safe, auditable steps to enable live wallet checks an
 - Run a manual QV (quiet) and verify balances with the platform dashboards. Cross-check currency conversions.
 
 Security note: Always follow least-privilege and rotate production keys regularly.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

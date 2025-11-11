@@ -210,3 +210,5 @@ Failures: 509
 - File: `ALLLINKS.md` URL: https://tid Status: None Error: <urlopen error [Errno -2] Name does not resolve> Resolved: []
 - File: `ALLLINKS.md` URL: https://travis-ci.com/chalk/wrap-ansi Status: 404 Error: Not Found Resolved: ['104.26.6.20', '104.26.7.20', '172.67.75.36', '2606:4700:20::681a:614', '2606:4700:20::681a:714', '2606:4700:20::ac43:4b24']
 - File: `ALLLINKS.md` URL: https://travis-ci.com/nodejs/readable-stream Status: 404 Error: Not Found Resolved: ['104.26.6.20', '104.26.7.20', '172.67.75.36', '2606:4700:20::681a:614', '2606:4700:20::681a:714', '2606:4700:20::ac43:4b24']
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

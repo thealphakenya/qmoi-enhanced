@@ -92,3 +92,5 @@ This file is a living specification and will be expanded as we implement feature
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

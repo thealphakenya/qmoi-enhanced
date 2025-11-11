@@ -1145,3 +1145,5 @@ If you want the assistant to actively sync this file with live code (run static 
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

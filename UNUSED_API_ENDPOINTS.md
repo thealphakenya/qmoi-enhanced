@@ -74,3 +74,5 @@ This file lists all API endpoints discovered in the codebase and documentation t
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

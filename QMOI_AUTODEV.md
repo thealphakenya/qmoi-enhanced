@@ -51,3 +51,5 @@ Next steps (implementation tasks)
 - Add delta packager and signature verification helper.
 - Wire autotest runner to produce a machine-readable status for CI.
 - Implement canary rollout controller (prototype as scripts) and add audit logs.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

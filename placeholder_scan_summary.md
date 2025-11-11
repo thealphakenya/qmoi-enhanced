@@ -28,3 +28,5 @@ Notes & next actions
 Location of detail outputs:
 - `matches.json` — per-match detailed records
 - `allrefs.txt` — list of file paths and counts
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
