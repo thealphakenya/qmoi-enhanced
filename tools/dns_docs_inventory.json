@@ -1,5 +1,5 @@
 {
-  "generated_at": 1762780778.4486096,
+  "generated_at": 1762862831.7341895,
   "inventory": {
     "WPA.md": [
       "https://api.qmoi.app'"
@@ -1129,7 +1129,7 @@
       "https://browserify.org/",
       "https://c9.io",
       "https://caniuse.com/#feat=user-timing",
-      "http://cgit.freedesktop.org/xdg/xdg-utils/commit/?id=c55122295c2a480fa721a9614f0e2d42b2949c18",
+      "https://cgit.freedesktop.org/xdg/xdg-utils/commit/?id=c55122295c2a480fa721a9614f0e2d42b2949c18",
       "https://circleci.com",
       "http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/",
       "http://deno.land/x/escalade",
