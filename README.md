@@ -367,3 +367,5 @@ If you'd like me to flesh out Lion's `lionctl` commands, create CI workflows for
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

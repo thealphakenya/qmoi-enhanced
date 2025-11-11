@@ -242,3 +242,5 @@ See also: [qmoi_test.sh](qmoi_test.sh) for a script to run all tests and log res
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

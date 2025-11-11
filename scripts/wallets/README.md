@@ -42,3 +42,5 @@ Security checklist before enabling live operations
 2. Store credentials in a secrets manager; never commit them.
 3. Run in a controlled environment (server/container) with monitored audit logs.
 4. Require at least one human reviewer to approve `PRODUCTION_CONFIRMED=true` before running with `--real`.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

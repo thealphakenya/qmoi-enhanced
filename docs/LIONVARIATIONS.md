@@ -72,3 +72,5 @@ Monetization and usage
 Next steps
 - Use the per-variation spec files in `docs/lion_variations/` to drive build and release automation and to generate release notes automatically.
 - Wire CI to build and publish the artifacts described in each variation spec.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

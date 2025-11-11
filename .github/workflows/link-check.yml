@@ -1,3 +1,45 @@
+name: Link & DNS check
+
+on:
+  push:
+    paths:
+      - '**/*.md'
+      - 'tools/**'
+  pull_request:
+    paths:
+      - '**/*.md'
+      - 'tools/**'
+
+jobs:
+  link-check:
+    name: Run link checker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install minimal deps (none required)
+        run: echo "No external deps required; using stdlib"
+
+      - name: Syntax-check checker
+        run: python -m py_compile tools/check_links.py
+
+      - name: Run link checker
+        run: python tools/check_links.py --max-workers 4 --timeout 5
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-reports
+          path: |
+            tools/dns_docs_inventory.json
+            tools/dns_links_report.json
+            tools/dns_links_report.md
 name: Link Validation
 
 on:

@@ -62,4 +62,4 @@ pyjwt
 fido2
 flask-cors
 werkzeug
-stripe
+stripeyaml

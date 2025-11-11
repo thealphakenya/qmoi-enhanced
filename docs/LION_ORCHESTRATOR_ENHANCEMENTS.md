@@ -133,3 +133,5 @@ The orchestrator is conservative by default. Avoid adding credentials into the r
 ---
 
 Document created by the automation improvements in the repository.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

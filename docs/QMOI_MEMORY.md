@@ -30,3 +30,5 @@ Notes for production
 
 - The sqlite store file lives under `.qmoi_validation/qmoi_memory.db` and survives restarts.
 - For high-throughput production deployments consider adding a Redis adapter and configuring Redis via environment variables. Be cautious with secrets and network security.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

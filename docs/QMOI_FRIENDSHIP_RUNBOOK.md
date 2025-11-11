@@ -58,3 +58,5 @@ Next steps
 
 Contact & ownership
 - Maintainers: check repository CONTRIBUTORS or OWNERS files for the appropriate reviewer.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

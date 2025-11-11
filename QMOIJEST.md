@@ -82,3 +82,5 @@ If you want, I can now:
 - add a small `jest.setup.js` and wire the `tools/autotest_runner.py` to run jest and collect JSON results, then run it (may be slow depending on repo size).
 
 -- QMOI Automation
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

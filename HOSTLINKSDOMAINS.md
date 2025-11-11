@@ -164,3 +164,5 @@ The following P0 items have been implemented in dry-run and added to the reposit
 - `.github/workflows/link-check.yml` — GitHub Action that runs link validator on PRs (dry-run syntactic checks only).
 
 All scripts are dry-run by default and write outputs under `.qmoi_validation/`. To perform real network or provider operations, you must explicitly set the gating environment variables (`QMOI_ALLOW_NETWORK`, `QMOI_PROVISION_DNS`, `QMOI_ENABLE_BILLING`) and pass `--apply` or `--check-network` as appropriate. Review `.qmoi_validation/` artifacts before enabling any apply mode.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

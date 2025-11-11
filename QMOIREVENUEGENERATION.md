@@ -431,3 +431,5 @@ The system is designed to ensure QMOI always makes more than the minimum require
   }
 }
 <!-- QMOI_VALIDATION_END -->
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

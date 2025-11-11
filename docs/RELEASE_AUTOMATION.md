@@ -41,3 +41,5 @@ Extensibility
 
 Security
 - Never commit valid tokens into the repo. Use GitHub Actions secrets or an encrypted store. The `auto_env.json` file is intentionally seeded with empty tokens.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

@@ -59,3 +59,5 @@ Advanced: automated secret injection
 Questions or next steps
 - Want me to add the same check to more CI workflows? I can add a small job-step
   to other workflows such as `ci.yml` or `build.yml` on request.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

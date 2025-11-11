@@ -39,3 +39,5 @@ Monetization
 
 Integration with QMOI
 - Plugins gain access to QVS read-only APIs and core orchestrator hooks through an explicit capability grant.
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

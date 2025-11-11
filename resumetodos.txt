@@ -1,3 +1,29 @@
+Current Todo Snapshot (auto-generated 2025-11-11T00:00:00Z)
+
+Completed (automations run):
+- Inventory & link checks — completed (tools/dns_docs_inventory.json, tools/dns_links_report.json).
+- Conservative http->https fixes applied and merged for obvious cases.
+- Scheduled link-check workflow added and will run daily.
+- Dependabot enabled (weekly) and auto-merge automation added for low-risk automated PRs.
+
+New automation added (2025-11-11):
+- Vercel build/autofix workflow: `.github/workflows/vercel-autofix.yml`.
+- Conservative autofix script: `tools/auto_fix_build.py` (attempts to install missing Node/Python deps and commits branch).
+
+In-progress / next automated actions:
+1) CI will run the Vercel build on push/PR. On failure it will upload build log and run `tools/auto_fix_build.py --apply` to attempt safe fixes and create a PR for review.
+2) Scheduled link-check will generate proposals and create/update PRs automatically (branch: `automated/link-check-proposals`).
+
+Manual review required (recommended):
+- Review PRs created by automation before merging if you want human oversight. Low-risk http->https PRs may be auto-merged per policy.
+- Review issues created for link failures in repo issues list (label: `auto/link-check`).
+
+Files the automation updates after runs:
+- `WORKSPACEGENERAL.md` — summary of automation and policies.
+- `resumetodos.txt` — this file (always updated).
+- `tools/link_fix_proposals.json` and `tools/link_fix_actions.md` — generated proposals.
+
+If you request full automation, I will continue running conservative fixes, open PRs, and enable auto-merge for low-risk changes. Say "Proceed with full automation" to opt in.
 Current Todo Snapshot (generated 2025-11-07T21:51Z)
 
 Completed:
