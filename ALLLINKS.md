@@ -1244,7 +1244,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://browserify.org/
 - https://c9.io
 - https://caniuse.com/#feat=user-timing
-- http://cgit.freedesktop.org/xdg/xdg-utils/commit/?id=c55122295c2a480fa721a9614f0e2d42b2949c18
+- https://cgit.freedesktop.org/xdg/xdg-utils/commit/?id=c55122295c2a480fa721a9614f0e2d42b2949c18
 - https://circleci.com
 - http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/
 - http://deno.land/x/escalade
