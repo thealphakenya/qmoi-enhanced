@@ -13,17 +13,24 @@ from pyngrok import ngrok
 
 # --- Phase 1: Ngrok Auto-Startup ---
 tunnel_url = None
-try:
-    os.environ["NGROK_AUTH_TOKEN"] = "2vpml86bIuHdp1q06rMfqsqWqPz_7sGTMrPds44ZJmMFWdUa5"
-    ngrok.set_auth_token(os.environ["NGROK_AUTH_TOKEN"])
-    tunnel = ngrok.connect(8080)
-    tunnel_url = tunnel.public_url
-    with open("ngrok_tunnel.txt", "w") as f:
-        f.write(tunnel_url)
-    print("✅ Ngrok tunnel started:", tunnel_url)
-except Exception as e:
-    print("❌ Ngrok failed:", str(e))
-    tunnel_url = None
+# Attempt to start an ngrok tunnel if NGROK_AUTH_TOKEN is provided via env.
+# NOTE: Do NOT hardcode the ngrok auth token in repository files. Provide it
+# via environment variables or a secure secret manager in production.
+tunnel_url = None
+ngrok_token = os.environ.get("NGROK_AUTH_TOKEN")
+if ngrok_token:
+    try:
+        ngrok.set_auth_token(ngrok_token)
+        tunnel = ngrok.connect(8080)
+        tunnel_url = tunnel.public_url
+        with open("ngrok_tunnel.txt", "w") as f:
+            f.write(tunnel_url)
+        print("✅ Ngrok tunnel started:", tunnel_url)
+    except Exception as e:
+        print("❌ Ngrok failed:", str(e))
+        tunnel_url = None
+else:
+    print("⚠️ NGROK_AUTH_TOKEN not set; skipping public tunnel startup.")
 
 # --- Phase 2: FastAPI App ---
 app = FastAPI()

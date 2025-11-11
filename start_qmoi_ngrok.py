@@ -5,23 +5,24 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 
-# ✅ Set Ngrok Auth Token
-os.environ["NGROK_AUTH_TOKEN"] = "2vpml86bIuHdp1q06rMfqsqWqPz_7sGTMrPds44ZJmMFWdUa5"
-ngrok.set_auth_token(os.environ["NGROK_AUTH_TOKEN"])
+# ✅ Start Ngrok tunnel if NGROK_AUTH_TOKEN is provided via environment
+ngrok_token = os.environ.get("NGROK_AUTH_TOKEN")
+if ngrok_token:
+    try:
+        ngrok.set_auth_token(ngrok_token)
+        tunnel = ngrok.connect(8080)
+        print("✅ Ngrok tunnel started!")
+        print("🌍 Public URL:", tunnel.public_url)
 
-# ✅ Start Ngrok tunnel on port 8080
-try:
-    tunnel = ngrok.connect(8080)
-    print("✅ Ngrok tunnel started!")
-    print("🌍 Public URL:", tunnel.public_url)
+        # Save public URL to file for other scripts
+        with open("ngrok_tunnel.txt", "w") as f:
+            f.write(tunnel.public_url)
 
-    # Save public URL to file for other scripts
-    with open("ngrok_tunnel.txt", "w") as f:
-        f.write(tunnel.public_url)
-
-except Exception as e:
-    print("❌ Failed to start Ngrok tunnel:", str(e))
-    exit(1)
+    except Exception as e:
+        print("❌ Failed to start Ngrok tunnel:", str(e))
+        exit(1)
+else:
+    print("⚠️ NGROK_AUTH_TOKEN not set; skipping public tunnel startup.")
 
 # ✅ Auto-copy fallback EXE if available and not already in downloads/
 fallback_source = os.path.join("Qmoi_downloaded_apps", "windows", "latest", "qmoi_ai.exe")
