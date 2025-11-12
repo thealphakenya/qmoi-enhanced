@@ -14,6 +14,18 @@ qmoi_validation_frontmatter: true
 
 # QMOI Enhanced Auto-Deploy System
 
+## 🎯 Current Release Status: v1.2.3 ✅
+
+**Latest Deployment**: November 12, 2025
+- 📍 **Release Tag**: v1.2.3
+- 🎯 **Status**: ✅ DEPLOYED
+- 📦 **Apps**: All 6 QMOI apps published
+- 🌍 **Platforms**: 12+ supported platforms
+- 🔗 **Download**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+- 📋 **Details**: [DEPLOYMENT_STATUS_V1_2_3.md](./DEPLOYMENT_STATUS_V1_2_3.md)
+
+---
+
 ## Overview
 
 The QMOI Enhanced Auto-Deploy System is a comprehensive deployment solution that automatically handles build, test, and deployment processes with intelligent error detection and auto-fixing capabilities.

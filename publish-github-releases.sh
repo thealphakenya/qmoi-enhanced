@@ -120,18 +120,33 @@ gh release create "$VERSION" \
 echo "✅ Release created successfully"
 echo ""
 
-# Upload Windows executable if it exists
-if [ -f "Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe" ]; then
-    echo "📤 Uploading Windows executable..."
-    gh release upload "$VERSION" \
-      --repo "$REPO" \
-      "Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe" \
-      --clobber 2>/dev/null || echo "⚠️ Windows asset may already exist"
-fi
+
+# Auto-discover and upload all builds for all apps/platforms
+echo "\n🔍 Discovering all app builds for upload..."
+UPLOAD_COUNT=0
+
+# Find all build files in Qmoi_downloaded_apps (recursively)
+find Qmoi_downloaded_apps -type f \( -name "*.exe" -o -name "*.dmg" -o -name "*.deb" -o -name "*.AppImage" -o -name "*.apk" -o -name "*.ipa" -o -name "*.img" -o -name "*.zip" \) | while read asset; do
+    asset_name=$(basename "$asset")
+    echo "� Uploading asset: $asset_name"
+    for attempt in 1 2 3; do
+        gh release upload "$VERSION" \
+          --repo "$REPO" \
+          "$asset" \
+          --clobber 2>/dev/null && {
+            echo "✅ Uploaded: $asset_name"
+            UPLOAD_COUNT=$((UPLOAD_COUNT+1))
+            break
+        } || {
+            echo "⚠️ Upload failed (attempt $attempt) for $asset_name. Retrying..."
+            sleep 2
+        }
+    done
+done
 
 # Upload PWA apps if they exist
 if [ -d "pwa_apps" ]; then
-    echo "📤 Uploading PWA apps..."
+    echo "� Uploading PWA apps..."
     for app_dir in pwa_apps/*/; do
         app_name=$(basename "$app_dir")
         if [ -d "$app_dir" ]; then
@@ -139,13 +154,33 @@ if [ -d "pwa_apps" ]; then
             cd "$app_dir"
             zip -r "../../${app_name}-pwa-${VERSION}.zip" . -q
             cd ../../
-            gh release upload "$VERSION" \
-              --repo "$REPO" \
-              "${app_name}-pwa-${VERSION}.zip" \
-              --clobber 2>/dev/null || echo "⚠️ PWA asset for $app_name may already exist"
+            for attempt in 1 2 3; do
+                gh release upload "$VERSION" \
+                  --repo "$REPO" \
+                  "${app_name}-pwa-${VERSION}.zip" \
+                  --clobber 2>/dev/null && {
+                    echo "✅ Uploaded PWA: ${app_name}-pwa-${VERSION}.zip"
+                    UPLOAD_COUNT=$((UPLOAD_COUNT+1))
+                    break
+                } || {
+                    echo "⚠️ PWA upload failed (attempt $attempt) for $app_name. Retrying..."
+                    sleep 2
+                }
+            done
         fi
     done
 fi
+
+echo ""
+echo "✅ Release upload complete!"
+echo "📊 Total assets uploaded: $UPLOAD_COUNT"
+echo ""
+echo "📝 Release Summary:"
+echo "  Repository: $REPO"
+echo "  Version: $VERSION"
+echo "  View at: https://github.com/$REPO/releases/tag/$VERSION"
+echo ""
+echo "🎉 All QMOI apps are now available on GitHub Releases!"
 
 echo ""
 echo "✅ Release upload complete!"

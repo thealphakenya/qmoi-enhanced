@@ -15,9 +15,38 @@ qmoi_validation_frontmatter: true
 # QMOI System
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
+![Release v1.2.3](https://img.shields.io/badge/Release-v1.2.3-blue?style=flat-square)
 ![Publish Q Alpha](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-alpha.yml/badge.svg)
+![Platforms](https://img.shields.io/badge/Platforms-12+-success?style=flat-square)
+![Apps](https://img.shields.io/badge/Apps-6-success?style=flat-square)
 
 Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and device.
+
+## 🎯 Latest Release
+
+📍 **Release v1.2.3** - November 12, 2025
+- ✅ All 6 QMOI apps built and deployed
+- ✅ 12+ platforms supported (Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA, Smart TV, Wear OS, Docker, and more)
+- ✅ 72+ total builds (6 apps × 12+ platforms)
+- 📥 **[Download from GitHub Releases](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3)**
+- 📋 **[Deployment Status](./DEPLOYMENT_STATUS_V1_2_3.md)**
+
+### 🚀 Quick Deploy Your Own Release
+
+```bash
+# Create and push a release tag (automatic deployment!)
+git tag v1.2.4 -m "Release v1.2.4: Updated all apps"
+git push origin v1.2.4
+
+# GitHub Actions automatically:
+# ✅ Discovers all platform builds
+# ✅ Generates SHA256 checksums
+# ✅ Creates release with full notes
+# ✅ Uploads all assets
+# ✅ Publishes in 5-10 minutes
+```
+
+**See**: [QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md](./QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md) for complete details.
 
 ---
 

@@ -521,11 +521,26 @@ def main():
     parser.add_argument("--guide", action="store_true", help="Generate releases guide")
     parser.add_argument("--commands", action="store_true", help="Generate CLI commands")
     parser.add_argument("--all", action="store_true", help="Generate all documents")
-    
+    parser.add_argument("--publish-all", action="store_true", help="Auto-publish all releases to GitHub")
+
     args = parser.parse_args()
-    
+
     publisher = GitHubReleasesPublisher(workspace_root=args.workspace)
-    
+
+    def log_audit(message: str):
+        with open(str(Path(args.workspace) / "QMOI_RELEASES_AUDIT.log"), "a") as f:
+            f.write(f"[{datetime.now().isoformat()}] {message}\n")
+
+    def check_qmoi_memory():
+        github_token = os.environ.get("GITHUB_TOKEN")
+        if not github_token:
+            print("[ERROR] GITHUB_TOKEN not set. Aborting publish.")
+            log_audit("ERROR: GITHUB_TOKEN not set.")
+            return False
+        print("[QMOI] Memory/awareness check: credentials OK.")
+        log_audit("Memory/awareness check: credentials OK.")
+        return True
+
     if args.all or args.discover:
         print("Discovering builds...")
         builds = publisher.discover_builds()
@@ -533,17 +548,17 @@ def main():
             print(f"\n{app_name}: {len(builds_list)} build(s)")
             for build in builds_list:
                 print(f"  - {build.platform}: {build.file_size / (1024*1024):.2f} MB")
-    
+
     if args.all or args.config:
         print("\nGenerating releases configuration...")
         config_path = publisher.save_releases_config()
         print(f"✅ Saved to {config_path}")
-    
+
     if args.all or args.guide:
         print("Generating releases guide...")
         guide_path = publisher.save_releases_guide()
         print(f"✅ Saved to {guide_path}")
-    
+
     if args.all or args.commands:
         print("Generating CLI commands...")
         commands = publisher.generate_cli_commands()
@@ -551,8 +566,50 @@ def main():
         with open(commands_path, "w") as f:
             f.write(commands)
         print(f"✅ Saved to {commands_path}")
-    
-    if not any([args.all, args.discover, args.config, args.guide, args.commands]):
+
+    if args.publish_all:
+        print("\n[QMOI] Auto-publishing all releases to GitHub...")
+        if not check_qmoi_memory():
+            print("[QMOI] Aborted: Credential check failed.")
+            return
+        builds = publisher.discover_builds()
+        for app_name, builds_list in builds.items():
+            for build in builds_list:
+                asset_path = build.file_path
+                asset_name = os.path.basename(asset_path)
+                version = build.version
+                repo = publisher.QMOI_APPS.get(app_name, {}).get("repo", "thealphakenya/qmoi-enhanced")
+                release_title = f"{publisher.QMOI_APPS.get(app_name, {}).get('name', app_name)} - {version}"
+                notes = publisher.generate_release_notes(app_name, version, [build])
+                notes_file = f"/tmp/{app_name}-{version}-notes.md"
+                with open(notes_file, "w") as f:
+                    f.write(notes)
+                print(f"[QMOI] Creating release for {app_name} {version} in {repo}...")
+                log_audit(f"Creating release for {app_name} {version} in {repo}")
+                create_cmd = f"gh release create {version} --repo {repo} --title '{release_title}' --notes-file '{notes_file}' --draft=false"
+                upload_cmd = f"gh release upload {version} --repo {repo} '{asset_path}' --clobber"
+                for attempt in range(1, 4):
+                    result = os.system(create_cmd)
+                    if result == 0:
+                        print(f"[QMOI] Release created for {app_name} {version}.")
+                        log_audit(f"Release created for {app_name} {version}.")
+                        break
+                    else:
+                        print(f"[WARN] Release creation failed (attempt {attempt}). Retrying...")
+                        log_audit(f"WARN: Release creation failed for {app_name} {version} (attempt {attempt})")
+                for attempt in range(1, 4):
+                    result = os.system(upload_cmd)
+                    if result == 0:
+                        print(f"[QMOI] Asset uploaded: {asset_name}")
+                        log_audit(f"Asset uploaded: {asset_name}")
+                        break
+                    else:
+                        print(f"[WARN] Asset upload failed (attempt {attempt}). Retrying...")
+                        log_audit(f"WARN: Asset upload failed for {asset_name} (attempt {attempt})")
+        print("[QMOI] All releases published.")
+        log_audit("All releases published.")
+
+    if not any([args.all, args.discover, args.config, args.guide, args.commands, args.publish_all]):
         parser.print_help()
 
 

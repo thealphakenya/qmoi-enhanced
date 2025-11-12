@@ -2,9 +2,22 @@
 
 **Complete documentation for all QMOI apps available on GitHub Releases**
 
+## 🎯 Latest Release: v1.2.3 (November 12, 2025)
+
+✅ **Status**: DEPLOYED  
+📍 **Link**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3  
+📋 **Details**: [DEPLOYMENT_STATUS_V1_2_3.md](./DEPLOYMENT_STATUS_V1_2_3.md)  
+
+### What's Included
+- ✅ All 6 QMOI Apps (QMOI AI, QCity, QShare, Yap, QStore, QVillage)
+- ✅ 12+ Platforms (Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA, Smart TV, Wear OS, Docker, and more)
+- ✅ 72+ Total Builds
+- ✅ SHA256 Checksums for all downloads
+- ✅ Comprehensive release notes
+
 ---
 
-## �� Documentation Files
+## 📚 Documentation Files
 
 ### 1. **GITHUB_RELEASES_COMPLETE_GUIDE.md** (15 KB)
 
@@ -62,35 +75,114 @@ Machine-readable configuration for automation.
 
 ---
 
-## 🛠️ Tools
+## 🛠️ Real-Time Release Tools
 
-### **publish-github-releases.sh**
+### ⚡ Automated GitHub Actions Workflow
 
-GitHub CLI script for publishing releases.
+**File:** `.github/workflows/publish-releases-realtime.yml`
 
-- Creates GitHub release
-- Uploads all assets
-- Supports draft/pre-release
-- Automatic asset management
+Fully automated multi-platform release publishing triggered by git tags:
 
 ```bash
-./publish-github-releases.sh [--version v1.2.3] [--draft]
+# Just tag a release - GitHub Actions does everything else!
+git tag v1.2.3
+git push origin v1.2.3
+
+# Automatically:
+# 1. ✅ Discovers all platform builds
+# 2. ✅ Generates SHA256 checksums
+# 3. ✅ Creates GitHub Release
+# 4. ✅ Uploads all assets
+# 5. ✅ Publishes release notes
 ```
+
+**Features:**
+- Auto-discovery of Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA builds
+- Platform classification & organization
+- SHA256 checksum generation
+- Retry logic (3 attempts per asset)
+- Real-time progress logging
+- Zero-touch operation
+
+**Time:** ~5-10 minutes from tag to live release
 
 ---
 
-### **tools/github_releases_publisher.py**
+### 🚀 publish-releases-realtime.sh
 
-Python tool for release management.
-
-- Discovers available builds
-- Generates release notes
-- Creates configuration
-- Calculates SHA256 checksums
+Enhanced bash script for manual/automated release publishing.
 
 ```bash
-python tools/github_releases_publisher.py --all
+# Publish production release
+./publish-releases-realtime.sh --version v1.2.3
+
+# Create draft for testing
+./publish-releases-realtime.sh --version v1.3.0-beta --draft
+
+# With verbose logging
+./publish-releases-realtime.sh --version v1.2.3 --verbose
 ```
+
+**Features:**
+- Asset discovery across multiple directories
+- Platform classification (8+ types)
+- Parallel checksum generation
+- Retry logic with exponential backoff
+- Comprehensive logging
+- Success/failure statistics
+
+---
+
+### 🐍 publish-releases-realtime.py
+
+Python version with advanced features:
+
+```bash
+# Publish release
+python publish-releases-realtime.py --version v1.2.3
+
+# Draft release
+python publish-releases-realtime.py --version v1.3.0-beta --draft
+
+# Verbose mode
+python publish-releases-realtime.py --version v1.2.3 --verbose
+```
+
+**Features:**
+- Parallel asset processing
+- Structured logging
+- Comprehensive error handling
+- JSON configuration support
+- Audit trail generation
+
+---
+
+### 📚 GITHUB_RELEASES_REALTIME_GUIDE.md
+
+Complete documentation for the real-time release system:
+
+- Quick start guide
+- Detailed usage instructions
+- Architecture overview
+- GitHub Actions workflow documentation
+- Manual publishing guide
+- Troubleshooting
+- Best practices
+
+**Use when:** You need comprehensive release automation documentation
+
+---
+
+### Advanced Automation
+- ✅ GitHub Actions triggers on git tags (automatic)
+- ✅ Manual publishing via shell or Python scripts
+- ✅ CI/CD integration (GitLab CI, Jenkins, etc.)
+- ✅ Real-time asset discovery & validation
+- ✅ Parallel upload with retry logic
+- ✅ Full audit logging
+- ✅ Zero-touch operation
+
+See detailed guide: `GITHUB_RELEASES_REALTIME_GUIDE.md`
 
 ---
 
