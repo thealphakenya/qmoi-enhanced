@@ -43,3 +43,30 @@ jobs:
           asset_path: tools/discovered_assets.json
           asset_name: discovered_assets.json
           asset_content_type: application/json
+
+      - name: Upload discovered assets files
+        if: always()
+        run: |
+          set -euo pipefail
+          UPLOAD_URL='${{ steps.create_release.outputs.upload_url }}'
+          # strip template part like '{?name,label}'
+          BASE_URL=${UPLOAD_URL%%\{*}
+          echo "Release upload base URL: $BASE_URL"
+          if [ ! -f tools/discovered_assets.json ]; then
+            echo 'No discovered_assets.json present; nothing to upload.'
+            exit 0
+          fi
+          jq -c '.assets[]' tools/discovered_assets.json | while read -r a; do
+            path=$(echo "$a" | jq -r '.path')
+            name=$(basename "$path")
+            if [ -f "$path" ]; then
+              echo "Uploading $path as $name"
+              curl -sS -X POST \
+                -H "Authorization: token ${GITHUB_TOKEN}" \
+                -H "Content-Type: application/octet-stream" \
+                --data-binary @"$path" "$BASE_URL?name=$name" \
+                || echo "Failed to upload $path"
+            else
+              echo "Asset missing locally, skipping: $path"
+            fi
+          done
