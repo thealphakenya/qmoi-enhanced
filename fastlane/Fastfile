@@ -1,6 +1,22 @@
 default_platform(:ios)
 
 platform :ios do
+  desc "Build iOS app"
+  lane :build do
+    cocoapods
+    build_app(scheme: "Qmoi")
+  end
+end
+
+platform :android do
+  desc "Build Android release"
+  lane :build do
+    gradle(task: "assembleRelease")
+  end
+end
+default_platform(:ios)
+
+platform :ios do
   desc 'Build and archive iOS app (requires signing credentials in CI)'
   lane :archive do
     match(type: 'appstore')

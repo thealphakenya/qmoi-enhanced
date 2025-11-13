@@ -1,3 +1,26 @@
+productName: QMOI
+appId: com.qmoi.app
+directories:
+  output: dist_electron
+files:
+  - build/**/*
+  - package.json
+linux:
+  target:
+    - AppImage
+    - deb
+win:
+  target:
+    - nsis
+mac:
+  target:
+    - dmg
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+electronDownload:
+  mirror: https://electronjs.org/headers
 appId: com.qmoi.qmoi
 productName: QMOI AI
 directories:
