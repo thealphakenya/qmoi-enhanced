@@ -1,0 +1,46 @@
+name: Packaging Templates (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_packaging:
+        description: 'Set true to run packaging templates (disabled by default)'
+        required: false
+        default: 'false'
+
+jobs:
+  electron-package:
+    name: Electron Packaging Template
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_packaging == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install electron-builder (template)
+        run: |
+          npm ci || npm install
+          npm install --save-dev electron-builder || true
+      - name: Build (example)
+        run: |
+          echo "This job is a template for electron-builder packaging."
+          echo "Install your signing keys as secrets and modify this step to run 'npx electron-builder --config electron-builder.yml'"
+
+  ios-package:
+    name: iOS Packaging Template (requires macOS)
+    runs-on: macos-latest
+    if: ${{ github.event.inputs.run_packaging == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+      - name: Install fastlane
+        run: gem install fastlane -NV || true
+      - name: Fastlane iOS (template)
+        run: |
+          echo "This job is a template for Fastlane-based iOS packaging."
+          echo "Provide Apple signing credentials in secrets and adapt lanes in fastlane/Fastfile"

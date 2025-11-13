@@ -1,0 +1,24 @@
+appId: com.qmoi.qmoi
+productName: QMOI AI
+directories:
+  output: dist_electron
+  buildResources: build
+files:
+  - '!node_modules'
+  - '!**/test/**'
+  - '**/*'
+win:
+  target:
+    - nsis
+  icon: build/icon
+mac:
+  target:
+    - dmg
+  icon: build/icon
+linux:
+  target:
+    - AppImage
+  icon: build/icon
+publish:
+  provider: generic
+  url: https://downloads.qmoi.app/releases
