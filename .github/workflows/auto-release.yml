@@ -39,4 +39,11 @@ jobs:
           if [ -z "$VERSION" ]; then
             echo "No version tag found" && exit 1
           fi
-          python3 publish-releases-realtime.py --version "$VERSION"
+          # If this is a CI test tag (contains 'ci-test') or DRAFT=true, run draft mode
+          DRAFT_FLAG=""
+          if echo "$VERSION" | grep -qi "ci-test" || [ "${DRAFT:-false}" = "true" ]; then
+            echo "Detected test/draft tag — publishing as draft"
+            python3 publish-releases-realtime.py --version "$VERSION" --draft
+          else
+            python3 publish-releases-realtime.py --version "$VERSION"
+          fi
