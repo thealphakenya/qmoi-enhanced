@@ -134,9 +134,26 @@ jobs:
         id: discover
         run: |
           find Qmoi_apps release_assets pwa_apps dist build mobile mobile/android mobile/ios -type f \( -iname "*qmoi*" -o -iname "*.exe" -o -iname "*.dmg" -o -iname "*.deb" -o -iname "*.appimage" -o -iname "*.apk" -o -iname "*.aab" -o -iname "*.ipa" -o -iname "*.img" -o -iname "*.zip" \) 2>/dev/null | grep -v node_modules | sort -u > discovered_assets.txt || true
+          # Create a machine-readable JSON list as well
+          python3 - <<'PY'
+import sys, json
+assets=[]
+try:
+  with open('discovered_assets.txt','r') as f:
+    for l in f:
+      p=l.strip()
+      if p:
+        assets.append({'path':p,'name':p.split('/')[-1]})
+except FileNotFoundError:
+  pass
+with open('discovered_assets.json','w') as out:
+  json.dump({'count':len(assets),'assets':assets},out,indent=2)
+print('Wrote discovered_assets.json with',len(assets),'assets')
+PY
           echo "asset_count=$(wc -l < discovered_assets.txt || true)" >> $GITHUB_OUTPUT
           if [ -s discovered_assets.txt ]; then
             echo "Found assets:" && sed -n '1,200p' discovered_assets.txt || true
+            echo "discovered_assets_json=discovered_assets.json" >> $GITHUB_OUTPUT
           else
             echo "No artifacts discovered locally"
           fi
@@ -168,6 +185,13 @@ EOF
               gh release upload "$VERSION" "${asset}.sha256" --clobber || true
             fi
           done < discovered_assets.txt || true
+
+      - name: Upload discovered_assets.json as artifact
+        if: steps.discover.outputs.asset_count != '0'
+        uses: actions/upload-artifact@v3
+        with:
+          name: discovered-assets-json
+          path: discovered_assets.json
 
       - name: Final release summary
         run: |
