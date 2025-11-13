@@ -1,0 +1,29 @@
+name: CI Verify Post-Packaging
+
+on:
+  workflow_run:
+    workflows: ["Package Electron (gated)", "Package Mobile (gated)"]
+    types: [completed]
+
+jobs:
+  verify-after-packaging:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download release artifacts (if available)
+        run: |
+          echo "This step should be customized to download artifacts from packaging workflows or Releases."
+
+      - name: Run strict validator
+        run: |
+          set -e
+          python3 scripts/qmoi-app-validator.py || true
+
+      - name: Verify releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          bash tools/verify_releases.sh || true
