@@ -48,6 +48,8 @@ git push origin v1.2.4
 
 **See**: [QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md](./QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md) for complete details.
 
+**CI Notes:** The `ci-verify-and-release.yml` workflow will attempt to build and package artifacts for multiple platforms. Some platforms (Android release APKs, iOS IPAs, macOS signed installers) require signing credentials which must be provided as repository secrets (`ANDROID_KEYSTORE`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`, and Apple signing credentials). If signing keys are not present the workflow will produce unsigned/debug APKs where possible (e.g. `assembleDebug`) so the artifacts can still be validated and published for testing. After you add signing secrets, CI will produce signed release artifacts for those platforms.
+
 ---
 
 ## 🚀 Build & Automation

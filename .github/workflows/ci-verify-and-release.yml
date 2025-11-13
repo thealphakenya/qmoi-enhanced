@@ -62,27 +62,50 @@ jobs:
         run: |
           set -e || true
           mkdir -p release_assets/pwa || true
+          VERSION="${{ github.ref_name }}"
+          if [ -z "$VERSION" ]; then VERSION="${{ github.run_number }}"; fi
           for d in pwa_apps/*/; do
             [ -d "$d" ] || continue
             n=$(basename "$d")
-            zipfile="release_assets/pwa/${n}-pwa-${{ github.ref_name || github.run_number }}.zip"
-            (cd "$d" && zip -r "../../${zipfile}" . -q) || true
+            zipfile="release_assets/pwa/${n}-pwa-${VERSION}.zip"
+            (cd "$d" && zip -r "${{ github.workspace }}/$zipfile" . -q) || true
           done || true
 
       - name: Android build (Ubuntu runner)
         if: matrix.os == 'ubuntu-latest'
+        env:
+          ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
         run: |
           if [ -f "mobile/android/gradlew" ]; then
             cd mobile/android
-            ./gradlew assembleRelease || echo "Android build failed (signing may be required)"
+            if [ -n "$ANDROID_KEYSTORE" ] || [ -f "keystore.properties" ]; then
+              echo "Signing keys present or keystore.properties found — attempting release build"
+              ./gradlew assembleRelease || {
+                echo "Release build failed — attempting debug build"
+                ./gradlew assembleDebug || echo "Android debug build failed"
+              }
+            else
+              echo "No signing keys found — building debug APK instead"
+              ./gradlew assembleDebug || echo "Android debug build failed"
+            fi
             cd - || true
           else
             echo "No Android gradle project found"
           fi
 
+      - name: Set validation targets
+        run: |
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            echo "VALIDATION_TARGETS=windows,pwa" >> $GITHUB_ENV
+          elif [ "${{ matrix.os }}" = "macos-latest" ]; then
+            echo "VALIDATION_TARGETS=macos,ios,pwa" >> $GITHUB_ENV
+          else
+            echo "VALIDATION_TARGETS=linux,android,pwa" >> $GITHUB_ENV
+          fi
+
       - name: Run artifact validator
         run: |
-          python scripts/qmoi-app-validator.py all || echo "Validator reported issues"
+          python3 scripts/qmoi-app-validator.py
 
       - name: Archive discovered artifacts
         uses: actions/upload-artifact@v3
@@ -110,10 +133,10 @@ jobs:
       - name: Discover artifacts
         id: discover
         run: |
-          find Qmoi_apps release_assets pwa_apps dist build -type f \( -iname "*qmoi*" -o -iname "*.exe" -o -iname "*.dmg" -o -iname "*.deb" -o -iname "*.appimage" -o -iname "*.apk" -o -iname "*.ipa" -o -iname "*.img" -o -iname "*.zip" \) 2>/dev/null | grep -v node_modules | sort -u > discovered_assets.txt || true
+          find Qmoi_apps release_assets pwa_apps dist build mobile mobile/android mobile/ios -type f \( -iname "*qmoi*" -o -iname "*.exe" -o -iname "*.dmg" -o -iname "*.deb" -o -iname "*.appimage" -o -iname "*.apk" -o -iname "*.aab" -o -iname "*.ipa" -o -iname "*.img" -o -iname "*.zip" \) 2>/dev/null | grep -v node_modules | sort -u > discovered_assets.txt || true
           echo "asset_count=$(wc -l < discovered_assets.txt || true)" >> $GITHUB_OUTPUT
           if [ -s discovered_assets.txt ]; then
-            echo "Found assets:" && sed -n '1,50p' discovered_assets.txt || true
+            echo "Found assets:" && sed -n '1,200p' discovered_assets.txt || true
           else
             echo "No artifacts discovered locally"
           fi
@@ -137,6 +160,8 @@ EOF
           VERSION=${{ steps.create_release.outputs.release || github.ref_name || "v${{ github.run_number }}" }}
           while read -r asset; do
             [ -f "$asset" ] || continue
+            echo "Preparing $asset"
+            sha256sum "$asset" > "${asset}.sha256" || true
             echo "Uploading $asset"
             gh release upload "$VERSION" "$asset" --clobber || echo "Upload failed for $asset"
             if [ -f "${asset}.sha256" ]; then
