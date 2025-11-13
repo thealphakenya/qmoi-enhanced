@@ -97,8 +97,25 @@ def save_memory(mem):
         finally:
             conn.close()
     else:
-        with open(MEMORY_FILE, 'w') as f:
-            json.dump(mem, f, indent=2)
+        # Atomic write: write to temp file then rename to avoid partial writes
+        try:
+            dirn = os.path.dirname(MEMORY_FILE)
+            tmp = MEMORY_FILE + '.tmp'
+            with open(tmp, 'w') as f:
+                json.dump(mem, f, indent=2)
+            os.replace(tmp, MEMORY_FILE)
+            # Also write a timestamped backup for additional local sync resilience
+            try:
+                backup_path = os.path.join(dirn, 'qmoi_memory_backup.json')
+                with open(backup_path + '.tmp', 'w') as bf:
+                    json.dump(mem, bf, indent=2)
+                os.replace(backup_path + '.tmp', backup_path)
+            except Exception:
+                pass
+        except Exception:
+            # Fallback non-atomic write
+            with open(MEMORY_FILE, 'w') as f:
+                json.dump(mem, f, indent=2)
 
 def migrate_json_to_sqlite():
     # If sqlite is enabled and DB is empty but JSON exists, migrate
@@ -347,7 +364,51 @@ class Handler(BaseHTTPRequestHandler):
             if not user_msg and messages:
                 user_msg = messages[-1].get('content','')
 
+            # Detect simple agent actions in the user message (e.g., create file)
+            action_result = None
+            try:
+                um = (user_msg or '')
+                low = um.lower()
+                if 'create' in low and 'file' in low:
+                    import re
+                    # More robust filename matcher (look for a token with a typical extension)
+                    m = re.search(r"([A-Za-z0-9_.\-]+\.(txt|md|json|py|sh|exe|cfg|conf))", um)
+                    if not m:
+                        # fallback to earlier patterns on the lowercased text
+                        m = re.search(r"create (?:a )?file (?:named )?['\"]?([^'\"\s,]+)['\"]?", low)
+                        if not m:
+                            m = re.search(r"create (?:a )?file (?:named )?([^\s,]+)", low)
+                    if m:
+                        fname = m.group(1)
+                        # attempt to extract content after 'with' or after ':'
+                        content = None
+                        m2 = re.search(r"with (?:the )?content[:]?\s*['\"]([^'\"]+)['\"]", um, re.IGNORECASE)
+                        if not m2:
+                            m2 = re.search(r"with (.+)$", um, re.IGNORECASE)
+                        if m2:
+                            content = m2.group(1).strip().strip('"')
+                        if not content:
+                            # default content
+                            content = f"Created by qmoi agent at {datetime.utcnow().isoformat()}Z"
+                        # safety: prevent directory traversal and absolute paths
+                        if '..' in fname or fname.startswith('/') or '\\' in fname:
+                            action_result = 'error: invalid filename'
+                        else:
+                            target = os.path.join(BASE, fname)
+                            try:
+                                os.makedirs(os.path.dirname(target), exist_ok=True)
+                                with open(target, 'w') as f:
+                                    f.write(content + '\n')
+                                action_result = f'created:{target}'
+                            except Exception as e:
+                                action_result = f'error: {e}'
+            except Exception:
+                action_result = None
+
+            # Build persona reply and include any action result
             reply_text = persona_response(persona, user_msg, memory)
+            if action_result:
+                reply_text = reply_text + "\n\n[Action] " + str(action_result)
             save_memory(memory)
 
             # Build response similar to OpenAI Chat Completions
@@ -466,6 +527,9 @@ def run(server_class=HTTPServer, handler_class=Handler, port=8080):
                     # import here to avoid circulars
                     from functools import partial
                     mem = load_memory()
+                    # Always persist local memory and backup
+                    save_memory(mem)
+                    # Attempt to push to configured remote backends (if any)
                     push_memory_to_backends(mem)
                 except Exception as e:
                     print('Background sync error:', e)

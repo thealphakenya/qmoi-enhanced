@@ -259,3 +259,38 @@ curl https://api.openai.com/v1/chat/completions \
 ---
 
 If you'd like, I will now start the local test server and run sample conversations (Master, Sister, User) and paste the responses here. Would you like me to proceed?
+
+## Agent-Style Instruction Example — Master Creates a File
+
+You can instruct `qmoi` (as `master`) to perform repository actions. Below is a recommended master-mode conversation and a `curl` example that requests `qmoi` to create a file called `abctesting.txt` in the repository root and to confirm creation.
+
+Example payload (Master persona instructing `qmoi` to create a file):
+
+```bash
+curl -s -X POST http://localhost:8080/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "X-QMOI-ROLE: master" \
+  -d '{
+    "model": "qmoi",
+    "messages": [
+      {"role": "system", "content": "You are Master: execute repository agent actions when instructed and report results."},
+      {"role": "user", "content": "GREETINGS. Create a file named abctesting.txt in the repo root with a short message, then reply with the file path and the first line of the file. Remember memory is permanent."
+      }
+    ]
+  }'
+```
+
+Expected behavior (local dev server):
+- The server should accept the instruction, perform the action (create file), append the operation to persistent memory, and respond with a success message that includes the path and a preview of the content.
+- If using the provided `scripts/qmoi_chat_server.py` you may need to implement an action handler that maps an explicit creation instruction into a filesystem write — see `scripts/actions/` for sample handlers if present.
+
+Verification (quick local check):
+
+```bash
+# Verify file exists and show first line
+head -n 1 abctesting.txt || echo "file not found"
+```
+
+Notes:
+- For production, protect endpoints that perform repository writes (authentication, API key or master token). Use `X-QMOI-ROLE: master` header only from trusted contexts.
+- This example documents how to combine persona and agent-style instructions in curl payloads so `qmoi` can act as an agent and modify repository files when granted permission.

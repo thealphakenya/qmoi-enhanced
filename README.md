@@ -177,6 +177,8 @@ Edit
 
 ## 📱 All QMOI Apps, App Types, and Platforms
 
+**For a complete and up-to-date inventory of all apps, versions, and platforms, see:** [`QMOI_APPS_AND_PLATFORMS_INVENTORY.md`](./QMOI_APPS_AND_PLATFORMS_INVENTORY.md)
+
 | Icon | App Name | Type | Platforms | Latest Release | Download | Status |
 |------|----------|------|----------|---------------|----------|--------|
 | 🌐   | Qbrowser (skv)     | Browser | Win, Mac, Android, iOS, Linux | v1.2.0 | [Win](https://downloads.qmoi.app/qbrowser/windows.exe) [Mac](https://downloads.qmoi.app/qbrowser/mac.dmg) [Android](https://downloads.qmoi.app/qbrowser/android.apk) [iOS](https://downloads.qmoi.app/qbrowser/ios.ipa) [Linux](https://downloads.qmoi.app/qbrowser/linux.appimage) | ✅ |
@@ -186,10 +188,10 @@ Edit
 | 🔍   | QSearch (skv)       | Search/Chat | Win, Mac, Android, iOS, Linux | v1.0.5 | [Win](https://downloads.qmoi.app/qsearch/windows.exe) [Mac](https://downloads.qmoi.app/qsearch/mac.dmg) [Android](https://downloads.qmoi.app/qsearch/android.apk) [iOS](https://downloads.qmoi.app/qsearch/ios.ipa) [Linux](https://downloads.qmoi.app/qsearch/linux.appimage) | ✅ |
 | 💬   | QWhatsApp (skv)     | Messaging | Win, Mac, Android, iOS, Linux | v2.2.0 | [Win](https://downloads.qmoi.app/qwhatsapp/windows.exe) [Mac](https://downloads.qmoi.app/qwhatsapp/mac.dmg) [Android](https://downloads.qmoi.app/qwhatsapp/android.apk) [iOS](https://downloads.qmoi.app/qwhatsapp/ios.ipa) [Linux](https://downloads.qmoi.app/qwhatsapp/linux.appimage) | ✅ |
 | ⚡   | QAutoDev (skv)      | Automation | Win, Mac, Android, iOS, Linux | v1.0.0 | [Win](https://downloads.qmoi.app/qautodev/windows.exe) [Mac](https://downloads.qmoi.app/qautodev/mac.dmg) [Android](https://downloads.qmoi.app/qautodev/android.apk) [iOS](https://downloads.qmoi.app/qautodev/ios.ipa) [Linux](https://downloads.qmoi.app/qautodev/linux.appimage) | ✅ |
-| 🤖   | QMOI AI             | AI Core | All platforms | v2.5.1 | [Win](Qmoi_apps/windows/qmoi_ai.exe) [Mac](Qmoi_apps/mac/qmoi_ai.dmg) [Android](Qmoi_apps/android/qmoi_ai.apk) [iOS](Qmoi_apps/ios/qmoi_ai.ipa) [Linux](Qmoi_apps/linux/qmoi_ai.AppImage) [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) [Chromebook](Qmoi_apps/chromebook/qmoi_ai.deb) [QCity](Qmoi_apps/qcity/qmoi_ai.zip) [RaspberryPi](Qmoi_apps/raspberrypi/qmoi_ai.img) | ✅ |
-| 🏙️   | QCity Package       | QCity | All platforms | v2.5.1 | [QCity](Qmoi_apps/qcity/qmoi_ai.zip) | ✅ |
-| 📺   | Smart TV App        | TV | SmartTV | v2.5.1 | [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) | ✅ |
-| 🕸️   | QMOI PWA            | PWA | All platforms | v2.5.1 | [PWA](pwa_apps/qmoi-ai-pwa.zip) [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) | ✅ |
+| 🤖   | QMOI AI             | AI Core | All platforms | v1.2.3 | [Win⚠️](QMOI_APPS_AND_PLATFORMS_INVENTORY.md#%EF%B8%8F-qmoi_aiexe-status) [Mac](Qmoi_apps/mac/qmoi_ai.dmg) [Android](Qmoi_apps/android/qmoi_ai.apk) [iOS](Qmoi_apps/ios/qmoi_ai.ipa) [Linux](Qmoi_apps/linux/qmoi_ai.AppImage) [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) [Chromebook](Qmoi_apps/chromebook/qmoi_ai.deb) [RaspberryPi](Qmoi_apps/raspberrypi/qmoi_ai.img) | ⚠️ |
+| 🏙️   | QCity Package       | QCity | All platforms | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ |
+| 📺   | Smart TV App        | TV | SmartTV | v1.2.3 | [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) | ✅ |
+| 🕸️   | QMOI PWA            | PWA | All platforms | v1.2.3 | [PWA](pwa_apps/qmoi-ai-pwa.zip) [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) | ✅ |
 
 > **Ngrok Enhancement:**
 All download and service links are autotested and auto-updated to use ngrok URLs if ngrok is active and healthy. QMOI can start, monitor, and update ngrok tunnels for all endpoints. See QMOINGROK.md for details.

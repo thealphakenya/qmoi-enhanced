@@ -57,9 +57,11 @@
 
 ## 📊 All 6 QMOI Apps - Build Status
 
+> **📌 Complete Inventory:** See [`QMOI_APPS_AND_PLATFORMS_INVENTORY.md`](./QMOI_APPS_AND_PLATFORMS_INVENTORY.md) for detailed build status, download links, and platform support matrix.
+
 | App | Version | Status | Platforms | Location |
 |-----|---------|--------|-----------|----------|
-| **QMOI AI** | v1.2.3 | ✅ BUILT | 8+ | Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe |
+| **QMOI AI** | v1.2.3 | ⚠️ *See Note* | 8+ | [QMOI_APPS_AND_PLATFORMS_INVENTORY.md#-qmoi_aiexe-status](./QMOI_APPS_AND_PLATFORMS_INVENTORY.md#-qmoi_aiexe-status) |
 | **QCity** | v2.0.1 | ✅ READY | 12+ | Build discovery system |
 | **QShare** | v1.0.0 | ✅ READY | 12+ | Build discovery system |
 | **Yap** | v1.1.0 | ✅ READY | 12+ | Build discovery system |
@@ -67,6 +69,8 @@
 | **QVillage** | v1.0.0 | ✅ READY | 12+ | Build discovery system |
 
 **Total**: 6 Apps × 12+ Platforms = **72+ Total Builds**
+
+**⚠️ Note on qmoi_ai.exe:** The Windows executable is currently a placeholder stub (169 bytes). See the inventory document for build and installation instructions.
 
 ---
 

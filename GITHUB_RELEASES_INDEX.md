@@ -2,6 +2,8 @@
 
 **Complete documentation for all QMOI apps available on GitHub Releases**
 
+> **📌 Central Reference:** See [`QMOI_APPS_AND_PLATFORMS_INVENTORY.md`](./QMOI_APPS_AND_PLATFORMS_INVENTORY.md) for the authoritative inventory of all apps, versions, platforms, and download links.
+
 ## 🎯 Latest Release: v1.2.3 (November 12, 2025)
 
 ✅ **Status**: DEPLOYED  

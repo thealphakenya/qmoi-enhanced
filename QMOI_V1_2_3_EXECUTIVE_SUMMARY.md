@@ -56,9 +56,11 @@
 
 ### Platform-Specific Downloads
 
+> **📌 Complete Download Guide:** See [`QMOI_APPS_AND_PLATFORMS_INVENTORY.md`](./QMOI_APPS_AND_PLATFORMS_INVENTORY.md) for all download links, build status, and installation instructions.
+
 | Platform | File | Size | Download |
 |----------|------|------|----------|
-| Windows | `qmoi_ai.exe` | ~50-100MB | GitHub Release |
+| Windows | `qmoi_ai.exe` | ⚠️ *See Note* | [Inventory Link](./QMOI_APPS_AND_PLATFORMS_INVENTORY.md#-qmoi_aiexe-status) |
 | macOS | `qmoi_ai.dmg` | ~60-110MB | GitHub Release |
 | Linux | `.deb` / `.rpm` / `.AppImage` | ~40-80MB | GitHub Release |
 | Android | `qmoi_ai.apk` | ~30-70MB | GitHub Release |
@@ -67,9 +69,14 @@
 | Chromebook | `qmoi_ai.zip` | ~40-80MB | GitHub Release |
 | Web/PWA | Online | - | https://qmoi.qmoi.app |
 
+**⚠️ Windows Note:** The `qmoi_ai.exe` is currently a 169-byte placeholder stub for documentation and link verification. See the inventory document for build and installation instructions.
+
 ---
 
 ## 📚 Documentation
+
+### Central Reference
+👉 **[QMOI_APPS_AND_PLATFORMS_INVENTORY.md](./QMOI_APPS_AND_PLATFORMS_INVENTORY.md)** (📌 Master inventory of all apps, versions, platforms, and download links)
 
 ### For First-Time Users
 👉 Start with: [GITHUB_RELEASES_QUICKSTART.md](./GITHUB_RELEASES_QUICKSTART.md) (5 min read)
