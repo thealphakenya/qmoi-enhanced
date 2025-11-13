@@ -51,6 +51,18 @@ Immediate remaining tasks (high priority):
 3) Add a scheduled CI job or cron entry that runs `python3 scripts/sync_memory.py` (or call `/sync/push`) on a cadence appropriate for your deployment.
 4) Decide canonical production memory store (Postgres, Redis, object store). Implement migration plan and replace file-based memory with robust DB-backed memory service.
 
+---
+Auto-update (2025-11-13T09:28:00Z):
+- `Query local qmoi for balances & memory awareness`: COMPLETED — responses saved to `logs/qmoi_balance_master.json`, `logs/qmoi_balance_sister.json`, `logs/qmoi_balance_user.json`.
+- `Compare memory and md balances`: IN-PROGRESS — generated `reports/balance_memory_diff.json` and `reports/balance_memory_diff.md` (run `python3 tools/compare_memory_balances.py` to re-run).
+- `Run verification using stored credentials`: NOT STARTED — requires secrets and Master approval to use or add credentials.
+- `Update docs and create PR`: NOT STARTED — will annotate `MEGAVAULT.md` and create `VERIFICATION.md` after verification results.
+
+Notes:
+- The repo contains many references to Pesapal, M-Pesa and other payment APIs; verification requires their credentials (Pesapal consumer key/secret, bank API tokens, QuickBooks/Xero API tokens, etc.).
+- Credentials may be stored in a local encrypted vault at `.qmoi/secrets.enc` (use `scripts/secret_store.py decrypt <passphrase>` to decrypt into `.qmoi/secrets.env`), or provided via CI secrets (`QMOI_GH_TOKEN`, `PESAPAL_CONSUMER_KEY`, etc.).
+- To proceed with live verification, provide secrets via GitHub Actions secrets or a secure vault; I will not accept raw credentials pasted into chat.
+
 Development & test suggestions:
 - To test locally, run:
 - To run the standalone sync helper (CI-friendly):

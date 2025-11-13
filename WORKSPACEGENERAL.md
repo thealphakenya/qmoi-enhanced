@@ -39,6 +39,16 @@ Next suggested steps:
 - Configure `QMOI_GH_TOKEN` and/or `QMOI_HF_TOKEN` in CI or environment secrets to enable automated memory sync.
 - Add authentication in front of `/sync/*` endpoints before exposing to any network.
 - Run `python3 scripts/sync_memory.py` manually for initial sync, or add a CI job that runs it on a schedule.
+# Live status (auto-update 2025-11-13T09:28:00Z)
+
+- `qmoi` local queries (Master/Sister/User): COMPLETED — logs in `logs/qmoi_balance_master.json`, `logs/qmoi_balance_sister.json`, `logs/qmoi_balance_user.json`.
+- Balance scanner report: `reports/balance_matches.json` and `reports/balance_report.md` (generated).
+- Balance vs memory comparison: IN-PROGRESS — `reports/balance_memory_diff.json` and `reports/balance_memory_diff.md` created by `tools/compare_memory_balances.py`.
+- Verification against external payment/banking APIs: PENDING — requires production credentials (Pesapal, bank APIs, accounting systems) and Master approval.
+
+Next actions (recommended):
+- Provide secrets in GitHub Actions secrets or an encrypted vault and run `scripts/validate_all_credentials.py` and `tools/verify_balances.py` (to be added) to perform verified checks.
+- After verification, update `MEGAVAULT.md` with `VERIFIED` or `UNVERIFIED` annotations and open PR for review.
 # WORKSPACEGENERAL
 
 - Audit timestamp: 2025-11-08T15:29:10.283537Z
