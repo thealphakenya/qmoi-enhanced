@@ -20,8 +20,8 @@
     },
     {
       "path": "pwa_apps/qmoi/manifest.webmanifest",
-      "size": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 354,
+      "sha256": "80e505e389fdef340b8afef56edcf0592cb245d4d12099dc5cbcd6ea36a3a074",
       "type": "pwa"
     }
   ],
