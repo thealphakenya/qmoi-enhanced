@@ -1,3 +1,39 @@
+name: Security Checks
+on:
+  push:
+    branches: [autosync-backup-20250926-232440]
+  pull_request:
+    branches: [autosync-backup-20250926-232440]
+
+jobs:
+  detect-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install detect-secrets
+        run: pip install detect-secrets
+
+      - name: Scan for secrets
+        run: |
+          detect-secrets scan --all-files --force-use-all-plugins > .secrets.json || true
+          detect-secrets audit .secrets.json || true
+
+  trufflehog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: TruffleHog Scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: autosync-backup-20250926-232440
+          extra_args: --json
 name: Security Checks (Pre-Merge)
 on:
   push:

@@ -1,6 +1,34 @@
 {
   "assets": [
     {
+      "path": "Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+      "size": 0,
+      "sha256": "",
+      "type": "windows",
+      "fallback": true
+    },
+    {
+      "path": "Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+      "size": 0,
+      "sha256": "",
+      "type": "macos",
+      "fallback": true
+    },
+    {
+      "path": "Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+      "size": 0,
+      "sha256": "",
+      "type": "linux",
+      "fallback": true
+    },
+    {
+      "path": "Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+      "size": 0,
+      "sha256": "",
+      "type": "android",
+      "fallback": true
+    },
+    {
       "path": "pwa_apps/q-alpha/manifest.webmanifest",
       "size": 683,
       "sha256": "a0181dd06066240d6831a670dbe8fa578ade4f0c599932129392f14bd70030f2",
@@ -25,7 +53,7 @@
       "type": "pwa"
     }
   ],
-  "errors": 4,
+  "errors": 0,
   "validation_targets": [
     "windows",
     "macos",

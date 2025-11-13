@@ -1,3 +1,19 @@
+repos:
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+
+  - repo: https://github.com/trufflesecurity/trufflehog
+    rev: v3.63.0
+    hooks:
+      - id: trufflehog
+        name: TruffleHog
+        entry: trufflehog filesystem . --json
+        language: system
+        types: [text]
+        exclude: node_modules|\.git
 # Pre-commit hook configuration for QMOI Enhanced
 # Install: pip install pre-commit && pre-commit install
 # Run manually: pre-commit run --all-files
