@@ -38,7 +38,7 @@ python continuous-release-monitor.py --report
 
 ### 📖 User Guides
 - **[GITHUB_RELEASES_QUICKSTART.md](./GITHUB_RELEASES_QUICKSTART.md)** - Getting started
-- **[QMOI_APPS_AND_PLATFORMS_INVENTORY.md](./QMOI_APPS_AND_PLATFORMS_INVENTORY.md)** - 📌 **Master inventory of all apps, versions, and platforms**
+- **[QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md](./QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md)** - 📌 **Master inventory of all apps, versions, and platforms (corrected)**
 - **[QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md](./QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md)** - Complete guide
 - **[GITHUB_RELEASES_REALTIME_GUIDE.md](./GITHUB_RELEASES_REALTIME_GUIDE.md)** - Technical details
 

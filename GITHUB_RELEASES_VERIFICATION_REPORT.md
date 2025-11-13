@@ -208,7 +208,7 @@ QShare, Yap, QStore, QVillage:
 
 ## 7. Required Corrections to Documentation
 
-### QMOI_APPS_AND_PLATFORMS_INVENTORY.md
+### QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md
 
 **Current text:**
 ```markdown
@@ -245,7 +245,7 @@ QShare, Yap, QStore, QVillage:
 
 ### Immediate (Critical)
 
-1. ✅ **Update QMOI_APPS_AND_PLATFORMS_INVENTORY.md** to distinguish web-only apps from binary releases
+1. ✅ **Update QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md** to distinguish web-only apps from binary releases
 2. ✅ **Correct directory references** to point to `Qmoi_downloaded_apps/` instead of `downloads/`
 3. ✅ **Fix qmoi_ai.exe documentation** to reflect the real 5MB binary (not placeholder)
 4. ✅ **Update all docs** claiming QShare/Yap/QStore/QVillage are multi-platform
@@ -270,7 +270,7 @@ QShare, Yap, QStore, QVillage:
 
 Priority order:
 
-1. **QMOI_APPS_AND_PLATFORMS_INVENTORY.md** - Correct app types and platform support
+1. **QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md** - Correct app types and platform support
 2. **README.md** - Remove false claims about "all platforms"
 3. **DEPLOYMENT_STATUS_V1_2_3.md** - Clarify actual app status and platform count
 4. **GITHUB_RELEASES_COMPLETE_GUIDE.md** - Separate web-only from binary apps

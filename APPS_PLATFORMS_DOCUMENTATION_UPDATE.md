@@ -21,7 +21,7 @@ Created a comprehensive, authoritative inventory of all QMOI apps and platforms,
 ## Files Created
 
 ### 📌 New Master Inventory Document
-- **`QMOI_APPS_AND_PLATFORMS_INVENTORY.md`** (157 lines)
+- **`QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md`** (updated master inventory)
   - Core apps table with versions and platform support
   - Platform-specific binaries with download links
   - Platform availability matrix
@@ -36,12 +36,12 @@ Created a comprehensive, authoritative inventory of all QMOI apps and platforms,
 All key documentation files now consistently reference the new inventory document:
 
 ### 1. **README.md**
-- Added section header: "For a complete and up-to-date inventory of all apps, versions, and platforms, see: `QMOI_APPS_AND_PLATFORMS_INVENTORY.md`"
+- Added section header: "For a complete and up-to-date inventory of all apps, versions, and platforms, see: `QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md`"
 - Updated QMOI AI row to show ⚠️ emoji on Windows link
 - Windows link now points directly to inventory troubleshooting section
 
 ### 2. **GITHUB_RELEASES_INDEX.md**
-- Added prominent note at top: "📌 Central Reference: See `QMOI_APPS_AND_PLATFORMS_INVENTORY.md` for the authoritative inventory"
+- Added prominent note at top: "📌 Central Reference: See `QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md` for the authoritative inventory"
 - Ensures users find the master source immediately
 
 ### 3. **V1_2_3_QUICK_REFERENCE.md**
@@ -91,16 +91,16 @@ The new inventory matrix clearly shows:
 
 ```
 README.md
-  └─> QMOI_APPS_AND_PLATFORMS_INVENTORY.md ✅
+  └─> QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md ✅
 
 GITHUB_RELEASES_INDEX.md
-  └─> QMOI_APPS_AND_PLATFORMS_INVENTORY.md ✅
+  └─> QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md ✅
 
 V1_2_3_QUICK_REFERENCE.md
-  └─> QMOI_APPS_AND_PLATFORMS_INVENTORY.md ✅
+  └─> QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md ✅
 
 DEPLOYMENT_STATUS_V1_2_3.md
-  └─> QMOI_APPS_AND_PLATFORMS_INVENTORY.md ✅
+  └─> QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md ✅
 
 QMOI_V1_2_3_EXECUTIVE_SUMMARY.md
   └─> QMOI_APPS_AND_PLATFORMS_INVENTORY.md ✅
@@ -154,7 +154,7 @@ V1_2_3_QUICK_REFERENCE.md
 | Windows qmoi_ai.exe is placeholder | ✅ **DOCUMENTED** | Clear warning and build instructions added to inventory |
 | Users don't know which apps work on which platforms | ✅ **RESOLVED** | Platform Availability Matrix now clearly shows support |
 | Installation instructions incomplete | ✅ **IMPROVED** | Troubleshooting section added with platform-specific guides |
-| No single source of truth | ✅ **CREATED** | QMOI_APPS_AND_PLATFORMS_INVENTORY.md is now the authoritative source |
+| No single source of truth | ✅ **CREATED** | QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md is now the authoritative source |
 | README doesn't mention placeholder | ✅ **FIXED** | Windows link now shows ⚠️ and links to troubleshooting |
 
 ---
@@ -178,19 +178,19 @@ V1_2_3_QUICK_REFERENCE.md
 ## How Users Should Use the Documentation Now
 
 ### 1. **First-time user?**
-   → Start with `QMOI_V1_2_3_EXECUTIVE_SUMMARY.md` → Click "QMOI_APPS_AND_PLATFORMS_INVENTORY.md" link
+  → Start with `QMOI_V1_2_3_EXECUTIVE_SUMMARY.md` → Click "QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md" link
 
 ### 2. **Need to download for specific platform?**
-   → Go to `QMOI_APPS_AND_PLATFORMS_INVENTORY.md` → Find your platform → Download
+  → Go to `QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md` → Find your platform → Download
 
 ### 3. **Installation problem?**
-   → `QMOI_APPS_AND_PLATFORMS_INVENTORY.md` → "Troubleshooting Installation" section
+  → `QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md` → "Troubleshooting Installation" section
 
 ### 4. **Windows user seeing "corrupted file"?**
    → Any major doc → Click Windows qmoi_ai.exe warning → See build instructions
 
 ### 5. **Want to see all platforms we support?**
-   → `QMOI_APPS_AND_PLATFORMS_INVENTORY.md` → "Platform Availability Matrix"
+  → `QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md` → "Platform Availability Matrix"
 
 ---
 
