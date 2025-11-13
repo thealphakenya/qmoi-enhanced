@@ -173,8 +173,8 @@ git log -p -S "ghp_" -- "*.md" "*.txt" "*.py" "*.env" | head -50
 # Search for Vercel token
 git log -p -S "[REDACTED_VERCEL_TOKEN]" -- "*.md" "*.txt" | head -50
 
-# Search for Ngrok token
-git log -p -S "2vpml86bIuHdp1q06rMfqsqWqPz" -- "*.md" "*.py" | head -50
+# Search for Ngrok token (use placeholder to avoid storing the real token in docs)
+git log -p -S "REDACTED_NGROK_TOKEN" -- "*.md" "*.py" | head -50
 ```
 
 ### Step 3.2: Purge Using BFG Repo-Cleaner
@@ -224,7 +224,7 @@ cat > /tmp/credentials-map.txt << 'EOF'
 EOF
 
 # Filter repo
-git filter-repo --invert-regex --regex '([REDACTED_GITHUB_PAT]|[REDACTED_VERCEL_TOKEN]|2vpml86bIuHdp1q06rMfqsqWqPz)' --force
+git filter-repo --invert-regex --regex '([REDACTED_GITHUB_PAT]|[REDACTED_VERCEL_TOKEN]|REDACTED_NGROK_TOKEN)' --force
 ```
 
 ### Step 3.3: Force Push Clean History
@@ -457,7 +457,7 @@ chmod +x tools/verify_no_credentials.sh
 2. For each workflow run, check logs for credential exposure:
    - Click workflow run
    - Review each step's logs
-   - Search for `ghp_`, `eKFaXpJaQBwT`, `2vpml86b` (first 8 chars of tokens)
+  - Search for `ghp_`, `eKFaXpJaQBwT`, `REDACTED_NGROK_TOKEN` (first 8 chars of tokens)
 3. Delete old workflows with exposed logs:
    - Click **Delete workflow run**
 

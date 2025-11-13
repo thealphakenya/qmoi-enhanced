@@ -66,7 +66,7 @@ git commit -am "feat: production offline infrastructure" && git push
 **Credential Redaction**:
 - GitHub PAT: `[REDACTED_GITHUB_PAT]` → `[REDACTED_GITHUB_TOKEN]` (11 files)
 - Vercel Token: `eKFaXpJaQBwT7ZHGWnbpjj9T` → `[REDACTED_VERCEL_TOKEN]` (2 files)
-- Ngrok Token: `2vpml86bIuHdp1q06rMfqsqWqPz_7sGTMrPds44ZJmMFWdUa5` → environment variable with graceful fallback
+- Ngrok Token: `REDACTED_NGROK_TOKEN` → environment variable with graceful fallback
 
 **Token Migration to Environment Variables**:
 - `downloadqmoiaiexe.py` → `os.environ.get('NGROK_AUTH_TOKEN')`
