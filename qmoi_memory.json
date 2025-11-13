@@ -1,1 +1,34 @@
-[]
+{
+  "conversations": [
+    {
+      "timestamp": "2025-11-13T08:38:00.468108Z",
+      "persona": "master",
+      "message": "Provide a concise 3-step plan to deploy a webapp."
+    },
+    {
+      "timestamp": "2025-11-13T08:38:00.473176Z",
+      "persona": "sister",
+      "message": "Give a friendly encouragement message to a new developer."
+    },
+    {
+      "timestamp": "2025-11-13T08:38:00.478457Z",
+      "persona": "user",
+      "message": "Hello, how are you?"
+    },
+    {
+      "timestamp": "2025-11-13T08:45:05.166748Z",
+      "persona": "master",
+      "message": "Provide a concise 3-step plan to deploy a webapp."
+    },
+    {
+      "timestamp": "2025-11-13T08:45:05.171740Z",
+      "persona": "sister",
+      "message": "Give a friendly encouragement message to a new developer."
+    },
+    {
+      "timestamp": "2025-11-13T08:45:05.176673Z",
+      "persona": "user",
+      "message": "Hello, how are you?"
+    }
+  ]
+}

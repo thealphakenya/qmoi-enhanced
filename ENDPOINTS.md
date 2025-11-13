@@ -76,7 +76,7 @@ Notes:
   - `scripts/ensure_qmoi_servers.sh` — lightweight supervisor for dev
   - PWAs under `pwa_apps/` consume `/control`, `/ai`, `/sync-memory` and attachments endpoints for autosync and UI features
 
-If you add or change endpoints, please update this file and `docs/API.md`.
+If you add or change endpoints, please update this file and `docs/API.md`. For local dev/testing notes see `docs/LOCAL_QMOI_DEVELOPMENT.md`.
 QMOI Control Server - Endpoints
 
 This file enumerates the endpoints implemented by `qmoi_control_server.py` and related services.

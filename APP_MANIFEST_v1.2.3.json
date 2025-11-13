@@ -1,0 +1,94 @@
+{
+  "release_version": "v1.2.3",
+  "timestamp": "2025-11-13T07:06:22.631482",
+  "apps": {
+    "qmoi-ai": {
+      "binaries": [
+        {
+          "path": "Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+          "size": 5242880,
+          "sha256": "0a7bd2608b2d7ba9fce026d64b9ea3f1ee2904ed98b6a7ece685bd9880109b8e"
+        },
+        {
+          "path": "Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+          "size": 8388608,
+          "sha256": "85233d4eec533d801f2ccf74d3c78cabe3689a417f1e94d0cf0587c51c7036b0"
+        },
+        {
+          "path": "Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+          "size": 6291456,
+          "sha256": "c4c0fe676cc0723e3131764c5f236215e0196d25f8d2a27295328d63951755b8"
+        },
+        {
+          "path": "Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
+          "size": 4194304,
+          "sha256": "ed68be3f8d14a0c13045fd1295b440925dcd4aa84627224879d1766757648548"
+        },
+        {
+          "path": "Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+          "size": 10485760,
+          "sha256": "9f4c7433f7de3791b1e2a420aa09d82dca147f0e0de61d68bb85ced7df95cfdf"
+        },
+        {
+          "path": "Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+          "size": 12582912,
+          "sha256": "64455d87be134a76724ebfc29156a6b739973167e11fd539d834155ae77bf881"
+        },
+        {
+          "path": "Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "sha256": "71fd4adfd0a775a80b8de3020e5a319b158e3156d28ee0f9d198a270c92e020a"
+        },
+        {
+          "path": "Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "sha256": "de9da41ad6af24587563bb08ccb4ffaf6006a63abac72f037a881713092c759d"
+        },
+        {
+          "path": "Qmoi_downloaded_apps/raspberrypi/latest/qmoi_ai.img",
+          "size": 2097152000,
+          "sha256": "7f662b915661c8a8f6bd134c03b7adc70a4ec736786a3baf6648eb96eeca5d93"
+        }
+      ],
+      "pwa": {}
+    },
+    "qmoi-space": {
+      "binaries": [],
+      "pwa": {
+        "path": "pwa_apps/qmoi-space",
+        "files": [
+          "pwa_apps/qmoi-space/index.html",
+          "pwa_apps/qmoi-space/manifest.webmanifest",
+          "pwa_apps/qmoi-space/sw.js"
+        ],
+        "present": true
+      }
+    },
+    "q-alpha": {
+      "binaries": [],
+      "pwa": {
+        "path": "pwa_apps/q-alpha",
+        "files": [
+          "pwa_apps/q-alpha/index.html",
+          "pwa_apps/q-alpha/README.md",
+          "pwa_apps/q-alpha/manifest.webmanifest",
+          "pwa_apps/q-alpha/package.json",
+          "pwa_apps/q-alpha/sw.js",
+          "pwa_apps/q-alpha/icons/icon-192.png",
+          "pwa_apps/q-alpha/icons/icon-512.png"
+        ],
+        "present": true
+      }
+    },
+    "qcity": {
+      "binaries": [
+        {
+          "path": "Qmoi_downloaded_apps/qcity/latest/qcity_package.zip",
+          "size": 2097152,
+          "sha256": "5862c72cce7fd2b152e584fe7c904a211c92cda8cf1755167e54d7224b516c25"
+        }
+      ],
+      "pwa": {}
+    }
+  }
+}

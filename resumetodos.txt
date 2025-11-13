@@ -24,103 +24,59 @@ Files the automation updates after runs:
 - `tools/link_fix_proposals.json` and `tools/link_fix_actions.md` — generated proposals.
 
 If you request full automation, I will continue running conservative fixes, open PRs, and enable auto-merge for low-risk changes. Say "Proceed with full automation" to opt in.
-Current Todo Snapshot (generated 2025-11-07T21:51Z)
 
-Completed:
-- Install runtime dependencies (requirements-minimal.txt -> .venv)
-- Re-run supervised start and capture logs
-- Add preflight dependency check and auto-install for lightweight packages
-- Create minimal requirements file and install small runtime packages
-- Link-normalization dry-run and conservative safe subset of fixes applied (29 substitutions)
-- Created CI workflow to install minimal deps and attempt CPU-friendly heavy deps in CI
-- Generated high-level remediation notes for missing artifacts
+Current resume snapshot generated: 2025-11-13T00:00:00Z
 
-In-progress:
-- Update `resumetodos.txt` and central todo store (this file)
+Recent completions (this session):
+- Local QM OI dev server added: `scripts/qmoi_local_server.py` (OpenAI-style `/v1/chat/completions`).
+- Persistent memory store initialized: `qmoi_memory.json`.
+- Memory sync endpoints added: `/sync/push`, `/sync/pull`, `/sync/config`.
+- Background auto-sync available via env `QMOI_SYNC_INTERVAL_SECONDS`.
+- Standalone sync helper script added: `scripts/sync_memory.py` (supports `gist`, `hf`, and `scp` backends).
+- Documentation updated: `docs/LOCAL_QMOI_DEVELOPMENT.md`, `CURLQMOIMASTERSISTERUSER.md`, `HOOKS.md`, `API.md`, `ENDPOINTS.md` references added.
 
-Pending (next actions):
-1) Tidy working tree: review modified files, stage intentional changes, keep validation artifacts in `.qmoi_validation/`.
-2) Push focused commits to a review branch and open a PR for link fixes and start/preflight changes.
-3) Decide strategy for heavy packages (torch): pin CPU wheels in CI or document manual install steps.
-4) Run full start flow end-to-end in a CI runner that supports heavy packages.
+Files added/updated:
+- `scripts/qmoi_local_server.py` (sync endpoints + optional background sync)
+- `scripts/sync_memory.py` (standalone sync helper)
+- `docs/LOCAL_QMOI_DEVELOPMENT.md` (local dev server docs)
+- `CURLQMOIMASTERSISTERUSER.md` (curl examples, memory sync)
+- `HOOKS.md` (memory sync & production notes)
+- `WORKSPACEGENERAL.md` (resume summary)
 
-Notes:
-- All automated edits create backups (.linkfix.bak/.dotfix.bak) and logs in `.qmoi_validation/`.
-- `requirements-minimal.txt` now includes: requests, aiohttp, boto3, numpy, pandas, GitPython, watchdog, schedule, PyYAML.
-Autotest/resume snapshot (generated)
-Date: 2025-11-03
+Immediate remaining tasks (high priority):
+1) Configure production secrets and CI jobs:
+   - Add `QMOI_GH_TOKEN` and (optionally) `QMOI_GIST_ID` as repo secrets.
+   - Add `QMOI_HF_TOKEN` and `QMOI_HF_REPO` if you want HF repo sync.
+2) Protect `/sync/*` endpoints with authentication before exposing the server publicly.
+3) Add a scheduled CI job or cron entry that runs `python3 scripts/sync_memory.py` (or call `/sync/push`) on a cadence appropriate for your deployment.
+4) Decide canonical production memory store (Postgres, Redis, object store). Implement migration plan and replace file-based memory with robust DB-backed memory service.
 
-Completed in this session:
-- Added repository-wide Jest guidance and conservative root config (`QMOIJEST.md`, `jest.config.cjs`).
-- Added minimal Jest test setup (`jest.setup.js`) and a simple file mock at `__mocks__/fileMock.js`.
-- Updated `tools/autotest_runner.py` to run scanners, dry-list Jest tests and (if small) run tests producing JSON results.
+Development & test suggestions:
+- To test locally, run:
+- To run the standalone sync helper (CI-friendly):
 
-Current state / blockers:
-- Jest invocation failed in this environment: `npm/npx` and `yarn` attempts returned non-zero (tools/autotest_report.md). This environment appears to lack a usable Jest binary. To run tests here, install devDependencies or run from an environment with Node.js tooling available.
-- Placeholder scan results are large and include generated/validation artifacts under `.qmoi_validation/` — we should exclude those folders before bulk auto-fixes.
+```bash
+python3 scripts/qmoi_local_server.py &
+curl -s -X POST http://localhost:8080/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"qmoi","messages":[{"role":"user","content":"Hello"}]}' | jq
+curl -s -X POST http://localhost:8080/sync/push -H "Content-Type: application/json" -d '{}' | jq
+```
 
-Next steps I recommend (automated where safe):
-1) Triaging placeholders: update `tools/find_placeholders.py` to ignore `.qmoi_validation/`, `node_modules/`, `dist/`, and `build/` by default, then re-run scan and produce a filtered `matches.filtered.json` for review.
-2) Enable Jest execution in CI: either ensure `npm ci` runs in CI before the autotest step or commit a lightweight test-runner image into CI that includes node and the repo dependencies. Then run `python3 tools/autotest_runner.py` again to capture test results.
-3) Wire jest to `tools/autotest_runner.py` results path (`tools/jest_results.json`) into autodev gating (canary promotion) — small follow-up.
+- To run the standalone sync helper (CI-friendly):
 
-Current todo states (high level):
-- Wire Jest into autotest runner: in-progress (needs usable jest binary in environment)
-- Add Jest setup and mocks: completed
-- Run dry-list of tests: not-started (blocked by missing jest binary)
-- Run Jest tests: not-started (blocked)
-- Triage placeholder scan noise: not-started
+```bash
+export QMOI_SYNC_BACKENDS="gist,hf"
+export QMOI_GIST_ID="<gist id>"
+export QMOI_GH_TOKEN="$GITHUB_TOKEN"
+export QMOI_HF_REPO="user/qmoi-memory"
+export QMOI_HF_TOKEN="$HF_TOKEN"
+python3 scripts/sync_memory.py
+```
 
-If you'd like I can now:
-- A: Update `tools/find_placeholders.py` to exclude generated folders and re-run scans (safe and quick).
-- B: Attempt to run jest by invoking `npm ci` then `npx jest --listTests` (this will install packages and may be slow / network dependent). Ask explicitly before I perform installs.
+If you want, I can now:
+- A: Start the local server and run example conversations (Master/Sister/User) and show the responses and memory file updates.
+- B: Create a GitHub Actions job to run `scripts/sync_memory.py` on a schedule (requires your approval to commit CI workflow updates).
 
--- end of snapshot
-
-QMOI — Resume To-dos (auto-generated)
-
-This snapshot was updated after running the initial scans and autotest orchestration.
-Use this as the source-of-truth for the next work session.
-
-Completed:
-- Inventory & scans — completed (matches.json, allrefs.txt)
-- Generate ALLVERSIONS.md — completed (ALLVERSIONS.md and tools/versions_summary.json)
-- Automated fixes (dry-run) — completed (placeholder_fixes.patch not produced — nothing safe proposed)
-- ALLMDFILESREFS.md regeneration — complete
-In-progress / Needs review / Next actions:
-1) Resumetodos update — in-progress
-   - This file (resumetodos.txt) must be updated at the end of each session with remaining items.
-
-2) Link validation — in-progress
-   - `tools/check_links.py` run; report at `link_report.md` and `tools/link_report.json`.
-   - Next: review `link_report.md`, fix or update missing local links, and decide whether to validate external links.
-
-3) Autotest orchestration — in-progress
-   - `tools/autotest_runner.py` created and run; report at `tools/autotest_report.md`.
-   - Next: wire the runner into CI and add more tests (UI snapshot, accessibility checks).
-
-Planned / Not started (priority order):
-4) Add QMOI autodev doc — not-started (implementation follow-ups remain despite `QMOI_AUTODEV.md` added)
-   - Implement delta packager, signed patches, canary controller scripts.
-
-5) Enhance qvillage & Hugging Face autosync plan — not-started
-   - Draft scripts to automatically update model cards, push model artifacts to HF spaces, and sync memory store.
-
-6) UI auto-update design & implementation — not-started
-   - Implement the feature-flagged rollout controller and small hooks in the UI to accept signed delta updates.
-
-7) Finalize resumetodos — not-started
-   - On next pause: update this file with concrete owners, PRs/patches to apply, and exact commands to run.
-
-How to proceed (recommended next 2 steps):
-- Open `link_report.md`, triage missing local links; fix obvious path issues.
-- Draft a small canary rollout prototype (scripts/ or tools/) that can apply a signed CSS/JSON delta to a local dev server.
-
-Files created in this session:
-- `tools/collect_versions.py` — generates `ALLVERSIONS.md` and `tools/versions_summary.json`
-- `tools/check_links.py` — checks markdown links and writes reports
-- `tools/autotest_runner.py` — orchestrates scans and writes `tools/autotest_report.md`
-- `QMOI_AUTODEV.md` — autodev design notes
+Which action should I take next? (A/B or other)
 - `ALLVERSIONS.md` — versions index (generated)
 - `tools/versions_summary.json`, `tools/link_report.json`, `link_report.md`, `tools/autotest_report.md` (reports)
 

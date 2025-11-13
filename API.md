@@ -132,6 +132,18 @@ Notes & next steps:
 - The mirror endpoints succeeded and returned content or raw files correctly; the raw mirror returned the `live_qmoi_ngrok_url.txt` content which is used by the ngrok update script.
 - I updated this file programmatically with the live test results. If you want these changes committed and pushed to the remote repository, please confirm and I'll push the commits (I will not push without explicit permission).
 
+## Local QM OI Development Endpoint (DEV ONLY)
+
+For local development and testing, a lightweight local QM OI HTTP server is available at `http://localhost:8080`.
+
+- Health: `GET http://localhost:8080/health`  
+- Memory: `GET http://localhost:8080/memory`  (returns stored `qmoi_memory.json`)  
+- Chat: `POST http://localhost:8080/v1/chat/completions` — accepts a JSON body similar to OpenAI Chat Completions `{ "model":"qmoi", "messages": [...] }` and returns an OpenAI-like response structure. The implementation is in `scripts/qmoi_local_server.py`.
+
+Use `CURLQMOIMASTERSISTERUSER.md` for example curl calls (master/sister/user). The local server stores persistent memory in `qmoi_memory.json` so conversations are preserved across server restarts.
+
+IMPORTANT: This local server is a development helper — replace with a real model backend for production usage, and ensure proper authentication and rate-limiting in front of any model endpoint.
+
 ## Authentication
 
 All API endpoints require authentication using JWT tokens. Include the token in the Authorization header:

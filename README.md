@@ -204,19 +204,22 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 - ✅ Web-safe and version-controllable
 
 <!-- QMOI_APPS_TABLE_START -->
+<!-- QMOI_APPS_TABLE_START -->
 | App | Platform | File | Size (KB) | Download |
 |---|---:|---|---:|---|
-| qmoi ai | qmoi ai.exe | [downloads/qmoi ai.exe](downloads/qmoi ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi ai.exe) |
-| error | error.log | [downloads/error.log](downloads/error.log) | 0 | [Download](https://downloads.qmoi.app/downloads/error.log) |
-| qmoi_ai | qmoi_ai.exe | [downloads/qmoi_ai.exe](downloads/qmoi_ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/qmoi_ai.exe) |
-| qmoi_ai | linux | [downloads/linux/latest/qmoi_ai.AppImage](downloads/linux/latest/qmoi_ai.AppImage) | 0 | [Download](https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage) |
-| qmoi_ai_arm.tar | raspberrypi | [downloads/raspberrypi/qmoi_ai_arm.tar.gz](downloads/raspberrypi/qmoi_ai_arm.tar.gz) | 0 | [Download](https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz) |
-| qmoi_ai | smarttv | [downloads/smarttv/qmoi_ai.pkg](downloads/smarttv/qmoi_ai.pkg) | 0 | [Download](https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg) |
-| qmoi_ai | ios | [downloads/ios/qmoi_ai.ipa](downloads/ios/qmoi_ai.ipa) | 0 | [Download](https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa) |
-| qmoi_ai | mac | [downloads/mac/latest/qmoi_ai.dmg](downloads/mac/latest/qmoi_ai.dmg) | 0 | [Download](https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg) |
-| qmoi_ai | android | [downloads/android/qmoi_ai.apk](downloads/android/qmoi_ai.apk) | 0 | [Download](https://downloads.qmoi.app/downloads/android/qmoi_ai.apk) |
-| qmoi_ai | windows | [downloads/windows/latest/qmoi_ai.exe](downloads/windows/latest/qmoi_ai.exe) | 0 | [Download](https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe) |
-| qmoi_ai | chromebook | [downloads/chromebook/qmoi_ai.deb](downloads/chromebook/qmoi_ai.deb) | 0 | [Download](https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb) |
+| QMOI AI | Windows | qmoi-ai-v1.2.3-windows.exe | 5120 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe) |
+| QMOI AI | macOS | qmoi-ai-v1.2.3-macos.dmg | 8192 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg) |
+| QMOI AI | Linux (AppImage) | qmoi-ai-v1.2.3-linux-appimage | 6144 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage) |
+| QMOI AI | Linux (DEB) | qmoi-ai-v1.2.3-linux.deb | 4096 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux.deb) |
+| QMOI AI | Android | qmoi-ai-v1.2.3-android.apk | 10240 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk) |
+| QMOI AI | iOS | qmoi-ai-v1.2.3-ios.ipa | 12288 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa) |
+| QMOI AI | Smart TV | qmoi-ai-v1.2.3-smarttv.apk | 8192 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk) |
+| QMOI AI | Chromebook | qmoi-ai-v1.2.3-chromebook.zip | 3072 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-chromebook.zip) |
+| QMOI AI | Raspberry Pi | qmoi_ai.img | 2048000 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img) |
+| QMOI Space | Web (PWA) | pwa_apps/qmoi-space/manifest.webmanifest | — | [Open PWA](https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/) |
+| Q Alpha | Web (PWA) | pwa_apps/q-alpha/manifest.webmanifest | — | [Open PWA](https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-alpha/) |
+| QCity | Orchestration | qcity-v2.0.1.zip | 2048 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip) |
+<!-- QMOI_APPS_TABLE_END -->
 <!-- QMOI_APPS_TABLE_END -->
 
 ## 🦁 Lion Operating System (experimental)

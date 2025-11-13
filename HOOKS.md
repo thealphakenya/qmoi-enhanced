@@ -59,6 +59,20 @@ hooks/
 - All hooks are referenced in `ALLMDFILESREFS.md` and planned for further enhancement and integration.
 - Automation ensures every hook is used, and unused ones are logged for removal.
 
+## Memory Sync & Hooks (New)
+
+- QMOI implements a configurable memory sync system that can push and pull `qmoi_memory.json` to external backends (GitHub Gist, Hugging Face repo, SCP targets).
+- Local dev server endpoints (see `scripts/qmoi_local_server.py`):
+  - `POST /sync/push` — trigger push to configured backends (returns JSON with details)
+  - `POST /sync/pull` — pull remote memory and merge into local `qmoi_memory.json`
+  - `GET /sync/config` — list configured sync backends (env-driven)
+- Backends are configured with environment variables: `QMOI_SYNC_BACKENDS` (comma-separated), `QMOI_GIST_ID`, `QMOI_GH_TOKEN`, `QMOI_HF_REPO`, `QMOI_HF_TOKEN`, and `QMOI_SYNC_INTERVAL_SECONDS` (for background sync).
+- A standalone helper script `scripts/sync_memory.py` is provided to run sync from CI, cron, or automation pipelines.
+
+Security & production notes:
+- Do not expose `/sync/*` endpoints publicly without authentication. In production, front these endpoints with proper auth (JWT or API key) and rate limiting.
+- When configuring HF/GH tokens, use repo secrets or environment secrets; avoid storing tokens in the repository.
+
 **Status:** All hooks are now checked for usage and integration. No unused/duplicate hooks will remain after next cleanup. All hook features are covered for QCity, QMOI AI, and QMOI Space.
 
 ## Zero-Rated QMOI Features & Universal Automation

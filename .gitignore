@@ -176,3 +176,7 @@ tmp/
 temp/
 
 .qmoi_validation
+# ignore large downloaded app artifacts
+Qmoi_downloaded_apps/*
+Qmoi_downloaded_apps/**
+loaded_apps/**
