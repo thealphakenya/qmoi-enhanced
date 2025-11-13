@@ -1,0 +1,16 @@
+default_platform(:ios)
+
+platform :ios do
+  desc 'Build and archive iOS app (requires signing credentials in CI)'
+  lane :archive do
+    match(type: 'appstore')
+    build_app(scheme: 'QmoiApp')
+    upload_to_testflight
+  end
+end
+
+platform :android do
+  desc 'Build Android release using Gradle (requires keystore)'
+  lane :release do
+    gradle(task: 'assembleRelease')
+  end

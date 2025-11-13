@@ -1,0 +1,46 @@
+name: Packaging Gate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-secrets:
+    runs-on: ubuntu-latest
+    outputs:
+      android_present: ${{ steps.check.outputs.android_present }}
+      apple_present: ${{ steps.check.outputs.apple_present }}
+    steps:
+      - name: Check packaging secrets
+        id: check
+        run: |
+          android_ok=false
+          apple_ok=false
+          if [ -n "${{ secrets.ANDROID_KEYSTORE }}" ] || [ -n "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" ]; then
+            android_ok=true
+          fi
+          if [ -n "${{ secrets.APPLE_API_KEY }}" ] || [ -n "${{ secrets.FASTLANE_SESSION }}" ]; then
+            apple_ok=true
+          fi
+          echo "android_present=$android_ok" >> $GITHUB_OUTPUT
+          echo "apple_present=$apple_ok" >> $GITHUB_OUTPUT
+
+  packaging:
+    needs: check-secrets
+    runs-on: ubuntu-latest
+    if: needs.check-secrets.outputs.android_present == 'true' || needs.check-secrets.outputs.apple_present == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Packaging placeholder
+        run: |
+          echo "Packaging gate: secrets present; run packaging workflows or dispatch jobs here."
+
+  no-op:
+    needs: check-secrets
+    runs-on: ubuntu-latest
+    if: needs.check-secrets.outputs.android_present == 'false' && needs.check-secrets.outputs.apple_present == 'false'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Skip packaging
+        run: echo "No packaging secrets present; skipping packaging jobs. Add secrets and re-run." 

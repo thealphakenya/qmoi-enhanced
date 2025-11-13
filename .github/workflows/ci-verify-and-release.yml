@@ -256,3 +256,80 @@ EOF
             } else {
               core.info('Docs PR already exists, skipping')
             }
+
+    pwa-smoke:
+      name: PWA Smoke Tests
+      runs-on: ubuntu-latest
+      needs: build-matrix
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Static PWA checks
+          run: |
+            echo "Running static checks for PWA manifests and service workers"
+            set -e
+            found=0
+            for d in pwa_apps/*/; do
+              [ -d "$d" ] || continue
+              echo "Checking $d"
+              if [ -f "$d/manifest.webmanifest" ] || [ -f "$d/manifest.json" ]; then
+                echo "  manifest found"
+              else
+                echo "  ERROR: manifest missing in $d" && found=1
+              fi
+              if [ -f "$d/sw.js" ] || [ -f "$d/service-worker.js" ]; then
+                echo "  service worker found"
+              else
+                echo "  WARN: service worker missing in $d"
+              fi
+            done
+            if [ $found -ne 0 ]; then
+              echo "PWA static checks failed" && exit 1
+            fi
+
+        - name: Optional headless PWA smoke (Playwright)
+          if: env.RUN_PWA_HEADLESS == 'true'
+          run: |
+            echo "Running headless smoke checks with Playwright (this may download browsers)"
+            npm ci || npm install
+            npm install playwright@1.35.0 --save-dev || true
+            node -e "(async()=>{const {chromium}=require('playwright');const fs=require('fs');for(const d of fs.readdirSync('pwa_apps')){const dir='pwa_apps/'+d; if(!fs.statSync(dir).isDirectory()) continue; const index=dir+'/index.html'; if(!fs.existsSync(index)) continue; const server=require('child_process').spawn('npx',['http-server',dir,'-p','8080'],{stdio:'inherit'}); await new Promise(r=>setTimeout(r,1500)); const browser=await chromium.launch(); const page=await browser.newPage(); await page.goto('http://127.0.0.1:8080'); console.log('Loaded',d); await browser.close(); server.kill(); }} )()" || true
+
+    packaging:
+      name: Packaging (auto when secrets present)
+      needs: build-matrix
+      runs-on: ubuntu-latest
+      if: startsWith(github.ref, 'refs/tags/') && (secrets.ANDROID_KEYSTORE_BASE64 != '' || secrets.ANDROID_KEYSTORE != '' || secrets.APPLE_API_KEY != '')
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Prepare environment
+          run: |
+            echo "Preparing packaging environment"
+            npm ci || npm install || true
+
+        - name: Android packaging (if keystore present)
+          if: secrets.ANDROID_KEYSTORE_BASE64 != ''
+          env:
+            ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          run: |
+            echo "Decoding Android keystore"
+            echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android_keystore.jks
+            ls -la android_keystore.jks || true
+            if [ -f mobile/android/gradlew ]; then
+              cd mobile/android
+              ./gradlew assembleRelease || ./gradlew assembleDebug || true
+              cd -
+            else
+              echo "No Android gradle project found"
+            fi
+
+        - name: Electron packaging (template)
+          run: |
+            if [ -f package.json ]; then
+              npx electron-builder --dir || echo "electron-builder template run (adjust for real builds)"
+            else
+              echo "No package.json found; skipping electron build"
+            fi

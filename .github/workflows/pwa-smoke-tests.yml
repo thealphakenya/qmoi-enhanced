@@ -1,0 +1,78 @@
+name: PWA Smoke Tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  pwa-check:
+    name: PWA basic checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure discovered JSON exists or scan
+        id: discover
+        run: |
+          python3 - <<'PY'
+import json, os, sys
+path='tools/discovered_assets.json'
+assets=[]
+if os.path.exists(path):
+    with open(path,'r',encoding='utf-8') as f:
+        j=json.load(f)
+        assets=j.get('assets',[])
+else:
+    # fallback: scan pwa_apps for manifests
+    for root,dirs,files in os.walk('pwa_apps'):
+        for fn in files:
+            if fn.endswith('.webmanifest') or fn.endswith('manifest.json') or fn.endswith('.zip'):
+                assets.append({'path': os.path.join(root,fn), 'type': 'pwa'})
+print(json.dumps({'count':len(assets), 'assets': assets}))
+PY
+
+      - name: Run PWA validations
+        run: |
+          python3 - <<'PY'
+import json,sys,os
+path='tools/discovered_assets.json'
+assets=[]
+if os.path.exists(path):
+    with open(path,'r',encoding='utf-8') as f:
+        j=json.load(f)
+        assets=j.get('assets',[])
+else:
+    for root,dirs,files in os.walk('pwa_apps'):
+        for fn in files:
+            if fn.endswith('.webmanifest') or fn.endswith('manifest.json') or fn.endswith('.zip'):
+                assets.append({'path': os.path.join(root,fn), 'type': 'pwa'})
+
+if not assets:
+    print('No PWA assets found; failing smoke tests')
+    sys.exit(1)
+
+errors=0
+for a in assets:
+    p=a['path']
+    if not os.path.exists(p):
+        print('Missing:',p)
+        errors+=1
+        continue
+    if p.endswith('.webmanifest') or p.endswith('manifest.json'):
+        try:
+            import json
+            with open(p,'r',encoding='utf-8') as f:
+                m=json.load(f)
+            if not m.get('name') or not m.get('start_url'):
+                print('Manifest missing name/start_url:',p)
+                errors+=1
+        except Exception as e:
+            print('Manifest parse error',p,e)
+            errors+=1
+
+if errors>0:
+    print('PWA smoke tests failed')
+    sys.exit(1)
+print('PWA smoke tests passed')
+PY

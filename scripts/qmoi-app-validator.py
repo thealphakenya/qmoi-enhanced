@@ -1,5 +1,8 @@
 import os
 import glob
+import hashlib
+import json
+from pathlib import Path
 
 MIN_SIZES = {
     'exe': 5_000_000,
@@ -49,6 +52,7 @@ def any_for_ext(exts):
 def validate():
     print('[🧪] Validating release artifacts for multiple platforms...')
     errors = 0
+    assets = []
 
     # Windows
     if 'windows' in VALIDATION_TARGETS:
@@ -64,6 +68,10 @@ def validate():
                     errors += 1
                 else:
                     print(f'[✅] Windows artifact OK: {f}')
+                # record asset
+                with open(f, 'rb') as fh:
+                    sha256 = hashlib.sha256(fh.read()).hexdigest()
+                assets.append({'path': f, 'size': size, 'sha256': sha256, 'type': 'windows'})
 
     # macOS
     if 'macos' in VALIDATION_TARGETS:
@@ -79,6 +87,9 @@ def validate():
                     errors += 1
                 else:
                     print(f'[✅] macOS artifact OK: {f}')
+                with open(f, 'rb') as fh:
+                    sha256 = hashlib.sha256(fh.read()).hexdigest()
+                assets.append({'path': f, 'size': size, 'sha256': sha256, 'type': 'macos'})
 
     # Linux
     if 'linux' in VALIDATION_TARGETS:
@@ -96,6 +107,9 @@ def validate():
                     errors += 1
                 else:
                     print(f'[✅] Linux artifact OK: {f}')
+                with open(f, 'rb') as fh:
+                    sha256 = hashlib.sha256(fh.read()).hexdigest()
+                assets.append({'path': f, 'size': size, 'sha256': sha256, 'type': 'linux'})
 
     # Android
     if 'android' in VALIDATION_TARGETS:
@@ -111,6 +125,9 @@ def validate():
                     errors += 1
                 else:
                     print(f'[✅] Android artifact OK: {f}')
+                with open(f, 'rb') as fh:
+                    sha256 = hashlib.sha256(fh.read()).hexdigest()
+                assets.append({'path': f, 'size': size, 'sha256': sha256, 'type': 'android'})
 
     # iOS (optional unless explicitly requested)
     if 'ios' in VALIDATION_TARGETS:
@@ -126,6 +143,9 @@ def validate():
                     errors += 1
                 else:
                     print(f'[✅] iOS artifact OK: {f}')
+                with open(f, 'rb') as fh:
+                    sha256 = hashlib.sha256(fh.read()).hexdigest()
+                assets.append({'path': f, 'size': size, 'sha256': sha256, 'type': 'ios'})
 
     # PWAs (zipped packages or app manifests)
     if 'pwa' in VALIDATION_TARGETS:
@@ -142,6 +162,21 @@ def validate():
                     errors += 1
                 else:
                     print(f'[✅] PWA asset OK: {f}')
+                with open(f, 'rb') as fh:
+                    sha256 = hashlib.sha256(fh.read()).hexdigest()
+                assets.append({'path': f, 'size': size, 'sha256': sha256, 'type': 'pwa'})
+
+    # Ensure output directory exists and write discovered assets JSON for CI
+    out_dir = Path('tools')
+    out_dir.mkdir(parents=True, exist_ok=True)
+    discovered = {
+        'assets': assets,
+        'errors': errors,
+        'validation_targets': VALIDATION_TARGETS
+    }
+    with open(out_dir / 'discovered_assets.json', 'w', encoding='utf-8') as of:
+        json.dump(discovered, of, indent=2)
+    print(f"[💾] Wrote {out_dir / 'discovered_assets.json'} with {len(assets)} assets and {errors} errors")
 
     if errors > 0:
         print(f'[❌] Validation failed with {errors} issues.')
