@@ -1,0 +1,60 @@
+name: PWA Deploy and Smoke Tests
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'pwa_apps/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      pages_url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run validator (PWA only)
+        run: |
+          VALIDATION_TARGETS=pwa python3 scripts/qmoi-app-validator.py
+
+      - name: Prepare pages artifact
+        run: |
+          rm -rf ./.site
+          mkdir -p ./.site
+          cp -r pwa_apps/* ./.site/
+          ls -la ./.site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./.site
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v1
+
+  playwright-test:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm i -D playwright@1.40.0
+          npx playwright install --with-deps
+
+      - name: Run Playwright smoke test
+        env:
+          PAGES_URL: ${{ steps.deploy.outputs.page_url }}
+        run: |
+          node -e "(async ()=>{const {chromium}=require('playwright');const url=process.env.PAGES_URL||('https://'+process.env.GITHUB_REPOSITORY.split('/')[0]+'.github.io/'+process.env.GITHUB_REPOSITORY.split('/')[1]+'/');console.log('Testing',url);const b=await chromium.launch();const p=await b.newPage();await p.goto(url,{timeout:30000});const t=await p.title();console.log('Title:',t);await b.close();})();"
