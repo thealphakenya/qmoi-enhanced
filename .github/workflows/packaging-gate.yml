@@ -2,6 +2,9 @@ name: Packaging Gate
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - auto/release-inventory-20251113160839
 
 jobs:
   check-secrets:
@@ -31,9 +34,42 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Packaging placeholder
+      - name: Packaging: dispatch packaging workflows
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Packaging gate: secrets present; run packaging workflows or dispatch jobs here."
+          set -e
+          REPO="$GITHUB_REPOSITORY"
+          REF="$GITHUB_REF"
+          echo "Secrets present. Dispatching packaging workflows for $REPO @ $REF"
+          # Dispatch package-electron (attempt signed if signing key present)
+          ELECTRON_SIGNING_PRESENT=false
+          if [ -n "${{ secrets.ELECTRON_SIGNING_KEY_BASE64 }}" ]; then ELECTRON_SIGNING_PRESENT=true; fi
+          if [ "$ELECTRON_SIGNING_PRESENT" = true ]; then
+            curl -sSX POST "https://api.github.com/repos/$REPO/actions/workflows/package-electron.yml/dispatches" \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              -d "{\"ref\": \"${GITHUB_REF#refs/heads/}\", \"inputs\": {\"run_signed\": \"true\"}}"
+          else
+            curl -sSX POST "https://api.github.com/repos/$REPO/actions/workflows/package-electron.yml/dispatches" \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              -d "{\"ref\": \"${GITHUB_REF#refs/heads/}\", \"inputs\": {\"run_signed\": \"false\"}}"
+          fi
+
+          # Dispatch package-mobile for Android/iOS depending on secrets
+          RUN_ANDROID=false
+          RUN_IOS=false
+          if [ -n "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" ] || [ -n "${{ secrets.ANDROID_KEYSTORE }}" ]; then RUN_ANDROID=true; fi
+          if [ -n "${{ secrets.APPLE_API_KEY }}" ] || [ -n "${{ secrets.FASTLANE_SESSION }}" ]; then RUN_IOS=true; fi
+          if [ "$RUN_ANDROID" = true ] || [ "$RUN_IOS" = true ]; then
+            curl -sSX POST "https://api.github.com/repos/$REPO/actions/workflows/package-mobile.yml/dispatches" \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              -d "{\"ref\": \"${GITHUB_REF#refs/heads/}\", \"inputs\": {\"run_android\": \"${RUN_ANDROID}\", \"run_ios\": \"${RUN_IOS}\"}}"
+          else
+            echo "No mobile signing secrets found; skipping mobile packaging dispatch"
+          fi
 
   no-op:
     needs: check-secrets
