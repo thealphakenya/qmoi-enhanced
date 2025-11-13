@@ -24,6 +24,7 @@ jobs:
           echo "DISCO=$(jq -c . tools/discovered_assets.json)" >> $GITHUB_OUTPUT
 
       - name: Create draft release
+        id: create_release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref_name || github.event.release.tag_name || 'v-draft-' + github.run_id }}
