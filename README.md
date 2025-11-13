@@ -63,6 +63,11 @@ Use the following tools to automate and build your apps:
 
 > 🚗 All builds are **cloud-offloaded** to reduce load and ensure stability across devices.
 
+### CI Verify & Auto-Release
+
+- A new GitHub Actions workflow `ci-verify-and-release.yml` verifies builds across `ubuntu-latest`, `macos-latest`, and `windows-latest` runners, packages PWAs, validates artifacts with `scripts/qmoi-app-validator.py`, and publishes discovered artifacts to GitHub Releases on tag push. Trigger it by creating a tag `vX.Y.Z` or via the workflow_dispatch input.
+
+
 ---
 
 ## 💂 File Structure
