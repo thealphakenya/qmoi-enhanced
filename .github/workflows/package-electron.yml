@@ -1,0 +1,39 @@
+name: Package Electron (gated)
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_signed:
+        description: 'Set to true to attempt signing (requires secrets)'
+        required: false
+        default: 'false'
+
+jobs:
+  build-electron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm ci || npm install
+
+      - name: Prepare signing key (optional)
+        run: |
+          if [ "${{ secrets.ELECTRON_SIGNING_KEY_BASE64 }}" != "" ]; then
+            echo "$ELECTRON_SIGNING_KEY_BASE64" | base64 -d > electron_signing_key.p12
+            echo "Signing key written"
+          else
+            echo "No ELECTRON_SIGNING_KEY_BASE64 secret found; proceeding without signing"
+          fi
+
+      - name: Build electron packages (template)
+        run: |
+          npx electron-builder --linux --win --mac --publish=never || true
+          echo "If you need signing, set ELECTRON_SIGNING_KEY_BASE64 and other platform-specific secrets, then re-run with run_signed=true"

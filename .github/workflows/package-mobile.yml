@@ -1,0 +1,53 @@
+name: Package Mobile (gated)
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_android:
+        description: 'Run Android packaging (requires ANDROID_* secrets)'
+        required: false
+        default: 'false'
+      run_ios:
+        description: 'Run iOS packaging (requires APPLE_API_KEY)'
+        required: false
+        default: 'false'
+
+jobs:
+  android-build:
+    if: ${{ github.event.inputs.run_android == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Prepare Android keystore
+        run: |
+          if [ -n "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" ]; then
+            echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > upload.keystore
+            echo "Keystore written"
+          else
+            echo "ANDROID_KEYSTORE_BASE64 not set; cannot sign. Will attempt debug build."
+          fi
+      - name: Build Android (Gradle)
+        run: |
+          cd mobile/android || exit 0
+          ./gradlew assembleRelease || ./gradlew assembleDebug || true
+
+  ios-build:
+    if: ${{ github.event.inputs.run_ios == 'true' }}
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+      - name: Install fastlane
+        run: gem install fastlane -NV || true
+      - name: Run Fastlane (template)
+        run: |
+          cd mobile/ios || exit 0
+          bundle exec fastlane ios build || true

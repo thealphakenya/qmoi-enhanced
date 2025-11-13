@@ -1,0 +1,44 @@
+name: Draft Release from Discovered Assets
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read discovered assets
+        id: discovered
+        run: |
+          if [ -f tools/discovered_assets.json ]; then
+            cat tools/discovered_assets.json
+          else
+            echo '{"assets":[],"errors":0}' > tools/discovered_assets.json
+          fi
+          echo "DISCO=$(jq -c . tools/discovered_assets.json)" >> $GITHUB_OUTPUT
+
+      - name: Create draft release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name || github.event.release.tag_name || 'v-draft-' + github.run_id }}
+          name: "Draft release ${{ github.ref_name || github.event.release.tag_name || 'draft' }}"
+          body: |
+            Automated draft release generated from `tools/discovered_assets.json`.
+            See attached assets and checksums.
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload discovered JSON to release
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: tools/discovered_assets.json
+          asset_name: discovered_assets.json
+          asset_content_type: application/json
