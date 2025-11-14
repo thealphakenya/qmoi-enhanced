@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-android:
-    name: Build Android APK
+    name: Build Android APK (Production Signed)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,27 +22,28 @@ jobs:
         with:
           path: ~/.gradle
           key: gradle-cache-${{ runner.os }}-${{ hashFiles('**/gradle-wrapper.properties') }}
-      - name: Restore keystore for signing (if present)
-        if: env.ANDROID_KEYSTORE_BASE64 != ''
+      - name: Restore keystore from GitHub Secrets
+        if: secrets.ANDROID_KEYSTORE_BASE64 != ''
         run: |
           echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > $GITHUB_WORKSPACE/keystore.jks
+          echo "✓ Keystore restored from GitHub Secrets"
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-      - name: Build Android (assembleRelease)
+      - name: Build Android Release APK (Production Signed)
         working-directory: ./qmoi-enhanced/mobile/android
         run: |
           chmod +x ./gradlew || true
           if [ -f "$GITHUB_WORKSPACE/keystore.jks" ]; then
-            echo "Building with signing keystore..."
+            echo "✓ Building with production signing..."
             ./gradlew assembleRelease \
-              -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/keystore.jks \
-              -Pandroid.injected.signing.store.password="${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" \
-              -Pandroid.injected.signing.key.alias="${{ secrets.ANDROID_KEY_ALIAS }}" \
-              -Pandroid.injected.signing.key.password="${{ secrets.ANDROID_KEY_PASSWORD }}" \
-              --no-daemon
+              -PKEYSTORE_FILE="$GITHUB_WORKSPACE/keystore.jks" \
+              -PKEYSTORE_PASSWORD="${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" \
+              -PKEY_ALIAS="${{ secrets.ANDROID_KEY_ALIAS }}" \
+              -PKEY_PASSWORD="${{ secrets.ANDROID_KEY_PASSWORD }}" \
+              --no-daemon -q
           else
-            echo "Building without signing (debug mode)..."
-            ./gradlew assembleRelease --no-daemon
+            echo "⚠ Building with debug keystore (no production secrets)..."
+            ./gradlew assembleRelease --no-daemon -q
           fi
       - name: Upload APK
         uses: actions/upload-artifact@v4
