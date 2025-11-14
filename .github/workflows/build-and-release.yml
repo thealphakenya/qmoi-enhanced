@@ -7,55 +7,44 @@ on:
       - 'v*'
 
 jobs:
-  release-artifacts:
-    name: Package and Release Artifacts
+  release:
+    name: Release Artifacts
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v4
       
-      - name: Prepare Android APK
+      - name: Collect APK
         run: |
-          mkdir -p release_artifacts
-          find . -path "*/downloads/android/latest/*.apk" -o -path "*/Qmoi_downloaded_apps/android/latest/*.apk" | head -1 | xargs -I {} cp {} release_artifacts/app-release.apk 2>/dev/null || echo "No APK found"
-          ls -lh release_artifacts/ || true
+          mkdir -p artifacts
+          find . -name "qmoi_ai.apk" -type f 2>/dev/null | head -1 | xargs -I {} cp {} artifacts/qmoi-release.apk 2>/dev/null || echo "No APK"
+          ls -lh artifacts/ || echo "empty"
       
-      - name: Prepare iOS IPA
-        run: |
-          find . -path "*/downloads/ios/latest/*.ipa" -o -path "*/Qmoi_downloaded_apps/ios/latest/*.ipa" | head -1 | xargs -I {} cp {} release_artifacts/ 2>/dev/null || echo "No IPA found"
-          ls -lh release_artifacts/ || true
+      - name: Collect IPA
+        run: find . -name "*.ipa" -type f 2>/dev/null | head -1 | xargs -I {} cp {} artifacts/ 2>/dev/null || echo "No IPA"
       
-      - name: Prepare Windows EXE
-        run: |
-          find . -path "*/downloads/windows/latest/*.exe" -o -path "*/Qmoi_downloaded_apps/windows/latest/*.exe" | head -1 | xargs -I {} cp {} release_artifacts/qmoi.exe 2>/dev/null || echo "No EXE found"
-          ls -lh release_artifacts/ || true
+      - name: Collect EXE
+        run: find . -name "qmoi*.exe" -type f 2>/dev/null | grep -E "(downloads|Qmoi_downloaded)" | head -1 | xargs -I {} cp {} artifacts/qmoi-release.exe 2>/dev/null || echo "No EXE"
       
       - name: Package PWAs
         run: |
-          for pwa in pwa_apps/admin pwa_apps/deals pwa_apps/q-alpha pwa_apps/qmoi pwa_apps/qmoi-ai pwa_apps/qmoi-space pwa_apps/qstore; do
-            if [ -d "$pwa" ]; then
-              name=$(basename $pwa)
-              cd "$pwa"
+          for app in admin deals q-alpha qmoi qmoi-ai qmoi-space qstore; do
+            if [ -d "pwa_apps/$app" ]; then
+              cd "pwa_apps/$app"
               if [ -d dist ]; then
-                cd dist && zip -rq ../../../release_artifacts/${name}.zip . && cd - >/dev/null
+                zip -rq ../../artifacts/$app.zip dist/
               else
-                cd .. && zip -rq ../../release_artifacts/${name}.zip . -x "node_modules/*" && cd - >/dev/null
+                zip -rq ../../artifacts/$app.zip .  -x "node_modules/*" "*.git*"
               fi
-              echo "✓ Packaged $name"
+              cd - >/dev/null
+              echo "✓ $app packaged"
             fi
           done
-          ls -lh release_artifacts/ | tail -10
       
-      - name: Generate Checksums
-        run: |
-          cd release_artifacts
-          sha256sum * > SHA256SUMS.txt 2>/dev/null || echo "No files to checksum"
-          echo "=== Release Checksums ==="
-          cat SHA256SUMS.txt
+      - name: Checksums
+        run: cd artifacts && sha256sum * > SHA256SUMS.txt 2>/dev/null; cat SHA256SUMS.txt || echo "empty"
       
-      - name: Upload All Artifacts to Release
+      - name: Upload Release
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: release_artifacts/*
-          draft: false
-          prerelease: false
+          files: artifacts/*
