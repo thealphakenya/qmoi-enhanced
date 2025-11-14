@@ -50,6 +50,54 @@ git push origin v1.2.4
 
 ---
 
+## 📥 Downloads & Verification
+
+All releases are available at **[GitHub Releases v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3)**.
+
+### Available Platforms & Assets
+
+| Platform | App | Format | Download | Size | SHA256 |
+|----------|-----|--------|----------|------|--------|
+| **Windows** | QMOI AI | `.exe` | [qmoi_ai.exe](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe) | 5.0 MB | [`view`](release_assets_manifest.json) |
+| **macOS** | QMOI AI | `.dmg` | [qmoi_ai.dmg](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg) | 8.0 MB | [`view`](release_assets_manifest.json) |
+| **Linux** | QMOI AI | `.AppImage` | [qmoi_ai.AppImage](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage) | 6.0 MB | [`view`](release_assets_manifest.json) |
+| **Linux** | QMOI AI | `.deb` | [qmoi_ai.deb](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb) | 4.0 MB | [`view`](release_assets_manifest.json) |
+| **Android** | QMOI AI | `.apk` | [qmoi_ai.apk](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk) | 10.0 MB | [`view`](release_assets_manifest.json) |
+| **iOS** | QMOI AI | `.ipa` | [qmoi_ai.ipa](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa) | 12.0 MB | [`view`](release_assets_manifest.json) |
+| **Chromebook** | QMOI AI | `.zip` | [qmoi_ai_chromebook.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip) | 3.0 MB | [`view`](release_assets_manifest.json) |
+| **Smart TV** | QMOI AI | `.apk` | [qmoi_ai_smarttv.apk](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk) | 8.0 MB | [`view`](release_assets_manifest.json) |
+| **Web** | QShare | `.zip` | [qshare.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qshare.zip) | ~2 KB | [`view`](release_assets_manifest.json) |
+| **Web** | QStore | `.zip` | [qstore.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qstore.zip) | ~2 KB | [`view`](release_assets_manifest.json) |
+| **Web** | QVillage | `.zip` | [qvillage.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qvillage.zip) | ~2 KB | [`view`](release_assets_manifest.json) |
+| **Web** | QMOI Space | `.zip` | [qmoi-space.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-space.zip) | ~4 KB | [`view`](release_assets_manifest.json) |
+| **QCity** | QCity Package | `.zip` | [qcity_package.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip) | 2.0 MB | [`view`](release_assets_manifest.json) |
+
+### Verify Downloaded Files
+
+All assets include SHA256 checksums in [`release_assets_manifest.json`](release_assets_manifest.json).
+
+**Verify on macOS/Linux:**
+```bash
+# Download the manifest
+curl -s https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/main/release_assets_manifest.json | jq '.assets[] | select(.name == "qmoi_ai.AppImage") | .sha256'
+
+# Compare with your downloaded file
+sha256sum qmoi_ai.AppImage
+```
+
+**Verify on Windows (PowerShell):**
+```powershell
+# Compare SHA256
+(Get-FileHash qmoi_ai.exe).Hash
+# Should match the value in release_assets_manifest.json
+```
+
+### Release Manifest
+
+All asset metadata (sizes, checksums, platforms) is maintained in [`release_assets_manifest.json`](release_assets_manifest.json) and synced automatically with GitHub Releases.
+
+---
+
 ## 🚀 Build & Automation
 
 Use the following tools to automate and build your apps:

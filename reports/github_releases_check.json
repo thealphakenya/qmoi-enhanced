@@ -1,0 +1,110 @@
+{
+  "owner": "thealphakenya",
+  "repo": "qmoi-enhanced",
+  "results": [
+    {
+      "name": "qmoi_ai.AppImage",
+      "expected_size": 6291456,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi_ai.deb",
+      "expected_size": 4194304,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi.zip",
+      "expected_size": 1405,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "admin.zip",
+      "expected_size": 1539,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "deals.zip",
+      "expected_size": 3533,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi-ai.zip",
+      "expected_size": 5804,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "q-alpha.zip",
+      "expected_size": 6524,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi-space.zip",
+      "expected_size": 3557,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi_ai.ipa",
+      "expected_size": 12582912,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi_ai_chromebook.zip",
+      "expected_size": 3145728,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi_ai.dmg",
+      "expected_size": 8388608,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qcity_package.zip",
+      "expected_size": 2097152,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi_ai.apk",
+      "expected_size": 10485760,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi_ai_smarttv.apk",
+      "expected_size": 8388608,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi_ai.exe.sha256",
+      "expected_size": 78,
+      "status": "missing",
+      "matches": []
+    },
+    {
+      "name": "qmoi_ai.exe",
+      "expected_size": 5242880,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 315704874,
+          "size": 9,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    }
+  ]
+}

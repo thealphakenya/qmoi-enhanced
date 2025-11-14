@@ -15,6 +15,48 @@
       "platform": "Linux"
     },
     {
+      "path": "web/latest/qmoi.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi.zip",
+      "size": 1405,
+      "sha256": "b80b3e0de710cbb618150711fa125ebe4b2fb7485d5468c4e0d3bdcd365a90c9",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/admin.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/admin.zip",
+      "size": 1539,
+      "sha256": "9acfd6d6b28325651a960285c896228feec8f1e6b0337de1f83439725ed807dd",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/deals.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/deals.zip",
+      "size": 3533,
+      "sha256": "4660cdfc9d6ecdcf901ee18561d9fafc3efed8da6bab4ae768a2ddeb248036ce",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/qmoi-ai.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-ai.zip",
+      "size": 5804,
+      "sha256": "fed315443b2b89aa3803065c101f076f3d1464e3bc1bd330d8ed2caa39a3f618",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/q-alpha.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/q-alpha.zip",
+      "size": 6524,
+      "sha256": "1c12e313e013497ad21a585e8ee581bdf271005896ac257a9dfcd978c106bed7",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/qmoi-space.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-space.zip",
+      "size": 3557,
+      "sha256": "7d21e1fb4e6775a779062c35e801e661539a3966aebac888df44c4c53f4938fc",
+      "platform": "web"
+    },
+    {
       "path": "ios/latest/qmoi_ai.ipa",
       "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
       "size": 12582912,
