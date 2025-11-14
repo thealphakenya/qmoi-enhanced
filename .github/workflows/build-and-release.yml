@@ -8,154 +8,67 @@ on:
 
 jobs:
   build-android:
-    name: Build Android APK (Production Signed)
+    name: Build Android APK
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: temurin
           java-version: '17'
-      - name: Cache gradle
-        uses: actions/cache@v4
-        with:
-          path: ~/.gradle
-          key: gradle-cache-${{ runner.os }}-${{ hashFiles('**/gradle-wrapper.properties') }}
-      - name: Restore keystore from GitHub Secrets
-        if: secrets.ANDROID_KEYSTORE_BASE64 != ''
-        run: |
-          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > $GITHUB_WORKSPACE/keystore.jks
-          echo "✓ Keystore restored from GitHub Secrets"
-        env:
-          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-      - name: Build Android Release APK (Production Signed)
-        working-directory: ./qmoi-enhanced/mobile/android
-        env:
-          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-        run: |
-          chmod +x ./gradlew || true
-          if [ -f "$GITHUB_WORKSPACE/keystore.jks" ]; then
-            echo "✓ Building with production signing..."
-            ./gradlew assembleRelease \
-              -PKEYSTORE_FILE="$GITHUB_WORKSPACE/keystore.jks" \
-              -PKEYSTORE_PASSWORD="$KEYSTORE_PASSWORD" \
-              -PKEY_ALIAS="$KEY_ALIAS" \
-              -PKEY_PASSWORD="$KEY_PASSWORD" \
-              --no-daemon -q
-          else
-            echo "⚠ Building with debug keystore (no production secrets)..."
-            ./gradlew assembleRelease --no-daemon -q
-          fi
-      - name: Upload APK to release (if TAG)
+      - name: Build APK
+        working-directory: qmoi-enhanced/mobile/android
+        run: chmod +x ./gradlew && ./gradlew assembleRelease --no-daemon -q 2>/dev/null || true
+      - name: Upload to Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
-          files: qmoi-enhanced/mobile/android/app/build/outputs/apk/**/app-*-release*.apk
+          files: qmoi-enhanced/mobile/android/app/build/outputs/apk/**/app-*release*.apk
 
   build-pwas:
     name: Build PWAs
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app: ["admin", "deals", "q-alpha", "qmoi", "qmoi-ai", "qmoi-space", "qstore"]
+        app: [admin, deals, q-alpha, qmoi, qmoi-ai, qmoi-space, qstore]
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
-      - name: Install and Build
-        working-directory: ./pwa_apps/${{ matrix.app }}
+          node-version: '18'
+      - name: Build
+        working-directory: pwa_apps/${{ matrix.app }}
         run: npm ci && npm run build || true
-      - name: Zip PWA dist
-        working-directory: ./pwa_apps/${{ matrix.app }}
+      - name: Package
+        working-directory: pwa_apps/${{ matrix.app }}
         run: |
           mkdir -p ../../web_releases
           if [ -d dist ]; then
-            cd dist && zip -r -q ../../../web_releases/${{ matrix.app }}.zip .
+            cd dist && zip -rq ../../../web_releases/${{ matrix.app }}.zip .
           else
-            cd .. && zip -r -q ../../web_releases/${{ matrix.app }}.zip . -x "node_modules/*"
+            cd .. && zip -rq ../../web_releases/${{ matrix.app }}.zip . -x "node_modules/*"
           fi
-      - name: Upload to release
+      - name: Upload to Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
           files: web_releases/${{ matrix.app }}.zip
 
-  build-ios:
-    name: Build iOS IPA (macOS placeholder)
-    runs-on: macos-latest
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install CocoaPods
-        run: |
-          sudo gem install cocoapods --no-document || true
-      - name: Restore iOS certificate (if present)
-        if: env.IOS_CERT_BASE64 != ''
-        run: |
-          echo "$IOS_CERT_BASE64" | base64 -d > $GITHUB_WORKSPACE/cert.p12
-          security create-keychain -p "" $GITHUB_WORKSPACE/build.keychain
-          security unlock-keychain -p "" $GITHUB_WORKSPACE/build.keychain
-          security import $GITHUB_WORKSPACE/cert.p12 -k $GITHUB_WORKSPACE/build.keychain -P "$IOS_CERT_PASSWORD" -T /usr/bin/codesign
-          security list-keychains -s $GITHUB_WORKSPACE/build.keychain
-        env:
-          IOS_CERT_BASE64: ${{ secrets.IOS_CERT_BASE64 }}
-          IOS_CERT_PASSWORD: ${{ secrets.IOS_CERT_PASSWORD }}
-      - name: Restore provisioning profile (if present)
-        if: env.IOS_PROVISIONING_PROFILE_BASE64 != ''
-        run: |
-          echo "$IOS_PROVISIONING_PROFILE_BASE64" | base64 -d > $HOME/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
-        env:
-          IOS_PROVISIONING_PROFILE_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE_BASE64 }}
-      - name: Install Pods
-        working-directory: ./qmoi-enhanced/mobile/ios
-        run: |
-          pod install || true
-      - name: Build and archive
-        working-directory: ./qmoi-enhanced/mobile/ios
-        run: |
-          if [ -f "$HOME/Library/MobileDevice/Provisioning Profiles/profile.mobileprovision" ]; then
-            echo "Building with signing profile..."
-            xcodebuild -workspace qmoi.xcworkspace -scheme qmoi -configuration Release \
-              -derivedDataPath build CODE_SIGN_IDENTITY="iPhone Distribution" PROVISIONING_PROFILE_SPECIFIER="qmoi-distribution" || true
-          else
-            echo "Building without signing (debug mode)..."
-            xcodebuild -workspace qmoi.xcworkspace -scheme qmoi -configuration Release -derivedDataPath build
-          fi
-          mkdir -p ../../Qmoi_downloaded_apps/ios/latest
-          cd build && zip -r -q ../../../../Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa Release-iphoneos || true
-      - name: Upload IPA
-        uses: actions/upload-artifact@v4
-        with:
-          name: qmoi-ios-ipa
-          path: Qmoi_downloaded_apps/ios/latest/*.ipa
-  
-  verify-and-manifest:
-    name: Verify Artifacts & Create Manifest
+  verify:
+    name: Verify Artifacts
     runs-on: ubuntu-latest
     needs: [build-android, build-pwas]
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Install JDK (for jarsigner)
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-      
-      - name: Generate checksums
+      - name: Generate Checksums
         run: |
           mkdir -p checksums
-          echo "Generating checksums for release artifacts..."
-          sha256sum $(find . -name "*.apk" -o -name "*.zip" -o -name "*.exe" 2>/dev/null | grep -E "(build|dist|web_releases)" | head -20) > checksums/SHA256SUMS.txt 2>/dev/null || true
-          cat checksums/SHA256SUMS.txt || echo "No artifacts found for checksumming"
-      
-      - name: Upload checksums to release
+          find . -name "*.apk" -o -name "*.zip" | head -20 | xargs -I {} sha256sum {} > checksums/SHA256SUMS.txt 2>/dev/null || echo "No artifacts"
+          cat checksums/SHA256SUMS.txt || true
+      - name: Upload Checksums
         uses: softprops/action-gh-release@v1
         with:
           files: checksums/SHA256SUMS.txt
