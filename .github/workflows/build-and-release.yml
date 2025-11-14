@@ -1,0 +1,87 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-android:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Cache gradle
+        uses: actions/cache@v4
+        with:
+          path: ~/.gradle
+          key: gradle-cache-${{ runner.os }}-${{ hashFiles('**/gradle-wrapper.properties') }}
+      - name: Build Android (assembleRelease)
+        working-directory: ./qmoi-enhanced/mobile/android
+        run: |
+          chmod +x ./gradlew || true
+          ./gradlew assembleRelease --no-daemon
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-android-apk
+          path: qmoi-enhanced/mobile/android/app/build/outputs/apk/**/app-*-release*.apk
+
+  build-pwas:
+    name: Build PWAs
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [admin,deals,q-alpha,qmoi,qmoi-ai,qmoi-space,qstore]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install & Build
+        working-directory: ./pwa_apps/${{ matrix.app }}
+        run: |
+          npm ci
+          npm run build --if-present
+      - name: Zip dist
+        if: ${{ always() }}
+        working-directory: ./pwa_apps/${{ matrix.app }}
+        run: |
+          if [ -d dist ]; then
+            mkdir -p ../../Qmoi_downloaded_apps/web/latest
+            cd dist && zip -r -q ../../../Qmoi_downloaded_apps/web/latest/${{ matrix.app }}.zip .
+          else
+            echo "No dist/ to package for ${{ matrix.app }}"
+          fi
+
+  build-ios:
+    name: Build iOS IPA (macOS placeholder)
+    runs-on: macos-latest
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install CocoaPods
+        run: |
+          sudo gem install cocoapods --no-document || true
+      - name: Install Pods
+        working-directory: ./qmoi-enhanced/mobile/ios
+        run: |
+          pod install || true
+      - name: Build and archive
+        working-directory: ./qmoi-enhanced/mobile/ios
+        run: |
+          xcodebuild -workspace qmoi.xcworkspace -scheme qmoi -configuration Release -derivedDataPath build
+          mkdir -p ../../Qmoi_downloaded_apps/ios/latest
+          cd build && zip -r -q ../../../../Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa Release-iphoneos || true
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-ios-ipa
+          path: Qmoi_downloaded_apps/ios/latest/*.ipa
