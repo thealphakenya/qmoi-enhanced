@@ -1,77 +1,69 @@
 {
-  "timestamp": "2025-11-14T12:55:53.238414Z",
+  "timestamp": "2025-11-14T13:09:14.879835Z",
+  "total_apps": 10,
+  "verified_ok": 9,
+  "verified_broken": 1,
+  "verified_unknown": 0,
   "apps": [
     {
-      "name": "Android",
-      "status": "BROKEN",
-      "message": "Not a valid ZIP",
-      "size_mb": 10.0
+      "name": "qmoi_ai.apk",
+      "type": "android",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+      "status": "OK"
     },
     {
-      "name": "iOS",
-      "status": "BROKEN",
-      "message": "Not a valid ZIP",
-      "size_mb": 12.0
+      "name": "qmoi_ai.ipa",
+      "type": "ios",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+      "status": "OK"
     },
     {
-      "name": "Smart TV",
-      "status": "BROKEN",
-      "message": "Not a valid ZIP",
-      "size_mb": 8.0
+      "name": "qmoi_ai_smarttv.apk",
+      "type": "smarttv",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
+      "status": "OK"
     },
     {
-      "name": "Linux DEB",
-      "status": "OK",
-      "message": "Valid DEB header",
-      "size_mb": 4.0
+      "name": "qmoi_ai.deb",
+      "type": "deb",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
+      "status": "BROKEN"
     },
     {
-      "name": "Linux AppImage",
-      "status": "OK",
-      "message": "Valid AppImage header",
-      "size_mb": 6.0
+      "name": "qmoi_ai.AppImage",
+      "type": "appimage",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+      "status": "OK"
     },
     {
-      "name": "macOS DMG",
-      "status": "OK",
-      "message": "Valid DMG header",
-      "size_mb": 8.0
+      "name": "qmoi_ai.dmg",
+      "type": "dmg",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+      "status": "OK"
     },
     {
-      "name": "Windows EXE",
-      "status": "OK",
-      "message": "Valid EXE",
-      "size_mb": 5.0
+      "name": "qmoi_ai.exe",
+      "type": "exe",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+      "status": "OK"
     },
     {
-      "name": "Web - QMOI AI",
-      "status": "OK",
-      "message": "Valid Web App",
-      "size_mb": 0.0
+      "name": "qmoi-ai.zip",
+      "type": "web",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-ai.zip",
+      "status": "OK"
     },
     {
-      "name": "Web - Admin",
-      "status": "OK",
-      "message": "Valid Web App",
-      "size_mb": 0.0
+      "name": "admin.zip",
+      "type": "web",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/admin.zip",
+      "status": "OK"
     },
     {
-      "name": "Web - Deals",
-      "status": "OK",
-      "message": "Valid Web App",
-      "size_mb": 0.0
-    },
-    {
-      "name": "Chromebook",
-      "status": "BROKEN",
-      "message": "Not a valid ZIP",
-      "size_mb": 3.0
-    },
-    {
-      "name": "QCity",
-      "status": "BROKEN",
-      "message": "Not a valid ZIP",
-      "size_mb": 2.0
+      "name": "deals.zip",
+      "type": "web",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/deals.zip",
+      "status": "OK"
     }
   ]
 }
