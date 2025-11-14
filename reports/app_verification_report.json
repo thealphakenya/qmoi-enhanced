@@ -1,0 +1,77 @@
+{
+  "timestamp": "2025-11-14T12:55:53.238414Z",
+  "apps": [
+    {
+      "name": "Android",
+      "status": "BROKEN",
+      "message": "Not a valid ZIP",
+      "size_mb": 10.0
+    },
+    {
+      "name": "iOS",
+      "status": "BROKEN",
+      "message": "Not a valid ZIP",
+      "size_mb": 12.0
+    },
+    {
+      "name": "Smart TV",
+      "status": "BROKEN",
+      "message": "Not a valid ZIP",
+      "size_mb": 8.0
+    },
+    {
+      "name": "Linux DEB",
+      "status": "OK",
+      "message": "Valid DEB header",
+      "size_mb": 4.0
+    },
+    {
+      "name": "Linux AppImage",
+      "status": "OK",
+      "message": "Valid AppImage header",
+      "size_mb": 6.0
+    },
+    {
+      "name": "macOS DMG",
+      "status": "OK",
+      "message": "Valid DMG header",
+      "size_mb": 8.0
+    },
+    {
+      "name": "Windows EXE",
+      "status": "OK",
+      "message": "Valid EXE",
+      "size_mb": 5.0
+    },
+    {
+      "name": "Web - QMOI AI",
+      "status": "OK",
+      "message": "Valid Web App",
+      "size_mb": 0.0
+    },
+    {
+      "name": "Web - Admin",
+      "status": "OK",
+      "message": "Valid Web App",
+      "size_mb": 0.0
+    },
+    {
+      "name": "Web - Deals",
+      "status": "OK",
+      "message": "Valid Web App",
+      "size_mb": 0.0
+    },
+    {
+      "name": "Chromebook",
+      "status": "BROKEN",
+      "message": "Not a valid ZIP",
+      "size_mb": 3.0
+    },
+    {
+      "name": "QCity",
+      "status": "BROKEN",
+      "message": "Not a valid ZIP",
+      "size_mb": 2.0
+    }
+  ]
+}
