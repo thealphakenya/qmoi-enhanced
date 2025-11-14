@@ -7,68 +7,55 @@ on:
       - 'v*'
 
 jobs:
-  build-android:
-    name: Build Android APK
+  release-artifacts:
+    name: Package and Release Artifacts
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-      - name: Build APK
-        working-directory: qmoi-enhanced/mobile/android
-        run: chmod +x ./gradlew && ./gradlew assembleRelease --no-daemon -q 2>/dev/null || true
-      - name: Upload to Release
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
-        with:
-          files: qmoi-enhanced/mobile/android/app/build/outputs/apk/**/app-*release*.apk
-
-  build-pwas:
-    name: Build PWAs
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        app: [admin, deals, q-alpha, qmoi, qmoi-ai, qmoi-space, qstore]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - name: Build
-        working-directory: pwa_apps/${{ matrix.app }}
-        run: npm ci && npm run build || true
-      - name: Package
-        working-directory: pwa_apps/${{ matrix.app }}
-        run: |
-          mkdir -p ../../web_releases
-          if [ -d dist ]; then
-            cd dist && zip -rq ../../../web_releases/${{ matrix.app }}.zip .
-          else
-            cd .. && zip -rq ../../web_releases/${{ matrix.app }}.zip . -x "node_modules/*"
-          fi
-      - name: Upload to Release
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
-        with:
-          files: web_releases/${{ matrix.app }}.zip
-
-  verify:
-    name: Verify Artifacts
-    runs-on: ubuntu-latest
-    needs: [build-android, build-pwas]
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Prepare Android APK
+        run: |
+          mkdir -p release_artifacts
+          find . -path "*/downloads/android/latest/*.apk" -o -path "*/Qmoi_downloaded_apps/android/latest/*.apk" | head -1 | xargs -I {} cp {} release_artifacts/app-release.apk 2>/dev/null || echo "No APK found"
+          ls -lh release_artifacts/ || true
+      
+      - name: Prepare iOS IPA
+        run: |
+          find . -path "*/downloads/ios/latest/*.ipa" -o -path "*/Qmoi_downloaded_apps/ios/latest/*.ipa" | head -1 | xargs -I {} cp {} release_artifacts/ 2>/dev/null || echo "No IPA found"
+          ls -lh release_artifacts/ || true
+      
+      - name: Prepare Windows EXE
+        run: |
+          find . -path "*/downloads/windows/latest/*.exe" -o -path "*/Qmoi_downloaded_apps/windows/latest/*.exe" | head -1 | xargs -I {} cp {} release_artifacts/qmoi.exe 2>/dev/null || echo "No EXE found"
+          ls -lh release_artifacts/ || true
+      
+      - name: Package PWAs
+        run: |
+          for pwa in pwa_apps/admin pwa_apps/deals pwa_apps/q-alpha pwa_apps/qmoi pwa_apps/qmoi-ai pwa_apps/qmoi-space pwa_apps/qstore; do
+            if [ -d "$pwa" ]; then
+              name=$(basename $pwa)
+              cd "$pwa"
+              if [ -d dist ]; then
+                cd dist && zip -rq ../../../release_artifacts/${name}.zip . && cd - >/dev/null
+              else
+                cd .. && zip -rq ../../release_artifacts/${name}.zip . -x "node_modules/*" && cd - >/dev/null
+              fi
+              echo "✓ Packaged $name"
+            fi
+          done
+          ls -lh release_artifacts/ | tail -10
+      
       - name: Generate Checksums
         run: |
-          mkdir -p checksums
-          find . -name "*.apk" -o -name "*.zip" | head -20 | xargs -I {} sha256sum {} > checksums/SHA256SUMS.txt 2>/dev/null || echo "No artifacts"
-          cat checksums/SHA256SUMS.txt || true
-      - name: Upload Checksums
+          cd release_artifacts
+          sha256sum * > SHA256SUMS.txt 2>/dev/null || echo "No files to checksum"
+          echo "=== Release Checksums ==="
+          cat SHA256SUMS.txt
+      
+      - name: Upload All Artifacts to Release
         uses: softprops/action-gh-release@v1
         with:
-          files: checksums/SHA256SUMS.txt
+          files: release_artifacts/*
+          draft: false
+          prerelease: false
