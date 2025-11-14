@@ -60,34 +60,26 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app: [admin, deals, q-alpha, qmoi, qmoi-ai, qmoi-space, qstore]
+        app: ["admin", "deals", "q-alpha", "qmoi", "qmoi-ai", "qmoi-space", "qstore"]
     steps:
       - uses: actions/checkout@v4
-      
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      
-      - name: Install & Build
+          node-version: "18"
+      - name: Install and Build
         working-directory: ./pwa_apps/${{ matrix.app }}
-        run: |
-          npm ci || true
-          npm run build --if-present || true
-      
-      - name: Create web release directory
-        run: mkdir -p web_releases
-      
+        run: npm ci && npm run build || true
       - name: Zip PWA dist
         working-directory: ./pwa_apps/${{ matrix.app }}
         run: |
+          mkdir -p ../../web_releases
           if [ -d dist ]; then
             cd dist && zip -r -q ../../../web_releases/${{ matrix.app }}.zip .
           else
-            cd .. && zip -r -q ../../web_releases/${{ matrix.app }}.zip . -x "node_modules/*" ".git/*"
+            cd .. && zip -r -q ../../web_releases/${{ matrix.app }}.zip . -x "node_modules/*"
           fi
-      
-      - name: Upload PWA zips to release (if TAG)
+      - name: Upload to release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
