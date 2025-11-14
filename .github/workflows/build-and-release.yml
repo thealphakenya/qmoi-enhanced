@@ -32,6 +32,14 @@ jobs:
         with:
           name: qmoi-android-apk
           path: qmoi-enhanced/mobile/android/app/build/outputs/apk/**/app-*-release*.apk
+      - name: Generate release manifest
+        run: |
+          python3 /workspaces/qmoi-enhanced/scripts/generate_release_manifest.py || true
+      - name: Upload APK to release (if TAG)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: qmoi-enhanced/mobile/android/app/build/outputs/apk/**/app-*-release*.apk
 
   build-pwas:
     name: Build PWAs
@@ -60,6 +68,15 @@ jobs:
           else
             echo "No dist/ to package for ${{ matrix.app }}"
           fi
+      - name: Generate release manifest (after PWA builds)
+        if: ${{ matrix.app == 'q-alpha' }}
+        run: |
+          python3 /workspaces/qmoi-enhanced/scripts/generate_release_manifest.py || true
+      - name: Upload PWA zips to release (if TAG)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Qmoi_downloaded_apps/web/latest/${{ matrix.app }}.zip
 
   build-ios:
     name: Build iOS IPA (macOS placeholder)
