@@ -1,0 +1,23 @@
+name: Verify Release Assets
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  verify-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+      - name: Run app verification
+        run: |
+          python3 scripts/verify_apps.py

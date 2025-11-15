@@ -5,103 +5,300 @@
     {
       "name": "qmoi_ai.AppImage",
       "expected_size": 6291456,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi_ai.deb",
-      "expected_size": 4194304,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi.zip",
-      "expected_size": 1405,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "admin.zip",
-      "expected_size": 1539,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "deals.zip",
-      "expected_size": 3533,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi-ai.zip",
-      "expected_size": 5804,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "q-alpha.zip",
-      "expected_size": 6524,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi-space.zip",
-      "expected_size": 3557,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi_ai.ipa",
-      "expected_size": 12582912,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi_ai_chromebook.zip",
-      "expected_size": 3145728,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi_ai.dmg",
-      "expected_size": 8388608,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qcity_package.zip",
-      "expected_size": 2097152,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi_ai.apk",
-      "expected_size": 10485760,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi_ai_smarttv.apk",
-      "expected_size": 8388608,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi_ai.exe.sha256",
-      "expected_size": 78,
-      "status": "missing",
-      "matches": []
-    },
-    {
-      "name": "qmoi_ai.exe",
-      "expected_size": 5242880,
-      "status": "mismatched",
+      "status": "ok",
       "matches": [
         {
           "release_id": 261919541,
           "release_tag": "v1.2.3",
-          "asset_id": 315704874,
-          "size": 9,
+          "asset_id": 316316281,
+          "size": 6291456,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi_ai.deb",
+      "expected_size": 4194304,
+      "status": "ok",
+      "matches": [
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316288,
+          "size": 4194304,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi.zip",
+      "expected_size": 1405,
+      "status": "ok",
+      "matches": [
+        {
+          "release_id": 262642597,
+          "release_tag": "v1.2.5",
+          "asset_id": 316709406,
+          "size": 1405,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262642597/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316295,
+          "size": 1405,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "admin.zip",
+      "expected_size": 1539,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262642597,
+          "release_tag": "v1.2.5",
+          "asset_id": 316709392,
+          "size": 3346,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262642597/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316298,
+          "size": 1539,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "deals.zip",
+      "expected_size": 3533,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262642597,
+          "release_tag": "v1.2.5",
+          "asset_id": 316709395,
+          "size": 2623,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262642597/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316301,
+          "size": 3533,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi-ai.zip",
+      "expected_size": 5804,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262642597,
+          "release_tag": "v1.2.5",
+          "asset_id": 316709397,
+          "size": 5808,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262642597/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316304,
+          "size": 5804,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "q-alpha.zip",
+      "expected_size": 6524,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262642597,
+          "release_tag": "v1.2.5",
+          "asset_id": 316709396,
+          "size": 6168,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262642597/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316306,
+          "size": 6524,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi-space.zip",
+      "expected_size": 3557,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262642597,
+          "release_tag": "v1.2.5",
+          "asset_id": 316709405,
+          "size": 3881,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262642597/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316309,
+          "size": 3557,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi_ai.ipa",
+      "expected_size": 649,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262440800,
+          "release_tag": "v1.2.4",
+          "asset_id": 316404819,
+          "size": 649,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262440800/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316311,
+          "size": 12582912,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi_ai_chromebook.zip",
+      "expected_size": 428,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262440800,
+          "release_tag": "v1.2.4",
+          "asset_id": 316404824,
+          "size": 428,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262440800/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316324,
+          "size": 3145728,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi_ai.dmg",
+      "expected_size": 8388608,
+      "status": "ok",
+      "matches": [
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316327,
+          "size": 8388608,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qcity_package.zip",
+      "expected_size": 598,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262440800,
+          "release_tag": "v1.2.4",
+          "asset_id": 316404829,
+          "size": 598,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262440800/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316332,
+          "size": 2097152,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi_ai.apk",
+      "expected_size": 796,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262440800,
+          "release_tag": "v1.2.4",
+          "asset_id": 316404816,
+          "size": 796,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262440800/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316333,
+          "size": 10485760,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi_ai_smarttv.apk",
+      "expected_size": 680,
+      "status": "mismatched",
+      "matches": [
+        {
+          "release_id": 262440800,
+          "release_tag": "v1.2.4",
+          "asset_id": 316404822,
+          "size": 680,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262440800/assets{?name,label}"
+        },
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316335,
+          "size": 8388608,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi_ai.exe.sha256",
+      "expected_size": 78,
+      "status": "ok",
+      "matches": [
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316338,
+          "size": 78,
+          "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
+        }
+      ]
+    },
+    {
+      "name": "qmoi_ai.exe",
+      "expected_size": 5242880,
+      "status": "ok",
+      "matches": [
+        {
+          "release_id": 261919541,
+          "release_tag": "v1.2.3",
+          "asset_id": 316316342,
+          "size": 5242880,
           "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}"
         }
       ]
