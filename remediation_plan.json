@@ -39,10 +39,16 @@
       "name": "qmoi_ai.deb",
       "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
       "platform": "linux",
+      "status": "corrupted_on_release",
+      "evidence": "Local and GitHub v1.2.3 copy begin with invalid ar signature ('!<arch>P' instead of '!<arch>\\n') and `ar` outputs 'file format not recognized'.",
       "recommended_steps": [
-        "Build .deb with dpkg-deb; confirm ar contains control and data members.",
-        "Alternatively build an AppImage if you target portable Linux distribution"
-      ]
+        "Rebuild the .deb from source using the repo's packaging/build pipeline (preferred).",
+        "If this is an Electron app: run `npm install` and `npx electron-builder --linux deb` on a CI runner with Debian/Ubuntu environment so dpkg tools are present.",
+        "If building manually: create a proper deb structure (debian/control, debian/rules) and run `dpkg-deb --build <pkgdir>`; verify with `ar t` and `dpkg-deb -I`.",
+        "As an interim alternative, produce an AppImage and update the manifest/release to use it if target platforms allow.",
+        "After rebuilding: run `python3 scripts/verify_apps.py` to validate, update `release_assets_manifest.json` with size and sha256, then replace the GitHub release asset (requires repo PAT) or create a new release tag."
+      ],
+      "notes": "Automatic restore from older releases returned the same corrupted bytes; therefore replacement is required."
     }
   ]
 }
