@@ -1,9 +1,9 @@
 # URGENT: App Fix Checklist
 
-**Status**: 🔴 CRITICAL  
+**Status**: ✅ Fixed (partial)  
 **Date**: November 15, 2025  
-**Issue**: Several platforms still have non-functional or corrupted artifacts after automated restore  
-**Timeline**: Fix by Friday Nov 18
+**Update**: On 2025-11-15 the corrupted mobile/device artifacts were replaced with valid installable packages locally and verification completed. Changes committed (commit: `24830573330c01199b0a17a3c657a86565256ffd`). Manifest and reports updated.
+**Timeline**: Final release tagging / remote release replacement remaining (see notes)
 
 ---
 
