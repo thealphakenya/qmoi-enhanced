@@ -48,7 +48,7 @@ def create_android_apk():
     # APK is a ZIP file with specific structure
     with zipfile.ZipFile(apk_path, 'w', zipfile.ZIP_DEFLATED) as apk:
         # Proper AndroidManifest.xml (minimal)
-        manifest = b"""<?xml version="1.0" encoding="utf-8"?>
+        manifest = """<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qmoi.ai"
     android:versionCode="1"
@@ -71,7 +71,7 @@ def create_android_apk():
         </activity>
     </application>
 </manifest>"""
-        apk.writestr("AndroidManifest.xml", manifest)
+        apk.writestr("AndroidManifest.xml", manifest.encode('utf-8'))
         
         # Resources
         apk.writestr("res/values/strings.xml", b'<?xml version="1.0"?><resources><string name="app_name">QMOI AI</string></resources>')
@@ -114,29 +114,29 @@ def create_ios_ipa():
         ipa.writestr("Payload/qmoi_ai.app/", "")  # Directory entry
         
         # Info.plist
-        plist = b"""<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleExecutable</key>
-    <string>qmoi_ai</string>
-    <key>CFBundleIdentifier</key>
-    <string>com.qmoi.ai</string>
-    <key>CFBundleInfoDictionaryVersion</key>
-    <string>6.0</string>
-    <key>CFBundleName</key>
-    <string>QMOI AI</string>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
-    <key>CFBundleShortVersionString</key>
-    <string>1.2.4</string>
-    <key>CFBundleVersion</key>
-    <string>1</string>
-</dict>
-</plist>"""
-        ipa.writestr("Payload/qmoi_ai.app/Info.plist", plist)
+        plist = """<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>en</string>
+        <key>CFBundleExecutable</key>
+        <string>qmoi_ai</string>
+        <key>CFBundleIdentifier</key>
+        <string>com.qmoi.ai</string>
+        <key>CFBundleInfoDictionaryVersion</key>
+        <string>6.0</string>
+        <key>CFBundleName</key>
+        <string>QMOI AI</string>
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+        <key>CFBundleShortVersionString</key>
+        <string>1.2.4</string>
+        <key>CFBundleVersion</key>
+        <string>1</string>
+    </dict>
+    </plist>"""
+        ipa.writestr("Payload/qmoi_ai.app/Info.plist", plist.encode('utf-8'))
         
         # Executable (Mach-O binary)
         macho_header = bytes([
@@ -170,7 +170,7 @@ def create_smarttv_apk():
     
     # Same as Android APK but with TV-specific manifest
     with zipfile.ZipFile(apk_path, 'w', zipfile.ZIP_DEFLATED) as apk:
-        manifest = b"""<?xml version="1.0" encoding="utf-8"?>
+        manifest = """<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qmoi.tv"
     android:versionCode="1"
@@ -194,7 +194,7 @@ def create_smarttv_apk():
         </activity>
     </application>
 </manifest>"""
-        apk.writestr("AndroidManifest.xml", manifest)
+        apk.writestr("AndroidManifest.xml", manifest.encode('utf-8'))
         apk.writestr("resources.arsc", b"ARSC\x00\x00\x00\x00")
         dex_header = bytes([0x64, 0x65, 0x78, 0x0a, 0x30, 0x33, 0x39, 0x00]) + b'\x00' * 100
         apk.writestr("classes.dex", dex_header)
@@ -235,7 +235,7 @@ def create_chromebook_zip():
         zf.writestr("manifest.json", json.dumps(manifest, indent=2).encode())
         
         # HTML
-        html = b"""<!DOCTYPE html>
+        html = """<!DOCTYPE html>
 <html>
 <head>
     <title>QMOI AI</title>
@@ -251,14 +251,14 @@ def create_chromebook_zip():
     <script src="app.js"></script>
 </body>
 </html>"""
-        zf.writestr("popup.html", html)
+        zf.writestr("popup.html", html.encode('utf-8'))
         
         # JavaScript
-        js = b"""console.log('QMOI AI Chromebook app loaded');
+        js = """console.log('QMOI AI Chromebook app loaded');
 document.addEventListener('DOMContentLoaded', function() {
     console.log('App initialized');
 });"""
-        zf.writestr("app.js", js)
+        zf.writestr("app.js", js.encode('utf-8'))
         
         # Icons (1x1 PNG placeholders)
         png_1x1 = bytes([
@@ -297,9 +297,9 @@ def create_qcity_package():
             "description": "QMOI AI Application for QCity"
         }
         zf.writestr("app.json", json.dumps(app_json, indent=2).encode())
-        
-        # Main HTML
-        html = b"""<!DOCTYPE html>
+
+        # Main HTML (encoded as UTF-8)
+        html = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -332,35 +332,34 @@ def create_qcity_package():
     <script src="app.js"></script>
 </body>
 </html>"""
-        zf.writestr("index.html", html)
-        
-        # Service worker
-        sw = b"""const CACHE_NAME = 'qcity-v1.2.4';
-const urlsToCache = ['/', '/index.html', '/app.json'];
+        zf.writestr("index.html", html.encode('utf-8'))
 
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
-  );
-});
+        # Service worker (simple content)
+        sw = (
+            "const CACHE_NAME = 'qcity-v1.2.4';\n"
+            "const urlsToCache = ['/', '/index.html', '/app.json'];\n"
+            "self.addEventListener('install', event => {\n"
+            "  event.waitUntil(\n"
+            "    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))\n"
+            "  );\n"
+            "});\n"
+            "self.addEventListener('fetch', event => {\n"
+            "  event.respondWith(\n"
+            "    caches.match(event.request).then(response => response || fetch(event.request))\n"
+            "  );\n"
+            "});\n"
+        )
+        zf.writestr("service-worker.js", sw.encode('utf-8'))
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
-  );
-});"""
-        zf.writestr("service-worker.js", sw)
-        
         # App JS
-        js = b"""if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js').then(reg => {
-    console.log('Service Worker registered:', reg);
-  }).catch(err => console.log('SW registration failed:', err));
-}
+        js = ("if ('serviceWorker' in navigator) {\n"
+              "  navigator.serviceWorker.register('service-worker.js').then(reg => {\n"
+              "    console.log('Service Worker registered:', reg);\n"
+              "  }).catch(err => console.log('SW registration failed:', err));\n"
+              "}\n\n"
+              "console.log('QMOI AI QCity application initialized');\n")
+        zf.writestr("app.js", js.encode('utf-8'))
 
-console.log('QMOI AI QCity application initialized');"""
-        zf.writestr("app.js", js)
-        
         # PWA manifest
         manifest = {
             "name": "QMOI AI",
@@ -378,7 +377,7 @@ console.log('QMOI AI QCity application initialized');"""
             ]
         }
         zf.writestr("manifest.webmanifest", json.dumps(manifest, indent=2).encode())
-        
+
         # Icons
         png_1x1 = bytes([
             0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A,

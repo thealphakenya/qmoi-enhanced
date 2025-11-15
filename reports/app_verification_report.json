@@ -1,8 +1,8 @@
 {
-  "timestamp": "2025-11-15T17:26:56.217849Z",
+  "timestamp": "2025-11-15T22:33:54.566951Z",
   "total_apps": 10,
-  "verified_ok": 9,
-  "verified_broken": 1,
+  "verified_ok": 10,
+  "verified_broken": 0,
   "verified_unknown": 0,
   "apps": [
     {
@@ -27,7 +27,7 @@
       "name": "qmoi_ai.deb",
       "type": "deb",
       "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
-      "status": "BROKEN"
+      "status": "OK"
     },
     {
       "name": "qmoi_ai.AppImage",

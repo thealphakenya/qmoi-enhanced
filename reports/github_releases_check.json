@@ -158,7 +158,7 @@
     },
     {
       "name": "qmoi_ai.ipa",
-      "expected_size": 649,
+      "expected_size": 12582912,
       "status": "mismatched",
       "matches": [
         {
@@ -179,7 +179,7 @@
     },
     {
       "name": "qmoi_ai_chromebook.zip",
-      "expected_size": 428,
+      "expected_size": 3145728,
       "status": "mismatched",
       "matches": [
         {
@@ -214,7 +214,7 @@
     },
     {
       "name": "qcity_package.zip",
-      "expected_size": 598,
+      "expected_size": 2097152,
       "status": "mismatched",
       "matches": [
         {
@@ -235,7 +235,7 @@
     },
     {
       "name": "qmoi_ai.apk",
-      "expected_size": 796,
+      "expected_size": 10485760,
       "status": "mismatched",
       "matches": [
         {
@@ -256,7 +256,7 @@
     },
     {
       "name": "qmoi_ai_smarttv.apk",
-      "expected_size": 680,
+      "expected_size": 8388608,
       "status": "mismatched",
       "matches": [
         {
