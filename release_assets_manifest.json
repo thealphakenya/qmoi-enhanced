@@ -59,15 +59,15 @@
     {
       "path": "ios/latest/qmoi_ai.ipa",
       "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
-      "size": 649,
-      "sha256": "5f9c3792278f0836c641d1b44bf2a2b07cc3d02e668c1ea834d1eecece78ff45",
+      "size": 12582912,
+      "sha256": "64455d87be134a76724ebfc29156a6b739973167e11fd539d834155ae77bf881",
       "platform": "iOS"
     },
     {
       "path": "chromebook/latest/qmoi_ai_chromebook.zip",
       "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip",
-      "size": 428,
-      "sha256": "af9b9b026cc431a16d77323ee1b1fcd4cb005dab492cd6e032abe62007c28d53",
+      "size": 3145728,
+      "sha256": "de9da41ad6af24587563bb08ccb4ffaf6006a63abac72f037a881713092c759d",
       "platform": "Chromebook"
     },
     {
@@ -80,22 +80,22 @@
     {
       "path": "qcity/latest/qcity_package.zip",
       "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/qcity/latest/qcity_package.zip",
-      "size": 598,
-      "sha256": "ef00050713efcfcae796222773e15b29f1d519af49fb4666defae9065fa1b2af",
+      "size": 2097152,
+      "sha256": "5862c72cce7fd2b152e584fe7c904a211c92cda8cf1755167e54d7224b516c25",
       "platform": "QCity"
     },
     {
       "path": "android/latest/qmoi_ai.apk",
       "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
-      "size": 796,
-      "sha256": "1399feba31f24de90561945f0cc0a1f10ba3aeb0ba151eceaed4df4bd80d4728",
+      "size": 10485760,
+      "sha256": "9f4c7433f7de3791b1e2a420aa09d82dca147f0e0de61d68bb85ced7df95cfdf",
       "platform": "Android"
     },
     {
       "path": "smarttv/latest/qmoi_ai_smarttv.apk",
       "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
-      "size": 680,
-      "sha256": "757227c8c3720e31493161bad4152bd0b7b05ee01c9c653d4dbf1a76685060fb",
+      "size": 8388608,
+      "sha256": "71fd4adfd0a775a80b8de3020e5a319b158e3156d28ee0f9d198a270c92e020a",
       "platform": "SmartTV"
     },
     {
