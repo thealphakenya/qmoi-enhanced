@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "QMOI AI - Quantum Master Orchestrator Intelligence",
+  "short_name": "QMOI AI",
+  "description": "Advanced AI platform with multi-platform support, intelligent automation, and real-time orchestration",
+  "start_url": "/pwa_apps/qmoi-ai/",
+  "scope": "/pwa_apps/qmoi-ai/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1220",
+  "theme_color": "#0b5fff",
+  "dir": "ltr",
+  "lang": "en-US",
+  "categories": ["productivity", "business", "utilities"],
+  "icons": [
+    {
+      "src": "/pwa_apps/qmoi-ai/icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa_apps/qmoi-ai/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa_apps/qmoi-ai/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa_apps/qmoi-ai/maskable-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/pwa_apps/qmoi-ai/maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/pwa_apps/qmoi-ai/screenshot-1.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/pwa_apps/qmoi-ai/screenshot-2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Access QMOI AI dashboard",
+      "url": "/pwa_apps/qmoi-ai/?page=dashboard",
+      "icons": [
+        {
+          "src": "/pwa_apps/qmoi-ai/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "short_name": "Settings",
+      "description": "Access application settings",
+      "url": "/pwa_apps/qmoi-ai/?page=settings",
+      "icons": [
+        {
+          "src": "/pwa_apps/qmoi-ai/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "media",
+          "accept": ["image/*", "audio/*", "video/*"]
+        }
+      ]
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+qmoi",
+      "url": "/pwa_apps/qmoi-ai/?url=%s"
+    }
+  ],
+  "prefer_related_applications": false,
+  "screenshots_form_factors": ["narrow", "wide"]
+}

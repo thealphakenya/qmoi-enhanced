@@ -1,0 +1,10 @@
+{
+  "id": "qvillage",
+  "name": "QVillage",
+  "version": "v1.0.0",
+  "type": "web",
+  "platforms": [
+    "Web"
+  ],
+  "icon": "assets/icons/qvillage.svg"
+}

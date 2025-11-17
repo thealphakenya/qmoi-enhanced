@@ -1,0 +1,14 @@
+{
+  "name": "QMOI Admin",
+  "short_name": "admin",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#1e90ff",
+  "icons": [
+    { "src": "./icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./icons/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

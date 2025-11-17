@@ -1,0 +1,116 @@
+{
+  "assets": [
+    {
+      "path": "linux/latest/qmoi_ai.AppImage",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+      "size": 6291456,
+      "sha256": "c4c0fe676cc0723e3131764c5f236215e0196d25f8d2a27295328d63951755b8",
+      "platform": "Linux"
+    },
+    {
+      "path": "linux/latest/qmoi_ai.deb",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
+      "size": 4194304,
+      "sha256": "ed68be3f8d14a0c13045fd1295b440925dcd4aa84627224879d1766757648548",
+      "platform": "Linux"
+    },
+    {
+      "path": "web/latest/qmoi.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi.zip",
+      "size": 1405,
+      "sha256": "b80b3e0de710cbb618150711fa125ebe4b2fb7485d5468c4e0d3bdcd365a90c9",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/admin.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/admin.zip",
+      "size": 1539,
+      "sha256": "9acfd6d6b28325651a960285c896228feec8f1e6b0337de1f83439725ed807dd",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/deals.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/deals.zip",
+      "size": 3533,
+      "sha256": "4660cdfc9d6ecdcf901ee18561d9fafc3efed8da6bab4ae768a2ddeb248036ce",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/qmoi-ai.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-ai.zip",
+      "size": 5804,
+      "sha256": "fed315443b2b89aa3803065c101f076f3d1464e3bc1bd330d8ed2caa39a3f618",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/q-alpha.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/q-alpha.zip",
+      "size": 6524,
+      "sha256": "1c12e313e013497ad21a585e8ee581bdf271005896ac257a9dfcd978c106bed7",
+      "platform": "web"
+    },
+    {
+      "path": "web/latest/qmoi-space.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-space.zip",
+      "size": 3557,
+      "sha256": "7d21e1fb4e6775a779062c35e801e661539a3966aebac888df44c4c53f4938fc",
+      "platform": "web"
+    },
+    {
+      "path": "ios/latest/qmoi_ai.ipa",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+      "size": 649,
+      "sha256": "5f9c3792278f0836c641d1b44bf2a2b07cc3d02e668c1ea834d1eecece78ff45",
+      "platform": "iOS"
+    },
+    {
+      "path": "chromebook/latest/qmoi_ai_chromebook.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip",
+      "size": 428,
+      "sha256": "af9b9b026cc431a16d77323ee1b1fcd4cb005dab492cd6e032abe62007c28d53",
+      "platform": "Chromebook"
+    },
+    {
+      "path": "mac/latest/qmoi_ai.dmg",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+      "size": 8388608,
+      "sha256": "85233d4eec533d801f2ccf74d3c78cabe3689a417f1e94d0cf0587c51c7036b0",
+      "platform": "macOS"
+    },
+    {
+      "path": "qcity/latest/qcity_package.zip",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/qcity/latest/qcity_package.zip",
+      "size": 598,
+      "sha256": "ef00050713efcfcae796222773e15b29f1d519af49fb4666defae9065fa1b2af",
+      "platform": "QCity"
+    },
+    {
+      "path": "android/latest/qmoi_ai.apk",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+      "size": 796,
+      "sha256": "1399feba31f24de90561945f0cc0a1f10ba3aeb0ba151eceaed4df4bd80d4728",
+      "platform": "Android"
+    },
+    {
+      "path": "smarttv/latest/qmoi_ai_smarttv.apk",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
+      "size": 680,
+      "sha256": "757227c8c3720e31493161bad4152bd0b7b05ee01c9c653d4dbf1a76685060fb",
+      "platform": "SmartTV"
+    },
+    {
+      "path": "windows/latest/qmoi_ai.exe.sha256",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe.sha256",
+      "size": 78,
+      "sha256": "38db80cc5c95943005aad25ac7292039757de4412f67c431939cdd6e15203068",
+      "platform": "Windows"
+    },
+    {
+      "path": "windows/latest/qmoi_ai.exe",
+      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+      "size": 5242880,
+      "sha256": "0a7bd2608b2d7ba9fce026d64b9ea3f1ee2904ed98b6a7ece685bd9880109b8e",
+      "platform": "Windows"
+    }
+  ]
+}

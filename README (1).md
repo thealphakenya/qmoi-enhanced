@@ -12,13 +12,9 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# \# QMOI - Quantum Master Orchestrator Intelligence
+<!-- QMOI_VALIDATION_END -->
 
-# 
-
-# \## 🚀 Overview
-
-# QMOI is a fully automated, always-on, cross-platform automation engine. It runs in the cloud (Colab, Dagshub, etc.) for 24/7 operation, even when your device is offline. QMOI features real-time Gmail notifications, parallel error fixing, instant deployment/download for all devices, and universal app delivery.
+```
 
 # 
 
@@ -588,3 +584,8 @@ qmoi_validation_frontmatter: true
   }
 }
 <!-- QMOI_VALIDATION_END -->
+<<<<<<< HEAD
+=======
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+>>>>>>> b053440f0 (does)

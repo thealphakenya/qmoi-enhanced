@@ -588,3 +588,8 @@ qmoi_validation_frontmatter: true
   }
 }
 <!-- QMOI_VALIDATION_END -->
+<<<<<<< HEAD
+=======
+
+<!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+>>>>>>> b053440f0 (does)
