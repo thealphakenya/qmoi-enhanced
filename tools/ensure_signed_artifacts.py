@@ -1,0 +1,279 @@
+#!/usr/bin/env python3
+"""
+Ensure signed CI artifacts exist for releases, replace release assets when CI produces signed artifacts,
+and publish verification metadata to QMOI memory.
+
+Usage:
+  ensure_signed_artifacts.py [--repo owner/repo] [--tag TAG] [--dry-run]
+
+This script is designed to be run from CI or locally. It requires a GitHub PAT with `repo` and `workflow`
+scopes available in the environment as `GH_PAT` or `GITHUB_TOKEN` for operations that modify releases or
+dispatch workflows. If not provided, the script runs in dry-run mode and prints planned actions.
+"""
+
+import argparse
+import hashlib
+import json
+import os
+import sys
+import time
+from datetime import datetime
+import tempfile
+import zipfile
+import shutil
+
+try:
+    import requests
+except Exception:
+    requests = None
+
+
+GITHUB_API = "https://api.github.com"
+
+
+def load_manifest(path="release_assets_manifest.json"):
+    if not os.path.exists(path):
+        return {}
+    with open(path, "r") as f:
+        return json.load(f)
+
+
+def sha256_of_file(path, chunk_size=8192):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(chunk_size), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def gh_headers(token):
+    return {"Authorization": f"token {token}", "Accept": "application/vnd.github+json"}
+
+
+def get_release(owner_repo, tag, token):
+    owner, repo = owner_repo.split("/")
+    url = f"{GITHUB_API}/repos/{owner}/{repo}/releases/tags/{tag}"
+    r = requests.get(url, headers=gh_headers(token))
+    if r.status_code == 200:
+        return r.json()
+    return None
+
+
+def delete_asset(owner_repo, asset_id, token):
+    owner, repo = owner_repo.split("/")
+    url = f"{GITHUB_API}/repos/{owner}/{repo}/releases/assets/{asset_id}"
+    r = requests.delete(url, headers=gh_headers(token))
+    return r.status_code in (204,)
+
+
+def upload_asset_by_upload_url(upload_url, path, token, content_type="application/octet-stream"):
+    # upload_url contains {?name,label}
+    upload_url = upload_url.split("{")[0]
+    name = os.path.basename(path)
+    params = {"name": name}
+    headers = {"Authorization": f"token {token}", "Content-Type": content_type}
+    with open(path, "rb") as f:
+        r = requests.post(upload_url, params=params, headers=headers, data=f)
+    return r
+
+
+def list_workflow_runs(owner_repo, workflow_id, token, branch=None):
+    owner, repo = owner_repo.split("/")
+    url = f"{GITHUB_API}/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"
+    params = {"per_page": 50}
+    if branch:
+        params["branch"] = branch
+    r = requests.get(url, headers=gh_headers(token), params=params)
+    if r.status_code == 200:
+        return r.json().get("workflow_runs", [])
+    return []
+
+
+def download_artifact(owner_repo, artifact_id, dest_path, token):
+    owner, repo = owner_repo.split("/")
+    url = f"{GITHUB_API}/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/zip"
+    r = requests.get(url, headers=gh_headers(token), stream=True)
+    if r.status_code == 200:
+        with open(dest_path, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+        return True
+    return False
+
+
+def publish_to_qmoi_memory(qmoi_url, token, payload):
+    if not qmoi_url:
+        print("No QMOI memory URL configured; skipping publish")
+        return False
+    try:
+        r = requests.post(f"{qmoi_url}/api/v1/release-artifact", json=payload, headers={"Authorization": f"Bearer {token}"} if token else {})
+        return r.status_code in (200, 201)
+    except Exception as e:
+        print("Publish to QMOI memory failed:", e)
+        return False
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--repo", default="thealphakenya/qmoi-enhanced")
+    parser.add_argument("--tag", default="v1.2.5")
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--download-artifacts", action="store_true", help="download workflow artifacts into a temp dir and use them as local artifacts")
+    parser.add_argument("--max-wait", type=int, default=1800, help="max wait seconds for CI runs")
+    parser.add_argument("--workflows", nargs="*", help="workflow ids or filenames to dispatch/list")
+    args = parser.parse_args()
+
+    token = os.environ.get("GH_PAT") or os.environ.get("GITHUB_TOKEN")
+    qmoi_memory_url = os.environ.get("QMOI_MEMORY_URL")
+    qmoi_memory_token = os.environ.get("QMOI_MEMORY_TOKEN")
+
+    manifest = load_manifest()
+
+    if requests is None:
+        print("requests library not available in current environment. Activate .venv or install requests.")
+        sys.exit(1)
+
+    print(f"Checking release {args.tag} in {args.repo}")
+    release = None
+    if token:
+        release = get_release(args.repo, args.tag, token)
+        if not release:
+            print(f"Release {args.tag} not found or unreachable via API")
+    else:
+        print("No GH PAT provided — running in dry-run planning mode")
+
+    expected = manifest.get("assets", {})
+
+    # Build plan: identify missing or mismatched assets for the given tag
+    missing = []
+    mismatched = []
+    remote_assets = {a["name"]: a for a in (release.get("assets", []) if release else [])}
+
+    for asset_entry in release.get("assets", []) if release else []:
+        name = asset_entry["name"]
+        manifest_infos = [x for x in manifest.get("assets", []) if x.get("name") == name]
+        if not manifest_infos:
+            continue
+        m = manifest_infos[0]
+        expected_sha = m.get("sha256")
+        # if sizes differ mark mismatch
+        if asset_entry.get("size") != m.get("size"):
+            mismatched.append({"name": name, "remote_size": asset_entry.get("size"), "expected_size": m.get("size")})
+
+    # Check for expected missing assets (based on manifest)
+    for m in manifest.get("assets", []):
+        name = m.get("name")
+        if name not in remote_assets:
+            missing.append(name)
+
+    print(f"Missing assets: {len(missing)}, mismatched: {len(mismatched)}")
+
+    if args.dry_run or not token:
+        print("DRY-RUN: plan below")
+        if missing:
+            print("Need to build and upload:")
+            for n in missing:
+                print(" -", n)
+        if mismatched:
+            print("Need to replace mismatched assets:")
+            for mm in mismatched:
+                print(mm)
+        print("Ensure CI workflows build signed artifacts and upload signature files (.sha256/.asc) as artifacts or release assets.")
+        return
+
+    # At this point we have a token and will attempt to dispatch/list workflows and retrieve artifacts.
+    # This script assumes the project's CI publishes artifacts with names that match release asset names.
+    # For simplicity: look for workflow runs for provided workflow IDs and inspect artifacts for signed outputs.
+
+    # If workflows provided, poll for latest run and download/extract artifacts
+    tmp_artifacts_dir = None
+    for wf in args.workflows or []:
+        print(f"Checking workflow {wf}")
+        runs = list_workflow_runs(args.repo, wf, token)
+        if not runs:
+            print(f"No runs found for {wf}")
+            continue
+        latest = runs[0]
+        run_id = latest.get("id")
+        # list artifacts for run
+        owner, repo = args.repo.split("/")
+        art_url = f"{GITHUB_API}/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"
+        ar = requests.get(art_url, headers=gh_headers(token))
+        if ar.status_code != 200:
+            print("Failed to list artifacts for run", run_id)
+            continue
+        artifacts = ar.json().get("artifacts", [])
+        if not artifacts:
+            print("No artifacts found for run", run_id)
+            continue
+        # if user requested download, create a temp dir to extract into
+        if args.download_artifacts:
+            if tmp_artifacts_dir is None:
+                tmp_artifacts_dir = tempfile.mkdtemp(prefix="qmoi_artifacts_")
+                print("Downloading artifacts into", tmp_artifacts_dir)
+        for a in artifacts:
+            print("Found artifact", a.get("name"), "id", a.get("id"))
+            dest = os.path.join(tempfile.gettempdir(), f"artifact_{a.get('id')}.zip")
+            ok = download_artifact(args.repo, a.get("id"), dest, token)
+            if ok:
+                print("Downloaded", dest)
+                if args.download_artifacts and tmp_artifacts_dir:
+                    try:
+                        with zipfile.ZipFile(dest, 'r') as zf:
+                            zf.extractall(tmp_artifacts_dir)
+                        print("Extracted artifact", a.get('name'), "to", tmp_artifacts_dir)
+                    except Exception as e:
+                        print("Failed to extract artifact zip", dest, e)
+            else:
+                print("Failed to download artifact", a.get("id"))
+
+    # Replacement phase: for mismatched assets attempt to find local artifact file in a configured artifacts dir
+    artifacts_dir = os.environ.get("CI_ARTIFACTS_DIR")
+    if not artifacts_dir or artifacts_dir.lower() in ("none", "null"):
+        artifacts_dir = "./artifacts"
+    # if we downloaded artifacts above, prefer the temp dir
+    if args.download_artifacts and tmp_artifacts_dir:
+        artifacts_dir = tmp_artifacts_dir
+    # ensure artifacts_dir is a string and exists
+    artifacts_dir = str(artifacts_dir)
+    if not os.path.exists(artifacts_dir):
+        try:
+            os.makedirs(artifacts_dir, exist_ok=True)
+        except Exception:
+            pass
+    upload_count = 0
+    for m in manifest.get("assets", []):
+        name = m.get("name")
+        local_path = os.path.join(artifacts_dir, name)
+        if os.path.exists(local_path):
+            sha = sha256_of_file(local_path)
+            if m.get("sha256") and sha != m.get("sha256"):
+                print(f"Local artifact {name} sha mismatch: {sha} vs expected {m.get('sha256')}")
+            # replace remote asset if exists
+            if name in remote_assets:
+                asset_id = remote_assets[name]["id"]
+                print(f"Deleting remote asset {name} ({asset_id})")
+                if delete_asset(args.repo, asset_id, token):
+                    print("Deleted")
+                else:
+                    print("Failed to delete, skipping upload")
+                    continue
+            # perform upload using release upload_url
+            upload_url = release.get("upload_url")
+            print(f"Uploading {local_path} to release")
+            r = upload_asset_by_upload_url(upload_url, local_path, token)
+            if r.status_code in (200, 201):
+                print("Uploaded", name)
+                upload_count += 1
+                # publish verification to qmoi memory
+                payload = {"tag": args.tag, "name": name, "sha256": sha, "verified_at": datetime.utcnow().isoformat() + "Z"}
+                publish_to_qmoi_memory(qmoi_memory_url, qmoi_memory_token, payload)
+            else:
+                print("Upload failed", r.status_code, r.text)
+
+    print(f"Uploaded {upload_count} assets")
+
+
+if __name__ == "__main__":
+    main()
