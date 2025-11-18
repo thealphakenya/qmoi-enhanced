@@ -124,6 +124,15 @@ def main():
     parser.add_argument("--workflows", nargs="*", help="workflow ids or filenames to dispatch/list")
     args = parser.parse_args()
 
+    # Early status print to aid debugging and visibility when run in terminals
+    print("ensure_signed_artifacts: starting", {
+        "repo": args.repo,
+        "tag": args.tag,
+        "dry_run": args.dry_run,
+        "download_artifacts": args.download_artifacts,
+        "workflows": args.workflows,
+    })
+
     token = os.environ.get("GH_PAT") or os.environ.get("GITHUB_TOKEN")
     qmoi_memory_url = os.environ.get("QMOI_MEMORY_URL")
     qmoi_memory_token = os.environ.get("QMOI_MEMORY_TOKEN")
@@ -152,7 +161,12 @@ def main():
 
     for asset_entry in release.get("assets", []) if release else []:
         name = asset_entry["name"]
-        manifest_infos = [x for x in manifest.get("assets", []) if x.get("name") == name]
+        # manifest may use 'name' or 'path'/'abs_path' fields — normalize
+        manifest_infos = []
+        for x in manifest.get("assets", []):
+            expected_name = x.get("name") or os.path.basename(x.get("path") or x.get("abs_path") or "")
+            if expected_name == name:
+                manifest_infos.append(x)
         if not manifest_infos:
             continue
         m = manifest_infos[0]
@@ -163,9 +177,9 @@ def main():
 
     # Check for expected missing assets (based on manifest)
     for m in manifest.get("assets", []):
-        name = m.get("name")
-        if name not in remote_assets:
-            missing.append(name)
+        expected_name = m.get("name") or os.path.basename(m.get("path") or m.get("abs_path") or "")
+        if expected_name and expected_name not in remote_assets:
+            missing.append(expected_name)
 
     print(f"Missing assets: {len(missing)}, mismatched: {len(mismatched)}")
 
@@ -244,16 +258,21 @@ def main():
             pass
     upload_count = 0
     for m in manifest.get("assets", []):
-        name = m.get("name")
-        local_path = os.path.join(artifacts_dir, name)
-        if os.path.exists(local_path):
+        expected_name = m.get("name") or os.path.basename(m.get("path") or m.get("abs_path") or "")
+        # prefer absolute path if provided and exists
+        local_path = None
+        if m.get("abs_path") and os.path.exists(m.get("abs_path")):
+            local_path = m.get("abs_path")
+        else:
+            local_path = os.path.join(artifacts_dir, expected_name)
+        if expected_name and os.path.exists(local_path):
             sha = sha256_of_file(local_path)
             if m.get("sha256") and sha != m.get("sha256"):
-                print(f"Local artifact {name} sha mismatch: {sha} vs expected {m.get('sha256')}")
+                print(f"Local artifact {expected_name} sha mismatch: {sha} vs expected {m.get('sha256')}")
             # replace remote asset if exists
-            if name in remote_assets:
-                asset_id = remote_assets[name]["id"]
-                print(f"Deleting remote asset {name} ({asset_id})")
+            if expected_name in remote_assets:
+                asset_id = remote_assets[expected_name]["id"]
+                print(f"Deleting remote asset {expected_name} ({asset_id})")
                 if delete_asset(args.repo, asset_id, token):
                     print("Deleted")
                 else:
@@ -264,10 +283,10 @@ def main():
             print(f"Uploading {local_path} to release")
             r = upload_asset_by_upload_url(upload_url, local_path, token)
             if r.status_code in (200, 201):
-                print("Uploaded", name)
+                print("Uploaded", expected_name)
                 upload_count += 1
                 # publish verification to qmoi memory
-                payload = {"tag": args.tag, "name": name, "sha256": sha, "verified_at": datetime.utcnow().isoformat() + "Z"}
+                payload = {"tag": args.tag, "name": expected_name, "sha256": sha, "verified_at": datetime.utcnow().isoformat() + "Z"}
                 publish_to_qmoi_memory(qmoi_memory_url, qmoi_memory_token, payload)
             else:
                 print("Upload failed", r.status_code, r.text)
