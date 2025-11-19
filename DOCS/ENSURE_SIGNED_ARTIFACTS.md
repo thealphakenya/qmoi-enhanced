@@ -38,4 +38,15 @@ Note: The Actions `GITHUB_TOKEN` is available inside workflows and can be used t
 ./tools/ensure_signed_artifacts.py --repo thealphakenya/qmoi-enhanced --tag v1.2.5 --workflows build-and-release.yml --dry-run --download-artifacts
 ```
 
+8) Auto-replace local placeholders
+
+Use `tools/auto_replace_placeholders.py` to scan the repository for small/placeholder files and replace them from `DOWNLOAD_BASE_URL`:
+
+```bash
+export DOWNLOAD_BASE_URL=https://downloads.qmoi.app
+python3 tools/auto_replace_placeholders.py
+```
+
+This is a safe convenience tool; it only replaces files when a production artifact is found and downloaded.
+
 When `GH_PAT` and `QMOI_MEMORY_URL` are set, run without `--dry-run` to execute replacements and publish verification metadata.
