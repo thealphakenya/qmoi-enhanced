@@ -16,6 +16,8 @@ Note: The Actions `GITHUB_TOKEN` is available inside workflows and can be used t
 - Checks `release_assets_manifest.json` for expected assets and their sha256.
 - Uses GitHub API + `GH_PAT` to inspect releases, workflow runs, and artifacts.
 - Downloads built artifacts from workflow runs (artifact zips), verifies sha256/signature files, and uploads signed artifacts to the GitHub Release (deleting old artifacts first).
+ - If configured with `DOWNLOAD_BASE_URL` the orchestrator will also attempt to fetch production artifacts directly from the canonical downloads host (e.g. `https://downloads.qmoi.app`) and use those as authoritative artifacts.
+ - After uploading verified artifacts the orchestrator will search the repository for local placeholder files (small files or those containing the string `QMOI placeholder`) and replace them with the verified artifact, ensuring README and `Qmoi_downloaded_apps` entries are production-ready.
  - If `CI_ARTIFACTS_DIR` is unset, the script can now download and extract workflow artifacts directly using `--download-artifacts` and use the extracted files as local artifacts.
 - Publishes verification metadata (tag, asset name, sha256, verified_at) to QMOI memory so the system always knows which artifact is authoritative.
 

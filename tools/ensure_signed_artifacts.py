@@ -136,6 +136,7 @@ def main():
     token = os.environ.get("GH_PAT") or os.environ.get("GITHUB_TOKEN")
     qmoi_memory_url = os.environ.get("QMOI_MEMORY_URL")
     qmoi_memory_token = os.environ.get("QMOI_MEMORY_TOKEN")
+    download_base = os.environ.get("DOWNLOAD_BASE_URL")
 
     manifest = load_manifest()
 
@@ -242,6 +243,50 @@ def main():
             else:
                 print("Failed to download artifact", a.get("id"))
 
+            # If we still have missing assets, try to fetch from DOWNLOAD_BASE_URL (fallback)
+            if download_base:
+                print("Attempting fallback downloads from DOWNLOAD_BASE_URL:", download_base)
+                candidates = [
+                    "windows/latest", "mac/latest", "android", "ios", "linux/latest",
+                    "chromebook", "qcity", "smarttv", "raspberrypi", "downloads"
+                ]
+                still_missing = []
+                for name in missing:
+                    found = False
+                    for c in candidates:
+                        url = f"{download_base}/{c}/{name}"
+                        tmpf = os.path.join(tempfile.gettempdir(), f"download_{name}")
+                        try:
+                            r = requests.get(url, stream=True)
+                            if r.status_code == 200:
+                                with open(tmpf, 'wb') as fh:
+                                    for chunk in r.iter_content(8192):
+                                        if chunk:
+                                            fh.write(chunk)
+                                print("Downloaded fallback", name, "from", url)
+                                # verify against manifest sha if available
+                                manifest_info = [m for m in manifest.get('assets', []) if m.get('name') == name]
+                                if manifest_info and manifest_info[0].get('sha256'):
+                                    have = sha256_of_file(tmpf)
+                                    want = manifest_info[0].get('sha256')
+                                    if have != want:
+                                        print(f"Fallback download sha mismatch for {name}: {have} != {want}")
+                                        os.remove(tmpf)
+                                        continue
+                                # place into artifacts dir for upload
+                                artifacts_dir = os.environ.get('CI_ARTIFACTS_DIR') or './artifacts'
+                                os.makedirs(artifacts_dir, exist_ok=True)
+                                dest = os.path.join(artifacts_dir, name)
+                                shutil.move(tmpf, dest)
+                                print("Placed fallback artifact at", dest)
+                                found = True
+                                break
+                        except Exception as e:
+                            continue
+                    if not found:
+                        still_missing.append(name)
+                missing = still_missing
+
     # Replacement phase: for mismatched assets attempt to find local artifact file in a configured artifacts dir
     artifacts_dir = os.environ.get("CI_ARTIFACTS_DIR")
     if not artifacts_dir or artifacts_dir.lower() in ("none", "null"):
@@ -288,6 +333,19 @@ def main():
                 # publish verification to qmoi memory
                 payload = {"tag": args.tag, "name": expected_name, "sha256": sha, "verified_at": datetime.utcnow().isoformat() + "Z"}
                 publish_to_qmoi_memory(qmoi_memory_url, qmoi_memory_token, payload)
+                # Replace local placeholders: search repo for files named like expected_name
+                for root, dirs, files in os.walk('.'):
+                    for f in files:
+                        if f == expected_name:
+                            fp = os.path.join(root, f)
+                            try:
+                                with open(fp, 'rb') as fh:
+                                    hdr = fh.read(128)
+                                if b'QMOI placeholder' in hdr or os.path.getsize(fp) < 1024:
+                                    print(f"Replacing local placeholder {fp} with {local_path}")
+                                    shutil.copy2(local_path, fp)
+                            except Exception:
+                                continue
             else:
                 print("Upload failed", r.status_code, r.text)
 
