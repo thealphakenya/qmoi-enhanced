@@ -10,6 +10,8 @@ This document explains how QMOI enforces that release assets are actual, signed 
 - A short-lived GitHub PAT with `repo` and `workflow` scopes (named `GH_PAT`) must be stored as a repository secret for programmatic workflow dispatch and release uploads.
 - QMOI memory API credentials (`QMOI_MEMORY_URL`, `QMOI_MEMORY_TOKEN`) must be configured as secrets for publishing verification metadata.
 
+Note: The Actions `GITHUB_TOKEN` is available inside workflows and can be used to upload release assets when the workflow is triggered by a `release` event. For external dispatch or cross-repo workflow triggers the short-lived `GH_PAT` with `workflow` scope remains necessary.
+
 3) How the automation works (tools/ensure_signed_artifacts.py)
 - Checks `release_assets_manifest.json` for expected assets and their sha256.
 - Uses GitHub API + `GH_PAT` to inspect releases, workflow runs, and artifacts.

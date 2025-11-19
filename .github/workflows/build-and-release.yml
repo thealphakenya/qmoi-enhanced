@@ -1,3 +1,93 @@
+name: Build and Publish Release Artifacts
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & publish artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y zip xz-utils
+
+      - name: Run artifact builder
+        run: |
+          chmod +x .github/scripts/build_artifacts.sh
+          .github/scripts/build_artifacts.sh "${{ github.ref_name }}" "${{ github.sha }}"
+
+      - name: Upload artifacts to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "dist/**"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+name: Build and Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  actions: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Make artifacts executable
+        run: |
+          chmod +x scripts/ci/build_release.sh || true
+
+      - name: Build release artifacts
+        run: |
+          scripts/ci/build_release.sh "$GITHUB_REF_NAME" || scripts/ci/build_release.sh "${{ github.event.release.tag_name || github.ref }}"
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts
+          path: artifacts/**
+
+      - name: Upload artifacts to GitHub Release
+        if: github.event_name == 'release'
+        run: |
+          set -e
+          upload_url="${{ github.event.release.upload_url }}"
+          for f in artifacts/*; do
+            [ -f "$f" ] || continue
+            fname=$(basename "$f")
+            echo "Uploading $fname to release"
+            gh api --method POST -H "Accept: application/vnd.github+json" "$upload_url?name=$fname" --input "$f"
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run post-release verification (ensure signed)
+        run: |
+          python3 tools/ensure_signed_artifacts.py --repo ${{ github.repository }} --tag ${{ github.event.release.tag_name }} --workflows .github/workflows/build-and-release.yml --download-artifacts --dry-run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 name: Build and Release
 
 on:
