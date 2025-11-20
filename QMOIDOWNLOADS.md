@@ -14,6 +14,15 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
+[IMPORTANT] Official downloads have moved to GitHub Releases.
+
+Please use the GitHub Releases page for production-ready binaries and assets:
+
+- https://github.com/thealphakenya/qmoi-enhanced/releases
+
+Many legacy links to `downloads.qmoi.app` in this file are known to be broken or placeholders. The repository audit has flagged these; see `tools/releases_audit.md` for details. If you are maintaining release artifacts, please rebuild and attach proper binaries to the matching GitHub release, include checksums, icons, and autoupdate metadata.
+
+<!-- Legacy download check logs follow for historical reference -->
 D:\applications\Alpha-Q-ai>python downloadqmoiai.py
 Checking all download links for reachability...
 BROKEN: Qbrowser (skv) [win] => https://downloads.qmoi.app/qbrowser/windows.exe (error: HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002E5D81F38C0>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)")))
