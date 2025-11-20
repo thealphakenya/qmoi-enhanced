@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
-"""Auto-replace placeholders using resilient network logic.
+"""Auto-replace placeholders using resilient network logic (v2).
 
-This script finds candidate placeholder files (small files or files with
-the marker text) and attempts to replace them with production artifacts
-from a primary download base and optional fallbacks. It uses
-`tools/network_utils.download_with_retries` to handle DNS issues,
-fallback hosts and host overrides.
+This script is a clean, single-file implementation that uses
+`tools/network_utils.py` for DNS resolution and resilient downloads.
 """
 
 from __future__ import annotations
@@ -17,12 +14,18 @@ import sys
 import time
 from typing import List, Optional
 
-# ensure repository root is on sys.path so `from tools import network_utils` works
-ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if ROOT_DIR not in sys.path:
-    sys.path.insert(0, ROOT_DIR)
-
-from tools import network_utils
+import importlib.util
+# Ensure tools package path is importable
+TOOLS_DIR = os.path.abspath(os.path.dirname(__file__))
+if TOOLS_DIR not in sys.path:
+    sys.path.insert(0, TOOLS_DIR)
+try:
+    import network_utils
+except Exception:
+    # fallback: try to load by filepath
+    spec = importlib.util.spec_from_file_location('network_utils', os.path.join(TOOLS_DIR, 'network_utils.py'))
+    network_utils = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(network_utils)
 
 
 def sha256_of_file(path: str, chunk_size: int = 8192) -> str:
@@ -71,7 +74,6 @@ def try_replace(path: str, bases: List[str], tag: Optional[str], host_ip: Option
         urls = build_candidate_urls(name, base, tag)
         for url in urls:
             print('  Trying', url)
-            # Determine host_ip to use: explicit host_ip wins; otherwise try resolve the hostname
             use_host_ip = host_ip
             try:
                 parsed_host = url.split('://', 1)[1].split('/', 1)[0]
@@ -92,7 +94,7 @@ def try_replace(path: str, bases: List[str], tag: Optional[str], host_ip: Option
                         pass
                 continue
 
-            # Checksum
+            # Check for checksum and verify
             cs_url = url + '.sha256'
             cs_tmp = dest_tmp + '.sha256'
             cs_ok = network_utils.download_with_retries(cs_url, cs_tmp, fallback_hosts=bases[1:] if len(bases) > 1 else None, host_override=(parsed_host if use_host_ip else None))
@@ -184,4 +186,3 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
-

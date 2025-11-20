@@ -1,0 +1,21 @@
+Current Todo Snapshot (updated 2025-11-20T00:00Z)
+
+Completed (automated):
+- Installed network helper: `tools/network_utils.py` (DNS resolution + resilient download)
+- Rewrote `tools/auto_replace_placeholders.py` to use DNS fallback, host-override, and retries.
+- Added `tools/test_download_server.py` for local artifact serving.
+
+In-progress:
+- Add DNS fallback handling (tools/network_utils.py + auto-replace) — in-progress (tracked in central todo list).
+
+Pending (next actions):
+1) Start local test server and run dry-run replacement to validate behavior:
+   - `python3 tools/test_download_server.py --dir tools/test_server_files --port 8000`
+   - `.venv/bin/python tools/auto_replace_placeholders.py --download-base http://127.0.0.1:8000 --dry-run`
+2) Provide `DOWNLOAD_BASE_URL` reachable from CI/dev container or host production artifacts at the configured base.
+3) Add short-lived GH PAT (`GH_PAT`) with `repo`+`workflow` scopes to repo secrets for `tools/ensure_signed_artifacts.py` non-dry-run runs.
+4) Audit `qvs` and parallel features, harden domain/link/DNS handling and update related docs (`DOCS/`, `lib/` md files).
+5) Commit & push all changes and update PR #97 with summary and verification reports.
+
+Notes:
+- If you want, I can start the test server and run the dry-run now.

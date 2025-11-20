@@ -42,18 +42,32 @@ Current todo states (high level):
 - Wire Jest into autotest runner: in-progress (needs usable jest binary in environment)
 - Add Jest setup and mocks: completed
 - Run dry-list of tests: not-started (blocked by missing jest binary)
-- Run Jest tests: not-started (blocked)
-- Triage placeholder scan noise: not-started
+```plaintext
+Current Todo Snapshot (updated 2025-11-20T00:00Z)
 
-If you'd like I can now:
-- A: Update `tools/find_placeholders.py` to exclude generated folders and re-run scans (safe and quick).
-- B: Attempt to run jest by invoking `npm ci` then `npx jest --listTests` (this will install packages and may be slow / network dependent). Ask explicitly before I perform installs.
+Completed (automated):
+- Installed network helper: `tools/network_utils.py` (DNS resolution + resilient download)
+- Rewrote `tools/auto_replace_placeholders.py` to use DNS fallback, host-override, and retries.
+- Added `tools/test_download_server.py` for local artifact serving.
 
--- end of snapshot
+In-progress:
+- Add DNS fallback handling (tools/network_utils.py + auto-replace) — in-progress (tracked in central todo list).
+
+Pending (next actions):
+1) Start local test server and run dry-run replacement to validate behavior:
+   - `python3 tools/test_download_server.py --dir tools/test_server_files --port 8000`
+   - `.venv/bin/python tools/auto_replace_placeholders.py --download-base http://127.0.0.1:8000 --dry-run`
+2) Provide `DOWNLOAD_BASE_URL` reachable from CI/dev container or host production artifacts at the configured base.
+3) Add short-lived GH PAT (`GH_PAT`) with `repo`+`workflow` scopes to repo secrets for `tools/ensure_signed_artifacts.py` non-dry-run runs.
+4) Audit `qvs` and parallel features, harden domain/link/DNS handling and update related docs (`DOCS/`, `lib/` md files).
+5) Commit & push all changes and update PR #97 with verification notes.
+
+Notes:
+- If you want, I can start the test server and run the dry-run now (I can also capture logs to `/tmp/auto_replace_dryrun_local.log`).
 
 QMOI — Resume To-dos (auto-generated)
 
-This snapshot was updated after running the initial scans and autotest orchestration.
+This snapshot was updated after running the DNS/fallback implementation and local test preparation.
 Use this as the source-of-truth for the next work session.
 
 Completed:
@@ -61,9 +75,10 @@ Completed:
 - Generate ALLVERSIONS.md — completed (ALLVERSIONS.md and tools/versions_summary.json)
 - Automated fixes (dry-run) — completed (placeholder_fixes.patch not produced — nothing safe proposed)
 - ALLMDFILESREFS.md regeneration — complete
+
 In-progress / Needs review / Next actions:
 1) Resumetodos update — in-progress
-   - This file (resumetodos.txt) must be updated at the end of each session with remaining items.
+   - This file (`resumetodos.txt`) must be updated at the end of each session with remaining items.
 
 2) Link validation — in-progress
    - `tools/check_links.py` run; report at `link_report.md` and `tools/link_report.json`.
@@ -87,18 +102,18 @@ Planned / Not started (priority order):
    - On next pause: update this file with concrete owners, PRs/patches to apply, and exact commands to run.
 
 How to proceed (recommended next 2 steps):
-- Open `link_report.md`, triage missing local links; fix obvious path issues.
+- Start the local test server and run the dry-run replacement; capture logs.
 - Draft a small canary rollout prototype (scripts/ or tools/) that can apply a signed CSS/JSON delta to a local dev server.
 
 Files created in this session:
-- `tools/collect_versions.py` — generates `ALLVERSIONS.md` and `tools/versions_summary.json`
-- `tools/check_links.py` — checks markdown links and writes reports
-- `tools/autotest_runner.py` — orchestrates scans and writes `tools/autotest_report.md`
-- `QMOI_AUTODEV.md` — autodev design notes
-- `ALLVERSIONS.md` — versions index (generated)
-- `tools/versions_summary.json`, `tools/link_report.json`, `link_report.md`, `tools/autotest_report.md` (reports)
+- `tools/network_utils.py` — DNS + resilient download helpers
+- `tools/test_download_server.py` — small local HTTP server for artifact testing
+- `tools/test_server_files/placeholder.txt` and `.sha256` — test artifact and checksum
+- Rewrote `tools/auto_replace_placeholders.py` — consolidated resilient replacement tool
 
 -- end
 [AUDIT 2025-11-08T15:10:27.287269Z] total_files=18921 done=14707 remaining_placeholders=4151
 [DONEREFS_VERIFY 2025-11-08T15:18:14.731259Z] checked=14707 kept=14596 removed=111
 [DONEREFS_VERIFY 2025-11-08T15:29:10.284455Z] checked=14596 kept=14596 removed=0
+
+```

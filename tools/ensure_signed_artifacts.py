@@ -17,6 +17,7 @@ import json
 import os
 import sys
 import time
+import socket
 from datetime import datetime
 import tempfile
 import zipfile
@@ -114,31 +115,74 @@ def publish_to_qmoi_memory(qmoi_url, token, payload):
         return False
 
 
-def download_from_base(base_url, name, dest_path, token=None):
-    if not base_url:
+def download_from_base(base_url, name, dest_path, token=None, host_ip=None, fallback_bases=None):
+    """Attempt to download `name` from `base_url` and optional fallback bases.
+
+    Supports connecting to an explicit `host_ip` while keeping the Host header
+    set to the original hostname (useful when DNS doesn't resolve but the IP is known).
+    """
+    if not base_url and not fallback_bases:
         return False
-    url = base_url.rstrip('/') + '/' + name
-    print(f"Attempting download from base URL: {url}")
+    bases = [b for b in ([base_url] + (fallback_bases or [])) if b]
     headers = {}
     if token:
         headers['Authorization'] = f"Bearer {token}"
-    try:
-        r = requests.get(url, headers=headers, stream=True, timeout=30)
-    except Exception as e:
-        print("Download failed:", e)
-        return False
-    if r.status_code != 200:
-        print("Download returned status", r.status_code)
-        return False
-    try:
-        with open(dest_path, 'wb') as f:
-            for chunk in r.iter_content(chunk_size=8192):
-                if chunk:
-                    f.write(chunk)
-        return True
-    except Exception as e:
-        print("Failed writing downloaded file:", e)
-        return False
+
+    def _attempt_download(url: str, use_host_ip: Optional[str] = None) -> bool:
+        print(f"  attempting {url} via host_ip={use_host_ip}")
+        try:
+            parsed = requests.utils.urlparse(url)
+            target = url
+            hdrs = dict(headers)
+            if use_host_ip:
+                target = f"{parsed.scheme}://{use_host_ip}{parsed.path}"
+                if parsed.query:
+                    target += '?' + parsed.query
+                hdrs['Host'] = parsed.netloc
+            r = requests.get(target, headers=hdrs, stream=True, timeout=30)
+        except Exception as e:
+            print("    download failed:", e)
+            return False
+        if r.status_code != 200:
+            print("    status", r.status_code)
+            return False
+        try:
+            with open(dest_path, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
+            return True
+        except Exception as e:
+            print("    failed writing downloaded file:", e)
+            try:
+                if os.path.exists(dest_path):
+                    os.remove(dest_path)
+            except Exception:
+                pass
+            return False
+
+    for base in bases:
+        url = base.rstrip('/') + '/' + name
+        # first try normal DNS/direct
+        if _attempt_download(url, use_host_ip=host_ip):
+            return True
+        # if DNS seems to be the problem, try resolving host and connect to IP
+        try:
+            parsed = requests.utils.urlparse(url)
+            hostname = parsed.hostname
+            if hostname:
+                try:
+                    resolved = socket.gethostbyname(hostname)
+                    if resolved and resolved != hostname:
+                        print(f"    resolved {hostname} -> {resolved}; trying IP connect")
+                        if _attempt_download(url, use_host_ip=resolved):
+                            return True
+                except Exception as e:
+                    print("    hostname resolve failed:", e)
+        except Exception:
+            pass
+
+    return False
 
 
 def main():
@@ -149,6 +193,9 @@ def main():
     parser.add_argument("--download-artifacts", action="store_true", help="download workflow artifacts into a temp dir and use them as local artifacts")
     parser.add_argument("--max-wait", type=int, default=1800, help="max wait seconds for CI runs")
     parser.add_argument("--workflows", nargs="*", help="workflow ids or filenames to dispatch/list")
+    parser.add_argument("--download-base", help="Primary download base URL (overrides DOWNLOAD_BASE_URL env)")
+    parser.add_argument("--fallback-bases", help="Comma-separated fallback base URLs to try if primary fails")
+    parser.add_argument("--host-ip", help="IP address to connect to while sending original Host header (use when DNS fails)")
     args = parser.parse_args()
 
     # Early status print to aid debugging and visibility when run in terminals
@@ -163,8 +210,10 @@ def main():
     token = os.environ.get("GH_PAT") or os.environ.get("GITHUB_TOKEN")
     qmoi_memory_url = os.environ.get("QMOI_MEMORY_URL")
     qmoi_memory_token = os.environ.get("QMOI_MEMORY_TOKEN")
-    download_base = os.environ.get("DOWNLOAD_BASE_URL", "https://downloads.qmoi.app")
-    download_base = os.environ.get("DOWNLOAD_BASE_URL")
+    # download_base selection: CLI arg -> env var -> default
+    download_base = args.download_base or os.environ.get('DOWNLOAD_BASE_URL') or 'https://downloads.qmoi.app'
+    fallback_bases = [b.strip() for b in (args.fallback_bases or os.environ.get('DOWNLOAD_FALLBACK_BASES','')).split(',') if b.strip()]
+    host_ip = args.host_ip or os.environ.get('DOWNLOAD_HOST_IP')
 
     manifest = load_manifest()
 
@@ -374,12 +423,11 @@ def main():
             local_path = m.get("abs_path")
         else:
             local_path = os.path.join(artifacts_dir, expected_name)
-            # If local artifact doesn't exist, try downloading from DOWNLOAD_BASE_URL if configured
+            # If local artifact doesn't exist, try downloading from configured download_base (with fallbacks) if configured
             if not os.path.exists(local_path):
-                download_base = os.environ.get('DOWNLOAD_BASE_URL')
                 if download_base:
                     print(f"Local artifact {local_path} not found; attempting download from {download_base}")
-                    ok = download_from_base(download_base, expected_name, local_path, token=None)
+                    ok = download_from_base(download_base, expected_name, local_path, token=None, host_ip=host_ip, fallback_bases=fallback_bases)
                     if not ok and os.path.exists(local_path):
                         # failed cleanup
                         try:

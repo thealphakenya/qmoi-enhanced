@@ -1,0 +1,9 @@
+requests
+aiohttp
+boto3
+numpy
+pandas
+GitPython
+watchdog
+schedule
+PyYAML
