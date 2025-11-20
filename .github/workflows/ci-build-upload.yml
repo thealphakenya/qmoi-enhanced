@@ -12,6 +12,25 @@ on:
       - autosync-backup-20250926-232440
 
 jobs:
+  debug-info:
+    name: Debug info
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Print environment
+        run: |
+          echo "GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME"
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "Runner: $RUNNER_OS"
+          env | sort
+      - name: Validate workflow YAML
+        run: |
+          echo "Workflow path: $GITHUB_WORKFLOW"
+          echo "OK"
+
   build-pwa:
     name: Build PWA
     runs-on: ubuntu-latest
