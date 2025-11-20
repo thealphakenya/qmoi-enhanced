@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Prevent pushing large files or accidental large binaries to origin.
+# Install by running: git config core.hooksPath .githooks
+
+set -euo pipefail
+
+# Max allowed file size (bytes)
+MAX_BYTES=$((100 * 1024 * 1024))
+
+echo "pre-push hook: checking for large files in index..."
+
+# Find files staged or tracked in HEAD
+while IFS= read -r -d '' file; do
+  # Skip if file removed
+  if [ ! -f "$file" ]; then
+    continue
+  fi
+  size=$(wc -c <"$file" | tr -d ' ')
+  if [ "$size" -gt "$MAX_BYTES" ]; then
+    echo "ERROR: file '$file' is $size bytes which exceeds the limit of $MAX_BYTES bytes."
+    echo "Please remove large artifacts (use git rm) or use Git LFS for big binaries."
+    exit 1
+  fi
+done < <(git ls-files -z)
+
+echo "pre-push checks passed."
+exit 0

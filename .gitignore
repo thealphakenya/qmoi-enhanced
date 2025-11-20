@@ -176,3 +176,9 @@ tmp/
 temp/
 
 .qmoi_validation
+
+# Avoid committing large downloaded release artifacts
+Qmoi_downloaded_apps/
+tools/test_server_files/
+WORKSPACEGENERAL_UPDATED.md
+resumetodos_updated.txt
