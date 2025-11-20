@@ -1,2 +1,7 @@
-# This is a placeholder for favicon.ico
-# In a real deployment, this would be a binary .ico file 
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+	<rect width="100%" height="100%" rx="12" fill="#4ecdc4" />
+	<g>
+		<text x="50%" y="52%" font-family="Inter, Arial, sans-serif" font-size="32" fill="#082032" text-anchor="middle" font-weight="700">Q</text>
+	</g>
+</svg>
