@@ -114,6 +114,33 @@ def publish_to_qmoi_memory(qmoi_url, token, payload):
         return False
 
 
+def download_from_base(base_url, name, dest_path, token=None):
+    if not base_url:
+        return False
+    url = base_url.rstrip('/') + '/' + name
+    print(f"Attempting download from base URL: {url}")
+    headers = {}
+    if token:
+        headers['Authorization'] = f"Bearer {token}"
+    try:
+        r = requests.get(url, headers=headers, stream=True, timeout=30)
+    except Exception as e:
+        print("Download failed:", e)
+        return False
+    if r.status_code != 200:
+        print("Download returned status", r.status_code)
+        return False
+    try:
+        with open(dest_path, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+        return True
+    except Exception as e:
+        print("Failed writing downloaded file:", e)
+        return False
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", default="thealphakenya/qmoi-enhanced")
@@ -136,6 +163,7 @@ def main():
     token = os.environ.get("GH_PAT") or os.environ.get("GITHUB_TOKEN")
     qmoi_memory_url = os.environ.get("QMOI_MEMORY_URL")
     qmoi_memory_token = os.environ.get("QMOI_MEMORY_TOKEN")
+    download_base = os.environ.get("DOWNLOAD_BASE_URL", "https://downloads.qmoi.app")
     download_base = os.environ.get("DOWNLOAD_BASE_URL")
 
     manifest = load_manifest()
@@ -243,6 +271,42 @@ def main():
             else:
                 print("Failed to download artifact", a.get("id"))
 
+    # If we couldn't download workflow artifacts, try pulling from DOWNLOAD_BASE_URL
+    if (not args.download_artifacts or not tmp_artifacts_dir) and download_base:
+        # create artifacts dir if not present
+        tmp = os.environ.get('CI_ARTIFACTS_DIR') or './artifacts'
+        if not os.path.exists(tmp):
+            os.makedirs(tmp, exist_ok=True)
+        print(f"Attempting fallback downloads from {download_base} into {tmp}")
+        for m in manifest.get("assets", []):
+            name = m.get('name') or os.path.basename(m.get('path') or m.get('abs_path') or '')
+            if not name:
+                continue
+            local_path = os.path.join(tmp, name)
+            if os.path.exists(local_path):
+                continue
+            # try a few candidate URLs
+            candidates = [
+                f"{download_base}/{name}",
+                f"{download_base}/downloads/{name}",
+                f"{download_base}/releases/{args.tag}/{name}",
+            ]
+            for url in candidates:
+                try:
+                    print("Trying", url)
+                    r = requests.get(url, stream=True, timeout=20)
+                    if r.status_code == 200:
+                        with open(local_path, 'wb') as f:
+                            for chunk in r.iter_content(8192):
+                                if chunk:
+                                    f.write(chunk)
+                        print("Downloaded fallback artifact", local_path)
+                        break
+                except Exception as e:
+                    print("Fallback download failed for", url, e)
+        # if we downloaded anything, set artifacts_dir to tmp
+        tmp_artifacts_dir = tmp
+
             # If we still have missing assets, try to fetch from DOWNLOAD_BASE_URL (fallback)
             if download_base:
                 print("Attempting fallback downloads from DOWNLOAD_BASE_URL:", download_base)
@@ -310,6 +374,18 @@ def main():
             local_path = m.get("abs_path")
         else:
             local_path = os.path.join(artifacts_dir, expected_name)
+            # If local artifact doesn't exist, try downloading from DOWNLOAD_BASE_URL if configured
+            if not os.path.exists(local_path):
+                download_base = os.environ.get('DOWNLOAD_BASE_URL')
+                if download_base:
+                    print(f"Local artifact {local_path} not found; attempting download from {download_base}")
+                    ok = download_from_base(download_base, expected_name, local_path, token=None)
+                    if not ok and os.path.exists(local_path):
+                        # failed cleanup
+                        try:
+                            os.remove(local_path)
+                        except Exception:
+                            pass
         if expected_name and os.path.exists(local_path):
             sha = sha256_of_file(local_path)
             if m.get("sha256") and sha != m.get("sha256"):
