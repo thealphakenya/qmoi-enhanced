@@ -94,17 +94,17 @@ All QMOI apps are published on GitHub Releases with full support for:
 ## Direct Download Links
 
 ### QMOI AI
-- Windows: https://downloads.qmoi.app/qmoi/windows.exe
-- macOS: https://downloads.qmoi.app/qmoi/mac.dmg
-- Linux: https://downloads.qmoi.app/qmoi/linux.deb
-- Android: https://downloads.qmoi.app/qmoi/android.apk
+- Windows: https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
+- macOS: https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- Linux: https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
+- Android: https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
 - iOS: App Store
 
 ### QCity
-- Windows: https://downloads.qmoi.app/qcity/windows.exe
-- macOS: https://downloads.qmoi.app/qcity/mac.dmg
-- Linux: https://downloads.qmoi.app/qcity/linux.appimage
-- Android: https://downloads.qmoi.app/qcity/android.apk
+- Windows: https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
+- macOS: https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
+- Linux: https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
+- Android: https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
 
 ### Web & PWA Apps
 - QCity: https://qcity.qmoi.app

@@ -5,7 +5,7 @@
   - Added SVG fallback link tags in `public/index.html`, `public/qcity/index.html`, `app/layout.js`, and `qmoi-space-pwa/index.html` so browsers find a valid icon even when `favicon.ico` is missing.
 
 - **Proposals (no auto-apply):**
-  - Replace `https://downloads.qmoi.app` links in docs with `https://github.com/thealphakenya/qmoi-enhanced/releases` (safe doc fallback). Suggested file: `GITHUB_RELEASES_QUICK_REFERENCE.md`, `QMOIDOWNLOADS.md`.
+  - Replace `https://github.com/thealphakenya/qmoi-enhanced/releases` links in docs with `https://github.com/thealphakenya/qmoi-enhanced/releases` (safe doc fallback). Suggested file: `GITHUB_RELEASES_QUICK_REFERENCE.md`, `QMOIDOWNLOADS.md`.
   - Do NOT change runtime configuration endpoints (e.g., `qmoigateway.*`) without an authoritative mapping from the project owner.
 
 - **Next steps (recommended):**

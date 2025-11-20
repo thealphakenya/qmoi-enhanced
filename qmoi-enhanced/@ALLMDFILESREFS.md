@@ -23,7 +23,7 @@ qmoi_validation_frontmatter: true
 
 This comprehensive reference document catalogs and categorizes all .md files in the QMOI system with advanced categorization, automation features, and health checks. The system ensures QMOI can automatically reference, fix, and enhance all documentation.
 
-- **All app download links are now provided via https://downloads.qmoi.app/**
+- **All app download links are now provided via https://github.com/thealphakenya/qmoi-enhanced/releases/**
 - **All links are autotested and always up-to-date, managed by QCity runners.**
 - **See [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) for all app releases and versions.**
 - **See [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) for all device/platform download instructions.**

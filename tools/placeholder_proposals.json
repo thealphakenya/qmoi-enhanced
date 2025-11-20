@@ -2,7 +2,7 @@
   "summary": "Placeholder replacement proposals generated 2025-11-20",
   "entries": [
     {
-      "token": "https://downloads.qmoi.app",
+      "token": "https://github.com/thealphakenya/qmoi-enhanced/releases",
       "occurrences": "multiple (see tools/matches_priority.json)",
       "suggested_replacement": "https://github.com/thealphakenya/qmoi-enhanced/releases",
       "risk": "low",

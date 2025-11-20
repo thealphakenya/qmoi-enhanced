@@ -315,7 +315,7 @@ All releases available at:
 
 3. **Official Portal**
    ```
-   https://downloads.qmoi.app
+   https://github.com/thealphakenya/qmoi-enhanced/releases
    ```
 
 4. **App Stores**

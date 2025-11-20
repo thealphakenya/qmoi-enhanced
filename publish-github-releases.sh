@@ -64,7 +64,7 @@ cat > "$NOTES_FILE" << 'RELEASE_NOTES'
 ## 📥 Download Options
 
 1. **GitHub Releases** (this page) - Recommended
-2. **Official Portal** - https://downloads.qmoi.app
+2. **Official Portal** - https://github.com/thealphakenya/qmoi-enhanced/releases
 3. **App Stores** - Google Play, Apple App Store
 4. **Direct Links** - See GITHUB_RELEASES_COMPLETE_GUIDE.md
 

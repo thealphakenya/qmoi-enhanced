@@ -1389,7 +1389,7 @@
     "file": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
     "line": 20,
     "snippet": "> Note: QMOI will attempt to validate every download link before publishing it here and replace broken links with a placeholder and a task for manual review.",
-    "context_before": "| qcity     | Web (PWA)     | v1.0.0    | https://downloads.qmoi.app/qcity/pwa/latest/       | \u2705       |\n",
+    "context_before": "| qcity     | Web (PWA)     | v1.0.0    | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/pwa/latest/       | \u2705       |\n",
     "context_after": "# QMOI AI Apps - All Releases & Versions\n"
   },
   {

@@ -206,7 +206,7 @@ jobs:
           - SHA256 checksums for verification
           
           ### Official Portal
-          - 📍 https://downloads.qmoi.app
+          - 📍 https://github.com/thealphakenya/qmoi-enhanced/releases
           - 📍 https://qmoi.app/downloads
           
           ### App Stores
@@ -399,7 +399,7 @@ jobs:
           ## 🔗 Links
           
           - 📍 **GitHub Release:** https://github.com/${{ github.repository }}/releases/tag/$VERSION
-          - 📍 **Download Portal:** https://downloads.qmoi.app
+          - 📍 **Download Portal:** https://github.com/thealphakenya/qmoi-enhanced/releases
           - 📍 **Documentation:** See GITHUB_RELEASES_COMPLETE_GUIDE.md
           
           ## ✨ Next Steps

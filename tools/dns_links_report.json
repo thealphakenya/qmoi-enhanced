@@ -170,7 +170,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://downloads.qmoi.app",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -178,7 +178,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/mac.dmg)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -197,7 +197,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/linux.appimage)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -205,7 +205,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/windows.exe)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -213,7 +213,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/ios.ipa)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -221,7 +221,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -229,7 +229,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -237,7 +237,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/windows.exe)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -245,7 +245,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/mac.dmg)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -253,7 +253,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/android.apk)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -261,7 +261,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -269,7 +269,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/android.apk)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -277,7 +277,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/windows.exe)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -285,7 +285,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/linux.appimage)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -293,7 +293,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/ios.ipa)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -301,7 +301,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/mac.dmg)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -309,7 +309,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/android.apk)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -317,7 +317,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/ios.ipa)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -325,7 +325,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/linux.appimage)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -333,7 +333,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/windows.exe)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -341,7 +341,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/windows.exe)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -349,7 +349,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/mac.dmg)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -357,7 +357,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/linux.appimage)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -365,7 +365,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/android.apk)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -373,7 +373,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/ios.ipa)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -381,7 +381,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/android.apk)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -389,7 +389,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -397,7 +397,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -405,7 +405,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -413,7 +413,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -421,7 +421,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/android.apk)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -429,7 +429,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/windows.exe)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -437,7 +437,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/mac.dmg)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -445,7 +445,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/ios.ipa)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -453,7 +453,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/android.apk)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -471,7 +471,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/linux.appimage)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage)",
       "file": "README.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -641,7 +641,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -659,7 +659,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -667,7 +667,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi/linux.deb",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -675,7 +675,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -683,7 +683,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -691,7 +691,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -699,7 +699,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi/smarttv.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -707,7 +707,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi/raspberrypi.img",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -715,7 +715,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qcity/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -723,7 +723,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi/chromebook.zip",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -731,7 +731,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qcity/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -739,7 +739,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qcity/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -747,7 +747,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qcity/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -755,7 +755,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qcity/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -763,7 +763,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qshare/qshare-universal.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -771,7 +771,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/yap/yap-universal.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -790,7 +790,7 @@
       "error": "<urlopen error [Errno 111] Connection refused>"
     },
     {
-      "url": "https://downloads.qmoi.app/qstore/qstore-universal.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
       "file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -798,7 +798,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi-ai/pwa/latest/",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/",
       "file": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -816,7 +816,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://downloads.qmoi.app/qmoi-space/pwa/latest/",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/",
       "file": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -846,7 +846,7 @@
       "error": "<urlopen error [Errno 111] Connection refused>"
     },
     {
-      "url": "https://downloads.qmoi.app/qcity/pwa/latest/",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/pwa/latest/",
       "file": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1066,7 +1066,7 @@
       "error": "<urlopen error [Errno 111] Connection refused>"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1074,7 +1074,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1082,7 +1082,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1090,7 +1090,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1098,7 +1098,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1106,7 +1106,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1114,7 +1114,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1122,7 +1122,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1130,7 +1130,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1138,7 +1138,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1146,7 +1146,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1154,7 +1154,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1162,7 +1162,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1178,7 +1178,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1186,7 +1186,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qclock/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1194,7 +1194,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1202,7 +1202,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1210,7 +1210,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1228,7 +1228,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1236,7 +1236,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1244,7 +1244,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1252,7 +1252,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1260,7 +1260,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1268,7 +1268,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1276,7 +1276,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qmap/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1284,7 +1284,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1292,7 +1292,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1300,7 +1300,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1325,7 +1325,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1333,7 +1333,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1341,7 +1341,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1349,7 +1349,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1357,7 +1357,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1365,7 +1365,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1384,7 +1384,7 @@
       "error": "<urlopen error [Errno 111] Connection refused>"
     },
     {
-      "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -1993,7 +1993,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/android/qmoi_ai.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/android/qmoi_ai.apk",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2001,7 +2001,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/chromebook/qmoi_ai.deb",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/chromebook/qmoi_ai.deb",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2009,7 +2009,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/error.log",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/error.log",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2017,7 +2017,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/ios/qmoi_ai.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/ios/qmoi_ai.ipa",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2025,7 +2025,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/linux/latest/qmoi_ai.AppImage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/linux/latest/qmoi_ai.AppImage",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2033,7 +2033,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/mac/latest/qmoi_ai.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/mac/latest/qmoi_ai.dmg",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2041,7 +2041,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/qmoi",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2070,7 +2070,7 @@
       "error": "<urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/qmoi_ai.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi_ai.exe",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2078,7 +2078,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/windows/latest/qmoi_ai.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2086,7 +2086,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/smarttv/qmoi_ai.pkg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],
@@ -2094,7 +2094,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://downloads.qmoi.app/downloads/raspberrypi/qmoi_ai_arm.tar.gz",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz",
       "file": "ALLLINKS.md",
       "host": "downloads.qmoi.app",
       "resolved_ips": [],

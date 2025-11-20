@@ -225,7 +225,7 @@ See detailed guide: `GITHUB_RELEASES_REALTIME_GUIDE.md`
    https://github.com/thealphakenya/qmoi-enhanced/releases
 
 2. **Official Portal**
-   https://downloads.qmoi.app
+   https://github.com/thealphakenya/qmoi-enhanced/releases
 
 3. **App Stores**
    - Google Play Store

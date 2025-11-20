@@ -159,7 +159,7 @@ All QMOI apps and versions available with:
 
 ### Option 2: Official Downloads Portal
 
-**https://downloads.qmoi.app/**
+**https://github.com/thealphakenya/qmoi-enhanced/releases/**
 
 - ✅ Direct downloads
 - ✅ Latest versions
@@ -200,7 +200,7 @@ Access directly in your browser:
 8. Click "Install"
 
 #### From Downloads Portal
-1. Visit https://downloads.qmoi.app/
+1. Visit https://github.com/thealphakenya/qmoi-enhanced/releases/
 2. Select your app
 3. Download the latest `.exe`
 4. Run installer (steps 4-8 above)
@@ -407,22 +407,22 @@ sync
 
 ### QMOI AI v1.2.3
 
-- **Windows (x64):** https://downloads.qmoi.app/qmoi/windows.exe
-- **Windows (ARM64):** https://downloads.qmoi.app/qmoi/windows-arm64.exe
-- **macOS (Intel):** https://downloads.qmoi.app/qmoi/mac.dmg
-- **macOS (Apple Silicon):** https://downloads.qmoi.app/qmoi/mac-arm64.dmg
-- **Linux (DEB):** https://downloads.qmoi.app/qmoi/linux.deb
-- **Linux (AppImage):** https://downloads.qmoi.app/qmoi/linux.appimage
-- **Android:** https://downloads.qmoi.app/qmoi/android.apk
-- **Raspberry Pi:** https://downloads.qmoi.app/qmoi/raspberrypi.img
-- **Chromebook:** https://downloads.qmoi.app/qmoi/chromebook.zip
+- **Windows (x64):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
+- **Windows (ARM64):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows-arm64.exe
+- **macOS (Intel):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- **macOS (Apple Silicon):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac-arm64.dmg
+- **Linux (DEB):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
+- **Linux (AppImage):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- **Android:** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
+- **Raspberry Pi:** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
+- **Chromebook:** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip
 
 ### QCity v2.0.1
 
-- **Windows:** https://downloads.qmoi.app/qcity/windows.exe
-- **macOS:** https://downloads.qmoi.app/qcity/mac.dmg
-- **Linux:** https://downloads.qmoi.app/qcity/linux.appimage
-- **Android:** https://downloads.qmoi.app/qcity/android.apk
+- **Windows:** https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
+- **macOS:** https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
+- **Linux:** https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
+- **Android:** https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
 - **iOS:** App Store
 
 ### Universal Apps

@@ -23,7 +23,7 @@ Welcome to **Quantum Master Orchestrator Intelligence (QMOI)** — the unified s
 ---
 
 ## 🌐 Downloads
-Latest builds are at [downloads.qmoi.app](https://downloads.qmoi.app)
+Latest builds are at [downloads.qmoi.app](https://github.com/thealphakenya/qmoi-enhanced/releases)
 
 ---
 
