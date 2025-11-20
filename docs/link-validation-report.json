@@ -455,211 +455,211 @@
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qclock/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qclock/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qmap/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qmap/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qsearch/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -841,211 +841,211 @@
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qclock/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qclock/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qmap/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qmap/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qsearch/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -1603,31 +1603,31 @@
     "QMOIFORALL.md": [
       {
         "label": "Download Windows",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Download Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Download Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Download iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Download Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       }
@@ -1955,211 +1955,211 @@
     "Qstore.md": [
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qclock/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qclock/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qmap/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qmap/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qsearch/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
         "ok": true,
         "reason": "external URL"
       }
@@ -2432,211 +2432,211 @@
     "QMOIAPPS.md": [
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qclock/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qclock/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qmap/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qmap/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qsearch/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
         "ok": true,
         "reason": "external URL"
       }
@@ -57649,8 +57649,8 @@
         "reason": "external URL"
       },
       {
-        "label": "https://downloads.qmoi.app",
-        "url": "https://downloads.qmoi.app",
+        "label": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
         "ok": true,
         "reason": "external URL"
       }
@@ -57684,7 +57684,7 @@
       },
       {
         "label": "downloads.qmoi.app",
-        "url": "https://downloads.qmoi.app",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
         "ok": true,
         "reason": "external URL"
       }
@@ -58291,211 +58291,211 @@
     "qmoi-enhanced/QMOIAUTOAPPSDEV.md": [
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qclock/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qclock/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qmap/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qmap/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qsearch/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -58735,31 +58735,31 @@
     "qmoi-enhanced/QMOIFORALL.md": [
       {
         "label": "Download Windows",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Download Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Download Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Download iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Download Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       }
@@ -58828,211 +58828,211 @@
     "qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md": [
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qclock/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qclock/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qmap/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qmap/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qsearch/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -59334,211 +59334,211 @@
     "qmoi-enhanced/Qstore.md": [
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qclock/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qclock/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qmap/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qmap/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qsearch/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
         "ok": true,
         "reason": "external URL"
       }
@@ -59703,421 +59703,421 @@
     "qmoi-enhanced/QMOIAPPS.md": [
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qclock/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qclock/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qmap/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qmap/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qsearch/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qbrowser/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qbrowser/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qbrowser/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qbrowser/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qbrowser/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qfilemanager/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qfilemanager/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qfilemanager/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qfilemanager/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qfilemanager/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qclock/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qclock/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qclock/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qclock/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qclock/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qmap/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qmap/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qmap/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qmap/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qmap/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qsearch/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qsearch/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qsearch/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qsearch/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qsearch/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qwhatsapp/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qwhatsapp/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Win",
-        "url": "https://downloads.qmoi.app/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://downloads.qmoi.app/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://downloads.qmoi.app/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://downloads.qmoi.app/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://downloads.qmoi.app/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -115206,8 +115206,8 @@
         "reason": "external URL"
       },
       {
-        "label": "https://downloads.qmoi.app",
-        "url": "https://downloads.qmoi.app",
+        "label": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
         "ok": true,
         "reason": "external URL"
       }
@@ -115241,7 +115241,7 @@
       },
       {
         "label": "downloads.qmoi.app",
-        "url": "https://downloads.qmoi.app",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
         "ok": true,
         "reason": "external URL"
       }

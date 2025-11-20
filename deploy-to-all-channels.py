@@ -208,7 +208,7 @@ class QMOIDeploymentOrchestrator:
 - Status: {self.stats['downloads_portal']['status'].upper()}
 - Deployed: {self.stats['downloads_portal']['deployed']}
 - Failed: {self.stats['downloads_portal']['failed']}
-- URL: https://downloads.qmoi.app
+- URL: https://github.com/thealphakenya/qmoi-enhanced/releases
 
 ### Web/PWA
 - Status: {self.stats['web']['status'].upper()}

@@ -67,7 +67,7 @@ Qmoi_apps/
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
 🌐 Download Portal
-👉 https://downloads.qmoi.app
+👉 https://github.com/thealphakenya/qmoi-enhanced/releases
 
 🛠 Autotest Build Matrix (Updated {{timestamp}})
 Platform	Build Status	Test Result

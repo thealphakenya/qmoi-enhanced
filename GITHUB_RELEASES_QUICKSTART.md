@@ -215,7 +215,7 @@ https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.
 
 ✅ **Official Portal**
 ```
-https://downloads.qmoi.app
+https://github.com/thealphakenya/qmoi-enhanced/releases
 ```
 
 ✅ **App Stores** (Coming)
@@ -285,7 +285,7 @@ git push origin v1.2.3
 - (See documentation for guides)
 
 ### 5. Update Download Portal
-- https://downloads.qmoi.app
+- https://github.com/thealphakenya/qmoi-enhanced/releases
 - Update links to latest release
 
 ---

@@ -21,6 +21,7 @@ New automation added (auto-managed):
 - `tools/auto_fix_build.py` — conservative build autofixer for missing deps (Node/Python).
 - Scheduled link-check workflow: `.github/workflows/scheduled-link-check.yml` (daily).
 - Vercel autofix workflow: `.github/workflows/vercel-autofix.yml` (runs on push/PR and will attempt safe fixes and open PRs).
+ - Scheduled memory-sync workflow: `.github/workflows/sync-memory.yml` (every 15 minutes; requires `QMOI_GH_TOKEN`/`QMOI_GIST_ID` or `QMOI_HF_TOKEN`/`QMOI_HF_REPO` to be configured in repo secrets).
 
 Automation policy: automated changes create PRs (or branches) for review. Low-risk fixes (http->https) are applied automatically per policy; dependency fixes are attempted conservatively and offered as PRs.
 

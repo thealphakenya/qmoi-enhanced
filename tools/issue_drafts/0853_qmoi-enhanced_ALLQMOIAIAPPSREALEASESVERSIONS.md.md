@@ -47,10 +47,10 @@ This file lists all QMOI AI apps, all platforms, all versions, and their downloa
 
 | App Name   | Platform      | Version   | Download Link                                      | Status   |
 |-----------|---------------|-----------|----------------------------------------------------|----------|
-| QMOI AI   | Windows       | v1.2.3    | https://downloads.qmoi.app/qmoi/windows.exe        | ✅       |
-| QMOI AI   | Mac           | v1.2.3    | https://downloads.qmoi.app/qmoi/mac.dmg            | ✅       |
-| QMOI AI   | Linux (DEB)   | v1.2.3    | https://downloads.qmoi.app/qmoi/linux.deb          | ✅       |
-| QMOI AI   | Linux (AppImage) | v1.2.3 | https://downloads.qmoi.app/qmoi/linux.appimage     | ✅       |
+| QMOI AI   | Windows       | v1.2.3    | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe        | ✅       |
+| QMOI AI   | Mac           | v1.2.3    | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg            | ✅       |
+| QMOI AI   | Linux (DEB)   | v1.2.3    | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb          | ✅       |
+| QMOI AI   | Linux (AppImage) | v1.2.3 | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage     | ✅       |
 | QMOI AI   | Android       | v1.2.3    | https://downloads.
 ```
 

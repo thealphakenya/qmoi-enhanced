@@ -8,6 +8,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </head>
       <body>
         {children}

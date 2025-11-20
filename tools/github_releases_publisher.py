@@ -149,7 +149,7 @@ class GitHubReleasesPublisher:
                     file_path=str(exe_file),
                     file_size=file_size,
                     sha256_hash=sha256,
-                    download_url=f"https://downloads.qmoi.app/qmoi/windows.exe",
+                    download_url=f"https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
                     release_date=datetime.now().isoformat(),
                     status="ready"
                 )
@@ -171,7 +171,7 @@ class GitHubReleasesPublisher:
                         file_path=str(app_dir),
                         file_size=self._calculate_dir_size(app_dir),
                         sha256_hash="web-app",
-                        download_url=f"https://downloads.qmoi.app/{app_name}/web/",
+                        download_url=f"https://github.com/thealphakenya/qmoi-enhanced/releases/{app_name}/web/",
                         release_date=datetime.now().isoformat(),
                         status="ready"
                     )

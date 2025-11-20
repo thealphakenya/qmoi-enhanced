@@ -99,18 +99,18 @@ def main():
 
     # 2. Critical download links (add more as needed)
     urls = [
-        "https://downloads.qmoi.app/qmoi/windows.exe",
-        "https://downloads.qmoi.app/qmoi/mac.dmg",
-        "https://downloads.qmoi.app/qmoi/linux.deb",
-        "https://downloads.qmoi.app/qmoi/linux.appimage",
-        "https://downloads.qmoi.app/qmoi/android.apk",
-        "https://downloads.qmoi.app/qmoi/ios.ipa",
-        "https://downloads.qmoi.app/qcity/windows.exe",
-        "https://downloads.qmoi.app/qcity/mac.dmg",
-        "https://downloads.qmoi.app/qcity/linux.appimage",
-        "https://downloads.qmoi.app/qcity/android.apk",
-        "https://downloads.qmoi.app/qcity/ios.ipa",
-        "https://downloads.qmoi.app/qstore/qstore-universal.apk"
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk"
     ]
     for url in urls:
         if not test_url(url):

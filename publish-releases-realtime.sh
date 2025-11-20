@@ -388,7 +388,7 @@ generate_release_notes() {
 ## 📥 Download Options
 
 **This Release:** All files below
-**Official Portal:** https://downloads.qmoi.app
+**Official Portal:** https://github.com/thealphakenya/qmoi-enhanced/releases
 **App Stores:** Google Play, Apple App Store (coming)
 **Web:** https://qmoi.qmoi.app
 

@@ -75,7 +75,7 @@ DOWNLOADQMOIAIAPPALLDEVICES.md → CLI installers, troubleshooting, QR downloads
 🌐 Download Links
 All finalized apps are automatically published to:
 
-👉 https://downloads.qmoi.app
+👉 https://github.com/thealphakenya/qmoi-enhanced/releases
 
 If a download fails, QCity automation will auto-rebui
 ```

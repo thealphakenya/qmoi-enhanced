@@ -22,20 +22,12 @@
 ## 🔗 Direct Download Links
 
 ### QMOI AI
-- **Windows:** https://downloads.qmoi.app/qmoi/windows.exe
-- **Mac:** https://downloads.qmoi.app/qmoi/mac.dmg
-- **Linux:** https://downloads.qmoi.app/qmoi/linux.deb
-- **Android:** https://downloads.qmoi.app/qmoi/android.apk
+- **Downloads & Releases:** https://github.com/thealphakenya/qmoi-enhanced/releases
 - **iOS:** App Store
-- **Raspberry Pi:** https://downloads.qmoi.app/qmoi/raspberrypi.img
-- **Chromebook:** https://downloads.qmoi.app/qmoi/chromebook.zip
 - **Web:** https://qmoi.qmoi.app
 
 ### QCity
-- **Windows:** https://downloads.qmoi.app/qcity/windows.exe
-- **Mac:** https://downloads.qmoi.app/qcity/mac.dmg
-- **Linux:** https://downloads.qmoi.app/qcity/linux.appimage
-- **Android:** https://downloads.qmoi.app/qcity/android.apk
+- **Downloads & Releases:** https://github.com/thealphakenya/qmoi-enhanced/releases
 - **iOS:** App Store
 - **Web:** https://qcity.qmoi.app
 

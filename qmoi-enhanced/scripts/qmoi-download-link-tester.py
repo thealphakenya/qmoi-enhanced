@@ -7,7 +7,7 @@ LINKS_FILE = "Qmoi_apps/latest.json"
 REPORT_FILE = "Qmoi_apps/download_link_report.json"
 
 # Fallback links for auto-fix (customize as needed)
-FALLBACK_DOMAIN = "https://downloads.qmoi.app"
+FALLBACK_DOMAIN = "https://github.com/thealphakenya/qmoi-enhanced/releases"
 
 
 def load_links():

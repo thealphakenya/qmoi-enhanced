@@ -92,7 +92,7 @@ def scan_downloads():
         if p.is_file():
             rel = p.relative_to(ROOT)
             size_kb = p.stat().st_size // 1024
-            url = f'https://downloads.qmoi.app/{rel.as_posix()}'
+            url = f'https://github.com/thealphakenya/qmoi-enhanced/releases/{rel.as_posix()}'
             rows.append({'path': str(rel), 'size_kb': size_kb, 'url': url})
     return rows
 
