@@ -1,0 +1,46 @@
+name: Copilot CLI Setup & Smoke Test
+
+on:
+  workflow_dispatch: {}
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - 'chore/local-chat-helper-*'
+
+jobs:
+  setup-copilot:
+    name: Install Node and Copilot CLI, run smoke tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Copilot CLI
+        run: |
+          npm install -g @githubnext/copilot-cli
+
+      - name: Smoke test - versions
+        run: |
+          echo "node: $(node --version)"
+          echo "npm: $(npm --version)"
+          echo "copilot: $(copilot --version || true)"
+          copilot --help || true
+
+      - name: Run repository smoke commands (non-destructive)
+        run: |
+          python3 -m pip --version || true
+          git status --porcelain --branch | sed -n '1,200p'
+
+      - name: Upload smoke logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: copilot-smoke-logs
+          path: |
+            ${{ github.workspace }}/**/*.log
+            ${{ github.workspace }}/reports || true
