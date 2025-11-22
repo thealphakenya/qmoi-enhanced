@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 # QMOI Virtual Store (QVS) — Enhanced Usage
 
 QVS is the local-first artifact store used to keep large artifacts, backups, and validation snapshots. The validation tools write JSON reports to `.qmoi_validation/` which should be periodically pushed to QVS for long-term retention.

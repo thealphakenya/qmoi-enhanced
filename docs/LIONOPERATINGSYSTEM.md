@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 # LION Operating System (LION OS)
 
 This document describes the LION operating system: the orchestration, permissions,

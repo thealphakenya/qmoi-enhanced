@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 # Release Automation — QMOI
 
 This document explains the release automation system in this repository and how QMOI and LION coordinate to produce safe, auditable releases.

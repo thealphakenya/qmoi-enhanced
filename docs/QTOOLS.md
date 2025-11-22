@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 ## QMOI Tools & QTools — Overview
 
 This document describes the enhanced toolchain (QTOOLS) used across the repository and how QMOI + LION orchestrate validation, builds, and releases.

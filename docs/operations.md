@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:58Z
+<!-- QMOI_OWNER_END -->
+
 # QMOI Operations Guide
 
 This document describes how to safely operate and maintain the QMOI infrastructure, including configuration, secrets management, and operational procedures.

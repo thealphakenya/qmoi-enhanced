@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: leah
+role: sister
+updated_at: 2025-11-22T13:51:59Z
+<!-- QMOI_OWNER_END -->
+
 # Wallets — security, testnet usage, and operational guidance
 
 This document explains how the QMOI wallet tooling is intended to be used safely in development and production.

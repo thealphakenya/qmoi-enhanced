@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:58Z
+<!-- QMOI_OWNER_END -->
+
 # QMOI To-dos Enhancements (20+ improvements)
 
 This file lists concrete improvements to the QMOI to-dos system (used by `scripts/qmoi_todos.py`) that will make planning, execution, validation, and LION integration more robust.

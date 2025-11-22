@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 # Enhanced LION Features
 
 This document describes enhancements to LION to make it a smarter, wiser validation and orchestrator agent.

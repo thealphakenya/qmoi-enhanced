@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:58Z
+<!-- QMOI_OWNER_END -->
+
 ## QMOI Documentation Remediation Plan (merged)
 
 Generated: 2025-10-25T00:00:00Z

@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:58Z
+<!-- QMOI_OWNER_END -->
+
 # Wallet Module Runbook
 
 This document describes the `src/wallet.ts` module and how to run tests locally.

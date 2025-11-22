@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 ## HOSTLINKS & DOMAINS — Enhancements and Action Plan
 
 Generated: 2025-10-30T23:29:00Z

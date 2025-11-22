@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: master
+role: master
+updated_at: 2025-11-22T13:51:58Z
+<!-- QMOI_OWNER_END -->
+
 # Wallet Security Playbook
 
 This document summarizes the recommended operational and engineering controls for QMOI wallets and payment flows.

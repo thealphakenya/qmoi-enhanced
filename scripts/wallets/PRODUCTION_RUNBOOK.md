@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:59Z
+<!-- QMOI_OWNER_END -->
+
 # QMOI Wallets — Production Runbook (High-level)
 
 This runbook documents the safe, auditable steps to enable live wallet checks and transactions.

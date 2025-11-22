@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: master
+role: master
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 Platform Automation & Safety Guidelines
 
 This document explains how QMOI should interact with external platforms in production.

@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: master
+role: master
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 # ALL WALLETS QVS (Quick Verification Summary)
 
 This file documents discovered wallet-related documentation and provides instructions to run the automated wallet Quick Verification (QV) script.

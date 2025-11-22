@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: master
+role: master
+updated_at: 2025-11-22T13:51:58Z
+<!-- QMOI_OWNER_END -->
+
 # REVENUE_SPEC (auto-generated - review required)
 
 This document maps detected revenue-related claims and keywords to source files.

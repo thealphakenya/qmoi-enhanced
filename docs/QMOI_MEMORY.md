@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 # QMOI Memory Manager
 
 This document describes `scripts/qmoi_memory.py`, a lightweight layered cache used by validators and the LION orchestrator to improve performance and reduce repeated I/O.

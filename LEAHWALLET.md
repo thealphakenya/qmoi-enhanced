@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: master
+role: master
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 # Leah Wallet — Setup & Autotest (SISTER-assisted)
 
 This guide is written for Leah (SISTER) — minimal developer knowledge required. It explains how to set up the Leah wallet and run the verification autotest.

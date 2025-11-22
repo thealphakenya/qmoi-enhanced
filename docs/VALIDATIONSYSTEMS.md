@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:58Z
+<!-- QMOI_OWNER_END -->
+
 # QMOI Validation Systems
 
 This document describes the validation systems implemented by QMOI/LION. It links to the specific validations for artifacts, apps, links, and documentation.

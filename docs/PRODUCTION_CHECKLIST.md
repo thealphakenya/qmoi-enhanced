@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:57Z
+<!-- QMOI_OWNER_END -->
+
 # Production Checklist for QMOI
 
 This checklist helps prepare the QMOI repository and runtime for production deployments. Follow each step and verify in CI or locally before enabling production runs.

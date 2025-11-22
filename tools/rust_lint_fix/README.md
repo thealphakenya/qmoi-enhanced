@@ -1,3 +1,9 @@
+<!-- QMOI_OWNER_START -->
+owner: unknown
+role: unknown
+updated_at: 2025-11-22T13:51:59Z
+<!-- QMOI_OWNER_END -->
+
 # rust_lint_fix (scaffold)
 
 This folder contains a minimal Rust-based linter/fixer scaffold. It is intentionally a dry-run scaffold that collects a list of files and writes a proposal JSON into `.qmoi_validation/`.
