@@ -1,0 +1,63 @@
+name: ALLLINKS Autoupdate
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # nightly at 02:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-index:
+    runs-on: ubuntu-latest
+    env:
+      # By default network checks are off; can be enabled via repository secrets or workflow inputs
+      QMOI_ALLOW_NETWORK: 'false'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install minimal deps
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run link validator (syntactic checks)
+        run: |
+          python3 scripts/link_validator.py || true
+
+      - name: Generate ALLLINKS (dry-run first)
+        run: |
+          python3 scripts/generate_all_links.py --dry-run
+
+      - name: Generate ALLLINKS (apply) and write artifacts
+        env:
+          QMOI_ALLOW_NETWORK: ${{ env.QMOI_ALLOW_NETWORK }}
+        run: |
+          # run in apply mode to update ALLLINKS.md and .qmoi_validation/all_links.json
+          python3 scripts/generate_all_links.py --apply || true
+
+      - name: Validate updated links
+        run: |
+          python3 scripts/link_validator.py || true
+
+      - name: Create Pull Request with changes
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update ALLLINKS.md and link index"
+          branch: "autoupdate/alllinks-${{ github.run_id }}"
+          title: "Auto-update ALLLINKS.md"
+          body: |
+            This PR was opened automatically by the ALLLINKS autoupdate workflow.
+            It updates `ALLLINKS.md` and `.qmoi_validation/all_links.json`.
+          labels: auto-update, all-links
+          reviewers: |
+            thealphakenya

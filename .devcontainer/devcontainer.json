@@ -1,0 +1,10 @@
+{
+  "name": "QMOI Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "./scripts/env_manager.py",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}

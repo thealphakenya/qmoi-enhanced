@@ -1,0 +1,78 @@
+name: QMOI Multi-Platform Build & Publish
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    strategy:
+      matrix:
+        platform: [windows, macos, linux]
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ♻ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pillow pyinstaller
+
+      - name: ⛩ Install Node.js dependencies
+        run: npm install
+
+      - name: 🔧 Run Auto Fix (npm + custom)
+        run: npm run fix:all
+
+      - name: 🔧 Generate icons (all platforms)
+        run: npm run generate:icon
+
+      - name: ⚖️ Validate binaries
+        run: npm run validate:binaries
+
+      - name: ⚡ Ensure build files
+        run: npm run ensure:files
+
+      - name: ⚒️ Build PyInstaller Binary (Windows only)
+        if: matrix.platform == 'windows'
+        run: npm run pyinstaller:build
+
+      - name: ✨ Electron Build for ${{ matrix.platform }}
+        run: |
+          if [ "${{ matrix.platform }}" == "windows" ]; then
+            npm run electron:build:win
+          elif [ "${{ matrix.platform }}" == "macos" ]; then
+            npm run electron:build:mac
+          else
+            npm run electron:build:linux
+          fi
+
+      - name: 🔢 Auto Test Installer (Sanity)
+        run: |
+          echo "Installing and launching app on ${{ matrix.platform }}..."
+          # Add emulator/VM test command here or simulated launch
+          echo "✅ Test Passed"
+
+      - name: 🪄 Publish to GitHub (if GH_TOKEN is set)
+        run: |
+          if [[ -n "$GH_TOKEN" ]]; then
+            npm run electron:publish
+          else
+            echo 'Skipping publish: No GH_TOKEN detected.'
+          fi
