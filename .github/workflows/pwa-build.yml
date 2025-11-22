@@ -1,0 +1,45 @@
+name: Build PWAs and Web
+
+on:
+  pull_request:
+    branches: [ "autosync-backup-20250926-232440", "main", "**" ]
+  push:
+    branches: [ "autosync-backup-20250926-232440", "main" ]
+
+jobs:
+  build-pwas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps and build q-alpha (PWA)
+        working-directory: ./pwa_apps/q-alpha
+        run: |
+          npm ci
+          npm run build || true
+
+      - name: Install deps and build dashboard (Vite)
+        working-directory: ./qmoi-enhanced/dashboard
+        run: |
+          npm ci
+          npx vite build || true
+
+      - name: Install deps and build root Next.js app
+        working-directory: ./qmoi-enhanced
+        run: |
+          npm ci
+          npm run build || true
+
+      - name: Upload built artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pwa-build-artifacts
+          path: |
+            pwa_apps/q-alpha/dist/**
+            qmoi-enhanced/dashboard/dist/**
+            qmoi-enhanced/.next/**

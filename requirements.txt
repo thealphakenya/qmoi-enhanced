@@ -1,3 +1,10 @@
+fastapi>=0.95
+uvicorn[standard]>=0.22
+pillow>=10.0
+pystray>=0.21
+requests>=2.28
+# Optional (Windows only)
+pywin32; platform_system == 'Windows'
 pytest>=7.0.0
 coverage>=7.0.0
 requests>=2.28.0

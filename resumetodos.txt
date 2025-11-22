@@ -1,0 +1,85 @@
+Resume TODOs (auto-generated) - updated 2025-11-22T09:40:00Z
+
+- [x] Finish replacement mapping
+- [x] Run replacer (non-dry-run) on `fix/placeholders-automated-20251122T092214Z`
+- [x] Re-scan placeholders after replacer
+- [ ] Attempt PWA / web builds (blocked: cannot install Node in container — permission denied)
+  - Detected PWA/web packages:
+    - `pwa_apps/q-alpha` — package name `q-alpha-pwa` (has build step: `mkdir -p dist && cp -r index.html manifest.webmanifest sw.js icons dist/`)
+    - `qmoi-enhanced/dashboard` — package name `qmoi-dashboard` (has build step: `npx vite build`)
+    - `qmoi-enhanced` (root) — package name `qmoi-alpha-ai` (has build step: `next build`)
+    - `dashboard` (top-level) — package name `qmoi-dashboard` (no build script)
+    - `qmoi-enhanced/mobile` and `mobile` — package name `qmoiMobile` (no build script)
+  - Next actions to run builds (on Node-capable machine):
+    - Install Node.js (v18+ or v20 recommended). Example (Debian/Ubuntu):
+      ```bash
+      curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+      sudo apt-get install -y nodejs
+      ```
+    - Example per-app build commands:
+      ```bash
+      # pwa_apps/q-alpha
+      cd pwa_apps/q-alpha
+      npm ci
+      npm run build   # will create dist/ via package.json build script
+
+      # qmoi-enhanced/dashboard
+      cd qmoi-enhanced/dashboard
+      npm ci
+      npx vite build
+
+      # root qmoi-enhanced (Next.js)
+      cd qmoi-enhanced
+      npm ci
+      npm run build   # runs `next build`
+      ```
+- [ ] Prepare and open Pull Request from `fix/placeholders-automated-20251122T092214Z` into `autosync-backup-20250926-232440` (needs `GITHUB_TOKEN` or run locally)
+- [ ] Human review of automated placeholder replacements (highly recommended)
+- [ ] Prioritize and triage remaining placeholders (13,569 found by scanner)
+ - [ ] Add local chat helper to snapshot/restore uncommitted changes and produce context (`scripts/local_chat_helper.py`) (added)
+- [ ] Run CI workflows and fix failures reported by CI (if any)
+- [ ] Build Android artifacts (requires Android SDK and environment)
+- [ ] Build iOS artifacts (requires macOS / Xcode)
+- [ ] Prepare and upload validated release assets to GitHub Releases (requires token with repo & releases scope)
+- [ ] Post-publish verification (install, smoke tests on target platforms)
+
+Notes & next commands
+- Reports generated so far (see `reports/` and `.qmoi_validation/`):
+  - `reports/placeholder_replacement_map.csv`
+  - `reports/placeholder_replacement_map.json`
+  - `reports/changed_files_fix.txt`
+  - `reports/placeholder_scan_final.txt`
+  - `.qmoi_validation/` (proposals & many validation reports)
+
+- To create the PR locally (preferred, do NOT paste token here):
+  ```bash
+  export GITHUB_TOKEN=<your_token>
+  gh auth login --with-token < <(echo $GITHUB_TOKEN)
+  gh pr create --base autosync-backup-20250926-232440 \
+    --head fix/placeholders-automated-20251122T092214Z \
+    --title "fix(placeholders): automated placeholder replacements (partial)" \
+    --body "Automated placeholder replacements applied. See reports/ and .qmoi_validation/ for details. Remaining placeholders: see reports/placeholder_scan_final.txt"
+  ```
+
+- To attempt PWA builds locally (example):
+  ```bash
+  # on a machine with Node (or install Node in container with permission)
+  cd pwa_apps/<app>
+  npm ci
+  npm run build
+  # copy built artifacts to releases/
+  mkdir -p ../../releases/pwa/<app>
+  cp -r dist/* ../../releases/pwa/<app>/
+  ```
+
+If you want me to run any step that requires elevated permissions or a GitHub token, set the token or grant container-level permissions and tell me to continue.
+
+Local chat agent helper
+- A helper script was added at `scripts/local_chat_helper.py` to assist the local chat agent with uncommitted changes. Use:
+  - `python3 scripts/local_chat_helper.py snapshot <name>` to capture working tree into `wip/snapshot/<name>` branch
+  - `python3 scripts/local_chat_helper.py restore <name>` to restore files from that snapshot into working tree
+  - `python3 scripts/local_chat_helper.py create-patch out.patch` to export a patch
+  - `python3 scripts/local_chat_helper.py apply-patch out.patch` to apply it
+
+CI builds
+- A GitHub Actions workflow `/.github/workflows/pwa-build.yml` was added to build PWAs and web artifacts on PRs/pushes; this will run builds in GitHub and upload artifacts.

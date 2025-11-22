@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/workspaces/qmoi-enhanced/scripts/placeholder_scanner.py", line 182, in <module>
+    main()
+  File "/workspaces/qmoi-enhanced/scripts/placeholder_scanner.py", line 163, in main
+    report = find_placeholders(root)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/qmoi-enhanced/scripts/placeholder_scanner.py", line 54, in find_placeholders
+    for p in root.rglob(glob.replace('**/', '')):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1109, in rglob
+    for p in selector.select_from(self):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 237, in _select_from
+    for p in successor_select(starting_point, scandir):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 204, in _select_from
+    with scandir(parent_path) as scandir_it:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1063, in _scandir
+    return os.scandir(self)
+           ^^^^^^^^^^^^^^^^
+KeyboardInterrupt

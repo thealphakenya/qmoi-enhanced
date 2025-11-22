@@ -1,0 +1,5 @@
+Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe
+public/placeholder-logo.png
+public/placeholder-logo.svg
+public/placeholder.jpg
+public/placeholder.svg

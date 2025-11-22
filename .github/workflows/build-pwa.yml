@@ -1,0 +1,37 @@
+name: Build PWAs on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build-pwas:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: ["pwa_apps/q-alpha", "qmoi-enhanced/dashboard", "qmoi-enhanced"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install and Build
+        working-directory: ${{ matrix.app }}
+        run: |
+          if [ -f package.json ]; then
+            npm ci
+            if npm run | grep -q "build"; then
+              npm run build
+            else
+              echo "No build script defined for ${{ matrix.app }}"
+            fi
+          else
+            echo "No package.json in ${{ matrix.app }}"
+          fi
+      - name: Upload build artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pwa-${{ matrix.app }}-dist
+          path: ${{ matrix.app }}/dist || ${{ matrix.app }}/.next || ''

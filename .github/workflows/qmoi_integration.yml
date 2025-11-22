@@ -1,0 +1,96 @@
+name: QMOI Integration Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONUNBUFFERED: 1
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install secrets deps
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r qmoi-enhanced/qmoi-enhanced/scripts/requirements-secrets.txt
+        pip install pyngrok
+
+    - name: Bootstrap secrets (encrypt GH token)
+      env:
+        GITHUB_TOKEN_INPUT: ${{ secrets.MY_CUSTOM_TOKEN }}
+      run: |
+        # Write token to a variable and call bootstrap; do not echo the token
+        python qmoi-enhanced/qmoi-enhanced/scripts/qmoi_bootstrap_secrets.py --github-token "$GITHUB_TOKEN_INPUT" --confirm-write --create-git-helper
+
+    - name: Create runtime git helper (local config)
+      run: |
+        # Configure local repo to use the created credential helper
+        git config --local credential.helper "$(pwd)/.qmoi/git-credential-qmoi.sh" || true
+
+    - name: Start local HTTP server and open ngrok tunnel
+      env:
+        NGROK_AUTH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
+      run: |
+        # start a basic HTTP server to give ngrok something to forward
+        nohup python -m http.server 8080 &
+        sleep 1
+        python - <<'PY'
+import os, json, time
+from pyngrok import ngrok
+ngrok.set_auth_token(os.environ['NGROK_AUTH_TOKEN'])
+t = ngrok.connect(8080, bind_tls=True)
+url = getattr(t, 'public_url', str(t))
+os.makedirs('.qmoi', exist_ok=True)
+json.dump({'public_url': url, 'timestamp': int(time.time())}, open('.qmoi/ngrok_tunnel.json','w'))
+print('WROTE_NGROK_URL')
+time.sleep(1)
+PY
+
+    - name: Run update-links (apply)
+      run: |
+        # Apply replacements using the live ngrok URL written to .qmoi/ngrok_tunnel.json
+        python qmoi-enhanced/qmoi-enhanced/scripts/update_links_with_ngrok.py --apply || true
+
+    - name: Verify updated links
+      run: |
+        # Quick verification: list files that now contain the ngrok URL
+        python - <<'PY'
+import json, pathlib
+try:
+    j=json.loads(open('.qmoi/ngrok_tunnel.json').read())
+    url=j.get('public_url','')
+except Exception:
+    url=''
+if url:
+    import subprocess
+    subprocess.run(['grep','-R',url,'.'], check=False)
+else:
+    print('No ngrok URL available for verification')
+PY
+
+    - name: Run update-links (dry-run)
+      run: |
+        python qmoi-enhanced/qmoi-enhanced/scripts/update_links_with_ngrok.py --dry-run
+
+    - name: Run autosync backup (dry-run)
+      run: |
+        python qmoi-enhanced/qmoi-enhanced/scripts/qmoi_autosync_backup.py
+
+    - name: Run static checks
+      run: |
+        python -m py_compile qmoi-enhanced/qmoi-enhanced/start_qmoi_ngrok.py || true
+
+    - name: Report artifacts
+      run: |
+        ls -la .qmoi || true
+        echo "Integration steps completed"

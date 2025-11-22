@@ -1,0 +1,16 @@
+[Unit]
+Description=QMOI Orchestrator
+After=network.target
+
+[Service]
+Type=simple
+User=qmoi
+Group=qmoi
+WorkingDirectory=/opt/qmoi
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/qmoi/.venv/bin/python /opt/qmoi/qmoi-enhanced/qmoi-enhanced/qmoi_orchestrator.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
