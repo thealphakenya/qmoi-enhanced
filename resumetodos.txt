@@ -43,6 +43,32 @@ Resume TODOs (auto-generated) - updated 2025-11-22T09:40:00Z
 - [ ] Prepare and upload validated release assets to GitHub Releases (requires token with repo & releases scope)
 - [ ] Post-publish verification (install, smoke tests on target platforms)
 
+-- RELEASES VERIFICATION (auto-generated 2025-11-23)
+
+- Releases fetch: `reports/releases.json` (raw)
+- Releases verification report: `reports/releases_verification.json`
+
+Findings:
+
+- Expected app/platform entries checked: 20
+- OK (matching assets found): 17
+- Missing (no matching assets found): 3
+  - `Qshare` v1.0.0 (All) — missing release assets
+  - `Yap` v1.1.0 (All) — missing release assets
+  - `Qstore` v1.0.0 (All) — missing release assets
+
+Next action items (remaining / blocked):
+
+- [ ] Upload release artifacts for missing apps (`Qshare`, `Yap`, `Qstore`) to GitHub Releases with correct asset names and checksums. (requires GitHub token with `releases` scope)
+- [ ] Re-run releases verification after uploads and confirm no assets are placeholders.
+- [ ] Test `scripts/run_local_copilot.sh` in a glibc environment (CI runner or local Ubuntu) — blocked in current Alpine devcontainer due to missing `npm`/`node`.
+- [ ] Human review of `fix/placeholders-automated-20251122T092214Z` and merge plan (if approved) — large doc changes included in `chore/update-master-docs-20251122T135155Z` as a separate PR (#119).
+- [ ] Create smaller, incremental PR(s) for the highest-risk docs/asset changes if full-merge is not desired.
+
+If you want me to continue automatically:
+- Provide a GitHub token in the environment (do not paste it in chat) and I can upload release assets, create release notes, and re-run verification.
+- Or, run the release-upload commands locally and ask me to re-check via the verification script.
+
 Notes & next commands
 - Reports generated so far (see `reports/` and `.qmoi_validation/`):
   - `reports/placeholder_replacement_map.csv`

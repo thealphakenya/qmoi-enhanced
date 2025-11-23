@@ -1,0 +1,1006 @@
+{
+  "checked_at": "2025-11-23T14:22:23Z",
+  "items": [
+    {
+      "app": "qmoi-ai",
+      "platform": "Web (PWA)",
+      "version": "v1.0.0",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "qmoi-space",
+      "platform": "Web (PWA)",
+      "version": "v1.0.0",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-space.zip",
+          "size": 3557,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-space.zip"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "qcity",
+      "platform": "Web (PWA)",
+      "version": "v1.0.0",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qcity_package.zip",
+          "size": 2097152,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QMOI AI",
+      "platform": "Windows",
+      "version": "v1.2.3",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QMOI AI",
+      "platform": "Mac",
+      "version": "v1.2.3",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QMOI AI",
+      "platform": "Linux (DEB)",
+      "version": "v1.2.3",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QMOI AI",
+      "platform": "Linux (AppImage)",
+      "version": "v1.2.3",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QMOI AI",
+      "platform": "Android",
+      "version": "v1.2.3",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QMOI AI",
+      "platform": "iOS",
+      "version": "v1.2.3",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QMOI AI",
+      "platform": "Smart TV",
+      "version": "v1.2.3",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QMOI AI",
+      "platform": "Raspberry Pi",
+      "version": "v1.2.3",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QMOI AI",
+      "platform": "Chromebook",
+      "version": "v1.2.3",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qmoi-ai.zip",
+          "size": 5804,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.apk",
+          "size": 10485760,
+          "download_count": 21,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.AppImage",
+          "size": 6291456,
+          "download_count": 11,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.deb",
+          "size": 4194304,
+          "download_count": 12,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.dmg",
+          "size": 8388608,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe",
+          "size": 5242880,
+          "download_count": 17,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.exe.sha256",
+          "size": 78,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        },
+        {
+          "release": "v1.2.5",
+          "name": "qmoi_ai.img",
+          "size": 2097152000,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai.ipa",
+          "size": 12582912,
+          "download_count": 10,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_chromebook.zip",
+          "size": 3145728,
+          "download_count": 16,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        },
+        {
+          "release": "v1.2.3",
+          "name": "qmoi_ai_smarttv.apk",
+          "size": 8388608,
+          "download_count": 18,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QCity",
+      "platform": "Windows",
+      "version": "v2.0.1",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qcity_package.zip",
+          "size": 2097152,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QCity",
+      "platform": "Mac",
+      "version": "v2.0.1",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qcity_package.zip",
+          "size": 2097152,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QCity",
+      "platform": "Linux",
+      "version": "v2.0.1",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qcity_package.zip",
+          "size": 2097152,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QCity",
+      "platform": "Android",
+      "version": "v2.0.1",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qcity_package.zip",
+          "size": 2097152,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "QCity",
+      "platform": "iOS",
+      "version": "v2.0.1",
+      "matches": [
+        {
+          "release": "v1.2.3",
+          "name": "qcity_package.zip",
+          "size": 2097152,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip"
+        }
+      ],
+      "placeholders": [],
+      "status": "ok_with_assets"
+    },
+    {
+      "app": "Qshare",
+      "platform": "All",
+      "version": "v1.0.0",
+      "matches": [],
+      "placeholders": [],
+      "status": "missing"
+    },
+    {
+      "app": "Yap",
+      "platform": "All",
+      "version": "v1.1.0",
+      "matches": [],
+      "placeholders": [],
+      "status": "missing"
+    },
+    {
+      "app": "Qstore",
+      "platform": "All",
+      "version": "v1.0.0",
+      "matches": [],
+      "placeholders": [],
+      "status": "missing"
+    }
+  ],
+  "releases_count": 3,
+  "summary": {
+    "ok_with_assets": 17,
+    "missing": 3
+  }
+}

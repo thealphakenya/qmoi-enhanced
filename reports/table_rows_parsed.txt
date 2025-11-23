@@ -1,0 +1,22 @@
+ Version   || App Name   | Platform      
+ v1.0.0    || qmoi-ai   | Web (PWA)     
+ v1.0.0    || qmoi-space| Web (PWA)     
+ v1.0.0    || qcity     | Web (PWA)     
+ Version   || App Name   | Platform      
+ v1.2.3    || QMOI AI   | Windows       
+ v1.2.3    || QMOI AI   | Mac           
+ v1.2.3    || QMOI AI   | Linux (DEB)   
+ v1.2.3 || QMOI AI   | Linux (AppImage) 
+ v1.2.3    || QMOI AI   | Android       
+ v1.2.3    || QMOI AI   | iOS           
+ v1.2.3    || QMOI AI   | Smart TV      
+ v1.2.3    || QMOI AI   | Raspberry Pi  
+ v1.2.3    || QMOI AI   | Chromebook    
+ v2.0.1    || QCity     | Windows       
+ v2.0.1    || QCity     | Mac           
+ v2.0.1    || QCity     | Linux         
+ v2.0.1    || QCity     | Android       
+ v2.0.1    || QCity     | iOS           
+ v1.0.0    || Qshare    | All           
+ v1.1.0    || Yap       | All           
+ v1.0.0    || Qstore    | All           

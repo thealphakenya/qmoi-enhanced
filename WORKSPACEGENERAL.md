@@ -140,3 +140,31 @@ Local chat agent helper
 
 CI build workflow
 - Added `.github/workflows/pwa-build.yml` to build PWA and web artifacts on PRs and pushes. This allows the repository to produce `dist`/`.next` artifacts even when local container cannot install Node.
+
+Releases verification (auto-check)
+-------------------------------
+Verified on: 2025-11-23T13:00:00Z (UTC)
+
+- Releases fetched from GitHub: 3 (see `reports/releases.json`)
+- Verification report: `reports/releases_verification.json`
+- Summary from verification: 20 expected app/platform entries checked — 17 have matching release assets, 3 are missing release assets.
+
+Missing or incomplete release items (manual action required):
+
+- `Qshare` (v1.0.0) — status: missing release assets (no matching assets found).
+- `Yap` (v1.1.0) — status: missing release assets (no matching assets found).
+- `Qstore` (v1.0.0) — status: missing release assets (no matching assets found).
+
+Notes and next actions for releases verification
+- Inspect `reports/releases_verification.json` for details on matched assets and any assets flagged as placeholders or zero-size.
+- If these apps are meant to be published, build platform artifacts (per-app) and attach them to GitHub Releases, including checksums and short validation notes.
+- Recommended naming for release assets: include the app name, platform and version (example: `qmoi-ai-1.2.3-windows.zip`, `qcity-2.0.1-mac.dmg`, `qmoi-ai-1.2.3-linux.deb`). Avoid words like `placeholder`, `sample`, `stub`.
+
+CI / Copilot note
+- A PR was created to run repository-level CI and smoke checks: https://github.com/thealphakenya/qmoi-enhanced/pull/119 . Use the PR Actions tab to inspect Copilot CLI smoke workflow and other build logs.
+
+Outputs written by automation
+- `reports/releases.json` — raw GitHub Releases JSON fetch.
+- `reports/releases_verification.json` — summary and per-app verification results.
+
+If you want me to attempt automated uploads of release assets, provide a GitHub token with `repo` and `releases` scopes as an environment variable in the container (do NOT paste tokens in chat). Alternatively run the suggested commands locally and I will continue from there.

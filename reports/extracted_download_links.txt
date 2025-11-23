@@ -1,0 +1,20 @@
+https://downloads.qmoi.app/qmoi-ai/pwa/late
+https://downloads.qmoi.app/qmoi-
+https://downloads.qmoi.app/qcity/pwa/late
+https://downloads.qmoi.app/qmoi/window
+https://downloads.qmoi.app/qmoi/mac.dmg            | ✅       |
+https://downloads.qmoi.app/qmoi/linux.deb          | ✅       |
+https://downloads.qmoi.app/qmoi/linux.appimage     | ✅       |
+https://downloads.qmoi.app/qmoi/android.apk        | ✅       |
+https://downloads.qmoi.app/qmoi/io
+https://downloads.qmoi.app/qmoi/
+https://downloads.qmoi.app/qmoi/ra
+https://downloads.qmoi.app/qmoi/chromebook.zip     | ✅       |
+https://downloads.qmoi.app/qcity/window
+https://downloads.qmoi.app/qcity/mac.dmg           | ✅       |
+https://downloads.qmoi.app/qcity/linux.appimage    | ✅       |
+https://downloads.qmoi.app/qcity/android.apk       | ✅       |
+https://downloads.qmoi.app/qcity/io
+https://downloads.qmoi.app/q
+https://downloads.qmoi.app/yap/yap-univer
+https://downloads.qmoi.app/q
