@@ -2,7 +2,11 @@
   "version": "1.0.0",
   "author": "thealphakenya",
   "ai": {
-    "model": "claude-sonnet-3.5",
+    // QMOI will auto-select the best available model for production
+    // Options: "qmoi-local", "gpt-4", "gpt-3.5-turbo", "claude-sonnet-3.5", "hf-qmoi", etc.
+    "model": "qmoi-local", // preferred: use local QMOI model if available
+    "fallback_models": ["gpt-4", "claude-sonnet-3.5", "gpt-3.5-turbo", "hf-qmoi"],
+    "auto_select": true,
     "enabled": true,
     "capabilities": {
       "streaming": true,
