@@ -4,10 +4,12 @@
   "ai": {
     // QMOI will auto-select the best available model for production
     // Options: "qmoi-local", "gpt-4", "gpt-3.5-turbo", "claude-sonnet-3.5", "hf-qmoi", etc.
-    "model": "qmoi-local", // preferred: use local QMOI model if available
-    "fallback_models": ["gpt-4", "claude-sonnet-3.5", "gpt-3.5-turbo", "hf-qmoi"],
-    "auto_select": true,
+    "model": "qmoi-local", // always use local QMOI model, never paid Copilot/Capilot
+    "fallback_models": [], // do not fallback to paid Copilot/Capilot or OpenAI models
+    "auto_select": false, // do not auto-select paid models
     "enabled": true,
+    "require_login": false, // never require login for QMOI model or features
+    "paid_features_disabled": true, // ensure all paid Copilot/Capilot features are disabled
     "capabilities": {
       "streaming": true,
       "multimodal": true,
