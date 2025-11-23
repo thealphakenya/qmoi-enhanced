@@ -34,6 +34,9 @@ class QMOIDeviceAgent:
     """QMOI Device Agent for all platforms"""
     
     def __init__(self):
+        from scripts.qmoi_memory import get as qmoi_get, set as qmoi_set
+        self.qmoi_get = qmoi_get
+        self.qmoi_set = qmoi_set
         self.device_info = self.get_device_info()
         self.network_manager = NetworkManager()
         self.ai_agent = AIAgent()
@@ -107,35 +110,29 @@ class QMOIDeviceAgent:
             return False
     
     def start_agent(self):
-        """Start the QMOI device agent"""
+        """Start the QMOI device agent and load QMOI memory"""
         logger.info("🤖 Starting QMOI Device Agent...")
-        
         try:
             # Initialize components
             self.initialize_components()
-            
+            # Load QMOI memory at session start
+            memory = self.qmoi_get('device_session_memory') or {}
+            logger.info(f"Loaded QMOI memory for device session: {memory}")
             # Start background services
             self.start_background_services()
-            
             # Enable auto-connection
             if self.auto_connect_enabled:
                 self.network_manager.enable_auto_connection()
-            
             # Start AI agent mode
             if self.ai_mode_enabled:
                 self.ai_agent.start_ai_mode()
-            
             # Start performance monitoring
             self.performance_monitor.start_monitoring()
-            
             # Start sync manager
             self.sync_manager.start_sync()
-            
             logger.info("✅ QMOI Device Agent started successfully!")
-            
             # Keep agent running
             self.keep_alive()
-            
         except Exception as e:
             logger.error(f"❌ Failed to start QMOI Device Agent: {e}")
     
@@ -268,7 +265,7 @@ class QMOIDeviceAgent:
             self.stop_agent()
     
     def update_agent_status(self):
-        """Update agent status"""
+        """Update agent status and QMOI memory"""
         status = {
             "timestamp": datetime.now().isoformat(),
             "agent_status": self.agent_status,
@@ -278,9 +275,10 @@ class QMOIDeviceAgent:
             "performance_status": self.performance_monitor.get_status(),
             "sync_status": self.sync_manager.get_status()
         }
-        
         with open("agent_data/agent_status.json", "w") as f:
             json.dump(status, f, indent=2)
+        # Also update QMOI memory for this session
+        self.qmoi_set('device_session_memory', status)
     
     def check_agent_health(self):
         """Check agent health"""

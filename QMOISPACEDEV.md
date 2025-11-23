@@ -12,7 +12,24 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
+
 # QMOI Space Development - Hugging Face Integration v3.0
+
+## Unified Session, Hooks, and Memory
+
+- QMOI uses a unified memory manager for all agents (device, cloud, CLI), ensuring consistent state, sync, and session data.
+- All memory is synced across local, Gist, Hugging Face, SCP, and DB backends.
+- LRU cache and SQLite are used for fast access and persistence.
+- Session hooks ensure all agent state is loaded and updated on every session start/stop, across QVillage, cloud, and local.
+
+## QVillage and Cloud
+
+- QVillage hooks enable device auto-evolution, network optimization, and self-healing.
+- QMOI cloud supports multi-backend sync, failover, and production-grade reliability.
+
+## Production Readiness
+
+- All features are production-ready, tested, and support unified session hooks and QMOI memory.
 
 > **See also:** [MASTEROWNS.md](MASTEROWNS.md) | [QMOIDEV.md](QMOIDEV.md) | [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md)
 
@@ -30,8 +47,11 @@ qmoi_validation_frontmatter: true
 - QMOI can run multiple build/script fix cycles in parallel, ensuring rapid resolution and continuous deployment.
 - Master can review, approve, or override any automated fix from the dashboard.
 
+
 ## 🚀 QMOI Automation & Self-Healing Enhancements
 - **Universal Env Management:** QMOI auto-detects, creates, and manages all required env variables for HuggingFace Spaces, GitLab, Vercel, Netlify, and more. If missing, QMOI auto-generates or sets them via API, logs all actions, and notifies the master.
+- **Unified Memory Sync:** All QMOI components (local server, device agent, cloud, scripts) use a unified, secure, and multi-backend memory sync system. Memory is synced via API endpoints (`/sync/push`, `/sync/pull`, `/sync/status`, `/memory/status`) with authentication required for all `/sync/*` endpoints.
+- **Multi-Backend Support:** Memory can be synced to local file, GitHub Gist, Hugging Face repo, SCP, and (optionally) Postgres/Redis. Backends are configured via environment variables and can be extended.
 - **Error Fix & Redeploy:** QMOI auto-detects and fixes all deployment errors in HuggingFace Spaces, then redeploys in a loop until successful. All fixes, attempts, and results are logged and notified.
 - **Cloud/Parallelization:** QMOI offloads all heavy jobs to cloud/Colab/Dagshub, using parallel jobs for builds, tests, and error-fixes. Local device resources are never used unless explicitly allowed.
 - **Developer/Notification Features:** QMOI always identifies as "QMOI (AI Developer)" in all notifications, logs, and UIs. All notifications are retried, logged, and use fallback channels if needed.
@@ -45,60 +65,18 @@ qmoi_validation_frontmatter: true
 
 ## 🏗️ Core Architecture
 
-### Space Configuration
-```yaml
-# app.py - Main Space Application
-import gradio as gr
-import torch
-from transformers import AutoModel, AutoTokenizer
-import os
-import json
-import requests
-from typing import Dict, Any, List
-import logging
-import time
-import threading
-from concurrent.futures import ThreadPoolExecutor
-import psutil
-import platform
+### Space Configuration & Memory Sync
+QMOI Space uses a unified configuration and memory sync system:
 
-class QMOISpaceApp:
-    def __init__(self):
-        self.model = None
-        self.tokenizer = None
-        self.config = self.load_config()
-        self.setup_logging()
-        self.initialize_model()
-        
-    def load_config(self) -> Dict[str, Any]:
-        """Load QMOI Space configuration"""
-        config = {
-            "model_name": "qmoi-ai/qmoi-master",
-            "max_length": 2048,
-            "temperature": 0.7,
-            "top_p": 0.9,
-            "repetition_penalty": 1.1,
-            "enable_streaming": True,
-            "enable_batch_processing": True,
-            "max_concurrent_requests": 10,
-            "cache_enabled": True,
-            "auto_scaling": True,
-            "monitoring_enabled": True,
-            "security_level": "high",
-            "api_rate_limit": 100,
-            "model_quantization": "int8",
-            "gpu_acceleration": True,
-            "memory_optimization": True
-        }
-        
-        # Load from environment variables
-        for key in config:
-            env_key = f"QMOI_{key.upper()}"
-            if env_key in os.environ:
-                config[key] = os.environ[env_key]
-                
-        return config
-    
+- **Configurable via environment variables** (all keys prefixed with `QMOI_`)
+- **Memory sync endpoints**: `/sync/push`, `/sync/pull`, `/sync/status`, `/memory/status`
+- **API key required** for all `/sync/*` endpoints (`QMOI_SYNC_API_KEY`)
+- **Multi-backend support**: local file, Gist, Hugging Face, SCP, and future DB
+- **Auto-sync triggers**: on update, on schedule, and on-demand
+- **Status endpoints**: `/sync/status` and `/memory/status` provide health and last sync info
+- **Error handling**: All sync errors are logged and available via API and dashboard
+
+See [QMOIMODEL.md](QMOIMODEL.md) and [API.md](API.md) for full details and usage examples.
     def setup_logging(self):
         """Setup comprehensive logging"""
         logging.basicConfig(

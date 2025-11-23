@@ -12,10 +12,38 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
+
 # QMOI Enhanced Automation Systems Summary
+
+## Unified Session, Hooks, and Memory
+
+- All automation agents (device, cloud, CLI) use the unified QMOI memory manager for state, sync, and session data.
+- Memory is synced across all backends (local, Gist, Hugging Face, SCP, DB).
+- LRU cache and SQLite are used for fast access and persistence.
+- Session hooks ensure all agent state is loaded and updated on every session start/stop, across QVillage, cloud, and local.
+
+## QVillage and Cloud
+
+- QVillage hooks enable device auto-evolution, network optimization, and self-healing.
+- QMOI cloud supports multi-backend sync, failover, and production-grade reliability.
+
+## Production Readiness
+
+- All automation features are production-ready, tested, and support unified session hooks and QMOI memory.
+
 
 ## Overview
 This document summarizes the comprehensive automation enhancements implemented for the QMOI system, providing intelligent coordination, optimization, and master-level control capabilities.
+
+## 🚀 Unified Memory Sync & API
+QMOI now features a unified, secure, and multi-backend memory sync system:
+- All components (local server, device agent, cloud, scripts) use the same logic for reading, writing, and syncing memory.
+- Memory sync is available via secure API endpoints (`/sync/push`, `/sync/pull`, `/sync/status`, `/memory/status`).
+- All `/sync/*` endpoints require an API key (`QMOI_SYNC_API_KEY`).
+- Supports local file, GitHub Gist, Hugging Face repo, SCP, and (optionally) Postgres/Redis.
+- Sync is triggered on every update, on schedule (CI/cron), and on-demand (API/CLI).
+- Sync status and errors are logged and available via API and dashboard.
+- See [QMOIMODEL.md](QMOIMODEL.md) and [API.md](API.md) for full details.
 
 ## 🚀 Enhanced Automation Systems
 

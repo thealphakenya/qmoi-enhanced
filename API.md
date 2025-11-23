@@ -12,11 +12,49 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Q-city API Documentation
+
+
+# Q-city & QMOI API Documentation
+
+## Unified Session, Hooks, and Memory
+
+- All agent sessions (device, cloud, CLI) use the unified QMOI memory manager for state, sync, and session data.
+- Session hooks ensure all agent state is loaded and updated on start/stop, across QVillage, cloud, and local.
+- Unified memory logic supports multi-backend sync (local, Gist, Hugging Face, SCP, DB).
 
 ## Overview
 
-The Q-city API provides a comprehensive interface for managing and interacting with the Q-city system. This documentation covers all available endpoints, their parameters, and response formats.
+This documentation covers all available endpoints for Q-city and QMOI, including the new unified memory sync system. All components (local server, device agent, cloud, scripts) use the same logic for reading, writing, and syncing memory. All endpoints are production-ready, tested, and support unified session hooks and QMOI memory.
+
+## QVillage and Cloud
+
+- QVillage endpoints support device auto-evolution, network optimization, and self-healing.
+- QMOI cloud endpoints support multi-backend sync, failover, and production-grade reliability.
+
+## QMOI Memory Sync API (Unified)
+
+QMOI provides a unified, secure, and multi-backend memory sync system:
+- All components (local server, device agent, cloud, scripts) use the same logic for reading, writing, and syncing memory.
+- Memory sync is available via secure API endpoints:
+  - `POST /sync/push` — Push current memory to all configured backends
+  - `POST /sync/pull` — Pull memory from canonical backend and update local
+  - `GET /sync/status` — Get sync status, last sync time, and error logs
+  - `GET /memory/status` — Get memory health, stats, and last update info
+- **All `/sync/*` endpoints require an API key:**
+  - Header: `Authorization: Bearer <QMOI_SYNC_API_KEY>`
+- **Multi-backend support:** Local file, GitHub Gist, Hugging Face repo, SCP, and (planned) Postgres/Redis. Configure with env vars:
+  - `QMOI_SYNC_BACKENDS` (comma-separated: `gist,hf,scp`)
+  - `QMOI_GIST_ID`, `QMOI_GH_TOKEN`, `QMOI_HF_REPO`, `QMOI_HF_TOKEN`, `QMOI_SYNC_API_KEY`
+- **Auto-sync triggers:** On every update, on schedule (CI/cron), and on-demand (API/CLI).
+- **Error handling:** All sync errors are logged and available via `/sync/status` and dashboard. Unauthorized requests are rejected with 401.
+
+**Example Usage:**
+```bash
+curl -X POST http://localhost:8080/sync/push -H "Authorization: Bearer $QMOI_SYNC_API_KEY" -H "Content-Type: application/json" -d '{}'
+curl -X GET http://localhost:8080/sync/status -H "Authorization: Bearer $QMOI_SYNC_API_KEY"
+```
+
+See also: [QMOIMODEL.md](QMOIMODEL.md), [QMOISPACEDEV.md](QMOISPACEDEV.md), [ENHANCED_AUTOMATION_SUMMARY.md](ENHANCED_AUTOMATION_SUMMARY.md), [WORKSPACEGENERAL.md](WORKSPACEGENERAL.md)
 
 ## Base URL
 
