@@ -1,13 +1,13 @@
 "use client";
 
-import AlphaQAISystem from "@/components/alpha-q-ai-system";
-import { Chatbot } from "@/components/Chatbot";
-import { FileExplorer } from "@/components/FileExplorer";
-import { GitStatus } from "@/components/GitStatus";
-import { PreviewWindow } from "@/components/PreviewWindow";
-import { QIStateWindow } from "@/components/QIStateWindow";
-import { QiSpaces } from "@/components/QiSpaces";
-import { LcSpaces } from "@/components/LcSpaces";
+import AlphaQAISystem from "../components/alpha-q-ai-system";
+import Chatbot from "../components/Chatbot";
+import FileExplorer from "../components/FileExplorer";
+import GitStatus from "../components/GitStatus";
+// import PreviewWindow from "../components/PreviewWindow";
+// import QIStateWindow from "../components/QIStateWindow";
+// import QiSpaces from "../components/QiSpaces";
+// import LcSpaces from "../components/LcSpaces";
 import DeploymentStatusDashboard from '../components/DeploymentStatusDashboard';
 import { MasterProvider, useMaster } from '../components/MasterContext';
 import { QmoiMemoryPanel } from '../components/QmoiMemoryPanel';

@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "vercel": "^48.10.10"
+    "vercel": "^48.10.11"
   },
   "_npx": {
     "packages": [

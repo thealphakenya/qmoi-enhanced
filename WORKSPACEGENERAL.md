@@ -1,3 +1,24 @@
+# QMOI Enhanced System: Automated Environment & Credential Management
+
+## Features
+- Automatic creation and updating of `.env` and `.env.example` files
+- Auto-population of platform credentials for Vercel, AWS, GCP, Azure, and GitHub
+- Easy script execution via `npm run env-setup`
+- Extendable for additional platforms and secrets
+
+## Usage
+Run the following command to auto-setup all environment variables and credentials:
+
+```bash
+npm run env-setup
+```
+
+This will ensure all required variables are present in `.env` and `.env.example`.
+
+## Customization
+Edit `scripts/qmoi-env-setup.js` to add or modify platform variables as needed.
+
+## Last updated: November 24, 2025
 # WORKSPACEGENERAL
 
 - Audit timestamp: 2025-11-11T00:00:00Z
