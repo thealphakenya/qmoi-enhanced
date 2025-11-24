@@ -3,8 +3,8 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] data for now - replace with actual implementation
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Datasets = {
+    // Stub datasets response (replace with real DB/storage logic)
+    const Datasets = {
       datasets: [
         {
           id: '1',
@@ -16,18 +16,8 @@ export async function GET() {
           createdAt: new Date(Date.now() - 86400000).toISOString(),
           updatedAt: new Date().toISOString(),
           status: 'ready',
-          metadata: {
-            format: 'json',
-            version: '1.0.0',
-            tags: ['training', '2024', 'primary'],
-            source: 'internal'
-          },
-          stats: {
-            totalItems: 10000,
-            processedItems: 10000,
-            failedItems: 0,
-            averageProcessingTime: 45
-          }
+          metadata: { format: 'json', version: '1.0.0', tags: ['training', '2024', 'primary'], source: 'internal' },
+          stats: { totalItems: 10000, processedItems: 10000, failedItems: 0, averageProcessingTime: 45 }
         },
         {
           id: '2',
@@ -39,54 +29,15 @@ export async function GET() {
           createdAt: new Date(Date.now() - 43200000).toISOString(),
           updatedAt: new Date().toISOString(),
           status: 'processing',
-          metadata: {
-            format: 'json',
-            version: '1.0.0',
-            tags: ['validation', 'testing'],
-            source: 'internal'
-          },
-          stats: {
-            totalItems: 5000,
-            processedItems: 2500,
-            failedItems: 0,
-            averageProcessingTime: 30
-          }
+          metadata: { format: 'json', version: '1.0.0', tags: ['validation', 'testing'], source: 'internal' },
+          stats: { totalItems: 5000, processedItems: 2500, failedItems: 0, averageProcessingTime: 30 }
         }
       ],
-      stats: {
-        totalDatasets: 2,
-        totalSize: 1536000000,
-        totalItems: 15000,
-        averageProcessingTime: 37.5
-      },
-      settings: {
-        maxConcurrentProcessing: 2,
-        autoBackup: true,
-        defaultFormat: 'json',
-        storageLocation: 'local'
-      }
-    // Implementation: Get actual datasets from storage
-    const datasets = await prisma.dataset.findMany({
-      select: {
-        id: true,
-        name: true,
-        description: true,
-        type: true,
-        size: true,
-        itemCount: true,
-        createdAt: true,
-        updatedAt: true,
-        status: true,
-        metadata: true,
-        stats: true,
-      },
-      orderBy: { createdAt: 'desc' },
-    });
+      stats: { totalDatasets: 2, totalSize: 1536000000, totalItems: 15000, averageProcessingTime: 37.5 },
+      settings: { maxConcurrentProcessing: 2, autoBackup: true, defaultFormat: 'json', storageLocation: 'local' }
+    };
 
-    return NextResponse.json({
-      datasets
-    });
-    return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Datasets);
+    return NextResponse.json(Datasets);
   } catch (error) {
     console.error('Error in datasets endpoint:', error);
     return NextResponse.json(
