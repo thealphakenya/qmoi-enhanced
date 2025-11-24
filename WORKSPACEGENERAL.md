@@ -23,6 +23,10 @@ New automation added (auto-managed):
 - Vercel autofix workflow: `.github/workflows/vercel-autofix.yml` (runs on push/PR and will attempt safe fixes and open PRs).
  - Scheduled memory-sync workflow: `.github/workflows/sync-memory.yml` (every 15 minutes; requires `QMOI_GH_TOKEN`/`QMOI_GIST_ID` or `QMOI_HF_TOKEN`/`QMOI_HF_REPO` to be configured in repo secrets).
 
+New Vercel helper scripts added (2025-11-24):
+- `scripts/vercel_deploy.sh` — deploy the PWA/web app to Vercel using the `vercel` CLI or guidance via the Vercel API when tokens are available.
+- `scripts/vercel_monitor_and_fix.sh` — poll the Vercel API for recent deployments, fetch logs, and run `tools/auto_fix_build.py` (if present) to propose safe fixes; writes logs to `logs/`.
+
 Automation policy: automated changes create PRs (or branches) for review. Low-risk fixes (http->https) are applied automatically per policy; dependency fixes are attempted conservatively and offered as PRs.
 
 Keep this file updated when automation changes.
@@ -40,6 +44,10 @@ Next suggested steps:
 - Configure `QMOI_GH_TOKEN` and/or `QMOI_HF_TOKEN` in CI or environment secrets to enable automated memory sync.
 - Add authentication in front of `/sync/*` endpoints before exposing to any network.
 - Run `python3 scripts/sync_memory.py` manually for initial sync, or add a CI job that runs it on a schedule.
+# Quick Vercel checklist
+- Set `VERCEL_TOKEN` and `VERCEL_PROJECT_ID` as repository-level secrets (or in your deployment environment) to enable automated deploys and monitoring.
+- To deploy locally: install `vercel` CLI (`npm i -g vercel`) and run `./scripts/vercel_deploy.sh pwa_apps/qmoi-ai`.
+- To monitor and attempt safe fixes: run `VERCEL_TOKEN=... VERCEL_PROJECT_ID=... ./scripts/vercel_monitor_and_fix.sh` and review generated logs/PRs.
 # WORKSPACEGENERAL
 
 - Audit timestamp: 2025-11-08T15:29:10.283537Z

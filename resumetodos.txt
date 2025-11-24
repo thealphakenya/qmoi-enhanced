@@ -51,6 +51,20 @@ Immediate remaining tasks (high priority):
 3) Add a scheduled CI job or cron entry that runs `python3 scripts/sync_memory.py` (or call `/sync/push`) on a cadence appropriate for your deployment.
 4) Decide canonical production memory store (Postgres, Redis, object store). Implement migration plan and replace file-based memory with robust DB-backed memory service.
 
+Vercel and PWA next steps (high priority):
+5) Configure Vercel deployment secrets:
+   - `VERCEL_TOKEN` and `VERCEL_PROJECT_ID` (set as repo or project-level secrets in Vercel/GitHub).
+6) Deploy the QMOI AI PWA to Vercel and monitor the deployment for failures:
+   - Use `./scripts/vercel_deploy.sh pwa_apps/qmoi-ai` (requires `vercel` CLI or `VERCEL_TOKEN`).
+   - If the deployment fails, run `./scripts/vercel_monitor_and_fix.sh` to fetch logs and run the auto-fix analyzer. Review any generated PRs before merging.
+7) Update the PWA to ensure best offline behavior and compatibility (already validated manifest+service worker present at `pwa_apps/qmoi-ai/`). Consider pinning Node/Build versions via `.nvmrc` or `engines` in `package.json` if using a Node-based build.
+
+Files updated by automation in this session:
+- `scripts/vercel_deploy.sh` (new)
+- `scripts/vercel_monitor_and_fix.sh` (new)
+- `WORKSPACEGENERAL.md` (updated with Vercel checklist)
+- `resumetodos.txt` (this file updated)
+
 Development & test suggestions:
 - To test locally, run:
 - To run the standalone sync helper (CI-friendly):

@@ -1,4 +1,4 @@
----
+ni---
 title: "Q-city Trading System"
 qmoi_validation_frontmatter: true
 ---

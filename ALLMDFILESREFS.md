@@ -25,6 +25,18 @@ QMOIJAVA.md
 QMOI_HYBRID_JAVA_WORKFLOW.md
 qmoi_remote_java_build.sh
 qmoi_remote_java_build.md
+scripts/qmoi_provision_java.sh
+scripts/qmoi_generate_env.sh
+ .github/workflows/android-build.yml
+QMOI_CI_SECRETS.md
+Dockerfile.android-builder
+scripts/container_build_entrypoint.sh
+run_in_container.sh
+scripts/qmoi_set_github_secrets.sh
+scripts/qmoi_trigger_ci.sh
+scripts/qmoi_validate_apk.sh
+scripts/qmoi_log_analyzer.py
+scripts/qmoi_auto_ci_runner.sh
 AUTOMATION-SUMMARY.md
 AUTOOPTIMIZEALPHAQMOIENGINE.md
 BUILDAPPSFORALLPLATFORMS.md
