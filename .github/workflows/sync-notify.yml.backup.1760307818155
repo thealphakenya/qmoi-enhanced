@@ -1,0 +1,14 @@
+﻿name: Sync Notify
+
+on:
+  push:
+    branches:
+      - sync-notify
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report sync success
+        run: |
+          echo "✅ Git Smart Sync succeeded at $(date)" >> $GITHUB_STEP_SUMMARY

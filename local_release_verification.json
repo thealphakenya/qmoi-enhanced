@@ -1,0 +1,16 @@
+﻿{
+    "timestamp":  "2025-09-20 05:13:45",
+    "local_artifacts_found":  [
+                                  {
+                                      "path":  "Qmoi_apps\\android\\qmoi ai.apk",
+                                      "platform":  "android",
+                                      "name":  "android\\qmoi ai.apk",
+                                      "size":  29,
+                                      "lastModified":  "\/Date(1756703314312)\/"
+                                  }
+                              ],
+    "missing":  [
+
+                ],
+    "total_size":  29
+}

@@ -1,0 +1,10 @@
+{
+  "id": "yap",
+  "name": "Yap",
+  "version": "v1.1.0",
+  "type": "web",
+  "platforms": [
+    "Web"
+  ],
+  "icon": "assets/icons/yap.svg"
+}

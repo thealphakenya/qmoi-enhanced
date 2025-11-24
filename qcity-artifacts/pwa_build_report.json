@@ -1,0 +1,11 @@
+{
+  "windows": ["pwa_apps/qmoi-ai-pwa.zip", "pwa_apps/qmoi-ai-pwa.webmanifest", "pwa_apps/qmoi-ai-pwa.json"],
+  "mac": ["pwa_apps/qmoi-ai-pwa.zip", "pwa_apps/qmoi-ai-pwa.webmanifest", "pwa_apps/qmoi-ai-pwa.json"],
+  "linux": ["pwa_apps/qmoi-ai-pwa.zip", "pwa_apps/qmoi-ai-pwa.webmanifest", "pwa_apps/qmoi-ai-pwa.json"],
+  "android": ["pwa_apps/qmoi-ai-pwa.apk", "pwa_apps/qmoi-ai-pwa.zip", "pwa_apps/qmoi-ai-pwa.webmanifest", "pwa_apps/qmoi-ai-pwa.json"],
+  "ios": ["pwa_apps/qmoi-ai-pwa.ipa", "pwa_apps/qmoi-ai-pwa.zip", "pwa_apps/qmoi-ai-pwa.webmanifest", "pwa_apps/qmoi-ai-pwa.json"],
+  "qcity": ["pwa_apps/qcity-pwa.zip", "pwa_apps/qcity-pwa.webmanifest", "pwa_apps/qcity-pwa.json"],
+  "chromebook": ["pwa_apps/qmoi-ai-pwa.zip", "pwa_apps/qmoi-ai-pwa.webmanifest", "pwa_apps/qmoi-ai-pwa.json"],
+  "raspberrypi": ["pwa_apps/qmoi-ai-pwa.zip", "pwa_apps/qmoi-ai-pwa.webmanifest", "pwa_apps/qmoi-ai-pwa.json"],
+  "smarttv": ["pwa_apps/qmoi-ai-pwa.apk", "pwa_apps/qmoi-ai-pwa.zip", "pwa_apps/qmoi-ai-pwa.webmanifest", "pwa_apps/qmoi-ai-pwa.json"]
+}

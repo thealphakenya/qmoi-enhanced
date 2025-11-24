@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run start.sh",
+      "type": "pwa-node",
+      "request": "launch",
+      "runtimeExecutable": "bash",
+      "args": [
+        "${workspaceFolder}/start.sh"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}

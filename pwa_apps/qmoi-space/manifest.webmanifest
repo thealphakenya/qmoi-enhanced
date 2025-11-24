@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "QMOI Space - Advanced AI Platform",
+  "short_name": "QMOI Space",
+  "description": "QMOI Space - Advanced AI Platform with development, gaming, and revenue generation",
+  "start_url": "/pwa_apps/qmoi-space/",
+  "scope": "/pwa_apps/qmoi-space/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1220",
+  "theme_color": "#667eea",
+  "dir": "ltr",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/pwa_apps/qmoi-space/icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa_apps/qmoi-space/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa_apps/qmoi-space/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Access QMOI Space dashboard",
+      "url": "/pwa_apps/qmoi-space/?page=dashboard",
+      "icons": [
+        {
+          "src": "/pwa_apps/qmoi-space/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Gaming",
+      "short_name": "Gaming",
+      "description": "Access gaming features",
+      "url": "/pwa_apps/qmoi-space/?page=gaming",
+      "icons": [
+        {
+          "src": "/pwa_apps/qmoi-space/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Revenue",
+      "short_name": "Revenue",
+      "description": "Revenue generation tools",
+      "url": "/pwa_apps/qmoi-space/?page=revenue",
+      "icons": [
+        {
+          "src": "/pwa_apps/qmoi-space/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}

@@ -1,0 +1,57 @@
+./qmoi-enhanced/ml/qmoi_advanced_error_predictor.py:@app.post('/predict', response_model=PredictionResponse)
+./qmoi-enhanced/ml/qmoi_advanced_error_predictor.py:@app.get('/health')
+./qmoi-enhanced/src/utils/taskbar.ts:      const iconPath = path.join(app.getAppPath(), this.options.icon);
+./qmoi-enhanced/src/utils/taskbar.ts:        icon: path.join(app.getAppPath(), this.options.icon),
+./qmoi-enhanced/src/utils/taskbar.ts:      const fullPath = path.join(app.getAppPath(), iconPath);
+./qmoi-enhanced/downloadqmoiaiexe.py:@app.post("/api/qmoi/download-exe")
+./qmoi-enhanced/ssh-backend/apiKeyAuth.js:// Or: app.post('/list', apiKeyAuth, ...)
+./qmoi-enhanced/qmoiaxe.py:@app.get("/ping")
+./qmoi-enhanced/qmoiaxe.py:@app.get("/qmessage")
+./qmoi-enhanced/scripts/qmoi-error-recovery.js:app.get('/', (req, res) => {
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.get("/")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.get("/api/health")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.get("/api/system/status")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.post("/api/chat/generate")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.get("/api/revenue/overview")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.post("/api/revenue/add")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.get("/api/projects")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.post("/api/projects")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.get("/api/games")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.post("/api/games/{game_id}/start")
+./qmoi-enhanced/scripts/qmoi-space-backend.py:@app.get("/api/analytics/overview")
+./qmoi-enhanced/scripts/qmoi-ultimate-automation.py:                "version": app.get("version", "1.0.0"),
+./qmoi-enhanced/scripts/qmoi-ultimate-automation.py:                "platform": app.get("platform", "universal"),
+./qmoi-enhanced/scripts/qmoi-ultimate-automation.py:                "size_mb": app.get("size_mb", 0),
+./qmoi-enhanced/scripts/qmoi-ultimate-automation.py:                "quality_score": app.get("quality_score", 0),
+./qmoi-enhanced/scripts/qmoi-ultimate-automation.py:                "install_instructions": app.get("install_instructions", ""),
+./qmoi-enhanced/scripts/qmoi-ultimate-automation.py:                "download_url": app.get("download_url", "")
+./qmoi-enhanced/scripts/qmoi-ultimate-automation.py:            apps_list="\n".join([f"- {app['name']} ({app.get('platform', 'universal')})" for app in release_data["apps"]]),
+./qmoi-enhanced/scripts/qmoi-ultimate-automation.py:            quality_score=sum(app.get("quality_score", 0) for app in release_data["apps"]) / len(release_data["apps"]) if release_data["apps"] else 0,
+./qmoi-enhanced/scripts/media_upload_api_example.js:app.get('/api/health', (req, res) => {
+./qmoi-enhanced/scripts/media_upload_api_example.js:app.post('/api/media', requireAdmin, upload.single('file'), (req, res) => {
+./qmoi-enhanced/scripts/media_upload_api_example.js:app.delete('/api/media/:id', requireAdmin, (req, res) => {
+./qmoi-enhanced/scripts/media_upload_api_example.js:app.get('/api/media/logs', requireAdmin, (req, res) => {
+./qmoi-enhanced/scripts/media_upload_api_example.js:app.get('/api/media', (req, res) => {
+./qmoi-enhanced/scripts/qcity_unlimited_installer.py:@app.get("/")
+./qmoi-enhanced/scripts/qcity_unlimited_installer.py:@app.get("/health")
+./qmoi-enhanced/scripts/deployment/server.py:@app.get("/health", response_model=HealthResponse)
+./qmoi-enhanced/scripts/deployment/server.py:@app.post("/predict", response_model=PredictionResponse)
+./qmoi-enhanced/scripts/deployment/server.py:@app.post("/predict/batch", response_model=BatchPredictionResponse)
+./qmoi-enhanced/scripts/deployment/server.py:@app.get("/model/info")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.post("/token", response_model=Token)
+./qmoi-enhanced/scripts/api/automation_api.py:@app.get("/automation/status")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.post("/automation/start")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.post("/automation/stop")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.get("/automation/tasks")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.post("/automation/tasks")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.get("/automation/metrics")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.post("/automation/optimize")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.get("/automation/history")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.get("/automation/trends")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.post("/automation/config")
+./qmoi-enhanced/scripts/api/automation_api.py:@app.get("/automation/config")
+./qmoi-enhanced/scripts/qmoi-error-predictor.js:app.get('/api/predictions', (req, res) => {
+./qmoi-enhanced/qmoiexe.py:            f.write("# Auto-generated placeholder\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get('/')\ndef root(): return {'status': 'ready'}")
+./qmoi-enhanced/qmoiexe_enhanced.py:@app.get('/')
+./qmoi-enhanced/qmoiexe_enhanced.py:@app.get('/health')
+./qmoi-enhanced/qmoiexe_enhanced.py:@app.post('/fix_error')

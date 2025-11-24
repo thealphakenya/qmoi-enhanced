@@ -1,0 +1,189 @@
+{
+  "generated": "2025-11-14T13:41:18.617702Z",
+  "manifest": {
+    "assets": [
+      {
+        "path": "linux/latest/qmoi_ai.AppImage",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+        "size": 6291456,
+        "sha256": "c4c0fe676cc0723e3131764c5f236215e0196d25f8d2a27295328d63951755b8",
+        "platform": "Linux"
+      },
+      {
+        "path": "linux/latest/qmoi_ai.deb",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
+        "size": 4194304,
+        "sha256": "ed68be3f8d14a0c13045fd1295b440925dcd4aa84627224879d1766757648548",
+        "platform": "Linux"
+      },
+      {
+        "path": "web/latest/qmoi.zip",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi.zip",
+        "size": 1405,
+        "sha256": "b80b3e0de710cbb618150711fa125ebe4b2fb7485d5468c4e0d3bdcd365a90c9",
+        "platform": "web"
+      },
+      {
+        "path": "web/latest/admin.zip",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/admin.zip",
+        "size": 1539,
+        "sha256": "9acfd6d6b28325651a960285c896228feec8f1e6b0337de1f83439725ed807dd",
+        "platform": "web"
+      },
+      {
+        "path": "web/latest/deals.zip",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/deals.zip",
+        "size": 3533,
+        "sha256": "4660cdfc9d6ecdcf901ee18561d9fafc3efed8da6bab4ae768a2ddeb248036ce",
+        "platform": "web"
+      },
+      {
+        "path": "web/latest/qmoi-ai.zip",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-ai.zip",
+        "size": 5804,
+        "sha256": "fed315443b2b89aa3803065c101f076f3d1464e3bc1bd330d8ed2caa39a3f618",
+        "platform": "web"
+      },
+      {
+        "path": "web/latest/q-alpha.zip",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/q-alpha.zip",
+        "size": 6524,
+        "sha256": "1c12e313e013497ad21a585e8ee581bdf271005896ac257a9dfcd978c106bed7",
+        "platform": "web"
+      },
+      {
+        "path": "web/latest/qmoi-space.zip",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-space.zip",
+        "size": 3557,
+        "sha256": "7d21e1fb4e6775a779062c35e801e661539a3966aebac888df44c4c53f4938fc",
+        "platform": "web"
+      },
+      {
+        "path": "ios/latest/qmoi_ai.ipa",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+        "size": 649,
+        "sha256": "5f9c3792278f0836c641d1b44bf2a2b07cc3d02e668c1ea834d1eecece78ff45",
+        "platform": "iOS"
+      },
+      {
+        "path": "chromebook/latest/qmoi_ai_chromebook.zip",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip",
+        "size": 428,
+        "sha256": "af9b9b026cc431a16d77323ee1b1fcd4cb005dab492cd6e032abe62007c28d53",
+        "platform": "Chromebook"
+      },
+      {
+        "path": "mac/latest/qmoi_ai.dmg",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+        "size": 8388608,
+        "sha256": "85233d4eec533d801f2ccf74d3c78cabe3689a417f1e94d0cf0587c51c7036b0",
+        "platform": "macOS"
+      },
+      {
+        "path": "qcity/latest/qcity_package.zip",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/qcity/latest/qcity_package.zip",
+        "size": 598,
+        "sha256": "ef00050713efcfcae796222773e15b29f1d519af49fb4666defae9065fa1b2af",
+        "platform": "QCity"
+      },
+      {
+        "path": "android/latest/qmoi_ai.apk",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+        "size": 796,
+        "sha256": "1399feba31f24de90561945f0cc0a1f10ba3aeb0ba151eceaed4df4bd80d4728",
+        "platform": "Android"
+      },
+      {
+        "path": "smarttv/latest/qmoi_ai_smarttv.apk",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
+        "size": 680,
+        "sha256": "757227c8c3720e31493161bad4152bd0b7b05ee01c9c653d4dbf1a76685060fb",
+        "platform": "SmartTV"
+      },
+      {
+        "path": "windows/latest/qmoi_ai.exe.sha256",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe.sha256",
+        "size": 78,
+        "sha256": "38db80cc5c95943005aad25ac7292039757de4412f67c431939cdd6e15203068",
+        "platform": "Windows"
+      },
+      {
+        "path": "windows/latest/qmoi_ai.exe",
+        "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+        "size": 5242880,
+        "sha256": "0a7bd2608b2d7ba9fce026d64b9ea3f1ee2904ed98b6a7ece685bd9880109b8e",
+        "platform": "Windows"
+      }
+    ]
+  },
+  "verification": {
+    "timestamp": "2025-11-14T13:14:26.992310Z",
+    "total_apps": 10,
+    "verified_ok": 9,
+    "verified_broken": 1,
+    "verified_unknown": 0,
+    "apps": [
+      {
+        "name": "qmoi_ai.apk",
+        "type": "android",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+        "status": "OK"
+      },
+      {
+        "name": "qmoi_ai.ipa",
+        "type": "ios",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+        "status": "OK"
+      },
+      {
+        "name": "qmoi_ai_smarttv.apk",
+        "type": "smarttv",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
+        "status": "OK"
+      },
+      {
+        "name": "qmoi_ai.deb",
+        "type": "deb",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
+        "status": "BROKEN"
+      },
+      {
+        "name": "qmoi_ai.AppImage",
+        "type": "appimage",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+        "status": "OK"
+      },
+      {
+        "name": "qmoi_ai.dmg",
+        "type": "dmg",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+        "status": "OK"
+      },
+      {
+        "name": "qmoi_ai.exe",
+        "type": "exe",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+        "status": "OK"
+      },
+      {
+        "name": "qmoi-ai.zip",
+        "type": "web",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-ai.zip",
+        "status": "OK"
+      },
+      {
+        "name": "admin.zip",
+        "type": "web",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/admin.zip",
+        "status": "OK"
+      },
+      {
+        "name": "deals.zip",
+        "type": "web",
+        "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/deals.zip",
+        "status": "OK"
+      }
+    ]
+  },
+  "verify_log_tail": "[2025-11-14T13:14:26.995032] [INFO]   \u2713 Valid APK structure with 3 files\n[2025-11-14T13:14:26.995068] [INFO] \n=== Verifying deb: qmoi_ai.deb ===\n[2025-11-14T13:14:26.995122] [INFO] \u2713 File size: 4194304 bytes\n[2025-11-14T13:14:26.995132] [INFO] Checking DEB: /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb\n[2025-11-14T13:14:26.996973] [ERROR]   \u2717 ar tool failed: ar: /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb: file format not recognized\n\n[2025-11-14T13:14:26.996998] [INFO] \n=== Verifying appimage: qmoi_ai.AppImage ===\n[2025-11-14T13:14:26.997036] [INFO] \u2713 File size: 6291456 bytes\n[2025-11-14T13:14:26.997046] [INFO] Checking AppImage: /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage\n[2025-11-14T13:14:26.999069] [WARN]   \u26a0 Cannot execute AppImage: [Errno 8] Exec format error: '/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage'\n[2025-11-14T13:14:26.999092] [INFO] \n=== Verifying dmg: qmoi_ai.dmg ===\n[2025-11-14T13:14:26.999120] [INFO] \u2713 File size: 8388608 bytes\n[2025-11-14T13:14:26.999126] [INFO] Checking DMG: /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg\n[2025-11-14T13:14:26.999183] [WARN]   \u26a0 Cannot fully verify on non-macOS system\n[2025-11-14T13:14:26.999196] [INFO] \n=== Verifying exe: qmoi_ai.exe ===\n[2025-11-14T13:14:26.999217] [INFO] \u2713 File size: 5242880 bytes\n[2025-11-14T13:14:26.999223] [INFO] Checking EXE: /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe\n[2025-11-14T13:14:26.999260] [INFO]   \u2713 Valid EXE header\n[2025-11-14T13:14:26.999288] [INFO] \n=== Verifying web: qmoi-ai.zip ===\n[2025-11-14T13:14:26.999309] [INFO] \u2713 File size: 5804 bytes\n[2025-11-14T13:14:26.999315] [INFO] Checking Web App: /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-ai.zip\n[2025-11-14T13:14:27.000269] [INFO]   \u2713 Valid web app with 6 files\n[2025-11-14T13:14:27.000319] [INFO] \n=== Verifying web: admin.zip ===\n[2025-11-14T13:14:27.000346] [INFO] \u2713 File size: 1539 bytes\n[2025-11-14T13:14:27.000352] [INFO] Checking Web App: /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/admin.zip\n[2025-11-14T13:14:27.000631] [INFO]   \u2713 Valid web app with 1 files\n[2025-11-14T13:14:27.000662] [INFO] \n=== Verifying web: deals.zip ===\n[2025-11-14T13:14:27.000686] [INFO] \u2713 File size: 3533 bytes\n[2025-11-14T13:14:27.000691] [INFO] Checking Web App: /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/deals.zip\n[2025-11-14T13:14:27.001293] [INFO]   \u2713 Valid web app with 4 files\n\n================================================================================\nSUMMARY\n================================================================================\nTotal apps checked: 10\n  \u2713 Verified OK: 9\n  \u2717 Verified Broken: 1\n  \u26a0 Unknown: 0\n\n\u26a0 ISSUES FOUND (1):\n  \u2022 qmoi_ai.deb: deb\n\n\ud83d\udcc4 Report saved to: /workspaces/qmoi-enhanced/reports/app_verification_report.json"
+}

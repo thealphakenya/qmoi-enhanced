@@ -1,0 +1,179 @@
+{
+  "aws": {
+    "enabled": true,
+    "region": "us-east-1",
+    "s3_bucket": "qmoi-cloud-storage",
+    "ec2_instances": {
+      "compute": "t3.xlarge",
+      "gpu": "g4dn.xlarge",
+      "memory": "r5.xlarge"
+    },
+    "lambda_functions": {
+      "revenue_processing": {
+        "runtime": "python3.9",
+        "timeout": 300,
+        "memory": 1024
+      },
+      "ai_inference": {
+        "runtime": "python3.9",
+        "timeout": 900,
+        "memory": 2048
+      },
+      "data_analysis": {
+        "runtime": "python3.9",
+        "timeout": 600,
+        "memory": 1536
+      }
+    },
+    "cloudfront": {
+      "enabled": true,
+      "domains": [
+        "qmoi.ai",
+        "qmoi.cloud"
+      ],
+      "cache_behavior": {
+        "default_ttl": 3600,
+        "max_ttl": 86400
+      }
+    },
+    "rds": {
+      "enabled": true,
+      "instance_class": "db.t3.micro",
+      "engine": "postgres"
+    }
+  },
+  "gcp": {
+    "enabled": true,
+    "project_id": "qmoi-enhanced",
+    "region": "us-central1",
+    "storage_bucket": "qmoi-cloud-storage",
+    "compute_instances": {
+      "cpu": "n1-standard-8",
+      "gpu": "n1-standard-4-gpu",
+      "memory": "n1-highmem-16"
+    },
+    "cloud_functions": {
+      "revenue_optimization": {
+        "runtime": "python39",
+        "timeout": 540,
+        "memory": "1GB"
+      },
+      "platform_integration": {
+        "runtime": "python39",
+        "timeout": 300,
+        "memory": "512MB"
+      },
+      "error_handling": {
+        "runtime": "python39",
+        "timeout": 60,
+        "memory": "256MB"
+      }
+    },
+    "cloud_run": {
+      "enabled": true,
+      "service_name": "qmoi-api",
+      "region": "us-central1",
+      "cpu": 1,
+      "memory": "2Gi"
+    }
+  },
+  "azure": {
+    "enabled": true,
+    "subscription_id": "qmoi-subscription",
+    "region": "eastus",
+    "storage_account": "qmoistorage",
+    "container": "qmoi-artifacts",
+    "virtual_machines": {
+      "compute": "Standard_D8s_v3",
+      "gpu": "Standard_NC6s_v3",
+      "memory": "Standard_E16s_v3"
+    },
+    "functions": {
+      "revenue_generation": {
+        "runtime": "python",
+        "timeout": 300,
+        "memory": 1024
+      },
+      "platform_sync": {
+        "runtime": "python",
+        "timeout": 180,
+        "memory": 512
+      },
+      "health_monitoring": {
+        "runtime": "python",
+        "timeout": 60,
+        "memory": 256
+      }
+    },
+    "app_service": {
+      "enabled": true,
+      "plan": "Standard",
+      "sku": "S1"
+    }
+  },
+  "cloudflare": {
+    "enabled": true,
+    "zone_id": "qmoi-zone",
+    "domains": [
+      "qmoi.ai",
+      "qmoi.cloud"
+    ],
+    "workers": {
+      "revenue_processor": {
+        "script": "revenue-processor.js",
+        "route": "api.qmoi.ai/revenue/*"
+      },
+      "platform_sync": {
+        "script": "platform-sync.js",
+        "route": "api.qmoi.ai/sync/*"
+      }
+    },
+    "r2_storage": {
+      "enabled": true,
+      "bucket": "qmoi-artifacts",
+      "public_access": false
+    },
+    "cdn": {
+      "enabled": true,
+      "cache_rules": {
+        "static_assets": 86400,
+        "api_responses": 300,
+        "dynamic_content": 60
+      }
+    }
+  },
+  "digitalocean": {
+    "enabled": true,
+    "region": "nyc1",
+    "spaces_bucket": "qmoi-storage",
+    "droplets": {
+      "compute": {
+        "size": "s-2vcpu-4gb",
+        "image": "ubuntu-20-04-x64"
+      },
+      "gpu": {
+        "size": "g-2vcpu-8gb",
+        "image": "ubuntu-20-04-x64"
+      }
+    },
+    "functions": {
+      "revenue_optimization": {
+        "runtime": "python",
+        "timeout": 300
+      },
+      "data_processing": {
+        "runtime": "python",
+        "timeout": 600
+      }
+    },
+    "load_balancer": {
+      "enabled": true,
+      "algorithm": "round_robin",
+      "health_check": {
+        "protocol": "http",
+        "port": 80,
+        "path": "/health"
+      }
+    }
+  }
+}

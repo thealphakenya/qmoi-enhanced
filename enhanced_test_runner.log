@@ -1,0 +1,9 @@
+2025-06-20 03:20:04,403 - __main__ - INFO - Starting enhanced test runner
+2025-06-20 03:20:04,404 - __main__ - INFO - Running unit tests
+2025-06-20 03:20:31,607 - __main__ - ERROR - Unit tests failed: [WinError 2] The system cannot find the file specified
+2025-06-20 03:20:31,608 - __main__ - INFO - Running integration tests
+2025-06-20 03:20:49,389 - __main__ - INFO - Running deployment tests
+2025-06-20 03:20:49,390 - __main__ - INFO - Running evolution tests
+2025-06-20 03:20:49,392 - __main__ - INFO - Running performance tests
+2025-06-20 03:20:51,700 - __main__ - INFO - Running security tests
+2025-06-20 03:21:32,938 - __main__ - ERROR - Some tests failed!

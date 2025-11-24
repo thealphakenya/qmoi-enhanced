@@ -1,0 +1,27 @@
+---
+title: "Issue draft for qmoi-enhanced/.npm-cache/_cacache/index-v5/a2/59/2a4393786cc64da0089089ffa21391d5a1edde4f7cd1998b794ff382c98c"
+generated: 2025-11-08T16:06:38.673054Z
+---
+
+# Review needed: qmoi-enhanced/.npm-cache/_cacache/index-v5/a2/59/2a4393786cc64da0089089ffa21391d5a1edde4f7cd1998b794ff382c98c
+
+Status: AUTOMATED_REMOVAL_FROM_DONEREFS
+
+Suggested next steps:
+
+- Inspect the file and its placeholder markers or TODOs.
+- If the file is safe for production, remove the placeholder and add tests / small PR.
+- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
+- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
+
+Excerpt (first 2KB):
+
+```
+
+b0676078bf333bd9bab12d3d403c54c37a71a6c3	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@babel/helper-compilation-targets/-/helper-compilation-targets-7.27.2.tgz","integrity":"sha512-2+1thGUUWWjLTYTHZWK1n8Yga0ijBz1XAhUXcKy81rd5g6yh7hGqMp45v7cadSbEHc9G3OTv45SyneRN3ps4DQ==","time":1760365064661,"size":14901,"metadata":{"time":1760365063016,"url":"https://registry.npmjs.org/@babel/helper-compilation-targets/-/helper-compilation-targets-7.27.2.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:42 GMT","etag":"\"8bca919aa224571728cb8be27e20934c\"","last-modified":"Tue, 06 May 2025 15:33:51 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
+```
+
+Notes:
+
+- This draft was generated automatically to help triage files removed from `donerefs.txt`.
+- Backups and previous runs may exist under `.qmoi_validation`.

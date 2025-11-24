@@ -1,0 +1,18 @@
+{
+  "version": "v1.2.5",
+  "platforms": [
+    {
+      "os": "debian",
+      "file": "qmoi_ai.deb",
+      "sha256": "<PUT_SHA256_HERE>",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.deb"
+    },
+    {
+      "os": "android_smarttv",
+      "file": "qmoi_ai_smarttv.apk",
+      "sha256": "<PUT_SHA256_HERE>",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk"
+    }
+  ],
+  "notes": "Fill in checksums and upload artifacts to GitHub Releases for tag v1.2.5."
+}

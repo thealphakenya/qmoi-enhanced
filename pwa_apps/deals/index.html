@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QMOI Deals</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:16px;color:#111}
+    .card{border:1px solid #eee;padding:12px;border-radius:8px;margin:8px 0}
+    button{padding:8px;border-radius:6px}
+  </style>
+</head>
+<body>
+  <h1>Deals</h1>
+  <div id="deals"></div>
+<script>
+async function load(){
+  const res = await fetch('/deals');
+  const j = await res.json();
+  const el = document.getElementById('deals'); el.innerHTML='';
+  for(const d of j.deals){
+    const div = document.createElement('div'); div.className='card';
+    div.innerHTML = `<h3>${d.title} — KES ${(d.price_cents/100).toFixed(2)}</h3><p>${d.description}</p><p><button data-id='${d.id}' class='buy'>Buy</button></p>`;
+    el.appendChild(div);
+  }
+}
+
+document.addEventListener('click', async (ev)=>{
+  const t = ev.target;
+  if(t.classList.contains('buy')){
+    const id = t.getAttribute('data-id');
+    const res = await fetch('/deals/'+id+'/purchase', {method:'POST', credentials:'include'});
+    const j = await res.json();
+    alert(JSON.stringify(j));
+  }
+});
+
+load();
+</script>
+</body>
+</html>

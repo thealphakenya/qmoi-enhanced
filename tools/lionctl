@@ -1,0 +1,348 @@
+#!/usr/bin/env bash
+# tools/lionctl - improved scaffold for LION CLI
+# Purpose: lightweight, safe entrypoint for LION operations. Commands are dry-run by default.
+
+set -euo pipefail
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+ENV_FILES=("$ROOT_DIR/tools/lion.env" "$ROOT_DIR/.env")
+for ef in "${ENV_FILES[@]}"; do
+  if [ -f "$ef" ]; then
+    # shellcheck disable=SC1090
+    set -a
+    # load simple KEY=VAL lines
+    . "$ef"
+    set +a
+    LOADED_ENV_FILE="$ef"
+    break
+  fi
+done
+CMD=${1:-help}
+shift || true
+
+# Auto-load environment variables from tools/lion.env or .env if present (safe)
+if [ -f "$ROOT_DIR/tools/lion.env" ]; then
+  echo "Loading LION environment from $ROOT_DIR/tools/lion.env"
+  # export all variables defined in file
+  set -o allexport
+  # shellcheck disable=SC1090
+  source "$ROOT_DIR/tools/lion.env"
+  set +o allexport
+elif [ -f "$ROOT_DIR/.env" ]; then
+  echo "Loading environment from $ROOT_DIR/.env"
+  set -o allexport
+  # shellcheck disable=SC1090
+  source "$ROOT_DIR/.env"
+  set +o allexport
+fi
+
+# Default production-safe fallbacks
+: "${LION_APPLY:=0}"
+: "${LION_USE_CODESPACE_RESOURCES:=0}"
+: "${LION_RESOURCES:=auto}"
+
+# Load environment variables from repo .env or tools/lion.env if present.
+# This allows lionctl to run even when environment variables are not set in the shell.
+ENV_CANDIDATES=("$ROOT_DIR/.env" "$ROOT_DIR/tools/lion.env" "$ROOT_DIR/tools/lion.env.local")
+for f in "${ENV_CANDIDATES[@]}"; do
+  if [ -f "$f" ]; then
+    # Export variables found in the file while preserving existing env vars.
+    # Use a safe read to avoid evaluating arbitrary commands.
+    echo "Loading environment from $f"
+    # shellcheck disable=SC1090
+    set -a
+    # load file
+    . "$f"
+    set +a
+    break
+  fi
+done
+
+# Set production-safe defaults for key LION variables if not provided.
+LION_APPLY_DEFAULT=0
+LION_ENV_DEFAULT="production"
+LION_RUNNERS_DEFAULT=2
+LION_TIMEOUT_DEFAULT=300
+LION_MAX_MEMORY_DEFAULT="4G"
+LION_MAX_CPUS_DEFAULT=2
+
+LION_APPLY=${LION_APPLY:-${LION_APPLY_DEFAULT}}
+LION_ENV=${LION_ENV:-${LION_ENV_DEFAULT}}
+LION_RUNNERS=${LION_RUNNERS:-${LION_RUNNERS_DEFAULT}}
+LION_TIMEOUT=${LION_TIMEOUT:-${LION_TIMEOUT_DEFAULT}}
+LION_MAX_MEMORY=${LION_MAX_MEMORY:-${LION_MAX_MEMORY_DEFAULT}}
+LION_MAX_CPUS=${LION_MAX_CPUS:-${LION_MAX_CPUS_DEFAULT}}
+
+# Detect GitHub Codespaces environment and avoid using Codespaces host resources unless explicitly allowed.
+if [ -n "${CODESPACES:-}" ] || [ -n "${GITHUB_CODESPACES:-}" ] || [ -d "/workspaces/.codespaces" ]; then
+  echo "Detected Codespaces environment. LION_USE_CODESPACE_RESOURCES=${LION_USE_CODESPACE_RESOURCES}"
+  if [ "${LION_USE_CODESPACE_RESOURCES}" = "0" ] || [ -z "${LION_USE_CODESPACE_RESOURCES}" ]; then
+    echo "Codespaces host resources will NOT be used by LION (safe default)."
+    # reduce runners to zero to avoid heavy workloads
+    LION_RUNNERS=0
+  else
+    echo "LION is allowed to use Codespaces host resources (LION_USE_CODESPACE_RESOURCES=1)"
+  fi
+fi
+
+
+function help() {
+  cat <<'EOF'
+lionctl - manage LION runtime (scaffold)
+
+Usage:
+  lionctl help
+  lionctl version
+  lionctl status
+  lionctl bootstrap        # prepare environment (dry-run)
+  lionctl install         # scaffold installation steps (dry-run)
+  lionctl build           # run build pipeline (dry-run)
+  lionctl selfheal        # run self-heal checks (dry-run)
+  lionctl verify          # run docs and artifact verification (dry-run)
+  lionctl autoupdate      # fetch and propose updates (dry-run)
+  lionctl permission-audit# print required permissions and current gaps
+  lionctl ensure-running  # ensure core agents are running
+  lionctl qvillage-autodev # run qvillage autodevelop tasks (dry-run)
+  lionctl quantum-sync    # sync quantum modules and datasets (dry-run)
+  lionctl qstore-sync     # sync qstore data and indexes (dry-run)
+  lionctl whatsapp-hooks  # validate WhatsApp integration hooks (dry-run)
+  lionctl revenue-audit   # run revenue spec generation and basic checks (dry-run)
+  lionctl wallets-audit   # check wallets, testnets and reconciliation (dry-run)
+  lionctl biometrics-check# run biometrics/login page checks (dry-run)
+  lionctl deals-automate  # simulate/validate automated deals automation flows (dry-run)
+
+Notes:
+ - This is a safe scaffold. Commands show actions and recommended commands but do not mutate state unless explicitly implemented.
+ - For destructive operations, implement explicit `--apply` flags and backup steps.
+EOF
+}
+
+function show_version() { echo "lionctl 0.2.0-scaffold"; }
+
+function show_status() {
+  echo "LION status: scaffold mode"
+  echo "Root: $ROOT_DIR"
+  [ -f "$ROOT_DIR/docs/md_index.json" ] && echo "Docs index: $ROOT_DIR/docs/md_index.json"
+  if [ -n "${LOADED_ENV_FILE:-}" ]; then
+    echo "Loaded env: $LOADED_ENV_FILE"
+  else
+    echo "Loaded env: (none) — using defaults or runtime environment"
+  fi
+  if [ -f "$ROOT_DIR/qcity-artifacts/qmoi_build_report.json" ]; then
+    echo "Build report: $ROOT_DIR/qcity-artifacts/qmoi_build_report.json"
+  elif [ -f "$ROOT_DIR/qmoi-enhanced/qcity-artifacts/qmoi_build_report.json" ]; then
+    echo "Build report: $ROOT_DIR/qmoi-enhanced/qcity-artifacts/qmoi_build_report.json"
+  fi
+  echo "Effective LION configuration:"
+  echo " - LION_ENV=$LION_ENV"
+  echo " - LION_APPLY=$LION_APPLY"
+  echo " - LION_RUNNERS=$LION_RUNNERS"
+  echo " - LION_TIMEOUT=$LION_TIMEOUT"
+  echo " - LION_MAX_MEMORY=$LION_MAX_MEMORY"
+  echo " - LION_MAX_CPUS=$LION_MAX_CPUS"
+  echo " - LION_USE_CODESPACE_RESOURCES=${LION_USE_CODESPACE_RESOURCES:-0}"
+  echo " - GITHUB_REPO=${GITHUB_REPO:-unset}"
+}
+
+function ensure_running() {
+  echo "Ensure LION core agents and services are running (dry-run)"
+  echo " - check process list for lion-agent, qmoi-worker, qvillage-agent"
+  echo " - recommended: supervisor/systemd health checks and restart policies"
+}
+
+function qvillage_autodev() {
+  echo "QVillage auto-develop (dry-run): will plan code updates, dataset pulls, and deployable artifacts"
+  echo " - steps: run code linters, run model training jobs in sandbox, propose PRs for updates"
+  echo " - NOTE: requires CI runners and credentials to push PRs"
+}
+
+function quantum_sync() {
+  echo "Quantum sync (dry-run): sync quantum modules, datasets and compute manifests"
+  echo " - run data integrity checks, snapshot datasets, update manifests in qstore"
+}
+
+function qstore_sync() {
+  echo "QStore sync (dry-run): reindex datasets and verify shard availability"
+  echo " - recommend: scheduled reindex jobs, retention policies, and backups"
+}
+
+function whatsapp_hooks() {
+  echo "WhatsApp hooks (dry-run): verify webhook endpoints, signatures, and message flows"
+  echo " - checks: webhook reachable, signature verification, sample message round-trip"
+}
+
+function revenue_audit() {
+  echo "Revenue audit (dry-run): generate revenue spec from docs and run basic validations"
+  if [ -f "$ROOT_DIR/scripts/generate_revenue_spec.py" ]; then
+    echo "  -> Found generator: scripts/generate_revenue_spec.py"
+    if [ "$LION_APPLY" = "1" ]; then
+      echo "  -> Applying: python3 scripts/generate_revenue_spec.py --out $ROOT_DIR/docs/REVENUE_SPEC.md --root $ROOT_DIR"
+      python3 "$ROOT_DIR/scripts/generate_revenue_spec.py" --out "$ROOT_DIR/docs/REVENUE_SPEC.md" --root "$ROOT_DIR"
+    else
+      echo "  -> Dry-run: python3 scripts/generate_revenue_spec.py --out $ROOT_DIR/docs/REVENUE_SPEC.md --root $ROOT_DIR"
+      python3 "$ROOT_DIR/scripts/generate_revenue_spec.py" --out "$ROOT_DIR/docs/REVENUE_SPEC.md" --root "$ROOT_DIR"
+      echo "  -> Generated REVENUE_SPEC (dry-run). To apply for real set LION_APPLY=1 and re-run."
+    fi
+  else
+    echo "  -> Generator not found. Use scripts/generate_revenue_spec.py to create a revenue spec."
+  fi
+}
+
+function wallets_audit() {
+  echo "Wallets audit (dry-run): check wallet configs, testnet connectivity, and reconciliation endpoints"
+  if [ -f "$ROOT_DIR/scripts/wallets_audit.py" ]; then
+    echo "  -> Found: scripts/wallets_audit.py"
+    if [ "$LION_APPLY" = "1" ]; then
+      echo "  -> Applying: python3 scripts/wallets_audit.py --out $ROOT_DIR/docs/wallets_report.json --root $ROOT_DIR --apply"
+      python3 "$ROOT_DIR/scripts/wallets_audit.py" --out "$ROOT_DIR/docs/wallets_report.json" --root "$ROOT_DIR" --apply
+    else
+      echo "  -> Dry-run: python3 scripts/wallets_audit.py --out $ROOT_DIR/docs/wallets_report.generated.json --root $ROOT_DIR"
+      python3 "$ROOT_DIR/scripts/wallets_audit.py" --out "$ROOT_DIR/docs/wallets_report.generated.json" --root "$ROOT_DIR"
+      echo "  -> wallets report (dry-run): $ROOT_DIR/docs/wallets_report.generated.json"
+      echo "  -> To apply changes set LION_APPLY=1 and re-run."
+    fi
+  else
+    echo "  -> wallets_audit script not found. Use scripts/wallets_audit.py to create a report."
+  fi
+}
+
+function biometrics_check() {
+  echo "Biometrics/login checks (dry-run): validate SLL login pages, input sanitization, and biometric flows"
+  if [ -f "$ROOT_DIR/scripts/biometrics_check.py" ]; then
+    echo "  -> Found: scripts/biometrics_check.py"
+    if [ "$LION_APPLY" = "1" ]; then
+      echo "  -> Applying: python3 scripts/biometrics_check.py --out $ROOT_DIR/docs/biometrics_report.json --root $ROOT_DIR --apply"
+      python3 "$ROOT_DIR/scripts/biometrics_check.py" --out "$ROOT_DIR/docs/biometrics_report.json" --root "$ROOT_DIR" --apply
+    else
+      echo "  -> Dry-run: python3 scripts/biometrics_check.py --out $ROOT_DIR/docs/biometrics_report.generated.json --root $ROOT_DIR"
+      python3 "$ROOT_DIR/scripts/biometrics_check.py" --out "$ROOT_DIR/docs/biometrics_report.generated.json" --root "$ROOT_DIR"
+      echo "  -> biometrics report (dry-run): $ROOT_DIR/docs/biometrics_report.generated.json"
+      echo "  -> To apply fixes set LION_APPLY=1 and re-run."
+    fi
+  else
+    echo "  -> biometrics_check script not found. Use scripts/biometrics_check.py to create a report."
+  fi
+}
+
+function deals_automate() {
+  echo "Deals automation (dry-run): simulate deal offers, escrow checks, and automated acceptance rules"
+  echo " - ensure audit trail and payment reconciliation are linked"
+}
+
+function bootstrap() {
+  echo "Bootstrapping LION environment (dry-run)"
+  echo " - Ensure necessary tools are present: curl, tar, unzip, jq, python3"
+  echo " - Recommended: create a secured secrets store for LION (see docs/LIONOPERATINGSYSTEM.md)"
+}
+
+function install() {
+  echo "Install (dry-run): scaffold only. Real installer must verify signatures and use trusted channels."
+}
+
+function build() {
+  echo "Build (dry-run): will invoke CI build workflows. See .github/workflows for recommended jobs."
+}
+
+function selfheal() {
+  echo "Self-heal (dry-run): running checks"
+  echo " - check service processes"
+  echo " - check disk space and available memory"
+  echo " - check agent version and last heartbeat"
+}
+
+function verify() {
+  echo "Verify (dry-run): run docs verification and link checks"
+  if [ -f "$ROOT_DIR/scripts/validate_and_fix_md.py" ]; then
+    echo "  -> Found docs validator: scripts/validate_and_fix_md.py"
+    echo "  -> Dry-run: python3 scripts/validate_and_fix_md.py --out $ROOT_DIR/docs/link_report.json --root $ROOT_DIR"
+  else
+    echo "  -> No docs validator found"
+  fi
+  if [ -f "$ROOT_DIR/scripts/run_validations.py" ]; then
+    echo "  -> Orchestrator: python3 scripts/run_validations.py (dry-run)"
+  fi
+}
+
+function autoupdate() {
+  echo "Auto-update (dry-run): will fetch release metadata and propose PRs with changes. Requires CI and signing keys for apply."
+}
+
+function permission_audit() {
+  echo "Permission audit (dry-run): evaluating LION required permissions"
+  cat <<'PERM'
+Minimum recommended privileges for LION orchestrator (principle of least privilege):
+ - Read-only access to repository content for validation tools
+ - Write access to a specific releases/artifacts area only when publishing
+ - Secrets access via vault (no raw secrets in env)
+ - Service account with limited scope for payment gateways (sandbox/testnet keys)
+ - Audit logging enabled for any payment/contract actions
+PERM
+  echo "Suggested checks:"
+  echo " - Are signing keys stored in a secure vault?";
+  echo " - Are CI secrets scoped to necessary jobs only?";
+  echo " - Is there an approvals gate for publishing to Releases?";
+}
+
+case "$CMD" in
+  help|-h|--help)
+    help
+    ;;
+  version)
+    show_version
+    ;;
+  status)
+    show_status
+    ;;
+  bootstrap)
+    bootstrap
+    ;;
+  install)
+    install
+    ;;
+  build)
+    build
+    ;;
+  selfheal)
+    selfheal
+    ;;
+  verify)
+    verify
+    ;;
+  autoupdate)
+    autoupdate
+    ;;
+  permission-audit|permission_audit)
+    permission_audit
+    ;;
+  ensure-running|ensure_running)
+    ensure_running
+    ;;
+  qvillage-autodev|qvillage_autodev)
+    qvillage_autodev
+    ;;
+  quantum-sync|quantum_sync)
+    quantum_sync
+    ;;
+  qstore-sync|qstore_sync)
+    qstore_sync
+    ;;
+  whatsapp-hooks|whatsapp_hooks)
+    whatsapp_hooks
+    ;;
+  revenue-audit|revenue_audit)
+    revenue_audit
+    ;;
+  wallets-audit|wallets_audit)
+    wallets_audit
+    ;;
+  biometrics-check|biometrics_check)
+    biometrics_check
+    ;;
+  deals-automate|deals_automate)
+    deals_automate
+    ;;
+  *)
+    echo "Unknown command: $CMD" >&2
+    help
+    exit 2
+    ;;
+esac

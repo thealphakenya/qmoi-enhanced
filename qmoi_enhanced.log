@@ -1,0 +1,370 @@
+2025-07-06 02:35:59,635 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 02:35:59,894 - __main__ - INFO - Checking environment...
+2025-07-06 02:35:59,894 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 02:35:59,895 - __main__ - INFO - Created directory: logs
+2025-07-06 02:35:59,895 - __main__ - INFO - Created directory: reports
+2025-07-06 02:35:59,895 - __main__ - INFO - Created directory: models/latest
+2025-07-06 02:35:59,895 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 02:36:07,345 - __main__ - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:36:07,995 - __main__ - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:36:08,658 - __main__ - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:36:09,438 - __main__ - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:36:09,441 - __main__ - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:36:09,442 - __main__ - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:36:09,442 - __main__ - INFO - Optimizing revenue generation...
+2025-07-06 02:36:09,443 - __main__ - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:37:23,672 - __main__ - INFO - Environment check completed
+2025-07-06 02:37:23,673 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 02:37:23,678 - __main__ - INFO - Optimizing device resources...
+2025-07-06 02:37:23,715 - __main__ - INFO - Garbage collected.
+2025-07-06 02:37:25,665 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:37:25,845 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:37:26,026 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:37:26,257 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:37:26,258 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:37:26,258 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 02:37:26,259 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:37:26,259 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:37:26,259 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 02:37:26,259 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 02:37:55,212 - __main__ - INFO - Temp files cleared.
+2025-07-06 02:37:55,213 - __main__ - WARNING - Memory optimization failed: No module named 'resource'
+2025-07-06 02:37:55,213 - __main__ - INFO - Device optimization complete.
+2025-07-06 02:38:00,642 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:38:01,335 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:38:02,062 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:38:03,019 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:38:03,020 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:38:03,020 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:38:03,020 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 02:38:03,021 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:38:03,022 - __main__ - WARNING - Failed to initialize QMOI Enhanced System
+2025-07-06 02:38:05,385 - qmoi_enhanced_model - INFO - Increased target for Animation Movies: $22,000.00
+2025-07-06 02:38:06,900 - qmoi_enhanced_model - INFO - Increased target for App Development: $16,500.00
+2025-07-06 02:38:07,684 - qmoi_enhanced_model - INFO - Increased target for Trading Automation: $27,500.00
+2025-07-06 02:38:08,442 - qmoi_enhanced_model - INFO - Increased target for Music Production: $11,000.00
+2025-07-06 02:38:09,323 - qmoi_enhanced_model - INFO - Increased target for Content Creation: $8,800.00
+2025-07-06 02:38:10,265 - qmoi_enhanced_model - INFO - Increased target for AI Services: $13,200.00
+2025-07-06 02:38:10,997 - qmoi_enhanced_model - INFO - Increased target for Consulting Services: $11,000.00
+2025-07-06 02:38:10,998 - qmoi_enhanced_model - ERROR - Monitoring error: table deals has 6 columns but 8 values were supplied
+2025-07-06 02:38:12,640 - httpx - INFO - HTTP Request: GET http://localhost:7861/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-07-06 02:41:13,691 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 02:41:13,692 - __main__ - INFO - Checking environment...
+2025-07-06 02:41:13,692 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 02:41:13,692 - __main__ - INFO - Created directory: logs
+2025-07-06 02:41:13,692 - __main__ - INFO - Created directory: reports
+2025-07-06 02:41:13,692 - __main__ - INFO - Created directory: models/latest
+2025-07-06 02:41:13,692 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 02:41:19,104 - __main__ - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:41:19,975 - __main__ - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:41:20,601 - __main__ - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:41:21,040 - __main__ - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:41:21,041 - __main__ - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:41:21,041 - __main__ - INFO - Optimizing revenue generation...
+2025-07-06 02:41:21,042 - __main__ - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:41:21,043 - __main__ - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:41:23,543 - __main__ - INFO - Environment check completed
+2025-07-06 02:41:23,543 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 02:41:26,397 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:41:26,879 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:41:27,292 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:41:27,719 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:41:27,720 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:41:27,720 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 02:41:27,720 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:41:27,721 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:41:27,721 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 02:41:27,721 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 02:43:10,999 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:43:10,999 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 02:43:11,205 - qmoi_enhanced_model - INFO - Increased target for Animation Movies: $24,200.00
+2025-07-06 02:43:11,345 - qmoi_enhanced_model - INFO - Increased target for App Development: $18,150.00
+2025-07-06 02:43:11,501 - qmoi_enhanced_model - INFO - Increased target for Trading Automation: $30,250.00
+2025-07-06 02:43:11,617 - qmoi_enhanced_model - INFO - Increased target for Music Production: $12,100.00
+2025-07-06 02:43:11,732 - qmoi_enhanced_model - INFO - Increased target for Content Creation: $9,680.00
+2025-07-06 02:43:11,848 - qmoi_enhanced_model - INFO - Increased target for AI Services: $14,520.00
+2025-07-06 02:47:06,509 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 02:47:06,509 - __main__ - INFO - Checking environment...
+2025-07-06 02:47:06,790 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 02:47:06,790 - __main__ - INFO - Created directory: logs
+2025-07-06 02:47:06,790 - __main__ - INFO - Created directory: reports
+2025-07-06 02:47:06,790 - __main__ - INFO - Created directory: models/latest
+2025-07-06 02:47:06,791 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 02:47:13,497 - __main__ - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:47:14,102 - __main__ - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:47:14,918 - __main__ - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:47:15,485 - __main__ - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:47:15,486 - __main__ - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:47:15,486 - __main__ - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:47:15,486 - __main__ - INFO - Optimizing revenue generation...
+2025-07-06 02:47:15,487 - __main__ - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:50:35,524 - __main__ - INFO - Environment check completed
+2025-07-06 02:50:35,525 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 02:50:45,835 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:50:47,326 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:50:48,225 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:50:49,280 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:50:49,281 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:50:49,281 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:50:49,282 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 02:50:49,282 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:50:49,283 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 02:50:49,283 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 02:51:45,879 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 02:51:45,880 - __main__ - INFO - Checking environment...
+2025-07-06 02:51:45,880 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 02:51:45,880 - __main__ - INFO - Created directory: logs
+2025-07-06 02:51:45,880 - __main__ - INFO - Created directory: reports
+2025-07-06 02:51:45,880 - __main__ - INFO - Created directory: models/latest
+2025-07-06 02:51:45,881 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 02:51:54,838 - __main__ - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:51:56,499 - __main__ - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:51:57,443 - __main__ - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:51:58,193 - __main__ - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:51:58,195 - __main__ - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:51:58,195 - __main__ - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:51:58,195 - __main__ - INFO - Optimizing revenue generation...
+2025-07-06 02:51:58,196 - __main__ - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:52:22,875 - __main__ - INFO - Environment check completed
+2025-07-06 02:52:22,876 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 02:52:29,578 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:52:30,158 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:52:30,782 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:52:31,357 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:52:31,357 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:52:31,357 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 02:52:31,357 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:52:31,358 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:52:31,359 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 02:52:31,359 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 02:56:32,521 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 02:56:32,521 - __main__ - INFO - Checking environment...
+2025-07-06 02:56:32,521 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 02:56:32,521 - __main__ - INFO - Created directory: logs
+2025-07-06 02:56:32,521 - __main__ - INFO - Created directory: reports
+2025-07-06 02:56:32,521 - __main__ - INFO - Created directory: models/latest
+2025-07-06 02:56:32,522 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 02:56:36,529 - __main__ - INFO - Environment check completed
+2025-07-06 02:56:36,529 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 02:56:41,745 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 02:56:42,197 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 02:56:42,685 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 02:56:43,143 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 02:56:43,144 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 02:56:43,144 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 02:56:43,144 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 02:56:43,145 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 02:56:43,145 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 02:56:43,145 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:01:39,521 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:01:39,521 - __main__ - INFO - Checking environment...
+2025-07-06 03:01:39,521 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:01:39,521 - __main__ - INFO - Created directory: logs
+2025-07-06 03:01:39,521 - __main__ - INFO - Created directory: reports
+2025-07-06 03:01:39,522 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:01:39,522 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:01:54,577 - __main__ - INFO - Environment check completed
+2025-07-06 03:01:54,577 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:02:00,161 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:02:00,648 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:02:01,125 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:02:01,610 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:02:01,612 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:02:01,612 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:02:01,612 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:02:01,613 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:02:01,614 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:02:01,614 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:06:55,205 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:06:55,205 - __main__ - INFO - Checking environment...
+2025-07-06 03:06:55,205 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:06:55,206 - __main__ - INFO - Created directory: logs
+2025-07-06 03:06:55,206 - __main__ - INFO - Created directory: reports
+2025-07-06 03:06:55,206 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:06:55,206 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:06:59,586 - __main__ - INFO - Environment check completed
+2025-07-06 03:06:59,586 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:07:04,308 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:07:04,907 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:07:05,582 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:07:06,188 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:07:06,189 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:07:06,189 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:07:06,189 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:07:06,191 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:07:06,191 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:07:06,191 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:12:02,008 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:12:02,008 - __main__ - INFO - Checking environment...
+2025-07-06 03:12:02,009 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:12:02,009 - __main__ - INFO - Created directory: logs
+2025-07-06 03:12:02,009 - __main__ - INFO - Created directory: reports
+2025-07-06 03:12:02,010 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:12:02,010 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:12:08,987 - __main__ - INFO - Environment check completed
+2025-07-06 03:12:08,988 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:12:12,399 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:12:13,106 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:12:13,957 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:12:14,565 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:12:14,598 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:12:14,599 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:12:14,599 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:12:14,601 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:12:14,602 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:12:14,602 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:17:07,185 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:17:07,186 - __main__ - INFO - Checking environment...
+2025-07-06 03:17:07,186 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:17:07,187 - __main__ - INFO - Created directory: logs
+2025-07-06 03:17:07,187 - __main__ - INFO - Created directory: reports
+2025-07-06 03:17:07,187 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:17:07,187 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:17:12,913 - __main__ - INFO - Environment check completed
+2025-07-06 03:17:12,913 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:17:18,052 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:17:18,860 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:17:19,539 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:17:20,222 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:17:20,224 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:17:20,224 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:17:20,224 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:17:20,225 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:17:20,225 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:17:20,225 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:22:30,048 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:22:30,049 - __main__ - INFO - Checking environment...
+2025-07-06 03:22:30,049 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:22:30,050 - __main__ - INFO - Created directory: logs
+2025-07-06 03:22:30,050 - __main__ - INFO - Created directory: reports
+2025-07-06 03:22:30,050 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:22:30,050 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:25:44,128 - __main__ - INFO - Environment check completed
+2025-07-06 03:25:44,129 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:25:50,952 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:25:51,826 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:25:52,549 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:25:53,206 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:25:53,207 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:25:53,207 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:25:53,207 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:25:53,210 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:25:53,210 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:25:53,211 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:25:54,400 - qmoi_enhanced_model - INFO - Increased target for Animation Movies: $22,000.00
+2025-07-06 03:27:36,971 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:27:36,971 - __main__ - INFO - Checking environment...
+2025-07-06 03:27:36,971 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:27:36,972 - __main__ - INFO - Created directory: logs
+2025-07-06 03:27:36,972 - __main__ - INFO - Created directory: reports
+2025-07-06 03:27:36,972 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:27:36,972 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:29:34,619 - __main__ - INFO - Environment check completed
+2025-07-06 03:29:34,619 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:29:39,843 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:29:40,649 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:29:41,267 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:29:42,067 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:29:42,067 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:29:42,068 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:29:42,068 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:29:42,069 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:29:42,069 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:29:42,069 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:34:00,012 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:34:00,013 - __main__ - INFO - Checking environment...
+2025-07-06 03:34:00,013 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:34:00,013 - __main__ - INFO - Created directory: logs
+2025-07-06 03:34:00,013 - __main__ - INFO - Created directory: reports
+2025-07-06 03:34:00,014 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:34:00,014 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:39:15,874 - __main__ - INFO - Environment check completed
+2025-07-06 03:39:15,874 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:39:25,623 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:39:26,245 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:39:27,188 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:39:27,977 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:39:27,977 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:39:27,978 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:39:27,978 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:39:27,979 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:39:27,979 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:39:27,979 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:39:28,949 - qmoi_enhanced_model - INFO - Increased target for Animation Movies: $22,000.00
+2025-07-06 03:43:38,181 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:43:38,181 - __main__ - INFO - Checking environment...
+2025-07-06 03:43:38,181 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:43:38,182 - __main__ - INFO - Created directory: logs
+2025-07-06 03:43:38,182 - __main__ - INFO - Created directory: reports
+2025-07-06 03:43:38,182 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:43:38,182 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:43:47,507 - __main__ - INFO - Environment check completed
+2025-07-06 03:43:47,508 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:43:52,358 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:43:52,927 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:43:53,597 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:43:54,152 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:43:54,153 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:43:54,153 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:43:54,153 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:43:54,154 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:43:54,154 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:43:54,154 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:48:16,682 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:48:16,682 - __main__ - INFO - Checking environment...
+2025-07-06 03:48:16,682 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:48:16,683 - __main__ - INFO - Created directory: logs
+2025-07-06 03:48:16,683 - __main__ - INFO - Created directory: reports
+2025-07-06 03:48:16,683 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:48:16,683 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:48:22,651 - __main__ - INFO - Environment check completed
+2025-07-06 03:48:22,651 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:48:29,034 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:48:30,185 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:48:30,889 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:48:32,231 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:48:32,232 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:48:32,233 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:48:32,233 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:48:32,234 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:48:32,235 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:48:32,235 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:54:11,893 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:54:11,894 - __main__ - INFO - Checking environment...
+2025-07-06 03:54:11,894 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:54:11,894 - __main__ - INFO - Created directory: logs
+2025-07-06 03:54:11,895 - __main__ - INFO - Created directory: reports
+2025-07-06 03:54:11,895 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:54:11,895 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:56:48,346 - __main__ - INFO - Environment check completed
+2025-07-06 03:56:48,346 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:56:51,545 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:56:52,095 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:56:52,473 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:56:52,828 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:56:52,829 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:56:52,829 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:56:52,830 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:56:52,831 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:56:52,831 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:56:52,831 - __main__ - ERROR - Failed to initialize QMOI system
+2025-07-06 03:56:53,397 - qmoi_enhanced_model - INFO - Increased target for Animation Movies: $22,000.00
+2025-07-06 03:58:28,885 - __main__ - INFO - Starting QMOI Enhanced System...
+2025-07-06 03:58:28,885 - __main__ - INFO - Checking environment...
+2025-07-06 03:58:28,885 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 03:58:28,885 - __main__ - INFO - Created directory: logs
+2025-07-06 03:58:28,885 - __main__ - INFO - Created directory: reports
+2025-07-06 03:58:28,886 - __main__ - INFO - Created directory: models/latest
+2025-07-06 03:58:28,886 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 03:58:32,983 - __main__ - INFO - Environment check completed
+2025-07-06 03:58:32,983 - __main__ - INFO - Initializing QMOI Enhanced System...
+2025-07-06 03:58:53,925 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Master
+2025-07-06 03:58:56,094 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Creator
+2025-07-06 03:58:57,874 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Trader
+2025-07-06 03:59:00,224 - qmoi_enhanced_model - INFO - Created enhanced avatar: QMOI Developer
+2025-07-06 03:59:00,224 - qmoi_enhanced_model - WARNING - Daily revenue target not met: $0.00
+2025-07-06 03:59:00,225 - qmoi_enhanced_model - INFO - Optimizing revenue generation...
+2025-07-06 03:59:00,225 - qmoi_enhanced_model - INFO - QMOI Enhanced System initialized successfully
+2025-07-06 03:59:00,226 - qmoi_enhanced_model - ERROR - Error initializing QMOI system: Object of type datetime is not JSON serializable
+2025-07-06 03:59:00,226 - __main__ - ERROR - Failed to initialize QMOI Enhanced System
+2025-07-06 03:59:00,226 - __main__ - ERROR - Failed to initialize QMOI system

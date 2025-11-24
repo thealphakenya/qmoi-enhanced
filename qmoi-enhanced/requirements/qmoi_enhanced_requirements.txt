@@ -1,0 +1,53 @@
+# QMOI Enhanced System Requirements
+
+# Core Python packages
+requests>=2.31.0
+psutil>=5.9.0
+uuid
+datetime
+
+# Web framework and API
+fastapi>=0.104.0
+uvicorn>=0.24.0
+starlette>=0.27.0
+
+# UI and visualization
+gradio>=4.0.0
+streamlit>=1.28.0
+
+# AI and ML
+transformers>=4.35.0
+torch>=2.1.0
+huggingface_hub>=0.19.0
+openai>=1.3.0
+
+# Data processing
+pandas>=2.1.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# Database
+sqlalchemy>=2.0.0
+alembic>=1.12.0
+
+# Security and encryption
+cryptography>=41.0.0
+bcrypt>=4.0.0
+
+# Monitoring and logging
+prometheus_client>=0.19.0
+structlog>=23.2.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Development tools
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+
+# Additional utilities
+python-dotenv>=1.0.0
+click>=8.1.0
+rich>=13.0.0 

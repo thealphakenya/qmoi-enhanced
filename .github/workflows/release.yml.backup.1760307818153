@@ -1,0 +1,64 @@
+name: QMOI Auto Build & Release
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+    steps:
+      - name: ✨ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ♻ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: ♻ Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: ♻ Install dependencies
+        run: |
+          npm install
+          pip install -r requirements.txt || true
+
+      - name: 🌎 Generate icons and validate files
+        run: |
+          npm run generate:icon
+          npm run ensure:files
+
+      - name: 🔨 Build PyInstaller EXE
+        run: npm run pyinstaller:build
+
+      - name: 🚀 Electron Build (all platforms)
+        run: npm run electron:build:all
+
+      - name: 🔍 Validate binaries
+        run: npm run validate:binaries
+
+      - name: 📋 Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: qmoi-v${{ github.run_number }}
+          name: "QMOI AI Release v${{ github.run_number }}"
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: 🔹 Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            Qmoi_apps/windows/*.exe
+            Qmoi_apps/linux/*.AppImage
+            Qmoi_apps/mac/*.dmg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

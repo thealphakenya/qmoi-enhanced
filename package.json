@@ -1,0 +1,35 @@
+{
+  "name": "qmoi-enhanced-system",
+  "version": "2.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/qmoi-master-system.js",
+    "dev": "node --experimental-modules scripts/qmoi-ai-server.js",
+    "build": "next build",
+    "env-setup": "node scripts/qmoi-env-setup.js"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "chart.js": "^4.5.1",
+    "class-variance-authority": "^0.7.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "next": "^13.5.0",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^18.2.0",
+    "zod": "^3.23.0",
+    "next-themes": "^0.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.48.0",
+    "react-scripts": "^5.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "author": "QMOI Development Team",
+  "license": "MIT"
+}

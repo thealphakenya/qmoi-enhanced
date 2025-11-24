@@ -1,0 +1,54 @@
+{
+  "remediation": [
+    {
+      "name": "qmoi_ai.exe.sha256",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe.sha256",
+      "platform": "windows",
+      "recommended_steps": [
+        "Run build-windows-production.sh or electron-builder to create EXE/MSI",
+        "Sign with code signing certificate using signtool or osslsigncode"
+      ]
+    },
+    {
+      "name": "qmoi_ai.apk",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+      "platform": "android",
+      "recommended_steps": [
+        "Use scripts/build-android-production.sh (requires Android SDK/gradle).",
+        "Sign the APK, verify with apksigner and test on emulator/device"
+      ]
+    },
+    {
+      "name": "qmoi_ai.ipa",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+      "platform": "ios",
+      "recommended_steps": [
+        "Use Xcode to build an IPA signed for distribution (CI macOS recommended).",
+        "Upload to TestFlight for staging testing"
+      ]
+    },
+    {
+      "name": "qmoi_ai_smarttv.apk",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
+      "platform": "smarttv",
+      "recommended_steps": [
+        "Build SmartTV APK with proper target (Android TV/Tizen) using mobile build scripts."
+      ]
+    },
+    {
+      "name": "qmoi_ai.deb",
+      "path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
+      "platform": "linux",
+      "status": "corrupted_on_release",
+      "evidence": "Local and GitHub v1.2.3 copy begin with invalid ar signature ('!<arch>P' instead of '!<arch>\\n') and `ar` outputs 'file format not recognized'.",
+      "recommended_steps": [
+        "Rebuild the .deb from source using the repo's packaging/build pipeline (preferred).",
+        "If this is an Electron app: run `npm install` and `npx electron-builder --linux deb` on a CI runner with Debian/Ubuntu environment so dpkg tools are present.",
+        "If building manually: create a proper deb structure (debian/control, debian/rules) and run `dpkg-deb --build <pkgdir>`; verify with `ar t` and `dpkg-deb -I`.",
+        "As an interim alternative, produce an AppImage and update the manifest/release to use it if target platforms allow.",
+        "After rebuilding: run `python3 scripts/verify_apps.py` to validate, update `release_assets_manifest.json` with size and sha256, then replace the GitHub release asset (requires repo PAT) or create a new release tag."
+      ],
+      "notes": "Automatic restore from older releases returned the same corrupted bytes; therefore replacement is required."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "dailyTarget": 200000,
+  "artists": {
+    "alpha-king": {
+      "voiceStyle": "drake-like",
+      "genre": [
+        "hip-hop",
+        "r&b",
+        "pop"
+      ],
+      "dailyTarget": 50000
+    },
+    "atomic-ice": {
+      "voiceStyle": "sia-like",
+      "genre": [
+        "pop",
+        "electronic",
+        "alternative"
+      ],
+      "dailyTarget": 40000
+    },
+    "sky-q": {
+      "voiceStyle": "nicki-minaj-like",
+      "genre": [
+        "hip-hop",
+        "rap",
+        "pop"
+      ],
+      "dailyTarget": 45000
+    },
+    "rainy-day": {
+      "voiceStyle": "rihanna-like",
+      "genre": [
+        "r&b",
+        "pop",
+        "dancehall"
+      ],
+      "dailyTarget": 55000
+    },
+    "my-name": {
+      "voiceStyle": "beyonce-like",
+      "genre": [
+        "r&b",
+        "pop",
+        "soul"
+      ],
+      "dailyTarget": 60000
+    }
+  },
+  "distribution": {
+    "platforms": [
+      "spotify",
+      "apple-music",
+      "youtube-music",
+      "itunes",
+      "amazon-music",
+      "youtube"
+    ],
+    "autoUpload": true,
+    "autoMarketing": true
+  }
+}

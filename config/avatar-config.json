@@ -1,0 +1,26 @@
+{
+  "defaultAvatar": "qmoi-default",
+  "masterAvatars": [
+    "qmoi-master",
+    "qmoi-creative"
+  ],
+  "environments": [
+    "office",
+    "nature",
+    "space",
+    "cyberpunk",
+    "fantasy"
+  ],
+  "animations": [
+    "idle",
+    "wave",
+    "point",
+    "think",
+    "present"
+  ],
+  "voiceSettings": {
+    "quality": "high",
+    "speed": "normal",
+    "pitch": "medium"
+  }
+}
