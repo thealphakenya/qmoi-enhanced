@@ -1,4 +1,4 @@
-export default function Home() {
+export function HomeLegacy() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white">
       <div className="container mx-auto px-4 py-16">

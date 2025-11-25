@@ -2,17 +2,18 @@
 import { renderHook, act } from "@testing-library/react";
 import { useQmoiKernel } from "./useQmoiKernel";
 
-// TODO_PROD global fetch
-const TODO_PRODFetch = jest.fn();
-global.fetch = TODO_PRODFetch;
+// Mock global fetch for tests
+const mockFetch = jest.fn();
+global.fetch = mockFetch;
 
 describe("useQmoiKernel", () => {
   beforeEach(() => {
-    jest.clearAllTODO_PRODs();
+    jest.clearAllMocks();
+    mockFetch.mockClear();
   });
 
   it("fetches status successfully", async () => {
-    TODO_PRODFetch.TODO_PRODResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
         status: "OK",
@@ -33,7 +34,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles fetch status error", async () => {
-    TODO_PRODFetch.TODO_PRODResolvedValueOnce({ ok: false });
+    mockFetch.mockResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
@@ -43,12 +44,12 @@ describe("useQmoiKernel", () => {
 
   it("runs action and updates status", async () => {
     // Action call
-    TODO_PRODFetch.TODO_PRODResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({ message: "QFix done" }),
     });
     // Status call after action
-    TODO_PRODFetch.TODO_PRODResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
         status: "OK",
@@ -68,7 +69,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles action error", async () => {
-    TODO_PRODFetch.TODO_PRODResolvedValueOnce({ ok: false });
+    mockFetch.mockResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.runAction("qfix");
