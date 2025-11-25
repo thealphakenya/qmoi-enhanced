@@ -1,9 +1,9 @@
 ---
-title: "Prioritized placeholder matches"
+title: "Prioritized PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) matches"
 qmoi_validation_frontmatter: true
 ---
 
-# Prioritized placeholder matches
+# Prioritized PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) matches
 
 Top files:
 - qmoi-enhanced/scripts/qmoi_master_website_automation.js — score: 397 — matches: 62

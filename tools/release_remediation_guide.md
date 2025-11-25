@@ -1,6 +1,6 @@
 # Release Remediation Guide
 
-This guide documents safe, production-ready steps to fix releases that contain placeholder or corrupt assets.
+This guide documents safe, production-ready steps to fix releases that contain PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) or corrupt assets.
 
 Steps for maintainers
 1. Identify flagged releases: `tools/releases_audit.md` lists releases flagged by automated heuristics.

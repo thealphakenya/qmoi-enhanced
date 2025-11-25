@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-**Installation Failures Explained**: The APKs, IPAs, EXEs, and several other formats are **NOT actual functioning applications** - they are corrupted or placeholder files filled with repeating garbage data.
+**Installation Failures Explained**: The APKs, IPAs, EXEs, and several other formats are **NOT actual functioning applications** - they are corrupted or PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files filled with repeating garbage data.
 
 - ❌ **6 Platform Categories BROKEN** (cannot install or run)
 - ✅ **2 Platform Categories WORKING** (web apps with real UI)
@@ -74,13 +74,13 @@ This is **NOT**:
 
 ## Root Cause Analysis
 
-### Where Did These Placeholder Files Come From?
+### Where Did These PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) Files Come From?
 
 Based on manifest and directory structure, these appear to be:
 
-1. **Test/Placeholder Files** - Created to simulate asset structure before real builds were available
+1. **Test/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) Files** - Created to simulate asset structure before real builds were available
 2. **Filled with Repeating Pattern** - The repeating `50 1a bc 4e 11 34 c6 62...` pattern suggests:
-   - Random data generator or placeholder script
+   - Random data generator or PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) script
    - Not from actual app build process
    - Never tested for actual installation
 
@@ -123,7 +123,7 @@ gh release delete v1.2.3 --yes
 
 ### Priority 2: FIX SOURCE FILES
 
-Replace placeholder files with **actual real apps**:
+Replace PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files with **actual real apps**:
 
 ```bash
 # For each platform, one of:
@@ -197,7 +197,7 @@ curl -o qmoi_ai.ipa https://builds.example.com/qmoi-ai/1.2.3/ios.ipa
 # - etc
 ```
 
-### Phase 3: Replace Placeholder Files (Days 5-6)
+### Phase 3: Replace PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) Files (Days 5-6)
 
 ```bash
 # Once real apps obtained, replace:
@@ -287,11 +287,11 @@ PLATFORM SUPPORT SUMMARY
    • QStore (QMOI)            - Working
 
 ❌ Native Apps (5 BROKEN):
-   • Android APK              - PLACEHOLDER (garbage data)
-   • iOS IPA                  - PLACEHOLDER (garbage data)
-   • Smart TV APK             - PLACEHOLDER (garbage data)
-   • Chromebook ZIP           - PLACEHOLDER (garbage data)
-   • QCity Package ZIP        - PLACEHOLDER (garbage data)
+   • Android APK              - PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) (garbage data)
+   • iOS IPA                  - PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) (garbage data)
+   • Smart TV APK             - PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) (garbage data)
+   • Chromebook ZIP           - PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) (garbage data)
+   • QCity Package ZIP        - PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) (garbage data)
 
 ⚠️ Needs Verification (3):
    • Linux deb                - Header OK, content unclear
@@ -299,7 +299,7 @@ PLATFORM SUPPORT SUMMARY
    • macOS DMG                - Header OK, content unclear
 
 ⚠️ Questionable (1):
-   • Windows EXE              - MZ header but likely placeholder
+   • Windows EXE              - MZ header but likely PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)
 ```
 
 ---
@@ -327,7 +327,7 @@ PLATFORM SUPPORT SUMMARY
 
 ## Files Affected
 
-**Broken/Placeholder Files** (16 total):
+**Broken/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) Files** (16 total):
 ```
 Qmoi_downloaded_apps/android/latest/qmoi_ai.apk (10 MB)
 Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa (12 MB)

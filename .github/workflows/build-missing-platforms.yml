@@ -17,7 +17,7 @@ jobs:
       - name: Build Raspberry Pi image (armhf)
         run: |
           echo "Simulated Raspberry Pi image build"
-          # Placeholder: call actual build scripts here
+          # PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md): call actual build scripts here
           ./scripts/build_raspberry_pi_image.sh ${{ github.event.inputs.version }} || true
 
   build-docker:

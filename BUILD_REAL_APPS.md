@@ -1,7 +1,7 @@
 # Build Real Applications - Complete Guide
 
 ## Problem
-Current releases contain corrupted/placeholder files filled with garbage data. This guide provides exact commands to build real functioning applications.
+Current releases contain corrupted/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files filled with garbage data. This guide provides exact commands to build real functioning applications.
 
 ## Environment Requirements
 

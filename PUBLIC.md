@@ -27,11 +27,11 @@ public/
 ├── icon.svg
 ├── icon.webp
 ├── index.html
-├── placeholder-logo.png
-├── placeholder-logo.svg
-├── placeholder-user.jpg
-├── placeholder.jpg
-├── placeholder.svg
+├── PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.png
+├── PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.svg
+├── PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-user.jpg
+├── PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).jpg
+├── PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).svg
 ├── qcity/
 ├── qcity-icon.svg
 ```
@@ -40,7 +40,7 @@ public/
 - All icons and images are used for branding, UI, and device compatibility in QCity, QMOI AI, and QMOI Space.
 - `index.html` is the main entry point for web apps and dashboards.
 - `qcity/` and `qcity-icon.svg` are used for QCity branding and UI features.
-- Placeholder assets are used for default avatars, logos, and error states.
+- PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) assets are used for default avatars, logos, and error states.
 - Unused/duplicate assets are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 
 ## Automation & Health

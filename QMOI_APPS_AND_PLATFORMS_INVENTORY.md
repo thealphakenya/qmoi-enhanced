@@ -19,7 +19,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 ### Windows
 - **qmoi_ai.exe** — Main Windows executable
   - Path: `downloads/windows/latest/qmoi_ai.exe`
-  - Status: ⚠️ **Placeholder stub** (169 bytes) — See build instructions below
+  - Status: ⚠️ **PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub** (169 bytes) — See build instructions below
   - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
 
 ### macOS
@@ -78,7 +78,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 ### ⚠️ qmoi_ai.exe Status
 
-**The Windows executable (`qmoi_ai.exe`) in this repository is currently a 169-byte placeholder stub.** This is used for documentation and link verification purposes only.
+**The Windows executable (`qmoi_ai.exe`) in this repository is currently a 169-byte PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub.** This is used for documentation and link verification purposes only.
 
 **To obtain a working Windows build:**
 
@@ -106,7 +106,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 | Platform | Status | Latest Version | Build Type |
 |----------|--------|---|---|
-| Windows | ⚠️ Placeholder | v1.2.3 | EXE Installer |
+| Windows | ⚠️ PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) | v1.2.3 | EXE Installer |
 | macOS | ✅ Available | v1.2.3 | DMG Installer |
 | Linux (AppImage) | ✅ Available | v1.2.3 | AppImage |
 | Linux (Deb) | ✅ Available | v1.2.3 | DEB Package |
@@ -128,7 +128,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 ### Windows Installation Issues
 
 **Problem:** "File is corrupted" or "Not a valid Win32 application"
-- **Cause:** Placeholder stub file used instead of real executable
+- **Cause:** PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub file used instead of real executable
 - **Solution:** Download the official release from GitHub (>45MB)
 
 **Problem:** "SmartScreen warning" or "Unrecognized developer"

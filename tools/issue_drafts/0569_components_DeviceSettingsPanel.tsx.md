@@ -9,8 +9,8 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its placeholder markers or TODOs.
-- If the file is safe for production, remove the placeholder and add tests / small PR.
+- Inspect the file and its PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) markers or TODOs.
+- If the file is safe for production, remove the PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) and add tests / small PR.
 - If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
@@ -51,7 +51,7 @@ export function DeviceSettingsPanel() {
       <CardContent>
         <div className="mb-2">
           <label className="block mb-1">Wallpaper URL</label>
-          <input type="text" value={wallpaper} onChange={handleWallpaperChange} className="w-full p-1 rounded bg-gray-900 text-green-200" placeholder="/path/to/wallpaper.jpg" />
+          <input type="text" value={wallpaper} onChange={handleWallpaperChange} className="w-full p-1 rounded bg-gray-900 text-green-200" PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)="/path/to/wallpaper.jpg" />
         </div>
         <div className="mb-2">
           <label className="block mb-1">Theme</label>

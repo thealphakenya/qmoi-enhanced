@@ -657,7 +657,7 @@ with gr.Blocks(title="QVillage - AI Research Hub (Free Tier)") as demo:
         # Tab 2: Search KB
         with gr.Tab("🔍 Search Knowledge Base"):
             with gr.Row():
-                search_query = gr.Textbox(placeholder="Search...", label="Query")
+                search_query = gr.Textbox(PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)="Search...", label="Query")
                 search_btn = gr.Button("Search")
             kb_output = gr.Markdown()
             

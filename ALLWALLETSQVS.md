@@ -16,7 +16,7 @@ Discovered wallet docs (non-exhaustive)
 - `LEAHWALLET.md` — Leah/Sister wallet guide and UI notes.
 - `QMOI-REVENUE-README.md`, `QMOIREVENUEGENERATION.md`, `QMOIAUTOREVENUEEARN.md` — revenue/autorevenue docs referencing Cashon and wallet flows.
 - `CASHONTRADINGREADME.md`, `TRADINGREADME.md` — trading + wallet integration notes.
-- Various README files reference wallets and payment providers (Mpesa, Pesapal, Binance, Bitget, CashApp). Use the repository-wide placeholder scanner to find more references.
+- Various README files reference wallets and payment providers (Mpesa, Pesapal, Binance, Bitget, CashApp). Use the repository-wide PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanner to find more references.
 
 Location of automated checks
 - Script: `scripts/wallets/check_wallets.py`

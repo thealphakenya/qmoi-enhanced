@@ -11,7 +11,7 @@ Overview
 - `src/wallet.ts` implements a WalletService with a pluggable adapter interface.
 - Adapters:
   - `MockAdapter` — deterministic mock balances for testing.
-  - `TestnetAdapter` — placeholder for real testnet SDK integrations; returns mock if no credentials.
+  - `TestnetAdapter` — PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) for real testnet SDK integrations; returns mock if no credentials.
 
 State
 - The service persists state to `.qmoi_state/wallets.json` by default. Tests use `.qmoi_state_test`.

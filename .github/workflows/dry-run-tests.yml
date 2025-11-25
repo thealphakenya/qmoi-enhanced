@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: npm ci || true
 
-      - name: Run placeholder scanner (dry-run)
+      - name: Run PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanner (dry-run)
         run: python3 scripts/replace_placeholders.py
 
       - name: Run Rust lint/fix scaffold (dry-run)

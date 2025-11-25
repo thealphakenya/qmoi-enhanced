@@ -138,7 +138,7 @@ mv Qmoi_downloaded_apps/qcity_package.zip.bak Qmoi_downloaded_apps/qcity_package
 **Objective**: Ensure users can easily understand and use the release system.
 
 #### 3.1 Update GITHUB_RELEASES_RECENT.md
-Replace placeholder with real release data:
+Replace PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) with real release data:
 ```bash
 # Fetch real recent releases and update the file
 # Option A: Manual update (quick)

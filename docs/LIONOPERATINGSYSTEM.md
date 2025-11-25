@@ -104,7 +104,7 @@ Key components
 --------------
 - lionctl: a lightweight CLI for local interactions and scripted orchestration (dry-run by default).
 - LION agent: a small daemon (optional) that runs on orchestrator hosts and can accept signed jobs.
-- Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and placeholder scanning.
+- Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanning.
 - Payment adapters: adapters that implement a common interface to interact with wallets, payment gateways, and testnets. Implementations should live under `services/payments/` and support sandbox/testnet drivers.
 - Deal service: workflows and templates under `services/deals/` to create, negotiate, and settle agreements. Use escrow patterns where real funds are involved.
 
@@ -137,7 +137,7 @@ Validation & continuous checks
 - Use `scripts/run_validations.py` to orchestrate:
   - Markdown link checks and http->https upgrades where safe
   - Artifact checksum verification against `qcity-artifacts/qmoi_build_report.json`
-  - Placeholder scanning report
+  - PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanning report
 - Integrate Playwright visual regression tests for critical UI components.
 - Add API route verification (OpenAPI or JSON Schema) to ensure `API.md` matches actual endpoints.
 
@@ -206,7 +206,7 @@ Files to add / next tasks
 
 Installer & builds
 - Create CI pipelines that produce cross-platform packages on merge to main.
-- Replace any placeholder links in docs with real download locations for installers (no placeholders in final docs).
+- Replace any PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) links in docs with real download locations for installers (no placeholders in final docs).
 
 Telemetry & logging
 - Standardized structured logging for Lion actions and audit trail of file/permission changes.

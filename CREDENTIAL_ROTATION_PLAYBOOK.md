@@ -7,7 +7,7 @@ Three sensitive credentials have been identified and redacted from the repositor
 2. **Vercel API Token**: `[REDACTED_VERCEL_TOKEN]`
 3. **Ngrok Auth Token**: `[REDACTED_NGROK_TOKEN]`
 
-**CRITICAL**: These tokens have been **removed from the repository** and replaced with placeholder text. However, the tokens may still exist in:
+**CRITICAL**: These tokens have been **removed from the repository** and replaced with PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) text. However, the tokens may still exist in:
 - Git history (commit logs)
 - GitHub Actions logs (if workflows were run)
 - CI/CD system caches
@@ -424,7 +424,7 @@ PATTERNS=(
     "ghp_[a-zA-Z0-9]\{36,\}"           # GitHub PAT
     "vercel_[a-zA-Z0-9_]\{40,\}"        # Vercel token
     "ngrok.*auth.*token"                 # Ngrok auth
-    "REDACTED"                           # Placeholder check
+    "REDACTED"                           # PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) check
 )
 
 FOUND=0

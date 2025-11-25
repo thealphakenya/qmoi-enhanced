@@ -22,7 +22,7 @@ This file lists all QMOI apps and their current release artifacts (auto-updated 
 | qmoi-space| Web (PWA)     | v1.0.0    | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/  | ✅       |
 | qcity     | Web (PWA)     | v1.0.0    | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/pwa/latest/       | ✅       |
 
-> Note: QMOI will attempt to validate every download link before publishing it here and replace broken links with a placeholder and a task for manual review.
+> Note: QMOI will attempt to validate every download link before publishing it here and replace broken links with a PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) and a task for manual review.
 # QMOI AI Apps - All Releases & Versions
 
 This file lists all QMOI AI apps, all platforms, all versions, and their download links. It is auto-updated by QCity runners. All links are autotested and always up-to-date.

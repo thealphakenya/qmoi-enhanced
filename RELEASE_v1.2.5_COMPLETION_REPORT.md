@@ -44,7 +44,7 @@ All remaining verification and release preparation steps have been **successfull
 ### 5. ✅ Release Artifacts Verified
 - All 10 artifacts: checksum verified ✅
 - PWA apps: production-ready ✅
-- Platform binaries: placeholder files (need rebuild)
+- Platform binaries: PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files (need rebuild)
 
 ### 6. ✅ Enhanced CI/CD Workflow
 - File: `.github/workflows/build-and-release.yml`
@@ -63,9 +63,9 @@ All remaining verification and release preparation steps have been **successfull
 |-----------|--------|---------|
 | GitHub Release | ✅ Created | v1.2.5, ID: 262642597 |
 | PWA Apps (6) | ✅ Real & Verified | All deployable |
-| Android APK | ⚠️ Placeholder | Requires rebuild |
-| Windows EXE | ⚠️ Placeholder | Requires rebuild |
-| iOS IPA | ⚠️ Placeholder | Requires rebuild |
+| Android APK | ⚠️ PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) | Requires rebuild |
+| Windows EXE | ⚠️ PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) | Requires rebuild |
+| iOS IPA | ⚠️ PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) | Requires rebuild |
 | Checksums | ✅ All Verified | SHA256SUMS.txt valid |
 | Verification Scripts | ✅ Complete | APK, EXE, IPA |
 | Documentation | ✅ Complete | Guides + status reports |
@@ -80,7 +80,7 @@ All remaining verification and release preparation steps have been **successfull
    - Windows: `./scripts/build-windows-production.sh`
    - iOS: `./scripts/build-apple-production.sh` (macOS only)
 
-2. **Replace Placeholder Files** in GitHub Release
+2. **Replace PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) Files** in GitHub Release
    - Copy rebuilt binaries to v1.2.5_release/
    - Regenerate SHA256SUMS.txt
    - Push tag to trigger release update

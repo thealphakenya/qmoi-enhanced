@@ -9,7 +9,7 @@ qmoi_validation_frontmatter: true
 
 Generated: 2025-10-25T00:00:00Z
 
-Status update (2025-10-25): stub artifacts were created under `downloads/` for Windows/mac/linux/android/ios/chromebook/raspberrypi/smarttv and `/workspaces/qmoi-enhanced/qmoi-enhanced/qcity-artifacts/qmoi_build_report.json` was updated with concrete artifact paths, checksums and sizes. These are small stub files used to remove placeholder references and enable link-validation; CI should replace them with real builds in production.
+Status update (2025-10-25): stub artifacts were created under `downloads/` for Windows/mac/linux/android/ios/chromebook/raspberrypi/smarttv and `/workspaces/qmoi-enhanced/qmoi-enhanced/qcity-artifacts/qmoi_build_report.json` was updated with concrete artifact paths, checksums and sizes. These are small stub files used to remove PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) references and enable link-validation; CI should replace them with real builds in production.
 
 This file summarizes the key remediation actions derived from the repository's automated scans:
 
@@ -28,8 +28,8 @@ Top priorities (automatable first):
    - Many `#anchor` targets in `.md` files are referenced but not present.
    - Action: run a targeted anchor fixer (create missing anchor headings or update links). This is low-risk and can be automated per-file with a PR for each change.
 
-3) Placeholder tokens and TODOs
-   - `docs/placeholders_report.json` contains many `TODO`/`PLACEHOLDER` occurrences across `components/*.tsx`, `next.config.mjs`, and `.md` files.
+3) PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) tokens and TODOs
+   - `docs/placeholders_report.json` contains many `TODO`/`PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)` occurrences across `components/*.tsx`, `next.config.mjs`, and `.md` files.
    - Action: Create targeted issues/PRs for high-priority UI components and apply safe automated replacements for low-risk tokens (script already present: `scripts/scan_replace_placeholders.py`). Backups (.bak) are created on apply.
 
 4) Non-HTTPS links (http://)
@@ -50,7 +50,7 @@ Notes on governance and safety
 
 Next steps (short):
  - Confirm and run the `validate_and_fix_md.py --apply` step (low-risk).
- - Run placeholder scanner and decide whether to apply safe replacements repo-wide (recommend staged PRs for big files).
+ - Run PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanner and decide whether to apply safe replacements repo-wide (recommend staged PRs for big files).
  - Create CI job skeletons for artifact builds and add them as draft workflows.
 
 Reference files:

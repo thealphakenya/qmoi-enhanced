@@ -128,7 +128,7 @@ QMOI can automatically detect the active ngrok URL (when using `scripts/ngrok_ma
 
 ## Link validation and autoupdate guidance
 
-QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The recommended production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a placeholder message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
+QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The recommended production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
 
 How validation works (high level):
 - QMOI runs `scripts/validate_links.py` to find all `http://` and `https://` links in the repo's Markdown files.
