@@ -45,7 +45,7 @@ Status: PLACEHOLDER_FOUND during automated verification.
 
 Suggested next steps:
 
-- Open the file and inspect any placeholder markers (e.g. '[PRODUCTION IMPLEMENTATION REQUIRED]').
+- Open the file and inspect any placeholder markers (e.g. 'TODO_PROD').
 - Replace placeholder with production-ready implementation or confirm that the placeholder is intended and add an explanatory comment.
 - If code changes are required, make small, reviewable commits and include tests where applicable.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file in `donerefs.txt`.

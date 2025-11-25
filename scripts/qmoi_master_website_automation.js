@@ -26,7 +26,7 @@ function isMasterUser() {
   return MASTER_USERS.includes(user);
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Integrate with domain registrar API ---
+// --- PROD_REQUIRED: Integrate with domain registrar API (not implemented in this environment) ---
 async function registerDomain(domain) {
   logAction(`Registering domain: ${domain}`);
   // Implementation: Register domain via Cloudflare API
@@ -88,7 +88,7 @@ async function auditAndEnhanceSite(projectDir) {
     security: 'pass',
     issues: []
   };
-  // Auto-enhancement logic ([PRODUCTION IMPLEMENTATION REQUIRED])
+  // Auto-enhancement logic (placeholder - not enabled in this environment)
   if (auditResults.issues.length > 0) {
     logAction(`[Enhance] Auto-fixing issues: ${JSON.stringify(auditResults.issues)}`);
     // TODO: Implement real auto-fix logic
@@ -98,7 +98,7 @@ async function auditAndEnhanceSite(projectDir) {
   return auditResults;
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Deploy to cloud provider ---
+// --- PROD_REQUIRED: Deploy to cloud provider (placeholder) ---
 async function deployWebsite(projectDir, provider = 'local') {
   logAction(`Deploying website from ${projectDir} to provider: ${provider}`); 
   // Implementation: Deploy based on provider
@@ -107,7 +107,7 @@ async function deployWebsite(projectDir, provider = 'local') {
   return { success: true, url: `https://example.com/${path.basename(projectDir)}` };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Server provisioning (cloud API) ---
+// --- PROD_REQUIRED: Server provisioning (cloud API placeholder) ---
 async function provisionServer(projectName, provider = 'aws') {
   logAction(`Provisioning server for ${projectName} on provider: ${provider}`);
   // Implementation: Provision server based on provider
@@ -116,7 +116,7 @@ async function provisionServer(projectName, provider = 'aws') {
   return { success: true, server: `${provider}-server-for-${projectName}` };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: SSL/HTTPS automation ---
+// --- PROD_REQUIRED: SSL/HTTPS automation (placeholder) ---
 async function provisionSSL(domain) {
   logAction(`Provisioning SSL certificate for ${domain}`);
   // Implementation: Let's Encrypt via Certbot
@@ -129,7 +129,7 @@ async function provisionSSL(domain) {
   return { success: true, ssl: `SSL-for-${domain}` };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Domain availability search & purchase ---
+// --- PROD_REQUIRED: Domain availability search & purchase (placeholder) ---
 async function searchAndPurchaseDomain(domain) {
   logAction(`Searching and purchasing domain: ${domain}`);
   // Implementation: Check domain availability and purchase via Cloudflare
@@ -147,7 +147,7 @@ async function searchAndPurchaseDomain(domain) {
   return { success: true, domain };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: DNS management ---
+// --- PROD_REQUIRED: DNS management (placeholder) ---
 async function manageDNS(domain, records = []) {
   logAction(`Managing DNS for ${domain} with records: ${JSON.stringify(records)}`);
   // Implementation: Configure DNS via Cloudflare API
@@ -161,7 +161,7 @@ async function manageDNS(domain, records = []) {
   return { success: true };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: SEO/search engine submission ---
+// --- PROD_REQUIRED: SEO/search engine submission (placeholder) ---
 async function submitToSearchEngines(domain) {
   logAction(`Submitting ${domain} to search engines`);
   // Implementation: Submit to search engines
@@ -176,7 +176,7 @@ async function submitToSearchEngines(domain) {
   return { success: true };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Content syndication ---
+// --- PROD_REQUIRED: Content syndication (placeholder) ---
 async function syndicateContent(projectName, platforms = ['medium', 'substack']) {
   logAction(`Syndicating content for ${projectName} to platforms: ${platforms.join(', ')}`);
   // Implementation: Content syndication APIs
@@ -196,7 +196,7 @@ async function syndicateContent(projectName, platforms = ['medium', 'substack'])
   return { success: true };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Social/platform integration ---
+// --- PROD_REQUIRED: Social/platform integration (placeholder) ---
 async function createSocialProfiles(projectName, platforms = ['twitter', 'facebook', 'linkedin']) {
   logAction(`Creating social profiles for ${projectName} on: ${platforms.join(', ')}`);
   // Implementation: Social media profile creation
@@ -216,7 +216,7 @@ async function createSocialProfiles(projectName, platforms = ['twitter', 'facebo
   return { success: true };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Analytics integration ---
+// --- PROD_REQUIRED: Analytics integration (placeholder) ---
 async function integrateAnalytics(projectDir, tools = ['google-analytics']) {
   logAction(`Integrating analytics (${tools.join(', ')}) for ${projectDir}`);
   // Implementation: Analytics integration
@@ -239,12 +239,12 @@ const PROVIDERS = {
   aws: {
     name: 'AWS',
     provisionServer: async (projectName) => {
-      logAction(`[AWS] Provisioning server for ${projectName} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+      logAction(`[AWS] Provisioning server for ${projectName} (placeholder)`);
       // TODO: Real AWS integration
       return { success: true, server: `aws-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
-      logAction(`[AWS] Deploying website from ${projectDir} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+      logAction(`[AWS] Deploying website from ${projectDir} (placeholder)`);
       // TODO: Real AWS deployment
       return { success: true, url: `https://aws.example.com/${path.basename(projectDir)}` };
     }
@@ -252,12 +252,12 @@ const PROVIDERS = {
   vercel: {
     name: 'Vercel',
     provisionServer: async (projectName) => {
-      logAction(`[Vercel] Provisioning server for ${projectName} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+      logAction(`[Vercel] Provisioning server for ${projectName} (placeholder)`);
       // TODO: Real Vercel integration
       return { success: true, server: `vercel-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
-      logAction(`[Vercel] Deploying website from ${projectDir} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+      logAction(`[Vercel] Deploying website from ${projectDir} (placeholder)`);
       // TODO: Real Vercel deployment
       const url = `https://vercel.app/${path.basename(projectDir)}`;
       try {
@@ -278,22 +278,22 @@ function selectProvider(preferred) {
 
 // --- ASSET LIFECYCLE MANAGEMENT ---
 async function updateAsset(assetId) {
-  logAction(`Updating asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Updating asset ${assetId} (placeholder)`);
   // TODO: Implement update logic
   return { success: true };
 }
 async function migrateAsset(assetId, toProvider) {
-  logAction(`Migrating asset ${assetId} to ${toProvider} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Migrating asset ${assetId} to ${toProvider} (placeholder)`);
   // TODO: Implement migration logic
   return { success: true };
 }
 async function backupAsset(assetId) {
-  logAction(`Backing up asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Backing up asset ${assetId} (placeholder)`);
   // TODO: Implement backup logic
   return { success: true };
 }
 async function retireAsset(assetId) {
-  logAction(`Retiring asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Retiring asset ${assetId} (placeholder)`);
   // TODO: Implement retire logic
   return { success: true };
 }
@@ -305,7 +305,7 @@ async function autoFixError(context, error) {
   for (let attempt = 1; attempt <= 3; attempt++) {
     logAction(`[AutoFix] Attempt ${attempt} to fix error in context: ${context}`);
     try {
-      // [PRODUCTION IMPLEMENTATION REQUIRED]: try a generic fix (e.g., retry, reset, switch provider)
+      // PROD_REQUIRED: try a generic fix (e.g., retry, reset, switch provider) - placeholder
       // TODO: Implement context-specific fix strategies
       if (attempt === 3) throw new Error('Max attempts reached');
       // Simulate fix success on 2nd attempt
@@ -317,9 +317,9 @@ async function autoFixError(context, error) {
       logAction(`[AutoFix] Attempt ${attempt} failed: ${fixErr}`);
     }
   }
-  // Root cause analysis [PRODUCTION IMPLEMENTATION REQUIRED]
-  logAction(`[AutoFix] Root cause analysis for context: ${context} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
-  // Continuous learning [PRODUCTION IMPLEMENTATION REQUIRED]
+  // Root cause analysis (placeholder)
+  logAction(`[AutoFix] Root cause analysis for context: ${context} (placeholder)`);
+  // Continuous learning (placeholder)
   logAction(`[AutoFix] Logging error for future learning: ${error}`);
   return { fixed: false };
 }

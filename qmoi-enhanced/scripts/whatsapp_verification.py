@@ -4,7 +4,7 @@ import logging
 import os
 
 MASTER_PHONE = '+254700000000'
-WHATSAPP_API_KEY = os.getenv('WHATSAPP_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]-key')
+WHATSAPP_API_KEY = os.getenv('WHATSAPP_API_KEY', 'TODO_PROD-key')
 
 logging.basicConfig(filename='logs/whatsapp_verification.log', level=logging.INFO)
 

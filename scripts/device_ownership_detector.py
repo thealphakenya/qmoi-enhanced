@@ -479,7 +479,7 @@ class DeviceOwnershipDetector:
         """Check for SIM lock"""
         try:
             # This would require platform-specific implementation
-            # For now, return False as [PRODUCTION IMPLEMENTATION REQUIRED]
+            # For now, return False as TODO_PROD
             return False
         except Exception as e:
             logger.error(f"Error checking SIM lock: {e}")

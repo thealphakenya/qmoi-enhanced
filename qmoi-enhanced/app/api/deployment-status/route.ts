@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
-  // [PRODUCTION IMPLEMENTATION REQUIRED] deployment status data
+  // TODO_PROD deployment status data
   return NextResponse.json({
     status: 'Healthy',
     lastDeploy: '2025-10-04T18:00:00Z',

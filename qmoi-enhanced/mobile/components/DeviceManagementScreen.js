@@ -323,7 +323,7 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newDevice.name}
               onChangeText={(text) => setNewDevice({ ...newDevice, name: text })}
-              [PRODUCTION IMPLEMENTATION REQUIRED]="Enter device name"
+              TODO_PROD="Enter device name"
             />
 
             <Text style={styles.inputLabel}>Device Type</Text>
@@ -353,7 +353,7 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newDevice.ip}
               onChangeText={(text) => setNewDevice({ ...newDevice, ip: text })}
-              [PRODUCTION IMPLEMENTATION REQUIRED]="192.168.1.100"
+              TODO_PROD="192.168.1.100"
               keyboardType="numeric"
             />
 
@@ -362,7 +362,7 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newDevice.port}
               onChangeText={(text) => setNewDevice({ ...newDevice, port: text })}
-              [PRODUCTION IMPLEMENTATION REQUIRED]="3000"
+              TODO_PROD="3000"
               keyboardType="numeric"
             />
 
@@ -371,7 +371,7 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={[styles.input, styles.textArea]}
               value={newDevice.description}
               onChangeText={(text) => setNewDevice({ ...newDevice, description: text })}
-              [PRODUCTION IMPLEMENTATION REQUIRED]="Device description"
+              TODO_PROD="Device description"
               multiline
               numberOfLines={3}
             />

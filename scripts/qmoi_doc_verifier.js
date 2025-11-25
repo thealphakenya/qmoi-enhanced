@@ -869,7 +869,7 @@ python scripts/{SCRIPT_NAME}.py
       template = this.getScriptTemplate(); // Default template
     }
     
-    // Replace [PRODUCTION IMPLEMENTATION REQUIRED]s
+    // Replace TODO_PRODs
     const content = template
       .replace(/{API_NAME}/g, feature.name)
       .replace(/{COMPONENT_NAME}/g, feature.name)

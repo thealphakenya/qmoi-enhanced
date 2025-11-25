@@ -111,10 +111,10 @@ def ensure_user_info(user_type, user_info):
             )
     return not missing
 
-# Enhance: Send files between devices via all wireless options ([PRODUCTION IMPLEMENTATION REQUIRED])
+# Enhance: Send files between devices via available wireless methods (stub)
 def send_file_between_devices(file_path, to_device, method="auto"):
     # method can be 'wifi', 'bluetooth', 'nfc', etc.
-    # This is a [PRODUCTION IMPLEMENTATION REQUIRED] for actual implementation
+    # This function is a stub for the actual implementation
     print(f"Sending {file_path} to {to_device} via {method}")
     # TODO: Integrate with device APIs
     return True

@@ -13,26 +13,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { action } = body;
       switch (action) {
         case 'translate':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle translation
-          return res.status(200).json({ result: 'Translation result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: handle translation
+          return res.status(200).json({ result: 'Translation result (TODO_PROD)' });
         case 'speech-to-text':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle STT
-          return res.status(200).json({ result: 'Speech-to-text result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: handle STT
+          return res.status(200).json({ result: 'Speech-to-text result (TODO_PROD)' });
         case 'text-to-speech':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle TTS
-          return res.status(200).json({ result: 'Text-to-speech result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: handle TTS
+          return res.status(200).json({ result: 'Text-to-speech result (TODO_PROD)' });
         case 'language-detect':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language detection
-          return res.status(200).json({ result: 'Language detection result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: handle language detection
+          return res.status(200).json({ result: 'Language detection result (TODO_PROD)' });
         case 'lesson':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language lesson
-          return res.status(200).json({ result: 'Lesson result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: handle language lesson
+          return res.status(200).json({ result: 'Lesson result (TODO_PROD)' });
         case 'quiz':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language quiz
-          return res.status(200).json({ result: 'Quiz result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: handle language quiz
+          return res.status(200).json({ result: 'Quiz result (TODO_PROD)' });
         case 'pronunciation-check':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle pronunciation check
-          return res.status(200).json({ result: 'Pronunciation check result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: handle pronunciation check
+          return res.status(200).json({ result: 'Pronunciation check result (TODO_PROD)' });
         default:
           return res.status(400).json({ error: 'Unknown action' });
       }

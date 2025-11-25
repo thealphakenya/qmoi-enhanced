@@ -51,7 +51,7 @@ export function runSecurityCheck() {
 
 export function showDecoyInfo() {
   return {
-    message: 'This is a [PRODUCTION IMPLEMENTATION REQUIRED] version. For full access, contact the QMOI team.',
+    message: 'This is a demo/trial version. For full access, contact the QMOI team.',
     features: [],
     warning: 'Unauthorized copy or tampering detected. Core features are disabled.'
   };

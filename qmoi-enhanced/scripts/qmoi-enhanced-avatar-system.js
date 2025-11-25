@@ -546,7 +546,7 @@ class QMOIEnhancedAvatarSystem {
     };
   }
 
-  // [PRODUCTION IMPLEMENTATION REQUIRED] methods for rendering (would be implemented with actual graphics engine)
+  // TODO_PROD methods for rendering (would be implemented with actual graphics engine)
   applyFacialExpression(expression) {
     // Apply facial expression to avatar
   }

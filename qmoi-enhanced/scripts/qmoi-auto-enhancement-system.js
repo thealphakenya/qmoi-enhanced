@@ -694,7 +694,7 @@ class QMOIAutoEnhancementSystem {
     return Math.random();
   }
 
-  // [PRODUCTION IMPLEMENTATION REQUIRED] methods for various optimizations
+  // TODO_PROD methods for various optimizations
   async applyCodeOptimization(optimization) {
     await new Promise(resolve => setTimeout(resolve, 100));
   }

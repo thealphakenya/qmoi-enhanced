@@ -11,7 +11,7 @@ This script performs an inventory of the repository, writes:
 
 Behavior is conservative and idempotent. It does NOT modify source files.
 It considers a file "done" only if it contains none of the original placeholder patterns
-such as '[PRODUCTION IMPLEMENTATION REQUIRED]' or 'PRODUCTION_IMPLEMENTATION_REQUIRED'.
+such as 'TODO_PROD' or 'PRODUCTION_IMPLEMENTATION_REQUIRED'.
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
 """
@@ -147,7 +147,7 @@ This script performs an inventory of the repository, writes:
 
 Behavior is conservative and idempotent. It does NOT modify source files.
 It considers a file "done" only if it contains none of the original placeholder patterns
-such as '[PRODUCTION IMPLEMENTATION REQUIRED]' or 'PRODUCTION_IMPLEMENTATION_REQUIRED'.
+such as 'TODO_PROD' or 'PRODUCTION_IMPLEMENTATION_REQUIRED'.
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
 """

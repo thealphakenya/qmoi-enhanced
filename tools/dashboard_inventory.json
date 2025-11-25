@@ -20,7 +20,7 @@
       "type": "flask-dashboard-server",
       "expects": ["logs/qmoi-master-automation.log", "logs/master-automation-report.json"],
       "runtime": ["Python 3.x, Flask, requests"],
-      "notes": "Contains placeholders: [PRODUCTION IMPLEMENTATION REQUIRED]. Reads logs under logs/ and serves JSON endpoints."
+      "notes": "Contains placeholders: TODO_PROD. Reads logs under logs/ and serves JSON endpoints."
     },
     {
       "path": "qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py",

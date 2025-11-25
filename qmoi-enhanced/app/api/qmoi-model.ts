@@ -198,7 +198,7 @@ async function restoreModelFromHuggingFace(modelPath: string, repoId: string, to
   });
 }
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] for advanced AI/ML tasks (to be implemented)
+// TODO_PROD for advanced AI/ML tasks (to be implemented)
 async function runAdvancedAIGeneration(type: string, params: Record<string, unknown>) {
   // Call Python script for heavy AI/ML tasks
   return new Promise((resolve, reject) => {

@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     const datasets = searchParams.get('datasets');
 
     if (allStats) {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] AI tasks - replace with actual implementation
+      // TODO_PROD AI tasks - replace with actual implementation
   const tasks: AITask[] = [
         {
           id: '1',
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
     const { enhance, desc } = body;
 
     if (enhance) {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] enhancement process - replace with actual implementation
+      // TODO_PROD enhancement process - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate enhancement time
 
       return NextResponse.json({

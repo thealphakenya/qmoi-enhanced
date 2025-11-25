@@ -25,7 +25,7 @@ const DividendDistributionSchema = z.object({
   })),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] database
+// TODO_PROD database
 const megavaultData = {
   currentBalance: 1000000, // 1M starting balance
   totalInflow: 1500000,

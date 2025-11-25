@@ -483,8 +483,8 @@ class QMOIEnvironmentSetup {
         'is-my-json-valid': '^2.20.6',
         'jsonschema': '^1.4.1',
         'json-schema-validator': '^1.0.0',
-        'json-schema-[PRODUCTION IMPLEMENTATION REQUIRED]r': '^0.5.0',
-        '[PRODUCTION IMPLEMENTATION REQUIRED]r': '^6.6.6',
+        'json-schema-TODO_PRODr': '^0.5.0',
+        'TODO_PRODr': '^6.6.6',
         'chance': '^1.1.11',
         'casual': '^1.6.2',
         'random-js': '^2.1.0',
@@ -538,7 +538,7 @@ class QMOIEnvironmentSetup {
         'random-org-name': '^1.0.0'
       },
       devDependencies: {
-        'no[PRODUCTION IMPLEMENTATION REQUIRED]n': '^3.0.1',
+        'noTODO_PRODn': '^3.0.1',
         'jest': '^29.6.4',
         'supertest': '^6.3.3',
         'eslint': '^8.48.0',

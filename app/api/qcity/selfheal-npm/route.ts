@@ -4,7 +4,7 @@ import { spawn } from 'child_process';
 import os from 'os';
 import fs from 'fs';
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] for JWT verification (replace with your actual logic)
+// Simple JWT verification stub (replace with secure verification in production)
 function verifyJWT(token: string): { valid: boolean; role?: string; } {
   try {
     const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());

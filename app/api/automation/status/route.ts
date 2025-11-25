@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   try {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] automation status - replace with real implementation later
+    // Stub automation status (replace with real implementation and persistence in production)
     const status = {
       isEnabled: true,
       tasks: [

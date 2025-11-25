@@ -37,7 +37,7 @@ export async function GET(request: NextRequest) {
     const active = searchParams.get('active');
 
     if (stats) {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] trading statistics - replace with actual implementation
+      // TODO_PROD trading statistics - replace with actual implementation
   const statsData: TradingStats = {
         totalTrades: 150,
         successfulTrades: 98,
@@ -71,7 +71,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (history) {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] trade history - replace with actual implementation
+      // TODO_PROD trade history - replace with actual implementation
   const historyData: Trade[] = [
         {
           id: 'T123',
@@ -99,7 +99,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (active) {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] active trades - replace with actual implementation
+      // TODO_PROD active trades - replace with actual implementation
   const activeData: Trade[] = [
         {
           id: 'T125',
@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ status: 'proposed', message: 'Trade execution proposed (dry-run)' });
       }
 
-      // [PRODUCTION IMPLEMENTATION REQUIRED] trade execution - replace with actual implementation
+      // TODO_PROD trade execution - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate trade execution time
 
       const tradeData: Trade = {
@@ -159,7 +159,7 @@ export async function POST(request: NextRequest) {
         price: trade.price,
         timestamp: new Date().toISOString(),
         status: 'completed',
-        profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // [PRODUCTION IMPLEMENTATION REQUIRED] profit calculation
+        profit: trade.type === 'buy' ? trade.amount * 100 : -trade.amount * 50 // TODO_PROD profit calculation
       };
 
       return NextResponse.json({ status: 'success', message: 'Trade executed successfully', trade: tradeData });
@@ -173,7 +173,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ status: 'proposed', message: 'Cancel trade proposed (dry-run)' });
       }
 
-      // [PRODUCTION IMPLEMENTATION REQUIRED] trade cancellation - replace with actual implementation
+      // TODO_PROD trade cancellation - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate cancellation time
 
       return NextResponse.json({ status: 'success', message: 'Trade cancelled successfully', tradeId: trade.id });

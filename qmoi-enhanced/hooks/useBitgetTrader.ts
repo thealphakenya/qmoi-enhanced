@@ -1,7 +1,7 @@
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { useState } from 'react';
 
-// Simulated Bitget trading hook for [PRODUCTION IMPLEMENTATION REQUIRED]/production
+// Simulated Bitget trading hook for TODO_PROD/production
 export function useBitgetTrader() {
   const [bitgetStatus, setBitgetStatus] = useState<'connected'|'disconnected'|'error'>('connected');
   const [isRealTradingEnabled, setIsRealTradingEnabled] = useState(false);

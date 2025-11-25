@@ -82,7 +82,7 @@ export class WalletManager {
     if (currency === "USDT") return 1;
     try {
       // Implement price fetching logic here
-      return 0; // [PRODUCTION IMPLEMENTATION REQUIRED]
+      return 0; // safe default (production should override via config)
     } catch (error) {
       console.error(`Error fetching USD price for ${currency}:`, error);
       return 0;

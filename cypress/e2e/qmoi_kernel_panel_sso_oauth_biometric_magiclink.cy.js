@@ -3,8 +3,8 @@
 
 describe('QMOI Kernel Panel SSO/OAuth E2E - Biometric & Magic Link', () => {
   it('allows login via biometric SSO', () => {
-    cy.visit('/auth/callback?provider=biometric&token=biometric-[PRODUCTION IMPLEMENTATION REQUIRED]-token&biometric=true');
-    cy.setCookie('authToken', 'biometric-[PRODUCTION IMPLEMENTATION REQUIRED]-token');
+    cy.visit('/auth/callback?provider=biometric&token=biometric-test-token&biometric=true');
+    cy.setCookie('authToken', 'biometric-test-token');
     cy.setCookie('biometric', 'true');
     cy.visit('/qcity/kernel');
     cy.contains('QMOI Kernel Control Panel').should('exist');
@@ -12,8 +12,8 @@ describe('QMOI Kernel Panel SSO/OAuth E2E - Biometric & Magic Link', () => {
   });
 
   it('allows login via magic link', () => {
-    cy.visit('/auth/callback?provider=magiclink&token=magiclink-[PRODUCTION IMPLEMENTATION REQUIRED]-token&email=user@example.com');
-    cy.setCookie('authToken', 'magiclink-[PRODUCTION IMPLEMENTATION REQUIRED]-token');
+    cy.visit('/auth/callback?provider=magiclink&token=magiclink-test-token&email=user@example.com');
+    cy.setCookie('authToken', 'magiclink-test-token');
     cy.setCookie('email', 'user@example.com');
     cy.visit('/qcity/kernel');
     cy.contains('QMOI Kernel Control Panel').should('exist');

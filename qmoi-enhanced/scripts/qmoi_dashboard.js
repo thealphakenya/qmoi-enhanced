@@ -21,7 +21,7 @@ function requireAuth(req, res, next) {
   if (req.path === '/health') return next();
   if (req.session && req.session.authenticated) return next();
   if (req.method === 'POST' && req.path === '/login') return next();
-  res.send(`<form method="POST" action="/login"><h2>QMOI Dashboard Login</h2><input name="user" [PRODUCTION IMPLEMENTATION REQUIRED]="Username"/><br/><input name="pass" type="password" [PRODUCTION IMPLEMENTATION REQUIRED]="Password"/><br/><button type="submit">Login</button></form>`);
+  res.send(`<form method="POST" action="/login"><h2>QMOI Dashboard Login</h2><input name="user" TODO_PROD="Username"/><br/><input name="pass" type="password" TODO_PROD="Password"/><br/><button type="submit">Login</button></form>`);
 }
 
 app.use(requireAuth);

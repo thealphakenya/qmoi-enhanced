@@ -38,18 +38,18 @@ def auto_lint_fix(target, autofix=False):
         print(f"File size: {size} bytes")
         # Log parallel operation
         parallel_log.append(f"Checked {target} for lint/build/install at {size} bytes.")
-        # Prevent [PRODUCTION IMPLEMENTATION REQUIRED] files from passing
+        # Prevent TODO_PROD files from passing
         with open(target, 'rb') as f:
             content_bytes = f.read(1024)
-        if b'[PRODUCTION IMPLEMENTATION REQUIRED] build' in content_bytes:
-            print(f"Error: {target} is a [PRODUCTION IMPLEMENTATION REQUIRED] file. Automatically selecting best build strategy...")
+        if b'TODO_PROD build' in content_bytes:
+            print(f"Error: {target} is a TODO_PROD file. Automatically selecting best build strategy...")
             errors_found = True
             error_stats["errors"] += 1
             error_stats["targets"].append(target)
             # Auto-select and run best build tool for platform
             build_cmd = None
             build_dir = os.path.dirname(target)
-            parallel_log.append(f"[PRODUCTION IMPLEMENTATION REQUIRED] detected for {target}, triggering auto-build.")
+            parallel_log.append(f"TODO_PROD detected for {target}, triggering auto-build.")
             if target.endswith('.exe'):
                 build_cmd = ['npm', 'run', 'electron:build:win']
                 print("[AUTO] Building Windows .exe using Electron Builder...")
@@ -117,9 +117,9 @@ def auto_lint_fix(target, autofix=False):
     # Simulate build/install autotest for app binaries
     if target.endswith(('.exe', '.apk', '.dmg', '.AppImage', '.ipa', '.zip', '.deb', '.img')):
         print(f"Running install autotest for {target}...")
-        # Simulate install test: check permissions, file type, and [PRODUCTION IMPLEMENTATION REQUIRED] install
+        # Simulate install test: check permissions, file type, and TODO_PROD install
         if size < 1024 or errors_found:
-            print(f"Install test failed: {target} is too small or is a [PRODUCTION IMPLEMENTATION REQUIRED].")
+            print(f"Install test failed: {target} is too small or is a TODO_PROD.")
             errors_found = True
             error_stats["errors"] += 1
             error_stats["targets"].append(target)

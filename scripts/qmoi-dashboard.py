@@ -49,7 +49,7 @@ def index():
         <div class="log">
             <h2>Live Log (last 100 lines)</h2>
             <div class="search-bar">
-                <input type="text" id="logSearch" [PRODUCTION IMPLEMENTATION REQUIRED]="Search logs..." oninput="filterLogs()" style="width: 60%; padding: 0.5em;">
+                <input type="text" id="logSearch" TODO_PROD="Search logs..." oninput="filterLogs()" style="width: 60%; padding: 0.5em;">
             </div>
             <pre id="log">{{ log }}</pre>
         </div>
@@ -183,12 +183,12 @@ def api_doc_history():
 
 @app.route('/api/notifications')
 def api_notifications():
-    # [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with notification logs/status
+    # TODO_PROD: integrate with notification logs/status
     return jsonify({'notifications': 'Gmail and multi-channel notification status will appear here.'})
 
 @app.route('/api/notifications/test', methods=['POST'])
 def api_notifications_test():
-    # [PRODUCTION IMPLEMENTATION REQUIRED]: trigger a test notification (integrate with QMOI notification system)
+    # TODO_PROD: trigger a test notification (integrate with QMOI notification system)
     return jsonify({'result': 'Test notification sent (simulated).'})
 
 @app.route('/api/event-stats')

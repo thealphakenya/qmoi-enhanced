@@ -39,7 +39,7 @@ async function bitgetRequest(method: string, path: string, bodyObj: Record<strin
   return await res.json();
 }
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] confidence calculation (replace with real AI logic)
+// Confidence calculation (stub - replace with real AI confidence model in production)
 const confidence = 0.82;
 
 // In-memory log for master
@@ -143,7 +143,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(200).json([]);
       }
     } else if (req.method === 'POST') {
-      // Simulate a trade (for [PRODUCTION IMPLEMENTATION REQUIRED]/testing)
+      // Simulate a trade (for testing)
       const now = Date.now();
       const trade = {
         id: Math.random().toString(36).slice(2),

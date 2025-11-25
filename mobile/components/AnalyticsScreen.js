@@ -46,7 +46,7 @@ const AnalyticsScreen = ({ userRole }) => {
       
     } catch (error) {
       console.error('Error loading analytics:', error);
-      // Set default data for [PRODUCTION IMPLEMENTATION REQUIRED]
+      // Set default data for TODO_PROD
       setAnalytics([
         {
           date: '2024-01-15',

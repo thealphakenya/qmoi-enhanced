@@ -13,7 +13,7 @@ Summary
 
 Why these files were removed
 
-These files were previously marked as "done" (no placeholders) by the workspace audit but, upon re-check, were found to still contain placeholder markers such as "[PRODUCTION IMPLEMENTATION REQUIRED]". They must be reviewed before being re-added to `donerefs.txt`.
+These files were previously marked as "done" (no placeholders) by the workspace audit but, upon re-check, were found to still contain placeholder markers such as "TODO_PROD". They must be reviewed before being re-added to `donerefs.txt`.
 
 Next actions (recommended)
 

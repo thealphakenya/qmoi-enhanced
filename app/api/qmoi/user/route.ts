@@ -8,21 +8,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { method, body } = req;
   switch (method) {
     case 'GET': {
-      // [PRODUCTION IMPLEMENTATION REQUIRED]: get user profile and relationship insights
-      return res.status(200).json({ result: 'User profile and relationship insights ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+      // Return user profile (stub). Replace with DB-backed profile retrieval in production.
+      return res.status(200).json({ result: 'User profile and relationship insights (stub)' });
     }
     case 'POST': {
       const { action } = body;
       switch (action) {
         case 'set-profile':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: set user profile
-          return res.status(200).json({ result: 'Set profile result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: accept and echo profile changes (persist in DB in production)
+          return res.status(200).json({ result: 'Profile updated (stub)' });
         case 'set-preferences':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: set user preferences
-          return res.status(200).json({ result: 'Set preferences result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: accept preferences update
+          return res.status(200).json({ result: 'Preferences updated (stub)' });
         case 'set-learning-goals':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: set learning goals
-          return res.status(200).json({ result: 'Set learning goals result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: set learning goals
+          return res.status(200).json({ result: 'Learning goals set (stub)' });
         default:
           return res.status(400).json({ error: 'Unknown action' });
       }

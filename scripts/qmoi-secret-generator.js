@@ -12,7 +12,7 @@ let envContent = '';
 let generated = [];
 
 function isWeakSecret(value) {
-  return !value || value.length < 16 || value === 'changeme' || value === '[PRODUCTION IMPLEMENTATION REQUIRED]-key';
+  return !value || value.length < 16 || value === 'changeme' || value === 'TODO_PROD-key';
 }
 
 Object.entries(envVars).forEach(([key, { default: def, description }]) => {

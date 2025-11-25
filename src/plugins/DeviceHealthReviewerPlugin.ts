@@ -11,7 +11,7 @@ export const DeviceHealthReviewerPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] stats for [PRODUCTION IMPLEMENTATION REQUIRED]nstration
+    // Demo stats for demonstration (placeholder)
     const stats = {
       cpu: 72.5,
       memory: 68.2,

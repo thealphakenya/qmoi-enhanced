@@ -236,9 +236,9 @@ class QMOIEnhancementNotifier:
             return False
         
         try:
-            # This is a [PRODUCTION IMPLEMENTATION REQUIRED] for WhatsApp Business API
+            # This is a TODO_PROD for WhatsApp Business API
             # You would need to implement the actual WhatsApp API integration
-            logger.info(f"WhatsApp notification ([PRODUCTION IMPLEMENTATION REQUIRED]): {message}")
+            logger.info(f"WhatsApp notification (TODO_PROD): {message}")
             return True
             
         except Exception as e:

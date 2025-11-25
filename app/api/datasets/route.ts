@@ -59,8 +59,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] response for now - replace with actual implementation
-    const [PRODUCTION IMPLEMENTATION REQUIRED]Dataset = {
+    // Stub dataset creation response - replace with actual implementation
+    const dataset = {
       id: Math.random().toString(36).substring(7),
       name,
       description: description || '',
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
     // 3. Initialize storage
     // 4. Return the created dataset
 
-    return NextResponse.json([PRODUCTION IMPLEMENTATION REQUIRED]Dataset);
+    return NextResponse.json(dataset);
   } catch (error) {
     console.error('Error in dataset creation endpoint:', error);
     return NextResponse.json(

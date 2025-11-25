@@ -41,12 +41,12 @@ class QMOIPlatformManager:
         logger.info(f"{action}: {status} - {details}")
 
     def check_permissions(self, platform):
-        # [PRODUCTION IMPLEMENTATION REQUIRED]: check permissions for each platform
+        # TODO_PROD: check permissions for each platform
         self.log_action(f'Check Permissions ({platform})', 'success', 'Permissions verified')
         return True
 
     def sync_platform(self, platform):
-        # [PRODUCTION IMPLEMENTATION REQUIRED]: sync logic for each platform
+        # TODO_PROD: sync logic for each platform
         self.log_action(f'Sync ({platform})', 'success', 'Sync completed')
         return True
 

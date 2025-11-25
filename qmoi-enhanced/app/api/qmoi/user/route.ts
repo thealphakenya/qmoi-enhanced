@@ -8,21 +8,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { method, body } = req;
   switch (method) {
     case 'GET': {
-      // [PRODUCTION IMPLEMENTATION REQUIRED]: get user profile and relationship insights
-      return res.status(200).json({ result: 'User profile and relationship insights ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+      // TODO_PROD: get user profile and relationship insights
+      return res.status(200).json({ result: 'User profile and relationship insights (TODO_PROD)' });
     }
     case 'POST': {
       const { action } = body;
       switch (action) {
         case 'set-profile':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: set user profile
-          return res.status(200).json({ result: 'Set profile result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: set user profile
+          return res.status(200).json({ result: 'Set profile result (TODO_PROD)' });
         case 'set-preferences':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: set user preferences
-          return res.status(200).json({ result: 'Set preferences result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: set user preferences
+          return res.status(200).json({ result: 'Set preferences result (TODO_PROD)' });
         case 'set-learning-goals':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: set learning goals
-          return res.status(200).json({ result: 'Set learning goals result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // TODO_PROD: set learning goals
+          return res.status(200).json({ result: 'Set learning goals result (TODO_PROD)' });
         default:
           return res.status(400).json({ error: 'Unknown action' });
       }

@@ -23,7 +23,7 @@ class PredictionResponse(BaseModel):
     confidence: float
     details: Dict[str, Any]
 
-# Simple feature extraction for [PRODUCTION IMPLEMENTATION REQUIRED]
+# Simple feature extraction for TODO_PROD
 ERROR_TYPE_MAP = {}
 FILE_MAP = {}
 

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] data for now - replace with actual implementation
+    // TODO_PROD data for now - replace with actual implementation
   const status = {
       tasks: [
         {

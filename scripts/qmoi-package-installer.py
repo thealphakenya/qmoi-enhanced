@@ -12,21 +12,21 @@ def make_zip():
     return zip_name
 
 def make_windows_exe():
-    # [PRODUCTION IMPLEMENTATION REQUIRED]: Use PyInstaller or similar for real .exe
+    # TODO_PROD: Use PyInstaller or similar for real .exe
     exe_name = 'qmoi-ai.exe'
-    log_activity('Packaging app as Windows .exe installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+    log_activity('Packaging app as Windows .exe installer (TODO_PROD).')
     # Actual implementation would use PyInstaller or NSIS
     return exe_name
 
 def make_mac_dmg():
     dmg_name = 'QMOI-App.dmg'
-    log_activity('Packaging app as Mac .dmg installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+    log_activity('Packaging app as Mac .dmg installer (TODO_PROD).')
     # Actual implementation would use create-dmg or similar
     return dmg_name
 
 def make_linux_appimage():
     appimage_name = 'QMOI-App.AppImage'
-    log_activity('Packaging app as Linux AppImage installer ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+    log_activity('Packaging app as Linux AppImage installer (TODO_PROD).')
     # Actual implementation would use appimagetool
     return appimage_name
 
@@ -52,8 +52,8 @@ def upload_to_host(file_path):
     link = upload_to_gdrive(file_path)
     if link:
         return link
-    # [PRODUCTION IMPLEMENTATION REQUIRED] fallback
-    log_activity(f'Uploading {file_path} to file host ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+    # TODO_PROD fallback
+    log_activity(f'Uploading {file_path} to file host (TODO_PROD).')
     return f'https://your-file-host.com/download/{os.path.basename(file_path)}'
 
 def main():

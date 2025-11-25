@@ -314,7 +314,7 @@ console.log(usedVariable);
   async setupCloudUnavailable() {
     console.log('  ☁️ Setting up Cloud Resource Unavailable test...');
     // Simulate a scenario where a cloud resource (e.g., database, API) is unavailable
-    // This might involve [PRODUCTION IMPLEMENTATION REQUIRED]ing a service or blocking a port
+    // This might involve TODO_PRODing a service or blocking a port
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter

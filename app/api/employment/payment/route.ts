@@ -23,7 +23,7 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] database
+// In-memory payments database (replace with a real persistent DB in production)
 const payments: any[] = [];
 const paymentLogs: any[] = [];
 

@@ -26,9 +26,9 @@ function isMasterUser() {
   return MASTER_USERS.includes(user);
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Integrate with domain registrar API ---
+// --- TODO_PROD: Integrate with domain registrar API ---
 async function registerDomain(domain) {
-  logAction(`Registering domain: ${domain} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Registering domain: ${domain} (TODO_PROD)`);
   // TODO: Integrate with registrar API (e.g., Namecheap, GoDaddy, Cloudflare)
   return { success: true, domain };
 }
@@ -56,9 +56,9 @@ function createWebsite(projectName, template = 'nextjs') {
 
 async function auditAndEnhanceSite(projectDir) {
   logAction(`[Audit] Running accessibility, performance, SEO, and security audits for ${projectDir}`);
-  // Accessibility: axe-core ([PRODUCTION IMPLEMENTATION REQUIRED])
-  // Performance/SEO: Lighthouse ([PRODUCTION IMPLEMENTATION REQUIRED])
-  // Security: npm audit ([PRODUCTION IMPLEMENTATION REQUIRED])
+  // Accessibility: axe-core (TODO_PROD)
+  // Performance/SEO: Lighthouse (TODO_PROD)
+  // Security: npm audit (TODO_PROD)
   // TODO: Integrate real audit tools and parse results
   // Simulate audit results
   const auditResults = {
@@ -68,7 +68,7 @@ async function auditAndEnhanceSite(projectDir) {
     security: 'pass',
     issues: []
   };
-  // Auto-enhancement logic ([PRODUCTION IMPLEMENTATION REQUIRED])
+  // Auto-enhancement logic (TODO_PROD)
   if (auditResults.issues.length > 0) {
     logAction(`[Enhance] Auto-fixing issues: ${JSON.stringify(auditResults.issues)}`);
     // TODO: Implement real auto-fix logic
@@ -78,65 +78,65 @@ async function auditAndEnhanceSite(projectDir) {
   return auditResults;
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Deploy to cloud provider ---
+// --- TODO_PROD: Deploy to cloud provider ---
 async function deployWebsite(projectDir, provider = 'local') {
   logAction(`Deploying website from ${projectDir} to provider: ${provider}`);
   // TODO: Integrate with AWS, Azure, GCP, Vercel, Netlify, etc.
   return { success: true, url: `https://example.com/${path.basename(projectDir)}` };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Server provisioning (cloud API) ---
+// --- TODO_PROD: Server provisioning (cloud API) ---
 async function provisionServer(projectName, provider = 'aws') {
-  logAction(`Provisioning server for ${projectName} on provider: ${provider} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Provisioning server for ${projectName} on provider: ${provider} (TODO_PROD)`);
   // TODO: Integrate with AWS, Azure, GCP, DigitalOcean, etc.
   return { success: true, server: `${provider}-server-for-${projectName}` };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: SSL/HTTPS automation ---
+// --- TODO_PROD: SSL/HTTPS automation ---
 async function provisionSSL(domain) {
-  logAction(`Provisioning SSL certificate for ${domain} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Provisioning SSL certificate for ${domain} (TODO_PROD)`);
   // TODO: Integrate with Let's Encrypt or provider API
   return { success: true, ssl: `SSL-for-${domain}` };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Domain availability search & purchase ---
+// --- TODO_PROD: Domain availability search & purchase ---
 async function searchAndPurchaseDomain(domain) {
-  logAction(`Searching and purchasing domain: ${domain} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Searching and purchasing domain: ${domain} (TODO_PROD)`);
   // TODO: Integrate with registrar API for search and purchase
   return { success: true, domain };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: DNS management ---
+// --- TODO_PROD: DNS management ---
 async function manageDNS(domain, records = []) {
-  logAction(`Managing DNS for ${domain} with records: ${JSON.stringify(records)} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Managing DNS for ${domain} with records: ${JSON.stringify(records)} (TODO_PROD)`);
   // TODO: Integrate with DNS provider API
   return { success: true };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: SEO/search engine submission ---
+// --- TODO_PROD: SEO/search engine submission ---
 async function submitToSearchEngines(domain) {
-  logAction(`Submitting ${domain} to search engines ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Submitting ${domain} to search engines (TODO_PROD)`);
   // TODO: Integrate with Google, Bing, Yandex, Baidu APIs
   return { success: true };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Content syndication ---
+// --- TODO_PROD: Content syndication ---
 async function syndicateContent(projectName, platforms = ['medium', 'substack']) {
-  logAction(`Syndicating content for ${projectName} to platforms: ${platforms.join(', ')} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Syndicating content for ${projectName} to platforms: ${platforms.join(', ')} (TODO_PROD)`);
   // TODO: Integrate with Medium, Substack, LinkedIn APIs
   return { success: true };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Social/platform integration ---
+// --- TODO_PROD: Social/platform integration ---
 async function createSocialProfiles(projectName, platforms = ['twitter', 'facebook', 'linkedin']) {
-  logAction(`Creating social profiles for ${projectName} on: ${platforms.join(', ')} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Creating social profiles for ${projectName} on: ${platforms.join(', ')} (TODO_PROD)`);
   // TODO: Integrate with social media APIs
   return { success: true };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: Analytics integration ---
+// --- TODO_PROD: Analytics integration ---
 async function integrateAnalytics(projectDir, tools = ['google-analytics']) {
-  logAction(`Integrating analytics (${tools.join(', ')}) for ${projectDir} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Integrating analytics (${tools.join(', ')}) for ${projectDir} (TODO_PROD)`);
   // TODO: Add Google Analytics, Facebook Pixel, etc.
   return { success: true };
 }
@@ -146,12 +146,12 @@ const PROVIDERS = {
   aws: {
     name: 'AWS',
     provisionServer: async (projectName) => {
-      logAction(`[AWS] Provisioning server for ${projectName} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+      logAction(`[AWS] Provisioning server for ${projectName} (TODO_PROD)`);
       // TODO: Real AWS integration
       return { success: true, server: `aws-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
-      logAction(`[AWS] Deploying website from ${projectDir} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+      logAction(`[AWS] Deploying website from ${projectDir} (TODO_PROD)`);
       // TODO: Real AWS deployment
       return { success: true, url: `https://aws.example.com/${path.basename(projectDir)}` };
     }
@@ -159,12 +159,12 @@ const PROVIDERS = {
   vercel: {
     name: 'Vercel',
     provisionServer: async (projectName) => {
-      logAction(`[Vercel] Provisioning server for ${projectName} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+      logAction(`[Vercel] Provisioning server for ${projectName} (TODO_PROD)`);
       // TODO: Real Vercel integration
       return { success: true, server: `vercel-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
-      logAction(`[Vercel] Deploying website from ${projectDir} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+      logAction(`[Vercel] Deploying website from ${projectDir} (TODO_PROD)`);
       // TODO: Real Vercel deployment
       const url = `https://vercel.app/${path.basename(projectDir)}`;
       try {
@@ -185,22 +185,22 @@ function selectProvider(preferred) {
 
 // --- ASSET LIFECYCLE MANAGEMENT ---
 async function updateAsset(assetId) {
-  logAction(`Updating asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Updating asset ${assetId} (TODO_PROD)`);
   // TODO: Implement update logic
   return { success: true };
 }
 async function migrateAsset(assetId, toProvider) {
-  logAction(`Migrating asset ${assetId} to ${toProvider} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Migrating asset ${assetId} to ${toProvider} (TODO_PROD)`);
   // TODO: Implement migration logic
   return { success: true };
 }
 async function backupAsset(assetId) {
-  logAction(`Backing up asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Backing up asset ${assetId} (TODO_PROD)`);
   // TODO: Implement backup logic
   return { success: true };
 }
 async function retireAsset(assetId) {
-  logAction(`Retiring asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
+  logAction(`Retiring asset ${assetId} (TODO_PROD)`);
   // TODO: Implement retire logic
   return { success: true };
 }
@@ -212,7 +212,7 @@ async function autoFixError(context, error) {
   for (let attempt = 1; attempt <= 3; attempt++) {
     logAction(`[AutoFix] Attempt ${attempt} to fix error in context: ${context}`);
     try {
-      // [PRODUCTION IMPLEMENTATION REQUIRED]: try a generic fix (e.g., retry, reset, switch provider)
+      // TODO_PROD: try a generic fix (e.g., retry, reset, switch provider)
       // TODO: Implement context-specific fix strategies
       if (attempt === 3) throw new Error('Max attempts reached');
       // Simulate fix success on 2nd attempt
@@ -224,9 +224,9 @@ async function autoFixError(context, error) {
       logAction(`[AutoFix] Attempt ${attempt} failed: ${fixErr}`);
     }
   }
-  // Root cause analysis [PRODUCTION IMPLEMENTATION REQUIRED]
-  logAction(`[AutoFix] Root cause analysis for context: ${context} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
-  // Continuous learning [PRODUCTION IMPLEMENTATION REQUIRED]
+  // Root cause analysis TODO_PROD
+  logAction(`[AutoFix] Root cause analysis for context: ${context} (TODO_PROD)`);
+  // Continuous learning TODO_PROD
   logAction(`[AutoFix] Logging error for future learning: ${error}`);
   return { fixed: false };
 }
@@ -245,9 +245,9 @@ async function safeRun(context, fn, ...args) {
 
 // --- ERROR-FIX SWEEP ACROSS ALL ASSETS/PROJECTS ---
 async function fixAllErrorsSweep() {
-  logAction('[AutoFix] Starting full error-fix sweep across all assets/projects ([PRODUCTION IMPLEMENTATION REQUIRED])');
+  logAction('[AutoFix] Starting full error-fix sweep across all assets/projects (TODO_PROD)');
   // TODO: Iterate all assets/projects, check for errors, run autoFixError
-  logAction('[AutoFix] Sweep complete ([PRODUCTION IMPLEMENTATION REQUIRED])');
+  logAction('[AutoFix] Sweep complete (TODO_PROD)');
   return { success: true };
 }
 

@@ -1,13 +1,13 @@
 // NOTE: 10 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import "@testing-library/jest-dom";
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] fetch globally
+// TODO_PROD fetch globally
 global.fetch = jest.fn();
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] window.matchMedia
+// TODO_PROD window.matchMedia
 Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().[PRODUCTION IMPLEMENTATION REQUIRED]Implementation((query) => ({
+  value: jest.fn().TODO_PRODImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -19,25 +19,25 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] localStorage
-const localStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {
+// TODO_PROD localStorage
+const localStorageTODO_PROD = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.localStorage = localStorage[PRODUCTION IMPLEMENTATION REQUIRED];
+global.localStorage = localStorageTODO_PROD;
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] sessionStorage
-const sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED] = {
+// TODO_PROD sessionStorage
+const sessionStorageTODO_PROD = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.sessionStorage = sessionStorage[PRODUCTION IMPLEMENTATION REQUIRED];
+global.sessionStorage = sessionStorageTODO_PROD;
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] console methods to reduce noise in tests
+// TODO_PROD console methods to reduce noise in tests
 global.console = {
   ...console,
   log: jest.fn(),

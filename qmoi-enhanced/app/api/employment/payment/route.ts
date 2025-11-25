@@ -23,7 +23,7 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] database
+// TODO_PROD database
 const payments: any[] = [];
 const paymentLogs: any[] = [];
 

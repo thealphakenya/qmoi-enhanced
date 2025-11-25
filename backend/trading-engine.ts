@@ -84,4 +84,4 @@ export async function autonomousTradingLoop() {
 }
 
 // To start: import { autonomousTradingLoop } from './backend/trading-engine'; autonomousTradingLoop();
-// For Colab: import/export CSV using the same format as trading-dataset-[PRODUCTION IMPLEMENTATION REQUIRED].csv
+// For Colab: import/export CSV using the same format as trading-dataset-latest.csv

@@ -88,7 +88,7 @@ async function autoFixAll() {
 }
 
 async function offloadToCloudIfNeeded() {
-  // [PRODUCTION IMPLEMENTATION REQUIRED]: check system resources, offload builds/tests to cloud if low
+  // TODO_PROD: check system resources, offload builds/tests to cloud if low
   const freeMem = os.freemem() / (1024 * 1024);
   if (freeMem < 1024) {
     log('Low memory detected, offloading build/test to cloud...');

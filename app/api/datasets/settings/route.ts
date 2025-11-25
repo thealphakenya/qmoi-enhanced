@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] response for now - replace with actual implementation
+    // Apply and return updated settings (stubbed for now — persist in DB in production)
     const updatedSettings = {
       maxConcurrentProcessing: maxConcurrentProcessing || 2,
       autoBackup: autoBackup ?? true,

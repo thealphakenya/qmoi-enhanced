@@ -79,7 +79,7 @@ export class ErrorFixingService {
     error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
-    // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
+    // For now, this is a TODO_PROD with some basic examples.
     console.log("AI analyzing error:", error);
 
     // License compliance error handling
@@ -164,7 +164,7 @@ export class ErrorFixingService {
       };
     }
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] for other error types
+    // TODO_PROD for other error types
     return null;
   }
 

@@ -259,7 +259,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // [PRODUCTION IMPLEMENTATION REQUIRED] component check - replace with actual implementation
+      // TODO_PROD component check - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       return NextResponse.json({
@@ -285,7 +285,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // [PRODUCTION IMPLEMENTATION REQUIRED] settings update - replace with actual implementation
+      // TODO_PROD settings update - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 800));
 
       return NextResponse.json({

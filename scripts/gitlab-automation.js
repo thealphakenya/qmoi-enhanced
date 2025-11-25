@@ -301,7 +301,7 @@ class GitLabAutomation {
         `- Missing test dependencies\n` +
         `- Environment configuration issues\n` +
         `- Async test timing problems\n` +
-        `- [PRODUCTION IMPLEMENTATION REQUIRED]/stub configuration errors`,
+        `- TODO_PROD/stub configuration errors`,
         ['qmoi', 'error', 'tests', 'needs-review']
       );
       
@@ -458,7 +458,7 @@ class GitLabAutomation {
   const BASE_DELAY = 10000; // 10 seconds
 
   async function notify(status, message) {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] for notification logic (console, API, etc.)
+    // TODO_PROD for notification logic (console, API, etc.)
     console.log(`[GITLAB-AUTOMATION][${status}] ${message}`);
   }
 

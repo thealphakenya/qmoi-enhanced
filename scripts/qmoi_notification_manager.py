@@ -78,15 +78,15 @@ class QmoiNotificationManager:
         log_activity(f'Discord notification sent: {subject}')
 
     def send_sms(self, subject, message):
-        # [PRODUCTION IMPLEMENTATION REQUIRED] for SMS integration (e.g., Twilio, Nexmo, etc.)
-        log_activity('Sent SMS notification ([PRODUCTION IMPLEMENTATION REQUIRED]).', {'message': message})
-        print('SMS message sent ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+        # TODO_PROD for SMS integration (e.g., Twilio, Nexmo, etc.)
+        log_activity('Sent SMS notification (TODO_PROD).', {'message': message})
+        print('SMS message sent (TODO_PROD).')
         log_activity(f'SMS notification sent: {subject}')
 
     def send_push(self, subject, message):
-        # [PRODUCTION IMPLEMENTATION REQUIRED] for push notification integration (e.g., Firebase, OneSignal, etc.)
-        log_activity('Sent push notification ([PRODUCTION IMPLEMENTATION REQUIRED]).', {'message': message})
-        print('Push notification sent ([PRODUCTION IMPLEMENTATION REQUIRED]).')
+        # TODO_PROD for push notification integration (e.g., Firebase, OneSignal, etc.)
+        log_activity('Sent push notification (TODO_PROD).', {'message': message})
+        print('Push notification sent (TODO_PROD).')
         log_activity(f'Push notification sent: {subject}')
 
     def send_notification(self, subject, message, channels=None):

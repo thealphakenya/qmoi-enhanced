@@ -446,27 +446,27 @@ class QMOIMasterSystem {
   // Performance monitoring methods
   getCPUUsage() {
     // Get current CPU usage percentage
-    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
+    return Math.random() * 100; // TODO_PROD
   }
 
   getMemoryUsage() {
     // Get current memory usage percentage
-    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
+    return Math.random() * 100; // TODO_PROD
   }
 
   getGPUUsage() {
     // Get current GPU usage percentage
-    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
+    return Math.random() * 100; // TODO_PROD
   }
 
   getNetworkUsage() {
     // Get current network usage
-    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
+    return Math.random() * 100; // TODO_PROD
   }
 
   getResponseTime() {
     // Get current system response time
-    return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
+    return Math.random() * 100; // TODO_PROD
   }
 
   // Public API methods

@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
     const { action } = body;
 
     if (action === 'self-heal') {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] self-healing process - replace with actual implementation
+      // simulated self-healing process - replace with production implementation as needed
       await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate healing time
 
       return NextResponse.json({

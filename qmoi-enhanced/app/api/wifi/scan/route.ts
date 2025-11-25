@@ -13,7 +13,7 @@ interface WiFiNetwork {
 
 export async function GET(request: NextRequest) {
   try {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] WiFi networks - replace with actual implementation
+    // TODO_PROD WiFi networks - replace with actual implementation
   const networks: WiFiNetwork[] = [
       {
         ssid: 'Home Network',
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] connection attempt - replace with actual implementation
+    // TODO_PROD connection attempt - replace with actual implementation
     await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate connection time
 
     // Simulate random success/failure

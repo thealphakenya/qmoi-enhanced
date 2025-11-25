@@ -2,9 +2,9 @@
 #!/usr/bin/env python3
 """
 Conservative placeholder fixer:
-- Scans repository for the token '[PRODUCTION IMPLEMENTATION REQUIRED]' and related markers.
+- Scans repository for the token 'TODO_PROD' and related markers.
 - For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token 'TODO_PROD'.
-- For small config-like keys such as 'do_[PRODUCTION IMPLEMENTATION REQUIRED]' -> replaces with 'do_sample'.
+- For small config-like keys such as 'do_TODO_PROD' -> replaces with 'do_sample'.
 - For code files (.py, .js, .ts, .sh, .tsx, .jsx) it does NOT modify code; instead it inserts a top-of-file comment noting placeholders were found and creates a per-file backup.
 - Always creates a backup file named <file>.placeholderfix.bak before making any change.
 - Writes a report to `.qmoi_validation/placeholder_fix_report.txt` listing findings and actions.

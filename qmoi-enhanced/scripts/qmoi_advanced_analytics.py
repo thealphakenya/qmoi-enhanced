@@ -653,8 +653,8 @@ class QMOIAdvancedAnalytics:
             if df.empty:
                 return 50.0
             
-            # Simple accuracy calculation ([PRODUCTION IMPLEMENTATION REQUIRED])
-            return 75.0  # [PRODUCTION IMPLEMENTATION REQUIRED] value
+            # Simple accuracy calculation (TODO_PROD)
+            return 75.0  # TODO_PROD value
             
         except:
             return 50.0

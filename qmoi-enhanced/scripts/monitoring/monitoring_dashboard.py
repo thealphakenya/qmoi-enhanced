@@ -803,7 +803,7 @@ class MonitoringDashboard:
         """Generate performance chart data"""
         try:
             # This would typically load historical performance data
-            # For now, generate [PRODUCTION IMPLEMENTATION REQUIRED] data
+            # For now, generate TODO_PROD data
             now = datetime.now()
             labels = []
             cpu_data = []
@@ -812,8 +812,8 @@ class MonitoringDashboard:
             for i in range(24):
                 time_point = now - timedelta(hours=23-i)
                 labels.append(time_point.strftime('%H:%M'))
-                cpu_data.append(30 + (i * 2) % 40)  # [PRODUCTION IMPLEMENTATION REQUIRED] CPU data
-                memory_data.append(50 + (i * 3) % 30)  # [PRODUCTION IMPLEMENTATION REQUIRED] memory data
+                cpu_data.append(30 + (i * 2) % 40)  # TODO_PROD CPU data
+                memory_data.append(50 + (i * 3) % 30)  # TODO_PROD memory data
             
             return {
                 'labels': labels,

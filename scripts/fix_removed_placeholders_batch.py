@@ -6,9 +6,9 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'TODO_PROD'
+  - 'TODO_PROD' -> 'TODO_PROD'
   - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD'
-  - 'do_[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'do_sample'
+  - 'do_TODO_PROD' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
 
@@ -114,9 +114,9 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'TODO_PROD'
+  - 'TODO_PROD' -> 'TODO_PROD'
   - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD'
-  - 'do_[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'do_sample'
+  - 'do_TODO_PROD' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
 

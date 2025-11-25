@@ -25,7 +25,7 @@ const DividendDistributionSchema = z.object({
   })),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] database
+// In-memory megavault datastore (replace with a secure persistent DB in production)
 const megavaultData = {
   currentBalance: 1000000, // 1M starting balance
   totalInflow: 1500000,

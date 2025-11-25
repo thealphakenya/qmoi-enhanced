@@ -192,7 +192,7 @@ class QmoiPaymentFix {
   async testPesapalAPI() {
     try {
       // Simulate Pesapal API test
-      const response = await fetch('https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com/api/PostPesapalDirectOrderV4', {
+      const response = await fetch('https://TODO_PROD.pesapal.com/api/PostPesapalDirectOrderV4', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml'
@@ -216,7 +216,7 @@ class QmoiPaymentFix {
     const apiFixes = {
       MPESA_ENVIRONMENT: 'sandbox',
       AIRTEL_ENVIRONMENT: 'sandbox', 
-      PESAPAL_ENVIRONMENT: '[PRODUCTION IMPLEMENTATION REQUIRED]',
+      PESAPAL_ENVIRONMENT: 'TODO_PROD',
       MPESA_CALLBACK_URL: 'https://your-domain.com/api/mpesa/callback',
       AIRTEL_CALLBACK_URL: 'https://your-domain.com/api/airtel/callback',
       PESAPAL_CALLBACK_URL: 'https://your-domain.com/api/pesapal/callback'

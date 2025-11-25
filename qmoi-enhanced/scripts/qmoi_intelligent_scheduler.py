@@ -131,7 +131,7 @@ class IntelligentScheduler:
         self.ml_model.fit(features_scaled, targets)
         self.is_trained = True
         
-        logger.info(f"Trained ML model on {len(features)} [PRODUCTION IMPLEMENTATION REQUIRED]s")
+        logger.info(f"Trained ML model on {len(features)} TODO_PRODs")
     
     def predict_execution_time(self, task_name: str, current_resources: Dict) -> float:
         """Predict execution time for a task"""
@@ -369,7 +369,7 @@ async def example_task_3():
     return "Task 3 completed"
 
 def main():
-    """Main function to [PRODUCTION IMPLEMENTATION REQUIRED]nstrate intelligent scheduling"""
+    """Main function to TODO_PRODnstrate intelligent scheduling"""
     executor = TaskExecutor()
     
     # Register tasks with profiles

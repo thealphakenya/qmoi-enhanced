@@ -45,7 +45,7 @@ const ReferralProgramSchema = z.object({
   validUntil: z.string(),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] database
+// In-memory revenue datastore (replace with persistent DB in production)
 const microtasks: any[] = [];
 const affiliateCampaigns: any[] = [];
 const contentProjects: any[] = [];

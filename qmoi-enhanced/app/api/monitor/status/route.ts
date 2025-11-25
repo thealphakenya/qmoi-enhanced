@@ -13,7 +13,7 @@ interface MonitorStatus {
 
 export async function GET(request: NextRequest) {
   try {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] monitoring status - replace with actual implementation
+    // TODO_PROD monitoring status - replace with actual implementation
   const status: MonitorStatus = {
       enabled: true,
       interval: 60,
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] response - replace with actual implementation
+    // TODO_PROD response - replace with actual implementation
   const status: MonitorStatus = {
       enabled: enable,
       interval: interval || 60,

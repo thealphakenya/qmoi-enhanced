@@ -13,26 +13,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { action } = body;
       switch (action) {
         case 'translate':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle translation
-          return res.status(200).json({ result: 'Translation result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: perform translation via external API in production
+          return res.status(200).json({ result: 'Translation result (stub)' });
         case 'speech-to-text':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle STT
-          return res.status(200).json({ result: 'Speech-to-text result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: speech-to-text (replace with STT provider integration)
+          return res.status(200).json({ result: 'Speech-to-text result (stub)' });
         case 'text-to-speech':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle TTS
-          return res.status(200).json({ result: 'Text-to-speech result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: text-to-speech (replace with TTS provider integration)
+          return res.status(200).json({ result: 'Text-to-speech result (stub)' });
         case 'language-detect':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language detection
-          return res.status(200).json({ result: 'Language detection result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: language detection
+          return res.status(200).json({ result: 'Language detection result (stub)' });
         case 'lesson':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language lesson
-          return res.status(200).json({ result: 'Lesson result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: language lesson
+          return res.status(200).json({ result: 'Lesson result (stub)' });
         case 'quiz':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language quiz
-          return res.status(200).json({ result: 'Quiz result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: language quiz
+          return res.status(200).json({ result: 'Quiz result (stub)' });
         case 'pronunciation-check':
-          // [PRODUCTION IMPLEMENTATION REQUIRED]: handle pronunciation check
-          return res.status(200).json({ result: 'Pronunciation check result ([PRODUCTION IMPLEMENTATION REQUIRED])' });
+          // Stub: pronunciation check
+          return res.status(200).json({ result: 'Pronunciation check result (stub)' });
         default:
           return res.status(400).json({ error: 'Unknown action' });
       }

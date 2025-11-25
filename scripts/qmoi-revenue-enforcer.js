@@ -141,8 +141,8 @@ function triggerAIActions(reason) {
 }
 
 function getQmoiSpaceBalance() {
-  // [PRODUCTION IMPLEMENTATION REQUIRED]: integrate with actual QMOI Space balance API or logic
-  // For now, simulate with a random value for [PRODUCTION IMPLEMENTATION REQUIRED]nstration
+  // TODO_PROD: integrate with actual QMOI Space balance API or logic
+  // For now, simulate with a random value for TODO_PRODnstration
   return 50000 + Math.floor(Math.random() * 100000);
 }
 

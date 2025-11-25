@@ -45,7 +45,7 @@ const ReferralProgramSchema = z.object({
   validUntil: z.string(),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] database
+// TODO_PROD database
 const microtasks: any[] = [];
 const affiliateCampaigns: any[] = [];
 const contentProjects: any[] = [];

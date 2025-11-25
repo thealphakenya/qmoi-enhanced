@@ -52,7 +52,7 @@ app.add_middleware(
 @app.get('/')
 def root():
     return {'status': 'ready'}""")
-        print("⚠️ Created minimal FastAPI backend as [PRODUCTION IMPLEMENTATION REQUIRED].")
+        print("⚠️ Created minimal FastAPI backend as TODO_PROD.")
     
     subprocess.Popen(["uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"])
 

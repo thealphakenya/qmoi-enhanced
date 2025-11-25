@@ -49,15 +49,15 @@ def bitget_request(method, path, body_obj=None):
     resp.raise_for_status()
     return resp.json()
 
-# --- AI confidence calculation ([PRODUCTION IMPLEMENTATION REQUIRED], replace with real model) ---
+# --- AI confidence calculation (stub - replace with real model) ---
 def calculate_confidence(market_data):
-    # Example: use volatility, trend, and recent profit
+    # Example stub: use volatility, trend, and recent profit
     import random
     return min(1.0, max(0.0, 0.6 + random.uniform(-0.1, 0.3)))
 
-# --- Dynamic trading pairs selection ([PRODUCTION IMPLEMENTATION REQUIRED]) ---
+# --- Dynamic trading pairs selection (stub) ---
 def select_trading_pair(market_data):
-    # Example: pick the pair with highest volume
+    # Example stub: pick the pair with highest volume or a default
     return 'BTCUSDT_UMCBL'
 
 def trading_loop():

@@ -426,7 +426,7 @@ class QMOIMusicProductionSystem {
       quality: 'professional',
       format: 'wav',
       bitrate: '320kbps',
-      [PRODUCTION IMPLEMENTATION REQUIRED]Rate: '44.1kHz',
+      TODO_PRODRate: '44.1kHz',
       channels: 'stereo',
       metadata: {
         artist: vocalData.artistId,

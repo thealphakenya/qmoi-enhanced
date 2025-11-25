@@ -42,22 +42,22 @@ class QMOIDevActions:
         logger.info(f"{action}: {status} - {details}")
 
     def create_pr(self, platform):
-        # [PRODUCTION IMPLEMENTATION REQUIRED]: create PR/MR on platform
+        # TODO_PROD: create PR/MR on platform
         self.log_action(f'Create PR ({platform})', 'success', 'PR created')
         return True
 
     def open_issue(self, platform):
-        # [PRODUCTION IMPLEMENTATION REQUIRED]: open issue on platform
+        # TODO_PROD: open issue on platform
         self.log_action(f'Open Issue ({platform})', 'success', 'Issue opened')
         return True
 
     def comment(self, platform):
-        # [PRODUCTION IMPLEMENTATION REQUIRED]: comment on PR/issue
+        # TODO_PROD: comment on PR/issue
         self.log_action(f'Comment ({platform})', 'success', 'Comment added')
         return True
 
     def review(self, platform):
-        # [PRODUCTION IMPLEMENTATION REQUIRED]: review PR/issue
+        # TODO_PROD: review PR/issue
         self.log_action(f'Review ({platform})', 'success', 'Review submitted')
         return True
 

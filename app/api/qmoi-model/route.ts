@@ -21,8 +21,8 @@ export async function GET(request: NextRequest) {
     const datasets = searchParams.get('datasets');
 
     if (allStats) {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] AI tasks - replace with actual implementation
-      const [PRODUCTION IMPLEMENTATION REQUIRED]Tasks: AITask[] = [
+      // Stub AI tasks
+      const Tasks: AITask[] = [
         {
           id: '1',
           type: 'enhancement',
@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
         }
       ];
 
-      return NextResponse.json({ tasks: [PRODUCTION IMPLEMENTATION REQUIRED]Tasks });
+      return NextResponse.json({ tasks: Tasks });
     }
 
     if (mediaStatus) {
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
     const { enhance, desc } = body;
 
     if (enhance) {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] enhancement process - replace with actual implementation
+      // simulated enhancement process - replace with production implementation as needed
       await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate enhancement time
 
       return NextResponse.json({

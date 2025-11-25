@@ -268,7 +268,7 @@ class AIModelsManager:
         """Load AI models"""
         try:
             # This would load actual AI models
-            # For now, we'll use [PRODUCTION IMPLEMENTATION REQUIRED] models
+            # For now, we'll use TODO_PROD models
             self.models = {
                 "qmoi-master": {
                     "name": "QMOI Master",
@@ -306,7 +306,7 @@ class AIModelsManager:
             
             model = self.models[model_name]
             
-            # [PRODUCTION IMPLEMENTATION REQUIRED] response generation
+            # TODO_PROD response generation
             # In a real implementation, this would call the actual AI model
             response = f"AI Response from {model['name']}: {prompt[:100]}..."
             

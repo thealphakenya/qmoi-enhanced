@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
     const threats = searchParams.get('threats');
 
     if (status) {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] security status - replace with actual implementation
+      // TODO_PROD security status - replace with actual implementation
   const statusData: SecurityStatus = {
         isMonitoring: true,
         lastScan: new Date(Date.now() - 300000).toISOString(), // 5 minutes ago
@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (threats) {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] security threats - replace with actual implementation
+      // TODO_PROD security threats - replace with actual implementation
   const threatsData: SecurityThreat[] = [
         {
           id: 'T001',
@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
     const { action, settings } = body;
 
     if (action === 'start-monitoring') {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] start monitoring - replace with actual implementation
+      // TODO_PROD start monitoring - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       return NextResponse.json({
@@ -129,7 +129,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (action === 'stop-monitoring') {
-      // [PRODUCTION IMPLEMENTATION REQUIRED] stop monitoring - replace with actual implementation
+      // TODO_PROD stop monitoring - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 500));
 
       return NextResponse.json({
@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // [PRODUCTION IMPLEMENTATION REQUIRED] settings update - replace with actual implementation
+      // TODO_PROD settings update - replace with actual implementation
       await new Promise(resolve => setTimeout(resolve, 800));
 
       return NextResponse.json({

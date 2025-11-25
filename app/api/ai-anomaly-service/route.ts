@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
     try {
       // Proxy to anomaly service for error list
       const result = await fetch('http://localhost:5001/analytics', { method: 'GET' }).then(r => r.json());
-      // Simulate error list for [PRODUCTION IMPLEMENTATION REQUIRED]
+      // Simulate error list for demonstration purposes
       const errors: AnomalyError[] = result.top_ips && result.top_ips.length 
         ? result.top_ips.map(([ip, count]: [string, number]) => ({ 
             message: `Suspicious activity from ${ip}`, 

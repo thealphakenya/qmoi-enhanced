@@ -465,7 +465,7 @@ class QMOIPerformanceMonitor:
                 'timestamp': datetime.now().isoformat()
             })
             
-            # Send notification ([PRODUCTION IMPLEMENTATION REQUIRED] for actual notification system)
+            # Send notification (TODO_PROD for actual notification system)
             self.send_notification(alert)
             
         except Exception as e:
@@ -474,7 +474,7 @@ class QMOIPerformanceMonitor:
     def send_notification(self, alert: Dict) -> None:
         """Send notification about alert"""
         try:
-            # [PRODUCTION IMPLEMENTATION REQUIRED] for actual notification system
+            # TODO_PROD for actual notification system
             # This could send email, Slack message, etc.
             notification_script = self.root_dir / 'scripts' / 'utils' / 'send_notification.py'
             if notification_script.exists():

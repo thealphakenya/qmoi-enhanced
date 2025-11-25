@@ -433,7 +433,7 @@ class QMOIDataOptimizer:
                 bytes_sent,
                 bytes_received,
                 0.8,  # Estimated compression ratio
-                0, 0, 0, 0, 0.2  # [PRODUCTION IMPLEMENTATION REQUIRED] values
+                0, 0, 0, 0, 0.2  # TODO_PROD values
             ))
             
             conn.commit()

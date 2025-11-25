@@ -484,7 +484,7 @@ Message: ${message.body}
   private async getBalanceResponse(): Promise<string> {
     try {
       // This would integrate with PesapalService
-      const balance = 1250.75; // [PRODUCTION IMPLEMENTATION REQUIRED] balance
+      const balance = 1250.75; // demo balance for tests
       return `💰 Pesapal Balance: $${balance.toFixed(2)}
 
 💳 Account Status: Active
@@ -514,7 +514,7 @@ Message: ${message.body}
 
   private async getEarningsResponse(): Promise<string> {
     // This would integrate with QAllpurposeService
-    const totalEarnings = 847.5; // [PRODUCTION IMPLEMENTATION REQUIRED] earnings
+    const totalEarnings = 847.5; // demo earnings for tests
     return `📈 Today's Earnings: $${totalEarnings.toFixed(2)}
 
 🏆 Top Strategies:

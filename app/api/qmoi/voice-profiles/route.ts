@@ -247,6 +247,6 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
   // - EVA3D (for 3D avatar animation)
   // - Commercial APIs (ElevenLabs, Azure, etc.)
   
-  // For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] URL
+  // For now, return a stubbed TTS generation URL (replace with real TTS integration)
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(text)}&quality=${quality}&volume=${volume}`;
 } 
