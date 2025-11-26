@@ -59,6 +59,9 @@ Immediate remaining tasks (high priority):
    - Add `QMOI_HF_TOKEN` and `QMOI_HF_REPO` if you want HF repo sync.
 2) Protect `/sync/*` endpoints with authentication before exposing the server publicly.
 3) Add a scheduled CI job or cron entry that runs `python3 scripts/sync_memory.py` (or call `/sync/push`) on a cadence appropriate for your deployment.
+4) Doc placeholder remediation: doc placeholder tokens have been updated in a docs-first PR branch (`auto/placeholders/docs-fix-3`) — review and merge if accepted.
+5) P0 triage: Created `tools/issue_drafts/p0-epic.md` and per-file issue drafts under `tools/issue_drafts/` for critical placeholders; create or assign issues for P0 files for human triage.
+6) Code fix skeletons: Created skeleton branches (e.g., `auto/placeholders/code-fix-qmoi-enhanced_scripts`, `auto/placeholders/code-fix-qmoi-enhanced_components`) with a per-component ISSUE.md for reviewers to propose small, safe PRs.
 4) Decide canonical production memory store (Postgres, Redis, object store). Implement migration plan and replace file-based memory with robust DB-backed memory service.
 
 Vercel and PWA next steps (high priority):
