@@ -103,19 +103,19 @@ export default function DevicePanel() {
         }}
       >
         <input
-          TBD="Name"
+          placeholder="Name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          TBD="Host"
+          placeholder="Host"
           value={form.host}
           onChange={(e) => setForm((f) => ({ ...f, host: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          TBD="Port"
+          placeholder="Port"
           type="number"
           value={form.port}
           onChange={(e) =>
@@ -124,20 +124,20 @@ export default function DevicePanel() {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          TBD="Username"
+          placeholder="Username"
           value={form.username}
           onChange={(e) => setForm((f) => ({ ...f, username: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          TBD="Password"
+          placeholder="Password"
           type="password"
           value={form.password}
           onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          TBD="Private Key"
+          placeholder="Private Key"
           value={form.privateKey}
           onChange={(e) =>
             setForm((f) => ({ ...f, privateKey: e.target.value }))

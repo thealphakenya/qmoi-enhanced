@@ -96,7 +96,7 @@ export default function CommandPanel() {
           value={cmd}
           onChange={(e) => setCmd(e.target.value)}
           className="flex-1 bg-gray-800 p-2 rounded"
-          TBD="Enter command..."
+          placeholder="Enter command..."
         />
         <select
           value={deviceId}

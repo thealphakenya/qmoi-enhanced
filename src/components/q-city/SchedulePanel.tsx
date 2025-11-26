@@ -92,31 +92,31 @@ export default function SchedulePanel() {
         }}
       >
         <input
-          TBD="Name"
+          placeholder="Name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          TBD="Command"
+          placeholder="Command"
           value={form.command}
           onChange={(e) => setForm((f) => ({ ...f, command: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          TBD="Cron"
+          placeholder="Cron"
           value={form.cron}
           onChange={(e) => setForm((f) => ({ ...f, cron: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          TBD="Device ID"
+          placeholder="Device ID"
           value={form.deviceId}
           onChange={(e) => setForm((f) => ({ ...f, deviceId: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          TBD="Notify"
+          placeholder="Notify"
           value={form.notify}
           onChange={(e) => setForm((f) => ({ ...f, notify: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
