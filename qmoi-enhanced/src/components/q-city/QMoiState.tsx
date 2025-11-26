@@ -321,7 +321,7 @@ export function QMoiState({
             </button>
             <div className="mb-2 flex gap-2">
               <input
-                TBD="User"
+                placeholder="User"
                 value={logFilters.user}
                 onChange={(e) =>
                   setLogFilters((f) => ({ ...f, user: e.target.value }))
@@ -329,7 +329,7 @@ export function QMoiState({
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
               <input
-                TBD="Action"
+                placeholder="Action"
                 value={logFilters.action}
                 onChange={(e) =>
                   setLogFilters((f) => ({ ...f, action: e.target.value }))
@@ -337,7 +337,7 @@ export function QMoiState({
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
               <input
-                TBD="Status"
+                placeholder="Status"
                 value={logFilters.status}
                 onChange={(e) =>
                   setLogFilters((f) => ({ ...f, status: e.target.value }))

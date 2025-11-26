@@ -41,7 +41,7 @@ export function Chatbot() {
         size="small"
         value={input}
         onChange={handleInputChange}
-        TBD="Type your message..."
+        placeholder="Type your message..."
         sx={{ mb: 1 }}
         onKeyDown={handleKeyDown}
       />

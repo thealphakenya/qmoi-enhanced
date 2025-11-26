@@ -143,13 +143,13 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
       <CardContent>
         <div className="mb-4">
           <Input
-            TBD="Title"
+            placeholder="Title"
             value={form.title}
             onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
             className="mb-2"
           />
           <Input
-            TBD="Content"
+            placeholder="Content"
             value={form.content}
             onChange={(e) =>
               setForm((f) => ({ ...f, content: e.target.value }))
@@ -159,7 +159,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
           {isMaster && (
             <>
               <Input
-                TBD="Category (e.g. earning, project, marketing, global, local)"
+                placeholder="Category (e.g. earning, project, marketing, global, local)"
                 value={form.category}
                 onChange={(e) =>
                   setForm((f) => ({ ...f, category: e.target.value }))
@@ -168,7 +168,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
               />
               <div className="flex gap-2 mb-2">
                 <Input
-                  TBD="Media URL"
+                  placeholder="Media URL"
                   value={mediaUrl}
                   onChange={(e) => setMediaUrl(e.target.value)}
                   className="flex-1"

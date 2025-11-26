@@ -73,7 +73,7 @@ const AccountAutomationPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            TBD="Username"
+            placeholder="Username"
             value={form.username}
             onChange={(e) =>
               setForm((f) => ({ ...f, username: e.target.value }))
@@ -81,13 +81,13 @@ const AccountAutomationPanel: React.FC = () => {
             className="mb-2"
           />
           <Input
-            TBD="Email"
+            placeholder="Email"
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             className="mb-2"
           />
           <Input
-            TBD="Platform (e.g. WhatsApp, Telegram)"
+            placeholder="Platform (e.g. WhatsApp, Telegram)"
             value={form.platform}
             onChange={(e) =>
               setForm((f) => ({ ...f, platform: e.target.value }))
@@ -103,7 +103,7 @@ const AccountAutomationPanel: React.FC = () => {
         </div>
         <div className="mb-4">
           <Input
-            TBD="Account ID to check status"
+            placeholder="Account ID to check status"
             value={idToCheck}
             onChange={(e) => setIdToCheck(e.target.value)}
             className="mb-2"

@@ -31,7 +31,7 @@ export function LcSpaces() {
         size="small"
         value={newSpace}
         onChange={e => setNewSpace(e.target.value)}
-        TBD="Add new LC space..."
+        placeholder="Add new LC space..."
         sx={{ mb: 1 }}
         onKeyDown={e => {
           if (e.key === 'Enter') addSpace();

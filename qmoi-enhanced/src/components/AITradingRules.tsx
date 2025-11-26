@@ -196,7 +196,7 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({
               label="Add Trading Pair"
               value={newPair}
               onChange={(e) => setNewPair(e.target.value.toUpperCase())}
-              TBD="e.g., BTC/USDT"
+              placeholder="e.g., BTC/USDT"
             />
             <Button
               variant="outlined"
