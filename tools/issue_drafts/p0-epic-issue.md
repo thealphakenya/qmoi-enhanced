@@ -1,11 +1,11 @@
-Title: P0 Placeholder Remediation – Critical files (Epic)
+Title: P0 TBD: See PLACEHOLDER_REMEDIATION_PLAN.md Remediation – Critical files (Epic)
 
 Body:
-This epic collects all critical (P0) files containing `placeholder` tokens. These are usually backend APIs, critical services, or test suites that can impact production behavior.
+This epic collects all critical (P0) files containing `TBD: See PLACEHOLDER_REMEDIATION_PLAN.md` tokens. These are usually backend APIs, critical services, or test suites that can impact production behavior.
 
 Summary:
 - Total P0 files: 460 (see `placeholdrefs_P0.txt`)
-- This epic aims to triage and assign owners for P0 placeholder fixes. Each P0 file should have a follow-up issue (or be added to this epic) and prioritized for implementation.
+- This epic aims to triage and assign owners for P0 TBD: See PLACEHOLDER_REMEDIATION_PLAN.md fixes. Each P0 file should have a follow-up issue (or be added to this epic) and prioritized for implementation.
 
 What to do:
 1. Review `tools/issue_drafts/` for drafts of individual P0 issues (one file per critical item) and refine/assign owners.
