@@ -1,3 +1,0 @@
-docs/ui/login.html
-pwa_apps/q-alpha/index.html
-qmoi-space/index.html

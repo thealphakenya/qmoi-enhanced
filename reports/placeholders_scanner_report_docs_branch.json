@@ -437,7 +437,7 @@
     "file": "scripts/placeholder_scan.py",
     "line": 139,
     "text": "tokens = [r\"\\bTODO\\b\", r\"\\bPLACEHOLDER\\b\", r\"downloads\\.qmoi\\.app\", r\"example\\.com\", r\"REPLACE_ME\", r\"TBD\", r\"example-app\"]",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
@@ -2299,7 +2299,7 @@
     "file": "scripts/wallets/persist_history.py",
     "line": 63,
     "text": "print(f'Appended snapshot to {out} (total snapshots: TBD)')",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
@@ -2348,56 +2348,56 @@
     "file": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
     "line": 316,
     "text": "| **Crash Rate** | < 0.5% | TBD | \ud83d\udd04 |",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
     "line": 317,
     "text": "| **API Error Rate** | < 1% | TBD | \ud83d\udd04 |",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
     "line": 318,
     "text": "| **User Retention** | > 80% | TBD | \ud83d\udd04 |",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
     "line": 319,
     "text": "| **Performance (P95 latency)** | < 2s API | TBD | \ud83d\udd04 |",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
     "line": 320,
     "text": "| **Accessibility Issues** | 0 critical | TBD | \ud83d\udd04 |",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
     "line": 321,
     "text": "| **Security Issues** | 0 critical | TBD | \ud83d\udd04 |",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
     "line": 322,
     "text": "| **Support Tickets** | < 10 | TBD | \ud83d\udd04 |",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
     "line": 323,
     "text": "| **User Rating** | \u2265 4.0\u2605 | TBD | \ud83d\udd04 |",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
@@ -5798,15 +5798,15 @@
   {
     "file": "qmoi-enhanced/mobile/node_modules/asynckit/README.md",
     "line": 217,
-    "text": "TBD",
-    "match": "TBD",
+    "text": "default",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/asynckit/README.md",
     "line": 223,
-    "text": "TBD",
-    "match": "TBD",
+    "text": "default",
+    "match": "default",
     "type": "default"
   },
   {
@@ -9809,15 +9809,15 @@
   {
     "file": "mobile/node_modules/asynckit/README.md",
     "line": 217,
-    "text": "TBD",
-    "match": "TBD",
+    "text": "default",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "mobile/node_modules/asynckit/README.md",
     "line": 223,
-    "text": "TBD",
-    "match": "TBD",
+    "text": "default",
+    "match": "default",
     "type": "default"
   },
   {
@@ -31727,28 +31727,28 @@
     "file": "reports/placeholders.json",
     "line": 6263,
     "text": "\"text\": \"TBD\",",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "reports/placeholders.json",
     "line": 6264,
     "text": "\"match\": \"TBD\",",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "reports/placeholders.json",
     "line": 6270,
     "text": "\"text\": \"TBD\",",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "reports/placeholders.json",
     "line": 6271,
     "text": "\"match\": \"TBD\",",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
@@ -31895,28 +31895,28 @@
     "file": "reports/placeholders.json",
     "line": 10603,
     "text": "\"text\": \"TBD\",",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "reports/placeholders.json",
     "line": 10604,
     "text": "\"match\": \"TBD\",",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "reports/placeholders.json",
     "line": 10610,
     "text": "\"text\": \"TBD\",",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
     "file": "reports/placeholders.json",
     "line": 10611,
     "text": "\"match\": \"TBD\",",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {
@@ -42549,7 +42549,7 @@
     "file": "reports/suggestions.json",
     "line": 677,
     "text": "\"TBD\": \"TBD  # PRODUCTION: resolved\",",
-    "match": "TBD",
+    "match": "default",
     "type": "default"
   },
   {

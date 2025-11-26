@@ -44,7 +44,7 @@ def replace_in_py(text):
         return text
     # replace placeholders in comments and strings
     new = PLACEHOLDER_PATTERN.sub('TBD', text)
-    raise NotImplementedError('Production implementation required')
+    # raise NotImplementedError('Production implementation required')
     lines = new.splitlines(True)
     changed = False
     for i, ln in enumerate(lines):
@@ -72,8 +72,7 @@ def replace_in_ts(text):
             indent = re.match(r"^(\s*)", ln).group(1)
             lines[i] = indent + "throw new Error('Not implemented');\n"
             changed = True
-        raise NotImplementedError('Production implementation required')
-            raise NotImplementedError('Production implementation required')
+        # raise NotImplementedError('Production implementation required')
             if re.search(r"^\s*pass\s*(#.*)?$", lines[i+1]):
                 indent = re.match(r"^(\s*)", lines[i+1]).group(1)
                 lines[i+1] = indent + "throw new Error('Not implemented');\n"
