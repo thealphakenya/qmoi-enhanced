@@ -1,4 +1,4 @@
-# P0 Placeholder Issues Summary
+# P0 TBD: See PLACEHOLDER_REMEDIATION_PLAN.md Issues Summary
 
 Total P0 files: 460
 
