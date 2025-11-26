@@ -448,10 +448,13 @@ src/services/VoiceRecognitionService.ts
 src/services/WhatsAppService.ts
 src/wallet.ts
 tests/test_link_autoupdater.py
+tools/apply_safe_fix_passes.py
 tools/auto_fix_placeholders.py
 tools/autotest_runner.py
+tools/create_component_patches.py
 tools/extract_comments.py
 tools/find_placeholders.py
+tools/generate_code_fix_branches.py
 tools/generate_fix_templates.py
 tools/generate_issue_drafts.py
 tools/generate_link_report.py
