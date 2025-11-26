@@ -1,0 +1,98 @@
+--- qmoi-enhanced/components/device/DeviceIntegrationStubs.ts+++ qmoi-enhanced/components/device/DeviceIntegrationStubs.ts (proposed)@@ -32,17 +32,17 @@ export const ColabDagshubIntegration: DeviceIntegration = {
+   async connect() {
+     console.log("Connecting to Colab/Dagshub...");
+-    // TODO: Implement real Colab/Dagshub connect logic
++    throw new Error('NotImplemented: production implementation required');
+     return true; // Simulate success
+   },
+   async sendCommand(cmd) {
+     console.log("Sending command to Colab/Dagshub:", cmd);
+-    // TODO: Implement real command logic
++    throw new Error('NotImplemented: production implementation required');
+     return { result: "success" };
+   },
+   async autoDetect() {
+     console.log("Auto-detecting Colab/Dagshub environment...");
+-    // TODO: Implement real detection logic
++    throw new Error('NotImplemented: production implementation required');
+     return true; // Simulate detection
+   }
+ };
+@@ -50,19 +50,19 @@ export const AWSIntegration: DeviceIntegration = {
+   async connect() {
+     console.log("Connecting to AWS...");
+-    // TODO: Add AWS credentials securely (e.g., from env vars or user input)
++    throw new Error('NotImplemented: production implementation required');
+     // const s3 = new AWS.S3({ accessKeyId, secretAccessKey, region });
+     // try { await s3.listBuckets().promise(); return true; } catch (e) { return false; }
+     return true;
+   },
+   async sendCommand(cmd) {
+     console.log("Sending command to AWS:", cmd);
+-    // TODO: Implement real AWS command logic
++    throw new Error('NotImplemented: production implementation required');
+     return { result: "success" };
+   },
+   async autoDetect() {
+     console.log("Auto-detecting AWS environment...");
+-    // TODO: Implement AWS environment detection
++    throw new Error('NotImplemented: production implementation required');
+     return true;
+   }
+ };
+@@ -82,7 +82,7 @@   },
+   async sendCommand(cmd) {
+     console.log("Sending command to Azure:", cmd);
+-    // TODO: Implement real Azure command logic
++    throw new Error('NotImplemented: production implementation required');
+     return { result: "success" };
+   },
+   async autoDetect() {
+@@ -111,7 +111,7 @@   },
+   async sendCommand(cmd) {
+     console.log("Sending command to GCP:", cmd);
+-    // TODO: Implement real GCP command logic
++    throw new Error('NotImplemented: production implementation required');
+     return { result: "success" };
+   },
+   async autoDetect() {
+@@ -129,17 +129,17 @@ export const IoTIntegration: DeviceIntegration = {
+   async connect() {
+     console.log("Connecting to IoT device...");
+-    // TODO: Implement real IoT device discovery/connection logic
++    throw new Error('NotImplemented: production implementation required');
+     return true;
+   },
+   async sendCommand(cmd) {
+     console.log("Sending command to IoT device:", cmd);
+-    // TODO: Implement real IoT command logic
++    throw new Error('NotImplemented: production implementation required');
+     return { result: "success" };
+   },
+   async autoDetect() {
+     console.log("Auto-detecting IoT device...");
+-    // TODO: Implement IoT device detection
++    throw new Error('NotImplemented: production implementation required');
+     return true;
+   }
+ };
+@@ -147,17 +147,17 @@ export const MobileIntegration: DeviceIntegration = {
+   async connect() {
+     console.log("Connecting to Mobile device...");
+-    // TODO: Implement real mobile device connection logic (e.g., via Bluetooth, ADB, or platform SDK)
++    throw new Error('NotImplemented: production implementation required');
+     return true;
+   },
+   async sendCommand(cmd) {
+     console.log("Sending command to Mobile device:", cmd);
+-    // TODO: Implement real mobile command logic
++    throw new Error('NotImplemented: production implementation required');
+     return { result: "success" };
+   },
+   async autoDetect() {
+     console.log("Auto-detecting Mobile device...");
+-    // TODO: Implement mobile device detection
++    throw new Error('NotImplemented: production implementation required');
+     return true;
+   }
+ }; 

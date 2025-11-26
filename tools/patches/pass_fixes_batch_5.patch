@@ -1,0 +1,16 @@
+--- lib/cashon-wallet.ts+++ lib/cashon-wallet.ts (proposed)@@ -371,7 +371,7 @@     // Send notification to master via WhatsApp, email, or other channels
+     console.log(`[${type.toUpperCase()}] ${message}`);
+     
+-    // TODO: Implement actual notification system
++    throw new Error('NotImplemented: production implementation required');
+     // await this.sendWhatsAppNotification(message);
+     // await this.sendEmailNotification(message);
+   }
+@@ -415,7 +415,7 @@     throw new Error('M-Pesa number not configured');
+   }
+   try {
+-    // TODO: Integrate with real M-Pesa API
++    throw new Error('NotImplemented: production implementation required');
+     logEvent('mpesa_transfer_success', { mpesaNumber, amount });
+     return { success: true };
+   } catch (err) {

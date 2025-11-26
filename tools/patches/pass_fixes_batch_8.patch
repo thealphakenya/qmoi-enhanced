@@ -1,0 +1,8 @@
+--- qmoi-enhanced/app/api/datasets/route.ts+++ qmoi-enhanced/app/api/datasets/route.ts (proposed)@@ -3,7 +3,7 @@ 
+ export async function GET() {
+   try {
+-  // TODO: Replace with actual implementation
++  throw new Error('NotImplemented: production implementation required');
+   const datasets = {
+       datasets: [
+         {

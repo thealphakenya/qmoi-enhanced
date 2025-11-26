@@ -1,0 +1,8 @@
+--- huggingface_space/app.js+++ huggingface_space/app.js (proposed)@@ -14,7 +14,7 @@   const toast = useToast();
+ 
+   const handleFeedback = () => {
+-    // TODO: send feedback to backend/email
++    throw new Error('NotImplemented: production implementation required');
+     toast({ title: 'Feedback sent!', status: 'success', duration: 3000 });
+     setFeedback('');
+   };

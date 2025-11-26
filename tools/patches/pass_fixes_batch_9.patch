@@ -1,0 +1,24 @@
+--- qmoi-enhanced/app/api/qmoi-model.ts+++ qmoi-enhanced/app/api/qmoi-model.ts (proposed)@@ -144,7 +144,7 @@   // Log project creation
+   aiTaskLog.push({ id: Date.now(), type: 'project-init', project: projectName, files: files.map(f => f.name), status: 'completed', timestamp: new Date().toISOString(), timeZone: getUserTimeZone() });
+   persistLog();
+-  // TODO: Update master/projects list (e.g., save to a JSON file or DB)
++  throw new Error('NotImplemented: production implementation required');
+   return { project: projectName, files: files.map(f => f.name), readme: readmePath };
+ }
+ 
+@@ -154,7 +154,7 @@   const readmePath = `/workspaces/Alpha-Q-ai/projects/${projectName}/README.md`;
+   fs.write
+   // Simulate packaging (e.g., zip/tar)
+-  // TODO: Implement real packaging logic
++  throw new Error('NotImplemented: production implementation required');
+   return { docs: readmePath, packaging: null };
+ }
+ 
+@@ -539,7 +539,7 @@       if (files.file) {
+         const file = files.file[0];
+         const buffer = fs.readFileSync(file.filepath);
+-        // TODO: Add more intelligent handling based on file type/content
++        throw new Error('NotImplemented: production implementation required');
+         if (file.mimetype === 'application/pdf') {
+           const result = await aiPdfResearch(buffer, fields.query);
+           return res.json({ file: file.originalFilename, query: fields.query, result, status: 'completed', timestamp: new Date().toISOString() });

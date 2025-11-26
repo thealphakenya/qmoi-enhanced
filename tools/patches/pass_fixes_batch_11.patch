@@ -1,0 +1,8 @@
+--- qmoi-enhanced/components/QmoiMediaManager.tsx+++ qmoi-enhanced/components/QmoiMediaManager.tsx (proposed)@@ -73,7 +73,7 @@ 
+   // Mock data for demonstration
+   useEffect(() => {
+-    // TODO: Replace this mock data with a real API call, e.g.:
++    throw new Error('NotImplemented: production implementation required');
+     // fetch('/api/media').then(res => res.json()).then(setMediaItems);
+     const mockMedia: MediaItem[] = [
+       {

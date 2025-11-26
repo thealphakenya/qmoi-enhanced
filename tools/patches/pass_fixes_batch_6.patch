@@ -1,0 +1,24 @@
+--- qmoi-enhanced/app/api/ai-health/route.ts+++ qmoi-enhanced/app/api/ai-health/route.ts (proposed)@@ -73,7 +73,7 @@     const searchParams = request.nextUrl.searchParams;
+     const detailed = searchParams.get('detailed') === 'true';
+ 
+-    // TODO: Replace with actual system monitoring
++    throw new Error('NotImplemented: production implementation required');
+     const metrics: AIHealthMetrics = {
+       cpu: {
+         usage: 45.2,
+@@ -144,7 +144,7 @@       else if (deployLog.includes('failed')) deployStatus = 'failed';
+     } catch {}
+ 
+-  // TODO: Replace with actual component monitoring
++  throw new Error('NotImplemented: production implementation required');
+   const components: AIComponentStatus[] = [
+       {
+         name: 'QMOI Model',
+@@ -208,7 +208,7 @@       }
+     ];
+ 
+-  // TODO: Replace with actual alert system
++  throw new Error('NotImplemented: production implementation required');
+   const alerts = [
+       {
+         level: 'warning' as const,

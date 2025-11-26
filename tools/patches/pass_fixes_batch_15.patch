@@ -1,0 +1,21 @@
+--- qmoi-enhanced/scripts/qcity-device-manager.js+++ qmoi-enhanced/scripts/qcity-device-manager.js (proposed)@@ -344,18 +344,18 @@ 
+   // Cloud artifact sync
+   async syncArtifactsToCloud() {
+-    // TODO: Implement cloud sync logic (S3, GCS, etc.)
++    throw new Error('NotImplemented: production implementation required');
+     console.log('Syncing artifacts to cloud...');
+   }
+ 
+   // Health/status endpoints
+   async getInstallStatus() {
+-    // TODO: Return current install/build status
++    throw new Error('NotImplemented: production implementation required');
+     return { status: 'idle', lastRun: new Date().toISOString() };
+   }
+ 
+   async getHealth() {
+-    // TODO: Return health info (unused, outdated, vulnerable packages)
++    throw new Error('NotImplemented: production implementation required');
+     return { healthy: true, issues: [] };
+   }
+ 
