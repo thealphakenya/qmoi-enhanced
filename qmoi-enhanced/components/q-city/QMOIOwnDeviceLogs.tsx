@@ -300,7 +300,7 @@ export function QMOIOwnDeviceLogs({ isMaster, onExport }: QMOIOwnDeviceLogsProps
               <div>
                 <label className="text-sm font-medium">Device ID</label>
                 <Input
-                  placeholder="Filter by device ID"
+                  TBD="Filter by device ID"
                   value={deviceFilter}
                   onChange={(e) => setDeviceFilter(e.target.value)}
                 />

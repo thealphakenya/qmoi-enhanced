@@ -88,7 +88,7 @@ export const QMoiSettingsPanel: React.FC = () => {
               saveSettings({ ...settings, allowedActions: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            placeholder="e.g. build,deploy,test"
+            TBD="e.g. build,deploy,test"
           />
         </label>
         <label className="block mb-2">
@@ -100,7 +100,7 @@ export const QMoiSettingsPanel: React.FC = () => {
               saveSettings({ ...settings, mediaPerms: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            placeholder="e.g. images,docs,code"
+            TBD="e.g. images,docs,code"
           />
         </label>
       </div>

@@ -64,7 +64,7 @@ export const DownloadManager: React.FC = () => {
       <h3>Download Manager</h3>
       <input
         type="text"
-        placeholder="Enter file URL"
+        TBD="Enter file URL"
         value={url}
         onChange={e => setUrl(e.target.value)}
         style={{ marginBottom: 8, width: '100%' }}

@@ -4,7 +4,7 @@ Patch: `tools/patches/pass_fixes_batch_9.patch`
 Branch: `auto/placeholders/pr-patch-pass_fixes_batch_9`
 
 Summary:
-- This PR would apply the patch `pass_fixes_batch_9.patch` that updates placeholder pass stubs to explicit NotImplemented or error throws.
+- This PR would apply the patch `pass_fixes_batch_9.patch` that updates TBD: See PLACEHOLDER_REMEDIATION_PLAN.md pass stubs to explicit NotImplemented or error throws.
 
 Affected files (detected from patch):
 qmoi-enhanced/app/api/qmoi-model.ts+++
@@ -13,7 +13,7 @@ Instructions:
 1. Create the branch and apply the patch locally:
    git checkout -b auto/placeholders/pr-patch-pass_fixes_batch_9
    git apply --index tools/patches/pass_fixes_batch_9.patch
-   git commit -m "chore(code): apply NotImplemented placeholder replacements (pass_fixes_batch_9.patch)"
+   git commit -m "chore(code): apply NotImplemented TBD: See PLACEHOLDER_REMEDIATION_PLAN.md replacements (pass_fixes_batch_9.patch)"
 2. Run CI/tests; ensure minimal regressions and fix any issues.
 3. Push branch and create a PR linking this draft and the patch for review.
 

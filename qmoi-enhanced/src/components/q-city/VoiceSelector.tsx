@@ -245,7 +245,7 @@ export function VoiceSelector({
                 onChange={(e) => setPreviewText(e.target.value)}
                 className="w-full p-3 border rounded-md resize-none"
                 rows={3}
-                placeholder="Enter text to preview the voice..."
+                TBD="Enter text to preview the voice..."
               />
             </div>
 

@@ -31,8 +31,8 @@ export const AutomationRulesPanel: React.FC = () => {
         ))}
       </ul>
       <div style={{ marginTop: 12 }}>
-        <input placeholder="Trigger (event type)" value={trigger} onChange={e => setTrigger(e.target.value)} style={{ marginRight: 8 }} />
-        <input placeholder="Action (e.g., notify, offload)" value={action} onChange={e => setAction(e.target.value)} style={{ marginRight: 8 }} />
+        <input TBD="Trigger (event type)" value={trigger} onChange={e => setTrigger(e.target.value)} style={{ marginRight: 8 }} />
+        <input TBD="Action (e.g., notify, offload)" value={action} onChange={e => setAction(e.target.value)} style={{ marginRight: 8 }} />
         <button onClick={addRule}>Add Rule</button>
       </div>
     </div>

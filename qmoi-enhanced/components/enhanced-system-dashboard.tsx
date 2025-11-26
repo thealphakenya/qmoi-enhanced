@@ -465,7 +465,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                       <CardDescription>Configure and manage your devices</CardDescription>
                       <input
                         type="text"
-                        placeholder="Search devices..."
+                        TBD="Search devices..."
                         value={deviceSearch}
                         onChange={e => setDeviceSearch(e.target.value)}
                         style={{ marginTop: 8, marginBottom: 8, width: 200 }}
@@ -579,7 +579,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                       <PluginHelpModal />
                       <input
                         type="text"
-                        placeholder="Search plugins..."
+                        TBD="Search plugins..."
                         value={pluginSearch}
                         onChange={e => setPluginSearch(e.target.value)}
                         style={{ marginTop: 8, marginBottom: 8, width: 200 }}

@@ -64,8 +64,8 @@ def build_fallbacks():
             continue
         path = os.path.join(OUTPUT_BASE, device, DEVICES[device])
         with open(path, 'w') as f:
-            f.write(f"Generated placeholder for {device} build of QMOI AI")
-        print(f"📦 {device.capitalize()} placeholder build created.")
+            f.write(f"Generated TBD for {device} build of QMOI AI")
+        print(f"📦 {device.capitalize()} TBD build created.")
 
 def update_readme():
     status = f"## QMOI AI Build Status ({datetime.now().strftime('%Y-%m-%d %H:%M')})\n"

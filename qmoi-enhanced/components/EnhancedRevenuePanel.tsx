@@ -271,7 +271,7 @@ export default function EnhancedRevenuePanel() {
             <Input
               id="master-key"
               type="password"
-              placeholder="Enter master key"
+              TBD="Enter master key"
               value={masterKey}
               onChange={(e) => setMasterKey(e.target.value)}
             />
@@ -449,7 +449,7 @@ export default function EnhancedRevenuePanel() {
                   <Label>Daily Target (KES)</Label>
                   <Input
                     type="number"
-                    placeholder="Enter target amount"
+                    TBD="Enter target amount"
                     value={targetAmount}
                     onChange={(e) => setTargetAmount(e.target.value)}
                   />
@@ -484,7 +484,7 @@ export default function EnhancedRevenuePanel() {
                   <Label>Amount (KES)</Label>
                   <Input
                     type="number"
-                    placeholder="Enter amount"
+                    TBD="Enter amount"
                     value={transferAmount}
                     onChange={(e) => setTransferAmount(e.target.value)}
                   />

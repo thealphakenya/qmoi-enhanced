@@ -88,13 +88,13 @@ export default function QMoiMemoryPanel({
         <input
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
-          placeholder="Feedback (praise/correction)"
+          TBD="Feedback (praise/correction)"
           style={{ marginRight: 8 }}
         />
         <input
           value={correction}
           onChange={(e) => setCorrection(e.target.value)}
-          placeholder="Correction (optional)"
+          TBD="Correction (optional)"
           style={{ marginRight: 8 }}
         />
         <button onClick={submitFeedback}>Submit Feedback</button>

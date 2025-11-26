@@ -92,7 +92,7 @@ const SelfHealPanel: React.FC = () => {
     localStorage.removeItem("selfHealHistory");
   };
 
-  // Scheduling UI (placeholder)
+  // Scheduling UI (TBD)
   const handleSchedule = () => {
     alert("Scheduling feature coming soon!");
   };

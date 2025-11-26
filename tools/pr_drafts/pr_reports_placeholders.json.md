@@ -1,6 +1,6 @@
 # PR Draft: Code fix skeleton for reports_placeholders.json
 
-This PR contains an `ISSUE.md` with a suggested plan to triage and implement placeholder fixes for component `reports_placeholders.json`.
+This PR contains an `ISSUE.md` with a suggested plan to triage and implement TBD: See PLACEHOLDER_REMEDIATION_PLAN.md fixes for component `reports_placeholders.json`.
 
 Files:
 

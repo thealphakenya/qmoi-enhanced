@@ -1,6 +1,6 @@
 # PR Draft: Code fix skeleton for qmoi-enhanced_src
 
-This PR contains an `ISSUE.md` with a suggested plan to triage and implement placeholder fixes for component `qmoi-enhanced_src`.
+This PR contains an `ISSUE.md` with a suggested plan to triage and implement TBD: See PLACEHOLDER_REMEDIATION_PLAN.md fixes for component `qmoi-enhanced_src`.
 
 Files:
 

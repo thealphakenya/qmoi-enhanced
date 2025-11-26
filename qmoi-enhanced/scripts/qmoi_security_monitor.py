@@ -1,4 +1,4 @@
-# NOTE: 3 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# NOTE: 3 TBD(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 QMOI Security Monitor

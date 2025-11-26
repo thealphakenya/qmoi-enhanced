@@ -40,19 +40,19 @@ export default function AuditLogPanel() {
       <h3 className="font-bold text-cyan-400 mb-2">Audit Log Panel</h3>
       <div className="flex gap-2 mb-2">
         <input
-          placeholder="Action"
+          TBD="Action"
           value={filter.action}
           onChange={(e) => setFilter((f) => ({ ...f, action: e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <input
-          placeholder="User"
+          TBD="User"
           value={filter.user}
           onChange={(e) => setFilter((f) => ({ ...f, user: e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <input
-          placeholder="Device"
+          TBD="Device"
           value={filter.deviceId}
           onChange={(e) =>
             setFilter((f) => ({ ...f, deviceId: e.target.value }))
@@ -60,7 +60,7 @@ export default function AuditLogPanel() {
           className="bg-gray-800 p-1 rounded"
         />
         <input
-          placeholder="Status"
+          TBD="Status"
           value={filter.status}
           onChange={(e) => setFilter((f) => ({ ...f, status: e.target.value }))}
           className="bg-gray-800 p-1 rounded"

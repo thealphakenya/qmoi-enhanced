@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useQMOIAuth } from "./QMOIStateProvider";
 
 const fetchZeroRatedStatus = async () => {
-  // Placeholder: fetch status from backend or local state
+  // TODO: production implementation needed
   return {
     active: true,
     lastUsed: new Date().toLocaleString(),

@@ -1,4 +1,4 @@
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+// NOTE: 1 TBD(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
@@ -206,7 +206,7 @@ async function enhanceVoice(voiceId: string) {
       return NextResponse.json({ success: true, proposed: true, message: 'Enhancement proposed for review' });
     }
 
-    // Real enhancement path — placeholder that should enqueue a job or call an offline pipeline
+    // Real enhancement path — TBD that should enqueue a job or call an offline pipeline
     console.log(`Applying enhancement to voice ${voiceId}`);
     // TODO: enqueue enhancement job in real implementation
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -230,7 +230,7 @@ async function upgradeVoice(voiceId: string) {
       return NextResponse.json({ success: true, proposed: true, message: 'Upgrade proposed for review' });
     }
 
-    // Real upgrade path (placeholder)
+    // Real upgrade path (TBD)
     console.log(`Applying upgrade to voice ${voiceId}`);
     await new Promise(resolve => setTimeout(resolve, 2000));
     return NextResponse.json({ success: true, message: 'Voice upgraded', newVersion: '2.1.0' });

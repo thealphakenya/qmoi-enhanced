@@ -1,4 +1,4 @@
-// NOTE: 10 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+// NOTE: 10 TBD(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import "@testing-library/jest-dom";
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] fetch globally

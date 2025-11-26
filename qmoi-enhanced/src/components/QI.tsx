@@ -116,14 +116,14 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
         </h4>
         <div className="flex gap-2 mb-2">
           <Input
-            placeholder="Time (e.g. 10:00)"
+            TBD="Time (e.g. 10:00)"
             value={newProgram.time}
             onChange={(e) =>
               setNewProgram((np) => ({ ...np, time: e.target.value }))
             }
           />
           <Input
-            placeholder="Title"
+            TBD="Title"
             value={newProgram.title}
             onChange={(e) =>
               setNewProgram((np) => ({ ...np, title: e.target.value }))

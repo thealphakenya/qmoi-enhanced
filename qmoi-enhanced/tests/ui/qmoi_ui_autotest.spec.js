@@ -1,4 +1,4 @@
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+// NOTE: 1 TBD(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { test, expect } from '@playwright/test';
 
 test('QMOI dashboard loads and shows health', async ({ page }) => {

@@ -283,7 +283,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
           {/* Search and Filter */}
           <div className="flex gap-2">
             <Input
-              placeholder="Search media files..."
+              TBD="Search media files..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1"
@@ -307,7 +307,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
             </Button>
           </div>
 
-          {/* Upload Button (placeholder) */}
+          {/* Upload Button (TBD) */}
           <div className="mb-2 flex items-center gap-2">
             <span className={`px-2 py-1 rounded text-xs ${healthStatus === 'ok' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>Health: {healthStatus}</span>
           </div>

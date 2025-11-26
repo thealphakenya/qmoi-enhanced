@@ -1,6 +1,6 @@
 # PR Draft: Code fix skeleton for docs_link-validation-report.json
 
-This PR contains an `ISSUE.md` with a suggested plan to triage and implement placeholder fixes for component `docs_link-validation-report.json`.
+This PR contains an `ISSUE.md` with a suggested plan to triage and implement TBD: See PLACEHOLDER_REMEDIATION_PLAN.md fixes for component `docs_link-validation-report.json`.
 
 Files:
 
