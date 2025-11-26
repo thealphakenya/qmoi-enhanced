@@ -1,8 +1,8 @@
-# Epic: P0 Placeholder Remediation (Critical)
+# Epic: P0 TBD: See PLACEHOLDER_REMEDIATION_PLAN.md Remediation (Critical)
 
 Summary
 -------
-This epic collects all critical (P0) files containing `placeholder` tokens. These files usually include backend APIs, core services, and test suites that affect production behavior. Each file should be triaged and assigned to an owner for review and production-ready implementation.
+This epic collects all critical (P0) files containing `TBD: See PLACEHOLDER_REMEDIATION_PLAN.md` tokens. These files usually include backend APIs, core services, and test suites that affect production behavior. Each file should be triaged and assigned to an owner for review and production-ready implementation.
 
 Counts & current state
 ----------------------
@@ -18,7 +18,7 @@ Top priority guidance (for triage)
 
 Suggested workflow
 ------------------
-- Create an issue for each P0 file (or group them by component) and tag with `P0`, `triage:placeholder`, `owner:area`.
+- Create an issue for each P0 file (or group them by component) and tag with `P0`, `triage:TBD: See PLACEHOLDER_REMEDIATION_PLAN.md`, `owner:area`.
 - Assign to domain experts by component (API, payments, trading, AI, web) and set a short due date.
 - For each issue, propose a small PR that replaces `pass` with explicit NotImplemented/Error or provides minimal safe implementation, run CI, and merge.
 - Post-merge: run extended test suites (integration/e2e/unit) and manually validate critical API endpoints.
