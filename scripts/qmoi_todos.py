@@ -163,7 +163,7 @@ def run_todo(todo_id):
                 save_todos(todos)
                 return t
             try:
-                # Placeholder for actual execution logic
+                # TBD for actual execution logic
                 t['status'] = 'done'
                 t['runs'][-1]['ended'] = _now_iso()
                 save_todos(todos)

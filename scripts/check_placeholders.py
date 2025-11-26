@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scan repository for common placeholders (TODO, FIXME, PLACEHOLDER) and emit a report.
+"""Scan repository for common placeholders (TODO, FIXME, TBD) and emit a report.
 
 Usage:
   python3 scripts/check_placeholders.py --report placeholders.json
@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE = {'.git','node_modules','venv','.venv','.qmoi_validation'}
-PATTERN = re.compile(r"\b(TODO|FIXME|PLACEHOLDER)\b", re.IGNORECASE)
+PATTERN = re.compile(r"\b(TODO|FIXME|TBD)\b", re.IGNORECASE)
 
 def should_exclude(path: Path):
     for p in path.parts:

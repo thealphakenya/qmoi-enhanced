@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Copy real binaries from `Qmoi_downloaded_apps/` into the `downloads/` tree
-(replacing placeholder stubs). Preserves directory structure and permissions.
+(replacing TBD stubs). Preserves directory structure and permissions.
 """
 import os
 import shutil

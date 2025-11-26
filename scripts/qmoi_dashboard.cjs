@@ -98,8 +98,8 @@ function requireAuth(req, res, next) {
   res.send(`
     <form method="POST" action="/login" style="max-width:400px;margin:40px auto;padding:24px;background:#f9f9f9;border-radius:12px;box-shadow:0 2px 8px #0001;">
       <h2 style="text-align:center;color:#2563eb;">QMOI Dashboard Login</h2>
-      <label>Username:<br/><input name="user" placeholder="Username" required style="width:100%;padding:8px;margin-bottom:8px;"/></label><br/>
-      <label>Password:<br/><input name="pass" type="password" placeholder="Password" required style="width:100%;padding:8px;margin-bottom:8px;"/></label><br/>
+      <label>Username:<br/><input name="user" TBD="Username" required style="width:100%;padding:8px;margin-bottom:8px;"/></label><br/>
+      <label>Password:<br/><input name="pass" type="password" TBD="Password" required style="width:100%;padding:8px;margin-bottom:8px;"/></label><br/>
       <label><input type="checkbox" name="biometrics" value="enabled"/> Use Biometrics (if available)</label><br/>
       <button type="submit" style="width:100%;padding:10px;background:#2563eb;color:#fff;border:none;border-radius:6px;font-size:16px;">Login</button>
       <div style="margin-top:16px;text-align:center;font-size:13px;color:#888;">Master: Victor/Victor9798!<br/>Sister: Leah/Leah2025!</div>

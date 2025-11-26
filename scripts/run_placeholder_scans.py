@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Wrapper to run placeholder scanners safely with timeouts and capture reports.
+Wrapper to run TBD scanners safely with timeouts and capture reports.
 
 Runs:
  - scripts/scan_replace_placeholders.py (repo-wide scan)

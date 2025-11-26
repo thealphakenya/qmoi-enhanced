@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit GitHub releases for placeholder/corrupt assets and create issues for flagged releases.
+"""Audit GitHub releases for TBD/corrupt assets and create issues for flagged releases.
 
 Outputs:
  - tools/releases_api.json  (raw API output should be fetched before running)
@@ -34,8 +34,8 @@ def suspicious_asset(a):
     size = a.get('size', 0)
     url = a.get('browser_download_url') or a.get('url') or ''
     # heuristics
-    if 'placeholder' in name or 'example' in name:
-        return 'name-placeholder'
+    if 'TBD' in name or 'example' in name:
+        return 'name-TBD'
     if size == 0 or size < 1024:
         return 'small-size'
     if 'downloads.qmoi.app' in url or url.startswith('http://downloads.'):
@@ -58,8 +58,8 @@ for r in releases:
         s = suspicious_asset(a)
         if s:
             release_flags.append({'asset': a.get('name'), 'issue': s, 'size': a.get('size'), 'url': a.get('browser_download_url')})
-    # also flag if body contains "BROKEN" or "placeholder"
-    if 'broken' in body.lower() or 'placeholder' in body.lower():
+    # also flag if body contains "BROKEN" or "TBD"
+    if 'broken' in body.lower() or 'TBD' in body.lower():
         release_flags.append('body-indicates-broken')
     if release_flags:
         flags.append({'tag': tag, 'name': name, 'id': r.get('id'), 'html_url': r.get('html_url'), 'flags': release_flags})
@@ -101,14 +101,14 @@ if CREATE and TOKEN and flags:
     repo = 'thealphakenya/qmoi-enhanced'
     headers = {'Authorization': f'token {TOKEN}', 'Accept': 'application/vnd.github.v3+json'}
     for fr in flags:
-        title = f"Release audit: {fr['name']} ({fr['tag']}) — assets appear placeholder/corrupt"
+        title = f"Release audit: {fr['name']} ({fr['tag']}) — assets appear TBD/corrupt"
         body_lines = [f"Automated audit detected potential issues with release **{fr['name']}** (`{fr['tag']}`).", '', 'Flags:']
         for item in fr['flags']:
             if isinstance(item, dict):
                 body_lines.append(f"- Asset `{item['asset']}`: {item['issue']}, size {item['size']}, url: {item.get('url')}")
             else:
                 body_lines.append(f"- {item}")
-        body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is placeholder or intentionally deprecated, mark it as draft or remove it after backup.', '', 'This issue was created by an automated audit script.']
+        body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is TBD or intentionally deprecated, mark it as draft or remove it after backup.', '', 'This issue was created by an automated audit script.']
         payload = {'title': title, 'body': '\n'.join(body_lines), 'labels': ['release-audit','automation']}
         r = requests.post(f'https://api.github.com/repos/{repo}/issues', headers=headers, json=payload)
         if r.status_code == 201:

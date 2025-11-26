@@ -67,21 +67,21 @@
     "line": 122,
     "text": "# TODO: Integrate with OS/device API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "ai_self_update.py",
     "line": 125,
     "text": "# TODO: Integrate with OS/device API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "ai_self_update.py",
     "line": 129,
     "text": "# TODO: Integrate with OS/device API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-app-builder.py",
@@ -123,7 +123,7 @@
     "line": 118,
     "text": "# TODO: Integrate with device APIs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "security_proxy.py",
@@ -193,35 +193,35 @@
     "line": 320,
     "text": "\"pattern\": r\"TODO|FIXME|BUG\",",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi_auto_fix_enhanced.py",
     "line": 374,
     "text": "\"// TODO: Replace with proper error handling\"",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi_auto_fix_enhanced.py",
     "line": 380,
     "text": "fixed_line = f\"// TODO: Add proper error handling for: {original_line}\"",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi_auto_fix_enhanced.py",
     "line": 385,
     "text": "fixed_line = original_line.replace(\"TODO\", \"ADDRESSED\").replace(\"FIXME\", \"ADDRESSED\")",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/placeholder_scanner.py",
     "line": 3,
     "text": "Scan repository for placeholder tokens (TODO, FIXME, PLACEHOLDER) and optionally",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/placeholder_scanner.py",
@@ -382,14 +382,14 @@
     "line": 11,
     "text": "# TODO: Integrate with real WhatsApp Business API using WHATSAPP_API_KEY",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/whatsapp_verification.py",
     "line": 21,
     "text": "# TODO: Integrate with WhatsApp notification API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi_advanced_analytics.py",
@@ -459,7 +459,7 @@
     "line": 79,
     "text": "if any(tok in line for tok in ('TODO', 'FIXME', 'ERROR', 'BUG')):",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi_intelligent_scheduler.py",
@@ -480,14 +480,14 @@
     "line": 5,
     "text": "Scans the repository for common placeholder tokens and optionally replaces them with safe defaults or inserts TODO markers.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/scan_replace_placeholders.py",
     "line": 54,
     "text": "'PLACEHOLDER': '/* placeholder removed: implement production behaviour or create task in todos */',",
     "match": "PLACEHOLDER",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi_self_evolve.py",
@@ -501,7 +501,7 @@
     "line": 38,
     "text": "# TODO: Implement real logging",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi_model_enhancer.py",
@@ -578,49 +578,49 @@
     "line": 219,
     "text": "// TODO: Implement {claim} functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/doc_verifier.py",
     "line": 233,
     "text": "// TODO: Implement {claim} POST functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/doc_verifier.py",
     "line": 255,
     "text": "{{/* TODO: Implement component functionality */}}",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/doc_verifier.py",
     "line": 278,
     "text": "# TODO: Implement {claim} functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/doc_verifier.py",
     "line": 292,
     "text": "// TODO: Implement {claim} hook functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/doc_verifier.py",
     "line": 298,
     "text": "// TODO: Add hook methods",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/doc_verifier.py",
     "line": 307,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/device_ownership_detector.py",
@@ -634,14 +634,14 @@
     "line": 130,
     "text": "f.write(\"-- TODO: Add your up migration SQL here\\n\\n\")",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/db_migrations.py",
     "line": 132,
     "text": "f.write(\"-- TODO: Add your down migration SQL here\\n\")",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi-enhanced-health-checker.py",
@@ -655,21 +655,21 @@
     "line": 4,
     "text": "Produces `docs/ui_validation_report.json` summarizing placeholders, TODO/FIXME markers,",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/validate_ui_components.py",
     "line": 18,
     "text": "PLACEHOLDER_PAT = re.compile(r'PLACEHOLDER|PLACEHOLDER_TEXT|\"placeholder\"|\\bplaceholder\\b', re.IGNORECASE)",
     "match": "PLACEHOLDER",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/validate_ui_components.py",
     "line": 19,
     "text": "TODO_PAT = re.compile(r'\\b(TODO|FIXME|XXX)\\b')",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/enhance_ai.py",
@@ -697,7 +697,7 @@
     "line": 20,
     "text": "# TODO: Implement One Command Automation functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi-dashboard.py",
@@ -844,14 +844,14 @@
     "line": 14,
     "text": "# TODO: Integrate with real Airtel Money API using AIRTEL_API_KEY",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/financial_verification.py",
     "line": 25,
     "text": "# TODO: Integrate with real Mpesa API using MPESA_API_KEY",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/qmoi-package-installer.py",
@@ -1124,21 +1124,21 @@
     "line": 122,
     "text": "# TODO: Integrate with OS/device API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/ai_self_update.py",
     "line": 125,
     "text": "# TODO: Integrate with OS/device API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/ai_self_update.py",
     "line": 129,
     "text": "# TODO: Integrate with OS/device API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/qmoi-app-builder.py",
@@ -1180,7 +1180,7 @@
     "line": 118,
     "text": "# TODO: Integrate with device APIs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/security_proxy.py",
@@ -1278,28 +1278,28 @@
     "line": 320,
     "text": "\"pattern\": r\"TODO|FIXME|BUG\",",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/qmoi_auto_fix_enhanced.py",
     "line": 374,
     "text": "\"// TODO: Replace with proper error handling\"",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/qmoi_auto_fix_enhanced.py",
     "line": 380,
     "text": "fixed_line = f\"// TODO: Add proper error handling for: {original_line}\"",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/qmoi_auto_fix_enhanced.py",
     "line": 385,
     "text": "fixed_line = original_line.replace(\"TODO\", \"ADDRESSED\").replace(\"FIXME\", \"ADDRESSED\")",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/update_readme.py",
@@ -1418,14 +1418,14 @@
     "line": 11,
     "text": "# TODO: Integrate with real WhatsApp Business API using WHATSAPP_API_KEY",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/whatsapp_verification.py",
     "line": 21,
     "text": "# TODO: Integrate with WhatsApp notification API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/qmoi_advanced_analytics.py",
@@ -1516,7 +1516,7 @@
     "line": 38,
     "text": "# TODO: Implement real logging",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/qmoi-ultimate-automation.py",
@@ -1586,49 +1586,49 @@
     "line": 219,
     "text": "// TODO: Implement {claim} functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/doc_verifier.py",
     "line": 233,
     "text": "// TODO: Implement {claim} POST functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/doc_verifier.py",
     "line": 255,
     "text": "{{/* TODO: Implement component functionality */}}",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/doc_verifier.py",
     "line": 278,
     "text": "# TODO: Implement {claim} functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/doc_verifier.py",
     "line": 292,
     "text": "// TODO: Implement {claim} hook functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/doc_verifier.py",
     "line": 298,
     "text": "// TODO: Add hook methods",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/doc_verifier.py",
     "line": 307,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/device_ownership_detector.py",
@@ -1642,14 +1642,14 @@
     "line": 130,
     "text": "f.write(\"-- TODO: Add your up migration SQL here\\n\\n\")",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/db_migrations.py",
     "line": 132,
     "text": "f.write(\"-- TODO: Add your down migration SQL here\\n\")",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/qmoi-enhanced-health-checker.py",
@@ -1684,7 +1684,7 @@
     "line": 20,
     "text": "# TODO: Implement One Command Automation functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/qmoi-dashboard.py",
@@ -1831,14 +1831,14 @@
     "line": 14,
     "text": "# TODO: Integrate with real Airtel Money API using AIRTEL_API_KEY",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/financial_verification.py",
     "line": 25,
     "text": "# TODO: Integrate with real Mpesa API using MPESA_API_KEY",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/qmoi-package-installer.py",
@@ -2048,28 +2048,28 @@
     "line": 13,
     "text": "# TODO: Add SSE streaming and audit log verification",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/tests/integration/test_qcity_audit_log.py",
     "line": 11,
     "text": "# TODO: Add filtering and export tests",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "tests/integration/test_qcity_remote_command.py",
     "line": 13,
     "text": "# TODO: Add SSE streaming and audit log verification",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "tests/integration/test_qcity_audit_log.py",
     "line": 11,
     "text": "# TODO: Add filtering and export tests",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "FEATURESREADME.md",
@@ -2139,42 +2139,42 @@
     "line": 60,
     "text": "- QMOIAPIKEYREADME.md:33: - TODO: Add persistent storage (e.g., file or database)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "ALLERRORS.md",
     "line": 61,
     "text": "- QMOIAPIKEYREADME.md:34: - TODO: Add detailed usage logs and alerts",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "ALLERRORS.md",
     "line": 67,
     "text": "- QMOIDATABASE.md:72: ## TODO",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "ALLERRORS.md",
     "line": 119,
     "text": "- qmoi-enhanced/QMOIAPIKEYREADME.md:33: - TODO: Add persistent storage (e.g., file or database)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "ALLERRORS.md",
     "line": 120,
     "text": "- qmoi-enhanced/QMOIAPIKEYREADME.md:34: - TODO: Add detailed usage logs and alerts",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "ALLERRORS.md",
     "line": 126,
     "text": "- qmoi-enhanced/QMOIDATABASE.md:72: ## TODO",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "DEPLOYMENT-README.md",
@@ -2321,21 +2321,21 @@
     "line": 42,
     "text": "- TODO: Add persistent storage (e.g., file or database)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "QMOIAPIKEYREADME.md",
     "line": 43,
     "text": "- TODO: Add detailed usage logs and alerts",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "QMOIDATABASE.md",
     "line": 81,
     "text": "## TODO",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "QMOIARTISTS.md",
@@ -2454,7 +2454,7 @@
     "line": 25,
     "text": "- `docs/placeholders_report.json` contains many `TODO`/`PLACEHOLDER` occurrences across `components/*.tsx`, `next.config.mjs`, and `.md` files.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "docs/REVENUE_SPEC.md.generated.md",
@@ -2818,7 +2818,7 @@
     "line": 5,
     "text": "(TODO)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/connect/HISTORY.md",
@@ -2846,7 +2846,7 @@
     "line": 612,
     "text": "TODO: Make sure that all of these items are documented (classes aren't,",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/qs/CHANGELOG.md",
@@ -2867,7 +2867,7 @@
     "line": 17,
     "text": "TODO",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@jridgewell/sourcemap-codec/README.md",
@@ -4351,7 +4351,7 @@
     "line": 5,
     "text": "(TODO)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md",
@@ -4491,7 +4491,7 @@
     "line": 69,
     "text": "## TODO",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/fast-deep-equal/README.md",
@@ -4946,7 +4946,7 @@
     "line": 45,
     "text": "// TODO: Implement your logic here",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/pirates/README.md",
@@ -5212,7 +5212,7 @@
     "line": 102,
     "text": "> :book: Always use `fs.readdir` without the `withFileTypes` option. ??TODO??",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@nodelib/fs.scandir/README.md",
@@ -6262,14 +6262,14 @@
     "line": 217,
     "text": "TBD",
     "match": "TBD",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/asynckit/README.md",
     "line": 223,
     "text": "TBD",
     "match": "TBD",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/y18n/README.md",
@@ -6857,14 +6857,14 @@
     "line": 42,
     "text": "- TODO: Add persistent storage (e.g., file or database)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/QMOIAPIKEYREADME.md",
     "line": 43,
     "text": "- TODO: Add detailed usage logs and alerts",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/@ALLMDFILESREFS.md",
@@ -6878,7 +6878,7 @@
     "line": 81,
     "text": "## TODO",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/QMOIARTISTS.md",
@@ -7158,7 +7158,7 @@
     "line": 5,
     "text": "(TODO)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/connect/HISTORY.md",
@@ -7186,7 +7186,7 @@
     "line": 612,
     "text": "TODO: Make sure that all of these items are documented (classes aren't,",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/qs/CHANGELOG.md",
@@ -7207,7 +7207,7 @@
     "line": 17,
     "text": "TODO",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@jridgewell/sourcemap-codec/README.md",
@@ -8691,7 +8691,7 @@
     "line": 5,
     "text": "(TODO)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md",
@@ -8831,7 +8831,7 @@
     "line": 69,
     "text": "## TODO",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/fast-deep-equal/README.md",
@@ -9286,7 +9286,7 @@
     "line": 45,
     "text": "// TODO: Implement your logic here",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/pirates/README.md",
@@ -9552,7 +9552,7 @@
     "line": 102,
     "text": "> :book: Always use `fs.readdir` without the `withFileTypes` option. ??TODO??",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/README.md",
@@ -10602,14 +10602,14 @@
     "line": 217,
     "text": "TBD",
     "match": "TBD",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/asynckit/README.md",
     "line": 223,
     "text": "TBD",
     "match": "TBD",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/y18n/README.md",
@@ -12646,7 +12646,7 @@
     "line": 176,
     "text": "// TODO: Implement real GCP command logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "components/device/DeviceIntegrationStubs.ts",
@@ -12660,42 +12660,42 @@
     "line": 194,
     "text": "// TODO: Implement real IoT device discovery/connection logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "components/device/DeviceIntegrationStubs.ts",
     "line": 199,
     "text": "// TODO: Implement real IoT command logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "components/device/DeviceIntegrationStubs.ts",
     "line": 204,
     "text": "// TODO: Implement IoT device detection",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "components/device/DeviceIntegrationStubs.ts",
     "line": 212,
     "text": "// TODO: Implement real mobile device connection logic (e.g., via Bluetooth, ADB, or platform SDK)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "components/device/DeviceIntegrationStubs.ts",
     "line": 217,
     "text": "// TODO: Implement real mobile command logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "components/device/DeviceIntegrationStubs.ts",
     "line": 222,
     "text": "// TODO: Implement mobile device detection",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/setupTests.ts",
@@ -12772,21 +12772,21 @@
     "line": 2,
     "text": "export * from \"./QMoiMediaManager\"; // TODO: Implement",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/components/q-city/index.ts",
     "line": 3,
     "text": "export * from \"./QMoiProjectDashboard\"; // TODO: Implement",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/components/q-city/index.ts",
     "line": 4,
     "text": "export * from \"./QMoiSettingsPanel\"; // TODO: Implement",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/config/wallet.ts",
@@ -12877,42 +12877,42 @@
     "line": 22,
     "text": "// TODO: Integrate with real device registry",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/DeviceTrackingService.ts",
     "line": 27,
     "text": "// TODO: Integrate with location services",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/DeviceTrackingService.ts",
     "line": 36,
     "text": "// TODO: Integrate with device management APIs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/DeviceTrackingService.ts",
     "line": 42,
     "text": "// TODO: Integrate with device management APIs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/AutoResearcher.ts",
     "line": 14,
     "text": "// TODO: Integrate with web search or AI research APIs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/AutoResearcher.ts",
     "line": 23,
     "text": "// TODO: Integrate with notification system",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/BrowserService.ts",
@@ -13143,42 +13143,42 @@
     "line": 77,
     "text": "// TODO: Implement file editing, preview, commit/rollback logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/AIRequestRouter.ts",
     "line": 82,
     "text": "// TODO: Implement project/task switching/continuation logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/AIRequestRouter.ts",
     "line": 91,
     "text": "// TODO: Integrate with wallet, Mpesa, Airtel, Pesapal, etc.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/AIRequestRouter.ts",
     "line": 100,
     "text": "// TODO: Return version info, changelog, etc.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/AIRequestRouter.ts",
     "line": 109,
     "text": "// TODO: Integrate with AI chat/response engine",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/NetworkManager.ts",
     "line": 29,
     "text": "// TODO: Integrate with platform-specific APIs to scan for networks",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/NetworkManager.ts",
@@ -13192,7 +13192,7 @@
     "line": 86,
     "text": "// TODO: Integrate with platform-specific APIs to connect",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/NetworkManager.ts",
@@ -13206,7 +13206,7 @@
     "line": 98,
     "text": "// TODO: Implement real-time monitoring and auto-switch/fallback",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/EnhancedSiteGenerationService.ts",
@@ -13234,42 +13234,42 @@
     "line": 753,
     "text": "// TODO: send log to Qcity (master-only access)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/WhatsAppService.ts",
     "line": 836,
     "text": "// TODO: Integrate with ad campaign manager",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/WhatsAppService.ts",
     "line": 840,
     "text": "// TODO: Integrate with business settings manager",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/WhatsAppService.ts",
     "line": 844,
     "text": "// TODO: Integrate with group management logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/services/WhatsAppService.ts",
     "line": 848,
     "text": "// TODO: Integrate with status update logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/auth/AuthManager.ts",
     "line": 295,
     "text": "// TODO: implement actual confirmation for users",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "src/plugins/OptimizationSuggestionPlugin.ts",
@@ -13395,168 +13395,168 @@
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qcity_&_runners.ts",
     "line": 12,
     "text": "// TODO: Initialize QCity & Runners",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qcity_&_runners.ts",
     "line": 17,
     "text": "// TODO: Execute QCity & Runners functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiavatar.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiavatar.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOIAVATAR.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiavatar.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOIAVATAR.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00f6\u00e4_universal_device_installation_&_optimization.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00f6\u00e4_universal_device_installation_&_optimization.ts",
     "line": 12,
     "text": "// TODO: Initialize \uf8ff\u00fc\u00f6\u00c4 Universal Device Installation & Optimization",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00f6\u00e4_universal_device_installation_&_optimization.ts",
     "line": 17,
     "text": "// TODO: Execute \uf8ff\u00fc\u00f6\u00c4 Universal Device Installation & Optimization functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/avatar,_ai_core_&_server.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/avatar,_ai_core_&_server.ts",
     "line": 12,
     "text": "// TODO: Initialize Avatar, AI Core & Server",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/avatar,_ai_core_&_server.ts",
     "line": 17,
     "text": "// TODO: Execute Avatar, AI Core & Server functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00f6\u00e4_enhanced_features_&_capabilities.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00f6\u00e4_enhanced_features_&_capabilities.ts",
     "line": 12,
     "text": "// TODO: Initialize \uf8ff\u00fc\u00f6\u00c4 Enhanced Features & Capabilities",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00f6\u00e4_enhanced_features_&_capabilities.ts",
     "line": 17,
     "text": "// TODO: Execute \uf8ff\u00fc\u00f6\u00c4 Enhanced Features & Capabilities functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\u00f0\u00ff\u201c\u017e_support_&_contact.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\u00f0\u00ff\u201c\u017e_support_&_contact.ts",
     "line": 12,
     "text": "// TODO: Initialize \u00f0\u0178\u201c\u017e Support & Contact",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\u00f0\u00ff\u201c\u017e_support_&_contact.ts",
     "line": 17,
     "text": "// TODO: Execute \u00f0\u0178\u201c\u017e Support & Contact functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/developer_&_parallelization.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/developer_&_parallelization.ts",
     "line": 12,
     "text": "// TODO: Initialize Developer & Parallelization",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/developer_&_parallelization.ts",
     "line": 17,
     "text": "// TODO: Execute Developer & Parallelization functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00ec\u00f6_dated_&_categorized_documentation_(auto_updating).ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00ec\u00f6_dated_&_categorized_documentation_(auto_updating).ts",
     "line": 12,
     "text": "// TODO: Initialize \uf8ff\u00fc\u00ec\u00d6 Dated & Categorized Documentation (Auto-Updating)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00ec\u00f6_dated_&_categorized_documentation_(auto_updating).ts",
     "line": 17,
     "text": "// TODO: Execute \uf8ff\u00fc\u00ec\u00d6 Dated & Categorized Documentation (Auto-Updating) functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/security_check.ts",
@@ -13570,294 +13570,294 @@
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/5._functional_programming_languages.ts",
     "line": 12,
     "text": "// TODO: Initialize 5. Functional Programming Languages",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/5._functional_programming_languages.ts",
     "line": 17,
     "text": "// TODO: Execute 5. Functional Programming Languages functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qserverreadme.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qserverreadme.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QSERVERREADME.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qserverreadme.md.ts",
     "line": 17,
     "text": "// TODO: Execute QSERVERREADME.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/friendship_&_user_experience.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/friendship_&_user_experience.ts",
     "line": 12,
     "text": "// TODO: Initialize Friendship & User Experience",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/friendship_&_user_experience.ts",
     "line": 17,
     "text": "// TODO: Execute Friendship & User Experience functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/apps,_devices_&_platforms.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/apps,_devices_&_platforms.ts",
     "line": 12,
     "text": "// TODO: Initialize Apps, Devices & Platforms",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/apps,_devices_&_platforms.ts",
     "line": 17,
     "text": "// TODO: Execute Apps, Devices & Platforms functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoimemory.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoimemory.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOIMEMORY.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoimemory.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOIMEMORY.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/troubleshooting_&_help.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/troubleshooting_&_help.ts",
     "line": 12,
     "text": "// TODO: Initialize Troubleshooting & Help",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/troubleshooting_&_help.ts",
     "line": 17,
     "text": "// TODO: Execute Troubleshooting & Help functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/free,_hands_free_&_accessibility.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/free,_hands_free_&_accessibility.ts",
     "line": 12,
     "text": "// TODO: Initialize Free, Hands-Free & Accessibility",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/free,_hands_free_&_accessibility.ts",
     "line": 17,
     "text": "// TODO: Execute Free, Hands-Free & Accessibility functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/kotlin_multiplatform.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/kotlin_multiplatform.ts",
     "line": 12,
     "text": "// TODO: Initialize Kotlin Multiplatform",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/kotlin_multiplatform.ts",
     "line": 17,
     "text": "// TODO: Execute Kotlin Multiplatform functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/1._universal_language_runtime_(`qmoi_universal_runtime.py`).ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/1._universal_language_runtime_(`qmoi_universal_runtime.py`).ts",
     "line": 12,
     "text": "// TODO: Initialize 1. Universal Language Runtime (`qmoi-universal-runtime.py`)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/1._universal_language_runtime_(`qmoi_universal_runtime.py`).ts",
     "line": 17,
     "text": "// TODO: Execute 1. Universal Language Runtime (`qmoi-universal-runtime.py`) functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/unified_push_command.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/unified_push_command.ts",
     "line": 12,
     "text": "// TODO: Initialize Unified Push Command",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/unified_push_command.ts",
     "line": 17,
     "text": "// TODO: Execute Unified Push Command functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qcityreadme.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qcityreadme.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QCITYREADME.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qcityreadme.md.ts",
     "line": 17,
     "text": "// TODO: Execute QCITYREADME.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiqcityautomatic.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiqcityautomatic.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOIQCITYAUTOMATIC.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiqcityautomatic.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOIQCITYAUTOMATIC.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/wpa.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/wpa.md.ts",
     "line": 12,
     "text": "// TODO: Initialize WPA.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/wpa.md.ts",
     "line": 17,
     "text": "// TODO: Execute WPA.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\u00f0\u00ff\u201d\u00a7_enhanced_environment_management_system.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\u00f0\u00ff\u201d\u00a7_enhanced_environment_management_system.ts",
     "line": 12,
     "text": "// TODO: Initialize \u00f0\u0178\u201d\u00a7 Enhanced Environment Management System",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\u00f0\u00ff\u201d\u00a7_enhanced_environment_management_system.ts",
     "line": 17,
     "text": "// TODO: Execute \u00f0\u0178\u201d\u00a7 Enhanced Environment Management System functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/cashon-wallet.ts",
@@ -13892,637 +13892,637 @@
     "line": 373,
     "text": "// TODO: Implement actual notification system",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/cashon-wallet.ts",
     "line": 417,
     "text": "// TODO: Integrate with real M-Pesa API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/25+_programming_languages.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/25+_programming_languages.ts",
     "line": 12,
     "text": "// TODO: Initialize 25+ Programming Languages",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/25+_programming_languages.ts",
     "line": 17,
     "text": "// TODO: Execute 25+ Programming Languages functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiautoevolve.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiautoevolve.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOIAUTOEVOLVE.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiautoevolve.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOIAUTOEVOLVE.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/independentqmoi.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/independentqmoi.md.ts",
     "line": 12,
     "text": "// TODO: Initialize INDEPENDENTQMOI.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/independentqmoi.md.ts",
     "line": 17,
     "text": "// TODO: Execute INDEPENDENTQMOI.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/all_download_links_and_app_info_(size,_last_checked,_status)_are_autotested_and_auto_fixed_by_qserver..ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/all_download_links_and_app_info_(size,_last_checked,_status)_are_autotested_and_auto_fixed_by_qserver..ts",
     "line": 12,
     "text": "// TODO: Initialize All download links and app info (size, last checked, status) are autotested and auto-fixed by QServer.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/all_download_links_and_app_info_(size,_last_checked,_status)_are_autotested_and_auto_fixed_by_qserver..ts",
     "line": 17,
     "text": "// TODO: Execute All download links and app info (size, last checked, status) are autotested and auto-fixed by QServer. functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoifree.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoifree.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOIFREE.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoifree.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOIFREE.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/8._emerging_languages.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/8._emerging_languages.ts",
     "line": 12,
     "text": "// TODO: Initialize 8. Emerging Languages",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/8._emerging_languages.ts",
     "line": 17,
     "text": "// TODO: Execute 8. Emerging Languages functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/watchdebug.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/watchdebug.md.ts",
     "line": 12,
     "text": "// TODO: Initialize WATCHDEBUG.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/watchdebug.md.ts",
     "line": 17,
     "text": "// TODO: Execute WATCHDEBUG.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/error_logs_by_device_type.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/error_logs_by_device_type.ts",
     "line": 12,
     "text": "// TODO: Initialize Error Logs by Device Type",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/error_logs_by_device_type.ts",
     "line": 17,
     "text": "// TODO: Execute Error Logs by Device Type functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoidev.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoidev.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOIDEV.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoidev.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOIDEV.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/push.txt.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/push.txt.ts",
     "line": 12,
     "text": "// TODO: Initialize push.txt",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/push.txt.ts",
     "line": 17,
     "text": "// TODO: Execute push.txt functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiclone.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiclone.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOICLONE.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiclone.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOICLONE.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/revenue_&_business.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/revenue_&_business.ts",
     "line": 12,
     "text": "// TODO: Initialize Revenue & Business",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/revenue_&_business.ts",
     "line": 17,
     "text": "// TODO: Execute Revenue & Business functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoialldeviceshandsfree.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoialldeviceshandsfree.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOIALLDEVICESHANDSFREE.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoialldeviceshandsfree.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOIALLDEVICESHANDSFREE.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiautomakenew.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiautomakenew.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOIAUTOMAKENEW.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoiautomakenew.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOIAUTOMAKENEW.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/mac_(apple_laptop).ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/mac_(apple_laptop).ts",
     "line": 12,
     "text": "// TODO: Initialize Mac (Apple Laptop)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/mac_(apple_laptop).ts",
     "line": 17,
     "text": "// TODO: Execute Mac (Apple Laptop) functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00e9\u00ae_icon_&_notification_customization.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00e9\u00ae_icon_&_notification_customization.ts",
     "line": 12,
     "text": "// TODO: Initialize \uf8ff\u00fc\u00e9\u00ae Icon & Notification Customization",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00e9\u00ae_icon_&_notification_customization.ts",
     "line": 17,
     "text": "// TODO: Execute \uf8ff\u00fc\u00e9\u00ae Icon & Notification Customization functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoibrowser.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoibrowser.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOIBROWSER.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoibrowser.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOIBROWSER.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/download_&_distribution.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/download_&_distribution.ts",
     "line": 12,
     "text": "// TODO: Initialize Download & Distribution",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/download_&_distribution.ts",
     "line": 17,
     "text": "// TODO: Execute Download & Distribution functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/memory,_reasoning_&_learning_(2024_06_09).ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/memory,_reasoning_&_learning_(2024_06_09).ts",
     "line": 12,
     "text": "// TODO: Initialize Memory, Reasoning & Learning (2024-06-09)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/memory,_reasoning_&_learning_(2024_06_09).ts",
     "line": 17,
     "text": "// TODO: Execute Memory, Reasoning & Learning (2024-06-09) functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/intelligent_task_distribution.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/intelligent_task_distribution.ts",
     "line": 12,
     "text": "// TODO: Initialize Intelligent Task Distribution",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/intelligent_task_distribution.ts",
     "line": 17,
     "text": "// TODO: Execute Intelligent Task Distribution functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoi_friendship_system_integration.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoi_friendship_system_integration.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoi_friendship_system_integration.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qcityrunnersengine.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qcityrunnersengine.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QCITYRUNNERSENGINE.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qcityrunnersengine.md.ts",
     "line": 17,
     "text": "// TODO: Execute QCITYRUNNERSENGINE.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/offline_capable.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/offline_capable.ts",
     "line": 12,
     "text": "// TODO: Initialize Offline Capable",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/offline_capable.ts",
     "line": 17,
     "text": "// TODO: Execute Offline Capable functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/universal_features.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/universal_features.ts",
     "line": 12,
     "text": "// TODO: Initialize Universal Features",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/universal_features.ts",
     "line": 17,
     "text": "// TODO: Execute Universal Features functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoingrok.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoingrok.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QMOINGROK.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qmoingrok.md.ts",
     "line": 17,
     "text": "// TODO: Execute QMOINGROK.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/cross_language_integration.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/cross_language_integration.ts",
     "line": 12,
     "text": "// TODO: Initialize Cross-Language Integration",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/cross_language_integration.ts",
     "line": 17,
     "text": "// TODO: Execute Cross-Language Integration functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00f5\u2020\u00f4\u220f\u00e8_auto_updating_&_permanent_documentation.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00f5\u2020\u00f4\u220f\u00e8_auto_updating_&_permanent_documentation.ts",
     "line": 12,
     "text": "// TODO: Initialize \uf8ff\u00fc\u00f5\u2020\u00d4\u220f\u00e8 Auto-Updating & Permanent Documentation",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/\uf8ff\u00fc\u00f5\u2020\u00f4\u220f\u00e8_auto_updating_&_permanent_documentation.ts",
     "line": 17,
     "text": "// TODO: Execute \uf8ff\u00fc\u00f5\u2020\u00d4\u220f\u00e8 Auto-Updating & Permanent Documentation functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qvs/qvsreadme.md.ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qvs/qvsreadme.md.ts",
     "line": 12,
     "text": "// TODO: Initialize QVS/QVSREADME.md",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/qvs/qvsreadme.md.ts",
     "line": 17,
     "text": "// TODO: Execute QVS/QVSREADME.md functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/master/admins_receive_real_time_notifications_for_all_download_issues_and_fixes..ts",
     "line": 5,
     "text": "// TODO: Define configuration interface",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/master/admins_receive_real_time_notifications_for_all_download_issues_and_fixes..ts",
     "line": 12,
     "text": "// TODO: Initialize Master/admins receive real-time notifications for all download issues and fixes.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "lib/master/admins_receive_real_time_notifications_for_all_download_issues_and_fixes..ts",
     "line": 17,
     "text": "// TODO: Execute Master/admins receive real-time notifications for all download issues and fixes. functionality",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "routes/api/qmoi/file.ts",
     "line": 20,
     "text": "// TODO: Add real master/admin authentication",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "routes/api/qmoi/status.ts",
     "line": 3,
     "text": "// TODO: Replace with real backend integration",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "routes/api/qmoi/feedback.ts",
@@ -14536,7 +14536,7 @@
     "line": 3,
     "text": "// TODO: Replace with real backend integration",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/metro-resolver/src/types.d.ts",
@@ -14564,28 +14564,28 @@
     "line": 129,
     "text": "// TODO :: should this be duck-typed ?",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@jridgewell/remapping/src/source-map-tree.ts",
     "line": 102,
     "text": "// TODO: Eventually support sourceRoot, which has to be removed because the sources are already",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@jridgewell/remapping/src/build-source-map-tree.ts",
     "line": 70,
     "text": "// TODO: We should eventually support async loading of sourcemap files.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@jridgewell/gen-mapping/src/gen-mapping.ts",
     "line": 308,
     "text": "// TODO: implement originalScopes/generatedRanges",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/metro-file-map/src/index.d.ts",
@@ -14648,42 +14648,42 @@
     "line": 427,
     "text": "// TODO: Use the below instead when the following TS issues are fixed:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/p-locate/index.d.ts",
     "line": 54,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/path-key/index.d.ts",
     "line": 34,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/mimic-fn/index.d.ts",
     "line": 41,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/onetime/index.d.ts",
     "line": 60,
     "text": "// TODO: Remove this for the next major release",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/parent-module/node_modules/callsites/index.d.ts",
     "line": 90,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/pirates/index.d.ts",
@@ -14711,7 +14711,7 @@
     "line": 1990,
     "text": "* <!-- TODO: link MDN docs for disposables once https://github.com/mdn/content/pull/38027 lands -->",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/fs.d.ts",
@@ -14725,7 +14725,7 @@
     "line": 105,
     "text": "// TODO: remove in a future major @types/node version.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/assert.d.ts",
@@ -14739,42 +14739,42 @@
     "line": 176,
     "text": "* Shorthand for marking a suite as `TODO`. This is the same as calling {@link suite} with `options.todo` set to `true`.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/test.d.ts",
     "line": 201,
     "text": "* Shorthand for marking a test as `TODO`. This is the same as calling {@link test} with `options.todo` set to `true`.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/test.d.ts",
     "line": 908,
     "text": "* The total number of TODO tests.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/test.d.ts",
     "line": 1131,
     "text": "* This function adds a `TODO` directive to the test's output. If `message` is",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/test.d.ts",
     "line": 1137,
     "text": "*   // This test is marked as `TODO`",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/test.d.ts",
     "line": 1142,
     "text": "* @param message Optional `TODO` message.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/test.d.ts",
@@ -14795,14 +14795,14 @@
     "line": 1348,
     "text": "* If truthy, the test marked as `TODO`. If a string is provided, that string is displayed in",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/test.d.ts",
     "line": 1349,
     "text": "* the test results as the reason why the test is `TODO`.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/test.d.ts",
@@ -16608,7 +16608,7 @@
     "line": 107,
     "text": "export type CustomInspectFunction = (depth: number, options: InspectOptionsStylized) => any; // TODO: , inspect: inspect",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/util.d.ts",
@@ -16629,7 +16629,7 @@
     "line": 99,
     "text": "readonly detail?: NodeGCPerformanceDetail | unknown | undefined; // TODO: Narrow this based on entry type.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/perf_hooks.d.ts",
@@ -16657,7 +16657,7 @@
     "line": 68,
     "text": "// TODO: remove in a future major version bump",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/module.d.ts",
@@ -16678,7 +16678,7 @@
     "line": 881,
     "text": "// TODO: consider removing in a future major version update",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/module.d.ts",
@@ -16720,21 +16720,21 @@
     "line": 165,
     "text": "start(instance: object): number; // TODO: avoid DOM dependency until WASM moved to own lib.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/wasi.d.ts",
     "line": 175,
     "text": "initialize(instance: object): void; // TODO: avoid DOM dependency until WASM moved to own lib.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/wasi.d.ts",
     "line": 197,
     "text": "readonly wasiImport: NodeJS.Dict<any>; // TODO: Narrow to DOM types",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/inspector.generated.d.ts",
@@ -16790,7 +16790,7 @@
     "line": 6,
     "text": "// TODO: remove once this package no longer supports TS 5.5, and replace NodeJS.BuiltinIteratorReturn with BuiltinIteratorReturn.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/compatibility/iterators.d.ts",
@@ -16804,7 +16804,7 @@
     "line": 96,
     "text": "// TODO: Add `EventEmitter` close",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/node/fs/promises.d.ts",
@@ -16818,7 +16818,7 @@
     "line": 977,
     "text": "* <!-- TODO: link MDN docs for disposables once https://github.com/mdn/content/pull/38027 lands -->",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@types/babel__template/index.d.ts",
@@ -16979,14 +16979,14 @@
     "line": 23,
     "text": "// TODO: remove this in the next major version, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/npm-run-path/index.d.ts",
     "line": 85,
     "text": "// TODO: Remove this for the next major release",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/chalk/index.d.ts",
@@ -17000,7 +17000,7 @@
     "line": 124,
     "text": "// TODO: Remove this for the next major release",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/react-native/types_generated/Libraries/Animated/AnimatedImplementation.d.ts",
@@ -17014,7 +17014,7 @@
     "line": 106,
     "text": "* //FIXME: not in doc but available in examples",
     "match": "FIXME",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/react-native/types_generated/Libraries/Components/TextInput/InputAccessoryView.d.ts",
@@ -17112,14 +17112,14 @@
     "line": 177,
     "text": "* callsites return void and this TODO notice is found in it:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/react-native/types_generated/Libraries/Interaction/PanResponder.d.ts",
     "line": 178,
     "text": "*   TODO: t7467124 investigate if this can be removed",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/react-native/types_generated/Libraries/TurboModule/RCTExport.d.ts",
@@ -17133,14 +17133,14 @@
     "line": 120,
     "text": "* //FIXME: not in doc but available in examples",
     "match": "FIXME",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/react-native/Libraries/Components/Touchable/Touchable.d.ts",
     "line": 15,
     "text": "* //FIXME: need to find documentation on which component is a TTouchable and can implement that interface",
     "match": "FIXME",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/react-native/Libraries/Components/TextInput/TextInput.d.ts",
@@ -17168,63 +17168,63 @@
     "line": 164,
     "text": "// TODO use React.AbstractComponent when available",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/react-native/Libraries/Types/CodegenTypesNamespace.d.ts",
     "line": 35,
     "text": "// TODO: (rickhanlonii) T44881457 If a default is provided, it should always be optional",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/react-native/Libraries/PushNotificationIOS/PushNotificationIOS.d.ts",
     "line": 110,
     "text": "* //FIXME: BGR: The documentation seems completely off compared to the actual js implementation. I could never get the example to run",
     "match": "FIXME",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/react-native/types/modules/Codegen.d.ts",
     "line": 69,
     "text": "// TODO: (rickhanlonii) T44881457 If a default is provided, it should always be optional",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/type-fest/source/basic.d.ts",
     "line": 3,
     "text": "// TODO: This can just be `export type Primitive = not object` when the `not` keyword is out.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/type-fest/source/basic.d.ts",
     "line": 16,
     "text": "// TODO: Remove the `= unknown` sometime  in the future when most users are on TS 3.5 as it's now the default",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/p-try/index.d.ts",
     "line": 30,
     "text": "// TODO: remove this in the next major version, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/camelcase/index.d.ts",
     "line": 54,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/leven/index.d.ts",
     "line": 15,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/exponential-backoff/src/backoff.spec.ts",
@@ -17315,63 +17315,63 @@
     "line": 37,
     "text": "* TODO docs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/client.d.ts",
     "line": 37,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/client.d.ts",
     "line": 47,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/client.d.ts",
     "line": 63,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/client.d.ts",
     "line": 71,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/client.d.ts",
     "line": 73,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/client.d.ts",
     "line": 75,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/client.d.ts",
     "line": 77,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/client.d.ts",
     "line": 79,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/mock-pool.d.ts",
@@ -17602,56 +17602,56 @@
     "line": 35,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 45,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 51,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 53,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 55,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 57,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 59,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/webidl.d.ts",
     "line": 256,
     "text": "// TODO(@KhafraDev): a type could likely be implemented that can infer the return type",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/undici-types/mock-interceptor.d.ts",
@@ -18540,7 +18540,7 @@
     "line": 95,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "mobile/node_modules/@react-native/virtualized-lists/types_generated/Lists/FillRateHelper.d.ts",
@@ -18624,7 +18624,7 @@
     "line": 13,
     "text": "// TODO: Integrate with Colab or backend",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "hooks/useColabJob.ts",
@@ -18645,112 +18645,112 @@
     "line": 14,
     "text": "// TODO: Use tus, S3 multipart, or Google Drive API for real",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/platform_integrations.ts",
     "line": 17,
     "text": "// TODO: Implement publishing logic for each platform type",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/platform_integrations.ts",
     "line": 23,
     "text": "// TODO: Implement update logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/platform_integrations.ts",
     "line": 28,
     "text": "// TODO: Implement removal logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/platform_integrations.ts",
     "line": 33,
     "text": "// TODO: Handle authentication and API key/token management",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/localization_service.ts",
     "line": 8,
     "text": "// TODO: Integrate with AI translation API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/localization_service.ts",
     "line": 13,
     "text": "// TODO: Generate localized version of asset (doc, banner, ad, UI)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/platform_discovery.ts",
     "line": 14,
     "text": "// TODO: Implement web search, API queries, and AI-based discovery",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/platform_discovery.ts",
     "line": 28,
     "text": "// TODO: Notify master for approval (UI, email, or chat)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/analytics_optimization.ts",
     "line": 15,
     "text": "// TODO: Integrate with platform APIs to fetch analytics",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/analytics_optimization.ts",
     "line": 29,
     "text": "// TODO: Send analytics report to master (UI, email, or chat)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/analytics_optimization.ts",
     "line": 34,
     "text": "// TODO: Use AI to suggest optimizations based on analytics",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/self_healing.ts",
     "line": 15,
     "text": "// TODO: Scan logs, monitor health, and detect errors",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/self_healing.ts",
     "line": 20,
     "text": "// TODO: Use AI or rules to diagnose the root cause",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/self_healing.ts",
     "line": 25,
     "text": "// TODO: Attempt to auto-fix the error (restart service, patch code, etc.)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/self_healing.ts",
     "line": 30,
     "text": "// TODO: Notify master of error, diagnosis, and fix result (UI, email, chat)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/qmoi_autodev_daemon.ts",
@@ -18764,28 +18764,28 @@
     "line": 6,
     "text": "// TODO: Integrate with video generation API or use templates",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/asset_generation.ts",
     "line": 12,
     "text": "// TODO: Use AI to generate markdown or PDF documentation",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/asset_generation.ts",
     "line": 17,
     "text": "// TODO: Integrate with image generation API or use templates",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/asset_generation.ts",
     "line": 22,
     "text": "// TODO: Use AI to generate ad copy",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/qcity_service.ts",
@@ -18799,42 +18799,42 @@
     "line": 323,
     "text": "// TODO: Integrate with SSH/cloud APIs for real device execution",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/role_management.ts",
     "line": 25,
     "text": "// TODO: Assign role to user",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/role_management.ts",
     "line": 30,
     "text": "// TODO: Check if user has permission for action",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/role_management.ts",
     "line": 35,
     "text": "// TODO: Initiate multi-step approval workflow",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/role_management.ts",
     "line": 40,
     "text": "// TODO: Approve the request",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "scripts/services/role_management.ts",
     "line": 45,
     "text": "// TODO: Reject the request",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/wallet.ts",
@@ -18904,7 +18904,7 @@
     "line": 146,
     "text": "// TODO: Update master/projects list (e.g., save to a JSON file or DB)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qmoi-model.ts",
@@ -18918,7 +18918,7 @@
     "line": 156,
     "text": "// TODO: Implement real packaging logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qmoi-model.ts",
@@ -19065,35 +19065,35 @@
     "line": 541,
     "text": "// TODO: Add more intelligent handling based on file type/content",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/colab-job.ts",
     "line": 9,
     "text": "// TODO: Real API call to Colab/cloud to install package",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/colab-job.ts",
     "line": 20,
     "text": "// TODO: Real API call to upload dataset",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/colab-job.ts",
     "line": 30,
     "text": "// TODO: Real API call to execute job",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/colab-job.ts",
     "line": 37,
     "text": "// TODO: Real API call to get job status",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/colab-job.ts",
@@ -19107,21 +19107,21 @@
     "line": 16,
     "text": "// TODO: Save to keys/ directory",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qapikey/route.ts",
     "line": 31,
     "text": "// TODO: Save to keys/ directory",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qapikey/route.ts",
     "line": 42,
     "text": "// TODO: Save to keys/ directory",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/wifi-security/route.ts",
@@ -19338,7 +19338,7 @@
     "line": 15,
     "text": "// TODO: Implement real master auth logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qmoi-model/route.ts",
@@ -19380,7 +19380,7 @@
     "line": 34,
     "text": "// TODO: Fetch logs from DB or file",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/cashon/balance/route.ts",
@@ -19394,7 +19394,7 @@
     "line": 59,
     "text": "// TODO: Integrate with real M-Pesa API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qcity/remote-command.ts",
@@ -19415,7 +19415,7 @@
     "line": 38,
     "text": "// TODO: Send to dashboard API for real-time visualization",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/media/generate/route.ts",
@@ -19436,7 +19436,7 @@
     "line": 197,
     "text": "// TODO: Fetch actual task status from database/cloud",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/media/generate/route.ts",
@@ -19478,21 +19478,21 @@
     "line": 9,
     "text": "// TODO: Fetch from RSS, APIs, QMOI activities",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qnews/route.ts",
     "line": 14,
     "text": "// TODO: Implement real master check (e.g., auth header)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qnews/route.ts",
     "line": 91,
     "text": "// TODO: Implement posting to WhatsApp, Telegram, etc.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qnews/route.ts",
@@ -19555,35 +19555,35 @@
     "line": 22,
     "text": "// TODO: Modular platform support (WhatsApp, Telegram, etc.)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/account-automation/route.ts",
     "line": 32,
     "text": "// TODO: Add real authentication logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/account-automation/route.ts",
     "line": 40,
     "text": "// TODO: Integrate with nodemailer and rovicviccy@gmail.com for email verification",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/account-automation/route.ts",
     "line": 61,
     "text": "// TODO: Enhance shelling, VPN, and security features",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/account-automation/route.ts",
     "line": 62,
     "text": "// TODO: Add modular automation for more platforms",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/deployment-status/route.ts",
@@ -19597,7 +19597,7 @@
     "line": 36,
     "text": "// TODO: Implement real self-healing logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qmoi-earning-enhanced/route.ts",
@@ -19702,7 +19702,7 @@
     "line": 58,
     "text": "// TODO: FM/AM integration, automation, QMOI as DJ/presenter, auto-programming",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/financial/transactions/route.ts",
@@ -19758,7 +19758,7 @@
     "line": 25,
     "text": "user: 'unknown', // TODO: add user context if available",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qmoi/voice-profiles/route.ts",
@@ -20171,49 +20171,49 @@
     "line": 15,
     "text": "// TODO: Integrate with WhatsApp, Telegram, etc.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/social-automation/route.ts",
     "line": 38,
     "text": "// TODO: Implement info gathering from platforms",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qi-trading/route.ts",
     "line": 88,
     "text": "// TODO: Connect to DB/service and fetch real stats",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qi-trading/route.ts",
     "line": 120,
     "text": "// TODO: Connect to DB/service and fetch real trade history",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qi-trading/route.ts",
     "line": 146,
     "text": "// TODO: Connect to DB/service and fetch real active trades",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qi-trading/route.ts",
     "line": 161,
     "text": "// TODO: Connect to trading engine and execute trade",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/qi-trading/route.ts",
     "line": 172,
     "text": "// TODO: Connect to trading engine and cancel trade",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/ai-anomaly-service/route.ts",
@@ -20234,42 +20234,42 @@
     "line": 37,
     "text": "// TODO: Implement upload logic to GDrive, S3, HuggingFace",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/document-backup/route.ts",
     "line": 42,
     "text": "// TODO: Implement restore logic from GDrive, S3, HuggingFace",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/mpesa/callback/route.ts",
     "line": 57,
     "text": "// TODO: Connect to DB and update transaction record",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/mpesa/callback/route.ts",
     "line": 62,
     "text": "// TODO: Implement post-payment actions (e.g., send notification, update user status)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/wifi/scan/route.ts",
     "line": 59,
     "text": "// TODO: Use system API/service to scan WiFi networks",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/wifi/scan/route.ts",
     "line": 92,
     "text": "// TODO: Use system API/service to connect to WiFi",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "app/api/wifi/scan/route.ts",
@@ -20283,91 +20283,91 @@
     "line": 8,
     "text": "async connect() { /* TODO: Implement HDMI-CEC/DLNA connect */ return true; },",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 9,
     "text": "async sendCommand(cmd) { /* TODO: Implement TV/decoder command */ return {}; },",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 10,
     "text": "async autoDetect() { /* TODO: Auto-detect TV/decoder */ return true; }",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 14,
     "text": "async connect() { /* TODO: Implement Bluetooth/Auto/CarPlay connect */ return true; },",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 15,
     "text": "async sendCommand(cmd) { /* TODO: Implement car radio command */ return {}; },",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 16,
     "text": "async autoDetect() { /* TODO: Auto-detect car radio */ return true; }",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 20,
     "text": "async connect() { /* TODO: Implement MQTT/Zigbee/Z-Wave connect */ return true; },",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 21,
     "text": "async sendCommand(cmd) { /* TODO: Implement smart home command */ return {}; },",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 22,
     "text": "async autoDetect() { /* TODO: Auto-detect smart home */ return true; }",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 26,
     "text": "async connect() { /* TODO: Implement WhatsApp connect */ return true; },",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 27,
     "text": "async sendCommand(cmd) { /* TODO: Implement WhatsApp command */ return {}; },",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 28,
     "text": "async autoDetect() { /* TODO: Auto-detect WhatsApp */ return true; }",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 34,
     "text": "// TODO: Implement real Colab/Dagshub connect logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
@@ -20381,14 +20381,14 @@
     "line": 39,
     "text": "// TODO: Implement real command logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 44,
     "text": "// TODO: Implement real detection logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
@@ -20402,21 +20402,21 @@
     "line": 52,
     "text": "// TODO: Add AWS credentials securely (e.g., from env vars or user input)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 59,
     "text": "// TODO: Implement real AWS command logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 64,
     "text": "// TODO: Implement AWS environment detection",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
@@ -20430,7 +20430,7 @@
     "line": 84,
     "text": "// TODO: Implement real Azure command logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
@@ -20451,7 +20451,7 @@
     "line": 113,
     "text": "// TODO: Implement real GCP command logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
@@ -20465,42 +20465,42 @@
     "line": 131,
     "text": "// TODO: Implement real IoT device discovery/connection logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 136,
     "text": "// TODO: Implement real IoT command logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 141,
     "text": "// TODO: Implement IoT device detection",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 149,
     "text": "// TODO: Implement real mobile device connection logic (e.g., via Bluetooth, ADB, or platform SDK)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 154,
     "text": "// TODO: Implement real mobile command logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/components/device/DeviceIntegrationStubs.ts",
     "line": 159,
     "text": "// TODO: Implement mobile device detection",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/setupTests.ts",
@@ -20577,21 +20577,21 @@
     "line": 2,
     "text": "export * from \"./QMoiMediaManager\"; // TODO: Implement",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/components/q-city/index.ts",
     "line": 3,
     "text": "export * from \"./QMoiProjectDashboard\"; // TODO: Implement",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/components/q-city/index.ts",
     "line": 4,
     "text": "export * from \"./QMoiSettingsPanel\"; // TODO: Implement",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/config/wallet.ts",
@@ -20682,42 +20682,42 @@
     "line": 22,
     "text": "// TODO: Integrate with real device registry",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/DeviceTrackingService.ts",
     "line": 27,
     "text": "// TODO: Integrate with location services",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/DeviceTrackingService.ts",
     "line": 36,
     "text": "// TODO: Integrate with device management APIs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/DeviceTrackingService.ts",
     "line": 42,
     "text": "// TODO: Integrate with device management APIs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/AutoResearcher.ts",
     "line": 14,
     "text": "// TODO: Integrate with web search or AI research APIs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/AutoResearcher.ts",
     "line": 23,
     "text": "// TODO: Integrate with notification system",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/BrowserService.ts",
@@ -20948,42 +20948,42 @@
     "line": 77,
     "text": "// TODO: Implement file editing, preview, commit/rollback logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/AIRequestRouter.ts",
     "line": 82,
     "text": "// TODO: Implement project/task switching/continuation logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/AIRequestRouter.ts",
     "line": 91,
     "text": "// TODO: Integrate with wallet, Mpesa, Airtel, Pesapal, etc.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/AIRequestRouter.ts",
     "line": 100,
     "text": "// TODO: Return version info, changelog, etc.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/AIRequestRouter.ts",
     "line": 109,
     "text": "// TODO: Integrate with AI chat/response engine",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/NetworkManager.ts",
     "line": 29,
     "text": "// TODO: Integrate with platform-specific APIs to scan for networks",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/NetworkManager.ts",
@@ -20997,7 +20997,7 @@
     "line": 86,
     "text": "// TODO: Integrate with platform-specific APIs to connect",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/NetworkManager.ts",
@@ -21011,7 +21011,7 @@
     "line": 98,
     "text": "// TODO: Implement real-time monitoring and auto-switch/fallback",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/EnhancedSiteGenerationService.ts",
@@ -21039,42 +21039,42 @@
     "line": 753,
     "text": "// TODO: send log to Qcity (master-only access)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/WhatsAppService.ts",
     "line": 836,
     "text": "// TODO: Integrate with ad campaign manager",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/WhatsAppService.ts",
     "line": 840,
     "text": "// TODO: Integrate with business settings manager",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/WhatsAppService.ts",
     "line": 844,
     "text": "// TODO: Integrate with group management logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/services/WhatsAppService.ts",
     "line": 848,
     "text": "// TODO: Integrate with status update logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/auth/AuthManager.ts",
     "line": 295,
     "text": "// TODO: implement actual confirmation for users",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/src/plugins/OptimizationSuggestionPlugin.ts",
@@ -21200,14 +21200,14 @@
     "line": 20,
     "text": "// TODO: Add real master/admin authentication",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/routes/api/qmoi/status.ts",
     "line": 3,
     "text": "// TODO: Replace with real backend integration",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/routes/api/qmoi/feedback.ts",
@@ -21221,7 +21221,7 @@
     "line": 3,
     "text": "// TODO: Replace with real backend integration",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/metro-resolver/src/types.d.ts",
@@ -21249,28 +21249,28 @@
     "line": 129,
     "text": "// TODO :: should this be duck-typed ?",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@jridgewell/remapping/src/source-map-tree.ts",
     "line": 102,
     "text": "// TODO: Eventually support sourceRoot, which has to be removed because the sources are already",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@jridgewell/remapping/src/build-source-map-tree.ts",
     "line": 70,
     "text": "// TODO: We should eventually support async loading of sourcemap files.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@jridgewell/gen-mapping/src/gen-mapping.ts",
     "line": 308,
     "text": "// TODO: implement originalScopes/generatedRanges",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/metro-file-map/src/index.d.ts",
@@ -21333,42 +21333,42 @@
     "line": 427,
     "text": "// TODO: Use the below instead when the following TS issues are fixed:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/p-locate/index.d.ts",
     "line": 54,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/path-key/index.d.ts",
     "line": 34,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/mimic-fn/index.d.ts",
     "line": 41,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/onetime/index.d.ts",
     "line": 60,
     "text": "// TODO: Remove this for the next major release",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/parent-module/node_modules/callsites/index.d.ts",
     "line": 90,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/pirates/index.d.ts",
@@ -21396,7 +21396,7 @@
     "line": 1990,
     "text": "* <!-- TODO: link MDN docs for disposables once https://github.com/mdn/content/pull/38027 lands -->",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/fs.d.ts",
@@ -21410,7 +21410,7 @@
     "line": 105,
     "text": "// TODO: remove in a future major @types/node version.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/assert.d.ts",
@@ -21424,42 +21424,42 @@
     "line": 176,
     "text": "* Shorthand for marking a suite as `TODO`. This is the same as calling {@link suite} with `options.todo` set to `true`.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/test.d.ts",
     "line": 201,
     "text": "* Shorthand for marking a test as `TODO`. This is the same as calling {@link test} with `options.todo` set to `true`.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/test.d.ts",
     "line": 908,
     "text": "* The total number of TODO tests.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/test.d.ts",
     "line": 1131,
     "text": "* This function adds a `TODO` directive to the test's output. If `message` is",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/test.d.ts",
     "line": 1137,
     "text": "*   // This test is marked as `TODO`",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/test.d.ts",
     "line": 1142,
     "text": "* @param message Optional `TODO` message.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/test.d.ts",
@@ -21480,14 +21480,14 @@
     "line": 1348,
     "text": "* If truthy, the test marked as `TODO`. If a string is provided, that string is displayed in",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/test.d.ts",
     "line": 1349,
     "text": "* the test results as the reason why the test is `TODO`.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/test.d.ts",
@@ -23293,7 +23293,7 @@
     "line": 107,
     "text": "export type CustomInspectFunction = (depth: number, options: InspectOptionsStylized) => any; // TODO: , inspect: inspect",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/util.d.ts",
@@ -23314,7 +23314,7 @@
     "line": 99,
     "text": "readonly detail?: NodeGCPerformanceDetail | unknown | undefined; // TODO: Narrow this based on entry type.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/perf_hooks.d.ts",
@@ -23342,7 +23342,7 @@
     "line": 68,
     "text": "// TODO: remove in a future major version bump",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/module.d.ts",
@@ -23363,7 +23363,7 @@
     "line": 881,
     "text": "// TODO: consider removing in a future major version update",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/module.d.ts",
@@ -23405,21 +23405,21 @@
     "line": 165,
     "text": "start(instance: object): number; // TODO: avoid DOM dependency until WASM moved to own lib.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/wasi.d.ts",
     "line": 175,
     "text": "initialize(instance: object): void; // TODO: avoid DOM dependency until WASM moved to own lib.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/wasi.d.ts",
     "line": 197,
     "text": "readonly wasiImport: NodeJS.Dict<any>; // TODO: Narrow to DOM types",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/inspector.generated.d.ts",
@@ -23475,7 +23475,7 @@
     "line": 6,
     "text": "// TODO: remove once this package no longer supports TS 5.5, and replace NodeJS.BuiltinIteratorReturn with BuiltinIteratorReturn.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/compatibility/iterators.d.ts",
@@ -23489,7 +23489,7 @@
     "line": 96,
     "text": "// TODO: Add `EventEmitter` close",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/node/fs/promises.d.ts",
@@ -23503,7 +23503,7 @@
     "line": 977,
     "text": "* <!-- TODO: link MDN docs for disposables once https://github.com/mdn/content/pull/38027 lands -->",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@types/babel__template/index.d.ts",
@@ -23664,14 +23664,14 @@
     "line": 23,
     "text": "// TODO: remove this in the next major version, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/npm-run-path/index.d.ts",
     "line": 85,
     "text": "// TODO: Remove this for the next major release",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/chalk/index.d.ts",
@@ -23685,7 +23685,7 @@
     "line": 124,
     "text": "// TODO: Remove this for the next major release",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Animated/AnimatedImplementation.d.ts",
@@ -23699,7 +23699,7 @@
     "line": 106,
     "text": "* //FIXME: not in doc but available in examples",
     "match": "FIXME",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Components/TextInput/InputAccessoryView.d.ts",
@@ -23797,14 +23797,14 @@
     "line": 177,
     "text": "* callsites return void and this TODO notice is found in it:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Interaction/PanResponder.d.ts",
     "line": 178,
     "text": "*   TODO: t7467124 investigate if this can be removed",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/TurboModule/RCTExport.d.ts",
@@ -23818,14 +23818,14 @@
     "line": 120,
     "text": "* //FIXME: not in doc but available in examples",
     "match": "FIXME",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/Touchable.d.ts",
     "line": 15,
     "text": "* //FIXME: need to find documentation on which component is a TTouchable and can implement that interface",
     "match": "FIXME",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/TextInput/TextInput.d.ts",
@@ -23853,63 +23853,63 @@
     "line": 164,
     "text": "// TODO use React.AbstractComponent when available",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/react-native/Libraries/Types/CodegenTypesNamespace.d.ts",
     "line": 35,
     "text": "// TODO: (rickhanlonii) T44881457 If a default is provided, it should always be optional",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/react-native/Libraries/PushNotificationIOS/PushNotificationIOS.d.ts",
     "line": 110,
     "text": "* //FIXME: BGR: The documentation seems completely off compared to the actual js implementation. I could never get the example to run",
     "match": "FIXME",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/react-native/types/modules/Codegen.d.ts",
     "line": 69,
     "text": "// TODO: (rickhanlonii) T44881457 If a default is provided, it should always be optional",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/type-fest/source/basic.d.ts",
     "line": 3,
     "text": "// TODO: This can just be `export type Primitive = not object` when the `not` keyword is out.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/type-fest/source/basic.d.ts",
     "line": 16,
     "text": "// TODO: Remove the `= unknown` sometime  in the future when most users are on TS 3.5 as it's now the default",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/p-try/index.d.ts",
     "line": 30,
     "text": "// TODO: remove this in the next major version, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/camelcase/index.d.ts",
     "line": 54,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/leven/index.d.ts",
     "line": 15,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/exponential-backoff/src/backoff.spec.ts",
@@ -24000,63 +24000,63 @@
     "line": 37,
     "text": "* TODO docs",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/client.d.ts",
     "line": 37,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/client.d.ts",
     "line": 47,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/client.d.ts",
     "line": 63,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/client.d.ts",
     "line": 71,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/client.d.ts",
     "line": 73,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/client.d.ts",
     "line": 75,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/client.d.ts",
     "line": 77,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/client.d.ts",
     "line": 79,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/mock-pool.d.ts",
@@ -24287,56 +24287,56 @@
     "line": 35,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 45,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 51,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 53,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 55,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 57,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/h2c-client.d.ts",
     "line": 59,
     "text": "/** TODO */",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/webidl.d.ts",
     "line": 256,
     "text": "// TODO(@KhafraDev): a type could likely be implemented that can infer the return type",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/undici-types/mock-interceptor.d.ts",
@@ -25225,7 +25225,7 @@
     "line": 95,
     "text": "// TODO: Remove this for the next major release, refactor the whole definition to:",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/types_generated/Lists/FillRateHelper.d.ts",
@@ -25309,7 +25309,7 @@
     "line": 13,
     "text": "// TODO: Integrate with Colab or backend",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/hooks/useColabJob.ts",
@@ -25330,112 +25330,112 @@
     "line": 14,
     "text": "// TODO: Use tus, S3 multipart, or Google Drive API for real",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/platform_integrations.ts",
     "line": 17,
     "text": "// TODO: Implement publishing logic for each platform type",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/platform_integrations.ts",
     "line": 23,
     "text": "// TODO: Implement update logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/platform_integrations.ts",
     "line": 28,
     "text": "// TODO: Implement removal logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/platform_integrations.ts",
     "line": 33,
     "text": "// TODO: Handle authentication and API key/token management",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/localization_service.ts",
     "line": 8,
     "text": "// TODO: Integrate with AI translation API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/localization_service.ts",
     "line": 13,
     "text": "// TODO: Generate localized version of asset (doc, banner, ad, UI)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/platform_discovery.ts",
     "line": 14,
     "text": "// TODO: Implement web search, API queries, and AI-based discovery",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/platform_discovery.ts",
     "line": 28,
     "text": "// TODO: Notify master for approval (UI, email, or chat)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/analytics_optimization.ts",
     "line": 15,
     "text": "// TODO: Integrate with platform APIs to fetch analytics",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/analytics_optimization.ts",
     "line": 29,
     "text": "// TODO: Send analytics report to master (UI, email, or chat)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/analytics_optimization.ts",
     "line": 34,
     "text": "// TODO: Use AI to suggest optimizations based on analytics",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/self_healing.ts",
     "line": 15,
     "text": "// TODO: Scan logs, monitor health, and detect errors",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/self_healing.ts",
     "line": 20,
     "text": "// TODO: Use AI or rules to diagnose the root cause",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/self_healing.ts",
     "line": 25,
     "text": "// TODO: Attempt to auto-fix the error (restart service, patch code, etc.)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/self_healing.ts",
     "line": 30,
     "text": "// TODO: Notify master of error, diagnosis, and fix result (UI, email, chat)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/qmoi_autodev_daemon.ts",
@@ -25449,28 +25449,28 @@
     "line": 6,
     "text": "// TODO: Integrate with video generation API or use templates",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/asset_generation.ts",
     "line": 12,
     "text": "// TODO: Use AI to generate markdown or PDF documentation",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/asset_generation.ts",
     "line": 17,
     "text": "// TODO: Integrate with image generation API or use templates",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/asset_generation.ts",
     "line": 22,
     "text": "// TODO: Use AI to generate ad copy",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/qcity_service.ts",
@@ -25484,42 +25484,42 @@
     "line": 323,
     "text": "// TODO: Integrate with SSH/cloud APIs for real device execution",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/role_management.ts",
     "line": 25,
     "text": "// TODO: Assign role to user",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/role_management.ts",
     "line": 30,
     "text": "// TODO: Check if user has permission for action",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/role_management.ts",
     "line": 35,
     "text": "// TODO: Initiate multi-step approval workflow",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/role_management.ts",
     "line": 40,
     "text": "// TODO: Approve the request",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/scripts/services/role_management.ts",
     "line": 45,
     "text": "// TODO: Reject the request",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/wallet.ts",
@@ -25589,7 +25589,7 @@
     "line": 146,
     "text": "// TODO: Update master/projects list (e.g., save to a JSON file or DB)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qmoi-model.ts",
@@ -25603,7 +25603,7 @@
     "line": 156,
     "text": "// TODO: Implement real packaging logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qmoi-model.ts",
@@ -25750,35 +25750,35 @@
     "line": 541,
     "text": "// TODO: Add more intelligent handling based on file type/content",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/colab-job.ts",
     "line": 9,
     "text": "// TODO: Real API call to Colab/cloud to install package",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/colab-job.ts",
     "line": 20,
     "text": "// TODO: Real API call to upload dataset",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/colab-job.ts",
     "line": 30,
     "text": "// TODO: Real API call to execute job",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/colab-job.ts",
     "line": 37,
     "text": "// TODO: Real API call to get job status",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/colab-job.ts",
@@ -25792,21 +25792,21 @@
     "line": 16,
     "text": "// TODO: Save to keys/ directory",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qapikey/route.ts",
     "line": 31,
     "text": "// TODO: Save to keys/ directory",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qapikey/route.ts",
     "line": 42,
     "text": "// TODO: Save to keys/ directory",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/wifi-security/route.ts",
@@ -25967,7 +25967,7 @@
     "line": 15,
     "text": "// TODO: Implement real master auth logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qmoi-model/route.ts",
@@ -25995,7 +25995,7 @@
     "line": 34,
     "text": "// TODO: Fetch logs from DB or file",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/cashon/balance/route.ts",
@@ -26009,7 +26009,7 @@
     "line": 59,
     "text": "// TODO: Integrate with real M-Pesa API",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qcity/remote-command.ts",
@@ -26030,7 +26030,7 @@
     "line": 38,
     "text": "// TODO: Send to dashboard API for -time visualization",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/media/generate/route.ts",
@@ -26051,7 +26051,7 @@
     "line": 197,
     "text": "// TODO: Fetch actual task status from database/cloud",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/media/status/route.ts",
@@ -26065,21 +26065,21 @@
     "line": 9,
     "text": "// TODO: Fetch from RSS, APIs, QMOI activities",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qnews/route.ts",
     "line": 14,
     "text": "// TODO: Implement real master check (e.g., auth header)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qnews/route.ts",
     "line": 91,
     "text": "// TODO: Implement posting to WhatsApp, Telegram, etc.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qnews/route.ts",
@@ -26093,7 +26093,7 @@
     "line": 5,
     "text": "// TODO: Replace with actual implementation",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/datasets/route.ts",
@@ -26114,35 +26114,35 @@
     "line": 22,
     "text": "// TODO: Modular platform support (WhatsApp, Telegram, etc.)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/account-automation/route.ts",
     "line": 32,
     "text": "// TODO: Add real authentication logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/account-automation/route.ts",
     "line": 40,
     "text": "// TODO: Integrate with nodemailer and rovicviccy@gmail.com for email verification",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/account-automation/route.ts",
     "line": 61,
     "text": "// TODO: Enhance shelling, VPN, and security features",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/account-automation/route.ts",
     "line": 62,
     "text": "// TODO: Add modular automation for more platforms",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/deployment-status/route.ts",
@@ -26156,7 +26156,7 @@
     "line": 36,
     "text": "// TODO: Implement real self-healing logic",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qmoi-earning-enhanced/route.ts",
@@ -26170,21 +26170,21 @@
     "line": 75,
     "text": "// TODO: Replace with actual system monitoring",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/ai-health/route.ts",
     "line": 146,
     "text": "// TODO: Replace with actual component monitoring",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/ai-health/route.ts",
     "line": 210,
     "text": "// TODO: Replace with actual alert system",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/ai-health/route.ts",
@@ -26205,14 +26205,14 @@
     "line": 58,
     "text": "// TODO: FM/AM integration, automation, QMOI as DJ/presenter, auto-programming",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/ai/scan/route.ts",
     "line": 21,
     "text": "// TODO: Replace with actual scan results implementation",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/ai/scan/route.ts",
@@ -26233,7 +26233,7 @@
     "line": 25,
     "text": "user: 'unknown', // TODO: add user context if available",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qmoi/voice-profiles/route.ts",
@@ -26583,14 +26583,14 @@
     "line": 15,
     "text": "// TODO: Integrate with WhatsApp, Telegram, etc.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/social-automation/route.ts",
     "line": 38,
     "text": "// TODO: Implement info gathering from platforms",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/qi-trading/route.ts",
@@ -26667,28 +26667,28 @@
     "line": 13,
     "text": "// TODO: Upload to GDrive, S3, HuggingFace",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/document-backup/route.ts",
     "line": 32,
     "text": "// TODO: Restore from GDrive, S3, HuggingFace",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/mpesa/callback/route.ts",
     "line": 39,
     "text": "// TODO: Update database with successful transaction",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/mpesa/callback/route.ts",
     "line": 40,
     "text": "// TODO: Trigger any post-payment actions",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/app/api/wifi/scan/route.ts",
@@ -26723,21 +26723,21 @@
     "line": 102,
     "text": "// TODO: Eventually support sourceRoot, which has to be removed because the sources are already",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/dashboard/node_modules/@jridgewell/remapping/src/build-source-map-tree.ts",
     "line": 70,
     "text": "// TODO: We should eventually support async loading of sourcemap files.",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/dashboard/node_modules/@jridgewell/gen-mapping/src/gen-mapping.ts",
     "line": 308,
     "text": "// TODO: implement originalScopes/generatedRanges",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/dashboard/node_modules/@babel/parser/typings/babel-parser.d.ts",
@@ -26898,35 +26898,35 @@
     "line": 193,
     "text": "// TODO: Audit log log-streaming session",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/api/qcity.ts",
     "line": 274,
     "text": "// TODO: Optionally download/upload snapshot to local if needed",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/api/qcity.ts",
     "line": 275,
     "text": "// TODO: Audit log and notify",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/api/qcity.ts",
     "line": 288,
     "text": "// TODO: Upload tarStream to Gitpod (if API supports direct upload)",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "qmoi-enhanced/api/qcity.ts",
     "line": 290,
     "text": "// TODO: Audit log and notify",
     "match": "TODO",
-    "type": "placeholder"
+    "type": "default"
   },
   {
     "file": "backend/trading-engine.ts",

@@ -1,4 +1,4 @@
-# NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# NOTE: 1 TBD(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import subprocess
 
 def start_ngrok_tunnel(port=8080, real: bool = False):
@@ -41,7 +41,7 @@ def start_ngrok_tunnel(port=8080, real: bool = False):
         return None
 
 def auto_register_and_host_domain(domain):
-    """Automate domain registration and hosting (placeholder)"""
+    """Automate domain registration and hosting (TBD)"""
     logger.info(f"[QMOI] Registering and hosting domain: {domain}")
     # Integrate with Freenom, Namecheap, GoDaddy APIs
     # Setup hosting (e.g., Vercel, Netlify, custom VPS)

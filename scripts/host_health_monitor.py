@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Host health monitor (dry-run).
 
-Reads `.qmoi_validation/domains_registry.json` (if present) and writes a placeholder
+Reads `.qmoi_validation/domains_registry.json` (if present) and writes a TBD
 `.qmoi_validation/host_health.json` summary. Network checks are off by default.
 """
 import json
@@ -26,12 +26,12 @@ def load_registry():
 
 
 def fake_check_domain(name, info):
-    # Placeholder health facts — no network calls in dry-run
+    # TBD health facts — no network calls in dry-run
     return {
         "domain": name,
         "status": "unknown",
         "last_checked": datetime.datetime.utcnow().isoformat() + "Z",
-        "notes": "dry-run placeholder"
+        "notes": "dry-run TBD"
     }
 
 
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 Usage: python3 scripts/host_health_monitor.py [--apply]
 
 Dry-run: reads .qmoi_validation/domains_registry.json and writes .qmoi_validation/host_health.json
-with placeholder entries. With --apply and QMOI_ALLOW_NETWORK=1 the script may attempt simple
+with TBD entries. With --apply and QMOI_ALLOW_NETWORK=1 the script may attempt simple
 DNS resolution (best-effort) for listed domains.
 """
 import argparse

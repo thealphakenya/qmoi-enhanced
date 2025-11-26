@@ -1,5 +1,5 @@
 --- qmoi-enhanced/app/api/qmoi/voice-profiles/route.ts+++ qmoi-enhanced/app/api/qmoi/voice-profiles/route.ts (proposed)@@ -208,7 +208,7 @@ 
-     // Real enhancement path — placeholder that should enqueue a job or call an offline pipeline
+     // Real enhancement path — TBD that should enqueue a job or call an offline pipeline
      console.log(`Applying enhancement to voice ${voiceId}`);
 -    // TODO: enqueue enhancement job in real implementation
 +    throw new Error('NotImplemented: production implementation required');

@@ -109,9 +109,9 @@ def discover_latest_release_for(platform: str):
     """Conservative discovery stub.
 
     If network is allowed and provider info is available, implement real
-    discovery here. For now, return placeholder data indicating unknown.
+    discovery here. For now, return TBD data indicating unknown.
     """
-    # Placeholder heuristic: look for a GitHub pattern in platform name
+    # TBD heuristic: look for a GitHub pattern in platform name
     info = {
         'platform': platform,
         'detected_provider': None,

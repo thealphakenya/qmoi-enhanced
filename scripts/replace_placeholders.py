@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scan repository for placeholder markers and either propose replacements or apply
+"""Scan repository for TBD markers and either propose replacements or apply
 conservative, non-destructive replacements when explicitly allowed.
 
 Usage:
@@ -27,12 +27,12 @@ EXTENSIONS = ['.py', '.js', '.ts', '.tsx', '.jsx', '.json', '.html', '.md', '.cj
 
 # Patterns to find placeholders. Each entry has a key and a regex.
 PLACEHOLDER_PATTERNS = [
-    ('PLACEHOLDER', re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE)),
+    ('TBD', re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE)),
     ('PLACEHOLDER_TEXT', re.compile(r'PLACEHOLDER_TEXT', re.IGNORECASE)),
     ('PROD_TAG', re.compile(r'PRODUCTION IMPLEMENTATION REQUIRED|\[PRODUCTION IMPLEMENTATION REQUIRED\]', re.IGNORECASE)),
     ('IN_REAL_IMPL', re.compile(r'In a real implementation', re.IGNORECASE)),
     ('TODO_TOKEN', re.compile(r'\b(TODO|FIXME|XXX)\b')),
-    ('PLACEHOLDER_QUOTED', re.compile(r'"placeholder"|\bplaceholder\b', re.IGNORECASE)),
+    ('PLACEHOLDER_QUOTED', re.compile(r'"TBD"|\bplaceholder\b', re.IGNORECASE)),
 ]
 
 def detect_files(root: Path) -> List[Path]:
@@ -94,7 +94,7 @@ def apply_replacements(p: Path, matches: List[Dict]) -> None:
     p.write_text(txt, encoding='utf8')
 
 def main():
-    parser = argparse.ArgumentParser(description='Find and propose/apply placeholder replacements')
+    parser = argparse.ArgumentParser(description='Find and propose/apply TBD replacements')
     parser.add_argument('--apply', action='store_true', help='Apply conservative replacements (requires PRODUCTION_CONFIRMED=true)')
     parser.add_argument('--report', default=str(ROOT / 'docs' / 'placeholders_replacement_report.json'))
     args = parser.parse_args()

@@ -3,7 +3,7 @@
 QMOI Enhanced - App Verification & Validation Script
 
 Purpose: Verify that all release assets are actual functioning applications,
-         not corrupted or placeholder files.
+         not corrupted or TBD files.
 
 Usage:
     python3 verify_apps.py                    # Check all apps
@@ -88,7 +88,7 @@ class AppVerifier:
                 # Check for repeating garbage pattern (red flag)
                 first_bytes = zf.read(files[0])[:100] if files else b''
                 if self._is_repeating_pattern(first_bytes):
-                    self.log(f"  ✗ Contains repeating garbage pattern - likely placeholder", "ERROR")
+                    self.log(f"  ✗ Contains repeating garbage pattern - likely TBD", "ERROR")
                     return False
                 
                 self.log(f"  ✓ Valid APK structure with {len(files)} files", "INFO")
@@ -119,7 +119,7 @@ class AppVerifier:
                 
                 # Check for repeating garbage
                 if files and self._is_repeating_pattern(zf.read(files[0])[:100]):
-                    self.log(f"  ✗ Contains repeating garbage pattern - likely placeholder", "ERROR")
+                    self.log(f"  ✗ Contains repeating garbage pattern - likely TBD", "ERROR")
                     return False
                 
                 self.log(f"  ✓ Valid IPA structure", "INFO")
@@ -285,7 +285,7 @@ class AppVerifier:
             return False
 
     def _is_repeating_pattern(self, data):
-        """Check if data is repeating garbage pattern (red flag for placeholder)"""
+        """Check if data is repeating garbage pattern (red flag for TBD)"""
         if len(data) < 16:
             return False
         

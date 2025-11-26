@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate Real, Valid App Packages
-Replaces corrupted placeholder files with actual, installable app packages
+Replaces corrupted TBD files with actual, installable app packages
 
 This script creates:
 - Valid ZIP files (APK, IPA, Chrome, QCity formats)

@@ -60,21 +60,21 @@ python3 scripts/qmoi_log_analyzer.py "$LOGFILE" || true
 
 # Simple automated fixes for common issues
 if grep -qi "keystore" "$LOGFILE" || grep -qi "signingConfigs" "$LOGFILE"; then
-  echo "Detected keystore issue. Creating placeholder keystore.properties and opening PR to add instructions."
+  echo "Detected keystore issue. Creating TBD keystore.properties and opening PR to add instructions."
   BRANCH="auto/fix/keystore-$(date +%s)"
   git checkout -b "$BRANCH"
-  # add example keystore.properties (placeholder) in mobile/android
+  # add example keystore.properties (TBD) in mobile/android
   cat > mobile/android/keystore.properties <<'EOF'
-# Placeholder - add real values via GitHub Secrets or this file (not recommended)
+# TBD - add real values via GitHub Secrets or this file (not recommended)
 KEYSTORE_FILE=keystore.jks
 KEYSTORE_PASSWORD=change_me
 KEY_ALIAS=change_me
 KEY_PASSWORD=change_me
 EOF
   git add mobile/android/keystore.properties
-  git commit -m "chore: add placeholder keystore.properties (automated fix)"
+  git commit -m "chore: add TBD keystore.properties (automated fix)"
   git push -u origin "$BRANCH"
-  gh pr create --repo "$REPO" --title "Automated: add placeholder keystore.properties" --body "This PR adds a placeholder keystore.properties file to help CI. Replace with secure keystore method."
+  gh pr create --repo "$REPO" --title "Automated: add TBD keystore.properties" --body "This PR adds a TBD keystore.properties file to help CI. Replace with secure keystore method."
   echo "PR created. Please review and merge if acceptable."
 fi
 

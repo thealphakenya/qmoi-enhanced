@@ -3,7 +3,7 @@
 Pipeline orchestrator for auto-enhance / auto-evolution tasks.
 
 This script runs a safe pipeline in dry-run by default:
- - placeholder scans (existing scripts)
+ - TBD scans (existing scripts)
  - generate PAYED md (conservative)
  - expand todos
  - run auto release discovery (dry-run)
@@ -71,7 +71,7 @@ if __name__ == '__main__':
 Orchestrator for the qMOI auto-enhancement pipeline.
 
 This script runs the key automation steps in a safe, dry-run-first manner:
- - run placeholder scans
+ - run TBD scans
  - generate PAYED md files (billing-gated)
  - expand platform todos
  - validate PAYED platforms

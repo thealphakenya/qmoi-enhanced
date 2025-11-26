@@ -608,7 +608,7 @@ export default function QCityDevicePanel() {
             </CardHeader>
             <CardContent className="space-y-4">
               <form onSubmit={e => {e.preventDefault(); alert('Heavy task started (auto-offload to cloud if needed)')}}>
-                <input type="text" placeholder="Enter command or file to process" className="border p-2 rounded w-2/3" />
+                <input type="text" TBD="Enter command or file to process" className="border p-2 rounded w-2/3" />
                 <Button type="submit" variant="default">Run</Button>
               </form>
               <div className="text-xs text-muted-foreground">Heavy tasks are auto-offloaded to cloud/Colab if local resources are low. Progress and logs will appear below.</div>

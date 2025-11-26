@@ -75,7 +75,7 @@ for host, items in host_counts:
     body_lines = [f'This issue was opened automatically to track DNS/link problems for host `{host}`.', '', f'Occurrences: {len(items)} (sample up to 10):', '']
     for it in items[:10]:
         body_lines.append(f"- File `{it.get('file')}` — URL: {it.get('url')} — Status: {it.get('status')} — Error: {it.get('error')}")
-    body_lines += ['', 'Suggested actions:', '- Verify DNS (A/AAAA/CNAME) for this host.', '- Replace placeholder domains with production hosts in docs.', f'- See PR: {pr_url}']
+    body_lines += ['', 'Suggested actions:', '- Verify DNS (A/AAAA/CNAME) for this host.', '- Replace TBD domains with production hosts in docs.', f'- See PR: {pr_url}']
     payload = {'title': title, 'body': '\n'.join(body_lines)}
     resp = gh_post('/issues', payload)
     if resp and resp.get('html_url'):

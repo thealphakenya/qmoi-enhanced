@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scan repository files for common placeholder tokens and write a JSON + MD report.
+"""Scan repository files for common TBD tokens and write a JSON + MD report.
 """
 import json
 from pathlib import Path
@@ -16,7 +16,7 @@ patterns = {
     'codespace': re.compile(r'codespaces', re.I),
     'todo_tag': re.compile(r'\bTODO\b', re.I),
     'fixme_tag': re.compile(r'\bFIXME\b', re.I),
-    'placeholder_word': re.compile(r'PLACEHOLDER', re.I),
+    'placeholder_word': re.compile(r'TBD', re.I),
     'qmoigateway_example': re.compile(r'qmoigateway\.example\.com', re.I),
     'downloads_qmoi': re.compile(r'downloads\.qmoi\.app', re.I),
 }
@@ -43,7 +43,7 @@ for k, v in results.items():
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-md = [f"# Placeholder Scan Report\nChecked at: {report['checked_at']}\n", '## Summary', '']
+md = [f"# TBD Scan Report\nChecked at: {report['checked_at']}\n", '## Summary', '']
 for k, v in report['patterns'].items():
     md.append(f"- **{k}**: {v['count']} occurrences")
     for ex in v['examples']:

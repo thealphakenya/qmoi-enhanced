@@ -14,7 +14,7 @@ export class StripeAdapter implements PaymentGatewayAdapter {
 
   // PaymentGatewayAdapter
   async createPaymentIntent(amount: number, currency: string) {
-    // Dry-run: create an idempotent placeholder
+    // Dry-run: create an idempotent TBD
     const key = `stripe:createPaymentIntent:${amount}:${currency}`;
     const existing = getIdempotent(key);
     if (existing) {

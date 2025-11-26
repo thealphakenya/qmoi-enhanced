@@ -27,7 +27,7 @@ export class MockAdapter implements WalletAdapter {
   }
 }
 
-// Example Testnet adapter (placeholder for real SDK integrations)
+// Example Testnet adapter (TBD for real SDK integrations)
 export class TestnetAdapter implements WalletAdapter {
   name: string;
   isTestnet = true;
@@ -49,7 +49,7 @@ export class TestnetAdapter implements WalletAdapter {
 
     // If API key present, adapters may implement a live testnet call. Keep this minimal and safe.
     try {
-      // Placeholder for real SDK integration. Return a small testnet balance by default.
+      // TODO: production implementation needed
       return { amount: 100.0, currency: 'USDT' };
     } catch (err) {
       // Fall back to safe deterministic mock on failure

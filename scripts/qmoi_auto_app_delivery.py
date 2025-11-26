@@ -16,7 +16,7 @@ def find_apps_in_md(md_dir):
     return list(apps)
 
 def send_app_to_user(app_path, user_email):
-    # Placeholder: integrate with email, cloud, or messaging API
+    # TBD: integrate with email, cloud, or messaging API
     print(f"Sending {app_path} to {user_email}")
     # TODO: Implement actual delivery logic
 

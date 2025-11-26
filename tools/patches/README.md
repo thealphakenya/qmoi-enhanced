@@ -1,4 +1,4 @@
-# Placeholder Fix Patches
+# TBD: See PLACEHOLDER_REMEDIATION_PLAN.md Fix Patches
 
 This folder contains generated patch files (`pass_fixes_batch_*.patch`) created by `tools/apply_safe_fix_passes.py` as draft proposals for replacing `pass`/TODO placeholders in code with explicit `NotImplemented` or `throw` statements.
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Apply safe placeholder replacements to a small batch of files that failed verification.
+Apply safe TBD replacements to a small batch of files that failed verification.
 
 Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     raise SystemExit(main(args.batch_size))
 #!/usr/bin/env python3
 """
-Apply safe placeholder replacements to a small batch of files that failed verification.
+Apply safe TBD replacements to a small batch of files that failed verification.
 
 Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.

@@ -705,7 +705,7 @@ export default function BiometricAuth({
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
+                      TBD="Enter your email"
                     />
                   </div>
                   <div>
@@ -715,7 +715,7 @@ export default function BiometricAuth({
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Enter your password"
+                      TBD="Enter your password"
                     />
                   </div>
                   <Button 

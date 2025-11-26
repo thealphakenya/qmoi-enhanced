@@ -1,11 +1,11 @@
-name: Prevent P0 Placeholder Merges
+name: Prevent P0 TBD: See PLACEHOLDER_REMEDIATION_PLAN.md Merges
 
 on:
   pull_request:
     branches: [ '**' ]
 
 jobs:
-  placeholder-check:
+  TBD: See PLACEHOLDER_REMEDIATION_PLAN.md-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Run placeholder scan
+      - name: Run TBD: See PLACEHOLDER_REMEDIATION_PLAN.md scan
         run: |
           python3 tools/find_placeholders.py
           # Count matches in critical paths (P0) — app/api or src/services or backend
@@ -26,9 +26,9 @@ with open('matches.json') as f:
     matches=json.load(f)
 count=sum(1 for m in matches if m['file'].startswith('app/api/') or m['file'].startswith('qmoi-enhanced/app/api/') or m['file'].startswith('src/services/') or m['file'].startswith('backend/') )
 if count>0:
-    print(f'Found {count} placeholder match(es) in critical paths — block merge')
+    print(f'Found {count} TBD: See PLACEHOLDER_REMEDIATION_PLAN.md match(es) in critical paths — block merge')
     sys.exit(1)
 else:
-    print('No P0 placeholder matches found')
+    print('No P0 TBD: See PLACEHOLDER_REMEDIATION_PLAN.md matches found')
 PY
 

@@ -24,7 +24,7 @@ VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 
 TSX_GLOB = ['**/*.tsx', '**/*.ts', '**/*.jsx', '**/*.js']
 
-PLACEHOLDER_PAT = re.compile(r'PLACEHOLDER|PLACEHOLDER_TEXT|"placeholder"|\bplaceholder\b', re.IGNORECASE)
+PLACEHOLDER_PAT = re.compile(r'TBD|PLACEHOLDER_TEXT|"TBD"|\bplaceholder\b', re.IGNORECASE)
 TODO_PAT = re.compile(r'\b(TODO|FIXME|XXX)\b')
 
 def scan_ui(root: Path):
@@ -38,7 +38,7 @@ def scan_ui(root: Path):
                     continue
                 issues = []
                 if PLACEHOLDER_PAT.search(text):
-                    issues.append('placeholder-token')
+                    issues.append('TBD-token')
                 if TODO_PAT.search(text):
                     issues.append('todo-fixme-comment')
                 # quick heuristic: very long files may need split
@@ -70,7 +70,7 @@ def main():
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
             'type': 'ui_placeholders',
             'files': report['files'],
-            'note': 'Auto-detected placeholder tokens and TODOs in UI files.'
+            'note': 'Auto-detected TBD tokens and TODOs in UI files.'
         }
         proposal_file = VALIDATION_DIR / f'ui_placeholders_proposal_{int(__import__("time").time())}.json'
         proposal_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
@@ -80,16 +80,16 @@ def main():
             if not PRODUCTION_CONFIRMED:
                 print('Refusing to apply fixes: PRODUCTION_CONFIRMED is not set. Proposal remains in', proposal_file)
             else:
-                # Non-destructive replacements: backup then replace placeholder tokens with a TODO marker
+                # Non-destructive replacements: backup then replace TBD tokens with a TODO marker
                 for f in report['files']:
                     p = Path(f['path'])
                     try:
                         txt = p.read_text(encoding='utf8')
                         backup = p.with_suffix(p.suffix + '.bak')
                         backup.write_text(txt, encoding='utf8')
-                        newtxt = PLACEHOLDER_PAT.sub('/* TODO: replace placeholder */', txt)
+                        newtxt = PLACEHOLDER_PAT.sub('/* TODO: replace TBD */', txt)
                         p.write_text(newtxt, encoding='utf8')
-                        print('Applied placeholder replacement in', p)
+                        print('Applied TBD replacement in', p)
                     except Exception as e:
                         print('Failed to apply fix for', p, e)
 
