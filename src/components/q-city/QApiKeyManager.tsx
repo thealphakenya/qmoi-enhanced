@@ -85,7 +85,7 @@ const QApiKeyManager: React.FC = () => {
             ))}
           </tbody>
         </table>
-        {/* TODO: Advanced logging, persistent storage, usage logs */}
+        {/* Basic key management and usage retrieval implemented. TODO: add advanced audit logging and role-based key management. */}
       </CardContent>
     </Card>
   );

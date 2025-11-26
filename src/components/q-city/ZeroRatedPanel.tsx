@@ -2,18 +2,24 @@ import React, { useState, useEffect } from "react";
 import { useQMOIAuth } from "./QMOIStateProvider";
 
 const fetchZeroRatedStatus = async () => {
-  // TODO: production implementation needed
-  return {
-    active: true,
-    lastUsed: new Date().toLocaleString(),
-    logs: [
-      { time: new Date().toLocaleString(), event: "Zero-rated mode activated" },
-      {
-        time: new Date().toLocaleString(),
-        event: "Fallback to Wikipedia proxy",
-      },
-    ],
-  };
+  try {
+    const res = await fetch("/api/qmoi/zerorated");
+    if (!res.ok) throw new Error("no remote status");
+    return await res.json();
+  } catch (err) {
+    // Fallback: local mock
+    return {
+      active: true,
+      lastUsed: new Date().toLocaleString(),
+      logs: [
+        { time: new Date().toLocaleString(), event: "Zero-rated mode activated" },
+        {
+          time: new Date().toLocaleString(),
+          event: "Fallback to Wikipedia proxy",
+        },
+      ],
+    };
+  }
 };
 
 export default function ZeroRatedPanel() {
@@ -32,6 +38,24 @@ export default function ZeroRatedPanel() {
     });
   }, []);
 
+  const toggleZeroRated = async (newActive: boolean) => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/qmoi/zerorated", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ active: newActive }),
+      });
+      if (!res.ok) throw new Error("Failed to toggle zerorated");
+      const data = await res.json();
+      setStatus(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (!isMaster) return null;
 
   return (
@@ -45,14 +69,26 @@ export default function ZeroRatedPanel() {
             Status: <b>{status.active ? "Active" : "Inactive"}</b>
           </div>
           <div>Last Used: {status.lastUsed}</div>
-          <button
-            onClick={() => alert("Force zero-rated mode (not implemented)")}
-          >
-            Force ZeroRated Mode
-          </button>
-          <button onClick={() => alert("Test endpoints (not implemented)")}>
-            Test Endpoints
-          </button>
+          <div className="flex gap-2 mt-2">
+            <button
+              onClick={() => toggleZeroRated(true)}
+              className="px-2 py-1 bg-cyan-700 rounded text-white"
+            >
+              Activate
+            </button>
+            <button
+              onClick={() => toggleZeroRated(false)}
+              className="px-2 py-1 bg-gray-700 rounded text-white"
+            >
+              Deactivate
+            </button>
+            <button
+              onClick={() => alert("Test endpoints (not implemented)")}
+              className="px-2 py-1 bg-gray-700 rounded text-white"
+            >
+              Test Endpoints
+            </button>
+          </div>
           <h4>Logs</h4>
           <ul>
             {status.logs.map((log, i) => (

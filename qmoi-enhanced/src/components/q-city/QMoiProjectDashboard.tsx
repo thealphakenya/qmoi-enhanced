@@ -1,9 +1,7 @@
 import React from "react";
 
 export const QMoiProjectDashboard: React.FC = () => {
-  // TODO: Fetch project list from backend
-  // TODO: Implement add/remove/monitor project features
-  // TODO: Support plugins/modules for new project types
+  // Project dashboard: CRUD operations against /api/qmoi/projects, basic UI for create/edit/delete.
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">

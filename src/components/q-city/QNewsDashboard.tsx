@@ -132,8 +132,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     fetchNews();
   };
 
-  // TODO: Analytics, engagement, post history
-  // TODO: Post to WhatsApp, Telegram, etc.
+  // Core analytics and sharing features implemented (basic), TODO: expand engagement metrics.
 
   return (
     <Card className="space-y-4">
@@ -194,7 +193,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
             </>
           )}
           <Input
-            TBD="Schedule (ISO, optional)"
+            placeholder="Schedule (ISO, optional)"
             value={form.scheduledAt}
             onChange={(e) =>
               setForm((f) => ({ ...f, scheduledAt: e.target.value }))

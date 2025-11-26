@@ -5,8 +5,11 @@
   "private": true,
   "scripts": {
     "start": "node scripts/qmoi-master-system.js",
+    "next-start": "next start -p $PORT",
     "dev": "node --experimental-modules scripts/qmoi-ai-server.js",
     "build": "next build",
+    "type-check": "tsc --noEmit",
+    "ci": "npm ci && npm run type-check && npm run build",
     "env-setup": "node scripts/qmoi-env-setup.js"
   },
   "dependencies": {
@@ -24,7 +27,10 @@
   },
   "devDependencies": {
     "eslint": "^8.48.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "typescript": "^5.5.0",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7"
   },
   "engines": {
     "node": ">=18.0.0",

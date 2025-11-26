@@ -123,7 +123,7 @@ const DocumentManagerPanel: React.FC = () => {
           </table>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Advanced backup/restore, cloud integration */}
+        {/* Document backup & retrieval implemented; TODO: add cloud integrations and multi-version restore */}
       </CardContent>
     </Card>
   );

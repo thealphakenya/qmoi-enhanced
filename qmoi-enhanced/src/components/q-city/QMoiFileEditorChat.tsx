@@ -305,7 +305,7 @@ export default function QMoiFileEditorChat({
           <input
             value={batchFiles}
             onChange={(e) => setBatchFiles(e.target.value)}
-            TBD="file1.py,file2.ts,..."
+            placeholder="file1.py,file2.ts,..."
             style={{
               width: "60%",
               marginRight: 8,
@@ -319,7 +319,7 @@ export default function QMoiFileEditorChat({
           <input
             value={batchOp}
             onChange={(e) => setBatchOp(e.target.value)}
-            TBD="operation (e.g. lint, format)"
+            placeholder="operation (e.g. lint, format)"
             style={{
               width: "30%",
               background: "#111",
@@ -383,7 +383,7 @@ export default function QMoiFileEditorChat({
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          TBD="/view /edit /append /replace ..."
+          placeholder="/view /edit /append /replace ..."
           style={{
             flex: 1,
             background: "#111",

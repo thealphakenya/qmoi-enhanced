@@ -66,13 +66,13 @@ const SocialAutomationPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            TBD="Status/News Content"
+            placeholder="Status/News Content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="mb-2"
           />
           <Input
-            TBD="Platform (WhatsApp, Telegram, etc.)"
+            placeholder="Platform (WhatsApp, Telegram, etc.)"
             value={platform}
             onChange={(e) => setPlatform(e.target.value)}
             className="mb-2"
@@ -98,7 +98,7 @@ const SocialAutomationPanel: React.FC = () => {
                   <td>{c.tags.join(", ")}</td>
                   <td>
                     <Input
-                      TBD="Tag"
+                      placeholder="Tag"
                       value={tag}
                       onChange={(e) => setTag(e.target.value)}
                       className="inline-block w-24 mr-2"

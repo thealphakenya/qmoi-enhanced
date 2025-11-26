@@ -1,7 +1,7 @@
 export { default as QMoiDatabaseDashboard } from "./QMoiDatabaseDashboard";
-export * from "./QMoiMediaManager"; // TODO: Implement
-export * from "./QMoiProjectDashboard"; // TODO: Implement
-export * from "./QMoiSettingsPanel"; // TODO: Implement
+export { default as QMoiMediaManager } from "./QMoiMediaManager";
+export { default as QMoiProjectDashboard } from "./QMoiProjectDashboard";
+export { default as QMoiSettingsPanel } from "./QMoiSettingsPanel";
 export { default as QMoiKernelPanel } from "./QMoiKernelPanel";
 export { default as QMoiMemoryPanel } from "./QMoiMemoryPanel";
 export { default as QMoiToolbar } from "./QMoiToolbar";

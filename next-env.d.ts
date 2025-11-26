@@ -1,4 +1,9 @@
 /// <reference types="next" />
+/// <reference types="next/types/global" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should be kept for Next.js type resolution. Do not remove.
+/// <reference types="next" />
 /// <reference types="next/image-types/global" />
 /// <reference types="next/navigation-types/compat/navigation" />
 
