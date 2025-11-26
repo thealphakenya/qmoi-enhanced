@@ -847,7 +847,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="email"
                     className="border rounded px-2 py-1 flex-1"
-                    placeholder="Email address"
+                    TBD="Email address"
                     value={notificationSettings.email}
                     onChange={e => handleNotificationChange('email', e.target.value)}
                     aria-label="Notification Email Address"
@@ -871,7 +871,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    placeholder="Slack Webhook URL"
+                    TBD="Slack Webhook URL"
                     value={notificationSettings.slack}
                     onChange={e => handleNotificationChange('slack', e.target.value)}
                     aria-label="Slack Webhook URL"
@@ -895,7 +895,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    placeholder="WhatsApp Number (+1234567890)"
+                    TBD="WhatsApp Number (+1234567890)"
                     value={notificationSettings.whatsapp}
                     onChange={e => handleNotificationChange('whatsapp', e.target.value)}
                     aria-label="WhatsApp Number"
@@ -1166,7 +1166,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   value={adminKey}
                   onChange={e => setAdminKey(e.target.value)}
                   className="w-full px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                  placeholder="Enter admin key"
+                  TBD="Enter admin key"
                 />
                 {authStatus === 'ok' && <span className="text-green-600 text-xs">Authenticated</span>}
                 {authStatus === 'error' && <span className="text-red-600 text-xs">{authError}</span>}
@@ -1179,7 +1179,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                     value={commandInput}
                     onChange={e => setCommandInput(e.target.value)}
                     className="flex-1 px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                    placeholder="Enter command (e.g. npm run build)"
+                    TBD="Enter command (e.g. npm run build)"
                     disabled={isRunning}
                     tabIndex={0}
                   />
@@ -1208,7 +1208,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   ))}
                   {/* Template variable inputs */}
                   {Object.keys(templateVars).map(v => (
-                    <input key={v} type="text" value={templateVars[v]} onChange={e => setTemplateVars(vars => ({ ...vars, [v]: e.target.value }))} placeholder={v} className="w-20 px-1 py-0.5 border rounded text-xs" />
+                    <input key={v} type="text" value={templateVars[v]} onChange={e => setTemplateVars(vars => ({ ...vars, [v]: e.target.value }))} TBD={v} className="w-20 px-1 py-0.5 border rounded text-xs" />
                   ))}
                 </div>
                 <div className="flex gap-2 flex-wrap mb-1">
@@ -1430,10 +1430,10 @@ const QAvatar: React.FC<QAvatarProps> = ({
         <button className="absolute top-2 right-2 text-gray-500 hover:text-red-600" onClick={() => setShowAuditLog(false)} aria-label="Close Audit Log Panel">✕</button>
         <h2 className="text-xl font-bold mb-4 flex items-center">Audit Log<HelpLink href="/docs/AUDITLOG.md" label="Audit Log Documentation" /></h2>
         <form className="flex gap-2 mb-4 flex-wrap" onSubmit={e => { e.preventDefault(); fetchAuditLogs(); }}>
-          <input className="border rounded px-2 py-1" placeholder="Action" value={auditFilter.action} onChange={e => setAuditFilter(f => ({ ...f, action: e.target.value }))} aria-label="Filter by action" />
-          <input className="border rounded px-2 py-1" placeholder="User" value={auditFilter.user} onChange={e => setAuditFilter(f => ({ ...f, user: e.target.value }))} aria-label="Filter by user" />
-          <input className="border rounded px-2 py-1" placeholder="Device ID" value={auditFilter.deviceId} onChange={e => setAuditFilter(f => ({ ...f, deviceId: e.target.value }))} aria-label="Filter by device ID" />
-          <input className="border rounded px-2 py-1" placeholder="Status" value={auditFilter.status} onChange={e => setAuditFilter(f => ({ ...f, status: e.target.value }))} aria-label="Filter by status" />
+          <input className="border rounded px-2 py-1" TBD="Action" value={auditFilter.action} onChange={e => setAuditFilter(f => ({ ...f, action: e.target.value }))} aria-label="Filter by action" />
+          <input className="border rounded px-2 py-1" TBD="User" value={auditFilter.user} onChange={e => setAuditFilter(f => ({ ...f, user: e.target.value }))} aria-label="Filter by user" />
+          <input className="border rounded px-2 py-1" TBD="Device ID" value={auditFilter.deviceId} onChange={e => setAuditFilter(f => ({ ...f, deviceId: e.target.value }))} aria-label="Filter by device ID" />
+          <input className="border rounded px-2 py-1" TBD="Status" value={auditFilter.status} onChange={e => setAuditFilter(f => ({ ...f, status: e.target.value }))} aria-label="Filter by status" />
           <button type="submit" className="px-3 py-1 bg-cyan-700 text-white rounded" aria-label="Apply filters">Apply</button>
           <button type="button" className="px-3 py-1 bg-gray-500 text-white rounded" onClick={() => { setAuditFilter({ action: '', user: '', deviceId: '', status: '' }); setAuditOffset(0); fetchAuditLogs(); }} aria-label="Clear filters">Clear</button>
           <button type="button" className="px-3 py-1 bg-green-700 text-white rounded" onClick={() => { setAuditFormat('csv'); fetchAuditLogs(); }} aria-label="Export CSV">Export CSV</button>

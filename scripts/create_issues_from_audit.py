@@ -37,14 +37,14 @@ headers = {
 }
 
 for fr in flags:
-    title = f"Release audit: {fr['name']} ({fr['tag']}) — assets appear placeholder/corrupt"
+    title = f"Release audit: {fr['name']} ({fr['tag']}) — assets appear TBD/corrupt"
     body_lines = [f"Automated audit detected potential issues with release **{fr['name']}** (`{fr['tag']}`).", '', 'Flags:']
     for item in fr['flags']:
         if isinstance(item, dict):
             body_lines.append(f"- Asset `{item['asset']}`: {item['issue']}, size {item['size']}, url: {item.get('url')}")
         else:
             body_lines.append(f"- {item}")
-    body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is placeholder or intentionally deprecated, mark it as draft or remove it after backup.', '', 'This issue was created by an automated audit script.']
+    body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is TBD or intentionally deprecated, mark it as draft or remove it after backup.', '', 'This issue was created by an automated audit script.']
     payload = json.dumps({'title': title, 'body': '\n'.join(body_lines), 'labels': ['release-audit','automation']}).encode('utf-8')
     req = Request(url, data=payload, headers=headers, method='POST')
     try:

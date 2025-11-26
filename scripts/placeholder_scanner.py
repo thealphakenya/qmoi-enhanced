@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Scan repository for placeholder tokens (TODO, FIXME, PLACEHOLDER) and optionally
+Scan repository for TBD tokens (TODO, FIXME, TBD) and optionally
 apply safe replacements.
 
 Usage:
@@ -73,7 +73,7 @@ def find_placeholders(root: Path, max_file_size: int = DEFAULT_MAX_FILE_SIZE, ve
                             'line': i,
                             'text': line.strip(),
                             'match': m.group(0),
-                            'type': 'placeholder'
+                            'type': 'TBD'
                         })
                         break
                 for pat in prod_patterns:
@@ -144,8 +144,8 @@ def suggest_replacements(report):
                     suggestions[txt] = txt + "  # PRODUCTION: review and implement"
             else:
                 suggestions[txt] = txt + "  # PRODUCTION: review and implement"
-        elif item.get('type') == 'placeholder':
-            # Generic placeholder: append a production note
+        elif item.get('type') == 'TBD':
+            # Generic TBD: append a production note
             suggestions[txt] = txt + "  # PRODUCTION: resolved"
     return suggestions
 

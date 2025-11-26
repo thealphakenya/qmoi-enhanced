@@ -5,7 +5,7 @@ Usage:
   python3 scripts/run_validations.py [--out docs/download_validation_report.json] [--root .] [--apply]
 
 This script is intentionally conservative: it performs checks and writes reports in `docs/`.
-If `--apply` is provided it will run link fixer with `--apply` and will call the placeholder scanner with `--apply`.
+If `--apply` is provided it will run link fixer with `--apply` and will call the TBD scanner with `--apply`.
 """
 import argparse
 import hashlib
@@ -96,8 +96,8 @@ def main():
     print('Running link validator (apply=%s)...' % args.apply)
     run_link_validator(root, link_out, apply=args.apply)
 
-    # Placeholder scan
-    print('Running placeholder scanner (apply=%s)...' % args.apply)
+    # TBD scan
+    print('Running TBD scanner (apply=%s)...' % args.apply)
     run_placeholder_scanner(root, root / 'docs' / 'placeholders_report.json', apply=args.apply)
 
     print('\nValidation orchestration complete. Reports:')
@@ -111,7 +111,7 @@ if __name__ == '__main__':
 """Orchestrator for QMOI validation systems
 
 Runs a configurable pipeline consisting of:
- - placeholder scan (dry-run or scoped apply)
+ - TBD scan (dry-run or scoped apply)
  - link and markdown validation (calls validate_and_fix_md.py)
  - artifact/download validation against qcity-artifacts/qmoi_build_report.json
  - memory and LION checks (lightweight, scaffolded)
@@ -202,17 +202,17 @@ def run_md_validator(apply=False):
 
 def run_placeholder_scan(apply=False):
     if not PLACEHOLDER_SCRIPT.exists():
-        print('Placeholder script not found:', PLACEHOLDER_SCRIPT)
+        print('TBD script not found:', PLACEHOLDER_SCRIPT)
         return
     cmd = [sys.executable, str(PLACEHOLDER_SCRIPT)]
     if apply:
         cmd.append('--apply')
-    print('Running placeholder scanner (apply=%s)' % apply)
+    print('Running TBD scanner (apply=%s)' % apply)
     try:
         subprocess.run(cmd, check=True)
-        print('Placeholder scan complete')
+        print('TBD scan complete')
     except subprocess.CalledProcessError as e:
-        print('Placeholder scan failed:', e)
+        print('TBD scan failed:', e)
 
 
 def run_lion_checks():
@@ -249,7 +249,7 @@ def main():
         args.run_artifacts = True
 
     if args.apply_placeholders:
-        print('Applying placeholder replacements (repo-wide)')
+        print('Applying TBD replacements (repo-wide)')
         run_placeholder_scan(apply=True)
     else:
         run_placeholder_scan(apply=False)

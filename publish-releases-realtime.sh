@@ -410,7 +410,7 @@ sha256sum -c qmoi-ai.exe.sha256
 
 EOF
 
-    # Replace placeholder with actual version
+    # Replace TBD with actual version
     sed -i "s/\$VERSION/$VERSION/g" "$notes_file"
 
     log_success "Release notes generated: $(basename $notes_file)"

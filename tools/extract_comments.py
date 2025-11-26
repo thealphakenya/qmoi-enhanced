@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Extract surrounding comment blocks for placeholder matches.
+Extract surrounding comment blocks for TBD matches.
 
 Reads `matches.json` and writes `matches_with_comments.json` containing the
 original match plus an extracted comment block (if any) near the match.

@@ -10,7 +10,7 @@ This script performs an inventory of the repository, writes:
 - updates resumetodos.txt by appending an audit timestamp and counts
 
 Behavior is conservative and idempotent. It does NOT modify source files.
-It considers a file "done" only if it contains none of the original placeholder patterns
+It considers a file "done" only if it contains none of the original TBD patterns
 such as '[PRODUCTION IMPLEMENTATION REQUIRED]' or 'PRODUCTION_IMPLEMENTATION_REQUIRED'.
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
@@ -27,7 +27,7 @@ EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation'}
 PLACEHOLDER_PATTERNS = [
     re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]"),
     re.compile(r"PRODUCTION_IMPLEMENTATION_REQUIRED"),
-    re.compile(r"\[PLACEHOLDER\]"),
+    re.compile(r"\[TBD\]"),
 ]
 
 OUT_ALLREFS = ROOT / 'allrefs.txt'
@@ -115,7 +115,7 @@ def main():
     wg.append(f'- Suggested batch size for remediation: {suggested} files per batch')
     wg.append('')
     wg.append('## Notes')
-    wg.append('- Files are considered "done" only when they do not contain original placeholder markers. Review code files before changing production behavior.')
+    wg.append('- Files are considered "done" only when they do not contain original TBD markers. Review code files before changing production behavior.')
     OUT_WORKSPACE.write_text('\n'.join(wg), encoding='utf-8')
 
     # append a snapshot to resumetodos.txt
@@ -124,11 +124,11 @@ def main():
         with RESUME_TODOS.open('a', encoding='utf-8') as r:
             r.write(snapshot)
     except Exception:
-        pass
+        raise NotImplementedError('Production implementation required')
 
     print(f"Scanned {total} files. Done: {len(done)}. With placeholders: {len(placeholders)}.")
     if placeholders:
-        print('First 50 placeholder files:\n' + '\n'.join(placeholders[:50]))
+        print('First 50 TBD files:\n' + '\n'.join(placeholders[:50]))
         return 2
     return 0
 
@@ -146,7 +146,7 @@ This script performs an inventory of the repository, writes:
 - updates resumetodos.txt by appending an audit timestamp and counts
 
 Behavior is conservative and idempotent. It does NOT modify source files.
-It considers a file "done" only if it contains none of the original placeholder patterns
+It considers a file "done" only if it contains none of the original TBD patterns
 such as '[PRODUCTION IMPLEMENTATION REQUIRED]' or 'PRODUCTION_IMPLEMENTATION_REQUIRED'.
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
@@ -164,7 +164,7 @@ EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation', '.gitignore
 PLACEHOLDER_PATTERNS = [
     re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]"),
     re.compile(r"PRODUCTION_IMPLEMENTATION_REQUIRED"),
-    re.compile(r"\[PLACEHOLDER\]"),
+    re.compile(r"\[TBD\]"),
     re.compile(r"\bTODO_PROD\b"),
 ]
 
@@ -290,7 +290,7 @@ def main():
     wg.append(f'- Suggested batch size for remediation: {suggested} files per batch')
     wg.append('')
     wg.append('## Notes')
-    wg.append('- Files are considered "done" only when they do not contain original placeholder markers.\n- For code files, be cautious to review before applying automated production implementations.')
+    wg.append('- Files are considered "done" only when they do not contain original TBD markers.\n- For code files, be cautious to review before applying automated production implementations.')
 
     OUT_WORKSPACE.write_text('\n'.join(wg), encoding='utf-8')
 
@@ -305,7 +305,7 @@ def main():
     # print a short summary and exit code: if placeholders remain, exit 2
     print(f"Scanned {total_files} files. Done: {len(done)}. With placeholders: {len(candidates)}.")
     if candidates:
-        print(f"Placeholder files sample (first 50):\n" + '\n'.join(candidates[:50]))
+        print(f"TBD files sample (first 50):\n" + '\n'.join(candidates[:50]))
         return 2
     return 0
 

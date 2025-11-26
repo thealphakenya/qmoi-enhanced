@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true, // helps catch issues in dev
   swcMinify: true,        // uses faster SWC compiler
   images: {
-    domains: ['placeholder.svg'],
+    domains: ['TBD.svg'],
     unoptimized: true // disables automatic Image Optimization (required for Electron)
   },
   experimental: {

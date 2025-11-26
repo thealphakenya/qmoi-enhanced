@@ -69,7 +69,7 @@
 | Chromebook | `qmoi_ai.zip` | ~40-80MB | GitHub Release |
 | Web/PWA | Online | - | https://qmoi.qmoi.app |
 
-**⚠️ Windows Note:** A 169-byte PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) exists in `/downloads/` but the real Windows executable (5.0 MB) is available in `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe`. See the corrected inventory document for build and installation instructions.
+**⚠️ Windows Note:** A 169-byte TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) exists in `/downloads/` but the real Windows executable (5.0 MB) is available in `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe`. See the corrected inventory document for build and installation instructions.
 
 ---
 

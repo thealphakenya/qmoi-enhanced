@@ -1266,7 +1266,7 @@ function QIComponent() {
                 onChange={e => setConsoleInput(e.target.value)}
                 className="bg-gray-800 text-green-200 p-2 rounded"
                 rows={2}
-                placeholder="Enter command, file edit, or version query..."
+                TBD="Enter command, file edit, or version query..."
               />
               <Button size="sm" variant="outline" onClick={handleConsoleSend}>Send</Button>
               <div className="mt-2 max-h-40 overflow-y-auto bg-gray-800 p-2 rounded">

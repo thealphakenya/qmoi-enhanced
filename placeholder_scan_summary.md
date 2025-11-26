@@ -1,9 +1,9 @@
 ---
-title: "PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) Scan Summary"
+title: "TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) Scan Summary"
 qmoi_validation_frontmatter: true
 ---
 
-# PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) Scan Summary
+# TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) Scan Summary
 
 Created by running `tools/find_placeholders.py`.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scan the repository for common placeholder tokens and produce actionable reports.
+"""Scan the repository for common TBD tokens and produce actionable reports.
 
 Writes `tools/placeholder_scan.json` and `tools/placeholder_actions.md`.
 """
@@ -56,19 +56,19 @@ OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-lines = [f"# Placeholder Scan Report\nChecked at: {report['checked_at']}\n", '## Matches', '']
+lines = [f"# TBD Scan Report\nChecked at: {report['checked_at']}\n", '## Matches', '']
 for m in report['matches']:
     lines.append(f"- `{m['path']}` — token `{m['token']}` — match `{m['match_text']}`\n  - snippet: {m['snippet']}")
 
 with OUT_MD.open('w') as f:
     if len(report['matches']) == 0:
-        f.write('# Placeholder Scan Report\nNo placeholder tokens found.\n')
+        f.write('# TBD Scan Report\nNo TBD tokens found.\n')
     else:
         f.write('\n'.join(lines))
 
 print('Wrote', OUT_JSON, 'and', OUT_MD)
 #!/usr/bin/env python3
-"""Scan the repository for common placeholder tokens and produce actionable reports.
+"""Scan the repository for common TBD tokens and produce actionable reports.
 
 Writes:
 - tools/placeholder_scan.json
@@ -108,18 +108,18 @@ report = {'checked_at': __import__('datetime').datetime.utcnow().isoformat() + '
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-md_lines = [f"# Placeholder Scan Report\nChecked at: {report['checked_at']}\n", f"Total files with matches: {report['total_files_with_matches']}", '']
+md_lines = [f"# TBD Scan Report\nChecked at: {report['checked_at']}\n", f"Total files with matches: {report['total_files_with_matches']}", '']
 for r in results:
     md_lines.append(f"- `{r['file']}`: {', '.join(r['matches'])}")
 
-md_lines += ['', '## Suggested actions', '', '- Review each file and replace placeholder tokens with production values.', '- For domains like `downloads.qmoi.app` prefer canonical GitHub Releases links or CDN assets.', '- If a file intentionally contains examples, mark them clearly or move to `examples/` directory.']
+md_lines += ['', '## Suggested actions', '', '- Review each file and replace TBD tokens with production values.', '- For domains like `downloads.qmoi.app` prefer canonical GitHub Releases links or CDN assets.', '- If a file intentionally contains examples, mark them clearly or move to `examples/` directory.']
 
 with OUT_MD.open('w') as f:
     f.write('\n'.join(md_lines))
 
 print('Wrote', OUT_JSON, 'and', OUT_MD)
 #!/usr/bin/env python3
-"""Scan the repository for common placeholder tokens and produce a report.
+"""Scan the repository for common TBD tokens and produce a report.
 
 Outputs:
 - tools/placeholder_scan.json
@@ -157,9 +157,9 @@ report = {'checked_at': __import__('datetime').datetime.utcnow().isoformat() + '
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-md_lines = [f"# Placeholder Scan Report", '', f"Checked at: {report['checked_at']}", '', '## Matches', '']
+md_lines = [f"# TBD Scan Report", '', f"Checked at: {report['checked_at']}", '', '## Matches', '']
 if not results:
-    md_lines.append('- No placeholder tokens found.')
+    md_lines.append('- No TBD tokens found.')
 else:
     for r in results:
         md_lines.append(f"- `{r['path']}` — token: `{r['token']}` — snippet: {r['snippet']}")

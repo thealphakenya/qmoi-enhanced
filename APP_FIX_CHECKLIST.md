@@ -76,7 +76,7 @@ find /workspaces -type d -name "android" -o -name "ios" -o -name "app-src" 2>/de
    cp /path/to/real/qmoi_ai.apk ~/temp_builds/
    cp /path/to/real/qmoi_ai.ipa ~/temp_builds/
    ```
-2. [ ] Verify they're not PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files:
+2. [ ] Verify they're not TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files:
    ```bash
    unzip -l ~/temp_builds/qmoi_ai.apk | head -20
    unzip -l ~/temp_builds/qmoi_ai.ipa | head -20
@@ -150,7 +150,7 @@ GRADLE
 
 ## VERIFICATION BEFORE REPLACING
 
-For each real app obtained, verify it's NOT a PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md):
+For each real app obtained, verify it's NOT a TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md):
 
 ### Android APK
 ```bash
@@ -209,7 +209,7 @@ python3 scripts/generate_release_manifest.py
 
 # Step 4: Commit
 git add Qmoi_downloaded_apps/ release_assets_manifest.json
-git commit -m "fix: replace PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) apps with real functioning builds"
+git commit -m "fix: replace TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) apps with real functioning builds"
 ```
 
 **Checklist**:

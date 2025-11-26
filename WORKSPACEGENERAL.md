@@ -43,7 +43,7 @@ New automation added (auto-managed):
 - Scheduled link-check workflow: `.github/workflows/scheduled-link-check.yml` (daily).
 - Vercel autofix workflow: `.github/workflows/vercel-autofix.yml` (runs on push/PR and will attempt safe fixes and open PRs).
  - Scheduled memory-sync workflow: `.github/workflows/sync-memory.yml` (every 15 minutes; requires `QMOI_GH_TOKEN`/`QMOI_GIST_ID` or `QMOI_HF_TOKEN`/`QMOI_HF_REPO` to be configured in repo secrets).
- - Placeholder remediation: A docs-first placeholder cleanup branch `auto/placeholders/docs-fix-3` was created and pushed with doc token replacements. Code-fix skeleton branches were created for top components (see `tools/code_fixes/`), and per-P0 issue drafts were generated under `tools/issue_drafts/` for manual triage.
+ - TBD: See PLACEHOLDER_REMEDIATION_PLAN.md remediation: A docs-first TBD: See PLACEHOLDER_REMEDIATION_PLAN.md cleanup branch `auto/placeholders/docs-fix-3` was created and pushed with doc token replacements. Code-fix skeleton branches were created for top components (see `tools/code_fixes/`), and per-P0 issue drafts were generated under `tools/issue_drafts/` for manual triage.
 
 New Vercel helper scripts added (2025-11-24):
 - `scripts/vercel_deploy.sh` — deploy the PWA/web app to Vercel using the `vercel` CLI or guidance via the Vercel API when tokens are available.

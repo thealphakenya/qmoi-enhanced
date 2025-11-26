@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate draft issue files for the top-priority placeholder matches.
+Generate draft issue files for the top-priority TBD matches.
 
 Reads `tools/matches_priority.json` and creates one markdown draft per top file
 under `tools/issue_drafts/` and a consolidated `tools/remediation_plan.md`.

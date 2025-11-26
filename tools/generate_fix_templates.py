@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Conservative, non-destructive generator of patch suggestions for obvious placeholder sites.
+Conservative, non-destructive generator of patch suggestions for obvious TBD sites.
 
 Rules (very conservative):
-- For Python files: if a `def` contains a single `pass` and a TODO/FIXME appears within 3 lines, propose replacing `pass` with `raise NotImplementedError("Implemented in production")`.
+raise NotImplementedError('Production implementation required')
 - For JS/TS files: if a function contains `// TODO` or `/* TODO */` on nearby lines, propose adding `throw new Error('Not implemented')` in place of empty bodies.
 
 This script does NOT apply edits; it writes a unified patch file `tools/placeholder_fixes_suggest.patch` for review.

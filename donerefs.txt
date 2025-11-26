@@ -5899,8 +5899,8 @@ postcss.config.mjs
 public/favicon.ico
 public/icon.svg
 public/index.html
-public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.svg
-public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).svg
+public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.svg
+public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).svg
 public/qcity-icon.svg
 public/qcity/dashboard.js
 public/qcity/index.html
@@ -9026,8 +9026,8 @@ qmoi-enhanced/postcss.config.mjs
 qmoi-enhanced/public/favicon.ico
 qmoi-enhanced/public/icon.svg
 qmoi-enhanced/public/index.html
-qmoi-enhanced/public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.svg
-qmoi-enhanced/public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).svg
+qmoi-enhanced/public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.svg
+qmoi-enhanced/public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).svg
 qmoi-enhanced/public/qcity-icon.svg
 qmoi-enhanced/push-simple.ps1
 qmoi-enhanced/qcity-artifacts/qmoi_build_report.json

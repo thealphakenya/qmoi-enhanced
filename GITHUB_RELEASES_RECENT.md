@@ -1,6 +1,6 @@
-# Recent Releases (auto-generated PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md))
+# Recent Releases (auto-generated TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md))
 
-This section is intended to be generated from GitHub Releases or tags. For now it's a PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) showing how recent entries will appear. If you'd like, I can fetch real release data and replace these examples.
+This section is intended to be generated from GitHub Releases or tags. For now it's a TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) showing how recent entries will appear. If you'd like, I can fetch real release data and replace these examples.
 
 ## v1.2.4 — 2025-11-12
 - QMOI AI: Bug fixes and performance improvements; improved publishing workflow.

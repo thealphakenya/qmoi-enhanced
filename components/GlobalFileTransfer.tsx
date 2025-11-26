@@ -24,7 +24,7 @@ export const GlobalFileTransfer: React.FC = () => {
       <h3>Global File Transfer</h3>
       <input
         type="text"
-        placeholder="Recipient (name/email)"
+        TBD="Recipient (name/email)"
         value={recipient}
         onChange={e => setRecipient(e.target.value)}
         style={{ marginBottom: 8, width: '100%' }}

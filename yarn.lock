@@ -387,9 +387,9 @@
     "@babel/helper-create-class-features-plugin" "^7.18.6"
     "@babel/helper-plugin-utils" "^7.18.6"
 
-"@babel/plugin-proposal-private-property-in-object@7.21.0-placeholder-for-preset-env.2":
-  version "7.21.0-placeholder-for-preset-env.2"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-private-property-in-object/-/plugin-proposal-private-property-in-object-7.21.0-placeholder-for-preset-env.2.tgz#7844f9289546efa9febac2de4cfe358a050bd703"
+"@babel/plugin-proposal-private-property-in-object@7.21.0-TBD-for-preset-env.2":
+  version "7.21.0-TBD-for-preset-env.2"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-private-property-in-object/-/plugin-proposal-private-property-in-object-7.21.0-TBD-for-preset-env.2.tgz#7844f9289546efa9febac2de4cfe358a050bd703"
   integrity sha512-SOSkfJDddaM7mak6cPEpswyTRnuRltl429hMraQEglW+OkovnCzsiszTmsrlY//qLFjCpQDFRvjdm2wA5pPm9w==
 
 "@babel/plugin-proposal-private-property-in-object@^7.16.7":
@@ -1032,7 +1032,7 @@
     "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression" "^7.27.1"
     "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining" "^7.27.1"
     "@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly" "^7.28.3"
-    "@babel/plugin-proposal-private-property-in-object" "7.21.0-placeholder-for-preset-env.2"
+    "@babel/plugin-proposal-private-property-in-object" "7.21.0-TBD-for-preset-env.2"
     "@babel/plugin-syntax-import-assertions" "^7.27.1"
     "@babel/plugin-syntax-import-attributes" "^7.27.1"
     "@babel/plugin-syntax-unicode-sets-regex" "^7.18.6"

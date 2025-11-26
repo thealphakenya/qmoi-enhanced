@@ -38,7 +38,7 @@ python qmoi-enhanced/qmoi-enhanced/qmoi_orchestrator.py --dry-run
 ```
 
 Next steps to make this production-ready:
-- Replace PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) auto-fixer script references with concrete fixers.
+- Replace TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) auto-fixer script references with concrete fixers.
 - Integrate with managed secret stores and add transient token fetchers for CI/runners.
 - Replace the passive build driver with per-platform build pipelines and signing workflows.
 

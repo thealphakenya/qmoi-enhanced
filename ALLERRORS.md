@@ -190,7 +190,7 @@ qmoi_validation_frontmatter: true
 - QMOICLONEGITLAB.md:40: - QMOI monitors all pipelines and auto-fixes errors using WATCHDEBUG.
 - QMOICLONEGITLAB.md:64: - **WATCHDEBUG Integration:**
 - QMOIDATABASE.md:81: ## TODO
-- QMOIGITHUBAPP.md:126: QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The recommended production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
+- QMOIGITHUBAPP.md:126: QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The recommended production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
 - QMOIGITHUBAPP.md:131: - Links returning 200-399 are marked OK. 4xx/5xx or network errors are recorded in `ALLERRORS.*` and pushed to the master dashboard for review.
 - QMOIHUGGINGFACESPACESSETUPINST.md:41: QMOI_DEBUG=false
 - QMOISPACEDEV.md:548: export QMOI_ENABLE_ERROR_RECOVERY="true"
@@ -255,8 +255,8 @@ qmoi_validation_frontmatter: true
 - docs/REVENUE_SPEC.md.generated.md:10637: ## File: qmoi-enhanced/ERRORSREADME.md
 - docs/REVENUE_SPEC.md.generated.md:15844: ## File: qmoi-enhanced/WATCHDEBUG.md
 - docs/merged_remediation_plan.md:11: - `docs/placeholders_report.json` — placeholders/TODOs found across code and docs.
-- docs/merged_remediation_plan.md:24: 3) PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) tokens and TODOs
-- docs/merged_remediation_plan.md:25: - `docs/placeholders_report.json` contains many `TODO`/`PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)` occurrences across `components/*.tsx`, `next.config.mjs`, and `.md` files.
+- docs/merged_remediation_plan.md:24: 3) TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) tokens and TODOs
+- docs/merged_remediation_plan.md:25: - `docs/placeholders_report.json` contains many `TODO`/`TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)` occurrences across `components/*.tsx`, `next.config.mjs`, and `.md` files.
 - qmoi-enhanced/ALLMDFILESREFS.md:56: /workspaces/qmoi-enhanced/ALLERRORSSTATSQMOI.md
 - qmoi-enhanced/ALLMDFILESREFS.md:62: /workspaces/qmoi-enhanced/AUTODOWNLOAD.md
 - qmoi-enhanced/ALLMDFILESREFS.md:81: /workspaces/qmoi-enhanced/ERRORSREADME.md

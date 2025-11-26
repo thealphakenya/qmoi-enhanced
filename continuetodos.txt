@@ -5,7 +5,7 @@ Progress snapshot (partial — some automation tasks remain):
 Completed in this session:
 
 ✓ Claude Sonnet 3.5 Integration (configuration and enablement script added)
-✓ PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanner (`scripts/placeholder_scanner.py`) — dry-run and apply
+✓ TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanner (`scripts/placeholder_scanner.py`) — dry-run and apply
 ✓ Parallel executor (`lib/parallel_executor.py`) — lightweight concurrency + fallback
 ✓ QVS (QMOI Virtual Store) (`lib/qvs.py`) — local-first artifact store
 ✓ Lightweight strategy doc (`docs/LIGHTWEIGHT_STRATEGY.md`)

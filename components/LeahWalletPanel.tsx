@@ -33,8 +33,8 @@ export function LeahWalletPanel() {
         <h3 className="font-bold mb-2">Leah's Wallet</h3>
         <div className="mb-2">Balance: <span className="font-mono">${balance.toFixed(2)}</span></div>
         <div className="mb-2">
-          <input type="number" placeholder="Amount" value={amount} onChange={e => setAmount(e.target.value)} className="border p-1 rounded w-1/3 mr-2" />
-          <input type="text" placeholder="Description" value={desc} onChange={e => setDesc(e.target.value)} className="border p-1 rounded w-1/3 mr-2" />
+          <input type="number" TBD="Amount" value={amount} onChange={e => setAmount(e.target.value)} className="border p-1 rounded w-1/3 mr-2" />
+          <input type="text" TBD="Description" value={desc} onChange={e => setDesc(e.target.value)} className="border p-1 rounded w-1/3 mr-2" />
           <Button size="sm" onClick={handleAddFunds}>Add Funds</Button>
           <Button size="sm" variant="outline" onClick={handleSpendFunds} className="ml-2">Spend</Button>
         </div>

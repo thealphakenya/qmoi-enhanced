@@ -90,7 +90,7 @@ Public / unauthenticated:
 
 ---
 
-NOTE: endpoint inventory was created from a repository scan. For a machine-readable report of where PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) tokens or missing docs were found, see `docs/placeholders_report.json`. For the canonical test matrix that exercises these endpoints see `docs/ALLTESTSAUTOTESTS.md`.
+NOTE: endpoint inventory was created from a repository scan. For a machine-readable report of where TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) tokens or missing docs were found, see `docs/placeholders_report.json`. For the canonical test matrix that exercises these endpoints see `docs/ALLTESTSAUTOTESTS.md`.
 
 To request an automated verification run (extract runtime route signatures and run integration tests against a local server), say: "verify endpoints now" and I'll run the harness and update this document with test results.
 

@@ -3,7 +3,7 @@
 ## Completed Tasks ✅
 
 ### 1. Audit & Remediation
-- Identified 5 corrupted PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) assets (repeating garbage byte pattern)
+- Identified 5 corrupted TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) assets (repeating garbage byte pattern)
 - Created valid stub replacements for all 5 corrupted platforms:
   - Android APK (Qmoi_downloaded_apps/android/latest/qmoi_ai.apk)
   - iOS IPA (Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa)
@@ -76,7 +76,7 @@ Once the workflow runs:
 2. Review logs to confirm:
    - ✅ Android build (with or without signing)
    - ✅ PWA builds (all 7 apps)
-   - ✅ iOS build PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)
+   - ✅ iOS build TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)
    - ✅ Manifest regeneration
    - ✅ Asset uploads to release
 

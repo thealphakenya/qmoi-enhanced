@@ -22,7 +22,7 @@ const masterUserId = 'master'; // fallback for master actions
       Advanced file operations, AI organization, and system-wide file management available.
     </div>
     <div className="flex flex-col gap-2">
-      <input type="text" placeholder="Edit file (path or name)" className="p-1 border rounded" onKeyDown={async e => {
+      <input type="text" TBD="Edit file (path or name)" className="p-1 border rounded" onKeyDown={async e => {
         if (e.key === 'Enter' && e.currentTarget.value) {
           const response = await aiRequestRouter.handleRequest({
             userId: masterUserId,
@@ -32,7 +32,7 @@ const masterUserId = 'master'; // fallback for master actions
           alert(response && response.message ? response.message : 'Edit request sent.');
         }
       }} />
-      <input type="text" placeholder="Show version/changelog (file or module)" className="p-1 border rounded" onKeyDown={async e => {
+      <input type="text" TBD="Show version/changelog (file or module)" className="p-1 border rounded" onKeyDown={async e => {
         if (e.key === 'Enter' && e.currentTarget.value) {
           const response = await aiRequestRouter.handleRequest({
             userId: masterUserId,

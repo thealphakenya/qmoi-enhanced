@@ -118,7 +118,7 @@ if __name__ == '__main__':
 #!/usr/bin/env python3
 """Link auto-updater (safe, dry-run by default).
 
-Scans Markdown files (and other text files) for placeholder links and either suggests replacements
+Scans Markdown files (and other text files) for TBD links and either suggests replacements
 or applies replacements when explicitly requested. Writes a plan to `.qmoi_validation/link_update_plan.json`.
 
 Usage:
@@ -148,10 +148,10 @@ if ROOT not in sys.path:
 from scripts.link_cache import get as cache_get, put as cache_put
 
 
-# Heuristics for placeholder links to replace
+# Heuristics for TBD links to replace
 PLACEHOLDER_PATTERNS = [
     r"https?://example\.com/[A-Z_0-9_-]+",
-    r"https?://PLACEHOLDER\.[A-Z_]+",
+    r"https?://TBD\.[A-Z_]+",
     r"REPLACE_ME_URL",
     r"PLACEHOLDER_LINK",
 ]
@@ -223,7 +223,7 @@ def build_plan(root, exts=None):
         file_plan = {"path": os.path.relpath(path, ROOT), "replacements": []}
         for match, s, e in matches:
             suggestion = mappings.get(match)
-            file_plan["replacements"].append({"placeholder": match, "start": s, "end": e, "suggested": suggestion})
+            file_plan["replacements"].append({"TBD": match, "start": s, "end": e, "suggested": suggestion})
         plan["files"].append(file_plan)
     return plan
 

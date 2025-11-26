@@ -15,7 +15,7 @@ Verification of documentation claims against actual artifacts reveals **signific
 |-------|----------|---------|
 | Apps directory confusion | 🔴 CRITICAL | Two separate directories with different binaries (placeholders vs real) |
 | Apps availability claims | 🔴 CRITICAL | Docs claim 6 apps with 12+ platform support; actually only 2 have multi-platform binaries |
-| Windows executable status | 🔴 CRITICAL | Contradictory info: PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub exists alongside real 5MB binary |
+| Windows executable status | 🔴 CRITICAL | Contradictory info: TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub exists alongside real 5MB binary |
 | Platform coverage incomplete | 🟡 HIGH | Missing Raspberry Pi, Wear OS, Docker images referenced in docs |
 | Web-only apps not clarified | 🟡 HIGH | QShare, Yap, QStore, QVillage documented as multi-platform but are web-only |
 
@@ -27,13 +27,13 @@ Verification of documentation claims against actual artifacts reveals **signific
 
 ```
 📁 downloads/windows/latest/
-  └─ qmoi_ai.exe (169 bytes) ❌ PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) STUB
+  └─ qmoi_ai.exe (169 bytes) ❌ TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) STUB
 
 📁 Qmoi_downloaded_apps/windows/latest/
   └─ qmoi_ai.exe (5.0MB) ✅ REAL BINARY
 ```
 
-**Impact:** URLs that reference `downloads/windows/latest/` will serve the 169-byte PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md), not the real app.
+**Impact:** URLs that reference `downloads/windows/latest/` will serve the 169-byte TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md), not the real app.
 
 **All Binaries Comparison:**
 
@@ -49,7 +49,7 @@ Verification of documentation claims against actual artifacts reveals **signific
 | Chromebook ZIP | Not found | 3.0 MB | ✅ Real in Qmoi_downloaded_apps |
 | QCity ZIP | Not found | 2.0 MB | ✅ Real in Qmoi_downloaded_apps |
 
-**Conclusion:** The `downloads/` directory contains only PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stubs; all actual binaries are in `Qmoi_downloaded_apps/`.
+**Conclusion:** The `downloads/` directory contains only TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stubs; all actual binaries are in `Qmoi_downloaded_apps/`.
 
 ---
 
@@ -108,13 +108,13 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 ### Issue #1: qmoi_ai.exe Status Confusion
 
 **Previous Claims in Inventory:**
-> "Status: ⚠️ PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub (169 bytes) — See build instructions below"
+> "Status: ⚠️ TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub (169 bytes) — See build instructions below"
 
 **Actual Status:**
-- `downloads/windows/latest/qmoi_ai.exe` → **169 bytes** (PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub)
+- `downloads/windows/latest/qmoi_ai.exe` → **169 bytes** (TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub)
 - `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe` → **5.0 MB** (real binary!)
 
-**Resolution:** The real Windows binary EXISTS and is functional. The PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) in `/downloads` is stale/old.
+**Resolution:** The real Windows binary EXISTS and is functional. The TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) in `/downloads` is stale/old.
 
 ### Issue #2: Documentation Claims False Platform Support
 
@@ -236,7 +236,7 @@ QShare, Yap, QStore, QVillage:
 **Current:** References to `downloads/` directory  
 **Should be:** Use `Qmoi_downloaded_apps/` for all binary references
 
-**Current:** "qmoi_ai.exe is a 169-byte PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)"  
+**Current:** "qmoi_ai.exe is a 169-byte TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)"  
 **Correction:** The proper 5MB binary exists in `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe`
 
 ---
@@ -247,7 +247,7 @@ QShare, Yap, QStore, QVillage:
 
 1. ✅ **Update QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md** to distinguish web-only apps from binary releases
 2. ✅ **Correct directory references** to point to `Qmoi_downloaded_apps/` instead of `downloads/`
-3. ✅ **Fix qmoi_ai.exe documentation** to reflect the real 5MB binary (not PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md))
+3. ✅ **Fix qmoi_ai.exe documentation** to reflect the real 5MB binary (not TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md))
 4. ✅ **Update all docs** claiming QShare/Yap/QStore/QVillage are multi-platform
 
 ### Short-term (High Priority)
@@ -260,7 +260,7 @@ QShare, Yap, QStore, QVillage:
 ### Long-term (Enhancement)
 
 1. 🔧 **Build separate binaries** for QShare, Yap, QStore, QVillage (if needed)
-2. 🔧 **Clean up downloads/ directory** - remove PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stubs or populate with real binaries
+2. 🔧 **Clean up downloads/ directory** - remove TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stubs or populate with real binaries
 3. 🔧 **Automate platform detection** in release scripts to verify what's actually built
 4. 🔧 **Create CI/CD verification** to compare documented vs actual releases
 
@@ -289,7 +289,7 @@ Priority order:
 - QShare, Yap, QStore, QVillage are NOT multi-platform binaries
 - "12+ platform support" claim is overstated (realistic: 8)
 - "72+ total builds" is misleading (realistic: 8-9 true builds)
-- Windows exe is NOT a PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) (real 5MB binary exists)
+- Windows exe is NOT a TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) (real 5MB binary exists)
 - `/downloads` directory contains stale stubs; real binaries are in `Qmoi_downloaded_apps/`
 
 **Status: DOCUMENTATION NEEDS URGENT CORRECTION**

@@ -2,7 +2,7 @@
 """
 scan_replace_placeholders.py
 
-Scans the repository for common placeholder tokens and optionally replaces them with safe defaults or inserts TODO markers.
+Scans the repository for common TBD tokens and optionally replaces them with safe defaults or inserts TODO markers.
 Produces a JSON report at docs/placeholders_report.json with locations and a summary.
 
 Usage:
@@ -30,7 +30,7 @@ TOKENS = [
     r"in production",
     r"REPLACE_ME",
     r"REPLACE_THIS",
-    r"<PLACEHOLDER>"
+    r"<TBD>"
 ]
 FILE_GLOBS_EXCLUDE = ['.git', 'node_modules', '.npm-cache', '__pycache__']
 
@@ -73,14 +73,14 @@ def scan_file(path: Path):
 # Safe replacement rules: map token -> replacement function or string
 REPLACEMENTS = {
     # key: exact substring to replace (case-sensitive)
-    'PLACEHOLDER': '/* PLACEHOLDER: implement production behavior or add task to continuetodos.txt */',
-    'placeholder': '/* placeholder: review and implement production behavior */',
+    'TBD': '/* TBD: implement production behavior or add task to continuetodos.txt */',
+    'TBD': '/* TBD: review and implement production behavior */',
     'placeholders': '/* placeholders: review and implement production behavior */',
     '<replace>': '/* replace: implement production behavior */',
     'dummy': '/* dummy removed: implement real behavior */',
     'REPLACE_ME': '/* REPLACE_ME: update with production value or secret store reference */',
     'REPLACE_THIS': '/* REPLACE_THIS: update with production code */',
-    '<PLACEHOLDER>': '/* <PLACEHOLDER>: update before shipping to production */',
+    '<TBD>': '/* <TBD>: update before shipping to production */',
     'in production': '/* note: this code path requires production implementation - file flagged for review */'
 }
 

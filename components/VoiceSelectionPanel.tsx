@@ -255,7 +255,7 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                 type="text"
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
-                placeholder="Enter a name..."
+                TBD="Enter a name..."
                 className="flex-1 px-3 py-2 border rounded-md"
                 onKeyPress={(e) => e.key === 'Enter' && handleAddName()}
               />

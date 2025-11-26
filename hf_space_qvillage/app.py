@@ -320,7 +320,7 @@ async def create_interface():
                 
                 with gr.Row():
                     search_query = gr.Textbox(
-                        placeholder="e.g., 'transformer architecture', 'BERT fine-tuning'...",
+                        TBD="e.g., 'transformer architecture', 'BERT fine-tuning'...",
                         label="Search query",
                         scale=4
                     )

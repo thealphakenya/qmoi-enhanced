@@ -72,7 +72,7 @@ def generate_caching_strategy(url, category):
         'external_service': '🔗 Reference only; add fallback docs locally',
         'localhost': '🖥️ Requires local service; add mock or stub endpoint',
         'ngrok_tunnel': '❌ Ephemeral; replace with reproducible local tunnel script',
-        'example': '❓ Example/placeholder; verify if needed in production',
+        'example': '❓ Example/TBD; verify if needed in production',
         'other_external': '🌐 Cache if possible; add local fallback'
     }
     return strategies.get(category, '❓ Unknown')

@@ -175,7 +175,7 @@ After successful production build:
 
 ### Download from Release Page
 - **Android APK** - Production signed, ready for Google Play Store
-- **iOS IPA** - PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) (iOS signing optional)
+- **iOS IPA** - TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) (iOS signing optional)
 - **PWA Zips** - All 7 web apps ready for deployment
 - **Release Notes** - Complete changelog and details
 

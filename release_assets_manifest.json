@@ -6,7 +6,7 @@
       "size": 2048,
       "sha256": "0766f562fecb25b62ef496b4a8a9f90159135ce4fe0ef2e0888d9612d26f968c",
       "platform": "raspberrypi",
-      "placeholder": true,
+      "default": true,
       "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
     },
     {
@@ -29,7 +29,7 @@
       "size": 2048,
       "sha256": "d14fb031144e48b05faaeed3dbffec9a9e8d37c34aee763b4f9a405c5ccfb680",
       "platform": "web",
-      "placeholder": true,
+      "default": true,
       "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
     },
     {
@@ -38,7 +38,7 @@
       "size": 2048,
       "sha256": "fa3098453de2768ef8a7ff6214ca41a5c2c3ce44aa6b5aeba0a1083b2bb4acfd",
       "platform": "web",
-      "placeholder": true,
+      "default": true,
       "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
     },
     {
@@ -47,7 +47,7 @@
       "size": 2048,
       "sha256": "1573f2eb6a563c860e56eb89222211839bd9d3ec43480d98f0baf99af184a64c",
       "platform": "web",
-      "placeholder": true,
+      "default": true,
       "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
     },
     {
@@ -56,7 +56,7 @@
       "size": 2048,
       "sha256": "640cf15bddcccb7781c2b5b9d2066160955f8476245e7380d91e4bf95fb97c65",
       "platform": "web",
-      "placeholder": true,
+      "default": true,
       "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
     },
     {
@@ -65,7 +65,7 @@
       "size": 2048,
       "sha256": "4222ab30396c1f3ac4c47a88b2019b03d9865ad3cf767fde0cf0c91dd376dc20",
       "platform": "web",
-      "placeholder": true,
+      "default": true,
       "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
     },
     {
@@ -74,7 +74,7 @@
       "size": 2048,
       "sha256": "ee8ae03c0f99436924a57c5c5a071de6a88fa344491a82b3644fa177778bde00",
       "platform": "web",
-      "placeholder": true,
+      "default": true,
       "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
     },
     {
@@ -104,7 +104,7 @@
       "size": 2048,
       "sha256": "8922d59f97ccf64062c74c0d7e52250e5d89f017b9dd1fab19b6833f15422036",
       "platform": "QCity",
-      "placeholder": true,
+      "default": true,
       "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
     },
     {
@@ -134,7 +134,7 @@
       "size": 2048,
       "sha256": "ecdd07338940df145e49a79ecee69eaac3cf6586530800b89bea11948871f068",
       "platform": "Windows",
-      "placeholder": true,
+      "default": true,
       "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
     },
     {

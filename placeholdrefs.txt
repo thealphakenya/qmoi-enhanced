@@ -2686,7 +2686,7 @@ tools/placeholder_actions.md.bak
 tools/placeholder_artifacts/README.md
 tools/placeholder_proposals.json
 tools/placeholder_scan.json
-tools/pr_drafts/docs-placeholder-remediation-pr.md
+tools/pr_drafts/docs-TBD: See PLACEHOLDER_REMEDIATION_PLAN.md-remediation-pr.md
 tools/pr_drafts/pr-patch-pass_fixes_batch_9.md
 tools/pr_drafts/pr_docs_link-validation-report.json.md
 tools/pr_drafts/pr_placeholder_check_gating.md
@@ -2699,6 +2699,6 @@ tools/pr_drafts/pr_src_components.md
 tools/priority_scan.py
 tools/process_allrefs.py
 tools/release_remediation_guide.md
-tools/workflows_proposals/placeholder-check.yml
+tools/workflows_proposals/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md-check.yml
 watchdebug.js
 yarn.lock

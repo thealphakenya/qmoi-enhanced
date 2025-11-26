@@ -9,7 +9,7 @@ This document outlines a safe, staged plan to enhance how LION is used across pr
 
 Goals
 - Make LION a first-class, auditable orchestrator across the repo.
-- Remove PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
+- Remove TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
 - Add validation and reporting so changes are discoverable by CI and the `scripts/run_validations.py` orchestrator.
 
 Phased approach

@@ -1,7 +1,7 @@
-# NOTE: 3 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# NOTE: 3 TBD(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 #!/usr/bin/env python3
 """
-Conservative placeholder fixer:
+Conservative TBD fixer:
 - Scans repository for the token '[PRODUCTION IMPLEMENTATION REQUIRED]' and related markers.
 - For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token 'TODO_PROD'.
 - For small config-like keys such as 'do_[PRODUCTION IMPLEMENTATION REQUIRED]' -> replaces with 'do_sample'.
@@ -45,9 +45,9 @@ def annotate_code_file(path: Path, matches: int):
     # Add a top-of-file comment warning (language-aware)
     ext = path.suffix.lower()
     if ext == '.py':
-        comment = f"# NOTE: {matches} placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
+        comment = f"# NOTE: {matches} TBD(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
     else:
-        comment = f"// NOTE: {matches} placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
+        comment = f"// NOTE: {matches} TBD(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
     text = path.read_text(encoding='utf-8')
     if text.startswith(comment):
         return False
@@ -65,7 +65,7 @@ def process_file(path: Path, report_lines: list):
     if ph_matches == 0:
         return
 
-    report_lines.append(f"FOUND: {path} - {ph_matches} placeholder(s)")
+    report_lines.append(f"FOUND: {path} - {ph_matches} TBD(s)")
 
     if path.suffix.lower() in TEXT_EXTS:
         backup(path)

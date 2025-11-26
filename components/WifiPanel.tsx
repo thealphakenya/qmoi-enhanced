@@ -346,7 +346,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
               <div className="flex gap-2 items-center">
                 <Input
                   type={net.secure ? 'password' : 'text'}
-                  placeholder={net.secure ? 'Password' : 'No password'}
+                  TBD={net.secure ? 'Password' : 'No password'}
                   value={passwords[net.ssid] || ''}
                   onChange={e => handlePasswordChange(net.ssid, e.target.value)}
                   disabled={!net.secure || net.connected}
@@ -389,7 +389,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
           <Button size="sm" variant="outline" onClick={exportAnalytics}>Export Analytics (CSV)</Button>
           <Input
             type="text"
-            placeholder="Webhook URL (Slack, etc)"
+            TBD="Webhook URL (Slack, etc)"
             value={webhookUrl}
             onChange={e => setWebhookUrl(e.target.value)}
             className="h-7 w-64 text-xs"
@@ -568,7 +568,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
             }}>Export Logs</Button>
             <Input
               type="text"
-              placeholder="Filter logs..."
+              TBD="Filter logs..."
               value={logFilter}
               onChange={e => setLogFilter(e.target.value)}
               className="h-7 w-32 text-xs"

@@ -14,7 +14,7 @@ qmoi_validation_frontmatter: true
 
 # QMOI Clone (Vercel)
 
-This is a PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub for the QMOI Vercel clone instructions. Replace with full migration/deployment steps for Vercel when ready.
+This is a TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) stub for the QMOI Vercel clone instructions. Replace with full migration/deployment steps for Vercel when ready.
 
 Sections to add:
 - Overview

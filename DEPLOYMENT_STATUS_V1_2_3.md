@@ -70,7 +70,7 @@
 
 **Total**: 6 Apps × 12+ Platforms = **72+ Total Builds**
 
-**⚠️ Note on qmoi_ai.exe:** There was a PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) in `/downloads/` but the real Windows executable (5.0 MB) is available in `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe`. See the corrected inventory document for build and installation instructions.
+**⚠️ Note on qmoi_ai.exe:** There was a TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) in `/downloads/` but the real Windows executable (5.0 MB) is available in `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe`. See the corrected inventory document for build and installation instructions.
 
 ---
 

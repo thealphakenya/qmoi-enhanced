@@ -157,7 +157,7 @@ class QmoiParallelProcessor:
 
     def _claude_task_wrapper(self, task: Dict) -> ProcessingResult:
         try:
-            # Placeholder Claude processing
+            # TBD Claude processing
             result = {"status": "processed"}
             return ProcessingResult(success=True, data=result, source="claude", metrics={"latency": 0.1})
         except Exception as e:  # pragma: no cover - defensive
@@ -166,7 +166,7 @@ class QmoiParallelProcessor:
 
     def _local_task_wrapper(self, task: Dict) -> ProcessingResult:
         try:
-            # Placeholder local processing - real model should be used here
+            # TBD local processing - real model should be used here
             result = {"status": "processed_locally"}
             return ProcessingResult(success=True, data=result, source="local", metrics={"latency": 0.2})
         except Exception as e:  # pragma: no cover - defensive

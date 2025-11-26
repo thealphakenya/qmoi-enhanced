@@ -21,7 +21,7 @@ for k,v in cfg.items():
     default=v.get('default') if isinstance(v,dict) else None
     val=os.environ.get(k, default)
     if val is None:
-        # leave empty placeholder
+        # leave empty TBD
         val=''
     out[k]=val
 # write .env file

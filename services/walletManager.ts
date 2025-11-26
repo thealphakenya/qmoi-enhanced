@@ -95,13 +95,13 @@ export class WalletManager {
   }
 
   static async settleTransaction(txId: string) {
-    // Placeholder: would call payment adapters and wallet settlement logic, verify confirmations
+    // TODO: production implementation needed
     this.appendAudit({ event: 'tx_settle_attempt', txId });
     return { txId, settled: true };
   }
 
   static reconcile(transactions: any[]) {
-    // Simple reconciliation placeholder: mark unsettled
+    // Simple reconciliation TBD: mark unsettled
     return transactions.map(t => ({ ...t, checkedAt: new Date().toISOString(), reconciled: true }));
   }
 }

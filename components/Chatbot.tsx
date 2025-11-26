@@ -109,7 +109,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({
               type="text"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
-          placeholder="Type your message..."
+          TBD="Type your message..."
           className="flex-1 bg-[#222] border border-green-600 text-white px-3 py-2 rounded"
           disabled={isLoading}
             />

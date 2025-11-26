@@ -306,7 +306,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **Slow Network (3G Simulation)**
   - [ ] App loads (may take longer, but no timeout)
-  - [ ] Images load progressively or show PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)
+  - [ ] Images load progressively or show TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)
   - [ ] No "network error" crashes, graceful fallback
   - [ ] User feedback provided (loading spinner, progress indicator)
 

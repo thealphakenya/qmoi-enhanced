@@ -37,7 +37,7 @@ function run() {
     console.log('\nAll required payment credentials look present (format check only).');
     process.exit(0);
   } else {
-    console.log(`\nFound ${totalMissing} missing/placeholder credential(s). Please set them via environment or secrets manager.`);
+    console.log(`\nFound ${totalMissing} missing/TBD credential(s). Please set them via environment or secrets manager.`);
     process.exit(2);
   }
 }

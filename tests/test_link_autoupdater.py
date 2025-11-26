@@ -61,4 +61,4 @@ def test_build_plan_creates_plan():
         assert "files" in plan
         assert len(plan["files"]) == 1
         f = plan["files"][0]
-        assert any(r["placeholder"] for r in f["replacements"]) 
+        assert any(r["TBD"] for r in f["replacements"]) 

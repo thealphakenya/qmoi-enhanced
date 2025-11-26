@@ -51,7 +51,7 @@
 ./qmoi-enhanced/scripts/api/automation_api.py:@app.post("/automation/config")
 ./qmoi-enhanced/scripts/api/automation_api.py:@app.get("/automation/config")
 ./qmoi-enhanced/scripts/qmoi-error-predictor.js:app.get('/api/predictions', (req, res) => {
-./qmoi-enhanced/qmoiexe.py:            f.write("# Auto-generated PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get('/')\ndef root(): return {'status': 'ready'}")
+./qmoi-enhanced/qmoiexe.py:            f.write("# Auto-generated TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get('/')\ndef root(): return {'status': 'ready'}")
 ./qmoi-enhanced/qmoiexe_enhanced.py:@app.get('/')
 ./qmoi-enhanced/qmoiexe_enhanced.py:@app.get('/health')
 ./qmoi-enhanced/qmoiexe_enhanced.py:@app.post('/fix_error')

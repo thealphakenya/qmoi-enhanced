@@ -28,14 +28,14 @@ export function LeahWallet() {
         <div className="mb-4">
           <input
             type="number"
-            placeholder="Amount"
+            TBD="Amount"
             value={amount}
             onChange={e => setAmount(e.target.value)}
             className="border rounded px-2 py-1 mr-2"
           />
           <input
             type="text"
-            placeholder="Note"
+            TBD="Note"
             value={note}
             onChange={e => setNote(e.target.value)}
             className="border rounded px-2 py-1 mr-2"

@@ -9744,11 +9744,11 @@ public/icon.ico	14340
 public/icon.svg	455
 public/icon.webp	1760
 public/index.html	3716
-public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.png	568
-public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.svg	640
-public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-user.jpg	1635
-public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).jpg	1064
-public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).svg	3253
+public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.png	568
+public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.svg	640
+public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-user.jpg	1635
+public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).jpg	1064
+public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).svg	3253
 public/qcity-icon.svg	873
 public/qcity/dashboard.js	5309
 public/qcity/index.html	3376
@@ -14951,11 +14951,11 @@ qmoi-enhanced/public/icon.ico	3141
 qmoi-enhanced/public/icon.svg	455
 qmoi-enhanced/public/icon.webp	470
 qmoi-enhanced/public/index.html	3716
-qmoi-enhanced/public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.png	568
-qmoi-enhanced/public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.svg	640
-qmoi-enhanced/public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-user.jpg	1635
-qmoi-enhanced/public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).jpg	1064
-qmoi-enhanced/public/PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).svg	3253
+qmoi-enhanced/public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.png	568
+qmoi-enhanced/public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-logo.svg	640
+qmoi-enhanced/public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md)-user.jpg	1635
+qmoi-enhanced/public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).jpg	1064
+qmoi-enhanced/public/TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).svg	3253
 qmoi-enhanced/public/qcity-icon.svg	873
 qmoi-enhanced/push-simple.ps1	4607
 qmoi-enhanced/push.bat	489

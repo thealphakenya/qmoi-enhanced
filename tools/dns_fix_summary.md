@@ -12,7 +12,7 @@ Key points:
 Top recommended actions:
 
 - Verify DNS/A/AAAA/CNAME records for hosts that do not resolve (empty `resolved_ips`).
-- Replace PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) domains (e.g., `qmoigateway.example.com`, `your-app.vercel.app`, `codespaces`) with correct production hostnames or remove them from public docs.
+- Replace TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) domains (e.g., `qmoigateway.example.com`, `your-app.vercel.app`, `codespaces`) with correct production hostnames or remove them from public docs.
 - For `http://` links, prefer `https://`; use `tools/apply_link_fixes.py` to run a conservative dry-run and proposals.
 - After fixes, re-run `python3 tools/check_links_clean.py` to regenerate the reports and validate.
 

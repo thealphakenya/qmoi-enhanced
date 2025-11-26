@@ -291,7 +291,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
               onChange={(e) => setCurrentUrl(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && navigateToUrl(currentUrl)}
               onInput={(e) => generateSearchSuggestions(e.currentTarget.value)}
-              placeholder={language === 'sw' ? 'Tafuta au weka URL...' : 'Search or enter URL...'}
+              TBD={language === 'sw' ? 'Tafuta au weka URL...' : 'Search or enter URL...'}
               className="w-full px-4 py-2 border rounded-lg"
             />
             

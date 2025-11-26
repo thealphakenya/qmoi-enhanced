@@ -176,7 +176,7 @@ chmod +x Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage
 ```bash
 # Commit the real apps
 git add Qmoi_downloaded_apps/
-git commit -m "fix: replace PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) apps with real functioning builds
+git commit -m "fix: replace TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) apps with real functioning builds
 
 - Android APK: Real executable app with UI
 - iOS IPA: Real executable app with UI
@@ -312,7 +312,7 @@ TOMORROW (Nov 15)
   └─ [ ] Initial testing (1 hour)
 
 WEDNESDAY (Nov 16)
-  ├─ [ ] Replace PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files (30 min)
+  ├─ [ ] Replace TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files (30 min)
   ├─ [ ] Regenerate manifest (30 min)
   └─ [ ] Platform-by-platform verification (2 hours)
 
@@ -355,7 +355,7 @@ Once complete, ALL of these should pass:
 
 **Internal**:
 - [ ] Post issue to GitHub with this action plan
-- [ ] Notify dev team of PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files issue
+- [ ] Notify dev team of TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) files issue
 - [ ] Schedule sync meeting to discuss approach
 
 **External** (if needed):

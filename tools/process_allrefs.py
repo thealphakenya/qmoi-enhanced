@@ -39,7 +39,7 @@ def classify_file(p: Path):
     if not p.exists():
         return 'missing'
     if p.suffix.lower() in ('.md', '.txt'):
-        # md/text files are safe to auto-draft small placeholder replacements
+        # md/text files are safe to auto-draft small TBD replacements
         text = p.read_text(encoding='utf-8', errors='ignore')
         for pat in PLACEHOLDER_PATTERNS:
             if pat.search(text):

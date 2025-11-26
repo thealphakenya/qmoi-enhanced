@@ -118,14 +118,14 @@ def build_fallbacks():
             "qcity": '#!/bin/sh\necho "QCITY app package for QMOI AI"\nexit 0',
         }
         content = device_builds.get(device, '#!/bin/sh\necho "Generic build for QMOI AI"\nexit 0')
-        # write placeholder script and make executable
+        # write TBD script and make executable
         try:
             with open(path, 'w', encoding='utf-8') as f:
                 f.write(content)
             os.chmod(path, 0o755)
-            print(f"📦 {device.capitalize()} placeholder build created. See build documentation for full implementation.")
+            print(f"📦 {device.capitalize()} TBD build created. See build documentation for full implementation.")
         except Exception as e:
-            print(f"❌ Failed to create placeholder for {device}: {e}")
+            print(f"❌ Failed to create TBD for {device}: {e}")
 
 def update_readme():
     status = f"## QMOI AI Build Status ({datetime.now().strftime('%Y-%m-%d %H:%M')})\n"

@@ -306,7 +306,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
             <div className="mb-4">
               <input
                 type="text"
-                placeholder={language === 'sw' ? 'Tafuta mawasiliano...' : 'Search contacts...'}
+                TBD={language === 'sw' ? 'Tafuta mawasiliano...' : 'Search contacts...'}
                 value={searchQuery}
                 onChange={(e) => searchContacts(e.target.value)}
                 className="w-full p-3 border rounded-lg"

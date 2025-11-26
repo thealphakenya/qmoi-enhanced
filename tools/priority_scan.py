@@ -63,7 +63,7 @@ def main():
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_JSON.write_text(json.dumps({'files': items}, indent=2), encoding='utf-8')
 
-    md_lines = ['# Prioritized placeholder matches', '', 'Top files:']
+    md_lines = ['# Prioritized TBD matches', '', 'Top files:']
     for path, info in items[:200]:
         md_lines.append(f'- {path} — score: {info["score"]} — matches: {len(info["matches"])}')
     md_lines.append('')

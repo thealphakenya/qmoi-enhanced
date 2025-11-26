@@ -8077,7 +8077,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://mothereff.in/js-escapes
 - https://nodejs.org/docs/latest-v24.x/api/cli.html#--experimental-test-module
 - https://nodejs.org/docs/latest-v24.x/api/cli.html#--experimental-test-module-
-- https://registry.npmjs.org/semantic-release/-/semantic-release-0.0.0-PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).tgz
+- https://registry.npmjs.org/semantic-release/-/semantic-release-0.0.0-TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md).tgz
 - https://rollupjs.org/introduction/
 - https://sinonjs.org/releases/latest/#supported-runtimes
 - https://snack.expo.dev/

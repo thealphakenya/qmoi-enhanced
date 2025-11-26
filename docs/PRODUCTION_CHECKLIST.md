@@ -33,7 +33,7 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 
 7. Tests and Validation
 - Run unit tests and integration checks.
-- Use dry-run flags for any tool that modifies code (PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanner, strip tool).
+- Use dry-run flags for any tool that modifies code (TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanner, strip tool).
 
 8. Monitoring and Observability
 - Add monitoring for latency, error rates, and token usage.

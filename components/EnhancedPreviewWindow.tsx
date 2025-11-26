@@ -31,7 +31,7 @@ export function EnhancedPreviewWindow() {
       <CardContent>
         <input type="file" accept="image/*,video/*,audio/*" onChange={handleFileChange} />
         <div className="my-2">
-          <input type="text" placeholder="Paste YouTube/video URL here" value={youtubeUrl} onChange={handleYoutubeChange} className="w-full p-1 rounded bg-gray-900 text-green-200" />
+          <input type="text" TBD="Paste YouTube/video URL here" value={youtubeUrl} onChange={handleYoutubeChange} className="w-full p-1 rounded bg-gray-900 text-green-200" />
         </div>
         {mediaUrl && mediaType === 'image' && (
           <div style={{ position: 'relative', width: '100%', height: '300px', marginTop: 12 }}>
