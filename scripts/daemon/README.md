@@ -9,7 +9,7 @@ QMOI daemon
 This folder contains a lightweight daemon that orchestrates regular maintenance tasks used by QMOI. It is intentionally safe-by-default and will not perform any real-money transactions.
 
 Tasks performed (dry-run):
-- PLACEHOLDER (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanner (`scripts/check_placeholders.py`)
+- TBD: See PLACEHOLDER_REMEDIATION_PLAN.md (TBD: replace with production content; see PLACEHOLDER_REMEDIATION_PLAN.md) scanner (`scripts/check_placeholders.py`)
 - wallet quality verification (`scripts/wallets/check_wallets.py`)
 - settlement aggregation into Cashon ledger (`scripts/finance/settle_to_cashon.py`) — dry-run only
 - YAML/workflow validation (`scripts/validate_yml.py`)

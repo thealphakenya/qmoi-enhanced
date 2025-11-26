@@ -66,7 +66,7 @@ const Onboarding: React.FC = () => {
           <form onSubmit={handleSubmit}>
             <input
               name="name"
-              placeholder="Full Name"
+              TBD="Full Name"
               value={form.name}
               onChange={handleChange}
               required
@@ -74,7 +74,7 @@ const Onboarding: React.FC = () => {
             />
             <input
               name="email"
-              placeholder="Email"
+              TBD="Email"
               value={form.email}
               onChange={handleChange}
               required

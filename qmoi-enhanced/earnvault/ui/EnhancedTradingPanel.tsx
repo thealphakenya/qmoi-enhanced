@@ -655,7 +655,7 @@ export default function EnhancedTradingPanel() {
                   <div>
                     <Label>Symbol</Label>
                     <Input
-                      placeholder="e.g., BTCUSDT"
+                      TBD="e.g., BTCUSDT"
                       value={orderForm.symbol}
                       onChange={(e) => setOrderForm(prev => ({ ...prev, symbol: e.target.value }))}
                     />
@@ -680,7 +680,7 @@ export default function EnhancedTradingPanel() {
                       type="number"
                       step="0.001"
                       min="0.001"
-                      placeholder="0.001"
+                      TBD="0.001"
                       value={orderForm.size}
                       onChange={(e) => setOrderForm(prev => ({ ...prev, size: parseFloat(e.target.value) || 0.001 }))}
                     />
@@ -693,7 +693,7 @@ export default function EnhancedTradingPanel() {
                     <Input
                       type="number"
                       step="0.01"
-                      placeholder="0.00"
+                      TBD="0.00"
                       value={orderForm.price}
                       onChange={(e) => setOrderForm(prev => ({ ...prev, price: parseFloat(e.target.value) || 0 }))}
                     />
@@ -703,7 +703,7 @@ export default function EnhancedTradingPanel() {
                     <Input
                       type="number"
                       step="0.01"
-                      placeholder="0.00"
+                      TBD="0.00"
                       value={orderForm.stopLoss}
                       onChange={(e) => setOrderForm(prev => ({ ...prev, stopLoss: parseFloat(e.target.value) || 0 }))}
                     />
@@ -713,7 +713,7 @@ export default function EnhancedTradingPanel() {
                     <Input
                       type="number"
                       step="0.01"
-                      placeholder="0.00"
+                      TBD="0.00"
                       value={orderForm.takeProfit}
                       onChange={(e) => setOrderForm(prev => ({ ...prev, takeProfit: parseFloat(e.target.value) || 0 }))}
                     />

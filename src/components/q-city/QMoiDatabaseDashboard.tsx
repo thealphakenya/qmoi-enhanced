@@ -53,7 +53,7 @@ export default function QMoiDatabaseDashboard({
         <input
           value={newTable}
           onChange={(e) => setNewTable(e.target.value)}
-          placeholder="New table name"
+          TBD="New table name"
         />
         <button onClick={handleCreateTable}>Create Table</button>
       </div>

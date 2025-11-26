@@ -80,7 +80,7 @@ class TestnetAdapter(AdapterBase):
                     {'adapter': self.name, 'config': cfg}
                 )
                 return {'status': 'blocked_no_production_confirm', 'last_checked': now_iso(), 'meta': {'adapter': self.name}}
-            # Real integration placeholder (no default network call implemented here)
+            # Real integration TBD (no default network call implemented here)
             return {'status': 'not_implemented', 'last_checked': now_iso(), 'meta': {'adapter': self.name}}
 
         return {

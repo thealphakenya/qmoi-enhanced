@@ -65,19 +65,19 @@ const DocumentManagerPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            placeholder="Document Name"
+            TBD="Document Name"
             value={form.name}
             onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
             className="mb-2"
           />
           <Input
-            placeholder="Type (pdf, docx, etc.)"
+            TBD="Type (pdf, docx, etc.)"
             value={form.type}
             onChange={(e) => setForm((f) => ({ ...f, type: e.target.value }))}
             className="mb-2"
           />
           <Input
-            placeholder="Content (or file data)"
+            TBD="Content (or file data)"
             value={form.content}
             onChange={(e) =>
               setForm((f) => ({ ...f, content: e.target.value }))
@@ -88,7 +88,7 @@ const DocumentManagerPanel: React.FC = () => {
         </div>
         <div className="mb-4">
           <Input
-            placeholder="Search documents..."
+            TBD="Search documents..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="mb-2"

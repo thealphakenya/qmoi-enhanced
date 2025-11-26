@@ -364,8 +364,8 @@ export const FloatingAQ: React.FC = () => {
       else setImageError('No image returned.');
     } catch (err: any) {
       setImageError('Failed to generate image. (Simulated)');
-      // Simulate a placeholder image for demo
-      setImageUrl('/placeholder.jpg');
+      // Simulate a TBD image for demo
+      setImageUrl('/TBD.jpg');
     }
     setImageLoading(false);
   };
@@ -705,7 +705,7 @@ export const FloatingAQ: React.FC = () => {
                   <div style={{ color: '#333', width: '100%' }}>
                     <form onSubmit={handleImageGenerate} style={{ width: '100%' }}>
                       <label htmlFor="image-prompt"><b>Prompt:</b></label>
-                      <input id="image-prompt" name="prompt" type="text" value={imagePrompt} onChange={e => setImagePrompt(e.target.value)} placeholder="Describe your image or animation..." style={{ width: '100%', margin: '8px 0', padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
+                      <input id="image-prompt" name="prompt" type="text" value={imagePrompt} onChange={e => setImagePrompt(e.target.value)} TBD="Describe your image or animation..." style={{ width: '100%', margin: '8px 0', padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
                       <button type="submit" style={{ background: '#00f2fe', color: '#222', border: 'none', borderRadius: 6, padding: '6px 16px', fontWeight: 600, cursor: 'pointer' }} disabled={imageLoading || !imagePrompt}>Generate</button>
                     </form>
                     {imageLoading && <div style={{ marginTop: 16 }}>Generating image...</div>}
@@ -713,7 +713,7 @@ export const FloatingAQ: React.FC = () => {
                     {imageUrl && (
                       <div style={{ marginTop: 16 }}>
                         <img src={imageUrl} alt="Generated" style={{ maxWidth: '100%', maxHeight: 180, borderRadius: 8, border: '1px solid #eee' }} />
-                        <div style={{ fontSize: 12, color: '#888' }}>Preview (AI generated or placeholder)</div>
+                        <div style={{ fontSize: 12, color: '#888' }}>Preview (AI generated or TBD)</div>
                       </div>
                     )}
                   </div>

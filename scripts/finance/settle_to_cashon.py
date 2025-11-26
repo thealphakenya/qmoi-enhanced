@@ -111,7 +111,7 @@ def main():
         if os.environ.get('PRODUCTION_CONFIRMED', '').lower() != 'true':
             print('Refusing to perform real transfers: PRODUCTION_CONFIRMED!=true')
             return 2
-        # Placeholder: here we would call the Cashon API to transfer funds or record receipts.
+        # TBD: here we would call the Cashon API to transfer funds or record receipts.
         # Example (NOT IMPLEMENTED):
         # cashon_url = os.environ.get('CASHON_API_URL')
         # cashon_key = os.environ.get('CASHON_API_KEY')

@@ -3,7 +3,7 @@
 Lightweight QMOI daemon (safe-by-default).
 
 This process orchestrates periodic dry-run maintenance tasks used by QMOI:
-- placeholder scanner
+- TBD scanner
 - wallet QV (dry-run)
 - settlement aggregation (dry-run)
 - YAML/workflow validator

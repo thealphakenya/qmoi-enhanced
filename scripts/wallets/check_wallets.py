@@ -72,7 +72,7 @@ class CashonAdapter(AdapterBase):
             # Safety gate
             if os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() != 'true':
                 return {"status": "blocked_no_production_confirm", "last_checked": now_iso(), "meta": {"adapter": self.name}}
-            # Real call placeholder: implement provider API call here
+            # Real call TBD: implement provider API call here
             try:
                 import requests
                 url = (api_url or 'https://api.cashon.example') + '/v1/balance'

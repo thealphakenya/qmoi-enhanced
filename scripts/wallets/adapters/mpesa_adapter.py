@@ -1,6 +1,6 @@
 """M-Pesa sandbox adapter scaffold (mock-first).
 
-This adapter is a placeholder for M-Pesa sandbox interactions. It returns
+This adapter is a TBD for M-Pesa sandbox interactions. It returns
 test values by default and requires human approval and proper credentials
 for live operations.
 """
@@ -17,7 +17,7 @@ class MpesaSandboxAdapter(TestnetAdapter):
         if real:
             if os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() != 'true':
                 return {'status': 'blocked_no_production_confirm', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}
-            # Placeholder for real sandbox call
+            # TBD for real sandbox call
             return {'status': 'not_implemented', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}
         return super().check_balance(config=cfg, real=False)
 

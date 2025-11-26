@@ -66,7 +66,7 @@ export default function QAvatar() {
         transition={{ type: "spring" }}
       >
         <img
-          src="/placeholder-logo.png"
+          src="/TBD-logo.png"
           alt="Q-Avatar"
           className="rounded-full shadow-lg border-4 border-cyan-400"
           style={{ width: 100, height: 100 }}
