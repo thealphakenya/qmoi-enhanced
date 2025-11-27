@@ -47,9 +47,20 @@ export class TestnetAdapter implements WalletAdapter {
       return { amount, currency: 'USD' };
     }
 
-    // If API key present, adapters may implement a live testnet call. Keep this minimal and safe.
+    // If API key present, adapters may implement a live testnet call. Attempt a minimal safe call if global fetch is available.
     try {
-      // TODO: production implementation needed
+      if (this.opts && this.opts.apiKey && typeof (global as any).fetch === 'function') {
+        // Minimal safe call: do not perform sensitive operations, only query testnet balance if endpoint provided
+        const url = this.opts.apiUrl || process.env.TESTNET_API_URL || null;
+        if (url) {
+          const r = await (global as any).fetch(url, { headers: { Authorization: `Bearer ${this.opts.apiKey}` } });
+          if (r.ok) {
+            const j = await r.json();
+            return { amount: j.balance || 0, currency: j.currency || 'USDT' };
+          }
+        }
+      }
+      // Default safe testnet response
       return { amount: 100.0, currency: 'USDT' };
     } catch (err) {
       // Fall back to safe deterministic mock on failure

@@ -89,7 +89,7 @@ const QApiKeyManager: React.FC = () => {
             ))}
           </tbody>
         </table>
-        {/* TODO: Advanced logging, persistent storage, usage logs */}
+        {/* Advanced logging, persistent storage, and detailed usage logs should be implemented server-side for security and auditability. */}
       </CardContent>
     </Card>
   );

@@ -40,6 +40,10 @@ export class AuthManager {
   private static SISTER_USERNAME = "Leah";
 
   private rememberedDevices: Map<string, string> = new Map(); // userId -> deviceFingerprint
+  private pendingConfirmations: Map<
+    string,
+    { code: string; expiresAt: number; method: string }
+  > = new Map();
 
   private static getDeviceFingerprint(): string {
     // Simple device fingerprinting (can be enhanced)
@@ -287,12 +291,39 @@ export class AuthManager {
     sessionId: string,
     _method: "whatsapp" | "face" | "voice",
   ): Promise<boolean> {
-    // Stub: implement WhatsApp/face/voice confirmation
-    // For now, always return true for master/sister
+    // Basic confirmation flow:
+    // - Master/sister are auto-approved
+    // - If AUTO_APPROVE_IDENTITIES=true, auto-approve (useful for CI/dev)
+    // - Otherwise, generate a short-lived code and store it in pendingConfirmations
     const user = await this.getUser(sessionId);
     if (!user) return false;
     if (user.role === "master" || user.role === "sister") return true;
-    // TODO: implement actual confirmation for users
+
+    const auto = (process.env.AUTO_APPROVE_IDENTITIES || "").toLowerCase() === "true";
+    if (auto) return true;
+
+    // Generate a 6-digit code and store it for confirmation (expires in 5 minutes)
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiresAt = Date.now() + 5 * 60 * 1000;
+    this.pendingConfirmations.set(sessionId, { code, expiresAt, method: _method });
+
+    // In production this would send via WhatsApp/voice/face pipeline. For now, log it.
+    console.log(`Confirmation code for session ${sessionId}: ${code} (method=${_method})`);
+
+    return false;
+  }
+
+  public verifyConfirmation(sessionId: string, code: string): boolean {
+    const rec = this.pendingConfirmations.get(sessionId);
+    if (!rec) return false;
+    if (rec.expiresAt < Date.now()) {
+      this.pendingConfirmations.delete(sessionId);
+      return false;
+    }
+    if (rec.code === code) {
+      this.pendingConfirmations.delete(sessionId);
+      return true;
+    }
     return false;
   }
 }

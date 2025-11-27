@@ -6,7 +6,8 @@ interface VoiceConfig {
   continuous: boolean;
   interimResults: boolean;
   maxAlternatives: number;
-  [PRODUCTION IMPLEMENTATION REQUIRED]Rate: number;
+  // sampleRate is used by production speech backends (default 16000)
+  sampleRate: number;
   enableInterruption: boolean;
   autoStart: boolean;
 }
@@ -76,7 +77,7 @@ export class VoiceRecognitionService {
       continuous: true,
       interimResults: true,
       maxAlternatives: 3,
-      [PRODUCTION IMPLEMENTATION REQUIRED]Rate: 16000,
+      sampleRate: 16000,
       enableInterruption: true,
       autoStart: true,
     };
@@ -218,11 +219,18 @@ export class VoiceRecognitionService {
   }
 
   private setupFirstTimeVoiceSelection(): void {
-    // Check if this is the first time voice is being used
-    const hasUsedVoice = localStorage.getItem("voiceFirstTimeSetup");
-    if (!hasUsedVoice) {
-      this.isFirstTimeSetup = true;
-      this.triggerVoiceSelection();
+    // Check if this is the first time voice is being used (guard for SSR)
+    try {
+      if (typeof window !== "undefined" && window.localStorage) {
+        const hasUsedVoice = localStorage.getItem("voiceFirstTimeSetup");
+        if (!hasUsedVoice) {
+          this.isFirstTimeSetup = true;
+          this.triggerVoiceSelection();
+        }
+      }
+    } catch (err) {
+      // Ignore storage errors in constrained environments
+      this.isFirstTimeSetup = false;
     }
   }
 
@@ -312,14 +320,16 @@ export class VoiceRecognitionService {
 
   private initializeSpeechRecognition(): void {
     try {
-      // @ts-expect-error
-      const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        this.recognition = new SpeechRecognition();
-        this.setupRecognitionHandlers();
-      } else {
-        console.error("Speech recognition not supported");
+      // Guarded access to browser SpeechRecognition APIs. Use `any` types to avoid TS DOM dependency.
+      if (typeof window !== "undefined") {
+        // @ts-ignore allow accessing vendor-prefixed APIs at runtime
+        const SR: any = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+        if (SR) {
+          this.recognition = new SR();
+          this.setupRecognitionHandlers();
+        } else {
+          console.warn("Speech recognition not available in this environment");
+        }
       }
     } catch (error) {
       console.error("Error initializing speech recognition:", error);
@@ -353,37 +363,46 @@ export class VoiceRecognitionService {
       this.eventEmitter.emit("recognitionStart");
     };
 
-    this.recognition.onresult = (event: SpeechRecognitionEvent) => {
-      const results = event.results;
-      const isFinal = results[results.length - 1].isFinal;
+    this.recognition.onresult = (event: any) => {
+      try {
+        const results = event.results as any[];
+        const isFinal = results && results.length ? results[results.length - 1].isFinal : true;
 
-      for (let i = event.resultIndex; i < results.length; i++) {
-        const transcript = results[i][0].transcript;
-        const confidence = results[i][0].confidence;
+        for (let i = event.resultIndex || 0; i < (results ? results.length : 0); i++) {
+          const transcript = results[i][0].transcript;
+          const confidence = results[i][0].confidence || 0;
 
-        const response: VoiceResponse = {
-          text: transcript,
-          confidence,
-          isFinal,
-          timestamp: new Date(),
-          language: this.config.language,
-        };
+          const response: VoiceResponse = {
+            text: transcript,
+            confidence,
+            isFinal,
+            timestamp: new Date(),
+            language: this.config.language,
+          };
 
-        this.eventEmitter.emit("recognitionResult", response);
+          this.eventEmitter.emit("recognitionResult", response);
 
-        if (isFinal) {
-          this.processVoiceCommand(transcript, confidence);
+          if (isFinal) {
+            this.processVoiceCommand(transcript, confidence);
+          }
         }
+      } catch (err) {
+        console.error("Error handling recognition result:", err);
       }
     };
 
-    this.recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-      console.error("Voice recognition error:", event.error);
-      this.eventEmitter.emit("recognitionError", event.error);
+    this.recognition.onerror = (event: any) => {
+      try {
+        const errCode = event && (event.error || event.message || String(event));
+        console.error("Voice recognition error:", errCode);
+        this.eventEmitter.emit("recognitionError", errCode);
 
-      // Auto-restart on certain errors
-      if (["no-speech", "audio-capture", "network"].includes(event.error)) {
-        setTimeout(() => this.startListening(), 1000);
+        // Auto-restart on certain errors
+        if (["no-speech", "audio-capture", "network"].includes(errCode)) {
+          setTimeout(() => this.startListening(), 1000);
+        }
+      } catch (e) {
+        console.error("Error in recognition.onerror handler:", e);
       }
     };
 

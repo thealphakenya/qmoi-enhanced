@@ -81,7 +81,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private learningDatabase: Map<string, LearningData> = new Map();
   private systemHealth: SystemHealth;
   private continuousMonitoring: boolean = false;
-  private monitoringInterval?: NodeJS.Timeout;
+  private monitoringInterval?: ReturnType<typeof setInterval>;
   private notificationService: NotificationService;
   private maxRetries = 5;
   private retryDelay = 3000; // 3 seconds

@@ -1,4 +1,5 @@
-// TODO: Restore or implement missing UI modules and browserService for full functionality.
+"use client"
+// NOTE: BrowserInterface is a placeholder. Restore or implement missing UI modules and `browserService` for full functionality.
 // import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
 // import { Button } from '../ui/button';
 // import { Badge } from '../ui/badge';

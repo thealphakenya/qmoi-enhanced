@@ -92,9 +92,14 @@ const SelfHealPanel: React.FC = () => {
     localStorage.removeItem("selfHealHistory");
   };
 
-  // Scheduling UI (TBD)
+  // Scheduling UI (basic persisted schedule in localStorage)
   const handleSchedule = () => {
-    alert("Scheduling feature coming soon!");
+    // Basic scheduling UI: store simple interval schedule in localStorage
+    const existing = JSON.parse(localStorage.getItem('selfHealSchedule') || 'null');
+    const next = existing || { intervalMinutes: 60, enabled: false };
+    const newSchedule = { ...next, enabled: !next.enabled };
+    localStorage.setItem('selfHealSchedule', JSON.stringify(newSchedule));
+    alert(`Scheduling ${newSchedule.enabled ? 'enabled' : 'disabled'} (interval: ${newSchedule.intervalMinutes} minutes)`);
   };
 
   if (loading) return <div>Loading...</div>;

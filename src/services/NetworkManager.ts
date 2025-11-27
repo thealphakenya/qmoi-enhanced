@@ -1,5 +1,5 @@
 // NetworkManager: Handles all device network connections, prioritization, and health monitoring
-import EventEmitter from "events";
+import { EventEmitter } from "events";
 
 export type NetworkType =
   | "wifi"
@@ -16,18 +16,37 @@ export interface Network {
   isZeroRated?: boolean;
 }
 
+export interface PlatformNetworkAdapter {
+  scanNetworks?: () => Promise<Network[]>;
+  connectToNetwork?: (networkId: string) => Promise<boolean>;
+}
+
 export class NetworkManager extends EventEmitter {
   private networks: Network[] = [];
   private currentNetwork: Network | null = null;
+  private adapter?: PlatformNetworkAdapter;
+  private monitorInterval?: ReturnType<typeof setInterval>;
 
-  constructor() {
+  constructor(adapter?: PlatformNetworkAdapter) {
     super();
+    this.adapter = adapter;
     this.monitorConnection();
   }
 
   async scanNetworks(): Promise<Network[]> {
+    // Prefer platform adapter if available
+    if (this.adapter && typeof this.adapter.scanNetworks === "function") {
+      try {
+        this.networks = await this.adapter.scanNetworks();
+        this.emit("networksUpdated", this.networks);
+        return this.networks;
+      } catch (err) {
+        console.warn("Platform adapter scanNetworks failed:", err);
+      }
+    }
+
+    // Fallback: Simulate scan
     // TODO: Integrate with platform-specific APIs to scan for networks
-    // Simulate scan
     this.networks = [
       {
         id: "wifi-1",
@@ -83,8 +102,23 @@ export class NetworkManager extends EventEmitter {
   }
 
   async connectToNetwork(networkId: string): Promise<boolean> {
+    // Prefer platform adapter if available
+    if (this.adapter && typeof this.adapter.connectToNetwork === "function") {
+      try {
+        const ok = await this.adapter.connectToNetwork(networkId);
+        if (ok) {
+          this.networks = this.networks.map((n) => ({ ...n, isConnected: n.id === networkId }));
+          this.currentNetwork = this.networks.find((n) => n.id === networkId) || null;
+          this.emit("connected", this.currentNetwork);
+          return true;
+        }
+      } catch (err) {
+        console.warn("Platform adapter connectToNetwork failed:", err);
+      }
+    }
+
+    // Fallback: Simulate connection
     // TODO: Integrate with platform-specific APIs to connect
-    // Simulate connection
     this.networks = this.networks.map((n) => ({
       ...n,
       isConnected: n.id === networkId,
@@ -95,12 +129,24 @@ export class NetworkManager extends EventEmitter {
   }
 
   monitorConnection() {
-    // TODO: Implement real-time monitoring and auto-switch/fallback
-    setInterval(async () => {
-      if (!this.currentNetwork || !this.currentNetwork.isConnected) {
-        await this.connectBestNetwork();
+    // Best-effort periodic monitor. For production, replace with platform-specific event-based monitoring.
+    this.monitorInterval = setInterval(async () => {
+      try {
+        if (!this.currentNetwork || !this.currentNetwork.isConnected) {
+          await this.connectBestNetwork();
+        }
+      } catch (err) {
+        console.warn('Network monitor failed:', err);
       }
     }, 10000); // Check every 10s
+  }
+
+  // Stop background monitoring (useful for tests and graceful shutdown)
+  public stopMonitoring() {
+    if (this.monitorInterval) {
+      clearInterval(this.monitorInterval as any);
+      this.monitorInterval = undefined;
+    }
   }
 
   async fallbackToZeroRated() {

@@ -469,12 +469,14 @@ export const QmoiAutoDistribution: React.FC = () => {
                 <Input
                   value={deal.price}
                   onChange={e => setDeal(d => ({ ...d, price: e.target.value }))}
-                  TBD="Price (e.g. $9.99)"
+                  placeholder="Price (e.g. $9.99)"
+                  aria-label="Deal price"
                 />
                 <Input
                   value={deal.description}
                   onChange={e => setDeal(d => ({ ...d, description: e.target.value }))}
-                  TBD="Deal Description"
+                  placeholder="Deal Description"
+                  aria-label="Deal description"
                 />
                 <Button onClick={approveDeal} disabled={!deal.price || !deal.description}>Approve Deal</Button>
               </div>
@@ -504,7 +506,8 @@ export const QmoiAutoDistribution: React.FC = () => {
                 <Input
                   value={customPlatform}
                   onChange={e => setCustomPlatform(e.target.value)}
-                  TBD="Enter platform name or URL"
+                  placeholder="Enter platform name or URL"
+                  aria-label="Custom platform name or URL"
                 />
                 <Button onClick={distributeToCustomPlatform} disabled={!customPlatform.trim()}>
                   Distribute
@@ -589,7 +592,8 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Input
                     value={gitBranch}
                     onChange={(e) => setGitBranch(e.target.value)}
-                    TBD="main"
+                    placeholder="main"
+                    aria-label="Git branch"
                   />
                 </div>
                 <div>
@@ -597,7 +601,8 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Input
                     value={commitMessage}
                     onChange={(e) => setCommitMessage(e.target.value)}
-                    TBD="feat: auto-deploy updates"
+                    placeholder="feat: auto-deploy updates"
+                    aria-label="Commit message"
                   />
                 </div>
               </div>
@@ -628,7 +633,8 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Input
                     value={prTitle}
                     onChange={(e) => setPrTitle(e.target.value)}
-                    TBD="Auto-deploy feature"
+                    placeholder="Auto-deploy feature"
+                    aria-label="PR title"
                   />
                 </div>
                 <div>
@@ -636,7 +642,8 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Input
                     value={prDescription}
                     onChange={(e) => setPrDescription(e.target.value)}
-                    TBD="Automated deployment updates"
+                    placeholder="Automated deployment updates"
+                    aria-label="PR description"
                   />
                 </div>
               </div>

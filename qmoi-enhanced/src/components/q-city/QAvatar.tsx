@@ -65,12 +65,19 @@ export default function QAvatar() {
         animate={{ scale: open ? 1 : 0.5, rotate: open ? 0 : 20 }}
         transition={{ type: "spring" }}
       >
-        <img
-          src="/TBD-logo.png"
-          alt="Q-Avatar"
-          className="rounded-full shadow-lg border-4 border-cyan-400"
-          style={{ width: 100, height: 100 }}
-        />
+        <div style={{ width: 100, height: 100 }}>
+          {/* Simple SVG avatar generated inline to avoid external assets */}
+          <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Q-Avatar">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0%" stopColor="#06b6d4" />
+                <stop offset="100%" stopColor="#3b82f6" />
+              </linearGradient>
+            </defs>
+            <rect rx="50" width="100" height="100" fill="url(#g1)" />
+            <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fontSize="36" fill="#fff">Q</text>
+          </svg>
+        </div>
         <button
           className="absolute top-2 right-2 bg-cyan-700 text-white rounded-full p-1"
           onClick={() => setOpen((o) => !o)}

@@ -81,8 +81,24 @@ export class WalletManager {
   private async getUsdPrice(currency: string): Promise<number> {
     if (currency === "USDT") return 1;
     try {
-      // Implement price fetching logic here
-      return 0; // [PRODUCTION IMPLEMENTATION REQUIRED]
+      // Basic production-safe implementation:
+      // Read a configured price API endpoint from env (if available) and fall back to CoinGecko public API.
+      const priceApi = (typeof process !== 'undefined' && (process.env.PRICE_API_URL as string)) || '';
+      if (priceApi) {
+        const resp = await fetch(`${priceApi}?currency=${encodeURIComponent(currency)}`);
+        if (resp.ok) {
+          const j = await resp.json();
+          return Number(j.price || 0);
+        }
+      }
+      // Fallback to CoinGecko simple price endpoint
+      const cg = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${encodeURIComponent(currency.toLowerCase())}&vs_currencies=usd`);
+      if (cg.ok) {
+        const data = await cg.json();
+        const key = Object.keys(data)[0];
+        return (data[key] && data[key].usd) ? Number(data[key].usd) : 0;
+      }
+      return 0;
     } catch (error) {
       console.error(`Error fetching USD price for ${currency}:`, error);
       return 0;

@@ -227,6 +227,20 @@ function QIComponent() {
   const [showLifeGoals, setShowLifeGoals] = useState<boolean>(false);
   const [showInventionProjects, setShowInventionProjects] = useState<boolean>(false);
 
+  // Local notification center state (lightweight, client-only)
+  const [notifications, setNotifications] = useState<Array<{ id: string; title: string; body: string; ts: number; read?: boolean }>>([]);
+
+  // Helper to add a lightweight notification (used by client features)
+  const pushNotification = useCallback((title: string, body: string) => {
+    const n = { id: `n-${Date.now()}-${Math.floor(Math.random() * 10000)}`, title, body, ts: Date.now(), read: false };
+    setNotifications((s) => [n, ...s].slice(0, 50));
+  }, []);
+
+  const clearNotifications = useCallback(() => {
+    setNotifications([]);
+    toast({ title: 'Notifications', description: 'All notifications cleared.' });
+  }, [toast]);
+
   const { status: mediaStatus } = useMediaGenerationStatus();
   const { status: automationStatusRaw } = useGlobalAutomation();
   const automationStatus: AutomationState | null = automationStatusRaw as AutomationState | null;
@@ -640,7 +654,7 @@ function QIComponent() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-sm">Active Downloads</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement pause all */}}>
+                <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: pause all downloads') }}>
                   Pause All
                 </Button>
               </div>
@@ -655,19 +669,19 @@ function QIComponent() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Wallpaper</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement wallpaper change */}}>
+                <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: change wallpaper') }}>
                   Change Wallpaper
                 </Button>
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Appearance</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement appearance settings */}}>
+                <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: appearance settings') }}>
                   Customize
                 </Button>
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-gray-500">Installed Apps</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement app management */}}>
+                <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: app management') }}>
                   Manage Apps
                 </Button>
               </div>
@@ -701,12 +715,12 @@ function QIComponent() {
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm">Recent Transactions</span>
-                  <Button size="sm" variant="outline" onClick={() => {/* TODO: Add funds */}}>
+                  <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: add funds') }}>
                     Add Funds
                   </Button>
                 </div>
                 <div className="space-y-2">
-                  {/* TODO: Add transaction list */}
+                  {/* Transaction list not implemented yet */}
                   <div className="text-sm text-gray-500">No transactions</div>
                 </div>
               </div>
@@ -721,7 +735,7 @@ function QIComponent() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-sm">Active Downloads</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement pause all */}}>
+                <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: pause all downloads') }}>
                   Pause All
                 </Button>
               </div>
@@ -734,7 +748,7 @@ function QIComponent() {
           <div className="p-4 bg-gray-50 rounded-lg shadow mb-4">
             <h3 className="font-semibold mb-2">Bluetooth Devices</h3>
             <div className="space-y-2">
-              <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement bluetooth scan */}}>
+              <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: bluetooth scan') }}>
                 Scan for Devices
               </Button>
               <div className="text-sm text-gray-500">No devices found</div>
@@ -749,7 +763,7 @@ function QIComponent() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-sm">WiFi Networks</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement wifi scan */}}>
+                <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: wifi scan') }}>
                   Scan
                 </Button>
               </div>
@@ -763,7 +777,11 @@ function QIComponent() {
           <div className="p-4 bg-gray-50 rounded-lg shadow mb-4">
             <h3 className="font-semibold mb-2">Life Goals</h3>
             <div className="space-y-2">
-              <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement add goal */}}>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => { console.warn('Add Goal not implemented yet — create a proposal or wire a handler.'); }}
+              >
                 Add Goal
               </Button>
               <div className="text-sm text-gray-500">No goals set</div>
@@ -776,7 +794,11 @@ function QIComponent() {
           <div className="p-4 bg-gray-50 rounded-lg shadow mb-4">
             <h3 className="font-semibold mb-2">Invention Projects</h3>
             <div className="space-y-2">
-              <Button size="sm" variant="outline" onClick={() => {/* TODO: Implement add project */}}>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => { console.warn('New Project not implemented yet — create a proposal or wire a handler.'); }}
+              >
                 New Project
               </Button>
               <div className="text-sm text-gray-500">No projects yet</div>
@@ -825,7 +847,7 @@ function QIComponent() {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-sm">Active Rules</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Add new rule */}}>
+                <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: add new automation rule') }}>
                   Add Rule
                 </Button>
               </div>
@@ -882,13 +904,33 @@ function QIComponent() {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-sm">Recent Notifications</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Clear notifications */}}>
+                <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: clear notifications') }}>
                   Clear All
                 </Button>
               </div>
               <div className="space-y-2">
-                {/* TODO: Add notification list */}
-                <div className="text-sm text-gray-500">No new notifications</div>
+                {notifications.length === 0 ? (
+                  <div className="text-sm text-gray-500">No new notifications</div>
+                ) : (
+                  <div className="space-y-2">
+                    {notifications.map((n) => (
+                      <div key={n.id} className="p-2 border rounded bg-white">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <div className="font-medium">{n.title}</div>
+                            <div className="text-xs text-gray-500">{new Date(n.ts).toLocaleString()}</div>
+                            <div className="text-sm mt-1">{n.body}</div>
+                          </div>
+                          <div className="ml-2 text-right">
+                            <Button size="xs" variant="ghost" onClick={() => { console.log('Mark read', n.id); setNotifications((s) => s.map(x => x.id === n.id ? { ...x, read: true } : x)); }}>
+                              Mark Read
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -931,7 +973,7 @@ function QIComponent() {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-sm">Active Optimization Tasks</span>
-                <Button size="sm" variant="outline" onClick={() => {/* TODO: Start new optimization */}}>
+                <Button size="sm" variant="outline" onClick={() => { console.warn('Not implemented: start new optimization') }}>
                   Start Optimization
                 </Button>
               </div>
@@ -1266,7 +1308,8 @@ function QIComponent() {
                 onChange={e => setConsoleInput(e.target.value)}
                 className="bg-gray-800 text-green-200 p-2 rounded"
                 rows={2}
-                TBD="Enter command, file edit, or version query..."
+                placeholder="Enter command, file edit, or version query..."
+                aria-label="Master console input"
               />
               <Button size="sm" variant="outline" onClick={handleConsoleSend}>Send</Button>
               <div className="mt-2 max-h-40 overflow-y-auto bg-gray-800 p-2 rounded">

@@ -1,4 +1,13 @@
-// NOTE: 2 TBD(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+/*
+ * WhatsAppService
+ *
+ * This service provides a conservative, proposal-first implementation for
+ * WhatsApp integrations. Several features require production credentials or
+ * external SDKs (ads, business settings, group management, payment integrations).
+ * Those areas are intentionally implemented as safe stubs that log the action,
+ * notify the configured master phone (when available), and return informative
+ * messages. Production wiring must be added by an operator with credentials.
+ */
 import process from "process";
 // @ts-expect-error: whatsapp-web.js types are not available
 import { Client, LocalAuth, Message } from "whatsapp-web.js";
@@ -48,9 +57,10 @@ export class WhatsAppService {
   private messageTemplates: MessageTemplate[] = [];
   private autoResponders: Map<string, (message: Message) => Promise<string>> =
     new Map();
+  private messageQueue: Array<{ to: string; message: string }> = [];
   private pendingApprovals: Map<
     string,
-    { message: Message; resolve: (approved: boolean) => void }
+    { message: Message | null; resolve: (approved: boolean) => void }
   > = new Map();
 
   private constructor() {
@@ -621,17 +631,38 @@ Master Commands:
   }
 
   public async sendMessage(to: string, message: string): Promise<void> {
+    // Use safeSendMessage helper to attempt delivery and queue if unavailable
+    const ok = await this.safeSendMessage(to, message);
+    if (!ok) {
+      // If message couldn't be sent, throw so callers can handle it explicitly
+      throw new Error("WhatsApp message not delivered (client unavailable)");
+    }
+  }
+
+  private async safeSendMessage(
+    to: string,
+    message: string,
+  ): Promise<boolean> {
     try {
-      if (!this.isConnected) {
-        throw new Error("WhatsApp client not connected");
+      if (!this.client || !this.isConnected) {
+        console.warn("WhatsApp client not connected — queuing message");
+        this.messageQueue.push({ to, message });
+        return false;
       }
 
       const chatId = to.includes("@c.us") ? to : `${to}@c.us`;
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
+      return true;
     } catch (error) {
       console.error("Error sending WhatsApp message:", error);
-      throw error;
+      // Queue the message for retry
+      try {
+        this.messageQueue.push({ to, message });
+      } catch (e) {
+        // ignore queueing errors
+      }
+      return false;
     }
   }
 
@@ -750,8 +781,40 @@ Master Commands:
   }
 
   private logAndSendToQcity(log: string): void {
+    // Always print to console
     console.log(log);
-    // TODO: send log to Qcity (master-only access)
+    try {
+      // Persist to a local log file for audit and later ingestion by Qcity
+      // Use a local directory to avoid failing when FS is read-only for other paths
+      const fs = require("fs");
+      const path = require("path");
+      const dir = path.resolve(process.cwd(), ".qmoi_logs");
+      if (!fs.existsSync(dir)) {
+        try {
+          fs.mkdirSync(dir, { recursive: true });
+        } catch (e) {
+          // ignore directory creation errors
+        }
+      }
+      const file = path.join(dir, "qcity_whatsapp.log");
+      const entry = `[${new Date().toISOString()}] ${log}\n`;
+      try {
+        fs.appendFileSync(file, entry, { encoding: "utf8" });
+      } catch (e) {
+        // ignore file write errors in constrained environments
+      }
+
+      // If master phone configured, attempt to send a short notification (non-blocking)
+      if (this.config.masterPhone) {
+        void this.safeSendMessage(
+          this.config.masterPhone,
+          `[Qcity Log] ${log.substring(0, 240)}`,
+        );
+      }
+    } catch (err) {
+      // Best effort only — do not throw from logger
+      console.warn("logAndSendToQcity failed:", err);
+    }
   }
 
   // Add: Wallet and fund transfer approval flow
@@ -771,21 +834,25 @@ Master Commands:
         // Integrate with backend: approve/deny wallet creation
         // Log action
         if (approved) {
-          this.sendMessage(
+          void this.safeSendMessage(
             userId,
             "✅ Your wallet request has been approved by the master.",
           );
         } else {
-          this.sendMessage(
+          void this.safeSendMessage(
             userId,
             "❌ Your wallet request was denied by the master.",
           );
         }
       },
     });
-    await this
-      .sendMessageToMaster(`👤 Wallet request from ${username} (${email}).
-Reply with /approve ${approvalId} or /deny ${approvalId}.`);
+    // Best-effort notify master (do not throw if masterPhone missing)
+    const notify = `👤 Wallet request from ${username} (${email}). Reply with /approve ${approvalId} or /deny ${approvalId}.`;
+    if (this.config.masterPhone) {
+      void this.safeSendMessage(this.config.masterPhone, notify);
+    } else {
+      this.logAndSendToQcity(`Wallet request (no master configured): ${notify}`);
+    }
     // Log action
   }
 
@@ -805,21 +872,24 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
         // Integrate with backend: approve/deny transfer
         // Log action
         if (approved) {
-          this.sendMessage(
+          void this.safeSendMessage(
             userId,
             `✅ Your fund transfer of ${amount} via ${platform} has been approved by the master.`,
           );
         } else {
-          this.sendMessage(
+          void this.safeSendMessage(
             userId,
             `❌ Your fund transfer request was denied by the master.`,
           );
         }
       },
     });
-    await this
-      .sendMessageToMaster(`💸 Fund transfer request from user ${userId}: ${amount} via ${platform}.
-Reply with /approve ${approvalId} or /deny ${approvalId}.`);
+    const notifyTransfer = `💸 Fund transfer request from user ${userId}: ${amount} via ${platform}. Reply with /approve ${approvalId} or /deny ${approvalId}.`;
+    if (this.config.masterPhone) {
+      void this.safeSendMessage(this.config.masterPhone, notifyTransfer);
+    } else {
+      this.logAndSendToQcity(`Fund transfer request (no master configured): ${notifyTransfer}`);
+    }
     // Log action
   }
 
@@ -832,30 +902,39 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
     switch (subCommand) {
       case "ads":
         await message.reply(
-          "📢 WhatsApp Business Ads feature activated. Campaigns will be managed by AI.",
+          "📢 WhatsApp Business Ads feature invoked. (PRODUCTION_INTEGRATION_REQUIRED: ad campaign manager). A proposal has been logged for review.",
         );
-        // TODO: Integrate with ad campaign manager
+        // Best-effort stub: log request and record for later approval
+        this.logAndSendToQcity(`Business command ads invoked by ${message.from || 'unknown'}`);
         break;
       case "settings":
-        await message.reply("⚙️ WhatsApp Business settings updated.");
-        // TODO: Integrate with business settings manager
+        await message.reply(
+          "⚙️ WhatsApp Business settings command received. (PRODUCTION_INTEGRATION_REQUIRED: business settings manager). Changes are logged for manual review.",
+        );
+        this.logAndSendToQcity(`Business command settings invoked by ${message.from || 'unknown'}`);
         break;
       case "group":
-        await message.reply("👥 WhatsApp Business group management enabled.");
-        // TODO: Integrate with group management logic
+        await message.reply(
+          "👥 Group management command received. (PRODUCTION_INTEGRATION_REQUIRED: group management logic). Action logged for review.",
+        );
+        this.logAndSendToQcity(`Business command group invoked by ${message.from || 'unknown'}`);
         break;
       case "status":
-        await message.reply("📝 WhatsApp Business status updated.");
-        // TODO: Integrate with status update logic
+        await message.reply(
+          "📝 Business status query received. (PRODUCTION_INTEGRATION_REQUIRED: status update logic). Current status has been logged.",
+        );
+        this.logAndSendToQcity(`Business command status invoked by ${message.from || 'unknown'}`);
         break;
       default:
         await message.reply(`Unknown business feature command: ${subCommand}`);
     }
-    // Notify master of all business actions
-    await this.sendMessage(
-      this.config.masterPhone,
-      `Business feature command executed: ${subCommand}`,
-    );
+    // Notify master of all business actions (best-effort)
+    const masterNotify = `Business feature command executed: ${subCommand} by ${message.from || 'unknown'}`;
+    if (this.config.masterPhone) {
+      void this.safeSendMessage(this.config.masterPhone, masterNotify);
+    } else {
+      this.logAndSendToQcity(`Business action (no master configured): ${masterNotify}`);
+    }
   }
 }
 

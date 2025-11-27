@@ -35,7 +35,14 @@ export function DeviceSettingsPanel() {
       <CardContent>
         <div className="mb-2">
           <label className="block mb-1">Wallpaper URL</label>
-          <input type="text" value={wallpaper} onChange={handleWallpaperChange} className="w-full p-1 rounded bg-gray-900 text-green-200" TBD="/path/to/wallpaper.jpg" />
+          <input
+            type="text"
+            value={wallpaper}
+            onChange={handleWallpaperChange}
+            className="w-full p-1 rounded bg-gray-900 text-green-200"
+            placeholder="/path/to/wallpaper.jpg"
+            aria-label="Wallpaper URL"
+          />
         </div>
         <div className="mb-2">
           <label className="block mb-1">Theme</label>

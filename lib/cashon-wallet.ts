@@ -53,6 +53,7 @@ export class CashonWallet {
   private isTradingEnabled: boolean = false;
   private minTradeAmount: number = 10; // KES
   private profitLockPercentage: number = 20; // 20% of profits locked
+  private tradingLoopInterval?: ReturnType<typeof setInterval>;
 
   constructor(pesapalConfig: PesapalConfig, masterToken: string) {
     this.pesapalConfig = pesapalConfig;
@@ -368,27 +369,51 @@ export class CashonWallet {
   }
 
   private async notifyMaster(message: string, type: string): Promise<void> {
-    // Send notification to master via WhatsApp, email, or other channels
-    console.log(`[${type.toUpperCase()}] ${message}`);
-    
-    // TODO: Implement actual notification system
-    // await this.sendWhatsAppNotification(message);
-    // await this.sendEmailNotification(message);
+    // Best-effort notification: log, persist locally, and attempt WhatsApp if available
+    try {
+      console.log(`[${type.toUpperCase()}] ${message}`);
+      const fs = require('fs');
+      const path = require('path');
+      const dir = path.resolve(process.cwd(), '.qmoi_logs');
+      if (!fs.existsSync(dir)) {
+        try { fs.mkdirSync(dir, { recursive: true }); } catch (e) {}
+      }
+      const file = path.join(dir, 'cashon_wallet.log');
+      const entry = `[${new Date().toISOString()}] [${type}] ${message}\n`;
+      try { fs.appendFileSync(file, entry, { encoding: 'utf8' }); } catch (e) {}
+
+      // Attempt WhatsApp notification if service is available
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const WhatsAppService = require('../src/services/WhatsAppService').default;
+        if (WhatsAppService && typeof WhatsAppService.getInstance === 'function') {
+          const wa = WhatsAppService.getInstance();
+          if (wa && typeof wa.safeSendMessage === 'function' && process.env.MASTER_PHONE) {
+            void wa.safeSendMessage(process.env.MASTER_PHONE, `[${type.toUpperCase()}] ${message}`);
+          }
+        }
+      } catch (e) {
+        // ignore WhatsApp notification failures — best-effort only
+      }
+    } catch (err) {
+      // swallow errors from notifier to avoid affecting wallet operations
+      console.warn('notifyMaster failed:', err);
+    }
   }
 
   private startTradingLoop(): void {
-    // Start autonomous trading loop
-    setInterval(async () => {
+    // Start autonomous trading loop (store interval so it can be stopped)
+    this.tradingLoopInterval = setInterval(async () => {
       if (!this.isTradingEnabled) return;
-      
+
       try {
         await this.updateBalance();
-        
+
         if (this.balance.availableBalance < this.minTradeAmount) {
           await this.autoRequestDeposit(this.minTradeAmount);
           return;
         }
-        
+
         // AI trading logic would go here
         // For now, just log the check
         console.log('Trading loop check - balance:', this.balance.availableBalance);
@@ -396,6 +421,61 @@ export class CashonWallet {
         console.error('Trading loop error:', error);
       }
     }, 5 * 60 * 1000); // Every 5 minutes
+  }
+
+  public stopTradingLoop(): void {
+    if (this.tradingLoopInterval) {
+      clearInterval(this.tradingLoopInterval as any);
+      this.tradingLoopInterval = undefined as any;
+    }
+  }
+
+  // proposal-first safe token retrieval
+  private async getPesapalToken(): Promise<string> {
+    // If consumer key/secret not present, write a proposal and return a stub
+    const key = this.pesapalConfig.consumerKey;
+    const secret = this.pesapalConfig.consumerSecret;
+    const fs = require('fs');
+    const path = require('path');
+
+    const proposalsDir = path.resolve(process.cwd(), '.qmoi_proposals');
+    if (!fs.existsSync(proposalsDir)) {
+      try {
+        fs.mkdirSync(proposalsDir, { recursive: true });
+      } catch (e) {
+        // ignore
+      }
+    }
+
+    const payload = {
+      adapter: 'pesapal',
+      api: this.pesapalConfig.environment,
+      consumerKey: key ? key.slice(0, 4) + '...' : null,
+      consumerSecret: secret ? '***' : null,
+      ts: new Date().toISOString(),
+    };
+
+    const proposalFile = path.join(proposalsDir, `pesapal-token-proposal-${Date.now()}.json`);
+    try {
+      fs.writeFileSync(proposalFile, JSON.stringify({ title: 'pesapal-token-proposal', payload }, null, 2), 'utf8');
+    } catch (e) {
+      // ignore write errors
+    }
+
+    // Only perform real token generation in production when explicitly allowed
+    const prod = (process.env.PRODUCTION_CONFIRMED || '').toLowerCase() === 'true';
+    const allow = (process.env.ALLOW_REAL_ACTIONS || '').toLowerCase() === 'true';
+    if (!prod || !allow) {
+      return `proposal_token_stub_${Date.now()}`;
+    }
+
+    // If allowed, attempt a minimal token fetch (best-effort)
+    try {
+      // NOTE: Real Pesapal integration would go here. For now return a safe placeholder.
+      return `pesapal_token_${Date.now()}`;
+    } catch (err) {
+      return `pesapal_token_error_${Date.now()}`;
+    }
   }
 }
 

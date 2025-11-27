@@ -1,3 +1,71 @@
+# QMOI Enhanced — Quick Start & Diagnostics
+
+This repository contains the QMOI Enhanced UI and supporting services. The workspace includes Next.js/React components, Cypress E2E tests, and utilities.
+
+Quick local/CI checks
+
+- Ensure Node 18+ and npm are available.
+- Install dependencies and run type-check:
+
+```bash
+# Install deps (example: Ubuntu/Debian)
+# sudo apt update && sudo apt install -y nodejs npm
+
+npm install
+npx tsc --noEmit
+```
+
+- Run the Next.js build (CI):
+
+```bash
+npm run build
+```
+
+- Run Cypress E2E locally (if installed):
+
+```bash
+npx cypress open
+```
+
+If you do not have permission to install system packages in the dev container, run the above commands on your machine or in CI (GitHub Actions workflow is provided in `.github/workflows/ci.yml`).
+
+If you're inside a restricted dev container (no `npm`/system package access), run the CI workflow on GitHub instead:
+
+```bash
+# From the repo page: Actions → select the `ci` workflow → "Run workflow"
+# Or trigger the workflow via GitHub CLI (on a machine with gh installed):
+gh workflow run ci.yml --repo thealphakenya/qmoi-enhanced
+```
+
+Diagnostic helper
+
+Use `scripts/diagnose.sh` to run the common checks in one shot. See `scripts/README` for details.
+
+Developer diagnostics (CI/local)
+
+If you need to run quick checks locally or in CI, use the diagnose script which runs install/type-check/build when Node is available. Example (on a machine with Node/npm):
+
+```bash
+# run the bundled diagnostic script
+./scripts/diagnose.sh
+
+# Alternatively run steps manually
+npm ci
+npx tsc --noEmit
+npm run build
+```
+
+If you want identity confirmations to auto-approve (useful for CI or local dev), set this env var before running the server/tests:
+
+```bash
+export AUTO_APPROVE_IDENTITIES=true
+```
+
+Production readiness notes
+
+- CI workflow runs type-check and build. Push branches to trigger the workflow.
+- Dockerfile included for multi-stage Next.js production builds.
+- Some UI components include localStorage fallbacks to allow UI testing without a backend.
 ---
 title: "QMOI System"
 qmoi_validation_frontmatter: true

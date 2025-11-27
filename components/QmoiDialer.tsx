@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect, useRef } from 'react';
 import { useMaster } from './MasterContext';
 import { FaPhone, FaPhoneSlash, FaMicrophone, FaVolumeUp, FaVolumeMute, FaUser, FaStar, FaVideo, FaUserPlus } from 'react-icons/fa';
@@ -59,7 +60,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
   const [isAutoAnswerEnabled, setIsAutoAnswerEnabled] = useState(false);
   const [isCallRecordingEnabled, setIsCallRecordingEnabled] = useState(false);
   
-  const callDurationRef = useRef<NodeJS.Timeout | null>(null);
+  const callDurationRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const dialpadNumbers = [
     ['1', '2', '3'],
@@ -306,7 +307,8 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
             <div className="mb-4">
               <input
                 type="text"
-                TBD={language === 'sw' ? 'Tafuta mawasiliano...' : 'Search contacts...'}
+                placeholder={language === 'sw' ? 'Tafuta mawasiliano...' : 'Search contacts...'}
+                aria-label={language === 'sw' ? 'Tafuta mawasiliano' : 'Search contacts'}
                 value={searchQuery}
                 onChange={(e) => searchContacts(e.target.value)}
                 className="w-full p-3 border rounded-lg"

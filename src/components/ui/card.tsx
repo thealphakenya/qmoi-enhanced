@@ -13,4 +13,22 @@ export const Card: React.FC<CardProps> = ({ children, title, className = "", ...
   );
 };
 
+export const CardHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className = "", ...props }) => (
+  <div className={`mb-3 ${className}`} {...props}>
+    {children}
+  </div>
+);
+
+export const CardTitle: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({ children, className = "", ...props }) => (
+  <h3 className={`text-lg font-semibold ${className}`} {...props}>
+    {children}
+  </h3>
+);
+
+export const CardContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className = "", ...props }) => (
+  <div className={`text-sm ${className}`} {...props}>
+    {children}
+  </div>
+);
+
 export default Card;

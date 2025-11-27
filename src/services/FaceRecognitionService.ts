@@ -122,12 +122,24 @@ export class FaceRecognitionService {
       return;
     }
 
+    // Guard DOM usage to avoid SSR/build-time failures
+    if (typeof window === "undefined" || typeof document === "undefined") {
+      console.warn("FaceRecognitionService: DOM not available. Skipping startRecognition.");
+      return;
+    }
+
     this.videoElement = videoElement;
-    this.canvasElement = document.createElement("canvas");
-    this.context = this.canvasElement.getContext("2d");
+    try {
+      this.canvasElement = document.createElement("canvas");
+      this.context = this.canvasElement.getContext("2d");
+    } catch (err) {
+      console.warn("Could not create canvas/context:", err);
+      this.context = null;
+    }
 
     if (!this.context) {
-      throw new Error("Could not get canvas context");
+      console.warn("FaceRecognitionService: no canvas context available. Recognition will not start.");
+      return;
     }
 
     this.isRunning = true;
@@ -168,10 +180,15 @@ export class FaceRecognitionService {
   private async detectFaces(): Promise<void> {
     if (!this.videoElement || !this.context || !this.faceApi) return;
 
-    // Draw video frame to canvas
-    this.canvasElement!.width = this.videoElement.videoWidth;
-    this.canvasElement!.height = this.videoElement.videoHeight;
-    this.context.drawImage(this.videoElement, 0, 0);
+    // Draw video frame to canvas (guarded)
+    try {
+      this.canvasElement!.width = this.videoElement.videoWidth;
+      this.canvasElement!.height = this.videoElement.videoHeight;
+      this.context.drawImage(this.videoElement, 0, 0);
+    } catch (err) {
+      console.warn("Failed to draw video frame to canvas:", err);
+      return;
+    }
 
     // Detect faces
     const detections = await this.faceApi.detectFaces(this.canvasElement);

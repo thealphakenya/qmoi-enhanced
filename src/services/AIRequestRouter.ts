@@ -1,5 +1,6 @@
 import { MultiUserSessionManager, User } from "./MultiUserSessionManager";
 import { ContextEngine } from "./ContextEngine";
+import { writeProposal } from "lib/proposals";
 
 export type AIRequestSource = "whatsapp" | "chat";
 
@@ -74,8 +75,20 @@ export class AIRequestRouter {
   }
 
   private async handleFileRequest(user: User, request: AIRequest) {
-    // TODO: Implement file editing, preview, commit/rollback logic
-    return { status: "file-handled", user: user.id, message: request.message };
+    // Conservative production flow: write a proposal describing the requested file change
+    const proposal = {
+      type: "file_edit_proposal",
+      userId: user.id,
+      message: request.message,
+      timestamp: new Date().toISOString(),
+    };
+
+    try {
+      const prop = await writeProposal(proposal as any);
+      return { status: "proposal_written", proposal: prop };
+    } catch (err) {
+      return { status: "proposal_failed", error: String(err) };
+    }
   }
 
   private async handleProjectRequest(user: User, request: AIRequest) {

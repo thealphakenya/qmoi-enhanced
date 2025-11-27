@@ -5,6 +5,7 @@ import React, {
   useContext,
   useState,
   useEffect,
+  useRef,
   ReactNode,
 } from "react";
 import { avatarsConfig, voiceProfiles } from "./avatarsConfig";
@@ -22,6 +23,7 @@ interface QMOIState {
 
   // Mood & Personality
   mood:
+    | "friendly"
     | "happy"
     | "focused"
     | "curious"
@@ -121,16 +123,32 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
     if (savedState) {
       try {
         const parsedState = JSON.parse(savedState);
-        setState((prevState) => ({ ...prevState, ...parsedState }));
+        setState((prevState: QMOIState) => ({ ...prevState, ...parsedState }));
       } catch (error) {
         console.error("Error loading QMOI state:", error);
       }
     }
   }, []);
 
-  // Save state to localStorage whenever it changes
+  // Persist state to localStorage with debounce; guard for SSR
   useEffect(() => {
-    localStorage.setItem("qmoi-state", JSON.stringify(state));
+    const timer = setTimeout(() => {
+      try {
+        if (typeof window !== "undefined" && window.localStorage) {
+          localStorage.setItem("qmoi-state", JSON.stringify(state));
+        }
+      } catch (err) {
+        console.warn("Failed to persist QMOI state:", err);
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [state]);
+
+  // Keep a ref to the latest state to avoid stale closures in async callbacks
+  const stateRef = useRef<QMOIState>(state);
+  useEffect(() => {
+    stateRef.current = state;
   }, [state]);
 
   // Auto-update mood based on time and activity
@@ -156,23 +174,26 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
 
   const updateAvatar = async (avatarId: string) => {
     try {
-      setState((prev) => ({
+      setState((prev: QMOIState) => ({
         ...prev,
         isProcessing: true,
         currentTask: "Switching avatar...",
       }));
-
-      // Call API to switch avatar
-      const response = await fetch("/api/qmoi/avatars", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "switch", avatarId }),
-      });
+      // Call API to switch avatar (use safeFetch with timeout)
+      const response = await safeFetch(
+        "/api/qmoi/avatars",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "switch", avatarId }),
+        },
+        10000,
+      );
 
       if (!response.ok) throw new Error("Failed to switch avatar");
 
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
-      setState((prev) => ({
+      setState((prev: QMOIState) => ({
         ...prev,
         currentAvatar: avatarId,
         avatarQuality: avatar?.qualityLevel || "enhanced",
@@ -183,34 +204,37 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
 
       // Auto-switch to compatible voice if available
       const compatibleVoice = getCompatibleVoice(avatarId);
-      if (compatibleVoice && compatibleVoice !== state.currentVoice) {
+      if (compatibleVoice && compatibleVoice !== stateRef.current.currentVoice) {
         await updateVoice(compatibleVoice);
       }
     } catch (error) {
       console.error("Error updating avatar:", error);
-      setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
+      setState((prev: QMOIState) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
 
   const updateVoice = async (voiceId: string) => {
     try {
-      setState((prev) => ({
+      setState((prev: QMOIState) => ({
         ...prev,
         isProcessing: true,
         currentTask: "Switching voice...",
       }));
-
-      // Call API to switch voice
-      const response = await fetch("/api/qmoi/voice-profiles", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "switch", voiceId }),
-      });
+      // Call API to switch voice (safeFetch with timeout)
+      const response = await safeFetch(
+        "/api/qmoi/voice-profiles",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "switch", voiceId }),
+        },
+        10000,
+      );
 
       if (!response.ok) throw new Error("Failed to switch voice");
 
       const voice = voiceProfiles.find((v) => v.id === voiceId);
-      setState((prev) => ({
+      setState((prev: QMOIState) => ({
         ...prev,
         currentVoice: voiceId,
         voiceQuality: voice?.quality || "enhanced",
@@ -219,27 +243,45 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       }));
     } catch (error) {
       console.error("Error updating voice:", error);
-      setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
+      setState((prev: QMOIState) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
 
+  // Helper: safeFetch with abort and timeout
+  async function safeFetch(
+    input: RequestInfo,
+    init?: RequestInit,
+    timeout = 10000,
+  ): Promise<Response> {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    try {
+      const res = await fetch(input, { ...(init || {}), signal: controller.signal });
+      clearTimeout(id);
+      return res;
+    } catch (err) {
+      clearTimeout(id);
+      throw err;
+    }
+  }
+
   const updateMood = (mood: QMOIState["mood"]) => {
-    setState((prev) => ({ ...prev, mood }));
+    setState((prev: QMOIState) => ({ ...prev, mood }));
   };
 
   const updateEnergy = (energy: number) => {
-    setState((prev) => ({
+    setState((prev: QMOIState) => ({
       ...prev,
       energy: Math.max(0, Math.min(100, energy)),
     }));
   };
 
   const updatePersonality = (personality: QMOIState["personality"]) => {
-    setState((prev) => ({ ...prev, personality }));
+    setState((prev: QMOIState) => ({ ...prev, personality }));
   };
 
   const updateSystemHealth = (health: QMOIState["systemHealth"]) => {
-    setState((prev) => ({ ...prev, systemHealth: health }));
+    setState((prev: QMOIState) => ({ ...prev, systemHealth: health }));
   };
 
   const updateUserPreferences = (
@@ -247,7 +289,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
     >,
   ) => {
-    setState((prev) => ({ ...prev, ...preferences }));
+    setState((prev: QMOIState) => ({ ...prev, ...preferences }));
   };
 
   const getAvatarInfo = (avatarId: string) => {

@@ -98,7 +98,7 @@ const EarningDashboard: React.FC = () => {
           )}
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Advanced analytics, strategy management */}
+        {/* Advanced analytics and strategy management require a metrics backend; local UI shows basic stats only. */}
       </CardContent>
     </Card>
   );

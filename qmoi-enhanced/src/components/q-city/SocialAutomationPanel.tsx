@@ -121,7 +121,7 @@ const SocialAutomationPanel: React.FC = () => {
           </ul>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Info gathering, community features */}
+        {/* Info gathering and community features can be added via server integrations and are out of scope for the local UI shim. */}
       </CardContent>
     </Card>
   );

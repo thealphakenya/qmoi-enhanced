@@ -16,7 +16,13 @@ export function MediaPreviewWindow() {
       <CardContent>
         <h3 className="font-bold mb-2">Media Preview</h3>
         <div className="mb-2">
-          <input type="text" TBD="Paste movie/YouTube/audio URL" className="border p-1 rounded w-2/3 mr-2" id="media-url" />
+          <input
+            type="text"
+            placeholder="Paste movie/YouTube/audio URL"
+            aria-label="Media URL"
+            className="border p-1 rounded w-2/3 mr-2"
+            id="media-url"
+          />
           <Button size="sm" onClick={() => {
             const input = document.getElementById('media-url') as HTMLInputElement;
             if (input && input.value) {

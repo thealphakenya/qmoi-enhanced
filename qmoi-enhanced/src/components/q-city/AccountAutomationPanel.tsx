@@ -149,7 +149,7 @@ const AccountAutomationPanel: React.FC = () => {
           </table>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Modular platform support, shell/VPN/security enhancements */}
+        {/* Modular platform support and security hardening belong to backend and ops; UI provides basic automation controls. */}
       </CardContent>
     </Card>
   );

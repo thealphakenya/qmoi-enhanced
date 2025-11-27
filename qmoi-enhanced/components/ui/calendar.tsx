@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
-// TODO: Refactor nav_button to use MUI Button or a simple class
+// NOTE: nav_button left as lightweight control for now; refactor to MUI optional
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 

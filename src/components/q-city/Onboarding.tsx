@@ -112,7 +112,40 @@ const Onboarding: React.FC = () => {
       {step === 2 && (
         <div>
           <h3>Set Your Preferences</h3>
-          {/* TODO: Add preference options */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <label>
+              Language:
+              <select
+                value={form.preferences.language || 'en'}
+                onChange={(e) => setForm((f) => ({ ...f, preferences: { ...f.preferences, language: e.target.value } }))}
+                style={{ marginLeft: 8 }}
+              >
+                <option value="en">English</option>
+                <option value="sw">Swahili</option>
+                <option value="fr">Français</option>
+              </select>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={!!form.preferences.newsletter}
+                onChange={(e) => setForm((f) => ({ ...f, preferences: { ...f.preferences, newsletter: e.target.checked } }))}
+              />
+              Receive product updates
+            </label>
+            <label>
+              Theme:
+              <select
+                value={form.preferences.theme || 'system'}
+                onChange={(e) => setForm((f) => ({ ...f, preferences: { ...f.preferences, theme: e.target.value } }))}
+                style={{ marginLeft: 8 }}
+              >
+                <option value="system">System</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </label>
+          </div>
           <button
             style={{ width: "100%", marginTop: 16 }}
             onClick={() => setStep(3)}

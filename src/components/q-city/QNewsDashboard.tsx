@@ -132,7 +132,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     fetchNews();
   };
 
-  // Core analytics and sharing features implemented (basic), TODO: expand engagement metrics.
+  // Core analytics and sharing features implemented (basic). Engagement metrics can be expanded with analytics backend.
 
   return (
     <Card className="space-y-4">

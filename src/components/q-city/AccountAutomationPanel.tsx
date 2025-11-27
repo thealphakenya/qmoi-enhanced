@@ -20,49 +20,65 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const res = await fetch("/api/account-automation/create", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-    const data = await res.json();
-    if (data.account) setAccounts((a) => [...a, data.account]);
-    setStatus(data.success ? "Account created" : "Error creating account");
+    try {
+      const res = await fetch("/api/account-automation/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (data.account) setAccounts((a) => [...a, data.account]);
+      setStatus(data.success ? "Account created" : "Error creating account");
+    } catch {
+      // local fallback create
+      const acc = { id: Date.now(), username: form.username, email: form.email, platform: form.platform, status: 'created', verified: false, createdAt: new Date().toISOString() };
+      const updated = [...accounts, acc];
+      setAccounts(updated);
+      setStatus('Account created (local)');
+    }
   };
 
   const login = async () => {
-    const res = await fetch("/api/account-automation/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: form.username,
-        platform: form.platform,
-      }),
-    });
-    const data = await res.json();
-    setStatus(data.success ? "Login successful" : "Login failed");
+    try {
+      const res = await fetch("/api/account-automation/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: form.username, platform: form.platform }),
+      });
+      const data = await res.json();
+      setStatus(data.success ? "Login successful" : "Login failed");
+    } catch {
+      setStatus('Login simulated (local)');
+    }
   };
 
   const verify = async (id: number, email: string) => {
-    const res = await fetch("/api/account-automation/verify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, email }),
-    });
-    const data = await res.json();
-    setStatus(data.success ? "Verification triggered" : "Verification failed");
-    if (data.account)
-      setAccounts((accs) => accs.map((a) => (a.id === id ? data.account : a)));
+    try {
+      const res = await fetch("/api/account-automation/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, email }),
+      });
+      const data = await res.json();
+      setStatus(data.success ? "Verification triggered" : "Verification failed");
+      if (data.account) setAccounts((accs) => accs.map((a) => (a.id === id ? data.account : a)));
+    } catch {
+      // local verify
+      setAccounts((accs) => accs.map((a) => (a.id === id ? { ...a, verified: true } : a)));
+      setStatus('Verification simulated (local)');
+    }
   };
 
   const checkStatus = async () => {
-    const res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
-    const data = await res.json();
-    setStatus(
-      data.status
-        ? `Status: ${data.status}, Verified: ${data.verified}`
-        : "Status check failed",
-    );
+    try {
+      const res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+      const data = await res.json();
+      setStatus(data.status ? `Status: ${data.status}, Verified: ${data.verified}` : 'Status check failed');
+    } catch {
+      const found = accounts.find((a) => String(a.id) === String(idToCheck));
+      if (found) setStatus(`Status: ${found.status}, Verified: ${found.verified}`);
+      else setStatus('Status check failed (local)');
+    }
   };
 
   return (
@@ -146,7 +162,7 @@ const AccountAutomationPanel: React.FC = () => {
           </table>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Modular platform support, shell/VPN/security enhancements */}
+        {/* Modular platform support, shell/VPN/security enhancements can be added later */}
       </CardContent>
     </Card>
   );

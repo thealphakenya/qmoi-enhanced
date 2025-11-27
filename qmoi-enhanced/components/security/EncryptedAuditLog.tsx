@@ -8,7 +8,13 @@ export const EncryptedAuditLog: React.FC<{ logs: string[] }> = ({ logs }) => {
   return (
     <div>
       <h4>Encrypted Audit Log</h4>
-      <input TBD="Decryption Key" value={key} onChange={e => setKey(e.target.value)} style={{ marginBottom: 8 }} />
+      <input
+        placeholder="Decryption Key"
+        aria-label="Decryption Key"
+        value={key}
+        onChange={e => setKey(e.target.value)}
+        style={{ marginBottom: 8 }}
+      />
       <button onClick={() => {
         try {
           setDecrypted(encrypted.map(e => CryptoJS.AES.decrypt(e, key || 'default').toString(CryptoJS.enc.Utf8)));
