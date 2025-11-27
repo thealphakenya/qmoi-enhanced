@@ -34,6 +34,15 @@ jobs:
         run: |
           npm install
           pip install -r requirements.txt
+      - name: Run placeholder CI check
+        run: |
+          bash scripts/ci_placeholder_check.sh
+      - name: Run placeholder unit tests
+        run: |
+          npm run placeholder:test-utils
+      - name: Run quick type-check and placeholder scan
+        run: |
+          npm run type-check:quick
       - name: Build QMOI AI app
         run: python scripts/qmoi-app-builder.py
       - name: Upload all artifacts

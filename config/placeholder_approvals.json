@@ -1,0 +1,20 @@
+{
+  "safeTokens": [
+    "AVATAR",
+    "AVATAR_NAME",
+    "PLACE",
+    "FACE",
+    "FACE_NAME",
+    "FACE_STYLE",
+    "RELEASE_WINDOWS_STATUS",
+    "RELEASE_ANDROID_FILE"
+  ],
+  "requireApprovalFor": [
+    "API_NAME",
+    "COMPONENT_NAME",
+    "SCRIPT_NAME",
+    "SERVICE_NAME",
+    "TODO_PROD",
+    "TODO"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "denyList": [
+    "TODO",
+    "TODO_PROD",
+    "FIXME",
+    "BUG",
+    "REFACTOR",
+    "PLACEHOLDER"
+  ],
+  "approvedList": [
+    "AVATAR",
+    "PLACE",
+    "FACE",
+    "FACE_NAME",
+    "FACE_STYLE",
+    "RELEASE_WINDOWS_STATUS",
+    "RELEASE_ANDROID_FILE"
+  ],
+  "severity": {
+    "TODO": "critical",
+    "TODO_PROD": "critical",
+    "FIXME": "high",
+    "BUG": "high",
+    "RELEASE*:": "info"
+  }
+}

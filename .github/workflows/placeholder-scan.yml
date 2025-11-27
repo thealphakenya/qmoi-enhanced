@@ -1,0 +1,33 @@
+name: Placeholder Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  placeholder-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Run placeholder check (fail on find)
+        run: |
+          node scripts/qmoi_placeholder_checker.js --scan --fail-on-find
+      - name: Upload placeholder report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: placeholder-scan-report
+          path: reports/placeholder_scan_report.json
+      - name: Upload placeholder report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: placeholder-scan-report
+          path: reports/placeholder_scan_report.json

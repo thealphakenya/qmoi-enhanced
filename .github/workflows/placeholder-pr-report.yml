@@ -1,0 +1,42 @@
+name: Placeholder PR Report
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  placeholder-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Run placeholder scan
+        id: scan
+        run: |
+          node scripts/qmoi_placeholder_checker.js --scan --no-notify || true
+          node scripts/compute_report_summary.js
+      - name: Upload placeholder report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: placeholder-scan-report
+          path: reports/placeholder_scan_report.json
+      - name: Add comment to PR
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ## QMOI Placeholder Scan
+            Placeholder scan completed. You can view [the artifact]({{ steps.scan.outputs.scan }}) for details.
+            
+            Summary:
+            - Files with placeholders: ${{ steps.scan.outputs.files_count || '0' }}
+            - Replacements suggested: ${{ steps.scan.outputs.replacements_count || '0' }}
+            
+            Review the report and address placeholders where required.

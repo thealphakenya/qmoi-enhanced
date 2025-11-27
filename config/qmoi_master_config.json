@@ -31,6 +31,13 @@
       "interval": 300000,
       "autoApply": true
     },
+    "placeholderChecker": {
+      "enabled": true,
+      "command": "node scripts/qmoi_placeholder_checker.js --scan",
+      "interval": 360000,
+      "autoApply": false,
+      "applyWithConfirmation": true
+    },
     "documentation": {
       "enabled": true,
       "command": "node scripts/qmoi_doc_verifier.js verify",

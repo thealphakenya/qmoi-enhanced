@@ -1216,6 +1216,8 @@ autoMoveMisplacedAssets();
 autoMinifyAssets();
 autoGenerateWebpImages();
 autoUpdateDocsAndIndex();
+// Run placeholder checker scan to detect any remaining placeholders and report
+try { execSync('node scripts/qmoi_placeholder_checker.js --scan --no-notify', { stdio: 'inherit' }); } catch (e) { console.error('[QMOI AUTO-FIX] Placeholder checker failed:', e.message); }
 autoGenerateApiDocs();
 autoLinkCodeToDocs();
 autoNotifyUser();

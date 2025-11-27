@@ -1,0 +1,7 @@
+{
+  "faces": [
+    { "id": "smile", "name": "Smiling Face", "style": "friendly", "description": "Warm, approachable smiling face" },
+    { "id": "serious", "name": "Serious Face", "style": "formal", "description": "Authoritative, professional expression" },
+    { "id": "curious", "name": "Curious Face", "style": "inquisitive", "description": "Inquisitive expression" }
+  ]
+}
