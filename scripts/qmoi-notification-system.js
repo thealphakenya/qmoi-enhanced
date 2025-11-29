@@ -21,44 +21,28 @@ class QMOINotificationSystem {
   constructor() {
     this.config = {
       email: {
-        #!/usr/bin/env node
-
-        /**
-         * QMOI Notification System (cleaned-up ESM version)
-         */
-
-        import { promises as fs } from 'fs';
-        import path from 'path';
-        import crypto from 'crypto';
-        import nodemailer from 'nodemailer';
-        import axios from 'axios';
-
-        class QMOINotificationSystem {
-          constructor() {
-            this.config = {
-              email: {
-                enabled: process.env.QMOI_EMAIL_ENABLED === 'true',
-                host: process.env.QMOI_EMAIL_HOST || 'smtp.gmail.com',
-                port: Number(process.env.QMOI_EMAIL_PORT) || 587,
-                secure: process.env.QMOI_EMAIL_SECURE === 'true',
-                user: process.env.QMOI_EMAIL_USER,
-                pass: process.env.QMOI_EMAIL_PASS,
-                from: process.env.QMOI_EMAIL_FROM || 'qmoi@q-city.ai',
-                to: process.env.QMOI_EMAIL_TO?.split(',') || []
-              },
-              slack: {
-                enabled: process.env.QMOI_SLACK_ENABLED === 'true',
-                webhook: process.env.QMOI_SLACK_WEBHOOK_URL
-              },
-              discord: {
-                enabled: process.env.QMOI_DISCORD_ENABLED === 'true',
-                webhook: process.env.QMOI_DISCORD_WEBHOOK_URL
-              },
-              telegram: {
-                enabled: process.env.QMOI_TELEGRAM_ENABLED === 'true',
-                botToken: process.env.QMOI_TELEGRAM_BOT_TOKEN,
-                chatId: process.env.QMOI_TELEGRAM_CHAT_ID
-              },
+        enabled: process.env.QMOI_EMAIL_ENABLED === 'true',
+        host: process.env.QMOI_EMAIL_HOST || 'smtp.gmail.com',
+        port: Number(process.env.QMOI_EMAIL_PORT) || 587,
+        secure: process.env.QMOI_EMAIL_SECURE === 'true',
+        user: process.env.QMOI_EMAIL_USER,
+        pass: process.env.QMOI_EMAIL_PASS,
+        from: process.env.QMOI_EMAIL_FROM || 'qmoi@q-city.ai',
+        to: process.env.QMOI_EMAIL_TO?.split(',') || []
+      },
+      slack: {
+        enabled: process.env.QMOI_SLACK_ENABLED === 'true',
+        webhook: process.env.QMOI_SLACK_WEBHOOK_URL
+      },
+      discord: {
+        enabled: process.env.QMOI_DISCORD_ENABLED === 'true',
+        webhook: process.env.QMOI_DISCORD_WEBHOOK_URL
+      },
+      telegram: {
+        enabled: process.env.QMOI_TELEGRAM_ENABLED === 'true',
+        botToken: process.env.QMOI_TELEGRAM_BOT_TOKEN,
+        chatId: process.env.QMOI_TELEGRAM_CHAT_ID
+      },
               pushover: {
                 enabled: process.env.QMOI_PUSHOVER_ENABLED === 'true',
                 apiToken: process.env.QMOI_PUSHOVER_API_TOKEN,

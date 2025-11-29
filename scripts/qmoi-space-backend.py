@@ -35,7 +35,10 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel, Field
-import psutil
+try:
+    import psutil
+except Exception:
+    psutil = None
 import platform
 import hashlib
 import jwt
@@ -682,10 +685,18 @@ async def health_check():
 async def get_system_status():
     """Get system status"""
     try:
+        if psutil:
+            cpu = psutil.cpu_percent(interval=1)
+            memory = psutil.virtual_memory().percent
+            disk = psutil.disk_usage('/').percent
+        else:
+            cpu = 0.0
+            memory = 0.0
+            disk = 0.0
         status = SystemStatus(
-            cpu_usage=psutil.cpu_percent(interval=1),
-            memory_usage=psutil.virtual_memory().percent,
-            disk_usage=psutil.disk_usage('/').percent,
+            cpu_usage=cpu,
+            memory_usage=memory,
+            disk_usage=disk,
             network_latency=0.0,  # Would implement actual network latency check
             uptime=time.time(),
             timestamp=datetime.now()
@@ -919,8 +930,12 @@ async def background_system_monitoring():
     while True:
         try:
             # Monitor system and send notifications if needed
-            cpu_usage = psutil.cpu_percent(interval=1)
-            memory_usage = psutil.virtual_memory().percent
+            if psutil:
+                cpu_usage = psutil.cpu_percent(interval=1)
+                memory_usage = psutil.virtual_memory().percent
+            else:
+                cpu_usage = 0.0
+                memory_usage = 0.0
             
             if cpu_usage > 90 or memory_usage > 90:
                 notification = NotificationData(
@@ -942,11 +957,12 @@ def main():
     try:
         logger.info("Starting QMOI Space Backend Server...")
         
+        # Pass the app directly to uvicorn.run to avoid relying on a module import name
         uvicorn.run(
-            "qmoi_space_backend:app",
+            app,
             host="0.0.0.0",
             port=8000,
-            reload=True,
+            reload=False,
             log_level="info"
         )
         

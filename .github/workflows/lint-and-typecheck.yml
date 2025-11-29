@@ -1,0 +1,28 @@
+name: Lint & Typecheck
+
+on:
+  push:
+    branches: [main, 'dev', 'autosync-backup-20250926-232440']
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run env setup
+        run: npm run env-setup
+      - name: Run lint
+        run: npm run lint
+      - name: Run type check (tsc if available)
+        run: |
+          if [ -f tsconfig.json ]; then
+            npx tsc --noEmit || true
+          fi

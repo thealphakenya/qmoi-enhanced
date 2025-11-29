@@ -27,8 +27,7 @@
     "test": "jest --runInBand",
     "pretest": "npm run env-setup",
     "lint": "eslint . --ext .js,.mjs,.cjs,.ts,.tsx",
-    "ci:lint": "npm run lint || true"
-    ,"lint": "eslint . --ext .js,.mjs,.cjs,.ts,.tsx",
+    "ci:lint": "npm run lint || true",
     "lint:fix": "eslint . --ext .js,.mjs,.cjs,.ts,.tsx --fix"
   },
   "dependencies": {
