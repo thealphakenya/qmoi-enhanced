@@ -14,8 +14,13 @@ import requests
 import random
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
-import psutil
+try:
+    import psutil
+except Exception:
+    psutil = None
 
+# Ensure logs directory exists before configuring logging to avoid FileNotFoundError
+os.makedirs('logs', exist_ok=True)
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -29,31 +34,37 @@ logging.basicConfig(
 class QMOIBettingCredentials:
     """Betting platform credentials"""
     
+    # WARNING: Do not store real credentials in the repository. Configure via environment variables or a secure secret manager in production.
     ODIBETS = {
-        'phone': '0725382624',
-        'password': 'Victor9798!',
-        'email': 'rovicviccy@gmail.com'
+        'phone': os.getenv('QMOI_ODIBETS_PHONE', '0000000000'),
+        'password': os.getenv('QMOI_ODIBETS_PASSWORD', 'changeme'),
+        'email': os.getenv('QMOI_ODIBETS_EMAIL', 'odibets@example.local')
     }
-    
+
     BETIKA = {
-        'phone': '0725382624',
-        'password': '9798',
-        'email': 'rovicviccy@gmail.com'
+        'phone': os.getenv('QMOI_BETIKA_PHONE', '0000000000'),
+        'password': os.getenv('QMOI_BETIKA_PASSWORD', 'changeme'),
+        'email': os.getenv('QMOI_BETIKA_EMAIL', 'betika@example.local')
     }
-    
+
     MPESA = {
-        'phone': '+254725392624',
-        'email': 'rovicviccy@gmail.com'
+        'phone': os.getenv('QMOI_MPESA_PHONE', '+000000000000'),
+        'email': os.getenv('QMOI_MPESA_EMAIL', 'mpesa@example.local')
     }
 
 class QMOIAutomatedBettingSystem:
     def __init__(self):
         self.running = False
-        self.betting_interval = 300  # 5 minutes
-        self.analysis_interval = 180  # 3 minutes
+        # Use environment overrides for testing/CI: QMOI_BETTING_INTERVAL (sec), QMOI_ANALYSIS_INTERVAL (sec)
+        self.betting_interval = int(os.getenv('QMOI_BETTING_INTERVAL', os.getenv('QMOI_BETTING_INTERVAL_SEC', '300')))  # 5 minutes default
+        self.analysis_interval = int(os.getenv('QMOI_ANALYSIS_INTERVAL', os.getenv('QMOI_ANALYSIS_INTERVAL_SEC', '180')))  # 3 minutes default
         self.log_file = 'logs/qmoi_betting_system.log'
         self.status_file = 'logs/betting_system_status.json'
         self.bets_file = 'logs/betting_history.json'
+        # Safety flag: only use REAL funds when explicitly enabled via env vars
+        # QMOI_USE_REAL_FUNDS must be 'true' and QMOI_CONFIRM_REAL_FUNDS must equal 'I_CONFIRM_REAL_FUNDS'
+        self.use_real_funds = os.getenv('QMOI_USE_REAL_FUNDS', 'false').lower() in ('1', 'true', 'yes')
+        self.confirm_real_funds = os.getenv('QMOI_CONFIRM_REAL_FUNDS', '')
         
         # Betting platforms
         self.platforms = {
@@ -219,6 +230,9 @@ class QMOIAutomatedBettingSystem:
             
             logging.info(f"🎯 Placing bet on {platform['name']}...")
             
+            # If real funds usage is requested, guard it behind an explicit confirmation token
+            if self.use_real_funds and self.confirm_real_funds != 'I_CONFIRM_REAL_FUNDS':
+                logging.warning('Real funds usage requested but confirmation token not set. Running in simulation mode.')
             # Simulate bet placement
             bet_result = {
                 'platform': platform_name,
@@ -283,6 +297,9 @@ class QMOIAutomatedBettingSystem:
     def transfer_to_mpesa(self, amount: float) -> bool:
         """Transfer winnings to M-Pesa"""
         try:
+            if not self.use_real_funds or self.confirm_real_funds != 'I_CONFIRM_REAL_FUNDS':
+                logging.warning('Transfer to M-Pesa blocked. Real funds usage not confirmed by environment variables.')
+                return False
             logging.info(f"💸 Transferring KSH {amount:.2f} to M-Pesa...")
             
             transfer_data = {

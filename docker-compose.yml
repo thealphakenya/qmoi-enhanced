@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  web:
+    image: node:18-bullseye
+    working_dir: /workspaces/qmoi-enhanced
+    volumes:
+      - ./:/workspaces/qmoi-enhanced
+    ports:
+      - '3000:3000'
+    command: bash -lc 'cd /workspaces/qmoi-enhanced && npm ci && npm run dev'
+    environment:
+      NODE_ENV: development
+
+  dashboard:
+    image: python:3.12-slim
+    working_dir: /workspaces/qmoi-enhanced
+    volumes:
+      - ./:/workspaces/qmoi-enhanced
+    ports:
+      - '8001:8001'
+    command: bash -lc 'pip install -r requirements/betting_requirements.txt || true && python scripts/serve_dashboard.py'
+    environment:
+      QMOI_DASHBOARD_PORT: '8001'
