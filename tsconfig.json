@@ -1,6 +1,37 @@
 {
   "compilerOptions": {
     "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM"],
+    "allowJs": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@config/*": ["src/config/*"],
+      "@lib/*": ["lib/*"],
+      "@components/*": ["src/components/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "lib/**/*.js",
+    "scripts/**/*.js",
+    "tests/**/*.mjs"
+  ],
+  "exclude": ["node_modules", ".next", "dist"]
+}
+{
+  "compilerOptions": {
+    "target": "ES2020",
     "module": "commonjs",
     "declaration": true,
     "outDir": "dist",

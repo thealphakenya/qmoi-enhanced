@@ -16,15 +16,17 @@ jobs:
           node-version: '18'
       - name: Install npm dependencies
         run: npm ci
-      - name: Run placeholder check (fail on find)
+      - name: Run placeholder check (report mode)
+        id: scan
         run: |
-          node scripts/qmoi_placeholder_checker.js --scan --fail-on-find
-      - name: Upload placeholder report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: placeholder-scan-report
-          path: reports/placeholder_scan_report.json
+          node scripts/qmoi_placeholder_checker.js --scan --no-notify || true
+      - name: Compute summary
+        id: compute
+        run: |
+          node scripts/compute_report_summary.js
+      - name: Fail if critical placeholders detected
+        run: |
+          node -e "const fs=require('fs'); const path=require('path'); const report=JSON.parse(fs.readFileSync('reports/placeholder_scan_report.json','utf8')||'{}'); const pconf=JSON.parse(fs.readFileSync('config/placeholder-config.json','utf8')||'{}'); const ap=JSON.parse(fs.readFileSync('config/placeholder_approvals.json','utf8')||'{}'); const deny=(pconf.denyList||[]).map(s=>String(s).toUpperCase()); const approved=(pconf.approvedList||[]).map(s=>String(s).toUpperCase()); const approvals=(ap.approved||[]).map(s=>String(s).toUpperCase()); function needsFail(tok){const t=String(tok).toUpperCase(); if(deny.includes(t)) return true; if(approved.includes(t)) return false; if(approvals.includes(t)) return false; return true;} const bad= (report.files||[]).filter(f=>f.matches.some(m=>needsFail(m.token))); if(bad.length>0){ console.error('Found disallowed placeholders:', JSON.stringify(bad)); process.exit(1); } else { console.log('No disallowed placeholders found.'); }
       - name: Upload placeholder report
         if: always()
         uses: actions/upload-artifact@v4

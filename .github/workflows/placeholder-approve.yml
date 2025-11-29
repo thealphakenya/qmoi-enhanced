@@ -1,0 +1,72 @@
+name: Placeholder Approve
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  approve-placeholder:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.comment.body, '/approve-placeholder')
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Validate comment author
+        id: validate
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const commentAuthor = context.payload.comment.user.login;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const username = commentAuthor;
+            const permissions = await github.rest.repos.getCollaboratorPermissionLevel({ owner, repo, username });
+            const level = permissions.data.permission;
+            console.log('Permission level for', username, level);
+            if (['admin','write','maintain'].indexOf(level) === -1) {
+              throw new Error('Commenter does not have sufficient permission to approve placeholders');
+            }
+            return level;
+
+      - name: Run approve script
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Parse tokens from comment
+          TOKENS=$(echo "${{ github.event.comment.body }}" | sed -E "s#/approve-placeholder(.*)#\1#i" | tr -d '\"' | xargs)
+          if [ -z "$TOKENS" ]; then
+            echo "No tokens found in comment; nothing to approve"
+            exit 1
+          fi
+          echo "Approving tokens: $TOKENS"
+          node scripts/approve_placeholder.js $TOKENS
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add config/placeholder_approvals.json
+          git commit -m "Auto-approve placeholders: $TOKENS" || echo "No changes to commit"
+          git push || echo "Push failed"
+
+      - name: Add confirmation comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            ✅ Placeholders approved by @${{ github.actor }}: $TOKENS
+

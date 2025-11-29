@@ -38,6 +38,9 @@ function log(message) {
   try { fs.appendFileSync(LOG_PATH, `[${new Date().toISOString()}] ${message}\n`); } catch (e) { console.error('Log write failed:', e.message); }
 }
 
+// Make sure log directory exists
+try { fs.mkdirSync(path.dirname(LOG_PATH), { recursive: true }); } catch (e) {}
+
 function loadJSONSafe(file) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return null; }
 }

@@ -557,18 +557,7 @@ class QMOIMasterSystem {
     }, 60000); // Save every minute
   }
 
-  logActivity(type, data = {}) {
-    const activity = {
-      id: crypto.randomUUID(),
-      type,
-      data,
-      timestamp: new Date().toISOString(),
-      masterMode: this.masterMode,
-      parallelMode: this.parallelMode
-    };
-
-    this.activities.push(activity);
-  }
+  // activity queue managed through async logActivity and saveActivityLog
 
   async saveActivityLog() {
     if (this.activities.length === 0) return;

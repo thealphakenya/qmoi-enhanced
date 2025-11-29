@@ -88,57 +88,8 @@ class QMOINotificationSystem {
         this.sendPushoverNotification(notification)
       ]);
 
-      // Update notification status
-      const successCount = results.filter(r => r.status === 'fulfilled').length;
-      notification.status = successCount > 0 ? 'sent' : 'failed';
-      notification.results = results;
-
-      // Log notification
-      this.notificationHistory.push(notification);
-      await this.logNotification(notification);
-
-      console.log(`✅ Notification sent via ${successCount} channels`);
+      // results already contain resolved statuses for each attempted notification
       return notification;
-
-    } catch (error) {
-      notification.status = 'failed';
-      notification.error = error.message;
-      this.notificationHistory.push(notification);
-      await this.logNotification(notification);
-      
-      console.error(`❌ Notification failed: ${error.message}`);
-      return notification;
-    }
-  }
-
-  async sendEmailNotification(notification) {
-    if (!this.config.email.enabled || !this.config.email.user || !this.config.email.pass) {
-      return { status: 'skipped', reason: 'Email not configured' };
-    }
-
-    try {
-      const transporter = nodemailer.createTransporter({
-        host: this.config.email.host,
-        port: this.config.email.port,
-        secure: this.config.email.secure,
-        auth: {
-          user: this.config.email.user,
-          pass: this.config.email.pass
-        }
-      });
-
-      const htmlContent = this.generateEmailHTML(notification);
-      
-      const mailOptions = {
-        from: this.config.email.from,
-        to: this.config.email.to.join(', '),
-        subject: `[QMOI] ${notification.title}`,
-        html: htmlContent,
-        text: notification.message
-      };
-
-      const result = await transporter.sendMail(mailOptions);
-      return { status: 'sent', messageId: result.messageId };
 
     } catch (error) {
       return { status: 'failed', error: error.message };
@@ -169,10 +120,10 @@ class QMOINotificationSystem {
           }
         ]
       };
-      if (notification.data.details) {
+        if (notification.data && notification.data.details) {
         slackMessage.blocks.push({
           type: 'section',
-          text: { type: 'mrkdwn', text: `*Details:*\n\n\${JSON.stringify(notification.data.details, null, 2)}\` }
+            text: { type: 'mrkdwn', text: `*Details:*\n\n\`\`\`${JSON.stringify(notification.data.details, null, 2)}\`\`\`` }
         });
       }
       const result = await axios.post(this.config.slack.webhook, slackMessage);
@@ -258,4 +209,4 @@ class QMOINotificationSystem {
   }
 }
 
-module.exports = QMOINotificationSystem;
+export default QMOINotificationSystem;

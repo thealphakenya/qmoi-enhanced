@@ -37,6 +37,19 @@ function updateEnvVariable(key, value) {
 // Main automation entry point
 function autoSetupEnv() {
   ensureEnvFiles();
+  // Ensure config directory and default JSON configs exist
+  try { fs.mkdirSync(path.join(__dirname, '../config'), { recursive: true }); } catch (e) {}
+  const defaults = {
+    'placeholder-config.json': JSON.stringify({ denyList: ['TODO', 'FIXME'], approvedList: ['AVATAR','PLACE','FACE'] }, null, 2),
+    'placeholder_approvals.json': JSON.stringify({ requireApprovalFor: ['RELEASE_*'], approved: [] }, null, 2),
+    'face-mappings.json': JSON.stringify({ faces: [{ id: 'smile', name: 'Smiling Face', style: 'friendly' }] }, null, 2),
+    'place-mappings.json': JSON.stringify({ places: ['Nairobi','Kisumu','Mombasa'] }, null, 2),
+    'avatar-config.json': JSON.stringify({ defaultAvatar: 'qmoi-default', masterAvatars: ['qmoi-master'] }, null, 2)
+  };
+  Object.entries(defaults).forEach(([name, data]) => {
+    const p = path.join(__dirname, '..', 'config', name);
+    if (!fs.existsSync(p)) fs.writeFileSync(p, data);
+  });
   // Platform-specific credential automation
   const platforms = [
     { name: 'Vercel', vars: ['VERCEL_TOKEN', 'VERCEL_PROJECT_ID'] },

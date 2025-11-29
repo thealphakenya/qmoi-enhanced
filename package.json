@@ -5,20 +5,27 @@
   "private": true,
   "scripts": {
     "start": "node scripts/qmoi-master-system.js",
-    "dev": "node --experimental-modules scripts/qmoi-ai-server.js",
+    "dev": "node scripts/qmoi-ai-server.js",
     "build": "next build",
     "type-check:quick": "node scripts/qmoi_placeholder_checker.js --scan",
     "placeholder-check": "node scripts/qmoi_placeholder_checker.js",
     "placeholder:run-test": "node scripts/run_placeholder_test.js",
     "placeholder:test-mapping": "node scripts/test_apply_mapping.js",
-    "test:placeholder": "node scripts/test_placeholder_lib.js",
-    "test:placeholder:approval": "node scripts/test_placeholder_approval.js",
-    "test:placeholder:detection": "node scripts/test_placeholder_detection.js",
+    "test:placeholder": "jest --testPathPattern=tests/placeholder-lib.test.mjs",
+    "test:placeholder:approval": "jest --testPathPattern=tests/placeholder-approval.test.mjs",
+    "test:placeholder:detection": "jest --testPathPattern=tests/placeholder-detection.test.mjs",
     "approve:placeholder": "node scripts/approve_placeholder.js",
+    "revoke:placeholder": "node scripts/revoke_placeholder.js",
     "placeholder:ci": "node scripts/qmoi_placeholder_checker.js --scan --fail-on-find",
-    "ci:validate": "npm run type-check:quick && npm run placeholder:ci && npm run test:placeholder && npm run test:placeholder:detection",
+    "ci:validate": "npm run type-check:quick && npm run placeholder:ci && npm test",
     "placeholder:test-utils": "node scripts/test_placeholder_utils.js",
-    "env-setup": "node scripts/qmoi-env-setup.js"
+    "env-setup": "node scripts/qmoi-env-setup.js",
+    "postinstall": "npm run env-setup",
+    "start:prod": "NODE_ENV=production node scripts/qmoi-ai-server.js",
+    "docker:dev": "docker build -f Dockerfile.dev -t qmoi-dev . && docker run --rm -p 3000:3000 -e NODE_ENV=development qmoi-dev",
+    "docker:test": "docker build -f Dockerfile.dev -t qmoi-dev . && docker run --rm qmoi-dev npm test",
+    "test": "jest --runInBand",
+    "pretest": "npm run env-setup"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -31,11 +38,21 @@
     "react-chartjs-2": "^5.3.1",
     "react-dom": "^18.2.0",
     "zod": "^3.23.0",
+    "axios": "^1.5.0",
+    "nodemailer": "^6.9.4",
     "next-themes": "^0.2.0"
   },
   "devDependencies": {
     "eslint": "^8.48.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": 30000,
+    "extensionsToTreatAsEsm": [".mjs"],
+    "testMatch": ["**/tests/**/*.test.mjs"],
+    "transform": {}
   },
   "engines": {
     "node": ">=18.0.0",

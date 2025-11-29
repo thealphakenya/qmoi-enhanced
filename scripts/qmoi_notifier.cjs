@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 async function sendEmail(subject, text) {
   const transporter = nodemailer.createTransport({
@@ -19,20 +19,12 @@ async function sendEmail(subject, text) {
 
 async function sendSlack(message) {
   if (!process.env.QMOI_SLACK_WEBHOOK) return;
-  await fetch(process.env.QMOI_SLACK_WEBHOOK, {
-    method: 'POST',
-    body: JSON.stringify({ text: message }),
-    headers: { 'Content-Type': 'application/json' }
-  });
+  await axios.post(process.env.QMOI_SLACK_WEBHOOK, { text: message }, { headers: { 'Content-Type': 'application/json' } });
 }
 
 async function sendWhatsApp(message) {
   if (!process.env.QMOI_WHATSAPP_API_URL || !process.env.QMOI_WHATSAPP_TO) return;
-  await fetch(process.env.QMOI_WHATSAPP_API_URL, {
-    method: 'POST',
-    body: JSON.stringify({ to: process.env.QMOI_WHATSAPP_TO, message }),
-    headers: { 'Content-Type': 'application/json' }
-  });
+  await axios.post(process.env.QMOI_WHATSAPP_API_URL, { to: process.env.QMOI_WHATSAPP_TO, message }, { headers: { 'Content-Type': 'application/json' } });
 }
 
 module.exports = { sendEmail, sendSlack, sendWhatsApp }; 

@@ -20,6 +20,10 @@ jobs:
         run: |
           node scripts/qmoi_placeholder_checker.js --scan --no-notify || true
           node scripts/compute_report_summary.js
+        - name: Compute placeholder summary
+          id: compute
+          run: |
+            node scripts/compute_report_summary.js
       - name: Upload placeholder report
         if: always()
         uses: actions/upload-artifact@v4
@@ -33,10 +37,10 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             ## QMOI Placeholder Scan
-            Placeholder scan completed. You can view [the artifact]({{ steps.scan.outputs.scan }}) for details.
+              Placeholder scan completed. You can view the artifact in the workflow run for details.
             
             Summary:
-            - Files with placeholders: ${{ steps.scan.outputs.files_count || '0' }}
-            - Replacements suggested: ${{ steps.scan.outputs.replacements_count || '0' }}
+              - Files with placeholders: ${{ steps.compute.outputs.files_count || '0' }}
+              - Replacements suggested: ${{ steps.compute.outputs.replacements_count || '0' }}
             
             Review the report and address placeholders where required.

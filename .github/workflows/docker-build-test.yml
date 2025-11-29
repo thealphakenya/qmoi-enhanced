@@ -1,0 +1,37 @@
+name: Docker Build & Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, 'dev', 'autosync-backup-20250926-232440' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  docker-build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker dev image
+        run: |
+          docker build -f Dockerfile.dev -t qmoi-dev .
+
+      - name: Run tests from docker image
+        run: |
+          docker run --rm qmoi-dev npm test
+
+      - name: Run placeholder CI in docker (scan)
+        run: |
+          docker run --rm qmoi-dev npm run placeholder:ci
+
+      - name: Start dev server and check root URL
+        run: |
+          docker run -d --rm --name qmoidev -p 3000:3000 qmoi-dev npm run dev &
+          sleep 6
+          curl -v http://localhost:3000 || (docker logs qmoidev && exit 1)
+          docker stop qmoidev || true

@@ -60,6 +60,10 @@ Failing the CI on disallowed placeholders
 
  Use this in CI or GitHub Actions to block merges if placeholders are present.
 
+## PR Approval Flow
+
+To block PR merges on placeholders, enable the PR check workflow (`.github/workflows/placeholder-pr-check.yml`). This workflow runs the scan with `--fail-on-find` and will report a blocked check if the denylist/approval rules are violated.
+
  Approval flow and CLI
  ---------------------
 
@@ -72,6 +76,33 @@ Failing the CI on disallowed placeholders
  ```
 
  The approvals file is `config/placeholder_approvals.json` and by default contains `RELEASE_*` as a pattern requiring approval. The approval CLI adds tokens to the `approved` list.
+
+Manual apply workflow
+---------------------
+
+You can apply placeholders automatically using the `Placeholder Apply` workflow (manual dispatch). This will run `qmoi_placeholder_checker.js --scan --apply --force` and commit and push any changes to the current branch (or a specified `target-branch` provided at workflow dispatch).
+
+This workflow is targeted for maintainers and should be run only after review and approvals of placeholders on the PR.
+
+Revoke approvals
+---------------
+
+To revoke a placeholder that was previously approved, use the revoke CLI:
+
+```bash
+node scripts/revoke_placeholder.js RELEASE_WINDOWS_STATUS
+# or
+npm run revoke:placeholder -- RELEASE_WINDOWS_STATUS
+```
+PR approval flow
+
+Maintainers can approve placeholders from PR comments. Add a comment on the PR with the `/approve-placeholder` command followed by one or more tokens to approve. Example:
+
+```text
+/approve-placeholder RELEASE_WINDOWS_STATUS RELEASE_ANDROID_STATUS
+```
+
+This will run an action that validates the commenter's repository permission and, if allowed, adds the tokens to `config/placeholder_approvals.json` and commits the change. The action will then post a confirmation comment on the PR.
 
 Use this in CI or GitHub Actions to block merges if placeholders are present.
 
