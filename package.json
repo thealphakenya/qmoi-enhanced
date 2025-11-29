@@ -25,7 +25,11 @@
     "docker:dev": "docker build -f Dockerfile.dev -t qmoi-dev . && docker run --rm -p 3000:3000 -e NODE_ENV=development qmoi-dev",
     "docker:test": "docker build -f Dockerfile.dev -t qmoi-dev . && docker run --rm qmoi-dev npm test",
     "test": "jest --runInBand",
-    "pretest": "npm run env-setup"
+    "pretest": "npm run env-setup",
+    "lint": "eslint . --ext .js,.mjs,.cjs,.ts,.tsx",
+    "ci:lint": "npm run lint || true"
+    ,"lint": "eslint . --ext .js,.mjs,.cjs,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.mjs,.cjs,.ts,.tsx --fix"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",

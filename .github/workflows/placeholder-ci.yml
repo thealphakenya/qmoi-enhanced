@@ -17,6 +17,8 @@ jobs:
           node-version: '18'
       - name: Install dependencies
         run: npm ci
+      - name: Run lint
+        run: npm run lint
       - name: Run env setup
         run: npm run env-setup
       - name: Run placeholder scan (CI)
@@ -25,3 +27,5 @@ jobs:
         run: npm test
       - name: Build (Next)
         run: npm run build || true
+      - name: Run lint again
+        run: npm run lint || true
