@@ -102,3 +102,15 @@ Control endpoint tester
 # After starting the control server, use the helper to call /control
 python3 scripts/test_control_endpoint.py
 ```
+Open PWAs (convenience)
+-----------------------
+Use the helper script to open the PWA in a host browser. Defaults to `qmoi-ai`.
+
+```bash
+chmod +x scripts/open_pwa.sh
+scripts/open_pwa.sh qmoi-ai
+# Open a different PWA:
+scripts/open_pwa.sh q-alpha
+```
+
+If `BROWSER` is defined in the environment, it'll be used to open the URL; otherwise `xdg-open`/`open` will be tried.
