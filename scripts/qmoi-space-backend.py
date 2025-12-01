@@ -961,6 +961,18 @@ QCITY_STATE = {
     ],
     'tasks': [],
     'notifications': [],
+    'config': {
+        'memory_threshold': 80,
+        'cpu_threshold': 80,
+        'platforms': {
+            'local': True,
+            'colab': False,
+        },
+        'features': {
+            'self_heal': True,
+            'remote_command': True
+        }
+    }
 }
 
 
@@ -1019,6 +1031,27 @@ async def qcity_logs():
 @app.get('/api/qcity/notifications')
 async def qcity_notifications():
     return {'status': 'ok', 'notifications': QCITY_STATE['notifications']}
+
+
+@app.get('/api/qcity/config')
+async def qcity_config_get():
+    return {'status': 'ok', 'config': QCITY_STATE.get('config', {})}
+
+
+@app.post('/api/qcity/config')
+async def qcity_config_post(payload: dict):
+    # Accept partial updates, merge with existing
+    cfg = QCITY_STATE.get('config', {})
+    try:
+        # If request body is nested with 'config'
+        newcfg = payload.get('config', payload)
+    except Exception:
+        newcfg = payload
+    # shallow update
+    cfg.update(newcfg)
+    QCITY_STATE['config'] = cfg
+    QCITY_STATE['notifications'].append({'id': f'n-{int(time.time())}', 'level': 'info', 'message': 'QCity config updated', 'ts': datetime.now().isoformat()})
+    return {'status': 'ok', 'config': QCITY_STATE['config']}
 
 
 # Main function

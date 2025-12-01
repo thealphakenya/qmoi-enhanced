@@ -2,7 +2,8 @@ const API_BASE = window.QMOI_API_BASE || (window.location.hostname === 'localhos
 
 async function fetchQCityConfig() {
   try {
-    const res = await fetch('/api/qcity/config');
+    const base = API_BASE || '';
+    const res = await fetch(`${base}/api/qcity/config`);
     if (!res.ok) throw new Error('Failed to fetch config');
     return await res.json();
   } catch (e) {

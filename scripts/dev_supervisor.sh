@@ -99,6 +99,8 @@ start_all() {
   echo "Starting all Python dev services..."
   # Dev convenience: force dev control token if not supplied
   export QMOI_DEV_FORCE_TOKEN=${QMOI_DEV_FORCE_TOKEN:-true}
+  # Safety: by default do not start automated betting in dev
+  export QMOI_ENABLE_BETTING=${QMOI_ENABLE_BETTING:-false}
   # Default ports
   export QMOI_LOG_PORT=${QMOI_LOG_PORT:-8002}
   export QMOI_DASHBOARD_PORT=${QMOI_DASHBOARD_PORT:-8001}
@@ -110,7 +112,11 @@ start_all() {
   start_service serve_dashboard "$VENV/bin/python" -u "scripts/serve_dashboard.py"
   start_service serve_frontend env QMOI_FRONTEND_PORT=$QMOI_FRONTEND_PORT "$VENV/bin/python" -u "scripts/serve_frontend.py"
   start_service serve_logs env QMOI_LOG_PORT=$QMOI_LOG_PORT "$VENV/bin/python" -u "scripts/serve_logs.py"
-  start_service qmoi_betting "$VENV/bin/python" -u "scripts/qmoi_automated_betting_system.py"
+  if [ "${QMOI_ENABLE_BETTING}" = "true" ]; then
+    start_service qmoi_betting "$VENV/bin/python" -u "scripts/qmoi_automated_betting_system.py"
+  else
+    echo "Skipping starting qmoi_betting (QMOI_ENABLE_BETTING=${QMOI_ENABLE_BETTING})"
+  fi
   echo "--- Service URLs ---"
   echo "Backend API: http://localhost:8000/"
   echo "Backend docs: http://localhost:8000/api/docs"
