@@ -30,7 +30,7 @@ python3 -m venv .venv
   ```
 - Start the control server (Flask) on port 8100 by default. It is a protected API and requires a token for control commands:
   ```bash
-  QMOI_CONTROL_TOKEN=dev-token .venv/bin/python qmoi_control_server.py &> /tmp/qmoi_control_server.log &
+  QMOI_CONTROL_TOKEN=dev-token QMOI_DEV_FORCE_TOKEN=true .venv/bin/python qmoi_control_server.py &> /tmp/qmoi_control_server.log &
   ```
 - Start the betting system for a short test run (3s intervals by default in `run_betting_once.py`):
   ```bash
@@ -41,6 +41,7 @@ Open in browser
 - Dashboard quick view: http://localhost:8001/
 - FastAPI documentation: http://localhost:8000/api/docs
 - Control server API: http://localhost:8100/ (protected endpoints like `/control` require an Authorization header)
+ - Logs server (dev): http://localhost:8002/ (serves `logs/` directory)
 
 Control server authentication (dev)
 - CONTROL_TOKEN is used for simple control access during development.
@@ -77,6 +78,7 @@ Notes
  ./scripts/dev_prepare_and_run.sh
  ```
 - Security: Real funds are disabled by default. See `SECURITY_PRODUCTION_SETUP.md` to enable real funds securely.
+ - Note: The dev supervisor exports `QMOI_DEV_FORCE_TOKEN=true` by default so the control server will accept the default `dev-token` during local development. Do NOT enable `QMOI_DEV_FORCE_TOKEN` in production.
 
 Supervisor (recommended)
 ```bash

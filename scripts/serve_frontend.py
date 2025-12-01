@@ -8,6 +8,11 @@ import os
 
 PORT = int(os.environ.get('QMOI_FRONTEND_PORT', 3000))
 FRONTEND_DIR = os.path.join(os.getcwd(), 'dashboard', 'public')
+if not os.path.exists(FRONTEND_DIR):
+    # Fallback to the repo public/ directory (qmoi AI & QCity static assets)
+    alt = os.path.join(os.getcwd(), 'public')
+    if os.path.exists(alt):
+        FRONTEND_DIR = alt
 
 if __name__ == '__main__':
     if not os.path.exists(FRONTEND_DIR):

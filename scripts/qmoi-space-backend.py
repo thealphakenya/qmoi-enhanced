@@ -951,6 +951,76 @@ async def background_system_monitoring():
             logger.error(f"Background system monitoring failed: {e}")
             await asyncio.sleep(30)
 
+
+# --- Minimal QCITY API Endpoints (for static UI integration in dev only) ---
+QCITY_STATE = {
+    'running': False,
+    'devices': [
+        {'id': 'dev-1', 'name': 'Raspberry Pi 4', 'status': 'idle', 'cpu': 10, 'mem': 30},
+        {'id': 'dev-2', 'name': 'AWS EC2', 'status': 'active', 'cpu': 45, 'mem': 65},
+    ],
+    'tasks': [],
+    'notifications': [],
+}
+
+
+@app.get('/api/qcity/status')
+async def qcity_status():
+    return {
+        'status': 'ok',
+        'running': QCITY_STATE['running'],
+        'devices': QCITY_STATE['devices'],
+        'tasks_count': len(QCITY_STATE['tasks']),
+    }
+
+
+@app.post('/api/qcity/start')
+async def qcity_start():
+    QCITY_STATE['running'] = True
+    # push a notification
+    QCITY_STATE['notifications'].append({'id': f'n-{int(time.time())}', 'level': 'info', 'message': 'QCity started', 'ts': datetime.now().isoformat()})
+    return {'status': 'ok', 'action': 'start'}
+
+
+@app.post('/api/qcity/stop')
+async def qcity_stop():
+    QCITY_STATE['running'] = False
+    QCITY_STATE['notifications'].append({'id': f'n-{int(time.time())}', 'level': 'info', 'message': 'QCity stopped', 'ts': datetime.now().isoformat()})
+    return {'status': 'ok', 'action': 'stop'}
+
+
+@app.get('/api/qcity/resources')
+async def qcity_resources():
+    return {'status': 'ok', 'devices': QCITY_STATE['devices']}
+
+
+@app.get('/api/qcity/tasks')
+async def qcity_tasks():
+    return {'status': 'ok', 'tasks': QCITY_STATE['tasks']}
+
+
+@app.get('/api/qcity/logs')
+async def qcity_logs():
+    # Return very small log list for UI
+    logs = []
+    logs_dir = Path('logs')
+    if logs_dir.exists():
+        for f in logs_dir.iterdir():
+            if f.is_file() and f.suffix in ('.log', '.txt'):
+                try:
+                    # read last 20 lines
+                    ln = f.read_text().splitlines()[-20:]
+                    logs.append({'file': f.name, 'lines': ln})
+                except Exception:
+                    pass
+    return {'status': 'ok', 'logs': logs}
+
+
+@app.get('/api/qcity/notifications')
+async def qcity_notifications():
+    return {'status': 'ok', 'notifications': QCITY_STATE['notifications']}
+
+
 # Main function
 def main():
     """Main function to run the server"""

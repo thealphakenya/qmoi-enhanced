@@ -3,6 +3,35 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+echo "Dev prepare and run helper - will try Node/npm, else Docker, else Python dev-only via supervisor"
+
+if command -v node >/dev/null 2>&1 && command -v npm >/dev/null 2>&1; then
+  echo "Node/npm detected. Installing Node deps and running the app (dev mode)"
+  npm ci
+  npm run dev &
+  # Meanwhile, start python services via supervisor
+  chmod +x ./scripts/dev_supervisor.sh
+  ./scripts/dev_supervisor.sh start
+elif command -v docker >/dev/null 2>&1 && command -v docker-compose >/dev/null 2>&1; then
+  echo "Docker+docker-compose detected. Bringing up containers..."
+  docker-compose up --build
+else
+  echo "Neither Node nor Docker found; running Python-only services via supervisor"
+  if [ -f ".venv/bin/activate" ]; then
+    echo "Found .venv; activating"
+    . .venv/bin/activate
+  fi
+  chmod +x ./scripts/dev_supervisor.sh
+  ./scripts/dev_supervisor.sh start
+fi
+
+echo "Dev prepare and run complete"
+exit 0
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
+
 echo "Dev Prepare & Run: ensure venv and either run Node (npm) or Docker fallback or Python-only supervisor"
 
 VENV="$ROOT_DIR/.venv"

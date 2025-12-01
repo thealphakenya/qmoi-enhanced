@@ -3,6 +3,182 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+# Simple dev supervisor for QMOI Python services
+# - Creates venv if missing
+# - Installs Python requirements (server + betting) if needed
+# - Starts/stops/status/restart for a set of python services
+# - Writes PID files to ./run and logs to ./logs
+
+VENV="$ROOT_DIR/.venv"
+LOG_DIR="$ROOT_DIR/logs"
+RUN_DIR="$ROOT_DIR/run"
+mkdir -p "$LOG_DIR" "$RUN_DIR"
+
+PY_REQS1="requirements/server_requirements.txt"
+PY_REQS2="requirements/betting_requirements.txt"
+
+ensure_venv_and_requirements() {
+  if [ ! -x "$VENV/bin/python" ]; then
+    echo "Creating virtualenv at $VENV..."
+    python3 -m venv "$VENV"
+  fi
+  # shellcheck disable=SC1090
+  . "$VENV/bin/activate"
+  echo "Upgrading pip and setuptools..."
+  python -m pip install --upgrade pip setuptools wheel >/dev/null || true
+  # idempotent install
+  if [ -f "$PY_REQS1" ]; then
+    echo "Installing server requirements..."
+    python -m pip install -r "$PY_REQS1" >/dev/null || true
+  fi
+  if [ -f "$PY_REQS2" ]; then
+    echo "Installing betting requirements..."
+    python -m pip install -r "$PY_REQS2" >/dev/null || true
+  fi
+}
+
+pidfile() { echo "$RUN_DIR/$1.pid"; }
+logfile() { echo "$LOG_DIR/$1.log"; }
+
+start_service() {
+  name="$1"; shift
+  local cmd=("$@")
+  pfile=$(pidfile "$name")
+  lfile=$(logfile "$name")
+  if [ -f "$pfile" ]; then
+    pid=$(cat "$pfile" || echo "")
+    if [ -n "$pid" ] && kill -0 "$pid" >/dev/null 2>&1; then
+      echo "$name already running (pid $pid)"
+      return 0
+    else
+      rm -f "$pfile"
+    fi
+  fi
+  echo "Starting $name: ${cmd[*]}"
+  nohup "${cmd[@]}" >>"$lfile" 2>&1 &
+  newpid=$!
+  echo "$newpid" > "$pfile"
+  echo "$name started (pid $newpid) -> logs: $lfile"
+}
+
+stop_service() {
+  name="$1"; pfile=$(pidfile "$name")
+  if [ -f "$pfile" ]; then
+    pid=$(cat "$pfile")
+    if kill -0 "$pid" >/dev/null 2>&1; then
+      echo "Stopping $name (pid $pid)..."
+      kill "$pid" || true
+      sleep 1
+      if kill -0 "$pid" >/dev/null 2>&1; then
+        echo "Killing stubborn $pid"
+        kill -9 "$pid" || true
+      fi
+    fi
+    rm -f "$pfile"
+  else
+    echo "$name not running"
+  fi
+}
+
+status_service() {
+  name="$1"; pfile=$(pidfile "$name")
+  if [ -f "$pfile" ]; then
+    pid=$(cat "$pfile")
+    if kill -0 "$pid" >/dev/null 2>&1; then
+      echo "$name: running pid=$pid"
+    else
+      echo "$name: not running (stale pid $pid)"
+    fi
+  else
+    echo "$name: not running (no pidfile)"
+  fi
+}
+
+start_all() {
+  ensure_venv_and_requirements
+  echo "Starting all Python dev services..."
+  # Dev convenience: force dev control token if not supplied
+  export QMOI_DEV_FORCE_TOKEN=${QMOI_DEV_FORCE_TOKEN:-true}
+  # Default ports
+  export QMOI_LOG_PORT=${QMOI_LOG_PORT:-8002}
+  export QMOI_DASHBOARD_PORT=${QMOI_DASHBOARD_PORT:-8001}
+  export QMOI_CONTROL_SERVER_PORT=${QMOI_CONTROL_SERVER_PORT:-8100}
+  export QMOI_FRONTEND_PORT=${QMOI_FRONTEND_PORT:-3000}
+  # backlog start commands: backend, control server, dashboard, logs, betting
+  start_service qmoi_space_backend "$VENV/bin/python" -u "scripts/qmoi-space-backend.py"
+  start_service qmoi_control_server env QMOI_CONTROL_SERVER_PORT=$QMOI_CONTROL_SERVER_PORT "$VENV/bin/python" -u "qmoi_control_server.py"
+  start_service serve_dashboard "$VENV/bin/python" -u "scripts/serve_dashboard.py"
+  start_service serve_frontend env QMOI_FRONTEND_PORT=$QMOI_FRONTEND_PORT "$VENV/bin/python" -u "scripts/serve_frontend.py"
+  start_service serve_logs env QMOI_LOG_PORT=$QMOI_LOG_PORT "$VENV/bin/python" -u "scripts/serve_logs.py"
+  start_service qmoi_betting "$VENV/bin/python" -u "scripts/qmoi_automated_betting_system.py"
+  echo "--- Service URLs ---"
+  echo "Backend API: http://localhost:8000/"
+  echo "Backend docs: http://localhost:8000/api/docs"
+  echo "Dashboard: http://localhost:$QMOI_DASHBOARD_PORT/"
+  echo "Control server: http://localhost:$QMOI_CONTROL_SERVER_PORT/ (POST /control)"
+  echo "Frontend: http://localhost:$QMOI_FRONTEND_PORT/"
+  echo "Logs: http://localhost:$QMOI_LOG_PORT/"
+}
+
+stop_all() {
+  echo "Stopping all services..."
+  stop_service qmoi_betting
+  stop_service serve_logs
+  stop_service serve_frontend
+  stop_service serve_dashboard
+  stop_service qmoi_control_server
+  stop_service qmoi_space_backend
+}
+
+status_all() {
+  status_service qmoi_space_backend
+  status_service qmoi_control_server
+  status_service serve_dashboard
+  status_service serve_frontend
+  status_service serve_logs
+  status_service qmoi_betting
+}
+
+logs() {
+  name=${1:-qmoi_space_backend}
+  tail -n +1 -f "$(logfile "$name")"
+}
+
+case "${1:-help}" in
+  start)
+    start_all
+    ;;
+  stop)
+    stop_all
+    ;;
+  restart)
+    stop_all
+    sleep 1
+    start_all
+    ;;
+  status)
+    status_all
+    ;;
+  logs)
+    logs "$2"
+    ;;
+  help|-h|--help)
+    echo "Usage: $0 {start|stop|restart|status|logs [service]}"
+    exit 0
+    ;;
+  *)
+    echo "Unknown command $1"
+    echo "Usage: $0 {start|stop|restart|status|logs [service]}"
+    exit 2
+    ;;
+esac
+
+exit 0
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
+
 # Simple supervisor for starting and stopping python services in dev.
 # Writes pid files under run/ and logs under logs/
 

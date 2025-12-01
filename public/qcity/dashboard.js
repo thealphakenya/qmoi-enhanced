@@ -1,3 +1,5 @@
+const API_BASE = window.QMOI_API_BASE || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '');
+
 async function fetchQCityConfig() {
   try {
     const res = await fetch('/api/qcity/config');
@@ -10,7 +12,7 @@ async function fetchQCityConfig() {
 
 async function startQCity() {
   try {
-    const res = await fetch('/api/qcity/start', { method: 'POST' });
+    const res = await fetch(`${API_BASE}/api/qcity/start`, { method: 'POST' });
     if (!res.ok) throw new Error('Failed to start QCity');
     return await res.json();
   } catch (e) {
@@ -20,7 +22,7 @@ async function startQCity() {
 
 async function stopQCity() {
   try {
-    const res = await fetch('/api/qcity/stop', { method: 'POST' });
+    const res = await fetch(`${API_BASE}/api/qcity/stop`, { method: 'POST' });
     if (!res.ok) throw new Error('Failed to stop QCity');
     return await res.json();
   } catch (e) {
@@ -29,7 +31,7 @@ async function stopQCity() {
 }
 async function fetchQCityResources() {
   try {
-    const res = await fetch('/api/qcity/resources');
+    const res = await fetch(`${API_BASE}/api/qcity/resources`);
     if (!res.ok) throw new Error('Failed to fetch resources');
     return await res.json();
   } catch (e) {
@@ -38,7 +40,7 @@ async function fetchQCityResources() {
 }
 async function fetchQCityTasks() {
   try {
-    const res = await fetch('/api/qcity/tasks');
+    const res = await fetch(`${API_BASE}/api/qcity/tasks`);
     if (!res.ok) throw new Error('Failed to fetch tasks');
     return await res.json();
   } catch (e) {
@@ -51,7 +53,7 @@ async function fetchQCityTasks() {
 
 async function fetchQCityStatus() {
   try {
-    const res = await fetch('/api/qcity/status');
+    const res = await fetch(`${API_BASE}/api/qcity/status`);
     if (!res.ok) throw new Error('Failed to fetch status');
     return await res.json();
   } catch (e) {
@@ -61,7 +63,7 @@ async function fetchQCityStatus() {
 
 async function fetchQCityLogs() {
   try {
-    const res = await fetch('/api/qcity/logs');
+    const res = await fetch(`${API_BASE}/api/qcity/logs`);
     if (!res.ok) throw new Error('Failed to fetch logs');
     return await res.json();
   } catch (e) {
@@ -71,7 +73,7 @@ async function fetchQCityLogs() {
 
 async function fetchQCityNotifications() {
   try {
-    const res = await fetch('/api/qcity/notifications');
+    const res = await fetch(`${API_BASE}/api/qcity/notifications`);
     if (!res.ok) throw new Error('Failed to fetch notifications');
     return await res.json();
   } catch (e) {
