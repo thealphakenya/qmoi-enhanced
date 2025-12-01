@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node scripts/qmoi-master-system.js",
     "dev": "node scripts/qmoi-ai-server.js",
+    "check-dev": "node scripts/check_node_compat.js",
     "build": "next build",
     "type-check:quick": "node scripts/qmoi_placeholder_checker.js --scan",
     "placeholder-check": "node scripts/qmoi_placeholder_checker.js",
@@ -23,6 +24,7 @@
     "postinstall": "npm run env-setup",
     "start:prod": "NODE_ENV=production node scripts/qmoi-ai-server.js",
     "docker:dev": "docker build -f Dockerfile.dev -t qmoi-dev . && docker run --rm -p 3000:3000 -e NODE_ENV=development qmoi-dev",
+    "dev:docker": "docker-compose up --build",
     "docker:test": "docker build -f Dockerfile.dev -t qmoi-dev . && docker run --rm qmoi-dev npm test",
     "test": "jest --runInBand",
     "pretest": "npm run env-setup",

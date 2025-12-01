@@ -1,3 +1,8 @@
+# Development Quick Start
+
+To run the main services locally (Python-only): see `RUNNING_LOCALLY.md`.
+For the full Node/Next.js webapp, install Node 18+ and run `npm ci && npm run dev` or run via Docker Compose: `docker-compose up --build`.
+
 ---
 title: "QMOI System"
 qmoi_validation_frontmatter: true

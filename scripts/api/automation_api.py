@@ -13,7 +13,40 @@ import os
 # Add parent directory to path for imports
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from scripts.ai_automation import AIAutomation, AutomationTask, SystemState
+try:
+    from scripts.ai_automation import AIAutomation, AutomationTask, SystemState
+except Exception:
+    # Provide a lightweight development stub if heavy ML dependencies aren't available
+    class AutomationTask(BaseModel):
+        id: str
+        type: str
+        status: str
+        priority: int
+        created_at: str
+        updated_at: str
+        parameters: Optional[Dict[str, Any]] = None
+
+    class SystemState(BaseModel):
+        resources: Dict[str, float] = {}
+        performance: Dict[str, float] = {}
+        errors: List[Dict[str, Any]] = []
+        timestamp: str
+
+    class AIAutomation:
+        def __init__(self):
+            self.running = False
+            self.tasks: List[AutomationTask] = []
+            self.system_state_history: List[SystemState] = []
+            self.config = {}
+
+        def start(self):
+            self.running = True
+
+        def stop(self):
+            self.running = False
+
+        def _collect_system_state(self):
+            return SystemState(resources={}, performance={}, errors=[], timestamp=datetime.now().isoformat())
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -82,20 +115,32 @@ class SystemMetrics(BaseModel):
 
 # Security functions
 def get_user(username: str):
-    # Implement user retrieval from database
-    pass
+    # Implement user retrieval from database (demo fallback when demo mode enabled)
+    if os.getenv('QMOI_DEMO_MODE', 'false').lower() in ('1', 'true', 'yes'):
+        return UserInDB(username=username, email=f"{username}@example.local", full_name=username, disabled=False, hashed_password='demo')
+    # TODO: implement actual DB lookup
+    return None
 
 def authenticate_user(username: str, password: str):
-    # Implement user authentication
-    pass
+    # Implement user authentication: in demo mode accept any username/password
+    if os.getenv('QMOI_DEMO_MODE', 'false').lower() in ('1', 'true', 'yes'):
+        return User(username=username, email=f"{username}@example.local", full_name=username, disabled=False)
+    # TODO: Add proper password verification against DB
+    return None
 
 def create_access_token(data: dict):
-    # Implement token creation
-    pass
+    # Implement token creation - in demo mode return an opaque demo token
+    if os.getenv('QMOI_DEMO_MODE', 'false').lower() in ('1', 'true', 'yes'):
+        return 'demo-access-token'
+    # TODO: create real JWT using secret
+    return 'demo-fallback-token'
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
-    # Implement current user retrieval
-    pass
+    # Implement current user retrieval; in demo mode return a demo user from token
+    if os.getenv('QMOI_DEMO_MODE', 'false').lower() in ('1', 'true', 'yes'):
+        return User(username='demo', email='demo@example.local', full_name='Demo User', disabled=False)
+    # TODO: Verify token with JWT and fetch the user
+    raise HTTPException(status_code=401, detail='Unauthenticated')
 
 # API Endpoints
 @app.post("/token", response_model=Token)

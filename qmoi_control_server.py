@@ -15,7 +15,10 @@ from fido2.server import Fido2Server
 from fido2.webauthn import PublicKeyCredentialRpEntity
 from fido2 import cbor
 from flask_cors import CORS
-from payments import stripe_adapter
+try:
+    from payments import stripe_adapter
+except Exception:
+    stripe_adapter = None
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 from typing import Optional
@@ -50,6 +53,10 @@ def rate_limit(key_func, limit=10, per_seconds=60):
 
 # Config / secrets: set these in env for production
 CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'dev-token')
+# Allow force dev token if requested by environment (dev only! do NOT enable in production)
+if os.environ.get('QMOI_DEV_FORCE_TOKEN', 'false').lower() in ('1', 'true', 'yes'):
+    CONTROL_TOKEN = 'dev-token'
+    app.logger.warning('Dev override: forcing CONTROL_TOKEN=dev-token (only for development)')
 JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'dev-jwt-secret')
 # Base raw GitHub URL to serve downloads as fallback; update if repo/branch differ
 GITHUB_RAW_BASE = os.environ.get('QMOI_GITHUB_RAW_BASE',
@@ -896,13 +903,20 @@ def control():
             token = auth.split(' ', 1)[1].strip()
         else:
             token = auth.strip()
+        app.logger.info('control token received: %s, CONTROL_TOKEN=%s', (str(token)[:10] + '...' if token else 'None'), (str(CONTROL_TOKEN)[:10] + '...' if CONTROL_TOKEN else 'None'))
+        # Normalize tokens: strip quotes and whitespace
+        if isinstance(token, str):
+            token = token.strip().strip('"').strip("'")
     if token != CONTROL_TOKEN:
-        app.logger.warning('Unauthorized control attempt')
+        app.logger.warning('Unauthorized control attempt (token mismatch)')
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
 
     app.logger.info('Received control command: %s target=%s', cmd, target)
 
     # Implement a few concrete commands
+    # Here you'd implement real action handlers; for now we log and acknowledge
+    # Authenticate
+    auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
     if cmd == 'navigate':
         # target can be a route like '/apps/qmoi'
         route = target or '/'
@@ -1623,4 +1637,5 @@ if __name__ == '__main__':
             raise SystemExit(1)
 
     # Start the Flask dev server (use a WSGI server in production)
-    app.run(host='0.0.0.0', port=8000)
+    port = int(os.environ.get('QMOI_CONTROL_SERVER_PORT', os.environ.get('PORT', '8100')))
+    app.run(host='0.0.0.0', port=port)

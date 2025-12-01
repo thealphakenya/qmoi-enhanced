@@ -7,3 +7,6 @@ PyJWT>=2.8.0
 redis>=4.6.0
 websockets>=11.0.3
 python-dotenv>=1.0.0
+flask>=2.2.3
+fido2>=1.2.0
+Flask-Cors>=3.0.1
