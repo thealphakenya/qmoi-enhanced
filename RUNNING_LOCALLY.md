@@ -88,3 +88,15 @@ To stop everything:
 ```bash
 ./scripts/dev_supervisor.sh stop
 ```
+
+Quick full-stack dev run (node/docker wrapper)
+```bash
+chmod +x ./scripts/dev_prepare_and_run.sh
+./scripts/dev_prepare_and_run.sh
+```
+
+Control endpoint tester
+```bash
+# After starting the control server, use the helper to call /control
+python3 scripts/test_control_endpoint.py
+```

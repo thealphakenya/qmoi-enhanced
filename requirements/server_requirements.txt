@@ -10,3 +10,4 @@ python-dotenv>=1.0.0
 flask>=2.2.3
 fido2>=1.2.0
 Flask-Cors>=3.0.1
+requests>=2.31.0

@@ -3,6 +3,151 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+# Simple supervisor for starting and stopping python services in dev.
+# Writes pid files under run/ and logs under logs/
+
+VENV_DIR="$ROOT_DIR/.venv"
+RUN_DIR="$ROOT_DIR/run"
+LOG_DIR="$ROOT_DIR/logs"
+PYTHON_BIN="$VENV_DIR/bin/python"
+
+mkdir -p "$RUN_DIR" "$LOG_DIR"
+
+ensure_venv_and_requirements() {
+  if [ ! -d "$VENV_DIR" ]; then
+    echo "Creating virtualenv at $VENV_DIR"
+    python3 -m venv "$VENV_DIR"
+  fi
+  # shellcheck source=/dev/null
+  . "$VENV_DIR/bin/activate"
+  python -m pip install --upgrade pip setuptools wheel >/dev/null
+  # Install required packages; allow failures without stopping dev
+  python -m pip install -r requirements/server_requirements.txt -r requirements/betting_requirements.txt || true
+}
+
+pidfile() { echo "$RUN_DIR/$1.pid"; }
+logfile() { echo "$LOG_DIR/$1.log"; }
+
+start_process() {
+  local name="$1"; shift
+  local pfile; pfile=$(pidfile "$name")
+  local lfile; lfile=$(logfile "$name")
+  if [ -f "$pfile" ]; then
+    local oldpid; oldpid=$(cat "$pfile")
+    if kill -0 "$oldpid" >/dev/null 2>&1; then
+      echo "$name already running (pid $oldpid)"
+      return 0
+    else
+      rm -f "$pfile"
+    fi
+  fi
+  echo "Starting $name -> $*"
+  # Use nohup to allow clean backgrounding
+  nohup "$@" >>"$lfile" 2>&1 &
+  local pid=$!
+  echo "$pid" > "$pfile"
+  sleep 0.25
+  echo "$name started, pid=$pid (log: $lfile)"
+}
+
+stop_process() {
+  local name="$1"; pfile=$(pidfile "$name")
+  if [ -f "$pfile" ]; then
+    pid=$(cat "$pfile")
+    if kill -0 "$pid" >/dev/null 2>&1; then
+      echo "Stopping $name (pid $pid)"
+      kill "$pid" || true
+      sleep 1
+      if kill -0 "$pid" >/dev/null 2>&1; then
+        echo "Force killing $pid"
+        kill -9 "$pid" || true
+      fi
+    fi
+    rm -f "$pfile"
+  else
+    echo "$name not running (no pid file)"
+  fi
+}
+
+status() {
+  for f in "$RUN_DIR"/*.pid; do
+    [ -e "$f" ] || continue
+    name=$(basename "$f" .pid)
+    pid=$(cat "$f")
+    if kill -0 "$pid" >/dev/null 2>&1; then
+      echo "$name: running (pid $pid)"
+    else
+      echo "$name: not running (stale pid $pid)"
+    fi
+  done
+}
+
+start_all() {
+  ensure_venv_and_requirements
+  # Set safe dev env defaults
+  export QMOI_USE_REAL_FUNDS=${QMOI_USE_REAL_FUNDS:-false}
+  export QMOI_CONFIRM_REAL_FUNDS=${QMOI_CONFIRM_REAL_FUNDS:-}
+  export QMOI_BETTING_INTERVAL=${QMOI_BETTING_INTERVAL:-3}
+  export QMOI_ANALYSIS_INTERVAL=${QMOI_ANALYSIS_INTERVAL:-3}
+  export QMOI_CONTROL_TOKEN=${QMOI_CONTROL_TOKEN:-dev-token}
+  export QMOI_CONTROL_SERVER_PORT=${QMOI_CONTROL_SERVER_PORT:-8100}
+  export PYTHONUNBUFFERED=1
+
+  # FastAPI backend
+  start_process qmoi-space-backend "$PYTHON_BIN" -u "scripts/qmoi-space-backend.py"
+  # Control server
+  start_process qmoi-control-server "$PYTHON_BIN" -u "qmoi_control_server.py"
+  # Dashboard
+  start_process serve-dashboard "$PYTHON_BIN" -u "scripts/serve_dashboard.py"
+  # Static logs server (optional)
+  start_process serve-logs "$PYTHON_BIN" -u "scripts/serve_logs.py"
+  # Betting system
+  start_process qmoi-betting "$PYTHON_BIN" -u "scripts/qmoi_automated_betting_system.py"
+}
+
+stop_all() {
+  stop_process qmoi-betting
+  stop_process serve-logs
+  stop_process serve-dashboard
+  stop_process qmoi-control-server
+  stop_process qmoi-space-backend
+}
+
+case ${1:-help} in
+  start)
+    start_all
+    ;;
+  stop)
+    stop_all
+    ;;
+  restart)
+    stop_all
+    sleep 1
+    start_all
+    ;;
+  status)
+    status
+    ;;
+  logs)
+    name=${2:-qmoi-space-backend}
+    tail -n +1 -f "$(logfile "$name")" || true
+    ;;
+  help|--help|-h)
+    echo "Usage: $0 {start|stop|restart|status|logs [service]}"
+    exit 0
+    ;;
+  *)
+    echo "Unknown command: $1"
+    exit 2
+    ;;
+esac
+
+exit 0
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
+
 echo "Dev Supervisor: stopping known conflicting services (safe)"
 # Only stop services that we started in this session to avoid killing system processes
 for PID_FILE in ".dev_pids"; do
