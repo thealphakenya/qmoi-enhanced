@@ -4,16 +4,20 @@ export const EmergencyPanel: React.FC = () => {
   const [status, setStatus] = useState('');
 
   const handleSOS = () => {
-    setStatus('🚨 SOS sent! Emergency contacts and authorities have been notified. (Simulated)');
+    console.warn('TODO_PROD: Implement real emergency SOS service integration (emergency dispatch, SMS, GPS location, etc.)');
+    setStatus('🚨 TODO_PROD: SOS service not yet configured. Real emergency services not contacted.');
   };
   const handleLockdown = () => {
-    setStatus('🔒 Device lockdown activated. All sessions locked and remote access disabled. (Simulated)');
+    console.warn('TODO_PROD: Implement real device lockdown (MDM integration, secure lock commands)');
+    setStatus('🔒 TODO_PROD: Device lockdown service not yet configured. Device remains unlocked.');
   };
   const handleWipe = () => {
-    setStatus('🧹 Secure wipe initiated. All sensitive data will be erased. (Simulated)');
+    console.warn('TODO_PROD: Implement real secure data wipe (encrypted erasure, remote wipe capability)');
+    setStatus('🧹 TODO_PROD: Secure wipe service not yet implemented. Data remains intact.');
   };
   const handleAlert = () => {
-    setStatus('⚠️ Instant alert sent to all trusted contacts. (Simulated)');
+    console.warn('TODO_PROD: Implement real alert notification service (SMS, push notification, email alerts)');
+    setStatus('⚠️ TODO_PROD: Alert service not yet configured. Contacts not notified.');
   };
 
   return (
@@ -24,8 +28,8 @@ export const EmergencyPanel: React.FC = () => {
       <button onClick={handleWipe} style={{ margin: 4 }}>🧹 Secure Wipe</button>
       <button onClick={handleAlert} style={{ margin: 4 }}>⚠️ Instant Alert</button>
       <div style={{ marginTop: 12, fontSize: 14, color: '#d00' }}>{status}</div>
-      <div style={{ marginTop: 16, fontSize: 12, color: '#888' }}>
-        All actions are simulated for demo. In production, these will trigger real device, cloud, and contact actions.
+      <div style={{ marginTop: 16, fontSize: 12, color: '#d00', fontWeight: 'bold' }}>
+        ⚠️ DEMO MODE: Emergency actions are NOT ACTIVE. Configure real emergency service integrations before production use.
       </div>
     </div>
   );

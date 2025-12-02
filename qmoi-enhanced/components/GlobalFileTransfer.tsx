@@ -13,10 +13,11 @@ export const GlobalFileTransfer: React.FC = () => {
 
   const handleSend = () => {
     if (!file || !recipient) return;
+    console.warn('TODO_PROD: Implement real file transfer service (cloud storage, P2P, direct transfer, etc.). Transfer not actually performed.');
     setStatus('Transferring...');
     setTimeout(() => {
-      setStatus(`File "${file.name}" sent to ${recipient} (simulated).`);
-    }, 2000);
+      setStatus(`TODO_PROD: File transfer not yet implemented. Please configure a real transfer service.`);
+    }, 1000);
   };
 
   return (

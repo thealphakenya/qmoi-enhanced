@@ -7,6 +7,7 @@ export const GlobalMail: React.FC = () => {
   const [sent, setSent] = useState(false);
 
   const handleSend = () => {
+    console.warn('TODO_PROD: Implement real mail service integration (SMTP, SendGrid, AWS SES, etc.). Mail not actually sent.');
     setSent(true);
     setTimeout(() => setSent(false), 2000);
   };
@@ -39,7 +40,7 @@ export const GlobalMail: React.FC = () => {
         {sent ? 'Sent!' : 'Send Mail'}
       </button>
       <div style={{ marginTop: 12, fontSize: 12, color: '#888' }}>
-        {sent && 'Mail sent (simulated).'}
+        {sent && 'TODO_PROD: Mail service not configured. Real mail not sent.'}
       </div>
     </div>
   );

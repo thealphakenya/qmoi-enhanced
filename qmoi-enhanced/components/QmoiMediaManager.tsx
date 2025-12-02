@@ -71,49 +71,12 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   // For upload support, add an upload button and handler to POST files to your media API endpoint.
   // See README for more integration details.
 
-  // Mock data for demonstration
+  // NOTE: Mock data replaced with TODO_PROD placeholder.
+  // To connect to a real API, add your media service URL configuration and fetch from that endpoint.
   useEffect(() => {
-    // TODO: Replace this mock data with a real API call, e.g.:
-    // fetch('/api/media').then(res => res.json()).then(setMediaItems);
-    const mockMedia: MediaItem[] = [
-      {
-        id: '1',
-        name: 'presentation.pdf',
-        type: 'document',
-        size: '2.5 MB',
-        url: '/media/presentation.pdf',
-        createdAt: '2024-01-15',
-        tags: ['work', 'presentation']
-      },
-      {
-        id: '2',
-        name: 'vacation_photo.jpg',
-        type: 'image',
-        size: '1.2 MB',
-        url: '/media/vacation_photo.jpg',
-        createdAt: '2024-01-10',
-        tags: ['personal', 'vacation']
-      },
-      {
-        id: '3',
-        name: 'meeting_recording.mp3',
-        type: 'audio',
-        size: '15.7 MB',
-        url: '/media/meeting_recording.mp3',
-        createdAt: '2024-01-12',
-        tags: ['work', 'meeting']
-      },
-      {
-        id: '4',
-        name: 'tutorial_video.mp4',
-        type: 'video',
-        size: '45.2 MB',
-        url: '/media/tutorial_video.mp4',
-        createdAt: '2024-01-08',
-        tags: ['tutorial', 'learning']
-      }
-    ];
-    setMediaItems(mockMedia);
+    console.warn('TODO_PROD: Replace this placeholder with real media API call. Expected: fetch(/api/media) and setMediaItems with real data.');
+    // Placeholder: empty list until real API is configured
+    setMediaItems([]);
   }, []);
 
   const searchMedia = async (query: string) => {

@@ -218,6 +218,51 @@ Q-City is a comprehensive system management and monitoring platform that provide
    python scripts/main.py
    ```
 
+   ### Open QCity in a Browser (Quick)
+
+   You can open the QCity dashboard served from this workspace in a new browser window. Use one of the commands below depending on your environment.
+
+   - Open with the default system browser (preferred in the dev container):
+   ```bash
+   # open in background (works if $BROWSER is set in the environment)
+   "$BROWSER" http://localhost:8080/qcity-enterprise.html &
+   ```
+
+   - Use `xdg-open` (Linux desktop):
+   ```bash
+   xdg-open http://localhost:8080/qcity-enterprise.html &
+   ```
+
+   - Open in a specific browser (examples):
+   ```bash
+   # Google Chrome / Chromium
+   google-chrome http://localhost:8080/qcity-enterprise.html &
+   chromium http://localhost:8080/qcity-enterprise.html &
+
+   # Firefox
+   firefox http://localhost:8080/qcity-enterprise.html &
+   ```
+
+   Notes:
+   - The static dashboard files (`qcity-enterprise.html`, `qcity-complete.html`, `qcity-dashboard.html`) are served by a simple HTTP server on port `8080` during development. If you are not running a server, start one from the repo root:
+   ```bash
+   # from repository root
+   python3 -m http.server 8080
+   # or, use the provided start script if present
+   ./start-qcity.sh
+   ```
+   - If you prefer opening from VS Code's Simple Browser, copy the URL and paste it into the Simple Browser address bar.
+
+   QMOI AI pages:
+   - To open QMOI AI pages in a new window, use the same pattern but point to the QMOI route or static page you serve for QMOI (e.g. `http://localhost:8080/qmoi-dashboard.html` or the Next.js dev server URL). If you run a Next.js app for `qmoi-enhanced` use:
+   ```bash
+   # Start Next.js (if available in this environment)
+   # npm install && npm run dev
+   # then open in browser (example):
+   "$BROWSER" http://localhost:3000/ &
+   ```
+
+
 2. **Debug Mode**
    ```bash
    python scripts/main.py --debug

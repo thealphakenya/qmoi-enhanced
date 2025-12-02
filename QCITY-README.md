@@ -28,6 +28,11 @@ python3 -m http.server 8080
 
 Then open in browser: **http://localhost:8080/qcity-enterprise.html**
 
+### Option 3: Open QCity in a New Window
+```bash
+"$BROWSER" http://localhost:8080/qcity-enterprise.html &
+```
+
 ## 📊 Dashboard Features
 
 ### Primary Dashboard

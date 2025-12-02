@@ -8,11 +8,12 @@ export const PriceProductVerifier: React.FC = () => {
   const handleCheck = async () => {
     setLoading(true);
     setResult(null);
-    // Simulate price/product verification (offline or via public APIs)
+    console.warn('TODO_PROD: Integrate with real price verification service (e.g., product database, barcode scanner, pricing API)');
+    // Placeholder: stub response
     setTimeout(() => {
-      setResult(`Verified: "${query}" is available. Price: $${(Math.random()*100+1).toFixed(2)} (simulated)`);
+      setResult(`TODO_PROD: Verification not yet implemented. Please configure a real product/price verification service.`);
       setLoading(false);
-    }, 1200);
+    }, 500);
   };
 
   return (
