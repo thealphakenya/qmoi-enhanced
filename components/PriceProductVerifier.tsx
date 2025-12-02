@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { verifyProduct } from '@/adapters/clientAdapters';
 
 export const PriceProductVerifier: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -8,11 +9,15 @@ export const PriceProductVerifier: React.FC = () => {
   const handleCheck = async () => {
     setLoading(true);
     setResult(null);
-    // Simulate price/product verification (offline or via public APIs)
-    setTimeout(() => {
-      setResult(`Verified: "${query}" is available. Price: $${(Math.random()*100+1).toFixed(2)} (simulated)`);
+    try {
+      const res = await verifyProduct(query);
+      setResult(res);
+    } catch (err) {
+      console.error('verifyProduct failed', err);
+      setResult('Verification error');
+    } finally {
       setLoading(false);
-    }, 1200);
+    }
   };
 
   return (

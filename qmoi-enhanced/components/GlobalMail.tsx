@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { sendMail } from '@/adapters/clientAdapters';
 
 export const GlobalMail: React.FC = () => {
   const [to, setTo] = useState('');
@@ -6,9 +7,18 @@ export const GlobalMail: React.FC = () => {
   const [body, setBody] = useState('');
   const [sent, setSent] = useState(false);
 
-  const handleSend = () => {
-    setSent(true);
-    setTimeout(() => setSent(false), 2000);
+  const handleSend = async () => {
+    const payload = { to, subject, body };
+    try {
+      const ok = await sendMail(payload);
+      setSent(Boolean(ok));
+      if (ok) {
+        setTo(''); setSubject(''); setBody('');
+        setTimeout(() => setSent(false), 2000);
+      }
+    } catch (err) {
+      console.error('sendMail failed', err);
+    }
   };
 
   return (
@@ -39,7 +49,7 @@ export const GlobalMail: React.FC = () => {
         {sent ? 'Sent!' : 'Send Mail'}
       </button>
       <div style={{ marginTop: 12, fontSize: 12, color: '#888' }}>
-        {sent && 'Mail sent (simulated).'}
+        {sent && 'Mail sent successfully'}
       </div>
     </div>
   );

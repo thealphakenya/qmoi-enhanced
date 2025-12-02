@@ -98,6 +98,104 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 
 ---
 
+## Quick Start: Development Environment
+
+### Environment Setup
+
+1. **Copy environment template and configure:**
+```bash
+cp .env.example .env.local
+# Edit .env.local with your API URLs, mail service credentials, storage config, etc.
+```
+
+2. **Install dependencies (if Node.js available):**
+```bash
+npm install
+```
+
+### Running Services
+
+#### Option 1: QCity Dashboard (Static HTML via Python server)
+
+```bash
+# Start HTTP server on port 8080 (from repo root)
+python3 -m http.server 8080 &
+
+# Open in browser
+"$BROWSER" http://localhost:8080/qcity-enterprise.html &
+# or:
+xdg-open http://localhost:8080/qcity-enterprise.html &
+firefox http://localhost:8080/qcity-enterprise.html &
+```
+
+**Dashboard Tabs:**
+- Device Management
+- QVillage (Master AI Infrastructure)
+- Employment Dashboard
+- Revenue Analytics
+- Biometric Authentication
+- Device Logs
+- System Health
+- Settings & Configuration
+
+#### Option 2: QMOI AI (Next.js Dev Server)
+
+```bash
+# Install and start Next.js dev server (requires Node.js 18+)
+npm install
+npm run dev
+
+# Open in browser (default port 3000)
+"$BROWSER" http://localhost:3000 &
+```
+
+**Available Pages:**
+- `/` — QMOI AI Home
+- `/qcity` — QCity Dashboard
+- `/chatbot` — QMOI Chatbot
+- `/components` — Component Gallery
+
+#### Option 3: Production Build
+
+```bash
+# Build production bundles
+npm run build
+
+# Start production server (requires Node.js)
+npm start
+```
+
+### API Configuration
+
+The app uses a centralized API config (`src/config/api.ts`) that reads from environment variables and `.env.local`:
+
+**Environment Variables:**
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:8000     # Backend API base URL
+NEXT_PUBLIC_ENV=development                    # development|staging|production
+```
+
+**Backend Endpoints Expected:**
+- `GET /api/media` — Fetch media items
+- `POST /api/verify?q=<query>` — Verify product
+- `POST /api/mail` — Send email
+- `POST /api/files` — Upload files
+- `POST /api/emergency` — Emergency actions (SOS, lockdown, etc.)
+- `POST /api/youtube/download` — Download YouTube video
+- `GET /api/health` — Health check
+
+### Component Integration
+
+Key components now use production adapters (`src/adapters/clientAdapters.ts`):
+- `QmoiMediaManager.tsx` → calls `/api/media`
+- `GlobalMail.tsx` → calls `/api/mail`
+- `GlobalFileTransfer.tsx` → calls `/api/files`
+- `PriceProductVerifier.tsx` → calls `/api/verify`
+- `EmergencyPanel.tsx` → calls `/api/emergency`
+- `FloatingPreviewWindow.tsx` → calls `/api/youtube/download`
+
+All adapters read the base URL from `src/config/api.ts`, which respects the `NEXT_PUBLIC_API_URL` environment variable.
+
 ## 🚀 Build & Automation
 
 Use the following tools to automate and build your apps:

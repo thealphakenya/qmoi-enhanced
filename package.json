@@ -24,7 +24,8 @@
   },
   "devDependencies": {
     "eslint": "^8.48.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "typescript": "^5.2.0"
   },
   "engines": {
     "node": ">=18.0.0",

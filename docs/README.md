@@ -218,6 +218,61 @@ Q-City is a comprehensive system management and monitoring platform that provide
    python scripts/main.py
    ```
 
+   ### Open QCity in a Browser (Quick)
+
+   You can open the QCity dashboard served from this workspace in a new browser window. Use one of the commands below depending on your environment.
+
+   **Setup:**
+   ```bash
+   # Start HTTP server on port 8080 from repo root
+   python3 -m http.server 8080 &
+   ```
+
+   **Open with default system browser:**
+   ```bash
+   # open in background (works if $BROWSER is set in the environment)
+   "$BROWSER" http://localhost:8080/qcity-enterprise.html &
+   ```
+
+   **Use xdg-open (Linux desktop):**
+   ```bash
+   xdg-open http://localhost:8080/qcity-enterprise.html &
+   ```
+
+   **Open in specific browser (examples):**
+   ```bash
+   # Google Chrome / Chromium
+   google-chrome http://localhost:8080/qcity-enterprise.html &
+   chromium http://localhost:8080/qcity-enterprise.html &
+
+   # Firefox
+   firefox http://localhost:8080/qcity-enterprise.html &
+   ```
+
+   **Dashboard URLs:**
+   - Enterprise: `http://localhost:8080/qcity-enterprise.html` (default)
+   - Complete: `http://localhost:8080/qcity-complete.html`
+   - Dashboard: `http://localhost:8080/qcity-dashboard.html`
+
+   **Open QMOI AI (Next.js):**
+   ```bash
+   # If Node.js available, start dev server
+   npm install && npm run dev
+   # Then open in browser:
+   "$BROWSER" http://localhost:3000/ &
+   ```
+
+   **Environment Configuration:**
+   - Copy `.env.example` to `.env.local` and update values
+   - Key variables: `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_ENV`, mail service credentials
+   - See `.env.example` for all available options
+
+   Notes:
+   - The static dashboard files are served by a simple HTTP server on port `8080` during development.
+   - All adapters and components use `src/config/api.ts` which respects `NEXT_PUBLIC_API_URL` env var.
+   - Backend API endpoints are configurable and environment-aware (local/dev/staging/prod).
+
+
 2. **Debug Mode**
    ```bash
    python scripts/main.py --debug

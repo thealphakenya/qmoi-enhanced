@@ -146,8 +146,9 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
   });
 
   const runOrchestrator = () => {
+    console.warn('TODO_PROD: Integrate with real orchestrator service for env/lint/test/build/audit/fix/deploy stages.');
     setOrchestratorStatus({ env: 'success', lint: 'warning', test: 'error', build: 'success', audit: 'warning', fix: 'success', deploy: 'success' });
-    notify('Orchestrator run complete (mock)', 'info');
+    notify('TODO_PROD: Orchestrator service not yet integrated. Status shown is placeholder only.', 'warning');
   };
 
   useEffect(() => {
