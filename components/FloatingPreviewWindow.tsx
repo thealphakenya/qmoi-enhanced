@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import { Progress } from "@/components/ui/progress";
+import { youtubeDownload } from '@/adapters/clientAdapters';
 import { FaTimes, FaDownload, FaPlay, FaPause, FaVolumeUp, FaExpand } from 'react-icons/fa';
 
 // Utility for file download
@@ -110,13 +111,27 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
   }
 
   // Download logic
-  function handleDownload() {
+  async function handleDownload() {
     if (mediaUrl && mediaType) {
       const ext = mediaType === 'video' ? 'mp4' : mediaType === 'audio' ? 'mp3' : mediaType;
       downloadFile(mediaUrl, `Alpha-Q-Downloads/${mediaType}.${ext}`);
-    } else if (youtubeUrl) {
-      // Simulate download options for YouTube
-      alert('Choose format/size (simulated). Actual download handled by backend or extension.');
+      return;
+    }
+    if (youtubeUrl) {
+      try {
+        setDownloadProgress(1);
+        const res = await youtubeDownload(youtubeUrl);
+        setDownloadProgress(0);
+        if (res && res.success !== false && res.url) {
+          downloadFile(res.url, `Alpha-Q-Downloads/youtube-${Date.now()}.mp4`);
+        } else {
+          alert(`YouTube download failed: ${res?.error || 'unknown'}`);
+        }
+      } catch (err) {
+        setDownloadProgress(0);
+        console.error('youtubeDownload failed', err);
+        alert('YouTube download failed');
+      }
     }
   }
 

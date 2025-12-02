@@ -29,6 +29,7 @@ import {
   Image
 } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { fetchMedia } from '@/adapters/clientAdapters';
 
 interface MediaItem {
   id: string;
@@ -71,12 +72,22 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   // For upload support, add an upload button and handler to POST files to your media API endpoint.
   // See README for more integration details.
 
-  // NOTE: Mock data replaced with TODO_PROD placeholder.
-  // To connect to a real API, add your media service URL configuration and fetch from that endpoint.
+  // Production: use client adapter to fetch media items from backend API
   useEffect(() => {
-    console.warn('TODO_PROD: Replace this placeholder with real media API call. Expected: fetch(/api/media) and setMediaItems with real data.');
-    // Placeholder: empty list until real API is configured
-    setMediaItems([]);
+    let mounted = true;
+    const load = async () => {
+      setIsLoading(true);
+      try {
+        const items = await fetchMedia();
+        if (mounted && Array.isArray(items)) setMediaItems(items as MediaItem[]);
+      } catch (err) {
+        console.warn('Failed to load media via adapter', err);
+      } finally {
+        if (mounted) setIsLoading(false);
+      }
+    };
+    load();
+    return () => { mounted = false; };
   }, []);
 
   const searchMedia = async (query: string) => {

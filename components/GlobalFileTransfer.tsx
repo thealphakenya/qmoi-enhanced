@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { uploadFile } from '@/adapters/clientAdapters';
 
 export const GlobalFileTransfer: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -11,12 +12,23 @@ export const GlobalFileTransfer: React.FC = () => {
     }
   };
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!file || !recipient) return;
     setStatus('Transferring...');
-    setTimeout(() => {
-      setStatus(`File "${file.name}" sent to ${recipient} (simulated).`);
-    }, 2000);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('recipient', recipient);
+      const result = await uploadFile(formData);
+      if (result && result.success !== false) {
+        setStatus('Transfer complete');
+      } else {
+        setStatus(`Transfer failed: ${result?.error || 'unknown'}`);
+      }
+    } catch (err) {
+      console.error('uploadFile failed', err);
+      setStatus('Transfer error');
+    }
   };
 
   return (

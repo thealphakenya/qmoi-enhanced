@@ -1,23 +1,48 @@
 import React, { useState } from 'react';
+import { emergencyAction } from '@/adapters/clientAdapters';
 
 export const EmergencyPanel: React.FC = () => {
   const [status, setStatus] = useState('');
 
-  const handleSOS = () => {
-    console.warn('TODO_PROD: Implement real emergency SOS service integration (emergency dispatch, SMS, GPS location, etc.)');
-    setStatus('🚨 TODO_PROD: SOS service not yet configured. Real emergency services not contacted.');
+  const handleSOS = async () => {
+    setStatus('Sending SOS...');
+    try {
+      const res = await emergencyAction('sos', { timestamp: Date.now() });
+      setStatus(res?.message || 'SOS sent');
+    } catch (err) {
+      console.error('SOS failed', err);
+      setStatus('SOS failed');
+    }
   };
-  const handleLockdown = () => {
-    console.warn('TODO_PROD: Implement real device lockdown (MDM integration, secure lock commands)');
-    setStatus('🔒 TODO_PROD: Device lockdown service not yet configured. Device remains unlocked.');
+  const handleLockdown = async () => {
+    setStatus('Locking down...');
+    try {
+      const res = await emergencyAction('lockdown', { timestamp: Date.now() });
+      setStatus(res?.message || 'Lockdown command issued');
+    } catch (err) {
+      console.error('Lockdown failed', err);
+      setStatus('Lockdown failed');
+    }
   };
-  const handleWipe = () => {
-    console.warn('TODO_PROD: Implement real secure data wipe (encrypted erasure, remote wipe capability)');
-    setStatus('🧹 TODO_PROD: Secure wipe service not yet implemented. Data remains intact.');
+  const handleWipe = async () => {
+    setStatus('Wiping device...');
+    try {
+      const res = await emergencyAction('wipe', { timestamp: Date.now() });
+      setStatus(res?.message || 'Wipe command issued');
+    } catch (err) {
+      console.error('Wipe failed', err);
+      setStatus('Wipe failed');
+    }
   };
-  const handleAlert = () => {
-    console.warn('TODO_PROD: Implement real alert notification service (SMS, push notification, email alerts)');
-    setStatus('⚠️ TODO_PROD: Alert service not yet configured. Contacts not notified.');
+  const handleAlert = async () => {
+    setStatus('Sending alert...');
+    try {
+      const res = await emergencyAction('alert', { timestamp: Date.now() });
+      setStatus(res?.message || 'Alert sent');
+    } catch (err) {
+      console.error('Alert failed', err);
+      setStatus('Alert failed');
+    }
   };
 
   return (

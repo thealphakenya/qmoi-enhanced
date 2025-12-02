@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { verifyProduct } from '@/adapters/clientAdapters';
 
 export const PriceProductVerifier: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -8,12 +9,15 @@ export const PriceProductVerifier: React.FC = () => {
   const handleCheck = async () => {
     setLoading(true);
     setResult(null);
-    console.warn('TODO_PROD: Integrate with real price verification service (e.g., product database, barcode scanner, pricing API)');
-    // Placeholder: stub response
-    setTimeout(() => {
-      setResult(`TODO_PROD: Verification not yet implemented. Please configure a real product/price verification service.`);
+    try {
+      const res = await verifyProduct(query);
+      setResult(res);
+    } catch (err) {
+      console.error('verifyProduct failed', err);
+      setResult('Verification error');
+    } finally {
       setLoading(false);
-    }, 500);
+    }
   };
 
   return (
