@@ -23,6 +23,16 @@ import {
   EyeOff
 } from 'lucide-react';
 
+// CardTitle component
+interface CardTitleProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const CardTitle: React.FC<CardTitleProps> = ({ children, className = '' }) => (
+  <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
+);
+
 interface RevenueData {
   current: number;
   target: number;
