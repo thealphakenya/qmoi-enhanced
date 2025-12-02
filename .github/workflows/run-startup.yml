@@ -38,6 +38,27 @@ jobs:
             sleep 10
           done
 
+      - name: Health-check endpoints
+        run: |
+          echo "Checking service endpoints..."
+          ENDPOINTS="http://localhost:8080/qcity-enterprise.html http://localhost:8080/qcity-complete.html http://localhost:8080/qcity-dashboard.html http://localhost:3000/"
+          for url in $ENDPOINTS; do
+            ok=0
+            for attempt in 1 2 3 4 5 6 7 8 9 10; do
+              status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "$url" || echo 000)
+              echo "[$url] attempt $attempt -> $status"
+              if [ "$status" = "200" ] || [ "$status" = "302" ]; then
+                ok=1
+                break
+              fi
+              sleep 3
+            done
+            if [ "$ok" -ne 1 ]; then
+              echo "Endpoint $url did not return healthy status after retries"
+              exit 1
+            fi
+          done
+
       - name: Run CLI verification
         run: |
           ./cli-verify.sh /github/workspace || true
