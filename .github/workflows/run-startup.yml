@@ -1,0 +1,50 @@
+name: Run Startup & Verification (CI)
+
+on:
+  pull_request:
+    branches: [ autosync-backup-20250926-232440 ]
+  push:
+    branches: [ feature/session4-complete ]
+
+jobs:
+  startup-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Make scripts executable
+        run: |
+          chmod +x ./startup.sh || true
+          chmod +x ./cli-verify.sh || true
+
+      - name: Start services (background)
+        run: |
+          nohup ./startup.sh --dev > startup.log 2>&1 &
+          sleep 8
+          echo "--- startup log (head) ---"
+          head -n 200 startup.log || true
+
+      - name: Wait for services
+        run: |
+          # Give services up to 60s to become healthy
+          for i in 1 2 3 4 5 6; do
+            echo "Checking (attempt $i)..."
+            sleep 10
+          done
+
+      - name: Run CLI verification
+        run: |
+          ./cli-verify.sh /github/workspace || true
+
+      - name: Upload startup log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: startup-log
+          path: startup.log
