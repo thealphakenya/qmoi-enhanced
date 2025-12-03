@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QCity Dashboard - A Progressive Web Application for managing QMOI City ecosystem">
-  <meta name="theme-color" content="#2196F3">
+  <meta name="description" content="QMOI Space - Decentralized Marketplace for QMOI Ecosystem">
+  <meta name="theme-color" content="#9C27B0">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="QCity">
+  <meta name="apple-mobile-web-app-title" content="QMOI Space">
   
-  <!-- Web App Manifest -->
-  <link rel="manifest" href="/manifest-qcity.json">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%232196F3' width='180' height='180'/%3E%3Ctext x='50%' y='50%' font-size='100' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EQ%3C/text%3E%3C/svg%3E">
+  <link rel="manifest" href="/manifest-qmoi-space.json">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%239C27B0' width='180' height='180'/%3E%3Ctext x='50%' y='50%' font-size='80' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3E🔮%3C/text%3E%3C/svg%3E">
   
-  <title>QCity Dashboard</title>
+  <title>QMOI Space</title>
   <style>
     * {
       margin: 0;
@@ -23,8 +21,8 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #9C27B0 0%, #B566C2 100%);
       color: #333;
       min-height: 100vh;
       display: flex;
@@ -50,7 +48,7 @@
     .logo {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+      background: linear-gradient(135deg, #9C27B0 0%, #B566C2 100%);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -58,13 +56,13 @@
       font-size: 48px;
       color: white;
       margin: 0 auto 20px;
-      box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+      box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);
     }
 
     h1 {
       font-size: 32px;
       margin-bottom: 10px;
-      color: #2196F3;
+      color: #9C27B0;
     }
 
     .subtitle {
@@ -101,7 +99,7 @@
 
     .status-value {
       font-weight: bold;
-      color: #2196F3;
+      color: #9C27B0;
     }
 
     .features {
@@ -157,14 +155,14 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+      background: linear-gradient(135deg, #9C27B0 0%, #B566C2 100%);
       color: white;
-      box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+      box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(33, 150, 243, 0.4);
+      box-shadow: 0 6px 16px rgba(156, 39, 176, 0.4);
     }
 
     .btn-secondary {
@@ -207,9 +205,9 @@
 <body>
   <div class="container">
     <div class="header">
-      <div class="logo">Q</div>
-      <h1>QCity Dashboard</h1>
-      <p class="subtitle">Progressive Web Application for QMOI City Management</p>
+      <div class="logo">🔮</div>
+      <h1>QMOI Space</h1>
+      <p class="subtitle">Decentralized Marketplace for QMOI Ecosystem</p>
     </div>
 
     <div class="status">
@@ -222,8 +220,8 @@
         <span class="status-value" id="swStatus">Checking...</span>
       </div>
       <div class="status-item">
-        <span class="status-label">💾 Cache:</span>
-        <span class="status-value" id="cacheStatus">Available</span>
+        <span class="status-label">🛍️ Marketplace:</span>
+        <span class="status-value" id="marketStatus">Active</span>
       </div>
       <div class="status-item">
         <span class="status-label">📦 Version:</span>
@@ -232,14 +230,14 @@
     </div>
 
     <div class="features">
-      <h2>✨ Features</h2>
+      <h2>✨ Marketplace Features</h2>
       <ul>
-        <li>Real-time city monitoring and analytics</li>
-        <li>Offline-first progressive web app</li>
-        <li>Automatic background updates</li>
-        <li>One-click installation on home screen</li>
-        <li>Fast, reliable performance</li>
-        <li>Responsive design for all devices</li>
+        <li>Decentralized peer-to-peer trading</li>
+        <li>Smart contract integration</li>
+        <li>Secure escrow system</li>
+        <li>Real-time price discovery</li>
+        <li>Reputation and rating system</li>
+        <li>Multi-currency support</li>
       </ul>
     </div>
 
@@ -256,32 +254,23 @@
     </div>
 
     <div class="version-info">
-      <p>QCity v1.0.0 • Made with ❤️ for QMOI</p>
-      <p>Visit <a href="https://qmoi.ai" target="_blank" style="color: #2196F3; text-decoration: none;">qmoi.ai</a> for more info</p>
+      <p>QMOI Space v1.0.0 • Decentralized Trading Platform</p>
+      <p>Visit <a href="https://qmoi.ai" target="_blank" style="color: #9C27B0; text-decoration: none;">qmoi.ai</a> for more info</p>
     </div>
   </div>
 
-  <!-- PWA Manager Script -->
   <script src="/qmoi-pwa-manager.js"></script>
   
   <script>
-    // Initialize PWA Manager with QCity config
     window.addEventListener('load', () => {
       if (window.qmoiPWAManager) {
-        window.qmoiPWAManager.appName = 'QCity';
-        
-        // Update UI with app info
+        window.qmoiPWAManager.appName = 'QMOI Space';
         updateStatus();
-        
-        // Request notification permission
         window.qmoiPWAManager.requestNotificationPermission();
 
-        // Hide install button if already installed
         if (window.qmoiPWAManager.isInstalled()) {
           const installBtn = document.getElementById('installBtn');
-          if (installBtn) {
-            installBtn.style.display = 'none';
-          }
+          if (installBtn) installBtn.style.display = 'none';
         }
       }
     });
@@ -290,37 +279,20 @@
       const manager = window.qmoiPWAManager;
       if (!manager) return;
 
-      // PWA Status
       const pwaStatus = document.getElementById('pwaStatus');
-      if (pwaStatus) {
-        pwaStatus.textContent = manager.isInstalled() ? '✓ Installed' : '○ Web App';
-      }
+      if (pwaStatus) pwaStatus.textContent = manager.isInstalled() ? '✓ Installed' : '○ Web App';
 
-      // Service Worker Status
       const swStatus = document.getElementById('swStatus');
-      if (swStatus) {
-        swStatus.textContent = manager.swRegistration ? '✓ Active' : '○ Not Active';
-      }
-
-      // Version
-      const versionStatus = document.getElementById('versionStatus');
-      if (versionStatus) {
-        versionStatus.textContent = '1.0.0';
-      }
+      if (swStatus) swStatus.textContent = manager.swRegistration ? '✓ Active' : '○ Not Active';
     }
 
     function checkAppInfo() {
       const manager = window.qmoiPWAManager;
-      if (!manager) {
-        alert('PWA Manager not initialized');
-        return;
-      }
-
+      if (!manager) return;
       const info = manager.getAppInfo();
-      alert(`App: ${info.name}\nInstalled: ${info.installed}\nService Worker: ${info.swActive}\nUpdate Available: ${info.updateAvailable}`);
+      alert(`App: ${info.name}\nInstalled: ${info.installed}\nService Worker: ${info.swActive}`);
     }
 
-    // Refresh status periodically
     setInterval(updateStatus, 5000);
   </script>
 </body>
