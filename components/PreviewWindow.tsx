@@ -18,7 +18,7 @@ export function PreviewWindow() {
   }
 
   return (
-    <Card className="mb-4">
+    <Card className="mb-4 qmoi-card">
       <CardHeader>
         <CardTitle>Preview Window</CardTitle>
       </CardHeader>

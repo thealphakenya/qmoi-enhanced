@@ -245,7 +245,44 @@
             <h2>Quick Actions</h2>
             <button onclick="launchDashboard()">📊 Open Dashboard</button>
             <button onclick="accessSettings()">⚙️ Settings</button>
+            <button onclick="openPreview()">🔍 Preview</button>
             <button onclick="shareApp()">🔗 Share</button>
+        </div>
+
+        <div class="card" id="alpha-qai-card">
+            <h2>Alpha-Q AI System</h2>
+            <div style="background:#071027;border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:8px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                    <div style="color:var(--muted);font-size:13px;">Status</div>
+                    <div style="padding:4px 8px;border-radius:6px;background:#10b981;color:#062018;font-weight:700;font-size:12px;">ACTIVE</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                    <div style="color:var(--muted);font-size:13px;">Version</div>
+                    <div style="color:var(--primary);font-weight:700;">Alpha-Q-1.0.0</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <div style="color:var(--muted);font-size:13px;">Last Update</div>
+                    <div style="color:var(--muted);font-size:12px;">Just now</div>
+                </div>
+                <div style="margin-top:8px;border-top:1px dashed rgba(255,255,255,0.03);padding-top:8px;color:var(--muted);font-size:12px;">AI System running with enhanced QMOI integration</div>
+            </div>
+        </div>
+
+        <div class="card" id="chatbot-card">
+            <h2>QMOI Chatbot</h2>
+            <div id="chatbot" style="background: #071027; border:1px solid rgba(255,255,255,0.04); padding:12px; border-radius:8px;">
+                <div id="chat-history" style="height:200px; overflow-y:auto; margin-bottom:8px; padding-right:8px;"></div>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <select id="chat-model" style="background:#0b1220;color:var(--text);border:1px solid rgba(255,255,255,0.04);padding:6px;border-radius:6px;">
+                        <option>Auto</option>
+                        <option>GPT-4</option>
+                        <option>Claude</option>
+                        <option>QMOI</option>
+                    </select>
+                    <input id="chat-input" type="text" placeholder="Ask QMOI..." style="flex:1;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:#071027;color:var(--text);" />
+                    <button id="chat-send" style="padding:8px 12px;border-radius:6px;background:var(--primary);color:#fff;border:none;">Send</button>
+                </div>
+            </div>
         </div>
         
         <div id="notification" class="notification" style="display:none;"></div>
@@ -320,10 +357,83 @@
             notif.style.display = 'block';
             setTimeout(() => notif.style.display = 'none', 3000);
         }
+
+        // Preview popup
+        function openPreview(){
+            const w = window.open('/pwa_apps/qmoi-ai/preview.html','qmoiai-preview','width=900,height=700');
+            if(!w) showNotification('Pop-up blocked — allow popups for preview');
+        }
         
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             console.log('QMOI AI PWA loaded');
+
+            // Chatbot setup (lightweight fallback for static PWA)
+            const chatHistoryEl = document.getElementById('chat-history');
+            const chatInput = document.getElementById('chat-input');
+            const chatSend = document.getElementById('chat-send');
+            const chatModel = document.getElementById('chat-model');
+
+            function appendMessage(text, sender) {
+                const wrap = document.createElement('div');
+                wrap.style.padding = '8px';
+                wrap.style.marginBottom = '6px';
+                wrap.style.borderRadius = '6px';
+                wrap.style.maxWidth = '85%';
+                wrap.style.wordBreak = 'break-word';
+                if (sender === 'user') {
+                    wrap.style.background = '#0b5fff';
+                    wrap.style.color = '#fff';
+                    wrap.style.marginLeft = 'auto';
+                } else {
+                    wrap.style.background = '#10b981';
+                    wrap.style.color = '#062018';
+                    wrap.style.marginRight = 'auto';
+                }
+                wrap.textContent = text;
+                chatHistoryEl.appendChild(wrap);
+                chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
+            }
+
+            chatSend.addEventListener('click', async () => {
+                const value = chatInput.value.trim();
+                if (!value) return;
+                appendMessage(value, 'user');
+                chatInput.value = '';
+                const selected = chatModel.value || 'Auto';
+                appendMessage('QMOI is thinking...', 'ai');
+
+                // Try calling local API first
+                try {
+                    const res = await fetch('http://localhost:8000/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: value, model: selected })
+                    });
+                    if (res.ok) {
+                        const json = await res.json();
+                        // remove thinking placeholder
+                        if (chatHistoryEl.lastChild) chatHistoryEl.removeChild(chatHistoryEl.lastChild);
+                        appendMessage(json.reply || ('QMOI AI: ' + (json.reply || 'No reply')), 'ai');
+                        return;
+                    }
+                } catch (e) {
+                    console.warn('Chat API error, falling back to simulated response', e);
+                }
+
+                // Fallback simulated response
+                setTimeout(() => {
+                    if (chatHistoryEl.lastChild) chatHistoryEl.removeChild(chatHistoryEl.lastChild);
+                    appendMessage(`QMOI AI (${selected}): I understand your message: "${value}". How can I help?`, 'ai');
+                }, 900 + Math.floor(Math.random()*800));
+            });
+
+            chatInput.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Enter') {
+                    ev.preventDefault();
+                    chatSend.click();
+                }
+            });
         });
     </script>
 </body>

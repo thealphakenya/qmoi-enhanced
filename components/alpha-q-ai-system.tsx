@@ -21,7 +21,7 @@ const AlphaQAISystem: React.FC<AlphaQAISystemProps> = ({ className = "" }) => {
   }, []);
 
   return (
-    <div className={`bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4 ${className}`}>
+    <div className={`bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4 qmoi-card ${className}`}>
       <h3 className="text-lg font-semibold text-green-400 mb-3">
         Alpha-Q AI System
       </h3>

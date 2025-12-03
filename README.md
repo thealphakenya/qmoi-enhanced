@@ -12,7 +12,21 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
+
 # QMOI System
+
+## 🚀 Quick Start: QMOI AI (Static/PWA)
+
+To serve and open QMOI AI in your browser (new window/tab):
+
+```bash
+chmod +x OPEN_QMOI_AI.sh
+./OPEN_QMOI_AI.sh
+```
+
+This will start a static server and open [QMOI AI](http://localhost:8080/qmoi-ai.html) in your default browser.
+
+If you are in a restricted environment, open the URL manually after running the script.
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
 ![Release v1.2.3](https://img.shields.io/badge/Release-v1.2.3-blue?style=flat-square)

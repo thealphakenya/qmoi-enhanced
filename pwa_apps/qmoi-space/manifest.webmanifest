@@ -1,16 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "QMOI Space - Advanced AI Platform",
+  "name": "QMOI Space - Decentralized Marketplace",
   "short_name": "QMOI Space",
-  "description": "QMOI Space - Advanced AI Platform with development, gaming, and revenue generation",
+  "description": "Decentralized marketplace and community platform with integrated payment systems and peer-to-peer commerce",
   "start_url": "/pwa_apps/qmoi-space/",
   "scope": "/pwa_apps/qmoi-space/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#0b1220",
-  "theme_color": "#667eea",
+  "background_color": "#1a0033",
+  "theme_color": "#9C27B0",
   "dir": "ltr",
   "lang": "en-US",
+  "categories": ["shopping", "business", "social"],
   "icons": [
     {
       "src": "/pwa_apps/qmoi-space/icon-48.png",
@@ -33,40 +34,16 @@
   ],
   "shortcuts": [
     {
-      "name": "Dashboard",
-      "short_name": "Dashboard",
-      "description": "Access QMOI Space dashboard",
-      "url": "/pwa_apps/qmoi-space/?page=dashboard",
-      "icons": [
-        {
-          "src": "/pwa_apps/qmoi-space/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "name": "Marketplace",
+      "short_name": "Marketplace",
+      "description": "Browse QMOI Space marketplace",
+      "url": "/pwa_apps/qmoi-space/?page=marketplace"
     },
     {
-      "name": "Gaming",
-      "short_name": "Gaming",
-      "description": "Access gaming features",
-      "url": "/pwa_apps/qmoi-space/?page=gaming",
-      "icons": [
-        {
-          "src": "/pwa_apps/qmoi-space/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
-    },
-    {
-      "name": "Revenue",
-      "short_name": "Revenue",
-      "description": "Revenue generation tools",
-      "url": "/pwa_apps/qmoi-space/?page=revenue",
-      "icons": [
-        {
-          "src": "/pwa_apps/qmoi-space/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "name": "My Sales",
+      "short_name": "Sales",
+      "description": "View your sales and transactions",
+      "url": "/pwa_apps/qmoi-space/?page=sales"
     }
   ],
   "prefer_related_applications": false

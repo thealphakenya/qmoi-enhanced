@@ -61,7 +61,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({
     };
 
   return (
-    <div className="bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4">
+    <div className="bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4 qmoi-card">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold text-green-400">QMOI Chatbot</h3>
         <select

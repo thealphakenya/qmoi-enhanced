@@ -1,3 +1,34 @@
+const CACHE_NAME = 'qmoi-ai-v1';
+const ASSETS = [
+  '/',
+  '/pwa_apps/qmoi-ai/index.html',
+  '/pwa_apps/qmoi-ai/preview.html',
+  '/pwa_apps/qmoi-ai/icon-192.png',
+  '/pwa_apps/qmoi-ai/icon-512.png',
+  '/pwa_apps/qmoi-ai/manifest.webmanifest'
+];
+
+self.addEventListener('install', (e) => {
+  e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('fetch', (e) => {
+  const req = e.request;
+  e.respondWith(
+    caches.match(req).then(cached => cached || fetch(req).then(res => {
+      // optional: put in cache for future
+      return res;
+    }).catch(() => {
+      // fallback to index.html for navigation
+      if (req.mode === 'navigate') return caches.match('/pwa_apps/qmoi-ai/index.html');
+    }))
+  );
+});
 // QMOI AI Service Worker
 const CACHE_NAME = 'qmoi-ai-v1.2.3';
 const STATIC_CACHE = 'qmoi-ai-static-v1.2.3';

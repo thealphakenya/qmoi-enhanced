@@ -17,37 +17,37 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
       <h2 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>Qi Spaces (Master Only)</h2>
       <p style={{ marginBottom: 32 }}>Welcome, Master Victor! Here you can manage all your goals, achievements, projects, wallet, routines, reminders, and more.</p>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-        <div style={sectionStyle}>
+        <div className="qmoi-card" style={{ ...sectionStyle, background: 'var(--qmoi-card-bg)', color: 'var(--qmoi-text)' }}>
           <h3>Life Goals</h3>
           <p>Track, add, and update your personal and professional goals.</p>
           {/* TODO: Connect to goals data */}
         </div>
-        <div style={sectionStyle}>
+        <div className="qmoi-card" style={{ ...sectionStyle, background: 'var(--qmoi-card-bg)', color: 'var(--qmoi-text)' }}>
           <h3>Achievements</h3>
           <p>View your milestones and completed objectives.</p>
           {/* TODO: Connect to achievements data */}
         </div>
-        <div style={sectionStyle}>
+        <div className="qmoi-card" style={{ ...sectionStyle, background: 'var(--qmoi-card-bg)', color: 'var(--qmoi-text)' }}>
           <h3>Invention/Business Projects</h3>
           <p>Manage, monitor, and automate your projects and ventures.</p>
           {/* TODO: Connect to projects data */}
         </div>
-        <div style={sectionStyle}>
+        <div className="qmoi-card" style={{ ...sectionStyle, background: 'var(--qmoi-card-bg)', color: 'var(--qmoi-text)' }}>
           <h3>Wallet & Financial Dashboard</h3>
           <p>Monitor balances, transactions, and manage multiple financial services.</p>
           {/* TODO: Integrate wallet/finance APIs */}
         </div>
-        <div style={sectionStyle}>
+        <div className="qmoi-card" style={{ ...sectionStyle, background: 'var(--qmoi-card-bg)', color: 'var(--qmoi-text)' }}>
           <h3>Routines & Habits</h3>
           <p>Set up daily routines, habits, and track consistency.</p>
           {/* TODO: Connect to routines/habits data */}
         </div>
-        <div style={sectionStyle}>
+        <div className="qmoi-card" style={{ ...sectionStyle, background: 'var(--qmoi-card-bg)', color: 'var(--qmoi-text)' }}>
           <h3>Reminders & Alarms</h3>
           <p>Configure reminders, alarms, and notifications for important tasks.</p>
           {/* TODO: Connect to reminders/alarms data */}
         </div>
-        <div style={sectionStyle}>
+        <div className="qmoi-card" style={{ ...sectionStyle, background: 'var(--qmoi-card-bg)', color: 'var(--qmoi-text)' }}>
           <h3>Settings & Advanced Controls</h3>
           <p>Adjust preferences, access advanced features, and manage your Qi Space.</p>
           {/* TODO: Add settings/controls */}

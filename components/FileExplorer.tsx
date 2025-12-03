@@ -97,7 +97,7 @@ export const FileExplorer: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4">
+    <div className="bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4 qmoi-card">
       <h3 className="text-lg font-semibold text-green-400 mb-3">File Explorer</h3>
       
       <div className="space-y-1">

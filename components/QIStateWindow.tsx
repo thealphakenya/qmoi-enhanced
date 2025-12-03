@@ -18,7 +18,7 @@ export default function QIStateWindow({ userEmail, userPhone }: { userEmail: str
   }, []);
 
   return (
-    <div style={{ background: '#101010', color: '#39FF14', borderRadius: 12, padding: 24 }}>
+    <div className="qmoi-card" style={{ color: '#39FF14', padding: 24 }}>
       <h2 style={{ fontWeight: 'bold', fontSize: 24 }}>QI State <span role="img" aria-label="shield">🛡️</span></h2>
       {isMaster ? (
         <div>
@@ -29,7 +29,7 @@ export default function QIStateWindow({ userEmail, userPhone }: { userEmail: str
             <li>Outgoing Transactions: <span role="img" aria-label="lock">🔒</span> Master-only</li>
           </ul>
           <h4>Audit Log <span role="img" aria-label="scroll">📜</span></h4>
-          <div style={{ background: '#222', borderRadius: 8, padding: 12, marginTop: 8 }}>
+          <div className="qmoi-card" style={{ background: 'rgba(34,255,34,0.05)', borderRadius: 8, padding: 12, marginTop: 8 }}>
             {auditLog.map((entry, idx) => (
               <div key={idx} style={{ marginBottom: 4 }}>{entry}</div>
             ))}
