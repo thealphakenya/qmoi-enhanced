@@ -113,6 +113,46 @@ cp .env.example .env.local
 npm install
 ```
 
+### 🚀 Automated Startup (All Services)
+
+Use the **`startup.sh`** script to start all services with one command:
+
+```bash
+# Development mode (hot reload, verbose logging)
+./startup.sh --dev
+
+# Production mode (optimized, clean logs)
+./startup.sh --prod
+
+# Skip verification checks
+./startup.sh --no-verify
+```
+
+**What startup.sh does:**
+- ✅ Installs Node.js dependencies
+- ✅ Starts HTTP server (port 8080)
+- ✅ Starts Next.js dev/prod server (port 3000)
+- ✅ Launches all QMOI dashboards
+- ✅ Runs CLI verification (40+ checks)
+- ✅ Opens QCity in your default browser
+- ✅ Displays dashboard URLs and status
+
+**To manually verify setup:**
+```bash
+./cli-verify.sh
+```
+
+### 💻 Install Node.js Locally
+
+If Node.js is not installed on your system, use **`bootstrap-dev.sh`** for OS-specific instructions:
+
+```bash
+# Show installation instructions for your OS
+./bootstrap-dev.sh
+
+# Supports: Alpine Linux, Ubuntu/Debian, Fedora/RHEL, macOS, or use nvm
+```
+
 ### Running Services
 
 #### Option 1: QCity Dashboard (Static HTML via Python server)
@@ -137,6 +177,88 @@ firefox http://localhost:8080/qcity-enterprise.html &
 - Device Logs
 - System Health
 - Settings & Configuration
+
+#### Option 1B: 🚀 Launch QMOI Progressive Web Apps (PWA)
+
+**All QMOI apps are available as installable Progressive Web Applications with offline support and auto-updates!**
+
+**Quick Launch Commands** (requires HTTP server running on port 8080):
+
+```bash
+# Make sure HTTP server is running
+python3 -m http.server 8080 &
+
+# Launch QCity Dashboard (Blue Theme)
+"$BROWSER" http://localhost:8080/qcity-dashboard.html &
+
+# Launch QMOI AI (Orange Theme - AI Capabilities)
+"$BROWSER" http://localhost:8080/qmoi-ai.html &
+
+# Launch QMOI Space (Purple Theme - Decentralized Marketplace)
+"$BROWSER" http://localhost:8080/qmoi-space.html &
+
+# Launch Q Alpha Console (Cyan Theme - Developer Console)
+"$BROWSER" http://localhost:8080/q-alpha.html &
+```
+
+**PWA Features Available:**
+- ✅ **Install to Home Screen** — One-click app installation from each page
+- ✅ **Offline-First** — Full functionality without internet connection
+- ✅ **Auto-Update** — Automatic background updates (user-controlled)
+- ✅ **Push Notifications** — Real-time alerts and updates
+- ✅ **Fast Loading** — Service Worker caching for instant load times
+- ✅ **Responsive Design** — Works perfectly on mobile, tablet, desktop
+- ✅ **Data Export** — Download your app data anytime
+
+**App Status Dashboard:**
+Each app displays:
+- PWA installation status
+- Service Worker status
+- Version information
+- Feature capabilities
+- Install and update buttons
+
+**Service Worker & Caching Strategy:**
+- 🌐 **HTML/API:** Network-first (fresh data with offline fallback)
+- 💾 **Assets:** Cache-first (fast loading with network fallback)
+- ⚙️ **Updates:** Checked every 60 seconds in background
+- 🔄 **Background Sync:** Queues actions when offline, syncs when online
+
+**To Install an App:**
+1. Open the app URL in your browser (see commands above)
+2. Click the **"📥 Install App"** button
+3. Confirm installation when prompted
+4. App will appear on your home screen / app drawer
+5. Launch directly without opening browser next time!
+
+**For Auto-Updates:**
+- Service Worker automatically checks for updates every minute
+- When update is available, user sees notification
+- Click **"Update Now"** to refresh to latest version
+- Updates can be configured to apply automatically via Web App Manifest
+
+**Access App Data:**
+- Click **"⬇️ Download Data"** button to export app configuration
+- Useful for backup, migration, or sharing settings
+
+**Open All Apps in Parallel** (development):
+```bash
+# Launch all 4 QMOI apps in different windows/tabs
+python3 -m http.server 8080 & \
+"$BROWSER" http://localhost:8080/qcity-dashboard.html & \
+"$BROWSER" http://localhost:8080/qmoi-ai.html & \
+"$BROWSER" http://localhost:8080/qmoi-space.html & \
+"$BROWSER" http://localhost:8080/q-alpha.html &
+```
+
+**App Details:**
+
+| App | URL | Theme | Purpose |
+|-----|-----|-------|---------|
+| **QCity** | `/qcity-dashboard.html` | Blue (#2196F3) | City management & monitoring |
+| **QMOI AI** | `/qmoi-ai.html` | Orange (#FF6B35) | Machine learning & intelligence |
+| **QMOI Space** | `/qmoi-space.html` | Purple (#9C27B0) | Decentralized marketplace |
+| **Q Alpha** | `/q-alpha.html` | Cyan (#00BCD4) | Developer console & tools |
 
 #### Option 2: QMOI AI (Next.js Dev Server)
 
