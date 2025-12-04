@@ -9,6 +9,8 @@ export async function GET(request: NextRequest) {
     const auth = libProposals.requireApiKey(request.headers);
     if (!auth.ok) {
       const r = auth.response;
+      if (!r)
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
     const logsDir = path.join(process.cwd(), "logs");

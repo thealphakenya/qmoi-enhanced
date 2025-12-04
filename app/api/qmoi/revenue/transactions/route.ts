@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     }
 
     const mod = await import("../../../../../lib/qmoi-revenue-engine");
-    const qmoiRevenueEngine = mod.qmoiRevenueEngine || mod.default || mod;
+    const qmoiRevenueEngine: any = mod.qmoiRevenueEngine || mod.default || mod;
 
     const transactions = qmoiRevenueEngine.getTransactionHistory
       ? qmoiRevenueEngine.getTransactionHistory(50)

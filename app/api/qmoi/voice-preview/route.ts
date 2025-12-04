@@ -29,12 +29,16 @@ export async function POST(request: NextRequest) {
     // Return audio stream as application/octet-stream or audio/wav when known
     const headers = new Headers();
     headers.set("Content-Type", "audio/wav");
-    headers.set(
-      "Content-Length",
-      String(audioData.byteLength || audioData.length || 0)
-    );
 
-    return new NextResponse(audioData, { status: 200, headers });
+    // Convert to Buffer for NextResponse
+    const audioContent =
+      audioData instanceof Uint8Array
+        ? Buffer.from(audioData)
+        : Buffer.from(audioData);
+
+    headers.set("Content-Length", String(audioContent.length));
+
+    return new NextResponse(audioContent, { status: 200, headers });
   } catch (error) {
     console.error("Error generating voice preview:", error);
     return NextResponse.json(

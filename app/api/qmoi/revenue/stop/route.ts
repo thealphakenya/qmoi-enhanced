@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     }
 
     const mod = await import("../../../../../lib/qmoi-revenue-engine");
-    const qmoiRevenueEngine = mod.qmoiRevenueEngine || mod.default || mod;
+    const qmoiRevenueEngine: any = mod.qmoiRevenueEngine || mod.default || mod;
 
     const result = qmoiRevenueEngine.stopRevenueEngine
       ? await qmoiRevenueEngine.stopRevenueEngine()

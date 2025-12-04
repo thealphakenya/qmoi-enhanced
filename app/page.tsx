@@ -16,7 +16,7 @@ import { NotificationPanel } from "../components/NotificationPanel";
 import { useState, useEffect } from "react";
 
 function MainPage() {
-  const { isMaster, setIsMaster } = useMaster();
+  const { isMaster, setRole } = useMaster();
   // Stores chat history messages
   const [chatHistory, setChatHistory] = useState<any[]>([]);
 
@@ -49,7 +49,7 @@ function MainPage() {
     <>
       <button
         style={{ position: "fixed", top: 10, right: 10, zIndex: 1000 }}
-        onClick={() => setIsMaster(!isMaster)}
+        onClick={() => setRole(isMaster ? "user" : "master")}
       >
         {isMaster ? "Switch to User" : "Switch to Master"}
       </button>

@@ -49,7 +49,8 @@ export async function GET(req: NextRequest) {
     }
   } catch (error) {
     console.error("Revenue API error:", error);
-    logEvent("revenue_api_error", { error: error.message });
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -65,10 +66,15 @@ export async function POST(req: NextRequest) {
   try {
     const { action } = await req.json();
 
+    // Load engine dynamically
+    const mod = await import("../../../../lib/qmoi-revenue-engine");
+    const qmoiRevenueEngine: any = mod.qmoiRevenueEngine || mod.default || mod;
+
     switch (action) {
       case "start":
-        (await qmoiRevenueEngine.startRevenueGeneration) &&
-          qmoiRevenueEngine.startRevenueGeneration();
+        if (qmoiRevenueEngine.startRevenueGeneration) {
+          await qmoiRevenueEngine.startRevenueGeneration();
+        }
         logEvent("revenue_engine_started_manual", {
           timestamp: new Date().toISOString(),
         });
@@ -78,7 +84,9 @@ export async function POST(req: NextRequest) {
         });
 
       case "stop":
-        qmoiRevenueEngine.stop();
+        if (qmoiRevenueEngine.stop) {
+          qmoiRevenueEngine.stop();
+        }
         logEvent("revenue_engine_stopped_manual", {
           timestamp: new Date().toISOString(),
         });
@@ -88,10 +96,12 @@ export async function POST(req: NextRequest) {
         });
 
       case "transfer":
-        const amount = qmoiRevenueEngine.getTotalEarnings();
+        const amount = qmoiRevenueEngine.getTotalEarnings?.() || 0;
         if (amount > 0) {
           // This will trigger the transfer logic in the revenue engine
-          await qmoiRevenueEngine["transferToMpesa"](amount);
+          if (qmoiRevenueEngine.transferToMpesa) {
+            await qmoiRevenueEngine.transferToMpesa(amount);
+          }
           return NextResponse.json({
             success: true,
             message: `Transferring ${amount} KES to M-Pesa`,
@@ -108,7 +118,8 @@ export async function POST(req: NextRequest) {
     }
   } catch (error) {
     console.error("Revenue API POST error:", error);
-    logEvent("revenue_api_post_error", { error: error.message });
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

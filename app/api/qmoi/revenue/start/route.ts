@@ -21,10 +21,12 @@ export async function POST(request: NextRequest) {
 
     // Load engine dynamically to avoid import-style mismatches
     const mod = await import("../../../../../lib/qmoi-revenue-engine");
-    const qmoiRevenueEngine = mod.qmoiRevenueEngine || mod.default || mod;
+    const qmoiRevenueEngine: any = mod.qmoiRevenueEngine || mod.default || mod;
 
     // Enable master mode and start engine
-    qmoiRevenueEngine.setMasterMode && qmoiRevenueEngine.setMasterMode(true);
+    if (qmoiRevenueEngine.setMasterMode) {
+      qmoiRevenueEngine.setMasterMode(true);
+    }
     const result = qmoiRevenueEngine.startRevenueEngine
       ? await qmoiRevenueEngine.startRevenueEngine()
       : { success: false, message: "startRevenueEngine not implemented" };

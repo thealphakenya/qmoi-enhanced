@@ -11,6 +11,8 @@ export async function POST(request: NextRequest) {
     const auth = libProposals.requireApiKey(request.headers);
     if (!auth.ok) {
       const r = auth.response;
+      if (!r)
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -19,9 +21,10 @@ export async function POST(request: NextRequest) {
       process.env.PRODUCTION_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     const proposal = {
-      title: "Stop auto-fix",
-      description: "Request to stop running auto-fix processes",
-      payload: { requestedAt: new Date().toISOString(), willRun: !!canRun },
+      id: `auto-fix-stop-${Date.now()}`,
+      timestamp: new Date().toISOString(),
+      action: "qmoi_auto_fix_stop",
+      details: { willRun: !!canRun },
     };
     if (!canRun) {
       await libProposals.writeProposal(proposal);
