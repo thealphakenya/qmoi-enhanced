@@ -1,5 +1,4 @@
-import { cashonWallet, TradeRequest } from './cashon-wallet';
-import axios from 'axios';
+import { cashonWallet, TradeRequest } from "./cashon-wallet";
 
 // Types for Qmoi AI Trading
 export interface MarketData {
@@ -13,12 +12,12 @@ export interface MarketData {
 
 export interface TradingSignal {
   symbol: string;
-  action: 'buy' | 'sell' | 'hold';
+  action: "buy" | "sell" | "hold";
   confidence: number;
   strategy: string;
   reason: string;
   expectedReturn: number;
-  riskLevel: 'low' | 'medium' | 'high';
+  riskLevel: "low" | "medium" | "high";
   timestamp: Date;
 }
 
@@ -26,7 +25,7 @@ export interface TradingStrategy {
   id: string;
   name: string;
   description: string;
-  riskLevel: 'low' | 'medium' | 'high';
+  riskLevel: "low" | "medium" | "high";
   minConfidence: number;
   maxPositionSize: number;
   stopLossPercentage: number;
@@ -38,7 +37,7 @@ export interface QmoiConfig {
   tradingEnabled: boolean;
   maxConcurrentTrades: number;
   defaultStrategy: string;
-  riskTolerance: 'conservative' | 'balanced' | 'aggressive';
+  riskTolerance: "conservative" | "balanced" | "aggressive";
   autoRebalance: boolean;
   profitLockPercentage: number;
 }
@@ -61,52 +60,52 @@ export class QmoiTrader {
   private initializeStrategies(): void {
     const strategies: TradingStrategy[] = [
       {
-        id: 'scalping',
-        name: 'Scalping',
-        description: 'Quick trades with small profits',
-        riskLevel: 'high',
+        id: "scalping",
+        name: "Scalping",
+        description: "Quick trades with small profits",
+        riskLevel: "high",
         minConfidence: 85,
         maxPositionSize: 0.1, // 10% of available balance
         stopLossPercentage: 2,
         takeProfitPercentage: 3,
-        isActive: true
+        isActive: true,
       },
       {
-        id: 'trend_following',
-        name: 'Trend Following',
-        description: 'Follow market trends',
-        riskLevel: 'medium',
+        id: "trend_following",
+        name: "Trend Following",
+        description: "Follow market trends",
+        riskLevel: "medium",
         minConfidence: 75,
         maxPositionSize: 0.2, // 20% of available balance
         stopLossPercentage: 5,
         takeProfitPercentage: 10,
-        isActive: true
+        isActive: true,
       },
       {
-        id: 'dca',
-        name: 'Dollar Cost Averaging',
-        description: 'Regular small investments',
-        riskLevel: 'low',
+        id: "dca",
+        name: "Dollar Cost Averaging",
+        description: "Regular small investments",
+        riskLevel: "low",
         minConfidence: 60,
         maxPositionSize: 0.05, // 5% of available balance
         stopLossPercentage: 10,
         takeProfitPercentage: 15,
-        isActive: true
+        isActive: true,
       },
       {
-        id: 'reversal',
-        name: 'Reversal Strategy',
-        description: 'Trade market reversals',
-        riskLevel: 'high',
+        id: "reversal",
+        name: "Reversal Strategy",
+        description: "Trade market reversals",
+        riskLevel: "high",
         minConfidence: 80,
         maxPositionSize: 0.15, // 15% of available balance
         stopLossPercentage: 3,
         takeProfitPercentage: 8,
-        isActive: true
-      }
+        isActive: true,
+      },
     ];
 
-    strategies.forEach(strategy => {
+    strategies.forEach((strategy) => {
       this.strategies.set(strategy.id, strategy);
     });
   }
@@ -114,20 +113,20 @@ export class QmoiTrader {
   // Start autonomous trading
   async startTrading(): Promise<void> {
     if (this.isRunning) {
-      throw new Error('Trading is already running');
+      throw new Error("Trading is already running");
     }
 
     this.isRunning = true;
     await this.enableCashonTrading();
     this.startTradingLoop();
-    
-    console.log('🧠 QMOI AI Trading started');
+
+    console.log("🧠 QMOI AI Trading started");
   }
 
   // Stop autonomous trading
   async stopTrading(): Promise<void> {
     if (!this.isRunning) {
-      throw new Error('Trading is not running');
+      throw new Error("Trading is not running");
     }
 
     this.isRunning = false;
@@ -135,9 +134,9 @@ export class QmoiTrader {
       clearInterval(this.tradingLoop);
       this.tradingLoop = null;
     }
-    
+
     await this.disableCashonTrading();
-    console.log('🧠 QMOI AI Trading stopped');
+    console.log("🧠 QMOI AI Trading stopped");
   }
 
   // Get trading status
@@ -153,7 +152,7 @@ export class QmoiTrader {
       activeTrades: this.activeTrades.length,
       totalSignals: this.tradingSignals.length,
       strategies: Array.from(this.strategies.keys()),
-      lastSignal: this.tradingSignals[this.tradingSignals.length - 1] || null
+      lastSignal: this.tradingSignals[this.tradingSignals.length - 1] || null,
     };
   }
 
@@ -161,34 +160,40 @@ export class QmoiTrader {
   async updateMarketData(): Promise<void> {
     try {
       // Fetch market data from multiple sources
-      const symbols = ['BTC/USDT', 'ETH/USDT', 'BNB/USDT', 'ADA/USDT', 'SOL/USDT'];
-      
+      const symbols = [
+        "BTC/USDT",
+        "ETH/USDT",
+        "BNB/USDT",
+        "ADA/USDT",
+        "SOL/USDT",
+      ];
+
       for (const symbol of symbols) {
         const marketData = await this.fetchMarketData(symbol);
         this.marketData.set(symbol, marketData);
       }
-      
+
       console.log(`📊 Updated market data for ${symbols.length} symbols`);
     } catch (error) {
-      console.error('Failed to update market data:', error);
+      console.error("Failed to update market data:", error);
     }
   }
 
   // Generate trading signals
   async generateSignals(): Promise<TradingSignal[]> {
     const signals: TradingSignal[] = [];
-    
+
     for (const [symbol, data] of this.marketData) {
       for (const [strategyId, strategy] of this.strategies) {
         if (!strategy.isActive) continue;
-        
+
         const signal = await this.analyzeSymbol(symbol, data, strategy);
         if (signal && signal.confidence >= strategy.minConfidence) {
           signals.push(signal);
         }
       }
     }
-    
+
     this.tradingSignals.push(...signals);
     return signals;
   }
@@ -196,21 +201,21 @@ export class QmoiTrader {
   // Execute trading signals
   async executeSignals(signals: TradingSignal[]): Promise<void> {
     for (const signal of signals) {
-      if (signal.action === 'hold') continue;
-      
+      if (signal.action === "hold") continue;
+
       try {
         const strategy = this.strategies.get(signal.strategy);
         if (!strategy) continue;
-        
+
         // Calculate position size
         const balance = await this.getAvailableBalance();
         const positionSize = Math.min(
           balance * strategy.maxPositionSize,
           balance * 0.1 // Max 10% per trade
         );
-        
+
         if (positionSize < 10) continue; // Minimum KES 10
-        
+
         // Request trade
         const tradeId = await cashonWallet.requestTrade(
           positionSize,
@@ -218,9 +223,10 @@ export class QmoiTrader {
           signal.strategy,
           signal.confidence
         );
-        
-        console.log(`🚀 Trade requested: ${signal.symbol} ${signal.action} KES ${positionSize}`);
-        
+
+        console.log(
+          `🚀 Trade requested: ${signal.symbol} ${signal.action} KES ${positionSize}`
+        );
       } catch (error) {
         console.error(`Failed to execute signal for ${signal.symbol}:`, error);
       }
@@ -228,12 +234,16 @@ export class QmoiTrader {
   }
 
   // Analyze symbol using AI
-  private async analyzeSymbol(symbol: string, data: MarketData, strategy: TradingStrategy): Promise<TradingSignal | null> {
+  private async analyzeSymbol(
+    symbol: string,
+    data: MarketData,
+    strategy: TradingStrategy
+  ): Promise<TradingSignal | null> {
     // AI analysis logic
     const analysis = await this.performAIAnalysis(symbol, data, strategy);
-    
+
     if (!analysis) return null;
-    
+
     return {
       symbol,
       action: analysis.action,
@@ -242,80 +252,88 @@ export class QmoiTrader {
       reason: analysis.reason,
       expectedReturn: analysis.expectedReturn,
       riskLevel: strategy.riskLevel,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
   }
 
   // Perform AI analysis
-  private async performAIAnalysis(symbol: string, data: MarketData, strategy: TradingStrategy): Promise<{
-    action: 'buy' | 'sell' | 'hold';
+  private async performAIAnalysis(
+    symbol: string,
+    data: MarketData,
+    strategy: TradingStrategy
+  ): Promise<{
+    action: "buy" | "sell" | "hold";
     confidence: number;
     reason: string;
     expectedReturn: number;
   } | null> {
     // This would integrate with actual AI models
     // For now, use simplified logic based on market data
-    
+
     const volatility = Math.abs(data.change24h);
     const volume = data.volume;
     const price = data.price;
-    
-    let action: 'buy' | 'sell' | 'hold' = 'hold';
+
+    let action: "buy" | "sell" | "hold" = "hold";
     let confidence = 50;
-    let reason = '';
+    let reason = "";
     let expectedReturn = 0;
-    
+
     // Strategy-specific analysis
     switch (strategy.id) {
-      case 'scalping':
+      case "scalping":
         if (volatility > 5 && volume > 1000000) {
-          action = data.change24h > 0 ? 'buy' : 'sell';
+          action = data.change24h > 0 ? "buy" : "sell";
           confidence = 70 + Math.min(volatility * 2, 20);
-          reason = `High volatility (${volatility.toFixed(2)}%) with good volume`;
+          reason = `High volatility (${volatility.toFixed(
+            2
+          )}%) with good volume`;
           expectedReturn = volatility * 0.5;
         }
         break;
-        
-      case 'trend_following':
+
+      case "trend_following":
         if (Math.abs(data.change24h) > 2) {
-          action = data.change24h > 0 ? 'buy' : 'sell';
+          action = data.change24h > 0 ? "buy" : "sell";
           confidence = 60 + Math.min(Math.abs(data.change24h) * 5, 30);
           reason = `Strong trend (${data.change24h.toFixed(2)}%)`;
           expectedReturn = Math.abs(data.change24h) * 0.8;
         }
         break;
-        
-      case 'dca':
+
+      case "dca":
         if (data.change24h < -5) {
-          action = 'buy';
+          action = "buy";
           confidence = 65;
-          reason = 'DCA opportunity on dip';
+          reason = "DCA opportunity on dip";
           expectedReturn = 5;
         }
         break;
-        
-      case 'reversal':
+
+      case "reversal":
         if (Math.abs(data.change24h) > 8) {
-          action = data.change24h > 0 ? 'sell' : 'buy';
+          action = data.change24h > 0 ? "sell" : "buy";
           confidence = 75;
-          reason = 'Potential reversal after strong move';
+          reason = "Potential reversal after strong move";
           expectedReturn = Math.abs(data.change24h) * 0.6;
         }
         break;
     }
-    
+
     // Apply risk tolerance adjustments
-    if (this.config.riskTolerance === 'conservative') {
+    if (this.config.riskTolerance === "conservative") {
       confidence *= 0.8;
       expectedReturn *= 0.7;
-    } else if (this.config.riskTolerance === 'aggressive') {
+    } else if (this.config.riskTolerance === "aggressive") {
       confidence *= 1.2;
       expectedReturn *= 1.3;
     }
-    
+
     confidence = Math.min(confidence, 95);
-    
-    return confidence > 60 ? { action, confidence, reason, expectedReturn } : null;
+
+    return confidence > 60
+      ? { action, confidence, reason, expectedReturn }
+      : null;
   }
 
   // Fetch market data from exchange
@@ -323,15 +341,20 @@ export class QmoiTrader {
     try {
       // This would fetch from actual exchange APIs
       // For now, simulate market data
-      const response = await axios.get(`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbol.replace('/', '')}`);
-      
+      const response = await axios.get(
+        `https://api.binance.com/api/v3/ticker/24hr?symbol=${symbol.replace(
+          "/",
+          ""
+        )}`
+      );
+
       return {
         symbol,
         price: parseFloat(response.data.lastPrice),
         volume: parseFloat(response.data.volume),
         change24h: parseFloat(response.data.priceChangePercent),
         marketCap: parseFloat(response.data.quoteVolume),
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     } catch (error) {
       // Fallback to simulated data
@@ -341,7 +364,7 @@ export class QmoiTrader {
         volume: 1000000 + Math.random() * 5000000,
         change24h: (Math.random() - 0.5) * 20,
         marketCap: 1000000000 + Math.random() * 5000000000,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     }
   }
@@ -349,10 +372,12 @@ export class QmoiTrader {
   // Get available balance from Cashon wallet
   private async getAvailableBalance(): Promise<number> {
     try {
-      const balance = await cashonWallet.getBalance(process.env.MASTER_TOKEN || '');
+      const balance = await cashonWallet.getBalance(
+        process.env.MASTER_TOKEN || ""
+      );
       return balance.availableBalance;
     } catch (error) {
-      console.error('Failed to get balance:', error);
+      console.error("Failed to get balance:", error);
       return 0;
     }
   }
@@ -362,7 +387,7 @@ export class QmoiTrader {
     try {
       await cashonWallet.enableAutonomousTrading();
     } catch (error) {
-      console.error('Failed to enable Cashon trading:', error);
+      console.error("Failed to enable Cashon trading:", error);
     }
   }
 
@@ -371,7 +396,7 @@ export class QmoiTrader {
     try {
       await cashonWallet.disableAutonomousTrading();
     } catch (error) {
-      console.error('Failed to disable Cashon trading:', error);
+      console.error("Failed to disable Cashon trading:", error);
     }
   }
 
@@ -379,24 +404,23 @@ export class QmoiTrader {
   private startTradingLoop(): void {
     this.tradingLoop = setInterval(async () => {
       if (!this.isRunning) return;
-      
+
       try {
         // Update market data
         await this.updateMarketData();
-        
+
         // Generate signals
         const signals = await this.generateSignals();
-        
+
         // Execute signals
         if (signals.length > 0) {
           await this.executeSignals(signals);
         }
-        
+
         // Log status
         console.log(`🧠 QMOI: Generated ${signals.length} signals`);
-        
       } catch (error) {
-        console.error('Trading loop error:', error);
+        console.error("Trading loop error:", error);
       }
     }, 5 * 60 * 1000); // Every 5 minutes
   }
@@ -428,18 +452,19 @@ export class QmoiTrader {
     bestTrade: number;
     worstTrade: number;
   }> {
-    const trades = this.activeTrades.filter(t => t.status === 'executed');
+    const trades = this.activeTrades.filter((t) => t.status === "executed");
     const successfulTrades = trades.length;
     const totalProfit = trades.reduce((sum, t) => sum + (t.amount || 0), 0);
-    const averageReturn = successfulTrades > 0 ? totalProfit / successfulTrades : 0;
-    
+    const averageReturn =
+      successfulTrades > 0 ? totalProfit / successfulTrades : 0;
+
     return {
       totalTrades: this.activeTrades.length,
       successfulTrades,
       totalProfit,
       averageReturn,
-      bestTrade: Math.max(...trades.map(t => t.amount || 0)),
-      worstTrade: Math.min(...trades.map(t => t.amount || 0))
+      bestTrade: Math.max(...trades.map((t) => t.amount || 0)),
+      worstTrade: Math.min(...trades.map((t) => t.amount || 0)),
     };
   }
 }
@@ -448,8 +473,8 @@ export class QmoiTrader {
 export const qmoiTrader = new QmoiTrader({
   tradingEnabled: true,
   maxConcurrentTrades: 5,
-  defaultStrategy: 'trend_following',
-  riskTolerance: 'balanced',
+  defaultStrategy: "trend_following",
+  riskTolerance: "balanced",
   autoRebalance: true,
-  profitLockPercentage: 20
-}); 
+  profitLockPercentage: 20,
+});

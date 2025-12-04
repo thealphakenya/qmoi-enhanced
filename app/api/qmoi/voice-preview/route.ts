@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
-import libProposals from '../../../../lib/proposals';
+import { NextRequest, NextResponse } from "next/server";
+import libProposals from "../../../../lib/proposals";
 
 interface PreviewBody {
   voiceId: string;
   text: string;
-  quality?: 'low' | 'medium' | 'high' | string;
+  quality?: "low" | "medium" | "high" | string;
   volume?: number; // percent 0-200
 }
 
@@ -12,10 +12,13 @@ export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as PreviewBody;
     const { voiceId, text } = body;
-    let { quality = 'medium', volume = 100 } = body;
+    let { quality = "medium", volume = 100 } = body;
 
     if (!voiceId || !text) {
-      return NextResponse.json({ error: 'Voice ID and text are required' }, { status: 400 });
+      return NextResponse.json(
+        { error: "Voice ID and text are required" },
+        { status: 400 }
+      );
     }
 
     volume = Number(volume) || 100;
@@ -25,38 +28,57 @@ export async function POST(request: NextRequest) {
 
     // Return audio stream as application/octet-stream or audio/wav when known
     const headers = new Headers();
-    headers.set('Content-Type', 'audio/wav');
-    headers.set('Content-Length', String(audioData.byteLength || audioData.length || 0));
+    headers.set("Content-Type", "audio/wav");
+    headers.set(
+      "Content-Length",
+      String(audioData.byteLength || audioData.length || 0)
+    );
 
     return new NextResponse(audioData, { status: 200, headers });
   } catch (error) {
-    console.error('Error generating voice preview:', error);
-    return NextResponse.json({ error: 'Failed to generate voice preview' }, { status: 500 });
+    console.error("Error generating voice preview:", error);
+    return NextResponse.json(
+      { error: "Failed to generate voice preview" },
+      { status: 500 }
+    );
   }
 }
 
-async function generateTTSAudio(voiceId: string, text: string, quality: string, volume: number): Promise<ArrayBuffer | Uint8Array> {
+async function generateTTSAudio(
+  voiceId: string,
+  text: string,
+  quality: string,
+  volume: number
+): Promise<ArrayBuffer | Uint8Array> {
   // Provider selection: prefer environment configured provider
-  const provider = (process.env.TTS_PROVIDER || (process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : '')).toLowerCase();
+  const provider = (
+    process.env.TTS_PROVIDER ||
+    (process.env.ELEVENLABS_API_KEY ? "elevenlabs" : "")
+  ).toLowerCase();
 
   // ElevenLabs integration (best-effort). If the API key isn't set we fall back to a silent WAV.
-  if (provider === 'elevenlabs' && process.env.ELEVENLABS_API_KEY) {
+  if (provider === "elevenlabs" && process.env.ELEVENLABS_API_KEY) {
     try {
       const elevenKey = process.env.ELEVENLABS_API_KEY as string;
-      const url = `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(voiceId)}`;
+      const url = `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(
+        voiceId
+      )}`;
       const payload = { text, voice: voiceId, quality };
 
       const resp = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Authorization': `Bearer ${elevenKey}`,
-          'Content-Type': 'application/json',
+          Authorization: `Bearer ${elevenKey}`,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
 
       if (!resp.ok) {
-        console.warn('ElevenLabs TTS request failed, falling back to local silent audio', await resp.text());
+        console.warn(
+          "ElevenLabs TTS request failed, falling back to local silent audio",
+          await resp.text()
+        );
       } else {
         const ab = await resp.arrayBuffer();
         // If volume != 100, try gentle scaling for 16-bit PCM WAV
@@ -64,14 +86,17 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
           } catch (err) {
-            console.warn('Volume adjust failed, returning original audio', err);
+            console.warn("Volume adjust failed, returning original audio", err);
             return ab;
           }
         }
         return ab;
       }
     } catch (err) {
-      console.warn('ElevenLabs integration error, falling back to silent audio', err);
+      console.warn(
+        "ElevenLabs integration error, falling back to silent audio",
+        err
+      );
     }
   }
 
@@ -79,7 +104,10 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
   return generateSilentWAV(22050, 1);
 }
 
-function generateSilentWAV(sampleRate = 22050, durationSeconds = 1): Uint8Array {
+function generateSilentWAV(
+  sampleRate = 22050,
+  durationSeconds = 1
+): Uint8Array {
   const numSamples = Math.floor(sampleRate * durationSeconds);
   const bytesPerSample = 2; // 16-bit PCM
   const numChannels = 1;
@@ -91,11 +119,11 @@ function generateSilentWAV(sampleRate = 22050, durationSeconds = 1): Uint8Array 
   const view = new DataView(buffer);
 
   // RIFF header
-  writeString(view, 0, 'RIFF');
+  writeString(view, 0, "RIFF");
   view.setUint32(4, 36 + dataSize, true);
-  writeString(view, 8, 'WAVE');
+  writeString(view, 8, "WAVE");
   // fmt chunk
-  writeString(view, 12, 'fmt ');
+  writeString(view, 12, "fmt ");
   view.setUint32(16, 16, true); // PCM chunk size
   view.setUint16(20, 1, true); // audio format = PCM
   view.setUint16(22, numChannels, true);
@@ -104,7 +132,7 @@ function generateSilentWAV(sampleRate = 22050, durationSeconds = 1): Uint8Array 
   view.setUint16(32, blockAlign, true);
   view.setUint16(34, bytesPerSample * 8, true); // bits per sample
   // data chunk
-  writeString(view, 36, 'data');
+  writeString(view, 36, "data");
   view.setUint32(40, dataSize, true);
 
   // Silence (zeroed samples)
@@ -125,11 +153,15 @@ function writeString(view: DataView, offset: number, str: string) {
 
 function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
   // Very small, conservative WAV 16-bit PCM adjuster. Only supports PCM WAV with 16-bit samples.
-  const view = new DataView(wavBytes.buffer, wavBytes.byteOffset, wavBytes.byteLength);
+  const view = new DataView(
+    wavBytes.buffer,
+    wavBytes.byteOffset,
+    wavBytes.byteLength
+  );
 
   // Check 'WAVE' and 'fmt ' presence simplistically
   try {
-    if (readString(view, 8, 4) !== 'WAVE') return wavBytes;
+    if (readString(view, 8, 4) !== "WAVE") return wavBytes;
   } catch (e) {
     return wavBytes;
   }
@@ -137,7 +169,7 @@ function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
   // Find 'data' chunk start (simple scan)
   let dataOffset = -1;
   for (let i = 12; i < Math.min(view.byteLength - 4, 256); i++) {
-    if (readString(view, i, 4) === 'data') {
+    if (readString(view, i, 4) === "data") {
       dataOffset = i + 8; // skip 'data' + size
       break;
     }
@@ -158,7 +190,7 @@ function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
 }
 
 function readString(view: DataView, offset: number, length: number) {
-  let s = '';
+  let s = "";
   for (let i = 0; i < length; i++) {
     s += String.fromCharCode(view.getUint8(offset + i));
   }

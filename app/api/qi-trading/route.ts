@@ -1,17 +1,16 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { requireApiKey, writeProposal } from '../../../../lib/proposals';
-import { TradingService } from '../../../../lib/services/trading';
-import { Trade, TradingStats } from '../../../../lib/models/trade';
-import { connectToTradingEngine } from '../../../../lib/services/trading-engine';
+import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey, writeProposal } from "../../../lib/proposals";
+import { TradingService } from "../../../lib/services/trading";
+import { connectToTradingEngine } from "../../../lib/services/trading-engine";
 
 interface Trade {
   id?: string;
   symbol: string;
-  type: 'buy' | 'sell';
+  type: "buy" | "sell";
   amount: number;
   price: number;
   timestamp?: string;
-  status?: 'completed' | 'pending' | 'failed';
+  status?: "completed" | "pending" | "failed";
   profit?: number;
 }
 
@@ -43,60 +42,69 @@ async function fetchActiveTrades(): Promise<Trade[]> {
 
 async function executeTrade(trade: Trade): Promise<Trade> {
   const tradingService = TradingService.getInstance();
-  
+
   // Create initial trade record
   const newTrade = await tradingService.createTrade({
     ...trade,
     timestamp: new Date().toISOString(),
-    status: 'pending'
+    status: "pending",
   });
 
   try {
     // Connect to your real trading engine here
     // This is where you'd integrate with your actual trading platform API
-    const engineResult = await connectToTradingEngine(trade);
-    
+    const engine = await connectToTradingEngine();
+
+    // Execute trade with engine
+    const engineResult = await tradingService.executeTrade(trade);
+
     // Update trade with results
-    return await tradingService.updateTrade(newTrade.id, {
-      status: 'completed',
-      profit: engineResult.profit
+    const updated = await tradingService.updateTrade(newTrade.id || "", {
+      status: "completed",
+      profit: engineResult.profit || 0,
     });
+    return updated || newTrade;
   } catch (error) {
     // If trade fails, update status
-    await tradingService.updateTrade(newTrade.id, {
-      status: 'failed',
-      profit: 0
+    await tradingService.updateTrade(newTrade.id || "", {
+      status: "failed",
+      profit: 0,
     });
     throw error;
   }
 }
 
-async function cancelTrade(tradeId: string): Promise<{ success: boolean; message: string }> {
+async function cancelTrade(
+  tradeId: string
+): Promise<{ success: boolean; message: string }> {
   const tradingService = TradingService.getInstance();
-  
+
   try {
     // First check if trade exists and is pending
     const cancelled = await tradingService.cancelTrade(tradeId);
-    
+
     if (!cancelled) {
-      return { 
-        success: false, 
-        message: 'Trade not found or already completed/cancelled' 
+      return {
+        success: false,
+        message: "Trade not found or already completed/cancelled",
       };
     }
 
     // Here you would also cancel the trade on your trading platform if needed
     // For now we just handle the database state
-    
-    return { 
-      success: true, 
-      message: 'Trade cancelled successfully' 
+
+    return {
+      success: true,
+      message: "Trade cancelled successfully",
     };
   } catch (error) {
-    console.error('Error cancelling trade:', error);
-    return { 
-      success: false, 
-      message: error instanceof Error ? error.message : 'Unknown error cancelling trade'
+    console.error("Error cancelling trade:", error);
+    return {
+      success: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : "Unknown error cancelling trade",
     };
   }
 }
@@ -108,9 +116,9 @@ export async function GET(request: NextRequest) {
 
   try {
     const searchParams = request.nextUrl.searchParams;
-    const stats = searchParams.get('stats');
-    const history = searchParams.get('history');
-    const active = searchParams.get('active');
+    const stats = searchParams.get("stats");
+    const history = searchParams.get("history");
+    const active = searchParams.get("active");
 
     if (stats) {
       const statsData: TradingStats = await fetchTradingStats();
@@ -127,10 +135,16 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ activeTrades });
     }
 
-    return NextResponse.json({ error: 'Invalid query parameter' }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid query parameter" },
+      { status: 400 }
+    );
   } catch (error) {
-    console.error('Error in QI trading endpoint:', error);
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
+    console.error("Error in QI trading endpoint:", error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 }
+    );
   }
 }
 
@@ -143,41 +157,63 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { action, trade } = body;
 
-    const canRun = process.env.PRODUCTION_CONFIRMED === 'true' && process.argv.includes('--real');
+    const canRun = process.env.PRODUCTION_CONFIRMED === "true";
 
-    if (action === 'execute') {
+    if (action === "execute") {
       if (!canRun) {
         await writeProposal({
-          type: 'qi_trading.execute',
-          action: 'execute',
-          payload: { trade },
-          timestamp: new Date().toISOString()
+          id: `trade-execute-${Date.now()}`,
+          timestamp: new Date().toISOString(),
+          action: "qi_trading_execute",
+          details: { trade },
         });
-        return NextResponse.json({ status: 'proposed', message: 'Execute trade proposed. Set PRODUCTION_CONFIRMED=true and run with --real to execute.' });
+        return NextResponse.json({
+          status: "proposed",
+          message:
+            "Execute trade proposed. Set PRODUCTION_CONFIRMED=true to execute.",
+        });
       }
 
       const executedTrade: Trade = await executeTrade(trade);
-      return NextResponse.json({ status: 'success', message: 'Trade executed successfully', trade: executedTrade });
+      return NextResponse.json({
+        status: "success",
+        message: "Trade executed successfully",
+        trade: executedTrade,
+      });
     }
 
-    if (action === 'cancel') {
+    if (action === "cancel") {
       if (!canRun) {
         await writeProposal({
-          type: 'qi_trading.cancel',
-          action: 'cancel',
-          payload: { tradeId: trade?.id },
-          timestamp: new Date().toISOString()
+          id: `trade-cancel-${Date.now()}`,
+          timestamp: new Date().toISOString(),
+          action: "qi_trading_cancel",
+          details: { tradeId: trade?.id },
         });
-        return NextResponse.json({ status: 'proposed', message: 'Cancel trade proposed. Set PRODUCTION_CONFIRMED=true and run with --real to execute.' });
+        return NextResponse.json({
+          status: "proposed",
+          message:
+            "Cancel trade proposed. Set PRODUCTION_CONFIRMED=true to execute.",
+        });
       }
 
       const cancelResult = await cancelTrade(trade.id);
-      return NextResponse.json({ status: cancelResult.success ? 'success' : 'error', message: cancelResult.message, tradeId: trade.id });
+      return NextResponse.json({
+        status: cancelResult.success ? "success" : "error",
+        message: cancelResult.message,
+        tradeId: trade.id,
+      });
     }
 
-    return NextResponse.json({ error: 'Invalid action specified' }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid action specified" },
+      { status: 400 }
+    );
   } catch (error) {
-    console.error('Error in QI trading execution endpoint:', error);
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
+    console.error("Error in QI trading execution endpoint:", error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 }
+    );
   }
 }

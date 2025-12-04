@@ -3,6 +3,7 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["node"],
     "module": "esnext",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -34,10 +35,12 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
+    "app/**/*",
+    "pages/**/*",
+    "src/**/*",
+    "components/**/*",
+    "lib/**/*",
+    "types/**/*",
     ".next/types/**/*.ts"
   ],
   "exclude": [

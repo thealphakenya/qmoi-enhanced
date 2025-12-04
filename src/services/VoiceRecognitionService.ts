@@ -6,7 +6,7 @@ interface VoiceConfig {
   continuous: boolean;
   interimResults: boolean;
   maxAlternatives: number;
-  [PRODUCTION IMPLEMENTATION REQUIRED]Rate: number;
+  sampleRate: number;
   enableInterruption: boolean;
   autoStart: boolean;
 }

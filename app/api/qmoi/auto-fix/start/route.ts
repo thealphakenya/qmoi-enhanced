@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { spawn } from 'child_process';
-import path from 'path';
-import fs from 'fs';
-import libProposals from '../../../../lib/proposals';
+import { NextRequest, NextResponse } from "next/server";
+import { spawn } from "child_process";
+import path from "path";
+import fs from "fs";
+import libProposals from "../../../../../lib/proposals";
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,37 +10,70 @@ export async function POST(request: NextRequest) {
     const auth = libProposals.requireApiKey(request.headers);
     if (!auth.ok) {
       const r = auth.response;
+      if (!r)
+        return NextResponse.json(
+          { error: "Unknown auth error" },
+          { status: 500 }
+        );
       return NextResponse.json(r.body, { status: r.status });
     }
 
-    const scriptPath = path.join(process.cwd(), 'scripts', 'qmoi_auto_fix_enhanced.py');
+    const scriptPath = path.join(
+      process.cwd(),
+      "scripts",
+      "qmoi_auto_fix_enhanced.py"
+    );
 
     if (!fs.existsSync(scriptPath)) {
-      return NextResponse.json({ error: 'Auto-fix script not found' }, { status: 404 });
+      return NextResponse.json(
+        { error: "Auto-fix script not found" },
+        { status: 404 }
+      );
     }
 
     // Only run in real mode when explicitly confirmed. Default: propose.
-    const canRun = process.env.PRODUCTION_CONFIRMED === 'true' && process.argv.indexOf('--real') !== -1;
+    const canRun =
+      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.argv.indexOf("--real") !== -1;
     const proposal = {
-      title: 'Start auto-fix',
-      description: 'Request to start the auto-fix process (qmoi_auto_fix_enhanced.py)',
-      payload: { script: scriptPath, requestedAt: new Date().toISOString(), willRun: !!canRun }
+      id: `auto-fix-start-${Date.now()}`,
+      timestamp: new Date().toISOString(),
+      action: "qmoi_auto_fix_start",
+      details: {
+        script: scriptPath,
+        willRun: !!canRun,
+      },
     };
 
     if (!canRun) {
       await libProposals.writeProposal(proposal);
-      return NextResponse.json({ status: 'proposed', message: 'Auto-fix start proposed (dry-run)' });
+      return NextResponse.json({
+        status: "proposed",
+        message: "Auto-fix start proposed (dry-run)",
+      });
     }
 
     // Spawn the process when explicitly allowed
-    const child = spawn('python', [scriptPath], { cwd: process.cwd(), stdio: ['pipe', 'pipe', 'pipe'] });
+    const child = spawn("python", [scriptPath], {
+      cwd: process.cwd(),
+      stdio: ["pipe", "pipe", "pipe"],
+    });
 
-    child.stdout.on('data', (d) => console.log('[auto-fix]', d.toString()));
-    child.stderr.on('data', (d) => console.error('[auto-fix][err]', d.toString()));
+    child.stdout.on("data", (d) => console.log("[auto-fix]", d.toString()));
+    child.stderr.on("data", (d) =>
+      console.error("[auto-fix][err]", d.toString())
+    );
 
-    return NextResponse.json({ status: 'started', message: 'Auto-fix process started', pid: child.pid });
+    return NextResponse.json({
+      status: "started",
+      message: "Auto-fix process started",
+      pid: child.pid,
+    });
   } catch (error) {
-    console.error('Error starting auto-fix process:', error);
-    return NextResponse.json({ error: 'Failed to start auto-fix process' }, { status: 500 });
+    console.error("Error starting auto-fix process:", error);
+    return NextResponse.json(
+      { error: "Failed to start auto-fix process" },
+      { status: 500 }
+    );
   }
 }

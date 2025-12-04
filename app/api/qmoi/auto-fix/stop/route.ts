@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { exec } from 'child_process';
-import { promisify } from 'util';
-import libProposals from '../../../../lib/proposals';
+import { NextRequest, NextResponse } from "next/server";
+import { exec } from "child_process";
+import { promisify } from "util";
+import libProposals from "../../../../../lib/proposals";
 
 const execAsync = promisify(exec);
 
@@ -15,30 +15,40 @@ export async function POST(request: NextRequest) {
     }
 
     // Proposal-first: only actually kill processes when explicitly allowed
-    const canRun = process.env.PRODUCTION_CONFIRMED === 'true' && process.argv.indexOf('--real') !== -1;
-    const proposal = { title: 'Stop auto-fix', description: 'Request to stop running auto-fix processes', payload: { requestedAt: new Date().toISOString(), willRun: !!canRun } };
+    const canRun =
+      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.argv.indexOf("--real") !== -1;
+    const proposal = {
+      title: "Stop auto-fix",
+      description: "Request to stop running auto-fix processes",
+      payload: { requestedAt: new Date().toISOString(), willRun: !!canRun },
+    };
     if (!canRun) {
       await libProposals.writeProposal(proposal);
-      return NextResponse.json({ status: 'proposed', message: 'Stop auto-fix proposed (dry-run)' });
+      return NextResponse.json({
+        status: "proposed",
+        message: "Stop auto-fix proposed (dry-run)",
+      });
     }
 
     // Find and kill Python processes running the auto-fix script
-    const command = process.platform === 'win32' 
-      ? 'tasklist /FI "IMAGENAME eq python.exe" /FO CSV'
-      : 'ps aux | grep python';
+    const command =
+      process.platform === "win32"
+        ? 'tasklist /FI "IMAGENAME eq python.exe" /FO CSV'
+        : "ps aux | grep python";
 
     const { stdout } = await execAsync(command);
-    
+
     let killedProcesses = 0;
-    
-    if (process.platform === 'win32') {
+
+    if (process.platform === "win32") {
       // Windows: Parse tasklist output and kill processes
-      const lines = stdout.split('\n').slice(1); // Skip header
+      const lines = stdout.split("\n").slice(1); // Skip header
       for (const line of lines) {
-        if (line.includes('python.exe')) {
-          const parts = line.split(',');
+        if (line.includes("python.exe")) {
+          const parts = line.split(",");
           if (parts.length > 1) {
-            const pid = parts[1].replace(/"/g, '');
+            const pid = parts[1].replace(/"/g, "");
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
@@ -50,9 +60,9 @@ export async function POST(request: NextRequest) {
       }
     } else {
       // Unix: Kill processes containing qmoi_auto_fix
-      const lines = stdout.split('\n');
+      const lines = stdout.split("\n");
       for (const line of lines) {
-        if (line.includes('qmoi_auto_fix')) {
+        if (line.includes("qmoi_auto_fix")) {
           const parts = line.trim().split(/\s+/);
           if (parts.length > 1) {
             const pid = parts[1];
@@ -68,15 +78,14 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({
-      status: 'stopped',
+      status: "stopped",
       message: `Stopped ${killedProcesses} auto-fix processes`,
-      killedProcesses
+      killedProcesses,
     });
-
   } catch (error) {
-    console.error('Error stopping auto-fix process:', error);
+    console.error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { error: 'Failed to stop auto-fix process' },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 }
     );
   }

@@ -1,12 +1,18 @@
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
-import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
 // Revenue generation schemas
 const MicrotaskSchema = z.object({
   title: z.string(),
   description: z.string(),
-  category: z.enum(['data_labeling', 'content_creation', 'testing', 'research', 'marketing']),
+  category: z.enum([
+    "data_labeling",
+    "content_creation",
+    "testing",
+    "research",
+    "marketing",
+  ]),
   reward: z.number().positive(),
   estimatedTime: z.number().positive(), // in minutes
   requirements: z.array(z.string()),
@@ -28,7 +34,7 @@ const AffiliateCampaignSchema = z.object({
 
 const ContentProjectSchema = z.object({
   title: z.string(),
-  type: z.enum(['article', 'video', 'graphic', 'audio', 'documentation']),
+  type: z.enum(["article", "video", "graphic", "audio", "documentation"]),
   description: z.string(),
   reward: z.number().positive(),
   assignedTo: z.string(),
@@ -55,36 +61,44 @@ const platformAccounts: any[] = [];
 
 // M-Pesa credentials (securely stored)
 const MPESA_CREDENTIALS = {
-  consumerKey: process.env.MPESA_CONSUMER_KEY || 'ruOrfyOb22NgqcsmToADVNDf0Gltcu6AI8woFLOusfgkNBnj',
-  consumerSecret: process.env.MPESA_CONSUMER_SECRET || 'u27oKMfyACGxoQsD2bAuAJn0QzMQ8cWofA6bfzuG4hXaGxCB90PiGOSuCVNcaCSj',
-  shortcode: process.env.MPESA_SHORTCODE || 'N/A',
-  environment: process.env.MPESA_ENVIRONMENT || 'sandbox',
+  consumerKey:
+    process.env.MPESA_CONSUMER_KEY ||
+    "ruOrfyOb22NgqcsmToADVNDf0Gltcu6AI8woFLOusfgkNBnj",
+  consumerSecret:
+    process.env.MPESA_CONSUMER_SECRET ||
+    "u27oKMfyACGxoQsD2bAuAJn0QzMQ8cWofA6bfzuG4hXaGxCB90PiGOSuCVNcaCSj",
+  shortcode: process.env.MPESA_SHORTCODE || "N/A",
+  environment: process.env.MPESA_ENVIRONMENT || "sandbox",
 };
 
 // Email backup function
 async function backupCredentialsToEmail(credentials: any, platform: string) {
   try {
     const emailData = {
-      to: 'rovicviccy@gmail.com',
+      to: "rovicviccy@gmail.com",
       subject: `QMOI Revenue Platform Credentials - ${platform}`,
-      body: `Platform: ${platform}\nCredentials: ${JSON.stringify(credentials, null, 2)}\nTimestamp: ${new Date().toISOString()}`,
+      body: `Platform: ${platform}\nCredentials: ${JSON.stringify(
+        credentials,
+        null,
+        2
+      )}\nTimestamp: ${new Date().toISOString()}`,
     };
 
-    console.log('Credentials backed up to email:', emailData);
-    
+    console.log("Credentials backed up to email:", emailData);
+
     // Backup to QMOI server
-    await fetch('/api/qmoi-database', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    await fetch("/api/qmoi-database", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        action: 'backup_revenue_credentials',
+        action: "backup_revenue_credentials",
         platform,
         credentials: JSON.stringify(credentials),
         timestamp: Date.now(),
       }),
     });
   } catch (error) {
-    console.error('Failed to backup credentials:', error);
+    console.error("Failed to backup credentials:", error);
   }
 }
 
@@ -95,69 +109,85 @@ async function createPlatformAccount(platform: string, accountData: any) {
       id: `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       platform,
       accountData,
-      status: 'active',
+      status: "active",
       createdAt: Date.now(),
       credentials: {},
     };
 
     // Platform-specific account creation logic
     switch (platform) {
-      case 'upwork':
+      case "upwork":
         account.credentials = {
           apiKey: `upw_${Math.random().toString(36).substr(2, 16)}`,
           secret: `upw_sec_${Math.random().toString(36).substr(2, 24)}`,
         };
         break;
-      case 'fiverr':
+      case "fiverr":
         account.credentials = {
           apiKey: `fiv_${Math.random().toString(36).substr(2, 16)}`,
           secret: `fiv_sec_${Math.random().toString(36).substr(2, 24)}`,
         };
         break;
-      case 'amazon_mechanical_turk':
+      case "amazon_mechanical_turk":
         account.credentials = {
           accessKey: `mturk_${Math.random().toString(36).substr(2, 16)}`,
           secretKey: `mturk_sec_${Math.random().toString(36).substr(2, 24)}`,
         };
         break;
-      case 'clickworker':
+      case "clickworker":
         account.credentials = {
           apiKey: `click_${Math.random().toString(36).substr(2, 16)}`,
           secret: `click_sec_${Math.random().toString(36).substr(2, 24)}`,
         };
         break;
-      case 'appen':
+      case "appen":
         account.credentials = {
           apiKey: `app_${Math.random().toString(36).substr(2, 16)}`,
           secret: `app_sec_${Math.random().toString(36).substr(2, 24)}`,
         };
         break;
-      case 'social_media':
+      case "social_media":
         account.credentials = {
-          facebook: { accessToken: `fb_${Math.random().toString(36).substr(2, 32)}` },
+          facebook: {
+            accessToken: `fb_${Math.random().toString(36).substr(2, 32)}`,
+          },
           twitter: { apiKey: `tw_${Math.random().toString(36).substr(2, 16)}` },
-          linkedin: { accessToken: `li_${Math.random().toString(36).substr(2, 32)}` },
-          instagram: { accessToken: `ig_${Math.random().toString(36).substr(2, 32)}` },
+          linkedin: {
+            accessToken: `li_${Math.random().toString(36).substr(2, 32)}`,
+          },
+          instagram: {
+            accessToken: `ig_${Math.random().toString(36).substr(2, 32)}`,
+          },
         };
         break;
-      case 'ecommerce':
+      case "ecommerce":
         account.credentials = {
-          shopify: { apiKey: `shop_${Math.random().toString(36).substr(2, 16)}` },
-          woocommerce: { consumerKey: `woo_${Math.random().toString(36).substr(2, 16)}` },
+          shopify: {
+            apiKey: `shop_${Math.random().toString(36).substr(2, 16)}`,
+          },
+          woocommerce: {
+            consumerKey: `woo_${Math.random().toString(36).substr(2, 16)}`,
+          },
           etsy: { apiKey: `etsy_${Math.random().toString(36).substr(2, 16)}` },
         };
         break;
-      case 'saas_platforms':
+      case "saas_platforms":
         account.credentials = {
-          stripe: { secretKey: `sk_${Math.random().toString(36).substr(2, 24)}` },
-          paypal: { clientId: `paypal_${Math.random().toString(36).substr(2, 16)}` },
-          gumroad: { apiKey: `gum_${Math.random().toString(36).substr(2, 16)}` },
+          stripe: {
+            secretKey: `sk_${Math.random().toString(36).substr(2, 24)}`,
+          },
+          paypal: {
+            clientId: `paypal_${Math.random().toString(36).substr(2, 16)}`,
+          },
+          gumroad: {
+            apiKey: `gum_${Math.random().toString(36).substr(2, 16)}`,
+          },
         };
         break;
     }
 
     platformAccounts.push(account);
-    
+
     // Backup credentials
     await backupCredentialsToEmail(account.credentials, platform);
 
@@ -187,8 +217,8 @@ async function generateMicrotaskRevenue(taskData: any) {
       revenue: qmoiProfit,
     };
   } catch (error) {
-    console.error('Microtask revenue generation failed:', error);
-    return { success: false, error: 'Microtask revenue failed' };
+    console.error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -214,8 +244,8 @@ async function generateAffiliateRevenue(campaignData: any) {
       revenue: qmoiShare,
     };
   } catch (error) {
-    console.error('Affiliate revenue generation failed:', error);
-    return { success: false, error: 'Affiliate revenue failed' };
+    console.error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -237,8 +267,8 @@ async function generateContentRevenue(projectData: any) {
       revenue: qmoiProfit,
     };
   } catch (error) {
-    console.error('Content revenue generation failed:', error);
-    return { success: false, error: 'Content revenue failed' };
+    console.error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -262,8 +292,8 @@ async function generateReferralRevenue(referralData: any) {
       revenue: qmoiBonus,
     };
   } catch (error) {
-    console.error('Referral revenue generation failed:', error);
-    return { success: false, error: 'Referral revenue failed' };
+    console.error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -271,38 +301,41 @@ async function generateReferralRevenue(referralData: any) {
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const response = await fetch('https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${MPESA_CREDENTIALS.consumerKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ShortCode: MPESA_CREDENTIALS.shortcode,
-        CommandID: 'CustomerPayBillOnline',
-        Amount: amount,
-        Msisdn: '254700000000', // QMOI's M-Pesa number
-        BillReferenceNumber: description,
-      }),
-    });
+    const response = await fetch(
+      "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${MPESA_CREDENTIALS.consumerKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ShortCode: MPESA_CREDENTIALS.shortcode,
+          CommandID: "CustomerPayBillOnline",
+          Amount: amount,
+          Msisdn: "254700000000", // QMOI's M-Pesa number
+          BillReferenceNumber: description,
+        }),
+      }
+    );
 
     const result = await response.json();
-    
+
     // Log the transaction
     revenueLogs.push({
       id: Date.now(),
-      action: 'mpesa_deposit',
+      action: "mpesa_deposit",
       amount,
       description,
-      status: 'success',
+      status: "success",
       timestamp: Date.now(),
       reference: result.CheckoutRequestID || `QMOI_${Date.now()}`,
     });
 
     return { success: true, reference: result.CheckoutRequestID };
   } catch (error) {
-    console.error('M-Pesa deposit failed:', error);
-    return { success: false, error: 'M-Pesa deposit failed' };
+    console.error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -326,7 +359,7 @@ async function generateSurveyRevenue(surveyData: any) {
       revenue: qmoiProfit,
     };
   } catch (error) {
-    return { success: false, error: 'Survey revenue failed' };
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -338,7 +371,10 @@ async function generateDataLabelingRevenue(labelingData: any) {
     const clientPayment = totalCost * 1.5; // Client pays 50% premium
     const qmoiProfit = clientPayment - totalCost;
 
-    await addToMpesaAccount(qmoiProfit, `Data Labeling: ${labelingData.project}`);
+    await addToMpesaAccount(
+      qmoiProfit,
+      `Data Labeling: ${labelingData.project}`
+    );
 
     return {
       success: true,
@@ -349,7 +385,7 @@ async function generateDataLabelingRevenue(labelingData: any) {
       revenue: qmoiProfit,
     };
   } catch (error) {
-    return { success: false, error: 'Data labeling revenue failed' };
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -373,49 +409,52 @@ async function generateSaaSResellingRevenue(saasData: any) {
       revenue: qmoiProfit,
     };
   } catch (error) {
-    return { success: false, error: 'SaaS reselling revenue failed' };
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const type = searchParams.get('type'); // 'microtasks', 'affiliate', 'content', 'referral', 'platforms', 'revenue'
-  const status = searchParams.get('status');
+  const type = searchParams.get("type"); // 'microtasks', 'affiliate', 'content', 'referral', 'platforms', 'revenue'
+  const status = searchParams.get("status");
 
   try {
     switch (type) {
-      case 'microtasks':
+      case "microtasks":
         let tasks = microtasks;
-        if (status) tasks = tasks.filter(t => t.status === status);
+        if (status) tasks = tasks.filter((t) => t.status === status);
         return NextResponse.json({ success: true, data: tasks });
 
-      case 'affiliate':
+      case "affiliate":
         let campaigns = affiliateCampaigns;
-        if (status) campaigns = campaigns.filter(c => c.status === status);
+        if (status) campaigns = campaigns.filter((c) => c.status === status);
         return NextResponse.json({ success: true, data: campaigns });
 
-      case 'content':
+      case "content":
         let projects = contentProjects;
-        if (status) projects = projects.filter(p => p.status === status);
+        if (status) projects = projects.filter((p) => p.status === status);
         return NextResponse.json({ success: true, data: projects });
 
-      case 'referral':
+      case "referral":
         let programs = referralPrograms;
-        if (status) programs = programs.filter(p => p.status === status);
+        if (status) programs = programs.filter((p) => p.status === status);
         return NextResponse.json({ success: true, data: programs });
 
-      case 'platforms':
+      case "platforms":
         return NextResponse.json({ success: true, data: platformAccounts });
 
-      case 'revenue':
+      case "revenue":
         return NextResponse.json({ success: true, data: revenueLogs });
 
-      case 'credentials':
+      case "credentials":
         return NextResponse.json({
           success: true,
           data: {
-            mpesa: { consumerKey: '***', environment: MPESA_CREDENTIALS.environment },
-          }
+            mpesa: {
+              consumerKey: "***",
+              environment: MPESA_CREDENTIALS.environment,
+            },
+          },
         });
 
       default:
@@ -428,14 +467,17 @@ export async function GET(request: NextRequest) {
             referralPrograms,
             platformAccounts,
             revenueLogs,
-          }
+          },
         });
     }
   } catch (error) {
-    return NextResponse.json({
-      success: false,
-      error: 'Failed to fetch revenue data'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Failed to fetch revenue data",
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -445,22 +487,22 @@ export async function POST(request: NextRequest) {
     const { action, ...data } = body;
 
     switch (action) {
-      case 'create_microtask':
+      case "create_microtask":
         const taskData = MicrotaskSchema.parse(data);
         const task = {
           id: `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
           ...taskData,
-          status: 'active',
+          status: "active",
           createdAt: Date.now(),
           completedAt: null,
-          revenue: null,
+          revenue: null as number | null,
         };
-        
+
         microtasks.push(task);
-        
+
         // Generate revenue
         const taskRevenue = await generateMicrotaskRevenue(task);
-        if (taskRevenue.success) {
+        if (taskRevenue.success && typeof taskRevenue.revenue === "number") {
           task.revenue = taskRevenue.revenue;
         }
 
@@ -468,25 +510,28 @@ export async function POST(request: NextRequest) {
           success: true,
           data: task,
           revenue: taskRevenue,
-          message: 'Microtask created successfully'
+          message: "Microtask created successfully",
         });
 
-      case 'create_affiliate_campaign':
+      case "create_affiliate_campaign":
         const campaignData = AffiliateCampaignSchema.parse(data);
         const campaign = {
           id: `aff_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
           ...campaignData,
-          status: 'active',
+          status: "active",
           createdAt: Date.now(),
           totalSales: 0,
           totalRevenue: 0,
         };
-        
+
         affiliateCampaigns.push(campaign);
-        
+
         // Generate revenue
         const campaignRevenue = await generateAffiliateRevenue(campaign);
-        if (campaignRevenue.success) {
+        if (
+          campaignRevenue.success &&
+          typeof campaignRevenue.revenue === "number"
+        ) {
           campaign.totalRevenue = campaignRevenue.revenue;
         }
 
@@ -494,25 +539,28 @@ export async function POST(request: NextRequest) {
           success: true,
           data: campaign,
           revenue: campaignRevenue,
-          message: 'Affiliate campaign created successfully'
+          message: "Affiliate campaign created successfully",
         });
 
-      case 'create_content_project':
+      case "create_content_project":
         const projectData = ContentProjectSchema.parse(data);
         const project = {
           id: `cont_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
           ...projectData,
-          status: 'active',
+          status: "active",
           createdAt: Date.now(),
           completedAt: null,
-          revenue: null,
+          revenue: null as number | null,
         };
-        
+
         contentProjects.push(project);
-        
+
         // Generate revenue
         const projectRevenue = await generateContentRevenue(project);
-        if (projectRevenue.success) {
+        if (
+          projectRevenue.success &&
+          typeof projectRevenue.revenue === "number"
+        ) {
           project.revenue = projectRevenue.revenue;
         }
 
@@ -520,25 +568,28 @@ export async function POST(request: NextRequest) {
           success: true,
           data: project,
           revenue: projectRevenue,
-          message: 'Content project created successfully'
+          message: "Content project created successfully",
         });
 
-      case 'create_referral_program':
+      case "create_referral_program":
         const referralData = ReferralProgramSchema.parse(data);
         const referral = {
           id: `ref_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
           ...referralData,
-          status: 'active',
+          status: "active",
           createdAt: Date.now(),
           totalReferrals: 0,
           totalBonus: 0,
         };
-        
+
         referralPrograms.push(referral);
-        
+
         // Generate revenue
         const referralRevenue = await generateReferralRevenue(referral);
-        if (referralRevenue.success) {
+        if (
+          referralRevenue.success &&
+          typeof referralRevenue.revenue === "number"
+        ) {
           referral.totalBonus = referralRevenue.revenue;
         }
 
@@ -546,76 +597,91 @@ export async function POST(request: NextRequest) {
           success: true,
           data: referral,
           revenue: referralRevenue,
-          message: 'Referral program created successfully'
+          message: "Referral program created successfully",
         });
 
-      case 'create_platform_account':
+      case "create_platform_account":
         const { platform, accountData } = data;
-        const accountResult = await createPlatformAccount(platform, accountData);
-        
+        const accountResult = await createPlatformAccount(
+          platform,
+          accountData
+        );
+
         if (!accountResult.success) {
-          return NextResponse.json({
-            success: false,
-            error: accountResult.error
-          }, { status: 500 });
+          return NextResponse.json(
+            {
+              success: false,
+              error: accountResult.error,
+            },
+            { status: 500 }
+          );
         }
 
         return NextResponse.json({
           success: true,
           data: accountResult.account,
-          message: `${platform} account created successfully`
+          message: `${platform} account created successfully`,
         });
 
-      case 'generate_survey_revenue':
+      case "generate_survey_revenue":
         const surveyRevenue = await generateSurveyRevenue(data);
         return NextResponse.json({
           success: true,
           data: surveyRevenue,
-          message: 'Survey revenue generated'
+          message: "Survey revenue generated",
         });
 
-      case 'generate_data_labeling_revenue':
+      case "generate_data_labeling_revenue":
         const labelingRevenue = await generateDataLabelingRevenue(data);
         return NextResponse.json({
           success: true,
           data: labelingRevenue,
-          message: 'Data labeling revenue generated'
+          message: "Data labeling revenue generated",
         });
 
-      case 'generate_saas_revenue':
+      case "generate_saas_revenue":
         const saasRevenue = await generateSaaSResellingRevenue(data);
         return NextResponse.json({
           success: true,
           data: saasRevenue,
-          message: 'SaaS reselling revenue generated'
+          message: "SaaS reselling revenue generated",
         });
 
-      case 'backup_credentials':
-        await backupCredentialsToEmail(MPESA_CREDENTIALS, 'mpesa');
+      case "backup_credentials":
+        await backupCredentialsToEmail(MPESA_CREDENTIALS, "mpesa");
         return NextResponse.json({
           success: true,
-          message: 'Credentials backed up successfully'
+          message: "Credentials backed up successfully",
         });
 
       default:
-        return NextResponse.json({
-          success: false,
-          error: 'Invalid action specified'
-        }, { status: 400 });
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Invalid action specified",
+          },
+          { status: 400 }
+        );
     }
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({
-        success: false,
-        error: 'Validation failed',
-        details: error.errors
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Validation failed",
+          details: error.errors,
+        },
+        { status: 400 }
+      );
     }
 
-    return NextResponse.json({
-      success: false,
-      error: 'Failed to process revenue action'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Failed to process revenue action",
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -626,53 +692,62 @@ export async function PUT(request: NextRequest) {
 
     let item;
     switch (type) {
-      case 'microtask':
-        item = microtasks.find(t => t.id === id);
+      case "microtask":
+        item = microtasks.find((t) => t.id === id);
         if (item) {
           Object.assign(item, updates);
         }
         break;
-      case 'affiliate':
-        item = affiliateCampaigns.find(c => c.id === id);
+      case "affiliate":
+        item = affiliateCampaigns.find((c) => c.id === id);
         if (item) {
           Object.assign(item, updates);
         }
         break;
-      case 'content':
-        item = contentProjects.find(p => p.id === id);
+      case "content":
+        item = contentProjects.find((p) => p.id === id);
         if (item) {
           Object.assign(item, updates);
         }
         break;
-      case 'referral':
-        item = referralPrograms.find(r => r.id === id);
+      case "referral":
+        item = referralPrograms.find((r) => r.id === id);
         if (item) {
           Object.assign(item, updates);
         }
         break;
       default:
-        return NextResponse.json({
-          success: false,
-          error: 'Invalid type specified'
-        }, { status: 400 });
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Invalid type specified",
+          },
+          { status: 400 }
+        );
     }
 
     if (!item) {
-      return NextResponse.json({
-        success: false,
-        error: 'Item not found'
-      }, { status: 404 });
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Item not found",
+        },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json({
       success: true,
       data: item,
-      message: 'Item updated successfully'
+      message: "Item updated successfully",
     });
   } catch (error) {
-    return NextResponse.json({
-      success: false,
-      error: 'Failed to update item'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Failed to update item",
+      },
+      { status: 500 }
+    );
   }
-} 
+}

@@ -1,13 +1,19 @@
-import { mpesaAPI } from './mpesa-api';
-import { logEvent } from './security_check';
+import { mpesaAPI } from "./mpesa-api";
+import { logEvent } from "./security_check";
 
 interface RevenueStream {
   id: string;
   name: string;
-  type: 'trading' | 'affiliate' | 'saas' | 'content' | 'automation' | 'consulting';
+  type:
+    | "trading"
+    | "affiliate"
+    | "saas"
+    | "content"
+    | "automation"
+    | "consulting";
   dailyTarget: number;
   currentEarnings: number;
-  status: 'active' | 'paused' | 'failed';
+  status: "active" | "paused" | "failed";
   lastUpdated: string;
 }
 
@@ -17,7 +23,7 @@ interface RevenueTransaction {
   amount: number;
   description: string;
   timestamp: string;
-  status: 'pending' | 'completed' | 'failed';
+  status: "pending" | "completed" | "failed";
 }
 
 class QMOIRevenueEngine {
@@ -33,75 +39,75 @@ class QMOIRevenueEngine {
   private initializeRevenueStreams() {
     const streams: RevenueStream[] = [
       {
-        id: 'ai-trading',
-        name: 'AI Trading Bot',
-        type: 'trading',
+        id: "ai-trading",
+        name: "AI Trading Bot",
+        type: "trading",
         dailyTarget: 2000,
         currentEarnings: 0,
-        status: 'active',
-        lastUpdated: new Date().toISOString()
+        status: "active",
+        lastUpdated: new Date().toISOString(),
       },
       {
-        id: 'affiliate-marketing',
-        name: 'Affiliate Marketing',
-        type: 'affiliate',
+        id: "affiliate-marketing",
+        name: "Affiliate Marketing",
+        type: "affiliate",
         dailyTarget: 1000,
         currentEarnings: 0,
-        status: 'active',
-        lastUpdated: new Date().toISOString()
+        status: "active",
+        lastUpdated: new Date().toISOString(),
       },
       {
-        id: 'saas-subscriptions',
-        name: 'SaaS Subscriptions',
-        type: 'saas',
+        id: "saas-subscriptions",
+        name: "SaaS Subscriptions",
+        type: "saas",
         dailyTarget: 800,
         currentEarnings: 0,
-        status: 'active',
-        lastUpdated: new Date().toISOString()
+        status: "active",
+        lastUpdated: new Date().toISOString(),
       },
       {
-        id: 'content-monetization',
-        name: 'Content Monetization',
-        type: 'content',
+        id: "content-monetization",
+        name: "Content Monetization",
+        type: "content",
         dailyTarget: 500,
         currentEarnings: 0,
-        status: 'active',
-        lastUpdated: new Date().toISOString()
+        status: "active",
+        lastUpdated: new Date().toISOString(),
       },
       {
-        id: 'automation-services',
-        name: 'Automation Services',
-        type: 'automation',
+        id: "automation-services",
+        name: "Automation Services",
+        type: "automation",
         dailyTarget: 400,
         currentEarnings: 0,
-        status: 'active',
-        lastUpdated: new Date().toISOString()
+        status: "active",
+        lastUpdated: new Date().toISOString(),
       },
       {
-        id: 'consulting',
-        name: 'AI Consulting',
-        type: 'consulting',
+        id: "consulting",
+        name: "AI Consulting",
+        type: "consulting",
         dailyTarget: 300,
         currentEarnings: 0,
-        status: 'active',
-        lastUpdated: new Date().toISOString()
-      }
+        status: "active",
+        lastUpdated: new Date().toISOString(),
+      },
     ];
 
-    streams.forEach(stream => {
+    streams.forEach((stream) => {
       this.revenueStreams.set(stream.id, stream);
     });
   }
 
   async startRevenueGeneration() {
     if (this.isRunning) return;
-    
+
     this.isRunning = true;
-    logEvent('revenue_engine_started', { timestamp: new Date().toISOString() });
-    
+    logEvent("revenue_engine_started", { timestamp: new Date().toISOString() });
+
     // Start continuous revenue generation
     this.runRevenueCycles();
-    
+
     // Start periodic M-Pesa transfers
     this.startPeriodicTransfers();
   }
@@ -112,42 +118,42 @@ class QMOIRevenueEngine {
         await this.generateRevenueFromAllStreams();
         await this.sleep(300000); // 5 minutes between cycles
       } catch (error) {
-        console.error('Revenue generation cycle failed:', error);
-        logEvent('revenue_cycle_failed', { error: error.message });
+        console.error("Revenue generation cycle failed:", error);
+        logEvent("revenue_cycle_failed", { error: error.message });
         await this.sleep(60000); // Wait 1 minute before retry
       }
     }
   }
 
   private async generateRevenueFromAllStreams() {
-    const promises = Array.from(this.revenueStreams.values()).map(stream => 
+    const promises = Array.from(this.revenueStreams.values()).map((stream) =>
       this.generateRevenueFromStream(stream)
     );
-    
+
     await Promise.allSettled(promises);
   }
 
   private async generateRevenueFromStream(stream: RevenueStream) {
     try {
       let earnings = 0;
-      
+
       switch (stream.type) {
-        case 'trading':
+        case "trading":
           earnings = await this.generateTradingRevenue();
           break;
-        case 'affiliate':
+        case "affiliate":
           earnings = await this.generateAffiliateRevenue();
           break;
-        case 'saas':
+        case "saas":
           earnings = await this.generateSaaSRevenue();
           break;
-        case 'content':
+        case "content":
           earnings = await this.generateContentRevenue();
           break;
-        case 'automation':
+        case "automation":
           earnings = await this.generateAutomationRevenue();
           break;
-        case 'consulting':
+        case "consulting":
           earnings = await this.generateConsultingRevenue();
           break;
       }
@@ -155,26 +161,29 @@ class QMOIRevenueEngine {
       if (earnings > 0) {
         stream.currentEarnings += earnings;
         stream.lastUpdated = new Date().toISOString();
-        
+
         this.addTransaction({
           id: `tx_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
           streamId: stream.id,
           amount: earnings,
           description: `Revenue from ${stream.name}`,
           timestamp: new Date().toISOString(),
-          status: 'completed'
+          status: "completed",
         });
 
-        logEvent('revenue_generated', { 
-          stream: stream.name, 
-          amount: earnings, 
-          total: stream.currentEarnings 
+        logEvent("revenue_generated", {
+          stream: stream.name,
+          amount: earnings,
+          total: stream.currentEarnings,
         });
       }
     } catch (error) {
       console.error(`Failed to generate revenue from ${stream.name}:`, error);
-      stream.status = 'failed';
-      logEvent('revenue_stream_failed', { stream: stream.name, error: error.message });
+      stream.status = "failed";
+      logEvent("revenue_stream_failed", {
+        stream: stream.name,
+        error: error.message,
+      });
     }
   }
 
@@ -182,8 +191,13 @@ class QMOIRevenueEngine {
     // AI Trading Bot - generates revenue through automated trading
     const baseAmount = Math.random() * 500 + 100; // 100-600 KES
     const marketConditions = this.getMarketConditions();
-    const multiplier = marketConditions === 'bull' ? 1.5 : marketConditions === 'bear' ? 0.7 : 1.0;
-    
+    const multiplier =
+      marketConditions === "bull"
+        ? 1.5
+        : marketConditions === "bear"
+        ? 0.7
+        : 1.0;
+
     return Math.round(baseAmount * multiplier);
   }
 
@@ -191,7 +205,7 @@ class QMOIRevenueEngine {
     // Affiliate Marketing - promotes products and earns commissions
     const baseAmount = Math.random() * 300 + 50; // 50-350 KES
     const conversionRate = Math.random() * 0.1 + 0.05; // 5-15% conversion
-    
+
     return Math.round(baseAmount * conversionRate);
   }
 
@@ -199,7 +213,7 @@ class QMOIRevenueEngine {
     // SaaS Subscriptions - recurring revenue from software services
     const baseAmount = Math.random() * 200 + 100; // 100-300 KES
     const retentionRate = 0.95; // 95% retention
-    
+
     return Math.round(baseAmount * retentionRate);
   }
 
@@ -207,7 +221,7 @@ class QMOIRevenueEngine {
     // Content Monetization - ads, sponsorships, premium content
     const baseAmount = Math.random() * 150 + 50; // 50-200 KES
     const engagementRate = Math.random() * 0.2 + 0.1; // 10-30% engagement
-    
+
     return Math.round(baseAmount * engagementRate);
   }
 
@@ -215,7 +229,7 @@ class QMOIRevenueEngine {
     // Automation Services - process automation for clients
     const baseAmount = Math.random() * 100 + 50; // 50-150 KES
     const efficiencyGain = Math.random() * 0.3 + 0.2; // 20-50% efficiency
-    
+
     return Math.round(baseAmount * efficiencyGain);
   }
 
@@ -223,18 +237,18 @@ class QMOIRevenueEngine {
     // AI Consulting - expert advice and implementation
     const baseAmount = Math.random() * 200 + 100; // 100-300 KES
     const expertiseLevel = Math.random() * 0.4 + 0.6; // 60-100% expertise
-    
+
     return Math.round(baseAmount * expertiseLevel);
   }
 
-  private getMarketConditions(): 'bull' | 'bear' | 'neutral' {
-    const conditions = ['bull', 'bear', 'neutral'];
+  private getMarketConditions(): "bull" | "bear" | "neutral" {
+    const conditions = ["bull", "bear", "neutral"];
     return conditions[Math.floor(Math.random() * conditions.length)];
   }
 
   private addTransaction(transaction: RevenueTransaction) {
     this.transactions.push(transaction);
-    
+
     // Keep only last 1000 transactions
     if (this.transactions.length > 1000) {
       this.transactions = this.transactions.slice(-1000);
@@ -245,13 +259,14 @@ class QMOIRevenueEngine {
     setInterval(async () => {
       try {
         const totalEarnings = this.getTotalEarnings();
-        if (totalEarnings >= 1000) { // Transfer when we have at least 1000 KES
+        if (totalEarnings >= 1000) {
+          // Transfer when we have at least 1000 KES
           await this.transferToMpesa(totalEarnings);
           this.resetEarnings();
         }
       } catch (error) {
-        console.error('Periodic transfer failed:', error);
-        logEvent('periodic_transfer_failed', { error: error.message });
+        console.error("Periodic transfer failed:", error);
+        logEvent("periodic_transfer_failed", { error: error.message });
       }
     }, 3600000); // Check every hour
   }
@@ -259,7 +274,7 @@ class QMOIRevenueEngine {
   private async transferToMpesa(amount: number) {
     const mpesaNumber = process.env.CASHON_MPESA_NUMBER;
     if (!mpesaNumber) {
-      throw new Error('M-Pesa number not configured');
+      throw new Error("M-Pesa number not configured");
     }
 
     try {
@@ -267,43 +282,52 @@ class QMOIRevenueEngine {
         phoneNumber: mpesaNumber,
         amount: amount,
         reference: `QMOI_${Date.now()}`,
-        description: 'QMOI Revenue Transfer'
+        description: "QMOI Revenue Transfer",
       });
 
-      logEvent('mpesa_transfer_initiated', { 
-        amount, 
-        checkoutRequestId: result.CheckoutRequestID 
+      logEvent("mpesa_transfer_initiated", {
+        amount,
+        checkoutRequestId: result.CheckoutRequestID,
       });
 
       // Monitor transaction status
       setTimeout(async () => {
         try {
-          const status = await mpesaAPI.checkTransactionStatus(result.CheckoutRequestID);
-          if (status.status === 'success') {
-            logEvent('mpesa_transfer_success', { amount, transactionId: status.transactionId });
+          const status = await mpesaAPI.checkTransactionStatus(
+            result.CheckoutRequestID
+          );
+          if (status.status === "success") {
+            logEvent("mpesa_transfer_success", {
+              amount,
+              transactionId: status.transactionId,
+            });
           } else {
-            logEvent('mpesa_transfer_failed', { amount, status: status.status });
+            logEvent("mpesa_transfer_failed", {
+              amount,
+              status: status.status,
+            });
           }
         } catch (error) {
-          logEvent('mpesa_status_check_failed', { error: error.message });
+          logEvent("mpesa_status_check_failed", { error: error.message });
         }
       }, 30000); // Check after 30 seconds
-
     } catch (error) {
-      logEvent('mpesa_transfer_failed', { error: error.message });
+      logEvent("mpesa_transfer_failed", { error: error.message });
       throw error;
     }
   }
 
   private resetEarnings() {
-    this.revenueStreams.forEach(stream => {
+    this.revenueStreams.forEach((stream) => {
       stream.currentEarnings = 0;
     });
   }
 
   getTotalEarnings(): number {
-    return Array.from(this.revenueStreams.values())
-      .reduce((total, stream) => total + stream.currentEarnings, 0);
+    return Array.from(this.revenueStreams.values()).reduce(
+      (total, stream) => total + stream.currentEarnings,
+      0
+    );
   }
 
   getRevenueStreams(): RevenueStream[] {
@@ -317,23 +341,42 @@ class QMOIRevenueEngine {
   getDailyProgress(): { target: number; current: number; percentage: number } {
     const current = this.getTotalEarnings();
     const percentage = Math.min((current / this.dailyTarget) * 100, 100);
-    
+
     return {
       target: this.dailyTarget,
       current,
-      percentage
+      percentage,
     };
   }
 
   private sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   stop() {
     this.isRunning = false;
-    logEvent('revenue_engine_stopped', { timestamp: new Date().toISOString() });
+    logEvent("revenue_engine_stopped", { timestamp: new Date().toISOString() });
   }
 }
 
 export const qmoiRevenueEngine = new QMOIRevenueEngine();
-export { QMOIRevenueEngine, type RevenueStream, type RevenueTransaction }; 
+export { QMOIRevenueEngine, type RevenueStream, type RevenueTransaction };
+
+// Provide a default export to improve interoperability with different import styles
+// Provide CommonJS-compatible exports for modules that `require()` the file
+try {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const cjs: any =
+    (globalThis as any).module || typeof module !== "undefined"
+      ? module
+      : undefined;
+  if (typeof cjs !== "undefined" && cjs.exports) {
+    cjs.exports = qmoiRevenueEngine;
+    cjs.exports.qmoiRevenueEngine = qmoiRevenueEngine;
+    cjs.exports.QMOIRevenueEngine = QMOIRevenueEngine;
+  }
+} catch (e) {
+  // ignore in non-CJS environments
+}
+
+export default qmoiRevenueEngine;
