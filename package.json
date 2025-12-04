@@ -4,25 +4,28 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "node scripts/qmoi-master-system.js",
-    "dev": "node --experimental-modules scripts/qmoi-ai-server.js",
+    "start": "next start",
+    "dev": "next dev",
     "build": "next build",
     "env-setup": "node scripts/qmoi-env-setup.js"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
+    "@vercel/analytics": "^1.6.1",
     "chart.js": "^4.5.1",
     "class-variance-authority": "^0.7.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "next": "^13.5.0",
+    "next-themes": "^0.2.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.3.1",
     "react-dom": "^18.2.0",
-    "zod": "^3.23.0",
-    "next-themes": "^0.2.0"
+    "tailwind-merge": "^3.4.0",
+    "zod": "^3.23.0"
   },
   "devDependencies": {
+    "@types/react": "19.2.7",
     "eslint": "^8.48.0",
     "react-scripts": "^5.0.1",
     "typescript": "^5.2.0"

@@ -1,54 +1,58 @@
-// import Database from "better-sqlite3";
+// In-memory storage for QMOI memory (client-side only)
+interface MemoryRecord {
+  id: number;
+  key: string;
+  user: string;
+  project: string;
+  value: string;
+  timestamp: string;
+}
 
-const db = new Database("qmoi_memory.db");
-
-db.exec(`
-CREATE TABLE IF NOT EXISTS memory (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  key TEXT,
-  user TEXT,
-  project TEXT,
-  value TEXT,
-  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-`);
+let memoryStore: MemoryRecord[] = [];
+let recordId = 1;
 
 export class QmoiMemory {
   static save(key: string, value: any, user?: string, project?: string) {
-    db.prepare(
-      "INSERT INTO memory (key, value, user, project) VALUES (?, ?, ?, ?)",
-    ).run(key, JSON.stringify(value), user || "", project || "");
+    const existing = memoryStore.findIndex(
+      (r) =>
+        r.key === key &&
+        (user ? r.user === user : true) &&
+        (project ? r.project === project : true)
+    );
+
+    const record: MemoryRecord = {
+      id: existing >= 0 ? memoryStore[existing].id : recordId++,
+      key,
+      user: user || "",
+      project: project || "",
+      value: JSON.stringify(value),
+      timestamp: new Date().toISOString(),
+    };
+
+    if (existing >= 0) {
+      memoryStore[existing] = record;
+    } else {
+      memoryStore.push(record);
+    }
   }
 
   static get(key: string, user?: string, project?: string) {
-    let stmt = "SELECT value FROM memory WHERE key = ?";
-    const params: any[] = [key];
-    if (user) {
-      stmt += " AND user = ?";
-      params.push(user);
-    }
-    if (project) {
-      stmt += " AND project = ?";
-      params.push(project);
-    }
-    const row = db.prepare(stmt).get(...params);
-    return row ? JSON.parse(row.value) : null;
+    const record = memoryStore.find(
+      (r) =>
+        r.key === key &&
+        (user ? r.user === user : true) &&
+        (project ? r.project === project : true)
+    );
+    return record ? JSON.parse(record.value) : null;
   }
 
   static list(user?: string, project?: string) {
-    let stmt = "SELECT key, value, timestamp FROM memory WHERE 1=1";
-    const params: any[] = [];
-    if (user) {
-      stmt += " AND user = ?";
-      params.push(user);
-    }
-    if (project) {
-      stmt += " AND project = ?";
-      params.push(project);
-    }
-    return db
-      .prepare(stmt)
-      .all(...params)
+    return memoryStore
+      .filter(
+        (r) =>
+          (user ? r.user === user : true) &&
+          (project ? r.project === project : true)
+      )
       .map((row) => ({
         key: row.key,
         value: JSON.parse(row.value),

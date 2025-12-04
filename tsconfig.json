@@ -1,73 +1,48 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "commonjs",
-    "declaration": true,
-    "outDir": "dist",
-    "strict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
+    "useDefineForClassFields": true,
     "lib": [
       "ES2020",
-      "DOM"
+      "DOM",
+      "DOM.Iterable"
     ],
-    "jsx": "react-jsx"
-  },
-  "include": ["src/**/*", "tests/**/*"]
-}
-    ],
-    "declaration": true,
-    "outDir": "./dist",
-    "rootDir": ".",
-    "strict": true,
-    "esModuleInterop": true,
+    "module": "esnext",
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*"
-      ],
-      "@config/*": [
-        "src/config/*"
-      ],
-      "@types/*": [
-        "src/types/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@lib/*": [
-        "lib/*"
-      ],
-      "@/lib/*": [
-        "lib/*"
+        "./*"
       ],
       "@/components/*": [
-        "src/components/*"
+        "./components/*",
+        "./src/components/*"
+      ],
+      "@/app/*": [
+        "./app/*"
+      ],
+      "@/services/*": [
+        "./src/services/*"
       ],
       "@/hooks/*": [
-        "hooks/*"
+        "./src/hooks/*"
+      ],
+      "@/lib/*": [
+        "./lib/*"
       ]
     },
     "allowJs": true,
-    "noEmit": true,
     "incremental": true,
-    "jsx": "preserve",
+    "isolatedModules": true,
     "plugins": [
       {
         "name": "next"
@@ -75,19 +50,16 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "components/**/*.ts",
-    "components/**/*.tsx",
-    "hooks/**/*.ts",
-    "hooks/**/*.tsx"
-    // .next/types/**/*.ts intentionally excluded to avoid rootDir errors
-    ,
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
     ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    ".next", // Exclude build artifacts to prevent rootDir errors
+    ".next",
     "dist"
   ]
 }

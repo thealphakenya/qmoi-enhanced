@@ -2,11 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'export',
-  trailingSlash: true,
+  // Removed 'output: export' to allow server-side rendering in dev mode
+  trailingSlash: false,
   images: {
-    unoptimized: true
-  }
-}
+    unoptimized: true,
+  },
+};
 
 export default nextConfig;
