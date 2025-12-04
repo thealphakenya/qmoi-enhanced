@@ -21,6 +21,7 @@
       "@/components/*": ["./components/*", "./src/components/*"],
       "@/app/*": ["./app/*"],
       "@/services/*": ["./src/services/*"],
+      "@/adapters/*": ["./src/adapters/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/lib/*": ["./lib/*"]
     },

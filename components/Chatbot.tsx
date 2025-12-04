@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 interface ChatbotProps {
   chatHistory: any[];
-  setChatHistory: (history: any[]) => void;
+  setChatHistory: (history: any[] | ((prev: any[]) => any[])) => void;
   selectedModel: string;
   setSelectedModel: (model: string) => void;
 }
