@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "esnext",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,25 +16,12 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@/components/*": [
-        "./components/*",
-        "./src/components/*"
-      ],
-      "@/app/*": [
-        "./app/*"
-      ],
-      "@/services/*": [
-        "./src/services/*"
-      ],
-      "@/hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@/lib/*": [
-        "./lib/*"
-      ]
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*", "./src/components/*"],
+      "@/app/*": ["./app/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./lib/*"]
     },
     "allowJs": true,
     "incremental": true,
@@ -60,6 +43,16 @@
   "exclude": [
     "node_modules",
     ".next",
-    "dist"
+    "dist",
+    "lib/**",
+    "mobile/**",
+    "scripts/**",
+    "qmoi-enhanced/scripts/**",
+    "earnvault/**",
+    "public/**",
+    "coverage/**",
+    "**/*.md.ts",
+    "**/*.md.tsx",
+    "**/*.py.tsx"
   ]
 }

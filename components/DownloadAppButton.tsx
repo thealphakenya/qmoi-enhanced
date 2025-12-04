@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 // Download URLs per device type (customize as needed)
@@ -23,7 +23,16 @@ function getDeviceType() {
 }
 
 export function DownloadAppButton() {
-  const [show, setShow] = useState(() => !localStorage.getItem("appInstalled"));
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    try {
+      const installed =
+        typeof window !== "undefined" && localStorage.getItem("appInstalled");
+      setShow(!installed);
+    } catch (e) {
+      setShow(false);
+    }
+  }, []);
   const [downloading, setDownloading] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const device = getDeviceType();
