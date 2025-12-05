@@ -168,8 +168,8 @@ export default function QCityDevicePanel() {
     if (!isMaster) return;
     setLoading(true);
     Promise.all([
-      axios.get('/api/qcity/listWorkspaces').then(res => setGitpodWorkspaces(res.data.workspaces)).catch(() => setGitpodWorkspaces([])),
-      axios.get('/api/qcity/listLocalWorkspaces').then(res => setLocalWorkspaces(res.data.workspaces)).catch(() => setLocalWorkspaces([])),
+      axios.get('/api/qcity/listWorkspaces').then((res: any) => setGitpodWorkspaces(res.data.workspaces)).catch(() => setGitpodWorkspaces([])),
+      axios.get('/api/qcity/listLocalWorkspaces').then((res: any) => setLocalWorkspaces(res.data.workspaces)).catch(() => setLocalWorkspaces([])),
     ]).catch(err => setWorkspaceError('Failed to fetch workspaces')).finally(() => setLoading(false));
   }, [isMaster]);
 
@@ -196,8 +196,8 @@ export default function QCityDevicePanel() {
       if (endpoint) await axios.post(endpoint, data);
       // Refresh workspaces after action
       const [gp, lp] = await Promise.all([
-        axios.get('/api/qcity/listWorkspaces').then(res => res.data.workspaces),
-        axios.get('/api/qcity/listLocalWorkspaces').then(res => res.data.workspaces),
+        axios.get('/api/qcity/listWorkspaces').then((res: any) => res.data.workspaces),
+        axios.get('/api/qcity/listLocalWorkspaces').then((res: any) => res.data.workspaces),
       ]);
       setGitpodWorkspaces(gp);
       setLocalWorkspaces(lp);
@@ -353,7 +353,7 @@ export default function QCityDevicePanel() {
               </div>
               <Switch
                 checked={qcityStatus.autoUpgrade}
-                onCheckedChange={(enabled) => setQcityStatus(prev => ({ ...prev, autoUpgrade: enabled }))}
+                onCheckedChange={(enabled: boolean) => setQcityStatus(prev => ({ ...prev, autoUpgrade: enabled }))}
               />
             </div>
           </div>

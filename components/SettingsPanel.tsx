@@ -435,19 +435,19 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ isOpen, onClose })
                       <div className="flex flex-col gap-4">
                         <div className="flex items-center justify-between">
                           <Label>Auto-Backup</Label>
-                          <Switch checked={automation.autoBackup} onCheckedChange={v => handleAutomationChange('autoBackup', v)} />
+                          <Switch checked={automation.autoBackup} onCheckedChange={(v: boolean) => handleAutomationChange('autoBackup', v)} />
                         </div>
                         <div className="flex items-center justify-between">
                           <Label>Auto-Heal</Label>
-                          <Switch checked={automation.autoHeal} onCheckedChange={v => handleAutomationChange('autoHeal', v)} />
+                          <Switch checked={automation.autoHeal} onCheckedChange={(v: boolean) => handleAutomationChange('autoHeal', v)} />
                         </div>
                         <div className="flex items-center justify-between">
                           <Label>Auto-Deploy</Label>
-                          <Switch checked={automation.autoDeploy} onCheckedChange={v => handleAutomationChange('autoDeploy', v)} />
+                          <Switch checked={automation.autoDeploy} onCheckedChange={(v: boolean) => handleAutomationChange('autoDeploy', v)} />
                         </div>
                         <div className="flex items-center justify-between">
                           <Label>Auto-Notify</Label>
-                          <Switch checked={automation.autoNotify} onCheckedChange={v => handleAutomationChange('autoNotify', v)} />
+                          <Switch checked={automation.autoNotify} onCheckedChange={(v: boolean) => handleAutomationChange('autoNotify', v)} />
                         </div>
                       </div>
                       <div className="flex items-center justify-between mt-6">

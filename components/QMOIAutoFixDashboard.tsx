@@ -17,7 +17,7 @@ import {
   Code, 
   Settings,
   Play,
-  Stop,
+  Square,
   Download,
   Upload,
   GitBranch,
@@ -491,7 +491,7 @@ export default function QMOIAutoFixDashboard() {
                   variant="destructive"
                   className="w-full"
                 >
-                  <Stop className="h-4 w-4 mr-2" />
+                  <Square className="h-4 w-4 mr-2" />
                   Stop Auto-Fix
                 </Button>
               </CardContent>

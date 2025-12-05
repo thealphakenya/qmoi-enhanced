@@ -154,12 +154,12 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
   return (
     <Card className={`fixed bottom-4 right-4 w-96 shadow-lg ${isFullscreen ? 'w-screen h-screen' : ''}`}>
       <CardHeader className="flex flex-row items-center justify-between p-2">
-        <CardTitle className="text-sm">Preview Window</CardTitle>
+        <Typography variant="subtitle2" className="text-sm">Preview Window</Typography>
         <div className="flex gap-2">
-          <Button size="sm" variant="ghost" onClick={handleFullscreen}>
+          <Button size="small" variant="text" onClick={handleFullscreen}>
             {React.createElement(FaExpand as React.ElementType)}
           </Button>
-          <Button size="sm" variant="ghost" onClick={onClose}>
+          <Button size="small" variant="text" onClick={onClose}>
             {React.createElement(FaTimes as React.ElementType)}
           </Button>
         </div>
@@ -191,7 +191,7 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
               />
             )}
             <div className="flex items-center gap-2">
-              <Button size="sm" variant="outline" onClick={handlePlayPause}>
+              <Button size="small" variant="outlined" onClick={handlePlayPause}>
                 {isPlaying ? React.createElement(FaPause as React.ElementType) : React.createElement(FaPlay as React.ElementType)}
               </Button>
               <div className="flex items-center gap-2 flex-1">
@@ -205,7 +205,7 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
                   className="w-full"
                 />
       </div>
-              <Button size="sm" variant="outline" onClick={handleDownload}>
+              <Button size="small" variant="outlined" onClick={handleDownload}>
                 {React.createElement(FaDownload as React.ElementType)}
         </Button>
             </div>

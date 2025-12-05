@@ -12,7 +12,7 @@ import {
   GitPullRequest,
   GitMerge,
   Play,
-  Stop,
+  Pause,
   RefreshCw,
   AlertTriangle,
   CheckCircle,
@@ -208,7 +208,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
                 size="sm"
               >
                 {monitoringActive ? (
-                  <Stop className="h-4 w-4 mr-2" />
+                  <Pause className="h-4 w-4 mr-2" />
                 ) : (
                   <Play className="h-4 w-4 mr-2" />
                 )}

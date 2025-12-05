@@ -24,7 +24,7 @@ import {
   ArrowRight,
   RefreshCw,
   Play,
-  Stop,
+  Square,
   RotateCcw
 } from 'lucide-react';
 

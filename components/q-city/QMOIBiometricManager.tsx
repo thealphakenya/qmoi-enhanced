@@ -6,7 +6,6 @@ import {
   Typography,
   Card,
   CardContent,
-  Grid,
   Button,
   TextField,
   Dialog,
@@ -127,7 +126,7 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
   const loadBiometricData = async () => {
     try {
       // Simulate API call to load biometric templates
-      const templates = [
+      const templates: BiometricTemplate[] = [
         {
           id: 1,
           type: "face",
@@ -139,34 +138,26 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
           id: 2,
           type: "voice",
           quality: 0.88,
-          created_at: "2024-01-15T10:35:00Z",
+          created_at: "2024-02-01T09:15:00Z",
           status: "active",
         },
         {
           id: 3,
           type: "fingerprint",
           quality: 0.92,
-          created_at: "2024-01-15T10:40:00Z",
-          status: "active",
-        },
-        {
-          id: 4,
-          type: "iris",
-          quality: 0.98,
-          created_at: "2024-01-15T10:45:00Z",
+          created_at: "2024-03-05T14:20:00Z",
           status: "active",
         },
       ];
       setBiometricTemplates(templates);
     } catch (error) {
-      console.error("Error loading biometric data:", error);
+      console.error("Error loading account logs:", error);
     }
   };
 
   const loadAccountLogs = async () => {
     try {
-      // Simulate API call to load account creation logs
-      const logs = [
+      const logs: AccountCreationLog[] = [
         {
           id: 1,
           platform: "GitHub",
@@ -176,28 +167,6 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
           reason: "Automated GitHub integration",
           age: 25,
           created_at: "2024-01-15T10:30:00Z",
-          status: "created",
-        },
-        {
-          id: 2,
-          platform: "GitLab",
-          username: "qmoi_gitlab_user",
-          email: "qmoi_gitlab@qmoi.com",
-          purpose: "QMOI CI/CD",
-          reason: "Automated GitLab integration",
-          age: 25,
-          created_at: "2024-01-15T10:35:00Z",
-          status: "created",
-        },
-        {
-          id: 3,
-          platform: "Discord",
-          username: "qmoi_discord_bot",
-          email: "qmoi_discord@qmoi.com",
-          purpose: "QMOI notifications",
-          reason: "Automated Discord integration",
-          age: 25,
-          created_at: "2024-01-15T10:40:00Z",
           status: "created",
         },
       ];
@@ -414,9 +383,19 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
               </Button>
             </Box>
 
-            <Grid container spacing={3}>
+            <Box
+              sx={{
+                display: "grid",
+                gap: 3,
+                gridTemplateColumns: {
+                  xs: "1fr",
+                  sm: "repeat(2, 1fr)",
+                  md: "repeat(4, 1fr)",
+                },
+              }}
+            >
               {biometricTemplates.map((template) => (
-                <Grid item xs={12} sm={6} md={3} key={template.id}>
+                <Box key={template.id}>
                   <Card>
                     <CardContent>
                       <Box
@@ -445,9 +424,9 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
                       />
                     </CardContent>
                   </Card>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Box>
         )}
 
@@ -577,9 +556,15 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
               Biometric Settings
             </Typography>
 
-            <Grid container spacing={3}>
+            <Box
+              sx={{
+                display: "grid",
+                gap: 3,
+                gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
+              }}
+            >
               {Object.entries(biometricSettings).map(([type, settings]) => (
-                <Grid item xs={12} md={6} key={type}>
+                <Box key={type}>
                   <Card>
                     <CardContent>
                       <Box
@@ -615,9 +600,9 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
                       </Typography>
                     </CardContent>
                   </Card>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Box>
         )}
 
@@ -642,9 +627,15 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
               Select Biometric Type:
             </Typography>
 
-            <Grid container spacing={2}>
+            <Box
+              sx={{
+                display: "grid",
+                gap: 2,
+                gridTemplateColumns: { xs: "repeat(2, 1fr)" },
+              }}
+            >
               {Object.entries(biometricSettings).map(([type, settings]) => (
-                <Grid item xs={6} key={type}>
+                <Box key={type}>
                   <Button
                     variant={
                       selectedBiometricType === type ? "contained" : "outlined"
@@ -656,9 +647,9 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
                   >
                     {type.charAt(0).toUpperCase() + type.slice(1)}
                   </Button>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setEnrollmentDialog(false)}>Cancel</Button>
@@ -693,9 +684,15 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
               Select Recovery Method:
             </Typography>
 
-            <Grid container spacing={2}>
+            <Box
+              sx={{
+                display: "grid",
+                gap: 2,
+                gridTemplateColumns: { xs: "repeat(2, 1fr)" },
+              }}
+            >
               {Object.entries(biometricSettings).map(([type, settings]) => (
-                <Grid item xs={6} key={type}>
+                <Box key={type}>
                   <Button
                     variant={
                       selectedBiometricType === type ? "contained" : "outlined"
@@ -707,9 +704,9 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
                   >
                     {type.charAt(0).toUpperCase() + type.slice(1)}
                   </Button>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setRecoveryDialog(false)}>Cancel</Button>
@@ -732,8 +729,14 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
         >
           <DialogTitle>Create New Account</DialogTitle>
           <DialogContent>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+            <Box
+              sx={{
+                display: "grid",
+                gap: 2,
+                gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)" },
+              }}
+            >
+              <Box>
                 <TextField
                   fullWidth
                   label="Username"
@@ -741,32 +744,32 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
                   onChange={(e) => setUsername(e.target.value)}
                   sx={{ mb: 2, mt: 1 }}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              </Box>
+              <Box>
                 <TextField
                   fullWidth
                   label="Platform"
                   defaultValue="GitHub"
                   sx={{ mb: 2, mt: 1 }}
                 />
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box>
                 <TextField
                   fullWidth
                   label="Purpose"
                   defaultValue="QMOI automation"
                   sx={{ mb: 2 }}
                 />
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box>
                 <TextField
                   fullWidth
                   label="Reason"
                   defaultValue="Automated account creation"
                   sx={{ mb: 2 }}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              </Box>
+              <Box>
                 <TextField
                   fullWidth
                   label="Age"
@@ -774,8 +777,8 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
                   defaultValue={25}
                   sx={{ mb: 2 }}
                 />
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setAccountCreationDialog(false)}>

@@ -205,7 +205,7 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                   <Label>Pitch</Label>
                   <Slider
                     value={[voiceSettings.pitch]}
-                    onValueChange={([value]) =>
+                    onValueChange={([value]: number[]) =>
                       setVoiceSettings({ ...voiceSettings, pitch: value })
                     }
                     min={0.5}
@@ -223,7 +223,7 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                   <Label>Speed</Label>
                   <Slider
                     value={[voiceSettings.rate]}
-                    onValueChange={([value]) =>
+                    onValueChange={([value]: number[]) =>
                       setVoiceSettings({ ...voiceSettings, rate: value })
                     }
                     min={0.5}
@@ -241,7 +241,7 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                   <Label>Volume</Label>
                   <Slider
                     value={[voiceSettings.volume]}
-                    onValueChange={([value]) =>
+                    onValueChange={([value]: number[]) =>
                       setVoiceSettings({ ...voiceSettings, volume: value })
                     }
                     min={0.0}

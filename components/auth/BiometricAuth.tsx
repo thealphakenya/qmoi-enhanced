@@ -58,7 +58,6 @@ import {
   Database,
   Network,
   Smartphone,
-  Monitor,
   Server,
   CreditCard,
   BarChart3,
@@ -73,12 +72,10 @@ import {
   Cloud,
   MessageSquare,
   Bot,
-  Smartphone,
   Tablet,
   Laptop,
   Monitor,
 } from "lucide-react";
-
 interface BiometricData {
   id: string;
   type: "fingerprint" | "voice" | "face" | "iris" | "gait" | "keystroke";
@@ -384,12 +381,12 @@ export default function BiometricAuth({
     }
   };
 
-  const addAuditLog = (action: string, result: string, interface?: string) => {
+  const addAuditLog = (action: string, result: string, iface?: string) => {
     const logEntry = {
       timestamp: new Date(),
       action,
       result,
-      interface,
+      interface: iface,
     };
     setAuditLog((prev) => [...prev, logEntry]);
   };

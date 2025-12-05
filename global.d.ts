@@ -1,0 +1,13 @@
+declare module "@radix-ui/react-accordion";
+declare module "@radix-ui/react-alert-dialog";
+declare module "@radix-ui/react-aspect-ratio";
+declare module "@radix-ui/react-dialog";
+declare module "@radix-ui/react-popover";
+declare module "@radix-ui/react-tooltip";
+declare module "@radix-ui/react-dropdown-menu";
+declare module "@radix-ui/react-scroll-area";
+declare module "@radix-ui/react-tabs";
+declare module "@radix-ui/react-toggle";
+declare module "@radix-ui/react-toggle-group";
+declare module "@radix-ui/react-slider";
+declare module "@radix-ui/react-portal";
