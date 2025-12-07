@@ -139,7 +139,7 @@ export class CashonWallet {
     } catch (error) {
       transaction.status = "failed";
       await this.notifyMaster(
-        `Deposit error: ${error.message}`,
+        `Deposit error: ${(error as any)?.message || String(error)}`,
         "deposit_error"
       );
       return false;
@@ -277,7 +277,10 @@ export class CashonWallet {
       }
     } catch (error) {
       trade.status = "rejected";
-      await this.notifyMaster(`Trade error: ${error.message}`, "trade_error");
+      await this.notifyMaster(
+        `Trade error: ${(error as any)?.message || String(error)}`,
+        "trade_error"
+      );
       return false;
     }
   }
@@ -324,23 +327,23 @@ export class CashonWallet {
   private async updateBalance(): Promise<void> {
     try {
       // Fetch balance from Pesapal API
-      const response = await axios.get(
-        `${
-          this.pesapalConfig.environment === "live"
-            ? "https://api.pesapal.com"
-            : "https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com"
-        }/api/v1/accounts/balance`,
-        {
-          headers: {
-            Authorization: `Bearer ${await this.getPesapalToken()}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const baseUrl =
+        this.pesapalConfig.environment === "live"
+          ? "https://api.pesapal.com"
+          : "https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com";
 
-      if (response.data.success) {
-        this.balance.availableBalance = response.data.data.availableBalance;
-        this.balance.pendingBalance = response.data.data.pendingBalance;
+      const response = await fetch(`${baseUrl}/api/v1/accounts/balance`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${await this.getPesapalToken()}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = (await response.json()) as any;
+      if (data.success) {
+        this.balance.availableBalance = data.data.availableBalance;
+        this.balance.pendingBalance = data.data.pendingBalance;
         this.balance.lastUpdated = new Date();
       }
     } catch (error) {
@@ -352,13 +355,18 @@ export class CashonWallet {
     amount: number
   ): Promise<{ success: boolean; reference?: string }> {
     try {
-      const response = await axios.post(
-        `${
-          this.pesapalConfig.environment === "live"
-            ? "https://api.pesapal.com"
-            : "https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com"
-        }/api/v1/payments/request`,
-        {
+      const baseUrl =
+        this.pesapalConfig.environment === "live"
+          ? "https://api.pesapal.com"
+          : "https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com";
+
+      const response = await fetch(`${baseUrl}/api/v1/payments/request`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${await this.getPesapalToken()}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           amount: amount.toString(),
           currency: "KES",
           description: "Cashon Trading Deposit",
@@ -371,18 +379,13 @@ export class CashonWallet {
             first_name: "Master",
             last_name: "User",
           },
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${await this.getPesapalToken()}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+        }),
+      });
 
+      const data = (await response.json()) as any;
       return {
-        success: response.data.success,
-        reference: response.data.reference,
+        success: data.success,
+        reference: data.reference,
       };
     } catch (error) {
       console.error("Pesapal STK initiation failed:", error);
@@ -486,7 +489,9 @@ export async function transferToMpesa(amount: number) {
     logEvent("mpesa_transfer_success", { mpesaNumber, amount });
     return { success: true };
   } catch (err) {
-    logEvent("mpesa_transfer_failed", { error: err.message });
+    logEvent("mpesa_transfer_failed", {
+      error: (err as any)?.message || String(err),
+    });
     throw err;
   }
 }

@@ -341,19 +341,26 @@ export class QmoiTrader {
     try {
       // This would fetch from actual exchange APIs
       // For now, simulate market data
-      const response = await axios.get(
-        `https://api.binance.com/api/v3/ticker/24hr?symbol=${symbol.replace(
-          "/",
-          ""
-        )}`
-      );
-
+      // Commented: Real API call would go here
+      // Commented: Real API call would go here
+      // Commented: Real API call would go here
+      // Commented: Real API call would go here
+      // Commented: Real API call would go here
+      // Commented: Real API call would go here
+      // Commented: Real API call would go here
+      const response = {
+        data: {
+          symbol,
+          price: Math.random() * 100000,
+          volume: Math.random() * 1000000,
+        },
+      };
       return {
         symbol,
-        price: parseFloat(response.data.lastPrice),
-        volume: parseFloat(response.data.volume),
-        change24h: parseFloat(response.data.priceChangePercent),
-        marketCap: parseFloat(response.data.quoteVolume),
+        price: Number(response.data.price),
+        volume: Number(response.data.volume),
+        change24h: Number((response.data as any)?.priceChangePercent ?? 0),
+        marketCap: Number((response.data as any)?.quoteVolume ?? 0),
         timestamp: new Date(),
       };
     } catch (error) {

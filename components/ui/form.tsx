@@ -18,8 +18,8 @@ import { Label } from "@/components/ui/label"
 const Form = FormProvider
 
 type FormFieldContextValue<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldValues extends Record<string, any> = Record<string, any>,
+  TName extends string = string
 > = {
   name: TName
 }
@@ -29,11 +29,11 @@ const FormFieldContext = React.createContext<FormFieldContextValue>(
 )
 
 const FormField = <
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldValues extends Record<string, any> = Record<string, any>,
+  TName extends string = string
 >({
   ...props
-}: ControllerProps<TFieldValues, TName>) => {
+}: any) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />

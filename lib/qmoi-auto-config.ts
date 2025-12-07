@@ -71,11 +71,11 @@ class QMOIAutoConfig {
 
     } catch (error) {
       console.error('❌ Auto-configuration failed:', error);
-      logEvent('mpesa_auto_config_failed', { error: error.message });
+      logEvent('mpesa_auto_config_failed', { error: (error as any)?.message || String(error) });
       
       return {
         success: false,
-        message: `Auto-configuration failed: ${error.message}`
+        message: `Auto-configuration failed: ${(error as any)?.message || String(error)}`
       };
     }
   }
@@ -126,7 +126,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
       // fs.writeFileSync(this.configPath, content); // Commented out as per edit hint
       console.log('✅ .env.production file created/updated');
     } catch (error) {
-      throw new Error(`Failed to write .env.production: ${error.message}`);
+      throw new Error(`Failed to write .env.production: ${(error as any)?.message || String(error)}`);
     }
   }
 
@@ -149,7 +149,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
     } catch (error) {
       return {
         success: false,
-        message: `M-Pesa connection test failed: ${error.message}`
+        message: `M-Pesa connection test failed: ${(error as any)?.message || String(error)}`
       };
     }
   }
@@ -194,7 +194,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
     } catch (error) {
       return {
         success: false,
-        message: `Configuration validation failed: ${error.message}`
+        message: `Configuration validation failed: ${(error as any)?.message || String(error)}`
       };
     }
   }

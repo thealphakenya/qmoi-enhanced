@@ -1969,7 +1969,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     toast({
       title: "Export Complete",
       description: `Exported ${exportScope} settings.`,
-      variant: "success",
+      variant: "default",
     });
   }
   function importSettings(e: React.ChangeEvent<HTMLInputElement>) {
@@ -1995,7 +1995,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         toast({
           title: "Import Complete",
           description: `Imported ${importScope} settings.`,
-          variant: "success",
+          variant: "default",
         });
       } catch {
         toast({
@@ -2316,7 +2316,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         type.charAt(0).toUpperCase() + type.slice(1)
       } Notification`,
       description: `A test ${type} notification would be sent to: ${notificationSettings[type]}`,
-      variant: "success",
+      variant: "default",
     });
   }
 

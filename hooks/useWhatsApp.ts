@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useQuery, useMutation } from 'react-query';
-import axios, { AxiosError } from 'axios';
+import axios, { any } from 'axios';
 
 interface WhatsAppMessage {
   id: string;
@@ -28,7 +28,7 @@ export function useWhatsApp() {
   const [error, setError] = useState<Error | null>(null);
 
   // Fetch messages
-  const { data: messagesData, refetch: refetchMessages } = useQuery<WhatsAppMessage[], AxiosError>(
+  const { data: messagesData, refetch: refetchMessages } = useQuery<WhatsAppMessage[], any>(
     'whatsapp-messages',
     async () => {
       const response = await axios.get('/api/qcity/whatsapp/messages');
@@ -36,36 +36,36 @@ export function useWhatsApp() {
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-      onError: (err: AxiosError) => setError(err),
+      onError: (err: any) => setError(err),
     }
   );
 
   // Fetch WhatsApp config
-  const { data: configData, refetch: refetchConfig } = useQuery<WhatsAppConfig, AxiosError>(
+  const { data: configData, refetch: refetchConfig } = useQuery<WhatsAppConfig, any>(
     'whatsapp-config',
     async () => {
       const response = await axios.get('/api/qcity/whatsapp/config');
       return response.data;
     },
     {
-      onError: (err: AxiosError) => setError(err),
+      onError: (err: any) => setError(err),
     }
   );
 
   // Send message mutation
-  const sendMessageMutation = useMutation<WhatsAppMessage, AxiosError, { to: string; content: string; type?: 'text' | 'image' | 'document' | 'audio' | 'video' }>(
+  const sendMessageMutation = useMutation<WhatsAppMessage, any, { to: string; content: string; type?: 'text' | 'image' | 'document' | 'audio' | 'video' }>(
     async ({ to, content, type = 'text' }) => {
       const response = await axios.post('/api/qcity/whatsapp/messages', { to, content, type });
       return response.data;
     },
     {
       onSuccess: () => refetchMessages(),
-      onError: (err: AxiosError) => setError(err),
+      onError: (err: any) => setError(err),
     }
   );
 
   // Update config mutation
-  const updateConfigMutation = useMutation<void, AxiosError, Partial<WhatsAppConfig>>(
+  const updateConfigMutation = useMutation<void, any, Partial<WhatsAppConfig>>(
     async (newConfig) => {
       const response = await axios.post('/api/qcity/whatsapp/config', newConfig);
       return response.data;
@@ -75,7 +75,7 @@ export function useWhatsApp() {
         refetchConfig();
         refetchMessages();
       },
-      onError: (err: AxiosError) => setError(err),
+      onError: (err: any) => setError(err),
     }
   );
 

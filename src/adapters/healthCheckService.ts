@@ -1,12 +1,16 @@
 // Health check API endpoint with diagnostic information
 // Provides comprehensive service health, cache statistics, and pending requests
 
-import { checkHealth, getCacheStats, getPendingRequests } from './clientAdapters';
-import { backgroundManager } from './backgroundServiceManager';
+import {
+  checkHealth,
+  getCacheStats,
+  getPendingRequests,
+} from "./clientAdapters";
+import { backgroundManager } from "./backgroundServiceManager";
 
 export interface HealthCheckResponse {
   timestamp: number;
-  status: 'healthy' | 'degraded' | 'unhealthy';
+  status: "healthy" | "degraded" | "unhealthy";
   system: {
     uptime: number;
     environment: string;
@@ -94,12 +98,15 @@ export class HealthCheckService {
       const bgStatus = backgroundManager.getStatus();
 
       // Determine overall status
-      let overallStatus: 'healthy' | 'degraded' | 'unhealthy' = 'healthy';
+      let overallStatus: "healthy" | "degraded" | "unhealthy" = "healthy";
 
-      if (adapterHealth.status === 'unhealthy') {
-        overallStatus = 'unhealthy';
-      } else if (adapterHealth.status === 'degraded' || bgStatus.services.some(s => s.status === 'degraded')) {
-        overallStatus = 'degraded';
+      if (adapterHealth.status === "unhealthy") {
+        overallStatus = "unhealthy";
+      } else if (
+        adapterHealth.status === "degraded" ||
+        bgStatus.services.some((s) => s.status === "degraded")
+      ) {
+        overallStatus = "degraded";
       }
 
       const response: HealthCheckResponse = {
@@ -107,56 +114,59 @@ export class HealthCheckService {
         status: overallStatus,
         system: {
           uptime: Date.now() - startTime,
-          environment: process.env.NEXT_PUBLIC_ENV || 'development',
-          serviceStatus: this.getServiceStatus()
+          environment: process.env.NEXT_PUBLIC_ENV || "development",
+          serviceStatus: this.getServiceStatus(),
         },
         adapters: {
           status: adapterHealth.status,
-          error: adapterHealth.error,
+          error: (adapterHealth as any).error,
           cacheStats: {
             total: cacheStats.total,
-            entries: cacheStats.entries
+            entries: cacheStats.byEndpoint,
           },
-          pendingRequests: pendingRequests.slice(0, 10) // Return top 10
+          pendingRequests: pendingRequests.slice(0, 10), // Return top 10
         },
         backgroundServices: {
           enabled: bgStatus.enabled,
           uptime: bgStatus.uptime,
-          activeServices: bgStatus.services.filter(s => s.status === 'healthy').length,
-          scheduledTasks: bgStatus.tasks.length
+          activeServices: bgStatus.services.filter(
+            (s) => s.status === "healthy"
+          ).length,
+          scheduledTasks: bgStatus.tasks.length,
         },
         diagnostics: {
-          memoryUsage: typeof process !== 'undefined' ? process.memoryUsage() : undefined,
-          responseTimes: this.getAllResponseTimes()
-        }
+          memoryUsage:
+            typeof process !== "undefined" ? process.memoryUsage() : undefined,
+          responseTimes: this.getAllResponseTimes(),
+        },
       };
 
-      this.recordResponseTime('health-check', Date.now() - startTime);
+      this.recordResponseTime("health-check", Date.now() - startTime);
       return response;
     } catch (err) {
       return {
         timestamp: Date.now(),
-        status: 'unhealthy',
+        status: "unhealthy",
         system: {
           uptime: Date.now() - startTime,
-          environment: process.env.NEXT_PUBLIC_ENV || 'development',
-          serviceStatus: this.getServiceStatus()
+          environment: process.env.NEXT_PUBLIC_ENV || "development",
+          serviceStatus: this.getServiceStatus(),
         },
         adapters: {
-          status: 'unhealthy',
+          status: "unhealthy",
           error: String(err),
-          cacheStats: { total: 0, entries: {} },
-          pendingRequests: []
+          cacheStats: { total: 0, entries: {} as Record<string, number> },
+          pendingRequests: [],
         },
         backgroundServices: {
           enabled: false,
           uptime: 0,
           activeServices: 0,
-          scheduledTasks: 0
+          scheduledTasks: 0,
         },
         diagnostics: {
-          responseTimes: {}
-        }
+          responseTimes: {},
+        },
       };
     }
   }
@@ -169,20 +179,20 @@ export class HealthCheckService {
     const status: Record<string, string> = {};
 
     // Check HTTP server
-    if (typeof window !== 'undefined') {
-      status['http-server'] = 'running';
+    if (typeof window !== "undefined") {
+      status["http-server"] = "running";
     } else {
-      status['http-server'] = 'unavailable-in-node';
+      status["http-server"] = "unavailable-in-node";
     }
 
     // Check API config
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
-    status['api-endpoint'] = apiUrl;
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+    status["api-endpoint"] = apiUrl;
 
     // Background services
     const bgServices = backgroundManager.getServices();
-    bgServices.forEach(s => {
-      status[`service-${s.name.toLowerCase().replace(/\s+/g, '-')}`] = s.status;
+    bgServices.forEach((s) => {
+      status[`service-${s.name.toLowerCase().replace(/\s+/g, "-")}`] = s.status;
     });
 
     return status;
@@ -190,7 +200,7 @@ export class HealthCheckService {
 
   clearStats(): void {
     this.responseTimes.clear();
-    console.info('[HealthCheck] Statistics cleared');
+    console.info("[HealthCheck] Statistics cleared");
   }
 
   getStats(): {
@@ -206,7 +216,7 @@ export class HealthCheckService {
     return {
       sampledEndpoints: this.responseTimes.size,
       totalSamples,
-      avgResponseTimes: this.getAllResponseTimes()
+      avgResponseTimes: this.getAllResponseTimes(),
     };
   }
 }

@@ -87,7 +87,7 @@ export default function AviatorGalleryPanel() {
       toast({
         title: "Upload Submitted",
         description: "Your avatar/voice request has been submitted for review.",
-        variant: "success",
+        variant: "default",
       });
       setAvatarFile(null);
       setVoiceFile(null);
@@ -105,7 +105,9 @@ export default function AviatorGalleryPanel() {
         {avatars.map((avatar) => (
           <div
             key={avatar.id}
-            className={`p-4 border rounded shadow w-48 ${selected === avatar.id ? "ring-2 ring-cyan-500" : ""}`}
+            className={`p-4 border rounded shadow w-48 ${
+              selected === avatar.id ? "ring-2 ring-cyan-500" : ""
+            }`}
             onClick={() => handleSelect(avatar.id)}
             style={{ cursor: "pointer" }}
             tabIndex={0}

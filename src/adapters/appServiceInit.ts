@@ -1,17 +1,17 @@
 // App Service Initialization
 // Bootstraps background services, health monitoring, and recovery mechanisms
 
-import { backgroundManager } from './backgroundServiceManager';
-import { recoveryManager } from './serviceRecoveryManager';
-import { healthCheckService } from './healthCheckService';
-import { checkHealth, clearCache } from './clientAdapters';
+import { backgroundManager } from "./backgroundServiceManager";
+import { recoveryManager } from "./serviceRecoveryManager";
+import { healthCheckService } from "./healthCheckService";
+import { checkHealth, clearCache } from "./clientAdapters";
 
 /**
  * Initialize all background services and monitoring
  * Call this once when the app loads
  */
 export async function initializeServices(): Promise<void> {
-  console.info('[Init] Starting service initialization...');
+  console.info("[Init] Starting service initialization...");
 
   try {
     // 1. Start background service manager
@@ -21,9 +21,9 @@ export async function initializeServices(): Promise<void> {
     recoveryManager.start();
 
     // 3. Perform initial health check
-    console.info('[Init] Performing initial health check...');
+    console.info("[Init] Performing initial health check...");
     const health = await healthCheckService.performCheck();
-    console.info('[Init] Initial health status:', health.status);
+    console.info("[Init] Initial health status:", health.status);
 
     // 4. Setup recovery listeners
     setupRecoveryListeners();
@@ -31,9 +31,9 @@ export async function initializeServices(): Promise<void> {
     // 5. Setup health monitoring interval
     setupHealthMonitoring();
 
-    console.info('[Init] Service initialization complete!');
+    console.info("[Init] Service initialization complete!");
   } catch (err) {
-    console.error('[Init] Service initialization failed:', err);
+    console.error("[Init] Service initialization failed:", err);
     throw err;
   }
 }
@@ -42,20 +42,20 @@ export async function initializeServices(): Promise<void> {
  * Setup automatic recovery for failed services
  */
 function setupRecoveryListeners(): void {
-  console.debug('[Init] Setting up recovery listeners...');
+  console.debug("[Init] Setting up recovery listeners...");
 
   // Listen for API failures and trigger recovery
   const originalFetch = window.fetch;
   window.fetch = async (...args: any[]) => {
     try {
-      const response = await originalFetch.apply(window, args);
+      const response = await originalFetch.apply(window, args as any);
 
       if (!response.ok && response.status >= 500) {
         // 5xx errors might indicate service issues
         console.warn(`[Init] API error detected: ${response.status}`);
 
         recoveryManager.scheduleRecovery(
-          'api-endpoint',
+          "api-endpoint",
           `HTTP ${response.status}`,
           async () => {
             await checkHealth();
@@ -66,11 +66,11 @@ function setupRecoveryListeners(): void {
 
       return response;
     } catch (err) {
-      console.error('[Init] Fetch error:', err);
+      console.error("[Init] Fetch error:", err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
-        'api-endpoint',
+        "api-endpoint",
         String(err),
         async () => {
           await checkHealth();
@@ -87,37 +87,37 @@ function setupRecoveryListeners(): void {
  * Setup continuous health monitoring
  */
 function setupHealthMonitoring(): void {
-  console.debug('[Init] Setting up health monitoring...');
+  console.debug("[Init] Setting up health monitoring...");
 
   // Check health every 60 seconds
   setInterval(async () => {
     try {
       const health = await healthCheckService.performCheck();
 
-      if (health.status === 'unhealthy') {
-        console.warn('[Monitor] Health check returned unhealthy');
+      if (health.status === "unhealthy") {
+        console.warn("[Monitor] Health check returned unhealthy");
 
         recoveryManager.scheduleRecovery(
-          'http-server',
-          'Health check failed',
+          "http-server",
+          "Health check failed",
           async () => {
             await checkHealth();
           },
           1000
         );
-      } else if (health.status === 'degraded') {
-        console.warn('[Monitor] Health check returned degraded');
+      } else if (health.status === "degraded") {
+        console.warn("[Monitor] Health check returned degraded");
       }
 
       // Log diagnostics periodically
       const stats = healthCheckService.getStats();
-      console.debug('[Monitor] Health stats:', {
+      console.debug("[Monitor] Health stats:", {
         endpoints: stats.sampledEndpoints,
         totalSamples: stats.totalSamples,
-        avgResponseTimes: stats.avgResponseTimes
+        avgResponseTimes: stats.avgResponseTimes,
       });
     } catch (err) {
-      console.error('[Monitor] Health monitoring error:', err);
+      console.error("[Monitor] Health monitoring error:", err);
     }
   }, 60 * 1000);
 }
@@ -133,7 +133,7 @@ export async function getSystemStatus(): Promise<{
   const [health, recovery, background] = await Promise.all([
     healthCheckService.performCheck(),
     Promise.resolve(recoveryManager.getStatus()),
-    Promise.resolve(backgroundManager.getStatus())
+    Promise.resolve(backgroundManager.getStatus()),
   ]);
 
   return { health, recovery, background };
@@ -143,32 +143,32 @@ export async function getSystemStatus(): Promise<{
  * Gracefully shutdown all services
  */
 export function shutdownServices(): void {
-  console.info('[Shutdown] Shutting down services...');
+  console.info("[Shutdown] Shutting down services...");
 
   backgroundManager.stop();
   recoveryManager.stop();
 
-  console.info('[Shutdown] All services stopped');
+  console.info("[Shutdown] All services stopped");
 }
 
 /**
  * Reset all caches and statistics
  */
 export function resetAllCaches(): void {
-  console.info('[Reset] Clearing all caches...');
+  console.info("[Reset] Clearing all caches...");
 
   clearCache();
   healthCheckService.clearStats();
   recoveryManager.clearHistory();
 
-  console.info('[Reset] All caches cleared');
+  console.info("[Reset] All caches cleared");
 }
 
 /**
  * Enable debug logging
  */
 export function enableDebugLogging(): void {
-  console.info('[Debug] Debug logging enabled');
+  console.info("[Debug] Debug logging enabled");
 
   // Intercept console methods to add timestamps
   const originalLog = console.log;
@@ -202,7 +202,7 @@ export async function getDiagnosticReport(): Promise<{
   const [health, recovery, background] = await Promise.all([
     healthCheckService.performCheck(),
     Promise.resolve(recoveryManager.getStatus()),
-    Promise.resolve(backgroundManager.getStatus())
+    Promise.resolve(backgroundManager.getStatus()),
   ]);
 
   return {
@@ -211,7 +211,7 @@ export async function getDiagnosticReport(): Promise<{
     health,
     recovery,
     background,
-    memory: typeof process !== 'undefined' ? process.memoryUsage() : undefined
+    memory: typeof process !== "undefined" ? process.memoryUsage() : undefined,
   };
 }
 
@@ -222,5 +222,5 @@ export default {
   shutdownServices,
   resetAllCaches,
   enableDebugLogging,
-  getDiagnosticReport
+  getDiagnosticReport,
 };

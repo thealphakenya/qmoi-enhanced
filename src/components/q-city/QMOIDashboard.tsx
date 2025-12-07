@@ -21,7 +21,7 @@ import {
   Star,
   TrendingUp,
   Cpu,
-  Memory,
+  Server,
   HardDrive,
   Wifi,
   Battery,
@@ -135,8 +135,7 @@ export function QMOIDashboard() {
                     : state.currentAvatar
                         .split("-")
                         .map(
-                          (word) =>
-                            word.charAt(0).toUpperCase() + word.slice(1),
+                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
                         )
                         .join(" ")}
                 </div>

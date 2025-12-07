@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useQuery, useMutation } from 'react-query';
-import axios, { AxiosError } from 'axios';
+import axios, { any } from 'axios';
 
 interface TradingPosition {
   id: string;
@@ -31,7 +31,7 @@ export function useTrading() {
   const [error, setError] = useState<Error | null>(null);
 
   // Fetch positions
-  const { data: positionsData, refetch: refetchPositions } = useQuery<TradingPosition[], AxiosError>(
+  const { data: positionsData, refetch: refetchPositions } = useQuery<TradingPosition[], any>(
     'trading-positions',
     async () => {
       const response = await axios.get('/api/qcity/trading/positions');
@@ -39,48 +39,48 @@ export function useTrading() {
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-      onError: (err: AxiosError) => setError(err),
+      onError: (err: any) => setError(err),
     }
   );
 
   // Fetch trading config
-  const { data: configData, refetch: refetchConfig } = useQuery<TradingConfig, AxiosError>(
+  const { data: configData, refetch: refetchConfig } = useQuery<TradingConfig, any>(
     'trading-config',
     async () => {
       const response = await axios.get('/api/qcity/trading/config');
       return response.data;
     },
     {
-      onError: (err: AxiosError) => setError(err),
+      onError: (err: any) => setError(err),
     }
   );
 
   // Open position mutation
-  const openPositionMutation = useMutation<TradingPosition, AxiosError, { symbol: string; type: 'long' | 'short'; size: number }>(
+  const openPositionMutation = useMutation<TradingPosition, any, { symbol: string; type: 'long' | 'short'; size: number }>(
     async ({ symbol, type, size }) => {
       const response = await axios.post('/api/qcity/trading/positions', { symbol, type, size });
       return response.data;
     },
     {
       onSuccess: () => refetchPositions(),
-      onError: (err: AxiosError) => setError(err),
+      onError: (err: any) => setError(err),
     }
   );
 
   // Close position mutation
-  const closePositionMutation = useMutation<void, AxiosError, string>(
+  const closePositionMutation = useMutation<void, any, string>(
     async (positionId) => {
       const response = await axios.delete('/api/qcity/trading/positions', { data: { positionId } });
       return response.data;
     },
     {
       onSuccess: () => refetchPositions(),
-      onError: (err: AxiosError) => setError(err),
+      onError: (err: any) => setError(err),
     }
   );
 
   // Update config mutation
-  const updateConfigMutation = useMutation<void, AxiosError, Partial<TradingConfig>>(
+  const updateConfigMutation = useMutation<void, any, Partial<TradingConfig>>(
     async (newConfig) => {
       const response = await axios.post('/api/qcity/trading/config', newConfig);
       return response.data;
@@ -90,7 +90,7 @@ export function useTrading() {
         refetchConfig();
         refetchPositions();
       },
-      onError: (err: AxiosError) => setError(err),
+      onError: (err: any) => setError(err),
     }
   );
 

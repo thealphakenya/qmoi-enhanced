@@ -67,7 +67,7 @@ interface QMOIContextType {
   updateUserPreferences: (
     preferences: Partial<
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
-    >,
+    >
   ) => void;
   getAvatarInfo: (avatarId: string) => any;
   getVoiceInfo: (voiceId: string) => any;
@@ -94,7 +94,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
     voiceVolume: 80,
 
     // Mood & Personality
-    mood: "friendly",
+    mood: "happy",
     energy: 85,
     personality: "helpful",
 
@@ -137,7 +137,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   useEffect(() => {
     const updateMoodByTime = () => {
       const hour = new Date().getHours();
-      let newMood: QMOIState["mood"] = "friendly";
+      let newMood: QMOIState["mood"] = "happy";
 
       if (hour < 6) newMood = "calm";
       else if (hour < 12) newMood = "excited";
@@ -245,7 +245,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   const updateUserPreferences = (
     preferences: Partial<
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
-    >,
+    >
   ) => {
     setState((prev) => ({ ...prev, ...preferences }));
   };
@@ -272,7 +272,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   const getCompatibleAvatar = (voiceId: string) => {
     const voice = voiceProfiles.find((v) => v.id === voiceId);
     const compatibleAvatar = avatarsConfig.find(
-      (a) => a.voiceProfile === voiceId,
+      (a) => a.voiceProfile === voiceId
     );
     return compatibleAvatar?.id || "default";
   };

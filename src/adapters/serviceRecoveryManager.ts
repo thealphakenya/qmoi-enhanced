@@ -1,7 +1,7 @@
 // Service Recovery Mechanism
 // Monitors services, detects failures, and implements automatic recovery strategies
 
-import { healthCheckService } from './healthCheckService';
+import { healthCheckService } from "./healthCheckService";
 
 export interface RecoveryStrategy {
   name: string;
@@ -25,10 +25,42 @@ class ServiceRecoveryManager {
   private enabled: boolean = false;
 
   private strategies: Map<string, RecoveryStrategy> = new Map([
-    ['http-server', { name: 'HTTP Server', maxAttempts: 3, backoffMs: 2000, exponentialBackoff: true }],
-    ['api-endpoint', { name: 'API Endpoint', maxAttempts: 5, backoffMs: 1000, exponentialBackoff: true }],
-    ['cache-service', { name: 'Cache Service', maxAttempts: 2, backoffMs: 1000, exponentialBackoff: false }],
-    ['background-tasks', { name: 'Background Tasks', maxAttempts: 3, backoffMs: 500, exponentialBackoff: true }]
+    [
+      "http-server",
+      {
+        name: "HTTP Server",
+        maxAttempts: 3,
+        backoffMs: 2000,
+        exponentialBackoff: true,
+      },
+    ],
+    [
+      "api-endpoint",
+      {
+        name: "API Endpoint",
+        maxAttempts: 5,
+        backoffMs: 1000,
+        exponentialBackoff: true,
+      },
+    ],
+    [
+      "cache-service",
+      {
+        name: "Cache Service",
+        maxAttempts: 2,
+        backoffMs: 1000,
+        exponentialBackoff: false,
+      },
+    ],
+    [
+      "background-tasks",
+      {
+        name: "Background Tasks",
+        maxAttempts: 3,
+        backoffMs: 500,
+        exponentialBackoff: true,
+      },
+    ],
   ]);
 
   // ========================================================================
@@ -37,12 +69,12 @@ class ServiceRecoveryManager {
 
   start(): void {
     if (this.enabled) {
-      console.warn('[Recovery] Manager already running');
+      console.warn("[Recovery] Manager already running");
       return;
     }
 
     this.enabled = true;
-    console.info('[Recovery] Service recovery manager started');
+    console.info("[Recovery] Service recovery manager started");
   }
 
   stop(): void {
@@ -56,7 +88,7 @@ class ServiceRecoveryManager {
     }
     this.activeRecoveries.clear();
 
-    console.info('[Recovery] Service recovery manager stopped');
+    console.info("[Recovery] Service recovery manager stopped");
   }
 
   // ========================================================================
@@ -69,7 +101,7 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>
   ): Promise<boolean> {
     if (!this.enabled) {
-      console.warn('[Recovery] Recovery attempted but manager is disabled');
+      console.warn("[Recovery] Recovery attempted but manager is disabled");
       return false;
     }
 
@@ -95,10 +127,12 @@ class ServiceRecoveryManager {
           timestamp: Date.now(),
           reason,
           attemptCount,
-          success: true
+          success: true,
         });
 
-        console.info(`[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`);
+        console.info(
+          `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`
+        );
         return true;
       } catch (err) {
         lastError = err as Error;
@@ -110,11 +144,13 @@ class ServiceRecoveryManager {
             : strategy.backoffMs;
 
           console.warn(
-            `[Recovery] Attempt ${attemptCount} failed, retrying in ${Math.round(backoff)}ms: ${lastError.message}`
+            `[Recovery] Attempt ${attemptCount} failed, retrying in ${Math.round(
+              backoff
+            )}ms: ${lastError.message}`
           );
 
           // Wait before next attempt
-          await new Promise(resolve => setTimeout(resolve, backoff));
+          await new Promise((resolve) => setTimeout(resolve, backoff));
         }
       }
     }
@@ -125,10 +161,12 @@ class ServiceRecoveryManager {
       timestamp: Date.now(),
       reason,
       attemptCount,
-      success: false
+      success: false,
     });
 
-    console.error(`[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`);
+    console.error(
+      `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`
+    );
     return false;
   }
 
@@ -138,10 +176,12 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>,
     delayMs: number
   ): void {
-    console.debug(`[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`);
+    console.debug(
+      `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`
+    );
 
     const timer = setTimeout(() => {
-      this.recover(service, reason, recoveryFn).catch(err => {
+      this.recover(service, reason, recoveryFn).catch((err) => {
         console.error(`[Recovery] Scheduled recovery failed: ${err}`);
       });
       this.activeRecoveries.delete(service);
@@ -172,43 +212,43 @@ class ServiceRecoveryManager {
       throw new Error(`API returned ${response.status}`);
     }
 
-    console.info('[Recovery] API connection restored');
+    console.info("[Recovery] API connection restored");
   }
 
   async recoverCache(): Promise<void> {
-    console.info('[Recovery] Recovering cache service');
+    console.info("[Recovery] Recovering cache service");
 
     // Clear and reinitialize cache
     try {
       // Import would go here - for now just validate
-      console.info('[Recovery] Cache service recovered');
+      console.info("[Recovery] Cache service recovered");
     } catch (err) {
       throw new Error(`Cache recovery failed: ${err}`);
     }
   }
 
   async recoverHealthCheck(): Promise<void> {
-    console.info('[Recovery] Recovering health check service');
+    console.info("[Recovery] Recovering health check service");
 
     // Perform a fresh health check
     try {
       const health = await healthCheckService.performCheck();
-      if (health.status === 'unhealthy') {
-        throw new Error('Health check returned unhealthy status');
+      if (health.status === "unhealthy") {
+        throw new Error("Health check returned unhealthy status");
       }
-      console.info('[Recovery] Health check service recovered');
+      console.info("[Recovery] Health check service recovered");
     } catch (err) {
       throw new Error(`Health check recovery failed: ${err}`);
     }
   }
 
   async recoverBackgroundServices(): Promise<void> {
-    console.info('[Recovery] Recovering background services');
+    console.info("[Recovery] Recovering background services");
 
     // Try to restart background task manager
     try {
       // Import and restart would go here
-      console.info('[Recovery] Background services recovered');
+      console.info("[Recovery] Background services recovered");
     } catch (err) {
       throw new Error(`Background service recovery failed: ${err}`);
     }
@@ -236,13 +276,24 @@ class ServiceRecoveryManager {
     successfulRecoveries: number;
     failedRecoveries: number;
     successRate: number;
-    byService: Record<string, { attempts: number; successes: number; failures: number; rate: number }>;
+    byService: Record<
+      string,
+      { attempts: number; successes: number; failures: number; rate: number }
+    >;
   } {
-    const byService: Record<string, { attempts: number; successes: number; failures: number; rate: number }> = {};
+    const byService: Record<
+      string,
+      { attempts: number; successes: number; failures: number; rate: number }
+    > = {};
 
     for (const event of this.recoveryHistory) {
       if (!byService[event.service]) {
-        byService[event.service] = { attempts: 0, successes: 0, failures: 0, rate: 0 };
+        byService[event.service] = {
+          attempts: 0,
+          successes: 0,
+          failures: 0,
+          rate: 0,
+        };
       }
 
       byService[event.service].attempts++;
@@ -256,19 +307,23 @@ class ServiceRecoveryManager {
     // Calculate rates
     for (const key in byService) {
       const stats = byService[key];
-      stats.rate = stats.attempts > 0 ? (stats.successes / stats.attempts) * 100 : 0;
+      stats.rate =
+        stats.attempts > 0 ? (stats.successes / stats.attempts) * 100 : 0;
     }
 
-    const successful = this.recoveryHistory.filter(e => e.success).length;
+    const successful = this.recoveryHistory.filter((e) => e.success).length;
     const failed = this.recoveryHistory.length - successful;
-    const successRate = this.recoveryHistory.length > 0 ? (successful / this.recoveryHistory.length) * 100 : 0;
+    const successRate =
+      this.recoveryHistory.length > 0
+        ? (successful / this.recoveryHistory.length) * 100
+        : 0;
 
     return {
       totalAttempts: this.recoveryHistory.length,
       successfulRecoveries: successful,
       failedRecoveries: failed,
       successRate,
-      byService
+      byService,
     };
   }
 
@@ -278,10 +333,10 @@ class ServiceRecoveryManager {
 
   private getDefaultStrategy(): RecoveryStrategy {
     return {
-      name: 'Default',
+      name: "Default",
       maxAttempts: 3,
       backoffMs: 1000,
-      exponentialBackoff: true
+      exponentialBackoff: true,
     };
   }
 
@@ -312,19 +367,19 @@ class ServiceRecoveryManager {
     enabled: boolean;
     activeRecoveries: string[];
     historySize: number;
-    summary: ReturnType<typeof this.getRecoverySummary>;
+    summary: any;
   } {
     return {
       enabled: this.enabled,
       activeRecoveries: Array.from(this.activeRecoveries.keys()),
       historySize: this.recoveryHistory.length,
-      summary: this.getRecoverySummary()
+      summary: this.getRecoverySummary(),
     };
   }
 
   clearHistory(): void {
     this.recoveryHistory = [];
-    console.info('[Recovery] History cleared');
+    console.info("[Recovery] History cleared");
   }
 }
 

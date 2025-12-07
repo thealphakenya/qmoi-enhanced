@@ -119,7 +119,7 @@ class QMOIRevenueEngine {
         await this.sleep(300000); // 5 minutes between cycles
       } catch (error) {
         console.error("Revenue generation cycle failed:", error);
-        logEvent("revenue_cycle_failed", { error: error.message });
+        logEvent("revenue_cycle_failed", { error: (error as any)?.message || String(error) });
         await this.sleep(60000); // Wait 1 minute before retry
       }
     }
@@ -182,7 +182,7 @@ class QMOIRevenueEngine {
       stream.status = "failed";
       logEvent("revenue_stream_failed", {
         stream: stream.name,
-        error: error.message,
+        error: (error as any)?.message || String(error),
       });
     }
   }
@@ -243,7 +243,7 @@ class QMOIRevenueEngine {
 
   private getMarketConditions(): "bull" | "bear" | "neutral" {
     const conditions = ["bull", "bear", "neutral"];
-    return conditions[Math.floor(Math.random() * conditions.length)];
+    return conditions[Math.floor(Math.random() * conditions.length)] as "bull" | "bear" | "neutral";
   }
 
   private addTransaction(transaction: RevenueTransaction) {
@@ -266,7 +266,7 @@ class QMOIRevenueEngine {
         }
       } catch (error) {
         console.error("Periodic transfer failed:", error);
-        logEvent("periodic_transfer_failed", { error: error.message });
+        logEvent("periodic_transfer_failed", { error: (error as any)?.message || String(error) });
       }
     }, 3600000); // Check every hour
   }
@@ -308,11 +308,11 @@ class QMOIRevenueEngine {
             });
           }
         } catch (error) {
-          logEvent("mpesa_status_check_failed", { error: error.message });
+          logEvent("mpesa_status_check_failed", { error: (error as any)?.message || String(error) });
         }
       }, 30000); // Check after 30 seconds
     } catch (error) {
-      logEvent("mpesa_transfer_failed", { error: error.message });
+      logEvent("mpesa_transfer_failed", { error: (error as any)?.message || String(error) });
       throw error;
     }
   }

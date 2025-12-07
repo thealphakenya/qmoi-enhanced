@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Chatbot } from './Chatbot';
-import './AlphaQAiSystem.css';
+import React, { useState, useEffect } from "react";
+import { Chatbot } from "./Chatbot";
+import "./AlphaQAiSystem.css";
 
 interface SystemMetrics {
   cpuUsage: number;
@@ -14,9 +14,11 @@ const AlphaQAiSystem = () => {
     cpuUsage: 35,
     memoryUsage: 62,
     responseTime: 145,
-    uptime: '12h 34m'
+    uptime: "12h 34m",
   });
-  const [activeTab, setActiveTab] = useState<'chat' | 'metrics' | 'settings'>('chat');
+  const [activeTab, setActiveTab] = useState<"chat" | "metrics" | "settings">(
+    "chat"
+  );
   const [autoUpdate, setAutoUpdate] = useState(true);
 
   useEffect(() => {
@@ -25,18 +27,29 @@ const AlphaQAiSystem = () => {
     const interval = setInterval(() => {
       setMetrics((prev) => ({
         ...prev,
-        cpuUsage: Math.max(20, Math.min(90, prev.cpuUsage + (Math.random() - 0.5) * 10)),
-        memoryUsage: Math.max(30, Math.min(95, prev.memoryUsage + (Math.random() - 0.5) * 5)),
-        responseTime: Math.max(50, Math.min(500, prev.responseTime + (Math.random() - 0.5) * 50))
+        cpuUsage: Math.max(
+          20,
+          Math.min(90, prev.cpuUsage + (Math.random() - 0.5) * 10)
+        ),
+        memoryUsage: Math.max(
+          30,
+          Math.min(95, prev.memoryUsage + (Math.random() - 0.5) * 5)
+        ),
+        responseTime: Math.max(
+          50,
+          Math.min(500, prev.responseTime + (Math.random() - 0.5) * 50)
+        ),
       }));
     }, 3000);
     return () => clearInterval(interval);
   }, [autoUpdate]);
 
   const getHealthStatus = () => {
-    if (metrics.cpuUsage < 70 && metrics.memoryUsage < 80) return { status: 'healthy', color: '#4CAF50' };
-    if (metrics.cpuUsage < 85 && metrics.memoryUsage < 90) return { status: 'warning', color: '#FF9800' };
-    return { status: 'critical', color: '#F44336' };
+    if (metrics.cpuUsage < 70 && metrics.memoryUsage < 80)
+      return { status: "healthy", color: "#4CAF50" };
+    if (metrics.cpuUsage < 85 && metrics.memoryUsage < 90)
+      return { status: "warning", color: "#FF9800" };
+    return { status: "critical", color: "#F44336" };
   };
 
   const health = getHealthStatus();
@@ -46,34 +59,37 @@ const AlphaQAiSystem = () => {
       <div className="system-header">
         <h1>Alpha-Q AI System</h1>
         <div className="health-badge" style={{ borderColor: health.color }}>
-          <span style={{ color: health.color }}>● {health.status.toUpperCase()}</span>
+          <span style={{ color: health.color }}>
+            ● {health.status.toUpperCase()}
+          </span>
         </div>
       </div>
 
       <div className="tabs">
         <button
-          className={`tab ${activeTab === 'chat' ? 'active' : ''}`}
-          onClick={() => setActiveTab('chat')}\n        >
+          className={`tab ${activeTab === "chat" ? "active" : ""}`}
+          onClick={() => setActiveTab("chat")}
+        >
           💬 Chat
         </button>
         <button
-          className={`tab ${activeTab === 'metrics' ? 'active' : ''}`}
-          onClick={() => setActiveTab('metrics')}
+          className={`tab ${activeTab === "metrics" ? "active" : ""}`}
+          onClick={() => setActiveTab("metrics")}
         >
           📊 Metrics
         </button>
         <button
-          className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
-          onClick={() => setActiveTab('settings')}
+          className={`tab ${activeTab === "settings" ? "active" : ""}`}
+          onClick={() => setActiveTab("settings")}
         >
           ⚙️ Settings
         </button>
       </div>
 
       <div className="tab-content">
-        {activeTab === 'chat' && <Chatbot />}
+        {activeTab === "chat" && <Chatbot />}
 
-        {activeTab === 'metrics' && (
+        {activeTab === "metrics" && (
           <div className="metrics-panel">
             <div className="metric-card">
               <span className="metric-label">CPU Usage</span>
@@ -82,11 +98,14 @@ const AlphaQAiSystem = () => {
                   className="metric-fill"
                   style={{
                     width: `${metrics.cpuUsage}%`,
-                    backgroundColor: metrics.cpuUsage > 70 ? '#FF9800' : '#4CAF50'
+                    backgroundColor:
+                      metrics.cpuUsage > 70 ? "#FF9800" : "#4CAF50",
                   }}
                 ></div>
               </div>
-              <span className="metric-value">{metrics.cpuUsage.toFixed(1)}%</span>
+              <span className="metric-value">
+                {metrics.cpuUsage.toFixed(1)}%
+              </span>
             </div>
 
             <div className="metric-card">
@@ -96,16 +115,21 @@ const AlphaQAiSystem = () => {
                   className="metric-fill"
                   style={{
                     width: `${metrics.memoryUsage}%`,
-                    backgroundColor: metrics.memoryUsage > 80 ? '#FF9800' : '#4CAF50'
+                    backgroundColor:
+                      metrics.memoryUsage > 80 ? "#FF9800" : "#4CAF50",
                   }}
                 ></div>
               </div>
-              <span className="metric-value">{metrics.memoryUsage.toFixed(1)}%</span>
+              <span className="metric-value">
+                {metrics.memoryUsage.toFixed(1)}%
+              </span>
             </div>
 
             <div className="metric-card">
               <span className="metric-label">Response Time</span>
-              <span className="metric-value">{metrics.responseTime.toFixed(0)}ms</span>
+              <span className="metric-value">
+                {metrics.responseTime.toFixed(0)}ms
+              </span>
             </div>
 
             <div className="metric-card">
@@ -115,7 +139,7 @@ const AlphaQAiSystem = () => {
           </div>
         )}
 
-        {activeTab === 'settings' && (
+        {activeTab === "settings" && (
           <div className="settings-panel">
             <div className="setting-item">
               <label>Auto-Update Metrics</label>
@@ -141,4 +165,4 @@ const AlphaQAiSystem = () => {
   );
 };
 
-export default AlphaQAiSystem; 
+export default AlphaQAiSystem;

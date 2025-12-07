@@ -13,7 +13,7 @@ import {
   DocumentManagerPanel,
 } from "./index";
 import DeploymentStatusDashboard from "../../../components/DeploymentStatusDashboard";
-import QmoiRevenueDashboard from "../../QmoiRevenueDashboard";
+import QmoiRevenueDashboard from "@/components/QmoiRevenueDashboard";
 import { TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 interface RoleBasedDashboardProps {

@@ -11,3 +11,5 @@ declare module "@radix-ui/react-toggle";
 declare module "@radix-ui/react-toggle-group";
 declare module "@radix-ui/react-slider";
 declare module "@radix-ui/react-portal";
+declare module "@radix-ui/react-checkbox";
+declare module "recharts";

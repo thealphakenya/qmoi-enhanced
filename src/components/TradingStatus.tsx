@@ -130,9 +130,19 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
           </Box>
         ) : (
           <>
-            <Grid container spacing={2}>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: "1fr",
+                  sm: "1fr 1fr",
+                  md: "1fr 1fr 1fr",
+                },
+                gap: 2,
+              }}
+            >
               {walletBalances.map((wallet) => (
-                <Grid item xs={12} sm={6} md={4} key={wallet.currency}>
+                <Box key={wallet.currency}>
                   <Card variant="outlined">
                     <CardContent>
                       <Box display="flex" alignItems="center" gap={1} mb={1}>
@@ -149,9 +159,9 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
                       </Typography>
                     </CardContent>
                   </Card>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
 
             <Box mt={2}>
               <Typography variant="caption" color="text.secondary">

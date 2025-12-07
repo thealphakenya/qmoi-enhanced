@@ -56,7 +56,7 @@ export default function PluginPanel() {
   const [configuring, setConfiguring] = useState<string | null>(null);
   const [pluginFile, setPluginFile] = useState<File | null>(null);
   const [pluginConfig, setPluginConfig] = useState<{ [key: string]: string }>(
-    {},
+    {}
   );
   const { toast } = useToast();
 
@@ -82,7 +82,7 @@ export default function PluginPanel() {
       toast({
         title: "Plugin Uploaded",
         description: pluginFile.name,
-        variant: "success",
+        variant: "default",
       });
       setPlugins((prev) => [...prev, pluginFile.name]);
       setPluginFile(null);
@@ -97,7 +97,7 @@ export default function PluginPanel() {
       toast({
         title: "Plugin Removed",
         description: plugin,
-        variant: "success",
+        variant: "default",
       });
       setPlugins((prev) => prev.filter((p) => p !== plugin));
       setRemoving(null);
@@ -111,7 +111,7 @@ export default function PluginPanel() {
       toast({
         title: "Plugin Configured",
         description: plugin,
-        variant: "success",
+        variant: "default",
       });
       setConfiguring(null);
     }, 1000);

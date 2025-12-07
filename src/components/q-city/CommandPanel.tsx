@@ -48,7 +48,7 @@ export default function CommandPanel() {
     };
     if (stream) {
       const es = new EventSource(
-        `/api/qcity/remote-command?body=${encodeURIComponent(body)}`,
+        `/api/qcity/remote-command?body=${encodeURIComponent(body)}`
       );
       eventSourceRef.current = es;
       es.onmessage = (e) => {
@@ -127,7 +127,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">Pinned:</span>
-        {pinned.map((c, i) => (
+        {pinned.map((c: any, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(c)}
@@ -139,7 +139,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">History:</span>
-        {history.map((h, i) => (
+        {history.map((h: any, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(h.cmd)}

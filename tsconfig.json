@@ -22,7 +22,7 @@
       "@/app/*": ["./app/*"],
       "@/services/*": ["./src/services/*"],
       "@/adapters/*": ["./src/adapters/*"],
-      "@/hooks/*": ["./src/hooks/*"],
+      "@/hooks/*": ["./hooks/*", "./src/hooks/*"],
       "@/lib/*": ["./lib/*"]
     },
     "allowJs": true,
