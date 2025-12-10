@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useQMOIAuth } from "./QMOIStateProvider";
+import { useAuth } from "../../hooks/useAuth";
 
-const fetchZeroRatedStatus = async () => {
+interface ZeroRatedStatus {
+  active: boolean;
+  lastUsed: string;
+  logs: Array<{ time: string; event: string }>;
+}
+
+const fetchZeroRatedStatus = async (): Promise<ZeroRatedStatus> => {
   // Placeholder: fetch status from backend or local state
   return {
     active: true,
@@ -17,8 +23,9 @@ const fetchZeroRatedStatus = async () => {
 };
 
 export default function ZeroRatedPanel() {
-  const { isMaster } = useQMOIAuth();
-  const [status, setStatus] = useState({
+  const { user } = useAuth();
+  const isMaster = user?.role === "master";
+  const [status, setStatus] = useState<ZeroRatedStatus>({
     active: false,
     lastUsed: "",
     logs: [],

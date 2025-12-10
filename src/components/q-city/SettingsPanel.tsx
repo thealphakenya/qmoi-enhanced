@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 
 export default function SettingsPanel() {
   const [zeroRatedEnabled, setZeroRatedEnabled] = useState(() => {
     return localStorage.getItem("qmoizeroRatedEnabled") === "true";
   });
-  const handleZeroRatedChange = (e) => {
+  const handleZeroRatedChange = (e: ChangeEvent<HTMLInputElement>) => {
     setZeroRatedEnabled(e.target.checked);
-    localStorage.setItem("qmoizeroRatedEnabled", e.target.checked);
+    localStorage.setItem("qmoizeroRatedEnabled", String(e.target.checked));
   };
   return (
     <div className="settings-panel">

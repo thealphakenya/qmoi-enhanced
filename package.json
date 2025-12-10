@@ -66,6 +66,7 @@
     "@types/react": "19.2.7",
     "@types/winston": "^2.4.4",
     "eslint": "^8.48.0",
+    "msw": "^2.12.4",
     "react-scripts": "^5.0.1",
     "typescript": "^5.2.0"
   },

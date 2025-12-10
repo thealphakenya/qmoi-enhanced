@@ -373,10 +373,11 @@ export class BrowserService {
       await this.processAIFeatures(tab, url);
     } catch (error) {
       tab.isLoading = false;
+      const errMsg = error instanceof Error ? error.message : String(error);
       this.eventEmitter.emit("navigationError", {
         tabId,
         url,
-        error: error.message,
+        error: errMsg,
       });
       logger.error(`Navigation failed for tab ${tabId}:`, error);
       throw error;
@@ -406,7 +407,9 @@ export class BrowserService {
               break;
           }
         } catch (error) {
-          logger.error(`AI feature ${feature.id} failed:`, error);
+          const errDetails =
+            error instanceof Error ? error.message : String(error);
+          logger.error(`AI feature ${feature.id} failed: ${errDetails}`);
         }
       }
     }
@@ -414,7 +417,7 @@ export class BrowserService {
 
   private async processSmartSearch(
     tab: BrowserTab,
-    url: string,
+    url: string
   ): Promise<void> {
     // Simulate smart search processing
     const suggestions = await this.generateSearchSuggestions(url);
@@ -423,7 +426,7 @@ export class BrowserService {
 
   private async processContentSummary(
     tab: BrowserTab,
-    url: string,
+    url: string
   ): Promise<void> {
     // Simulate content summary generation
     const summary = await this.generateContentSummary(url);
@@ -432,7 +435,7 @@ export class BrowserService {
 
   private async processTranslation(
     tab: BrowserTab,
-    url: string,
+    url: string
   ): Promise<void> {
     // Simulate translation processing
     const translation = await this.translateContent(url);
@@ -475,7 +478,7 @@ export class BrowserService {
   }
 
   private async translateContent(
-    url: string,
+    url: string
   ): Promise<{ original: string; translated: string; language: string }> {
     // Simulate translation
     return {
@@ -486,7 +489,7 @@ export class BrowserService {
   }
 
   private async analyzeSecurity(
-    url: string,
+    url: string
   ): Promise<{ isSafe: boolean; threats: string[]; score: number }> {
     // Simulate security analysis
     return {
@@ -600,7 +603,7 @@ export class BrowserService {
     tabId: string,
     title: string,
     url: string,
-    folder: string = "Bookmarks",
+    folder: string = "Bookmarks"
   ): void {
     const bookmark: Bookmark = {
       id: this.generateId(),
@@ -621,12 +624,18 @@ export class BrowserService {
 
   public async downloadFile(url: string, filename: string): Promise<void> {
     const downloadId = this.generateId();
-    const download = {
+    const download: {
+      id: string;
+      filename: string;
+      url: string;
+      progress: number;
+      status: "pending" | "downloading" | "completed" | "failed";
+    } = {
       id: downloadId,
       filename,
       url,
       progress: 0,
-      status: "pending" as const,
+      status: "pending",
     };
 
     this.downloads.push(download);
@@ -646,9 +655,10 @@ export class BrowserService {
       this.eventEmitter.emit("downloadCompleted", download);
     } catch (error) {
       download.status = "failed";
+      const errMsg = error instanceof Error ? error.message : String(error);
       this.eventEmitter.emit("downloadFailed", {
         downloadId,
-        error: error.message,
+        error: errMsg,
       });
     }
   }
@@ -757,25 +767,25 @@ export class BrowserService {
   }
 
   public onNavigationStarted(
-    callback: (data: { tabId: string; url: string }) => void,
+    callback: (data: { tabId: string; url: string }) => void
   ): void {
     this.eventEmitter.on("navigationStarted", callback);
   }
 
   public onNavigationCompleted(
-    callback: (data: { tabId: string; url: string }) => void,
+    callback: (data: { tabId: string; url: string }) => void
   ): void {
     this.eventEmitter.on("navigationCompleted", callback);
   }
 
   public onNavigationError(
-    callback: (data: { tabId: string; url: string; error: string }) => void,
+    callback: (data: { tabId: string; url: string; error: string }) => void
   ): void {
     this.eventEmitter.on("navigationError", callback);
   }
 
   public onDeveloperToolsToggled(
-    callback: (data: { tabId: string; isOpen: boolean }) => void,
+    callback: (data: { tabId: string; isOpen: boolean }) => void
   ): void {
     this.eventEmitter.on("developerToolsToggled", callback);
   }
@@ -789,7 +799,7 @@ export class BrowserService {
   }
 
   public onDownloadProgress(
-    callback: (data: { downloadId: string; progress: number }) => void,
+    callback: (data: { downloadId: string; progress: number }) => void
   ): void {
     this.eventEmitter.on("downloadProgress", callback);
   }
@@ -799,19 +809,19 @@ export class BrowserService {
   }
 
   public onSearchSuggestions(
-    callback: (data: { tabId: string; suggestions: string[] }) => void,
+    callback: (data: { tabId: string; suggestions: string[] }) => void
   ): void {
     this.eventEmitter.on("searchSuggestions", callback);
   }
 
   public onContentSummary(
-    callback: (data: { tabId: string; summary: string }) => void,
+    callback: (data: { tabId: string; summary: string }) => void
   ): void {
     this.eventEmitter.on("contentSummary", callback);
   }
 
   public onLiveContent(
-    callback: (data: { tabId: string; content: any }) => void,
+    callback: (data: { tabId: string; content: any }) => void
   ): void {
     this.eventEmitter.on("liveContent", callback);
   }

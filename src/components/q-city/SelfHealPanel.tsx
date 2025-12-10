@@ -34,12 +34,17 @@ const SelfHealPanel: React.FC = () => {
     setSuccess(null);
     try {
       const token = localStorage.getItem("jwtToken");
+      if (!token) {
+        setError("No authentication token found");
+        setRunning(false);
+        return;
+      }
       const es = new EventSource(
         API_URL +
           "?token=" +
           encodeURIComponent(token) +
           "&opts=" +
-          encodeURIComponent(JSON.stringify(options)),
+          encodeURIComponent(JSON.stringify(options))
       );
       eventSourceRef.current = es;
       let logBuffer = "";
@@ -84,7 +89,10 @@ const SelfHealPanel: React.FC = () => {
   };
 
   const handleOptionChange = (opt: string) => {
-    setOptions((prev) => ({ ...prev, [opt]: !prev[opt] }));
+    setOptions((prev) => {
+      const key = opt as keyof typeof prev;
+      return { ...prev, [key]: !prev[key] };
+    });
   };
 
   const handleClearHistory = () => {
@@ -98,7 +106,7 @@ const SelfHealPanel: React.FC = () => {
   };
 
   if (loading) return <div>Loading...</div>;
-  if (!user || (user.role !== "admin" && user.role !== "master")) return null;
+  if (!user || user.role !== "master") return null;
 
   return (
     <div

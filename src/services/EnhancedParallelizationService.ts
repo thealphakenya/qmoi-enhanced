@@ -92,7 +92,7 @@ export class EnhancedParallelizationService extends EventEmitter {
   public async submitTask(
     taskType: ParallelTask["type"],
     priority: ParallelTask["priority"] = "medium",
-    data?: any,
+    data?: any
   ): Promise<string> {
     const task: ParallelTask = {
       id: `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -166,9 +166,10 @@ export class EnhancedParallelizationService extends EventEmitter {
       this.systemHealth.completedTasks++;
     } catch (error) {
       task.status = "failed";
-      task.error = error.message;
+      const errMsg = error instanceof Error ? error.message : String(error);
+      task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, error });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -184,8 +185,8 @@ export class EnhancedParallelizationService extends EventEmitter {
       const timeout = setTimeout(() => {
         reject(
           new Error(
-            `Task ${task.id} timed out after ${this.config.taskTimeout}ms`,
-          ),
+            `Task ${task.id} timed out after ${this.config.taskTimeout}ms`
+          )
         );
       }, this.config.taskTimeout);
 
@@ -210,7 +211,7 @@ export class EnhancedParallelizationService extends EventEmitter {
       this.emit("taskProgress", { taskId: task.id, progress });
 
       await new Promise((resolve) =>
-        setTimeout(resolve, task.estimatedDuration / 10),
+        setTimeout(resolve, task.estimatedDuration / 10)
       );
     }
 

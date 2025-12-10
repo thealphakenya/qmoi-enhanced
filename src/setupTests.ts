@@ -1,8 +1,7 @@
 import "@testing-library/jest-dom";
-import { jest } from '@jest/globals';
+import { jest } from "@jest/globals";
 
 declare global {
-  var fetch: jest.Mock;
   var localStorage: Storage;
   var sessionStorage: Storage;
   var console: Console;
@@ -35,7 +34,7 @@ const localStorageMock = {
   key: jest.fn(),
   length: 0,
 };
-global.localStorage = localStorageMock;
+global.localStorage = localStorageMock as unknown as Storage;
 
 // Mock sessionStorage
 const sessionStorageMock = {
@@ -46,14 +45,7 @@ const sessionStorageMock = {
   key: jest.fn(),
   length: 0,
 };
-global.sessionStorage = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-  clear: jest.fn(),
-  key: jest.fn(),
-  length: 0,
-};
+global.sessionStorage = sessionStorageMock as unknown as Storage;
 
 // Mock console methods to reduce noise in tests
 global.console = {
