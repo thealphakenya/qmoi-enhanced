@@ -1,33 +1,47 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { QCityService } from '@/scripts/services/qcity_service';
-import * as fs from 'fs';
-import * as path from 'path';
+import { NextRequest, NextResponse } from "next/server";
+import { QCityService } from "@/scripts/services/qcity_service";
+import * as fs from "fs";
+import * as path from "path";
 
-const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || 'changeme';
-const AUDIT_LOG_PATH = path.resolve(process.cwd(), 'logs/qcity_audit.log');
+const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
+const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
 function logAudit(entry: any) {
-  const line = JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + '\n';
-  try { fs.appendFileSync(AUDIT_LOG_PATH, line); } catch { /* best-effort logging */ }
+  const line =
+    JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n";
+  try {
+    fs.appendFileSync(AUDIT_LOG_PATH, line);
+  } catch {
+    /* best-effort logging */
+  }
 }
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   // Simple admin API key check for production usage
-  const apiKey = req.headers.get('x-qcity-admin-key') || '';
+  const apiKey = req.headers.get("x-qcity-admin-key") || "";
   if (apiKey !== ADMIN_KEY) {
-    logAudit({ action: 'unauthorized', ip: req.headers.get('x-forwarded-for'), status: 401 });
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    logAudit({
+      action: "unauthorized",
+      ip: req.headers.get("x-forwarded-for"),
+      status: 401,
+    });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { cmd, stream, deviceId = 'default' } = await req.json().catch(() => ({} as any));
-  if (!cmd) return NextResponse.json({ error: 'No command provided' }, { status: 400 });
+  const {
+    cmd,
+    stream,
+    deviceId = "default",
+  } = await req.json().catch(() => ({} as any));
+  if (!cmd)
+    return NextResponse.json({ error: "No command provided" }, { status: 400 });
 
   const qcityService = new QCityService();
   await qcityService.initialize();
 
-  logAudit({ action: 'run', cmd, deviceId, user: 'admin', status: 'started' });
+  logAudit({ action: "run", cmd, deviceId, user: "admin", status: "started" });
 
   if (stream) {
     // Stream small demo logs (best-effort)
@@ -37,102 +51,41 @@ export async function POST(req: NextRequest) {
         let i = 0;
         function push() {
           if (i < 5) {
-            controller.enqueue(encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`));
+            controller.enqueue(
+              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`)
+            );
             i++;
             setTimeout(push, 300);
           } else {
-            controller.enqueue(encoder.encode('data: [DONE]\n\n'));
+            controller.enqueue(encoder.encode("data: [DONE]\n\n"));
             controller.close();
-            logAudit({ action: 'run', cmd, deviceId, user: 'admin', status: 'done' });
+            logAudit({
+              action: "run",
+              cmd,
+              deviceId,
+              user: "admin",
+              status: "done",
+            });
           }
         }
         push();
-      }
+      },
     });
 
     return new Response(streamBody, {
       headers: {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        Connection: 'keep-alive',
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
       },
     });
   }
 
-  const result = await qcityService.runRemoteCommand(cmd, deviceId).catch((e) => ({ error: String(e) }));
-  logAudit({ action: 'run', cmd, deviceId, user: 'admin', status: 'done' });
+  const result = await qcityService
+    .runRemoteCommand(cmd, deviceId)
+    .catch((e) => ({ error: String(e) }));
+  logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
 
-export const runtime = 'nodejs';
-// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
-import { NextRequest } from 'next/server';
-import { QCityService } from '@/scripts/services/qcity_service';
-import * as fs from 'fs';
-import * as path from 'path';
-import { requireRole } from '../auth/rbac';
-
-const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || 'changeme';
-const AUDIT_LOG_PATH = path.resolve(process.cwd(), 'logs/qcity_audit.log');
-
-function logAudit(entry: any) {
-  const line = JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + '\n';
-  fs.appendFileSync(AUDIT_LOG_PATH, line);
-}
-
-// SSE streaming for real-time logs (stubbed for now)
-export const dynamic = "force-dynamic";
-const handler = requireRole(['admin', 'master'])(async (req: NextRequest) => {
-  // Basic API key authentication for master/admin users
-
-  export async function POST(req: Request) {
-  // Basic API key authentication for master/admin users
-  const apiKey = req.headers.get('x-qcity-admin-key');
-  if (apiKey !== ADMIN_KEY) {
-    logAudit({ action: 'unauthorized', ip: req.headers.get('x-forwarded-for'), status: 401 });
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
-  }
-  const { cmd, stream, deviceId = 'default' } = await req.json();
-  if (!cmd) return new Response(JSON.stringify({ error: 'No command provided' }), { status: 400 });
-  const qcityService = new QCityService();
-  await qcityService.initialize();
-  // Route command to the specified device (stub logic)
-  logAudit({ action: 'run', cmd, deviceId, user: 'admin', status: 'started' });
-  if (stream) {
-    // For [PRODUCTION IMPLEMENTATION REQUIRED]nstration, stream [PRODUCTION IMPLEMENTATION REQUIRED] logs
-    const encoder = new TextEncoder();
-    const streamBody = new ReadableStream({
-      start(controller) {
-        let i = 0;
-        function push() {
-          if (i < 5) {
-            controller.enqueue(encoder.encode(`data: [${deviceId}] Log line ${i+1}\n\n`));
-            i++;
-            setTimeout(push, 500);
-          } else {
-            controller.enqueue(encoder.encode('data: [DONE]\n\n'));
-            controller.close();
-            logAudit({ action: 'run', cmd, deviceId, user: 'admin', status: 'done' });
-          }
-        }
-        push();
-      }
-    });
-    return new Response(streamBody, {
-      headers: {
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive',
-      },
-    });
-  } else {
-    // Pass deviceId for real device routing
-    const result = await qcityService.runRemoteCommand(cmd, deviceId);
-    logAudit({ action: 'run', cmd, deviceId, user: 'admin', status: 'done' });
-    return new Response(JSON.stringify(result), {
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-});
-
-export default handler; 
+export const runtime = "nodejs";
