@@ -1,5 +1,7 @@
 // NOTE: 3 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
 import { promises as fs } from "fs";
 import path from "path";
 

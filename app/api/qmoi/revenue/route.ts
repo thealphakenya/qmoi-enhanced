@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
 
+export const dynamic = "force-dynamic";
+
 // Verify master token
 function verifyMasterToken(req: NextRequest): boolean {
   const masterToken = req.headers.get("x-qmoi-master");

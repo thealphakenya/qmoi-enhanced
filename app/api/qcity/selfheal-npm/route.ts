@@ -4,6 +4,8 @@ import { spawn } from "child_process";
 import os from "os";
 import fs from "fs";
 
+export const dynamic = "force-dynamic";
+
 // [PRODUCTION IMPLEMENTATION REQUIRED] for JWT verification (replace with your actual logic)
 function verifyJWT(token: string): { valid: boolean; role?: string } {
   try {

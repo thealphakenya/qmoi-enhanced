@@ -2,6 +2,8 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 // Cloud-offloading and dashboard integration utilities
 interface CloudTask {
   id: string;
