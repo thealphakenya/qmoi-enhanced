@@ -1,6 +1,10 @@
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 export async function GET() {
-  return NextResponse.json({ message: 'Earning enhanced [PRODUCTION IMPLEMENTATION REQUIRED]' });
-} 
+  // Placeholder endpoint: production integration required
+  return NextResponse.json(
+    { error: "Earning enhanced API not implemented" },
+    { status: 501 }
+  );
+}
