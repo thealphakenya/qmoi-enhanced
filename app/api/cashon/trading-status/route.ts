@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "../../../../lib/proposals";
 import { cashonWallet } from "@/lib/cashon-wallet";
 
 export const dynamic = "force-dynamic";
@@ -20,11 +21,12 @@ function verifyMasterToken(request: NextRequest): string | null {
 // GET /api/cashon/trading-status
 export async function GET(request: NextRequest) {
   try {
+    const apiAuth = requireApiKey(request.headers);
     const masterToken = verifyMasterToken(request);
-    if (!masterToken) {
+    if (!apiAuth.ok && !masterToken) {
       return NextResponse.json(
-        { error: "Master access required" },
-        { status: 401 }
+        apiAuth.response?.body || { error: "Master access required" },
+        { status: apiAuth.response?.status || 401 }
       );
     }
 

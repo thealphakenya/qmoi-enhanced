@@ -1,6 +1,7 @@
 // NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
+import { requireApiKey } from "../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -177,10 +178,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (masterOverride && !isMaster(request)) {
+    const apiAuth = requireApiKey(request.headers);
+    if (masterOverride && !apiAuth.ok && !isMaster(request)) {
       return NextResponse.json(
-        { error: "Master access required for override" },
-        { status: 403 }
+        apiAuth.response?.body || {
+          error: "Master access required for override",
+        },
+        { status: apiAuth.response?.status || 403 }
       );
     }
 

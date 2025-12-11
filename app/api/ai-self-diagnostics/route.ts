@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -20,9 +21,12 @@ interface DiagnosticResponse {
 }
 
 export async function GET(request: NextRequest) {
+  const apiAuth = requireApiKey(request.headers);
   const adminToken = request.headers.get("x-admin-token");
-  if (adminToken !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
+    return NextResponse.json(apiAuth.response?.body || { error: "Forbidden" }, {
+      status: apiAuth.response?.status || 403,
+    });
   }
 
   const searchParams = request.nextUrl.searchParams;
@@ -73,9 +77,12 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const apiAuth = requireApiKey(request.headers);
   const adminToken = request.headers.get("x-admin-token");
-  if (adminToken !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
+    return NextResponse.json(apiAuth.response?.body || { error: "Forbidden" }, {
+      status: apiAuth.response?.status || 403,
+    });
   }
 
   const searchParams = request.nextUrl.searchParams;

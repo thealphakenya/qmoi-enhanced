@@ -1,24 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "../../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export async function GET(request: NextRequest) {
   try {
-    // Verify master access
+    // Prefer API key based auth, fallback to QMOI_MASTER_API_KEY
+    const apiAuth = requireApiKey(request.headers);
     const authHeader = request.headers.get("authorization");
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    const masterKey =
+      authHeader && authHeader.startsWith("Bearer ")
+        ? authHeader.substring(7)
+        : null;
+    if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
-        { error: "Master access required" },
-        { status: 401 }
-      );
-    }
-
-    const masterKey = authHeader.substring(7);
-    if (masterKey !== process.env.QMOI_MASTER_API_KEY) {
-      return NextResponse.json(
-        { error: "Invalid master key" },
-        { status: 403 }
+        apiAuth.response?.body || { error: "Master access required" },
+        { status: apiAuth.response?.status || 401 }
       );
     }
 
