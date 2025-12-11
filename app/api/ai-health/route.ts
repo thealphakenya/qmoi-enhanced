@@ -1,6 +1,9 @@
 // NOTE: 13 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
+import { requireApiKey } from '../../../../lib/proposals';
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 interface AIHealthMetrics {
   cpu: {
@@ -69,6 +72,10 @@ interface AIHealthStatus {
 }
 
 export async function GET(request: NextRequest) {
+  const auth = requireApiKey(request.headers as any);
+  if (!auth.ok) {
+    return NextResponse.json(auth.response?.body || { error: 'Unauthorized' }, { status: auth.response?.status || 401 });
+  }
   try {
     const searchParams = request.nextUrl.searchParams;
     const detailed = searchParams.get('detailed') === 'true';
@@ -247,6 +254,10 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const auth = requireApiKey(request.headers as any);
+  if (!auth.ok) {
+    return NextResponse.json(auth.response?.body || { error: 'Unauthorized' }, { status: auth.response?.status || 401 });
+  }
   try {
     const body = await request.json();
     const { action, component, settings } = body;
