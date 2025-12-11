@@ -10,6 +10,7 @@
     "test:auth": "node --loader ts-node/esm ./scripts/tests/requireApiKeyTest.ts",
     "test:endpoint": "node --loader ts-node/esm ./scripts/tests/endpoint_gating_test.ts",
     "test:flags": "node --loader ts-node/esm ./scripts/tests/route_flags_test.ts",
+    "test:authpresence": "node ./scripts/tests/auth_gating_presence_test.js",
     "env-setup": "node scripts/qmoi-env-setup.js"
   },
   "dependencies": {
