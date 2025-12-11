@@ -1,5 +1,6 @@
 // NOTE: 3 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -23,8 +24,9 @@ const authenticateMaster = (request: NextRequest) => {
 // GET /api/qmoi/revenue-dashboard
 export async function GET(request: NextRequest) {
   try {
-    // Authenticate master access
-    if (!authenticateMaster(request)) {
+    // Authenticate master access (API key preferred)
+    const apiAuth = requireApiKey(request.headers);
+    if (!apiAuth.ok && !authenticateMaster(request)) {
       return NextResponse.json(
         { error: "Master access required" },
         { status: 401 }
@@ -426,8 +428,9 @@ export async function GET(request: NextRequest) {
 // POST /api/qmoi/revenue-dashboard/export
 export async function POST(request: NextRequest) {
   try {
-    // Authenticate master access
-    if (!authenticateMaster(request)) {
+    // Authenticate master access (API key preferred)
+    const apiAuth = requireApiKey(request.headers);
+    if (!apiAuth.ok && !authenticateMaster(request)) {
       return NextResponse.json(
         { error: "Master access required" },
         { status: 401 }

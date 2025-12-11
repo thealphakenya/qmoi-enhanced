@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -43,6 +44,10 @@ let nowPlaying = {
 const listeners = 3;
 
 function isMaster(req: NextRequest) {
+  try {
+    const auth = requireApiKey(req.headers);
+    if (auth.ok) return true;
+  } catch (e) {}
   return req.headers.get("x-qmoi-master") === "true";
 }
 
@@ -76,8 +81,11 @@ export async function GET_STATUS(req: NextRequest) {
 }
 
 export async function POST_PROGRAM(req: NextRequest) {
-  if (!isMaster(req))
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  const auth = requireApiKey(req.headers);
+  if (!auth.ok && !isMaster(req))
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
+      status: auth.response?.status || 403,
+    });
   const body = await req.json();
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);

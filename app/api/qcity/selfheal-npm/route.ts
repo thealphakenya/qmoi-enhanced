@@ -1,5 +1,6 @@
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest } from "next/server";
+import { requireApiKey } from "../../../../lib/proposals";
 import { spawn } from "child_process";
 import os from "os";
 import fs from "fs";
@@ -53,14 +54,20 @@ function logDownloadFix(
 }
 
 export async function POST(req: NextRequest) {
-  const auth = req.headers.get("authorization");
-  if (!auth || !auth.startsWith("Bearer ")) {
-    return new Response("Authentication required", { status: 401 });
-  }
-  const token = auth.replace("Bearer ", "").trim();
-  const jwt = verifyJWT(token);
-  if (!jwt.valid) {
-    return new Response("Insufficient permissions", { status: 403 });
+  const apiAuth = requireApiKey(req.headers);
+  let jwt: any = { valid: false };
+  if (apiAuth.ok) {
+    jwt.valid = true; // allow API key or master token
+  } else {
+    const auth = req.headers.get("authorization");
+    if (!auth || !auth.startsWith("Bearer ")) {
+      return new Response("Authentication required", { status: 401 });
+    }
+    const token = auth.replace("Bearer ", "").trim();
+    jwt = verifyJWT(token);
+    if (!jwt.valid) {
+      return new Response("Insufficient permissions", { status: 403 });
+    }
   }
 
   let options: any = {};

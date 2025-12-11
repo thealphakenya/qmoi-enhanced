@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -14,7 +15,11 @@ async function aggregateNews() {
 }
 
 function isMaster(req: NextRequest) {
-  // TODO: Implement real master check (e.g., auth header)
+  // Prefer API keys / MASTER token when available, fallback to x-qmoi-master
+  try {
+    const auth = requireApiKey(req.headers);
+    if (auth.ok) return true;
+  } catch (e) {}
   return req.headers.get("x-qmoi-master") === "true";
 }
 
@@ -32,6 +37,13 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   // Submit new news item (master only for advanced fields)
+  // Check API key or master header
+  const auth = requireApiKey(req.headers);
+  if (!auth.ok && !isMaster(req)) {
+    return NextResponse.json(auth.response?.body || { error: "Unauthorized" }, {
+      status: auth.response?.status || 401,
+    });
+  }
   const body = await req.json();
   const isMasterUser = isMaster(req);
   const item = {
@@ -51,8 +63,11 @@ export async function POST(req: NextRequest) {
 
 export async function PUT(req: NextRequest) {
   // Approve, edit, or schedule news (master only)
-  if (!isMaster(req))
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  const auth = requireApiKey(req.headers);
+  if (!auth.ok && !isMaster(req))
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
+      status: auth.response?.status || 403,
+    });
   const body = await req.json();
   const { id, ...updates } = body;
   const idx = newsStore.findIndex((n) => n.id === id);
@@ -68,8 +83,11 @@ export async function PUT(req: NextRequest) {
 
 export async function POST_SCHEDULE(req: NextRequest) {
   // Schedule news (master only)
-  if (!isMaster(req))
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  const auth = requireApiKey(req.headers);
+  if (!auth.ok && !isMaster(req))
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
+      status: auth.response?.status || 403,
+    });
   const body = await req.json();
   const { id, scheduledAt } = body;
   const idx = newsStore.findIndex((n) => n.id === id);
@@ -82,8 +100,11 @@ export async function POST_SCHEDULE(req: NextRequest) {
 
 export async function GET_ANALYTICS(req: NextRequest) {
   // Return analytics for all news (master only)
-  if (!isMaster(req))
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  const auth = requireApiKey(req.headers);
+  if (!auth.ok && !isMaster(req))
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
+      status: auth.response?.status || 403,
+    });
   return NextResponse.json({
     analytics: newsStore.map((n) => ({
       id: n.id,
@@ -96,8 +117,11 @@ export async function GET_ANALYTICS(req: NextRequest) {
 
 export async function POST_MEDIA(req: NextRequest) {
   // Add media to news (master only)
-  if (!isMaster(req))
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  const auth = requireApiKey(req.headers);
+  if (!auth.ok && !isMaster(req))
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
+      status: auth.response?.status || 403,
+    });
   const body = await req.json();
   const { id, media } = body;
   const idx = newsStore.findIndex((n) => n.id === id);
@@ -110,6 +134,12 @@ export async function POST_MEDIA(req: NextRequest) {
 // POST /api/qnews/post - Post news to external platforms
 export async function POST_POST(req: NextRequest) {
   // TODO: Implement posting to WhatsApp, Telegram, etc.
+  const auth = requireApiKey(req.headers);
+  if (!auth.ok && !isMaster(req))
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
+      status: auth.response?.status || 403,
+    });
+
   const body = await req.json();
   // Simulate post
   return NextResponse.json({ success: true, posted: body });

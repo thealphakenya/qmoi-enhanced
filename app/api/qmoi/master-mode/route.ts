@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -21,7 +22,8 @@ const authenticateMaster = (request: NextRequest) => {
 export async function POST(request: NextRequest) {
   try {
     // Authenticate master access
-    if (!authenticateMaster(request)) {
+    const apiAuth = requireApiKey(request.headers);
+    if (!apiAuth.ok && !authenticateMaster(request)) {
       return NextResponse.json(
         { error: "Master access required" },
         { status: 401 }
@@ -62,7 +64,8 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     // Authenticate master access
-    if (!authenticateMaster(request)) {
+    const apiAuth = requireApiKey(request.headers);
+    if (!apiAuth.ok && !authenticateMaster(request)) {
       return NextResponse.json(
         { error: "Master access required" },
         { status: 401 }

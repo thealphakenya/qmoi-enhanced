@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "../../../../lib/proposals";
 import { logEvent } from "../../../../lib/security_check";
 
 export const dynamic = "force-dynamic";
@@ -11,7 +12,8 @@ function verifyMasterToken(req: NextRequest): boolean {
 }
 
 export async function GET(req: NextRequest) {
-  if (!verifyMasterToken(req)) {
+  const apiAuth = requireApiKey(req.headers);
+  if (!apiAuth.ok && !verifyMasterToken(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -62,7 +64,8 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!verifyMasterToken(req)) {
+  const apiAuth = requireApiKey(req.headers);
+  if (!apiAuth.ok && !verifyMasterToken(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

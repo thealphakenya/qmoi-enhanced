@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -35,12 +36,15 @@ export async function POST(request: NextRequest) {
       limit = 100,
     } = body;
 
-    // Check if user is master (you can implement your own authentication logic)
-    const isMaster = await checkMasterAccess(request);
+    // Prefer API keys / MASTER token when available
+    const apiAuth = requireApiKey(request.headers);
+    const isMaster = apiAuth.ok || (await checkMasterAccess(request));
     if (!isMaster) {
       return NextResponse.json(
-        { error: "Master access required" },
-        { status: 403 }
+        apiAuth.ok
+          ? { error: "Master access required" }
+          : apiAuth.response?.body || { error: "Master access required" },
+        { status: apiAuth.ok ? 403 : apiAuth.response?.status || 403 }
       );
     }
 
@@ -109,12 +113,15 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    // Check if user is master
-    const isMaster = await checkMasterAccess(request);
+    // Prefer API keys / MASTER token when available
+    const apiAuth = requireApiKey(request.headers);
+    const isMaster = apiAuth.ok || (await checkMasterAccess(request));
     if (!isMaster) {
       return NextResponse.json(
-        { error: "Master access required" },
-        { status: 403 }
+        apiAuth.ok
+          ? { error: "Master access required" }
+          : apiAuth.response?.body || { error: "Master access required" },
+        { status: apiAuth.ok ? 403 : apiAuth.response?.status || 403 }
       );
     }
 
