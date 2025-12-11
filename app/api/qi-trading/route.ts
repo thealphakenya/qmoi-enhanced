@@ -3,6 +3,9 @@ import { requireApiKey, writeProposal } from "../../../lib/proposals";
 import { TradingService } from "../../../lib/services/trading";
 import { connectToTradingEngine } from "../../../lib/services/trading-engine";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 interface Trade {
   id?: string;
   symbol: string;

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cashonWallet } from "@/lib/cashon-wallet";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 // Verify master token
 function verifyMasterToken(request: NextRequest): string | null {

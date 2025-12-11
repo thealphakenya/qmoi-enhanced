@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 import { promises as fs } from "fs";
 import path from "path";
 

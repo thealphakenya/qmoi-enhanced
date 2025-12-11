@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { qmoiTrader } from "@/lib/qmoi-trader";
 import libProposals from "../../../../lib/proposals";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 // POST /api/cashon/stop-trading
 export async function POST(request: NextRequest) {
   try {

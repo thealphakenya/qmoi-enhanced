@@ -3,6 +3,9 @@ import { cashonWallet } from "@/lib/cashon-wallet";
 import { qmoiTrader } from "@/lib/qmoi-trader";
 import libProposals from "../../../lib/proposals";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 // GET /api/cashon/balance
 export async function GET(request: NextRequest) {
   try {

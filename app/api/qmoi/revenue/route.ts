@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 // Verify master token
 function verifyMasterToken(req: NextRequest): boolean {

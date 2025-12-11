@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-export const dynamic = 'force-dynamic';
-export const runtime = 'nodejs';
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 import { exec } from "child_process";
 import { promisify } from "util";
 import libProposals from "../../../../../lib/proposals";

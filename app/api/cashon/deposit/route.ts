@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { cashonWallet } from "@/lib/cashon-wallet";
 import libProposals from "../../../../lib/proposals";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 // POST /api/cashon/deposit
 export async function POST(request: NextRequest) {
   try {

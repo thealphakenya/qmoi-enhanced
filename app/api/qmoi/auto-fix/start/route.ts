@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-export const dynamic = 'force-dynamic';
-export const runtime = 'nodejs';
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 import { spawn } from "child_process";
 import path from "path";
 import fs from "fs";
