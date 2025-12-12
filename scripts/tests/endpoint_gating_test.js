@@ -52,7 +52,7 @@ async function testLanguagePlaceholders(languageHandler) {
     },
   };
   await languageHandler(
-    { method: "POST", body: { action: "translate" }, headers: makeHeaders() },
+    { method: "POST", body: { action: "translate" }, headers: {} },
     res
   );
   assert(
@@ -76,7 +76,7 @@ async function testLanguagePlaceholders(languageHandler) {
     {
       method: "POST",
       body: { action: "translate" },
-      headers: makeHeaders({ "x-api-key": "test-api" }),
+      headers: { "x-api-key": "test-api" },
     },
     res2
   );
@@ -122,10 +122,24 @@ async function runAll() {
 
     let aiHealthGET, languageHandler, qnewsPOST;
 
+    function extractHandler(mod, method) {
+      if (!mod) return undefined;
+      const userland = mod?.default?.routeModule?.userland;
+      if (userland) {
+        if (method && userland[method]) return userland[method];
+        if (!method && userland.default) return userland.default;
+      }
+      if (method && (mod[method] || mod?.default?.[method]))
+        return mod[method] ?? mod?.default?.[method];
+      if (mod?.default) return mod.default;
+      return undefined;
+    }
+
     if (fs.existsSync(aiHealthPath)) {
       const mod = await import(pathToFileURL(aiHealthPath).href);
-      aiHealthGET = mod?.default?.routeModule?.userland?.GET ?? mod?.GET;
+      aiHealthGET = extractHandler(mod, "GET");
     } else {
+      await import("esbuild-register");
       ({ GET: aiHealthGET } = await import(
         pathToFileURL(path.resolve(process.cwd(), "app/api/ai-health/route.ts"))
           .href
@@ -134,14 +148,9 @@ async function runAll() {
 
     if (fs.existsSync(langPath)) {
       const mod = await import(pathToFileURL(langPath).href);
-      // language route is exported as default handler in source; in compiled form it may be under default.routeModule.userland.default
-      languageHandler =
-        mod?.default?.routeModule?.userland?.default ??
-        mod?.default ??
-        mod?.languageHandler ??
-        mod?.default?.default ??
-        mod.default;
+      languageHandler = extractHandler(mod);
     } else {
+      await import("esbuild-register");
       ({ default: languageHandler } = await import(
         pathToFileURL(
           path.resolve(process.cwd(), "app/api/qmoi/language/route.ts")
@@ -151,8 +160,9 @@ async function runAll() {
 
     if (fs.existsSync(qnewsPath)) {
       const mod = await import(pathToFileURL(qnewsPath).href);
-      qnewsPOST = mod?.default?.routeModule?.userland?.POST ?? mod?.POST;
+      qnewsPOST = extractHandler(mod, "POST");
     } else {
+      await import("esbuild-register");
       ({ POST: qnewsPOST } = await import(
         pathToFileURL(path.resolve(process.cwd(), "app/api/qnews/route.ts"))
           .href
