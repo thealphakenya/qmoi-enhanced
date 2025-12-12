@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+
   // Allow builds to proceed even when ESLint reports issues during CI/build
   eslint: {
     ignoreDuringBuilds: true,
