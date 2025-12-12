@@ -1,13 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 import "./global.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { FloatingAQ } from "@/components/FloatingAQ"
 import { Analytics } from "@vercel/analytics/next"
 
-const inter = Inter({ subsets: ["latin"] })
+// NOTE: Temporarily removed next/font/google usage to isolate heavy build step
 
 export const metadata: Metadata = {
   title: "Alpha-Q AI - Enhanced AI Development Platform",
@@ -22,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <FloatingAQ />
           {children}

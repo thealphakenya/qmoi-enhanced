@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 import assert from "assert";
+import fs from "fs";
+import path from "path";
+import { pathToFileURL } from "url";
 // We'll dynamically import the app routes during test execution to capture import errors
 
 // Minimal header helper
@@ -142,9 +145,20 @@ async function runAll() {
     let languageHandler: any;
     let qnewsPOST: any;
     try {
-      ({ GET: aiHealthGET } = await import(
-        "../../../app/api/ai-health/route.ts"
-      ));
+      // Prefer compiled server route if it exists (from `next build`), otherwise import source TS file.
+      const compiledAiHealth = path.resolve(
+        process.cwd(),
+        ".next/server/app/api/ai-health/route.js"
+      );
+      if (fs.existsSync(compiledAiHealth)) {
+        ({ GET: aiHealthGET } = await import(
+          pathToFileURL(compiledAiHealth).href
+        ));
+      } else {
+        ({ GET: aiHealthGET } = await import(
+          "../../../app/api/ai-health/route.ts"
+        ));
+      }
     } catch (ie) {
       console.error(
         "Error importing ai-health/route:",
@@ -153,9 +167,19 @@ async function runAll() {
       throw ie;
     }
     try {
-      ({ default: languageHandler } = await import(
-        "../../../app/api/qmoi/language/route.ts"
-      ));
+      const compiledLanguage = path.resolve(
+        process.cwd(),
+        ".next/server/app/api/qmoi/language/route.js"
+      );
+      if (fs.existsSync(compiledLanguage)) {
+        ({ default: languageHandler } = await import(
+          pathToFileURL(compiledLanguage).href
+        ));
+      } else {
+        ({ default: languageHandler } = await import(
+          "../../../app/api/qmoi/language/route.ts"
+        ));
+      }
     } catch (ie) {
       console.error(
         "Error importing qmoi/language/route:",
@@ -164,7 +188,15 @@ async function runAll() {
       throw ie;
     }
     try {
-      ({ POST: qnewsPOST } = await import("../../../app/api/qnews/route.ts"));
+      const compiledQNews = path.resolve(
+        process.cwd(),
+        ".next/server/app/api/qnews/route.js"
+      );
+      if (fs.existsSync(compiledQNews)) {
+        ({ POST: qnewsPOST } = await import(pathToFileURL(compiledQNews).href));
+      } else {
+        ({ POST: qnewsPOST } = await import("../../../app/api/qnews/route.ts"));
+      }
     } catch (ie) {
       console.error(
         "Error importing qnews/route:",
