@@ -7,6 +7,7 @@ const nextConfig = {
   },
   experimental: {
     serverActions: true, // if you're using server actions
+    useBuildWorker: false, // temporarily disable build worker to avoid SIGTERM on CI
   },
   output: "standalone", // for Docker, Electron, or custom deployment
   eslint: {
