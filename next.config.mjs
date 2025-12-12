@@ -6,7 +6,7 @@ const nextConfig = {
     unoptimized: true, // disables automatic Image Optimization (required for Electron)
   },
   experimental: {
-    serverActions: true, // if you're using server actions
+    serverActions: false, // temporarily disable serverActions to reduce RSC compile work during migration
     useBuildWorker: false, // temporarily disable build worker to avoid SIGTERM on CI
   },
   output: "standalone", // for Docker, Electron, or custom deployment
