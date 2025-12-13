@@ -7,11 +7,15 @@
     "start": "next start",
     "dev": "next dev",
     "build": "next build",
-    "test:auth": "node --loader ts-node/esm ./scripts/tests/requireApiKeyTest.ts",
-    "test:endpoint": "node --loader ts-node/esm ./scripts/tests/endpoint_gating_test.ts",
-    "test:flags": "node --loader ts-node/esm ./scripts/tests/route_flags_test.ts",
+    "ci:build": "NODE_OPTIONS=--max-old-space-size=8192 CI=false next build",
+    "test:auth": "node ./scripts/tests/requireApiKeyTest.js",
+    "test:endpoint": "node ./scripts/tests/endpoint_gating_test.js",
+    "test:flags": "node ./scripts/tests/route_flags_test.js",
     "test:authpresence": "node ./scripts/tests/auth_gating_presence_test.js",
-    "env-setup": "node scripts/qmoi-env-setup.js"
+    "test:all": "npm run test:auth && npm run test:flags && npm run test:authpresence && npm run test:endpoint",
+    "ci:test": "npm run build && npm run test:all",
+    "env-setup": "node scripts/qmoi-env-setup.js",
+    "ci:test": "npm run ci:build && npm run test:flags && npm run test:auth && npm run test:authpresence && npm run test:endpoint"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -71,6 +75,7 @@
     "@types/react": "19.2.7",
     "@types/winston": "^2.4.4",
     "autoprefixer": "^10.4.14",
+    "esbuild": "^0.27.1",
     "esbuild-register": "^3.6.0",
     "eslint": "^8.48.0",
     "msw": "^2.12.4",

@@ -1,3 +1,13 @@
+import "esbuild-register";
+import { pathToFileURL } from "url";
+
+(async function run() {
+  await import(
+    pathToFileURL(
+      new URL("./auth_gating_presence_test.ts", import.meta.url).pathname
+    ).href
+  );
+})();
 import fs from "fs";
 const path = "./.qmoi_validation/auth_triage_report.json";
 if (!fs.existsSync(path)) {
