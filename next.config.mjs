@@ -7,7 +7,7 @@ const nextConfig = {
   },
   experimental: {
     serverActions: false, // temporarily disable serverActions to reduce RSC compile work during migration
-    useBuildWorker: false, // temporarily disable build worker to avoid SIGTERM on CI
+    useBuildWorker: true, // re-enable build worker to validate worker behavior in CI
   },
   output: "standalone", // for Docker, Electron, or custom deployment
   eslint: {

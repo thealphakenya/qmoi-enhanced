@@ -15,7 +15,8 @@
     "test:all": "npm run test:auth && npm run test:flags && npm run test:authpresence && npm run test:endpoint",
     "ci:test": "npm run build && npm run test:all",
     "env-setup": "node scripts/qmoi-env-setup.js",
-    "ci:test": "npm run ci:build && npm run test:flags && npm run test:auth && npm run test:authpresence && npm run test:endpoint"
+    "ci:test": "npm run ci:build && npm run test:flags && npm run test:auth && npm run test:authpresence && npm run test:endpoint",
+    "diagnose:trace": "node ./scripts/diagnostics/parse_next_trace.cjs .next/trace 20"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
