@@ -1,0 +1,269 @@
+458e9e49922aadb7ab2f6672e43715b0
+"use strict";
+
+/* istanbul ignore next */
+function cov_h3nz8nvnj() {
+  var path = "/workspaces/qmoi-enhanced/src/setupTests.ts";
+  var hash = "ced18545a6bcafdc6aa494248c926098fa379930";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/setupTests.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 18
+        },
+        end: {
+          line: 3,
+          column: 42
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 37
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 35
+        }
+      },
+      "4": {
+        start: {
+          line: 8,
+          column: 0
+        },
+        end: {
+          line: 20,
+          column: 3
+        }
+      },
+      "5": {
+        start: {
+          line: 10,
+          column: 62
+        },
+        end: {
+          line: 19,
+          column: 5
+        }
+      },
+      "6": {
+        start: {
+          line: 22,
+          column: 25
+        },
+        end: {
+          line: 29,
+          column: 1
+        }
+      },
+      "7": {
+        start: {
+          line: 30,
+          column: 0
+        },
+        end: {
+          line: 30,
+          column: 39
+        }
+      },
+      "8": {
+        start: {
+          line: 32,
+          column: 27
+        },
+        end: {
+          line: 39,
+          column: 1
+        }
+      },
+      "9": {
+        start: {
+          line: 40,
+          column: 0
+        },
+        end: {
+          line: 40,
+          column: 43
+        }
+      },
+      "10": {
+        start: {
+          line: 42,
+          column: 0
+        },
+        end: {
+          line: 49,
+          column: 2
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 10,
+            column: 50
+          },
+          end: {
+            line: 10,
+            column: 51
+          }
+        },
+        loc: {
+          start: {
+            line: 10,
+            column: 62
+          },
+          end: {
+            line: 19,
+            column: 5
+          }
+        },
+        line: 10
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/workspaces/qmoi-enhanced/src/setupTests.ts",
+      mappings: ";;AACA,2CAAqC;AADrC,qCAAmC;AASnC,sBAAsB;AACtB,MAAM,CAAC,KAAK,GAAG,cAAI,CAAC,EAAE,EAAE,CAAC;AAEzB,yBAAyB;AACzB,MAAM,CAAC,cAAc,CAAC,MAAM,EAAE,YAAY,EAAE;IAC1C,QAAQ,EAAE,IAAI;IACd,KAAK,EAAE,cAAI,CAAC,EAAE,EAAE,CAAC,kBAAkB,CAAC,CAAC,KAAK,EAAE,EAAE,CAAC,CAAC;QAC9C,OAAO,EAAE,KAAK;QACd,KAAK,EAAE,KAAK;QACZ,QAAQ,EAAE,IAAI;QACd,WAAW,EAAE,cAAI,CAAC,EAAE,EAAE,EAAE,aAAa;QACrC,cAAc,EAAE,cAAI,CAAC,EAAE,EAAE,EAAE,aAAa;QACxC,gBAAgB,EAAE,cAAI,CAAC,EAAE,EAAE;QAC3B,mBAAmB,EAAE,cAAI,CAAC,EAAE,EAAE;QAC9B,aAAa,EAAE,cAAI,CAAC,EAAE,EAAE;KACzB,CAAC,CAAC;CACJ,CAAC,CAAC;AAEH,oBAAoB;AACpB,MAAM,gBAAgB,GAAG;IACvB,OAAO,EAAE,cAAI,CAAC,EAAE,EAAE;IAClB,OAAO,EAAE,cAAI,CAAC,EAAE,EAAE;IAClB,UAAU,EAAE,cAAI,CAAC,EAAE,EAAE;IACrB,KAAK,EAAE,cAAI,CAAC,EAAE,EAAE;IAChB,GAAG,EAAE,cAAI,CAAC,EAAE,EAAE;IACd,MAAM,EAAE,CAAC;CACV,CAAC;AACF,MAAM,CAAC,YAAY,GAAG,gBAAsC,CAAC;AAE7D,sBAAsB;AACtB,MAAM,kBAAkB,GAAG;IACzB,OAAO,EAAE,cAAI,CAAC,EAAE,EAAE;IAClB,OAAO,EAAE,cAAI,CAAC,EAAE,EAAE;IAClB,UAAU,EAAE,cAAI,CAAC,EAAE,EAAE;IACrB,KAAK,EAAE,cAAI,CAAC,EAAE,EAAE;IAChB,GAAG,EAAE,cAAI,CAAC,EAAE,EAAE;IACd,MAAM,EAAE,CAAC;CACV,CAAC;AACF,MAAM,CAAC,cAAc,GAAG,kBAAwC,CAAC;AAEjE,gDAAgD;AAChD,MAAM,CAAC,OAAO,GAAG;IACf,GAAG,OAAO;IACV,GAAG,EAAE,cAAI,CAAC,EAAE,EAAE;IACd,KAAK,EAAE,cAAI,CAAC,EAAE,EAAE;IAChB,IAAI,EAAE,cAAI,CAAC,EAAE,EAAE;IACf,IAAI,EAAE,cAAI,CAAC,EAAE,EAAE;IACf,KAAK,EAAE,cAAI,CAAC,EAAE,EAAE;CACjB,CAAC",
+      names: [],
+      sources: ["/workspaces/qmoi-enhanced/src/setupTests.ts"],
+      sourcesContent: ["import \"@testing-library/jest-dom\";\nimport { jest } from \"@jest/globals\";\n\ndeclare global {\n  var localStorage: Storage;\n  var sessionStorage: Storage;\n  var console: Console;\n}\n\n// Mock fetch globally\nglobal.fetch = jest.fn();\n\n// Mock window.matchMedia\nObject.defineProperty(window, \"matchMedia\", {\n  writable: true,\n  value: jest.fn().mockImplementation((query) => ({\n    matches: false,\n    media: query,\n    onchange: null,\n    addListener: jest.fn(), // deprecated\n    removeListener: jest.fn(), // deprecated\n    addEventListener: jest.fn(),\n    removeEventListener: jest.fn(),\n    dispatchEvent: jest.fn(),\n  })),\n});\n\n// Mock localStorage\nconst localStorageMock = {\n  getItem: jest.fn(),\n  setItem: jest.fn(),\n  removeItem: jest.fn(),\n  clear: jest.fn(),\n  key: jest.fn(),\n  length: 0,\n};\nglobal.localStorage = localStorageMock as unknown as Storage;\n\n// Mock sessionStorage\nconst sessionStorageMock = {\n  getItem: jest.fn(),\n  setItem: jest.fn(),\n  removeItem: jest.fn(),\n  clear: jest.fn(),\n  key: jest.fn(),\n  length: 0,\n};\nglobal.sessionStorage = sessionStorageMock as unknown as Storage;\n\n// Mock console methods to reduce noise in tests\nglobal.console = {\n  ...console,\n  log: jest.fn(),\n  debug: jest.fn(),\n  info: jest.fn(),\n  warn: jest.fn(),\n  error: jest.fn(),\n};\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "ced18545a6bcafdc6aa494248c926098fa379930"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_h3nz8nvnj = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_h3nz8nvnj();
+cov_h3nz8nvnj().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const globals_1 =
+/* istanbul ignore next */
+(cov_h3nz8nvnj().s[1]++, require("@jest/globals"));
+/* istanbul ignore next */
+cov_h3nz8nvnj().s[2]++;
+require("@testing-library/jest-dom");
+// Mock fetch globally
+/* istanbul ignore next */
+cov_h3nz8nvnj().s[3]++;
+global.fetch = globals_1.jest.fn();
+// Mock window.matchMedia
+/* istanbul ignore next */
+cov_h3nz8nvnj().s[4]++;
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: globals_1.jest.fn().mockImplementation(query => {
+    /* istanbul ignore next */
+    cov_h3nz8nvnj().f[0]++;
+    cov_h3nz8nvnj().s[5]++;
+    return {
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: globals_1.jest.fn(),
+      // deprecated
+      removeListener: globals_1.jest.fn(),
+      // deprecated
+      addEventListener: globals_1.jest.fn(),
+      removeEventListener: globals_1.jest.fn(),
+      dispatchEvent: globals_1.jest.fn()
+    };
+  })
+});
+// Mock localStorage
+const localStorageMock =
+/* istanbul ignore next */
+(cov_h3nz8nvnj().s[6]++, {
+  getItem: globals_1.jest.fn(),
+  setItem: globals_1.jest.fn(),
+  removeItem: globals_1.jest.fn(),
+  clear: globals_1.jest.fn(),
+  key: globals_1.jest.fn(),
+  length: 0
+});
+/* istanbul ignore next */
+cov_h3nz8nvnj().s[7]++;
+global.localStorage = localStorageMock;
+// Mock sessionStorage
+const sessionStorageMock =
+/* istanbul ignore next */
+(cov_h3nz8nvnj().s[8]++, {
+  getItem: globals_1.jest.fn(),
+  setItem: globals_1.jest.fn(),
+  removeItem: globals_1.jest.fn(),
+  clear: globals_1.jest.fn(),
+  key: globals_1.jest.fn(),
+  length: 0
+});
+/* istanbul ignore next */
+cov_h3nz8nvnj().s[9]++;
+global.sessionStorage = sessionStorageMock;
+// Mock console methods to reduce noise in tests
+/* istanbul ignore next */
+cov_h3nz8nvnj().s[10]++;
+global.console = {
+  ...console,
+  log: globals_1.jest.fn(),
+  debug: globals_1.jest.fn(),
+  info: globals_1.jest.fn(),
+  warn: globals_1.jest.fn(),
+  error: globals_1.jest.fn()
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfaDNuejhudm5qIiwiYWN0dWFsQ292ZXJhZ2UiLCJzIiwiZ2xvYmFsc18xIiwicmVxdWlyZSIsImdsb2JhbCIsImZldGNoIiwiamVzdCIsImZuIiwiT2JqZWN0IiwiZGVmaW5lUHJvcGVydHkiLCJ3aW5kb3ciLCJ3cml0YWJsZSIsInZhbHVlIiwibW9ja0ltcGxlbWVudGF0aW9uIiwicXVlcnkiLCJmIiwibWF0Y2hlcyIsIm1lZGlhIiwib25jaGFuZ2UiLCJhZGRMaXN0ZW5lciIsInJlbW92ZUxpc3RlbmVyIiwiYWRkRXZlbnRMaXN0ZW5lciIsInJlbW92ZUV2ZW50TGlzdGVuZXIiLCJkaXNwYXRjaEV2ZW50IiwibG9jYWxTdG9yYWdlTW9jayIsImdldEl0ZW0iLCJzZXRJdGVtIiwicmVtb3ZlSXRlbSIsImNsZWFyIiwia2V5IiwibGVuZ3RoIiwibG9jYWxTdG9yYWdlIiwic2Vzc2lvblN0b3JhZ2VNb2NrIiwic2Vzc2lvblN0b3JhZ2UiLCJjb25zb2xlIiwibG9nIiwiZGVidWciLCJpbmZvIiwid2FybiIsImVycm9yIl0sInNvdXJjZXMiOlsiL3dvcmtzcGFjZXMvcW1vaS1lbmhhbmNlZC9zcmMvc2V0dXBUZXN0cy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgXCJAdGVzdGluZy1saWJyYXJ5L2plc3QtZG9tXCI7XG5pbXBvcnQgeyBqZXN0IH0gZnJvbSBcIkBqZXN0L2dsb2JhbHNcIjtcblxuZGVjbGFyZSBnbG9iYWwge1xuICB2YXIgbG9jYWxTdG9yYWdlOiBTdG9yYWdlO1xuICB2YXIgc2Vzc2lvblN0b3JhZ2U6IFN0b3JhZ2U7XG4gIHZhciBjb25zb2xlOiBDb25zb2xlO1xufVxuXG4vLyBNb2NrIGZldGNoIGdsb2JhbGx5XG5nbG9iYWwuZmV0Y2ggPSBqZXN0LmZuKCk7XG5cbi8vIE1vY2sgd2luZG93Lm1hdGNoTWVkaWFcbk9iamVjdC5kZWZpbmVQcm9wZXJ0eSh3aW5kb3csIFwibWF0Y2hNZWRpYVwiLCB7XG4gIHdyaXRhYmxlOiB0cnVlLFxuICB2YWx1ZTogamVzdC5mbigpLm1vY2tJbXBsZW1lbnRhdGlvbigocXVlcnkpID0+ICh7XG4gICAgbWF0Y2hlczogZmFsc2UsXG4gICAgbWVkaWE6IHF1ZXJ5LFxuICAgIG9uY2hhbmdlOiBudWxsLFxuICAgIGFkZExpc3RlbmVyOiBqZXN0LmZuKCksIC8vIGRlcHJlY2F0ZWRcbiAgICByZW1vdmVMaXN0ZW5lcjogamVzdC5mbigpLCAvLyBkZXByZWNhdGVkXG4gICAgYWRkRXZlbnRMaXN0ZW5lcjogamVzdC5mbigpLFxuICAgIHJlbW92ZUV2ZW50TGlzdGVuZXI6IGplc3QuZm4oKSxcbiAgICBkaXNwYXRjaEV2ZW50OiBqZXN0LmZuKCksXG4gIH0pKSxcbn0pO1xuXG4vLyBNb2NrIGxvY2FsU3RvcmFnZVxuY29uc3QgbG9jYWxTdG9yYWdlTW9jayA9IHtcbiAgZ2V0SXRlbTogamVzdC5mbigpLFxuICBzZXRJdGVtOiBqZXN0LmZuKCksXG4gIHJlbW92ZUl0ZW06IGplc3QuZm4oKSxcbiAgY2xlYXI6IGplc3QuZm4oKSxcbiAga2V5OiBqZXN0LmZuKCksXG4gIGxlbmd0aDogMCxcbn07XG5nbG9iYWwubG9jYWxTdG9yYWdlID0gbG9jYWxTdG9yYWdlTW9jayBhcyB1bmtub3duIGFzIFN0b3JhZ2U7XG5cbi8vIE1vY2sgc2Vzc2lvblN0b3JhZ2VcbmNvbnN0IHNlc3Npb25TdG9yYWdlTW9jayA9IHtcbiAgZ2V0SXRlbTogamVzdC5mbigpLFxuICBzZXRJdGVtOiBqZXN0LmZuKCksXG4gIHJlbW92ZUl0ZW06IGplc3QuZm4oKSxcbiAgY2xlYXI6IGplc3QuZm4oKSxcbiAga2V5OiBqZXN0LmZuKCksXG4gIGxlbmd0aDogMCxcbn07XG5nbG9iYWwuc2Vzc2lvblN0b3JhZ2UgPSBzZXNzaW9uU3RvcmFnZU1vY2sgYXMgdW5rbm93biBhcyBTdG9yYWdlO1xuXG4vLyBNb2NrIGNvbnNvbGUgbWV0aG9kcyB0byByZWR1Y2Ugbm9pc2UgaW4gdGVzdHNcbmdsb2JhbC5jb25zb2xlID0ge1xuICAuLi5jb25zb2xlLFxuICBsb2c6IGplc3QuZm4oKSxcbiAgZGVidWc6IGplc3QuZm4oKSxcbiAgaW5mbzogamVzdC5mbigpLFxuICB3YXJuOiBqZXN0LmZuKCksXG4gIGVycm9yOiBqZXN0LmZuKCksXG59O1xuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFxQkk7SUFBQUEsYUFBQSxZQUFBQSxDQUFBO01BQUEsT0FBQUMsY0FBQTtJQUFBO0VBQUE7RUFBQSxPQUFBQSxjQUFBO0FBQUE7QUFBQUQsYUFBQTtBQUFBQSxhQUFBLEdBQUFFLENBQUE7Ozs7QUFwQkosTUFBQUMsU0FBQTtBQUFBO0FBQUEsQ0FBQUgsYUFBQSxHQUFBRSxDQUFBLE9BQUFFLE9BQUE7QUFBcUM7QUFBQUosYUFBQSxHQUFBRSxDQUFBO0FBRHJDRSxPQUFBO0FBU0E7QUFBQTtBQUFBSixhQUFBLEdBQUFFLENBQUE7QUFDQUcsTUFBTSxDQUFDQyxLQUFLLEdBQUdILFNBQUEsQ0FBQUksSUFBSSxDQUFDQyxFQUFFLEVBQUU7QUFFeEI7QUFBQTtBQUFBUixhQUFBLEdBQUFFLENBQUE7QUFDQU8sTUFBTSxDQUFDQyxjQUFjLENBQUNDLE1BQU0sRUFBRSxZQUFZLEVBQUU7RUFDMUNDLFFBQVEsRUFBRSxJQUFJO0VBQ2RDLEtBQUssRUFBRVYsU0FBQSxDQUFBSSxJQUFJLENBQUNDLEVBQUUsRUFBRSxDQUFDTSxrQkFBa0IsQ0FBRUMsS0FBSyxJQUFNO0lBQUE7SUFBQWYsYUFBQSxHQUFBZ0IsQ0FBQTtJQUFBaEIsYUFBQSxHQUFBRSxDQUFBO0lBQUE7TUFDOUNlLE9BQU8sRUFBRSxLQUFLO01BQ2RDLEtBQUssRUFBRUgsS0FBSztNQUNaSSxRQUFRLEVBQUUsSUFBSTtNQUNkQyxXQUFXLEVBQUVqQixTQUFBLENBQUFJLElBQUksQ0FBQ0MsRUFBRSxFQUFFO01BQUU7TUFDeEJhLGNBQWMsRUFBRWxCLFNBQUEsQ0FBQUksSUFBSSxDQUFDQyxFQUFFLEVBQUU7TUFBRTtNQUMzQmMsZ0JBQWdCLEVBQUVuQixTQUFBLENBQUFJLElBQUksQ0FBQ0MsRUFBRSxFQUFFO01BQzNCZSxtQkFBbUIsRUFBRXBCLFNBQUEsQ0FBQUksSUFBSSxDQUFDQyxFQUFFLEVBQUU7TUFDOUJnQixhQUFhLEVBQUVyQixTQUFBLENBQUFJLElBQUksQ0FBQ0MsRUFBRTtLQUN2QjtHQUFDO0NBQ0gsQ0FBQztBQUVGO0FBQ0EsTUFBTWlCLGdCQUFnQjtBQUFBO0FBQUEsQ0FBQXpCLGFBQUEsR0FBQUUsQ0FBQSxPQUFHO0VBQ3ZCd0IsT0FBTyxFQUFFdkIsU0FBQSxDQUFBSSxJQUFJLENBQUNDLEVBQUUsRUFBRTtFQUNsQm1CLE9BQU8sRUFBRXhCLFNBQUEsQ0FBQUksSUFBSSxDQUFDQyxFQUFFLEVBQUU7RUFDbEJvQixVQUFVLEVBQUV6QixTQUFBLENBQUFJLElBQUksQ0FBQ0MsRUFBRSxFQUFFO0VBQ3JCcUIsS0FBSyxFQUFFMUIsU0FBQSxDQUFBSSxJQUFJLENBQUNDLEVBQUUsRUFBRTtFQUNoQnNCLEdBQUcsRUFBRTNCLFNBQUEsQ0FBQUksSUFBSSxDQUFDQyxFQUFFLEVBQUU7RUFDZHVCLE1BQU0sRUFBRTtDQUNUO0FBQUM7QUFBQS9CLGFBQUEsR0FBQUUsQ0FBQTtBQUNGRyxNQUFNLENBQUMyQixZQUFZLEdBQUdQLGdCQUFzQztBQUU1RDtBQUNBLE1BQU1RLGtCQUFrQjtBQUFBO0FBQUEsQ0FBQWpDLGFBQUEsR0FBQUUsQ0FBQSxPQUFHO0VBQ3pCd0IsT0FBTyxFQUFFdkIsU0FBQSxDQUFBSSxJQUFJLENBQUNDLEVBQUUsRUFBRTtFQUNsQm1CLE9BQU8sRUFBRXhCLFNBQUEsQ0FBQUksSUFBSSxDQUFDQyxFQUFFLEVBQUU7RUFDbEJvQixVQUFVLEVBQUV6QixTQUFBLENBQUFJLElBQUksQ0FBQ0MsRUFBRSxFQUFFO0VBQ3JCcUIsS0FBSyxFQUFFMUIsU0FBQSxDQUFBSSxJQUFJLENBQUNDLEVBQUUsRUFBRTtFQUNoQnNCLEdBQUcsRUFBRTNCLFNBQUEsQ0FBQUksSUFBSSxDQUFDQyxFQUFFLEVBQUU7RUFDZHVCLE1BQU0sRUFBRTtDQUNUO0FBQUM7QUFBQS9CLGFBQUEsR0FBQUUsQ0FBQTtBQUNGRyxNQUFNLENBQUM2QixjQUFjLEdBQUdELGtCQUF3QztBQUVoRTtBQUFBO0FBQUFqQyxhQUFBLEdBQUFFLENBQUE7QUFDQUcsTUFBTSxDQUFDOEIsT0FBTyxHQUFHO0VBQ2YsR0FBR0EsT0FBTztFQUNWQyxHQUFHLEVBQUVqQyxTQUFBLENBQUFJLElBQUksQ0FBQ0MsRUFBRSxFQUFFO0VBQ2Q2QixLQUFLLEVBQUVsQyxTQUFBLENBQUFJLElBQUksQ0FBQ0MsRUFBRSxFQUFFO0VBQ2hCOEIsSUFBSSxFQUFFbkMsU0FBQSxDQUFBSSxJQUFJLENBQUNDLEVBQUUsRUFBRTtFQUNmK0IsSUFBSSxFQUFFcEMsU0FBQSxDQUFBSSxJQUFJLENBQUNDLEVBQUUsRUFBRTtFQUNmZ0MsS0FBSyxFQUFFckMsU0FBQSxDQUFBSSxJQUFJLENBQUNDLEVBQUU7Q0FDZiIsImlnbm9yZUxpc3QiOltdfQ==

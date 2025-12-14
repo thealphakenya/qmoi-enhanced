@@ -1,0 +1,118 @@
+5a3ee8ec99dd50ab8de64d5e5882ab7b
+"use strict";
+
+/* istanbul ignore next */
+function cov_12t9ykl9xh() {
+  var path = "/workspaces/qmoi-enhanced/src/components/vercel-analytics-next.ts";
+  var hash = "8ae75cdf83ba3698ccd55c446b29e45fa1366b6f";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/components/vercel-analytics-next.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 28
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 23
+        },
+        end: {
+          line: 4,
+          column: 35
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "Analytics",
+        decl: {
+          start: {
+            line: 4,
+            column: 9
+          },
+          end: {
+            line: 4,
+            column: 18
+          }
+        },
+        loc: {
+          start: {
+            line: 4,
+            column: 21
+          },
+          end: {
+            line: 4,
+            column: 37
+          }
+        },
+        line: 4
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/workspaces/qmoi-enhanced/src/components/vercel-analytics-next.ts",
+      mappings: ";;AAAA,4BAAoD;AAApD,SAAwB,SAAS,KAAK,OAAO,IAAI,CAAC,CAAC,CAAC",
+      names: [],
+      sources: ["/workspaces/qmoi-enhanced/src/components/vercel-analytics-next.ts"],
+      sourcesContent: ["export default function Analytics() { return null; } "],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "8ae75cdf83ba3698ccd55c446b29e45fa1366b6f"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_12t9ykl9xh = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_12t9ykl9xh();
+cov_12t9ykl9xh().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_12t9ykl9xh().s[1]++;
+exports.default = Analytics;
+function Analytics() {
+  /* istanbul ignore next */
+  cov_12t9ykl9xh().f[0]++;
+  cov_12t9ykl9xh().s[2]++;
+  return null;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHBvcnRzIiwiZGVmYXVsdCIsIkFuYWx5dGljcyIsImNvdl8xMnQ5eWtsOXhoIiwiZiIsInMiXSwic291cmNlcyI6WyIvd29ya3NwYWNlcy9xbW9pLWVuaGFuY2VkL3NyYy9jb21wb25lbnRzL3ZlcmNlbC1hbmFseXRpY3MtbmV4dC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBBbmFseXRpY3MoKSB7IHJldHVybiBudWxsOyB9ICJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBQSxPQUFBLENBQUFDLE9BQUEsR0FBQUMsU0FBQTtBQUFBLFNBQXdCQSxTQUFTQSxDQUFBO0VBQUE7RUFBQUMsY0FBQSxHQUFBQyxDQUFBO0VBQUFELGNBQUEsR0FBQUUsQ0FBQTtFQUFLLE9BQU8sSUFBSTtBQUFFIiwiaWdub3JlTGlzdCI6W119

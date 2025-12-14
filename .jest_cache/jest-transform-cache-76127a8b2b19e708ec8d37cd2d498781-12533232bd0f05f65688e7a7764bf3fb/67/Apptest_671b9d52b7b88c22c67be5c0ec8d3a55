@@ -1,0 +1,13 @@
+48635f6e69ae335c755daa76c7109ec3
+"use strict";
+
+var _globals = require("@jest/globals");
+// Simple test that doesn't require JSX or React components
+(0, _globals.test)("basic test environment works", () => {
+  (0, _globals.expect)(1 + 1).toBe(2);
+});
+(0, _globals.test)("QMOI system is accessible", () => {
+  (0, _globals.expect)(typeof process).toBe("object");
+  (0, _globals.expect)(typeof global).toBe("object");
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfZ2xvYmFscyIsInJlcXVpcmUiLCJ0ZXN0IiwiZXhwZWN0IiwidG9CZSIsInByb2Nlc3MiLCJnbG9iYWwiXSwic291cmNlcyI6WyJBcHAudGVzdC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB0ZXN0LCBleHBlY3QgfSBmcm9tIFwiQGplc3QvZ2xvYmFsc1wiO1xuXG4vLyBTaW1wbGUgdGVzdCB0aGF0IGRvZXNuJ3QgcmVxdWlyZSBKU1ggb3IgUmVhY3QgY29tcG9uZW50c1xudGVzdChcImJhc2ljIHRlc3QgZW52aXJvbm1lbnQgd29ya3NcIiwgKCkgPT4ge1xuICBleHBlY3QoMSArIDEpLnRvQmUoMik7XG59KTtcblxudGVzdChcIlFNT0kgc3lzdGVtIGlzIGFjY2Vzc2libGVcIiwgKCkgPT4ge1xuICBleHBlY3QodHlwZW9mIHByb2Nlc3MpLnRvQmUoXCJvYmplY3RcIik7XG4gIGV4cGVjdCh0eXBlb2YgZ2xvYmFsKS50b0JlKFwib2JqZWN0XCIpO1xufSk7XG4iXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBQUEsUUFBQSxHQUFBQyxPQUFBO0FBRUE7QUFDQSxJQUFBQyxhQUFJLEVBQUMsOEJBQThCLEVBQUUsTUFBTTtFQUN6QyxJQUFBQyxlQUFNLEVBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQyxDQUFDQyxJQUFJLENBQUMsQ0FBQyxDQUFDO0FBQ3ZCLENBQUMsQ0FBQztBQUVGLElBQUFGLGFBQUksRUFBQywyQkFBMkIsRUFBRSxNQUFNO0VBQ3RDLElBQUFDLGVBQU0sRUFBQyxPQUFPRSxPQUFPLENBQUMsQ0FBQ0QsSUFBSSxDQUFDLFFBQVEsQ0FBQztFQUNyQyxJQUFBRCxlQUFNLEVBQUMsT0FBT0csTUFBTSxDQUFDLENBQUNGLElBQUksQ0FBQyxRQUFRLENBQUM7QUFDdEMsQ0FBQyxDQUFDIiwiaWdub3JlTGlzdCI6W119

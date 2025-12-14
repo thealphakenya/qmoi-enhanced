@@ -4,41 +4,56 @@
  * - Excludes generated folders and node_modules
  */
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
+  testEnvironment: "jsdom",
   testMatch: [
-    '<rootDir>/**/__tests__/**/*.[jt]s?(x)',
-    '<rootDir>/**/*.test.[jt]s?(x)',
-    '<rootDir>/**/*.spec.[jt]s?(x)'
+    "<rootDir>/**/__tests__/**/*.[jt]s?(x)",
+    "<rootDir>/**/*.test.[jt]s?(x)",
+    "<rootDir>/**/*.spec.[jt]s?(x)",
   ],
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-    '^.+\\.(js|jsx)$': 'babel-jest'
+    "^.+\\.(ts|tsx|js|jsx)$": [
+      "babel-jest",
+      { configFile: "./babel.config.cjs" },
+    ],
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/__mocks__/fileMock.js'
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/__mocks__/fileMock.js",
+    "^@\\/(.*)$": "<rootDir>/$1",
+    "^lib\\/(.*)$": "<rootDir>/lib/$1",
+    "^components\\/(.*)$": "<rootDir>/components/$1",
   },
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/build/', '/.qmoi_validation/'],
-  collectCoverage: true,
-  coverageDirectory: '<rootDir>/coverage',
+  setupFiles: ["<rootDir>/jest.env.setup.cjs"],
+  setupFilesAfterEnv: [
+    "<rootDir>/jest.setup.js",
+    "<rootDir>/src/setupTests.ts",
+  ],
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/dist/",
+    "/build/",
+    "/.qmoi_validation/",
+    "/_archive_qmoi-enhanced/",
+    "/tests/ui/",
+  ],
+  collectCoverage: false,
+  coverageDirectory: "<rootDir>/coverage",
   collectCoverageFrom: [
-    'src/**/*.{js,jsx,ts,tsx}',
-    '!src/**/*.d.ts',
-    '!src/**/__mocks__/**',
-    '!src/**/__tests__/**'
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!src/**/*.d.ts",
+    "!src/**/__mocks__/**",
+    "!src/**/__tests__/**",
   ],
   coverageThreshold: {
     global: {
       branches: 70,
       functions: 70,
       lines: 75,
-      statements: 75
-    }
+      statements: 75,
+    },
   },
-  cacheDirectory: '<rootDir>/.jest_cache',
+  cacheDirectory: "<rootDir>/.jest_cache",
   verbose: false,
-  roots: ['<rootDir>']
+  roots: ["<rootDir>"],
 };

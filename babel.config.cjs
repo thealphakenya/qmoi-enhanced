@@ -1,0 +1,7 @@
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ["next/babel", "@babel/preset-typescript", "@babel/preset-react"],
+    plugins: ["@babel/plugin-syntax-jsx"],
+  };
+};

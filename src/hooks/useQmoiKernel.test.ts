@@ -2,17 +2,17 @@
 import { renderHook, act } from "@testing-library/react";
 import { useQmoiKernel } from "./useQmoiKernel";
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] global fetch
-const [PRODUCTION IMPLEMENTATION REQUIRED]Fetch = jest.fn();
-global.fetch = [PRODUCTION IMPLEMENTATION REQUIRED]Fetch;
+// mock global fetch
+const mockFetch = jest.fn();
+global.fetch = mockFetch;
 
 describe("useQmoiKernel", () => {
   beforeEach(() => {
-    jest.clearAll[PRODUCTION IMPLEMENTATION REQUIRED]s();
+    jest.clearAllMocks();
   });
 
   it("fetches status successfully", async () => {
-    [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
         status: "OK",
@@ -33,7 +33,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles fetch status error", async () => {
-    [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });
+    mockFetch.mockResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
@@ -43,12 +43,12 @@ describe("useQmoiKernel", () => {
 
   it("runs action and updates status", async () => {
     // Action call
-    [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({ message: "QFix done" }),
     });
     // Status call after action
-    [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({
+    mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
         status: "OK",
@@ -68,7 +68,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles action error", async () => {
-    [PRODUCTION IMPLEMENTATION REQUIRED]Fetch.[PRODUCTION IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });
+    mockFetch.mockResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.runAction("qfix");
