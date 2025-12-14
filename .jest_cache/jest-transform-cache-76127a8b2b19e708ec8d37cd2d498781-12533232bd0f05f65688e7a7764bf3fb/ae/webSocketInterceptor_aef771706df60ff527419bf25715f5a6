@@ -1,0 +1,33 @@
+e4137e09ce735984cb4a75a7e2c70c2e
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all) __defProp(target, name, {
+    get: all[name],
+    enumerable: true
+  });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from)) if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+      get: () => from[key],
+      enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+    });
+  }
+  return to;
+};
+var __toCommonJS = mod => __copyProps(__defProp({}, "__esModule", {
+  value: true
+}), mod);
+var webSocketInterceptor_exports = {};
+__export(webSocketInterceptor_exports, {
+  webSocketInterceptor: () => webSocketInterceptor
+});
+module.exports = __toCommonJS(webSocketInterceptor_exports);
+var import_WebSocket = require("@mswjs/interceptors/WebSocket");
+const webSocketInterceptor = new import_WebSocket.WebSocketInterceptor();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ3ZWJTb2NrZXRJbnRlcmNlcHRvcl9leHBvcnRzIiwiX19leHBvcnQiLCJ3ZWJTb2NrZXRJbnRlcmNlcHRvciIsIm1vZHVsZSIsImV4cG9ydHMiLCJfX3RvQ29tbW9uSlMiLCJpbXBvcnRfV2ViU29ja2V0IiwicmVxdWlyZSIsIldlYlNvY2tldEludGVyY2VwdG9yIl0sInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2NvcmUvd3Mvd2ViU29ja2V0SW50ZXJjZXB0b3IudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgV2ViU29ja2V0SW50ZXJjZXB0b3IgfSBmcm9tICdAbXN3anMvaW50ZXJjZXB0b3JzL1dlYlNvY2tldCdcblxuZXhwb3J0IGNvbnN0IHdlYlNvY2tldEludGVyY2VwdG9yID0gbmV3IFdlYlNvY2tldEludGVyY2VwdG9yKClcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsSUFBQUEsNEJBQUE7QUFBQUMsUUFBQSxDQUFBRCw0QkFBQTtFQUFBRSxvQkFBQSxFQUFBQSxDQUFBLEtBQUFBO0FBQUE7QUFBQUMsTUFBQSxDQUFBQyxPQUFBLEdBQUFDLFlBQUEsQ0FBQUwsNEJBQUE7QUFBQSxJQUFBTSxnQkFBQSxHQUFxQ0MsT0FBQTtBQUU5QixNQUFNTCxvQkFBQSxHQUF1QixJQUFJSSxnQkFBQSxDQUFBRSxvQkFBQSxDQUFxQiIsImlnbm9yZUxpc3QiOltdfQ==

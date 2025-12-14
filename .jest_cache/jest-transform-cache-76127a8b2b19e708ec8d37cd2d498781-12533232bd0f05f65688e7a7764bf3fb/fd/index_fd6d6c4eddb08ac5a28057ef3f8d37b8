@@ -1,0 +1,30 @@
+53d25b27143fd25bd860cab3637c9a67
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.until = until;
+//#region src/index.ts
+/**
+* Gracefully handles a callback that returns a promise.
+*
+* @example
+* await until(() => Promise.resolve(123))
+* // [null, 123]
+*
+* await until(() => Promise.reject(new Error('Oops!')))
+* // [new Error('Oops!'), null]
+*/
+async function until(callback) {
+  try {
+    return [null, await callback().catch(error => {
+      throw error;
+    })];
+  } catch (error) {
+    return [error, null];
+  }
+}
+
+//#endregion
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ1bnRpbCIsImNhbGxiYWNrIiwiY2F0Y2giLCJlcnJvciJdLCJzb3VyY2VzIjpbIi4uL3NyYy9pbmRleC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgdHlwZSBVbnRpbFJlc3VsdDxSZWplY3Rpb25SZWFzb24sIFJlc29sdmVEYXRhPiA9XG4gIHwgW3JlYXNvbjogUmVqZWN0aW9uUmVhc29uLCBkYXRhOiBudWxsXVxuICB8IFtyZWFzb246IG51bGwsIGRhdGE6IFJlc29sdmVEYXRhXVxuXG4vKipcbiAqIEdyYWNlZnVsbHkgaGFuZGxlcyBhIGNhbGxiYWNrIHRoYXQgcmV0dXJucyBhIHByb21pc2UuXG4gKlxuICogQGV4YW1wbGVcbiAqIGF3YWl0IHVudGlsKCgpID0+IFByb21pc2UucmVzb2x2ZSgxMjMpKVxuICogLy8gW251bGwsIDEyM11cbiAqXG4gKiBhd2FpdCB1bnRpbCgoKSA9PiBQcm9taXNlLnJlamVjdChuZXcgRXJyb3IoJ09vcHMhJykpKVxuICogLy8gW25ldyBFcnJvcignT29wcyEnKSwgbnVsbF1cbiAqL1xuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHVudGlsPFJlamVjdGlvblJlYXNvbiA9IEVycm9yLCBSZXNvbHZlRGF0YSA9IHVua25vd24+KFxuICBjYWxsYmFjazogKCkgPT4gUHJvbWlzZTxSZXNvbHZlRGF0YT4sXG4pOiBQcm9taXNlPFVudGlsUmVzdWx0PFJlamVjdGlvblJlYXNvbiwgUmVzb2x2ZURhdGE+PiB7XG4gIHRyeSB7XG4gICAgY29uc3QgZGF0YSA9IGF3YWl0IGNhbGxiYWNrKCkuY2F0Y2goKGVycm9yKSA9PiB7XG4gICAgICB0aHJvdyBlcnJvclxuICAgIH0pXG4gICAgcmV0dXJuIFtudWxsLCBkYXRhXVxuICB9IGNhdGNoIChlcnJvcjogYW55KSB7XG4gICAgcmV0dXJuIFtlcnJvciwgbnVsbF1cbiAgfVxufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7OztBQWNBLGVBQXNCQSxNQUNwQkMsUUFBQSxFQUNvRDtFQUNwRCxJQUFJO0lBSUYsT0FBTyxDQUFDLE1BSEssTUFBTUEsUUFBQSxFQUFVLENBQUNDLEtBQUEsQ0FBT0MsS0FBQSxJQUFVO01BQzdDLE1BQU1BLEtBQUE7TUFDTixDQUNpQjtXQUNaQSxLQUFBLEVBQVk7SUFDbkIsT0FBTyxDQUFDQSxLQUFBLEVBQU8sS0FBSyIsImlnbm9yZUxpc3QiOltdfQ==

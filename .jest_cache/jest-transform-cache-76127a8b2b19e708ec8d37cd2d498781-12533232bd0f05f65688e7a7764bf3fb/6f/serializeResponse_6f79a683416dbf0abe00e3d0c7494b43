@@ -1,0 +1,58 @@
+abbe32e42f1f69c4514b3779b131644b
+"use strict";
+
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all) __defProp(target, name, {
+    get: all[name],
+    enumerable: true
+  });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from)) if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+      get: () => from[key],
+      enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+    });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+// If the importer is in node compatibility mode or this is not an ESM
+// file that has been converted to a CommonJS file using a Babel-
+// compatible transform (i.e. "__esModule" has not been set), then set
+// "default" to the CommonJS "module.exports" for node compatibility.
+isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", {
+  value: mod,
+  enumerable: true
+}) : target, mod));
+var __toCommonJS = mod => __copyProps(__defProp({}, "__esModule", {
+  value: true
+}), mod);
+var serializeResponse_exports = {};
+__export(serializeResponse_exports, {
+  serializeResponse: () => serializeResponse
+});
+module.exports = __toCommonJS(serializeResponse_exports);
+var import_statuses = __toESM(require("../../../shims/statuses"), 1);
+const {
+  message
+} = import_statuses.default;
+async function serializeResponse(response) {
+  const responseClone = response.clone();
+  const responseText = await responseClone.text();
+  const responseStatus = responseClone.status || 200;
+  const responseStatusText = responseClone.statusText || message[responseStatus] || "OK";
+  return {
+    status: responseStatus,
+    statusText: responseStatusText,
+    headers: Object.fromEntries(responseClone.headers.entries()),
+    body: responseText
+  };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJzZXJpYWxpemVSZXNwb25zZV9leHBvcnRzIiwiX19leHBvcnQiLCJzZXJpYWxpemVSZXNwb25zZSIsIm1vZHVsZSIsImV4cG9ydHMiLCJfX3RvQ29tbW9uSlMiLCJpbXBvcnRfc3RhdHVzZXMiLCJfX3RvRVNNIiwicmVxdWlyZSIsIm1lc3NhZ2UiLCJkZWZhdWx0IiwicmVzcG9uc2UiLCJyZXNwb25zZUNsb25lIiwiY2xvbmUiLCJyZXNwb25zZVRleHQiLCJ0ZXh0IiwicmVzcG9uc2VTdGF0dXMiLCJzdGF0dXMiLCJyZXNwb25zZVN0YXR1c1RleHQiLCJzdGF0dXNUZXh0IiwiaGVhZGVycyIsIk9iamVjdCIsImZyb21FbnRyaWVzIiwiZW50cmllcyIsImJvZHkiXSwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9zcmMvY29yZS91dGlscy9sb2dnaW5nL3NlcmlhbGl6ZVJlc3BvbnNlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBzdGF0dXNlcyBmcm9tICcuLi8uLi8uLi9zaGltcy9zdGF0dXNlcydcblxuY29uc3QgeyBtZXNzYWdlIH0gPSBzdGF0dXNlc1xuXG5leHBvcnQgaW50ZXJmYWNlIFNlcmlhbGl6ZWRSZXNwb25zZSB7XG4gIHN0YXR1czogbnVtYmVyXG4gIHN0YXR1c1RleHQ6IHN0cmluZ1xuICBoZWFkZXJzOiBSZWNvcmQ8c3RyaW5nLCBhbnk+XG4gIGJvZHk6IHN0cmluZ1xufVxuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gc2VyaWFsaXplUmVzcG9uc2UoXG4gIHJlc3BvbnNlOiBSZXNwb25zZSxcbik6IFByb21pc2U8U2VyaWFsaXplZFJlc3BvbnNlPiB7XG4gIGNvbnN0IHJlc3BvbnNlQ2xvbmUgPSByZXNwb25zZS5jbG9uZSgpXG4gIGNvbnN0IHJlc3BvbnNlVGV4dCA9IGF3YWl0IHJlc3BvbnNlQ2xvbmUudGV4dCgpXG5cbiAgLy8gTm9ybWFsaXplIHRoZSByZXNwb25zZSBzdGF0dXMgYW5kIHN0YXR1cyB0ZXh0IHdoZW4gbG9nZ2luZ1xuICAvLyBzaW5jZSB0aGUgZGVmYXVsdCBSZXNwb25zZSBpbnN0YW5jZSBkb2Vzbid0IGluZmVyIHN0YXR1cyB0ZXh0c1xuICAvLyBmcm9tIHN0YXR1cyBjb2Rlcy4gVGhpcyBoYXMgbm8gZWZmZWN0IG9uIHRoZSBhY3R1YWwgcmVzcG9uc2UgaW5zdGFuY2UuXG4gIGNvbnN0IHJlc3BvbnNlU3RhdHVzID0gcmVzcG9uc2VDbG9uZS5zdGF0dXMgfHwgMjAwXG4gIGNvbnN0IHJlc3BvbnNlU3RhdHVzVGV4dCA9XG4gICAgcmVzcG9uc2VDbG9uZS5zdGF0dXNUZXh0IHx8IG1lc3NhZ2VbcmVzcG9uc2VTdGF0dXNdIHx8ICdPSydcblxuICByZXR1cm4ge1xuICAgIHN0YXR1czogcmVzcG9uc2VTdGF0dXMsXG4gICAgc3RhdHVzVGV4dDogcmVzcG9uc2VTdGF0dXNUZXh0LFxuICAgIGhlYWRlcnM6IE9iamVjdC5mcm9tRW50cmllcyhyZXNwb25zZUNsb25lLmhlYWRlcnMuZW50cmllcygpKSxcbiAgICBib2R5OiByZXNwb25zZVRleHQsXG4gIH1cbn1cbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxJQUFBQSx5QkFBQTtBQUFBQyxRQUFBLENBQUFELHlCQUFBO0VBQUFFLGlCQUFBLEVBQUFBLENBQUEsS0FBQUE7QUFBQTtBQUFBQyxNQUFBLENBQUFDLE9BQUEsR0FBQUMsWUFBQSxDQUFBTCx5QkFBQTtBQUFBLElBQUFNLGVBQUEsR0FBcUJDLE9BQUEsQ0FBQUMsT0FBQTtBQUVyQixNQUFNO0VBQUVDO0FBQVEsSUFBSUgsZUFBQSxDQUFBSSxPQUFBO0FBU3BCLGVBQXNCUixrQkFDcEJTLFFBQUEsRUFDNkI7RUFDN0IsTUFBTUMsYUFBQSxHQUFnQkQsUUFBQSxDQUFTRSxLQUFBLENBQU07RUFDckMsTUFBTUMsWUFBQSxHQUFlLE1BQU1GLGFBQUEsQ0FBY0csSUFBQSxDQUFLO0VBSzlDLE1BQU1DLGNBQUEsR0FBaUJKLGFBQUEsQ0FBY0ssTUFBQSxJQUFVO0VBQy9DLE1BQU1DLGtCQUFBLEdBQ0pOLGFBQUEsQ0FBY08sVUFBQSxJQUFjVixPQUFBLENBQVFPLGNBQWMsS0FBSztFQUV6RCxPQUFPO0lBQ0xDLE1BQUEsRUFBUUQsY0FBQTtJQUNSRyxVQUFBLEVBQVlELGtCQUFBO0lBQ1pFLE9BQUEsRUFBU0MsTUFBQSxDQUFPQyxXQUFBLENBQVlWLGFBQUEsQ0FBY1EsT0FBQSxDQUFRRyxPQUFBLENBQVEsQ0FBQztJQUMzREMsSUFBQSxFQUFNVjtFQUNSO0FBQ0YiLCJpZ25vcmVMaXN0IjpbXX0=

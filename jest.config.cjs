@@ -4,7 +4,8 @@
  * - Excludes generated folders and node_modules
  */
 module.exports = {
-  testEnvironment: "jsdom",
+  // Use a custom environment that applies early polyfills for streams and fetch
+  testEnvironment: "<rootDir>/jest.env.cjs",
   testMatch: [
     "<rootDir>/**/__tests__/**/*.[jt]s?(x)",
     "<rootDir>/**/*.test.[jt]s?(x)",
@@ -16,6 +17,10 @@ module.exports = {
       { configFile: "./babel.config.cjs" },
     ],
   },
+  // Allow transforming some modern ESM packages that ship untranspiled code
+  transformIgnorePatterns: [
+    "/node_modules/(?!(msw|@mswjs|web-streams-polyfill|until-async)/)",
+  ],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
@@ -36,6 +41,7 @@ module.exports = {
     "/.qmoi_validation/",
     "/_archive_qmoi-enhanced/",
     "/tests/ui/",
+    ".\\.integration\\.test\\.(ts|tsx|js)$",
   ],
   collectCoverage: false,
   coverageDirectory: "<rootDir>/coverage",

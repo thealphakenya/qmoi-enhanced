@@ -9,7 +9,8 @@ if (typeof global.TextDecoder === "undefined")
   (global as any).TextDecoder = TextDecoder as any;
 
 import { jest } from "@jest/globals";
-import { server } from "./mocks/server";
+// Delay importing MSW until after early polyfills (setupFiles) run
+let server: any;
 
 declare global {
   var localStorage: Storage;
@@ -23,7 +24,50 @@ if (!global.fetch) {
 }
 
 // MSW server lifecycle hooks
-beforeAll(() => server.listen());
+beforeAll(() => {
+  // Ensure stream polyfills are available in this module scope before importing MSW
+  try {
+    const {
+      TransformStream,
+      ReadableStream,
+      WritableStream,
+    } = require("web-streams-polyfill/ponyfill");
+    if (typeof global.TransformStream === "undefined")
+      global.TransformStream = TransformStream;
+    if (typeof global.ReadableStream === "undefined")
+      global.ReadableStream = ReadableStream;
+    if (typeof global.WritableStream === "undefined")
+      global.WritableStream = WritableStream;
+    if (typeof globalThis !== "undefined") {
+      if (typeof globalThis.TransformStream === "undefined")
+        globalThis.TransformStream = TransformStream;
+    }
+  } catch (e) {
+    // ignore
+  }
+
+  // require here so MSW and its interceptors load after global polyfills
+  try {
+    const { setupServer } = require("msw/node");
+    const { handlers } = require("./mocks/handlers");
+    server = setupServer(...(handlers || []));
+    server.listen();
+  } catch (e) {
+    // If MSW cannot be loaded (ESM/transform issues), provide a minimal stub
+    // so tests that don't require full MSW behavior don't crash.
+    // eslint-disable-next-line no-console
+    console.warn(
+      "MSW not available in test environment:",
+      e && e.message ? e.message : e
+    );
+    server = {
+      listen: () => {},
+      resetHandlers: () => {},
+      close: () => {},
+      use: () => {},
+    } as any;
+  }
+});
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 

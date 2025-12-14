@@ -1,0 +1,31 @@
+4bd220f4f9b9fbd32b3a3bd3e4de199c
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var __accessCheck = (obj, member, msg) => {
+  if (!member.has(obj)) throw TypeError("Cannot " + msg);
+};
+var __privateGet = (obj, member, getter) => {
+  __accessCheck(obj, member, "read from private field");
+  return getter ? getter.call(obj) : member.get(obj);
+};
+var __privateAdd = (obj, member, value) => {
+  if (member.has(obj)) throw TypeError("Cannot add the same private member more than once");
+  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+};
+
+// src/getRawRequest.ts
+var kRawRequest = Symbol("kRawRequest");
+function getRawRequest(request) {
+  return Reflect.get(request, kRawRequest);
+}
+function setRawRequest(request, rawRequest) {
+  Reflect.set(request, kRawRequest, rawRequest);
+}
+exports.__privateGet = __privateGet;
+exports.__privateAdd = __privateAdd;
+exports.getRawRequest = getRawRequest;
+exports.setRawRequest = setRawRequest;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJrUmF3UmVxdWVzdCIsIlN5bWJvbCIsImdldFJhd1JlcXVlc3QiLCJyZXF1ZXN0IiwiUmVmbGVjdCIsImdldCIsInNldFJhd1JlcXVlc3QiLCJyYXdSZXF1ZXN0Iiwic2V0Il0sInNvdXJjZXMiOlsiLi4vLi4vc3JjL2dldFJhd1JlcXVlc3QudHMiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc3Qga1Jhd1JlcXVlc3QgPSBTeW1ib2woJ2tSYXdSZXF1ZXN0JylcblxuLyoqXG4gKiBSZXR1cm5zIGEgcmF3IHJlcXVlc3QgaW5zdGFuY2UgYXNzb2NpYXRlZCB3aXRoIHRoaXMgcmVxdWVzdC5cbiAqXG4gKiBAZXhhbXBsZVxuICogaW50ZXJjZXB0b3Iub24oJ3JlcXVlc3QnLCAoeyByZXF1ZXN0IH0pID0+IHtcbiAqICAgY29uc3QgcmF3UmVxdWVzdCA9IGdldFJhd1JlcXVlc3QocmVxdWVzdClcbiAqXG4gKiAgIGlmIChyYXdSZXF1ZXN0IGluc3RhbmNlb2YgaHR0cC5DbGllbnRSZXF1ZXN0KSB7XG4gKiAgICAgY29uc29sZS5sb2cocmF3UmVxdWVzdC5yYXdIZWFkZXJzKVxuICogICB9XG4gKiB9KVxuICovXG5leHBvcnQgZnVuY3Rpb24gZ2V0UmF3UmVxdWVzdChyZXF1ZXN0OiBSZXF1ZXN0KTogdW5rbm93biB8IHVuZGVmaW5lZCB7XG4gIHJldHVybiBSZWZsZWN0LmdldChyZXF1ZXN0LCBrUmF3UmVxdWVzdClcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIHNldFJhd1JlcXVlc3QocmVxdWVzdDogUmVxdWVzdCwgcmF3UmVxdWVzdDogdW5rbm93bik6IHZvaWQge1xuICBSZWZsZWN0LnNldChyZXF1ZXN0LCBrUmF3UmVxdWVzdCwgcmF3UmVxdWVzdClcbn1cbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsSUFBTUEsV0FBQSxHQUFjQyxNQUFBLENBQU8sYUFBYTtBQWNqQyxTQUFTQyxjQUFjQyxPQUFBLEVBQXVDO0VBQ25FLE9BQU9DLE9BQUEsQ0FBUUMsR0FBQSxDQUFJRixPQUFBLEVBQVNILFdBQVc7QUFDekM7QUFFTyxTQUFTTSxjQUFjSCxPQUFBLEVBQWtCSSxVQUFBLEVBQTJCO0VBQ3pFSCxPQUFBLENBQVFJLEdBQUEsQ0FBSUwsT0FBQSxFQUFTSCxXQUFBLEVBQWFPLFVBQVU7QUFDOUMiLCJpZ25vcmVMaXN0IjpbXX0=
