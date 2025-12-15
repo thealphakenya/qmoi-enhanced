@@ -1,6 +1,5 @@
 // Environment polyfills that must run before any modules are loaded
-/* istanbul ignore next: debug helper for setup ordering */
-console.log("JEST_ENV_SETUP: running early polyfills");
+/* istanbul ignore next: ensure polyfills run before other modules */
 const { TextEncoder, TextDecoder } = require("util");
 if (typeof global.TextEncoder === "undefined") global.TextEncoder = TextEncoder;
 if (typeof global.TextDecoder === "undefined") global.TextDecoder = TextDecoder;
@@ -75,3 +74,24 @@ try {
 } catch (e) {
   // ignore
 }
+// Start MSW server early to ensure interceptors are active before tests run.
+// This avoids network calls that can happen during module initialization.
+try {
+  // Require the already-prepared server (it uses `setupServer()` with no handlers)
+  // and call `listen()` so request interception is active.
+  // Use a relative path to the source so Jest can transform it as needed.
+  // eslint-disable-next-line global-require
+  const { server } = require("./src/mocks/server");
+  if (server && typeof server.listen === "function") {
+    server.listen();
+    // Log minimally to help debugging in CI if needed.
+    // console.log("EARLY_MSW: server.listen called in setupFiles");
+  }
+} catch (e) {
+  // Best-effort: if MSW cannot be initialized here, tests will attempt
+  // to initialize it in `src/setupTests.ts` instead.
+  // console.error("EARLY_MSW failed to initialize:", e);
+}
+
+// No early MSW fallback here. MSW is initialized in `src/setupTests.ts`
+// to ensure ESM imports and polyfills are applied in the correct order.

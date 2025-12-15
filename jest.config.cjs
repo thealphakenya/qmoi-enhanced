@@ -41,7 +41,6 @@ module.exports = {
     "/.qmoi_validation/",
     "/_archive_qmoi-enhanced/",
     "/tests/ui/",
-    ".\\.integration\\.test\\.(ts|tsx|js)$",
   ],
   collectCoverage: false,
   coverageDirectory: "<rootDir>/coverage",

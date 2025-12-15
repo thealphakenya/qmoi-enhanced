@@ -150,6 +150,31 @@
           }
         }
       }
+    },
+    {
+      "ts": "2025-12-14T17:34:11.237Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
     }
   ]
 }

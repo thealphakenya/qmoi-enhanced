@@ -1,0 +1,109 @@
+d4f4d67ef7854259434b3789c2a90575
+// Environment polyfills that must run before any modules are loaded
+/* istanbul ignore next: debug helper for setup ordering */
+console.log("JEST_ENV_SETUP: running early polyfills");
+const { TextEncoder, TextDecoder } = require("util");
+if (typeof global.TextEncoder === "undefined") global.TextEncoder = TextEncoder;
+if (typeof global.TextDecoder === "undefined") global.TextDecoder = TextDecoder;
+// Polyfill fetch for environments that lack it (msw and fetch-based code expect it)
+try {
+  require("whatwg-fetch");
+} catch (e) {
+  // best-effort; if not available, tests will set up mocks
+}
+// Ensure Web Streams APIs exist for libraries that expect browser streams
+try {
+  const {
+    TransformStream,
+    ReadableStream,
+    WritableStream,
+  } = require("web-streams-polyfill");
+  // Attach to multiple global objects to cover different runtime module scopes
+  if (typeof global.TransformStream === "undefined")
+    global.TransformStream = TransformStream;
+  if (typeof global.ReadableStream === "undefined")
+    global.ReadableStream = ReadableStream;
+  if (typeof global.WritableStream === "undefined")
+    global.WritableStream = WritableStream;
+  if (typeof globalThis !== "undefined") {
+    if (typeof globalThis.TransformStream === "undefined")
+      globalThis.TransformStream = TransformStream;
+    if (typeof globalThis.ReadableStream === "undefined")
+      globalThis.ReadableStream = ReadableStream;
+    if (typeof globalThis.WritableStream === "undefined")
+      globalThis.WritableStream = WritableStream;
+  }
+  if (typeof window !== "undefined") {
+    if (typeof window.TransformStream === "undefined")
+      window.TransformStream = TransformStream;
+    if (typeof window.ReadableStream === "undefined")
+      window.ReadableStream = ReadableStream;
+    if (typeof window.WritableStream === "undefined")
+      window.WritableStream = WritableStream;
+  }
+  if (typeof self !== "undefined") {
+    if (typeof self.TransformStream === "undefined")
+      self.TransformStream = TransformStream;
+    if (typeof self.ReadableStream === "undefined")
+      self.ReadableStream = ReadableStream;
+    if (typeof self.WritableStream === "undefined")
+      self.WritableStream = WritableStream;
+  }
+} catch (e) {
+  // best-effort
+}
+// Polyfill BroadcastChannel used by some MSW internals (ws support)
+try {
+  if (typeof global.BroadcastChannel === "undefined") {
+    class _BroadcastChannel {
+      constructor(name) {
+        this.name = name;
+        this.onmessage = null;
+      }
+      postMessage(_msg) {
+        // no-op for tests
+      }
+      close() {}
+      addEventListener() {}
+      removeEventListener() {}
+    }
+    global.BroadcastChannel = _BroadcastChannel;
+    if (typeof globalThis !== "undefined")
+      globalThis.BroadcastChannel = _BroadcastChannel;
+    if (typeof window !== "undefined")
+      window.BroadcastChannel = _BroadcastChannel;
+  }
+} catch (e) {
+  // ignore
+}
+// As a pragmatic fallback for tests that run before async setup completes,
+// start a minimal MSW server early using CommonJS-compatible internals.
+try {
+  const { setupServer } = require('msw/node');
+  // Import the `http` helper directly from the core CJS build to avoid ESM interop issues
+  const { http } = require('msw/lib/core/http');
+  const server = setupServer(
+    http.get('/api/qmoi/status', (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          status: 'OK',
+          last_check: '2024-06-01T12:00:00Z',
+          mutation_count: 5,
+          logs: ['Log 1', 'Log 2'],
+        }),
+      );
+    }),
+    http.post('/api/qmoi/payload', (req, res, ctx) => {
+      const action = req.url.searchParams.get('qfix') ? 'QFix' : req.url.searchParams.get('qoptimize') ? 'QOptimize' : req.url.searchParams.get('qsecure') ? 'QSecure' : 'Unknown';
+      return res(ctx.status(200), ctx.json({ message: `${action} done` }));
+    }),
+  );
+  server.listen();
+  // expose for tests to override if needed
+  global.__MSW_EARLY_SERVER__ = server;
+  console.log('JEST_ENV_SETUP: started early MSW fallback server');
+} catch (e) {
+  // best-effort; continue if this fails
+  console.error('JEST_ENV_SETUP: failed to start early MSW fallback server', e);
+}
