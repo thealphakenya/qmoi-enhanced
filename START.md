@@ -40,6 +40,21 @@ python scripts/qmoi-start.py
 - Run tests: `npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`
 - Build (CI style): `npm run ci:build`
 
+## 🚀 Production
+
+- Build and start (simple):
+  - `npm run ci:build`
+  - `NODE_ENV=production npm start`
+- Daemonize with systemd (example):
+  - Copy the repo to the target host (e.g. `/opt/qmoi`)
+  - Run `sudo ./scripts/install-systemd-service.sh /opt/qmoi` (this will create `/etc/systemd/system/qmoi.service`, enable and start it)
+- PM2: `npm run start:prod:pm2` (uses `ecosystem.config.js`)
+- Docker (multi-stage):
+  - `docker build -t qmoi-enhanced:latest .`
+  - `docker run -p3000:3000 qmoi-enhanced:latest`
+- Docker Compose (production):
+  - `docker compose -f deploy/docker-compose.prod.yml up -d`
+
 ### MSW & Testing Notes
 
 - MSW is initialized at test-time via `src/setupTests.ts` and provides a global promise `globalThis.__MSW_READY__` that tests can await.

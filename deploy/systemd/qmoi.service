@@ -1,0 +1,17 @@
+[Unit]
+Description=QMOI Next.js App
+After=network.target
+
+[Service]
+# Replace /opt/qmoi with the install directory
+WorkingDirectory=/opt/qmoi
+ExecStart=/usr/bin/env NODE_ENV=production /usr/bin/npm start
+Restart=always
+RestartSec=5
+# Adjust user/group as needed
+User=www-data
+Environment=PORT=3000
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
