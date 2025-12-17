@@ -26,4 +26,10 @@ Thanks for contributing to QMOI! This file contains quick tips for running the d
 - Open a branch, push, and create a PR targeting the default branch (`autosync-backup-20250926-232440`) or `upgrade/next-15` for this migration work.
 - The `CI Build and Tests` workflow (`.github/workflows/ci.yml`) will run the build and test suite on push/PR.
 
+### PR checklist
+- Ensure tests pass locally (`npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`).
+- Ensure the CI build passes (`npm run ci:build`) before merging.
+- The CI workflow now generates a coverage report and uploads it as an artifact; check the workflow run for `coverage-report` artifacts.
+- Use the PR template to include a summary and verify the checklist is completed.
+
 Thank you — and welcome to the project! If you'd like me to add a short automation for generating a PR checklist or a PR template, I can add that next.

@@ -9,6 +9,7 @@
     "dev:health": "./scripts/dev-healthcheck.sh",
     "build": "next build",
     "ci:build": "NODE_OPTIONS=--max-old-space-size=8192 CI=false next build",
+    "test:coverage": "jest --config=jest.config.cjs --coverage --runInBand --colors" ,
     "test:auth": "node ./scripts/tests/requireApiKeyTest.js",
     "test:endpoint": "node ./scripts/tests/endpoint_gating_test.js",
     "test:flags": "node ./scripts/tests/route_flags_test.js",

@@ -30,6 +30,7 @@ If you are in a restricted environment, open the URL manually after running the 
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
 ![CI Build](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ci.yml/badge.svg)
+![Coverage](https://img.shields.io/badge/Coverage-unknown-lightgrey?style=flat-square)
 ![Release v1.2.3](https://img.shields.io/badge/Release-v1.2.3-blue?style=flat-square)
 ![Publish Q Alpha](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-alpha.yml/badge.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-12+-success?style=flat-square)

@@ -33,3 +33,11 @@ Checklist
 - [ ] Secrets provisioned (GH/HF tokens)
 - [ ] Release artifacts moved to Releases or object storage
 - [ ] Service install tested on staging host
+
+General PR checklist
+--------------------
+- [ ] Tests pass locally (`npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`)
+- [ ] CI build passes (`npm run ci:build`)
+- [ ] Coverage report generated and attached as an artifact
+- [ ] Changes documented in `CONTRIBUTING.md` / `START.md` if relevant
+- [ ] MSW-related test changes include notes about `__MSW_READY__` and absolute URL handlers (if applicable)
