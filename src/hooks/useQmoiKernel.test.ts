@@ -21,7 +21,7 @@ describe("useQmoiKernel", () => {
         logs: ["Log 1", "Log 2"],
       }),
     });
-    const { result, waitForNextUpdate } = renderHook(() => useQmoiKernel());
+    const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
     });

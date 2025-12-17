@@ -6,8 +6,11 @@
   "scripts": {
     "start": "next start",
     "dev": "next dev",
+    "dev:placeholder": "node scripts/dev-placeholder.js",
     "dev:health": "./scripts/dev-healthcheck.sh",
     "build": "next build",
+    "lint": "eslint \"**/*.{js,ts,tsx}\" --max-warnings=0 || true",
+    "lint:fix": "eslint \"**/*.{js,ts,tsx}\" --fix || true",
     "ci:build": "NODE_OPTIONS=--max-old-space-size=8192 CI=false next build",
     "test:coverage": "jest --config=jest.config.cjs --coverage --runInBand --colors",
     "prod:start": "./scripts/prod-start.sh",
@@ -24,7 +27,12 @@
     "trading:genkey": "node scripts/auto_trading.js --genkey",
     "trading:publicip": "node scripts/auto_trading.js --publicip",
     "trading:check": "node scripts/auto_trading.js",
-    "trading:start": "node scripts/auto_trading.js"
+    "trading:start": "node scripts/auto_trading.js",
+    "ci:smoke": "node scripts/smoke-check.js",
+    "ci:full": "npm run ci:build && npm run test:coverage --if-present && npm run ci:smoke",
+    "docker:build": "docker build -t qmoi-enhanced:latest .",
+    "ci:verify": "npm run ci:build && npm run lint && npm run test:coverage",
+    "serve:static": "node scripts/serve-static.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

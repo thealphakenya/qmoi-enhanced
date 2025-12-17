@@ -30,7 +30,7 @@ describe("QMoiKernelPanel Integration", () => {
                 mutation_count: 5,
                 logs: ["Log 1", "Log 2"],
               }),
-              { status: 200 },
+              { status: 200 }
             );
           }
           if (url.includes("/api/qmoi/payload")) {
@@ -38,10 +38,10 @@ describe("QMoiKernelPanel Integration", () => {
             const action = u.searchParams.get("qfix")
               ? "QFix"
               : u.searchParams.get("qoptimize")
-                ? "QOptimize"
-                : u.searchParams.get("qsecure")
-                  ? "QSecure"
-                  : "Unknown";
+              ? "QOptimize"
+              : u.searchParams.get("qsecure")
+              ? "QSecure"
+              : "Unknown";
             return new Response(JSON.stringify({ message: `${action} done` }), {
               status: 200,
             });
@@ -92,8 +92,8 @@ describe("QMoiKernelPanel Integration", () => {
 
   afterAll(() => {
     try {
-      if (localServer && typeof localServer.close === "function")
-        localServer.close();
+      const ls = (globalThis as any).localServer;
+      if (ls && typeof ls.close === "function") ls.close();
     } catch {
       // ignore
     }
@@ -132,7 +132,7 @@ describe("QMoiKernelPanel Integration", () => {
     await screen.findByText("OK");
     fireEvent.click(screen.getByRole("button", { name: /Run QFix/i }));
     await waitFor(() =>
-      expect(screen.getByText(/Last Action:/)).toBeInTheDocument(),
+      expect(screen.getByText(/Last Action:/)).toBeInTheDocument()
     );
     expect(screen.getByText("QFix done")).toBeInTheDocument();
   });
@@ -147,7 +147,7 @@ describe("QMoiKernelPanel Integration", () => {
         server.use(
           helpers.get("/api/qmoi/status", (req: any, res: any, ctx: any) => {
             return res(ctx.status(500));
-          }),
+          })
         );
       }
     } catch {

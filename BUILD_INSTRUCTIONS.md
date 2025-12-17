@@ -2,13 +2,26 @@
 
 ## Build Environment Status
 
-### Current Container
+### Current Container / CI
 
-- **Node.js:** ✗ NOT AVAILABLE
-- **npm:** ✗ NOT AVAILABLE
+- **Node.js:** Recommended 18.x or 20.x (CI uses Node 18 by default)
+- **npm:** 9.x or later recommended
 - **Python:** ✓ Available (used for local testing of dashboards)
 
+> Note: Local Codespaces may have limited memory; heavy Next.js production builds are more reliable on a CI runner (see the included GitHub Actions workflow). If you have trouble building locally, use CI or a larger machine.
+
 ## Build Steps (Run on machine with Node.js 18+)
+
+### Static preview (safe while production build fails locally)
+
+If local Next.js production builds are unstable due to memory limits, you can run the lightweight static preview server:
+
+```bash
+npm run serve:static
+# Open: http://localhost:3005
+```
+
+This serves `public/index.html` as a minimal preview while full build is performed in CI.
 
 ### 1. Install Dependencies
 
