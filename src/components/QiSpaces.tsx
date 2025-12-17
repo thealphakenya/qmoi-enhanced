@@ -1,5 +1,34 @@
-import React from 'react';
+"use client";
+import React, { useState } from "react";
 
 export function QiSpaces() {
-  return <div>Qi Spaces Placeholder</div>;
-} 
+  const [spaces, setSpaces] = useState<string[]>(["default"]);
+  const [name, setName] = useState("");
+
+  function add() {
+    if (!name.trim()) return;
+    setSpaces((s) => [name.trim(), ...s]);
+    setName("");
+  }
+
+  return (
+    <div style={{ padding: 8 }}>
+      <div style={{ fontWeight: 700 }}>Qi Spaces</div>
+      <div style={{ marginTop: 8 }}>
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Add new space..."
+        />
+        <button onClick={add} style={{ marginLeft: 8 }}>
+          Add
+        </button>
+      </div>
+      <ul style={{ marginTop: 8 }}>
+        {spaces.map((s) => (
+          <li key={s}>{s}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}

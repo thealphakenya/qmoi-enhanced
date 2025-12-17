@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import './GitStatus.css';
+"use client";
+import React, { useState, useEffect } from "react";
+import "./GitStatus.css";
 
 interface GitStatusInfo {
   branch: string;
@@ -7,17 +8,17 @@ interface GitStatusInfo {
   stagedChanges: number;
   unstagedChanges: number;
   commits: number;
-  remoteStatus: 'up-to-date' | 'ahead' | 'behind' | 'diverged';
+  remoteStatus: "up-to-date" | "ahead" | "behind" | "diverged";
 }
 
 export function GitStatus() {
   const [status, setStatus] = useState<GitStatusInfo>({
-    branch: 'feature/pwa-components',
+    branch: "feature/pwa-components",
     isDirty: true,
     stagedChanges: 3,
     unstagedChanges: 2,
     commits: 45,
-    remoteStatus: 'ahead'
+    remoteStatus: "ahead",
   });
   const [loading, setLoading] = useState(false);
 
@@ -35,7 +36,7 @@ export function GitStatus() {
     setTimeout(() => {
       setStatus((prev) => ({
         ...prev,
-        isDirty: !prev.isDirty
+        isDirty: !prev.isDirty,
       }));
       setLoading(false);
     }, 500);
@@ -43,16 +44,16 @@ export function GitStatus() {
 
   const getRemoteStatusColor = (status: string) => {
     switch (status) {
-      case 'up-to-date':
-        return '#4CAF50';
-      case 'ahead':
-        return '#2196F3';
-      case 'behind':
-        return '#FF9800';
-      case 'diverged':
-        return '#F44336';
+      case "up-to-date":
+        return "#4CAF50";
+      case "ahead":
+        return "#2196F3";
+      case "behind":
+        return "#FF9800";
+      case "diverged":
+        return "#F44336";
       default:
-        return '#666';
+        return "#666";
     }
   };
 
@@ -61,7 +62,7 @@ export function GitStatus() {
       <div className="git-header">
         <h2>Git Status</h2>
         <button onClick={handleRefresh} disabled={loading}>
-          {loading ? 'Refreshing...' : '🔄 Refresh'}
+          {loading ? "Refreshing..." : "🔄 Refresh"}
         </button>
       </div>
       <div className="status-panel">
@@ -71,17 +72,20 @@ export function GitStatus() {
         </div>
         <div className="status-item">
           <span className="label">Status:</span>
-          <span className={`value ${status.isDirty ? 'dirty' : 'clean'}`}>
-            {status.isDirty ? '🔴 Dirty' : '🟢 Clean'}
+          <span className={`value ${status.isDirty ? "dirty" : "clean"}`}>
+            {status.isDirty ? "🔴 Dirty" : "🟢 Clean"}
           </span>
         </div>
         <div className="status-item">
           <span className="label">Remote:</span>
-          <span className="value" style={{ color: getRemoteStatusColor(status.remoteStatus) }}>
-            {status.remoteStatus === 'up-to-date' && '✓ Up to date'}
-            {status.remoteStatus === 'ahead' && `⬆ Ahead by ${status.commits}`}
-            {status.remoteStatus === 'behind' && '⬇ Behind'}
-            {status.remoteStatus === 'diverged' && '⇅ Diverged'}
+          <span
+            className="value"
+            style={{ color: getRemoteStatusColor(status.remoteStatus) }}
+          >
+            {status.remoteStatus === "up-to-date" && "✓ Up to date"}
+            {status.remoteStatus === "ahead" && `⬆ Ahead by ${status.commits}`}
+            {status.remoteStatus === "behind" && "⬇ Behind"}
+            {status.remoteStatus === "diverged" && "⇅ Diverged"}
           </span>
         </div>
         <div className="status-item">
@@ -93,4 +97,4 @@ export function GitStatus() {
       </div>
     </div>
   );
-} 
+}

@@ -1,28 +1,29 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './Chatbot.css';
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import "./Chatbot.css";
 
 interface ChatMessage {
   id: string;
   text: string;
-  sender: 'user' | 'bot';
+  sender: "user" | "bot";
   timestamp: Date;
 }
 
 export function Chatbot() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      id: '1',
-      text: 'Hello! I\'m the QMOI AI Assistant. How can I help you today?',
-      sender: 'bot',
-      timestamp: new Date()
-    }
+      id: "1",
+      text: "Hello! I'm the QMOI AI Assistant. How can I help you today?",
+      sender: "bot",
+      timestamp: new Date(),
+    },
   ]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -36,12 +37,12 @@ export function Chatbot() {
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
       text: input,
-      sender: 'user',
-      timestamp: new Date()
+      sender: "user",
+      timestamp: new Date(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setInput('');
+    setInput("");
     setLoading(true);
 
     // Simulate bot response (in production, call backend API)
@@ -49,8 +50,8 @@ export function Chatbot() {
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         text: `I received your message: "${input}". This is a mock response. Connect this to your backend API for real functionality.`,
-        sender: 'bot',
-        timestamp: new Date()
+        sender: "bot",
+        timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMessage]);
       setLoading(false);
@@ -67,13 +68,17 @@ export function Chatbot() {
         {messages.map((msg) => (
           <div key={msg.id} className={`message message-${msg.sender}`}>
             <div className="message-content">{msg.text}</div>
-            <div className="message-time">{msg.timestamp.toLocaleTimeString()}</div>
+            <div className="message-time">
+              {msg.timestamp.toLocaleTimeString()}
+            </div>
           </div>
         ))}
         {loading && (
           <div className="message message-bot loading">
             <div className="typing-indicator">
-              <span></span><span></span><span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
           </div>
         )}
@@ -85,7 +90,7 @@ export function Chatbot() {
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+          onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
           disabled={loading}
         />
         <button onClick={handleSendMessage} disabled={loading || !input.trim()}>
@@ -94,4 +99,4 @@ export function Chatbot() {
       </div>
     </div>
   );
-} 
+}
