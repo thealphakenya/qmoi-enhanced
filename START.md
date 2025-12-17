@@ -45,6 +45,8 @@ python scripts/qmoi-start.py
 - MSW is initialized at test-time via `src/setupTests.ts` and provides a global promise `globalThis.__MSW_READY__` that tests can await.
 - If you see unhandled network requests during tests, set `SHOW_MSW_UNHANDLED=1` to see them; use `TEST_VERBOSE=1` for extra handler debug output.
 
+- See `CONTRIBUTING.md` for more developer testing notes and troubleshooting steps (MSW handler shapes, env flags, and common fixes).
+
 ## 🛡️ Always-On
 
 - QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your device is offline.
