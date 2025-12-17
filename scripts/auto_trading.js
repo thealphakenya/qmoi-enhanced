@@ -99,7 +99,7 @@ async function main(argv = process.argv.slice(2)) {
   }
 
   console.log(
-    "All trading setup checks passed. Starting trading automation..."
+    "All trading setup checks passed. Starting trading automation...",
   );
   // Place trading automation logic here
 }

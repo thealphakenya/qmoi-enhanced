@@ -43,36 +43,36 @@ class ErrorConfig:
 
 class ErrorTracker:
     """Tracks and manages application errors."""
-    
+
     def __init__(self, config: ErrorConfig):
         self.config = config
         self.error_history: List[Dict] = []
         self.current_state: Dict = {}
         self.notification_channels = config.notification_channels or []
-    
+
     def track_error(self, error: Dict) -> None:
         """Track a new error."""
         if not self.config.tracking_enabled:
             return
-            
+
         error_entry = {
             'timestamp': datetime.now().isoformat(),
             'error': error,
             'status': 'new'
         }
-        
+
         self.error_history.append(error_entry)
         self._check_alert_threshold()
         self._save_error_history()
-    
+
     def get_error_history(self) -> List[Dict]:
         """Get the error history."""
         return self.error_history
-    
+
     def get_active_errors(self) -> List[Dict]:
         """Get currently active errors."""
         return [e for e in self.error_history if e['status'] == 'new']
-    
+
     def resolve_error(self, error_id: str) -> bool:
         """Mark an error as resolved."""
         for error in self.error_history:
@@ -82,7 +82,7 @@ class ErrorTracker:
                 self._save_error_history()
                 return True
         return False
-    
+
     def _check_alert_threshold(self) -
 ```
 

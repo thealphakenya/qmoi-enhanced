@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -37,7 +38,7 @@ flowchart TD
   I --> M[Media Filtering]
 ```
 
-*Diagram: QMOI Enhanced Auto-Deploy System architecture, including the new Media Manager module.*
+_Diagram: QMOI Enhanced Auto-Deploy System architecture, including the new Media Manager module._
 
 ---
 
@@ -108,6 +109,7 @@ node scripts/deploy/health-check.js vercel
 ```
 
 **Health Check Areas:**
+
 - ✅ Vercel deployment status
 - ✅ Build directory integrity
 - ✅ Environment configuration
@@ -129,6 +131,7 @@ node scripts/enhanced-error-fix.js --type=comprehensive
 ```
 
 **Error Types Supported:**
+
 - `build`: Build process errors
 - `vercel`: Vercel deployment errors
 - `test`: Test failures
@@ -144,6 +147,7 @@ node scripts/deploy/vercel_auto_deploy.js
 ```
 
 **Features:**
+
 - 🔄 Automatic retry with exponential backoff
 - 🧹 Cache clearing and cleanup
 - 🔧 Multiple deployment strategies
@@ -194,11 +198,13 @@ QMOI_AUTODEV_ENABLED=true
 #### 1. Build Failures
 
 **Symptoms:**
+
 - Build directory missing or empty
 - TypeScript compilation errors
 - Missing dependencies
 
 **Solutions:**
+
 ```bash
 # Clear cache and reinstall
 npm cache clean --force
@@ -212,11 +218,13 @@ npm run deploy:fix
 #### 2. Vercel Deployment Failures
 
 **Symptoms:**
+
 - Deployment timeout
 - Build errors on Vercel
 - Environment variable issues
 
 **Solutions:**
+
 ```bash
 # Clear Vercel cache
 npx vercel --clear-cache
@@ -231,10 +239,12 @@ npm run deploy:health
 #### 3. Environment Issues
 
 **Symptoms:**
+
 - Missing environment variables
 - Configuration errors
 
 **Solutions:**
+
 ```bash
 # Validate environment
 node scripts/deploy/health-check.js check
@@ -393,7 +403,7 @@ To enhance the deployment system:
 
 ---
 
-**QMOI Enhanced Auto-Deploy System** - Always running, always fixing, always deploying! 🚀 
+**QMOI Enhanced Auto-Deploy System** - Always running, always fixing, always deploying! 🚀
 
 ## Backup Health
 
@@ -404,10 +414,12 @@ To enhance the deployment system:
 ## Permanent QMOI Backup to HuggingFace
 
 ### How it works
+
 - After every successful deployment, the latest QMOI model/data/code is automatically pushed to [huggingface.co/alphaqmoi/qmoi](https://huggingface.co/alphaqmoi/qmoi).
 - Large files are tracked with Git LFS for efficient storage and transfer.
 
 ### Manual Backup
+
 ```bash
 # Track large files
 cd /path/to/your/project
@@ -416,24 +428,29 @@ python scripts/hf_sync.py
 ```
 
 ### Automated Backup
+
 - The GitHub Actions workflow runs the sync script after every successful deploy.
 - Ensure your HuggingFace token is set as the `HF_TOKEN` secret in your repository.
 
 ### S3/Google Drive Mirroring (Optional)
+
 - To also mirror backups to S3, set the `S3_BUCKET` environment variable and provide AWS credentials (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`).
 - To mirror to Google Drive, set the `GOOGLE_DRIVE_FOLDER_ID` environment variable and authenticate with Google (first run will prompt for OAuth).
 
 ### Restoring from Backup
+
 ```bash
 git clone https://huggingface.co/alphaqmoi/qmoi
 # or use the HuggingFace Hub API for programmatic access
 ```
 
 ### Permanent Storage & Redundancy
+
 - All releases are pinned on HuggingFace.
 - Optionally mirrored to S3/Google Drive for redundancy.
 
 ### Advanced: Pinning and Mirroring
+
 - Use HuggingFace's "pin" feature to pin important versions.
 - Mirror to another remote (e.g., S3, Google Drive) for extra safety.
 
@@ -442,17 +459,20 @@ git clone https://huggingface.co/alphaqmoi/qmoi
 ## Restore from Backup
 
 ### HuggingFace
+
 ```bash
 git clone https://huggingface.co/alphaqmoi/qmoi
 ```
 
 ### S3
+
 ```bash
 export S3_BUCKET=your-bucket
 python scripts/restore_from_s3.py
 ```
 
 ### Google Drive
+
 ```bash
 export GOOGLE_DRIVE_FOLDER_ID=your-folder-id
 python scripts/restore_from_gdrive.py
@@ -461,6 +481,7 @@ python scripts/restore_from_gdrive.py
 ---
 
 ## Automated Notifications
+
 - Set these environment variables to enable alerts on backup failure:
   - `SLACK_WEBHOOK_URL` for Slack
   - `EMAIL_SMTP`, `EMAIL_TO`, `EMAIL_FROM`, `EMAIL_PASS` for email
@@ -469,6 +490,7 @@ python scripts/restore_from_gdrive.py
 ---
 
 ## Advanced: Config Auto-Fix & Health Checks
+
 - The self-healing system now:
   - Detects and fixes typos and missing fields in `vercel.json`, `package.json`, and `.env`.
   - Auto-commits and pushes fixes.
@@ -527,6 +549,7 @@ npm run revenue:status
 ## Enhanced Automation
 
 ### Self-Healing System
+
 - **Error Detection**: Automatically identifies and fixes issues
 - **GitHub Integration**: Automatic commits and deployments
 - **Error Recovery**: Continuous monitoring and auto-recovery
@@ -537,7 +560,7 @@ npm run revenue:status
 - **Daily Minimum**: 10,000 KES guaranteed
 - **Auto-Transfer**: 2,000 KES to M-Pesa daily
 - **Growth Target**: 20% increase each day
-- **Continuous Operation**: 24/7 revenue generation 
+- **Continuous Operation**: 24/7 revenue generation
 
 ## Advanced Revenue Features
 
@@ -560,6 +583,7 @@ npm run revenue:analytics
 ```
 
 **Revenue Features:**
+
 - 🎯 **Guaranteed Daily Target**: 15,000 KES minimum
 - 📈 **Growth Tracking**: 25% daily growth target
 - 💰 **Auto-Transfer**: 3,000 KES to M-Pesa daily
@@ -574,17 +598,8 @@ npm run revenue:analytics
     "daily_target": 15000,
     "growth_target": 25,
     "auto_transfer": 3000,
-    "strategies": [
-      "trading",
-      "automation",
-      "ai_services",
-      "content_creation"
-    ],
-    "fallback_sources": [
-      "backup_trading",
-      "emergency_funds",
-      "partner_revenue"
-    ]
+    "strategies": ["trading", "automation", "ai_services", "content_creation"],
+    "fallback_sources": ["backup_trading", "emergency_funds", "partner_revenue"]
   }
 }
 ```
@@ -607,6 +622,7 @@ npm run security:integrity
 ```
 
 **Security Features:**
+
 - 🔒 **Code Integrity**: Checksums and digital signatures
 - 🛡️ **Tamper Detection**: Real-time monitoring for unauthorized changes
 - 🚨 **Decoy Mode**: Shows false information if tampering detected
@@ -651,6 +667,7 @@ npm run qmoi:history
 ```
 
 **Healing Capabilities:**
+
 - 🔧 **Error Detection**: Identifies issues before they cause problems
 - 🛠️ **Auto-Fix**: Automatically resolves common issues
 - 🔄 **Self-Test**: Runs tests after fixes to ensure success
@@ -694,6 +711,7 @@ npm run git:sync:force
 ```
 
 **GitHub Features:**
+
 - 🔄 **Auto-Commit**: Automatic commits with retry logic
 - 📤 **Auto-Push**: Reliable pushing with conflict resolution
 - 🔍 **Conflict Detection**: Identifies and resolves merge conflicts
@@ -739,6 +757,7 @@ npm run qnews:analytics
 ```
 
 **QNews Features:**
+
 - 📰 **News Aggregation**: Collects news from multiple sources
 - 🤖 **AI Curation**: AI-powered content selection and editing
 - 📅 **Scheduling**: Advanced scheduling with timezone support
@@ -764,6 +783,7 @@ npm run qradio:programs
 ```
 
 **QRadio Features:**
+
 - 🎵 **Live Streaming**: Real-time audio streaming
 - 🤖 **QMOI DJ**: AI-powered music selection and presentation
 - 📻 **Multiple Channels**: Global and Urban channels
@@ -791,6 +811,7 @@ npm run master:controls
 ```
 
 **Master Features:**
+
 - 👑 **Master Mode**: Exclusive access to advanced features
 - 📊 **System Analytics**: Comprehensive system monitoring
 - 👥 **User Management**: Full user control and management
@@ -840,6 +861,7 @@ npm run health:export
 ```
 
 **Monitoring Features:**
+
 - 📊 **Real-time Metrics**: Live system performance data
 - 🔍 **Component Health**: Individual component monitoring
 - 🚨 **Alert System**: Proactive issue notification
@@ -894,6 +916,7 @@ npm run emergency:restore
 ```
 
 **Recovery Features:**
+
 - 🔄 **Auto-Recovery**: Automatic system recovery procedures
 - 📦 **System Rollback**: Quick rollback to stable versions
 - 💾 **Data Recovery**: Comprehensive data backup and recovery
@@ -939,6 +962,7 @@ npm run optimize:database
 ```
 
 **Optimization Features:**
+
 - ⚡ **Performance Analysis**: Comprehensive performance profiling
 - 🗄️ **Cache Optimization**: Intelligent caching strategies
 - 🗃️ **Database Optimization**: Database performance tuning
@@ -981,6 +1005,7 @@ npm run api:client
 ```
 
 **API Features:**
+
 - 📚 **Complete Documentation**: Comprehensive API documentation
 - 🧪 **API Testing**: Built-in API testing tools
 - 🔧 **Client Generation**: Automatic client code generation
@@ -1014,6 +1039,7 @@ npm run api:client
 The QMOI Media Manager is a React-based dashboard component for managing, searching, and downloading media files (images, videos, audio, documents) within the QMOI system.
 
 ### Features
+
 - 🔍 **Search & Filter**: Search media by name or tags, filter by type (image, video, audio, document)
 - 📥 **Download**: Download media files with progress indication
 - 🏷️ **Tagging**: View and filter by tags
@@ -1021,11 +1047,12 @@ The QMOI Media Manager is a React-based dashboard component for managing, search
 - 🖼️ **Type Icons**: Visual icons for each media type
 
 ### Usage
+
 - The component is located at `components/QmoiMediaManager.tsx`.
 - Integrate it into your dashboard or admin panel:
 
 ```tsx
-import QmoiMediaManager from '@/components/QmoiMediaManager';
+import QmoiMediaManager from "@/components/QmoiMediaManager";
 
 function Dashboard() {
   return <QmoiMediaManager />;
@@ -1035,12 +1062,14 @@ function Dashboard() {
 - The component uses TODO_PROD data by default, but can be connected to a real API for production use.
 
 ### Example UI
+
 - Search bar and type filter dropdown
 - List of media files with icons, tags, and download buttons
 - Download progress bar
 - Media logs (recent actions)
 
 **API Integration:**
+
 - To use real data, replace the TODO_PROD data in the component with an API call (e.g., `fetch('/api/media')`).
 - For upload support, add an upload button and POST handler to your media API endpoint.
 - See comments in `QmoiMediaManager.tsx` for integration points.
@@ -1071,6 +1100,7 @@ npm run dev:production
 ```
 
 **Development Features:**
+
 - 🔄 **Auto-Testing**: Automatic test execution
 - 📊 **Code Quality**: Comprehensive code quality checks
 - 🚀 **Auto-Deployment**: Automated deployment pipeline
@@ -1117,6 +1147,7 @@ npm run support:status
 ```
 
 **Support Features:**
+
 - 📞 **24/7 Support**: Round-the-clock support availability
 - 📚 **Documentation**: Comprehensive documentation library
 - 🐛 **Issue Tracking**: Advanced issue tracking system
@@ -1166,11 +1197,12 @@ The QMOI Enhanced Auto-Deploy System provides a comprehensive, self-healing, and
 
 **QMOI Enhanced Auto-Deploy System** - The future of automated deployment is here! 🚀
 
-> **Note**: This system is designed for master users with full administrative privileges. Regular users have access to basic features only. 
+> **Note**: This system is designed for master users with full administrative privileges. Regular users have access to basic features only.
 
 ## QMOI Deployment & Media Management Cheatsheet
 
 ### Deployment & Health
+
 - Health check: `npm run deploy:health`
 - Auto-fix issues: `npm run deploy:fix`
 - Deploy to Vercel: `npm run deploy:vercel`
@@ -1180,26 +1212,30 @@ The QMOI Enhanced Auto-Deploy System provides a comprehensive, self-healing, and
 - View healing history: `npm run qmoi:history`
 
 ### Backup & Restore
+
 - Manual backup to HuggingFace: `python scripts/hf_sync.py`
 - Restore from S3: `python scripts/restore_from_s3.py`
 - Restore from Google Drive: `python scripts/restore_from_gdrive.py`
 
 ### Revenue Engine
+
 - Start revenue engine: `npm run revenue:start`
 - Check revenue status: `npm run revenue:status`
 - Set revenue targets: `npm run revenue:target --daily=15000 --growth=25`
 - View revenue analytics: `npm run revenue:analytics`
 
 ### Security & Optimization
+
 - Run security check: `npm run security:check`
 - Enable anti-tampering: `npm run security:enable`
 - Run optimization: `npm run optimize:system`
 
 ### Media Management
+
 - Use the QMOI Media Manager component in your dashboard for media search, download, and logs.
 - Media logs API: `/api/qmoi-database?logs=true&limit=50` (requires `x-qmoi-master: true` header)
 
---- 
+---
 
 ## 🖥️ QMOI Dashboard & Cloud Automation (2025+)
 
@@ -1216,28 +1252,30 @@ The QMOI Enhanced Auto-Deploy System provides a comprehensive, self-healing, and
 - All automation, monitoring, and dashboards are managed in the cloud for 24/7 reliability.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/DEPLOYMENT-README.md",
-  "validated_at": "2025-10-26T20:51:24.606318Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Enhanced Auto-Deploy System"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/DEPLOYMENT-README.md",
+"validated_at": "2025-10-26T20:51:24.606318Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Enhanced Auto-Deploy System"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

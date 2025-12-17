@@ -6,6 +6,7 @@ qmoi_validation_frontmatter: true
 # QMOIGAMINGGENREV
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,26 +16,28 @@ qmoi_validation_frontmatter: true
 <!-- LION_VALIDATION_END -->
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOIGAMINGGENREV.md",
-  "validated_at": "2025-10-26T20:51:22.522441Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": false,
-      "detail": "No H1 title found"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": false,
-  "summary": {
-    "total_checks": 2,
-    "passed": false
-  }
+"file": "QMOIGAMINGGENREV.md",
+"validated_at": "2025-10-26T20:51:22.522441Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": false,
+"detail": "No H1 title found"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": false,
+"summary": {
+"total_checks": 2,
+"passed": false
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

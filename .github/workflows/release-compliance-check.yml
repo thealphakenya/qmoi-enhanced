@@ -2,7 +2,7 @@ name: Release Compliance Check
 
 on:
   schedule:
-    - cron: '0 12 * * 0' # weekly on Sunday at noon UTC
+    - cron: "0 12 * * 0" # weekly on Sunday at noon UTC
   workflow_dispatch: {}
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Generate compliance report
         env:
@@ -46,12 +46,12 @@ jobs:
             const fs = require('fs');
             const report = JSON.parse(fs.readFileSync('reports/release_compliance_report.json', 'utf8'));
             const alerts = report.alerts || [];
-            
+
             let body = '## Release Compliance Check Failed\n\n';
             body += `**Status**: ${report.compliance_status}\n`;
             body += `**Checked at**: ${report.timestamp}\n`;
             body += `**Releases**: ${report.total_releases} (${report.releases.filter(r => r.status === 'ALERT').length} with issues)\n\n`;
-            
+
             if (alerts.length > 0) {
               body += '### Alerts\n\n';
               for (const alert of alerts) {
@@ -61,9 +61,9 @@ jobs:
                 }
               }
             }
-            
+
             body += '\n**Full Report**: See artifacts for `release_compliance_report.json`\n';
-            
+
             github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,

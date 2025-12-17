@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -19,42 +20,46 @@ This file lists all repositories that QMOI is synced with and can automatically 
 ---
 
 ## Synced Repositories
-* qmoi-enhanced (current)
-* qcity-main
-* qmoi-space
-* thealphakenya/qmoi-enhanced-new-clean
-* thealphakenya/Alpha-Q-ai
+
+- qmoi-enhanced (current)
+- qcity-main
+- qmoi-space
+- thealphakenya/qmoi-enhanced-new-clean
+- thealphakenya/Alpha-Q-ai
 
 ## Sync Features
-* Auto-sync .md files, code, and configuration across all listed repos
-* QMOI memory can auto-add new .md files and update ALLMDFILESREFS.md everywhere
-* Propagate fixes, enhancements, and automation features to all synced repos
-* Track changes and synchronize across all listed repos
-* Security, anti-hacking, anti-tracking, and parallel VPN features
-* QVS, autodevelopment, evolution, and memory awareness
-* Auto-check and update related .md files and features in all synced repos
+
+- Auto-sync .md files, code, and configuration across all listed repos
+- QMOI memory can auto-add new .md files and update ALLMDFILESREFS.md everywhere
+- Propagate fixes, enhancements, and automation features to all synced repos
+- Track changes and synchronize across all listed repos
+- Security, anti-hacking, anti-tracking, and parallel VPN features
+- QVS, autodevelopment, evolution, and memory awareness
+- Auto-check and update related .md files and features in all synced repos
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "SYNCREPOS.md",
-  "validated_at": "2025-10-26T20:51:22.642814Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "SYNCREPOS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "SYNCREPOS.md",
+"validated_at": "2025-10-26T20:51:22.642814Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "SYNCREPOS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

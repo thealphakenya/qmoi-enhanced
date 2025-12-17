@@ -1,7 +1,7 @@
-import React from 'react';
-import { useTrading } from '../hooks/useTrading';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { FaChartLine, FaRobot, FaHistory } from 'react-icons/fa';
+import React from "react";
+import { useTrading } from "../hooks/useTrading";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { FaChartLine, FaRobot, FaHistory } from "react-icons/fa";
 
 export function TradingPanel() {
   useTrading();
@@ -12,7 +12,9 @@ export function TradingPanel() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            {React.createElement(FaChartLine as React.ElementType, { className: "w-5 h-5" })}
+            {React.createElement(FaChartLine as React.ElementType, {
+              className: "w-5 h-5",
+            })}
             Performance Overview
           </CardTitle>
         </CardHeader>
@@ -27,7 +29,9 @@ export function TradingPanel() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            {React.createElement(FaRobot as React.ElementType, { className: "w-5 h-5" })}
+            {React.createElement(FaRobot as React.ElementType, {
+              className: "w-5 h-5",
+            })}
             Active Strategies
           </CardTitle>
         </CardHeader>
@@ -42,7 +46,9 @@ export function TradingPanel() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            {React.createElement(FaHistory as React.ElementType, { className: "w-5 h-5" })}
+            {React.createElement(FaHistory as React.ElementType, {
+              className: "w-5 h-5",
+            })}
             Recent Transactions
           </CardTitle>
         </CardHeader>

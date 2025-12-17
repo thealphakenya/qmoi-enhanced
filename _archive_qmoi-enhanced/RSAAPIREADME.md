@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -50,34 +51,40 @@ openssl rsa -pubout -in keys/private.pem -out keys/public.pem
 ## 4. How Qmoi/AI Signs Requests
 
 Every API request must include headers:
+
 - `ACCESS-KEY`: (API key ID from Bitget)
 - `ACCESS-SIGN`: RSA-SHA256 signature (base64)
 - `ACCESS-TIMESTAMP`: Current timestamp (ms)
 - `ACCESS-PASSPHRASE`: Your passphrase
 
 **Signature input:**
+
 ```
 timestamp + method.toUpperCase() + requestPath + (if any) "?" + queryString + body
 ```
 
 **Pseudocode:**
+
 ```js
 const message = timestamp + method + path + body;
 const signature = Base64(RSA_SHA256_Sign(private_key, message));
 ```
 
 ## 5. Security Best Practices
+
 - Never commit `private.pem` to git
 - Store keys in `keys/` (auto-ignored)
 - Use strong passphrases
 - Rotate keys periodically
 
 ## 6. File Locations
+
 - `keys/private.pem`: Used by Qmoi/AI for signing
 - `keys/public.pem`: Upload to Bitget
 - `keys/bitget.env`: (Optional) Store API key ID and passphrase
 
 ## 7. Next Steps
+
 1. Generate keys
 2. Create Bitget API key
 3. Configure Qmoi/AI to use `keys/private.pem` and `keys/bitget.env`
@@ -88,28 +95,30 @@ const signature = Base64(RSA_SHA256_Sign(private_key, message));
 For more, see Bitget's [official docs](https://www.bitget.com/api-doc/common/rsa-authentication.html).
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/RSAAPIREADME.md",
-  "validated_at": "2025-10-26T20:51:24.834482Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "Bitget User-Generated RSA API Key Integration"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/RSAAPIREADME.md",
+"validated_at": "2025-10-26T20:51:24.834482Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "Bitget User-Generated RSA API Key Integration"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

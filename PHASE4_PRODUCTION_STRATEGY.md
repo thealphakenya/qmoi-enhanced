@@ -3,7 +3,7 @@
 **Status**: In Progress  
 **Last Updated**: 2025-11-11  
 **Target Completion**: End of sprint  
-**Owner**: Alpha QMOI Enhancement Team  
+**Owner**: Alpha QMOI Enhancement Team
 
 ## Executive Summary
 
@@ -24,18 +24,21 @@ Phase 4 represents the final transition from documentation and tooling to **full
 ### Completed ✅
 
 **Production Link Audit** (`tools/production_link_audit.py`):
+
 - 72 verified links identified and categorized
 - 5 categories: production_downloads (41), local_services (8), version_control (9), external_production (10), ml_service (4)
 - 10-point production checklist generated
 - 4-step deployment plan created
 
 **Offline Strategy** (`docs/OFFLINE_GUIDE.md`):
+
 - Workflow patterns for disconnected operation
 - Cache initialization commands
 - Local service mocking examples
 - Offline verification procedures
 
 **Security Infrastructure**:
+
 - `.pre-commit-config.yaml` → local validation hooks (detect-secrets, bandit, black, ruff, markdownlint)
 - `.github/workflows/security-checks.yml` → CI detection of secrets and broken links
 
@@ -64,27 +67,33 @@ git commit -am "feat: production offline infrastructure" && git push
 ### Completed ✅
 
 **Credential Redaction**:
+
 - GitHub PAT: `[REDACTED_GITHUB_PAT]` → `[REDACTED_GITHUB_TOKEN]` (11 files)
 - Vercel Token: `eKFaXpJaQBwT7ZHGWnbpjj9T` → `[REDACTED_VERCEL_TOKEN]` (2 files)
 - Ngrok Token: `2vpml86bIuHdp1q06rMfqsqWqPz_7sGTMrPds44ZJmMFWdUa5` → environment variable with graceful fallback
 
 **Token Migration to Environment Variables**:
+
 - `downloadqmoiaiexe.py` → `os.environ.get('NGROK_AUTH_TOKEN')`
 - `start_qmoi_ngrok.py` → `os.environ.get('NGROK_AUTH_TOKEN')`
 - Added warnings when tokens not set
 
 **Credential Rotation Playbook** (`docs/CREDENTIAL_ROTATION_PLAYBOOK.md`):
+
 - 7-phase process: audit → revoke → rotate → verify → history cleanup → CI integration → monitor
 - Includes exact CLI commands for GitHub CLI, git-filter-repo, and secret manager integration
 
 ### PENDING - User Action Required ⚠️
 
 **Token Rotation & Revocation**:
+
 1. **GitHub PAT Rotation**:
+
    ```bash
    gh auth refresh  # Revoke old PAT
    gh auth login    # Create new PAT with minimal scopes
    ```
+
    Add new token to GitHub Secrets: `Settings → Secrets & variables → Actions → New repository secret`
 
 2. **Vercel Token Rotation**:
@@ -98,6 +107,7 @@ git commit -am "feat: production offline infrastructure" && git push
    - Store in GitHub Secrets: `NGROK_AUTH_TOKEN`
 
 **Git History Cleanup** (after token rotation):
+
 ```bash
 # Remove token occurrences from git history
 git-filter-repo --replace-text <(echo '[REDACTED_GITHUB_PAT]==[REDACTED_GITHUB_TOKEN]') \
@@ -136,6 +146,7 @@ git push --force-with-lease --all
 ### Implementation Plan
 
 **File Structure**:
+
 ```
 tests/
 ├── e2e/
@@ -167,6 +178,7 @@ tests/
 ```
 
 **CI Integration**:
+
 ```yaml
 # .github/workflows/e2e-tests.yml
 name: E2E Tests
@@ -211,6 +223,7 @@ jobs:
 ### Status: NOT STARTED
 
 **Blockers**:
+
 - Platform emulator/simulator setup in CI runners (iOS simulator not available on Ubuntu)
 - Appium driver configuration and maintenance
 - Test data and fixture setup for multi-platform scenarios
@@ -255,6 +268,7 @@ wallet/
 ### Status: NOT STARTED
 
 **Dependencies**:
+
 - Wallet service team sign-off on approval workflow
 - AWS Secrets Manager setup for production
 - Blockchain reconciliation service integration
@@ -274,6 +288,7 @@ created → planned → dev → testing → release → live → archived
 ### Templates & Automation
 
 **Project Creation Template** (`templates/project.yaml`):
+
 ```yaml
 name: string
 description: string
@@ -300,6 +315,7 @@ automation:
 ```
 
 **RBAC Model**:
+
 ```
 admin       → full access (create, delete, modify, override gates)
 maintainer  → modify project, approve releases, manage team
@@ -311,6 +327,7 @@ viewer      → read-only access
 **Status: NOT STARTED**
 
 **Blockers**:
+
 - Project schema finalization
 - GitHub Projects API integration
 - RBAC persistence layer (database or Firestore)
@@ -373,6 +390,7 @@ jobs:
 ### Dashboard Integration
 
 **Status Page** (`docs_site/release-dashboard.html`):
+
 ```html
 <div id="release-status">
   <h2>Release Pipeline Status</h2>
@@ -387,7 +405,7 @@ jobs:
 <script>
   // Poll GitHub Actions API for status updates
   setInterval(async () => {
-    const status = await fetch('/api/release/status').then(r => r.json());
+    const status = await fetch("/api/release/status").then((r) => r.json());
     Object.entries(status).forEach(([check, result]) => {
       document.querySelector(`#${check}`).dataset.status = result;
     });
@@ -398,10 +416,12 @@ jobs:
 ### Status: IN-PROGRESS
 
 **Completed**:
+
 - Link audit tool created
 - Release gate template prepared
 
 **Pending**:
+
 - Fix link report generation (0 links bug)
 - Wire link check into GitHub Actions
 - Create dashboard frontend
@@ -420,6 +440,7 @@ jobs:
 ### Implementation
 
 **Local Usage** (for development):
+
 ```bash
 # Set token locally (add to .env, not committed)
 export GITHUB_TOKEN=$(gh auth token)
@@ -432,11 +453,12 @@ git add *.md && git commit -m "docs: auto-update markdown references" || echo "N
 ```
 
 **CI Integration** (`.github/workflows/markdown-auto-update.yml`):
+
 ```yaml
 name: Auto-Update Markdown References
 on:
   schedule:
-    - cron: '0 2 * * *'  # 2 AM UTC daily
+    - cron: "0 2 * * *" # 2 AM UTC daily
   workflow_dispatch:
 
 jobs:
@@ -461,10 +483,12 @@ jobs:
 ### Status: IN-PROGRESS
 
 **Completed**:
+
 - Token environment variable migration
 - Warning messages added
 
 **Pending**:
+
 - GitHub Actions workflow creation
 - Test auto-PR functionality
 - Configure GitHub Bot approval rules
@@ -490,7 +514,7 @@ jobs:
 - [ ] **Security Controls Active**
   - [ ] Pre-commit hooks installed locally (detect-secrets, bandit, black)
   - [ ] GitHub Actions security-checks.yml running on all PRs
-  - [ ] .gitignore includes .env, *.key, *.pem, secrets/
+  - [ ] .gitignore includes .env, _.key, _.pem, secrets/
   - [ ] No plaintext credentials remaining in codebase (verified)
 
 - [ ] **Autotests Configured**
@@ -536,14 +560,14 @@ jobs:
 
 ## 9. Known Blockers & Mitigation
 
-| Blocker | Impact | Mitigation | Owner |
-|---------|--------|-----------|-------|
-| iOS simulator in CI | E2E tests for iOS blocked | Use BrowserStack or Sauce Labs for cloud runners | QA Lead |
-| Manual token rotation | Blocking security hardening | Create runbook; batch rotations quarterly | DevOps |
-| Git history cleanup force-push | Requires branch protection override | Coordinate with release manager; announce downtime | Engineering Lead |
-| Link report tool (0 links) | Offline strategy not fully validated | Debug scanner logic; run grep_search to confirm links exist | Tech Lead |
-| Wallet transaction approval UX | Release delay | Design mock approval flow for MVP; iterate post-launch | Product |
-| Project RBAC persistence | Feature incomplete | Start with GitHub Teams; migrate to database post-MVP | Backend |
+| Blocker                        | Impact                               | Mitigation                                                  | Owner            |
+| ------------------------------ | ------------------------------------ | ----------------------------------------------------------- | ---------------- |
+| iOS simulator in CI            | E2E tests for iOS blocked            | Use BrowserStack or Sauce Labs for cloud runners            | QA Lead          |
+| Manual token rotation          | Blocking security hardening          | Create runbook; batch rotations quarterly                   | DevOps           |
+| Git history cleanup force-push | Requires branch protection override  | Coordinate with release manager; announce downtime          | Engineering Lead |
+| Link report tool (0 links)     | Offline strategy not fully validated | Debug scanner logic; run grep_search to confirm links exist | Tech Lead        |
+| Wallet transaction approval UX | Release delay                        | Design mock approval flow for MVP; iterate post-launch      | Product          |
+| Project RBAC persistence       | Feature incomplete                   | Start with GitHub Teams; migrate to database post-MVP       | Backend          |
 
 ---
 
@@ -561,22 +585,26 @@ jobs:
 ### Rollout Phases
 
 **Phase 4a (Week 1)**: Security hardening + offline infrastructure
+
 - Redaction verified ✅
 - Credential rotation playbook provided ✅
 - Link audit completed ✅
 - Pre-commit hooks + CI security checks deployed
 
 **Phase 4b (Week 2)**: Autotests & release verification
+
 - E2E test framework integrated
 - Release verification gate active
 - Link check automation wired in
 
 **Phase 4c (Week 3)**: Wallet hardening + project automation
+
 - Transaction approval workflow live
 - Project templates deployed
 - RBAC model tested
 
 **Phase 4d (Week 4)**: Production validation & monitoring
+
 - Full integration tests pass
 - Monitoring dashboards live
 - Team training completed
@@ -587,23 +615,28 @@ jobs:
 ## 11. Communication Plan
 
 **Immediate** (Today):
+
 - Share this document with team
 - Highlight credential rotation required (URGENT)
 - Provide runbook links (CREDENTIAL_ROTATION_PLAYBOOK.md, OFFLINE_GUIDE.md)
 
 **End of Week 1**:
+
 - Status update: Security hardening completed
 - Demo offline access functionality
 
 **End of Week 2**:
+
 - Status update: Autotests & release verification live
 - Share E2E test results dashboard
 
 **End of Week 3**:
+
 - Status update: Wallet hardening & projects automation complete
 - Request manual approval process feedback
 
 **End of Week 4**:
+
 - Final checklist review
 - GA release announcement
 - Post-launch monitoring brief

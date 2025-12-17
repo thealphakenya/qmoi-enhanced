@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "🤖 QMOI AI Automated Linting System"
 qmoi_validation_frontmatter: true
@@ -48,18 +48,18 @@ yarn lint:full
 # Or run individual components
 yarn lint:auto    # Auto-fix and categorize errors
 yarn lint:notify  # Get notifications about remaining errors
-```
+````
 
 ### Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `yarn lint:auto` | Runs complete auto-linting with smart fixes |
-| `yarn lint:watch` | Watches files for changes and auto-lints |
-| `yarn lint:smart` | Applies intelligent fixes for complex errors |
-| `yarn lint:report` | Generates detailed HTML and JSON reports |
-| `yarn lint:notify` | Sends notifications about errors |
-| `yarn lint:full` | Runs auto-lint + notifications |
+| Command            | Description                                  |
+| ------------------ | -------------------------------------------- |
+| `yarn lint:auto`   | Runs complete auto-linting with smart fixes  |
+| `yarn lint:watch`  | Watches files for changes and auto-lints     |
+| `yarn lint:smart`  | Applies intelligent fixes for complex errors |
+| `yarn lint:report` | Generates detailed HTML and JSON reports     |
+| `yarn lint:notify` | Sends notifications about errors             |
+| `yarn lint:full`   | Runs auto-lint + notifications               |
 
 ## 🔧 How It Works
 
@@ -80,10 +80,12 @@ The smart linter can automatically fix:
 - **Unused Imports**: Removes unused import statements
 - **Missing Semicolons**: Adds missing semicolons where appropriate
 - **Quote Standardization**: Converts quotes to consistent style
-- **Trailing Sp
+- \*\*Trailing Sp
+
 ```
 
 Notes:
 
 - This draft was generated automatically to help triage files removed from `donerefs.txt`.
 - Backups and previous runs may exist under `.qmoi_validation`.
+```

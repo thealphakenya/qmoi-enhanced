@@ -4,14 +4,14 @@ This document shows how to talk to a local `qmoi` chat endpoint using `curl`.
 
 Local dev server (provided in `scripts/qmoi_local_server.py`) listens on `http://localhost:8080`.
 
-1) Start the local QM OI server (run in background):
+1. Start the local QM OI server (run in background):
 
 ```bash
 # from repository root
 python3 scripts/qmoi_local_server.py &
 ```
 
-2) Basic conversation (ordinary user):
+2. Basic conversation (ordinary user):
 
 ```bash
 curl -s -X POST http://localhost:8080/v1/chat/completions \
@@ -26,7 +26,7 @@ curl -s -X POST http://localhost:8080/v1/chat/completions \
 # Response will be a JSON matching OpenAI-like format; assistant reply in choices[0].message.content
 ```
 
-3) Ask as `master` (system persona):
+3. Ask as `master` (system persona):
 
 ```bash
 curl -s -X POST http://localhost:8080/v1/chat/completions \
@@ -42,7 +42,7 @@ curl -s -X POST http://localhost:8080/v1/chat/completions \
 # The server heuristically detects 'master' persona and responds in Master Mode.
 ```
 
-4) Ask as `sister` (system persona):
+4. Ask as `sister` (system persona):
 
 ```bash
 curl -s -X POST http://localhost:8080/v1/chat/completions \
@@ -58,11 +58,11 @@ curl -s -X POST http://localhost:8080/v1/chat/completions \
 # The server detects 'sister' persona and gives a friendly reply.
 ```
 
-5) Streamed replies (note):
+5. Streamed replies (note):
 
 - The local dev server does not implement streaming. If you need streaming, run a model server that supports chunked transfer and update the client accordingly.
 
-6) Notes on memory and identity
+6. Notes on memory and identity
 
 - The local server stores all messages in `qmoi_memory.json` with permanent persistence. That file is written after each request.
 - When integrating with production model endpoints, replace `http://localhost:8080` with your model URL and adapt authentication headers.
@@ -93,10 +93,11 @@ python3 scripts/sync_memory.py
 ```
 
 Notes:
+
 - Ensure `QMOI_GH_TOKEN` and `QMOI_HF_TOKEN` are kept secret and supplied via CI secrets or environment managers.
 - Background auto-sync: set `QMOI_SYNC_INTERVAL_SECONDS` (e.g. `300`) to enable periodic push from the local server.
 
-7) Example helper bash function
+7. Example helper bash function
 
 ```bash
 qmoi_query(){
@@ -112,6 +113,7 @@ qmoi_query '{"model":"qmoi","messages":[{"role":"user","content":"Hello qmoi"}]}
 ---
 
 If you want these curl endpoints to talk to a real LLM, replace the persona_response() in `scripts/qmoi_local_server.py` with a call to your model of choice and ensure memory sync using `qmoi_memory.json`.
+
 # CURL QMOI: Master / Sister / User Conversation Guide
 
 This file documents how to talk to `qmoi` using curl. It includes role-specific examples (Master, Sister, ordinary User), local testing instructions, and tips to ensure QMOI uses its persistent memory during conversations.
@@ -130,7 +132,6 @@ python3 scripts/qmoi_chat_server.py &
 
 The server exposes a simple OpenAI-like endpoint at `http://localhost:8080/v1/chat/completions` that accepts JSON bodies similar to OpenAI Chat Completions API.
 
-
 ## 2. Basic conversation (ordinary user)
 
 Example using curl (User role):
@@ -148,7 +149,6 @@ curl -s -X POST http://localhost:8080/v1/chat/completions \
 ```
 
 The server will store the exchange to `qmoi_memory.json` (persistent) and reply using the User persona.
-
 
 ## 3. Master conversation (elevated persona)
 
@@ -169,7 +169,6 @@ curl -s -X POST http://localhost:8080/v1/chat/completions \
 
 Master requests are recorded in memory with a `role: master` tag so QMOI can prioritize learning and actions.
 
-
 ## 4. Sister conversation (friendly persona)
 
 Sister persona is warm and conversational. Use `role":"sister"` or header `X-QMOI-ROLE: sister`.
@@ -186,6 +185,7 @@ curl -s -X POST http://localhost:8080/v1/chat/completions \
     ]
   }'
 ```
+
     ## Captured example responses (local server)
 
     Saved to `logs/` during this session:
@@ -210,7 +210,6 @@ curl -s -X POST http://localhost:8080/v1/chat/completions \
 
     These examples confirm the local dev server detected personas and used the `qmoi` model name in responses. The raw JSON files are stored under `logs/` for further archival or inclusion in release notes.
 
-
 ## 5. Streaming (Guide)
 
 The local server is primarily synchronous. For a production OpenAI-compatible endpoint, add `"stream": true` to the JSON to receive chunked responses; your client must read streaming chunks and decode them.
@@ -230,31 +229,26 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
-
 ## 6. Memory & Permanence
 
 - All interactions in the local test server are appended to `qmoi_memory.json` and are persistent across server restarts.
 - For production, the memory system must be backed by a persistent database (Postgres, Redis, or an external memory service). The repo includes `tools/qvillage_memory_sync.py` (see `PHASE_4_QVILLAGE_HF_COMPLETE.md`) for HF Spaces sync examples.
 - The `QMOI_MEMORY.md` file (added in this change) documents expected memory schema and sync strategies.
 
-
 ## 7. Substituting Real Model Providers
 
 - Replace `http://localhost:8080` with your real endpoint (OpenAI or other provider) and adjust the payload accordingly.
 - If your provider requires headers (API keys, roles), include them the same way as in the examples above.
-
 
 ## 8. Scripts & Helpers
 
 - `scripts/qmoi_chat_client.sh` — wrapper to call the local server as master/sister/user easily.
 - `scripts/qmoi_chat_server.py` — local test server, writes to `qmoi_memory.json`.
 
-
 ## 9. Security Notes
 
 - Do NOT expose the test server to the public internet. It’s for local/intranet testing only.
 - For production, use TLS, authentication, and rate limiting.
-
 
 ---
 
@@ -281,6 +275,7 @@ curl -s -X POST http://localhost:8080/v1/chat/completions \
 ```
 
 Expected behavior (local dev server):
+
 - The server should accept the instruction, perform the action (create file), append the operation to persistent memory, and respond with a success message that includes the path and a preview of the content.
 - If using the provided `scripts/qmoi_chat_server.py` you may need to implement an action handler that maps an explicit creation instruction into a filesystem write — see `scripts/actions/` for sample handlers if present.
 
@@ -292,5 +287,6 @@ head -n 1 abctesting.txt || echo "file not found"
 ```
 
 Notes:
+
 - For production, protect endpoints that perform repository writes (authentication, API key or master token). Use `X-QMOI-ROLE: master` header only from trusted contexts.
 - This example documents how to combine persona and agent-style instructions in curl payloads so `qmoi` can act as an agent and modify repository files when granted permission.

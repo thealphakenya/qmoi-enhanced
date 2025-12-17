@@ -38,8 +38,10 @@ This file documents all templates in the `templates/` directory, their usage, an
 
 ## Directory Structure
 ```
+
 templates/
 ├── dashboard.html
+
 ```
 
 ## Usage & Integration

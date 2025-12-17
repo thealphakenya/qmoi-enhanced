@@ -27,6 +27,7 @@ Startup and preflight notes
   necessary for reproducible installs.
 
 If you'd like, I can:
+
 - open a PR from `autosync-links-20251107` with the changes I pushed, including a short PR description and testing notes; or
 - create a separate focused branch to only contain the preflight/start changes and the requirements update; or
 - continue by creating a CI job that runs the full start flow on an `ubuntu-latest` runner with CPU PyTorch wheels to validate end-to-end.

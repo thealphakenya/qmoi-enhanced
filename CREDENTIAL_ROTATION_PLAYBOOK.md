@@ -3,11 +3,13 @@
 ## Executive Summary
 
 Three sensitive credentials have been identified and redacted from the repository:
+
 1. **GitHub Personal Access Token (PAT)**: `[REDACTED_GITHUB_PAT]`
 2. **Vercel API Token**: `[REDACTED_VERCEL_TOKEN]`
 3. **Ngrok Auth Token**: `[REDACTED_NGROK_TOKEN]`
 
 **CRITICAL**: These tokens have been **removed from the repository** and replaced with placeholder text. However, the tokens may still exist in:
+
 - Git history (commit logs)
 - GitHub Actions logs (if workflows were run)
 - CI/CD system caches
@@ -24,6 +26,7 @@ This playbook provides step-by-step instructions for complete credential rotatio
 **Why**: The GitHub PAT ([REDACTED_GITHUB_PAT]) may have been exposed in logs.
 
 **Actions**:
+
 1. Go to GitHub Settings → Developer Settings → [Personal access tokens](https://github.com/settings/tokens?type=beta)
 2. Find the token starting with `ghp_QH1F8NS3y0vkfyYEMG0XkL7kmNdtDn0k...`
 3. Click **Delete** or **Regenerate**
@@ -35,6 +38,7 @@ This playbook provides step-by-step instructions for complete credential rotatio
 6. **Do NOT use classic tokens** - use fine-grained personal access tokens with expiration dates (90 days max)
 
 **Verification**:
+
 ```bash
 # Test old token (should fail)
 curl -H "Authorization: token [REDACTED_GITHUB_PAT]" \
@@ -48,6 +52,7 @@ curl -H "Authorization: token [REDACTED_GITHUB_PAT]" \
 **Why**: Vercel tokens control deployment and can be used to exfiltrate environment variables.
 
 **Actions**:
+
 1. Go to [Vercel Account Settings → Tokens](https://vercel.com/account/tokens)
 2. Find and delete the token `[REDACTED_VERCEL_TOKEN]`
 3. Create a NEW token:
@@ -57,6 +62,7 @@ curl -H "Authorization: token [REDACTED_GITHUB_PAT]" \
 4. Store in GitHub Secrets with key `VERCEL_TOKEN`
 
 **Verification**:
+
 ```bash
 # Test new token
 curl -H "Authorization: Bearer NEW_TOKEN_HERE" \
@@ -70,6 +76,7 @@ curl -H "Authorization: Bearer NEW_TOKEN_HERE" \
 **Why**: Ngrok tunnels expose local services; leaked tokens allow unauthorized tunnel access.
 
 **Actions**:
+
 1. Go to [Ngrok Dashboard → Auth](https://dashboard.ngrok.com/auth)
 2. Find and **disconnect** the token `[REDACTED_NGROK_TOKEN]`
 3. Generate a NEW token:
@@ -81,6 +88,7 @@ curl -H "Authorization: Bearer NEW_TOKEN_HERE" \
    ```
 
 **Verification**:
+
 ```bash
 # List active tunnels (should show none from old token)
 curl -u "api:$NGROK_AUTH_TOKEN" https://api.ngrok.com/tunnels
@@ -133,7 +141,7 @@ jobs:
           else
             echo "✅ GITHUB_TOKEN is set"
           fi
-      
+
       - name: Verify VERCEL_TOKEN
         run: |
           if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
@@ -141,7 +149,7 @@ jobs:
           else
             echo "✅ VERCEL_TOKEN is set"
           fi
-      
+
       - name: Verify NGROK_AUTH_TOKEN
         run: |
           if [ -z "${{ secrets.NGROK_AUTH_TOKEN }}" ]; then
@@ -254,9 +262,9 @@ repos:
     rev: v1.4.0
     hooks:
       - id: detect-secrets
-        args: ['--baseline', '.secrets.baseline']
+        args: ["--baseline", ".secrets.baseline"]
         exclude: package.lock.json
-  
+
   - repo: https://github.com/truffleHQ/trufflehog
     rev: v3.63.0
     hooks:
@@ -269,6 +277,7 @@ repos:
 ```
 
 Install locally:
+
 ```bash
 pip install pre-commit detect-secrets truffleHog
 cd /workspaces/qmoi-enhanced
@@ -292,15 +301,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Install detect-secrets
         run: pip install detect-secrets
-      
+
       - name: Scan for secrets
         run: |
           detect-secrets scan --all-files --force-use-all-plugins > .secrets.json
           detect-secrets audit .secrets.json
-      
+
       - name: Check baseline
         run: |
           if [ -f .secrets.baseline ]; then
@@ -313,7 +322,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: TruffleHog Scan
         uses: trufflesecurity/trufflehog@main
         with:
@@ -446,6 +455,7 @@ fi
 ```
 
 Run:
+
 ```bash
 chmod +x tools/verify_no_credentials.sh
 ./tools/verify_no_credentials.sh
@@ -464,6 +474,7 @@ chmod +x tools/verify_no_credentials.sh
 ### Step 6.3: Rotate Secrets Again (Safety Net)
 
 If you discovered tokens in GitHub Actions logs, rotate all credentials again:
+
 - Issue new GitHub PAT
 - Issue new Vercel token
 - Issue new Ngrok token
@@ -518,6 +529,7 @@ See: CREDENTIAL_ROTATION_PLAYBOOK.md
 **Type**: Credential Exposure
 
 **What Happened**:
+
 - 3 credentials accidentally committed to repository:
   - GitHub Personal Access Token
   - Vercel API Token
@@ -526,7 +538,8 @@ See: CREDENTIAL_ROTATION_PLAYBOOK.md
 **Detection**: Repository audit scan
 
 **Remediation**:
-- ✅ Credentials redacted from source (REDACTED_* placeholders)
+
+- ✅ Credentials redacted from source (REDACTED\_\* placeholders)
 - ✅ Credentials rotated (new tokens issued)
 - ✅ GitHub Secrets updated
 - ✅ Git history flagged for purge (Phase 3)
@@ -534,12 +547,14 @@ See: CREDENTIAL_ROTATION_PLAYBOOK.md
 - ✅ CI/CD security checks enabled
 
 **Timeline**:
+
 - 2024-09-26 14:00 UTC: Credentials identified
 - 2024-09-26 14:30 UTC: Redaction & env-based loading applied
 - 2024-09-26 15:00 UTC: Rotation initiated
 - 2024-09-26 16:00 UTC: History cleanup (ongoing)
 
 **Preventive Measures**:
+
 - detect-secrets pre-commit hook
 - TruffleHog CI/CD check
 - .env.example template
@@ -604,11 +619,13 @@ PHASE 7: COMMUNICATION
 ## Emergency Contact / Escalation
 
 If at any point during rotation you discover:
+
 - Credentials still exposed in CI logs
 - New unknown credentials in repository
 - Failed deployments after credential rotation
 
 **Immediate actions**:
+
 1. Disable GitHub Actions: **Settings → Actions → Disable**
 2. Rotate all credentials again (Phase 1)
 3. Contact GitHub Support: support@github.com
@@ -636,33 +653,38 @@ If at any point during rotation you discover:
 
 If you plan to run QVillage/QMOI on QCity machines (recommended for always-on, resilient deployments), follow these platform-specific notes.
 
-1) Use the `qcity/provision_qvillage.sh` helper (added to the repo) to provision a QCity host via SSH. It:
-  - Installs Docker if missing
-  - Clones the repository into `/opt/qvillage`
-  - Builds `Dockerfile.qvillage` into `qvillage-standalone:latest`
-  - Runs the container with `--restart=always`
+1. Use the `qcity/provision_qvillage.sh` helper (added to the repo) to provision a QCity host via SSH. It:
 
-2) Secrets management on QCity:
-  - Do NOT bake secrets into images. Use QCity's secret manager or environment injection at runtime.
-  - Recommended variables to store in QCity secret store: `HF_API_TOKEN`, `SLACK_WEBHOOK_URL`, `QMOI_MEMORY_URL`, `QVILLAGE_INTERNAL_URL`.
-  - The `provision_qvillage.sh` script supports interactive secret injection; for automated provisioning integrate with your secret manager and pass values into `docker run`.
+- Installs Docker if missing
+- Clones the repository into `/opt/qvillage`
+- Builds `Dockerfile.qvillage` into `qvillage-standalone:latest`
+- Runs the container with `--restart=always`
 
-3) Credential Rotation on QCity:
-  - When rotating, follow these steps:
-    a) Create new tokens in upstream services (HF, GitHub, Vercel, Ngrok).
-    b) Update QCity secret store with the new values.
-    c) Redeploy or restart the container to pick up new env vars: `sudo docker restart qvillage-standalone`.
-    d) Verify by checking logs and running the `verify-secrets` workflow (see Phase 2).
+2. Secrets management on QCity:
 
-4) Auto-update & self-heal on QCity:
-  - Configure a cron or systemd timer on the host to pull repo updates and restart container when main branch changes.
-  - Example systemd timer can run `git -C /opt/qvillage pull && sudo docker build -f /opt/qvillage/Dockerfile.qvillage -t qvillage-standalone:latest /opt/qvillage && sudo docker rm -f qvillage-standalone || true && sudo docker run -d --name qvillage-standalone --restart=always <envs> qvillage-standalone:latest`
+- Do NOT bake secrets into images. Use QCity's secret manager or environment injection at runtime.
+- Recommended variables to store in QCity secret store: `HF_API_TOKEN`, `SLACK_WEBHOOK_URL`, `QMOI_MEMORY_URL`, `QVILLAGE_INTERNAL_URL`.
+- The `provision_qvillage.sh` script supports interactive secret injection; for automated provisioning integrate with your secret manager and pass values into `docker run`.
 
-5) Post-provision verification checklist for QCity deployments:
-  - [ ] Secrets stored in QCity secret manager
-  - [ ] Container running with `--restart=always`
-  - [ ] Logs sending to central logging (syslog/ELK/Cloudwatch)
-  - [ ] Health checks configured (HTTP or container-level)
-  - [ ] Automatic updates configured and tested
+3. Credential Rotation on QCity:
+
+- When rotating, follow these steps:
+  a) Create new tokens in upstream services (HF, GitHub, Vercel, Ngrok).
+  b) Update QCity secret store with the new values.
+  c) Redeploy or restart the container to pick up new env vars: `sudo docker restart qvillage-standalone`.
+  d) Verify by checking logs and running the `verify-secrets` workflow (see Phase 2).
+
+4. Auto-update & self-heal on QCity:
+
+- Configure a cron or systemd timer on the host to pull repo updates and restart container when main branch changes.
+- Example systemd timer can run `git -C /opt/qvillage pull && sudo docker build -f /opt/qvillage/Dockerfile.qvillage -t qvillage-standalone:latest /opt/qvillage && sudo docker rm -f qvillage-standalone || true && sudo docker run -d --name qvillage-standalone --restart=always <envs> qvillage-standalone:latest`
+
+5. Post-provision verification checklist for QCity deployments:
+
+- [ ] Secrets stored in QCity secret manager
+- [ ] Container running with `--restart=always`
+- [ ] Logs sending to central logging (syslog/ELK/Cloudwatch)
+- [ ] Health checks configured (HTTP or container-level)
+- [ ] Automatic updates configured and tested
 
 If you want, I can generate the systemd timer unit, a cron file, and a sample CI/CD pipeline for QCity that performs zero-downtime updates and secret rotation automation.

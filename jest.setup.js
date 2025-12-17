@@ -4,7 +4,7 @@
 // Example: if @testing-library/jest-dom is available, load it; otherwise skip.
 try {
   // eslint-disable-next-line global-require
-  require('@testing-library/jest-dom');
+  require("@testing-library/jest-dom");
 } catch (e) {
   // Not critical; continue without DOM matchers.
 }

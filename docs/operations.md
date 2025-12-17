@@ -33,11 +33,13 @@ The following environment variables control critical functionality:
 Each DNS/infrastructure provider requires specific credentials:
 
 - Cloudflare:
+
   ```bash
   export CLOUDFLARE_API_TOKEN='your_token_here'
   ```
 
 - AWS Route53:
+
   ```bash
   export AWS_ACCESS_KEY_ID='your_key_here'
   export AWS_SECRET_ACCESS_KEY='your_secret_here'
@@ -77,11 +79,13 @@ Configure these secrets in your GitHub repository:
 ### Making DNS Changes
 
 1. Generate a plan:
+
    ```bash
    python scripts/dns_change.py plan example.com records.json
    ```
 
 2. Review the plan:
+
    ```bash
    python scripts/dns_plan_signer.py verify plan.json
    ```
@@ -94,11 +98,13 @@ Configure these secrets in your GitHub repository:
 ### Updating Links
 
 1. Generate update plan:
+
    ```bash
    python scripts/generate_all_links.py --plan-only
    ```
 
 2. Preview changes:
+
    ```bash
    python scripts/link_apply_preview.py
    ```
@@ -111,6 +117,7 @@ Configure these secrets in your GitHub repository:
 ### Maintenance Tasks
 
 1. Prune link cache:
+
    ```bash
    python scripts/link_cache_maintenance.py --max-age 30
    ```

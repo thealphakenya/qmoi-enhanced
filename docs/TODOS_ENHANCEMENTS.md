@@ -35,28 +35,30 @@ This file lists concrete improvements to the QMOI to-dos system (used by `script
 Next steps: implement items incrementally; begin by wiring (11) and (12) so that validation reports auto-create remediation tasks.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/TODOS_ENHANCEMENTS.md",
-  "validated_at": "2025-10-26T20:51:24.577849Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI To-dos Enhancements (20+ improvements)"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "docs/TODOS_ENHANCEMENTS.md",
+"validated_at": "2025-10-26T20:51:24.577849Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI To-dos Enhancements (20+ improvements)"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

@@ -6,6 +6,7 @@ qmoi_validation_frontmatter: true
 # QMOIDOWNLOADS
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -78,26 +79,28 @@ BROKEN: QAutoDev (skv) [linux] => https://github.com/thealphakenya/qmoi-enhanced
 [2025-07-22T02:28:05.604988] Broken download link | {"app": "QAutoDev (skv)", "platform": "linux", "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage", "error": "HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qautodev/linux.appimage (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000002E5D83156D0>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)\"))"}
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/QMOIDOWNLOADS.md",
-  "validated_at": "2025-10-26T20:51:24.763916Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": false,
-      "detail": "No H1 title found"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": false,
-  "summary": {
-    "total_checks": 2,
-    "passed": false
-  }
+"file": "qmoi-enhanced/QMOIDOWNLOADS.md",
+"validated_at": "2025-10-26T20:51:24.763916Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": false,
+"detail": "No H1 title found"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": false,
+"summary": {
+"total_checks": 2,
+"passed": false
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

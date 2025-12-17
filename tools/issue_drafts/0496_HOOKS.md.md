@@ -38,6 +38,7 @@ This file documents all hooks in the `hooks/` directory, their usage, and integr
 
 ## Directory Structure
 ```
+
 hooks/
 ├── use-mobile.tsx
 ├── use-toast.ts
@@ -67,6 +68,7 @@ hooks/
 ├── useTradingAutomation.ts
 ├── useVSCodeProblems.ts
 ├── useWhatsApp.ts
+
 ```
 
 ## Usage & Integration

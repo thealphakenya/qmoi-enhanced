@@ -9,6 +9,7 @@ All signing credentials have been located, extracted, and configured for product
 ## ✅ What's Been Completed
 
 ### 1. Signing Infrastructure
+
 - ✅ Found Android keystore: `mobile/android/app/debug.keystore`
 - ✅ Created `mobile/android/app/signing-config.gradle` with production support
 - ✅ Updated CI workflow `.github/workflows/build-and-release.yml` with actual signing
@@ -17,11 +18,13 @@ All signing credentials have been located, extracted, and configured for product
 - ✅ Created `scripts/add-github-secrets.sh` for automated setup via GitHub CLI
 
 ### 2. Documentation
+
 - ✅ Created `PRODUCTION_BUILD_SETUP.md` - Complete setup guide
 - ✅ Created secrets extraction and display script
 - ✅ Documented all signing parameters and credentials
 
 ### 3. Configuration Files
+
 - ✅ Gradle signing configuration ready
 - ✅ Environment variable support for CI/CD
 - ✅ Fallback to debug keystore for development
@@ -31,23 +34,26 @@ All signing credentials have been located, extracted, and configured for product
 ## 🚀 NEXT: Add GitHub Secrets (4 steps)
 
 ### Option A: Automated Setup (Recommended)
+
 ```bash
 # Requires GitHub CLI (gh)
 bash scripts/add-github-secrets.sh
 ```
 
 ### Option B: Manual Setup via GitHub UI
+
 1. Go to: https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions
 2. Add these 4 secrets:
 
-| Secret Name | Value |
-|---|---|
-| `ANDROID_KEYSTORE_BASE64` | (Run: `bash scripts/setup-production-secrets.sh` to get) |
-| `ANDROID_KEYSTORE_PASSWORD` | `android` |
-| `ANDROID_KEY_ALIAS` | `androiddebugkey` |
-| `ANDROID_KEY_PASSWORD` | `android` |
+| Secret Name                 | Value                                                    |
+| --------------------------- | -------------------------------------------------------- |
+| `ANDROID_KEYSTORE_BASE64`   | (Run: `bash scripts/setup-production-secrets.sh` to get) |
+| `ANDROID_KEYSTORE_PASSWORD` | `android`                                                |
+| `ANDROID_KEY_ALIAS`         | `androiddebugkey`                                        |
+| `ANDROID_KEY_PASSWORD`      | `android`                                                |
 
 ### Getting the Base64 Keystore Value
+
 ```bash
 bash scripts/setup-production-secrets.sh
 # Copy the long string between ---START--- and ---END---
@@ -58,11 +64,14 @@ bash scripts/setup-production-secrets.sh
 ## 🔨 BUILD PROCESS
 
 ### Step 1: Verify Secrets Added
+
 After adding secrets, verify in GitHub:
+
 - Go to: https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions
-- All 4 secrets should appear (masked as ***)
+- All 4 secrets should appear (masked as \*\*\*)
 
 ### Step 2: Dispatch the Build
+
 ```bash
 # Method 1: Using helper script with PAT
 export GITHUB_PAT=ghp_xxxxxxxxxxxx
@@ -77,6 +86,7 @@ bash scripts/dispatch_workflow_with_pat_clean.sh \
 ```
 
 ### Step 3: Monitor Build
+
 - Watch: https://github.com/thealphakenya/qmoi-enhanced/actions
 - Check logs for:
   - ✓ Keystore restored successfully
@@ -85,6 +95,7 @@ bash scripts/dispatch_workflow_with_pat_clean.sh \
   - ✓ Artifacts uploaded to release
 
 ### Step 4: Verify Release
+
 - Visit: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4
 - Download and test:
   - `app-release.apk` (production signed)
@@ -95,6 +106,7 @@ bash scripts/dispatch_workflow_with_pat_clean.sh \
 ## 📊 Expected Build Output
 
 ### Android APK
+
 ```
 File: app-release.apk
 Signature: Production signed with androiddebugkey
@@ -103,6 +115,7 @@ Location: GitHub Release v1.2.4
 ```
 
 ### PWAs (7 apps)
+
 ```
 Files: admin.zip, deals.zip, q-alpha.zip, qmoi.zip, qmoi-ai.zip, qmoi-space.zip, qstore.zip
 Format: Web application archives
@@ -110,6 +123,7 @@ Location: GitHub Release v1.2.4
 ```
 
 ### Release Manifest
+
 ```
 File: release_assets_manifest.json
 Content: Updated with all build outputs
@@ -121,16 +135,19 @@ Regenerated: Automatically during build
 ## 🔍 Local Testing (Optional)
 
 ### Build Locally with Debug Keystore
+
 ```bash
 bash scripts/build-android-production.sh
 ```
 
 ### Verify APK Signature
+
 ```bash
 jarsigner -verify -verbose app-release.apk
 ```
 
 ### Test APK on Device
+
 ```bash
 adb install -r Qmoi_downloaded_apps/android/latest/qmoi_ai.apk
 ```
@@ -174,12 +191,14 @@ User Action:
 After successful production build:
 
 ### Download from Release Page
+
 - **Android APK** - Production signed, ready for Google Play Store
 - **iOS IPA** - Placeholder (iOS signing optional)
 - **PWA Zips** - All 7 web apps ready for deployment
 - **Release Notes** - Complete changelog and details
 
 ### URLs
+
 - Release Page: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4
 - Direct APK: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/app-release.apk
 
@@ -188,19 +207,25 @@ After successful production build:
 ## 📞 TROUBLESHOOTING
 
 ### Build Fails - "Keystore not found"
+
 **Fix**: Check keystore exists at `mobile/android/app/debug.keystore`
 
 ### Build Fails - "Invalid keystore password"
+
 **Fix**: Verify secret `ANDROID_KEYSTORE_PASSWORD` is set to `android`
 
 ### Secrets Not Applied
+
 **Fix**: Refresh GitHub page, wait a moment, secrets are sometimes lazy-loaded
 
 ### APK Not Signed
+
 **Fix**: Check GitHub Actions logs, verify all 4 secrets were added
 
 ### Can't Dispatch Workflow
+
 **Fix**: Ensure GitHub PAT has `repo` + `workflow` scopes
+
 ```bash
 # Check token scopes
 gh auth status --show-token
@@ -211,17 +236,20 @@ gh auth status --show-token
 ## 📈 NEXT PHASES (Optional)
 
 ### Phase 2: iOS Production Signing
+
 - Gather iOS certificate (.p12)
 - Gather provisioning profile (.mobileprovision)
-- Add 3 iOS secrets (IOS_CERT_*, IOS_PROVISIONING_*)
+- Add 3 iOS secrets (IOS*CERT*_, IOS*PROVISIONING*_)
 - Similar process to Android
 
 ### Phase 3: Store Deployment
+
 - Google Play Store signing (already in place)
 - Apple App Store signing (iOS phase)
 - Automated deployment pipeline
 
 ### Phase 4: Continuous Releases
+
 - Set up automated nightly builds
 - Tag-based releases
 - Auto-increment version codes
@@ -231,6 +259,7 @@ gh auth status --show-token
 ## 🎉 YOU'RE READY!
 
 The production signing infrastructure is now in place. Just:
+
 1. **Add the 4 GitHub Secrets** (1-2 minutes)
 2. **Dispatch the workflow** (1 minute)
 3. **Wait for build to complete** (5-10 minutes)
@@ -242,16 +271,16 @@ The production signing infrastructure is now in place. Just:
 
 ## 📚 Files Reference
 
-| File | Purpose | Status |
-|---|---|---|
-| `mobile/android/app/signing-config.gradle` | Gradle signing config | ✅ Created |
-| `mobile/android/app/build.gradle` | App gradle (references signing config) | ✅ Ready |
-| `.github/workflows/build-and-release.yml` | CI workflow | ✅ Updated |
-| `scripts/build-android-production.sh` | Local build script | ✅ Created |
-| `scripts/setup-production-secrets.sh` | Display secrets guide | ✅ Created |
-| `scripts/add-github-secrets.sh` | Automated secrets setup | ✅ Created |
-| `PRODUCTION_BUILD_SETUP.md` | Setup guide | ✅ Created |
-| `RELEASE_FINALIZATION_PLAN.md` | Release plan | ✅ Created |
+| File                                       | Purpose                                | Status     |
+| ------------------------------------------ | -------------------------------------- | ---------- |
+| `mobile/android/app/signing-config.gradle` | Gradle signing config                  | ✅ Created |
+| `mobile/android/app/build.gradle`          | App gradle (references signing config) | ✅ Ready   |
+| `.github/workflows/build-and-release.yml`  | CI workflow                            | ✅ Updated |
+| `scripts/build-android-production.sh`      | Local build script                     | ✅ Created |
+| `scripts/setup-production-secrets.sh`      | Display secrets guide                  | ✅ Created |
+| `scripts/add-github-secrets.sh`            | Automated secrets setup                | ✅ Created |
+| `PRODUCTION_BUILD_SETUP.md`                | Setup guide                            | ✅ Created |
+| `RELEASE_FINALIZATION_PLAN.md`             | Release plan                           | ✅ Created |
 
 ---
 

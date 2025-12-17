@@ -70,7 +70,7 @@ QMOI and QCity are optimized to run best online in Colab and Dagshub, offloading
       "detail": "QMOI Colab & Dagshub Optimization"
     },
     {
-    
+
 ```
 
 Notes:

@@ -15,6 +15,6 @@
       "multimodal": true,
       "structured_output": true
     },
-    "deployment": "qmoi-cloud", // use QMOI cloud for all cloud features, never GitHub cloud
+    "deployment": "qmoi-cloud" // use QMOI cloud for all cloud features, never GitHub cloud
   }
 }

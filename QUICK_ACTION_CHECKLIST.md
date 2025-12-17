@@ -8,18 +8,21 @@
 ## ✅ Phase 1: Validate Workflows (Priority: CRITICAL)
 
 ### Day 1 — Monday, Nov 18
+
 - [ ] Push test tag: `git tag test-v1.2.5 && git push origin test-v1.2.5`
 - [ ] Monitor GitHub Actions workflow execution
 - [ ] Verify draft release created: https://github.com/thealphakenya/qmoi-enhanced/releases
 - [ ] Check all 16 assets uploaded to draft
 
 **Command to Check Status**:
+
 ```bash
 gh release view test-v1.2.5 --json assets --jq '.assets | length'
 # Expected output: 16
 ```
 
 ### Day 2 — Tuesday, Nov 19
+
 - [ ] Download one asset and verify SHA256
 - [ ] Publish draft release: `python3 scripts/sync_to_draft_release.py --tag test-v1.2.5 --publish`
 - [ ] Verify published release on GitHub
@@ -32,11 +35,13 @@ gh release view test-v1.2.5 --json assets --jq '.assets | length'
 ## ✅ Phase 2: Fix Critical Issues (Priority: HIGH)
 
 ### Day 3 — Wednesday, Nov 20
+
 - [ ] Review Dependabot vulnerabilities: https://github.com/thealphakenya/qmoi-enhanced/security/dependabot
 - [ ] Create issue for each critical vulnerability
 - [ ] Assign to team members if applicable
 
 ### Day 4 — Thursday, Nov 21
+
 - [ ] Merge or create Dependabot PRs
 - [ ] Verify no critical/high issues remain
 - [ ] Commit fixes: `git add -A && git commit -m "fix: resolve dependabot vulnerabilities"`
@@ -46,12 +51,14 @@ gh release view test-v1.2.5 --json assets --jq '.assets | length'
 ## ✅ Phase 3: Documentation Updates (Priority: MEDIUM)
 
 ### Day 5 — Friday, Nov 22
+
 - [ ] Update `GITHUB_RELEASES_RECENT.md` with real v1.2.3 & v1.2.4 data
 - [ ] Create `RELEASES_USER_GUIDE.md` (quick-start for users)
 - [ ] Review all links in README point to correct URLs
 - [ ] Test all download links work
 
 **Files to Update**:
+
 1. `/workspaces/qmoi-enhanced/GITHUB_RELEASES_RECENT.md` — Replace placeholders
 2. `/workspaces/qmoi-enhanced/RELEASES_USER_GUIDE.md` — NEW FILE
 3. `/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md` — Update links
@@ -62,6 +69,7 @@ gh release view test-v1.2.5 --json assets --jq '.assets | length'
 ## 🎯 Parallel Tasks (Can Start Anytime)
 
 ### Planning & Preparation
+
 - [ ] Schedule meeting: "Release Pipeline Review" (30 min, all teams)
 - [ ] Draft requirements: "Missing Platforms Build Pipeline" (Raspberry Pi, Wear OS, Docker)
 - [ ] Design: "Interactive Release Browser" UI mockups
@@ -76,6 +84,7 @@ gh release view test-v1.2.5 --json assets --jq '.assets | length'
 **Format**: Completed, In Progress, Blockers
 
 ### Example:
+
 ```
 Monday, Nov 18:
 ✅ Completed: Pushed test-v1.2.5 tag, workflow triggered
@@ -108,16 +117,16 @@ If you encounter any of these, escalate immediately:
 
 By end of week (Nov 21):
 
-| Metric | Target | Status |
-|--------|--------|--------|
-| Workflows executing without errors | 100% | ⏳ |
-| Draft release created successfully | Yes | ⏳ |
-| All 16 assets present in release | Yes | ⏳ |
-| SHA256 verification working | Yes | ⏳ |
-| Compliance check running (auto-issue on failure) | Yes | ⏳ |
-| Critical vulnerabilities resolved | 0 remaining | ⏳ |
-| User-facing docs updated | 100% | ⏳ |
-| Download links all functional | 100% | ⏳ |
+| Metric                                           | Target      | Status |
+| ------------------------------------------------ | ----------- | ------ |
+| Workflows executing without errors               | 100%        | ⏳     |
+| Draft release created successfully               | Yes         | ⏳     |
+| All 16 assets present in release                 | Yes         | ⏳     |
+| SHA256 verification working                      | Yes         | ⏳     |
+| Compliance check running (auto-issue on failure) | Yes         | ⏳     |
+| Critical vulnerabilities resolved                | 0 remaining | ⏳     |
+| User-facing docs updated                         | 100%        | ⏳     |
+| Download links all functional                    | 100%        | ⏳     |
 
 ---
 

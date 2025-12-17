@@ -15,12 +15,13 @@
   - [ ] Support Bearer tokens (JWT recommended)
   - [ ] Add token expiration (typically 1 hour for short-lived, 30 days for refresh)
   - [ ] Store secrets in environment variables (never hardcode)
+
   ```typescript
   // Example: Verify API key middleware
   app.use((req, res, next) => {
-    const apiKey = req.headers['x-api-key'];
+    const apiKey = req.headers["x-api-key"];
     if (!apiKey || apiKey !== process.env.API_KEY_SECRET) {
-      return res.status(401).json({ error: 'Unauthorized' });
+      return res.status(401).json({ error: "Unauthorized" });
     }
     next();
   });
@@ -31,12 +32,15 @@
   - [ ] Whitelist frontend domains only
   - [ ] Restrict allowed methods: `POST, GET, OPTIONS` (not PUT/DELETE unless needed)
   - [ ] Restrict allowed headers
+
   ```typescript
-  app.use(cors({
-    origin: process.env.FRONTEND_URLS?.split(',') || 'http://localhost:3000',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    credentials: true
-  }));
+  app.use(
+    cors({
+      origin: process.env.FRONTEND_URLS?.split(",") || "http://localhost:3000",
+      methods: ["GET", "POST", "OPTIONS"],
+      credentials: true,
+    }),
+  );
   ```
 
 - [ ] **HTTPS Only**
@@ -52,8 +56,8 @@
   - [ ] Different credentials for dev/staging/production
   - [ ] Validate required env vars on startup
   ```typescript
-  const requiredEnvVars = ['DATABASE_URL', 'API_KEY_SECRET', 'MAIL_PASSWORD'];
-  requiredEnvVars.forEach(env => {
+  const requiredEnvVars = ["DATABASE_URL", "API_KEY_SECRET", "MAIL_PASSWORD"];
+  requiredEnvVars.forEach((env) => {
     if (!process.env[env]) {
       throw new Error(`Missing required environment variable: ${env}`);
     }
@@ -67,11 +71,12 @@
   - [ ] Check data types (string, number, email, URL)
   - [ ] Reject oversized payloads (file uploads > 100MB)
   - [ ] Sanitize string inputs (prevent SQL injection, XSS)
+
   ```typescript
   // Example: Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    return res.status(400).json({ error: 'Invalid email format' });
+    return res.status(400).json({ error: "Invalid email format" });
   }
   ```
 
@@ -81,10 +86,11 @@
   - [ ] Store uploads outside web root
   - [ ] Generate random filenames (not user-provided)
   - [ ] Set file size limits per file type
+
   ```typescript
-  const ALLOWED_MIMETYPES = ['image/jpeg', 'image/png', 'application/pdf'];
+  const ALLOWED_MIMETYPES = ["image/jpeg", "image/png", "application/pdf"];
   if (!ALLOWED_MIMETYPES.includes(file.mimetype)) {
-    return res.status(400).json({ error: 'Invalid file type' });
+    return res.status(400).json({ error: "Invalid file type" });
   }
   ```
 
@@ -100,20 +106,21 @@
   - [ ] Stricter limits for sensitive endpoints (/api/emergency, /api/verify)
   - [ ] Return 429 (Too Many Requests) when exceeded
   - [ ] Include `Retry-After` header
+
   ```typescript
   const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100,  // limit each IP to 100 requests per windowMs
-    message: 'Too many requests, please try again later.'
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: "Too many requests, please try again later.",
   });
-  app.use('/api/', limiter);
-  
+  app.use("/api/", limiter);
+
   // Stricter limit for sensitive endpoints
   const strictLimiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
-    max: 5   // max 5 requests per minute
+    max: 5, // max 5 requests per minute
   });
-  app.post('/api/emergency', strictLimiter, emergencyHandler);
+  app.post("/api/emergency", strictLimiter, emergencyHandler);
   ```
 
 - [ ] **DDoS Protection**
@@ -127,10 +134,12 @@
   - [ ] Encrypt sensitive data in database (passwords, API keys, PII)
   - [ ] Use industry-standard algorithms (AES-256)
   - [ ] Store encryption keys in secure vault
+
   ```typescript
-  const crypto = require('crypto');
-  const encrypted = crypto.createCipher('aes-256-cbc', ENCRYPTION_KEY)
-    .update(sensitiveData, 'utf8', 'hex');
+  const crypto = require("crypto");
+  const encrypted = crypto
+    .createCipher("aes-256-cbc", ENCRYPTION_KEY)
+    .update(sensitiveData, "utf8", "hex");
   ```
 
 - [ ] **Encryption in Transit**
@@ -145,17 +154,21 @@
   - [ ] Implement GDPR "right to forget" for user data
   ```typescript
   // Auto-delete old uploads
-  setInterval(() => {
-    fs.readdir('./uploads', (err, files) => {
-      files.forEach(file => {
-        const filePath = path.join('./uploads', file);
-        const stat = fs.statSync(filePath);
-        if (Date.now() - stat.mtime > 1 * 60 * 60 * 1000) { // 1 hour
-          fs.unlinkSync(filePath);
-        }
+  setInterval(
+    () => {
+      fs.readdir("./uploads", (err, files) => {
+        files.forEach((file) => {
+          const filePath = path.join("./uploads", file);
+          const stat = fs.statSync(filePath);
+          if (Date.now() - stat.mtime > 1 * 60 * 60 * 1000) {
+            // 1 hour
+            fs.unlinkSync(filePath);
+          }
+        });
       });
-    });
-  }, 10 * 60 * 1000); // Check every 10 minutes
+    },
+    10 * 60 * 1000,
+  ); // Check every 10 minutes
   ```
 
 ### Logging & Monitoring
@@ -165,6 +178,7 @@
   - [ ] Log all errors with stack trace and context
   - [ ] Log authentication failures and rate limit violations
   - [ ] Never log sensitive data (passwords, credit cards, API keys)
+
   ```typescript
   // Example: Structured logging
   console.log({
@@ -174,7 +188,7 @@
     userId: req.user?.id,
     ip: req.ip,
     status: res.statusCode,
-    duration: Date.now() - startTime
+    duration: Date.now() - startTime,
   });
   ```
 
@@ -182,10 +196,11 @@
   - [ ] Log full errors server-side
   - [ ] Return generic error messages to client (no stack traces)
   - [ ] Don't expose internal server details in error responses
+
   ```typescript
   // Good: Generic error message for client
-  res.status(500).json({ error: 'Internal server error' });
-  
+  res.status(500).json({ error: "Internal server error" });
+
   // Bad: Exposes server details
   res.status(500).json({ error: err.stack });
   ```
@@ -208,6 +223,7 @@
   - [ ] Run `npm audit` regularly
   - [ ] Use Snyk or WhiteSource for continuous scanning
   - [ ] Update vulnerable dependencies immediately
+
   ```bash
   npm audit
   npm audit fix
@@ -226,6 +242,7 @@
   - [ ] Use read-only user for queries (no UPDATE/DELETE permissions)
   - [ ] Encrypt database connections (SSL/TLS)
   - [ ] Don't expose database ports publicly
+
   ```bash
   # Bad: Database accessible from internet
   # Good: Database only accessible from application server
@@ -235,10 +252,11 @@
   - [ ] Use parameterized queries/prepared statements
   - [ ] Never concatenate user input into SQL strings
   - [ ] Use ORM (Sequelize, TypeORM) when possible
+
   ```typescript
   // Good: Parameterized query
-  db.query('SELECT * FROM products WHERE sku = $1', [sku]);
-  
+  db.query("SELECT * FROM products WHERE sku = $1", [sku]);
+
   // Bad: String concatenation
   db.query(`SELECT * FROM products WHERE sku = '${sku}'`);
   ```
@@ -256,6 +274,7 @@
   - [ ] Enable bucket versioning
   - [ ] Enable access logging
   - [ ] Configure bucket policies to deny public access
+
   ```json
   {
     "Principal": "*",
@@ -362,16 +381,19 @@
 ## Security Tools & Services
 
 ### Code Analysis
+
 - **SAST:** SonarQube, Snyk, GitHub Advanced Security
 - **DAST:** OWASP ZAP, Burp Suite
 - **Dependency Scan:** npm audit, Snyk, WhiteSource
 
 ### Infrastructure
+
 - **DDoS Protection:** Cloudflare, AWS Shield
 - **WAF:** AWS WAF, Cloudflare, ModSecurity
 - **Secrets Management:** AWS Secrets Manager, HashiCorp Vault
 
 ### Monitoring
+
 - **Logging:** ELK Stack, Splunk, CloudWatch
 - **APM:** New Relic, DataDog, Elastic APM
 - **Alerting:** PagerDuty, Opsgenie
@@ -381,6 +403,7 @@
 ## Incident Response Plan
 
 ### 1. Detection
+
 - Monitor logs and alerts for suspicious activity
 - Set up automated alerts for:
   - Authentication failures (5+ in 5 minutes)
@@ -389,16 +412,19 @@
   - Unexpected API calls
 
 ### 2. Response
+
 - Immediate: Stop active attack (block IP, revoke token)
 - Short-term: Investigate root cause
 - Document: Timeline, impact, actions taken
 
 ### 3. Recovery
+
 - Restore from backup if needed
 - Verify system integrity
 - Monitor for similar attacks
 
 ### 4. Post-Incident
+
 - Root cause analysis
 - Update security measures
 - Communicate with affected users
@@ -419,26 +445,31 @@
 ## Regular Security Activities
 
 ### Daily
+
 - [ ] Monitor error logs and alerts
 - [ ] Check rate limit metrics
 - [ ] Verify backups completed
 
 ### Weekly
+
 - [ ] Review security logs
 - [ ] Check dependency updates
 - [ ] Verify monitoring/alerting working
 
 ### Monthly
+
 - [ ] Dependency security audit (`npm audit`)
 - [ ] Review access control policies
 - [ ] Verify SSL certificates (expiration)
 
 ### Quarterly
+
 - [ ] Full security audit
 - [ ] Penetration testing
 - [ ] Compliance review
 
 ### Annually
+
 - [ ] Professional security audit
 - [ ] Disaster recovery drill
 - [ ] Security training for team
@@ -455,4 +486,3 @@
 ---
 
 **Last Updated:** December 2, 2025
-

@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       return NextResponse.json(
         apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.response?.status || 401 }
+        { status: apiAuth.response?.status || 401 },
       );
     }
 
@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
     console.error("Signals API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

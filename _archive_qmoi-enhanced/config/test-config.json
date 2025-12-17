@@ -41,24 +41,12 @@
     "accessibility": {
       "enabled": true,
       "pattern": "**/*.a11y.test.js",
-      "standards": [
-        "WCAG2AA",
-        "WCAG2AAA"
-      ]
+      "standards": ["WCAG2AA", "WCAG2AAA"]
     },
     "compatibility": {
       "enabled": true,
-      "browsers": [
-        "chrome",
-        "firefox",
-        "safari",
-        "edge"
-      ],
-      "devices": [
-        "desktop",
-        "tablet",
-        "mobile"
-      ]
+      "browsers": ["chrome", "firefox", "safari", "edge"],
+      "devices": ["desktop", "tablet", "mobile"]
     },
     "load": {
       "enabled": true,
@@ -113,51 +101,22 @@
     },
     "network": {
       "enabled": true,
-      "endpoints": [
-        "https://api.github.com",
-        "https://registry.npmjs.org"
-      ]
+      "endpoints": ["https://api.github.com", "https://registry.npmjs.org"]
     },
     "mobile": {
       "enabled": true,
-      "devices": [
-        "iPhone 12",
-        "Samsung Galaxy S21",
-        "iPad Pro"
-      ],
-      "orientation": [
-        "portrait",
-        "landscape"
-      ]
+      "devices": ["iPhone 12", "Samsung Galaxy S21", "iPad Pro"],
+      "orientation": ["portrait", "landscape"]
     },
     "crossBrowser": {
       "enabled": true,
-      "browsers": [
-        "chrome",
-        "firefox",
-        "safari",
-        "edge"
-      ],
-      "versions": [
-        "latest",
-        "latest-1"
-      ]
+      "browsers": ["chrome", "firefox", "safari", "edge"],
+      "versions": ["latest", "latest-1"]
     },
     "localization": {
       "enabled": true,
-      "languages": [
-        "en",
-        "es",
-        "fr",
-        "de",
-        "ja",
-        "zh"
-      ],
-      "regions": [
-        "US",
-        "EU",
-        "APAC"
-      ]
+      "languages": ["en", "es", "fr", "de", "ja", "zh"],
+      "regions": ["US", "EU", "APAC"]
     }
   },
   "reporting": {
@@ -186,9 +145,7 @@
   "notifications": {
     "email": {
       "enabled": true,
-      "recipients": [
-        "team@q-city.ai"
-      ]
+      "recipients": ["team@q-city.ai"]
     },
     "slack": {
       "enabled": true,

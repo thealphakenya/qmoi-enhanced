@@ -46,12 +46,12 @@ FRONTEND_URL = "http://127.0.0.1:8000"
 
 class QMOICloudManager:
     """Enhanced cloud management for always-on operation"""
-    
+
     def __init__(self):
         self.cloud_status = {}
         self.local_fallback = True
         self.auto_install_deps = True
-        
+
     def check_cloud_availability(self):
         """Check all cloud endpoints for availability"""
         for name, url in CLOUD_ENDPOINTS.items():
@@ -61,7 +61,7 @@ class QMOICloudManager:
             except:
                 self.cloud_status[name] = False
         return any(self.cloud_status.values())
-    
+
     def download_cloud_runtime(self):
         """Download lightweight cloud runtime if needed"""
         runtime_path = os.path.join(INSTALL_DIR, "cloud_runtime")

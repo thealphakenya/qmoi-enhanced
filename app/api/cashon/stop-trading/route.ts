@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
       if (!r)
         return NextResponse.json(
           { error: "Unknown auth error" },
-          { status: 500 }
+          { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
     }
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     console.error("Stop trading API error:", error);
     return NextResponse.json(
       { error: "Failed to stop trading" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

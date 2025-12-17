@@ -1,14 +1,14 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
 // TTC API endpoint (local or remote)
-const TTC_API = 'http://localhost:5002/tts'; // Update if needed
+const TTC_API = "http://localhost:5002/tts"; // Update if needed
 
 export function useTTCVoice() {
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const speak = useCallback((text: string) => {
     if (!window.speechSynthesis) {
-      console.warn('Speech synthesis not supported');
+      console.warn("Speech synthesis not supported");
       return;
     }
 
@@ -16,15 +16,16 @@ export function useTTCVoice() {
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
-    
+
     // Get available voices and select a preferred one
     const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(voice => 
-      voice.name.includes('Google') || 
-      voice.name.includes('Microsoft') ||
-      voice.name.includes('Samantha')
+    const preferredVoice = voices.find(
+      (voice) =>
+        voice.name.includes("Google") ||
+        voice.name.includes("Microsoft") ||
+        voice.name.includes("Samantha"),
     );
-    
+
     if (preferredVoice) {
       utterance.voice = preferredVoice;
     }
@@ -38,7 +39,7 @@ export function useTTCVoice() {
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
     utterance.onerror = (event) => {
-      console.error('Speech synthesis error:', event);
+      console.error("Speech synthesis error:", event);
       setIsSpeaking(false);
     };
 
@@ -56,6 +57,6 @@ export function useTTCVoice() {
   return {
     speak,
     stop,
-    isSpeaking
+    isSpeaking,
   };
 }

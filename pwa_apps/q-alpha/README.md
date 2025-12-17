@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -19,26 +20,28 @@ Q Alpha is a lightweight Progressive Web App that aggregates QMOI, QMOI Space, a
 Last-verified: 2025-10-21T00:00:00Z
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "pwa_apps/q-alpha/README.md",
-  "validated_at": "2025-10-26T20:51:24.587088Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "Q Alpha (PWA)"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "pwa_apps/q-alpha/README.md",
+"validated_at": "2025-10-26T20:51:24.587088Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "Q Alpha (PWA)"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

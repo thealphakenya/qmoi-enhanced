@@ -43,7 +43,7 @@ class VercelAutoFix {
 
   async checkAndFixPublicDirectory() {
     this.log('Checking public directory...');
-    
+
     const publicDir = path.join(this.projectRoot, 'public');
     if (!fs.existsSync(publicDir)) {
       this.log('Creating public directory...');
@@ -74,7 +74,7 @@ class VercelAutoFix {
 
   async checkAndFixPackageJson() {
     this.log('Checking package.json...');
-    
+
     const packageJsonPath = path.join(this.projectRoot, 'package.json');
     if (!fs.existsSync(packageJsonPath)) {
       this.log('Creating package.json...');

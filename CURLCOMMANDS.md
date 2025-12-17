@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -17,30 +18,37 @@ qmoi_validation_frontmatter: true
 This file contains curl commands and instructions to test all QMOI endpoints, health, autotests, error fixing, workflow, and financial features.
 
 ## Health Check
+
 ```
 curl http://localhost:4000/health
 ```
 
 ## Real-Time Events
+
 ```
 curl http://localhost:4000/api/realtime-events
 ```
+
 ## Trigger Error Fix
+
 ```
 curl -X POST http://localhost:4000/api/trigger-fix
 ```
 
 ## Get Error Fix Log
+
 ```
 curl http://localhost:4000/api/error-fix-log
 ```
 
 ## Get Logs
+
 ```
 curl http://localhost:4000/api/logs
 ```
 
 ## Login (example)
+
 ```
 curl -X POST -d "user=Victor&pass=Victor9798!" http://localhost:4000/login
 ```
@@ -48,6 +56,7 @@ curl -X POST -d "user=Victor&pass=Victor9798!" http://localhost:4000/login
 ## Add more as new endpoints are created.
 
 ---
+
 ## API Coverage & Automation (2025-10-08)
 
 All API endpoints, including previously unused ones, are now exercised by the automated test suite (`qmoi_test.sh`).
@@ -63,6 +72,7 @@ If you add new endpoints, update this file and the test suite to ensure full cov
 ## QMOI Multimodal API Feature Tests
 
 ### 1. Basic Text Chat
+
 ```
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
@@ -77,6 +87,7 @@ curl $QMOI_API_BASE/chat/completions \
 ```
 
 ### 2. Multi-turn Conversation
+
 ```
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
@@ -93,6 +104,7 @@ curl $QMOI_API_BASE/chat/completions \
 ```
 
 ### 3. Multimodal Input (image + text)
+
 ```
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
@@ -112,6 +124,7 @@ curl $QMOI_API_BASE/chat/completions \
 ```
 
 ### 4. Multimodal Reasoning (image + question)
+
 ```
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
@@ -131,6 +144,7 @@ curl $QMOI_API_BASE/chat/completions \
 ```
 
 ### 5. Structured Output (JSON Mode)
+
 ```
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
@@ -145,6 +159,7 @@ curl $QMOI_API_BASE/chat/completions \
 ```
 
 ### 6. Streaming Responses
+
 ```
 curl -N $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
@@ -159,6 +174,7 @@ curl -N $QMOI_API_BASE/chat/completions \
 ```
 
 ### 7. Function Calling / Tool Use
+
 ```
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
@@ -188,6 +204,7 @@ curl $QMOI_API_BASE/chat/completions \
 ```
 
 ### 8. Embeddings
+
 ```
 curl $QMOI_API_BASE/embeddings \
 	-H "Content-Type: application/json" \
@@ -203,6 +220,7 @@ curl $QMOI_API_BASE/embeddings \
 ## Response Quality, Speed, and Reasoning Tests
 
 For each test above, measure:
+
 - Response time (add `-w '\nTime: %{time_total}s\n'` to curl)
 - Output quality (check for coherence, structure, and accuracy)
 - Reasoning (logical, context-aware answers)
@@ -213,34 +231,36 @@ For each test above, measure:
 See also: [qmoi_test.sh](qmoi_test.sh) for a script to run all tests and log results.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "CURLCOMMANDS.md",
-  "validated_at": "2025-10-26T20:51:22.291023Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI CURL Commands"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": [
-        {
-          "label": "qmoi_test.sh",
-          "target": "./qmoi_test.sh",
-          "ok": true
-        }
-      ]
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "CURLCOMMANDS.md",
+"validated_at": "2025-10-26T20:51:22.291023Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI CURL Commands"
+},
+{
+"name": "links",
+"ok": true,
+"detail": [
+{
+"label": "qmoi_test.sh",
+"target": "./qmoi_test.sh",
+"ok": true
 }
+]
+}
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

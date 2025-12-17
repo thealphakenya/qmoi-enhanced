@@ -9,7 +9,7 @@ const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 function logAudit(entry: any) {
   fs.appendFileSync(
     AUDIT_LOG,
-    JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n"
+    JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n",
   );
 }
 
@@ -19,7 +19,7 @@ function maskCommand(cmd: string) {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   if (req.method !== "POST") return res.status(405).end();
   const key = req.headers["x-qcity-admin-key"];

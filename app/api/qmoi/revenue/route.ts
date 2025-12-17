@@ -58,7 +58,7 @@ export async function GET(req: NextRequest) {
     logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -128,7 +128,7 @@ export async function POST(req: NextRequest) {
     logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

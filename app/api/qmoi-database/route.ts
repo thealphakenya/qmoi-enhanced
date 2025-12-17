@@ -14,14 +14,14 @@ class MockDatabase {
 
   async get(
     _sql: string,
-    _params?: unknown[]
+    _params?: unknown[],
   ): Promise<Record<string, unknown> | null> {
     return null;
   }
 
   async all(
     _sql: string,
-    _params?: unknown[]
+    _params?: unknown[],
   ): Promise<Record<string, unknown>[]> {
     return [];
   }
@@ -91,7 +91,7 @@ async function initializeMediaTables(db: MockDatabase) {
 async function searchMedia(
   query: string,
   type?: string,
-  source?: string
+  source?: string,
 ): Promise<MediaItem[]> {
   const db = await getDb();
 
@@ -237,7 +237,7 @@ async function getMediaLogs(filter?: {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   if (!isMaster(req)) {
     return res.status(403).json({ error: "Master access required" });
@@ -254,7 +254,7 @@ export default async function handler(
       const results = await searchMedia(
         query.search as string,
         query.type as string,
-        query.source as string
+        query.source as string,
       );
       return res.json({ media: results });
     } catch (error) {
@@ -311,7 +311,7 @@ export default async function handler(
           mediaItem.status,
           mediaItem.createdAt,
           mediaItem.updatedAt,
-        ]
+        ],
       );
 
       return res.json({ success: true, media: mediaItem });
@@ -323,7 +323,7 @@ export default async function handler(
   // Example: Table management
   if (method === "GET" && query.tables) {
     const tables = await db.all(
-      `SELECT name FROM sqlite_master WHERE type='table'`
+      `SELECT name FROM sqlite_master WHERE type='table'`,
     );
     return res.json({ tables });
   }
@@ -339,7 +339,7 @@ export default async function handler(
   // Example: Schema introspection
   if (method === "GET" && query.schema) {
     const schema = await db.all(
-      `SELECT sql FROM sqlite_master WHERE type='table'`
+      `SELECT sql FROM sqlite_master WHERE type='table'`,
     );
     return res.json({ schema });
   }

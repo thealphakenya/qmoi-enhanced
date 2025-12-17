@@ -54,7 +54,7 @@ export class EnhancedParallelizationService extends EventEmitter {
   private completedTasks: ParallelTask[] = [];
   private config: ParallelExecutionConfig;
   private systemHealth: SystemHealth;
-  private isRunning: boolean = false;
+  private isRunning = false;
   private healthCheckInterval?: NodeJS.Timeout;
 
   private constructor() {

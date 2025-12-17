@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "Workspace Light Mode (Low-data / Codespaces Optimizations)"
 qmoi_validation_frontmatter: true
@@ -42,7 +42,7 @@ Quick actions (commands you can run locally or in Codespace terminal)
   git sparse-checkout init --cone
   git sparse-checkout set src app docs
   git checkout
-  ```
+````
 
 - Shallow clone (reduce history):
 
@@ -53,21 +53,26 @@ Quick actions (commands you can run locally or in Codespace terminal)
 - Avoid installing dependencies in the browser workspace; run `npm ci` in CI or a remote builder. Use the CI workflow added to run tests and heavy tasks.
 
 Files and tools added here
+
 - `tools/build_light_index.py` — creates `tools/light_index.json` with top large files and suggestions to exclude them locally.
 - `tools/start_light_server.py` — simple on-demand HTTP server that serves files under a size limit or from a whitelist in the light index.
 - `.vscode/settings.json` — hides large folders from Explorer (non-destructive editor setting).
 
 Best practices
+
 - Use Codespaces for editing and run heavy commands in CI.
 - Use the `tools/light_index.json` to know which files to avoid opening in the browser.
 - If you must open large files, consider opening them via the server preview (the light server) which streams and compresses content.
 
 Safety note
+
 - These helpers do not modify source files. They only generate indexes and provide lightweight servers.
-- If you want me to create a branch that 
+- If you want me to create a branch that
+
 ```
 
 Notes:
 
 - This draft was generated automatically to help triage files removed from `donerefs.txt`.
 - Backups and previous runs may exist under `.qmoi_validation`.
+```

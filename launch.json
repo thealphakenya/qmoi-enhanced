@@ -6,9 +6,7 @@
       "type": "pwa-node",
       "request": "launch",
       "runtimeExecutable": "bash",
-      "args": [
-        "${workspaceFolder}/start.sh"
-      ],
+      "args": ["${workspaceFolder}/start.sh"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }

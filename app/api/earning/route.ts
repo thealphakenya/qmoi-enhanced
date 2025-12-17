@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 // In-memory stores (replace with DB/real logic in production)
 const strategies = [
-  { id: 1, name: 'Trading Bot', status: 'active' },
-  { id: 2, name: 'Yield Farming', status: 'inactive' },
-  { id: 3, name: 'Staking', status: 'active' },
+  { id: 1, name: "Trading Bot", status: "active" },
+  { id: 2, name: "Yield Farming", status: "inactive" },
+  { id: 3, name: "Staking", status: "active" },
 ];
 let monitoring = false;
 const analytics = {
@@ -35,5 +35,8 @@ export async function POST_SELF_HEAL(req: NextRequest) {
   // Trigger self-healing (stub)
   // TODO: Implement real self-healing logic
   analytics.errors = 0;
-  return NextResponse.json({ success: true, message: 'Self-healing triggered.' });
-} 
+  return NextResponse.json({
+    success: true,
+    message: "Self-healing triggered.",
+  });
+}

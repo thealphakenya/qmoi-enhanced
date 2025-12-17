@@ -60,7 +60,7 @@ function setupRecoveryListeners(): void {
           async () => {
             await checkHealth();
           },
-          2000
+          2000,
         );
       }
 
@@ -75,7 +75,7 @@ function setupRecoveryListeners(): void {
         async () => {
           await checkHealth();
         },
-        3000
+        3000,
       );
 
       throw err;
@@ -103,7 +103,7 @@ function setupHealthMonitoring(): void {
           async () => {
             await checkHealth();
           },
-          1000
+          1000,
         );
       } else if (health.status === "degraded") {
         console.warn("[Monitor] Health check returned degraded");

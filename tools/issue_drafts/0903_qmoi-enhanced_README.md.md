@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "QMOI System"
 qmoi_validation_frontmatter: true
@@ -78,7 +78,7 @@ All finalized apps are automatically published to:
 👉 https://github.com/thealphakenya/qmoi-enhanced/releases
 
 If a download fails, QCity automation will auto-rebui
-```
+````
 
 Notes:
 

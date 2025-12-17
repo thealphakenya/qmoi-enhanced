@@ -30,7 +30,7 @@ describe("QMoiKernelPanel Integration", () => {
                 mutation_count: 5,
                 logs: ["Log 1", "Log 2"],
               }),
-              { status: 200 }
+              { status: 200 },
             );
           }
           if (url.includes("/api/qmoi/payload")) {
@@ -38,10 +38,10 @@ describe("QMoiKernelPanel Integration", () => {
             const action = u.searchParams.get("qfix")
               ? "QFix"
               : u.searchParams.get("qoptimize")
-              ? "QOptimize"
-              : u.searchParams.get("qsecure")
-              ? "QSecure"
-              : "Unknown";
+                ? "QOptimize"
+                : u.searchParams.get("qsecure")
+                  ? "QSecure"
+                  : "Unknown";
             return new Response(JSON.stringify({ message: `${action} done` }), {
               status: 200,
             });
@@ -51,9 +51,42 @@ describe("QMoiKernelPanel Integration", () => {
     }
   });
 
+  beforeEach(async () => {
+    // Re-apply canonical handlers before each test to avoid leakage from
+    // test-local overrides and keep tests deterministic.
+    await (globalThis as any).__MSW_READY__;
+    try {
+      const handlersMod = await import("../../mocks/handlers");
+      if (typeof handlersMod.getHandlers === "function") {
+        const handlers = await handlersMod.getHandlers();
+        server.use(...handlers);
+      }
+    } catch (e) {
+      // ignore
+    }
+  });
+
+  it("debug: raw fetch", async () => {
+    await (globalThis as any).__MSW_READY__;
+    const handlersMod = await import("../../mocks/handlers");
+    if (typeof handlersMod.getHandlers === "function") {
+      const hs = await handlersMod.getHandlers();
+      server.use(...hs);
+    }
+    const res = await fetch("/api/qmoi/status");
+    const text = await res.text().catch(() => "<no-body>");
+    console.debug("DEBUG FETCH: status=", res.status, "body=", text);
+    expect(res.status).toBe(200);
+  });
+
   afterEach(() => {
-    // Keep MSW handlers installed for the whole suite (we install them in beforeAll).
-    // Only clear mock call history between tests; do not restore mock implementations.
+    // Reset any runtime handler overrides and clear mock call history between
+    // tests so each test runs in a clean environment.
+    try {
+      server.resetHandlers();
+    } catch {
+      // ignore
+    }
     jest.clearAllMocks();
   });
 
@@ -76,6 +109,12 @@ describe("QMoiKernelPanel Integration", () => {
   });
 
   it("fetches and displays status from API", async () => {
+    // Ensure canonical OK handlers are active for this test
+    const handlersMod = await import("../../mocks/handlers");
+    if (typeof handlersMod.getHandlers === "function") {
+      const hs = await handlersMod.getHandlers();
+      server.use(...hs);
+    }
     render(<QMoiKernelPanel isMaster={true} />);
     expect(await screen.findByText("OK")).toBeInTheDocument();
     expect(screen.getByText("Log 1")).toBeInTheDocument();
@@ -83,25 +122,35 @@ describe("QMoiKernelPanel Integration", () => {
   });
 
   it("runs QFix and updates last action", async () => {
+    // Ensure canonical OK handlers are active for this test
+    const handlersMod = await import("../../mocks/handlers");
+    if (typeof handlersMod.getHandlers === "function") {
+      const hs = await handlersMod.getHandlers();
+      server.use(...hs);
+    }
     render(<QMoiKernelPanel isMaster={true} />);
     await screen.findByText("OK");
     fireEvent.click(screen.getByRole("button", { name: /Run QFix/i }));
     await waitFor(() =>
-      expect(screen.getByText(/Last Action:/)).toBeInTheDocument()
+      expect(screen.getByText(/Last Action:/)).toBeInTheDocument(),
     );
     expect(screen.getByText("QFix done")).toBeInTheDocument();
   });
 
   it("handles API error gracefully", async () => {
-    const msw = await import("msw");
-    const helpers = (msw as any).http ?? (msw as any).rest;
-    if (helpers) {
-      server.use(
-        helpers.get("/api/qmoi/status", (req: any, res: any, ctx: any) => {
-          return res(ctx.status(500));
-        })
-      );
-    } else {
+    // Replace handlers for this test to simulate a server error
+    try {
+      server.resetHandlers();
+      const msw = await import("msw");
+      const helpers = (msw as any).http ?? (msw as any).rest;
+      if (helpers) {
+        server.use(
+          helpers.get("/api/qmoi/status", (req: any, res: any, ctx: any) => {
+            return res(ctx.status(500));
+          }),
+        );
+      }
+    } catch {
       jest
         .spyOn(global, "fetch" as any)
         .mockImplementation(async (input: any) => {

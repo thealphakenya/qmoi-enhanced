@@ -4,7 +4,7 @@ on:
   push:
     # Tag format: variation/<name>/v1.2.3
     tags:
-      - 'variation/*/v*'
+      - "variation/*/v*"
 
 permissions:
   contents: write
@@ -20,7 +20,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install docker/buildx
         uses: docker/setup-buildx-action@v3

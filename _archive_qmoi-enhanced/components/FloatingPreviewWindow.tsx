@@ -141,8 +141,8 @@ export function FloatingPreviewWindow({
         mediaType === "video"
           ? "mp4"
           : mediaType === "audio"
-          ? "mp3"
-          : mediaType;
+            ? "mp3"
+            : mediaType;
       downloadFile(mediaUrl, `Alpha-Q-Downloads/${mediaType}.${ext}`);
       return;
     }

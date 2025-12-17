@@ -11,6 +11,7 @@
 This document provides complete, production-ready code examples for implementing the 7 API endpoints that the frontend adapters expect. Choose the framework that matches your backend stack.
 
 **Endpoints:**
+
 1. `POST /api/mail` — Send email
 2. `POST /api/files` — Upload/transfer files
 3. `POST /api/emergency` — SOS, lockdown, wipe, alert
@@ -24,19 +25,21 @@ This document provides complete, production-ready code examples for implementing
 ## Node.js + Express
 
 ### Setup
+
 ```bash
 npm install express cors dotenv nodemailer multer yt-dlp axios
 ```
 
 ### Complete Implementation
+
 ```javascript
 // backend/server.js
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import nodemailer from 'nodemailer';
-import multer from 'multer';
-import path from 'path';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import nodemailer from "nodemailer";
+import multer from "multer";
+import path from "path";
 
 dotenv.config();
 
@@ -46,17 +49,17 @@ const PORT = process.env.PORT || 8000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: "50mb" }));
 
 // Setup multer for file uploads
 const upload = multer({
-  dest: 'uploads/',
+  dest: "uploads/",
   limits: { fileSize: 100 * 1024 * 1024 }, // 100MB
 });
 
 // Setup nodemailer
 const transporter = nodemailer.createTransport({
-  service: process.env.MAIL_SERVICE || 'gmail',
+  service: process.env.MAIL_SERVICE || "gmail",
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASSWORD,
@@ -66,14 +69,14 @@ const transporter = nodemailer.createTransport({
 // ============================================================================
 // POST /api/mail - Send Email
 // ============================================================================
-app.post('/api/mail', async (req, res) => {
+app.post("/api/mail", async (req, res) => {
   try {
     const { to, subject, body, cc, bcc } = req.body;
 
     // Validation
     if (!to || !subject || !body) {
       return res.status(400).json({
-        error: 'Missing required fields: to, subject, body',
+        error: "Missing required fields: to, subject, body",
       });
     }
 
@@ -92,13 +95,13 @@ app.post('/api/mail', async (req, res) => {
     res.json({
       success: true,
       messageId: info.messageId,
-      message: 'Email sent successfully',
+      message: "Email sent successfully",
     });
   } catch (error) {
-    console.error('Mail error:', error);
+    console.error("Mail error:", error);
     res.status(500).json({
       error: error.message,
-      code: 'MAIL_ERROR',
+      code: "MAIL_ERROR",
     });
   }
 });
@@ -106,13 +109,13 @@ app.post('/api/mail', async (req, res) => {
 // ============================================================================
 // POST /api/files - Upload/Transfer Files
 // ============================================================================
-app.post('/api/files', upload.single('file'), async (req, res) => {
+app.post("/api/files", upload.single("file"), async (req, res) => {
   try {
     if (!req.file) {
-      return res.status(400).json({ error: 'No file provided' });
+      return res.status(400).json({ error: "No file provided" });
     }
 
-    const { destination = '/uploads', metadata } = req.body;
+    const { destination = "/uploads", metadata } = req.body;
     const fileId = `file_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const fileUrl = `/uploads/${req.file.filename}`;
 
@@ -123,11 +126,11 @@ app.post('/api/files', upload.single('file'), async (req, res) => {
       filename: req.file.filename,
       size: req.file.size,
       destination,
-      metadata: JSON.parse(metadata || '{}'),
+      metadata: JSON.parse(metadata || "{}"),
       uploadedAt: new Date().toISOString(),
     };
 
-    console.log('File uploaded:', fileMetadata);
+    console.log("File uploaded:", fileMetadata);
 
     res.json({
       success: true,
@@ -135,13 +138,13 @@ app.post('/api/files', upload.single('file'), async (req, res) => {
       url: fileUrl,
       size: req.file.size,
       name: req.file.originalname,
-      message: 'File uploaded successfully',
+      message: "File uploaded successfully",
     });
   } catch (error) {
-    console.error('File upload error:', error);
+    console.error("File upload error:", error);
     res.status(500).json({
       error: error.message,
-      code: 'UPLOAD_ERROR',
+      code: "UPLOAD_ERROR",
     });
   }
 });
@@ -149,20 +152,20 @@ app.post('/api/files', upload.single('file'), async (req, res) => {
 // ============================================================================
 // POST /api/emergency - SOS, Lockdown, Wipe, Alert
 // ============================================================================
-app.post('/api/emergency', async (req, res) => {
+app.post("/api/emergency", async (req, res) => {
   try {
     const { action, deviceId, reason, metadata } = req.body;
 
-    if (!action || !['sos', 'lockdown', 'wipe', 'alert'].includes(action)) {
+    if (!action || !["sos", "lockdown", "wipe", "alert"].includes(action)) {
       return res.status(400).json({
-        error: 'Invalid action. Must be: sos, lockdown, wipe, or alert',
+        error: "Invalid action. Must be: sos, lockdown, wipe, or alert",
       });
     }
 
     const actionId = `action_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
     // Log emergency action (critical for security)
-    console.error('[EMERGENCY]', {
+    console.error("[EMERGENCY]", {
       actionId,
       action,
       deviceId,
@@ -181,14 +184,14 @@ app.post('/api/emergency', async (req, res) => {
       success: true,
       actionId,
       action,
-      status: 'initiated',
+      status: "initiated",
       message: `Emergency action ${action} initiated`,
     });
   } catch (error) {
-    console.error('Emergency action error:', error);
+    console.error("Emergency action error:", error);
     res.status(500).json({
       error: error.message,
-      code: 'EMERGENCY_ERROR',
+      code: "EMERGENCY_ERROR",
     });
   }
 });
@@ -196,13 +199,13 @@ app.post('/api/emergency', async (req, res) => {
 // ============================================================================
 // POST /api/verify - Product Verification
 // ============================================================================
-app.post('/api/verify', async (req, res) => {
+app.post("/api/verify", async (req, res) => {
   try {
     const { sku, productId, serialNumber } = req.body;
 
     if (!sku && !productId && !serialNumber) {
       return res.status(400).json({
-        error: 'Provide at least one: sku, productId, or serialNumber',
+        error: "Provide at least one: sku, productId, or serialNumber",
       });
     }
 
@@ -219,19 +222,21 @@ app.post('/api/verify', async (req, res) => {
       verified,
       details: verified
         ? {
-            productName: 'Example Product',
-            manufacturer: 'Example Corp',
+            productName: "Example Product",
+            manufacturer: "Example Corp",
             price: 99.99,
             lastVerified: new Date().toISOString(),
           }
         : null,
-      message: verified ? 'Product verified as authentic' : 'Product verification failed',
+      message: verified
+        ? "Product verified as authentic"
+        : "Product verification failed",
     });
   } catch (error) {
-    console.error('Verification error:', error);
+    console.error("Verification error:", error);
     res.status(500).json({
       error: error.message,
-      code: 'VERIFY_ERROR',
+      code: "VERIFY_ERROR",
     });
   }
 });
@@ -239,12 +244,12 @@ app.post('/api/verify', async (req, res) => {
 // ============================================================================
 // POST /api/youtube/download - YouTube Downloader
 // ============================================================================
-app.post('/api/youtube/download', async (req, res) => {
+app.post("/api/youtube/download", async (req, res) => {
   try {
-    const { url, format = 'mp4', quality = '720p' } = req.body;
+    const { url, format = "mp4", quality = "720p" } = req.body;
 
-    if (!url || !url.includes('youtube.com') && !url.includes('youtu.be')) {
-      return res.status(400).json({ error: 'Invalid YouTube URL' });
+    if (!url || (!url.includes("youtube.com") && !url.includes("youtu.be"))) {
+      return res.status(400).json({ error: "Invalid YouTube URL" });
     }
 
     const downloadId = `download_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -262,13 +267,13 @@ app.post('/api/youtube/download', async (req, res) => {
       format,
       quality,
       expiresIn: 3600, // 1 hour
-      message: 'Download queued',
+      message: "Download queued",
     });
   } catch (error) {
-    console.error('YouTube download error:', error);
+    console.error("YouTube download error:", error);
     res.status(500).json({
       error: error.message,
-      code: 'DOWNLOAD_ERROR',
+      code: "DOWNLOAD_ERROR",
     });
   }
 });
@@ -276,7 +281,7 @@ app.post('/api/youtube/download', async (req, res) => {
 // ============================================================================
 // GET /api/media - List Media Items
 // ============================================================================
-app.get('/api/media', async (req, res) => {
+app.get("/api/media", async (req, res) => {
   try {
     const { limit = 20, offset = 0, type, search } = req.query;
 
@@ -288,18 +293,18 @@ app.get('/api/media', async (req, res) => {
     // Mock response
     const mockItems = [
       {
-        id: 'media_1',
-        name: 'Sample Video',
-        type: 'video',
-        url: '/media/sample.mp4',
+        id: "media_1",
+        name: "Sample Video",
+        type: "video",
+        url: "/media/sample.mp4",
         size: 1024000,
         createdAt: new Date(Date.now() - 86400000).toISOString(),
       },
       {
-        id: 'media_2',
-        name: 'Sample Image',
-        type: 'image',
-        url: '/media/sample.jpg',
+        id: "media_2",
+        name: "Sample Image",
+        type: "image",
+        url: "/media/sample.jpg",
         size: 512000,
         createdAt: new Date().toISOString(),
       },
@@ -313,10 +318,10 @@ app.get('/api/media', async (req, res) => {
       offset: parseInt(offset),
     });
   } catch (error) {
-    console.error('Media listing error:', error);
+    console.error("Media listing error:", error);
     res.status(500).json({
       error: error.message,
-      code: 'MEDIA_ERROR',
+      code: "MEDIA_ERROR",
     });
   }
 });
@@ -324,18 +329,18 @@ app.get('/api/media', async (req, res) => {
 // ============================================================================
 // GET /api/health - Health Check
 // ============================================================================
-app.get('/api/health', async (req, res) => {
+app.get("/api/health", async (req, res) => {
   const startTime = process.uptime();
 
   res.json({
-    status: 'healthy',
+    status: "healthy",
     timestamp: new Date().toISOString(),
-    version: '1.0.0',
+    version: "1.0.0",
     uptime: Math.floor(startTime),
     checks: {
-      database: 'ok', // TODO: Check actual database connection
-      mail: 'ok', // TODO: Check mail service
-      storage: 'ok', // TODO: Check storage service
+      database: "ok", // TODO: Check actual database connection
+      mail: "ok", // TODO: Check mail service
+      storage: "ok", // TODO: Check storage service
     },
   });
 });
@@ -344,9 +349,9 @@ app.get('/api/health', async (req, res) => {
 // Error Handler
 // ============================================================================
 app.use((err, req, res, next) => {
-  console.error('Unhandled error:', err);
+  console.error("Unhandled error:", err);
   res.status(500).json({
-    error: 'Internal server error',
+    error: "Internal server error",
     message: err.message,
   });
 });
@@ -361,6 +366,7 @@ app.listen(PORT, () => {
 ```
 
 ### .env Example
+
 ```
 PORT=8000
 NEXT_PUBLIC_API_URL=http://localhost:8000
@@ -387,11 +393,13 @@ DATABASE_URL=postgresql://user:pass@localhost/dbname
 ## Python + FastAPI
 
 ### Setup
+
 ```bash
 pip install fastapi uvicorn python-multipart aiofiles aiosmtplib pydantic python-dotenv
 ```
 
 ### Complete Implementation
+
 ```python
 # backend/main.py
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query
@@ -688,6 +696,7 @@ if __name__ == "__main__":
 ```
 
 ### Run
+
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
@@ -697,11 +706,13 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ## Python + Flask
 
 ### Setup
+
 ```bash
 pip install flask flask-cors python-dotenv email-validator
 ```
 
 ### Complete Implementation
+
 ```python
 # backend/app.py
 from flask import Flask, request, jsonify
@@ -918,6 +929,7 @@ if __name__ == '__main__':
 ```
 
 ### Run
+
 ```bash
 python app.py
 ```
@@ -943,6 +955,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
 ### Build & Run
+
 ```bash
 docker build -t qcity-backend .
 docker run -p 8000:8000 qcity-backend
@@ -953,6 +966,7 @@ docker run -p 8000:8000 qcity-backend
 ## Key Implementation Notes
 
 1. **Error Handling:** All endpoints should return consistent error format:
+
    ```json
    { "error": "description", "code": "ERROR_CODE" }
    ```
@@ -963,7 +977,7 @@ docker run -p 8000:8000 qcity-backend
 
 4. **Logging:** Log all important actions (especially emergency actions)
 
-5. **Security:** 
+5. **Security:**
    - Validate file types and sizes
    - Use environment variables for secrets
    - Add rate limiting
@@ -1020,4 +1034,3 @@ curl -X POST http://localhost:8000/api/youtube/download \
 5. Test with curl or Postman
 6. Deploy to staging/production
 7. Monitor error logs and performance
-

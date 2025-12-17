@@ -1,22 +1,23 @@
 # QMOI v1.2.5 Release Verification Guide
 
 ## Overview
+
 This guide describes how to verify that all QMOI v1.2.5 release artifacts are production-ready, properly signed, and include all expected features.
 
 **Release**: v1.2.5  
 **Release ID**: 262642597  
 **Release URL**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5  
-**Status**: Published with 10 artifacts  
+**Status**: Published with 10 artifacts
 
 ## Release Artifacts
 
-| Platform | File | Size | Purpose |
-|----------|------|------|---------|
-| Android | `app-release.apk` | 10 MB | Production APK for Android devices |
-| Windows | `qmoi-release.exe` | 5.0 MB | Standalone Windows executable |
-| iOS | `qmoi-release.ipa` | 12 MB | Production IPA for iOS devices |
-| Web (PWA) | `admin.zip`, `deals.zip`, `q-alpha.zip`, `qmoi.zip`, `qmoi-ai.zip`, `qmoi-space.zip` | ~500KB each | Progressive Web Apps |
-| Verification | `SHA256SUMS.txt` | 200 bytes | Checksums for all artifacts |
+| Platform     | File                                                                                 | Size        | Purpose                            |
+| ------------ | ------------------------------------------------------------------------------------ | ----------- | ---------------------------------- |
+| Android      | `app-release.apk`                                                                    | 10 MB       | Production APK for Android devices |
+| Windows      | `qmoi-release.exe`                                                                   | 5.0 MB      | Standalone Windows executable      |
+| iOS          | `qmoi-release.ipa`                                                                   | 12 MB       | Production IPA for iOS devices     |
+| Web (PWA)    | `admin.zip`, `deals.zip`, `q-alpha.zip`, `qmoi.zip`, `qmoi-ai.zip`, `qmoi-space.zip` | ~500KB each | Progressive Web Apps               |
+| Verification | `SHA256SUMS.txt`                                                                     | 200 bytes   | Checksums for all artifacts        |
 
 ## Verification Checklist
 
@@ -25,6 +26,7 @@ This guide describes how to verify that all QMOI v1.2.5 release artifacts are pr
 **Purpose**: Ensure artifacts haven't been corrupted or tampered with during download.
 
 **Command**:
+
 ```bash
 # Download SHA256SUMS.txt from release
 curl -L https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt -o /tmp/SHA256SUMS.txt
@@ -48,15 +50,18 @@ sha256sum -c /tmp/SHA256SUMS.txt
 **Purpose**: Ensure APK is properly signed and contains all required features.
 
 **Prerequisites**:
+
 - Linux/macOS with `unzip`, `strings` commands
 - Optional: JDK (for `jarsigner`), Android SDK (for `apksigner`, `aapt`)
 
 **Command**:
+
 ```bash
 ./scripts/verify_apk.sh v1.2.5_release/app-release.apk
 ```
 
 **Full Verification (Android SDK required)**:
+
 ```bash
 # Install Android build-tools
 sudo apt-get install -y android-sdk-build-tools
@@ -73,6 +78,7 @@ cat /tmp/qmoi_decoded/AndroidManifest.xml  # (will be in binary format; view wit
 ```
 
 **Device Installation & Testing**:
+
 ```bash
 # Connect Android device via USB with ADB enabled
 adb install -r v1.2.5_release/app-release.apk
@@ -88,6 +94,7 @@ adb uninstall com.qmoi.ai  # (replace with actual package name)
 ```
 
 **Success Criteria**:
+
 - ✓ APK signature is valid (jarsigner/apksigner)
 - ✓ Archive structure is intact (unzip -t succeeds)
 - ✓ Manifest contains expected permissions and features
@@ -96,6 +103,7 @@ adb uninstall com.qmoi.ai  # (replace with actual package name)
 - ✓ App launches and shows main UI
 
 **Expected Feature Markers** (should appear in strings output):
+
 - API endpoints (https, api, REST, gRPC)
 - Authentication (login, auth, oauth, jwt)
 - AI/ML features (model, inference, ai, ml)
@@ -109,15 +117,18 @@ adb uninstall com.qmoi.ai  # (replace with actual package name)
 **Purpose**: Ensure EXE is properly signed and includes all required features.
 
 **Prerequisites**:
+
 - Windows machine (for full verification) or Linux with `osslsigncode`
 - `strings` command available
 
 **Command (Linux)**:
+
 ```bash
 ./scripts/verify_exe.sh v1.2.5_release/qmoi-release.exe
 ```
 
 **Full Verification (Windows)**:
+
 ```powershell
 # Check digital signature
 Get-AuthenticodeSignature -FilePath "v1.2.5_release/qmoi-release.exe"
@@ -127,6 +138,7 @@ Get-AuthenticodeSignature -FilePath "v1.2.5_release/qmoi-release.exe"
 ```
 
 **Installation & Testing (Windows)**:
+
 ```powershell
 # Double-click the EXE to run installer, or:
 ./qmoi-release.exe
@@ -140,6 +152,7 @@ Get-EventLog -LogName Application -Source "QMOI*" -Newest 10
 ```
 
 **Success Criteria**:
+
 - ✓ EXE signature is valid (or code-signed certificate is present)
 - ✓ File is recognized as a Windows PE executable
 - ✓ Installation completes without errors
@@ -153,15 +166,18 @@ Get-EventLog -LogName Application -Source "QMOI*" -Newest 10
 **Purpose**: Ensure IPA is properly code-signed and includes all required features.
 
 **Prerequisites**:
+
 - macOS with Xcode Command Line Tools
 - `unzip`, `openssl`, `strings` commands
 
 **Command (macOS)**:
+
 ```bash
 ./scripts/verify_ipa.sh v1.2.5_release/qmoi-release.ipa
 ```
 
 **Full Verification (macOS)**:
+
 ```bash
 # Extract IPA
 unzip -q v1.2.5_release/qmoi-release.ipa -d /tmp/qmoi_ipa
@@ -180,6 +196,7 @@ openssl asn1parse -inform DER -in "$PROV" | head -20
 ```
 
 **Device Installation & Testing (macOS with Xcode)**:
+
 ```bash
 # On simulator
 xcrun simctl install booted v1.2.5_release/qmoi-release.ipa
@@ -192,6 +209,7 @@ xcrun devicectl app install --device <device-id> v1.2.5_release/qmoi-release.ipa
 ```
 
 **Success Criteria**:
+
 - ✓ IPA is a valid ZIP archive
 - ✓ Code signature is valid (codesign)
 - ✓ Provisioning profile is embedded and valid
@@ -206,6 +224,7 @@ xcrun devicectl app install --device <device-id> v1.2.5_release/qmoi-release.ipa
 **Purpose**: Ensure PWAs are properly packaged and include service workers and manifests.
 
 **Command**:
+
 ```bash
 # Extract and inspect each PWA
 for pwa in admin.zip deals.zip q-alpha.zip qmoi.zip qmoi-ai.zip qmoi-space.zip; do
@@ -216,6 +235,7 @@ done
 ```
 
 **Success Criteria** (for each PWA):
+
 - ✓ Contains `package.json` with name, version, description
 - ✓ Contains `manifest.webmanifest` with app name, icons, start_url
 - ✓ Contains `sw.js` (service worker) for offline support
@@ -223,6 +243,7 @@ done
 - ✓ Contains HTML entry point (index.html or similar)
 
 **Expected file structure**:
+
 ```
 pwa-name.zip/
 ├── index.html
@@ -241,17 +262,17 @@ pwa-name.zip/
 
 ## Feature Verification Matrix
 
-| Feature | Android (APK) | Windows (EXE) | iOS (IPA) | PWA |
-|---------|---------------|---------------|-----------|-----|
-| Authentication (login/auth) | ✓ | ✓ | ✓ | ✓ |
-| API connectivity (https/endpoints) | ✓ | ✓ | ✓ | ✓ |
-| Wallet integration (qmoi balance) | ✓ | ✓ | ✓ | ✓ |
-| AI/ML features (models, inference) | ✓ | ✓ | ✓ | ✓ |
-| Offline support (cache/service worker) | ✓ | ✗ | ✓ | ✓ |
-| Digital signature | ✓ | ✓ | ✓ | N/A |
-| Code obfuscation | ✓ | ✓ | ✓ | N/A |
-| License validation | ✓ | ✓ | ✓ | ✓ |
-| Data encryption | ✓ | ✓ | ✓ | ✓ |
+| Feature                                | Android (APK) | Windows (EXE) | iOS (IPA) | PWA |
+| -------------------------------------- | ------------- | ------------- | --------- | --- |
+| Authentication (login/auth)            | ✓             | ✓             | ✓         | ✓   |
+| API connectivity (https/endpoints)     | ✓             | ✓             | ✓         | ✓   |
+| Wallet integration (qmoi balance)      | ✓             | ✓             | ✓         | ✓   |
+| AI/ML features (models, inference)     | ✓             | ✓             | ✓         | ✓   |
+| Offline support (cache/service worker) | ✓             | ✗             | ✓         | ✓   |
+| Digital signature                      | ✓             | ✓             | ✓         | N/A |
+| Code obfuscation                       | ✓             | ✓             | ✓         | N/A |
+| License validation                     | ✓             | ✓             | ✓         | ✓   |
+| Data encryption                        | ✓             | ✓             | ✓         | ✓   |
 
 ---
 
@@ -259,14 +280,15 @@ pwa-name.zip/
 
 All verification scripts are located in `scripts/` directory:
 
-| Script | Purpose | Requires |
-|--------|---------|----------|
-| `scripts/verify_apk.sh` | Android APK verification | jarsigner, apksigner (optional), unzip |
-| `scripts/verify_exe.sh` | Windows EXE verification | signtool or osslsigncode (optional) |
-| `scripts/verify_ipa.sh` | iOS IPA verification | unzip, plutil (macOS) |
-| `scripts/verify_artifacts.sh` | All artifacts + checksums | all above |
+| Script                        | Purpose                   | Requires                               |
+| ----------------------------- | ------------------------- | -------------------------------------- |
+| `scripts/verify_apk.sh`       | Android APK verification  | jarsigner, apksigner (optional), unzip |
+| `scripts/verify_exe.sh`       | Windows EXE verification  | signtool or osslsigncode (optional)    |
+| `scripts/verify_ipa.sh`       | iOS IPA verification      | unzip, plutil (macOS)                  |
+| `scripts/verify_artifacts.sh` | All artifacts + checksums | all above                              |
 
 **Usage**:
+
 ```bash
 # Individual verification
 ./scripts/verify_apk.sh
@@ -286,6 +308,7 @@ The verification scripts are automatically run in GitHub Actions during releases
 See: `.github/workflows/build-and-release.yml` for automated build and verification jobs.
 
 **Current pipeline**:
+
 1. **build-android**: Builds signed APK with Gradle
 2. **build-windows**: Packages Windows EXE with PyInstaller
 3. **build-ios**: Builds iOS IPA with Xcode (macOS runner)
@@ -298,26 +321,31 @@ See: `.github/workflows/build-and-release.yml` for automated build and verificat
 ## Troubleshooting
 
 ### APK Installation Failed
+
 - **Cause**: APK not signed or signature invalid
 - **Fix**: Rebuild with `./scripts/build-android-production.sh`
 - **Verify**: Run `apksigner verify --verbose app-release.apk`
 
 ### EXE Signature Invalid
+
 - **Cause**: Code signing certificate expired or not present
 - **Fix**: Sign with `signtool sign /f cert.pfx /p password qmoi-release.exe` (Windows)
 - **Verify**: Run `Get-AuthenticodeSignature qmoi-release.exe` (PowerShell)
 
 ### IPA Not Installing on Device
+
 - **Cause**: Provisioning profile mismatch or expired certificate
 - **Fix**: Rebuild with `./scripts/build-apple-production.sh` on macOS
 - **Verify**: Check entitlements with `codesign -d --entitlements - app.app`
 
 ### ZIP Archive Corrupted
+
 - **Cause**: Partial download or transfer error
 - **Fix**: Re-download and verify SHA256 checksum
 - **Verify**: Run `unzip -t` to test archive integrity
 
 ### Missing Feature Strings
+
 - **Cause**: App may have been obfuscated or strings removed
 - **Fix**: Check source code and manifest files
 - **Verify**: Run app and check logs for expected features
@@ -327,12 +355,14 @@ See: `.github/workflows/build-and-release.yml` for automated build and verificat
 ## Reporting Issues
 
 If verification fails, please:
+
 1. Run the appropriate verification script and save output
 2. Note the platform (Android/Windows/iOS)
 3. Check the build logs in GitHub Actions
 4. File an issue: https://github.com/thealphakenya/qmoi-enhanced/issues
 
 Include:
+
 - Verification script output
 - Device/OS details
 - Exact error message

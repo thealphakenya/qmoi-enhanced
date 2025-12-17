@@ -20,7 +20,7 @@ for (const r of results) {
   }
   const content = fs.readFileSync(p, "utf8");
   const hasRuntime = /export\s+const\s+runtime\s*=\s*['"]nodejs['"]/.test(
-    content
+    content,
   );
   const hasDynamic =
     /export\s+const\s+dynamic\s*=\s*['"]force-dynamic['"]/.test(content);
@@ -28,7 +28,7 @@ for (const r of results) {
     console.error(
       `Route ${r.file} missing runtime/dynamic flags` +
         (hasRuntime ? " dynamic" : "") +
-        (hasDynamic ? " runtime" : "")
+        (hasDynamic ? " runtime" : ""),
     );
     failures++;
   } else {

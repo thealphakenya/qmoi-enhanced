@@ -5,6 +5,7 @@ last_updated: 2025-11-15
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -59,13 +60,13 @@ This document provides a comprehensive guide for distributing QMOI applications 
 
 #### Tester Groups
 
-| Group | Purpose | Size | Skills | Recruitment |
-|-------|---------|------|--------|-------------|
-| **Internal QA** | Regression, core features, compatibility | 3-5 | Technical | HR/Team |
-| **Product Team** | Feature validation, UX/UI feedback | 2-3 | Medium | Direct invite |
-| **Early Adopters** | Real-world usage, edge cases | 10-20 | Mixed | Community/Beta group |
-| **Accessibility** | WCAG compliance, assistive tech | 2-3 | Technical + accessible | Community/Accessibility org |
-| **Performance** | Performance baseline, optimization | 2-3 | Technical | Team specialists |
+| Group              | Purpose                                  | Size  | Skills                 | Recruitment                 |
+| ------------------ | ---------------------------------------- | ----- | ---------------------- | --------------------------- |
+| **Internal QA**    | Regression, core features, compatibility | 3-5   | Technical              | HR/Team                     |
+| **Product Team**   | Feature validation, UX/UI feedback       | 2-3   | Medium                 | Direct invite               |
+| **Early Adopters** | Real-world usage, edge cases             | 10-20 | Mixed                  | Community/Beta group        |
+| **Accessibility**  | WCAG compliance, assistive tech          | 2-3   | Technical + accessible | Community/Accessibility org |
+| **Performance**    | Performance baseline, optimization       | 2-3   | Technical              | Team specialists            |
 
 #### Tester Recruitment Email Template
 
@@ -147,6 +148,7 @@ Consent:
 **Step-by-Step:**
 
 1. **Upload to Play Console**
+
    ```
    1. Go to Google Play Console (play.google.com/console)
    2. Select app: QMOI AI
@@ -157,6 +159,7 @@ Consent:
    ```
 
 2. **Add Testers**
+
    ```
    Testers → [Internal testing track]
    → Add testers via Google Account email addresses
@@ -164,6 +167,7 @@ Consent:
    ```
 
 3. **Testers Install**
+
    ```
    1. Receive email invitation
    2. Click link to join testing program
@@ -186,6 +190,7 @@ Consent:
 **Step-by-Step:**
 
 1. **Enable Firebase**
+
    ```bash
    # Install Firebase CLI
    npm install -g firebase-tools
@@ -194,6 +199,7 @@ Consent:
    ```
 
 2. **Upload APK**
+
    ```bash
    firebase appdistribution:distribute qmoi_ai.apk \
      --app=1:123456789:android:abcdef123456 \
@@ -208,7 +214,8 @@ Consent:
    3. Tap "INSTALL" next to QMOI AI
    ```
 
-**Benefits:** 
+**Benefits:**
+
 - Real-time crash reporting
 - Easy build distribution
 - Centralized feedback
@@ -220,11 +227,13 @@ Consent:
 **For Internal/Trusted Testers Only**
 
 1. **Download APK Link**
+
    ```
    File share link: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.apk
    ```
 
 2. **Installation**
+
    ```bash
    # Via email / download link
    adb install qmoi_ai.apk
@@ -239,14 +248,14 @@ Consent:
 
 #### Android Distribution Timeline
 
-| Day | Activity | Status |
-|-----|----------|--------|
-| **Day 1** | Upload to Play Console | [ ] |
-| **Day 2** | Add internal testers (5-10) | [ ] |
-| **Day 3-5** | Testers install and use app | [ ] |
-| **Day 5** | Collect feedback | [ ] |
-| **Day 6-7** | Fix critical bugs (if any) | [ ] |
-| **Day 8** | Escalate to 10% production rollout | [ ] |
+| Day         | Activity                           | Status |
+| ----------- | ---------------------------------- | ------ |
+| **Day 1**   | Upload to Play Console             | [ ]    |
+| **Day 2**   | Add internal testers (5-10)        | [ ]    |
+| **Day 3-5** | Testers install and use app        | [ ]    |
+| **Day 5**   | Collect feedback                   | [ ]    |
+| **Day 6-7** | Fix critical bugs (if any)         | [ ]    |
+| **Day 8**   | Escalate to 10% production rollout | [ ]    |
 
 ---
 
@@ -257,6 +266,7 @@ Consent:
 **Step-by-Step:**
 
 1. **Upload Build to App Store Connect**
+
    ```
    1. In Xcode: Product → Archive
    2. Click "Distribute App"
@@ -266,6 +276,7 @@ Consent:
    ```
 
    **CLI Alternative:**
+
    ```bash
    xcrun altool --upload-app \
      --file qmoi_ai.ipa \
@@ -275,6 +286,7 @@ Consent:
    ```
 
 2. **Process Build in App Store Connect**
+
    ```
    1. Go to App Store Connect → TestFlight
    2. Wait for processing (usually < 5 minutes)
@@ -282,6 +294,7 @@ Consent:
    ```
 
 3. **Add Internal Testers**
+
    ```
    1. TestFlight → Testers → Internal Testing
    2. Add app team members (automatically included)
@@ -289,6 +302,7 @@ Consent:
    ```
 
 4. **Add External Testers**
+
    ```
    1. TestFlight → External Testing group
    2. Add tester email addresses
@@ -297,6 +311,7 @@ Consent:
    ```
 
 5. **Testers Install**
+
    ```
    1. Receive email: "You're invited to test QMOI AI"
    2. Click TestFlight link or search "TestFlight" on App Store
@@ -318,16 +333,16 @@ Consent:
 
 #### iOS Distribution Timeline
 
-| Day | Activity | Status |
-|-----|----------|--------|
-| **Day 1** | Archive and upload IPA | [ ] |
-| **Day 1-2** | Apple processes build | [ ] |
-| **Day 2** | Add internal testers | [ ] |
-| **Day 2** | Send external tester invitations | [ ] |
-| **Day 3-7** | Testers install and use app | [ ] |
-| **Day 7** | Collect feedback | [ ] |
-| **Day 8** | Fix critical bugs (if any) | [ ] |
-| **Day 9** | Submit for App Store review | [ ] |
+| Day         | Activity                         | Status |
+| ----------- | -------------------------------- | ------ |
+| **Day 1**   | Archive and upload IPA           | [ ]    |
+| **Day 1-2** | Apple processes build            | [ ]    |
+| **Day 2**   | Add internal testers             | [ ]    |
+| **Day 2**   | Send external tester invitations | [ ]    |
+| **Day 3-7** | Testers install and use app      | [ ]    |
+| **Day 7**   | Collect feedback                 | [ ]    |
+| **Day 8**   | Fix critical bugs (if any)       | [ ]    |
+| **Day 9**   | Submit for App Store review      | [ ]    |
 
 ---
 
@@ -336,6 +351,7 @@ Consent:
 #### Direct Distribution via Download Link
 
 1. **Host EXE on Download Server**
+
    ```
    URL: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.exe
    Size: ~5 MB
@@ -343,6 +359,7 @@ Consent:
    ```
 
 2. **Send to Testers**
+
    ```
    Email with download link:
    "Here's the Windows v1.2.3 beta: [link]
@@ -351,6 +368,7 @@ Consent:
    ```
 
 3. **Testers Install**
+
    ```
    1. Download qmoi_ai_v1.2.3.exe
    2. Run installer
@@ -366,14 +384,14 @@ Consent:
 
 #### Windows Distribution Timeline
 
-| Day | Activity | Status |
-|-----|----------|--------|
-| **Day 1** | Upload EXE to download server | [ ] |
-| **Day 1** | Send link to 5-10 testers | [ ] |
-| **Day 2-6** | Testers install and use | [ ] |
-| **Day 6** | Collect feedback | [ ] |
-| **Day 7** | Fix issues (if any) | [ ] |
-| **Day 8** | Publish to production | [ ] |
+| Day         | Activity                      | Status |
+| ----------- | ----------------------------- | ------ |
+| **Day 1**   | Upload EXE to download server | [ ]    |
+| **Day 1**   | Send link to 5-10 testers     | [ ]    |
+| **Day 2-6** | Testers install and use       | [ ]    |
+| **Day 6**   | Collect feedback              | [ ]    |
+| **Day 7**   | Fix issues (if any)           | [ ]    |
+| **Day 8**   | Publish to production         | [ ]    |
 
 ---
 
@@ -382,6 +400,7 @@ Consent:
 #### DMG Download Link
 
 1. **Host DMG on Download Server**
+
    ```
    URL: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.dmg
    Size: ~8 MB
@@ -389,12 +408,14 @@ Consent:
    ```
 
 2. **Send to Testers**
+
    ```
    "Download and mount the DMG, then drag the app to Applications.
     Test core features and report issues to qmoi-team@example.com"
    ```
 
 3. **Testers Install**
+
    ```
    1. Download qmoi_ai_v1.2.3.dmg
    2. Double-click to mount
@@ -410,13 +431,13 @@ Consent:
 
 #### macOS Distribution Timeline
 
-| Day | Activity | Status |
-|-----|----------|--------|
-| **Day 1** | Upload DMG to server | [ ] |
-| **Day 1** | Send to 3-5 macOS testers | [ ] |
-| **Day 2-6** | Test on Intel and Apple Silicon | [ ] |
-| **Day 6** | Collect feedback | [ ] |
-| **Day 7** | Publish to production | [ ] |
+| Day         | Activity                        | Status |
+| ----------- | ------------------------------- | ------ |
+| **Day 1**   | Upload DMG to server            | [ ]    |
+| **Day 1**   | Send to 3-5 macOS testers       | [ ]    |
+| **Day 2-6** | Test on Intel and Apple Silicon | [ ]    |
+| **Day 6**   | Collect feedback                | [ ]    |
+| **Day 7**   | Publish to production           | [ ]    |
 
 ---
 
@@ -425,12 +446,14 @@ Consent:
 #### AppImage & DEB Distribution
 
 1. **Host Binaries**
+
    ```
    AppImage: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.AppImage
    DEB: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.deb
    ```
 
 2. **Send to Testers**
+
    ```
    "Test either AppImage or DEB on your Linux system.
     AppImage: chmod +x and run ./qmoi_ai_v1.2.3.AppImage
@@ -438,11 +461,12 @@ Consent:
    ```
 
 3. **Testers Install**
+
    ```
    # AppImage
    chmod +x qmoi_ai_v1.2.3.AppImage
    ./qmoi_ai_v1.2.3.AppImage
-   
+
    # DEB
    sudo apt install ./qmoi_ai_v1.2.3.deb
    qmoi_ai  # or use application menu
@@ -455,13 +479,13 @@ Consent:
 
 #### Linux Distribution Timeline
 
-| Day | Activity | Status |
-|-----|----------|--------|
-| **Day 1** | Upload AppImage and DEB | [ ] |
-| **Day 1** | Send to Linux testers | [ ] |
-| **Day 2-6** | Test on Ubuntu, Debian, Fedora | [ ] |
-| **Day 6** | Collect feedback | [ ] |
-| **Day 7** | Publish to production | [ ] |
+| Day         | Activity                       | Status |
+| ----------- | ------------------------------ | ------ |
+| **Day 1**   | Upload AppImage and DEB        | [ ]    |
+| **Day 1**   | Send to Linux testers          | [ ]    |
+| **Day 2-6** | Test on Ubuntu, Debian, Fedora | [ ]    |
+| **Day 6**   | Collect feedback               | [ ]    |
+| **Day 7**   | Publish to production          | [ ]    |
 
 ---
 
@@ -470,12 +494,14 @@ Consent:
 #### Staging Environment
 
 1. **Deploy to Staging**
+
    ```
    URL: https://staging.qmoi.app
    or: https://github-pages-preview.qmoi.app
    ```
 
 2. **Send Tester Link**
+
    ```
    "Test the new QMOI v1.2.3 at: https://staging.qmoi.app
     Use test account:
@@ -485,6 +511,7 @@ Consent:
    ```
 
 3. **Testers Access**
+
    ```
    1. Open link in web browser
    2. Login with test credentials
@@ -502,13 +529,13 @@ Consent:
 
 #### Web & PWA Distribution Timeline
 
-| Day | Activity | Status |
-|-----|----------|--------|
-| **Day 1** | Deploy to staging | [ ] |
-| **Day 1-2** | Send tester access info | [ ] |
-| **Day 2-7** | Testers access and use | [ ] |
-| **Day 7** | Collect feedback | [ ] |
-| **Day 8** | Deploy to production | [ ] |
+| Day         | Activity                | Status |
+| ----------- | ----------------------- | ------ |
+| **Day 1**   | Deploy to staging       | [ ]    |
+| **Day 1-2** | Send tester access info | [ ]    |
+| **Day 2-7** | Testers access and use  | [ ]    |
+| **Day 7**   | Collect feedback        | [ ]    |
+| **Day 8**   | Deploy to production    | [ ]    |
 
 ---
 
@@ -567,10 +594,10 @@ Thank you for being part of our beta testing community!
 Appendix A: COMMON ISSUES & TROUBLESHOOTING
 - Issue: App won't install
   Solution: Ensure you have free space and proper permissions
-  
+
 - Issue: Crash on launch
   Solution: Uninstall previous version completely first
-  
+
 - Issue: Feature not working
   Solution: Try force-closing and reopening the app
 
@@ -581,18 +608,21 @@ Appendix A: COMMON ISSUES & TROUBLESHOOTING
 ### 3.2 Feedback Collection Channels
 
 #### Channel 1: In-App Feedback (TestFlight/Firebase)
+
 - **How:** Tap "Send Feedback" button in app
 - **What's collected:** App screenshot, device info, feedback text
 - **Destination:** Firebase Console / App Store Connect
 - **Best for:** Quick feedback with context
 
 #### Channel 2: Email Feedback
+
 - **Address:** qmoi-team@example.com
 - **What to include:** Device, OS, reproducible steps, screenshot
 - **Response time:** < 24 hours
 - **Best for:** Complex issues or detailed feedback
 
 #### Channel 3: Structured Feedback Form (Google Form)
+
 ```
 QMOI v1.2.3 Beta Feedback Survey
 https://forms.gle/qmoi-beta-feedback
@@ -606,6 +636,7 @@ Sections:
 ```
 
 #### Channel 4: Slack Channel (Internal Testers)
+
 - **Channel:** #qmoi-v1-2-3-beta
 - **Members:** QA team, product team, early adopters
 - **Use:** Real-time discussion, quick issues, collaboration
@@ -673,12 +704,12 @@ Notify Tester (issue status)
 
 #### Severity Assessment
 
-| Severity | Criteria | Response | Action |
-|----------|----------|----------|--------|
-| **Critical** | App crashes, data loss, total feature break | < 1 hour | Fix immediately, deploy hotfix beta |
-| **High** | Feature significantly broken, major performance issue | < 4 hours | Prioritize fix for production release |
-| **Medium** | Feature partially broken, minor performance issue | < 1 day | Schedule fix for next release |
-| **Low** | UI glitch, typo, minor issue | < 1 week | Add to backlog for future release |
+| Severity     | Criteria                                              | Response  | Action                                |
+| ------------ | ----------------------------------------------------- | --------- | ------------------------------------- |
+| **Critical** | App crashes, data loss, total feature break           | < 1 hour  | Fix immediately, deploy hotfix beta   |
+| **High**     | Feature significantly broken, major performance issue | < 4 hours | Prioritize fix for production release |
+| **Medium**   | Feature partially broken, minor performance issue     | < 1 day   | Schedule fix for next release         |
+| **Low**      | UI glitch, typo, minor issue                          | < 1 week  | Add to backlog for future release     |
 
 ### 4.2 Daily Feedback Report
 
@@ -901,10 +932,11 @@ Thanks for making QMOI better!
 ### 6.3 Tester Recognition
 
 **In Release Notes:**
+
 ```markdown
 ## Thanks to Our Beta Testers
 
-Special thanks to the following beta testers who helped identify 
+Special thanks to the following beta testers who helped identify
 and fix issues in v1.2.3:
 
 - [Tester 1]

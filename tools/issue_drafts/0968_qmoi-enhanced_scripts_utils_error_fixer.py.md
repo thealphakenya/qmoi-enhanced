@@ -34,13 +34,13 @@ class ErrorFixer:
         self.fixes = []
         self.error_log_path = "logs/errors.log"
         self.error_readme_path = "ERRORSREADME.md"
-        
+
         # Create logs directory if it doesn't exist
         os.makedirs("logs", exist_ok=True)
-        
+
         # Setup logging
         self.setup_logging()
-    
+
     def setup_logging(self):
         """Setup logging configuration."""
         logging.basicConfig(
@@ -51,29 +51,29 @@ class ErrorFixer:
                 logging.StreamHandler(sys.stdout)
             ]
         )
-    
+
     def scan_for_errors(self):
         """Scan the codebase for errors."""
         self.logger.info("Starting error scan...")
-        
+
         # Check Python files
         self.scan_python_files()
-        
+
         # Check configuration files
         self.scan_config_files()
-        
+
         # Check network connectivity
         self.check_network_connectivity()
-        
+
         # Check system resources
         self.check_system_resources()
-        
+
         # Check file permissions
         self.check_file_permissions()
-        
+
         self.logger.info(f"Found {len(self.errors)} errors")
         return self.errors
-    
+
     def scan_python_files(self):
         """Scan Python files for errors."""
         for root, _, files in os.walk("."):
@@ -84,8 +84,8 @@ class ErrorFixer:
                         # Check syntax
                         with open(file_path, "r") as f:
                             compile(f.read(), file_path, "exec")
-                        
-             
+
+
 ```
 
 Notes:

@@ -186,7 +186,7 @@ export default function BiometricAuth({
 }: BiometricAuthProps) {
   const [activeTab, setActiveTab] = useState("login");
   const [authMethod, setAuthMethod] = useState<"traditional" | "biometric">(
-    "traditional"
+    "traditional",
   );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -227,7 +227,7 @@ export default function BiometricAuth({
   const [multiInterfaceAuth, setMultiInterfaceAuth] = useState(false);
   const [interfaceSync, setInterfaceSync] = useState(false);
   const [masterRequests, setMasterRequests] = useState<MasterControlRequest[]>(
-    []
+    [],
   );
   const [activeInterfaces, setActiveInterfaces] = useState<string[]>([]);
 
@@ -238,10 +238,10 @@ export default function BiometricAuth({
   const [riskManagement, setRiskManagement] = useState(false);
   const [revenueIdeas, setRevenueIdeas] = useState<RevenueStrategy[]>([]);
   const [paymentHistory, setPaymentHistory] = useState<PaymentConfirmation[]>(
-    []
+    [],
   );
   const [financialReports, setFinancialReports] = useState<FinancialReport[]>(
-    []
+    [],
   );
 
   // AI and automation features
@@ -410,7 +410,7 @@ export default function BiometricAuth({
     try {
       const updatedStrategy = { ...strategy, status: "implementing" as const };
       setRevenueIdeas((prev) =>
-        prev.map((s) => (s.id === strategy.id ? updatedStrategy : s))
+        prev.map((s) => (s.id === strategy.id ? updatedStrategy : s)),
       );
 
       // Simulate implementation
@@ -421,11 +421,11 @@ export default function BiometricAuth({
         status: "active" as const,
       };
       setRevenueIdeas((prev) =>
-        prev.map((s) => (s.id === strategy.id ? completedStrategy : s))
+        prev.map((s) => (s.id === strategy.id ? completedStrategy : s)),
       );
 
       setSuccess(
-        `Revenue strategy "${strategy.description}" implemented successfully`
+        `Revenue strategy "${strategy.description}" implemented successfully`,
       );
       addAuditLog("revenue_implementation", "success", strategy.type);
     } catch (err) {
@@ -486,7 +486,7 @@ export default function BiometricAuth({
       // Update last used timestamp
       const updatedBiometric = { ...biometric, lastUsed: new Date() };
       setSavedBiometrics((prev) =>
-        prev.map((b) => (b.id === biometric.id ? updatedBiometric : b))
+        prev.map((b) => (b.id === biometric.id ? updatedBiometric : b)),
       );
 
       const userData = {
@@ -679,7 +679,7 @@ export default function BiometricAuth({
 
   const toggleBiometric = (id: string) => {
     setSavedBiometrics((prev) =>
-      prev.map((b) => (b.id === id ? { ...b, isActive: !b.isActive } : b))
+      prev.map((b) => (b.id === id ? { ...b, isActive: !b.isActive } : b)),
     );
   };
 

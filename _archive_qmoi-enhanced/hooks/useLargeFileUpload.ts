@@ -2,7 +2,9 @@ import { useState } from "react";
 
 export function useLargeFileUpload() {
   const [progress, setProgress] = useState(0);
-  const [status, setStatus] = useState<"idle"|"uploading"|"success"|"error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "uploading" | "success" | "error"
+  >("idle");
   const [error, setError] = useState<string | null>(null);
 
   // Simulate chunked upload (replace with real API)

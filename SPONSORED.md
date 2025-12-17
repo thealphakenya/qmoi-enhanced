@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -19,38 +20,43 @@ This file lists users that QMOI should treat as "sponsored" — they should not 
 Format: one username per line. The `qmoi_control_server.py` exposes endpoints to add/view sponsored users (`/sponsored/add`, `/sponsored/list`).
 
 Master and immediate family (example):
+
 - master
 - sister
 
 # How to modify
+
 - Use the `POST /sponsored/add` endpoint as the master user or using the `QMOI_CONTROL_TOKEN`.
 
-***
+---
+
 Generated on 2025-10-23 by automation.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "SPONSORED.md",
-  "validated_at": "2025-10-26T20:51:22.637574Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Sponsored Users"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "SPONSORED.md",
+"validated_at": "2025-10-26T20:51:22.637574Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Sponsored Users"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

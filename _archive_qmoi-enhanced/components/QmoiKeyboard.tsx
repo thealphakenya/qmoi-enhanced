@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useMaster } from './MasterContext';
-import { FaBrain, FaLanguage, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from "react";
+import { useMaster } from "./MasterContext";
+import { FaBrain, FaLanguage, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
 interface QmoiKeyboardProps {
   isVisible: boolean;
   onTextChange: (text: string) => void;
   onSend?: () => void;
-  language?: 'en' | 'sw';
-  theme?: 'light' | 'dark' | 'auto';
+  language?: "en" | "sw";
+  theme?: "light" | "dark" | "auto";
 }
 
 interface KeyboardLayout {
@@ -18,19 +18,19 @@ interface KeyboardLayout {
 interface Prediction {
   word: string;
   confidence: number;
-  language: 'en' | 'sw';
+  language: "en" | "sw";
 }
 
 export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   isVisible,
   onTextChange,
   onSend,
-  language = 'en',
-  theme = 'auto'
+  language = "en",
+  theme = "auto",
 }) => {
   const { isMaster } = useMaster();
-  
-  const [currentText, setCurrentText] = useState('');
+
+  const [currentText, setCurrentText] = useState("");
   const [predictions, setPredictions] = useState<Prediction[]>([]);
   const [isListening, setIsListening] = useState(false);
   const [isAILearning, setIsAILearning] = useState(true);
@@ -43,43 +43,92 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
 
   const keyboardLayouts: KeyboardLayout = {
     en: [
-      ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-      ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-      ['z', 'x', 'c', 'v', 'b', 'n', 'm', '⌫'],
-      ['123', '🌐', '🎤', 'space', '↵']
+      ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+      ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+      ["z", "x", "c", "v", "b", "n", "m", "⌫"],
+      ["123", "🌐", "🎤", "space", "↵"],
     ],
     sw: [
-      ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-      ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-      ['z', 'x', 'c', 'v', 'b', 'n', 'm', '⌫'],
-      ['123', '🌐', '🎤', 'space', '↵']
-    ]
+      ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+      ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+      ["z", "x", "c", "v", "b", "n", "m", "⌫"],
+      ["123", "🌐", "🎤", "space", "↵"],
+    ],
   };
 
   const swahiliWords = [
-    'jambo', 'asante', 'karibu', 'hakuna', 'matata', 'sana', 'mzuri', 'nzuri',
-    'habari', 'gani', 'nzuri', 'safi', 'poa', 'sawa', 'hakuna', 'shida',
-    'tafadhali', 'samahani', 'pole', 'nina', 'wewe', 'sisi', 'nyinyi', 'wao',
-    'mimi', 'yeye', 'sisi', 'nyinyi', 'wao', 'hii', 'hizi', 'huyu', 'hawa'
+    "jambo",
+    "asante",
+    "karibu",
+    "hakuna",
+    "matata",
+    "sana",
+    "mzuri",
+    "nzuri",
+    "habari",
+    "gani",
+    "nzuri",
+    "safi",
+    "poa",
+    "sawa",
+    "hakuna",
+    "shida",
+    "tafadhali",
+    "samahani",
+    "pole",
+    "nina",
+    "wewe",
+    "sisi",
+    "nyinyi",
+    "wao",
+    "mimi",
+    "yeye",
+    "sisi",
+    "nyinyi",
+    "wao",
+    "hii",
+    "hizi",
+    "huyu",
+    "hawa",
   ];
 
   const englishWords = [
-    'hello', 'world', 'good', 'morning', 'afternoon', 'evening', 'night',
-    'thank', 'you', 'please', 'sorry', 'excuse', 'me', 'how', 'are',
-    'fine', 'well', 'bad', 'great', 'excellent', 'wonderful', 'amazing'
+    "hello",
+    "world",
+    "good",
+    "morning",
+    "afternoon",
+    "evening",
+    "night",
+    "thank",
+    "you",
+    "please",
+    "sorry",
+    "excuse",
+    "me",
+    "how",
+    "are",
+    "fine",
+    "well",
+    "bad",
+    "great",
+    "excellent",
+    "wonderful",
+    "amazing",
   ];
 
   useEffect(() => {
     // Initialize speech recognition
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = true;
       recognitionRef.current.interimResults = true;
-      recognitionRef.current.lang = language === 'sw' ? 'sw-KE' : 'en-US';
-      
+      recognitionRef.current.lang = language === "sw" ? "sw-KE" : "en-US";
+
       recognitionRef.current.onresult = (event: any) => {
-        let finalTranscript = '';
+        let finalTranscript = "";
         for (let i = event.resultIndex; i < event.results.length; i++) {
           if (event.results[i].isFinal) {
             finalTranscript += event.results[i][0].transcript;
@@ -89,9 +138,9 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
           handleVoiceInput(finalTranscript);
         }
       };
-      
+
       recognitionRef.current.onerror = (event: any) => {
-        console.error('Speech recognition error:', event.error);
+        console.error("Speech recognition error:", event.error);
         setIsListening(false);
       };
     }
@@ -108,76 +157,79 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
     // AI analyzes typing patterns and learns user preferences
     const words = text.toLowerCase().split(/\s+/);
     const wordFrequency: Record<string, number> = {};
-    
-    words.forEach(word => {
+
+    words.forEach((word) => {
       wordFrequency[word] = (wordFrequency[word] || 0) + 1;
     });
-    
+
     // Store learning data
-    localStorage.setItem('qmoi-keyboard-learning', JSON.stringify({
-      wordFrequency,
-      language,
-      timestamp: Date.now()
-    }));
+    localStorage.setItem(
+      "qmoi-keyboard-learning",
+      JSON.stringify({
+        wordFrequency,
+        language,
+        timestamp: Date.now(),
+      }),
+    );
   };
 
   const generatePredictions = (input: string): Prediction[] => {
     const predictions: Prediction[] = [];
-    const words = language === 'sw' ? swahiliWords : englishWords;
-    
+    const words = language === "sw" ? swahiliWords : englishWords;
+
     if (input.length > 0) {
-      const matchingWords = words.filter(word => 
-        word.toLowerCase().startsWith(input.toLowerCase())
+      const matchingWords = words.filter((word) =>
+        word.toLowerCase().startsWith(input.toLowerCase()),
       );
-      
-      matchingWords.slice(0, 5).forEach(word => {
+
+      matchingWords.slice(0, 5).forEach((word) => {
         predictions.push({
           word,
           confidence: Math.random() * 0.5 + 0.5, // 0.5 to 1.0
-          language: language as 'en' | 'sw'
+          language: language as "en" | "sw",
         });
       });
     }
-    
+
     return predictions.sort((a, b) => b.confidence - a.confidence);
   };
 
   const handleKeyPress = (key: string) => {
     let newText = currentText;
-    
+
     switch (key) {
-      case '⌫':
+      case "⌫":
         newText = currentText.slice(0, -1);
         break;
-      case 'space':
-        newText = currentText + ' ';
+      case "space":
+        newText = currentText + " ";
         break;
-      case '↵':
+      case "↵":
         if (onSend) onSend();
         return;
-      case '🌐':
+      case "🌐":
         setSwahiliMode(!swahiliMode);
         return;
-      case '🎤':
+      case "🎤":
         toggleVoiceInput();
         return;
-      case '123':
+      case "123":
         // Toggle to numbers/symbols
         return;
       default:
         newText = currentText + key;
     }
-    
+
     setCurrentText(newText);
     onTextChange(newText);
-    
+
     // Generate predictions
-    const newPredictions = generatePredictions(newText.split(' ').pop() || '');
+    const newPredictions = generatePredictions(newText.split(" ").pop() || "");
     setPredictions(newPredictions);
   };
 
   const handleVoiceInput = (transcript: string) => {
-    const newText = currentText + ' ' + transcript;
+    const newText = currentText + " " + transcript;
     setCurrentText(newText);
     onTextChange(newText);
     setIsListening(false);
@@ -185,7 +237,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
 
   const toggleVoiceInput = () => {
     if (!recognitionRef.current) return;
-    
+
     if (isListening) {
       recognitionRef.current.stop();
       setIsListening(false);
@@ -196,28 +248,30 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   };
 
   const selectPrediction = (prediction: Prediction) => {
-    const words = currentText.split(' ');
+    const words = currentText.split(" ");
     words[words.length - 1] = prediction.word;
-    const newText = words.join(' ') + ' ';
-    
+    const newText = words.join(" ") + " ";
+
     setCurrentText(newText);
     onTextChange(newText);
     setPredictions([]);
   };
 
   const getThemeClass = () => {
-    if (theme === 'auto') {
-      return 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100';
+    if (theme === "auto") {
+      return "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100";
     }
-    return theme === 'dark' 
-      ? 'bg-gray-800 text-gray-100' 
-      : 'bg-gray-100 text-gray-900';
+    return theme === "dark"
+      ? "bg-gray-800 text-gray-100"
+      : "bg-gray-100 text-gray-900";
   };
 
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed bottom-0 left-0 right-0 z-50 ${getThemeClass()} border-t`}>
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-50 ${getThemeClass()} border-t`}
+    >
       {/* Predictions Bar */}
       {predictions.length > 0 && (
         <div className="flex gap-2 p-2 overflow-x-auto bg-white dark:bg-gray-700 border-b">
@@ -242,7 +296,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
             setCurrentText(e.target.value);
             onTextChange(e.target.value);
           }}
-          placeholder={language === 'sw' ? 'Andika hapa...' : 'Type here...'}
+          placeholder={language === "sw" ? "Andika hapa..." : "Type here..."}
           className="w-full p-2 border rounded resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           rows={2}
         />
@@ -258,14 +312,14 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
                 onClick={() => handleKeyPress(key)}
                 className={`
                   flex-1 h-12 rounded-lg font-medium text-sm
-                  ${key === 'space' ? 'flex-[3]' : ''}
-                  ${key === '⌫' || key === '↵' ? 'bg-red-500 text-white' : 'bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-gray-100'}
-                  ${key === '🌐' && swahiliMode ? 'bg-green-500 text-white' : ''}
-                  ${key === '🎤' && isListening ? 'bg-red-500 text-white' : ''}
+                  ${key === "space" ? "flex-[3]" : ""}
+                  ${key === "⌫" || key === "↵" ? "bg-red-500 text-white" : "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-gray-100"}
+                  ${key === "🌐" && swahiliMode ? "bg-green-500 text-white" : ""}
+                  ${key === "🎤" && isListening ? "bg-red-500 text-white" : ""}
                   hover:bg-gray-300 dark:hover:bg-gray-500
                 `}
               >
-                {key === '🌐' ? (swahiliMode ? '🇹🇿' : '🌐') : key}
+                {key === "🌐" ? (swahiliMode ? "🇹🇿" : "🌐") : key}
               </button>
             ))}
           </div>
@@ -275,18 +329,28 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       {/* AI Status Bar */}
       <div className="flex items-center justify-between p-2 bg-gray-50 dark:bg-gray-900 text-xs">
         <div className="flex items-center gap-2">
-          {React.createElement(FaBrain as React.ElementType, { className: `${isAILearning ? 'text-green-500' : 'text-gray-400'}` })}
-          <span>{isAILearning ? 'AI Learning' : 'AI Idle'}</span>
+          {React.createElement(FaBrain as React.ElementType, {
+            className: `${isAILearning ? "text-green-500" : "text-gray-400"}`,
+          })}
+          <span>{isAILearning ? "AI Learning" : "AI Idle"}</span>
         </div>
-        
+
         <div className="flex items-center gap-2">
-          {React.createElement(FaLanguage as React.ElementType, { className: `${swahiliMode ? 'text-blue-500' : 'text-gray-400'}` })}
-          <span>{swahiliMode ? 'Kiswahili' : 'English'}</span>
+          {React.createElement(FaLanguage as React.ElementType, {
+            className: `${swahiliMode ? "text-blue-500" : "text-gray-400"}`,
+          })}
+          <span>{swahiliMode ? "Kiswahili" : "English"}</span>
         </div>
-        
+
         <div className="flex items-center gap-2">
-          {voiceEnabled ? React.createElement(FaVolumeUp as React.ElementType, { className: 'text-green-500' }) : React.createElement(FaVolumeMute as React.ElementType, { className: 'text-gray-400' })}
-          <span>{isListening ? 'Listening...' : 'Voice'}</span>
+          {voiceEnabled
+            ? React.createElement(FaVolumeUp as React.ElementType, {
+                className: "text-green-500",
+              })
+            : React.createElement(FaVolumeMute as React.ElementType, {
+                className: "text-gray-400",
+              })}
+          <span>{isListening ? "Listening..." : "Voice"}</span>
         </div>
       </div>
 
@@ -303,7 +367,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
               />
               AI Learning
             </label>
-            
+
             <label className="flex items-center gap-1">
               <input
                 type="checkbox"
@@ -313,7 +377,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
               />
               Auto Correct
             </label>
-            
+
             <label className="flex items-center gap-1">
               <input
                 type="checkbox"
@@ -328,4 +392,4 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       )}
     </div>
   );
-}; 
+};

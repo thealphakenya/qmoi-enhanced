@@ -62,7 +62,7 @@ class FakeHeaders {
   res = requireApiKey(headers);
   assert(
     !res.ok && res.response?.status === 401,
-    "Invalid key should be rejected with 401"
+    "Invalid key should be rejected with 401",
   );
   console.log("All requireApiKey smoke tests passed.");
   process.exit(0);

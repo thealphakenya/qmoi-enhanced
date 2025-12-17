@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     if (!r)
       return NextResponse.json(
         { error: "Unknown auth error" },
-        { status: 500 }
+        { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
   }
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
       const logFiles = await fs.readdir(logsDir);
 
       const autoFixLogs = logFiles.filter(
-        (file) => file.includes("qmoi_auto_fix") && file.endsWith(".log")
+        (file) => file.includes("qmoi_auto_fix") && file.endsWith(".log"),
       );
 
       if (autoFixLogs.length > 0) {
@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
     console.error("Error getting GitHub status:", error);
     return NextResponse.json(
       { error: "Failed to get GitHub status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

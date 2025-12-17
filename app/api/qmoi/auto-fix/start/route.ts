@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       if (!r)
         return NextResponse.json(
           { error: "Unknown auth error" },
-          { status: 500 }
+          { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
     }
@@ -23,13 +23,13 @@ export async function POST(request: NextRequest) {
     const scriptPath = path.join(
       process.cwd(),
       "scripts",
-      "qmoi_auto_fix_enhanced.py"
+      "qmoi_auto_fix_enhanced.py",
     );
 
     if (!fs.existsSync(scriptPath)) {
       return NextResponse.json(
         { error: "Auto-fix script not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
 
     child.stdout.on("data", (d) => console.log("[auto-fix]", d.toString()));
     child.stderr.on("data", (d) =>
-      console.error("[auto-fix][err]", d.toString())
+      console.error("[auto-fix][err]", d.toString()),
     );
 
     return NextResponse.json({
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
     console.error("Error starting auto-fix process:", error);
     return NextResponse.json(
       { error: "Failed to start auto-fix process" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

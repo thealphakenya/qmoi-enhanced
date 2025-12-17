@@ -1,0 +1,75 @@
+name: CI / Build / Publish
+
+on:
+  push:
+    branches: [main, autosync-backup-20250926-232440]
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+      - name: Install
+        run: npm ci
+      - name: Run tests
+        run: npx jest --config=jest.config.cjs -i --runInBand --colors --verbose
+      - name: Run coverage (do not fail job for thresholds)
+        run: |
+          set -o pipefail
+          # Run coverage but don't fail the job if thresholds are not met (we still upload it)
+          npx jest --config=jest.config.cjs --coverage --coverageDirectory=coverage -i --runInBand --colors --verbose || true
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage
+      - name: Upload coverage to Codecov
+        if: ${{ secrets.CODECOV_TOKEN != '' }}
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/**/lcov.info
+      - name: Build
+        run: npm run ci:build
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+          platforms: linux/amd64
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: ${{ secrets.DEPLOY_HOST && secrets.DEPLOY_USER && secrets.DEPLOY_SSH_KEY }}
+    steps:
+      - name: Deploy to host via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          script: |
+            set -euo pipefail
+            docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
+            pm2 stop qmoi-next || true
+            pm2 delete qmoi-next || true
+            pm2 start ecosystem.config.cjs --only qmoi-next --env production || true
+            pm2 save

@@ -17,7 +17,7 @@ export class QmoiMemory {
       (r) =>
         r.key === key &&
         (user ? r.user === user : true) &&
-        (project ? r.project === project : true)
+        (project ? r.project === project : true),
     );
 
     const record: MemoryRecord = {
@@ -41,7 +41,7 @@ export class QmoiMemory {
       (r) =>
         r.key === key &&
         (user ? r.user === user : true) &&
-        (project ? r.project === project : true)
+        (project ? r.project === project : true),
     );
     return record ? JSON.parse(record.value) : null;
   }
@@ -51,7 +51,7 @@ export class QmoiMemory {
       .filter(
         (r) =>
           (user ? r.user === user : true) &&
-          (project ? r.project === project : true)
+          (project ? r.project === project : true),
       )
       .map((row) => ({
         key: row.key,

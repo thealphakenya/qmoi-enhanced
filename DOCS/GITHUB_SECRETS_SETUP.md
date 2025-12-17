@@ -57,6 +57,7 @@ To enable production-grade signed builds in CI, configure these secrets in your 
 3. Repeat for all 7 secrets (4 Android + 3 iOS)
 
 Once secrets are added, the CI workflow will:
+
 - Detect the secrets and use them for signing
 - Build signed APKs (Android) and IPAs (iOS) on tag pushes
 - Upload signed artifacts to the GitHub Release

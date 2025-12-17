@@ -1,5 +1,5 @@
 name: QMOI App Build
-'on':
+"on":
   push:
     branches:
       - main
@@ -26,7 +26,7 @@ jobs:
       QMOI_TELEGRAM_TOKEN: ${{ secrets.QMOI_TELEGRAM_TOKEN }}
       QMOI_TELEGRAM_CHAT: ${{ secrets.QMOI_TELEGRAM_CHAT }}
       QMOI_DISCORD_WEBHOOK: ${{ secrets.QMOI_DISCORD_WEBHOOK }}
-      QMOI_CODESPACES: 'true'
+      QMOI_CODESPACES: "true"
     steps:
       - name: QMOI Workflow Fix & Status Logger
         run: |
@@ -100,5 +100,5 @@ permissions:
   pull-requests: read
   issues: read
 env:
-  NODE_VERSION: '18'
-  QMOI_AUTODEV_ENABLED: 'true'
+  NODE_VERSION: "18"
+  QMOI_AUTODEV_ENABLED: "true"

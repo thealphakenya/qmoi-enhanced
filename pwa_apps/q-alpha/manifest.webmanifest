@@ -11,7 +11,17 @@
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ],
   "shortcuts": [
-    {"name":"Open QMOI","short_name":"QMOI","url":"/mirror/app/qmoi/","icons":[{"src":"icons/icon-48.png","sizes":"48x48"}]},
-    {"name":"Open QMOI AI","short_name":"AI","url":"/mirror/app/qmoi-ai/","icons":[{"src":"icons/icon-48.png","sizes":"48x48"}]}
+    {
+      "name": "Open QMOI",
+      "short_name": "QMOI",
+      "url": "/mirror/app/qmoi/",
+      "icons": [{ "src": "icons/icon-48.png", "sizes": "48x48" }]
+    },
+    {
+      "name": "Open QMOI AI",
+      "short_name": "AI",
+      "url": "/mirror/app/qmoi-ai/",
+      "icons": [{ "src": "icons/icon-48.png", "sizes": "48x48" }]
+    }
   ]
 }

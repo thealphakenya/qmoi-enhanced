@@ -1,7 +1,7 @@
 // scripts/verify-installable.js
-const fs = require('fs');
-const path = require('path');
-const execSync = require('child_process').execSync;
+const fs = require("fs");
+const path = require("path");
+const execSync = require("child_process").execSync;
 
 const TEST_INSTALL_COMMANDS = {
   apk: (file) => `adb install -r "${file}"`,
@@ -9,11 +9,11 @@ const TEST_INSTALL_COMMANDS = {
   ipa: (file) => `ideviceinstaller -i "${file}"`,
   appimage: (file) => `chmod +x "${file}" && "${file}" --version`,
   crx: (file) => `echo "Manual test for CRX: ${file}"`,
-  pkg: (file) => `sudo installer -pkg "${file}" -target /`
+  pkg: (file) => `sudo installer -pkg "${file}" -target /`,
 };
 
 function getInstallCommand(file) {
-  const ext = path.extname(file).replace('.', '').toLowerCase();
+  const ext = path.extname(file).replace(".", "").toLowerCase();
   if (ext in TEST_INSTALL_COMMANDS) {
     return TEST_INSTALL_COMMANDS[ext](file);
   }
@@ -29,14 +29,14 @@ function testInstall(filePath) {
   }
   try {
     console.log(`🧪 Installing ${filePath}...`);
-    execSync(cmd, { stdio: 'inherit' });
+    execSync(cmd, { stdio: "inherit" });
     console.log(`✅ Install test passed: ${filePath}`);
   } catch (err) {
     console.error(`❌ Install failed: ${filePath}\n`, err.message);
   }
 }
 
-function scanFolder(baseFolder = 'Qmoi_apps') {
+function scanFolder(baseFolder = "Qmoi_apps") {
   const platforms = fs.readdirSync(baseFolder);
   for (const platform of platforms) {
     const dirPath = path.join(baseFolder, platform);

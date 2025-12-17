@@ -2,9 +2,24 @@
 // AI-powered localization and translation of assets
 
 export class LocalizationService {
-  static supportedLanguages = ['en', 'es', 'fr', 'de', 'zh', 'ar', 'hi', 'ru', 'pt', 'ja', 'ko'];
+  static supportedLanguages = [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "zh",
+    "ar",
+    "hi",
+    "ru",
+    "pt",
+    "ja",
+    "ko",
+  ];
 
-  static async translateText(text: string, targetLang: string): Promise<string> {
+  static async translateText(
+    text: string,
+    targetLang: string,
+  ): Promise<string> {
     // TODO: Integrate with AI translation API
     return `[${targetLang}] ${text}`;
   }
@@ -17,4 +32,4 @@ export class LocalizationService {
   static async getSupportedLanguages(): Promise<string[]> {
     return LocalizationService.supportedLanguages;
   }
-} 
+}

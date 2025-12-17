@@ -3,7 +3,7 @@
 **Date:** 2025-11-11  
 **Status:** Production-Ready  
 **Master:** Alpha Kenya (thealphakenya)  
-**Sync Mode:** Bidirectional (QVillage ↔ HF Spaces) + QMOI Memory Sync  
+**Sync Mode:** Bidirectional (QVillage ↔ HF Spaces) + QMOI Memory Sync
 
 ---
 
@@ -14,6 +14,7 @@
 **Purpose:** Automatically fetch, curate, and display latest academic papers daily.
 
 **Features:**
+
 - Auto-fetch from arXiv, PapersWithCode, IEEE Xplore via RSS/APIs
 - Daily digest generation (morning UTC)
 - Paper ranking by relevance (using QMOI embeddings)
@@ -22,14 +23,23 @@
 - Community voting/ratings (cached in local state, synced nightly)
 
 **Configuration:**
+
 ```json
 {
   "daily_papers": {
     "enabled": true,
     "sources": [
-      {"type": "arxiv", "categories": ["cs.AI", "cs.LG", "cs.CL"], "daily_limit": 50},
-      {"type": "paperswithcode", "fetch_interval": "24h", "trending_only": false},
-      {"type": "rss_custom", "feeds": ["https://example.com/research.xml"]}
+      {
+        "type": "arxiv",
+        "categories": ["cs.AI", "cs.LG", "cs.CL"],
+        "daily_limit": 50
+      },
+      {
+        "type": "paperswithcode",
+        "fetch_interval": "24h",
+        "trending_only": false
+      },
+      { "type": "rss_custom", "feeds": ["https://example.com/research.xml"] }
     ],
     "publish_time": "08:00 UTC",
     "ranking_model": "qmoi-embed-v1",
@@ -41,6 +51,7 @@
 ```
 
 **API Endpoints:**
+
 - `GET /qvillage/papers/daily` — today's curated papers
 - `GET /qvillage/papers/search?tag=ML&date=2025-11-11` — search and filter
 - `POST /qvillage/papers/save` — save paper to reading list (synced to HF)
@@ -53,6 +64,7 @@
 **Purpose:** Persistent storage of research, notes, code snippets, and structured knowledge.
 
 **Features:**
+
 - Hierarchical folder structure (auto-organized by topic)
 - Full-text search + semantic search (QMOI embeddings)
 - Markdown + code block support
@@ -62,6 +74,7 @@
 - Auto-sync to Hugging Face Datasets (as private repository)
 
 **Storage:**
+
 ```
 qvillage_kb/
 ├── ml/
@@ -78,6 +91,7 @@ qvillage_kb/
 ```
 
 **API Endpoints:**
+
 - `POST /qvillage/kb/create` — create KB entry
 - `GET /qvillage/kb/search?q=embeddings` — search KB
 - `GET /qvillage/kb/tree` — list folder structure
@@ -91,6 +105,7 @@ qvillage_kb/
 **Purpose:** Enable collaboration, discussion, and knowledge sharing.
 
 **Features:**
+
 - Comments on papers/KB entries
 - Discussions (threaded, voting)
 - User profiles + reputation
@@ -100,6 +115,7 @@ qvillage_kb/
 - Follow users, topics, tags
 
 **Social Sync to HF:**
+
 - Community discussions exported to HF Discussions Space
 - Trending papers + top contributors featured on HF Space
 - Comment threads mirrored (read-only on HF)
@@ -109,6 +125,7 @@ qvillage_kb/
 ### 1.4 Paid Features (Enhanced for HF)
 
 **Paid Features:**
+
 1. **Advanced Search** — semantic + metadata filters, saved searches (free: basic search)
 2. **Paper Analysis** — AI-powered summaries, key insights, code extraction (free: titles/abstracts)
 3. **Custom Models** — train custom embedding/ranking models (free: QMOI base model)
@@ -117,12 +134,14 @@ qvillage_kb/
 6. **Premium Dashboards** — advanced analytics, custom reports (free: basic dashboard)
 
 **Billing Model:**
+
 - Tier 1 (Free): Read access, basic search, 10 export/month, 100 API req/day
 - Tier 2 ($9.99/mo): Advanced search, summaries, custom exports, 1000 API req/day
 - Tier 3 ($49.99/mo): All features + custom models, API priority, webhook support
 - Tier 4 (Enterprise): Custom pricing, SLA, dedicated support
 
 **Hugging Face Safe Billing:**
+
 - All paid features accessible from QVillage main site (self-hosted or CDN)
 - HF Space = free features only (no upsell on HF, no billing integration)
 - HF Space displays: "Full features at https://qvillage.ai" with referral link
@@ -141,6 +160,7 @@ qvillage_kb/
 **Compute:** CPU (free tier) + optional GPU upgrade by user
 
 **Directory Structure:**
+
 ```
 hf_space_qvillage/
 ├── app.py                          # Gradio app entry
@@ -161,6 +181,7 @@ hf_space_qvillage/
 ```
 
 **Gradio UI Layout:**
+
 ```
 ┌─ QVillage on Hugging Face ─────────────────────────┐
 │                                                      │
@@ -184,22 +205,23 @@ hf_space_qvillage/
 
 ### 2.2 Feature Availability Matrix (HF vs Full Site)
 
-| Feature | Free (HF Space) | Paid (Main Site) |
-|---------|-----------------|------------------|
-| View daily papers | ✅ | ✅ |
-| Search papers (basic) | ✅ | ✅ |
-| Advanced search filters | ❌ | ✅ |
-| Paper summaries (AI) | ❌ | ✅ |
-| Knowledge base access | ✅ (read) | ✅ (read/write) |
-| KB contribution (community) | ✅ | ✅ |
-| Custom model training | ❌ | ✅ |
-| API access | ❌ (or 100 req/day) | ✅ (1000+ req/day) |
-| Bulk export | ❌ | ✅ (limited) |
-| Dashboard analytics | ❌ | ✅ (advanced) |
+| Feature                     | Free (HF Space)     | Paid (Main Site)   |
+| --------------------------- | ------------------- | ------------------ |
+| View daily papers           | ✅                  | ✅                 |
+| Search papers (basic)       | ✅                  | ✅                 |
+| Advanced search filters     | ❌                  | ✅                 |
+| Paper summaries (AI)        | ❌                  | ✅                 |
+| Knowledge base access       | ✅ (read)           | ✅ (read/write)    |
+| KB contribution (community) | ✅                  | ✅                 |
+| Custom model training       | ❌                  | ✅                 |
+| API access                  | ❌ (or 100 req/day) | ✅ (1000+ req/day) |
+| Bulk export                 | ❌                  | ✅ (limited)       |
+| Dashboard analytics         | ❌                  | ✅ (advanced)      |
 
 ### 2.3 Billing Safety Guardrails
 
 **Compute Cost Prevention:**
+
 ```python
 # app.py - Gradio app with safeguards
 import os
@@ -257,6 +279,7 @@ def rate_limit(max_calls=100, window_minutes=60):
 ```
 
 **Cost Monitoring Dashboard:**
+
 ```python
 # Monitor HF Space usage costs
 import huggingface_hub
@@ -266,7 +289,7 @@ def check_hf_usage():
     """Get current HF Space usage stats."""
     api = huggingface_hub.HfApi()
     space_info = api.space_info(repo_id="alphaqmoi/qvillage")
-    
+
     return {
         "compute_time_hours": space_info.compute_time,
         "last_modified": space_info.last_modified,
@@ -303,6 +326,7 @@ def estimate_cost(space_info):
 ```
 
 **Sync Direction:**
+
 1. **QMOI → QVillage:** System knowledge, errors, solutions, memory embeddings
 2. **QVillage → QMOI:** User contributions, papers, KB entries, discussions, feedback
 3. **QVillage → HF:** Public papers, trending, public KB, discussions (read-only mirror)
@@ -311,12 +335,14 @@ def estimate_cost(space_info):
 ### 3.2 Memory Sync Protocol
 
 **Sync Frequency:**
+
 - **Real-time:** Individual paper saves, KB edits (< 5 sec latency)
 - **Near real-time:** Comments, votes (batched every 30 sec)
 - **Hourly:** Trending rankings, community stats, HF space stats
 - **Daily:** Full consistency check, conflict resolution, cleanup
 
 **Conflict Resolution Priority:**
+
 ```
 IF version_conflict THEN
   IF timestamp_diff > 1_hour:
@@ -331,14 +357,15 @@ ELSE IF source == auto_sync:
 ```
 
 **Example Sync Flow (Paper Save):**
+
 ```python
 @app.post("/qvillage/papers/save")
 async def save_paper_bidirectional(paper_id: str, user_id: str):
     """Save paper to reading list + sync to QMOI memory + HF Space."""
-    
+
     # 1. Save locally in QVillage
     saved = await qvillage_db.save_paper(paper_id, user_id)
-    
+
     # 2. Sync to QMOI memory (async, non-blocking)
     asyncio.create_task(
         qmoi_memory.add_event(
@@ -348,36 +375,38 @@ async def save_paper_bidirectional(paper_id: str, user_id: str):
             timestamp=datetime.utcnow(),
         )
     )
-    
+
     # 3. Sync to HF Space (if paper is public)
     if paper.is_public:
         asyncio.create_task(
             hf_sync.mirror_paper_save(paper_id, user_id)
         )
-    
+
     # 4. Propagate to other active users (real-time)
     await broadcast_event("paper_saved", {"paper_id": paper_id, "user_id": user_id})
-    
+
     return {"status": "saved", "synced": True}
 ```
 
 ### 3.3 Eventual Consistency + Conflict Handling
 
 **Guarantees:**
+
 - All data eventually reaches all systems (within 24 hours, typically < 5 min)
 - User data (KB, papers) always consistent (single source of truth: QVillage DB)
 - Public data (HF mirror) is eventually consistent (can be 1-24h behind)
 - Conflicts are detected and logged; users notified if manual resolution needed
 
 **Data Classes:**
+
 ```python
 class SyncData:
     # Owned by user (personal reads, saves, KB entries)
     USER_DATA = ["reading_list", "kb_entries", "private_notes", "saved_searches"]
-    
+
     # Owned by community (papers, discussions, public KB)
     COMMUNITY_DATA = ["papers", "discussions", "public_kb", "user_profiles"]
-    
+
     # System state (rankings, analytics, metadata)
     SYSTEM_DATA = ["rankings", "trending", "view_counts", "engagement"]
 
@@ -422,7 +451,7 @@ class QVillageSyncEngine:
         self.hf_space_url = os.getenv("HF_SPACE_URL", "https://huggingface.co/spaces/alphaqmoi/qvillage")
         self.hf_token = os.getenv("HF_TOKEN")
         self.last_sync = {}
-        
+
     async def sync_papers_to_hf(self, papers: List[Dict]) -> Dict[str, Any]:
         """Sync new papers to HF Space (read-only mirror)."""
         try:
@@ -433,11 +462,11 @@ class QVillageSyncEngine:
                     headers={"Authorization": f"Bearer {self.hf_token}"}
                 )
                 hf_papers = hf_response.json().get("papers", [])
-                
+
                 # Find new papers (not on HF)
                 hf_ids = {p["id"] for p in hf_papers}
                 new_papers = [p for p in papers if p["id"] not in hf_ids]
-                
+
                 if new_papers:
                     logger.info(f"Syncing {len(new_papers)} new papers to HF Space")
                     await client.post(
@@ -445,12 +474,12 @@ class QVillageSyncEngine:
                         json={"papers": new_papers[:50]},  # Rate limit
                         headers={"Authorization": f"Bearer {self.hf_token}"}
                     )
-                
+
                 return {"synced": len(new_papers), "status": "success"}
         except Exception as e:
             logger.error(f"Error syncing papers to HF: {e}")
             return {"synced": 0, "status": "error", "error": str(e)}
-    
+
     async def sync_user_contributions_to_qmoi(self, user_id: str) -> Dict[str, Any]:
         """Sync user KB contributions to QMOI memory."""
         try:
@@ -460,7 +489,7 @@ class QVillageSyncEngine:
                     f"{self.qvillage_url}/api/users/{user_id}/contributions"
                 )
                 contributions = qv_response.json()
-                
+
                 # Add to QMOI memory
                 await client.post(
                     f"{self.qmoi_memory_url}/api/events/batch",
@@ -476,13 +505,13 @@ class QVillageSyncEngine:
                         ]
                     }
                 )
-                
+
                 logger.info(f"Synced {len(contributions)} contributions to QMOI")
                 return {"synced": len(contributions), "status": "success"}
         except Exception as e:
             logger.error(f"Error syncing contributions to QMOI: {e}")
             return {"synced": 0, "status": "error", "error": str(e)}
-    
+
     async def resolve_conflicts(self) -> Dict[str, Any]:
         """Detect and resolve sync conflicts."""
         conflicts = []
@@ -491,7 +520,7 @@ class QVillageSyncEngine:
                 # Check for conflicts in past sync
                 response = await client.get(f"{self.qvillage_url}/api/sync/conflicts")
                 conflicts = response.json().get("conflicts", [])
-                
+
                 for conflict in conflicts:
                     # Resolve using conflict resolution rules
                     resolution = self._resolve_conflict(conflict)
@@ -500,12 +529,12 @@ class QVillageSyncEngine:
                         json=resolution
                     )
                     logger.info(f"Resolved conflict {conflict['id']}: {resolution['strategy']}")
-                
+
                 return {"resolved": len(conflicts), "status": "success"}
         except Exception as e:
             logger.error(f"Error resolving conflicts: {e}")
             return {"resolved": 0, "status": "error", "error": str(e)}
-    
+
     def _resolve_conflict(self, conflict: Dict) -> Dict[str, Any]:
         """Resolve a single conflict based on rules."""
         if conflict["type"] == "kb_entry":
@@ -517,34 +546,34 @@ class QVillageSyncEngine:
         else:
             # Default: manual resolution
             return {"strategy": "manual", "winner": None}
-    
+
     async def run_full_sync(self):
         """Run full sync cycle."""
         logger.info("Starting full sync cycle...")
-        
+
         async with httpx.AsyncClient() as client:
             # 1. Fetch all papers from QVillage
             qv_papers = await client.get(f"{self.qvillage_url}/api/papers/all")
             papers = qv_papers.json().get("papers", [])
-            
+
             # 2. Sync papers to HF
             paper_result = await self.sync_papers_to_hf(papers)
-            
+
             # 3. Fetch all users and sync contributions
             qv_users = await client.get(f"{self.qvillage_url}/api/users/active")
             users = qv_users.json().get("users", [])
-            
+
             contribution_results = []
             for user in users:
                 result = await self.sync_user_contributions_to_qmoi(user["id"])
                 contribution_results.append(result)
-            
+
             # 4. Resolve conflicts
             conflict_result = await self.resolve_conflicts()
-            
+
             # 5. Log sync summary
             logger.info(f"Sync complete: papers={paper_result}, conflicts={conflict_result}")
-            
+
             return {
                 "papers_synced": paper_result["synced"],
                 "users_synced": len(users),
@@ -561,7 +590,7 @@ async def main():
             logger.info(f"Sync result: {json.dumps(result, indent=2)}")
         except Exception as e:
             logger.error(f"Sync cycle failed: {e}")
-        
+
         # Wait 1 hour before next sync
         await asyncio.sleep(3600)
 
@@ -596,7 +625,7 @@ async def fetch_daily_papers(tag_filter=None):
             params["tag"] = tag_filter
         response = await client.get(f"{QVILLAGE_API}/papers/daily", params=params)
         papers = response.json().get("papers", [])
-        
+
         # Format for display
         output = []
         for p in papers:
@@ -609,12 +638,12 @@ def search_kb(query):
         async with httpx.AsyncClient() as client:
             response = await client.get(f"{QVILLAGE_API}/kb/search", params={"q": query})
             results = response.json().get("results", [])
-            
+
             output = []
             for r in results:
                 output.append(f"**{r['title']}** (relevance: {r['score']:.2f})\n{r['excerpt']}")
             return "\n\n---\n\n".join(output) if output else "No results found."
-    
+
     import asyncio
     return asyncio.run(_search())
 
@@ -636,7 +665,7 @@ def upgrade_prompt(feature_name):
 with gr.Blocks(title="QVillage - AI Research Hub (Free Tier)") as demo:
     gr.Markdown("# 🏘️ QVillage — AI Research Hub")
     gr.Markdown("Free access to daily papers, search knowledge base, and community insights. [Upgrade for full features →](https://qvillage.ai)")
-    
+
     with gr.Tabs():
         # Tab 1: Daily Papers
         with gr.Tab("📰 Daily Papers"):
@@ -647,36 +676,36 @@ with gr.Blocks(title="QVillage - AI Research Hub (Free Tier)") as demo:
                 )
                 refresh_btn = gr.Button("Refresh")
             papers_output = gr.Markdown()
-            
+
             async def load_papers(tag):
                 return await fetch_daily_papers(tag)
-            
+
             refresh_btn.click(load_papers, inputs=tag_filter, outputs=papers_output)
             demo.load(load_papers, inputs=tag_filter, outputs=papers_output)
-        
+
         # Tab 2: Search KB
         with gr.Tab("🔍 Search Knowledge Base"):
             with gr.Row():
                 search_query = gr.Textbox(placeholder="Search...", label="Query")
                 search_btn = gr.Button("Search")
             kb_output = gr.Markdown()
-            
+
             search_btn.click(search_kb, inputs=search_query, outputs=kb_output)
-        
+
         # Tab 3: Advanced Features (Upgrade)
         with gr.Tab("✨ Advanced Features"):
             gr.HTML(upgrade_prompt("advanced_search"))
             gr.HTML(upgrade_prompt("ai_summary"))
             gr.HTML(upgrade_prompt("custom_models"))
-        
+
         # Tab 4: Info
         with gr.Tab("ℹ️ About"):
             gr.Markdown("""
             ### QVillage — Your AI Research Companion
-            
+
             - **Free Tier:** Daily papers, knowledge base search, community insights
             - **Paid Tier:** AI-powered summaries, advanced analytics, custom models, API access
-            
+
             [Full Site & Premium Access](https://qvillage.ai)
             [GitHub Repository](https://github.com/alphaqmoi/qvillage)
             [Discord Community](https://discord.gg/qvillage)
@@ -695,7 +724,7 @@ name: QVillage Sync - QMOI Memory ↔ HF Spaces
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+    - cron: "0 */6 * * *" # Every 6 hours
   workflow_dispatch:
 
 jobs:
@@ -703,16 +732,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
-      
+          python-version: "3.11"
+
       - name: Install dependencies
         run: |
           pip install httpx asyncio pydantic huggingface_hub
-      
+
       - name: Run QVillage Sync Engine
         env:
           QVILLAGE_URL: ${{ secrets.QVILLAGE_INTERNAL_URL }}
@@ -721,7 +750,7 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_API_TOKEN }}
         run: |
           python tools/qvillage_memory_sync.py --run-once
-      
+
       - name: Update HF Space App
         env:
           HF_TOKEN: ${{ secrets.HF_API_TOKEN }}
@@ -735,13 +764,13 @@ jobs:
           git add -A
           git commit -m "Auto-sync: $(date)" || echo "No changes"
           git push https://oauth2:${HF_TOKEN}@huggingface.co/spaces/alphaqmoi/qvillage
-      
+
       - name: Monitor Costs
         env:
           HF_TOKEN: ${{ secrets.HF_API_TOKEN }}
         run: |
           python tools/monitor_hf_costs.py
-      
+
       - name: Slack Notification
         if: failure()
         uses: slackapi/slack-github-action@v1
@@ -784,4 +813,3 @@ jobs:
 **Status:** ✅ **PRODUCTION READY**  
 **Last Updated:** 2025-11-11  
 **Next Review:** 2025-11-18
-

@@ -7,7 +7,7 @@ interface MasterContextType {
   setRole: (role: UserRole) => void;
   isMaster: boolean;
   hasPermission: (
-    perm: "deploy" | "viewDashboard" | "admin" | "user"
+    perm: "deploy" | "viewDashboard" | "admin" | "user",
   ) => boolean;
 }
 

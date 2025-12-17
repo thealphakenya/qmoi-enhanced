@@ -4,20 +4,20 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - '**/*.md'
-      - 'scripts/**'
-      - 'docs/**'
+      - "**/*.md"
+      - "scripts/**"
+      - "docs/**"
 
 jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Run enhancers
         run: |
@@ -30,7 +30,7 @@ jobs:
           echo "QCITY_REPORT<<EOF" >> $GITHUB_ENV
           cat .qmoi_validation/qcity_enhancer.json >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-          
+
           echo "LION_REPORT<<EOF" >> $GITHUB_ENV
           cat .qmoi_validation/lion_feature_enhancer.json >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
@@ -41,9 +41,9 @@ jobs:
           script: |
             const qcityReport = JSON.parse(process.env.QCITY_REPORT);
             const lionReport = JSON.parse(process.env.LION_REPORT);
-            
+
             let comment = '## Enhancement Report\n\n';
-            
+
             // qCity summary
             comment += '### qCity Platform Analysis\n';
             comment += `- Manifests found: ${qcityReport.manifests_found}\n`;
@@ -55,7 +55,7 @@ jobs:
                 comment += `\n    Confidence: ${details.confidence}\n`;
               }
             }
-            
+
             // Lion feature summary  
             comment += '\n### Lion Feature Analysis\n';
             comment += `- Features found: ${lionReport.found}\n`;
@@ -67,9 +67,9 @@ jobs:
                 comment += `\n    Confidence: ${details.confidence}\n`;
               }
             }
-            
+
             comment += '\n---\nThis is an automated enhancement report. See `.qmoi_validation/` for full details.';
-            
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,

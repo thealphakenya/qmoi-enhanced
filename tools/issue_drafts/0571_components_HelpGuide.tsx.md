@@ -87,7 +87,7 @@ export function HelpGuide() {
 						}`}
 						onClick={() => setRole('master')}
 					>
-				
+
 ```
 
 Notes:

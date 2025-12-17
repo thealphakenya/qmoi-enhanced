@@ -4,7 +4,7 @@ import { pathToFileURL } from "url";
 (async function run() {
   await import(
     pathToFileURL(
-      new URL("./auth_gating_presence_test.ts", import.meta.url).pathname
+      new URL("./auth_gating_presence_test.ts", import.meta.url).pathname,
     ).href
   );
 })();
@@ -12,7 +12,7 @@ import fs from "fs";
 const path = "./.qmoi_validation/auth_triage_report.json";
 if (!fs.existsSync(path)) {
   console.error(
-    "auth_triage_report.json missing. Run triage scripts to generate."
+    "auth_triage_report.json missing. Run triage scripts to generate.",
   );
   process.exit(2);
 }
@@ -29,6 +29,6 @@ if (fail) {
   process.exit(1);
 }
 console.log(
-  "All header-using routes are gated with requireApiKey as expected."
+  "All header-using routes are gated with requireApiKey as expected.",
 );
 process.exit(0);

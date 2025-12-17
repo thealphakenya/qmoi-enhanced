@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "QMOI AI Model Card (Hugging Face)"
 qmoi_validation_frontmatter: true
@@ -65,7 +65,7 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
 ## Automation & Observability
 - **Model is always synced and up-to-date** via automated GitLab CI/CD workflows.
 - **Health and status** are logged and visible in the Hugging Face model card and
-```
+````
 
 Notes:
 

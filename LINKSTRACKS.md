@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -20,29 +21,31 @@ It tracks all links, their status, DNS health, fallback domains, and auto-fix hi
 ## Link Tracks
 
 | Link | Status | Last Checked | DNS Health | Fallback | Auto-Fix History |
-|------|--------|--------------|------------|----------|------------------|
+| ---- | ------ | ------------ | ---------- | -------- | ---------------- |
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "LINKSTRACKS.md",
-  "validated_at": "2025-10-26T20:51:22.320863Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "LINKSTRACKS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "LINKSTRACKS.md",
+"validated_at": "2025-10-26T20:51:22.320863Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "LINKSTRACKS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

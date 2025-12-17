@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export interface AIHealth {
-  status: 'healthy' | 'degraded' | 'critical';
+  status: "healthy" | "degraded" | "critical";
   lastCheck: number;
   error?: string;
   metrics?: {
@@ -46,20 +46,20 @@ export interface AIHealth {
 
 export function useAIHealthCheck() {
   const [health, setHealth] = useState<AIHealth>({
-    status: 'healthy',
+    status: "healthy",
     lastCheck: Date.now(),
   });
 
   useEffect(() => {
     async function checkHealth() {
       try {
-        const adminToken = localStorage.getItem('adminToken') || '';
-        const response = await fetch('/api/ai-health', {
-          headers: { 'x-admin-token': adminToken },
+        const adminToken = localStorage.getItem("adminToken") || "";
+        const response = await fetch("/api/ai-health", {
+          headers: { "x-admin-token": adminToken },
         });
 
         if (!response.ok) {
-          throw new Error('Failed to fetch health status');
+          throw new Error("Failed to fetch health status");
         }
 
         const data = await response.json();
@@ -70,9 +70,9 @@ export function useAIHealthCheck() {
         });
       } catch (error) {
         setHealth({
-          status: 'critical',
+          status: "critical",
           lastCheck: Date.now(),
-          error: error instanceof Error ? error.message : 'Unknown error',
+          error: error instanceof Error ? error.message : "Unknown error",
         });
       }
     }
@@ -84,4 +84,3 @@ export function useAIHealthCheck() {
 
   return health;
 }
-

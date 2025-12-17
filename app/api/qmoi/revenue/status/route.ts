@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
         apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.response?.status || 401 }
+        { status: apiAuth.response?.status || 401 },
       );
     }
 
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
     console.error("Revenue status error:", error);
     return NextResponse.json(
       { error: "Failed to get revenue status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

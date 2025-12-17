@@ -6,7 +6,7 @@ export const EncryptedAuditLog: React.FC<{ logs: string[] }> = ({ logs }) => {
   const [key, setKey] = useState("");
   const [decrypted, setDecrypted] = useState<string[]>([]);
   const encrypted = logs.map((l) =>
-    CryptoJS.AES.encrypt(l, key || "default").toString()
+    CryptoJS.AES.encrypt(l, key || "default").toString(),
   );
   return (
     <div>
@@ -23,9 +23,9 @@ export const EncryptedAuditLog: React.FC<{ logs: string[] }> = ({ logs }) => {
             setDecrypted(
               encrypted.map((e) =>
                 CryptoJS.AES.decrypt(e, key || "default").toString(
-                  CryptoJS.enc.Utf8
-                )
-              )
+                  CryptoJS.enc.Utf8,
+                ),
+              ),
             );
           } catch {
             setDecrypted(["Decryption failed"]);

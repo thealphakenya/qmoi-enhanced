@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useQuery, useMutation } from 'react-query';
-import axios, { any } from 'axios';
+import { useState, useEffect, useCallback } from "react";
+import { useQuery, useMutation } from "react-query";
+import axios, { any } from "axios";
 
 export interface QCityStatus {
   running: boolean;
@@ -21,15 +21,15 @@ export interface QCityStatus {
     type: string;
     message: string;
     timestamp: number;
-    priority: 'low' | 'medium' | 'high' | 'critical';
-    status: 'pending' | 'in-progress' | 'resolved';
+    priority: "low" | "medium" | "high" | "critical";
+    status: "pending" | "in-progress" | "resolved";
   }[];
   backups: {
     id: string;
     timestamp: number;
     size: number;
-    status: 'pending' | 'completed' | 'failed';
-    type: 'full' | 'incremental';
+    status: "pending" | "completed" | "failed";
+    type: "full" | "incremental";
   }[];
   performance: {
     startupTime: number;
@@ -66,7 +66,7 @@ interface QCityConfig {
     max_network: number;
     max_gpu?: number;
     auto_scale: boolean;
-    optimization_level: 'low' | 'medium' | 'high';
+    optimization_level: "low" | "medium" | "high";
     backup_frequency: number;
     error_reporting: boolean;
   };
@@ -77,7 +77,7 @@ interface QCityConfig {
     accessControl: boolean;
   };
   ui: {
-    theme: 'light' | 'dark' | 'system';
+    theme: "light" | "dark" | "system";
     icon: string;
     showInTaskbar: boolean;
     notifications: boolean;
@@ -95,58 +95,71 @@ export function useQCity() {
   const [error, setError] = useState<QCityError | null>(null);
 
   // Fetch Q-city status
-  const { data: statusData, refetch: refetchStatus } = useQuery<QCityStatus, any>(
-    'qcity-status',
+  const { data: statusData, refetch: refetchStatus } = useQuery<
+    QCityStatus,
+    any
+  >(
+    "qcity-status",
     async () => {
-      const response = await axios.get('/api/qcity/status');
+      const response = await axios.get("/api/qcity/status");
       return response.data;
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Fetch Q-city config
-  const { data: configData, refetch: refetchConfig } = useQuery<QCityConfig, any>(
-    'qcity-config',
+  const { data: configData, refetch: refetchConfig } = useQuery<
+    QCityConfig,
+    any
+  >(
+    "qcity-config",
     async () => {
-      const response = await axios.get('/api/qcity/config');
+      const response = await axios.get("/api/qcity/config");
       return response.data;
     },
     {
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Start Q-city
   const startMutation = useMutation<void, any>(
     async () => {
-      const response = await axios.post('/api/qcity/start');
+      const response = await axios.post("/api/qcity/start");
       return response.data;
     },
     {
       onSuccess: () => refetchStatus(),
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Stop Q-city
   const stopMutation = useMutation<void, any>(
     async () => {
-      const response = await axios.post('/api/qcity/stop');
+      const response = await axios.post("/api/qcity/stop");
       return response.data;
     },
     {
       onSuccess: () => refetchStatus(),
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Configure platforms
-  const configurePlatformsMutation = useMutation<void, any, Partial<QCityConfig['platforms']>>(
+  const configurePlatformsMutation = useMutation<
+    void,
+    any,
+    Partial<QCityConfig["platforms"]>
+  >(
     async (config) => {
-      const response = await axios.post('/api/qcity/configure-platforms', config);
+      const response = await axios.post(
+        "/api/qcity/configure-platforms",
+        config,
+      );
       return response.data;
     },
     {
@@ -155,13 +168,15 @@ export function useQCity() {
         refetchStatus();
       },
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Enable features
   const enableFeaturesMutation = useMutation<void, any, string[]>(
     async (features) => {
-      const response = await axios.post('/api/qcity/enable-features', { features });
+      const response = await axios.post("/api/qcity/enable-features", {
+        features,
+      });
       return response.data;
     },
     {
@@ -170,55 +185,59 @@ export function useQCity() {
         refetchStatus();
       },
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Monitor resources
   const monitorResourcesMutation = useMutation<void, any>(
     async () => {
-      const response = await axios.post('/api/qcity/monitor-resources');
+      const response = await axios.post("/api/qcity/monitor-resources");
       return response.data;
     },
     {
       onSuccess: () => refetchStatus(),
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Add new mutation for error tracking
-  const trackErrorMutation = useMutation<void, any, QCityStatus['errors'][0]>(
-    async (error: QCityStatus['errors'][0]) => {
-      const response = await axios.post('/api/qcity/track-error', error);
+  const trackErrorMutation = useMutation<void, any, QCityStatus["errors"][0]>(
+    async (error: QCityStatus["errors"][0]) => {
+      const response = await axios.post("/api/qcity/track-error", error);
       return response.data;
     },
     {
       onSuccess: () => refetchStatus(),
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Add new mutation for backup management
-  const manageBackupMutation = useMutation<void, any, { type: 'create' | 'restore', backupId?: string }>(
-    async (action: { type: 'create' | 'restore', backupId?: string }) => {
-      const response = await axios.post('/api/qcity/manage-backup', action);
+  const manageBackupMutation = useMutation<
+    void,
+    any,
+    { type: "create" | "restore"; backupId?: string }
+  >(
+    async (action: { type: "create" | "restore"; backupId?: string }) => {
+      const response = await axios.post("/api/qcity/manage-backup", action);
       return response.data;
     },
     {
       onSuccess: () => refetchStatus(),
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Add new mutation for resource optimization
   const optimizeResourcesMutation = useMutation<void, any>(
     async () => {
-      const response = await axios.post('/api/qcity/optimize-resources');
+      const response = await axios.post("/api/qcity/optimize-resources");
       return response.data;
     },
     {
       onSuccess: () => refetchStatus(),
       onError: (err: any) => setError(err as QCityError),
-    }
+    },
   );
 
   // Update status and config when data changes
@@ -246,10 +265,10 @@ export function useQCity() {
 
   // Configure platforms
   const configurePlatforms = useCallback(
-    (config: Partial<QCityConfig['platforms']>) => {
+    (config: Partial<QCityConfig["platforms"]>) => {
       configurePlatformsMutation.mutate(config);
     },
-    [configurePlatformsMutation]
+    [configurePlatformsMutation],
   );
 
   // Enable features
@@ -257,7 +276,7 @@ export function useQCity() {
     (features: string[]) => {
       enableFeaturesMutation.mutate(features);
     },
-    [enableFeaturesMutation]
+    [enableFeaturesMutation],
   );
 
   // Monitor resources
@@ -276,8 +295,10 @@ export function useQCity() {
     monitorResources,
     refetchStatus,
     refetchConfig,
-    trackError: (error: QCityStatus['errors'][0]) => trackErrorMutation.mutate(error),
-    manageBackup: (action: { type: 'create' | 'restore', backupId?: string }) => manageBackupMutation.mutate(action),
+    trackError: (error: QCityStatus["errors"][0]) =>
+      trackErrorMutation.mutate(error),
+    manageBackup: (action: { type: "create" | "restore"; backupId?: string }) =>
+      manageBackupMutation.mutate(action),
     optimizeResources: () => optimizeResourcesMutation.mutate(),
   };
 }
@@ -287,15 +308,18 @@ export function useQCityNotifications() {
   const [notifications, setNotifications] = useState<any[]>([]);
 
   // Fetch notifications
-  const { data: notificationData, refetch: refetchNotifications } = useQuery<any[], any>(
-    'qcity-notifications',
+  const { data: notificationData, refetch: refetchNotifications } = useQuery<
+    any[],
+    any
+  >(
+    "qcity-notifications",
     async () => {
-      const response = await axios.get('/api/qcity/notifications');
+      const response = await axios.get("/api/qcity/notifications");
       return response.data;
     },
     {
       refetchInterval: 10000, // Poll every 10 seconds
-    }
+    },
   );
 
   // Update notifications when data changes
@@ -317,14 +341,14 @@ export function useQCityTasks() {
 
   // Fetch tasks
   const { data: taskData, refetch: refetchTasks } = useQuery<any[], any>(
-    'qcity-tasks',
+    "qcity-tasks",
     async () => {
-      const response = await axios.get('/api/qcity/tasks');
+      const response = await axios.get("/api/qcity/tasks");
       return response.data;
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-    }
+    },
   );
 
   // Update tasks when data changes
@@ -346,14 +370,14 @@ export function useQCityResources() {
 
   // Fetch resources
   const { data: resourceData, refetch: refetchResources } = useQuery<any, any>(
-    'qcity-resources',
+    "qcity-resources",
     async () => {
-      const response = await axios.get('/api/qcity/resources');
+      const response = await axios.get("/api/qcity/resources");
       return response.data;
     },
     {
       refetchInterval: 1000, // Poll every second
-    }
+    },
   );
 
   // Update resources when data changes
@@ -375,14 +399,14 @@ export function useQCityLogs() {
 
   // Fetch logs
   const { data: logData, refetch: refetchLogs } = useQuery<any[], any>(
-    'qcity-logs',
+    "qcity-logs",
     async () => {
-      const response = await axios.get('/api/qcity/logs');
+      const response = await axios.get("/api/qcity/logs");
       return response.data;
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-    }
+    },
   );
 
   // Update logs when data changes
@@ -396,4 +420,4 @@ export function useQCityLogs() {
     logs,
     refetchLogs,
   };
-} 
+}

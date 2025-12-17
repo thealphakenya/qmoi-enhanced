@@ -255,10 +255,7 @@ export default function EnhancedTradingPanel() {
     enhancedTradingService.updateRiskManagement(updates);
   };
 
-  const formatCurrency = (
-    amount: number,
-    currency: string = "USDT"
-  ): string => {
+  const formatCurrency = (amount: number, currency = "USDT"): string => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: currency,
@@ -549,7 +546,7 @@ export default function EnhancedTradingPanel() {
               <CardContent>
                 <div className="text-2xl font-bold">
                   {formatCurrency(
-                    accounts.reduce((sum, acc) => sum + acc.balance, 0)
+                    accounts.reduce((sum, acc) => sum + acc.balance, 0),
                   )}
                 </div>
                 <p className="text-xs text-muted-foreground">
@@ -566,11 +563,11 @@ export default function EnhancedTradingPanel() {
               <CardContent>
                 <div
                   className={`text-2xl font-bold ${getPnLColor(
-                    accounts.reduce((sum, acc) => sum + acc.totalPnL, 0)
+                    accounts.reduce((sum, acc) => sum + acc.totalPnL, 0),
                   )}`}
                 >
                   {formatCurrency(
-                    accounts.reduce((sum, acc) => sum + acc.totalPnL, 0)
+                    accounts.reduce((sum, acc) => sum + acc.totalPnL, 0),
                   )}
                 </div>
                 <p className="text-xs text-muted-foreground">
@@ -578,8 +575,8 @@ export default function EnhancedTradingPanel() {
                     accounts.reduce((sum, acc) => sum + acc.totalPnL, 0) /
                       Math.max(
                         accounts.reduce((sum, acc) => sum + acc.balance, 0),
-                        1
-                      )
+                        1,
+                      ),
                   )}
                 </p>
               </CardContent>
@@ -605,7 +602,7 @@ export default function EnhancedTradingPanel() {
                   {formatCurrency(
                     positions
                       .filter((p) => p.status === "open")
-                      .reduce((sum, p) => sum + p.unrealizedPnL, 0)
+                      .reduce((sum, p) => sum + p.unrealizedPnL, 0),
                   )}
                 </p>
               </CardContent>

@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     if (!r)
       return NextResponse.json(
         { error: "Unknown auth error" },
-        { status: 500 }
+        { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
   }
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     } catch {
       return NextResponse.json(
         { error: "No report available for download" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
     try {
       await fs.appendFile(
         "logs/download_fixes.log",
-        JSON.stringify(logEntry) + "\n"
+        JSON.stringify(logEntry) + "\n",
       );
     } catch (e) {
       /* ignore logging failures */
@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
       "Content-Disposition",
       `attachment; filename="qmoi-auto-fix-report-${
         new Date().toISOString().split("T")[0]
-      }.json"`
+      }.json"`,
     );
 
     return response;
@@ -80,14 +80,14 @@ export async function GET(request: NextRequest) {
     try {
       await fs.appendFile(
         "logs/download_fixes.log",
-        JSON.stringify(logEntryErr) + "\n"
+        JSON.stringify(logEntryErr) + "\n",
       );
     } catch (e) {
       /* ignore logging failures */
     }
     return NextResponse.json(
       { error: "Failed to download report" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

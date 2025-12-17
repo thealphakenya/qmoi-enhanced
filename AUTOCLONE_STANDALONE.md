@@ -5,26 +5,35 @@
 ## Troubleshooting & Validation
 
 1. Check the health endpoint:
-  ```bash
-  curl http://localhost:8080/health
-  # Should return: OK
-  ```
+
+```bash
+curl http://localhost:8080/health
+# Should return: OK
+```
+
 2. Check GitHub Actions workflow status:
-  - Go to the Actions tab in your GitHub repo and confirm all jobs are green.
+
+- Go to the Actions tab in your GitHub repo and confirm all jobs are green.
+
 3. If the container fails to start, check logs:
-  ```bash
-  docker logs <container_id>
-  ```
+
+```bash
+docker logs <container_id>
+```
+
 4. For QCity auto-update, confirm systemd timer and service are enabled and running:
-  ```bash
-  systemctl status qvillage-update.timer
-  systemctl status qvillage-update.service
-  ```
+
+```bash
+systemctl status qvillage-update.timer
+systemctl status qvillage-update.service
+```
+
 ## Health Check Endpoint
 
 The standalone runner exposes a health check endpoint at `http://localhost:8080/health` (configurable via `HEALTH_PORT` env var).
 
 Example:
+
 ```bash
 curl http://localhost:8080/health
 # Returns: OK
@@ -36,12 +45,14 @@ curl http://localhost:8080/health
 docker build -f Dockerfile.qvillage -t qvillage-standalone:latest .
 docker run -d --restart=always -e HF_API_TOKEN=... -e SLACK_WEBHOOK_URL=... -e HEALTH_PORT=8080 qvillage-standalone:latest
 ```
+
 ## Usage: Docker
 
 ```bash
 docker build -f Dockerfile.qvillage -t qvillage-standalone:latest .
 docker run -d --restart=always -e HF_API_TOKEN=... -e SLACK_WEBHOOK_URL=... -e HEALTH_PORT=8080 qvillage-standalone:latest
 ```
+
 # Autoclone & Standalone Mode — QMOI / QVillage
 
 This short guide explains the autoclone + standalone runner mode so QMOI/QVillage can run independently of any external hosting platform.

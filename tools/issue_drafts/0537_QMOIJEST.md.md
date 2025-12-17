@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "QMOIJEST"
 qmoi_validation_frontmatter: true
@@ -60,8 +60,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install
-     
-```
+
+````
 
 Notes:
 

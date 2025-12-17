@@ -10,16 +10,16 @@ qmoi_validation_frontmatter: true
 
 ## Summary of matches
 
-- Line 8: async connect() { /* TODO: Implement HDMI-CEC/DLNA connect */ return true; },
-- Line 9: async sendCommand(cmd) { /* TODO: Implement TV/decoder command */ return {}; },
-- Line 10: async autoDetect() { /* TODO: Auto-detect TV/decoder */ return true; }
-- Line 14: async connect() { /* TODO: Implement Bluetooth/Auto/CarPlay connect */ return true; },
-- Line 15: async sendCommand(cmd) { /* TODO: Implement car radio command */ return {}; },
-- Line 16: async autoDetect() { /* TODO: Auto-detect car radio */ return true; }
-- Line 20: async connect() { /* TODO: Implement MQTT/Zigbee/Z-Wave connect */ return true; },
-- Line 21: async sendCommand(cmd) { /* TODO: Implement smart home command */ return {}; },
-- Line 22: async autoDetect() { /* TODO: Auto-detect smart home */ return true; }
-- Line 26: async connect() { /* TODO: Implement WhatsApp connect */ return true; },
+- Line 8: async connect() { /_ TODO: Implement HDMI-CEC/DLNA connect _/ return true; },
+- Line 9: async sendCommand(cmd) { /_ TODO: Implement TV/decoder command _/ return {}; },
+- Line 10: async autoDetect() { /_ TODO: Auto-detect TV/decoder _/ return true; }
+- Line 14: async connect() { /_ TODO: Implement Bluetooth/Auto/CarPlay connect _/ return true; },
+- Line 15: async sendCommand(cmd) { /_ TODO: Implement car radio command _/ return {}; },
+- Line 16: async autoDetect() { /_ TODO: Auto-detect car radio _/ return true; }
+- Line 20: async connect() { /_ TODO: Implement MQTT/Zigbee/Z-Wave connect _/ return true; },
+- Line 21: async sendCommand(cmd) { /_ TODO: Implement smart home command _/ return {}; },
+- Line 22: async autoDetect() { /_ TODO: Auto-detect smart home _/ return true; }
+- Line 26: async connect() { /_ TODO: Implement WhatsApp connect _/ return true; },
 
 ## Recommended action
 

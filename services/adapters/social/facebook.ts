@@ -74,10 +74,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
     return ApprovalFlow.checkApproval(requestId);
   }
 
-  async createPost(
-    content: unknown,
-    requireApproval: boolean = true
-  ): Promise<string> {
+  async createPost(content: unknown, requireApproval = true): Promise<string> {
     if (!this.config) {
       throw new Error("Facebook adapter not initialized");
     }

@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     if (!amount || amount < 10) {
       return NextResponse.json(
         { error: "Invalid amount - minimum KES 10" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     console.error("Deposit API error:", error);
     return NextResponse.json(
       { error: "Failed to initiate deposit" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

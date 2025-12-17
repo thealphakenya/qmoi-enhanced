@@ -141,14 +141,16 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   return (
     <Card className="space-y-4">
       <CardHeader>
-  <Typography variant="h6">QNews Dashboard</Typography>
+        <Typography variant="h6">QNews Dashboard</Typography>
       </CardHeader>
       <CardContent>
         <div className="mb-4">
           <TextField
             label="Title"
             value={form.title}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, title: e.target.value }))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setForm((f) => ({ ...f, title: e.target.value }))
+            }
             sx={{ mb: 2 }}
             fullWidth
             size="small"
@@ -156,7 +158,9 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
           <TextField
             label="Content"
             value={form.content}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, content: e.target.value }))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setForm((f) => ({ ...f, content: e.target.value }))
+            }
             sx={{ mb: 2 }}
             fullWidth
             size="small"
@@ -166,7 +170,9 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
               <TextField
                 label="Category (e.g. earning, project, marketing, global, local)"
                 value={form.category}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, category: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setForm((f) => ({ ...f, category: e.target.value }))
+                }
                 sx={{ mb: 2 }}
                 fullWidth
                 size="small"
@@ -175,7 +181,9 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                 <TextField
                   label="Media URL"
                   value={mediaUrl}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMediaUrl(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setMediaUrl(e.target.value)
+                  }
                   sx={{ flex: 1 }}
                   size="small"
                 />
@@ -204,7 +212,9 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
           <TextField
             label="Schedule (ISO, optional)"
             value={form.scheduledAt}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, scheduledAt: e.target.value }))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setForm((f) => ({ ...f, scheduledAt: e.target.value }))
+            }
             sx={{ mb: 2 }}
             fullWidth
             size="small"

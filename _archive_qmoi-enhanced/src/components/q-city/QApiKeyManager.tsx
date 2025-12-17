@@ -50,10 +50,15 @@ const QApiKeyManager: React.FC = () => {
   return (
     <Card className="space-y-4 mt-4">
       <CardHeader>
-  <Typography variant="h6">Q API Key Manager</Typography>
+        <Typography variant="h6">Q API Key Manager</Typography>
       </CardHeader>
       <CardContent>
-  <Button onClick={createKey} sx={{ mb: 2 }} variant="contained" color="primary">
+        <Button
+          onClick={createKey}
+          sx={{ mb: 2 }}
+          variant="contained"
+          color="primary"
+        >
           Generate New Key
         </Button>
         <table className="w-full text-sm">

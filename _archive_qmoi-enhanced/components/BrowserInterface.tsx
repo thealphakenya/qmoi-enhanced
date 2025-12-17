@@ -10,14 +10,14 @@
 // import { Alert, AlertDescription } from '../ui/alert';
 // import { browserService } from '../services/BrowserService';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Globe, 
-  ArrowLeft, 
-  ArrowRight, 
-  RefreshCw, 
-  Home, 
-  Bookmark, 
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Globe,
+  ArrowLeft,
+  ArrowRight,
+  RefreshCw,
+  Home,
+  Bookmark,
   Download,
   Settings,
   Shield,
@@ -57,8 +57,8 @@ import {
   Smartphone,
   Tablet,
   Laptop,
-  Monitor as MonitorIcon
-} from 'lucide-react';
+  Monitor as MonitorIcon,
+} from "lucide-react";
 
 interface BrowserTab {
   id: string;
@@ -82,8 +82,8 @@ interface LiveContent {
 export default function BrowserInterface() {
   const [tabs, setTabs] = useState<BrowserTab[]>([]);
   const [activeTabId, setActiveTabId] = useState<string | null>(null);
-  const [urlInput, setUrlInput] = useState<string>('');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [urlInput, setUrlInput] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [bookmarks, setBookmarks] = useState<any[]>([]);
   const [downloads, setDownloads] = useState<any[]>([]);
   const [settings, setSettings] = useState<any>({});
@@ -91,9 +91,9 @@ export default function BrowserInterface() {
   const [liveContent, setLiveContent] = useState<LiveContent | null>(null);
   const [developerTools, setDeveloperTools] = useState<boolean>(false);
   const [incognitoMode, setIncognitoMode] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>('browser');
+  const [activeTab, setActiveTab] = useState<string>("browser");
   const [searchSuggestions, setSearchSuggestions] = useState<string[]>([]);
-  const [contentSummary, setContentSummary] = useState<string>('');
+  const [contentSummary, setContentSummary] = useState<string>("");
   const [isRecording, setIsRecording] = useState<boolean>(false);
 
   const urlInputRef = useRef<HTMLInputElement>(null);
@@ -116,57 +116,46 @@ export default function BrowserInterface() {
     // browserService.onTabCreated((tab: any) => {
     //   setTabs(prev => [...prev, tab]);
     // });
-
     // browserService.onTabActivated(({ tabId }: any) => {
     //   setActiveTabId(tabId);
     //   setTabs(prev => prev.map(tab => ({ ...tab, isActive: tab.id === tabId })));
     // });
-
     // browserService.onTabClosed(({ tabId }: any) => {
     //   setTabs(prev => prev.filter(tab => tab.id !== tabId));
     // });
-
     // browserService.onNavigationStarted(({ tabId, url }: any) => {
-    //   setTabs(prev => prev.map(tab => 
+    //   setTabs(prev => prev.map(tab =>
     //     tab.id === tabId ? { ...tab, isLoading: true, url } : tab
     //   ));
     // });
-
     // browserService.onNavigationCompleted(({ tabId, url }: any) => {
-    //   setTabs(prev => prev.map(tab => 
+    //   setTabs(prev => prev.map(tab =>
     //     tab.id === tabId ? { ...tab, isLoading: false, url } : tab
     //   ));
     //   setUrlInput(url);
     // });
-
     // browserService.onSearchSuggestions(({ tabId, suggestions }: any) => {
     //   setSearchSuggestions(suggestions);
     // });
-
     // browserService.onContentSummary(({ tabId, summary }: any) => {
     //   setContentSummary(summary);
     // });
-
     // browserService.onLiveContent(({ tabId, content }: any) => {
     //   setLiveContent(content);
     // });
-
     // browserService.onBookmarkAdded((bookmark: any) => {
     //   setBookmarks(prev => [...prev, bookmark]);
     // });
-
     // browserService.onDownloadStarted((download: any) => {
     //   setDownloads(prev => [...prev, download]);
     // });
-
     // browserService.onDownloadProgress(({ downloadId, progress }: any) => {
-    //   setDownloads(prev => prev.map(d => 
+    //   setDownloads(prev => prev.map(d =>
     //     d.id === downloadId ? { ...d, progress } : d
     //   ));
     // });
-
     // browserService.onDownloadCompleted((download: any) => {
-    //   setDownloads(prev => prev.map(d => 
+    //   setDownloads(prev => prev.map(d =>
     //     d.id === download.id ? { ...d, status: 'completed' } : d
     //   ));
     // });
@@ -187,11 +176,11 @@ export default function BrowserInterface() {
 
   const handleNavigate = async () => {
     if (!activeTabId || !urlInput) return;
-    
+
     try {
       // await browserService.navigateToUrl(activeTabId, urlInput);
     } catch (error) {
-      console.error('Navigation failed:', error);
+      console.error("Navigation failed:", error);
     }
   };
 
@@ -247,7 +236,6 @@ export default function BrowserInterface() {
   const handleAddBookmark = () => {
     // const activeTab = browserService.getActiveTab();
     // if (!activeTab) return;
-    
     // browserService.addBookmark(activeTab.id, activeTab.title, activeTab.url);
   };
 
@@ -255,7 +243,7 @@ export default function BrowserInterface() {
     try {
       // await browserService.downloadFile(url, filename);
     } catch (error) {
-      console.error('Download failed:', error);
+      console.error("Download failed:", error);
     }
   };
 
@@ -266,23 +254,27 @@ export default function BrowserInterface() {
 
   const handleUpdateAIFeature = (featureId: string, updates: any) => {
     // browserService.updateAIFeature(featureId, updates);
-    setAiFeatures(prev => prev.map(f => 
-      f.id === featureId ? { ...f, ...updates } : f
-    ));
+    setAiFeatures((prev) =>
+      prev.map((f) => (f.id === featureId ? { ...f, ...updates } : f)),
+    );
   };
 
-  const getActiveTab = () => tabs.find(tab => tab.id === activeTabId);
+  const getActiveTab = () => tabs.find((tab) => tab.id === activeTabId);
 
   const renderTab = (tab: BrowserTab) => (
     <div
       key={tab.id}
       className={`flex items-center space-x-2 px-3 py-2 border-b-2 cursor-pointer ${
-        tab.isActive ? 'border-blue-500 bg-blue-50' : 'border-transparent hover:bg-gray-100'
+        tab.isActive
+          ? "border-blue-500 bg-blue-50"
+          : "border-transparent hover:bg-gray-100"
       }`}
       onClick={() => handleActivateTab(tab.id)}
     >
       <span className="text-sm">{tab.favicon}</span>
-      <span className={`text-sm truncate max-w-32 ${tab.isActive ? 'font-medium' : ''}`}>
+      <span
+        className={`text-sm truncate max-w-32 ${tab.isActive ? "font-medium" : ""}`}
+      >
         {tab.title}
       </span>
       {tab.isLoading && <RefreshCw className="h-3 w-3 animate-spin" />}
@@ -304,7 +296,10 @@ export default function BrowserInterface() {
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {liveContent?.channels.map((channel, index) => (
-          <Card key={index} className="cursor-pointer hover:shadow-lg transition-shadow">
+          <Card
+            key={index}
+            className="cursor-pointer hover:shadow-lg transition-shadow"
+          >
             <CardHeader className="pb-2">
               <div className="flex items-center space-x-2">
                 <Tv className="h-5 w-5 text-blue-500" />
@@ -325,5 +320,10 @@ export default function BrowserInterface() {
     </div>
   );
 
-  return <div style={{ padding: 32, color: 'red' }}>BrowserInterface is disabled due to missing UI modules and services. Please restore or implement the required dependencies.</div>;
-} 
+  return (
+    <div style={{ padding: 32, color: "red" }}>
+      BrowserInterface is disabled due to missing UI modules and services.
+      Please restore or implement the required dependencies.
+    </div>
+  );
+}

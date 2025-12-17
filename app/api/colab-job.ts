@@ -1,13 +1,13 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
+import type { NextApiRequest, NextApiResponse } from "next";
+import fs from "fs";
 
-const JOBS_PATH = '/workspaces/Alpha-Q-ai/colab-jobs-log.jsonl';
+const JOBS_PATH = "/workspaces/Alpha-Q-ai/colab-jobs-log.jsonl";
 
 // Install package in Colab/cloud (stub)
-async function installPackage(pkg: string, manager: 'npm' | 'pip' = 'npm') {
+async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
   // const axios = await import('axios');
   // TODO: Real API call to Colab/cloud to install package
-  return { status: 'success', pkg, manager };
+  return { status: "success", pkg, manager };
 }
 
 // Upload dataset to Colab/cloud (stub)
@@ -18,7 +18,7 @@ interface Dataset {
 async function uploadDataset(dataset: Dataset) {
   // const axios = await import('axios');
   // TODO: Real API call to upload dataset
-  return { status: 'success', dataset: dataset.name };
+  return { status: "success", dataset: dataset.name };
 }
 
 // Execute job in Colab/cloud (stub)
@@ -28,23 +28,26 @@ interface JobSpec {
 async function executeColabJob(jobSpec: JobSpec) {
   // const axios = await import('axios');
   // TODO: Real API call to execute job
-  return { status: 'running', jobId: Date.now(), jobSpec };
+  return { status: "running", jobId: Date.now(), jobSpec };
 }
 
 // Track job status (stub)
 async function getColabJobStatus(jobId: number) {
   // const axios = await import('axios');
   // TODO: Real API call to get job status
-  return { jobId, status: 'completed', result: 'Job result data' };
+  return { jobId, status: "completed", result: "Job result data" };
 }
 
 function persistJob(job: Record<string, unknown>) {
-  fs.appendFileSync(JOBS_PATH, JSON.stringify(job) + '\n');
+  fs.appendFileSync(JOBS_PATH, JSON.stringify(job) + "\n");
 }
 
 // Extend API handler to support new endpoints
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  if (req.method === "POST") {
     if (req.query.installPackage) {
       const { pkg, manager } = req.body;
       const result = await installPackage(pkg, manager);
@@ -71,7 +74,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         projectId,
         projectType,
         projectName,
-        source: 'project_automation',
+        source: "project_automation",
       };
       const result = await executeColabJob(jobSpec);
       persistJob({ ...result, type: projectType, name: projectName });
@@ -83,7 +86,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       id: Date.now(),
       type,
       name,
-      status: 'success',
+      status: "success",
       started: new Date().toISOString(),
       finished: new Date().toISOString(),
       result: `Simulated Colab job for ${type}: ${name}`,
@@ -91,13 +94,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     persistJob(job);
     return res.json(job);
   }
-  if (req.method === 'GET') {
+  if (req.method === "GET") {
     // Return all jobs
     if (fs.existsSync(JOBS_PATH)) {
-      const jobs = fs.readFileSync(JOBS_PATH, 'utf8').split('\n').filter(Boolean).map(line => JSON.parse(line));
+      const jobs = fs
+        .readFileSync(JOBS_PATH, "utf8")
+        .split("\n")
+        .filter(Boolean)
+        .map((line) => JSON.parse(line));
       return res.json(jobs);
     }
     return res.json([]);
   }
-  res.status(405).json({ error: 'Method not allowed' });
+  res.status(405).json({ error: "Method not allowed" });
 }

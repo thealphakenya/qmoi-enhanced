@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -23,12 +24,15 @@ This file provides development commands to run and view the main QMOI applicatio
 **Features:** Modern PWA, responsive UI, real-time dashboard, chat, charts, installable on any device.
 
 **Run Command:**
+
 ```bash
 cd qmoi-space-pwa
 # If dependencies are needed: npm install
 npx serve .
 ```
+
 **Access:**
+
 - Open [http://localhost:5000](http://localhost:5000) in your browser.
 - All PWA features (offline, install prompt, notifications) should be available.
 
@@ -39,10 +43,13 @@ npx serve .
 **Features:** Device management, error tracking, resource monitoring, notifications, self-healing, API endpoints, React UI.
 
 **Run Command:**
+
 ```bash
 npm run dev
 ```
+
 **Access:**
+
 - Open [http://localhost:3000/qcity](http://localhost:3000/qcity) in your browser.
 - All QCity features (device status, audit log, remote commands, plugins, metrics) should be available as per `QCITYREADME.md` and related files.
 
@@ -53,16 +60,20 @@ npm run dev
 **Features:** AI-powered development, automation, documentation, error fixing, multi-project management, gaming, financial tools.
 
 **Run Command:**
+
 ```bash
 npm run dev
 ```
+
 **Access:**
+
 - Open [http://localhost:3000](http://localhost:3000) in your browser.
 - All main app features (AI tools, dashboards, gaming cloud, voice/vision, project management) should be available as described in `QMOI-ENHANCED-FEATURES.md`, `QMOI-ENHANCED-README.md`, and related docs.
 
 ---
 
 ## Verification Checklist
+
 - After running each command, open the corresponding URL in your browser.
 - Ensure all UI features and functionality match the documentation in the related `.md` files (see QMOISPACEUI.md, QCITYREADME.md, QMOI-ENHANCED-FEATURES.md, etc).
 - Use browser dev tools to test PWA install, offline mode, notifications, and responsiveness.
@@ -71,32 +82,35 @@ npm run dev
 ---
 
 **Note:**
+
 - If you encounter missing features, errors, or incomplete UI, refer to the respective documentation and feature lists for troubleshooting and development guidance.
 - For advanced automation, error fixing, and cloud deployment, see QMOI Space Dev docs and QMOI Enhanced docs.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/DEVCOMMANDS.md",
-  "validated_at": "2025-10-26T20:51:24.607349Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "DEVCOMMANDS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/DEVCOMMANDS.md",
+"validated_at": "2025-10-26T20:51:24.607349Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "DEVCOMMANDS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

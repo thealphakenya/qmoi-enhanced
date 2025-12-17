@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const sectionStyle: React.CSSProperties = {
   background: "#fff",
@@ -7,16 +7,22 @@ const sectionStyle: React.CSSProperties = {
   padding: 24,
   marginBottom: 24,
   minHeight: 120,
-}
+};
 
 export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
   // Only show if user is Master (Victor)
-  if (user !== 'Victor Kwemoi' && user !== 'thealphakenya@gmail.com') return null
+  if (user !== "Victor Kwemoi" && user !== "thealphakenya@gmail.com")
+    return null;
   return (
-    <div style={{ padding: 24, maxWidth: 900, margin: '0 auto' }}>
-      <h2 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>Qi Spaces (Master Only)</h2>
-      <p style={{ marginBottom: 32 }}>Welcome, Master Victor! Here you can manage all your goals, achievements, projects, wallet, routines, reminders, and more.</p>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+    <div style={{ padding: 24, maxWidth: 900, margin: "0 auto" }}>
+      <h2 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>
+        Qi Spaces (Master Only)
+      </h2>
+      <p style={{ marginBottom: 32 }}>
+        Welcome, Master Victor! Here you can manage all your goals,
+        achievements, projects, wallet, routines, reminders, and more.
+      </p>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
         <div style={sectionStyle}>
           <h3>Life Goals</h3>
           <ul>
@@ -75,5 +81,5 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

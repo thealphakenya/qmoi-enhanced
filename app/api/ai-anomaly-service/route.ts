@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
         {
           error: e instanceof Error ? e.message : String(e),
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
         {
           error: e instanceof Error ? e.message : String(e),
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }

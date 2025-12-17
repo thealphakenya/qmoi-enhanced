@@ -34,7 +34,7 @@ All git operations (commit, push, pull, error-fix, notifications) are now handle
 - Notifications are sent to all configured channels.
 - All actions are logged and visible in the QCity dashboard (master-only).
 
-See `ALLMDFILESREFS.md` for full documentation and update history. 
+See `ALLMDFILESREFS.md` for full documentation and update history.
 ```
 
 Notes:

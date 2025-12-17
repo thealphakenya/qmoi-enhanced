@@ -1,44 +1,59 @@
-import { SocialPlatformAdapter, PlatformConfig, ApprovalFlow } from '../types';
+import { SocialPlatformAdapter, PlatformConfig, ApprovalFlow } from "../types";
 
 export class InstagramAdapter implements SocialPlatformAdapter {
-  platformId = 'instagram';
+  platformId = "instagram";
   private config?: PlatformConfig;
 
   async initialize(config: PlatformConfig) {
     this.config = config;
-    console.log('[InstagramAdapter] initialized (dryRun=%s)', !!config.dryRun);
+    console.log("[InstagramAdapter] initialized (dryRun=%s)", !!config.dryRun);
   }
 
-  async validateCredentials() { return !!this.config?.credentials?.accessToken; }
-  async requestApproval(action: string, payload: unknown) { return ApprovalFlow.requestApproval(this.platformId, action, payload); }
-  async isApproved(requestId: string) { return ApprovalFlow.checkApproval(requestId); }
-  async getAnalytics() { return { followers: 0 }; }
-  async createPost(content: unknown, approval: boolean = true) { 
+  async validateCredentials() {
+    return !!this.config?.credentials?.accessToken;
+  }
+  async requestApproval(action: string, payload: unknown) {
+    return ApprovalFlow.requestApproval(this.platformId, action, payload);
+  }
+  async isApproved(requestId: string) {
+    return ApprovalFlow.checkApproval(requestId);
+  }
+  async getAnalytics() {
+    return { followers: 0 };
+  }
+  async createPost(content: unknown, approval = true) {
     if (approval || this.config?.requireMasterApproval) {
-      const r = await this.requestApproval('createPost', { content });
+      const r = await this.requestApproval("createPost", { content });
       return `approval:${r.id}`;
     }
     return `ig-post-${Date.now()}`;
   }
-  async deletePost(postId: string) { console.log('[InstagramAdapter] dry delete', postId); return true; }
-  async getEngagementMetrics(postId: string) { return { likes: 0, comments: 0 }; }
+  async deletePost(postId: string) {
+    console.log("[InstagramAdapter] dry delete", postId);
+    return true;
+  }
+  async getEngagementMetrics(postId: string) {
+    return { likes: 0, comments: 0 };
+  }
 }
 
 export default InstagramAdapter;
-import { z } from 'zod';
+import { z } from "zod";
 import {
   PlatformConfig,
   PlatformConfigSchema,
   SocialPlatformAdapter,
-  ApprovalFlow
-} from '../types';
+  ApprovalFlow,
+} from "../types";
 
 // Instagram-specific configuration schema
 export const InstagramConfigSchema = PlatformConfigSchema.extend({
   // Instagram Graph API settings
-  graphApiVersion: z.string().default('v18.0'),
+  graphApiVersion: z.string().default("v18.0"),
   businessAccountId: z.string().optional(),
-  mediaTypes: z.array(z.enum(['IMAGE', 'VIDEO', 'CAROUSEL', 'REELS', 'STORY'])).default(['IMAGE']),
+  mediaTypes: z
+    .array(z.enum(["IMAGE", "VIDEO", "CAROUSEL", "REELS", "STORY"]))
+    .default(["IMAGE"]),
 });
 
 export type InstagramConfig = z.infer<typeof InstagramConfigSchema>;
@@ -54,21 +69,21 @@ interface InstagramPostMetrics {
 }
 
 export class InstagramAdapter implements SocialPlatformAdapter {
-  readonly platformId = 'instagram';
+  readonly platformId = "instagram";
   private config: InstagramConfig | null = null;
   private accessToken: string | null = null;
 
   async initialize(config: PlatformConfig): Promise<void> {
     // Validate and parse config
     this.config = InstagramConfigSchema.parse(config);
-    
+
     if (this.config.sandboxMode) {
-      console.log('[Instagram] Running in sandbox mode');
+      console.log("[Instagram] Running in sandbox mode");
       return;
     }
 
     if (!this.config.credentials?.accessToken) {
-      throw new Error('Instagram access token is required in production mode');
+      throw new Error("Instagram access token is required in production mode");
     }
 
     // Validate access token in production mode
@@ -77,7 +92,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
   async validateCredentials(): Promise<boolean> {
     if (!this.config) {
-      throw new Error('Instagram adapter not initialized');
+      throw new Error("Instagram adapter not initialized");
     }
 
     if (this.config.sandboxMode) {
@@ -90,7 +105,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
   async requestApproval(action: string, payload: unknown): Promise<any> {
     if (!this.config) {
-      throw new Error('Instagram adapter not initialized');
+      throw new Error("Instagram adapter not initialized");
     }
 
     return ApprovalFlow.requestApproval(this.platformId, action, payload);
@@ -100,59 +115,59 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     return ApprovalFlow.checkApproval(requestId);
   }
 
-  async createPost(content: unknown, requireApproval: boolean = true): Promise<string> {
+  async createPost(content: unknown, requireApproval = true): Promise<string> {
     if (!this.config) {
-      throw new Error('Instagram adapter not initialized');
+      throw new Error("Instagram adapter not initialized");
     }
 
     // Validate content format
-    if (typeof content !== 'object' || !content || !('mediaUrl' in content)) {
-      throw new Error('Invalid Instagram post content - must include mediaUrl');
+    if (typeof content !== "object" || !content || !("mediaUrl" in content)) {
+      throw new Error("Invalid Instagram post content - must include mediaUrl");
     }
 
     if (this.config.requireMasterApproval && requireApproval) {
-      const approval = await this.requestApproval('create_post', content);
-      if (!await this.isApproved(approval.id)) {
-        throw new Error('Post creation not approved');
+      const approval = await this.requestApproval("create_post", content);
+      if (!(await this.isApproved(approval.id))) {
+        throw new Error("Post creation not approved");
       }
     }
 
     if (this.config.sandboxMode) {
-      console.log('[Instagram Sandbox] Would create post:', content);
+      console.log("[Instagram Sandbox] Would create post:", content);
       return `mock-ig-post-${Date.now()}`;
     }
 
     // In production mode, would make actual Graph API call
     // Proper implementation would handle multi-step media upload
-    console.log('[Instagram] Creating post via Graph API v18.0');
+    console.log("[Instagram] Creating post via Graph API v18.0");
     return `ig-post-${Date.now()}`;
   }
 
   async deletePost(postId: string): Promise<boolean> {
     if (!this.config) {
-      throw new Error('Instagram adapter not initialized');
+      throw new Error("Instagram adapter not initialized");
     }
 
     if (this.config.requireMasterApproval) {
-      const approval = await this.requestApproval('delete_post', { postId });
-      if (!await this.isApproved(approval.id)) {
-        throw new Error('Post deletion not approved');
+      const approval = await this.requestApproval("delete_post", { postId });
+      if (!(await this.isApproved(approval.id))) {
+        throw new Error("Post deletion not approved");
       }
     }
 
     if (this.config.sandboxMode) {
-      console.log('[Instagram Sandbox] Would delete post:', postId);
+      console.log("[Instagram Sandbox] Would delete post:", postId);
       return true;
     }
 
     // In production mode, would make actual Graph API call
-    console.log('[Instagram] Deleting post:', postId);
+    console.log("[Instagram] Deleting post:", postId);
     return true;
   }
 
   async getEngagementMetrics(postId: string): Promise<InstagramPostMetrics> {
     if (!this.config) {
-      throw new Error('Instagram adapter not initialized');
+      throw new Error("Instagram adapter not initialized");
     }
 
     if (this.config.sandboxMode) {
@@ -166,17 +181,17 @@ export class InstagramAdapter implements SocialPlatformAdapter {
         shares: Math.floor(Math.random() * 50),
         reach: Math.floor(Math.random() * 3000),
         impressions,
-        engagementRate: (likes / impressions) * 100
+        engagementRate: (likes / impressions) * 100,
       };
     }
 
     // In production mode, would fetch real metrics via Graph API
-    throw new Error('Production metrics fetching not yet implemented');
+    throw new Error("Production metrics fetching not yet implemented");
   }
 
   async getAnalytics(): Promise<unknown> {
     if (!this.config) {
-      throw new Error('Instagram adapter not initialized');
+      throw new Error("Instagram adapter not initialized");
     }
 
     if (this.config.sandboxMode) {
@@ -184,16 +199,18 @@ export class InstagramAdapter implements SocialPlatformAdapter {
         totalFollowers: Math.floor(Math.random() * 10000),
         reachLast7Days: Math.floor(Math.random() * 50000),
         impressionsLast7Days: Math.floor(Math.random() * 100000),
-        topPosts: Array(3).fill(null).map((_, i) => ({
-          id: `mock-post-${i}`,
-          type: this.config?.mediaTypes[0],
-          reach: Math.floor(Math.random() * 5000),
-          engagement: Math.floor(Math.random() * 2000)
-        }))
+        topPosts: Array(3)
+          .fill(null)
+          .map((_, i) => ({
+            id: `mock-post-${i}`,
+            type: this.config?.mediaTypes[0],
+            reach: Math.floor(Math.random() * 5000),
+            engagement: Math.floor(Math.random() * 2000),
+          })),
       };
     }
 
     // In production mode, would fetch real analytics via Graph API
-    throw new Error('Production analytics fetching not yet implemented');
+    throw new Error("Production analytics fetching not yet implemented");
   }
 }

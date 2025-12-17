@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -12,12 +13,12 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-
 # HOOKS.md
 
 This file documents all hooks in the `hooks/` directory, their usage, and integration for QCity, QMOI AI, and QMOI Space. All hooks are checked to ensure they are used and served as expected. Unused or duplicate hooks are marked for removal.
 
 ## Directory Structure
+
 ```
 hooks/
 ├── use-mobile.tsx
@@ -51,11 +52,13 @@ hooks/
 ```
 
 ## Usage & Integration
+
 - All hooks above are checked for usage in QCity, QMOI AI, and QMOI Space. Each is integrated into main apps, dashboards, or context providers.
 - Unused/duplicate hooks are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 - Hook features are confirmed to be used and served in all main apps and platforms.
 
 ## Automation & Health
+
 - All hooks are referenced in `ALLMDFILESREFS.md` and planned for further enhancement and integration.
 - Automation ensures every hook is used, and unused ones are logged for removal.
 
@@ -70,6 +73,7 @@ hooks/
 - A standalone helper script `scripts/sync_memory.py` is provided to run sync from CI, cron, or automation pipelines.
 
 Security & production notes:
+
 - Do not expose `/sync/*` endpoints publicly without authentication. In production, front these endpoints with proper auth (JWT or API key) and rate limiting.
 - When configuring HF/GH tokens, use repo secrets or environment secrets; avoid storing tokens in the repository.
 
@@ -81,16 +85,16 @@ Security & production notes:
 - QMOI provides all paid/subscription features of major platforms for free, with unlimited parallel jobs, advanced analytics, and premium integrations.
 - All automation, error fixing, and autotesting is handled by QMOI runners and QCity cloud, ensuring no paid runners or billing issues.
 - All hooks, downloads, builds, tests, health checks, and runners are referenced and autotested in:
-	- `QMOIFREE.md` (zero-rated features)
-	- `DOWNLOADQMOIAIAPPALLDEVICES.md` (downloads)
-	- `BUILDAPPSFORALLPLATFORMS.md` (builds)
-	- `TESTREADME.md` (testing)
-	- `ALLERRORSSTATSQMOI.md` (device error stats)
-	- `QMOI-ENHANCED-README.md` (enhanced automation)
-	- `QMOI-ENHANCEMENT-SUMMARY.md` (enhancement summary)
-	- `QMOIGITPODDEV.md` (Gitpod automation)
-	- `QMOIAUTOREVENUEEARN.md` (auto revenue)
-	- `ALLMDFILESREFS.md` (master .md index)
+  - `QMOIFREE.md` (zero-rated features)
+  - `DOWNLOADQMOIAIAPPALLDEVICES.md` (downloads)
+  - `BUILDAPPSFORALLPLATFORMS.md` (builds)
+  - `TESTREADME.md` (testing)
+  - `ALLERRORSSTATSQMOI.md` (device error stats)
+  - `QMOI-ENHANCED-README.md` (enhanced automation)
+  - `QMOI-ENHANCEMENT-SUMMARY.md` (enhancement summary)
+  - `QMOIGITPODDEV.md` (Gitpod automation)
+  - `QMOIAUTOREVENUEEARN.md` (auto revenue)
+  - `ALLMDFILESREFS.md` (master .md index)
 
 ## Cross-App, Cross-Platform Automation
 
@@ -101,28 +105,30 @@ Security & production notes:
 **Status:** All hooks, features, and automation flows are now checked for usage, integration, and zero-rated operation. No unused/duplicate hooks will remain after next cleanup. All cross-app, cross-platform features are covered and self-healing for QCity, QMOI AI, and QMOI Space.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "HOOKS.md",
-  "validated_at": "2025-10-26T20:51:22.316028Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "HOOKS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "HOOKS.md",
+"validated_at": "2025-10-26T20:51:22.316028Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "HOOKS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

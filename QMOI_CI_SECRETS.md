@@ -16,17 +16,20 @@ base64 -w0 my-release-keystore.jks > keystore.b64
 - `KEY_PASSWORD` : (optional) key password if different from keystore password
 
 Optional secrets:
+
 - `FIREBASE_TOKEN` : for distribution to Firebase App Distribution
 - `PLAY_STORE_JSON` : Service account JSON for Google Play uploads (store in Secrets and mount as file in workflow)
 
 How the workflow uses the secrets:
+
 - `KEYSTORE_BASE64` is decoded in the workflow into `mobile/android/app/keystore.jks`
 - `keystore.properties` is created dynamically in the repo for Gradle signing using the provided passwords and alias
 - Do NOT commit the keystore or passwords to the repo; always use secrets
 
 Security notes:
+
 - Rotate keystore passwords and service account credentials regularly
 - Limit repository admin access to trusted users
 - Use organization-level secrets for multi-repo workflows if needed
 
-*Last updated: 2025-11-24*
+_Last updated: 2025-11-24_

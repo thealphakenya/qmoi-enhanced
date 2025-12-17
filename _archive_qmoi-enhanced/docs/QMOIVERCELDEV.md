@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -17,6 +18,7 @@ qmoi_validation_frontmatter: true
 ## Overview
 
 QMOI now supports self-healing automation for Vercel deployments. The system can:
+
 - Fetch the latest failed deployment and logs via the Vercel API
 - Detect and auto-fix common errors (e.g., typos, missing dependencies)
 - Commit, push, and trigger a redeploy via the Vercel API
@@ -49,8 +51,9 @@ QMOI now supports self-healing automation for Vercel deployments. The system can
 - All actions and fixes are logged in `logs/ci-self-heal.log`
 
 ## See Also
+
 - [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
-- [REFERENCES.md](REFERENCES.md) 
+- [REFERENCES.md](REFERENCES.md)
 
 ## Gmail Notification Integration
 
@@ -59,39 +62,41 @@ QMOI now supports self-healing automation for Vercel deployments. The system can
 - See scripts/ci-self-heal.js and scripts/autotest/advanced_autotest_system.py for implementation details.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/docs/QMOIVERCELDEV.md",
-  "validated_at": "2025-10-26T20:51:24.863796Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Vercel Self-Healing CI/CD Automation"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": [
-        {
-          "label": "QMOIGITLABDEV.md",
-          "target": "./QMOIGITLABDEV.md",
-          "ok": true
-        },
-        {
-          "label": "REFERENCES.md",
-          "target": "./REFERENCES.md",
-          "ok": true
-        }
-      ]
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/docs/QMOIVERCELDEV.md",
+"validated_at": "2025-10-26T20:51:24.863796Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Vercel Self-Healing CI/CD Automation"
+},
+{
+"name": "links",
+"ok": true,
+"detail": [
+{
+"label": "QMOIGITLABDEV.md",
+"target": "./QMOIGITLABDEV.md",
+"ok": true
+},
+{
+"label": "REFERENCES.md",
+"target": "./REFERENCES.md",
+"ok": true
 }
+]
+}
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

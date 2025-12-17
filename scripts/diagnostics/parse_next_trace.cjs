@@ -57,7 +57,7 @@ function main() {
     console.log(
       `${item.total.toString().padStart(8)} ms  | ${item.count
         .toString()
-        .padStart(4)} hits  | ${item.layer.padEnd(8)} | ${item.name}`
+        .padStart(4)} hits  | ${item.layer.padEnd(8)} | ${item.name}`,
     );
   }
   // also show layer totals

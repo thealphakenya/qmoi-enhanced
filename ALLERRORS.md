@@ -66,8 +66,8 @@ qmoi_validation_frontmatter: true
 - ALLERRORS.md:69: - QMOISPACEDEV.md:539: export QMOI_ENABLE_ERROR_RECOVERY="true"
 - ALLERRORS.md:70: - QMOISPACEDEV.md:1217: export QMOI_LOG_LEVEL="DEBUG"
 - ALLERRORS.md:71: - QMOISPACEDEV.md:1218: export QMOI_DEBUG_MODE="true"
-- ALLERRORS.md:72: - QMOI_COMPLETE_SYSTEM.md:383: DEBUG=qmoi:* npm start
-- ALLERRORS.md:73: - QMOI_GITLAB_AUTOMATION.md:430: DEBUG=qmoi:* npm start
+- ALLERRORS.md:72: - QMOI_COMPLETE_SYSTEM.md:383: DEBUG=qmoi:\* npm start
+- ALLERRORS.md:73: - QMOI_GITLAB_AUTOMATION.md:430: DEBUG=qmoi:\* npm start
 - ALLERRORS.md:74: - README.md:72: - [ERRORSTRACKS.md](ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
 - ALLERRORS.md:75: - RELEASETRACKS.md:35: For full error/fix traceability, see [ERRORSTRACKS.md](ERRORSTRACKS.md)
 - ALLERRORS.md:76: - SCRIPTS.md:31: - Unused/duplicate scripts are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
@@ -125,8 +125,8 @@ qmoi_validation_frontmatter: true
 - ALLERRORS.md:128: - qmoi-enhanced/QMOISPACEDEV.md:539: export QMOI_ENABLE_ERROR_RECOVERY="true"
 - ALLERRORS.md:129: - qmoi-enhanced/QMOISPACEDEV.md:1217: export QMOI_LOG_LEVEL="DEBUG"
 - ALLERRORS.md:130: - qmoi-enhanced/QMOISPACEDEV.md:1218: export QMOI_DEBUG_MODE="true"
-- ALLERRORS.md:131: - qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md:373: DEBUG=qmoi:* npm start
-- ALLERRORS.md:132: - qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md:430: DEBUG=qmoi:* npm start
+- ALLERRORS.md:131: - qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md:373: DEBUG=qmoi:\* npm start
+- ALLERRORS.md:132: - qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md:430: DEBUG=qmoi:\* npm start
 - ALLERRORS.md:133: - qmoi-enhanced/TESTREADME.md:354: export TEST_LOG_LEVEL=DEBUG
 - ALLERRORS.md:134: - qmoi-enhanced/TESTREADME.md:441: export DEBUG_MODE=true
 - ALLERRORS.md:135: - qmoi-enhanced/TESTREADME.md:442: export LOG_LEVEL=DEBUG
@@ -196,8 +196,8 @@ qmoi_validation_frontmatter: true
 - QMOISPACEDEV.md:548: export QMOI_ENABLE_ERROR_RECOVERY="true"
 - QMOISPACEDEV.md:1226: export QMOI_LOG_LEVEL="DEBUG"
 - QMOISPACEDEV.md:1227: export QMOI_DEBUG_MODE="true"
-- QMOI_COMPLETE_SYSTEM.md:392: DEBUG=qmoi:* npm start
-- QMOI_GITLAB_AUTOMATION.md:439: DEBUG=qmoi:* npm start
+- QMOI_COMPLETE_SYSTEM.md:392: DEBUG=qmoi:\* npm start
+- QMOI_GITLAB_AUTOMATION.md:439: DEBUG=qmoi:\* npm start
 - README.md:92: - [ERRORSTRACKS.md](ERRORSTRACKS.md) ← Real-time log of all workflow errors, fixes, and related events
 - RELEASETRACKS.md:44: For full error/fix traceability, see [ERRORSTRACKS.md](ERRORSTRACKS.md)
 - SCRIPTS.md:40: - Unused/duplicate scripts are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
@@ -290,8 +290,8 @@ qmoi_validation_frontmatter: true
 - qmoi-enhanced/QMOISPACEDEV.md:548: export QMOI_ENABLE_ERROR_RECOVERY="true"
 - qmoi-enhanced/QMOISPACEDEV.md:1226: export QMOI_LOG_LEVEL="DEBUG"
 - qmoi-enhanced/QMOISPACEDEV.md:1227: export QMOI_DEBUG_MODE="true"
-- qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md:382: DEBUG=qmoi:* npm start
-- qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md:439: DEBUG=qmoi:* npm start
+- qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md:382: DEBUG=qmoi:\* npm start
+- qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md:439: DEBUG=qmoi:\* npm start
 - qmoi-enhanced/TESTREADME.md:363: export TEST_LOG_LEVEL=DEBUG
 - qmoi-enhanced/TESTREADME.md:450: export DEBUG_MODE=true
 - qmoi-enhanced/TESTREADME.md:451: export LOG_LEVEL=DEBUG
@@ -901,59 +901,61 @@ qmoi_validation_frontmatter: true
 - GIT:?? tools/
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "ALLERRORS.md",
-  "validated_at": "2025-10-26T20:51:22.273089Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "ALLERRORS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": [
-        {
-          "label": "ERRORSTRACKS.md",
-          "target": "./ERRORSTRACKS.md",
-          "ok": true
-        },
-        {
-          "label": "ERRORSTRACKS.md",
-          "target": "./ERRORSTRACKS.md",
-          "ok": true
-        },
-        {
-          "label": "ERRORSTRACKS.md",
-          "target": "./ERRORSTRACKS.md",
-          "ok": true
-        },
-        {
-          "label": "ERRORSTRACKS.md",
-          "target": "./ERRORSTRACKS.md",
-          "ok": true
-        },
-        {
-          "label": "ERRORSTRACKS.md",
-          "target": "./ERRORSTRACKS.md",
-          "ok": true
-        },
-        {
-          "label": "ERRORSTRACKS.md",
-          "target": "./ERRORSTRACKS.md",
-          "ok": true
-        }
-      ]
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "ALLERRORS.md",
+"validated_at": "2025-10-26T20:51:22.273089Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "ALLERRORS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": [
+{
+"label": "ERRORSTRACKS.md",
+"target": "./ERRORSTRACKS.md",
+"ok": true
+},
+{
+"label": "ERRORSTRACKS.md",
+"target": "./ERRORSTRACKS.md",
+"ok": true
+},
+{
+"label": "ERRORSTRACKS.md",
+"target": "./ERRORSTRACKS.md",
+"ok": true
+},
+{
+"label": "ERRORSTRACKS.md",
+"target": "./ERRORSTRACKS.md",
+"ok": true
+},
+{
+"label": "ERRORSTRACKS.md",
+"target": "./ERRORSTRACKS.md",
+"ok": true
+},
+{
+"label": "ERRORSTRACKS.md",
+"target": "./ERRORSTRACKS.md",
+"ok": true
 }
+]
+}
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -13,14 +14,16 @@ qmoi_validation_frontmatter: true
 <!-- LION_VALIDATION_END -->
 
 # COMPONENTS.md
+
 ## Usage
 
 Most components are used in the main application page (`app/page.tsx`) and are integrated into the sidebar, main content, or preview sections. Some are used in specialized panels, dashboards, or as context providers. For details, see the import statements and JSX usage in `app/page.tsx` and related files.
 
 ### Example Usage
+
 ```tsx
-import { Chatbot } from '../src/components/Chatbot';
-<Chatbot />
+import { Chatbot } from "../src/components/Chatbot";
+<Chatbot />;
 ```
 
 Props and usage details are documented in each component's file.
@@ -28,6 +31,7 @@ Props and usage details are documented in each component's file.
 ---
 
 ## Automation & Enhancement
+
 - All components are designed to be lightweight, fast, and reliable.
 - QMOI memory is integrated via `QmoiMemoryPanel` and is used everywhere: in all chats, apps, and platforms. It is automated for speed, appearance, reliability, and power.
 - For production, ensure all components are styled, optimized, and tested for performance and reliability.
@@ -36,6 +40,7 @@ Props and usage details are documented in each component's file.
 ---
 
 ## For More Details
+
 - See each component's `.tsx` file for implementation and usage examples.
 - Refer to DEVCOMMANDS.md for development commands.
 - See TRACKS.md, SYNCREPOS.md, and ALLMDFILESREFS.md for automation, memory, and sync features.
@@ -186,11 +191,13 @@ components/
 ```
 
 ## Usage & Integration
+
 - All components above are checked for usage in QCity, QMOI AI, and QMOI Space. Each is integrated into main pages, dashboards, or context providers.
 - Unused/duplicate components are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 - UI features (preview, dashboard, error manager, theme provider, etc.) are confirmed to be used and served in all main apps and platforms.
 
 ## Automation & Health
+
 - All components are referenced in `ALLMDFILESREFS.md` and planned for further enhancement and integration.
 - Automation ensures every component is used, and unused ones are logged for removal.
 
@@ -202,16 +209,16 @@ components/
 - QMOI provides all paid/subscription features of major platforms for free, with unlimited parallel jobs, advanced analytics, and premium integrations.
 - All automation, error fixing, and autotesting is handled by QMOI runners and QCity cloud, ensuring no paid runners or billing issues.
 - All components, downloads, builds, tests, health checks, and runners are referenced and autotested in:
-	- `QMOIFREE.md` (zero-rated features)
-	- `DOWNLOADQMOIAIAPPALLDEVICES.md` (downloads)
-	- `BUILDAPPSFORALLPLATFORMS.md` (builds)
-	- `TESTREADME.md` (testing)
-	- `ALLERRORSSTATSQMOI.md` (device error stats)
-	- `QMOI-ENHANCED-README.md` (enhanced automation)
-	- `QMOI-ENHANCEMENT-SUMMARY.md` (enhancement summary)
-	- `QMOIGITPODDEV.md` (Gitpod automation)
-	- `QMOIAUTOREVENUEEARN.md` (auto revenue)
-	- `ALLMDFILESREFS.md` (master .md index)
+  - `QMOIFREE.md` (zero-rated features)
+  - `DOWNLOADQMOIAIAPPALLDEVICES.md` (downloads)
+  - `BUILDAPPSFORALLPLATFORMS.md` (builds)
+  - `TESTREADME.md` (testing)
+  - `ALLERRORSSTATSQMOI.md` (device error stats)
+  - `QMOI-ENHANCED-README.md` (enhanced automation)
+  - `QMOI-ENHANCEMENT-SUMMARY.md` (enhancement summary)
+  - `QMOIGITPODDEV.md` (Gitpod automation)
+  - `QMOIAUTOREVENUEEARN.md` (auto revenue)
+  - `ALLMDFILESREFS.md` (master .md index)
 
 ## Cross-App, Cross-Platform Automation
 
@@ -222,6 +229,7 @@ components/
 **Status:** All components, features, and automation flows are now checked for usage, integration, and zero-rated operation. No unused/duplicate components will remain after next cleanup. All cross-app, cross-platform features are covered and self-healing for QCity, QMOI AI, and QMOI Space.
 
 ### UI & Functional Components
+
 - AITradingRules.tsx: AI trading rules panel
 - AssetOverview.tsx: Asset overview UI
 - Chatbot.tsx: Main chatbot UI
@@ -250,6 +258,7 @@ Most components are used in the main application page (`app/page.tsx`) and are i
 ---
 
 ## How to Use
+
 - Import the component from its directory (e.g., `import { Chatbot } from '../src/components/Chatbot'`)
 - Add the component to your JSX: `<Chatbot />`
 - Pass props as needed (see each component's file for details)
@@ -257,6 +266,7 @@ Most components are used in the main application page (`app/page.tsx`) and are i
 ---
 
 ## Automation & Enhancement
+
 - All components are designed to be lightweight, fast, and reliable.
 - QMOI memory is integrated via `QmoiMemoryPanel` and can be further enhanced for use in all chats, apps, and platforms.
 - For production, ensure all components are styled, optimized, and tested for performance and reliability.
@@ -264,31 +274,34 @@ Most components are used in the main application page (`app/page.tsx`) and are i
 ---
 
 ## For More Details
+
 - See each component's `.tsx` file for implementation and usage examples.
 - Refer to DEVCOMMANDS.md for development commands.
 - See TRACKS.md, SYNCREPOS.md, and ALLMDFILESREFS.md for automation, memory, and sync features.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "COMPONENTS.md",
-  "validated_at": "2025-10-26T20:51:22.289746Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "COMPONENTS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "COMPONENTS.md",
+"validated_at": "2025-10-26T20:51:22.289746Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "COMPONENTS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

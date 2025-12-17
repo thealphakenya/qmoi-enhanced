@@ -55,6 +55,12 @@ python scripts/qmoi-start.py
 - Docker Compose (production):
   - `docker compose -f deploy/docker-compose.prod.yml up -d`
 
+**CI/CD & Deploy:**
+
+- A GitHub Actions workflow `/.github/workflows/ci-cd.yml` now builds and (when configured) pushes a Docker image to GHCR and can optionally deploy it to a host via SSH.
+- To enable automated deploys, set the repository secrets `DEPLOY_HOST`, `DEPLOY_USER`, and `DEPLOY_SSH_KEY`. For GHCR pushes ensure `packages: write` permission (GITHUB_TOKEN or a PAT).
+- Use `scripts/host-provision.sh` on the host to copy systemd units, enable PM2 startup, or pull a new image and restart the PM2 process (see `docs/DEPLOY.md`).
+
 ### MSW & Testing Notes
 
 - MSW is initialized at test-time via `src/setupTests.ts` and provides a global promise `globalThis.__MSW_READY__` that tests can await.

@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,11 +16,13 @@ qmoi_validation_frontmatter: true
 # QMOI Cloud Features
 
 ## Overview
+
 QCity and QMOI now support advanced, automated cloud integration for offloading, artifact sync, multi-device, and failover. All mobile builds, tests, and error-fixing can be offloaded to the cloud for maximum reliability and minimal device resource usage.
 
 _Last updated: 2024-06-09_
 
 ## Key Cloud Features
+
 - **Cloud Offloading:** All installs, builds, tests, and error-fixing (including mobile) can be run in the cloud/Colab, with results/artifacts synced back to your device.
 - **Cloud Storage:** node_modules, build files, and caches are stored in cloud storage (S3, GCS, etc.) for fast recovery and multi-device use.
 - **Multi-Device/Failover:** Multiple QCity cloud devices can work together, with automatic failover and load balancing.
@@ -30,6 +33,7 @@ _Last updated: 2024-06-09_
 - **Automated Last-Updated Dates:** Documentation and system UIs always show the real last update date.
 
 ## How to Use
+
 - Configure cloud options in `config/qcity-device-config.json` and `config/qmoi_cloud_config.json`.
 - Use dashboard to monitor cloud status, trigger offloading/sync, and view master-only error/fix logs.
 - See `API.md` for cloud endpoints.
@@ -49,28 +53,30 @@ npm run qmoi:automation:autotest
 ---
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOI-CLOUD.md",
-  "validated_at": "2025-10-26T20:51:22.372962Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Cloud Features"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "QMOI-CLOUD.md",
+"validated_at": "2025-10-26T20:51:22.372962Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Cloud Features"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

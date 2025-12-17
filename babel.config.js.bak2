@@ -1,7 +1,8 @@
-export default function (api) {
+// Note: preserved for compatibility. Use babel.config.cjs (CommonJS) for Next build.
+module.exports = function (api) {
   api.cache(true);
   return {
     presets: ["next/babel", "@babel/preset-react"],
     plugins: ["@babel/plugin-syntax-jsx"],
   };
-}
+};

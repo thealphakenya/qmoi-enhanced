@@ -8,9 +8,10 @@
 
 ✅ **Status**: DEPLOYED  
 📍 **Link**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3  
-📋 **Details**: [DEPLOYMENT_STATUS_V1_2_3.md](./DEPLOYMENT_STATUS_V1_2_3.md)  
+📋 **Details**: [DEPLOYMENT_STATUS_V1_2_3.md](./DEPLOYMENT_STATUS_V1_2_3.md)
 
 ### What's Included
+
 - ✅ All 6 QMOI Apps (QMOI AI, QCity, QShare, Yap, QStore, QVillage)
 - ✅ 12+ Platforms (Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA, Smart TV, Wear OS, Docker, and more)
 - ✅ 72+ Total Builds
@@ -99,6 +100,7 @@ git push origin v1.2.3
 ```
 
 **Features:**
+
 - Auto-discovery of Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA builds
 - Platform classification & organization
 - SHA256 checksum generation
@@ -126,6 +128,7 @@ Enhanced bash script for manual/automated release publishing.
 ```
 
 **Features:**
+
 - Asset discovery across multiple directories
 - Platform classification (8+ types)
 - Parallel checksum generation
@@ -151,6 +154,7 @@ python publish-releases-realtime.py --version v1.2.3 --verbose
 ```
 
 **Features:**
+
 - Parallel asset processing
 - Structured logging
 - Comprehensive error handling
@@ -176,6 +180,7 @@ Complete documentation for the real-time release system:
 ---
 
 ### Advanced Automation
+
 - ✅ GitHub Actions triggers on git tags (automatic)
 - ✅ Manual publishing via shell or Python scripts
 - ✅ CI/CD integration (GitLab CI, Jenkins, etc.)
@@ -190,29 +195,32 @@ See detailed guide: `GITHUB_RELEASES_REALTIME_GUIDE.md`
 
 ## 📱 All 6 QMOI Apps
 
-| App | Version | Platforms |
-|-----|---------|-----------|
-| QMOI AI | v1.2.3 | Windows, macOS, Linux, Android, iOS, Smart TV, Raspberry Pi, Chromebook, Web |
-| QCity | v2.0.1 | Windows, macOS, Linux, Android, iOS, Web |
-| QShare | v1.0.0 | Universal (all platforms) |
-| Yap | v1.1.0 | Universal (all platforms) |
-| QStore | v1.0.0 | Universal (all platforms) |
-| QVillage | v1.0.0 | Universal (all platforms) |
+| App      | Version | Platforms                                                                    |
+| -------- | ------- | ---------------------------------------------------------------------------- |
+| QMOI AI  | v1.2.3  | Windows, macOS, Linux, Android, iOS, Smart TV, Raspberry Pi, Chromebook, Web |
+| QCity    | v2.0.1  | Windows, macOS, Linux, Android, iOS, Web                                     |
+| QShare   | v1.0.0  | Universal (all platforms)                                                    |
+| Yap      | v1.1.0  | Universal (all platforms)                                                    |
+| QStore   | v1.0.0  | Universal (all platforms)                                                    |
+| QVillage | v1.0.0  | Universal (all platforms)                                                    |
 
 ---
 
 ## 🖥️ All 12+ Platforms Supported
 
 **Desktop:**
+
 - ✅ Windows (x64, ARM64)
 - ✅ macOS (Intel, Apple Silicon)
 - ✅ Linux (DEB, AppImage)
 
 **Mobile:**
+
 - ✅ Android (Phone, Tablet, TV)
 - ✅ iOS (iPhone, iPad)
 
 **IoT & Specialized:**
+
 - ✅ Raspberry Pi
 - ✅ Chromebook
 - ✅ Web/PWA
@@ -244,6 +252,7 @@ See detailed guide: `GITHUB_RELEASES_REALTIME_GUIDE.md`
 ## 🚀 Quick Start
 
 **Download QMOI AI for Windows:**
+
 1. Visit: https://github.com/thealphakenya/qmoi-enhanced/releases
 2. Download: qmoi-ai.exe
 3. Run installer

@@ -1,16 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Typography from "@mui/material/Typography";
 import { Progress } from "@/components/ui/progress";
-import { youtubeDownload } from '@/adapters/clientAdapters';
-import { FaTimes, FaDownload, FaPlay, FaPause, FaVolumeUp, FaExpand } from 'react-icons/fa';
+import { youtubeDownload } from "@/adapters/clientAdapters";
+import {
+  FaTimes,
+  FaDownload,
+  FaPlay,
+  FaPause,
+  FaVolumeUp,
+  FaExpand,
+} from "react-icons/fa";
 
 // Utility for file download
 function downloadFile(url: string, filename: string) {
-  const a = document.createElement('a');
+  const a = document.createElement("a");
   a.href = url;
   a.download = filename;
   document.body.appendChild(a);
@@ -29,14 +36,29 @@ interface FloatingPreviewWindowProps {
   onContentChange: (content: PreviewContent | null) => void;
 }
 
-export function FloatingPreviewWindow({ onClose, content, onContentChange }: FloatingPreviewWindowProps) {
+export function FloatingPreviewWindow({
+  onClose,
+  content,
+  onContentChange,
+}: FloatingPreviewWindowProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [open, setOpen] = useState(true);
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
-  const [mediaType, setMediaType] = useState<'image'|'video'|'audio'|'pdf'|'zip'|'unzip'|'doc'|'browser'|'other'|null>(null);
+  const [mediaType, setMediaType] = useState<
+    | "image"
+    | "video"
+    | "audio"
+    | "pdf"
+    | "zip"
+    | "unzip"
+    | "doc"
+    | "browser"
+    | "other"
+    | null
+  >(null);
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
   const [position, setPosition] = useState({ x: 100, y: 100 });
   const [dragging, setDragging] = useState(false);
@@ -48,14 +70,14 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
     setDragging(true);
     setOffset({
       x: e.clientX - position.x,
-      y: e.clientY - position.y
+      y: e.clientY - position.y,
     });
   }
   function onMouseMove(e: MouseEvent) {
     if (dragging) {
       setPosition({
         x: e.clientX - offset.x,
-        y: e.clientY - offset.y
+        y: e.clientY - offset.y,
       });
     }
   }
@@ -64,15 +86,15 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
   }
   useEffect(() => {
     if (dragging) {
-      window.addEventListener('mousemove', onMouseMove);
-      window.addEventListener('mouseup', onMouseUp);
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseup", onMouseUp);
     } else {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseup', onMouseUp);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
     }
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseup', onMouseUp);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
     };
   });
 
@@ -81,39 +103,45 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
     const file = e.target.files?.[0];
     if (!file) return;
     const url = URL.createObjectURL(file);
-    if (file.type.startsWith('image/')) setMediaType('image');
-    else if (file.type.startsWith('video/')) setMediaType('video');
-    else if (file.type.startsWith('audio/')) setMediaType('audio');
-    else if (file.type === 'application/pdf') setMediaType('pdf');
-    else if (file.type === 'application/zip' || file.name.endsWith('.zip')) setMediaType('zip');
-    else setMediaType('other');
+    if (file.type.startsWith("image/")) setMediaType("image");
+    else if (file.type.startsWith("video/")) setMediaType("video");
+    else if (file.type.startsWith("audio/")) setMediaType("audio");
+    else if (file.type === "application/pdf") setMediaType("pdf");
+    else if (file.type === "application/zip" || file.name.endsWith(".zip"))
+      setMediaType("zip");
+    else setMediaType("other");
     setMediaUrl(url);
   }
 
   // YouTube handler
   function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>) {
     setYoutubeUrl(e.target.value);
-    setMediaType('video');
+    setMediaType("video");
   }
 
   // Browser logic
   const [browserUrl, setBrowserUrl] = useState<string>("");
   function handleBrowserChange(e: React.ChangeEvent<HTMLInputElement>) {
     setBrowserUrl(e.target.value);
-    setMediaType('browser');
+    setMediaType("browser");
   }
 
   // Text/code/doc editing logic
   const [textContent, setTextContent] = useState<string>("");
   function handleTextEdit(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setTextContent(e.target.value);
-    setMediaType('other');
+    setMediaType("other");
   }
 
   // Download logic
   async function handleDownload() {
     if (mediaUrl && mediaType) {
-      const ext = mediaType === 'video' ? 'mp4' : mediaType === 'audio' ? 'mp3' : mediaType;
+      const ext =
+        mediaType === "video"
+          ? "mp4"
+          : mediaType === "audio"
+            ? "mp3"
+            : mediaType;
       downloadFile(mediaUrl, `Alpha-Q-Downloads/${mediaType}.${ext}`);
       return;
     }
@@ -125,12 +153,12 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
         if (res && res.success !== false && res.url) {
           downloadFile(res.url, `Alpha-Q-Downloads/youtube-${Date.now()}.mp4`);
         } else {
-          alert(`YouTube download failed: ${res?.error || 'unknown'}`);
+          alert(`YouTube download failed: ${res?.error || "unknown"}`);
         }
       } catch (err) {
         setDownloadProgress(0);
-        console.error('youtubeDownload failed', err);
-        alert('YouTube download failed');
+        console.error("youtubeDownload failed", err);
+        alert("YouTube download failed");
       }
     }
   }
@@ -147,14 +175,24 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
     setIsFullscreen(!isFullscreen);
   };
 
-  if (!open) return (
-    <Button className="fixed bottom-4 right-4 z-50" onClick={() => setOpen(true)}>Open Preview</Button>
-  );
+  if (!open)
+    return (
+      <Button
+        className="fixed bottom-4 right-4 z-50"
+        onClick={() => setOpen(true)}
+      >
+        Open Preview
+      </Button>
+    );
 
   return (
-    <Card className={`fixed bottom-4 right-4 w-96 shadow-lg ${isFullscreen ? 'w-screen h-screen' : ''}`}>
+    <Card
+      className={`fixed bottom-4 right-4 w-96 shadow-lg ${isFullscreen ? "w-screen h-screen" : ""}`}
+    >
       <CardHeader className="flex flex-row items-center justify-between p-2">
-        <Typography variant="subtitle2" className="text-sm">Preview Window</Typography>
+        <Typography variant="subtitle2" className="text-sm">
+          Preview Window
+        </Typography>
         <div className="flex gap-2">
           <Button size="small" variant="text" onClick={handleFullscreen}>
             {React.createElement(FaExpand as React.ElementType)}
@@ -167,7 +205,7 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
       <CardContent>
         {content ? (
           <div className="space-y-2">
-            {content.type.startsWith('video/') && (
+            {content.type.startsWith("video/") && (
               <video
                 src={content.url}
                 controls
@@ -177,10 +215,10 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
                 onPause={() => setIsPlaying(false)}
               />
             )}
-            {content.type.startsWith('image/') && (
+            {content.type.startsWith("image/") && (
               <img src={content.url} alt="Preview" className="w-full rounded" />
             )}
-            {content.type.startsWith('audio/') && (
+            {content.type.startsWith("audio/") && (
               <audio
                 src={content.url}
                 controls
@@ -192,7 +230,9 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
             )}
             <div className="flex items-center gap-2">
               <Button size="small" variant="outlined" onClick={handlePlayPause}>
-                {isPlaying ? React.createElement(FaPause as React.ElementType) : React.createElement(FaPlay as React.ElementType)}
+                {isPlaying
+                  ? React.createElement(FaPause as React.ElementType)
+                  : React.createElement(FaPlay as React.ElementType)}
               </Button>
               <div className="flex items-center gap-2 flex-1">
                 {React.createElement(FaVolumeUp as React.ElementType)}
@@ -204,22 +244,24 @@ export function FloatingPreviewWindow({ onClose, content, onContentChange }: Flo
                   onChange={handleVolumeChange}
                   className="w-full"
                 />
-      </div>
+              </div>
               <Button size="small" variant="outlined" onClick={handleDownload}>
                 {React.createElement(FaDownload as React.ElementType)}
-        </Button>
+              </Button>
             </div>
             {downloadProgress > 0 && (
               <div className="space-y-1">
                 <Progress value={downloadProgress} className="w-full" />
-                <p className="text-xs text-gray-500">Downloading... {downloadProgress.toFixed(1)}%</p>
+                <p className="text-xs text-gray-500">
+                  Downloading... {downloadProgress.toFixed(1)}%
+                </p>
               </div>
             )}
-      </div>
+          </div>
         ) : (
           <div className="text-center text-gray-500 py-8">
             No content to preview
-    </div>
+          </div>
         )}
       </CardContent>
     </Card>

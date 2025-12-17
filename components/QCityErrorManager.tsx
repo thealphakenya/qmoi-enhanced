@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useQCity } from '../hooks/useQCity';
-import fs from 'fs';
+import React, { useEffect, useState } from "react";
+import { useQCity } from "../hooks/useQCity";
+import fs from "fs";
 
-const ERRORS_FILE = 'ERRORSREADME.md';
+const ERRORS_FILE = "ERRORSREADME.md";
 
 export const QCityErrorManager: React.FC = () => {
   const { status, trackError, refetchStatus } = useQCity();
@@ -16,20 +16,22 @@ export const QCityErrorManager: React.FC = () => {
     // Save errors to ERRORSREADME.md
     if (errors.length > 0) {
       const content =
-        '# Q-city Error Log\n\n' +
+        "# Q-city Error Log\n\n" +
         errors
           .map(
             (e) =>
-              `- [${e.status === 'resolved' ? 'x' : ' '}] ${e.type} (${e.priority}) - ${e.message} (ID: ${e.id}) @ ${new Date(e.timestamp).toLocaleString()}`
+              `- [${e.status === "resolved" ? "x" : " "}] ${e.type} (${e.priority}) - ${e.message} (ID: ${e.id}) @ ${new Date(e.timestamp).toLocaleString()}`,
           )
-          .join('\n');
+          .join("\n");
       fs.writeFileSync(ERRORS_FILE, content);
     }
   }, [errors]);
 
   const handleFix = (id: string) => {
     // Mark error as resolved and remove from list
-    setErrors((prev) => prev.map((e) => (e.id === id ? { ...e, status: 'resolved' } : e)));
+    setErrors((prev) =>
+      prev.map((e) => (e.id === id ? { ...e, status: "resolved" } : e)),
+    );
     // Optionally call backend to fix error
     const err = errors.find((e) => e.id === id);
     if (
@@ -38,11 +40,11 @@ export const QCityErrorManager: React.FC = () => {
       err.appId &&
       err.type &&
       err.message &&
-      typeof err.timestamp === 'number' &&
+      typeof err.timestamp === "number" &&
       err.priority &&
       err.status
     ) {
-      trackError({ ...err, status: 'resolved' });
+      trackError({ ...err, status: "resolved" });
     }
     refetchStatus();
   };
@@ -51,14 +53,14 @@ export const QCityErrorManager: React.FC = () => {
     setErrors((prev) => prev.filter((e) => e.id !== id));
     // Update file
     const content =
-      '# Q-city Error Log\n\n' +
+      "# Q-city Error Log\n\n" +
       errors
         .filter((e) => e.id !== id)
         .map(
           (e) =>
-            `- [${e.status === 'resolved' ? 'x' : ' '}] ${e.type} (${e.priority}) - ${e.message} (ID: ${e.id}) @ ${new Date(e.timestamp).toLocaleString()}`
+            `- [${e.status === "resolved" ? "x" : " "}] ${e.type} (${e.priority}) - ${e.message} (ID: ${e.id}) @ ${new Date(e.timestamp).toLocaleString()}`,
         )
-        .join('\n');
+        .join("\n");
     fs.writeFileSync(ERRORS_FILE, content);
   };
 
@@ -69,9 +71,10 @@ export const QCityErrorManager: React.FC = () => {
         {errors.map((e) => (
           <li key={e.id}>
             <span>
-              <b>{e.type}</b> ({e.priority}) - {e.message} @ {new Date(e.timestamp).toLocaleString()}
+              <b>{e.type}</b> ({e.priority}) - {e.message} @{" "}
+              {new Date(e.timestamp).toLocaleString()}
             </span>
-            {e.status !== 'resolved' && (
+            {e.status !== "resolved" && (
               <button onClick={() => handleFix(e.id)}>Fix</button>
             )}
             <button onClick={() => handleRemove(e.id)}>Remove</button>
@@ -81,4 +84,4 @@ export const QCityErrorManager: React.FC = () => {
       {errors.length === 0 && <p>No errors found.</p>}
     </div>
   );
-}; 
+};

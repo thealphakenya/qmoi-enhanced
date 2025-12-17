@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "QMOI Registry - Enhanced System Documentation"
 qmoi_validation_frontmatter: true
@@ -54,15 +54,18 @@ The QMOI Registry is the central intelligence and automation hub for the QMOI sy
 - Example: Syncing a real bank API for live balance
   ```bash
   node scripts/qmoi-registry-manager.js --sync-api bank https://api.mybank.com/balance?account=12345
-  ```
+````
+
 - Example: Syncing a trading API for live market data
   ```bash
   node scripts/qmoi-registry-manager.js --sync-api trading https://api.mytrading.com/markets
   ```
 
 ### 4. Auto-Evolution & Self-Healing
+
 - Registry can trigger self-updates, optimizations, and error fixes based on analytics and feedback
 - Example: If a critical error is detected, registry can auto-trigger the auto-enhanc
+
 ```
 
 Notes:
@@ -71,3 +74,4 @@ Notes:
 - Backups and previous runs may exist under `.qmoi_validation`.
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+```

@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
     try {
       const processes = await fs.readdir(logsDir);
       const runningLogs = processes.filter(
-        (file) => file.includes("qmoi_auto_fix") && file.endsWith(".log")
+        (file) => file.includes("qmoi_auto_fix") && file.endsWith(".log"),
       );
 
       if (runningLogs.length > 0) {
@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
       const githubWorkflowsPath = path.join(
         process.cwd(),
         ".github",
-        "workflows"
+        "workflows",
       );
       await fs.access(githubWorkflowsPath);
       const workflows = await fs.readdir(githubWorkflowsPath);
@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
     console.error("Error getting auto-fix status:", error);
     return NextResponse.json(
       { error: "Failed to get auto-fix status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

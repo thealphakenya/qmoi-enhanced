@@ -38,6 +38,7 @@ This file documents all public assets in the `public/` directory, their usage, a
 
 ## Directory Structure
 ```
+
 public/
 ├── favicon.ico
 ├── icon-256.png
@@ -53,6 +54,7 @@ public/
 ├── placeholder.svg
 ├── qcity/
 ├── qcity-icon.svg
+
 ```
 
 ## Usage & Integration

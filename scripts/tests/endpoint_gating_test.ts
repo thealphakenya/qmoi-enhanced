@@ -32,7 +32,7 @@ async function testAiHealthGating(aiHealthGET: any) {
     res1?.status === 401 ||
       (res1?.status === undefined &&
         JSON.stringify(res1)?.includes("Unauthorized")),
-    "ai-health should 401 without API key"
+    "ai-health should 401 without API key",
   );
 
   // With API key -> 200
@@ -43,7 +43,7 @@ async function testAiHealthGating(aiHealthGET: any) {
   } as any);
   assert(
     res2?.status === 200 || res2?.status === undefined,
-    "ai-health should allow valid API key"
+    "ai-health should allow valid API key",
   );
   console.log("ai-health gating tests passed");
 }
@@ -72,11 +72,11 @@ async function testLanguagePlaceholders(languageHandler: any) {
       body: { action: "translate" },
       headers: makeHeaders(),
     } as any,
-    res as any
+    res as any,
   );
   assert(
     res.statusCode === 401 || (res.body && res.body.error),
-    "language route should 401 without key"
+    "language route should 401 without key",
   );
 
   // With key -> 501 placeholder
@@ -99,14 +99,14 @@ async function testLanguagePlaceholders(languageHandler: any) {
       body: { action: "translate" },
       headers: makeHeaders({ "x-api-key": "test-api" }),
     } as any,
-    res2 as any
+    res2 as any,
   );
   assert(
     res2.statusCode === 501 ||
       (res2.body &&
         res2.body.error &&
         res2.body.error.includes("Not implemented")),
-    "language route should return 501 despite key because placeholder"
+    "language route should return 501 despite key because placeholder",
   );
   console.log("language placeholder gating tests passed");
 }
@@ -124,7 +124,7 @@ async function testQNewsGating(qnewsPOST: any) {
   } as any);
   assert(
     resNoAuth?.status === 401 || (resNoAuth?.body && resNoAuth.body.error),
-    "qnews POST should be 401 without key"
+    "qnews POST should be 401 without key",
   );
 
   // With API key: success
@@ -148,49 +148,47 @@ async function runAll() {
       // Prefer compiled server route if it exists (from `next build`), otherwise import source TS file.
       const compiledAiHealth = path.resolve(
         process.cwd(),
-        ".next/server/app/api/ai-health/route.js"
+        ".next/server/app/api/ai-health/route.js",
       );
       if (fs.existsSync(compiledAiHealth)) {
         ({ GET: aiHealthGET } = await import(
           pathToFileURL(compiledAiHealth).href
         ));
       } else {
-        ({ GET: aiHealthGET } = await import(
-          "../../../app/api/ai-health/route.ts"
-        ));
+        ({ GET: aiHealthGET } =
+          await import("../../../app/api/ai-health/route.ts"));
       }
     } catch (ie) {
       console.error(
         "Error importing ai-health/route:",
-        ie instanceof Error ? ie.stack : ie
+        ie instanceof Error ? ie.stack : ie,
       );
       throw ie;
     }
     try {
       const compiledLanguage = path.resolve(
         process.cwd(),
-        ".next/server/app/api/qmoi/language/route.js"
+        ".next/server/app/api/qmoi/language/route.js",
       );
       if (fs.existsSync(compiledLanguage)) {
         ({ default: languageHandler } = await import(
           pathToFileURL(compiledLanguage).href
         ));
       } else {
-        ({ default: languageHandler } = await import(
-          "../../../app/api/qmoi/language/route.ts"
-        ));
+        ({ default: languageHandler } =
+          await import("../../../app/api/qmoi/language/route.ts"));
       }
     } catch (ie) {
       console.error(
         "Error importing qmoi/language/route:",
-        ie instanceof Error ? ie.stack : ie
+        ie instanceof Error ? ie.stack : ie,
       );
       throw ie;
     }
     try {
       const compiledQNews = path.resolve(
         process.cwd(),
-        ".next/server/app/api/qnews/route.js"
+        ".next/server/app/api/qnews/route.js",
       );
       if (fs.existsSync(compiledQNews)) {
         ({ POST: qnewsPOST } = await import(pathToFileURL(compiledQNews).href));
@@ -200,7 +198,7 @@ async function runAll() {
     } catch (ie) {
       console.error(
         "Error importing qnews/route:",
-        ie instanceof Error ? ie.stack : ie
+        ie instanceof Error ? ie.stack : ie,
       );
       throw ie;
     }
@@ -213,7 +211,7 @@ async function runAll() {
   } catch (e) {
     console.error(
       "Endpoint gating tests failed:",
-      e instanceof Error ? e.stack : e
+      e instanceof Error ? e.stack : e,
     );
     process.exit(1);
   }

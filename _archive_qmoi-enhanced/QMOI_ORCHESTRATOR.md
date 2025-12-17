@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -17,15 +18,18 @@ qmoi_validation_frontmatter: true
 This document explains the orchestrator scaffold included in the repository.
 
 Key features:
+
 - `qmoi_orchestrator.py`: supervises `start_qmoi_ngrok.py`, periodic autotests, auto-fixers, backups and build driver.
 - `qmoi_build_all.py`: basic driver that scans the repo for known build markers and reports/builds.
 - `deploy/qmoi-orchestrator.service`: systemd template (place in `/etc/systemd/system/` and adjust `WorkingDirectory`/`User`).
 
 Important safety notes:
+
 - This is a conservative scaffold: many repo files still contain placeholders and partial scripts. Review build steps before enabling `--apply` or deploying to production.
 - Secrets must be provisioned securely to runners (use keyring, GitHub Secrets, or a cloud KMS). Do not store raw secrets in the repository.
 
 Quick start (development):
+
 ```bash
 # dry-run orchestrator
 python qmoi-enhanced/qmoi-enhanced/qmoi_orchestrator.py --dry-run
@@ -38,12 +42,12 @@ python qmoi-enhanced/qmoi-enhanced/qmoi_orchestrator.py --dry-run
 ```
 
 Next steps to make this production-ready:
+
 - Replace placeholder auto-fixer script references with concrete fixers.
 - Integrate with managed secret stores and add transient token fetchers for CI/runners.
 - Replace the passive build driver with per-platform build pipelines and signing workflows.
 
-QCity Deployment and Runners
-----------------------------
+## QCity Deployment and Runners
 
 This repository includes a pattern for deploying the Orchestrator into QCity (our runner fleet). QCity runners are treated as disposable, identity-managed execution nodes. The orchestrator should be deployed to each QCity runner with the following properties:
 
@@ -58,8 +62,7 @@ Recommended flow for QCity deployment:
 3. Configure the runner to fetch `QMOI_MASTER_KEY` from a secure store (or use the OS keyring) on startup.
 4. Configure the runner to register with the centrally-managed runner registry (if you use one) so workflows can target it.
 
-Runner sync strategy
---------------------
+## Runner sync strategy
 
 To keep workflows and runners in sync:
 
@@ -67,8 +70,7 @@ To keep workflows and runners in sync:
 - Update manifest centrally and propagate to runners via a secure channel (e.g., signed manifest or pull from S3/registry).
 - Workflows should reference runner capabilities, and fallback to other runners if a capability is missing.
 
-Workflow resilience
--------------------
+## Workflow resilience
 
 Workflows should be designed to be idempotent and retry-friendly. The orchestrator provides a retry wrapper for critical tasks and logs results into `.qmoi/reports/` so that if a runner fails, another runner can pick up the task.
 
@@ -82,26 +84,28 @@ Example: When a build job runs, the orchestrator will:
 See `deploy/qcity/qcity_runners.md` for detailed runner bootstrap steps and `deploy/qcity/deploy_orchestrator_qcity.sh` for a bootstrap script.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/QMOI_ORCHESTRATOR.md",
-  "validated_at": "2025-10-26T20:51:24.815314Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Orchestrator"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/QMOI_ORCHESTRATOR.md",
+"validated_at": "2025-10-26T20:51:24.815314Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Orchestrator"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

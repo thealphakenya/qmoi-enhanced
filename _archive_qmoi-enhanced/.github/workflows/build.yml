@@ -2,32 +2,32 @@ name: Build QMOI AI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   schedule:
-    - cron: '0 3 * * *'  # Every day at 03:00 UTC
+    - cron: "0 3 * * *" # Every day at 03:00 UTC
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-    - name: Install dependencies
-      run: pip install requests
+      - name: Install dependencies
+        run: pip install requests
 
-    - name: Run Builder
-      run: python qmoi-app-builder.py
+      - name: Run Builder
+        run: python qmoi-app-builder.py
 
-    - name: Commit README changes
-      run: |
-        git config --global user.email "qmoibot@users.noreply.github.com"
-        git config --global user.name "QMOI Bot"
-        git add README.md
-        git commit -m "🔄 Auto-update QMOI status" || echo "No changes to commit"
-        git push
+      - name: Commit README changes
+        run: |
+          git config --global user.email "qmoibot@users.noreply.github.com"
+          git config --global user.name "QMOI Bot"
+          git add README.md
+          git commit -m "🔄 Auto-update QMOI status" || echo "No changes to commit"
+          git push

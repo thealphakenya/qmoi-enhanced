@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     if (!voiceId || !text) {
       return NextResponse.json(
         { error: "Voice ID and text are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     console.error("Error generating voice preview:", error);
     return NextResponse.json(
       { error: "Failed to generate voice preview" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -52,7 +52,7 @@ async function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,
-  volume: number
+  volume: number,
 ): Promise<ArrayBuffer | Uint8Array> {
   // Provider selection: prefer environment configured provider
   const provider = (
@@ -65,7 +65,7 @@ async function generateTTSAudio(
     try {
       const elevenKey = process.env.ELEVENLABS_API_KEY as string;
       const url = `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(
-        voiceId
+        voiceId,
       )}`;
       const payload = { text, voice: voiceId, quality };
 
@@ -81,7 +81,7 @@ async function generateTTSAudio(
       if (!resp.ok) {
         console.warn(
           "ElevenLabs TTS request failed, falling back to local silent audio",
-          await resp.text()
+          await resp.text(),
         );
       } else {
         const ab = await resp.arrayBuffer();
@@ -99,7 +99,7 @@ async function generateTTSAudio(
     } catch (err) {
       console.warn(
         "ElevenLabs integration error, falling back to silent audio",
-        err
+        err,
       );
     }
   }
@@ -110,7 +110,7 @@ async function generateTTSAudio(
 
 function generateSilentWAV(
   sampleRate = 22050,
-  durationSeconds = 1
+  durationSeconds = 1,
 ): Uint8Array {
   const numSamples = Math.floor(sampleRate * durationSeconds);
   const bytesPerSample = 2; // 16-bit PCM
@@ -160,7 +160,7 @@ function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
   const view = new DataView(
     wavBytes.buffer,
     wavBytes.byteOffset,
-    wavBytes.byteLength
+    wavBytes.byteLength,
   );
 
   // Check 'WAVE' and 'fmt ' presence simplistically

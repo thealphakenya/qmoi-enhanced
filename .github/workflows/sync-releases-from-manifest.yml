@@ -3,10 +3,10 @@ name: Sync Releases From Manifest
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: '0 0 * * *' # daily at midnight UTC
+    - cron: "0 0 * * *" # daily at midnight UTC
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   sync-draft:
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: |
@@ -51,7 +51,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Generate release manifest
         run: python3 scripts/generate_release_manifest.py

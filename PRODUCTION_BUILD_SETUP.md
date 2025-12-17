@@ -5,14 +5,16 @@
 All signing credentials have been located and extracted from your workspace:
 
 ### Android Keystore Found
+
 - **Location**: `/workspaces/qmoi-enhanced/mobile/android/app/debug.keystore`
-- **Credentials**: 
+- **Credentials**:
   - Password: `android`
   - Key Alias: `androiddebugkey`
   - Key Password: `android`
 - **Base64 Encoded**: Ready for GitHub Secrets (3012 bytes)
 
 ### Build Configuration
+
 - **Signing Config File**: `mobile/android/app/signing-config.gradle` (created)
 - **Build Script**: `scripts/build-android-production.sh` (created)
 - **CI Workflow**: `.github/workflows/build-and-release.yml` (updated with production signing)
@@ -25,14 +27,15 @@ Navigate to: https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/act
 
 Create these 4 repository secrets:
 
-| Secret Name | Value |
-|---|---|
-| `ANDROID_KEYSTORE_BASE64` | (Base64-encoded keystore - see output from setup script) |
-| `ANDROID_KEYSTORE_PASSWORD` | `android` |
-| `ANDROID_KEY_ALIAS` | `androiddebugkey` |
-| `ANDROID_KEY_PASSWORD` | `android` |
+| Secret Name                 | Value                                                    |
+| --------------------------- | -------------------------------------------------------- |
+| `ANDROID_KEYSTORE_BASE64`   | (Base64-encoded keystore - see output from setup script) |
+| `ANDROID_KEYSTORE_PASSWORD` | `android`                                                |
+| `ANDROID_KEY_ALIAS`         | `androiddebugkey`                                        |
+| `ANDROID_KEY_PASSWORD`      | `android`                                                |
 
 **Steps:**
+
 1. Click "New repository secret"
 2. Enter the secret name (exact match)
 3. Enter the secret value
@@ -44,6 +47,7 @@ Create these 4 repository secrets:
 ## Step 2: Verify Secrets Added ✅
 
 After adding secrets, verify in GitHub UI:
+
 - All 4 secrets should appear in the Actions secrets list
 - They will be masked as `***` in logs (security feature)
 
@@ -63,6 +67,7 @@ bash scripts/dispatch_workflow_with_pat_clean.sh \
 ```
 
 **OR manually via GitHub UI:**
+
 1. Go to Actions → build-and-release workflow
 2. Click "Run workflow"
 3. Select branch: `v1.2.4`
@@ -73,6 +78,7 @@ bash scripts/dispatch_workflow_with_pat_clean.sh \
 ## Step 4: Monitor the Build 👀
 
 The workflow will:
+
 1. ✅ Restore the keystore from GitHub Secrets
 2. ✅ Build Android APK with production signing
 3. ✅ Build all 7 PWAs
@@ -80,6 +86,7 @@ The workflow will:
 5. ✅ Upload all artifacts to GitHub Release v1.2.4
 
 **View progress:**
+
 - GitHub Actions: https://github.com/thealphakenya/qmoi-enhanced/actions
 - Release: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4
 
@@ -90,17 +97,20 @@ The workflow will:
 After successful build:
 
 ### Android APK
+
 - **Location**: `/qmoi-enhanced/mobile/android/app/build/outputs/apk/release/app-release.apk`
 - **Signature**: Production signed with debug keystore credentials
 - **Status**: Will be uploaded to GitHub Release
 
 ### PWAs (7 apps)
+
 - admin, deals, q-alpha, qmoi, qmoi-ai, qmoi-space, qstore
 - **Location**: `/Qmoi_downloaded_apps/web/latest/`
 - **Format**: ZIP archives
 - **Status**: Will be uploaded to GitHub Release
 
 ### Release Manifest
+
 - **Location**: `release_assets_manifest.json`
 - **Content**: Updated with all build outputs
 - **Status**: Automatically regenerated
@@ -109,24 +119,26 @@ After successful build:
 
 ## Production Files Created 🔨
 
-| File | Purpose |
-|---|---|
+| File                                       | Purpose                                                        |
+| ------------------------------------------ | -------------------------------------------------------------- |
 | `mobile/android/app/signing-config.gradle` | Gradle signing configuration with environment variable support |
-| `scripts/build-android-production.sh` | Local production build script |
-| `scripts/setup-production-secrets.sh` | Helper to generate secrets for GitHub |
-| `.github/workflows/build-and-release.yml` | Updated CI workflow with production signing |
+| `scripts/build-android-production.sh`      | Local production build script                                  |
+| `scripts/setup-production-secrets.sh`      | Helper to generate secrets for GitHub                          |
+| `.github/workflows/build-and-release.yml`  | Updated CI workflow with production signing                    |
 
 ---
 
 ## Signing Flow 🔐
 
 ### Local Development (Optional)
+
 ```bash
 # Build locally with debug keystore
 bash scripts/build-android-production.sh
 ```
 
 ### CI/CD (GitHub Actions)
+
 ```
 1. Workflow triggered (tag push or manual dispatch)
 2. Keystore restored from GitHub Secrets
@@ -141,7 +153,7 @@ bash scripts/build-android-production.sh
 
 - ✅ Keystore file is **never** committed to git
 - ✅ Credentials are stored in GitHub Secrets (encrypted)
-- ✅ Secrets are **masked** in logs (shown as ***)
+- ✅ Secrets are **masked** in logs (shown as \*\*\*)
 - ✅ Only repository admins can view/modify secrets
 - ✅ Build server doesn't persist keystore after build
 
@@ -150,15 +162,19 @@ bash scripts/build-android-production.sh
 ## Troubleshooting 🔧
 
 ### Build Fails with "Keystore not found"
+
 → Verify keystore file exists at: `mobile/android/app/debug.keystore`
 
 ### Build Fails with "Invalid keystore password"
+
 → Verify `ANDROID_KEYSTORE_PASSWORD` secret matches actual password
 
 ### APK not signed
+
 → Check if GitHub Secrets were properly added (refresh page if needed)
 
 ### No artifacts uploaded
+
 → Ensure workflow completed successfully (check Actions logs)
 → Verify GitHub Release was created for the tag
 
@@ -166,7 +182,7 @@ bash scripts/build-android-production.sh
 
 ## Next Steps 📋
 
-1. ✅ Add the 4 GitHub Secrets (ANDROID_KEYSTORE_*)
+1. ✅ Add the 4 GitHub Secrets (ANDROID*KEYSTORE*\*)
 2. ✅ Dispatch the workflow or push tag v1.2.4
 3. ✅ Monitor build in GitHub Actions
 4. ✅ Verify signed APK in GitHub Release

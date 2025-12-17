@@ -13,13 +13,7 @@
     "musicProduction": {
       "enabled": true,
       "dailyTarget": 200000,
-      "artists": [
-        "alpha-king",
-        "atomic-ice",
-        "sky-q",
-        "rainy-day",
-        "my-name"
-      ],
+      "artists": ["alpha-king", "atomic-ice", "sky-q", "rainy-day", "my-name"],
       "autoProduction": true,
       "autoDistribution": true,
       "autoMarketing": true
@@ -34,19 +28,9 @@
     },
     "notificationSystem": {
       "enabled": true,
-      "channels": [
-        "email",
-        "slack",
-        "discord",
-        "telegram"
-      ],
+      "channels": ["email", "slack", "discord", "telegram"],
       "autoNotifications": true,
-      "priorityLevels": [
-        "low",
-        "medium",
-        "high",
-        "critical"
-      ]
+      "priorityLevels": ["low", "medium", "high", "critical"]
     },
     "autoFix": {
       "enabled": true,

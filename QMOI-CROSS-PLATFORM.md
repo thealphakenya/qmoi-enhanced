@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -17,26 +18,28 @@ qmoi_validation_frontmatter: true
 Stub for cross-platform architecture, packaging, and distribution guidance for QMOI across web, mobile, desktop, and embedded platforms.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOI-CROSS-PLATFORM.md",
-  "validated_at": "2025-10-26T20:51:22.375343Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Cross-Platform Strategy"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "QMOI-CROSS-PLATFORM.md",
+"validated_at": "2025-10-26T20:51:22.375343Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Cross-Platform Strategy"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

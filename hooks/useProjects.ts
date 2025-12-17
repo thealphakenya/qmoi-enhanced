@@ -87,7 +87,7 @@ export function useProjects() {
     {
       refetchInterval: 5000, // Poll every 5 seconds
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Fetch project config
@@ -102,7 +102,7 @@ export function useProjects() {
     },
     {
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // New function to start Colab job for a project (defined before `createProject` uses it)
@@ -124,7 +124,7 @@ export function useProjects() {
         setError(err as any);
       }
     },
-    [refetchProjects]
+    [refetchProjects],
   );
 
   // Create project mutation
@@ -144,12 +144,12 @@ export function useProjects() {
           startColabJobForProject(
             newProject.id,
             newProject.name,
-            newProject.description
+            newProject.description,
           );
         }
       },
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Update project mutation
@@ -165,7 +165,7 @@ export function useProjects() {
     {
       onSuccess: () => refetchProjects(),
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Add task mutation
@@ -180,14 +180,14 @@ export function useProjects() {
     async ({ projectId, taskData }) => {
       const response = await axios.post(
         `/api/qcity/projects/${projectId}/tasks`,
-        taskData
+        taskData,
       );
       return response.data;
     },
     {
       onSuccess: () => refetchProjects(),
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Update task mutation
@@ -199,14 +199,14 @@ export function useProjects() {
     async ({ projectId, taskId, updates }) => {
       const response = await axios.put(
         `/api/qcity/projects/${projectId}/tasks/${taskId}`,
-        updates
+        updates,
       );
       return response.data;
     },
     {
       onSuccess: () => refetchProjects(),
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Update config mutation
@@ -214,7 +214,7 @@ export function useProjects() {
     async (newConfig) => {
       const response = await axios.post(
         "/api/qcity/projects/config",
-        newConfig
+        newConfig,
       );
       return response.data;
     },
@@ -224,7 +224,7 @@ export function useProjects() {
         refetchProjects();
       },
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Update projects and config when data changes
@@ -245,7 +245,7 @@ export function useProjects() {
     (projectData: Omit<Project, "id" | "createdAt" | "updatedAt">) => {
       createProjectMutation.mutate(projectData);
     },
-    [createProjectMutation, startColabJobForProject] // Add startColabJobForProject to dependencies
+    [createProjectMutation, startColabJobForProject], // Add startColabJobForProject to dependencies
   );
 
   // Update project
@@ -253,18 +253,18 @@ export function useProjects() {
     (id: string, updates: Partial<Project>) => {
       updateProjectMutation.mutate({ id, updates });
     },
-    [updateProjectMutation]
+    [updateProjectMutation],
   );
 
   // Add task
   const addTask = useCallback(
     (
       projectId: string,
-      taskData: Omit<Task, "id" | "projectId" | "createdAt" | "updatedAt">
+      taskData: Omit<Task, "id" | "projectId" | "createdAt" | "updatedAt">,
     ) => {
       addTaskMutation.mutate({ projectId, taskData });
     },
-    [addTaskMutation]
+    [addTaskMutation],
   );
 
   // Update task
@@ -272,7 +272,7 @@ export function useProjects() {
     (projectId: string, taskId: string, updates: Partial<Task>) => {
       updateTaskMutation.mutate({ projectId, taskId, updates });
     },
-    [updateTaskMutation]
+    [updateTaskMutation],
   );
 
   // Update config
@@ -280,7 +280,7 @@ export function useProjects() {
     (newConfig: Partial<ProjectConfig>) => {
       updateConfigMutation.mutate(newConfig);
     },
-    [updateConfigMutation]
+    [updateConfigMutation],
   );
 
   return {

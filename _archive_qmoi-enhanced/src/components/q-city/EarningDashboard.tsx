@@ -64,7 +64,7 @@ const EarningDashboard: React.FC = () => {
   return (
     <Card className="space-y-4 mt-4">
       <CardHeader>
-  <Typography variant="h6">Earning Features & Analytics</Typography>
+        <Typography variant="h6">Earning Features & Analytics</Typography>
       </CardHeader>
       <CardContent>
         <div className="mb-4">

@@ -38,8 +38,10 @@ This file documents all pages in the `pages/` directory, their usage, and integr
 
 ## Directory Structure
 ```
+
 pages/
 ├── api/
+
 ```
 
 ## Usage & Integration

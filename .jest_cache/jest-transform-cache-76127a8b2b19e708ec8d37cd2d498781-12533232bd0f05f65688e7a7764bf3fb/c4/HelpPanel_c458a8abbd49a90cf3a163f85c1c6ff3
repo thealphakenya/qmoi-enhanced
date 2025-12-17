@@ -1,0 +1,202 @@
+b389ed28f003c836376bbe1c91e64729
+/* istanbul ignore next */
+function cov_1hmvkigyf6() {
+  var path = "/workspaces/qmoi-enhanced/src/components/q-city/HelpPanel.tsx";
+  var hash = "5a544b324601afb158c34cb1113707be6d3a89fc";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/components/q-city/HelpPanel.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 4,
+          column: 2
+        },
+        end: {
+          line: 33,
+          column: 4
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "HelpPanel",
+        decl: {
+          start: {
+            line: 3,
+            column: 24
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 3,
+            column: 36
+          },
+          end: {
+            line: 34,
+            column: 1
+          }
+        },
+        line: 3
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "5a544b324601afb158c34cb1113707be6d3a89fc"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1hmvkigyf6 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1hmvkigyf6();
+import React from "react";
+/* istanbul ignore next */
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export default function HelpPanel() {
+  /* istanbul ignore next */
+  cov_1hmvkigyf6().f[0]++;
+  cov_1hmvkigyf6().s[0]++;
+  return /*#__PURE__*/ /* istanbul ignore next */_jsxs(
+  /* istanbul ignore next */
+  "div",
+  /* istanbul ignore next */
+  {
+    className: "p-4 bg-gray-900 rounded-lg shadow-lg",
+    children: [/*#__PURE__*/
+    /* istanbul ignore next */
+    _jsx(
+    /* istanbul ignore next */
+    "h2",
+    /* istanbul ignore next */
+    {
+      className: "text-xl font-bold mb-4 text-cyan-400",
+      children: "Help & Onboarding"
+    }), /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsxs(
+    /* istanbul ignore next */
+    "div",
+    /* istanbul ignore next */
+    {
+      className: "text-xs text-gray-300 mb-2",
+      children: [/*#__PURE__*/
+      /* istanbul ignore next */
+      _jsx(
+      /* istanbul ignore next */
+      "div",
+      /* istanbul ignore next */
+      {
+        children: "Welcome to the QMOI/QCity Dashboard!"
+      }), /*#__PURE__*/
+      /* istanbul ignore next */
+      _jsxs(
+      /* istanbul ignore next */
+      "ul",
+      /* istanbul ignore next */
+      {
+        className: "list-disc ml-6 mt-2",
+        children: [/*#__PURE__*/
+        /* istanbul ignore next */
+        _jsx(
+        /* istanbul ignore next */
+        "li",
+        /* istanbul ignore next */
+        {
+          children: "Manage devices, schedules, plugins, and sessions"
+        }), /*#__PURE__*/
+        /* istanbul ignore next */
+        _jsx(
+        /* istanbul ignore next */
+        "li",
+        /* istanbul ignore next */
+        {
+          children: "View system metrics and audit logs"
+        }), /*#__PURE__*/
+        /* istanbul ignore next */
+        _jsx(
+        /* istanbul ignore next */
+        "li",
+        /* istanbul ignore next */
+        {
+          children: "Enable 2FA for enhanced security"
+        }), /*#__PURE__*/
+        /* istanbul ignore next */
+        _jsx(
+        /* istanbul ignore next */
+        "li",
+        /* istanbul ignore next */
+        {
+          children: "Use the floating Q-Avatar for quick access"
+        }), /*#__PURE__*/
+        /* istanbul ignore next */
+        _jsx(
+        /* istanbul ignore next */
+        "li",
+        /* istanbul ignore next */
+        {
+          children: "All actions are logged for security and compliance"
+        })]
+      }), /*#__PURE__*/
+      /* istanbul ignore next */
+      _jsxs(
+      /* istanbul ignore next */
+      "div",
+      /* istanbul ignore next */
+      {
+        className: "mt-2",
+        children: ["For full documentation, see", " ", /*#__PURE__*/
+        /* istanbul ignore next */
+        _jsx(
+        /* istanbul ignore next */
+        "a",
+        /* istanbul ignore next */
+        {
+          href: "/docs",
+          className: "text-cyan-400 underline",
+          children: "/docs"
+        })]
+      })]
+    }), /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsxs(
+    /* istanbul ignore next */
+    "div",
+    /* istanbul ignore next */
+    {
+      className: "text-xs text-gray-400 mt-4",
+      children: ["Need more help? Contact your admin or see the", " ", /*#__PURE__*/
+      /* istanbul ignore next */
+      _jsx(
+      /* istanbul ignore next */
+      "a",
+      /* istanbul ignore next */
+      {
+        href: "/docs",
+        className: "text-cyan-400 underline",
+        children: "documentation"
+      }), "."]
+    })]
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMWhtdmtpZ3lmNiIsImFjdHVhbENvdmVyYWdlIiwiUmVhY3QiLCJqc3giLCJfanN4IiwianN4cyIsIl9qc3hzIiwiSGVscFBhbmVsIiwiZiIsInMiLCJjbGFzc05hbWUiLCJjaGlsZHJlbiIsImhyZWYiXSwic291cmNlcyI6WyJIZWxwUGFuZWwudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tIFwicmVhY3RcIjtcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gSGVscFBhbmVsKCkge1xuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwicC00IGJnLWdyYXktOTAwIHJvdW5kZWQtbGcgc2hhZG93LWxnXCI+XG4gICAgICA8aDIgY2xhc3NOYW1lPVwidGV4dC14bCBmb250LWJvbGQgbWItNCB0ZXh0LWN5YW4tNDAwXCI+XG4gICAgICAgIEhlbHAgJiBPbmJvYXJkaW5nXG4gICAgICA8L2gyPlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS0zMDAgbWItMlwiPlxuICAgICAgICA8ZGl2PldlbGNvbWUgdG8gdGhlIFFNT0kvUUNpdHkgRGFzaGJvYXJkITwvZGl2PlxuICAgICAgICA8dWwgY2xhc3NOYW1lPVwibGlzdC1kaXNjIG1sLTYgbXQtMlwiPlxuICAgICAgICAgIDxsaT5NYW5hZ2UgZGV2aWNlcywgc2NoZWR1bGVzLCBwbHVnaW5zLCBhbmQgc2Vzc2lvbnM8L2xpPlxuICAgICAgICAgIDxsaT5WaWV3IHN5c3RlbSBtZXRyaWNzIGFuZCBhdWRpdCBsb2dzPC9saT5cbiAgICAgICAgICA8bGk+RW5hYmxlIDJGQSBmb3IgZW5oYW5jZWQgc2VjdXJpdHk8L2xpPlxuICAgICAgICAgIDxsaT5Vc2UgdGhlIGZsb2F0aW5nIFEtQXZhdGFyIGZvciBxdWljayBhY2Nlc3M8L2xpPlxuICAgICAgICAgIDxsaT5BbGwgYWN0aW9ucyBhcmUgbG9nZ2VkIGZvciBzZWN1cml0eSBhbmQgY29tcGxpYW5jZTwvbGk+XG4gICAgICAgIDwvdWw+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibXQtMlwiPlxuICAgICAgICAgIEZvciBmdWxsIGRvY3VtZW50YXRpb24sIHNlZXtcIiBcIn1cbiAgICAgICAgICA8YSBocmVmPVwiL2RvY3NcIiBjbGFzc05hbWU9XCJ0ZXh0LWN5YW4tNDAwIHVuZGVybGluZVwiPlxuICAgICAgICAgICAgL2RvY3NcbiAgICAgICAgICA8L2E+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTQwMCBtdC00XCI+XG4gICAgICAgIE5lZWQgbW9yZSBoZWxwPyBDb250YWN0IHlvdXIgYWRtaW4gb3Igc2VlIHRoZXtcIiBcIn1cbiAgICAgICAgPGEgaHJlZj1cIi9kb2NzXCIgY2xhc3NOYW1lPVwidGV4dC1jeWFuLTQwMCB1bmRlcmxpbmVcIj5cbiAgICAgICAgICBkb2N1bWVudGF0aW9uXG4gICAgICAgIDwvYT5cbiAgICAgICAgLlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gICk7XG59XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQWVZO0lBQUFBLGNBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUFDLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUFELGNBQUE7QUFmWixPQUFPRSxLQUFLLE1BQU0sT0FBTztBQUFDO0FBQUEsU0FBQUMsR0FBQSxJQUFBQyxJQUFBLEVBQUFDLElBQUEsSUFBQUMsS0FBQTtBQUUxQixlQUFlLFNBQVNDLFNBQVNBLENBQUEsRUFBRztFQUFBO0VBQUFQLGNBQUEsR0FBQVEsQ0FBQTtFQUFBUixjQUFBLEdBQUFTLENBQUE7RUFDbEMsb0JBQ0UsMkJBQUFILEtBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFLSSxTQUFTLEVBQUMsc0NBQXNDO0lBQUFDLFFBQUE7SUFDbkQ7SUFBQVAsSUFBQTtJQUFBO0lBQUE7SUFBQTtJQUFBO01BQUlNLFNBQVMsRUFBQyxzQ0FBc0M7TUFBQUMsUUFBQSxFQUFDO0lBRXJELENBQUksQ0FBQztJQUNMO0lBQUFMLEtBQUE7SUFBQTtJQUFBO0lBQUE7SUFBQTtNQUFLSSxTQUFTLEVBQUMsNEJBQTRCO01BQUFDLFFBQUE7TUFDekM7TUFBQVAsSUFBQTtNQUFBO01BQUE7TUFBQTtNQUFBO1FBQUFPLFFBQUEsRUFBSztNQUFvQyxDQUFLLENBQUM7TUFDL0M7TUFBQUwsS0FBQTtNQUFBO01BQUE7TUFBQTtNQUFBO1FBQUlJLFNBQVMsRUFBQyxxQkFBcUI7UUFBQUMsUUFBQTtRQUNqQztRQUFBUCxJQUFBO1FBQUE7UUFBQTtRQUFBO1FBQUE7VUFBQU8sUUFBQSxFQUFJO1FBQWdELENBQUksQ0FBQztRQUN6RDtRQUFBUCxJQUFBO1FBQUE7UUFBQTtRQUFBO1FBQUE7VUFBQU8sUUFBQSxFQUFJO1FBQWtDLENBQUksQ0FBQztRQUMzQztRQUFBUCxJQUFBO1FBQUE7UUFBQTtRQUFBO1FBQUE7VUFBQU8sUUFBQSxFQUFJO1FBQWdDLENBQUksQ0FBQztRQUN6QztRQUFBUCxJQUFBO1FBQUE7UUFBQTtRQUFBO1FBQUE7VUFBQU8sUUFBQSxFQUFJO1FBQTBDLENBQUksQ0FBQztRQUNuRDtRQUFBUCxJQUFBO1FBQUE7UUFBQTtRQUFBO1FBQUE7VUFBQU8sUUFBQSxFQUFJO1FBQWtELENBQUksQ0FBQztNQUFBLENBQ3pELENBQUM7TUFDTDtNQUFBTCxLQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7UUFBS0ksU0FBUyxFQUFDLE1BQU07UUFBQUMsUUFBQSxHQUFDLDZCQUNPLEVBQUMsR0FBRztRQUMvQjtRQUFBUCxJQUFBO1FBQUE7UUFBQTtRQUFBO1FBQUE7VUFBR1EsSUFBSSxFQUFDLE9BQU87VUFBQ0YsU0FBUyxFQUFDLHlCQUF5QjtVQUFBQyxRQUFBLEVBQUM7UUFFcEQsQ0FBRyxDQUFDO01BQUEsQ0FDRCxDQUFDO0lBQUEsQ0FDSCxDQUFDO0lBQ047SUFBQUwsS0FBQTtJQUFBO0lBQUE7SUFBQTtJQUFBO01BQUtJLFNBQVMsRUFBQyw0QkFBNEI7TUFBQUMsUUFBQSxHQUFDLCtDQUNHLEVBQUMsR0FBRztNQUNqRDtNQUFBUCxJQUFBO01BQUE7TUFBQTtNQUFBO01BQUE7UUFBR1EsSUFBSSxFQUFDLE9BQU87UUFBQ0YsU0FBUyxFQUFDLHlCQUF5QjtRQUFBQyxRQUFBLEVBQUM7TUFFcEQsQ0FBRyxDQUFDLEtBRU47SUFBQSxDQUFLLENBQUM7RUFBQSxDQUNILENBQUM7QUFFViIsImlnbm9yZUxpc3QiOltdfQ==

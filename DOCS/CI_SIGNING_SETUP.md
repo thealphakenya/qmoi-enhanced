@@ -1,6 +1,7 @@
 **CI Signing Setup**: Guidance for storing signing credentials in GitHub Actions secrets and using them in workflows.
 
 Android (Keystore):
+
 - Secrets to create in GitHub repo Settings → Secrets → Actions:
   - `ANDROID_KEYSTORE_BASE64` : Base64-encoded keystore file (run: `base64 -w0 my.keystore > my.keystore.b64`)
   - `ANDROID_KEYSTORE_PASSWORD` : keystore password
@@ -20,6 +21,7 @@ Example usage in workflow:
 ```
 
 iOS (Code signing):
+
 - Secrets to create:
   - `IOS_CERT_BASE64` : Base64-encoded p12 certificate (exported from Keychain)
   - `IOS_CERT_PASSWORD` : p12 password
@@ -43,6 +45,7 @@ Example usage (macOS runner):
 ```
 
 General notes:
+
 - Always store binary secrets as base64 strings to avoid line-ending issues.
 - Limit repository collaborator access if secrets are present and rotate keys regularly.
 - For production releases prefer a dedicated signing key with limited scope and rotate periodically.

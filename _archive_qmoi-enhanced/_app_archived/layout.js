@@ -1,7 +1,8 @@
 export const metadata = {
-  title: 'QMOI Alpha AI - Comprehensive AI System',
-  description: 'QMOI Alpha AI - Advanced AI system with friendship enhancement, automation, and comprehensive monitoring',
-}
+  title: "QMOI Alpha AI - Comprehensive AI System",
+  description:
+    "QMOI Alpha AI - Advanced AI system with friendship enhancement, automation, and comprehensive monitoring",
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -9,9 +10,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
-  )
-} 
+  );
+}

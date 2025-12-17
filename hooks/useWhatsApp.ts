@@ -1,15 +1,15 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useQuery, useMutation } from 'react-query';
-import axios, { any } from 'axios';
+import { useState, useEffect, useCallback } from "react";
+import { useQuery, useMutation } from "react-query";
+import axios, { any } from "axios";
 
 interface WhatsAppMessage {
   id: string;
   from: string;
   to: string;
   content: string;
-  type: 'text' | 'image' | 'document' | 'audio' | 'video';
+  type: "text" | "image" | "document" | "audio" | "video";
   timestamp: number;
-  status: 'sent' | 'delivered' | 'read' | 'failed';
+  status: "sent" | "delivered" | "read" | "failed";
 }
 
 interface WhatsAppConfig {
@@ -28,46 +28,67 @@ export function useWhatsApp() {
   const [error, setError] = useState<Error | null>(null);
 
   // Fetch messages
-  const { data: messagesData, refetch: refetchMessages } = useQuery<WhatsAppMessage[], any>(
-    'whatsapp-messages',
+  const { data: messagesData, refetch: refetchMessages } = useQuery<
+    WhatsAppMessage[],
+    any
+  >(
+    "whatsapp-messages",
     async () => {
-      const response = await axios.get('/api/qcity/whatsapp/messages');
+      const response = await axios.get("/api/qcity/whatsapp/messages");
       return response.data;
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Fetch WhatsApp config
-  const { data: configData, refetch: refetchConfig } = useQuery<WhatsAppConfig, any>(
-    'whatsapp-config',
+  const { data: configData, refetch: refetchConfig } = useQuery<
+    WhatsAppConfig,
+    any
+  >(
+    "whatsapp-config",
     async () => {
-      const response = await axios.get('/api/qcity/whatsapp/config');
+      const response = await axios.get("/api/qcity/whatsapp/config");
       return response.data;
     },
     {
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Send message mutation
-  const sendMessageMutation = useMutation<WhatsAppMessage, any, { to: string; content: string; type?: 'text' | 'image' | 'document' | 'audio' | 'video' }>(
-    async ({ to, content, type = 'text' }) => {
-      const response = await axios.post('/api/qcity/whatsapp/messages', { to, content, type });
+  const sendMessageMutation = useMutation<
+    WhatsAppMessage,
+    any,
+    {
+      to: string;
+      content: string;
+      type?: "text" | "image" | "document" | "audio" | "video";
+    }
+  >(
+    async ({ to, content, type = "text" }) => {
+      const response = await axios.post("/api/qcity/whatsapp/messages", {
+        to,
+        content,
+        type,
+      });
       return response.data;
     },
     {
       onSuccess: () => refetchMessages(),
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Update config mutation
   const updateConfigMutation = useMutation<void, any, Partial<WhatsAppConfig>>(
     async (newConfig) => {
-      const response = await axios.post('/api/qcity/whatsapp/config', newConfig);
+      const response = await axios.post(
+        "/api/qcity/whatsapp/config",
+        newConfig,
+      );
       return response.data;
     },
     {
@@ -76,7 +97,7 @@ export function useWhatsApp() {
         refetchMessages();
       },
       onError: (err: any) => setError(err),
-    }
+    },
   );
 
   // Update messages and config when data changes
@@ -94,10 +115,14 @@ export function useWhatsApp() {
 
   // Send message
   const sendMessage = useCallback(
-    (to: string, content: string, type: 'text' | 'image' | 'document' | 'audio' | 'video' = 'text') => {
+    (
+      to: string,
+      content: string,
+      type: "text" | "image" | "document" | "audio" | "video" = "text",
+    ) => {
       sendMessageMutation.mutate({ to, content, type });
     },
-    [sendMessageMutation]
+    [sendMessageMutation],
   );
 
   // Update config
@@ -105,7 +130,7 @@ export function useWhatsApp() {
     (newConfig: Partial<WhatsAppConfig>) => {
       updateConfigMutation.mutate(newConfig);
     },
-    [updateConfigMutation]
+    [updateConfigMutation],
   );
 
   return {
@@ -117,4 +142,4 @@ export function useWhatsApp() {
     refetchMessages,
     refetchConfig,
   };
-} 
+}

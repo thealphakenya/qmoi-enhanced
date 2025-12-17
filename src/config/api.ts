@@ -3,7 +3,7 @@
  * Adapters and components import from this file to get the correct base URL and endpoints.
  */
 
-export type Environment = 'development' | 'staging' | 'production' | 'local';
+export type Environment = "development" | "staging" | "production" | "local";
 
 export interface ApiConfig {
   environment: Environment;
@@ -25,13 +25,13 @@ export interface ApiConfig {
  * Get the current environment (from NEXT_PUBLIC_ENV or default to 'development')
  */
 function getCurrentEnvironment(): Environment {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     // Browser environment
     const env = (globalThis as any).__ENV__ || process.env.NEXT_PUBLIC_ENV;
-    return (env as Environment) || 'development';
+    return (env as Environment) || "development";
   }
   // Server environment
-  return (process.env.NEXT_PUBLIC_ENV as Environment) || 'development';
+  return (process.env.NEXT_PUBLIC_ENV as Environment) || "development";
 }
 
 /**
@@ -39,61 +39,61 @@ function getCurrentEnvironment(): Environment {
  */
 const configMap: Record<Environment, ApiConfig> = {
   local: {
-    environment: 'local',
-    baseUrl: 'http://localhost:8000',
+    environment: "local",
+    baseUrl: "http://localhost:8000",
     endpoints: {
-      media: '/api/media',
-      verify: '/api/verify',
-      mail: '/api/mail',
-      files: '/api/files',
-      emergency: '/api/emergency',
-      youtube: '/api/youtube/download',
-      health: '/api/health',
+      media: "/api/media",
+      verify: "/api/verify",
+      mail: "/api/mail",
+      files: "/api/files",
+      emergency: "/api/emergency",
+      youtube: "/api/youtube/download",
+      health: "/api/health",
     },
     timeout: 10000,
     retries: 2,
   },
   development: {
-    environment: 'development',
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',
+    environment: "development",
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000",
     endpoints: {
-      media: '/api/media',
-      verify: '/api/verify',
-      mail: '/api/mail',
-      files: '/api/files',
-      emergency: '/api/emergency',
-      youtube: '/api/youtube/download',
-      health: '/api/health',
+      media: "/api/media",
+      verify: "/api/verify",
+      mail: "/api/mail",
+      files: "/api/files",
+      emergency: "/api/emergency",
+      youtube: "/api/youtube/download",
+      health: "/api/health",
     },
     timeout: 10000,
     retries: 2,
   },
   staging: {
-    environment: 'staging',
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || 'https://staging-api.qmoi.app',
+    environment: "staging",
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || "https://staging-api.qmoi.app",
     endpoints: {
-      media: '/api/media',
-      verify: '/api/verify',
-      mail: '/api/mail',
-      files: '/api/files',
-      emergency: '/api/emergency',
-      youtube: '/api/youtube/download',
-      health: '/api/health',
+      media: "/api/media",
+      verify: "/api/verify",
+      mail: "/api/mail",
+      files: "/api/files",
+      emergency: "/api/emergency",
+      youtube: "/api/youtube/download",
+      health: "/api/health",
     },
     timeout: 15000,
     retries: 3,
   },
   production: {
-    environment: 'production',
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || 'https://api.qmoi.app',
+    environment: "production",
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || "https://api.qmoi.app",
     endpoints: {
-      media: '/api/media',
-      verify: '/api/verify',
-      mail: '/api/mail',
-      files: '/api/files',
-      emergency: '/api/emergency',
-      youtube: '/api/youtube/download',
-      health: '/api/health',
+      media: "/api/media",
+      verify: "/api/verify",
+      mail: "/api/mail",
+      files: "/api/files",
+      emergency: "/api/emergency",
+      youtube: "/api/youtube/download",
+      health: "/api/health",
     },
     timeout: 20000,
     retries: 3,
@@ -123,7 +123,7 @@ export function buildUrl(endpoint: string): string {
 /**
  * Get a specific endpoint URL
  */
-export function getEndpoint(key: keyof ApiConfig['endpoints']): string {
+export function getEndpoint(key: keyof ApiConfig["endpoints"]): string {
   const config = getApiConfig();
   return buildUrl(config.endpoints[key]);
 }

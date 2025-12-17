@@ -6,6 +6,7 @@ qmoi_validation_frontmatter: true
 # Prioritized placeholder matches
 
 Top files:
+
 - qmoi-enhanced/scripts/qmoi_master_website_automation.js — score: 397 — matches: 62
 - qmoi-enhanced/app/api/qmoi/language/route.ts — score: 140 — matches: 14
 - qmoi-enhanced/app/api/qmoi-model.ts — score: 133 — matches: 36
@@ -172,7 +173,7 @@ Top files:
 - qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md — score: 12 — matches: 3
 - qmoi-enhanced/qmoisimtwo.py — score: 12 — matches: 3
 - qmoi-enhanced/QMOIREVENUEGENERATION.md — score: 12 — matches: 12
-- qmoi-enhanced/__tests__/wallet.test.ts — score: 12 — matches: 4
+- qmoi-enhanced/**tests**/wallet.test.ts — score: 12 — matches: 4
 - qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx — score: 12 — matches: 6
 - qmoi-enhanced/routes/api/qmoi/memory-backup.ts — score: 12 — matches: 2
 - qmoi-enhanced/scripts/qmoi_auto_fix_enhanced.py — score: 12 — matches: 12

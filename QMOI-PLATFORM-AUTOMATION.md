@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -17,26 +18,28 @@ qmoi_validation_frontmatter: true
 Stub describing automation workflows for platform builds, releases, and deployment (CI/CD patterns, release gates).
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOI-PLATFORM-AUTOMATION.md",
-  "validated_at": "2025-10-26T20:51:22.404826Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Platform Automation"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "QMOI-PLATFORM-AUTOMATION.md",
+"validated_at": "2025-10-26T20:51:22.404826Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Platform Automation"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

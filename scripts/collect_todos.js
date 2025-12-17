@@ -23,7 +23,7 @@ const files = walk(root).filter(
     f.endsWith(".tsx") ||
     f.endsWith(".js") ||
     f.endsWith(".py") ||
-    f.endsWith(".md")
+    f.endsWith(".md"),
 );
 const items = [];
 for (const file of files) {
@@ -39,8 +39,8 @@ for (const file of files) {
         type: line.match(/\[PRODUCTION IMPLEMENTATION REQUIRED\]/i)
           ? "manual"
           : line.match(/TODO|FIXME/i)
-          ? "todo"
-          : "placeholder",
+            ? "todo"
+            : "placeholder",
       });
       // reset regex lastIndex
       pattern.lastIndex = 0;
@@ -53,7 +53,7 @@ fs.writeFileSync(
   JSON.stringify(
     { generatedAt: new Date().toISOString(), count: items.length, items },
     null,
-    2
-  )
+    2,
+  ),
 );
 console.log("Wrote .qmoi_validation/todos.json with", items.length, "items");

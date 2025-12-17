@@ -175,6 +175,281 @@
           }
         }
       }
+    },
+    {
+      "ts": "2025-12-15T20:35:23.175Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-15T20:36:03.509Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-15T20:45:06.229Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-16T12:18:37.206Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-16T12:22:07.711Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-16T12:22:56.824Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-17T08:37:28.283Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-17T08:54:19.978Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-17T09:19:33.432Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-17T09:57:14.793Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
+    },
+    {
+      "ts": "2025-12-17T10:05:07.642Z",
+      "snapshot": {
+        "mock1": {
+          "native": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 100,
+            "currency": "USD"
+          }
+        },
+        "binance_testnet": {
+          "native": {
+            "amount": 236,
+            "currency": "USD"
+          },
+          "canonical": {
+            "amount": 236,
+            "currency": "USD"
+          }
+        }
+      }
     }
   ]
 }

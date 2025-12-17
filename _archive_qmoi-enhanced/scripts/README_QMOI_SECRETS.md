@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -18,11 +19,13 @@ This folder contains small helper scripts that enable encrypted secret storage f
 updating repository links using the live ngrok tunnel.
 
 Files:
-- qmoi_secret_manager.py  - helper to generate/lookup master key, encrypt/decrypt secrets using Fernet
+
+- qmoi_secret_manager.py - helper to generate/lookup master key, encrypt/decrypt secrets using Fernet
 - qmoi_bootstrap_secrets.py - CLI to generate a master key and encrypt an ngrok token to `.qmoi/ngrok_token.enc`
 - update_links_with_ngrok.py - replaces any ngrok links in files listed in `ALLMDFILESREFS.md` with the live ngrok URL found in `.qmoi/ngrok_tunnel.json` or `ngrok_tunnel.txt`.
 
 Requirements (recommended):
+
 - python3.10+
 - Install dependencies for secrets tooling:
 
@@ -54,30 +57,33 @@ python3 scripts/update_links_with_ngrok.py --apply
 ```
 
 Notes:
+
 - For production use, integrate the master key into a cloud secret manager and modify `qmoi_secret_manager.py` to fetch from that service.
 - Rotate the ngrok token if it had been accidentally committed.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/scripts/README_QMOI_SECRETS.md",
-  "validated_at": "2025-10-26T20:51:24.871159Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": false,
-      "detail": "No H1 title found"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": false,
-  "summary": {
-    "total_checks": 2,
-    "passed": false
-  }
+"file": "qmoi-enhanced/scripts/README_QMOI_SECRETS.md",
+"validated_at": "2025-10-26T20:51:24.871159Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": false,
+"detail": "No H1 title found"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": false,
+"summary": {
+"total_checks": 2,
+"passed": false
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

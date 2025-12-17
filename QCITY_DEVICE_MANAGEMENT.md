@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,9 +16,11 @@ qmoi_validation_frontmatter: true
 # QCity Device Management & Unlimited QCity Automation
 
 ## Overview
+
 This document describes the advanced device management and unlimited QCity install automation features.
 
 ## Features
+
 - **Device Detection**: Robust detection of OS, hardware, and network.
 - **Dependency Management**: Auto-installs and repairs all required dependencies.
 - **Compatibility Checks**: Ensures device meets minimum requirements for QCity.
@@ -28,18 +31,23 @@ This document describes the advanced device management and unlimited QCity insta
 ## Usage
 
 ### Device Management
+
 ```bash
 python scripts/qcity_device_manager.py
 ```
+
 - Generates a full device report and attempts to auto-fix issues.
 
 ### Unlimited QCity Install
+
 ```bash
 python scripts/qcity_unlimited_installer.py
 ```
+
 - Installs or repairs an unlimited QCity deployment, including dependencies, database, and services.
 
 ## Troubleshooting
+
 - See `logs/qcity_device_manager.log` and `qcity_reports/device_management_report.json` for diagnostics.
 - For install issues, check `logs/qcity_unlimited_installer.log` and `qcity_reports/unlimited_installation_report.json`.
 - For persistent errors, run the self-healing script:
@@ -48,35 +56,39 @@ python scripts/qcity_unlimited_installer.py
   ```
 
 ## Best Practices
+
 - Run device management before every major upgrade.
 - Use the unlimited installer for scalable, production-grade deployments.
 - Review reports and logs regularly.
 
 ## Related
+
 - See `SELF_EVOLUTION.md` for self-healing and continuous improvement.
 - See `GITHUB_ACTIONS_AUTOFIX.md` for CI/CD automation.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QCITY_DEVICE_MANAGEMENT.md",
-  "validated_at": "2025-10-26T20:51:22.355324Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QCity Device Management & Unlimited QCity Automation"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "QCITY_DEVICE_MANAGEMENT.md",
+"validated_at": "2025-10-26T20:51:22.355324Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QCity Device Management & Unlimited QCity Automation"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

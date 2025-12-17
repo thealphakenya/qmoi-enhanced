@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,9 +16,11 @@ qmoi_validation_frontmatter: true
 # ALLTESTSAUTOTESTS.md
 
 Purpose
+
 - A single reference file listing all tests and autotests, their purposes, how to run them locally and in CI, and how they integrate with self-heal and autodev.
 
 Structure
+
 - Unit tests
   - folder: `packages/*/test` or `__tests__`
   - runner: jest (see `jest.config.js`) or `pytest` for Python
@@ -36,43 +39,49 @@ Structure
   - example: run build scripts for linux/mac/win in isolated containers
 
 How to run
+
 - Local quick-run (unit): `npm test` (or `pnpm test`) in service/package
 - CI: GitHub Actions workflows will run the matrix across OS/Node versions
 
 Integration with self-heal & autodev
+
 - Tests should be labeled with metadata tags so the autotest runner can pick them (eg: `[self-heal]`, `[autodev]`).
 - The autotest runner collects results and decides remediation: re-run, add to todo, create incident.
 
 Files & CI refs
+
 - Add CI workflow: `.github/workflows/autotests.yml` that runs the full test matrix and uploads artifacts.
 
 Next steps
+
 - Generate test list automatically using `scripts/generate_test_index.py` (todo)
 - Add descriptions for tests listed in `teststoadd.txt` and map them to CI jobs
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/ALLTESTSAUTOTESTS.md",
-  "validated_at": "2025-10-26T20:51:22.673313Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "ALLTESTSAUTOTESTS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "docs/ALLTESTSAUTOTESTS.md",
+"validated_at": "2025-10-26T20:51:22.673313Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "ALLTESTSAUTOTESTS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

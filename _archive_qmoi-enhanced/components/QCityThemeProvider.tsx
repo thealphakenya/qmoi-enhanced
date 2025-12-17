@@ -17,7 +17,7 @@ interface QCityThemeContextProps {
 }
 
 const QCityThemeContext = createContext<QCityThemeContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 export const QCityThemeProvider: React.FC<{ children: React.ReactNode }> = ({

@@ -14,7 +14,7 @@ module.exports = {
   transform: {
     "^.+\\.(ts|tsx|js|jsx)$": [
       "babel-jest",
-      { configFile: "./babel.config.cjs" },
+      { configFile: "./scripts/babel.config.cjs" },
     ],
   },
   // Allow transforming some modern ESM packages that ship untranspiled code

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 // Base platform configuration schema
 export const PlatformConfigSchema = z.object({
@@ -7,11 +7,13 @@ export const PlatformConfigSchema = z.object({
   requireMasterApproval: z.boolean().default(true),
   sandboxMode: z.boolean().default(true),
   rateLimitPerMinute: z.number().default(60),
-  credentials: z.object({
-    clientId: z.string().optional(),
-    clientSecret: z.string().optional(),
-    accessToken: z.string().optional(),
-  }).optional(),
+  credentials: z
+    .object({
+      clientId: z.string().optional(),
+      clientSecret: z.string().optional(),
+      accessToken: z.string().optional(),
+    })
+    .optional(),
 });
 
 export type PlatformConfig = z.infer<typeof PlatformConfigSchema>;
@@ -22,7 +24,7 @@ export interface ApprovalRequest {
   platformId: string;
   action: string;
   payload: unknown;
-  status: 'pending' | 'approved' | 'rejected';
+  status: "pending" | "approved" | "rejected";
   requestedAt: Date;
   reviewedAt?: Date;
   reviewedBy?: string;
@@ -59,7 +61,7 @@ export interface DistributionPlatformAdapter extends PlatformAdapter {
   getSalesMetrics(productId: string): Promise<unknown>;
 }
 
-// Base payment gateway capabilities 
+// Base payment gateway capabilities
 export interface PaymentGatewayAdapter extends PlatformAdapter {
   createPaymentIntent(amount: number, currency: string): Promise<string>;
   capturePayment(paymentId: string): Promise<boolean>;
@@ -74,38 +76,41 @@ export class ApprovalFlow {
   static async requestApproval(
     platformId: string,
     action: string,
-    payload: unknown
+    payload: unknown,
   ): Promise<ApprovalRequest> {
     const request: ApprovalRequest = {
       id: `${platformId}-${Date.now()}`,
       platformId,
       action,
       payload,
-      status: 'pending',
-      requestedAt: new Date()
+      status: "pending",
+      requestedAt: new Date(),
     };
-    
+
     this.approvals.set(request.id, request);
-    
+
     // Log the request for human review
     console.log(`[APPROVAL REQUIRED] ${platformId}: ${action}`);
-    console.log('Payload:', JSON.stringify(payload, null, 2));
-    
+    console.log("Payload:", JSON.stringify(payload, null, 2));
+
     return request;
   }
 
   static async checkApproval(requestId: string): Promise<boolean> {
     const request = this.approvals.get(requestId);
-    return request?.status === 'approved';
+    return request?.status === "approved";
   }
 
   // For testing/demo only - in production this would be a proper admin UI
-  static async simulateApproval(requestId: string, approved: boolean = true): Promise<void> {
+  static async simulateApproval(
+    requestId: string,
+    approved = true,
+  ): Promise<void> {
     const request = this.approvals.get(requestId);
     if (request) {
-      request.status = approved ? 'approved' : 'rejected';
+      request.status = approved ? "approved" : "rejected";
       request.reviewedAt = new Date();
-      request.reviewedBy = 'test-admin';
+      request.reviewedBy = "test-admin";
     }
   }
 }

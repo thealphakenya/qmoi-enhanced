@@ -63,11 +63,11 @@ def test_cache_file(tmp_path):
             "last_check": "2024-10-31T00:00:00Z"
         }
     }
-    path = tmp_path / "link_cache.json" 
+    path = tmp_path / "link_cache.json"
     path.write_text(json.dumps(cache))
     return path
 
-@pytest.fixture 
+@pytest.fixture
 def test_validation_dir(tmp_path):
     """Create test validation directory."""
     path = tmp_path / ".qmoi_validation"
@@ -86,7 +86,7 @@ class TestLinkValidator:
             assert not result["invalid"]
 
     def test_validate_invalid_link(self, test_links_file):
-        """Test validation of an 
+        """Test validation of an
 ```
 
 Notes:

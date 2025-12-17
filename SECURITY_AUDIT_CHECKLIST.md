@@ -5,6 +5,7 @@ last_updated: 2025-11-15
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -32,6 +33,7 @@ This checklist ensures all QMOI applications and their builds are free of securi
 #### Files to Scan
 
 **Android (Kotlin/Java)**
+
 - [ ] `AndroidManifest.xml` — No API keys in metadata
 - [ ] `build.gradle` — No keys in buildTypes
 - [ ] `local.properties` — Should NOT be in version control
@@ -39,24 +41,28 @@ This checklist ensures all QMOI applications and their builds are free of securi
 - [ ] All `.kt` and `.java` files — No string literals with keys
 
 **iOS (Swift/Objective-C)**
+
 - [ ] `Info.plist` — No API keys in metadata
 - [ ] `*.pbxproj` — Check build settings
 - [ ] All `.swift` and `.m` files — No hardcoded keys
 - [ ] Certificates folder — Ensure not in repo
 
 **Windows (C#/.NET)**
+
 - [ ] `App.config` — No keys in configuration
 - [ ] `appsettings.json` — No production keys
 - [ ] All `.cs` files — Scan for string literals with keys
 - [ ] Registry operations — Should not contain secrets
 
 **Web (JavaScript/TypeScript)**
+
 - [ ] `env.js`, `.env.local` — Should NOT be in repo
 - [ ] `config.js`, `settings.js` — No hardcoded API keys
 - [ ] All `.js`, `.ts` files — Scan for secret patterns
 - [ ] `package.json` — No API keys in scripts or dependencies
 
 **Python (if applicable)**
+
 - [ ] `settings.py`, `config.py` — Use environment variables
 - [ ] All `.py` files — No hardcoded credentials
 - [ ] `requirements.txt` — No GitHub tokens or API keys
@@ -64,6 +70,7 @@ This checklist ensures all QMOI applications and their builds are free of securi
 #### Scanning Method
 
 **Automated Scanning:**
+
 ```bash
 # Install git-secrets or similar tool
 brew install git-secrets  # macOS
@@ -84,6 +91,7 @@ grep -r "private_key\|privateKey" src/
 ```
 
 **Manual Review:**
+
 - [ ] Secrets scanning tools run successfully
 - [ ] No API keys found: ✓
 - [ ] No database passwords found: ✓
@@ -116,35 +124,43 @@ grep -r "private_key\|privateKey" src/
 #### Automated Dependency Audit
 
 **Node.js/npm:**
+
 ```bash
 npm audit
 npm audit fix
 npm audit fix --audit-level=moderate
 ```
+
 - [ ] No high/critical vulnerabilities
 - [ ] Moderate vulnerabilities reviewed and accepted if necessary
 - [ ] Dependency versions locked: `package-lock.json` committed
 
 **Python/pip:**
+
 ```bash
 pip-audit
 pip-audit --desc
 ```
+
 - [ ] No known vulnerabilities
 - [ ] Transitive dependencies reviewed
 - [ ] `requirements-lock.txt` or `poetry.lock` committed
 
 **Java/Gradle (Android):**
+
 ```bash
 ./gradlew dependencyCheckAnalyze
 ```
+
 - [ ] No critical/high vulnerabilities
 - [ ] Dependency versions pinned in `build.gradle`
 
 **Swift/CocoaPods (iOS):**
+
 ```bash
 pod install
 ```
+
 - [ ] `Podfile.lock` committed (reproducible builds)
 - [ ] No deprecated or vulnerable pods
 
@@ -172,6 +188,7 @@ pod install
 ### 2.1 Input Validation & Sanitization
 
 #### Android
+
 - [ ] **User Input**
   - [ ] All EditText inputs validated before use
   - [ ] Special characters escaped in database queries
@@ -183,6 +200,7 @@ pod install
   - [ ] API responses deserialized carefully
 
 #### iOS
+
 - [ ] **User Input**
   - [ ] All UITextField/UITextView inputs validated
   - [ ] SQLite queries use parameterized statements
@@ -194,6 +212,7 @@ pod install
   - [ ] API certificate pinning (if applicable)
 
 #### Windows
+
 - [ ] **User Input**
   - [ ] TextBox inputs validated before processing
   - [ ] Database queries use prepared statements (LINQ parameterization)
@@ -205,6 +224,7 @@ pod install
   - [ ] HTTP request headers sanitized
 
 #### Web
+
 - [ ] **User Input**
   - [ ] Input length limits enforced
   - [ ] HTML special characters escaped (prevent XSS)
@@ -219,6 +239,7 @@ pod install
 ### 2.2 Encryption & Data Protection
 
 #### Android
+
 - [ ] **Data at Rest**
   - [ ] Sensitive data stored in Android Keystore (not SharedPreferences)
   - [ ] Database encryption enabled (if using Room + encrypted)
@@ -230,6 +251,7 @@ pod install
   - [ ] No cleartext traffic: `android:usesCleartextTraffic="false"`
 
 #### iOS
+
 - [ ] **Data at Rest**
   - [ ] Sensitive data stored in Keychain (not UserDefaults)
   - [ ] Core Data uses encryption (if storing sensitive data)
@@ -241,6 +263,7 @@ pod install
   - [ ] No weak cipher suites
 
 #### Windows
+
 - [ ] **Data at Rest**
   - [ ] Passwords/credentials stored in Windows Credential Manager (not registry)
   - [ ] User data stored in encrypted form (BitLocker/EFS)
@@ -252,6 +275,7 @@ pod install
   - [ ] No SSL/TLS downgrade attacks possible
 
 #### Web
+
 - [ ] **Data at Rest**
   - [ ] Sensitive data NOT stored in localStorage (use sessionStorage with caution)
   - [ ] Cookies marked as Secure + HttpOnly (for authentication)
@@ -265,6 +289,7 @@ pod install
 ### 2.3 Authentication & Authorization
 
 #### Android
+
 - [ ] **Authentication**
   - [ ] Password stored as bcrypt/PBKDF2 hash (not plaintext)
   - [ ] Biometric authentication uses Android BiometricPrompt (if applicable)
@@ -277,6 +302,7 @@ pod install
   - [ ] No privilege escalation possible via client manipulation
 
 #### iOS
+
 - [ ] **Authentication**
   - [ ] Face ID / Touch ID uses Secure Enclave
   - [ ] OAuth/OIDC uses secure flow (no implicit grant)
@@ -287,6 +313,7 @@ pod install
   - [ ] App permissions documented: camera, location, contacts, etc.
 
 #### Windows
+
 - [ ] **Authentication**
   - [ ] Uses Windows authentication (preferred) or secure OAuth
   - [ ] Passwords hashed with strong algorithm (bcrypt, Argon2)
@@ -298,6 +325,7 @@ pod install
   - [ ] Audit logging enabled for sensitive operations
 
 #### Web
+
 - [ ] **Authentication**
   - [ ] OAuth 2.0 / OIDC used (not custom auth)
   - [ ] PKCE used for mobile/SPA flows
@@ -602,19 +630,19 @@ pod install
 ## POST-SECURITY-AUDIT CHECKLIST
 
 - [ ] **All Critical Findings Fixed**
-  - Confirm: __________ Date: __________
+  - Confirm: ****\_\_**** Date: ****\_\_****
 
 - [ ] **All High-Priority Findings Addressed**
-  - Confirm: __________ Date: __________
+  - Confirm: ****\_\_**** Date: ****\_\_****
 
 - [ ] **Medium-Priority Findings Tracked for Future**
-  - Confirm: __________ Date: __________
+  - Confirm: ****\_\_**** Date: ****\_\_****
 
 - [ ] **Security Team Sign-Off**
-  - Signature: __________ Date: __________
+  - Signature: ****\_\_**** Date: ****\_\_****
 
 - [ ] **Release Approved for Production**
-  - Signature: __________ Date: __________
+  - Signature: ****\_\_**** Date: ****\_\_****
 
 ---
 

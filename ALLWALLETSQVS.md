@@ -8,10 +8,12 @@ qmoi_validation_frontmatter: true
 This file documents discovered wallet-related documentation and provides instructions to run the automated wallet Quick Verification (QV) script.
 
 Purpose
+
 - Provide a single place listing wallet docs and guidance for running automated checks.
 - Ensure wallet checks are dry-run by default and require explicit gating to run live transfers.
 
 Discovered wallet docs (non-exhaustive)
+
 - `CASHON.md` — Cashon system wallet and operational notes.
 - `LEAHWALLET.md` — Leah/Sister wallet guide and UI notes.
 - `QMOI-REVENUE-README.md`, `QMOIREVENUEGENERATION.md`, `QMOIAUTOREVENUEEARN.md` — revenue/autorevenue docs referencing Cashon and wallet flows.
@@ -19,10 +21,12 @@ Discovered wallet docs (non-exhaustive)
 - Various README files reference wallets and payment providers (Mpesa, Pesapal, Binance, Bitget, CashApp). Use the repository-wide placeholder scanner to find more references.
 
 Location of automated checks
+
 - Script: `scripts/wallets/check_wallets.py`
 - Validation output: `.qmoi_validation/all_wallets_qvs.json`
 
 How the checks work
+
 - Default mode: mock/dry-run. No real network transfers or money movement are performed.
 - To run live operations (NOT RECOMMENDED without human review + secret manager), you must set:
   - `PRODUCTION_CONFIRMED=true` in the environment, and
@@ -30,11 +34,13 @@ How the checks work
 - Live transfer code paths are intentionally gated and require human approval and secret provisioning.
 
 Run (dry-run) — local dev
+
 ```bash
 python3 scripts/wallets/check_wallets.py
 ```
 
 Run (explicit live, only after human review)
+
 ```bash
 # Only run after manual code review and secrets provisioned
 export PRODUCTION_CONFIRMED=true
@@ -42,14 +48,17 @@ python3 scripts/wallets/check_wallets.py --real
 ```
 
 Next steps
+
 - Expand `scripts/wallets/` with adapters for testnets and exchanges (Binance, Bitget, Pesapal). Start with testnet-only adapters and automated unit tests.
 - Add a scheduled job (daemon) to persist balance history to `.qmoi_validation/wallet_balance_history.json`.
 - Prioritize adding secure secret manager integration (GH Secrets / Vault / AWS Secrets Manager) and never commit keys.
 
 Contact / Audit
+
 - All wallet changes must be code-reviewed and approved by the project owner. See `CASHON.md` and `MASTERREADME.md` for master-approval flows.
 
 Generated: automatic inventory created by automation on request.
+
 # ALL WALLETS QVS
 
 This file lists all known wallets in the repository and provides a quick verification (QVS) plan.
@@ -88,13 +97,13 @@ python3 scripts/wallets/check_wallets.py --real --report all_wallets_qvs.json
 Report output format (JSON):
 
 {
-  "wallet": {
-    "balance": "<amount>|mock",
-    "currency": "<currency>",
-    "last_checked": "2025-10-28T22:00:00Z",
-    "source_file": "MEGAVAULT.md",
-    "status": "ok|missing_credentials|error"
-  }
+"wallet": {
+"balance": "<amount>|mock",
+"currency": "<currency>",
+"last_checked": "2025-10-28T22:00:00Z",
+"source_file": "MEGAVAULT.md",
+"status": "ok|missing_credentials|error"
+}
 }
 
 Next steps (recommended):

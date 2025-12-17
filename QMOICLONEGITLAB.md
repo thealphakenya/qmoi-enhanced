@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,6 +16,7 @@ qmoi_validation_frontmatter: true
 # QMOI GitLab Integration & Automation Guide
 
 ## 1. Project Setup
+
 - **Create a new GitLab project** or fork the QMOI template.
 - **Clone the repository** to your local machine or preferred cloud IDE (e.g., Gitpod).
 - **Add required environment variables** in GitLab CI/CD settings:
@@ -23,6 +25,7 @@ qmoi_validation_frontmatter: true
   - Any other QMOI-required variables (see `.env.example` if present).
 
 ## 2. CI/CD Pipeline
+
 - The provided `.gitlab-ci.yml` automates build, test, and deployment for QMOI.
 - **Features:**
   - Auto-fixes errors and redeploys on failure (see WATCHDEBUG integration).
@@ -34,6 +37,7 @@ qmoi_validation_frontmatter: true
   - Failed pipelines are auto-retried and fixed by QMOI automation.
 
 ## 3. Developer Features & UI Automation
+
 - **QCity UI Integration:**
   - Real-time status, logs, and controls for all GitLab pipelines and deployments.
   - Master-only controls for manual retry, cancel, or redeploy.
@@ -46,6 +50,7 @@ qmoi_validation_frontmatter: true
   - Master receives notifications for all critical events.
 
 ## 4. Troubleshooting
+
 - **Pipeline Fails:**
   - QMOI auto-retries and attempts to fix errors.
   - Check logs in GitLab UI and QCity dashboard.
@@ -58,6 +63,7 @@ qmoi_validation_frontmatter: true
   - Check for updates to QMOI scripts and documentation.
 
 ## 5. Advanced Usage
+
 - **Customizing Pipelines:**
   - Edit `.gitlab-ci.yml` to add or modify stages (build, test, deploy, etc.).
   - Integrate with QMOI friendship, revenue, and monitoring systems as needed.
@@ -66,17 +72,20 @@ qmoi_validation_frontmatter: true
   - Audit logs are accessible to the master in the QCity UI.
 
 ## 6. Automation & Monitoring
+
 - **WATCHDEBUG Integration:**
   - Monitors all GitLab pipelines and deployments.
   - Auto-fixes errors and redeploys as needed.
   - Logs and notifies master of all critical events.
 
 ## Universal Runner Engine
+
 - Platform-aware runners auto-detect GitLab and load GitLab-specific modules
 - Elastic, parallel, and self-healing: scale up/down, split jobs, auto-offload to cloud, auto-recover from errors
 - AI/ML-driven optimization: runners analyze logs, performance, and errors across all platforms, auto-suggest/apply optimizations
 
 ## New Dashboard Widgets
+
 - Platform Status Cards: GitLab card shows pipeline status, runners, last sync, errors
 - Universal Trigger Panel: trigger any job (build, test, deploy, sync, backup, optimize) on GitLab
 - Elastic Scaling Panel: runner count, scale up/down, resource usage
@@ -87,6 +96,7 @@ qmoi_validation_frontmatter: true
 - Master-Only Controls: advanced settings, manual override, audit logs
 
 ## AI/ML Automation & Cross-Platform Learning
+
 - AI/ML models aggregate logs/errors/fixes from GitLab and other platforms
 - Fixes/optimizations that work on GitLab are auto-suggested/applied to others
 - Runners self-evolve to support new GitLab features
@@ -94,12 +104,14 @@ qmoi_validation_frontmatter: true
 - All major changes require master approval
 
 ## Usage & Troubleshooting
+
 - Use dashboard widgets to monitor GitLab status, trigger jobs, view logs, and apply AI/ML recommendations
 - Master can trigger any job, scale runners, or force sync/heal
 - All actions, fixes, and enhancements are logged and auditable
 - For errors, use logs and AI/ML suggestions; master can override or roll back as needed
 
 ## UI/UX TODO_PRODup
+
 (Same as in QMOICLONE.md, with GitLab-specific emphasis)
 
 ## Command Reference
@@ -107,43 +119,46 @@ qmoi_validation_frontmatter: true
 See [CMDCOMMANDS.md](CMDCOMMANDS.md) for all automation, testing, and troubleshooting commands for QMOI across all platforms (PowerShell, Bash, etc.).
 
 ### Troubleshooting
+
 - If you see `Missing script: "qmoi:autodev:full"`, add it to your `package.json` under `"scripts"`.
 - For PowerShell, use `;` to separate commands. For Bash, use `&&`.
 - If you see `{ was unexpected at this time.`, you may be using CMD instead of PowerShell. Use PowerShell or run commands one by one in CMD.
 
 ---
 
-*QMOI: Fully automated, self-healing, and master-controlled GitLab integration for universal automation and developer productivity.*
+_QMOI: Fully automated, self-healing, and master-controlled GitLab integration for universal automation and developer productivity._
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOICLONEGITLAB.md",
-  "validated_at": "2025-10-26T20:51:22.476871Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI GitLab Integration & Automation Guide"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": [
-        {
-          "label": "CMDCOMMANDS.md",
-          "target": "./CMDCOMMANDS.md",
-          "ok": true
-        }
-      ]
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "QMOICLONEGITLAB.md",
+"validated_at": "2025-10-26T20:51:22.476871Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI GitLab Integration & Automation Guide"
+},
+{
+"name": "links",
+"ok": true,
+"detail": [
+{
+"label": "CMDCOMMANDS.md",
+"target": "./CMDCOMMANDS.md",
+"ok": true
 }
+]
+}
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

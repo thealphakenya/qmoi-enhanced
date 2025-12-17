@@ -138,7 +138,12 @@ const AccountAutomationPanel: React.FC = () => {
                   <td>{a.verified ? "Yes" : "No"}</td>
                   <td>
                     {!a.verified && (
-                      <Button size="small" variant="outlined" color="primary" onClick={() => verify(a.id, a.email)}>
+                      <Button
+                        size="small"
+                        variant="outlined"
+                        color="primary"
+                        onClick={() => verify(a.id, a.email)}
+                      >
                         Verify
                       </Button>
                     )}

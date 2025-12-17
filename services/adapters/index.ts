@@ -1,4 +1,4 @@
-import { PlatformAdapter } from './types';
+import { PlatformAdapter } from "./types";
 
 const registry = new Map<string, PlatformAdapter>();
 

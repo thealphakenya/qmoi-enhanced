@@ -4,7 +4,7 @@
 export interface PlatformCandidate {
   name: string;
   url: string;
-  type: 'app' | 'video' | 'code' | 'file' | 'social' | 'other';
+  type: "app" | "video" | "code" | "file" | "social" | "other";
   description?: string;
   discoveredAt: Date;
 }
@@ -15,17 +15,17 @@ export class PlatformDiscoveryService {
     // Return a list of new platform candidates
     return [
       {
-        name: 'ExamplePlatform',
-        url: 'https://example.com',
-        type: 'app',
-        description: 'A new app distribution platform',
-        discoveredAt: new Date()
-      }
+        name: "ExamplePlatform",
+        url: "https://example.com",
+        type: "app",
+        description: "A new app distribution platform",
+        discoveredAt: new Date(),
+      },
     ];
   }
 
   static async proposeToMaster(platforms: PlatformCandidate[]): Promise<void> {
     // TODO: Notify master for approval (UI, email, or chat)
-    console.log('Proposing new platforms to master:', platforms);
+    console.log("Proposing new platforms to master:", platforms);
   }
-} 
+}

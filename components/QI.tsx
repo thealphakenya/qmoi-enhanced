@@ -311,7 +311,7 @@ function QIComponent() {
         console.error("Failed to fetch data:", error);
         if (isMounted) {
           setError(
-            error instanceof Error ? error.message : "Failed to fetch data"
+            error instanceof Error ? error.message : "Failed to fetch data",
           );
           toast({
             title: "Error",
@@ -387,7 +387,7 @@ function QIComponent() {
               (t) =>
                 `${t.id},${t.user || "admin"},${t.type},${
                   t.desc || t.file || "-"
-                },${t.status},${t.timestamp},${t.duration || "-"}`
+                },${t.status},${t.timestamp},${t.duration || "-"}`,
             )
             .join("\n");
           const csv = header + rows;
@@ -418,7 +418,7 @@ function QIComponent() {
         });
       }
     },
-    [aiTasks, toast]
+    [aiTasks, toast],
   );
 
   // Clear logs
@@ -497,7 +497,7 @@ function QIComponent() {
   // Fix duration calculations
   const calculateAvgDuration = (durations: (number | undefined)[]): string => {
     const validDurations = durations.filter(
-      (d): d is number => d !== undefined
+      (d): d is number => d !== undefined,
     );
     if (validDurations.length === 0) return "-";
     const avgDuration =
@@ -536,7 +536,7 @@ function QIComponent() {
   const handleAutomationRuleChange = useCallback(
     (rule: AutomationRule) => {
       setAutomationRules((prev) =>
-        prev.map((r) => (r.id === rule.id ? rule : r))
+        prev.map((r) => (r.id === rule.id ? rule : r)),
       );
       toast({
         title: "Automation Updated",
@@ -545,7 +545,7 @@ function QIComponent() {
         }`,
       });
     },
-    [toast]
+    [toast],
   );
 
   // New state for autonomous optimization
@@ -702,7 +702,7 @@ function QIComponent() {
                 >
                   {React.createElement(
                     FaChalkboardTeacher as React.ElementType,
-                    { className: "mr-2" }
+                    { className: "mr-2" },
                   )}{" "}
                   Inventions
                 </Button>
@@ -1098,8 +1098,8 @@ function QIComponent() {
                       emotionalState.mood === "happy"
                         ? "default"
                         : emotionalState.mood === "sad"
-                        ? "destructive"
-                        : "outline"
+                          ? "destructive"
+                          : "outline"
                     }
                   >
                     {emotionalState.mood}
@@ -1300,8 +1300,8 @@ function QIComponent() {
                             task.status === "completed"
                               ? "default"
                               : task.status === "failed"
-                              ? "destructive"
-                              : "outline"
+                                ? "destructive"
+                                : "outline"
                           }
                         >
                           {task.status}
@@ -1426,7 +1426,7 @@ function QIComponent() {
                   <b>Last Task:</b>{" "}
                   {aiTasks.length > 0
                     ? new Date(
-                        aiTasks[aiTasks.length - 1].timestamp
+                        aiTasks[aiTasks.length - 1].timestamp,
                       ).toLocaleString()
                     : "N/A"}
                 </div>
@@ -1563,7 +1563,7 @@ function QIComponent() {
                   <span className="text-lg font-bold">
                     {aiTasks.length > 0
                       ? new Date(
-                          aiTasks[aiTasks.length - 1].timestamp
+                          aiTasks[aiTasks.length - 1].timestamp,
                         ).toLocaleString()
                       : "N/A"}
                   </span>
@@ -1604,7 +1604,7 @@ function QIComponent() {
                   <span className="text-lg font-bold text-red-600">
                     {tradingStats?.analytics.totalLoss !== undefined
                       ? `${Math.abs(tradingStats.analytics.totalLoss).toFixed(
-                          2
+                          2,
                         )} USDT`
                       : "N/A"}
                   </span>
@@ -1647,8 +1647,8 @@ function QIComponent() {
                   {mediaStatus?.status === "generating"
                     ? "Media is being generated"
                     : mediaStatus?.status === "completed"
-                    ? "Media generation completed"
-                    : "N/A"}
+                      ? "Media generation completed"
+                      : "N/A"}
                 </Badge>
               </div>
             </div>
@@ -1658,7 +1658,7 @@ function QIComponent() {
                 <span className="text-xs text-gray-500">Status</span>
                 <Badge
                   variant={getBadgeVariant(
-                    automationStatus?.isEnabled ? "active" : "paused"
+                    automationStatus?.isEnabled ? "active" : "paused",
                   )}
                 >
                   {automationStatus?.isEnabled ? "Enabled" : "Disabled"}
@@ -1671,7 +1671,7 @@ function QIComponent() {
                     ? new Date(
                         automationStatus.tasks[
                           automationStatus.tasks.length - 1
-                        ].schedule?.lastRun || ""
+                        ].schedule?.lastRun || "",
                       ).toLocaleString()
                     : "N/A"}
                 </span>
@@ -1683,7 +1683,7 @@ function QIComponent() {
                     ? new Date(
                         automationStatus.tasks[
                           automationStatus.tasks.length - 1
-                        ].schedule?.nextRun || ""
+                        ].schedule?.nextRun || "",
                       ).toLocaleString()
                     : "N/A"}
                 </span>

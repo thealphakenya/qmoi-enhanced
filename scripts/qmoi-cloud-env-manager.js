@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import { createClient } from '@qmoi/cloud-client';
-import { promises as fs } from 'fs';
-import path from 'path';
-import { retryWithBackoff } from './retry-utils.js';
-import { loadConfig } from './config-utils.js';
+import { createClient } from "@qmoi/cloud-client";
+import { promises as fs } from "fs";
+import path from "path";
+import { retryWithBackoff } from "./retry-utils.js";
+import { loadConfig } from "./config-utils.js";
 
-const ENV_STATE_FILE = path.join(process.cwd(), '.qmoi', 'environments.json');
+const ENV_STATE_FILE = path.join(process.cwd(), ".qmoi", "environments.json");
 const OPERATION_TIMEOUT = 10 * 60 * 1000; // 10 minutes
 const POLL_INTERVAL = 5000; // 5 seconds
 const MAX_RETRIES = 3;
@@ -14,9 +14,9 @@ const MAX_RETRIES = 3;
 class CloudEnvironmentManager {
   constructor() {
     this.client = createClient({
-      region: process.env.QMOI_REGION || 'us-east-1',
+      region: process.env.QMOI_REGION || "us-east-1",
       apiKey: process.env.QMOI_API_KEY,
-      timeout: OPERATION_TIMEOUT
+      timeout: OPERATION_TIMEOUT,
     });
   }
 
@@ -38,30 +38,32 @@ class CloudEnvironmentManager {
 
     while (true) {
       const status = await this.client.operations.get(operationId);
-      
-      if (status.state === 'COMPLETED') {
+
+      if (status.state === "COMPLETED") {
         return status.result;
       }
-      
-      if (status.state === 'FAILED') {
+
+      if (status.state === "FAILED") {
         throw new Error(`Operation failed: ${status.error}`);
       }
-      
+
       if (Date.now() - startTime > OPERATION_TIMEOUT) {
-        throw new Error('Operation timed out');
+        throw new Error("Operation timed out");
       }
 
-      await new Promise(resolve => setTimeout(resolve, POLL_INTERVAL));
+      await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL));
     }
   }
 
   async createEnv(project) {
-    console.log(`[CLOUD ENV] Creating ephemeral cloud environment for project: ${project}`);
+    console.log(
+      `[CLOUD ENV] Creating ephemeral cloud environment for project: ${project}`,
+    );
 
     try {
       // Load project configuration
       const projectConfig = await loadConfig(
-        path.join(process.cwd(), project, '.qmoi', 'project.json')
+        path.join(process.cwd(), project, ".qmoi", "project.json"),
       );
 
       // Create environment
@@ -70,22 +72,22 @@ class CloudEnvironmentManager {
           return await this.client.environments.create({
             project,
             name: `${project}-${Date.now()}`,
-            type: projectConfig.environmentType || 'testing',
+            type: projectConfig.environmentType || "testing",
             resources: projectConfig.resources || {
               cpu: 2,
-              memory: '4Gi',
-              storage: '20Gi'
+              memory: "4Gi",
+              storage: "20Gi",
             },
             network: projectConfig.network || {
               ingressRules: [
-                { port: 80, protocol: 'TCP' },
-                { port: 443, protocol: 'TCP' }
-              ]
+                { port: 80, protocol: "TCP" },
+                { port: 443, protocol: "TCP" },
+              ],
             },
-            timeoutMinutes: 60
+            timeoutMinutes: 60,
           });
         },
-        { maxAttempts: MAX_RETRIES }
+        { maxAttempts: MAX_RETRIES },
       );
 
       // Wait for environment to be ready
@@ -97,27 +99,32 @@ class CloudEnvironmentManager {
         id: environment.id,
         name: environment.name,
         endpoints: environment.endpoints,
-        createdAt: Date.now()
+        createdAt: Date.now(),
       };
       await this.saveState(state);
 
       console.log(`[CLOUD ENV] Environment for ${project} is ready:`);
-      console.log('  Name:', environment.name);
-      console.log('  ID:', environment.id);
-      console.log('  Endpoints:');
+      console.log("  Name:", environment.name);
+      console.log("  ID:", environment.id);
+      console.log("  Endpoints:");
       for (const [name, url] of Object.entries(environment.endpoints)) {
         console.log(`    ${name}: ${url}`);
       }
 
       return environment;
     } catch (err) {
-      console.error(`[ERROR] Failed to create environment for ${project}:`, err.message);
+      console.error(
+        `[ERROR] Failed to create environment for ${project}:`,
+        err.message,
+      );
       throw err;
     }
   }
 
   async destroyEnv(project) {
-    console.log(`[CLOUD ENV] Destroying ephemeral cloud environment for project: ${project}`);
+    console.log(
+      `[CLOUD ENV] Destroying ephemeral cloud environment for project: ${project}`,
+    );
 
     try {
       // Load state
@@ -133,7 +140,7 @@ class CloudEnvironmentManager {
         async () => {
           return await this.client.environments.delete(env.id);
         },
-        { maxAttempts: MAX_RETRIES }
+        { maxAttempts: MAX_RETRIES },
       );
 
       // Wait for deletion to complete
@@ -145,26 +152,29 @@ class CloudEnvironmentManager {
 
       console.log(`[CLOUD ENV] Environment for ${project} destroyed.`);
     } catch (err) {
-      console.error(`[ERROR] Failed to destroy environment for ${project}:`, err.message);
+      console.error(
+        `[ERROR] Failed to destroy environment for ${project}:`,
+        err.message,
+      );
       throw err;
     }
   }
 
   async listEnvs() {
     const state = await this.loadState();
-    
+
     if (Object.keys(state.environments).length === 0) {
-      console.log('[CLOUD ENV] No environments found');
+      console.log("[CLOUD ENV] No environments found");
       return;
     }
 
-    console.log('[CLOUD ENV] Active environments:');
+    console.log("[CLOUD ENV] Active environments:");
     for (const [project, env] of Object.entries(state.environments)) {
       console.log(`\nProject: ${project}`);
-      console.log('  Name:', env.name);
-      console.log('  ID:', env.id);
-      console.log('  Created:', new Date(env.createdAt).toLocaleString());
-      console.log('  Endpoints:');
+      console.log("  Name:", env.name);
+      console.log("  ID:", env.id);
+      console.log("  Created:", new Date(env.createdAt).toLocaleString());
+      console.log("  Endpoints:");
       for (const [name, url] of Object.entries(env.endpoints)) {
         console.log(`    ${name}: ${url}`);
       }
@@ -177,24 +187,24 @@ async function main() {
   const args = process.argv.slice(2);
 
   try {
-    if (args[0] === 'create' && args[1] === '--project' && args[2]) {
+    if (args[0] === "create" && args[1] === "--project" && args[2]) {
       await manager.createEnv(args[2]);
-    } else if (args[0] === 'destroy' && args[1] === '--project' && args[2]) {
+    } else if (args[0] === "destroy" && args[1] === "--project" && args[2]) {
       await manager.destroyEnv(args[2]);
-    } else if (args[0] === 'list') {
+    } else if (args[0] === "list") {
       await manager.listEnvs();
     } else {
-      console.log('Usage: node qmoi-cloud-env-manager.js <command> [options]');
-      console.log('\nCommands:');
-      console.log('  create --project <name>    Create new environment');
-      console.log('  destroy --project <name>   Destroy environment');
-      console.log('  list                       List active environments');
+      console.log("Usage: node qmoi-cloud-env-manager.js <command> [options]");
+      console.log("\nCommands:");
+      console.log("  create --project <name>    Create new environment");
+      console.log("  destroy --project <name>   Destroy environment");
+      console.log("  list                       List active environments");
       process.exit(1);
     }
   } catch (err) {
-    console.error('[ERROR]', err.message);
+    console.error("[ERROR]", err.message);
     process.exit(1);
   }
 }
 
-main(); 
+main();

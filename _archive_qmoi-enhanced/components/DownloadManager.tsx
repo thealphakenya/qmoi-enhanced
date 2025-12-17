@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback } from "react";
 
 interface Download {
   url: string;
@@ -9,12 +9,15 @@ interface Download {
 const DownloadList = React.memo(({ downloads }: { downloads: Download[] }) => (
   <ul style={{ marginTop: 16, fontSize: 14 }}>
     {downloads.map((dl, i) => (
-      <li key={i}>{dl.url} - {dl.status} <span style={{ color: '#aaa' }}>({dl.time})</span></li>
+      <li key={i}>
+        {dl.url} - {dl.status}{" "}
+        <span style={{ color: "#aaa" }}>({dl.time})</span>
+      </li>
     ))}
   </ul>
 ));
 
-DownloadList.displayName = 'DownloadList';
+DownloadList.displayName = "DownloadList";
 
 interface RequestIdleCallbackOptions {
   timeout?: number;
@@ -28,34 +31,38 @@ interface RequestIdleCallbackHandle {
 interface Window {
   requestIdleCallback: (
     callback: (deadline: RequestIdleCallbackHandle) => void,
-    options?: RequestIdleCallbackOptions
+    options?: RequestIdleCallbackOptions,
   ) => number;
   cancelIdleCallback: (handle: number) => void;
 }
 
 export const DownloadManager: React.FC = () => {
   const [downloads, setDownloads] = useState<Download[]>([]);
-  const [url, setUrl] = useState('');
-  const [status, setStatus] = useState('');
+  const [url, setUrl] = useState("");
+  const [status, setStatus] = useState("");
 
   // Use requestIdleCallback for non-urgent UI updates if available
   const addDownload = useCallback((download: Download) => {
-    if ('requestIdleCallback' in window) {
+    if ("requestIdleCallback" in window) {
       window.requestIdleCallback(() => {
-        setDownloads(dls => [...dls, download]);
+        setDownloads((dls) => [...dls, download]);
       });
     } else {
-      setDownloads(dls => [...dls, download]);
+      setDownloads((dls) => [...dls, download]);
     }
   }, []);
 
   const handleDownload = useCallback(() => {
     if (!url) return;
-    setStatus('Starting download...');
+    setStatus("Starting download...");
     setTimeout(() => {
-      addDownload({ url, status: 'Completed', time: new Date().toLocaleTimeString() });
-      setStatus('Download complete.');
-      setUrl('');
+      addDownload({
+        url,
+        status: "Completed",
+        time: new Date().toLocaleTimeString(),
+      });
+      setStatus("Download complete.");
+      setUrl("");
     }, 1500);
   }, [url, addDownload]);
 
@@ -66,14 +73,16 @@ export const DownloadManager: React.FC = () => {
         type="text"
         placeholder="Enter file URL"
         value={url}
-        onChange={e => setUrl(e.target.value)}
-        style={{ marginBottom: 8, width: '100%' }}
+        onChange={(e) => setUrl(e.target.value)}
+        style={{ marginBottom: 8, width: "100%" }}
       />
-      <button onClick={handleDownload} disabled={!url}>Download</button>
-      <div style={{ marginTop: 12, fontSize: 12, color: '#888' }}>{status}</div>
+      <button onClick={handleDownload} disabled={!url}>
+        Download
+      </button>
+      <div style={{ marginTop: 12, fontSize: 12, color: "#888" }}>{status}</div>
       <DownloadList downloads={downloads} />
     </div>
   );
 };
 
-DownloadManager.displayName = 'DownloadManager';
+DownloadManager.displayName = "DownloadManager";

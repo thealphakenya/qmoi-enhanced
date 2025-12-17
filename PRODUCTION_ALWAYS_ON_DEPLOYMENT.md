@@ -2,7 +2,7 @@
 
 **Status:** ✅ **PRODUCTION ARCHITECTURE - ALWAYS ON**  
 **Date:** November 11, 2025  
-**Guarantee:** System runs 24/7 even when codespace closed  
+**Guarantee:** System runs 24/7 even when codespace closed
 
 ---
 
@@ -15,12 +15,15 @@
 **Setup (10 minutes):**
 
 1. **The workflow already exists!**
+
    ```
    .github/workflows/qvillage-sync.yml
    ```
+
    This runs automatically every 6 hours forever.
 
 2. **Verify it's enabled:**
+
    ```bash
    # Push to main
    git add -A
@@ -67,6 +70,7 @@ CMD ["python", "qvillage_memory_sync.py", "--interval", "3600"]
 ```
 
 **Run Forever:**
+
 ```bash
 # Option A: Docker
 docker build -f Dockerfile.qvillage-sync -t qvillage-sync .
@@ -119,10 +123,11 @@ services:
       QVILLAGE_API_URL: https://api.qvillage.ai
       QMOI_MEMORY_URL: https://memory.qmoi.ai
     cron:
-      - "0 * * * *"  # Every hour
+      - "0 * * * *" # Every hour
 ```
 
 Deploy via:
+
 ```bash
 # Railway.app
 railway up
@@ -154,7 +159,7 @@ from qvillage_memory_sync import QVillageSyncEngine
 async def lambda_handler(event, context):
     engine = QVillageSyncEngine()
     metadata = await engine.run_full_sync()
-    
+
     return {
         'statusCode': 200,
         'body': {
@@ -166,6 +171,7 @@ async def lambda_handler(event, context):
 ```
 
 **CloudFormation Template:**
+
 ```yaml
 Resources:
   QVillageSyncFunction:
@@ -190,6 +196,7 @@ Resources:
 ```
 
 Deploy:
+
 ```bash
 aws cloudformation create-stack \
   --stack-name qvillage-sync \
@@ -210,9 +217,10 @@ aws cloudformation create-stack \
 ### How It Works:
 
 1. **Trigger:** Every 6 hours (configurable)
+
    ```yaml
    schedule:
-     - cron: '0 */6 * * *'  # 4x daily
+     - cron: "0 */6 * * *" # 4x daily
    ```
 
 2. **Runs On:** GitHub's servers (not your machine)
@@ -262,13 +270,13 @@ GitHub Actions Tab → qvillage-sync workflow
 
 ## 📊 ALL DEPLOYMENT OPTIONS COMPARED
 
-| Option | Setup Time | Monthly Cost | Uptime | Effort | Recommended |
-|--------|-----------|-------------|--------|--------|------------|
-| **GitHub Actions** | 5 min | FREE | 99.9% | Minimal | ⭐⭐⭐⭐⭐ |
-| **AWS Lambda** | 20 min | <$1 | 99.99% | Medium | ⭐⭐⭐⭐ |
-| **Railway/Render** | 5 min | $5-20 | 99.5% | Low | ⭐⭐⭐⭐ |
-| **Docker (self) | 30 min | Variable | 99.95% | High | ⭐⭐⭐ |
-| **Heroku** | 5 min | $7-50 | 99.5% | Low | ⭐⭐⭐ |
+| Option             | Setup Time | Monthly Cost | Uptime | Effort  | Recommended |
+| ------------------ | ---------- | ------------ | ------ | ------- | ----------- |
+| **GitHub Actions** | 5 min      | FREE         | 99.9%  | Minimal | ⭐⭐⭐⭐⭐  |
+| **AWS Lambda**     | 20 min     | <$1          | 99.99% | Medium  | ⭐⭐⭐⭐    |
+| **Railway/Render** | 5 min      | $5-20        | 99.5%  | Low     | ⭐⭐⭐⭐    |
+| \*\*Docker (self)  | 30 min     | Variable     | 99.95% | High    | ⭐⭐⭐      |
+| **Heroku**         | 5 min      | $7-50        | 99.5%  | Low     | ⭐⭐⭐      |
 
 ---
 
@@ -316,6 +324,7 @@ See: "scheduled" trigger appears every 6 hours
 ## 📈 MONITORING (Ongoing - Automatic)
 
 ### GitHub Actions Dashboard
+
 ```
 https://github.com/alphaqmoi/qmoi-enhanced/actions
 → qvillage-sync workflow shows:
@@ -325,6 +334,7 @@ https://github.com/alphaqmoi/qmoi-enhanced/actions
 ```
 
 ### Slack Notifications
+
 ```
 #deployments channel (configure webhook):
 ✅ "QVillage sync completed successfully"
@@ -338,6 +348,7 @@ https://github.com/alphaqmoi/qmoi-enhanced/actions
 ```
 
 ### Email Alerts (GitHub)
+
 ```
 Settings → Notifications → Workflow runs
 ☑️ Alert on failure (automatic)
@@ -366,6 +377,7 @@ Settings → Notifications → Workflow runs
 ```
 
 **This repeats forever. Even when:**
+
 - Your laptop is off ✅
 - The codespace is closed ✅
 - You're offline ✅
@@ -448,6 +460,7 @@ schedule:
 **Status:** ✅ **PRODUCTION ACTIVE**
 
 The QVillage + HF integration is now:
+
 - Running every 6 hours automatically
 - Syncing papers to HF Spaces
 - Updating QMOI memory
@@ -458,6 +471,7 @@ The QVillage + HF integration is now:
 **And it does all this WITHOUT you doing anything.**
 
 Even when:
+
 - You close VS Code
 - You close the browser
 - You close the codespace
@@ -479,4 +493,3 @@ Even when:
 5. ✅ Celebrate! You're in production 🎊
 
 **That's it. You're done. System runs forever.**
-

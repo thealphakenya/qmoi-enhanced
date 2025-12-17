@@ -130,7 +130,7 @@ const EmploymentDashboard: React.FC = () => {
 
       // Fetch payments
       const paymentResponse = await fetch(
-        "/api/employment/payment?type=payments"
+        "/api/employment/payment?type=payments",
       );
       const paymentData = await paymentResponse.json();
       if (paymentData.success) setPayments(paymentData.data);
@@ -142,7 +142,7 @@ const EmploymentDashboard: React.FC = () => {
 
       // Fetch megavault data
       const megavaultResponse = await fetch(
-        "/api/employment/megavault?type=balance"
+        "/api/employment/megavault?type=balance",
       );
       const megavaultData = await megavaultResponse.json();
       if (megavaultData.success) setMegavaultData(megavaultData.data);
@@ -165,17 +165,17 @@ const EmploymentDashboard: React.FC = () => {
   // Calculate statistics
   const totalEmployees = employees.length;
   const activeEmployees = employees.filter(
-    (emp) => emp.status === "active"
+    (emp) => emp.status === "active",
   ).length;
   const totalUsers = users.length;
   const activeUsers = users.filter((user) => user.status === "active").length;
   const totalPayments = payments.length;
   const completedPayments = payments.filter(
-    (p) => p.status === "completed"
+    (p) => p.status === "completed",
   ).length;
   const totalRevenue = revenueData.revenueLogs.reduce(
     (sum, log) => sum + (log.amount || 0),
-    0
+    0,
   );
 
   // Handle employee enrollment

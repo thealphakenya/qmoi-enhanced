@@ -36,31 +36,31 @@ class ColabAutomation:
     def __init__(self):
         self.project_root = Path(__file__).parent.parent
         self.is_colab = "COLAB_GPU" in os.environ
-        
+
         # Setup logging
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
-    
+
     def setup_colab_environment(self):
         """Setup Google Colab environment"""
         try:
             self.logger.info("🚀 Setting up Google Colab environment...")
-            
+
             if self.is_colab:
                 # Enable GPU
                 self.logger.info("🔧 Enabling GPU...")
                 subprocess.run([
-                    "python", "-c", 
+                    "python", "-c",
                     "import torch; print(f'GPU available: {torch.cuda.is_available()}')"
                 ], cwd=self.project_root)
-                
+
                 # Optimize memory
                 self.logger.info("💾 Optimizing memory...")
                 subprocess.run([
                     "python", "-c",
                     "import gc; gc.collect(); print('Memory optimized')"
                 ], cwd=self.project_root)
-                
+
                 # Install cloud-optimized packages
                 self.logger.info("📦 Installing cloud-optimized packages...")
                 packages = [
@@ -69,7 +69,7 @@ class ColabAutomation:
                     "transformers",
                     "accelerate"
                 ]
-                
+
                 for package in packages:
                     try:
                         subprocess.run([

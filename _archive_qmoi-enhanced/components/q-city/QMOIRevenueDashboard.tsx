@@ -114,7 +114,7 @@ interface DashboardData {
 
 const QMOIRevenueDashboard: React.FC = () => {
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(
-    null
+    null,
   );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -525,7 +525,7 @@ const QMOIRevenueDashboard: React.FC = () => {
                     .sort(
                       (a, b) =>
                         new Date(b.createdAt).getTime() -
-                        new Date(a.createdAt).getTime()
+                        new Date(a.createdAt).getTime(),
                     )
                     .slice(0, 10)
                     .map((account) => (

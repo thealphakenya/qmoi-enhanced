@@ -1,65 +1,78 @@
-const express = require('express');
-const session = require('express-session');
-const fs = require('fs');
-const path = require('path');
-const { spawnSync } = require('child_process');
-const axios = require('axios');
+const express = require("express");
+const session = require("express-session");
+const fs = require("fs");
+const path = require("path");
+const { spawnSync } = require("child_process");
+const axios = require("axios");
 const app = express();
 
 // Security notes: replace hard-coded credentials and secrets with env vars or
 // proposals. Require API key for mutating endpoints.
-const DASHBOARD_SECRET = process.env.QMOI_DASHBOARD_SECRET || 'change-me-in-production';
-const API_KEY = process.env.QMOI_API_KEY || '';
+const DASHBOARD_SECRET =
+  process.env.QMOI_DASHBOARD_SECRET || "change-me-in-production";
+const API_KEY = process.env.QMOI_API_KEY || "";
 
 function requireApiKeyFromReq(req, res) {
-  const provided = req.headers['x-qmoi-api-key'] || req.headers['authorization'];
+  const provided =
+    req.headers["x-qmoi-api-key"] || req.headers["authorization"];
   if (!API_KEY) return true; // allow in dev when no key configured
   if (!provided) {
-    res.status(401).json({ error: 'Missing API key' });
+    res.status(401).json({ error: "Missing API key" });
     return false;
   }
-  const supplied = provided.startsWith('Bearer ') ? provided.split(' ')[1] : provided;
+  const supplied = provided.startsWith("Bearer ")
+    ? provided.split(" ")[1]
+    : provided;
   if (supplied !== API_KEY) {
-    res.status(403).json({ error: 'Invalid API key' });
+    res.status(403).json({ error: "Invalid API key" });
     return false;
   }
   return true;
 }
 
-const LOG_FILE = './logs/qmoi_media_orchestrator.log';
-const ERROR_FIX_LOG = './logs/error_fix_summary.json';
-const GITHUB_STATUS_FILE = './logs/github_status.json';
-const MASTER_ACTIVITIES_LOG = './logs/qmoi-master-activities.log';
-const NOTIFICATIONS_LOG = './logs/qmoi-notifications.log';
+const LOG_FILE = "./logs/qmoi_media_orchestrator.log";
+const ERROR_FIX_LOG = "./logs/error_fix_summary.json";
+const GITHUB_STATUS_FILE = "./logs/github_status.json";
+const MASTER_ACTIVITIES_LOG = "./logs/qmoi-master-activities.log";
+const NOTIFICATIONS_LOG = "./logs/qmoi-notifications.log";
 // Utility: Parse JSON lines from a log file
 function parseJsonLines(filePath, max = 40) {
   if (!fs.existsSync(filePath)) return [];
-  const lines = fs.readFileSync(filePath, 'utf-8').split('\n').filter(Boolean);
-  return lines.slice(-max).map(line => {
-    try { return JSON.parse(line); } catch { return null; }
-  }).filter(Boolean);
+  const lines = fs.readFileSync(filePath, "utf-8").split("\n").filter(Boolean);
+  return lines
+    .slice(-max)
+    .map((line) => {
+      try {
+        return JSON.parse(line);
+      } catch {
+        return null;
+      }
+    })
+    .filter(Boolean);
 }
 
 // API: Get recent events from master activities and notifications logs
-app.get('/api/realtime-events', (req, res) => {
+app.get("/api/realtime-events", (req, res) => {
   const masterEvents = parseJsonLines(MASTER_ACTIVITIES_LOG, 40);
   const notificationEvents = parseJsonLines(NOTIFICATIONS_LOG, 40);
   // Flatten and tag events
   const events = [];
-  masterEvents.forEach(e => {
+  masterEvents.forEach((e) => {
     if (e.activities && Array.isArray(e.activities)) {
-      e.activities.forEach(a => events.push({
-        source: 'master',
-        ...a,
-        timestamp: a.timestamp || e.timestamp
-      }));
+      e.activities.forEach((a) =>
+        events.push({
+          source: "master",
+          ...a,
+          timestamp: a.timestamp || e.timestamp,
+        }),
+      );
     }
   });
-  notificationEvents.forEach(e => {
+  notificationEvents.forEach((e) => {
     events.push({
-      source: 'notification',
+      source: "notification",
       ...e,
-      timestamp: e.timestamp
+      timestamp: e.timestamp,
     });
   });
   // Sort by timestamp descending
@@ -67,34 +80,43 @@ app.get('/api/realtime-events', (req, res) => {
   res.json({ events });
 });
 
-
 // Enhanced: Support multiple users and biometrics
 // Load users from .qmoi_validation/users.json if present, otherwise fallback to minimal local admin
 let USERS = [];
 try {
-  const usersPath = path.join(process.cwd(), '.qmoi_validation', 'users.json');
+  const usersPath = path.join(process.cwd(), ".qmoi_validation", "users.json");
   if (fs.existsSync(usersPath)) {
-    USERS = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
+    USERS = JSON.parse(fs.readFileSync(usersPath, "utf-8"));
   } else {
-    USERS = [{ username: 'admin', password: 'admin', role: 'admin', biometrics: false }];
+    USERS = [
+      {
+        username: "admin",
+        password: "admin",
+        role: "admin",
+        biometrics: false,
+      },
+    ];
   }
 } catch (e) {
-  USERS = [{ username: 'admin', password: 'admin', role: 'admin', biometrics: false }];
+  USERS = [
+    { username: "admin", password: "admin", role: "admin", biometrics: false },
+  ];
 }
 
 function checkCredentials(user, pass) {
-  return USERS.find(u => u.username === user && u.password === pass);
+  return USERS.find((u) => u.username === user && u.password === pass);
 }
 
-app.use(session({ secret: 'qmoi-dashboard', resave: false, saveUninitialized: true }));
+app.use(
+  session({ secret: "qmoi-dashboard", resave: false, saveUninitialized: true }),
+);
 app.use(express.urlencoded({ extended: true }));
-
 
 // Enhanced login page with biometrics and features
 function requireAuth(req, res, next) {
-  if (req.path === '/health') return next();
+  if (req.path === "/health") return next();
   if (req.session && req.session.authenticated) return next();
-  if (req.method === 'POST' && req.path === '/login') return next();
+  if (req.method === "POST" && req.path === "/login") return next();
   res.send(`
     <form method="POST" action="/login" style="max-width:400px;margin:40px auto;padding:24px;background:#f9f9f9;border-radius:12px;box-shadow:0 2px 8px #0001;">
       <h2 style="text-align:center;color:#2563eb;">QMOI Dashboard Login</h2>
@@ -110,9 +132,8 @@ function requireAuth(req, res, next) {
 
 app.use(requireAuth);
 
-
 // Enhanced login with biometrics and user memory
-app.post('/login', (req, res) => {
+app.post("/login", (req, res) => {
   const { user, pass, biometrics } = req.body;
   const found = checkCredentials(user, pass);
   if (found) {
@@ -120,90 +141,124 @@ app.post('/login', (req, res) => {
     req.session.user = found.username;
     req.session.role = found.role;
     req.session.biometrics = found.biometrics;
-    res.redirect('/');
+    res.redirect("/");
   } else {
     res.send('Login failed. <a href="/">Try again</a>');
   }
 });
 
-app.get('/logout', (req, res) => {
-  req.session.destroy(() => res.redirect('/'));
+app.get("/logout", (req, res) => {
+  req.session.destroy(() => res.redirect("/"));
 });
 
-
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', time: new Date().toISOString() });
+app.get("/health", (req, res) => {
+  res.json({ status: "ok", time: new Date().toISOString() });
 });
 
-app.get('/logs', (req, res) => {
-  const logs = fs.existsSync(LOG_FILE) ? fs.readFileSync(LOG_FILE, 'utf-8') : '';
-  res.type('text/plain').send(logs);
+app.get("/logs", (req, res) => {
+  const logs = fs.existsSync(LOG_FILE)
+    ? fs.readFileSync(LOG_FILE, "utf-8")
+    : "";
+  res.type("text/plain").send(logs);
 });
 
-app.get('/error-fix-stats', (req, res) => {
+app.get("/error-fix-stats", (req, res) => {
   if (!fs.existsSync(ERROR_FIX_LOG)) return res.json({});
-  const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, 'utf-8'));
+  const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, "utf-8"));
   const latest = log[log.length - 1];
   res.json(latest);
 });
 
-app.post('/trigger-fix', (req, res) => {
+app.post("/trigger-fix", (req, res) => {
   if (!requireApiKeyFromReq(req, res)) return;
   try {
     if (!process.env.PRODUCTION_CONFIRMED) {
       // Write a proposal file instead of running the fix
-      const pdir = path.join(process.cwd(), '.qmoi_validation');
+      const pdir = path.join(process.cwd(), ".qmoi_validation");
       fs.mkdirSync(pdir, { recursive: true });
       const fname = path.join(pdir, `proposal-trigger-fix-${Date.now()}.json`);
-      fs.writeFileSync(fname, JSON.stringify({ action: 'trigger-fix', createdAt: new Date().toISOString() }, null, 2));
+      fs.writeFileSync(
+        fname,
+        JSON.stringify(
+          { action: "trigger-fix", createdAt: new Date().toISOString() },
+          null,
+          2,
+        ),
+      );
       return res.json({ success: true, proposal: fname });
     }
 
     // Run the fix script synchronously but safely
-    const result = spawnSync('node', ['./scripts/enhanced-error-fix.js'], { encoding: 'utf-8' });
+    const result = spawnSync("node", ["./scripts/enhanced-error-fix.js"], {
+      encoding: "utf-8",
+    });
     if (result.error) {
-      return res.status(500).json({ success: false, error: String(result.error) });
+      return res
+        .status(500)
+        .json({ success: false, error: String(result.error) });
     }
     let stats = {};
     if (fs.existsSync(ERROR_FIX_LOG)) {
-      const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, 'utf-8'));
+      const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, "utf-8"));
       stats = log[log.length - 1];
     }
-    res.json({ success: true, stdout: result.stdout, stderr: result.stderr, stats });
+    res.json({
+      success: true,
+      stdout: result.stdout,
+      stderr: result.stderr,
+      stats,
+    });
   } catch (err) {
     res.status(500).json({ success: false, error: err.toString() });
   }
 });
 
-app.post('/send-test-notification', async (req, res) => {
+app.post("/send-test-notification", async (req, res) => {
   if (!requireApiKeyFromReq(req, res)) return;
   try {
     // For safety, only run notification sends when PRODUCTION_CONFIRMED is set
     if (!process.env.PRODUCTION_CONFIRMED) {
-      const pdir = path.join(process.cwd(), '.qmoi_validation');
+      const pdir = path.join(process.cwd(), ".qmoi_validation");
       fs.mkdirSync(pdir, { recursive: true });
       const fname = path.join(pdir, `proposal-send-notif-${Date.now()}.json`);
-      fs.writeFileSync(fname, JSON.stringify({ action: 'send-test-notification', createdAt: new Date().toISOString() }, null, 2));
-      return res.send('Dry-run: proposal written for sending test notification.');
+      fs.writeFileSync(
+        fname,
+        JSON.stringify(
+          {
+            action: "send-test-notification",
+            createdAt: new Date().toISOString(),
+          },
+          null,
+          2,
+        ),
+      );
+      return res.send(
+        "Dry-run: proposal written for sending test notification.",
+      );
     }
 
     // If implemented notifier functions exist, call them. Otherwise return not-implemented.
     try {
-      const notifier = require('./qmoi_notifier.cjs');
-      if (notifier && notifier.sendEmail) await notifier.sendEmail('QMOI Test Notification', 'This is a test email from the dashboard.');
-      if (notifier && notifier.sendSlack) await notifier.sendSlack('QMOI Test Notification from dashboard.');
-      if (notifier && notifier.sendWhatsApp) await notifier.sendWhatsApp('QMOI Test Notification from dashboard.');
+      const notifier = require("./qmoi_notifier.cjs");
+      if (notifier && notifier.sendEmail)
+        await notifier.sendEmail(
+          "QMOI Test Notification",
+          "This is a test email from the dashboard.",
+        );
+      if (notifier && notifier.sendSlack)
+        await notifier.sendSlack("QMOI Test Notification from dashboard.");
+      if (notifier && notifier.sendWhatsApp)
+        await notifier.sendWhatsApp("QMOI Test Notification from dashboard.");
       res.send('Test notification sent! <a href="/">Back</a>');
     } catch (err) {
-      res.status(501).send('Notifier not configured in this environment.');
+      res.status(501).send("Notifier not configured in this environment.");
     }
   } catch (err) {
-    res.send('Notification failed: ' + err + ' <a href="/">Back</a>');
+    res.send("Notification failed: " + err + ' <a href="/">Back</a>');
   }
 });
 
-
-app.get('/', async (req, res) => {
+app.get("/", async (req, res) => {
   // Serve a dashboard with a real-time event feed
   res.send(`
     <h1 style="text-align:center;color:#2563eb;">QMOI Dashboard</h1>
@@ -282,9 +337,9 @@ app.get('/', async (req, res) => {
 });
 
 // Add endpoint to update notification preferences
-app.post('/update-notification-prefs', express.json(), async (req, res) => {
+app.post("/update-notification-prefs", express.json(), async (req, res) => {
   try {
-    await axios.post('http://localhost:4200/api/notification-prefs', req.body);
+    await axios.post("http://localhost:4200/api/notification-prefs", req.body);
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ success: false, error: err.toString() });
@@ -292,21 +347,26 @@ app.post('/update-notification-prefs', express.json(), async (req, res) => {
 });
 
 // API endpoints
-app.get('/api/error-fix-log', (req, res) => {
+app.get("/api/error-fix-log", (req, res) => {
   if (!fs.existsSync(ERROR_FIX_LOG)) return res.json([]);
-  res.json(JSON.parse(fs.readFileSync(ERROR_FIX_LOG, 'utf-8')));
+  res.json(JSON.parse(fs.readFileSync(ERROR_FIX_LOG, "utf-8")));
 });
-app.get('/api/logs', (req, res) => {
-  if (!fs.existsSync(LOG_FILE)) return res.send('');
-  res.type('text/plain').send(fs.readFileSync(LOG_FILE, 'utf-8'));
+app.get("/api/logs", (req, res) => {
+  if (!fs.existsSync(LOG_FILE)) return res.send("");
+  res.type("text/plain").send(fs.readFileSync(LOG_FILE, "utf-8"));
 });
-app.post('/api/trigger-fix', (req, res) => {
+app.post("/api/trigger-fix", (req, res) => {
   try {
-    execSync('node ./scripts/enhanced-error-fix.js');
+    execSync("node ./scripts/enhanced-error-fix.js");
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ success: false, error: err.toString() });
   }
 });
 
-app.listen(process.env.QMOI_DASHBOARD_PORT || 4000, () => console.log('QMOI Dashboard running on http://localhost:' + (process.env.QMOI_DASHBOARD_PORT || 4000)));
+app.listen(process.env.QMOI_DASHBOARD_PORT || 4000, () =>
+  console.log(
+    "QMOI Dashboard running on http://localhost:" +
+      (process.env.QMOI_DASHBOARD_PORT || 4000),
+  ),
+);

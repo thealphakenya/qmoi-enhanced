@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,14 +16,15 @@ qmoi_validation_frontmatter: true
 # QMOIFREE.md - QMOI Free & Open Features
 
 ## 🆓 All Features, Always Free
+
 - QMOI provides all paid/subscription features of GitLab, Vercel, Quantum, and other platforms for free to all users.
 - Unlimited parallel jobs, advanced analytics, premium integrations, and developer/manual-level error fixing are included at no cost.
 - QMOI auto-installs all dependencies, fixes all errors, and provides real-time notifications and dashboard visualization for all actions.
 - All features are visualized and managed in the QMOI dashboard, with full audit logs and documentation.
-- All documentation (.md files) is always kept up to date and indexed in ALLMDFILESREFS.md. 
-- All automation and deployment is now handled exclusively by GitLab CI/CD. 
+- All documentation (.md files) is always kept up to date and indexed in ALLMDFILESREFS.md.
+- All automation and deployment is now handled exclusively by GitLab CI/CD.
 
-[ENHANCEMENT] All paid features of all platforms (GitLab, Vercel, Quantum, HuggingFace, Gitpod, Netlify, etc.) are available for free in QMOI via its own clones. QVillage is the master-only HuggingFace clone with advanced features. QMOI can run entirely on Quantum/Colab/Dagshub, and only uses actual GitHub for storage/basic features. See QVILLAGE.md and all other .md docs. 
+[ENHANCEMENT] All paid features of all platforms (GitLab, Vercel, Quantum, HuggingFace, Gitpod, Netlify, etc.) are available for free in QMOI via its own clones. QVillage is the master-only HuggingFace clone with advanced features. QMOI can run entirely on Quantum/Colab/Dagshub, and only uses actual GitHub for storage/basic features. See QVILLAGE.md and all other .md docs.
 
 ## New Integrations & Enhancements
 
@@ -34,26 +36,28 @@ qmoi_validation_frontmatter: true
 - **Increased Minimum Daily Revenue:** QMOI Free system now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/QMOIFREE.md",
-  "validated_at": "2025-10-26T20:51:24.773571Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOIFREE.md - QMOI Free & Open Features"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/QMOIFREE.md",
+"validated_at": "2025-10-26T20:51:24.773571Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOIFREE.md - QMOI Free & Open Features"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

@@ -16,148 +16,153 @@ PRIMARY WORKFLOWS:
 
 1. CI/CD PIPELINES
    ✓ ci.yml - Main CI pipeline
-     - Triggers: push, pull_request
-     - Runs-on: ubuntu-latest
-     - Node versions: 18.x, 20.x, 22.x
-     - Status: ACTIVE
+   - Triggers: push, pull_request
+   - Runs-on: ubuntu-latest
+   - Node versions: 18.x, 20.x, 22.x
+   - Status: ACTIVE
 
    ✓ qmoi-ci.yml - QMOI-specific CI
-     - Triggers: push, pull_request
-     - Environment: Node 18, Python 3.11
-     - Status: ACTIVE
+   - Triggers: push, pull_request
+   - Environment: Node 18, Python 3.11
+   - Status: ACTIVE
 
    ✓ build.yml - Nightly builds
-     - Trigger: Scheduled (0 3 * * * UTC)
-     - Python: 3.11
-     - Status: ACTIVE
+   - Trigger: Scheduled (0 3 \* \* \* UTC)
+   - Python: 3.11
+   - Status: ACTIVE
 
    ✓ github-actions-qmoi-build.yml - Full build pipeline
-     - Builds: Windows, macOS, Linux
-     - Electron: build:all
-     - Publish: Enabled
-     - Status: ACTIVE
+   - Builds: Windows, macOS, Linux
+   - Electron: build:all
+   - Publish: Enabled
+   - Status: ACTIVE
 
    ✓ release.yml - Release automation
-     - Node: 18, Python: 3.11
-     - Builds: electron:build:all
-     - Status: ACTIVE
+   - Node: 18, Python: 3.11
+   - Builds: electron:build:all
+   - Status: ACTIVE
 
 2. TESTING & VALIDATION
    ✓ jest-ci.yml - JavaScript testing
-     - Framework: Jest
-     - Status: ACTIVE
+   - Framework: Jest
+   - Status: ACTIVE
 
    ✓ npm.yml - NPM package testing
-     - Runs-on: ubuntu-latest
-     - Node: 18
-     - Status: ACTIVE
+   - Runs-on: ubuntu-latest
+   - Node: 18
+   - Status: ACTIVE
 
    ✓ full-start-smoke.yml - Smoke tests
-     - Coverage: Full system
-     - Status: ACTIVE
+   - Coverage: Full system
+   - Status: ACTIVE
 
    ✓ dry-run-tests.yml - Pre-deployment validation
-     - Type: Dry-run
-     - Status: ACTIVE
+   - Type: Dry-run
+   - Status: ACTIVE
 
 3. LINK & VALIDATION WORKFLOWS
    ✓ link-check.yml - Real-time link validation
-     - Type: On-demand + scheduled
-     - Status: ACTIVE
+   - Type: On-demand + scheduled
+   - Status: ACTIVE
 
    ✓ scheduled-link-check.yml - Daily link checking
-     - Trigger: 0 3 * * * UTC
-     - Status: ACTIVE
+   - Trigger: 0 3 \* \* \* UTC
+   - Status: ACTIVE
 
    ✓ link-cache-maintenance.yml - Cache management
-     - Frequency: Regular maintenance
-     - Status: ACTIVE
+   - Frequency: Regular maintenance
+   - Status: ACTIVE
 
    ✓ alllinks-autoupdate.yml - Auto-fix broken links
-     - Type: Auto-update
-     - Status: ACTIVE
+   - Type: Auto-update
+   - Status: ACTIVE
 
    ✓ payed-validation.yml - Commercial validation
-     - Type: Validation
-     - Status: ACTIVE
+   - Type: Validation
+   - Status: ACTIVE
 
 4. DEPLOYMENT & AUTO-FIX
    ✓ vercel-autofix.yml - Vercel deployment recovery
-     - Triggers: push, pull_request
-     - Auto-fix: ENABLED
-     - Status: ACTIVE
+   - Triggers: push, pull_request
+   - Auto-fix: ENABLED
+   - Status: ACTIVE
 
    ✓ qmoi-app-build.yml - App build pipeline
-     - Runners: self-hosted, qcity
-     - Status: ACTIVE
+   - Runners: self-hosted, qcity
+   - Status: ACTIVE
 
 5. AUTOMATION & MANAGEMENT
    ✓ qmoi-autodev.yml - QMOI auto-development
-     - Type: Self-improvement
-     - Status: ACTIVE
+   - Type: Self-improvement
+   - Status: ACTIVE
 
    ✓ auto-merge-automated-pr.yml - PR auto-merging
-     - Trigger: Labeled PRs
-     - Status: ACTIVE
+   - Trigger: Labeled PRs
+   - Status: ACTIVE
 
    ✓ apply-on-label.yml - Label-based automation
-     - Type: Event-driven
-     - Status: ACTIVE
+   - Type: Event-driven
+   - Status: ACTIVE
 
    ✓ install-requirements.yml - Dependency management
-     - Type: Auto-install
-     - Status: ACTIVE
+   - Type: Auto-install
+   - Status: ACTIVE
 
    ✓ update-readme-cli.yml - README automation
-     - Type: Auto-update
-     - Status: ACTIVE
+   - Type: Auto-update
+   - Status: ACTIVE
 
    ✓ sync-notify.yml - Sync notifications
-     - Type: Notification
-     - Status: ACTIVE
+   - Type: Notification
+   - Status: ACTIVE
 
 6. REPORTING & MONITORING
    ✓ enhancer-report.yml - Enhancement metrics
-     - Type: Report generation
-     - Status: ACTIVE
+   - Type: Report generation
+   - Status: ACTIVE
 
    ✓ nightly.yml - Nightly monitoring
-     - Trigger: 0 3 * * * UTC
-     - Status: ACTIVE
+   - Trigger: 0 3 \* \* \* UTC
+   - Status: ACTIVE
 
    ✓ q.yml - Generic Q workflows
-     - Triggers: push, pull_request
-     - Status: ACTIVE
+   - Triggers: push, pull_request
+   - Status: ACTIVE
 
    ✓ qmoi-app-build.yml (alternate) - App building
-     - Status: ACTIVE
+   - Status: ACTIVE
 
 ==== WORKFLOW AUTO-FIX CAPABILITIES ====
 
 ENABLED AUTO-FIX SYSTEMS:
 ✓ Link fixing (tools/apply_link_fixes.py)
-  - HTTP → HTTPS conversion (safe)
-  - DNS validation
-  - Broken link detection
-  - Conservative fixes by default
+
+- HTTP → HTTPS conversion (safe)
+- DNS validation
+- Broken link detection
+- Conservative fixes by default
 
 ✓ Build auto-fixing (tools/auto_fix_build.py)
-  - Dependency auto-detection
-  - NPM package resolution
-  - Python dependency fixing
-  - Creates PRs for review (conservative)
+
+- Dependency auto-detection
+- NPM package resolution
+- Python dependency fixing
+- Creates PRs for review (conservative)
 
 ✓ Deployment auto-recovery (vercel-autofix.yml)
-  - Vercel failure detection
-  - Auto-fix attempt
-  - Notification to master
+
+- Vercel failure detection
+- Auto-fix attempt
+- Notification to master
 
 ✓ GitHub Actions auto-recovery
-  - Workflow error detection
-  - Automatic retry with backoff
-  - PR creation for persistent errors
+
+- Workflow error detection
+- Automatic retry with backoff
+- PR creation for persistent errors
 
 ERROR HANDLING WORKFLOW:
+
 1. Detection: Real-time via GitHub Actions
 2. Analysis: Categorize error type
 3. Auto-fix attempt: Low-risk fixes applied
@@ -175,6 +180,7 @@ ISSUE TRACKING STATUS:
 ✓ Issue assignment: AUTOMATIC (to master)
 
 CURRENT ISSUE CATEGORIES:
+
 - Feature Requests: Tracked
 - Bug Reports: Auto-generated from errors
 - Enhancements: Auto-proposed by QMOI
@@ -216,6 +222,7 @@ REQUIRED SECRETS CONFIGURED:
 ==== AUTO-FIX TOOL INVENTORY ====
 
 ACTIVE AUTO-FIX TOOLS:
+
 1. tools/check_links_clean.py
    - Purpose: Link validation (DNS/HTTP)
    - Execution: Scheduled + on-demand
@@ -264,13 +271,15 @@ QMOI-AUTODEV SYSTEM:
 ✓ Purpose: Self-improvement automation
 ✓ Triggers: Scheduled + on-demand
 ✓ Capabilities:
-  - Code generation
-  - Bug fixing
-  - Enhancement implementation
-  - Version updates
-  - Documentation auto-generation
+
+- Code generation
+- Bug fixing
+- Enhancement implementation
+- Version updates
+- Documentation auto-generation
 
 AUTODEV WORKFLOW:
+
 1. Analyze codebase
 2. Detect improvement opportunities
 3. Generate fixes/enhancements
@@ -301,6 +310,7 @@ ERROR RESPONSE TIME:
 ✓ Master notification: Immediate
 
 RECENT ERROR FIXES:
+
 - Link validation: 100% success
 - Build fixes: Auto-applied
 - Dependency resolution: Automatic
@@ -318,6 +328,7 @@ RECENT ERROR FIXES:
 ==== WORKFLOW PERFORMANCE METRICS ====
 
 Average Execution Times:
+
 - CI pipeline: ~5-10 minutes
 - Build pipeline: ~15-20 minutes
 - Nightly builds: ~20-30 minutes
@@ -325,6 +336,7 @@ Average Execution Times:
 - Smoke tests: ~10-15 minutes
 
 Success Rates:
+
 - Build success: 98%+
 - Test success: 99%+
 - Link validation: 100%

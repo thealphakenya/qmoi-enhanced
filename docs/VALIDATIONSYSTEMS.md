@@ -18,8 +18,7 @@ Validation systems:
 - Placeholder validation — scans for placeholder tokens across the repo and produces `docs/placeholders_report.json`.
   - See: `scripts/scan_replace_placeholders.py`
 
-Operational model
------------------
+## Operational model
 
 The orchestrator script `scripts/run_validations.py` coordinates these subsystems. It:
 
@@ -29,15 +28,13 @@ The orchestrator script `scripts/run_validations.py` coordinates these subsystem
 - Runs the placeholder scanner (dry-run by default).
 - Writes per-subsystem JSON reports into `docs/`.
 
-Governance and safety
----------------------
+## Governance and safety
 
 - All automated fixes require an explicit `--apply` flag.
 - Backups are created with `.bak` before any file-write.
 - Large binary artifacts should be produced by CI and published to a release bucket or GitHub Releases; the repo should not store production binaries.
 
-Next steps
-----------
+## Next steps
 
 - Run the orchestrator in dry-run to collect reports. Review the reports and then run with `--apply` for safe automated upgrades.
 
@@ -75,6 +72,7 @@ LION orchestrates validation using `scripts/run_validations.py` (or `tools/lionc
 Next steps
 
 - See per-system docs in `docs/` for configuration, CI integration, and remediation steps.
+
 # QMOI Validation Systems
 
 Generated: 2025-10-25
@@ -114,28 +112,30 @@ Next steps
 - Implement CI workflows to produce production artifacts and sign them.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/VALIDATIONSYSTEMS.md",
-  "validated_at": "2025-10-26T20:51:24.578985Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Validation Systems"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "docs/VALIDATIONSYSTEMS.md",
+"validated_at": "2025-10-26T20:51:24.578985Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Validation Systems"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

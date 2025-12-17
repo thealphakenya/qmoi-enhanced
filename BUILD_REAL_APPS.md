@@ -1,17 +1,20 @@
 # Build Real Applications - Complete Guide
 
 ## Problem
+
 Current releases contain corrupted/placeholder files filled with garbage data. This guide provides exact commands to build real functioning applications.
 
 ## Environment Requirements
 
 ### Android APK
-- Java JDK 17+ 
+
+- Java JDK 17+
 - Android SDK with build-tools 36.0.0
 - Android API 36+
 - Gradle wrapper (included)
 
 **Build Command:**
+
 ```bash
 cd qmoi-enhanced/mobile/android
 ./gradlew assembleRelease
@@ -20,6 +23,7 @@ cd qmoi-enhanced/mobile/android
 ```
 
 **Test Installation:**
+
 ```bash
 adb install -r app/build/outputs/apk/release/app-release.apk
 adb shell am start -n com.qmoi.ai/.MainActivity
@@ -28,12 +32,14 @@ adb shell am start -n com.qmoi.ai/.MainActivity
 ---
 
 ### iOS IPA
+
 - macOS 14+
 - Xcode 15+
 - CocoaPods
 - Apple Developer Account (for signing)
 
 **Build Command:**
+
 ```bash
 cd qmoi-enhanced/mobile
 pod install
@@ -48,6 +54,7 @@ cd build && zip -r -q ../qmoi_ai.ipa Payload/ && cd ..
 ```
 
 **Test Installation:**
+
 ```bash
 # Via TestFlight or direct install
 ios-deploy -b qmoi_ai.ipa
@@ -56,9 +63,11 @@ ios-deploy -b qmoi_ai.ipa
 ---
 
 ### Smart TV APK
+
 Same as Android but with TV-specific manifest configuration:
 
 **Key Changes:**
+
 ```gradle
 // app/build.gradle
 android {
@@ -68,6 +77,7 @@ android {
 ```
 
 **Build Command:**
+
 ```bash
 cd qmoi-enhanced/mobile/android
 ./gradlew assembleRelease -Pflavor=tv
@@ -78,11 +88,13 @@ cd qmoi-enhanced/mobile/android
 ---
 
 ### Progressive Web Apps (PWAs)
+
 All web apps are in `./pwa_apps/<app>/`
 
 **For each PWA (admin, deals, q-alpha, qmoi, qmoi-ai, qmoi-space, qstore):**
 
 **Required Files:**
+
 ```
 <app>/
 ├── public/
@@ -100,6 +112,7 @@ All web apps are in `./pwa_apps/<app>/`
 ```
 
 **Build Command:**
+
 ```bash
 cd pwa_apps/<app>
 npm install
@@ -108,12 +121,14 @@ npm run build
 ```
 
 **Create ZIP for Distribution:**
+
 ```bash
 cd dist
 zip -r -q ../../Qmoi_downloaded_apps/web/latest/<app>.zip .
 ```
 
 **Verification - Test in Browser:**
+
 ```bash
 # After building, serve locally
 npx serve dist/
@@ -126,6 +141,7 @@ npx serve dist/
 ```
 
 **PWA Checklist per app:**
+
 - [ ] `package.json` contains app name, version, description
 - [ ] `manifest.webmanifest` has icons (192x192, 512x512), start_url, theme_color
 - [ ] `service-worker.js` caches key assets
@@ -137,11 +153,14 @@ npx serve dist/
 ---
 
 ### Chromebook App
+
 Chromebook apps are web-based (Progressive Web App):
+
 - Same as PWA above
 - Deploy as web app, test in Chrome on Chromebook
 
 **Package:**
+
 ```bash
 zip -r -q Qmoi_downloaded_apps/chromebook/latest/qmoi-chromebook.zip dist/
 ```
@@ -149,9 +168,11 @@ zip -r -q Qmoi_downloaded_apps/chromebook/latest/qmoi-chromebook.zip dist/
 ---
 
 ### QCity Package
+
 QCity is a custom format - create as ZIP with app config + web assets:
 
 **Structure:**
+
 ```
 qcity_package/
 ├── app.json (metadata)
@@ -162,6 +183,7 @@ qcity_package/
 ```
 
 **Build:**
+
 ```bash
 cd qmoi-enhanced/pwa_apps/qmoi
 npm run build
@@ -182,6 +204,7 @@ zip -r -q ../../Qmoi_downloaded_apps/qcity/latest/qcity_package.zip .
 ---
 
 ### Debian Package (Linux)
+
 Requires fakeroot and dpkg:
 
 ```bash
@@ -204,6 +227,7 @@ cp qmoi_ai.deb ../../Qmoi_downloaded_apps/linux_deb/latest/
 ---
 
 ### macOS DMG
+
 Requires macOS and create-dmg tool:
 
 ```bash
@@ -224,6 +248,7 @@ cp qmoi_ai.dmg Qmoi_downloaded_apps/macos/latest/
 ---
 
 ### Windows EXE
+
 Requires Visual Studio or MinGW:
 
 ```bash
@@ -277,11 +302,13 @@ Should output: **All 16 assets: ✅ VALID**
 ## Troubleshooting
 
 **Android Gradle Error**: Update SDK path in `local.properties`
+
 ```
 sdk.dir=/path/to/Android/sdk
 ```
 
 **iOS Build Error**: Update pod dependencies
+
 ```bash
 cd qmoi-enhanced/mobile
 rm -rf Pods Podfile.lock
@@ -289,6 +316,7 @@ pod install
 ```
 
 **PWA Build Error**: Clear cache and reinstall dependencies
+
 ```bash
 npm cache clean --force
 rm -rf node_modules dist
@@ -300,13 +328,13 @@ npm run build
 
 ## Build Timeline
 
-| Component | Time | Dependencies |
-|-----------|------|--------------|
-| Android APK | 10-15 min | Java, Android SDK, Gradle |
-| iOS IPA | 15-20 min | Xcode, CocoaPods, Apple Developer Account |
-| All PWAs | 5-10 min | Node.js, npm |
-| Smart TV APK | 10-15 min | Android SDK |
-| Total (parallel) | ~20 min | All tools installed |
+| Component        | Time      | Dependencies                              |
+| ---------------- | --------- | ----------------------------------------- |
+| Android APK      | 10-15 min | Java, Android SDK, Gradle                 |
+| iOS IPA          | 15-20 min | Xcode, CocoaPods, Apple Developer Account |
+| All PWAs         | 5-10 min  | Node.js, npm                              |
+| Smart TV APK     | 10-15 min | Android SDK                               |
+| Total (parallel) | ~20 min   | All tools installed                       |
 
 ---
 
@@ -320,4 +348,3 @@ After following this guide:
 ✅ All PWAs load in browser with service worker active
 ✅ All 16 assets in manifest have correct SHA256 checksums
 ✅ Users can download, install, and run apps from v1.2.4 release
-

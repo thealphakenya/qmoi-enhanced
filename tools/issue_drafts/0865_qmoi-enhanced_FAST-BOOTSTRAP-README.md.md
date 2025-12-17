@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "⚡️ Fast Project Bootstrap & Debugging for Alpha-Q AI"
 qmoi_validation_frontmatter: true
@@ -47,38 +47,46 @@ To avoid slow, repetitive pnpm install → pnpm dev → fix errors one-by-one, u
 ### 1. Use Cached/Strict Installs
 ```bash
 pnpm install --frozen-lockfile --prefer-offline
-```
+````
+
 - `--frozen-lockfile` avoids unexpected versions
 - `--prefer-offline` uses cached packages for speed
 
 ### 2. Run Tools Instantly with pnpm dlx
+
 ```bash
 pnpm dlx create-next-app my-app
 pnpm dlx vite
 ```
 
 ### 3. Diagnose & Fix Package Issues
+
 ```bash
 pnpm doctor
 pnpm why react
 ```
 
 ### 4. Strict Peer Dependencies
+
 ```bash
 pnpm install --strict-peer-dependencies
 ```
 
 ### 5. Batch Auto-fix with ESLint + TypeScript
+
 ```bash
 pnpm lint --fix
 pnpm tsc --noEmit
 ```
 
 ### 6. Pre-bundle with Vite (if using Vite)
+
 ```bash
 pnpm vite --force
 ```
+
 Or in vite.config.ts:
+
 ```ts
 optimizeDeps: {
   include: ['react', 'react-dom', 'some-large-lib'],
@@ -86,14 +94,17 @@ optimizeDeps: {
 ```
 
 ### 7. Use Prebuilt Docker/Node Images
+
 - Use a Dockerfile or nix env with all deps preinstalled for zero setup time.
 
 ### 8. Turbo/NX for Monorepos
+
 ```bash
 pnpm dlx turbo run build --filter=my-app
 ```
 
 ### 9. Interactive Package Updates
+
 ```bash
 pnpm update --interact
 ```

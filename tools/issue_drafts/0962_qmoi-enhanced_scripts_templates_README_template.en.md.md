@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "QMOI System"
 qmoi_validation_frontmatter: true
@@ -35,7 +35,7 @@ qmoi_validation_frontmatter: true
 
 # QMOI System
 
-Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across:  
+Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across:
 **{{platforms}}**
 
 ---
@@ -71,7 +71,7 @@ Qmoi_apps/
 
 🛠 Autotest Build Matrix (Updated {{timestamp}})
 Platform	Build Status	Test Result
-{{build_matrix}}		
+{{build_matrix}}
 
 🧬 Troubleshooting
 Run this to rebuild and sync everything:
@@ -96,7 +96,7 @@ Edit
 ---
 
 ### 🇫🇷 `scripts/templates/README_
-```
+````
 
 Notes:
 

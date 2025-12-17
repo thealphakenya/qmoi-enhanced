@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 #!/usr/bin/env python3
 """
 update_readme_cli_usage.py
@@ -86,7 +86,7 @@ def update_readme(cli_output):
 
     new_content = re.sub(
         f"{START
-```
+````
 
 Notes:
 

@@ -1,5 +1,3 @@
-
-
 "use client";
 import React, { useState } from "react";
 import { FloatingAQ } from "../src/components/FloatingAQ";
@@ -11,12 +9,11 @@ import { PreviewWindow } from "../src/components/PreviewWindow";
 import { QIStateWindow } from "../src/components/QIStateWindow";
 import { QiSpaces } from "../src/components/QiSpaces";
 import { LcSpaces } from "../src/components/LcSpaces";
-import DeploymentStatusDashboard from '../components/DeploymentStatusDashboard';
-import { MasterProvider, useMaster } from '../components/MasterContext';
-import { QmoiMemoryPanel } from '../components/QmoiMemoryPanel';
-import { NotificationPanel } from '../components/NotificationPanel';
+import DeploymentStatusDashboard from "../components/DeploymentStatusDashboard";
+import { MasterProvider, useMaster } from "../components/MasterContext";
+import { QmoiMemoryPanel } from "../components/QmoiMemoryPanel";
+import { NotificationPanel } from "../components/NotificationPanel";
 import { EmergencyPanel } from "../components/EmergencyPanel";
-
 
 function MainPage() {
   const { isMaster, setRole } = useMaster();
@@ -25,10 +22,10 @@ function MainPage() {
     <>
       <FloatingAQ />
       <button
-        style={{ position: 'fixed', top: 10, right: 10, zIndex: 1000 }}
-        onClick={() => setRole(isMaster ? 'user' : 'master')}
+        style={{ position: "fixed", top: 10, right: 10, zIndex: 1000 }}
+        onClick={() => setRole(isMaster ? "user" : "master")}
       >
-        {isMaster ? 'Switch to User' : 'Switch to Master'}
+        {isMaster ? "Switch to User" : "Switch to Master"}
       </button>
       <DeploymentStatusDashboard isMaster={isMaster} />
       <div className="grid grid-cols-5 grid-rows-[auto_1fr_auto] h-screen bg-[#111] text-[#ccffcc]">
@@ -51,7 +48,8 @@ function MainPage() {
               id="userSelect"
               value={user}
               onChange={(e) => setUser(e.target.value)}
-              className="bg-[#222] border border-green-700 p-1 rounded ml-2">
+              className="bg-[#222] border border-green-700 p-1 rounded ml-2"
+            >
               <option value="Victor Kwemoi">Master (Victor)</option>
               <option value="Leah Chebet">Leah Chebet</option>
             </select>

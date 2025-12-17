@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,9 +16,11 @@ qmoi_validation_frontmatter: true
 # Security Automation & Vulnerability Remediation
 
 ## Overview
+
 This document describes the automated security vulnerability remediation system for QMOI.
 
 ## Features
+
 - **GitHub Security Alerts Integration**: Automatically fetches vulnerability alerts from GitHub.
 - **Automated Remediation**:
   - Runs `npm audit fix` to auto-fix vulnerabilities.
@@ -27,12 +30,14 @@ This document describes the automated security vulnerability remediation system 
 - **Reporting**: Generates security reports and logs actions taken.
 
 ## How It Works
+
 1. **Fetch Alerts**: Uses GitHub API to fetch open security alerts.
 2. **Run Fixes**: Executes `npm audit fix` and `snyk wizard`.
 3. **Create PRs/Issues**: If vulnerabilities remain, creates a pull request or GitHub issue for manual review.
 4. **Log & Report**: All actions are logged and summarized in `reports/security_automation_report.json`.
 
 ## Usage
+
 - The master automation system runs security checks automatically.
 - You can trigger manually:
   ```bash
@@ -40,6 +45,7 @@ This document describes the automated security vulnerability remediation system 
   ```
 
 ## Configuration
+
 - See `config/security_automation.json` for settings (e.g., GitHub token, schedule).
 
 ### GitHub token handling (QMOI secret manager)
@@ -65,37 +71,41 @@ python scripts/qmoi_bootstrap_secrets.py --github-token "<YOUR_GH_TOKEN>" --stor
 This creates `.qmoi/github_token.enc` and a helper `.qmoi/git-credential-qmoi.sh` which can be configured as a git credential helper.
 
 ## Best Practices
+
 - Review security reports regularly.
 - Keep dependencies up to date.
 - Address high/critical vulnerabilities promptly.
 
 ## Related
+
 - See `TROUBLESHOOTING.md` for common issues.
 - See `README.md` for automation commands.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/SECURITY_AUTOMATION.md",
-  "validated_at": "2025-10-26T20:51:24.838556Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "Security Automation & Vulnerability Remediation"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/SECURITY_AUTOMATION.md",
+"validated_at": "2025-10-26T20:51:24.838556Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "Security Automation & Vulnerability Remediation"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

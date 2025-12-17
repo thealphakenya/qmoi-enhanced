@@ -1,0 +1,122 @@
+5d7e6ed419bd99b26656a016d0a17c76
+/* istanbul ignore next */
+function cov_atz2t6oxc() {
+  var path = "/workspaces/qmoi-enhanced/src/components/q-city/QMoiProjectDashboard.tsx";
+  var hash = "9b67173575a42c6dd87b2f7bdf7af3da8ea2052e";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/components/q-city/QMoiProjectDashboard.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 46
+        },
+        end: {
+          line: 17,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 7,
+          column: 2
+        },
+        end: {
+          line: 16,
+          column: 4
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 3,
+            column: 46
+          },
+          end: {
+            line: 3,
+            column: 47
+          }
+        },
+        loc: {
+          start: {
+            line: 3,
+            column: 52
+          },
+          end: {
+            line: 17,
+            column: 1
+          }
+        },
+        line: 3
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "9b67173575a42c6dd87b2f7bdf7af3da8ea2052e"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_atz2t6oxc = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_atz2t6oxc();
+import React from "react";
+/* istanbul ignore next */
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+cov_atz2t6oxc().s[0]++;
+export const QMoiProjectDashboard = () => {
+  /* istanbul ignore next */
+  cov_atz2t6oxc().f[0]++;
+  cov_atz2t6oxc().s[1]++;
+  // TODO: Fetch project list from backend
+  // TODO: Implement add/remove/monitor project features
+  // TODO: Support plugins/modules for new project types
+  return /*#__PURE__*/ /* istanbul ignore next */_jsxs(
+  /* istanbul ignore next */
+  "div",
+  /* istanbul ignore next */
+  {
+    className: "p-4",
+    children: [/*#__PURE__*/
+    /* istanbul ignore next */
+    _jsx(
+    /* istanbul ignore next */
+    "h2",
+    /* istanbul ignore next */
+    {
+      className: "text-xl font-bold mb-4 text-cyan-400",
+      children: "QMOI Project Dashboard"
+    }), /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsx(
+    /* istanbul ignore next */
+    "div",
+    /* istanbul ignore next */
+    {
+      className: "text-gray-300",
+      children: "(Project management UI will appear here...)"
+    })]
+  });
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfYXR6MnQ2b3hjIiwiYWN0dWFsQ292ZXJhZ2UiLCJSZWFjdCIsImpzeCIsIl9qc3giLCJqc3hzIiwiX2pzeHMiLCJzIiwiUU1vaVByb2plY3REYXNoYm9hcmQiLCJmIiwiY2xhc3NOYW1lIiwiY2hpbGRyZW4iXSwic291cmNlcyI6WyJRTW9pUHJvamVjdERhc2hib2FyZC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xuXG5leHBvcnQgY29uc3QgUU1vaVByb2plY3REYXNoYm9hcmQ6IFJlYWN0LkZDID0gKCkgPT4ge1xuICAvLyBUT0RPOiBGZXRjaCBwcm9qZWN0IGxpc3QgZnJvbSBiYWNrZW5kXG4gIC8vIFRPRE86IEltcGxlbWVudCBhZGQvcmVtb3ZlL21vbml0b3IgcHJvamVjdCBmZWF0dXJlc1xuICAvLyBUT0RPOiBTdXBwb3J0IHBsdWdpbnMvbW9kdWxlcyBmb3IgbmV3IHByb2plY3QgdHlwZXNcbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cInAtNFwiPlxuICAgICAgPGgyIGNsYXNzTmFtZT1cInRleHQteGwgZm9udC1ib2xkIG1iLTQgdGV4dC1jeWFuLTQwMFwiPlxuICAgICAgICBRTU9JIFByb2plY3QgRGFzaGJvYXJkXG4gICAgICA8L2gyPlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktMzAwXCI+XG4gICAgICAgIChQcm9qZWN0IG1hbmFnZW1lbnQgVUkgd2lsbCBhcHBlYXIgaGVyZS4uLilcbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICApO1xufTtcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFlWTtJQUFBQSxhQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxhQUFBO0FBZlosT0FBT0UsS0FBSyxNQUFNLE9BQU87QUFBQztBQUFBLFNBQUFDLEdBQUEsSUFBQUMsSUFBQSxFQUFBQyxJQUFBLElBQUFDLEtBQUE7QUFBQU4sYUFBQSxHQUFBTyxDQUFBO0FBRTFCLE9BQU8sTUFBTUMsb0JBQThCLEdBQUdBLENBQUEsS0FBTTtFQUFBO0VBQUFSLGFBQUEsR0FBQVMsQ0FBQTtFQUFBVCxhQUFBLEdBQUFPLENBQUE7RUFDbEQ7RUFDQTtFQUNBO0VBQ0Esb0JBQ0UsMkJBQUFELEtBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFLSSxTQUFTLEVBQUMsS0FBSztJQUFBQyxRQUFBO0lBQ2xCO0lBQUFQLElBQUE7SUFBQTtJQUFBO0lBQUE7SUFBQTtNQUFJTSxTQUFTLEVBQUMsc0NBQXNDO01BQUFDLFFBQUEsRUFBQztJQUVyRCxDQUFJLENBQUM7SUFDTDtJQUFBUCxJQUFBO0lBQUE7SUFBQTtJQUFBO0lBQUE7TUFBS00sU0FBUyxFQUFDLGVBQWU7TUFBQUMsUUFBQSxFQUFDO0lBRS9CLENBQUssQ0FBQztFQUFBLENBQ0gsQ0FBQztBQUVWLENBQUMiLCJpZ25vcmVMaXN0IjpbXX0=

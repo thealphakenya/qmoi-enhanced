@@ -3,8 +3,6 @@
   "name": "QShare",
   "version": "v1.0.0",
   "type": "web",
-  "platforms": [
-    "Web"
-  ],
+  "platforms": ["Web"],
   "icon": "assets/icons/qshare.svg"
 }

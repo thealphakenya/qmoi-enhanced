@@ -63,7 +63,7 @@ export function DeviceSettingsPanel() {
             <option value="dark">Dark</option>
             <option value="system">System</option>
           </select>
-      
+
 ```
 
 Notes:

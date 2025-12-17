@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,7 +16,9 @@ qmoi_validation_frontmatter: true
 # QMOI Mobile App
 
 ## Overview
+
 A cross-platform mobile app for QMOI monitoring, notifications, and control. Features include:
+
 - Secure login (master, sister, trusted device/biometric)
 - Live error/fix stats and AI predictions
 - Push notifications (Pushover, Firebase Cloud Messaging)
@@ -29,6 +32,7 @@ A cross-platform mobile app for QMOI monitoring, notifications, and control. Fea
 ## Setup
 
 1. **Install dependencies:**
+
    ```sh
    cd mobile
    npm install
@@ -53,32 +57,39 @@ A cross-platform mobile app for QMOI monitoring, notifications, and control. Fea
 ## Features
 
 ### 🔒 Authentication
+
 - Login as master, sister, or use biometric/trusted device auto-login.
 - Credentials stored securely with AsyncStorage.
 
 ### 📊 Dashboard
+
 - View live error/fix stats and AI predictions from QMOI APIs.
 - Navigate to Notifications and Alert Settings.
 
 ### 🔔 Push Notifications
+
 - Register device for Pushover and/or FCM push notifications.
 - Receive and display notifications in-app.
 
 ### 📨 Notification Actions
+
 - **Acknowledge**: Mark as read/handled (master, sister)
 - **Delete**: Remove notification (master only)
 - **Respond**: Send a quick reply or trigger a fix (master, sister)
 - **View only**: Other users
 
 ### ⚙️ Custom Alerts
+
 - Set alert rules: critical only, error types, quiet hours.
 - Preferences stored locally and synced with backend.
 
 ### 📴 Offline Support
+
 - Notifications and preferences cached with AsyncStorage.
 - All actions work offline and sync when back online.
 
 ### 🧑‍💼 Role-based UI
+
 - Master: full control (delete, set global rules, manage channels)
 - Sister: acknowledge/respond
 - Other: view only
@@ -86,6 +97,7 @@ A cross-platform mobile app for QMOI monitoring, notifications, and control. Fea
 ---
 
 ## Troubleshooting
+
 - **Network errors:** Ensure API endpoints are reachable and backend is running.
 - **Push notifications:** For FCM, configure Firebase project and add `google-services.json`/`GoogleService-Info.plist`.
 - **Offline mode:** App will show cached data and sync when online.
@@ -94,6 +106,7 @@ A cross-platform mobile app for QMOI monitoring, notifications, and control. Fea
 ---
 
 ## Extending
+
 - Add more screens (analytics, device management, etc.)
 - Integrate with additional notification providers
 - Customize UI for more roles or features
@@ -103,28 +116,30 @@ A cross-platform mobile app for QMOI monitoring, notifications, and control. Fea
 **QMOI Mobile: Always connected, always in control.**
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/mobile/README.md",
-  "validated_at": "2025-10-26T20:51:24.869299Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Mobile App"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/mobile/README.md",
+"validated_at": "2025-10-26T20:51:24.869299Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Mobile App"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

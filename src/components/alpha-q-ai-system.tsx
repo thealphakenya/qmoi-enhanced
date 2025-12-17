@@ -17,7 +17,7 @@ const AlphaQAiSystem = () => {
     uptime: "12h 34m",
   });
   const [activeTab, setActiveTab] = useState<"chat" | "metrics" | "settings">(
-    "chat"
+    "chat",
   );
   const [autoUpdate, setAutoUpdate] = useState(true);
 
@@ -29,15 +29,15 @@ const AlphaQAiSystem = () => {
         ...prev,
         cpuUsage: Math.max(
           20,
-          Math.min(90, prev.cpuUsage + (Math.random() - 0.5) * 10)
+          Math.min(90, prev.cpuUsage + (Math.random() - 0.5) * 10),
         ),
         memoryUsage: Math.max(
           30,
-          Math.min(95, prev.memoryUsage + (Math.random() - 0.5) * 5)
+          Math.min(95, prev.memoryUsage + (Math.random() - 0.5) * 5),
         ),
         responseTime: Math.max(
           50,
-          Math.min(500, prev.responseTime + (Math.random() - 0.5) * 50)
+          Math.min(500, prev.responseTime + (Math.random() - 0.5) * 50),
         ),
       }));
     }, 3000);

@@ -21,26 +21,28 @@ Integration with orchestrator
 - The orchestrator can run memory snapshot/restore tests in a controlled environment and produce `docs/memory_validation_report.json`.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/MEMORYVALIDATION.md",
-  "validated_at": "2025-10-26T20:51:22.700372Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "Memory Validation"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "docs/MEMORYVALIDATION.md",
+"validated_at": "2025-10-26T20:51:22.700372Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "Memory Validation"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

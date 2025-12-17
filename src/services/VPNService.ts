@@ -87,7 +87,7 @@ export class VPNService {
   private settings: VPNSettings;
   private currentConnection: VPNConnection | null = null;
   private networkInfo: NetworkInfo;
-  private isCreatingNetwork: boolean = false;
+  private isCreatingNetwork = false;
   private securityReports: SecurityReport[] = [];
 
   private constructor() {

@@ -5,6 +5,7 @@ A comprehensive, full-featured enterprise management dashboard with real-time mo
 ## 🎯 System Overview
 
 QCity is a complete enterprise management platform featuring:
+
 - **Real-time Dashboard** with 8 functional modules
 - **Continuous Background Services** running 24/7
 - **Live Metrics** updating every 10-30 seconds
@@ -16,11 +17,13 @@ QCity is a complete enterprise management platform featuring:
 ## 🚀 Quick Start
 
 ### Option 1: Using Startup Script
+
 ```bash
 ./start-qcity.sh
 ```
 
 ### Option 2: Manual Start
+
 ```bash
 cd /workspaces/qmoi-enhanced
 python3 -m http.server 8080
@@ -29,6 +32,7 @@ python3 -m http.server 8080
 Then open in browser: **http://localhost:8080/qcity-enterprise.html**
 
 ### Option 3: Open QCity in a New Window
+
 ```bash
 "$BROWSER" http://localhost:8080/qcity-enterprise.html &
 ```
@@ -36,7 +40,9 @@ Then open in browser: **http://localhost:8080/qcity-enterprise.html**
 ## 📊 Dashboard Features
 
 ### Primary Dashboard
+
 **Location:** `qcity-enterprise.html` (44 KB)
+
 - Sidebar navigation with 8 sections
 - Real-time metric cards
 - Live device monitoring
@@ -44,6 +50,7 @@ Then open in browser: **http://localhost:8080/qcity-enterprise.html**
 - Professional UI with animations
 
 ### Alternative Dashboards
+
 - **Complete Dashboard:** `qcity-complete.html` (51 KB)
 - **Basic Dashboard:** `qcity-dashboard.html` (27 KB)
 
@@ -52,26 +59,31 @@ Then open in browser: **http://localhost:8080/qcity-enterprise.html**
 All services run continuously and independently:
 
 ### 1. Metrics Update Service
+
 - **Interval:** Every 10 seconds
 - **Tracks:** CPU, Memory, Bandwidth, Network connections
 - **Purpose:** Real-time system performance monitoring
 
 ### 2. Device Monitoring Service
+
 - **Interval:** Every 15 seconds
 - **Tracks:** Device status, Online/Offline count, Resources
 - **Purpose:** Connected device synchronization
 
 ### 3. Revenue Tracking Service
+
 - **Interval:** Every 12 seconds
 - **Tracks:** Microtasks, Affiliate commissions, Total revenue
 - **Purpose:** Financial data collection
 
 ### 4. Health Check Service
+
 - **Interval:** Every 20 seconds
 - **Tracks:** System health score, Alerts, Status
 - **Purpose:** System health monitoring
 
 ### 5. Biometric Verification Service
+
 - **Interval:** Every 30 seconds
 - **Tracks:** Verification status, Enrollment status
 - **Purpose:** Security verification
@@ -79,6 +91,7 @@ All services run continuously and independently:
 ## 💼 Module Overview
 
 ### Overview Tab
+
 - System status and metrics
 - Real-time CPU/Memory usage
 - Active device count
@@ -86,6 +99,7 @@ All services run continuously and independently:
 - Live alerts
 
 ### Device Management
+
 - QCity Master device status
 - Mobile devices (234 active)
 - IoT devices (945 active)
@@ -93,6 +107,7 @@ All services run continuously and independently:
 - Device synchronization
 
 ### Employment Module
+
 - 247 Employees (235 active)
 - 1,456 Users (1,234 active)
 - Payroll management ($125K budget)
@@ -100,6 +115,7 @@ All services run continuously and independently:
 - User management
 
 ### Revenue Management
+
 - Monthly revenue: $85,420
 - Microtasks: 3,847 completed
 - Affiliate commissions: $24,300
@@ -107,6 +123,7 @@ All services run continuously and independently:
 - Referral programs: $15,200
 
 ### Megavault System
+
 - Current balance: $425,680
 - Total inflow: $2.15M
 - Total profit: $485,300
@@ -114,6 +131,7 @@ All services run continuously and independently:
 - Transaction history
 
 ### Biometric Management
+
 - 8 Biometric types enrolled:
   - Iris Scan
   - Fingerprint
@@ -125,12 +143,14 @@ All services run continuously and independently:
   - Gait Recognition
 
 ### System Logs
+
 - Activity tracking
 - Event logging
 - Status updates
 - Error monitoring
 
 ### Settings
+
 - Device configuration
 - Security settings
 - Data backup/restore
@@ -139,16 +159,19 @@ All services run continuously and independently:
 ## 🔧 Technical Architecture
 
 ### Frontend
+
 - **HTML5** - Semantic markup
 - **CSS3** - Responsive design with animations
 - **JavaScript** - Event-driven UI updates
 
 ### Backend Service
+
 - **qcity-service.js** - Core service logic
 - **Event System** - Publisher/Subscriber pattern
 - **Real-time Updates** - Continuous data collection
 
 ### Infrastructure
+
 - **Server:** Python HTTP Server on port 8080
 - **Protocol:** HTTP/1.1
 - **Load Time:** < 2 seconds
@@ -223,20 +246,25 @@ Security:
 ## 🛠️ Development
 
 ### Customizing the Service
+
 Edit `qcity-service.js` to modify:
+
 - Update intervals
 - Metric calculations
 - Event emissions
 - Initial state
 
 ### Modifying the UI
+
 Edit `qcity-enterprise.html` to:
+
 - Add new tabs
 - Change styling
 - Add features
 - Update content
 
 ### Running Tests
+
 ```bash
 curl http://localhost:8080/qcity-enterprise.html
 # Should return HTML starting with <!DOCTYPE html>
@@ -253,6 +281,7 @@ curl http://localhost:8080/qcity-enterprise.html
 ## 🔄 Continuous Operation
 
 The system is designed to run continuously:
+
 1. Open dashboard in browser
 2. Services initialize automatically
 3. Background services start updating
@@ -280,6 +309,7 @@ The system is designed to run continuously:
 ## 📞 Support
 
 For issues or questions:
+
 1. Check the logs in `/tmp/qcity_server.log`
 2. Verify server is running: `ps aux | grep http.server`
 3. Test connectivity: `curl http://localhost:8080/qcity-enterprise.html`

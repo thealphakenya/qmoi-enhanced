@@ -3,22 +3,26 @@
 ## 🚀 Open QCity Dashboard (3 options)
 
 ### Option 1: Default browser (recommended)
+
 ```bash
 "$BROWSER" http://localhost:8080/qcity-enterprise.html &
 ```
 
 ### Option 2: Linux desktop
+
 ```bash
 xdg-open http://localhost:8080/qcity-enterprise.html &
 ```
 
 ### Option 3: Specific browser
+
 ```bash
 google-chrome http://localhost:8080/qcity-enterprise.html &
 firefox http://localhost:8080/qcity-enterprise.html &
 ```
 
 ## 📊 Dashboard Features (8 Tabs)
+
 - ✅ Device Management — Real-time device tracking
 - ✅ QVillage — AI/ML infrastructure (Master-only)
 - ✅ Employment — 247 employees, payroll, revenue
@@ -29,6 +33,7 @@ firefox http://localhost:8080/qcity-enterprise.html &
 - ✅ Settings & Configuration — Master controls
 
 ## 🔄 Backend Services (5 Active Loops)
+
 - Metrics Update (10-sec updates)
 - Device Monitoring (15-sec updates)
 - Revenue Tracking (20-sec updates)
@@ -36,7 +41,9 @@ firefox http://localhost:8080/qcity-enterprise.html &
 - Biometric Verify (15-sec updates)
 
 ## ✅ Verified Components
+
 All key QMOI & QCity components are present:
+
 - Chatbot.tsx
 - QmoiEnhancedSystem.tsx
 - QI.tsx
@@ -49,6 +56,7 @@ All key QMOI & QCity components are present:
 ## 🛠️ Known Issues & Remediation
 
 ### High Priority (Non-Production Code Replaced):
+
 - **QmoiMediaManager** — Mock data → TODO_PROD placeholder + console.warn
 - **PriceProductVerifier** — Simulated verification → TODO_PROD stub
 - **GlobalMail** — Demo send → TODO_PROD stub (mail not actually sent)
@@ -59,23 +67,27 @@ All key QMOI & QCity components are present:
 All show clear "TODO_PROD" placeholders instead of misleading demo data.
 
 ## 📚 Documentation
+
 - **EXECUTION_SUMMARY.md** — Full project report
 - **TODOS_LIST.md** — Remediation guide for all 27 flagged components
 - **NONPROD_REPORT.txt** — All 16,987 non-production markers (full grep results)
 - **docs/README.md** — Updated with open-in-browser commands
 
 ## 🔗 Useful Files
+
 - `qcity-enterprise.html` (44 KB) — Main dashboard
 - `qcity-complete.html` (51 KB) — Alternative dashboard
 - `qcity-dashboard.html` (27 KB) — Basic dashboard
 
 ## 💡 Tips
+
 - All data updates every 10-30 seconds in real-time
 - Master Mode can be toggled for advanced features
 - Server runs on port 8080 (http://localhost:8080)
 - UI is fully functional with TODO_PROD stubs (ready for integration testing)
 
 ## ⚠️ Important
+
 - Emergency Panel is in DEMO MODE — Real emergency services are NOT integrated
 - Mail/File Transfer/Media services show TODO_PROD placeholders
 - Real API integrations required for production use

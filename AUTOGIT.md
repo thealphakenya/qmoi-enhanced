@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -27,35 +28,38 @@ qmoi_validation_frontmatter: true
 > All actions are logged, self-healing, and fully integrated with the QCity dashboard and master-only controls. Notifications are sent via all configured channels.
 
 ### Migration
+
 - Remove any references to legacy AutoGit scripts/configs.
 - Use the new automation scripts for all git operations.
 - See `ALLMDFILESREFS.md` and `git.txt` for updated command references.
 
 ---
 
-*This file is now managed by the new QMOI automation system. All legacy instructions are obsolete.*
+_This file is now managed by the new QMOI automation system. All legacy instructions are obsolete._
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "AUTOGIT.md",
-  "validated_at": "2025-10-26T20:51:22.283169Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "AUTOGIT.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "AUTOGIT.md",
+"validated_at": "2025-10-26T20:51:22.283169Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "AUTOGIT.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

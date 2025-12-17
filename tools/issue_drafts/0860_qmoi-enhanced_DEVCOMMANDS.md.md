@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "DEVCOMMANDS.md"
 qmoi_validation_frontmatter: true
@@ -46,8 +46,10 @@ This file provides development commands to run and view the main QMOI applicatio
 cd qmoi-space-pwa
 # If dependencies are needed: npm install
 npx serve .
-```
+````
+
 **Access:**
+
 - Open [http://localhost:5000](http://localhost:5000) in your browser.
 - All PWA features (offline, install prompt, notifications) should be available.
 
@@ -58,10 +60,13 @@ npx serve .
 **Features:** Device management, error tracking, resource monitoring, notifications, self-healing, API endpoints, React UI.
 
 **Run Command:**
+
 ```bash
 npm run dev
 ```
+
 **Access:**
+
 - Open [http://localhost:3000/qcity](http://localhost:3000/qcity) in your browser.
 - All QCity features (device status, audit log, remote commands, plugins, metrics) should be available as per `QCITYREADME.md` and related files.
 
@@ -72,16 +77,20 @@ npm run dev
 **Features:** AI-powered development, automation, documentation, error fixing, multi-project management, gaming, financial tools.
 
 **Run Command:**
+
 ```bash
 npm run dev
 ```
+
 **Access:**
+
 - Open [http://localhost:3000](http://localhost:3000) in your browser.
 - All main app features (AI tools, dashboards, gaming cloud, voice/vision, project management) should be available as described in `QMOI-ENHANCED-FEATURES.md`, `QMOI-ENHANCED-README.md`, and related docs.
 
 ---
 
 ## Verification Checklis
+
 ```
 
 Notes:
@@ -90,3 +99,4 @@ Notes:
 - Backups and previous runs may exist under `.qmoi_validation`.
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+```

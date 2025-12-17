@@ -5,12 +5,13 @@
  * NOTE: This file intentionally does not implement network calls. It provides an abstraction to
  * make it easy to swap into a secure secrets manager in production.
  */
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
-const SECRETS_FILE = path.join(__dirname, '..', '..', 'data', 'secrets.json');
-if (!fs.existsSync(path.dirname(SECRETS_FILE))) fs.mkdirSync(path.dirname(SECRETS_FILE), { recursive: true });
-if (!fs.existsSync(SECRETS_FILE)) fs.writeFileSync(SECRETS_FILE, '{}', 'utf-8');
+const SECRETS_FILE = path.join(__dirname, "..", "..", "data", "secrets.json");
+if (!fs.existsSync(path.dirname(SECRETS_FILE)))
+  fs.mkdirSync(path.dirname(SECRETS_FILE), { recursive: true });
+if (!fs.existsSync(SECRETS_FILE)) fs.writeFileSync(SECRETS_FILE, "{}", "utf-8");
 
 export interface SecretStore {
   getSecret(key: string): Promise<string | undefined>;
@@ -20,32 +21,34 @@ export interface SecretStore {
 export class LocalSecretStore implements SecretStore {
   async getSecret(key: string) {
     try {
-      const raw = fs.readFileSync(SECRETS_FILE, 'utf-8');
-      const obj = JSON.parse(raw || '{}');
+      const raw = fs.readFileSync(SECRETS_FILE, "utf-8");
+      const obj = JSON.parse(raw || "{}");
       return obj[key];
     } catch (e) {
-      console.error('LocalSecretStore.getSecret failed', e);
+      console.error("LocalSecretStore.getSecret failed", e);
       return undefined;
     }
   }
   async setSecret(key: string, value: string) {
     try {
-      const raw = fs.readFileSync(SECRETS_FILE, 'utf-8');
-      const obj = JSON.parse(raw || '{}');
+      const raw = fs.readFileSync(SECRETS_FILE, "utf-8");
+      const obj = JSON.parse(raw || "{}");
       obj[key] = value;
-      fs.writeFileSync(SECRETS_FILE, JSON.stringify(obj, null, 2), 'utf-8');
+      fs.writeFileSync(SECRETS_FILE, JSON.stringify(obj, null, 2), "utf-8");
     } catch (e) {
-      console.error('LocalSecretStore.setSecret failed', e);
+      console.error("LocalSecretStore.setSecret failed", e);
     }
   }
 }
 
 // Factory
 export function selectSecretStore(): SecretStore {
-  const backend = process.env.SECRET_BACKEND || 'local';
-  if (backend === 'local') return new LocalSecretStore();
+  const backend = process.env.SECRET_BACKEND || "local";
+  if (backend === "local") return new LocalSecretStore();
   // In production code replace with real KMS/HSM backed implementation.
-  console.warn('SecretStore: using local fallback store; replace with KMS in production');
+  console.warn(
+    "SecretStore: using local fallback store; replace with KMS in production",
+  );
   return new LocalSecretStore();
 }
 

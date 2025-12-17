@@ -3,8 +3,8 @@ name: Link Validation (dry-run)
 on:
   pull_request:
     paths:
-      - '**/*.md'
-      - 'scripts/**'
+      - "**/*.md"
+      - "scripts/**"
 
 jobs:
   link-check:
@@ -14,7 +14,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: "3.x"
       - name: Run link validator (dry-run)
         run: |
           python3 scripts/link_validator.py

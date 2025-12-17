@@ -38,40 +38,40 @@ class DagsHubAutomation:
         self.dagshub_token = os.getenv("DAGSHUB_TOKEN", "")
         self.dagshub_url = "https://dagshub.com/api/v1"
         self.repo_name = os.getenv("DAGSHUB_REPO", "qmoi/alpha-q-ai")
-        
+
         # Setup logging
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
-    
+
     def setup_dagshub(self):
         """Setup DagsHub repository and configuration"""
         try:
             self.logger.info("🔗 Setting up DagsHub...")
-            
+
             # Install DagsHub CLI if not present
             try:
                 subprocess.run(["pip", "install", "dagshub"], check=True)
             except subprocess.CalledProcessError:
                 self.logger.warning("⚠️ Failed to install DagsHub CLI")
-            
+
             # Configure DagsHub
             if self.dagshub_token:
                 subprocess.run([
-                    "dagshub", "configure", 
+                    "dagshub", "configure",
                     "--token", self.dagshub_token,
                     "--host", "dagshub.com"
                 ], cwd=self.project_root)
-            
+
             self.logger.info("✅ DagsHub setup completed")
-            
+
         except Exception as e:
             self.logger.error(f"❌ DagsHub setup failed: {e}")
-    
+
     def version_ml_models(self):
         """Version ML models in the repository"""
         try:
             self.logger.info("📊 Versioning ML models...")
-            
+
             # Find ML model files
             model_files = list(self.project_root.rglob("*.pkl")) + \
                          list(self.project_root.rglob("*.h5")) + \

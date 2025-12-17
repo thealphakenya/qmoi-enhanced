@@ -1,5 +1,5 @@
 name: QMOI Enhanced CI/CD
-'on':
+"on":
   - push
   - pull_request
 jobs:
@@ -10,7 +10,7 @@ jobs:
         name: Step 1
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
         name: Step 2
       - run: npm ci
         name: Step 3
@@ -26,5 +26,5 @@ permissions:
   pull-requests: read
   issues: read
 env:
-  NODE_VERSION: '18'
-  QMOI_AUTODEV_ENABLED: 'true'
+  NODE_VERSION: "18"
+  QMOI_AUTODEV_ENABLED: "true"

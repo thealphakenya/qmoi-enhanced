@@ -10,6 +10,7 @@ To enable automated memory sync and protect `/sync/*` endpoints, add the followi
 - `QMOI_SYNC_API_KEY` — Shared secret used by `/sync/*` endpoints (calls must include `Authorization: Bearer <key>`)
 
 Notes:
+
 - CI workflow `.github/workflows/qmoi-sync-memory.yml` runs `scripts/sync_memory.py`; it expects these secrets to be set.
 - Keep tokens secret and rotate regularly. Prefer least-privilege tokens restricted to the single repo/gist.
 - After setting secrets, verify by running the workflow manually (Actions → qmoi-memory-sync → Run workflow) or by pushing a commit.

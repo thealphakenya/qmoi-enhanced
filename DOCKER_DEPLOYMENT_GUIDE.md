@@ -2,7 +2,7 @@
 
 **Status:** ✅ **CONTAINERIZED PRODUCTION READY**  
 **Date:** November 11, 2025  
-**Runs:** Docker, Kubernetes, AWS ECS, Railway, Render, etc.  
+**Runs:** Docker, Kubernetes, AWS ECS, Railway, Render, etc.
 
 ---
 
@@ -124,49 +124,10 @@ spec:
         app: qvillage-sync
     spec:
       containers:
-      - name: qvillage-sync
-        image: thealphakenya/qvillage-sync:latest
-        imagePullPolicy: Always
-        env:
-        - name: HF_API_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: qvillage-secrets
-              key: hf-token
-        - name: QVILLAGE_API_URL
-          value: "https://api.qvillage.ai"
-        - name: QMOI_MEMORY_URL
-          value: "https://memory.qmoi.ai"
-        - name: SLACK_WEBHOOK_URL
-          valueFrom:
-            secretKeyRef:
-              name: qvillage-secrets
-              key: slack-webhook
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "100m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-        restartPolicy: Always
-      restartPolicy: Always
-
----
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: qvillage-sync-cron
-spec:
-  schedule: "0 */6 * * *"  # Every 6 hours
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-          - name: qvillage-sync
-            image: thealphakenya/qvillage-sync:latest
-            env:
+        - name: qvillage-sync
+          image: thealphakenya/qvillage-sync:latest
+          imagePullPolicy: Always
+          env:
             - name: HF_API_TOKEN
               valueFrom:
                 secretKeyRef:
@@ -181,10 +142,50 @@ spec:
                 secretKeyRef:
                   name: qvillage-secrets
                   key: slack-webhook
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          restartPolicy: Always
+      restartPolicy: Always
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: qvillage-sync-cron
+spec:
+  schedule: "0 */6 * * *" # Every 6 hours
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: qvillage-sync
+              image: thealphakenya/qvillage-sync:latest
+              env:
+                - name: HF_API_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: qvillage-secrets
+                      key: hf-token
+                - name: QVILLAGE_API_URL
+                  value: "https://api.qvillage.ai"
+                - name: QMOI_MEMORY_URL
+                  value: "https://memory.qmoi.ai"
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: qvillage-secrets
+                      key: slack-webhook
           restartPolicy: OnFailure
 ```
 
 Deploy to Kubernetes:
+
 ```bash
 # Create secrets
 kubectl create secret generic qvillage-secrets \
@@ -247,6 +248,7 @@ kubectl logs -f deployment/qvillage-sync
 ```
 
 Deploy:
+
 ```bash
 aws ecs create-service \
   --cluster qvillage-cluster \
@@ -288,6 +290,7 @@ WantedBy=multi-user.target
 ```
 
 Enable and start:
+
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable qvillage-sync
@@ -306,7 +309,7 @@ sudo journalctl -u qvillage-sync -f
 
 ```yaml
 # docker-compose.yml
-version: '3.8'
+version: "3.8"
 
 services:
   qvillage-sync:
@@ -348,6 +351,7 @@ networks:
 ```
 
 **Run:**
+
 ```bash
 # Create .env file
 cat > .env << 'EOF'
@@ -416,6 +420,7 @@ docker run --restart=unless-stopped ...
 ```
 
 **In docker-compose.yml:**
+
 ```yaml
 restart_policy:
   condition: on-failure
@@ -468,21 +473,22 @@ services:
 
 ## 🎯 DEPLOYMENT MATRIX
 
-| Platform | Command | Cost | Time |
-|----------|---------|------|------|
-| **Local Docker** | `docker run -d --restart=always ...` | Free | 5 min |
-| **Railway** | `railway up` | $5-10/mo | 5 min |
-| **Heroku** | `git push heroku main` | $7/mo | 5 min |
-| **Render** | Git push (auto-deploy) | Free-$12/mo | 5 min |
-| **AWS ECS** | `aws ecs create-service ...` | $10-50/mo | 20 min |
-| **Kubernetes** | `kubectl apply -f ...` | Variable | 30 min |
-| **AWS Lambda** | CloudFormation template | <$1/mo | 20 min |
+| Platform         | Command                              | Cost        | Time   |
+| ---------------- | ------------------------------------ | ----------- | ------ |
+| **Local Docker** | `docker run -d --restart=always ...` | Free        | 5 min  |
+| **Railway**      | `railway up`                         | $5-10/mo    | 5 min  |
+| **Heroku**       | `git push heroku main`               | $7/mo       | 5 min  |
+| **Render**       | Git push (auto-deploy)               | Free-$12/mo | 5 min  |
+| **AWS ECS**      | `aws ecs create-service ...`         | $10-50/mo   | 20 min |
+| **Kubernetes**   | `kubectl apply -f ...`               | Variable    | 30 min |
+| **AWS Lambda**   | CloudFormation template              | <$1/mo      | 20 min |
 
 ---
 
 ## ✅ FINAL STATUS
 
 **Your system can now:**
+
 - ✅ Run anywhere Docker runs
 - ✅ Auto-restart on failure
 - ✅ Scale horizontally
@@ -527,8 +533,7 @@ docker run -d --restart=always \
 ```
 
 Notes:
+
 - To skip cloning (e.g., when mounting a volume), set `SKIP_AUTOCLONE=1`.
 - To skip pip install on startup (for faster startups when deps are preinstalled), set `SKIP_DEP_INSTALL=1`.
 - For one-off runs, set `RUN_INTERVAL_SECONDS=0` to exit after one cycle.
-
-

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export interface SystemMetrics {
   cpu: {
@@ -59,21 +59,23 @@ export function useSystemMetrics() {
   useEffect(() => {
     async function fetchMetrics() {
       try {
-        const adminToken = localStorage.getItem('adminToken') || '';
-        const response = await fetch('/api/system/metrics', {
-          headers: { 'x-admin-token': adminToken },
+        const adminToken = localStorage.getItem("adminToken") || "";
+        const response = await fetch("/api/system/metrics", {
+          headers: { "x-admin-token": adminToken },
         });
 
         if (!response.ok) {
-          throw new Error('Failed to fetch system metrics');
+          throw new Error("Failed to fetch system metrics");
         }
 
         const data = await response.json();
         setMetrics(data);
         setError(null);
       } catch (error) {
-        setError(error instanceof Error ? error.message : 'Failed to fetch metrics');
-        console.error('Failed to fetch system metrics:', error);
+        setError(
+          error instanceof Error ? error.message : "Failed to fetch metrics",
+        );
+        console.error("Failed to fetch system metrics:", error);
       }
     }
 
@@ -82,38 +84,44 @@ export function useSystemMetrics() {
     return () => clearInterval(interval);
   }, []);
 
-  const getMetricHistory = async (metric: keyof SystemMetrics, duration: '1h' | '6h' | '24h' | '7d') => {
+  const getMetricHistory = async (
+    metric: keyof SystemMetrics,
+    duration: "1h" | "6h" | "24h" | "7d",
+  ) => {
     try {
-      const adminToken = localStorage.getItem('adminToken') || '';
-      const response = await fetch(`/api/system/metrics/history?metric=${metric}&duration=${duration}`, {
-        headers: { 'x-admin-token': adminToken },
-      });
+      const adminToken = localStorage.getItem("adminToken") || "";
+      const response = await fetch(
+        `/api/system/metrics/history?metric=${metric}&duration=${duration}`,
+        {
+          headers: { "x-admin-token": adminToken },
+        },
+      );
 
       if (!response.ok) {
-        throw new Error('Failed to fetch metric history');
+        throw new Error("Failed to fetch metric history");
       }
 
       return await response.json();
     } catch (error) {
-      console.error('Failed to fetch metric history:', error);
+      console.error("Failed to fetch metric history:", error);
       throw error;
     }
   };
 
   const getProcessDetails = async (pid: number) => {
     try {
-      const adminToken = localStorage.getItem('adminToken') || '';
+      const adminToken = localStorage.getItem("adminToken") || "";
       const response = await fetch(`/api/system/processes/${pid}`, {
-        headers: { 'x-admin-token': adminToken },
+        headers: { "x-admin-token": adminToken },
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch process details');
+        throw new Error("Failed to fetch process details");
       }
 
       return await response.json();
     } catch (error) {
-      console.error('Failed to fetch process details:', error);
+      console.error("Failed to fetch process details:", error);
       throw error;
     }
   };
@@ -124,4 +132,4 @@ export function useSystemMetrics() {
     getMetricHistory,
     getProcessDetails,
   };
-} 
+}

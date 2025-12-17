@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -19,6 +20,7 @@ QMOI Release Tracks Log
 This file tracks all releases, automation, and workflow status for every app, platform, and device in the QMOI system. It is auto-updated by QMOI automation and referenced by TRACKS.md and README.md.
 
 ## Release Log Format
+
 - [YYYY-MM-DD HH:mm:ss] [PLATFORM/APP] [STATUS] [DETAILS]
 - Example:
   - [2025-10-12 22:30:00] [Windows] [Release] QMOI AI v2.5.1 released and validated
@@ -26,6 +28,7 @@ This file tracks all releases, automation, and workflow status for every app, pl
   - [2025-10-12 22:32:00] [macOS] [Release] QMOI AI v2.5.1 released and validated
 
 ## Latest Releases
+
 - [2025-10-12 22:30:00] [Windows] [Release] QMOI AI v2.5.1 released and validated (binary: Qmoi_apps/windows/qmoi_ai.exe)
 - [2025-10-12 22:31:00] [Android] [Release] QMOI AI v2.5.1 released and validated (binary: Qmoi_apps/android/qmoi_ai.apk)
 - [2025-10-12 22:32:00] [macOS] [Release] QMOI AI v2.5.1 released and validated (binary: Qmoi_apps/mac/qmoi_ai.dmg)
@@ -37,16 +40,18 @@ This file tracks all releases, automation, and workflow status for every app, pl
 - [2025-10-12 22:38:00] [Chromebook] [Release] QMOI AI v2.5.1 released and validated (binary: Qmoi_apps/chromebook/qmoi_ai.deb)
 
 ## QMOI Automation & Enhancement
+
 - All platforms, app types, and binaries are actual, validated builds—no placeholders
 - QMOI autofixes all workflow issues and errors
 - QMOI can autotrigger, modify, and enhance any workflow or file
 - All automation, sync, and release events are logged and referenced in TRACKS.md
 
 ## Automation Status
+
 - All releases are validated, autotested, and logged in TRACKS.md
 - QMOI automation ensures all platforms are up-to-date and synced
 - Any errors or issues are auto-fixed and logged
- For full error/fix traceability, see [ERRORSTRACKS.md](ERRORSTRACKS.md)
+  For full error/fix traceability, see [ERRORSTRACKS.md](ERRORSTRACKS.md)
 
 ## Auto-publishing & Billing Safeguards
 
@@ -61,46 +66,49 @@ These safeguards are mirrored in `tools/lionlaunch.json` (`settings.billing_safe
 ---
 
 ## References
+
 - [TRACKS.md](TRACKS.md)
 - [README.md](README.md)
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "RELEASETRACKS.md",
-  "validated_at": "2025-10-26T20:51:22.617514Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "RELEASETRACKS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": [
-        {
-          "label": "ERRORSTRACKS.md",
-          "target": "./ERRORSTRACKS.md",
-          "ok": true
-        },
-        {
-          "label": "TRACKS.md",
-          "target": "./TRACKS.md",
-          "ok": true
-        },
-        {
-          "label": "README.md",
-          "target": "./README.md",
-          "ok": true
-        }
-      ]
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "RELEASETRACKS.md",
+"validated_at": "2025-10-26T20:51:22.617514Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "RELEASETRACKS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": [
+{
+"label": "ERRORSTRACKS.md",
+"target": "./ERRORSTRACKS.md",
+"ok": true
+},
+{
+"label": "TRACKS.md",
+"target": "./TRACKS.md",
+"ok": true
+},
+{
+"label": "README.md",
+"target": "./README.md",
+"ok": true
 }
+]
+}
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

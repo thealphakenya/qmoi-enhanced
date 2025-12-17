@@ -22,26 +22,28 @@ Integration
 - Validation runs produce artifact reports and remediation suggestions.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/LIONVALIDATION.md",
-  "validated_at": "2025-10-26T20:51:22.699880Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "LION Validation"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "docs/LIONVALIDATION.md",
+"validated_at": "2025-10-26T20:51:22.699880Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "LION Validation"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

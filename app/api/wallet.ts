@@ -7,7 +7,7 @@ import { WhatsAppService } from "../../src/services/WhatsAppService";
 const REQUESTS_FILE = path.resolve(
   process.cwd(),
   "data",
-  "wallet_requests.json"
+  "wallet_requests.json",
 );
 const LOGS_FILE = path.resolve(process.cwd(), "data", "wallet_logs.json");
 
@@ -328,7 +328,7 @@ function isMaster(req: NextApiRequest): boolean {
 const handleApiRequest = async (
   req: NextApiRequest,
   res: NextApiResponse,
-  handler: () => Promise<any>
+  handler: () => Promise<any>,
 ) => {
   try {
     const result = await handler();
@@ -346,7 +346,7 @@ const handleApiRequest = async (
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const adminToken = req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
@@ -396,7 +396,7 @@ export default async function handler(
         wallet.transactions.push(transaction);
         logAction("deposit", transaction);
         await whatsappService.sendMessageToMaster(
-          `💰 Deposit completed: ${amount} ${wallet.currency} via ${platform}`
+          `💰 Deposit completed: ${amount} ${wallet.currency} via ${platform}`,
         );
         return { status: result.status, balance: wallet.balance };
       }
@@ -419,7 +419,7 @@ export default async function handler(
         wallet.transactions.push(transaction);
         logAction("withdrawal", transaction);
         await whatsappService.sendMessageToMaster(
-          `💸 Withdrawal completed: ${amount} ${wallet.currency} via ${platform}`
+          `💸 Withdrawal completed: ${amount} ${wallet.currency} via ${platform}`,
         );
         return { status: result.status, balance: wallet.balance };
       }
@@ -442,7 +442,7 @@ export default async function handler(
         writeWalletRequests(requests);
         logAction("wallet_request", request);
         await whatsappService.sendMessageToMaster(
-          `👤 New wallet request from ${username} (${email})`
+          `👤 New wallet request from ${username} (${email})`,
         );
         return {
           status: "pending",
@@ -458,7 +458,7 @@ export default async function handler(
         const { email: approveEmail } = req.body;
         const requests = readWalletRequests();
         const idx = requests.findIndex(
-          (r: any) => r.email === approveEmail && r.status === "pending"
+          (r: any) => r.email === approveEmail && r.status === "pending",
         );
         if (idx === -1) throw new Error("No pending request for this email.");
 
@@ -470,10 +470,10 @@ export default async function handler(
         // Notify user via WhatsApp
         await whatsappService.sendMessage(
           requests[idx].email,
-          "✅ Your wallet request has been approved!"
+          "✅ Your wallet request has been approved!",
         );
         await whatsappService.sendMessageToMaster(
-          `✅ Wallet approved for ${requests[idx].username} (${approveEmail})`
+          `✅ Wallet approved for ${requests[idx].username} (${approveEmail})`,
         );
 
         return {

@@ -63,7 +63,7 @@ describe("auto_trading script", () => {
         throw new Error("no python");
       };
       await expect(fetchPublicIp()).rejects.toThrow(
-        "Unable to fetch public IP"
+        "Unable to fetch public IP",
       );
     } finally {
       require("child_process").execSync = origExec;

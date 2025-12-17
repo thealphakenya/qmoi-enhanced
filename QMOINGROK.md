@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -17,14 +18,14 @@ QMOI Ngrok Integration & Automation
 This document describes how QMOI integrates ngrok to provide secure, always-on, cloud-accessible download and service links. It serves as an alternative or complement to Freenom and traditional domain providers.
 
 ✅ Key Features
-Feature	Description
-🔁 Ngrok Tunnel Automation	Automatically start, monitor, and restart ngrok tunnels for all QMOI endpoints (e.g., QStore, QCity, app downloads).
-🔐 Secure Credential Storage	Ngrok auth tokens are stored securely using encrypted, persistent methods.
-🌐 Auto-Update Download Links	All links in .md files, configs, and UIs are automatically updated with the live ngrok URL.
-🧪 Autotest & Health Check	If any link fails a health check, QMOI restarts the tunnel and updates all links.
-🛡 Fallback Logic	Falls back to Freenom or custom domain mappings (see QMOIDOMAINS.md, QMOIDNS.md).
-☁️ Cloud/Colab Support	Works in Google Colab, DagsHub, and any CLI/server with Python.
-🪵 Audit & Logging	Tunnel lifecycle events and token accesses are logged and visible in the QCity admin panel.
+Feature Description
+🔁 Ngrok Tunnel Automation Automatically start, monitor, and restart ngrok tunnels for all QMOI endpoints (e.g., QStore, QCity, app downloads).
+🔐 Secure Credential Storage Ngrok auth tokens are stored securely using encrypted, persistent methods.
+🌐 Auto-Update Download Links All links in .md files, configs, and UIs are automatically updated with the live ngrok URL.
+🧪 Autotest & Health Check If any link fails a health check, QMOI restarts the tunnel and updates all links.
+🛡 Fallback Logic Falls back to Freenom or custom domain mappings (see QMOIDOMAINS.md, QMOIDNS.md).
+☁️ Cloud/Colab Support Works in Google Colab, DagsHub, and any CLI/server with Python.
+🪵 Audit & Logging Tunnel lifecycle events and token accesses are logged and visible in the QCity admin panel.
 
 🔐 Secure Credential Storage
 NEVER hardcode ngrok tokens in .py, .ipynb, or .md files.
@@ -77,6 +78,7 @@ tunnel = ngrok.connect(7860)
 print("Public URL:", tunnel.public_url)
 
 # QMOI script continues to update download links with tunnel.public_url
+
 CLI Equivalent
 bash
 Copy
@@ -93,23 +95,23 @@ from pyngrok import ngrok
 import os, time, requests
 
 def start_tunnel():
-    ngrok.set_auth_token(os.getenv("NGROK_AUTH_TOKEN"))
-    return ngrok.connect(7860)
+ngrok.set_auth_token(os.getenv("NGROK_AUTH_TOKEN"))
+return ngrok.connect(7860)
 
 def health_check(url):
-    try:
-        return requests.get(url + "/health", timeout=5).status_code == 200
-    except:
-        return False
+try:
+return requests.get(url + "/health", timeout=5).status_code == 200
+except:
+return False
 
 tunnel = start_tunnel()
 
 while True:
-    if not health_check(tunnel.public_url):
-        ngrok.disconnect(tunnel.public_url)
-        tunnel = start_tunnel()
-        update_all_links(tunnel.public_url)  # Update .md, UI, JSON, etc.
-    time.sleep(60)
+if not health_check(tunnel.public_url):
+ngrok.disconnect(tunnel.public_url)
+tunnel = start_tunnel()
+update_all_links(tunnel.public_url) # Update .md, UI, JSON, etc.
+time.sleep(60)
 🔁 Download Link Management
 QMOI updates all dynamic links in:
 
@@ -176,7 +178,6 @@ Ensure auth_token is upgraded
 
 Bind tunnels to subdomains (qmoitunnel.ngrok.io)
 
-
 ## Enhanced Automation & Domain Management
 
 - QMOI now fully automates domain registration, hosting, and tunnel setup for any app, platform, or service.
@@ -188,28 +189,30 @@ Bind tunnels to subdomains (qmoitunnel.ngrok.io)
 - QMOI handles all links and domains in the system, ensuring permanent operation and instant recovery from any DNS or tunnel issue.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOINGROK.md",
-  "validated_at": "2025-10-26T20:51:22.543521Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": false,
-      "detail": "No H1 title found"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": false,
-  "summary": {
-    "total_checks": 2,
-    "passed": false
-  }
+"file": "QMOINGROK.md",
+"validated_at": "2025-10-26T20:51:22.543521Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": false,
+"detail": "No H1 title found"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": false,
+"summary": {
+"total_checks": 2,
+"passed": false
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

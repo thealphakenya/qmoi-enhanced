@@ -81,7 +81,8 @@ export const TVDecoderIntegration: TVDecoderDevice = {
       const availablePorts = await SerialPortMock.list();
       const decoderPort = availablePorts.find(
         (port: any) =>
-          port.manufacturer?.includes("TVDecoder") || port.vendorId === "0x0403" // FTDI chip used in most decoders
+          port.manufacturer?.includes("TVDecoder") ||
+          port.vendorId === "0x0403", // FTDI chip used in most decoders
       );
 
       if (!decoderPort) {
@@ -137,11 +138,12 @@ export const TVDecoderIntegration: TVDecoderDevice = {
       const ports = await SerialPortMock.list();
       const hasDecoder = ports.some(
         (port: any) =>
-          port.manufacturer?.includes("TVDecoder") || port.vendorId === "0x0403"
+          port.manufacturer?.includes("TVDecoder") ||
+          port.vendorId === "0x0403",
       );
       console.log(
         "TV decoder auto-detection:",
-        hasDecoder ? "found" : "not found, using simulation"
+        hasDecoder ? "found" : "not found, using simulation",
       );
       return true; // Always return true in simulation mode
     } catch (err) {
@@ -166,7 +168,7 @@ export const CarRadioIntegration: CarRadioDevice = {
     try {
       const devices = HIDMock.devices();
       const carRadio = devices.find(
-        (d) => d.vendorId === this.VID && d.productId === this.PID
+        (d) => d.vendorId === this.VID && d.productId === this.PID,
       );
 
       if (!carRadio) {
@@ -211,11 +213,11 @@ export const CarRadioIntegration: CarRadioDevice = {
     try {
       const devices = HIDMock.devices();
       const hasRadio = devices.some(
-        (d) => d.vendorId === this.VID && d.productId === this.PID
+        (d) => d.vendorId === this.VID && d.productId === this.PID,
       );
       console.log(
         "Car radio auto-detection:",
-        hasRadio ? "found" : "not found, using simulation"
+        hasRadio ? "found" : "not found, using simulation",
       );
       return true; // Always return true in simulation mode
     } catch (err) {
@@ -231,7 +233,7 @@ export const SmartHomeIntegration: DeviceIntegration = {
   async connect() {
     try {
       console.log(
-        "SmartHomeIntegration: connecting to local smart home bridge..."
+        "SmartHomeIntegration: connecting to local smart home bridge...",
       );
       // Simulate discovery and connection attempt
       await new Promise((resolve) => setTimeout(resolve, 500));
@@ -295,7 +297,7 @@ export const MessagingIntegration: DeviceIntegration = {
 
     // Simulate network latency
     await new Promise((resolve) =>
-      setTimeout(resolve, 100 + Math.random() * 200)
+      setTimeout(resolve, 100 + Math.random() * 200),
     );
     return {
       ok: true,

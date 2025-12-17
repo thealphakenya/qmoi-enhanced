@@ -1,0 +1,249 @@
+c92566d5d48b6262b87c47cd1d9a1179
+/* istanbul ignore next */
+function cov_2co65nlj73() {
+  var path = "/workspaces/qmoi-enhanced/src/components/q-city/QMoiStateContext.tsx";
+  var hash = "481e58e98d9420bca4dc0e7fbe4c94185e1c92b3";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/components/q-city/QMoiStateContext.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 16,
+          column: 25
+        },
+        end: {
+          line: 16,
+          column: 72
+        }
+      },
+      "1": {
+        start: {
+          line: 19,
+          column: 26
+        },
+        end: {
+          line: 19,
+          column: 55
+        }
+      },
+      "2": {
+        start: {
+          line: 20,
+          column: 2
+        },
+        end: {
+          line: 24,
+          column: 4
+        }
+      },
+      "3": {
+        start: {
+          line: 28,
+          column: 14
+        },
+        end: {
+          line: 28,
+          column: 42
+        }
+      },
+      "4": {
+        start: {
+          line: 29,
+          column: 2
+        },
+        end: {
+          line: 30,
+          column: 74
+        }
+      },
+      "5": {
+        start: {
+          line: 30,
+          column: 4
+        },
+        end: {
+          line: 30,
+          column: 74
+        }
+      },
+      "6": {
+        start: {
+          line: 31,
+          column: 2
+        },
+        end: {
+          line: 31,
+          column: 13
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "QMoiStateProvider",
+        decl: {
+          start: {
+            line: 18,
+            column: 16
+          },
+          end: {
+            line: 18,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 18,
+            column: 73
+          },
+          end: {
+            line: 25,
+            column: 1
+          }
+        },
+        line: 18
+      },
+      "1": {
+        name: "useQMoiState",
+        decl: {
+          start: {
+            line: 27,
+            column: 16
+          },
+          end: {
+            line: 27,
+            column: 28
+          }
+        },
+        loc: {
+          start: {
+            line: 27,
+            column: 31
+          },
+          end: {
+            line: 32,
+            column: 1
+          }
+        },
+        line: 27
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 29,
+            column: 2
+          },
+          end: {
+            line: 30,
+            column: 74
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 29,
+            column: 2
+          },
+          end: {
+            line: 30,
+            column: 74
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 29
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "481e58e98d9420bca4dc0e7fbe4c94185e1c92b3"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2co65nlj73 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2co65nlj73();
+import React, { createContext, useContext, useState } from "react";
+/* istanbul ignore next */
+import { jsx as _jsx } from "react/jsx-runtime";
+const QMoiStateContext =
+/* istanbul ignore next */
+(cov_2co65nlj73().s[0]++, /*#__PURE__*/createContext(undefined));
+export function QMoiStateProvider({
+  children
+}) {
+  /* istanbul ignore next */
+  cov_2co65nlj73().f[0]++;
+  const [mood, setMood] =
+  /* istanbul ignore next */
+  (cov_2co65nlj73().s[1]++, useState("neutral"));
+  /* istanbul ignore next */
+  cov_2co65nlj73().s[2]++;
+  return /*#__PURE__*/ /* istanbul ignore next */_jsx(
+  /* istanbul ignore next */
+  QMoiStateContext.Provider,
+  /* istanbul ignore next */
+  {
+    value: {
+      mood,
+      setMood
+    },
+    children: children
+  });
+}
+export function useQMoiState() {
+  /* istanbul ignore next */
+  cov_2co65nlj73().f[1]++;
+  const ctx =
+  /* istanbul ignore next */
+  (cov_2co65nlj73().s[3]++, useContext(QMoiStateContext));
+  /* istanbul ignore next */
+  cov_2co65nlj73().s[4]++;
+  if (!ctx) {
+    /* istanbul ignore next */
+    cov_2co65nlj73().b[0][0]++;
+    cov_2co65nlj73().s[5]++;
+    throw new Error("useQMoiState must be used within QMoiStateProvider");
+  } else
+  /* istanbul ignore next */
+  {
+    cov_2co65nlj73().b[0][1]++;
+  }
+  cov_2co65nlj73().s[6]++;
+  return ctx;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMmNvNjVubGo3MyIsImFjdHVhbENvdmVyYWdlIiwiUmVhY3QiLCJjcmVhdGVDb250ZXh0IiwidXNlQ29udGV4dCIsInVzZVN0YXRlIiwianN4IiwiX2pzeCIsIlFNb2lTdGF0ZUNvbnRleHQiLCJzIiwidW5kZWZpbmVkIiwiUU1vaVN0YXRlUHJvdmlkZXIiLCJjaGlsZHJlbiIsImYiLCJtb29kIiwic2V0TW9vZCIsIlByb3ZpZGVyIiwidmFsdWUiLCJ1c2VRTW9pU3RhdGUiLCJjdHgiLCJiIiwiRXJyb3IiXSwic291cmNlcyI6WyJRTW9pU3RhdGVDb250ZXh0LnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgY3JlYXRlQ29udGV4dCwgdXNlQ29udGV4dCwgdXNlU3RhdGUsIFJlYWN0Tm9kZSB9IGZyb20gXCJyZWFjdFwiO1xuXG50eXBlIFFNb2lNb29kID1cbiAgfCBcIm5ldXRyYWxcIlxuICB8IFwiaGFwcHlcIlxuICB8IFwidGhpbmtpbmdcIlxuICB8IFwidGVhY2hpbmdcIlxuICB8IFwiY2VsZWJyYXRpbmdcIlxuICB8IFwiZXJyb3JcIjtcblxuaW50ZXJmYWNlIFFNb2lTdGF0ZSB7XG4gIG1vb2Q6IFFNb2lNb29kO1xuICBzZXRNb29kOiAobW9vZDogUU1vaU1vb2QpID0+IHZvaWQ7XG59XG5cbmNvbnN0IFFNb2lTdGF0ZUNvbnRleHQgPSBjcmVhdGVDb250ZXh0PFFNb2lTdGF0ZSB8IHVuZGVmaW5lZD4odW5kZWZpbmVkKTtcblxuZXhwb3J0IGZ1bmN0aW9uIFFNb2lTdGF0ZVByb3ZpZGVyKHsgY2hpbGRyZW4gfTogeyBjaGlsZHJlbjogUmVhY3ROb2RlIH0pIHtcbiAgY29uc3QgW21vb2QsIHNldE1vb2RdID0gdXNlU3RhdGU8UU1vaU1vb2Q+KFwibmV1dHJhbFwiKTtcbiAgcmV0dXJuIChcbiAgICA8UU1vaVN0YXRlQ29udGV4dC5Qcm92aWRlciB2YWx1ZT17eyBtb29kLCBzZXRNb29kIH19PlxuICAgICAge2NoaWxkcmVufVxuICAgIDwvUU1vaVN0YXRlQ29udGV4dC5Qcm92aWRlcj5cbiAgKTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIHVzZVFNb2lTdGF0ZSgpIHtcbiAgY29uc3QgY3R4ID0gdXNlQ29udGV4dChRTW9pU3RhdGVDb250ZXh0KTtcbiAgaWYgKCFjdHgpXG4gICAgdGhyb3cgbmV3IEVycm9yKFwidXNlUU1vaVN0YXRlIG11c3QgYmUgdXNlZCB3aXRoaW4gUU1vaVN0YXRlUHJvdmlkZXJcIik7XG4gIHJldHVybiBjdHg7XG59XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFlWTtJQUFBQSxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxjQUFBO0FBZlosT0FBT0UsS0FBSyxJQUFJQyxhQUFhLEVBQUVDLFVBQVUsRUFBRUMsUUFBUSxRQUFtQixPQUFPO0FBQUM7QUFBQSxTQUFBQyxHQUFBLElBQUFDLElBQUE7QUFlOUUsTUFBTUMsZ0JBQWdCO0FBQUE7QUFBQSxDQUFBUixjQUFBLEdBQUFTLENBQUEsb0JBQUdOLGFBQWEsQ0FBd0JPLFNBQVMsQ0FBQztBQUV4RSxPQUFPLFNBQVNDLGlCQUFpQkEsQ0FBQztFQUFFQztBQUFrQyxDQUFDLEVBQUU7RUFBQTtFQUFBWixjQUFBLEdBQUFhLENBQUE7RUFDdkUsTUFBTSxDQUFDQyxJQUFJLEVBQUVDLE9BQU8sQ0FBQztFQUFBO0VBQUEsQ0FBQWYsY0FBQSxHQUFBUyxDQUFBLE9BQUdKLFFBQVEsQ0FBVyxTQUFTLENBQUM7RUFBQztFQUFBTCxjQUFBLEdBQUFTLENBQUE7RUFDdEQsb0JBQ0UsMkJBQUFGLElBQUE7RUFBQTtFQUFDQyxnQkFBZ0IsQ0FBQ1EsUUFBUTtFQUFBO0VBQUE7SUFBQ0MsS0FBSyxFQUFFO01BQUVILElBQUk7TUFBRUM7SUFBUSxDQUFFO0lBQUFILFFBQUEsRUFDakRBO0VBQVEsQ0FDZ0IsQ0FBQztBQUVoQztBQUVBLE9BQU8sU0FBU00sWUFBWUEsQ0FBQSxFQUFHO0VBQUE7RUFBQWxCLGNBQUEsR0FBQWEsQ0FBQTtFQUM3QixNQUFNTSxHQUFHO0VBQUE7RUFBQSxDQUFBbkIsY0FBQSxHQUFBUyxDQUFBLE9BQUdMLFVBQVUsQ0FBQ0ksZ0JBQWdCLENBQUM7RUFBQztFQUFBUixjQUFBLEdBQUFTLENBQUE7RUFDekMsSUFBSSxDQUFDVSxHQUFHLEVBQ047SUFBQTtJQUFBbkIsY0FBQSxHQUFBb0IsQ0FBQTtJQUFBcEIsY0FBQSxHQUFBUyxDQUFBO0lBQUEsTUFBTSxJQUFJWSxLQUFLLENBQUMsb0RBQW9ELENBQUM7RUFBQSxDQUFDO0VBQUE7RUFBQTtJQUFBckIsY0FBQSxHQUFBb0IsQ0FBQTtFQUFBO0VBQUFwQixjQUFBLEdBQUFTLENBQUE7RUFDeEUsT0FBT1UsR0FBRztBQUNaIiwiaWdub3JlTGlzdCI6W119

@@ -1,0 +1,217 @@
+5ce6c7a92b68d477733aee2aa8cef8a2
+/* istanbul ignore next */
+function cov_1qcwegu6v() {
+  var path = "/workspaces/qmoi-enhanced/src/plugins/AIReviewPlugin.ts";
+  var hash = "d6d2334f9be5e816dca46e8191ea59057046270c";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/plugins/AIReviewPlugin.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 5,
+          column: 42
+        },
+        end: {
+          line: 17,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 15,
+          column: 4
+        },
+        end: {
+          line: 15,
+          column: 16
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 2
+          },
+          end: {
+            line: 9,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 9
+          },
+          end: {
+            line: 9,
+            column: 11
+          }
+        },
+        line: 9
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 10,
+            column: 2
+          },
+          end: {
+            line: 10,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 10,
+            column: 13
+          },
+          end: {
+            line: 10,
+            column: 15
+          }
+        },
+        line: 10
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 11,
+            column: 2
+          },
+          end: {
+            line: 11,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 15
+          },
+          end: {
+            line: 11,
+            column: 17
+          }
+        },
+        line: 11
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 12,
+            column: 2
+          },
+          end: {
+            line: 12,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 12,
+            column: 12
+          },
+          end: {
+            line: 12,
+            column: 14
+          }
+        },
+        line: 12
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 13,
+            column: 2
+          },
+          end: {
+            line: 13,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 13,
+            column: 21
+          },
+          end: {
+            line: 16,
+            column: 3
+          }
+        },
+        line: 13
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "d6d2334f9be5e816dca46e8191ea59057046270c"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1qcwegu6v = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1qcwegu6v();
+// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
+// Minimal non-JSX plugin implementation to avoid TSX in .ts file.
+export const AIReviewPlugin =
+/* istanbul ignore next */
+(cov_1qcwegu6v().s[0]++, {
+  id: "ai-review",
+  name: "AI Review",
+  description: "Reviews user actions and provides AI-powered feedback.",
+  init() {
+    /* istanbul ignore next */
+    cov_1qcwegu6v().f[0]++;
+  },
+  activate() {
+    /* istanbul ignore next */
+    cov_1qcwegu6v().f[1]++;
+  },
+  deactivate() {
+    /* istanbul ignore next */
+    cov_1qcwegu6v().f[2]++;
+  },
+  destroy() {
+    /* istanbul ignore next */
+    cov_1qcwegu6v().f[3]++;
+  },
+  getSettingsPanel() {
+    /* istanbul ignore next */
+    cov_1qcwegu6v().f[4]++;
+    cov_1qcwegu6v().s[1]++;
+    // Return a simple string or null in non-UI contexts
+    return null;
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMXFjd2VndTZ2IiwiYWN0dWFsQ292ZXJhZ2UiLCJBSVJldmlld1BsdWdpbiIsInMiLCJpZCIsIm5hbWUiLCJkZXNjcmlwdGlvbiIsImluaXQiLCJmIiwiYWN0aXZhdGUiLCJkZWFjdGl2YXRlIiwiZGVzdHJveSIsImdldFNldHRpbmdzUGFuZWwiXSwic291cmNlcyI6WyJBSVJldmlld1BsdWdpbi50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBOT1RFOiAyIHBsYWNlaG9sZGVyKHMpIGZvdW5kIGluIHRoaXMgZmlsZS4gU2VlIC5xbW9pX3ZhbGlkYXRpb24vcGxhY2Vob2xkZXJfZml4X3JlcG9ydC50eHQgZm9yIGRldGFpbHMuXG5pbXBvcnQgeyBRbW9pUGx1Z2luIH0gZnJvbSBcIi4vUGx1Z2luTWFuYWdlclwiO1xuXG4vLyBNaW5pbWFsIG5vbi1KU1ggcGx1Z2luIGltcGxlbWVudGF0aW9uIHRvIGF2b2lkIFRTWCBpbiAudHMgZmlsZS5cbmV4cG9ydCBjb25zdCBBSVJldmlld1BsdWdpbjogUW1vaVBsdWdpbiA9IHtcbiAgaWQ6IFwiYWktcmV2aWV3XCIsXG4gIG5hbWU6IFwiQUkgUmV2aWV3XCIsXG4gIGRlc2NyaXB0aW9uOiBcIlJldmlld3MgdXNlciBhY3Rpb25zIGFuZCBwcm92aWRlcyBBSS1wb3dlcmVkIGZlZWRiYWNrLlwiLFxuICBpbml0KCkge30sXG4gIGFjdGl2YXRlKCkge30sXG4gIGRlYWN0aXZhdGUoKSB7fSxcbiAgZGVzdHJveSgpIHt9LFxuICBnZXRTZXR0aW5nc1BhbmVsKCkge1xuICAgIC8vIFJldHVybiBhIHNpbXBsZSBzdHJpbmcgb3IgbnVsbCBpbiBub24tVUkgY29udGV4dHNcbiAgICByZXR1cm4gbnVsbDtcbiAgfSxcbn07XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQWVZO0lBQUFBLGFBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUFDLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUFELGFBQUE7QUFmWjs7QUFHQTtBQUNBLE9BQU8sTUFBTUUsY0FBMEI7QUFBQTtBQUFBLENBQUFGLGFBQUEsR0FBQUcsQ0FBQSxPQUFHO0VBQ3hDQyxFQUFFLEVBQUUsV0FBVztFQUNmQyxJQUFJLEVBQUUsV0FBVztFQUNqQkMsV0FBVyxFQUFFLHdEQUF3RDtFQUNyRUMsSUFBSUEsQ0FBQSxFQUFHO0lBQUE7SUFBQVAsYUFBQSxHQUFBUSxDQUFBO0VBQUMsQ0FBQztFQUNUQyxRQUFRQSxDQUFBLEVBQUc7SUFBQTtJQUFBVCxhQUFBLEdBQUFRLENBQUE7RUFBQyxDQUFDO0VBQ2JFLFVBQVVBLENBQUEsRUFBRztJQUFBO0lBQUFWLGFBQUEsR0FBQVEsQ0FBQTtFQUFDLENBQUM7RUFDZkcsT0FBT0EsQ0FBQSxFQUFHO0lBQUE7SUFBQVgsYUFBQSxHQUFBUSxDQUFBO0VBQUMsQ0FBQztFQUNaSSxnQkFBZ0JBLENBQUEsRUFBRztJQUFBO0lBQUFaLGFBQUEsR0FBQVEsQ0FBQTtJQUFBUixhQUFBLEdBQUFHLENBQUE7SUFDakI7SUFDQSxPQUFPLElBQUk7RUFDYjtBQUNGLENBQUMiLCJpZ25vcmVMaXN0IjpbXX0=

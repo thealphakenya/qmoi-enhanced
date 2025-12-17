@@ -17,10 +17,10 @@ WALLET TYPES:
    ├─ Currency: Normalized to USD
    ├─ Min Balance: $0
    ├─ Features:
-   │  ├─ Instant transfers
-   │  ├─ Bill payments
-   │  ├─ Withdrawals
-   │  └─ Investment deposits
+   │ ├─ Instant transfers
+   │ ├─ Bill payments
+   │ ├─ Withdrawals
+   │ └─ Investment deposits
    ├─ Transaction Limit: $1,000,000/transaction
    ├─ Daily Limit: $10,000,000/day
    └─ Status: ✅ OPERATIONAL
@@ -30,10 +30,10 @@ WALLET TYPES:
    ├─ Currency: Multiple (USD, EUR, GBP, KES, etc.)
    ├─ Interest Rate: 2-5% annually
    ├─ Features:
-   │  ├─ Auto-savings rules
-   │  ├─ Interest accrual
-   │  ├─ Lock periods
-   │  └─ Multi-currency support
+   │ ├─ Auto-savings rules
+   │ ├─ Interest accrual
+   │ ├─ Lock periods
+   │ └─ Multi-currency support
    ├─ Withdrawal Limit: 5 times/year (no penalty)
    ├─ Lock Periods: 7 days - 5 years
    └─ Status: ✅ OPERATIONAL
@@ -42,11 +42,11 @@ WALLET TYPES:
    ├─ Purpose: Digital asset holding
    ├─ Supported Coins: 50+ (BTC, ETH, XRP, USDT, etc.)
    ├─ Features:
-   │  ├─ Multi-coin support
-   │  ├─ Real-time price feeds
-   │  ├─ Automated trading
-   │  ├─ Staking options
-   │  └─ Portfolio tracking
+   │ ├─ Multi-coin support
+   │ ├─ Real-time price feeds
+   │ ├─ Automated trading
+   │ ├─ Staking options
+   │ └─ Portfolio tracking
    ├─ Transaction Limit: No limit
    ├─ Network Fees: User-specified
    └─ Status: ✅ OPERATIONAL
@@ -55,11 +55,11 @@ WALLET TYPES:
    ├─ Purpose: Stocks, bonds, ETFs
    ├─ Assets: 1000+ financial instruments
    ├─ Features:
-   │  ├─ Portfolio management
-   │  ├─ Dividend collection
-   │  ├─ Automated investing (SIP)
-   │  ├─ Rebalancing rules
-   │  └─ Tax optimization
+   │ ├─ Portfolio management
+   │ ├─ Dividend collection
+   │ ├─ Automated investing (SIP)
+   │ ├─ Rebalancing rules
+   │ └─ Tax optimization
    ├─ Integration: Real-time market data
    ├─ Brokers: Multiple (Interactive Brokers, etc.)
    └─ Status: ✅ OPERATIONAL
@@ -68,11 +68,11 @@ WALLET TYPES:
    ├─ Purpose: Revenue & business operations
    ├─ Currency: Primary currency (USD)
    ├─ Features:
-   │  ├─ Invoice tracking
-   │  ├─ Expense management
-   │  ├─ Tax reporting
-   │  ├─ Payroll integration
-   │  └─ Financial statements
+   │ ├─ Invoice tracking
+   │ ├─ Expense management
+   │ ├─ Tax reporting
+   │ ├─ Payroll integration
+   │ └─ Financial statements
    ├─ User Role: Business owner
    ├─ Advanced Features: Available
    └─ Status: ✅ OPERATIONAL
@@ -81,11 +81,11 @@ WALLET TYPES:
    ├─ Purpose: Points & rewards
    ├─ Currency: Points (1 point = $0.01)
    ├─ Features:
-   │  ├─ Points accumulation
-   │  ├─ Bonus multipliers
-   │  ├─ Redemption options
-   │  ├─ Expiration tracking
-   │  └─ Tier system
+   │ ├─ Points accumulation
+   │ ├─ Bonus multipliers
+   │ ├─ Redemption options
+   │ ├─ Expiration tracking
+   │ └─ Tier system
    ├─ Expiration: 2 years
    ├─ Conversion: 1:100 points to cash
    └─ Status: ✅ OPERATIONAL
@@ -94,11 +94,11 @@ WALLET TYPES:
    ├─ Purpose: Gift cards & vouchers
    ├─ Currency: Fixed denominations
    ├─ Features:
-   │  ├─ Gift card creation
-   │  ├─ Sharing & transfer
-   │  ├─ Redemption tracking
-   │  ├─ Expiration management
-   │  └─ Transaction history
+   │ ├─ Gift card creation
+   │ ├─ Sharing & transfer
+   │ ├─ Redemption tracking
+   │ ├─ Expiration management
+   │ └─ Transaction history
    ├─ Denominations: $5, $10, $25, $50, $100, $250, $500
    ├─ Expiration: 5 years
    └─ Status: ✅ OPERATIONAL
@@ -107,11 +107,11 @@ WALLET TYPES:
    ├─ Purpose: Secure transactions
    ├─ Currency: Any supported
    ├─ Features:
-   │  ├─ Dispute resolution
-   │  ├─ Release conditions
-   │  ├─ Arbitration support
-   │  ├─ Timeout releases
-   │  └─ Fee handling
+   │ ├─ Dispute resolution
+   │ ├─ Release conditions
+   │ ├─ Arbitration support
+   │ ├─ Timeout releases
+   │ └─ Fee handling
    ├─ Hold Period: 7-30 days (configurable)
    ├─ Fee: 1-2% transaction fee
    └─ Status: ✅ OPERATIONAL

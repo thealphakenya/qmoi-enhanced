@@ -113,6 +113,7 @@ QCity Enterprise is a comprehensive device resource management and AI/ML infrast
 ### Dashboard Features
 
 #### 1. **Device Management Tab**
+
 - Real-time device status monitoring
 - Connected devices count
 - CPU, Memory, Storage, Bandwidth metrics
@@ -121,88 +122,84 @@ QCity Enterprise is a comprehensive device resource management and AI/ML infrast
 - Device list with detailed specifications
 
 #### 2. **QVillage Tab (Master Only)**
+
 - AI/ML Model Management
   - Create/Deploy/Update models
   - Model performance tracking
   - Version control
-  
 - Space Management
   - Virtual space allocation
   - Resource distribution
   - Compute optimization
-  
 - Dataset Management
   - Dataset upload/management
   - Version tracking
   - Storage optimization
-  
 - Inference Endpoints
   - Endpoint configuration
   - Real-time inference serving
   - Performance monitoring
 
 #### 3. **Employment Tab**
+
 - Employee Management
   - 247 employees tracked
   - Status: Active (225), Inactive (15), On Leave (7)
-  
 - User Management
   - 1,456 users registered
   - User allocation across employees
   - Role-based access control
-  
 - Payroll Processing
   - Monthly payroll calculation
   - Payment tracking
   - Tax deduction handling
-  
 - Revenue Generation
   - $12,450 current month
   - $156,200 annual revenue
   - Multiple revenue streams
 
 #### 4. **Revenue Dashboard Tab**
+
 - Multi-Stream Revenue Tracking
   - Microtasks: $2,850 (22.9%)
   - Affiliate: $1,950 (15.7%)
   - Content: $3,200 (25.7%)
   - Referral: $2,100 (16.9%)
   - Platform Fees: $2,350 (18.9%)
-  
 - Historical Analytics
   - Monthly trends
   - Year-to-date totals
   - Forecasting data
 
 #### 5. **Biometric Authentication Tab**
+
 - Multi-Factor Authentication
   - Fingerprint scanning
   - Facial recognition
   - Voice recognition
   - Iris scanning
-  
 - Security Metrics
   - Authentication attempts
   - Success rate tracking
   - Failed login alerts
 
 #### 6. **Device Logs Tab**
+
 - Activity Tracking
   - Device ownership logs
   - Access history
   - Timestamp recording
-  
 - Filtering & Search
   - Filter by date range
   - Search by device ID
   - Search by organization
-  
 - Audit Trail
   - Lock/Unlock events
   - Access revocation
   - Download logs
 
 #### 7. **System Health Tab**
+
 - Real-time health metrics
 - CPU usage trends
 - Memory utilization
@@ -211,12 +208,12 @@ QCity Enterprise is a comprehensive device resource management and AI/ML infrast
 - Service status indicators
 
 #### 8. **Settings Tab**
+
 - System Configuration
   - Master Mode toggle
   - Auto-backup settings
   - Update frequency
   - Resource allocation policies
-  
 - User Preferences
   - Theme selection
   - Notification settings
@@ -233,6 +230,7 @@ QCity Enterprise is a comprehensive device resource management and AI/ML infrast
 ### Service Components
 
 #### 1. **Metrics Update Service**
+
 ```
 Interval: 10 seconds
 Updates:
@@ -244,6 +242,7 @@ Updates:
 ```
 
 #### 2. **Device Monitoring Service**
+
 ```
 Interval: 15 seconds
 Tracks:
@@ -255,6 +254,7 @@ Tracks:
 ```
 
 #### 3. **Revenue Tracking Service**
+
 ```
 Interval: 20 seconds
 Monitors:
@@ -266,6 +266,7 @@ Monitors:
 ```
 
 #### 4. **Health Check Service**
+
 ```
 Interval: 30 seconds
 Checks:
@@ -277,6 +278,7 @@ Checks:
 ```
 
 #### 5. **Biometric Verification Service**
+
 ```
 Interval: 15 seconds
 Verifies:
@@ -304,6 +306,7 @@ Verifies:
 **Total Components**: 50+ TypeScript React components
 
 #### QCity Core Components
+
 1. **QCityDashboard** - Main entry point with Master Mode toggle
 2. **QCityDevicePanel** - Device management interface
 3. **QVillage** - AI/ML infrastructure (Master only)
@@ -314,6 +317,7 @@ Verifies:
 8. **Onboarding** - System setup wizard
 
 #### Supporting Components (shadcn UI)
+
 - AvatarSelector - Avatar customization
 - VoiceSelector - Voice preference management
 - DocumentManagerPanel - Document handling
@@ -336,11 +340,12 @@ import {
   EmploymentDashboard,
   QMOIRevenueDashboard,
   getAvailableComponents,
-  isFeatureEnabled
-} from '@/components/q-city';
+  isFeatureEnabled,
+} from "@/components/q-city";
 ```
 
 **Feature Flags**
+
 - DEVICE_MANAGEMENT: ✅ Enabled
 - EMPLOYMENT: ✅ Enabled
 - REVENUE_TRACKING: ✅ Enabled
@@ -369,12 +374,14 @@ Real-Time Metrics:           ✅ Updating
 ### Start QCity
 
 #### Option 1: Using Start Script (Recommended)
+
 ```bash
 cd /workspaces/qmoi-enhanced
 bash start-qcity.sh
 ```
 
 #### Option 2: Manual Start
+
 ```bash
 # Start HTTP Server
 cd /workspaces/qmoi-enhanced
@@ -385,6 +392,7 @@ curl http://localhost:8080/qcity-enterprise.html
 ```
 
 #### Option 3: With Node.js Backend (When available)
+
 ```bash
 # Install dependencies
 npm install
@@ -400,6 +408,7 @@ npm start
 ### Access QCity
 
 Open in your browser:
+
 - **Primary**: http://localhost:8080/qcity-enterprise.html
 - **Alternative**: http://localhost:8080/qcity-complete.html
 - **Basic**: http://localhost:8080/qcity-dashboard.html
@@ -424,6 +433,7 @@ Open in your browser:
 ### Performance Metrics
 
 **Sample Data Points** (Real-time updated)
+
 ```
 CPU Usage:           45-75%
 Memory Utilization:  60-85%
@@ -441,18 +451,21 @@ Latency:             <100ms
 ### Application Settings
 
 **Version Info**
+
 - Version: 2.0.0
 - Build: Enterprise
 - Release Date: 2025-12-02
 - Status: Production Ready
 
 **Resource Allocation**
+
 - CPU Cores: Auto-detected
 - Memory: Auto-allocated
 - Storage: Dynamic
 - Bandwidth: 100Mbps (shared)
 
 **Feature Configuration**
+
 ```typescript
 {
   DEVICE_MANAGEMENT: true,      // Full device tracking
@@ -502,12 +515,14 @@ Latency:             <100ms
 ### Multi-Factor Authentication
 
 **Biometric Verification Methods**
+
 1. Fingerprint Scanning
 2. Facial Recognition
 3. Voice Recognition
 4. Iris Scanning
 
 **Authentication Flow**
+
 ```
 User Login → Biometric Scan → Verification → MFA Challenge → Access Granted
 ```
@@ -515,6 +530,7 @@ User Login → Biometric Scan → Verification → MFA Challenge → Access Gran
 ### Access Control
 
 **Role-Based Access Control (RBAC)**
+
 - **Master**: Full system access, QVillage management
 - **Admin**: Device management, user management
 - **User**: Personal data access, limited features
@@ -534,8 +550,10 @@ User Login → Biometric Scan → Verification → MFA Challenge → Access Gran
 ### Common Issues
 
 #### Issue 1: Dashboard Not Loading
+
 **Symptoms**: 404 error or blank page
 **Solutions**:
+
 ```bash
 # Check if server is running
 ps aux | grep "http.server 8080"
@@ -548,8 +566,10 @@ python3 -m http.server 8080
 ```
 
 #### Issue 2: Real-Time Updates Not Working
+
 **Symptoms**: Metrics stuck at same values
 **Solutions**:
+
 ```bash
 # Check if service.js is running
 ps aux | grep "qcity-service"
@@ -562,8 +582,10 @@ curl http://localhost:8080/qcity-service.js
 ```
 
 #### Issue 3: Biometric Tab Empty
+
 **Symptoms**: No biometric data displayed
 **Solutions**:
+
 ```bash
 # Verify biometric service is active
 curl http://localhost:8080/api/biometric-status
@@ -576,8 +598,10 @@ curl http://localhost:8080/api/biometric-status
 ```
 
 #### Issue 4: Memory/Performance Issues
+
 **Symptoms**: Slow dashboard, high CPU
 **Solutions**:
+
 ```bash
 # Clear browser cache
 # Clear localStorage: DevTools → Application → Clear Storage
@@ -600,12 +624,14 @@ python3 -m http.server 8080
 ### Master Mode
 
 **Activation**
+
 - Navigate to Dashboard
 - Click "Enable Master Mode" button
 - Confirm biometric authentication
 - Master Mode badge appears in header
 
 **Master Mode Features**
+
 - Full QVillage access
 - Model management
 - Dataset administration
@@ -617,6 +643,7 @@ python3 -m http.server 8080
 ### QVillage (Master Only)
 
 **Model Management**
+
 ```
 Models: 12 deployed
 - Custom ML Model v3.2
@@ -627,6 +654,7 @@ Models: 12 deployed
 ```
 
 **Space Management**
+
 ```
 Total Spaces: 48
 - Allocated: 32 spaces
@@ -635,6 +663,7 @@ Total Spaces: 48
 ```
 
 **Inference Endpoints**
+
 ```
 Active Endpoints: 8
 - /api/predict/nlp
@@ -650,6 +679,7 @@ Active Endpoints: 8
 ### Revenue Management
 
 **Multi-Stream Tracking**
+
 1. **Microtasks** (22.9%)
    - Active tasks: 234
    - Completed: 1,289
@@ -682,12 +712,14 @@ Active Endpoints: 8
 ### Browser Recommendations
 
 **Optimal Setup**
+
 - Browser: Chrome 120+, Firefox 121+, Safari 17+
 - RAM: 4GB minimum, 8GB recommended
 - Network: 10Mbps minimum, 50Mbps recommended
 - Screen: 1920x1080 minimum
 
 **Performance Tips**
+
 1. Keep browser updated
 2. Use hardware acceleration (Settings → Advanced)
 3. Disable unnecessary browser extensions
@@ -698,12 +730,14 @@ Active Endpoints: 8
 ### System Optimization
 
 **Server-Side**
+
 - HTTP/2 support enabled
 - Gzip compression enabled
 - Cache control headers set
 - CDN-ready structure
 
 **Client-Side**
+
 - Lazy loading for charts
 - Request debouncing
 - State caching
@@ -716,12 +750,13 @@ Active Endpoints: 8
 ### Component Usage
 
 **In React/Next.js Projects**
+
 ```typescript
 import { QCityDashboard, getAvailableComponents } from '@/components/q-city';
 
 export default function Page() {
   const components = getAvailableComponents();
-  
+
   return (
     <div>
       <QCityDashboard />
@@ -734,23 +769,24 @@ export default function Page() {
 ### Custom Dashboard Creation
 
 **Template**
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom QCity Dashboard</title>
-  <style>
-    /* Your custom styles */
-  </style>
-</head>
-<body>
-  <div id="app"></div>
-  
-  <script src="qcity-service.js"></script>
-  <script src="custom-dashboard.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom QCity Dashboard</title>
+    <style>
+      /* Your custom styles */
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="qcity-service.js"></script>
+    <script src="custom-dashboard.js"></script>
+  </body>
 </html>
 ```
 
@@ -788,6 +824,7 @@ service.on('devices:update', (data) => {
 ### Getting Help
 
 **Check Logs**
+
 ```bash
 # Browser console logs
 F12 → Console tab → Check for errors
@@ -820,6 +857,7 @@ A: Yes, via Device Logs tab → Download button
 ### Current Version: 2.0.0 (Enterprise)
 
 **Changes from Previous**
+
 - ✅ 5 background monitoring services
 - ✅ 8-tab comprehensive dashboard
 - ✅ Master Mode toggle
@@ -873,6 +911,7 @@ A: Yes, via Device Logs tab → Download button
 ## Conclusion
 
 QCity Enterprise is a **production-ready** system providing:
+
 - ✅ Real-time device management
 - ✅ AI/ML infrastructure coordination
 - ✅ Multi-stream revenue tracking

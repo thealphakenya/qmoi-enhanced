@@ -7,6 +7,7 @@ Release ID: 262642597
 Published at: 2025-11-15T07:52:09Z
 
 Uploaded assets (10):
+
 - SHA256SUMS.txt
 - admin.zip
 - app-release.apk
@@ -19,11 +20,13 @@ Uploaded assets (10):
 - qmoi.zip
 
 Verification:
+
 - Downloaded `SHA256SUMS.txt` from the release and matched it against the local `v1.2.5_release/SHA256SUMS.txt` (no differences found).
 
 Local artifact directory: `/workspaces/qmoi-enhanced/v1.2.5_release/`
 
 Next recommended actions:
+
 1. (Optional) Add Android keystore secrets to GitHub Secrets for fully automated signed builds in CI:
    - `ANDROID_KEYSTORE_BASE64`
    - `ANDROID_KEYSTORE_PASSWORD`
@@ -34,6 +37,7 @@ Next recommended actions:
 4. Test PWAs by serving one of the created zips locally and checking install/offline behavior.
 
 Audit notes:
+
 - All uploaded artifacts have `state: uploaded` and `digest` SHA-256 values in the release metadata.
 - Android APK content type: `application/vnd.android.package-archive`.
 

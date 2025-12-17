@@ -3,7 +3,7 @@ title: "Issue draft for qmoi-enhanced/.npm-cache/_cacache/index-v5/32/34/344f59e
 generated: 2025-11-08T16:06:38.593576Z
 ---
 
-# Review needed: qmoi-enhanced/.npm-cache/_cacache/index-v5/32/34/344f59e7c22107a2cfca08115e8169ef1be947207defbd43e9cfcc9821da
+# Review needed: qmoi-enhanced/.npm-cache/\_cacache/index-v5/32/34/344f59e7c22107a2cfca08115e8169ef1be947207defbd43e9cfcc9821da
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 

@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -17,26 +18,28 @@ qmoi_validation_frontmatter: true
 Stub for deploying QMOI to Quantum/Quantum-like cloud providers. Add provider-specific steps here.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOICLONEQUANTUM.md",
-  "validated_at": "2025-10-26T20:51:22.484330Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Clone (Quantum)"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "QMOICLONEQUANTUM.md",
+"validated_at": "2025-10-26T20:51:22.484330Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Clone (Quantum)"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

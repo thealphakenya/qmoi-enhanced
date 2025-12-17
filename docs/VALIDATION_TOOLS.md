@@ -11,7 +11,7 @@ Key tools
 
 - `scripts/generate_allmdrefs.py` — discovers repository `.md` files (excluding vendor dirs) and writes `.qmoi_validation/md_files_found.json`. Use `--write` to update `ALLMDFILESREFS.md`.
 - `scripts/validate_md.py` — validates markdown files for title, frontmatter, and links. Writes per-file reports to `.qmoi_validation/validation_reports/`. Use `--apply` to insert/update validation metadata blocks.
- - `scripts/validate_md.py` — validates markdown files for title, frontmatter, and links. Writes per-file reports to `.qmoi_validation/validation_reports/`. Use `--apply` to insert/update validation metadata blocks. The validator now captures QVS provenance (when `.qmoi_validation/qvs_context.json` exists) and records minimal run provenance (Codespace, GITHUB_RUN_ID, host, user) into each report for auditability.
+- `scripts/validate_md.py` — validates markdown files for title, frontmatter, and links. Writes per-file reports to `.qmoi_validation/validation_reports/`. Use `--apply` to insert/update validation metadata blocks. The validator now captures QVS provenance (when `.qmoi_validation/qvs_context.json` exists) and records minimal run provenance (Codespace, GITHUB_RUN_ID, host, user) into each report for auditability.
 - `scripts/qmoi_todos.py` — lightweight to-dos manager used by validation automation and orchestrators (LION hooks can be added where noted).
 
 Quick start
@@ -36,7 +36,7 @@ Integration points
 
 - LION: validation tools produce JSON outputs in `.qmoi_validation/` which LION can consume to coordinate further remediation, backups to QVS, or to create validation tasks in the QMOI to-dos system.
 - QVS: validation reports and marked files can be snapshot to QVS for audit/history.
- - QVS: validation reports and marked files can be snapshot to QVS for audit/history. Validation reports now include `qvs` or `qvs_provenance` keys with structured provenance information. See `.qmoi_validation/validation_reports/` and `.qmoi_validation/runs.log` for recorded run events.
+- QVS: validation reports and marked files can be snapshot to QVS for audit/history. Validation reports now include `qvs` or `qvs_provenance` keys with structured provenance information. See `.qmoi_validation/validation_reports/` and `.qmoi_validation/runs.log` for recorded run events.
 
 Applications & builds
 
@@ -46,6 +46,7 @@ Applications & builds
 Notes
 
 - All tools are lightweight and dependency-free (pure Python standard library). They are safe to run locally and in CI; they avoid vendor directories by default.
+
 ## QMOI Validation Tools
 
 This document explains the validation tooling added to the repository and how they are intended to be used.
@@ -81,53 +82,55 @@ Quick usage:
 All outputs and reports are stored in `.qmoi_validation/` so CI or other tools can pick them up.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/VALIDATION_TOOLS.md",
-  "validator": "qmoi-validator-v3",
-  "checked_at": "2025-11-07T13:03:53.260806+00:00",
-  "checks": {
-    "readable": {
-      "ok": true
-    },
-    "title_present": {
-      "ok": true,
-      "detail": "QMOI Validation Tools"
-    },
-    "frontmatter_present": {
-      "ok": false
-    },
-    "links": {
-      "ok": true,
-      "detail": []
-    },
-    "build_info": {
-      "build": "not_found"
-    }
-  },
-  "ok": false,
-  "lion_task": {
-    "id": "735061c5-43c8-4213-80e6-5635724eda4a",
-    "task": "remediate_markdown_issues",
-    "created_at": "2025-11-07T13:03:53.260806+00:00",
-    "notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
-    "priority": "medium",
-    "recommended_actions": [
-      "add H1 title",
-      "add frontmatter",
-      "fix broken links"
-    ],
-    "qcity_hints": {
-      "preferred_cluster": "qcity-default",
-      "storage_bucket": "qcity-artifacts"
-    }
-  },
-  "qvs_provenance": {
-    "codespace": "silver-journey-r4596xxpxg99cw594",
-    "github_run_id": null,
-    "user": "vscode",
-    "host": "codespaces-08409b"
-  }
+"file": "docs/VALIDATION_TOOLS.md",
+"validator": "qmoi-validator-v3",
+"checked_at": "2025-11-07T13:03:53.260806+00:00",
+"checks": {
+"readable": {
+"ok": true
+},
+"title_present": {
+"ok": true,
+"detail": "QMOI Validation Tools"
+},
+"frontmatter_present": {
+"ok": false
+},
+"links": {
+"ok": true,
+"detail": []
+},
+"build_info": {
+"build": "not_found"
 }
+},
+"ok": false,
+"lion_task": {
+"id": "735061c5-43c8-4213-80e6-5635724eda4a",
+"task": "remediate_markdown_issues",
+"created_at": "2025-11-07T13:03:53.260806+00:00",
+"notes": "Auto-generated remediation suggestion (title/frontmatter/links)",
+"priority": "medium",
+"recommended_actions": [
+"add H1 title",
+"add frontmatter",
+"fix broken links"
+],
+"qcity_hints": {
+"preferred_cluster": "qcity-default",
+"storage_bucket": "qcity-artifacts"
+}
+},
+"qvs_provenance": {
+"codespace": "silver-journey-r4596xxpxg99cw594",
+"github_run_id": null,
+"user": "vscode",
+"host": "codespaces-08409b"
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

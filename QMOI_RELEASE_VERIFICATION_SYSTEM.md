@@ -179,7 +179,7 @@ Link Extraction Process:
 
 Files Scanned:
 ├─ All .md files: 50+
-├─ QMOI_* documentation: 17+ files
+├─ QMOI\_\* documentation: 17+ files
 ├─ Root documentation: 30+ files
 ├─ Project docs: All areas
 └─ Frequency: Weekly automated
@@ -436,22 +436,22 @@ Format:
 
 Example Entries:
 ├─ File: QMOI_APIS.md
-│  ├─ Link: /old/api/endpoint
-│  ├─ Status: 404 Not Found
-│  ├─ Suggestion: Follow redirect to /api/v1/endpoint
-│  └─ Action: Auto-fixed ✓
+│ ├─ Link: /old/api/endpoint
+│ ├─ Status: 404 Not Found
+│ ├─ Suggestion: Follow redirect to /api/v1/endpoint
+│ └─ Action: Auto-fixed ✓
 │
 ├─ File: QMOI_INTEGRATION.md
-│  ├─ Link: https://oldlink.com
-│  ├─ Status: Domain expired
-│  ├─ Suggestion: Use archive.org
-│  └─ Action: Pending review ⏳
+│ ├─ Link: https://oldlink.com
+│ ├─ Status: Domain expired
+│ ├─ Suggestion: Use archive.org
+│ └─ Action: Pending review ⏳
 │
 └─ File: README.md
-   ├─ Link: ./nonexistent.md
-   ├─ Status: File not found
-   ├─ Suggestion: Remove or link to alternative
-   └─ Action: Pending review ⏳
+├─ Link: ./nonexistent.md
+├─ Status: File not found
+├─ Suggestion: Remove or link to alternative
+└─ Action: Pending review ⏳
 
 LINK COVERAGE REPORT:
 

@@ -43,7 +43,7 @@ from scripts.wallet_credential_manager import CredentialManager
 
 class TestIntegration:
     """Integration test suite."""
-    
+
     @pytest.fixture
     async def credential_manager(self):
         """Credential manager fixture."""
@@ -51,23 +51,23 @@ class TestIntegration:
         # Reset test counters to ensure unique values
         manager._test_counters = {
             'api_key': itertools.count(1),
-            'secret': itertools.count(1), 
+            'secret': itertools.count(1),
             'passphrase': itertools.count(1)
         }
         await manager.update_credentials()
         return manager
-    
+
     @pytest.fixture
     async def trading_manager(self):
         """Trading manager fixture."""
         manager = TradingConnectionManager()
         return manager
-    
+
     @pytest.fixture
     async def wallet_manager(self):
         """Wallet manager fixture."""
         return CredentialManager()
-    
+
     @pytest.mark.asyncio
     async def test_credential_validation(self, credential_manager):
         """Test credential validation."""
@@ -75,12 +75,12 @@ class TestIntegration:
         validation = await manager.validate_credentials()
         assert isinstance(validation, dict)
         assert all(isinstance(v, bool) for v in validation.values())
-    
+
     @pytest.mark.asyncio
     async def test_credential_rotation(self, credential_manager):
         """Test credential rotation."""
         manager = await credential_manager
-        
+
         # Set some initial credentials
         test_cred
 ```

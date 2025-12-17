@@ -1,0 +1,147 @@
+cb1e1fa4489f0036b943b8d07a49d312
+/* istanbul ignore next */
+function cov_2iz59mofdy() {
+  var path = "/workspaces/qmoi-enhanced/src/components/q-city/ResearchCenterPanel.tsx";
+  var hash = "ce4ce6e8fd3cb2ca11d10413f2a44cb393994599";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/components/q-city/ResearchCenterPanel.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 4,
+          column: 2
+        },
+        end: {
+          line: 20,
+          column: 4
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "ResearchCenterPanel",
+        decl: {
+          start: {
+            line: 3,
+            column: 24
+          },
+          end: {
+            line: 3,
+            column: 43
+          }
+        },
+        loc: {
+          start: {
+            line: 3,
+            column: 46
+          },
+          end: {
+            line: 21,
+            column: 1
+          }
+        },
+        line: 3
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "ce4ce6e8fd3cb2ca11d10413f2a44cb393994599"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2iz59mofdy = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2iz59mofdy();
+import React from "react";
+/* istanbul ignore next */
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export default function ResearchCenterPanel() {
+  /* istanbul ignore next */
+  cov_2iz59mofdy().f[0]++;
+  cov_2iz59mofdy().s[0]++;
+  return /*#__PURE__*/ /* istanbul ignore next */_jsxs(
+  /* istanbul ignore next */
+  "div",
+  /* istanbul ignore next */
+  {
+    children: [/*#__PURE__*/
+    /* istanbul ignore next */
+    _jsx(
+    /* istanbul ignore next */
+    "h2",
+    /* istanbul ignore next */
+    {
+      className: "text-2xl font-bold mb-4",
+      children: "Research Center"
+    }), /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsx(
+    /* istanbul ignore next */
+    "p",
+    /* istanbul ignore next */
+    {
+      children: "QMOI can research, verify, and suggest opportunities. (UI and features coming soon)"
+    }), /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsxs(
+    /* istanbul ignore next */
+    "ul",
+    /* istanbul ignore next */
+    {
+      className: "mt-4 list-disc ml-6",
+      children: [/*#__PURE__*/
+      /* istanbul ignore next */
+      _jsx(
+      /* istanbul ignore next */
+      "li",
+      /* istanbul ignore next */
+      {
+        children: "Research and cross-verification"
+      }), /*#__PURE__*/
+      /* istanbul ignore next */
+      _jsx(
+      /* istanbul ignore next */
+      "li",
+      /* istanbul ignore next */
+      {
+        children: "Fact-checking and citations"
+      }), /*#__PURE__*/
+      /* istanbul ignore next */
+      _jsx(
+      /* istanbul ignore next */
+      "li",
+      /* istanbul ignore next */
+      {
+        children: "Earning and learning opportunities"
+      })]
+    }), /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsx(
+    /* istanbul ignore next */
+    "div",
+    /* istanbul ignore next */
+    {
+      className: "mt-6 p-4 bg-gray-100 rounded",
+      children: "API integration coming soon."
+    })]
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMml6NTltb2ZkeSIsImFjdHVhbENvdmVyYWdlIiwiUmVhY3QiLCJqc3giLCJfanN4IiwianN4cyIsIl9qc3hzIiwiUmVzZWFyY2hDZW50ZXJQYW5lbCIsImYiLCJzIiwiY2hpbGRyZW4iLCJjbGFzc05hbWUiXSwic291cmNlcyI6WyJSZXNlYXJjaENlbnRlclBhbmVsLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSBcInJlYWN0XCI7XG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIFJlc2VhcmNoQ2VudGVyUGFuZWwoKSB7XG4gIHJldHVybiAoXG4gICAgPGRpdj5cbiAgICAgIDxoMiBjbGFzc05hbWU9XCJ0ZXh0LTJ4bCBmb250LWJvbGQgbWItNFwiPlJlc2VhcmNoIENlbnRlcjwvaDI+XG4gICAgICA8cD5cbiAgICAgICAgUU1PSSBjYW4gcmVzZWFyY2gsIHZlcmlmeSwgYW5kIHN1Z2dlc3Qgb3Bwb3J0dW5pdGllcy4gKFVJIGFuZCBmZWF0dXJlc1xuICAgICAgICBjb21pbmcgc29vbilcbiAgICAgIDwvcD5cbiAgICAgIDx1bCBjbGFzc05hbWU9XCJtdC00IGxpc3QtZGlzYyBtbC02XCI+XG4gICAgICAgIDxsaT5SZXNlYXJjaCBhbmQgY3Jvc3MtdmVyaWZpY2F0aW9uPC9saT5cbiAgICAgICAgPGxpPkZhY3QtY2hlY2tpbmcgYW5kIGNpdGF0aW9uczwvbGk+XG4gICAgICAgIDxsaT5FYXJuaW5nIGFuZCBsZWFybmluZyBvcHBvcnR1bml0aWVzPC9saT5cbiAgICAgIDwvdWw+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cIm10LTYgcC00IGJnLWdyYXktMTAwIHJvdW5kZWRcIj5cbiAgICAgICAgQVBJIGludGVncmF0aW9uIGNvbWluZyBzb29uLlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gICk7XG59XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQWVZO0lBQUFBLGNBQUEsWUFBQUEsQ0FBQTtNQUFBLE9BQUFDLGNBQUE7SUFBQTtFQUFBO0VBQUEsT0FBQUEsY0FBQTtBQUFBO0FBQUFELGNBQUE7QUFmWixPQUFPRSxLQUFLLE1BQU0sT0FBTztBQUFDO0FBQUEsU0FBQUMsR0FBQSxJQUFBQyxJQUFBLEVBQUFDLElBQUEsSUFBQUMsS0FBQTtBQUUxQixlQUFlLFNBQVNDLG1CQUFtQkEsQ0FBQSxFQUFHO0VBQUE7RUFBQVAsY0FBQSxHQUFBUSxDQUFBO0VBQUFSLGNBQUEsR0FBQVMsQ0FBQTtFQUM1QyxvQkFDRSwyQkFBQUgsS0FBQTtFQUFBO0VBQUE7RUFBQTtFQUFBO0lBQUFJLFFBQUE7SUFDRTtJQUFBTixJQUFBO0lBQUE7SUFBQTtJQUFBO0lBQUE7TUFBSU8sU0FBUyxFQUFDLHlCQUF5QjtNQUFBRCxRQUFBLEVBQUM7SUFBZSxDQUFJLENBQUM7SUFDNUQ7SUFBQU4sSUFBQTtJQUFBO0lBQUE7SUFBQTtJQUFBO01BQUFNLFFBQUEsRUFBRztJQUdILENBQUcsQ0FBQztJQUNKO0lBQUFKLEtBQUE7SUFBQTtJQUFBO0lBQUE7SUFBQTtNQUFJSyxTQUFTLEVBQUMscUJBQXFCO01BQUFELFFBQUE7TUFDakM7TUFBQU4sSUFBQTtNQUFBO01BQUE7TUFBQTtNQUFBO1FBQUFNLFFBQUEsRUFBSTtNQUErQixDQUFJLENBQUM7TUFDeEM7TUFBQU4sSUFBQTtNQUFBO01BQUE7TUFBQTtNQUFBO1FBQUFNLFFBQUEsRUFBSTtNQUEyQixDQUFJLENBQUM7TUFDcEM7TUFBQU4sSUFBQTtNQUFBO01BQUE7TUFBQTtNQUFBO1FBQUFNLFFBQUEsRUFBSTtNQUFrQyxDQUFJLENBQUM7SUFBQSxDQUN6QyxDQUFDO0lBQ0w7SUFBQU4sSUFBQTtJQUFBO0lBQUE7SUFBQTtJQUFBO01BQUtPLFNBQVMsRUFBQyw4QkFBOEI7TUFBQUQsUUFBQSxFQUFDO0lBRTlDLENBQUssQ0FBQztFQUFBLENBQ0gsQ0FBQztBQUVWIiwiaWdub3JlTGlzdCI6W119

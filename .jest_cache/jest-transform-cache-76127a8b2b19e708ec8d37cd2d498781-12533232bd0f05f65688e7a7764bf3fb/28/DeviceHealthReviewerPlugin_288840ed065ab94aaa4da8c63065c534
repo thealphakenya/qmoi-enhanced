@@ -1,0 +1,217 @@
+206786bb85d9e177605d92c8c6e12519
+/* istanbul ignore next */
+function cov_2ntkqg78oo() {
+  var path = "/workspaces/qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts";
+  var hash = "c54fe90f6ea14950d125531a702dd0a587bf87e9";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 5,
+          column: 54
+        },
+        end: {
+          line: 17,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 15,
+          column: 4
+        },
+        end: {
+          line: 15,
+          column: 16
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 2
+          },
+          end: {
+            line: 9,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 9
+          },
+          end: {
+            line: 9,
+            column: 11
+          }
+        },
+        line: 9
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 10,
+            column: 2
+          },
+          end: {
+            line: 10,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 10,
+            column: 13
+          },
+          end: {
+            line: 10,
+            column: 15
+          }
+        },
+        line: 10
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 11,
+            column: 2
+          },
+          end: {
+            line: 11,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 15
+          },
+          end: {
+            line: 11,
+            column: 17
+          }
+        },
+        line: 11
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 12,
+            column: 2
+          },
+          end: {
+            line: 12,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 12,
+            column: 12
+          },
+          end: {
+            line: 12,
+            column: 14
+          }
+        },
+        line: 12
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 13,
+            column: 2
+          },
+          end: {
+            line: 13,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 13,
+            column: 21
+          },
+          end: {
+            line: 16,
+            column: 3
+          }
+        },
+        line: 13
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "c54fe90f6ea14950d125531a702dd0a587bf87e9"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2ntkqg78oo = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2ntkqg78oo();
+// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
+// Minimal non-JSX plugin to avoid TSX in .ts file.
+export const DeviceHealthReviewerPlugin =
+/* istanbul ignore next */
+(cov_2ntkqg78oo().s[0]++, {
+  id: "device-health-reviewer",
+  name: "Device Health Reviewer",
+  description: "Analyzes device stats and suggests optimizations.",
+  init() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[0]++;
+  },
+  activate() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[1]++;
+  },
+  deactivate() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[2]++;
+  },
+  destroy() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[3]++;
+  },
+  getSettingsPanel() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[4]++;
+    cov_2ntkqg78oo().s[1]++;
+    // Non-UI placeholder for server-side builds
+    return null;
+  }
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMm50a3FnNzhvbyIsImFjdHVhbENvdmVyYWdlIiwiRGV2aWNlSGVhbHRoUmV2aWV3ZXJQbHVnaW4iLCJzIiwiaWQiLCJuYW1lIiwiZGVzY3JpcHRpb24iLCJpbml0IiwiZiIsImFjdGl2YXRlIiwiZGVhY3RpdmF0ZSIsImRlc3Ryb3kiLCJnZXRTZXR0aW5nc1BhbmVsIl0sInNvdXJjZXMiOlsiRGV2aWNlSGVhbHRoUmV2aWV3ZXJQbHVnaW4udHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gTk9URTogMiBwbGFjZWhvbGRlcihzKSBmb3VuZCBpbiB0aGlzIGZpbGUuIFNlZSAucW1vaV92YWxpZGF0aW9uL3BsYWNlaG9sZGVyX2ZpeF9yZXBvcnQudHh0IGZvciBkZXRhaWxzLlxuaW1wb3J0IHsgUW1vaVBsdWdpbiB9IGZyb20gXCIuL1BsdWdpbk1hbmFnZXJcIjtcblxuLy8gTWluaW1hbCBub24tSlNYIHBsdWdpbiB0byBhdm9pZCBUU1ggaW4gLnRzIGZpbGUuXG5leHBvcnQgY29uc3QgRGV2aWNlSGVhbHRoUmV2aWV3ZXJQbHVnaW46IFFtb2lQbHVnaW4gPSB7XG4gIGlkOiBcImRldmljZS1oZWFsdGgtcmV2aWV3ZXJcIixcbiAgbmFtZTogXCJEZXZpY2UgSGVhbHRoIFJldmlld2VyXCIsXG4gIGRlc2NyaXB0aW9uOiBcIkFuYWx5emVzIGRldmljZSBzdGF0cyBhbmQgc3VnZ2VzdHMgb3B0aW1pemF0aW9ucy5cIixcbiAgaW5pdCgpIHt9LFxuICBhY3RpdmF0ZSgpIHt9LFxuICBkZWFjdGl2YXRlKCkge30sXG4gIGRlc3Ryb3koKSB7fSxcbiAgZ2V0U2V0dGluZ3NQYW5lbCgpIHtcbiAgICAvLyBOb24tVUkgcGxhY2Vob2xkZXIgZm9yIHNlcnZlci1zaWRlIGJ1aWxkc1xuICAgIHJldHVybiBudWxsO1xuICB9LFxufTtcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lBZVk7SUFBQUEsY0FBQSxZQUFBQSxDQUFBO01BQUEsT0FBQUMsY0FBQTtJQUFBO0VBQUE7RUFBQSxPQUFBQSxjQUFBO0FBQUE7QUFBQUQsY0FBQTtBQWZaOztBQUdBO0FBQ0EsT0FBTyxNQUFNRSwwQkFBc0M7QUFBQTtBQUFBLENBQUFGLGNBQUEsR0FBQUcsQ0FBQSxPQUFHO0VBQ3BEQyxFQUFFLEVBQUUsd0JBQXdCO0VBQzVCQyxJQUFJLEVBQUUsd0JBQXdCO0VBQzlCQyxXQUFXLEVBQUUsbURBQW1EO0VBQ2hFQyxJQUFJQSxDQUFBLEVBQUc7SUFBQTtJQUFBUCxjQUFBLEdBQUFRLENBQUE7RUFBQyxDQUFDO0VBQ1RDLFFBQVFBLENBQUEsRUFBRztJQUFBO0lBQUFULGNBQUEsR0FBQVEsQ0FBQTtFQUFDLENBQUM7RUFDYkUsVUFBVUEsQ0FBQSxFQUFHO0lBQUE7SUFBQVYsY0FBQSxHQUFBUSxDQUFBO0VBQUMsQ0FBQztFQUNmRyxPQUFPQSxDQUFBLEVBQUc7SUFBQTtJQUFBWCxjQUFBLEdBQUFRLENBQUE7RUFBQyxDQUFDO0VBQ1pJLGdCQUFnQkEsQ0FBQSxFQUFHO0lBQUE7SUFBQVosY0FBQSxHQUFBUSxDQUFBO0lBQUFSLGNBQUEsR0FBQUcsQ0FBQTtJQUNqQjtJQUNBLE9BQU8sSUFBSTtFQUNiO0FBQ0YsQ0FBQyIsImlnbm9yZUxpc3QiOltdfQ==

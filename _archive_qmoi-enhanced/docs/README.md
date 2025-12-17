@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -125,11 +126,13 @@ Q-City is a comprehensive system management and monitoring platform that provide
 ### Data Flow
 
 1. **Network Management**
+
    ```
    User Interface -> WiFi Manager -> Network Monitor -> Connection Optimizer
    ```
 
 2. **Resource Monitoring**
+
    ```
    Resource Monitor -> Performance Tuner -> Optimization Manager -> UI Update
    ```
@@ -151,17 +154,20 @@ Q-City is a comprehensive system management and monitoring platform that provide
 ### Installation Steps
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/your-org/q-city.git
    cd q-city
    ```
 
 2. Install dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
 
 3. Initialize configuration:
+
    ```bash
    python scripts/setup.py
    ```
@@ -176,6 +182,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
 ### Configuration Files
 
 1. **Main Configuration** (`config/qcity_config.json`)
+
    ```json
    {
      "version": "1.0.0",
@@ -191,6 +198,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
    ```
 
 2. **Network Configuration** (`config/network_config.json`)
+
    ```json
    {
      "auto_connect": true,
@@ -214,11 +222,13 @@ Q-City is a comprehensive system management and monitoring platform that provide
 ### Starting Q-City
 
 1. **Normal Start**
+
    ```bash
    python scripts/main.py
    ```
 
 2. **Debug Mode**
+
    ```bash
    python scripts/main.py --debug
    ```
@@ -479,37 +489,42 @@ QMOI now features robust self-healing and notification for file permissions:
 - **Audit Logging:** All actions are logged in `logs/qmoi_permission_audit.log`.
 
 ### Configuration
+
 See `config/qmoi_config.json` for notification and email settings.
 
 ### Manual Fix
+
 Run `python scripts/qmoi_permission_fix.py` to manually fix permissions.
 
 ### Audit Log
+
 See `logs/qmoi_permission_audit.log` for a full trace of permission and notification actions.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/docs/README.md",
-  "validated_at": "2025-10-26T20:51:24.864664Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "Q-City Documentation"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/docs/README.md",
+"validated_at": "2025-10-26T20:51:24.864664Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "Q-City Documentation"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

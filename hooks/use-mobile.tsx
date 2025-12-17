@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function useMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean>(false);
@@ -9,9 +9,9 @@ export function useMobile() {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return isMobile;

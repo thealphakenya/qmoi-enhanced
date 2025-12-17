@@ -6,6 +6,7 @@ qmoi_validation_frontmatter: true
 # PAYMENTS
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -18,16 +19,16 @@ PAYMENTS.md
 
 This file documents the payment integration plan for QMOI.
 
-Overview
---------
+## Overview
+
 QMOI currently uses a local SQLite-backed `wallets` table to simulate balances
 (`balance_cents` stored as integers). Deals purchase flow debits the user's
 wallet and credits the `cashon` system wallet. To handle "real actual cash"
 we must integrate with one or more payment providers and implement webhooks,
 settlements, and reconciliation.
 
-Recommended next steps
-----------------------
+## Recommended next steps
+
 1. Provider selection
    - For card-based payments and global support: Stripe (recommended)
    - For mobile-money in East Africa: M-Pesa (Safaricom) or local provider
@@ -53,44 +54,46 @@ Recommended next steps
    - Add idempotency keys for charge creation
    - Add audit logging and receipts
 
-Testing
--------
+## Testing
+
 - `scripts/test_payments.py` demonstrates a simulated charge using the
   provider stub and verifies a transaction is created and marked settled.
 
-Security
---------
+## Security
+
 - Do not commit provider secrets. Use environment variables and a secrets
   manager. Verify webhook signatures before accepting events.
 
-Notes
------
+## Notes
+
 The current implementation auto-settles transactions when no external provider
 is configured (useful for offline/testing)."}
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "PAYMENTS.md",
-  "validated_at": "2025-10-26T20:51:22.331115Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": false,
-      "detail": "No H1 title found"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": false,
-  "summary": {
-    "total_checks": 2,
-    "passed": false
-  }
+"file": "PAYMENTS.md",
+"validated_at": "2025-10-26T20:51:22.331115Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": false,
+"detail": "No H1 title found"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": false,
+"summary": {
+"total_checks": 2,
+"passed": false
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
