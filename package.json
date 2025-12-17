@@ -11,7 +11,7 @@
     "ci:build": "NODE_OPTIONS=--max-old-space-size=8192 CI=false next build",
     "test:coverage": "jest --config=jest.config.cjs --coverage --runInBand --colors",
     "prod:start": "./scripts/prod-start.sh",
-    "start:prod:pm2": "npx pm2 start ecosystem.config.js --only qmoi-next --env production",
+    "start:prod:pm2": "npx pm2 start ecosystem.config.cjs --only qmoi-next --env production",
     "stop:prod:pm2": "npx pm2 stop ecosystem.config.js --only qmoi-next",
     "test:auth": "node ./scripts/tests/requireApiKeyTest.js",
     "test:endpoint": "node ./scripts/tests/endpoint_gating_test.js",
