@@ -6,6 +6,7 @@
 - Regenerated release manifest and ran verification scripts
 
 Verification summary:
+
 - Manifest assets: 16
 - Verified OK: 9
 - Verified Broken: 1

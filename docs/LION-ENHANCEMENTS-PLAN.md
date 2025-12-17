@@ -6,6 +6,7 @@ qmoi_validation_frontmatter: true
 # Lion Enhancement Plan for QMOI
 
 ## Goals
+
 - Make Lion a core enhancement for all validation, debugging, error recovery, and self-healing in QMOI.
 - Integrate Lion into all webhooks, hooks, and transaction flows for reliability and precision.
 - Use Lion to automate package installation, environment fixes, and to-dos validation.
@@ -13,6 +14,7 @@ qmoi_validation_frontmatter: true
 - Enable Lion to support autodev, auto-research, autotesting, and self-healing for all frontend and backend features.
 
 ## Key Features to Add
+
 1. **Lion Validation Engine**: Unified validator for .md files, code, configs, links, apps, tracks, and to-dos.
 2. **Lion Webhook/Hook Enhancer**: Auto-debug, self-heal, retry, and error recovery for all webhooks/hooks.
 3. **Lion Package Manager**: Auto-install missing requirements for Node, Python, and other environments.
@@ -35,6 +37,7 @@ qmoi_validation_frontmatter: true
 20. **Lion Den/Autodev Integrator**: Deep integration with Den and autodev for full-stack automation.
 
 ## Implementation Steps
+
 - Add Lion hooks to all webhooks and transaction flows for error recovery and audit.
 - Enhance Lion installer to support all environments and package managers.
 - Create Lion validation modules for .md files, to-dos, tracks, and financial records.
@@ -43,6 +46,7 @@ qmoi_validation_frontmatter: true
 - Add health monitoring, audit trail, and memory sync features.
 
 ## Next Actions
+
 - Implement Lion webhook/hook enhancer in `/services/adapters/payments/webhooks.ts`.
 - Create Lion validation modules and update validation system.
 - Add new docs and update ALLMDFILESREFS.md.
@@ -50,28 +54,30 @@ qmoi_validation_frontmatter: true
 - Integrate Lion with tracks, to-dos, and financial systems.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/LION-ENHANCEMENTS-PLAN.md",
-  "validated_at": "2025-10-26T20:51:22.691571Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "Lion Enhancement Plan for QMOI"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "docs/LION-ENHANCEMENTS-PLAN.md",
+"validated_at": "2025-10-26T20:51:22.691571Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "Lion Enhancement Plan for QMOI"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Full history for secret scanning
+          fetch-depth: 0 # Full history for secret scanning
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -46,7 +46,7 @@ jobs:
             --exclude-files "package-lock.json|yarn.lock|*.lock" \
             --exclude-lines "REDACTED|redacted|\[REDACTED" \
             > .secrets.scan.json
-          
+
           # Compare with baseline
           if detect-secrets audit .secrets.baseline .secrets.scan.json 2>/dev/null; then
             echo "status=clean" >> $GITHUB_OUTPUT
@@ -117,7 +117,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### detect-secrets: ${{ needs.detect-secrets.result }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "${{ needs.detect-secrets.result }}" = "failure" ]; then
             echo "❌ **Security check failed**. Review artifacts for details." >> $GITHUB_STEP_SUMMARY
             exit 1

@@ -1,15 +1,17 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 // Master authentication middleware
 const authenticateMaster = (request: NextRequest) => {
-  const authHeader = request.headers.get('authorization');
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+  const authHeader = request.headers.get("authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return false;
   }
-  
+
   const token = authHeader.substring(7);
   // In production, validate against secure token storage
-  return token === process.env.QMOI_MASTER_TOKEN || token === 'master-access-token';
+  return (
+    token === process.env.QMOI_MASTER_TOKEN || token === "master-access-token"
+  );
 };
 
 // POST /api/qmoi/master-mode
@@ -18,17 +20,17 @@ export async function POST(request: NextRequest) {
     // Authenticate master access
     if (!authenticateMaster(request)) {
       return NextResponse.json(
-        { error: 'Master access required' },
-        { status: 401 }
+        { error: "Master access required" },
+        { status: 401 },
       );
     }
 
     const { enabled } = await request.json();
 
-    if (typeof enabled !== 'boolean') {
+    if (typeof enabled !== "boolean") {
       return NextResponse.json(
-        { error: 'Invalid enabled parameter' },
-        { status: 400 }
+        { error: "Invalid enabled parameter" },
+        { status: 400 },
       );
     }
 
@@ -42,14 +44,13 @@ export async function POST(request: NextRequest) {
       success: true,
       masterMode: enabled,
       timestamp: new Date().toISOString(),
-      message: `Master mode ${enabled ? 'enabled' : 'disabled'} successfully`
+      message: `Master mode ${enabled ? "enabled" : "disabled"} successfully`,
     });
-
   } catch (error) {
-    console.error('Error managing master mode:', error);
+    console.error("Error managing master mode:", error);
     return NextResponse.json(
-      { error: 'Failed to manage master mode' },
-      { status: 500 }
+      { error: "Failed to manage master mode" },
+      { status: 500 },
     );
   }
 }
@@ -60,8 +61,8 @@ export async function GET(request: NextRequest) {
     // Authenticate master access
     if (!authenticateMaster(request)) {
       return NextResponse.json(
-        { error: 'Master access required' },
-        { status: 401 }
+        { error: "Master access required" },
+        { status: 401 },
       );
     }
 
@@ -78,15 +79,14 @@ export async function GET(request: NextRequest) {
         notificationSystem: true,
         autoFix: true,
         githubIntegration: true,
-        vulnerabilityScanning: true
-      }
+        vulnerabilityScanning: true,
+      },
     });
-
   } catch (error) {
-    console.error('Error fetching master mode status:', error);
+    console.error("Error fetching master mode status:", error);
     return NextResponse.json(
-      { error: 'Failed to fetch master mode status' },
-      { status: 500 }
+      { error: "Failed to fetch master mode status" },
+      { status: 500 },
     );
   }
-} 
+}

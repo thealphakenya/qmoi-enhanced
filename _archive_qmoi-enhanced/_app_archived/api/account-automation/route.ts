@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 // import nodemailer from 'nodemailer'; // Uncomment and configure for real email
 
 // In-memory account store (replace with DB in production)
@@ -14,7 +14,7 @@ export async function POST_CREATE(req: NextRequest) {
     username,
     email,
     platform,
-    status: 'pending',
+    status: "pending",
     createdAt: new Date().toISOString(),
     verified: false,
   };
@@ -27,8 +27,11 @@ export async function POST_LOGIN(req: NextRequest) {
   // Login (stub)
   const body = await req.json();
   const { username, platform } = body;
-  const account = accounts.find(a => a.username === username && a.platform === platform);
-  if (!account) return NextResponse.json({ error: 'Account not found' }, { status: 404 });
+  const account = accounts.find(
+    (a) => a.username === username && a.platform === platform,
+  );
+  if (!account)
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   // TODO: Add real authentication logic
   return NextResponse.json({ success: true, account });
 }
@@ -42,21 +45,26 @@ export async function POST_VERIFY(req: NextRequest) {
   // let transporter = nodemailer.createTransport({ ... });
   // await transporter.sendMail({ ... });
   // For now, just mark as verified
-  const idx = accounts.findIndex(a => a.id === id && a.email === email);
-  if (idx === -1) return NextResponse.json({ error: 'Account not found' }, { status: 404 });
+  const idx = accounts.findIndex((a) => a.id === id && a.email === email);
+  if (idx === -1)
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   accounts[idx].verified = true;
-  accounts[idx].status = 'verified';
+  accounts[idx].status = "verified";
   return NextResponse.json({ success: true, account: accounts[idx] });
 }
 
 export async function GET_STATUS(req: NextRequest) {
   // Get account status
   const url = new URL(req.url);
-  const id = Number(url.searchParams.get('id'));
-  const account = accounts.find(a => a.id === id);
-  if (!account) return NextResponse.json({ error: 'Account not found' }, { status: 404 });
-  return NextResponse.json({ status: account.status, verified: account.verified });
+  const id = Number(url.searchParams.get("id"));
+  const account = accounts.find((a) => a.id === id);
+  if (!account)
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
+  return NextResponse.json({
+    status: account.status,
+    verified: account.verified,
+  });
 }
 
 // TODO: Enhance shelling, VPN, and security features
-// TODO: Add modular automation for more platforms 
+// TODO: Add modular automation for more platforms

@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return NextResponse.json(
         { error: "Master access required" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     if (masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
         { error: "Invalid master key" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     console.error("Revenue status error:", error);
     return NextResponse.json(
       { error: "Failed to get revenue status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -1,0 +1,34 @@
+4acea78d148835841475a2bde5b83890
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all) __defProp(target, name, {
+    get: all[name],
+    enumerable: true
+  });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from)) if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+      get: () => from[key],
+      enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+    });
+  }
+  return to;
+};
+var __toCommonJS = mod => __copyProps(__defProp({}, "__esModule", {
+  value: true
+}), mod);
+var isStringEqual_exports = {};
+__export(isStringEqual_exports, {
+  isStringEqual: () => isStringEqual
+});
+module.exports = __toCommonJS(isStringEqual_exports);
+function isStringEqual(actual, expected) {
+  return actual.toLowerCase() === expected.toLowerCase();
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJpc1N0cmluZ0VxdWFsX2V4cG9ydHMiLCJfX2V4cG9ydCIsImlzU3RyaW5nRXF1YWwiLCJtb2R1bGUiLCJleHBvcnRzIiwiX190b0NvbW1vbkpTIiwiYWN0dWFsIiwiZXhwZWN0ZWQiLCJ0b0xvd2VyQ2FzZSJdLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy9jb3JlL3V0aWxzL2ludGVybmFsL2lzU3RyaW5nRXF1YWwudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBQZXJmb3JtcyBhIGNhc2UtaW5zZW5zaXRpdmUgY29tcGFyaXNvbiBvZiB0d28gZ2l2ZW4gc3RyaW5ncy5cbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIGlzU3RyaW5nRXF1YWwoYWN0dWFsOiBzdHJpbmcsIGV4cGVjdGVkOiBzdHJpbmcpOiBib29sZWFuIHtcbiAgcmV0dXJuIGFjdHVhbC50b0xvd2VyQ2FzZSgpID09PSBleHBlY3RlZC50b0xvd2VyQ2FzZSgpXG59XG4iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLElBQUFBLHFCQUFBO0FBQUFDLFFBQUEsQ0FBQUQscUJBQUE7RUFBQUUsYUFBQSxFQUFBQSxDQUFBLEtBQUFBO0FBQUE7QUFBQUMsTUFBQSxDQUFBQyxPQUFBLEdBQUFDLFlBQUEsQ0FBQUwscUJBQUE7QUFHTyxTQUFTRSxjQUFjSSxNQUFBLEVBQWdCQyxRQUFBLEVBQTJCO0VBQ3ZFLE9BQU9ELE1BQUEsQ0FBT0UsV0FBQSxDQUFZLE1BQU1ELFFBQUEsQ0FBU0MsV0FBQSxDQUFZO0FBQ3ZEIiwiaWdub3JlTGlzdCI6W119

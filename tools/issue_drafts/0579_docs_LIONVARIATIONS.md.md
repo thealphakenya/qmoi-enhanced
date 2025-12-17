@@ -49,7 +49,7 @@ Releases and automation
 - GitHub Actions workflow `.github/workflows/auto_release.yml` handles building artifacts, creating a GitHub Release, and uploading assets.
 
 How variations are used in QMOI
-- Each variation maps 
+- Each variation maps
 ```
 
 Notes:

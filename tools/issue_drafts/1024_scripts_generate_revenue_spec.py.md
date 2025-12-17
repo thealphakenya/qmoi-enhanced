@@ -61,13 +61,13 @@ AMOUNT_RE = re.compile(
 )
 def load_dotenv(root: Path) -> Dict[str, str]:
     """Load environment variables from tools/lion.env or .env files.
-    
+
     Environment variables in the OS take precedence over file-based configuration.
     Returns a merged dictionary of environment variables.
     """
     candidates = [root / 'tools' / 'lion.env', root / '.env']
     env = {}
-    
+
     # Load from first existing env file
     for p in candidates:
         if p.exists():
@@ -76,7 +76,7 @@ def load_dotenv(root: Path) -> Dict[str, str]:
                 if not line or line.startswith('#'):
                     continue
                 if '=' in line:
-     
+
 ```
 
 Notes:

@@ -41,6 +41,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 **Description:** Full-featured AI assistant with conversation, code generation, file processing, and more.
 
 **Platforms:** 9 (Most comprehensive support)
+
 - ✅ Windows (x64, ARM64)
 - ✅ macOS (Intel, Apple Silicon)
 - ✅ Linux (DEB, AppImage)
@@ -61,6 +62,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 **Description:** Orchestrate and manage distributed computing infrastructure with automatic scaling and monitoring.
 
 **Platforms:** 5
+
 - ✅ Windows
 - ✅ macOS
 - ✅ Linux
@@ -77,6 +79,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 **Description:** End-to-end encrypted file sharing with real-time collaboration.
 
 **Platforms:** Universal (1)
+
 - ✅ All platforms via web/mobile apps
 
 **Version:** v1.0.0  
@@ -89,6 +92,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 **Description:** Fast, secure messaging with voice/video calling.
 
 **Platforms:** Universal (1)
+
 - ✅ All platforms via web/mobile apps
 
 **Version:** v1.1.0  
@@ -101,6 +105,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 **Description:** Curated app store for QMOI ecosystem applications.
 
 **Platforms:** Universal (1)
+
 - ✅ All platforms via web/mobile apps
 
 **Version:** v1.0.0  
@@ -113,6 +118,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 **Description:** Community-driven platform for collaboration and knowledge sharing.
 
 **Platforms:** Universal (1)
+
 - ✅ All platforms via web/mobile apps
 
 **Version:** v1.0.0  
@@ -122,23 +128,23 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 
 ## 🖥️ Complete Platform Support
 
-| Platform | QMOI AI | QCity | QShare | Yap | QStore | QVillage | Download |
-|----------|---------|-------|--------|-----|--------|----------|----------|
-| Windows (x64) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | `.exe` |
-| Windows (ARM64) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | `.exe` |
-| macOS (Intel) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | `.dmg` |
-| macOS (Apple Silicon) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | `.dmg` |
-| Ubuntu/Debian (x64) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | `.deb` |
-| Ubuntu/Debian (ARM) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | `.deb` |
-| Linux (Generic) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | `.AppImage` |
-| Android (Phone) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | `.apk` |
-| Android (Tablet) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | `.apk` |
-| Android (TV) | ✅ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | `.apk` |
-| iOS (iPhone) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | App Store |
-| iOS (iPad) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | App Store |
-| Raspberry Pi | ✅ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | `.img` |
-| Chromebook | ✅ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | `.zip` |
-| Web/PWA | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Direct Deploy |
+| Platform              | QMOI AI | QCity | QShare | Yap | QStore | QVillage | Download      |
+| --------------------- | ------- | ----- | ------ | --- | ------ | -------- | ------------- |
+| Windows (x64)         | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | `.exe`        |
+| Windows (ARM64)       | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | `.exe`        |
+| macOS (Intel)         | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | `.dmg`        |
+| macOS (Apple Silicon) | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | `.dmg`        |
+| Ubuntu/Debian (x64)   | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | `.deb`        |
+| Ubuntu/Debian (ARM)   | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | `.deb`        |
+| Linux (Generic)       | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | `.AppImage`   |
+| Android (Phone)       | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | `.apk`        |
+| Android (Tablet)      | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | `.apk`        |
+| Android (TV)          | ✅      | ⚠️    | ⚠️     | ⚠️  | ⚠️     | ⚠️       | `.apk`        |
+| iOS (iPhone)          | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | App Store     |
+| iOS (iPad)            | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | App Store     |
+| Raspberry Pi          | ✅      | ⚠️    | ⚠️     | ⚠️  | ⚠️     | ⚠️       | `.img`        |
+| Chromebook            | ✅      | ⚠️    | ⚠️     | ⚠️  | ⚠️     | ⚠️       | `.zip`        |
+| Web/PWA               | ✅      | ✅    | ✅     | ✅  | ✅     | ✅       | Direct Deploy |
 
 ✅ = Full Support | ⚠️ = Limited Support
 
@@ -151,6 +157,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 **https://github.com/thealphakenya/qmoi-enhanced/releases**
 
 All QMOI apps and versions available with:
+
 - ✅ Automatic downloads
 - ✅ SHA256 checksums
 - ✅ Release notes
@@ -176,6 +183,7 @@ All QMOI apps and versions available with:
 ### Option 4: Web/PWA
 
 Access directly in your browser:
+
 - https://qmoi.qmoi.app (QMOI AI)
 - https://qcity.qmoi.app (QCity)
 - https://qvillage.qmoi.app (QVillage)
@@ -190,6 +198,7 @@ Access directly in your browser:
 ### Windows
 
 #### From GitHub Releases
+
 1. Go to https://github.com/thealphakenya/qmoi-enhanced/releases
 2. Find the latest release
 3. Download the `.exe` file for your app
@@ -200,12 +209,14 @@ Access directly in your browser:
 8. Click "Install"
 
 #### From Downloads Portal
+
 1. Visit https://github.com/thealphakenya/qmoi-enhanced/releases/
 2. Select your app
 3. Download the latest `.exe`
 4. Run installer (steps 4-8 above)
 
 **System Requirements:**
+
 - Windows 10 or later
 - 500 MB free disk space
 - Administrator privileges for installation
@@ -215,6 +226,7 @@ Access directly in your browser:
 ### macOS
 
 #### From GitHub Releases
+
 1. Go to https://github.com/thealphakenya/qmoi-enhanced/releases
 2. Find the latest release
 3. Download the `.dmg` file
@@ -223,6 +235,7 @@ Access directly in your browser:
 6. Launch from Applications
 
 #### From Mac App Store (Coming Soon)
+
 1. Open App Store
 2. Search for the app
 3. Click "Get"
@@ -230,6 +243,7 @@ Access directly in your browser:
 5. Wait for download and install
 
 **System Requirements:**
+
 - macOS 10.12 (Sierra) or later
 - 1 GB free disk space
 - For Apple Silicon: native or Rosetta compatibility
@@ -239,6 +253,7 @@ Access directly in your browser:
 ### Linux (DEB)
 
 #### From GitHub Releases
+
 ```bash
 # Download
 wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.deb
@@ -254,6 +269,7 @@ qmoi-ai
 ```
 
 #### From APT Repository (Coming Soon)
+
 ```bash
 sudo add-apt-repository ppa:qmoi/stable
 sudo apt update
@@ -265,6 +281,7 @@ sudo apt install qmoi-ai
 ### Linux (AppImage)
 
 #### From GitHub Releases
+
 ```bash
 # Download
 wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.AppImage
@@ -277,6 +294,7 @@ chmod +x qmoi-ai.AppImage
 ```
 
 **Features:**
+
 - No installation needed
 - Runs on any Linux distro
 - Self-contained bundle
@@ -286,6 +304,7 @@ chmod +x qmoi-ai.AppImage
 ### Android
 
 #### From GitHub Releases
+
 1. Go to https://github.com/thealphakenya/qmoi-enhanced/releases
 2. Download the `.apk` file
 3. Open file manager and locate the `.apk`
@@ -296,6 +315,7 @@ chmod +x qmoi-ai.AppImage
 6. App appears on home screen
 
 #### From Google Play Store
+
 1. Open Play Store app
 2. Search for "QMOI AI" or other app
 3. Tap "Install"
@@ -303,6 +323,7 @@ chmod +x qmoi-ai.AppImage
 5. App ready to use
 
 **System Requirements:**
+
 - Android 6.0 or later
 - 200 MB free space
 - Google Play Services
@@ -312,6 +333,7 @@ chmod +x qmoi-ai.AppImage
 ### iOS
 
 #### From App Store
+
 1. Open App Store
 2. Search for the app (e.g., "QMOI AI")
 3. Tap "Get"
@@ -320,6 +342,7 @@ chmod +x qmoi-ai.AppImage
 6. App appears on home screen
 
 **System Requirements:**
+
 - iOS 12 or later
 - 300 MB free space
 - Apple ID
@@ -329,6 +352,7 @@ chmod +x qmoi-ai.AppImage
 ### Raspberry Pi
 
 #### From GitHub Releases
+
 ```bash
 # Download
 wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.img
@@ -352,6 +376,7 @@ sync
 ```
 
 **System Requirements:**
+
 - Raspberry Pi 3B or later
 - 4GB+ microSD card
 - Power adapter
@@ -361,6 +386,7 @@ sync
 ### Chromebook
 
 #### From GitHub Releases
+
 ```bash
 # Download the .zip file
 # Unzip on your Chromebook
@@ -368,6 +394,7 @@ sync
 ```
 
 #### Via Web App
+
 1. Visit https://qmoi.qmoi.app or other app
 2. Click "Install" or menu > "Install app"
 3. App launches and can be used offline
@@ -377,6 +404,7 @@ sync
 ### Web/PWA
 
 #### Direct Access
+
 1. Visit any QMOI web app:
    - https://qmoi.qmoi.app (QMOI AI)
    - https://qcity.qmoi.app (QCity)
@@ -388,16 +416,20 @@ sync
 3. Optional: Install as PWA
 
 #### Install as PWA
+
 **Chrome/Edge:**
+
 1. Visit the app URL
 2. Click menu (⋮) > "Install [app name]"
 3. Confirm
 4. App on desktop/taskbar
 
 **Firefox:**
+
 1. Not yet supported (use web app)
 
 **Safari:**
+
 1. Tap Share > Add to Home Screen
 2. Confirm and add to home screen
 
@@ -474,6 +506,7 @@ All QMOI releases published here with:
 ### Verify Downloads with SHA256
 
 **On Linux/Mac:**
+
 ```bash
 # Download the .sha256 file from the release
 wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe.sha256
@@ -483,6 +516,7 @@ sha256sum -c qmoi-ai.exe.sha256
 ```
 
 **On Windows (PowerShell):**
+
 ```powershell
 # Get file hash
 Get-FileHash qmoi-ai.exe -Algorithm SHA256
@@ -506,11 +540,13 @@ Get-FileHash qmoi-ai.exe -Algorithm SHA256
 ### Download Issues
 
 **Problem:** Download fails or is slow
+
 - **Solution:** Retry using a different download method (GitHub vs portal)
 - **Solution:** Use a download manager (IDM, Aria2c)
 - **Solution:** Check internet connection
 
 **Problem:** File is corrupted
+
 - **Solution:** Verify SHA256 checksum
 - **Solution:** Re-download from GitHub or downloads portal
 - **Solution:** Try a different mirror/source
@@ -518,25 +554,30 @@ Get-FileHash qmoi-ai.exe -Algorithm SHA256
 ### Installation Issues
 
 **Windows:**
+
 - **"Windows protected your PC":** Click "More info" > "Run anyway"
 - **"Administrator required":** Right-click installer > "Run as administrator"
 - **"Installation failed":** Disable antivirus temporarily, retry
 
 **Mac:**
-- **"Cannot open because it is from an unidentified developer":** 
+
+- **"Cannot open because it is from an unidentified developer":**
   - Open System Preferences > Security & Privacy
   - Click "Open Anyway"
 - **"The file is too large":** Increase temporary storage space
 
 **Linux:**
+
 - **"Permission denied":** Run `chmod +x` on the executable
 - **"Dependency missing":** Install using `sudo apt install ./file.deb`
 
 **Android:**
+
 - **"Install blocked":** Enable "Unknown sources" in Settings > Apps
 - **"Insufficient storage":** Free up space and retry
 
 **iOS:**
+
 - **"Not available in your region":** VPN may be blocking; disable and retry
 - **"Authentication failed":** Sign out and sign back into Apple ID
 
@@ -563,16 +604,19 @@ Get-FileHash qmoi-ai.exe -Algorithm SHA256
 ## 📄 Release History
 
 ### v1.2.3 (Latest Stable)
+
 - Released: 2025-11-12
 - Status: Stable, Production Ready
 - All platforms supported
 - All apps included
 
 ### v1.2.2 (Previous)
+
 - Released: 2025-10-31
 - Status: Stable
 
 ### v1.2.1
+
 - Released: 2025-10-15
 - Status: Stable
 
@@ -581,6 +625,6 @@ Get-FileHash qmoi-ai.exe -Algorithm SHA256
 **Last Updated:** 2025-11-12  
 **Total Apps:** 6  
 **Total Platforms:** 12+  
-**Download Methods:** 4  
+**Download Methods:** 4
 
 ✅ **All QMOI apps available on GitHub with download options for every platform and device.**

@@ -22,7 +22,7 @@ export function SisterProjects() {
     setSaved((prev) => [...prev, p]);
     // Optionally persist to backend or localStorage
     window.dispatchEvent(
-      new CustomEvent("sister-project-saved", { detail: p })
+      new CustomEvent("sister-project-saved", { detail: p }),
     );
   }
 

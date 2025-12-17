@@ -3,6 +3,7 @@
 ## Build Environment Status
 
 ### Current Container
+
 - **Node.js:** ✗ NOT AVAILABLE
 - **npm:** ✗ NOT AVAILABLE
 - **Python:** ✓ Available (used for local testing of dashboards)
@@ -10,21 +11,25 @@
 ## Build Steps (Run on machine with Node.js 18+)
 
 ### 1. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 2. TypeScript Type Check (Optional but Recommended)
+
 ```bash
 npx tsc --noEmit
 ```
 
 ### 3. Build Next.js Production Bundle
+
 ```bash
 npm run build
 ```
 
 **Expected output:**
+
 ```
 ✓ Compiled successfully
 ✓ Linting and type checking...
@@ -40,6 +45,7 @@ Route (kind)                    Size     First Load JS
 ```
 
 ### 4. Verify Build Artifacts
+
 ```bash
 # Check output directory exists
 ls -la .next/
@@ -51,6 +57,7 @@ ls -la .next/
 ```
 
 ### 5. Test Production Bundle (Optional)
+
 ```bash
 npm start
 # Then open: http://localhost:3000
@@ -82,20 +89,26 @@ npm run format
 ## Troubleshooting Build Issues
 
 ### Common Error 1: Missing TypeScript
+
 ```
 error: Cannot find module 'typescript'
 ```
+
 **Solution:**
+
 ```bash
 npm install --save-dev typescript
 npm run build
 ```
 
 ### Common Error 2: Module Not Found
+
 ```
 error: Module not found: 'src/config/api'
 ```
+
 **Solution:**
+
 ```bash
 # Verify file exists
 ls -la src/config/api.ts
@@ -105,10 +118,13 @@ cat tsconfig.json | grep -A 2 '"paths"'
 ```
 
 ### Common Error 3: Next.js Image Optimization
+
 ```
 error: Image optimization service unavailable
 ```
+
 **Solution:**
+
 ```bash
 # Use unoptimized images in dev/build
 export NEXT_SKIP_VALIDATION=1
@@ -118,17 +134,20 @@ npm run build
 ## Post-Build Validation
 
 ### 1. Check Component Compilation
+
 - All .tsx files in `components/` and `qmoi-enhanced/components/` should compile
 - API adapters (`src/adapters/clientAdapters.ts`) should resolve correctly
 - Config file (`src/config/api.ts`) should be accessible
 
 ### 2. Verify No Dead Imports
+
 ```bash
 # Run build with verbose mode
 npm run build -- --verbose 2>&1 | grep -i "error\|warning" | head -20
 ```
 
 ### 3. Check Bundle Size
+
 ```bash
 npm run build
 # Look for warnings about large chunks
@@ -137,6 +156,7 @@ npm run build
 ## Environment Variables for Build
 
 Create `.env.local` before building (see `.env.example`):
+
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:8000
 NEXT_PUBLIC_ENV=development
@@ -145,6 +165,7 @@ NEXT_PUBLIC_ENV=development
 ## CI/CD Integration
 
 ### GitHub Actions Example
+
 ```yaml
 name: Build & Test
 on: [push, pull_request]
@@ -156,7 +177,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
       - run: npm install
       - run: npm run build
       - run: npm run lint

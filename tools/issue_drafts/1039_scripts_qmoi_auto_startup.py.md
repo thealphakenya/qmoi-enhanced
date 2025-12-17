@@ -49,10 +49,10 @@ class QMOIAutoStartup:
         self.running = False
         self.processes = []
         self.status_file = 'logs/qmoi_startup_status.json'
-        
+
         # Ensure logs directory exists
         os.makedirs('logs', exist_ok=True)
-        
+
         # Initialize status
         self.update_status({
             'running': False,
@@ -60,7 +60,7 @@ class QMOIAutoStartup:
             'processes': [],
             'errors': []
         })
-    
+
     def update_status(self, status_updates: Dict[str, Any]):
         """Update startup status"""
         try:
@@ -68,15 +68,15 @@ class QMOIAutoStartup:
             if os.path.exists(self.status_file):
                 with open(self.status_file, 'r') as f:
                     current_status = json.load(f)
-            
+
             current_status.update(status_updates)
             current_status['last_updated'] = datetime.now().isoformat()
-            
+
             with open(self.status_file, 'w') as f:
                 json.dump(current_status, f, indent=2)
         except Exception as e:
             logging.error(f"Failed to update status: {e}")
-    
+
     def start_device_controller(self):
         """Start device controller"""
         try:

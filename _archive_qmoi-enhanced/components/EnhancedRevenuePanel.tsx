@@ -1,34 +1,34 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Separator } from '@/components/ui/separator';
-import { 
-  DollarSign, 
-  TrendingUp, 
-  Phone, 
-  CreditCard, 
-  Settings, 
-  Play, 
-  Pause, 
+import React, { useState, useEffect } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Separator } from "@/components/ui/separator";
+import {
+  DollarSign,
+  TrendingUp,
+  Phone,
+  CreditCard,
+  Settings,
+  Play,
+  Pause,
   RefreshCw,
   Shield,
   AlertTriangle,
   CheckCircle,
   Clock,
-  BarChart3
-} from 'lucide-react';
+  BarChart3,
+} from "lucide-react";
 
 interface RevenueData {
   mpesa: number;
@@ -65,19 +65,19 @@ interface Transaction {
 
 export default function EnhancedRevenuePanel() {
   const [isMaster, setIsMaster] = useState(false);
-  const [masterKey, setMasterKey] = useState('');
+  const [masterKey, setMasterKey] = useState("");
   const [revenueData, setRevenueData] = useState<RevenueData | null>(null);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [engineStatus, setEngineStatus] = useState('stopped');
+  const [engineStatus, setEngineStatus] = useState("stopped");
   const [loading, setLoading] = useState(false);
-  const [targetAmount, setTargetAmount] = useState('');
-  const [transferAmount, setTransferAmount] = useState('');
-  const [selectedType, setSelectedType] = useState('mpesa');
+  const [targetAmount, setTargetAmount] = useState("");
+  const [transferAmount, setTransferAmount] = useState("");
+  const [selectedType, setSelectedType] = useState("mpesa");
   const [autoTransferEnabled, setAutoTransferEnabled] = useState(true);
   const [notifications, setNotifications] = useState({
     whatsapp: true,
     email: true,
-    sms: true
+    sms: true,
   });
 
   useEffect(() => {
@@ -91,58 +91,58 @@ export default function EnhancedRevenuePanel() {
 
   const checkMasterStatus = async () => {
     try {
-      const response = await fetch('/api/qmoi/master/verify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ key: masterKey })
+      const response = await fetch("/api/qmoi/master/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: masterKey }),
       });
-      
+
       if (response.ok) {
         setIsMaster(true);
         loadRevenueData();
       }
     } catch (error) {
-      console.error('Master verification failed:', error);
+      console.error("Master verification failed:", error);
     }
   };
 
   const loadRevenueData = async () => {
     try {
-      const response = await fetch('/api/qmoi/revenue/status');
+      const response = await fetch("/api/qmoi/revenue/status");
       if (response.ok) {
         const data = await response.json();
         setRevenueData(data);
         setEngineStatus(data.status);
       }
 
-      const txResponse = await fetch('/api/qmoi/revenue/transactions');
+      const txResponse = await fetch("/api/qmoi/revenue/transactions");
       if (txResponse.ok) {
         const txData = await txResponse.json();
         setTransactions(txData);
       }
     } catch (error) {
-      console.error('Failed to load revenue data:', error);
+      console.error("Failed to load revenue data:", error);
     }
   };
 
   const handleMasterLogin = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/qmoi/master/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ key: masterKey })
+      const response = await fetch("/api/qmoi/master/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: masterKey }),
       });
 
       if (response.ok) {
         setIsMaster(true);
         await loadRevenueData();
       } else {
-        alert('Invalid master key');
+        alert("Invalid master key");
       }
     } catch (error) {
-      console.error('Master login failed:', error);
-      alert('Login failed');
+      console.error("Master login failed:", error);
+      alert("Login failed");
     } finally {
       setLoading(false);
     }
@@ -151,17 +151,17 @@ export default function EnhancedRevenuePanel() {
   const startEngine = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/qmoi/revenue/start', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+      const response = await fetch("/api/qmoi/revenue/start", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
       });
 
       if (response.ok) {
-        setEngineStatus('running');
+        setEngineStatus("running");
         await loadRevenueData();
       }
     } catch (error) {
-      console.error('Failed to start engine:', error);
+      console.error("Failed to start engine:", error);
     } finally {
       setLoading(false);
     }
@@ -170,17 +170,17 @@ export default function EnhancedRevenuePanel() {
   const stopEngine = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/qmoi/revenue/stop', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+      const response = await fetch("/api/qmoi/revenue/stop", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
       });
 
       if (response.ok) {
-        setEngineStatus('stopped');
+        setEngineStatus("stopped");
         await loadRevenueData();
       }
     } catch (error) {
-      console.error('Failed to stop engine:', error);
+      console.error("Failed to stop engine:", error);
     } finally {
       setLoading(false);
     }
@@ -191,21 +191,21 @@ export default function EnhancedRevenuePanel() {
 
     setLoading(true);
     try {
-      const response = await fetch('/api/qmoi/revenue/target', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/qmoi/revenue/target", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type: selectedType,
-          amount: parseInt(targetAmount)
-        })
+          amount: parseInt(targetAmount),
+        }),
       });
 
       if (response.ok) {
-        setTargetAmount('');
+        setTargetAmount("");
         await loadRevenueData();
       }
     } catch (error) {
-      console.error('Failed to set target:', error);
+      console.error("Failed to set target:", error);
     } finally {
       setLoading(false);
     }
@@ -216,41 +216,41 @@ export default function EnhancedRevenuePanel() {
 
     setLoading(true);
     try {
-      const response = await fetch('/api/qmoi/revenue/transfer', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/qmoi/revenue/transfer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type: selectedType,
-          amount: parseInt(transferAmount)
-        })
+          amount: parseInt(transferAmount),
+        }),
       });
 
       if (response.ok) {
-        setTransferAmount('');
+        setTransferAmount("");
         await loadRevenueData();
       }
     } catch (error) {
-      console.error('Failed to transfer:', error);
+      console.error("Failed to transfer:", error);
     } finally {
       setLoading(false);
     }
   };
 
   const resetDaily = async () => {
-    if (!confirm('Are you sure you want to reset daily earnings?')) return;
+    if (!confirm("Are you sure you want to reset daily earnings?")) return;
 
     setLoading(true);
     try {
-      const response = await fetch('/api/qmoi/revenue/reset', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+      const response = await fetch("/api/qmoi/revenue/reset", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
       });
 
       if (response.ok) {
         await loadRevenueData();
       }
     } catch (error) {
-      console.error('Failed to reset daily earnings:', error);
+      console.error("Failed to reset daily earnings:", error);
     } finally {
       setLoading(false);
     }
@@ -276,17 +276,22 @@ export default function EnhancedRevenuePanel() {
               onChange={(e) => setMasterKey(e.target.value)}
             />
           </div>
-          <Button 
-            onClick={handleMasterLogin} 
+          <Button
+            onClick={handleMasterLogin}
             disabled={loading || !masterKey}
             className="w-full"
           >
-            {loading ? <RefreshCw className="h-4 w-4 animate-spin" /> : 'Access Revenue Panel'}
+            {loading ? (
+              <RefreshCw className="h-4 w-4 animate-spin" />
+            ) : (
+              "Access Revenue Panel"
+            )}
           </Button>
           <Alert>
             <AlertTriangle className="h-4 w-4" />
             <AlertDescription>
-              This panel contains sensitive financial controls. Only authorized master users can access.
+              This panel contains sensitive financial controls. Only authorized
+              master users can access.
             </AlertDescription>
           </Alert>
         </CardContent>
@@ -313,10 +318,12 @@ export default function EnhancedRevenuePanel() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">QMOI Enhanced Revenue Panel</h1>
-          <p className="text-muted-foreground">Master-controlled revenue generation system</p>
+          <p className="text-muted-foreground">
+            Master-controlled revenue generation system
+          </p>
         </div>
-        <Badge variant={engineStatus === 'running' ? 'default' : 'secondary'}>
-          {engineStatus === 'running' ? (
+        <Badge variant={engineStatus === "running" ? "default" : "secondary"}>
+          {engineStatus === "running" ? (
             <Play className="h-3 w-3 mr-1" />
           ) : (
             <Pause className="h-3 w-3 mr-1" />
@@ -335,25 +342,25 @@ export default function EnhancedRevenuePanel() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex gap-4">
-            <Button 
-              onClick={startEngine} 
-              disabled={loading || engineStatus === 'running'}
+            <Button
+              onClick={startEngine}
+              disabled={loading || engineStatus === "running"}
               className="flex-1"
             >
               <Play className="h-4 w-4 mr-2" />
               Start Engine
             </Button>
-            <Button 
-              onClick={stopEngine} 
-              disabled={loading || engineStatus === 'stopped'}
+            <Button
+              onClick={stopEngine}
+              disabled={loading || engineStatus === "stopped"}
               variant="destructive"
               className="flex-1"
             >
               <Pause className="h-4 w-4 mr-2" />
               Stop Engine
             </Button>
-            <Button 
-              onClick={loadRevenueData} 
+            <Button
+              onClick={loadRevenueData}
               disabled={loading}
               variant="outline"
             >
@@ -367,16 +374,20 @@ export default function EnhancedRevenuePanel() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">M-Pesa Revenue</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              M-Pesa Revenue
+            </CardTitle>
             <Phone className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">KES {today.mpesa.toLocaleString()}</div>
+            <div className="text-2xl font-bold">
+              KES {today.mpesa.toLocaleString()}
+            </div>
             <p className="text-xs text-muted-foreground">
               Target: KES {targets.mpesa.toLocaleString()}
             </p>
-            <Progress 
-              value={(today.mpesa / targets.mpesa) * 100} 
+            <Progress
+              value={(today.mpesa / targets.mpesa) * 100}
               className="mt-2"
             />
           </CardContent>
@@ -384,16 +395,20 @@ export default function EnhancedRevenuePanel() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Airtel Money Revenue</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Airtel Money Revenue
+            </CardTitle>
             <CreditCard className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">KES {today.airtel.toLocaleString()}</div>
+            <div className="text-2xl font-bold">
+              KES {today.airtel.toLocaleString()}
+            </div>
             <p className="text-xs text-muted-foreground">
               Target: KES {targets.airtel.toLocaleString()}
             </p>
-            <Progress 
-              value={(today.airtel / targets.airtel) * 100} 
+            <Progress
+              value={(today.airtel / targets.airtel) * 100}
               className="mt-2"
             />
           </CardContent>
@@ -401,16 +416,20 @@ export default function EnhancedRevenuePanel() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Combined Revenue</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Combined Revenue
+            </CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">KES {today.combined.toLocaleString()}</div>
+            <div className="text-2xl font-bold">
+              KES {today.combined.toLocaleString()}
+            </div>
             <p className="text-xs text-muted-foreground">
               Target: KES {targets.combined.toLocaleString()}
             </p>
-            <Progress 
-              value={(today.combined / targets.combined) * 100} 
+            <Progress
+              value={(today.combined / targets.combined) * 100}
               className="mt-2"
             />
           </CardContent>
@@ -435,7 +454,7 @@ export default function EnhancedRevenuePanel() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Target Type</Label>
-                  <select 
+                  <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
                     className="w-full p-2 border rounded"
@@ -471,7 +490,7 @@ export default function EnhancedRevenuePanel() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Transfer Type</Label>
-                  <select 
+                  <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
                     className="w-full p-2 border rounded"
@@ -490,7 +509,10 @@ export default function EnhancedRevenuePanel() {
                   />
                 </div>
               </div>
-              <Button onClick={manualTransfer} disabled={loading || !transferAmount}>
+              <Button
+                onClick={manualTransfer}
+                disabled={loading || !transferAmount}
+              >
                 Transfer Now
               </Button>
             </CardContent>
@@ -510,11 +532,20 @@ export default function EnhancedRevenuePanel() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
-                  <p>M-Pesa Auto-Transfer: KES {revenueData.targets.autoTransfer.mpesa}</p>
-                  <p>Airtel Auto-Transfer: KES {revenueData.targets.autoTransfer.airtel}</p>
+                  <p>
+                    M-Pesa Auto-Transfer: KES{" "}
+                    {revenueData.targets.autoTransfer.mpesa}
+                  </p>
+                  <p>
+                    Airtel Auto-Transfer: KES{" "}
+                    {revenueData.targets.autoTransfer.airtel}
+                  </p>
                 </div>
                 <div>
-                  <p>Combined Auto-Transfer: KES {revenueData.targets.autoTransfer.combined}</p>
+                  <p>
+                    Combined Auto-Transfer: KES{" "}
+                    {revenueData.targets.autoTransfer.combined}
+                  </p>
                   <p>Frequency: Every hour</p>
                 </div>
               </div>
@@ -530,17 +561,32 @@ export default function EnhancedRevenuePanel() {
             <CardContent>
               <div className="space-y-2 max-h-96 overflow-y-auto">
                 {transactions.map((tx) => (
-                  <div key={tx.id} className="flex items-center justify-between p-2 border rounded">
+                  <div
+                    key={tx.id}
+                    className="flex items-center justify-between p-2 border rounded"
+                  >
                     <div>
-                      <p className="font-medium">{tx.type.replace('_', ' ').toUpperCase()}</p>
-                      {tx.stream && <p className="text-sm text-muted-foreground">{tx.stream}</p>}
+                      <p className="font-medium">
+                        {tx.type.replace("_", " ").toUpperCase()}
+                      </p>
+                      {tx.stream && (
+                        <p className="text-sm text-muted-foreground">
+                          {tx.stream}
+                        </p>
+                      )}
                       <p className="text-xs text-muted-foreground">
                         {new Date(tx.timestamp).toLocaleString()}
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="font-bold">KES {tx.amount.toLocaleString()}</p>
-                      <Badge variant={tx.status === 'completed' ? 'default' : 'secondary'}>
+                      <p className="font-bold">
+                        KES {tx.amount.toLocaleString()}
+                      </p>
+                      <Badge
+                        variant={
+                          tx.status === "completed" ? "default" : "secondary"
+                        }
+                      >
                         {tx.status}
                       </Badge>
                     </div>
@@ -564,8 +610,11 @@ export default function EnhancedRevenuePanel() {
                     <div key={key} className="flex items-center space-x-2">
                       <Switch
                         checked={enabled}
-                        onCheckedChange={(checked) => 
-                          setNotifications(prev => ({ ...prev, [key]: checked }))
+                        onCheckedChange={(checked) =>
+                          setNotifications((prev) => ({
+                            ...prev,
+                            [key]: checked,
+                          }))
                         }
                       />
                       <Label className="capitalize">{key}</Label>
@@ -577,10 +626,18 @@ export default function EnhancedRevenuePanel() {
               <div className="space-y-2">
                 <Label>System Actions</Label>
                 <div className="flex gap-2">
-                  <Button onClick={resetDaily} variant="outline" disabled={loading}>
+                  <Button
+                    onClick={resetDaily}
+                    variant="outline"
+                    disabled={loading}
+                  >
                     Reset Daily Earnings
                   </Button>
-                  <Button onClick={loadRevenueData} variant="outline" disabled={loading}>
+                  <Button
+                    onClick={loadRevenueData}
+                    variant="outline"
+                    disabled={loading}
+                  >
                     Refresh Data
                   </Button>
                 </div>
@@ -610,7 +667,9 @@ export default function EnhancedRevenuePanel() {
               <p className="text-2xl font-bold text-blue-600">
                 KES {revenueData.airtel.toLocaleString()}
               </p>
-              <p className="text-sm text-muted-foreground">Total Airtel Money</p>
+              <p className="text-sm text-muted-foreground">
+                Total Airtel Money
+              </p>
             </div>
             <div>
               <p className="text-2xl font-bold text-purple-600">
@@ -623,4 +682,4 @@ export default function EnhancedRevenuePanel() {
       </Card>
     </div>
   );
-} 
+}

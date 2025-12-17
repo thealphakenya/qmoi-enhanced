@@ -45,7 +45,7 @@ export function onNotificationReceived(callback) {
   messaging().onMessage(async remoteMessage => {
     callback(remoteMessage);
   });
-} 
+}
 ```
 
 Notes:

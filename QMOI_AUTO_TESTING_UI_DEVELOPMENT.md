@@ -13,6 +13,7 @@ Status: ✅ COMPLETE AUTO-TESTING & UI DEVELOPMENT FRAMEWORK
 UNIFIED AUTO-TESTING STRATEGY (All Platforms):
 
 Testing Pyramid:
+
 ```
                         E2E Tests (5%)
                      Integration Tests (15%)
@@ -24,84 +25,84 @@ LAYER 1: UNIT TESTS (80% of suite)
 ├─ Execution: On every commit
 ├─ Speed: < 30 seconds total
 ├─ Tools:
-│  ├─ Jest (JavaScript/TypeScript)
-│  ├─ Pytest (Python)
-│  ├─ XCTest (iOS)
-│  ├─ Espresso (Android)
-│  └─ JUnit (Desktop/Web)
+│ ├─ Jest (JavaScript/TypeScript)
+│ ├─ Pytest (Python)
+│ ├─ XCTest (iOS)
+│ ├─ Espresso (Android)
+│ └─ JUnit (Desktop/Web)
 ├─ Test Categories:
-│  ├─ Function logic tests
-│  ├─ Component unit tests
-│  ├─ Model/DAO tests
-│  ├─ Utility function tests
-│  ├─ Hook tests (React/Vue)
-│  └─ Service tests
+│ ├─ Function logic tests
+│ ├─ Component unit tests
+│ ├─ Model/DAO tests
+│ ├─ Utility function tests
+│ ├─ Hook tests (React/Vue)
+│ └─ Service tests
 ├─ Automation:
-│  ├─ Auto-generated for new files
-│  ├─ Auto-updated on code changes
-│  ├─ Coverage reports generated
-│  └─ Failures block commits
+│ ├─ Auto-generated for new files
+│ ├─ Auto-updated on code changes
+│ ├─ Coverage reports generated
+│ └─ Failures block commits
 └─ Success Criteria:
-   ├─ All tests passing (100%)
-   ├─ Coverage ≥ 90%
-   ├─ No flaky tests
-   └─ < 30 seconds execution
+├─ All tests passing (100%)
+├─ Coverage ≥ 90%
+├─ No flaky tests
+└─ < 30 seconds execution
 
 LAYER 2: INTEGRATION TESTS (15% of suite)
 ├─ Coverage Target: 85%+ critical paths
 ├─ Execution: On PR, before release
 ├─ Speed: < 5 minutes per platform
 ├─ Test Types:
-│  ├─ API integration tests
-│  ├─ Database integration tests
-│  ├─ Cross-service tests
-│  ├─ Webhook trigger tests
-│  ├─ Payment flow tests
-│  └─ Authentication flow tests
+│ ├─ API integration tests
+│ ├─ Database integration tests
+│ ├─ Cross-service tests
+│ ├─ Webhook trigger tests
+│ ├─ Payment flow tests
+│ └─ Authentication flow tests
 ├─ Platforms Tested:
-│  ├─ QI Chat integration
-│  ├─ QCity Community integration
-│  ├─ Mobile sync integration
-│  ├─ Web API integration
-│  ├─ Desktop app integration
-│  ├─ SmartTV integration
-│  └─ Bot ecosystem integration
+│ ├─ QI Chat integration
+│ ├─ QCity Community integration
+│ ├─ Mobile sync integration
+│ ├─ Web API integration
+│ ├─ Desktop app integration
+│ ├─ SmartTV integration
+│ └─ Bot ecosystem integration
 ├─ Tools:
-│  ├─ Supertest (API testing)
-│  ├─ Testcontainers (DB testing)
-│  ├─ Postman/Newman (REST API)
-│  ├─ Puppeteer (Browser automation)
-│  └─ Appium (Mobile automation)
+│ ├─ Supertest (API testing)
+│ ├─ Testcontainers (DB testing)
+│ ├─ Postman/Newman (REST API)
+│ ├─ Puppeteer (Browser automation)
+│ └─ Appium (Mobile automation)
 └─ Success Criteria:
-   ├─ All critical paths tested
-   ├─ Coverage ≥ 85%
-   ├─ < 5 minutes execution
-   └─ No data loss
+├─ All critical paths tested
+├─ Coverage ≥ 85%
+├─ < 5 minutes execution
+└─ No data loss
 
 LAYER 3: END-TO-END TESTS (5% of suite)
 ├─ Coverage Target: 80%+ user workflows
 ├─ Execution: Nightly, on release
 ├─ Speed: < 30 minutes per scenario
 ├─ Test Scenarios:
-│  ├─ User login → chat → send message
-│  ├─ User signup → create community → invite members
-│  ├─ Mobile user register → sync → receive notification
-│  ├─ Desktop app launch → offline mode → sync online
-│  ├─ Web user payment flow → wallet update
-│  ├─ Bot command execution → webhook trigger
-│  └─ Complete multi-platform workflow
+│ ├─ User login → chat → send message
+│ ├─ User signup → create community → invite members
+│ ├─ Mobile user register → sync → receive notification
+│ ├─ Desktop app launch → offline mode → sync online
+│ ├─ Web user payment flow → wallet update
+│ ├─ Bot command execution → webhook trigger
+│ └─ Complete multi-platform workflow
 ├─ Tools:
-│  ├─ Selenium (Web browser)
-│  ├─ Cypress (Web modern)
-│  ├─ Playwright (Cross-browser)
-│  ├─ XCUITest (iOS)
-│  ├─ Espresso (Android)
-│  └─ Custom orchestration
+│ ├─ Selenium (Web browser)
+│ ├─ Cypress (Web modern)
+│ ├─ Playwright (Cross-browser)
+│ ├─ XCUITest (iOS)
+│ ├─ Espresso (Android)
+│ └─ Custom orchestration
 └─ Success Criteria:
-   ├─ All workflows complete successfully
-   ├─ No UI errors/crashes
-   ├─ Performance within SLA
-   └─ Data consistency verified
+├─ All workflows complete successfully
+├─ No UI errors/crashes
+├─ Performance within SLA
+└─ Data consistency verified
 
 ADDITIONAL TEST TYPES:
 
@@ -191,199 +192,199 @@ UI FEATURE TESTING STRATEGY:
 
 QI CHAT PLATFORM UI:
 ├─ Chat component tests
-│  ├─ Message input validation
-│  ├─ Send button functionality
-│  ├─ Message display rendering
-│  ├─ Emoji support testing
-│  ├─ File upload validation
-│  ├─ Typing indicator display
-│  ├─ Timestamp formatting
-│  └─ Read receipts display
+│ ├─ Message input validation
+│ ├─ Send button functionality
+│ ├─ Message display rendering
+│ ├─ Emoji support testing
+│ ├─ File upload validation
+│ ├─ Typing indicator display
+│ ├─ Timestamp formatting
+│ └─ Read receipts display
 ├─ Conversation list tests
-│  ├─ Sorting functionality
-│  ├─ Search filtering
-│  ├─ Last message display
-│  ├─ Unread count badge
-│  ├─ Active status indicator
-│  └─ Infinite scroll
+│ ├─ Sorting functionality
+│ ├─ Search filtering
+│ ├─ Last message display
+│ ├─ Unread count badge
+│ ├─ Active status indicator
+│ └─ Infinite scroll
 ├─ User profile tests
-│  ├─ Profile display
-│  ├─ Edit functionality
-│  ├─ Avatar upload
-│  ├─ Status update
-│  └─ Blocking functionality
+│ ├─ Profile display
+│ ├─ Edit functionality
+│ ├─ Avatar upload
+│ ├─ Status update
+│ └─ Blocking functionality
 └─ AI Response tests
-   ├─ Response generation
-   ├─ Formatting correctness
-   ├─ Link parsing
-   └─ Suggestion display
+├─ Response generation
+├─ Formatting correctness
+├─ Link parsing
+└─ Suggestion display
 
 QCITY COMMUNITY PLATFORM UI:
 ├─ Community header tests
-│  ├─ Display community name
-│  ├─ Member count display
-│  ├─ Join/Leave button
-│  ├─ Settings access
-│  └─ Member list access
+│ ├─ Display community name
+│ ├─ Member count display
+│ ├─ Join/Leave button
+│ ├─ Settings access
+│ └─ Member list access
 ├─ Feed tests
-│  ├─ Post display
-│  ├─ Like functionality
-│  ├─ Comment threads
-│  ├─ Share functionality
-│  ├─ Infinite scroll
-│  └─ Sorting options
+│ ├─ Post display
+│ ├─ Like functionality
+│ ├─ Comment threads
+│ ├─ Share functionality
+│ ├─ Infinite scroll
+│ └─ Sorting options
 ├─ Member management tests
-│  ├─ Add member form
-│  ├─ Permission assignment
-│  ├─ Role display
-│  ├─ Remove member
-│  └─ Ban functionality
+│ ├─ Add member form
+│ ├─ Permission assignment
+│ ├─ Role display
+│ ├─ Remove member
+│ └─ Ban functionality
 └─ Community settings tests
-   ├─ Name/description edit
-   ├─ Privacy settings
-   ├─ Notification settings
-   └─ Rules display
+├─ Name/description edit
+├─ Privacy settings
+├─ Notification settings
+└─ Rules display
 
 MOBILE APP UI (iOS & Android):
 ├─ Navigation tests
-│  ├─ Tab bar functionality
-│  ├─ Navigation drawer
-│  ├─ Deep linking
-│  ├─ Gesture navigation
-│  └─ Back button handling
+│ ├─ Tab bar functionality
+│ ├─ Navigation drawer
+│ ├─ Deep linking
+│ ├─ Gesture navigation
+│ └─ Back button handling
 ├─ List/Grid tests
-│  ├─ Item rendering
-│  ├─ Pull-to-refresh
-│  ├─ Pagination
-│  ├─ Swipe actions
-│  └─ Long-press menus
+│ ├─ Item rendering
+│ ├─ Pull-to-refresh
+│ ├─ Pagination
+│ ├─ Swipe actions
+│ └─ Long-press menus
 ├─ Form tests
-│  ├─ Input field validation
-│  ├─ Keyboard appearance
-│  ├─ Submission handling
-│  ├─ Error display
-│  └─ Success feedback
+│ ├─ Input field validation
+│ ├─ Keyboard appearance
+│ ├─ Submission handling
+│ ├─ Error display
+│ └─ Success feedback
 ├─ Media tests
-│  ├─ Image loading
-│  ├─ Video playback
-│  ├─ Image gallery
-│  ├─ Camera access
-│  └─ File picker
+│ ├─ Image loading
+│ ├─ Video playback
+│ ├─ Image gallery
+│ ├─ Camera access
+│ └─ File picker
 ├─ Notification tests
-│  ├─ Push notification display
-│  ├─ Badge count
-│  ├─ Action buttons
-│  └─ Deep linking from notification
+│ ├─ Push notification display
+│ ├─ Badge count
+│ ├─ Action buttons
+│ └─ Deep linking from notification
 └─ Performance tests
-   ├─ App startup time
-   ├─ Memory usage
-   ├─ Battery impact
-   └─ Scroll smoothness
+├─ App startup time
+├─ Memory usage
+├─ Battery impact
+└─ Scroll smoothness
 
 WEB PLATFORM UI (PWA):
 ├─ Responsive tests
-│  ├─ Mobile viewport (320px)
-│  ├─ Tablet viewport (768px)
-│  ├─ Desktop viewport (1920px)
-│  ├─ Layout adaptation
-│  └─ Touch vs mouse
+│ ├─ Mobile viewport (320px)
+│ ├─ Tablet viewport (768px)
+│ ├─ Desktop viewport (1920px)
+│ ├─ Layout adaptation
+│ └─ Touch vs mouse
 ├─ Theme tests
-│  ├─ Light mode
-│  ├─ Dark mode
-│  ├─ High contrast
-│  ├─ Custom themes
-│  └─ Theme persistence
+│ ├─ Light mode
+│ ├─ Dark mode
+│ ├─ High contrast
+│ ├─ Custom themes
+│ └─ Theme persistence
 ├─ Progressive enhancement tests
-│  ├─ Offline functionality
-│  ├─ Service worker caching
-│  ├─ Slow network behavior
-│  ├─ Connection loss handling
-│  └─ Reconnection logic
+│ ├─ Offline functionality
+│ ├─ Service worker caching
+│ ├─ Slow network behavior
+│ ├─ Connection loss handling
+│ └─ Reconnection logic
 ├─ Browser feature tests
-│  ├─ LocalStorage
-│  ├─ IndexedDB
-│  ├─ Geolocation
-│  ├─ Camera/Microphone
-│  └─ Clipboard
+│ ├─ LocalStorage
+│ ├─ IndexedDB
+│ ├─ Geolocation
+│ ├─ Camera/Microphone
+│ └─ Clipboard
 └─ Accessibility tests
-   ├─ Keyboard navigation
-   ├─ Screen reader support
-   ├─ Focus management
-   ├─ Color contrast
-   └─ ARIA attributes
+├─ Keyboard navigation
+├─ Screen reader support
+├─ Focus management
+├─ Color contrast
+└─ ARIA attributes
 
 DESKTOP APP UI (Electron):
 ├─ Window tests
-│  ├─ Window creation
-│  ├─ Window resizing
-│  ├─ Window positioning
-│  ├─ Minimize/maximize/close
-│  └─ Always on top
+│ ├─ Window creation
+│ ├─ Window resizing
+│ ├─ Window positioning
+│ ├─ Minimize/maximize/close
+│ └─ Always on top
 ├─ Menu tests
-│  ├─ Application menu
-│  ├─ Context menu
-│  ├─ Keyboard shortcuts
-│  ├─ Accelerator keys
-│  └─ Disable/enable states
+│ ├─ Application menu
+│ ├─ Context menu
+│ ├─ Keyboard shortcuts
+│ ├─ Accelerator keys
+│ └─ Disable/enable states
 ├─ Dialog tests
-│  ├─ Open/save file dialogs
-│  ├─ Confirmation dialogs
-│  ├─ Error dialogs
-│  └─ Custom dialogs
+│ ├─ Open/save file dialogs
+│ ├─ Confirmation dialogs
+│ ├─ Error dialogs
+│ └─ Custom dialogs
 ├─ System integration tests
-│  ├─ System tray icon
-│  ├─ Dock integration (macOS)
-│  ├─ Taskbar integration (Windows)
-│  └─ Update notification
+│ ├─ System tray icon
+│ ├─ Dock integration (macOS)
+│ ├─ Taskbar integration (Windows)
+│ └─ Update notification
 └─ Offline functionality tests
-   ├─ Local database access
-   ├─ Sync queue management
-   ├─ Conflict resolution UI
-   └─ Sync status display
+├─ Local database access
+├─ Sync queue management
+├─ Conflict resolution UI
+└─ Sync status display
 
 SMARTTV UI:
 ├─ Remote control tests
-│  ├─ D-pad navigation
-│  ├─ Button press handling
-│  ├─ Voice command
-│  ├─ Focus ring display
-│  └─ Selection feedback
+│ ├─ D-pad navigation
+│ ├─ Button press handling
+│ ├─ Voice command
+│ ├─ Focus ring display
+│ └─ Selection feedback
 ├─ Layout tests
-│  ├─ Safe area rendering
-│  ├─ Large text readability
-│  ├─ Color contrast (TV)
-│  ├─ 1080p rendering
-│  └─ 4K rendering
+│ ├─ Safe area rendering
+│ ├─ Large text readability
+│ ├─ Color contrast (TV)
+│ ├─ 1080p rendering
+│ └─ 4K rendering
 ├─ Media playback tests
-│  ├─ Video playback
-│  ├─ Resolution adaptation
-│  ├─ Subtitle support
-│  ├─ Streaming quality
-│  └─ Pause/resume functionality
+│ ├─ Video playback
+│ ├─ Resolution adaptation
+│ ├─ Subtitle support
+│ ├─ Streaming quality
+│ └─ Pause/resume functionality
 └─ Power management tests
-   ├─ Screensaver triggering
-   ├─ Power saving mode
-   ├─ Wake on input
-   └─ Standby handling
+├─ Screensaver triggering
+├─ Power saving mode
+├─ Wake on input
+└─ Standby handling
 
 BOT UI (WhatsApp, Discord, Telegram):
 ├─ Message formatting tests
-│  ├─ Text rendering
-│  ├─ Button display
-│  ├─ Inline keyboard
-│  ├─ Card layout
-│  └─ Media display
+│ ├─ Text rendering
+│ ├─ Button display
+│ ├─ Inline keyboard
+│ ├─ Card layout
+│ └─ Media display
 ├─ Command tests
-│  ├─ Command parsing
-│  ├─ Argument validation
-│  ├─ Help text display
-│  ├─ Command suggestions
-│  └─ Error messages
+│ ├─ Command parsing
+│ ├─ Argument validation
+│ ├─ Help text display
+│ ├─ Command suggestions
+│ └─ Error messages
 └─ Interactive tests
-   ├─ Button callback
-   ├─ Inline query response
-   ├─ File handling
-   └─ User mention handling
+├─ Button callback
+├─ Inline query response
+├─ File handling
+└─ User mention handling
 
 ==== PART 3: AUTOMATED UI UPDATES ====
 
@@ -469,6 +470,7 @@ Animation Updates:
 SYNCHRONIZED TESTING ACROSS PLATFORMS:
 
 Automated Test Matrix:
+
 ```
 Platform      | Unit (30s) | Integration (5m) | E2E (15m) | Full Suite (1h)
 QI Chat       | ✓ Pass     | ✓ Pass           | ✓ Pass    | ✓ Pass

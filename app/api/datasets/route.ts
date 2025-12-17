@@ -72,7 +72,7 @@ export async function GET() {
     console.error("Error in datasets endpoint:", error);
     return NextResponse.json(
       { error: "Failed to fetch datasets" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
     if (!name || !type) {
       return NextResponse.json(
         { error: "Name and type are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -125,7 +125,7 @@ export async function POST(request: Request) {
     console.error("Error in dataset creation endpoint:", error);
     return NextResponse.json(
       { error: "Failed to create dataset" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

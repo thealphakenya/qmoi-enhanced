@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   // Authenticate user and check permissions
   // Log action for audit
@@ -16,18 +16,14 @@ export default async function handler(
       switch (action) {
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
-          return res
-            .status(501)
-            .json({
-              error: "Not implemented - production integration required",
-            });
+          return res.status(501).json({
+            error: "Not implemented - production integration required",
+          });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
-          return res
-            .status(501)
-            .json({
-              error: "Not implemented - production integration required",
-            });
+          return res.status(501).json({
+            error: "Not implemented - production integration required",
+          });
         default:
           return res.status(400).json({ error: "Unknown action" });
       }

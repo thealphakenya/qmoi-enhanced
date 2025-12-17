@@ -1,5 +1,5 @@
 name: CI
-'on':
+"on":
   push:
     branches:
       - main
@@ -34,5 +34,5 @@ permissions:
   pull-requests: read
   issues: read
 env:
-  NODE_VERSION: '18'
-  QMOI_AUTODEV_ENABLED: 'true'
+  NODE_VERSION: "18"
+  QMOI_AUTODEV_ENABLED: "true"

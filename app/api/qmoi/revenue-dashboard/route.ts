@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     if (!apiAuth.ok && !authenticateMaster(request)) {
       return NextResponse.json(
         { error: "Master access required" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
       process.cwd(),
       "dashboard",
       "data",
-      "current-dashboard.json"
+      "current-dashboard.json",
     );
 
     try {
@@ -141,7 +141,7 @@ export async function GET(request: NextRequest) {
           ],
           history: Array.from({ length: 24 }, (_, i) => ({
             timestamp: new Date(
-              Date.now() - (23 - i) * 60 * 60 * 1000
+              Date.now() - (23 - i) * 60 * 60 * 1000,
             ).toISOString(),
             revenue: 100000 + Math.random() * 50000,
             target: 100000,
@@ -393,19 +393,19 @@ export async function GET(request: NextRequest) {
             youtube: {
               revenue: Array.from({ length: 24 }, (_, i) => ({
                 timestamp: new Date(
-                  Date.now() - (23 - i) * 60 * 60 * 1000
+                  Date.now() - (23 - i) * 60 * 60 * 1000,
                 ).toISOString(),
                 value: 15000 + Math.random() * 5000,
               })),
               accounts: Array.from({ length: 24 }, (_, i) => ({
                 timestamp: new Date(
-                  Date.now() - (23 - i) * 60 * 60 * 1000
+                  Date.now() - (23 - i) * 60 * 60 * 1000,
                 ).toISOString(),
                 value: 3,
               })),
               engagement: Array.from({ length: 24 }, (_, i) => ({
                 timestamp: new Date(
-                  Date.now() - (23 - i) * 60 * 60 * 1000
+                  Date.now() - (23 - i) * 60 * 60 * 1000,
                 ).toISOString(),
                 value: 85 + Math.random() * 15,
               })),
@@ -420,7 +420,7 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching dashboard data:", error);
     return NextResponse.json(
       { error: "Failed to fetch dashboard data" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -433,7 +433,7 @@ export async function POST(request: NextRequest) {
     if (!apiAuth.ok && !authenticateMaster(request)) {
       return NextResponse.json(
         { error: "Master access required" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -573,7 +573,7 @@ export async function POST(request: NextRequest) {
         process.cwd(),
         "dashboard",
         "exports",
-        `dashboard-export-${Date.now()}.json`
+        `dashboard-export-${Date.now()}.json`,
       );
       await fs.writeFile(exportPath, JSON.stringify(exportData, null, 2));
 
@@ -582,7 +582,7 @@ export async function POST(request: NextRequest) {
       response.headers.set("Content-Type", "application/json");
       response.headers.set(
         "Content-Disposition",
-        `attachment; filename="qmoi-revenue-dashboard-${new Date().toISOString()}.json"`
+        `attachment; filename="qmoi-revenue-dashboard-${new Date().toISOString()}.json"`,
       );
 
       return response;
@@ -593,7 +593,7 @@ export async function POST(request: NextRequest) {
     console.error("Error exporting dashboard data:", error);
     return NextResponse.json(
       { error: "Failed to export dashboard data" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

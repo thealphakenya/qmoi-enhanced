@@ -34,42 +34,47 @@
 
 ## All Available Downloads
 
-| App | Platform | Version | Download | Status |
-|-----|----------|---------|----------|--------|
-| QMOI AI | windows | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QMOI AI | mac | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QMOI AI | linux-deb | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QMOI AI | linux-appimage | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QMOI AI | android | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QMOI AI | ios | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QMOI AI | smarttv | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QMOI AI | raspberrypi | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QMOI AI | chromebook | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QCity | windows | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QCity | mac | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QCity | linux | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QCity | android | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QCity | ios | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QShare | universal | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| Yap | universal | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QStore | universal | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
-| QVillage | universal | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅ |
+| App      | Platform       | Version | Download                                                            | Status |
+| -------- | -------------- | ------- | ------------------------------------------------------------------- | ------ |
+| QMOI AI  | windows        | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QMOI AI  | mac            | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QMOI AI  | linux-deb      | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QMOI AI  | linux-appimage | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QMOI AI  | android        | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QMOI AI  | ios            | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QMOI AI  | smarttv        | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QMOI AI  | raspberrypi    | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QMOI AI  | chromebook     | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QCity    | windows        | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QCity    | mac            | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QCity    | linux          | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QCity    | android        | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QCity    | ios            | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QShare   | universal      | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| Yap      | universal      | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QStore   | universal      | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
+| QVillage | universal      | v1.2.3  | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases) | ✅     |
 
 ## Installation Guide
 
 ### Windows
+
 `Download .exe → Double-click → Follow installer`
 
 ### macOS
+
 `Download .dmg → Open → Drag to Applications`
 
 ### Linux DEB
+
 `sudo dpkg -i app.deb`
 
 ### Android
+
 `Download .apk → Enable Unknown Sources → Install`
 
 ### iOS
+
 `Download from App Store or via device management`
 
 ## Release Information
@@ -82,6 +87,7 @@
 ## GitHub Releases
 
 All QMOI apps are published on GitHub Releases with full support for:
+
 - Windows (.exe)
 - macOS (.dmg)
 - Linux (.deb, .AppImage)
@@ -94,6 +100,7 @@ All QMOI apps are published on GitHub Releases with full support for:
 ## Direct Download Links
 
 ### QMOI AI
+
 - Windows: https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
 - macOS: https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
 - Linux: https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
@@ -101,12 +108,14 @@ All QMOI apps are published on GitHub Releases with full support for:
 - iOS: App Store
 
 ### QCity
+
 - Windows: https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
 - macOS: https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
 - Linux: https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
 - Android: https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
 
 ### Web & PWA Apps
+
 - QCity: https://qcity.qmoi.app
 - QVillage: https://qvillage.qmoi.app
 - QShare: https://qshare.qmoi.app
@@ -114,4 +123,5 @@ All QMOI apps are published on GitHub Releases with full support for:
 - QStore: https://qstore.qmoi.app
 
 ---
+
 **All releases are available on GitHub with download options for every platform.**

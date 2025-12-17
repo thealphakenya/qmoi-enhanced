@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Button from '@mui/material/Button';
-import Input from '@mui/material/Input';
+import Button from "@mui/material/Button";
+import Input from "@mui/material/Input";
 
 const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   const [channels, setChannels] = useState<any[]>([]);

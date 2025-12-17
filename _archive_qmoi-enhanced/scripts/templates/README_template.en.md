@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -36,7 +37,7 @@ Use the following tools to automate and build your apps:
 
 ## 📁 File Structure
 
-```text
+````text
 Qmoi_apps/
 ├── windows/qmoi_ai.exe
 ├── android/qmoi_ai.apk
@@ -52,7 +53,7 @@ Qmoi_apps/
 
 🛠 Autotest Build Matrix (Updated {{timestamp}})
 Platform	Build Status	Test Result
-{{build_matrix}}		
+{{build_matrix}}
 
 🧬 Troubleshooting
 Run this to rebuild and sync everything:
@@ -83,7 +84,7 @@ Edit
 
 # Système QMOI
 
-Bienvenue dans le système **Quantum Master Orchestrator Intelligence (QMOI)** — une solution unifiée pour l'automatisation, le déploiement et les mises à jour de **QMOI AI** et toutes les applications **QCity** sur :  
+Bienvenue dans le système **Quantum Master Orchestrator Intelligence (QMOI)** — une solution unifiée pour l'automatisation, le déploiement et les mises à jour de **QMOI AI** et toutes les applications **QCity** sur :
 **{{platforms}}**
 
 ---
@@ -119,7 +120,7 @@ Qmoi_apps/
 
 🛠 État des Builds (Mis à jour : {{timestamp}})
 Plateforme	État de Compilation	Résultat Test
-{{build_matrix}}		
+{{build_matrix}}
 
 🧬 Dépannage
 En cas de problème, exécutez simplement :
@@ -150,7 +151,7 @@ Edit
 
 # Mfumo wa QMOI
 
-Karibu kwenye **Mfumo wa Quantum Master Orchestrator Intelligence (QMOI)** — mfumo wa kiotomatiki wa kujenga, kusambaza, na kusasisha programu za **QMOI AI** na **QCity** kwenye:  
+Karibu kwenye **Mfumo wa Quantum Master Orchestrator Intelligence (QMOI)** — mfumo wa kiotomatiki wa kujenga, kusambaza, na kusasisha programu za **QMOI AI** na **QCity** kwenye:
 **{{platforms}}**
 
 ---
@@ -186,7 +187,7 @@ Qmoi_apps/
 
 🛠 Hali ya Ujenzi (Imesasishwa {{timestamp}})
 Kifaa	Hali ya Build	Matokeo ya Jaribio
-{{build_matrix}}		
+{{build_matrix}}
 
 🧬 Suluhisho la Matatizo
 Endesha tu:
@@ -214,7 +215,7 @@ Edit
 
 Your templates are now:
 
-- Auto-detected via:  
+- Auto-detected via:
   ```python
   lang = os.getenv("QMOI_LANG", "en")
   TEMPLATE_PATH = f"scripts/templates/README_template.{lang}.md"
@@ -245,3 +246,4 @@ Dynamically injected and committed on every build.
   }
 }
 <!-- QMOI_VALIDATION_END -->
+````

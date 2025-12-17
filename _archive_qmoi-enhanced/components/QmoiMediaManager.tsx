@@ -104,8 +104,9 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
 
       // In real implementation, this would be an API call
       // Using URLSearchParams with proper type checking
-      const searchParams = new (globalThis.URLSearchParams ||
-        URLSearchParams)();
+      const searchParams = new (
+        globalThis.URLSearchParams || URLSearchParams
+      )();
       searchParams.append("q", query);
       searchParams.append("type", selectedType);
 
@@ -114,8 +115,8 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
         (item) =>
           item.name.toLowerCase().includes(query.toLowerCase()) ||
           item.tags.some((tag) =>
-            tag.toLowerCase().includes(query.toLowerCase())
-          )
+            tag.toLowerCase().includes(query.toLowerCase()),
+          ),
       );
 
       setMediaItems(filtered);
@@ -186,7 +187,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
     const matchesSearch =
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase())
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     const matchesType = selectedType === "all" || item.type === selectedType;
     const matchesTag = !tagFilter || item.tags.includes(tagFilter);
@@ -336,7 +337,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
                 >
                   {tag}
                 </Badge>
-              )
+              ),
             )}
             {tagFilter && (
               <Button size="sm" onClick={() => setTagFilter("")}>

@@ -6,6 +6,7 @@ qmoi_validation_frontmatter: true
 # QMOIDOWNLOADS
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -23,6 +24,7 @@ Please use the GitHub Releases page for production-ready binaries and assets:
 Many legacy links to `downloads.qmoi.app` in this file are known to be broken or placeholders. The repository audit has flagged these; see `tools/releases_audit.md` for details. If you are maintaining release artifacts, please rebuild and attach proper binaries to the matching GitHub release, include checksums, icons, and autoupdate metadata.
 
 <!-- Legacy download check logs follow for historical reference -->
+
 D:\applications\Alpha-Q-ai>python downloadqmoiai.py
 Checking all download links for reachability...
 BROKEN: Qbrowser (skv) [win] => https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe (error: HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002E5D81F38C0>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)")))
@@ -87,26 +89,28 @@ BROKEN: QAutoDev (skv) [linux] => https://github.com/thealphakenya/qmoi-enhanced
 [2025-07-22T02:28:05.604988] Broken download link | {"app": "QAutoDev (skv)", "platform": "linux", "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage", "error": "HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qautodev/linux.appimage (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000002E5D83156D0>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)\"))"}
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOIDOWNLOADS.md",
-  "validated_at": "2025-10-26T20:51:22.499991Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": false,
-      "detail": "No H1 title found"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": false,
-  "summary": {
-    "total_checks": 2,
-    "passed": false
-  }
+"file": "QMOIDOWNLOADS.md",
+"validated_at": "2025-10-26T20:51:22.499991Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": false,
+"detail": "No H1 title found"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": false,
+"summary": {
+"total_checks": 2,
+"passed": false
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

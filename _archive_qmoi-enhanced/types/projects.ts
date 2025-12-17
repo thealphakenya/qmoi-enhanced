@@ -2,8 +2,8 @@ export interface Project {
   id: string;
   name: string;
   description: string;
-  status: 'planning' | 'in-progress' | 'completed' | 'on-hold' | 'cancelled';
-  priority: 'low' | 'medium' | 'high' | 'critical';
+  status: "planning" | "in-progress" | "completed" | "on-hold" | "cancelled";
+  priority: "low" | "medium" | "high" | "critical";
   startDate: number;
   endDate: number;
   owner: string;
@@ -21,8 +21,8 @@ export interface Task {
   projectId: string;
   title: string;
   description: string;
-  status: 'todo' | 'in-progress' | 'review' | 'completed';
-  priority: 'low' | 'medium' | 'high' | 'critical';
+  status: "todo" | "in-progress" | "review" | "completed";
+  priority: "low" | "medium" | "high" | "critical";
   assignee: string;
   dueDate: number;
   estimatedHours: number;
@@ -36,8 +36,8 @@ export interface Resource {
   id: string;
   projectId: string;
   name: string;
-  type: 'human' | 'equipment' | 'software' | 'other';
-  status: 'available' | 'allocated' | 'maintenance';
+  type: "human" | "equipment" | "software" | "other";
+  status: "available" | "allocated" | "maintenance";
   cost: number;
   allocation: number;
   startDate: number;
@@ -46,7 +46,7 @@ export interface Resource {
 
 export interface ProjectConfig {
   enabled: boolean;
-  defaultPriority: 'low' | 'medium' | 'high' | 'critical';
+  defaultPriority: "low" | "medium" | "high" | "critical";
   autoAssign: boolean;
   notificationSettings: {
     onTaskAssigned: boolean;
@@ -57,4 +57,4 @@ export interface ProjectConfig {
   defaultTags: string[];
   maxTeamSize: number;
   maxConcurrentProjects: number;
-} 
+}

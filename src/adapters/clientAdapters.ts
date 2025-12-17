@@ -64,7 +64,7 @@ function getFromCache<T>(key: string): T | null {
 function setCache<T>(
   key: string,
   data: T,
-  endpoint: keyof typeof CACHE_TTL
+  endpoint: keyof typeof CACHE_TTL,
 ): void {
   cache.set(key, {
     data,
@@ -76,7 +76,7 @@ function setCache<T>(
 async function withRetry<T>(
   fn: () => Promise<T>,
   endpoint: string,
-  maxRetries = MAX_RETRIES
+  maxRetries = MAX_RETRIES,
 ): Promise<T> {
   let lastError: any;
   for (let i = 0; i <= maxRetries; i++) {
@@ -87,7 +87,7 @@ async function withRetry<T>(
       if (i < maxRetries) {
         const delay = RETRY_DELAY * Math.pow(2, i); // exponential backoff
         console.warn(
-          `[Retry ${i + 1}/${maxRetries}] ${endpoint} in ${delay}ms`
+          `[Retry ${i + 1}/${maxRetries}] ${endpoint} in ${delay}ms`,
         );
         await new Promise((resolve) => setTimeout(resolve, delay));
       }
@@ -98,7 +98,7 @@ async function withRetry<T>(
 
 async function deduplicateRequest<T>(
   key: string,
-  fn: () => Promise<T>
+  fn: () => Promise<T>,
 ): Promise<T> {
   if (requestQueue.pending.has(key)) {
     console.debug(`[Dedup] Reusing pending request: ${key}`);
@@ -143,7 +143,7 @@ export async function fetchMedia(forceRefresh = false): Promise<any[]> {
 
 export async function verifyProduct(
   query: string,
-  forceRefresh = false
+  forceRefresh = false,
 ): Promise<string> {
   const cacheKey = getCacheKey("verify", { query });
 
@@ -156,7 +156,7 @@ export async function verifyProduct(
     return withRetry(async () => {
       const res = await fetch(
         `${getEndpoint("verify")}?q=${encodeURIComponent(query)}`,
-        { signal: AbortSignal.timeout(30000) }
+        { signal: AbortSignal.timeout(30000) },
       );
       if (!res.ok) throw new Error(`verify failed: ${res.status}`);
       const data = await res.json();
@@ -187,7 +187,7 @@ export async function sendMail(payload: {
       return true;
     },
     "sendMail",
-    2
+    2,
   ) // 2 retries for mail
     .catch((err) => {
       console.warn("sendMail error", err);
@@ -207,7 +207,7 @@ export async function uploadFile(formData: FormData): Promise<any> {
       return await res.json();
     },
     "uploadFile",
-    2
+    2,
   ).catch((err) => {
     console.warn("uploadFile error", err);
     return { success: false, error: String(err) };
@@ -216,7 +216,7 @@ export async function uploadFile(formData: FormData): Promise<any> {
 
 export async function emergencyAction(
   action: string,
-  payload: any
+  payload: any,
 ): Promise<any> {
   // Emergency actions skip retry logic for speed
   try {
@@ -344,15 +344,18 @@ export function getPendingRequests(): string[] {
 
 // Cleanup stale cache entries every 10 minutes
 if (typeof window !== "undefined") {
-  setInterval(() => {
-    let removed = 0;
-    for (const [key, entry] of cache.entries()) {
-      if (!isCacheValid(entry)) {
-        cache.delete(key);
-        removed++;
+  setInterval(
+    () => {
+      let removed = 0;
+      for (const [key, entry] of cache.entries()) {
+        if (!isCacheValid(entry)) {
+          cache.delete(key);
+          removed++;
+        }
       }
-    }
-    if (removed > 0)
-      console.debug(`[Cache] Cleaned up ${removed} stale entries`);
-  }, 10 * 60 * 1000);
+      if (removed > 0)
+        console.debug(`[Cache] Cleaned up ${removed} stale entries`);
+    },
+    10 * 60 * 1000,
+  );
 }

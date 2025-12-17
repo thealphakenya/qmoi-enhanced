@@ -44,7 +44,9 @@ export const OrchestratorStatusPanel: React.FC<{
 
   function handleAssign(agentId: string, device: string) {
     setAgents((prev) =>
-      prev.map((a) => (a.id === agentId ? { ...a, assignedDevice: device } : a))
+      prev.map((a) =>
+        a.id === agentId ? { ...a, assignedDevice: device } : a,
+      ),
     );
     // Stub: backend call
   }
@@ -54,8 +56,10 @@ export const OrchestratorStatusPanel: React.FC<{
     setTimeout(() => {
       setAgents((prev) =>
         prev.map((a) =>
-          a.id === agentId ? { ...a, status: "standby", assignedDevice: "" } : a
-        )
+          a.id === agentId
+            ? { ...a, status: "standby", assignedDevice: "" }
+            : a,
+        ),
       );
       setFailoverLoading(null);
     }, 1000);
@@ -114,8 +118,8 @@ export const OrchestratorStatusPanel: React.FC<{
                       agent.status === "active"
                         ? "#4caf50"
                         : agent.status === "standby"
-                        ? "#ff9800"
-                        : "#f44336",
+                          ? "#ff9800"
+                          : "#f44336",
                   }}
                 >
                   {agent.status}

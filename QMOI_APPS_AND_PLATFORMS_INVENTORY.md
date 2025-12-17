@@ -6,29 +6,32 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 ## Core Apps
 
-| App Name | Version | Description | Platforms | GitHub Link | Status |
-|----------|---------|-------------|-----------|-------------|--------|
-| QMOI AI | v1.2.3 | Main AI engine and orchestrator | Win, Mac, Linux, Android, iOS, Web | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
-| QCity | v1.2.3 | Unified device and app manager | All | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
-| QVillage | v1.0.0 | Community collaboration platform | All | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
-| QStore | v1.0.0 | Universal app store | All | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
-| QSpace | v1.0.0 | Cloud sync and backup | All | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| App Name | Version | Description                      | Platforms                          | GitHub Link                                                                   | Status   |
+| -------- | ------- | -------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------- | -------- |
+| QMOI AI  | v1.2.3  | Main AI engine and orchestrator  | Win, Mac, Linux, Android, iOS, Web | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QCity    | v1.2.3  | Unified device and app manager   | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QVillage | v1.0.0  | Community collaboration platform | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QStore   | v1.0.0  | Universal app store              | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QSpace   | v1.0.0  | Cloud sync and backup            | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
 
 ## Platform-Specific Binaries
 
 ### Windows
+
 - **qmoi_ai.exe** — Main Windows executable
   - Path: `downloads/windows/latest/qmoi_ai.exe`
   - Status: ⚠️ **Placeholder stub** (169 bytes) — See build instructions below
   - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
 
 ### macOS
+
 - **qmoi_ai.dmg** — macOS installer
   - Path: `downloads/mac/latest/qmoi_ai.dmg`
   - Status: ✅ Documented (verify on GitHub releases)
   - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg
 
 ### Linux
+
 - **qmoi_ai.AppImage** — Universal Linux binary
   - Path: `downloads/linux/latest/qmoi_ai.AppImage`
   - Status: ✅ Documented
@@ -40,6 +43,7 @@ This is the master inventory of all QMOI applications, their versions, supported
   - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb
 
 ### Android
+
 - **qmoi_ai.apk** — Android application package
   - Path: `downloads/android/latest/qmoi_ai.apk`
   - Status: ✅ Documented
@@ -51,24 +55,28 @@ This is the master inventory of all QMOI applications, their versions, supported
   - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk
 
 ### iOS
+
 - **qmoi_ai.ipa** — iOS application package
   - Path: `downloads/ios/latest/qmoi_ai.ipa`
   - Status: ✅ Documented (may require TestFlight for distribution)
   - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa
 
 ### Chromebook
+
 - **qmoi_ai.deb** — Chromebook Linux container package
   - Path: `downloads/chromebook/latest/qmoi_ai.deb`
   - Status: ✅ Documented
   - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb
 
 ### Raspberry Pi
+
 - **qmoi_ai.img** — Raspberry Pi image
   - Path: `downloads/raspberrypi/latest/qmoi_ai.img`
   - Status: ✅ Documented
   - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img
 
 ### Web
+
 - **qmoi-ai-web.zip** — Web version (React/Vue)
   - Path: `downloads/web/latest/qmoi-ai-web.zip`
   - Status: ✅ Documented
@@ -83,6 +91,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 **To obtain a working Windows build:**
 
 1. **Build from source:**
+
    ```bash
    # Ensure Python 3.8+ and PyInstaller are installed
    pip install pyinstaller
@@ -104,18 +113,18 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 ## Platform Availability Matrix
 
-| Platform | Status | Latest Version | Build Type |
-|----------|--------|---|---|
-| Windows | ⚠️ Placeholder | v1.2.3 | EXE Installer |
-| macOS | ✅ Available | v1.2.3 | DMG Installer |
-| Linux (AppImage) | ✅ Available | v1.2.3 | AppImage |
-| Linux (Deb) | ✅ Available | v1.2.3 | DEB Package |
-| Android | ✅ Available | v1.2.3 | APK |
-| Android TV | ✅ Available | v1.2.3 | APK |
-| iOS | ✅ Available | v1.2.3 | IPA (TestFlight) |
-| Chromebook | ✅ Available | v1.2.3 | DEB (Linux Container) |
-| Raspberry Pi | ✅ Available | v1.2.3 | IMG (Disk Image) |
-| Web | ✅ Available | v1.2.3 | Web App (ZIP) |
+| Platform         | Status         | Latest Version | Build Type            |
+| ---------------- | -------------- | -------------- | --------------------- |
+| Windows          | ⚠️ Placeholder | v1.2.3         | EXE Installer         |
+| macOS            | ✅ Available   | v1.2.3         | DMG Installer         |
+| Linux (AppImage) | ✅ Available   | v1.2.3         | AppImage              |
+| Linux (Deb)      | ✅ Available   | v1.2.3         | DEB Package           |
+| Android          | ✅ Available   | v1.2.3         | APK                   |
+| Android TV       | ✅ Available   | v1.2.3         | APK                   |
+| iOS              | ✅ Available   | v1.2.3         | IPA (TestFlight)      |
+| Chromebook       | ✅ Available   | v1.2.3         | DEB (Linux Container) |
+| Raspberry Pi     | ✅ Available   | v1.2.3         | IMG (Disk Image)      |
+| Web              | ✅ Available   | v1.2.3         | Web App (ZIP)         |
 
 ## GitHub Release Links
 
@@ -128,20 +137,24 @@ This is the master inventory of all QMOI applications, their versions, supported
 ### Windows Installation Issues
 
 **Problem:** "File is corrupted" or "Not a valid Win32 application"
+
 - **Cause:** Placeholder stub file used instead of real executable
 - **Solution:** Download the official release from GitHub (>45MB)
 
 **Problem:** "SmartScreen warning" or "Unrecognized developer"
+
 - **Cause:** Code signing certificate or first-time run
 - **Solution:** Click "More info" → "Run anyway" or contact support
 
 **Problem:** "Missing DLL" errors
+
 - **Cause:** Missing runtime dependencies
 - **Solution:** Install Visual C++ Redistributable (vcredist)
 
 ### Other Platforms
 
 Refer to platform-specific README files:
+
 - macOS: `docs/README_macOS.md`
 - Linux: `docs/README_Linux.md`
 - Android: `docs/README_Android.md`

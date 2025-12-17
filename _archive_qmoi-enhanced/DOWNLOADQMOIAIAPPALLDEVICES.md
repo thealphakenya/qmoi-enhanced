@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -46,6 +47,7 @@ You can also use the dedicated script for your platform:
 - `python downloadqmoiaizip.py` (Chromebook)
 
 All downloads are saved in:
+
 ```
 Qmoi_downloaded_apps/<platform>/latest/
 Qmoi_downloaded_apps/<platform>/v<version>/
@@ -57,25 +59,25 @@ All links below are always up-to-date, autotested, and provided by QCity runners
 
 Every app can be downloaded, transferred (e.g. via USB), and installed offline on any device, without requiring a download or internet connection. All download links are autotested and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md). Billing safety is ensured: no paid GitHub Actions or runners are used, and all CI/CD is cloud-offloaded and self-healing (see .gitlab-ci.yml).
 
-| App Name   | Platform      | Direct Download Link                                      | Latest Version | Status   |
-|-----------|---------------|----------------------------------------------------------|---------------|----------|
-| QMOI AI   | Windows       | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe              | v1.2.3        | ✅       |
-| QMOI AI   | Mac           | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg                  | v1.2.3        | ✅       |
-| QMOI AI   | Linux (DEB)   | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb                | v1.2.3        | ✅       |
-| QMOI AI   | Linux (AppImage) | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage         | v1.2.3        | ✅       |
-| QMOI AI   | Android       | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk              | v1.2.3        | ✅       |
-| QMOI AI   | iOS           | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa                  | v1.2.3        | ✅       |
-| QMOI AI   | Smart TV      | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk              | v1.2.3        | ✅       |
-| QMOI AI   | Raspberry Pi  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img          | v1.2.3        | ✅       |
-| QMOI AI   | Chromebook    | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip           | v1.2.3        | ✅       |
-| QCity     | Windows       | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe             | v2.0.1        | ✅       |
-| QCity     | Mac           | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg                 | v2.0.1        | ✅       |
-| QCity     | Linux         | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage          | v2.0.1        | ✅       |
-| QCity     | Android       | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk             | v2.0.1        | ✅       |
-| QCity     | iOS           | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa                 | v2.0.1        | ✅       |
-| Qshare    | All           | https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk   | v1.0.0        | ✅       |
-| Yap       | All           | https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk         | v1.1.0        | ✅       |
-| Qstore    | All           | https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk   | v1.0.0        | ✅       |
+| App Name | Platform         | Direct Download Link                                                                | Latest Version | Status |
+| -------- | ---------------- | ----------------------------------------------------------------------------------- | -------------- | ------ |
+| QMOI AI  | Windows          | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe            | v1.2.3         | ✅     |
+| QMOI AI  | Mac              | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg                | v1.2.3         | ✅     |
+| QMOI AI  | Linux (DEB)      | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb              | v1.2.3         | ✅     |
+| QMOI AI  | Linux (AppImage) | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage         | v1.2.3         | ✅     |
+| QMOI AI  | Android          | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk            | v1.2.3         | ✅     |
+| QMOI AI  | iOS              | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa                | v1.2.3         | ✅     |
+| QMOI AI  | Smart TV         | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk            | v1.2.3         | ✅     |
+| QMOI AI  | Raspberry Pi     | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img        | v1.2.3         | ✅     |
+| QMOI AI  | Chromebook       | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip         | v1.2.3         | ✅     |
+| QCity    | Windows          | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe           | v2.0.1         | ✅     |
+| QCity    | Mac              | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg               | v2.0.1         | ✅     |
+| QCity    | Linux            | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage        | v2.0.1         | ✅     |
+| QCity    | Android          | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk           | v2.0.1         | ✅     |
+| QCity    | iOS              | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa               | v2.0.1         | ✅     |
+| Qshare   | All              | https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk | v1.0.0         | ✅     |
+| Yap      | All              | https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk       | v1.1.0         | ✅     |
+| Qstore   | All              | https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk | v1.0.0         | ✅     |
 
 > **Note:** For older versions and all releases, see [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md)
 
@@ -89,7 +91,7 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 ## Sharing & Automation
 
 - QMOI can share any app link via WhatsApp, email, or any channel on command (e.g., "send link qmoi ai app to leah whatsapp no").
-- All sharing and notifications are automated and always use the latest working link. 
+- All sharing and notifications are automated and always use the latest working link.
 
 ## Troubleshooting & Help
 
@@ -100,7 +102,7 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
   2. Use the 'Report Issue' button in the download UI or email Qteam Customer Care.
   3. All issues are logged in real time and prioritized for immediate fix.
 - **Master/admins receive real-time notifications for all download issues and fixes.**
-- For persistent issues, contact Qteam Customer Care via the app or email. 
+- For persistent issues, contact Qteam Customer Care via the app or email.
 - For troubleshooting, see QMOIBROWSER.md and QMOIBINARIES.md.
 
 ## New Integrations & Enhancements
@@ -111,7 +113,7 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 - **Enhanced QCity Runners & Devices:** All download runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every download or release, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QMOI download system now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
-[Qmoi_apps/windows/qmoi ai.exe] autotest status: FAIL
+  [Qmoi_apps/windows/qmoi ai.exe] autotest status: FAIL
 
 [Qmoi_apps/android/qmoi ai.apk] autotest status: FAIL
 
@@ -138,32 +140,34 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 [Qmoi_apps/ios/qmoi ai.ipa] autotest status: FAIL
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
-  "validated_at": "2025-10-26T20:51:24.608349Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI AI App Downloads (All Devices)"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": [
-        {
-          "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
-          "target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
-          "ok": true
-        }
-      ]
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+"validated_at": "2025-10-26T20:51:24.608349Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI AI App Downloads (All Devices)"
+},
+{
+"name": "links",
+"ok": true,
+"detail": [
+{
+"label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+"target": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
+"ok": true
 }
+]
+}
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

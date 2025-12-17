@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -18,17 +19,18 @@ qmoi_validation_frontmatter: true
 
 QMOI offers a suite of powerful, always-updating applications, all available in Qstore. Each app is fully automated, supports master/admin control, and features advanced UI for debugging, info, and monetization. All apps are tagged with 'skv' to symbolize their belonging to the SKV organization/community.
 
-| Icon | Name (skv)         | Version | Description                | Features | Device Downloads | Releases | Qstore | UI/UX | Customer Care | Notes |
-|------|--------------------|---------|----------------------------|----------|------------------|----------|--------|-------|---------------|-------|
-| 🌐   | Qbrowser (skv)     | 1.2.0   | Fast, secure web browser   | Tabs, privacy, extensions | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage) | v1.2.0 | ✅ | Modern, customizable, light/dark, animated icons | Live chat, help, feedback | Default app support |
-| 🗂️   | QFileManager (skv)  | 2.0.1   | Advanced file management   | Drag-drop, cloud sync     | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage) | v2.0.1 | ✅ | Modern, animated icons, device-optimized | Live chat, help, feedback | Auto-organize |
-| 🕰️   | QClock (skv)        | 1.1.0   | Analog/digital clock, alarms, timers | Alarms, timer, analog/digital, Q-clock window | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage) | v1.1.0 | ✅ | Modern, animated, device-optimized | Live chat, help, feedback | World clock, AI alarm |
-| 🗺️   | QMap (skv)          | 3.0.0   | Real-time, global mapping  | GPS, real-time, accuracy | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage) | v3.0.0 | ✅ | Modern, animated, device-optimized | Live chat, help, feedback | AR, live traffic |
-| 🔍   | QSearch (skv)       | 1.0.5   | Floating search/chat       | AI, floating, everywhere | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage) | v1.0.5 | ✅ | Modern, animated, device-optimized | Live chat, help, feedback | Voice, image search |
-| 💬   | QWhatsApp (skv)     | 2.2.0   | WhatsApp + Meta AI features| Smart replies, media, scheduling, search | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage) | v2.2.0 | ✅ | Modern, animated, device-optimized | Live chat, help, feedback | More AI, business |
-| ⚡   | QAutoDev (skv)      | 1.0.0   | Self-healing, auto-enhance | Auto-fix, compliance, tests | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage) | v1.0.0 | ✅ | Modern, animated, device-optimized | Live chat, help, feedback | More automation |
+| Icon | Name (skv)         | Version | Description                          | Features                                      | Device Downloads                                                                                                                                                                                                                                                                                                                                                                                                                                         | Releases | Qstore | UI/UX                                            | Customer Care             | Notes                 |
+| ---- | ------------------ | ------- | ------------------------------------ | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------ | ------------------------------------------------ | ------------------------- | --------------------- |
+| 🌐   | Qbrowser (skv)     | 1.2.0   | Fast, secure web browser             | Tabs, privacy, extensions                     | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage)                     | v1.2.0   | ✅     | Modern, customizable, light/dark, animated icons | Live chat, help, feedback | Default app support   |
+| 🗂️   | QFileManager (skv) | 2.0.1   | Advanced file management             | Drag-drop, cloud sync                         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage) | v2.0.1   | ✅     | Modern, animated icons, device-optimized         | Live chat, help, feedback | Auto-organize         |
+| 🕰️   | QClock (skv)       | 1.1.0   | Analog/digital clock, alarms, timers | Alarms, timer, analog/digital, Q-clock window | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage)                               | v1.1.0   | ✅     | Modern, animated, device-optimized               | Live chat, help, feedback | World clock, AI alarm |
+| 🗺️   | QMap (skv)         | 3.0.0   | Real-time, global mapping            | GPS, real-time, accuracy                      | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage)                                         | v3.0.0   | ✅     | Modern, animated, device-optimized               | Live chat, help, feedback | AR, live traffic      |
+| 🔍   | QSearch (skv)      | 1.0.5   | Floating search/chat                 | AI, floating, everywhere                      | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage)                          | v1.0.5   | ✅     | Modern, animated, device-optimized               | Live chat, help, feedback | Voice, image search   |
+| 💬   | QWhatsApp (skv)    | 2.2.0   | WhatsApp + Meta AI features          | Smart replies, media, scheduling, search      | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage)                | v2.2.0   | ✅     | Modern, animated, device-optimized               | Live chat, help, feedback | More AI, business     |
+| ⚡   | QAutoDev (skv)     | 1.0.0   | Self-healing, auto-enhance           | Auto-fix, compliance, tests                   | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage)                     | v1.0.0   | ✅     | Modern, animated, device-optimized               | Live chat, help, feedback | More automation       |
 
 ## Qstore Integration
+
 - All QMOI apps are available in Qstore with full versioning, releases, and device-specific download links. Every app can be downloaded, transferred (e.g. via USB), and installed offline on any device, without requiring a download or internet connection.
 - All download links are autotested and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md).
 - Billing safety is ensured: no paid GitHub Actions or runners are used, and all CI/CD is cloud-offloaded and self-healing (see .gitlab-ci.yml).
@@ -37,6 +39,7 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 - **Ngrok Tunnel Support:** QMOI can automatically start, monitor, and update ngrok tunnels for all download and service endpoints. All links are autotested, and if ngrok is active and healthy, download links are auto-updated to use the ngrok URL. See QMOINGROK.md for details.
 
 ## UI/UX & Performance
+
 - All apps feature modern, customizable UI, animated, static, and line icons, and device-optimized performance.
 - Auto-error fixing and device optimization are built-in for every app and file type, with enhanced fallback and summary logging.
 
@@ -48,7 +51,8 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 - Customer care and help are available in every app, with live chat and feedback.
 
 ## Master-Only Controls
-- QCity provides master-only visualization, notification, and approval workflows for all QMOI actions, customer care, and app enhancements. 
+
+- QCity provides master-only visualization, notification, and approval workflows for all QMOI actions, customer care, and app enhancements.
 
 ## New Integrations & Enhancements
 
@@ -58,9 +62,9 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 - **Always-On Cloud Operation:** All QMOI Apps are managed and updated in QCity/cloud/Colab/Dagshub, never relying 7on local device for critical tasks.
 - **Enhanced QCity Runners & Devices:** All app runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updatitng Documentation:** All .md files are auto-updated after every app update or release, ensuring documentation is always current.
-- **Increased Minimum Daily Revenue:** QMOI Apps now contribute to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features. 
+- **Increased Minimum Daily Revenue:** QMOI Apps now contribute to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
 - **Download Links:** All download links are always up to date, can use any provider/platform, and are managed by QMOI's multi-platform domain and tunnel automation. See QMOIDOMAINS.md, QMOIDNS.md, and QMOINGROK.md for details.
-[Qmoi_apps/windows/qmoi ai.exe] autotest status: PASS
+  [Qmoi_apps/windows/qmoi ai.exe] autotest status: PASS
 
 [Qmoi_apps/android/qmoi ai.apk] autotest status: PASS
 
@@ -77,6 +81,7 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 [Qmoi_apps/qcity/qmoi ai.zip] autotest status: PASS
 
 ### Summary
+
 - All QMOI AI apps installed and autotested successfully for every device type. No errors detected.
 - Persistent memory and error stats updated in QMOI_MEMORY.md and install_autotest_report.json.
 
@@ -105,39 +110,41 @@ QMOI offers a suite of powerful, always-updating applications, all available in 
 - Apple Accessory: Modern UI, animated icons, device-optimized performance, live chat, feedback, auto-error fixing. Error log: `Qmoi_apps/apple-accessory/error.log`
 
 All device apps support:
+
 - Master/admin controls
 - Advanced UI for debugging, info, and monetization
 - Persistent memory and error stats
 - Auto-update and self-healing features
-
 
 # QMOI AUTO-ENHANCE: Updated QMOIAPPS.md with latest automation, error-fix, and install results.
 
 <!-- All links above are production-ready and autotested. No TODO_PROD, TODO_PROD, or non-production links remain. -->
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOIAPPS.md",
-  "validated_at": "2025-10-26T20:51:22.433293Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOIAPPS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "QMOIAPPS.md",
+"validated_at": "2025-10-26T20:51:22.433293Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOIAPPS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const readline = require('readline');
+const fs = require("fs");
+const path = require("path");
+const readline = require("readline");
 
-console.log('🔧 QMOI M-Pesa Setup Guide');
-console.log('==========================\n');
+console.log("🔧 QMOI M-Pesa Setup Guide");
+console.log("==========================\n");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 function question(prompt) {
@@ -19,36 +19,45 @@ function question(prompt) {
 }
 
 async function setupMpesa() {
-  console.log('This guide will help you set up M-Pesa API integration for QMOI.\n');
-  
-  console.log('📋 Prerequisites:');
-  console.log('1. Safaricom M-Pesa API account');
-  console.log('2. API credentials (Consumer Key, Secret, Passkey)');
-  console.log('3. Shortcode and security credentials');
-  console.log('4. Valid M-Pesa phone number\n');
-  
-  const proceed = await question('Do you have all the prerequisites? (y/n): ');
-  if (proceed.toLowerCase() !== 'y') {
-    console.log('\n❌ Please get your M-Pesa API credentials first.');
-    console.log('Visit: https://developer.safaricom.co.ke/');
+  console.log(
+    "This guide will help you set up M-Pesa API integration for QMOI.\n",
+  );
+
+  console.log("📋 Prerequisites:");
+  console.log("1. Safaricom M-Pesa API account");
+  console.log("2. API credentials (Consumer Key, Secret, Passkey)");
+  console.log("3. Shortcode and security credentials");
+  console.log("4. Valid M-Pesa phone number\n");
+
+  const proceed = await question("Do you have all the prerequisites? (y/n): ");
+  if (proceed.toLowerCase() !== "y") {
+    console.log("\n❌ Please get your M-Pesa API credentials first.");
+    console.log("Visit: https://developer.safaricom.co.ke/");
     rl.close();
     return;
   }
 
-  console.log('\n🔑 Let\'s configure your M-Pesa credentials:\n');
+  console.log("\n🔑 Let's configure your M-Pesa credentials:\n");
 
-  const mpesaNumber = await question('M-Pesa Phone Number (e.g., 0725382624): ');
-  const consumerKey = await question('M-Pesa Consumer Key: ');
-  const consumerSecret = await question('M-Pesa Consumer Secret: ');
-  const passkey = await question('M-Pesa Passkey: ');
-  const shortcode = await question('M-Pesa Shortcode: ');
-  const environment = await question('Environment (sandbox/production): ');
-  const initiatorName = await question('Initiator Name (default: QMOI): ') || 'QMOI';
-  const securityCredential = await question('Security Credential (for reversals): ');
-  const masterToken = await question('QMOI Master Token: ');
-  const appUrl = await question('App URL (e.g., https://your-app.vercel.app): ');
+  const mpesaNumber = await question(
+    "M-Pesa Phone Number (e.g., 0725382624): ",
+  );
+  const consumerKey = await question("M-Pesa Consumer Key: ");
+  const consumerSecret = await question("M-Pesa Consumer Secret: ");
+  const passkey = await question("M-Pesa Passkey: ");
+  const shortcode = await question("M-Pesa Shortcode: ");
+  const environment = await question("Environment (sandbox/production): ");
+  const initiatorName =
+    (await question("Initiator Name (default: QMOI): ")) || "QMOI";
+  const securityCredential = await question(
+    "Security Credential (for reversals): ",
+  );
+  const masterToken = await question("QMOI Master Token: ");
+  const appUrl = await question(
+    "App URL (e.g., https://your-app.vercel.app): ",
+  );
 
-  console.log('\n📝 Generating .env.production file...\n');
+  console.log("\n📝 Generating .env.production file...\n");
 
   const envContent = `# QMOI Production Environment Variables
 
@@ -72,58 +81,58 @@ QMOI_MASTER_TOKEN=${masterToken}
 NEXT_PUBLIC_APP_URL=${appUrl}
 `;
 
-  const envPath = path.join(process.cwd(), '.env.production');
-  
+  const envPath = path.join(process.cwd(), ".env.production");
+
   try {
     fs.writeFileSync(envPath, envContent);
-    console.log('✅ .env.production file created successfully!');
+    console.log("✅ .env.production file created successfully!");
   } catch (error) {
-    console.error('❌ Failed to create .env.production file:', error.message);
+    console.error("❌ Failed to create .env.production file:", error.message);
     rl.close();
     return;
   }
 
-  console.log('\n🧪 Testing Configuration...\n');
+  console.log("\n🧪 Testing Configuration...\n");
 
   // Test environment variables
-  require('dotenv').config({ path: '.env.production' });
-  
+  require("dotenv").config({ path: ".env.production" });
+
   const requiredVars = [
-    'MPESA_CONSUMER_KEY',
-    'MPESA_CONSUMER_SECRET',
-    'MPESA_PASSKEY',
-    'MPESA_SHORTCODE',
-    'CASHON_MPESA_NUMBER',
-    'QMOI_MASTER_TOKEN'
+    "MPESA_CONSUMER_KEY",
+    "MPESA_CONSUMER_SECRET",
+    "MPESA_PASSKEY",
+    "MPESA_SHORTCODE",
+    "CASHON_MPESA_NUMBER",
+    "QMOI_MASTER_TOKEN",
   ];
 
-  const missingVars = requiredVars.filter(varName => !process.env[varName]);
-  
+  const missingVars = requiredVars.filter((varName) => !process.env[varName]);
+
   if (missingVars.length > 0) {
-    console.log('❌ Missing environment variables:', missingVars);
+    console.log("❌ Missing environment variables:", missingVars);
   } else {
-    console.log('✅ All required environment variables are set!');
+    console.log("✅ All required environment variables are set!");
   }
 
-  console.log('\n📋 Next Steps:');
-  console.log('1. Test M-Pesa integration in sandbox environment');
-  console.log('2. Verify callback URLs are accessible');
-  console.log('3. Test a small transaction first');
-  console.log('4. Switch to production when ready');
-  console.log('5. Start the revenue engine: npm run revenue:start');
+  console.log("\n📋 Next Steps:");
+  console.log("1. Test M-Pesa integration in sandbox environment");
+  console.log("2. Verify callback URLs are accessible");
+  console.log("3. Test a small transaction first");
+  console.log("4. Switch to production when ready");
+  console.log("5. Start the revenue engine: npm run revenue:start");
 
-  console.log('\n🔒 Security Notes:');
-  console.log('- Never commit .env.production to git');
-  console.log('- Keep your credentials secure');
-  console.log('- Rotate credentials regularly');
-  console.log('- Monitor transactions for suspicious activity');
+  console.log("\n🔒 Security Notes:");
+  console.log("- Never commit .env.production to git");
+  console.log("- Keep your credentials secure");
+  console.log("- Rotate credentials regularly");
+  console.log("- Monitor transactions for suspicious activity");
 
-  console.log('\n📞 Support:');
-  console.log('- Check logs for detailed error information');
-  console.log('- Test in sandbox before going live');
-  console.log('- Contact Safaricom support for API issues');
+  console.log("\n📞 Support:");
+  console.log("- Check logs for detailed error information");
+  console.log("- Test in sandbox before going live");
+  console.log("- Contact Safaricom support for API issues");
 
   rl.close();
 }
 
-setupMpesa().catch(console.error); 
+setupMpesa().catch(console.error);

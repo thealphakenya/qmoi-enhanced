@@ -27,6 +27,7 @@ WantedBy=multi-user.target
 ```
 
 Notes:
+
 - Adjust `WorkingDirectory` and `ExecStart` paths to match where you deploy the repository on your host.
 - Use a dedicated unprivileged user (example uses `qmoi`) and ensure the process has permission to write `.qmoi_validation/`.
 - For container deployments, run the same command in your container supervisor (or use an init process).

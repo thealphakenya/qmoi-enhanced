@@ -1,55 +1,55 @@
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+import { execSync } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 class LintReporter {
   constructor() {
-    this.projectRoot = join(__dirname, '..');
-    this.logsDir = join(this.projectRoot, 'logs');
-    this.reportsDir = join(this.projectRoot, 'reports');
+    this.projectRoot = join(__dirname, "..");
+    this.logsDir = join(this.projectRoot, "logs");
+    this.reportsDir = join(this.projectRoot, "reports");
     this.ensureDirs();
   }
 
   ensureDirs() {
-    [this.logsDir, this.reportsDir].forEach(dir => {
+    [this.logsDir, this.reportsDir].forEach((dir) => {
       if (!existsSync(dir)) {
         mkdirSync(dir, { recursive: true });
       }
     });
   }
 
-  log(message, type = 'info') {
+  log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [REPORTER-${type.toUpperCase()}] ${message}`;
     console.log(logMessage);
-    
-    const logFile = join(this.logsDir, 'lint-reporter.log');
-    writeFileSync(logFile, logMessage + '\n', { flag: 'a' });
+
+    const logFile = join(this.logsDir, "lint-reporter.log");
+    writeFileSync(logFile, logMessage + "\n", { flag: "a" });
   }
 
   async runLint() {
     try {
-      const output = execSync('yarn lint', { 
-        cwd: this.projectRoot, 
-        encoding: 'utf8',
-        stdio: 'pipe'
+      const output = execSync("yarn lint", {
+        cwd: this.projectRoot,
+        encoding: "utf8",
+        stdio: "pipe",
       });
-      return { success: true, output: '' };
+      return { success: true, output: "" };
     } catch (error) {
-      return { success: false, output: error.stdout || error.stderr || '' };
+      return { success: false, output: error.stdout || error.stderr || "" };
     }
   }
 
   parseErrors(output) {
-    const lines = output.split('\n');
+    const lines = output.split("\n");
     const errors = [];
-    let currentFile = '';
+    let currentFile = "";
 
     for (const line of lines) {
       // Extract file path
@@ -60,7 +60,9 @@ class LintReporter {
       }
 
       // Parse error details
-      const errorMatch = line.match(/^\s*(\d+):(\d+)\s+(error|warning)\s+(.+?)\s+(.+)$/);
+      const errorMatch = line.match(
+        /^\s*(\d+):(\d+)\s+(error|warning)\s+(.+?)\s+(.+)$/,
+      );
       if (errorMatch) {
         const [, lineNum, colNum, severity, rule, message] = errorMatch;
         errors.push({
@@ -70,7 +72,7 @@ class LintReporter {
           severity,
           rule,
           message: message.trim(),
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
       }
     }
@@ -87,38 +89,63 @@ class LintReporter {
       style: [],
       performance: [],
       security: [],
-      accessibility: []
+      accessibility: [],
     };
 
     for (const error of errors) {
       const rule = error.rule.toLowerCase();
-      
+
       // Critical errors
-      if (rule.includes('no-undef') || rule.includes('import/no-unresolved') || rule.includes('no-unused-vars')) {
+      if (
+        rule.includes("no-undef") ||
+        rule.includes("import/no-unresolved") ||
+        rule.includes("no-unused-vars")
+      ) {
         categories.critical.push(error);
       }
       // Security issues
-      else if (rule.includes('security') || rule.includes('no-eval') || rule.includes('no-implied-eval')) {
+      else if (
+        rule.includes("security") ||
+        rule.includes("no-eval") ||
+        rule.includes("no-implied-eval")
+      ) {
         categories.security.push(error);
       }
       // Performance issues
-      else if (rule.includes('performance') || rule.includes('no-console') || rule.includes('no-debugger')) {
+      else if (
+        rule.includes("performance") ||
+        rule.includes("no-console") ||
+        rule.includes("no-debugger")
+      ) {
         categories.performance.push(error);
       }
       // Accessibility issues
-      else if (rule.includes('jsx-a11y') || rule.includes('accessibility')) {
+      else if (rule.includes("jsx-a11y") || rule.includes("accessibility")) {
         categories.accessibility.push(error);
       }
       // High priority
-      else if (rule.includes('no-console') || rule.includes('no-debugger') || rule.includes('no-alert')) {
+      else if (
+        rule.includes("no-console") ||
+        rule.includes("no-debugger") ||
+        rule.includes("no-alert")
+      ) {
         categories.high.push(error);
       }
       // Style issues
-      else if (rule.includes('quotes') || rule.includes('semi') || rule.includes('indent') || rule.includes('trailing-spaces')) {
+      else if (
+        rule.includes("quotes") ||
+        rule.includes("semi") ||
+        rule.includes("indent") ||
+        rule.includes("trailing-spaces")
+      ) {
         categories.style.push(error);
       }
       // Medium priority
-      else if (rule.includes('prefer-const') || rule.includes('no-var') || rule.includes('eqeqeq')) {
+      else if (
+        rule.includes("prefer-const") ||
+        rule.includes("no-var") ||
+        rule.includes("eqeqeq")
+      ) {
         categories.medium.push(error);
       }
       // Low priority
@@ -249,77 +276,109 @@ class LintReporter {
         </div>
         
         <div class="summary">
-            <div class="metric ${criticalCount > 0 ? 'critical' : ''}">
+            <div class="metric ${criticalCount > 0 ? "critical" : ""}">
                 <div class="metric-number">${criticalCount}</div>
                 <div class="metric-label">Critical Issues</div>
             </div>
-            <div class="metric ${highCount > 0 ? 'high' : ''}">
+            <div class="metric ${highCount > 0 ? "high" : ""}">
                 <div class="metric-number">${highCount}</div>
                 <div class="metric-label">High Priority</div>
             </div>
-            <div class="metric ${mediumCount > 0 ? 'medium' : ''}">
+            <div class="metric ${mediumCount > 0 ? "medium" : ""}">
                 <div class="metric-number">${mediumCount}</div>
                 <div class="metric-label">Medium Priority</div>
             </div>
-            <div class="metric ${lowCount > 0 ? 'low' : ''}">
+            <div class="metric ${lowCount > 0 ? "low" : ""}">
                 <div class="metric-number">${lowCount}</div>
                 <div class="metric-label">Low Priority</div>
             </div>
         </div>
 
-        ${totalErrors === 0 ? '<div class="no-errors">🎉 No linting issues found! Code is clean.</div>' : ''}
+        ${totalErrors === 0 ? '<div class="no-errors">🎉 No linting issues found! Code is clean.</div>' : ""}
 
-        ${categories.critical.length > 0 ? `
+        ${
+          categories.critical.length > 0
+            ? `
         <div class="section">
             <h2>🚨 Critical Issues (${categories.critical.length})</h2>
-            ${categories.critical.map(error => `
+            ${categories.critical
+              .map(
+                (error) => `
                 <div class="error-item">
                     <div class="error-file">${error.file}:${error.line}:${error.column}</div>
                     <div class="error-details">${error.rule}</div>
                     <div class="error-message">${error.message}</div>
                 </div>
-            `).join('')}
+            `,
+              )
+              .join("")}
         </div>
-        ` : ''}
+        `
+            : ""
+        }
 
-        ${categories.high.length > 0 ? `
+        ${
+          categories.high.length > 0
+            ? `
         <div class="section">
             <h2>⚠️ High Priority Issues (${categories.high.length})</h2>
-            ${categories.high.map(error => `
+            ${categories.high
+              .map(
+                (error) => `
                 <div class="error-item">
                     <div class="error-file">${error.file}:${error.line}:${error.column}</div>
                     <div class="error-details">${error.rule}</div>
                     <div class="error-message">${error.message}</div>
                 </div>
-            `).join('')}
+            `,
+              )
+              .join("")}
         </div>
-        ` : ''}
+        `
+            : ""
+        }
 
-        ${categories.medium.length > 0 ? `
+        ${
+          categories.medium.length > 0
+            ? `
         <div class="section">
             <h2>📝 Medium Priority Issues (${categories.medium.length})</h2>
-            ${categories.medium.map(error => `
+            ${categories.medium
+              .map(
+                (error) => `
                 <div class="error-item">
                     <div class="error-file">${error.file}:${error.line}:${error.column}</div>
                     <div class="error-details">${error.rule}</div>
                     <div class="error-message">${error.message}</div>
                 </div>
-            `).join('')}
+            `,
+              )
+              .join("")}
         </div>
-        ` : ''}
+        `
+            : ""
+        }
 
-        ${categories.low.length > 0 ? `
+        ${
+          categories.low.length > 0
+            ? `
         <div class="section">
             <h2>💡 Low Priority Issues (${categories.low.length})</h2>
-            ${categories.low.map(error => `
+            ${categories.low
+              .map(
+                (error) => `
                 <div class="error-item">
                     <div class="error-file">${error.file}:${error.line}:${error.column}</div>
                     <div class="error-details">${error.rule}</div>
                     <div class="error-message">${error.message}</div>
                 </div>
-            `).join('')}
+            `,
+              )
+              .join("")}
         </div>
-        ` : ''}
+        `
+            : ""
+        }
 
         <div class="timestamp">
             Report generated by QMOI AI Lint Reporter
@@ -343,11 +402,11 @@ class LintReporter {
         style: categories.style.length,
         performance: categories.performance.length,
         security: categories.security.length,
-        accessibility: categories.accessibility.length
+        accessibility: categories.accessibility.length,
       },
       errors: errors,
       categories: categories,
-      recommendations: this.generateRecommendations(categories)
+      recommendations: this.generateRecommendations(categories),
     };
 
     return report;
@@ -358,49 +417,49 @@ class LintReporter {
 
     if (categories.critical.length > 0) {
       recommendations.push({
-        priority: 'immediate',
-        message: 'Critical issues detected that may cause runtime errors',
+        priority: "immediate",
+        message: "Critical issues detected that may cause runtime errors",
         actions: [
-          'Fix undefined variables and imports',
-          'Remove unused variables and imports',
-          'Resolve module resolution issues'
-        ]
+          "Fix undefined variables and imports",
+          "Remove unused variables and imports",
+          "Resolve module resolution issues",
+        ],
       });
     }
 
     if (categories.security.length > 0) {
       recommendations.push({
-        priority: 'high',
-        message: 'Security vulnerabilities detected',
+        priority: "high",
+        message: "Security vulnerabilities detected",
         actions: [
-          'Remove eval() usage',
-          'Sanitize user inputs',
-          'Use secure alternatives for dangerous functions'
-        ]
+          "Remove eval() usage",
+          "Sanitize user inputs",
+          "Use secure alternatives for dangerous functions",
+        ],
       });
     }
 
     if (categories.performance.length > 0) {
       recommendations.push({
-        priority: 'medium',
-        message: 'Performance issues detected',
+        priority: "medium",
+        message: "Performance issues detected",
         actions: [
-          'Remove console.log statements',
-          'Remove debugger statements',
-          'Optimize expensive operations'
-        ]
+          "Remove console.log statements",
+          "Remove debugger statements",
+          "Optimize expensive operations",
+        ],
       });
     }
 
     if (categories.style.length > 0) {
       recommendations.push({
-        priority: 'low',
-        message: 'Code style issues detected',
+        priority: "low",
+        message: "Code style issues detected",
         actions: [
-          'Run yarn lint:fix to auto-fix style issues',
-          'Use consistent quote style',
-          'Fix indentation and spacing'
-        ]
+          "Run yarn lint:fix to auto-fix style issues",
+          "Use consistent quote style",
+          "Fix indentation and spacing",
+        ],
       });
     }
 
@@ -408,44 +467,50 @@ class LintReporter {
   }
 
   async run() {
-    this.log('🚀 Starting Lint Reporter...', 'info');
+    this.log("🚀 Starting Lint Reporter...", "info");
 
     // Run lint check
     const lintResult = await this.runLint();
-    
+
     if (lintResult.success) {
-      this.log('✅ No linting errors found!', 'success');
-      
+      this.log("✅ No linting errors found!", "success");
+
       // Generate clean report
       const cleanReport = this.generateJSONReport([], {});
       const htmlReport = this.generateHTMLReport([], {});
-      
-      writeFileSync(join(this.reportsDir, 'lint-report.json'), JSON.stringify(cleanReport, null, 2));
-      writeFileSync(join(this.reportsDir, 'lint-report.html'), htmlReport);
-      
-      console.log('📊 Reports generated:');
-      console.log(`   JSON: ${join(this.reportsDir, 'lint-report.json')}`);
-      console.log(`   HTML: ${join(this.reportsDir, 'lint-report.html')}`);
-      
+
+      writeFileSync(
+        join(this.reportsDir, "lint-report.json"),
+        JSON.stringify(cleanReport, null, 2),
+      );
+      writeFileSync(join(this.reportsDir, "lint-report.html"), htmlReport);
+
+      console.log("📊 Reports generated:");
+      console.log(`   JSON: ${join(this.reportsDir, "lint-report.json")}`);
+      console.log(`   HTML: ${join(this.reportsDir, "lint-report.html")}`);
+
       return;
     }
 
     // Parse and categorize errors
     const errors = this.parseErrors(lintResult.output);
     const categories = this.categorizeErrors(errors);
-    
-    this.log(`Found ${errors.length} linting issues`, 'info');
+
+    this.log(`Found ${errors.length} linting issues`, "info");
 
     // Generate reports
     const jsonReport = this.generateJSONReport(errors, categories);
     const htmlReport = this.generateHTMLReport(errors, categories);
 
     // Save reports
-    writeFileSync(join(this.reportsDir, 'lint-report.json'), JSON.stringify(jsonReport, null, 2));
-    writeFileSync(join(this.reportsDir, 'lint-report.html'), htmlReport);
+    writeFileSync(
+      join(this.reportsDir, "lint-report.json"),
+      JSON.stringify(jsonReport, null, 2),
+    );
+    writeFileSync(join(this.reportsDir, "lint-report.html"), htmlReport);
 
     // Display summary
-    console.log('\n📊 Lint Report Summary:');
+    console.log("\n📊 Lint Report Summary:");
     console.log(`   Total Issues: ${errors.length}`);
     console.log(`   Critical: ${categories.critical.length}`);
     console.log(`   High Priority: ${categories.high.length}`);
@@ -453,28 +518,39 @@ class LintReporter {
     console.log(`   Low Priority: ${categories.low.length}`);
 
     if (categories.critical.length > 0) {
-      console.log('\n🚨 Critical Issues:');
+      console.log("\n🚨 Critical Issues:");
       categories.critical.slice(0, 3).forEach((error, index) => {
-        console.log(`   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`);
+        console.log(
+          `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`,
+        );
       });
       if (categories.critical.length > 3) {
         console.log(`   ... and ${categories.critical.length - 3} more`);
       }
     }
 
-    console.log('\n📄 Reports saved to:');
-    console.log(`   JSON: ${join(this.reportsDir, 'lint-report.json')}`);
-    console.log(`   HTML: ${join(this.reportsDir, 'lint-report.html')}`);
+    console.log("\n📄 Reports saved to:");
+    console.log(`   JSON: ${join(this.reportsDir, "lint-report.json")}`);
+    console.log(`   HTML: ${join(this.reportsDir, "lint-report.html")}`);
 
     // Exit with appropriate code
     if (categories.critical.length > 0) {
-      this.log('❌ Critical errors found. Please fix them before proceeding.', 'error');
+      this.log(
+        "❌ Critical errors found. Please fix them before proceeding.",
+        "error",
+      );
       process.exit(1);
     } else if (categories.high.length > 0) {
-      this.log('⚠️  High priority issues found. Consider fixing them soon.', 'warning');
+      this.log(
+        "⚠️  High priority issues found. Consider fixing them soon.",
+        "warning",
+      );
       process.exit(2);
     } else {
-      this.log('✅ Only minor issues found. Code is generally clean.', 'success');
+      this.log(
+        "✅ Only minor issues found. Code is generally clean.",
+        "success",
+      );
       process.exit(0);
     }
   }
@@ -482,7 +558,7 @@ class LintReporter {
 
 // Run the reporter
 const reporter = new LintReporter();
-reporter.run().catch(error => {
-  console.error('Fatal error in lint reporter:', error);
+reporter.run().catch((error) => {
+  console.error("Fatal error in lint reporter:", error);
   process.exit(1);
-}); 
+});

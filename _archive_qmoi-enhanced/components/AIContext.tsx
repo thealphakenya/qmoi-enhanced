@@ -93,7 +93,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
       if (typeof window !== "undefined") {
         localStorage.setItem(
           "alphaq-chat-history",
-          JSON.stringify(chatHistory)
+          JSON.stringify(chatHistory),
         );
       }
     } catch (error) {
@@ -119,7 +119,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
         console.error("Failed to load persistent memory:", error);
         return {};
       }
-    }
+    },
   );
 
   useEffect(() => {
@@ -127,7 +127,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
       if (typeof window !== "undefined") {
         localStorage.setItem(
           "alphaq-persistent-memory",
-          JSON.stringify(persistentMemory)
+          JSON.stringify(persistentMemory),
         );
       }
     } catch (error) {
@@ -171,7 +171,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
       if (typeof window !== "undefined") {
         localStorage.setItem(
           "alphaq-emotional-state",
-          JSON.stringify(emotionalState)
+          JSON.stringify(emotionalState),
         );
       }
     } catch (error) {

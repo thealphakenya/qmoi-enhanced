@@ -1,0 +1,147 @@
+5acdf677aa9e982b4edff914394bdc3b
+/* istanbul ignore next */
+function cov_1c9ne36fmd() {
+  var path = "/workspaces/qmoi-enhanced/src/components/q-city/BackupRestorePanel.tsx";
+  var hash = "0a75861b7ff3f986a0961b72f81a6e71b13104c7";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/components/q-city/BackupRestorePanel.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 4,
+          column: 2
+        },
+        end: {
+          line: 17,
+          column: 4
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "BackupRestorePanel",
+        decl: {
+          start: {
+            line: 3,
+            column: 24
+          },
+          end: {
+            line: 3,
+            column: 42
+          }
+        },
+        loc: {
+          start: {
+            line: 3,
+            column: 45
+          },
+          end: {
+            line: 18,
+            column: 1
+          }
+        },
+        line: 3
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "0a75861b7ff3f986a0961b72f81a6e71b13104c7"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1c9ne36fmd = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1c9ne36fmd();
+import React from "react";
+/* istanbul ignore next */
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export default function BackupRestorePanel() {
+  /* istanbul ignore next */
+  cov_1c9ne36fmd().f[0]++;
+  cov_1c9ne36fmd().s[0]++;
+  return /*#__PURE__*/ /* istanbul ignore next */_jsxs(
+  /* istanbul ignore next */
+  "div",
+  /* istanbul ignore next */
+  {
+    children: [/*#__PURE__*/
+    /* istanbul ignore next */
+    _jsx(
+    /* istanbul ignore next */
+    "h2",
+    /* istanbul ignore next */
+    {
+      className: "text-2xl font-bold mb-4",
+      children: "Backup & Restore"
+    }), /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsx(
+    /* istanbul ignore next */
+    "p",
+    /* istanbul ignore next */
+    {
+      children: "Manage system and project backups. (UI and features coming soon)"
+    }), /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsxs(
+    /* istanbul ignore next */
+    "ul",
+    /* istanbul ignore next */
+    {
+      className: "mt-4 list-disc ml-6",
+      children: [/*#__PURE__*/
+      /* istanbul ignore next */
+      _jsx(
+      /* istanbul ignore next */
+      "li",
+      /* istanbul ignore next */
+      {
+        children: "Backup status and history"
+      }), /*#__PURE__*/
+      /* istanbul ignore next */
+      _jsx(
+      /* istanbul ignore next */
+      "li",
+      /* istanbul ignore next */
+      {
+        children: "Manual and scheduled backups"
+      }), /*#__PURE__*/
+      /* istanbul ignore next */
+      _jsx(
+      /* istanbul ignore next */
+      "li",
+      /* istanbul ignore next */
+      {
+        children: "Instant restore and rollback"
+      })]
+    }), /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsx(
+    /* istanbul ignore next */
+    "div",
+    /* istanbul ignore next */
+    {
+      className: "mt-6 p-4 bg-gray-100 rounded",
+      children: "API integration coming soon."
+    })]
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMWM5bmUzNmZtZCIsImFjdHVhbENvdmVyYWdlIiwiUmVhY3QiLCJqc3giLCJfanN4IiwianN4cyIsIl9qc3hzIiwiQmFja3VwUmVzdG9yZVBhbmVsIiwiZiIsInMiLCJjaGlsZHJlbiIsImNsYXNzTmFtZSJdLCJzb3VyY2VzIjpbIkJhY2t1cFJlc3RvcmVQYW5lbC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xuXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBCYWNrdXBSZXN0b3JlUGFuZWwoKSB7XG4gIHJldHVybiAoXG4gICAgPGRpdj5cbiAgICAgIDxoMiBjbGFzc05hbWU9XCJ0ZXh0LTJ4bCBmb250LWJvbGQgbWItNFwiPkJhY2t1cCAmIFJlc3RvcmU8L2gyPlxuICAgICAgPHA+TWFuYWdlIHN5c3RlbSBhbmQgcHJvamVjdCBiYWNrdXBzLiAoVUkgYW5kIGZlYXR1cmVzIGNvbWluZyBzb29uKTwvcD5cbiAgICAgIDx1bCBjbGFzc05hbWU9XCJtdC00IGxpc3QtZGlzYyBtbC02XCI+XG4gICAgICAgIDxsaT5CYWNrdXAgc3RhdHVzIGFuZCBoaXN0b3J5PC9saT5cbiAgICAgICAgPGxpPk1hbnVhbCBhbmQgc2NoZWR1bGVkIGJhY2t1cHM8L2xpPlxuICAgICAgICA8bGk+SW5zdGFudCByZXN0b3JlIGFuZCByb2xsYmFjazwvbGk+XG4gICAgICA8L3VsPlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJtdC02IHAtNCBiZy1ncmF5LTEwMCByb3VuZGVkXCI+XG4gICAgICAgIEFQSSBpbnRlZ3JhdGlvbiBjb21pbmcgc29vbi5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICApO1xufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFlWTtJQUFBQSxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxjQUFBO0FBZlosT0FBT0UsS0FBSyxNQUFNLE9BQU87QUFBQztBQUFBLFNBQUFDLEdBQUEsSUFBQUMsSUFBQSxFQUFBQyxJQUFBLElBQUFDLEtBQUE7QUFFMUIsZUFBZSxTQUFTQyxrQkFBa0JBLENBQUEsRUFBRztFQUFBO0VBQUFQLGNBQUEsR0FBQVEsQ0FBQTtFQUFBUixjQUFBLEdBQUFTLENBQUE7RUFDM0Msb0JBQ0UsMkJBQUFILEtBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFBSSxRQUFBO0lBQ0U7SUFBQU4sSUFBQTtJQUFBO0lBQUE7SUFBQTtJQUFBO01BQUlPLFNBQVMsRUFBQyx5QkFBeUI7TUFBQUQsUUFBQSxFQUFDO0lBQWdCLENBQUksQ0FBQztJQUM3RDtJQUFBTixJQUFBO0lBQUE7SUFBQTtJQUFBO0lBQUE7TUFBQU0sUUFBQSxFQUFHO0lBQWdFLENBQUcsQ0FBQztJQUN2RTtJQUFBSixLQUFBO0lBQUE7SUFBQTtJQUFBO0lBQUE7TUFBSUssU0FBUyxFQUFDLHFCQUFxQjtNQUFBRCxRQUFBO01BQ2pDO01BQUFOLElBQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtRQUFBTSxRQUFBLEVBQUk7TUFBeUIsQ0FBSSxDQUFDO01BQ2xDO01BQUFOLElBQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtRQUFBTSxRQUFBLEVBQUk7TUFBNEIsQ0FBSSxDQUFDO01BQ3JDO01BQUFOLElBQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtRQUFBTSxRQUFBLEVBQUk7TUFBNEIsQ0FBSSxDQUFDO0lBQUEsQ0FDbkMsQ0FBQztJQUNMO0lBQUFOLElBQUE7SUFBQTtJQUFBO0lBQUE7SUFBQTtNQUFLTyxTQUFTLEVBQUMsOEJBQThCO01BQUFELFFBQUEsRUFBQztJQUU5QyxDQUFLLENBQUM7RUFBQSxDQUNILENBQUM7QUFFViIsImlnbm9yZUxpc3QiOltdfQ==

@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  Upload, 
-  Play, 
-  Monitor, 
-  Shield, 
-  Settings, 
-  BarChart3, 
+import React, { useState, useEffect } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  Upload,
+  Play,
+  Monitor,
+  Shield,
+  Settings,
+  BarChart3,
   Activity,
   AlertTriangle,
   CheckCircle,
@@ -30,8 +30,8 @@ import {
   TrendingUp,
   Cpu,
   HardDrive,
-  Network
-} from 'lucide-react';
+  Network,
+} from "lucide-react";
 
 // CardTitle component for consistent styling
 interface CardTitleProps {
@@ -39,7 +39,7 @@ interface CardTitleProps {
   className?: string;
 }
 
-const CardTitle: React.FC<CardTitleProps> = ({ children, className = '' }) => (
+const CardTitle: React.FC<CardTitleProps> = ({ children, className = "" }) => (
   <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
 );
 
@@ -52,9 +52,9 @@ interface Model {
   name: string;
   type: string;
   version: string;
-  status: 'active' | 'inactive' | 'deployed' | 'error';
+  status: "active" | "inactive" | "deployed" | "error";
   performance: number;
-  security: 'secure' | 'warning' | 'vulnerable';
+  security: "secure" | "warning" | "vulnerable";
   lastUpdated: string;
 }
 
@@ -63,9 +63,9 @@ interface Space {
   name: string;
   type: string;
   domain: string;
-  status: 'active' | 'inactive' | 'deployed' | 'error';
+  status: "active" | "inactive" | "deployed" | "error";
   performance: number;
-  security: 'secure' | 'warning' | 'vulnerable';
+  security: "secure" | "warning" | "vulnerable";
   lastUpdated: string;
 }
 
@@ -74,9 +74,9 @@ interface Dataset {
   name: string;
   type: string;
   version: string;
-  status: 'active' | 'inactive' | 'deployed' | 'error';
+  status: "active" | "inactive" | "deployed" | "error";
   size: string;
-  security: 'secure' | 'warning' | 'vulnerable';
+  security: "secure" | "warning" | "vulnerable";
   lastUpdated: string;
 }
 
@@ -85,22 +85,22 @@ interface Inference {
   name: string;
   modelId: string;
   endpoint: string;
-  status: 'active' | 'inactive' | 'scaling' | 'error';
+  status: "active" | "inactive" | "scaling" | "error";
   requests: number;
   latency: number;
-  security: 'secure' | 'warning' | 'vulnerable';
+  security: "secure" | "warning" | "vulnerable";
   lastUpdated: string;
 }
 
 interface EnterpriseMetrics {
   security: {
-    status: 'secure' | 'warning' | 'vulnerable';
+    status: "secure" | "warning" | "vulnerable";
     threats: number;
     vulnerabilities: number;
     lastScan: string;
   };
   compliance: {
-    status: 'compliant' | 'warning' | 'non-compliant';
+    status: "compliant" | "warning" | "non-compliant";
     gdpr: boolean;
     hipaa: boolean;
     sox: boolean;
@@ -120,9 +120,25 @@ export default function QVillage({ isMaster }: QVillageProps) {
   const [datasets, setDatasets] = useState<Dataset[]>([]);
   const [inference, setInference] = useState<Inference[]>([]);
   const [enterprise, setEnterprise] = useState<EnterpriseMetrics>({
-    security: { status: 'secure', threats: 0, vulnerabilities: 0, lastScan: new Date().toISOString() },
-    compliance: { status: 'compliant', gdpr: true, hipaa: false, sox: true, lastAudit: new Date().toISOString() },
-    performance: { totalRequests: 0, averageLatency: 0, uptime: 100, lastUpdated: new Date().toISOString() }
+    security: {
+      status: "secure",
+      threats: 0,
+      vulnerabilities: 0,
+      lastScan: new Date().toISOString(),
+    },
+    compliance: {
+      status: "compliant",
+      gdpr: true,
+      hipaa: false,
+      sox: true,
+      lastAudit: new Date().toISOString(),
+    },
+    performance: {
+      totalRequests: 0,
+      averageLatency: 0,
+      uptime: 100,
+      lastUpdated: new Date().toISOString(),
+    },
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -139,96 +155,96 @@ export default function QVillage({ isMaster }: QVillageProps) {
       // Simulate loading data from QMOI Hugging Face clone
       const mockModels: Model[] = [
         {
-          id: '1',
-          name: 'qmoi-transformer-v1',
-          type: 'transformer',
-          version: '1.0.0',
-          status: 'deployed',
+          id: "1",
+          name: "qmoi-transformer-v1",
+          type: "transformer",
+          version: "1.0.0",
+          status: "deployed",
           performance: 95,
-          security: 'secure',
-          lastUpdated: new Date().toISOString()
+          security: "secure",
+          lastUpdated: new Date().toISOString(),
         },
         {
-          id: '2',
-          name: 'qmoi-bert-large',
-          type: 'bert',
-          version: '2.1.0',
-          status: 'active',
+          id: "2",
+          name: "qmoi-bert-large",
+          type: "bert",
+          version: "2.1.0",
+          status: "active",
           performance: 88,
-          security: 'secure',
-          lastUpdated: new Date().toISOString()
-        }
+          security: "secure",
+          lastUpdated: new Date().toISOString(),
+        },
       ];
 
       const mockSpaces: Space[] = [
         {
-          id: '1',
-          name: 'qmoi-demo-app',
-          type: 'gradio',
-          domain: 'demo.qmoi.com',
-          status: 'deployed',
+          id: "1",
+          name: "qmoi-demo-app",
+          type: "gradio",
+          domain: "demo.qmoi.com",
+          status: "deployed",
           performance: 92,
-          security: 'secure',
-          lastUpdated: new Date().toISOString()
+          security: "secure",
+          lastUpdated: new Date().toISOString(),
         },
         {
-          id: '2',
-          name: 'qmoi-interactive-chat',
-          type: 'streamlit',
-          domain: 'chat.qmoi.com',
-          status: 'active',
+          id: "2",
+          name: "qmoi-interactive-chat",
+          type: "streamlit",
+          domain: "chat.qmoi.com",
+          status: "active",
           performance: 87,
-          security: 'secure',
-          lastUpdated: new Date().toISOString()
-        }
+          security: "secure",
+          lastUpdated: new Date().toISOString(),
+        },
       ];
 
       const mockDatasets: Dataset[] = [
         {
-          id: '1',
-          name: 'qmoi-training-data',
-          type: 'text',
-          version: '1.0.0',
-          status: 'deployed',
-          size: '2.5GB',
-          security: 'secure',
-          lastUpdated: new Date().toISOString()
+          id: "1",
+          name: "qmoi-training-data",
+          type: "text",
+          version: "1.0.0",
+          status: "deployed",
+          size: "2.5GB",
+          security: "secure",
+          lastUpdated: new Date().toISOString(),
         },
         {
-          id: '2',
-          name: 'qmoi-validation-set',
-          type: 'text',
-          version: '1.1.0',
-          status: 'active',
-          size: '500MB',
-          security: 'secure',
-          lastUpdated: new Date().toISOString()
-        }
+          id: "2",
+          name: "qmoi-validation-set",
+          type: "text",
+          version: "1.1.0",
+          status: "active",
+          size: "500MB",
+          security: "secure",
+          lastUpdated: new Date().toISOString(),
+        },
       ];
 
       const mockInference: Inference[] = [
         {
-          id: '1',
-          name: 'nlp-api',
-          modelId: 'qmoi-transformer-v1',
-          endpoint: 'api.qmoi.com/nlp',
-          status: 'active',
+          id: "1",
+          name: "nlp-api",
+          modelId: "qmoi-transformer-v1",
+          endpoint: "api.qmoi.com/nlp",
+          status: "active",
           requests: 1500,
           latency: 45,
-          security: 'secure',
-          lastUpdated: new Date().toISOString()
+          security: "secure",
+          lastUpdated: new Date().toISOString(),
         },
         {
-          id: '2',
-          name: 'chat-api',
-          modelId: 'qmoi-bert-large',
-          endpoint: 'api.qmoi.com/chat',
-          status: 'active',
+          id: "2",
+          name: "chat-api",
+          modelId: "qmoi-bert-large",
+          endpoint: "api.qmoi.com/chat",
+          status: "active",
           requests: 2300,
           latency: 32,
-          security: 'secure',
-          lastUpdated: new Date().toISOString()
-        }
+          security: "secure",
+          lastUpdated: new Date().toISOString(),
+        },
       ];
 
       setModels(mockModels);
@@ -237,7 +253,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
       setInference(mockInference);
       setError(null);
     } catch (err) {
-      setError('Failed to load QVillage data');
+      setError("Failed to load QVillage data");
     } finally {
       setLoading(false);
     }
@@ -245,12 +261,12 @@ export default function QVillage({ isMaster }: QVillageProps) {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'active':
-      case 'deployed':
+      case "active":
+      case "deployed":
         return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'inactive':
+      case "inactive":
         return <Clock className="h-4 w-4 text-yellow-500" />;
-      case 'error':
+      case "error":
         return <XCircle className="h-4 w-4 text-red-500" />;
       default:
         return <Activity className="h-4 w-4 text-gray-500" />;
@@ -259,11 +275,19 @@ export default function QVillage({ isMaster }: QVillageProps) {
 
   const getSecurityBadge = (security: string) => {
     switch (security) {
-      case 'secure':
-        return <Badge variant="default" className="bg-green-500">Secure</Badge>;
-      case 'warning':
-        return <Badge variant="secondary" className="bg-yellow-500">Warning</Badge>;
-      case 'vulnerable':
+      case "secure":
+        return (
+          <Badge variant="default" className="bg-green-500">
+            Secure
+          </Badge>
+        );
+      case "warning":
+        return (
+          <Badge variant="secondary" className="bg-yellow-500">
+            Warning
+          </Badge>
+        );
+      case "vulnerable":
         return <Badge variant="destructive">Vulnerable</Badge>;
       default:
         return <Badge variant="outline">Unknown</Badge>;
@@ -283,7 +307,8 @@ export default function QVillage({ isMaster }: QVillageProps) {
           <Alert>
             <AlertTriangle className="h-4 w-4" />
             <AlertDescription>
-              QVillage is restricted to master access only. Only the master can view and manage Hugging Face features.
+              QVillage is restricted to master access only. Only the master can
+              view and manage Hugging Face features.
             </AlertDescription>
           </Alert>
         </CardContent>
@@ -304,19 +329,27 @@ export default function QVillage({ isMaster }: QVillageProps) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
             <div className="flex items-center gap-2">
               <Database className="h-4 w-4 text-blue-500" />
-              <span className="text-sm font-medium">Models: {models.length}</span>
+              <span className="text-sm font-medium">
+                Models: {models.length}
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <Code className="h-4 w-4 text-green-500" />
-              <span className="text-sm font-medium">Spaces: {spaces.length}</span>
+              <span className="text-sm font-medium">
+                Spaces: {spaces.length}
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <HardDrive className="h-4 w-4 text-purple-500" />
-              <span className="text-sm font-medium">Datasets: {datasets.length}</span>
+              <span className="text-sm font-medium">
+                Datasets: {datasets.length}
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <Zap className="h-4 w-4 text-orange-500" />
-              <span className="text-sm font-medium">Inference: {inference.length}</span>
+              <span className="text-sm font-medium">
+                Inference: {inference.length}
+              </span>
             </div>
           </div>
 
@@ -359,7 +392,9 @@ export default function QVillage({ isMaster }: QVillageProps) {
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2">
                               <BarChart3 className="h-4 w-4" />
-                              <span className="text-sm">Performance: {model.performance}%</span>
+                              <span className="text-sm">
+                                Performance: {model.performance}%
+                              </span>
                             </div>
                             {getSecurityBadge(model.security)}
                           </div>
@@ -408,7 +443,9 @@ export default function QVillage({ isMaster }: QVillageProps) {
                             </div>
                             <div className="flex items-center gap-2">
                               <BarChart3 className="h-4 w-4" />
-                              <span className="text-sm">Performance: {space.performance}%</span>
+                              <span className="text-sm">
+                                Performance: {space.performance}%
+                              </span>
                             </div>
                             {getSecurityBadge(space.security)}
                           </div>
@@ -454,7 +491,9 @@ export default function QVillage({ isMaster }: QVillageProps) {
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2">
                               <HardDrive className="h-4 w-4" />
-                              <span className="text-sm">Size: {dataset.size}</span>
+                              <span className="text-sm">
+                                Size: {dataset.size}
+                              </span>
                             </div>
                             {getSecurityBadge(dataset.security)}
                           </div>
@@ -499,15 +538,21 @@ export default function QVillage({ isMaster }: QVillageProps) {
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2">
                               <Network className="h-4 w-4" />
-                              <span className="text-sm">{endpoint.endpoint}</span>
+                              <span className="text-sm">
+                                {endpoint.endpoint}
+                              </span>
                             </div>
                             <div className="flex items-center gap-2">
                               <TrendingUp className="h-4 w-4" />
-                              <span className="text-sm">{endpoint.requests} req/min</span>
+                              <span className="text-sm">
+                                {endpoint.requests} req/min
+                              </span>
                             </div>
                             <div className="flex items-center gap-2">
                               <Cpu className="h-4 w-4" />
-                              <span className="text-sm">{endpoint.latency}ms</span>
+                              <span className="text-sm">
+                                {endpoint.latency}ms
+                              </span>
                             </div>
                             {getSecurityBadge(endpoint.security)}
                           </div>
@@ -545,15 +590,23 @@ export default function QVillage({ isMaster }: QVillageProps) {
                       </div>
                       <div className="grid grid-cols-3 gap-4">
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-red-500">{enterprise.security.threats}</div>
+                          <div className="text-2xl font-bold text-red-500">
+                            {enterprise.security.threats}
+                          </div>
                           <div className="text-sm text-gray-500">Threats</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-yellow-500">{enterprise.security.vulnerabilities}</div>
-                          <div className="text-sm text-gray-500">Vulnerabilities</div>
+                          <div className="text-2xl font-bold text-yellow-500">
+                            {enterprise.security.vulnerabilities}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            Vulnerabilities
+                          </div>
                         </div>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-green-500">{enterprise.performance.uptime}%</div>
+                          <div className="text-2xl font-bold text-green-500">
+                            {enterprise.performance.uptime}%
+                          </div>
                           <div className="text-sm text-gray-500">Uptime</div>
                         </div>
                       </div>
@@ -572,26 +625,38 @@ export default function QVillage({ isMaster }: QVillageProps) {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <span>Overall Status</span>
-                        <Badge variant={enterprise.compliance.status === 'compliant' ? 'default' : 'destructive'}>
+                        <Badge
+                          variant={
+                            enterprise.compliance.status === "compliant"
+                              ? "default"
+                              : "destructive"
+                          }
+                        >
                           {enterprise.compliance.status}
                         </Badge>
                       </div>
                       <div className="grid grid-cols-3 gap-4">
                         <div className="text-center">
-                          <div className={`text-2xl font-bold ${enterprise.compliance.gdpr ? 'text-green-500' : 'text-red-500'}`}>
-                            {enterprise.compliance.gdpr ? '✓' : '✗'}
+                          <div
+                            className={`text-2xl font-bold ${enterprise.compliance.gdpr ? "text-green-500" : "text-red-500"}`}
+                          >
+                            {enterprise.compliance.gdpr ? "✓" : "✗"}
                           </div>
                           <div className="text-sm text-gray-500">GDPR</div>
                         </div>
                         <div className="text-center">
-                          <div className={`text-2xl font-bold ${enterprise.compliance.hipaa ? 'text-green-500' : 'text-red-500'}`}>
-                            {enterprise.compliance.hipaa ? '✓' : '✗'}
+                          <div
+                            className={`text-2xl font-bold ${enterprise.compliance.hipaa ? "text-green-500" : "text-red-500"}`}
+                          >
+                            {enterprise.compliance.hipaa ? "✓" : "✗"}
                           </div>
                           <div className="text-sm text-gray-500">HIPAA</div>
                         </div>
                         <div className="text-center">
-                          <div className={`text-2xl font-bold ${enterprise.compliance.sox ? 'text-green-500' : 'text-red-500'}`}>
-                            {enterprise.compliance.sox ? '✓' : '✗'}
+                          <div
+                            className={`text-2xl font-bold ${enterprise.compliance.sox ? "text-green-500" : "text-red-500"}`}
+                          >
+                            {enterprise.compliance.sox ? "✓" : "✗"}
                           </div>
                           <div className="text-sm text-gray-500">SOX</div>
                         </div>
@@ -611,15 +676,25 @@ export default function QVillage({ isMaster }: QVillageProps) {
                     <div className="space-y-4">
                       <div className="grid grid-cols-3 gap-4">
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-blue-500">{enterprise.performance.totalRequests.toLocaleString()}</div>
-                          <div className="text-sm text-gray-500">Total Requests</div>
+                          <div className="text-2xl font-bold text-blue-500">
+                            {enterprise.performance.totalRequests.toLocaleString()}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            Total Requests
+                          </div>
                         </div>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-green-500">{enterprise.performance.averageLatency}ms</div>
-                          <div className="text-sm text-gray-500">Avg Latency</div>
+                          <div className="text-2xl font-bold text-green-500">
+                            {enterprise.performance.averageLatency}ms
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            Avg Latency
+                          </div>
                         </div>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-purple-500">{enterprise.performance.uptime}%</div>
+                          <div className="text-2xl font-bold text-purple-500">
+                            {enterprise.performance.uptime}%
+                          </div>
                           <div className="text-sm text-gray-500">Uptime</div>
                         </div>
                       </div>
@@ -633,4 +708,4 @@ export default function QVillage({ isMaster }: QVillageProps) {
       </Card>
     </div>
   );
-} 
+}

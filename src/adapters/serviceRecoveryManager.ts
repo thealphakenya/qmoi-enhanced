@@ -21,8 +21,8 @@ export interface RecoveryEvent {
 class ServiceRecoveryManager {
   private activeRecoveries: Map<string, NodeJS.Timeout> = new Map();
   private recoveryHistory: RecoveryEvent[] = [];
-  private maxHistorySize: number = 1000;
-  private enabled: boolean = false;
+  private maxHistorySize = 1000;
+  private enabled = false;
 
   private strategies: Map<string, RecoveryStrategy> = new Map([
     [
@@ -98,7 +98,7 @@ class ServiceRecoveryManager {
   async recover(
     service: string,
     reason: string,
-    recoveryFn: () => Promise<void>
+    recoveryFn: () => Promise<void>,
   ): Promise<boolean> {
     if (!this.enabled) {
       console.warn("[Recovery] Recovery attempted but manager is disabled");
@@ -131,7 +131,7 @@ class ServiceRecoveryManager {
         });
 
         console.info(
-          `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`
+          `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`,
         );
         return true;
       } catch (err) {
@@ -145,8 +145,8 @@ class ServiceRecoveryManager {
 
           console.warn(
             `[Recovery] Attempt ${attemptCount} failed, retrying in ${Math.round(
-              backoff
-            )}ms: ${lastError.message}`
+              backoff,
+            )}ms: ${lastError.message}`,
           );
 
           // Wait before next attempt
@@ -165,7 +165,7 @@ class ServiceRecoveryManager {
     });
 
     console.error(
-      `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`
+      `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`,
     );
     return false;
   }
@@ -174,10 +174,10 @@ class ServiceRecoveryManager {
     service: string,
     reason: string,
     recoveryFn: () => Promise<void>,
-    delayMs: number
+    delayMs: number,
   ): void {
     console.debug(
-      `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`
+      `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`,
     );
 
     const timer = setTimeout(() => {

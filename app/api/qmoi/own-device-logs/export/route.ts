@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
         apiAuth.ok
           ? { error: "Master access required" }
           : apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.ok ? 403 : apiAuth.response?.status || 403 }
+        { status: apiAuth.ok ? 403 : apiAuth.response?.status || 403 },
       );
     }
 
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     if (!validTypes.includes(type)) {
       return NextResponse.json(
         { error: "Invalid export type" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -48,14 +48,14 @@ export async function POST(request: NextRequest) {
     const loggerScript = path.join(
       projectRoot,
       "scripts",
-      "qmoi_own_device_logger.py"
+      "qmoi_own_device_logger.py",
     );
 
     // Check if logger script exists
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
         { error: "QMOI Own Device Logger not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
     // Execute the logger script with export
     const { stdout, stderr } = await execAsync(
       `python "${loggerScript}" ${args.join(" ")}`,
-      { cwd: projectRoot }
+      { cwd: projectRoot },
     );
 
     if (stderr) {
@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
       console.error("Failed to parse export data:", parseError);
       return NextResponse.json(
         { error: "Failed to parse export data" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
     console.error("QMOI Own Device Export API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

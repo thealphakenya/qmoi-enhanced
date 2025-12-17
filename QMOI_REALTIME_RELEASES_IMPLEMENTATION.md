@@ -19,16 +19,18 @@ The QMOI Real-Time GitHub Release System provides **fully automated, hands-off r
 ✅ **Real-Time Asset Discovery** - Finds all platform builds automatically  
 ✅ **SHA256 Verification** - Generates checksums for every download  
 ✅ **Retry Logic** - Handles network failures gracefully  
-✅ **Zero-Touch Operation** - Completely automated after setup  
+✅ **Zero-Touch Operation** - Completely automated after setup
 
 ---
 
 ## 📦 Components Delivered
 
 ### 1. GitHub Actions Workflow
+
 **File:** `.github/workflows/publish-releases-realtime.yml` (15 KB)
 
 **What it does:**
+
 - Triggers automatically on git tags (v1.2.3, qmoi-v*, q-*)
 - Or manually via GitHub Actions web interface
 - Discovers all platform builds across directories
@@ -38,6 +40,7 @@ The QMOI Real-Time GitHub Release System provides **fully automated, hands-off r
 - Includes retry logic for failed uploads
 
 **Trigger:** Any of these creates a release
+
 ```bash
 git tag v1.2.3 && git push origin v1.2.3
 git tag qmoi-v1.3.0 && git push origin qmoi-v1.3.0
@@ -49,9 +52,11 @@ git tag q-city-v2.1.0 && git push origin q-city-v2.1.0
 ---
 
 ### 2. Bash Release Publisher
+
 **File:** `publish-releases-realtime.sh` (22 KB, executable)
 
 **What it does:**
+
 - Manual release publishing from command line
 - Discovers assets in multiple directories
 - Classifies platforms (Windows, macOS, Linux, Android, iOS, etc.)
@@ -61,6 +66,7 @@ git tag q-city-v2.1.0 && git push origin q-city-v2.1.0
 - Provides detailed logging and statistics
 
 **Usage:**
+
 ```bash
 # Production release
 ./publish-releases-realtime.sh --version v1.2.3
@@ -76,6 +82,7 @@ git tag q-city-v2.1.0 && git push origin q-city-v2.1.0
 ```
 
 **Requirements:**
+
 - GitHub CLI (`gh` command)
 - Git
 - sha256sum utility
@@ -84,9 +91,11 @@ git tag q-city-v2.1.0 && git push origin q-city-v2.1.0
 ---
 
 ### 3. Python Release Publisher
+
 **File:** `publish-releases-realtime.py` (17 KB, executable)
 
 **What it does:**
+
 - Advanced release publishing in Python
 - Parallel checksum generation (4 workers by default)
 - Structured JSON configuration support
@@ -95,6 +104,7 @@ git tag q-city-v2.1.0 && git push origin q-city-v2.1.0
 - Detailed statistics and reporting
 
 **Usage:**
+
 ```bash
 # Publish release
 python publish-releases-realtime.py --version v1.2.3
@@ -107,6 +117,7 @@ python publish-releases-realtime.py --version v1.2.3 --verbose
 ```
 
 **Features:**
+
 - Parallel processing for speed
 - JSON configuration support
 - Comprehensive logging
@@ -115,9 +126,11 @@ python publish-releases-realtime.py --version v1.2.3 --verbose
 ---
 
 ### 4. Real-Time Release Guide
+
 **File:** `GITHUB_RELEASES_REALTIME_GUIDE.md` (18 KB)
 
 Complete documentation including:
+
 - Quick start guide
 - Detailed usage instructions
 - Architecture overview
@@ -132,9 +145,11 @@ Complete documentation including:
 ---
 
 ### 5. Updated Releases Index
+
 **File:** `GITHUB_RELEASES_INDEX.md` (updated)
 
 Enhanced with:
+
 - Real-time release tools section
 - GitHub Actions workflow info
 - Quick start instructions
@@ -148,6 +163,7 @@ Enhanced with:
 ### 🔍 Intelligent Asset Discovery
 
 Automatically finds all platform-specific builds:
+
 ```
 ✅ Windows:       .exe, .msi files
 ✅ macOS:         .dmg files
@@ -160,6 +176,7 @@ Automatically finds all platform-specific builds:
 ```
 
 Search directories scanned:
+
 - `Qmoi_downloaded_apps/`
 - `dist/`
 - `build/`
@@ -171,6 +188,7 @@ Search directories scanned:
 ### 🔐 Automatic Checksum Generation
 
 SHA256 checksums generated for every download:
+
 ```bash
 # Verify any download with:
 sha256sum -c qmoi-ai.exe.sha256
@@ -188,6 +206,7 @@ Each asset gets a `.sha256` companion file.
 ### 📝 Smart Release Notes
 
 Auto-generated comprehensive release notes include:
+
 - All 6 QMOI apps and versions
 - Platform matrix (12+ types)
 - Download instructions
@@ -198,6 +217,7 @@ Auto-generated comprehensive release notes include:
 ### 🌍 Multi-Platform Classification
 
 Automatic platform detection and organization:
+
 - 🪟 Windows (x64, ARM64)
 - 🍎 macOS (Intel, Apple Silicon)
 - 🐧 Linux (DEB, RPM, AppImage)
@@ -279,14 +299,14 @@ python publish-releases-realtime.py --version v1.2.3
 
 ### 6 QMOI Apps
 
-| App | Current Version | Status |
-|-----|-----------------|--------|
-| QMOI AI | v1.2.3 | ✅ Production Ready |
-| QCity | v2.0.1 | ✅ Production Ready |
-| QShare | v1.0.0 | ✅ Production Ready |
-| Yap | v1.1.0 | ✅ Production Ready |
-| QStore | v1.0.0 | ✅ Production Ready |
-| QVillage | v1.0.0 | ✅ Production Ready |
+| App      | Current Version | Status              |
+| -------- | --------------- | ------------------- |
+| QMOI AI  | v1.2.3          | ✅ Production Ready |
+| QCity    | v2.0.1          | ✅ Production Ready |
+| QShare   | v1.0.0          | ✅ Production Ready |
+| Yap      | v1.1.0          | ✅ Production Ready |
+| QStore   | v1.0.0          | ✅ Production Ready |
+| QVillage | v1.0.0          | ✅ Production Ready |
 
 ### 12+ Platforms
 
@@ -301,11 +321,13 @@ python publish-releases-realtime.py --version v1.2.3
 All releases available at:
 
 1. **GitHub Releases** (Primary)
+
    ```
    https://github.com/thealphakenya/qmoi-enhanced/releases
    ```
 
 2. **Direct Downloads**
+
    ```
    https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe
    https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.dmg
@@ -314,6 +336,7 @@ All releases available at:
    ```
 
 3. **Official Portal**
+
    ```
    https://github.com/thealphakenya/qmoi-enhanced/releases
    ```
@@ -358,9 +381,11 @@ sha256sum -c qmoi-ai.exe.sha256
 ## 📖 Documentation
 
 ### Complete Guide
+
 **File:** `GITHUB_RELEASES_REALTIME_GUIDE.md`
 
 Comprehensive documentation with:
+
 - Quick start guide
 - Architecture overview
 - Usage instructions
@@ -372,9 +397,11 @@ Comprehensive documentation with:
 - CI/CD integration
 
 ### Index
+
 **File:** `GITHUB_RELEASES_INDEX.md`
 
 Master index with:
+
 - All documentation files
 - Release tools overview
 - Quick start
@@ -383,6 +410,7 @@ Master index with:
 - Support information
 
 ### Other Resources
+
 - `GITHUB_RELEASES_COMPLETE_GUIDE.md` - Installation guide
 - `GITHUB_RELEASES_QUICK_REFERENCE.md` - Quick lookup
 - `GITHUB_RELEASES_CONFIG.json` - Configuration
@@ -407,6 +435,7 @@ export GH_TOKEN="your_github_token"
 ### GitHub Secrets
 
 Set in repository Settings → Secrets and Variables → Actions:
+
 - `GH_TOKEN` - Personal Access Token with `repo` scope
 
 ### Custom Asset Directories
@@ -414,6 +443,7 @@ Set in repository Settings → Secrets and Variables → Actions:
 Edit scripts to add more search locations:
 
 **Bash:**
+
 ```bash
 # Line ~250 in publish-releases-realtime.sh
 asset_dirs=(
@@ -423,6 +453,7 @@ asset_dirs=(
 ```
 
 **Python:**
+
 ```python
 # Line ~330 in publish-releases-realtime.py
 search_dirs = [
@@ -436,6 +467,7 @@ search_dirs = [
 ## 🐛 Troubleshooting
 
 ### "GitHub CLI not found"
+
 ```bash
 # Install gh
 brew install gh        # macOS
@@ -444,12 +476,14 @@ winget install GitHub.cli  # Windows
 ```
 
 ### "Not authenticated"
+
 ```bash
 gh auth login
 # Follow interactive prompts
 ```
 
 ### "No assets discovered"
+
 ```bash
 # Check directories exist
 ls -la Qmoi_downloaded_apps/
@@ -460,6 +494,7 @@ find . -name "*.exe" -o -name "*.apk" 2>/dev/null
 ```
 
 ### "Upload failed"
+
 ```bash
 # Check GitHub status
 curl https://www.githubstatus.com/api/v2/status.json
@@ -469,6 +504,7 @@ curl https://www.githubstatus.com/api/v2/status.json
 ```
 
 ### "Rate limit exceeded"
+
 ```bash
 # Wait 1 hour for reset
 # Or use personal access token for higher limits
@@ -482,11 +518,13 @@ See `GITHUB_RELEASES_REALTIME_GUIDE.md` for more troubleshooting.
 ## 📊 Performance Metrics
 
 ### Typical Release
+
 - **Size:** 800 MB - 1.5 GB (all platforms)
 - **Files:** 15-20 artifacts + checksums
 - **Time:** 5-10 minutes total
 
 ### Processing Times
+
 - Asset Discovery: ~20 seconds
 - Checksum Generation: ~1 minute
 - Release Creation: ~10 seconds
@@ -494,6 +532,7 @@ See `GITHUB_RELEASES_REALTIME_GUIDE.md` for more troubleshooting.
 - **Total:** ~5-10 minutes
 
 ### Success Rate
+
 - Initial upload success: ~99%
 - Retry recovery: ~99.9%
 - Final success rate: ~99.99%
@@ -508,12 +547,13 @@ See `GITHUB_RELEASES_REALTIME_GUIDE.md` for more troubleshooting.
    - No manual steps required
 
 2. **Test in Draft Mode**
+
    ```bash
    # Test release first
    ./publish-releases-realtime.sh --version v1.3.0-test --draft
-   
+
    # Verify all assets present
-   
+
    # Publish final release
    ./publish-releases-realtime.sh --version v1.3.0
    ```
@@ -605,6 +645,7 @@ See `GITHUB_RELEASES_REALTIME_GUIDE.md` for more troubleshooting.
 ## 🎯 Next Steps
 
 1. **Use GitHub Actions (Recommended)**
+
    ```bash
    git tag v1.2.3
    git push origin v1.2.3
@@ -612,6 +653,7 @@ See `GITHUB_RELEASES_REALTIME_GUIDE.md` for more troubleshooting.
    ```
 
 2. **Test Manual Publishing (if needed)**
+
    ```bash
    ./publish-releases-realtime.sh --version v1.3.0 --draft
    ```
@@ -642,6 +684,7 @@ See `GITHUB_RELEASES_REALTIME_GUIDE.md` for more troubleshooting.
 5. Test and deploy
 
 **Current support:**
+
 - ✅ 6 QMOI apps
 - ✅ 12+ platforms
 - ✅ 20+ file types
@@ -658,7 +701,7 @@ The QMOI Real-Time GitHub Release System provides:
 ✅ **Reliable** - Retry logic and error handling  
 ✅ **Verified** - SHA256 checksums for every download  
 ✅ **Well-Documented** - Complete guides and examples  
-✅ **Production-Ready** - Used for all 6 QMOI apps  
+✅ **Production-Ready** - Used for all 6 QMOI apps
 
 **All 6 QMOI apps are now available on GitHub Releases with real-time publishing!** 🎉
 

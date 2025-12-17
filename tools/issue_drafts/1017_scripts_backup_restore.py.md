@@ -42,20 +42,20 @@ class BackupManager:
     def _setup_logger(self) -> logging.Logger:
         logger = logging.getLogger('BackupManager')
         logger.setLevel(logging.INFO)
-        
+
         # Create handlers
         file_handler = logging.FileHandler('backup_restore.log')
         console_handler = logging.StreamHandler()
-        
+
         # Create formatters and add it to handlers
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         file_handler.setFormatter(formatter)
         console_handler.setFormatter(formatter)
-        
+
         # Add handlers to the logger
         logger.addHandler(file_handler)
         logger.addHandler(console_handler)
-        
+
         return logger
 
     def _load_config(self, config_path: Optional[str]) -> Dict:

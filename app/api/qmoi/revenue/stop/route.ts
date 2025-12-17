@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
         apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.response?.status || 401 }
+        { status: apiAuth.response?.status || 401 },
       );
     }
 
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     console.error("Stop revenue engine error:", error);
     return NextResponse.json(
       { error: "Failed to stop revenue engine" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

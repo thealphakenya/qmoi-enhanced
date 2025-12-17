@@ -21,9 +21,7 @@
       "markdown",
       "verification"
     ],
-    "stages_failed": [
-      "validation"
-    ]
+    "stages_failed": ["validation"]
   },
   "checklist": {
     "credentials_verified": true,

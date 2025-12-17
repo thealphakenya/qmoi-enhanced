@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { QmoiMemory } from '../src/services/QmoiMemory';
-import { useMaster } from './MasterContext';
-import { Button } from './ui/button';
+import React, { useEffect, useState } from "react";
+import { QmoiMemory } from "../src/services/QmoiMemory";
+import { useMaster } from "./MasterContext";
+import { Button } from "./ui/button";
 
 export const QmoiMemoryPanel: React.FC = () => {
   const { isMaster } = useMaster();
@@ -12,15 +12,15 @@ export const QmoiMemoryPanel: React.FC = () => {
   useEffect(() => {
     if (isMaster) {
       setLoading(true);
-      setMemory(QmoiMemory.list('master'));
+      setMemory(QmoiMemory.list("master"));
       setLoading(false);
     }
   }, [isMaster]);
 
   const handleEvolve = async () => {
     setEvolving(true);
-    await fetch('/api/trigger-evolution', { method: 'POST' }); // Assume this endpoint runs evolution
-    setMemory(QmoiMemory.list('master'));
+    await fetch("/api/trigger-evolution", { method: "POST" }); // Assume this endpoint runs evolution
+    setMemory(QmoiMemory.list("master"));
     setEvolving(false);
   };
 
@@ -28,18 +28,29 @@ export const QmoiMemoryPanel: React.FC = () => {
 
   return (
     <div className="p-4 bg-gray-900 text-green-200 rounded-lg shadow mt-4">
-      <h3 className="font-semibold mb-2">QMOI Memory & Evolution (Master Only)</h3>
-      <Button size="sm" variant="outline" onClick={handleEvolve} disabled={evolving}>
-        {evolving ? 'Evolving...' : 'Trigger Evolution Cycle'}
+      <h3 className="font-semibold mb-2">
+        QMOI Memory & Evolution (Master Only)
+      </h3>
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={handleEvolve}
+        disabled={evolving}
+      >
+        {evolving ? "Evolving..." : "Trigger Evolution Cycle"}
       </Button>
       <div className="mt-4 max-h-64 overflow-y-auto">
-        {loading ? 'Loading...' : memory.map((entry, i) => (
-          <div key={i} className="mb-2 p-2 bg-gray-800 rounded">
-            <div className="text-xs text-gray-400">{entry.timestamp}</div>
-            <div className="text-sm font-mono">{JSON.stringify(entry.value)}</div>
-          </div>
-        ))}
+        {loading
+          ? "Loading..."
+          : memory.map((entry, i) => (
+              <div key={i} className="mb-2 p-2 bg-gray-800 rounded">
+                <div className="text-xs text-gray-400">{entry.timestamp}</div>
+                <div className="text-sm font-mono">
+                  {JSON.stringify(entry.value)}
+                </div>
+              </div>
+            ))}
       </div>
     </div>
   );
-}; 
+};

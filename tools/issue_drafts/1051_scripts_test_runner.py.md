@@ -56,20 +56,20 @@ class TestRunner:
     def _setup_logger(self) -> logging.Logger:
         logger = logging.getLogger('TestRunner')
         logger.setLevel(logging.INFO)
-        
+
         # Create handlers
         file_handler = logging.FileHandler('test_runner.log')
         console_handler = logging.StreamHandler()
-        
+
         # Create formatters and add it to handlers
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         file_handler.setFormatter(formatter)
         console_handler.setFormatter(formatter)
-        
+
         # Add handlers to the logger
         logger.addHandler(file_handler)
         logger.addHandler(console_handler)
-        
+
         return logger
 
     def _load_config(self, config_path: Optional[str]) -> Dict:
@@ -80,7 +80,7 @@ class TestRunner:
                     return json.load(f)
             except Exception as e:
                 self.logger.error(f"Error loading config: {str(e)}")
-            
+
 ```
 
 Notes:

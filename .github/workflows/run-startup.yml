@@ -2,9 +2,9 @@ name: Run Startup & Verification (CI)
 
 on:
   pull_request:
-    branches: [ autosync-backup-20250926-232440 ]
+    branches: [autosync-backup-20250926-232440]
   push:
-    branches: [ feature/session4-complete ]
+    branches: [feature/session4-complete]
 
 jobs:
   startup-and-verify:
@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Make scripts executable
         run: |
@@ -90,7 +90,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
       - name: Install dependencies
         run: npm install --quiet
       - name: Run lint checks
@@ -107,7 +107,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
       - name: Install dependencies
         run: npm install --quiet
       - name: Build project

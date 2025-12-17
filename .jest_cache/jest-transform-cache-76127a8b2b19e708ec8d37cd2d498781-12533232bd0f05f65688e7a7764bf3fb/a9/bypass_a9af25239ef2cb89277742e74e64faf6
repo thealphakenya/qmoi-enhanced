@@ -1,0 +1,42 @@
+6b81b1c322f21df1b73d4a710f3def52
+"use strict";
+
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all) __defProp(target, name, {
+    get: all[name],
+    enumerable: true
+  });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from)) if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+      get: () => from[key],
+      enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+    });
+  }
+  return to;
+};
+var __toCommonJS = mod => __copyProps(__defProp({}, "__esModule", {
+  value: true
+}), mod);
+var bypass_exports = {};
+__export(bypass_exports, {
+  bypass: () => bypass
+});
+module.exports = __toCommonJS(bypass_exports);
+var import_outvariant = require("outvariant");
+function bypass(input, init) {
+  const request = new Request(
+  // If given a Request instance, clone it not to exhaust
+  // the original request's body.
+  input instanceof Request ? input.clone() : input, init);
+  (0, import_outvariant.invariant)(!request.bodyUsed, 'Failed to create a bypassed request to "%s %s": given request instance already has its body read. Make sure to clone the intercepted request if you wish to read its body before bypassing it.', request.method, request.url);
+  const requestClone = request.clone();
+  requestClone.headers.append("accept", "msw/passthrough");
+  return requestClone;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJieXBhc3NfZXhwb3J0cyIsIl9fZXhwb3J0IiwiYnlwYXNzIiwibW9kdWxlIiwiZXhwb3J0cyIsIl9fdG9Db21tb25KUyIsImltcG9ydF9vdXR2YXJpYW50IiwicmVxdWlyZSIsImlucHV0IiwiaW5pdCIsInJlcXVlc3QiLCJSZXF1ZXN0IiwiY2xvbmUiLCJpbnZhcmlhbnQiLCJib2R5VXNlZCIsIm1ldGhvZCIsInVybCIsInJlcXVlc3RDbG9uZSIsImhlYWRlcnMiLCJhcHBlbmQiXSwic291cmNlcyI6WyIuLi8uLi9zcmMvY29yZS9ieXBhc3MudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgaW52YXJpYW50IH0gZnJvbSAnb3V0dmFyaWFudCdcblxuZXhwb3J0IHR5cGUgQnlwYXNzUmVxdWVzdElucHV0ID0gc3RyaW5nIHwgVVJMIHwgUmVxdWVzdFxuXG4vKipcbiAqIENyZWF0ZXMgYSBgUmVxdWVzdGAgaW5zdGFuY2UgdGhhdCB3aWxsIGFsd2F5cyBiZSBpZ25vcmVkIGJ5IE1TVy5cbiAqXG4gKiBAZXhhbXBsZVxuICogaW1wb3J0IHsgYnlwYXNzIH0gZnJvbSAnbXN3J1xuICpcbiAqIGZldGNoKGJ5cGFzcygnL3Jlc291cmNlJykpXG4gKiBmZXRjaChieXBhc3MobmV3IFVSTCgnL3Jlc291cmNlJywgJ2h0dHBzOi8vZXhhbXBsZS5jb20pKSlcbiAqIGZldGNoKGJ5cGFzcyhuZXcgUmVxdWVzdCgnaHR0cHM6Ly9leGFtcGxlLmNvbS9yZXNvdXJjZScpKSlcbiAqXG4gKiBAc2VlIHtAbGluayBodHRwczovL21zd2pzLmlvL2RvY3MvYXBpL2J5cGFzcyBgYnlwYXNzKClgIEFQSSByZWZlcmVuY2V9XG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBieXBhc3MoaW5wdXQ6IEJ5cGFzc1JlcXVlc3RJbnB1dCwgaW5pdD86IFJlcXVlc3RJbml0KTogUmVxdWVzdCB7XG4gIC8vIEFsd2F5cyBjcmVhdGUgYSBuZXcgUmVxdWVzdCBpbnN0YW5jZS5cbiAgLy8gVGhpcyB3YXksIHRoZSBcImluaXRcIiBtb2RpZmljYXRpb25zIHdpbGwgcHJvcGFnYXRlXG4gIC8vIHRvIHRoZSBieXBhc3MgcmVxdWVzdCBpbnN0YW5jZSBhdXRvbWF0aWNhbGx5LlxuICBjb25zdCByZXF1ZXN0ID0gbmV3IFJlcXVlc3QoXG4gICAgLy8gSWYgZ2l2ZW4gYSBSZXF1ZXN0IGluc3RhbmNlLCBjbG9uZSBpdCBub3QgdG8gZXhoYXVzdFxuICAgIC8vIHRoZSBvcmlnaW5hbCByZXF1ZXN0J3MgYm9keS5cbiAgICBpbnB1dCBpbnN0YW5jZW9mIFJlcXVlc3QgPyBpbnB1dC5jbG9uZSgpIDogaW5wdXQsXG4gICAgaW5pdCxcbiAgKVxuXG4gIGludmFyaWFudChcbiAgICAhcmVxdWVzdC5ib2R5VXNlZCxcbiAgICAnRmFpbGVkIHRvIGNyZWF0ZSBhIGJ5cGFzc2VkIHJlcXVlc3QgdG8gXCIlcyAlc1wiOiBnaXZlbiByZXF1ZXN0IGluc3RhbmNlIGFscmVhZHkgaGFzIGl0cyBib2R5IHJlYWQuIE1ha2Ugc3VyZSB0byBjbG9uZSB0aGUgaW50ZXJjZXB0ZWQgcmVxdWVzdCBpZiB5b3Ugd2lzaCB0byByZWFkIGl0cyBib2R5IGJlZm9yZSBieXBhc3NpbmcgaXQuJyxcbiAgICByZXF1ZXN0Lm1ldGhvZCxcbiAgICByZXF1ZXN0LnVybCxcbiAgKVxuXG4gIGNvbnN0IHJlcXVlc3RDbG9uZSA9IHJlcXVlc3QuY2xvbmUoKVxuXG4gIC8qKlxuICAgKiBTZW5kIHRoZSBpbnRlcm5hbCByZXF1ZXN0IGhlYWRlciB0aGF0IHdvdWxkIGluc3RydWN0IE1TV1xuICAgKiB0byBwZXJmb3JtIHRoaXMgcmVxdWVzdCBhcy1pcywgaWdub3JpbmcgYW55IG1hdGNoaW5nIGhhbmRsZXJzLlxuICAgKiBAbm90ZSBVc2UgdGhlIGBhY2NlcHRgIGhlYWRlciB0byBzdXBwb3J0IHNjZW5hcmlvcyB3aGVuIHRoZVxuICAgKiByZXF1ZXN0IGNhbm5vdCBoYXZlIGhlYWRlcnMgKGUuZy4gYHNlbmRCZWFjb25gIHJlcXVlc3RzKS5cbiAgICovXG4gIHJlcXVlc3RDbG9uZS5oZWFkZXJzLmFwcGVuZCgnYWNjZXB0JywgJ21zdy9wYXNzdGhyb3VnaCcpXG5cbiAgcmV0dXJuIHJlcXVlc3RDbG9uZVxufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxJQUFBQSxjQUFBO0FBQUFDLFFBQUEsQ0FBQUQsY0FBQTtFQUFBRSxNQUFBLEVBQUFBLENBQUEsS0FBQUE7QUFBQTtBQUFBQyxNQUFBLENBQUFDLE9BQUEsR0FBQUMsWUFBQSxDQUFBTCxjQUFBO0FBQUEsSUFBQU0saUJBQUEsR0FBMEJDLE9BQUE7QUFnQm5CLFNBQVNMLE9BQU9NLEtBQUEsRUFBMkJDLElBQUEsRUFBNkI7RUFJN0UsTUFBTUMsT0FBQSxHQUFVLElBQUlDLE9BQUE7RUFBQTtFQUFBO0VBR2xCSCxLQUFBLFlBQWlCRyxPQUFBLEdBQVVILEtBQUEsQ0FBTUksS0FBQSxDQUFNLElBQUlKLEtBQUEsRUFDM0NDLElBQ0Y7RUFFQSxJQUFBSCxpQkFBQSxDQUFBTyxTQUFBLEVBQ0UsQ0FBQ0gsT0FBQSxDQUFRSSxRQUFBLEVBQ1Qsa01BQ0FKLE9BQUEsQ0FBUUssTUFBQSxFQUNSTCxPQUFBLENBQVFNLEdBQ1Y7RUFFQSxNQUFNQyxZQUFBLEdBQWVQLE9BQUEsQ0FBUUUsS0FBQSxDQUFNO0VBUW5DSyxZQUFBLENBQWFDLE9BQUEsQ0FBUUMsTUFBQSxDQUFPLFVBQVUsaUJBQWlCO0VBRXZELE9BQU9GLFlBQUE7QUFDVCIsImlnbm9yZUxpc3QiOltdfQ==

@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
         apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.response?.status || 401 }
+        { status: apiAuth.response?.status || 401 },
       );
     }
 
@@ -26,15 +26,15 @@ export async function GET(request: NextRequest) {
     const transactions = qmoiRevenueEngine.getTransactionHistory
       ? qmoiRevenueEngine.getTransactionHistory(50)
       : qmoiRevenueEngine.getTransactions
-      ? qmoiRevenueEngine.getTransactions(50)
-      : [];
+        ? qmoiRevenueEngine.getTransactions(50)
+        : [];
 
     return NextResponse.json(transactions);
   } catch (error) {
     console.error("Get transactions error:", error);
     return NextResponse.json(
       { error: "Failed to get transactions" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -70,7 +70,7 @@ export default function QMOIAutoFixDashboard() {
   const [report, setReport] = useState<AutoFixReport | null>(null);
   const [isRunning, setIsRunning] = useState(false);
   const [githubStatus, setGitHubStatus] = useState<GitHubActionStatus | null>(
-    null
+    null,
   );
   const [deploymentStatus, setDeploymentStatus] = useState<string>("unknown");
   const [autoMode, setAutoMode] = useState(false);
@@ -424,7 +424,7 @@ export default function QMOIAutoFixDashboard() {
                     className="flex items-center space-x-2 p-2 border rounded"
                   >
                     {getStatusIcon(
-                      detail.type === "broken_claim" ? "error" : "completed"
+                      detail.type === "broken_claim" ? "error" : "completed",
                     )}
                     <div className="flex-1">
                       <p className="text-sm font-medium">{detail.type}</p>

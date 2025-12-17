@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,6 +16,7 @@ qmoi_validation_frontmatter: true
 # QMOI Auto-Fix Report
 
 ## Summary
+
 - **Total Errors**: 1
 - **Fixed Errors**: 0
 - **Remaining Errors**: 1
@@ -22,9 +24,11 @@ qmoi_validation_frontmatter: true
 - **Deployment Status**: failed
 
 ## Error Details
+
 - [PENDING] test: This is a test error
 
 ## Fix Details
+
 - [FAILED] clean-install: Clean install failed (0ms)
 - [FAILED] typescript-fix: TypeScript auto-fix failed (0ms)
 - [FAILED] auto-fix: Lint auto-fix failed (0ms)
@@ -36,26 +40,28 @@ qmoi_validation_frontmatter: true
 Generated at: 2025-07-11T21:23:58.980Z
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "error-fix-summary.md",
-  "validated_at": "2025-10-26T20:51:24.584917Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Auto-Fix Report"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "error-fix-summary.md",
+"validated_at": "2025-10-26T20:51:24.584917Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Auto-Fix Report"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

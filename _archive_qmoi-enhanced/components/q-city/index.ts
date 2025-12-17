@@ -4,22 +4,22 @@
  */
 
 // Main Dashboard Components
-export { default as QCityDashboard } from './QCityDashboard';
-export { default as QCityDevicePanel } from './QCityDevicePanel';
-export { default as QVillage } from './QVillage';
+export { default as QCityDashboard } from "./QCityDashboard";
+export { default as QCityDevicePanel } from "./QCityDevicePanel";
+export { default as QVillage } from "./QVillage";
 
 // Employment & Revenue
-export { default as EmploymentDashboard } from './EmploymentDashboard';
-export { default as QMOIRevenueDashboard } from './QMOIRevenueDashboard';
+export { default as EmploymentDashboard } from "./EmploymentDashboard";
+export { default as QMOIRevenueDashboard } from "./QMOIRevenueDashboard";
 
 // Biometric & Security
-export { default as QMOIBiometricManager } from './QMOIBiometricManager';
+export { default as QMOIBiometricManager } from "./QMOIBiometricManager";
 
 // Logging & Monitoring
-export { default as QMOIOwnDeviceLogs } from './QMOIOwnDeviceLogs';
+export { default as QMOIOwnDeviceLogs } from "./QMOIOwnDeviceLogs";
 
 // Onboarding
-export { default as Onboarding } from './Onboarding';
+export { default as Onboarding } from "./Onboarding";
 
 // Component Types & Interfaces
 export interface QCityComponent {
@@ -55,53 +55,82 @@ export const QCityFeatures = {
 // Component Registry
 export const QCityComponentRegistry: Record<string, QCityComponent> = {
   QCityDashboard: {
-    name: 'QCity Dashboard',
-    description: 'Main dashboard for QCity system management',
-    icon: '🏙️',
-    features: ['Master Mode Toggle', 'Device Management', 'QVillage Integration']
+    name: "QCity Dashboard",
+    description: "Main dashboard for QCity system management",
+    icon: "🏙️",
+    features: [
+      "Master Mode Toggle",
+      "Device Management",
+      "QVillage Integration",
+    ],
   },
   QCityDevicePanel: {
-    name: 'Device Management',
-    description: 'Manage connected devices and resources',
-    icon: '🖥️',
-    features: ['Device Tracking', 'Resource Allocation', 'Real-time Sync']
+    name: "Device Management",
+    description: "Manage connected devices and resources",
+    icon: "🖥️",
+    features: ["Device Tracking", "Resource Allocation", "Real-time Sync"],
   },
   QVillage: {
-    name: 'QVillage',
-    description: 'Master-only AI/ML infrastructure management',
-    icon: '🌐',
-    features: ['Model Management', 'Space Management', 'Dataset Management', 'Inference Endpoints']
+    name: "QVillage",
+    description: "Master-only AI/ML infrastructure management",
+    icon: "🌐",
+    features: [
+      "Model Management",
+      "Space Management",
+      "Dataset Management",
+      "Inference Endpoints",
+    ],
   },
   EmploymentDashboard: {
-    name: 'Employment Management',
-    description: 'Manage employees, users, and payroll',
-    icon: '👥',
-    features: ['Employee Management', 'User Management', 'Payroll', 'Revenue Tracking']
+    name: "Employment Management",
+    description: "Manage employees, users, and payroll",
+    icon: "👥",
+    features: [
+      "Employee Management",
+      "User Management",
+      "Payroll",
+      "Revenue Tracking",
+    ],
   },
   QMOIRevenueDashboard: {
-    name: 'Revenue Management',
-    description: 'Track and manage multiple revenue streams',
-    icon: '💰',
-    features: ['Revenue Tracking', 'Multiple Streams', 'Analytics', 'Reporting']
+    name: "Revenue Management",
+    description: "Track and manage multiple revenue streams",
+    icon: "💰",
+    features: [
+      "Revenue Tracking",
+      "Multiple Streams",
+      "Analytics",
+      "Reporting",
+    ],
   },
   QMOIBiometricManager: {
-    name: 'Biometric Manager',
-    description: 'Multi-factor biometric authentication',
-    icon: '🔐',
-    features: ['Fingerprint', 'Facial Recognition', 'Voice Recognition', 'Iris Scan']
+    name: "Biometric Manager",
+    description: "Multi-factor biometric authentication",
+    icon: "🔐",
+    features: [
+      "Fingerprint",
+      "Facial Recognition",
+      "Voice Recognition",
+      "Iris Scan",
+    ],
   },
   QMOIOwnDeviceLogs: {
-    name: 'Device Logs',
-    description: 'Monitor device ownership and activity logs',
-    icon: '📝',
-    features: ['Activity Tracking', 'Log Filtering', 'Device History', 'Audit Trail']
+    name: "Device Logs",
+    description: "Monitor device ownership and activity logs",
+    icon: "📝",
+    features: [
+      "Activity Tracking",
+      "Log Filtering",
+      "Device History",
+      "Audit Trail",
+    ],
   },
   Onboarding: {
-    name: 'Onboarding',
-    description: 'Setup and configuration wizard',
-    icon: '🎯',
-    features: ['Initial Setup', 'Configuration', 'First Steps']
-  }
+    name: "Onboarding",
+    description: "Setup and configuration wizard",
+    icon: "🎯",
+    features: ["Initial Setup", "Configuration", "First Steps"],
+  },
 };
 
 /**
@@ -130,9 +159,9 @@ export const QCityVersion = {
   major: 2,
   minor: 0,
   patch: 0,
-  build: 'enterprise',
-  releaseDate: '2025-12-02',
-  status: 'production'
+  build: "enterprise",
+  releaseDate: "2025-12-02",
+  status: "production",
 } as const;
 
 export default {
@@ -141,5 +170,5 @@ export default {
   features: QCityFeatures,
   getAvailableComponents,
   getComponentInfo,
-  isFeatureEnabled
+  isFeatureEnabled,
 };

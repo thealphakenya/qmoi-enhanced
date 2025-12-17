@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -13,14 +14,16 @@ qmoi_validation_frontmatter: true
 <!-- LION_VALIDATION_END -->
 
 # COMPONENTS.md
+
 ## Usage
 
 Most components are used in the main application page (`app/page.tsx`) and are integrated into the sidebar, main content, or preview sections. Some are used in specialized panels, dashboards, or as context providers. For details, see the import statements and JSX usage in `app/page.tsx` and related files.
 
 ### Example Usage
+
 ```tsx
-import { Chatbot } from '../src/components/Chatbot';
-<Chatbot />
+import { Chatbot } from "../src/components/Chatbot";
+<Chatbot />;
 ```
 
 Props and usage details are documented in each component's file.
@@ -28,6 +31,7 @@ Props and usage details are documented in each component's file.
 ---
 
 ## Automation & Enhancement
+
 - All components are designed to be lightweight, fast, and reliable.
 - QMOI memory is integrated via `QmoiMemoryPanel` and is used everywhere: in all chats, apps, and platforms. It is automated for speed, appearance, reliability, and power.
 - For production, ensure all components are styled, optimized, and tested for performance and reliability.
@@ -36,6 +40,7 @@ Props and usage details are documented in each component's file.
 ---
 
 ## For More Details
+
 - See each component's `.tsx` file for implementation and usage examples.
 - Refer to DEVCOMMANDS.md for development commands.
 - See TRACKS.md, SYNCREPOS.md, and ALLMDFILESREFS.md for automation, memory, and sync features.
@@ -95,6 +100,7 @@ Props and usage details are documented in each component's file.
 ## src/components Directory
 
 ### UI & Functional Components
+
 - AITradingRules.tsx: AI trading rules panel
 - AssetOverview.tsx: Asset overview UI
 - Chatbot.tsx: Main chatbot UI
@@ -123,6 +129,7 @@ Most components are used in the main application page (`app/page.tsx`) and are i
 ---
 
 ## How to Use
+
 - Import the component from its directory (e.g., `import { Chatbot } from '../src/components/Chatbot'`)
 - Add the component to your JSX: `<Chatbot />`
 - Pass props as needed (see each component's file for details)
@@ -130,6 +137,7 @@ Most components are used in the main application page (`app/page.tsx`) and are i
 ---
 
 ## Automation & Enhancement
+
 - All components are designed to be lightweight, fast, and reliable.
 - QMOI memory is integrated via `QmoiMemoryPanel` and can be further enhanced for use in all chats, apps, and platforms.
 - For production, ensure all components are styled, optimized, and tested for performance and reliability.
@@ -137,31 +145,34 @@ Most components are used in the main application page (`app/page.tsx`) and are i
 ---
 
 ## For More Details
+
 - See each component's `.tsx` file for implementation and usage examples.
 - Refer to DEVCOMMANDS.md for development commands.
 - See TRACKS.md, SYNCREPOS.md, and ALLMDFILESREFS.md for automation, memory, and sync features.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/COMPONENTS.md",
-  "validated_at": "2025-10-26T20:51:24.604102Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "COMPONENTS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/COMPONENTS.md",
+"validated_at": "2025-10-26T20:51:24.604102Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "COMPONENTS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

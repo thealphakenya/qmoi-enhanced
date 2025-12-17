@@ -7,6 +7,7 @@
 ## Phase 1: Workflow Validation
 
 ### Create & Push Test Release Tag
+
 ```bash
 cd /workspaces/qmoi-enhanced
 
@@ -21,6 +22,7 @@ git push origin test-v1.2.5
 ```
 
 ### Check Draft Release Status
+
 ```bash
 # List release assets (requires gh CLI installed)
 gh release view test-v1.2.5 --repo thealphakenya/qmoi-enhanced \
@@ -38,6 +40,7 @@ gh release view test-v1.2.5 --repo thealphakenya/qmoi-enhanced \
 ```
 
 ### Download & Verify a Single Asset
+
 ```bash
 # Download AppImage
 curl -L -o /tmp/qmoi_ai.AppImage \
@@ -57,6 +60,7 @@ echo "Match: $([ "$EXPECTED_SHA" = "$ACTUAL_SHA" ] && echo 'YES ✓' || echo 'NO
 ```
 
 ### Publish Draft Release
+
 ```bash
 # Option A: Using Python script
 python3 /workspaces/qmoi-enhanced/scripts/sync_to_draft_release.py \
@@ -73,6 +77,7 @@ gh release view test-v1.2.5 --repo thealphakenya/qmoi-enhanced --json isDraft
 ```
 
 ### Full Asset Verification Batch
+
 ```bash
 # Download all assets and verify all SHA256s
 cd /tmp
@@ -102,6 +107,7 @@ done
 ## Phase 2: Compliance Validation
 
 ### Generate Compliance Report Locally
+
 ```bash
 cd /workspaces/qmoi-enhanced
 
@@ -120,6 +126,7 @@ cat reports/release_compliance_report.json | jq '.alerts | length'
 ```
 
 ### Simulate Non-Compliance (Testing)
+
 ```bash
 cd /workspaces/qmoi-enhanced
 
@@ -141,6 +148,7 @@ cat reports/release_compliance_report.json | jq '.status'
 ```
 
 ### Manual Trigger of Compliance Workflow (if GitHub CLI available)
+
 ```bash
 # Dispatch workflow manually
 gh workflow run release-compliance-check.yml \
@@ -162,6 +170,7 @@ gh run view <RUN_ID> --log --repo thealphakenya/qmoi-enhanced
 ## Phase 3: Documentation Updates
 
 ### Fetch Real Release Data
+
 ```bash
 # Get v1.2.3 release info (JSON)
 gh release view v1.2.3 --repo thealphakenya/qmoi-enhanced --json \
@@ -173,6 +182,7 @@ gh release view v1.2.3 --repo thealphakenya/qmoi-enhanced --json assets \
 ```
 
 ### Update Files with Real Data
+
 ```bash
 # For GITHUB_RELEASES_RECENT.md:
 # 1. Get release info:
@@ -196,6 +206,7 @@ done
 ```
 
 ### Validate All Documentation Links
+
 ```bash
 # Extract all URLs from markdown files
 grep -r "https://" /workspaces/qmoi-enhanced/README.md \
@@ -214,6 +225,7 @@ done | sort
 ## Phase 4: Security & Cleanup
 
 ### Review Dependabot Alerts
+
 ```bash
 # List all security alerts
 gh secret list --repo thealphakenya/qmoi-enhanced 2>/dev/null || \
@@ -226,6 +238,7 @@ curl -s -H "Authorization: token $(gh auth token)" \
 ```
 
 ### Check Dependency Versions
+
 ```bash
 cd /workspaces/qmoi-enhanced
 
@@ -249,6 +262,7 @@ fi
 ```
 
 ### Commit Documentation & Fixes
+
 ```bash
 cd /workspaces/qmoi-enhanced
 
@@ -275,6 +289,7 @@ git push origin autosync-backup-20250926-232440
 ## Useful Utilities
 
 ### Watch Workflow Progress
+
 ```bash
 # Keep checking workflow status (updates every 5 sec)
 watch -n 5 'gh run list --workflow=sync-releases-from-manifest.yml \
@@ -284,6 +299,7 @@ watch -n 5 'gh run list --workflow=sync-releases-from-manifest.yml \
 ```
 
 ### Compare Manifest vs Actual Files
+
 ```bash
 cd /workspaces/qmoi-enhanced
 
@@ -302,6 +318,7 @@ find downloads -type f ! -path '*/.*' -name '*' | \
 ```
 
 ### Generate Fresh SHA256 Checksums
+
 ```bash
 cd /workspaces/qmoi-enhanced
 
@@ -313,6 +330,7 @@ git diff release_assets_manifest.json | head -50
 ```
 
 ### Test GitHub API Authentication
+
 ```bash
 # Verify PAT works
 curl -s -H "Authorization: token $(gh auth token)" \
@@ -333,6 +351,7 @@ curl -s -H "Authorization: token $(gh auth token)" \
 ## Troubleshooting Commands
 
 ### If Workflow Fails
+
 ```bash
 # Get latest workflow run
 RUN_ID=$(gh run list --workflow=sync-releases-from-manifest.yml \
@@ -347,6 +366,7 @@ gh run rerun $RUN_ID --repo thealphakenya/qmoi-enhanced
 ```
 
 ### If Assets Are Missing
+
 ```bash
 cd /workspaces/qmoi-enhanced
 
@@ -363,6 +383,7 @@ python3 scripts/sync_all_releases.py
 ```
 
 ### Restore from Backup
+
 ```bash
 cd /workspaces/qmoi-enhanced
 

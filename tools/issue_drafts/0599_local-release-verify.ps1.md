@@ -50,12 +50,12 @@ $report = [ordered]@{
 foreach ($exp in $expected) {
     $searchPath = if ($exp.path) { $exp.path } else { "." }
     $found = Get-ChildItem -Path $searchPath -Recurse -Name | Where-Object { $_ -like "*$($exp.namePattern)*" -or $_ -like "*$($exp.namePattern.Replace(' ', '*'))*" }
-    
+
     if ($found) {
         $fullPath = Join-Path $searchPath $found[0]
         if (Test-Path $fullPath) {
             $fileInfo = Get-Item $fullPath
-            $report.local_artifacts_found += @{ 
+            $report.local_artifacts_found += @{
                 platform = $exp.platform
                 name = $found[0]
                 path = $fullPath

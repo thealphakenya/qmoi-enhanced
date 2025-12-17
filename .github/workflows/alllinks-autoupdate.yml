@@ -2,7 +2,7 @@ name: ALLLINKS Autoupdate
 
 on:
   schedule:
-    - cron: '0 2 * * *' # nightly at 02:00 UTC
+    - cron: "0 2 * * *" # nightly at 02:00 UTC
   workflow_dispatch: {}
 
 permissions:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # By default network checks are off; can be enabled via repository secrets or workflow inputs
-      QMOI_ALLOW_NETWORK: 'false'
+      QMOI_ALLOW_NETWORK: "false"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install minimal deps
         run: |

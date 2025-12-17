@@ -293,7 +293,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
 
   const processVoiceCommand = (command: string) => {
     const matchedCommand = voiceCommands.find(
-      (cmd) => command.includes(cmd.command) || cmd.command.includes(command)
+      (cmd) => command.includes(cmd.command) || cmd.command.includes(command),
     );
 
     if (matchedCommand) {
@@ -301,7 +301,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
       matchedCommand.action();
     } else {
       speak(
-        `Command not recognized: ${command}. Say "help" for available commands.`
+        `Command not recognized: ${command}. Say "help" for available commands.`,
       );
     }
   };
@@ -366,7 +366,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
   const activateEmergencyMode = () => {
     setCurrentProfile((prev) => ({ ...prev, emergencyMode: true }));
     speak(
-      "Emergency mode activated. Location sharing enabled. Emergency contacts notified."
+      "Emergency mode activated. Location sharing enabled. Emergency contacts notified.",
     );
 
     if (locationSharing) {
@@ -387,14 +387,14 @@ export const QmoiEnhancedSystem: React.FC = () => {
         prev.map((p) =>
           p.id === platform.id
             ? { ...p, status: "uploading" as const, progress: 0 }
-            : p
-        )
+            : p,
+        ),
       );
 
       for (let i = 0; i <= 100; i += 10) {
         await new Promise((resolve) => setTimeout(resolve, 200));
         setPlatforms((prev) =>
-          prev.map((p) => (p.id === platform.id ? { ...p, progress: i } : p))
+          prev.map((p) => (p.id === platform.id ? { ...p, progress: i } : p)),
         );
       }
 
@@ -408,8 +408,8 @@ export const QmoiEnhancedSystem: React.FC = () => {
                 url: `https://${platform.id}.com/qmoi-app`,
                 lastUpdated: new Date(),
               }
-            : p
-        )
+            : p,
+        ),
       );
     }
 
@@ -433,7 +433,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
         reach: campaign.reach + Math.floor(Math.random() * 1000),
         engagement: campaign.engagement + Math.floor(Math.random() * 100),
         conversion: campaign.conversion + Math.floor(Math.random() * 10),
-      }))
+      })),
     );
 
     setIsMarketing(false);
@@ -477,7 +477,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
     speak(
       `Haptic feedback ${
         currentProfile.hapticFeedback ? "disabled" : "enabled"
-      }`
+      }`,
     );
   };
 
@@ -487,7 +487,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
       screenReader: !prev.screenReader,
     }));
     speak(
-      `Screen reader ${currentProfile.screenReader ? "disabled" : "enabled"}`
+      `Screen reader ${currentProfile.screenReader ? "disabled" : "enabled"}`,
     );
   };
 
@@ -724,7 +724,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <span
                           className={`text-sm ${getPlatformStatusColor(
-                            platform.status
+                            platform.status,
                           )}`}
                         >
                           {platform.status}

@@ -117,7 +117,7 @@ const timezones: Timezone[] = [
   },
   {
     label: "Johannesburg, South Africa",
- 
+
 ```
 
 Notes:

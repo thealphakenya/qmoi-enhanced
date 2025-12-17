@@ -1,0 +1,254 @@
+afc3ae7e03a2dd92cd71d9bc45d4ecc5
+"use strict";
+
+/* istanbul ignore next */
+function cov_2ntkqg78oo() {
+  var path = "/workspaces/qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts";
+  var hash = "acf85e625478348e30b19d58e5ae6ad9faf4cc59";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 44
+        }
+      },
+      "2": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 17,
+          column: 2
+        }
+      },
+      "3": {
+        start: {
+          line: 15,
+          column: 8
+        },
+        end: {
+          line: 15,
+          column: 20
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 4
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 11
+          },
+          end: {
+            line: 9,
+            column: 14
+          }
+        },
+        line: 9
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 10,
+            column: 4
+          },
+          end: {
+            line: 10,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 10,
+            column: 15
+          },
+          end: {
+            line: 10,
+            column: 18
+          }
+        },
+        line: 10
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 11,
+            column: 4
+          },
+          end: {
+            line: 11,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 17
+          },
+          end: {
+            line: 11,
+            column: 20
+          }
+        },
+        line: 11
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 12,
+            column: 4
+          },
+          end: {
+            line: 12,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 12,
+            column: 14
+          },
+          end: {
+            line: 12,
+            column: 17
+          }
+        },
+        line: 12
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 13,
+            column: 4
+          },
+          end: {
+            line: 13,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 13,
+            column: 23
+          },
+          end: {
+            line: 16,
+            column: 5
+          }
+        },
+        line: 13
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "/workspaces/qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts",
+      mappings: ";;;AAGA,mDAAmD;AACtC,QAAA,0BAA0B,GAAe;IACpD,EAAE,EAAE,wBAAwB;IAC5B,IAAI,EAAE,wBAAwB;IAC9B,WAAW,EAAE,mDAAmD;IAChE,IAAI,KAAI,CAAC;IACT,QAAQ,KAAI,CAAC;IACb,UAAU,KAAI,CAAC;IACf,OAAO,KAAI,CAAC;IACZ,gBAAgB;QACd,4CAA4C;QAC5C,OAAO,IAAI,CAAC;IACd,CAAC;CACF,CAAC",
+      names: [],
+      sources: ["/workspaces/qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts"],
+      sourcesContent: ["// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\nimport { QmoiPlugin } from \"./PluginManager\";\n\n// Minimal non-JSX plugin to avoid TSX in .ts file.\nexport const DeviceHealthReviewerPlugin: QmoiPlugin = {\n  id: \"device-health-reviewer\",\n  name: \"Device Health Reviewer\",\n  description: \"Analyzes device stats and suggests optimizations.\",\n  init() {},\n  activate() {},\n  deactivate() {},\n  destroy() {},\n  getSettingsPanel() {\n    // Non-UI placeholder for server-side builds\n    return null;\n  },\n};\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "acf85e625478348e30b19d58e5ae6ad9faf4cc59"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2ntkqg78oo = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2ntkqg78oo();
+cov_2ntkqg78oo().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2ntkqg78oo().s[1]++;
+exports.DeviceHealthReviewerPlugin = void 0;
+// Minimal non-JSX plugin to avoid TSX in .ts file.
+/* istanbul ignore next */
+cov_2ntkqg78oo().s[2]++;
+exports.DeviceHealthReviewerPlugin = {
+  id: "device-health-reviewer",
+  name: "Device Health Reviewer",
+  description: "Analyzes device stats and suggests optimizations.",
+  init() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[0]++;
+  },
+  activate() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[1]++;
+  },
+  deactivate() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[2]++;
+  },
+  destroy() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[3]++;
+  },
+  getSettingsPanel() {
+    /* istanbul ignore next */
+    cov_2ntkqg78oo().f[4]++;
+    cov_2ntkqg78oo().s[3]++;
+    // Non-UI placeholder for server-side builds
+    return null;
+  }
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMm50a3FnNzhvbyIsImFjdHVhbENvdmVyYWdlIiwicyIsImV4cG9ydHMiLCJEZXZpY2VIZWFsdGhSZXZpZXdlclBsdWdpbiIsImlkIiwibmFtZSIsImRlc2NyaXB0aW9uIiwiaW5pdCIsImYiLCJhY3RpdmF0ZSIsImRlYWN0aXZhdGUiLCJkZXN0cm95IiwiZ2V0U2V0dGluZ3NQYW5lbCJdLCJzb3VyY2VzIjpbIi93b3Jrc3BhY2VzL3Ftb2ktZW5oYW5jZWQvc3JjL3BsdWdpbnMvRGV2aWNlSGVhbHRoUmV2aWV3ZXJQbHVnaW4udHMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gTk9URTogMiBwbGFjZWhvbGRlcihzKSBmb3VuZCBpbiB0aGlzIGZpbGUuIFNlZSAucW1vaV92YWxpZGF0aW9uL3BsYWNlaG9sZGVyX2ZpeF9yZXBvcnQudHh0IGZvciBkZXRhaWxzLlxuaW1wb3J0IHsgUW1vaVBsdWdpbiB9IGZyb20gXCIuL1BsdWdpbk1hbmFnZXJcIjtcblxuLy8gTWluaW1hbCBub24tSlNYIHBsdWdpbiB0byBhdm9pZCBUU1ggaW4gLnRzIGZpbGUuXG5leHBvcnQgY29uc3QgRGV2aWNlSGVhbHRoUmV2aWV3ZXJQbHVnaW46IFFtb2lQbHVnaW4gPSB7XG4gIGlkOiBcImRldmljZS1oZWFsdGgtcmV2aWV3ZXJcIixcbiAgbmFtZTogXCJEZXZpY2UgSGVhbHRoIFJldmlld2VyXCIsXG4gIGRlc2NyaXB0aW9uOiBcIkFuYWx5emVzIGRldmljZSBzdGF0cyBhbmQgc3VnZ2VzdHMgb3B0aW1pemF0aW9ucy5cIixcbiAgaW5pdCgpIHt9LFxuICBhY3RpdmF0ZSgpIHt9LFxuICBkZWFjdGl2YXRlKCkge30sXG4gIGRlc3Ryb3koKSB7fSxcbiAgZ2V0U2V0dGluZ3NQYW5lbCgpIHtcbiAgICAvLyBOb24tVUkgcGxhY2Vob2xkZXIgZm9yIHNlcnZlci1zaWRlIGJ1aWxkc1xuICAgIHJldHVybiBudWxsO1xuICB9LFxufTtcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFlRztJQUFBQSxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxjQUFBO0FBQUFBLGNBQUEsR0FBQUUsQ0FBQTs7Ozs7OztBQVpIO0FBQUE7QUFBQUYsY0FBQSxHQUFBRSxDQUFBO0FBQ2FDLE9BQUEsQ0FBQUMsMEJBQTBCLEdBQWU7RUFDcERDLEVBQUUsRUFBRSx3QkFBd0I7RUFDNUJDLElBQUksRUFBRSx3QkFBd0I7RUFDOUJDLFdBQVcsRUFBRSxtREFBbUQ7RUFDaEVDLElBQUlBLENBQUE7SUFBQTtJQUFBUixjQUFBLEdBQUFTLENBQUE7RUFBSSxDQUFDO0VBQ1RDLFFBQVFBLENBQUE7SUFBQTtJQUFBVixjQUFBLEdBQUFTLENBQUE7RUFBSSxDQUFDO0VBQ2JFLFVBQVVBLENBQUE7SUFBQTtJQUFBWCxjQUFBLEdBQUFTLENBQUE7RUFBSSxDQUFDO0VBQ2ZHLE9BQU9BLENBQUE7SUFBQTtJQUFBWixjQUFBLEdBQUFTLENBQUE7RUFBSSxDQUFDO0VBQ1pJLGdCQUFnQkEsQ0FBQTtJQUFBO0lBQUFiLGNBQUEsR0FBQVMsQ0FBQTtJQUFBVCxjQUFBLEdBQUFFLENBQUE7SUFDZDtJQUNBLE9BQU8sSUFBSTtFQUNiO0NBQ0QiLCJpZ25vcmVMaXN0IjpbXX0=

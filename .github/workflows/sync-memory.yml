@@ -2,10 +2,10 @@ name: QM OI Memory Sync
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # every 15 minutes
+    - cron: "*/15 * * * *" # every 15 minutes
   push:
     branches:
-      - 'autosync-*'
+      - "autosync-*"
       - main
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install requirements (requests if available)
         run: |

@@ -39,7 +39,7 @@ export interface HealthCheckResponse {
 
 export class HealthCheckService {
   private responseTimes: Map<string, number[]> = new Map();
-  private maxSamples: number = 100;
+  private maxSamples = 100;
 
   // ========================================================================
   // RESPONSE TIME TRACKING
@@ -130,7 +130,7 @@ export class HealthCheckService {
           enabled: bgStatus.enabled,
           uptime: bgStatus.uptime,
           activeServices: bgStatus.services.filter(
-            (s) => s.status === "healthy"
+            (s) => s.status === "healthy",
           ).length,
           scheduledTasks: bgStatus.tasks.length,
         },

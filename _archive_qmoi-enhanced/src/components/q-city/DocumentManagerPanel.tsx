@@ -63,14 +63,16 @@ const DocumentManagerPanel: React.FC = () => {
   return (
     <Card className="space-y-4 mt-4">
       <CardHeader>
-  <Typography variant="h6">Document Backup & Retrieval</Typography>
+        <Typography variant="h6">Document Backup & Retrieval</Typography>
       </CardHeader>
       <CardContent>
         <div className="mb-4">
           <TextField
             label="Document Name"
             value={form.name}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, name: e.target.value }))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setForm((f) => ({ ...f, name: e.target.value }))
+            }
             sx={{ mb: 2 }}
             fullWidth
             size="small"
@@ -78,7 +80,9 @@ const DocumentManagerPanel: React.FC = () => {
           <TextField
             label="Type (pdf, docx, etc.)"
             value={form.type}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, type: e.target.value }))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setForm((f) => ({ ...f, type: e.target.value }))
+            }
             sx={{ mb: 2 }}
             fullWidth
             size="small"
@@ -86,7 +90,9 @@ const DocumentManagerPanel: React.FC = () => {
           <TextField
             label="Content (or file data)"
             value={form.content}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, content: e.target.value }))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setForm((f) => ({ ...f, content: e.target.value }))
+            }
             sx={{ mb: 2 }}
             fullWidth
             size="small"
@@ -97,7 +103,9 @@ const DocumentManagerPanel: React.FC = () => {
           <TextField
             label="Search documents..."
             value={search}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSearch(e.target.value)
+            }
             sx={{ mb: 2 }}
             fullWidth
             size="small"
@@ -122,7 +130,12 @@ const DocumentManagerPanel: React.FC = () => {
                   <td>{d.type}</td>
                   <td>{d.createdAt}</td>
                   <td>
-                    <Button size="small" variant="outlined" color="primary" onClick={() => restore(d.id)}>
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      color="primary"
+                      onClick={() => restore(d.id)}
+                    >
                       Restore
                     </Button>
                   </td>

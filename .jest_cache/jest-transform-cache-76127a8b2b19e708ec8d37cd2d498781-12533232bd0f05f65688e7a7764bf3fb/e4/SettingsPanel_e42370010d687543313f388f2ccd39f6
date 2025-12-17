@@ -1,0 +1,250 @@
+7db245f0c7b3ae8d3ed9d65b1e9833a6
+/* istanbul ignore next */
+function cov_1qgrn8xsyl() {
+  var path = "/workspaces/qmoi-enhanced/src/components/q-city/SettingsPanel.tsx";
+  var hash = "a3277b5afd19009bfb5fad2cca5e6febb947a26a";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/components/q-city/SettingsPanel.tsx",
+    statementMap: {
+      "0": {
+        start: {
+          line: 4,
+          column: 50
+        },
+        end: {
+          line: 6,
+          column: 4
+        }
+      },
+      "1": {
+        start: {
+          line: 5,
+          column: 4
+        },
+        end: {
+          line: 5,
+          column: 67
+        }
+      },
+      "2": {
+        start: {
+          line: 7,
+          column: 32
+        },
+        end: {
+          line: 10,
+          column: 3
+        }
+      },
+      "3": {
+        start: {
+          line: 8,
+          column: 4
+        },
+        end: {
+          line: 8,
+          column: 42
+        }
+      },
+      "4": {
+        start: {
+          line: 9,
+          column: 4
+        },
+        end: {
+          line: 9,
+          column: 75
+        }
+      },
+      "5": {
+        start: {
+          line: 11,
+          column: 2
+        },
+        end: {
+          line: 28,
+          column: 4
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "SettingsPanel",
+        decl: {
+          start: {
+            line: 3,
+            column: 24
+          },
+          end: {
+            line: 3,
+            column: 37
+          }
+        },
+        loc: {
+          start: {
+            line: 3,
+            column: 40
+          },
+          end: {
+            line: 29,
+            column: 1
+          }
+        },
+        line: 3
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 4,
+            column: 59
+          },
+          end: {
+            line: 4,
+            column: 60
+          }
+        },
+        loc: {
+          start: {
+            line: 4,
+            column: 65
+          },
+          end: {
+            line: 6,
+            column: 3
+          }
+        },
+        line: 4
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 7,
+            column: 32
+          },
+          end: {
+            line: 7,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 70
+          },
+          end: {
+            line: 10,
+            column: 3
+          }
+        },
+        line: 7
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "a3277b5afd19009bfb5fad2cca5e6febb947a26a"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1qgrn8xsyl = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1qgrn8xsyl();
+import React, { useState } from "react";
+/* istanbul ignore next */
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export default function SettingsPanel() {
+  /* istanbul ignore next */
+  cov_1qgrn8xsyl().f[0]++;
+  const [zeroRatedEnabled, setZeroRatedEnabled] =
+  /* istanbul ignore next */
+  (cov_1qgrn8xsyl().s[0]++, useState(() => {
+    /* istanbul ignore next */
+    cov_1qgrn8xsyl().f[1]++;
+    cov_1qgrn8xsyl().s[1]++;
+    return localStorage.getItem("qmoizeroRatedEnabled") === "true";
+  }));
+  /* istanbul ignore next */
+  cov_1qgrn8xsyl().s[2]++;
+  const handleZeroRatedChange = e => {
+    /* istanbul ignore next */
+    cov_1qgrn8xsyl().f[2]++;
+    cov_1qgrn8xsyl().s[3]++;
+    setZeroRatedEnabled(e.target.checked);
+    /* istanbul ignore next */
+    cov_1qgrn8xsyl().s[4]++;
+    localStorage.setItem("qmoizeroRatedEnabled", String(e.target.checked));
+  };
+  /* istanbul ignore next */
+  cov_1qgrn8xsyl().s[5]++;
+  return /*#__PURE__*/ /* istanbul ignore next */_jsx(
+  /* istanbul ignore next */
+  "div",
+  /* istanbul ignore next */
+  {
+    className: "settings-panel",
+    children: /*#__PURE__*/
+    /* istanbul ignore next */
+    _jsxs(
+    /* istanbul ignore next */
+    "div",
+    /* istanbul ignore next */
+    {
+      className: "setting-item",
+      children: [/*#__PURE__*/
+      /* istanbul ignore next */
+      _jsxs(
+      /* istanbul ignore next */
+      "label",
+      /* istanbul ignore next */
+      {
+        children: [/*#__PURE__*/
+        /* istanbul ignore next */
+        _jsx(
+        /* istanbul ignore next */
+        "input",
+        /* istanbul ignore next */
+        {
+          type: "checkbox",
+          checked: zeroRatedEnabled,
+          onChange: handleZeroRatedChange
+        }), "Always use QMOI Zero Rated for auto-connection"]
+      }), /*#__PURE__*/
+      /* istanbul ignore next */
+      _jsx(
+      /* istanbul ignore next */
+      "div",
+      /* istanbul ignore next */
+      {
+        className: "setting-description",
+        children: "When enabled, QMOI will always attempt to use zero-rated internet for connectivity."
+      })]
+    })
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMXFncm44eHN5bCIsImFjdHVhbENvdmVyYWdlIiwiUmVhY3QiLCJ1c2VTdGF0ZSIsImpzeCIsIl9qc3giLCJqc3hzIiwiX2pzeHMiLCJTZXR0aW5nc1BhbmVsIiwiZiIsInplcm9SYXRlZEVuYWJsZWQiLCJzZXRaZXJvUmF0ZWRFbmFibGVkIiwicyIsImxvY2FsU3RvcmFnZSIsImdldEl0ZW0iLCJoYW5kbGVaZXJvUmF0ZWRDaGFuZ2UiLCJlIiwidGFyZ2V0IiwiY2hlY2tlZCIsInNldEl0ZW0iLCJTdHJpbmciLCJjbGFzc05hbWUiLCJjaGlsZHJlbiIsInR5cGUiLCJvbkNoYW5nZSJdLCJzb3VyY2VzIjpbIlNldHRpbmdzUGFuZWwudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyB1c2VTdGF0ZSwgQ2hhbmdlRXZlbnQgfSBmcm9tIFwicmVhY3RcIjtcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gU2V0dGluZ3NQYW5lbCgpIHtcbiAgY29uc3QgW3plcm9SYXRlZEVuYWJsZWQsIHNldFplcm9SYXRlZEVuYWJsZWRdID0gdXNlU3RhdGUoKCkgPT4ge1xuICAgIHJldHVybiBsb2NhbFN0b3JhZ2UuZ2V0SXRlbShcInFtb2l6ZXJvUmF0ZWRFbmFibGVkXCIpID09PSBcInRydWVcIjtcbiAgfSk7XG4gIGNvbnN0IGhhbmRsZVplcm9SYXRlZENoYW5nZSA9IChlOiBDaGFuZ2VFdmVudDxIVE1MSW5wdXRFbGVtZW50PikgPT4ge1xuICAgIHNldFplcm9SYXRlZEVuYWJsZWQoZS50YXJnZXQuY2hlY2tlZCk7XG4gICAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oXCJxbW9pemVyb1JhdGVkRW5hYmxlZFwiLCBTdHJpbmcoZS50YXJnZXQuY2hlY2tlZCkpO1xuICB9O1xuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwic2V0dGluZ3MtcGFuZWxcIj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2V0dGluZy1pdGVtXCI+XG4gICAgICAgIDxsYWJlbD5cbiAgICAgICAgICA8aW5wdXRcbiAgICAgICAgICAgIHR5cGU9XCJjaGVja2JveFwiXG4gICAgICAgICAgICBjaGVja2VkPXt6ZXJvUmF0ZWRFbmFibGVkfVxuICAgICAgICAgICAgb25DaGFuZ2U9e2hhbmRsZVplcm9SYXRlZENoYW5nZX1cbiAgICAgICAgICAvPlxuICAgICAgICAgIEFsd2F5cyB1c2UgUU1PSSBaZXJvIFJhdGVkIGZvciBhdXRvLWNvbm5lY3Rpb25cbiAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzZXR0aW5nLWRlc2NyaXB0aW9uXCI+XG4gICAgICAgICAgV2hlbiBlbmFibGVkLCBRTU9JIHdpbGwgYWx3YXlzIGF0dGVtcHQgdG8gdXNlIHplcm8tcmF0ZWQgaW50ZXJuZXQgZm9yXG4gICAgICAgICAgY29ubmVjdGl2aXR5LlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICApO1xufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFlWTtJQUFBQSxjQUFBLFlBQUFBLENBQUE7TUFBQSxPQUFBQyxjQUFBO0lBQUE7RUFBQTtFQUFBLE9BQUFBLGNBQUE7QUFBQTtBQUFBRCxjQUFBO0FBZlosT0FBT0UsS0FBSyxJQUFJQyxRQUFRLFFBQXFCLE9BQU87QUFBQztBQUFBLFNBQUFDLEdBQUEsSUFBQUMsSUFBQSxFQUFBQyxJQUFBLElBQUFDLEtBQUE7QUFFckQsZUFBZSxTQUFTQyxhQUFhQSxDQUFBLEVBQUc7RUFBQTtFQUFBUixjQUFBLEdBQUFTLENBQUE7RUFDdEMsTUFBTSxDQUFDQyxnQkFBZ0IsRUFBRUMsbUJBQW1CLENBQUM7RUFBQTtFQUFBLENBQUFYLGNBQUEsR0FBQVksQ0FBQSxPQUFHVCxRQUFRLENBQUMsTUFBTTtJQUFBO0lBQUFILGNBQUEsR0FBQVMsQ0FBQTtJQUFBVCxjQUFBLEdBQUFZLENBQUE7SUFDN0QsT0FBT0MsWUFBWSxDQUFDQyxPQUFPLENBQUMsc0JBQXNCLENBQUMsS0FBSyxNQUFNO0VBQ2hFLENBQUMsQ0FBQztFQUFDO0VBQUFkLGNBQUEsR0FBQVksQ0FBQTtFQUNILE1BQU1HLHFCQUFxQixHQUFJQyxDQUFnQyxJQUFLO0lBQUE7SUFBQWhCLGNBQUEsR0FBQVMsQ0FBQTtJQUFBVCxjQUFBLEdBQUFZLENBQUE7SUFDbEVELG1CQUFtQixDQUFDSyxDQUFDLENBQUNDLE1BQU0sQ0FBQ0MsT0FBTyxDQUFDO0lBQUM7SUFBQWxCLGNBQUEsR0FBQVksQ0FBQTtJQUN0Q0MsWUFBWSxDQUFDTSxPQUFPLENBQUMsc0JBQXNCLEVBQUVDLE1BQU0sQ0FBQ0osQ0FBQyxDQUFDQyxNQUFNLENBQUNDLE9BQU8sQ0FBQyxDQUFDO0VBQ3hFLENBQUM7RUFBQztFQUFBbEIsY0FBQSxHQUFBWSxDQUFBO0VBQ0Ysb0JBQ0UsMkJBQUFQLElBQUE7RUFBQTtFQUFBO0VBQUE7RUFBQTtJQUFLZ0IsU0FBUyxFQUFDLGdCQUFnQjtJQUFBQyxRQUFBO0lBQzdCO0lBQUFmLEtBQUE7SUFBQTtJQUFBO0lBQUE7SUFBQTtNQUFLYyxTQUFTLEVBQUMsY0FBYztNQUFBQyxRQUFBO01BQzNCO01BQUFmLEtBQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtRQUFBZSxRQUFBO1FBQ0U7UUFBQWpCLElBQUE7UUFBQTtRQUFBO1FBQUE7UUFBQTtVQUNFa0IsSUFBSSxFQUFDLFVBQVU7VUFDZkwsT0FBTyxFQUFFUixnQkFBaUI7VUFDMUJjLFFBQVEsRUFBRVQ7UUFBc0IsQ0FDakMsQ0FBQyxrREFFSjtNQUFBLENBQU8sQ0FBQztNQUNSO01BQUFWLElBQUE7TUFBQTtNQUFBO01BQUE7TUFBQTtRQUFLZ0IsU0FBUyxFQUFDLHFCQUFxQjtRQUFBQyxRQUFBLEVBQUM7TUFHckMsQ0FBSyxDQUFDO0lBQUEsQ0FDSDtFQUFDLENBQ0gsQ0FBQztBQUVWIiwiaWdub3JlTGlzdCI6W119

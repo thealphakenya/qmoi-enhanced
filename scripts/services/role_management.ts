@@ -1,7 +1,14 @@
 // QMOI Role Management & Approval Workflow Service
 // Handles role-based access and multi-step approval workflows
 
-export type UserRole = 'master' | 'admin' | 'marketing' | 'analytics' | 'content' | 'support' | 'user';
+export type UserRole =
+  | "master"
+  | "admin"
+  | "marketing"
+  | "analytics"
+  | "content"
+  | "support"
+  | "user";
 
 export interface User {
   id: string;
@@ -11,9 +18,9 @@ export interface User {
 
 export interface ApprovalRequest {
   id: string;
-  type: 'asset' | 'deal' | 'distribution' | 'platform';
+  type: "asset" | "deal" | "distribution" | "platform";
   item: any;
-  status: 'pending' | 'approved' | 'rejected';
+  status: "pending" | "approved" | "rejected";
   requestedBy: User;
   approvedBy?: User;
   steps?: string[];
@@ -28,7 +35,7 @@ export class RoleManagementService {
 
   static async checkPermission(user: User, action: string): Promise<boolean> {
     // TODO: Check if user has permission for action
-    return user.role === 'master';
+    return user.role === "master";
   }
 
   static async requestApproval(request: ApprovalRequest): Promise<string> {
@@ -36,13 +43,19 @@ export class RoleManagementService {
     return `Approval requested for ${request.type}`;
   }
 
-  static async approveRequest(requestId: string, approver: User): Promise<boolean> {
+  static async approveRequest(
+    requestId: string,
+    approver: User,
+  ): Promise<boolean> {
     // TODO: Approve the request
     return true;
   }
 
-  static async rejectRequest(requestId: string, approver: User): Promise<boolean> {
+  static async rejectRequest(
+    requestId: string,
+    approver: User,
+  ): Promise<boolean> {
     // TODO: Reject the request
     return true;
   }
-} 
+}

@@ -1,11 +1,11 @@
 // Background service manager for parallel operations and health monitoring
 // Runs independently of UI, manages data sync, periodic health checks, and service recovery
 
-import { checkHealth, fetchAllInParallel, clearCache } from './clientAdapters';
+import { checkHealth, fetchAllInParallel, clearCache } from "./clientAdapters";
 
 export interface ServiceStatus {
   name: string;
-  status: 'healthy' | 'degraded' | 'unhealthy';
+  status: "healthy" | "degraded" | "unhealthy";
   lastCheck: number;
   error?: string;
   uptime: number;
@@ -26,7 +26,7 @@ class BackgroundServiceManager {
   private services: Map<string, ServiceStatus> = new Map();
   private startTime: number = Date.now();
   private pollInterval: NodeJS.Timeout | null = null;
-  private enabled: boolean = false;
+  private enabled = false;
 
   constructor() {
     this.initializeServices();
@@ -38,17 +38,17 @@ class BackgroundServiceManager {
 
   private initializeServices(): void {
     // Register core services
-    this.registerService('http', 'HTTP Server', 8080);
-    this.registerService('api-config', 'API Configuration', undefined);
-    this.registerService('adapters', 'Client Adapters', undefined);
+    this.registerService("http", "HTTP Server", 8080);
+    this.registerService("api-config", "API Configuration", undefined);
+    this.registerService("adapters", "Client Adapters", undefined);
   }
 
   private registerService(id: string, name: string, port?: number): void {
     this.services.set(id, {
       name,
-      status: 'healthy',
+      status: "healthy",
       lastCheck: Date.now(),
-      uptime: Date.now() - this.startTime
+      uptime: Date.now() - this.startTime,
     });
   }
 
@@ -60,7 +60,7 @@ class BackgroundServiceManager {
     id: string,
     name: string,
     intervalMs: number,
-    fn: () => Promise<void>
+    fn: () => Promise<void>,
   ): void {
     this.tasks.set(id, {
       id,
@@ -69,7 +69,7 @@ class BackgroundServiceManager {
       fn,
       lastRun: 0,
       nextRun: Date.now() + intervalMs,
-      isRunning: false
+      isRunning: false,
     });
     console.debug(`[Background] Registered task: ${name} (${intervalMs}ms)`);
   }
@@ -91,7 +91,7 @@ class BackgroundServiceManager {
       task.lastRun = Date.now();
       task.nextRun = Date.now() + task.interval;
       console.debug(
-        `[Background] Task ${id} completed in ${Date.now() - startTime}ms`
+        `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
     } catch (err) {
       console.error(`[Background] Task ${id} failed:`, err);
@@ -118,23 +118,27 @@ class BackgroundServiceManager {
     try {
       const health = await checkHealth();
       return {
-        name: 'Backend API',
-        status: health.status === 'healthy' ? 'healthy' : 'degraded',
+        name: "Backend API",
+        status: health.status === "healthy" ? "healthy" : "degraded",
         lastCheck: Date.now(),
-        uptime: Date.now() - this.startTime
+        uptime: Date.now() - this.startTime,
       };
     } catch (err) {
       return {
-        name: 'Backend API',
-        status: 'unhealthy',
+        name: "Backend API",
+        status: "unhealthy",
         lastCheck: Date.now(),
         error: String(err),
-        uptime: Date.now() - this.startTime
+        uptime: Date.now() - this.startTime,
       };
     }
   }
 
-  async updateServiceStatus(id: string, status: 'healthy' | 'degraded' | 'unhealthy', error?: string): Promise<void> {
+  async updateServiceStatus(
+    id: string,
+    status: "healthy" | "degraded" | "unhealthy",
+    error?: string,
+  ): Promise<void> {
     const service = this.services.get(id);
     if (!service) return;
 
@@ -142,7 +146,9 @@ class BackgroundServiceManager {
     service.lastCheck = Date.now();
     if (error) service.error = error;
 
-    console.info(`[Health] ${service.name}: ${status}${error ? ` (${error})` : ''}`);
+    console.info(
+      `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
+    );
   }
 
   // ========================================================================
@@ -151,54 +157,54 @@ class BackgroundServiceManager {
 
   start(): void {
     if (this.enabled) {
-      console.warn('[Background] Manager already running');
+      console.warn("[Background] Manager already running");
       return;
     }
 
     this.enabled = true;
-    console.info('[Background] Starting background service manager...');
+    console.info("[Background] Starting background service manager...");
 
     // Setup default background tasks
     this.registerTask(
-      'health-check',
-      'Health Check',
+      "health-check",
+      "Health Check",
       30 * 1000, // Every 30 seconds
       async () => {
         const status = await this.checkServiceHealth();
-        this.services.set('backend', status);
-      }
+        this.services.set("backend", status);
+      },
     );
 
     this.registerTask(
-      'data-sync',
-      'Data Sync',
+      "data-sync",
+      "Data Sync",
       60 * 1000, // Every minute
       async () => {
-        console.debug('[Background] Syncing data...');
+        console.debug("[Background] Syncing data...");
         await fetchAllInParallel();
-      }
+      },
     );
 
     this.registerTask(
-      'cache-cleanup',
-      'Cache Cleanup',
+      "cache-cleanup",
+      "Cache Cleanup",
       10 * 60 * 1000, // Every 10 minutes
       async () => {
         const cleared = clearCache();
         if (cleared > 0) {
           console.debug(`[Background] Cleared ${cleared} cache entries`);
         }
-      }
+      },
     );
 
     // Start polling loop
     this.pollInterval = setInterval(() => {
-      this.pollTasks().catch(err => {
-        console.error('[Background] Poll error:', err);
+      this.pollTasks().catch((err) => {
+        console.error("[Background] Poll error:", err);
       });
     }, 5 * 1000); // Check every 5 seconds
 
-    console.info('[Background] Service manager started');
+    console.info("[Background] Service manager started");
   }
 
   stop(): void {
@@ -210,7 +216,7 @@ class BackgroundServiceManager {
       this.pollInterval = null;
     }
 
-    console.info('[Background] Service manager stopped');
+    console.info("[Background] Service manager stopped");
   }
 
   getStatus(): {
@@ -228,12 +234,12 @@ class BackgroundServiceManager {
       enabled: this.enabled,
       uptime: Date.now() - this.startTime,
       services: Array.from(this.services.values()),
-      tasks: Array.from(this.tasks.values()).map(t => ({
+      tasks: Array.from(this.tasks.values()).map((t) => ({
         id: t.id,
         name: t.name,
         nextRun: t.nextRun,
-        isRunning: t.isRunning
-      }))
+        isRunning: t.isRunning,
+      })),
     };
   }
 
@@ -245,13 +251,13 @@ class BackgroundServiceManager {
     nextRun: number;
     isRunning: boolean;
   }> {
-    return Array.from(this.tasks.values()).map(t => ({
+    return Array.from(this.tasks.values()).map((t) => ({
       id: t.id,
       name: t.name,
       interval: t.interval,
       lastRun: t.lastRun,
       nextRun: t.nextRun,
-      isRunning: t.isRunning
+      isRunning: t.isRunning,
     }));
   }
 
@@ -264,7 +270,7 @@ class BackgroundServiceManager {
 export const backgroundManager = new BackgroundServiceManager();
 
 // Auto-start if in browser environment
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   // Start on next tick to allow imports to complete
   setTimeout(() => {
     backgroundManager.start();

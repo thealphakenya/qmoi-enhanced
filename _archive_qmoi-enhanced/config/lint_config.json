@@ -15,17 +15,7 @@
     "constConversion": true
   },
   "filePatterns": {
-    "include": [
-      "**/*.ts",
-      "**/*.tsx",
-      "**/*.js",
-      "**/*.jsx"
-    ],
-    "exclude": [
-      "node_modules/**",
-      "dist/**",
-      "build/**",
-      ".git/**"
-    ]
+    "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+    "exclude": ["node_modules/**", "dist/**", "build/**", ".git/**"]
   }
 }

@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       publish_release:
-        description: 'Create/Update draft release and upload built artifacts'
+        description: "Create/Update draft release and upload built artifacts"
         required: false
-        default: 'false'
+        default: "false"
   push:
     branches:
       - autosync-backup-20250926-232440
@@ -39,7 +39,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
       - name: Install dependencies
         run: |
           if [ -f package.json ]; then npm ci || true; fi
@@ -116,8 +116,8 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: 'ci-draft-${{ github.run_id }}'
-          name: 'CI draft ${{ github.run_id }}'
+          tag_name: "ci-draft-${{ github.run_id }}"
+          name: "CI draft ${{ github.run_id }}"
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

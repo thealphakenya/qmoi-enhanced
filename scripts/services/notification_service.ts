@@ -6,7 +6,7 @@ let twilioClient: any = null;
 if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
   twilioClient = require("twilio")(
     process.env.TWILIO_ACCOUNT_SID,
-    process.env.TWILIO_AUTH_TOKEN
+    process.env.TWILIO_AUTH_TOKEN,
   );
 }
 
@@ -94,14 +94,14 @@ export class NotificationService {
 
     if (this.config.email.enabled) {
       this.emailTransporter = nodemailer.createTransport(
-        this.config.email.smtp
+        this.config.email.smtp,
       );
     }
   }
 
   private async sendEmailNotification(
     subject: string,
-    body: string
+    body: string,
   ): Promise<void> {
     if (!this.config.email.enabled) return;
 
@@ -207,7 +207,7 @@ export class NotificationService {
 
   public async sendCriticalEventNotification(
     eventType: string,
-    details: string
+    details: string,
   ) {
     let subject = "[QMOI Critical Event] ";
     if (eventType === "test_failed") subject += "Test Failure";

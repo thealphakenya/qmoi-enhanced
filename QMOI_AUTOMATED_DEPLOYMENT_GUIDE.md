@@ -16,7 +16,7 @@ This system provides **end-to-end automation** for:
 ✅ **Multi-Channel Deployment** - Deploy to app stores, downloads portal, web  
 ✅ **Continuous Monitoring** - Real-time health checks and alerts  
 ✅ **Installation Testing** - Verify all downloads work  
-✅ **Platform Coverage** - Ensure all platforms are represented  
+✅ **Platform Coverage** - Ensure all platforms are represented
 
 ---
 
@@ -24,14 +24,14 @@ This system provides **end-to-end automation** for:
 
 ### All 6 QMOI Apps Ready
 
-| App | Version | Status | Platforms |
-|-----|---------|--------|-----------|
-| QMOI AI | v1.2.3 | ✅ Built | Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA |
-| QCity | v2.0.1 | ✅ Built | Windows, macOS, Linux, Android, iOS, PWA |
-| QShare | v1.0.0 | ✅ Built | All platforms |
-| Yap | v1.1.0 | ✅ Built | All platforms |
-| QStore | v1.0.0 | ✅ Built | All platforms |
-| QVillage | v1.0.0 | ✅ Built | All platforms |
+| App      | Version | Status   | Platforms                                                          |
+| -------- | ------- | -------- | ------------------------------------------------------------------ |
+| QMOI AI  | v1.2.3  | ✅ Built | Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA |
+| QCity    | v2.0.1  | ✅ Built | Windows, macOS, Linux, Android, iOS, PWA                           |
+| QShare   | v1.0.0  | ✅ Built | All platforms                                                      |
+| Yap      | v1.1.0  | ✅ Built | All platforms                                                      |
+| QStore   | v1.0.0  | ✅ Built | All platforms                                                      |
+| QVillage | v1.0.0  | ✅ Built | All platforms                                                      |
 
 **All builds available and ready for distribution!**
 
@@ -40,6 +40,7 @@ This system provides **end-to-end automation** for:
 ## 📦 Automation Components
 
 ### 1. Build Discovery & Verification
+
 **File:** `verify-all-releases.sh` (17 KB)
 
 Discovers, classifies, and verifies all built applications:
@@ -62,6 +63,7 @@ Discovers, classifies, and verifies all built applications:
 ```
 
 **Features:**
+
 - Scans 6+ directories for builds
 - Classifies by platform (Windows, macOS, Linux, Android, iOS, etc.)
 - Verifies file integrity
@@ -71,6 +73,7 @@ Discovers, classifies, and verifies all built applications:
 ---
 
 ### 2. Multi-Channel Deployment
+
 **File:** `deploy-to-all-channels.py` (12 KB)
 
 Orchestrates deployment to all distribution channels:
@@ -90,6 +93,7 @@ python deploy-to-all-channels.py --version v1.2.3 --all --verify
 ```
 
 **Deployment Targets:**
+
 1. **GitHub Releases** (Primary) - ✅ Fully automated
 2. **Google Play Store** (Android) - ⏳ Configured (needs credentials)
 3. **Apple App Store** (iOS) - ⏳ Configured (needs certificates)
@@ -99,6 +103,7 @@ python deploy-to-all-channels.py --version v1.2.3 --all --verify
 ---
 
 ### 3. Continuous Release Monitoring
+
 **File:** `continuous-release-monitor.py` (14 KB)
 
 Real-time monitoring with health checks and alerts:
@@ -118,6 +123,7 @@ python continuous-release-monitor.py --interval 3600
 ```
 
 **Monitors:**
+
 - Local build availability
 - GitHub release status
 - Download link validation
@@ -130,11 +136,13 @@ python continuous-release-monitor.py --interval 3600
 ## 🚀 Complete Workflow
 
 ### Step 1: Verify Builds Are Available
+
 ```bash
 ./verify-all-releases.sh all
 ```
 
 **Output:**
+
 ```
 ✅ Discovered 15 builds
 ✅ All files valid
@@ -145,6 +153,7 @@ python continuous-release-monitor.py --interval 3600
 ---
 
 ### Step 2: Deploy to GitHub (Automatic)
+
 ```bash
 git tag v1.2.3
 git push origin v1.2.3
@@ -152,6 +161,7 @@ git push origin v1.2.3
 ```
 
 **What happens automatically:**
+
 - ✅ Tag triggers GitHub Actions workflow
 - ✅ Workflow discovers all builds
 - ✅ Generates SHA256 checksums
@@ -163,6 +173,7 @@ git push origin v1.2.3
 ---
 
 ### Step 3: Deploy to Other Channels (Optional)
+
 ```bash
 # Deploy to web/PWA
 python deploy-to-all-channels.py --version v1.2.3 --web
@@ -174,6 +185,7 @@ python deploy-to-all-channels.py --version v1.2.3 --playstore --dry-run
 ---
 
 ### Step 4: Monitor Release Health
+
 ```bash
 # Continuous monitoring
 python continuous-release-monitor.py
@@ -183,6 +195,7 @@ python continuous-release-monitor.py --report
 ```
 
 **Health checks:**
+
 - Are all builds still available?
 - Is GitHub release online?
 - Can users download the files?
@@ -215,12 +228,14 @@ Ready to discover:
 ## ✨ Key Features
 
 ### Automated Build Discovery
+
 - Scans multiple directories automatically
 - Finds all platform types (8+ file extensions)
 - Classifies by platform and app
 - Handles nested directory structures
 
 ### Intelligent Classification
+
 ```
 .exe, .msi         → Windows
 .dmg              → macOS
@@ -232,6 +247,7 @@ Ready to discover:
 ```
 
 ### Reliability & Recovery
+
 - Verifies file integrity
 - Tests installations
 - Retry failed uploads
@@ -239,6 +255,7 @@ Ready to discover:
 - Alert system (Slack/Discord)
 
 ### Multi-Channel Distribution
+
 - GitHub Releases (primary)
 - App stores (Google Play, Apple App Store)
 - Web/PWA apps
@@ -332,6 +349,7 @@ python continuous-release-monitor.py \
 ## 📊 Real-Time Dashboard
 
 ### Health Status
+
 ```
 🟢 HEALTHY
   • Local builds: 15 ✅
@@ -341,6 +359,7 @@ python continuous-release-monitor.py \
 ```
 
 ### Metrics
+
 ```
 Builds Found:        15
 Valid Builds:        15
@@ -351,6 +370,7 @@ Status:              🟢 ALL SYSTEMS GO
 ```
 
 ### Distribution
+
 ```
 GitHub Releases:     ✅ Live
 Google Play Store:   ⏳ Configured
@@ -364,20 +384,26 @@ Web/PWA:             ✅ Live
 ## 🔒 Security & Verification
 
 ### SHA256 Checksums
+
 Every download includes verification:
+
 ```bash
 sha256sum -c qmoi-ai.exe.sha256
 ```
 
 ### Release Notes
+
 Auto-generated and include:
+
 - All apps and versions
 - Platform matrix
 - Download instructions
 - Verification guide
 
 ### Audit Logging
+
 All operations logged:
+
 ```bash
 tail -f /tmp/qmoi-release-monitor.log
 tail -f /tmp/qmoi-release-report-*.md
@@ -388,6 +414,7 @@ tail -f /tmp/qmoi-release-report-*.md
 ## 🐛 Troubleshooting
 
 ### "No builds discovered"
+
 ```bash
 # Check directories exist
 ls -la Qmoi_downloaded_apps/
@@ -399,6 +426,7 @@ find . -name "*.exe" -o -name "*.apk" 2>/dev/null
 ```
 
 ### "GitHub CLI not found"
+
 ```bash
 # Install gh
 brew install gh  # macOS
@@ -407,12 +435,14 @@ winget install GitHub.cli  # Windows
 ```
 
 ### "Not authenticated"
+
 ```bash
 gh auth login
 # Follow interactive prompts
 ```
 
 ### "Download links broken"
+
 ```bash
 # Check GitHub status
 curl https://www.githubstatus.com/api/v2/status.json
@@ -426,18 +456,22 @@ curl -I https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/
 ## 📞 Support & Documentation
 
 ### Build Discovery
+
 - See: `verify-all-releases.sh --help`
 - Report: `/tmp/qmoi-release-report-*.md`
 
 ### Deployment
+
 - See: `python deploy-to-all-channels.py --help`
 - GitHub Actions: `.github/workflows/publish-releases-realtime.yml`
 
 ### Monitoring
+
 - See: `python continuous-release-monitor.py --help`
 - Log file: `/tmp/qmoi-release-monitor.log`
 
 ### General
+
 - **Issues:** https://github.com/thealphakenya/qmoi-enhanced/issues
 - **Community:** https://qvillage.qmoi.app
 - **Email:** support@qmoi.app
@@ -468,7 +502,7 @@ The QMOI Automated Build, Release & Deployment System provides:
 ✅ **Multi-Platform** - 12+ platforms supported  
 ✅ **Continuous Monitoring** - Real-time health checks  
 ✅ **Zero-Touch** - Fully hands-off operation  
-✅ **Production Ready** - All systems tested and verified  
+✅ **Production Ready** - All systems tested and verified
 
 **All QMOI apps are built, tested, and ready for distribution!** 🚀
 

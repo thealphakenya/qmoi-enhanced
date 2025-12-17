@@ -1,6 +1,6 @@
-import { logger } from '../utils/logger';
-import { NotificationService } from './notification_service';
-import axios from 'axios';
+import { logger } from "../utils/logger";
+import { NotificationService } from "./notification_service";
+import axios from "axios";
 
 interface WhatsAppConfig {
   enabled: boolean;
@@ -17,9 +17,9 @@ interface WhatsAppMessage {
   from: string;
   to: string;
   content: string;
-  type: 'text' | 'image' | 'document' | 'audio' | 'video';
+  type: "text" | "image" | "document" | "audio" | "video";
   timestamp: number;
-  status: 'sent' | 'delivered' | 'read' | 'failed';
+  status: "sent" | "delivered" | "read" | "failed";
 }
 
 export class WhatsAppService {
@@ -31,27 +31,27 @@ export class WhatsAppService {
     this.notificationService = new NotificationService();
     this.config = {
       enabled: false,
-      phoneNumber: '',
-      apiKey: '',
-      webhookUrl: '',
+      phoneNumber: "",
+      apiKey: "",
+      webhookUrl: "",
       autoReply: false,
       allowedContacts: [],
-      messageTemplates: {}
+      messageTemplates: {},
     };
   }
 
   async initialize(): Promise<void> {
     try {
-      logger.info('Initializing WhatsApp service...');
+      logger.info("Initializing WhatsApp service...");
       await this.loadConfig();
       await this.initializeWebhook();
-      logger.info('WhatsApp service initialized successfully');
+      logger.info("WhatsApp service initialized successfully");
       await this.notificationService.sendNotification(
-        'WhatsApp Service',
-        'WhatsApp service has been initialized successfully.'
+        "WhatsApp Service",
+        "WhatsApp service has been initialized successfully.",
       );
     } catch (error) {
-      logger.error('Failed to initialize WhatsApp service:', error);
+      logger.error("Failed to initialize WhatsApp service:", error);
       throw error;
     }
   }
@@ -59,17 +59,21 @@ export class WhatsAppService {
   private async loadConfig(): Promise<void> {
     try {
       this.config = {
-        enabled: process.env.ENABLE_WHATSAPP === 'true',
-        phoneNumber: process.env.WHATSAPP_PHONE_NUMBER || '',
-        apiKey: process.env.WHATSAPP_API_KEY || '',
-        webhookUrl: process.env.WHATSAPP_WEBHOOK_URL || '',
-        autoReply: process.env.WHATSAPP_AUTO_REPLY === 'true',
-        allowedContacts: (process.env.WHATSAPP_ALLOWED_CONTACTS || '').split(','),
-        messageTemplates: JSON.parse(process.env.WHATSAPP_MESSAGE_TEMPLATES || '{}')
+        enabled: process.env.ENABLE_WHATSAPP === "true",
+        phoneNumber: process.env.WHATSAPP_PHONE_NUMBER || "",
+        apiKey: process.env.WHATSAPP_API_KEY || "",
+        webhookUrl: process.env.WHATSAPP_WEBHOOK_URL || "",
+        autoReply: process.env.WHATSAPP_AUTO_REPLY === "true",
+        allowedContacts: (process.env.WHATSAPP_ALLOWED_CONTACTS || "").split(
+          ",",
+        ),
+        messageTemplates: JSON.parse(
+          process.env.WHATSAPP_MESSAGE_TEMPLATES || "{}",
+        ),
       };
-      logger.info('WhatsApp configuration loaded successfully');
+      logger.info("WhatsApp configuration loaded successfully");
     } catch (error) {
-      logger.error('Failed to load WhatsApp configuration:', error);
+      logger.error("Failed to load WhatsApp configuration:", error);
       throw error;
     }
   }
@@ -77,32 +81,36 @@ export class WhatsAppService {
   private async initializeWebhook(): Promise<void> {
     try {
       if (!this.config.webhookUrl) {
-        logger.warn('No webhook URL configured for WhatsApp service');
+        logger.warn("No webhook URL configured for WhatsApp service");
         return;
       }
 
       // Register webhook with WhatsApp API
       await this.registerWebhook();
-      logger.info('WhatsApp webhook initialized successfully');
+      logger.info("WhatsApp webhook initialized successfully");
     } catch (error) {
-      logger.error('Failed to initialize WhatsApp webhook:', error);
+      logger.error("Failed to initialize WhatsApp webhook:", error);
       throw error;
     }
   }
 
   private async registerWebhook(): Promise<void> {
-    logger.info('Registering WhatsApp webhook...');
+    logger.info("Registering WhatsApp webhook...");
     // Implementation for webhook registration
   }
 
-  public async sendMessage(to: string, content: string, type: 'text' | 'image' | 'document' | 'audio' | 'video' = 'text'): Promise<WhatsAppMessage> {
+  public async sendMessage(
+    to: string,
+    content: string,
+    type: "text" | "image" | "document" | "audio" | "video" = "text",
+  ): Promise<WhatsAppMessage> {
     try {
       if (!this.config.enabled) {
-        throw new Error('WhatsApp service is not enabled');
+        throw new Error("WhatsApp service is not enabled");
       }
 
       if (!this.config.allowedContacts.includes(to)) {
-        throw new Error('Contact not allowed');
+        throw new Error("Contact not allowed");
       }
 
       const message: WhatsAppMessage = {
@@ -112,7 +120,7 @@ export class WhatsAppService {
         content,
         type,
         timestamp: Date.now(),
-        status: 'sent'
+        status: "sent",
       };
 
       // Send message through WhatsApp API
@@ -122,13 +130,13 @@ export class WhatsAppService {
       logger.info(`Message sent: ${JSON.stringify(message)}`);
 
       await this.notificationService.sendNotification(
-        'WhatsApp Message Sent',
-        `Message sent to ${to}: ${content}`
+        "WhatsApp Message Sent",
+        `Message sent to ${to}: ${content}`,
       );
 
       return message;
     } catch (error) {
-      logger.error('Failed to send WhatsApp message:', error);
+      logger.error("Failed to send WhatsApp message:", error);
       throw error;
     }
   }
@@ -141,26 +149,28 @@ export class WhatsAppService {
   public async handleIncomingMessage(message: WhatsAppMessage): Promise<void> {
     try {
       if (!this.config.enabled) {
-        throw new Error('WhatsApp service is not enabled');
+        throw new Error("WhatsApp service is not enabled");
       }
 
       this.messages.push(message);
       logger.info(`Message received: ${JSON.stringify(message)}`);
 
       if (this.config.autoReply) {
-        const template = this.config.messageTemplates[message.type] || this.config.messageTemplates['default'];
+        const template =
+          this.config.messageTemplates[message.type] ||
+          this.config.messageTemplates["default"];
         if (template) {
-          const reply = template.replace('{sender}', message.from);
+          const reply = template.replace("{sender}", message.from);
           await this.sendMessage(message.from, reply);
         }
       }
 
       await this.notificationService.sendNotification(
-        'WhatsApp Message Received',
-        `Message from ${message.from}: ${message.content}`
+        "WhatsApp Message Received",
+        `Message from ${message.from}: ${message.content}`,
       );
     } catch (error) {
-      logger.error('Failed to handle incoming WhatsApp message:', error);
+      logger.error("Failed to handle incoming WhatsApp message:", error);
       throw error;
     }
   }
@@ -176,10 +186,10 @@ export class WhatsAppService {
   public async updateConfig(newConfig: Partial<WhatsAppConfig>): Promise<void> {
     try {
       this.config = { ...this.config, ...newConfig };
-      logger.info('WhatsApp configuration updated successfully');
+      logger.info("WhatsApp configuration updated successfully");
     } catch (error) {
-      logger.error('Failed to update WhatsApp configuration:', error);
+      logger.error("Failed to update WhatsApp configuration:", error);
       throw error;
     }
   }
-} 
+}

@@ -5,6 +5,7 @@ last_updated: 2025-11-15
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -30,17 +31,20 @@ This document outlines a complete testing and quality assurance strategy for QMO
 ### 1.1 Test Scope
 
 #### Apps Under Test
+
 - ✅ QMOI AI (native apps for 8 platforms)
 - ✅ QCity (universal package)
 - ✅ QShare, QStore, QVillage, Yap, QMOI Space, Q Alpha (web apps)
 
 #### Test Coverage Goals
+
 - **Unit Tests:** ≥70% code coverage for critical paths
 - **Integration Tests:** 100% of API endpoints tested
 - **Functional Tests:** 100% of user workflows tested
 - **Performance Tests:** Baseline established for all platforms
 
 #### Test Levels
+
 1. **Unit Tests** — Individual functions/methods
 2. **Integration Tests** — API/database interactions
 3. **System Tests** — Full app functionality
@@ -49,19 +53,19 @@ This document outlines a complete testing and quality assurance strategy for QMO
 
 ### 1.2 Test Types
 
-| Test Type | Purpose | When to Run | Who | Frequency |
-|-----------|---------|------------|-----|-----------|
-| **Smoke Test** | Basic functionality works | After each build | Dev/CI | Every build |
-| **Regression Test** | No existing features broken | Before release | QA | Every release |
-| **Functional Test** | Features work as specified | Before release | QA | Every release |
-| **Performance Test** | App meets speed targets | Before release | QA/Perf Team | Every release |
-| **Security Test** | No vulnerabilities | Before release | Security Team | Every release |
-| **Usability Test** | UI is intuitive | Before release | QA/UX | Every release |
-| **Accessibility Test** | App accessible to all users | Before release | QA/A11y Team | Every release |
-| **Installation Test** | App installs correctly | Before release | QA | Every release |
-| **Compatibility Test** | Works on target platforms | Before release | QA | Every release |
-| **Load Test** | Performance under load | Before major release | Perf Team | Every major release |
-| **User Acceptance Test** | Meets user requirements | Before release | Product/Customers | Every release |
+| Test Type                | Purpose                     | When to Run          | Who               | Frequency           |
+| ------------------------ | --------------------------- | -------------------- | ----------------- | ------------------- |
+| **Smoke Test**           | Basic functionality works   | After each build     | Dev/CI            | Every build         |
+| **Regression Test**      | No existing features broken | Before release       | QA                | Every release       |
+| **Functional Test**      | Features work as specified  | Before release       | QA                | Every release       |
+| **Performance Test**     | App meets speed targets     | Before release       | QA/Perf Team      | Every release       |
+| **Security Test**        | No vulnerabilities          | Before release       | Security Team     | Every release       |
+| **Usability Test**       | UI is intuitive             | Before release       | QA/UX             | Every release       |
+| **Accessibility Test**   | App accessible to all users | Before release       | QA/A11y Team      | Every release       |
+| **Installation Test**    | App installs correctly      | Before release       | QA                | Every release       |
+| **Compatibility Test**   | Works on target platforms   | Before release       | QA                | Every release       |
+| **Load Test**            | Performance under load      | Before major release | Perf Team         | Every major release |
+| **User Acceptance Test** | Meets user requirements     | Before release       | Product/Customers | Every release       |
 
 ---
 
@@ -70,6 +74,7 @@ This document outlines a complete testing and quality assurance strategy for QMO
 ### 2.1 Automated Testing Framework
 
 #### Android (Kotlin/Java)
+
 - **Unit Test Framework:** JUnit 4/5
 - **Mocking Library:** Mockito
 - **Test Runner:** Gradle/Instrumented Tests
@@ -86,11 +91,13 @@ This document outlines a complete testing and quality assurance strategy for QMO
 ```
 
 **Coverage Targets:**
+
 - [ ] Unit test coverage ≥ 70%
 - [ ] Critical business logic ≥ 90%
 - [ ] UI logic ≥ 50% (difficult to test, less critical)
 
 #### iOS (Swift)
+
 - **Unit Test Framework:** XCTest
 - **Mocking Library:** Mockito-Swift or custom
 - **CI Integration:** Xcode build system
@@ -104,11 +111,13 @@ xcodebuild test -scheme QMOIApp -enableCodeCoverage YES
 ```
 
 **Coverage Targets:**
+
 - [ ] Unit test coverage ≥ 70%
 - [ ] API layer ≥ 80%
 - [ ] Data models ≥ 75%
 
 #### Web (JavaScript/TypeScript)
+
 - **Test Framework:** Jest or Vitest
 - **Mocking Library:** Jest Mock or Sinon
 - **Component Testing:** React Testing Library or Vue Test Utils
@@ -125,6 +134,7 @@ npm test -- --watch
 ```
 
 **Coverage Targets:**
+
 - [ ] Unit test coverage ≥ 70%
 - [ ] Component test coverage ≥ 60%
 - [ ] API integration layer ≥ 80%
@@ -136,6 +146,7 @@ npm test -- --watch
 **Tool:** Postman, REST Assured, or PyTest
 
 **Test Cases:**
+
 - [ ] **Endpoint: GET /api/health**
   - Expected response: 200 OK with status info
   - Test: `curl -s https://api.qmoi.app/health | jq`.
@@ -160,6 +171,7 @@ npm test -- --watch
   - Includes `Retry-After` header
 
 **Postman Collection Example:**
+
 ```bash
 # Export and run collection
 postman-cli run collections/qmoi-api-tests.json \
@@ -188,6 +200,7 @@ postman-cli run collections/qmoi-api-tests.json \
 ### 2.3 Test Automation in CI/CD
 
 **GitHub Actions Workflow:**
+
 ```yaml
 name: Automated Tests
 
@@ -201,7 +214,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: "18"
       - name: Install dependencies
         run: npm ci
       - name: Run lint
@@ -250,6 +263,7 @@ TESTER: ________________ DATE: ________
 #### Core Functionality Test Cases
 
 **QMOI AI:**
+
 - [ ] **TC_001:** App launches without crashing
 - [ ] **TC_002:** Main chat interface displays correctly
 - [ ] **TC_003:** User can type and send message
@@ -260,6 +274,7 @@ TESTER: ________________ DATE: ________
 - [ ] **TC_008:** Help/About sections accessible
 
 **QCity:**
+
 - [ ] **TC_101:** Dashboard loads with correct statistics
 - [ ] **TC_102:** App management panel lists installed apps
 - [ ] **TC_103:** System monitor shows CPU/Memory/Disk stats
@@ -267,6 +282,7 @@ TESTER: ________________ DATE: ________
 - [ ] **TC_105:** Settings persist across restarts
 
 **Web Apps (QShare, QStore, QVillage, Yap):**
+
 - [ ] **TC_201:** Landing page loads and displays correctly
 - [ ] **TC_202:** Navigation menu functional
 - [ ] **TC_203:** Primary user workflow completes successfully
@@ -277,17 +293,20 @@ TESTER: ________________ DATE: ________
 ### 3.2 Regression Test Suite
 
 **Regression Test Focus:**
+
 - Features that changed in this release
 - Features that touch shared/core code
 - Features with history of bugs
 - High-risk areas (authentication, payments, data persistence)
 
 **Run Regression Tests:**
+
 1. Before each release (manual or automated)
 2. After any hotfixes
 3. After dependency updates
 
 **Regression Test Checklist:**
+
 - [ ] All previous release test cases still pass
 - [ ] No new bugs introduced
 - [ ] Performance hasn't degraded
@@ -297,20 +316,20 @@ TESTER: ________________ DATE: ________
 
 #### Testing Matrix
 
-| Platform | Device | OS Version | Tester | Test Date |
-|----------|--------|-----------|--------|-----------|
-| **Android** | Samsung Galaxy S21 | Android 12 | _____ | _____ |
-| **Android** | Google Pixel 6 | Android 13 | _____ | _____ |
-| **Android** | OnePlus 9 | Android 11 | _____ | _____ |
-| **iOS** | iPhone 12 | iOS 15 | _____ | _____ |
-| **iOS** | iPhone 13 | iOS 16 | _____ | _____ |
-| **iOS** | iPad Pro | iOS 16 | _____ | _____ |
-| **Windows** | Laptop | Windows 11 | _____ | _____ |
-| **macOS** | MacBook | macOS 13 | _____ | _____ |
-| **Linux** | Desktop | Ubuntu 22.04 | _____ | _____ |
-| **Web** | Chrome | Latest | _____ | _____ |
-| **Web** | Safari | Latest | _____ | _____ |
-| **Web** | Firefox | Latest | _____ | _____ |
+| Platform    | Device             | OS Version   | Tester | Test Date |
+| ----------- | ------------------ | ------------ | ------ | --------- |
+| **Android** | Samsung Galaxy S21 | Android 12   | **\_** | **\_**    |
+| **Android** | Google Pixel 6     | Android 13   | **\_** | **\_**    |
+| **Android** | OnePlus 9          | Android 11   | **\_** | **\_**    |
+| **iOS**     | iPhone 12          | iOS 15       | **\_** | **\_**    |
+| **iOS**     | iPhone 13          | iOS 16       | **\_** | **\_**    |
+| **iOS**     | iPad Pro           | iOS 16       | **\_** | **\_**    |
+| **Windows** | Laptop             | Windows 11   | **\_** | **\_**    |
+| **macOS**   | MacBook            | macOS 13     | **\_** | **\_**    |
+| **Linux**   | Desktop            | Ubuntu 22.04 | **\_** | **\_**    |
+| **Web**     | Chrome             | Latest       | **\_** | **\_**    |
+| **Web**     | Safari             | Latest       | **\_** | **\_**    |
+| **Web**     | Firefox            | Latest       | **\_** | **\_**    |
 
 #### Device Testing Checklist (per device)
 
@@ -372,21 +391,22 @@ TESTER: ________________ DATE: ________
 
 #### Targets by Platform
 
-| Metric | Android | iOS | Windows | macOS | Linux | Web |
-|--------|---------|-----|---------|-------|-------|-----|
-| **Cold Start** | < 5s | < 4s | < 5s | < 4s | < 5s | < 3s |
-| **Warm Start** | < 2s | < 2s | < 2s | < 2s | < 2s | < 1s |
-| **Memory (Idle)** | < 150 MB | < 100 MB | < 200 MB | < 150 MB | < 150 MB | < 50 MB |
-| **Memory (Active)** | < 300 MB | < 200 MB | < 400 MB | < 300 MB | < 300 MB | < 100 MB |
-| **API Response** | < 1s | < 1s | < 1s | < 1s | < 1s | < 500ms |
-| **CPU (Idle)** | < 5% | < 3% | < 2% | < 2% | < 2% | < 1% |
-| **CPU (Active)** | < 40% | < 40% | < 50% | < 50% | < 50% | < 30% |
-| **Battery Impact** | < 2%/hour | < 1%/hour | N/A | N/A | N/A | N/A |
-| **Frame Rate** | ≥ 45 FPS | ≥ 45 FPS | N/A | N/A | N/A | ≥ 30 FPS |
+| Metric              | Android   | iOS       | Windows  | macOS    | Linux    | Web      |
+| ------------------- | --------- | --------- | -------- | -------- | -------- | -------- |
+| **Cold Start**      | < 5s      | < 4s      | < 5s     | < 4s     | < 5s     | < 3s     |
+| **Warm Start**      | < 2s      | < 2s      | < 2s     | < 2s     | < 2s     | < 1s     |
+| **Memory (Idle)**   | < 150 MB  | < 100 MB  | < 200 MB | < 150 MB | < 150 MB | < 50 MB  |
+| **Memory (Active)** | < 300 MB  | < 200 MB  | < 400 MB | < 300 MB | < 300 MB | < 100 MB |
+| **API Response**    | < 1s      | < 1s      | < 1s     | < 1s     | < 1s     | < 500ms  |
+| **CPU (Idle)**      | < 5%      | < 3%      | < 2%     | < 2%     | < 2%     | < 1%     |
+| **CPU (Active)**    | < 40%     | < 40%     | < 50%    | < 50%    | < 50%    | < 30%    |
+| **Battery Impact**  | < 2%/hour | < 1%/hour | N/A      | N/A      | N/A      | N/A      |
+| **Frame Rate**      | ≥ 45 FPS  | ≥ 45 FPS  | N/A      | N/A      | N/A      | ≥ 30 FPS |
 
 ### 4.2 Performance Testing Tools
 
 #### Android
+
 ```bash
 # Profiler in Android Studio
 # Monitor: Memory, CPU, Network, Disk I/O
@@ -398,6 +418,7 @@ adb shell pm list features  # Device capabilities
 ```
 
 #### iOS
+
 ```bash
 # Xcode Instruments
 # Profiles: Time Profiler, Memory, Network, Core Animation
@@ -407,6 +428,7 @@ adb shell pm list features  # Device capabilities
 ```
 
 #### Web
+
 ```bash
 # Chrome DevTools Performance tab
 # Measure: First Paint, First Contentful Paint, Largest Contentful Paint
@@ -420,6 +442,7 @@ lighthouse https://qmoi.app --output=json
 ```
 
 #### Load Testing (for APIs)
+
 ```bash
 # Apache Bench
 ab -n 1000 -c 10 https://api.qmoi.app/health
@@ -472,18 +495,21 @@ locust -f locustfile.py --host=https://api.qmoi.app
 #### User Scenarios
 
 **Scenario 1: First-Time User**
+
 - [ ] App downloaded and installed successfully
 - [ ] Launch app — UI is intuitive (no tutorial needed for basic features)
 - [ ] Can perform core action (e.g., send message in QMOI AI) without help
 - [ ] User feels confident to explore app
 
 **Scenario 2: Returning User**
+
 - [ ] App remembers preferences (theme, language, etc.)
 - [ ] Quick access to frequently used features
 - [ ] No crashes or data loss since last visit
 - [ ] Performance is good (not slow or laggy)
 
 **Scenario 3: Error Recovery**
+
 - [ ] Network error shows clear message and retry option
 - [ ] User can recover and continue without restarting app
 - [ ] Error doesn't corrupt data or state
@@ -525,18 +551,21 @@ locust -f locustfile.py --host=https://api.qmoi.app
 #### Screen Reader Testing
 
 **Android (TalkBack):**
+
 ```
 Settings → Accessibility → TalkBack → Enable
 Test: Navigate using gestures, verify labels and descriptions
 ```
 
 **iOS (VoiceOver):**
+
 ```
 Settings → Accessibility → VoiceOver → Enable
 Test: Navigate using rotor, verify descriptions
 ```
 
 **Web (NVDA/JAWS/VoiceOver):**
+
 - [ ] All interactive elements have accessible labels
 - [ ] Headings properly structured (H1 → H2 → H3, etc.)
 - [ ] Form labels associated with inputs
@@ -591,26 +620,31 @@ Test: Navigate using rotor, verify descriptions
 ### 6.1 Platform Compatibility
 
 #### Android Compatibility
+
 - [ ] **API Levels:** Test on API 26, 29, 30, 31, 32, 33
 - [ ] **Screen Sizes:** Phone (4.5"), Tablet (7"), Large Tablet (10")
 - [ ] **Device Types:** Handset, Tablet, Foldable (if applicable)
 - [ ] **Manufacturers:** Samsung, Google, OnePlus, Xiaomi, etc.
 
 #### iOS Compatibility
+
 - [ ] **iOS Versions:** iOS 14, 15, 16, 17 (latest)
 - [ ] **Devices:** iPhone SE, iPhone 12, iPhone 13, iPhone 14, iPad
 - [ ] **Architectures:** ARM64
 
 #### Windows Compatibility
+
 - [ ] **Windows Versions:** Windows 10 (Build 19041+), Windows 11
 - [ ] **Architecture:** x86-64
 - [ ] **Language:** English, German, French (if localized)
 
 #### macOS Compatibility
+
 - [ ] **OS Versions:** macOS 11, 12, 13, 14
 - [ ] **Architecture:** Intel, Apple Silicon (M1/M2)
 
 #### Linux Compatibility
+
 - [ ] **Distros:** Ubuntu 18.04+, Debian 10+, Fedora 31+
 - [ ] **Desktop Environments:** GNOME, KDE, XFCE
 - [ ] **Architecture:** x86-64
@@ -618,6 +652,7 @@ Test: Navigate using rotor, verify descriptions
 ### 6.2 Installation Testing
 
 #### Android Installation
+
 - [ ] **Playstore Installation:**
   - [ ] App installs from Play Store successfully
   - [ ] Auto-update works
@@ -628,6 +663,7 @@ Test: Navigate using rotor, verify descriptions
   - [ ] Sideloading works (if enabled on device)
 
 #### iOS Installation
+
 - [ ] **App Store Installation:**
   - [ ] App appears in App Store
   - [ ] Installation completes successfully
@@ -639,6 +675,7 @@ Test: Navigate using rotor, verify descriptions
   - [ ] Feedback submission works
 
 #### Windows Installation
+
 - [ ] **EXE Installer:**
   - [ ] Installer launches without errors
   - [ ] Installation wizard completes
@@ -651,6 +688,7 @@ Test: Navigate using rotor, verify descriptions
   - [ ] Repair/Modify/Remove options work
 
 #### macOS Installation
+
 - [ ] **DMG Installation:**
   - [ ] DMG mounts correctly
   - [ ] Drag to Applications works
@@ -658,6 +696,7 @@ Test: Navigate using rotor, verify descriptions
   - [ ] Gatekeeper allows launch (notarization working)
 
 #### Linux Installation
+
 - [ ] **AppImage:**
   - [ ] AppImage executable
   - [ ] Runs without dependencies: `./app.AppImage`
@@ -677,12 +716,14 @@ Test: Navigate using rotor, verify descriptions
 #### Network Speed Scenarios
 
 **Scenario 1: Good Connection (4G / Fiber)**
+
 - Expected behavior:
   - [ ] App loads quickly (< 2s)
   - [ ] API responses within SLA (< 1s)
   - [ ] No network errors
 
 **Scenario 2: Weak Connection (3G)**
+
 - Expected behavior:
   - [ ] App loads (may take longer, but no timeout)
   - [ ] Loading indicators visible
@@ -690,6 +731,7 @@ Test: Navigate using rotor, verify descriptions
   - [ ] No crash due to slow network
 
 **Scenario 3: Poor Connection (LTE with packet loss)**
+
 - Expected behavior:
   - [ ] App handles packet loss gracefully
   - [ ] Retry logic works
@@ -697,6 +739,7 @@ Test: Navigate using rotor, verify descriptions
   - [ ] No data corruption
 
 **Scenario 4: Offline → Online (Transition)**
+
 - Expected behavior:
   - [ ] App detects connection loss
   - [ ] Offline message displayed to user
@@ -706,6 +749,7 @@ Test: Navigate using rotor, verify descriptions
 ### 7.2 Connection Testing Tools
 
 **Android:**
+
 ```bash
 # Use Android Studio Network Profiler
 # Settings → Developer Options → Network → Simulate slow network
@@ -716,6 +760,7 @@ adb reboot
 ```
 
 **iOS:**
+
 ```bash
 # Xcode → Debug → Simulate Location/Network
 # Network Link Conditioner (Apple Configurator Tool)
@@ -723,6 +768,7 @@ adb reboot
 ```
 
 **Web:**
+
 ```bash
 # Chrome DevTools → Network tab
 # Throttle dropdown → Choose: Fast 3G, Slow 3G, Offline
@@ -736,12 +782,14 @@ adb reboot
 ### 8.1 UAT Planning
 
 #### Tester Selection
+
 - Real users or user representatives
 - Mix of technical and non-technical testers
 - Testers from different regions/devices (if applicable)
 - Target: 5-20 testers per major app
 
 #### UAT Duration
+
 - Duration: 1-2 weeks (minimum)
 - Focus: Real-world usage patterns
 - Feedback collection: Daily or as-needed
@@ -749,6 +797,7 @@ adb reboot
 ### 8.2 UAT Test Cases
 
 **Template:**
+
 ```
 UAT TEST CASE: Real-World User Workflow
 
@@ -784,6 +833,7 @@ APPROVED FOR RELEASE: ✅ YES / ❌ NO / ⚠️ WITH NOTES
 - [ ] Users approve release
 
 **UAT Sign-Off Signature:**
+
 ```
 Test Coordinator: ________________ Date: __________
 Product Manager: ________________ Date: __________
@@ -813,6 +863,7 @@ Customer Representative: ________________ Date: __________
 #### Daily Check-in (First Week)
 
 **Daily Standup Report:**
+
 ```
 Date: ___________
 Release: v1.2.3
@@ -837,12 +888,12 @@ NEXT STEPS:
 
 #### Issue Severity Levels
 
-| Severity | Impact | Response Time | Example |
-|----------|--------|---------------|---------|
-| **Critical** | Total app crash, data loss | < 1 hour | App won't launch on any platform |
-| **High** | Feature broken, major performance issue | < 4 hours | Crash on specific workflow |
-| **Medium** | Feature partially broken, minor performance issue | < 1 day | UI glitch on some devices |
-| **Low** | Minor issue, workaround available | < 1 week | Typo in help text |
+| Severity     | Impact                                            | Response Time | Example                          |
+| ------------ | ------------------------------------------------- | ------------- | -------------------------------- |
+| **Critical** | Total app crash, data loss                        | < 1 hour      | App won't launch on any platform |
+| **High**     | Feature broken, major performance issue           | < 4 hours     | Crash on specific workflow       |
+| **Medium**   | Feature partially broken, minor performance issue | < 1 day       | UI glitch on some devices        |
+| **Low**      | Minor issue, workaround available                 | < 1 week      | Typo in help text                |
 
 #### Response Workflow
 
@@ -903,54 +954,63 @@ STAKEHOLDER SIGN-OFF:
 # Test Execution Checklist: QMOI v1.2.3
 
 ## Test Environment Setup
+
 - [ ] Test devices prepared and documented
 - [ ] Test data loaded
 - [ ] Network conditions simulated (if applicable)
 - [ ] Automation environment configured
 
 ## Smoke Tests (Pre-Regression)
+
 - [ ] App launches without crashing
 - [ ] Main features accessible
 - [ ] No database connection errors
 - [ ] API endpoints responding
 
 ## Regression Tests
+
 - [ ] All test cases from previous release passed
 - [ ] No regressions detected
 - [ ] Performance not degraded
 
 ## Functional Tests
+
 - [ ] All new features tested
 - [ ] All modified features tested
 - [ ] Test coverage: [X]%
 
 ## Performance Tests
+
 - [ ] App startup time: [X]ms (target: < 5000ms)
 - [ ] API response time: [X]ms (target: < 1000ms)
 - [ ] Memory usage: [X]MB (target: < 300MB)
 - [ ] CPU usage idle: [X]% (target: < 5%)
 
 ## Security Tests
+
 - [ ] Secrets scanning: PASS / FAIL
 - [ ] Code review: PASS / FAIL
 - [ ] Dependency audit: PASS / FAIL
 - [ ] Penetration testing: PASS / FAIL / N/A
 
 ## Usability Tests
+
 - [ ] UI intuitive and consistent
 - [ ] Navigation smooth
 - [ ] Error messages clear
 - [ ] Accessibility verified
 
 ## Compatibility Tests
+
 - [ ] Tested on all target platforms
 - [ ] Installation works on all platforms
 - [ ] Uninstall/reinstall works
 
 ## Final Approval
-- [ ] QA Lead Approval: ________________ Date: __________
-- [ ] Product Manager Approval: ________________ Date: __________
-- [ ] Release Manager Approval: ________________ Date: __________
+
+- [ ] QA Lead Approval: **\*\***\_\_\_\_**\*\*** Date: \***\*\_\_\*\***
+- [ ] Product Manager Approval: **\*\***\_\_\_\_**\*\*** Date: \***\*\_\_\*\***
+- [ ] Release Manager Approval: **\*\***\_\_\_\_**\*\*** Date: \***\*\_\_\*\***
 - [ ] Status: ✅ APPROVED / ❌ BLOCKED
 ```
 

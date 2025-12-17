@@ -6,43 +6,43 @@
  * Handles YAML syntax, workflow logic, and GitHub-specific issues
  */
 
-import { promises as fs } from 'fs';
-import path from 'path';
-import crypto from 'crypto';
-import yaml from 'js-yaml';
-import QMOINotificationSystem from './qmoi-notification-system.js';
+import { promises as fs } from "fs";
+import path from "path";
+import crypto from "crypto";
+import yaml from "js-yaml";
+import QMOINotificationSystem from "./qmoi-notification-system.js";
 
 class QMOIGitHubActionsFixer {
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    this.workflowPath = '.github/workflows';
+    this.workflowPath = ".github/workflows";
     this.fixHistory = [];
     this.githubPatterns = {
       yamlSyntax: /YAML|yaml|Error reading JToken|Unexpected token/,
       workflowError: /workflow|action|step|job/,
       permissionError: /permission|access|token/,
       environmentError: /environment|secret|variable/,
-      runnerError: /runner|ubuntu|windows|macos/
+      runnerError: /runner|ubuntu|windows|macos/,
     };
   }
 
   async initialize() {
-    console.log('🔧 Initializing QMOI GitHub Actions Fixer...');
+    console.log("🔧 Initializing QMOI GitHub Actions Fixer...");
     await this.notificationSystem.initialize();
-    console.log('✅ QMOI GitHub Actions Fixer initialized');
+    console.log("✅ QMOI GitHub Actions Fixer initialized");
   }
 
   async fixAllWorkflows() {
-    console.log('🚀 Starting GitHub Actions workflow fixes...');
-    
+    console.log("🚀 Starting GitHub Actions workflow fixes...");
+
     const fixReport = {
       timestamp: new Date().toISOString(),
       workflows: [],
       summary: {
         totalWorkflows: 0,
         successfulFixes: 0,
-        failedFixes: 0
-      }
+        failedFixes: 0,
+      },
     };
 
     try {
@@ -55,26 +55,37 @@ class QMOIGitHubActionsFixer {
         const result = await this.fixWorkflow(workflowFile);
         fixReport.workflows.push({
           file: workflowFile,
-          ...result
+          ...result,
         });
       }
 
       // Update summary
-      fixReport.summary.successfulFixes = fixReport.workflows.filter(w => w.success).length;
-      fixReport.summary.failedFixes = fixReport.workflows.filter(w => !w.success).length;
+      fixReport.summary.successfulFixes = fixReport.workflows.filter(
+        (w) => w.success,
+      ).length;
+      fixReport.summary.failedFixes = fixReport.workflows.filter(
+        (w) => !w.success,
+      ).length;
 
       // Save report
-      await fs.writeFile('logs/qmoi-github-actions-fix-report.json', JSON.stringify(fixReport, null, 2));
+      await fs.writeFile(
+        "logs/qmoi-github-actions-fix-report.json",
+        JSON.stringify(fixReport, null, 2),
+      );
 
       // Send notification
       await this.sendWorkflowFixNotification(fixReport);
 
-      console.log(`✅ GitHub Actions fixes completed: ${fixReport.summary.successfulFixes}/${fixReport.summary.totalWorkflows} workflows fixed`);
+      console.log(
+        `✅ GitHub Actions fixes completed: ${fixReport.summary.successfulFixes}/${fixReport.summary.totalWorkflows} workflows fixed`,
+      );
       return fixReport;
-
     } catch (error) {
-      console.error('❌ GitHub Actions fix failed:', error.message);
-      await this.sendErrorNotification('GitHub Actions Fix Failed', error.message);
+      console.error("❌ GitHub Actions fix failed:", error.message);
+      await this.sendErrorNotification(
+        "GitHub Actions Fix Failed",
+        error.message,
+      );
       throw error;
     }
   }
@@ -82,41 +93,46 @@ class QMOIGitHubActionsFixer {
   async fixWorkflow(workflowPath) {
     try {
       console.log(`🔧 Fixing workflow: ${workflowPath}`);
-      
+
       // Read workflow file
-      const content = await fs.readFile(workflowPath, 'utf8');
+      const content = await fs.readFile(workflowPath, "utf8");
       const originalContent = content;
-      
+
       // Parse YAML
       let workflow;
       try {
         workflow = yaml.load(content);
       } catch (parseError) {
-        console.log(`⚠️ YAML parse error in ${workflowPath}: ${parseError.message}`);
+        console.log(
+          `⚠️ YAML parse error in ${workflowPath}: ${parseError.message}`,
+        );
         return await this.fixYAMLSyntax(content, workflowPath, originalContent);
       }
 
       // Apply workflow fixes
       const fixes = [];
-      
+
       // Fix 1: Ensure proper workflow structure
       if (!workflow.name) {
-        workflow.name = path.basename(workflowPath, '.yml').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        fixes.push('Added workflow name');
+        workflow.name = path
+          .basename(workflowPath, ".yml")
+          .replace(/-/g, " ")
+          .replace(/\b\w/g, (l) => l.toUpperCase());
+        fixes.push("Added workflow name");
       }
 
       // Fix 2: Ensure proper triggers
       if (!workflow.on) {
-        workflow.on = { push: { branches: ['main', 'master'] } };
-        fixes.push('Added default triggers');
+        workflow.on = { push: { branches: ["main", "master"] } };
+        fixes.push("Added default triggers");
       }
 
       // Fix 3: Fix job structure
       if (workflow.jobs) {
         for (const [jobName, job] of Object.entries(workflow.jobs)) {
           // Ensure runs-on is specified
-          if (!job['runs-on']) {
-            job['runs-on'] = 'ubuntu-latest';
+          if (!job["runs-on"]) {
+            job["runs-on"] = "ubuntu-latest";
             fixes.push(`Added runs-on for job ${jobName}`);
           }
 
@@ -142,20 +158,20 @@ class QMOIGitHubActionsFixer {
       // Fix 4: Add permissions if missing
       if (!workflow.permissions) {
         workflow.permissions = {
-          contents: 'read',
-          'pull-requests': 'read',
-          issues: 'read'
+          contents: "read",
+          "pull-requests": "read",
+          issues: "read",
         };
-        fixes.push('Added default permissions');
+        fixes.push("Added default permissions");
       }
 
       // Fix 5: Add environment variables
       if (!workflow.env) {
         workflow.env = {
-          NODE_VERSION: '18',
-          QMOI_AUTODEV_ENABLED: 'true'
+          NODE_VERSION: "18",
+          QMOI_AUTODEV_ENABLED: "true",
         };
-        fixes.push('Added environment variables');
+        fixes.push("Added environment variables");
       }
 
       // Fix 6: Add timeout for jobs
@@ -172,7 +188,7 @@ class QMOIGitHubActionsFixer {
       const fixedContent = yaml.dump(workflow, {
         indent: 2,
         lineWidth: 120,
-        noRefs: true
+        noRefs: true,
       });
 
       // Create backup
@@ -186,44 +202,46 @@ class QMOIGitHubActionsFixer {
         success: true,
         fixesApplied: fixes.length,
         fixes: fixes,
-        backupPath
+        backupPath,
       };
-
     } catch (error) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       };
     }
   }
 
   async fixYAMLSyntax(content, workflowPath, originalContent) {
-    console.log('🔧 Attempting YAML syntax fix...');
-    
+    console.log("🔧 Attempting YAML syntax fix...");
+
     let fixedContent = content;
     const fixes = [];
 
     // Fix 1: Remove trailing spaces
-    fixedContent = fixedContent.replace(/[ \t]+$/gm, '');
-    fixes.push('Removed trailing spaces');
+    fixedContent = fixedContent.replace(/[ \t]+$/gm, "");
+    fixes.push("Removed trailing spaces");
 
     // Fix 2: Fix indentation (replace tabs with spaces)
-    fixedContent = fixedContent.replace(/\t/g, '  ');
-    fixes.push('Fixed indentation');
+    fixedContent = fixedContent.replace(/\t/g, "  ");
+    fixes.push("Fixed indentation");
 
     // Fix 3: Fix common YAML syntax issues
     fixedContent = fixedContent.replace(/:\s*$/gm, ': ""'); // Empty values
-    fixes.push('Fixed empty values');
+    fixes.push("Fixed empty values");
 
     // Fix 4: Fix unquoted strings with special characters
-    fixedContent = fixedContent.replace(/^(\s*[a-zA-Z_][a-zA-Z0-9_]*\s*:\s*)([^"'].*[^"'])$/gm, '$1"$2"');
-    fixes.push('Fixed unquoted strings');
+    fixedContent = fixedContent.replace(
+      /^(\s*[a-zA-Z_][a-zA-Z0-9_]*\s*:\s*)([^"'].*[^"'])$/gm,
+      '$1"$2"',
+    );
+    fixes.push("Fixed unquoted strings");
 
     // Fix 5: Fix duplicate keys
-    const lines = fixedContent.split('\n');
+    const lines = fixedContent.split("\n");
     const seenKeys = new Set();
     const fixedLines = [];
-    
+
     for (const line of lines) {
       const keyMatch = line.match(/^(\s*[a-zA-Z_][a-zA-Z0-9_]*\s*):/);
       if (keyMatch) {
@@ -235,16 +253,16 @@ class QMOIGitHubActionsFixer {
       }
       fixedLines.push(line);
     }
-    
-    fixedContent = fixedLines.join('\n');
+
+    fixedContent = fixedLines.join("\n");
     if (lines.length !== fixedLines.length) {
-      fixes.push('Removed duplicate keys');
+      fixes.push("Removed duplicate keys");
     }
 
     try {
       // Test if the fixed YAML is valid
       yaml.load(fixedContent);
-      
+
       // Create backup
       const backupPath = `${workflowPath}.backup.${Date.now()}`;
       await fs.writeFile(backupPath, originalContent);
@@ -257,64 +275,68 @@ class QMOIGitHubActionsFixer {
         fixesApplied: fixes.length,
         fixes: fixes,
         backupPath,
-        method: 'yaml_syntax_fix'
+        method: "yaml_syntax_fix",
       };
-
     } catch (error) {
       return {
         success: false,
         error: `YAML syntax fix failed: ${error.message}`,
-        attemptedFixes: fixes
+        attemptedFixes: fixes,
       };
     }
   }
 
   async findWorkflowFiles() {
     const files = [];
-    
+
     try {
-      const items = await fs.readdir(this.workflowPath, { withFileTypes: true });
-      
+      const items = await fs.readdir(this.workflowPath, {
+        withFileTypes: true,
+      });
+
       for (const item of items) {
-        if (item.isFile() && (item.name.endsWith('.yml') || item.name.endsWith('.yaml'))) {
+        if (
+          item.isFile() &&
+          (item.name.endsWith(".yml") || item.name.endsWith(".yaml"))
+        ) {
           files.push(path.join(this.workflowPath, item.name));
         }
       }
     } catch (error) {
       console.log(`⚠️ Could not read workflow directory: ${error.message}`);
     }
-    
+
     return files;
   }
 
   async validateWorkflow(workflowPath) {
     try {
-      const content = await fs.readFile(workflowPath, 'utf8');
+      const content = await fs.readFile(workflowPath, "utf8");
       const workflow = yaml.load(content);
-      
+
       const validation = {
         valid: true,
         errors: [],
-        warnings: []
+        warnings: [],
       };
 
       // Check required fields
       if (!workflow.name) {
-        validation.warnings.push('Missing workflow name');
+        validation.warnings.push("Missing workflow name");
       }
 
       if (!workflow.on) {
-        validation.errors.push('Missing triggers (on field)');
+        validation.errors.push("Missing triggers (on field)");
         validation.valid = false;
       }
 
       if (!workflow.jobs) {
-        validation.errors.push('Missing jobs');
+        validation.errors.push("Missing jobs");
         validation.valid = false;
       } else {
         // Validate each job
         for (const [jobName, job] of Object.entries(workflow.jobs)) {
-          if (!job['runs-on']) {
+          if (!job["runs-on"]) {
             validation.errors.push(`Job ${jobName}: Missing runs-on`);
             validation.valid = false;
           }
@@ -327,69 +349,72 @@ class QMOIGitHubActionsFixer {
       }
 
       return validation;
-
     } catch (error) {
       return {
         valid: false,
         errors: [error.message],
-        warnings: []
+        warnings: [],
       };
     }
   }
 
-  async createWorkflowTemplate(name, triggers = ['push'], branches = ['main', 'master']) {
+  async createWorkflowTemplate(
+    name,
+    triggers = ["push"],
+    branches = ["main", "master"],
+  ) {
     const template = {
       name: name,
       on: {},
       permissions: {
-        contents: 'read',
-        'pull-requests': 'read',
-        issues: 'read'
+        contents: "read",
+        "pull-requests": "read",
+        issues: "read",
       },
       env: {
-        NODE_VERSION: '18',
-        QMOI_AUTODEV_ENABLED: 'true'
+        NODE_VERSION: "18",
+        QMOI_AUTODEV_ENABLED: "true",
       },
       jobs: {
         build: {
-          'runs-on': 'ubuntu-latest',
+          "runs-on": "ubuntu-latest",
           timeout_minutes: 30,
           steps: [
             {
-              name: 'Checkout code',
-              uses: 'actions/checkout@v4'
+              name: "Checkout code",
+              uses: "actions/checkout@v4",
             },
             {
-              name: 'Setup Node.js',
-              uses: 'actions/setup-node@v4',
+              name: "Setup Node.js",
+              uses: "actions/setup-node@v4",
               with: {
-                'node-version': '${{ env.NODE_VERSION }}'
-              }
+                "node-version": "${{ env.NODE_VERSION }}",
+              },
             },
             {
-              name: 'Install dependencies',
-              run: 'npm ci --legacy-peer-deps'
+              name: "Install dependencies",
+              run: "npm ci --legacy-peer-deps",
             },
             {
-              name: 'Run tests',
-              run: 'npm test'
+              name: "Run tests",
+              run: "npm test",
             },
             {
-              name: 'Build',
-              run: 'npm run build'
-            }
-          ]
-        }
-      }
+              name: "Build",
+              run: "npm run build",
+            },
+          ],
+        },
+      },
     };
 
     // Add triggers
     for (const trigger of triggers) {
-      if (trigger === 'push') {
+      if (trigger === "push") {
         template.on.push = { branches };
-      } else if (trigger === 'pull_request') {
+      } else if (trigger === "pull_request") {
         template.on.pull_request = { branches };
-      } else if (trigger === 'workflow_dispatch') {
+      } else if (trigger === "workflow_dispatch") {
         template.on.workflow_dispatch = {};
       }
     }
@@ -398,8 +423,8 @@ class QMOIGitHubActionsFixer {
   }
 
   async sendWorkflowFixNotification(fixReport) {
-    const successfulFixes = fixReport.workflows.filter(w => w.success);
-    const failedFixes = fixReport.workflows.filter(w => !w.success);
+    const successfulFixes = fixReport.workflows.filter((w) => w.success);
+    const failedFixes = fixReport.workflows.filter((w) => !w.success);
 
     const message = `
 🔧 QMOI GitHub Actions Fix Report
@@ -408,51 +433,66 @@ class QMOIGitHubActionsFixer {
 ❌ Failed Fixes: ${fixReport.summary.failedFixes}
 📊 Total Workflows: ${fixReport.summary.totalWorkflows}
 
-${successfulFixes.length > 0 ? `
+${
+  successfulFixes.length > 0
+    ? `
 ✅ Fixed Workflows:
-${successfulFixes.slice(0, 5).map(w => `• ${path.basename(w.file)}: ${w.fixesApplied} fixes`).join('\n')}
-${successfulFixes.length > 5 ? `... and ${successfulFixes.length - 5} more` : ''}
-` : ''}
+${successfulFixes
+  .slice(0, 5)
+  .map((w) => `• ${path.basename(w.file)}: ${w.fixesApplied} fixes`)
+  .join("\n")}
+${successfulFixes.length > 5 ? `... and ${successfulFixes.length - 5} more` : ""}
+`
+    : ""
+}
 
-${failedFixes.length > 0 ? `
+${
+  failedFixes.length > 0
+    ? `
 ❌ Failed Fixes:
-${failedFixes.slice(0, 3).map(w => `• ${path.basename(w.file)}: ${w.error}`).join('\n')}
-${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ''}
-` : ''}
+${failedFixes
+  .slice(0, 3)
+  .map((w) => `• ${path.basename(w.file)}: ${w.error}`)
+  .join("\n")}
+${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
+`
+    : ""
+}
 
 📁 Report saved to: logs/qmoi-github-actions-fix-report.json
     `.trim();
 
     await this.notificationSystem.sendNotification(
-      fixReport.summary.failedFixes === 0 ? 'success' : 'warning',
-      'QMOI GitHub Actions Fix Complete',
+      fixReport.summary.failedFixes === 0 ? "success" : "warning",
+      "QMOI GitHub Actions Fix Complete",
       message,
       {
         details: {
           summary: fixReport.summary,
-          timestamp: fixReport.timestamp
-        }
-      }
+          timestamp: fixReport.timestamp,
+        },
+      },
     );
   }
 
   async sendErrorNotification(title, error) {
     await this.notificationSystem.sendNotification(
-      'error',
+      "error",
       title,
       `QMOI GitHub Actions Fixer encountered an error: ${error}`,
       {
         details: {
           error,
-          timestamp: new Date().toISOString()
-        }
-      }
+          timestamp: new Date().toISOString(),
+        },
+      },
     );
   }
 }
 
 // CLI interface
-const isMainModule = process.argv[1] && process.argv[1].endsWith('qmoi-github-actions-fixer.js');
+const isMainModule =
+  process.argv[1] && process.argv[1].endsWith("qmoi-github-actions-fixer.js");
 if (isMainModule) {
   const fixer = new QMOIGitHubActionsFixer();
   const args = process.argv.slice(2);
@@ -460,20 +500,21 @@ if (isMainModule) {
   async function main() {
     await fixer.initialize();
 
-    if (args.includes('--fix-all')) {
-      console.log('🚀 Fixing all GitHub Actions workflows...');
+    if (args.includes("--fix-all")) {
+      console.log("🚀 Fixing all GitHub Actions workflows...");
       const report = await fixer.fixAllWorkflows();
-      console.log('Fix report:', JSON.stringify(report, null, 2));
-    } else if (args.includes('--validate')) {
-      const workflowPath = args[args.indexOf('--validate') + 1];
+      console.log("Fix report:", JSON.stringify(report, null, 2));
+    } else if (args.includes("--validate")) {
+      const workflowPath = args[args.indexOf("--validate") + 1];
       if (workflowPath) {
         const validation = await fixer.validateWorkflow(workflowPath);
-        console.log('Validation result:', JSON.stringify(validation, null, 2));
+        console.log("Validation result:", JSON.stringify(validation, null, 2));
       }
-    } else if (args.includes('--create-template')) {
-      const name = args[args.indexOf('--create-template') + 1] || 'QMOI Workflow';
+    } else if (args.includes("--create-template")) {
+      const name =
+        args[args.indexOf("--create-template") + 1] || "QMOI Workflow";
       const template = await fixer.createWorkflowTemplate(name);
-      console.log('Workflow template:', yaml.dump(template, { indent: 2 }));
+      console.log("Workflow template:", yaml.dump(template, { indent: 2 }));
     } else {
       console.log(`
 QMOI GitHub Actions Fixer
@@ -501,4 +542,4 @@ Examples:
   main().catch(console.error);
 }
 
-export default QMOIGitHubActionsFixer; 
+export default QMOIGitHubActionsFixer;

@@ -80,7 +80,7 @@ async function backupCredentialsToEmail(credentials: any, platform: string) {
       body: `Platform: ${platform}\nCredentials: ${JSON.stringify(
         credentials,
         null,
-        2
+        2,
       )}\nTimestamp: ${new Date().toISOString()}`,
     };
 
@@ -316,7 +316,7 @@ async function addToMpesaAccount(amount: number, description: string) {
           Msisdn: "254700000000", // QMOI's M-Pesa number
           BillReferenceNumber: description,
         }),
-      }
+      },
     );
 
     const result = await response.json();
@@ -373,7 +373,7 @@ async function generateDataLabelingRevenue(labelingData: any) {
 
     await addToMpesaAccount(
       qmoiProfit,
-      `Data Labeling: ${labelingData.project}`
+      `Data Labeling: ${labelingData.project}`,
     );
 
     return {
@@ -476,7 +476,7 @@ export async function GET(request: NextRequest) {
         success: false,
         error: "Failed to fetch revenue data",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -604,7 +604,7 @@ export async function POST(request: NextRequest) {
         const { platform, accountData } = data;
         const accountResult = await createPlatformAccount(
           platform,
-          accountData
+          accountData,
         );
 
         if (!accountResult.success) {
@@ -613,7 +613,7 @@ export async function POST(request: NextRequest) {
               success: false,
               error: accountResult.error,
             },
-            { status: 500 }
+            { status: 500 },
           );
         }
 
@@ -660,7 +660,7 @@ export async function POST(request: NextRequest) {
             success: false,
             error: "Invalid action specified",
           },
-          { status: 400 }
+          { status: 400 },
         );
     }
   } catch (error) {
@@ -671,7 +671,7 @@ export async function POST(request: NextRequest) {
           error: "Validation failed",
           details: error.errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -680,7 +680,7 @@ export async function POST(request: NextRequest) {
         success: false,
         error: "Failed to process revenue action",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -722,7 +722,7 @@ export async function PUT(request: NextRequest) {
             success: false,
             error: "Invalid type specified",
           },
-          { status: 400 }
+          { status: 400 },
         );
     }
 
@@ -732,7 +732,7 @@ export async function PUT(request: NextRequest) {
           success: false,
           error: "Item not found",
         },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -747,7 +747,7 @@ export async function PUT(request: NextRequest) {
         success: false,
         error: "Failed to update item",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

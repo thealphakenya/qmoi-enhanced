@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -39,30 +40,33 @@ qmoi_validation_frontmatter: true
 - Apple Accessory: See `Qmoi_apps/apple-accessory/error.log` for latest install/build/test errors.
 
 ## Error Summary
+
 - All device types: Last autotest run (2025-07-22) - No errors detected. All install/build/test cycles passed.
 - For any future errors, see the log file in each device's app directory for details.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "ALLERRORSSTATSQMOI.md",
-  "validated_at": "2025-10-26T20:51:22.274719Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Device-Specific Error Stats"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "ALLERRORSSTATSQMOI.md",
+"validated_at": "2025-10-26T20:51:22.274719Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Device-Specific Error Stats"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
       if (!r)
         return NextResponse.json(
           { error: "Unknown auth error" },
-          { status: 500 }
+          { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
     }
@@ -54,14 +54,14 @@ export async function GET(request: NextRequest) {
       default:
         return NextResponse.json(
           { error: "Invalid endpoint" },
-          { status: 400 }
+          { status: 400 },
         );
     }
   } catch (error) {
     console.error("Cashon API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
       if (!r)
         return NextResponse.json(
           { error: "Unknown auth error" },
-          { status: 500 }
+          { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
     }
@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
         if (!amount || amount < 10) {
           return NextResponse.json(
             { error: "Invalid amount" },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
 
         const depositId = await cashonWallet.initiateDeposit(
           amount,
-          runtimeToken
+          runtimeToken,
         );
         return NextResponse.json({ success: true, depositId });
       }
@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
         if (!transactionId) {
           return NextResponse.json(
             { error: "Transaction ID required" },
-            { status: 400 }
+            { status: 400 },
           );
         }
         const proposal = {
@@ -142,7 +142,7 @@ export async function POST(request: NextRequest) {
         }
         const approved = await cashonWallet.approveDeposit(
           transactionId,
-          runtimeToken
+          runtimeToken,
         );
         return NextResponse.json({ success: approved });
       }
@@ -152,7 +152,7 @@ export async function POST(request: NextRequest) {
         if (!withdrawAmount || withdrawAmount < 10) {
           return NextResponse.json(
             { error: "Invalid amount" },
-            { status: 400 }
+            { status: 400 },
           );
         }
         const proposal = {
@@ -170,7 +170,7 @@ export async function POST(request: NextRequest) {
         }
         const withdrawalId = await cashonWallet.withdrawFunds(
           withdrawAmount,
-          runtimeToken
+          runtimeToken,
         );
         return NextResponse.json({ success: true, withdrawalId });
       }
@@ -222,7 +222,7 @@ export async function POST(request: NextRequest) {
         if (!tradeAmount || !asset || !strategy || !confidence) {
           return NextResponse.json(
             { error: "Missing trade parameters" },
-            { status: 400 }
+            { status: 400 },
           );
         }
         const proposal = {
@@ -248,7 +248,7 @@ export async function POST(request: NextRequest) {
           tradeAmount,
           asset,
           strategy,
-          confidence
+          confidence,
         );
         return NextResponse.json({ success: true, tradeId });
       }
@@ -258,7 +258,7 @@ export async function POST(request: NextRequest) {
         if (!tradeToApprove) {
           return NextResponse.json(
             { error: "Trade ID required" },
-            { status: 400 }
+            { status: 400 },
           );
         }
         const proposal = {
@@ -276,7 +276,7 @@ export async function POST(request: NextRequest) {
         }
         const tradeApproved = await cashonWallet.approveTrade(
           tradeToApprove,
-          false
+          false,
         );
         return NextResponse.json({ success: tradeApproved });
       }
@@ -284,14 +284,14 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json(
           { error: "Invalid endpoint" },
-          { status: 400 }
+          { status: 400 },
         );
     }
   } catch (error) {
     console.error("Cashon API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -306,7 +306,7 @@ export async function PUT(request: NextRequest) {
       if (!r)
         return NextResponse.json(
           { error: "Unknown auth error" },
-          { status: 500 }
+          { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
     }
@@ -322,7 +322,7 @@ export async function PUT(request: NextRequest) {
         if (!strategyId || !updates) {
           return NextResponse.json(
             { error: "Strategy ID and updates required" },
-            { status: 400 }
+            { status: 400 },
           );
         }
         const proposal = {
@@ -345,14 +345,14 @@ export async function PUT(request: NextRequest) {
       default:
         return NextResponse.json(
           { error: "Invalid endpoint" },
-          { status: 400 }
+          { status: 400 },
         );
     }
   } catch (error) {
     console.error("Cashon API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

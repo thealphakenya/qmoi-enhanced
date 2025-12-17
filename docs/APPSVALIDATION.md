@@ -8,21 +8,25 @@ qmoi_validation_frontmatter: true
 This document describes how QMOI validates application builds across platforms.
 
 Goals
+
 - Ensure each app can be built reproducibly.
 - Verify installers/packages can be installed on their target platform.
 - Run a minimal smoke test that validates basic runtime behavior.
 
 Techniques
+
 - Build matrix: CI should produce artifacts for Windows (MSI/EXE), macOS (DMG/PKG), Linux (AppImage/Deb/RPM), Android (APK/AAB), iOS (IPA), Raspberry Pi (tar.gz), SmartTV packages, and Chromium OS packages.
 - Install checks: run platform-specific install steps in emulators or containers when possible.
 - Smoke tests: start the app, exercise an API or UI endpoint, verify logs and exit codes.
 - Telemetry: collect runtime logs, exit codes, and health-check endpoints for verification.
 
 Orchestration
+
 - The central orchestrator `scripts/run_validations.py` triggers build verification for every platform entry declared in the build report (`qcity-artifacts/qmoi_build_report.json`).
 - The orchestrator will mark each platform `ok`, `missing`, or `mismatch` in `docs/download_validation_report.json`.
 
 Recommended CI
+
 - Use matrixed GitHub Actions with platform runners where possible.
 - For macOS and iOS builds, ensure macOS runners or hosted macOS CI is available.
 - For Android, use an emulator step to run basic install and start.
@@ -50,6 +54,7 @@ Notes
 
 - The repository contains small stub artifacts under `downloads/` for local validation and link checks. These are placeholders for CI-produced signed artifacts; CI should replace them with real artifacts or upload to GitHub Releases or an artifacts bucket.
 - For production: do not commit large binaries into the repo. Use artifact storage and point `qcity-artifacts` at external URLs.
+
 # Apps Validation
 
 Purpose
@@ -77,28 +82,30 @@ Operational notes
 - For reproducible production builds, LION should trigger CI pipelines and validate the resulting release artifacts automatically.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/APPSVALIDATION.md",
-  "validated_at": "2025-10-26T20:51:22.676262Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "App Validation"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "docs/APPSVALIDATION.md",
+"validated_at": "2025-10-26T20:51:22.676262Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "App Validation"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

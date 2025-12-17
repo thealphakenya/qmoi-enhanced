@@ -12,7 +12,7 @@ export const runtime = "nodejs";
 function verifyJWT(token: string): { valid: boolean; role?: string } {
   try {
     const payload = JSON.parse(
-      Buffer.from(token.split(".")[1], "base64").toString()
+      Buffer.from(token.split(".")[1], "base64").toString(),
     );
     if (payload && (payload.role === "admin" || payload.role === "master")) {
       return { valid: true, role: payload.role };
@@ -39,7 +39,7 @@ function logDownloadFix(
   user: string,
   options: any,
   status: string,
-  error: any = null
+  error: any = null,
 ) {
   const entry = {
     timestamp: new Date().toISOString(),
@@ -121,13 +121,13 @@ export async function POST(req: NextRequest) {
       "selfheal-complete",
       user,
       options,
-      code === 0 ? "success" : "error"
+      code === 0 ? "success" : "error",
     );
     logDownloadFix(
       "selfheal-complete",
       user,
       options,
-      code === 0 ? "success" : "error"
+      code === 0 ? "success" : "error",
     );
   });
 

@@ -6,6 +6,7 @@ qmoi_validation_frontmatter: true
 # QMOIQCITYAUTOMATIC
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -37,12 +38,12 @@ The QCity Automatic System is the heart of QMOI’s cloud automation—enabling 
 🔁 Self-Healing: Automatically repairs issues and regenerates configs
 
 📊 Real-Time Monitoring
-Feature	Status
-Live Dashboard	✅ http://localhost:3010
-WebSocket Push	✅
-Visual Charts	✅
-Live Platform Status	✅
-Master-Only Control	✅
+Feature Status
+Live Dashboard ✅ http://localhost:3010
+WebSocket Push ✅
+Visual Charts ✅
+Live Platform Status ✅
+Master-Only Control ✅
 
 🔧 GitLab CI/CD Integration
 🔁 Auto CI/CD Triggers
@@ -92,13 +93,13 @@ Icons + status shown in real-time
 💡 All pipeline actions visible in QCity dashboard
 
 🛠️ System Enhancements (2025+)
-Enhancement	Description
-✅ Unicode-safe logging	Prevents crash on log parsing
-✅ Pre-subprocess checks	Auto-installs missing CLI tools
-✅ Auto-config fix	Rebuilds config if broken
-✅ Dependency repair	Auto-reinstalls missing packages
-✅ Next.js + deps updater	Always uses latest stable release
-✅ NoneType safe routines	Prevents CLI errors with robust checks
+Enhancement Description
+✅ Unicode-safe logging Prevents crash on log parsing
+✅ Pre-subprocess checks Auto-installs missing CLI tools
+✅ Auto-config fix Rebuilds config if broken
+✅ Dependency repair Auto-reinstalls missing packages
+✅ Next.js + deps updater Always uses latest stable release
+✅ NoneType safe routines Prevents CLI errors with robust checks
 
 🟢 Live Status Monitoring
 Run:
@@ -167,13 +168,13 @@ Fallback domain sync
 Real-time log sync to dashboard
 
 🤝 Integrations & Self-Replication
-Integration	Description
-QMOIAUTOMAKENEW.md	Autoclone new projects/devices
-QMOIBROWSER.md	Tests all web features automatically
-QCITYRUNNERSENGINE.md	Uses runners to execute all pipelines
-QMOINGROK.md	Automates link fallback using ngrok
-ZERORATEDQMOI.md	Switches to zero-rated/CDN downloads
-QMOIDOMAINS.md	Manages fallback and temporary domains
+Integration Description
+QMOIAUTOMAKENEW.md Autoclone new projects/devices
+QMOIBROWSER.md Tests all web features automatically
+QCITYRUNNERSENGINE.md Uses runners to execute all pipelines
+QMOINGROK.md Automates link fallback using ngrok
+ZERORATEDQMOI.md Switches to zero-rated/CDN downloads
+QMOIDOMAINS.md Manages fallback and temporary domains
 
 💰 Money-Making + Auto-Updating Docs
 ✅ System now contributes to minimum daily revenue targets
@@ -195,46 +196,48 @@ QMOI’s automation is self-hosted, fully offline-capable, and cloud-offloaded�
 💡 See: INDEPENDENTQMOI.md, QCITYRUNNERSENGINE.md, QMOICLONE.md
 
 ✅ Summary Table
-Feature	Status
-Continuous File Watcher	✅
-GitLab CI/CD Triggers	✅
-Real-Time Web UI	✅
-App Health Check Gating	✅
-DNS + Link Auto-Repair	✅
-Cloud Offload	✅
-Ngrok Fallback	✅
-Zero-Rated Backup Links	✅
-Dashboard with Full Controls	✅
-Self-Replicating Automation	✅
-Minimum Revenue System	✅
-Unicode-Safe + Robust Logs	✅
-Master-Only Execution	✅
+Feature Status
+Continuous File Watcher ✅
+GitLab CI/CD Triggers ✅
+Real-Time Web UI ✅
+App Health Check Gating ✅
+DNS + Link Auto-Repair ✅
+Cloud Offload ✅
+Ngrok Fallback ✅
+Zero-Rated Backup Links ✅
+Dashboard with Full Controls ✅
+Self-Replicating Automation ✅
+Minimum Revenue System ✅
+Unicode-Safe + Robust Logs ✅
+Master-Only Execution ✅
 
 🧠 QCity Automatic: Always-on, cloud-offloaded, and ready for full orchestration of your future-ready, multi-platform AI automation system.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/QMOIQCITYAUTOMATIC.md",
-  "validated_at": "2025-10-26T20:51:24.790913Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": false,
-      "detail": "No H1 title found"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": false,
-  "summary": {
-    "total_checks": 2,
-    "passed": false
-  }
+"file": "qmoi-enhanced/QMOIQCITYAUTOMATIC.md",
+"validated_at": "2025-10-26T20:51:24.790913Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": false,
+"detail": "No H1 title found"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": false,
+"summary": {
+"total_checks": 2,
+"passed": false
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

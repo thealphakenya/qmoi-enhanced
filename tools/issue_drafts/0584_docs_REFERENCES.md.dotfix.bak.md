@@ -33,9 +33,9 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-- [QMOI GitLab Self-Healing CI/CD Automation](./QMOIGITLABDEV.md) 
-- [QMOI Vercel Self-Healing CI/CD Automation](./QMOIVERCELDEV.md) 
-- [QMOI GitHub Actions Self-Healing CI/CD Automation](./QMOIGITHUBDEV.md) 
+- [QMOI GitLab Self-Healing CI/CD Automation](./QMOIGITLABDEV.md)
+- [QMOI Vercel Self-Healing CI/CD Automation](./QMOIVERCELDEV.md)
+- [QMOI GitHub Actions Self-Healing CI/CD Automation](./QMOIGITHUBDEV.md)
 
 ## QMOI Gmail Notification Integration
 
@@ -43,7 +43,7 @@ qmoi_validation_frontmatter: true
 - Environment variables for Gmail (QMOI_EMAIL_USER, QMOI_EMAIL_PASS, etc.) are managed automatically by scripts/qmoi-environment-setup.js.
 - Node.js self-healing: see scripts/ci-self-heal.js (uses qmoi-notification-system.js)
 - Python autotest: see scripts/autotest/advanced_autotest_system.py (uses notify_enhancement.py)
-- For setup, see the comments in scripts/qmoi-environment-setup.js. 
+- For setup, see the comments in scripts/qmoi-environment-setup.js.
 
 ## QMOI Workspace Audit Logging & Notification
 - All workspace management actions (start, stop, clone, sync, etc.) are logged to logs/qcity_audit.log.

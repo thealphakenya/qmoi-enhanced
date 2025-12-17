@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import QCityDevicePanel from './QCityDevicePanel';
-import QVillage from './QVillage';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Server, Cloud, Database, Globe, Shield } from 'lucide-react';
+import React, { useState } from "react";
+import QCityDevicePanel from "./QCityDevicePanel";
+import QVillage from "./QVillage";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Typography from "@mui/material/Typography";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Server, Cloud, Database, Globe, Shield } from "lucide-react";
 
 interface CardTitleProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const CardTitle: React.FC<CardTitleProps> = ({ children, className = '' }) => (
+const CardTitle: React.FC<CardTitleProps> = ({ children, className = "" }) => (
   <h3 className={`text-lg font-semibold ${className}`}>{children}</h3>
 );
 
@@ -42,13 +42,14 @@ export default function QCityDashboard() {
             {isMaster && <Badge variant="destructive">Master Mode</Badge>}
           </div>
           <p className="text-muted-foreground mb-4">
-            QCity serves as the primary device for all QMOI operations, ensuring your local device remains lightweight and responsive.
+            QCity serves as the primary device for all QMOI operations, ensuring
+            your local device remains lightweight and responsive.
           </p>
           <button
             onClick={handleMasterToggle}
             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
           >
-            {isMaster ? 'Disable Master Mode' : 'Enable Master Mode'}
+            {isMaster ? "Disable Master Mode" : "Enable Master Mode"}
           </button>
         </CardContent>
       </Card>
@@ -75,4 +76,4 @@ export default function QCityDashboard() {
       </Tabs>
     </div>
   );
-} 
+}

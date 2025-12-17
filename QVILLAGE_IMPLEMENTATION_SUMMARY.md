@@ -2,7 +2,7 @@
 
 **Status:** ✅ **PRODUCTION READY**  
 **Date:** 2025-11-11  
-**Session:** Phase 4 + QVillage/HF Integration  
+**Session:** Phase 4 + QVillage/HF Integration
 
 ---
 
@@ -87,6 +87,7 @@ This session has produced **5 production-grade files** implementing the complete
 ```
 
 **Sync Flow:**
+
 1. **QVillage → HF Spaces:** Papers, trending, public KB (hourly)
 2. **HF Spaces → QVillage:** Engagement metrics, user interactions (daily)
 3. **QVillage → QMOI Memory:** User contributions, KB edits (real-time + batch)
@@ -100,46 +101,46 @@ This session has produced **5 production-grade files** implementing the complete
 
 ### 1. QVillage Core Features
 
-| Feature | Status | Details |
-|---------|--------|---------|
+| Feature                 | Status      | Details                                       |
+| ----------------------- | ----------- | --------------------------------------------- |
 | Daily Papers Aggregator | ✅ Complete | arXiv, PapersWithCode, IEEE Xplore, RSS feeds |
-| Knowledge Base | ✅ Complete | Hierarchical storage, versioning, search |
-| Community Features | ✅ Designed | Comments, discussions, voting, profiles |
-| Paper Ranking | ✅ Designed | QMOI embeddings, relevance scoring, trending |
-| Reading Lists | ✅ Designed | Save, organize, export (paid feature) |
-| Public API | ✅ Designed | 100 req/day (free), 1000+ req/day (paid) |
+| Knowledge Base          | ✅ Complete | Hierarchical storage, versioning, search      |
+| Community Features      | ✅ Designed | Comments, discussions, voting, profiles       |
+| Paper Ranking           | ✅ Designed | QMOI embeddings, relevance scoring, trending  |
+| Reading Lists           | ✅ Designed | Save, organize, export (paid feature)         |
+| Public API              | ✅ Designed | 100 req/day (free), 1000+ req/day (paid)      |
 
 ### 2. Hugging Face Spaces Integration
 
-| Aspect | Implementation |
-|--------|-----------------|
-| **UI Framework** | Gradio (low-compute, easy to deploy) |
-| **Features Available** | Daily papers, KB search, trending, community stats |
-| **Features Restricted** | AI summaries, advanced search, custom models, export |
-| **Redirect Mechanism** | Safe redirect to main site with session token |
-| **Compute Cost** | Free tier (CPU) - $0 monthly |
-| **Billing Guardrails** | Timeout (30s), rate limit (100 req/hour), compute cap (1h/session) |
+| Aspect                  | Implementation                                                     |
+| ----------------------- | ------------------------------------------------------------------ |
+| **UI Framework**        | Gradio (low-compute, easy to deploy)                               |
+| **Features Available**  | Daily papers, KB search, trending, community stats                 |
+| **Features Restricted** | AI summaries, advanced search, custom models, export               |
+| **Redirect Mechanism**  | Safe redirect to main site with session token                      |
+| **Compute Cost**        | Free tier (CPU) - $0 monthly                                       |
+| **Billing Guardrails**  | Timeout (30s), rate limit (100 req/hour), compute cap (1h/session) |
 
 ### 3. Bidirectional Memory Sync
 
-| Component | Implementation |
-|-----------|-----------------|
-| **Sync Engine** | Async Python with httpx (non-blocking) |
-| **Update Frequency** | Real-time (< 5s), batch (30s), hourly, daily |
-| **Data Classes** | User data, community data, system state |
-| **Conflict Resolution** | Timestamp-based, user-wins, manual override |
-| **Consistency Check** | Every sync cycle, alerts on divergence |
-| **Error Recovery** | Automatic retry, fallback, logging |
+| Component               | Implementation                               |
+| ----------------------- | -------------------------------------------- |
+| **Sync Engine**         | Async Python with httpx (non-blocking)       |
+| **Update Frequency**    | Real-time (< 5s), batch (30s), hourly, daily |
+| **Data Classes**        | User data, community data, system state      |
+| **Conflict Resolution** | Timestamp-based, user-wins, manual override  |
+| **Consistency Check**   | Every sync cycle, alerts on divergence       |
+| **Error Recovery**      | Automatic retry, fallback, logging           |
 
 ### 4. Billing Safety
 
-| Protection | Mechanism |
-|-----------|-----------|
-| **Compute Limits** | Timeout (30s per request), session cap (1h) |
-| **Rate Limiting** | 100 API calls/hour on free tier |
-| **GPU Prevention** | Force CPU-only, no auto-upgrade to GPU |
+| Protection          | Mechanism                                   |
+| ------------------- | ------------------------------------------- |
+| **Compute Limits**  | Timeout (30s per request), session cap (1h) |
+| **Rate Limiting**   | 100 API calls/hour on free tier             |
+| **GPU Prevention**  | Force CPU-only, no auto-upgrade to GPU      |
 | **Cost Monitoring** | Real-time cost estimation, threshold alerts |
-| **Gradual Degrade** | Redirect to paid site instead of failing |
+| **Gradual Degrade** | Redirect to paid site instead of failing    |
 
 ---
 
@@ -148,11 +149,13 @@ This session has produced **5 production-grade files** implementing the complete
 ### Workflow: `qvillage-sync.yml`
 
 **Triggers:**
+
 - 🕐 Schedule: Every 6 hours (4x daily)
 - 🚀 Manual: `workflow_dispatch` button
 - 📝 Push: On changes to HF Space app or sync scripts
 
 **Steps:**
+
 1. Checkout code
 2. Setup Python 3.11
 3. Run sync engine (`--run-once`)
@@ -163,6 +166,7 @@ This session has produced **5 production-grade files** implementing the complete
 8. Send Slack notifications
 
 **Success Metrics:**
+
 - ✅ Papers synced to HF
 - ✅ Conflicts resolved
 - ✅ Consistency verified
@@ -203,6 +207,7 @@ python app.py  # Opens at http://localhost:7860
 ### Credential Management
 
 ✅ **All tokens environment-based (no hardcoding)**
+
 - `HF_API_TOKEN` for HF Spaces deployment
 - `QVILLAGE_API_URL` for backend connection
 - `QMOI_MEMORY_URL` for memory system
@@ -211,6 +216,7 @@ python app.py  # Opens at http://localhost:7860
 ### Billing Safety
 
 ✅ **Multiple layers of protection:**
+
 1. **Compute Limits:** 30-second timeout per request
 2. **Rate Limiting:** 100 API calls/hour on free tier
 3. **GPU Prevention:** Gradio forced to CPU-only
@@ -220,6 +226,7 @@ python app.py  # Opens at http://localhost:7860
 ### Data Privacy
 
 ✅ **HF Space access control:**
+
 - Public read-only mirror
 - No private user data on HF
 - All personal data stays in QVillage backend
@@ -311,19 +318,23 @@ python tools/monitor_hf_costs.py --save-report
 ## What's NOT Included (By Design)
 
 ❌ **Mock/Stub Servers**
+
 - Assumes QVILLAGE_API_URL and QMOI_MEMORY_URL are real endpoints
 - In testing, use `--dry-run` mode
 
 ❌ **Database Schema**
+
 - Assumes QVillage backend exists with API endpoints
 - Endpoint contract defined in integration guide
 
 ❌ **User Authentication**
+
 - HF Space uses HF auth (built-in)
 - QVillage backend uses existing auth (OAuth/JWT)
 - Sync engine uses bearer tokens (HF_API_TOKEN)
 
 ❌ **Frontend Code (Main QVillage Site)**
+
 - This package is for HF Spaces (free tier) + sync engine
 - Main site code in separate repository
 
@@ -363,15 +374,15 @@ python tools/monitor_hf_costs.py --save-report
 
 ## Performance Characteristics
 
-| Metric | Target | Expected |
-|--------|--------|----------|
-| **Sync Duration** | < 5 min | 2-4 min (50 papers) |
-| **Paper Latency** | < 5 min | 1-2 min (QVillage → HF) |
-| **Conflict Resolution** | < 1 sec | < 500ms |
-| **API Response** | < 2 sec | 200-800ms |
-| **HF Space Load** | < 3 sec | 1-2 sec |
-| **Cost/Month (Free)** | $0 | $0 (CPU tier) |
-| **Cost/Month (Premium)** | < $50 | ~$10-30 (typical) |
+| Metric                   | Target  | Expected                |
+| ------------------------ | ------- | ----------------------- |
+| **Sync Duration**        | < 5 min | 2-4 min (50 papers)     |
+| **Paper Latency**        | < 5 min | 1-2 min (QVillage → HF) |
+| **Conflict Resolution**  | < 1 sec | < 500ms                 |
+| **API Response**         | < 2 sec | 200-800ms               |
+| **HF Space Load**        | < 3 sec | 1-2 sec                 |
+| **Cost/Month (Free)**    | $0      | $0 (CPU tier)           |
+| **Cost/Month (Premium)** | < $50   | ~$10-30 (typical)       |
 
 ---
 
@@ -380,17 +391,20 @@ python tools/monitor_hf_costs.py --save-report
 ### Common Issues
 
 **Sync Fails with Auth Error**
+
 ```
 Solution: Verify HF_API_TOKEN is set and valid in GitHub Secrets
 ```
 
 **HF Space Cost Alert**
+
 ```
 Solution: Check hardware type (should be CPU not GPU)
 Disable GPU auto-upgrade in HF Space settings
 ```
 
 **Conflicts Detected**
+
 ```
 Solution: Check logs in sync_*.log
 Resolve manually in QVillage admin panel
@@ -442,4 +456,3 @@ watch -n 60 'python tools/monitor_hf_costs.py'
 **Estimated Effort to Deploy:** 4-6 hours (setup + testing)  
 **Maintenance Effort:** ~2 hours/week (monitoring + adjustments)  
 **Go-Live Target:** Ready immediately upon approval
-

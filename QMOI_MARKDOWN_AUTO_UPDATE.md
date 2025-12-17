@@ -15,16 +15,16 @@ DOCUMENTATION GENERATION PIPELINE:
 Phase 1: SOURCE CODE ANALYSIS
 ├─ Scan codebase: All source files
 ├─ Extract structures:
-│  ├─ Classes, interfaces, types
-│  ├─ Functions, methods
-│  ├─ Constants, enums
-│  ├─ Modules, packages
-│  └─ Dependencies
+│ ├─ Classes, interfaces, types
+│ ├─ Functions, methods
+│ ├─ Constants, enums
+│ ├─ Modules, packages
+│ └─ Dependencies
 ├─ Analyze comments:
-│  ├─ Docstrings
-│  ├─ Inline comments
-│  ├─ README files
-│  └─ Type hints
+│ ├─ Docstrings
+│ ├─ Inline comments
+│ ├─ README files
+│ └─ Type hints
 └─ Parse file structure
 
 Analysis Tools:
@@ -446,13 +446,13 @@ Changelog Structure:
 Changelog Entries:
 ├─ Format: Conventional commits
 ├─ Examples:
-│  ├─ feat: Add user authentication
-│  ├─ fix: Resolve memory leak
-│  ├─ docs: Update API documentation
-│  ├─ refactor: Restructure database layer
-│  ├─ perf: Optimize query performance
-│  ├─ test: Add integration tests
-│  └─ chore: Update dependencies
+│ ├─ feat: Add user authentication
+│ ├─ fix: Resolve memory leak
+│ ├─ docs: Update API documentation
+│ ├─ refactor: Restructure database layer
+│ ├─ perf: Optimize query performance
+│ ├─ test: Add integration tests
+│ └─ chore: Update dependencies
 ├─ Commit link: Clickable link
 ├─ Issue link: Related issues
 └─ Author: Git author
@@ -470,20 +470,20 @@ Index Generation:
 
 Master Index Files:
 ├─ DOCUMENTATION_INDEX.md
-│  ├─ All documentation files
-│  ├─ Quick links
-│  ├─ Search index
-│  └─ Category listing
+│ ├─ All documentation files
+│ ├─ Quick links
+│ ├─ Search index
+│ └─ Category listing
 ├─ API_REFERENCE_INDEX.md
-│  ├─ All API endpoints
-│  ├─ By version
-│  ├─ By category
-│  └─ By HTTP method
+│ ├─ All API endpoints
+│ ├─ By version
+│ ├─ By category
+│ └─ By HTTP method
 └─ CODE_REFERENCE_INDEX.md
-   ├─ All classes/functions
-   ├─ By module
-   ├─ By type
-   └─ By usage frequency
+├─ All classes/functions
+├─ By module
+├─ By type
+└─ By usage frequency
 
 Index Content:
 

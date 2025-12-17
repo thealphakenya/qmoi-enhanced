@@ -107,7 +107,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
     setBookmarks(newBookmarks);
     localStorage.setItem(
       "qmoi-browser-bookmarks",
-      JSON.stringify(newBookmarks)
+      JSON.stringify(newBookmarks),
     );
   };
 
@@ -116,7 +116,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
     setBookmarks(newBookmarks);
     localStorage.setItem(
       "qmoi-browser-bookmarks",
-      JSON.stringify(newBookmarks)
+      JSON.stringify(newBookmarks),
     );
   };
 
@@ -137,13 +137,13 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
         ...tab,
         url: tab.isActive ? processedUrl : tab.url,
         title: tab.isActive ? "Loading..." : tab.title,
-      }))
+      })),
     );
   };
 
   const handleSearch = (query: string) => {
     const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(
-      query
+      query,
     )}`;
     navigateToUrl(searchUrl);
   };
@@ -157,7 +157,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
     };
 
     setTabs((prev) =>
-      prev.map((t) => ({ ...t, isActive: false })).concat(newTab)
+      prev.map((t) => ({ ...t, isActive: false })).concat(newTab),
     );
     setCurrentUrl(newTab.url);
   };
@@ -178,7 +178,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       prev.map((tab) => ({
         ...tab,
         isActive: tab.id === tabId,
-      }))
+      })),
     );
 
     const activeTab = tabs.find((t) => t.id === tabId);
@@ -445,7 +445,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
                     iframe.contentDocument || iframe.contentWindow?.document;
                   if (iframeDoc) {
                     iframeDoc.body.innerHTML = removeAds(
-                      iframeDoc.body.innerHTML
+                      iframeDoc.body.innerHTML,
                     );
                   }
                 } catch (error) {

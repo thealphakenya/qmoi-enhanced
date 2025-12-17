@@ -38,7 +38,7 @@ class RevenueEngineStarter {
 
       if (!configValidation.success) {
         this.log(
-          `❌ Configuration validation failed: ${configValidation.error}`
+          `❌ Configuration validation failed: ${configValidation.error}`,
         );
         this.log("🔧 Running auto-configuration...");
 
@@ -84,10 +84,10 @@ class RevenueEngineStarter {
         const status = qmoiRevenueEngine.getDetailedStatus();
         this.log("📊 Initial System Status:");
         this.log(
-          `   Engine Status: ${status.engine.running ? "Running" : "Stopped"}`
+          `   Engine Status: ${status.engine.running ? "Running" : "Stopped"}`,
         );
         this.log(
-          `   Master Mode: ${status.engine.masterMode ? "Enabled" : "Disabled"}`
+          `   Master Mode: ${status.engine.masterMode ? "Enabled" : "Disabled"}`,
         );
         this.log(`   M-Pesa Target: ${status.today.mpesa.target} KES`);
         this.log(`   Airtel Target: ${status.today.airtel.target} KES`);
@@ -116,7 +116,7 @@ class RevenueEngineStarter {
         });
       } else {
         throw new Error(
-          `Failed to start revenue engine: ${startResult.message}`
+          `Failed to start revenue engine: ${startResult.message}`,
         );
       }
     } catch (error) {
@@ -141,13 +141,13 @@ class RevenueEngineStarter {
             `   M-Pesa: ${today.mpesa.earned}/${today.mpesa.target} KES (${(
               (today.mpesa.earned / today.mpesa.target) *
               100
-            ).toFixed(1)}%)`
+            ).toFixed(1)}%)`,
           );
           this.log(
             `   Airtel: ${today.airtel.earned}/${today.airtel.target} KES (${(
               (today.airtel.earned / today.airtel.target) *
               100
-            ).toFixed(1)}%)`
+            ).toFixed(1)}%)`,
           );
           this.log(
             `   Combined: ${today.combined.earned}/${
@@ -155,7 +155,7 @@ class RevenueEngineStarter {
             } KES (${(
               (today.combined.earned / today.combined.target) *
               100
-            ).toFixed(1)}%)`
+            ).toFixed(1)}%)`,
           );
         }
 
@@ -244,7 +244,7 @@ async function main() {
     starter.log(
       result.success
         ? "✅ Configuration completed"
-        : `❌ Configuration failed: ${result.error}`
+        : `❌ Configuration failed: ${result.error}`,
     );
     return;
   }
@@ -255,7 +255,7 @@ async function main() {
     starter.log(
       result.success
         ? "✅ Configuration valid"
-        : `❌ Configuration invalid: ${result.error}`
+        : `❌ Configuration invalid: ${result.error}`,
     );
     return;
   }

@@ -58,7 +58,7 @@ def scan_files():
                         # methods may be like '"GET", "POST"' or 'GET,POST'
                         methods = re.sub(r"[^A-Z,]", '', methods.upper())
                     entry = {'file': str(p.relative_to(ROOT)), 'method': (method or methods).upper(), 'path': path}
-      
+
 ```
 
 Notes:

@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -19,6 +20,7 @@ qmoi_validation_frontmatter: true
 The QMOI API Key Manager provides secure API key generation, management, and usage tracking for QMOI services.
 
 ## Features
+
 - Generate secure API keys (default: 20)
 - Revoke (disable) keys
 - Track usage per key
@@ -39,39 +41,43 @@ The QMOI API Key Manager provides secure API key generation, management, and usa
 4. See usage stats for each key
 
 ## Security Notes
+
 - Keep API keys secret; treat them like passwords
 - Revoke keys immediately if compromised
 - For production, store keys securely (not in memory)
 
 ## Advanced
+
 - TODO: Add persistent storage (e.g., file or database)
 - TODO: Add detailed usage logs and alerts
 
 ---
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/QMOIAPIKEYREADME.md",
-  "validated_at": "2025-10-26T20:51:24.717591Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI API Key Manager"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/QMOIAPIKEYREADME.md",
+"validated_at": "2025-10-26T20:51:24.717591Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI API Key Manager"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

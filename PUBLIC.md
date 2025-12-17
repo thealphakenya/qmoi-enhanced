@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -12,12 +13,12 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-
 # PUBLIC.md
 
 This file documents all public assets in the `public/` directory, their usage, and integration for QCity, QMOI AI, and QMOI Space. All assets are checked to ensure they are used and served as expected. Unused or duplicate assets are marked for removal.
 
 ## Directory Structure
+
 ```
 public/
 ├── favicon.ico
@@ -37,6 +38,7 @@ public/
 ```
 
 ## Usage & Integration
+
 - All icons and images are used for branding, UI, and device compatibility in QCity, QMOI AI, and QMOI Space.
 - `index.html` is the main entry point for web apps and dashboards.
 - `qcity/` and `qcity-icon.svg` are used for QCity branding and UI features.
@@ -44,6 +46,7 @@ public/
 - Unused/duplicate assets are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 
 ## Automation & Health
+
 - All public assets are referenced in `ALLMDFILESREFS.md` and planned for further enhancement and integration.
 - Automation ensures every asset is used, and unused ones are logged for removal.
 
@@ -55,16 +58,16 @@ public/
 - QMOI provides all paid/subscription features of major platforms for free, with unlimited parallel jobs, advanced analytics, and premium integrations.
 - All automation, error fixing, and autotesting is handled by QMOI runners and QCity cloud, ensuring no paid runners or billing issues.
 - All public assets, downloads, builds, tests, health checks, and runners are referenced and autotested in:
-	- `QMOIFREE.md` (zero-rated features)
-	- `DOWNLOADQMOIAIAPPALLDEVICES.md` (downloads)
-	- `BUILDAPPSFORALLPLATFORMS.md` (builds)
-	- `TESTREADME.md` (testing)
-	- `ALLERRORSSTATSQMOI.md` (device error stats)
-	- `QMOI-ENHANCED-README.md` (enhanced automation)
-	- `QMOI-ENHANCEMENT-SUMMARY.md` (enhancement summary)
-	- `QMOIGITPODDEV.md` (Gitpod automation)
-	- `QMOIAUTOREVENUEEARN.md` (auto revenue)
-	- `ALLMDFILESREFS.md` (master .md index)
+  - `QMOIFREE.md` (zero-rated features)
+  - `DOWNLOADQMOIAIAPPALLDEVICES.md` (downloads)
+  - `BUILDAPPSFORALLPLATFORMS.md` (builds)
+  - `TESTREADME.md` (testing)
+  - `ALLERRORSSTATSQMOI.md` (device error stats)
+  - `QMOI-ENHANCED-README.md` (enhanced automation)
+  - `QMOI-ENHANCEMENT-SUMMARY.md` (enhancement summary)
+  - `QMOIGITPODDEV.md` (Gitpod automation)
+  - `QMOIAUTOREVENUEEARN.md` (auto revenue)
+  - `ALLMDFILESREFS.md` (master .md index)
 
 ## Cross-App, Cross-Platform Automation
 
@@ -75,26 +78,28 @@ public/
 **Status:** All public assets, features, and automation flows are now checked for usage, integration, and zero-rated operation. No unused/duplicate assets will remain after next cleanup. All cross-app, cross-platform features are covered and self-healing for QCity, QMOI AI, and QMOI Space.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "PUBLIC.md",
-  "validated_at": "2025-10-26T20:51:22.336538Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "PUBLIC.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "PUBLIC.md",
+"validated_at": "2025-10-26T20:51:22.336538Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "PUBLIC.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

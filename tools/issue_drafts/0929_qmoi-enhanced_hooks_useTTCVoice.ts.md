@@ -35,15 +35,15 @@ export function useTTCVoice() {
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
-    
+
     // Get available voices and select a preferred one
     const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(voice => 
-      voice.name.includes('Google') || 
+    const preferredVoice = voices.find(voice =>
+      voice.name.includes('Google') ||
       voice.name.includes('Microsoft') ||
       voice.name.includes('Samantha')
     );
-    
+
     if (preferredVoice) {
       utterance.voice = preferredVoice;
     }

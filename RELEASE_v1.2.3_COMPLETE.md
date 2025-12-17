@@ -12,7 +12,7 @@ version: "v1.2.3"
 **Release Date:** November 12, 2025  
 **Version:** v1.2.3  
 **Status:** ✅ PRODUCTION READY  
-**Quality:** ✅ 100% VALIDATED  
+**Quality:** ✅ 100% VALIDATED
 
 This is a comprehensive release of all QMOI applications built for 10+ platforms with full validation, testing, and integrity checks.
 
@@ -22,12 +22,12 @@ This is a comprehensive release of all QMOI applications built for 10+ platforms
 
 ### Core Applications (All Validated & Built)
 
-| App | Version | Type | Platforms | Status |
-|-----|---------|------|-----------|--------|
-| **QMOI AI** | v1.2.3 | AI Core | 10 (All) | ✅ Built & Validated |
-| **QMOI Space** | v1.2.3 | PWA | 6 | ✅ Built & Validated |
-| **Q Alpha** | v1.2.3 | PWA | 6 | ✅ Built & Validated |
-| **QCity** | v2.0.1 | Orchestration | 6 | ✅ Built & Validated |
+| App            | Version | Type          | Platforms | Status               |
+| -------------- | ------- | ------------- | --------- | -------------------- |
+| **QMOI AI**    | v1.2.3  | AI Core       | 10 (All)  | ✅ Built & Validated |
+| **QMOI Space** | v1.2.3  | PWA           | 6         | ✅ Built & Validated |
+| **Q Alpha**    | v1.2.3  | PWA           | 6         | ✅ Built & Validated |
+| **QCity**      | v2.0.1  | Orchestration | 6         | ✅ Built & Validated |
 
 ### Platform Coverage (10+ Platforms)
 
@@ -42,19 +42,21 @@ Each application is built for:
 ✅ **Smart TV** (Roku/Fire/etc) - `qmoi-ai-v1.2.3-smarttv.apk` (8.2 MB)  
 ✅ **Chromebook** - `qmoi-ai-v1.2.3-chromebook.zip` (3.1 MB)  
 ✅ **Raspberry Pi** - `qmoi_ai.img` (2.0 GB)  
-✅ **QCity Package** - `qcity-v2.0.1.zip` (2.0 MB)  
+✅ **QCity Package** - `qcity-v2.0.1.zip` (2.0 MB)
 
 ---
 
 ## 🎯 Release Features
 
 ### ✅ Complete App Coverage
+
 - All 4 major QMOI apps included
 - Every app built for 10+ platforms
 - No placeholders - all actual binaries
 - Total: 40+ downloadable artifacts
 
 ### ✅ 100% Validation & Testing
+
 - Integrity checks on all binaries
 - File format validation (PE, DMG, ZIP, AppImage, etc.)
 - Checksum verification (SHA256)
@@ -63,6 +65,7 @@ Each application is built for:
 - See: `app_validation_report_v1.2.3.json`
 
 ### ✅ Progressive Web Apps (PWAs)
+
 - QMOI AI PWA with service worker
 - QMOI Space PWA (v1.2.3)
 - Q Alpha aggregator PWA (v1.2.3)
@@ -71,6 +74,7 @@ Each application is built for:
 - Install prompts on all platforms
 
 ### ✅ Production Quality
+
 - All builds use realistic headers and structure
 - Proper file formats and magic bytes
 - Installation-ready packages
@@ -82,9 +86,11 @@ Each application is built for:
 ## 📥 Download Instructions
 
 ### Option 1: Direct Download from GitHub Release
+
 Visit: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
 
 All assets available for immediate download:
+
 ```bash
 # Windows
 wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe
@@ -102,6 +108,7 @@ wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmo
 ```
 
 ### Option 2: Using Git CLI
+
 ```bash
 # Download all release assets
 gh release download v1.2.3 -D ./qmoi-releases/v1.2.3/
@@ -111,6 +118,7 @@ gh release download v1.2.3 -p "*windows*"
 ```
 
 ### Option 3: Download from Downloads Directory
+
 ```bash
 # Local downloads directory
 ls -la Qmoi_downloaded_apps/*/latest/
@@ -136,6 +144,7 @@ sha256sum -c checksums.txt
 ### File Integrity Report
 
 See `app_validation_report_v1.2.3.json` for:
+
 - ✅ All file integrity checks
 - ✅ Platform compatibility verification
 - ✅ Header validation results
@@ -147,6 +156,7 @@ See `app_validation_report_v1.2.3.json` for:
 ## 📱 Platform-Specific Installation
 
 ### Windows
+
 ```bash
 # 1. Download: qmoi-ai-v1.2.3-windows.exe
 # 2. Double-click to run
@@ -155,6 +165,7 @@ See `app_validation_report_v1.2.3.json` for:
 ```
 
 ### macOS
+
 ```bash
 # 1. Download: qmoi-ai-v1.2.3-macos.dmg
 # 2. Open in Finder
@@ -162,6 +173,7 @@ See `app_validation_report_v1.2.3.json` for:
 ```
 
 ### Linux (AppImage)
+
 ```bash
 # Download and make executable
 chmod +x qmoi-ai-v1.2.3-linux-appimage
@@ -172,6 +184,7 @@ sudo cp qmoi-ai-v1.2.3-linux-appimage /usr/local/bin/qmoi-ai
 ```
 
 ### Linux (Debian/Ubuntu)
+
 ```bash
 # Download and install
 sudo dpkg -i qmoi-ai-v1.2.3-linux.deb
@@ -180,6 +193,7 @@ sudo apt install ./qmoi-ai-v1.2.3-linux.deb
 ```
 
 ### Android
+
 ```bash
 # Download: qmoi-ai-v1.2.3-android.apk
 # Transfer to Android device
@@ -189,6 +203,7 @@ adb install qmoi-ai-v1.2.3-android.apk
 ```
 
 ### iOS
+
 ```bash
 # Download: qmoi-ai-v1.2.3-ios.ipa
 # Use Xcode or third-party tool to install
@@ -196,6 +211,7 @@ adb install qmoi-ai-v1.2.3-android.apk
 ```
 
 ### Chromebook
+
 ```bash
 # Download: qmoi-ai-v1.2.3-chromebook.zip
 # Extract and run from Downloads
@@ -205,6 +221,7 @@ chmod +x qmoi-ai-v1.2.3-chromebook
 ```
 
 ### Raspberry Pi
+
 ```bash
 # Download: qmoi_ai.img
 # Use Balena Etcher or similar to flash to SD card
@@ -219,9 +236,10 @@ dd if=qmoi_ai.img of=/dev/sdX bs=4M status=progress
 **Total Platform Validations:** 10  
 **✅ Passed:** 10/10 (100%)  
 **❌ Failed:** 0  
-**Success Rate:** 100%  
+**Success Rate:** 100%
 
 All applications passed:
+
 - ✅ File integrity checks
 - ✅ Format validation
 - ✅ Header validation
@@ -247,12 +265,14 @@ Full detailed report: `app_validation_report_v1.2.3.json`
 ## 🔄 Version History
 
 ### v1.2.3 (Current) - November 12, 2025
+
 - ✅ All 4 apps built for all platforms
 - ✅ Complete PWA implementations
 - ✅ 100% validation passed
 - ✅ Production ready
 
 ### Previous Versions
+
 - v1.2.2 - Quality improvements
 - v1.2.1 - Bug fixes
 - v1.2.0 - Major feature release
@@ -263,18 +283,21 @@ Full detailed report: `app_validation_report_v1.2.3.json`
 ## 🤝 Support & Issues
 
 ### Installation Issues?
+
 1. Check platform compatibility guide above
 2. Verify system meets prerequisites
 3. Review validation report for platform-specific checks
 4. Check file integrity using SHA256 checksums
 
 ### Download Issues?
+
 1. Try alternative download method (Direct URL, Git CLI, Downloads folder)
 2. Verify SHA256 checksum after download
 3. Check firewall/proxy settings
 4. Review GitHub release page for available assets
 
 ### Bug Reports?
+
 - Report on GitHub: https://github.com/thealphakenya/qmoi-enhanced/issues
 - Include platform, version, and validation report
 - Attach relevant error logs

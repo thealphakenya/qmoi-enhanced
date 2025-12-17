@@ -1,0 +1,116 @@
+cc075969e0803771e131d6606af7052a
+"use strict";
+
+/* istanbul ignore next */
+function cov_mi0ymjpyc() {
+  var path = "/workspaces/qmoi-enhanced/src/mocks/server.ts";
+  var hash = "390bb3b8d4eb4f3c6eb5ff123d90e195e7852032";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/workspaces/qmoi-enhanced/src/mocks/server.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 0
+        },
+        end: {
+          line: 3,
+          column: 24
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 15
+        },
+        end: {
+          line: 4,
+          column: 34
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 19
+        },
+        end: {
+          line: 5,
+          column: 40
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 65
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "/workspaces/qmoi-enhanced/src/mocks/server.ts",
+      mappings: ";;;AAAA,mCAAuC;AACvC,yCAAsC;AAEzB,QAAA,MAAM,GAAG,IAAA,kBAAW,EAAC,GAAG,mBAAQ,CAAC,CAAC",
+      names: [],
+      sources: ["/workspaces/qmoi-enhanced/src/mocks/server.ts"],
+      sourcesContent: ["import { setupServer } from \"msw/node\";\nimport { handlers } from \"./handlers\";\n\nexport const server = setupServer(...handlers);\n"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "390bb3b8d4eb4f3c6eb5ff123d90e195e7852032"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_mi0ymjpyc = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_mi0ymjpyc();
+cov_mi0ymjpyc().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_mi0ymjpyc().s[1]++;
+exports.server = void 0;
+const node_1 =
+/* istanbul ignore next */
+(cov_mi0ymjpyc().s[2]++, require("msw/node"));
+const handlers_1 =
+/* istanbul ignore next */
+(cov_mi0ymjpyc().s[3]++, require("./handlers"));
+/* istanbul ignore next */
+cov_mi0ymjpyc().s[4]++;
+exports.server = (0, node_1.setupServer)(...handlers_1.handlers);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJub2RlXzEiLCJjb3ZfbWkweW1qcHljIiwicyIsInJlcXVpcmUiLCJoYW5kbGVyc18xIiwiZXhwb3J0cyIsInNlcnZlciIsInNldHVwU2VydmVyIiwiaGFuZGxlcnMiXSwic291cmNlcyI6WyIvd29ya3NwYWNlcy9xbW9pLWVuaGFuY2VkL3NyYy9tb2Nrcy9zZXJ2ZXIudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgc2V0dXBTZXJ2ZXIgfSBmcm9tIFwibXN3L25vZGVcIjtcbmltcG9ydCB7IGhhbmRsZXJzIH0gZnJvbSBcIi4vaGFuZGxlcnNcIjtcblxuZXhwb3J0IGNvbnN0IHNlcnZlciA9IHNldHVwU2VydmVyKC4uLmhhbmRsZXJzKTtcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsTUFBQUEsTUFBQTtBQUFBO0FBQUEsQ0FBQUMsYUFBQSxHQUFBQyxDQUFBLE9BQUFDLE9BQUE7QUFDQSxNQUFBQyxVQUFBO0FBQUE7QUFBQSxDQUFBSCxhQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUFzQztBQUFBRixhQUFBLEdBQUFDLENBQUE7QUFFekJHLE9BQUEsQ0FBQUMsTUFBTSxHQUFHLElBQUFOLE1BQUEsQ0FBQU8sV0FBVyxFQUFDLEdBQUdILFVBQUEsQ0FBQUksUUFBUSxDQUFDIiwiaWdub3JlTGlzdCI6W119

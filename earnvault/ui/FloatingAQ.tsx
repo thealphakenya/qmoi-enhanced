@@ -121,7 +121,7 @@ export const FloatingAQ: React.FC = () => {
         console.error("Failed to load voice URI setting:", error);
         return null;
       }
-    }
+    },
   );
   const [showVoicePicker, setShowVoicePicker] = useState(false);
 
@@ -247,7 +247,7 @@ export const FloatingAQ: React.FC = () => {
 
       window.speechSynthesis.speak(utter);
     },
-    [voices, selectedVoiceURI, toast]
+    [voices, selectedVoiceURI, toast],
   );
 
   // Find last AI message
@@ -268,7 +268,7 @@ export const FloatingAQ: React.FC = () => {
       document.addEventListener("mousemove", onMouseMove as any);
       document.addEventListener("mouseup", onMouseUp as any);
     },
-    [pos.x, pos.y]
+    [pos.x, pos.y],
   );
 
   const onMouseMove = React.useCallback((e: React.MouseEvent | MouseEvent) => {
@@ -297,7 +297,7 @@ export const FloatingAQ: React.FC = () => {
       document.addEventListener("touchmove", onTouchMove as any);
       document.addEventListener("touchend", onTouchEnd as any);
     },
-    [pos.x, pos.y]
+    [pos.x, pos.y],
   );
 
   const onTouchMove = React.useCallback((e: React.TouchEvent | TouchEvent) => {
@@ -408,7 +408,8 @@ export const FloatingAQ: React.FC = () => {
       if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
       if (data.imageUrl) setImageUrl(data.imageUrl);
-      else if (data.image) setImageUrl(data.image); // fallback
+      else if (data.image)
+        setImageUrl(data.image); // fallback
       else setImageError("No image returned.");
     } catch (err: any) {
       setImageError("Failed to generate image. (Simulated)");
@@ -424,7 +425,7 @@ export const FloatingAQ: React.FC = () => {
     setHealthScanResult(null);
     setTimeout(() => {
       setHealthScanResult(
-        "No critical errors or viruses detected. System is healthy."
+        "No critical errors or viruses detected. System is healthy.",
       );
       setHealthScanRunning(false);
     }, 1800);
@@ -434,7 +435,7 @@ export const FloatingAQ: React.FC = () => {
     setSelfHealResult(null);
     setTimeout(() => {
       setSelfHealResult(
-        "All detected issues have been auto-fixed. Device optimized."
+        "All detected issues have been auto-fixed. Device optimized.",
       );
       setSelfHealRunning(false);
     }, 2000);
@@ -1160,7 +1161,7 @@ export const FloatingAQ: React.FC = () => {
                                     (b: any) =>
                                       `${b.coin}: $${
                                         b.available || b.balance || 0
-                                      }`
+                                      }`,
                                   )
                                   .join(", ")
                               : `$${
@@ -1221,9 +1222,9 @@ export const FloatingAQ: React.FC = () => {
                                 {tx.timestamp
                                   ? new Date(
                                       typeof tx.timestamp === "string" ||
-                                      typeof tx.timestamp === "number"
+                                        typeof tx.timestamp === "number"
                                         ? tx.timestamp
-                                        : ""
+                                        : "",
                                     ).toLocaleString()
                                   : ""}
                               </span>
@@ -1709,7 +1710,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Bluetooth Manager...</div>}
                     >
                       {React.createElement(
-                        require("./BluetoothManager").BluetoothManager
+                        require("./BluetoothManager").BluetoothManager,
                       )}
                     </React.Suspense>
                   </div>
@@ -1884,7 +1885,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Global Video Call...</div>}
                     >
                       {React.createElement(
-                        require("./GlobalVideoCall").GlobalVideoCall
+                        require("./GlobalVideoCall").GlobalVideoCall,
                       )}
                     </React.Suspense>
                   </div>
@@ -2004,7 +2005,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading File Transfer...</div>}
                     >
                       {React.createElement(
-                        require("./GlobalFileTransfer").GlobalFileTransfer
+                        require("./GlobalFileTransfer").GlobalFileTransfer,
                       )}
                     </React.Suspense>
                   </div>
@@ -2063,7 +2064,7 @@ export const FloatingAQ: React.FC = () => {
                   <div style={{ color: "#333", width: "100%" }}>
                     <React.Suspense fallback={<div>Loading WiFi Panel...</div>}>
                       {React.createElement(
-                        require("./WifiAutoConnectPanel").WifiAutoConnectPanel
+                        require("./WifiAutoConnectPanel").WifiAutoConnectPanel,
                       )}
                     </React.Suspense>
                   </div>
@@ -2124,7 +2125,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Price/Product Verifier...</div>}
                     >
                       {React.createElement(
-                        require("./PriceProductVerifier").PriceProductVerifier
+                        require("./PriceProductVerifier").PriceProductVerifier,
                       )}
                     </React.Suspense>
                   </div>
@@ -2185,7 +2186,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Download Manager...</div>}
                     >
                       {React.createElement(
-                        require("./DownloadManager").DownloadManager
+                        require("./DownloadManager").DownloadManager,
                       )}
                     </React.Suspense>
                   </div>
@@ -2246,7 +2247,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Farm/Business Manager...</div>}
                     >
                       {React.createElement(
-                        require("./FarmBusinessManager").FarmBusinessManager
+                        require("./FarmBusinessManager").FarmBusinessManager,
                       )}
                     </React.Suspense>
                   </div>
@@ -2307,7 +2308,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Map/Location Panel...</div>}
                     >
                       {React.createElement(
-                        require("./MapLocationPanel").MapLocationPanel
+                        require("./MapLocationPanel").MapLocationPanel,
                       )}
                     </React.Suspense>
                   </div>

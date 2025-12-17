@@ -6,9 +6,7 @@
       "https://qmoigateway.thealphakenya.com/api/github/webhook",
       "https://codespaces"
     ],
-    "QMOI-REVENUE-README.md": [
-      "https://your-app.vercel.app"
-    ],
+    "QMOI-REVENUE-README.md": ["https://your-app.vercel.app"],
     "watchdebug.js": [
       "https://gitlab.com/api/v4'",
       "https://api.vercel.com/v1'"
@@ -151,9 +149,7 @@
       "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa)",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage)"
     ],
-    "QMOI-MASTER-CONTROLS.md": [
-      "http://localhost:3000/qmoi-revenue-dashboard"
-    ],
+    "QMOI-MASTER-CONTROLS.md": ["http://localhost:3000/qmoi-revenue-dashboard"],
     "ALLQMOIAIAPPSREALEASESVERSIONS.md": [
       "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/",
@@ -9375,9 +9371,7 @@
       "https://github.com/alphaqmoi/qmoi-enhanced/actions",
       "https://github.com/alphaqmoi/qmoi-enhanced/actions"
     ],
-    "QMOI_GITLAB_AUTOMATION.md": [
-      "https://gitlab.com/api/v4"
-    ],
+    "QMOI_GITLAB_AUTOMATION.md": ["https://gitlab.com/api/v4"],
     "TECHNICAL_COMMANDS_REFERENCE.md": [
       "https://github.com/thealphakenya/qmoi-enhanced/actions",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/download/test-v1.2.5/qmoi_ai.AppImage",
@@ -9389,12 +9383,8 @@
       "https://api.github.com/user",
       "https://api.github.com/repos/thealphakenya/qmoi-enhanced"
     ],
-    "main.js": [
-      "http://localhost:8000').catch(()"
-    ],
-    "QMOICLONEHUGGINGFACE.md": [
-      "https://huggingface.qmoi.com"
-    ],
+    "main.js": ["http://localhost:8000').catch(()"],
+    "QMOICLONEHUGGINGFACE.md": ["https://huggingface.qmoi.com"],
     "QVILLAGE_READY_FOR_PRODUCTION.md": [
       "https://huggingface.co/new-space",
       "https://api.qvillage.ai",
@@ -9437,9 +9427,7 @@
       "https://github.com/alphaqmoi/qmoi-enhanced/actions",
       "https://huggingface.co/spaces/alphaqmoi/qvillage"
     ],
-    "QMOI_AGENT_INSTRUCTIONS.md": [
-      "http://localhost:8080/v1/chat/completions"
-    ],
+    "QMOI_AGENT_INSTRUCTIONS.md": ["http://localhost:8080/v1/chat/completions"],
     "RELEASE_VERIFICATION_V1_2_3.md": [
       "https://github.com/thealphakenya/qmoi-enhanced/actions",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3",
@@ -102080,12 +102068,8 @@
       "https://your-domain.com/api/airtel/callback",
       "https://api.airtel.com/status"
     ],
-    "MONITORING.md": [
-      "http://localhost:4000/"
-    ],
-    "QMOI_COMPLETE_SYSTEM.md": [
-      "https://gitlab.com/api/v4"
-    ],
+    "MONITORING.md": ["http://localhost:4000/"],
+    "QMOI_COMPLETE_SYSTEM.md": ["https://gitlab.com/api/v4"],
     "APP_FIX_ACTION_PLAN.md": [
       "https://builds.example.com/qmoi-ai/latest/android/release.apk",
       "http://localhost:8000"
@@ -102175,9 +102159,7 @@
       "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa)",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage)"
     ],
-    "BUILD_REAL_APPS.md": [
-      "http://localhost:3000"
-    ],
+    "BUILD_REAL_APPS.md": ["http://localhost:3000"],
     "BUILDAPPSFORALLPLATFORMS.md": [
       "https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.177",
       "https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.177"
@@ -102453,10 +102435,7 @@
       "https://github.com/thealphakenya/qmoi-enhanced/security/dependabot",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
     ],
-    "SCRIPTSREADME.md": [
-      "http://localhost:3001",
-      "http://localhost:3001"
-    ],
+    "SCRIPTSREADME.md": ["http://localhost:3001", "http://localhost:3001"],
     "DELIVERABLES_FINAL_INVENTORY.md": [
       "http://localhost:7860",
       "https://api.qvillage.ai",
@@ -102468,9 +102447,7 @@
       "http://localhost:3000/qcity](http://localhost:3000/qcity)",
       "http://localhost:3000](http://localhost:3000)"
     ],
-    "QMOIQCITYAUTOMATIC.md": [
-      "http://localhost:3010"
-    ],
+    "QMOIQCITYAUTOMATIC.md": ["http://localhost:3010"],
     "QMOISPACEDEV.md": [
       "https://github.com/qmoi-ai/qmoi-space.git",
       "https://huggingface.co/docs/hub/spaces)",
@@ -102543,9 +102520,7 @@
       "https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi",
       "https://github.com/thealphakenya/Alpha-Q-ai/releases)"
     ],
-    "QMOICLONEGITHUB.md": [
-      "https://github.qmoi.com"
-    ],
+    "QMOICLONEGITHUB.md": ["https://github.qmoi.com"],
     "BUILD_COMPLETION_SUMMARY.md": [
       "https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.177"
     ],
@@ -102609,22 +102584,14 @@
       "https://developer.apple.com/testflight/",
       "https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository"
     ],
-    "QCITYREADME.md": [
-      "https://q-city.ai"
-    ],
-    "INDEPENDENTQMOI.md": [
-      "https://github.com/qmoi/independent-qmoi.git"
-    ],
+    "QCITYREADME.md": ["https://q-city.ai"],
+    "INDEPENDENTQMOI.md": ["https://github.com/qmoi/independent-qmoi.git"],
     "CRITICAL_APP_AUDIT_REPORT.md": [
       "https://builds.example.com/qmoi-ai/1.2.3/android.apk",
       "https://builds.example.com/qmoi-ai/1.2.3/ios.ipa"
     ],
-    "CMDCOMMANDS.md": [
-      "http://localhost:5050/api/build-apps"
-    ],
-    "QMOI_RELEASE_VERIFICATION_SYSTEM.md": [
-      "https://oldlink.com"
-    ],
+    "CMDCOMMANDS.md": ["http://localhost:5050/api/build-apps"],
+    "QMOI_RELEASE_VERIFICATION_SYSTEM.md": ["https://oldlink.com"],
     "TODOS_COMPLETION_VERIFICATION.md": [
       "http://localhost:8080/health",
       "http://localhost:8080/health",
@@ -102642,9 +102609,7 @@
       "https://github.com/thealphakenya/qmoi-enhanced/issues",
       "https://qvillage.qmoi.app"
     ],
-    "QMOI-ENHANCED-README.md": [
-      "https://your-app.vercel.app"
-    ],
+    "QMOI-ENHANCED-README.md": ["https://your-app.vercel.app"],
     "GITHUB_RELEASES_COMPLETE_GUIDE.md": [
       "https://github.com/thealphakenya/Alpha-Q-ai",
       "https://github.com/thealphakenya/qcity",
@@ -102740,9 +102705,7 @@
     "APP_FIX_CHECKLIST.md": [
       "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4"
     ],
-    "WPA.md": [
-      "https://api.qmoi.app'"
-    ],
+    "WPA.md": ["https://api.qmoi.app'"],
     "V1_2_3_QUICK_REFERENCE.md": [
       "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3",
@@ -102764,9 +102727,7 @@
       "https://api.mytrading.com/markets",
       "https://api.mybank.com/balance?account=12345"
     ],
-    "MASTERGUIDE.md": [
-      "https://github.com/your-repo/qmoi-system.git"
-    ],
+    "MASTERGUIDE.md": ["https://github.com/your-repo/qmoi-system.git"],
     "QMOI_REALTIME_RELEASES_IMPLEMENTATION.md": [
       "https://github.com/thealphakenya/qmoi-enhanced/actions",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3",
@@ -102997,15 +102958,9 @@
       "https://vercel.com/account/tokens",
       "http://localhost:7860"
     ],
-    "dashboard/src/App.jsx": [
-      "http://localhost:4000/api/status')"
-    ],
-    "tests/ui/qmoi_ui_autotest.spec.js": [
-      "http://localhost:3010')"
-    ],
-    "docs/README.md": [
-      "https://github.com/your-org/q-city.git"
-    ],
+    "dashboard/src/App.jsx": ["http://localhost:4000/api/status')"],
+    "tests/ui/qmoi_ui_autotest.spec.js": ["http://localhost:3010')"],
+    "docs/README.md": ["https://github.com/your-org/q-city.git"],
     "docs/API.md": [
       "http://localhost:8000/token",
       "http://localhost:8000/automation/status",
@@ -103030,12 +102985,8 @@
       "http://localhost:3000/qmoi-revenue-dashboard",
       "http://localhost:3000/qmoi-revenue-dashboard"
     ],
-    "docs/merged_remediation_plan.md": [
-      "http://)"
-    ],
-    "docs/LOCAL_QMOI_DEVELOPMENT.md": [
-      "http://localhost:8080"
-    ],
+    "docs/merged_remediation_plan.md": ["http://)"],
+    "docs/LOCAL_QMOI_DEVELOPMENT.md": ["http://localhost:8080"],
     "docs/REVENUE_SPEC.md": [
       "https://api.mytrading.com/markets",
       "http://localhost:3000/qmoi-revenue-dashboard",
@@ -104639,9 +104590,7 @@
       "https://coveralls.io/r/jshttp/forwarded?branch=master",
       "https://travis-ci.org/sindresorhus/object-assign.svg?branch=master)](https://travis-ci.org/sindresorhus/object-assign)"
     ],
-    "whatsapp-qmoi-bot/services/qmoi.js": [
-      "http://localhost:5001/qmoi"
-    ],
+    "whatsapp-qmoi-bot/services/qmoi.js": ["http://localhost:5001/qmoi"],
     "whatsapp-qmoi-bot/handlers/download.js": [
       "https://example.com/app-android.apk'",
       "https://example.com/app-ios.ipa'",
@@ -104649,12 +104598,8 @@
       "https://example.com/app-linux.AppImage'",
       "https://example.com/app'"
     ],
-    "components/EnhancedPreviewWindow.tsx": [
-      "https://www.youtube.com/embed/$"
-    ],
-    "components/MediaPreviewWindow.tsx": [
-      "https://www.youtube.com/embed/$"
-    ],
+    "components/EnhancedPreviewWindow.tsx": ["https://www.youtube.com/embed/$"],
+    "components/MediaPreviewWindow.tsx": ["https://www.youtube.com/embed/$"],
     "components/WifiPanel.tsx": [
       "http://localhost:5001'",
       "http://localhost:5001'",
@@ -104706,15 +104651,9 @@
       "https://example.com/app-latest.AppImage",
       "https://example.com/app-latest.zip"
     ],
-    "components/QAvatar.tsx": [
-      "http://www.w3.org/2000/svg"
-    ],
-    "components/DeviceMap.tsx": [
-      "https://www.openstreetmap.org/copyright"
-    ],
-    "components/BrowserInterface.tsx": [
-      "https://www.google.com/search?q=$"
-    ],
+    "components/QAvatar.tsx": ["http://www.w3.org/2000/svg"],
+    "components/DeviceMap.tsx": ["https://www.openstreetmap.org/copyright"],
+    "components/BrowserInterface.tsx": ["https://www.google.com/search?q=$"],
     "components/DownloadQApp.tsx": [
       "https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.apk'",
       "https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi_ai.ipa'",
@@ -104733,20 +104672,14 @@
       "https://$",
       "https://qmoi.app/download"
     ],
-    "qmoi-space/index.html": [
-      "https://qmoi.space"
-    ],
-    "hooks/useTTCVoice.ts": [
-      "http://localhost:5002/tts'"
-    ],
+    "qmoi-space/index.html": ["https://qmoi.space"],
+    "hooks/useTTCVoice.ts": ["http://localhost:5002/tts'"],
     "huggingface_space/inferenceProviders.js": [
       "https://api-inference.huggingface.co'",
       "http://localhost:5000'",
       "https://cloud-inference.example.com'"
     ],
-    "pwa_apps/deals/templates/payment-form.html": [
-      "https://js.stripe.com/v3/"
-    ],
+    "pwa_apps/deals/templates/payment-form.html": ["https://js.stripe.com/v3/"],
     "pwa_apps/q-alpha/index.html": [
       "https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-alpha.zip",
       "https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qfilemanager.apk",
@@ -106064,9 +105997,7 @@
       "https://registry.npmjs.org/@types/q/-/q-1.5.8.tgz",
       "https://registry.npmjs.org/@types/q/-/q-1.5.8.tgz"
     ],
-    "tools/issue_drafts/0601_main.js.md": [
-      "http://localhost:8000').catch(()"
-    ],
+    "tools/issue_drafts/0601_main.js.md": ["http://localhost:8000').catch(()"],
     "tools/issue_drafts/0001_.npm-cache__cacache_content-v2_sha512_02_d1_a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d.md": [
       "https://registry.npmjs.org/text-table/-/text-table-0.0.0.tgz",
       "https://registry.npmjs.org/text-table/-/text-table-0.0.1.tgz",
@@ -109084,9 +109015,7 @@
       "https://registry.npmjs.org/@babel/plugin-transform-private-methods/-/plugin-transform-private-methods-7.27.1.tgz",
       "https://registry.npmjs.org/@babel/plugin-transform-private-methods/-/plugin-transform-private-methods-7.27.1.tgz"
     ],
-    "qmoi-enhanced/QMOI-REVENUE-README.md": [
-      "https://your-app.vercel.app"
-    ],
+    "qmoi-enhanced/QMOI-REVENUE-README.md": ["https://your-app.vercel.app"],
     "qmoi-enhanced/watchdebug.js": [
       "https://gitlab.com/api/v4'",
       "https://api.vercel.com/v1'"
@@ -109138,15 +109067,9 @@
       "https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk"
     ],
-    "qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md": [
-      "https://gitlab.com/api/v4"
-    ],
-    "qmoi-enhanced/main.js": [
-      "http://localhost:8000').catch(()"
-    ],
-    "qmoi-enhanced/QMOICLONEHUGGINGFACE.md": [
-      "https://huggingface.qmoi.com"
-    ],
+    "qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md": ["https://gitlab.com/api/v4"],
+    "qmoi-enhanced/main.js": ["http://localhost:8000').catch(()"],
+    "qmoi-enhanced/QMOICLONEHUGGINGFACE.md": ["https://huggingface.qmoi.com"],
     "qmoi-enhanced/API.md": [
       "http://localhost:3000/api",
       "http://localhost:3000/api/qcity/selfheal-npm",
@@ -109164,12 +109087,8 @@
       "https://your-domain.com/api/airtel/callback",
       "https://api.airtel.com/status"
     ],
-    "qmoi-enhanced/MONITORING.md": [
-      "http://localhost:4000/"
-    ],
-    "qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md": [
-      "https://gitlab.com/api/v4"
-    ],
+    "qmoi-enhanced/MONITORING.md": ["http://localhost:4000/"],
+    "qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md": ["https://gitlab.com/api/v4"],
     "qmoi-enhanced/next-env.d.ts": [
       "https://nextjs.org/docs/app/building-your-application/configuring/typescript"
     ],
@@ -109401,9 +109320,7 @@
       "http://localhost:3000/qcity](http://localhost:3000/qcity)",
       "http://localhost:3000](http://localhost:3000)"
     ],
-    "qmoi-enhanced/QMOIQCITYAUTOMATIC.md": [
-      "http://localhost:3010"
-    ],
+    "qmoi-enhanced/QMOIQCITYAUTOMATIC.md": ["http://localhost:3010"],
     "qmoi-enhanced/QMOISPACEDEV.md": [
       "https://github.com/qmoi-ai/qmoi-space.git",
       "https://huggingface.co/docs/hub/spaces)",
@@ -109441,9 +109358,7 @@
       "https://github.com/thealphakenya/Alpha-Q-ai/releases/latest/download/qmoi",
       "https://github.com/thealphakenya/Alpha-Q-ai/releases)"
     ],
-    "qmoi-enhanced/QMOICLONEGITHUB.md": [
-      "https://github.qmoi.com"
-    ],
+    "qmoi-enhanced/QMOICLONEGITHUB.md": ["https://github.qmoi.com"],
     "qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md": [
       "https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.177"
     ],
@@ -109466,18 +109381,12 @@
       "https://qmoi.ai",
       "http://localhost:5055"
     ],
-    "qmoi-enhanced/QCITYREADME.md": [
-      "https://q-city.ai"
-    ],
+    "qmoi-enhanced/QCITYREADME.md": ["https://q-city.ai"],
     "qmoi-enhanced/INDEPENDENTQMOI.md": [
       "https://github.com/qmoi/independent-qmoi.git"
     ],
-    "qmoi-enhanced/CMDCOMMANDS.md": [
-      "http://localhost:5050/api/build-apps"
-    ],
-    "qmoi-enhanced/QMOI-ENHANCED-README.md": [
-      "https://your-app.vercel.app"
-    ],
+    "qmoi-enhanced/CMDCOMMANDS.md": ["http://localhost:5050/api/build-apps"],
+    "qmoi-enhanced/QMOI-ENHANCED-README.md": ["https://your-app.vercel.app"],
     "qmoi-enhanced/QMOINGROK.md": [
       "https://qmoitunnel.ngrok.io/downloads/qbrowser/windows.exe",
       "https://abc123.ngrok.io/qcity/app/latest",
@@ -109492,12 +109401,8 @@
       "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
       "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status"
     ],
-    "qmoi-enhanced/QMOISPACE.md": [
-      "https://space.qmoi.app/"
-    ],
-    "qmoi-enhanced/WPA.md": [
-      "https://api.qmoi.app'"
-    ],
+    "qmoi-enhanced/QMOISPACE.md": ["https://space.qmoi.app/"],
+    "qmoi-enhanced/WPA.md": ["https://api.qmoi.app'"],
     "qmoi-enhanced/QMOIREGISTRY.md": [
       "https://api.mybank.com/balance?account=12345",
       "https://api.mytrading.com/markets",
@@ -109616,9 +109521,7 @@
       "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
       "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage"
     ],
-    "qmoi-enhanced/QMOIALLPLATFORMS.md": [
-      "https://qcity.qmoi.app/"
-    ],
+    "qmoi-enhanced/QMOIALLPLATFORMS.md": ["https://qcity.qmoi.app/"],
     "qmoi-enhanced/execute-final-deployment.js": [
       "https://github.com/thealphakenya/Alpha-Q-ai"
     ],
@@ -109628,9 +109531,7 @@
     "qmoi-enhanced/tests/ui/qmoi_ui_autotest.spec.js": [
       "http://localhost:3010')"
     ],
-    "qmoi-enhanced/docs/README.md": [
-      "https://github.com/your-org/q-city.git"
-    ],
+    "qmoi-enhanced/docs/README.md": ["https://github.com/your-org/q-city.git"],
     "qmoi-enhanced/docs/API.md": [
       "http://localhost:8000/token",
       "http://localhost:8000/automation/status",
@@ -109708,9 +109609,7 @@
       "https://example.com/app-latest.AppImage",
       "https://example.com/app-latest.zip"
     ],
-    "qmoi-enhanced/components/QAvatar.tsx": [
-      "http://www.w3.org/2000/svg"
-    ],
+    "qmoi-enhanced/components/QAvatar.tsx": ["http://www.w3.org/2000/svg"],
     "qmoi-enhanced/components/DeviceMap.tsx": [
       "https://www.openstreetmap.org/copyright"
     ],
@@ -109735,12 +109634,8 @@
       "https://$",
       "https://qmoi.app/download"
     ],
-    "qmoi-enhanced/qmoi-space/index.html": [
-      "https://qmoi.space"
-    ],
-    "qmoi-enhanced/hooks/useTTCVoice.ts": [
-      "http://localhost:5002/tts'"
-    ],
+    "qmoi-enhanced/qmoi-space/index.html": ["https://qmoi.space"],
+    "qmoi-enhanced/hooks/useTTCVoice.ts": ["http://localhost:5002/tts'"],
     "qmoi-enhanced/huggingface_space/inferenceProviders.js": [
       "https://api-inference.huggingface.co'",
       "http://localhost:5000'",
@@ -109749,9 +109644,7 @@
     "qmoi-enhanced/scripts/ensure-build-tools.js": [
       "https://www.python.org/downloads/')"
     ],
-    "qmoi-enhanced/scripts/qmoi-gitlab-sync.js": [
-      "https://gitlab.com/api/v4'"
-    ],
+    "qmoi-enhanced/scripts/qmoi-gitlab-sync.js": ["https://gitlab.com/api/v4'"],
     "qmoi-enhanced/scripts/qmoi-setup.js": [
       "https://gitlab.com/api/v4'",
       "https://api.github.com'",
@@ -109763,9 +109656,7 @@
       "https://github.com/$",
       "https://github.com/$"
     ],
-    "qmoi-enhanced/scripts/qmoi-music-production-system.js": [
-      "https://$"
-    ],
+    "qmoi-enhanced/scripts/qmoi-music-production-system.js": ["https://$"],
     "qmoi-enhanced/scripts/qmoi_dashboard.js": [
       "http://localhost:4100/api/predictions')",
       "http://localhost:4200/api/notification-prefs')",
@@ -109865,9 +109756,7 @@
       "http://localhost:4000/trigger-fix'",
       "https://api.github.com/repos/$"
     ],
-    "qmoi-enhanced/scripts/media_upload_api_example.js": [
-      "http://localhost:$"
-    ],
+    "qmoi-enhanced/scripts/media_upload_api_example.js": ["http://localhost:$"],
     "qmoi-enhanced/scripts/mpesa-setup-guide.js": [
       "https://developer.safaricom.co.ke/')",
       "https://your-app.vercel.app)"
@@ -109875,15 +109764,11 @@
     "qmoi-enhanced/scripts/deploy_huggingface.js": [
       "https://huggingface.co/spaces/$"
     ],
-    "qmoi-enhanced/scripts/gitlab-automation.js": [
-      "https://gitlab.com'"
-    ],
+    "qmoi-enhanced/scripts/gitlab-automation.js": ["https://gitlab.com'"],
     "qmoi-enhanced/scripts/qmoi-github-integration.js": [
       "https://api.github.com'"
     ],
-    "qmoi-enhanced/scripts/qmoi-error-predictor.js": [
-      "http://localhost:$"
-    ],
+    "qmoi-enhanced/scripts/qmoi-error-predictor.js": ["http://localhost:$"],
     "qmoi-enhanced/scripts/gitlab-notification-service.js": [
       "https://gitlab.com'"
     ],
@@ -109951,17 +109836,13 @@
       "https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square)",
       "https://github.com/thealphakenya/qmoi-enhanced/releases](https://github.com/thealphakenya/qmoi-enhanced/releases)"
     ],
-    "qmoi-enhanced/scripts/deploy/deployment-monitor.js": [
-      "https://'))"
-    ],
+    "qmoi-enhanced/scripts/deploy/deployment-monitor.js": ["https://'))"],
     "qmoi-enhanced/scripts/deploy/vercel_auto_deploy.js": [
       "https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git",
       "http://localhost:3000/api/health'",
       "http://localhost:3000/api/health'"
     ],
-    "qmoi-enhanced/scripts/deploy/health-check.js": [
-      "https://'))"
-    ],
+    "qmoi-enhanced/scripts/deploy/health-check.js": ["https://'))"],
     "qmoi-enhanced/src/services/EnhancedSiteGenerationService.ts": [
       "https://qcity-sites.com/$"
     ],
@@ -109993,9 +109874,7 @@
       "https://api.bitget.com/api/v2/spot/account/ip-whitelist",
       "https://api.bitget.com/api/v2/spot/account/assets"
     ],
-    "qmoi-enhanced/api/qcity.ts": [
-      "https://api.gitpod.io/v1'"
-    ],
+    "qmoi-enhanced/api/qcity.ts": ["https://api.gitpod.io/v1'"],
     "qmoi-enhanced/models/latest/README.md": [
       "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)",
       "https://gitlab.com/qmoi/QMOI)",
@@ -110031,9 +109910,7 @@
       "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js",
       "https://cdn.jsdelivr.net/npm/chart.js"
     ],
-    "qmoi-enhanced/app/api/qi-trading.ts": [
-      "https://api.bitget.com'"
-    ],
+    "qmoi-enhanced/app/api/qi-trading.ts": ["https://api.bitget.com'"],
     "qmoi-enhanced/app/api/wifi-security.ts": [
       "http://localhost:5001/detect-anomaly'"
     ],
@@ -110083,12 +109960,8 @@
     "qmoi-enhanced/qmoi-space-pwa/index.html": [
       "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     ],
-    "scripts/ensure-build-tools.js": [
-      "https://www.python.org/downloads/')"
-    ],
-    "scripts/qmoi-gitlab-sync.js": [
-      "https://gitlab.com/api/v4'"
-    ],
+    "scripts/ensure-build-tools.js": ["https://www.python.org/downloads/')"],
+    "scripts/qmoi-gitlab-sync.js": ["https://gitlab.com/api/v4'"],
     "scripts/qmoi-setup.js": [
       "https://gitlab.com/api/v4'",
       "https://api.github.com'",
@@ -110100,27 +109973,17 @@
       "https://github.com/$",
       "https://github.com/$"
     ],
-    "scripts/qmoi-music-production-system.js": [
-      "https://$"
-    ],
+    "scripts/qmoi-music-production-system.js": ["https://$"],
     "scripts/notify-telegram.js": [
       "https://github.com/thealphakenya/Alpha-Q-ai/releases",
       "https://api.telegram.org/bot$",
       "https://api.telegram.org/bot$",
       "https://api.telegram.org/bot$"
     ],
-    "scripts/qmoi_media_orchestrator.js": [
-      "http://localhost:3001/api/health'"
-    ],
-    "scripts/qmoi_env_manager.js": [
-      "https://example.com/webhook'"
-    ],
-    "scripts/validate-trading-env.js": [
-      "https://$"
-    ],
-    "scripts/auto-vercel-fix.js": [
-      "https://openapi.vercel.sh/vercel.json"
-    ],
+    "scripts/qmoi_media_orchestrator.js": ["http://localhost:3001/api/health'"],
+    "scripts/qmoi_env_manager.js": ["https://example.com/webhook'"],
+    "scripts/validate-trading-env.js": ["https://$"],
+    "scripts/auto-vercel-fix.js": ["https://openapi.vercel.sh/vercel.json"],
     "scripts/qmoi-enhanced-learning-revenue.js": [
       "https://api.github.com/orgs/$",
       "https://api.github.com'",
@@ -110132,9 +109995,7 @@
       "https://www.omdbapi.com'",
       "https://api.tvmaze.com'"
     ],
-    "scripts/qmoi_self_test_runner.js": [
-      "https://api.example.com']"
-    ],
+    "scripts/qmoi_self_test_runner.js": ["https://api.example.com']"],
     "scripts/gitlab-error-recovery.js": [
       "https://gitlab.com'",
       "https://oauth2:$",
@@ -110153,18 +110014,10 @@
       "https://api.github.com/repos/$",
       "https://$"
     ],
-    "scripts/qmoi-universal-error-handler.js": [
-      "https://httpbin.org/get'"
-    ],
-    "scripts/qmoi-parallel-setup.js": [
-      "https://registry.npmjs.org/'"
-    ],
-    "scripts/qmoi-master-debugger.js": [
-      "https://api.telegram.org/bot$"
-    ],
-    "scripts/check-latest-release.js": [
-      "https://api.github.com/repos/$"
-    ],
+    "scripts/qmoi-universal-error-handler.js": ["https://httpbin.org/get'"],
+    "scripts/qmoi-parallel-setup.js": ["https://registry.npmjs.org/'"],
+    "scripts/qmoi-master-debugger.js": ["https://api.telegram.org/bot$"],
+    "scripts/check-latest-release.js": ["https://api.github.com/repos/$"],
     "scripts/qmoi_master_website_automation.js": [
       "https://example.com/$",
       "https://indexing.googleapis.com/v3/urlNotifications:publish",
@@ -110210,31 +110063,17 @@
       "http://localhost:4000/trigger-fix'",
       "https://api.github.com/repos/$"
     ],
-    "scripts/media_upload_api_example.js": [
-      "http://localhost:$"
-    ],
-    "scripts/qmoi-ai-server.js": [
-      "http://localhost:$"
-    ],
+    "scripts/media_upload_api_example.js": ["http://localhost:$"],
+    "scripts/qmoi-ai-server.js": ["http://localhost:$"],
     "scripts/mpesa-setup-guide.js": [
       "https://developer.safaricom.co.ke/')",
       "https://your-app.vercel.app)"
     ],
-    "scripts/deploy_huggingface.js": [
-      "https://huggingface.co/spaces/$"
-    ],
-    "scripts/gitlab-automation.js": [
-      "https://gitlab.com'"
-    ],
-    "scripts/qmoi-github-integration.js": [
-      "https://api.github.com'"
-    ],
-    "scripts/qmoi-error-predictor.js": [
-      "http://localhost:$"
-    ],
-    "scripts/gitlab-notification-service.js": [
-      "https://gitlab.com'"
-    ],
+    "scripts/deploy_huggingface.js": ["https://huggingface.co/spaces/$"],
+    "scripts/gitlab-automation.js": ["https://gitlab.com'"],
+    "scripts/qmoi-github-integration.js": ["https://api.github.com'"],
+    "scripts/qmoi-error-predictor.js": ["http://localhost:$"],
+    "scripts/gitlab-notification-service.js": ["https://gitlab.com'"],
     "scripts/qmoi_payment_fix.js": [
       "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'",
       "https://openapiuat.airtel.africa/auth/oauth2/token'",
@@ -110247,9 +110086,7 @@
       "https://api.telegram.org/bot$",
       "https://api.pushover.net/1/messages.json'"
     ],
-    "scripts/upload-release-assets.js": [
-      "https://api.github.com/repos/$"
-    ],
+    "scripts/upload-release-assets.js": ["https://api.github.com/repos/$"],
     "scripts/gitlab-push-automation.js": [
       "https://gitlab.com'",
       "https://oauth2:$",
@@ -110274,15 +110111,9 @@
     "scripts/services/notification_service.ts": [
       "https://api.telegram.org/bot$"
     ],
-    "scripts/services/comprehensive_test_runner.ts": [
-      "http://localhost:3000$"
-    ],
-    "scripts/services/github_integration.ts": [
-      "https://github.com/$"
-    ],
-    "scripts/services/platform_discovery.ts": [
-      "https://example.com'"
-    ],
+    "scripts/services/comprehensive_test_runner.ts": ["http://localhost:3000$"],
+    "scripts/services/github_integration.ts": ["https://github.com/$"],
+    "scripts/services/platform_discovery.ts": ["https://example.com'"],
     "scripts/templates/README_template.md": [
       "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)",
       "https://github.com/thealphakenya/qmoi-enhanced/releases)"
@@ -110299,17 +110130,13 @@
       "https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square)",
       "https://github.com/thealphakenya/qmoi-enhanced/releases](https://github.com/thealphakenya/qmoi-enhanced/releases)"
     ],
-    "scripts/deploy/deployment-monitor.js": [
-      "https://'))"
-    ],
+    "scripts/deploy/deployment-monitor.js": ["https://'))"],
     "scripts/deploy/vercel_auto_deploy.js": [
       "https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git",
       "http://localhost:3000/api/health'",
       "http://localhost:3000/api/health'"
     ],
-    "scripts/deploy/health-check.js": [
-      "https://'))"
-    ],
+    "scripts/deploy/health-check.js": ["https://'))"],
     "src/wallet.ts": [
       "https://api.cashon.example/v1/balance'",
       "https://api.megavault.example/v1/balance'"
@@ -110327,27 +110154,20 @@
     "src/services/EnhancedParallelizationService.ts": [
       "https://qcity-sites.com/$"
     ],
-    "src/services/BrowserService.ts": [
-      "https://www.google.com",
-      "https://$"
-    ],
+    "src/services/BrowserService.ts": ["https://www.google.com", "https://$"],
     "src/components/q-city/Dashboard.tsx": [
       "https://github.com/settings/billing"
     ],
     "src/components/q-city/AviatorGalleryPanel.tsx": [
       "http://www.w3.org/2000/svg"
     ],
-    "src/components/q-city/PluginPanel.tsx": [
-      "http://www.w3.org/2000/svg"
-    ],
+    "src/components/q-city/PluginPanel.tsx": ["http://www.w3.org/2000/svg"],
     "src/config/trading.ts": [
       "https://api.bitget.com/api/v2/spot/account/assets",
       "https://api.bitget.com/api/v2/spot/account/ip-whitelist",
       "https://api.bitget.com/api/v2/spot/account/assets"
     ],
-    "api/qcity.ts": [
-      "https://api.gitpod.io/v1'"
-    ],
+    "api/qcity.ts": ["https://api.gitpod.io/v1'"],
     "models/latest/README.md": [
       "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)",
       "https://gitlab.com/qmoi/QMOI)",
@@ -110383,12 +110203,8 @@
       "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js",
       "https://cdn.jsdelivr.net/npm/chart.js"
     ],
-    "app/api/qi-trading.ts": [
-      "https://api.bitget.com'"
-    ],
-    "app/api/wifi-security.ts": [
-      "http://localhost:5001/detect-anomaly'"
-    ],
+    "app/api/qi-trading.ts": ["https://api.bitget.com'"],
+    "app/api/wifi-security.ts": ["http://localhost:5001/detect-anomaly'"],
     "app/api/wallet.ts": [
       "https://api.safaricom.co.ke/mpesa'",
       "https://api.binance.com'",
@@ -110408,9 +110224,7 @@
     "app/api/qmoi/voice-preview/route.ts": [
       "https://api.elevenlabs.io/v1/text-to-speech/$"
     ],
-    "app/api/ai-anomaly-service/route.ts": [
-      "http://localhost:5001/analytics'"
-    ],
+    "app/api/ai-anomaly-service/route.ts": ["http://localhost:5001/analytics'"],
     "app/api/employment/megavault/route.ts": [
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4'",
       "http://www.w3.org/2001/XMLSchema-instance",
@@ -110436,9 +110250,7 @@
     "lib/qmoi-trader.ts": [
       "https://api.binance.com/api/v3/ticker/24hr?symbol=$"
     ],
-    "lib/qmoi-auto-config.ts": [
-      "https://alpha-q-ai.vercel.app'"
-    ],
+    "lib/qmoi-auto-config.ts": ["https://alpha-q-ai.vercel.app'"],
     "lib/cashon-wallet.ts": [
       "https://api.pesapal.com'",
       "https://[PRODUCTION",
@@ -110452,9 +110264,7 @@
       "https://your-domain.com/api/airtel/callback",
       "https://api.whatsapp.com/send"
     ],
-    "routes/api/qmoi/autodev.ts": [
-      "https://alpha-q-ai.vercel.app'"
-    ],
+    "routes/api/qmoi/autodev.ts": ["https://alpha-q-ai.vercel.app'"],
     "qmoi-space-pwa/index.html": [
       "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     ],

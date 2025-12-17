@@ -67,7 +67,7 @@ interface QMOIContextType {
   updateUserPreferences: (
     preferences: Partial<
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
-    >
+    >,
   ) => void;
   getAvatarInfo: (avatarId: string) => any;
   getVoiceInfo: (voiceId: string) => any;
@@ -245,7 +245,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   const updateUserPreferences = (
     preferences: Partial<
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
-    >
+    >,
   ) => {
     setState((prev) => ({ ...prev, ...preferences }));
   };
@@ -272,7 +272,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   const getCompatibleAvatar = (voiceId: string) => {
     const voice = voiceProfiles.find((v) => v.id === voiceId);
     const compatibleAvatar = avatarsConfig.find(
-      (a) => a.voiceProfile === voiceId
+      (a) => a.voiceProfile === voiceId,
     );
     return compatibleAvatar?.id || "default";
   };

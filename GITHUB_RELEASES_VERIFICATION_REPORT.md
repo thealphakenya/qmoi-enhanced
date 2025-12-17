@@ -11,13 +11,13 @@ Verification of documentation claims against actual artifacts reveals **signific
 
 ### Key Findings
 
-| Issue | Severity | Details |
-|-------|----------|---------|
-| Apps directory confusion | 🔴 CRITICAL | Two separate directories with different binaries (placeholders vs real) |
-| Apps availability claims | 🔴 CRITICAL | Docs claim 6 apps with 12+ platform support; actually only 2 have multi-platform binaries |
-| Windows executable status | 🔴 CRITICAL | Contradictory info: placeholder stub exists alongside real 5MB binary |
-| Platform coverage incomplete | 🟡 HIGH | Missing Raspberry Pi, Wear OS, Docker images referenced in docs |
-| Web-only apps not clarified | 🟡 HIGH | QShare, Yap, QStore, QVillage documented as multi-platform but are web-only |
+| Issue                        | Severity    | Details                                                                                   |
+| ---------------------------- | ----------- | ----------------------------------------------------------------------------------------- |
+| Apps directory confusion     | 🔴 CRITICAL | Two separate directories with different binaries (placeholders vs real)                   |
+| Apps availability claims     | 🔴 CRITICAL | Docs claim 6 apps with 12+ platform support; actually only 2 have multi-platform binaries |
+| Windows executable status    | 🔴 CRITICAL | Contradictory info: placeholder stub exists alongside real 5MB binary                     |
+| Platform coverage incomplete | 🟡 HIGH     | Missing Raspberry Pi, Wear OS, Docker images referenced in docs                           |
+| Web-only apps not clarified  | 🟡 HIGH     | QShare, Yap, QStore, QVillage documented as multi-platform but are web-only               |
 
 ---
 
@@ -37,17 +37,17 @@ Verification of documentation claims against actual artifacts reveals **signific
 
 **All Binaries Comparison:**
 
-| Platform | downloads/ | Qmoi_downloaded_apps/ | Status |
-|----------|------------|----------------------|--------|
-| Windows EXE | 169 B (stub) | 5.0 MB (real) | ❌ Mismatch |
-| macOS DMG | Not found | 8.0 MB | ✅ Real in Qmoi_downloaded_apps |
-| Linux AppImage | Not found | 6.0 MB | ✅ Real in Qmoi_downloaded_apps |
-| Linux DEB | Not found | 4.0 MB | ✅ Real in Qmoi_downloaded_apps |
-| Android APK | Not found | 10 MB | ✅ Real in Qmoi_downloaded_apps |
-| iOS IPA | Not found | 12 MB | ✅ Real in Qmoi_downloaded_apps |
-| SmartTV APK | Not found | 8.0 MB | ✅ Real in Qmoi_downloaded_apps |
-| Chromebook ZIP | Not found | 3.0 MB | ✅ Real in Qmoi_downloaded_apps |
-| QCity ZIP | Not found | 2.0 MB | ✅ Real in Qmoi_downloaded_apps |
+| Platform       | downloads/   | Qmoi_downloaded_apps/ | Status                          |
+| -------------- | ------------ | --------------------- | ------------------------------- |
+| Windows EXE    | 169 B (stub) | 5.0 MB (real)         | ❌ Mismatch                     |
+| macOS DMG      | Not found    | 8.0 MB                | ✅ Real in Qmoi_downloaded_apps |
+| Linux AppImage | Not found    | 6.0 MB                | ✅ Real in Qmoi_downloaded_apps |
+| Linux DEB      | Not found    | 4.0 MB                | ✅ Real in Qmoi_downloaded_apps |
+| Android APK    | Not found    | 10 MB                 | ✅ Real in Qmoi_downloaded_apps |
+| iOS IPA        | Not found    | 12 MB                 | ✅ Real in Qmoi_downloaded_apps |
+| SmartTV APK    | Not found    | 8.0 MB                | ✅ Real in Qmoi_downloaded_apps |
+| Chromebook ZIP | Not found    | 3.0 MB                | ✅ Real in Qmoi_downloaded_apps |
+| QCity ZIP      | Not found    | 2.0 MB                | ✅ Real in Qmoi_downloaded_apps |
 
 **Conclusion:** The `downloads/` directory contains only placeholder stubs; all actual binaries are in `Qmoi_downloaded_apps/`.
 
@@ -71,6 +71,7 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 **Verified Binaries:**
 
 #### QMOI AI (v1.2.3) - ✅ TRUE Multi-Platform
+
 - ✅ Windows (5.0 MB)
 - ✅ macOS (8.0 MB)
 - ✅ Linux AppImage (6.0 MB)
@@ -86,6 +87,7 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 **Platforms with binaries:** 8 out of 12+
 
 #### QCity (v2.0.1) - Limited Platform Support
+
 - ✅ ZIP package (2.0 MB) — likely works on all platforms
 - ✅ Documented as supporting Windows, macOS, Linux, Android, iOS (5 platforms)
 - ✅ Can run universally via ZIP
@@ -94,6 +96,7 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 **Platforms:** 5+ (universal ZIP)
 
 #### QShare, Yap, QStore, QVillage - ❌ NO BINARIES
+
 - 🌐 Web-only applications
 - 📱 Accessed via web browsers or web-based PWA
 - ❌ NOT available as downloadable standalone apps for any platform
@@ -108,9 +111,11 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 ### Issue #1: qmoi_ai.exe Status Confusion
 
 **Previous Claims in Inventory:**
+
 > "Status: ⚠️ Placeholder stub (169 bytes) — See build instructions below"
 
 **Actual Status:**
+
 - `downloads/windows/latest/qmoi_ai.exe` → **169 bytes** (placeholder stub)
 - `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe` → **5.0 MB** (real binary!)
 
@@ -119,6 +124,7 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 ### Issue #2: Documentation Claims False Platform Support
 
 **Docs say:**
+
 - QShare: "All platforms via web/mobile apps"
 - Yap: "All platforms via web/mobile apps"
 - QStore: "All platforms via web/mobile apps"
@@ -131,6 +137,7 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 ### Issue #3: Missing Platforms
 
 **Documentation claims 12+ platforms:**
+
 1. ✅ Windows
 2. ✅ macOS
 3. ✅ Linux
@@ -153,6 +160,7 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 ### Documentation References
 
 **These docs reference separate GitHub repositories:**
+
 - QMOI AI: `github.com/thealphakenya/Alpha-Q-ai`
 - QCity: `github.com/thealphakenya/qcity`
 - QShare: `github.com/thealphakenya/qshare`
@@ -194,15 +202,15 @@ QShare, Yap, QStore, QVillage:
 
 ## 6. What's Actually MISSING
 
-| Item | Docs Claim | Reality | Status |
-|------|------------|---------|--------|
-| Raspberry Pi binary | ✅ Available | ❌ NOT FOUND | Missing |
-| Wear OS binary | ✅ Mentioned | ❌ NOT FOUND | Missing |
-| Docker image | ✅ Listed | ❌ NOT FOUND | Missing |
-| QShare binary | ✅ Multi-platform | ❌ Web-only | Misrepresented |
-| Yap binary | ✅ Multi-platform | ❌ Web-only | Misrepresented |
-| QStore binary | ✅ Multi-platform | ❌ Web-only | Misrepresented |
-| QVillage binary | ✅ Multi-platform | ❌ Web-only | Misrepresented |
+| Item                | Docs Claim        | Reality      | Status         |
+| ------------------- | ----------------- | ------------ | -------------- |
+| Raspberry Pi binary | ✅ Available      | ❌ NOT FOUND | Missing        |
+| Wear OS binary      | ✅ Mentioned      | ❌ NOT FOUND | Missing        |
+| Docker image        | ✅ Listed         | ❌ NOT FOUND | Missing        |
+| QShare binary       | ✅ Multi-platform | ❌ Web-only  | Misrepresented |
+| Yap binary          | ✅ Multi-platform | ❌ Web-only  | Misrepresented |
+| QStore binary       | ✅ Multi-platform | ❌ Web-only  | Misrepresented |
+| QVillage binary     | ✅ Multi-platform | ❌ Web-only  | Misrepresented |
 
 ---
 
@@ -211,6 +219,7 @@ QShare, Yap, QStore, QVillage:
 ### QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md
 
 **Current text:**
+
 ```markdown
 | App Name | Version | Platforms | Status |
 | QMOI AI | v1.2.3 | Win, Mac, Linux, Android, iOS, Web | ✅ Built |
@@ -221,6 +230,7 @@ QShare, Yap, QStore, QVillage:
 ```
 
 **Should be:**
+
 ```markdown
 | App Name | Version | Platforms | Status | Notes |
 | QMOI AI | v1.2.3 | Win, Mac, Linux, Android, iOS, SmartTV, Chromebook | ✅ Built | 8 platforms; Raspberry Pi/Wear OS/Docker pending |
@@ -281,11 +291,13 @@ Priority order:
 ## Summary
 
 ✅ **What's Real:**
+
 - QMOI AI v1.2.3 with 8 platform-specific binaries
 - QCity v2.0.1 with universal ZIP package
 - Real, functional executables in `Qmoi_downloaded_apps/`
 
 ❌ **What's False/Misleading:**
+
 - QShare, Yap, QStore, QVillage are NOT multi-platform binaries
 - "12+ platform support" claim is overstated (realistic: 8)
 - "72+ total builds" is misleading (realistic: 8-9 true builds)

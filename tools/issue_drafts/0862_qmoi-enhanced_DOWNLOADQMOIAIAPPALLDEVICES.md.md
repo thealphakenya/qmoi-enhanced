@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "QMOI AI App Downloads (All Devices)"
 qmoi_validation_frontmatter: true
@@ -39,7 +39,7 @@ You can use the unified script to auto-detect your platform and download the cor
 
 ```bash
 python downloadqmoiai.py
-```
+````
 
 - The script will detect your OS and download the correct app to:
   - `Qmoi_downloaded_apps/<platform>/latest/`
@@ -65,6 +65,7 @@ You can also use the dedicated script for your platform:
 - `python downloadqmoiaizip.py` (Chromebook)
 
 All downloads are saved in:
+
 ```
 Qmoi_downloaded_apps/<platform>/latest/
 Qmoi_downloaded_apps/<platform>/v<version>/
@@ -75,9 +76,11 @@ Qmoi_downloaded_apps/<platform>/v<version>/
 All links below are always up-to-date, autotested, and provided by QCity runners. If a download ever fails, it is automatically fixed and re-uploaded.
 
 Every app can be downloaded, transferred (e.g. via USB), and installed offline on any device, without requiring a download or internet connection. All download links are autotested and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md). Billing safety is ensured: no paid GitHub Actions or ru
+
 ```
 
 Notes:
 
 - This draft was generated automatically to help triage files removed from `donerefs.txt`.
 - Backups and previous runs may exist under `.qmoi_validation`.
+```

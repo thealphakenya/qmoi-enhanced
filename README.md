@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -11,7 +12,6 @@ qmoi_validation_frontmatter: true
 - timestamp: 2025-10-25T00:32:32.231969Z
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
-
 
 # QMOI System
 
@@ -29,6 +29,8 @@ This will start a static server and open [QMOI AI](http://localhost:8080/qmoi-ai
 If you are in a restricted environment, open the URL manually after running the script.
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
+![CI Build](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ci.yml/badge.svg)
+![Coverage](https://img.shields.io/badge/Coverage-unknown-lightgrey?style=flat-square)
 ![Release v1.2.3](https://img.shields.io/badge/Release-v1.2.3-blue?style=flat-square)
 ![Publish Q Alpha](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-alpha.yml/badge.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-12+-success?style=flat-square)
@@ -39,6 +41,7 @@ Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a 
 ## 🎯 Latest Release
 
 📍 **Release v1.2.3** - November 12, 2025
+
 - ✅ All 6 QMOI apps built and deployed
 - ✅ 12+ platforms supported (Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA, Smart TV, Wear OS, Docker, and more)
 - ✅ 72+ total builds (6 apps × 12+ platforms)
@@ -70,27 +73,28 @@ All releases are available at **[GitHub Releases v1.2.3](https://github.com/thea
 
 ### Available Platforms & Assets
 
-| Platform | App | Format | Download | Size | SHA256 |
-|----------|-----|--------|----------|------|--------|
-| **Windows** | QMOI AI | `.exe` | [qmoi_ai.exe](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe) | 5.0 MB | [`view`](release_assets_manifest.json) |
-| **macOS** | QMOI AI | `.dmg` | [qmoi_ai.dmg](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg) | 8.0 MB | [`view`](release_assets_manifest.json) |
-| **Linux** | QMOI AI | `.AppImage` | [qmoi_ai.AppImage](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage) | 6.0 MB | [`view`](release_assets_manifest.json) |
-| **Linux** | QMOI AI | `.deb` | [qmoi_ai.deb](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb) | 4.0 MB | [`view`](release_assets_manifest.json) |
-| **Android** | QMOI AI | `.apk` | [qmoi_ai.apk](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk) | 10.0 MB | [`view`](release_assets_manifest.json) |
-| **iOS** | QMOI AI | `.ipa` | [qmoi_ai.ipa](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa) | 12.0 MB | [`view`](release_assets_manifest.json) |
-| **Chromebook** | QMOI AI | `.zip` | [qmoi_ai_chromebook.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip) | 3.0 MB | [`view`](release_assets_manifest.json) |
-| **Smart TV** | QMOI AI | `.apk` | [qmoi_ai_smarttv.apk](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk) | 8.0 MB | [`view`](release_assets_manifest.json) |
-| **Web** | QShare | `.zip` | [qshare.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qshare.zip) | ~2 KB | [`view`](release_assets_manifest.json) |
-| **Web** | QStore | `.zip` | [qstore.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qstore.zip) | ~2 KB | [`view`](release_assets_manifest.json) |
-| **Web** | QVillage | `.zip` | [qvillage.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qvillage.zip) | ~2 KB | [`view`](release_assets_manifest.json) |
-| **Web** | QMOI Space | `.zip` | [qmoi-space.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-space.zip) | ~4 KB | [`view`](release_assets_manifest.json) |
-| **QCity** | QCity Package | `.zip` | [qcity_package.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip) | 2.0 MB | [`view`](release_assets_manifest.json) |
+| Platform       | App           | Format      | Download                                                                                                                 | Size    | SHA256                                 |
+| -------------- | ------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------ | ------- | -------------------------------------- |
+| **Windows**    | QMOI AI       | `.exe`      | [qmoi_ai.exe](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe)                       | 5.0 MB  | [`view`](release_assets_manifest.json) |
+| **macOS**      | QMOI AI       | `.dmg`      | [qmoi_ai.dmg](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg)                       | 8.0 MB  | [`view`](release_assets_manifest.json) |
+| **Linux**      | QMOI AI       | `.AppImage` | [qmoi_ai.AppImage](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage)             | 6.0 MB  | [`view`](release_assets_manifest.json) |
+| **Linux**      | QMOI AI       | `.deb`      | [qmoi_ai.deb](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb)                       | 4.0 MB  | [`view`](release_assets_manifest.json) |
+| **Android**    | QMOI AI       | `.apk`      | [qmoi_ai.apk](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk)                       | 10.0 MB | [`view`](release_assets_manifest.json) |
+| **iOS**        | QMOI AI       | `.ipa`      | [qmoi_ai.ipa](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa)                       | 12.0 MB | [`view`](release_assets_manifest.json) |
+| **Chromebook** | QMOI AI       | `.zip`      | [qmoi_ai_chromebook.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip) | 3.0 MB  | [`view`](release_assets_manifest.json) |
+| **Smart TV**   | QMOI AI       | `.apk`      | [qmoi_ai_smarttv.apk](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk)       | 8.0 MB  | [`view`](release_assets_manifest.json) |
+| **Web**        | QShare        | `.zip`      | [qshare.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qshare.zip)                         | ~2 KB   | [`view`](release_assets_manifest.json) |
+| **Web**        | QStore        | `.zip`      | [qstore.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qstore.zip)                         | ~2 KB   | [`view`](release_assets_manifest.json) |
+| **Web**        | QVillage      | `.zip`      | [qvillage.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qvillage.zip)                     | ~2 KB   | [`view`](release_assets_manifest.json) |
+| **Web**        | QMOI Space    | `.zip`      | [qmoi-space.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-space.zip)                 | ~4 KB   | [`view`](release_assets_manifest.json) |
+| **QCity**      | QCity Package | `.zip`      | [qcity_package.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip)           | 2.0 MB  | [`view`](release_assets_manifest.json) |
 
 ### Verify Downloaded Files
 
 All assets include SHA256 checksums in [`release_assets_manifest.json`](release_assets_manifest.json).
 
 **Verify on macOS/Linux:**
+
 ```bash
 # Download the manifest
 curl -s https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/main/release_assets_manifest.json | jq '.assets[] | select(.name == "qmoi_ai.AppImage") | .sha256'
@@ -100,6 +104,7 @@ sha256sum qmoi_ai.AppImage
 ```
 
 **Verify on Windows (PowerShell):**
+
 ```powershell
 # Compare SHA256
 (Get-FileHash qmoi_ai.exe).Hash
@@ -117,12 +122,14 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 ### Environment Setup
 
 1. **Copy environment template and configure:**
+
 ```bash
 cp .env.example .env.local
 # Edit .env.local with your API URLs, mail service credentials, storage config, etc.
 ```
 
 2. **Install dependencies (if Node.js available):**
+
 ```bash
 npm install
 ```
@@ -143,6 +150,7 @@ Use the **`startup.sh`** script to start all services with one command:
 ```
 
 **What startup.sh does:**
+
 - ✅ Installs Node.js dependencies
 - ✅ Starts HTTP server (port 8080)
 - ✅ Starts Next.js dev/prod server (port 3000)
@@ -152,6 +160,7 @@ Use the **`startup.sh`** script to start all services with one command:
 - ✅ Displays dashboard URLs and status
 
 **To manually verify setup:**
+
 ```bash
 ./cli-verify.sh
 ```
@@ -183,6 +192,7 @@ firefox http://localhost:8080/qcity-enterprise.html &
 ```
 
 **Dashboard Tabs:**
+
 - Device Management
 - QVillage (Master AI Infrastructure)
 - Employment Dashboard
@@ -216,6 +226,7 @@ python3 -m http.server 8080 &
 ```
 
 **PWA Features Available:**
+
 - ✅ **Install to Home Screen** — One-click app installation from each page
 - ✅ **Offline-First** — Full functionality without internet connection
 - ✅ **Auto-Update** — Automatic background updates (user-controlled)
@@ -226,6 +237,7 @@ python3 -m http.server 8080 &
 
 **App Status Dashboard:**
 Each app displays:
+
 - PWA installation status
 - Service Worker status
 - Version information
@@ -233,12 +245,14 @@ Each app displays:
 - Install and update buttons
 
 **Service Worker & Caching Strategy:**
+
 - 🌐 **HTML/API:** Network-first (fresh data with offline fallback)
 - 💾 **Assets:** Cache-first (fast loading with network fallback)
 - ⚙️ **Updates:** Checked every 60 seconds in background
 - 🔄 **Background Sync:** Queues actions when offline, syncs when online
 
 **To Install an App:**
+
 1. Open the app URL in your browser (see commands above)
 2. Click the **"📥 Install App"** button
 3. Confirm installation when prompted
@@ -246,16 +260,19 @@ Each app displays:
 5. Launch directly without opening browser next time!
 
 **For Auto-Updates:**
+
 - Service Worker automatically checks for updates every minute
 - When update is available, user sees notification
 - Click **"Update Now"** to refresh to latest version
 - Updates can be configured to apply automatically via Web App Manifest
 
 **Access App Data:**
+
 - Click **"⬇️ Download Data"** button to export app configuration
 - Useful for backup, migration, or sharing settings
 
 **Open All Apps in Parallel** (development):
+
 ```bash
 # Launch all 4 QMOI apps in different windows/tabs
 python3 -m http.server 8080 & \
@@ -267,12 +284,12 @@ python3 -m http.server 8080 & \
 
 **App Details:**
 
-| App | URL | Theme | Purpose |
-|-----|-----|-------|---------|
-| **QCity** | `/qcity-dashboard.html` | Blue (#2196F3) | City management & monitoring |
-| **QMOI AI** | `/qmoi-ai.html` | Orange (#FF6B35) | Machine learning & intelligence |
-| **QMOI Space** | `/qmoi-space.html` | Purple (#9C27B0) | Decentralized marketplace |
-| **Q Alpha** | `/q-alpha.html` | Cyan (#00BCD4) | Developer console & tools |
+| App            | URL                     | Theme            | Purpose                         |
+| -------------- | ----------------------- | ---------------- | ------------------------------- |
+| **QCity**      | `/qcity-dashboard.html` | Blue (#2196F3)   | City management & monitoring    |
+| **QMOI AI**    | `/qmoi-ai.html`         | Orange (#FF6B35) | Machine learning & intelligence |
+| **QMOI Space** | `/qmoi-space.html`      | Purple (#9C27B0) | Decentralized marketplace       |
+| **Q Alpha**    | `/q-alpha.html`         | Cyan (#00BCD4)   | Developer console & tools       |
 
 #### Option 2: QMOI AI (Next.js Dev Server)
 
@@ -286,6 +303,7 @@ npm run dev
 ```
 
 **Available Pages:**
+
 - `/` — QMOI AI Home
 - `/qcity` — QCity Dashboard
 - `/chatbot` — QMOI Chatbot
@@ -306,12 +324,14 @@ npm start
 The app uses a centralized API config (`src/config/api.ts`) that reads from environment variables and `.env.local`:
 
 **Environment Variables:**
+
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:8000     # Backend API base URL
 NEXT_PUBLIC_ENV=development                    # development|staging|production
 ```
 
 **Backend Endpoints Expected:**
+
 - `GET /api/media` — Fetch media items
 - `POST /api/verify?q=<query>` — Verify product
 - `POST /api/mail` — Send email
@@ -323,6 +343,7 @@ NEXT_PUBLIC_ENV=development                    # development|staging|production
 ### Component Integration
 
 Key components now use production adapters (`src/adapters/clientAdapters.ts`):
+
 - `QmoiMediaManager.tsx` → calls `/api/media`
 - `GlobalMail.tsx` → calls `/api/mail`
 - `GlobalFileTransfer.tsx` → calls `/api/files`
@@ -685,3 +706,4 @@ If you'd like me to flesh out Lion's `lionctl` commands, create CI workflows for
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+```

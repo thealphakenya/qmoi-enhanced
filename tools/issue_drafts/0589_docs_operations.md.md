@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "QMOI Operations Guide"
 qmoi_validation_frontmatter: true
@@ -54,9 +54,10 @@ Each DNS/infrastructure provider requires specific credentials:
 - Cloudflare:
   ```bash
   export CLOUDFLARE_API_TOKEN='your_token_here'
-  ```
+````
 
 - AWS Route53:
+
   ```bash
   export AWS_ACCESS_KEY_ID='your_key_here'
   export AWS_SECRET_ACCESS_KEY='your_secret_here'
@@ -87,6 +88,7 @@ Configure these secrets in your GitHub repository:
    - Network access controlled by `QMOI_ALLOW_NETWORK`
 
 2. Infras
+
 ```
 
 Notes:
@@ -95,3 +97,4 @@ Notes:
 - Backups and previous runs may exist under `.qmoi_validation`.
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
+```

@@ -36,27 +36,27 @@ from pathlib import Path
 
 class QMOIEnhancedBuilder:
     """Enhanced builder with cloud integration and error fixing"""
-    
+
     def __init__(self):
         self.project_root = Path(__file__).parent.parent
         self.dist_dir = self.project_root / "dist"
         self.build_dir = self.project_root / "build"
         self.temp_dir = tempfile.mkdtemp()
-        
+
     def clean_build_directories(self):
         """Clean build directories to fix permission issues"""
         print("üßπ Cleaning build directories...")
-        
+
         # Kill any running processes that might lock files
         try:
-            subprocess.run(["taskkill", "/F", "/IM", "qmoiexe.exe"], 
+            subprocess.run(["taskkill", "/F", "/IM", "qmoiexe.exe"],
                          capture_output=True, check=False)
         except:
             pass
-        
+
         # Wait a moment for processes to terminate
         time.sleep(2)
-        
+
         # Remove directories with retry logic
         for directory in [self.dist_dir, self.build_dir]:
             if directory.exists():
@@ -71,10 +71,10 @@ class QMOIEnhancedBuilder:
                         if attempt == 2:
                             # Force remove with admin privileges
                             try:
-                                subprocess.run(["rmdir", "/S", "/Q", str(directory)], 
+                                subprocess.run(["rmdir", "/S", "/Q", str(directory)],
                                              shell=True, check=True)
                                 print(f"‚úÖ Force cleaned {directory}")
-                 
+
 ```
 
 Notes:

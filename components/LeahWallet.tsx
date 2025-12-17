@@ -1,21 +1,34 @@
-import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import React, { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export function LeahWallet() {
   const [balance, setBalance] = useState(1000);
   const [history, setHistory] = useState([
-    { type: 'credit', amount: 1000, note: 'Initial deposit', date: new Date().toLocaleDateString() }
+    {
+      type: "credit",
+      amount: 1000,
+      note: "Initial deposit",
+      date: new Date().toLocaleDateString(),
+    },
   ]);
-  const [amount, setAmount] = useState('');
-  const [note, setNote] = useState('');
+  const [amount, setAmount] = useState("");
+  const [note, setNote] = useState("");
 
   function handleAddFunds() {
     if (!amount) return;
-    setBalance(b => b + Number(amount));
-    setHistory(h => [{ type: 'credit', amount: Number(amount), note, date: new Date().toLocaleDateString() }, ...h]);
-    setAmount('');
-    setNote('');
+    setBalance((b) => b + Number(amount));
+    setHistory((h) => [
+      {
+        type: "credit",
+        amount: Number(amount),
+        note,
+        date: new Date().toLocaleDateString(),
+      },
+      ...h,
+    ]);
+    setAmount("");
+    setNote("");
   }
 
   return (
@@ -30,26 +43,33 @@ export function LeahWallet() {
             type="number"
             placeholder="Amount"
             value={amount}
-            onChange={e => setAmount(e.target.value)}
+            onChange={(e) => setAmount(e.target.value)}
             className="border rounded px-2 py-1 mr-2"
           />
           <input
             type="text"
             placeholder="Note"
             value={note}
-            onChange={e => setNote(e.target.value)}
+            onChange={(e) => setNote(e.target.value)}
             className="border rounded px-2 py-1 mr-2"
           />
-          <Button onClick={handleAddFunds} size="sm">Add Funds</Button>
+          <Button onClick={handleAddFunds} size="sm">
+            Add Funds
+          </Button>
         </div>
         <div>
           <h4 className="font-semibold mb-1">History</h4>
           <ul className="text-sm">
             {history.map((h, i) => (
               <li key={i} className="mb-1">
-                <span className={h.type === 'credit' ? 'text-green-600' : 'text-red-600'}>
-                  {h.type === 'credit' ? '+' : '-'}${h.amount}
-                </span> - {h.note} <span className="text-gray-400">({h.date})</span>
+                <span
+                  className={
+                    h.type === "credit" ? "text-green-600" : "text-red-600"
+                  }
+                >
+                  {h.type === "credit" ? "+" : "-"}${h.amount}
+                </span>{" "}
+                - {h.note} <span className="text-gray-400">({h.date})</span>
               </li>
             ))}
           </ul>

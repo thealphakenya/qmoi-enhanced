@@ -5,6 +5,7 @@ last_updated: 2025-11-15
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -27,13 +28,13 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 ## 🎯 Executive Summary: Current Status
 
-| Component | Status | Details |
-|-----------|--------|---------|
-| **QMOI AI** | ⚠️ Requires Validation | 8 platforms built (Windows, macOS, Linux×2, Android, iOS, SmartTV, Chromebook). Needs production verification. |
-| **QCity** | ⚠️ Requires Validation | Universal ZIP package (v2.0.1). Needs platform testing. |
-| **Web Apps** | 🌐 Web-Only | QShare, QStore, QVillage, Yap (browser-based, no binary download). PWA versions available. |
-| **PWA Apps** | ⚠️ Requires Testing | Q Alpha, QMOI Space (GitHub Pages hosted). Need feature validation. |
-| **Release v1.2.3** | ✅ Published | 13 assets on GitHub Releases. Need SHA256 verification and testing. |
+| Component          | Status                 | Details                                                                                                        |
+| ------------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **QMOI AI**        | ⚠️ Requires Validation | 8 platforms built (Windows, macOS, Linux×2, Android, iOS, SmartTV, Chromebook). Needs production verification. |
+| **QCity**          | ⚠️ Requires Validation | Universal ZIP package (v2.0.1). Needs platform testing.                                                        |
+| **Web Apps**       | 🌐 Web-Only            | QShare, QStore, QVillage, Yap (browser-based, no binary download). PWA versions available.                     |
+| **PWA Apps**       | ⚠️ Requires Testing    | Q Alpha, QMOI Space (GitHub Pages hosted). Need feature validation.                                            |
+| **Release v1.2.3** | ✅ Published           | 13 assets on GitHub Releases. Need SHA256 verification and testing.                                            |
 
 ---
 
@@ -42,6 +43,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 ### 1.1 Binary Compilation & Signing
 
 #### Android (APK/AAB)
+
 - [ ] **Compile with Release Build Configuration**
   - [ ] Use `--release` or `--mode=release` flag in build command
   - [ ] Disable debug mode: `android.debuggable=false`
@@ -64,6 +66,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Verify obfuscated build size is optimized (10-15% smaller than debug)
 
 #### iOS (IPA)
+
 - [ ] **Archive with Release Configuration**
   - [ ] Build scheme set to "Release"
   - [ ] Code signing identity set to production certificate
@@ -84,6 +87,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] No "Ad Hoc" or development profiles mixed in
 
 #### Windows (EXE/MSI)
+
 - [ ] **Compile Release Build**
   - [ ] Use `Release` configuration, not `Debug`
   - [ ] Optimization flags enabled: `/O2` or equivalent
@@ -103,6 +107,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] UPX or similar compressor NOT used (can break signature verification)
 
 #### macOS (DMG)
+
 - [ ] **Compile Release Build**
   - [ ] Xcode build scheme set to Release
   - [ ] Optimization enabled
@@ -120,6 +125,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Gatekeeper validation passed on test macOS system
 
 #### Linux (AppImage, DEB)
+
 - [ ] **AppImage Build**
   - [ ] linuxdeploy tool used to generate AppImage
   - [ ] Executable bit set: `chmod +x qmoi_ai.AppImage`
@@ -220,6 +226,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 ### 2.2 Manual Testing on Real Devices
 
 #### Android Testing
+
 - [ ] **Test on Real Devices (not emulator only)**
   - [ ] Low-end device (Android 8.0+): App launches, no crashes, performance acceptable
   - [ ] Mid-range device (Android 10): All features work, UI responsive
@@ -234,6 +241,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Data persists across app restarts (if applicable)
 
 #### iOS Testing
+
 - [ ] **Test on Real Devices (not simulator only)**
   - [ ] iPhone SE (small screen): UI readable, no overflow
   - [ ] iPhone 12/13 (standard): All features accessible
@@ -248,6 +256,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] App badge/notification features (if used) work
 
 #### Windows Testing
+
 - [ ] **Test on Real Windows Systems**
   - [ ] Windows 10 (latest version): App installs, launches, runs
   - [ ] Windows 11: Compatibility verified, modern features used (if applicable)
@@ -261,6 +270,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Reinstallation after uninstall works
 
 #### macOS Testing
+
 - [ ] **Test on Real Mac Hardware**
   - [ ] macOS 11 (Big Sur): App runs
   - [ ] macOS 12 (Monterey), macOS 13 (Ventura), macOS 14 (Sonoma): App runs
@@ -273,6 +283,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] App launches from Applications folder
 
 #### Linux Testing
+
 - [ ] **Test on Real Linux Systems**
   - [ ] Ubuntu 20.04 LTS: AppImage runs / DEB installs
   - [ ] Ubuntu 22.04 LTS: Works
@@ -285,6 +296,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] FUSE library availability checked (if using FUSE-based AppImage)
 
 #### Web/PWA Testing
+
 - [ ] **Browser Compatibility**
   - [ ] Chrome/Chromium (latest): Works
   - [ ] Firefox (latest): Works
@@ -372,6 +384,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 ### 3.2 Platform Security Requirements
 
 #### Android
+
 - [ ] **Android-Specific Security**
   - [ ] Target API level ≥ 31 (Android 12)
   - [ ] Permissions clearly justified and documented
@@ -380,6 +393,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] No `android:debuggable="true"` in manifest
 
 #### iOS
+
 - [ ] **iOS-Specific Security**
   - [ ] App Transport Security enforced (HTTPS only)
   - [ ] No insecure random number generation
@@ -388,6 +402,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Provisioning profile appropriate (not ad-hoc for production)
 
 #### Windows
+
 - [ ] **Windows-Specific Security**
   - [ ] Binary signed with valid certificate
   - [ ] No Visual Basic 6 or deprecated technologies (if possible)
@@ -395,6 +410,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] No registry hacks or unsafe operations
 
 #### Web/PWA
+
 - [ ] **Web Security**
   - [ ] Content Security Policy (CSP) headers configured
   - [ ] CORS policy restrictive (not `*`)
@@ -632,52 +648,53 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Publish
 
 - [ ] **Release Notes Template**
+
   ```
   # QMOI v1.2.3 - Production Release
-  
+
   **Release Date:** November 15, 2025
-  
+
   ## What's New
   - Feature A added
   - Feature B improved
   - ...
-  
+
   ## Bug Fixes
   - Fixed crash on app launch (Issue #XXX)
   - Fixed performance issue (Issue #YYY)
   - ...
-  
+
   ## Breaking Changes
   - API endpoint changed (migrate code)
   - ...
-  
+
   ## Downloads
   All downloads are verified with SHA256 checksums.
-  
+
   | Platform | File | Size | Checksum |
   |----------|------|------|----------|
   | Windows | [qmoi_ai.exe](https://...) | 5.0 MB | `SHA256` |
   | macOS | [qmoi_ai.dmg](https://...) | 8.0 MB | `SHA256` |
   | ... | ... | ... | ... |
-  
+
   **Verify downloads:** `sha256sum -c qmoi_ai.exe.sha256`
-  
+
   ## Platform-Specific Notes
-  
+
   ### Windows
   - Requires Windows 10 or later
   - Installation: Double-click installer
-  
+
   ### macOS
   - Requires macOS 11 or later
   - Installation: Mount DMG and drag to Applications
-  
+
   ### Android
   - Requires Android 8.0 or later
   - Installation: Download from Play Store or use APK
-  
+
   ... (other platforms)
-  
+
   ## Installation Troubleshooting
   - If installation fails, see: [INSTALLATION_GUIDE.md](link)
   - Report bugs: [GitHub Issues](link)
@@ -709,6 +726,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 ### 8.1 Gradual Rollout Strategy
 
 #### Android (Google Play)
+
 - [ ] **1% Rollout (Day 1-2)**
   - [ ] Promote app from closed testing to production with 1% rollout
   - [ ] Monitor crash rate, ANR rate, 1-star reviews
@@ -727,6 +745,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Continue monitoring
 
 #### iOS (App Store)
+
 - [ ] **Phased Release (if supported)**
   - [ ] Set phased release: 1 day → 7 days
   - [ ] App automatically rolls out over week
@@ -737,6 +756,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Monitor first 24 hours closely
 
 #### Web/PWA
+
 - [ ] **Blue-Green Deployment**
   - [ ] Deploy to staging first
   - [ ] Test thoroughly

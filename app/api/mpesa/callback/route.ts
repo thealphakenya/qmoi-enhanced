@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
         success: false,
         message: "Callback processing failed",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

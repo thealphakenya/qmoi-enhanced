@@ -25,7 +25,7 @@ export type TooltipPropsExtended = {
     name: string,
     item: unknown,
     index: number,
-    payload: unknown
+    payload: unknown,
   ) => React.ReactNode;
   hideLabel?: boolean;
   hideIndicator?: boolean;
@@ -47,24 +47,24 @@ export type LegendProps = ComponentProps & {
 export const Legend = (props: LegendProps) => <div {...props} />;
 
 export const BarChart = (
-  props: ComponentProps & { children?: React.ReactNode } & Record<string, any>
+  props: ComponentProps & { children?: React.ReactNode } & Record<string, any>,
 ) => <div {...props}>{props.children}</div>;
 export const Bar = (props: ComponentProps & Record<string, any>) => (
   <div {...props} />
 );
 
 export const PieChart = (
-  props: ComponentProps & { children?: React.ReactNode } & Record<string, any>
+  props: ComponentProps & { children?: React.ReactNode } & Record<string, any>,
 ) => <div {...props}>{props.children}</div>;
 export const Pie = (
-  props: ComponentProps & { children?: React.ReactNode } & Record<string, any>
+  props: ComponentProps & { children?: React.ReactNode } & Record<string, any>,
 ) => <div {...props}>{props.children}</div>;
 export const Cell = (props: ComponentProps & Record<string, any>) => (
   <div {...props} />
 );
 
 export const LineChart = (
-  props: ComponentProps & { children?: React.ReactNode } & Record<string, any>
+  props: ComponentProps & { children?: React.ReactNode } & Record<string, any>,
 ) => <div {...props}>{props.children}</div>;
 export const Line = (props: ComponentProps & Record<string, any>) => (
   <div {...props} />

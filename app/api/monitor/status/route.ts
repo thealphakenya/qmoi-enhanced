@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     console.error("Error in monitor status endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -46,14 +46,14 @@ export async function POST(request: NextRequest) {
     if (typeof enable !== "boolean") {
       return NextResponse.json(
         { error: "Enable flag is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (interval && (interval < 10 || interval > 3600)) {
       return NextResponse.json(
         { error: "Interval must be between 10 and 3600 seconds" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     console.error("Error in monitor control endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

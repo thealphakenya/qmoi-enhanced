@@ -485,7 +485,7 @@ export class MultiUserSessionManager extends EventEmitter {
   }
 
   // Cleanup
-  cleanupInactiveSessions(timeoutMinutes: number = 60): void {
+  cleanupInactiveSessions(timeoutMinutes = 60): void {
     const cutoff = new Date(Date.now() - timeoutMinutes * 60 * 1000);
 
     for (const [sessionId, session] of this.sessions.entries()) {

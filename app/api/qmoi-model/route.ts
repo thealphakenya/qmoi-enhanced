@@ -87,13 +87,13 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       { error: "Invalid query parameter" },
-      { status: 400 }
+      { status: 400 },
     );
   } catch (error) {
     console.error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -129,13 +129,13 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { error: "Invalid action specified" },
-      { status: 400 }
+      { status: 400 },
     );
   } catch (error) {
     console.error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

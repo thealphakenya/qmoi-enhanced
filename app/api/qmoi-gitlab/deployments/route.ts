@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
       // Parse deployment information from logs
       deployments = lines
         .filter(
-          (line) => line.includes("deployment") || line.includes("Deployment")
+          (line) => line.includes("deployment") || line.includes("Deployment"),
         )
         .map((line, index) => {
           const deploymentMatch = line.match(/deployment: (\w+)/);

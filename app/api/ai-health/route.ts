@@ -126,12 +126,12 @@ export async function GET(request: NextRequest) {
     let licenseStatus = "unknown";
     try {
       const licenseReport = JSON.parse(
-        fs.readFileSync("license-report.json", "utf-8")
+        fs.readFileSync("license-report.json", "utf-8"),
       );
       const allowed = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause"];
       const offenders = Object.entries(licenseReport).filter(
         ([pkg, meta]: [string, any]) =>
-          meta.licenses && !allowed.includes(meta.licenses)
+          meta.licenses && !allowed.includes(meta.licenses),
       );
       licenseStatus = offenders.length === 0 ? "compliant" : "non-compliant";
     } catch (e) {
@@ -196,8 +196,8 @@ export async function GET(request: NextRequest) {
           licenseStatus === "compliant"
             ? "healthy"
             : licenseStatus === "non-compliant"
-            ? "critical"
-            : "degraded",
+              ? "critical"
+              : "degraded",
         lastCheck: new Date().toISOString(),
         metrics: {
           latency: 0,
@@ -224,8 +224,8 @@ export async function GET(request: NextRequest) {
           deployStatus === "success"
             ? "healthy"
             : deployStatus === "failed"
-            ? "critical"
-            : "degraded",
+              ? "critical"
+              : "degraded",
         lastCheck: new Date().toISOString(),
         metrics: {
           latency: 0,
@@ -253,8 +253,8 @@ export async function GET(request: NextRequest) {
       overall: Components.some((c) => c.status === "critical")
         ? "critical"
         : Components.some((c) => c.status === "degraded")
-        ? "degraded"
-        : "healthy",
+          ? "degraded"
+          : "healthy",
       timestamp: new Date().toISOString(),
       components: Components,
       metrics: Metrics,
@@ -271,7 +271,7 @@ export async function GET(request: NextRequest) {
     console.error("Error in AI health endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -291,7 +291,7 @@ export async function POST(request: NextRequest) {
       if (!component) {
         return NextResponse.json(
           { error: "Component name is required" },
-          { status: 400 }
+          { status: 400 },
         );
       }
 
@@ -317,7 +317,7 @@ export async function POST(request: NextRequest) {
       if (!settings) {
         return NextResponse.json(
           { error: "Settings are required" },
-          { status: 400 }
+          { status: 400 },
         );
       }
 
@@ -336,13 +336,13 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { error: "Invalid action specified" },
-      { status: 400 }
+      { status: 400 },
     );
   } catch (error) {
     console.error("Error in AI health action endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

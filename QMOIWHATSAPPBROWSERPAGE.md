@@ -5,6 +5,7 @@ This page describes how to log QMOI into WhatsApp using the official WhatsApp We
 ---
 
 ## How to Log QMOI into WhatsApp
+
 1. **Open the QMOI WhatsApp Login Page**
    - The page opens WhatsApp Web in a new window/tab: [https://web.whatsapp.com/](https://web.whatsapp.com/)
 2. **Scan the QR Code**
@@ -16,6 +17,7 @@ This page describes how to log QMOI into WhatsApp using the official WhatsApp We
 ---
 
 ## Intended UI Features
+
 - **QR Code Section:**
   - Prominently displays the WhatsApp QR code for easy scanning.
 - **Status Indicator:**
@@ -34,6 +36,7 @@ This page describes how to log QMOI into WhatsApp using the official WhatsApp We
 ---
 
 ## Features QMOI Can Use After Login
+
 - Send and receive WhatsApp messages
 - Join and manage groups
 - Send media, files, and documents
@@ -44,10 +47,11 @@ This page describes how to log QMOI into WhatsApp using the official WhatsApp We
 ---
 
 ## Troubleshooting
+
 - If the QR code does not load, refresh the page.
 - If login fails, ensure your phone has internet and try again.
 - For persistent issues, consult the QMOI WhatsApp integration documentation or support.
 
 ---
 
-*Last updated: 2025-11-23*
+_Last updated: 2025-11-23_

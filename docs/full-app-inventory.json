@@ -1,10 +1,6 @@
 {
   "generated_at": "2025-10-21T00:00:00Z",
-  "pwa_apps": [
-    "q-alpha",
-    "qmoi",
-    "qmoi-ai"
-  ],
+  "pwa_apps": ["q-alpha", "qmoi", "qmoi-ai"],
   "downloads": {
     "files": [
       "q-alpha.zip",

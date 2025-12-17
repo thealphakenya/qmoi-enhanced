@@ -79,7 +79,7 @@ def generate_outline(topic: str, sections: int = 5) -> Dict[str, List[str]]:
                 "prompts": [
                     "State the claim in your own words",
                     "Provide 1-2 reputable sources with brief summaries",
-                    "Explain evidence 
+                    "Explain evidence
 ```
 
 Notes:

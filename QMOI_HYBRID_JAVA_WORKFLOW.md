@@ -5,10 +5,12 @@ This guide explains how to develop in your codespace while offloading all Java/A
 ---
 
 ## 1. Develop Locally in Codespace
+
 - Write and edit code as usual in your codespace (no local Java required).
 - Commit and push changes to your remote repository (GitHub, GitLab, etc.).
 
 ## 2. Offload Java/Android Tasks Remotely
+
 - Use one or more of the following:
   - **QMOI/QCity Server:**
     - Set up a server with Java, Android SDK, and build tools.
@@ -23,10 +25,12 @@ This guide explains how to develop in your codespace while offloading all Java/A
     - Run builds/validation inside the container, mounting your code as a volume.
 
 ## 3. Retrieve and Use Artifacts
+
 - Download built APKs/JARs from the remote server, CI/CD, or Docker container.
 - Deploy or distribute as needed.
 
 ## 4. Integrate with QMOI/QCity Automation
+
 - Add scripts to automate code sync, build triggers, and artifact retrieval.
 - Use QMOI/QCity APIs for remote build/validation orchestration.
 - Monitor build/validation status in QMOI dashboards.
@@ -34,6 +38,7 @@ This guide explains how to develop in your codespace while offloading all Java/A
 ---
 
 ## Example: Remote Build Script (SSH)
+
 ```sh
 # Sync code to remote QMOI build server
 rsync -avz ./mobile/ user@qmoibuild.example.com:/srv/qmoi/mobile/
@@ -48,6 +53,7 @@ scp user@qmoibuild.example.com:/srv/qmoi/mobile/android/app/build/outputs/apk/re
 ---
 
 ## Best Practices
+
 - Always validate artifacts before release.
 - Use secure channels (SSH, HTTPS) for all transfers.
 - Automate as much as possible for reliability and auditability.
@@ -55,4 +61,4 @@ scp user@qmoibuild.example.com:/srv/qmoi/mobile/android/app/build/outputs/apk/re
 
 ---
 
-*Last updated: 2025-11-23*
+_Last updated: 2025-11-23_

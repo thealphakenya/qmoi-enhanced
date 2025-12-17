@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -17,6 +18,7 @@ qmoi_validation_frontmatter: true
 This file lists the canonical HTTP endpoints implemented (or proxied) by the QMOI project. Use this as the single-source reference for API surface used by PWAs, supervisors and automation scripts.
 
 Notes:
+
 - Authentication: endpoints noted with (auth) expect a user JWT in `Authorization: Bearer <token>` unless otherwise stated. Admin endpoints require the `QMOI_CONTROL_TOKEN` via `Authorization: Bearer <token>` or `X-API-KEY` header.
 
 ## Control Server (`qmoi_control_server.py`)
@@ -38,7 +40,7 @@ Notes:
 - GET /attachments — (auth) list attachments for user
 - GET /attachments/<id>/download — (auth) retrieve attachment preview or data URL
 
-- GET /mirror/app/<appname>/* — serve local PWA files (rewrites asset paths) or fallback to GitHub raw
+- GET /mirror/app/<appname>/\* — serve local PWA files (rewrites asset paths) or fallback to GitHub raw
 - GET /mirror/raw/<path> — serve local file or redirect to GitHub raw
 
 - POST /admin/backup-db — (admin) create a DB backup copy in `downloads/`
@@ -60,7 +62,6 @@ Notes:
 - GET /wallet — (auth) get your wallet balance
 - POST /wallet/credit — (master) credit a user's wallet {username, amount_cents}
 - POST /wallet/debit — (master) debit a user's wallet {username, amount_cents}
-
 
 ## WebAuthn endpoints
 
@@ -84,6 +85,7 @@ This file enumerates the endpoints implemented by `qmoi_control_server.py` and r
 Authentication: many endpoints require a JWT bearer token (created by `/login`) or the CONTROL_TOKEN for admin operations.
 
 Public / unauthenticated:
+
 - GET /health -> basic health check
 - GET /mirror/raw/<path> -> serve repository files or redirect to GitHub raw
 - GET /mirror/app/<appname>/[<path>] -> serve PWA app files or redirect to GitHub raw
@@ -95,6 +97,7 @@ NOTE: endpoint inventory was created from a repository scan. For a machine-reada
 To request an automated verification run (extract runtime route signatures and run integration tests against a local server), say: "verify endpoints now" and I'll run the harness and update this document with test results.
 
 Auth (user JWT required):
+
 - POST /signup {username,password} -> create user (rate-limited)
 - POST /login {username,password} -> returns JWT
 - POST /logout -> revokes token (persists jti when available)
@@ -111,41 +114,46 @@ Auth (user JWT required):
 - GET /attachments/<id>/download -> return dataUrl or base64 data for attachment (requires JWT)
 
 Admin / control (CONTROL_TOKEN required as Authorization: Bearer <token> or X-API-KEY):
+
 - POST /control {command,target,...} -> control actions (navigate, download, voice)
 - POST /admin/backup-db -> create local DB backup
 - POST /admin/update-ngrok {apply:bool?} -> run local update_ngrok_links.py (dry-run by default)
 
 Orchestration / observability (for supervisors):
+
 - GET /ready -> readiness probe (DB accessible)
 - GET /metrics -> lightweight counts of users, memories, attachments
 
 Notes:
+
 - All endpoints are implemented in `qmoi_control_server.py` and persist to `qmoi.db` by default.
 - Attachment downloads are prototype only; production should use signed object storage.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "ENDPOINTS.md",
-  "validated_at": "2025-10-26T20:51:22.297416Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Endpoint Inventory"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "ENDPOINTS.md",
+"validated_at": "2025-10-26T20:51:22.297416Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Endpoint Inventory"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

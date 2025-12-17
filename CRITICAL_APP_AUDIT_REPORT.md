@@ -20,23 +20,25 @@
 
 ### 🔴 BROKEN — Cannot Install or Run (Non-Functional Placeholders)
 
-| Platform | File | Status | Issue | Size |
-|----------|------|--------|-------|------|
-| **Android** | qmoi_ai.apk | ❌ BROKEN | Corrupted ZIP, garbage data pattern | 10 MB |
-| **iOS** | qmoi_ai.ipa | ❌ BROKEN | Corrupted ZIP, garbage data pattern | 12 MB |
-| **Smart TV** | qmoi_ai_smarttv.apk | ❌ BROKEN | Corrupted ZIP, garbage data pattern | 8 MB |
-| **Chromebook** | qmoi_ai_chromebook.zip | ❌ BROKEN | Garbage data (not valid ZIP) | 3 MB |
-| **QCity** | qcity_package.zip | ❌ BROKEN | Garbage data (not valid ZIP) | 2 MB |
-| **Windows** | qmoi_ai.exe | ⚠️ QUESTIONABLE | MZ header exists but contains garbage after header | 5 MB |
+| Platform       | File                   | Status          | Issue                                              | Size  |
+| -------------- | ---------------------- | --------------- | -------------------------------------------------- | ----- |
+| **Android**    | qmoi_ai.apk            | ❌ BROKEN       | Corrupted ZIP, garbage data pattern                | 10 MB |
+| **iOS**        | qmoi_ai.ipa            | ❌ BROKEN       | Corrupted ZIP, garbage data pattern                | 12 MB |
+| **Smart TV**   | qmoi_ai_smarttv.apk    | ❌ BROKEN       | Corrupted ZIP, garbage data pattern                | 8 MB  |
+| **Chromebook** | qmoi_ai_chromebook.zip | ❌ BROKEN       | Garbage data (not valid ZIP)                       | 3 MB  |
+| **QCity**      | qcity_package.zip      | ❌ BROKEN       | Garbage data (not valid ZIP)                       | 2 MB  |
+| **Windows**    | qmoi_ai.exe            | ⚠️ QUESTIONABLE | MZ header exists but contains garbage after header | 5 MB  |
 
 **Problem**: All these files start with repeating byte pattern: `50 1a bc 4e 11 34 c6 62 36 15 4f 8d e5 9e 6d ae 33 67 39 9b...` (repeated indefinitely)
 
 This is **NOT**:
+
 - A valid ZIP/APK/IPA (which would have proper central directory)
 - A valid executable (which would have proper code sections)
 - A real application (which would have resources, libraries, configs)
 
 **Result**: Installation will **fail immediately** with:
+
 - Android: "Invalid APK format" or "App not installed"
 - iOS: "Cannot be opened because it is not a valid app"
 - Chromebook: "File is not a valid archive"
@@ -45,14 +47,14 @@ This is **NOT**:
 
 ### ✅ WORKING — Real Applications with UI (Functional)
 
-| Platform | File | Status | Contents |
-|----------|------|--------|----------|
-| **Web - QMOI AI** | qmoi-ai.zip | ✅ WORKING | manifest.webmanifest, index.html (10.4 KB), service worker, icons |
-| **Web - Admin** | admin.zip | ✅ WORKING | index.html (3.1 KB) - admin interface |
-| **Web - Deals** | deals.zip | ✅ WORKING | index.html, Stripe payment JS, CSS, payment form templates |
-| **Web - Q-Alpha** | q-alpha.zip | ✅ WORKING | manifest, README, index.html (15.7 KB), PWA manifest, icons |
-| **Web - QMOI Space** | qmoi-space.zip | ✅ WORKING | manifest, index.html (7.9 KB), service worker |
-| **Web - QStore** | qmoi.zip | ✅ WORKING | manifest, index.html (1.6 KB), PWA setup, icons |
+| Platform             | File           | Status     | Contents                                                          |
+| -------------------- | -------------- | ---------- | ----------------------------------------------------------------- |
+| **Web - QMOI AI**    | qmoi-ai.zip    | ✅ WORKING | manifest.webmanifest, index.html (10.4 KB), service worker, icons |
+| **Web - Admin**      | admin.zip      | ✅ WORKING | index.html (3.1 KB) - admin interface                             |
+| **Web - Deals**      | deals.zip      | ✅ WORKING | index.html, Stripe payment JS, CSS, payment form templates        |
+| **Web - Q-Alpha**    | q-alpha.zip    | ✅ WORKING | manifest, README, index.html (15.7 KB), PWA manifest, icons       |
+| **Web - QMOI Space** | qmoi-space.zip | ✅ WORKING | manifest, index.html (7.9 KB), service worker                     |
+| **Web - QStore**     | qmoi.zip       | ✅ WORKING | manifest, index.html (1.6 KB), PWA setup, icons                   |
 
 **Status**: These have **real HTML/JS/CSS UI** and can be deployed as web/PWA apps ✅
 
@@ -62,11 +64,11 @@ This is **NOT**:
 
 ### ⚠️ QUESTIONABLE — Need Verification
 
-| Platform | File | Header | Status | Notes |
-|----------|------|--------|--------|-------|
-| **Linux (deb)** | qmoi_ai.deb | `!<arch>` | ⚠️ VERIFY | Proper deb header but needs content check |
-| **Linux (AppImage)** | qmoi_ai.AppImage | `AI\x00\x01` | ⚠️ VERIFY | Proper AppImage header but needs extraction test |
-| **macOS** | qmoi_ai.dmg | `\x00\xad\x0b\xad` | ⚠️ VERIFY | DMG magic number present but needs mount test |
+| Platform             | File             | Header             | Status    | Notes                                            |
+| -------------------- | ---------------- | ------------------ | --------- | ------------------------------------------------ |
+| **Linux (deb)**      | qmoi_ai.deb      | `!<arch>`          | ⚠️ VERIFY | Proper deb header but needs content check        |
+| **Linux (AppImage)** | qmoi_ai.AppImage | `AI\x00\x01`       | ⚠️ VERIFY | Proper AppImage header but needs extraction test |
+| **macOS**            | qmoi_ai.dmg      | `\x00\xad\x0b\xad` | ⚠️ VERIFY | DMG magic number present but needs mount test    |
 
 **Action Needed**: Extract/test these to confirm they have actual binaries, not garbage data
 
@@ -173,6 +175,7 @@ find /workspaces -name "*.apk" -o -name "*.ipa" -o -name "*.deb" -o -name "build
 ### Phase 2: Obtain Real Apps (Days 3-5)
 
 **Option A - Build from Source**:
+
 ```bash
 # If source code exists:
 cd qmoi-ai-source && npm run build:android  # → .apk
@@ -181,6 +184,7 @@ cd qmoi-ai-source && npm run build:ios      # → .ipa
 ```
 
 **Option B - Download from CDN/Build Server**:
+
 ```bash
 # If builds are hosted elsewhere:
 curl -o qmoi_ai.apk https://builds.example.com/qmoi-ai/1.2.3/android.apk
@@ -189,6 +193,7 @@ curl -o qmoi_ai.ipa https://builds.example.com/qmoi-ai/1.2.3/ios.ipa
 ```
 
 **Option C - Create MVP (Minimum Viable Product)**:
+
 ```bash
 # If neither exists, create basic working apps:
 # - Bare-minimum functional APK with UI shell
@@ -226,6 +231,7 @@ git push origin v1.2.4-with-real-apps
 Before marking any app as "real" and ready for distribution:
 
 ### Android APK
+
 - [ ] `unzip -t app.apk` returns success (valid ZIP)
 - [ ] Contains `AndroidManifest.xml`
 - [ ] Contains native code or DEX bytecode (not just garbage)
@@ -234,6 +240,7 @@ Before marking any app as "real" and ready for distribution:
 - [ ] All features mentioned in README work
 
 ### iOS IPA
+
 - [ ] `unzip -t app.ipa` returns success
 - [ ] Contains `.app` bundle
 - [ ] Contains executable binary
@@ -242,6 +249,7 @@ Before marking any app as "real" and ready for distribution:
 - [ ] All features work
 
 ### Linux deb
+
 - [ ] `ar t app.deb` shows control, data.tar.gz
 - [ ] `dpkg -I app.deb` shows valid metadata
 - [ ] `dpkg -i app.deb` installs without errors on Ubuntu/Debian
@@ -250,12 +258,14 @@ Before marking any app as "real" and ready for distribution:
 - [ ] Application launches with UI
 
 ### Linux AppImage
+
 - [ ] `./app.AppImage --help` succeeds
 - [ ] `./app.AppImage` launches with UI
 - [ ] Made with AppImageKit (proper format)
 - [ ] Works on different Linux distributions
 
 ### macOS DMG
+
 - [ ] Can mount: `hdiutil attach app.dmg`
 - [ ] Contains `.app` bundle
 - [ ] Bundle contains executable
@@ -263,6 +273,7 @@ Before marking any app as "real" and ready for distribution:
 - [ ] All features work
 
 ### Web Apps (ZIP)
+
 - [ ] `unzip -t app.zip` succeeds
 - [ ] Contains `index.html` with UI markup
 - [ ] Contains CSS for styling
@@ -307,17 +318,20 @@ PLATFORM SUPPORT SUMMARY
 ## Recommendations
 
 ### Immediate (This Week)
+
 1. **STOP**: Remove non-functional apps from GitHub releases
 2. **AUDIT**: Find actual app sources/builds or determine if need to create from scratch
 3. **DECIDE**: Build vs. download vs. create MVP for each platform
 
 ### Short-term (Week 2)
+
 1. **OBTAIN**: Real functioning apps for each platform
 2. **VERIFY**: Test installation and functionality of each
 3. **REPLACE**: Update Qmoi_downloaded_apps/ with real apps
 4. **RE-RELEASE**: Push v1.2.4 with verified working apps
 
 ### Long-term
+
 1. **AUTOMATE**: CI/CD builds real apps for each platform on every release
 2. **VERIFY**: Automated smoke tests before release (install + launch + verify features)
 3. **DOCUMENT**: Platform-specific build/deployment docs
@@ -328,6 +342,7 @@ PLATFORM SUPPORT SUMMARY
 ## Files Affected
 
 **Broken/Placeholder Files** (16 total):
+
 ```
 Qmoi_downloaded_apps/android/latest/qmoi_ai.apk (10 MB)
 Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa (12 MB)
@@ -339,6 +354,7 @@ Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe (5 MB)
 ```
 
 **Working Files** (6 total):
+
 ```
 Qmoi_downloaded_apps/web/latest/qmoi-ai.zip ✅
 Qmoi_downloaded_apps/web/latest/admin.zip ✅
@@ -352,13 +368,14 @@ Qmoi_downloaded_apps/web/latest/qmoi.zip ✅
 
 ## Next Steps
 
-**Immediate Action Required**: 
+**Immediate Action Required**:
+
 1. Review this report with team
 2. Determine if real app builds exist elsewhere
 3. Decide strategy: build from source, download, or create MVP
 4. Create plan to obtain real apps before next release
 
-**User Advisory**: 
+**User Advisory**:
 Users should currently **only use web apps** (QMOI AI web, Admin, Deals, Q-Alpha, QMOI Space, QStore). Native app downloads are not yet functional.
 
 ---

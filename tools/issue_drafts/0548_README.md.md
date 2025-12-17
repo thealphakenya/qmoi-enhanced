@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "QMOI System"
 qmoi_validation_frontmatter: true
@@ -72,7 +72,7 @@ All binaries above are actual, validated builds for each platform and app type. 
 📚 Documentation
 ALLMDFILESREFS.md → Full index of docs, features, build scripts
 
-```
+````
 
 Notes:
 

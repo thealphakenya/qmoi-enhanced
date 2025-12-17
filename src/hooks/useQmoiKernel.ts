@@ -29,9 +29,12 @@ export function useQmoiKernel() {
     setLoading(true);
     setError(null);
     try {
+      console.debug("HOOK: fetchStatus - calling /api/qmoi/status");
       const res = await fetch("/api/qmoi/status");
+      console.debug("HOOK: fetchStatus - response status", res && res.status);
       if (!res.ok) throw new Error("Failed to fetch status");
       const data = await res.json();
+      console.debug("HOOK: fetchStatus - parsed data", data);
       setStatus({
         status: data.status,
         lastCheck: data.last_check,

@@ -1,5 +1,5 @@
 name: Update README CLI Usage
-'on':
+"on":
   push:
     paths:
       - scripts/qmoi-unified-push.py
@@ -40,5 +40,5 @@ permissions:
   pull-requests: read
   issues: read
 env:
-  NODE_VERSION: '18'
-  QMOI_AUTODEV_ENABLED: 'true'
+  NODE_VERSION: "18"
+  QMOI_AUTODEV_ENABLED: "true"

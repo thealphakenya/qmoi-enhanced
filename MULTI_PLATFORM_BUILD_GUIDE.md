@@ -3,6 +3,7 @@
 ## Overview
 
 This guide provides complete production build and signing setup for all QMOI platforms:
+
 - ✅ Windows (.exe with PyInstaller)
 - ✅ Android (.apk with Gradle + actual keystore)
 - ✅ iOS/macOS (.ipa, .dmg with Xcode)
@@ -55,6 +56,7 @@ qmoi-enhanced/
 ## 1. WINDOWS PRODUCTION BUILD (.exe)
 
 ### Prerequisites
+
 - Python 3.8+
 - PyInstaller: `pip install pyinstaller`
 - UPX (optional, for compression): `pip install upx`
@@ -63,6 +65,7 @@ qmoi-enhanced/
 ### Configuration
 
 **Environment Variables:**
+
 ```bash
 export WINDOWS_SIGN_ENABLED=false              # Set to true for code signing
 export WINDOWS_CERT_PATH=/path/to/cert.pfx    # Code signing certificate
@@ -84,8 +87,8 @@ bash scripts/build-windows-production.sh
 
 ### What Gets Built
 
-| App | Type | Input | Output | Size |
-|-----|------|-------|--------|------|
+| App     | Type | Input        | Output                  | Size       |
+| ------- | ---- | ------------ | ----------------------- | ---------- |
 | qmoi_ai | .exe | qmoi_ai.spec | qmoi_ai.exe (with deps) | ~150-200MB |
 | qmoiexe | .exe | qmoiexe.spec | qmoiexe.exe (with deps) | ~120-180MB |
 
@@ -119,6 +122,7 @@ bash scripts/build-windows-production.sh
 ## 2. ANDROID PRODUCTION BUILD (.apk)
 
 ### Prerequisites
+
 - JDK 17+: `apt-get install openjdk-17-jdk`
 - Android SDK: Via Android Studio or `sdkmanager`
 - Gradle (included in mobile/android/gradlew)
@@ -127,6 +131,7 @@ bash scripts/build-windows-production.sh
 ### Configuration
 
 **Keystore Details (Already Configured):**
+
 ```
 Path:        mobile/android/app/debug.keystore
 Password:    android
@@ -135,6 +140,7 @@ Key Password: android
 ```
 
 **GitHub Secrets (Required for CI/CD):**
+
 ```
 ANDROID_KEYSTORE_BASE64=       (base64 of keystore, 3012 bytes)
 ANDROID_KEYSTORE_PASSWORD=     android
@@ -161,7 +167,7 @@ bash scripts/build-android-production.sh
 android {
   signingConfigs {
     release {
-      storeFile = file(System.getenv("KEYSTORE_FILE_PATH") ?: 
+      storeFile = file(System.getenv("KEYSTORE_FILE_PATH") ?:
                        project.property("KEYSTORE_FILE"))
       storePassword = System.getenv("KEYSTORE_PASSWORD") ?:
                       project.property("KEYSTORE_PASSWORD")
@@ -213,6 +219,7 @@ adb shell am start -n com.tempinit/.MainActivity
 ## 3. iOS/macOS PRODUCTION BUILD (.ipa, .dmg)
 
 ### Prerequisites
+
 - **macOS** (required for iOS/macOS builds)
 - Xcode 14+: `xcode-select --install`
 - Apple Developer Account
@@ -222,6 +229,7 @@ adb shell am start -n com.tempinit/.MainActivity
 ### Configuration
 
 **Environment Variables:**
+
 ```bash
 export APPLE_TEAM_ID=XXXXXXXXXX                    # 10-digit Team ID
 export APPLE_BUNDLE_ID=com.tempinit.qmoi          # Bundle identifier
@@ -231,6 +239,7 @@ export APPLE_PROVISIONING_PROFILE=/path/to/prof    # Provisioning profile
 ```
 
 **Obtain Credentials:**
+
 1. Visit https://developer.apple.com/account
 2. Download code signing certificate (.p12)
 3. Download provisioning profile (.mobileprovision)
@@ -251,10 +260,10 @@ bash scripts/build-apple-production.sh
 
 ### Build Details
 
-| Platform | Output | Architectures | Deployment | Size |
-|----------|--------|---------------|------------|------|
-| iOS | .ipa | arm64 | iOS 14+ | ~80-120MB |
-| macOS | .dmg | arm64, x86_64 | macOS 11+ | ~100-150MB |
+| Platform | Output | Architectures | Deployment | Size       |
+| -------- | ------ | ------------- | ---------- | ---------- |
+| iOS      | .ipa   | arm64         | iOS 14+    | ~80-120MB  |
+| macOS    | .dmg   | arm64, x86_64 | macOS 11+  | ~100-150MB |
 
 ### Code Signing Details
 
@@ -278,17 +287,18 @@ xcode-select -p  # Verify Xcode location
 
 ### 7 PWA Applications
 
-| App | Type | Output | Build Tool |
-|-----|------|--------|-----------|
-| admin | Admin Dashboard | admin.zip | npm/webpack |
-| deals | Deals App | deals.zip | npm/webpack |
-| q-alpha | Q Alpha | q-alpha.zip | npm/webpack |
-| qmoi | QMOI Main | qmoi.zip | npm/webpack |
-| qmoi-ai | QMOI AI | qmoi-ai.zip | npm/webpack |
-| qmoi-space | QMOI Space | qmoi-space.zip | npm/webpack |
-| qstore | QMOI Store | qstore.zip | npm/webpack |
+| App        | Type            | Output         | Build Tool  |
+| ---------- | --------------- | -------------- | ----------- |
+| admin      | Admin Dashboard | admin.zip      | npm/webpack |
+| deals      | Deals App       | deals.zip      | npm/webpack |
+| q-alpha    | Q Alpha         | q-alpha.zip    | npm/webpack |
+| qmoi       | QMOI Main       | qmoi.zip       | npm/webpack |
+| qmoi-ai    | QMOI AI         | qmoi-ai.zip    | npm/webpack |
+| qmoi-space | QMOI Space      | qmoi-space.zip | npm/webpack |
+| qstore     | QMOI Store      | qstore.zip     | npm/webpack |
 
 ### Prerequisites
+
 - Node.js 18+: `node --version`
 - npm 9+: `npm --version`
 - Optional: webpack, TypeScript, React build tools
@@ -296,6 +306,7 @@ xcode-select -p  # Verify Xcode location
 ### Configuration
 
 Each PWA includes:
+
 - **manifest.webmanifest** - PWA metadata (auto-generated if missing)
 - **sw.js** - Service Worker (auto-generated if missing)
 - **package.json** - npm dependencies
@@ -322,6 +333,7 @@ bash scripts/build-pwa-production.sh
 ### PWA Features (Auto-Generated)
 
 **Web App Manifest:**
+
 ```json
 {
   "name": "QMOI Admin",
@@ -336,6 +348,7 @@ bash scripts/build-pwa-production.sh
 ```
 
 **Service Worker Features:**
+
 - Offline support
 - Network-first strategy for dynamic content
 - Cache-first strategy for assets
@@ -415,11 +428,13 @@ bash scripts/build-all-platforms.sh
 #### Trigger Methods
 
 1. **Manual Dispatch:**
+
 ```bash
 gh workflow run build-and-release.yml
 ```
 
 2. **Automatic on Tag Push:**
+
 ```bash
 git tag v1.2.4
 git push origin v1.2.4
@@ -454,11 +469,13 @@ Optional for iOS/macOS:
 #### Adding Secrets to GitHub
 
 **Option 1: Automated (Requires gh CLI)**
+
 ```bash
 bash scripts/add-github-secrets.sh
 ```
 
 **Option 2: Manual UI**
+
 ```
 https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions
 Click "New repository secret" for each:
@@ -609,14 +626,14 @@ Solution: Clear browser cache, or update CACHE_NAME in sw.js
 
 ### Build Times
 
-| Platform | Build Time | Size | Signing |
-|----------|-----------|------|---------|
-| Windows | 2-3 min | 150-200MB | Optional |
-| Android | 3-5 min | 45-80MB | Yes (keystore) |
-| iOS | 5-8 min | 80-120MB | Yes (Apple) |
-| macOS | 5-8 min | 100-150MB | Yes (Apple) |
-| PWA (each) | 30-60 sec | 2-10MB | N/A |
-| **Total** | **~25-35 min** | **~700MB** | **Varies** |
+| Platform   | Build Time     | Size       | Signing        |
+| ---------- | -------------- | ---------- | -------------- |
+| Windows    | 2-3 min        | 150-200MB  | Optional       |
+| Android    | 3-5 min        | 45-80MB    | Yes (keystore) |
+| iOS        | 5-8 min        | 80-120MB   | Yes (Apple)    |
+| macOS      | 5-8 min        | 100-150MB  | Yes (Apple)    |
+| PWA (each) | 30-60 sec      | 2-10MB     | N/A            |
+| **Total**  | **~25-35 min** | **~700MB** | **Varies**     |
 
 ### App Sizes (Optimized)
 
@@ -665,7 +682,7 @@ Production release
 ### Signing Certificate Management
 
 ```
-Windows:  
+Windows:
   • Obtain code signing certificate (or self-signed)
   • Store in GitHub Secrets as WINDOWS_CERT_BASE64
   • Set password in WINDOWS_CERT_PASSWORD
@@ -686,6 +703,7 @@ iOS/macOS:
 ## 📚 Documentation Files
 
 Generated build guides:
+
 - `PRODUCTION_BUILD_SETUP.md` - Android setup
 - `PRODUCTION_RELEASE_ACTION_PLAN.md` - Step-by-step workflow
 - This file: Comprehensive multi-platform guide

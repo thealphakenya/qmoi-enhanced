@@ -44,7 +44,7 @@ export async function POST_LOGIN(req: NextRequest) {
   const body = await req.json();
   const { username, platform } = body;
   const account = accounts.find(
-    (a) => a.username === username && a.platform === platform
+    (a) => a.username === username && a.platform === platform,
   );
   if (!account)
     return NextResponse.json({ error: "Account not found" }, { status: 404 });

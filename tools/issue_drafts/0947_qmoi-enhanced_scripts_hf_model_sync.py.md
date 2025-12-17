@@ -74,7 +74,7 @@ def sync_model(repo_id, model_path, token=None):
                 repo_id=repo_id,
                 repo_type='model',
                 token=token,
-           
+
 ```
 
 Notes:

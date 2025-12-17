@@ -6,42 +6,49 @@ qmoi_validation_frontmatter: true
 # QMOI API snapshot (APIs_v1)
 
 This file is an automated snapshot of commonly used API endpoints implemented under `app/api/**`.
-Mutating endpoints are *proposal-first* by default and require explicit production confirmation (`PRODUCTION_CONFIRMED=true` + `--real`) to actually perform state-changing actions. All mutating endpoints write proposals to `.qmoi_validation/` when not run in confirmed production mode.
+Mutating endpoints are _proposal-first_ by default and require explicit production confirmation (`PRODUCTION_CONFIRMED=true` + `--real`) to actually perform state-changing actions. All mutating endpoints write proposals to `.qmoi_validation/` when not run in confirmed production mode.
 
 ## Auth model
+
 - Primary gating: `QMOI_API_KEY` via header `x-qmoi-api-key` or `Authorization: Bearer <key>` — enforced by `lib/proposals.requireApiKey()`.
 - Master-level operations: some endpoints still require `MASTER_TOKEN` in `Authorization: Bearer <MASTER_TOKEN>` header.
 
 ---
 
-## /api/qmoi/auto-fix/start  (POST)
+## /api/qmoi/auto-fix/start (POST)
+
 - Purpose: Start the auto-fix process for repository (runs `scripts/qmoi_auto_fix_enhanced.py`).
 - Auth: `x-qmoi-api-key` or `MASTER_TOKEN`.
 - Behavior: writes proposal unless `PRODUCTION_CONFIRMED=true` and `--real` present; when allowed, spawns the auto-fix process.
 
-## /api/qmoi/auto-fix/status  (GET)
+## /api/qmoi/auto-fix/status (GET)
+
 - Purpose: Get current status and latest report for auto-fix runs.
 - Auth: `x-qmoi-api-key` (gated).
 - Read-only.
 
-## /api/qmoi/auto-fix/stop  (POST)
+## /api/qmoi/auto-fix/stop (POST)
+
 - Purpose: Stop running auto-fix processes (kill processes matching `qmoi_auto_fix`).
 - Auth: `x-qmoi-api-key` and `MASTER_TOKEN` where configured.
 - Behavior: proposal-first for safety; writes proposal when not confirmed.
 
-## /api/qmoi/auto-fix/download-report  (GET)
+## /api/qmoi/auto-fix/download-report (GET)
+
 - Purpose: Download the latest auto-fix JSON report.
 - Auth: `x-qmoi-api-key`.
 - Behavior: read-only; logs access to `logs/download_fixes.log` (best-effort).
 
-## /api/qmoi/auto-fix/github-status  (GET)
+## /api/qmoi/auto-fix/github-status (GET)
+
 - Purpose: Inspect GitHub Actions/workflow presence and recent runs for auto-fix workflows.
 - Auth: `x-qmoi-api-key`.
 - Behavior: read-only.
 
 ---
 
-## /api/cashon/*
+## /api/cashon/\*
+
 - GET /api/cashon/balance — returns balances via `cashonWallet.getBalance()` (MASTER_TOKEN required)
 - GET /api/cashon/trading-status — returns trading status
 - GET /api/cashon/qmoi-status — returns trader status
@@ -62,6 +69,7 @@ Mutating endpoints are *proposal-first* by default and require explicit producti
 ---
 
 ## /api/qi-trading (GET, POST)
+
 - GET /api/qi-trading?stats=1 — returns trading statistics (mocked/stubbed data)
 - GET /api/qi-trading?history=1 — returns trade history (mocked)
 - GET /api/qi-trading?active=1 — returns active trades (mocked)
@@ -72,7 +80,8 @@ Mutating endpoints are *proposal-first* by default and require explicit producti
 ---
 
 ## Notes
+
 - Proposal files can be found in `.qmoi_validation/` (e.g., `proposal-*.json`, `placeholders_proposal_*.json`). Review them before applying.
-- To apply a proposal and run a mutating action, *set* `PRODUCTION_CONFIRMED=true` in the environment and run the server with `--real` in the process arguments (or use a patched runner that forwards this flag). This gating is intentional to prevent accidental destructive actions.
+- To apply a proposal and run a mutating action, _set_ `PRODUCTION_CONFIRMED=true` in the environment and run the server with `--real` in the process arguments (or use a patched runner that forwards this flag). This gating is intentional to prevent accidental destructive actions.
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

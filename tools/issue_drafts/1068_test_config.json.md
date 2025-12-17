@@ -54,7 +54,7 @@ Excerpt (first 2KB):
         "e2e": "tests/e2e"
     },
     "last_validated": ""
-} 
+}
 ```
 
 Notes:

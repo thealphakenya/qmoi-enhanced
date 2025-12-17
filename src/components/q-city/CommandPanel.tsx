@@ -48,7 +48,7 @@ export default function CommandPanel() {
     };
     if (stream) {
       const es = new EventSource(
-        `/api/qcity/remote-command?body=${encodeURIComponent(body)}`
+        `/api/qcity/remote-command?body=${encodeURIComponent(body)}`,
       );
       eventSourceRef.current = es;
       es.onmessage = (e) => {

@@ -18,18 +18,18 @@ Release v1.2.5 has been **successfully created and published** to GitHub with 10
 
 ### Released Assets (v1.2.5)
 
-| File | Size | Status | Details |
-|------|------|--------|---------|
-| admin.zip | 3.3 KB | ✅ Real | PWA app, valid ZIP |
-| app-release.apk | 10 MB | ⚠️ Placeholder | Needs rebuild |
-| deals.zip | 2.6 KB | ✅ Real | PWA app, valid ZIP |
-| q-alpha.zip | 6.2 KB | ✅ Real | PWA app, valid ZIP |
-| qmoi-ai.zip | 5.8 KB | ✅ Real | PWA app, valid ZIP |
-| qmoi-release.exe | 5 MB | ⚠️ Placeholder | Needs rebuild |
-| qmoi-release.ipa | 12 MB | ⚠️ Placeholder | Needs rebuild |
-| qmoi-space.zip | 3.9 KB | ✅ Real | PWA app, valid ZIP |
-| qmoi.zip | 1.4 KB | ✅ Real | PWA app, valid ZIP |
-| SHA256SUMS.txt | 712 B | ✅ Real | Checksums file |
+| File             | Size   | Status         | Details            |
+| ---------------- | ------ | -------------- | ------------------ |
+| admin.zip        | 3.3 KB | ✅ Real        | PWA app, valid ZIP |
+| app-release.apk  | 10 MB  | ⚠️ Placeholder | Needs rebuild      |
+| deals.zip        | 2.6 KB | ✅ Real        | PWA app, valid ZIP |
+| q-alpha.zip      | 6.2 KB | ✅ Real        | PWA app, valid ZIP |
+| qmoi-ai.zip      | 5.8 KB | ✅ Real        | PWA app, valid ZIP |
+| qmoi-release.exe | 5 MB   | ⚠️ Placeholder | Needs rebuild      |
+| qmoi-release.ipa | 12 MB  | ⚠️ Placeholder | Needs rebuild      |
+| qmoi-space.zip   | 3.9 KB | ✅ Real        | PWA app, valid ZIP |
+| qmoi.zip         | 1.4 KB | ✅ Real        | PWA app, valid ZIP |
+| SHA256SUMS.txt   | 712 B  | ✅ Real        | Checksums file     |
 
 ### Verification Results
 
@@ -68,6 +68,7 @@ Release v1.2.5 has been **successfully created and published** to GitHub with 10
 ## Root Cause Analysis
 
 The placeholder binary artifacts were created during the initial staging process to:
+
 1. Establish release infrastructure and CI/CD workflows
 2. Verify GitHub Actions and asset upload pipeline
 3. Test checksum generation and verification
@@ -85,7 +86,7 @@ The following builds must be executed to generate real production artifacts:
 ./scripts/build-android-production.sh
 # Output: mobile/android/app/build/outputs/apk/release/app-release.apk
 
-# Windows  
+# Windows
 ./scripts/build-windows-production.sh
 # Output: dist/windows/qmoi-release.exe
 
@@ -128,6 +129,7 @@ Run verification scripts to confirm real production artifacts:
 ## Why This Happened
 
 **Context from Session History**:
+
 1. Initial GitHub Actions workflows for building binaries had failures (multiple workflow runs with 0 jobs or build errors)
 2. Container environment lacked build tools (Java, Android SDK, Xcode, build-tools)
 3. To demonstrate release infrastructure was working, placeholder binaries with correct sizes were packaged locally
@@ -137,6 +139,7 @@ Run verification scripts to confirm real production artifacts:
 ## Next Steps
 
 ### Immediate (Required before users can install)
+
 1. ✅ Commit verification scripts (`scripts/verify_apk.sh`, `scripts/verify_exe.sh`, `scripts/verify_ipa.sh`)
 2. ✅ Commit verification guide (`RELEASE_v1.2.5_VERIFICATION_GUIDE.md`)
 3. ⏳ Fix CI/CD workflows to produce real binaries
@@ -146,6 +149,7 @@ Run verification scripts to confirm real production artifacts:
 7. ⏳ Run full verification suite
 
 ### Follow-up (Post-Release)
+
 - Device testing on Android/iOS/Windows
 - Security audit of code signatures
 - Performance benchmarks
@@ -154,6 +158,7 @@ Run verification scripts to confirm real production artifacts:
 ## Build Requirements by Platform
 
 ### Android
+
 - **Tool**: Gradle + Android SDK (API 33+)
 - **Environment**: Linux/macOS/Windows
 - **Time**: ~5-10 minutes
@@ -161,6 +166,7 @@ Run verification scripts to confirm real production artifacts:
 - **Signing**: Requires keystore at `mobile/android/app/debug.keystore`
 
 ### Windows
+
 - **Tool**: Python 3.8+ with PyInstaller
 - **Environment**: Windows preferred, or cross-compile
 - **Time**: ~3-5 minutes
@@ -168,6 +174,7 @@ Run verification scripts to confirm real production artifacts:
 - **Signing**: Optional - requires certificate
 
 ### iOS
+
 - **Tool**: Xcode Command Line Tools
 - **Environment**: macOS only (11+)
 - **Time**: ~10-15 minutes
@@ -181,6 +188,7 @@ Run verification scripts to confirm real production artifacts:
 **Current Status**: ⚠️ Needs fixes for reliable production builds
 
 **Jobs**:
+
 - `build-android`: Requires Android SDK setup in workflow
 - `build-windows`: Requires Windows runner
 - `build-ios`: Requires macOS runner + Apple certificates
@@ -188,6 +196,7 @@ Run verification scripts to confirm real production artifacts:
 - `verify-and-manifest`: ✅ Working
 
 **To Enable Full CI/CD**:
+
 1. Add Android SDK setup in workflow
 2. Configure matrix for Windows/macOS runners
 3. Add Apple code signing credentials to secrets
@@ -196,17 +205,18 @@ Run verification scripts to confirm real production artifacts:
 
 ## Verification Scripts Available
 
-| Script | Purpose | Status |
-|--------|---------|--------|
-| `scripts/verify_apk.sh` | Android verification | ✅ Created |
-| `scripts/verify_exe.sh` | Windows verification | ✅ Created |
-| `scripts/verify_ipa.sh` | iOS verification | ✅ Created |
-| `scripts/verify_artifacts.sh` | Batch verification | ✅ Existing |
-| `RELEASE_v1.2.5_VERIFICATION_GUIDE.md` | Full guide | ✅ Created |
+| Script                                 | Purpose              | Status      |
+| -------------------------------------- | -------------------- | ----------- |
+| `scripts/verify_apk.sh`                | Android verification | ✅ Created  |
+| `scripts/verify_exe.sh`                | Windows verification | ✅ Created  |
+| `scripts/verify_ipa.sh`                | iOS verification     | ✅ Created  |
+| `scripts/verify_artifacts.sh`          | Batch verification   | ✅ Existing |
+| `RELEASE_v1.2.5_VERIFICATION_GUIDE.md` | Full guide           | ✅ Created  |
 
 ## Reporting
 
 Files created during this session:
+
 - ✅ `scripts/verify_apk.sh` — Android APK verification
 - ✅ `scripts/verify_exe.sh` — Windows EXE verification
 - ✅ `scripts/verify_ipa.sh` — iOS IPA verification
@@ -227,7 +237,7 @@ Files created during this session:
 
 ## Conclusion
 
-The release v1.2.5 is **ready for infrastructure** but **platform binaries must be rebuilt** from source before users can install the apps. The PWA apps and verification infrastructure are production-ready. 
+The release v1.2.5 is **ready for infrastructure** but **platform binaries must be rebuilt** from source before users can install the apps. The PWA apps and verification infrastructure are production-ready.
 
 **Action Required**: Execute platform builds and update GitHub Release with real binaries.
 

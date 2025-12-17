@@ -64,10 +64,7 @@
     "http": "http://www.caniuse.com/#feat=urlsearchparams",
     "https": "https://www.caniuse.com/#feat=urlsearchparams",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://opensource.org/licenses/MIT).",
@@ -109,10 +106,7 @@
     "http": "http://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor",
     "https": "https://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.w3.org/TR/html5/syntax.html#newlines",
@@ -248,10 +242,7 @@
     "http": "http://man7.org/linux/man-pages/man3/wcswidth.3.html",
     "https": "https://man7.org/linux/man-pages/man3/wcswidth.3.html",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary",
@@ -300,10 +291,7 @@
     "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag)",
     "status": 200,
-    "files": [
-      "./tools/dns_docs_inventory.json",
-      "./link_report.md"
-    ]
+    "files": ["./tools/dns_docs_inventory.json", "./link_report.md"]
   },
   {
     "http": "http://travis-ci.org/nodeca/argparse)",
@@ -444,18 +432,13 @@
     "http": "http://browserify.org/",
     "https": "https://browserify.org/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://greenbytes.de/tech/tc2231/",
     "https": "https://greenbytes.de/tech/tc2231/",
     "status": 200,
-    "files": [
-      "./dashboard/node_modules/content-disposition/README.md"
-    ]
+    "files": ["./dashboard/node_modules/content-disposition/README.md"]
   },
   {
     "http": "http://en.wikipedia.org/wiki/ANSI_escape_code#Colors)",
@@ -484,10 +467,7 @@
     "http": "http://github.com/mikeal/request",
     "https": "https://github.com/mikeal/request",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.w3.org/2001/XMLSchema-instance",
@@ -536,10 +516,7 @@
     "http": "http://peter.sh/experiments/chromium-command-line-switches/",
     "https": "https://peter.sh/experiments/chromium-command-line-switches/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.3",
@@ -555,19 +532,13 @@
     "http": "http://www.regular-expressions.info/charclass.html",
     "https": "https://www.regular-expressions.info/charclass.html",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://img.shields.io/npm/v/queue.svg?style=flat-square",
     "https": "https://img.shields.io/npm/v/queue.svg?style=flat-square",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://github.com/broofa",
@@ -637,19 +608,13 @@
     "http": "http://www.nodemailer.com/",
     "https": "https://www.nodemailer.com/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://oranlooney.com/functional-javascript/",
     "https": "https://oranlooney.com/functional-javascript/",
     "status": 302,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters",
@@ -748,19 +713,13 @@
     "http": "http://esprima.org/doc",
     "https": "https://esprima.org/doc",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://github.com/isaacs",
     "https": "https://github.com/isaacs",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.ogcio.gov.hk/en/business/tech_promotion/ccli/terms/doc/2003cmp_2008.txt",
@@ -870,10 +829,7 @@
     "http": "http://yargs.js.org/",
     "https": "https://yargs.js.org/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://easings.net/#easeInCubic",
@@ -890,10 +846,7 @@
     "http": "http://encoding.spec.whatwg.org/",
     "https": "https://encoding.spec.whatwg.org/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://www.w3.org/TR/DOM-Level-3-Events/#keys-Modifiers",
@@ -988,10 +941,7 @@
     "http": "http://tools.ietf.org/html/draft-abarth-origin-09",
     "https": "https://tools.ietf.org/html/draft-abarth-origin-09",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://docs.python.org/dev/library/argparse.html#mutual-exclusion)",
@@ -1083,10 +1033,7 @@
     "http": "http://tools.ietf.org/html/rfc6838#section-5)",
     "https": "https://tools.ietf.org/html/rfc6838#section-5)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://www.w3.org/TR/css3-animations/#AnimationEvent-interface",
@@ -1158,10 +1105,7 @@
     "http": "http://www.ecma-international.org/publications/standards/Ecma-262.htm",
     "https": "https://www.ecma-international.org/publications/standards/Ecma-262.htm",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://en.wikipedia.org/wiki/Two's_complement",
@@ -1187,10 +1131,7 @@
     "http": "http://expressjs.com/",
     "https": "https://expressjs.com/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://stackoverflow.com/a/1068308/13216",
@@ -1234,10 +1175,7 @@
     "http": "http://docs.python.org/dev/library/argparse.html#sub-commands",
     "https": "https://docs.python.org/dev/library/argparse.html#sub-commands",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://stackoverflow.com/a/22747272/680742,",
@@ -1252,19 +1190,13 @@
     "http": "http://i.imgur.com/h0FVyzU.png",
     "https": "https://i.imgur.com/h0FVyzU.png",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://oranlooney.com/functional-javascript/)",
     "https": "https://oranlooney.com/functional-javascript/)",
     "status": 302,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105/#events-inputevents.",
@@ -1325,10 +1257,7 @@
     "http": "http://form-data.github.io/images/gitterbadge.svg",
     "https": "https://form-data.github.io/images/gitterbadge.svg",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://github.com/yargs/cliui.git",
@@ -1392,55 +1321,37 @@
     "http": "http://caniuse.com/#feat=user-timing",
     "https": "https://caniuse.com/#feat=user-timing",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.2ality.com/2014/01/object-assign.html",
     "https": "https://www.2ality.com/2014/01/object-assign.html",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://feross.org/",
     "https": "https://feross.org/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://keepachangelog.com/",
     "https": "https://keepachangelog.com/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true)",
     "https": "https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true)",
     "status": 200,
-    "files": [
-      "./tools/dns_docs_inventory.json",
-      "./link_report.md"
-    ]
+    "files": ["./tools/dns_docs_inventory.json", "./link_report.md"]
   },
   {
     "http": "http://npm.anvaka.com/#/view/2d/prompts",
     "https": "https://npm.anvaka.com/#/view/2d/prompts",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.w3.org/TR/pointerevents/",
@@ -1481,10 +1392,7 @@
     "http": "http://github.com/jamestalmage",
     "https": "https://github.com/jamestalmage",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://travis-ci.org/tj/commander.js)",
@@ -1510,10 +1418,7 @@
     "http": "http://nodejs.org/",
     "https": "https://nodejs.org/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://opensource.org/licenses/BSD-3-Clause",
@@ -1553,37 +1458,25 @@
     "http": "http://msdn.microsoft.com/en-us/library/ms646997.aspx",
     "https": "https://msdn.microsoft.com/en-us/library/ms646997.aspx",
     "status": 200,
-    "files": [
-      "./ALLLINKS.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./ALLLINKS.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://www.opensource.org/licenses/mit-license.php",
     "https": "https://www.opensource.org/licenses/mit-license.php",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://steve.hollasch.net/cgindex/coding/ieeefloat.html)",
     "https": "https://steve.hollasch.net/cgindex/coding/ieeefloat.html)",
     "status": 200,
-    "files": [
-      "./tools/dns_docs_inventory.json",
-      "./link_report.md"
-    ]
+    "files": ["./tools/dns_docs_inventory.json", "./link_report.md"]
   },
   {
     "http": "http://git.io/stacktrace-gps",
     "https": "https://git.io/stacktrace-gps",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://gantlaborde.com/)",
@@ -1641,19 +1534,13 @@
     "http": "http://docs.python.org/dev/library/argparse.html#argumentparser-objects",
     "https": "https://docs.python.org/dev/library/argparse.html#argumentparser-objects",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://en.wikipedia.org/wiki/IEEE_floating_point",
     "https": "https://en.wikipedia.org/wiki/IEEE_floating_point",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://nevercode.io/)",
@@ -1670,19 +1557,13 @@
     "http": "http://www.microsoft.com/networking/WLAN/profile/v1",
     "https": "https://www.microsoft.com/networking/WLAN/profile/v1",
     "status": 200,
-    "files": [
-      "./tools/dns_docs_inventory.json",
-      "./ALLLINKS.md"
-    ]
+    "files": ["./tools/dns_docs_inventory.json", "./ALLLINKS.md"]
   },
   {
     "http": "http://img.shields.io/npm/v/queue.svg?style=flat-square)",
     "https": "https://img.shields.io/npm/v/queue.svg?style=flat-square)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)",
@@ -1741,10 +1622,7 @@
     "http": "http://steve.hollasch.net/cgindex/coding/ieeefloat.html",
     "https": "https://steve.hollasch.net/cgindex/coding/ieeefloat.html",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end)",
@@ -1772,10 +1650,7 @@
     "http": "http://json.org/)",
     "https": "https://json.org/)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://en.wikipedia.org/wiki/Double_precision_floating-point_format",
@@ -1790,19 +1665,13 @@
     "http": "http://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex",
     "https": "https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://docs.python.org/dev/library/argparse.html#mutual-exclusion",
     "https": "https://docs.python.org/dev/library/argparse.html#mutual-exclusion",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://img.shields.io/npm/v/queue.svg?style=flat-square)](http://www.npmjs.org/queue)",
@@ -1826,10 +1695,7 @@
     "http": "http://img.shields.io/npm/v/async-limiter.svg?style=flat-square)",
     "https": "https://img.shields.io/npm/v/async-limiter.svg?style=flat-square)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://www.w3.org/TR/2009/WD-css3-transitions-20090320/#transition-events-",
@@ -1963,10 +1829,7 @@
     "http": "http://img.shields.io/npm/dm/fs-extra.svg)",
     "https": "https://img.shields.io/npm/dm/fs-extra.svg)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-dataview.prototype-@@tostringtag)",
@@ -1992,10 +1855,7 @@
     "http": "http://r.va.gg/2014/06/why-i-dont-use-nodes-core-stream-module.html",
     "https": "https://r.va.gg/2014/06/why-i-dont-use-nodes-core-stream-module.html",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://example1.com",
@@ -2020,10 +1880,7 @@
     "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-typeof-operator",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-typeof-operator",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://nodejs.org",
@@ -2070,10 +1927,7 @@
     "http": "http://tools.ietf.org/html/rfc3986",
     "https": "https://tools.ietf.org/html/rfc3986",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://github.com/mozilla/source-map.git",
@@ -2090,28 +1944,19 @@
     "http": "http://caniuse.com/#feat=user-timing)",
     "https": "https://caniuse.com/#feat=user-timing)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://nodejs.org/api/path.html#path_path_isabsolute_path",
     "https": "https://nodejs.org/api/path.html#path_path_isabsolute_path",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.ecma-international.org/ecma-262/6.0/#sec-future-reserved-words",
     "https": "https://www.ecma-international.org/ecma-262/6.0/#sec-future-reserved-words",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types",
@@ -2128,10 +1973,7 @@
     "http": "http://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles",
     "https": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://github.com/troygoode/node-require-directory/issues/",
@@ -2146,10 +1988,7 @@
     "http": "http://bestiejs.github.io/json3/",
     "https": "https://bestiejs.github.io/json3/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://img.shields.io/npm/v/merge2.svg",
@@ -2173,19 +2012,13 @@
     "http": "http://en.wikipedia.org/wiki/Consensus-seeking_decision-making",
     "https": "https://en.wikipedia.org/wiki/Consensus-seeking_decision-making",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://blog.patrickmeenan.com/2013/07/measuring-performance-of-user-experience.html",
     "https": "https://blog.patrickmeenan.com/2013/07/measuring-performance-of-user-experience.html",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx",
@@ -2213,10 +2046,7 @@
     "http": "http://docs.python.org/dev/library/argparse.html#the-add-argument-method",
     "https": "https://docs.python.org/dev/library/argparse.html#the-add-argument-method",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://encoding.spec.whatwg.org/#utf-16le",
@@ -2304,10 +2134,7 @@
     "http": "http://browserify.org",
     "https": "https://browserify.org",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.npmtrends.com/abort-controller)",
@@ -2333,10 +2160,7 @@
     "http": "http://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end",
     "https": "https://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://npm-stat.com/charts.html?package=clone)",
@@ -2351,19 +2175,13 @@
     "http": "http://c9.io",
     "https": "https://c9.io",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://nevercode.io/",
     "https": "https://nevercode.io/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.w3.org/TR/touch-events/",
@@ -2384,10 +2202,7 @@
     "http": "http://en.wikipedia.org/wiki/ANSI_escape_code#Colors",
     "https": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://www.ogcio.gov.hk/tc/business/tech_promotion/ccli/terms/doc/hkscs-2008-big5-iso.txt",
@@ -2415,10 +2230,7 @@
     "http": "http://circleci.com",
     "https": "https://circleci.com",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://dev.w3.org/csswg/css-color/#named-colors.",
@@ -2446,37 +2258,25 @@
     "http": "http://github.com/kevva",
     "https": "https://github.com/kevva",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://www.appveyor.com",
     "https": "https://www.appveyor.com",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://expressjs.com",
     "https": "https://expressjs.com",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://gruntjs.com/",
     "https": "https://gruntjs.com/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://github.com/",
@@ -2535,10 +2335,7 @@
     "http": "http://www.w3.org/TR/cors/",
     "https": "https://www.w3.org/TR/cors/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://img.shields.io/github/tag/stream-utils/destroy.svg?style=flat-square",
@@ -2562,10 +2359,7 @@
     "http": "http://murzwin.com/base64vlq.html",
     "https": "https://murzwin.com/base64vlq.html",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://travis-ci.org/beatgammit/base64-js)",
@@ -2590,10 +2384,7 @@
     "http": "http://github.com/visionmedia/haml.js",
     "https": "https://github.com/visionmedia/haml.js",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#concept-task",
@@ -2608,19 +2399,13 @@
     "http": "http://github.com/visionmedia/connect-jsonrpc",
     "https": "https://github.com/visionmedia/connect-jsonrpc",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://tools.ietf.org/html/rfc6838#section-5",
     "https": "https://tools.ietf.org/html/rfc6838#section-5",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://ieeexplore.ieee.org/servlet/opac?punumber=4610933",
@@ -2636,28 +2421,19 @@
     "http": "http://editorconfig.org/",
     "https": "https://editorconfig.org/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://heartbleed.com/",
     "https": "https://heartbleed.com/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://yaml.org/",
     "https": "https://yaml.org/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://www.yaml.org/spec/1.2/spec.html#id2802346",
@@ -2685,18 +2461,13 @@
     "http": "http://creativecommons.org/publicdomain/zero/1.0/",
     "https": "https://creativecommons.org/publicdomain/zero/1.0/",
     "status": 200,
-    "files": [
-      "./qmoi-enhanced/dashboard/node_modules/vite/LICENSE.md"
-    ]
+    "files": ["./qmoi-enhanced/dashboard/node_modules/vite/LICENSE.md"]
   },
   {
     "http": "http://docs.python.org/dev/library/argparse.html#action",
     "https": "https://docs.python.org/dev/library/argparse.html#action",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://travis-ci.org/isaacs/minimatch)",
@@ -2733,10 +2504,7 @@
     "http": "http://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)",
     "https": "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://juliangruber.com",
@@ -2809,10 +2577,7 @@
     "http": "http://github.com/mafintosh",
     "https": "https://github.com/mafintosh",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.khngai.com/chinese/charmap/tblgbk.php?page=0",
@@ -2862,10 +2627,7 @@
     "http": "http://www.crockford.com/",
     "https": "https://www.crockford.com/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://www.w3.org/TR/DOM-Level-3-Events/",
@@ -2897,55 +2659,37 @@
     "http": "http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true",
     "https": "https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://nodejs.org/api/fs.html",
     "https": "https://nodejs.org/api/fs.html",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://github.com/senchalabs/spark",
     "https": "https://github.com/senchalabs/spark",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://img.shields.io/npm/dm/fs-extra.svg",
     "https": "https://img.shields.io/npm/dm/fs-extra.svg",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://en.wikipedia.org/wiki/Variable-length_quantity",
     "https": "https://en.wikipedia.org/wiki/Variable-length_quantity",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://travis-ci.org",
     "https": "https://travis-ci.org",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.opengroup.org/onlinepubs/007904975/functions/wcwidth.html",
@@ -2989,19 +2733,13 @@
     "http": "http://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/",
     "https": "https://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://antonfisher.com",
     "https": "https://antonfisher.com",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://adrianheine.de",
@@ -3027,19 +2765,13 @@
     "http": "http://promises-aplus.github.io/promises-spec/",
     "https": "https://promises-aplus.github.io/promises-spec/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://img.shields.io/npm/v/commander.svg?style=flat",
     "https": "https://img.shields.io/npm/v/commander.svg?style=flat",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP950.TXT",
@@ -3056,28 +2788,19 @@
     "http": "http://git.io/stackframe",
     "https": "https://git.io/stackframe",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.unicode.org/Public/MAPPINGS/",
     "https": "https://www.unicode.org/Public/MAPPINGS/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://superuser.com/a/176395/6877",
     "https": "https://superuser.com/a/176395/6877",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony",
@@ -3115,28 +2838,19 @@
     "http": "http://ibolmo.com",
     "https": "https://ibolmo.com",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://docs.taskcluster.net",
     "https": "https://docs.taskcluster.net",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://docs.python.org/dev/library/argparse.html",
     "https": "https://docs.python.org/dev/library/argparse.html",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.nczonline.net/blog/2013/07/09/the-case-for-setimmediate/",
@@ -3181,19 +2895,13 @@
     "http": "http://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling",
     "https": "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://trevorbrindle.com",
     "https": "https://trevorbrindle.com",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://easings.net/#easeInQuart",
@@ -3210,28 +2918,19 @@
     "http": "http://tanyabrassie.com/",
     "https": "https://tanyabrassie.com/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://npm.anvaka.com/#/view/2d/inquirer",
     "https": "https://npm.anvaka.com/#/view/2d/inquirer",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://gantlaborde.com/",
     "https": "https://gantlaborde.com/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://en.wikipedia.org/wiki/UTF-32",
@@ -3246,19 +2945,13 @@
     "http": "http://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex)",
     "https": "https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://paul.vorba.ch/",
     "https": "https://paul.vorba.ch/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.quirksmode.org/js/events_properties.html",
@@ -3317,46 +3010,31 @@
     "http": "http://img.shields.io/npm/v/commander.svg?style=flat)",
     "https": "https://img.shields.io/npm/v/commander.svg?style=flat)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://keepachangelog.com/en/1.0.0/",
     "https": "https://keepachangelog.com/en/1.0.0/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://esprima.org/test/ci.html",
     "https": "https://esprima.org/test/ci.html",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://github.com/isaacs/npm",
     "https": "https://github.com/isaacs/npm",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://json.org/",
     "https": "https://json.org/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://www.yaml.org/spec/1.2/spec.html#id2804923",
@@ -3373,10 +3051,7 @@
     "http": "http://requirejs.org/",
     "https": "https://requirejs.org/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://npm-stat.com/charts.html?package=image-size&author=&from=&to=)",
@@ -3401,10 +3076,7 @@
     "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://docs.python.org/dev/library/argparse.html#argumentparser-objects)",
@@ -3421,55 +3093,37 @@
     "http": "http://www.psychocats.net/ubuntu/graphicalsudo",
     "https": "https://www.psychocats.net/ubuntu/graphicalsudo",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://i.imgur.com/h0FVyzU.png)",
     "https": "https://i.imgur.com/h0FVyzU.png)",
     "status": 200,
-    "files": [
-      "./tools/dns_docs_inventory.json",
-      "./link_report.md"
-    ]
+    "files": ["./tools/dns_docs_inventory.json", "./link_report.md"]
   },
   {
     "http": "http://pyyaml.org/",
     "https": "https://pyyaml.org/",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://en.wikipedia.org/wiki/Rm_(Unix)",
     "https": "https://en.wikipedia.org/wiki/Rm_(Unix)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://schnittstabil.de",
     "https": "https://schnittstabil.de",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://sindresorhus.com",
     "https": "https://sindresorhus.com",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://docs.python.org/dev/library/argparse.html#the-add-argument-method)",
@@ -3495,28 +3149,19 @@
     "http": "http://nodejs.org/docs/latest/api/buffer.html",
     "https": "https://nodejs.org/docs/latest/api/buffer.html",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://en.wikipedia.org/wiki/Cross-origin_resource_sharing",
     "https": "https://en.wikipedia.org/wiki/Cross-origin_resource_sharing",
     "status": 200,
-    "files": [
-      "./docs/link-validation-report.json",
-      "./tools/link_report.json"
-    ]
+    "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
     "http": "http://yeoman.io/",
     "https": "https://yeoman.io/",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://travis-ci.org/jprichardson/node-jsonfile)",
@@ -3571,19 +3216,13 @@
     "http": "http://img.shields.io/npm/v/async-limiter.svg?style=flat-square",
     "https": "https://img.shields.io/npm/v/async-limiter.svg?style=flat-square",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://www.apple.com/DTDs/PropertyList-1.0.dtd",
     "https": "https://www.apple.com/DTDs/PropertyList-1.0.dtd",
     "status": 200,
-    "files": [
-      "./tools/dns_docs_inventory.json",
-      "./ALLLINKS.md"
-    ]
+    "files": ["./tools/dns_docs_inventory.json", "./ALLLINKS.md"]
   },
   {
     "http": "http://www.whatwg.org/specs/web-apps/current-work/multipage/web-messaging.html#message-channels",
@@ -3636,10 +3275,7 @@
     "http": "http://semver.org/spec/v2.0.0.html",
     "https": "https://semver.org/spec/v2.0.0.html",
     "status": 200,
-    "files": [
-      "./tools/link_report.json",
-      "./docs/link-validation-report.json"
-    ]
+    "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
     "http": "http://v8project.blogspot.se/2017/01/speeding-up-v8-regular-expressions.html",
@@ -3665,10 +3301,7 @@
     "http": "http://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor)",
     "https": "https://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor)",
     "status": 200,
-    "files": [
-      "./link_report.md",
-      "./tools/dns_docs_inventory.json"
-    ]
+    "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
     "http": "http://www.ecma-international.org/ecma-262/6.0/#sec-array.prototype.concat)",
@@ -3701,9 +3334,7 @@
     "http": "http://underscorejs.org/",
     "https": "https://underscorejs.org/",
     "status": 200,
-    "files": [
-      "./qmoi-enhanced/dashboard/node_modules/vite/LICENSE.md"
-    ]
+    "files": ["./qmoi-enhanced/dashboard/node_modules/vite/LICENSE.md"]
   },
   {
     "http": "http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true).",
@@ -3727,9 +3358,7 @@
     "http": "http://img.shields.io/npm/l/path-to-regexp.svg?style=flat",
     "https": "https://img.shields.io/npm/l/path-to-regexp.svg?style=flat",
     "status": 200,
-    "files": [
-      "./dashboard/node_modules/path-to-regexp/Readme.md"
-    ]
+    "files": ["./dashboard/node_modules/path-to-regexp/Readme.md"]
   },
   {
     "http": "http://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)",
@@ -3753,9 +3382,7 @@
     "http": "http://example.com",
     "https": "https://example.com",
     "status": 200,
-    "files": [
-      "./dashboard/node_modules/cors/README.md"
-    ]
+    "files": ["./dashboard/node_modules/cors/README.md"]
   },
   {
     "http": "http://docs.libuv.org/en/v1.x/threadpool.html",

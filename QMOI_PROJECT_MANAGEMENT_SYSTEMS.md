@@ -14,11 +14,11 @@ PROJECT TYPES:
 
 1. SOFTWARE DEVELOPMENT PROJECTS
    ├─ Structure:
-   │  ├─ Repository: Git-based
-   │  ├─ CI/CD: Automated pipeline
-   │  ├─ Releases: Semantic versioning
-   │  ├─ Testing: 7-layer validation
-   │  └─ Deployment: Multi-platform
+   │ ├─ Repository: Git-based
+   │ ├─ CI/CD: Automated pipeline
+   │ ├─ Releases: Semantic versioning
+   │ ├─ Testing: 7-layer validation
+   │ └─ Deployment: Multi-platform
    ├─ Typical Lifecycle: 2-12 weeks
    ├─ Team Size: 3-15 developers
    ├─ Status Tracking: Real-time
@@ -26,11 +26,11 @@ PROJECT TYPES:
 
 2. DATA SCIENCE & AI PROJECTS
    ├─ Structure:
-   │  ├─ Notebook-based development
-   │  ├─ Dataset management
-   │  ├─ Model training pipelines
-   │  ├─ Experimentation tracking
-   │  └─ Model deployment
+   │ ├─ Notebook-based development
+   │ ├─ Dataset management
+   │ ├─ Model training pipelines
+   │ ├─ Experimentation tracking
+   │ └─ Model deployment
    ├─ Typical Lifecycle: 4-24 weeks
    ├─ Team Size: 2-8 data scientists
    ├─ Metrics Tracking: Continuous
@@ -38,11 +38,11 @@ PROJECT TYPES:
 
 3. CONTENT & MARKETING PROJECTS
    ├─ Structure:
-   │  ├─ Editorial calendar
-   │  ├─ Content workflow
-   │  ├─ Approval process
-   │  ├─ Publishing pipeline
-   │  └─ Performance analytics
+   │ ├─ Editorial calendar
+   │ ├─ Content workflow
+   │ ├─ Approval process
+   │ ├─ Publishing pipeline
+   │ └─ Performance analytics
    ├─ Typical Lifecycle: 1-8 weeks
    ├─ Team Size: 3-10 people
    ├─ Analytics: Real-time tracking
@@ -50,11 +50,11 @@ PROJECT TYPES:
 
 4. DESIGN & CREATIVE PROJECTS
    ├─ Structure:
-   │  ├─ Design system
-   │  ├─ Iteration cycles
-   │  ├─ Review process
-   │  ├─ Asset management
-   │  └─ Handoff to dev
+   │ ├─ Design system
+   │ ├─ Iteration cycles
+   │ ├─ Review process
+   │ ├─ Asset management
+   │ └─ Handoff to dev
    ├─ Typical Lifecycle: 2-8 weeks
    ├─ Team Size: 2-6 designers
    ├─ Review Cycles: Daily
@@ -62,11 +62,11 @@ PROJECT TYPES:
 
 5. RESEARCH & DISCOVERY PROJECTS
    ├─ Structure:
-   │  ├─ Research methodology
-   │  ├─ Data collection
-   │  ├─ Analysis pipelines
-   │  ├─ Findings documentation
-   │  └─ Recommendations
+   │ ├─ Research methodology
+   │ ├─ Data collection
+   │ ├─ Analysis pipelines
+   │ ├─ Findings documentation
+   │ └─ Recommendations
    ├─ Typical Lifecycle: 2-12 weeks
    ├─ Team Size: 2-5 researchers
    ├─ Documentation: Continuous
@@ -74,11 +74,11 @@ PROJECT TYPES:
 
 6. INFRASTRUCTURE & OPERATIONS PROJECTS
    ├─ Structure:
-   │  ├─ Infrastructure as code
-   │  ├─ Deployment automation
-   │  ├─ Monitoring setup
-   │  ├─ Disaster recovery
-   │  └─ Documentation
+   │ ├─ Infrastructure as code
+   │ ├─ Deployment automation
+   │ ├─ Monitoring setup
+   │ ├─ Disaster recovery
+   │ └─ Documentation
    ├─ Typical Lifecycle: 1-8 weeks
    ├─ Team Size: 2-4 engineers
    ├─ Uptime Target: 99.95%+
@@ -86,11 +86,11 @@ PROJECT TYPES:
 
 7. BUSINESS & GROWTH PROJECTS
    ├─ Structure:
-   │  ├─ Strategic planning
-   │  ├─ Execution workflow
-   │  ├─ Metrics tracking
-   │  ├─ Review cycles
-   │  └─ Optimization loop
+   │ ├─ Strategic planning
+   │ ├─ Execution workflow
+   │ ├─ Metrics tracking
+   │ ├─ Review cycles
+   │ └─ Optimization loop
    ├─ Typical Lifecycle: 4-24 weeks
    ├─ Team Size: 3-8 people
    ├─ KPI Tracking: Weekly
@@ -98,11 +98,11 @@ PROJECT TYPES:
 
 8. COMPLIANCE & AUDIT PROJECTS
    ├─ Structure:
-   │  ├─ Audit plan
-   │  ├─ Testing procedures
-   │  ├─ Evidence collection
-   │  ├─ Report generation
-   │  └─ Remediation
+   │ ├─ Audit plan
+   │ ├─ Testing procedures
+   │ ├─ Evidence collection
+   │ ├─ Report generation
+   │ └─ Remediation
    ├─ Typical Lifecycle: 4-12 weeks
    ├─ Team Size: 2-6 specialists
    ├─ Compliance: 100% required

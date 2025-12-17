@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -29,35 +30,40 @@ python scripts/qmoi-start.py
   - Ensure all features are always-on and self-healing
 
 ## 📊 Status
+
 - The script will display the current status and health of QMOI, including error fixing, cloud sync, and notifications.
 
 ## 🛡️ Always-On
+
 - QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your device is offline.
 
 ---
+
 **QMOI: Always-on, self-healing, and fully automated.**
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "qmoi-enhanced/START.md",
-  "validated_at": "2025-10-26T20:51:24.841380Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Start Guide"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "qmoi-enhanced/START.md",
+"validated_at": "2025-10-26T20:51:24.841380Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Start Guide"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

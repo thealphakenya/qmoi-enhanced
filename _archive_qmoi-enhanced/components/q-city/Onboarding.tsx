@@ -1,4 +1,4 @@
-import QmoiAutoDistribution from '../../QmoiAutoDistribution';
+import QmoiAutoDistribution from "../../QmoiAutoDistribution";
 
 const isMaster = true; // Replace with actual master check logic
 
@@ -10,4 +10,4 @@ return (
       </div>
     )}
   </div>
-); 
+);

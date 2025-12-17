@@ -41,12 +41,12 @@ class CloudConfig:
 
 class CloudDeployer:
     """Handles cloud deployment for Q-city."""
-    
+
     def __init__(self, config: CloudConfig):
         self.config = config
         self.deployment_history: List[Dict] = []
         self.current_state: Dict = {}
-    
+
     def deploy(self, app_path: str) -> bool:
         """Deploy the application to the configured cloud platform."""
         try:
@@ -59,7 +59,7 @@ class CloudDeployer:
         except Exception as e:
             self._log_deployment_error(str(e))
             return False
-    
+
     def _deploy_to_heroku(self, app_path: str) -> bool:
         """Deploy to Heroku platform."""
         try:
@@ -71,11 +71,11 @@ class CloudDeployer:
                 "git commit -m 'Deploy to Heroku'",
                 "git push heroku main"
             ]
-            
+
             # Execute deployment commands
             for cmd in commands:
                 subprocess.run(cmd, shell=True, check=True)
-            
+
             self._log_deployment_success('heroku')
             retu
 ```

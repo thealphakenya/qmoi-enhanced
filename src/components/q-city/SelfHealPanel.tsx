@@ -44,7 +44,7 @@ const SelfHealPanel: React.FC = () => {
           "?token=" +
           encodeURIComponent(token) +
           "&opts=" +
-          encodeURIComponent(JSON.stringify(options))
+          encodeURIComponent(JSON.stringify(options)),
       );
       eventSourceRef.current = es;
       let logBuffer = "";

@@ -51,7 +51,7 @@ export async function GET() {
     console.error("Error in media status endpoint:", error);
     return NextResponse.json(
       { error: "Failed to fetch media status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

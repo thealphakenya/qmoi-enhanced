@@ -2,9 +2,9 @@ name: qmoi-memory-sync
 
 on:
   push:
-    branches: [ autosync-backup-20250926-232440 ]
+    branches: [autosync-backup-20250926-232440]
   schedule:
-    - cron: '*/15 * * * *' # every 15 minutes
+    - cron: "*/15 * * * *" # every 15 minutes
 
 jobs:
   sync-memory:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install requirements
         run: |

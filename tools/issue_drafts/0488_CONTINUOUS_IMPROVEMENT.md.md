@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "QMOI Continuous Improvement & Self-Evolution"
 qmoi_validation_frontmatter: true
@@ -49,35 +49,41 @@ This document describes the continuous improvement and self-evolution features o
 - You can trigger manually:
   ```bash
   python scripts/qmoi_self_healing_enhanced.py
-  ```
+````
+
 - Review reports in `reports/self_healing_report.json`.
 
 ## Best Practices
+
 - Enable continuous improvement in your master automation config.
 - Review self-healing and evolution reports regularly.
 - Approve or revert major changes as needed.
 
 ## Related
+
 - See `QCITY_DEVICE_MANAGEMENT.md` for device and install automation.
 - See `GITHUB_ACTIONS_AUTOFIX.md` for CI/CD automation.
 - See `SELF_EVOLUTION.md` for self-evolving AI details.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "CONTINUOUS_IMPROVEMENT.md",
-  "validated_at": "2025-10-26T20:51:22.290453Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Continuous Improvement & Self-Evolution"
-    },
-    {
-      "n
+"file": "CONTINUOUS_IMPROVEMENT.md",
+"validated_at": "2025-10-26T20:51:22.290453Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Continuous Improvement & Self-Evolution"
+},
+{
+"n
+
 ```
 
 Notes:
 
 - This draft was generated automatically to help triage files removed from `donerefs.txt`.
 - Backups and previous runs may exist under `.qmoi_validation`.
+```

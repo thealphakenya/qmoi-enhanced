@@ -11,7 +11,7 @@
 ```
 ✓ OK      (7 platforms working)
   • Linux DEB (4 MB)
-  • Linux AppImage (6 MB)  
+  • Linux AppImage (6 MB)
   • macOS DMG (8 MB)
   • Windows EXE (5 MB)
   • Web - QMOI AI
@@ -39,6 +39,7 @@
 The 5 broken apps contain **repeating garbage byte patterns**, not actual application binaries. They were likely created as placeholders and never replaced with real builds.
 
 **Evidence**:
+
 ```
 ✗ Android/iOS/SmartTV: Supposed to be ZIPs, but zipfile.testzip() fails
 ✗ Chromebook/QCity: First 16 bytes repeat: 50 1a bc 4e 11 34 c6 62 36...
@@ -52,6 +53,7 @@ The 5 broken apps contain **repeating garbage byte patterns**, not actual applic
 ### STEP 1: Find Real App Builds (Today)
 
 **Search for existing real builds**:
+
 ```bash
 # Check if real builds exist elsewhere in repo
 find /workspaces -name "*.apk" -o -name "*.ipa" -o -name "*.exe" -o -name "*.dmg" \
@@ -73,7 +75,9 @@ find /workspaces -name "package.json" -o -name "build.gradle" -o -name "*.xcodep
 Choose ONE approach for each broken platform:
 
 #### Option A: Build from Source
+
 **IF** source code exists in repo:
+
 ```bash
 # Example for Android (if source exists)
 cd qmoi-ai-android-source
@@ -89,13 +93,16 @@ cp build/Release-iphoneos/QMOI\ AI.app \
 ```
 
 #### Option B: Download from Build Server
+
 **IF** apps are hosted on a build server/CDN:
+
 ```bash
 curl -L -o qmoi_ai.apk https://builds.example.com/qmoi-ai/latest/android/release.apk
 cp qmoi_ai.apk /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/
 ```
 
 #### Option C: Create Minimal MVP (If no source/build server)
+
 Create basic working apps that demonstrate functionality:
 
 ```bash
@@ -199,12 +206,14 @@ git push origin v1.2.4
 ## What to Do Right Now (Next 30 Minutes)
 
 1. **Search for real builds**:
+
    ```bash
    find /workspaces -name "*.apk" -o -name "*.ipa" 2>/dev/null | head -20
    ls -la /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/
    ```
 
 2. **Check for source code**:
+
    ```bash
    find /workspaces -name "package.json" -o -name "build.gradle" -o -name "*.xcodeproj" \
      2>/dev/null | grep -i qmoi | head -10
@@ -214,7 +223,7 @@ git push origin v1.2.4
    - [ ] Real builds found → Copy them
    - [ ] Source code found → Build from source
    - [ ] Neither found → Create MVP
-   - [ ] Other → Describe:  ____________________
+   - [ ] Other → Describe: **\*\*\*\***\_\_\_\_**\*\*\*\***
 
 4. **Document findings in response**
 
@@ -225,33 +234,36 @@ git push origin v1.2.4
 To proceed, need answers:
 
 1. **Where are the real app builds?**
-   - On build server? URL:  ________________
-   - In another git repo? Repo:  ________________
-   - Never built? Need to build from source?  ________________
+   - On build server? URL: **\*\***\_\_\_\_**\*\***
+   - In another git repo? Repo: **\*\***\_\_\_\_**\*\***
+   - Never built? Need to build from source? **\*\***\_\_\_\_**\*\***
 
 2. **Do app source files exist in repo?**
+
    ```bash
    find /workspaces -name "src/" -o -name "app.json" -o -name "ios/" 2>/dev/null
    ```
-   Found at:  ________________
+
+   Found at: **\*\***\_\_\_\_**\*\***
 
 3. **What's the current build process?**
-   - Automated CI/CD?  ________________
-   - Manual local builds?  ________________
-   - Outsourced builds?  ________________
+   - Automated CI/CD? **\*\***\_\_\_\_**\*\***
+   - Manual local builds? **\*\***\_\_\_\_**\*\***
+   - Outsourced builds? **\*\***\_\_\_\_**\*\***
 
 4. **What features must each app have?**
    - Core UI?
    - Payment processing?
    - Data sync?
    - Offline support?
-   - Other: ________________
+   - Other: **\*\***\_\_\_\_**\*\***
 
 ---
 
 ## If We Must Create MVPs
 
 **For Android** (if no real APK available):
+
 ```gradle
 // minimal build.gradle
 android {
@@ -268,6 +280,7 @@ android {
 ```
 
 **For iOS** (if no real IPA):
+
 ```swift
 // minimal SwiftUI app
 @main
@@ -285,6 +298,7 @@ struct QMOIApp: App {
 ```
 
 **For Windows** (if no real EXE):
+
 ```csharp
 // minimal WinForms/WPF app
 class Program {
@@ -354,11 +368,13 @@ Once complete, ALL of these should pass:
 ## Communication
 
 **Internal**:
+
 - [ ] Post issue to GitHub with this action plan
 - [ ] Notify dev team of placeholder files issue
 - [ ] Schedule sync meeting to discuss approach
 
 **External** (if needed):
+
 - [ ] Update GitHub release notes: "Apps being updated for full functionality"
 - [ ] Note in README: "Some platforms currently in development"
 - [ ] Timeline: "Full platform support by Nov 18"
@@ -370,6 +386,7 @@ Once complete, ALL of these should pass:
 If we cannot get real apps by Friday:
 
 **Option 1**: Release only working platforms
+
 ```
 v1.2.4-web-only
 ├─ Web apps (6 working)
@@ -377,6 +394,7 @@ v1.2.4-web-only
 ```
 
 **Option 2**: Release with "Beta" label
+
 ```
 v1.2.4-beta
 ├─ All 12 platforms
@@ -385,6 +403,7 @@ v1.2.4-beta
 ```
 
 **Option 3**: Delay release until all working
+
 ```
 v1.2.4 → pushed to Nov 22 (after platforms ready)
 ```
@@ -393,7 +412,8 @@ v1.2.4 → pushed to Nov 22 (after platforms ready)
 
 ## Next Steps
 
-**IMMEDIATELY**: 
+**IMMEDIATELY**:
+
 1. Search for real app builds
 2. Check for source code
 3. Reply with findings
@@ -405,4 +425,3 @@ v1.2.4 → pushed to Nov 22 (after platforms ready)
 **Status**: Awaiting action on Step 1 (find real builds/source)  
 **Owner**: DevOps/Build Team  
 **Deadline**: Friday EOD (Nov 18)
-

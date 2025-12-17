@@ -6,11 +6,13 @@ qmoi_validation_frontmatter: true
 # QMOI Offline-First Architecture
 
 ## Overview
+
 This document describes QMOI's offline-first architecture that ensures all features work optimally even without cloud connectivity.
 
 ## Core Principles
 
 ### 1. Local-First Processing
+
 - All models run locally by default
 - Local model files and weights stored in `~/.qmoi/models`
 - Automatic fallback to local processing when cloud is unavailable
@@ -19,9 +21,10 @@ This document describes QMOI's offline-first architecture that ensures all featu
 ### 2. Model Architecture
 
 #### Base Model Components
+
 ```
 models/
-  ├── core/              # Core model components 
+  ├── core/              # Core model components
   │   ├── encoder.py     # Local encoder implementation
   │   ├── decoder.py     # Local decoder implementation
   │   └── tokenizer.py   # Local tokenizer implementation
@@ -36,18 +39,21 @@ models/
 ```
 
 ### 3. Data Management
+
 - Local dataset caching in `~/.qmoi/datasets`
 - Incremental dataset updates
 - Version control for datasets
 - Automatic dataset compression
 
 ### 4. Parallel Processing Architecture
+
 - Local thread pool for parallel processing
 - Process-based parallelization for CPU-intensive tasks
 - GPU acceleration when available
 - Dynamic resource allocation
 
 ### 5. QVS Integration
+
 - Local validation rules cache
 - Offline validation capability
 - Local result storage and sync
@@ -56,28 +62,31 @@ models/
 ## Claude Sonnet Integration
 
 ### 1. Offline Capabilities
+
 - Local fallback models when Claude is unavailable
 - Cached response templates
 - Local fine-tuning capabilities
 - State preservation during offline periods
 
 ### 2. Parallel Processing with Claude
+
 ```python
 class ParallelClaudeProcessor:
     def process(self, tasks):
         # Try Claude first
         if self.is_claude_available():
             return self.process_with_claude(tasks)
-        
+
         # Fallback to local processing
         return self.process_locally(tasks)
-    
+
     def process_locally(self, tasks):
         with ThreadPoolExecutor() as executor:
             return list(executor.map(self.local_processor.process, tasks))
 ```
 
 ### 3. QVS Integration
+
 - Local validation rules derived from Claude
 - Offline rule application
 - Incremental validation updates
@@ -86,6 +95,7 @@ class ParallelClaudeProcessor:
 ## Implementation Details
 
 ### 1. Local Model Training
+
 ```python
 class LocalModelTrainer:
     def train(self, data):
@@ -98,6 +108,7 @@ class LocalModelTrainer:
 ```
 
 ### 2. Data Synchronization
+
 ```python
 class DataSyncManager:
     def sync(self):
@@ -109,6 +120,7 @@ class DataSyncManager:
 ```
 
 ### 3. Resource Management
+
 ```python
 class ResourceManager:
     def allocate(self):
@@ -120,6 +132,7 @@ class ResourceManager:
 ## Configuration
 
 ### 1. Local Settings
+
 ```json
 {
   "offline_mode": {
@@ -132,6 +145,7 @@ class ResourceManager:
 ```
 
 ### 2. Performance Tuning
+
 ```json
 {
   "parallel": {
@@ -145,6 +159,7 @@ class ResourceManager:
 ## Deployment
 
 ### 1. Local Setup
+
 ```bash
 # Initialize local environment
 mkdir -p ~/.qmoi/{models,datasets,cache}
@@ -155,44 +170,49 @@ qmoi qvs init --local
 ```
 
 ### 2. Monitoring
+
 - Local metrics collection
 - Resource usage tracking
 - Performance analytics
 - Health checks
 
 ## Recovery Procedures
+
 1. Local model recovery
 2. Dataset restoration
 3. State reconciliation
 4. Cache cleanup
 
 ## Security
+
 - Local encryption
 - Secure storage
 - Access control
 - Audit logging
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/OFFLINE_FIRST_ARCHITECTURE.md",
-  "validated_at": "2025-10-26T20:51:22.704499Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Offline-First Architecture"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "docs/OFFLINE_FIRST_ARCHITECTURE.md",
+"validated_at": "2025-10-26T20:51:22.704499Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Offline-First Architecture"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

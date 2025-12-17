@@ -65,12 +65,12 @@ export async function GET(request: NextRequest) {
     if (type === "employees") {
       data = employees.filter(
         (emp) =>
-          (!status || emp.status === status) && (!role || emp.role === role)
+          (!status || emp.status === status) && (!role || emp.role === role),
       );
     } else if (type === "users") {
       data = users.filter(
         (user) =>
-          (!status || user.status === status) && (!role || user.role === role)
+          (!status || user.status === status) && (!role || user.role === role),
       );
     } else {
       data = { employees, users };
@@ -89,7 +89,7 @@ export async function GET(request: NextRequest) {
         success: false,
         error: "Failed to fetch employment data",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
           success: false,
           error: "Invalid type specified",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
   } catch (error) {
@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
           error: "Validation failed",
           details: error.errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -173,7 +173,7 @@ export async function POST(request: NextRequest) {
         success: false,
         error: "Failed to create employment record",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -191,7 +191,7 @@ export async function PUT(request: NextRequest) {
             success: false,
             error: "Employee not found",
           },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
@@ -219,7 +219,7 @@ export async function PUT(request: NextRequest) {
             success: false,
             error: "User not found",
           },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
@@ -245,7 +245,7 @@ export async function PUT(request: NextRequest) {
           success: false,
           error: "Invalid type specified",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
   } catch (error) {
@@ -254,7 +254,7 @@ export async function PUT(request: NextRequest) {
         success: false,
         error: "Failed to update employment record",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -271,7 +271,7 @@ export async function DELETE(request: NextRequest) {
           success: false,
           error: "ID and type are required",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -283,7 +283,7 @@ export async function DELETE(request: NextRequest) {
             success: false,
             error: "Employee not found",
           },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
@@ -311,7 +311,7 @@ export async function DELETE(request: NextRequest) {
             success: false,
             error: "User not found",
           },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
@@ -337,7 +337,7 @@ export async function DELETE(request: NextRequest) {
           success: false,
           error: "Invalid type specified",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
   } catch (error) {
@@ -346,7 +346,7 @@ export async function DELETE(request: NextRequest) {
         success: false,
         error: "Failed to remove employment record",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

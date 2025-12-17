@@ -1,12 +1,7 @@
 {
   "appId": "com.qmoi.ai",
   "productName": "QMOI AI",
-  "files": [
-    "main.js",
-    "public/**/*",
-    "package.json",
-    "icon.ico"
-  ],
+  "files": ["main.js", "public/**/*", "package.json", "icon.ico"],
   "directories": {
     "output": "Qmoi_apps/windows"
   },

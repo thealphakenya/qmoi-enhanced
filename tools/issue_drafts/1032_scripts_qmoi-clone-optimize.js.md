@@ -69,7 +69,7 @@ function deployToCloud(target) {
         execSync(target.deployCmd, { stdio: 'inherit' });
         log(`[QMOI] Auto-fix and redeploy to ${target.name} succeeded.`);
       } catch (e2) {
-     
+
 ```
 
 Notes:

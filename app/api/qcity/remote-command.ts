@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     cmd,
     stream,
     deviceId = "default",
-  } = await req.json().catch(() => ({} as any));
+  } = await req.json().catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json({ error: "No command provided" }, { status: 400 });
 
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
         function push() {
           if (i < 5) {
             controller.enqueue(
-              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`)
+              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`),
             );
             i++;
             setTimeout(push, 300);

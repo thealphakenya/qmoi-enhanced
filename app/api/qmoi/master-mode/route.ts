@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     if (!apiAuth.ok && !authenticateMaster(request)) {
       return NextResponse.json(
         { error: "Master access required" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     if (typeof enabled !== "boolean") {
       return NextResponse.json(
         { error: "Invalid enabled parameter" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     console.error("Error managing master mode:", error);
     return NextResponse.json(
       { error: "Failed to manage master mode" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -68,7 +68,7 @@ export async function GET(request: NextRequest) {
     if (!apiAuth.ok && !authenticateMaster(request)) {
       return NextResponse.json(
         { error: "Master access required" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching master mode status:", error);
     return NextResponse.json(
       { error: "Failed to fetch master mode status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

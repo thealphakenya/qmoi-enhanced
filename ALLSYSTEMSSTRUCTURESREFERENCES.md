@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -18,22 +19,22 @@ This document provides a comprehensive reference for all system structures, dire
 
 ## Directory & File Structure
 
-  - `/qcity-artifacts/` - Stores QCity build artifacts and resources
-  - `/QCITYREADME.md` - Main documentation for QCity features and activities
-  - `/QCITYMAINDEVICE.md` - Device management and orchestration
-  - `/QCITYDEVICEAUTOUPGRADE.md` - Auto-upgrade logic for QCity devices
-  - `/QCITYRUNNERSENGINE.md` - Runners and orchestration engine
-  - `/QCITYRESOURCES.md` - Resource management and allocation
-  - `/QCITYQMOIAUTOSTART.md` - Auto-start and initialization scripts
+- `/qcity-artifacts/` - Stores QCity build artifacts and resources
+- `/QCITYREADME.md` - Main documentation for QCity features and activities
+- `/QCITYMAINDEVICE.md` - Device management and orchestration
+- `/QCITYDEVICEAUTOUPGRADE.md` - Auto-upgrade logic for QCity devices
+- `/QCITYRUNNERSENGINE.md` - Runners and orchestration engine
+- `/QCITYRESOURCES.md` - Resource management and allocation
+- `/QCITYQMOIAUTOSTART.md` - Auto-start and initialization scripts
 
-  - `/qmoi_ai.py` - Main AI logic and orchestration
-  - `/qmoi_ai_launcher.py` - Launcher and entry point
-  - `/qmoi_ai_installer.iss` - Installer scripts
-  - `/qmoi_ai.spec` - Build specification
-  - `/QMOIAICORE.md` - Core AI documentation
-  - `/QMOI_MEMORY.md` - Memory management and usage
-  - `/QMOI-ENHANCED-AUTOTESTS.md` - Automated tests for AI features
-  - `/QMOI-ENHANCED-FEATURES.md` - List of enhanced AI features
+- `/qmoi_ai.py` - Main AI logic and orchestration
+- `/qmoi_ai_launcher.py` - Launcher and entry point
+- `/qmoi_ai_installer.iss` - Installer scripts
+- `/qmoi_ai.spec` - Build specification
+- `/QMOIAICORE.md` - Core AI documentation
+- `/QMOI_MEMORY.md` - Memory management and usage
+- `/QMOI-ENHANCED-AUTOTESTS.md` - Automated tests for AI features
+- `/QMOI-ENHANCED-FEATURES.md` - List of enhanced AI features
 
 - **QMOI Space**
   - `/qmoi-space/` - Main QMOI Space directory
@@ -43,6 +44,7 @@ This document provides a comprehensive reference for all system structures, dire
   - `/QMOIHUGGINGFACESPACES.md` - Hugging Face integration
 
 ### QCity Structure Diagram
+
 ```
 QCity
 ├── qcity-artifacts/
@@ -55,6 +57,7 @@ QCity
 ```
 
 ### QMOI-AI Structure Diagram
+
 ```
 QMOI-AI
 ├── qmoi_ai.py
@@ -68,6 +71,7 @@ QMOI-AI
 ```
 
 ### QMOI Space Structure Diagram
+
 ```
 QMOI Space
 ├── qmoi-space/
@@ -78,6 +82,7 @@ QMOI Space
 ```
 
 ## Structure-Specific Documentation
+
 - See `QMOIAICORE.md` for AI core logic and orchestration details
 - See `QMOISPACEDEV.md` for QMOI Space development and integration
 - See `QCITYREADME.md` for QCity features and activities
@@ -120,31 +125,33 @@ QMOI Space
 
 ## Reference Automation
 
- See `ALLERRORS.md` for the latest automated error/issue logs and autofix status.
+See `ALLERRORS.md` for the latest automated error/issue logs and autofix status.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "ALLSYSTEMSSTRUCTURESREFERENCES.md",
-  "validated_at": "2025-10-26T20:51:22.280220Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "ALLSYSTEMSSTRUCTURESREFERENCES.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "ALLSYSTEMSSTRUCTURESREFERENCES.md",
+"validated_at": "2025-10-26T20:51:22.280220Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "ALLSYSTEMSSTRUCTURESREFERENCES.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

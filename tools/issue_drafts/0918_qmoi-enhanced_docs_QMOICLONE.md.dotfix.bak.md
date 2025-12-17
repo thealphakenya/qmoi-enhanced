@@ -33,7 +33,7 @@ qmoi_validation_frontmatter: true
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
- 
+
 > **Note:** QMOI now includes a self-healing automation for GitLab CI/CD. See [QMOIGITLABDEV.md](./QMOIGITLABDEV.md) for details.
 
 <!-- QMOI_VALIDATION_START -->

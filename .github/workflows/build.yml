@@ -1,5 +1,5 @@
 name: Build QMOI AI
-'on':
+"on":
   push:
     branches:
       - main
@@ -15,11 +15,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
       - name: Install Python deps
         run: pip install requests
       - name: Install Node.js deps
@@ -46,5 +46,5 @@ permissions:
   pull-requests: read
   issues: read
 env:
-  NODE_VERSION: '18'
-  QMOI_AUTODEV_ENABLED: 'true'
+  NODE_VERSION: "18"
+  QMOI_AUTODEV_ENABLED: "true"

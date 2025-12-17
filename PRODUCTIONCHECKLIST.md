@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -54,32 +55,35 @@ This checklist is a practical, ordered set of steps and validations to make QMOI
    - [ ] Confirm automated rollback on failures.
 
 Notes
+
 - Use `POSTPRODUCTIONCHECKLIST.md` for daily/weekly checks after production.
 - Use `ALLERRORSTYPESFILES.md` to map observed errors to fixes and tests.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "PRODUCTIONCHECKLIST.md",
-  "validated_at": "2025-10-26T20:51:22.334388Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "PRODUCTION CHECKLIST"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "PRODUCTIONCHECKLIST.md",
+"validated_at": "2025-10-26T20:51:22.334388Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "PRODUCTION CHECKLIST"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

@@ -1,23 +1,23 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import React, { useState, useEffect } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import { Badge } from "@/components/ui/badge"; // Keep this import if Badge is used
 import { Progress } from "@/components/ui/progress"; // Keep this import if Progress is used
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"; // Keep this import if Tabs is used
 import { Alert, AlertDescription } from "@/components/ui/alert"; // Keep this import if Alert is used
 import { Separator } from "@/components/ui/separator"; // Keep this import if Separator is used
-import { 
-  RefreshCw, 
-  CheckCircle, 
-  XCircle, 
-  AlertTriangle, 
-  FileText, 
-  Code, 
+import {
+  RefreshCw,
+  CheckCircle,
+  XCircle,
+  AlertTriangle,
+  FileText,
+  Code,
   Settings,
   Play,
   Stop,
@@ -30,7 +30,7 @@ import {
   Clock,
   TrendingUp,
   Shield,
-  Zap
+  Zap,
 } from "lucide-react";
 
 interface AutoFixReport {
@@ -66,7 +66,9 @@ interface GitHubActionStatus {
 export default function QMOIAutoFixDashboard() {
   const [report, setReport] = useState<AutoFixReport | null>(null);
   const [isRunning, setIsRunning] = useState(false);
-  const [githubStatus, setGitHubStatus] = useState<GitHubActionStatus | null>(null);
+  const [githubStatus, setGitHubStatus] = useState<GitHubActionStatus | null>(
+    null,
+  );
   const [deploymentStatus, setDeploymentStatus] = useState<string>("unknown");
   const [autoMode, setAutoMode] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
@@ -74,13 +76,13 @@ export default function QMOIAutoFixDashboard() {
   // Fetch latest report
   const fetchReport = async () => {
     try {
-      const response = await fetch('/api/qmoi/auto-fix/status');
+      const response = await fetch("/api/qmoi/auto-fix/status");
       if (response.ok) {
         const data = await response.json();
         setReport(data);
       }
     } catch (error) {
-      console.error('Error fetching report:', error);
+      console.error("Error fetching report:", error);
     }
   };
 
@@ -88,13 +90,13 @@ export default function QMOIAutoFixDashboard() {
   const startAutoFix = async () => {
     setIsRunning(true);
     try {
-      const response = await fetch('/api/qmoi/auto-fix/start', {
-        method: 'POST'
+      const response = await fetch("/api/qmoi/auto-fix/start", {
+        method: "POST",
       });
       if (response.ok) {
         const data = await response.json();
         setReport(data);
-        addLog('Auto-fix process started successfully');
+        addLog("Auto-fix process started successfully");
       }
     } catch (error) {
       addLog(`Error starting auto-fix: ${error}`);
@@ -106,9 +108,9 @@ export default function QMOIAutoFixDashboard() {
   // Stop auto-fix process
   const stopAutoFix = async () => {
     try {
-      await fetch('/api/qmoi/auto-fix/stop', { method: 'POST' });
+      await fetch("/api/qmoi/auto-fix/stop", { method: "POST" });
       setIsRunning(false);
-      addLog('Auto-fix process stopped');
+      addLog("Auto-fix process stopped");
     } catch (error) {
       addLog(`Error stopping auto-fix: ${error}`);
     }
@@ -117,51 +119,51 @@ export default function QMOIAutoFixDashboard() {
   // Toggle auto mode
   const toggleAutoMode = async () => {
     setAutoMode(!autoMode);
-    addLog(`Auto mode ${!autoMode ? 'enabled' : 'disabled'}`);
+    addLog(`Auto mode ${!autoMode ? "enabled" : "disabled"}`);
   };
 
   // Add log entry
   const addLog = (message: string) => {
     const timestamp = new Date().toLocaleTimeString();
-    setLogs(prev => [`[${timestamp}] ${message}`, ...prev.slice(0, 99)]);
+    setLogs((prev) => [`[${timestamp}] ${message}`, ...prev.slice(0, 99)]);
   };
 
   // Fetch GitHub Actions status
   const fetchGitHubStatus = async () => {
     try {
-      const response = await fetch('/api/qmoi/auto-fix/github-status');
+      const response = await fetch("/api/qmoi/auto-fix/github-status");
       if (response.ok) {
         const data = await response.json();
         setGitHubStatus(data);
       }
     } catch (error) {
-      console.error('Error fetching GitHub status:', error);
+      console.error("Error fetching GitHub status:", error);
     }
   };
 
   // Fetch deployment status
   const fetchDeploymentStatus = async () => {
     try {
-      const response = await fetch('/api/deployment-status');
+      const response = await fetch("/api/deployment-status");
       if (response.ok) {
         const data = await response.json();
         setDeploymentStatus(data.status);
       }
     } catch (error) {
-      console.error('Error fetching deployment status:', error);
+      console.error("Error fetching deployment status:", error);
     }
   };
 
   // Download report
   const downloadReport = async () => {
     try {
-      const response = await fetch('/api/qmoi/auto-fix/download-report');
+      const response = await fetch("/api/qmoi/auto-fix/download-report");
       if (response.ok) {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
+        const a = document.createElement("a");
         a.href = url;
-        a.download = `qmoi-auto-fix-report-${new Date().toISOString().split('T')[0]}.json`;
+        a.download = `qmoi-auto-fix-report-${new Date().toISOString().split("T")[0]}.json`;
         a.click();
         window.URL.revokeObjectURL(url);
       }
@@ -198,13 +200,13 @@ export default function QMOIAutoFixDashboard() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'completed':
-      case 'success':
+      case "completed":
+      case "success":
         return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'error':
-      case 'failure':
+      case "error":
+      case "failure":
         return <XCircle className="h-4 w-4 text-red-500" />;
-      case 'running':
+      case "running":
         return <RefreshCw className="h-4 w-4 text-blue-500 animate-spin" />;
       default:
         return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
@@ -213,14 +215,22 @@ export default function QMOIAutoFixDashboard() {
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'completed':
-      case 'success':
-        return <Badge variant="default" className="bg-green-500">Success</Badge>;
-      case 'error':
-      case 'failure':
+      case "completed":
+      case "success":
+        return (
+          <Badge variant="default" className="bg-green-500">
+            Success
+          </Badge>
+        );
+      case "error":
+      case "failure":
         return <Badge variant="destructive">Error</Badge>;
-      case 'running':
-        return <Badge variant="secondary" className="bg-blue-500">Running</Badge>;
+      case "running":
+        return (
+          <Badge variant="secondary" className="bg-blue-500">
+            Running
+          </Badge>
+        );
       default:
         return <Badge variant="outline">Unknown</Badge>;
     }
@@ -256,7 +266,9 @@ export default function QMOIAutoFixDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Auto-Fix Status</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Auto-Fix Status
+            </CardTitle>
             {report && getStatusIcon(report.status)}
           </CardHeader>
           <CardContent>
@@ -264,14 +276,19 @@ export default function QMOIAutoFixDashboard() {
               {report ? getStatusBadge(report.status) : "Unknown"}
             </div>
             <p className="text-xs text-muted-foreground">
-              Last updated: {report?.timestamp ? new Date(report.timestamp).toLocaleString() : "Never"}
+              Last updated:{" "}
+              {report?.timestamp
+                ? new Date(report.timestamp).toLocaleString()
+                : "Never"}
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">GitHub Actions</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              GitHub Actions
+            </CardTitle>
             {githubStatus && getStatusIcon(githubStatus.status)}
           </CardHeader>
           <CardContent>
@@ -307,7 +324,9 @@ export default function QMOIAutoFixDashboard() {
           <CardContent>
             <div className="text-2xl font-bold">
               {autoMode ? (
-                <Badge variant="default" className="bg-green-500">Active</Badge>
+                <Badge variant="default" className="bg-green-500">
+                  Active
+                </Badge>
               ) : (
                 <Badge variant="outline">Inactive</Badge>
               )}
@@ -334,22 +353,33 @@ export default function QMOIAutoFixDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">MD Files Processed</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    MD Files Processed
+                  </CardTitle>
                   <FileText className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{report.summary.md_files_processed}</div>
-                  <Progress value={report.summary.md_files_processed > 0 ? 100 : 0} className="mt-2" />
+                  <div className="text-2xl font-bold">
+                    {report.summary.md_files_processed}
+                  </div>
+                  <Progress
+                    value={report.summary.md_files_processed > 0 ? 100 : 0}
+                    className="mt-2"
+                  />
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Claims Verified</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Claims Verified
+                  </CardTitle>
                   <CheckCircle className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{report.summary.claims_verified}</div>
+                  <div className="text-2xl font-bold">
+                    {report.summary.claims_verified}
+                  </div>
                   <p className="text-xs text-muted-foreground">
                     {report.summary.claims_fixed} fixed
                   </p>
@@ -358,11 +388,15 @@ export default function QMOIAutoFixDashboard() {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Errors Fixed</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Errors Fixed
+                  </CardTitle>
                   <XCircle className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{report.summary.errors_fixed}</div>
+                  <div className="text-2xl font-bold">
+                    {report.summary.errors_fixed}
+                  </div>
                   <p className="text-xs text-muted-foreground">
                     {report.summary.manual_errors_fixed} manual
                   </p>
@@ -380,17 +414,32 @@ export default function QMOIAutoFixDashboard() {
             <CardContent>
               <div className="space-y-2">
                 {report?.details.slice(0, 5).map((detail, index) => (
-                  <div key={index} className="flex items-center space-x-2 p-2 border rounded">
-                    {getStatusIcon(detail.type === 'broken_claim' ? 'error' : 'completed')}
+                  <div
+                    key={index}
+                    className="flex items-center space-x-2 p-2 border rounded"
+                  >
+                    {getStatusIcon(
+                      detail.type === "broken_claim" ? "error" : "completed",
+                    )}
                     <div className="flex-1">
                       <p className="text-sm font-medium">{detail.type}</p>
-                      {detail.file && <p className="text-xs text-muted-foreground">{detail.file}</p>}
-                      {detail.claim && <p className="text-xs text-muted-foreground">Claim: {detail.claim}</p>}
+                      {detail.file && (
+                        <p className="text-xs text-muted-foreground">
+                          {detail.file}
+                        </p>
+                      )}
+                      {detail.claim && (
+                        <p className="text-xs text-muted-foreground">
+                          Claim: {detail.claim}
+                        </p>
+                      )}
                     </div>
                   </div>
                 ))}
                 {(!report?.details || report.details.length === 0) && (
-                  <p className="text-muted-foreground text-center py-4">No recent activity</p>
+                  <p className="text-muted-foreground text-center py-4">
+                    No recent activity
+                  </p>
                 )}
               </div>
             </CardContent>
@@ -403,19 +452,31 @@ export default function QMOIAutoFixDashboard() {
             <Card>
               <CardHeader>
                 <CardTitle>Detailed Report</CardTitle>
-                <CardDescription>Comprehensive auto-fix analysis</CardDescription>
+                <CardDescription>
+                  Comprehensive auto-fix analysis
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold mb-2">Summary</h4>
                     <div className="grid grid-cols-2 gap-4 text-sm">
-                      <div>MD Files Processed: {report.summary.md_files_processed}</div>
-                      <div>Claims Verified: {report.summary.claims_verified}</div>
+                      <div>
+                        MD Files Processed: {report.summary.md_files_processed}
+                      </div>
+                      <div>
+                        Claims Verified: {report.summary.claims_verified}
+                      </div>
                       <div>Claims Fixed: {report.summary.claims_fixed}</div>
                       <div>Errors Fixed: {report.summary.errors_fixed}</div>
-                      <div>Manual Errors Fixed: {report.summary.manual_errors_fixed}</div>
-                      <div>New Features Documented: {report.summary.new_features_documented}</div>
+                      <div>
+                        Manual Errors Fixed:{" "}
+                        {report.summary.manual_errors_fixed}
+                      </div>
+                      <div>
+                        New Features Documented:{" "}
+                        {report.summary.new_features_documented}
+                      </div>
                     </div>
                   </div>
 
@@ -425,7 +486,9 @@ export default function QMOIAutoFixDashboard() {
                     <h4 className="font-semibold mb-2">Deployment Status</h4>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>Status: {report.deployment.status}</div>
-                      <div>GitHub Actions: {report.deployment.github_actions}</div>
+                      <div>
+                        GitHub Actions: {report.deployment.github_actions}
+                      </div>
                     </div>
                   </div>
 
@@ -437,9 +500,21 @@ export default function QMOIAutoFixDashboard() {
                       {report.details.map((detail, index) => (
                         <div key={index} className="p-2 border rounded text-sm">
                           <div className="font-medium">{detail.type}</div>
-                          {detail.file && <div className="text-muted-foreground">File: {detail.file}</div>}
-                          {detail.claim && <div className="text-muted-foreground">Claim: {detail.claim}</div>}
-                          {detail.error && <div className="text-red-500">Error: {detail.error}</div>}
+                          {detail.file && (
+                            <div className="text-muted-foreground">
+                              File: {detail.file}
+                            </div>
+                          )}
+                          {detail.claim && (
+                            <div className="text-muted-foreground">
+                              Claim: {detail.claim}
+                            </div>
+                          )}
+                          {detail.error && (
+                            <div className="text-red-500">
+                              Error: {detail.error}
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
@@ -460,9 +535,7 @@ export default function QMOIAutoFixDashboard() {
             <CardContent>
               <div className="bg-black text-green-400 p-4 rounded font-mono text-sm h-96 overflow-y-auto">
                 {logs.length > 0 ? (
-                  logs.map((log, index) => (
-                    <div key={index}>{log}</div>
-                  ))
+                  logs.map((log, index) => <div key={index}>{log}</div>)
                 ) : (
                   <div className="text-gray-500">No logs available</div>
                 )}
@@ -477,7 +550,9 @@ export default function QMOIAutoFixDashboard() {
             <Card>
               <CardHeader>
                 <CardTitle>Auto-Fix Controls</CardTitle>
-                <CardDescription>Manual control of auto-fix system</CardDescription>
+                <CardDescription>
+                  Manual control of auto-fix system
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
                 <Button
@@ -545,7 +620,9 @@ export default function QMOIAutoFixDashboard() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span>Last Run:</span>
-                    <span>{new Date(githubStatus.last_run).toLocaleString()}</span>
+                    <span>
+                      {new Date(githubStatus.last_run).toLocaleString()}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span>Duration:</span>
@@ -559,4 +636,4 @@ export default function QMOIAutoFixDashboard() {
       </Tabs>
     </div>
   );
-} 
+}

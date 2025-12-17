@@ -1,1 +1,13 @@
-export function Analytics() { return null; } 
+import React, { useEffect } from "react";
+
+export function Analytics() {
+  useEffect(() => {
+    // Minimal analytics stub: log pageview for local dev/tests
+    try {
+      console.info("Analytics: pageview");
+    } catch (e) {
+      // ignore
+    }
+  }, []);
+  return null;
+}

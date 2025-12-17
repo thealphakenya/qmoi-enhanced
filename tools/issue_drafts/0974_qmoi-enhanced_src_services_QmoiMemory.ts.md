@@ -84,7 +84,7 @@ export class QmoiMemory {
       } catch {
         // Ignore repo fetch errors
       }
-    
+
 ```
 
 Notes:

@@ -1,4 +1,4 @@
-'on':
+"on":
   schedule:
     - cron: 0 3 * * *
   workflow_dispatch: null
@@ -15,5 +15,5 @@ permissions:
   pull-requests: read
   issues: read
 env:
-  NODE_VERSION: '18'
-  QMOI_AUTODEV_ENABLED: 'true'
+  NODE_VERSION: "18"
+  QMOI_AUTODEV_ENABLED: "true"

@@ -27,13 +27,13 @@ The QMOI Real-Time Release System provides **fully automated, multi-platform rel
 
 ### What Gets Released
 
-| Component | Coverage |
-|-----------|----------|
-| **Apps** | 6 QMOI apps (AI, QCity, QShare, Yap, QStore, QVillage) |
-| **Platforms** | 12+ platforms (Desktop, Mobile, IoT, Web) |
-| **Formats** | All binary formats (.exe, .dmg, .deb, .apk, .ipa, .img, etc.) |
-| **Distribution** | GitHub Releases + Checksums + Documentation |
-| **Automation** | 100% automated CI/CD via GitHub Actions |
+| Component        | Coverage                                                      |
+| ---------------- | ------------------------------------------------------------- |
+| **Apps**         | 6 QMOI apps (AI, QCity, QShare, Yap, QStore, QVillage)        |
+| **Platforms**    | 12+ platforms (Desktop, Mobile, IoT, Web)                     |
+| **Formats**      | All binary formats (.exe, .dmg, .deb, .apk, .ipa, .img, etc.) |
+| **Distribution** | GitHub Releases + Checksums + Documentation                   |
+| **Automation**   | 100% automated CI/CD via GitHub Actions                       |
 
 ### Key Capabilities
 
@@ -43,7 +43,7 @@ The QMOI Real-Time Release System provides **fully automated, multi-platform rel
 ✅ **Multi-Platform Support** - Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, Web  
 ✅ **Retry Logic** - Handles network failures gracefully  
 ✅ **Release Notes** - Auto-generates comprehensive documentation  
-✅ **Zero-Touch** - Completely hands-off after initial setup  
+✅ **Zero-Touch** - Completely hands-off after initial setup
 
 ---
 
@@ -101,6 +101,7 @@ Automatically finds all platform-specific builds:
 ```
 
 **Search Directories:**
+
 - `Qmoi_downloaded_apps/`
 - `dist/`
 - `build/`
@@ -185,6 +186,7 @@ Automatically classifies assets by platform:
 ### Components
 
 #### 1. GitHub Actions Workflow
+
 **File:** `.github/workflows/publish-releases-realtime.yml`
 
 Triggers automatically on git tags (`v*.*.*`, `qmoi-v*`, `q-*`)
@@ -193,24 +195,28 @@ Triggers automatically on git tags (`v*.*.*`, `qmoi-v*`, `q-*`)
 on:
   push:
     tags:
-      - 'v*.*.*'
-      - 'qmoi-v*'
+      - "v*.*.*"
+      - "qmoi-v*"
   workflow_dispatch:
 ```
 
 #### 2. Bash Publisher Script
+
 **File:** `publish-releases-realtime.sh`
 
 Full-featured shell script for manual publishing:
+
 - Platform detection
 - Asset discovery
 - Checksum generation
 - GitHub CLI integration
 
 #### 3. Python Publisher Script
+
 **File:** `publish-releases-realtime.py`
 
 Python version with advanced features:
+
 - Parallel checksum generation
 - Comprehensive logging
 - Structured error handling
@@ -250,11 +256,13 @@ git push origin v1.2.3
 #### Check Released Files
 
 Once complete, view at:
+
 ```
 https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
 ```
 
 All assets will be available for download with:
+
 - ✅ All platform files
 - ✅ SHA256 checksums
 - ✅ Complete documentation
@@ -351,10 +359,10 @@ python publish-releases-realtime.py --version v1.2.3
 on:
   push:
     tags:
-      - 'v*.*.*'           # Semantic version: v1.2.3
-      - 'qmoi-v*'          # QMOI prefix: qmoi-v1.2.3
-      - 'q-*'              # App-specific: q-city-v2.0
-  workflow_dispatch:       # Manual trigger via web UI
+      - "v*.*.*" # Semantic version: v1.2.3
+      - "qmoi-v*" # QMOI prefix: qmoi-v1.2.3
+      - "q-*" # App-specific: q-city-v2.0
+  workflow_dispatch: # Manual trigger via web UI
 ```
 
 ### Workflow Steps
@@ -479,6 +487,7 @@ For advanced CI/CD integration:
 Edit the scripts to add more asset search locations:
 
 **Bash Script:**
+
 ```bash
 # Line ~250 in publish-releases-realtime.sh
 asset_dirs=(
@@ -494,6 +503,7 @@ asset_dirs=(
 ```
 
 **Python Script:**
+
 ```python
 # Line ~330 in publish-releases-realtime.py
 search_dirs = [
@@ -513,6 +523,7 @@ search_dirs = [
 Edit the release note templates in the scripts:
 
 **Bash:**
+
 ```bash
 # Line ~350 in publish-releases-realtime.sh
 cat > "$notes_file" << 'EOF'
@@ -522,6 +533,7 @@ EOF
 ```
 
 **Python:**
+
 ```python
 # Line ~280 in publish-releases-realtime.py
 def generate_release_notes(self) -> str:
@@ -631,16 +643,16 @@ cat /tmp/qmoi-release-20251112-*.log
 
 ### A. Supported Platforms & Extensions
 
-| Platform | Extensions | Example Files |
-|----------|-----------|----------------|
-| Windows | .exe, .msi | qmoi-ai-windows-x64.exe |
-| macOS | .dmg | qmoi-ai-macos-intel.dmg |
-| Linux | .deb, .rpm, .AppImage | qmoi-ai-linux-x64.deb |
-| Android | .apk | qmoi-ai.apk, qmoi-ai-smarttv.apk |
-| iOS | .ipa | qmoi-ai.ipa |
-| Raspberry Pi | .img | qmoi-ai-raspberrypi.img |
-| Chromebook | .zip | qmoi-ai-chromebook.zip |
-| Web/PWA | .zip | qmoi-ai-pwa.zip |
+| Platform     | Extensions            | Example Files                    |
+| ------------ | --------------------- | -------------------------------- |
+| Windows      | .exe, .msi            | qmoi-ai-windows-x64.exe          |
+| macOS        | .dmg                  | qmoi-ai-macos-intel.dmg          |
+| Linux        | .deb, .rpm, .AppImage | qmoi-ai-linux-x64.deb            |
+| Android      | .apk                  | qmoi-ai.apk, qmoi-ai-smarttv.apk |
+| iOS          | .ipa                  | qmoi-ai.ipa                      |
+| Raspberry Pi | .img                  | qmoi-ai-raspberrypi.img          |
+| Chromebook   | .zip                  | qmoi-ai-chromebook.zip           |
+| Web/PWA      | .zip                  | qmoi-ai-pwa.zip                  |
 
 ### B. Release URL Format
 
@@ -667,25 +679,30 @@ Every release includes:
 # 🚀 QMOI AI Suite Release v1.2.3
 
 ## 📱 All 6 QMOI Apps
+
 - QMOI AI v1.2.3
 - QCity v2.0.1
 - ... etc
 
 ## 🖥️ Supported Platforms
+
 - Desktop: Windows, macOS, Linux
 - Mobile: Android, iOS
 - IoT: Raspberry Pi, Chromebook
 - Web: PWA
 
 ## 📥 Download Instructions
+
 [Platform-specific instructions]
 
 ## 🔒 Verification
+
 SHA256 checksums included
 
 ---
 
 ## 📞 Support
+
 - Issues: [GitHub Issues]
 - Email: support@qmoi.app
 - Community: https://qvillage.qmoi.app
@@ -739,6 +756,7 @@ stage('Publish Release') {
 ## 📊 Release Statistics
 
 **Typical Release Size:**
+
 - Desktop Builds: ~400-600 MB (Windows, macOS, Linux)
 - Mobile Builds: ~150-300 MB (Android, iOS)
 - IoT Builds: ~200-500 MB (Raspberry Pi, etc)
@@ -746,6 +764,7 @@ stage('Publish Release') {
 - **Total:** ~800 MB - 1.5 GB per release
 
 **Publication Time:**
+
 - Asset Discovery: ~20 seconds
 - Checksum Generation: ~1 minute
 - Release Creation: ~10 seconds
@@ -753,6 +772,7 @@ stage('Publish Release') {
 - **Total Time:** ~5-10 minutes
 
 **Success Rate:**
+
 - Initial upload success: ~99%
 - Retry recovery: ~99.9%
 - Final success rate: ~99.99%
@@ -793,4 +813,4 @@ stage('Publish Release') {
 
 ---
 
-*Last Updated: November 12, 2025 | Version: v1.2.3*
+_Last Updated: November 12, 2025 | Version: v1.2.3_

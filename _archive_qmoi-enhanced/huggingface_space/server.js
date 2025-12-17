@@ -1,11 +1,11 @@
-const express = require('express');
-const fs = require('fs');
+const express = require("express");
+const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 7860;
 
 // Health endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
 // Main Qmoispace endpoints would go here
@@ -16,24 +16,24 @@ app.listen(PORT, () => {
 
 // Keep-alive logic
 async function keepAlive() {
-  const http = require('http');
+  const http = require("http");
   const options = {
-    hostname: 'localhost',
+    hostname: "localhost",
     port: PORT,
-    path: '/health',
-    method: 'GET',
-    timeout: 5000
+    path: "/health",
+    method: "GET",
+    timeout: 5000,
   };
-  const req = http.request(options, res => {
+  const req = http.request(options, (res) => {
     if (res.statusCode === 200) {
-      console.log('[Qmoispace] Health check passed');
+      console.log("[Qmoispace] Health check passed");
     } else {
-      console.error('[Qmoispace] Health check failed, restarting...');
+      console.error("[Qmoispace] Health check failed, restarting...");
       restartServer();
     }
   });
-  req.on('error', () => {
-    console.error('[Qmoispace] Health check error, restarting...');
+  req.on("error", () => {
+    console.error("[Qmoispace] Health check error, restarting...");
     restartServer();
   });
   req.end();
@@ -41,8 +41,11 @@ async function keepAlive() {
 
 function restartServer() {
   // Stub: In real use, integrate with process manager or Hugging Face API
-  fs.appendFileSync('logs/qmoispace_health.log', `[${new Date().toISOString()}] Restart triggered\n`);
-  console.log('[Qmoispace] Restart logic would be triggered here.');
+  fs.appendFileSync(
+    "logs/qmoispace_health.log",
+    `[${new Date().toISOString()}] Restart triggered\n`,
+  );
+  console.log("[Qmoispace] Restart logic would be triggered here.");
 }
 
-module.exports = { keepAlive }; 
+module.exports = { keepAlive };

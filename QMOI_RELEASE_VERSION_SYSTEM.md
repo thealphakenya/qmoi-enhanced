@@ -21,31 +21,31 @@ STAGE 1: DEVELOPMENT & COMMITS
 
 STAGE 2: VALIDATION GATES (QMOI Validation Framework)
 ├─ Code quality checks
-│  └─ Linting (ESLint, Pylint, etc.)
-│  └─ Type checking (TypeScript)
-│  └─ Security scanning (SAST)
-│  └─ Dependency audit
+│ └─ Linting (ESLint, Pylint, etc.)
+│ └─ Type checking (TypeScript)
+│ └─ Security scanning (SAST)
+│ └─ Dependency audit
 │
 ├─ Automated testing
-│  └─ Unit tests (Jest, Pytest)
-│  └─ Integration tests
-│  └─ E2E tests (Selenium, Cypress)
-│  └─ Performance tests
+│ └─ Unit tests (Jest, Pytest)
+│ └─ Integration tests
+│ └─ E2E tests (Selenium, Cypress)
+│ └─ Performance tests
 │
 ├─ Link & documentation validation
-│  └─ All links verified (DNS + HTTP)
-│  └─ README consistency checked
-│  └─ API documentation validated
-│  └─ Markdown syntax verified
+│ └─ All links verified (DNS + HTTP)
+│ └─ README consistency checked
+│ └─ API documentation validated
+│ └─ Markdown syntax verified
 │
 └─ All gates must PASS to continue
 
 STAGE 3: VERSION CALCULATION
 ├─ Analyze commit messages (Conventional Commits)
-│  ├─ feat: → Minor version bump
-│  ├─ fix: → Patch version bump
-│  ├─ BREAKING CHANGE: → Major version bump
-│  └─ docs: → No version bump
+│ ├─ feat: → Minor version bump
+│ ├─ fix: → Patch version bump
+│ ├─ BREAKING CHANGE: → Major version bump
+│ └─ docs: → No version bump
 │
 ├─ Current version: Fetch from VERSION file + git tags
 ├─ Calculate new version: Automatically via semantic-release
@@ -53,34 +53,34 @@ STAGE 3: VERSION CALCULATION
 
 STAGE 4: BUILD FOR ALL PLATFORMS
 ├─ iOS build
-│  ├─ Pod install
-│  ├─ Xcode build
-│  ├─ Code signing
-│  ├─ Build archive
-│  └─ Validate build
+│ ├─ Pod install
+│ ├─ Xcode build
+│ ├─ Code signing
+│ ├─ Build archive
+│ └─ Validate build
 │
 ├─ Android build
-│  ├─ Gradle build
-│  ├─ Sign APK
-│  ├─ Build app bundle
-│  └─ Validate build
+│ ├─ Gradle build
+│ ├─ Sign APK
+│ ├─ Build app bundle
+│ └─ Validate build
 │
 ├─ Web build
-│  ├─ npm build
-│  ├─ Bundling
-│  ├─ Minification
-│  └─ Asset optimization
+│ ├─ npm build
+│ ├─ Bundling
+│ ├─ Minification
+│ └─ Asset optimization
 │
 ├─ Desktop build
-│  ├─ Electron build (Windows)
-│  ├─ Electron build (macOS)
-│  ├─ Electron build (Linux)
-│  └─ Code signing for each OS
+│ ├─ Electron build (Windows)
+│ ├─ Electron build (macOS)
+│ ├─ Electron build (Linux)
+│ └─ Code signing for each OS
 │
 └─ SmartTV build
-   ├─ TV-specific build
-   ├─ Resolution optimization
-   └─ TV app manifest
+├─ TV-specific build
+├─ Resolution optimization
+└─ TV app manifest
 
 STAGE 5: COMPREHENSIVE TESTING ON ALL BUILDS
 ├─ Smoke tests (basic functionality)
@@ -92,13 +92,13 @@ STAGE 5: COMPREHENSIVE TESTING ON ALL BUILDS
 
 STAGE 6: ARTIFACT MANAGEMENT
 ├─ iOS
-│  └─ Archive uploaded to App Store Connect
+│ └─ Archive uploaded to App Store Connect
 ├─ Android
-│  └─ AAB/APK uploaded to Google Play Console
+│ └─ AAB/APK uploaded to Google Play Console
 ├─ Web
-│  └─ Deployed to Vercel/CDN
+│ └─ Deployed to Vercel/CDN
 ├─ Desktop
-│  └─ Installers generated for all OS
+│ └─ Installers generated for all OS
 └─ All artifacts: Checksummed, signed, verified
 
 STAGE 7: RELEASE NOTES GENERATION
@@ -118,22 +118,22 @@ STAGE 8: RELEASE CREATION
 
 STAGE 9: DEPLOYMENT ORCHESTRATION
 ├─ Stage deployment (if enabled)
-│  └─ Deploy to staging environment
-│  └─ Run staging tests
-│  └─ Verify in staging
+│ └─ Deploy to staging environment
+│ └─ Run staging tests
+│ └─ Verify in staging
 │
 ├─ Canary deployment (if enabled)
-│  └─ Deploy to 5-10% of production
-│  └─ Monitor metrics
-│  └─ If healthy → proceed
-│  └─ If issues → auto-rollback
+│ └─ Deploy to 5-10% of production
+│ └─ Monitor metrics
+│ └─ If healthy → proceed
+│ └─ If issues → auto-rollback
 │
 └─ Full production deployment
-   ├─ Deploy to all production servers
-   ├─ Health checks on all platforms
-   ├─ Monitor for errors
-   ├─ Instant notifications
-   └─ Rollback capability ready
+├─ Deploy to all production servers
+├─ Health checks on all platforms
+├─ Monitor for errors
+├─ Instant notifications
+└─ Rollback capability ready
 
 STAGE 10: POST-DEPLOYMENT VALIDATION
 ├─ Health checks on all systems
@@ -150,6 +150,7 @@ Format: MAJOR.MINOR.PATCH
 Example: v2.5.3
 
 MAJOR VERSION (Breaking Changes):
+
 - Incompatible API changes
 - Large architectural changes
 - Major feature rewrites
@@ -157,6 +158,7 @@ MAJOR VERSION (Breaking Changes):
 - Requires user notification
 
 MINOR VERSION (New Features):
+
 - Backward-compatible new features
 - Performance improvements
 - New non-breaking APIs
@@ -164,6 +166,7 @@ MINOR VERSION (New Features):
 - Non-critical database changes
 
 PATCH VERSION (Bug Fixes):
+
 - Bug fixes
 - Security patches
 - Documentation fixes
@@ -185,6 +188,7 @@ VERSION FILES UPDATED AUTOMATICALLY:
 ✓ Version tracking files
 
 VERSION RELEASE CADENCE:
+
 - Daily: Patch releases (bug fixes)
 - Weekly: Minor releases (features)
 - Monthly: Major releases (if needed)
@@ -192,12 +196,14 @@ VERSION RELEASE CADENCE:
 
 CHANGELOG MANAGEMENT:
 Automatic generation from:
+
 - Conventional Commits
 - GitHub PRs
 - Issue references
 - Breaking change notices
 
 Format: Markdown with sections:
+
 - 🚀 New Features
 - 🐛 Bug Fixes
 - 🔒 Security Updates
@@ -214,69 +220,70 @@ VALIDATION LAYERS:
 
 Layer 1: Pre-Commit Validation
 └─ Git hooks (husky)
-   ├─ Commit message validation
-   ├─ Code format check
-   ├─ ESLint auto-fix
-   └─ Test run (fast tests only)
+├─ Commit message validation
+├─ Code format check
+├─ ESLint auto-fix
+└─ Test run (fast tests only)
 
 Layer 2: CI/CD Validation (GitHub Actions)
 └─ On every push
-   ├─ Build validation
-   ├─ Unit test suite
-   ├─ Integration tests
-   ├─ Code coverage (minimum 80%)
-   ├─ Security scanning
-   ├─ Link validation
-   └─ Dependency audit
+├─ Build validation
+├─ Unit test suite
+├─ Integration tests
+├─ Code coverage (minimum 80%)
+├─ Security scanning
+├─ Link validation
+└─ Dependency audit
 
 Layer 3: Pre-Release Validation
 └─ Before version bump
-   ├─ All tests must pass
-   ├─ No security issues
-   ├─ No high-priority warnings
-   ├─ Documentation complete
-   ├─ Changelog generated
-   └─ Version calculated
+├─ All tests must pass
+├─ No security issues
+├─ No high-priority warnings
+├─ Documentation complete
+├─ Changelog generated
+└─ Version calculated
 
 Layer 4: Build Validation
 └─ Each platform build
-   ├─ Build succeeds without warnings
-   ├─ No code signing issues
-   ├─ Binary size checks
-   ├─ All assets included
-   ├─ Manifest validation
-   └─ Build artifact verification
+├─ Build succeeds without warnings
+├─ No code signing issues
+├─ Binary size checks
+├─ All assets included
+├─ Manifest validation
+└─ Build artifact verification
 
 Layer 5: Post-Build Validation
 └─ After artifacts created
-   ├─ Binary scanning
-   ├─ APK/IPA validation
-   ├─ Web bundle analysis
-   ├─ Desktop installer validation
-   ├─ Checksum verification
-   └─ Signature verification
+├─ Binary scanning
+├─ APK/IPA validation
+├─ Web bundle analysis
+├─ Desktop installer validation
+├─ Checksum verification
+└─ Signature verification
 
 Layer 6: Deployment Validation
 └─ Before & during deployment
-   ├─ Environment validation
-   ├─ Dependency checks
-   ├─ Database migration validation
-   ├─ Backwards compatibility check
-   ├─ Configuration validation
-   └─ Server health check
+├─ Environment validation
+├─ Dependency checks
+├─ Database migration validation
+├─ Backwards compatibility check
+├─ Configuration validation
+└─ Server health check
 
 Layer 7: Post-Deployment Validation
 └─ After deployment
-   ├─ Smoke tests on live system
-   ├─ API endpoint validation
-   ├─ Database connectivity check
-   ├─ Health check endpoints
-   ├─ Performance baseline validation
-   ├─ Error rate monitoring
-   ├─ User activity monitoring
-   └─ Rollback readiness check
+├─ Smoke tests on live system
+├─ API endpoint validation
+├─ Database connectivity check
+├─ Health check endpoints
+├─ Performance baseline validation
+├─ Error rate monitoring
+├─ User activity monitoring
+└─ Rollback readiness check
 
 VALIDATION TOOLS USED:
+
 - ESLint (JavaScript/TypeScript)
 - Pylint (Python)
 - SonarQube (Code quality)
@@ -293,6 +300,7 @@ VALIDATION TOOLS USED:
 WORKFLOW 1: Automatic Patch Release (Daily)
 Trigger: Schedule (daily at 02:00 UTC) or manual
 Steps:
+
 1. Fetch latest commits
 2. Identify bug fixes
 3. Calculate patch version
@@ -307,6 +315,7 @@ Steps:
 WORKFLOW 2: Feature Release (Weekly)
 Trigger: Schedule (Friday at 15:00 UTC) or manual
 Steps:
+
 1. Fetch all merged PRs
 2. Identify new features
 3. Calculate minor version
@@ -323,6 +332,7 @@ Steps:
 WORKFLOW 3: Security Release (Emergency)
 Trigger: Security issue detected
 Steps:
+
 1. Verify security issue
 2. Create security patch
 3. Rapid testing cycle
@@ -335,6 +345,7 @@ Steps:
 WORKFLOW 4: Major Release (Planned)
 Trigger: Manual or milestone-based
 Steps:
+
 1. Prepare breaking changes
 2. Update migration guides
 3. Testing cycle (extended)
@@ -349,6 +360,7 @@ Steps:
 WORKFLOW 5: Hotfix Release
 Trigger: Critical bug in production
 Steps:
+
 1. Create hotfix branch from tag
 2. Apply minimal fix
 3. Quick testing
@@ -364,6 +376,7 @@ Steps:
 
 RELEASE MONITORING:
 Real-time tracking of:
+
 - Deployment status
 - Error rates (target: < 0.1%)
 - Performance metrics
@@ -385,6 +398,7 @@ METRICS CHECKED:
 
 ROLLBACK TRIGGERS:
 Automatic rollback if:
+
 - Error rate > 1%
 - API response time > 500ms
 - Crash rate > 0.5%
@@ -395,6 +409,7 @@ Automatic rollback if:
 MANUAL ROLLBACK:
 Master can trigger: "QMOI, rollback to [version]"
 QMOI automatically:
+
 1. Stops current deployment
 2. Switches to previous version
 3. Runs validation
@@ -403,6 +418,7 @@ QMOI automatically:
 6. Sends notification
 
 ROLLBACK PROCESS:
+
 1. Stop current services
 2. Backup current state
 3. Switch to previous version
@@ -452,6 +468,7 @@ QMOI TRACKS:
 Master receives notifications via:
 
 WhatsApp:
+
 - Release started
 - Validation gates progress
 - Build complete
@@ -462,24 +479,28 @@ WhatsApp:
 - Release completed
 
 Email:
+
 - Daily release summary
 - Release notes
 - Issues and fixes
 - Performance metrics
 
 Dashboard:
+
 - Real-time release tracking
 - Deployment progress (live)
 - Metrics graphs
 - Issue details
 
 GitHub:
+
 - Release created
 - Tag pushed
 - Release notes
 - Associated PRs
 
 All platforms:
+
 - Feature announcements
 - Security updates
 - Important upgrades
@@ -492,8 +513,8 @@ Release configuration (.github/workflows/release.yml):
 name: Release
 on:
   schedule:
-    - cron: '0 2 * * *'  # Daily at 02:00 UTC
-  workflow_dispatch:  # Manual trigger
+    - cron: "0 2 * * *" # Daily at 02:00 UTC
+  workflow_dispatch: # Manual trigger
 
 jobs:
   release:
@@ -517,24 +538,28 @@ jobs:
 ==== PART 9: SUCCESS METRICS ====
 
 Release Success Rate: 99.5%+
+
 - Build success: 99.9%
 - Test success: 99.8%
 - Deployment success: 99.9%
 - Rollback (if needed): 100%
 
 Release Frequency:
+
 - Patch releases: Daily (1-3 per day)
 - Minor releases: Weekly (1-2 per week)
 - Major releases: As needed (1-2 per quarter)
 - Security releases: Immediate
 
 Release Time:
+
 - Build time: 15-20 minutes
 - Test time: 10-15 minutes
 - Deployment: 5-10 minutes
 - Total: 30-45 minutes (average)
 
 Quality Metrics:
+
 - Test coverage: 80%+ (minimum)
 - Code quality: A grade (SonarQube)
 - Security: Zero critical issues
@@ -544,6 +569,7 @@ Quality Metrics:
 ==== PART 10: BEST PRACTICES ====
 
 ✅ DO:
+
 - Use conventional commits
 - Write meaningful commit messages
 - Include PR descriptions
@@ -556,6 +582,7 @@ Quality Metrics:
 - Plan major releases
 
 ❌ DON'T:
+
 - Force push to main
 - Skip testing
 - Release without validation

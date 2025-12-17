@@ -63,12 +63,12 @@ export class FaceRecognitionService {
   private videoElement: HTMLVideoElement | null = null;
   private canvasElement: HTMLCanvasElement | null = null;
   private context: CanvasRenderingContext2D | null = null;
-  private isRunning: boolean = false;
+  private isRunning = false;
   private detectionInterval: Timeout | null = null;
   private knownFaces: Map<string, UserProfile> = new Map();
   private currentFaces: FaceData[] = [];
   private faceApi: any; // face-api.js or similar
-  private consentGiven: boolean = false;
+  private consentGiven = false;
   // persistenceEnabled was removed; persistence respects consent and is
   // controlled by `consentGiven` and higher-level settings.
 
@@ -108,8 +108,10 @@ export class FaceRecognitionService {
         // Use dynamic import so code doesn't fail if package isn't installed
         // In browser bundlers this will resolve to the bundled library if present.
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-  // @ts-ignore - face-api.js is optional and may not be installed in every environment
-  const faceapiModule = (await import(/* webpackIgnore: true */ 'face-api.js')).default || (await import('face-api.js'));
+        // @ts-ignore - face-api.js is optional and may not be installed in every environment
+        const faceapiModule =
+          (await import(/* webpackIgnore: true */ "face-api.js")).default ||
+          (await import("face-api.js"));
 
         // Provide a small loader wrapper
         this.faceApi = {
@@ -119,7 +121,7 @@ export class FaceRecognitionService {
             // at `/models/` or set up a CDN. If not present, load attempt will fail
             // and we'll remain in fallback mode.
             try {
-              const base = '/models';
+              const base = "/models";
               await faceapiModule.nets.tinyFaceDetector.loadFromUri(base);
               await faceapiModule.nets.faceLandmark68TinyNet.loadFromUri(base);
               await faceapiModule.nets.faceExpressionNet.loadFromUri(base);
@@ -127,14 +129,20 @@ export class FaceRecognitionService {
               await faceapiModule.nets.faceRecognitionNet.loadFromUri(base);
               return true;
             } catch (err) {
-              console.warn('face-api.js models not found under /models; falling back to restricted stub', err);
+              console.warn(
+                "face-api.js models not found under /models; falling back to restricted stub",
+                err,
+              );
               throw err;
             }
           },
           detectFaces: async (input: HTMLCanvasElement | HTMLVideoElement) => {
             // Use tiny face detector for speed and smaller model footprint
             const detections = await faceapiModule
-              .detectAllFaces(input, new faceapiModule.TinyFaceDetectorOptions())
+              .detectAllFaces(
+                input,
+                new faceapiModule.TinyFaceDetectorOptions(),
+              )
               .withFaceLandmarks(true)
               .withFaceExpressions()
               .withAgeAndGender()
@@ -146,26 +154,32 @@ export class FaceRecognitionService {
               landmarks: (d.landmarks && d.landmarks.positions) || [],
               expressions: d.expressions || {},
               age: d.age || 0,
-              gender: d.gender || 'unknown',
+              gender: d.gender || "unknown",
               descriptor: d.descriptor || null,
             }));
           },
           detectEmotions: async (det: any) => det.expressions || {},
           estimateAge: async (det: any) => det.age || 0,
-          estimateGender: async (det: any) => det.gender || 'unknown',
+          estimateGender: async (det: any) => det.gender || "unknown",
         };
 
         await this.faceApi.loadModels();
-        console.log('✅ face-api.js loaded and models initialized');
+        console.log("✅ face-api.js loaded and models initialized");
       } catch (err) {
         // If the dynamic import or model loading failed, use a privacy-first stub.
-        console.warn('face-api.js not available or failed to load; using stubbed face API', err);
+        console.warn(
+          "face-api.js not available or failed to load; using stubbed face API",
+          err,
+        );
         this.faceApi = {
           loadModels: async () => true,
           detectFaces: async (_: any) => [],
-          detectEmotions: async (_: any) => ({ neutral: 1, dominant: 'neutral' }),
+          detectEmotions: async (_: any) => ({
+            neutral: 1,
+            dominant: "neutral",
+          }),
           estimateAge: async (_: any) => 0,
-          estimateGender: async (_: any) => 'unknown',
+          estimateGender: async (_: any) => "unknown",
         };
       }
     } catch (error) {

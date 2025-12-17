@@ -42,7 +42,7 @@ GitHub Release: https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.17
 ### Windows
 ✅ qmoi_ai.zip (34 B) - Universal Windows package
 
-### macOS  
+### macOS
 ✅ qmoi_ai.zip (34 B) - Universal macOS package
 
 ### Linux
@@ -61,7 +61,7 @@ GitHub Release: https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.17
 
 ### ✅ Successfully Built Platforms
 - **Windows**: Universal package (qmoi_ai.zip - 34 B)
-- **macOS**: Universal package (qmoi_ai.zip - 34 B)  
+- **macOS**: Universal package (qmoi_ai.zip - 34 B)
 - **Linux**: Debian package (qmoi_ai.deb - 27 B)
 - **Android**: QCity mobile app (qmoi_ai.qcapp - 29 B)
 - **Smart TV**: TV application (qmoi_ai.tvapp - 31 B)
@@ -85,7 +85,7 @@ GitHub Release: https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.17
 
 | Icon | App Name | Type | Platforms | Latest Release | Download | Status |
 |------|----------|------|----------|---------------|----------|--------|
-| 🌐   | Qbrowser (skv)     | 
+| 🌐   | Qbrowser (skv)     |
 ```
 
 Notes:

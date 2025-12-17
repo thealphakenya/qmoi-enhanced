@@ -6,15 +6,15 @@
  * Exposes predictions via a REST API for dashboard integration.
  */
 
-import fs from 'fs';
-import express from 'express';
+import fs from "fs";
+import express from "express";
 
-const ERROR_FIX_LOG = './logs/error_fix_summary.json';
+const ERROR_FIX_LOG = "./logs/error_fix_summary.json";
 const PORT = 4100;
 
 function analyzeLogs() {
   if (!fs.existsSync(ERROR_FIX_LOG)) return { predictions: [], stats: {} };
-  const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, 'utf-8'));
+  const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, "utf-8"));
   const errorTypeCounts = {};
   const fileCounts = {};
   const recent = log.slice(-20); // last 20 runs
@@ -41,14 +41,14 @@ function analyzeLogs() {
     .map(([file, count]) => ({ file, count }));
   return {
     predictions: [
-      ...topErrorTypes.map(e => ({ kind: 'errorType', ...e })),
-      ...topFiles.map(f => ({ kind: 'file', ...f }))
+      ...topErrorTypes.map((e) => ({ kind: "errorType", ...e })),
+      ...topFiles.map((f) => ({ kind: "file", ...f })),
     ],
-    stats: { errorTypeCounts, fileCounts }
+    stats: { errorTypeCounts, fileCounts },
   };
 }
 
-if (process.argv.includes('--predict')) {
+if (process.argv.includes("--predict")) {
   const result = analyzeLogs();
   console.log(JSON.stringify(result, null, 2));
   process.exit(0);
@@ -56,7 +56,9 @@ if (process.argv.includes('--predict')) {
 
 // REST API for dashboard
 const app = express();
-app.get('/api/predictions', (req, res) => {
+app.get("/api/predictions", (req, res) => {
   res.json(analyzeLogs());
 });
-app.listen(PORT, () => console.log(`QMOI Error Predictor API running on http://localhost:${PORT}`)); 
+app.listen(PORT, () =>
+  console.log(`QMOI Error Predictor API running on http://localhost:${PORT}`),
+);

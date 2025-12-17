@@ -1,3 +1,67 @@
+name: CI Build and Tests
+
+on:
+  push:
+    branches: [ 'upgrade/next-15', 'autosync-backup-20250926-232440' ]
+  pull_request:
+    branches: [ 'autosync-backup-20250926-232440' ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max-old-space-size=8192
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (CI)
+        run: npm run ci:build
+
+      - name: Run tests
+        run: npm run test:all
+
+      - name: Run coverage
+        run: npm run test:coverage
+        env:
+          CI: true
+
+      - name: Upload coverage artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage
+
+      - name: Save diagnostics (generate trace summary)
+        if: success() || failure()
+        run: |
+          mkdir -p .next/diagnostics || true
+          if [ -f .next/trace ]; then
+            node scripts/diagnostics/parse_next_trace.js .next/trace 50 > .next/diagnostics/trace-summary.txt || true
+          fi
+
+      - name: Upload .next trace
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-trace
+          path: .next/trace
+
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-diagnostics
+          path: .next/diagnostics
   build:
 name: CI
 

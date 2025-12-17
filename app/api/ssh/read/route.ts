@@ -7,6 +7,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   return NextResponse.json(
     { error: "SSH functionality is not available in this build" },
-    { status: 501 }
+    { status: 501 },
   );
 }

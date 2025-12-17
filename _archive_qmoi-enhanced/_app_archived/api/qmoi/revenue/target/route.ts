@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return NextResponse.json(
         { error: "Master access required" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     if (masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
         { error: "Invalid master key" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     if (!type || !amount) {
       return NextResponse.json(
         { error: "Type and amount are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     console.error("Set target error:", error);
     return NextResponse.json(
       { error: "Failed to set target" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

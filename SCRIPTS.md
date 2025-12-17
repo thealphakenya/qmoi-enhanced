@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -11,7 +12,6 @@ qmoi_validation_frontmatter: true
 - timestamp: 2025-10-25T00:32:32.231969Z
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
-
 
 # SCRIPTS.md
 
@@ -32,6 +32,7 @@ scripts/
 ```
 
 ## Usage & Integration
+
 - **api/automation_api.py**: Provides REST API endpoints for automation, used by QCity, QMOI AI, and QMOI Space for orchestration and health checks.
 - **ai_automation.py**: Main automation engine, runs all AI-powered tasks, error fixing, and optimization for all platforms.
 - **search_and_serve_components.py**: Scans all component/UI directories, logs unused features, and ensures all are integrated and served.
@@ -41,38 +42,42 @@ scripts/
 - **Other scripts**: Cover deployment, device management, error handling, financial integration, and more. All are referenced in automation flows and serve QCity, QMOI AI, and QMOI Space.
 
 ## UI Features & Coverage
+
 - All scripts related to UI features (e.g., enhanced_preview.py, enhanced_qmoi_implementation.py) are checked for usage in QCity, QMOI AI, and QMOI Space.
 - Unused/duplicate scripts are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 
 ## Automation & Health
+
 - All scripts are referenced in `ALLMDFILESREFS.md` and are planned for further enhancement and integration.
 - Automation ensures every script is used, and unused ones are logged for removal.
 
 **Status:** All scripts are now checked for usage and integration. No unused/duplicate scripts will remain after next cleanup. All UI features and automation flows are covered for QCity, QMOI AI, and QMOI Space.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "SCRIPTS.md",
-  "validated_at": "2025-10-26T20:51:22.623340Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "SCRIPTS.md"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": []
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "SCRIPTS.md",
+"validated_at": "2025-10-26T20:51:22.623340Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "SCRIPTS.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
 }
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -15,9 +16,11 @@ qmoi_validation_frontmatter: true
 # QMOI Cross-Platform Cloning & Optimization (QMOICLONE)
 
 ## Overview
+
 QMOI now supports fully automated, cross-platform cloning, deployment, error fixing, backup, and optimization for all supported platforms (Vercel, GitLab, GitHub, Colab, DagsHub, Gitpod, etc.).
 
 ## Features
+
 - **Automated Cloning & Sync:**
   - Clones and syncs all configured repos from GitLab, GitHub, DagsHub, etc.
   - Keeps all directories in sync with local and cloud changes
@@ -35,6 +38,7 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
   - Real-time status, logs, and manual/auto triggers
 
 ## Usage
+
 - Run QMOI clone/optimize script:
   ```sh
   node scripts/qmoi-clone-optimize.cjs
@@ -42,11 +46,13 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
 - Or trigger via QCity/QI UI (master only)
 
 ## Extension Points
+
 - Add new platforms or cloud targets
 - Extend error-fixing and optimization logic
 - Integrate with more UI panels or controls
 
 ## Troubleshooting
+
 - All errors, fixes, and actions are logged in `qmoi-clone-optimize.log`
 - Backups are stored in `qmoi-backups/`
 - For issues, check logs and UI panels
@@ -55,20 +61,24 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
 - The build and clone process now includes self-healing and notification logic: if a build fails, the system will attempt to auto-fix and notify all configured channels (Gmail, Slack, Telegram, Discord).
 
 ## Netlify Features
+
 - Netlify clone, deploy, and optimization features are now included in this file. All Netlify-specific automation is handled as part of the main QMOI clone/optimize process.
 
 ## References
+
 - [QMOICLONEGITPOD.md](QMOICLONEGITPOD.md)
 - [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
 - [QMOIVERCELDEV.md](QMOIVERCELDEV.md)
-- [REFERENCES.md](REFERENCES.md) 
+- [REFERENCES.md](REFERENCES.md)
 
 ## Universal Runner Engine
+
 - Platform-aware runners auto-detect and load platform-specific modules (GitHub, GitLab, Hugging Face, etc.)
 - Elastic, parallel, and self-healing: scale up/down, split jobs, auto-offload to cloud, auto-recover from errors
 - AI/ML-driven optimization: runners analyze logs, performance, and errors across all platforms, auto-suggest/apply optimizations
 
 ## New Dashboard Widgets
+
 - Platform Status Cards (top row): one per platform/clone, show status, runners, last sync, errors
 - Universal Trigger Panel: select platform/job type, run any job (build, test, deploy, sync, backup, optimize)
 - Elastic Scaling Panel: runner count per platform, scale up/down, resource usage bars
@@ -79,6 +89,7 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
 - Master-Only Controls: advanced settings, manual override, audit logs (sidebar/floating)
 
 ## AI/ML Automation & Cross-Platform Learning
+
 - AI/ML models aggregate logs/errors/fixes from all platforms
 - Fixes/optimizations that work on one platform are auto-suggested/applied to others
 - Runners self-evolve to support new platforms/features
@@ -86,29 +97,32 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
 - All major changes require master approval
 
 ## Usage & Troubleshooting
+
 - Use dashboard widgets to monitor status, trigger jobs, view logs, and apply AI/ML recommendations
 - Master can trigger any job on any platform, scale runners, or force sync/heal
 - All actions, fixes, and enhancements are logged and auditable
 - For errors, use logs and AI/ML suggestions; master can override or roll back as needed
 
 ## UI/UX TODO_PRODup
----------------------------------------------------------------
-| GitHub | GitLab | Hugging Face | Netlify | ... (Status Cards)|
----------------------------------------------------------------
-| Universal Trigger | Elastic Scaling | Master Controls (side) |
----------------------------------------------------------------
-| Cross-Platform Job Matrix (Jobs x Platforms, status/logs)    |
----------------------------------------------------------------
-| Clone Health & Sync | AI/ML Insights | Evolution History     |
----------------------------------------------------------------
-- Sidebar/Floating: Master-only controls, audit logs, manual override 
+
+---
+
+## | GitHub | GitLab | Hugging Face | Netlify | ... (Status Cards)|
+
+## | Universal Trigger | Elastic Scaling | Master Controls (side) |
+
+## | Cross-Platform Job Matrix (Jobs x Platforms, status/logs) |
+
+## | Clone Health & Sync | AI/ML Insights | Evolution History |
+
+- Sidebar/Floating: Master-only controls, audit logs, manual override
 
 ## Platform Independence & Cloned Infrastructure
 
 - QMOI does not use the actual platforms (e.g., Gitpod, GitLab, GitHub, Vercel, etc.) for automation, CI/CD, or development.
 - Instead, QMOI uses its own cloned, enhanced versions of these platforms, which are more advanced, secure, and optimized for QMOI's needs.
 - All cloning, mirroring, and automation is handled by QMOI's own infrastructure, ensuring full independence and control.
-- See INDEPENDENTQMOI.md for details on QMOI's independent operation and self-sustaining systems. 
+- See INDEPENDENTQMOI.md for details on QMOI's independent operation and self-sustaining systems.
 
 ## New Integrations & Enhancements
 
@@ -121,47 +135,49 @@ QMOI now supports fully automated, cross-platform cloning, deployment, error fix
 - **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "QMOICLONE.md",
-  "validated_at": "2025-10-26T20:51:22.472418Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI Cross-Platform Cloning & Optimization (QMOICLONE)"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": [
-        {
-          "label": "QMOICLONEGITPOD.md",
-          "target": "./QMOICLONEGITPOD.md",
-          "ok": true
-        },
-        {
-          "label": "QMOIGITLABDEV.md",
-          "target": "./QMOIGITLABDEV.md",
-          "ok": true
-        },
-        {
-          "label": "QMOIVERCELDEV.md",
-          "target": "./QMOIVERCELDEV.md",
-          "ok": true
-        },
-        {
-          "label": "REFERENCES.md",
-          "target": "./REFERENCES.md",
-          "ok": true
-        }
-      ]
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "QMOICLONE.md",
+"validated_at": "2025-10-26T20:51:22.472418Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI Cross-Platform Cloning & Optimization (QMOICLONE)"
+},
+{
+"name": "links",
+"ok": true,
+"detail": [
+{
+"label": "QMOICLONEGITPOD.md",
+"target": "./QMOICLONEGITPOD.md",
+"ok": true
+},
+{
+"label": "QMOIGITLABDEV.md",
+"target": "./QMOIGITLABDEV.md",
+"ok": true
+},
+{
+"label": "QMOIVERCELDEV.md",
+"target": "./QMOIVERCELDEV.md",
+"ok": true
+},
+{
+"label": "REFERENCES.md",
+"target": "./REFERENCES.md",
+"ok": true
 }
+]
+}
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->

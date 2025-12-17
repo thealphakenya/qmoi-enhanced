@@ -59,16 +59,16 @@ function getSystemResources() {
   const freeMem = os.freemem();
   const usedMem = totalMem - freeMem;
   const memUsagePercent = (usedMem / totalMem) * 100;
-  
+
   const cpus = os.cpus();
   const cpuUsage = cpus.reduce((acc, cpu) => {
     const total = Object.values(cpu.times).reduce((a, b) => a + b);
     const idle = cpu.times.idle;
     return acc + ((total - idle) / total);
   }, 0) / cpus.length * 100;
-  
+
   const loadAvg = os.loadavg();
-  
+
   return {
     memory: {
       total: totalMem,
@@ -94,7 +94,7 @@ function shouldOffload(resources) {
     cpu: 70,    // Offload if CPU usage > 70%
     load: 2.0   // Offload if load average > 2.0
   };
-  
+
   return (
     resources.me
 ```

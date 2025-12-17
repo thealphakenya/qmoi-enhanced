@@ -26,7 +26,7 @@ export default function AuditLogPanel() {
         setLogs(
           format === "csv"
             ? data.split("\n").map((l: string) => l.split(","))
-            : data.logs || []
+            : data.logs || [],
         );
         setLoading(false);
       });

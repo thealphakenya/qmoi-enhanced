@@ -68,19 +68,19 @@ class QMOIGitLabCIAutomation:
         }
         self.setup_file_watcher()
         self.setup_scheduled_tasks()
-        
+
     def setup_file_watcher(self):
         """Setup file system watcher for automatic triggers"""
         class QMOIFileHandler(FileSystemEventHandler):
             def __init__(self, automation):
                 self.automation = automation
-                
+
             def on_modified(self, event):
                 if not event.is_directory:
                     if event.src_path.endswith(('.py', '.js', '.ts', '.tsx', '.json')):
                         logger.info(f"File modified: {event.src_path}")
                         self.automation.auto_trigger_gitlab_ci()
-                        
+
         self.file_handler = QMOIFileHandler(self)
         self.observer = O
 ```

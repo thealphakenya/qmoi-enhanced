@@ -16,7 +16,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+````
 ---
 title: "ALL WALLETS QVS (Quick Verification Summary)"
 qmoi_validation_frontmatter: true
@@ -51,9 +51,10 @@ How the checks work
 Run (dry-run) — local dev
 ```bash
 python3 scripts/wallets/check_wallets.py
-```
+````
 
 Run (explicit live, only after human review)
+
 ```bash
 # Only run after manual code review and secrets provisioned
 export PRODUCTION_CONFIRMED=true
@@ -61,11 +62,14 @@ python3 scripts/wallets/check_wallets.py --real
 ```
 
 Next steps
+
 - Expand `scripts/wallets/` with adapters for testnets and exchanges (Binance, Bitget, Pesapal). Start with testnet-only adapters and automated unit tests.
 - Add a
+
 ```
 
 Notes:
 
 - This draft was generated automatically to help triage files removed from `donerefs.txt`.
 - Backups and previous runs may exist under `.qmoi_validation`.
+```

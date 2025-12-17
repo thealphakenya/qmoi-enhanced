@@ -221,7 +221,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   // Add state for API key and authentication status
   const [adminKey, setAdminKey] = useState(
-    () => localStorage.getItem("qcity-admin-key") || ""
+    () => localStorage.getItem("qcity-admin-key") || "",
   );
   const [authStatus, setAuthStatus] = useState<"idle" | "ok" | "error">("idle");
   const [authError, setAuthError] = useState<string | null>(null);
@@ -256,7 +256,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
       } catch {
         return {};
       }
-    }
+    },
   );
   const [selectedDevice, setSelectedDevice] = useState<string>("default");
   const [showConfirm, setShowConfirm] = useState(false);
@@ -273,7 +273,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   // Add state for onboarding/help
   const [showHelp, setShowHelp] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(
-    () => !localStorage.getItem("qcity-onboarded")
+    () => !localStorage.getItem("qcity-onboarded"),
   );
 
   // Add state for granular export/import
@@ -298,14 +298,14 @@ const QAvatar: React.FC<QAvatarProps> = ({
         setConfig((prev) => ({
           ...prev,
           props: [...prev.props, "magic-wand", "crystal-ball"].filter(
-            (_, i) => i < 5
+            (_, i) => i < 5,
           ),
         })),
       () =>
         setConfig((prev) => ({
           ...prev,
           accessories: [...prev.accessories, "crown", "cape"].filter(
-            (_, i) => i < 3
+            (_, i) => i < 3,
           ),
         })),
       () =>
@@ -326,7 +326,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     // Schedule next enhancement
     enhancementRef.current = setTimeout(
       enhanceAvatar,
-      30000 + Math.random() * 60000
+      30000 + Math.random() * 60000,
     ); // 30-90 seconds
   }, [config.aiEnhancement]);
 
@@ -385,9 +385,12 @@ const QAvatar: React.FC<QAvatarProps> = ({
     const randomEnv =
       environments[Math.floor(Math.random() * environments.length)];
 
-    setTimeout(() => {
-      setConfig((prev) => ({ ...prev, environment: randomEnv }));
-    }, 60000 + Math.random() * 120000); // 1-3 minutes
+    setTimeout(
+      () => {
+        setConfig((prev) => ({ ...prev, environment: randomEnv }));
+      },
+      60000 + Math.random() * 120000,
+    ); // 1-3 minutes
   }, [config.adaptiveBehavior]);
 
   useEffect(() => {
@@ -406,19 +409,19 @@ const QAvatar: React.FC<QAvatarProps> = ({
       config.floatingBehavior === "gentle"
         ? 3
         : config.floatingBehavior === "active"
-        ? 8
-        : config.floatingBehavior === "responsive"
-        ? 5
-        : 0;
+          ? 8
+          : config.floatingBehavior === "responsive"
+            ? 5
+            : 0;
 
     const frequency =
       config.floatingBehavior === "gentle"
         ? 0.02
         : config.floatingBehavior === "active"
-        ? 0.03
-        : config.floatingBehavior === "responsive"
-        ? 0.025
-        : 0;
+          ? 0.03
+          : config.floatingBehavior === "responsive"
+            ? 0.025
+            : 0;
 
     const time = Date.now() * frequency;
     const y = Math.sin(time) * amplitude;
@@ -493,7 +496,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         },
       }));
     },
-    [isDragging, dragOffset, config.size, config.isMinimized]
+    [isDragging, dragOffset, config.size, config.isMinimized],
   );
 
   const handleMouseUp = useCallback(() => {
@@ -1319,7 +1322,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   useEffect(() => {
     localStorage.setItem(
       "qcity-offloading-enabled",
-      JSON.stringify(offloadingEnabled)
+      JSON.stringify(offloadingEnabled),
     );
   }, [offloadingEnabled]);
 
@@ -1332,7 +1335,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   useEffect(() => {
     localStorage.setItem(
       "qcity-command-history",
-      JSON.stringify(commandHistory.slice(0, 10))
+      JSON.stringify(commandHistory.slice(0, 10)),
     );
   }, [commandHistory]);
 
@@ -1340,7 +1343,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   useEffect(() => {
     localStorage.setItem(
       "qcity-pinned-commands",
-      JSON.stringify(pinnedCommands)
+      JSON.stringify(pinnedCommands),
     );
   }, [pinnedCommands]);
   useEffect(() => {
@@ -1362,7 +1365,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     setPinnedCommands(
       pinnedCommands.includes(cmd)
         ? pinnedCommands.filter((c) => c !== cmd)
-        : [cmd, ...pinnedCommands]
+        : [cmd, ...pinnedCommands],
     );
   }
 
@@ -1457,7 +1460,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           [
             commandInput,
             ...commandHistory.filter((cmd) => cmd !== commandInput),
-          ].slice(0, 10)
+          ].slice(0, 10),
         );
       }
       setUsageCounts((prev) => ({
@@ -1493,7 +1496,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
             (data.devices || []).map((dev: any) => ({
               id: dev.id,
               name: dev.name,
-            }))
+            })),
           );
         }
       } catch {}
@@ -1728,8 +1731,8 @@ const QAvatar: React.FC<QAvatarProps> = ({
                           pinnedCommands.includes(cmd)
                             ? "secondary"
                             : usageCounts[cmd] > 2
-                            ? "default"
-                            : "ghost"
+                              ? "default"
+                              : "ghost"
                         }
                         onClick={() => setCommandInput(cmd)}
                         disabled={isRunning}
@@ -1863,8 +1866,8 @@ const QAvatar: React.FC<QAvatarProps> = ({
                         // Trap focus inside modal
                         const focusable = Array.from(
                           document.querySelectorAll(
-                            ".qavatar-onboarding-modal button"
-                          )
+                            ".qavatar-onboarding-modal button",
+                          ),
                         );
                         const first = focusable[0] as HTMLElement;
                         const last = focusable[
@@ -1977,7 +1980,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           setSelectedDevice(data.selectedDevice || "default");
         if (importScope === "all" || importScope === "notifications")
           setNotificationSettings(
-            data.notificationSettings || notificationSettings
+            data.notificationSettings || notificationSettings,
           );
         toast({
           title: "Import Complete",
@@ -2021,7 +2024,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         offset: String(auditOffset),
         format: auditFormat,
         ...Object.fromEntries(
-          Object.entries(auditFilter).filter(([_, v]) => v)
+          Object.entries(auditFilter).filter(([_, v]) => v),
         ),
       });
       const res = await fetch(`/api/qcity/audit-log?${params.toString()}`, {

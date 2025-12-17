@@ -1,11 +1,7 @@
 {
   "timestamp": "2025-07-14T16:55:16.109Z",
-  "fixes": [
-    "Installed dependencies with legacy peer deps"
-  ],
-  "errors": [
-    "Build failed: Command failed: npm run build"
-  ],
+  "fixes": ["Installed dependencies with legacy peer deps"],
+  "errors": ["Build failed: Command failed: npm run build"],
   "summary": {
     "totalFixes": 1,
     "totalErrors": 1,

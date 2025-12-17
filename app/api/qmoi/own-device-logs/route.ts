@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
         apiAuth.ok
           ? { error: "Master access required" }
           : apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.ok ? 403 : apiAuth.response?.status || 403 }
+        { status: apiAuth.ok ? 403 : apiAuth.response?.status || 403 },
       );
     }
 
@@ -53,14 +53,14 @@ export async function POST(request: NextRequest) {
     const loggerScript = path.join(
       projectRoot,
       "scripts",
-      "qmoi_own_device_logger.py"
+      "qmoi_own_device_logger.py",
     );
 
     // Check if logger script exists
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
         { error: "QMOI Own Device Logger not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
     // Execute the logger script
     const { stdout, stderr } = await execAsync(
       `python "${loggerScript}" ${args.join(" ")}`,
-      { cwd: projectRoot }
+      { cwd: projectRoot },
     );
 
     if (stderr) {
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
       console.error("Failed to parse logger output:", parseError);
       return NextResponse.json(
         { error: "Failed to parse log data" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
     console.error("QMOI Own Device Logs API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -121,7 +121,7 @@ export async function GET(request: NextRequest) {
         apiAuth.ok
           ? { error: "Master access required" }
           : apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.ok ? 403 : apiAuth.response?.status || 403 }
+        { status: apiAuth.ok ? 403 : apiAuth.response?.status || 403 },
       );
     }
 
@@ -130,19 +130,19 @@ export async function GET(request: NextRequest) {
     const loggerScript = path.join(
       projectRoot,
       "scripts",
-      "qmoi_own_device_logger.py"
+      "qmoi_own_device_logger.py",
     );
 
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
         { error: "QMOI Own Device Logger not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
     const { stdout } = await execAsync(
       `python "${loggerScript}" --statistics`,
-      { cwd: projectRoot }
+      { cwd: projectRoot },
     );
 
     let stats;
@@ -152,7 +152,7 @@ export async function GET(request: NextRequest) {
       console.error("Failed to parse statistics:", parseError);
       return NextResponse.json(
         { error: "Failed to parse statistics" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -161,7 +161,7 @@ export async function GET(request: NextRequest) {
     console.error("QMOI Own Device Statistics API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

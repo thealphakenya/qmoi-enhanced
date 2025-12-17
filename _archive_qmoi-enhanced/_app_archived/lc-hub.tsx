@@ -1,5 +1,5 @@
-import React from 'react';
-import { LeahWallet } from '@/components/LeahWallet';
+import React from "react";
+import { LeahWallet } from "@/components/LeahWallet";
 
 export default function LCHub() {
   return (

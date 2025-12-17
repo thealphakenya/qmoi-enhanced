@@ -4,12 +4,12 @@ import { MarketData, OrderBook } from '../types/trading';
 
 export class MLTradingStrategy implements TradingStrategy {
   private model: tf.LayersModel;
-  private isModelLoaded: boolean = false;
-  private predictionThreshold: number = 0.7;
-  private confidenceThreshold: number = 0.8;
-  private maxPositionSize: number = 0.1;
-  private stopLoss: number = 0.02;
-  private takeProfit: number = 0.04;
+  private isModelLoaded = false;
+  private predictionThreshold = 0.7;
+  private confidenceThreshold = 0.8;
+  private maxPositionSize = 0.1;
+  private stopLoss = 0.02;
+  private takeProfit = 0.04;
 
   constructor() {
     this.initializeModel();

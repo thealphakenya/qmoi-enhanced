@@ -16,7 +16,7 @@ function signRequest(
   method: string,
   path: string,
   body: string,
-  timestamp: string
+  timestamp: string,
 ) {
   const preHash = timestamp + method.toUpperCase() + path + body;
   return crypto
@@ -28,7 +28,7 @@ function signRequest(
 async function bitgetRequest(
   method: string,
   path: string,
-  bodyObj: Record<string, unknown> | null = null
+  bodyObj: Record<string, unknown> | null = null,
 ) {
   if (!BITGET_API_KEY || !BITGET_API_SECRET || !BITGET_API_PASSPHRASE)
     throw new Error("Bitget credentials not set");
@@ -60,7 +60,7 @@ const tradeLog: Array<Record<string, unknown>> = [];
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   // Simple master auth (replace with real auth in production)
   const masterToken = req.headers["x-master-token"];
@@ -79,7 +79,7 @@ export default async function handler(
       const data = await bitgetRequest(
         "GET",
         "/api/v2/mix/order/history?productType=USDT-FUTURES",
-        null
+        null,
       );
       return res.json({ trades: data.data });
     }
@@ -104,7 +104,7 @@ export default async function handler(
           side,
           orderType: "market",
           productType: "USDT-FUTURES",
-        }
+        },
       );
       tradeLog.push({ time: Date.now(), pair, side, size, result: order });
       return res.json({ order });
@@ -120,17 +120,17 @@ export default async function handler(
       // Analytics: profit, win rate, trade count, pairs, etc.
       const totalProfit = log.reduce(
         (sum: number, t: Record<string, any>) => sum + (t.order?.profit || 0),
-        0
+        0,
       );
       const winCount = log.filter(
-        (t: Record<string, any>) => (t.order?.profit || 0) > 0
+        (t: Record<string, any>) => (t.order?.profit || 0) > 0,
       ).length;
       const lossCount = log.filter(
-        (t: Record<string, any>) => (t.order?.profit || 0) < 0
+        (t: Record<string, any>) => (t.order?.profit || 0) < 0,
       ).length;
       const tradeCount = log.length;
       const pairs = Array.from(
-        new Set(log.map((t: Record<string, any>) => t.pair))
+        new Set(log.map((t: Record<string, any>) => t.pair)),
       );
       const winRate = tradeCount > 0 ? winCount / tradeCount : 0;
       return res.json({
@@ -165,7 +165,7 @@ export default async function handler(
               side,
               orderType: "market",
               productType: "USDT-FUTURES",
-            }
+            },
           );
           tradeLog.push({ time: Date.now(), pair, side, size, result: order });
           return res.json({ status: "trade-placed", order });

@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { exec } from 'child_process';
-import { promisify } from 'util';
-import { autoFixService } from './auto_fix_service';
+import axios from "axios";
+import { exec } from "child_process";
+import { promisify } from "util";
+import { autoFixService } from "./auto_fix_service";
 
 const execAsync = promisify(exec);
 
@@ -19,8 +19,11 @@ interface GitHubWebhookPayload {
 }
 
 class GitHubIntegrationService {
-  private readonly masterBranch = 'refs/heads/master';
-  private readonly emailAddresses = ['rovicviccy@gmail.com', 'thealphakenya@gmail.com'];
+  private readonly masterBranch = "refs/heads/master";
+  private readonly emailAddresses = [
+    "rovicviccy@gmail.com",
+    "thealphakenya@gmail.com",
+  ];
 
   public async handlePushEvent(payload: GitHubWebhookPayload) {
     if (payload.ref !== this.masterBranch) {
@@ -32,7 +35,7 @@ class GitHubIntegrationService {
       await this.ensureRepositoryCloned(payload.repository.full_name);
 
       // Pull latest changes
-      await execAsync('git pull origin master');
+      await execAsync("git pull origin master");
 
       // Run the auto-fix service
       const status = await this.getCurrentStatus();
@@ -46,14 +49,14 @@ class GitHubIntegrationService {
       // Send notification
       await this.sendNotification(payload, fixResults);
     } catch (error) {
-      console.error('Error handling push event:', error);
+      console.error("Error handling push event:", error);
       await this.sendErrorNotification(error);
     }
   }
 
   private async ensureRepositoryCloned(repoFullName: string) {
     try {
-      await execAsync('git status');
+      await execAsync("git status");
     } catch {
       // Repository not cloned, clone it
       await execAsync(`git clone https://github.com/${repoFullName}.git .`);
@@ -70,13 +73,16 @@ class GitHubIntegrationService {
   }
 
   private async commitAndPushFixes(fixResults: any) {
-    await execAsync('git add .');
+    await execAsync("git add .");
     await execAsync('git commit -m "Auto-fix: Resolved issues automatically"');
-    await execAsync('git push origin master');
+    await execAsync("git push origin master");
   }
 
-  private async sendNotification(payload: GitHubWebhookPayload, fixResults: any) {
-    const subject = 'Q-city Auto Fix Results';
+  private async sendNotification(
+    payload: GitHubWebhookPayload,
+    fixResults: any,
+  ) {
+    const subject = "Q-city Auto Fix Results";
     const body = `
       Repository: ${payload.repository.full_name}
       Commit: ${payload.commits[0].id}
@@ -88,7 +94,7 @@ class GitHubIntegrationService {
       - Remaining Issues: ${fixResults.remainingIssues}
       
       Logs:
-      ${fixResults.logs.join('\n')}
+      ${fixResults.logs.join("\n")}
     `;
 
     // Send email notification
@@ -96,7 +102,7 @@ class GitHubIntegrationService {
   }
 
   private async sendErrorNotification(error: Error) {
-    const subject = 'Q-city Auto Fix Error';
+    const subject = "Q-city Auto Fix Error";
     const body = `
       An error occurred during the auto-fix process:
       
@@ -108,4 +114,4 @@ class GitHubIntegrationService {
   }
 }
 
-export const githubIntegrationService = new GitHubIntegrationService(); 
+export const githubIntegrationService = new GitHubIntegrationService();

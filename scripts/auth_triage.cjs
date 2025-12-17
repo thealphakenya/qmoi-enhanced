@@ -13,7 +13,7 @@ for (const file of headerFiles) {
   const hasRequire = /requireApiKey\(|libProposals.requireApiKey/.test(content);
   const hasAdminEnv =
     /process\.env\.(ADMIN_TOKEN|QMOI_MASTER_API_KEY|MASTER_TOKEN|QMOI_ADMIN_KEY|QMOI_MASTER_API_KEY|ADMIN_KEY)/.test(
-      content
+      content,
     );
   results.push({
     file,
@@ -23,17 +23,17 @@ for (const file of headerFiles) {
     summary: hasRequire
       ? "uses requireApiKey"
       : hasAdminEnv
-      ? "uses env-admin-key"
-      : "no auth detected",
+        ? "uses env-admin-key"
+        : "no auth detected",
   });
 }
 
 fs.writeFileSync(
   ".qmoi_validation/auth_triage_report.json",
-  JSON.stringify({ generatedAt: new Date().toISOString(), results }, null, 2)
+  JSON.stringify({ generatedAt: new Date().toISOString(), results }, null, 2),
 );
 console.log(
   "Wrote .qmoi_validation/auth_triage_report.json with",
   results.length,
-  "items"
+  "items",
 );

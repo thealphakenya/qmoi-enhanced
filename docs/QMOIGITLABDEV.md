@@ -4,6 +4,7 @@ qmoi_validation_frontmatter: true
 ---
 
 <!-- LION_VALIDATION_START -->
+
 ## 🦁 L — Validated by QMOI Lion
 
 - validated: yes
@@ -63,9 +64,11 @@ ci_self_heal:
 If the same error persists for multiple runs (default: 2), QMOI will send notifications to Slack and/or email if configured.
 
 ### Slack
+
 - Set `SLACK_WEBHOOK_URL` as a CI/CD variable or in your `.env` file.
 
 ### Email
+
 - Set the following env vars:
   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `EMAIL_TO`, `EMAIL_FROM`
 - QMOI will send an email when persistent failures are detected.
@@ -95,44 +98,47 @@ QMOI self-healing automation is designed to work with GitLab, GitHub Actions, an
 See the script for details and future updates.
 
 ## See Also
-- [REFERENCES.md](REFERENCES.md) 
+
+- [REFERENCES.md](REFERENCES.md)
 
 > **Note:** QMOI now supports GitHub Actions self-healing automation. See [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md) for details.
 
 <!-- QMOI_VALIDATION_START -->
+
 {
-  "file": "docs/QMOIGITLABDEV.md",
-  "validated_at": "2025-10-26T20:51:22.713327Z",
-  "validator": "QMOI Lion (automated)",
-  "checks": [
-    {
-      "name": "title_present",
-      "ok": true,
-      "detail": "QMOI GitLab Self-Healing CI/CD Automation"
-    },
-    {
-      "name": "links",
-      "ok": true,
-      "detail": [
-        {
-          "label": "REFERENCES.md",
-          "target": "./REFERENCES.md",
-          "ok": true
-        },
-        {
-          "label": "QMOIGITHUBDEV.md",
-          "target": "./QMOIGITHUBDEV.md",
-          "ok": true
-        }
-      ]
-    }
-  ],
-  "passed": true,
-  "summary": {
-    "total_checks": 2,
-    "passed": true
-  }
+"file": "docs/QMOIGITLABDEV.md",
+"validated_at": "2025-10-26T20:51:22.713327Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "QMOI GitLab Self-Healing CI/CD Automation"
+},
+{
+"name": "links",
+"ok": true,
+"detail": [
+{
+"label": "REFERENCES.md",
+"target": "./REFERENCES.md",
+"ok": true
+},
+{
+"label": "QMOIGITHUBDEV.md",
+"target": "./QMOIGITHUBDEV.md",
+"ok": true
 }
+]
+}
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
 <!-- QMOI_VALIDATION_END -->
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

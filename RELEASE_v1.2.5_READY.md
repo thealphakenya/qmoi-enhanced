@@ -7,11 +7,13 @@
 ## 📦 Artifacts Ready
 
 ### Platform Apps (3 files, 27M total)
+
 - ✅ `app-release.apk` (10M) - Android signed APK
 - ✅ `qmoi-release.exe` (5.0M) - Windows executable
 - ✅ `qmoi-release.ipa` (12M) - iOS application
 
 ### Progressive Web Apps (6 files, 1.1M total)
+
 - ✅ `admin.zip` (3.3K)
 - ✅ `deals.zip` (2.6K)
 - ✅ `q-alpha.zip` (6.1K)
@@ -20,18 +22,22 @@
 - ✅ `qmoi-space.zip` (3.8K)
 
 ### Verification
+
 - ✅ `SHA256SUMS.txt` - All artifacts verified with checksums
 
 ## 🔗 Next Steps
 
 ### Option 1: Manual Upload via GitHub UI (Recommended)
+
 1. Go to: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5
 2. Click "Edit release"
 3. Upload all files from `/workspaces/qmoi-enhanced/v1.2.5_release/`
 4. Save and publish
 
 ### Option 2: Automated Upload Script
+
 Use GitHub CLI or API with proper authentication:
+
 ```bash
 # This requires GITHUB_TOKEN with write:releases permissions
 for file in /workspaces/qmoi-enhanced/v1.2.5_release/*; do
@@ -42,6 +48,7 @@ done
 ## 📋 Artifact Verification
 
 All files and checksums:
+
 ```
 dad5624cc0856e4ca3972edce270285229e67cab5439  admin.zip
 9f4c7433f7de3791b1e2a420aa09d82dca147f0e0de6  app-release.apk

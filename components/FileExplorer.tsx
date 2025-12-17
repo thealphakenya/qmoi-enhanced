@@ -78,7 +78,7 @@ const FileExplorer: React.FC = () => {
   ]);
 
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
-    new Set(["1", "2", "3"])
+    new Set(["1", "2", "3"]),
   );
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
 
@@ -92,7 +92,7 @@ const FileExplorer: React.FC = () => {
     setExpandedFolders(newExpanded);
   };
 
-  const renderFileItem = (item: FileItem, level: number = 0) => {
+  const renderFileItem = (item: FileItem, level = 0) => {
     const isExpanded = expandedFolders.has(item.id);
     const isSelected = selectedFile === item.id;
 
