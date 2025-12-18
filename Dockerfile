@@ -6,7 +6,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Use npm install fallback to handle repos without package-lock.json
-RUN npm install --legacy-peer-deps --omit=dev
+# Install dev dependencies in the builder stage (required for Next/Tailwind build plugins)
+RUN npm install --legacy-peer-deps
 
 # Copy rest of repository and build
 COPY . .
