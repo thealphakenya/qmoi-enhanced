@@ -1,3 +1,49 @@
+name: CI Build & Test
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+      - name: Build (CI)
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: npm run ci:build
+      - name: Lint
+        run: npm run lint
+      - name: Run tests (coverage)
+        env:
+          CI: true
+        run: npm run test:coverage
+      - name: Smoke check build artifacts
+        run: node scripts/smoke-check.js
+      - name: Start production server for smoke test
+        run: |
+          nohup npm start &
+          sleep 6
+          curl -v --fail http://localhost:3000/ || (echo "Server did not respond" && exit 3)
+      - name: Health check endpoint
+        run: |
+          curl -sS -f http://localhost:3000/api/health || echo "health endpoint missing or returned error"
+      - name: Upload build artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next/**
 name: CI Build and Tests
 
 on:
