@@ -16,15 +16,17 @@ const nextConfig = {
 
   // Ensure path aliases resolve during Next/webpack builds (fixes Docker CI resolution issues)
   webpack: (config) => {
+    // __dirname is not defined in ESM; use process.cwd() for compatibility in CI containers
+    const rootDir = process.cwd();
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
-      "@": path.resolve(__dirname),
-      "@/components": path.resolve(__dirname, "src/components"),
-      "@/app": path.resolve(__dirname, "app"),
-      "@/services": path.resolve(__dirname, "src/services"),
-      "@/hooks": path.resolve(__dirname, "src/hooks"),
-      "@/lib": path.resolve(__dirname, "lib"),
+      "@": rootDir,
+      "@/components": path.resolve(rootDir, "src/components"),
+      "@/app": path.resolve(rootDir, "app"),
+      "@/services": path.resolve(rootDir, "src/services"),
+      "@/hooks": path.resolve(rootDir, "src/hooks"),
+      "@/lib": path.resolve(rootDir, "lib"),
     };
     return config;
   },
