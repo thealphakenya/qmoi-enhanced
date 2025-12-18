@@ -2,9 +2,9 @@ name: Docker Build & Container Smoke
 
 on:
   push:
-    branches: [main]
+    branches: [main, autosync-backup-20250926-232440]
   pull_request:
-    branches: [main]
+    branches: [main, autosync-backup-20250926-232440]
   workflow_dispatch: {}
 
 permissions:
@@ -52,7 +52,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          push: ${{ github.ref == 'refs/heads/main' }}
+          push: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/autosync-backup-20250926-232440' }}
           tags: |
             ghcr.io/${{ github.repository }}:latest
             ghcr.io/${{ github.repository }}:${{ github.sha }}
