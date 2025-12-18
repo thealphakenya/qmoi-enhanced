@@ -129,6 +129,16 @@ junit.xml
 .nuxt/
 .vuepress/dist
 
+# Jest cache
+.jest_cache/
+
+# QMOI test state
+.qmoi_state_test/
+
+# local data and wallets
+data/wallets/*.json
+
+
 # Runtime data
 pids
 *.pid
