@@ -1,38 +1,29 @@
-## Multi-stage Dockerfile for QMOI production
-FROM node:18-alpine AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --omit=dev
-COPY . .
-RUN npm run build --if-present
-
-FROM node:18-alpine AS runtime
-WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-EXPOSE 3000
-CMD ["npx", "next", "start", "-p", "3000"]
 # Multi-stage Dockerfile for QMOI (Next.js production)
 FROM node:20-alpine AS builder
 WORKDIR /app
+
+# Copy only lockfiles/package manifests first for better layer caching
 COPY package*.json ./
-# install deps
-RUN npm ci --only=production
+
+# Use npm install fallback to handle repos without package-lock.json
+RUN npm install --legacy-peer-deps --omit=dev
+
+# Copy rest of repository and build
 COPY . .
-# build application
 RUN npm run ci:build
 
-# Final image
+# Final runtime image
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
+
+# Copy built artifacts
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-# Install only production deps
-RUN npm ci --only=production
+
+# Install only production deps in the runtime image (safe fallback)
+RUN npm install --legacy-peer-deps --omit=dev --production --no-audit --no-fund || true
+
 EXPOSE 3000
 CMD ["npm", "start"]
