@@ -28,6 +28,11 @@ const nextConfig = {
       "@/hooks": path.resolve(rootDir, "src/hooks"),
       "@/lib": path.resolve(rootDir, "lib"),
     };
+
+    // Resolve modules from repo root and accept TS/TSX extensions explicitly
+    config.resolve.modules = Array.from(new Set([rootDir, 'node_modules', ...(config.resolve.modules || [])]));
+    config.resolve.extensions = Array.from(new Set(['.ts', '.tsx', '.js', '.jsx', ...(config.resolve.extensions || [])]));
+
     return config;
   },
 };
