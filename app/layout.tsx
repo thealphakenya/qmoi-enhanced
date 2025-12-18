@@ -2,8 +2,8 @@ import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import "./global.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { FloatingAQ } from "@/components/FloatingAQ";
+import { ThemeProvider } from "../src/components/theme-provider";
+import { FloatingAQ } from "../src/components/FloatingAQ";
 import { Analytics } from "@vercel/analytics/next";
 
 // NOTE: Temporarily removed next/font/google usage to isolate heavy build step

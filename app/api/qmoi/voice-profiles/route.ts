@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   voiceProfiles,
   avatarsConfig,
-} from "@/components/q-city/avatarsConfig";
+} from "../../../../src/components/q-city/avatarsConfig";
 
 export async function GET() {
   try {

@@ -3,7 +3,7 @@ import {
   avatarsConfig,
   animationEngines,
   qualityLevels,
-} from "@/components/q-city/avatarsConfig";
+} from "../../../../src/components/q-city/avatarsConfig";
 
 export async function GET() {
   try {
