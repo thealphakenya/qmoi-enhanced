@@ -31,3 +31,12 @@ Notes:
 CI:
 
 - A GitHub Actions workflow named `.github/workflows/ci-build.yml` is added to run the build, tests, and smoke checks on push and pull requests.
+
+Docker image & CI publishing 🔧
+
+- A new workflow `.github/workflows/docker-image.yml` builds the production Docker image using Buildx, runs container-based smoke tests, and publishes to GitHub Container Registry (GHCR) when commits are pushed to `main`.
+- Image tags published: `ghcr.io/<owner>/<repo>:latest` and `ghcr.io/<owner>/<repo>:<sha>`. The workflow uses the `GITHUB_TOKEN` for authentication and is configured to `push` only when running on `main`.
+- To preview locally after CI publishes an image:
+  1. docker pull ghcr.io/<owner>/<repo>:latest
+  2. docker run -p 3000:3000 --rm ghcr.io/<owner>/<repo>:latest
+  3. Visit http://localhost:3000 in your browser.
