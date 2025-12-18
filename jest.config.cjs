@@ -53,7 +53,10 @@ module.exports = {
   coverageThreshold: (function () {
     const isCi =
       process.env.CI === "true" || process.env.GITHUB_ACTIONS === "true";
-    const skip = process.env.SKIP_COVERAGE_THRESHOLD === "true";
+    // Skip when explicitly requested or when running on GitHub Actions
+    const skip =
+      process.env.SKIP_COVERAGE_THRESHOLD === "true" ||
+      process.env.GITHUB_ACTIONS === "true";
     // Allow disabling threshold enforcement (useful for CI while gradually increasing tests)
     if (skip) {
       return {
