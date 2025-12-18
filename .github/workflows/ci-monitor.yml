@@ -1,0 +1,49 @@
+name: CI Monitor
+
+on:
+  workflow_run:
+    workflows: ["CI Build & Smoke", "Docker Build & Container Smoke"]
+    types:
+      - completed
+
+jobs:
+  notify-on-failure:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub Issue for failed run
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            const title = `[CI] ${run.name} failed on ${run.head_branch}`;
+            const body = `**Workflow:** [${run.name}](${run.html_url})\n**Branch:** ${run.head_branch}\n**Commit:** ${run.head_sha}\n\nA workflow run has failed. Start by inspecting the logs and artifacts attached to the run.\n\nIf you'd like me to attempt an automated fix for common issues (missing lockfile, install failures, coverage thresholds, or OOM builds), reply to this issue with the phrase 'auto-fix' and I will open a PR with suggested changes.`;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['ci-failure']
+            });
+
+      - name: Add comment to Pull Request (if present)
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            // Try to find any open PR for the branch
+            const prs = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: `${context.repo.owner}:${run.head_branch}`
+            });
+            if (prs.data && prs.data.length > 0) {
+              const pr = prs.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: `CI workflow **${run.name}** failed for this branch: ${run.html_url}. An issue has been opened to track the failure.`
+              });
+            }
