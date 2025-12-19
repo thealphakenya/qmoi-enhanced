@@ -6,6 +6,8 @@ type Props = {
   attribute?: string;
   defaultTheme?: "light" | "dark" | "system";
   enableSystem?: boolean;
+  // When true, temporarily disables CSS transitions during theme changes to avoid flashes
+  disableTransitionOnChange?: boolean;
 };
 
 export function ThemeProvider({
@@ -13,6 +15,7 @@ export function ThemeProvider({
   attribute = "data-theme",
   defaultTheme = "system",
   enableSystem = true,
+  disableTransitionOnChange = false,
 }: Props) {
   useEffect(() => {
     try {
@@ -27,11 +30,23 @@ export function ThemeProvider({
           ? "dark"
           : "light";
       }
+
+      // Optionally disable transitions during theme change to avoid visual flashes
+      if (disableTransitionOnChange && typeof document !== "undefined") {
+        document.documentElement.classList.add("qmoi-disable-theme-transition");
+        // Remove the class after a short delay so normal transitions resume
+        setTimeout(() => {
+          document.documentElement.classList.remove(
+            "qmoi-disable-theme-transition"
+          );
+        }, 250);
+      }
+
       document.documentElement.setAttribute(attribute, theme as string);
     } catch (e) {
       // fail silently in tests
     }
-  }, [attribute, defaultTheme, enableSystem]);
+  }, [attribute, defaultTheme, enableSystem, disableTransitionOnChange]);
 
   return <>{children}</>;
 }
