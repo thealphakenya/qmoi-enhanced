@@ -40,6 +40,42 @@ python scripts/qmoi-start.py
 - Run tests: `npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`
 - Build (CI style): `npm run ci:build`
 
+Local QM OI helper server (for quick persona and memory tests):
+
+- Start the local helper server (Python):
+
+  ```bash
+  python3 scripts/qmoi_local_server.py
+  ```
+
+- Example: send a chat in "master" persona (curl):
+
+  ```bash
+  curl -sS -X POST http://127.0.0.1:8080/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -d '{"messages":[{"role":"system","content":"master"},{"role":"user","content":"How are you doing today?"}]}'
+  ```
+
+  Expected snippet of reply:
+
+  ```text
+  [Master Mode] At your command. You said: How are you doing today?
+  I will respond according to master-level persona with direct, authoritative guidance.
+  ```
+
+- Inspect memory saved by helper server:
+
+  ```bash
+  curl -sS http://127.0.0.1:8080/memory | jq .
+  ```
+
+- Trigger a sync push (no backends configured by default):
+
+  ```bash
+  curl -sS -X POST http://127.0.0.1:8080/sync/push
+  # Expected: {"ok": true, "details": ["no_backends_configured"] }
+  ```
+
 ## 🚀 Production
 
 - Build and start (simple):
@@ -71,6 +107,13 @@ python scripts/qmoi-start.py
 ## 🛡️ Always-On
 
 - QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your device is offline.
+
+### 🔒 Model policy
+
+- QMOI now enforces a canonical model name `qmoi` (the QMOI aggregator) across the system; runtime overrides are ignored for safety and determinism.
+- The local helper server no longer accepts environment or query-based model overrides and reports its health with `model: "qmoi"`.
+- The model backup worker's interval configuration had a path bug that has been fixed to respect `ai.model.backup_interval` with a safe default.
+- QMOI now exposes an aggregator that combines local and (optionally) cloud model outputs into a single response; a backup is performed after aggregation events to persist metrics and state.
 
 ---
 

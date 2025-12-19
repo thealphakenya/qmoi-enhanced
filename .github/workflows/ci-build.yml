@@ -32,6 +32,14 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
+      - name: Verify production build (catch missing build-time devDeps) 🔧
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+          NODE_ENV: production
+        run: |
+          # Run a production build to catch missing build-time devDependencies (Tailwind/PostCSS, etc.)
+          npm run build --if-present
+
       - name: Run CI build (optimized)
         env:
           NODE_OPTIONS: --max-old-space-size=8192

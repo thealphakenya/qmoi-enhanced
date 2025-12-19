@@ -6,6 +6,11 @@ on:
     types:
       - completed
 
+permissions:
+  issues: write
+  pull-requests: write
+  contents: write
+
 jobs:
   notify-on-failure:
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}

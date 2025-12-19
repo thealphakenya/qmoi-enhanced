@@ -25,6 +25,13 @@ export async function GET(request: NextRequest) {
     const mediaStatus = searchParams.get("mediaStatus");
     const datasets = searchParams.get("datasets");
 
+    // Always ignore any client-supplied 'model' query param and enforce canonical model
+    if (searchParams.has("model")) {
+      console.warn(
+        "Client attempted to override 'model' param; ignoring and using 'qmoi' aggregator."
+      );
+    }
+
     if (allStats) {
       // [PRODUCTION IMPLEMENTATION REQUIRED] AI tasks - replace with actual implementation
       const aiTasks: AITask[] = [
@@ -55,7 +62,8 @@ export async function GET(request: NextRequest) {
         },
       ];
 
-      return NextResponse.json({ tasks: aiTasks });
+      // Include canonical model name in the response
+      return NextResponse.json({ model: "qmoi", tasks: aiTasks });
     }
 
     if (mediaStatus) {
@@ -87,13 +95,13 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       { error: "Invalid query parameter" },
-      { status: 400 },
+      { status: 400 }
     );
   } catch (error) {
     console.error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -129,13 +137,13 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { error: "Invalid action specified" },
-      { status: 400 },
+      { status: 400 }
     );
   } catch (error) {
     console.error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

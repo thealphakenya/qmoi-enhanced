@@ -20,8 +20,9 @@ function MainPage() {
   // Stores chat history messages
   const [chatHistory, setChatHistory] = useState<any[]>([]);
 
-  // Currently selected Model
-  const [selectedModel, setSelectedModel] = useState("Auto");
+  // The model is canonicalized to 'qmoi' and runtime selection is not allowed
+  // (UI model selection removed to enforce the canonical aggregator)
+  const selectedModel = "qmoi";
 
   // Currently selected User
   const [user, setUser] = useState<string>("Victor Kwemoi");
@@ -67,12 +68,7 @@ function MainPage() {
           <QIStateWindow state="active" session={sessionState} />
 
           {/* Chatbot for interacting with the AI */}
-          <Chatbot
-            chatHistory={chatHistory}
-            setChatHistory={setChatHistory}
-            selectedModel={selectedModel}
-            setSelectedModel={setSelectedModel}
-          />
+          <Chatbot chatHistory={chatHistory} setChatHistory={setChatHistory} />
 
           {/* Additional UI related to the QAI System */}
           <AlphaQAISystem />

@@ -356,6 +356,13 @@ python scripts/independent-deploy-monitor.py
 - **AI Enhancement**: Advanced AI capabilities
 - **Blockchain**: Blockchain integration
 
+### 2. Canonical QMOI Aggregator
+
+- **Canonical Model**: QMOI enforces a canonical `qmoi` aggregator used everywhere; runtime model overrides are ignored for consistency and safety.
+- **Aggregation Strategy**: The `qmoi` aggregator merges local and optional cloud model outputs and annotates responses with source metadata.
+- **Durable Memory**: Aggregation events will trigger persistent backups and optional remote sync (gist, HF, scp) to ensure auditability and recoverability.
+- **Developer Notes**: Remove model selection UI and route all model requests through `qmoi`. See `QMOIMODEL.md` for details.
+
 ### 2. Extended Capabilities
 
 - **Multi-Domain**: Operate across multiple domains

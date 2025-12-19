@@ -25,7 +25,7 @@ export async function GET() {
     console.error("Error fetching voice profiles:", error);
     return NextResponse.json(
       { error: "Failed to fetch voice profiles" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     console.error("Error in voice profiles API:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -88,7 +88,7 @@ async function switchVoice(voiceId: string) {
     console.error("Error switching voice:", error);
     return NextResponse.json(
       { error: "Failed to switch voice" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -97,7 +97,7 @@ async function previewVoice(
   voiceId: string,
   text: string,
   quality: string,
-  volume: number,
+  volume: number
 ) {
   try {
     // In a real implementation, this would:
@@ -123,7 +123,7 @@ async function previewVoice(
     console.error("Error previewing voice:", error);
     return NextResponse.json(
       { error: "Failed to generate voice preview" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -153,7 +153,7 @@ async function enhanceVoice(voiceId: string) {
     console.error("Error enhancing voice:", error);
     return NextResponse.json(
       { error: "Failed to enhance voice" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -185,7 +185,7 @@ async function upgradeVoice(voiceId: string) {
     console.error("Error upgrading voice:", error);
     return NextResponse.json(
       { error: "Failed to upgrade voice" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -250,7 +250,7 @@ async function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,
-  volume: number,
+  volume: number
 ): Promise<string> {
   // In a real implementation, this would integrate with:
   // - Bark (for high-quality TTS)
@@ -260,5 +260,7 @@ async function generateTTSAudio(
   // - Commercial APIs (ElevenLabs, Azure, etc.)
 
   // For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] URL
-  return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(text)}&quality=${quality}&volume=${volume}`;
+  return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(
+    text
+  )}&quality=${quality}&volume=${volume}`;
 }

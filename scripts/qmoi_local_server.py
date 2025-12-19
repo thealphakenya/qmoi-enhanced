@@ -28,20 +28,19 @@ try:
 except Exception:
     requests = None
 
-BASE = '/workspaces/qmoi-enhanced'
-MEMORY_FILE = os.path.join(BASE, 'qmoi_memory.json')
-DB_FILE = os.path.join(BASE, 'qmoi_memory.db')
+BASE = os.environ.get('QMOI_BASE', '/workspaces/qmoi-enhanced')
+DEFAULT_MEMORY_FILE = os.path.join(BASE, 'qmoi_memory.json')
+MEMORY_FILE = os.environ.get('QMOI_MEMORY_FILE', DEFAULT_MEMORY_FILE)
+DB_FILE = os.environ.get('QMOI_DB_FILE', os.path.join(BASE, 'qmoi_memory.db'))
 USE_SQLITE = os.environ.get('QMOI_USE_SQLITE', '') == '1'
-# The canonical model name used by the server. For safety we default to 'qmoi'
-# and only allow overrides when QMOI_ALLOW_MODEL_OVERRIDE is set to '1'.
+# The canonical model name used by the server. For safety we ALWAYS use 'qmoi'.
 MODEL_NAME = 'qmoi'
-if os.environ.get('QMOI_ALLOW_MODEL_OVERRIDE', '') == '1':
-    MODEL_NAME = os.environ.get('QMOI_MODEL', MODEL_NAME)
 
 # Optional API key protecting /sync/* endpoints. If not set, sync endpoints are open
 # on the local network (still not recommended for production). When set, requests
 # must include header: Authorization: Bearer <QMOI_SYNC_API_KEY>
 SYNC_API_KEY = os.environ.get('QMOI_SYNC_API_KEY')
+
 
 def load_memory():
     if USE_SQLITE:
@@ -72,6 +71,7 @@ def load_memory():
                 return {'conversations': []}
         return {'conversations': []}
 
+
 def save_memory(mem):
     if USE_SQLITE:
         conn = sqlite3.connect(DB_FILE)
@@ -90,7 +90,8 @@ def save_memory(mem):
                     message = c.get('message')
                     if not ts:
                         continue
-                    cur.execute('INSERT OR REPLACE INTO conversations (timestamp, persona, message) VALUES (?, ?, ?)', (ts, persona, message))
+                    cur.execute(
+                        'INSERT OR REPLACE INTO conversations (timestamp, persona, message) VALUES (?, ?, ?)', (ts, persona, message))
                 except Exception:
                     continue
             conn.commit()
@@ -117,6 +118,7 @@ def save_memory(mem):
             with open(MEMORY_FILE, 'w') as f:
                 json.dump(mem, f, indent=2)
 
+
 def migrate_json_to_sqlite():
     # If sqlite is enabled and DB is empty but JSON exists, migrate
     if not USE_SQLITE:
@@ -142,32 +144,35 @@ def migrate_json_to_sqlite():
                     persona = c.get('persona')
                     message = c.get('message')
                     if ts:
-                        cur.execute('INSERT OR REPLACE INTO conversations (timestamp, persona, message) VALUES (?, ?, ?)', (ts, persona, message))
+                        cur.execute(
+                            'INSERT OR REPLACE INTO conversations (timestamp, persona, message) VALUES (?, ?, ?)', (ts, persona, message))
                 conn.commit()
             except Exception:
                 pass
     finally:
         conn.close()
 
+
 def detect_persona(messages):
     # Heuristic: examine last user/system messages for keywords
     persona = 'user'
     for m in reversed(messages[-6:]):
-        role = m.get('role','')
+        role = m.get('role', '')
         content = (m.get('content') or '').lower()
         if role == 'system' and 'master' in content:
             return 'master'
-        if 'sister' in content or (role=='system' and 'sister' in content):
+        if 'sister' in content or (role == 'system' and 'sister' in content):
             return 'sister'
         if 'master:' in content:
             return 'master'
     # If any message labeled assistant with prefix 'Master' assume master
     for m in messages:
-        if m.get('role')=='assistant' and isinstance(m.get('content'), str):
+        if m.get('role') == 'assistant' and isinstance(m.get('content'), str):
             c = m['content'].lower()
             if c.strip().startswith('master'):
                 return 'master'
     return persona
+
 
 def persona_response(persona, user_msg, memory):
     # Basic templated responses — replace with real model integration later
@@ -199,7 +204,7 @@ def persona_response(persona, user_msg, memory):
 def push_memory_to_backends(memory):
     """Push memory to configured backends. Returns (ok:bool, details:list)."""
     details = []
-    backends = os.environ.get('QMOI_SYNC_BACKENDS','').split(',')
+    backends = os.environ.get('QMOI_SYNC_BACKENDS', '').split(',')
     if not backends or backends == ['']:
         return True, ['no_backends_configured']
 
@@ -219,7 +224,7 @@ def push_memory_to_backends(memory):
                 url = f'https://api.github.com/gists/{gist_id}'
                 payload = {'files': {'qmoi_memory.json': {'content': json.dumps(memory, indent=2)}}}
                 r = requests.patch(url, headers={'Authorization': f'token {gh_token}'}, json=payload, timeout=15)
-                if r.status_code in (200,201):
+                if r.status_code in (200, 201):
                     details.append('gist:ok')
                 else:
                     details.append(f'gist:error:{r.status_code}')
@@ -241,7 +246,7 @@ def push_memory_to_backends(memory):
                     'commit_message': 'sync qmoi_memory.json from local server'
                 }
                 r = requests.post(api_url, headers={'Authorization': f'Bearer {hf_token}'}, json=payload, timeout=20)
-                if r.status_code in (200,201):
+                if r.status_code in (200, 201):
                     details.append('hf:ok')
                 else:
                     details.append(f'hf:error:{r.status_code}')
@@ -250,7 +255,8 @@ def push_memory_to_backends(memory):
                 # Format scp:user@host:/path
                 scp_target = b[len('scp:'):]
                 try:
-                    import subprocess, tempfile
+                    import subprocess
+                    import tempfile
                     with tempfile.NamedTemporaryFile('w', delete=False) as t:
                         t.write(json.dumps(memory, indent=2))
                         tmpname = t.name
@@ -270,7 +276,7 @@ def push_memory_to_backends(memory):
 
 def pull_memory_from_backends():
     """Attempt to pull memory from configured backends. Returns memory dict or None."""
-    backends = os.environ.get('QMOI_SYNC_BACKENDS','').split(',')
+    backends = os.environ.get('QMOI_SYNC_BACKENDS', '').split(',')
     for b in backends:
         b = b.strip()
         if not b:
@@ -315,6 +321,7 @@ def pull_memory_from_backends():
             continue
     return None
 
+
 def _check_sync_auth(headers):
     """Return (allowed:bool, reason:str). If SYNC_API_KEY is not configured,
     allow by default."""
@@ -328,10 +335,21 @@ def _check_sync_auth(headers):
         return True, 'ok'
     return False, 'invalid_token'
 
+
 class Handler(BaseHTTPRequestHandler):
     def _set_headers(self, code=200, ct='application/json'):
         self.send_response(code)
         self.send_header('Content-type', ct)
+        # Allow local test clients to call without CORS failures in test env
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.end_headers()
+
+    def do_OPTIONS(self):
+        # Handle CORS preflight requests
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
         self.end_headers()
 
     def do_POST(self):
@@ -344,13 +362,13 @@ class Handler(BaseHTTPRequestHandler):
                 data = json.loads(body.decode()) if body else {}
             except Exception:
                 self._set_headers(400)
-                self.wfile.write(json.dumps({'error':'invalid_json'}).encode())
+                self.wfile.write(json.dumps({'error': 'invalid_json'}).encode())
                 return
 
             messages = data.get('messages') or []
             # fallback: single input
             if not messages and 'input' in data:
-                messages = [{'role':'user','content':data['input']}]
+                messages = [{'role': 'user', 'content': data['input']}]
 
             memory = load_memory()
             persona = detect_persona(messages)
@@ -359,10 +377,10 @@ class Handler(BaseHTTPRequestHandler):
             user_msg = ''
             for m in reversed(messages):
                 if m.get('role') == 'user':
-                    user_msg = m.get('content','')
+                    user_msg = m.get('content', '')
                     break
             if not user_msg and messages:
-                user_msg = messages[-1].get('content','')
+                user_msg = messages[-1].get('content', '')
 
             # Detect simple agent actions in the user message (e.g., create file)
             action_result = None
@@ -420,7 +438,7 @@ class Handler(BaseHTTPRequestHandler):
                 'choices': [
                     {
                         'index': 0,
-                        'message': {'role':'assistant','content': reply_text},
+                        'message': {'role': 'assistant', 'content': reply_text},
                         'finish_reason': 'stop'
                     }
                 ]
@@ -487,13 +505,14 @@ class Handler(BaseHTTPRequestHandler):
                 return
         # Unknown POST route
         self._set_headers(404)
-        self.wfile.write(json.dumps({'error':'not_found'}).encode())
+        self.wfile.write(json.dumps({'error': 'not_found'}).encode())
 
     def do_GET(self):
         parsed = urlparse(self.path)
         if parsed.path == '/health':
             self._set_headers(200)
-            self.wfile.write(json.dumps({'status':'ok','model':'qmoi-local'}).encode())
+            # Report canonical model name
+            self.wfile.write(json.dumps({'status': 'ok', 'model': 'qmoi'}).encode())
             return
         if parsed.path == '/memory':
             mem = load_memory()
@@ -503,7 +522,7 @@ class Handler(BaseHTTPRequestHandler):
         # Simple endpoint to list configured sync backends
         if parsed.path == '/sync/config':
             cfg = {
-                'backends': os.environ.get('QMOI_SYNC_BACKENDS','').split(','),
+                'backends': os.environ.get('QMOI_SYNC_BACKENDS', '').split(','),
                 'hf_repo': os.environ.get('QMOI_HF_REPO'),
                 'gist_id': os.environ.get('QMOI_GIST_ID')
             }
@@ -511,7 +530,7 @@ class Handler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(cfg).encode())
             return
         self._set_headers(404)
-        self.wfile.write(json.dumps({'error':'not_found'}).encode())
+        self.wfile.write(json.dumps({'error': 'not_found'}).encode())
 
 
 def run(server_class=HTTPServer, handler_class=Handler, port=8080):
@@ -550,4 +569,6 @@ if __name__ == '__main__':
     if not os.path.exists(MEMORY_FILE):
         with open(MEMORY_FILE, 'w') as f:
             json.dump({'conversations': []}, f)
-    run()
+    # Allow test runners to override port via QMOI_LOCAL_PORT env
+    port = int(os.environ.get('QMOI_LOCAL_PORT', '8080'))
+    run(port=port)
