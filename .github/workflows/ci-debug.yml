@@ -1,0 +1,50 @@
+name: CI Debug (test logs)
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  ci-debug:
+    name: CI Debug
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install deps (npm ci or npm install)
+        run: |
+          set -euo pipefail
+          if [ -f package-lock.json ]; then
+            npm ci --silent || npm install --no-audit --no-fund --silent
+          else
+            npm install --no-audit --no-fund --silent
+          fi
+
+      - name: Run tests and capture output
+        run: |
+          set -euo pipefail
+          # Capture both stdout and stderr into test-output.txt so we can download it
+          npm test --silent > test-output.txt 2>&1 || true
+          echo "--- EOF: tail of test-output.txt ---"
+          tail -n 200 test-output.txt || true
+
+      - name: Upload test logs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs-${{ github.sha }}
+          path: test-output.txt
+
+      - name: Upload full workspace log (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace-tar-${{ github.sha }}
+          path: |
+            .
