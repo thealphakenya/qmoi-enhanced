@@ -43,24 +43,38 @@ jobs:
 
       - name: Post tail of test output to PR as a comment (for easier debugging)
         if: always()
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          REPO: ${{ github.repository }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Post last 4000 characters of test-output.txt as a PR comment to make failures visible
-          tail -c 4000 test-output.txt > /tmp/test-tail.txt || true
-          body="$(printf "#### CI Debug: test-output (tail)\n\n")\n$(sed -n '1,200p' /tmp/test-tail.txt | sed 's/^/```\n/; $a\n```')"
-          # Ensure we have a PR number
-          if [ -z "${PR_NUMBER}" ] || [ "${PR_NUMBER}" = "null" ]; then
-            echo "No PR number available, skipping comment post"
-            exit 0
-          fi
-          curl -s -S -H "Authorization: token ${TOKEN}" -H "Accept: application/vnd.github+json" \
-            -X POST "https://api.github.com/repos/${REPO}/issues/${PR_NUMBER}/comments" \
-            -d @- <<'JSON'
-{ "body": "$(sed ':a;N;$!ba;s/"/\\"/g' /tmp/test-tail.txt | sed '1s/^/#### CI Debug: test-output (tail)\\n\\n```\\n/; $a\\n```/')" }
-JSON
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const sha = process.env.GITHUB_SHA;
+            let body = '#### CI Debug: test-output (tail)\n\n';
+            let path = 'test-output.txt';
+            if (fs.existsSync(path)) {
+              let txt = fs.readFileSync(path, 'utf8');
+              let tail = txt.slice(-3000);
+              body += '```\n' + tail + '\n```';
+            } else {
+              body += 'No test-output.txt found';
+            }
+            // Find PR(s) associated with this commit and comment on the first one
+            const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({ owner, repo, commit_sha: sha });
+            if (prs.data && prs.data.length > 0) {
+              const prNum = prs.data[0].number;
+              await github.rest.issues.createComment({ owner, repo, issue_number: prNum, body });
+              console.log('Posted debug comment to PR', prNum);
+            } else {
+              console.log('No PRs associated with commit', sha);
+            }
+
+      - name: Upload full workspace log (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace-tar-${{ github.sha }}
+          path: |
+            .
 
       - name: Upload full workspace log (optional)
         if: always()
