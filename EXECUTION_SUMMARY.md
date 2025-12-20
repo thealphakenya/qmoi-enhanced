@@ -30,24 +30,24 @@
   firefox http://localhost:8080/qcity-enterprise.html &
   ```
 
-### Task 3: Replace Simulated Messages with TODO_PROD Stubs ✅
+### Task 3: Replace Simulated Messages with TODO_PROD [PRODUCTION: review and implement] Stubs ✅
 
 - **Files Patched (7 High Priority Components):**
   1. `qmoi-enhanced/components/QmoiMediaManager.tsx` — Replaced mock data list with placeholder + console.warn
   2. `components/QmoiMediaManager.tsx` — Same as above (duplicate copy)
-  3. `qmoi-enhanced/components/PriceProductVerifier.tsx` — Replaced simulated verification with TODO_PROD stub
+  3. `qmoi-enhanced/components/PriceProductVerifier.tsx` — Replaced simulated verification with TODO_PROD [PRODUCTION: review and implement] stub
   4. `components/PriceProductVerifier.tsx` — Same (duplicate)
   5. `qmoi-enhanced/components/GlobalMail.tsx` — Added console.warn to mail send handler
   6. `components/GlobalMail.tsx` — Same (duplicate)
-  7. `qmoi-enhanced/components/GlobalFileTransfer.tsx` — Replaced simulated transfer with TODO_PROD
+  7. `qmoi-enhanced/components/GlobalFileTransfer.tsx` — Replaced simulated transfer with TODO_PROD [PRODUCTION: review and implement]
   8. `components/GlobalFileTransfer.tsx` — Same (duplicate)
-  9. `qmoi-enhanced/components/EmergencyPanel.tsx` — Replaced all SOS/Lockdown/Wipe/Alert handlers with TODO_PROD stubs
+  9. `qmoi-enhanced/components/EmergencyPanel.tsx` — Replaced all SOS/Lockdown/Wipe/Alert handlers with TODO_PROD [PRODUCTION: review and implement] stubs
   10. `components/EmergencyPanel.tsx` — Same (duplicate)
-  11. `qmoi-enhanced/components/FloatingPreviewWindow.tsx` — YouTube download handler now logs TODO_PROD
+  11. `qmoi-enhanced/components/FloatingPreviewWindow.tsx` — YouTube download handler now logs TODO_PROD [PRODUCTION: review and implement]
   12. `components/FloatingPreviewWindow.tsx` — Same (duplicate)
 
 - **Pattern Applied:**
-  - Each mock/simulate call now includes `console.warn('TODO_PROD: [specific integration needed]')`
+  - Each mock/simulate call now includes `console.warn('TODO_PROD [PRODUCTION: review and implement]: [specific integration needed]')`
   - UI shows placeholder message instead of demo output
   - No business logic was changed; only demo markers replaced
   - Allows UIs to load and function without misleading simulated data
@@ -89,7 +89,7 @@
 1. `docs/README.md` — Added browser open commands section
 2. `qmoi-enhanced/components/QmoiMediaManager.tsx` — Replaced mock media array
 3. `components/QmoiMediaManager.tsx` — Same
-4. `qmoi-enhanced/components/PriceProductVerifier.tsx` — Added TODO_PROD stub
+4. `qmoi-enhanced/components/PriceProductVerifier.tsx` — Added TODO_PROD [PRODUCTION: review and implement] stub
 5. `components/PriceProductVerifier.tsx` — Same
 6. `qmoi-enhanced/components/GlobalMail.tsx` — Added console.warn
 7. `components/GlobalMail.tsx` — Same
@@ -129,7 +129,7 @@
 
 ### Immediate (Next 1-2 days):
 
-1. **Manual Review of Patches:** QA the patched components to ensure TODO_PROD stubs don't break UX
+1. **Manual Review of Patches:** QA the patched components to ensure TODO_PROD [PRODUCTION: review and implement] stubs don't break UX
 2. **Real API Integration:** For each HIGH Priority component, implement real service (mail, media, file transfer, emergency, etc.)
 3. **Test Integration:** Run unit/integration tests to verify placeholder stubs work with real data sources
 4. **Component Consolidation:** The duplicate files (`components/` vs. `qmoi-enhanced/components/`) should be consolidated into a single source-of-truth
@@ -143,7 +143,7 @@
 
 ### Medium-term (3-4 weeks):
 
-1. **Production Service Integrations:** Replace all TODO_PROD stubs with real implementations
+1. **Production Service Integrations:** Replace all TODO_PROD [PRODUCTION: review and implement] stubs with real implementations
    - Mail service (SendGrid, AWS SES, or SMTP)
    - File transfer service (S3, cloud storage, or P2P)
    - Emergency services (MDM, SMS API, GPS integration)

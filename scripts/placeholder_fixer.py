@@ -3,7 +3,7 @@
 """
 Conservative placeholder fixer:
 - Scans repository for the token '[PRODUCTION IMPLEMENTATION REQUIRED]' and related markers.
-- For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token 'TODO_PROD'.
+- For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token 'TODO_PROD [PRODUCTION: review and implement]'.
 - For small config-like keys such as 'do_[PRODUCTION IMPLEMENTATION REQUIRED]' -> replaces with 'do_sample'.
 - For code files (.py, .js, .ts, .sh, .tsx, .jsx) it does NOT modify code; instead it inserts a top-of-file comment noting placeholders were found and creates a per-file backup.
 - Always creates a backup file named <file>.placeholderfix.bak before making any change.
@@ -37,7 +37,7 @@ def replace_in_text(content: str) -> (str, int):
     count = 0
     # replace do_... first
     new, n1 = DO_PH.subn('do_sample', content)
-    new, n2 = PH_PAT.subn('TODO_PROD', new)
+    new, n2 = PH_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', new)
     count = n1 + n2
     return new, count
 

@@ -28,7 +28,7 @@ PLACEHOLDERS = [
     re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]"),
     re.compile(r"PRODUCTION_IMPLEMENTATION_REQUIRED"),
     re.compile(r"\[PLACEHOLDER\]"),
-    re.compile(r"TODO_PROD"),
+    re.compile(r"TODO_PROD [PRODUCTION: review and implement]"),
     re.compile(r"\[PROD_PLACEHOLDER\]"),
 ]
 

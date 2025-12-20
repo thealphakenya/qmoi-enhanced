@@ -110,7 +110,7 @@ qmoi_validation_frontmatter: true
 - All actions, fixes, and enhancements are logged and auditable
 - For errors, use logs and AI/ML suggestions; master can override or roll back as needed
 
-## UI/UX TODO_PRODup
+## UI/UX TODO_PROD [PRODUCTION: review and implement]up
 
 (Same as in QMOICLONE.md, with GitLab-specific emphasis)
 

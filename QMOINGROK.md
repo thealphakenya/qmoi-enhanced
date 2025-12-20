@@ -85,7 +85,7 @@ Copy
 Edit
 ngrok config add-authtoken $NGROK_AUTH_TOKEN
 ngrok http 7860 --log=stdout > ngrok.log &
-🔄 Ngrok Lifecycle Monitoring (TODO_PROD)
+🔄 Ngrok Lifecycle Monitoring (TODO_PROD [PRODUCTION: review and implement])
 QMOI continuously checks tunnel health and auto-recovers:
 
 python

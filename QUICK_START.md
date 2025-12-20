@@ -57,14 +57,14 @@ All key QMOI & QCity components are present:
 
 ### High Priority (Non-Production Code Replaced):
 
-- **QmoiMediaManager** — Mock data → TODO_PROD placeholder + console.warn
-- **PriceProductVerifier** — Simulated verification → TODO_PROD stub
-- **GlobalMail** — Demo send → TODO_PROD stub (mail not actually sent)
-- **GlobalFileTransfer** — Demo transfer → TODO_PROD stub (transfer not performed)
-- **EmergencyPanel** — Demo handlers → TODO_PROD stubs (SOS/lockdown/wipe not active)
-- **FloatingPreviewWindow** — Demo YouTube download → TODO_PROD stub
+- **QmoiMediaManager** — Mock data → TODO_PROD [PRODUCTION: review and implement] placeholder + console.warn
+- **PriceProductVerifier** — Simulated verification → TODO_PROD [PRODUCTION: review and implement] stub
+- **GlobalMail** — Demo send → TODO_PROD [PRODUCTION: review and implement] stub (mail not actually sent)
+- **GlobalFileTransfer** — Demo transfer → TODO_PROD [PRODUCTION: review and implement] stub (transfer not performed)
+- **EmergencyPanel** — Demo handlers → TODO_PROD [PRODUCTION: review and implement] stubs (SOS/lockdown/wipe not active)
+- **FloatingPreviewWindow** — Demo YouTube download → TODO_PROD [PRODUCTION: review and implement] stub
 
-All show clear "TODO_PROD" placeholders instead of misleading demo data.
+All show clear "TODO_PROD [PRODUCTION: review and implement]" placeholders instead of misleading demo data.
 
 ## 📚 Documentation
 
@@ -84,12 +84,12 @@ All show clear "TODO_PROD" placeholders instead of misleading demo data.
 - All data updates every 10-30 seconds in real-time
 - Master Mode can be toggled for advanced features
 - Server runs on port 8080 (http://localhost:8080)
-- UI is fully functional with TODO_PROD stubs (ready for integration testing)
+- UI is fully functional with TODO_PROD [PRODUCTION: review and implement] stubs (ready for integration testing)
 
 ## ⚠️ Important
 
 - Emergency Panel is in DEMO MODE — Real emergency services are NOT integrated
-- Mail/File Transfer/Media services show TODO_PROD placeholders
+- Mail/File Transfer/Media services show TODO_PROD [PRODUCTION: review and implement] placeholders
 - Real API integrations required for production use
 - See EXECUTION_SUMMARY.md for detailed next steps
 
