@@ -81,6 +81,32 @@ jobs:
               fs.writeFileSync('comment-post-error.txt', String(err).slice(0,4000));
             }
 
+      - name: Create issue with test output (fallback)
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const sha = process.env.GITHUB_SHA;
+            let body = '## CI Debug: test-output (tail)\n\n';
+            let path = 'test-output.txt';
+            if (fs.existsSync(path)) {
+              let txt = fs.readFileSync(path, 'utf8');
+              let tail = txt.slice(-15000);
+              body += '```\n' + tail + '\n```';
+            } else {
+              body += 'No test-output.txt found';
+            }
+            const title = `CI Debug output for commit ${sha}`;
+            try {
+              const issue = await github.rest.issues.create({ owner, repo, title, body });
+              console.log('Created debug issue', issue.data.number);
+            } catch (err) {
+              console.log('Error creating debug issue:', err && err.message ? err.message : err);
+              fs.writeFileSync('issue-create-error.txt', String(err).slice(0,4000));
+            }
+
       - name: Upload full workspace log (optional)
         if: always()
         uses: actions/upload-artifact@v4
