@@ -41,6 +41,27 @@ jobs:
           name: test-logs-${{ github.sha }}
           path: test-output.txt
 
+      - name: Post tail of test output to PR as a comment (for easier debugging)
+        if: always()
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Post last 4000 characters of test-output.txt as a PR comment to make failures visible
+          tail -c 4000 test-output.txt > /tmp/test-tail.txt || true
+          body="$(printf "#### CI Debug: test-output (tail)\n\n")\n$(sed -n '1,200p' /tmp/test-tail.txt | sed 's/^/```\n/; $a\n```')"
+          # Ensure we have a PR number
+          if [ -z "${PR_NUMBER}" ] || [ "${PR_NUMBER}" = "null" ]; then
+            echo "No PR number available, skipping comment post"
+            exit 0
+          fi
+          curl -s -S -H "Authorization: token ${TOKEN}" -H "Accept: application/vnd.github+json" \
+            -X POST "https://api.github.com/repos/${REPO}/issues/${PR_NUMBER}/comments" \
+            -d @- <<'JSON'
+{ "body": "$(sed ':a;N;$!ba;s/"/\\"/g' /tmp/test-tail.txt | sed '1s/^/#### CI Debug: test-output (tail)\\n\\n```\\n/; $a\\n```/')" }
+JSON
+
       - name: Upload full workspace log (optional)
         if: always()
         uses: actions/upload-artifact@v4
