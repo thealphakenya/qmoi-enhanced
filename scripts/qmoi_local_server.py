@@ -17,7 +17,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import os
 from urllib.parse import urlparse
-from datetime import datetime
+from datetime import datetime, timezone
 import threading
 import time
 import sqlite3
@@ -175,25 +175,51 @@ def detect_persona(messages):
 
 
 def persona_response(persona, user_msg, memory):
-    # Basic templated responses — replace with real model integration later
+    """Generate a short, natural assistant reply based on a lightweight heuristic.
+
+    This keeps the local helper useful for UI/E2E testing while we replace it with
+    a real model later. Replies include a persona tag and a friendly, actionable
+    message (and keep a compact memory entry as before).
+    """
+    user_msg = (user_msg or '').strip()
+
+    # Build persona prefix
     if persona == 'master':
-        reply = (
-            f"[Master Mode] At your command. You said: {user_msg}\n"
-            "I will respond according to master-level persona with direct, authoritative guidance."
-        )
+        prefix = '[Master Mode] '
     elif persona == 'sister':
-        reply = (
-            f"[Sister Mode] Hey — got that: {user_msg}\n"
-            "I'll be warm, encouraging and supportive in my replies."
-        )
+        prefix = '[Sister Mode] '
     else:
-        reply = (
-            f"[User Mode] I heard: {user_msg}\n"
-            "I'll answer conversationally and helpfully."
-        )
-    # Add memory note
+        prefix = '[User Mode] '
+
+    # Simple heuristics for conversational replies
+    lm = user_msg.lower()
+    if not user_msg:
+        body = "Hello — I'm here and ready to help. What would you like to do?"
+    elif 'how are you' in lm or 'how are you doing' in lm:
+        body = "I'm doing well, thanks! How can I help you today?"
+    elif lm.startswith(('hi', 'hello', 'hey')) or lm in ('hi', 'hello', 'hey'):
+        body = "Hello! How can I assist you today?"
+    elif 'create' in lm and 'file' in lm:
+        body = "I can create that file for you — tell me the filename and content, or say 'create it' to confirm."
+    elif '?' in user_msg:
+        body = "That's a great question — could you give me a bit more detail so I can provide a helpful answer?"
+    else:
+        # Default concise follow-up
+        body = "Got it — tell me more or describe what you want me to do and I'll assist."
+
+    # Compose reply: include a brief acknowledgement and the helpful sentence
+    if persona == 'master':
+        reply = f"{prefix}{body}"
+    elif persona == 'sister':
+        reply = f"{prefix}{body}"
+    else:
+        # For user persona keep a short acknowledgement of what we heard + the reply
+        heard = f"I heard: {user_msg}" if user_msg else ''
+        reply = f"{prefix}{heard}" + ("\n" + body if heard else body)
+
+    # Persist a compact memory entry
     note = {
-        'timestamp': datetime.utcnow().isoformat() + 'Z',
+        'timestamp': datetime.now(timezone.utc).isoformat(),
         'persona': persona,
         'message': user_msg
     }
@@ -412,7 +438,7 @@ class Handler(BaseHTTPRequestHandler):
                             content = m2.group(1).strip().strip('"')
                         if not content:
                             # default content
-                            content = f"Created by qmoi agent at {datetime.utcnow().isoformat()}Z"
+                            content = f"Created by qmoi agent at {datetime.now(timezone.utc).isoformat()}"
                         # safety: prevent directory traversal and absolute paths
                         if '..' in fname or fname.startswith('/') or '\\' in fname:
                             action_result = 'error: invalid filename'
