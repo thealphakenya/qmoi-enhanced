@@ -155,12 +155,29 @@ jobs:
           mkdir -p ci-debug-outputs
           if [ -f ../test-output.txt ]; then head -c 200000 ../test-output.txt > ci-debug-outputs/${GITHUB_SHA}-test.txt || true; fi
           if [ -f ../build-output.txt ]; then head -c 200000 ../build-output.txt > ci-debug-outputs/${GITHUB_SHA}-build.txt || true; fi
+          # Capture git environment and status for debugging push problems
+          echo "=== GIT REMOTE -V ===" > push-output.txt
+          git remote -v >> push-output.txt 2>&1 || true
+          echo "=== GIT STATUS ===" >> push-output.txt
+          git status >> push-output.txt 2>&1 || true
+          echo "=== GIT BRANCHES ===" >> push-output.txt
+          git branch -a >> push-output.txt 2>&1 || true
           git add ci-debug-outputs/${GITHUB_SHA}-*.txt || true
           if git diff --cached --quiet; then
-            echo "no changes to commit"
+            echo "no changes to commit" | tee -a push-output.txt
           else
-            git commit -m "ci(debug): add debug outputs for ${GITHUB_SHA}"
-            git push -u origin "$BRANCH"
+            git commit -m "ci(debug): add debug outputs for ${GITHUB_SHA}" || true
+            echo "=== GIT PUSH ATTEMPT ===" >> push-output.txt
+            git push -u origin "$BRANCH" 2>&1 | tee -a push-output.txt || true
+          fi
+          # Ensure push-output is recorded in the branch for post-mortem
+          cp push-output.txt ci-debug-outputs/push-output-${GITHUB_SHA}.txt || true
+          git add ci-debug-outputs/push-output-${GITHUB_SHA}.txt || true
+          if git diff --cached --quiet; then
+            echo "no push-output changes to commit"
+          else
+            git commit -m "ci(debug): add push log for ${GITHUB_SHA}" || true
+            git push -u origin "$BRANCH" 2>&1 | tee -a push-output.txt || true
           fi
 
       - name: Upload full workspace log (optional)
