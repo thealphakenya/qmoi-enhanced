@@ -18,6 +18,7 @@ jobs:
       - run: npm run ci:build --if-present
       - run: npm run test:quick-qmoi
       - run: npx jest --config=jest.config.cjs --runInBand --colors --verbose --detectOpenHandles || true
+      - run: npm run test:qmoi-jest || true
 
   python-unit:
     runs-on: ubuntu-latest

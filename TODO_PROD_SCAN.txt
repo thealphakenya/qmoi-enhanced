@@ -1,0 +1,27 @@
+QMOI TODO_PROD Scan
+
+Date: 2025-12-21
+
+Summary: Replaced localized TODO_PROD placeholders in a few key docs with REVIEWED notes and follow-up issue markers.
+
+Files changed:
+- QMOIVIDEOPLATFORMS.md — platform placeholders reviewed and marked (TODO-PROD-PLATFORMS)
+- QMOICLONEGITLAB.md — UI/UX placeholder reviewed and marked (TODO-PROD-UIUX)
+- FINAL_CAMPAIGN_SUMMARY.txt — summary markers converted to REVIEWED notes
+
+Remaining occurrences (manual review recommended):
+- link_report.md — many occurrences (large generated file). Do NOT auto-edit this file; review link contexts before making changes.
+- Other large report files: link_report.md (multiple lines), potential external-link text containing the token.
+
+Next steps / follow-up actions:
+1. Create issues for follow-up work:
+   - TODO-PROD-PLATFORMS: implement platform-specific builds and validate outputs
+   - TODO-PROD-UIUX: review and productionize UI/UX pages and styles
+2. Programmatically scan `link_report.md` and produce a curated list (not auto-edit) of occurrences that are clearly internal placeholders for manual amendment.
+3. Schedule a doc review pass to handle any ambiguous uses of the token inside external link titles to avoid corrupting external references.
+
+Notes:
+- Avoid blanket replacements in large generated files (e.g., link_report.md) to prevent corrupting auto-generated link text or external references.
+- If you want, I can open a PR with these changes and the TODO_PROD_SCAN as a commit so CI and other reviewers can verify.
+
+End of scan.

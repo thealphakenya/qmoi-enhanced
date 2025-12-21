@@ -1,7 +1,11 @@
+/* eslint-env node */
+/* @jest-environment node */
 const BASE = process.env.QMOI_UI_BASE || 'http://127.0.0.1:3001';
 
 describe('QMOI /api/qmoi/chat proxy', () => {
-  it('should proxy a greeting and return assistant content', async () => {
+  const isJsdom = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+  const maybeIt = isJsdom ? it.skip : it;
+  maybeIt('should proxy a greeting and return assistant content', async () => {
     const res = await fetch(`${BASE}/api/qmoi/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

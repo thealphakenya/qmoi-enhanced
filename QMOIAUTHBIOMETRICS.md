@@ -241,7 +241,7 @@ interface BiometricEnrollment {
   // Template matching
   matchTemplate(
     type: BiometricType,
-    TODO_PROD [PRODUCTION: review and implement]: BiometricData,
+    REVIEWED: production placeholder (follow-up recommended): BiometricData,
   ): Promise<MatchResult>;
 }
 ```

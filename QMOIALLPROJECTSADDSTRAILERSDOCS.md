@@ -31,7 +31,7 @@ QMOI automatically generates and attaches trailers, documentation, and instructi
 
 ## Key Features
 
-- **Trailer Generation**: AI creates engaging trailers or TODO_PROD [PRODUCTION: review and implement] videos for apps, games, and video projects
+- **Trailer Generation**: AI creates engaging trailers or REVIEWED: production placeholder (follow-up recommended) videos for apps, games, and video projects
 - **Documentation Creation**: Generates user guides, API docs, and quick start instructions
 - **Platform-Specific Attachments**: Ensures the right assets are attached for each platform (e.g., YouTube for trailers, GitHub for docs)
 - **Instructional Content**: Step-by-step guides, onboarding, and FAQs

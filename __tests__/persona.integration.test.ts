@@ -7,49 +7,36 @@ describe("QM OI helper server integration", () => {
   let child = null;
 
   async function waitForReady(childProcess, port, timeout = 20000) {
+    // Use a TCP connect-based readiness check to avoid CORS/XHR fetch races
+    const net = require('net');
     const start = Date.now();
     return new Promise((resolve, reject) => {
-      let resolved = false;
-      function ok() {
-        if (resolved) return;
-        resolved = true;
-        resolve(true);
-      }
-      function fail(err) {
-        if (resolved) return;
-        resolved = true;
-        reject(err);
-      }
-
-      childProcess.stdout.on("data", (chunk) => {
-        const s = String(chunk || "").toLowerCase();
-        if (s.includes("listening") || s.includes("listening on")) {
-          ok();
-        }
-      });
-
-      childProcess.on("exit", (code) => {
-        fail(new Error("Server exited unexpectedly with code " + code));
-      });
-
-      // Poll the health endpoint until it's available
-      const attempt = async () => {
-        try {
-          const res = await fetch(`http://127.0.0.1:${port}/health`);
-          if (res && res.status === 200) {
-            ok();
-            return;
+      function check() {
+        const socket = new net.Socket();
+        let settled = false;
+        socket.setTimeout(1000);
+        socket.on('connect', () => {
+          settled = true;
+          socket.destroy();
+          resolve(true);
+        });
+        socket.on('timeout', () => {
+          if (!settled) {
+            socket.destroy();
+            if (Date.now() - start > timeout) return reject(new Error('timeout waiting for server'));
+            setTimeout(check, 200);
           }
-        } catch (e) {
-          // ignore, server may not be up yet
-        }
-        if (Date.now() - start > timeout) {
-          fail(new Error("Timeout waiting for server ready"));
-          return;
-        }
-        setTimeout(attempt, 250);
-      };
-      attempt();
+        });
+        socket.on('error', () => {
+          if (!settled) {
+            socket.destroy();
+            if (Date.now() - start > timeout) return reject(new Error('timeout waiting for server'));
+            setTimeout(check, 200);
+          }
+        });
+        socket.connect(port, '127.0.0.1');
+      }
+      check();
     });
   }
 

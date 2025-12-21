@@ -79,6 +79,216 @@
       "timestamp": "2025-12-21T13:19:46.643547Z",
       "persona": "user",
       "message": "Hi from front"
+    },
+    {
+      "timestamp": "2025-12-21T13:30:08.664129Z",
+      "persona": "user",
+      "message": "Hello"
+    },
+    {
+      "timestamp": "2025-12-21T13:30:29.058760Z",
+      "persona": "user",
+      "message": "Ping"
+    },
+    {
+      "timestamp": "2025-12-21T13:31:00.832114Z",
+      "persona": "user",
+      "message": "How are you "
+    },
+    {
+      "timestamp": "2025-12-21T13:38:17.356800Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T13:38:26.792239Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T13:56:16.394616Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T13:56:16.404397Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T13:56:16.413733Z",
+      "persona": "user",
+      "message": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+    },
+    {
+      "timestamp": "2025-12-21T13:56:25.718926Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T13:56:25.728898Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T13:56:25.735613Z",
+      "persona": "user",
+      "message": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+    },
+    {
+      "timestamp": "2025-12-21T13:56:52.459964Z",
+      "persona": "user",
+      "message": "Create a file named tests/quick_tmp_file.txt with the content \"quick-test\""
+    },
+    {
+      "timestamp": "2025-12-21T13:57:14.417280Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T13:57:14.427532Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T13:57:14.437041Z",
+      "persona": "user",
+      "message": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+    },
+    {
+      "timestamp": "2025-12-21T14:09:03.738220Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:09:03.746967Z",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:09:03.755483Z",
+      "persona": "user",
+      "message": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+    },
+    {
+      "timestamp": "2025-12-21T14:09:03.761510Z",
+      "persona": "user",
+      "message": "I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-21T14:09:03.766866Z",
+      "persona": "user",
+      "message": "What did I say earlier?"
+    },
+    {
+      "timestamp": "2025-12-21T14:09:19.008890Z",
+      "persona": "user",
+      "message": "I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-21T14:09:59.504517Z",
+      "persona": "user",
+      "message": "What did I say earlier?"
+    },
+    {
+      "timestamp": "2025-12-21T14:10:37.726683+00:00",
+      "persona": "user",
+      "message": "What did I say earlier?"
+    },
+    {
+      "timestamp": "2025-12-21T14:10:58.247431+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:10:58.258119+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:10:58.266761+00:00",
+      "persona": "user",
+      "message": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+    },
+    {
+      "timestamp": "2025-12-21T14:10:58.272320+00:00",
+      "persona": "user",
+      "message": "I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-21T14:10:58.277285+00:00",
+      "persona": "user",
+      "message": "What did I say earlier?"
+    },
+    {
+      "timestamp": "2025-12-21T14:18:38.289395+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:23:15.720530+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:24:24.810838+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:24:50.837287+00:00",
+      "persona": "master",
+      "message": "How are you doing today?"
+    },
+    {
+      "timestamp": "2025-12-21T14:25:52.457511+00:00",
+      "persona": "master",
+      "message": "How are you doing today?"
+    },
+    {
+      "timestamp": "2025-12-21T14:26:08.569945+00:00",
+      "persona": "master",
+      "message": "How are you doing today?"
+    },
+    {
+      "timestamp": "2025-12-21T14:26:45.712144+00:00",
+      "persona": "master",
+      "message": "How are you doing today?"
+    },
+    {
+      "timestamp": "2025-12-21T14:32:17.945885+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:33:20.396786+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:33:28.921917+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:33:28.932984+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-21T14:33:28.943015+00:00",
+      "persona": "user",
+      "message": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+    },
+    {
+      "timestamp": "2025-12-21T14:33:28.949812+00:00",
+      "persona": "user",
+      "message": "I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-21T14:33:28.956258+00:00",
+      "persona": "user",
+      "message": "What did I say earlier?"
     }
   ]
 }

@@ -23,6 +23,7 @@
     "test:all": "npm run test:auth && npm run test:flags && npm run test:authpresence && npm run test:endpoint",
     "ci:test": "npm run ci:build && npm run test:flags && npm run test:auth && npm run test:authpresence && npm run test:endpoint",
     "test:quick-qmoi": "node scripts/quick_qmoi_checks.js",
+    "test:qmoi-jest": "npx jest --config=jest.config.cjs tests/qmoi-chat-api.test.ts --env=node --runInBand --colors --verbose --detectOpenHandles",
     "env-setup": "node scripts/qmoi-env-setup.js",
     "diagnose:trace": "node ./scripts/diagnostics/parse_next_trace.cjs .next/trace 20",
     "trading:genkey": "node scripts/auto_trading.js --genkey",
