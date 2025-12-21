@@ -35,13 +35,32 @@ jobs:
           echo "--- EOF: tail of test-output.txt ---"
           tail -n 200 test-output.txt || true
 
-      - name: Upload test logs artifact
+      - name: Run Next.js build and capture output
+        run: |
+          set -euo pipefail
+          # Capture build output (ci:build); capture full output but we post only tails
+          npm run ci:build > build-output.txt 2>&1 || true
+          echo "--- EOF: tail of build-output.txt ---"
+          tail -n 400 build-output.txt || true
+
+      - name: Print condensed tails to job log
+        run: |
+          echo "---- TEST OUTPUT (tail) ----"
+          tail -n 200 test-output.txt || true
+          echo "---- BUILD OUTPUT (tail) ----"
+          tail -n 200 build-output.txt || true
+
+      - name: Upload ci logs artifact
         uses: actions/upload-artifact@v4
         with:
-          name: test-logs-${{ github.sha }}
-          path: test-output.txt
+          name: ci-logs-${{ github.sha }}
+          path: |
+            test-output.txt
+            build-output.txt
+            comment-post-error.txt
+            issue-create-error.txt
 
-      - name: Post tail of test output to PR as a comment (for easier debugging)
+      - name: Post tail of test and build output to PR as a comment (for easier debugging)
         if: always()
         uses: actions/github-script@v6
         with:
@@ -49,14 +68,22 @@ jobs:
             const fs = require('fs');
             const { owner, repo } = context.repo;
             const sha = process.env.GITHUB_SHA;
-            let body = '#### CI Debug: test-output (tail)\n\n';
-            let path = 'test-output.txt';
-            if (fs.existsSync(path)) {
-              let txt = fs.readFileSync(path, 'utf8');
-              let tail = txt.slice(-3000);
-              body += '```\n' + tail + '\n```';
+            let body = '#### CI Debug: test & build output (tails)\n\n';
+            const tpath = 'test-output.txt';
+            const bpath = 'build-output.txt';
+            if (fs.existsSync(tpath)) {
+              let txt = fs.readFileSync(tpath, 'utf8');
+              let tail = txt.slice(-2000);
+              body += '**Test output (tail):**\n```\n' + tail + '\n```\n';
             } else {
-              body += 'No test-output.txt found';
+              body += '**Test output:** No test-output.txt found\n';
+            }
+            if (fs.existsSync(bpath)) {
+              let btxt = fs.readFileSync(bpath, 'utf8');
+              let btail = btxt.slice(-5000);
+              body += '**Build output (tail):**\n```\n' + btail + '\n```\n';
+            } else {
+              body += '**Build output:** No build-output.txt found\n';
             }
             try {
               // Prefer direct PR number if available (pull_request events)
