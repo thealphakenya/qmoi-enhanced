@@ -45,17 +45,43 @@ export function Chatbot() {
     setInput("");
     setLoading(true);
 
-    // Simulate bot response (in production, call backend API)
-    setTimeout(() => {
+    // Call backend API for a real response
+    try {
+      const resp = await fetch('/api/qmoi/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: [{ role: 'user', content: input }] }),
+      });
+      const data = await resp.json();
+      // Handle both OpenAI-like responses and the simple local server format
+      let replyText = '';
+      if (data && data.choices && Array.isArray(data.choices) && data.choices[0]) {
+        replyText = data.choices[0].message?.content || data.choices[0]?.text || JSON.stringify(data.choices[0]);
+      } else if (data && data.reply) {
+        replyText = data.reply;
+      } else if (data && data.ok && data.conversation) {
+        replyText = data.reply || '';
+      } else {
+        replyText = 'Sorry, I could not get a reply.';
+      }
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
-        text: `I received your message: "${input}". This is a mock response. Connect this to your backend API for real functionality.`,
-        sender: "bot",
+        text: replyText,
+        sender: 'bot',
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMessage]);
+    } catch (err) {
+      const botMessage: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        text: 'Error: could not reach QMOI backend',
+        sender: 'bot',
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, botMessage]);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (

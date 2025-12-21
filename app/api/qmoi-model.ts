@@ -338,7 +338,7 @@ const activeConversations: Record<
   Array<{ from: string; message: string; time: string }>
 > = {};
 
-async function multiUserChat(user: string, message: string) {
+export async function multiUserChat(user: string, message: string) {
   if (!activeConversations[user]) activeConversations[user] = [];
   activeConversations[user].push({
     from: user,

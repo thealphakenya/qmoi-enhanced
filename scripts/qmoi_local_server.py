@@ -349,7 +349,12 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+        # Allow requested headers to be reflected for preflight (helps msw interceptors and custom x-* headers)
+        req_headers = self.headers.get('Access-Control-Request-Headers')
+        if req_headers:
+            self.send_header('Access-Control-Allow-Headers', req_headers)
+        else:
+            self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
         self.end_headers()
 
     def do_POST(self):

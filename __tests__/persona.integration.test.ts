@@ -54,7 +54,21 @@ describe("QM OI helper server integration", () => {
   }
 
   beforeAll(async () => {
-    const port = 30000 + Math.floor(Math.random() * 1000);
+    // Choose a free ephemeral port to avoid collisions in parallel runs
+    const net = require('net');
+    let port;
+    if (process.env.QMOI_LOCAL_PORT) {
+      port = Number(process.env.QMOI_LOCAL_PORT);
+    } else {
+      port = await new Promise((resolve, reject) => {
+        const s = net.createServer();
+        s.listen(0, '127.0.0.1', () => {
+          const p = s.address().port;
+          s.close(() => resolve(p));
+        });
+        s.on('error', reject);
+      });
+    }
     child = spawn("python3", ["-u", "scripts/qmoi_local_server.py"], {
       stdio: ["ignore", "pipe", "pipe"],
       env: Object.assign({}, process.env, { QMOI_LOCAL_PORT: String(port) }),
@@ -68,8 +82,8 @@ describe("QM OI helper server integration", () => {
     );
     console.log("[child pid]", child.pid, "port", port);
     await waitForReady(child, port, 25000);
-    // Small buffer after ready to ensure server fully accepts connections
-    await new Promise((r) => setTimeout(r, 200));
+    // Small buffer after ready to ensure server fully accepts connections (increase to avoid flakiness under load / instrumented runs)
+    await new Promise((r) => setTimeout(r, 1000));
     // Store the port for use in tests
     child._qmoi_test_port = port;
   });
@@ -87,7 +101,21 @@ describe("QM OI helper server integration", () => {
       ],
     };
 
-    const resp = await fetch(url, {
+    // Helper to retry transient network failures (reduces flakiness under instrumentation)
+    async function postWithRetry(url, opts, retries = 3) {
+      for (let i = 0; i < retries; i++) {
+        try {
+          const r = await fetch(url, opts);
+          return r;
+        } catch (e) {
+          if (i === retries - 1) throw e;
+          // exponential backoff
+          await new Promise((r) => setTimeout(r, 200 * (i + 1)));
+        }
+      }
+    }
+
+    const resp = await postWithRetry(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -100,7 +128,7 @@ describe("QM OI helper server integration", () => {
     expect(typeof msg).toBe("string");
     expect(msg.startsWith("[Master Mode]")).toBe(true);
 
-    const memResp = await fetch("http://127.0.0.1:8080/memory");
+    const memResp = await fetch(`http://127.0.0.1:${child._qmoi_test_port}/memory`);
     expect(memResp.status).toBe(200);
     const mem = await memResp.json();
     expect(Array.isArray(mem.conversations)).toBe(true);
