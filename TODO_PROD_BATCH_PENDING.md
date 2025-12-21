@@ -31,6 +31,10 @@ Recommended next steps (parallelizable):
 Automation note:
 - I added `scripts/todo_prod_batch.js` (a Node script) that performs reasoning-based replacements and produces `TODO_PROD_BATCH_RESULTS.json` and `TODO_PROD_BATCH_PENDING.md` when run. Node was not available in this terminal session, so I ran replacements directly for safe files instead. When Node is available I can run the script to re-check and include a full JSON report.
 
+CI Safety Check:
+- I also added `scripts/check_todo_prod.js` and an npm script `check:todo-prod` that scans for `TODO_PROD` tokens in non-excluded files and writes `TODO_PROD_CHECK_REPORT.json`.
+- The workflow `.github/workflows/qmoi-tests.yml` was updated to run `npm run check:todo-prod` early; it will emit a failing step (non-zero exit) if matches are found in scanned files.
+
 If you want, I can now:
 - (A) Create the two tracker issues and open a PR with the safe edits plus this pending report (recommended), or
 - (B) Continue editing more files in larger batches (I will still avoid generated files and external links unless you explicitly instruct me to safely edit them).

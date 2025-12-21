@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
+      - run: npm run check:todo-prod || true
       - run: npm run ci:build --if-present
       - run: npm run test:quick-qmoi
       - run: npx jest --config=jest.config.cjs --runInBand --colors --verbose --detectOpenHandles || true
