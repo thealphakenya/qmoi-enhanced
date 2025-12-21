@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
   pull_request:
 
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
 jobs:
   ci-debug:
     name: CI Debug
@@ -133,6 +138,30 @@ jobs:
               console.log('Error creating debug issue:', err && err.message ? err.message : err);
               fs.writeFileSync('issue-create-error.txt', String(err).slice(0,4000));
             }
+
+      - name: Commit logs to repo (branch: ci-debug-output-${{ github.sha }})
+        if: always()
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          BRANCH="ci-debug-output-${GITHUB_SHA}"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" repo
+          cd repo
+          git checkout -b "$BRANCH" || git checkout "$BRANCH" || true
+          mkdir -p ci-debug-outputs
+          if [ -f ../test-output.txt ]; then head -c 200000 ../test-output.txt > ci-debug-outputs/${GITHUB_SHA}-test.txt || true; fi
+          if [ -f ../build-output.txt ]; then head -c 200000 ../build-output.txt > ci-debug-outputs/${GITHUB_SHA}-build.txt || true; fi
+          git add ci-debug-outputs/${GITHUB_SHA}-*.txt || true
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+          else
+            git commit -m "ci(debug): add debug outputs for ${GITHUB_SHA}"
+            git push -u origin "$BRANCH"
+          fi
 
       - name: Upload full workspace log (optional)
         if: always()
