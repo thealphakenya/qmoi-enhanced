@@ -1,3 +1,4 @@
+/* global fetch */
 import fs from 'fs';
 import path from 'path';
 
@@ -7,7 +8,7 @@ const HELPER_BASE = process.env.QMOI_TEST_BASE || 'http://127.0.0.1:8080';
 async function fetchJson(url, opts) {
   const res = await fetch(url, opts);
   const txt = await res.text();
-  try { return JSON.parse(txt); } catch(e) { return txt; }
+  try { return JSON.parse(txt); } catch { return txt; }
 }
 
 async function run() {
