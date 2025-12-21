@@ -89,6 +89,7 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.27.1",
+    "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
     "@tailwindcss/postcss": "^4.0.3",
@@ -117,7 +118,8 @@
     "ts-jest": "^29.4.6",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.0",
-    "web-streams-polyfill": "^4.2.0"
+    "web-streams-polyfill": "^4.2.0",
+    "whatwg-fetch": "^3.6.20"
   },
   "engines": {
     "node": ">=18.0.0",
