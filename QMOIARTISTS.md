@@ -130,7 +130,7 @@ QMOI Artists is a comprehensive music production and artist management system th
 - **Sync Licensing**: Background music for media
 - **Ringtone Sales**: Mobile ringtone downloads
 - **Cover Songs**: Licensing to other artists
-- **TODO_PROD [PRODUCTION: review and implement] Sales**: Beat and TODO_PROD [PRODUCTION: review and implement] licensing
+- **Sales**: Beat licensing and commercial arrangements to be reviewed for production (REVIEWED: plan pending)
 - **Educational Content**: Music tutorials and courses
 - **Fan Engagement**: Premium fan experiences
 

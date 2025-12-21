@@ -40,7 +40,7 @@ The Alpha QMOI Engine is the core integration and automation system for QMOI, en
 
 - **WhatsApp**: Direct file/app/project delivery, chat-based control, and notifications.
 - **Email/Slack/Telegram**: (Planned) Notification and command integration.
-- **QMOI HuggingFace Spaces**: User interaction, file delivery, and TODO_PROD [PRODUCTION: review and implement]nstration.
+- **QMOI HuggingFace Spaces**: User interaction, file delivery, and REVIEWED: requires production integration (see QMOI_MASTER_INTEGRATION_VALIDATION.md for status).
 
 ### 4. Data & Storage
 
