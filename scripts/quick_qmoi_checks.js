@@ -67,6 +67,16 @@ async function run() {
     process.exitCode = 2; return;
   }
 
+  console.log('Checking memory/recall behavior...');
+  try {
+    const msg = 'I like strawberries';
+    await fetchJson(`${HELPER_BASE}/v1/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{role:'user', content:msg}] }) });
+    const recall = await fetchJson(`${HELPER_BASE}/v1/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{role:'user', content:'What did I say earlier?'}] }) });
+    const rc = recall.choices?.[0]?.message?.content || '';
+    if (!/strawberries|strawb/.test(rc)) throw new Error('memory recall failed: '+String(rc).slice(0,120));
+    console.log('memory/recall behavior ok');
+  } catch (e) { console.error('memory/recall check failed', e); process.exitCode=2; return; }
+
   console.log('All quick checks passed ✅');
 }
 

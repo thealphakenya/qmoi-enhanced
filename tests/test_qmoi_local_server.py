@@ -63,3 +63,25 @@ def test_create_file_intent():
         data = f.read()
     assert 'hello' in data or 'Created by qmoi agent' in data
     os.remove(filename)
+
+
+def test_memory_persistence_and_recall():
+    assert wait_until_up(f"{BASE}/health"), "helper server /health not responding"
+    # Send a user message
+    msg = "I like blueberries"
+    r = requests.post(f"{BASE}/v1/chat/completions", json={"messages": [{"role": "user", "content": msg}]}, timeout=3)
+    assert r.status_code == 200
+    # Now ask the helper to recall
+    r2 = requests.post(f"{BASE}/v1/chat/completions", json={"messages": [{"role": "user", "content": "What did I tell you earlier?"}]}, timeout=3)
+    assert r2.status_code == 200
+    js = r2.json()
+    content = js['choices'][0]['message']['content']
+    assert 'blueberries' in content or 'I like blueberries' in content
+
+
+def test_memory_endpoint_has_entries():
+    assert wait_until_up(f"{BASE}/health"), "helper server /health not responding"
+    r = requests.get(f"{BASE}/memory")
+    assert r.status_code == 200
+    js = r.json()
+    assert 'conversations' in js and isinstance(js['conversations'], list)

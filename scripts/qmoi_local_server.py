@@ -217,6 +217,26 @@ def persona_response(persona, user_msg, memory):
         heard = f"I heard: {user_msg}" if user_msg else ''
         reply = f"{prefix}{heard}" + ("\n" + body if heard else body)
 
+    # Memory-aware addition: if there's previous user memory, optionally include a short recall
+    try:
+        prev = None
+        convs = memory.get('conversations', []) if isinstance(memory, dict) else []
+        # Find last user message if any (most recent earlier entry)
+        for c in reversed(convs):
+            if isinstance(c, dict) and c.get('message'):
+                prev_msg = c.get('message')
+                if prev_msg and prev_msg != user_msg:
+                    prev = prev_msg
+                    break
+        if prev:
+            lmsg = user_msg.lower()
+            # Include the previous message if user asks about memory explicitly or if current msg is a short follow-up
+            if any(k in lmsg for k in ('what did i', 'do you remember', 'remember')) or len(user_msg.split()) <= 4:
+                reply = reply + f"\n\nEarlier you said: {prev}"
+    except Exception:
+        # Non-fatal: if memory structure is unexpected, skip recall behaviour
+        pass
+
     # Persist a compact memory entry
     note = {
         'timestamp': datetime.now(timezone.utc).isoformat(),
