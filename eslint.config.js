@@ -67,6 +67,11 @@ export default [
         EventTarget: "readonly",
         Window: "readonly",
         SpeechSynthesisVoice: "readonly",
+        process: "readonly",
+        Storage: "readonly",
+        Console: "readonly",
+        Response: "readonly",
+        SpeechSynthesisErrorEvent: "readonly",
       },
     },
     plugins: {
@@ -123,6 +128,7 @@ export default [
     rules: {
       ...typescript.configs.recommended.rules,
       "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-unused-vars": [
@@ -131,4 +137,53 @@ export default [
       ],
     },
   },
+  {
+    files: [
+      "**/__tests__/**/*.{js,ts,tsx}",
+      "**/tests/**/*.{js,ts}",
+      "**/*.spec.{js,ts}",
+      "**/*.test.{js,ts,tsx}",
+      "tests/**/*.js",
+      "tests/**/*.ts",
+      "cypress/**/*.js",
+    ],
+
+    languageOptions: {
+      globals: {
+        describe: "readonly",
+        it: "readonly",
+        test: "readonly",
+        expect: "readonly",
+        beforeAll: "readonly",
+        afterAll: "readonly",
+        cy: "readonly",
+        require: "readonly",
+        Buffer: "readonly",
+        console: "readonly",
+        process: "readonly",
+      },
+    },
+  },
+  {
+    files: [
+      "start-watchdebug.js",
+      "watchdebug.js",
+      "mp-inspect.js",
+      "test-getHandlers.js",
+      "test-msw.js",
+      "test-msw-node.js",
+      "tools/**/*.js",
+    ],
+    languageOptions: {
+      globals: {
+        require: "readonly",
+        module: "writable",
+        process: "readonly",
+        __dirname: "readonly",
+        __filename: "readonly",
+        Buffer: "readonly",
+        console: "readonly",
+      },
+    },
+  }
 ];

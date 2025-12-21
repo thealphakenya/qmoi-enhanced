@@ -32,5 +32,16 @@
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**", "**/*.test.{js,ts,tsx}", "tests/**"],
+      "env": { "jest": true }
+    },
+    {
+      "files": ["scripts/**", "tools/**", "watchdebug.js", "start-watchdebug.js"],
+      "parserOptions": { "sourceType": "script" },
+      "env": { "node": true }
+    }
+  ]
 }

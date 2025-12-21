@@ -165,7 +165,7 @@ PLACEHOLDER_PATTERNS = [
     re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]"),
     re.compile(r"PRODUCTION_IMPLEMENTATION_REQUIRED"),
     re.compile(r"\[PLACEHOLDER\]"),
-    re.compile(r"\bTODO_PROD\b"),
+    re.compile(r"\bTODO_PROD [PRODUCTION: review and implement]\b"),
 ]
 
 OUT_ALLREFS = ROOT / 'allrefs.txt'

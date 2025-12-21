@@ -102,13 +102,13 @@ Includes:
    - Status: ✅ Integrated with adapter
 
 2. **GlobalMail.tsx** (x2)
-   - Before: TODO_PROD console.warn, no real send
+   - Before: TODO_PROD [PRODUCTION: review and implement] console.warn, no real send
    - After: Calls `sendMail()` to `/api/mail`
    - UI: Shows "Mail sent successfully" on success
    - Status: ✅ Integrated with adapter
 
 3. **GlobalFileTransfer.tsx** (x2)
-   - Before: TODO_PROD stub, simulated transfer
+   - Before: TODO_PROD [PRODUCTION: review and implement] stub, simulated transfer
    - After: Calls `uploadFile()` to `/api/files`
    - Status: ✅ Integrated with adapter
 
@@ -118,12 +118,12 @@ Includes:
    - Status: ✅ Integrated with adapter
 
 5. **EmergencyPanel.tsx** (x2)
-   - Before: TODO_PROD stubs for SOS, lockdown, wipe, alert
+   - Before: TODO_PROD [PRODUCTION: review and implement] stubs for SOS, lockdown, wipe, alert
    - After: Each button calls `emergencyAction()` to `/api/emergency`
    - Status: ✅ Integrated with adapter
 
 6. **FloatingPreviewWindow.tsx** (x2)
-   - Before: TODO_PROD placeholder for YouTube download
+   - Before: TODO_PROD [PRODUCTION: review and implement] placeholder for YouTube download
    - After: Calls `youtubeDownload()` to `/api/youtube/download`
    - Status: ✅ Integrated with adapter
 
@@ -296,7 +296,7 @@ Includes:
 ### Before
 
 - ❌ 16,987 non-prod markers scattered throughout codebase
-- ❌ Components showing placeholder text "TODO_PROD"
+- ❌ Components showing placeholder text "TODO_PROD [PRODUCTION: review and implement]"
 - ❌ No centralized API configuration
 - ❌ Dashboard URLs not documented
 - ❌ Build instructions missing

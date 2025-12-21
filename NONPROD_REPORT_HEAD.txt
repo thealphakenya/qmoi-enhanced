@@ -35,8 +35,8 @@
 ./matches_with_comments.json:2538:    "comment_block": "# If broken, log and notify (simulate)\n  # echo \"Broken link: $url\" >> /tmp/qmoi-broken-links.log\n  # Notify master/admin (simulate)"
 ./matches_with_comments.json:2543:    "snippet": "# 4. Update documentation with latest links and status (simulate)",
 ./matches_with_comments.json:2544:    "comment_block": "# If broken, log and notify (simulate)\n  # echo \"Broken link: $url\" >> /tmp/qmoi-broken-links.log\n  # Notify master/admin (simulate)\n# 4. Update documentation with latest links and status (simulate)"
-./matches_with_comments.json:2591:    "snippet": "| mobile/node_modules/jest-mock/README.md | jest-TODO_PROD |",
-./matches_with_comments.json:2609:    "snippet": "| qmoi-enhanced/mobile/node_modules/jest-mock/README.md | jest-TODO_PROD |",
+./matches_with_comments.json:2591:    "snippet": "| mobile/node_modules/jest-mock/README.md | jest-TODO_PROD [PRODUCTION: review and implement] |",
+./matches_with_comments.json:2609:    "snippet": "| qmoi-enhanced/mobile/node_modules/jest-mock/README.md | jest-TODO_PROD [PRODUCTION: review and implement] |",
 ./matches_with_comments.json:2693:    "snippet": "# Paper trade (simulate)",
 ./matches_with_comments.json:2694:    "comment_block": "# 4. Place trade if allowed\n                # Paper trade (simulate)"
 ./matches_with_comments.json:2723:    "snippet": "jest-mock \"^27.5.1\"",
@@ -134,9 +134,9 @@
 ./matches_with_comments.json:9293:    "snippet": "// For now, simulate a successful backup",
 ./matches_with_comments.json:9294:    "comment_block": "// In production, call the Python kernel's backup_memory function\n  // For now, simulate a successful backup"
 ./matches_with_comments.json:9311:    "snippet": "// Call the Python kernel to process feedback (simulate for now)",
-./matches_with_comments.json:9312:    "comment_block": "// Call the Python kernel to process feedback (simulate for now)\n  // In production, use a proper IPC or service call\n  // Example: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a TODO_PROD response"
-./matches_with_comments.json:9318:    "comment_block": "// Call the Python kernel to process feedback (simulate for now)\n  // In production, use a proper IPC or service call\n  // Example: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a TODO_PROD response"
-./matches_with_comments.json:9324:    "comment_block": "// Call the Python kernel to process feedback (simulate for now)\n  // In production, use a proper IPC or service call\n  // Example: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a TODO_PROD response"
+./matches_with_comments.json:9312:    "comment_block": "// Call the Python kernel to process feedback (simulate for now)\n  // In production, use a proper IPC or service call\n  // Example: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a TODO_PROD [PRODUCTION: review and implement] response"
+./matches_with_comments.json:9318:    "comment_block": "// Call the Python kernel to process feedback (simulate for now)\n  // In production, use a proper IPC or service call\n  // Example: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a TODO_PROD [PRODUCTION: review and implement] response"
+./matches_with_comments.json:9324:    "comment_block": "// Call the Python kernel to process feedback (simulate for now)\n  // In production, use a proper IPC or service call\n  // Example: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a TODO_PROD [PRODUCTION: review and implement] response"
 ./matches_with_comments.json:9329:    "snippet": "result = { success: true, message: 'Rollback executed (stub)', logs: ['Rollback logic not yet implemented.'] };",
 ./matches_with_comments.json:9335:    "snippet": "result = { success: true, message: 'Batch edit executed (stub)', logs: [`Batch edit: ${params.operation} on files: ${params.files}`] };",
 ./matches_with_comments.json:9341:    "snippet": "result = { success: true, message: 'Log scan complete (stub)', logs: ['Scanned logs for problems.'] };",

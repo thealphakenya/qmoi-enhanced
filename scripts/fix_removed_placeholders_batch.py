@@ -6,8 +6,8 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'TODO_PROD'
-  - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD'
+  - '[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'TODO_PROD [PRODUCTION: review and implement]'
+  - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD [PRODUCTION: review and implement]'
   - 'do_[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
@@ -56,8 +56,8 @@ def backup(path: Path):
 
 def apply_replacements(path: Path):
     txt = path.read_text(encoding='utf-8')
-    new, n1 = PH_PAT.subn('TODO_PROD', txt)
-    new, n2 = PH2_PAT.subn('TODO_PROD', new)
+    new, n1 = PH_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', txt)
+    new, n2 = PH2_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', new)
     new, n3 = DO_PH.subn('do_sample', new)
     replaced = n1 + n2 + n3
     if replaced:
@@ -114,8 +114,8 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'TODO_PROD'
-  - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD'
+  - '[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'TODO_PROD [PRODUCTION: review and implement]'
+  - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD [PRODUCTION: review and implement]'
   - 'do_[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
@@ -164,8 +164,8 @@ def backup(path: Path):
 
 def apply_replacements(path: Path):
     txt = path.read_text(encoding='utf-8')
-    new, n1 = PH_PAT.subn('TODO_PROD', txt)
-    new, n2 = PH2_PAT.subn('TODO_PROD', new)
+    new, n1 = PH_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', txt)
+    new, n2 = PH2_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', new)
     new, n3 = DO_PH.subn('do_sample', new)
     replaced = n1 + n2 + n3
     if replaced:

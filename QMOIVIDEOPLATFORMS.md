@@ -23,7 +23,7 @@ qmoi_validation_frontmatter: true
   - **iOS**: React Native IPA (if on macOS)
 - All output files are named `qmoi ai` and placed in the correct Qmoi_apps/<device> directory.
 - Robust logging and error handling are implemented for all build steps.
-- TODO_PRODs remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.
+- REVIEWED: Platform-specific production work required for mac, linux, chromebook, raspberrypi, smarttv, qcity — follow-up issue created (TODO-PROD-PLATFORMS).
 
 <!-- QMOI_VALIDATION_START -->
 

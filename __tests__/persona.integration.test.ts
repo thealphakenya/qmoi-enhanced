@@ -7,54 +7,55 @@ describe("QM OI helper server integration", () => {
   let child = null;
 
   async function waitForReady(childProcess, port, timeout = 20000) {
+    // Use a TCP connect-based readiness check to avoid CORS/XHR fetch races
+    const net = require('net');
     const start = Date.now();
     return new Promise((resolve, reject) => {
-      let resolved = false;
-      function ok() {
-        if (resolved) return;
-        resolved = true;
-        resolve(true);
-      }
-      function fail(err) {
-        if (resolved) return;
-        resolved = true;
-        reject(err);
-      }
-
-      childProcess.stdout.on("data", (chunk) => {
-        const s = String(chunk || "").toLowerCase();
-        if (s.includes("listening") || s.includes("listening on")) {
-          ok();
-        }
-      });
-
-      childProcess.on("exit", (code) => {
-        fail(new Error("Server exited unexpectedly with code " + code));
-      });
-
-      // Poll the health endpoint until it's available
-      const attempt = async () => {
-        try {
-          const res = await fetch(`http://127.0.0.1:${port}/health`);
-          if (res && res.status === 200) {
-            ok();
-            return;
+      function check() {
+        const socket = new net.Socket();
+        let settled = false;
+        socket.setTimeout(1000);
+        socket.on('connect', () => {
+          settled = true;
+          socket.destroy();
+          resolve(true);
+        });
+        socket.on('timeout', () => {
+          if (!settled) {
+            socket.destroy();
+            if (Date.now() - start > timeout) return reject(new Error('timeout waiting for server'));
+            setTimeout(check, 200);
           }
-        } catch (e) {
-          // ignore, server may not be up yet
-        }
-        if (Date.now() - start > timeout) {
-          fail(new Error("Timeout waiting for server ready"));
-          return;
-        }
-        setTimeout(attempt, 250);
-      };
-      attempt();
+        });
+        socket.on('error', () => {
+          if (!settled) {
+            socket.destroy();
+            if (Date.now() - start > timeout) return reject(new Error('timeout waiting for server'));
+            setTimeout(check, 200);
+          }
+        });
+        socket.connect(port, '127.0.0.1');
+      }
+      check();
     });
   }
 
   beforeAll(async () => {
-    const port = 30000 + Math.floor(Math.random() * 1000);
+    // Choose a free ephemeral port to avoid collisions in parallel runs
+    const net = require('net');
+    let port;
+    if (process.env.QMOI_LOCAL_PORT) {
+      port = Number(process.env.QMOI_LOCAL_PORT);
+    } else {
+      port = await new Promise((resolve, reject) => {
+        const s = net.createServer();
+        s.listen(0, '127.0.0.1', () => {
+          const p = s.address().port;
+          s.close(() => resolve(p));
+        });
+        s.on('error', reject);
+      });
+    }
     child = spawn("python3", ["-u", "scripts/qmoi_local_server.py"], {
       stdio: ["ignore", "pipe", "pipe"],
       env: Object.assign({}, process.env, { QMOI_LOCAL_PORT: String(port) }),
@@ -68,8 +69,8 @@ describe("QM OI helper server integration", () => {
     );
     console.log("[child pid]", child.pid, "port", port);
     await waitForReady(child, port, 25000);
-    // Small buffer after ready to ensure server fully accepts connections
-    await new Promise((r) => setTimeout(r, 200));
+    // Small buffer after ready to ensure server fully accepts connections (increase to avoid flakiness under load / instrumented runs)
+    await new Promise((r) => setTimeout(r, 1000));
     // Store the port for use in tests
     child._qmoi_test_port = port;
   });
@@ -87,7 +88,21 @@ describe("QM OI helper server integration", () => {
       ],
     };
 
-    const resp = await fetch(url, {
+    // Helper to retry transient network failures (reduces flakiness under instrumentation)
+    async function postWithRetry(url, opts, retries = 3) {
+      for (let i = 0; i < retries; i++) {
+        try {
+          const r = await fetch(url, opts);
+          return r;
+        } catch (e) {
+          if (i === retries - 1) throw e;
+          // exponential backoff
+          await new Promise((r) => setTimeout(r, 200 * (i + 1)));
+        }
+      }
+    }
+
+    const resp = await postWithRetry(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -100,7 +115,7 @@ describe("QM OI helper server integration", () => {
     expect(typeof msg).toBe("string");
     expect(msg.startsWith("[Master Mode]")).toBe(true);
 
-    const memResp = await fetch("http://127.0.0.1:8080/memory");
+    const memResp = await fetch(`http://127.0.0.1:${child._qmoi_test_port}/memory`);
     expect(memResp.status).toBe(200);
     const mem = await memResp.json();
     expect(Array.isArray(mem.conversations)).toBe(true);

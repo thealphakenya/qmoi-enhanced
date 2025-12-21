@@ -98,12 +98,12 @@ MODIFIED FILES (8 FILES)
 5. components/GlobalMail.tsx
    - Imported: sendMail from '@/adapters/clientAdapters'
    - Replaced handleSend() with async adapter call
-   - Removed "TODO_PROD: Mail service not configured" text
+   - Removed "TODO_PROD [PRODUCTION: review and implement]: Mail service not configured" text
    - Shows "Mail sent successfully" on success
 
 6. qmoi-enhanced/components/GlobalMail.tsx
    - Same as above (duplicate)
-   - UI message updated from TODO_PROD to "Mail sent successfully"
+   - UI message updated from TODO_PROD [PRODUCTION: review and implement] to "Mail sent successfully"
 
 7. components/GlobalFileTransfer.tsx
    - Imported: uploadFile from '@/adapters/clientAdapters'

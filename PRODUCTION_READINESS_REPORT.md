@@ -22,7 +22,7 @@
 - ✅ `.env.example` — Environment variable template for all services
 - ✅ `BUILD_INSTRUCTIONS.md` — Complete build guide for local development
 
-### 3. TODO_PROD Stubs Replaced (Task 3)
+### 3. TODO_PROD [PRODUCTION: review and implement] Stubs Replaced (Task 3)
 
 - ✅ **12 components patched** to use production adapters:
   - `QmoiMediaManager.tsx` (both copies) → calls `fetchMedia()`

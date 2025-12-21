@@ -1,0 +1,197 @@
+name: CI Debug (test logs)
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+jobs:
+  ci-debug:
+    name: CI Debug
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install deps (npm ci or npm install)
+        run: |
+          set -euo pipefail
+          if [ -f package-lock.json ]; then
+            npm ci --silent || npm install --no-audit --no-fund --silent
+          else
+            npm install --no-audit --no-fund --silent
+          fi
+
+      - name: Run tests and capture output
+        run: |
+          set -euo pipefail
+          # Capture both stdout and stderr into test-output.txt so we can download it
+          npm test --silent > test-output.txt 2>&1 || true
+          echo "--- EOF: tail of test-output.txt ---"
+          tail -n 200 test-output.txt || true
+
+      - name: Run Next.js build and capture output
+        run: |
+          set -euo pipefail
+          # Capture build output (ci:build); capture full output but we post only tails
+          npm run ci:build > build-output.txt 2>&1 || true
+          echo "--- EOF: tail of build-output.txt ---"
+          tail -n 400 build-output.txt || true
+
+      - name: Print condensed tails to job log
+        run: |
+          echo "---- TEST OUTPUT (tail) ----"
+          tail -n 200 test-output.txt || true
+          echo "---- BUILD OUTPUT (tail) ----"
+          tail -n 200 build-output.txt || true
+
+      - name: Upload ci logs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-logs-${{ github.sha }}
+          path: |
+            test-output.txt
+            build-output.txt
+            comment-post-error.txt
+            issue-create-error.txt
+
+      - name: Post tail of test and build output to PR as a comment (for easier debugging)
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const sha = process.env.GITHUB_SHA;
+            let body = '#### CI Debug: test & build output (tails)\n\n';
+            const tpath = 'test-output.txt';
+            const bpath = 'build-output.txt';
+            if (fs.existsSync(tpath)) {
+              let txt = fs.readFileSync(tpath, 'utf8');
+              let tail = txt.slice(-2000);
+              body += '**Test output (tail):**\n```\n' + tail + '\n```\n';
+            } else {
+              body += '**Test output:** No test-output.txt found\n';
+            }
+            if (fs.existsSync(bpath)) {
+              let btxt = fs.readFileSync(bpath, 'utf8');
+              let btail = btxt.slice(-5000);
+              body += '**Build output (tail):**\n```\n' + btail + '\n```\n';
+            } else {
+              body += '**Build output:** No build-output.txt found\n';
+            }
+            try {
+              // Prefer direct PR number if available (pull_request events)
+              const prNum = context.payload.pull_request ? context.payload.pull_request.number : null;
+              if (prNum) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: prNum, body });
+                console.log('Posted debug comment to PR', prNum);
+              } else {
+                // Fallback: find PRs associated with this commit
+                const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({ owner, repo, commit_sha: sha });
+                if (prs.data && prs.data.length > 0) {
+                  const prNum2 = prs.data[0].number;
+                  await github.rest.issues.createComment({ owner, repo, issue_number: prNum2, body });
+                  console.log('Posted debug comment to PR', prNum2);
+                } else {
+                  console.log('No PRs associated with commit', sha);
+                }
+              }
+            } catch (err) {
+              console.log('Error posting comment:', err && err.message ? err.message : err);
+              // write the error out to a small file for artifact collection
+              fs.writeFileSync('comment-post-error.txt', String(err).slice(0,4000));
+            }
+
+      - name: Create issue with test output (fallback)
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const sha = process.env.GITHUB_SHA;
+            let body = '## CI Debug: test-output (tail)\n\n';
+            let path = 'test-output.txt';
+            if (fs.existsSync(path)) {
+              let txt = fs.readFileSync(path, 'utf8');
+              let tail = txt.slice(-15000);
+              body += '```\n' + tail + '\n```';
+            } else {
+              body += 'No test-output.txt found';
+            }
+            const title = `CI Debug output for commit ${sha}`;
+            try {
+              const issue = await github.rest.issues.create({ owner, repo, title, body });
+              console.log('Created debug issue', issue.data.number);
+            } catch (err) {
+              console.log('Error creating debug issue:', err && err.message ? err.message : err);
+              fs.writeFileSync('issue-create-error.txt', String(err).slice(0,4000));
+            }
+
+      - name: Commit logs to repo (branch: ci-debug-output-${{ github.sha }})
+        if: always()
+        env:
+          GH_REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          BRANCH="ci-debug-output-${GITHUB_SHA}"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" repo
+          cd repo
+          git checkout -b "$BRANCH" || git checkout "$BRANCH" || true
+          mkdir -p ci-debug-outputs
+          if [ -f ../test-output.txt ]; then head -c 200000 ../test-output.txt > ci-debug-outputs/${GITHUB_SHA}-test.txt || true; fi
+          if [ -f ../build-output.txt ]; then head -c 200000 ../build-output.txt > ci-debug-outputs/${GITHUB_SHA}-build.txt || true; fi
+          # Capture git environment and status for debugging push problems
+          echo "=== GIT REMOTE -V ===" > push-output.txt
+          git remote -v >> push-output.txt 2>&1 || true
+          echo "=== GIT STATUS ===" >> push-output.txt
+          git status >> push-output.txt 2>&1 || true
+          echo "=== GIT BRANCHES ===" >> push-output.txt
+          git branch -a >> push-output.txt 2>&1 || true
+          git add ci-debug-outputs/${GITHUB_SHA}-*.txt || true
+          if git diff --cached --quiet; then
+            echo "no changes to commit" | tee -a push-output.txt
+          else
+            git commit -m "ci(debug): add debug outputs for ${GITHUB_SHA}" || true
+            echo "=== GIT PUSH ATTEMPT ===" >> push-output.txt
+            git push -u origin "$BRANCH" 2>&1 | tee -a push-output.txt || true
+          fi
+          # Ensure push-output is recorded in the branch for post-mortem
+          cp push-output.txt ci-debug-outputs/push-output-${GITHUB_SHA}.txt || true
+          git add ci-debug-outputs/push-output-${GITHUB_SHA}.txt || true
+          if git diff --cached --quiet; then
+            echo "no push-output changes to commit"
+          else
+            git commit -m "ci(debug): add push log for ${GITHUB_SHA}" || true
+            git push -u origin "$BRANCH" 2>&1 | tee -a push-output.txt || true
+          fi
+
+      - name: Upload full workspace log (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace-tar-${{ github.sha }}
+          path: |
+            .
+
+      - name: Upload full workspace log (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace-tar-${{ github.sha }}
+          path: |
+            .
