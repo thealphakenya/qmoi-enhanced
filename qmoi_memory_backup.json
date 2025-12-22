@@ -289,6 +289,84 @@
       "timestamp": "2025-12-21T14:33:28.956258+00:00",
       "persona": "user",
       "message": "What did I say earlier?"
+    },
+    {
+      "timestamp": "2025-12-22T13:18:25.196216+00:00",
+      "persona": "user",
+      "message": "Hello"
+    },
+    {
+      "timestamp": "2025-12-22T13:32:11.121007Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T13:32:11.498015Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T13:32:11.511652Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "I received your message: 'Create a file named tests/quick_tmp_file.txt with the content 'quick-test''. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T13:32:26.120019Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content \"quick-test\""
+        }
+      ],
+      "reply": "I received your message: 'Create a file named tests/quick_tmp_file.txt with the content \"quick-test\"'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.237919+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.581639+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.598262+00:00",
+      "persona": "user",
+      "message": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.604352+00:00",
+      "persona": "user",
+      "message": "I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.610109+00:00",
+      "persona": "user",
+      "message": "What did I say earlier?"
     }
   ]
 }

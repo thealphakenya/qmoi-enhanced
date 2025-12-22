@@ -30,6 +30,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <FloatingAQ />
+          {/* UI settings: display & accessibility */}
+          {/* lazy client component */}
+          <div id="qmoi-ui-settings-placeholder">
+            {/* dynamically import to avoid SSR issues */}
+          </div>
           {children}
           <Analytics />
         </ThemeProvider>

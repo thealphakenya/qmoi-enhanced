@@ -1,11 +1,36 @@
 "use client";
-"use client";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
+import UISettings from "./UISettings";
 
 export function FloatingAQ() {
+  // Keep existing floating ask UI but also mount UISettings so settings are available
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [messages, setMessages] = useState<string[]>([]);
+
+  // keyboard shortcut: Ctrl+Shift+, opens settings
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.ctrlKey && e.shiftKey && e.key === ",") {
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("qmoi:open-settings"));
+        }
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "h" || e.key === "H")) {
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("qmoi:toggle-high-contrast"));
+        }
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "m" || e.key === "M")) {
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("qmoi:toggle-reduce-motion"));
+        }
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   function submit() {
     if (!value) return;
@@ -16,6 +41,53 @@ export function FloatingAQ() {
 
   return (
     <div>
+      {/* Header settings buttons (top-right) */}
+      <div
+        style={{
+          position: "fixed",
+          right: 20,
+          top: 20,
+          zIndex: 9999,
+          display: "flex",
+          gap: 8,
+        }}
+      >
+        <button
+          aria-label="Toggle high contrast"
+          title="Toggle high contrast"
+          onClick={() =>
+            typeof window !== "undefined" &&
+            window.dispatchEvent(new CustomEvent("qmoi:toggle-high-contrast"))
+          }
+          className="bg-gray-800 text-white p-2 rounded"
+        >
+          🌓
+        </button>
+        <button
+          aria-label="Toggle reduce motion"
+          title="Toggle reduce motion"
+          onClick={() =>
+            typeof window !== "undefined" &&
+            window.dispatchEvent(new CustomEvent("qmoi:toggle-reduce-motion"))
+          }
+          className="bg-gray-800 text-white p-2 rounded"
+        >
+          🛑
+        </button>
+        <button
+          aria-label="Open display settings"
+          onClick={() =>
+            typeof window !== "undefined" &&
+            window.dispatchEvent(new CustomEvent("qmoi:open-settings"))
+          }
+          style={{}}
+          className="bg-transparent text-white p-2 rounded"
+        >
+          ⚙️
+        </button>
+      </div>
+
+      {/* keyboard shortcut: Ctrl+Shift+, opens settings (listener mounted above) */}
       <button
         onClick={() => setOpen((s) => !s)}
         style={{ position: "fixed", right: 20, bottom: 20, zIndex: 9999 }}
@@ -62,6 +134,9 @@ export function FloatingAQ() {
           </div>
         </div>
       )}
+
+      {/* Mount the persistent UI settings component so it's available across the app */}
+      <UISettings />
     </div>
   );
 }

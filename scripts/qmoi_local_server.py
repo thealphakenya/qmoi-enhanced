@@ -213,9 +213,15 @@ def persona_response(persona, user_msg, memory):
     elif persona == 'sister':
         reply = f"{prefix}{body}"
     else:
-        # For user persona keep a short acknowledgement of what we heard + the reply
-        heard = f"I heard: {user_msg}" if user_msg else ''
-        reply = f"{prefix}{heard}" + ("\n" + body if heard else body)
+        # For user persona produce a concise reply and only recall previous messages
+        # when the user explicitly asks or when the current message is a short follow-up.
+        user_asked_memory = any(k in (user_msg or '').lower() for k in ('what did i', 'do you remember', 'remember'))
+        # Keep greeting replies concise (no unnecessary echo)
+        is_greeting = (user_msg or '').strip().lower() in ('hi', 'hello', 'hey')
+        if is_greeting:
+            reply = f"{prefix}{body}"
+        else:
+            reply = f"{prefix}{body}"
 
     # Memory-aware addition: if there's previous user memory, optionally include a short recall
     try:
@@ -230,8 +236,9 @@ def persona_response(persona, user_msg, memory):
                     break
         if prev:
             lmsg = user_msg.lower()
-            # Include the previous message if user asks about memory explicitly or if current msg is a short follow-up
-            if any(k in lmsg for k in ('what did i', 'do you remember', 'remember')) or len(user_msg.split()) <= 4:
+            # Include the previous message if user asks about memory explicitly
+            # or if current msg is a very short follow-up (likely a recall request)
+            if user_asked_memory or (len(user_msg.split()) <= 3):
                 reply = reply + f"\n\nEarlier you said: {prev}"
     except Exception:
         # Non-fatal: if memory structure is unexpected, skip recall behaviour

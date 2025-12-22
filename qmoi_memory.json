@@ -289,6 +289,624 @@
       "timestamp": "2025-12-21T14:33:28.956258+00:00",
       "persona": "user",
       "message": "What did I say earlier?"
+    },
+    {
+      "timestamp": "2025-12-22T13:18:25.196216+00:00",
+      "persona": "user",
+      "message": "Hello"
+    },
+    {
+      "timestamp": "2025-12-22T13:32:11.121007Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T13:32:11.498015Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T13:32:11.511652Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "I received your message: 'Create a file named tests/quick_tmp_file.txt with the content 'quick-test''. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T13:32:26.120019Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content \"quick-test\""
+        }
+      ],
+      "reply": "I received your message: 'Create a file named tests/quick_tmp_file.txt with the content \"quick-test\"'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.237919+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.581639+00:00",
+      "persona": "user",
+      "message": "How are you"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.598262+00:00",
+      "persona": "user",
+      "message": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.604352+00:00",
+      "persona": "user",
+      "message": "I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-22T13:33:23.610109+00:00",
+      "persona": "user",
+      "message": "What did I say earlier?"
+    },
+    {
+      "timestamp": "2025-12-22T16:28:56.790226Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:29:12.463420Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:34:52.701498Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:34:52.759334Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:34:52.887123Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "I received your message: 'Create a file named tests/quick_tmp_file.txt with the content 'quick-test''. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:37:20.369236Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:37:20.385697Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:37:20.394504Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T16:37:20.399097Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "I received your message: 'I like strawberries'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:37:20.403047Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "I received your message: 'What did I say earlier?'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:38:58.345290Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:38:58.364480Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:38:58.375527Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T16:38:58.384929Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "I received your message: 'I like strawberries'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:38:58.390606Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:49:11.245201Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:49:11.259047Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:49:11.266744Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T16:49:11.271454Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "I received your message: 'I like strawberries'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T16:49:11.275364Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:00:09.758800Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:00:09.771094Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:00:09.778454Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T17:00:09.783392Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "I received your message: 'I like strawberries'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:00:09.787193Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:03:46.425646Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:03:46.436410Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:03:46.444362Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T17:03:46.449156Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "I received your message: 'I like strawberries'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:03:46.453575Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:13:18.443918Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:13:18.454893Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:13:18.462703Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T17:13:18.467472Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "I received your message: 'I like strawberries'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:13:18.471406Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:22:11.876145Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:22:11.891650Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I received your message: 'How are you'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:22:11.901996Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T17:22:11.909618Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "I received your message: 'I like strawberries'. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:22:11.915910Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:23:34.954295Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hello "
+        }
+      ],
+      "reply": "I received your message: 'Hello '. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:24:27.764403Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hello "
+        },
+        {
+          "role": "assistant",
+          "content": "I received your message: 'Hello '. (tone: helpful, clear; model: qmoi)"
+        },
+        {
+          "role": "user",
+          "content": "What is your name "
+        }
+      ],
+      "reply": "I received your message: 'What is your name '. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:27:45.766120Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hello "
+        },
+        {
+          "role": "assistant",
+          "content": "I received your message: 'Hello '. (tone: helpful, clear; model: qmoi)"
+        },
+        {
+          "role": "user",
+          "content": "What is your name "
+        },
+        {
+          "role": "assistant",
+          "content": "I received your message: 'What is your name '. (tone: helpful, clear; model: qmoi)"
+        },
+        {
+          "role": "user",
+          "content": "I would like us to work on a project "
+        }
+      ],
+      "reply": "I received your message: 'I would like us to work on a project '. (tone: helpful, clear; model: qmoi)"
     }
   ]
 }

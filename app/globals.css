@@ -59,9 +59,11 @@
     border-color: hsl(var(--border));
   }
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    font-family:
+    background-color: var(--qmoi-bg-color, hsl(var(--background)));
+    color: var(--qmoi-font-color, hsl(var(--foreground)));
+    font-size: var(--qmoi-font-size, 16px);
+    font-family: var(
+      --qmoi-font-family,
       Inter,
       ui-sans-serif,
       system-ui,
@@ -69,8 +71,58 @@
       "Segoe UI",
       Roboto,
       "Helvetica Neue",
-      Arial;
+      Arial
+    );
+    line-height: var(--qmoi-line-height, 1.5);
   }
+}
+
+/* Respect reduced motion preference or explicit setting */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Default css variables for UI settings (can be overridden by UISettings) */
+:root {
+  --qmoi-font-size: 16px;
+  --qmoi-font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  --qmoi-font-color: #111827;
+  --qmoi-bg-color: #ffffff;
+  --qmoi-line-height: 1.5;
+  --qmoi-high-contrast: 0;
+  --qmoi-reduce-motion: 0;
+}
+
+/* When high-contrast mode is enabled via UISettings */
+:root[data-qmoi-high-contrast="1"] {
+  --qmoi-font-color: #ffffff;
+  --qmoi-bg-color: #000000;
+  --qmoi-font-size: var(--qmoi-font-size);
+}
+
+/* When reduce-motion is enabled via UISettings */
+:root[data-qmoi-reduce-motion="1"] * {
+  animation-duration: 0s !important;
+  transition-duration: 0s !important;
+  scroll-behavior: auto !important;
+}
+
+/* High contrast focus and UI tweaks */
+:root[data-qmoi-high-contrast="1"] *:focus {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+:root[data-qmoi-high-contrast="1"] button,
+:root[data-qmoi-high-contrast="1"] .btn {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
 }
 
 .qai-loading {
@@ -90,9 +142,7 @@
     text-shadow: 0 0 10px var(--qai-accent);
   }
   to {
-    text-shadow:
-      0 0 30px var(--qai-accent),
-      0 0 10px #fff;
+    text-shadow: 0 0 30px var(--qai-accent), 0 0 10px #fff;
   }
 }
 

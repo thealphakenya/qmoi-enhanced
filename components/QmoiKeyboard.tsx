@@ -136,7 +136,9 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
           }
         }
         if (finalTranscript) {
-          handleVoiceInput(finalTranscript);
+          // Normalize to prevent duplicate words/punctuation from being inserted
+          const norm = normalizeTranscript(finalTranscript);
+          handleVoiceInput(norm);
         }
       };
 
@@ -170,8 +172,15 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
         wordFrequency,
         language,
         timestamp: Date.now(),
-      }),
+      })
     );
+  };
+
+  const normalizeTranscript = (text: string) => {
+    if (!text) return text;
+    let t = text.replace(/\b(\w+)(?:\s+\1\b)+/gi, "$1");
+    t = t.replace(/[!?.]{2,}/g, (m) => m[0]);
+    return t.trim();
   };
 
   const generatePredictions = (input: string): Prediction[] => {
@@ -180,7 +189,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
 
     if (input.length > 0) {
       const matchingWords = words.filter((word) =>
-        word.toLowerCase().startsWith(input.toLowerCase()),
+        word.toLowerCase().startsWith(input.toLowerCase())
       );
 
       matchingWords.slice(0, 5).forEach((word) => {
@@ -314,8 +323,14 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
                 className={`
                   flex-1 h-12 rounded-lg font-medium text-sm
                   ${key === "space" ? "flex-[3]" : ""}
-                  ${key === "⌫" || key === "↵" ? "bg-red-500 text-white" : "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-gray-100"}
-                  ${key === "🌐" && swahiliMode ? "bg-green-500 text-white" : ""}
+                  ${
+                    key === "⌫" || key === "↵"
+                      ? "bg-red-500 text-white"
+                      : "bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-gray-100"
+                  }
+                  ${
+                    key === "🌐" && swahiliMode ? "bg-green-500 text-white" : ""
+                  }
                   ${key === "🎤" && isListening ? "bg-red-500 text-white" : ""}
                   hover:bg-gray-300 dark:hover:bg-gray-500
                 `}

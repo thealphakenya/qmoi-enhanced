@@ -65,8 +65,10 @@ export const QConverse: React.FC<QConverseProps> = ({
         }
       }
       if (finalTranscript) {
-        setCurrentText(finalTranscript);
-        processVoiceInput(finalTranscript);
+        // Normalize transcript to remove accidental repeated words/punctuation
+        const norm = normalizeTranscript(finalTranscript);
+        setCurrentText(norm);
+        processVoiceInput(norm);
       }
     };
     recognitionRef.current.onerror = () => setIsListening(false);
@@ -74,6 +76,16 @@ export const QConverse: React.FC<QConverseProps> = ({
       setIsListening(false);
       if (isEnabled) setTimeout(() => startListening(), 100);
     };
+  };
+
+  const normalizeTranscript = (text: string) => {
+    if (!text) return text;
+    // collapse repeated consecutive words (e.g. "hello hello" -> "hello")
+    let t = text.replace(/\b(\w+)(?:\s+\1\b)+/gi, "$1");
+    // collapse repeated punctuation (e.g. "!!" -> "!")
+    t = t.replace(/[!?.]{2,}/g, (m) => m[0]);
+    // trim whitespace
+    return t.trim();
   };
 
   const processVoiceInput = (transcript: string) => {
