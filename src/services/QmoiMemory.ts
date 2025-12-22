@@ -17,7 +17,7 @@ export class QmoiMemory {
       (r) =>
         r.key === key &&
         (user ? r.user === user : true) &&
-        (project ? r.project === project : true),
+        (project ? r.project === project : true)
     );
 
     const record: MemoryRecord = {
@@ -34,6 +34,26 @@ export class QmoiMemory {
     } else {
       memoryStore.push(record);
     }
+
+    // attempt to persist to server-side memory proxy
+    try {
+      if (typeof fetch === "function") {
+        fetch("/api/qmoi/memory", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            conversations: [],
+            profiles: {},
+            sessions: {},
+            // store a key-value record for cross-sync purposes
+            key,
+            value,
+            user,
+            project,
+          }),
+        }).catch(() => {});
+      }
+    } catch (e) {}
   }
 
   static get(key: string, user?: string, project?: string) {
@@ -41,17 +61,43 @@ export class QmoiMemory {
       (r) =>
         r.key === key &&
         (user ? r.user === user : true) &&
-        (project ? r.project === project : true),
+        (project ? r.project === project : true)
     );
     return record ? JSON.parse(record.value) : null;
   }
 
   static list(user?: string, project?: string) {
+    // Kick off a background fetch to refresh client memoryStore from server
+    try {
+      if (typeof fetch === "function") {
+        fetch("/api/qmoi/memory")
+          .then((r) => r.json())
+          .then((data) => {
+            if (data && data.profiles) {
+              // merge conversations if present
+              if (Array.isArray(data.conversations)) {
+                data.conversations.forEach((c: any) => {
+                  memoryStore.push({
+                    id: recordId++,
+                    key: "conversation",
+                    user: c.role || "",
+                    project: "",
+                    value: JSON.stringify(c),
+                    timestamp: c.timestamp || new Date().toISOString(),
+                  });
+                });
+              }
+            }
+          })
+          .catch(() => {});
+      }
+    } catch (e) {}
+
     return memoryStore
       .filter(
         (r) =>
           (user ? r.user === user : true) &&
-          (project ? r.project === project : true),
+          (project ? r.project === project : true)
       )
       .map((row) => ({
         key: row.key,

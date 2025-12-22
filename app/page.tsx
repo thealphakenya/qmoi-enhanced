@@ -29,6 +29,7 @@ function MainPage() {
 
   // Stores the user's name after first render
   const [sessionUsername, setSessionUsername] = useState("User");
+  const [previewUrl, setPreviewUrl] = useState<string | undefined>(undefined);
 
   // Retrieve the user's name from localStorage after first render
   useEffect(() => {
@@ -37,6 +38,20 @@ function MainPage() {
 
       // Optional: you can fallback or set another fallback here
     }
+    // listen for global preview events from other components
+    function handlePreview(e: Event) {
+      const detail = (e as CustomEvent)?.detail;
+      if (detail && detail.url) setPreviewUrl(detail.url);
+    }
+
+    if (typeof window !== "undefined") {
+      window.addEventListener('qmoi:preview', handlePreview as EventListener);
+    }
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener('qmoi:preview', handlePreview as EventListener);
+      }
+    };
   }, []);
 
   // Compose a realistic, example session state
@@ -97,9 +112,9 @@ function MainPage() {
           {isMaster && <QmoiMemoryPanel />}
         </main>
 
-        {/* Preview Section */}
+          {/* Preview Section */}
         <section className="col-span-1 p-2 border-l border-green-700 overflow-auto">
-          <PreviewWindow />
+          <PreviewWindow url={previewUrl} />
         </section>
       </div>
     </>

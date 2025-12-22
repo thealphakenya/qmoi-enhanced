@@ -18,11 +18,61 @@ export function EnhancedPreviewWindow() {
     else if (file.type.startsWith("audio/")) setMediaType("audio");
     else setMediaType(null);
     setMediaUrl(url);
+    // persist preview to qmoi memory proxy so assistant can recall
+    try {
+      const sid =
+        (globalThis &&
+          (globalThis as any).localStorage &&
+          (globalThis as any).localStorage.getItem("qmoi_session_id")) ||
+        undefined;
+      if (sid) {
+        fetch("/api/qmoi/memory", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: sid,
+            previews: [
+              {
+                url,
+                type: file.type,
+                origin: "ui-preview",
+                timestamp: Date.now(),
+              },
+            ],
+          }),
+        }).catch(() => {});
+      }
+    } catch (e) {}
   }
 
   function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>) {
     setYoutubeUrl(e.target.value);
     setMediaType("youtube");
+    // persist youtube preview
+    try {
+      const sid =
+        (globalThis &&
+          (globalThis as any).localStorage &&
+          (globalThis as any).localStorage.getItem("qmoi_session_id")) ||
+        undefined;
+      if (sid && e.target.value) {
+        fetch("/api/qmoi/memory", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: sid,
+            previews: [
+              {
+                url: e.target.value,
+                type: "youtube",
+                origin: "ui-preview",
+                timestamp: Date.now(),
+              },
+            ],
+          }),
+        }).catch(() => {});
+      }
+    } catch (e) {}
   }
 
   return (

@@ -38,6 +38,23 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   const [voiceEnabled, setVoiceEnabled] = useState(true);
   const [autoCorrect, setAutoCorrect] = useState(true);
 
+  // Ensure a persisted session id exists for cross-component memory/preview
+  const getOrCreateSessionId = () => {
+    try {
+      let sid = localStorage.getItem("qmoi_session_id");
+      if (!sid) {
+        sid =
+          globalThis.crypto && (globalThis.crypto as any).randomUUID
+            ? (globalThis.crypto as any).randomUUID()
+            : `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+        localStorage.setItem("qmoi_session_id", sid);
+      }
+      return sid;
+    } catch (e) {
+      return `sid-${Date.now()}`;
+    }
+  };
+
   const recognitionRef = useRef<any>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -118,6 +135,10 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   ];
 
   useEffect(() => {
+    // ensure session id on mount for other UI pieces
+    try {
+      getOrCreateSessionId();
+    } catch (e) {}
     // Initialize speech recognition
     if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
       const SpeechRecognition =

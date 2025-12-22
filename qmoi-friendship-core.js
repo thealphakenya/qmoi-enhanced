@@ -48,12 +48,12 @@ class QMOIFriendshipCore {
 
     for (const [emotion, keywords] of Object.entries(emotionKeywords)) {
       emotionScores[emotion] = keywords.filter((keyword) =>
-        words.some((word) => word.includes(keyword)),
+        words.some((word) => word.includes(keyword))
       ).length;
     }
 
     return Object.keys(emotionScores).reduce((a, b) =>
-      emotionScores[a] > emotionScores[b] ? a : b,
+      emotionScores[a] > emotionScores[b] ? a : b
     );
   }
 
@@ -156,7 +156,20 @@ class QMOIFriendshipCore {
     this.extractHealthInfo(profile, interaction);
     this.extractCulturalInfo(profile, interaction);
 
+    // normalize sets to arrays for persistence
+    const normalized = {
+      ...profile,
+      interests: Array.from(profile.interests || []),
+    };
     this.userProfiles.set(userId, profile);
+
+    // persist to memory file if available
+    try {
+      if (typeof globalThis !== "undefined" && globalThis.QMOI_PERSIST) {
+        globalThis.QMOI_PERSIST("profiles", { [userId]: normalized });
+      }
+    } catch (e) {}
+
     return profile;
   }
 
@@ -291,7 +304,7 @@ class QMOIFriendshipCore {
   async updateRelationshipDepth(userId, interaction) {
     const currentDepth = this.relationshipDepth.get(userId) || 0;
     const emotionalIntensity = this.calculateEmotionalIntensity(
-      interaction.message,
+      interaction.message
     );
     const conversationLength = interaction.message.length;
     const personalInfoShared = this.detectPersonalInfo(interaction.message);
@@ -369,7 +382,7 @@ class QMOIFriendshipCore {
     ];
 
     return misunderstandingIndicators.some((indicator) =>
-      interaction.message.toLowerCase().includes(indicator),
+      interaction.message.toLowerCase().includes(indicator)
     );
   }
 
@@ -443,7 +456,7 @@ class QMOIFriendshipCore {
       const emotionalState = await this.analyzeEmotionalState(
         userId,
         message,
-        context,
+        context
       );
 
       // Update user profile
@@ -465,14 +478,14 @@ class QMOIFriendshipCore {
         userId,
         message,
         emotionalState,
-        context,
+        context
       );
 
       // Update performance metrics
       await this.updatePerformanceMetrics(
         userId,
         { message, context },
-        response,
+        response
       );
 
       return {
@@ -522,7 +535,7 @@ class QMOIFriendshipCore {
       return this.generateDeepRelationshipResponse(
         userId,
         message,
-        userProfile,
+        userProfile
       );
     }
 
@@ -547,7 +560,7 @@ class QMOIFriendshipCore {
   generateInterestBasedResponse(userId, message, userProfile) {
     const interests = Array.from(userProfile.interests);
     const relevantInterest = interests.find((interest) =>
-      message.toLowerCase().includes(interest),
+      message.toLowerCase().includes(interest)
     );
 
     if (relevantInterest) {

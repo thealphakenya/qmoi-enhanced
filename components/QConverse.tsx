@@ -26,6 +26,35 @@ export const QConverse: React.FC<QConverseProps> = ({
   onToggle,
   userId,
 }) => {
+  // ensure session id available and fetch profile display name
+  const getOrCreateSessionId = () => {
+    try {
+      let sid = localStorage.getItem("qmoi_session_id");
+      if (!sid) {
+        sid =
+          globalThis.crypto && (globalThis.crypto as any).randomUUID
+            ? (globalThis.crypto as any).randomUUID()
+            : `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+        localStorage.setItem("qmoi_session_id", sid);
+      }
+      return sid;
+    } catch (e) {
+      return `sid-${Date.now()}`;
+    }
+  };
+
+  const fetchProfileName = async (sid: string) => {
+    try {
+      const res = await fetch(`/api/qmoi/memory`);
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data && data.profiles && data.profiles[sid]) {
+        setRecognizedUsers([data.profiles[sid]]);
+      }
+    } catch (e) {
+      // ignore
+    }
+  };
   const [isListening, setIsListening] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentText, setCurrentText] = useState("");
@@ -47,6 +76,11 @@ export const QConverse: React.FC<QConverseProps> = ({
         setupSpeechRecognition();
       }
     }
+    // ensure session id and try to load profile info
+    try {
+      const sid = getOrCreateSessionId();
+      fetchProfileName(sid);
+    } catch (e) {}
   }, []);
 
   const setupSpeechRecognition = () => {

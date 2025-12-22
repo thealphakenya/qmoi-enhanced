@@ -907,6 +907,630 @@
         }
       ],
       "reply": "I received your message: 'I would like us to work on a project '. (tone: helpful, clear; model: qmoi)"
+    },
+    {
+      "timestamp": "2025-12-22T17:45:21.917761Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-22T17:45:56.838077Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-22T17:46:48.039117Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "Hello \u2014 how can I assist you today?"
+    },
+    {
+      "timestamp": "2025-12-22T17:47:44.657600Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T17:48:40.601620Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T17:48:40.653480Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T17:48:40.750401Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T17:48:40.756642Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-22T17:48:40.760392Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-22T17:53:54.476948Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T17:54:09.601869Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T17:54:09.616256Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T17:54:09.625271Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T17:54:09.630948Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-22T17:54:09.635500Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-22T18:00:33.948419Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T18:00:33.961363Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T18:00:33.970785Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T18:00:33.977235Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-22T18:00:33.982118Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-22T18:01:21.014131Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is your name "
+        }
+      ],
+      "reply": "I'm QMOI, your assistant. What's your name so I can address you?"
+    },
+    {
+      "timestamp": "2025-12-22T18:01:43.307146Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is your name "
+        },
+        {
+          "role": "assistant",
+          "content": "I'm QMOI, your assistant. What's your name so I can address you?"
+        },
+        {
+          "role": "user",
+          "content": "I would like us to do a project "
+        }
+      ],
+      "reply": "Great \u2014 I'd love to help with a project. Would you like to: (1) brainstorm ideas, (2) define goals and scope, or (3) create an action plan?"
+    },
+    {
+      "timestamp": "2025-12-22T18:02:15.829456Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is your name "
+        },
+        {
+          "role": "assistant",
+          "content": "I'm QMOI, your assistant. What's your name so I can address you?"
+        },
+        {
+          "role": "user",
+          "content": "I would like us to do a project "
+        },
+        {
+          "role": "assistant",
+          "content": "Great \u2014 I'd love to help with a project. Would you like to: (1) brainstorm ideas, (2) define goals and scope, or (3) create an action plan?"
+        },
+        {
+          "role": "user",
+          "content": "I would like to do a project of a website "
+        }
+      ],
+      "reply": "Great \u2014 I'd love to help with a project. Would you like to: (1) brainstorm ideas, (2) define goals and scope, or (3) create an action plan?"
+    },
+    {
+      "timestamp": "2025-12-22T18:02:26.617611Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is your name "
+        },
+        {
+          "role": "assistant",
+          "content": "I'm QMOI, your assistant. What's your name so I can address you?"
+        },
+        {
+          "role": "user",
+          "content": "I would like us to do a project "
+        },
+        {
+          "role": "assistant",
+          "content": "Great \u2014 I'd love to help with a project. Would you like to: (1) brainstorm ideas, (2) define goals and scope, or (3) create an action plan?"
+        },
+        {
+          "role": "user",
+          "content": "I would like to do a project of a website "
+        },
+        {
+          "role": "assistant",
+          "content": "Great \u2014 I'd love to help with a project. Would you like to: (1) brainstorm ideas, (2) define goals and scope, or (3) create an action plan?"
+        },
+        {
+          "role": "user",
+          "content": "1"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-22T18:03:11.868370Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "system",
+          "content": "master"
+        },
+        {
+          "role": "user",
+          "content": "What is your name "
+        },
+        {
+          "role": "assistant",
+          "content": "I'm QMOI, your assistant. What's your name so I can address you?"
+        },
+        {
+          "role": "user",
+          "content": "I would like us to do a project "
+        },
+        {
+          "role": "assistant",
+          "content": "Great \u2014 I'd love to help with a project. Would you like to: (1) brainstorm ideas, (2) define goals and scope, or (3) create an action plan?"
+        },
+        {
+          "role": "user",
+          "content": "I would like to do a project of a website "
+        },
+        {
+          "role": "assistant",
+          "content": "Great \u2014 I'd love to help with a project. Would you like to: (1) brainstorm ideas, (2) define goals and scope, or (3) create an action plan?"
+        },
+        {
+          "role": "user",
+          "content": "1"
+        },
+        {
+          "role": "assistant",
+          "content": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+        },
+        {
+          "role": "user",
+          "content": "Ho many projects have you done so far"
+        }
+      ],
+      "reply": "Great \u2014 I'd love to help with a project. Would you like to: (1) brainstorm ideas, (2) define goals and scope, or (3) create an action plan?"
+    },
+    {
+      "timestamp": "2025-12-22T20:03:20.118749Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T20:03:57.451582Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T20:03:57.514743Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T20:03:57.537038Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T20:03:57.543748Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-22T20:03:57.548769Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-22T20:08:45.515407Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T20:08:45.535170Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T20:08:45.545679Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T20:08:45.552682Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-22T20:08:45.557744Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-22T20:14:01.988128Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T20:14:02.002820Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T20:14:02.012599Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-22T20:14:02.019269Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-22T20:14:02.024193Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-22T20:43:52.613568Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hello "
+        }
+      ],
+      "reply": "Hello \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-22T20:44:22.726482Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "system",
+          "content": "master"
+        },
+        {
+          "role": "user",
+          "content": "Hello "
+        },
+        {
+          "role": "assistant",
+          "content": "Hello \u2014 how can I help you today?"
+        },
+        {
+          "role": "user",
+          "content": "Which projects can you do"
+        }
+      ],
+      "reply": "Hello \u2014 how can I help you today?"
     }
-  ]
+  ],
+  "sessions": {
+    "anon": {
+      "id": "anon",
+      "awaiting_choice": false,
+      "last_prompt": null
+    },
+    "1766436228568-qaz8uz": {
+      "id": "1766436228568-qaz8uz",
+      "awaiting_choice": false,
+      "last_prompt": null
+    }
+  }
 }

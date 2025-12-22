@@ -13,15 +13,49 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "invalid_messages" }, { status: 400 });
     }
 
-    // Enforce canonical model
-    const model = "qmoi";
+    // Enforce canonical model unless explicitly overridden in non-production
+    const model =
+      process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
 
-    const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
-    const resp = await fetch(`${qbase}/v1/chat/completions`, {
+    const qbase = process.env.QMOI_API_BASE;
+    // In production require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
+    if (process.env.NODE_ENV === "production" && !qbase) {
+      return NextResponse.json(
+        { error: "qmoi_api_base_not_configured" },
+        { status: 500 }
+      );
+    }
+
+    const target = qbase || "http://127.0.0.1:8080";
+
+    // Ensure a session id exists (cookie or incoming sessionId) so helper can track per-user memory
+    let sessionId = body.sessionId || req.headers.get("x-qmoi-session");
+    // also accept cookie
+    try {
+      const cookie = req.headers.get("cookie") || "";
+      if (!sessionId && cookie) {
+        const match = cookie.match(/(?:^|; )qmoi_session_id=([^;]+)/);
+        if (match) sessionId = match[1];
+      }
+    } catch (e) {}
+
+    if (!sessionId) {
+      sessionId = `s_${Date.now().toString(36)}_${Math.random()
+        .toString(36)
+        .slice(2, 8)}`;
+    }
+
+    // Use an abortable fetch with a conservative timeout to avoid hanging requests
+    const controller = new AbortController();
+    const timeout = Number(process.env.QMOI_PROXY_TIMEOUT_MS || 8000);
+    const timer = setTimeout(() => controller.abort(), timeout);
+
+    const resp = await fetch(`${target}/v1/chat/completions`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ model, messages }),
-    });
+      body: JSON.stringify({ model, messages, sessionId }),
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timer));
 
     // Be defensive: some test environments may mock fetch or Response differently.
     let data: any = null;
@@ -53,9 +87,44 @@ export async function POST(req: Request) {
       }
     }
 
-    // Pass-through the response from QMOI (OpenAI-like structure)
+    // Sanitize assistant text: remove debug suffixes like "(tone: ...; model: ..)"
     try {
-      return NextResponse.json(data);
+      const choices = data.choices || [];
+      for (const c of choices) {
+        const msg = c.message || c;
+        if (msg && typeof msg.content === "string") {
+          // strip parenthetical debug suffix unless client requested debug via header
+          const wantDebug = req.headers.get("x-qmoi-debug") === "1";
+          if (!wantDebug) {
+            msg.content = msg.content.replace(/\s*\(tone:\s*[^\)]+\)\s*$/i, "");
+            msg.content = msg.content.replace(
+              /\s*\(tone:\s*[^;]+;\s*model:\s*[^\)]+\)\s*$/i,
+              ""
+            );
+          }
+        }
+      }
+    } catch (e) {
+      // ignore sanitization errors
+    }
+
+    // Pass-through sanitized response and set session cookie when new
+    try {
+      const res = NextResponse.json(data);
+      // if incoming request didn't have cookie, set one so browser persists session
+      try {
+        const hadCookie = (req.headers.get("cookie") || "").includes(
+          "qmoi_session_id="
+        );
+        if (!hadCookie && sessionId) {
+          // Set cookie for 1 year
+          const cookieVal = `qmoi_session_id=${sessionId}; Path=/; Max-Age=${
+            60 * 60 * 24 * 365
+          }; SameSite=Lax`;
+          res.headers.set("Set-Cookie", cookieVal);
+        }
+      } catch (e) {}
+      return res;
     } catch (e) {
       return { status: 200, body: data };
     }

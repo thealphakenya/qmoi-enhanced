@@ -49,6 +49,34 @@ const Chatbot: React.FC<ChatbotProps> = ({
     } catch (e) {}
   }, [speakResponses]);
 
+  const [profileName, setProfileName] = useState<string | null>(null);
+
+  const fetchProfile = async (sessionId?: string) => {
+    try {
+      const resp = await fetch("/api/qmoi/memory");
+      if (!resp.ok) return;
+      const data = await resp.json();
+      const sid =
+        sessionId ||
+        (typeof window !== "undefined"
+          ? localStorage.getItem("qmoi_session_id")
+          : null) ||
+        "anon";
+      const name = data?.profiles?.[sid]?.name || null;
+      setProfileName(name);
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    try {
+      const sid =
+        typeof window !== "undefined"
+          ? localStorage.getItem("qmoi_session_id")
+          : null;
+      fetchProfile(sid || undefined);
+    } catch (e) {}
+  }, []);
+
   const speakText = (text: string) => {
     try {
       if (typeof window === "undefined" || !speakResponses) return;
@@ -93,10 +121,29 @@ const Chatbot: React.FC<ChatbotProps> = ({
       ];
 
       // Call the proxy Next API which enforces model 'qmoi'
+      // ensure session id persisted
+      let sessionId = null;
+      try {
+        sessionId = localStorage.getItem("qmoi_session_id");
+      } catch (e) {}
+      if (!sessionId) {
+        sessionId =
+          String(Date.now()) + "-" + Math.random().toString(36).slice(2, 8);
+        try {
+          localStorage.setItem("qmoi_session_id", sessionId);
+        } catch (e) {}
+      }
+
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+      };
+      if (sessionId) headers["X-QMOI-SESSION"] = sessionId;
+      if (isMaster) headers["X-QMOI-ROLE"] = "master";
+
       const res = await fetch("/api/qmoi/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages }),
+        headers,
+        body: JSON.stringify({ messages, sessionId }),
       });
 
       if (!res.ok) throw new Error("qmoi request failed");
@@ -117,6 +164,26 @@ const Chatbot: React.FC<ChatbotProps> = ({
         timestamp: new Date().toISOString(),
       };
 
+      // If assistant offered numbered choices, mark session as awaiting choice
+      try {
+        const lower = (replyText || "").toLowerCase();
+        if (
+          lower.includes("would you like") ||
+          /\(1\)|\(2\)|\(3\)/.test(replyText)
+        ) {
+          // notify server to mark session awaiting_choice
+          fetch("/api/qmoi/memory", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              sessions: {
+                [sessionId]: { awaiting_choice: true, last_prompt: replyText },
+              },
+            }),
+          }).catch(() => {});
+        }
+      } catch (e) {}
+
       setChatHistory((prev) => [...prev, aiResponse]);
 
       // speak if enabled
@@ -132,7 +199,9 @@ const Chatbot: React.FC<ChatbotProps> = ({
   return (
     <div className="bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4 qmoi-card">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-green-400">QMOI Chatbot</h3>
+        <h3 className="text-lg font-semibold text-green-400">
+          QMOI Chatbot {profileName ? `— ${profileName}` : ""}
+        </h3>
         <div className="flex items-center gap-3">
           <div className="bg-[#222] border border-green-600 text-green-400 px-2 py-1 rounded text-sm">
             Model: <strong>qmoi</strong>
