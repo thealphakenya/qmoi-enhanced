@@ -37,8 +37,8 @@ def _prune_cache_impl(data: Dict[str, Any], ttl_seconds: int) -> Dict[str, Any]:
     kept = {}
     removed = 0
     for k, v in data.items():
-        # Expect 'checked_at' in ISO format
-        checked_at = v.get("checked_at")
+        # Accept either 'checked_at' or legacy 'last_check'
+        checked_at = v.get("checked_at") or v.get("last_check") or v.get('last_checked')
         if not checked_at:
             # if no timestamp, remove (conservative)
             removed += 1

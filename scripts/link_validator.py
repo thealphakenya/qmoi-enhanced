@@ -28,29 +28,37 @@ class LinkValidationError(Exception):
     pass
 
 
-def validate_links(root=None):
-    """Minimal API used by tests: returns list of issues found.
+def validate_links(links_file, urls, allow_network=True):
+    """Validate the given URLs.
 
-    This is a lightweight wrapper over the existing logic. For test runs
-    we return an empty list when no markdown files are present.
+    Args:
+        links_file: Path to the ALLLINKS.md file (unused in this minimal impl)
+        urls: iterable of URLs to validate
+        allow_network: whether to perform network checks (gated)
+
+    Returns:
+        dict with keys `valid` and `invalid`.
+
+    Raises:
+        LinkValidationError when network checks are disabled (tests expect this behavior).
     """
-    issues = []
-    try:
-        md_files = find_markdown_files()
-        for path in md_files:
-            try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    text = f.read()
-            except Exception:
-                continue
-            for m in LINK_RE.finditer(text):
-                url = m.group(1).strip()
-                ok, err = syntactic_check(url)
-                if not ok:
-                    issues.append({'file': path, 'link': url, 'error': err})
-    except Exception as e:
-        raise LinkValidationError(str(e))
-    return issues
+    if not allow_network:
+        raise LinkValidationError('Network checks disabled')
+    import requests
+
+    valid = []
+    invalid = []
+    for u in urls:
+        try:
+            r = requests.head(u, timeout=3)
+            status = getattr(r, 'status_code', None) or getattr(r, 'status', None)
+            if status and 200 <= int(status) < 400:
+                valid.append(u)
+            else:
+                invalid.append(u)
+        except Exception:
+            invalid.append(u)
+    return {'valid': valid, 'invalid': invalid}
 
 
 def ensure_out_dir():

@@ -24,9 +24,14 @@ def generate_preview(plan: dict):
     lines.append(f"Plan dry_run={plan.get('dry_run', True)}, allow_network={plan.get('allow_network', False)}")
     for e in entries:
         link = e.get('url') or e.get('link')
-        old = e.get('old_status') or e.get('cached', {}).get(
-            'status') if isinstance(e.get('cached'), dict) else e.get('cached')
-        new = e.get('status') or e.get('new_status')
+        old = e.get('old_status', None)
+        if old is None:
+            cached = e.get('cached')
+            if isinstance(cached, dict):
+                old = cached.get('status')
+            else:
+                old = cached
+        new = e.get('new_status', None) or e.get('status', None)
         host = None
         try:
             from urllib.parse import urlparse
@@ -35,10 +40,21 @@ def generate_preview(plan: dict):
             host = host.replace('www.', '').capitalize()
         except Exception:
             host = link
-        if old and new and isinstance(old, int) and isinstance(new, int) and new > old:
-            lines.append(f"{host}: Status improved {old} -> {new}")
-        elif new and new == 'ok' or new == 200:
-            lines.append(f"{host}: OK ({new})")
+        # Treat transition from error (4xx/5xx) to success (2xx/3xx) as improvement
+        try:
+            old_i = int(old) if old is not None else None
+        except Exception:
+            old_i = None
+        try:
+            new_i = int(new) if new is not None else None
+        except Exception:
+            new_i = None
+        if old_i is not None and new_i is not None and old_i >= 400 and new_i < 400:
+            lines.append(f"{host}: Status improved {old_i} -> {new_i}")
+        elif old_i is not None and new_i is not None and new_i > old_i:
+            lines.append(f"{host}: Status changed {old_i} -> {new_i}")
+        elif new_i is not None and 200 <= new_i < 400:
+            lines.append(f"{host}: OK ({new_i})")
         else:
             lines.append(f"{host}: {old} -> {new}")
 

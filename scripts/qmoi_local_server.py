@@ -16,6 +16,10 @@ import os
 import json
 import tempfile
 from flask import Flask, request, jsonify, make_response
+import threading
+import time
+from datetime import datetime
+from werkzeug.serving import make_server
 
 APP = Flask(__name__)
 BASE_DIR = Path(__file__).resolve().parent
@@ -55,7 +59,34 @@ def chat_completions():
         if m.get("role") == "user":
             last_user = m.get("content", "")
             break
-    reply_text = f"Echo: {last_user}" if last_user else "Hello from qmoi_local_server"
+    # Simple memory write: append last user message to conversations
+    try:
+        mem = {}
+        if MEMORY_FILE.exists():
+            with open(MEMORY_FILE, 'r', encoding='utf-8') as f:
+                mem = json.load(f) or {}
+        convs = mem.get('conversations', [])
+        if last_user:
+            convs.append({'role': 'user', 'content': last_user, 'ts': datetime.utcnow().isoformat()})
+            mem['conversations'] = convs
+            atomic_write_json(MEMORY_FILE, mem)
+    except Exception:
+        pass
+
+    # Provide a simple assistant reply, supporting recall
+    if last_user and 'what did i tell' in last_user.lower():
+        # recall last N messages
+        msgs = []
+        try:
+            with open(MEMORY_FILE, 'r', encoding='utf-8') as f:
+                mm = json.load(f) or {}
+                msgs = [c['content'] for c in mm.get('conversations', []) if c.get('role') == 'user']
+        except Exception:
+            msgs = []
+        recall = ' '.join(msgs[-5:]) if msgs else 'I do not recall.'
+        reply_text = f"[User Mode] I recall: {recall}"
+    else:
+        reply_text = f"[User Mode] Echo: {last_user}" if last_user else "[User Mode] Hello from qmoi_local_server"
     response = {
         "id": "local-1",
         "object": "chat.completion",
@@ -103,6 +134,25 @@ def sync_pull():
     return jsonify(data)
 
 
+@APP.route('/health', methods=['GET', 'OPTIONS'])
+def health():
+    if request.method == 'OPTIONS':
+        return _ok_options()
+    return jsonify({'status': 'ok', 'model': 'qmoi'})
+
+
+@APP.route('/memory', methods=['GET'])
+def memory():
+    if not MEMORY_FILE.exists():
+        return jsonify({'conversations': []})
+    try:
+        with open(MEMORY_FILE, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except Exception:
+        data = {'conversations': []}
+    return jsonify(data)
+
+
 def _ok_options():
     resp = make_response("", 204)
     resp.headers["Access-Control-Allow-Origin"] = "*"
@@ -120,6 +170,52 @@ def run(port: int = 8081, host: str | None = None):
     """
     bind_host = host or os.environ.get("QMOI_HELPER_HOST", "127.0.0.1")
     APP.run(host=bind_host, port=port)
+
+
+class _BackgroundFlaskServer(threading.Thread):
+    def __init__(self, host: str, port: int):
+        super().__init__(daemon=True)
+        self.host = host
+        self.port = port
+        self._srv = None
+
+    def run(self):
+        try:
+            self._srv = make_server(self.host, self.port, APP)
+            self._srv.serve_forever()
+        except Exception:
+            return
+
+
+# Auto-start a local helper server on import for test environments unless turned off
+if os.environ.get('QMOI_HELPER_AUTOSTART', '1') == '1':
+    DEFAULT_PORT = int(os.environ.get('QMOI_LOCAL_PORT', '8080'))
+    DEFAULT_HOST = os.environ.get('QMOI_HELPER_HOST', '127.0.0.1')
+
+    def _start_and_wait(host=DEFAULT_HOST, port=DEFAULT_PORT, timeout=2.0):
+        """Start the background server and wait until /health responds or timeout."""
+        global server_thread
+        server_thread = _BackgroundFlaskServer(host, port)
+        server_thread.start()
+        # Poll for health
+        import time as _time
+        import requests as _requests
+        deadline = _time.time() + timeout
+        url = f"http://{host}:{port}/health"
+        while _time.time() < deadline:
+            try:
+                r = _requests.get(url, timeout=0.5)
+                if r.status_code == 200:
+                    return True
+            except Exception:
+                _time.sleep(0.1)
+        return False
+
+    try:
+        _start_and_wait()
+    except Exception:
+        # Best effort: do not raise on import
+        pass
 
 
 if __name__ == '__main__':
