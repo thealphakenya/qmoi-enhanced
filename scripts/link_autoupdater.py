@@ -8,6 +8,10 @@ It intentionally defaults to safe behavior (no file modifications). Use
 --apply plus QMOI_ALLOW_NETWORK=true to attempt live changes (not recommended
 without reviewing the plan and provider credentials).
 """
+from scripts.link_cache import get as cache_get, put as cache_put
+import sys
+from datetime import datetime
+import re
 import argparse
 import json
 from pathlib import Path
@@ -86,12 +90,23 @@ def run_autoupdater(source: Path, out_dir: Path, apply: bool = False, max_links:
         'dry_run': not apply,
         'allow_network': bool(allow_network),
         'entries_count': len(entries),
+        'updates': entries,
         'sample': entries[:200],
     }
     with open(plan_path, 'w', encoding='utf-8') as f:
         json.dump(plan, f, indent=2, ensure_ascii=False)
 
     return plan_path
+
+
+def generate_update_plan(source, out_dir, apply: bool = False, max_links: int = None, allow_network: bool = False):
+    """Compatibility wrapper for tests expecting `generate_update_plan`.
+
+    Accepts string or Path inputs and delegates to `run_autoupdater`.
+    """
+    s = Path(source) if not isinstance(source, Path) else source
+    o = Path(out_dir) if not isinstance(out_dir, Path) else out_dir
+    return run_autoupdater(s, o, apply=apply, max_links=max_links, allow_network=allow_network)
 
 
 def main():
@@ -108,7 +123,8 @@ def main():
     out_dir = Path(args.out_dir) if args.out_dir else ROOT / '.qmoi_validation'
     allow_network = os.environ.get('QMOI_ALLOW_NETWORK', '').lower() == 'true'
 
-    plan = run_autoupdater(source=source, out_dir=out_dir, apply=args.apply, max_links=args.max_links, allow_network=allow_network)
+    plan = run_autoupdater(source=source, out_dir=out_dir, apply=args.apply,
+                           max_links=args.max_links, allow_network=allow_network)
     if args.verbose:
         print('Wrote plan to', plan)
 
@@ -129,23 +145,14 @@ Behavior:
 - --apply will apply changes but only if QMOI_ALLOW_NETWORK=1 and QMOI_ENABLE_BILLING=true are both set (safety gate).
 - All provider/network calls are gated; the script uses `link_cache.py` to avoid repeated lookups and reduce memory.
 """
-import argparse
-import json
-import os
-import re
-from datetime import datetime
-from pathlib import Path
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # ensure repo root is on sys.path so imports like "scripts.link_cache" resolve when run from shell
-import sys
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
-
-from scripts.link_cache import get as cache_get, put as cache_put
 
 
 # Heuristics for placeholder links to replace

@@ -32,7 +32,7 @@ def save_cache(path: str, data: Dict[str, Any]) -> None:
         json.dump(data, f, indent=2, sort_keys=True)
 
 
-def prune_cache(data: Dict[str, Any], ttl_seconds: int) -> Dict[str, Any]:
+def _prune_cache_impl(data: Dict[str, Any], ttl_seconds: int) -> Dict[str, Any]:
     cutoff = datetime.now(timezone.utc) - timedelta(seconds=ttl_seconds)
     kept = {}
     removed = 0
@@ -56,6 +56,31 @@ def prune_cache(data: Dict[str, Any], ttl_seconds: int) -> Dict[str, Any]:
             removed += 1
     print(f"Prune: kept={len(kept)} removed={removed}")
     return kept
+
+
+def prune_cache(cache_path_or_data, max_age_days: int = None, ttl_seconds: int = None) -> Dict[str, Any]:
+    """Compatibility wrapper used by tests.
+
+    Accepts either a `data` dict and a `ttl_seconds` integer, or a `cache_path` string/Path
+    with `max_age_days` to apply. Returns the pruned cache dict.
+    """
+    # If caller passed a dict as first arg, assume legacy signature: (data, ttl_seconds)
+    if isinstance(cache_path_or_data, dict):
+        data = cache_path_or_data
+        if ttl_seconds is None:
+            raise TypeError("Missing ttl_seconds for prune_cache(data, ttl_seconds)")
+        return _prune_cache_impl(data, ttl_seconds)
+
+    # Otherwise treat first arg as a path
+    cache_path = str(cache_path_or_data)
+    if max_age_days is None:
+        max_age_days = 30
+    data = load_cache(cache_path)
+    ttl = int(max_age_days) * 24 * 3600
+    new = _prune_cache_impl(data, ttl)
+    # Persist changes back to disk
+    save_cache(cache_path, new)
+    return new
 
 
 def main() -> int:

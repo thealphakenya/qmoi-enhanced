@@ -17,18 +17,33 @@ def load_plan(path: Path):
 
 
 def generate_preview(plan: dict):
-    entries = plan.get('sample', []) if 'sample' in plan else plan.get('entries', [])
-    failed = [e for e in entries if e.get('status') in ('failed', 'network_disabled')]
-    preview = {
-        'generated_at': datetime.utcnow().replace(microsecond=0).isoformat() + 'Z',
-        'source': plan.get('source'),
-        'dry_run': plan.get('dry_run', True),
-        'allow_network': plan.get('allow_network', False),
-        'failed_count': len(failed),
-        'failed_examples': failed[:200],
-        'recommendation': 'Review failed links. If replacements are known, prepare a patch and open PR. Otherwise mark for manual fix.'
-    }
-    return preview
+    # Support plans that use 'updates', 'sample' or 'entries'
+    entries = plan.get('sample') or plan.get('entries') or plan.get('updates') or []
+
+    lines = []
+    lines.append(f"Plan dry_run={plan.get('dry_run', True)}, allow_network={plan.get('allow_network', False)}")
+    for e in entries:
+        link = e.get('url') or e.get('link')
+        old = e.get('old_status') or e.get('cached', {}).get(
+            'status') if isinstance(e.get('cached'), dict) else e.get('cached')
+        new = e.get('status') or e.get('new_status')
+        host = None
+        try:
+            from urllib.parse import urlparse
+            host = urlparse(link).netloc or link
+            # Capitalize host for human readability
+            host = host.replace('www.', '').capitalize()
+        except Exception:
+            host = link
+        if old and new and isinstance(old, int) and isinstance(new, int) and new > old:
+            lines.append(f"{host}: Status improved {old} -> {new}")
+        elif new and new == 'ok' or new == 200:
+            lines.append(f"{host}: OK ({new})")
+        else:
+            lines.append(f"{host}: {old} -> {new}")
+
+    # Return a human-readable preview string
+    return "\n".join(lines)
 
 
 def main():

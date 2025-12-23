@@ -4,6 +4,10 @@
 Writes `.qmoi_validation/link_validation_report.json`.
 By default performs no network checks. Use --check-network to attempt HTTP HEAD (requires QMOI_ALLOW_NETWORK).
 """
+import urllib.error
+import urllib.request
+from pathlib import Path
+from datetime import datetime
 import argparse
 import json
 import os
@@ -17,6 +21,36 @@ OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
 MD_GLOB = []
 
 LINK_RE = re.compile(r"\[(?:[^\]]+)\]\(([^)]+)\)")
+
+
+class LinkValidationError(Exception):
+    """Raised when link validation encounters a fatal error."""
+    pass
+
+
+def validate_links(root=None):
+    """Minimal API used by tests: returns list of issues found.
+
+    This is a lightweight wrapper over the existing logic. For test runs
+    we return an empty list when no markdown files are present.
+    """
+    issues = []
+    try:
+        md_files = find_markdown_files()
+        for path in md_files:
+            try:
+                with open(path, 'r', encoding='utf-8') as f:
+                    text = f.read()
+            except Exception:
+                continue
+            for m in LINK_RE.finditer(text):
+                url = m.group(1).strip()
+                ok, err = syntactic_check(url)
+                if not ok:
+                    issues.append({'file': path, 'link': url, 'error': err})
+    except Exception as e:
+        raise LinkValidationError(str(e))
+    return issues
 
 
 def ensure_out_dir():
@@ -80,7 +114,8 @@ def run(check_network=False):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('--check-network', action='store_true', help='Attempt live network checks (requires QMOI_ALLOW_NETWORK)')
+    p.add_argument('--check-network', action='store_true',
+                   help='Attempt live network checks (requires QMOI_ALLOW_NETWORK)')
     args = p.parse_args()
     run(check_network=args.check_network)
 
@@ -95,12 +130,6 @@ Usage: python3 scripts/link_validator.py
 By default performs syntax checks only and writes .qmoi_validation/link_validation_report.json.
 Network checks are off by default to stay safe in CI; enable with --check-network and QMOI_ALLOW_NETWORK=1.
 """
-import argparse
-import json
-import os
-import re
-from datetime import datetime
-from urllib.parse import urlparse
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
@@ -136,7 +165,8 @@ def scan_file(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--check-network", action="store_true", help="(Optional) attempt HTTP HEAD checks (gated by QMOI_ALLOW_NETWORK)")
+    parser.add_argument("--check-network", action="store_true",
+                        help="(Optional) attempt HTTP HEAD checks (gated by QMOI_ALLOW_NETWORK)")
     args = parser.parse_args()
 
     report = {"scanned_at": datetime.utcnow().isoformat() + "Z", "files": []}
@@ -149,7 +179,8 @@ def main():
         total_problems += len(problems)
         report["files"].append({"path": os.path.relpath(md, ROOT), "links_found": len(links), "problems": problems})
 
-    report["summary"] = {"total_files": len(report["files"]), "total_links": total_links, "total_problems": total_problems}
+    report["summary"] = {"total_files": len(
+        report["files"]), "total_links": total_links, "total_problems": total_problems}
 
     out_path = os.path.join(OUT_DIR, "link_validation_report.json")
     with open(out_path, "w", encoding="utf-8") as f:
@@ -166,14 +197,6 @@ if __name__ == "__main__":
 Scans .md files in the repo, extracts links, validates format and optionally performs network checks when `--check` and QMOI_ALLOW_NETWORK=1.
 Writes `.qmoi_validation/links_report.json`.
 """
-from pathlib import Path
-import re
-import json
-import argparse
-import datetime
-import os
-import urllib.request
-import urllib.error
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -197,7 +220,8 @@ def check_url(url: str, timeout=5):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--check", action="store_true", help="Perform network reachability checks (requires QMOI_ALLOW_NETWORK=1)")
+    p.add_argument("--check", action="store_true",
+                   help="Perform network reachability checks (requires QMOI_ALLOW_NETWORK=1)")
     args = p.parse_args()
     allow_network = os.environ.get("QMOI_ALLOW_NETWORK") == "1"
 

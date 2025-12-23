@@ -111,73 +111,22 @@ def _ok_options():
     return resp
 
 
-if __name__ == "__main__":
-    host = os.environ.get("QMOI_HELPER_HOST", "127.0.0.1")
-    port = int(os.environ.get("QMOI_HELPER_PORT", "8081"))
-    APP.run(host=host, port=port)
+def run(port: int = 8081, host: str | None = None):
+    """Run the Flask helper app; provided for test runners that call `run()`.
 
-    def do_GET(self):
-        parsed = urlparse(self.path)
-        if parsed.path == '/health':
-            self._set_headers(200)
-            # Report canonical model name
-            self.wfile.write(json.dumps({'status': 'ok', 'model': 'qmoi'}).encode())
-            return
-        if parsed.path == '/memory':
-            mem = load_memory()
-            self._set_headers(200)
-            self.wfile.write(json.dumps(mem).encode())
-            return
-        # Simple endpoint to list configured sync backends
-        if parsed.path == '/sync/config':
-            cfg = {
-                'backends': os.environ.get('QMOI_SYNC_BACKENDS', '').split(','),
-                'hf_repo': os.environ.get('QMOI_HF_REPO'),
-                'gist_id': os.environ.get('QMOI_GIST_ID')
-            }
-            self._set_headers(200)
-            self.wfile.write(json.dumps(cfg).encode())
-            return
-        self._set_headers(404)
-        self.wfile.write(json.dumps({'error': 'not_found'}).encode())
-
-
-def run(server_class=HTTPServer, handler_class=Handler, port=8080):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print(f"QM OI local server listening on http://0.0.0.0:{port}")
-    # Optionally start background sync thread if configured
-    sync_interval = int(os.environ.get('QMOI_SYNC_INTERVAL_SECONDS', '0') or 0)
-    if sync_interval > 0:
-        def bg_sync():
-            while True:
-                try:
-                    # import here to avoid circulars
-                    from functools import partial
-                    mem = load_memory()
-                    # Always persist local memory and backup
-                    save_memory(mem)
-                    # Attempt to push to configured remote backends (if any)
-                    push_memory_to_backends(mem)
-                except Exception as e:
-                    print('Background sync error:', e)
-                time.sleep(sync_interval)
-
-        t = threading.Thread(target=bg_sync, daemon=True)
-        t.start()
-
-    try:
-        httpd.serve_forever()
-    except KeyboardInterrupt:
-        print('\nShutting down')
-        httpd.server_close()
+    Args:
+        port: TCP port to bind (default 8081)
+        host: Optional host to bind; if None, uses `QMOI_HELPER_HOST` or 127.0.0.1
+    """
+    bind_host = host or os.environ.get("QMOI_HELPER_HOST", "127.0.0.1")
+    APP.run(host=bind_host, port=port)
 
 
 if __name__ == '__main__':
     os.makedirs(os.path.dirname(MEMORY_FILE), exist_ok=True)
     if not os.path.exists(MEMORY_FILE):
-        with open(MEMORY_FILE, 'w') as f:
+        with open(MEMORY_FILE, 'w', encoding='utf-8') as f:
             json.dump({'conversations': []}, f)
     # Allow test runners to override port via QMOI_LOCAL_PORT env
-    port = int(os.environ.get('QMOI_LOCAL_PORT', '8080'))
+    port = int(os.environ.get('QMOI_LOCAL_PORT', '8081'))
     run(port=port)
