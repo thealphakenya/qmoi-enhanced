@@ -4,6 +4,13 @@ import "./globals.css";
 import "./global.css";
 import { ThemeProvider } from "../src/components/theme-provider";
 import { FloatingAQ } from "../src/components/FloatingAQ";
+import dynamic from "next/dynamic";
+
+// Load UISettings only on the client to avoid SSR issues
+const DynamicUISettings = dynamic(
+  () => import("../src/components/UISettings"),
+  { ssr: false }
+);
 import { Analytics } from "@vercel/analytics/next";
 
 // NOTE: Temporarily removed next/font/google usage to isolate heavy build step
@@ -33,7 +40,7 @@ export default function RootLayout({
           {/* UI settings: display & accessibility */}
           {/* lazy client component */}
           <div id="qmoi-ui-settings-placeholder">
-            {/* dynamically import to avoid SSR issues */}
+            <DynamicUISettings />
           </div>
           {children}
           <Analytics />

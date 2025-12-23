@@ -23,7 +23,7 @@ export default function QMoiFileEditorChat({
   isMaster?: boolean;
 }) {
   const [messages, setMessages] = useState<{ user: string; text: ReactNode }[]>(
-    [],
+    []
   );
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -38,12 +38,8 @@ export default function QMoiFileEditorChat({
     try {
       if (cmd.startsWith("/view ")) {
         const filePath = cmd.replace("/view ", "").trim();
-        const res = await fetch("/api/qmoi/file", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action: "read", filePath }),
-        });
-        const data = await res.json();
+        const { postModel } = await import("../../services/qmoiApi");
+        const data = await postModel({ action: "file:read", filePath });
         if (data.success) {
           setLastView(data.data);
           response = highlightCode(data.data);
@@ -56,12 +52,12 @@ export default function QMoiFileEditorChat({
         // Show diff preview if lastView is available
         const before = lastView;
         const after = content;
-        const res = await fetch("/api/qmoi/file", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action: "write", filePath, content }),
+        const { postModel } = await import("../../services/qmoiApi");
+        const data = await postModel({
+          action: "file:write",
+          filePath,
+          content,
         });
-        const data = await res.json();
         response = data.success ? (
           <div>
             <div>File {filePath} updated.</div>
@@ -80,12 +76,12 @@ export default function QMoiFileEditorChat({
       } else if (cmd.startsWith("/append ")) {
         const [_, filePath, ...contentArr] = cmd.split(" ");
         const content = contentArr.join(" ");
-        const res = await fetch("/api/qmoi/file", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action: "append", filePath, content }),
+        const { postModel } = await import("../../services/qmoiApi");
+        const data = await postModel({
+          action: "file:append",
+          filePath,
+          content,
         });
-        const data = await res.json();
         response = data.success
           ? `Appended to ${filePath}.`
           : `Error: ${data.error}`;
@@ -95,17 +91,13 @@ export default function QMoiFileEditorChat({
         // Show diff preview if lastView is available
         const before = lastView;
         const after = before.replace(search, content);
-        const res = await fetch("/api/qmoi/file", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            action: "replace",
-            filePath,
-            replace: search,
-            content,
-          }),
+        const { postModel } = await import("../../services/qmoiApi");
+        const data = await postModel({
+          action: "file:replace",
+          filePath,
+          replace: search,
+          content,
         });
-        const data = await res.json();
         response = data.success ? (
           <div>
             <div>Replaced in {filePath}.</div>
@@ -139,12 +131,8 @@ export default function QMoiFileEditorChat({
     setLoading(true);
     let response: string | React.ReactElement = "";
     try {
-      const res = await fetch("/api/qmoi/autodev", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "rollback" }),
-      });
-      const data = await res.json();
+      const { postModel } = await import("../../services/qmoiApi");
+      const data = await postModel({ action: "autodev:rollback" });
       response = data.success ? "Rollback successful." : `Error: ${data.error}`;
     } catch (e: any) {
       response = `Error: ${e.message}`;
@@ -161,16 +149,12 @@ export default function QMoiFileEditorChat({
     setLoading(true);
     let response: string | React.ReactElement = "";
     try {
-      const res = await fetch("/api/qmoi/autodev", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          action: "ai_suggest",
-          filePath: "",
-          context: lastView,
-        }),
+      const { postModel } = await import("../../services/qmoiApi");
+      const data = await postModel({
+        action: "autodev:ai_suggest",
+        filePath: "",
+        context: lastView,
       });
-      const data = await res.json();
       response = data.success
         ? highlightCode(data.suggestion)
         : `Error: ${data.error}`;
@@ -189,16 +173,12 @@ export default function QMoiFileEditorChat({
     setLoading(true);
     let response: string | React.ReactElement = "";
     try {
-      const res = await fetch("/api/qmoi/autodev", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          action: "batch_edit",
-          files: files.split(","),
-          operation: op,
-        }),
+      const { postModel } = await import("../../services/qmoiApi");
+      const data = await postModel({
+        action: "autodev:batch_edit",
+        files: files.split(","),
+        operation: op,
       });
-      const data = await res.json();
       response = data.success ? "Batch edit complete." : `Error: ${data.error}`;
     } catch (e: any) {
       response = `Error: ${e.message}`;

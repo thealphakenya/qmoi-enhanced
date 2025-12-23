@@ -1,569 +1,120 @@
 #!/usr/bin/env python3
 """
-Lightweight local QM OI chat endpoint (no external deps).
+Minimal, robust helper server used by tests and local development.
 
-Endpoint: POST /v1/chat/completions
-Accepts payload similar to OpenAI Chat API: {"model":"qmoi","messages":[{...}]}
+Endpoints:
+ - GET  /            -> health
+ - POST /v1/chat/completions -> returns a minimal chat-completion (echo)
+ - POST /sync/push  -> save JSON memory (protected by QMOI_SYNC_API_KEY if set)
+ - GET  /sync/pull  -> return saved memory
 
-Behavior:
-- Uses persistent memory file `qmoi_memory.json` to store conversation history (appends every user message).
-- Responds with a persona adapted to the final user role: master, sister, or user (falls back to 'user').
-- Saves memory after each request to ensure permanence across restarts.
-
-This is a local helper for development and testing only.
+This implementation uses Flask and performs atomic writes for the memory file.
 """
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import json
+from pathlib import Path
 import os
-from urllib.parse import urlparse
-from datetime import datetime, timezone
-import threading
-import time
-import sqlite3
+import json
+import tempfile
+from flask import Flask, request, jsonify, make_response
 
-# Optional HTTP client for remote sync backends
-try:
-    import requests
-except Exception:
-    requests = None
-
-BASE = os.environ.get('QMOI_BASE', '/workspaces/qmoi-enhanced')
-DEFAULT_MEMORY_FILE = os.path.join(BASE, 'qmoi_memory.json')
-MEMORY_FILE = os.environ.get('QMOI_MEMORY_FILE', DEFAULT_MEMORY_FILE)
-DB_FILE = os.environ.get('QMOI_DB_FILE', os.path.join(BASE, 'qmoi_memory.db'))
-USE_SQLITE = os.environ.get('QMOI_USE_SQLITE', '') == '1'
-# The canonical model name used by the server. For safety we ALWAYS use 'qmoi'.
-MODEL_NAME = 'qmoi'
-
-# Optional API key protecting /sync/* endpoints. If not set, sync endpoints are open
-# on the local network (still not recommended for production). When set, requests
-# must include header: Authorization: Bearer <QMOI_SYNC_API_KEY>
-SYNC_API_KEY = os.environ.get('QMOI_SYNC_API_KEY')
+APP = Flask(__name__)
+BASE_DIR = Path(__file__).resolve().parent
+MEMORY_FILE = Path(os.environ.get("QMOI_MEMORY_FILE", str(BASE_DIR / "qmoi_memory.json")))
+QMOI_SYNC_API_KEY = os.environ.get("QMOI_SYNC_API_KEY")
 
 
-def load_memory():
-    if USE_SQLITE:
-        # Ensure DB exists and table is initialized
-        conn = sqlite3.connect(DB_FILE)
-        try:
-            cur = conn.cursor()
-            cur.execute('''CREATE TABLE IF NOT EXISTS conversations (
-                timestamp TEXT PRIMARY KEY,
-                persona TEXT,
-                message TEXT
-            )''')
-            conn.commit()
-            cur.execute('SELECT timestamp, persona, message FROM conversations ORDER BY timestamp')
-            rows = cur.fetchall()
-            conversations = []
-            for ts, persona, message in rows:
-                conversations.append({'timestamp': ts, 'persona': persona, 'message': message})
-            return {'conversations': conversations}
-        finally:
-            conn.close()
-    else:
-        if os.path.exists(MEMORY_FILE):
-            try:
-                with open(MEMORY_FILE, 'r') as f:
-                    return json.load(f)
-            except Exception:
-                return {'conversations': []}
-        return {'conversations': []}
+def atomic_write_json(path: Path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(mode="w", delete=False, dir=str(path.parent), encoding="utf-8") as tf:
+        tf.write(json.dumps(data, ensure_ascii=False, indent=2))
+        tmp = tf.name
+    os.replace(tmp, str(path))
 
 
-def save_memory(mem):
-    if USE_SQLITE:
-        conn = sqlite3.connect(DB_FILE)
-        try:
-            cur = conn.cursor()
-            cur.execute('''CREATE TABLE IF NOT EXISTS conversations (
-                timestamp TEXT PRIMARY KEY,
-                persona TEXT,
-                message TEXT
-            )''')
-            # Upsert rows from mem into DB
-            for c in mem.get('conversations', []):
-                try:
-                    ts = c.get('timestamp')
-                    persona = c.get('persona')
-                    message = c.get('message')
-                    if not ts:
-                        continue
-                    cur.execute(
-                        'INSERT OR REPLACE INTO conversations (timestamp, persona, message) VALUES (?, ?, ?)', (ts, persona, message))
-                except Exception:
-                    continue
-            conn.commit()
-        finally:
-            conn.close()
-    else:
-        # Atomic write: write to temp file then rename to avoid partial writes
-        try:
-            dirn = os.path.dirname(MEMORY_FILE)
-            tmp = MEMORY_FILE + '.tmp'
-            with open(tmp, 'w') as f:
-                json.dump(mem, f, indent=2)
-            os.replace(tmp, MEMORY_FILE)
-            # Also write a timestamped backup for additional local sync resilience
-            try:
-                backup_path = os.path.join(dirn, 'qmoi_memory_backup.json')
-                with open(backup_path + '.tmp', 'w') as bf:
-                    json.dump(mem, bf, indent=2)
-                os.replace(backup_path + '.tmp', backup_path)
-            except Exception:
-                pass
-        except Exception:
-            # Fallback non-atomic write
-            with open(MEMORY_FILE, 'w') as f:
-                json.dump(mem, f, indent=2)
+@APP.after_request
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
+    return response
 
 
-def migrate_json_to_sqlite():
-    # If sqlite is enabled and DB is empty but JSON exists, migrate
-    if not USE_SQLITE:
-        return
-    if not os.path.exists(MEMORY_FILE):
-        return
-    conn = sqlite3.connect(DB_FILE)
-    try:
-        cur = conn.cursor()
-        cur.execute('''CREATE TABLE IF NOT EXISTS conversations (
-            timestamp TEXT PRIMARY KEY,
-            persona TEXT,
-            message TEXT
-        )''')
-        cur.execute('SELECT COUNT(1) FROM conversations')
-        count = cur.fetchone()[0]
-        if count == 0:
-            try:
-                with open(MEMORY_FILE, 'r') as f:
-                    j = json.load(f)
-                for c in j.get('conversations', []):
-                    ts = c.get('timestamp')
-                    persona = c.get('persona')
-                    message = c.get('message')
-                    if ts:
-                        cur.execute(
-                            'INSERT OR REPLACE INTO conversations (timestamp, persona, message) VALUES (?, ?, ?)', (ts, persona, message))
-                conn.commit()
-            except Exception:
-                pass
-    finally:
-        conn.close()
+@APP.route("/", methods=["GET"])
+def index():
+    return jsonify({"ok": True, "msg": "qmoi_local_server running"})
 
 
-def detect_persona(messages):
-    # Heuristic: examine last user/system messages for keywords
-    persona = 'user'
-    for m in reversed(messages[-6:]):
-        role = m.get('role', '')
-        content = (m.get('content') or '').lower()
-        if role == 'system' and 'master' in content:
-            return 'master'
-        if 'sister' in content or (role == 'system' and 'sister' in content):
-            return 'sister'
-        if 'master:' in content:
-            return 'master'
-    # If any message labeled assistant with prefix 'Master' assume master
-    for m in messages:
-        if m.get('role') == 'assistant' and isinstance(m.get('content'), str):
-            c = m['content'].lower()
-            if c.strip().startswith('master'):
-                return 'master'
-    return persona
-
-
-def persona_response(persona, user_msg, memory):
-    """Generate a short, natural assistant reply based on a lightweight heuristic.
-
-    This keeps the local helper useful for UI/E2E testing while we replace it with
-    a real model later. Replies include a persona tag and a friendly, actionable
-    message (and keep a compact memory entry as before).
-    """
-    user_msg = (user_msg or '').strip()
-
-    # Build persona prefix
-    if persona == 'master':
-        prefix = '[Master Mode] '
-    elif persona == 'sister':
-        prefix = '[Sister Mode] '
-    else:
-        prefix = '[User Mode] '
-
-    # Simple heuristics for conversational replies
-    lm = user_msg.lower()
-    if not user_msg:
-        body = "Hello — I'm here and ready to help. What would you like to do?"
-    elif 'how are you' in lm or 'how are you doing' in lm:
-        body = "I'm doing well, thanks! How can I help you today?"
-    elif lm.startswith(('hi', 'hello', 'hey')) or lm in ('hi', 'hello', 'hey'):
-        body = "Hello! How can I assist you today?"
-    elif 'create' in lm and 'file' in lm:
-        body = "I can create that file for you — tell me the filename and content, or say 'create it' to confirm."
-    elif '?' in user_msg:
-        body = "That's a great question — could you give me a bit more detail so I can provide a helpful answer?"
-    else:
-        # Default concise follow-up
-        body = "Got it — tell me more or describe what you want me to do and I'll assist."
-
-    # Compose reply: include a brief acknowledgement and the helpful sentence
-    if persona == 'master':
-        reply = f"{prefix}{body}"
-    elif persona == 'sister':
-        reply = f"{prefix}{body}"
-    else:
-        # For user persona produce a concise reply and only recall previous messages
-        # when the user explicitly asks or when the current message is a short follow-up.
-        user_asked_memory = any(k in (user_msg or '').lower() for k in ('what did i', 'do you remember', 'remember'))
-        # Keep greeting replies concise (no unnecessary echo)
-        is_greeting = (user_msg or '').strip().lower() in ('hi', 'hello', 'hey')
-        if is_greeting:
-            reply = f"{prefix}{body}"
-        else:
-            reply = f"{prefix}{body}"
-
-    # Memory-aware addition: if there's previous user memory, optionally include a short recall
-    try:
-        prev = None
-        convs = memory.get('conversations', []) if isinstance(memory, dict) else []
-        # Find last user message if any (most recent earlier entry)
-        for c in reversed(convs):
-            if isinstance(c, dict) and c.get('message'):
-                prev_msg = c.get('message')
-                if prev_msg and prev_msg != user_msg:
-                    prev = prev_msg
-                    break
-        if prev:
-            lmsg = user_msg.lower()
-            # Include the previous message if user asks about memory explicitly
-            # or if current msg is a very short follow-up (likely a recall request)
-            if user_asked_memory or (len(user_msg.split()) <= 3):
-                reply = reply + f"\n\nEarlier you said: {prev}"
-    except Exception:
-        # Non-fatal: if memory structure is unexpected, skip recall behaviour
-        pass
-
-    # Persist a compact memory entry
-    note = {
-        'timestamp': datetime.now(timezone.utc).isoformat(),
-        'persona': persona,
-        'message': user_msg
+@APP.route("/v1/chat/completions", methods=["POST", "OPTIONS"])
+def chat_completions():
+    if request.method == "OPTIONS":
+        return _ok_options()
+    payload = request.get_json(silent=True) or {}
+    messages = payload.get("messages") or []
+    last_user = ""
+    for m in reversed(messages):
+        if m.get("role") == "user":
+            last_user = m.get("content", "")
+            break
+    reply_text = f"Echo: {last_user}" if last_user else "Hello from qmoi_local_server"
+    response = {
+        "id": "local-1",
+        "object": "chat.completion",
+        "choices": [
+            {"index": 0, "message": {"role": "assistant", "content": reply_text}}
+        ],
+        "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
     }
-    memory.setdefault('conversations', []).append(note)
-    return reply
+    return jsonify(response)
 
 
-def push_memory_to_backends(memory):
-    """Push memory to configured backends. Returns (ok:bool, details:list)."""
-    details = []
-    backends = os.environ.get('QMOI_SYNC_BACKENDS', '').split(',')
-    if not backends or backends == ['']:
-        return True, ['no_backends_configured']
-
-    ok_all = True
-    for b in backends:
-        b = b.strip()
-        if not b:
-            continue
-        try:
-            if b == 'gist':
-                gist_id = os.environ.get('QMOI_GIST_ID')
-                gh_token = os.environ.get('QMOI_GH_TOKEN')
-                if not (requests and gist_id and gh_token):
-                    details.append('gist:skipped:missing_config_or_requests')
-                    ok_all = False
-                    continue
-                url = f'https://api.github.com/gists/{gist_id}'
-                payload = {'files': {'qmoi_memory.json': {'content': json.dumps(memory, indent=2)}}}
-                r = requests.patch(url, headers={'Authorization': f'token {gh_token}'}, json=payload, timeout=15)
-                if r.status_code in (200, 201):
-                    details.append('gist:ok')
-                else:
-                    details.append(f'gist:error:{r.status_code}')
-                    ok_all = False
-            elif b == 'hf':
-                # Push to a Hugging Face repo by creating/updating a file via the repo API (requires token)
-                hf_token = os.environ.get('QMOI_HF_TOKEN')
-                hf_repo = os.environ.get('QMOI_HF_REPO')
-                if not (requests and hf_token and hf_repo):
-                    details.append('hf:skipped:missing_config_or_requests')
-                    ok_all = False
-                    continue
-                # Use HF API to upload a file to the repo (simple approach: create commit via api)
-                api_url = f'https://huggingface.co/api/repos/{hf_repo}/commit'
-                payload = {
-                    'files': [
-                        {'path': 'qmoi_memory.json', 'content': json.dumps(memory, indent=2)}
-                    ],
-                    'commit_message': 'sync qmoi_memory.json from local server'
-                }
-                r = requests.post(api_url, headers={'Authorization': f'Bearer {hf_token}'}, json=payload, timeout=20)
-                if r.status_code in (200, 201):
-                    details.append('hf:ok')
-                else:
-                    details.append(f'hf:error:{r.status_code}')
-                    ok_all = False
-            elif b.startswith('scp:'):
-                # Format scp:user@host:/path
-                scp_target = b[len('scp:'):]
-                try:
-                    import subprocess
-                    import tempfile
-                    with tempfile.NamedTemporaryFile('w', delete=False) as t:
-                        t.write(json.dumps(memory, indent=2))
-                        tmpname = t.name
-                    subprocess.check_call(['scp', tmpname, scp_target])
-                    details.append(f'scp:{scp_target}:ok')
-                except Exception as e:
-                    details.append(f'scp:{scp_target}:error:{e}')
-                    ok_all = False
-            else:
-                details.append(f'unknown_backend:{b}')
-                ok_all = False
-        except Exception as e:
-            details.append(f'backend_exception:{b}:{e}')
-            ok_all = False
-    return ok_all, details
+@APP.route("/sync/push", methods=["POST", "OPTIONS"])
+def sync_push():
+    if request.method == "OPTIONS":
+        return _ok_options()
+    if QMOI_SYNC_API_KEY:
+        auth = request.headers.get("Authorization", "")
+        if not auth.startswith("Bearer ") or auth.split(" ", 1)[1] != QMOI_SYNC_API_KEY:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return make_response(jsonify({"error": "invalid payload"}), 400)
+    try:
+        atomic_write_json(MEMORY_FILE, data)
+    except Exception as e:
+        return make_response(jsonify({"error": "failed to save", "details": str(e)}), 500)
+    return jsonify({"ok": True})
 
 
-def pull_memory_from_backends():
-    """Attempt to pull memory from configured backends. Returns memory dict or None."""
-    backends = os.environ.get('QMOI_SYNC_BACKENDS', '').split(',')
-    for b in backends:
-        b = b.strip()
-        if not b:
-            continue
-        try:
-            if b == 'gist':
-                gist_id = os.environ.get('QMOI_GIST_ID')
-                gh_token = os.environ.get('QMOI_GH_TOKEN')
-                if not (requests and gist_id and gh_token):
-                    continue
-                url = f'https://api.github.com/gists/{gist_id}'
-                r = requests.get(url, headers={'Authorization': f'token {gh_token}'}, timeout=15)
-                if r.status_code == 200:
-                    g = r.json()
-                    files = g.get('files', {})
-                    fm = files.get('qmoi_memory.json')
-                    if fm and 'content' in fm:
-                        try:
-                            return json.loads(fm['content'])
-                        except Exception:
-                            continue
-            elif b == 'hf':
-                hf_token = os.environ.get('QMOI_HF_TOKEN')
-                hf_repo = os.environ.get('QMOI_HF_REPO')
-                if not (requests and hf_token and hf_repo):
-                    continue
-                # Try to fetch raw file from huggingface repo raw path
-                raw_url = f'https://huggingface.co/{hf_repo}/raw/main/qmoi_memory.json'
-                r = requests.get(raw_url, timeout=15)
-                if r.status_code == 200:
-                    try:
-                        return r.json()
-                    except Exception:
-                        try:
-                            return json.loads(r.text)
-                        except Exception:
-                            continue
-            elif b.startswith('scp:'):
-                # Not implemented pull for scp
-                continue
-        except Exception:
-            continue
-    return None
+@APP.route("/sync/pull", methods=["GET", "OPTIONS"])
+def sync_pull():
+    if request.method == "OPTIONS":
+        return _ok_options()
+    if QMOI_SYNC_API_KEY:
+        auth = request.headers.get("Authorization", "")
+        if not auth.startswith("Bearer ") or auth.split(" ", 1)[1] != QMOI_SYNC_API_KEY:
+            return make_response(jsonify({"error": "unauthorized"}), 401)
+    if not MEMORY_FILE.exists():
+        return jsonify({})
+    try:
+        with open(MEMORY_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        data = {}
+    return jsonify(data)
 
 
-def _check_sync_auth(headers):
-    """Return (allowed:bool, reason:str). If SYNC_API_KEY is not configured,
-    allow by default."""
-    if not SYNC_API_KEY:
-        return True, 'no_key_configured'
-    auth = headers.get('Authorization') or headers.get('authorization')
-    if not auth:
-        return False, 'missing_authorization_header'
-    parts = auth.split()
-    if len(parts) == 2 and parts[0].lower() == 'bearer' and parts[1] == SYNC_API_KEY:
-        return True, 'ok'
-    return False, 'invalid_token'
+def _ok_options():
+    resp = make_response("", 204)
+    resp.headers["Access-Control-Allow-Origin"] = "*"
+    resp.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
+    resp.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
+    return resp
 
 
-class Handler(BaseHTTPRequestHandler):
-    def _set_headers(self, code=200, ct='application/json'):
-        self.send_response(code)
-        self.send_header('Content-type', ct)
-        # Allow local test clients to call without CORS failures in test env
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.end_headers()
-
-    def do_OPTIONS(self):
-        # Handle CORS preflight requests
-        self.send_response(200)
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        # Allow requested headers to be reflected for preflight (helps msw interceptors and custom x-* headers)
-        req_headers = self.headers.get('Access-Control-Request-Headers')
-        if req_headers:
-            self.send_header('Access-Control-Allow-Headers', req_headers)
-        else:
-            self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-        self.end_headers()
-
-    def do_POST(self):
-        parsed = urlparse(self.path)
-        # Chat endpoint
-        if parsed.path == '/v1/chat/completions':
-            length = int(self.headers.get('Content-Length', 0))
-            body = self.rfile.read(length) if length else b''
-            try:
-                data = json.loads(body.decode()) if body else {}
-            except Exception:
-                self._set_headers(400)
-                self.wfile.write(json.dumps({'error': 'invalid_json'}).encode())
-                return
-
-            messages = data.get('messages') or []
-            # fallback: single input
-            if not messages and 'input' in data:
-                messages = [{'role': 'user', 'content': data['input']}]
-
-            memory = load_memory()
-            persona = detect_persona(messages)
-
-            # get last user content
-            user_msg = ''
-            for m in reversed(messages):
-                if m.get('role') == 'user':
-                    user_msg = m.get('content', '')
-                    break
-            if not user_msg and messages:
-                user_msg = messages[-1].get('content', '')
-
-            # Detect simple agent actions in the user message (e.g., create file)
-            action_result = None
-            try:
-                um = (user_msg or '')
-                low = um.lower()
-                if 'create' in low and 'file' in low:
-                    import re
-                    # More robust filename matcher (look for a token with a typical extension)
-                    m = re.search(r"([A-Za-z0-9_.\-]+\.(txt|md|json|py|sh|exe|cfg|conf))", um)
-                    if not m:
-                        # fallback to earlier patterns on the lowercased text
-                        m = re.search(r"create (?:a )?file (?:named )?['\"]?([^'\"\s,]+)['\"]?", low)
-                        if not m:
-                            m = re.search(r"create (?:a )?file (?:named )?([^\s,]+)", low)
-                    if m:
-                        fname = m.group(1)
-                        # attempt to extract content after 'with' or after ':'
-                        content = None
-                        m2 = re.search(r"with (?:the )?content[:]?\s*['\"]([^'\"]+)['\"]", um, re.IGNORECASE)
-                        if not m2:
-                            m2 = re.search(r"with (.+)$", um, re.IGNORECASE)
-                        if m2:
-                            content = m2.group(1).strip().strip('"')
-                        if not content:
-                            # default content
-                            content = f"Created by qmoi agent at {datetime.now(timezone.utc).isoformat()}"
-                        # safety: prevent directory traversal and absolute paths
-                        if '..' in fname or fname.startswith('/') or '\\' in fname:
-                            action_result = 'error: invalid filename'
-                        else:
-                            target = os.path.join(BASE, fname)
-                            try:
-                                os.makedirs(os.path.dirname(target), exist_ok=True)
-                                with open(target, 'w') as f:
-                                    f.write(content + '\n')
-                                action_result = f'created:{target}'
-                            except Exception as e:
-                                action_result = f'error: {e}'
-            except Exception:
-                action_result = None
-
-            # Build persona reply and include any action result
-            reply_text = persona_response(persona, user_msg, memory)
-            if action_result:
-                reply_text = reply_text + "\n\n[Action] " + str(action_result)
-            save_memory(memory)
-
-            # Build response similar to OpenAI Chat Completions
-            resp = {
-                'id': 'qmoi-local-'+datetime.utcnow().strftime('%Y%m%d%H%M%S'),
-                'object': 'chat.completion',
-                'created': int(datetime.utcnow().timestamp()),
-                'model': MODEL_NAME,
-                'choices': [
-                    {
-                        'index': 0,
-                        'message': {'role': 'assistant', 'content': reply_text},
-                        'finish_reason': 'stop'
-                    }
-                ]
-            }
-
-            self._set_headers(200)
-            self.wfile.write(json.dumps(resp).encode())
-            return
-
-        # Sync push endpoint: trigger push to configured backends
-        if parsed.path == '/sync/push':
-            # auth check
-            allowed, reason = _check_sync_auth(self.headers)
-            if not allowed:
-                self._set_headers(401)
-                self.wfile.write(json.dumps({'ok': False, 'reason': reason}).encode())
-                return
-            length = int(self.headers.get('Content-Length', 0))
-            body = self.rfile.read(length) if length else b''
-            # optional: accept {'force': true}
-            try:
-                _ = json.loads(body.decode()) if body else {}
-            except Exception:
-                _ = {}
-            mem = load_memory()
-            ok, details = push_memory_to_backends(mem)
-            status = 200 if ok else 500
-            self._set_headers(status)
-            self.wfile.write(json.dumps({'ok': ok, 'details': details}).encode())
-            return
-
-        # Sync pull endpoint: fetch remote memory and merge
-        if parsed.path == '/sync/pull':
-            # auth check
-            allowed, reason = _check_sync_auth(self.headers)
-            if not allowed:
-                self._set_headers(401)
-                self.wfile.write(json.dumps({'ok': False, 'reason': reason}).encode())
-                return
-            try:
-                remote_mem = pull_memory_from_backends()
-                if remote_mem:
-                    local = load_memory()
-                    # naive merge: extend local conversations with remote that are new
-                    existing = {c.get('timestamp'): True for c in local.get('conversations', []) if isinstance(c, dict)}
-                    added = 0
-                    for c in remote_mem.get('conversations', []):
-                        if not isinstance(c, dict):
-                            continue
-                        if c.get('timestamp') not in existing:
-                            local.setdefault('conversations', []).append(c)
-                            added += 1
-                    save_memory(local)
-                    self._set_headers(200)
-                    self.wfile.write(json.dumps({'ok': True, 'added': added}).encode())
-                    return
-                else:
-                    self._set_headers(204)
-                    self.wfile.write(json.dumps({'ok': False, 'reason': 'no_remote'}).encode())
-                    return
-            except Exception as e:
-                self._set_headers(500)
-                self.wfile.write(json.dumps({'ok': False, 'error': str(e)}).encode())
-                return
-        # Unknown POST route
-        self._set_headers(404)
-        self.wfile.write(json.dumps({'error': 'not_found'}).encode())
+if __name__ == "__main__":
+    host = os.environ.get("QMOI_HELPER_HOST", "127.0.0.1")
+    port = int(os.environ.get("QMOI_HELPER_PORT", "8081"))
+    APP.run(host=host, port=port)
 
     def do_GET(self):
         parsed = urlparse(self.path)

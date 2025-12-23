@@ -4,7 +4,7 @@ import AlphaQAISystem from "../components/alpha-q-ai-system";
 import Chatbot from "../components/Chatbot";
 import FileExplorer from "../components/FileExplorer";
 import GitStatus from "../components/GitStatus";
-import PreviewWindow from "../components/PreviewWindow";
+import { PreviewWindow } from "../src/components/PreviewWindow";
 import QIStateWindow from "../components/QIStateWindow";
 import { QiSpaces } from "../components/QiSpaces";
 import { LcSpaces } from "../components/LcSpaces";
@@ -45,11 +45,14 @@ function MainPage() {
     }
 
     if (typeof window !== "undefined") {
-      window.addEventListener('qmoi:preview', handlePreview as EventListener);
+      window.addEventListener("qmoi:preview", handlePreview as EventListener);
     }
     return () => {
       if (typeof window !== "undefined") {
-        window.removeEventListener('qmoi:preview', handlePreview as EventListener);
+        window.removeEventListener(
+          "qmoi:preview",
+          handlePreview as EventListener
+        );
       }
     };
   }, []);
@@ -112,7 +115,7 @@ function MainPage() {
           {isMaster && <QmoiMemoryPanel />}
         </main>
 
-          {/* Preview Section */}
+        {/* Preview Section */}
         <section className="col-span-1 p-2 border-l border-green-700 overflow-auto">
           <PreviewWindow url={previewUrl} />
         </section>

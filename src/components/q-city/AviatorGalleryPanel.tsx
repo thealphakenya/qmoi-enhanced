@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import type { AvatarConfig } from "./avatarsConfig";
 import { useToast } from "@/components/ui/use-toast";
+import { getSessionHeaders } from "../../services/qmoiSession";
 
 // Add HelpLink component
 const HelpLink: React.FC<{ href: string; label: string }> = ({
@@ -58,7 +59,7 @@ export default function AviatorGalleryPanel() {
   const { toast } = useToast();
 
   useEffect(() => {
-    fetch("/api/qmoi/avatars")
+    fetch("/api/qmoi/avatars", { headers: getSessionHeaders() })
       .then((res) => res.json())
       .then((data) => setAvatars(data.avatars || []));
   }, []);
@@ -66,7 +67,7 @@ export default function AviatorGalleryPanel() {
     setSelected(id);
     fetch("/api/qmoi/avatars", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...getSessionHeaders() },
       body: JSON.stringify({ action: "switch", avatarId: id }),
     });
   };

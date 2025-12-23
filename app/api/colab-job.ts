@@ -45,7 +45,7 @@ function persistJob(job: Record<string, unknown>) {
 // Extend API handler to support new endpoints
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   if (req.method === "POST") {
     if (req.query.installPackage) {

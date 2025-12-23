@@ -8,6 +8,7 @@ import React, {
   ReactNode,
 } from "react";
 import { avatarsConfig, voiceProfiles } from "./avatarsConfig";
+import { getSessionHeaders } from "../../services/qmoiSession";
 
 interface QMOIState {
   // Avatar State
@@ -67,7 +68,7 @@ interface QMOIContextType {
   updateUserPreferences: (
     preferences: Partial<
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
-    >,
+    >
   ) => void;
   getAvatarInfo: (avatarId: string) => any;
   getVoiceInfo: (voiceId: string) => any;
@@ -165,7 +166,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       // Call API to switch avatar
       const response = await fetch("/api/qmoi/avatars", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
@@ -203,7 +204,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       // Call API to switch voice
       const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
       });
 
@@ -245,7 +246,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   const updateUserPreferences = (
     preferences: Partial<
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
-    >,
+    >
   ) => {
     setState((prev) => ({ ...prev, ...preferences }));
   };
@@ -272,7 +273,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   const getCompatibleAvatar = (voiceId: string) => {
     const voice = voiceProfiles.find((v) => v.id === voiceId);
     const compatibleAvatar = avatarsConfig.find(
-      (a) => a.voiceProfile === voiceId,
+      (a) => a.voiceProfile === voiceId
     );
     return compatibleAvatar?.id || "default";
   };

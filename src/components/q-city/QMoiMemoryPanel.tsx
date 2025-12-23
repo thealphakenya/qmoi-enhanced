@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import {
+  fetchMemory as fetchMemoryApi,
+  syncMemory,
+} from "../../services/qmoiApi";
 
 export default function QMoiMemoryPanel({
   isMaster = false,
@@ -11,31 +15,35 @@ export default function QMoiMemoryPanel({
   const [message, setMessage] = useState("");
 
   async function fetchMemory() {
-    const res = await fetch("/api/qmoi/memory");
-    if (res.ok) setMemory(await res.json());
+    try {
+      const mem = await fetchMemoryApi();
+      setMemory(mem);
+    } catch (e) {
+      console.warn("fetchMemory failed", e);
+    }
   }
 
   async function submitFeedback() {
-    const res = await fetch("/api/qmoi/feedback", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        feedback,
+    try {
+      await syncMemory({
+        feedback: feedback,
         correction: correction ? { custom: correction } : undefined,
-      }),
-    });
-    if (res.ok) {
+      });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } else {
+    } catch (e) {
       setMessage("Error submitting feedback.");
     }
   }
 
   async function backupMemory() {
-    const res = await fetch("/api/qmoi/memory-backup");
-    if (res.ok) setMessage("Memory backup created!");
-    else setMessage("Backup failed.");
+    try {
+      // Trigger server backup via memory sync API (replace semantics as needed)
+      await syncMemory({ backup: true });
+      setMessage("Memory backup created!");
+    } catch (e) {
+      setMessage("Backup failed.");
+    }
   }
 
   useEffect(() => {

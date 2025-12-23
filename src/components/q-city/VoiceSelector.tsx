@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { avatarsConfig, voiceProfiles, qualityLevels } from "./avatarsConfig";
+import { getSessionHeaders } from "../../services/qmoiSession";
 
 interface VoiceProfile {
   id: string;
@@ -57,14 +58,14 @@ export function VoiceSelector({
   const [quality, setQuality] = useState("enhanced");
   const [autoAdapt, setAutoAdapt] = useState(true);
   const [previewText, setPreviewText] = useState(
-    "Hello! I am QMOI, your AI assistant.",
+    "Hello! I am QMOI, your AI assistant."
   );
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   // Get current avatar's default voice
   const currentAvatar = avatarsConfig.find(
-    (avatar) => avatar.id === currentAvatarId,
+    (avatar) => avatar.id === currentAvatarId
   );
   const defaultVoice = currentAvatar?.voiceProfile || "professional-male";
 
@@ -84,7 +85,7 @@ export function VoiceSelector({
       // Call API to switch voice
       const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
       });
 
@@ -95,7 +96,9 @@ export function VoiceSelector({
 
       toast({
         title: "Voice Updated",
-        description: `QMOI is now using the ${voiceProfiles.find((v) => v.id === voiceId)?.name} voice.`,
+        description: `QMOI is now using the ${
+          voiceProfiles.find((v) => v.id === voiceId)?.name
+        } voice.`,
       });
     } catch (error) {
       toast({
@@ -118,7 +121,7 @@ export function VoiceSelector({
     try {
       const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
           voiceId: selectedVoice,
           text: previewText,
@@ -204,7 +207,9 @@ export function VoiceSelector({
                         <span className="font-medium">{voice.name}</span>
                         <Badge
                           variant="secondary"
-                          className={`text-xs ${getQualityColor(voice.quality)}`}
+                          className={`text-xs ${getQualityColor(
+                            voice.quality
+                          )}`}
                         >
                           {voice.quality}
                         </Badge>

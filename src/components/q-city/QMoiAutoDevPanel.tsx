@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { getSessionHeaders } from "../../services/qmoiSession";
 
 function exportToCSV(logs: any[]) {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
     .map(
       (log) =>
-        `"${log.timestamp}","${log.action}","${log.result.replace(/"/g, '""')}"`,
+        `"${log.timestamp}","${log.action}","${log.result.replace(/"/g, '""')}"`
     )
     .join("\n");
   const csv = header + rows;
@@ -46,7 +47,7 @@ export default function QMoiAutoDevPanel({
   const [status, setStatus] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
-    null,
+    null
   );
   const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<any[]>([]);
@@ -62,7 +63,7 @@ export default function QMoiAutoDevPanel({
     try {
       const res = await fetch("/api/qmoi/autodev", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data = await res.json();
@@ -79,7 +80,7 @@ export default function QMoiAutoDevPanel({
     try {
       const res = await fetch("/api/qmoi/autodev", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
           action:
             action === "start"
@@ -140,7 +141,7 @@ export default function QMoiAutoDevPanel({
     try {
       const res = await fetch("/api/qmoi/autodev", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
       });
       const data = await res.json();

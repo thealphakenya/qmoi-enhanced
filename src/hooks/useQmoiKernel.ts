@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
+import { getSessionHeaders } from "../services/qmoiSession";
 
 interface QMoiKernelStatus {
   status: string;
@@ -22,7 +23,7 @@ export function useQmoiKernel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lastAction, setLastAction] = useState<QMoiKernelActionResult | null>(
-    null,
+    null
   );
 
   const fetchStatus = useCallback(async () => {
@@ -30,7 +31,9 @@ export function useQmoiKernel() {
     setError(null);
     try {
       console.debug("HOOK: fetchStatus - calling /api/qmoi/status");
-      const res = await fetch("/api/qmoi/status");
+      const res = await fetch("/api/qmoi/status", {
+        headers: getSessionHeaders(),
+      });
       console.debug("HOOK: fetchStatus - response status", res && res.status);
       if (!res.ok) throw new Error("Failed to fetch status");
       const data = await res.json();
@@ -56,6 +59,7 @@ export function useQmoiKernel() {
       try {
         const res = await fetch(`/api/qmoi/payload?${action}`, {
           method: "POST",
+          headers: getSessionHeaders(),
         });
         if (!res.ok) throw new Error(`Failed to run ${action}`);
         const data = await res.json().catch(() => ({}));
@@ -74,7 +78,7 @@ export function useQmoiKernel() {
         setLoading(false);
       }
     },
-    [fetchStatus],
+    [fetchStatus]
   );
 
   return useMemo(
@@ -86,6 +90,6 @@ export function useQmoiKernel() {
       fetchStatus,
       runAction,
     }),
-    [status, loading, error, lastAction, fetchStatus, runAction],
+    [status, loading, error, lastAction, fetchStatus, runAction]
   );
 }

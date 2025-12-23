@@ -33,6 +33,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { getSessionHeaders } from "../../services/qmoiSession";
 import {
   avatarsConfig,
   animationEngines,
@@ -62,7 +63,7 @@ export function AvatarSelector({
 
   // Get current voice's default avatar
   const currentVoice = voiceProfiles.find(
-    (voice) => voice.id === currentVoiceId,
+    (voice) => voice.id === currentVoiceId
   );
   const defaultAvatar =
     avatarsConfig.find((avatar) => avatar.voiceProfile === currentVoiceId) ||
@@ -84,7 +85,7 @@ export function AvatarSelector({
       // Call API to switch avatar
       const response = await fetch("/api/qmoi/avatars", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
@@ -95,7 +96,9 @@ export function AvatarSelector({
 
       toast({
         title: "Avatar Updated",
-        description: `QMOI is now using the ${avatarsConfig.find((a) => a.id === avatarId)?.name} avatar.`,
+        description: `QMOI is now using the ${
+          avatarsConfig.find((a) => a.id === avatarId)?.name
+        } avatar.`,
       });
     } catch (error) {
       toast({
@@ -113,7 +116,7 @@ export function AvatarSelector({
     try {
       const response = await fetch("/api/qmoi/avatars", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "upgrade", avatarId }),
       });
 
@@ -140,7 +143,7 @@ export function AvatarSelector({
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
       const response = await fetch("/api/qmoi/avatars", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
           action: "enhance",
           avatarId,
@@ -324,13 +327,17 @@ export function AvatarSelector({
                       <div className="flex items-center gap-2 mt-2">
                         <Badge
                           variant="secondary"
-                          className={`text-xs ${getQualityColor(avatar.qualityLevel)}`}
+                          className={`text-xs ${getQualityColor(
+                            avatar.qualityLevel
+                          )}`}
                         >
                           {avatar.qualityLevel}
                         </Badge>
                         <Badge
                           variant="outline"
-                          className={`text-xs ${getEngineColor(avatar.animationEngine)}`}
+                          className={`text-xs ${getEngineColor(
+                            avatar.animationEngine
+                          )}`}
                         >
                           {animationEngines[avatar.animationEngine]?.name}
                         </Badge>

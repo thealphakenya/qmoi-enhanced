@@ -39,7 +39,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   const [autoCorrect, setAutoCorrect] = useState(true);
 
   // Ensure a persisted session id exists for cross-component memory/preview
-  const getOrCreateSessionId = () => {
+  const getOrCreateSessionId = (): string => {
     try {
       let sid = localStorage.getItem("qmoi_session_id");
       if (!sid) {
@@ -47,9 +47,9 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
           globalThis.crypto && (globalThis.crypto as any).randomUUID
             ? (globalThis.crypto as any).randomUUID()
             : `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-        localStorage.setItem("qmoi_session_id", sid);
+        localStorage.setItem("qmoi_session_id", sid as string);
       }
-      return sid;
+      return sid as string;
     } catch (e) {
       return `sid-${Date.now()}`;
     }

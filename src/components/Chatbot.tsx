@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import { playSSML, supportsSpeechSynthesis } from "../services/tts";
 import "./Chatbot.css";
 
 interface ChatMessage {
@@ -45,37 +46,46 @@ export function Chatbot() {
     setInput("");
     setLoading(true);
 
-    // Call backend API for a real response
+    // Call model endpoint and request speak (SSML) when supported
     try {
-      const resp = await fetch('/api/qmoi/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: [{ role: 'user', content: input }] }),
+      const wantSpeak = supportsSpeechSynthesis();
+      const { postModel } = await import("../services/qmoiApi");
+      const data = await postModel({
+        user: "local",
+        message: input,
+        speak: wantSpeak,
       });
-      const data = await resp.json();
-      // Handle both OpenAI-like responses and the simple local server format
-      let replyText = '';
-      if (data && data.choices && Array.isArray(data.choices) && data.choices[0]) {
-        replyText = data.choices[0].message?.content || data.choices[0]?.text || JSON.stringify(data.choices[0]);
-      } else if (data && data.reply) {
-        replyText = data.reply;
-      } else if (data && data.ok && data.conversation) {
-        replyText = data.reply || '';
+      let replyText = "";
+      if (data && data.reply) replyText = data.reply;
+      else if (
+        data &&
+        data.choices &&
+        Array.isArray(data.choices) &&
+        data.choices[0]
+      ) {
+        replyText =
+          data.choices[0].message?.content || data.choices[0]?.text || "";
       } else {
-        replyText = 'Sorry, I could not get a reply.';
+        replyText = "Sorry, I could not get a reply.";
       }
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         text: replyText,
-        sender: 'bot',
+        sender: "bot",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMessage]);
+
+      // Play SSML if provided
+      if (data && data.ssml) {
+        // best-effort playback
+        playSSML(data.ssml);
+      }
     } catch (err) {
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
-        text: 'Error: could not reach QMOI backend',
-        sender: 'bot',
+        text: "Error: could not reach QMOI backend",
+        sender: "bot",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMessage]);

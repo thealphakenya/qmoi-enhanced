@@ -58,7 +58,7 @@ const LOG_PATH = "/workspaces/Alpha-Q-ai/qmoi-tasks-log.jsonl";
 function persistLog() {
   fs.writeFileSync(
     LOG_PATH,
-    aiTaskLog.map((t) => JSON.stringify(t)).join("\n"),
+    aiTaskLog.map((t) => JSON.stringify(t)).join("\n")
   );
 }
 // Helper to load log
@@ -116,10 +116,10 @@ async function autoDiscoverAndBuildExtension(projectType: string) {
     projectType === "game"
       ? "phaser"
       : projectType === "animation"
-        ? "three"
-        : projectType === "music"
-          ? "tone"
-          : "latest-ai-lib";
+      ? "three"
+      : projectType === "music"
+      ? "tone"
+      : "latest-ai-lib";
   // Simulate Colab job
   const job = {
     id: Date.now(),
@@ -173,7 +173,7 @@ function getUserTimeZone() {
 async function createProject(
   projectName: string,
   files: Array<{ name: string; content: string }>,
-  userPrefs: Record<string, unknown> = {},
+  userPrefs: Record<string, unknown> = {}
 ) {
   const projectDir = `/workspaces/Alpha-Q-ai/projects/${projectName}`;
   if (!fs.existsSync(projectDir)) fs.mkdirSync(projectDir, { recursive: true });
@@ -187,7 +187,7 @@ async function createProject(
   }\n\n## Files\n${files
     .map((f) => "- " + f.name)
     .join("\n")}\n\n## Created\n${new Date().toLocaleString(
-    getUserTimeZone(),
+    getUserTimeZone()
   )}\n`;
   const readmePath = path.join(projectDir, "README.md");
   fs.writeFileSync(readmePath, readmeContent);
@@ -247,7 +247,7 @@ async function enhancedArchitectureGen(details: any) {
 async function backupModelToHuggingFace(
   modelPath: string,
   repoId: string,
-  token: string,
+  token: string
 ) {
   // Use huggingface_hub CLI for backup (Python required)
   return new Promise((resolve, reject) => {
@@ -256,7 +256,7 @@ async function backupModelToHuggingFace(
       (err, stdout, stderr) => {
         if (err) return reject(stderr);
         resolve(stdout);
-      },
+      }
     );
   });
 }
@@ -264,7 +264,7 @@ async function backupModelToHuggingFace(
 async function restoreModelFromHuggingFace(
   modelPath: string,
   repoId: string,
-  token: string,
+  token: string
 ) {
   // Use huggingface_hub CLI for restore (Python required)
   return new Promise((resolve, reject) => {
@@ -273,7 +273,7 @@ async function restoreModelFromHuggingFace(
       (err, stdout, stderr) => {
         if (err) return reject(stderr);
         resolve(stdout);
-      },
+      }
     );
   });
 }
@@ -281,7 +281,7 @@ async function restoreModelFromHuggingFace(
 // [PRODUCTION IMPLEMENTATION REQUIRED] for advanced AI/ML tasks (to be implemented)
 async function runAdvancedAIGeneration(
   type: string,
-  params: Record<string, unknown>,
+  params: Record<string, unknown>
 ) {
   // Call Python script for heavy AI/ML tasks
   return new Promise((resolve, reject) => {
@@ -296,7 +296,7 @@ async function runAdvancedAIGeneration(
         } catch (e) {
           resolve({ status: "error", error: String(e), raw: stdout });
         }
-      },
+      }
     );
   });
 }
@@ -311,7 +311,7 @@ function encrypt(text: string) {
   const cipher = crypto.createCipheriv(
     "aes-256-cbc",
     Buffer.from(ENCRYPTION_KEY, "hex"),
-    iv,
+    iv
   );
   let encrypted = cipher.update(text);
   encrypted = Buffer.concat([encrypted, cipher.final()]);
@@ -325,7 +325,7 @@ function decrypt(text: string) {
   const decipher = crypto.createDecipheriv(
     "aes-256-cbc",
     Buffer.from(ENCRYPTION_KEY, "hex"),
-    iv,
+    iv
   );
   let decrypted = decipher.update(encryptedText);
   decrypted = Buffer.concat([decrypted, decipher.final()]);
@@ -347,12 +347,42 @@ export async function multiUserChat(user: string, message: string) {
   });
   // Simulate AI reply
   const aiReply = `Hello ${user}, you said: ${message}`;
+  // Generate simple SSML for client-side TTS (clients should use Web Speech API or TTS service)
+  const ssml = generateSSML(aiReply, { voice: "female", rate: 1.0 });
   activeConversations[user].push({
     from: "AI",
     message: aiReply,
     time: new Date().toISOString(),
   });
-  return { reply: aiReply, conversation: activeConversations[user] };
+  return {
+    reply: aiReply,
+    ssml,
+    speak: true,
+    conversation: activeConversations[user],
+  };
+}
+
+// Simple SSML generator: escapes text and wraps in <speak>
+function escapeForSSML(s: string) {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+function generateSSML(
+  text: string,
+  opts: { voice?: string; rate?: number } = {}
+) {
+  const voice = opts.voice || "neutral";
+  const rate = typeof opts.rate === "number" ? opts.rate : 1.0;
+  const escaped = escapeForSSML(text);
+  // Note: clients can choose to consume this SSML via a TTS service or local Web Speech API.
+  return `<speak><prosody rate="${(rate * 100).toFixed(
+    0
+  )}%"><voice name="${voice}">${escaped}</voice></prosody></speak>`;
 }
 
 // --- Global Error/Problem Fixing ---
@@ -413,7 +443,7 @@ async function aiStartProject(name: string, info: string) {
   setTimeout(async () => {
     const finished = new Date().toISOString();
     const idx = masterProjectQueue.findIndex(
-      (p) => p.name === name && p.status === "in-progress",
+      (p) => p.name === name && p.status === "in-progress"
     );
     if (idx !== -1)
       masterProjectQueue[idx] = {
@@ -423,7 +453,7 @@ async function aiStartProject(name: string, info: string) {
       };
     // Notify master via WhatsApp
     await sendWhatsAppMasterNotification(
-      `Project '${name}' completed!\nInfo: ${info}\nStarted: ${started}\nFinished: ${finished}`,
+      `Project '${name}' completed!\nInfo: ${info}\nStarted: ${started}\nFinished: ${finished}`
     );
   }, 10000); // Simulate 10s project duration
 }
@@ -505,7 +535,7 @@ async function installAsSystemSoftware() {
   // Simulate by creating a marker file
   fs.writeFileSync(
     path.join(dest, "installed.txt"),
-    `Installed at ${new Date().toISOString()}`,
+    `Installed at ${new Date().toISOString()}`
   );
   return { status: "installed", dest };
 }
@@ -553,7 +583,7 @@ async function aiResearch(url: string, query?: string) {
       // Simple keyword-based summary
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
-        s.toLowerCase().includes(query.toLowerCase()),
+        s.toLowerCase().includes(query.toLowerCase())
       );
       return { summary: relevant.slice(0, 10).join(". "), url };
     }
@@ -581,7 +611,7 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
     if (query) {
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
-        s.toLowerCase().includes(query.toLowerCase()),
+        s.toLowerCase().includes(query.toLowerCase())
       );
       return {
         summary: relevant.slice(0, 10).join(". "),
@@ -603,7 +633,7 @@ async function aiResearchQA(context: string, question: string) {
   // Simple keyword-based answer
   const sentences = context.split(". ");
   const relevant = sentences.filter((s: string) =>
-    s.toLowerCase().includes(question.toLowerCase()),
+    s.toLowerCase().includes(question.toLowerCase())
   );
   return {
     answer: relevant.slice(0, 5).join(". ") || "No direct answer found.",
@@ -613,7 +643,7 @@ async function aiResearchQA(context: string, question: string) {
 // --- API Handler --- Buffer, query?: string) {
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   loadLog();
   if (req.method === "GET") {
@@ -762,5 +792,31 @@ export async function POST(req: Request) {
       status: 200,
     });
   }
-  // ...existing code...
+  // Handle simple chat/speak requests: { user, message, speak }
+  try {
+    const body = await req.json().catch(() => ({}));
+    const user = body.user || body.userId || "anon";
+    const message = body.message || body.input;
+    const speak = body.speak || url.searchParams.get("speak") === "1";
+    if (message) {
+      const result: any = await multiUserChat(user, message);
+      // If client requested speak, include SSML; otherwise return plain text
+      const payload: any = {
+        reply: result.reply,
+        conversation: result.conversation,
+      };
+      if (speak && result.ssml) payload.ssml = result.ssml;
+      // Hint for clients that local Web Speech API can be used
+      if (speak) payload.suggestClientTTS = true;
+      return new Response(JSON.stringify(payload), { status: 200 });
+    }
+    return new Response(JSON.stringify({ error: "no_message" }), {
+      status: 400,
+    });
+  } catch (e: any) {
+    return new Response(
+      JSON.stringify({ error: "server_error", detail: String(e) }),
+      { status: 500 }
+    );
+  }
 }

@@ -2,11 +2,60 @@ import React, { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { DownloadAppButton } from "@/components/DownloadAppButton";
 
-export default function PreviewWindow() {
+export default function PreviewWindow({ url }: { url?: string }) {
+  // If a URL is provided via props, prefer rendering an external preview
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<
     "image" | "video" | "audio" | null
   >(null);
+
+  // If parent passes a `url`, show it in the preview area
+  if (url) {
+    // YouTube quick embed support
+    const youtubeMatch = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{6,})/);
+    if (youtubeMatch) {
+      const id = youtubeMatch[1];
+      return (
+        <Card className="mb-4 qmoi-card">
+          <CardHeader>
+            <CardTitle>Preview Window</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div style={{ width: "100%", height: 360 }}>
+              <iframe
+                title="preview"
+                src={`https://www.youtube.com/embed/${id}`}
+                style={{ width: "100%", height: "100%" }}
+              />
+            </div>
+            <DownloadAppButton />
+          </CardContent>
+        </Card>
+      );
+    }
+
+    return (
+      <Card className="mb-4 qmoi-card">
+        <CardHeader>
+          <CardTitle>Preview Window</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div>
+            Preview for:{" "}
+            <a href={url} target="_blank" rel="noreferrer">
+              {url}
+            </a>
+          </div>
+          <iframe
+            title="preview"
+            src={url}
+            style={{ width: "100%", height: 360, border: "none" }}
+          />
+          <DownloadAppButton />
+        </CardContent>
+      </Card>
+    );
+  }
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];

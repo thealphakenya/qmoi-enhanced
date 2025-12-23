@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { getSessionHeaders } from "../services/qmoiSession";
 
 type StatusResp = {
   status: string;
@@ -16,7 +17,7 @@ export function QIStateWindow() {
   useEffect(() => {
     let mounted = true;
     setLoading(true);
-    fetch("/api/qmoi/status")
+    fetch("/api/qmoi/status", { headers: getSessionHeaders() })
       .then((r) => r.json())
       .then((d) => mounted && setData(d))
       .catch((e) => mounted && setError(String(e)))

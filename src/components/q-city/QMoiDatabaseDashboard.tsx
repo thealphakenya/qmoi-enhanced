@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getSessionHeaders } from "../../services/qmoiSession";
 
 interface Table {
   name: string;
@@ -21,12 +22,12 @@ export default function QMoiDatabaseDashboard({
   useEffect(() => {
     if (!isMaster) return;
     fetch("/api/qmoi-database/route?tables=true", {
-      headers: { "x-qmoi-master": "true" },
+      headers: { "x-qmoi-master": "true", ...getSessionHeaders() },
     })
       .then((res) => res.json())
       .then((data) => setTables(data.tables || []));
     fetch("/api/qmoi-database/route?schema=true", {
-      headers: { "x-qmoi-master": "true" },
+      headers: { "x-qmoi-master": "true", ...getSessionHeaders() },
     })
       .then((res) => res.json())
       .then((data) => setSchema(data.schema || []));
@@ -37,7 +38,11 @@ export default function QMoiDatabaseDashboard({
     const sql = `CREATE TABLE IF NOT EXISTS ${newTable} (id INTEGER PRIMARY KEY AUTOINCREMENT)`;
     const res = await fetch("/api/qmoi-database/route", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
+      headers: {
+        "Content-Type": "application/json",
+        "x-qmoi-master": "true",
+        ...getSessionHeaders(),
+      },
       body: JSON.stringify({ createTable: sql }),
     });
     const data = await res.json();

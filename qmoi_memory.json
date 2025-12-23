@@ -1519,6 +1519,208 @@
         }
       ],
       "reply": "Hello \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-23T11:21:47.006196Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-23T11:22:34.871334Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-23T11:22:39.826688Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-23T11:22:39.844595Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-23T11:22:39.851701Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-23T11:22:39.858365Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-23T12:04:20.597851Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-23T12:04:20.664605Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-23T12:04:20.677211Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-23T12:04:20.684206Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-23T12:04:20.689621Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-23T12:09:51.632885Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-23T12:09:51.685293Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How are you"
+        }
+      ],
+      "reply": "I'm doing well \u2014 how can I help you today?"
+    },
+    {
+      "timestamp": "2025-12-23T12:09:51.695970Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Create a file named tests/quick_tmp_file.txt with the content 'quick-test'"
+        }
+      ],
+      "reply": "[Action] [Action] Created file: tests/quick_tmp_file.txt I created the file you requested."
+    },
+    {
+      "timestamp": "2025-12-23T12:09:51.702381Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I like strawberries"
+        }
+      ],
+      "reply": "Thanks \u2014 could you tell me what you'd like me to do next or give more details?"
+    },
+    {
+      "timestamp": "2025-12-23T12:09:51.707330Z",
+      "role": "user",
+      "model": "qmoi",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What did I say earlier?"
+        }
+      ],
+      "reply": "Earlier you said: I like strawberries"
+    },
+    {
+      "timestamp": "2025-12-23T16:00:14.395944+00:00",
+      "persona": "master",
+      "message": "How are you doing today?"
+    },
+    {
+      "timestamp": "2025-12-23T16:11:44.838234+00:00",
+      "persona": "master",
+      "message": "How are you doing today?"
     }
   ],
   "sessions": {
@@ -1529,6 +1731,21 @@
     },
     "1766436228568-qaz8uz": {
       "id": "1766436228568-qaz8uz",
+      "awaiting_choice": false,
+      "last_prompt": null
+    },
+    "s_mjihx0so_968yyc": {
+      "id": "s_mjihx0so_968yyc",
+      "awaiting_choice": false,
+      "last_prompt": null
+    },
+    "s_mjijemgk_rjqe1x": {
+      "id": "s_mjijemgk_rjqe1x",
+      "awaiting_choice": false,
+      "last_prompt": null
+    },
+    "s_mjijlpvm_uoj9ll": {
+      "id": "s_mjijlpvm_uoj9ll",
       "awaiting_choice": false,
       "last_prompt": null
     }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getSessionHeaders } from "../../services/qmoiSession";
 
 export default function SystemHealthPanel() {
   const [data, setData] = useState<any>(null);
@@ -13,7 +14,9 @@ export default function SystemHealthPanel() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/qmoi/status");
+      const res = await fetch("/api/qmoi/status", {
+        headers: getSessionHeaders(),
+      });
       if (!res.ok) throw new Error("Failed to fetch");
       const json = await res.json();
       setData(json);
@@ -26,14 +29,20 @@ export default function SystemHealthPanel() {
 
   async function runAllFixes() {
     setActionMsg("Running all fixes...");
-    await fetch("/api/qmoi/fix/all", { method: "POST" });
+    await fetch("/api/qmoi/fix/all", {
+      method: "POST",
+      headers: getSessionHeaders(),
+    });
     setActionMsg("All fixes triggered. Refreshing status...");
     setTimeout(fetchStatus, 3000);
   }
 
   async function repairConnectivity() {
     setActionMsg("Repairing connectivity...");
-    await fetch("/api/qmoi/fix/connectivity", { method: "POST" });
+    await fetch("/api/qmoi/fix/connectivity", {
+      method: "POST",
+      headers: getSessionHeaders(),
+    });
     setActionMsg("Connectivity repair triggered. Refreshing status...");
     setTimeout(fetchStatus, 3000);
   }
@@ -42,7 +51,10 @@ export default function SystemHealthPanel() {
     setUiTestRunning(true);
     setActionMsg("Running UI health check...");
     try {
-      const res = await fetch("/api/qmoi/ui-health-check", { method: "POST" });
+      const res = await fetch("/api/qmoi/ui-health-check", {
+        method: "POST",
+        headers: getSessionHeaders(),
+      });
       const json = await res.json();
       setUiHealth(json.status || "Unknown");
       setUiTestTime(new Date().toLocaleString());
@@ -57,7 +69,10 @@ export default function SystemHealthPanel() {
 
   async function triggerUiSelfHealing() {
     setActionMsg("Triggering UI self-healing...");
-    await fetch("/api/qmoi/fix/ui", { method: "POST" });
+    await fetch("/api/qmoi/fix/ui", {
+      method: "POST",
+      headers: getSessionHeaders(),
+    });
     setActionMsg("UI self-healing triggered.");
     setTimeout(runUiHealthCheck, 3000);
   }

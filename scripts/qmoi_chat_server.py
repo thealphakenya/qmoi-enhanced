@@ -94,7 +94,21 @@ def save_memory(mem):
 class Handler(BaseHTTPRequestHandler):
     def _set_json(self, code=200):
         self.send_response(code)
+        # Allow basic CORS for test environments so preflight requests succeed
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers',
+                         'Content-Type, X-QMOI-SESSION, X-QMOI-USER, X-QMOI-ROLE, X-QMOI-DEBUG, X-QMOI-MEMORY-SECRET')
         self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+
+    def do_OPTIONS(self):
+        # Respond to CORS preflight requests
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers',
+                         'Content-Type, X-QMOI-SESSION, X-QMOI-USER, X-QMOI-ROLE, X-QMOI-DEBUG, X-QMOI-MEMORY-SECRET')
         self.end_headers()
 
     def do_POST(self):
