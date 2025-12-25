@@ -30,10 +30,12 @@ def find_variations() -> list[str]:
     return [p.stem for p in DOCS_VARIATIONS.glob("*.md")]
 
 
-def package_variation(variation: str, version: str, output_dir: Path, create_docker: bool, dry_run: bool):
-    output_dir.mkdir(parents=True, exist_ok=True)
+def package_variation(variation: str, version: str, output_dir: Path | str, create_docker: bool, dry_run: bool):
+    from pathlib import Path as _Path
+    out_dir = _Path(output_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
     name = f"{variation}-{version}"
-    tar_path = output_dir / f"{name}.tar.gz"
+    tar_path = out_dir / f"{name}.tar.gz"
 
     if dry_run:
         print(f"[dry-run] Would create {tar_path}")
@@ -60,7 +62,7 @@ def package_variation(variation: str, version: str, output_dir: Path, create_doc
         print("Packaged.")
 
     if create_docker:
-        docker_dir = output_dir / name / "docker"
+        docker_dir = out_dir / name / "docker"
         if dry_run:
             print(f"[dry-run] Would create docker context at {docker_dir}")
         else:
@@ -79,7 +81,7 @@ CMD ["python3", "/app/scripts/lion_orchestrator.py"]
         "version": version,
         "packaged_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
-    meta_path = output_dir / f"{name}.json"
+    meta_path = out_dir / f"{name}.json"
     if dry_run:
         print(f"[dry-run] Would write metadata {meta_path}")
     else:
@@ -121,4 +123,3 @@ def main(argv=None):
 
 if __name__ == "__main__":
     main()
-

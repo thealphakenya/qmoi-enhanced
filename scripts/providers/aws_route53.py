@@ -12,13 +12,30 @@ from typing import Dict, Any
 
 from .provider_base import ProviderBase, ProviderError
 
+# Try to load automatic credentials shim for test/dev environments
+try:
+    from scripts import auto_creds
+except Exception:
+    auto_creds = None
+
 
 class Route53Provider(ProviderBase):
     def __init__(self, log_path: str = None):
         super().__init__('aws_route53', log_path)
-        # Verify AWS credentials
+        # Ensure AWS credentials exist. Prefer environment variables.
+        # Auto-provision fallback only when explicitly enabled by
+        # `QMOI_AUTO_CREDENTIALS=1` (so tests that expect credential
+        # enforcement still see ProviderError when creds are missing).
         if not os.getenv('AWS_ACCESS_KEY_ID') or not os.getenv('AWS_SECRET_ACCESS_KEY'):
-            raise ProviderError('AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are required')
+            if os.environ.get('QMOI_AUTO_CREDENTIALS') == '1' and auto_creds:
+                creds = auto_creds.get_aws_credentials()
+                if creds.get('AWS_ACCESS_KEY_ID'):
+                    os.environ.setdefault('AWS_ACCESS_KEY_ID', creds.get('AWS_ACCESS_KEY_ID'))
+                if creds.get('AWS_SECRET_ACCESS_KEY'):
+                    os.environ.setdefault('AWS_SECRET_ACCESS_KEY', creds.get('AWS_SECRET_ACCESS_KEY'))
+            else:
+                # Enforce credentials for normal/test environments
+                raise ProviderError('AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are required')
         try:
             self.client = boto3.client('route53')
         except Exception as e:
@@ -38,7 +55,7 @@ class Route53Provider(ProviderBase):
     def plan_dns_change(self, domain: str, records: Dict[str, Any]) -> Dict[str, Any]:
         """Plan DNS changes for Route53."""
         zone_id = self._get_zone_id(domain)
-        
+
         # Get current records
         try:
             current_records = self.client.list_resource_record_sets(
@@ -100,7 +117,7 @@ class Route53Provider(ProviderBase):
                 HostedZoneId=zone_id,
                 ChangeBatch={'Changes': changes}
             )
-            
+
             self.log_operation('apply_dns', {
                 'zone_id': zone_id,
                 'change_id': result['ChangeInfo']['Id'],
@@ -114,7 +131,7 @@ class Route53Provider(ProviderBase):
                 'rollback_plan': {
                     'zone_id': zone_id,
                     'changes': [
-                        {**c, 'Action': 'DELETE'} 
+                        {**c, 'Action': 'DELETE'}
                         for c in changes if c['Action'] == 'CREATE'
                     ],
                     'dry_run': False
@@ -143,7 +160,7 @@ class Route53Provider(ProviderBase):
                 try:
                     name = record['Name'].rstrip('.')
                     answers = dns.resolver.resolve(name, record['Type'])
-                    
+
                     # Compare values
                     if 'ResourceRecords' in record:
                         expected = {r['Value'] for r in record['ResourceRecords']}
@@ -153,7 +170,7 @@ class Route53Provider(ProviderBase):
                                 'record': record,
                                 'error': f'Record values mismatch. Expected {expected}, got {actual}'
                             })
-                    
+
                     # For alias records, just verify resolution
                     elif 'AliasTarget' in record:
                         if not answers:
