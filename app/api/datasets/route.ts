@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { PrismaClient, Dataset } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -13,7 +13,7 @@ export async function GET() {
     });
 
     return NextResponse.json({
-      datasets: datasets.map((dataset: Dataset) => ({
+      datasets: datasets.map((dataset: any) => ({
         id: dataset.id,
         name: dataset.name,
         description: dataset.description,

@@ -17,18 +17,20 @@ export async function GET() {
     // Calculate stats
     const totalTasks = tasks.length;
     const completedTasks = tasks.filter(
-      (task) => task.status === "completed"
+      (task: any) => task.status === "completed"
     ).length;
-    const failedTasks = tasks.filter((task) => task.status === "failed").length;
+    const failedTasks = tasks.filter(
+      (task: any) => task.status === "failed"
+    ).length;
     const processingTasks = tasks.filter(
-      (task) => task.status === "processing"
+      (task: any) => task.status === "processing"
     ).length;
 
     const averageProcessingTime =
       completedTasks > 0
         ? tasks
-            .filter((task) => task.status === "completed")
-            .reduce((acc, task) => {
+            .filter((task: any) => task.status === "completed")
+            .reduce((acc: number, task: any) => {
               const processingTime =
                 new Date(task.updatedAt).getTime() -
                 new Date(task.createdAt).getTime();
@@ -39,7 +41,7 @@ export async function GET() {
         : 0;
 
     return NextResponse.json({
-      tasks: tasks.map((task) => ({
+      tasks: tasks.map((task: any) => ({
         id: task.id,
         type: task.type,
         status: task.status,

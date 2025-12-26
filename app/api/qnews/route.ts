@@ -111,7 +111,7 @@ export async function GET(req: NextRequest) {
       take: limit,
     });
 
-    let result = news.map((item) => ({
+    let result = news.map((item: any) => ({
       ...item,
       analytics:
         typeof item.analytics === "object" && item.analytics !== null
@@ -210,7 +210,12 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ success: true, item });
   } catch (error) {
     console.error("Failed to update news:", error);
-    if (error.code === "P2025") {
+    if (
+      error &&
+      typeof error === "object" &&
+      "code" in error &&
+      error.code === "P2025"
+    ) {
       return NextResponse.json(
         { error: "News item not found" },
         { status: 404 }
@@ -250,7 +255,12 @@ export async function POST_SCHEDULE(req: NextRequest) {
     return NextResponse.json({ success: true, item });
   } catch (error) {
     console.error("Failed to schedule news:", error);
-    if (error.code === "P2025") {
+    if (
+      error &&
+      typeof error === "object" &&
+      "code" in error &&
+      error.code === "P2025"
+    ) {
       return NextResponse.json(
         { error: "News item not found" },
         { status: 404 }
@@ -279,7 +289,7 @@ export async function GET_ANALYTICS(req: NextRequest) {
       orderBy: { createdAt: "desc" },
     });
 
-    const analytics = news.map((n) => ({
+    const analytics = news.map((n: any) => ({
       id: n.id,
       title: n.title,
       views: (n.analytics as any)?.views || 0,
@@ -401,7 +411,11 @@ export async function POST_POST(req: NextRequest) {
         }
       } catch (error) {
         console.error(`Failed to post to ${platform}:`, error);
-        results.push({ platform, success: false, error: error.message });
+        results.push({
+          platform,
+          success: false,
+          error: error instanceof Error ? error.message : String(error),
+        });
       }
     }
 

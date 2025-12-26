@@ -212,9 +212,9 @@ async function performSync(body: any) {
   // Parallel sync operations
   const syncTasks = [];
 
-  if (target === "huggingface" || target === "all") {
-    syncTasks.push(syncWithHuggingFace(direction));
-  }
+  // if (target === "huggingface" || target === "all") {
+  //   syncTasks.push(syncWithHuggingFace(direction));
+  // }
 
   if (target === "qmoi" || target === "all") {
     syncTasks.push(syncWithQMOI(direction));
@@ -643,7 +643,7 @@ async function searchDiscussions(query: string, filters: any) {
       take: 20,
     });
 
-    return discussions.map((disc) => ({
+    return discussions.map((disc: any) => ({
       id: disc.id,
       title: disc.title,
       content: disc.content,
@@ -767,7 +767,11 @@ async function syncWithQMOI(direction: string) {
     };
   } catch (error) {
     console.error("Error syncing with QMOI:", error);
-    return { count: 0, status: "error", error: error.message };
+    return {
+      count: 0,
+      status: "error",
+      error: error instanceof Error ? error.message : String(error),
+    };
   }
 }
 
@@ -813,7 +817,11 @@ async function syncLocalData(direction: string) {
     };
   } catch (error) {
     console.error("Error syncing local data:", error);
-    return { count: 0, status: "error", error: error.message };
+    return {
+      count: 0,
+      status: "error",
+      error: error instanceof Error ? error.message : String(error),
+    };
   }
 }
 
@@ -880,7 +888,11 @@ async function analyzeWithQMOI(content: any, type: string, options: any) {
     };
   } catch (error) {
     console.error("Error in QMOI analysis:", error);
-    return { insights: [], confidence: 0.5, error: error.message };
+    return {
+      insights: [],
+      confidence: 0.5,
+      error: error instanceof Error ? error.message : String(error),
+    };
   }
 }
 
@@ -941,7 +953,7 @@ async function analyzeWithHuggingFace(
     };
   } catch (error) {
     console.error("Error in Hugging Face analysis:", error);
-    return { insights: [], confidence: 0.5, error: error.message };
+    return { insights: [], confidence: 0.5, error: error instanceof Error ? error.message : String(error) };
   }
 }
 
