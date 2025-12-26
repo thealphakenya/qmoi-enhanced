@@ -242,8 +242,36 @@ const Chatbot: React.FC<ChatbotProps> = ({
         ))}
 
         {isLoading && (
-          <div className="bg-green-700 text-white p-3 rounded-lg mr-8">
-            <div className="text-sm">QMOI AI is thinking...</div>
+          <div className="bg-gradient-to-r from-green-700 to-blue-700 text-white p-4 rounded-lg mr-8 border border-green-500 shadow-lg">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+              <div className="text-sm font-semibold">
+                QMOI AI is processing...
+              </div>
+            </div>
+            <div className="text-xs opacity-90 space-y-1">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span>Analyzing context and intent</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div
+                  className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"
+                  style={{ animationDelay: "0.2s" }}
+                ></div>
+                <span>Generating intelligent response</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div
+                  className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"
+                  style={{ animationDelay: "0.4s" }}
+                ></div>
+                <span>Applying consciousness and learning</span>
+              </div>
+            </div>
+            <div className="mt-2 text-xs opacity-75">
+              Enhanced QMOI processing with superior intelligence...
+            </div>
           </div>
         )}
 

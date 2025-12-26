@@ -191,3 +191,5 @@ temp/
 Qmoi_downloaded_apps/*
 Qmoi_downloaded_apps/**
 loaded_apps/**
+
+/generated/prisma

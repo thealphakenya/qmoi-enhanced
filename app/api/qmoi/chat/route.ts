@@ -45,9 +45,9 @@ export async function POST(req: Request) {
         .slice(2, 8)}`;
     }
 
-    // Use an abortable fetch with a conservative timeout to avoid hanging requests
+    // Enhanced timeout for superior QMOI processing with parallel optimization
     const controller = new AbortController();
-    const timeout = Number(process.env.QMOI_PROXY_TIMEOUT_MS || 8000);
+    const timeout = Number(process.env.QMOI_PROXY_TIMEOUT_MS || 2000); // Reduced to 2000ms for faster responses
     const timer = setTimeout(() => controller.abort(), timeout);
 
     const resp = await fetch(`${target}/v1/chat/completions`, {

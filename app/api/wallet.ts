@@ -1,15 +1,54 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
+import * as fs from "fs";
+import * as path from "path";
+import { Buffer } from "buffer";
+import { createHmac } from "crypto";
 import { WhatsAppService } from "../../src/services/WhatsAppService";
+import { PrismaClient } from "@prisma/client";
+
+interface WalletRequest {
+  id: string;
+  email: string;
+  username: string;
+  status: "pending" | "approved" | "rejected";
+  createdAt: string;
+}
+
+interface PlatformResult {
+  status: string;
+  platform: string;
+  amount: number;
+  transactionId?: string;
+  message?: string;
+  error?: string;
+  [key: string]: unknown;
+}
+
+const prisma = new PrismaClient();
 
 // Constants
 const REQUESTS_FILE = path.resolve(
   process.cwd(),
   "data",
-  "wallet_requests.json",
+  "wallet_requests.json"
 );
 const LOGS_FILE = path.resolve(process.cwd(), "data", "wallet_logs.json");
+const MPESA_API_URL = "https://api.safaricom.co.ke";
+
+function readWalletRequests() {
+  try {
+    if (!fs.existsSync(REQUESTS_FILE)) return [];
+    const data = fs.readFileSync(REQUESTS_FILE, "utf-8");
+    return JSON.parse(data);
+  } catch {
+    return [];
+  }
+}
+
+function writeWalletRequests(requests: WalletRequest[]) {
+  fs.mkdirSync(path.dirname(REQUESTS_FILE), { recursive: true });
+  fs.writeFileSync(REQUESTS_FILE, JSON.stringify(requests, null, 2));
+}
 
 // Initialize WhatsApp service
 let whatsappService: WhatsAppService;
@@ -20,7 +59,7 @@ try {
 }
 
 // Enhanced logging
-function logAction(action: string, details: any) {
+function logAction(action: string, details: Record<string, unknown>) {
   try {
     const logs = fs.existsSync(LOGS_FILE)
       ? JSON.parse(fs.readFileSync(LOGS_FILE, "utf-8"))
@@ -36,52 +75,71 @@ function logAction(action: string, details: any) {
   }
 }
 
-// Simulated wallet state (replace with DB or secure backend in production)
-const wallet = {
-  balance: 10000,
-  currency: "KES",
-  transactions: [
-    {
-      date: "2025-06-01",
-      type: "deposit",
-      amount: 5000,
-      currency: "KES",
-      platform: "Mpesa",
-      status: "completed",
-    },
-    {
-      date: "2025-06-10",
-      type: "withdraw",
-      amount: 2000,
-      currency: "KES",
-      platform: "Binance",
-      status: "completed",
-    },
-  ],
-};
-
-const MPESA_API_URL = "https://api.safaricom.co.ke/mpesa";
-const BINANCE_API_URL = "https://api.binance.com";
-const PESA_API_URL = "https://api.pesapal.com";
-const BITGET_API_URL = "https://api.bitget.com";
-
-function readWalletRequests() {
+// Real wallet operations using database
+async function getOrCreateWallet(userId: string) {
   try {
-    if (!fs.existsSync(REQUESTS_FILE)) return [];
-    const data = fs.readFileSync(REQUESTS_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch (e) {
-    return [];
+    let wallet = await prisma.wallet.findFirst({
+      where: { userId, isActive: true },
+      include: { transactions: { orderBy: { createdAt: "desc" }, take: 10 } },
+    });
+
+    if (!wallet) {
+      wallet = await prisma.wallet.create({
+        data: { userId },
+        include: { transactions: { orderBy: { createdAt: "desc" }, take: 10 } },
+      });
+    }
+
+    return wallet;
+  } catch (error) {
+    console.error("Failed to get/create wallet:", error);
+    throw error;
   }
 }
 
-function writeWalletRequests(requests: any[]) {
-  fs.mkdirSync(path.dirname(REQUESTS_FILE), { recursive: true });
-  fs.writeFileSync(REQUESTS_FILE, JSON.stringify(requests, null, 2));
+async function createTransaction(
+  walletId: string,
+  transactionData: {
+    type: string;
+    amount: number;
+    currency: string;
+    platform: string;
+    description?: string;
+    transactionId?: string;
+    metadata?: Record<string, unknown>;
+  }
+) {
+  try {
+    const transaction = await prisma.transaction.create({
+      data: {
+        walletId,
+        ...transactionData,
+      },
+    });
+
+    // Update wallet balance
+    const balanceChange =
+      transactionData.type === "deposit"
+        ? transactionData.amount
+        : -transactionData.amount;
+    await prisma.wallet.update({
+      where: { id: walletId },
+      data: { balance: { increment: balanceChange } },
+    });
+
+    return transaction;
+  } catch (error) {
+    console.error("Failed to create transaction:", error);
+    throw error;
+  }
 }
 
-async function processMpesa(amount: number, type: string) {
-  // Basic Mpesa API integration
+async function processMpesa(
+  amount: number,
+  type: string,
+  phoneNumber?: string
+) {
+  // Real Mpesa API integration
   try {
     const mpesaConfig = {
       consumerKey: process.env.MPESA_CONSUMER_KEY,
@@ -92,40 +150,108 @@ async function processMpesa(amount: number, type: string) {
     };
 
     if (!mpesaConfig.consumerKey || !mpesaConfig.consumerSecret) {
-      console.warn("Mpesa credentials not configured, using simulation");
+      throw new Error("Mpesa credentials not configured");
+    }
+
+    // Get access token
+    const authResponse = await fetch(
+      `${MPESA_API_URL}/oauth/v1/generate?grant_type=client_credentials`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Basic ${Buffer.from(
+            `${mpesaConfig.consumerKey}:${mpesaConfig.consumerSecret}`
+          ).toString("base64")}`,
+        },
+      }
+    );
+
+    if (!authResponse.ok) {
+      throw new Error(`Mpesa auth failed: ${authResponse.statusText}`);
+    }
+
+    const authData = await authResponse.json();
+    const accessToken = authData.access_token;
+
+    if (type === "deposit") {
+      // STK Push for deposits
+      const timestamp = new Date()
+        .toISOString()
+        .replace(/[^0-9]/g, "")
+        .slice(0, -3);
+      const password = Buffer.from(
+        `${mpesaConfig.businessShortCode}${mpesaConfig.passkey}${timestamp}`
+      ).toString("base64");
+
+      const stkPushData = {
+        BusinessShortCode: mpesaConfig.businessShortCode,
+        Password: password,
+        Timestamp: timestamp,
+        TransactionType: "CustomerPayBillOnline",
+        Amount: amount,
+        PartyA: phoneNumber || "254712345678", // Default test number
+        PartyB: mpesaConfig.businessShortCode,
+        PhoneNumber: phoneNumber || "254712345678",
+        CallBackURL: `${process.env.NEXT_PUBLIC_APP_URL}/api/wallet/callback/mpesa`,
+        AccountReference: "QMOI Wallet Deposit",
+        TransactionDesc: "Wallet Deposit",
+      };
+
+      const stkResponse = await fetch(
+        `${MPESA_API_URL}/mpesa/stkpush/v1/processrequest`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(stkPushData),
+        }
+      );
+
+      if (!stkResponse.ok) {
+        throw new Error(`Mpesa STK push failed: ${stkResponse.statusText}`);
+      }
+
+      const stkData = await stkResponse.json();
+
+      logAction("mpesa_stk_push", {
+        type,
+        amount,
+        phoneNumber,
+        response: stkData,
+      });
+
       return {
         status: "success",
         platform: "Mpesa",
         amount,
-        transactionId: `MPESA_${Date.now()}`,
+        transactionId: stkData.CheckoutRequestID,
+        message: "STK push sent to phone",
+      };
+    } else {
+      // For withdrawals, we'd implement B2C API
+      // For now, mark as pending for manual processing
+      const transactionId = `MPESA_WITHDRAW_${Date.now()}_${Math.random()
+        .toString(36)
+        .substr(2, 9)}`;
+
+      logAction("mpesa_withdrawal", {
+        type,
+        amount,
+        phoneNumber,
+        transactionId,
+        status: "pending_manual_processing",
+      });
+
+      return {
+        status: "pending",
+        platform: "Mpesa",
+        amount,
+        transactionId,
+        message: "Withdrawal queued for processing",
       };
     }
-
-    // In a real implementation, you would:
-    // 1. Get access token from Mpesa
-    // 2. Initiate STK push for payment
-    // 3. Handle callbacks
-    // 4. Verify transaction status
-
-    const transactionId = `MPESA_${Date.now()}_${Math.random()
-      .toString(36)
-      .substr(2, 9)}`;
-
-    logAction("mpesa_transaction", {
-      type,
-      amount,
-      transactionId,
-      status: "initiated",
-    });
-
-    return {
-      status: "success",
-      platform: "Mpesa",
-      amount,
-      transactionId,
-      message:
-        type === "deposit" ? "STK push sent to phone" : "Withdrawal initiated",
-    };
   } catch (error) {
     console.error("Mpesa processing error:", error);
     const errorMsg = error instanceof Error ? error.message : String(error);
@@ -133,61 +259,115 @@ async function processMpesa(amount: number, type: string) {
   }
 }
 
-async function processBinance(amount: number, type: string) {
-  // Basic Binance API integration
+async function processBinance(
+  amount: number,
+  type: string,
+  currency: string = "USDT"
+) {
+  // Real Binance API integration
   try {
     const binanceConfig = {
       apiKey: process.env.BINANCE_API_KEY,
       secretKey: process.env.BINANCE_SECRET_KEY,
-      testnet: process.env.NODE_ENV !== "production",
+      baseUrl:
+        process.env.NODE_ENV === "production"
+          ? "https://api.binance.com"
+          : "https://testnet.binance.vision",
     };
 
     if (!binanceConfig.apiKey || !binanceConfig.secretKey) {
-      console.warn("Binance credentials not configured, using simulation");
+      throw new Error("Binance credentials not configured");
+    }
+
+    const timestamp = Date.now();
+    const queryString = `timestamp=${timestamp}`;
+
+    // Create signature
+    const signature = createHmac("sha256", binanceConfig.secretKey)
+      .update(queryString)
+      .digest("hex");
+
+    const headers = {
+      "X-MBX-APIKEY": binanceConfig.apiKey,
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
+
+    if (type === "deposit") {
+      // Get deposit address
+      const depositResponse = await fetch(
+        `${binanceConfig.baseUrl}/sapi/v1/capital/deposit/address?coin=${currency}&${queryString}&signature=${signature}`,
+        {
+          method: "GET",
+          headers,
+        }
+      );
+
+      if (!depositResponse.ok) {
+        throw new Error(
+          `Binance deposit address failed: ${depositResponse.statusText}`
+        );
+      }
+
+      const depositData = await depositResponse.json();
+
+      logAction("binance_deposit", {
+        type,
+        amount,
+        currency,
+        address: depositData.address,
+      });
+
       return {
         status: "success",
         platform: "Binance",
         amount,
-        transactionId: `BINANCE_${Date.now()}`,
+        currency,
+        transactionId: `BINANCE_DEPOSIT_${Date.now()}`,
+        depositAddress: depositData.address,
+        message: `Deposit ${amount} ${currency} to ${depositData.address}`,
+      };
+    } else {
+      // For withdrawals, we need wallet balance check and withdrawal request
+      // This is simplified - in production you'd check balances first
+      const withdrawResponse = await fetch(
+        `${binanceConfig.baseUrl}/sapi/v1/capital/withdraw/apply?coin=${currency}&address=${process.env.BINANCE_WITHDRAWAL_ADDRESS}&amount=${amount}&${queryString}&signature=${signature}`,
+        {
+          method: "POST",
+          headers,
+        }
+      );
+
+      if (!withdrawResponse.ok) {
+        const errorData = await withdrawResponse.json();
+        throw new Error(
+          `Binance withdrawal failed: ${
+            errorData.msg || withdrawResponse.statusText
+          }`
+        );
+      }
+
+      const withdrawData = await withdrawResponse.json();
+
+      logAction("binance_withdrawal", {
+        type,
+        amount,
+        currency,
+        response: withdrawData,
+      });
+
+      return {
+        status: "success",
+        platform: "Binance",
+        amount,
+        currency,
+        transactionId: withdrawData.id,
+        message: "Withdrawal order created successfully",
       };
     }
-
-    // In a real implementation, you would:
-    // 1. Authenticate with Binance API
-    // 2. Create deposit/withdrawal order
-    // 3. Monitor transaction status
-    // 4. Handle webhooks for status updates
-
-    const transactionId = `BINANCE_${Date.now()}_${Math.random()
-      .toString(36)
-      .substr(2, 9)}`;
-
-    logAction("binance_transaction", {
-      type,
-      amount,
-      transactionId,
-      status: "initiated",
-    });
-
-    return {
-      status: "success",
-      platform: "Binance",
-      amount,
-      transactionId,
-      message:
-        type === "deposit"
-          ? "Deposit address generated"
-          : "Withdrawal order created",
-    };
   } catch (error) {
     console.error("Binance processing error:", error);
     const errorMsg = error instanceof Error ? error.message : String(error);
-    return {
-      status: "error",
-      platform: "Binance",
-      amount,
-      error: errorMsg,
-    };
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -306,16 +486,19 @@ async function processBitget(amount: number, type: string) {
   }
 }
 
-const platformHandlers: Record<string, any> = {
-  Mpesa: processMpesa,
-  Binance: processBinance,
-  Pesapal: processPesapal,
-  Bitget: processBitget,
-  Cashon: async (amount: number, type: string) => ({
+const platformHandlers: Record<
+  string,
+  (...args: unknown[]) => Promise<unknown>
+> = {
+  Mpesa: processMpesa as (...args: unknown[]) => Promise<unknown>,
+  Binance: processBinance as (...args: unknown[]) => Promise<unknown>,
+  Pesapal: processPesapal as (...args: unknown[]) => Promise<unknown>,
+  Bitget: processBitget as (...args: unknown[]) => Promise<unknown>,
+  Cashon: (async (_amount: number, _type?: string) => ({
     status: "success",
     platform: "Cashon",
-    amount,
-  }),
+    amount: _amount,
+  })) as (...args: unknown[]) => Promise<unknown>,
 };
 
 // Helper: Check if user is master (simulate for now)
@@ -328,12 +511,12 @@ function isMaster(req: NextApiRequest): boolean {
 const handleApiRequest = async (
   req: NextApiRequest,
   res: NextApiResponse,
-  handler: () => Promise<any>,
+  handler: () => Promise<unknown>
 ) => {
   try {
     const result = await handler();
     return res.json(result);
-  } catch (error: any) {
+  } catch (error: unknown) {
     const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
       error: errorMsg,
@@ -346,7 +529,7 @@ const handleApiRequest = async (
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const adminToken = req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
@@ -358,10 +541,17 @@ export default async function handler(
     return handleApiRequest(req, res, async () => {
       if (req.query.pending_wallets) {
         const requests = readWalletRequests();
-        return requests.filter((r: any) => r.status === "pending");
+        return requests.filter((r: WalletRequest) => r.status === "pending");
       }
       if (req.query.balance) {
-        return wallet;
+        // Get user's wallet balance - for now using a default user ID
+        const userId = (req.query.userId as string) || "default-user";
+        const wallet = await getOrCreateWallet(userId);
+        return {
+          balance: wallet.balance,
+          currency: wallet.currency,
+          transactions: wallet.transactions.slice(0, 10),
+        };
       }
       if (req.query.logs && isMaster(req)) {
         const logs = fs.existsSync(LOGS_FILE)
@@ -369,85 +559,135 @@ export default async function handler(
           : [];
         return logs;
       }
+      if (req.query.transactions) {
+        const userId = (req.query.userId as string) || "default-user";
+        const wallet = await getOrCreateWallet(userId);
+        const transactions = await prisma.transaction.findMany({
+          where: { walletId: wallet.id },
+          orderBy: { createdAt: "desc" },
+          take: 50,
+        });
+        return { transactions };
+      }
       throw new Error("Unknown GET action");
     });
   }
 
   if (req.method === "POST") {
     return handleApiRequest(req, res, async () => {
-      const { amount, platform, action, email, username } = req.body;
-      const handler = platformHandlers[platform] || platformHandlers["Cashon"];
+      const { amount, platform, action, email, username, userId, phoneNumber } =
+        req.body;
+      const userIdToUse = userId || "default-user";
+
+      // Get or create wallet for user
+      const wallet = await getOrCreateWallet(userIdToUse);
 
       if (req.query.deposit) {
         if (!isMaster(req)) {
-          logAction("unauthorized_deposit", { amount, platform });
+          logAction("unauthorized_deposit", {
+            amount,
+            platform,
+            userId: userIdToUse,
+          });
           throw new Error("Only master can deposit funds.");
         }
-        const result = await handler(Number(amount), "deposit");
-        wallet.balance += Number(amount);
-        const transaction = {
-          date: new Date().toISOString().slice(0, 10),
+
+        const result = (await platformHandlers[platform](
+          Number(amount),
+          "deposit",
+          phoneNumber
+        )) as PlatformResult;
+
+        // Create transaction in database
+        const transaction = await createTransaction(wallet.id, {
           type: "deposit",
-          amount,
+          amount: Number(amount),
           currency: wallet.currency,
           platform,
+          description: `Deposit via ${platform}`,
+          transactionId: result.transactionId,
+          metadata: result,
+        });
+
+        logAction("deposit", { ...transaction, result });
+
+        if (whatsappService) {
+          await whatsappService.sendMessageToMaster(
+            `💰 Deposit completed: ${amount} ${wallet.currency} via ${platform} for user ${userIdToUse}`
+          );
+        }
+
+        // Get updated wallet
+        const updatedWallet = await getOrCreateWallet(userIdToUse);
+        return {
           status: result.status,
+          balance: updatedWallet.balance,
+          transaction,
         };
-        wallet.transactions.push(transaction);
-        logAction("deposit", transaction);
-        await whatsappService.sendMessageToMaster(
-          `💰 Deposit completed: ${amount} ${wallet.currency} via ${platform}`,
-        );
-        return { status: result.status, balance: wallet.balance };
       }
 
       if (req.query.withdraw) {
         if (!isMaster(req)) {
-          logAction("unauthorized_withdrawal", { amount, platform });
+          logAction("unauthorized_withdrawal", {
+            amount,
+            platform,
+            userId: userIdToUse,
+          });
           throw new Error("Only master can withdraw funds.");
         }
-        const result = await handler(Number(amount), "withdraw");
-        wallet.balance -= Number(amount);
-        const transaction = {
-          date: new Date().toISOString().slice(0, 10),
+
+        // Check balance
+        if (wallet.balance < Number(amount)) {
+          throw new Error("Insufficient balance");
+        }
+
+        const result = (await platformHandlers[platform](
+          Number(amount),
+          "withdraw"
+        )) as PlatformResult;
+
+        // Create transaction in database
+        const transaction = await createTransaction(wallet.id, {
           type: "withdraw",
-          amount,
+          amount: Number(amount),
           currency: wallet.currency,
           platform,
+          description: `Withdrawal via ${platform}`,
+          transactionId: result.transactionId,
+          metadata: result,
+        });
+
+        logAction("withdraw", { ...transaction, result });
+
+        if (whatsappService) {
+          await whatsappService.sendMessageToMaster(
+            `💸 Withdrawal completed: ${amount} ${wallet.currency} via ${platform} for user ${userIdToUse}`
+          );
+        }
+
+        // Get updated wallet
+        const updatedWallet = await getOrCreateWallet(userIdToUse);
+        return {
           status: result.status,
+          balance: updatedWallet.balance,
+          transaction,
         };
-        wallet.transactions.push(transaction);
-        logAction("withdrawal", transaction);
-        await whatsappService.sendMessageToMaster(
-          `💸 Withdrawal completed: ${amount} ${wallet.currency} via ${platform}`,
-        );
-        return { status: result.status, balance: wallet.balance };
       }
 
-      if (action === "request_wallet") {
-        if (!email || !username) throw new Error("Missing email or username");
+      if (req.query.request) {
+        // Handle wallet creation requests
         const requests = readWalletRequests();
-        if (
-          requests.some((r: any) => r.email === email && r.status === "pending")
-        ) {
-          throw new Error("A wallet request is already pending for this email");
-        }
-        const request = {
+        const newRequest = {
+          id: Date.now().toString(),
           email,
           username,
-          requestedAt: new Date().toISOString(),
           status: "pending",
+          createdAt: new Date().toISOString(),
         };
-        requests.push(request);
+        requests.push(newRequest);
         writeWalletRequests(requests);
-        logAction("wallet_request", request);
-        await whatsappService.sendMessageToMaster(
-          `👤 New wallet request from ${username} (${email})`,
-        );
-        return {
-          status: "pending",
-          message: "Wallet request sent to master for approval.",
-        };
+        logAction("wallet_request", newRequest);
+        return { status: "requested", request: newRequest };
       }
 
       if (action === "approve_wallet") {
@@ -458,7 +698,8 @@ export default async function handler(
         const { email: approveEmail } = req.body;
         const requests = readWalletRequests();
         const idx = requests.findIndex(
-          (r: any) => r.email === approveEmail && r.status === "pending",
+          (r: WalletRequest) =>
+            r.email === approveEmail && r.status === "pending"
         );
         if (idx === -1) throw new Error("No pending request for this email.");
 
@@ -470,10 +711,10 @@ export default async function handler(
         // Notify user via WhatsApp
         await whatsappService.sendMessage(
           requests[idx].email,
-          "✅ Your wallet request has been approved!",
+          "✅ Your wallet request has been approved!"
         );
         await whatsappService.sendMessageToMaster(
-          `✅ Wallet approved for ${requests[idx].username} (${approveEmail})`,
+          `✅ Wallet approved for ${requests[idx].username} (${approveEmail})`
         );
 
         return {

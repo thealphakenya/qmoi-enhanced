@@ -1,5 +1,4 @@
 // NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
-import process from "process";
 // @ts-expect-error: whatsapp-web.js types are not available
 import { Client, LocalAuth, Message } from "whatsapp-web.js";
 // @ts-expect-error: qrcode-terminal types are not available
@@ -144,7 +143,7 @@ export class WhatsAppService {
       this.isConnected = false;
       await this.sendErrorNotification(
         "WhatsApp authentication failed",
-        message,
+        message
       );
     });
 
@@ -163,7 +162,7 @@ export class WhatsAppService {
     // Message acknowledged
     this.client.on("message_ack", (message: Message, ack: number) => {
       console.log(
-        `📨 Message ${message.id._serialized} acknowledged with status: ${ack}`,
+        `📨 Message ${message.id._serialized} acknowledged with status: ${ack}`
       );
     });
   }
@@ -245,7 +244,7 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
         error instanceof Error ? error.message : "Unknown error";
       await this.sendErrorNotification(
         "Failed to send QR notifications",
-        errorMessage,
+        errorMessage
       );
     }
   }
@@ -254,8 +253,12 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
     const verificationMessage = `🔐 QMOI System Verification
 
 ✅ WhatsApp QR Code scanned successfully
-✅ Master notification: ${this.qrCodeStatus.notifications.master ? "SENT" : "FAILED"}
-✅ Leah notification: ${this.qrCodeStatus.notifications.leah ? "SENT" : "FAILED"}
+✅ Master notification: ${
+      this.qrCodeStatus.notifications.master ? "SENT" : "FAILED"
+    }
+✅ Leah notification: ${
+      this.qrCodeStatus.notifications.leah ? "SENT" : "FAILED"
+    }
 ✅ System status: OPERATIONAL
 
 🛡️ Security checks passed
@@ -299,7 +302,7 @@ Time: ${new Date().toLocaleString()}`;
   }
 
   private async processAutoResponders(
-    message: Message,
+    message: Message
   ): Promise<string | null> {
     const body = message.body.toLowerCase();
 
@@ -362,7 +365,7 @@ Time: ${new Date().toLocaleString()}`;
           await this.processMasterCommand(message, args);
         } else {
           await message.reply(
-            "Master command requires arguments. Use /help for more info.",
+            "Master command requires arguments. Use /help for more info."
           );
         }
         break;
@@ -406,7 +409,7 @@ Time: ${new Date().toLocaleString()}`;
           await this.processBusinessFeatureCommand(message, args);
         } else {
           await message.reply(
-            "Business command requires arguments. Use /help for more info.",
+            "Business command requires arguments. Use /help for more info."
           );
         }
         break;
@@ -414,21 +417,21 @@ Time: ${new Date().toLocaleString()}`;
 
       default:
         await message.reply(
-          `Unknown command: ${command}. Use /help for available commands.`,
+          `Unknown command: ${command}. Use /help for available commands.`
         );
     }
   }
 
   private async processMasterCommand(
     message: Message,
-    args: string[],
+    args: string[]
   ): Promise<void> {
     const subCommand = args[0].toLowerCase();
 
     switch (subCommand) {
       case "override": {
         await message.reply(
-          "🛑 Master override activated. AI decisions suspended.",
+          "🛑 Master override activated. AI decisions suspended."
         );
         break;
       }
@@ -649,7 +652,7 @@ Master Commands:
 
   public async broadcastMessage(
     message: string,
-    contacts: string[],
+    contacts: string[]
   ): Promise<void> {
     for (const contact of contacts) {
       try {
@@ -663,7 +666,7 @@ Master Commands:
 
   private async sendErrorNotification(
     title: string,
-    message: string,
+    message: string
   ): Promise<void> {
     const errorMessage = `⚠️ ${title}
 
@@ -725,7 +728,7 @@ Master Commands:
 
   public async requestApproval(
     userId: string,
-    request: string,
+    request: string
   ): Promise<boolean> {
     // Always auto-approve master/sister
     if (userId === this.config.masterPhone || userId === this.config.leahPhone)
@@ -737,15 +740,12 @@ Master Commands:
     return new Promise((resolve) => {
       this.pendingApprovals.set(approvalId, { message: null, resolve });
       // Timeout after 10 minutes
-      setTimeout(
-        () => {
-          if (this.pendingApprovals.has(approvalId)) {
-            this.pendingApprovals.delete(approvalId);
-            resolve(false);
-          }
-        },
-        10 * 60 * 1000,
-      );
+      setTimeout(() => {
+        if (this.pendingApprovals.has(approvalId)) {
+          this.pendingApprovals.delete(approvalId);
+          resolve(false);
+        }
+      }, 10 * 60 * 1000);
     });
   }
 
@@ -758,7 +758,7 @@ Master Commands:
   private async handleWalletRequest(
     userId: string,
     email: string,
-    username: string,
+    username: string
   ): Promise<void> {
     // Notify master for approval
     const approvalId = `${userId}-${Date.now()}`;
@@ -773,12 +773,12 @@ Master Commands:
         if (approved) {
           this.sendMessage(
             userId,
-            "✅ Your wallet request has been approved by the master.",
+            "✅ Your wallet request has been approved by the master."
           );
         } else {
           this.sendMessage(
             userId,
-            "❌ Your wallet request was denied by the master.",
+            "❌ Your wallet request was denied by the master."
           );
         }
       },
@@ -793,7 +793,7 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
   private async handleFundTransferRequest(
     userId: string,
     amount: number,
-    platform: string,
+    platform: string
   ): Promise<void> {
     const approvalId = `${userId}-transfer-${Date.now()}`;
     this.pendingApprovals.set(approvalId, {
@@ -807,12 +807,12 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
         if (approved) {
           this.sendMessage(
             userId,
-            `✅ Your fund transfer of ${amount} via ${platform} has been approved by the master.`,
+            `✅ Your fund transfer of ${amount} via ${platform} has been approved by the master.`
           );
         } else {
           this.sendMessage(
             userId,
-            `❌ Your fund transfer request was denied by the master.`,
+            `❌ Your fund transfer request was denied by the master.`
           );
         }
       },
@@ -826,13 +826,13 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
   // Add business features and master controls
   private async processBusinessFeatureCommand(
     message: Message,
-    args: string[],
+    args: string[]
   ): Promise<void> {
     const subCommand = args[0]?.toLowerCase();
     switch (subCommand) {
       case "ads":
         await message.reply(
-          "📢 WhatsApp Business Ads feature activated. Campaigns will be managed by AI.",
+          "📢 WhatsApp Business Ads feature activated. Campaigns will be managed by AI."
         );
         // TODO: Integrate with ad campaign manager
         break;
@@ -854,7 +854,7 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
     // Notify master of all business actions
     await this.sendMessage(
       this.config.masterPhone,
-      `Business feature command executed: ${subCommand}`,
+      `Business feature command executed: ${subCommand}`
     );
   }
 }
