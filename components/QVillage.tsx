@@ -106,6 +106,9 @@ export const QVillage: React.FC = () => {
     "papers" | "kb" | "discussions" | "status"
   >("papers");
   const [searchQuery, setSearchQuery] = useState("");
+  const [syncStatus, setSyncStatus] = useState<
+    "idle" | "syncing" | "error" | "success"
+  >("idle");
 
   // Enhanced hooks integration
   const qvillage = useQVillage();
@@ -159,31 +162,9 @@ export const QVillage: React.FC = () => {
       });
     }
   };
-        currentTask:
-          i < 25
-            ? "Analyzing query..."
-            : i < 50
-            ? "Searching papers..."
-            : i < 75
-            ? "Searching knowledge base..."
-            : "Ranking and optimizing results...",
-        eta: `${Math.max(0, ((100 - i) / 25) * 0.2)}s`,
-      }));
-    }
-
-    setThinkingStatus({
-      isThinking: false,
-      currentTask: "",
-      progress: 100,
-      eta: "",
-      tasks: [],
-    });
-
-    // Enhanced search results would be filtered here
-  };
 
   const syncWithHuggingFace = async () => {
-    setStatus((prev) => ({ ...prev, syncStatus: "syncing" }));
+    setSyncStatus("syncing");
 
     setThinkingStatus({
       isThinking: true,
@@ -218,11 +199,7 @@ export const QVillage: React.FC = () => {
       }));
     }
 
-    setStatus((prev) => ({
-      ...prev,
-      syncStatus: "success",
-      lastSync: new Date().toISOString(),
-    }));
+    setSyncStatus("success");
 
     setThinkingStatus({
       isThinking: false,
@@ -407,7 +384,9 @@ export const QVillage: React.FC = () => {
               <BookOpen className="h-5 w-5 text-blue-600" />
               <span className="font-semibold">Papers Today</span>
             </div>
-            <div className="text-2xl font-bold">{qvillage.metrics.papersToday}</div>
+            <div className="text-2xl font-bold">
+              {qvillage.metrics.papersToday}
+            </div>
           </CardContent>
         </Card>
 
@@ -418,7 +397,7 @@ export const QVillage: React.FC = () => {
               <span className="font-semibold">KB Entries</span>
             </div>
             <div className="text-2xl font-bold">
-              {qvillage.metrics.kbEntries.toLocaleString()}
+              {qvillage.metrics.kbEntries?.toLocaleString() || "0"}
             </div>
           </CardContent>
         </Card>
@@ -429,7 +408,9 @@ export const QVillage: React.FC = () => {
               <Users className="h-5 w-5 text-purple-600" />
               <span className="font-semibold">Active Users</span>
             </div>
-            <div className="text-2xl font-bold">{qvillage.metrics.activeUsers}</div>
+            <div className="text-2xl font-bold">
+              {qvillage.metrics.activeUsers || 0}
+            </div>
           </CardContent>
         </Card>
 
@@ -440,7 +421,7 @@ export const QVillage: React.FC = () => {
               <span className="font-semibold">API Calls</span>
             </div>
             <div className="text-2xl font-bold">
-              {qvillage.metrics.apiCalls.toLocaleString()}
+              {qvillage.metrics.apiCalls?.toLocaleString() || "0"}
             </div>
           </CardContent>
         </Card>
@@ -459,11 +440,14 @@ export const QVillage: React.FC = () => {
               <div className="flex items-center justify-between mb-1">
                 <span className="text-sm">Response Time</span>
                 <span className="text-sm font-semibold">
-                  {qvillage.metrics.responseTime}s
+                  {qvillage.metrics.responseTime || 0}s
                 </span>
               </div>
               <Progress
-                value={Math.max(0, 100 - qvillage.metrics.responseTime * 1000)}
+                value={Math.max(
+                  0,
+                  100 - (qvillage.metrics.responseTime || 0) * 1000
+                )}
                 className="h-2"
               />
             </div>
@@ -472,18 +456,26 @@ export const QVillage: React.FC = () => {
               <div className="flex items-center justify-between mb-1">
                 <span className="text-sm">Accuracy</span>
                 <span className="text-sm font-semibold">
-                  {(qvillage.metrics.accuracy * 100).toFixed(1)}%
+                  {((qvillage.metrics.accuracy || 0) * 100).toFixed(1)}%
                 </span>
               </div>
-              <Progress value={qvillage.metrics.accuracy * 100} className="h-2" />
+              <Progress
+                value={(qvillage.metrics.accuracy || 0) * 100}
+                className="h-2"
+              />
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-1">
                 <span className="text-sm">Superiority Score</span>
-                <span className="text-sm font-semibold">{(qvillage.qmoiSuperiorityScore * 100).toFixed(1)}%</span>
+                <span className="text-sm font-semibold">
+                  {(qvillage.qmoiSuperiorityScore * 100).toFixed(1)}%
+                </span>
               </div>
-              <Progress value={qvillage.qmoiSuperiorityScore * 100} className="h-2" />
+              <Progress
+                value={qvillage.qmoiSuperiorityScore * 100}
+                className="h-2"
+              />
             </div>
           </div>
         </CardContent>
@@ -592,18 +584,24 @@ export const QVillage: React.FC = () => {
                     {qvillage.metrics.memoryUsage}%
                   </span>
                 </div>
-                <Progress value={qvillage.metrics.memoryUsage} className="h-2" />
+                <Progress
+                  value={qvillage.metrics.memoryUsage}
+                  className="h-2"
+                />
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-sm">Network Latency</span>
                   <span className="text-sm font-semibold">
-                    {qvillage.metrics.networkLatency}ms
+                    {qvillage.metrics.networkLatency || 0}ms
                   </span>
                 </div>
                 <Progress
-                  value={Math.max(0, 100 - qvillage.metrics.networkLatency)}
+                  value={Math.max(
+                    0,
+                    100 - (qvillage.metrics.networkLatency || 0)
+                  )}
                   className="h-2"
                 />
               </div>
@@ -611,7 +609,9 @@ export const QVillage: React.FC = () => {
               <div className="flex items-center justify-between">
                 <span className="text-sm">Last Sync</span>
                 <span className="text-sm text-gray-600">
-                  {new Date(qvillage.lastSync || Date.now()).toLocaleTimeString()}
+                  {new Date(
+                    qvillage.lastSync || Date.now()
+                  ).toLocaleTimeString()}
                 </span>
               </div>
             </div>
@@ -673,7 +673,10 @@ export const QVillage: React.FC = () => {
                 )}
                 Search
               </Button>
-              <Button onClick={() => qvillage.sync('huggingface')} variant="outline">
+              <Button
+                onClick={() => qvillage.sync("huggingface")}
+                variant="outline"
+              >
                 <RefreshCw
                   className={`h-4 w-4 mr-2 ${
                     qvillage.status === "syncing" ? "animate-spin" : ""
@@ -698,16 +701,15 @@ export const QVillage: React.FC = () => {
                 <div className="text-sm text-blue-700 mb-2">
                   {thinking.currentTask}
                 </div>
-                <Progress
-                  value={thinking.progress}
-                  className="h-2 mb-2"
-                />
+                <Progress value={thinking.progress} className="h-2 mb-2" />
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
                     {thinking.parallelTasks.map((task, index) => (
                       <Badge
                         key={task.id}
-                        variant={task.status === 'complete' ? "default" : "secondary"}
+                        variant={
+                          task.status === "complete" ? "default" : "secondary"
+                        }
                         className="text-xs"
                       >
                         {task.name}
@@ -728,21 +730,36 @@ export const QVillage: React.FC = () => {
               <Button
                 variant={accessibility.highContrast ? "default" : "outline"}
                 size="sm"
-                onClick={() => accessibility.updateSetting('highContrast', !accessibility.highContrast)}
+                onClick={() =>
+                  accessibility.updateSetting(
+                    "highContrast",
+                    !accessibility.highContrast
+                  )
+                }
               >
                 High Contrast
               </Button>
               <Button
                 variant={accessibility.largeText ? "default" : "outline"}
                 size="sm"
-                onClick={() => accessibility.updateSetting('largeText', !accessibility.largeText)}
+                onClick={() =>
+                  accessibility.updateSetting(
+                    "largeText",
+                    !accessibility.largeText
+                  )
+                }
               >
                 Large Text
               </Button>
               <Button
                 variant={accessibility.voiceCommands ? "default" : "outline"}
                 size="sm"
-                onClick={() => accessibility.updateSetting('voiceCommands', !accessibility.voiceCommands)}
+                onClick={() =>
+                  accessibility.updateSetting(
+                    "voiceCommands",
+                    !accessibility.voiceCommands
+                  )
+                }
               >
                 <Mic className="h-3 w-3 mr-1" />
                 Voice

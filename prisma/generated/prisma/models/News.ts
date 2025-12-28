@@ -32,8 +32,10 @@ export type NewsMinAggregateOutputType = {
   category: string | null
   status: string | null
   authorId: string | null
+  analytics: string | null
   scheduledAt: Date | null
   publishedAt: Date | null
+  tags: string | null
   source: string | null
   externalId: string | null
   createdAt: Date | null
@@ -48,8 +50,10 @@ export type NewsMaxAggregateOutputType = {
   category: string | null
   status: string | null
   authorId: string | null
+  analytics: string | null
   scheduledAt: Date | null
   publishedAt: Date | null
+  tags: string | null
   source: string | null
   externalId: string | null
   createdAt: Date | null
@@ -85,8 +89,10 @@ export type NewsMinAggregateInputType = {
   category?: true
   status?: true
   authorId?: true
+  analytics?: true
   scheduledAt?: true
   publishedAt?: true
+  tags?: true
   source?: true
   externalId?: true
   createdAt?: true
@@ -101,8 +107,10 @@ export type NewsMaxAggregateInputType = {
   category?: true
   status?: true
   authorId?: true
+  analytics?: true
   scheduledAt?: true
   publishedAt?: true
+  tags?: true
   source?: true
   externalId?: true
   createdAt?: true
@@ -209,11 +217,11 @@ export type NewsGroupByOutputType = {
   category: string
   status: string
   authorId: string | null
-  media: runtime.JsonValue[]
-  analytics: runtime.JsonValue
+  media: runtime.JsonValue | null
+  analytics: string
   scheduledAt: Date | null
   publishedAt: Date | null
-  tags: string[]
+  tags: string
   source: string | null
   externalId: string | null
   createdAt: Date
@@ -249,11 +257,11 @@ export type NewsWhereInput = {
   category?: Prisma.StringFilter<"News"> | string
   status?: Prisma.StringFilter<"News"> | string
   authorId?: Prisma.StringNullableFilter<"News"> | string | null
-  media?: Prisma.JsonNullableListFilter<"News">
-  analytics?: Prisma.JsonFilter<"News">
+  media?: Prisma.JsonNullableFilter<"News">
+  analytics?: Prisma.StringFilter<"News"> | string
   scheduledAt?: Prisma.DateTimeNullableFilter<"News"> | Date | string | null
   publishedAt?: Prisma.DateTimeNullableFilter<"News"> | Date | string | null
-  tags?: Prisma.StringNullableListFilter<"News">
+  tags?: Prisma.StringFilter<"News"> | string
   source?: Prisma.StringNullableFilter<"News"> | string | null
   externalId?: Prisma.StringNullableFilter<"News"> | string | null
   createdAt?: Prisma.DateTimeFilter<"News"> | Date | string
@@ -269,7 +277,7 @@ export type NewsOrderByWithRelationInput = {
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
   authorId?: Prisma.SortOrderInput | Prisma.SortOrder
-  media?: Prisma.SortOrder
+  media?: Prisma.SortOrderInput | Prisma.SortOrder
   analytics?: Prisma.SortOrder
   scheduledAt?: Prisma.SortOrderInput | Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -292,11 +300,11 @@ export type NewsWhereUniqueInput = Prisma.AtLeast<{
   category?: Prisma.StringFilter<"News"> | string
   status?: Prisma.StringFilter<"News"> | string
   authorId?: Prisma.StringNullableFilter<"News"> | string | null
-  media?: Prisma.JsonNullableListFilter<"News">
-  analytics?: Prisma.JsonFilter<"News">
+  media?: Prisma.JsonNullableFilter<"News">
+  analytics?: Prisma.StringFilter<"News"> | string
   scheduledAt?: Prisma.DateTimeNullableFilter<"News"> | Date | string | null
   publishedAt?: Prisma.DateTimeNullableFilter<"News"> | Date | string | null
-  tags?: Prisma.StringNullableListFilter<"News">
+  tags?: Prisma.StringFilter<"News"> | string
   source?: Prisma.StringNullableFilter<"News"> | string | null
   externalId?: Prisma.StringNullableFilter<"News"> | string | null
   createdAt?: Prisma.DateTimeFilter<"News"> | Date | string
@@ -312,7 +320,7 @@ export type NewsOrderByWithAggregationInput = {
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
   authorId?: Prisma.SortOrderInput | Prisma.SortOrder
-  media?: Prisma.SortOrder
+  media?: Prisma.SortOrderInput | Prisma.SortOrder
   analytics?: Prisma.SortOrder
   scheduledAt?: Prisma.SortOrderInput | Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -337,11 +345,11 @@ export type NewsScalarWhereWithAggregatesInput = {
   category?: Prisma.StringWithAggregatesFilter<"News"> | string
   status?: Prisma.StringWithAggregatesFilter<"News"> | string
   authorId?: Prisma.StringNullableWithAggregatesFilter<"News"> | string | null
-  media?: Prisma.JsonNullableListFilter<"News">
-  analytics?: Prisma.JsonWithAggregatesFilter<"News">
+  media?: Prisma.JsonNullableWithAggregatesFilter<"News">
+  analytics?: Prisma.StringWithAggregatesFilter<"News"> | string
   scheduledAt?: Prisma.DateTimeNullableWithAggregatesFilter<"News"> | Date | string | null
   publishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"News"> | Date | string | null
-  tags?: Prisma.StringNullableListFilter<"News">
+  tags?: Prisma.StringWithAggregatesFilter<"News"> | string
   source?: Prisma.StringNullableWithAggregatesFilter<"News"> | string | null
   externalId?: Prisma.StringNullableWithAggregatesFilter<"News"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"News"> | Date | string
@@ -355,11 +363,11 @@ export type NewsCreateInput = {
   summary?: string | null
   category?: string
   status?: string
-  media?: Prisma.NewsCreatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: string
   scheduledAt?: Date | string | null
   publishedAt?: Date | string | null
-  tags?: Prisma.NewsCreatetagsInput | string[]
+  tags?: string
   source?: string | null
   externalId?: string | null
   createdAt?: Date | string
@@ -375,11 +383,11 @@ export type NewsUncheckedCreateInput = {
   category?: string
   status?: string
   authorId?: string | null
-  media?: Prisma.NewsCreatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: string
   scheduledAt?: Date | string | null
   publishedAt?: Date | string | null
-  tags?: Prisma.NewsCreatetagsInput | string[]
+  tags?: string
   source?: string | null
   externalId?: string | null
   createdAt?: Date | string
@@ -393,11 +401,11 @@ export type NewsUpdateInput = {
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  media?: Prisma.NewsUpdatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tags?: Prisma.NewsUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   externalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -413,11 +421,11 @@ export type NewsUncheckedUpdateInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NewsUpdatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tags?: Prisma.NewsUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   externalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -432,11 +440,11 @@ export type NewsCreateManyInput = {
   category?: string
   status?: string
   authorId?: string | null
-  media?: Prisma.NewsCreatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: string
   scheduledAt?: Date | string | null
   publishedAt?: Date | string | null
-  tags?: Prisma.NewsCreatetagsInput | string[]
+  tags?: string
   source?: string | null
   externalId?: string | null
   createdAt?: Date | string
@@ -450,11 +458,11 @@ export type NewsUpdateManyMutationInput = {
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  media?: Prisma.NewsUpdatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tags?: Prisma.NewsUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   externalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -469,11 +477,11 @@ export type NewsUncheckedUpdateManyInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NewsUpdatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tags?: Prisma.NewsUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   externalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -488,21 +496,6 @@ export type NewsListRelationFilter = {
 
 export type NewsOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type JsonNullableListFilter<$PrismaModel = never> =
-| Prisma.PatchUndefined<
-    Prisma.Either<Required<JsonNullableListFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>,
-    Required<JsonNullableListFilterBase<$PrismaModel>>
-  >
-| Prisma.OptionalFlat<Omit<Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>
-
-export type JsonNullableListFilterBase<$PrismaModel = never> = {
-  equals?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel> | null
-  has?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | null
-  hasEvery?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel>
-  hasSome?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
 }
 
 export type NewsCountOrderByAggregateInput = {
@@ -532,8 +525,10 @@ export type NewsMaxOrderByAggregateInput = {
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  analytics?: Prisma.SortOrder
   scheduledAt?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
   source?: Prisma.SortOrder
   externalId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -548,8 +543,10 @@ export type NewsMinOrderByAggregateInput = {
   category?: Prisma.SortOrder
   status?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  analytics?: Prisma.SortOrder
   scheduledAt?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
   source?: Prisma.SortOrder
   externalId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -598,24 +595,6 @@ export type NewsUncheckedUpdateManyWithoutAuthorNestedInput = {
   deleteMany?: Prisma.NewsScalarWhereInput | Prisma.NewsScalarWhereInput[]
 }
 
-export type NewsCreatemediaInput = {
-  set: runtime.InputJsonValue[]
-}
-
-export type NewsCreatetagsInput = {
-  set: string[]
-}
-
-export type NewsUpdatemediaInput = {
-  set?: runtime.InputJsonValue[]
-  push?: runtime.InputJsonValue | runtime.InputJsonValue[]
-}
-
-export type NewsUpdatetagsInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
 export type NewsCreateWithoutAuthorInput = {
   id?: string
   title: string
@@ -623,11 +602,11 @@ export type NewsCreateWithoutAuthorInput = {
   summary?: string | null
   category?: string
   status?: string
-  media?: Prisma.NewsCreatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: string
   scheduledAt?: Date | string | null
   publishedAt?: Date | string | null
-  tags?: Prisma.NewsCreatetagsInput | string[]
+  tags?: string
   source?: string | null
   externalId?: string | null
   createdAt?: Date | string
@@ -641,11 +620,11 @@ export type NewsUncheckedCreateWithoutAuthorInput = {
   summary?: string | null
   category?: string
   status?: string
-  media?: Prisma.NewsCreatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: string
   scheduledAt?: Date | string | null
   publishedAt?: Date | string | null
-  tags?: Prisma.NewsCreatetagsInput | string[]
+  tags?: string
   source?: string | null
   externalId?: string | null
   createdAt?: Date | string
@@ -659,7 +638,6 @@ export type NewsCreateOrConnectWithoutAuthorInput = {
 
 export type NewsCreateManyAuthorInputEnvelope = {
   data: Prisma.NewsCreateManyAuthorInput | Prisma.NewsCreateManyAuthorInput[]
-  skipDuplicates?: boolean
 }
 
 export type NewsUpsertWithWhereUniqueWithoutAuthorInput = {
@@ -689,11 +667,11 @@ export type NewsScalarWhereInput = {
   category?: Prisma.StringFilter<"News"> | string
   status?: Prisma.StringFilter<"News"> | string
   authorId?: Prisma.StringNullableFilter<"News"> | string | null
-  media?: Prisma.JsonNullableListFilter<"News">
-  analytics?: Prisma.JsonFilter<"News">
+  media?: Prisma.JsonNullableFilter<"News">
+  analytics?: Prisma.StringFilter<"News"> | string
   scheduledAt?: Prisma.DateTimeNullableFilter<"News"> | Date | string | null
   publishedAt?: Prisma.DateTimeNullableFilter<"News"> | Date | string | null
-  tags?: Prisma.StringNullableListFilter<"News">
+  tags?: Prisma.StringFilter<"News"> | string
   source?: Prisma.StringNullableFilter<"News"> | string | null
   externalId?: Prisma.StringNullableFilter<"News"> | string | null
   createdAt?: Prisma.DateTimeFilter<"News"> | Date | string
@@ -707,11 +685,11 @@ export type NewsCreateManyAuthorInput = {
   summary?: string | null
   category?: string
   status?: string
-  media?: Prisma.NewsCreatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: string
   scheduledAt?: Date | string | null
   publishedAt?: Date | string | null
-  tags?: Prisma.NewsCreatetagsInput | string[]
+  tags?: string
   source?: string | null
   externalId?: string | null
   createdAt?: Date | string
@@ -725,11 +703,11 @@ export type NewsUpdateWithoutAuthorInput = {
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  media?: Prisma.NewsUpdatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tags?: Prisma.NewsUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   externalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -743,11 +721,11 @@ export type NewsUncheckedUpdateWithoutAuthorInput = {
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  media?: Prisma.NewsUpdatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tags?: Prisma.NewsUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   externalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -761,11 +739,11 @@ export type NewsUncheckedUpdateManyWithoutAuthorInput = {
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  media?: Prisma.NewsUpdatemediaInput | runtime.InputJsonValue[]
-  analytics?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  media?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  analytics?: Prisma.StringFieldUpdateOperationsInput | string
   scheduledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  tags?: Prisma.NewsUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   externalId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -877,11 +855,11 @@ export type $NewsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     category: string
     status: string
     authorId: string | null
-    media: runtime.JsonValue[]
-    analytics: runtime.JsonValue
+    media: runtime.JsonValue | null
+    analytics: string
     scheduledAt: Date | null
     publishedAt: Date | null
-    tags: string[]
+    tags: string
     source: string | null
     externalId: string | null
     createdAt: Date
@@ -1317,11 +1295,11 @@ export interface NewsFieldRefs {
   readonly category: Prisma.FieldRef<"News", 'String'>
   readonly status: Prisma.FieldRef<"News", 'String'>
   readonly authorId: Prisma.FieldRef<"News", 'String'>
-  readonly media: Prisma.FieldRef<"News", 'Json[]'>
-  readonly analytics: Prisma.FieldRef<"News", 'Json'>
+  readonly media: Prisma.FieldRef<"News", 'Json'>
+  readonly analytics: Prisma.FieldRef<"News", 'String'>
   readonly scheduledAt: Prisma.FieldRef<"News", 'DateTime'>
   readonly publishedAt: Prisma.FieldRef<"News", 'DateTime'>
-  readonly tags: Prisma.FieldRef<"News", 'String[]'>
+  readonly tags: Prisma.FieldRef<"News", 'String'>
   readonly source: Prisma.FieldRef<"News", 'String'>
   readonly externalId: Prisma.FieldRef<"News", 'String'>
   readonly createdAt: Prisma.FieldRef<"News", 'DateTime'>
@@ -1555,7 +1533,6 @@ export type NewsCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * The data used to create many News.
    */
   data: Prisma.NewsCreateManyInput | Prisma.NewsCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1574,7 +1551,6 @@ export type NewsCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    * The data used to create many News.
    */
   data: Prisma.NewsCreateManyInput | Prisma.NewsCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

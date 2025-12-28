@@ -41,6 +41,7 @@ export type KnowledgeBaseEntryMinAggregateOutputType = {
   title: string | null
   content: string | null
   authorId: string | null
+  tags: string | null
   relevanceScore: number | null
   viewCount: number | null
   createdAt: Date | null
@@ -52,6 +53,7 @@ export type KnowledgeBaseEntryMaxAggregateOutputType = {
   title: string | null
   content: string | null
   authorId: string | null
+  tags: string | null
   relevanceScore: number | null
   viewCount: number | null
   createdAt: Date | null
@@ -87,6 +89,7 @@ export type KnowledgeBaseEntryMinAggregateInputType = {
   title?: true
   content?: true
   authorId?: true
+  tags?: true
   relevanceScore?: true
   viewCount?: true
   createdAt?: true
@@ -98,6 +101,7 @@ export type KnowledgeBaseEntryMaxAggregateInputType = {
   title?: true
   content?: true
   authorId?: true
+  tags?: true
   relevanceScore?: true
   viewCount?: true
   createdAt?: true
@@ -208,7 +212,7 @@ export type KnowledgeBaseEntryGroupByOutputType = {
   title: string
   content: string
   authorId: string
-  tags: string[]
+  tags: string
   relevanceScore: number
   viewCount: number
   createdAt: Date
@@ -243,7 +247,7 @@ export type KnowledgeBaseEntryWhereInput = {
   title?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
   content?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
   authorId?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
-  tags?: Prisma.StringNullableListFilter<"KnowledgeBaseEntry">
+  tags?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
   relevanceScore?: Prisma.FloatFilter<"KnowledgeBaseEntry"> | number
   viewCount?: Prisma.IntFilter<"KnowledgeBaseEntry"> | number
   createdAt?: Prisma.DateTimeFilter<"KnowledgeBaseEntry"> | Date | string
@@ -272,7 +276,7 @@ export type KnowledgeBaseEntryWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
   content?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
   authorId?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
-  tags?: Prisma.StringNullableListFilter<"KnowledgeBaseEntry">
+  tags?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
   relevanceScore?: Prisma.FloatFilter<"KnowledgeBaseEntry"> | number
   viewCount?: Prisma.IntFilter<"KnowledgeBaseEntry"> | number
   createdAt?: Prisma.DateTimeFilter<"KnowledgeBaseEntry"> | Date | string
@@ -305,7 +309,7 @@ export type KnowledgeBaseEntryScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"KnowledgeBaseEntry"> | string
   content?: Prisma.StringWithAggregatesFilter<"KnowledgeBaseEntry"> | string
   authorId?: Prisma.StringWithAggregatesFilter<"KnowledgeBaseEntry"> | string
-  tags?: Prisma.StringNullableListFilter<"KnowledgeBaseEntry">
+  tags?: Prisma.StringWithAggregatesFilter<"KnowledgeBaseEntry"> | string
   relevanceScore?: Prisma.FloatWithAggregatesFilter<"KnowledgeBaseEntry"> | number
   viewCount?: Prisma.IntWithAggregatesFilter<"KnowledgeBaseEntry"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"KnowledgeBaseEntry"> | Date | string
@@ -316,7 +320,7 @@ export type KnowledgeBaseEntryCreateInput = {
   id?: string
   title: string
   content: string
-  tags?: Prisma.KnowledgeBaseEntryCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   viewCount?: number
   createdAt?: Date | string
@@ -329,7 +333,7 @@ export type KnowledgeBaseEntryUncheckedCreateInput = {
   title: string
   content: string
   authorId: string
-  tags?: Prisma.KnowledgeBaseEntryCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   viewCount?: number
   createdAt?: Date | string
@@ -340,7 +344,7 @@ export type KnowledgeBaseEntryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
-  tags?: Prisma.KnowledgeBaseEntryUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -353,7 +357,7 @@ export type KnowledgeBaseEntryUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  tags?: Prisma.KnowledgeBaseEntryUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -365,7 +369,7 @@ export type KnowledgeBaseEntryCreateManyInput = {
   title: string
   content: string
   authorId: string
-  tags?: Prisma.KnowledgeBaseEntryCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   viewCount?: number
   createdAt?: Date | string
@@ -376,7 +380,7 @@ export type KnowledgeBaseEntryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
-  tags?: Prisma.KnowledgeBaseEntryUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -388,7 +392,7 @@ export type KnowledgeBaseEntryUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  tags?: Prisma.KnowledgeBaseEntryUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -427,6 +431,7 @@ export type KnowledgeBaseEntryMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   content?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
   relevanceScore?: Prisma.SortOrder
   viewCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -438,6 +443,7 @@ export type KnowledgeBaseEntryMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   content?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
   relevanceScore?: Prisma.SortOrder
   viewCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -491,20 +497,11 @@ export type KnowledgeBaseEntryUncheckedUpdateManyWithoutAuthorNestedInput = {
   deleteMany?: Prisma.KnowledgeBaseEntryScalarWhereInput | Prisma.KnowledgeBaseEntryScalarWhereInput[]
 }
 
-export type KnowledgeBaseEntryCreatetagsInput = {
-  set: string[]
-}
-
-export type KnowledgeBaseEntryUpdatetagsInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
 export type KnowledgeBaseEntryCreateWithoutAuthorInput = {
   id?: string
   title: string
   content: string
-  tags?: Prisma.KnowledgeBaseEntryCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   viewCount?: number
   createdAt?: Date | string
@@ -515,7 +512,7 @@ export type KnowledgeBaseEntryUncheckedCreateWithoutAuthorInput = {
   id?: string
   title: string
   content: string
-  tags?: Prisma.KnowledgeBaseEntryCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   viewCount?: number
   createdAt?: Date | string
@@ -529,7 +526,6 @@ export type KnowledgeBaseEntryCreateOrConnectWithoutAuthorInput = {
 
 export type KnowledgeBaseEntryCreateManyAuthorInputEnvelope = {
   data: Prisma.KnowledgeBaseEntryCreateManyAuthorInput | Prisma.KnowledgeBaseEntryCreateManyAuthorInput[]
-  skipDuplicates?: boolean
 }
 
 export type KnowledgeBaseEntryUpsertWithWhereUniqueWithoutAuthorInput = {
@@ -556,7 +552,7 @@ export type KnowledgeBaseEntryScalarWhereInput = {
   title?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
   content?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
   authorId?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
-  tags?: Prisma.StringNullableListFilter<"KnowledgeBaseEntry">
+  tags?: Prisma.StringFilter<"KnowledgeBaseEntry"> | string
   relevanceScore?: Prisma.FloatFilter<"KnowledgeBaseEntry"> | number
   viewCount?: Prisma.IntFilter<"KnowledgeBaseEntry"> | number
   createdAt?: Prisma.DateTimeFilter<"KnowledgeBaseEntry"> | Date | string
@@ -567,7 +563,7 @@ export type KnowledgeBaseEntryCreateManyAuthorInput = {
   id?: string
   title: string
   content: string
-  tags?: Prisma.KnowledgeBaseEntryCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   viewCount?: number
   createdAt?: Date | string
@@ -578,7 +574,7 @@ export type KnowledgeBaseEntryUpdateWithoutAuthorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
-  tags?: Prisma.KnowledgeBaseEntryUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -589,7 +585,7 @@ export type KnowledgeBaseEntryUncheckedUpdateWithoutAuthorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
-  tags?: Prisma.KnowledgeBaseEntryUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -600,7 +596,7 @@ export type KnowledgeBaseEntryUncheckedUpdateManyWithoutAuthorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   content?: Prisma.StringFieldUpdateOperationsInput | string
-  tags?: Prisma.KnowledgeBaseEntryUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -681,7 +677,7 @@ export type $KnowledgeBaseEntryPayload<ExtArgs extends runtime.Types.Extensions.
     title: string
     content: string
     authorId: string
-    tags: string[]
+    tags: string
     relevanceScore: number
     viewCount: number
     createdAt: Date
@@ -1114,7 +1110,7 @@ export interface KnowledgeBaseEntryFieldRefs {
   readonly title: Prisma.FieldRef<"KnowledgeBaseEntry", 'String'>
   readonly content: Prisma.FieldRef<"KnowledgeBaseEntry", 'String'>
   readonly authorId: Prisma.FieldRef<"KnowledgeBaseEntry", 'String'>
-  readonly tags: Prisma.FieldRef<"KnowledgeBaseEntry", 'String[]'>
+  readonly tags: Prisma.FieldRef<"KnowledgeBaseEntry", 'String'>
   readonly relevanceScore: Prisma.FieldRef<"KnowledgeBaseEntry", 'Float'>
   readonly viewCount: Prisma.FieldRef<"KnowledgeBaseEntry", 'Int'>
   readonly createdAt: Prisma.FieldRef<"KnowledgeBaseEntry", 'DateTime'>
@@ -1348,7 +1344,6 @@ export type KnowledgeBaseEntryCreateManyArgs<ExtArgs extends runtime.Types.Exten
    * The data used to create many KnowledgeBaseEntries.
    */
   data: Prisma.KnowledgeBaseEntryCreateManyInput | Prisma.KnowledgeBaseEntryCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1367,7 +1362,6 @@ export type KnowledgeBaseEntryCreateManyAndReturnArgs<ExtArgs extends runtime.Ty
    * The data used to create many KnowledgeBaseEntries.
    */
   data: Prisma.KnowledgeBaseEntryCreateManyInput | Prisma.KnowledgeBaseEntryCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

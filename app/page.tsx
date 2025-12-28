@@ -1,127 +1,133 @@
 "use client";
 
-import AlphaQAISystem from "../components/alpha-q-ai-system";
-import Chatbot from "../components/Chatbot";
-import FileExplorer from "../components/FileExplorer";
-import GitStatus from "../components/GitStatus";
-import { PreviewWindow } from "../src/components/PreviewWindow";
-import QIStateWindow from "../components/QIStateWindow";
-import { QiSpaces } from "../components/QiSpaces";
-import { LcSpaces } from "../components/LcSpaces";
-import DeploymentStatusDashboard from "../components/DeploymentStatusDashboard";
-import { MasterProvider, useMaster } from "../components/MasterContext";
-import { QmoiMemoryPanel } from "../components/QmoiMemoryPanel";
-import { NotificationPanel } from "../components/NotificationPanel";
-
 import { useState, useEffect } from "react";
+import QMOIDashboard from "../components/QMOIDashboard";
+import { MasterProvider, useMaster } from "../components/MasterContext";
+import { NotificationPanel } from "../components/NotificationPanel";
 
 function MainPage() {
   const { isMaster, setRole } = useMaster();
-  // Stores chat history messages
-  const [chatHistory, setChatHistory] = useState<any[]>([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentUser, setCurrentUser] = useState({
+    id: "1",
+    name: "Victor Kwemoi",
+    email: "victor@qmoi.com",
+    role: "Master Administrator",
+    avatar: undefined,
+  });
 
-  // The model is canonicalized to 'qmoi' and runtime selection is not allowed
-  // (UI model selection removed to enforce the canonical aggregator)
-  const selectedModel = "qmoi";
-
-  // Currently selected User
-  const [user, setUser] = useState<string>("Victor Kwemoi");
-
-  // Stores the user's name after first render
-  const [sessionUsername, setSessionUsername] = useState("User");
-  const [previewUrl, setPreviewUrl] = useState<string | undefined>(undefined);
-
-  // Retrieve the user's name from localStorage after first render
+  // Check authentication status
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setSessionUsername(localStorage.getItem("username") || "User");
-
-      // Optional: you can fallback or set another fallback here
-    }
-    // listen for global preview events from other components
-    function handlePreview(e: Event) {
-      const detail = (e as CustomEvent)?.detail;
-      if (detail && detail.url) setPreviewUrl(detail.url);
-    }
-
-    if (typeof window !== "undefined") {
-      window.addEventListener("qmoi:preview", handlePreview as EventListener);
-    }
-    return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener(
-          "qmoi:preview",
-          handlePreview as EventListener
-        );
+    // In a real implementation, this would check for valid session/token
+    const checkAuth = () => {
+      const storedAuth = localStorage.getItem("qmoi_authenticated");
+      if (storedAuth === "true") {
+        setIsAuthenticated(true);
+        // Load user data from localStorage or API
+        const storedUser = localStorage.getItem("qmoi_user");
+        if (storedUser) {
+          setCurrentUser(JSON.parse(storedUser));
+        }
       }
     };
+
+    checkAuth();
   }, []);
 
-  // Compose a realistic, example session state
-  const sessionState = {
-    user: sessionUsername,
-    memory: chatHistory.length,
-    recent: chatHistory.slice(-3).map((m) => m.content || m.text),
+  const handleLogin = (userData: any) => {
+    setCurrentUser(userData);
+    setIsAuthenticated(true);
+    localStorage.setItem("qmoi_authenticated", "true");
+    localStorage.setItem("qmoi_user", JSON.stringify(userData));
   };
 
-  return (
-    <>
-      <button
-        style={{ position: "fixed", top: 10, right: 10, zIndex: 1000 }}
-        onClick={() => setRole(isMaster ? "user" : "master")}
-      >
-        {isMaster ? "Switch to User" : "Switch to Master"}
-      </button>
-      <DeploymentStatusDashboard isMaster={isMaster} />
-      <div className="grid grid-cols-4 grid-rows-[auto_1fr_auto] h-screen bg-[#111] text-[#ccffcc]">
-        {/* Sidebar */}
-        <aside className="col-span-1 row-span-2 border-r border-green-700 p-2 overflow-y-auto">
-          <FileExplorer />
-          <GitStatus />
-        </aside>
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setCurrentUser({
+      id: "1",
+      name: "Victor Kwemoi",
+      email: "victor@qmoi.com",
+      role: "Master Administrator",
+      avatar: undefined,
+    });
+    localStorage.removeItem("qmoi_authenticated");
+    localStorage.removeItem("qmoi_user");
+  };
 
-        {/* Main Chat & Preview */}
-        <main className="col-span-2 p-2 overflow-y-auto">
-          {/* QI state window with context about the chat */}
-          <QIStateWindow state="active" session={sessionState} />
+  // If not authenticated, show login/auth interface
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
+        <div className="max-w-md w-full">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white font-bold text-xl">QM</span>
+              </div>
+              <h1 className="text-2xl font-bold text-gray-900">
+                QMOI Enhanced
+              </h1>
+              <p className="text-gray-600 mt-2">Advanced AI System Access</p>
+            </div>
 
-          {/* Chatbot for interacting with the AI */}
-          <Chatbot chatHistory={chatHistory} setChatHistory={setChatHistory} />
+            <div className="space-y-4">
+              <button
+                onClick={() =>
+                  handleLogin({
+                    id: "1",
+                    name: "Victor Kwemoi",
+                    email: "victor@qmoi.com",
+                    role: "Master Administrator",
+                  })
+                }
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-colors"
+              >
+                Login as Master Administrator
+              </button>
 
-          {/* Additional UI related to the QAI System */}
-          <AlphaQAISystem />
+              <button
+                onClick={() =>
+                  handleLogin({
+                    id: "2",
+                    name: "Leah Chebet",
+                    email: "leah@qmoi.com",
+                    role: "Administrator",
+                  })
+                }
+                className="w-full bg-gray-100 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+              >
+                Login as Administrator
+              </button>
 
-          {/* User picker */}
-          <div className="mt-6">
-            <label htmlFor="userSelect" className="font-semibold mr-2">
-              Select User:
-            </label>
-            <select
-              id="userSelect"
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
-              className="bg-[#222] border border-green-700 p-1 rounded ml-2"
-            >
-              <option value="Victor Kwemoi">Master (Victor)</option>
-              <option value="Leah Chebet">Leah Chebet</option>
-            </select>
+              <button
+                onClick={() =>
+                  handleLogin({
+                    id: "3",
+                    name: "Demo User",
+                    email: "demo@qmoi.com",
+                    role: "User",
+                  })
+                }
+                className="w-full bg-gray-100 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+              >
+                Login as Demo User
+              </button>
+            </div>
+
+            <div className="mt-8 text-center text-sm text-gray-500">
+              <p>Enhanced QMOI System with Advanced Security</p>
+              <p className="mt-1">
+                Biometric Authentication • Parallel Processing • Memory
+                Awareness
+              </p>
+            </div>
           </div>
-
-          {/* Spaces related to QAI */}
-          <QiSpaces user={user} />
-          <LcSpaces user={user} />
-
-          {/* Master-only QMOI Memory & Evolution Panel */}
-          {isMaster && <QmoiMemoryPanel />}
-        </main>
-
-        {/* Preview Section */}
-        <section className="col-span-1 p-2 border-l border-green-700 overflow-auto">
-          <PreviewWindow url={previewUrl} />
-        </section>
+        </div>
       </div>
-    </>
-  );
+    );
+  }
+
+  return <QMOIDashboard user={currentUser} onLogout={handleLogout} />;
 }
 
 export default function Page() {

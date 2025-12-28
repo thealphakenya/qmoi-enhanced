@@ -681,7 +681,6 @@ export const QmoiEnhancedSystem: React.FC = () => {
                     onCheckedChange={
                       isListening ? stopListening : startListening
                     }
-                    size="sm"
                   />
                 </div>
                 <div className="flex items-center justify-between text-xs">
@@ -689,7 +688,6 @@ export const QmoiEnhancedSystem: React.FC = () => {
                   <Switch
                     checked={currentProfile.screenReader}
                     onCheckedChange={toggleScreenReader}
-                    size="sm"
                   />
                 </div>
                 <div className="flex items-center justify-between text-xs">
@@ -697,7 +695,6 @@ export const QmoiEnhancedSystem: React.FC = () => {
                   <Switch
                     checked={currentProfile.hapticFeedback}
                     onCheckedChange={toggleHapticFeedback}
-                    size="sm"
                   />
                 </div>
                 <div className="flex items-center justify-between text-xs">
@@ -705,7 +702,6 @@ export const QmoiEnhancedSystem: React.FC = () => {
                   <Switch
                     checked={currentProfile.emergencyMode}
                     onCheckedChange={() => activateEmergencyMode()}
-                    size="sm"
                   />
                 </div>
               </div>

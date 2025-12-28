@@ -46,6 +46,7 @@ export type DiscussionMinAggregateOutputType = {
   replies: number | null
   views: number | null
   lastActivity: Date | null
+  tags: string | null
   relevanceScore: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -59,6 +60,7 @@ export type DiscussionMaxAggregateOutputType = {
   replies: number | null
   views: number | null
   lastActivity: Date | null
+  tags: string | null
   relevanceScore: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -100,6 +102,7 @@ export type DiscussionMinAggregateInputType = {
   replies?: true
   views?: true
   lastActivity?: true
+  tags?: true
   relevanceScore?: true
   createdAt?: true
   updatedAt?: true
@@ -113,6 +116,7 @@ export type DiscussionMaxAggregateInputType = {
   replies?: true
   views?: true
   lastActivity?: true
+  tags?: true
   relevanceScore?: true
   createdAt?: true
   updatedAt?: true
@@ -227,7 +231,7 @@ export type DiscussionGroupByOutputType = {
   replies: number
   views: number
   lastActivity: Date
-  tags: string[]
+  tags: string
   relevanceScore: number
   createdAt: Date
   updatedAt: Date
@@ -264,7 +268,7 @@ export type DiscussionWhereInput = {
   replies?: Prisma.IntFilter<"Discussion"> | number
   views?: Prisma.IntFilter<"Discussion"> | number
   lastActivity?: Prisma.DateTimeFilter<"Discussion"> | Date | string
-  tags?: Prisma.StringNullableListFilter<"Discussion">
+  tags?: Prisma.StringFilter<"Discussion"> | string
   relevanceScore?: Prisma.FloatFilter<"Discussion"> | number
   createdAt?: Prisma.DateTimeFilter<"Discussion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Discussion"> | Date | string
@@ -297,7 +301,7 @@ export type DiscussionWhereUniqueInput = Prisma.AtLeast<{
   replies?: Prisma.IntFilter<"Discussion"> | number
   views?: Prisma.IntFilter<"Discussion"> | number
   lastActivity?: Prisma.DateTimeFilter<"Discussion"> | Date | string
-  tags?: Prisma.StringNullableListFilter<"Discussion">
+  tags?: Prisma.StringFilter<"Discussion"> | string
   relevanceScore?: Prisma.FloatFilter<"Discussion"> | number
   createdAt?: Prisma.DateTimeFilter<"Discussion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Discussion"> | Date | string
@@ -334,7 +338,7 @@ export type DiscussionScalarWhereWithAggregatesInput = {
   replies?: Prisma.IntWithAggregatesFilter<"Discussion"> | number
   views?: Prisma.IntWithAggregatesFilter<"Discussion"> | number
   lastActivity?: Prisma.DateTimeWithAggregatesFilter<"Discussion"> | Date | string
-  tags?: Prisma.StringNullableListFilter<"Discussion">
+  tags?: Prisma.StringWithAggregatesFilter<"Discussion"> | string
   relevanceScore?: Prisma.FloatWithAggregatesFilter<"Discussion"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Discussion"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Discussion"> | Date | string
@@ -347,7 +351,7 @@ export type DiscussionCreateInput = {
   replies?: number
   views?: number
   lastActivity?: Date | string
-  tags?: Prisma.DiscussionCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -362,7 +366,7 @@ export type DiscussionUncheckedCreateInput = {
   replies?: number
   views?: number
   lastActivity?: Date | string
-  tags?: Prisma.DiscussionCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -375,7 +379,7 @@ export type DiscussionUpdateInput = {
   replies?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   lastActivity?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tags?: Prisma.DiscussionUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -390,7 +394,7 @@ export type DiscussionUncheckedUpdateInput = {
   replies?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   lastActivity?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tags?: Prisma.DiscussionUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -404,7 +408,7 @@ export type DiscussionCreateManyInput = {
   replies?: number
   views?: number
   lastActivity?: Date | string
-  tags?: Prisma.DiscussionCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -417,7 +421,7 @@ export type DiscussionUpdateManyMutationInput = {
   replies?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   lastActivity?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tags?: Prisma.DiscussionUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -431,7 +435,7 @@ export type DiscussionUncheckedUpdateManyInput = {
   replies?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   lastActivity?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tags?: Prisma.DiscussionUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -445,14 +449,6 @@ export type DiscussionListRelationFilter = {
 
 export type DiscussionOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type StringNullableListFilter<$PrismaModel = never> = {
-  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
-  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
 }
 
 export type DiscussionCountOrderByAggregateInput = {
@@ -483,6 +479,7 @@ export type DiscussionMaxOrderByAggregateInput = {
   replies?: Prisma.SortOrder
   views?: Prisma.SortOrder
   lastActivity?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
   relevanceScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -496,6 +493,7 @@ export type DiscussionMinOrderByAggregateInput = {
   replies?: Prisma.SortOrder
   views?: Prisma.SortOrder
   lastActivity?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
   relevanceScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -549,24 +547,7 @@ export type DiscussionUncheckedUpdateManyWithoutAuthorNestedInput = {
   deleteMany?: Prisma.DiscussionScalarWhereInput | Prisma.DiscussionScalarWhereInput[]
 }
 
-export type DiscussionCreatetagsInput = {
-  set: string[]
-}
-
 export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type DiscussionUpdatetagsInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type FloatFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
@@ -581,7 +562,7 @@ export type DiscussionCreateWithoutAuthorInput = {
   replies?: number
   views?: number
   lastActivity?: Date | string
-  tags?: Prisma.DiscussionCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -594,7 +575,7 @@ export type DiscussionUncheckedCreateWithoutAuthorInput = {
   replies?: number
   views?: number
   lastActivity?: Date | string
-  tags?: Prisma.DiscussionCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -607,7 +588,6 @@ export type DiscussionCreateOrConnectWithoutAuthorInput = {
 
 export type DiscussionCreateManyAuthorInputEnvelope = {
   data: Prisma.DiscussionCreateManyAuthorInput | Prisma.DiscussionCreateManyAuthorInput[]
-  skipDuplicates?: boolean
 }
 
 export type DiscussionUpsertWithWhereUniqueWithoutAuthorInput = {
@@ -637,7 +617,7 @@ export type DiscussionScalarWhereInput = {
   replies?: Prisma.IntFilter<"Discussion"> | number
   views?: Prisma.IntFilter<"Discussion"> | number
   lastActivity?: Prisma.DateTimeFilter<"Discussion"> | Date | string
-  tags?: Prisma.StringNullableListFilter<"Discussion">
+  tags?: Prisma.StringFilter<"Discussion"> | string
   relevanceScore?: Prisma.FloatFilter<"Discussion"> | number
   createdAt?: Prisma.DateTimeFilter<"Discussion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Discussion"> | Date | string
@@ -650,7 +630,7 @@ export type DiscussionCreateManyAuthorInput = {
   replies?: number
   views?: number
   lastActivity?: Date | string
-  tags?: Prisma.DiscussionCreatetagsInput | string[]
+  tags?: string
   relevanceScore?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -663,7 +643,7 @@ export type DiscussionUpdateWithoutAuthorInput = {
   replies?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   lastActivity?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tags?: Prisma.DiscussionUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -676,7 +656,7 @@ export type DiscussionUncheckedUpdateWithoutAuthorInput = {
   replies?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   lastActivity?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tags?: Prisma.DiscussionUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -689,7 +669,7 @@ export type DiscussionUncheckedUpdateManyWithoutAuthorInput = {
   replies?: Prisma.IntFieldUpdateOperationsInput | number
   views?: Prisma.IntFieldUpdateOperationsInput | number
   lastActivity?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  tags?: Prisma.DiscussionUpdatetagsInput | string[]
+  tags?: Prisma.StringFieldUpdateOperationsInput | string
   relevanceScore?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -780,7 +760,7 @@ export type $DiscussionPayload<ExtArgs extends runtime.Types.Extensions.Internal
     replies: number
     views: number
     lastActivity: Date
-    tags: string[]
+    tags: string
     relevanceScore: number
     createdAt: Date
     updatedAt: Date
@@ -1215,7 +1195,7 @@ export interface DiscussionFieldRefs {
   readonly replies: Prisma.FieldRef<"Discussion", 'Int'>
   readonly views: Prisma.FieldRef<"Discussion", 'Int'>
   readonly lastActivity: Prisma.FieldRef<"Discussion", 'DateTime'>
-  readonly tags: Prisma.FieldRef<"Discussion", 'String[]'>
+  readonly tags: Prisma.FieldRef<"Discussion", 'String'>
   readonly relevanceScore: Prisma.FieldRef<"Discussion", 'Float'>
   readonly createdAt: Prisma.FieldRef<"Discussion", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Discussion", 'DateTime'>
@@ -1448,7 +1428,6 @@ export type DiscussionCreateManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * The data used to create many Discussions.
    */
   data: Prisma.DiscussionCreateManyInput | Prisma.DiscussionCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1467,7 +1446,6 @@ export type DiscussionCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Exte
    * The data used to create many Discussions.
    */
   data: Prisma.DiscussionCreateManyInput | Prisma.DiscussionCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

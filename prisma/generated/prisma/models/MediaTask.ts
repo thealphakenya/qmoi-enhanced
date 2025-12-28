@@ -1105,7 +1105,6 @@ export type MediaTaskCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * The data used to create many MediaTasks.
    */
   data: Prisma.MediaTaskCreateManyInput | Prisma.MediaTaskCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1124,7 +1123,6 @@ export type MediaTaskCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Exten
    * The data used to create many MediaTasks.
    */
   data: Prisma.MediaTaskCreateManyInput | Prisma.MediaTaskCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**

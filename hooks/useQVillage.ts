@@ -2,9 +2,64 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 // Enhanced QVillage React Hooks with superior performance and parallel processing
 
+interface QVillagePaper {
+  id: string;
+  title: string;
+  authors: string[];
+  abstract: string;
+  arxivId: string;
+  publishedDate: string;
+  tags: string[];
+  relevanceScore: number;
+  saved: boolean;
+}
+
+interface QVillageKBEntry {
+  id: string;
+  title: string;
+  content: string;
+  tags: string[];
+  createdAt: string;
+  updatedAt: string;
+  author: string;
+  views: number;
+  likes: number;
+}
+
+interface QVillageDiscussion {
+  id: string;
+  title: string;
+  author: string;
+  replies: number;
+  lastActivity: string;
+  tags: string[];
+  trending: boolean;
+}
+
+interface QVillageMetrics {
+  papersToday: number;
+  kbEntries: number;
+  activeUsers: number;
+  discussions: number;
+  apiCalls: number;
+  responseTime: number;
+  accuracy: number;
+  memoryUsage: number;
+  cpuUsage: number;
+  networkLatency: number;
+}
+
 // Main QVillage hook with comprehensive state management
 export function useQVillage() {
-  const [state, setState] = useState({
+  const [state, setState] = useState<{
+    papers: QVillagePaper[];
+    kbEntries: QVillageKBEntry[];
+    discussions: QVillageDiscussion[];
+    metrics: Partial<QVillageMetrics>;
+    status: string;
+    lastSync: string | null;
+    qmoiSuperiorityScore: number;
+  }>({
     papers: [],
     kbEntries: [],
     discussions: [],
@@ -15,7 +70,7 @@ export function useQVillage() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Enhanced parallel data fetching
   const fetchAllData = useCallback(async () => {
@@ -47,7 +102,7 @@ export function useQVillage() {
         qmoiSuperiorityScore: metrics.qmoi_superiority_score || 0,
       });
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : String(err));
       setState((prev) => ({ ...prev, status: "error" }));
     } finally {
       setLoading(false);
@@ -55,7 +110,7 @@ export function useQVillage() {
   }, []);
 
   // Enhanced search with QMOI AI
-  const search = useCallback(async (query, filters = {}) => {
+  const search = useCallback(async (query: string, filters: any = {}) => {
     setLoading(true);
     try {
       const response = await fetch("/api/qvillage?endpoint=search", {
@@ -66,7 +121,7 @@ export function useQVillage() {
       const results = await response.json();
       return results;
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : String(err));
       return null;
     } finally {
       setLoading(false);
@@ -91,7 +146,7 @@ export function useQVillage() {
 
         return result;
       } catch (err) {
-        setError(err.message);
+        setError(err instanceof Error ? err.message : String(err));
         return null;
       } finally {
         setLoading(false);
@@ -101,19 +156,22 @@ export function useQVillage() {
   );
 
   // Enhanced analysis hook
-  const analyze = useCallback(async (content, type, options = {}) => {
-    try {
-      const response = await fetch("/api/qvillage?endpoint=analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content, type, options }),
-      });
-      return await response.json();
-    } catch (err) {
-      setError(err.message);
-      return null;
-    }
-  }, []);
+  const analyze = useCallback(
+    async (content: string, type: string, options: any = {}) => {
+      try {
+        const response = await fetch("/api/qvillage?endpoint=analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content, type, options }),
+        });
+        return await response.json();
+      } catch (err) {
+        setError(err instanceof Error ? err.message : String(err));
+        return null;
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     fetchAllData();
@@ -138,16 +196,19 @@ export function useQVillageStatus() {
     lastUpdate: null,
     performance: {},
     alerts: [],
+    hf_integration: false,
+    qmoi_connection: false,
+    parallel_processing: false,
   });
 
-  const wsRef = useRef(null);
+  const wsRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
     // Enhanced WebSocket connection with auto-reconnect
     const connectWebSocket = () => {
       wsRef.current = new WebSocket("ws://localhost:3001/qvillage/status");
 
-      wsRef.current.onmessage = (event) => {
+      wsRef.current.onmessage = (event: MessageEvent) => {
         const data = JSON.parse(event.data);
         setStatus((prev) => ({
           ...prev,
@@ -174,8 +235,22 @@ export function useQVillageStatus() {
 }
 
 // Superior thinking status hook for QMOI AI
+interface QVillageParallelTask {
+  id: number;
+  name: string;
+  status: "running" | "complete";
+}
+
 export function useQMOIThinking() {
-  const [thinkingState, setThinkingState] = useState({
+  const [thinkingState, setThinkingState] = useState<{
+    isThinking: boolean;
+    progress: number;
+    stage: string;
+    estimatedTime: number;
+    currentTask: string | null;
+    parallelTasks: QVillageParallelTask[];
+    superiorityScore: number;
+  }>({
     isThinking: false,
     progress: 0,
     stage: "idle",
@@ -185,7 +260,7 @@ export function useQMOIThinking() {
     superiorityScore: 0,
   });
 
-  const startThinking = useCallback((task, estimatedTime = 2000) => {
+  const startThinking = useCallback((task: string, estimatedTime = 2000) => {
     setThinkingState({
       isThinking: true,
       progress: 0,
@@ -243,7 +318,7 @@ export function useQMOIThinking() {
     return () => clearInterval(progressInterval);
   }, []);
 
-  const addParallelTask = useCallback((task) => {
+  const addParallelTask = useCallback((task: QVillageParallelTask) => {
     setThinkingState((prev) => ({
       ...prev,
       parallelTasks: [
@@ -253,7 +328,7 @@ export function useQMOIThinking() {
     }));
   }, []);
 
-  const completeParallelTask = useCallback((taskId) => {
+  const completeParallelTask = useCallback((taskId: number) => {
     setThinkingState((prev) => ({
       ...prev,
       parallelTasks: prev.parallelTasks.map((task) =>
@@ -282,7 +357,7 @@ export function useQVillageAccessibility() {
   });
 
   const updateSetting = useCallback(
-    (setting, value) => {
+    (setting: string, value: any) => {
       setAccessibilitySettings((prev) => ({
         ...prev,
         [setting]: value,
@@ -345,10 +420,16 @@ export function useQVillagePerformance() {
     networkLatency: 0,
   });
 
-  const [metrics, setMetrics] = useState([]);
+  interface MetricEntry {
+    name: string;
+    value: number;
+    timestamp: number;
+  }
+
+  const [metrics, setMetrics] = useState<MetricEntry[]>([]);
 
   const recordMetric = useCallback(
-    (metricName, value, timestamp = Date.now()) => {
+    (metricName: string, value: number, timestamp = Date.now()) => {
       setMetrics((prev) => [
         ...prev.slice(-99),
         {
@@ -369,7 +450,7 @@ export function useQVillagePerformance() {
   );
 
   const getAverageMetric = useCallback(
-    (metricName, timeRange = 60000) => {
+    (metricName: string, timeRange = 60000) => {
       const now = Date.now();
       const relevantMetrics = metrics.filter(
         (m) => m.name === metricName && now - m.timestamp <= timeRange
@@ -408,7 +489,12 @@ export function useQVillagePerformance() {
 
 // Enhanced auto-healing hook
 export function useQVillageAutoHeal() {
-  const [healthStatus, setHealthStatus] = useState({
+  const [healthStatus, setHealthStatus] = useState<{
+    overall: string;
+    components: any;
+    lastCheck: string | null;
+    autoFixes: any[];
+  }>({
     overall: "healthy",
     components: {},
     lastCheck: null,
@@ -439,7 +525,7 @@ export function useQVillageAutoHeal() {
   }, []);
 
   const applyAutoFix = useCallback(
-    async (component, fixType) => {
+    async (component: string, fixType: string) => {
       try {
         const response = await fetch("/api/qvillage/autofix", {
           method: "POST",
@@ -454,7 +540,10 @@ export function useQVillageAutoHeal() {
 
         return result;
       } catch (err) {
-        return { success: false, error: err.message };
+        return {
+          success: false,
+          error: err instanceof Error ? err.message : String(err),
+        };
       }
     },
     [checkHealth]
@@ -484,10 +573,10 @@ export function useQVillageAutoHeal() {
 
 // Enhanced notification hook
 export function useQVillageNotifications() {
-  const [notifications, setNotifications] = useState([]);
+  const [notifications, setNotifications] = useState<any[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
 
-  const addNotification = useCallback((notification) => {
+  const addNotification = useCallback((notification: any) => {
     const newNotification = {
       id: Date.now(),
       timestamp: new Date().toISOString(),
@@ -509,7 +598,7 @@ export function useQVillageNotifications() {
     }, 3600000);
   }, []);
 
-  const markAsRead = useCallback((id) => {
+  const markAsRead = useCallback((id: any) => {
     setNotifications((prev) =>
       prev.map((n) => (n.id === id ? { ...n, read: true } : n))
     );
